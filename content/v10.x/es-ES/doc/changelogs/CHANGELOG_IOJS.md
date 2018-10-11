@@ -358,17 +358,17 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * Algunso problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
 * El part sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras que una consulta DNS todavía están en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
 * `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
-* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: trabajar alrededor del problema VS2015 en ICU <56 (steven r. loomis) [#2283](https://github.com/nodejs/node/pull/2283)
-* [[`1f12e03266`](https://github.com/nodejs/node/commit/1f12e03266)] - **(SEMVER-MINOR)** **build**: converger desde joyent/node (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264)
+* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: solucionar problema VS2015 en ICU <56 (steven r. loomis) [#2283](https://github.com/nodejs/node/pull/2283)
+* [[`1f12e03266`](https://github.com/nodejs/node/commit/1f12e03266)] - **(SEMVER-MINOR)** **build**: intl: converger desde joyent/node (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264)
 * [[`071640abdd`](https://github.com/nodejs/node/commit/071640abdd)] - **build**: Intl: bump ICU4C from 54 to 55 (Steven R. Loomis) [#2293](https://github.com/nodejs/node/pull/2293)
 * [[`07a88b0c8b`](https://github.com/nodejs/node/commit/07a88b0c8b)] - **build**: actualizar manifesto para incluir Windows 10 (Lucien Greathouse) [#2332](https://github.com/nodejs/io.js/pull/2332)
 * [[`0bb099f444`](https://github.com/nodejs/node/commit/0bb099f444)] - **build**: expand ~ in install prefix early (Ben Noordhuis) [#2307](https://github.com/nodejs/io.js/pull/2307)
-* [[`7fe6dd8f5d`](https://github.com/nodejs/node/commit/7fe6dd8f5d)] - **crypto**: comprobar si hay errores OpenSSL al ingresar (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342)
+* [[`7fe6dd8f5d`](https://github.com/nodejs/node/commit/7fe6dd8f5d)] - **crypto**: comprobar si hay errores OpenSSL al firmar (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342)
 * [[`605f6ee904`](https://github.com/nodejs/node/commit/605f6ee904)] - **crypto**: corregir pérdida de memoria en PBKDF2Request (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
 * [[`ba6eb8af12`](https://github.com/nodejs/node/commit/ba6eb8af12)] - **crypto**: corregir pérdida de memoria en ECDH::SetPrivateKey (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
 * [[`6a16368611`](https://github.com/nodejs/node/commit/6a16368611)] - **crypto**: corregir pérdida de memoria en PublicKeyCipher::Cipher (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
@@ -409,21 +409,21 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 ### Cambios notables
 
 * **buffer**: 
-  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` encima del `Uint8Array` del V8. Cada esfuerzo ha sido realizado para minimizar el impacto del rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia entre versiones anteriores dependerá en cómo se utiliza el `Buffer` dentro de las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
+  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` encima del `Uint8Array` del V8. Cada esfuerzo ha sido realizado para minimizar el impacto en el rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia entre versiones anteriores dependerá de cómo se utiliza el `Buffer` dentro de las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
   * `Buffer` ahora puede tomar `ArrayBuffer`s como un argumento constructor (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
   * Cuando se pasa un buffer simple a `Buffer.concat()`, se regresará un nuevo y copiado objeto `Buffer`; el comportamiento previo era regresar el objeto `Buffer` original (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
 * **build**: el soporte PPC ha sido añadido al núcleo para permitir la compilación en pLinux BE y LE (pronto soporte AIX) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
-* **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primera argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambos (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
-* **freelist**: Desaprueba el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
+* **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primer argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambas cosas (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
+* **freelist**: Desaprobar el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
 * **http**: 
   * Los códigos de estado ahora usan los [nombres IANA](http://www.iana.org/assignments/http-status-codes) oficiales según [RFC7231](https://tools.ietf.org/html/rfc7231), p. ej., `http.STATUS_CODES[414]` ahora devuelve `'URI Too Long'` en lugar de `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
   * Llamar a .getName() en un agente HTTP ya no revuelve dos puntos finales; los agentes HTTPS ya no devolverán dos puntos extras cerca del medio de la string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
 * **node**: 
   * `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
-  * Introduce un nuevo objeto `process.release` que contiene una propiedad de `name` establecida a `'io.js'` y `sourceUrl`, las propiedades `headersUrl` y `libUrl` (sólo en Windows) que contienen URLs para las fuentes relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
+  * Introduce un nuevo objeto `process.release` que contiene una propiedad de `name` establecida a `'io.js'` y `sourceUrl`, las propiedades `headersUrl` y `libUrl` (sólo en Windows) que contienen URLs para los recursos relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
   * The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
-* **repl**: La historia persistente ahora está habilitada por defecto. El archivo de historia ahora está ubicado en ~/.node_repl_history, el cual puede ser anulado por la nueva variable de entorno `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formate del archivo ha sido cambiado a texto sin formato para un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
-* **smalloc**: El módulo `smalloc` ha sido eliminado ya que no es posible proporcionar el API debido a cambios en V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
+* **repl**: La historia persistente ahora está habilitada por defecto. El archivo de historia ahora está ubicado en ~/.node_repl_history, el cual puede ser anulado por la nueva variable de entorno `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formato del archivo ha sido cambiado a texto sin formato para un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
+* **smalloc**: El módulo `smalloc` ha sido eliminado, ya que no es posible proporcionar la API debido a cambios en V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
 * **tls**: Añade los métodos `server.getTicketKeys()` y `server.setTicketKeys()` para la rotación de [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
 * **v8**: Actualizado a 4.4.63.26 
   * ES6: [nombres de propiedades computadas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) habilitados
@@ -455,8 +455,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`e5ada116cd`](https://github.com/nodejs/node/commit/e5ada116cd)] - **buffer**: limpieza menor de rebase (Trevor Norris) [#2003](https://github.com/nodejs/node/pull/2003)
 * [[`b625ab4242`](https://github.com/nodejs/node/commit/b625ab4242)] - **buffer**: corregir el uso de kMaxLength (Trevor Norris) [#2003](https://github.com/nodejs/node/pull/2003)
 * [[`eea66e2a7b`](https://github.com/nodejs/node/commit/eea66e2a7b)] - **(SEMVER-MAJOR)** **buffer**: corregir el caso de un buffer pasado a concat (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937)
-* [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: hacer cambios adicionales al API nativo (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: cambiar el API para devolver MaybeLocal<t> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: hacer cambios adicionales a la API nativa (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: cambiar API para devolver MaybeLocal<t> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: cambiar para usar Maybe<t> API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`d75f5c8d0e`](https://github.com/nodejs/node/commit/d75f5c8d0e)] - **buffer**: culminar con la implementación de FreeCallback (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`63da0dfd3a`](https://github.com/nodejs/node/commit/63da0dfd3a)] - **buffer**: implement Uint8Array backed Buffer (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
@@ -533,7 +533,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
