@@ -1758,7 +1758,7 @@ Il metodo `crypto.randomBytes()` non verrà completato finché non ci sarà suff
 
 Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
-La versione asincrona di `crypto.randomBytes()` viene eseguita in una singola richiesta threadpool. To minimize threadpool task length variation, partition large `randomBytes` requests when doing so as part of fulfilling a client request.
+La versione asincrona di `crypto.randomBytes()` viene eseguita in una singola richiesta threadpool. Per ridurre al minimo la variazione della lunghezza dell'attività del threadpool, suddividi le richieste di `randomBytes` di grandi dimensioni quando ha senso farlo per soddisfare una client request.
 
 ### crypto.randomFillSync(buffer\[, offset\]\[, size\])
 
@@ -1771,12 +1771,12 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Dev'essere fornito.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
-- Returns: {Buffer}
+- Restituisce: {Buffer}
 
-Synchronous version of [`crypto.randomFill()`][].
+Versione sincrona di [`crypto.randomFill()`][].
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1785,12 +1785,12 @@ console.log(crypto.randomFillSync(buf).toString('hex'));
 crypto.randomFillSync(buf, 5);
 console.log(buf.toString('hex'));
 
-// The above is equivalent to the following:
+// Il codice qui sopra è equivalente al seguente:
 crypto.randomFillSync(buf, 5, 5);
 console.log(buf.toString('hex'));
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Qualsiasi istanza `TypedArray` o `DataView` può essere passata come `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1814,14 +1814,14 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Dev'essere fornito.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
-This function is similar to [`crypto.randomBytes()`][] but requires the first argument to be a [`Buffer`][] that will be filled. It also requires that a callback is passed in.
+Questa funzione è simile a [`crypto.randomBytes()`][] ma richiede che il primo argomento sia un [`Buffer`][] che verrà riempito. Richiede inoltre che venga passato un callback.
 
-If the `callback` function is not provided, an error will be thrown.
+Se non viene fornita la funzione `callback`, verrà generato un errore.
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1835,14 +1835,14 @@ crypto.randomFill(buf, 5, (err, buf) => {
   console.log(buf.toString('hex'));
 });
 
-// The above is equivalent to the following:
+// Il codice qui sopra è equivalente al seguente:
 crypto.randomFill(buf, 5, 5, (err, buf) => {
   if (err) throw err;
   console.log(buf.toString('hex'));
 });
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Qualsiasi istanza `TypedArray` o `DataView` può essere passata come `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1864,9 +1864,9 @@ crypto.randomFill(c, (err, buf) => {
 });
 ```
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
-The asynchronous version of `crypto.randomFill()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomFill` requests when doing so as part of fulfilling a client request.
+La versione asincrona di `crypto.randomFill()` viene eseguita in una singola richiesta threadpool. Per ridurre al minimo la variazione della lunghezza dell'attività del threadpool, suddividi le richieste di `randomFill` di grandi dimensioni quando ha senso farlo per soddisfare una client request.
 
 ### crypto.setEngine(engine[, flags])
 
@@ -1877,11 +1877,11 @@ added: v0.11.11
 - `engine` {string}
 - `flags` {crypto.constants} **Default:** `crypto.constants.ENGINE_METHOD_ALL`
 
-Load and set the `engine` for some or all OpenSSL functions (selected by flags).
+Carica e imposta l'`engine` per alcune o per tutte le funzioni di OpenSSL (selezionate dai flag).
 
-`engine` could be either an id or a path to the engine's shared library.
+L'`engine` potrebbe essere un ID oppure un percorso della libreria dell'engine condivisa.
 
-The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
+L'argomento `flags` opzionale utilizza `ENGINE_METHOD_ALL` come impostazione predefinita. L'argomento `flags` è un campo di bit che prende uno o un insieme dei seguenti flag (definiti all'interno di `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
@@ -1895,7 +1895,7 @@ The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` i
 - `crypto.constants.ENGINE_METHOD_ALL`
 - `crypto.constants.ENGINE_METHOD_NONE`
 
-The flags below are deprecated in OpenSSL-1.1.0.
+I flag qui sotto sono obsoleti su OpenSSL-1.1.0.
 
 - `crypto.constants.ENGINE_METHOD_ECDH`
 - `crypto.constants.ENGINE_METHOD_ECDSA`
@@ -1907,9 +1907,9 @@ The flags below are deprecated in OpenSSL-1.1.0.
 added: v10.0.0
 -->
 
-- `bool` {boolean} `true` to enable FIPS mode.
+- `bool` {boolean} `true` per abilitare la modalità FIPS.
 
-Enables the FIPS compliant crypto provider in a FIPS-enabled Node.js build. Throws an error if FIPS mode is not available.
+Abilita il provider crittografico compatibile con le norme FIPS in un build Node.js abilitato per le norme FIPS. Throws an error if FIPS mode is not available.
 
 ### crypto.timingSafeEqual(a, b)
 
