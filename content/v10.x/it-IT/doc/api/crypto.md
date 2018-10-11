@@ -1921,11 +1921,11 @@ added: v6.6.0
 - `b` {Buffer | TypedArray | DataView}
 - Restituisce: {boolean}
 
-Questa funzione è basata su un algoritmo di durata costante. Restituisce true se `a` è uguale a `b`, senza perdite di informazioni temporali che permetterebbero ad un utente malintenzionato di indovinare uno dei valori. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Questa funzione è basata su un algoritmo di durata costante. Restituisce true se `a` è uguale a `b`, senza perdite di informazioni temporali che permetterebbero ad un utente malintenzionato di indovinare uno dei valori. E' adatto per confrontare gli HMAC digest o i valori segreti come ad esempio i cookie di autenticazione oppure gli [URL di capacità](https://www.w3.org/TR/capability-urls/).
 
-`a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
+`a` e `b` devono essere entrambi dei `Buffer`, dei `TypedArray` oppure dei `DataView` e devono avere la stessa lunghezza.
 
-Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
+L'utilizzo di `crypto.timingSafeEqual` non garantisce che il codice *circostante* sia protetto nel tempo. Si dovrebbe fare attenzione in modo da garantire che il codice circostante non presenti vulnerabilità temporali.
 
 ## Notes
 
