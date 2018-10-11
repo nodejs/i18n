@@ -1059,9 +1059,9 @@ Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo stream
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La classe `Verify` è un'utility per verificare le firme. Può essere utilizzata in due modi:
 
-- As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
+- Come un writable [stream](stream.html), sul quale i dati scritti tramite il writing vengono utilizzati per convalidare la firma fornita, oppure
 - Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
 
 The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
