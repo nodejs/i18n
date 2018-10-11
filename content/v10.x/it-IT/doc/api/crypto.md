@@ -1324,15 +1324,15 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea uno schambio di chiavi `DiffieHellman` utilizzando il `prime` fornito e un `generator` specifico opzionale.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
-The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+Gli argomenti `primeEncoding` e `generatorEncoding` possono essere `'latin1'`, `'hex'`, o `'base64'`.
 
-If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Se viene specificato il `primeEncoding`, `prime` dovrebbe essere una stringa; in caso contrario, dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Se viene specificato il `generatorEncoding`, `generator` dovrebbe essere una stringa; in caso contrario dovrebbe essere un numero, un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
@@ -1343,7 +1343,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Crea un `DiffieHellman` key exchange object e genera un prime di `primeLength` bit utilizzando un `generator` numerico specifico opzionale. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
 ### crypto.createECDH(curveName)
 
