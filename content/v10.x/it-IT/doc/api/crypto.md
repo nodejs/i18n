@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Proprietà per verificare e controllare se è attualmente in uso un provider crittografico conforme alle norme FIPS. L'impostazione su true richiede una build delle norme FIPS di Node.js.
 
-Questa proprietà è obsoleta. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Questa proprietà è obsoleta. Perfavore utilizza `crypto.setFips()` al posto di `crypto.getFips()`.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,16 +1188,16 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`crypto.createCipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Restituisce: {Cipher}
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
+Crea e restituisce un `Cipher` object che utilizza l'`algorithm` e la `password` specificati.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
 
@@ -1223,11 +1223,11 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Restituisce: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
 
@@ -1267,7 +1267,7 @@ deprecated: v10.0.0
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
 The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
@@ -1293,7 +1293,7 @@ changes:
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
 
