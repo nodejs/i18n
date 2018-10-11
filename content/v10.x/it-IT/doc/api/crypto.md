@@ -700,7 +700,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Restituisce: {Buffer | string} L'EC Diffie-Hellman private key (chiave privata) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+- Restituisce: {Buffer | string} La chiave privata EC Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -710,7 +710,7 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Restituisce: {Buffer | string} L'EC Diffie-Hellman public key (chiave pubblica) nell'`encoding` e nel `format` specificati.
+- Restituisce: {Buffer | string} La chiave pubblica EC Diffie-Hellman nell'`encoding` e nel `format` specificati.
 
 L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
@@ -725,7 +725,7 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta l'EC Diffie-Hellman private key (chiave privata). L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
+Imposta la chiave privata EC Diffie-Hellman. L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la private key, viene generato e impostato nel `ECDH` object anche il public point (key) associato.
 
