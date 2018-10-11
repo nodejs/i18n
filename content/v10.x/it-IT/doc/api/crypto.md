@@ -1141,11 +1141,11 @@ Verifica i dati forniti utilizzando l'`object` e la `signature` specificati. L'a
 
 - `saltLength`: {integer} - lunghezza del salt per quando il padding è `RSA_PKCS1_PSS_PADDING`. Il valore speciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` imposta la lunghezza del salta nella dimensione del digest, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (valore di default) fa sì che venga determinato automaticamente.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+L'argomento `signature` è la firma calcolata precedentemente per i dati, all'interno del `signatureFormat` che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito `signatureFormat`, la `signature` dovrebbe essere una stringa; in caso contrario la `signature` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+Il `verify` object non può essere utilizzato nuovamente dopo aver chiamato `verify.verify()`. Chiamate multiple di `verify.verify()` genereranno un errore.
 
-## `crypto` module methods and properties
+## Metodi e proprietà del modulo `crypto`
 
 ### crypto.constants
 
