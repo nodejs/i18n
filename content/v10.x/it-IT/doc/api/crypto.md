@@ -497,7 +497,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Genera valori private Diffie-Hellman key (chiave privata) e public Diffie-Hellman key (chiave pubblica), e restituisce la public key (chiave pubblica) nell'`encoding` specificato. Questa chiave dovrebbe essere trasferita all'altra parte. L'encoding può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+Genera valori di chiave Diffie-Hellman privata e pubblica, e restituisce la chiave pubblica nell'`encoding` specificato. Questa chiave dovrebbe essere trasferita all'altra parte. L'encoding può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getGenerator([encoding])
 
@@ -541,7 +541,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Restituisce la Diffie-Hellman public key (chiave pubblica) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+Restituisce la chiave pubblica Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.setPrivateKey(privateKey[, encoding])
 
@@ -552,7 +552,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta la Diffie-Hellman private key (chiave privata). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
+Imposta la chiave privata Diffie-Hellman. Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -563,7 +563,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta la Diffie-Hellman public key (chiave pubblica). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
+Imposta la chiave pubblica Diffie-Hellman. Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -623,7 +623,7 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`.
+Converte la chiave pubblica EC Diffie-Hellman specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`.
 
 Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
@@ -671,7 +671,7 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come chiave pubblica dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
@@ -687,7 +687,7 @@ added: v0.11.14
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Genera valori private EC Diffie-Hellman key (chiave privata) e public EC Diffie-Hellman key (chiave pubblica), e restituisce la public key (chiave pubblica) nel `format` e nell'`encoding` specificati. Questa chiave dovrebbe essere trasferita all'altra parte.
+Genera valori di chiave EC Diffie-Hellman privata e pubblica, e restituisce la chiave pubblica nel `format` e nell'`encoding` specificati. Questa chiave dovrebbe essere trasferita all'altra parte.
 
 L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
@@ -852,7 +852,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Aggiorna il contenuto dell'hash con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray`, o un `DataView`, allora `inputEncoding` viene ignorato.
+Aggiorna il contenuto dell'hash con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
 Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
@@ -938,7 +938,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Aggiorna il contenuto dell'`Hmac` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray`, o un `DataView`, allora `inputEncoding` viene ignorato.
+Aggiorna il contenuto dell'`Hmac` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
 Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
@@ -968,8 +968,7 @@ const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
 // Stampa: la firma calcolata utilizzando la chiave privata e
 // l'SHA-256 specificati. Per le chiavi RSA, l'algoritmo è 
-// RSASSA-PKCS1-v1_5 (vedi il parametro padding in basso per RSASSA-PSS). 
-// Per le chiavi EC, l'algoritmo è ECDSA.
+// RSASSA-PKCS1-v1_5 (vedi il parametro padding in basso per RSASSA-PSS). Per le chiavi EC, l'algoritmo è ECDSA.
 ```
 
 Esempio: Utilizzando i metodi [`sign.update()`][] e [`sign.sign()`][]:
@@ -1050,7 +1049,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Aggiorna il contenuto di `Sign` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray`, o un `DataView`, allora `inputEncoding` viene ignorato.
+Aggiorna il contenuto di `Sign` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
 Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
