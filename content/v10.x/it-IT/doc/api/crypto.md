@@ -552,7 +552,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta la Diffie-Hellman private key (chiave privata). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'`, o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Imposta la Diffie-Hellman private key (chiave privata). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -563,7 +563,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta la Diffie-Hellman public key (chiave pubblica). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'`, o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Imposta la Diffie-Hellman public key (chiave pubblica). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.verifyError
 
