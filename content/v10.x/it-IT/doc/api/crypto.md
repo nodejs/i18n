@@ -1489,9 +1489,9 @@ added: v0.7.5
 - `groupName` {string}
 - Restituisce: {Object}
 
-Crea un `DiffieHellman` key exchange object predefinito. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un `DiffieHellman` key exchange object predefinito. I gruppi supportati sono: `'modp1'`, `'modp2'`, `'modp5'` (definiti nel documento [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), ma vedi anche gli [Avvertimenti](#crypto_support_for_weak_or_compromised_algorithms)) e `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definiti nel documento [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). L'object restituito simula l'interfaccia degli object creati da [`crypto.createDiffieHellman()`][], ma non consente di cambiare le chiavi (con [`diffieHellman.setPublicKey()`][] per esempio). Il vantaggio dell'utilizzo di questo metodo è che le parti non devono generare né scambiare preventivamente un modulo di gruppo, risparmiando tempo per il processore e la comunicazione.
 
-Example (obtaining a shared secret):
+Esempio (ottenendo una chiave segreta condivisa):
 
 ```js
 const crypto = require('crypto');
@@ -1504,7 +1504,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* aliceSecret e bobSecret dovrebbero essere uguali */
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1514,7 +1514,7 @@ console.log(aliceSecret === bobSecret);
 added: v10.0.0
 -->
 
-- Returns: {boolean} `true` if and only if a FIPS compliant crypto provider is currently in use.
+- Restituisce: {boolean} `true` se e solo se è attualmente in uso un provider crittografico conforme alle norme FIPS.
 
 ### crypto.getHashes()
 
@@ -1522,9 +1522,9 @@ added: v10.0.0
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
+- Restituisce: {string[]} Un array dei nomi degli algoritmi hash supportati, come ad esempio `'RSA-SHA256'`.
 
-Example:
+Esempio:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1559,9 +1559,9 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Fornisce un'implementazione asincrona della Password-Based Key Derivation Function 2 (PBKDF2). Viene applicato un algoritmo dell'HMAC digest selezionato specificato da `digest` per derivare una chiave della lunghezza di byte richiesta (`keylen`) dalla `password`, dal `salt` e dalle `iterations`.
 
-The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs while deriving the key, `err` will be set; otherwise `err` will be `null`. By default, the successfully generated `derivedKey` will be passed to the callback as a [`Buffer`][]. An error will be thrown if any of the input arguments specify invalid values or types.
+La funzione `callback` fornita viene chiamata con due argomenti: `err` e `derivedKey`. Se si verifica un errore durante la derivazione della chiave, verrà impostato `err`; in caso contrario `err` sarà `null`. Di default, la `derivedKey` generata correttamente verrà passata al callback come un [`Buffer`][]. Se uno qualsiasi degli argomenti d'input specifica valori o tipi non validi verrà generato un errore.
 
 The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
