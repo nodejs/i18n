@@ -727,7 +727,7 @@ added: v0.11.14
 
 Imposta la chiave privata EC Diffie-Hellman. L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la private key, viene generato e impostato nel `ECDH` object anche il public point (key) associato.
+Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la chiave privata, viene generato e impostato nel `ECDH` object anche il punto (chiave) pubblico associato.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -741,9 +741,9 @@ deprecated: v5.2.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta l'EC Diffie-Hellman public key (chiave pubblica). L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
+Imposta la chiave pubblica EC Diffie-Hellman. L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-Da notare che normalmente non esiste un motivo per chiamare questo metodo poiché `ECDH` richiede solo una private key (chiave privata) e una public key (chiave pubblica) dell'altra parte per calcolare la chiave segreta condivisa. Solitamente viene chiamato [`ecdh.generateKeys()`][] oppure [`ecdh.setPrivateKey()`][]. Il metodo [`ecdh.setPrivateKey()`][] tenta di generare il/la public point/key (punto/chiave pubblico/a) associato/a alla private key (chiave privata) impostata.
+Da notare che normalmente non esiste un motivo per chiamare questo metodo poiché `ECDH` richiede solo una chiave privata e la chiave pubblica dell'altra parte per calcolare la chiave segreta condivisa. Solitamente viene chiamato [`ecdh.generateKeys()`][] oppure [`ecdh.setPrivateKey()`][]. Il metodo [`ecdh.setPrivateKey()`][] tenta di generare il punto pubblico/la chiave pubblica associati alla chiave privata impostata.
 
 Esempio (ottenendo una chiave segreta condivisa):
 
@@ -1020,8 +1020,8 @@ Calcola la firma su tutti i dati passati utilizzando [`sign.update()`][] oppure 
 
 L'argomento `privateKey` può essere un object o una stringa. Se `privateKey` è una stringa, viene trattato come una raw key senza passphrase (frase d'accesso). Se `privateKey` è un object, deve contenere una o più delle seguenti proprietà:
 
-- `key`: {string} - Private key (chiave privata) con codifica PEM (obbligatoria)
-- `passphrase`: {string} - passphrase (frase d'accesso) per la private key (chiave privata)
+- `key`: {string} - Chiave privata con codifica PEM (obbligatoria)
+- `passphrase`: {string} - passphrase (frase d'accesso) per la chiave privata
 - `padding`: {integer} - Valore padding opzionale per RSA, può essere uno dei seguenti:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (valore di default)
