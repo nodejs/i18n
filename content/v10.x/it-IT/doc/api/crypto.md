@@ -530,7 +530,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Restituisce la Diffie-Hellman private key (chiave privata) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+Restituisce la Diffie-Hellman private key (chiave privata) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getPublicKey([encoding])
 
