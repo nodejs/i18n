@@ -1231,9 +1231,9 @@ L'argomento `options` controlla il comportamento dello stream ed è facoltativo 
 
 L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray`, o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
 ### crypto.createCredentials(details)
 
@@ -1242,14 +1242,14 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`tls.createSecureContext()`][].
 
-- `details` {Object} Identical to [`tls.createSecureContext()`][].
-- Returns: {tls.SecureContext}
+- `details` {Object} Identico a [`tls.createSecureContext()`][].
+- Restituisce: {tls.SecureContext}
 
-The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+Il metodo `crypto.createCredentials()` è una funzione obsoleta per la creazione e la restituzione di un `tls.SecureContext`. Non dovrebbe essere usato. Sostituiscilo con [`tls.createSecureContext()`][] che ha gli stessi identici argomenti e lo stesso valore di return.
 
-Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
+Restituisce un `tls.SecureContext`, come se [`tls.createSecureContext()`][] fosse stato chiamato.
 
 ### crypto.createDecipher(algorithm, password[, options])
 
@@ -1258,20 +1258,20 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`crypto.createDecipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Restituisce: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea e restituisce un `Decipher` object che utilizza l'`algorithm` e la `password` (chiave) specificati.
 
 L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+L'implementazione di `crypto.createDecipher()` deriva le chiavi utilizzando la funzione OpenSSL [`EVP_BytesToKey`][] con l'algoritmo digest impostato su MD5, una iterazione e nessun salt. La mancanza di salt consente attacchi a dizionario poiché la stessa password crea sempre la stessa chiave. Il basso numero di iterazioni e l'algoritmo hash, non crittograficamente sicuro, permettono di testare le password molto rapidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+In linea con la raccomandazione di OpenSSL di utilizzare PBKDF2 invece di [`EVP_BytesToKey`][], si consiglia agli sviluppatori di derivare una chiave e l'IV autonomamente utilizzando [`crypto.pbkdf2()`][] e di utilizzare [`crypto.createDecipheriv()`][] per creare il `Decipher` object.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1289,17 +1289,17 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Restituisce: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea e restituisce un `Decipher` object che utilizza l'`algorithm`, la `key` e il vettore di inizializzazione (`iv`) specificati.
 
 L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
+L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray`, o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
