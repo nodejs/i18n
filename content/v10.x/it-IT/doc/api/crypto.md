@@ -1655,9 +1655,9 @@ added: v0.11.14
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
-Decrypts `buffer` with `privateKey`.
+Decifra il `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`privateKey` può essere un object oppure una stringa. Se la `privateKey` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_OAEP_PADDING`.
 
 ### crypto.privateEncrypt(privateKey, buffer)
 
@@ -1666,15 +1666,15 @@ added: v1.1.0
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Una chiave privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto cifrato.
 
-Encrypts `buffer` with `privateKey`.
+Codifica il `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`privateKey` può essere un object oppure una stringa. Se la `privateKey` è una stringa, viene considerata come come una chiave senza passphrase e utilizzerà `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
 
@@ -1683,17 +1683,17 @@ added: v1.1.0
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Una chiave pubblica o privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
-Decrypts `buffer` with `key`.
+Decifra il `buffer` con la `key`.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`key` può essere un object oppure una stringa. Se la `key` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Poiché le chiavi pubbliche RSA possono essere derivate da chiavi private, potrebbe essere passata una chiave privata al posto della chiave pubblica.
 
 ### crypto.publicEncrypt(key, buffer)
 
@@ -1702,17 +1702,17 @@ added: v0.11.14
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Una chiave pubblica o privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto cifrato.
 
-Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with encrypted content.
+Codifica il contenuto di `buffer` con la `key` e restituisce un nuovo [`Buffer`][] con il contenuto cifrato.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`key` può essere un object oppure una stringa. Se la `key` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_OAEP_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Poiché le chiavi pubbliche RSA possono essere derivate da chiavi private, potrebbe essere passata una chiave privata al posto della chiave pubblica.
 
 ### crypto.randomBytes(size[, callback])
 
@@ -1730,11 +1730,11 @@ changes:
 - `callback` {Function} 
   - `err` {Error}
   - `buf` {Buffer}
-- Returns: {Buffer} if the `callback` function is not provided.
+- Restituisce: {Buffer} se non viene fornita la funzione `callback`.
 
-Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
+Genera dati pseudo casuali crittograficamente forti. L'argomento `size` è un numero che indica il numero di byte da generare.
 
-If a `callback` function is provided, the bytes are generated asynchronously and the `callback` function is invoked with two arguments: `err` and `buf`. If an error occurs, `err` will be an `Error` object; otherwise it is `null`. The `buf` argument is a [`Buffer`][] containing the generated bytes.
+Se viene fornita una funzione `callback`, i byte vengono generati in modo asincrono e la funzione `callback` viene invocata con due argomenti: `err` e `buf`. If an error occurs, `err` will be an `Error` object; otherwise it is `null`. The `buf` argument is a [`Buffer`][] containing the generated bytes.
 
 ```js
 // Asynchronous
