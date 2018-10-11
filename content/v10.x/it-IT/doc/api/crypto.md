@@ -1324,7 +1324,7 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Crea uno schambio di chiavi `DiffieHellman` utilizzando il `prime` fornito e un `generator` specifico opzionale.
+Crea un `DiffieHellman` key exchange object utilizzando il `prime` fornito e un `generator` specifico opzionale.
 
 L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
@@ -1353,7 +1353,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Crea un Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object utilizzando una curva predefinita specificata dalla stringa `curveName`. Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1363,13 +1363,13 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hash}
+- Restituisce: {Hash}
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
+Crea e restituisce un `Hash` object che può essere utilizzato per generare degli hash digest tramite l'`algorithm` specificato. L'argomento `options` opzionale controlla il comportamento dello stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+L'`algorithm` dipende dagli algoritmi disponibili supportati dalla versione OpenSSL sulla piattaforma. Alcuni esempi sono `'sha256'`, `'sha512'`, ecc. Nelle versioni OpenSSl recenti, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi digest disponibili.
 
-Example: generating the sha256 sum of a file
+Esempio: generazione della somma sha256 di un file
 
 ```js
 const filename = process.argv[2];
@@ -1398,15 +1398,15 @@ added: v0.1.94
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hmac}
+- Restituisce: {Hmac}
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
+Crea e restituisce un `Hmac` object che utilizza l'`algorithm` e la `key` specificati. L'argomento `options` opzionale controlla il comportamento dello stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+L'`algorithm` dipende dagli algoritmi disponibili supportati dalla versione OpenSSL sulla piattaforma. Alcuni esempi sono `'sha256'`, `'sha512'`, ecc. Nelle versioni OpenSSl recenti, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi digest disponibili.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+La `key` è la chiave HMAC utilizzata per generare l'hash crittografico HMAC.
 
-Example: generating the sha256 HMAC of a file
+Esempio: generazione dell'HMAC sha256 di un file
 
 ```js
 const filename = process.argv[2];
@@ -1434,9 +1434,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Sign}
+- Restituisce: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea e restituisce un `Sign` object che utilizza l'`algorithm` specificato. Utilizza [`crypto.getHashes()`][] per ottenere un array di nomi degli algoritmi per la firma disponibili. L'argomento `options` opzionale controlla il comportamento di `stream.Writable`.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1446,9 +1446,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Verify}
+- Restituisce: {Verify}
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea e restituisce un `Verify` object che utilizza l'algoritmo specificato. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.getCiphers()
 
