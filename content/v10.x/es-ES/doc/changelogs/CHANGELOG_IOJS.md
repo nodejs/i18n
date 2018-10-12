@@ -620,26 +620,26 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`2ba84606a6`](https://github.com/nodejs/node/commit/2ba84606a6)] - **path**: afirmar los argumentos path.join() por igual (Phillip Johnsen) [#2159](https://github.com/nodejs/node/pull/2159)
 * [[`bd01603201`](https://github.com/nodejs/node/commit/bd01603201)] - **readline**: fix freeze if `keypress` event throws (Alex Kocharin) [#2107](https://github.com/nodejs/node/pull/2107)
 * [[`59f6b5da2a`](https://github.com/nodejs/node/commit/59f6b5da2a)] - **repl**: Prevent crash when tab-completed with Proxy (Sakthipriyan Vairamani) [#2120](https://github.com/nodejs/node/pull/2120)
-* [[`cf14a2427c`](https://github.com/nodejs/node/commit/cf14a2427c)] - **(SEMVER-MINOR)** **src**: add --track-heap-objects (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135)
-* [[`2b4b600660`](https://github.com/nodejs/node/commit/2b4b600660)] - **test**: fix test-debug-port-from-cmdline (João Reis) [#2186](https://github.com/nodejs/node/pull/2186)
+* [[`cf14a2427c`](https://github.com/nodejs/node/commit/cf14a2427c)] - **(SEMVER-MINOR)** **src**: añadir --track-heap-objects (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135)
+* [[`2b4b600660`](https://github.com/nodejs/node/commit/2b4b600660)] - **test**: arreglar test-debug-port-from-cmdline (João Reis) [#2186](https://github.com/nodejs/node/pull/2186)
 * [[`d4ceb16da2`](https://github.com/nodejs/node/commit/d4ceb16da2)] - **test**: properly clean up temp directory (Roman Reiss) [#2164](https://github.com/nodejs/node/pull/2164)
-* [[`842eb5b853`](https://github.com/nodejs/node/commit/842eb5b853)] - **test**: add test for dgram.setTTL (Evan Lucas) [#2121](https://github.com/nodejs/node/pull/2121)
+* [[`842eb5b853`](https://github.com/nodejs/node/commit/842eb5b853)] - **test**: añadir pruebas para dgram.setTTL (Evan Lucas) [#2121](https://github.com/nodejs/node/pull/2121)
 * [[`cff7300a57`](https://github.com/nodejs/node/commit/cff7300a57)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.3.4"></a>
 
-## 2015-07-09, Version 2.3.4, @Fishrock123
+## 2015-07-09, Versión 2.3.4, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141).
-* **npm**: Upgraded to v2.12.1, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.12.0> and <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
+* **npm**: Actualizado a v2.12.1, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.12.0> y en <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -648,7 +648,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Commits
 
 * [[`0d15161c24`](https://github.com/nodejs/node/commit/0d15161c24)] - **benchmark**: Add some path benchmarks for #1778 (Nathan Woltman) [#1778](https://github.com/nodejs/node/pull/1778)
-* [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: update deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
+* [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: actualizar deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`ca93f7f2e6`](https://github.com/nodejs/node/commit/ca93f7f2e6)] - **deps**: upgrade openssl sources to 1.0.2d (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`b18c841ec1`](https://github.com/nodejs/node/commit/b18c841ec1)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
 * [[`863cdbdd08`](https://github.com/nodejs/node/commit/863cdbdd08)] - **deps**: upgrade to npm 2.12.1 (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112)
