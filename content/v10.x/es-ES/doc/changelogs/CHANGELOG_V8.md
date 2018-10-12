@@ -745,13 +745,13 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 ### Cambios Notables
 
 * **buffer**: 
-  * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+  * el buffer asignado con un contenido no válido ahora se rellenará con cero (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
-  * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+  * openssl actualizado a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 
 ### Commits
 
-* [[`b05ef978d3`](https://github.com/nodejs/node/commit/b05ef978d3)] - **buffer**: zero-fill buffer allocated with invalid content (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+* [[`b05ef978d3`](https://github.com/nodejs/node/commit/b05ef978d3)] - **buffer**: buffer asignado rellenado con cero con contenido no válido (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * [[`18652b6860`](https://github.com/nodejs/node/commit/18652b6860)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 * [[`e6c308e237`](https://github.com/nodejs/node/commit/e6c308e237)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`a85f94bd59`](https://github.com/nodejs/node/commit/a85f94bd59)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
