@@ -691,7 +691,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`e3d0e0360e`](https://github.com/nodejs/node/commit/e3d0e0360e)] - **test**: usar funciones flecha en lugar de bind (Tobias Nießen) [#17070](https://github.com/nodejs/node/pull/17070)
 * [[`f44ad16298`](https://github.com/nodejs/node/commit/f44ad16298)] - **test**: mover la prueba timing-sensitive a secuencial (Rich Trott) [#16775](https://github.com/nodejs/node/pull/16775)
 * [[`af4d74e6d0`](https://github.com/nodejs/node/commit/af4d74e6d0)] - **test**: hacer pasar la prueba REPL en modo cobertura (Anna Henningsen) [#17082](https://github.com/nodejs/node/pull/17082)
-* [[`b1bcd4fe11`](https://github.com/nodejs/node/commit/b1bcd4fe11)] - **test**: --enable-static linked executable (Daniel Bevenius) [#14986](https://github.com/nodejs/node/pull/14986)
+* [[`b1bcd4fe11`](https://github.com/nodejs/node/commit/b1bcd4fe11)] - **test**: --enable-static nodo ejecutable (Daniel Bevenius) [#14986](https://github.com/nodejs/node/pull/14986)
 * [[`621390fe65`](https://github.com/nodejs/node/commit/621390fe65)] - **test**: añadir prueba básica de WebAssembly (Steve Kinney) [#16760](https://github.com/nodejs/node/pull/16760)
 * [[`8528a5d5f0`](https://github.com/nodejs/node/commit/8528a5d5f0)] - **test**: flag conocida descompuesta (Refael Ackermann) [#16941](https://github.com/nodejs/node/pull/16941)
 * [[`3da14495c7`](https://github.com/nodejs/node/commit/3da14495c7)] - **test**: refactorizar prueba exitedAfterDisconnect (Rich Trott) [#16729](https://github.com/nodejs/node/pull/16729)
