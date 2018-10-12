@@ -366,7 +366,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`c5d83695e1`](https://github.com/nodejs/node/commit/c5d83695e1)] - **contextify**: junta los tiempos de vida del contexto & entorno de prueba (Ali Ijaz Sheikh) [#5800](https://github.com/nodejs/node/pull/5800)
 * [[`ae24d05451`](https://github.com/nodejs/node/commit/ae24d05451)] - **deps**: remover arvivos sin uso openssl (Ben Noordhuis) [#5619](https://github.com/nodejs/node/pull/5619)
 * [[`54abbe7e6f`](https://github.com/nodejs/node/commit/54abbe7e6f)] - **dns**: usar literales plantillas (Benjamin Gruenbaum) [#5809](https://github.com/nodejs/node/pull/5809)
-* [[`3fef69bf15`](https://github.com/nodejs/node/commit/3fef69bf15)] - **dns**: use isIp consistently (Benjamin Gruenbaum) [#5804](https://github.com/nodejs/node/pull/5804)
+* [[`3fef69bf15`](https://github.com/nodejs/node/commit/3fef69bf15)] - **dns**: usar isIp consistentemente (Benjamin Gruenbaum) [#5804](https://github.com/nodejs/node/pull/5804)
 * [[`d2d0fe9d34`](https://github.com/nodejs/node/commit/d2d0fe9d34)] - **doc**: update crypto docs to use good defaults (Bill Automata) [#5505](https://github.com/nodejs/node/pull/5505)
 * [[`1631f06477`](https://github.com/nodejs/node/commit/1631f06477)] - **doc**: add CTC meeting minutes 2016-02-10 (Rod Vagg) [#5273](https://github.com/nodejs/node/pull/5273)
 * [[`7ab597d646`](https://github.com/nodejs/node/commit/7ab597d646)] - **doc**: add CTC meeting minutes 2016-02-03 (Rod Vagg) [#5272](https://github.com/nodejs/node/pull/5272)
