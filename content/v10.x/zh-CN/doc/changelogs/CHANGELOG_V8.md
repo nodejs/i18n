@@ -2043,7 +2043,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   
   * Experimental support for the built-in `http2` has been added via the `--expose-http2` flag. [#14239](https://github.com/nodejs/node/pull/14239)
 
-* **Inspector**
+* **检查器**
   
   * `require()` is available in the inspector console now. [#8837](https://github.com/nodejs/node/pull/8837)
   * Multiple contexts, as created by the `vm` module, are supported now. [#14465](https://github.com/nodejs/node/pull/14465)
@@ -2837,7 +2837,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 * **File system** 
   * The `fs.exists()` function now works correctly with `util.promisify()` [[`6e0eccd7a1`](https://github.com/nodejs/node/commit/6e0eccd7a1)] [#13316](https://github.com/nodejs/node/pull/13316).
   * fs.Stats times are now also available as numbers [[`c756efb25a`](https://github.com/nodejs/node/commit/c756efb25a)] [#13173](https://github.com/nodejs/node/pull/13173).
-* **Inspector** 
+* **检查器** 
   * It is now possible to bind to a random port using `--inspect=0` [[`cc6ec2fb27`](https://github.com/nodejs/node/commit/cc6ec2fb27)] [#5025](https://github.com/nodejs/node/pull/5025).
 * **Zlib** 
   * A regression in the Zlib module that made it impossible to properly subclasses `zlib.Deflate` and other Zlib classes has been fixed. [[`6aeb555cc4`](https://github.com/nodejs/node/commit/6aeb555cc4)] [#13374](https://github.com/nodejs/node/pull/13374).
