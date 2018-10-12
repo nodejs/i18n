@@ -1651,7 +1651,7 @@ added: v0.11.14
 - `privateKey` {Object | string} 
   - `key` {string} Una chiave privata con codifica PEM.
   - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
-  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING` o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
