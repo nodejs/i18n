@@ -1598,7 +1598,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`830949c8b0`](https://github.com/nodejs/node/commit/830949c8b0)] - **test**: usar JSON.stringify para activar al stack overflow (Yang Guo) [#12481](https://github.com/nodejs/node/pull/12481)
 * [[`50bfb28960`](https://github.com/nodejs/node/commit/50bfb28960)] - **test**: se removió console.log de test-net-localport (Faiz Halde) [#12483](https://github.com/nodejs/node/pull/12483)
 * [[`768431cac8`](https://github.com/nodejs/node/commit/768431cac8)] - **test**: puerto dinámico en desconexión de worker de clúster (Sebastian Plesciuc) [#12457](https://github.com/nodejs/node/pull/12457)
-* [[`b1d26d8b55`](https://github.com/nodejs/node/commit/b1d26d8b55)] - **test**: remover usos de common.PORT en pruebas test-tls-client (Ahmed Taj elsir) [#12461](https://github.com/nodejs/node/pull/12461)
+* [[`b1d26d8b55`](https://github.com/nodejs/node/commit/b1d26d8b55)] - **test**: remover usos de common.PORT en pruebas de test-tls-client (Ahmed Taj elsir) [#12461](https://github.com/nodejs/node/pull/12461)
 * [[`ce3b544360`](https://github.com/nodejs/node/commit/ce3b544360)] - **test**: puerto dinámico en envío de worker de clúster (Sebastian Plesciuc) [#12472](https://github.com/nodejs/node/pull/12472)
 * [[`a755ef0634`](https://github.com/nodejs/node/commit/a755ef0634)] - **test**: incrementar cobertura para buffer.js (Rich Trott) [#12476](https://github.com/nodejs/node/pull/12476)
 * [[`a4b092c8f3`](https://github.com/nodejs/node/commit/a4b092c8f3)] - **test**: completar cobertura de lib/child_process.js (cjihrig) [#12367](https://github.com/nodejs/node/pull/12367)
