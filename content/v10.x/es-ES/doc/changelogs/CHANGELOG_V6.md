@@ -1566,7 +1566,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`ad29e295b7`](https://github.com/nodejs/node/commit/ad29e295b7)] - **doc**: la versión de gcc es al menos 4.8.5 en BUILDING.md (detailyang) [#11840](https://github.com/nodejs/node/pull/11840)
 * [[`f2230cc0b5`](https://github.com/nodejs/node/commit/f2230cc0b5)] - **eslint**: remover enlace simbólico muerto y sin uso (Sam Roberts)
 * [[`ae1f6fd03a`](https://github.com/nodejs/node/commit/ae1f6fd03a)] - **fs**: re-enable watch facility in AIX (Gireesh Punathil) [#10085](https://github.com/nodejs/node/pull/10085)
-* [[`6e6e63a341`](https://github.com/nodejs/node/commit/6e6e63a341)] - **lib**: fix typo in comments in module.js (WORMSS) [#12528](https://github.com/nodejs/node/pull/12528)
+* [[`6e6e63a341`](https://github.com/nodejs/node/commit/6e6e63a341)] - **lib**: corregir errores tipográficos en comentarios en module.js (WORMSS) [#12528](https://github.com/nodejs/node/pull/12528)
 * [[`f20ebf29f6`](https://github.com/nodejs/node/commit/f20ebf29f6)] - **meta**: update authors list (Aashil Patel) [#11533](https://github.com/nodejs/node/pull/11533)
 * [[`b7ca74866b`](https://github.com/nodejs/node/commit/b7ca74866b)] - **meta**: move the Code of Conduct to TSC repository (James M Snell) [#12147](https://github.com/nodejs/node/pull/12147)
 * [[`1bd07acbd1`](https://github.com/nodejs/node/commit/1bd07acbd1)] - **net**: refactor onSlaveClose in Server.close (Claudio Rodriguez) [#12334](https://github.com/nodejs/node/pull/12334)
