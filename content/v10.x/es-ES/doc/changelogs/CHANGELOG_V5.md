@@ -341,8 +341,8 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`82a50d3def`](https://github.com/nodejs/node/commit/82a50d3def)] - **test**: mover prueba dns a prueba/internet (Ben Noordhuis) [#5905](https://github.com/nodejs/node/pull/5905)
 * [[`fb0c5bcac2`](https://github.com/nodejs/node/commit/fb0c5bcac2)] - **test**: reparar test-http-set-timeout flaky (Rich Trott) [#5856](https://github.com/nodejs/node/pull/5856)
 * [[`8344a522a8`](https://github.com/nodejs/node/commit/8344a522a8)] - **test**: reparar test-debugger-client.js (Rich Trott) [#5851](https://github.com/nodejs/node/pull/5851)
-* [[`7ec5397954`](https://github.com/nodejs/node/commit/7ec5397954)] - **timers**: fixing API refs to use safe internal refs (Kyle Simpson) [#5882](https://github.com/nodejs/node/pull/5882)
-* [[`cb676cf3e7`](https://github.com/nodejs/node/commit/cb676cf3e7)] - **tools**: fix json doc generation (firedfox) [#5943](https://github.com/nodejs/node/pull/5943)
+* [[`7ec5397954`](https://github.com/nodejs/node/commit/7ec5397954)] - **timers**: reparar los API refs para que usen refs de seguridad internos (Kyle Simpson) [#5882](https://github.com/nodejs/node/pull/5882)
+* [[`cb676cf3e7`](https://github.com/nodejs/node/commit/cb676cf3e7)] - **tools**: reparar la generación de documentos json (firedfox) [#5943](https://github.com/nodejs/node/pull/5943)
 * [[`77bed269ad`](https://github.com/nodejs/node/commit/77bed269ad)] - **win,build**: build and test add-ons on test-ci (Bogdan Lobor) [#5886](https://github.com/nodejs/node/pull/5886)
 * [[`afcd276ecc`](https://github.com/nodejs/node/commit/afcd276ecc)] - **zlib**: Fix handling of gzip magic bytes mid-file (Anna Henningsen) [#5863](https://github.com/nodejs/node/pull/5863)
 
