@@ -1605,7 +1605,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`4786ad7024`](https://github.com/nodejs/node/commit/4786ad7024)] - **test**: buffer siempre debería estar stringificado (Luca Maraschi) [#12355](https://github.com/nodejs/node/pull/12355)
 * [[`04ec97e39a`](https://github.com/nodejs/node/commit/04ec97e39a)] - **test**: usar puerto dinámico en test-cluster-bind-twice (Rich Trott) [#12418](https://github.com/nodejs/node/pull/12418)
 * [[`3244ae36da`](https://github.com/nodejs/node/commit/3244ae36da)] - **test**: remover common.PORT de test-cluster*.js (Tarun Batra) [#12441](https://github.com/nodejs/node/pull/12441)
-* [[`384fa17ffa`](https://github.com/nodejs/node/commit/384fa17ffa)] - **test**: usar puerto dinámico en 3 pruebas test-cluster-worker (Sebastian Plesciuc) [#12443](https://github.com/nodejs/node/pull/12443)
+* [[`384fa17ffa`](https://github.com/nodejs/node/commit/384fa17ffa)] - **test**: usar puerto dinámico en 3 pruebas de test-cluster-worker (Sebastian Plesciuc) [#12443](https://github.com/nodejs/node/pull/12443)
 * [[`d54d0c4cdc`](https://github.com/nodejs/node/commit/d54d0c4cdc)] - **test**: añadir --use-bundled-ca a tls-cnnic-whitelist (Daniel Bevenius) [#12394](https://github.com/nodejs/node/pull/12394)
 * [[`0caca45434`](https://github.com/nodejs/node/commit/0caca45434)] - **test**: añadir chequeo de crypto a crypto-lazy-transform (Daniel Bevenius) [#12424](https://github.com/nodejs/node/pull/12424)
 * [[`861fa65bdf`](https://github.com/nodejs/node/commit/861fa65bdf)] - **(SEMVER-MINOR)** **test**: hacer que las pruebas tls-socket-default-options se ejecuten (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
