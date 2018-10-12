@@ -109,11 +109,11 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 
 Node.js当前支持的字符编码包括：
 
-* `'ascii'` - 仅支持 7 位 ASCII 数据。 如果设置剥离高位的话，这种编码是非常快的。
+* `'ascii'` - 仅支持 7 位 ASCII 数据。 此编码速度很快，而且一旦设置，会剥离高位。
 
 * `'utf8'` - 多字节编码的 Unicode 字符。 很多网页或者其它文档的编码格式都是使用 UTF-8 的。
 
-* `'utf16le'` - 2 或 4 个字节，小端字节序编码的 Unicode 字符。 支持代理对（(U+10000 到 U+10FFFF) ）。
+* `'utf16le'` - 2 或 4 个字节，小端字节编码的 Unicode 字符。 支持代理对（(U+10000 到 U+10FFFF) ）。
 
 * `'ucs2'` - `'utf16le'` 的别名。
 
@@ -125,7 +125,7 @@ Node.js当前支持的字符编码包括：
 
 * `'hex'` - 将每个字节编码为两个十六进制字符。
 
-现代网站浏览器遵循 [WHATWG 编码标准](https://encoding.spec.whatwg.org/)，将 `'latin1'` 和 `'ISO-8859-1'` 定为 `'win-1252'` 的别名。 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 `'win-1252'` 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
+现代浏览器遵循 [WHATWG 编码标准](https://encoding.spec.whatwg.org/)，将 `'latin1'` 和 `'ISO-8859-1'` 定为 `'win-1252'` 的别名。 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 `'win-1252'` 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
 
 ## Buffers 和 TypedArray
 
@@ -137,7 +137,7 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` 实例也是 [`Uint8Array`] 实例。 但是与[`TypedArray`] 存在微妙的不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
+`Buffer` 实例也是 [`Uint8Array`] 实例。 但是与[`TypedArray`] 存在微妙的不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
 
 遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
@@ -145,7 +145,7 @@ changes:
 
 2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含一个元素 `[0x1020304]` 或 `[0x4030201]` 的 [`Uint32Array`]。
 
-也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享同一分配内存的 `Buffer`。
+也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享相同已分配内存的 `Buffer`。
 
 ```js
 const arr = new Uint16Array(2);
@@ -271,9 +271,9 @@ changes:
 * `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`。
 * `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`。
 
-该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的分配内存。
+该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-可选的 `byteOffset` 和 `length` 参数指定将与 `Buffer` 共享的 `arrayBuffer` 的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
 ```js
 const arr = new Uint16Array(2);
@@ -356,9 +356,9 @@ changes:
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-分配一个大小为 `size` 字节的新建 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
-在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用[`Buffer.alloc(size)`][`Buffer.alloc()`] 代替它去使用 0 初始化 `Buffer`。
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用[`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化
 
 ```js
 const buf = new Buffer(10);
