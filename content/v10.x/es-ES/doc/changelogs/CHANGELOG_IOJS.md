@@ -491,40 +491,40 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`ba9ccf227e`](https://github.com/nodejs/node/commit/ba9ccf227e)] - **node**: remove redundant --use-old-buffer (Rod Vagg) [#2275](https://github.com/nodejs/node/pull/2275)
 * [[`ef65321083`](https://github.com/nodejs/node/commit/ef65321083)] - **(SEMVER-MAJOR)** **node**: no anular `message`/`stack` de error (Fedor Indutny) [#2108](https://github.com/nodejs/node/pull/2108)
 * [[`9f727f5e03`](https://github.com/nodejs/node/commit/9f727f5e03)] - **node-gyp**: detect RC build with x.y.z-rc.n format (Rod Vagg) [#2171](https://github.com/nodejs/node/pull/2171)
-* [[`e52f963632`](https://github.com/nodejs/node/commit/e52f963632)] - **node-gyp**: download header tarball for compile (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
+* [[`e52f963632`](https://github.com/nodejs/node/commit/e52f963632)] - **node-gyp**: descargar el tarball de cabecera para compilar (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
 * [[`902c9ca51d`](https://github.com/nodejs/node/commit/902c9ca51d)] - **node-gyp**: make aware of nightly, next-nightly & rc (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
-* [[`4cffaa3f55`](https://github.com/nodejs/node/commit/4cffaa3f55)] - **(SEMVER-MINOR)** **readline**: allow tabs in input (Rich Trott) [#1761](https://github.com/nodejs/node/pull/1761)
+* [[`4cffaa3f55`](https://github.com/nodejs/node/commit/4cffaa3f55)] - **(SEMVER-MINOR)** **readline**: permitir pestañas en entradas (Rich Trott) [#1761](https://github.com/nodejs/node/pull/1761)
 * [[`ed6c249104`](https://github.com/nodejs/node/commit/ed6c249104)] - **(SEMVER-MAJOR)** **repl**: persist history in plain text (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
 * [[`f7d5e4c618`](https://github.com/nodejs/node/commit/f7d5e4c618)] - **(SEMVER-MINOR)** **repl**: default persistence to ~/.node_repl_history (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
 * [[`ea05e760cd`](https://github.com/nodejs/node/commit/ea05e760cd)] - **repl**: don't clobber RegExp.$ properties (Sakthipriyan Vairamani) [#2137](https://github.com/nodejs/node/pull/2137)
 * [[`d20093246b`](https://github.com/nodejs/node/commit/d20093246b)] - **src**: disable vector ICs on arm (Michaël Zasso) [#2220](https://github.com/nodejs/node/pull/2220)
-* [[`04fd4fad46`](https://github.com/nodejs/node/commit/04fd4fad46)] - **(SEMVER-MINOR)** **src**: introduce process.release object (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154)
-* [[`9d34bd1147`](https://github.com/nodejs/node/commit/9d34bd1147)] - **src**: increment NODE_MODULE_VERSION to 45 (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096)
-* [[`ceee8d2807`](https://github.com/nodejs/node/commit/ceee8d2807)] - **test**: add tests for persistent repl history (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
-* [[`8e1a8ffe24`](https://github.com/nodejs/node/commit/8e1a8ffe24)] - **test**: remove two obsolete pummel tests (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
-* [[`ae731ec0fa`](https://github.com/nodejs/node/commit/ae731ec0fa)] - **test**: don't use arguments.callee (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
-* [[`21d31c08e7`](https://github.com/nodejs/node/commit/21d31c08e7)] - **test**: remove obsolete harmony flags (Chris Dickinson)
-* [[`64cf71195c`](https://github.com/nodejs/node/commit/64cf71195c)] - **test**: change the hostname to an invalid name (Sakthipriyan Vairamani) [#2287](https://github.com/nodejs/node/pull/2287)
-* [[`80a1cf7425`](https://github.com/nodejs/node/commit/80a1cf7425)] - **test**: fix messages and use return to skip tests (Sakthipriyan Vairamani) [#2290](https://github.com/nodejs/node/pull/2290)
-* [[`d5ab92bcc1`](https://github.com/nodejs/node/commit/d5ab92bcc1)] - **test**: use common.isWindows consistently (Sakthipriyan Vairamani) [#2269](https://github.com/nodejs/node/pull/2269)
-* [[`bc733f7065`](https://github.com/nodejs/node/commit/bc733f7065)] - **test**: fix fs.readFile('/dev/stdin') tests (Ben Noordhuis) [#2265](https://github.com/nodejs/node/pull/2265)
+* [[`04fd4fad46`](https://github.com/nodejs/node/commit/04fd4fad46)] - **(SEMVER-MINOR)** **src**: introducir el objeto process.release (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154)
+* [[`9d34bd1147`](https://github.com/nodejs/node/commit/9d34bd1147)] - **src**: incrementar NODE_MODULE_VERSION a 45 (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096)
+* [[`ceee8d2807`](https://github.com/nodejs/node/commit/ceee8d2807)] - **test**: añadir pruebas para la historia de repl persistente (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
+* [[`8e1a8ffe24`](https://github.com/nodejs/node/commit/8e1a8ffe24)] - **test**: eliminar dos pruebas de pummel obsoletas (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
+* [[`ae731ec0fa`](https://github.com/nodejs/node/commit/ae731ec0fa)] - **test**: no utilizar arguments.callee (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
+* [[`21d31c08e7`](https://github.com/nodejs/node/commit/21d31c08e7)] - **test**: eliminar banderas de armonía obsoletas (Chris Dickinson)
+* [[`64cf71195c`](https://github.com/nodejs/node/commit/64cf71195c)] - **test**: cambiar el nombre del host a un nombre inválido (Sakthipriyan Vairamani) [#2287](https://github.com/nodejs/node/pull/2287)
+* [[`80a1cf7425`](https://github.com/nodejs/node/commit/80a1cf7425)] - **test**: corregir mensajes y utilizar volver para saltarse las pruebas (Sakthipriyan Vairamani) [#2290](https://github.com/nodejs/node/pull/2290)
+* [[`d5ab92bcc1`](https://github.com/nodejs/node/commit/d5ab92bcc1)] - **test**: utilizar common.isWindows consistentemente (Sakthipriyan Vairamani) [#2269](https://github.com/nodejs/node/pull/2269)
+* [[`bc733f7065`](https://github.com/nodejs/node/commit/bc733f7065)] - **test**: arreglar las pruebas fs.readFile('/dev/stdin') (Ben Noordhuis) [#2265](https://github.com/nodejs/node/pull/2265)
 * [[`3cbb5870e5`](https://github.com/nodejs/node/commit/3cbb5870e5)] - **tools**: expose skip output to test runner (Johan Bergström) [#2130](https://github.com/nodejs/node/pull/2130)
-* [[`3b021efe11`](https://github.com/nodejs/node/commit/3b021efe11)] - **vm**: fix symbol access (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
-* [[`7b81e4ba36`](https://github.com/nodejs/node/commit/7b81e4ba36)] - **vm**: remove unnecessary access checks (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
+* [[`3b021efe11`](https://github.com/nodejs/node/commit/3b021efe11)] - **vm**: corregir el acceso a los símbolos (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
+* [[`7b81e4ba36`](https://github.com/nodejs/node/commit/7b81e4ba36)] - **vm**: eliminar las verificaciones de acceso innecesarias (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
 * [[`659dadd410`](https://github.com/nodejs/node/commit/659dadd410)] - **vm**: fix property descriptors of sandbox properties (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
 * [[`9bac1dbae9`](https://github.com/nodejs/node/commit/9bac1dbae9)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.5.0"></a>
 
-## 2015-07-28, Version 2.5.0, @cjihrig
+## 2015-07-28, Versión 2.5.0, @cjihrig
 
-### Notable changes
+### Cambios notables
 
-* **https**: TLS sessions in Agent are reused (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
-* **src**: base64 decoding is now 50% faster (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
-* **npm**: Upgraded to v2.13.2, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
+* **https**: Se reutilizar las sesiones TLS en Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
+* **src**: la decodificación base64 ahora es 50% más rápida (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
+* **npm**: Actualizado a v2.13.2, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -583,13 +583,13 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ## 2015-07-17, Version 2.4.0, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **src**: Added a new `--track-heap-objects` flag to track heap object allocations for heap snapshots (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135).
 * **readline**: Fixed a freeze that affected the repl if the keypress event handler threw (Alex Kocharin) [#2107](https://github.com/nodejs/node/pull/2107).
 * **npm**: Upgraded to v2.13.0, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.0> (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152).
 
-### Known issues
+### Problemas conocidos
 
 See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
@@ -635,7 +635,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141).
 * **npm**: Upgraded to v2.12.1, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.12.0> and <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
 
-### Known issues
+### Problemas conocidos
 
 See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
@@ -673,7 +673,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) [#2141](https://github.com/nodejs/node/pull/2141).
 
-### Known issues
+### Problemas conocidos
 
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
