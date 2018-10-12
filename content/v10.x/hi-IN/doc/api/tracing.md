@@ -1,4 +1,4 @@
-# Trace Events
+# ट्रेस घटनाक्रम
 
 <!--introduced_in=v7.7.0-->
 
