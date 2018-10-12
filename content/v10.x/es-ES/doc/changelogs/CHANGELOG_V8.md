@@ -727,22 +727,22 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`38b0da7fab`](https://github.com/nodejs/node/commit/38b0da7fab)] - **tools,test**: usar "Execute" en lugar de check_output (Refael Ackermann) [#17381](https://github.com/nodejs/node/pull/17381)
 * [[`6fa51d6198`](https://github.com/nodejs/node/commit/6fa51d6198)] - **tty**: corregir regresión del evento 'resize' (Ben Noordhuis) [#16225](https://github.com/nodejs/node/pull/16225)
 * [[`5ee05f2187`](https://github.com/nodejs/node/commit/5ee05f2187)] - **tty**: refactorizar exportaciones (cjihrig) [#16959](https://github.com/nodejs/node/pull/16959)
-* [[`3236944761`](https://github.com/nodejs/node/commit/3236944761)] - **util**: fix negative 0 check in inspect (Gus Caplan) [#17507](https://github.com/nodejs/node/pull/17507)
-* [[`943258e093`](https://github.com/nodejs/node/commit/943258e093)] - **util**: remove check for global.process (Gus Caplan) [#17435](https://github.com/nodejs/node/pull/17435)
+* [[`3236944761`](https://github.com/nodejs/node/commit/3236944761)] - **util**: corregir check 0 negativo en "inspect" (Gus Caplan) [#17507](https://github.com/nodejs/node/pull/17507)
+* [[`943258e093`](https://github.com/nodejs/node/commit/943258e093)] - **util**: eiminar check para global.process (Gus Caplan) [#17435](https://github.com/nodejs/node/pull/17435)
 
 <a id="8.9.3"></a>
 
-## 2017-12-08, Version 8.9.3 'Carbon' (LTS), @MylesBorins
+## 2017-12-08, Versión 8.9.3 'Carbon' (LTS), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
+Esta es una versión de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la versión de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para obtener detalles sobre las vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 * CVE-2017-15896
 * CVE-2017-15897
-* CVE-2017-3738 (from the openssl project)
+* CVE-2017-3738 (del proyecto openssl)
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
