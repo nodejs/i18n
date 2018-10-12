@@ -769,34 +769,34 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`7d68488524`](https://github.com/nodejs/node/commit/7d68488524)] - **openssl**: corregir el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`8e8fac29de`](https://github.com/nodejs/node/commit/8e8fac29de)] - **src**: corregir advertencia de -Winconsistent-missing-override (Ben Noordhuis) [#16726](https://github.com/nodejs/node/pull/16726)
 * [[`26b43c87ee`](https://github.com/nodejs/node/commit/26b43c87ee)] - **src**: añadir método para calcular el almacenamiento en WriteWrap (Anna Henningsen) [#16727](https://github.com/nodejs/node/pull/16727)
-* [[`99d775ca07`](https://github.com/nodejs/node/commit/99d775ca07)] - **test**: fix flaky test-http2-create-client-connect (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`99d775ca07`](https://github.com/nodejs/node/commit/99d775ca07)] - **test**: corregir test-http2-create-client-connect descompuesta (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 
 <a id="8.9.2"></a>
 
-## 2017-12-05, Version 8.9.2 'Carbon' (LTS), @gibfahn
+## 2017-12-05, Versión 8.9.2 'Carbon' (LTS), @gibfahn
 
-### Notable Changes
+### Cambios Notables
 
 * **console**: 
-  * avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
+  * evitar añadir infinitos listeners de errores (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
 * **http2**: 
-  * improve errors thrown in header validation (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
+  * mejorar errores arrojados en la validación de cabecera (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
 
 ### Commits
 
-* [[`1bf6250b99`](https://github.com/nodejs/node/commit/1bf6250b99)] - doc : mention constant-time in crypto doc (Mithun Sasidharan) [#16604](https://github.com/nodejs/node/pull/16604)
-* [[`585f8698af`](https://github.com/nodejs/node/commit/585f8698af)] - **build**: include src\tracing when linting on win (Daniel Bevenius) [#16720](https://github.com/nodejs/node/pull/16720)
-* [[`d9a18beaa6`](https://github.com/nodejs/node/commit/d9a18beaa6)] - **build**: suppress lint-md output (Gibson Fahnestock) [#16551](https://github.com/nodejs/node/pull/16551)
-* [[`4e848d4afb`](https://github.com/nodejs/node/commit/4e848d4afb)] - **build**: add missing comma in sources list (Daniel Bevenius) [#16613](https://github.com/nodejs/node/pull/16613)
-* [[`9df1e8f10e`](https://github.com/nodejs/node/commit/9df1e8f10e)] - **console**: avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
-* [[`7ba037592d`](https://github.com/nodejs/node/commit/7ba037592d)] - **deps**: cherry-pick cc55747 from V8 upstream (Franziska Hinkelmann) [#16890](https://github.com/nodejs/node/pull/16890)
-* [[`c3c9a8d4bf`](https://github.com/nodejs/node/commit/c3c9a8d4bf)] - **doc**: recommend node-core-utils for metadata (Rich Trott) [#16978](https://github.com/nodejs/node/pull/16978)
-* [[`891ddad93c`](https://github.com/nodejs/node/commit/891ddad93c)] - **doc**: fix typo in http2 doc (Gus Caplan) [#16993](https://github.com/nodejs/node/pull/16993)
-* [[`ccd36467f8`](https://github.com/nodejs/node/commit/ccd36467f8)] - **doc**: reorganize COLLABORATOR_GUIDE.md (Rich Trott) [#15710](https://github.com/nodejs/node/pull/15710)
-* [[`8f0793ff93`](https://github.com/nodejs/node/commit/8f0793ff93)] - **doc**: clarify the prerequisites for building with VS2017 (Nikolai Vavilov) [#16903](https://github.com/nodejs/node/pull/16903)
-* [[`6e7a444a91`](https://github.com/nodejs/node/commit/6e7a444a91)] - **doc**: outline commit message for breaking changes (Maton Anthony) [#16846](https://github.com/nodejs/node/pull/16846)
-* [[`6eb550da34`](https://github.com/nodejs/node/commit/6eb550da34)] - **doc**: remove duplicate 'the' from http2 API doc (Vipin Menon) [#16924](https://github.com/nodejs/node/pull/16924)
-* [[`0b8a400cad`](https://github.com/nodejs/node/commit/0b8a400cad)] - **doc**: correct the spelling of omitting in dgram.md (Vidya Subramanyam) [#16910](https://github.com/nodejs/node/pull/16910)
+* [[`1bf6250b99`](https://github.com/nodejs/node/commit/1bf6250b99)] - doc : mencionar "constant-time" en crypto doc (Mithun Sasidharan) [#16604](https://github.com/nodejs/node/pull/16604)
+* [[`585f8698af`](https://github.com/nodejs/node/commit/585f8698af)] - **build**: incluir src\tracing al hacer linting en win (Daniel Bevenius) [#16720](https://github.com/nodejs/node/pull/16720)
+* [[`d9a18beaa6`](https://github.com/nodejs/node/commit/d9a18beaa6)] - **build**: suprimir la salida lint-md (Gibson Fahnestock) [#16551](https://github.com/nodejs/node/pull/16551)
+* [[`4e848d4afb`](https://github.com/nodejs/node/commit/4e848d4afb)] - **build**: añadir coma faltante en la lista de fuentes (Daniel Bevenius) [#16613](https://github.com/nodejs/node/pull/16613)
+* [[`9df1e8f10e`](https://github.com/nodejs/node/commit/9df1e8f10e)] - **console**: evitar añadir infinitos listeners de errores (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
+* [[`7ba037592d`](https://github.com/nodejs/node/commit/7ba037592d)] - **deps**: hacer cherry-pick a cc55747 desde upstream de V8 (Franziska Hinkelmann) [#16890](https://github.com/nodejs/node/pull/16890)
+* [[`c3c9a8d4bf`](https://github.com/nodejs/node/commit/c3c9a8d4bf)] - **doc**: recomendar node-core-utils para metadatos (Rich Trott) [#16978](https://github.com/nodejs/node/pull/16978)
+* [[`891ddad93c`](https://github.com/nodejs/node/commit/891ddad93c)] - **doc**: corregir error tipográfico en el doc de http2 (Gus Caplan) [#16993](https://github.com/nodejs/node/pull/16993)
+* [[`ccd36467f8`](https://github.com/nodejs/node/commit/ccd36467f8)] - **doc**: reorganizar COLLABORATOR_GUIDE.md (Rich Trott) [#15710](https://github.com/nodejs/node/pull/15710)
+* [[`8f0793ff93`](https://github.com/nodejs/node/commit/8f0793ff93)] - **doc**: aclarar los requisitos previos para compilar con VS2017 (Nikolai Vavilov) [#16903](https://github.com/nodejs/node/pull/16903)
+* [[`6e7a444a91`](https://github.com/nodejs/node/commit/6e7a444a91)] - **doc**: describir el mensaje de commit para cambios de ruptura (Maton Anthony) [#16846](https://github.com/nodejs/node/pull/16846)
+* [[`6eb550da34`](https://github.com/nodejs/node/commit/6eb550da34)] - **doc**: remover 'the' duplicado del doc de API http2 (Vipin Menon) [#16924](https://github.com/nodejs/node/pull/16924)
+* [[`0b8a400cad`](https://github.com/nodejs/node/commit/0b8a400cad)] - **doc**: corregir la ortografía de "omitting" en dgram.md (Vidya Subramanyam) [#16910](https://github.com/nodejs/node/pull/16910)
 * [[`adb8f08c36`](https://github.com/nodejs/node/commit/adb8f08c36)] - **doc**: fix a typo in the documentation (Mamatha J V) [#16909](https://github.com/nodejs/node/pull/16909)
 * [[`d721c0bb5e`](https://github.com/nodejs/node/commit/d721c0bb5e)] - **doc**: improve documentation for the vm module (Franziska Hinkelmann) [#16867](https://github.com/nodejs/node/pull/16867)
 * [[`360f40354e`](https://github.com/nodejs/node/commit/360f40354e)] - **doc**: fix typo in assert.md (Andres Kalle) [#16866](https://github.com/nodejs/node/pull/16866)
