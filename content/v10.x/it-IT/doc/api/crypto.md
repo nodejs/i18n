@@ -1231,7 +1231,7 @@ L'argomento `options` controlla il comportamento dello stream ed è facoltativo 
 
 L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray`, o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray` o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
 I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
@@ -1297,7 +1297,7 @@ L'argomento `options` controlla il comportamento dello stream ed è facoltativo 
 
 L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray`, o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray` o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
 I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
@@ -1328,11 +1328,11 @@ Crea un `DiffieHellman` key exchange object utilizzando il `prime` fornito e un 
 
 L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
-Gli argomenti `primeEncoding` e `generatorEncoding` possono essere `'latin1'`, `'hex'`, o `'base64'`.
+Gli argomenti `primeEncoding` e `generatorEncoding` possono essere `'latin1'`, `'hex'` o `'base64'`.
 
-Se viene specificato il `primeEncoding`, `prime` dovrebbe essere una stringa; in caso contrario, dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Se viene specificato il `primeEncoding`, `prime` dovrebbe essere una stringa; in caso contrario, dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-Se viene specificato il `generatorEncoding`, `generator` dovrebbe essere una stringa; in caso contrario dovrebbe essere un numero, un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Se viene specificato il `generatorEncoding`, `generator` dovrebbe essere una stringa; in caso contrario dovrebbe essere un numero, un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
