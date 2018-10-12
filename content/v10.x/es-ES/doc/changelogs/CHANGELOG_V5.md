@@ -343,18 +343,18 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`8344a522a8`](https://github.com/nodejs/node/commit/8344a522a8)] - **test**: reparar test-debugger-client.js (Rich Trott) [#5851](https://github.com/nodejs/node/pull/5851)
 * [[`7ec5397954`](https://github.com/nodejs/node/commit/7ec5397954)] - **timers**: reparar los API refs para que usen refs de seguridad internos (Kyle Simpson) [#5882](https://github.com/nodejs/node/pull/5882)
 * [[`cb676cf3e7`](https://github.com/nodejs/node/commit/cb676cf3e7)] - **tools**: reparar la generación de documentos json (firedfox) [#5943](https://github.com/nodejs/node/pull/5943)
-* [[`77bed269ad`](https://github.com/nodejs/node/commit/77bed269ad)] - **win,build**: build and test add-ons on test-ci (Bogdan Lobor) [#5886](https://github.com/nodejs/node/pull/5886)
-* [[`afcd276ecc`](https://github.com/nodejs/node/commit/afcd276ecc)] - **zlib**: Fix handling of gzip magic bytes mid-file (Anna Henningsen) [#5863](https://github.com/nodejs/node/pull/5863)
+* [[`77bed269ad`](https://github.com/nodejs/node/commit/77bed269ad)] - **win,build**: compilar y probar los complementos en test-ci (Bogdan Lobor) [#5886](https://github.com/nodejs/node/pull/5886)
+* [[`afcd276ecc`](https://github.com/nodejs/node/commit/afcd276ecc)] - **zlib**: Reparar el manejo de los bytes mágicos gzip mid-file (Anna Henningsen) [#5863](https://github.com/nodejs/node/pull/5863)
 
 <a id="5.9.1"></a>
 
-## 2016-03-23, Version 5.9.1 (Stable), @Fishrock123
+## 2016-03-23, Versión 5.9.1 (Estable), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
-* **buffer**: Now properly throws `RangeError`s on out-of-bounds writes (Matt Loring) [#5605](https://github.com/nodejs/node/pull/5605). 
-  * This effects `write{Float|Double}` when the `noAssert` option is not used.
-* **timers**: 
+* **búfer**: Ahora arroja de manera correcta los `RangeError` en escrituras fuera de los límites (Matt Loring) [#5605](https://github.com/nodejs/node/pull/5605). 
+  * Esto afecta a `write{Float|Double}` cuando la opción `noAssert` no es usada.
+* **temporizadores**: 
   * Returned timeout objects now have a `Timeout` constructor name (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793).
   * Performance of `Immediate` processing is now ~20-40% faster (Brian White) [#4169](https://github.com/nodejs/node/pull/4169).
 * **vm**: Fixed a contextify regression introduced in v5.9.0 (Ali Ijaz Sheikh) [#5800](https://github.com/nodejs/node/pull/5800).
