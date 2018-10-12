@@ -182,7 +182,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`7d54d85269`](https://github.com/nodejs/node/commit/7d54d85269)] - **(SEMVER-MINOR)** **src**: añadir SIGINFO a señales soportadas (James Reggio) [#6093](https://github.com/nodejs/node/pull/6093)
 * [[`fbc99ba4f1`](https://github.com/nodejs/node/commit/fbc99ba4f1)] - **src**: añadir palabras clave 'inline' faltantes (Ben Noordhuis) [#6056](https://github.com/nodejs/node/pull/6056)
 * [[`20bb92f5c8`](https://github.com/nodejs/node/commit/20bb92f5c8)] - **src**: usar size_t para el tamaño de campos de arreglo parser http (Ben Noordhuis) [#5969](https://github.com/nodejs/node/pull/5969)
-* [[`2fd8be2dbe`](https://github.com/nodejs/node/commit/2fd8be2dbe)] - **src**: reemplazar ARRAY_SIZE con el tamaño del arreglo de tipo seguro (Ben Noordhuis) [#5969](https://github.com/nodejs/node/pull/5969)
+* [[`2fd8be2dbe`](https://github.com/nodejs/node/commit/2fd8be2dbe)] - **src**: reemplazar ARRAY_SIZE con el tamaño de arreglos con seguridad de tipos (Ben Noordhuis) [#5969](https://github.com/nodejs/node/pull/5969)
 * [[`4392b4aee0`](https://github.com/nodejs/node/commit/4392b4aee0)] - **stream**: Reparar mecanismo readableState.awaitDrain (Anna Henningsen) [#6023](https://github.com/nodejs/node/pull/6023)
 * [[`20dcdd365b`](https://github.com/nodejs/node/commit/20dcdd365b)] - **stream_base**: exponer el getter `bytesRead` (Fedor Indutny) [#6284](https://github.com/nodejs/node/pull/6284)
 * [[`f69416c06e`](https://github.com/nodejs/node/commit/f69416c06e)] - **streams**: soporta ciclos cork/uncork sincrónicos sin límites (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
@@ -208,7 +208,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`fff6a84da5`](https://github.com/nodejs/node/commit/fff6a84da5)] - **tools**: habilitar el uso de linting para v8_prof_processor.js (Rich Trott) [#6262](https://github.com/nodejs/node/pull/6262)
 * [[`a2ca347803`](https://github.com/nodejs/node/commit/a2ca347803)] - **tools**: mover el listener del mensaje para objetos worker (Brian White) [#6212](https://github.com/nodejs/node/pull/6212)
 * [[`f201b01bf7`](https://github.com/nodejs/node/commit/f201b01bf7)] - **tools**: mejorar js linter (Brian White) [#5638](https://github.com/nodejs/node/pull/5638)
-* [[`be070d775f`](https://github.com/nodejs/node/commit/be070d775f)] - **tools**: lint para la alineación de asignaciones variables (Rich Trott) [#6242](https://github.com/nodejs/node/pull/6242)
+* [[`be070d775f`](https://github.com/nodejs/node/commit/be070d775f)] - **tools**: lint para la alineación de asignaciones de variables (Rich Trott) [#6242](https://github.com/nodejs/node/pull/6242)
 * [[`d9b8758f47`](https://github.com/nodejs/node/commit/d9b8758f47)] - **tools**: actualizar ESLint a 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
 * [[`a6056c453e`](https://github.com/nodejs/node/commit/a6056c453e)] - **tools**: reparar license-builder.sh de nuevo para ICU (Steven R. Loomis) [#6068](https://github.com/nodejs/node/pull/6068)
 * [[`fabc33a075`](https://github.com/nodejs/node/commit/fabc33a075)] - **tools**: eliminar dependencia simplejson (Sakthipriyan Vairamani) [#6101](https://github.com/nodejs/node/pull/6101)
@@ -238,7 +238,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ### Commits
 
-* [[`0f5a51ae4b`](https://github.com/nodejs/node/commit/0f5a51ae4b)] - **assert**: Verificar el tipo de vista del arreglo tipeado en deepEqual (Anna Henningsen) [#5910](https://github.com/nodejs/node/pull/5910)
+* [[`0f5a51ae4b`](https://github.com/nodejs/node/commit/0f5a51ae4b)] - **assert**: Verificar el tipo de vista del arreglo escrito en deepEqual (Anna Henningsen) [#5910](https://github.com/nodejs/node/pull/5910)
 * [[`e966d1f5db`](https://github.com/nodejs/node/commit/e966d1f5db)] - **buffer**: no establecer la bandera `kNoZeroFill` en allocUnsafe (Vladimir Kurchatkin) [#6007](https://github.com/nodejs/node/pull/6007)
 * [[`3f75751c2e`](https://github.com/nodejs/node/commit/3f75751c2e)] - **build**: introducir objetivos ci para lint/pruebas de rendimiento (Johan Bergström) [#5921](https://github.com/nodejs/node/pull/5921)
 * [[`781290b61d`](https://github.com/nodejs/node/commit/781290b61d)] - **doc**: refinar el comportamiento de liberación de child_process (Robert Jefe Lindstaedt) [#5330](https://github.com/nodejs/node/pull/5330)
@@ -305,7 +305,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`0928584444`](https://github.com/nodejs/node/commit/0928584444)] - **deps**: actualizar npm a 3.8.3 (Forrest L Norvell)
 * [[`ec1813199d`](https://github.com/nodejs/node/commit/ec1813199d)] - **deps**: hacer backport 8d00c2c desde upstream v8 (Ben Noordhuis) [#5577](https://github.com/nodejs/node/pull/5577)
 * [[`2a5c6d7006`](https://github.com/nodejs/node/commit/2a5c6d7006)] - **dns**: Refactorizar forEach para hacer un mapa (Benjamin Gruenbaum) [#5803](https://github.com/nodejs/node/pull/5803)
-* [[`6a6112a2f3`](https://github.com/nodejs/node/commit/6a6112a2f3)] - **dns**: Usar objeto sin protoype para hacer el mapa (Benjamin Gruenbaum) [#5843](https://github.com/nodejs/node/pull/5843)
+* [[`6a6112a2f3`](https://github.com/nodejs/node/commit/6a6112a2f3)] - **dns**: Usar objeto sin prototipo para hacer el mapa (Benjamin Gruenbaum) [#5843](https://github.com/nodejs/node/pull/5843)
 * [[`8fa0b5c1da`](https://github.com/nodejs/node/commit/8fa0b5c1da)] - **doc**: Añadir @mhdawson de vuelta al CTC (James M Snell) [#5633](https://github.com/nodejs/node/pull/5633)
 * [[`858a524325`](https://github.com/nodejs/node/commit/858a524325)] - **doc**: error tipográfico: interal->internal. (Corey Kosak) [#5849](https://github.com/nodejs/node/pull/5849)
 * [[`5676a35bd9`](https://github.com/nodejs/node/commit/5676a35bd9)] - **doc**: explicar propiedades esperadas path.format (John Eversole) [#5801](https://github.com/nodejs/node/pull/5801)
