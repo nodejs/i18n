@@ -1613,37 +1613,37 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`9e89edff87`](https://github.com/nodejs/node/commit/9e89edff87)] - **test**: añadir chequeo de hasCrypto a test-debug-usage (Daniel Bevenius) [#12357](https://github.com/nodejs/node/pull/12357)
 * [[`afac3161a8`](https://github.com/nodejs/node/commit/afac3161a8)] - **test**: mejorar cobertura de punycode para el par sustituto de chequeo (Nao YONASHIRO) [#12354](https://github.com/nodejs/node/pull/12354)
 * [[`a714449db3`](https://github.com/nodejs/node/commit/a714449db3)] - **test**: limpiar test-fs-watch.js (RobotMermaid) [#12595](https://github.com/nodejs/node/pull/12595)
-* [[`89e76e8e4d`](https://github.com/nodejs/node/commit/89e76e8e4d)] - **test**: improved type checking with regex (coreybeaumont) [#12591](https://github.com/nodejs/node/pull/12591)
-* [[`c304414007`](https://github.com/nodejs/node/commit/c304414007)] - **test**: improve test-tcp-wrap-listen (alohaglenn) [#12599](https://github.com/nodejs/node/pull/12599)
-* [[`bea0a6e557`](https://github.com/nodejs/node/commit/bea0a6e557)] - **test**: add common.mustNotCall() (cjihrig) [#11152](https://github.com/nodejs/node/pull/11152)
-* [[`cb63808832`](https://github.com/nodejs/node/commit/cb63808832)] - **test**: improve test-process-kill-pid (alohaglenn) [#12588](https://github.com/nodejs/node/pull/12588)
-* [[`ac825fc8bc`](https://github.com/nodejs/node/commit/ac825fc8bc)] - **test**: use common.js to check platform (Ruslan Bekenev) [#12629](https://github.com/nodejs/node/pull/12629)
-* [[`64f9adc787`](https://github.com/nodejs/node/commit/64f9adc787)] - **test**: cleanup test-util-inherits.js (RobotMermaid) [#12602](https://github.com/nodejs/node/pull/12602)
-* [[`c1e4b2f043`](https://github.com/nodejs/node/commit/c1e4b2f043)] - **test**: move test to sequential for reliability (Rich Trott) [#12704](https://github.com/nodejs/node/pull/12704)
-* [[`cd1a7ea5e5`](https://github.com/nodejs/node/commit/cd1a7ea5e5)] - **test**: add regex to text-crypto-random (Nate) [#10020](https://github.com/nodejs/node/pull/10020)
-* [[`15226f597a`](https://github.com/nodejs/node/commit/15226f597a)] - **test**: add hasCrypto check to tls-socket-close (Daniel Bevenius) [#11911](https://github.com/nodejs/node/pull/11911)
-* [[`7cad5613c7`](https://github.com/nodejs/node/commit/7cad5613c7)] - **(SEMVER-MINOR)** **tls**: new tls.TLSSocket() supports sec ctx options (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
-* [[`df9d8ee6cb`](https://github.com/nodejs/node/commit/df9d8ee6cb)] - **(SEMVER-MINOR)** **tls**: allow obvious key/passphrase combinations (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
-* [[`a679e06c29`](https://github.com/nodejs/node/commit/a679e06c29)] - **tools**: use no-useless-concat ESLint rule (Vse Mozhet Byt) [#12613](https://github.com/nodejs/node/pull/12613)
-* [[`b920c5d44b`](https://github.com/nodejs/node/commit/b920c5d44b)] - **tools**: enable no-useless-return eslint rule (cjihrig) [#12577](https://github.com/nodejs/node/pull/12577)
-* [[`fd126b5866`](https://github.com/nodejs/node/commit/fd126b5866)] - **tools**: add `root: true` in main .eslintrc.yaml (Vse Mozhet Byt) [#12570](https://github.com/nodejs/node/pull/12570)
-* [[`d63befac2a`](https://github.com/nodejs/node/commit/d63befac2a)] - **tools**: Add no useless regex char class rule (Prince J Wesley) [#9591](https://github.com/nodejs/node/pull/9591)
-* [[`87534d6c25`](https://github.com/nodejs/node/commit/87534d6c25)] - **tools**: replace custom ESLint timers rule (Rich Trott) [#12504](https://github.com/nodejs/node/pull/12504)
-* [[`736a736ed5`](https://github.com/nodejs/node/commit/736a736ed5)] - **tools**: update ESLint to 3.19.0 (Rich Trott) [#12162](https://github.com/nodejs/node/pull/12162)
-* [[`00b6646f93`](https://github.com/nodejs/node/commit/00b6646f93)] - **url**: improve descriptiveness of identifier (Rich Trott) [#12579](https://github.com/nodejs/node/pull/12579)
-* [[`a0f9d5964e`](https://github.com/nodejs/node/commit/a0f9d5964e)] - **v8**: fix stack overflow in recursive method (Ben Noordhuis) [#12460](https://github.com/nodejs/node/pull/12460)
-* [[`2b3381aec6`](https://github.com/nodejs/node/commit/2b3381aec6)] - ***Revert*** "**v8**: drop v8::FunctionCallbackInfo\<T\>::NewTarget()" (Ben Noordhuis)
+* [[`89e76e8e4d`](https://github.com/nodejs/node/commit/89e76e8e4d)] - **test**: se mejoró el chequeo de tipo con regex (coreybeaumont) [#12591](https://github.com/nodejs/node/pull/12591)
+* [[`c304414007`](https://github.com/nodejs/node/commit/c304414007)] - **test**: mejorar test-tcp-wrap-listen (alohaglenn) [#12599](https://github.com/nodejs/node/pull/12599)
+* [[`bea0a6e557`](https://github.com/nodejs/node/commit/bea0a6e557)] - **test**: añadir common.mustNotCall() (cjihrig) [#11152](https://github.com/nodejs/node/pull/11152)
+* [[`cb63808832`](https://github.com/nodejs/node/commit/cb63808832)] - **test**: mejorar test-process-kill-pid (alohaglenn) [#12588](https://github.com/nodejs/node/pull/12588)
+* [[`ac825fc8bc`](https://github.com/nodejs/node/commit/ac825fc8bc)] - **test**: usar common.js para plataforma de chequeo (Ruslan Bekenev) [#12629](https://github.com/nodejs/node/pull/12629)
+* [[`64f9adc787`](https://github.com/nodejs/node/commit/64f9adc787)] - **test**: limpiar test-util-inherits.js (RobotMermaid) [#12602](https://github.com/nodejs/node/pull/12602)
+* [[`c1e4b2f043`](https://github.com/nodejs/node/commit/c1e4b2f043)] - **test**: mover prueba a secuencial para confiabilidad (Rich Trott) [#12704](https://github.com/nodejs/node/pull/12704)
+* [[`cd1a7ea5e5`](https://github.com/nodejs/node/commit/cd1a7ea5e5)] - **test**: añadir regex a text-crypto-random (Nate) [#10020](https://github.com/nodejs/node/pull/10020)
+* [[`15226f597a`](https://github.com/nodejs/node/commit/15226f597a)] - **test**: añadir chequeo de hasCrypto a tls-socket-close (Daniel Bevenius) [#11911](https://github.com/nodejs/node/pull/11911)
+* [[`7cad5613c7`](https://github.com/nodejs/node/commit/7cad5613c7)] - **(SEMVER-MINOR)** **tls**: nuevo tls.TLSSocket() soporta opciones "sec ctx" (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
+* [[`df9d8ee6cb`](https://github.com/nodejs/node/commit/df9d8ee6cb)] - **(SEMVER-MINOR)** **tls**: permitir combinaciones obvias de clave/contraseña (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
+* [[`a679e06c29`](https://github.com/nodejs/node/commit/a679e06c29)] - **tools**: usar regla ESLint no-useless-concat (Vse Mozhet Byt) [#12613](https://github.com/nodejs/node/pull/12613)
+* [[`b920c5d44b`](https://github.com/nodejs/node/commit/b920c5d44b)] - **tools**: habilitar reglas eslint no-useless-return (cjihrig) [#12577](https://github.com/nodejs/node/pull/12577)
+* [[`fd126b5866`](https://github.com/nodejs/node/commit/fd126b5866)] - **tools**: añadir `root: true` en .eslintrc.yaml principal (Vse Mozhet Byt) [#12570](https://github.com/nodejs/node/pull/12570)
+* [[`d63befac2a`](https://github.com/nodejs/node/commit/d63befac2a)] - **tools**: Añadir regla de clase char de regex no inútil (Prince J Wesley) [#9591](https://github.com/nodejs/node/pull/9591)
+* [[`87534d6c25`](https://github.com/nodejs/node/commit/87534d6c25)] - **tools**: reemplazar regla de temporizadores de ESLint personalizados (Rich Trott) [#12504](https://github.com/nodejs/node/pull/12504)
+* [[`736a736ed5`](https://github.com/nodejs/node/commit/736a736ed5)] - **tools**: actualizar ESLint a 3.19.0 (Rich Trott) [#12162](https://github.com/nodejs/node/pull/12162)
+* [[`00b6646f93`](https://github.com/nodejs/node/commit/00b6646f93)] - **url**: mejorar descriptividad del identificador (Rich Trott) [#12579](https://github.com/nodejs/node/pull/12579)
+* [[`a0f9d5964e`](https://github.com/nodejs/node/commit/a0f9d5964e)] - **v8**: reparar stack overflow en método recursivo (Ben Noordhuis) [#12460](https://github.com/nodejs/node/pull/12460)
+* [[`2b3381aec6`](https://github.com/nodejs/node/commit/2b3381aec6)] - ***Revert*** "**v8**: soltar v8::FunctionCallbackInfo\<T\>::NewTarget()" (Ben Noordhuis)
 
 <a id="6.10.3"></a>
 
-## 2017-05-02, Version 6.10.3 'Boron' (LTS), @MylesBorins
+## 2017-05-02, Versión 6.10.3 'Boron' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **module**: 
-  * The [module loading global fallback](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows. (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
+  * La [contingencia global de carga de módulo](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) para el directorio de ejecutables de Node ahora funciona correctamente en Windows. (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
 * **src**: 
-  * fix base64 decoding in rare edgecase (Nikolai Vavilov) [#11995](https://github.com/nodejs/node/pull/11995)
+  * reparar decodificación de base64 en casos extremos raros (Nikolai Vavilov) [#11995](https://github.com/nodejs/node/pull/11995)
 * **tls**: 
   * fix rare segmentation faults when using TLS 
     * (Trevor Norris) [#11947](https://github.com/nodejs/node/pull/11947)
