@@ -355,8 +355,8 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **búfer**: Ahora arroja de manera correcta los `RangeError` en escrituras fuera de los límites (Matt Loring) [#5605](https://github.com/nodejs/node/pull/5605). 
   * Esto afecta a `write{Float|Double}` cuando la opción `noAssert` no es usada.
 * **temporizadores**: 
-  * Returned timeout objects now have a `Timeout` constructor name (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793).
-  * Performance of `Immediate` processing is now ~20-40% faster (Brian White) [#4169](https://github.com/nodejs/node/pull/4169).
+  * Objetos timeout devueltos ahora tienen un nombre de constructor `Timeout` (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793).
+  * Rendimiento del procesamiento `Immediate` ahora es un ~20-40% más rápido (Brian White) [#4169](https://github.com/nodejs/node/pull/4169).
 * **vm**: Fixed a contextify regression introduced in v5.9.0 (Ali Ijaz Sheikh) [#5800](https://github.com/nodejs/node/pull/5800).
 
 ### Commits
