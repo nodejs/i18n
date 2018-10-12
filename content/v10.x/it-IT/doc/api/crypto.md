@@ -1141,7 +1141,7 @@ Verifica i dati forniti utilizzando l'`object` e la `signature` specificati. L'a
 
 - `saltLength`: {integer} - lunghezza del salt per quando il padding è `RSA_PKCS1_PSS_PADDING`. Il valore speciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` imposta la lunghezza del salta nella dimensione del digest, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (valore di default) fa sì che venga determinato automaticamente.
 
-L'argomento `signature` è la firma calcolata precedentemente per i dati, all'interno del `signatureFormat` che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito `signatureFormat`, la `signature` dovrebbe essere una stringa; in caso contrario la `signature` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+L'argomento `signature` è la firma calcolata precedentemente per i dati, all'interno del `signatureFormat` che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito `signatureFormat`, la `signature` dovrebbe essere una stringa; in caso contrario la `signature` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Il `verify` object non può essere utilizzato nuovamente dopo aver chiamato `verify.verify()`. Chiamate multiple di `verify.verify()` genereranno un errore.
 
@@ -1201,7 +1201,7 @@ L'argomento `options` controlla il comportamento dello stream ed è facoltativo 
 
 L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-La `password` viene utilizzata per ricavare la chiave di cifratura (cipher key) e il vettore di inizializzazione (IV). Il valore deve essere una stringa con codifica `'latin1'`, un [`Buffer`][], un `TypedArray`, oppure un `DataView`.
+La `password` viene utilizzata per ricavare la chiave di cifratura (cipher key) e il vettore di inizializzazione (IV). Il valore deve essere una stringa con codifica `'latin1'`, un [`Buffer`][], un `TypedArray` oppure un `DataView`.
 
 L'implementazione di `crypto.createCipher()` deriva le chiavi utilizzando la funzione OpenSSL [`EVP_BytesToKey`][] con l'algoritmo digest impostato su MD5, una iterazione e nessun salt. La mancanza di salt consente attacchi a dizionario poiché la stessa password crea sempre la stessa chiave. Il basso numero di iterazioni e l'algoritmo hash, non crittograficamente sicuro, permettono di testare le password molto rapidamente.
 
