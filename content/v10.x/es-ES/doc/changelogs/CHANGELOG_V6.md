@@ -1645,22 +1645,22 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * **src**: 
   * reparar decodificación de base64 en casos extremos raros (Nikolai Vavilov) [#11995](https://github.com/nodejs/node/pull/11995)
 * **tls**: 
-  * fix rare segmentation faults when using TLS 
+  * reparar violaciones de segmento raras cuando se use TLS 
     * (Trevor Norris) [#11947](https://github.com/nodejs/node/pull/11947)
     * (Ben Noordhuis) [#11898](https://github.com/nodejs/node/pull/11898)
     * (jBarz) [#11776](https://github.com/nodejs/node/pull/11776)
 
 ### Commits
 
-* [[`858bbaa4aa`](https://github.com/nodejs/node/commit/858bbaa4aa)] - Partial revert "tls: keep track of stream that is closed" (Trevor Norris) [#11947](https://github.com/nodejs/node/pull/11947)
-* [[`12c0ce749f`](https://github.com/nodejs/node/commit/12c0ce749f)] - **assert, tools**: enforce strict (not)equal in eslint (Gibson Fahnestock) [#10698](https://github.com/nodejs/node/pull/10698)
-* [[`abbf6e38f1`](https://github.com/nodejs/node/commit/abbf6e38f1)] - **benchmark**: fix fs\bench-realpathSync.js (Vse Mozhet Byt) [#11904](https://github.com/nodejs/node/pull/11904)
-* [[`53d7a89497`](https://github.com/nodejs/node/commit/53d7a89497)] - **buffer**: remove unneeded eslint-disable comment (Rich Trott) [#11906](https://github.com/nodejs/node/pull/11906)
-* [[`5d74c9e749`](https://github.com/nodejs/node/commit/5d74c9e749)] - **buffer**: refactor Buffer.prototype.inspect() (Rich Trott) [#11600](https://github.com/nodejs/node/pull/11600)
-* [[`e7e83f6f10`](https://github.com/nodejs/node/commit/e7e83f6f10)] - **build**: use $(RM) in Makefile for consistency (Gibson Fahnestock) [#12157](https://github.com/nodejs/node/pull/12157)
-* [[`986ef6fffa`](https://github.com/nodejs/node/commit/986ef6fffa)] - **build**: add checks for openssl configure options (Daniel Bevenius) [#12175](https://github.com/nodejs/node/pull/12175)
+* [[`858bbaa4aa`](https://github.com/nodejs/node/commit/858bbaa4aa)] - Revertir parcialmente "tls: hacer seguimiento del stream que está cerrado" (Trevor Norris) [#11947](https://github.com/nodejs/node/pull/11947)
+* [[`12c0ce749f`](https://github.com/nodejs/node/commit/12c0ce749f)] - **assert, tools**: imponer (not)equal estricto en eslint (Gibson Fahnestock) [#10698](https://github.com/nodejs/node/pull/10698)
+* [[`abbf6e38f1`](https://github.com/nodejs/node/commit/abbf6e38f1)] - **benchmark**: reparar fs\bench-realpathSync.js (Vse Mozhet Byt) [#11904](https://github.com/nodejs/node/pull/11904)
+* [[`53d7a89497`](https://github.com/nodejs/node/commit/53d7a89497)] - **buffer**: remover comentario eslint-disable innecesario (Rich Trott) [#11906](https://github.com/nodejs/node/pull/11906)
+* [[`5d74c9e749`](https://github.com/nodejs/node/commit/5d74c9e749)] - **buffer**: refactorizar Buffer.prototype.inspect() (Rich Trott) [#11600](https://github.com/nodejs/node/pull/11600)
+* [[`e7e83f6f10`](https://github.com/nodejs/node/commit/e7e83f6f10)] - **build**: usar $(RM) en Makefile para consistencia (Gibson Fahnestock) [#12157](https://github.com/nodejs/node/pull/12157)
+* [[`986ef6fffa`](https://github.com/nodejs/node/commit/986ef6fffa)] - **build**: añadir chequeos para opciones de configuración de openssl (Daniel Bevenius) [#12175](https://github.com/nodejs/node/pull/12175)
 * [[`c2c467e242`](https://github.com/nodejs/node/commit/c2c467e242)] - **build**: make configure print statements consistent (Daniel Bevenius) [#12176](https://github.com/nodejs/node/pull/12176)
-* [[`2c2a6649c1`](https://github.com/nodejs/node/commit/2c2a6649c1)] - **build**: add node_use_openssl check to install.py (Daniel Bevenius) [#11766](https://github.com/nodejs/node/pull/11766)
+* [[`2c2a6649c1`](https://github.com/nodejs/node/commit/2c2a6649c1)] - **build**: añadir chequeo de node_use_openssl a install.py (Daniel Bevenius) [#11766](https://github.com/nodejs/node/pull/11766)
 * [[`a899b0b92b`](https://github.com/nodejs/node/commit/a899b0b92b)] - **build**: fix llvm version detection in freebsd-10 (Shigeki Ohtsu) [#11668](https://github.com/nodejs/node/pull/11668)
 * [[`ba23506419`](https://github.com/nodejs/node/commit/ba23506419)] - **build**: --without-ssl implies --without-inspector (Ben Noordhuis) [#12200](https://github.com/nodejs/node/pull/12200)
 * [[`cd78a2bd07`](https://github.com/nodejs/node/commit/cd78a2bd07)] - **deps**: backport 75f2d65f00 from upstream V8 (Yang Guo) [#12535](https://github.com/nodejs/node/pull/12535)
@@ -1668,7 +1668,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`8cdddcdb68`](https://github.com/nodejs/node/commit/8cdddcdb68)] - **deps**: cherry-pick ca0f9573 from V8 upstream (Ali Ijaz Sheikh) [#11940](https://github.com/nodejs/node/pull/11940)
 * [[`d15188f6e2`](https://github.com/nodejs/node/commit/d15188f6e2)] - **doc**: modernize and fix code examples in modules.md (Vse Mozhet Byt) [#12224](https://github.com/nodejs/node/pull/12224)
 * [[`03f9388eb7`](https://github.com/nodejs/node/commit/03f9388eb7)] - **doc**: clarify out-of-bounds behavior of buf\[index\] (Nikolai Vavilov) [#11286](https://github.com/nodejs/node/pull/11286)
-* [[`eddfd5230e`](https://github.com/nodejs/node/commit/eddfd5230e)] - **doc**: add refack to collaborators (Refael Ackermann) [#12277](https://github.com/nodejs/node/pull/12277)
+* [[`eddfd5230e`](https://github.com/nodejs/node/commit/eddfd5230e)] - **doc**: añadir a refack a colaboradores (Refael Ackermann) [#12277](https://github.com/nodejs/node/pull/12277)
 * [[`22af92ac2e`](https://github.com/nodejs/node/commit/22af92ac2e)] - **doc**: add richardlau to collaborators (Richard Lau) [#12020](https://github.com/nodejs/node/pull/12020)
 * [[`8d1a474ec2`](https://github.com/nodejs/node/commit/8d1a474ec2)] - **doc**: fix confusing example in process.md (Vse Mozhet Byt) [#12282](https://github.com/nodejs/node/pull/12282)
 * [[`88f402c4c1`](https://github.com/nodejs/node/commit/88f402c4c1)] - **doc**: update information on test/known_issues (Jan Krems) [#12262](https://github.com/nodejs/node/pull/12262)
