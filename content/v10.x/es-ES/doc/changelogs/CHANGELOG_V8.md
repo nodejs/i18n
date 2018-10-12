@@ -752,9 +752,9 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 ### Commits
 
 * [[`b05ef978d3`](https://github.com/nodejs/node/commit/b05ef978d3)] - **buffer**: buffer asignado rellenado con cero con contenido no válido (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
-* [[`18652b6860`](https://github.com/nodejs/node/commit/18652b6860)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
-* [[`e6c308e237`](https://github.com/nodejs/node/commit/e6c308e237)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`a85f94bd59`](https://github.com/nodejs/node/commit/a85f94bd59)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`18652b6860`](https://github.com/nodejs/node/commit/18652b6860)] - **deps**: actualizar openssl asm y los archivos asm_obsolete (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+* [[`e6c308e237`](https://github.com/nodejs/node/commit/e6c308e237)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`a85f94bd59`](https://github.com/nodejs/node/commit/a85f94bd59)] - **deps**: corregir el error de compilación de asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`b5552c854c`](https://github.com/nodejs/node/commit/b5552c854c)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`afad1f23a2`](https://github.com/nodejs/node/commit/afad1f23a2)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 * [[`9fdd3bddf5`](https://github.com/nodejs/node/commit/9fdd3bddf5)] - **deps**: upgrade openssl sources to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
