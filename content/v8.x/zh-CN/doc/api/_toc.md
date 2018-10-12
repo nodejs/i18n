@@ -1,22 +1,22 @@
-@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+@// NB(chrisdickinson): 如果您移动这个文件, 请确保更新tools/doc/html.js 文件 @// 指向到新的位置。
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [关于这些文档](documentation.html)
+* [用法和示例](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
-* [Cluster](cluster.html)
-* [Command Line Options](cli.html)
-* [Console](console.html)
-* [Crypto](crypto.html)
-* [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [断言测试](assert.html)
+* [异步Hooks](async_hooks.html)
+* [Buffer（缓冲区）](buffer.html)
+* [C++插件](addons.html)
+* [C++插件 - N-API](n-api.html)
+* [子进程](child_process.html)
+* [集群](cluster.html)
+* [命令行选项](cli.html)
+* [控制台](console.html)
+* [加密算法](crypto.html)
+* [调试器](debugger.html)
+* [已弃用的API](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
 * [ECMAScript Modules](esm.html)
