@@ -132,7 +132,7 @@ apply.whitespace fix`
   * Para iniciar la prueba de CI desde esta pantalla, necesita rellenar dos elementos en el formulario: 
     * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
     * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
-    * Los elementos restantes en el formulario generalmente no cambian con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
+    * Los elementos restantes en el formulario generalmente no cambian, con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
   * Si necesita ayuda con algo relacionado con CI: 
     * Utilice #node-dev (IRC) para hablar con otros Colaboradores.
     * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
@@ -172,4 +172,4 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc. si es necesario. Eche un vistazo al repositorio de [cumbre](https://github.com/nodejs/summit) para más detalles.
+* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc., si es necesario. Eche un vistazo al repositorio de [summit](https://github.com/nodejs/summit) para más detalles.
