@@ -114,15 +114,15 @@ Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych ti
 
 * *jeśli **kolejka**odpytywania**jest pusta***, staną się jedna lub dwie rzeczy:
     
-    * If scripts have been scheduled by `setImmediate()`, the event loop will end the **poll** phase and continue to the **check** phase to execute those scheduled scripts.
+    * Jeśli skrypty zostały zaplanowane przez `setImmediate()`, pętla zdarzeń zakończy fazę **odpytywania** i przejdzie do etapu **sprawdzenia** by wykonać te zaplanowane skrypty.
     
-    * If scripts **have not** been scheduled by `setImmediate()`, the event loop will wait for callbacks to be added to the queue, then execute them immediately.
+    * Jeśli skrypty **nie zostały** zaplanowane przez `ustawNatychmiastowo()`, to pętla zdarzeń będzie czekać na dodanie wywołań zwrotnych do kolejki, następnie wykona je natychmiast.
 
-Once the **poll** queue is empty the event loop will check for timers *whose time thresholds have been reached*. If one or more timers are ready, the event loop will wrap back to the **timers** phase to execute those timers' callbacks.
+Gdy kolejka **odpytywania** jest pusta, pętla zdarzeń sprawdzi timery *których progi czasowe zostały osiągnięte *. Jeśli jest jeden lub więcej timerów jest gotowy, pętla zdarzeń powróci do fazy **timery**, aby wykonać wywołania zwrotne tych zegarów.
 
-### check
+### sprawdzenie
 
-This phase allows a person to execute callbacks immediately after the **poll** phase has completed. If the **poll** phase becomes idle and scripts have been queued with `setImmediate()`, the event loop may continue to the **check** phase rather than waiting.
+Ta faza pozwala osobie wykonać wywołania zwrotne natychmiast po zakończeniu fazy **odpytywania**. Jeśli faza **odpytywania** stanie się bezczynna i skrypty zostały umieszczone w kolejce z `ustawNatychmiastowo()`, pętla zdarzeń może przejść do fazy **sprawdzenia**, zamiast czekać.
 
 `setImmediate()` is actually a special timer that runs in a separate phase of the event loop. It uses a libuv API that schedules callbacks to execute after the **poll** phase has completed.
 
