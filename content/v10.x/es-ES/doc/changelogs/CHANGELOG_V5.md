@@ -471,13 +471,13 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`205bed0bec`](https://github.com/nodejs/node/commit/205bed0bec)] - **lib**: copiar el objeto de argumentos en vez de soltarlos(Nathan Woltman) [#4361](https://github.com/nodejs/node/pull/4361)
 * [[`b16f67a0b9`](https://github.com/nodejs/node/commit/b16f67a0b9)] - **net**: hacer `isIPv4` y `isIPv6` más eficientes (Vladimir Kurchatkin) [#5478](https://github.com/nodejs/node/pull/5478)
 * [[`4ecd996baa`](https://github.com/nodejs/node/commit/4ecd996baa)] - **(SEMVER-MINOR)** **src**: permitir la combinación de banderas cli -i y -e (Rich Trott) [#5655](https://github.com/nodejs/node/pull/5655)
-* [[`f225459496`](https://github.com/nodejs/node/commit/f225459496)] - **test**: improve test-npm-install (Santiago Gimeno) [#5613](https://github.com/nodejs/node/pull/5613)
-* [[`cceae5ae78`](https://github.com/nodejs/node/commit/cceae5ae78)] - **test**: eval a strict function (Kári Tristan Helgason) [#5250](https://github.com/nodejs/node/pull/5250)
-* [[`9a44c8c337`](https://github.com/nodejs/node/commit/9a44c8c337)] - **test**: add batch of known issue tests (cjihrig) [#5653](https://github.com/nodejs/node/pull/5653)
-* [[`1b7b1ed2c9`](https://github.com/nodejs/node/commit/1b7b1ed2c9)] - **timers**: greatly improve code comments (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
-* [[`769254b0ba`](https://github.com/nodejs/node/commit/769254b0ba)] - **timers**: refactor timers (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
-* [[`0b545fb3f8`](https://github.com/nodejs/node/commit/0b545fb3f8)] - **win,build**: support Visual C++ Build Tools 2015 (João Reis) [#5627](https://github.com/nodejs/node/pull/5627)
-* [[`ef774ff9a8`](https://github.com/nodejs/node/commit/ef774ff9a8)] - **(SEMVER-MINOR)** **zlib**: add support for concatenated members (Kári Tristan Helgason) [#5120](https://github.com/nodejs/node/pull/5120)
+* [[`f225459496`](https://github.com/nodejs/node/commit/f225459496)] - **test**: mejorar test-npm-install (Santiago Gimeno) [#5613](https://github.com/nodejs/node/pull/5613)
+* [[`cceae5ae78`](https://github.com/nodejs/node/commit/cceae5ae78)] - **test**: evaluar una función estricta (Kári Tristan Helgason) [#5250](https://github.com/nodejs/node/pull/5250)
+* [[`9a44c8c337`](https://github.com/nodejs/node/commit/9a44c8c337)] - **test**: añadir paquete de pruebas de problemas conocidos (cjihrig) [#5653](https://github.com/nodejs/node/pull/5653)
+* [[`1b7b1ed2c9`](https://github.com/nodejs/node/commit/1b7b1ed2c9)] - **timers**: mejorar en gran cantidad el código de los comentarios (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
+* [[`769254b0ba`](https://github.com/nodejs/node/commit/769254b0ba)] - **timers**: refactorizar temporizadores (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
+* [[`0b545fb3f8`](https://github.com/nodejs/node/commit/0b545fb3f8)] - **win,build**: soportar Visual C++ Build Tools 2015 (João Reis) [#5627](https://github.com/nodejs/node/pull/5627)
+* [[`ef774ff9a8`](https://github.com/nodejs/node/commit/ef774ff9a8)] - **(SEMVER-MINOR)** **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) [#5120](https://github.com/nodejs/node/pull/5120)
 
 <a id="5.8.0"></a>
 
