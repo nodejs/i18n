@@ -122,9 +122,9 @@ added: v0.11.2
 const worker = cluster.fork();
 worker.on('exit', (code, signal) => {
   if (signal) {
-    console.log(`worker was killed by signal: ${signal}`);
+    console.log(`worker가 다음 signal에 의해 종료되었습니다.: ${signal}`);
   } else if (code !== 0) {
-    console.log(`worker exited with error code: ${code}`);
+    console.log(`worker가 다음 에러 코드와 함께 종료되었습니다.: ${code}`);
   } else {
     console.log('worker success!');
   }
@@ -139,7 +139,7 @@ added: v0.7.0
 
 * `address` {Object}
 
-Similar to the `cluster.on('listening')` event, but specific to this worker.
+`cluster.on('listening')` event와 비슷하지만, 해당 worker에만 적용됩니다.
 
 ```js
 cluster.fork().on('listening', (address) => {
@@ -147,7 +147,7 @@ cluster.fork().on('listening', (address) => {
 });
 ```
 
-It is not emitted in the worker.
+worker 안에서 사용할 수 없습니다.
 
 ### Event: 'message'
 
@@ -158,11 +158,11 @@ added: v0.7.0
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Similar to the `'message'` event of `cluster`, but specific to this worker.
+`cluster`의 `'message'` 이벤트와 비슷하지만, 해당 worker에만 적용됩니다.
 
-Within a worker, `process.on('message')` may also be used.
+worker 안에서는, `process.on('message')` 도 사용됩니다.
 
-See [`process` event: `'message'`][].
+[`process` event: `'message'`][] 를 참고하세요.
 
 As an example, here is a cluster that keeps count of the number of requests in the master process using the message system:
 
