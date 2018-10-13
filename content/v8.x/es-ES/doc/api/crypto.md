@@ -110,7 +110,7 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 added: v0.1.94
 -->
 
-Las instancias del tipo de `Cipher` son usadas para encriptar datos. The class can be used in one of two ways:
+Las instancias del tipo de `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
 
 - As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
 - Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
@@ -240,7 +240,7 @@ The `cipher.update()` method can be called multiple times with new data until [`
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. The class can be used in one of two ways:
+Instances of the `Decipher` class are used to decrypt data. La clase puede ser empleada en una de dos formas:
 
 - As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
 - Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
