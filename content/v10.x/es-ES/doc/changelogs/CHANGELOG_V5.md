@@ -426,21 +426,21 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **v8**: hacebbackport fb4ccae del upstream v8 (Vladimir Krivosheev) #4231 
   * eventos de ruptura de v8 ofrecerán mejor soporte para depursdpres externos
 * **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
-  * Previously, if multiple members were in the same archive, only the first would be read. The others are no longer thrown away.
+  * Anteriormente, si multiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
 
 ### Commits
 
-* [[`03b99bf8b9`](https://github.com/nodejs/node/commit/03b99bf8b9)] - **build**: don't install github templates (Johan Bergström) [#5612](https://github.com/nodejs/node/pull/5612)
-* [[`a7819da15a`](https://github.com/nodejs/node/commit/a7819da15a)] - ***Revert*** "**build**: run lint before tests" (Rich Trott) [#5602](https://github.com/nodejs/node/pull/5602)
-* [[`5e9cac4333`](https://github.com/nodejs/node/commit/5e9cac4333)] - **console**: check that stderr is writable (Rich Trott) [#5635](https://github.com/nodejs/node/pull/5635)
-* [[`0662fcf209`](https://github.com/nodejs/node/commit/0662fcf209)] - **contextify**: cache sandbox and context in locals (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
-* [[`4f2c839d46`](https://github.com/nodejs/node/commit/4f2c839d46)] - **contextify**: replace deprecated SetWeak usage (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
-* [[`bfff07b4dd`](https://github.com/nodejs/node/commit/bfff07b4dd)] - **contextify**: cleanup weak ref for sandbox (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
-* [[`93f60cdc54`](https://github.com/nodejs/node/commit/93f60cdc54)] - **contextify**: cleanup weak ref for global proxy (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
-* [[`b6c355de0d`](https://github.com/nodejs/node/commit/b6c355de0d)] - **(SEMVER-MINOR)** **deps**: backport fb4ccae from v8 upstream (develar) [#4231](https://github.com/nodejs/node/pull/4231)
-* [[`29510aa4fd`](https://github.com/nodejs/node/commit/29510aa4fd)] - **deps**: update openssl config (Shigeki Ohtsu) [#5630](https://github.com/nodejs/node/pull/5630)
-* [[`532d1bf9ce`](https://github.com/nodejs/node/commit/532d1bf9ce)] - **deps**: sync deps/http_parser with nodejs/http_parser (James M Snell) [#5600](https://github.com/nodejs/node/pull/5600)
-* [[`d5d64c327b`](https://github.com/nodejs/node/commit/d5d64c327b)] - **doc**: clarify commit message rules (Wyatt Preul) [#5661](https://github.com/nodejs/node/pull/5661)
+* [[`03b99bf8b9`](https://github.com/nodejs/node/commit/03b99bf8b9)] - **build**: no instalar plantillas de github (Johan Bergström) [#5612](https://github.com/nodejs/node/pull/5612)
+* [[`a7819da15a`](https://github.com/nodejs/node/commit/a7819da15a)] - ***Revert*** "**build**: ejecutar lint antes de las pruebas" (Rich Trott) [#5602](https://github.com/nodejs/node/pull/5602)
+* [[`5e9cac4333`](https://github.com/nodejs/node/commit/5e9cac4333)] - **console**: verificar que ese stderr es escribible (Rich Trott) [#5635](https://github.com/nodejs/node/pull/5635)
+* [[`0662fcf209`](https://github.com/nodejs/node/commit/0662fcf209)] - **contextify**: guardar en caché el entorno de prueba y el contexto en los locales (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
+* [[`4f2c839d46`](https://github.com/nodejs/node/commit/4f2c839d46)] - **contextify**: reemplazar el uso obsoleto de SetWeak (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
+* [[`bfff07b4dd`](https://github.com/nodejs/node/commit/bfff07b4dd)] - **contextify**: limpiar ref débil para el entorno de prueba (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
+* [[`93f60cdc54`](https://github.com/nodejs/node/commit/93f60cdc54)] - **contextify**: lilpiar ref débil para el proxy global (Ali Ijaz Sheikh) [#5392](https://github.com/nodejs/node/pull/5392)
+* [[`b6c355de0d`](https://github.com/nodejs/node/commit/b6c355de0d)] - **(SEMVER-MINOR)** **deps**: hacer backport fb4ccae de upstream v8 (develar) [#4231](https://github.com/nodejs/node/pull/4231)
+* [[`29510aa4fd`](https://github.com/nodejs/node/commit/29510aa4fd)] - **deps**: actualizar configuración openssl (Shigeki Ohtsu) [#5630](https://github.com/nodejs/node/pull/5630)
+* [[`532d1bf9ce`](https://github.com/nodejs/node/commit/532d1bf9ce)] - **deps**: sincronizar deps/http_parser con nodejs/http_parser (James M Snell) [#5600](https://github.com/nodejs/node/pull/5600)
+* [[`d5d64c327b`](https://github.com/nodejs/node/commit/d5d64c327b)] - **doc**: clarificar reglas de mensaje de commit (Wyatt Preul) [#5661](https://github.com/nodejs/node/pull/5661)
 * [[`8c4c84fe5b`](https://github.com/nodejs/node/commit/8c4c84fe5b)] - **doc**: add Testing WG (Rich Trott) [#5461](https://github.com/nodejs/node/pull/5461)
 * [[`434af03825`](https://github.com/nodejs/node/commit/434af03825)] - **doc**: Add note about use of JSON.stringify() (Mithun Patel) [#5723](https://github.com/nodejs/node/pull/5723)
 * [[`62926d85bd`](https://github.com/nodejs/node/commit/62926d85bd)] - **doc**: clarify type of first argument in zlib (Kirill Fomichev) [#5685](https://github.com/nodejs/node/pull/5685)
