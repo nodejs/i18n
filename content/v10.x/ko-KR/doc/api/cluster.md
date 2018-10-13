@@ -103,9 +103,9 @@ cluster.fork().on('disconnect', () => {
 added: v0.7.3
 -->
 
-This event is the same as the one provided by [`child_process.fork()`][].
+이 이벤트는 [`child_process.fork()`][].로 얻어지는 것과 일치합니다.
 
-Within a worker, `process.on('error')` may also be used.
+worker 안에서는, `process.on('error')` 도 사용됩니다.
 
 ### Event: 'exit'
 
@@ -113,10 +113,10 @@ Within a worker, `process.on('error')` may also be used.
 added: v0.11.2
 -->
 
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code` {number} exit code, 비정상적으로 종료된 경우 출력
+* `signal` {string} '예시) `'SIGHUP'`' 프로세스를 종료하게된 원인 signal의 이름.
 
-Similar to the `cluster.on('exit')` event, but specific to this worker.
+`cluster.on('exit')` event와 비슷하지만, 해당 worker 오브젝트에만 적용됩니다.
 
 ```js
 const worker = cluster.fork();
