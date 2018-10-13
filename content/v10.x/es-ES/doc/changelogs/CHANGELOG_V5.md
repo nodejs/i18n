@@ -481,15 +481,15 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 <a id="5.8.0"></a>
 
-## 2016-03-08, Version 5.8.0 (Stable), @Fishrock123
+## 2016-03-08, Versión 5.8.0 (Estable), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
-* **child_process**: `send()` now accepts an options parameter (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283). 
-  * Currently the only option is `keepOpen`, which keeps the underlying socket open after the message is sent.
-* **constants**: `ENGINE_METHOD_RSA` is now correctly exposed (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463).
-* Fixed two regressions which originated in v5.7.0: 
-  * **http**: Errors inside of http client callbacks now propagate correctly (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
+* **child_process**: `send()` ahora acepta un parámetro de opciones (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283). 
+  * Actualmente la única opción es `keepOpen`, que mantiene el socket sunyacente abieeto después que el mensaje es enviado.
+* **constants**: `ENGINE_METHOD_RSA` ahora es expuesto correctamente (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463).
+* Reparas dos regresiones que fueron originadas en v5.7.0: 
+  * **http**: Errores dentro de los callbacks del cliente http ahora se propagan corectamente (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
   * **path**: Fixed normalization of absolute paths (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589).
 * **repl**: `start()` no longer requires an options parameter (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388).
 * **util**: Improved `format()` performance 50-300% (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360).
