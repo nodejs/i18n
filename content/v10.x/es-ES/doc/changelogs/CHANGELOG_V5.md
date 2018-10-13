@@ -398,20 +398,20 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`d2fa64490f`](https://github.com/nodejs/node/commit/d2fa64490f)] - **test**: reparar `test-cluster-worker-kill` (Santiago Gimeno) [#5814](https://github.com/nodejs/node/pull/5814)
 * [[`f0d885a0a9`](https://github.com/nodejs/node/commit/f0d885a0a9)] - **test**: reparar test-cluster-shared-leak flaky (Claudio Rodriguez) [#5802](https://github.com/nodejs/node/pull/5802)
 * [[`b352cc7db4`](https://github.com/nodejs/node/commit/b352cc7db4)] - **test**: minimizar test-http-get-pipeline-problem (Rich Trott) [#5728](https://github.com/nodejs/node/pull/5728)
-* [[`21770c3806`](https://github.com/nodejs/node/commit/21770c3806)] - **test**: reduce brittleness of tab complete test (Matt Loring) [#5772](https://github.com/nodejs/node/pull/5772)
-* [[`46f0e02620`](https://github.com/nodejs/node/commit/46f0e02620)] - **timers**: fix lint from 4fe02e2 (Jeremiah Senkpiel) [#5825](https://github.com/nodejs/node/pull/5825)
-* [[`20a68e9eef`](https://github.com/nodejs/node/commit/20a68e9eef)] - **timers**: give Timeouts a constructor name (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793)
-* [[`d3654d80f3`](https://github.com/nodejs/node/commit/d3654d80f3)] - **timers**: improve setImmediate() performance (Brian White) [#4169](https://github.com/nodejs/node/pull/4169)
-* [[`b1a4870200`](https://github.com/nodejs/node/commit/b1a4870200)] - **tools**: remove unused imports (Sakthipriyan Vairamani) [#5765](https://github.com/nodejs/node/pull/5765)
+* [[`21770c3806`](https://github.com/nodejs/node/commit/21770c3806)] - **test**: reducir fragilidad de prueba de completar pestaña (Matt Loring) [#5772](https://github.com/nodejs/node/pull/5772)
+* [[`46f0e02620`](https://github.com/nodejs/node/commit/46f0e02620)] - **timers**: reparar lint de 4fe02e2 (Jeremiah Senkpiel) [#5825](https://github.com/nodejs/node/pull/5825)
+* [[`20a68e9eef`](https://github.com/nodejs/node/commit/20a68e9eef)] - **timers**: dar a Timeouts un nombre de constructor (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793)
+* [[`d3654d80f3`](https://github.com/nodejs/node/commit/d3654d80f3)] - **timers**: mejorar el rendimiento de setImmediate() (Brian White) [#4169](https://github.com/nodejs/node/pull/4169)
+* [[`b1a4870200`](https://github.com/nodejs/node/commit/b1a4870200)] - **tools**: remover importaciones sin usar (Sakthipriyan Vairamani) [#5765](https://github.com/nodejs/node/pull/5765)
 
 <a id="5.9.0"></a>
 
-## 2016-03-16, Version 5.9.0 (Stable), @evanlucas
+## 2016-03-16, Versión 5.9.0 (Estable), @evanlucas
 
-### Notable changes
+### Cambios notables
 
-* **contextify**: Fixed a memory consumption issue related to heavy use of `vm.createContext` and `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
-* **governance**: The following members have been added as collaborators: 
+* **contextify**: Reparado un problema consumo de memoria relacionado al fuerte uso de `vm.createContext` y `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
+* **gobernanza**: Los siguientes miembros han sido añadidos como colaboradores: 
   * Andreas Madsen (@AndreasMadsen)
   * Benjamin Gruenbaum (@benjamingr)
   * Claudio Rodriguez (@claudiorodriguez)
@@ -419,7 +419,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
   * Jeremy Whitlock (@whitlockjc)
   * Matt Loring (@matthewloring)
   * Phillip Johnsen (@phillipj)
-* **lib**: copy arguments object instead of leaking it (Nathan Woltman) https://github.com/nodejs/node/pull/4361
+* **lib**: copiar objetos de argumentos en vez de soltarlos (Nathan Woltman) https://github.com/nodejs/node/pull/4361
 * **src**: allow both -i and -e flags to be used at the same time (Rich Trott) https://github.com/nodejs/node/pull/5655
 * **timers**: Internal Node.js timeouts now use the same logic path as those created with `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007) 
   * This may cause a slightly different performance profile in some situations. So far, it has shown to be positive in most cases.
