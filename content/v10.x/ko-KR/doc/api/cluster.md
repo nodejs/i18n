@@ -81,7 +81,7 @@ Although a primary use case for the `cluster` module is networking, it can also 
 added: v0.7.0
 -->
 
-A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
+`Worker` 오브젝트는 worker에 관련된 public 메소드와 정보들을 가지고 있습니다. master에서는 `cluster.workers`를 worker에서는 `cluster.worker`를 사용해 Worker 오브젝트를 받아올 수 있습니다.
 
 ### Event: 'disconnect'
 
