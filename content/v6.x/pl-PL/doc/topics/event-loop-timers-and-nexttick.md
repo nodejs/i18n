@@ -112,7 +112,7 @@ Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych ti
 
 * *jeśli **odpytywania**kolejka**nie jest pusta***, pętla zdarzeń zostanie powtórzona poprzez kolejkę wywołań zwrotnych, synchronicznie do czasu albo kolejka została wyczerpana, albo zależny od systemu surowy limit został osiągnięty.
 
-* *If the **poll** queue **is empty***, one of two more things will happen:
+* *jeśli **odpytywania** kolejka **jest pusta***, staną się jedna lub dwie rzeczy:
     
     * If scripts have been scheduled by `setImmediate()`, the event loop will end the **poll** phase and continue to the **check** phase to execute those scheduled scripts.
     
