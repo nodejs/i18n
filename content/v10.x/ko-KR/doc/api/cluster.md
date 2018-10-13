@@ -1,12 +1,12 @@
-# Cluster
+# 클러스터
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 안정성: 2 - 안정
 
-A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+하나의 Node.js 인스턴스는 싱글 스레드에서 동작합니다. 사용자는 다중코어 시스템을 활용하고 상황에따라 부하를 조절하기위해 Node.js의 클러스터 프로세스를 실행 할 수 있습니다.
 
-The cluster module allows easy creation of child processes that all share server ports.
+클러스터 모듈은 서버 포트를 공유하는 자식 프로세스를 쉽게 생성할 수 있게 도와줍니다.
 
 ```js
 const cluster = require('cluster');
