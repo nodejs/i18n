@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js include un'utility di debug out-of-process accessibile tramite [l'Inspector di V8](#debugger_v8_inspector_integration_for_node_js) e il client di debug integrato. Per usarlo, avvia Node.js con l'argomento `inspect` seguito dal percorso dello script per eseguire il debug; verrà visualizzato un prompt che indica il corretto avvio del debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -20,9 +20,9 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+Il debugger client di Node.js non è un debugger completo, ma sono ugualmente possibili semplici step e ispezioni.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+L'inserimento dell'istruzione `debugger;` nel codice sorgente di uno script abiliterà un breakpoint in quella posizione nel codice:
 
 <!-- eslint-disable no-debugger -->
 
@@ -36,7 +36,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Once the debugger is run, a breakpoint will occur at line 3:
+Una volta eseguito il debugger, si verificherà un breakpoint alla riga 3:
 
 ```txt
 $ node inspect myscript.js
@@ -79,7 +79,7 @@ break in myscript.js:5
 debug> .exit
 ```
 
-The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
+Il comando `repl` consente di valutare il codice da remoto. Il comando `next` passa alla riga successiva. Digita `help` per vedere quali altri comandi sono disponibili.
 
 Pressing `enter` without typing a command will repeat the previous debugger command.
 
