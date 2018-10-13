@@ -1107,7 +1107,7 @@ added: v0.9.3
 
 Returns an array with the names of the supported cipher algorithms.
 
-Example:
+Ejemplo:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1122,7 +1122,7 @@ added: v2.3.0
 
 Returns an array with the names of the supported elliptic curves.
 
-Example:
+Ejemplo:
 
 ```js
 const curves = crypto.getCurves();
@@ -1162,7 +1162,7 @@ added: v0.9.3
 
 Returns an array of the names of the supported hash algorithms, such as `RSA-SHA256`.
 
-Example:
+Ejemplo:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1183,7 +1183,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
@@ -1209,7 +1209,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
