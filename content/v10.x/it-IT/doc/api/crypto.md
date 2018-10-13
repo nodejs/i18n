@@ -2007,7 +2007,7 @@ console.log(receivedPlaintext);
 
 ## Costanti Crypto
 
-The following constants exported by `crypto.constants` apply to various uses of the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
+Le seguenti costanti esportate da `crypto.constants` si applicano a vari utilizzi dei moduli `crypto`, `tls` e `https` e sono generalmente specifici per OpenSSL.
 
 ### Opzioni OpenSSL
 
@@ -2018,39 +2018,37 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_ALL</code></td>
-    <td>Applies multiple bug workarounds within OpenSSL. See
-    https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html for
-    detail.</td>
+    <td>Applica molteplici soluzioni alternative ai bug all'interno di OpenSSL. Vedi
+    
+https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html per
+    maggiori dettagli.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</code></td>
-    <td>Allows legacy insecure renegotiation between OpenSSL and unpatched
-    clients or servers. See
-    https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
+    <td>Permette una rinegoziazione legacy non sicura tra OpenSSL ed i client o i server senza patch. Vedi
+    
+https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CIPHER_SERVER_PREFERENCE</code></td>
-    <td>Attempts to use the server's preferences instead of the client's when
-    selecting a cipher. Behavior depends on protocol version. See
+    <td>Cerca di utilizzare le preferenze del server anziché quelle del client quando si seleziona un cipher. Il comportamento dipende dalla versione del protocollo. Vedi
     https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CISCO_ANYCONNECT</code></td>
-    <td>Instructs OpenSSL to use Cisco's "speshul" version of DTLS_BAD_VER.</td>
+    <td>Dà istruzioni a OpenSSL di utilizzare la versione "speshul" di Cisco di DTLS_BAD_VER.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_COOKIE_EXCHANGE</code></td>
-    <td>Instructs OpenSSL to turn on cookie exchange.</td>
+    <td>Dà istruzioni a OpenSSL di attivare lo scambio di cookie.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CRYPTOPRO_TLSEXT_BUG</code></td>
-    <td>Instructs OpenSSL to add server-hello extension from an early version
-    of the cryptopro draft.</td>
+    <td>Dà istruzioni a OpenSSL di aggiungere un'estensione server-hello da una versione precedente della bozza cryptopro.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS</code></td>
-    <td>Instructs OpenSSL to disable a SSL 3.0/TLS 1.0 vulnerability
-    workaround added in OpenSSL 0.9.6d.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare una soluzione alternativa di vulnerabilità SSL 3.0/TLS 1.0 aggiunta in OpenSSL 0.9.6d.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_EPHEMERAL_RSA</code></td>
