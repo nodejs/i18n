@@ -1,4 +1,4 @@
-# C++ 애드온
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 
@@ -55,16 +55,16 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+모든 Node.js Addon들은 다음과 같은 초기화 함수를 사용해야합니다.
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+함수가 아니기때문에 `NODE_MODULE` 뒤에는 세미콜론은 붙이지 않습니다. (`node.h` 참고).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+`module_name` 최종 실행파일의 파일이름과 일치해야만 합니다. (`.node` 로 끝나는 파일 제외).
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
