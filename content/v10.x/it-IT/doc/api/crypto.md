@@ -1945,15 +1945,15 @@ Il modulo `crypto` supporta ancora alcuni algoritmi già compromessi e il cui ut
 
 Gli utenti devono assumersi la piena responsabilità della scelta dell'algoritmo crypto e della dimensione della chiave in base ai propri requisiti di sicurezza.
 
-Based on the recommendations of [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
+In base alle raccomandazioni del documento [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
 
-- MD5 and SHA-1 are no longer acceptable where collision resistance is required such as digital signatures.
-- The key used with RSA, DSA, and DH algorithms is recommended to have at least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to be safe to use for several years.
-- The DH groups of `modp1`, `modp2` and `modp5` have a key size smaller than 2048 bits and are not recommended.
+- MD5 e SHA-1 non sono più accettabili dov'è richiesta la resistenza alle collisioni come ad esempio con le firme digitali.
+- E' consigliato che la chiave utilizzata con gli algoritmi RSA, DSA e DH sia di almeno 2048 bit e quella della curva ECDSA e ECDH di almeno 224 bit, così da avere un'utilizzo sicuro per diversi anni.
+- I gruppi DH di `modp1`, `modp2` e `modp5` hanno chiavi di dimensioni inferiori a 2048 bit e di conseguenza ne è sconsigliato l'utilizzo.
 
-See the reference for other recommendations and details.
+Vedi il riferimento per ulteriori raccomandazioni e dettagli.
 
-### CCM mode
+### Modalità CCM
 
 CCM is one of the two supported [AEAD algorithms](https://en.wikipedia.org/wiki/Authenticated_encryption). Applications which use this mode must adhere to certain restrictions when using the cipher API:
 
@@ -2005,16 +2005,16 @@ try {
 console.log(receivedPlaintext);
 ```
 
-## Crypto Constants
+## Costanti Crypto
 
 The following constants exported by `crypto.constants` apply to various uses of the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 
-### OpenSSL Options
+### Opzioni OpenSSL
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>SSL_OP_ALL</code></td>
