@@ -1961,10 +1961,10 @@ CCM è uno dei due [algoritmi AEAD](https://en.wikipedia.org/wiki/Authenticated_
 - La lunghezza del vettore di inizializzazione (nonce) `N` deve essere compresa tra i 7 e i 13 byte (`7 ≤ N ≤ 13`).
 - La lunghezza del plaintext (testo non codificato) è limitata a `2 ** (8 * (15 - N))` byte.
 - Quando si decodifica, l'authentication tag dev'essere impostato tramite `setAuthTag()` prima di specificare gli additional authenticated data (AAD) e/o chiamare `update()`. In caso contrario, la decodifica non avrà successo e `final()` genererà un errore in conformità con la sezione 2.6 del documento [RFC 3610](https://www.rfc-editor.org/rfc/rfc3610.txt).
-- Using stream methods such as `write(data)`, `end(data)` or `pipe()` in CCM mode might fail as CCM cannot handle more than one chunk of data per instance.
-- When passing additional authenticated data (AAD), the length of the actual message in bytes must be passed to `setAAD()` via the `plaintextLength` option. This is not necessary if no AAD is used.
-- As CCM processes the whole message at once, `update()` can only be called once.
-- Even though calling `update()` is sufficient to encrypt / decrypt the message, applications *must* call `final()` to compute and / or verify the authentication tag.
+- L'utilizzo di metodi stream come `write(data)`, `end(data)` o `pipe()` in modalità CCM potrebbe non avere successo poiché la modalità CCM non può gestire più di un chunk di dati per istanza.
+- Quando vengono passati additional authenticated data (AAD), la lunghezza del messaggio effettivo in byte dev'essere passata a `setAAD()` tramite l'opzione `plaintextLength`. Questo non è necessario se non viene utilizzato nessun AAD.
+- Poiché la modalità CCM elabora l'intero messaggio in una sola volta, `update()` può essere chiamato una sola volta.
+- Anche se chiamare `update()` è sufficiente per codificare/decodificare il messaggio, le applicazioni *devono* chiamare `final()` per calcolare e/o verificare l'authentication tag.
 
 ```js
 const crypto = require('crypto');
@@ -1985,7 +1985,7 @@ const ciphertext = cipher.update(plaintext, 'utf8');
 cipher.final();
 const tag = cipher.getAuthTag();
 
-// Now transmit { ciphertext, nonce, tag }.
+// Adesso trasmetti { ciphertext, nonce, tag }.
 
 const decipher = crypto.createDecipheriv('aes-192-ccm', key, nonce, {
   authTagLength: 16
