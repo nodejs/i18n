@@ -1550,7 +1550,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`db4aef4ac6`](https://github.com/nodejs/node/commit/db4aef4ac6)] - **doc**: cambiar Mac OS X a macOS (JR McEntee) [#12106](https://github.com/nodejs/node/pull/12106)
 * [[`40f292cacd`](https://github.com/nodejs/node/commit/40f292cacd)] - **doc**: añadir ) faltante en CONTRIBUTING.md (Mateusz Konieczny) [#12444](https://github.com/nodejs/node/pull/12444)
 * [[`656c30e11d`](https://github.com/nodejs/node/commit/656c30e11d)] - **doc**: añadir guía para prs de backporting (Evan Lucas) [#11099](https://github.com/nodejs/node/pull/11099)
-* [[`1c1269dfc3`](https://github.com/nodejs/node/commit/1c1269dfc3)] - **doc**: actualizar enlace para PRs que estén llegando (Rich Trott) [#12415](https://github.com/nodejs/node/pull/12415)
+* [[`1c1269dfc3`](https://github.com/nodejs/node/commit/1c1269dfc3)] - **doc**: actualizar enlace para PRs de aterrizaje (Rich Trott) [#12415](https://github.com/nodejs/node/pull/12415)
 * [[`81b53503a7`](https://github.com/nodejs/node/commit/81b53503a7)] - **doc**: añadir a DavidCai1993 a colaboradores (David Cai) [#12435](https://github.com/nodejs/node/pull/12435)
 * [[`c6f3ebd774`](https://github.com/nodejs/node/commit/c6f3ebd774)] - **doc**: corregir error tipográfico en streams.md (John Paul Bamberg) [#12428](https://github.com/nodejs/node/pull/12428)
 * [[`4a18e51c6a`](https://github.com/nodejs/node/commit/4a18e51c6a)] - **doc**: añadir a jkrems a colaboradores (Jan Krems) [#12427](https://github.com/nodejs/node/pull/12427)
