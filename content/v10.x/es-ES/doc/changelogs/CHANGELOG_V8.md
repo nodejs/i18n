@@ -718,9 +718,9 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`baf95b68e5`](https://github.com/nodejs/node/commit/baf95b68e5)] - **tools**: hacer que la herramienta "doc" sea un poco más legible (Tobias Nießen) [#17125](https://github.com/nodejs/node/pull/17125)
 * [[`9a76a6cfcf`](https://github.com/nodejs/node/commit/9a76a6cfcf)] - **tools**: eliminar declaración de función inútil (Tobias Nießen) [#17125](https://github.com/nodejs/node/pull/17125)
 * [[`df39389175`](https://github.com/nodejs/node/commit/df39389175)] - **tools**: evitar usar process.cwd en tools/lint-js (Tobias Nießen) [#17121](https://github.com/nodejs/node/pull/17121)
-* [[`5e5cb1bd54`](https://github.com/nodejs/node/commit/5e5cb1bd54)] - **tools**: usar built-in padStart en lugar de padString (Tobias Nießen) [#17120](https://github.com/nodejs/node/pull/17120)
+* [[`5e5cb1bd54`](https://github.com/nodejs/node/commit/5e5cb1bd54)] - **tools**: usar padStart incorporado en lugar de padString (Tobias Nießen) [#17120](https://github.com/nodejs/node/pull/17120)
 * [[`7658eec62e`](https://github.com/nodejs/node/commit/7658eec62e)] - **tools**: permitir ejecutar test.py sin configurar (Gibson Fahnestock) [#16621](https://github.com/nodejs/node/pull/16621)
-* [[`d7eaa3ffb4`](https://github.com/nodejs/node/commit/d7eaa3ffb4)] - **tools**: pruebas de falla si el archivo de estado está mal formado (Rich Trott) [#16703](https://github.com/nodejs/node/pull/16703)
+* [[`d7eaa3ffb4`](https://github.com/nodejs/node/commit/d7eaa3ffb4)] - **tools**: fallar pruebas si el archivo de estado está mal formado (Rich Trott) [#16703](https://github.com/nodejs/node/pull/16703)
 * [[`8319b68873`](https://github.com/nodejs/node/commit/8319b68873)] - **tools**: intentar instalar js-yaml only una sola vez (Joyee Cheung) [#16661](https://github.com/nodejs/node/pull/16661)
 * [[`a91fb54693`](https://github.com/nodejs/node/commit/a91fb54693)] - **tools**: añadir reparador para no-let-in-for-declaration (Weijia Wang) [#16642](https://github.com/nodejs/node/pull/16642)
 * [[`ba73a67d45`](https://github.com/nodejs/node/commit/ba73a67d45)] - **tools**: actualizar a ESLint 4.10.0 (cjihrig) [#16738](https://github.com/nodejs/node/pull/16738)
@@ -745,13 +745,13 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 ### Cambios Notables
 
 * **buffer**: 
-  * el buffer asignado con un contenido no válido ahora se rellenará con cero (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+  * el buffer asignado con un contenido no válido ahora se rellenará con ceros (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
   * openssl actualizado a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 
 ### Commits
 
-* [[`b05ef978d3`](https://github.com/nodejs/node/commit/b05ef978d3)] - **buffer**: buffer asignado rellenado con cero con contenido no válido (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+* [[`b05ef978d3`](https://github.com/nodejs/node/commit/b05ef978d3)] - **buffer**: buffer rellenado con ceros asignado con contenido no válido (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * [[`18652b6860`](https://github.com/nodejs/node/commit/18652b6860)] - **deps**: actualizar openssl asm y los archivos asm_obsolete (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 * [[`e6c308e237`](https://github.com/nodejs/node/commit/e6c308e237)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`a85f94bd59`](https://github.com/nodejs/node/commit/a85f94bd59)] - **deps**: corregir el error de compilación de asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
