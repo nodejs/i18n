@@ -112,12 +112,12 @@ added: v0.1.94
 
 Las instancias del tipo de `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
 
-- As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
-- Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
+- Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
+- Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
 
-The [`crypto.createCipher()`][] or [`crypto.createCipheriv()`][] methods are used to create `Cipher` instances. `Cipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la consigna `new`.
 
-Example: Using `Cipher` objects as streams:
+Ejemplo: Usar los objetos `Cipher` como streams:
 
 ```js
 const crypto = require('crypto');
