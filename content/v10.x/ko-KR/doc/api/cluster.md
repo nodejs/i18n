@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Running Node.js will now share port 8000 between the workers:
+이제 Node.js는 8000번 포트를 worker들과 공유합니다.
 
 ```txt
 $ node server.js
@@ -47,15 +47,15 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+만약 Windows를 사용하신다면, named pipe server를 worker에서 설정하는 것은 아직 불가능합니다.
 
-## How It Works
+## 작동 방법
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+worker 프로세스들은 [`child_process.fork()`][] 메소드를 통해 생성됩니다. 이 프로세스들은 IPC를 통해 부모프로세스와 통신할 수 있고 서버에 handle들은 주고 받을 수 있습니다.
 
-The cluster module supports two methods of distributing incoming connections.
+클러스터 모듈은 연결시도를 분산하는 두가지 방법을 지원합니다.
 
 The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
 
