@@ -50,11 +50,11 @@ Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych z
 * **sprawdź**: `ustawNatychmiastowo()` wywołania zwrotne są wywoływane tutaj.
 * **zamknięte wywołania zwrotne**: np `socket.on('zamknij',...)`.
 
-Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.
+Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dowolne asynchroniczne operacje wej/wyj lub timerów i wyłącza się, jeśli nie.
 
 ## Fazy w Szczegółach
 
-### timers
+### timery
 
 A timer specifies the **threshold** *after which* a provided callback *may be executed* rather than the **exact** time a person *wants it to be executed*. Timers callbacks will run as early as they can be scheduled after the specified amount of time has passed; however, Operating System scheduling or the running of other callbacks may delay them.
 
