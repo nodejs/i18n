@@ -148,7 +148,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Ejemplo: Usando los métodos [`cipher.update()`][] y [`cipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
