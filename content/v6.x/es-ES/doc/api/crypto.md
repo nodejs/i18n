@@ -60,7 +60,7 @@ const cert2 = crypto.Certificate();
 added: v0.11.8
 -->
 
-The `spkac` data structure includes a public key and a challenge. The `certificate.exportChallenge()` returns the challenge component in the form of a Node.js [`Buffer`][]. The `spkac` argument can be either a string or a [`Buffer`][].
+La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportChallenge()` regresa al desafío del componente en la forma de un [`uffer`][] del Node.js. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
 
 ```js
 const cert = require('crypto').Certificate();
@@ -76,7 +76,7 @@ console.log(challenge.toString('utf8'));
 added: v0.11.8
 -->
 
-The `spkac` data structure includes a public key and a challenge. The `certificate.exportPublicKey()` returns the public key component in the form of a Node.js [`Buffer`][]. The `spkac` argument can be either a string or a [`Buffer`][].
+La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportPublicKey()` regresa al componente clave público en la forma de un [`Buffer`][]. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
 
 ```js
 const cert = require('crypto').Certificate();
