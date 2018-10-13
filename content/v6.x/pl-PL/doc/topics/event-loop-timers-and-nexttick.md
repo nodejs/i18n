@@ -99,18 +99,18 @@ Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli z
 
 ### Wej/Wyj wywołania zwrotne
 
-Ta faza wykonuje wywołania zwrotne dla niektórych operacji systemowych, takich jak typy błędów TCP. Na przykład, jeśli gniazdo TCP otrzymuje `POŁĄCZENIE ODRZUCONE` kiedy próbując się połączyć, niektóre systemy \* nix chcą czekają na zgłoszenie błędu. This will be queued to execute in the **I/O callbacks** phase.
+Ta faza wykonuje wywołania zwrotne dla niektórych operacji systemowych, takich jak typy błędów TCP. Na przykład, jeśli gniazdo TCP otrzymuje `POŁĄCZENIE ODRZUCONE` kiedy próbując się połączyć, niektóre systemy \* nix chcą czekają na zgłoszenie błędu. Zostanie on umieszczony w kolejce do wykonania w fazie **wywołania zwrotne**.
 
-### poll
+### odpytywanie
 
-The **poll** phase has two main functions:
+Faza **odpytywania** ma dwie główne funkcje:
 
-1. Executing scripts for timers whose threshold has elapsed, then
-2. Processing events in the **poll** queue.
+1. Wykonywanie skryptów dla timerów, których próg upłynął, a następnie
+2. Przetwarzanie zdarzeń w kolejce **odpytywania **.
 
-When the event loop enters the **poll** phase *and there are no timers scheduled*, one of two things will happen:
+Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych timerów *, nastąpi jedna z dwóch rzeczy:
 
-* *If the **poll** queue **is not empty***, the event loop will iterate through its queue of callbacks executing them synchronously until either the queue has been exhausted, or the system-dependent hard limit is reached.
+* *jeśli **odpytywania**kolejka**nie jest pusta***, pętla zdarzeń zostanie powtórzona poprzez kolejkę wywołań zwrotnych, synchronicznie do czasu albo kolejka została wyczerpana, albo zależny od systemu surowy limit został osiągnięty.
 
 * *If the **poll** queue **is empty***, one of two more things will happen:
     
