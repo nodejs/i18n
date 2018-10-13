@@ -830,7 +830,7 @@ added: v0.4.0
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -856,7 +856,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Example:
+Ejemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -885,7 +885,7 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here if you need to send multiple headers with the same name.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -936,7 +936,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusCode = 404;
@@ -954,7 +954,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1007,7 +1007,7 @@ added: v0.1.30
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Example:
+Ejemplo:
 
 ```js
 const body = 'hello world';
@@ -1082,7 +1082,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. Ejemplo:
 
 ```js
 // Prints something like:
@@ -1246,7 +1246,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-If you would like to parse the URL into its parts, you can use `require('url').parse(request.url)`. Example:
+If you would like to parse the URL into its parts, you can use `require('url').parse(request.url)`. Ejemplo:
 
 ```txt
 $ node
@@ -1259,7 +1259,7 @@ $ node
 }
 ```
 
-If you would like to extract the parameters from the query string, you can use the `require('querystring').parse` function, or pass `true` as the second argument to `require('url').parse`. Example:
+If you would like to extract the parameters from the query string, you can use the `require('querystring').parse` function, or pass `true` as the second argument to `require('url').parse`. Ejemplo:
 
 ```txt
 $ node
@@ -1413,7 +1413,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Example:
+Ejemplo:
 
 ```js
 const postData = querystring.stringify({
