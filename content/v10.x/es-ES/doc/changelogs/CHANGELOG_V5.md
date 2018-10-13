@@ -525,18 +525,18 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`5aa17dc136`](https://github.com/nodejs/node/commit/5aa17dc136)] - **tools**: soporta la prueba de problemas conocidos (cjihrig) [#5528](https://github.com/nodejs/node/pull/5528)
 * [[`9a3e87e9a8`](https://github.com/nodejs/node/commit/9a3e87e9a8)] - **tools**: habilitar linting para las pruebas de rendimiento (Rich Trott) [#5517](https://github.com/nodejs/node/pull/5517)
 * [[`c4fa2a6715`](https://github.com/nodejs/node/commit/c4fa2a6715)] - **tools**: habilitar no-extra-parens en ESLint (Rich Trott) [#5512](https://github.com/nodejs/node/pull/5512)
-* [[`971edde0cb`](https://github.com/nodejs/node/commit/971edde0cb)] - **util**: improve format() performance further (Brian White) [#5360](https://github.com/nodejs/node/pull/5360)
-* [[`c32d460747`](https://github.com/nodejs/node/commit/c32d460747)] - **util**: improve util.format performance (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
+* [[`971edde0cb`](https://github.com/nodejs/node/commit/971edde0cb)] - **util**: mejorar aún más el rendimiento de format() (Brian White) [#5360](https://github.com/nodejs/node/pull/5360)
+* [[`c32d460747`](https://github.com/nodejs/node/commit/c32d460747)] - **util**: mejorar el rendimiento de util.format (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
 
 <a id="5.7.1"></a>
 
-## 2016-03-02, Version 5.7.1 (Stable), @Fishrock123
+## 2016-03-02, Versión 5.7.1 (Estable), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
-* **governance**: The Core Technical Committee (CTC) added four new members to help guide Node.js core development: Evan Lucas, Rich Trott, Ali Ijaz Sheikh and Сковорода Никита Андреевич (Nikita Skovoroda).
-* **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507). 
-  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
+* **governance**: El Núcleo del Comité Técnico (CTC) añadió cuatro nuevos miembros para ayudar a guiar el el desarrollo más importante de Node.js: Evan Lucas, Rich Trott, Ali Ijaz Sheikh y Сковорода Никита Андреевич (Nikita Skovoroda).
+* **openssl**: Actualizar de 1.0.2f a 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507). 
+  * Reparar un defecto double-free defect en el análisis de claves DSA mañformadas que potencialmente pudieran ser usadas para DoS o ataques de corrupción de memoria. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
   * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are *unlikely* to be possible. More info is available at [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
   * Fix a defect that makes the *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
 * Fixed several regressions that appeared in v5.7.0: 
