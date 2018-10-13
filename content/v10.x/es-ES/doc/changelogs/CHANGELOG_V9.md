@@ -148,17 +148,17 @@ Un problema de infraestructura causó que se promoviera un instalador msi no ope
 * [[`cc68bc27f8`](https://github.com/nodejs/node/commit/cc68bc27f8)] - **test**: add more asserts to `test-internal-errors` (Refael Ackermann) [#13686](https://github.com/nodejs/node/pull/13686)
 * [[`6bc49f03b9`](https://github.com/nodejs/node/commit/6bc49f03b9)] - **test**: errores http2 en req.close() (Trivikram) [#18854](https://github.com/nodejs/node/pull/18854)
 * [[`53d7fbbbf5`](https://github.com/nodejs/node/commit/53d7fbbbf5)] - **tools**: no emitir utf-8 ilegal de icutrim/iculslocs (Steven R. Loomis) [#19756](https://github.com/nodejs/node/pull/19756)
-* [[`b80d169e7c`](https://github.com/nodejs/node/commit/b80d169e7c)] - **tools**: apply editorconfig rules to tools also (Tobias Nießen) [#19521](https://github.com/nodejs/node/pull/19521)
-* [[`239a036317`](https://github.com/nodejs/node/commit/239a036317)] - **tools**: remove src dir from JS editorconfig rule (Tobias Nießen) [#19521](https://github.com/nodejs/node/pull/19521)
+* [[`b80d169e7c`](https://github.com/nodejs/node/commit/b80d169e7c)] - **tools**: aplicar reglas editorconfig también a herramientas (Tobias Nießen) [#19521](https://github.com/nodejs/node/pull/19521)
+* [[`239a036317`](https://github.com/nodejs/node/commit/239a036317)] - **tools**: eliminar directorio src de regla editorconfig de JS (Tobias Nießen) [#19521](https://github.com/nodejs/node/pull/19521)
 * [[`7043e95fb7`](https://github.com/nodejs/node/commit/7043e95fb7)] - **tools**: dry utility function in tools/doc/json.js (Vse Mozhet Byt) [#19692](https://github.com/nodejs/node/pull/19692)
 * [[`140611b2c6`](https://github.com/nodejs/node/commit/140611b2c6)] - **tools**: fix comment nits in tools/doc/\*.js files (Vse Mozhet Byt) [#19696](https://github.com/nodejs/node/pull/19696)
 * [[`2c5d53f7cb`](https://github.com/nodejs/node/commit/2c5d53f7cb)] - **tools**: fix nits in tools/doc/type-parser.js (Vse Mozhet Byt) [#19612](https://github.com/nodejs/node/pull/19612)
-* [[`fdc51a1331`](https://github.com/nodejs/node/commit/fdc51a1331)] - **url**: remove redundant function (Sergey Golovin) [#19076](https://github.com/nodejs/node/pull/19076)
-* [[`99e3c77808`](https://github.com/nodejs/node/commit/99e3c77808)] - **url**: refactor "escapeParam" function to make it common (Sergey Golovin) [#19076](https://github.com/nodejs/node/pull/19076)
+* [[`fdc51a1331`](https://github.com/nodejs/node/commit/fdc51a1331)] - **url**: eliminar función redundante (Sergey Golovin) [#19076](https://github.com/nodejs/node/pull/19076)
+* [[`99e3c77808`](https://github.com/nodejs/node/commit/99e3c77808)] - **url**: refactorizar función "escapeParam" para hacerla común (Sergey Golovin) [#19076](https://github.com/nodejs/node/pull/19076)
 
 <a id="9.10.1"></a>
 
-## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
+## 2018-03-29, Versión 9.10.1 (Actual), @MylesBorin
 
 ### Cambios Notables
 
@@ -170,7 +170,7 @@ Tenga en cuenta que las versiones 10.X y posteriores de Node.js se compilarán c
 
 <a id="9.10.0"></a>
 
-## 2018-03-28, Version 9.10.0 (Current), @MylesBorins prepared by @targos
+## 2018-03-28, Versión 9.10.0 (Actual), @MylesBorins preparado por @targos
 
 Esto es una actualización de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
@@ -204,25 +204,25 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 ### Commits
 
-* [[`926214aefe`](https://github.com/nodejs/node/commit/926214aefe)] - **cluster**: add support for NODE\_OPTIONS="--inspect" (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
+* [[`926214aefe`](https://github.com/nodejs/node/commit/926214aefe)] - **cluster**: agregar soporte para NODE\_OPTIONS="--inspect" (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
 * [[`6ead99aa73`](https://github.com/nodejs/node/commit/6ead99aa73)] - **console**: no tragar los errores excedidos de la pila de llamadas (Dan Kaplun) [#19423](https://github.com/nodejs/node/pull/19423)
 * [[`02671dc12b`](https://github.com/nodejs/node/commit/02671dc12b)] - **crypto**: actualizar los certificados root (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
-* [[`fd8c79ddfc`](https://github.com/nodejs/node/commit/fd8c79ddfc)] - **(SEMVER-MINOR)** **crypto**: add docs & tests for cert.pubkey & cert.fingerprint256 (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
-* [[`23312675cb`](https://github.com/nodejs/node/commit/23312675cb)] - **(SEMVER-MINOR)** **crypto**: provide full cert details to checkServerIdentity (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+* [[`fd8c79ddfc`](https://github.com/nodejs/node/commit/fd8c79ddfc)] - **(SEMVER-MINOR)** **crypto**: agregar documentos y pruebas para cert.pubkey & cert.fingerprint256 (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+* [[`23312675cb`](https://github.com/nodejs/node/commit/23312675cb)] - **(SEMVER-MINOR)** **crypto**: proporcionar detalles completos del certificado a checkServerIdentity (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * [[`26e2938a50`](https://github.com/nodejs/node/commit/26e2938a50)] - **(SEMVER-MINOR)** **crypto**: add cert.pubkey containing the raw pubkey of certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
-* [[`f5d9324315`](https://github.com/nodejs/node/commit/f5d9324315)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`f5eb182b50`](https://github.com/nodejs/node/commit/f5eb182b50)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`f5d9324315`](https://github.com/nodejs/node/commit/f5d9324315)] - **deps**: añadir -no\_rand\_screen a openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`f5eb182b50`](https://github.com/nodejs/node/commit/f5eb182b50)] - **deps**: reparar error de compilación de asm de openssl en x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`ddcb3fc886`](https://github.com/nodejs/node/commit/ddcb3fc886)] - **deps**: corregir el error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`d908169bad`](https://github.com/nodejs/node/commit/d908169bad)] - **deps**: copiar todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`0cd883fe09`](https://github.com/nodejs/node/commit/0cd883fe09)] - **deps**: Actualizar las fuentes de openssl a 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`c39167dc26`](https://github.com/nodejs/node/commit/c39167dc26)] - **deps**: rechazar los espacios en blanco interiores en Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
-* [[`3bc15a69ae`](https://github.com/nodejs/node/commit/3bc15a69ae)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
+* [[`3bc15a69ae`](https://github.com/nodejs/node/commit/3bc15a69ae)] - **deps**: actualizar http-parser a v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`6591d9f761`](https://github.com/nodejs/node/commit/6591d9f761)] - **deps**: cherry-pick 0c35b72 from upstream V8 (Gus Caplan) [#18038](https://github.com/nodejs/node/pull/18038)
 * [[`e533911696`](https://github.com/nodejs/node/commit/e533911696)] - **doc**: remove use of "random port" re dgram send (Thomas Hunter II) [#19620](https://github.com/nodejs/node/pull/19620)
 * [[`3894981af2`](https://github.com/nodejs/node/commit/3894981af2)] - **doc**: improve assert legacy text (Rich Trott) [#19622](https://github.com/nodejs/node/pull/19622)
-* [[`8191ada9ae`](https://github.com/nodejs/node/commit/8191ada9ae)] - **doc**: improve Buffer() text (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
-* [[`2fadc9ef68`](https://github.com/nodejs/node/commit/2fadc9ef68)] - **doc**: fix run-on sentence in buffer.md (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
-* [[`962c5816a2`](https://github.com/nodejs/node/commit/962c5816a2)] - **doc**: change v-notation for version in buffer.md (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
+* [[`8191ada9ae`](https://github.com/nodejs/node/commit/8191ada9ae)] - **doc**: mejorar texto de Buffer() (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
+* [[`2fadc9ef68`](https://github.com/nodejs/node/commit/2fadc9ef68)] - **doc**: reparar oración de ejecución en buffer.md (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
+* [[`962c5816a2`](https://github.com/nodejs/node/commit/962c5816a2)] - **doc**: cambiar notación v por versión en buffer.md (Rich Trott) [#19567](https://github.com/nodejs/node/pull/19567)
 * [[`5a2f336994`](https://github.com/nodejs/node/commit/5a2f336994)] - **doc**: add missing fs.Stats.size section (Vse Mozhet Byt) [#19583](https://github.com/nodejs/node/pull/19583)
 * [[`8653c42a41`](https://github.com/nodejs/node/commit/8653c42a41)] - **doc**: rename HTTP2 to HTTP/2 (Timothy Gu) [#19603](https://github.com/nodejs/node/pull/19603)
 * [[`b70ac0ab2e`](https://github.com/nodejs/node/commit/b70ac0ab2e)] - **doc**: remove confusing note about child process stdio (Anna Henningsen) [#19552](https://github.com/nodejs/node/pull/19552)
