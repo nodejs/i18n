@@ -227,15 +227,15 @@ worker 에서 이 함수는 먼저 `'close'` event를 기다리고 IPC 채널을
 
 master에서는, 내부 메세지가 worker에게 전송되어 worker 자신 스스로 `.disconnect()` 를 호출하도록 합니다.
 
-`.ExitedAfterDisconnect` 가 설정되도록 만듭니다.
+실행 이후에 `.ExitedAfterDisconnect` 가 1로 설정됩니다.
 
 중요. 서버가 종료된 이후 더이상 새로운 연결을 허가 하지 않습니다. 하지만 동작하고 있는 다른 worker에 의해 연결이 허가 될 수 있습니다. 기존연결을 정상적으로 허용 합니다. 더 이상 남은 연결이 없는 경우, worker가 정상적으로 종료될 수 있도록 IPC채널이 종료됩니다. ([`server.close()`] 참고)
 
-The above applies *only* to server connections, client connections are not automatically closed by workers, and disconnect does not wait for them to close before exiting.
+위의 내용은 서버 연결에만 적용됩니다. 클라이언트와의 연결은 자동적으로 worker에 의해 종료되지 않습니다. 또한 disconnect는 연결들이 close 되고 종료되기까지 기다리지 않습니다.
 
-Note that in a worker, `process.disconnect` exists, but it is not this function, it is [`disconnect`][].
+중요. worker안에는 `process.disconnect` 가 존재합니다, 하지만 이것은 함수가 아니고 [`disconnect`][]입니다.
 
-Because long living server connections may block workers from disconnecting, it may be useful to send a message, so application specific actions may be taken to close them. It also may be useful to implement a timeout, killing a worker if the `'disconnect'` event has not been emitted after some time.
+Because long living server connections may block workers from disconnecting, it may be useful to send a message, so application specific actions may be taken to close them. 타임아웃을 사용하는 것도 유용한 방법입니다. `'disconnect'` event가 일정 시간이 지난 후에도 발생하지 않을 경우 worker를 종료하는 것입니다.
 
 ```js
 if (cluster.isMaster) {
@@ -257,14 +257,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // connections never end
+    // 연결이 종료되지 않습니다.
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // initiate graceful close of any connections to server
+      // 서버에 대한 모든 연결을 정상적으로 종료하기 위해 준비
     }
   });
 }
