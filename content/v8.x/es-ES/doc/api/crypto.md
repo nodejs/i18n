@@ -104,13 +104,13 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-## Class: Cipher
+## Tipo: Cipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Cipher` class are used to encrypt data. The class can be used in one of two ways:
+Las instancias del tipo de `Cipher` son usadas para encriptar datos. The class can be used in one of two ways:
 
 - As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
 - Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
