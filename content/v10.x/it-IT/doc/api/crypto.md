@@ -2114,15 +2114,15 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1_1</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1.1</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.1</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1_2</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1.2</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.2</td>
   </tr>
     <td><code>SSL_OP_PKCS1_CHECK_1</code></td>
     <td></td>
@@ -2133,13 +2133,13 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_SINGLE_DH_USE</code></td>
-    <td>Instructs OpenSSL to always create a new key when using
-    temporary/ephemeral DH parameters.</td>
+    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
+    i parametri DH temporanei/effimeri.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_SINGLE_ECDH_USE</code></td>
-    <td>Instructs OpenSSL to always create a new key when using
-    temporary/ephemeral ECDH parameters.</td>
+    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
+    i parametri ECDH temporanei/effimeri.</td>
   </tr>
     <td><code>SSL_OP_SSLEAY_080_CLIENT_DH_BUG</code></td>
     <td></td>
@@ -2158,7 +2158,7 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_TLS_ROLLBACK_BUG</code></td>
-    <td>Instructs OpenSSL to disable version rollback attack detection.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare il rilevamento degli attacchi di rollback della versione.</td>
   </tr>
 </table>
 
@@ -2171,39 +2171,39 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RSA</code></td>
-    <td>Limit engine usage to RSA</td>
+    <td>Limita l'utilizzo dell'engine a RSA</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DSA</code></td>
-    <td>Limit engine usage to DSA</td>
+    <td>Limita l'utilizzo dell'engine a DSA</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DH</code></td>
-    <td>Limit engine usage to DH</td>
+    <td>Limita l'utilizzo dell'engine a DH</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RAND</code></td>
-    <td>Limit engine usage to RAND</td>
+    <td>Limita l'utilizzo dell'engine a RAND</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_EC</code></td>
-    <td>Limit engine usage to EC</td>
+    <td>Limita l'utilizzo dell'engine a EC</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_CIPHERS</code></td>
-    <td>Limit engine usage to CIPHERS</td>
+    <td>Limita l'utilizzo dell'engine a CIPHERS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DIGESTS</code></td>
-    <td>Limit engine usage to DIGESTS</td>
+    <td>Limita l'utilizzo dell'engine a DIGESTS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_PKEY_METHS</code></td>
-    <td>Limit engine usage to PKEY_METHDS</td>
+    <td>Limita l'utilizzo dell'engine a PKEY_METHDS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_PKEY_ASN1_METHS</code></td>
-    <td>Limit engine usage to PKEY_ASN1_METHS</td>
+    <td>Limita l'utilizzo dell'engine a PKEY_ASN1_METHS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_ALL</code></td>
