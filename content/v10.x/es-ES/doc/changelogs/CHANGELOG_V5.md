@@ -373,12 +373,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`e20d0b8802`](https://github.com/nodejs/node/commit/e20d0b8802)] - **doc**: explicar mensaje de error de archivo principal faltante (Wolfgang Steiner) [#5812](https://github.com/nodejs/node/pull/5812)
 * [[`e99082e32d`](https://github.com/nodejs/node/commit/e99082e32d)] - **doc**: añadir una página de documento de opciones cli (Jeremiah Senkpiel) [#5787](https://github.com/nodejs/node/pull/5787)
 * [[`0ffd794b27`](https://github.com/nodejs/node/commit/0ffd794b27)] - **doc**: Añadir ejemplo de Windows para Path.format (Mithun Patel) [#5700](https://github.com/nodejs/node/pull/5700)
-* [[`f53cc37578`](https://github.com/nodejs/node/commit/f53cc37578)] - **doc**: gramática, claridad y los elances en el documento de los temporizadores (Bryan English) [#5792](https://github.com/nodejs/node/pull/5792)
+* [[`f53cc37578`](https://github.com/nodejs/node/commit/f53cc37578)] - **doc**: gramática, claridad y los enlaces en el documento de los temporizadores (Bryan English) [#5792](https://github.com/nodejs/node/pull/5792)
 * [[`3ada8cc09a`](https://github.com/nodejs/node/commit/3ada8cc09a)] - **doc**: alinear doc/api/tls.markdown con guía de estilo (Stefano Vozza) [#5706](https://github.com/nodejs/node/pull/5706)
-* [[`5d28ce3942`](https://github.com/nodejs/node/commit/5d28ce3942)] - **doc**: topico bloquear vs no-bloquear (Jarrett Widman) [#5326](https://github.com/nodejs/node/pull/5326)
+* [[`5d28ce3942`](https://github.com/nodejs/node/commit/5d28ce3942)] - **doc**: bloquear tema vs no-bloquear (Jarrett Widman) [#5326](https://github.com/nodejs/node/pull/5326)
 * [[`d9b4e15f75`](https://github.com/nodejs/node/commit/d9b4e15f75)] - **doc**: reparar error tipográfico en ejemplo randomBytes sincrónico (Andrea Giammarchi) [#5781](https://github.com/nodejs/node/pull/5781)
 * [[`d8318c2226`](https://github.com/nodejs/node/commit/d8318c2226)] - **doc**: reparar firmas update() crypto (Brian White) [#5500](https://github.com/nodejs/node/pull/5500)
-* [[`15c5662959`](https://github.com/nodejs/node/commit/15c5662959)] - **doc**: reparar comentarios devueltos multilínea en querystring (Claudio Rodriguez) [#5705](https://github.com/nodejs/node/pull/5705)
+* [[`15c5662959`](https://github.com/nodejs/node/commit/15c5662959)] - **doc**: reparar comentarios multilínea devueltos en querystring (Claudio Rodriguez) [#5705](https://github.com/nodejs/node/pull/5705)
 * [[`75f723c0aa`](https://github.com/nodejs/node/commit/75f723c0aa)] - **doc**: reparar comentarios de ruta de documento inválidos (Rich Trott) [#5670](https://github.com/nodejs/node/pull/5670)
 * [[`724b87d75c`](https://github.com/nodejs/node/commit/724b87d75c)] - **doc**: explicar algoritmo path.format() (Rich Trott) [#5688](https://github.com/nodejs/node/pull/5688)
 * [[`89df17ed0b`](https://github.com/nodejs/node/commit/89df17ed0b)] - **doc**: reparar valor devuelto de métodos de escritura (Felix Böhm) [#5736](https://github.com/nodejs/node/pull/5736)
@@ -393,7 +393,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`ca971b0d77`](https://github.com/nodejs/node/commit/ca971b0d77)] - **test**: tamaños de fragmentos más pequeños para person.jpg más pequeños (Jérémy Lal) [#5813](https://github.com/nodejs/node/pull/5813)
 * [[`f95fc175eb`](https://github.com/nodejs/node/commit/f95fc175eb)] - **test**: remover perfil icc no-gratuito de person.jpg (Jérémy Lal) [#5813](https://github.com/nodejs/node/pull/5813)
 * [[`7c2c7b0577`](https://github.com/nodejs/node/commit/7c2c7b0577)] - **test**: remover temporizador de test-http-1.0 (Santiago Gimeno) [#5129](https://github.com/nodejs/node/pull/5129)
-* [[`70512e51a4`](https://github.com/nodejs/node/commit/70512e51a4)] - **test**: prueba de completación de pestaña repl (Santiago Gimeno) [#5534](https://github.com/nodejs/node/pull/5534)
+* [[`70512e51a4`](https://github.com/nodejs/node/commit/70512e51a4)] - **test**: prueba de completar pestaña repl (Santiago Gimeno) [#5534](https://github.com/nodejs/node/pull/5534)
 * [[`89f091d621`](https://github.com/nodejs/node/commit/89f091d621)] - **test**: mejorar test-net-connect-options-ipv6.js (Michael Dawson) [#5791](https://github.com/nodejs/node/pull/5791)
 * [[`d2fa64490f`](https://github.com/nodejs/node/commit/d2fa64490f)] - **test**: reparar `test-cluster-worker-kill` (Santiago Gimeno) [#5814](https://github.com/nodejs/node/pull/5814)
 * [[`f0d885a0a9`](https://github.com/nodejs/node/commit/f0d885a0a9)] - **test**: reparar test-cluster-shared-leak flaky (Claudio Rodriguez) [#5802](https://github.com/nodejs/node/pull/5802)
@@ -410,7 +410,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ### Cambios notables
 
-* **contextify**: Reparado un problema consumo de memoria relacionado al fuerte uso de `vm.createContext` y `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
+* **contextify**: Reparado un problema de consumo de memoria relacionado al fuerte uso de `vm.createContext` y `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
 * **gobernanza**: Los siguientes miembros han sido añadidos como colaboradores: 
   * Andreas Madsen (@AndreasMadsen)
   * Benjamin Gruenbaum (@benjamingr)
@@ -426,7 +426,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **v8**: hacebbackport fb4ccae del upstream v8 (Vladimir Krivosheev) #4231 
   * eventos de ruptura de v8 ofrecerán mejor soporte para depursdpres externos
 * **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
-  * Anteriormente, si multiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
+  * Anteriormente, si múltiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
 
 ### Commits
 
