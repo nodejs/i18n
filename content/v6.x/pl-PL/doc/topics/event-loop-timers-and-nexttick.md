@@ -56,7 +56,7 @@ Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dow
 
 ### timery
 
-A timer specifies the **threshold** *after which* a provided callback *may be executed* rather than the **exact** time a person *wants it to be executed*. Timers callbacks will run as early as they can be scheduled after the specified amount of time has passed; however, Operating System scheduling or the running of other callbacks may delay them.
+Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Timers callbacks will run as early as they can be scheduled after the specified amount of time has passed; however, Operating System scheduling or the running of other callbacks may delay them.
 
 ***Note**: Technically, the [**poll** phase](#poll) controls when timers are executed.*
 
