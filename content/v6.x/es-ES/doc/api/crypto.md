@@ -315,11 +315,11 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.7.1
 -->
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar al `decipher.setAutoPadding(false)` deshabilitará automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+Desactivar el llenado automático sólo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloques cifrados.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.update()`][].
+El método `decipher.setAutoPadding()` debe ser llamado antes de [`decipher.update()`][].
 
 Regresa al `this` para el método de encadenamiento.
 
@@ -329,13 +329,13 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.1.94
 -->
 
-Updates the decipher with `data`. If the `input_encoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string que el código especificado. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-The `output_encoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
-## Class: DiffieHellman
+## Tipo: DiffieHellman
 
 <!-- YAML
 added: v0.5.0
