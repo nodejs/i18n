@@ -784,9 +784,9 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 ### Commits
 
-* [[`1bf6250b99`](https://github.com/nodejs/node/commit/1bf6250b99)] - doc : mencionar "constant-time" en crypto doc (Mithun Sasidharan) [#16604](https://github.com/nodejs/node/pull/16604)
+* [[`1bf6250b99`](https://github.com/nodejs/node/commit/1bf6250b99)] - doc : mencionar "constant-time" en doc de crypto (Mithun Sasidharan) [#16604](https://github.com/nodejs/node/pull/16604)
 * [[`585f8698af`](https://github.com/nodejs/node/commit/585f8698af)] - **build**: incluir src\tracing al hacer linting en win (Daniel Bevenius) [#16720](https://github.com/nodejs/node/pull/16720)
-* [[`d9a18beaa6`](https://github.com/nodejs/node/commit/d9a18beaa6)] - **build**: suprimir la salida lint-md (Gibson Fahnestock) [#16551](https://github.com/nodejs/node/pull/16551)
+* [[`d9a18beaa6`](https://github.com/nodejs/node/commit/d9a18beaa6)] - **build**: suprimir la salida de lint-md (Gibson Fahnestock) [#16551](https://github.com/nodejs/node/pull/16551)
 * [[`4e848d4afb`](https://github.com/nodejs/node/commit/4e848d4afb)] - **build**: añadir coma faltante en la lista de fuentes (Daniel Bevenius) [#16613](https://github.com/nodejs/node/pull/16613)
 * [[`9df1e8f10e`](https://github.com/nodejs/node/commit/9df1e8f10e)] - **console**: evitar añadir infinitos listeners de errores (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
 * [[`7ba037592d`](https://github.com/nodejs/node/commit/7ba037592d)] - **deps**: hacer cherry-pick a cc55747 desde upstream de V8 (Franziska Hinkelmann) [#16890](https://github.com/nodejs/node/pull/16890)
@@ -812,11 +812,11 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`d2e4a87321`](https://github.com/nodejs/node/commit/d2e4a87321)] - **doc**: cómo decodificar buffers que se extienden desde "Writable" (dicearr) [#16403](https://github.com/nodejs/node/pull/16403)
 * [[`a2fd9a3cf2`](https://github.com/nodejs/node/commit/a2fd9a3cf2)] - **doc**: añadir la regla de incluir *-inl.h a la guía de estilo de C ++ (Joyee Cheung) [#16548](https://github.com/nodejs/node/pull/16548)
 * [[`9b8e2a68d8`](https://github.com/nodejs/node/commit/9b8e2a68d8)] - **http**: usar las flechas fns para el léxico `this` en "Agent" (Bryan English) [#16475](https://github.com/nodejs/node/pull/16475)
-* [[`29efb02f12`](https://github.com/nodejs/node/commit/29efb02f12)] - **http2**: múltiples limpiezas de código más pequeños (James M Snell) [#16764](https://github.com/nodejs/node/pull/16764)
+* [[`29efb02f12`](https://github.com/nodejs/node/commit/29efb02f12)] - **http2**: múltiples limpiezas de código más pequeñas (James M Snell) [#16764](https://github.com/nodejs/node/pull/16764)
 * [[`658301664f`](https://github.com/nodejs/node/commit/658301664f)] - **http2**: mejorar errores arrojados en la validación de cabecera (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
 * [[`8cf8a327c8`](https://github.com/nodejs/node/commit/8cf8a327c8)] - **http2**: refactorizar manejo de ajustes (James M Snell) [#16668](https://github.com/nodejs/node/pull/16668)
 * [[`4faf2ec783`](https://github.com/nodejs/node/commit/4faf2ec783)] - **lib**: reemplazar la concatenación de strings con plantilla (Suryanarayana Murthy N) [#16933](https://github.com/nodejs/node/pull/16933)
-* [[`14f8cee401`](https://github.com/nodejs/node/commit/14f8cee401)] - **lib**: guardar la consola "inspector" usando una variable de proceso (Daniel Bevenius) [#15008](https://github.com/nodejs/node/pull/15008)
+* [[`14f8cee401`](https://github.com/nodejs/node/commit/14f8cee401)] - **lib**: proteger la consola "inspector" usando una variable de proceso (Daniel Bevenius) [#15008](https://github.com/nodejs/node/pull/15008)
 * [[`2ad051d62c`](https://github.com/nodejs/node/commit/2ad051d62c)] - **lib**: cambiar string concatenada a plantilla (Pawan Jangid) [#16930](https://github.com/nodejs/node/pull/16930)
 * [[`28f036045b`](https://github.com/nodejs/node/commit/28f036045b)] - **lib**: cambiar string concatenada a plantilla (Nayana Das K) [#16925](https://github.com/nodejs/node/pull/16925)
 * [[`134c2f31f2`](https://github.com/nodejs/node/commit/134c2f31f2)] - **lib**: reemplazar string concatenada con plantilla (subrahmanya chari p) [#16917](https://github.com/nodejs/node/pull/16917)
