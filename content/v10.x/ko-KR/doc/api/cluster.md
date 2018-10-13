@@ -164,7 +164,7 @@ worker 안에서는, `process.on('message')` 도 사용됩니다.
 
 [`process` event: `'message'`][] 를 참고하세요.
 
-As an example, here is a cluster that keeps count of the number of requests in the master process using the message system:
+메세지 시스템을 사용해 클러스터가 master 프로세스에 들어오는 요청의 개수를 세는 예시입니다.
 
 ```js
 const cluster = require('cluster');
@@ -172,7 +172,7 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Keep track of http requests
+  // http 요청을 추적합니다.
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
@@ -184,25 +184,11 @@ if (cluster.isMaster) {
       numReqs += 1;
     }
   }
-
-  // Start workers and listen for messages containing notifyRequest
-  const numCPUs = require('os').cpus().length;
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-
-  for (const id in cluster.workers) {
-    cluster.workers[id].on('message', messageHandler);
-  }
-
-} else {
-
-  // Worker processes have a http server.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
 
-    // notify master about the request
+    // master 에게 요청정보를 알려준다.
     process.send({ cmd: 'notifyRequest' });
   }).listen(8000);
 }
@@ -214,15 +200,15 @@ if (cluster.isMaster) {
 added: v0.7.0
 -->
 
-Similar to the `cluster.on('online')` event, but specific to this worker.
+`cluster.on('online')` event와 비슷하지만, 해당 worker에만 사용할수 있습니다.
 
 ```js
 cluster.fork().on('online', () => {
-  // Worker is online
+  // worker 가 동작중입니다.
 });
 ```
 
-It is not emitted in the worker.
+worker 안에서 사용할 수 없습니다.
 
 ### worker.disconnect()
 
@@ -235,7 +221,7 @@ changes:
     description: This method now returns a reference to `worker`.
 -->
 
-* Returns: {cluster.Worker} A reference to `worker`.
+* 리턴값: {cluster.Worker} A reference to `worker`.
 
 In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
 
