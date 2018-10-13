@@ -171,9 +171,9 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Returns any remaining enciphered contents. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes cifrados. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+El objeto `Cipher` puede dejar de ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
 
 ### cipher.setAAD(buffer)
 
