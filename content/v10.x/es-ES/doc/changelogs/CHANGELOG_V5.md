@@ -420,12 +420,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
   * Matt Loring (@matthewloring)
   * Phillip Johnsen (@phillipj)
 * **lib**: copiar objetos de argumentos en vez de soltarlos (Nathan Woltman) https://github.com/nodejs/node/pull/4361
-* **src**: allow both -i and -e flags to be used at the same time (Rich Trott) https://github.com/nodejs/node/pull/5655
-* **timers**: Internal Node.js timeouts now use the same logic path as those created with `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007) 
-  * This may cause a slightly different performance profile in some situations. So far, it has shown to be positive in most cases.
-* **v8**: backport fb4ccae from v8 upstream (Vladimir Krivosheev) #4231 
-  * breakout events from v8 to offer better support for external debuggers
-* **zlib**: add support for concatenated members (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
+* **src**: permitir que tanto la bandera -i y la bandera -e puedan ser usadas al mismo tiempo (Rich Trott) https://github.com/nodejs/node/pull/5655
+* **temporizadores**: Tiempos de espera de Node.js internos ahora usan las mismas rutas lógicas que las creadas con `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007) 
+  * Esto puede causar un perfil de rendimiento ligeramente diferente en algunas situaciones. Hasta ahora, ha mostrado ser positivo en la mayoría de los casos.
+* **v8**: hacebbackport fb4ccae del upstream v8 (Vladimir Krivosheev) #4231 
+  * eventos de ruptura de v8 ofrecerán mejor soporte para depursdpres externos
+* **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
   * Previously, if multiple members were in the same archive, only the first would be read. The others are no longer thrown away.
 
 ### Commits
