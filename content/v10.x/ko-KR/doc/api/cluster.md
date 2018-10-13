@@ -49,7 +49,7 @@ Worker 5644 started
 
 만약 Windows를 사용하신다면, named pipe server를 worker에서 설정하는 것은 아직 불가능합니다.
 
-## 작동 방법
+## 작동 원리
 
 <!--type=misc-->
 
@@ -57,11 +57,11 @@ worker 프로세스들은 [`child_process.fork()`][] 메소드를 통해 생성�
 
 클러스터 모듈은 연결시도를 분산하는 두가지 방법을 지원합니다.
 
-The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+첫번째(윈도우를 제외한 모든 플랫폼에서 기본설정)는 라운드 로빈 접근법입니다. master 프로세스는 port에서 사용자의 연결을 기다리고, 새로운 연결을 허용하고, worker들에게 이 연결들을 라운드 로빈 방식으로 분산합니다. worker 프로세스 과부하 방지가 내장되어있습니다.
 
-The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
+두 번째는 master 프로세스들이 소켓을 생성하고 worker들에게 전송하고 worker들이 연결을 직접 허용하는 방식입니다.
 
-The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+두번째 방식이 이론적으로는 가장 좋은 성능을 내야합니다. 하지만 실제로는, 운영체제 스케쥴러의 변덕때문에 분산이 매우 불균등하게 이루어집니다. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
 
 Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
 
