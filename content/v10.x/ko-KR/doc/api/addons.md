@@ -66,9 +66,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 `module_name` 최종 실행파일의 파일이름과 일치해야만 합니다. (`.node` 로 끝나는 파일 제외).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+`hello.cc` 예제를 보면, 초기화함수는 `init` 이고 Addon module 이름은 `addon` 임을 확인 할 수 있습니다..
 
-### Building
+### 빌드
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
