@@ -355,7 +355,7 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 
 Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
 
-* Algunso problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
 * El part sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
@@ -477,8 +477,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`bf63266460`](https://github.com/nodejs/node/commit/bf63266460)] - **deps**: upgrade to npm 2.13.3 (Kat Marchán) [#2284](https://github.com/nodejs/node/pull/2284)
 * [[`ef2c8cd4ec`](https://github.com/nodejs/node/commit/ef2c8cd4ec)] - **(SEMVER-MAJOR)** **dgram**: make send cb act as "error" event handler (Matteo Collina) [#1796](https://github.com/nodejs/node/pull/1796)
 * [[`3da057fef6`](https://github.com/nodejs/node/commit/3da057fef6)] - **(SEMVER-MAJOR)** **dgram**: make send cb act as "error" event handler (Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
-* [[`df1994fe53`](https://github.com/nodejs/node/commit/df1994fe53)] - ***Revert*** "**dns**: eliminar la bandera pista de AI_V4MAPPED de FreeBSD" (cjihrig) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
-* [[`1721968b22`](https://github.com/nodejs/node/commit/1721968b22)] - **doc**: documentar los cambios de historia persistentes de repl (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
+* [[`df1994fe53`](https://github.com/nodejs/node/commit/df1994fe53)] - ***Revert*** "**dns**: eliminar la bandera pista de AI_V4MAPPED en FreeBSD" (cjihrig) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
+* [[`1721968b22`](https://github.com/nodejs/node/commit/1721968b22)] - **doc**: documentar los cambios persistentes en el historial de repl (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
 * [[`d12df7f159`](https://github.com/nodejs/node/commit/d12df7f159)] - **doc**: actualizar las banderas v8 flags en la página manual (Michaël Zasso) [iojs/io.js#1701](https://github.com/iojs/io.js/pull/1701)
 * [[`d168d01b04`](https://github.com/nodejs/node/commit/d168d01b04)] - **doc**: apropiadamente heredado de EventEmitter (Sakthipriyan Vairamani) [#2168](https://github.com/nodejs/node/pull/2168)
 * [[`500f2538cc`](https://github.com/nodejs/node/commit/500f2538cc)] - **doc**: a listener, not "an" listener (Sam Roberts) [#1025](https://github.com/nodejs/node/pull/1025)
@@ -520,7 +520,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Cambios notables
 
-* **https**: Se reutilizar las sesiones TLS en Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
+* **https**: Se reutilizan las sesiones TLS en Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
 * **src**: la decodificación base64 ahora es 50% más rápida (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
 * **npm**: Actualizado a v2.13.2, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
 
@@ -643,7 +643,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación de la url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
