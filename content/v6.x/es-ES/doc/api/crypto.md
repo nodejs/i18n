@@ -198,9 +198,9 @@ added: v0.7.1
 
 El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Y, para desabilitar la llamada adicional predeterminada `cipher.setAutoPadding(false)`.
 
-La longitud de todos los datos ingresados debe ser un múltiplo del tamaño del bloque cifrado o el [`cipher.final()`][] arrojará un Error cuando `auto_padding` sea `false`. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
+La longitud de todos los datos ingresados debe ser un múltiplo del tamaño del bloque cifrado o el [`cipher.final()`][] arrojará un Error cuando `auto_padding` sea `false`. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+El método `cipher.setAutoPadding()` debe ser llamado antes del [`cipher.final()`][].
 
 Regresa al `this` para el método de encadenamiento.
 
@@ -210,13 +210,13 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.1.94
 -->
 
-Updates the cipher with `data`. If the `input_encoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `input_encoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando el código específico. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-The `output_encoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `output_encoding` is specified, a string using the specified encoding is returned. If no `output_encoding` is provided, a [`Buffer`][] is returned.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'base64'` o `'hex'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
-The `cipher.update()` method can be called multiple times with new data until [`cipher.final()`][] is called. Calling `cipher.update()` after [`cipher.final()`][] will result in an error being thrown.
+El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que se llame a [`cipher.final()`][]. Si se llama a `cipher.update()` después de [`cipher.final()`][] se producirá un error.
 
-## Class: Decipher
+## Clase: Decipher
 
 <!-- YAML
 added: v0.1.94
@@ -329,9 +329,9 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.1.94
 -->
 
-Updates the decipher with `data`. If the `input_encoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `input_encoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Updates the decipher with `data`. If the `input_encoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-The `output_encoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `output_encoding` is specified, a string using the specified encoding is returned. If no `output_encoding` is provided, a [`Buffer`][] is returned.
+The `output_encoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
 
