@@ -89,11 +89,11 @@ added: v0.7.0
 added: v0.7.7
 -->
 
-Similar to the `cluster.on('disconnect')` event, but specific to this worker.
+`cluster.on('disconnect')` event와 비슷하지만, 해당 worker 오브젝트에만 적용됩니다 .
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker has disconnected
+  // Worker가 종료되었습니다.
 });
 ```
 
