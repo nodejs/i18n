@@ -110,9 +110,9 @@ Faza **odpytywania** ma dwie główne funkcje:
 
 Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych timerów *, nastąpi jedna z dwóch rzeczy:
 
-* *jeśli **odpytywania**kolejka**nie jest pusta***, pętla zdarzeń zostanie powtórzona poprzez kolejkę wywołań zwrotnych, synchronicznie do czasu albo kolejka została wyczerpana, albo zależny od systemu surowy limit został osiągnięty.
+* *jeśli **kolejka**odpytywania**nie jest pusta***, pętla zdarzeń zostanie powtórzona poprzez kolejkę wywołań zwrotnych, synchronicznie do czasu albo kolejka została wyczerpana, albo zależny od systemu surowy limit został osiągnięty.
 
-* *jeśli **odpytywania** kolejka **jest pusta***, staną się jedna lub dwie rzeczy:
+* *jeśli **kolejka**odpytywania**jest pusta***, staną się jedna lub dwie rzeczy:
     
     * If scripts have been scheduled by `setImmediate()`, the event loop will end the **poll** phase and continue to the **check** phase to execute those scheduled scripts.
     
