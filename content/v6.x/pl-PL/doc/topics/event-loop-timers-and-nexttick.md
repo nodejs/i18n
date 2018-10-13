@@ -43,12 +43,12 @@ Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych z
 
 ## Przegląd Faz
 
-* **timers**: this phase executes callbacks scheduled by `setTimeout()` and `setInterval()`.
-* **I/O callbacks**: executes almost all callbacks with the exception of close callbacks, the ones scheduled by timers, and `setImmediate()`.
-* **idle, prepare**: only used internally.
-* **poll**: retrieve new I/O events; node will block here when appropriate.
-* **check**: `setImmediate()` callbacks are invoked here.
-* **close callbacks**: e.g. `socket.on('close', ...)`.
+* **timery**: faza ta wykonuje wywołania zwrotne zaplanowane przez `ustawKoniecCzasu()`i `ustawiinterwał()`.
+* **Wej/Wyj wywołania zwrotne**: wykonuje prawie wszystkie wywołania zwrotne z wyjątkiem zamkniętych wywołań zwrotnych, te zaplanowane przez timery i `ustawnatychmiastowo()`.
+* **bezczynność, przygotuj**: używane tylko wewnętrznie.
+* **odpytywanie**: odzyskaj nowe zdarzenia Wej/Wyj; węzeł zostanie tutaj zablokowany, gdy będzie to właściwe.
+* **sprawdź**: `ustawNatychmiastowo()` wywołania zwrotne są wywoływane tutaj.
+* **zamknięte wywołania zwrotne**: np `socket.on('zamknij',...)`.
 
 Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.
 
