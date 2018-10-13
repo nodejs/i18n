@@ -39,7 +39,7 @@ Każda faza ma kolejkę wywołania zwrotnego FIFO do wykonania. Podczas gdy każ
 
 Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych zdarzeń przetwarzanych w **ankieta** są ustawiane w kolejce przez jądro, ankieta zdarzeń może stać w kolejce, podczas gdy zdarzenia ankietowania są przetwarzane. Jak W rezultacie długotrwałe wywoływania zwrotne mogą znacznie przyspieszyć fazę odpytywania dłużej niż próg timera. Zobacz [**timery**](#timers) i **odpytywanie</​​1>, aby uzyskać więcej informacji.</p> 
 
-***NOTE:** There is a slight discrepancy between the Windows and the Unix/Linux implementation, but that's not important for this demonstration. The most important parts are here. There are actually seven or eight steps, but the ones we care about — ones that Node.js actually uses - are those above.*
+***UWAGA:** Występuje niewielka rozbieżność między Windowsem i Implementacją systemu Unix/Linux, ale to nie ma znaczenia dla tej demonstracji. Najważniejsze części są tutaj. Istnieje faktycznie siedem albo osiem kroków, ale te którymi się przejmujemy - te które obecnie wykorzystuje - są powyżej.*
 
 ## Przegląd Faz
 
