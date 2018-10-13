@@ -1937,7 +1937,7 @@ Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di 
 
 E' stato semplificato l'utilizzo di `ECDH` con coppie di chiavi generate in modo non dinamico. Ora [`ecdh.setPrivateKey()`][] può essere chiamato con una chiave privata preselezionata e il public point (key) associato verrà calcolato e memorizzato all'interno dell'object. Ciò consente al codice di memorizzare e fornire solo la parte privata della coppia di chiavi EC. Adesso [`ecdh.setPrivateKey()`][] verifica anche che la chiave privata sia valida per la curva selezionata.
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful. Either a previously stored private key should be set, which automatically generates the associated public key, or [`ecdh.generateKeys()`][] should be called. The main drawback of using [`ecdh.setPublicKey()`][] is that it can be used to put the ECDH key pair into an inconsistent state.
+Adesso il metodo [`ecdh.setPublicKey()`][] è obsoleto poiché la sua inclusione nell'API è inutile. Either a previously stored private key should be set, which automatically generates the associated public key, or [`ecdh.generateKeys()`][] should be called. The main drawback of using [`ecdh.setPublicKey()`][] is that it can be used to put the ECDH key pair into an inconsistent state.
 
 ### Support for weak or compromised algorithms
 
