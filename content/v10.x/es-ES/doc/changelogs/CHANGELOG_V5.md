@@ -490,18 +490,18 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **constants**: `ENGINE_METHOD_RSA` ahora es expuesto correctamente (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463).
 * Reparas dos regresiones que fueron originadas en v5.7.0: 
   * **http**: Errores dentro de los callbacks del cliente http ahora se propagan corectamente (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
-  * **path**: Fixed normalization of absolute paths (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589).
-* **repl**: `start()` no longer requires an options parameter (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388).
-* **util**: Improved `format()` performance 50-300% (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360).
+  * **path**: Reparada normalización de rutas absolutas (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589).
+* **repl**: `start()` ya no requiere un parámetro de opciones (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388).
+* **util**: Mejorado el rendimiento de `format()` 50-300% (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360).
 
 ### Commits
 
-* [[`12ca84fc7f`](https://github.com/nodejs/node/commit/12ca84fc7f)] - **benchmark**: add util.format benchmark (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
-* [[`b955d02266`](https://github.com/nodejs/node/commit/b955d02266)] - **benchmark**: fix lint errors (Rich Trott) [#5517](https://github.com/nodejs/node/pull/5517)
-* [[`2abf866b6e`](https://github.com/nodejs/node/commit/2abf866b6e)] - **build**: update Node.js logo on Win installer (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
-* [[`86900f8f2b`](https://github.com/nodejs/node/commit/86900f8f2b)] - **build**: correctly detect clang version (Stefan Budeanu) [#5553](https://github.com/nodejs/node/pull/5553)
-* [[`a3017992e4`](https://github.com/nodejs/node/commit/a3017992e4)] - **(SEMVER-MINOR)** **child_process**: add keepOpen option to send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
-* [[`6d4887ccc2`](https://github.com/nodejs/node/commit/6d4887ccc2)] - **(SEMVER-MINOR)** **child_process**: support options in send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
+* [[`12ca84fc7f`](https://github.com/nodejs/node/commit/12ca84fc7f)] - **benchmark**: añadir prueba de rendimiento util.format (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
+* [[`b955d02266`](https://github.com/nodejs/node/commit/b955d02266)] - **benchmark**: reparar errores lint (Rich Trott) [#5517](https://github.com/nodejs/node/pull/5517)
+* [[`2abf866b6e`](https://github.com/nodejs/node/commit/2abf866b6e)] - **build**: actualizar el logo de Node.js logo en el instalador Win (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
+* [[`86900f8f2b`](https://github.com/nodejs/node/commit/86900f8f2b)] - **build**: detectar correctamente la versy clang (Stefan Budeanu) [#5553](https://github.com/nodejs/node/pull/5553)
+* [[`a3017992e4`](https://github.com/nodejs/node/commit/a3017992e4)] - **(SEMVER-MINOR)** **child_process**: añadir opción keepOpen para send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
+* [[`6d4887ccc2`](https://github.com/nodejs/node/commit/6d4887ccc2)] - **(SEMVER-MINOR)** **child_process**: opciones de soporte send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
 * [[`9db827c7aa`](https://github.com/nodejs/node/commit/9db827c7aa)] - **(SEMVER-MINOR)** **constants**: define ENGINE_METHOD_RSA (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463)
 * [[`85013456cd`](https://github.com/nodejs/node/commit/85013456cd)] - **deps**: upgrade to npm 3.7.3 (Kat Marchán) [#5369](https://github.com/nodejs/node/pull/5369)
 * [[`67e9f65958`](https://github.com/nodejs/node/commit/67e9f65958)] - **dgram**: default send address to 127.0.0.1 or ::1 (Matteo Collina) [#5493](https://github.com/nodejs/node/pull/5493)
