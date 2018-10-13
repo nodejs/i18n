@@ -265,7 +265,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -285,9 +285,9 @@ console.log(decrypted);
 added: v0.1.94
 -->
 
-Returns any remaining deciphered contents. If `output_encoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
+Regresa cualquiera de los contenidos restantes descifrados. Un string es regresado si el parámetro `output_encoding` es uno ` 'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
 ### decipher.setAAD(buffer)
 
@@ -295,7 +295,7 @@ Once the `decipher.final()` method has been called, the `Decipher` object can no
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+El método `decipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
 Regresa al `this` para el método de encadenamiento.
 
@@ -305,7 +305,7 @@ Regresa al `this` para el método de encadenamiento.
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+El método `decipher.setAuthTag()` es usado para pasar el recibido de la *authentication tag* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados actualmente). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
 Regresa al `this` para el método de encadenamiento.
 
