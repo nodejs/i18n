@@ -95,19 +95,19 @@ Per iniziare a guardare un expression, digita `watch('my_expression')`. Il coman
 
 * `cont`, `c` - Continua l'esecuzione
 * `next`, `n` - Passa al successivo
-* `step`, `s` - Step in
-* `out`, `o` - Step out
-* `pause` - Pause running code (like pause button in Developer Tools)
+* `step`, `s` - Entra
+* `out`, `o` - Esce
+* `pause` - Mette in pausa il codice in esecuzione (come il pulsante di pausa negli Strumenti per gli Sviluppatori)
 
 ### Breakpoints
 
-* `setBreakpoint()`, `sb()` - Set breakpoint on current line
-* `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
+* `setBreakpoint()`, `sb()` - Imposta il breakpoint sulla riga corrente
+* `setBreakpoint(line)`, `sb(line)` - Imposta il breakpoint su una riga specifica
+* `setBreakpoint('fn()')`, `sb(...)` - Imposta il breakpoint sulla prima istruzione nel corpo delle funzioni
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Imposta il breakpoint sulla prima riga di `script.js`
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Cancella il breakpoint nella riga 1 di `script.js`
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+È possibile anche impostare un breakpoint all'interno di un file (modulo) che non è ancora stato caricato:
 
 ```txt
 $ node inspect main.js
@@ -122,7 +122,7 @@ debug> setBreakpoint('mod.js', 22)
 Warning: script 'mod.js' was not loaded yet.
 debug> c
 break in mod.js:22
- 20 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 20 // UTILIZZO O ALTRE DISPOSIZIONI NEL SOFTWARE.
  21
 >22 exports.hello = function() {
  23   return 'hello from module';
@@ -130,13 +130,13 @@ break in mod.js:22
 debug>
 ```
 
-### Information
+### Informazioni
 
-* `backtrace`, `bt` - Print backtrace of current execution frame
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
-* `watch(expr)` - Add expression to watch list
-* `unwatch(expr)` - Remove expression from watch list
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
+* `backtrace`, `bt` - Stampa il backtrace del frame di esecuzione corrente
+* `list(5)` - Elenca il codice sorgente degli script con 5 righe di contesto (5 righe prima e dopo)
+* `watch(expr)` - Aggiunge l'expression alla lista da monitorare
+* `unwatch(expr)` - Rimuove l'expressione dalla lista da monitorare
+* `watchers` - Elenca tutti gli watcher e i loro valori (elencati automaticamente su ciascun breakpoint)
 * `repl` - Open debugger's repl for evaluation in debugging script's context
 * `exec expr` - Execute an expression in debugging script's context
 
