@@ -196,7 +196,7 @@ added: v1.0.0
 
 El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene al *authentication tag* que ha sido computado por los datos dados cuando e us un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
 
-The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
+El método `cipher.getAuthTag()` solo debría ser llamado luego de haber completado la encriptación al usar el método [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
@@ -207,9 +207,9 @@ added: v0.7.1
 - `autoPadding` {boolean} Defaults to `true`.
 - Returns the {Cipher} for method chaining.
 
-When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
+El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Y, para desabilitar la llamada adicional predeterminada `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
+When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
 The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
 
