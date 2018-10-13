@@ -1937,13 +1937,13 @@ Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di 
 
 E' stato semplificato l'utilizzo di `ECDH` con coppie di chiavi generate in modo non dinamico. Ora [`ecdh.setPrivateKey()`][] può essere chiamato con una chiave privata preselezionata e il public point (key) associato verrà calcolato e memorizzato all'interno dell'object. Ciò consente al codice di memorizzare e fornire solo la parte privata della coppia di chiavi EC. Adesso [`ecdh.setPrivateKey()`][] verifica anche che la chiave privata sia valida per la curva selezionata.
 
-Adesso il metodo [`ecdh.setPublicKey()`][] è obsoleto poiché la sua inclusione nell'API è inutile. Either a previously stored private key should be set, which automatically generates the associated public key, or [`ecdh.generateKeys()`][] should be called. The main drawback of using [`ecdh.setPublicKey()`][] is that it can be used to put the ECDH key pair into an inconsistent state.
+Adesso il metodo [`ecdh.setPublicKey()`][] è obsoleto poiché la sua inclusione nell'API è inutile. Dovrebbe essere impostata una chiave privata precedentemente archiviata la quale genera automaticamente la chiave pubblica associata oppure dovrebbe essere chiamato [`ecdh.generateKeys()`][]. Lo svantaggio principale dell'utilizzare [`ecdh.setPublicKey()`][] è che può essere usato per mettere la coppia di chiavi ECDH in uno stato incoerente.
 
-### Support for weak or compromised algorithms
+### Supporto per gli algoritmi deboli o compromessi
 
-The `crypto` module still supports some algorithms which are already compromised and are not currently recommended for use. The API also allows the use of ciphers and hashes with a small key size that are considered to be too weak for safe use.
+Il modulo `crypto` supporta ancora alcuni algoritmi già compromessi e il cui utilizzo è attualmente sconsigliato. L'API consente inoltre l'uso di cipher e hash con chiavi di piccole dimensioni considerati troppo deboli per un utilizzo sicuro.
 
-Users should take full responsibility for selecting the crypto algorithm and key size according to their security requirements.
+Gli utenti devono assumersi la piena responsabilità della scelta dell'algoritmo crypto e della dimensione della chiave in base ai propri requisiti di sicurezza.
 
 Based on the recommendations of [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
 
