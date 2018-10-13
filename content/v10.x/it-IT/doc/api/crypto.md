@@ -2052,12 +2052,12 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_EPHEMERAL_RSA</code></td>
-    <td>Instructs OpenSSL to always use the tmp_rsa key when performing RSA
-    operations.</td>
+    <td>Dà istruzioni a OpenSSL di utilizzare sempre la chiave tmp_rsa durante l'esecuzione delle operazioni 
+    RSA.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_LEGACY_SERVER_CONNECT</code></td>
-    <td>Allows initial connection to servers that do not support RI.</td>
+    <td>Consente la connessione iniziale ai server che non supportano RI.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER</code></td>
@@ -2069,8 +2069,7 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_MSIE_SSLV2_RSA_PADDING</code></td>
-    <td>Instructs OpenSSL to disable the workaround for a man-in-the-middle
-    protocol-version vulnerability in the SSL 2.0 server implementation.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare la soluzione alternativa per una vulnerabilità della versione di protocollo man-in-the-middle nell'implementazione del server SSL 2.0.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NETSCAPE_CA_DN_BUG</code></td>
@@ -2090,7 +2089,7 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_COMPRESSION</code></td>
-    <td>Instructs OpenSSL to disable support for SSL/TLS compression.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare il supporto per la compressione SSL/TLS.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_QUERY_MTU</code></td>
@@ -2098,20 +2097,20 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</code></td>
-    <td>Instructs OpenSSL to always start a new session when performing
-    renegotiation.</td>
+    <td>Dà istruzioni a OpenSSL di avviare sempre una nuova sessione quando si esegue la 
+    rinegoziazione.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SSLv2</code></td>
-    <td>Instructs OpenSSL to turn off SSL v2</td>
+    <td>Dà istruzioni a OpenSSL di disattivare SSL v2</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SSLv3</code></td>
-    <td>Instructs OpenSSL to turn off SSL v3</td>
+    <td>Dà istruzioni a OpenSSL di disattivare SSL v3</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TICKET</code></td>
-    <td>Instructs OpenSSL to disable use of RFC4507bis tickets.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare l'uso dei ticket RFC4507bis.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1</code></td>
@@ -2216,12 +2215,12 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
 </table>
 
-### Other OpenSSL Constants
+### Altre Costanti OpenSSL
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>DH_CHECK_P_NOT_SAFE_PRIME</code></td>
@@ -2296,12 +2295,12 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
 </table>
 
-### Node.js Crypto Constants
+### Costanti Crypto Node.js
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>defaultCoreCipherList</code></td>
