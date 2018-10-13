@@ -56,11 +56,11 @@ Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dow
 
 ### timery
 
-Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Timers callbacks will run as early as they can be scheduled after the specified amount of time has passed; however, Operating System scheduling or the running of other callbacks may delay them.
+Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Połączenia zwrotne timerów działają tak wcześnie, jak tylko mogą zaplanowane po upływie określonego czasu; jednak, planowanie Systemu Operacyjnego lub uruchamianie innych wywołań zwrotnych może się opóźnić im.
 
-***Note**: Technically, the [**poll** phase](#poll) controls when timers are executed.*
+***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll)kontroluje timery, które są wykonywane.*
 
-For example, say you schedule a timeout to execute after a 100 ms threshold, then your script starts asynchronously reading a file which takes 95 ms:
+Na przykład powiedzmy, że planujesz czas oczekiwania na wykonanie po próg 100 ms, wtedy twój skrypt zaczyna asynchronicznie odczytywać plik, który trwa 95 ms:
 
 ```js
 const fs = require('fs');
@@ -93,7 +93,7 @@ someAsyncOperation(function() {
 });
 ```
 
-When the event loop enters the **poll** phase, it has an empty queue (`fs.readFile()` has not completed), so it will wait for the number of ms remaining until the soonest timer's threshold is reached. While it is waiting 95 ms pass, `fs.readFile()` finishes reading the file and its callback which takes 10 ms to complete is added to the **poll** queue and executed. When the callback finishes, there are no more callbacks in the queue, so the event loop will see that the threshold of the soonest timer has been reached then wrap back to the **timers** phase to execute the timer's callback. In this example, you will see that the total delay between the timer being scheduled and its callback being executed will be 105ms.
+Kiedy pętla zdarzeń wchodzi w fazę **odpytywania**, ma pustą kolejkę (`fs.readFile()` nie zostało zakończone), więc będzie czekać na liczbę ms pozostałych do ​​osiągnięcia progu jak najszybszego timera. Podczas gdy jest oczekiwanie 95 ms przejścia, `fs.readFile()` kończy czytanie pliku i jego wywołanie zwrotne, które trwa 10 ms, jest dodawane do kolejki **odpytywania** i wykonany. When the callback finishes, there are no more callbacks in the queue, so the event loop will see that the threshold of the soonest timer has been reached then wrap back to the **timers** phase to execute the timer's callback. In this example, you will see that the total delay between the timer being scheduled and its callback being executed will be 105ms.
 
 Note: To prevent the **poll** phase from starving the event loop, \[libuv\] (http://libuv.org/) (the C library that implements the Node.js event loop and all of the asynchronous behaviors of the platform) also has a hard maximum (system dependent) before it stops polling for more events.
 
