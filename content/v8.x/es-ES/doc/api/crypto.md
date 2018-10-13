@@ -184,7 +184,7 @@ added: v1.0.0
 - `buffer` {Buffer}
 - Returns the {Cipher} for method chaining.
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
 The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 
@@ -194,7 +194,7 @@ The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
+El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene al *authentication tag* que ha sido computado por los datos dados cuando e us un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
 
 The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
 
