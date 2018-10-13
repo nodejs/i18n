@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 안정성: 2 - 안정
 
-To use the HTTP server and client one must `require('http')`.
+HTTP서버와 클라이언트를 사용하기 위해서 `require('http')`를 사용합니다.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Node.js의 HTTP 인터페이스는 과거에 사용하기 어려웠던 HTTP프로토콜의 많은 기능을 지원하도록 설계되었습니다. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
-HTTP message headers are represented by an object like this:
+HTTP 메시지 헤더는 다음과 같은 오브젝트 개체로 표현합니다.
 
 <!-- eslint-skip -->
 
