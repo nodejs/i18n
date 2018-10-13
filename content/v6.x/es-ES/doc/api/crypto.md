@@ -135,7 +135,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Ejemplo: Usando `Cipher` y los streams canalizados:
 
 ```js
 const crypto = require('crypto');
@@ -166,9 +166,9 @@ console.log(encrypted);
 added: v0.1.94
 -->
 
-Returns any remaining enciphered contents. If `output_encoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `output_encoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes cifrados. Un string es regresado si el parámetro `output_encoding` es uno de los ` 'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+El objeto `Cipher` puede dejar de ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
 
 ### cipher.setAAD(buffer)
 
@@ -285,7 +285,7 @@ console.log(decrypted);
 added: v0.1.94
 -->
 
-Returns any remaining deciphered contents. If `output_encoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `output_encoding` is not provided, a [`Buffer`][] is returned.
+Returns any remaining deciphered contents. If `output_encoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
 
 Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
 
