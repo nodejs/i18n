@@ -81,20 +81,20 @@ debug> .exit
 
 Il comando `repl` consente di valutare il codice da remoto. Il comando `next` passa alla riga successiva. Digita `help` per vedere quali altri comandi sono disponibili.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Premere `enter` senza digitare alcun comando farà si che si ripeta il comando debugger precedente.
 
 ## Watchers
 
-It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+È possibile monitorare i valori expression e variable durante il debug. Su ogni breakpoint, ogni expression presente nell'elenco degli watcher verrà valutata nel contesto corrente e visualizzata immediatamente prima che il codice sorgente del breakpoint venga messo nell'elenco.
 
-To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Per iniziare a guardare un expression, digita `watch('my_expression')`. Il comando `watchers` stamperà gli watcher attivi. Per rimuovere un watcher, digita `unwatch('my_expression')`.
 
-## Command reference
+## Riferimento dei Comandi
 
 ### Stepping
 
-* `cont`, `c` - Continue execution
-* `next`, `n` - Step next
+* `cont`, `c` - Continua l'esecuzione
+* `next`, `n` - Passa al successivo
 * `step`, `s` - Step in
 * `out`, `o` - Step out
 * `pause` - Pause running code (like pause button in Developer Tools)
