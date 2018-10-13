@@ -54,29 +54,29 @@ apply.whitespace fix`
   
   * La empatía hacía los usuarios es importante (esto es en parte la razón por la que orientamos a las personas)
   * En general: ¡intente ser amable con las personas!
-  * El mejor resultado es para personas que vienen a nuestro issue tracker para sentir que pueden volver.
+  * El mejor resultado es que las personas que vengan a nuestro sistema de seguimiento de incidentes sientan que pueden volver.
 
 * Se espera que siga *y* responsabilice a los demás ante el [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Gestionando el issue tracker
+## Gestionar el sistema de seguimiento de incidentes
 
 * Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
-  * ¡Se amable acerca de los issues de cierre! Deje que las personas sepan por qué, y que issues y PRs pueden ser reabiertos si es necesario
+  * ¡Sea amable en cuanto al cierre de incidentes! Deje que las personas sepan por qué, y que incidentes y PRs pueden ser reabiertos si es necesario
 
 * [**Ver "Etiquetas"**](./onboarding-extras.md#labels)
   
-  * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, or `buffer`) para que sepamos en que partes del código se basan las modificaciones del pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los issues.
-  * Utilice la etiqueta `tsc-review` si un tópico es controvertido o no llega a una conclusión después de un tiempo prolongado.
+  * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, o `buffer`) para que sepamos qué partes del código base modifica el pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los incidentes.
+  * Utilice la etiqueta `tsc-review` si un tema es controvertido o no llega a una conclusión después de un tiempo prolongado.
   * `semver-{minor,major}`: 
     * Si un cambio tiene la *posibilidad* remota de romper algo, utilice la etiqueta `semver-major`
-    * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando porqué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
+    * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando por qué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
   * Por favor, agregue la etiqueta `author-ready` para PRs donde: 
     * el CI ha comenzado (no necesariamente terminado),
     * no existen comentarios pendientes para revisión y
     * al menor un colaborados aprobó el PR.
 
-* Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Consulte [A quien CC en el sistema de seguimiento de incidentes](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Esto vendrá más naturalmente con el tiempo
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
