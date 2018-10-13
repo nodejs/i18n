@@ -240,14 +240,14 @@ El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. La clase puede ser empleada en una de dos formas:
+Instancias de la clase `Decipher` son usadas para descifrar datos. La clase puede ser empleada en una de dos formas:
 
-- As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
-- Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
+- Como un [stream](stream.html) que es legible y escribible, donde los datos planos encriptados están escritos para producir datos no encriptados en el lado legible, o
+- Usando los métodos [`decipher.update()`][] y [`decipher.final()`][] para producir datos no encriptados.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son usados para crear instancias `Decipher`. Los objetos `Decipher` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Decipher` objects as streams:
+Ejemplo: Usando objetos `Decipher` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -270,7 +270,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Ejemplo: Usando `Cipher` y los streams canalizados:
 
 ```js
 const crypto = require('crypto');
