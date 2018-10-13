@@ -137,29 +137,29 @@ debug>
 * `watch(expr)` - Aggiunge l'expression alla lista da monitorare
 * `unwatch(expr)` - Rimuove l'expressione dalla lista da monitorare
 * `watchers` - Elenca tutti gli watcher e i loro valori (elencati automaticamente su ciascun breakpoint)
-* `repl` - Open debugger's repl for evaluation in debugging script's context
-* `exec expr` - Execute an expression in debugging script's context
+* `repl` - Apre il repl del debugger per la valutazione nel contesto dello script di debug
+* `exec expr` - Esegue un'expression nel contesto dello script di debug
 
-### Execution control
+### Controllo dell'esecuzione
 
-* `run` - Run script (automatically runs on debugger's start)
-* `restart` - Restart script
-* `kill` - Kill script
+* `run` - Esegue lo script (viene eseguito automaticamente all'avvio del debugger)
+* `restart` - Riavvia lo script
+* `kill` - Arresta lo script
 
-### Various
+### Varie
 
-* `scripts` - List all loaded scripts
-* `version` - Display V8's version
+* `scripts` - Elenca tutti gli script caricati
+* `version` - Mostra la versione di V8
 
-## Advanced Usage
+## Uso Avanzato
 
-### V8 Inspector Integration for Node.js
+### Integrazione dell'Inspector di V8 per Node.js
 
-V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+L'integrazione dell'Inspector di V8 consente di collegare Chrome DevTools alle istanze Node.js per il debug e il profiling. Utilizza il [Protocollo Chrome DevTools ](https://chromedevtools.github.io/devtools-protocol/).
 
-V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
+L'Inspector V8 può essere abilitato passando il flag `--inspect` all'avvio di un'applicazione Node.js. È anche possibile fornire una porta personalizzata tramite quel flag, ad es. `--inspect=9222` accetterà le connessioni DevTools sulla porta 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Per inserire un break sulla prima riga del codice dell'applicazione, passa il flag `--inspect-brk` al posto di `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -168,4 +168,4 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(Nell'esempio qui sopra, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 alla fine dell'URL è generato al volo, varia in diverse sessioni di debug.)
