@@ -37,7 +37,7 @@ Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli 
 
 Każda faza ma kolejkę wywołania zwrotnego FIFO do wykonania. Podczas gdy każda faza jest wyjątkowa na swój sposób, ogólnie, gdy pętla zdarzeń wchodzi w daną fazę W takim wypadku wykona ona wszystkie operacje właściwe dla tej fazy, następnie wykona wywołania zwrotne w kolejce tej fazy, aż do momentu gdy kolejka wyczerpie się lub zostanie wykonana maksymalna liczba wywołań zwrotnych. Kiedy kolejka została wyczerpana lub osiągnięto limit wywołań zwrotnych, pętla zdarzeń przejdzie do następnej fazy i tak dalej.
 
-Since any of these operations may schedule *more* operations and new events processed in the **poll** phase are queued by the kernel, poll events can be queued while polling events are being processed. As a result, long running callbacks can allow the poll phase to run much longer than a timer's threshold. See the [**timers**](#timers) and [**poll**](#poll) sections for more details.
+Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych zdarzeń przetwarzanych w **ankieta** są ustawiane w kolejce przez jądro, ankieta zdarzeń może stać w kolejce, podczas gdy zdarzenia ankietowania są przetwarzane. As a result, long running callbacks can allow the poll phase to run much longer than a timer's threshold. See the [**timers**](#timers) and [**poll**](#poll) sections for more details.
 
 ***NOTE:** There is a slight discrepancy between the Windows and the Unix/Linux implementation, but that's not important for this demonstration. The most important parts are here. There are actually seven or eight steps, but the ones we care about — ones that Node.js actually uses - are those above.*
 
