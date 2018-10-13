@@ -11,14 +11,14 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 ## Quince minutos antes de la sesión de orientación
 
 * Antes de la sesión de orientación, agregar al nuevo Colaborador al [Equipo de Colaboradores](https://github.com/orgs/nodejs/teams/collaborators).
-* Pregúnteles si quieren unirse a algún equipo de subsistema. Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Pregúnteles si quieren unirse a algún equipo de subsistema. Consulte [A quien CC en el sistema de seguimiento de incidentes](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
 ## Sesión de orientación
 
 * Esta sesión cubrirá: 
   * [configuración local](#local-setup)
   * [objetivos & valores del proyecto](#project-goals--values)
-  * [gestionando el issue tracker](#managing-the-issue-tracker)
+  * [gestionar el sistema de seguimiento de incidentes](#managing-the-issue-tracker)
   * [revisión de PRs](#reviewing-prs)
   * [PRs recibidos](#landing-prs)
 
