@@ -138,7 +138,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Ejemplo: Usando `Cipher` y los streams canalizados:
 
 ```js
 const crypto = require('crypto');
@@ -151,7 +151,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Ejemplo: Usando los métodos [`cipher.update()`][] y [`cipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
