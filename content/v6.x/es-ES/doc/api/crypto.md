@@ -176,9 +176,9 @@ El objeto `Cipher` puede dejar de ser utilizado para encriptar datos una vez que
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Returns `this` for method chaining.
+Regresa al `this` para el método de encadenamiento.
 
 ### cipher.getAuthTag()
 
@@ -186,7 +186,7 @@ Returns `this` for method chaining.
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
+El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene al *authentication tag* que ha sido computado por los datos dados cuando e us un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
 
 The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
 
@@ -202,7 +202,7 @@ When `auto_padding` is `false`, the length of the entire input data must be a mu
 
 The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
 
-Returns `this` for method chaining.
+Regresa al `this` para el método de encadenamiento.
 
 ### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
@@ -297,7 +297,7 @@ added: v1.0.0
 
 When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
-Returns `this` for method chaining.
+Regresa al `this` para el método de encadenamiento.
 
 ### decipher.setAuthTag(buffer)
 
@@ -307,7 +307,7 @@ added: v1.0.0
 
 When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
-Returns `this` for method chaining.
+Regresa al `this` para el método de encadenamiento.
 
 ### decipher.setAutoPadding(auto_padding=true)
 
@@ -321,7 +321,7 @@ Turning auto padding off will only work if the input data's length is a multiple
 
 The `decipher.setAutoPadding()` method must be called before [`decipher.update()`][].
 
-Returns `this` for method chaining.
+Regresa al `this` para el método de encadenamiento.
 
 ### decipher.update(data\[, input_encoding\]\[, output_encoding\])
 
