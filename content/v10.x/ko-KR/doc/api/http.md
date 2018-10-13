@@ -20,11 +20,11 @@ HTTP 메시지 헤더는 다음과 같은 오브젝트 개체로 표현합니다
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Key값은 소문자로 입력합니다. Value값은 대/소문자 구분을 하지 않습니다.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+넓은 범위의 HTTP응용 프로그램을 지원하기위해 Node.js의 HTTP API는 가장 밑단의 역할을 합니다. 이 API는 스트림 처리와 메세지 파싱만 처리합니다. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+중복된 헤더들을 다루는 방법에 관한 자세한 문서는 [`message.headers`][]를 참조하세요.
 
 The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
 
