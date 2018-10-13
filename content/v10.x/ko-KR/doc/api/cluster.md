@@ -278,9 +278,9 @@ added: v6.0.0
 
 * {boolean}
 
-Set by calling `.kill()` or `.disconnect()`. Until then, it is `undefined`.
+`.Kill()` 또는 `.disconnect()`를 호출 하여 1로 만듭니다. 그전까지는 `undefined` 값을 가지게 됩니다.
 
-The boolean [`worker.exitedAfterDisconnect`][] allows distinguishing between voluntary and accidental exit, the master may choose not to respawn a worker based on this value.
+boolean값 [`worker.exitedAfterDisconnect`][] 은 정상또는 비정상 종료를 구분할 수 있게 해주며, master는 이 값에 따라 worker를 재기동 할지 안할지 선택 할 수 있게 됩니다.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -289,7 +289,7 @@ cluster.on('exit', (worker, code, signal) => {
   }
 });
 
-// kill worker
+// worker를 kill
 worker.kill();
 ```
 
