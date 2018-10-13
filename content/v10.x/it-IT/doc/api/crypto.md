@@ -2268,18 +2268,18 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_DIGEST</code></td>
-    <td>Sets the salt length for `RSA_PKCS1_PSS_PADDING` to the digest size
-        when signing or verifying.</td>
+    <td>Imposta la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` nella dimensione del digest 
+        al momento della firma o della verifica.</td>
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_MAX_SIGN</code></td>
-    <td>Sets the salt length for `RSA_PKCS1_PSS_PADDING` to the maximum
-        permissible value when signing data.</td>
+    <td>Imposta la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` sul valore massimo 
+        consentito durante la firma dei dati.</td>
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_AUTO</code></td>
-    <td>Causes the salt length for `RSA_PKCS1_PSS_PADDING` to be determined
-        automatically when verifying a signature.</td>
+    <td>Fa sì che la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` sia determinata 
+        automaticamente quando si verifica una firma.</td>
   </tr>
   <tr>
     <td><code>POINT_CONVERSION_COMPRESSED</code></td>
@@ -2304,11 +2304,11 @@ https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>defaultCoreCipherList</code></td>
-    <td>Specifies the built-in default cipher list used by Node.js.</td>
+    <td>Specifica l'elenco cipher predefinito incorporato utilizzato da Node.js.</td>
   </tr>
   <tr>
     <td><code>defaultCipherList</code></td>
-    <td>Specifies the active default cipher list used by the current Node.js
-    process.</td>
+    <td>Specifica l'elenco cipher predefinito attivo utilizzato dall'attuale
+    processo Node.js.</td>
   </tr>
 </table>
