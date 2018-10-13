@@ -223,13 +223,13 @@ changes:
 
 * 리턴값: {cluster.Worker} A reference to `worker`.
 
-In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
+worker 에서 이 함수는 먼저 `'close'` event를 기다리고 IPC 채널을 종료한 후에 서버를 종료시킬 것입니다.
 
-In the master, an internal message is sent to the worker causing it to call `.disconnect()` on itself.
+master에서는, 내부 메세지가 worker에게 전송되어 worker 자신 스스로 `.disconnect()` 를 호출하도록 합니다.
 
-Causes `.exitedAfterDisconnect` to be set.
+`.ExitedAfterDisconnect` 가 설정되도록 만듭니다.
 
-Note that after a server is closed, it will no longer accept new connections, but connections may be accepted by any other listening worker. Existing connections will be allowed to close as usual. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
+중요. 서버가 종료된 이후 더이상 새로운 연결을 허가 하지 않습니다. 하지만 동작하고 있는 다른 worker에 의해 연결이 허가 될 수 있습니다. 기존연결을 정상적으로 허용 합니다. 더 이상 남은 연결이 없는 경우, worker가 정상적으로 종료될 수 있도록 IPC채널이 종료됩니다. ([`server.close()`] 참고)
 
 The above applies *only* to server connections, client connections are not automatically closed by workers, and disconnect does not wait for them to close before exiting.
 
