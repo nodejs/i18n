@@ -2080,17 +2080,17 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 * stream.pipe: Remover eventos "resume" y "pause"
 * probar reparaciones para windows (igorzi)
 * mejoras del sistema de compilación (bnoordhuis)
-* [#1936](https://github.com/joyent/node/issues/1936) tls: does not emit 'end' from EncryptedStream (koichik)
-* [#758](https://github.com/joyent/node/issues/758) tls: add address(), remoteAddress/remotePort
-* [#1399](https://github.com/joyent/node/issues/1399) http: emit Error object after .abort() (bnoordhuis)
-* [#1999](https://github.com/joyent/node/issues/1999) fs: make mkdir() default to 0777 permissions (bnoordhuis)
-* [#2001](https://github.com/joyent/node/issues/2001) fix pipe error codes
-* [#2002](https://github.com/joyent/node/issues/2002) Socket.write should reset timeout timer
-* stdout and stderr are blocking when associated with file too.
-* remote debugger support on windows (Bert Belder)
-* convenience methods for zlib (Matt Robenolt)
-* process.kill support on windows (igorzi)
-* process.uptime() support on windows (igorzi)
+* [#1936](https://github.com/joyent/node/issues/1936) tls: no emite "end" desde EncryptedStream (koichik)
+* [#758](https://github.com/joyent/node/issues/758) tls: añadir address(), remoteAddress/remotePort
+* [#1399](https://github.com/joyent/node/issues/1399) http: emitir objeto de Error object después de .abort() (bnoordhuis)
+* [#1999](https://github.com/joyent/node/issues/1999) fs: hacer que mkdir() se establezca por defecto a 0777 permisos (bnoordhuis)
+* [#2001](https://github.com/joyent/node/issues/2001) corregir códigos de error de pipe
+* [#2002](https://github.com/joyent/node/issues/2002) Socket.write debería restablecer el temporizador de timeout
+* stdout y stderr están bloqueando al estar asociados con el archivo también.
+* soporte para el depurador remoto en windows (Bert Belder)
+* métodos de conveniencia para zlib (Matt Robenolt)
+* soporte para process.kill en windows (igorzi)
+* soporte para process.uptime() en windows (igorzi)
 * Return IPv4 addresses before IPv6 addresses from getaddrinfo
 * util.inspect improvements (Nathan Rajlich)
 * cluster module api changes
