@@ -1856,18 +1856,18 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
   * `querystring.parse()` es hasta 21% más rápido en promedio. (Brian White) [#10874](https://github.com/nodejs/node/pull/10874)
 * **IPC**: Escrituras por lotes han sido habilitadas para el IPC de proceso en plataformas que soportan Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
   * Ganancias en rendimiento puede ser de hasta 40% para algunas cargas de trabajo.
-* **child_process**: `spawnSync` now returns a null `status` when child is terminated by a signal. (cjihrig) [#11288](https://github.com/nodejs/node/pull/11288) 
-  * This fixes the behavior to act like `spawn()` does.
+* **child_process**: `spawnSync` ahora devuelve un `status` nulo cuando proceso secundario es finalizado por una señal. (cjihrig) [#11288](https://github.com/nodejs/node/pull/11288) 
+  * Esto corrige el comportamiento para actuar como lo hace `spawn()`.
 * **http**: 
-  * Control characters are now always rejected when using `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
-  * Debug messages have been added for cases when headers contain invalid values. (Evan Lucas) [#9195](https://github.com/nodejs/node/pull/9195)
-* **node**: Heap statistics now support values larger than 4GB. (Ben Noordhuis) [#10186](https://github.com/nodejs/node/pull/10186)
-* **timers**: Timer callbacks now always maintain order when interacting with domain error handling. (John Barboza) [#10522](https://github.com/nodejs/node/pull/10522)
+  * Caracteres de control ahora son rechazados siempre cuando se usa `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
+  * Mensajes de depuración han sido añadidos para casos en que los encabezados contengan valores inválidos. (Evan Lucas) [#9195](https://github.com/nodejs/node/pull/9195)
+* **node**: Estadísticas de montón ahora soportan valores más grandes que 4GB. (Ben Noordhuis) [#10186](https://github.com/nodejs/node/pull/10186)
+* **timers**: Callbacks de temporizador ahora siempre mantienen el orden cuando interactúan con la gestión de error de dominio. (John Barboza) [#10522](https://github.com/nodejs/node/pull/10522)
 
 ### Commits
 
-* [[`fb75bed078`](https://github.com/nodejs/node/commit/fb75bed078)] - **assert**: unlock the assert API (Rich Trott) [#11304](https://github.com/nodejs/node/pull/11304)
-* [[`32b264c33b`](https://github.com/nodejs/node/commit/32b264c33b)] - **assert**: remove unneeded condition (Rich Trott) [#11314](https://github.com/nodejs/node/pull/11314)
+* [[`fb75bed078`](https://github.com/nodejs/node/commit/fb75bed078)] - **assert**: desbloquear la API de aserción (Rich Trott) [#11304](https://github.com/nodejs/node/pull/11304)
+* [[`32b264c33b`](https://github.com/nodejs/node/commit/32b264c33b)] - **assert**: remover condición innecesaria (Rich Trott) [#11314](https://github.com/nodejs/node/pull/11314)
 * [[`a0c705ef79`](https://github.com/nodejs/node/commit/a0c705ef79)] - **assert**: apply minor refactoring (Rich Trott) [#11511](https://github.com/nodejs/node/pull/11511)
 * [[`7ecfe4971a`](https://github.com/nodejs/node/commit/7ecfe4971a)] - **assert**: update comments (Kai Cataldo) [#10579](https://github.com/nodejs/node/pull/10579)
 * [[`4d6fa8d040`](https://github.com/nodejs/node/commit/4d6fa8d040)] - **benchmark**: add more thorough timers benchmarks (Jeremiah Senkpiel) [#10925](https://github.com/nodejs/node/pull/10925)
