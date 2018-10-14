@@ -941,7 +941,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 ### Commits
 
-* [[`d576e17691`](https://github.com/nodejs/node/commit/d576e17691)] - **build**: make test-doc and lint addon docs (Joyee Cheung) [#16377](https://github.com/nodejs/node/pull/16377)
+* [[`d576e17691`](https://github.com/nodejs/node/commit/d576e17691)] - **build**: hacer documento de pruebas y docs de lint a complementos (Joyee Cheung) [#16377](https://github.com/nodejs/node/pull/16377)
 * [[`63e33ac327`](https://github.com/nodejs/node/commit/63e33ac327)] - **build**: make doc target quiet (Daniel Bevenius) [#16516](https://github.com/nodejs/node/pull/16516)
 * [[`528edb2ea8`](https://github.com/nodejs/node/commit/528edb2ea8)] - **build**: ignore empty folders in test-addons-napi (Anna Henningsen) [#16380](https://github.com/nodejs/node/pull/16380)
 * [[`c8a3b2d171`](https://github.com/nodejs/node/commit/c8a3b2d171)] - **build**: run linter before running tests (Joyee Cheung) [#16284](https://github.com/nodejs/node/pull/16284)
