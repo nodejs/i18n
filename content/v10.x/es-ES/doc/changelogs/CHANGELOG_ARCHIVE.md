@@ -2033,10 +2033,10 @@ https://github.com/nodejs/node/commit/a4402f0b2e410b19375a1d5c5fb7fe7f66f3c7f8
 * mejoras de doc (Artur Adib, Trevor Burnham, Ryan Emery, Trent Mick)
 * timers: recordar argumentos extra de setTimeout() cuando timeout==0
 * punycode: utilizar la librería de punycode de Mathias Bynens, está más acorde
-* repl: improved tab completion (Ryan Emery)
-* buffer: fix range checks in .writeInt() functions (Lukasz Walukiewicz)
-* tls: make cipher list configurable
-* addons: make Buffer and ObjectWrap visible to Windows add-ons (Bert Belder)
+* repl: completación de tab mejorada (Ryan Emery)
+* buffer: reparar revisiones de rango en funciones .writeInt() (Lukasz Walukiewicz)
+* tls: hacer que la lista de cifrado sea configurable
+* addons: hacer que Buffer y ObjectWrap sean visibles para los complementos de Windows (Bert Belder)
 * crypto: add PKCS[#1](https://github.com/joyent/node/issues/1) a.k.a RSA public key verification support
 * windows: fix stdout writes when redirected to nul
 * sunos: fix build on Solaris and Illumos
