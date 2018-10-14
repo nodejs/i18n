@@ -561,7 +561,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`f349a9a2cf`](https://github.com/nodejs/node/commit/f349a9a2cf)] - **build**: actualizar logo de Node.js en el instalador OSX (Rod Vagg) [#5401](https://github.com/nodejs/node/pull/5401)
 * [[`88f393588a`](https://github.com/nodejs/node/commit/88f393588a)] - **crypto**: PBKDF2 funciona con `int`, no con `ssize_t` (Fedor Indutny) [#5397](https://github.com/nodejs/node/pull/5397)
 * [[`1e86804503`](https://github.com/nodejs/node/commit/1e86804503)] - **deps**: actualizar openssl a 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507)
-* [[`d3f9b84be8`](https://github.com/nodejs/node/commit/d3f9b84be8)] - **dgram**: handle default address case when offset and length are specified (Matteo Collina)
+* [[`d3f9b84be8`](https://github.com/nodejs/node/commit/d3f9b84be8)] - **dgram**: maneja casos de direcciones predeterminadas cuando el offset y la longitud son especificados (Matteo Collina)
 * [[`f1f3832934`](https://github.com/nodejs/node/commit/f1f3832934)] - **doc**: update NAN urls in ROADMAP.md and doc/releases.md (ronkorving) [#5472](https://github.com/nodejs/node/pull/5472)
 * [[`51bc062dab`](https://github.com/nodejs/node/commit/51bc062dab)] - **doc**: add CTC meeting minutes 2016-02-17 (Rod Vagg) [#5410](https://github.com/nodejs/node/pull/5410)
 * [[`795c85ba1c`](https://github.com/nodejs/node/commit/795c85ba1c)] - **doc**: fix typo in child_process documentation (Evan Lucas) [#5474](https://github.com/nodejs/node/pull/5474)
