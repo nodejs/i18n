@@ -1859,7 +1859,7 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
 * **child_process**: `spawnSync` ahora devuelve un `status` nulo cuando proceso secundario es finalizado por una señal. (cjihrig) [#11288](https://github.com/nodejs/node/pull/11288) 
   * Esto corrige el comportamiento para actuar como lo hace `spawn()`.
 * **http**: 
-  * Caracteres de control ahora son rechazados siempre cuando se usa `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
+  * Caracteres de control ahora son siempre rechazados cuando se usa `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
   * Mensajes de depuración han sido añadidos para casos en que los encabezados contengan valores inválidos. (Evan Lucas) [#9195](https://github.com/nodejs/node/pull/9195)
 * **node**: Estadísticas de montón ahora soportan valores más grandes que 4GB. (Ben Noordhuis) [#10186](https://github.com/nodejs/node/pull/10186)
 * **timers**: Callbacks de temporizador ahora siempre mantienen el orden cuando interactúan con la gestión de error de dominio. (John Barboza) [#10522](https://github.com/nodejs/node/pull/10522)
