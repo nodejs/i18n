@@ -104,17 +104,17 @@ Las codificaciones de caracteres soportados actualmente por Node.js incluyen:
 
 * `'utf8'` - Multibyte codificado en caracteres Unicode. Muchas páginas web y otros formatos de documento utilizan UTF-8.
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
+* `'utf16le'` - 2 o 4 bytes, caracteres Unicode codificados como little-endian. Los pares sustitutos (U+10000 to U+10FFFF) son soportados.
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'` - Alias de `'utf16le'`.
 
-* `'base64'` - Base64 encoding. When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
+* `'base64'` - Codificación Base64. Al crear un `Buffer` desde una string, esta codificación también aceptará correctamente "URL y nombre de archivo Safe Alphabet" como es especificado en [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - Una forma de codificar el `Buffer` en una cadena codificada de un byte (como es definido por la IANA en [RFC1345](https://tools.ietf.org/html/rfc1345), página 63, para ser el bloque de suplemento Latin-1 y los códigos de control C0 / C1).
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'` - Alias para `'latin1'`.
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
 *Note*: Today's browsers follow the [WHATWG spec](https://encoding.spec.whatwg.org/) which aliases both 'latin1' and ISO-8859-1 to win-1252. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG spec it's possible that the server actually returned win-1252-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
 
