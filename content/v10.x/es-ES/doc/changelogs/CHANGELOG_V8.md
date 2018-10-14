@@ -884,36 +884,36 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`72c34cf706`](https://github.com/nodejs/node/commit/72c34cf706)] - **test,net**: remover terminología escatológica (Rich Trott) [#16599](https://github.com/nodejs/node/pull/16599)
 * [[`2b903bff05`](https://github.com/nodejs/node/commit/2b903bff05)] - **tools**: no aplicar ningún directorio de herramientas de argumentos finales sin usar (Rich Trott) [#16953](https://github.com/nodejs/node/pull/16953)
 * [[`57937e5746`](https://github.com/nodejs/node/commit/57937e5746)] - **tools**: eliminar los argumentos de la función final no utilizados (Rich Trott) [#16953](https://github.com/nodejs/node/pull/16953)
-* [[`85fd7bb8f7`](https://github.com/nodejs/node/commit/85fd7bb8f7)] - **tools**: fix inspector-check reporting (Daniel Bevenius) [#16902](https://github.com/nodejs/node/pull/16902)
-* [[`8538354139`](https://github.com/nodejs/node/commit/8538354139)] - **tools**: add direct anchors for error codes (Joyee Cheung) [#16779](https://github.com/nodejs/node/pull/16779)
-* [[`79006dab87`](https://github.com/nodejs/node/commit/79006dab87)] - **tools**: don't lint files that have not changed (Joyee Cheung) [#16581](https://github.com/nodejs/node/pull/16581)
-* [[`cb08f5d6fe`](https://github.com/nodejs/node/commit/cb08f5d6fe)] - **tools**: remove unneeded parentheses in doc/html.js (Vse Mozhet Byt) [#16845](https://github.com/nodejs/node/pull/16845)
-* [[`60c918ac7a`](https://github.com/nodejs/node/commit/60c918ac7a)] - **tools**: replace string concatenation with template literals (Kevin Yu) [#16804](https://github.com/nodejs/node/pull/16804)
-* [[`aaf7e83d62`](https://github.com/nodejs/node/commit/aaf7e83d62)] - **tools**: replace string concatenation with template literals (Giovanni Lela) [#16806](https://github.com/nodejs/node/pull/16806)
-* [[`40fa970914`](https://github.com/nodejs/node/commit/40fa970914)] - **tools**: replace string concetation with templates (Patrick Heneise) [#16801](https://github.com/nodejs/node/pull/16801)
-* [[`0d4f62c85f`](https://github.com/nodejs/node/commit/0d4f62c85f)] - **tools,build**: allow build without `remark-cli` (Refael Ackermann) [#16893](https://github.com/nodejs/node/pull/16893)
+* [[`85fd7bb8f7`](https://github.com/nodejs/node/commit/85fd7bb8f7)] - **tools**: corregir el informe "inspector-check" (Daniel Bevenius) [#16902](https://github.com/nodejs/node/pull/16902)
+* [[`8538354139`](https://github.com/nodejs/node/commit/8538354139)] - **tools**: añadir anclajes directos para códigos de error (Joyee Cheung) [#16779](https://github.com/nodejs/node/pull/16779)
+* [[`79006dab87`](https://github.com/nodejs/node/commit/79006dab87)] - **tools**: no hacer lint a archivos que no han cambiado (Joyee Cheung) [#16581](https://github.com/nodejs/node/pull/16581)
+* [[`cb08f5d6fe`](https://github.com/nodejs/node/commit/cb08f5d6fe)] - **tools**: eliminar paréntesis innecesario en doc/html.js (Vse Mozhet Byt) [#16845](https://github.com/nodejs/node/pull/16845)
+* [[`60c918ac7a`](https://github.com/nodejs/node/commit/60c918ac7a)] - **tools**: reemplazar la concatenación de strings con literales de plantilla (Kevin Yu) [#16804](https://github.com/nodejs/node/pull/16804)
+* [[`aaf7e83d62`](https://github.com/nodejs/node/commit/aaf7e83d62)] - **tools**: reemplazar la concatenación de strings con literales de plantilla (Giovanni Lela) [#16806](https://github.com/nodejs/node/pull/16806)
+* [[`40fa970914`](https://github.com/nodejs/node/commit/40fa970914)] - **tools**: reemplazar la concatenación de strings con plantillas (Patrick Heneise) [#16801](https://github.com/nodejs/node/pull/16801)
+* [[`0d4f62c85f`](https://github.com/nodejs/node/commit/0d4f62c85f)] - **tools,build**: permitir compilar sin `remark-cli` (Refael Ackermann) [#16893](https://github.com/nodejs/node/pull/16893)
 
 <a id="8.9.1"></a>
 
-## 2017-11-07, Version 8.9.1 'Carbon' (LTS), @gibfahn
+## 2017-11-07, Versión 8.9.1 'Carbon' (LTS), @gibfahn
 
-### Notable Changes
+### Cambios Notables
 
 * **openssl**: 
-  * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+  * actualizar las fuentes de openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
 * ***Revert*** "**https**: 
-  * refactor to use http internals" (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
+  * refactorizar el uso "interno" de http (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
 
 ### Commits
 
-* [[`6a7e5ceaa9`](https://github.com/nodejs/node/commit/6a7e5ceaa9)] - **deps**: V8: cherry-pick 32141e9 from upstream (Ali Ijaz Sheikh) [#16704](https://github.com/nodejs/node/pull/16704)
-* [[`a815e1b6a2`](https://github.com/nodejs/node/commit/a815e1b6a2)] - **deps**: cherry-pick e7f4e9e from upstream libuv (Bartosz Sosnowski) [#16724](https://github.com/nodejs/node/pull/16724)
-* [[`7f86e8190c`](https://github.com/nodejs/node/commit/7f86e8190c)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
-* [[`1af2244020`](https://github.com/nodejs/node/commit/1af2244020)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`9d98dcc395`](https://github.com/nodejs/node/commit/9d98dcc395)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`99319efc45`](https://github.com/nodejs/node/commit/99319efc45)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`151a8da4b7`](https://github.com/nodejs/node/commit/151a8da4b7)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
-* [[`d68e53452c`](https://github.com/nodejs/node/commit/d68e53452c)] - **deps**: upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+* [[`6a7e5ceaa9`](https://github.com/nodejs/node/commit/6a7e5ceaa9)] - **deps**: V8: hacer cherry-pick a 32141e9 desde upstream (Ali Ijaz Sheikh) [#16704](https://github.com/nodejs/node/pull/16704)
+* [[`a815e1b6a2`](https://github.com/nodejs/node/commit/a815e1b6a2)] - **deps**: hacer cherry-pick a e7f4e9e desdde upstream libuv (Bartosz Sosnowski) [#16724](https://github.com/nodejs/node/pull/16724)
+* [[`7f86e8190c`](https://github.com/nodejs/node/commit/7f86e8190c)] - **deps**: actualizar los archivos de openssl asm y asm_obsolete (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+* [[`1af2244020`](https://github.com/nodejs/node/commit/1af2244020)] - **deps**: añadir -no_rand_screen a s_client de openssl (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`9d98dcc395`](https://github.com/nodejs/node/commit/9d98dcc395)] - **deps**: corregir el error de compilación asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`99319efc45`](https://github.com/nodejs/node/commit/99319efc45)] - **deps**: corregir error de montaje de openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`151a8da4b7`](https://github.com/nodejs/node/commit/151a8da4b7)] - **deps**: copie todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+* [[`d68e53452c`](https://github.com/nodejs/node/commit/d68e53452c)] - **deps**: actualizar las fuentes de openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
 * [[`a3be5bc560`](https://github.com/nodejs/node/commit/a3be5bc560)] - **doc**: add 9.x to version picker and mark 8.x as LTS (Chris Young) [#16672](https://github.com/nodejs/node/pull/16672)
 * [[`08b75c1591`](https://github.com/nodejs/node/commit/08b75c1591)] - ***Revert*** "**https**: refactor to use http internals" (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
 * [[`d334a95834`](https://github.com/nodejs/node/commit/d334a95834)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
