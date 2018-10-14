@@ -2071,9 +2071,9 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 * imprimir "undefined" ante valores indefinidos en REPL (Nathan Rajlich)
 * mejoras de doc (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
 
-* support native addon loading in windows (Bert Belder)
+* soportar carga de complemento nativo en windows (Bert Belder)
 
-* rename getNetworkInterfaces() to networkInterfaces() (bnoordhuis)
+* renombrar getNetworkInterfaces() como networkInterfaces() (bnoordhuis)
 * add pending accepts knob for windows (igorzi)
 * http.request(url.parse(x)) (seebees)
 * [#1929](https://github.com/joyent/node/issues/1929) zlib Respond to 'resume' events properly (isaacs)
