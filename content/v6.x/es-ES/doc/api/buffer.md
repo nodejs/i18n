@@ -126,9 +126,9 @@ También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` 
 
 1. La memoria del objeto `Buffer` se copia al [`TypedArray`], no es compartida.
 
-2. La memoria del objeto `Buffer` es interpretada como un array de distintos elementos, y no como un array, no como un array de bytes del tipo de destino. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del objeto `Buffer` es interpretada como un array de distintos elementos, y no como un array, no como un array de bytes del tipo de destino. Es decir, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un elemento 4[`Uint32Array`] con elementos `[1, 2, 3, 4]`, no un [`Uint32Array`] con un solo elemento `[0x1020304]` o `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the TypeArray object's `.buffer` property.
+Es posible crear un nuevo `Buffer` que comparte la misma memoria asignada como un instancia [`TypedArray`] utilizando la propiedad `buffer ` del objeto TypeArray.
 
 Ejemplo:
 
