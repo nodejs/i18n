@@ -2091,26 +2091,26 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 * métodos de conveniencia para zlib (Matt Robenolt)
 * soporte para process.kill en windows (igorzi)
 * soporte para process.uptime() en windows (igorzi)
-* Return IPv4 addresses before IPv6 addresses from getaddrinfo
-* util.inspect improvements (Nathan Rajlich)
-* cluster module api changes
-* Downgrade V8 to 3.6.6.6
+* Devolver direcciones IPv4 antes que las de IPv6 en getaddrinfo
+* mejoras de util.inspect (Nathan Rajlich)
+* cambios de api del módulo cluster
+* Degradar V8 a 3.6.6.6
 
 <a id="0.5.10"></a>
 
-## 2011.10.21, Version 0.5.10 (unstable)
+## 2011.10.21, Versión 0.5.10 (inestable)
 
 https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 
-* Remove cmake build system, support for Cygwin, legacy code base, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
+* Remover sistema de compilación cmake, soporte para Cygwin, báse de código heredado, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
 
-* Documentation improvements (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
+* Mejoras de documentación (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
 
-* Performance improvements (Daniel Ennis, Bert Belder, Ben Noordhuis)
+* Mejoras de rendimiento (Daniel Ennis, Bert Belder, Ben Noordhuis)
 
-* Long process.title support (Ben Noordhuis)
-* net: register net.Server callback only once (Simen Brekken)
-* net: fix connect queue bugs (Ben Noordhuis)
+* Soporte para process.title largo (Ben Noordhuis)
+* net: registrar callback net.Server solo una vez (Simen Brekken)
+* net: corregir bugs de cola de conexión (Ben Noordhuis)
 * debugger: fix backtrace err handling (Fedor Indutny)
 * Use getaddrinfo instead of c-ares for dns.lookup
 * Emit 'end' from crypto streams on close
