@@ -1793,23 +1793,23 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`db61c952de`](https://github.com/nodejs/node/commit/db61c952de)] - **test**: usar eslint para reparar var-\>const/let (Gibson Fahnestock) [#10685](https://github.com/nodejs/node/pull/10685)
 * [[`632aee186d`](https://github.com/nodejs/node/commit/632aee186d)] - **timers**: reparar para no cerrar el handle del temporizador reusado (Shigeki Ohtsu) [#11646](https://github.com/nodejs/node/pull/11646)
 * [[`39f7aaa290`](https://github.com/nodejs/node/commit/39f7aaa290)] - **timers**: desbloquear la API del temporizador (Rich Trott) [#11580](https://github.com/nodejs/node/pull/11580)
-* [[`d0868ff36c`](https://github.com/nodejs/node/commit/d0868ff36c)] - **tls**: fix segfault on destroy after partial read (Ben Noordhuis) [#11898](https://github.com/nodejs/node/pull/11898)
-* [[`1baee1829b`](https://github.com/nodejs/node/commit/1baee1829b)] - **tls**: keep track of stream that is closed (jBarz) [#11776](https://github.com/nodejs/node/pull/11776)
-* [[`b1ddf11c14`](https://github.com/nodejs/node/commit/b1ddf11c14)] - **tls**: fix macro to check NPN feature (Shigeki Ohtsu) [#11655](https://github.com/nodejs/node/pull/11655)
-* [[`6eb1c25263`](https://github.com/nodejs/node/commit/6eb1c25263)] - **tools**: ignore URLs in line length linting (Rich Trott) [#11890](https://github.com/nodejs/node/pull/11890)
-* [[`cad425c571`](https://github.com/nodejs/node/commit/cad425c571)] - **tools**: update dotfile whitelist in .gitignore (Michaël Zasso) [#12116](https://github.com/nodejs/node/pull/12116)
-* [[`3858861463`](https://github.com/nodejs/node/commit/3858861463)] - **tools**: add links to the stability index reference (Michael Cox) [#11664](https://github.com/nodejs/node/pull/11664)
-* [[`3e6d9922b9`](https://github.com/nodejs/node/commit/3e6d9922b9)] - **tools**: remove NODE_PATH from environment for tests (Rich Trott) [#11612](https://github.com/nodejs/node/pull/11612)
-* [[`de63698066`](https://github.com/nodejs/node/commit/de63698066)] - **tools, test**: require const/let in test (Gibson Fahnestock) [#10685](https://github.com/nodejs/node/pull/10685)
-* [[`63449972d1`](https://github.com/nodejs/node/commit/63449972d1)] - **url**: use `hasIntl` instead of `try-catch` (Daijiro Wachi) [#11571](https://github.com/nodejs/node/pull/11571)
+* [[`d0868ff36c`](https://github.com/nodejs/node/commit/d0868ff36c)] - **tls**: reparar violaciones de segmento en lectura parcial de después de destrucción (Ben Noordhuis) [#11898](https://github.com/nodejs/node/pull/11898)
+* [[`1baee1829b`](https://github.com/nodejs/node/commit/1baee1829b)] - **tls**: mantener seguimiento de stream que está cerrado (jBarz) [#11776](https://github.com/nodejs/node/pull/11776)
+* [[`b1ddf11c14`](https://github.com/nodejs/node/commit/b1ddf11c14)] - **tls**: arreglar macro para chequear la función NPN (Shigeki Ohtsu) [#11655](https://github.com/nodejs/node/pull/11655)
+* [[`6eb1c25263`](https://github.com/nodejs/node/commit/6eb1c25263)] - **tools**: ignorar URLs en linting de extensión de línea (Rich Trott) [#11890](https://github.com/nodejs/node/pull/11890)
+* [[`cad425c571`](https://github.com/nodejs/node/commit/cad425c571)] - **tools**: actualizar lista blanca de dotfile en .gitignore (Michaël Zasso) [#12116](https://github.com/nodejs/node/pull/12116)
+* [[`3858861463`](https://github.com/nodejs/node/commit/3858861463)] - **tools**: añadir enlaces a la referencia del índice de estabilidad (Michael Cox) [#11664](https://github.com/nodejs/node/pull/11664)
+* [[`3e6d9922b9`](https://github.com/nodejs/node/commit/3e6d9922b9)] - **tools**: remover NODE_PATH del entorno para pruebas (Rich Trott) [#11612](https://github.com/nodejs/node/pull/11612)
+* [[`de63698066`](https://github.com/nodejs/node/commit/de63698066)] - **tools, test**: requerir const/let en prueba (Gibson Fahnestock) [#10685](https://github.com/nodejs/node/pull/10685)
+* [[`63449972d1`](https://github.com/nodejs/node/commit/63449972d1)] - **url**: usar `hasIntl` en vez de `try-catch` (Daijiro Wachi) [#11571](https://github.com/nodejs/node/pull/11571)
 
 <a id="6.10.2"></a>
 
-## 2017-04-04, Version 6.10.2 'Boron' (LTS), @MylesBorins
+## 2017-04-04, Versión 6.10.2 'Boron' (LTS), @MylesBorins
 
-This is a special LTS to fix a number of regressions that were found on the 6.10.x release line.
+Esto es un LTS especial para arreglar un número de regresiones que fueron encontradas en la línea de lanzamiento de 6.10.x.
 
-This includes:
+Esto incluye:
 
 * a fix for memory leak in the crypto module that was introduced in 6.10.1
 * a fix for a regression introduced to the windows repl in 6.10.0
