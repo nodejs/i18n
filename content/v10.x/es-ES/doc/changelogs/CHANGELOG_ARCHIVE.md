@@ -2069,7 +2069,7 @@ https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
 * imprimir "undefined" ante valores indefinidos en REPL (Nathan Rajlich)
-* doc improvements (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
+* mejoras de doc (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
 
 * support native addon loading in windows (Bert Belder)
 
