@@ -2026,13 +2026,13 @@ https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
 <a id="0.6.2"></a>
 
-## 2011.11.18, Version 0.6.2 (stable)
+## 2011.11.18, Versión 0.6.2 (estable)
 
 https://github.com/nodejs/node/commit/a4402f0b2e410b19375a1d5c5fb7fe7f66f3c7f8
 
-* doc improvements (Artur Adib, Trevor Burnham, Ryan Emery, Trent Mick)
-* timers: remember extra setTimeout() arguments when timeout==0
-* punycode: use Mathias Bynens's punycode library, it's more compliant
+* mejoras de doc (Artur Adib, Trevor Burnham, Ryan Emery, Trent Mick)
+* timers: recordar argumentos extra de setTimeout() cuando timeout==0
+* punycode: utilizar la librería de punycode de Mathias Bynens, está más acorde
 * repl: improved tab completion (Ryan Emery)
 * buffer: fix range checks in .writeInt() functions (Lukasz Walukiewicz)
 * tls: make cipher list configurable
