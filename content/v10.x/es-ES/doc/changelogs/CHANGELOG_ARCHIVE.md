@@ -1998,8 +1998,8 @@ https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 * cli: añadir interruptor -p, imprime resultado de –eval
 * [#1997](https://github.com/joyent/node/issues/1997): reparar encriptación y descifrado de ECB de Blowfish (Ingmar Runge)
 * [#2223](https://github.com/joyent/node/issues/2223): corregir que el evento "close" de socket es emitido dos veces
-* [#2224](https://github.com/joyent/node/issues/2224): fix RSS memory usage > 4 GB reporting (Russ Bradberry)
-* [#2225](https://github.com/joyent/node/issues/2225): fix util.inspect() object stringification bug (Nathan Rajlich)
+* [#2224](https://github.com/joyent/node/issues/2224): arreglar que uso de la memoria de RSS > al reporte de 4 GB (Russ Bradberry)
+* [#2225](https://github.com/joyent/node/issues/2225): corregir bug de strigificación de objetos de util.inspect() (Nathan Rajlich)
 
 <a id="0.6.3"></a>
 
