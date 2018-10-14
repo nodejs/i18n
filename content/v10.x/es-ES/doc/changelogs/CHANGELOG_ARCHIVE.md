@@ -1971,25 +1971,25 @@ https://github.com/nodejs/node/commit/9a059ea69e1f6ebd8899246682d8ca257610b8ab
 * child_process: Reparar bug relacionado con stdin cerrado (Ben Noordhuis)
 * Habilitar actualizaciones en MSI. (Igor Zinkovsky)
 * net: Repara fuga de memoria (Ben Noordhuis)
-* fs: handle fractional or NaN ReadStream buffer size (Ben Noordhuis)
-* crypto: fix memory leaks in PBKDF2 error path (Ben Noordhuis)
+* fs: manejar tamaño de buffer fraccionario o ReadStream NaN (Ben Noordhuis)
+* crypto: reparar fugas de memoria en ruta de error de PBKDF2 (Ben Noordhuis)
 
 <a id="0.6.5"></a>
 
-## 2011.12.04, Version 0.6.5 (stable)
+## 2011.12.04, Versión 0.6.5 (estable)
 
 https://github.com/nodejs/node/commit/6cc94db653a2739ab28e33b2d6a63c51bd986a9f
 
-* npm workaround Windows antivirus software (isaacs)
-* Upgrade V8 to 3.6.6.11
+* Solución del npm en cuanto al software antivirus de Windows (isaacs)
+* Actualizar V8 a 3.6.6.11
 
 <a id="0.6.4"></a>
 
-## 2011.12.02, Version 0.6.4 (stable)
+## 2011.12.02, Versión 0.6.4 (estable)
 
 https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
-* doc improvements (Kyle Young, Tim Oxley, Roman Shtylman, Mathias Bynens)
+* mejoras de doc (Kyle Young, Tim Oxley, Roman Shtylman, Mathias Bynens)
 * upgrade bundled npm (Isaac Schlueter)
 * polish Windows installer (Igor Zinkovsky, Isaac Schlueter)
 * punycode: upgrade to v0.2.1 (Mathias Bynens)
