@@ -1659,9 +1659,9 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`5d74c9e749`](https://github.com/nodejs/node/commit/5d74c9e749)] - **buffer**: refactorizar Buffer.prototype.inspect() (Rich Trott) [#11600](https://github.com/nodejs/node/pull/11600)
 * [[`e7e83f6f10`](https://github.com/nodejs/node/commit/e7e83f6f10)] - **build**: usar $(RM) en Makefile para consistencia (Gibson Fahnestock) [#12157](https://github.com/nodejs/node/pull/12157)
 * [[`986ef6fffa`](https://github.com/nodejs/node/commit/986ef6fffa)] - **build**: añadir chequeos para opciones de configuración de openssl (Daniel Bevenius) [#12175](https://github.com/nodejs/node/pull/12175)
-* [[`c2c467e242`](https://github.com/nodejs/node/commit/c2c467e242)] - **build**: make configure print statements consistent (Daniel Bevenius) [#12176](https://github.com/nodejs/node/pull/12176)
+* [[`c2c467e242`](https://github.com/nodejs/node/commit/c2c467e242)] - **build**: hacer consistentes a las declaraciones impresas de configure (Daniel Bevenius) [#12176](https://github.com/nodejs/node/pull/12176)
 * [[`2c2a6649c1`](https://github.com/nodejs/node/commit/2c2a6649c1)] - **build**: añadir chequeo de node_use_openssl a install.py (Daniel Bevenius) [#11766](https://github.com/nodejs/node/pull/11766)
-* [[`a899b0b92b`](https://github.com/nodejs/node/commit/a899b0b92b)] - **build**: fix llvm version detection in freebsd-10 (Shigeki Ohtsu) [#11668](https://github.com/nodejs/node/pull/11668)
+* [[`a899b0b92b`](https://github.com/nodejs/node/commit/a899b0b92b)] - **build**: reparar detección de versión de llvm en freebsd-10 (Shigeki Ohtsu) [#11668](https://github.com/nodejs/node/pull/11668)
 * [[`ba23506419`](https://github.com/nodejs/node/commit/ba23506419)] - **build**: --without-ssl implies --without-inspector (Ben Noordhuis) [#12200](https://github.com/nodejs/node/pull/12200)
 * [[`cd78a2bd07`](https://github.com/nodejs/node/commit/cd78a2bd07)] - **deps**: hacer backport a 75f2d65f00 desde upstream V8 (Yang Guo) [#12535](https://github.com/nodejs/node/pull/12535)
 * [[`62e047e040`](https://github.com/nodejs/node/commit/62e047e040)] - **deps**: hacer backport a ec1ffe3 desde upstream V8 (Daniel Bevenius) [#12061](https://github.com/nodejs/node/pull/12061)
@@ -1835,24 +1835,24 @@ Esto también incluye una actualización a zlib 1.2.11 para reparar un [número 
 * [[`1ff512c185`](https://github.com/nodejs/node/commit/1ff512c185)] - **deps**: hacer backport a e427300 desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * [[`8dfc710a06`](https://github.com/nodejs/node/commit/8dfc710a06)] - **deps**: hacer cherry-pick a b9f682b desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * [[`52bdb8f246`](https://github.com/nodejs/node/commit/52bdb8f246)] - **deps**: hacer backport a 2cabc86 desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
-* [[`64fc5a4541`](https://github.com/nodejs/node/commit/d60ceb8a02)] - **repl** Revert: "Revert "repl: disable Ctrl+C support..." (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
+* [[`64fc5a4541`](https://github.com/nodejs/node/commit/d60ceb8a02)] - **repl** Revertir: "Revertir "repl: deshabilitar soporte de Ctrl+C..." (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
 
 <a id="6.10.1"></a>
 
-## 2017-03-21, Version 6.10.1 'Boron' (LTS), @MylesBorins
+## 2017-03-21, Versión 6.10.1 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 297 commits. This includes 124 which are test related, 79 which are doc related, 16 which are build / tool related and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están relacionados a pruebas, 79 que están relacionados a documentación, 16 que están relacionados a build / tool y 4 commits que son actualizaciones para dependencias.
 
-### Notable changes
+### Cambios notables
 
-* **performance**: The performance of several APIs has been improved. 
-  * `Buffer.compare()` is up to 35% faster on average. (Brian White) [#10927](https://github.com/nodejs/node/pull/10927)
-  * `buffer.toJSON()` is up to 2859% faster on average. (Brian White) [#10895](https://github.com/nodejs/node/pull/10895)
-  * `fs.*statSync()` functions are now up to 9.3% faster on average. (Brian White) [#11522](https://github.com/nodejs/node/pull/11522)
-  * `os.loadavg` is up to 151% faster. (Brian White) [#11516](https://github.com/nodejs/node/pull/11516)
-  * `process.memoryUsage()` is up to 34% faster. (Brian White) [#11497](https://github.com/nodejs/node/pull/11497)
-  * `querystring.unescape()` for `Buffer`s is 15% faster on average. (Brian White) [#10837](https://github.com/nodejs/node/pull/10837)
-  * `querystring.stringify()` is up to 7.8% faster on average. (Brian White) [#10852](https://github.com/nodejs/node/pull/10852)
+* **performance**: El rendimiento de varias APIs ha sido mejorado. 
+  * `Buffer.compare()` es hasta 35% más rápido en promedio. (Brian White) [#10927](https://github.com/nodejs/node/pull/10927)
+  * `buffer.toJSON()` es hasta 2859% más rápido en promedio. (Brian White) [#10895](https://github.com/nodejs/node/pull/10895)
+  * `fs.*statSync()` funciones son ahora hasta 9.3% más rápidas en promedio. (Brian White) [#11522](https://github.com/nodejs/node/pull/11522)
+  * `os.loadavg` es hasta 151% más rápido. (Brian White) [#11516](https://github.com/nodejs/node/pull/11516)
+  * `process.memoryUsage()` es hasta 34% más rápido. (Brian White) [#11497](https://github.com/nodejs/node/pull/11497)
+  * `querystring.unescape()` para `Buffer`s es 15% más rápido en promedio. (Brian White) [#10837](https://github.com/nodejs/node/pull/10837)
+  * `querystring.stringify()` es hasta 7.8% más rápido en promedio. (Brian White) [#10852](https://github.com/nodejs/node/pull/10852)
   * `querystring.parse()` is up to 21% faster on average. (Brian White) [#10874](https://github.com/nodejs/node/pull/10874)
 * **IPC**: Batched writes have been enabled for process IPC on platforms that support Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
   * Performance gains may be up to 40% for some workloads.
