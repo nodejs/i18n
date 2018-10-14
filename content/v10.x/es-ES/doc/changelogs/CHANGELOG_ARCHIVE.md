@@ -2015,14 +2015,14 @@ https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
 * TLS: exponer más opciones y constantes de contexto de SSL de openssl. (Ben Noordhuis)
 
-* [#2177](https://github.com/joyent/node/issues/2177) Windows: don't kill UDP socket when a packet fails to reach its destination. (Bert Belder)
+* [#2177](https://github.com/joyent/node/issues/2177) Windows: no eliminar socket de UDP cuando un paquete no logre alcanzar su destino. (Bert Belder)
 
-* Windows: support paths longer than 260 characters. (Igor Zinkovsky)
+* Windows: soportar rutas más largas que 260 caracteres. (Igor Zinkovsky)
 
-* Windows: correctly resolve drive-relative paths. (Bert Belder)
-* [#2166](https://github.com/joyent/node/issues/2166) Don't leave file descriptor open after lchmod. (Isaac Schlueter)
-* [#2084](https://github.com/joyent/node/issues/2084) Add OS X .pkg build script to make file.
-* [#2160](https://github.com/joyent/node/issues/2160) Documentation improvements. (Ben Noordhuis)
+* Windows: resolver correctamente rutas relacionadas con el disco duro. (Bert Belder)
+* [#2166](https://github.com/joyent/node/issues/2166) No dejar abierto el descriptor de archivos luego de lchmod. (Isaac Schlueter)
+* [#2084](https://github.com/joyent/node/issues/2084) Añadir script de compilación .pkg de OS X para crear archivo.
+* [#2160](https://github.com/joyent/node/issues/2160) Mejoras de documentación. (Ben Noordhuis)
 
 <a id="0.6.2"></a>
 
