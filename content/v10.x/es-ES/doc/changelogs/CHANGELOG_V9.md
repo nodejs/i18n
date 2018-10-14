@@ -431,36 +431,36 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 * [[`bdbfc0e20e`](https://github.com/nodejs/node/commit/bdbfc0e20e)] - **test**: renombrar test-regress-GH-4015 (Ujjwal Sharma) [#19161](https://github.com/nodejs/node/pull/19161)
 * [[`da44c2ccf0`](https://github.com/nodejs/node/commit/da44c2ccf0)] - **test**: renombrar test-regress-GH-1697 (Ujjwal Sharma) [#19161](https://github.com/nodejs/node/pull/19161)
 * [[`fa43d2f69e`](https://github.com/nodejs/node/commit/fa43d2f69e)] - **test**: renombrar test-regress-GH-1726 (Ujjwal Sharma) [#19161](https://github.com/nodejs/node/pull/19161)
-* [[`46b5915dab`](https://github.com/nodejs/node/commit/46b5915dab)] - **test**: skip postmortem metadata test when nm fails (Joyee Cheung) [#19107](https://github.com/nodejs/node/pull/19107)
-* [[`16ab3b54d1`](https://github.com/nodejs/node/commit/16ab3b54d1)] - **test**: address unreliable test-performance (Rich Trott) [#19228](https://github.com/nodejs/node/pull/19228)
-* [[`1e5c7e3e47`](https://github.com/nodejs/node/commit/1e5c7e3e47)] - **test**: refactor common.expectsError (Ruben Bridgewater) [#17703](https://github.com/nodejs/node/pull/17703)
-* [[`060216689a`](https://github.com/nodejs/node/commit/060216689a)] - **(SEMVER-MINOR)** **tls**: expose Finished messages in TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
-* [[`b04dd7b351`](https://github.com/nodejs/node/commit/b04dd7b351)] - **tools**: enable eslint one-var rule (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
+* [[`46b5915dab`](https://github.com/nodejs/node/commit/46b5915dab)] - **test**: saltar prueba postmortem de metadatos cuando nm falla (Joyee Cheung) [#19107](https://github.com/nodejs/node/pull/19107)
+* [[`16ab3b54d1`](https://github.com/nodejs/node/commit/16ab3b54d1)] - **test**: abordar rendimiento de prueba no confiable (Rich Trott) [#19228](https://github.com/nodejs/node/pull/19228)
+* [[`1e5c7e3e47`](https://github.com/nodejs/node/commit/1e5c7e3e47)] - **test**: refactorizar common.expectsError (Ruben Bridgewater) [#17703](https://github.com/nodejs/node/pull/17703)
+* [[`060216689a`](https://github.com/nodejs/node/commit/060216689a)] - **(SEMVER-MINOR)** **tls**: exponer mensajes de Finalizado en TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
+* [[`b04dd7b351`](https://github.com/nodejs/node/commit/b04dd7b351)] - **tools**: activar regla de eslint one-var (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
 * [[`d4d7df8371`](https://github.com/nodejs/node/commit/d4d7df8371)] - **tools**: enable eslint strict key-spacing (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
-* [[`9e10ddc215`](https://github.com/nodejs/node/commit/9e10ddc215)] - **tools**: enable eslint no-undef-init rule (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
-* [[`9d1e409ee3`](https://github.com/nodejs/node/commit/9d1e409ee3)] - **tools**: enable no-unsafe-finally (Ruben Bridgewater) [#18745](https://github.com/nodejs/node/pull/18745)
-* [[`d7958657d7`](https://github.com/nodejs/node/commit/d7958657d7)] - **tools**: add assert.doesNotThrow eslint rule (Ruben Bridgewater) [#18669](https://github.com/nodejs/node/pull/18669)
-* [[`66694e28b1`](https://github.com/nodejs/node/commit/66694e28b1)] - **tools**: fix test-npm-package (Michaël Zasso) [#19293](https://github.com/nodejs/node/pull/19293)
-* [[`9613e02ff7`](https://github.com/nodejs/node/commit/9613e02ff7)] - **tools,bootstrap**: preprocess gypi files to json (Gus Caplan) [#19140](https://github.com/nodejs/node/pull/19140)
-* [[`74f0d1aa60`](https://github.com/nodejs/node/commit/74f0d1aa60)] - **(SEMVER-MINOR)** **tty**: refactor to es6 (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
-* [[`ead727c274`](https://github.com/nodejs/node/commit/ead727c274)] - **(SEMVER-MINOR)** **tty**: add getColorDepth function (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
-* [[`072adfea8c`](https://github.com/nodejs/node/commit/072adfea8c)] - **url**: replace "magic" numbers by constants (Sergey Golovin) [#19035](https://github.com/nodejs/node/pull/19035)
-* [[`c18ac52970`](https://github.com/nodejs/node/commit/c18ac52970)] - **(SEMVER-MINOR)** **util**: add util.inspect compact option (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
-* [[`ce3a5af69f`](https://github.com/nodejs/node/commit/ce3a5af69f)] - **(SEMVER-MINOR)** **util**: rename util.inspect argument (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
-* [[`fd4c05ab56`](https://github.com/nodejs/node/commit/fd4c05ab56)] - **(SEMVER-MINOR)** **util**: fix custom inspect description (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
+* [[`9e10ddc215`](https://github.com/nodejs/node/commit/9e10ddc215)] - **tools**: activar regla de eslint no-undef-init (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
+* [[`9d1e409ee3`](https://github.com/nodejs/node/commit/9d1e409ee3)] - **tools**: activar no-unsafe-finally (Ruben Bridgewater) [#18745](https://github.com/nodejs/node/pull/18745)
+* [[`d7958657d7`](https://github.com/nodejs/node/commit/d7958657d7)] - **tools**: agregar regla de eslint assert.doesNotThrow (Ruben Bridgewater) [#18669](https://github.com/nodejs/node/pull/18669)
+* [[`66694e28b1`](https://github.com/nodejs/node/commit/66694e28b1)] - **tools**: reparar test-npm-package (Michaël Zasso) [#19293](https://github.com/nodejs/node/pull/19293)
+* [[`9613e02ff7`](https://github.com/nodejs/node/commit/9613e02ff7)] - **tools,bootstrap**: preprocesar archivos gypi a json (Gus Caplan) [#19140](https://github.com/nodejs/node/pull/19140)
+* [[`74f0d1aa60`](https://github.com/nodejs/node/commit/74f0d1aa60)] - **(SEMVER-MINOR)** **tty**: refactorizar a es6 (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+* [[`ead727c274`](https://github.com/nodejs/node/commit/ead727c274)] - **(SEMVER-MINOR)** **tty**: añadir función getColorDepth (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+* [[`072adfea8c`](https://github.com/nodejs/node/commit/072adfea8c)] - **url**: remplazar números "magic" por constantes (Sergey Golovin) [#19035](https://github.com/nodejs/node/pull/19035)
+* [[`c18ac52970`](https://github.com/nodejs/node/commit/c18ac52970)] - **(SEMVER-MINOR)** **util**: agregar opción compacta util.inspect (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
+* [[`ce3a5af69f`](https://github.com/nodejs/node/commit/ce3a5af69f)] - **(SEMVER-MINOR)** **util**: renombrar argumento util.inspect (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
+* [[`fd4c05ab56`](https://github.com/nodejs/node/commit/fd4c05ab56)] - **(SEMVER-MINOR)** **util**: corregir descripción de inspección personalizada (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
 
 <a id="9.8.0"></a>
 
-## 2018-03-07, Version 9.8.0 (Current), @MylesBorins
+## 2018-03-07, Versión 9.8.0 (Actual), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **crypto**: 
-  * add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+  * agregar cert.fingerprint256 como impresión de huella SHA256 (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **http2**: 
-  * Fixed issues with aborted connections in the HTTP/2 implementation (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987) [#19002](https://github.com/nodejs/node/pull/19002)
+  * Se solucionaron problemas con conexiones abortadas en la implementación de HTTP/2 (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987) [#19002](https://github.com/nodejs/node/pull/19002)
 * **loader**: 
-  * --inspect-brk now works properly for esmodules (Gus Caplan) [#18949](https://github.com/nodejs/node/pull/18949)
+  * --inspect-brk ahora trabaja apropiadamente para esmodules (Gus Caplan) [#18949](https://github.com/nodejs/node/pull/18949)
 * **src**: 
   * make process.dlopen() load well-known symbol (Ben Noordhuis) [#18934](https://github.com/nodejs/node/pull/18934)
 * **trace_events**: 
@@ -470,10 +470,10 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 ### Commits
 
-* [[`6ae2cafde3`](https://github.com/nodejs/node/commit/6ae2cafde3)] - **buffer**: coerce offset to integer (Ruben Bridgewater) [#18215](https://github.com/nodejs/node/pull/18215)
-* [[`6d17383041`](https://github.com/nodejs/node/commit/6d17383041)] - **buffer**: fix typo in lib/buffer.js (Ujjwal Sharma) [#19126](https://github.com/nodejs/node/pull/19126)
-* [[`4b34b2e185`](https://github.com/nodejs/node/commit/4b34b2e185)] - **build**: fix gocvr version used for coverage (Michael Dawson) [#19094](https://github.com/nodejs/node/pull/19094)
-* [[`a938e52ffe`](https://github.com/nodejs/node/commit/a938e52ffe)] - **build**: disable openssl build warnings on macos (Ben Noordhuis) [#19046](https://github.com/nodejs/node/pull/19046)
+* [[`6ae2cafde3`](https://github.com/nodejs/node/commit/6ae2cafde3)] - **buffer**: forzar offset a entero (Ruben Bridgewater) [#18215](https://github.com/nodejs/node/pull/18215)
+* [[`6d17383041`](https://github.com/nodejs/node/commit/6d17383041)] - **buffer**: corregir tipografía en lib/buffer.js (Ujjwal Sharma) [#19126](https://github.com/nodejs/node/pull/19126)
+* [[`4b34b2e185`](https://github.com/nodejs/node/commit/4b34b2e185)] - **build**: reparar versión gocvr utilizada para cobertura (Michael Dawson) [#19094](https://github.com/nodejs/node/pull/19094)
+* [[`a938e52ffe`](https://github.com/nodejs/node/commit/a938e52ffe)] - **build**: desactivar advertencias de compilación de openssl en macos (Ben Noordhuis) [#19046](https://github.com/nodejs/node/pull/19046)
 * [[`44d80c5620`](https://github.com/nodejs/node/commit/44d80c5620)] - **build**: fix coverage after gcovr update (killagu) [#18958](https://github.com/nodejs/node/pull/18958)
 * [[`28a5362e83`](https://github.com/nodejs/node/commit/28a5362e83)] - **build**: fix lint-md-build dependency (Joyee Cheung) [#18981](https://github.com/nodejs/node/pull/18981)
 * [[`e74e422a53`](https://github.com/nodejs/node/commit/e74e422a53)] - **(SEMVER-MINOR)** **crypto**: add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
