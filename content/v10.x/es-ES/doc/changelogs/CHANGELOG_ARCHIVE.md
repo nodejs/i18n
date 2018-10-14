@@ -2074,12 +2074,12 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 * soportar carga de complemento nativo en windows (Bert Belder)
 
 * renombrar getNetworkInterfaces() como networkInterfaces() (bnoordhuis)
-* add pending accepts knob for windows (igorzi)
+* añadir botón de aceptaciones pendientes para windows (igorzi)
 * http.request(url.parse(x)) (seebees)
-* [#1929](https://github.com/joyent/node/issues/1929) zlib Respond to 'resume' events properly (isaacs)
-* stream.pipe: Remove resume and pause events
-* test fixes for windows (igorzi)
-* build system improvements (bnoordhuis)
+* [#1929](https://github.com/joyent/node/issues/1929) zlib Responder correctamente a los eventos "resume" (isaacs)
+* stream.pipe: Remover eventos "resume" y "pause"
+* probar reparaciones para windows (igorzi)
+* mejoras del sistema de compilación (bnoordhuis)
 * [#1936](https://github.com/joyent/node/issues/1936) tls: does not emit 'end' from EncryptedStream (koichik)
 * [#758](https://github.com/joyent/node/issues/758) tls: add address(), remoteAddress/remotePort
 * [#1399](https://github.com/joyent/node/issues/1399) http: emit Error object after .abort() (bnoordhuis)
