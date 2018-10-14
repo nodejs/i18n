@@ -2052,10 +2052,10 @@ https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 * crypto: hacer seguro para threads (Ben Noordhuis)
 * arreglar objeto de error de process.kill
 * debugger: manejar correctamente fuente de handle con caracteres multi-byte (Shigeki Ohtsu)
-* make stdout and stderr non-destroyable (Igor Zinkovsky)
-* fs: don't close uninitialized fs.watch handle (Ben Noordhuis)
-* [#2026](https://github.com/joyent/node/issues/2026) fix man page install on BSDs (Ben Noordhuis)
-* [#2040](https://github.com/joyent/node/issues/2040) fix unrecognized errno assert in uv_err_name
+* hacer que stdout y stderr sean no destructibles (Igor Zinkovsky)
+* fs: no cerrar handle sin inicializar de fs.watch (Ben Noordhuis)
+* [#2026](https://github.com/joyent/node/issues/2026) reparar instalación de página del manual en BSDs (Ben Noordhuis)
+* [#2040](https://github.com/joyent/node/issues/2040) corregir aserción de errno no reconocida en uv_err_name
 * [#2043](https://github.com/joyent/node/issues/2043) fs: mkdir() should call callback if mode is omitted
 * [#2045](https://github.com/joyent/node/issues/2045) fs: fix fs.realpath on windows to return on error (Benjamin Pasero)
 * [#2047](https://github.com/joyent/node/issues/2047) minor cluster improvements
