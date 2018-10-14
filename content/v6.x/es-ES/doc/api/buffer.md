@@ -138,28 +138,28 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Copies the contents of `arr`
+// Copia los contenidos de `arr`
 const buf1 = Buffer.from(arr);
 
-// Shares memory with `arr`
+// Comparte la memoria con `arr`
 const buf2 = Buffer.from(arr.buffer);
 
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf1);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf2);
 
 arr[1] = 6000;
 
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf1);
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf2);
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+Note que al crear un `Buffer` usando un [`TypedArray`]'s `.buffer`, es posible usar solo una porción del [`ArrayBuffer`] subyacente pasando parámetros en `byteOffset` y `length`.
 
 Ejemplo:
 
@@ -167,11 +167,11 @@ Ejemplo:
 const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
-// Prints: 16
+// Imprime: 16
 console.log(buf.length);
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Específicamente, las variantes de [`TypedArray`] aceptan un segundo argumento que es una función de mapeo que es invocada en cada elemento del array indicado:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
