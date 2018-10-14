@@ -1706,7 +1706,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`e02d724273`](https://github.com/nodejs/node/commit/e02d724273)] - **doc**: corregir comentarios engañosos de ASCII (Rahat Ahmed) [#11657](https://github.com/nodejs/node/pull/11657)
 * [[`3419b7a9d4`](https://github.com/nodejs/node/commit/3419b7a9d4)] - **doc**: añadir a `Daijiro Wachi` a colaboradores (Daijiro Wachi) [#11676](https://github.com/nodejs/node/pull/11676)
 * [[`a042c8a0ef`](https://github.com/nodejs/node/commit/a042c8a0ef)] - **doc**: corregir error tipográfico en documento de stream (Bradley Curran) [#11560](https://github.com/nodejs/node/pull/11560)
-* [[`c0663e51d1`](https://github.com/nodejs/node/commit/c0663e51d1)] - **doc**: fixup errors.md (Vse Mozhet Byt) [#11566](https://github.com/nodejs/node/pull/11566)
+* [[`c0663e51d1`](https://github.com/nodejs/node/commit/c0663e51d1)] - **doc**: corregir errors.md (Vse Mozhet Byt) [#11566](https://github.com/nodejs/node/pull/11566)
 * [[`0aab0503be`](https://github.com/nodejs/node/commit/0aab0503be)] - **doc**: añadir enlaces a referencias en net.Socket (Joyee Cheung) [#11625](https://github.com/nodejs/node/pull/11625)
 * [[`109fd72f11`](https://github.com/nodejs/node/commit/109fd72f11)] - **doc**: usar malformado común en vez de mal formateado (James Sumners) [#11518](https://github.com/nodejs/node/pull/11518)
 * [[`6c3b104548`](https://github.com/nodejs/node/commit/6c3b104548)] - **doc**: corregir error tipográfico en STYLE_GUIDE.md (Nikolai Vavilov) [#11615](https://github.com/nodejs/node/pull/11615)
