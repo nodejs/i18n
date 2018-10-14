@@ -2003,17 +2003,17 @@ https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
 <a id="0.6.3"></a>
 
-## 2011.11.25, Version 0.6.3 (stable)
+## 2011.11.25, Versión 0.6.3 (estable)
 
 https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
-* [#2083](https://github.com/joyent/node/issues/2083) Land NPM in Node. It is included in packages/installers and installed on `make install`.
+* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. Está incluído en los paquetes/instaladores e instalado en `make install`.
 
-* [#2076](https://github.com/joyent/node/issues/2076) Add logos to windows installer.
+* [#2076](https://github.com/joyent/node/issues/2076) Añadir logos al instalador de windows.
 
-* [#1711](https://github.com/joyent/node/issues/1711) Correctly handle http requests without headers. (Ben Noordhuis, Felix Geisendörfer)
+* [#1711](https://github.com/joyent/node/issues/1711) Manejar correctamente solicitudes de http sin encabezados. (Ben Noordhuis, Felix Geisendörfer)
 
-* TLS: expose more openssl SSL context options and constants. (Ben Noordhuis)
+* TLS: exponer más opciones y constantes de contexto de SSL de openssl. (Ben Noordhuis)
 
 * [#2177](https://github.com/joyent/node/issues/2177) Windows: don't kill UDP socket when a packet fails to reach its destination. (Bert Belder)
 
