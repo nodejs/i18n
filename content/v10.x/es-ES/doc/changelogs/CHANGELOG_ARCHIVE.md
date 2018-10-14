@@ -2056,19 +2056,19 @@ https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 * fs: no cerrar handle sin inicializar de fs.watch (Ben Noordhuis)
 * [#2026](https://github.com/joyent/node/issues/2026) reparar instalación de página del manual en BSDs (Ben Noordhuis)
 * [#2040](https://github.com/joyent/node/issues/2040) corregir aserción de errno no reconocida en uv_err_name
-* [#2043](https://github.com/joyent/node/issues/2043) fs: mkdir() should call callback if mode is omitted
-* [#2045](https://github.com/joyent/node/issues/2045) fs: fix fs.realpath on windows to return on error (Benjamin Pasero)
-* [#2047](https://github.com/joyent/node/issues/2047) minor cluster improvements
-* [#2052](https://github.com/joyent/node/issues/2052) readline get window columns correctly
-* Upgrade V8 to 3.6.6.7
+* [#2043](https://github.com/joyent/node/issues/2043) fs: mkdir() debe llamar a callback si se omite el modo
+* [#2045](https://github.com/joyent/node/issues/2045) fs: arreglar fs.realpath en windows para que devuelva ante error (Benjamin Pasero)
+* [#2047](https://github.com/joyent/node/issues/2047) mejoras de clúster menores
+* [#2052](https://github.com/joyent/node/issues/2052) readline obtiene correctamente las columnas de windows
+* Actualizar V8 a 3.6.6.7
 
 <a id="0.6.0"></a>
 
-## 2011.11.04, Version 0.6.0 (stable)
+## 2011.11.04, Versión 0.6.0 (estable)
 
 https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
-* print undefined on undefined values in REPL (Nathan Rajlich)
+* imprimir "undefined" ante valores indefinidos en REPL (Nathan Rajlich)
 * doc improvements (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
 
 * support native addon loading in windows (Bert Belder)
