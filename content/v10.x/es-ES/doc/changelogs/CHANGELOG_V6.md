@@ -1663,9 +1663,9 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`2c2a6649c1`](https://github.com/nodejs/node/commit/2c2a6649c1)] - **build**: añadir chequeo de node_use_openssl a install.py (Daniel Bevenius) [#11766](https://github.com/nodejs/node/pull/11766)
 * [[`a899b0b92b`](https://github.com/nodejs/node/commit/a899b0b92b)] - **build**: fix llvm version detection in freebsd-10 (Shigeki Ohtsu) [#11668](https://github.com/nodejs/node/pull/11668)
 * [[`ba23506419`](https://github.com/nodejs/node/commit/ba23506419)] - **build**: --without-ssl implies --without-inspector (Ben Noordhuis) [#12200](https://github.com/nodejs/node/pull/12200)
-* [[`cd78a2bd07`](https://github.com/nodejs/node/commit/cd78a2bd07)] - **deps**: backport 75f2d65f00 from upstream V8 (Yang Guo) [#12535](https://github.com/nodejs/node/pull/12535)
-* [[`62e047e040`](https://github.com/nodejs/node/commit/62e047e040)] - **deps**: backport ec1ffe3 from upstream V8 (Daniel Bevenius) [#12061](https://github.com/nodejs/node/pull/12061)
-* [[`8cdddcdb68`](https://github.com/nodejs/node/commit/8cdddcdb68)] - **deps**: cherry-pick ca0f9573 from V8 upstream (Ali Ijaz Sheikh) [#11940](https://github.com/nodejs/node/pull/11940)
+* [[`cd78a2bd07`](https://github.com/nodejs/node/commit/cd78a2bd07)] - **deps**: hacer backport a 75f2d65f00 desde upstream V8 (Yang Guo) [#12535](https://github.com/nodejs/node/pull/12535)
+* [[`62e047e040`](https://github.com/nodejs/node/commit/62e047e040)] - **deps**: hacer backport a ec1ffe3 desde upstream V8 (Daniel Bevenius) [#12061](https://github.com/nodejs/node/pull/12061)
+* [[`8cdddcdb68`](https://github.com/nodejs/node/commit/8cdddcdb68)] - **deps**: hacer cherry-pick a ca0f9573 desde upstream de V8 (Ali Ijaz Sheikh) [#11940](https://github.com/nodejs/node/pull/11940)
 * [[`d15188f6e2`](https://github.com/nodejs/node/commit/d15188f6e2)] - **doc**: modernizar y arreglar ejemplos de código en modules.md (Vse Mozhet Byt) [#12224](https://github.com/nodejs/node/pull/12224)
 * [[`03f9388eb7`](https://github.com/nodejs/node/commit/03f9388eb7)] - **doc**: clarificar comportamiento de out-of-bounds de buf\[index\] (Nikolai Vavilov) [#11286](https://github.com/nodejs/node/pull/11286)
 * [[`eddfd5230e`](https://github.com/nodejs/node/commit/eddfd5230e)] - **doc**: añadir a refack a colaboradores (Refael Ackermann) [#12277](https://github.com/nodejs/node/pull/12277)
@@ -1825,16 +1825,16 @@ Esto también incluye una actualización a zlib 1.2.11 para reparar un [número 
   * actualizar zlib a 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
   * hacer backport a reparaciones de V8 para la regresión de sintaxis de spread causando violaciones de segmento (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * **repl**: 
-  * Revert commit that broke REPL display on Windows (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
+  * Revertir commit que quebró pantalla REPL en Windows (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
 
 ### Commits
 
-* [[`5f644d2f6f`](https://github.com/nodejs/node/commit/5f644d2f6f)] - **crypto**: fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
-* [[`912f78a566`](https://github.com/nodejs/node/commit/912f78a566)] - **deps**: fix CLEAR_HASH macro to be usable as a single statement (Sam Roberts) [#11616](https://github.com/nodejs/node/pull/11616)
-* [[`abe9132011`](https://github.com/nodejs/node/commit/abe9132011)] - **deps**: upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
-* [[`1ff512c185`](https://github.com/nodejs/node/commit/1ff512c185)] - **deps**: backport e427300 from upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
-* [[`8dfc710a06`](https://github.com/nodejs/node/commit/8dfc710a06)] - **deps**: cherry-pick b9f682b from upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
-* [[`52bdb8f246`](https://github.com/nodejs/node/commit/52bdb8f246)] - **deps**: backport 2cabc86 from upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
+* [[`5f644d2f6f`](https://github.com/nodejs/node/commit/5f644d2f6f)] - **crypto**: reparar fuga de memoria si el certificado es revocado (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
+* [[`912f78a566`](https://github.com/nodejs/node/commit/912f78a566)] - **deps**: reparar macro CLEAR_HASH para que sea usable como una única declaración (Sam Roberts) [#11616](https://github.com/nodejs/node/pull/11616)
+* [[`abe9132011`](https://github.com/nodejs/node/commit/abe9132011)] - **deps**: actualizar zlib a 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
+* [[`1ff512c185`](https://github.com/nodejs/node/commit/1ff512c185)] - **deps**: hacer backport a e427300 desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
+* [[`8dfc710a06`](https://github.com/nodejs/node/commit/8dfc710a06)] - **deps**: hacer cherry-pick a b9f682b desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
+* [[`52bdb8f246`](https://github.com/nodejs/node/commit/52bdb8f246)] - **deps**: hacer backport a 2cabc86 desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * [[`64fc5a4541`](https://github.com/nodejs/node/commit/d60ceb8a02)] - **repl** Revert: "Revert "repl: disable Ctrl+C support..." (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
 
 <a id="6.10.1"></a>
