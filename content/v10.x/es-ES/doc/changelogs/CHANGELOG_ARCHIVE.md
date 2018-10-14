@@ -2142,14 +2142,14 @@ https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 * Remover librería http heredada (Ben Noordhuis)
 * child_process.fork devuelve y funciona en Windows. Permite pasar handles. (Igor Zinkovsky, Bert Belder)
 
-* [#1774](https://github.com/joyent/node/issues/1774) Lint and clean up for --harmony_block_scoping (Tyler Larson, Colton Baker)
+* [#1774](https://github.com/joyent/node/issues/1774) Hacer lint y limpiar para --harmony_block_scoping (Tyler Larson, Colton Baker)
 
-* [#1813](https://github.com/joyent/node/issues/1813) Fix ctrl+c on Windows (Bert Belder)
+* [#1813](https://github.com/joyent/node/issues/1813) Arreglar ctrl+c en Windows (Bert Belder)
 
-* [#1844](https://github.com/joyent/node/issues/1844) unbreak --use-legacy (Ben Noordhuis)
-* process.stderr now goes through libuv. Both process.stdout and process.stderr are blocking when referencing a TTY.
+* [#1844](https://github.com/joyent/node/issues/1844) des-romper --use-legacy (Ben Noordhuis)
+* process.stderr ahora pasa a través de libuv. Tanto process.stdout como process.stderr bloquean al referenciar un TTY.
 
-* net_uv performance improvements (Ben Noordhuis, Bert Belder)
+* Mejoras de rendimiento de net_uv (Ben Noordhuis, Bert Belder)
 
 <a id="0.5.8"></a>
 
