@@ -924,20 +924,20 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 ## 2017-10-31, Versión 8.9.0 'Carbon' (LTS), @gibfahn
 
-This release marks the transition of Node.js v8 into Long Term Support (LTS) with the codename 'Carbon'. The v8 release line now moves in to "Active LTS" and will remain so until April 2019. After that time it will move in to "Maintenance" until end of life in December 2019.
+Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con el nombre en clave 'Carbon'. La línea de lanzamiento v8 ahora pasa a "Active LTS" y seguirá siéndolo hasta abril de 2019. Después de ese tiempo, pasará a "Mantenimiento" hasta el final de su vida útil en diciembre de 2019.
 
-### Notable Changes
+### Cambios Notables
 
 * **doc**: 
-  * add Gibson Fahnestock to Release team (Gibson Fahnestock) [#16620](https://github.com/nodejs/node/pull/16620)
+  * añadir a Gibson Fahnestock al equipo de Lanzamiento (Gibson Fahnestock) [#16620](https://github.com/nodejs/node/pull/16620)
 * **deps**: 
-  * update npm to 5.5.1 (Myles Borins) [#16509](https://github.com/nodejs/node/pull/16509)
+  * actualizar npm a 5.5.1 (Myles Borins) [#16509](https://github.com/nodejs/node/pull/16509)
 * **http2**: 
-  * The exposed http2 socket is no longer manipulatable (Anatoli Papirovski) [#16330](https://github.com/nodejs/node/pull/16330)
+  * El socket http2 expuesto ya no es manipulable (Anatoli Papirovski) [#16330](https://github.com/nodejs/node/pull/16330)
 * **module**: 
-  * support custom paths to require.resolve() (cjihrig) [#16397](https://github.com/nodejs/node/pull/16397)
+  * soportar rutas personalizadas para require.resolve () (cjihrig) [#16397](https://github.com/nodejs/node/pull/16397)
 * **util**: 
-  * util.TextEncoder and util.TextDecoder are no longer experimental. There will no longer be a warning when they are used (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
+  * util.TextEncoder y util.TextDecoder ya no son experimentales. Ya no habrá una advertencia cuando se utilicen (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
 
 ### Commits
 
