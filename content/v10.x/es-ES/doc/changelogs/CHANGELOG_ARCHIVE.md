@@ -2125,22 +2125,22 @@ https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 * [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert no se puede usar con Firefox ni Chrome (koichik)
 * [#1467](https://github.com/joyent/node/issues/1467) tls: La API de TLS es inconsistente con la API de TCP (koichik)
 * [#1894](https://github.com/joyent/node/issues/1894) net: corregir manejo de error en listen() (koichik)
-* [#1860](https://github.com/joyent/node/issues/1860) console.error now goes through uv_tty_t
-* Upgrade V8 to 3.7.0
-* Upgrade GYP to r1081
+* [#1860](https://github.com/joyent/node/issues/1860) console.error ahora pasa a través de uv_tty_t
+* Actualizar V8 a 3.7.0
+* Actualizar GYP a r1081
 
 <a id="0.5.9"></a>
 
-## 2011.10.10, Version 0.5.9 (unstable)
+## 2011.10.10, Versión 0.5.9 (inestable)
 
 https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 
-* fs.watch interface backed by kqueue, inotify, and ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
+* interfaz de fs.watch respaldada por kqueue, inotify, y ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
 
-* add dns.resolveTxt (Christian Tellnes)
+* añadir dns.resolveTxt (Christian Tellnes)
 
-* Remove legacy http library (Ben Noordhuis)
-* child_process.fork returns and works on Windows. Allows passing handles. (Igor Zinkovsky, Bert Belder)
+* Remover librería http heredada (Ben Noordhuis)
+* child_process.fork devuelve y funciona en Windows. Permite pasar handles. (Igor Zinkovsky, Bert Belder)
 
 * [#1774](https://github.com/joyent/node/issues/1774) Lint and clean up for --harmony_block_scoping (Tyler Larson, Colton Baker)
 
