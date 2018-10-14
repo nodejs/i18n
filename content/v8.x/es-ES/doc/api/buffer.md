@@ -80,9 +80,9 @@ $ node --zero-fill-buffers
 
 Cuando se llama a [`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow()`], el segmento de la memoria asignada está *sin inicializar*, (no está zeroed-out). Mientras que este diseño hace que la asignación de memoria sea bastante rápida, el segmento asignado de la memoria puede contener datos viejos que son potencialmente sensibles. Usar un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria puede permitir que estos datos viejos se filtren cuando la memoria del `Buffer` es leída.
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+Si bien hay claras ventajas de rendimiento al usar [`Buffer.allocUnsafe()`], se *debe* tener mucho cuidado para así evitar introducir vulnerabilidades de seguridad a una aplicación.
 
-## Buffers and Character Encodings
+## Buffers y Codificaciones de Caracteres
 
 <!-- YAML
 changes:
@@ -95,25 +95,25 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
+`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. Es posible convertir una y otra vez entre instancias de `Buffer` y strings ordinarias de JavaScript utilizando un codificación de caracteres explícita.
 
 Ejemplo:
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
 
-// Prints: 68656c6c6f20776f726c64
+// Imprime: 68656c6c6f20776f726c64
 console.log(buf.toString('hex'));
 
-// Prints: aGVsbG8gd29ybGQ=
+// Imprime: aGVsbG8gd29ybGQ=
 console.log(buf.toString('base64'));
 ```
 
-The character encodings currently supported by Node.js include:
+Las codificaciones de caracteres soportados actualmente por Node.js incluyen:
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - Solo para datos ASCII de 7-bit. Esta codificación es rápida y eliminará el bit alto si se establece.
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
+* `'utf8'` - Multibyte codificado en caracteres Unicode. Muchas páginas web y otros formatos de documento utilizan UTF-8.
 
 * `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
 
