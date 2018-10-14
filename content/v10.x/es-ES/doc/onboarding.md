@@ -20,7 +20,7 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
   * [objetivos & valores del proyecto](#project-goals--values)
   * [gestionar el sistema de seguimiento de incidentes](#managing-the-issue-tracker)
   * [revisión de PRs](#reviewing-prs)
-  * [PRs recibidos](#landing-prs)
+  * [aterrizar PRs](#landing-prs)
 
 ## Configuración local
 
@@ -42,7 +42,7 @@ apply.whitespace fix`
 * `#node-dev` en [webchat.freenode.net](https://webchat.freenode.net/) es el mejor lugar para interactuar con el TSC / otros Colaboradores
   
   * Si hay alguna pregunta después de la sesión, ¡un buen lugar para preguntar es ahí!
-  * La presencia no es obligatoria, pero por favor, deje una nota allí si presiona a la fuerza a `master`
+  * La presencia no es obligatoria, pero, por favor, deje una nota allí si hace push a la fuerza hacia `master`
 
 ## Objetivos & valores del proyecto
 
@@ -112,7 +112,7 @@ apply.whitespace fix`
   * Cuando utilice explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
     * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
-    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR se reciba.
+    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR sea aterrizado.
 
 * Lo que pertenece en Node.js:
   
@@ -128,7 +128,7 @@ apply.whitespace fix`
   * Iniciar sesión en la CI está integrado con GitHub. ¡Intente iniciar sesión ahora!
   * Utilizará `node-test-pull-request` la mayor parte del tiempo. ¡Vaya allí ahora! 
     * Considere marcarlo: https://ci.nodejs.org/job/node-test-pull-request/
-  * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
+  * Para obtener el formulario para iniciar un trabajo, haga clic en `Construir con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
   * Para iniciar la prueba de CI desde esta pantalla, necesita rellenar dos elementos en el formulario: 
     * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
     * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
@@ -138,9 +138,9 @@ apply.whitespace fix`
     * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
     * Utilice el [repo Crear WG](https://github.com/nodejs/build) para issues de archivos para los miembros de Crear WG que mantienen la infraestructura de CI.
 
-## PRs recibidos
+## Aterrizar PRs
 
-Consulte la Guía del Colaborador: [Pull Requests Recibidos](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+Consulte la Guía del Colaborador: [Aterrizar Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
 Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico deben ser aplastados. Rara vez es el caso de los ejercicios de orientación, por lo que esto debe ser señalado por separado durante la orientación.
 
@@ -152,12 +152,12 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
   * Para el mensaje de commit sin procesar: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Los colaboradores están ordenados alfabéticamente por el nombre de usuario de GitHub.
-* Opcionalmente, incluye sus pronombres personales.
+* Opcionalmente, incluya sus pronombres personales.
 * Etiquete su pull request con la etiqueta de subsistema `doc`.
-* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
-* Después de una o dos aprobaciones, reciba el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
+* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado el linter y otra subtarea.
+* Después de una o dos aprobaciones, aterrice el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
   * Asegúrese de añadir el `PR-URL: <full-pr-url>` y los metadatos correspondientes `Reviewed-By:`.
-  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de recepción. Consulte la documentación de [`git-node`][].
+  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de aterrizaje. Consulte la documentación de [`git-node`][].
   * [`core-validate-commit`][] automatiza la validación de mensajes de commit. Esto se ejecutará durante `git node land --final` del comando [`git-node`][].
 
 ## Notas Finales
