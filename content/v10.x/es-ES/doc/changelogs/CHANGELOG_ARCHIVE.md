@@ -1932,7 +1932,7 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
 <a id="0.6.7"></a>
 
-## 2012.01.06, Versión 0.6.7 (Estable)
+## 2012.01.06, Versión 0.6.7 (estable)
 
 https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 
@@ -1955,22 +1955,22 @@ https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 * [#2379](https://github.com/joyent/node/issues/2379): debugger: Solicitar backtrace sin referencias (Fedor Indutny)
 * ayudante de desapilado DTrace simple (Dave Pacheco)
 * crypto: reescribir HexDecode sin snprintf (Roman Shtylman)
-* crypto: don't ignore DH init errors (Ben Noordhuis)
+* crypto: no ignorar errores de incialización de DH (Ben Noordhuis)
 
 <a id="0.6.6"></a>
 
-## 2011.12.14, Version 0.6.6 (stable)
+## 2011.12.14, Versión 0.6.6 (estable)
 
 https://github.com/nodejs/node/commit/9a059ea69e1f6ebd8899246682d8ca257610b8ab
 
-* npm update to 1.1.0-beta-4 (Isaac Z. Schlueter)
-* cli: fix output of --help (Ben Noordhuis)
-* new website
-* pause/resume semantics for stdin (Isaac Z. Schlueter)
-* Travis CI integration (Maciej Małecki)
-* child_process: Fix bug regarding closed stdin (Ben Noordhuis)
-* Enable upgrades in MSI. (Igor Zinkovsky)
-* net: Fixes memory leak (Ben Noordhuis)
+* actualización de npm a 1.1.0-beta-4 (Isaac Z. Schlueter)
+* cli: corregir output de --help (Ben Noordhuis)
+* nuevo sitio web
+* semántica de "pause/resume" para stdin (Isaac Z. Schlueter)
+* Integración de Travis CI (Maciej Małecki)
+* child_process: Reparar bug relacionado con stdin cerrado (Ben Noordhuis)
+* Habilitar actualizaciones en MSI. (Igor Zinkovsky)
+* net: Repara fuga de memoria (Ben Noordhuis)
 * fs: handle fractional or NaN ReadStream buffer size (Ben Noordhuis)
 * crypto: fix memory leaks in PBKDF2 error path (Ben Noordhuis)
 
