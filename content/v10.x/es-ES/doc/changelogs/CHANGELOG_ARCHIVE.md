@@ -2111,20 +2111,20 @@ https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 * Soporte para process.title largo (Ben Noordhuis)
 * net: registrar callback net.Server solo una vez (Simen Brekken)
 * net: corregir bugs de cola de conexión (Ben Noordhuis)
-* debugger: fix backtrace err handling (Fedor Indutny)
-* Use getaddrinfo instead of c-ares for dns.lookup
-* Emit 'end' from crypto streams on close
-* [#1902](https://github.com/joyent/node/issues/1902) buffer: use NO_NULL_TERMINATION flag (koichik)
-* [#1907](https://github.com/joyent/node/issues/1907) http: Added support for HTTP PATCH verb (Thomas Parslow)
-* [#1644](https://github.com/joyent/node/issues/1644) add GetCPUInfo on windows (Karl Skomski)
-* [#1484](https://github.com/joyent/node/issues/1484), [#1834](https://github.com/joyent/node/issues/1834), [#1482](https://github.com/joyent/node/issues/1482), [#771](https://github.com/joyent/node/issues/771) Don't use a separate context for the repl. (isaacs)
+* debugger: corregir manejo de errores de backtrace (Fedor Indutny)
+* Usar getaddrinfo en lugar de c-ares para dns.lookup
+* Emitir "end" desde streams de crypto al cierre
+* [#1902](https://github.com/joyent/node/issues/1902) buffer: usar bandera NO_NULL_TERMINATION (koichik)
+* [#1907](https://github.com/joyent/node/issues/1907) http: Añadido soporte para verbo HTTP PATCH (Thomas Parslow)
+* [#1644](https://github.com/joyent/node/issues/1644) añadir GetCPUInfo en windows (Karl Skomski)
+* [#1484](https://github.com/joyent/node/issues/1484), [#1834](https://github.com/joyent/node/issues/1834), [#1482](https://github.com/joyent/node/issues/1482), [#771](https://github.com/joyent/node/issues/771) No usar un contexto separado para el repl. (isaacs)
 
-* [#1882](https://github.com/joyent/node/issues/1882) zlib Update 'availOutBefore' value, and test (isaacs)
+* [#1882](https://github.com/joyent/node/issues/1882) zlib Actualizar valor de "availOutBefore", y probar (isaacs)
 
-* [#1888](https://github.com/joyent/node/issues/1888) child_process.fork: don't modify args (koichik)
-* [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert unusable with Firefox and Chrome (koichik)
-* [#1467](https://github.com/joyent/node/issues/1467) tls: The TLS API is inconsistent with the TCP API (koichik)
-* [#1894](https://github.com/joyent/node/issues/1894) net: fix error handling in listen() (koichik)
+* [#1888](https://github.com/joyent/node/issues/1888) child_process.fork: no modificar args (koichik)
+* [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert no se puede usar con Firefox ni Chrome (koichik)
+* [#1467](https://github.com/joyent/node/issues/1467) tls: La API de TLS es inconsistente con la API de TCP (koichik)
+* [#1894](https://github.com/joyent/node/issues/1894) net: corregir manejo de error en listen() (koichik)
 * [#1860](https://github.com/joyent/node/issues/1860) console.error now goes through uv_tty_t
 * Upgrade V8 to 3.7.0
 * Upgrade GYP to r1081
