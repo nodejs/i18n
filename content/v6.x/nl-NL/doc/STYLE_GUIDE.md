@@ -1,9 +1,9 @@
 # Stijlgids
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g., `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
+* Documentatie is geschreven in markdown bestanden met namen geformatteerd als `lowercase-with-dashes.md`. 
+  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `child_process`).
+  * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
+* Documenten moeten worden 'word-wrapped' bij 80 tekens.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
