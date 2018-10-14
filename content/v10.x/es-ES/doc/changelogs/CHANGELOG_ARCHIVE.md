@@ -1936,25 +1936,25 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
 https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 
-* V8 hash collision fix (Breaks MIPS) (Bert Belder, Erik Corry)
+* Reparación de colisión del hash de V8 (Breaks MIPS) (Bert Belder, Erik Corry)
 * Upgrade V8 to 3.6.6.15
-* Upgrade npm to 1.1.0-beta-10 (isaacs)
+* Actualizar npm a 1.1.0-beta-10 (isaacs)
 * many doc updates (Ben Noordhuis, Jeremy Martin, koichik, Dave Irvine, Seong-Rak Choi, Shannen, Adam Malcontenti-Wilson, koichik)
 
-* Fix segfault in node_http_parser.cc
+* Reparar segfault en node_http_parser.cc
 
-* dgram, timers: fix memory leaks (Ben Noordhuis, Yoshihiro Kikuchi)
-* repl: fix repl.start not passing the `ignoreUndefined` arg (Damon Oehlman)
-* [#1980](https://github.com/joyent/node/issues/1980): Socket.pause null reference when called on a closed Stream (koichik)
+* dgram, timers: reparar fugas de memoria (Ben Noordhuis, Yoshihiro Kikuchi)
+* repl: corregir que repl.start no pasa el arg `ignoreUndefined` (Damon Oehlman)
+* [#1980](https://github.com/joyent/node/issues/1980): Referencia nula de Socket.pause al ser llamada sobre un Stream cerrado (koichik)
 * [#2263](https://github.com/joyent/node/issues/2263): XMLHttpRequest piped in a writable file stream hang (koichik)
-* [#2069](https://github.com/joyent/node/issues/2069): http resource leak (koichik)
+* [#2069](https://github.com/joyent/node/issues/2069): fuga de recursos de http (koichik)
 * buffer.readInt global pollution fix (Phil Sung)
-* timers: fix performance regression (Ben Noordhuis)
-* [#2308](https://github.com/joyent/node/issues/2308), [#2246](https://github.com/joyent/node/issues/2246): node swallows openssl error on request (koichik)
-* [#2114](https://github.com/joyent/node/issues/2114): timers: remove _idleTimeout from item in .unenroll() (James Hartig)
-* [#2379](https://github.com/joyent/node/issues/2379): debugger: Request backtrace w/o refs (Fedor Indutny)
-* simple DTrace ustack helper (Dave Pacheco)
-* crypto: rewrite HexDecode without snprintf (Roman Shtylman)
+* timers: corregir regresión de rendimiento (Ben Noordhuis)
+* [#2308](https://github.com/joyent/node/issues/2308), [#2246](https://github.com/joyent/node/issues/2246): node se traga error de openssl ante petición (koichik)
+* [#2114](https://github.com/joyent/node/issues/2114): timers: remover _idleTimeout de item en .unenroll() (James Hartig)
+* [#2379](https://github.com/joyent/node/issues/2379): debugger: Solicitar backtrace sin referencias (Fedor Indutny)
+* ayudante de desapilado DTrace simple (Dave Pacheco)
+* crypto: reescribir HexDecode sin snprintf (Roman Shtylman)
 * crypto: don't ignore DH init errors (Ben Noordhuis)
 
 <a id="0.6.6"></a>
