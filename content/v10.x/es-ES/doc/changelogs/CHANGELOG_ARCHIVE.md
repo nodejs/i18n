@@ -1990,14 +1990,14 @@ https://github.com/nodejs/node/commit/6cc94db653a2739ab28e33b2d6a63c51bd986a9f
 https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
 * mejoras de doc (Kyle Young, Tim Oxley, Roman Shtylman, Mathias Bynens)
-* upgrade bundled npm (Isaac Schlueter)
-* polish Windows installer (Igor Zinkovsky, Isaac Schlueter)
-* punycode: upgrade to v0.2.1 (Mathias Bynens)
-* build: add –without-npm flag to configure script
-* sys: deprecate module some more, print stack trace if NODE_DEBUG=sys
-* cli: add -p switch, prints result of –eval
-* [#1997](https://github.com/joyent/node/issues/1997): fix Blowfish ECB encryption and decryption (Ingmar Runge)
-* [#2223](https://github.com/joyent/node/issues/2223): fix socket ‘close’ event being emitted twice
+* actualizar paquete de npm (Isaac Schlueter)
+* pulir instalador de Windows (Igor Zinkovsky, Isaac Schlueter)
+* punycode: actualizar a v0.2.1 (Mathias Bynens)
+* build: añadir bandera –without-npm para configurar script
+* sys: depreciar el módulo un poco más, imprimir stack trace si NODE_DEBUG=sys
+* cli: añadir interruptor -p, imprime resultado de –eval
+* [#1997](https://github.com/joyent/node/issues/1997): reparar encriptación y descifrado de ECB de Blowfish (Ingmar Runge)
+* [#2223](https://github.com/joyent/node/issues/2223): corregir que el evento "close" de socket es emitido dos veces
 * [#2224](https://github.com/joyent/node/issues/2224): fix RSS memory usage > 4 GB reporting (Russ Bradberry)
 * [#2225](https://github.com/joyent/node/issues/2225): fix util.inspect() object stringification bug (Nathan Rajlich)
 
