@@ -543,17 +543,17 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
   * **`path.relative()`**: 
     * La salida ya no es incesesariamente verbosa (Brian White) [#5389](https://github.com/nodejs/node/pull/5389).
     * Resolver las rutas UNC en Windows ahora funciona correctamente (Owen Smith) [#5456](https://github.com/nodejs/node/pull/5456).
-    * Resolving paths with prefixes now works correctly from the root directory (Owen Smith) [#5490](https://github.com/nodejs/node/pull/5490).
-  * **url**: Fixed an off-by-one error with `parse()` (Brian White) [#5394](https://github.com/nodejs/node/pull/5394).
-  * **dgram**: Now correctly handles a default address case when offset and length are specified (Matteo Collina) [#5407](https://github.com/nodejs/node/pull/5407).
+    * Resolver rutas con prefijos ahora funciona correctamente desde el directorio raíz (Owen Smith) [#5490](https://github.com/nodejs/node/pull/5490).
+  * **url**: Reparado un error off-by-one con `parse()` (Brian White) [#5394](https://github.com/nodejs/node/pull/5394).
+  * **dgram**: Ahora maneja correctamente un caso de dirección predeterminada cuando el offset y la longitud son especificados (Matteo Collina) [#5407](https://github.com/nodejs/node/pull/5407).
 
 ### Commits
 
-* [[`7cae774d9b`](https://github.com/nodejs/node/commit/7cae774d9b)] - **benchmark**: refactor to eliminate redeclared vars (Rich Trott) [#5468](https://github.com/nodejs/node/pull/5468)
-* [[`6aebe16669`](https://github.com/nodejs/node/commit/6aebe16669)] - **benchmark**: add benchmark for buf.compare() (Rich Trott) [#5441](https://github.com/nodejs/node/pull/5441)
-* [[`00660f55c8`](https://github.com/nodejs/node/commit/00660f55c8)] - **benchmark**: move string-decoder to its own category (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
-* [[`4650cb3818`](https://github.com/nodejs/node/commit/4650cb3818)] - **benchmark**: fix configuation parameters (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
-* [[`3ccb275139`](https://github.com/nodejs/node/commit/3ccb275139)] - **benchmark**: merge url.js with url-resolve.js (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
+* [[`7cae774d9b`](https://github.com/nodejs/node/commit/7cae774d9b)] - **benchmark**: refactorizar para eliminar variables redeclaradas (Rich Trott) [#5468](https://github.com/nodejs/node/pull/5468)
+* [[`6aebe16669`](https://github.com/nodejs/node/commit/6aebe16669)] - **benchmark**: añadir prueb de rendimiento para buf.compare() (Rich Trott) [#5441](https://github.com/nodejs/node/pull/5441)
+* [[`00660f55c8`](https://github.com/nodejs/node/commit/00660f55c8)] - **benchmark**: mover string-decoder a su propia categoría (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
+* [[`4650cb3818`](https://github.com/nodejs/node/commit/4650cb3818)] - **benchmark**: reparar los parámetros de configuración (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
+* [[`3ccb275139`](https://github.com/nodejs/node/commit/3ccb275139)] - **benchmark**: unir url.js con url-resolve.js (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`c1e7dbffaa`](https://github.com/nodejs/node/commit/c1e7dbffaa)] - **benchmark**: move misc to categorized directories (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`2f9fee6e8e`](https://github.com/nodejs/node/commit/2f9fee6e8e)] - **benchmark**: use strict mode (Rich Trott) [#5336](https://github.com/nodejs/node/pull/5336)
 * [[`4c09e7f359`](https://github.com/nodejs/node/commit/4c09e7f359)] - **build**: remove --quiet from eslint invocation (firedfox) [#5519](https://github.com/nodejs/node/pull/5519)
