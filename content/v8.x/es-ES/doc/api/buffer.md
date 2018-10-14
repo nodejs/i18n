@@ -194,23 +194,23 @@ El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e impleme
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+El método `Buffer.from()`, sin embargo, no permite el uso de una función de mapeo:
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and ES6 iteration
+## Buffers e Iteración ES6
 
-`Buffer` instances can be iterated over using the [`ECMAScript 2015`] (ES6) `for..of` syntax.
+Instancias de `Buffer` pueden ser iteradas sobre la sintaxis [`ECMAScript 2015`] (ES6) `for..of`.
 
 Ejemplo:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Imprime:
 //   1
 //   2
 //   3
@@ -219,11 +219,11 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+Adicionalmente, los métodos [`buf.values()`], [`buf.keys()`], y [`buf.entries()`] pueden ser usados para crear iteradores.
 
-## Class: Buffer
+## Clase: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Puede ser construida de varias maneras.
 
 ### new Buffer(array)
 
@@ -239,11 +239,11 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> Estabilidad: 0 - Desaprobada: Use [`Buffer.from(array)`] en su lugar.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} Un array de bytes del cual copiarse.
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` usando un `array` de octetos.
 
 Ejemplo:
 
@@ -655,7 +655,7 @@ added: v5.10.0
 
 * `array` {Array}
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` usando un `array` de octetos.
 
 Ejemplo:
 
