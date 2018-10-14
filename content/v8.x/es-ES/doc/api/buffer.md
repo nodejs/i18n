@@ -95,7 +95,7 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. Es posible convertir una y otra vez entre instancias de `Buffer` y strings ordinarias de JavaScript utilizando un codificación de caracteres explícita.
+`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. Es posible convertir una y otra vez entre instancias de `Buffer` y strings ordinarias de JavaScript utilizando una codificación de caracteres explícita.
 
 Ejemplo:
 
@@ -147,7 +147,7 @@ También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` 
 
 2. La memoria del objeto `Buffer` es interpretada como un array de distintos elementos, y no como un array, no como un array de bytes del tipo de destino. Es decir, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un elemento 4[`Uint32Array`] con elementos `[1, 2, 3, 4]`, no un [`Uint32Array`] con un solo elemento `[0x1020304]` o `[0x4030201]`.
 
-Es posible crear un nuevo `Buffer` que comparte la misma memoria asignada como un instancia [`TypedArray`] utilizando la propiedad `buffer ` del objeto TypeArray.
+Es posible crear un nuevo `Buffer` que comparta la misma memoria asignada como un instancia [`TypedArray`] utilizando la propiedad `.buffer` del objeto TypeArray.
 
 Ejemplo:
 
