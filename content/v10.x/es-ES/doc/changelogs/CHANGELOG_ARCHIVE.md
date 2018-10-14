@@ -2037,21 +2037,21 @@ https://github.com/nodejs/node/commit/a4402f0b2e410b19375a1d5c5fb7fe7f66f3c7f8
 * buffer: reparar revisiones de rango en funciones .writeInt() (Lukasz Walukiewicz)
 * tls: hacer que la lista de cifrado sea configurable
 * addons: hacer que Buffer y ObjectWrap sean visibles para los complementos de Windows (Bert Belder)
-* crypto: add PKCS[#1](https://github.com/joyent/node/issues/1) a.k.a RSA public key verification support
-* windows: fix stdout writes when redirected to nul
-* sunos: fix build on Solaris and Illumos
-* Upgrade V8 to 3.6.6.8
+* crypto: añadir PKCS[#1](https://github.com/joyent/node/issues/1) también conocido como soporte de verificación de claves públicas RSA
+* windows: corregir escritura de stdout al ser redirigido a nul
+* sunos: arreglar build en Solaris e Illumos
+* Actualizar V8 a 3.6.6.8
 
 <a id="0.6.1"></a>
 
-## 2011.11.11, Version 0.6.1 (stable)
+## 2011.11.11, Versión 0.6.1 (estable)
 
 https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 
-* doc improvements (Eric Lovett, Ben Noordhuis, Scott Anderson, Yoji SHIDARA)
-* crypto: make thread-safe (Ben Noordhuis)
-* fix process.kill error object
-* debugger: correctly handle source with multi-byte characters (Shigeki Ohtsu)
+* mejoras de doc (Eric Lovett, Ben Noordhuis, Scott Anderson, Yoji SHIDARA)
+* crypto: hacer seguro para threads (Ben Noordhuis)
+* arreglar objeto de error de process.kill
+* debugger: manejar correctamente fuente de handle con caracteres multi-byte (Shigeki Ohtsu)
 * make stdout and stderr non-destroyable (Igor Zinkovsky)
 * fs: don't close uninitialized fs.watch handle (Ben Noordhuis)
 * [#2026](https://github.com/joyent/node/issues/2026) fix man page install on BSDs (Ben Noordhuis)
