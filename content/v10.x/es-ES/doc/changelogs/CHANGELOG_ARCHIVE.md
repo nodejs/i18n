@@ -1932,7 +1932,7 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
 <a id="0.6.7"></a>
 
-## 2012.01.06, Version 0.6.7 (stable)
+## 2012.01.06, Versión 0.6.7 (Estable)
 
 https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 
