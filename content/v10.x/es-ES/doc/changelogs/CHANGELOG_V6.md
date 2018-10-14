@@ -1855,7 +1855,7 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
   * `querystring.stringify()` es hasta 7.8% más rápido en promedio. (Brian White) [#10852](https://github.com/nodejs/node/pull/10852)
   * `querystring.parse()` es hasta 21% más rápido en promedio. (Brian White) [#10874](https://github.com/nodejs/node/pull/10874)
 * **IPC**: Escrituras por lotes han sido habilitadas para el IPC de proceso en plataformas que soportan Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
-  * Ganancias en rendimiento puede ser de hasta 40% para algunas cargas de trabajo.
+  * Ganancias en rendimiento pueden ser de hasta 40% para algunas cargas de trabajo.
 * **child_process**: `spawnSync` ahora devuelve un `status` nulo cuando proceso secundario es finalizado por una señal. (cjihrig) [#11288](https://github.com/nodejs/node/pull/11288) 
   * Esto corrige el comportamiento para actuar como lo hace `spawn()`.
 * **http**: 
