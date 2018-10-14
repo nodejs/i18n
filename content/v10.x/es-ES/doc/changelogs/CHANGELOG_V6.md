@@ -1811,19 +1811,19 @@ Esto es un LTS especial para arreglar un número de regresiones que fueron encon
 
 Esto incluye:
 
-* a fix for memory leak in the crypto module that was introduced in 6.10.1
-* a fix for a regression introduced to the windows repl in 6.10.0
-* a backported fix for V8 to stop a segfault that could occur when using spread syntax
+* una reparación para la fuga de memoria en el módulo crypto que fue introducido en 6.10.1
+* una reparación para una regresión introducida al repl de windows en 6.10.0
+* una reparación backported para V8 para detener una violación de segmento que podría ocurrir cuando se usa la sintaxis de spread
 
-It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
+Esto también incluye una actualización a zlib 1.2.11 para reparar un [número de CVEs de baja severidad](http://seclists.org/oss-sec/2016/q4/602) que estaban presentes en zlib 1.2.8.
 
-### Notable changes
+### Cambios notables
 
 * **crypto**: 
-  * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
+  * reparar fuga de memoria si el certificado es revocado (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
-  * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
-  * backport V8 fixes for spread syntax regression causing segfaults (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
+  * actualizar zlib a 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
+  * hacer backport a reparaciones de V8 para la regresión de sintaxis de spread causando violaciones de segmento (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * **repl**: 
   * Revert commit that broke REPL display on Windows (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
 
