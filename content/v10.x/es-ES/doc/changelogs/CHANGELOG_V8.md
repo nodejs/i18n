@@ -902,7 +902,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * **openssl**: 
   * actualizar las fuentes de openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
 * ***Revert*** "**https**: 
-  * refactorizar el uso "interno" de http (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
+  * refactorizar para utilizar "internas" de http (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
 
 ### Commits
 
@@ -912,17 +912,17 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`1af2244020`](https://github.com/nodejs/node/commit/1af2244020)] - **deps**: añadir -no_rand_screen a s_client de openssl (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`9d98dcc395`](https://github.com/nodejs/node/commit/9d98dcc395)] - **deps**: corregir el error de compilación asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`99319efc45`](https://github.com/nodejs/node/commit/99319efc45)] - **deps**: corregir error de montaje de openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`151a8da4b7`](https://github.com/nodejs/node/commit/151a8da4b7)] - **deps**: copie todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+* [[`151a8da4b7`](https://github.com/nodejs/node/commit/151a8da4b7)] - **deps**: copiar todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
 * [[`d68e53452c`](https://github.com/nodejs/node/commit/d68e53452c)] - **deps**: actualizar las fuentes de openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
-* [[`a3be5bc560`](https://github.com/nodejs/node/commit/a3be5bc560)] - **doc**: add 9.x to version picker and mark 8.x as LTS (Chris Young) [#16672](https://github.com/nodejs/node/pull/16672)
-* [[`08b75c1591`](https://github.com/nodejs/node/commit/08b75c1591)] - ***Revert*** "**https**: refactor to use http internals" (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
-* [[`d334a95834`](https://github.com/nodejs/node/commit/d334a95834)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`bf26b96fd6`](https://github.com/nodejs/node/commit/bf26b96fd6)] - **src**: add 'dynamic' process.release.lts property (Rod Vagg) [#16656](https://github.com/nodejs/node/pull/16656)
-* [[`dfac6cc0bb`](https://github.com/nodejs/node/commit/dfac6cc0bb)] - **test**: update process-release for Node 8 Carbon (Jeremiah Senkpiel) [#16656](https://github.com/nodejs/node/pull/16656)
+* [[`a3be5bc560`](https://github.com/nodejs/node/commit/a3be5bc560)] - **doc**: agregar 9.x al selector de versión y marcar 8.x como LTS (Chris Young) [#16672](https://github.com/nodejs/node/pull/16672)
+* [[`08b75c1591`](https://github.com/nodejs/node/commit/08b75c1591)] - ***Revert*** "**https**: refactorizar para utilizar "internas" de http (Myles Borins) [#16660](https://github.com/nodejs/node/pull/16660)
+* [[`d334a95834`](https://github.com/nodejs/node/commit/d334a95834)] - **openssl**: corregir el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`bf26b96fd6`](https://github.com/nodejs/node/commit/bf26b96fd6)] - **src**: añadir la propiedad 'dinámica' process.release.lts (Rod Vagg) [#16656](https://github.com/nodejs/node/pull/16656)
+* [[`dfac6cc0bb`](https://github.com/nodejs/node/commit/dfac6cc0bb)] - **test**: actualizar process-release para Node 8 Carbon (Jeremiah Senkpiel) [#16656](https://github.com/nodejs/node/pull/16656)
 
 <a id="8.9.0"></a>
 
-## 2017-10-31, Version 8.9.0 'Carbon' (LTS), @gibfahn
+## 2017-10-31, Versión 8.9.0 'Carbon' (LTS), @gibfahn
 
 This release marks the transition of Node.js v8 into Long Term Support (LTS) with the codename 'Carbon'. The v8 release line now moves in to "Active LTS" and will remain so until April 2019. After that time it will move in to "Maintenance" until end of life in December 2019.
 
