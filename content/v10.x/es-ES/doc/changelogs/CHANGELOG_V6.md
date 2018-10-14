@@ -1853,9 +1853,9 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
   * `process.memoryUsage()` es hasta 34% más rápido. (Brian White) [#11497](https://github.com/nodejs/node/pull/11497)
   * `querystring.unescape()` para `Buffer`s es 15% más rápido en promedio. (Brian White) [#10837](https://github.com/nodejs/node/pull/10837)
   * `querystring.stringify()` es hasta 7.8% más rápido en promedio. (Brian White) [#10852](https://github.com/nodejs/node/pull/10852)
-  * `querystring.parse()` is up to 21% faster on average. (Brian White) [#10874](https://github.com/nodejs/node/pull/10874)
-* **IPC**: Batched writes have been enabled for process IPC on platforms that support Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
-  * Performance gains may be up to 40% for some workloads.
+  * `querystring.parse()` es hasta 21% más rápido en promedio. (Brian White) [#10874](https://github.com/nodejs/node/pull/10874)
+* **IPC**: Escrituras por lotes han sido habilitadas para el IPC de proceso en plataformas que soportan Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
+  * Ganancias en rendimiento puede ser de hasta 40% para algunas cargas de trabajo.
 * **child_process**: `spawnSync` now returns a null `status` when child is terminated by a signal. (cjihrig) [#11288](https://github.com/nodejs/node/pull/11288) 
   * This fixes the behavior to act like `spawn()` does.
 * **http**: 
