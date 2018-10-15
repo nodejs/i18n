@@ -2039,7 +2039,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   
   * Experimental support for the built-in `http2` has been added via the `--expose-http2` flag. [#14239](https://github.com/nodejs/node/pull/14239)
 
-* **Inspector**
+* **检查器**
   
   * `require()` is available in the inspector console now. [#8837](https://github.com/nodejs/node/pull/8837)
   * Multiple contexts, as created by the `vm` module, are supported now. [#14465](https://github.com/nodejs/node/pull/14465)
@@ -2372,7 +2372,7 @@ Big thanks to @addaleax who prepared the vast majority of this release.
 
 ### Notable changes
 
-* **Async Hooks**
+* **异步Hooks**
   
   * Multiple improvements to Promise support in `async_hooks` have been made.
 
@@ -2825,7 +2825,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 
 ### Notable Changes
 
-* **Async Hooks** 
+* **异步Hooks** 
   * When one `Promise` leads to the creation of a new `Promise`, the parent `Promise` will be identified as the trigger [[`135f4e6643`](https://github.com/nodejs/node/commit/135f4e6643)] [#13367](https://github.com/nodejs/node/pull/13367).
 * **Dependencies** 
   * libuv has been updated to 1.12.0 [[`968596ec77`](https://github.com/nodejs/node/commit/968596ec77)] [#13306](https://github.com/nodejs/node/pull/13306).
@@ -2833,7 +2833,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 * **File system** 
   * The `fs.exists()` function now works correctly with `util.promisify()` [[`6e0eccd7a1`](https://github.com/nodejs/node/commit/6e0eccd7a1)] [#13316](https://github.com/nodejs/node/pull/13316).
   * fs.Stats times are now also available as numbers [[`c756efb25a`](https://github.com/nodejs/node/commit/c756efb25a)] [#13173](https://github.com/nodejs/node/pull/13173).
-* **Inspector** 
+* **检查器** 
   * It is now possible to bind to a random port using `--inspect=0` [[`cc6ec2fb27`](https://github.com/nodejs/node/commit/cc6ec2fb27)] [#5025](https://github.com/nodejs/node/pull/5025).
 * **Zlib** 
   * A regression in the Zlib module that made it impossible to properly subclasses `zlib.Deflate` and other Zlib classes has been fixed. [[`6aeb555cc4`](https://github.com/nodejs/node/commit/6aeb555cc4)] [#13374](https://github.com/nodejs/node/pull/13374).
@@ -2965,7 +2965,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 
 ### Notable Changes
 
-* **Async Hooks**
+* **异步Hooks**
   
   * The `async_hooks` module has landed in core [[`4a7233c178`](https://github.com/nodejs/node/commit/4a7233c178)] [#12892](https://github.com/nodejs/node/pull/12892).
 

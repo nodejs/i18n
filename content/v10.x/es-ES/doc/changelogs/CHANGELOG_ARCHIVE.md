@@ -1932,224 +1932,224 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
 <a id="0.6.7"></a>
 
-## 2012.01.06, Version 0.6.7 (stable)
+## 2012.01.06, Versión 0.6.7 (estable)
 
 https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 
-* V8 hash collision fix (Breaks MIPS) (Bert Belder, Erik Corry)
+* Reparación de colisión del hash de V8 (Breaks MIPS) (Bert Belder, Erik Corry)
 * Upgrade V8 to 3.6.6.15
-* Upgrade npm to 1.1.0-beta-10 (isaacs)
+* Actualizar npm a 1.1.0-beta-10 (isaacs)
 * many doc updates (Ben Noordhuis, Jeremy Martin, koichik, Dave Irvine, Seong-Rak Choi, Shannen, Adam Malcontenti-Wilson, koichik)
 
-* Fix segfault in node_http_parser.cc
+* Reparar segfault en node_http_parser.cc
 
-* dgram, timers: fix memory leaks (Ben Noordhuis, Yoshihiro Kikuchi)
-* repl: fix repl.start not passing the `ignoreUndefined` arg (Damon Oehlman)
-* [#1980](https://github.com/joyent/node/issues/1980): Socket.pause null reference when called on a closed Stream (koichik)
+* dgram, timers: reparar fugas de memoria (Ben Noordhuis, Yoshihiro Kikuchi)
+* repl: corregir que repl.start no pasa el arg `ignoreUndefined` (Damon Oehlman)
+* [#1980](https://github.com/joyent/node/issues/1980): Referencia nula de Socket.pause al ser llamada sobre un Stream cerrado (koichik)
 * [#2263](https://github.com/joyent/node/issues/2263): XMLHttpRequest piped in a writable file stream hang (koichik)
-* [#2069](https://github.com/joyent/node/issues/2069): http resource leak (koichik)
+* [#2069](https://github.com/joyent/node/issues/2069): fuga de recursos de http (koichik)
 * buffer.readInt global pollution fix (Phil Sung)
-* timers: fix performance regression (Ben Noordhuis)
-* [#2308](https://github.com/joyent/node/issues/2308), [#2246](https://github.com/joyent/node/issues/2246): node swallows openssl error on request (koichik)
-* [#2114](https://github.com/joyent/node/issues/2114): timers: remove _idleTimeout from item in .unenroll() (James Hartig)
-* [#2379](https://github.com/joyent/node/issues/2379): debugger: Request backtrace w/o refs (Fedor Indutny)
-* simple DTrace ustack helper (Dave Pacheco)
-* crypto: rewrite HexDecode without snprintf (Roman Shtylman)
-* crypto: don't ignore DH init errors (Ben Noordhuis)
+* timers: corregir regresión de rendimiento (Ben Noordhuis)
+* [#2308](https://github.com/joyent/node/issues/2308), [#2246](https://github.com/joyent/node/issues/2246): node se traga error de openssl ante petición (koichik)
+* [#2114](https://github.com/joyent/node/issues/2114): timers: remover _idleTimeout de item en .unenroll() (James Hartig)
+* [#2379](https://github.com/joyent/node/issues/2379): debugger: Solicitar backtrace sin referencias (Fedor Indutny)
+* ayudante de desapilado DTrace simple (Dave Pacheco)
+* crypto: reescribir HexDecode sin snprintf (Roman Shtylman)
+* crypto: no ignorar errores de inicialización de DH (Ben Noordhuis)
 
 <a id="0.6.6"></a>
 
-## 2011.12.14, Version 0.6.6 (stable)
+## 2011.12.14, Versión 0.6.6 (estable)
 
 https://github.com/nodejs/node/commit/9a059ea69e1f6ebd8899246682d8ca257610b8ab
 
-* npm update to 1.1.0-beta-4 (Isaac Z. Schlueter)
-* cli: fix output of --help (Ben Noordhuis)
-* new website
-* pause/resume semantics for stdin (Isaac Z. Schlueter)
-* Travis CI integration (Maciej Małecki)
-* child_process: Fix bug regarding closed stdin (Ben Noordhuis)
-* Enable upgrades in MSI. (Igor Zinkovsky)
-* net: Fixes memory leak (Ben Noordhuis)
-* fs: handle fractional or NaN ReadStream buffer size (Ben Noordhuis)
-* crypto: fix memory leaks in PBKDF2 error path (Ben Noordhuis)
+* actualización de npm a 1.1.0-beta-4 (Isaac Z. Schlueter)
+* cli: corregir output de --help (Ben Noordhuis)
+* nuevo sitio web
+* semántica de "pause/resume" para stdin (Isaac Z. Schlueter)
+* Integración de Travis CI (Maciej Małecki)
+* child_process: Reparar bug relacionado con stdin cerrado (Ben Noordhuis)
+* Habilitar actualizaciones en MSI. (Igor Zinkovsky)
+* net: Repara fuga de memoria (Ben Noordhuis)
+* fs: manejar tamaño de buffer fraccionario o ReadStream NaN (Ben Noordhuis)
+* crypto: reparar fugas de memoria en ruta de error de PBKDF2 (Ben Noordhuis)
 
 <a id="0.6.5"></a>
 
-## 2011.12.04, Version 0.6.5 (stable)
+## 2011.12.04, Versión 0.6.5 (estable)
 
 https://github.com/nodejs/node/commit/6cc94db653a2739ab28e33b2d6a63c51bd986a9f
 
-* npm workaround Windows antivirus software (isaacs)
-* Upgrade V8 to 3.6.6.11
+* Solución del npm en cuanto al software antivirus de Windows (isaacs)
+* Actualizar V8 a 3.6.6.11
 
 <a id="0.6.4"></a>
 
-## 2011.12.02, Version 0.6.4 (stable)
+## 2011.12.02, Versión 0.6.4 (estable)
 
 https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
-* doc improvements (Kyle Young, Tim Oxley, Roman Shtylman, Mathias Bynens)
-* upgrade bundled npm (Isaac Schlueter)
-* polish Windows installer (Igor Zinkovsky, Isaac Schlueter)
-* punycode: upgrade to v0.2.1 (Mathias Bynens)
-* build: add –without-npm flag to configure script
-* sys: deprecate module some more, print stack trace if NODE_DEBUG=sys
-* cli: add -p switch, prints result of –eval
-* [#1997](https://github.com/joyent/node/issues/1997): fix Blowfish ECB encryption and decryption (Ingmar Runge)
-* [#2223](https://github.com/joyent/node/issues/2223): fix socket ‘close’ event being emitted twice
-* [#2224](https://github.com/joyent/node/issues/2224): fix RSS memory usage > 4 GB reporting (Russ Bradberry)
-* [#2225](https://github.com/joyent/node/issues/2225): fix util.inspect() object stringification bug (Nathan Rajlich)
+* mejoras de doc (Kyle Young, Tim Oxley, Roman Shtylman, Mathias Bynens)
+* actualizar paquete de npm (Isaac Schlueter)
+* pulir instalador de Windows (Igor Zinkovsky, Isaac Schlueter)
+* punycode: actualizar a v0.2.1 (Mathias Bynens)
+* build: añadir bandera –without-npm para configurar script
+* sys: depreciar el módulo un poco más, imprimir stack trace si NODE_DEBUG=sys
+* cli: añadir interruptor -p, imprime resultado de –eval
+* [#1997](https://github.com/joyent/node/issues/1997): reparar encriptación y descifrado de ECB de Blowfish (Ingmar Runge)
+* [#2223](https://github.com/joyent/node/issues/2223): corregir que el evento "close" de socket es emitido dos veces
+* [#2224](https://github.com/joyent/node/issues/2224): arreglar que uso de la memoria de RSS > al reporte de 4 GB (Russ Bradberry)
+* [#2225](https://github.com/joyent/node/issues/2225): corregir bug de strigificación de objetos de util.inspect() (Nathan Rajlich)
 
 <a id="0.6.3"></a>
 
-## 2011.11.25, Version 0.6.3 (stable)
+## 2011.11.25, Versión 0.6.3 (estable)
 
 https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
-* [#2083](https://github.com/joyent/node/issues/2083) Land NPM in Node. It is included in packages/installers and installed on `make install`.
+* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. Está incluido en los paquetes/instaladores e instalado en `make install`.
 
-* [#2076](https://github.com/joyent/node/issues/2076) Add logos to windows installer.
+* [#2076](https://github.com/joyent/node/issues/2076) Añadir logos al instalador de windows.
 
-* [#1711](https://github.com/joyent/node/issues/1711) Correctly handle http requests without headers. (Ben Noordhuis, Felix Geisendörfer)
+* [#1711](https://github.com/joyent/node/issues/1711) Manejar correctamente solicitudes de http sin cabeceras. (Ben Noordhuis, Felix Geisendörfer)
 
-* TLS: expose more openssl SSL context options and constants. (Ben Noordhuis)
+* TLS: exponer más opciones y constantes de contexto de SSL de openssl. (Ben Noordhuis)
 
-* [#2177](https://github.com/joyent/node/issues/2177) Windows: don't kill UDP socket when a packet fails to reach its destination. (Bert Belder)
+* [#2177](https://github.com/joyent/node/issues/2177) Windows: no eliminar socket de UDP cuando un paquete no logre alcanzar su destino. (Bert Belder)
 
-* Windows: support paths longer than 260 characters. (Igor Zinkovsky)
+* Windows: soportar rutas más largas que 260 caracteres. (Igor Zinkovsky)
 
-* Windows: correctly resolve drive-relative paths. (Bert Belder)
-* [#2166](https://github.com/joyent/node/issues/2166) Don't leave file descriptor open after lchmod. (Isaac Schlueter)
-* [#2084](https://github.com/joyent/node/issues/2084) Add OS X .pkg build script to make file.
-* [#2160](https://github.com/joyent/node/issues/2160) Documentation improvements. (Ben Noordhuis)
+* Windows: resolver correctamente rutas relacionadas con el disco duro. (Bert Belder)
+* [#2166](https://github.com/joyent/node/issues/2166) No dejar abierto el descriptor de archivos luego de lchmod. (Isaac Schlueter)
+* [#2084](https://github.com/joyent/node/issues/2084) Añadir script de compilación .pkg de OS X para crear archivo.
+* [#2160](https://github.com/joyent/node/issues/2160) Mejoras de documentación. (Ben Noordhuis)
 
 <a id="0.6.2"></a>
 
-## 2011.11.18, Version 0.6.2 (stable)
+## 2011.11.18, Versión 0.6.2 (estable)
 
 https://github.com/nodejs/node/commit/a4402f0b2e410b19375a1d5c5fb7fe7f66f3c7f8
 
-* doc improvements (Artur Adib, Trevor Burnham, Ryan Emery, Trent Mick)
-* timers: remember extra setTimeout() arguments when timeout==0
-* punycode: use Mathias Bynens's punycode library, it's more compliant
-* repl: improved tab completion (Ryan Emery)
-* buffer: fix range checks in .writeInt() functions (Lukasz Walukiewicz)
-* tls: make cipher list configurable
-* addons: make Buffer and ObjectWrap visible to Windows add-ons (Bert Belder)
-* crypto: add PKCS[#1](https://github.com/joyent/node/issues/1) a.k.a RSA public key verification support
-* windows: fix stdout writes when redirected to nul
-* sunos: fix build on Solaris and Illumos
-* Upgrade V8 to 3.6.6.8
+* mejoras de doc (Artur Adib, Trevor Burnham, Ryan Emery, Trent Mick)
+* timers: recordar argumentos extra de setTimeout() cuando timeout==0
+* punycode: utilizar la librería de punycode de Mathias Bynens, está más acorde
+* repl: completación de tab mejorada (Ryan Emery)
+* buffer: reparar revisiones de rango en funciones .writeInt() (Lukasz Walukiewicz)
+* tls: hacer que la lista de cifrado sea configurable
+* addons: hacer que Buffer y ObjectWrap sean visibles para los complementos de Windows (Bert Belder)
+* crypto: añadir PKCS[#1](https://github.com/joyent/node/issues/1) también conocido como soporte de verificación de claves públicas RSA
+* windows: corregir escritura de stdout al ser redirigido a nul
+* sunos: arreglar build en Solaris e Illumos
+* Actualizar V8 a 3.6.6.8
 
 <a id="0.6.1"></a>
 
-## 2011.11.11, Version 0.6.1 (stable)
+## 2011.11.11, Versión 0.6.1 (estable)
 
 https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 
-* doc improvements (Eric Lovett, Ben Noordhuis, Scott Anderson, Yoji SHIDARA)
-* crypto: make thread-safe (Ben Noordhuis)
-* fix process.kill error object
-* debugger: correctly handle source with multi-byte characters (Shigeki Ohtsu)
-* make stdout and stderr non-destroyable (Igor Zinkovsky)
-* fs: don't close uninitialized fs.watch handle (Ben Noordhuis)
-* [#2026](https://github.com/joyent/node/issues/2026) fix man page install on BSDs (Ben Noordhuis)
-* [#2040](https://github.com/joyent/node/issues/2040) fix unrecognized errno assert in uv_err_name
-* [#2043](https://github.com/joyent/node/issues/2043) fs: mkdir() should call callback if mode is omitted
-* [#2045](https://github.com/joyent/node/issues/2045) fs: fix fs.realpath on windows to return on error (Benjamin Pasero)
-* [#2047](https://github.com/joyent/node/issues/2047) minor cluster improvements
-* [#2052](https://github.com/joyent/node/issues/2052) readline get window columns correctly
-* Upgrade V8 to 3.6.6.7
+* mejoras de doc (Eric Lovett, Ben Noordhuis, Scott Anderson, Yoji SHIDARA)
+* crypto: proporcionar seguridad en hilos (Ben Noordhuis)
+* arreglar objeto de error de process.kill
+* debugger: manejar correctamente fuente de handle con caracteres multi-byte (Shigeki Ohtsu)
+* hacer que stdout y stderr sean no destructibles (Igor Zinkovsky)
+* fs: no cerrar handle sin inicializar de fs.watch (Ben Noordhuis)
+* [#2026](https://github.com/joyent/node/issues/2026) reparar instalación de página del manual en BSDs (Ben Noordhuis)
+* [#2040](https://github.com/joyent/node/issues/2040) corregir aserción de errno no reconocida en uv_err_name
+* [#2043](https://github.com/joyent/node/issues/2043) fs: mkdir() debe llamar a callback si se omite el modo
+* [#2045](https://github.com/joyent/node/issues/2045) fs: arreglar fs.realpath en windows para que devuelva ante error (Benjamin Pasero)
+* [#2047](https://github.com/joyent/node/issues/2047) mejoras de clúster menores
+* [#2052](https://github.com/joyent/node/issues/2052) readline obtiene correctamente las columnas de windows
+* Actualizar V8 a 3.6.6.7
 
 <a id="0.6.0"></a>
 
-## 2011.11.04, Version 0.6.0 (stable)
+## 2011.11.04, Versión 0.6.0 (estable)
 
 https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
-* print undefined on undefined values in REPL (Nathan Rajlich)
-* doc improvements (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
+* imprimir "undefined" ante valores indefinidos en REPL (Nathan Rajlich)
+* mejoras de doc (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
 
-* support native addon loading in windows (Bert Belder)
+* soportar carga de complemento nativo en windows (Bert Belder)
 
-* rename getNetworkInterfaces() to networkInterfaces() (bnoordhuis)
-* add pending accepts knob for windows (igorzi)
+* renombrar getNetworkInterfaces() como networkInterfaces() (bnoordhuis)
+* añadir botón de aceptaciones pendientes para windows (igorzi)
 * http.request(url.parse(x)) (seebees)
-* [#1929](https://github.com/joyent/node/issues/1929) zlib Respond to 'resume' events properly (isaacs)
-* stream.pipe: Remove resume and pause events
-* test fixes for windows (igorzi)
-* build system improvements (bnoordhuis)
-* [#1936](https://github.com/joyent/node/issues/1936) tls: does not emit 'end' from EncryptedStream (koichik)
-* [#758](https://github.com/joyent/node/issues/758) tls: add address(), remoteAddress/remotePort
-* [#1399](https://github.com/joyent/node/issues/1399) http: emit Error object after .abort() (bnoordhuis)
-* [#1999](https://github.com/joyent/node/issues/1999) fs: make mkdir() default to 0777 permissions (bnoordhuis)
-* [#2001](https://github.com/joyent/node/issues/2001) fix pipe error codes
-* [#2002](https://github.com/joyent/node/issues/2002) Socket.write should reset timeout timer
-* stdout and stderr are blocking when associated with file too.
-* remote debugger support on windows (Bert Belder)
-* convenience methods for zlib (Matt Robenolt)
-* process.kill support on windows (igorzi)
-* process.uptime() support on windows (igorzi)
-* Return IPv4 addresses before IPv6 addresses from getaddrinfo
-* util.inspect improvements (Nathan Rajlich)
-* cluster module api changes
-* Downgrade V8 to 3.6.6.6
+* [#1929](https://github.com/joyent/node/issues/1929) zlib Responder correctamente a los eventos "resume" (isaacs)
+* stream.pipe: Remover eventos "resume" y "pause"
+* probar reparaciones para windows (igorzi)
+* mejoras del sistema de compilación (bnoordhuis)
+* [#1936](https://github.com/joyent/node/issues/1936) tls: no emite "end" desde EncryptedStream (koichik)
+* [#758](https://github.com/joyent/node/issues/758) tls: añadir address(), remoteAddress/remotePort
+* [#1399](https://github.com/joyent/node/issues/1399) http: emitir objeto de Error después de .abort() (bnoordhuis)
+* [#1999](https://github.com/joyent/node/issues/1999) fs: hacer que mkdir() se establezca por defecto a 0777 permisos (bnoordhuis)
+* [#2001](https://github.com/joyent/node/issues/2001) corregir códigos de error de pipe
+* [#2002](https://github.com/joyent/node/issues/2002) Socket.write debería restablecer el temporizador de timeout
+* stdout y stderr están bloqueando al estar asociados con el archivo también.
+* soporte para el depurador remoto en windows (Bert Belder)
+* métodos de conveniencia para zlib (Matt Robenolt)
+* soporte para process.kill en windows (igorzi)
+* soporte para process.uptime() en windows (igorzi)
+* Devolver direcciones IPv4 antes que las de IPv6 en getaddrinfo
+* mejoras de util.inspect (Nathan Rajlich)
+* cambios de api del módulo cluster
+* Degradar V8 a 3.6.6.6
 
 <a id="0.5.10"></a>
 
-## 2011.10.21, Version 0.5.10 (unstable)
+## 2011.10.21, Versión 0.5.10 (inestable)
 
 https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 
-* Remove cmake build system, support for Cygwin, legacy code base, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
+* Remover sistema de compilación cmake, soporte para Cygwin, base de código heredado, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
 
-* Documentation improvements (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
+* Mejoras de documentación (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
 
-* Performance improvements (Daniel Ennis, Bert Belder, Ben Noordhuis)
+* Mejoras de rendimiento (Daniel Ennis, Bert Belder, Ben Noordhuis)
 
-* Long process.title support (Ben Noordhuis)
-* net: register net.Server callback only once (Simen Brekken)
-* net: fix connect queue bugs (Ben Noordhuis)
-* debugger: fix backtrace err handling (Fedor Indutny)
-* Use getaddrinfo instead of c-ares for dns.lookup
-* Emit 'end' from crypto streams on close
-* [#1902](https://github.com/joyent/node/issues/1902) buffer: use NO_NULL_TERMINATION flag (koichik)
-* [#1907](https://github.com/joyent/node/issues/1907) http: Added support for HTTP PATCH verb (Thomas Parslow)
-* [#1644](https://github.com/joyent/node/issues/1644) add GetCPUInfo on windows (Karl Skomski)
-* [#1484](https://github.com/joyent/node/issues/1484), [#1834](https://github.com/joyent/node/issues/1834), [#1482](https://github.com/joyent/node/issues/1482), [#771](https://github.com/joyent/node/issues/771) Don't use a separate context for the repl. (isaacs)
+* Soporte para process.title largo (Ben Noordhuis)
+* net: registrar callback net.Server solo una vez (Simen Brekken)
+* net: corregir bugs de cola de conexión (Ben Noordhuis)
+* debugger: corregir manejo de errores de backtrace (Fedor Indutny)
+* Usar getaddrinfo en lugar de c-ares para dns.lookup
+* Emitir "end" desde streams de crypto al cierre
+* [#1902](https://github.com/joyent/node/issues/1902) buffer: usar bandera NO_NULL_TERMINATION (koichik)
+* [#1907](https://github.com/joyent/node/issues/1907) http: Añadido soporte para verbo HTTP PATCH (Thomas Parslow)
+* [#1644](https://github.com/joyent/node/issues/1644) añadir GetCPUInfo en windows (Karl Skomski)
+* [#1484](https://github.com/joyent/node/issues/1484), [#1834](https://github.com/joyent/node/issues/1834), [#1482](https://github.com/joyent/node/issues/1482), [#771](https://github.com/joyent/node/issues/771) No usar un contexto separado para el repl. (isaacs)
 
-* [#1882](https://github.com/joyent/node/issues/1882) zlib Update 'availOutBefore' value, and test (isaacs)
+* [#1882](https://github.com/joyent/node/issues/1882) zlib Actualizar valor de "availOutBefore", y probar (isaacs)
 
-* [#1888](https://github.com/joyent/node/issues/1888) child_process.fork: don't modify args (koichik)
-* [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert unusable with Firefox and Chrome (koichik)
-* [#1467](https://github.com/joyent/node/issues/1467) tls: The TLS API is inconsistent with the TCP API (koichik)
-* [#1894](https://github.com/joyent/node/issues/1894) net: fix error handling in listen() (koichik)
-* [#1860](https://github.com/joyent/node/issues/1860) console.error now goes through uv_tty_t
-* Upgrade V8 to 3.7.0
-* Upgrade GYP to r1081
+* [#1888](https://github.com/joyent/node/issues/1888) child_process.fork: no modificar args (koichik)
+* [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert no se puede usar con Firefox ni Chrome (koichik)
+* [#1467](https://github.com/joyent/node/issues/1467) tls: La API de TLS es inconsistente con la API de TCP (koichik)
+* [#1894](https://github.com/joyent/node/issues/1894) net: corregir manejo de error en listen() (koichik)
+* [#1860](https://github.com/joyent/node/issues/1860) console.error ahora pasa a través de uv_tty_t
+* Actualizar V8 a 3.7.0
+* Actualizar GYP a r1081
 
 <a id="0.5.9"></a>
 
-## 2011.10.10, Version 0.5.9 (unstable)
+## 2011.10.10, Versión 0.5.9 (inestable)
 
 https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 
-* fs.watch interface backed by kqueue, inotify, and ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
+* interfaz de fs.watch respaldada por kqueue, inotify, y ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
 
-* add dns.resolveTxt (Christian Tellnes)
+* añadir dns.resolveTxt (Christian Tellnes)
 
-* Remove legacy http library (Ben Noordhuis)
-* child_process.fork returns and works on Windows. Allows passing handles. (Igor Zinkovsky, Bert Belder)
+* Remover librería http heredada (Ben Noordhuis)
+* child_process.fork devuelve y funciona en Windows. Permite pasar handles. (Igor Zinkovsky, Bert Belder)
 
-* [#1774](https://github.com/joyent/node/issues/1774) Lint and clean up for --harmony_block_scoping (Tyler Larson, Colton Baker)
+* [#1774](https://github.com/joyent/node/issues/1774) Hacer lint y limpiar para --harmony_block_scoping (Tyler Larson, Colton Baker)
 
-* [#1813](https://github.com/joyent/node/issues/1813) Fix ctrl+c on Windows (Bert Belder)
+* [#1813](https://github.com/joyent/node/issues/1813) Arreglar ctrl+c en Windows (Bert Belder)
 
-* [#1844](https://github.com/joyent/node/issues/1844) unbreak --use-legacy (Ben Noordhuis)
-* process.stderr now goes through libuv. Both process.stdout and process.stderr are blocking when referencing a TTY.
+* [#1844](https://github.com/joyent/node/issues/1844) des-romper --use-legacy (Ben Noordhuis)
+* process.stderr ahora pasa a través de libuv. Tanto process.stdout como process.stderr bloquean al referenciar un TTY.
 
-* net_uv performance improvements (Ben Noordhuis, Bert Belder)
+* Mejoras de rendimiento de net_uv (Ben Noordhuis, Bert Belder)
 
 <a id="0.5.8"></a>
 

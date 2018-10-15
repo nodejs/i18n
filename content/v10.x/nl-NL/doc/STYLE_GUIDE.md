@@ -1,19 +1,19 @@
-# Style Guide
+# Stijlgids
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* Documentatie is geschreven in markdown bestanden met namen geformatteerd als `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
+* Documenten moeten worden 'word-wrapped' bij 80 tekens.
+* De formattering beschreven in `.editorconfig` heeft de voorkeur. 
+  * Een [plugin](http://editorconfig.org/#download) is beschikbaar voor sommige editors om automatisch deze regels toe te passen.
 * Changes to documentation should be checked with `make lint-md`.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+    * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.

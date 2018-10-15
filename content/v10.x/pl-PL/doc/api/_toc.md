@@ -34,7 +34,7 @@
 * [Moduły](modules.html)
 * [Net](net.html)
 * [OS](os.html)
-* [Path](path.html)
+* [Ścieżka](path.html)
 * [Performance Hooks](perf_hooks.html)
 * [Process](process.html)
 * [Punycode](punycode.html)

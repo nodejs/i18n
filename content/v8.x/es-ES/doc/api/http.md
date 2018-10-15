@@ -482,7 +482,7 @@ added: v1.6.0
 
 Reads out a header on the request. Note that the name is case insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const contentType = request.getHeader('Content-Type');
@@ -498,7 +498,7 @@ added: v1.6.0
 
 Removes a header that's already defined into headers object.
 
-Example:
+Ejemplo:
 
 ```js
 request.removeHeader('Content-Type');
@@ -515,7 +515,7 @@ added: v1.6.0
 
 Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Ejemplo:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
@@ -571,7 +571,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -925,7 +925,7 @@ added: v0.4.0
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -941,7 +941,7 @@ added: v7.7.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -963,7 +963,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -984,7 +984,7 @@ added: v7.7.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1010,7 +1010,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Example:
+Ejemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1039,7 +1039,7 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1090,7 +1090,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -1111,7 +1111,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusCode = 404;
@@ -1129,7 +1129,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1188,7 +1188,7 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Example:
+Ejemplo:
 
 ```js
 const body = 'hello world';
@@ -1263,7 +1263,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. Ejemplo:
 
 ```js
 // Prints something like:
@@ -1427,7 +1427,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
 
 ```txt
 $ node
@@ -1447,7 +1447,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ejemplo:
 
 ```txt
 $ node
@@ -1609,7 +1609,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Example:
+Ejemplo:
 
 ```js
 const postData = querystring.stringify({

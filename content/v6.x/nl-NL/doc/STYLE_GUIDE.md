@@ -1,19 +1,19 @@
-# Style Guide
+# Stijlgids
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g., `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+* Documentatie is geschreven in markdown bestanden met namen geformatteerd als `lowercase-with-dashes.md`. 
+  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `child_process`).
+  * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
+* Documenten moeten worden 'word-wrapped' bij 80 tekens.
+* De formattering beschreven in `.editorconfig` heeft de voorkeur. 
+  * Een [plugin](http://editorconfig.org/#download) is beschikbaar voor sommige editors om automatisch deze regels toe te passen.
+* Mechanische problemen, zoals spelling en grammatica, moeten door tools worden geïdentificeerd, voor zover dit mogelijk is. Als het niet door een tool wordt opgemerkt, dan zouden menselijke reviewers ze moeten aanwijzen.
+* Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Howel omstreden, de [Oxford komma](https://en.wikipedia.org/wiki/Serial_comma) heeft de voorkeur ter duidelijkheid.
+* In het algemeen, voorkom persoonlijke voornaamwoorden in referentie documentatie ("Ik", "jij", "wij"). 
+  * Voornaamwoorden zijn aanvaardbaar in meer informele documentatie, zoals gidsen.
+  * Gebruik genderneutrale voornaamwoorden en stofnamen. Niet-uitgebreide voorbeelden: 
+    * Ok: "zij", "hun", "hen", "volk", "mensen", "ontwikkelaars", "katten"
+    * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.

@@ -104,20 +104,20 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-## Class: Cipher
+## Tipo: Cipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Cipher` class are used to encrypt data. The class can be used in one of two ways:
+Las instancias del tipo de `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
 
-- As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
-- Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
+- Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
+- Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
 
-The [`crypto.createCipher()`][] or [`crypto.createCipheriv()`][] methods are used to create `Cipher` instances. `Cipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la consigna `new`.
 
-Example: Using `Cipher` objects as streams:
+Ejemplo: Usar los objetos `Cipher` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -138,7 +138,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Ejemplo: Usando `Cipher` y los streams canalizados:
 
 ```js
 const crypto = require('crypto');
@@ -151,7 +151,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Ejemplo: Usando los métodos [`cipher.update()`][] y [`cipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -171,9 +171,9 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Returns any remaining enciphered contents. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes cifrados. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+El objeto `Cipher` puede dejar de ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
 
 ### cipher.setAAD(buffer)
 
@@ -184,7 +184,7 @@ added: v1.0.0
 - `buffer` {Buffer}
 - Returns the {Cipher} for method chaining.
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
 The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 
@@ -194,9 +194,9 @@ The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 added: v1.0.0
 -->
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
+El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene al *authentication tag* que ha sido computado por los datos dados cuando e us un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
 
-The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
+El método `cipher.getAuthTag()` solo debría ser llamado luego de haber completado la encriptación al usar el método [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
@@ -207,9 +207,9 @@ added: v0.7.1
 - `autoPadding` {boolean} Defaults to `true`.
 - Returns the {Cipher} for method chaining.
 
-When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
+El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Y, para desabilitar la llamada adicional predeterminada `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
+When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
 The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
 
@@ -228,26 +228,26 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el cifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
-The `cipher.update()` method can be called multiple times with new data until [`cipher.final()`][] is called. Calling `cipher.update()` after [`cipher.final()`][] will result in an error being thrown.
+El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que se llame a [`cipher.final()`][]. Si se llama a `cipher.update()` después de [`cipher.final()`][] se producirá un error.
 
-## Class: Decipher
+## Clase: Decipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. The class can be used in one of two ways:
+Instancias de la clase `Decipher` son usadas para descifrar datos. La clase puede ser empleada en una de dos formas:
 
-- As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
-- Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
+- Como un [stream](stream.html) que es legible y escribible, donde los datos planos encriptados están escritos para producir datos no encriptados en el lado legible, o
+- Usando los métodos [`decipher.update()`][] y [`decipher.final()`][] para producir datos no encriptados.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son usados para crear instancias `Decipher`. Los objetos `Decipher` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Decipher` objects as streams:
+Ejemplo: Usando objetos `Decipher` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -270,7 +270,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Ejemplo: Usando `Cipher` y los streams canalizados:
 
 ```js
 const crypto = require('crypto');
@@ -283,7 +283,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -305,9 +305,9 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Returns any remaining deciphered contents. If `outputEncoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes descifrados. If `outputEncoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
 ### decipher.setAAD(buffer)
 
@@ -323,7 +323,7 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Returns the {Cipher} for method chaining.
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+El método `decipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
 The `decipher.setAAD()` method must be called before [`decipher.update()`][].
 
@@ -341,7 +341,7 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Returns the {Cipher} for method chaining.
 
-When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+El método `decipher.setAuthTag()` es usado para pasar el recibido de la *authentication tag* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados actualmente). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
 The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
 
@@ -354,9 +354,9 @@ added: v0.7.1
 - `autoPadding` {boolean} Defaults to `true`.
 - Returns the {Cipher} for method chaining.
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar al `decipher.setAutoPadding(false)` deshabilitará automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+Desactivar el llenado automático sólo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloques cifrados.
 
 The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
 
@@ -375,13 +375,13 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Actualiza el descifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
-## Class: DiffieHellman
+## Tipo: DiffieHellman
 
 <!-- YAML
 added: v0.5.0
@@ -1292,7 +1292,7 @@ added: v0.9.3
 
 Returns an array with the names of the supported cipher algorithms.
 
-Example:
+Ejemplo:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1307,7 +1307,7 @@ added: v2.3.0
 
 Returns an array with the names of the supported elliptic curves.
 
-Example:
+Ejemplo:
 
 ```js
 const curves = crypto.getCurves();
@@ -1349,7 +1349,7 @@ added: v0.9.3
 
 Returns an array of the names of the supported hash algorithms, such as `RSA-SHA256`.
 
-Example:
+Ejemplo:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1392,7 +1392,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
@@ -1436,7 +1436,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');

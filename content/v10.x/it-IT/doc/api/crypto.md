@@ -1059,14 +1059,14 @@ Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo stream
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La classe `Verify` è un'utility per verificare le firme. Può essere utilizzata in due modi:
 
-- As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
-- Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+- Come un writable [stream](stream.html), sul quale i dati scritti tramite il writing vengono utilizzati per convalidare la firma fornita, oppure
+- Utilizzando i metodi [`verify.update()`][] e [`verify.verify()`][] per verificare la firma.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+Le istanze `Verify` vengono create utilizzando il metodo [`crypto.createVerify()`][]. Gli `Verify` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Verify` objects as streams:
+Esempio: Utilizzando gli `Verify` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -1078,10 +1078,10 @@ verify.end();
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Stampa: true o false
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Esempio: Utilizzando i metodi [`verify.update()`][] e [`verify.verify()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -1092,7 +1092,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Stampa: true o false
 ```
 
 ### verify.update(data[, inputEncoding])
@@ -1109,9 +1109,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto di `Verify` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
-This can be called many times with new data as it is streamed.
+Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
 ### verify.verify(object, signature[, signatureFormat])
 
@@ -1127,25 +1127,25 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Restituisce: {boolean} `true` o `false` a seconda della validità della firma per i dati e la chiave pubblica.
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica i dati forniti utilizzando l'`object` e la `signature` specificati. L'argomento `object` può essere una stringa contenente un object con codifica PEM, il quale può essere una chiave pubblica RSA, una chiave pubblica DSA oppure un certificato X.509 o un object con una o più delle seguenti proprietà:
 
-- `key`: {string} - PEM encoded public key (required)
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Chiave pubblica con codifica PEM (obbligatoria)
+- `padding`: {integer} - Valore padding opzionale per RSA, può essere uno dei seguenti:
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (valore di default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Da notare che `RSA_PKCS1_PSS_PADDING` utilizzerà MGF1 con la stessa funzione hash utilizzata per verificare il messaggio come specificato nella sezione 3.1 del documento [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+- `saltLength`: {integer} - lunghezza del salt per quando il padding è `RSA_PKCS1_PSS_PADDING`. Il valore speciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` imposta la lunghezza del salta nella dimensione del digest, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (valore di default) fa sì che venga determinato automaticamente.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+L'argomento `signature` è la firma calcolata precedentemente per i dati, all'interno del `signatureFormat` che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito `signatureFormat`, la `signature` dovrebbe essere una stringa; in caso contrario la `signature` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+Il `verify` object non può essere utilizzato nuovamente dopo aver chiamato `verify.verify()`. Chiamate multiple di `verify.verify()` genereranno un errore.
 
-## `crypto` module methods and properties
+## Metodi e proprietà del modulo `crypto`
 
 ### crypto.constants
 
@@ -1153,7 +1153,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Restituisce: {Object} Un object contenente costanti di uso comune per operazioni crittografiche e relative alla sicurezza. Le costanti specifiche attualmente definite sono descritte in [Costanti Crittografiche](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1162,13 +1162,13 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+L'encoding predefinito da utilizzare per le funzioni che possono utilizzare le stringhe oppure i [buffers] [`Buffer`]. Il valore predefinito è `'buffer'`, il quale rende i metodi predefiniti ai [`Buffer`][] object.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+Il meccanismo `crypto.DEFAULT_ENCODING` viene fornito per la retrocompatibilità con i programmi legacy che prevedono che `'latin1'` sia l'encoding predefinito.
 
-New applications should expect the default to be `'buffer'`.
+Le nuove applicazioni dovrebbero aspettarsi che il valore predefinito sia `'buffer'`.
 
-This property is deprecated.
+Questa proprietà è obsoleta.
 
 ### crypto.fips
 
@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Proprietà per verificare e controllare se è attualmente in uso un provider crittografico conforme alle norme FIPS. L'impostazione su true richiede una build delle norme FIPS di Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Questa proprietà è obsoleta. Perfavore utilizza `crypto.setFips()` al posto di `crypto.getFips()`.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,24 +1188,24 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`crypto.createCipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Restituisce: {Cipher}
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
+Crea e restituisce un `Cipher` object che utilizza l'`algorithm` e la `password` specificati.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+La `password` viene utilizzata per ricavare la chiave di cifratura (cipher key) e il vettore di inizializzazione (IV). Il valore deve essere una stringa con codifica `'latin1'`, un [`Buffer`][], un `TypedArray` oppure un `DataView`.
 
-The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+L'implementazione di `crypto.createCipher()` deriva le chiavi utilizzando la funzione OpenSSL [`EVP_BytesToKey`][] con l'algoritmo digest impostato su MD5, una iterazione e nessun salt. La mancanza di salt consente attacchi a dizionario poiché la stessa password crea sempre la stessa chiave. Il basso numero di iterazioni e l'algoritmo hash, non crittograficamente sicuro, permettono di testare le password molto rapidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+In linea con la raccomandazione di OpenSSL di utilizzare PBKDF2 invece di [`EVP_BytesToKey`][], si consiglia agli sviluppatori di derivare una chiave e l'IV autonomamente utilizzando [`crypto.pbkdf2()`][] e di utilizzare [`crypto.createCipheriv()`][] per creare il `Cipher` object. Gli utenti non devono utilizzare i cipher con la counter mode (ad es. CTR, GCM, o CCM) all'interno di `crypto.createCipher()`. Viene emesso un avviso quando vengono utilizzati al fine di non rischiare riutilizzando l'IV in quanto il riutilizzo causa vulnerabilità. Per il caso in cui l'IV viene riutilizzato in modalità GCM, vedi [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) per maggiori dettagli.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1223,17 +1223,17 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Restituisce: {Cipher}
 
-Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
+Crea e restituisce un `Cipher` object, con l'`algorithm`, la `key` e il vettore di inizializzazione (`iv`) specificati.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray` o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
 ### crypto.createCredentials(details)
 
@@ -1242,14 +1242,14 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`tls.createSecureContext()`][].
 
-- `details` {Object} Identical to [`tls.createSecureContext()`][].
-- Returns: {tls.SecureContext}
+- `details` {Object} Identico a [`tls.createSecureContext()`][].
+- Restituisce: {tls.SecureContext}
 
-The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+Il metodo `crypto.createCredentials()` è una funzione obsoleta per la creazione e la restituzione di un `tls.SecureContext`. Non dovrebbe essere usato. Sostituiscilo con [`tls.createSecureContext()`][] che ha gli stessi identici argomenti e lo stesso valore di return.
 
-Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
+Restituisce un `tls.SecureContext`, come se [`tls.createSecureContext()`][] fosse stato chiamato.
 
 ### crypto.createDecipher(algorithm, password[, options])
 
@@ -1258,20 +1258,20 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`crypto.createDecipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Restituisce: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea e restituisce un `Decipher` object che utilizza l'`algorithm` e la `password` (chiave) specificati.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+L'implementazione di `crypto.createDecipher()` deriva le chiavi utilizzando la funzione OpenSSL [`EVP_BytesToKey`][] con l'algoritmo digest impostato su MD5, una iterazione e nessun salt. La mancanza di salt consente attacchi a dizionario poiché la stessa password crea sempre la stessa chiave. Il basso numero di iterazioni e l'algoritmo hash, non crittograficamente sicuro, permettono di testare le password molto rapidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+In linea con la raccomandazione di OpenSSL di utilizzare PBKDF2 invece di [`EVP_BytesToKey`][], si consiglia agli sviluppatori di derivare una chiave e l'IV autonomamente utilizzando [`crypto.pbkdf2()`][] e di utilizzare [`crypto.createDecipheriv()`][] per creare il `Decipher` object.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1289,17 +1289,17 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Restituisce: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea e restituisce un `Decipher` object che utilizza l'`algorithm`, la `key` e il vettore di inizializzazione (`iv`) specificati.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` è la raw key utilizzata dall'`algorithm` e `iv` è un [vettore di inizializzazione](https://en.wikipedia.org/wiki/Initialization_vector). Entrambi gli argomenti devono essere delle stringhe con codifica `'utf8'`, dei [Buffers][`Buffer`], dei `TypedArray` o dei `DataView`. Se il cipher non ha bisogno di un vettore di inizializzazione, `iv` potrebbe essere `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+I vettori di inizializzazione dovrebbero essere imprevedibili e unici; idealmente, saranno crittograficamente casuali. Non devono essere segreti: gli IV vengono in genere aggiunti ai messaggi ciphertext non crittografati. Potrebbe sembrare contraddittorio che un qualcosa debba essere imprevedibile e unico, ma non debba essere segreto; è importante ricordare che un aggressore non deve essere in grado di prevedere in anticipo quale possa essere un dato IV.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
@@ -1324,15 +1324,15 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un `DiffieHellman` key exchange object utilizzando il `prime` fornito e un `generator` specifico opzionale.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
-The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+Gli argomenti `primeEncoding` e `generatorEncoding` possono essere `'latin1'`, `'hex'` o `'base64'`.
 
-If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Se viene specificato il `primeEncoding`, `prime` dovrebbe essere una stringa; in caso contrario, dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Se viene specificato il `generatorEncoding`, `generator` dovrebbe essere una stringa; in caso contrario dovrebbe essere un numero, un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
@@ -1343,7 +1343,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Crea un `DiffieHellman` key exchange object e genera un prime di `primeLength` bit utilizzando un `generator` numerico specifico opzionale. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
 ### crypto.createECDH(curveName)
 
@@ -1353,7 +1353,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Crea un Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object utilizzando una curva predefinita specificata dalla stringa `curveName`. Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1363,13 +1363,13 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hash}
+- Restituisce: {Hash}
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
+Crea e restituisce un `Hash` object che può essere utilizzato per generare degli hash digest tramite l'`algorithm` specificato. L'argomento `options` opzionale controlla il comportamento dello stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+L'`algorithm` dipende dagli algoritmi disponibili supportati dalla versione OpenSSL sulla piattaforma. Alcuni esempi sono `'sha256'`, `'sha512'`, ecc. Nelle versioni OpenSSl recenti, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi digest disponibili.
 
-Example: generating the sha256 sum of a file
+Esempio: generazione della somma sha256 di un file
 
 ```js
 const filename = process.argv[2];
@@ -1398,15 +1398,15 @@ added: v0.1.94
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hmac}
+- Restituisce: {Hmac}
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
+Crea e restituisce un `Hmac` object che utilizza l'`algorithm` e la `key` specificati. L'argomento `options` opzionale controlla il comportamento dello stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+L'`algorithm` dipende dagli algoritmi disponibili supportati dalla versione OpenSSL sulla piattaforma. Alcuni esempi sono `'sha256'`, `'sha512'`, ecc. Nelle versioni OpenSSl recenti, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi digest disponibili.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+La `key` è la chiave HMAC utilizzata per generare l'hash crittografico HMAC.
 
-Example: generating the sha256 HMAC of a file
+Esempio: generazione dell'HMAC sha256 di un file
 
 ```js
 const filename = process.argv[2];
@@ -1434,9 +1434,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Sign}
+- Restituisce: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea e restituisce un `Sign` object che utilizza l'`algorithm` specificato. Utilizza [`crypto.getHashes()`][] per ottenere un array di nomi degli algoritmi per la firma disponibili. L'argomento `options` opzionale controlla il comportamento di `stream.Writable`.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1446,9 +1446,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Verify}
+- Restituisce: {Verify}
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea e restituisce un `Verify` object che utilizza l'algoritmo specificato. Utilizza [`crypto.getHashes()`][] per ottenere un array di nomi degli algoritmi per la firma disponibili. L'argomento `options` opzionale controlla il comportamento di `stream.Writable`.
 
 ### crypto.getCiphers()
 
@@ -1456,9 +1456,9 @@ Creates and returns a `Verify` object that uses the given algorithm. Use [`crypt
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array with the names of the supported cipher algorithms.
+- Restituisce: {string[]} Un array con i nomi degli algoritmi cipher supportati.
 
-Example:
+Esempio:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1471,9 +1471,9 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-- Returns: {string[]} An array with the names of the supported elliptic curves.
+- Restituisce: {string[]} Un array con i nomi delle curve ellittiche supportate.
 
-Example:
+Esempio:
 
 ```js
 const curves = crypto.getCurves();
@@ -1487,11 +1487,11 @@ added: v0.7.5
 -->
 
 - `groupName` {string}
-- Returns: {Object}
+- Restituisce: {Object}
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un `DiffieHellman` key exchange object predefinito. I gruppi supportati sono: `'modp1'`, `'modp2'`, `'modp5'` (definiti nel documento [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), ma vedi anche gli [Avvertimenti](#crypto_support_for_weak_or_compromised_algorithms)) e `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definiti nel documento [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). L'object restituito simula l'interfaccia degli object creati da [`crypto.createDiffieHellman()`][], ma non consente di cambiare le chiavi (con [`diffieHellman.setPublicKey()`][] per esempio). Il vantaggio dell'utilizzo di questo metodo è che le parti non devono generare né scambiare preventivamente un modulo di gruppo, risparmiando tempo per il processore e la comunicazione.
 
-Example (obtaining a shared secret):
+Esempio (ottenendo una chiave segreta condivisa):
 
 ```js
 const crypto = require('crypto');
@@ -1504,7 +1504,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* aliceSecret e bobSecret dovrebbero essere uguali */
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1514,7 +1514,7 @@ console.log(aliceSecret === bobSecret);
 added: v10.0.0
 -->
 
-- Returns: {boolean} `true` if and only if a FIPS compliant crypto provider is currently in use.
+- Restituisce: {boolean} `true` se e solo se è attualmente in uso un provider crittografico conforme alle norme FIPS.
 
 ### crypto.getHashes()
 
@@ -1522,9 +1522,9 @@ added: v10.0.0
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
+- Restituisce: {string[]} Un array dei nomi degli algoritmi hash supportati, come ad esempio `'RSA-SHA256'`.
 
-Example:
+Esempio:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1559,15 +1559,15 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Fornisce un'implementazione asincrona della Password-Based Key Derivation Function 2 (PBKDF2). Viene applicato un algoritmo dell'HMAC digest selezionato specificato da `digest` per derivare una chiave della lunghezza di byte richiesta (`keylen`) dalla `password`, dal `salt` e dalle `iterations`.
 
-The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs while deriving the key, `err` will be set; otherwise `err` will be `null`. By default, the successfully generated `derivedKey` will be passed to the callback as a [`Buffer`][]. An error will be thrown if any of the input arguments specify invalid values or types.
+La funzione `callback` fornita viene chiamata con due argomenti: `err` e `derivedKey`. Se si verifica un errore durante la derivazione della chiave, verrà impostato `err`; in caso contrario `err` sarà `null`. Di default, la `derivedKey` generata correttamente verrà passata al callback come un [`Buffer`][]. Se uno qualsiasi degli argomenti d'input specifica valori o tipi non validi verrà generato un errore.
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+L'argomento `iterations` dev'essere un numero impostato con il valore più alto possibile. Maggiore è il numero di iterazioni, più sicura sarà la chiave derivata, ma sarà necessario più tempo per completarla.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+Anche il `salt` dovrebbe essere il più unico possibile. E' consigliato che i salt siano casuali e la loro lunghezza sia di almeno 16 byte. Vedi [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) per ulteriori dettagli.
 
-Example:
+Esempio:
 
 ```js
 const crypto = require('crypto');
@@ -1577,7 +1577,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-The `crypto.DEFAULT_ENCODING` property can be used to change the way the `derivedKey` is passed to the callback. This property, however, has been deprecated and use should be avoided.
+La proprietà `crypto.DEFAULT_ENCODING` può essere utilizzata per modificare il modo in cui la `derivedKey` viene passata al callback. Tuttavia questa proprietà è obsoleta e il suo utilizzo dovrebbe essere evitato.
 
 ```js
 const crypto = require('crypto');
@@ -1588,9 +1588,9 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Può essere recuperato un array di funzioni digest supportate utilizzando [`crypto.getHashes()`][].
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
@@ -1613,17 +1613,17 @@ changes:
 - `iterations` {number}
 - `keylen` {number}
 - `digest` {string}
-- Returns: {Buffer}
+- Restituisce: {Buffer}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Fornisce un'implementazione sincrona della Password-Based Key Derivation Function 2 (PBKDF2). Viene applicato un algoritmo dell'HMAC digest selezionato specificato da `digest` per derivare una chiave della lunghezza di byte richiesta (`keylen`) dalla `password`, dal `salt` e dalle `iterations`.
 
-If an error occurs an `Error` will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Se si verifica un errore verrà generato un `Error`, in caso contrario la chiave derivata verrà restituita come un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+L'argomento `iterations` dev'essere un numero impostato con il valore più alto possibile. Maggiore è il numero di iterazioni, più sicura sarà la chiave derivata, ma sarà necessario più tempo per completarla.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+Anche il `salt` dovrebbe essere il più unico possibile. E' consigliato che i salt siano casuali e la loro lunghezza sia di almeno 16 byte. Vedi [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) per ulteriori dettagli.
 
-Example:
+Esempio:
 
 ```js
 const crypto = require('crypto');
@@ -1631,7 +1631,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-The `crypto.DEFAULT_ENCODING` property may be used to change the way the `derivedKey` is returned. This property, however, has been deprecated and use should be avoided.
+La proprietà `crypto.DEFAULT_ENCODING` potrebbe essere utilizzata per modificare il modo in cui viene restituita la `derivedKey`. Tuttavia questa proprietà è obsoleta e il suo utilizzo dovrebbe essere evitato.
 
 ```js
 const crypto = require('crypto');
@@ -1640,7 +1640,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Può essere recuperato un array di funzioni digest supportate utilizzando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1649,15 +1649,15 @@ added: v0.11.14
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Una chiave privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING` o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
-Decrypts `buffer` with `privateKey`.
+Decifra il `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`privateKey` può essere un object oppure una stringa. Se la `privateKey` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_OAEP_PADDING`.
 
 ### crypto.privateEncrypt(privateKey, buffer)
 
@@ -1666,15 +1666,15 @@ added: v1.1.0
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Una chiave privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto cifrato.
 
-Encrypts `buffer` with `privateKey`.
+Codifica il `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`privateKey` può essere un object oppure una stringa. Se la `privateKey` è una stringa, viene considerata come come una chiave senza passphrase e utilizzerà `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
 
@@ -1683,17 +1683,17 @@ added: v1.1.0
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Una chiave pubblica o privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
-Decrypts `buffer` with `key`.
+Decifra il `buffer` con la `key`.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`key` può essere un object oppure una stringa. Se la `key` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Poiché le chiavi pubbliche RSA possono essere derivate da chiavi private, potrebbe essere passata una chiave privata al posto della chiave pubblica.
 
 ### crypto.publicEncrypt(key, buffer)
 
@@ -1702,17 +1702,17 @@ added: v0.11.14
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Una chiave pubblica o privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto cifrato.
 
-Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with encrypted content.
+Codifica il contenuto di `buffer` con la `key` e restituisce un nuovo [`Buffer`][] con il contenuto cifrato.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`key` può essere un object oppure una stringa. Se la `key` è una stringa, viene considerata come una chiave senza passphrase e utilizzerà `RSA_PKCS1_OAEP_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Poiché le chiavi pubbliche RSA possono essere derivate da chiavi private, potrebbe essere passata una chiave privata al posto della chiave pubblica.
 
 ### crypto.randomBytes(size[, callback])
 
@@ -1730,14 +1730,14 @@ changes:
 - `callback` {Function} 
   - `err` {Error}
   - `buf` {Buffer}
-- Returns: {Buffer} if the `callback` function is not provided.
+- Restituisce: {Buffer} se non viene fornita la funzione `callback`.
 
-Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
+Genera dati pseudo casuali crittograficamente forti. L'argomento `size` è un numero che indica il numero di byte da generare.
 
-If a `callback` function is provided, the bytes are generated asynchronously and the `callback` function is invoked with two arguments: `err` and `buf`. If an error occurs, `err` will be an `Error` object; otherwise it is `null`. The `buf` argument is a [`Buffer`][] containing the generated bytes.
+Se viene fornita una funzione `callback`, i byte vengono generati in modo asincrono e la funzione `callback` viene invocata con due argomenti: `err` e `buf`. Se si verifica un errore, `err` sarà un `Error` object; in caso contrario sarà `null`. L'argomento `buf` è un [`Buffer`][] contenente i byte generati.
 
 ```js
-// Asynchronous
+// Asincrono
 const crypto = require('crypto');
 crypto.randomBytes(256, (err, buf) => {
   if (err) throw err;
@@ -1745,20 +1745,20 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-If the `callback` function is not provided, the random bytes are generated synchronously and returned as a [`Buffer`][]. An error will be thrown if there is a problem generating the bytes.
+Se non viene fornita la funzione `callback`, i byte casuali vengono generati in modo sincrono e restituiti come un [`Buffer`][]. Verrà generato un errore se si verifica un problema nella generazione dei byte.
 
 ```js
-// Synchronous
+// Sincrono
 const buf = crypto.randomBytes(256);
 console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
 ```
 
-The `crypto.randomBytes()` method will not complete until there is sufficient entropy available. This should normally never take longer than a few milliseconds. The only time when generating the random bytes may conceivably block for a longer period of time is right after boot, when the whole system is still low on entropy.
+Il metodo `crypto.randomBytes()` non verrà completato finché non ci sarà sufficiente entropia disponibile. Questo normalmente non dovrebbe mai richiedere più di qualche millisecondo. L'unico momento in cui la generazione dei byte casuali può teoricamente bloccarsi per un periodo di tempo più lungo è subito dopo l'avvio, quando l'intero sistema ha ancora un basso livello di entropia.
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
-The asynchronous version of `crypto.randomBytes()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomBytes` requests when doing so as part of fulfilling a client request.
+La versione asincrona di `crypto.randomBytes()` viene eseguita in una singola richiesta threadpool. Per ridurre al minimo la variazione della lunghezza dell'attività del threadpool, suddividi le richieste di `randomBytes` di grandi dimensioni quando ha senso farlo per soddisfare una client request.
 
 ### crypto.randomFillSync(buffer\[, offset\]\[, size\])
 
@@ -1771,12 +1771,12 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Dev'essere fornito.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
-- Returns: {Buffer}
+- Restituisce: {Buffer}
 
-Synchronous version of [`crypto.randomFill()`][].
+Versione sincrona di [`crypto.randomFill()`][].
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1785,12 +1785,12 @@ console.log(crypto.randomFillSync(buf).toString('hex'));
 crypto.randomFillSync(buf, 5);
 console.log(buf.toString('hex'));
 
-// The above is equivalent to the following:
+// Il codice qui sopra è equivalente al seguente:
 crypto.randomFillSync(buf, 5, 5);
 console.log(buf.toString('hex'));
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Qualsiasi istanza `TypedArray` o `DataView` può essere passata come `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1814,14 +1814,14 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Dev'essere fornito.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
-This function is similar to [`crypto.randomBytes()`][] but requires the first argument to be a [`Buffer`][] that will be filled. It also requires that a callback is passed in.
+Questa funzione è simile a [`crypto.randomBytes()`][] ma richiede che il primo argomento sia un [`Buffer`][] che verrà riempito. Richiede inoltre che venga passato un callback.
 
-If the `callback` function is not provided, an error will be thrown.
+Se non viene fornita la funzione `callback`, verrà generato un errore.
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1835,14 +1835,14 @@ crypto.randomFill(buf, 5, (err, buf) => {
   console.log(buf.toString('hex'));
 });
 
-// The above is equivalent to the following:
+// Il codice qui sopra è equivalente al seguente:
 crypto.randomFill(buf, 5, 5, (err, buf) => {
   if (err) throw err;
   console.log(buf.toString('hex'));
 });
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Qualsiasi istanza `TypedArray` o `DataView` può essere passata come `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1864,9 +1864,9 @@ crypto.randomFill(c, (err, buf) => {
 });
 ```
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
-The asynchronous version of `crypto.randomFill()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomFill` requests when doing so as part of fulfilling a client request.
+La versione asincrona di `crypto.randomFill()` viene eseguita in una singola richiesta threadpool. Per ridurre al minimo la variazione della lunghezza dell'attività del threadpool, suddividi le richieste di `randomFill` di grandi dimensioni quando ha senso farlo per soddisfare una client request.
 
 ### crypto.setEngine(engine[, flags])
 
@@ -1877,11 +1877,11 @@ added: v0.11.11
 - `engine` {string}
 - `flags` {crypto.constants} **Default:** `crypto.constants.ENGINE_METHOD_ALL`
 
-Load and set the `engine` for some or all OpenSSL functions (selected by flags).
+Carica e imposta l'`engine` per alcune o per tutte le funzioni di OpenSSL (selezionate dai flag).
 
-`engine` could be either an id or a path to the engine's shared library.
+L'`engine` potrebbe essere un ID oppure un percorso della libreria dell'engine condivisa.
 
-The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
+L'argomento `flags` opzionale utilizza `ENGINE_METHOD_ALL` come impostazione predefinita. L'argomento `flags` è un campo di bit che prende uno o un insieme dei seguenti flag (definiti all'interno di `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
@@ -1895,7 +1895,7 @@ The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` i
 - `crypto.constants.ENGINE_METHOD_ALL`
 - `crypto.constants.ENGINE_METHOD_NONE`
 
-The flags below are deprecated in OpenSSL-1.1.0.
+I flag qui sotto sono obsoleti su OpenSSL-1.1.0.
 
 - `crypto.constants.ENGINE_METHOD_ECDH`
 - `crypto.constants.ENGINE_METHOD_ECDSA`
@@ -1907,9 +1907,9 @@ The flags below are deprecated in OpenSSL-1.1.0.
 added: v10.0.0
 -->
 
-- `bool` {boolean} `true` to enable FIPS mode.
+- `bool` {boolean} `true` per abilitare la modalità FIPS.
 
-Enables the FIPS compliant crypto provider in a FIPS-enabled Node.js build. Throws an error if FIPS mode is not available.
+Abilita il provider crittografico compatibile con le norme FIPS in un build Node.js abilitato per le norme FIPS. Se la modalità FIPS non è disponibile, genera un errore.
 
 ### crypto.timingSafeEqual(a, b)
 
@@ -1919,52 +1919,52 @@ added: v6.6.0
 
 - `a` {Buffer | TypedArray | DataView}
 - `b` {Buffer | TypedArray | DataView}
-- Returns: {boolean}
+- Restituisce: {boolean}
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Questa funzione è basata su un algoritmo di durata costante. Restituisce true se `a` è uguale a `b`, senza perdite di informazioni temporali che permetterebbero ad un utente malintenzionato di indovinare uno dei valori. E' adatto per confrontare gli HMAC digest o i valori segreti come ad esempio i cookie di autenticazione oppure gli [URL di capacità](https://www.w3.org/TR/capability-urls/).
 
-`a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
+`a` e `b` devono essere entrambi dei `Buffer`, dei `TypedArray` oppure dei `DataView` e devono avere la stessa lunghezza.
 
-Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
+L'utilizzo di `crypto.timingSafeEqual` non garantisce che il codice *circostante* sia protetto nel tempo. Si dovrebbe fare attenzione in modo da garantire che il codice circostante non presenti vulnerabilità temporali.
 
-## Notes
+## Note
 
-### Legacy Streams API (pre Node.js v0.10)
+### Legacy Stream API (pre Node.js v0.10)
 
-The Crypto module was added to Node.js before there was the concept of a unified Stream API, and before there were [`Buffer`][] objects for handling binary data. As such, the many of the `crypto` defined classes have methods not typically found on other Node.js classes that implement the [streams](stream.html) API (e.g. `update()`, `final()`, or `digest()`). Also, many methods accepted and returned `'latin1'` encoded strings by default rather than `Buffer`s. This default was changed after Node.js v0.8 to use [`Buffer`][] objects by default instead.
+Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di Stream API unificata e prima che esistessero i [`Buffer`][] object per la gestione dei dati binari. Pertanto, molte delle classi definite `crypto` hanno metodi che non si trovano in genere su altre classi Node.js che implementano gli [stream](stream.html) API (ad esempio `update()`, `final()`, or `digest()`). Inoltre, molti metodi hanno accettato e restituito stringhe con codifica `'latin1'` di default anziché dei `Buffer`. Questo valore di default è stato modificato dopo Node.js v0.8 per utilizzare i [`Buffer`][] object di default.
 
-### Recent ECDH Changes
+### Recenti Modifiche di ECDH
 
-Usage of `ECDH` with non-dynamically generated key pairs has been simplified. Now, [`ecdh.setPrivateKey()`][] can be called with a preselected private key and the associated public point (key) will be computed and stored in the object. This allows code to only store and provide the private part of the EC key pair. [`ecdh.setPrivateKey()`][] now also validates that the private key is valid for the selected curve.
+E' stato semplificato l'utilizzo di `ECDH` con coppie di chiavi generate in modo non dinamico. Ora [`ecdh.setPrivateKey()`][] può essere chiamato con una chiave privata preselezionata e il public point (key) associato verrà calcolato e memorizzato all'interno dell'object. Ciò consente al codice di memorizzare e fornire solo la parte privata della coppia di chiavi EC. Adesso [`ecdh.setPrivateKey()`][] verifica anche che la chiave privata sia valida per la curva selezionata.
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful. Either a previously stored private key should be set, which automatically generates the associated public key, or [`ecdh.generateKeys()`][] should be called. The main drawback of using [`ecdh.setPublicKey()`][] is that it can be used to put the ECDH key pair into an inconsistent state.
+Adesso il metodo [`ecdh.setPublicKey()`][] è obsoleto poiché la sua inclusione nell'API è inutile. Dovrebbe essere impostata una chiave privata precedentemente archiviata la quale genera automaticamente la chiave pubblica associata oppure dovrebbe essere chiamato [`ecdh.generateKeys()`][]. Lo svantaggio principale dell'utilizzare [`ecdh.setPublicKey()`][] è che può essere usato per mettere la coppia di chiavi ECDH in uno stato incoerente.
 
-### Support for weak or compromised algorithms
+### Supporto per gli algoritmi deboli o compromessi
 
-The `crypto` module still supports some algorithms which are already compromised and are not currently recommended for use. The API also allows the use of ciphers and hashes with a small key size that are considered to be too weak for safe use.
+Il modulo `crypto` supporta ancora alcuni algoritmi già compromessi e il cui utilizzo è attualmente sconsigliato. L'API consente inoltre l'uso di cipher e hash con chiavi di piccole dimensioni considerati troppo deboli per un utilizzo sicuro.
 
-Users should take full responsibility for selecting the crypto algorithm and key size according to their security requirements.
+Gli utenti devono assumersi la piena responsabilità della scelta dell'algoritmo crypto e della dimensione della chiave in base ai propri requisiti di sicurezza.
 
-Based on the recommendations of [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
+In base alle raccomandazioni del documento [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
 
-- MD5 and SHA-1 are no longer acceptable where collision resistance is required such as digital signatures.
-- The key used with RSA, DSA, and DH algorithms is recommended to have at least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to be safe to use for several years.
-- The DH groups of `modp1`, `modp2` and `modp5` have a key size smaller than 2048 bits and are not recommended.
+- MD5 e SHA-1 non sono più accettabili dov'è richiesta la resistenza alle collisioni come ad esempio con le firme digitali.
+- E' consigliato che la chiave utilizzata con gli algoritmi RSA, DSA e DH sia di almeno 2048 bit e quella della curva ECDSA e ECDH di almeno 224 bit, così da avere un'utilizzo sicuro per diversi anni.
+- I gruppi DH di `modp1`, `modp2` e `modp5` hanno chiavi di dimensioni inferiori a 2048 bit e di conseguenza ne è sconsigliato l'utilizzo.
 
-See the reference for other recommendations and details.
+Vedi il riferimento per ulteriori raccomandazioni e dettagli.
 
-### CCM mode
+### Modalità CCM
 
-CCM is one of the two supported [AEAD algorithms](https://en.wikipedia.org/wiki/Authenticated_encryption). Applications which use this mode must adhere to certain restrictions when using the cipher API:
+CCM è uno dei due [algoritmi AEAD](https://en.wikipedia.org/wiki/Authenticated_encryption) supportati. Le applicazioni che utilizzano questa modalità devono rispettare determinate restrizioni quando utilizzano il cipher API:
 
-- The authentication tag length must be specified during cipher creation by setting the `authTagLength` option and must be one of 4, 6, 8, 10, 12, 14 or 16 bytes.
-- The length of the initialization vector (nonce) `N` must be between 7 and 13 bytes (`7 ≤ N ≤ 13`).
-- The length of the plaintext is limited to `2 ** (8 * (15 - N))` bytes.
-- When decrypting, the authentication tag must be set via `setAuthTag()` before specifying additional authenticated data and / or calling `update()`. Otherwise, decryption will fail and `final()` will throw an error in compliance with section 2.6 of [RFC 3610](https://www.rfc-editor.org/rfc/rfc3610.txt).
-- Using stream methods such as `write(data)`, `end(data)` or `pipe()` in CCM mode might fail as CCM cannot handle more than one chunk of data per instance.
-- When passing additional authenticated data (AAD), the length of the actual message in bytes must be passed to `setAAD()` via the `plaintextLength` option. This is not necessary if no AAD is used.
-- As CCM processes the whole message at once, `update()` can only be called once.
-- Even though calling `update()` is sufficient to encrypt / decrypt the message, applications *must* call `final()` to compute and / or verify the authentication tag.
+- La lunghezza dell'authentication tag dev'essere specificata durante la creazione del codice impostando l'opzione `authTagLength` e dev'essere di 4, 6, 8, 10, 12, 14 o 16 byte.
+- La lunghezza del vettore di inizializzazione (nonce) `N` deve essere compresa tra i 7 e i 13 byte (`7 ≤ N ≤ 13`).
+- La lunghezza del plaintext (testo non codificato) è limitata a `2 ** (8 * (15 - N))` byte.
+- Quando si decodifica, l'authentication tag dev'essere impostato tramite `setAuthTag()` prima di specificare gli additional authenticated data (AAD) e/o chiamare `update()`. In caso contrario, la decodifica non avrà successo e `final()` genererà un errore in conformità con la sezione 2.6 del documento [RFC 3610](https://www.rfc-editor.org/rfc/rfc3610.txt).
+- L'utilizzo di metodi stream come `write(data)`, `end(data)` o `pipe()` in modalità CCM potrebbe non avere successo poiché la modalità CCM non può gestire più di un chunk di dati per istanza.
+- Quando vengono passati additional authenticated data (AAD), la lunghezza del messaggio effettivo in byte dev'essere passata a `setAAD()` tramite l'opzione `plaintextLength`. Questo non è necessario se non viene utilizzato nessun AAD.
+- Poiché la modalità CCM elabora l'intero messaggio in una sola volta, `update()` può essere chiamato una sola volta.
+- Anche se chiamare `update()` è sufficiente per codificare/decodificare il messaggio, le applicazioni *devono* chiamare `final()` per calcolare e/o verificare l'authentication tag.
 
 ```js
 const crypto = require('crypto');
@@ -1985,7 +1985,7 @@ const ciphertext = cipher.update(plaintext, 'utf8');
 cipher.final();
 const tag = cipher.getAuthTag();
 
-// Now transmit { ciphertext, nonce, tag }.
+// Adesso trasmetti { ciphertext, nonce, tag }.
 
 const decipher = crypto.createDecipheriv('aes-192-ccm', key, nonce, {
   authTagLength: 16
@@ -2005,61 +2005,59 @@ try {
 console.log(receivedPlaintext);
 ```
 
-## Crypto Constants
+## Costanti Crypto
 
-The following constants exported by `crypto.constants` apply to various uses of the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
+Le seguenti costanti esportate da `crypto.constants` si applicano a vari utilizzi dei moduli `crypto`, `tls` e `https` e sono generalmente specifici per OpenSSL.
 
-### OpenSSL Options
+### Opzioni OpenSSL
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>SSL_OP_ALL</code></td>
-    <td>Applies multiple bug workarounds within OpenSSL. See
-    https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html for
-    detail.</td>
+    <td>Applica molteplici soluzioni alternative ai bug all'interno di OpenSSL. Vedi
+    
+https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html per
+    maggiori dettagli.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</code></td>
-    <td>Allows legacy insecure renegotiation between OpenSSL and unpatched
-    clients or servers. See
-    https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
+    <td>Permette una rinegoziazione legacy non sicura tra OpenSSL ed i client o i server senza patch. Vedi
+    
+https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CIPHER_SERVER_PREFERENCE</code></td>
-    <td>Attempts to use the server's preferences instead of the client's when
-    selecting a cipher. Behavior depends on protocol version. See
+    <td>Cerca di utilizzare le preferenze del server anziché quelle del client quando si seleziona un cipher. Il comportamento dipende dalla versione del protocollo. Vedi
     https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CISCO_ANYCONNECT</code></td>
-    <td>Instructs OpenSSL to use Cisco's "speshul" version of DTLS_BAD_VER.</td>
+    <td>Dà istruzioni a OpenSSL di utilizzare la versione "speshul" di Cisco di DTLS_BAD_VER.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_COOKIE_EXCHANGE</code></td>
-    <td>Instructs OpenSSL to turn on cookie exchange.</td>
+    <td>Dà istruzioni a OpenSSL di attivare lo scambio di cookie.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_CRYPTOPRO_TLSEXT_BUG</code></td>
-    <td>Instructs OpenSSL to add server-hello extension from an early version
-    of the cryptopro draft.</td>
+    <td>Dà istruzioni a OpenSSL di aggiungere un'estensione server-hello da una versione precedente della bozza cryptopro.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS</code></td>
-    <td>Instructs OpenSSL to disable a SSL 3.0/TLS 1.0 vulnerability
-    workaround added in OpenSSL 0.9.6d.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare una soluzione alternativa di vulnerabilità SSL 3.0/TLS 1.0 aggiunta in OpenSSL 0.9.6d.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_EPHEMERAL_RSA</code></td>
-    <td>Instructs OpenSSL to always use the tmp_rsa key when performing RSA
-    operations.</td>
+    <td>Dà istruzioni a OpenSSL di utilizzare sempre la chiave tmp_rsa durante l'esecuzione delle operazioni 
+    RSA.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_LEGACY_SERVER_CONNECT</code></td>
-    <td>Allows initial connection to servers that do not support RI.</td>
+    <td>Consente la connessione iniziale ai server che non supportano RI.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER</code></td>
@@ -2071,8 +2069,7 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_MSIE_SSLV2_RSA_PADDING</code></td>
-    <td>Instructs OpenSSL to disable the workaround for a man-in-the-middle
-    protocol-version vulnerability in the SSL 2.0 server implementation.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare la soluzione alternativa per una vulnerabilità della versione di protocollo man-in-the-middle nell'implementazione del server SSL 2.0.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NETSCAPE_CA_DN_BUG</code></td>
@@ -2092,7 +2089,7 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_NO_COMPRESSION</code></td>
-    <td>Instructs OpenSSL to disable support for SSL/TLS compression.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare il supporto per la compressione SSL/TLS.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_QUERY_MTU</code></td>
@@ -2100,32 +2097,32 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</code></td>
-    <td>Instructs OpenSSL to always start a new session when performing
-    renegotiation.</td>
+    <td>Dà istruzioni a OpenSSL di avviare sempre una nuova sessione quando si esegue la 
+    rinegoziazione.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SSLv2</code></td>
-    <td>Instructs OpenSSL to turn off SSL v2</td>
+    <td>Dà istruzioni a OpenSSL di disattivare SSL v2</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SSLv3</code></td>
-    <td>Instructs OpenSSL to turn off SSL v3</td>
+    <td>Dà istruzioni a OpenSSL di disattivare SSL v3</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TICKET</code></td>
-    <td>Instructs OpenSSL to disable use of RFC4507bis tickets.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare l'uso dei ticket RFC4507bis.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1_1</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1.1</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.1</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_TLSv1_2</code></td>
-    <td>Instructs OpenSSL to turn off TLS v1.2</td>
+    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.2</td>
   </tr>
     <td><code>SSL_OP_PKCS1_CHECK_1</code></td>
     <td></td>
@@ -2136,13 +2133,13 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_SINGLE_DH_USE</code></td>
-    <td>Instructs OpenSSL to always create a new key when using
-    temporary/ephemeral DH parameters.</td>
+    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
+    i parametri DH temporanei/effimeri.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_SINGLE_ECDH_USE</code></td>
-    <td>Instructs OpenSSL to always create a new key when using
-    temporary/ephemeral ECDH parameters.</td>
+    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
+    i parametri ECDH temporanei/effimeri.</td>
   </tr>
     <td><code>SSL_OP_SSLEAY_080_CLIENT_DH_BUG</code></td>
     <td></td>
@@ -2161,52 +2158,52 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>SSL_OP_TLS_ROLLBACK_BUG</code></td>
-    <td>Instructs OpenSSL to disable version rollback attack detection.</td>
+    <td>Dà istruzioni a OpenSSL di disabilitare il rilevamento degli attacchi di rollback della versione.</td>
   </tr>
 </table>
 
-### OpenSSL Engine Constants
+### Costanti Engine OpenSSL
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RSA</code></td>
-    <td>Limit engine usage to RSA</td>
+    <td>Limita l'utilizzo dell'engine a RSA</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DSA</code></td>
-    <td>Limit engine usage to DSA</td>
+    <td>Limita l'utilizzo dell'engine a DSA</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DH</code></td>
-    <td>Limit engine usage to DH</td>
+    <td>Limita l'utilizzo dell'engine a DH</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RAND</code></td>
-    <td>Limit engine usage to RAND</td>
+    <td>Limita l'utilizzo dell'engine a RAND</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_EC</code></td>
-    <td>Limit engine usage to EC</td>
+    <td>Limita l'utilizzo dell'engine a EC</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_CIPHERS</code></td>
-    <td>Limit engine usage to CIPHERS</td>
+    <td>Limita l'utilizzo dell'engine a CIPHERS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_DIGESTS</code></td>
-    <td>Limit engine usage to DIGESTS</td>
+    <td>Limita l'utilizzo dell'engine a DIGESTS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_PKEY_METHS</code></td>
-    <td>Limit engine usage to PKEY_METHDS</td>
+    <td>Limita l'utilizzo dell'engine a PKEY_METHDS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_PKEY_ASN1_METHS</code></td>
-    <td>Limit engine usage to PKEY_ASN1_METHS</td>
+    <td>Limita l'utilizzo dell'engine a PKEY_ASN1_METHS</td>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_ALL</code></td>
@@ -2218,12 +2215,12 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
 </table>
 
-### Other OpenSSL Constants
+### Altre Costanti OpenSSL
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>DH_CHECK_P_NOT_SAFE_PRIME</code></td>
@@ -2271,18 +2268,18 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_DIGEST</code></td>
-    <td>Sets the salt length for `RSA_PKCS1_PSS_PADDING` to the digest size
-        when signing or verifying.</td>
+    <td>Imposta la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` nella dimensione del digest 
+        al momento della firma o della verifica.</td>
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_MAX_SIGN</code></td>
-    <td>Sets the salt length for `RSA_PKCS1_PSS_PADDING` to the maximum
-        permissible value when signing data.</td>
+    <td>Imposta la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` sul valore massimo 
+        consentito durante la firma dei dati.</td>
   </tr>
   <tr>
     <td><code>RSA_PSS_SALTLEN_AUTO</code></td>
-    <td>Causes the salt length for `RSA_PKCS1_PSS_PADDING` to be determined
-        automatically when verifying a signature.</td>
+    <td>Fa sì che la lunghezza del salt per `RSA_PKCS1_PSS_PADDING` sia determinata 
+        automaticamente quando si verifica una firma.</td>
   </tr>
   <tr>
     <td><code>POINT_CONVERSION_COMPRESSED</code></td>
@@ -2298,20 +2295,20 @@ The following constants exported by `crypto.constants` apply to various uses of 
   </tr>
 </table>
 
-### Node.js Crypto Constants
+### Costanti Crypto Node.js
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>defaultCoreCipherList</code></td>
-    <td>Specifies the built-in default cipher list used by Node.js.</td>
+    <td>Specifica l'elenco cipher predefinito incorporato utilizzato da Node.js.</td>
   </tr>
   <tr>
     <td><code>defaultCipherList</code></td>
-    <td>Specifies the active default cipher list used by the current Node.js
-    process.</td>
+    <td>Specifica l'elenco cipher predefinito attivo utilizzato dall'attuale
+    processo Node.js.</td>
   </tr>
 </table>

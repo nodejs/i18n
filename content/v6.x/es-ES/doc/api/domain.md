@@ -234,7 +234,7 @@ Run the supplied function in the context of the domain, implicitly binding all e
 
 This is the most basic way to use a domain.
 
-Example:
+Ejemplo:
 
 ```js
 const domain = require('domain');

@@ -11,16 +11,16 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 ## Quince minutos antes de la sesión de orientación
 
 * Antes de la sesión de orientación, agregar al nuevo Colaborador al [Equipo de Colaboradores](https://github.com/orgs/nodejs/teams/collaborators).
-* Pregúnteles si quieren unirse a algún equipo de subsistema. Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Pregúnteles si quieren unirse a algún equipo de subsistema. Consulte [A quien CC en el sistema de seguimiento de incidentes](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
 ## Sesión de orientación
 
 * Esta sesión cubrirá: 
   * [configuración local](#local-setup)
   * [objetivos & valores del proyecto](#project-goals--values)
-  * [gestionando el issue tracker](#managing-the-issue-tracker)
+  * [gestionar el sistema de seguimiento de incidentes](#managing-the-issue-tracker)
   * [revisión de PRs](#reviewing-prs)
-  * [PRs recibidos](#landing-prs)
+  * [aterrizar PRs](#landing-prs)
 
 ## Configuración local
 
@@ -42,7 +42,7 @@ apply.whitespace fix`
 * `#node-dev` en [webchat.freenode.net](https://webchat.freenode.net/) es el mejor lugar para interactuar con el TSC / otros Colaboradores
   
   * Si hay alguna pregunta después de la sesión, ¡un buen lugar para preguntar es ahí!
-  * La presencia no es obligatoria, pero por favor, deje una nota allí si presiona a la fuerza a `master`
+  * La presencia no es obligatoria, pero, por favor, deje una nota allí si hace push a la fuerza hacia `master`
 
 ## Objetivos & valores del proyecto
 
@@ -54,29 +54,29 @@ apply.whitespace fix`
   
   * La empatía hacía los usuarios es importante (esto es en parte la razón por la que orientamos a las personas)
   * En general: ¡intente ser amable con las personas!
-  * El mejor resultado es para personas que vienen a nuestro issue tracker para sentir que pueden volver.
+  * El mejor resultado es que las personas que vengan a nuestro sistema de seguimiento de incidentes sientan que pueden volver.
 
 * Se espera que siga *y* responsabilice a los demás ante el [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Gestionando el issue tracker
+## Gestionar el sistema de seguimiento de incidentes
 
 * Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
-  * ¡Se amable acerca de los issues de cierre! Deje que las personas sepan por qué, y que issues y PRs pueden ser reabiertos si es necesario
+  * ¡Sea amable en cuanto al cierre de incidentes! Deje que las personas sepan por qué, y que incidentes y PRs pueden ser reabiertos si es necesario
 
 * [**Ver "Etiquetas"**](./onboarding-extras.md#labels)
   
-  * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, or `buffer`) para que sepamos en que partes del código se basan las modificaciones del pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los issues.
-  * Utilice la etiqueta `tsc-review` si un tópico es controvertido o no llega a una conclusión después de un tiempo prolongado.
+  * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, o `buffer`) para que sepamos qué partes del código base modifica el pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los incidentes.
+  * Utilice la etiqueta `tsc-review` si un tema es controvertido o no llega a una conclusión después de un tiempo prolongado.
   * `semver-{minor,major}`: 
     * Si un cambio tiene la *posibilidad* remota de romper algo, utilice la etiqueta `semver-major`
-    * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando porqué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
+    * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando por qué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
   * Por favor, agregue la etiqueta `author-ready` para PRs donde: 
     * el CI ha comenzado (no necesariamente terminado),
     * no existen comentarios pendientes para revisión y
     * al menor un colaborados aprobó el PR.
 
-* Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Consulte [A quien CC en el sistema de seguimiento de incidentes](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Esto vendrá más naturalmente con el tiempo
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
@@ -112,7 +112,7 @@ apply.whitespace fix`
   * Cuando utilice explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
     * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
-    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR se reciba.
+    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR sea aterrizado.
 
 * Lo que pertenece en Node.js:
   
@@ -128,19 +128,19 @@ apply.whitespace fix`
   * Iniciar sesión en la CI está integrado con GitHub. ¡Intente iniciar sesión ahora!
   * Utilizará `node-test-pull-request` la mayor parte del tiempo. ¡Vaya allí ahora! 
     * Considere marcarlo: https://ci.nodejs.org/job/node-test-pull-request/
-  * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
+  * Para obtener el formulario para iniciar un trabajo, haga clic en `Construir con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
   * Para iniciar la prueba de CI desde esta pantalla, necesita rellenar dos elementos en el formulario: 
     * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
     * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
-    * Los elementos restantes en el formulario generalmente no cambian con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
+    * Los elementos restantes en el formulario generalmente no cambian, con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
   * Si necesita ayuda con algo relacionado con CI: 
     * Utilice #node-dev (IRC) para hablar con otros Colaboradores.
     * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
     * Utilice el [repo Crear WG](https://github.com/nodejs/build) para issues de archivos para los miembros de Crear WG que mantienen la infraestructura de CI.
 
-## PRs recibidos
+## Aterrizar PRs
 
-Consulte la Guía del Colaborador: [Pull Requests Recibidos](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+Consulte la Guía del Colaborador: [Aterrizar Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
 Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico deben ser aplastados. Rara vez es el caso de los ejercicios de orientación, por lo que esto debe ser señalado por separado durante la orientación.
 
@@ -152,12 +152,12 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
   * Para el mensaje de commit sin procesar: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Los colaboradores están ordenados alfabéticamente por el nombre de usuario de GitHub.
-* Opcionalmente, incluye sus pronombres personales.
+* Opcionalmente, incluya sus pronombres personales.
 * Etiquete su pull request con la etiqueta de subsistema `doc`.
-* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
-* Después de una o dos aprobaciones, reciba el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
+* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado el linter y otra subtarea.
+* Después de una o dos aprobaciones, aterrice el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
   * Asegúrese de añadir el `PR-URL: <full-pr-url>` y los metadatos correspondientes `Reviewed-By:`.
-  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de recepción. Consulte la documentación de [`git-node`][].
+  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de aterrizaje. Consulte la documentación de [`git-node`][].
   * [`core-validate-commit`][] automatiza la validación de mensajes de commit. Esto se ejecutará durante `git node land --final` del comando [`git-node`][].
 
 ## Notas Finales
@@ -172,4 +172,4 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc. si es necesario. Eche un vistazo al repositorio de [cumbre](https://github.com/nodejs/summit) para más detalles.
+* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc., si es necesario. Eche un vistazo al repositorio de [summit](https://github.com/nodejs/summit) para más detalles.

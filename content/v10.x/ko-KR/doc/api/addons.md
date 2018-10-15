@@ -1,4 +1,4 @@
-# C++ 애드온
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 
@@ -14,7 +14,7 @@ Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객
 
 * Node.js 내장 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js는 OpenSSL같은 정적으로 링크된 라이브러리들을 포함 하고 있습니다. 이러한 외부라이브러리들은 Node.js 소스트리의 `deps/` 디렉토리내에 위치합니다. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -55,20 +55,20 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+모든 Node.js Addon들은 다음과 같은 초기화 함수를 사용해야합니다.
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+함수가 아니기때문에 `NODE_MODULE` 뒤에는 세미콜론은 붙이지 않습니다. (`node.h` 참고).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+`module_name` 최종 실행파일의 파일이름과 일치해야만 합니다. (`.node` 로 끝나는 파일 제외).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+`hello.cc` 예제를 보면, 초기화함수는 `init` 이고 Addon module 이름은 `addon` 임을 확인 할 수 있습니다..
 
-### Building
+### 빌드
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 

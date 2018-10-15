@@ -35,32 +35,32 @@ Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli 
 
 *uwaga: każde pole będzie określane jako "faza" pętli zdarzeń.*
 
-Każda faza ma kolejkę wywołania zwrotnego FIFO do wykonania. While each phase is special in its own way, generally, when the event loop enters a given phase, it will perform any operations specific to that phase, then execute callbacks in that phase's queue until the queue has been exhausted or the maximum number of callbacks has executed. When the queue has been exhausted or the callback limit is reached, the event loop will move to the next phase, and so on.
+Każda faza ma kolejkę wywołania zwrotnego FIFO do wykonania. Podczas gdy każda faza jest wyjątkowa na swój sposób, ogólnie, gdy pętla zdarzeń wchodzi w daną fazę W takim wypadku wykona ona wszystkie operacje właściwe dla tej fazy, następnie wykona wywołania zwrotne w kolejce tej fazy, aż do momentu gdy kolejka wyczerpie się lub zostanie wykonana maksymalna liczba wywołań zwrotnych. Kiedy kolejka została wyczerpana lub osiągnięto limit wywołań zwrotnych, pętla zdarzeń przejdzie do następnej fazy i tak dalej.
 
-Since any of these operations may schedule *more* operations and new events processed in the **poll** phase are queued by the kernel, poll events can be queued while polling events are being processed. As a result, long running callbacks can allow the poll phase to run much longer than a timer's threshold. See the [**timers**](#timers) and [**poll**](#poll) sections for more details.
+Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych zdarzeń przetwarzanych w **ankieta** są ustawiane w kolejce przez jądro, ankieta zdarzeń może stać w kolejce, podczas gdy zdarzenia ankietowania są przetwarzane. Jak W rezultacie długotrwałe wywoływania zwrotne mogą znacznie przyspieszyć fazę odpytywania dłużej niż próg timera. Zobacz [**timery**](#timers) i **odpytywanie</​​1>, aby uzyskać więcej informacji.</p> 
 
-***NOTE:** There is a slight discrepancy between the Windows and the Unix/Linux implementation, but that's not important for this demonstration. The most important parts are here. There are actually seven or eight steps, but the ones we care about — ones that Node.js actually uses - are those above.*
+***UWAGA:** Występuje niewielka rozbieżność między Windowsem i Implementacją systemu Unix/Linux, ale to nie ma znaczenia dla tej demonstracji. Najważniejsze części są tutaj. Istnieje faktycznie siedem albo osiem kroków, ale te którymi się przejmujemy - te które obecnie wykorzystuje - są powyżej.*
 
 ## Przegląd Faz
 
-* **timers**: this phase executes callbacks scheduled by `setTimeout()` and `setInterval()`.
-* **I/O callbacks**: executes almost all callbacks with the exception of close callbacks, the ones scheduled by timers, and `setImmediate()`.
-* **idle, prepare**: only used internally.
-* **poll**: retrieve new I/O events; node will block here when appropriate.
-* **check**: `setImmediate()` callbacks are invoked here.
-* **close callbacks**: e.g. `socket.on('close', ...)`.
+* **timery**: faza ta wykonuje wywołania zwrotne zaplanowane przez `ustawKoniecCzasu()`i `ustawiinterwał()`.
+* **Wej/Wyj wywołania zwrotne**: wykonuje prawie wszystkie wywołania zwrotne z wyjątkiem zamkniętych wywołań zwrotnych, te zaplanowane przez timery i `ustawnatychmiastowo()`.
+* **bezczynność, przygotuj**: używane tylko wewnętrznie.
+* **odpytywanie**: odzyskaj nowe zdarzenia Wej/Wyj; węzeł zostanie tutaj zablokowany, gdy będzie to właściwe.
+* **sprawdź**: `ustawNatychmiastowo()` wywołania zwrotne są wywoływane tutaj.
+* **zamknięte wywołania zwrotne**: np `socket.on('zamknij',...)`.
 
-Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.
+Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dowolne asynchroniczne operacje wej/wyj lub timerów i wyłącza się, jeśli nie.
 
 ## Fazy w Szczegółach
 
-### timers
+### timery
 
-A timer specifies the **threshold** *after which* a provided callback *may be executed* rather than the **exact** time a person *wants it to be executed*. Timers callbacks will run as early as they can be scheduled after the specified amount of time has passed; however, Operating System scheduling or the running of other callbacks may delay them.
+Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Połączenia zwrotne timerów działają tak wcześnie, jak tylko mogą zaplanowane po upływie określonego czasu; jednak, planowanie Systemu Operacyjnego lub uruchamianie innych wywołań zwrotnych może się opóźnić im.
 
-***Note**: Technically, the [**poll** phase](#poll) controls when timers are executed.*
+***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll)kontroluje timery, które są wykonywane.*
 
-For example, say you schedule a timeout to execute after a 100 ms threshold, then your script starts asynchronously reading a file which takes 95 ms:
+Na przykład powiedzmy, że planujesz czas oczekiwania na wykonanie po próg 100 ms, wtedy twój skrypt zaczyna asynchronicznie odczytywać plik, który trwa 95 ms:
 
 ```js
 const fs = require('fs');
@@ -93,36 +93,36 @@ someAsyncOperation(function() {
 });
 ```
 
-When the event loop enters the **poll** phase, it has an empty queue (`fs.readFile()` has not completed), so it will wait for the number of ms remaining until the soonest timer's threshold is reached. While it is waiting 95 ms pass, `fs.readFile()` finishes reading the file and its callback which takes 10 ms to complete is added to the **poll** queue and executed. When the callback finishes, there are no more callbacks in the queue, so the event loop will see that the threshold of the soonest timer has been reached then wrap back to the **timers** phase to execute the timer's callback. In this example, you will see that the total delay between the timer being scheduled and its callback being executed will be 105ms.
+Kiedy pętla zdarzeń wchodzi w fazę **odpytywania**, ma pustą kolejkę (`fs.readFile()` nie zostało zakończone), więc będzie czekać na liczbę ms pozostałych do ​​osiągnięcia progu jak najszybszego timera. Podczas gdy jest oczekiwanie 95 ms przejścia, `fs.readFile()` kończy czytanie pliku i jego wywołanie zwrotne, które trwa 10 ms, jest dodawane do kolejki **odpytywania** i wykonany. Po zakończeniu wywołania zwrotnego nie ma więcej wywołań zwrotnych w kolejce, więc pętla zdarzeń zobaczy, że próg najwcześniejszego timera został osiągnięty, a następnie zawinięty do fazy ** timerów** w celu wykonania wywołania zwrotnego timera. W tym przykładzie zobaczysz całkowite opóźnienie pomiędzy zaplanowanym timerem a jego wywoływaniem zwrotnym wykonywanym przez 105ms.
 
-Note: To prevent the **poll** phase from starving the event loop, \[libuv\] (http://libuv.org/) (the C library that implements the Node.js event loop and all of the asynchronous behaviors of the platform) also has a hard maximum (system dependent) before it stops polling for more events.
+Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli zdarzeń, \[libuv\] (http://libuv.org/) (biblioteka C, która implementuje Node.js pętlę zdarzeń i wszystkie asynchroniczne zachowania platformy) ma również twarde maksimum (zależne od systemu), zanim przestanie odpytywać dla większej ilości wydarzeń.
 
-### I/O callbacks
+### Wej/Wyj wywołania zwrotne
 
-This phase executes callbacks for some system operations such as types of TCP errors. For example if a TCP socket receives `ECONNREFUSED` when attempting to connect, some \*nix systems want to wait to report the error. This will be queued to execute in the **I/O callbacks** phase.
+Ta faza wykonuje wywołania zwrotne dla niektórych operacji systemowych, takich jak typy błędów TCP. Na przykład, jeśli gniazdo TCP otrzymuje `POŁĄCZENIE ODRZUCONE` kiedy próbując się połączyć, niektóre systemy \* nix chcą czekają na zgłoszenie błędu. Zostanie on umieszczony w kolejce do wykonania w fazie **wywołania zwrotne**.
 
-### poll
+### odpytywanie
 
-The **poll** phase has two main functions:
+Faza **odpytywania** ma dwie główne funkcje:
 
-1. Executing scripts for timers whose threshold has elapsed, then
-2. Processing events in the **poll** queue.
+1. Wykonywanie skryptów dla timerów, których próg upłynął, a następnie
+2. Przetwarzanie zdarzeń w kolejce **odpytywania **.
 
-When the event loop enters the **poll** phase *and there are no timers scheduled*, one of two things will happen:
+Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych timerów *, nastąpi jedna z dwóch rzeczy:
 
-* *If the **poll** queue **is not empty***, the event loop will iterate through its queue of callbacks executing them synchronously until either the queue has been exhausted, or the system-dependent hard limit is reached.
+* *jeśli **kolejka**odpytywania**nie jest pusta***, pętla zdarzeń zostanie powtórzona poprzez kolejkę wywołań zwrotnych, synchronicznie do czasu albo kolejka została wyczerpana, albo zależny od systemu surowy limit został osiągnięty.
 
-* *If the **poll** queue **is empty***, one of two more things will happen:
+* *jeśli **kolejka**odpytywania**jest pusta***, staną się jedna lub dwie rzeczy:
     
-    * If scripts have been scheduled by `setImmediate()`, the event loop will end the **poll** phase and continue to the **check** phase to execute those scheduled scripts.
+    * Jeśli skrypty zostały zaplanowane przez `setImmediate()`, pętla zdarzeń zakończy fazę **odpytywania** i przejdzie do etapu **sprawdzenia** by wykonać te zaplanowane skrypty.
     
-    * If scripts **have not** been scheduled by `setImmediate()`, the event loop will wait for callbacks to be added to the queue, then execute them immediately.
+    * Jeśli skrypty **nie zostały** zaplanowane przez `ustawNatychmiastowo()`, to pętla zdarzeń będzie czekać na dodanie wywołań zwrotnych do kolejki, następnie wykona je natychmiast.
 
-Once the **poll** queue is empty the event loop will check for timers *whose time thresholds have been reached*. If one or more timers are ready, the event loop will wrap back to the **timers** phase to execute those timers' callbacks.
+Gdy kolejka **odpytywania** jest pusta, pętla zdarzeń sprawdzi timery *których progi czasowe zostały osiągnięte *. Jeśli jest jeden lub więcej timerów jest gotowy, pętla zdarzeń powróci do fazy **timery**, aby wykonać wywołania zwrotne tych zegarów.
 
-### check
+### sprawdzenie
 
-This phase allows a person to execute callbacks immediately after the **poll** phase has completed. If the **poll** phase becomes idle and scripts have been queued with `setImmediate()`, the event loop may continue to the **check** phase rather than waiting.
+Ta faza pozwala osobie wykonać wywołania zwrotne natychmiast po zakończeniu fazy **odpytywania**. Jeśli faza **odpytywania** stanie się bezczynna i skrypty zostały umieszczone w kolejce z `ustawNatychmiastowo()`, pętla zdarzeń może przejść do fazy **sprawdzenia**, zamiast czekać.
 
 `setImmediate()` is actually a special timer that runs in a separate phase of the event loop. It uses a libuv API that schedules callbacks to execute after the **poll** phase has completed.
 

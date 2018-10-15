@@ -1,4 +1,4 @@
-# Inspector
+# 检查器
 
 <!--introduced_in=v8.0.0-->
 

@@ -51,24 +51,24 @@ Para hacer la creación de instancias `Buffer` más confiable y menos propensa a
 
 *Los desarrolladores deben migrar todos los usos existentes de los constructores `new Buffer()` a una de estas APIs nuevas.*
 
-* [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` containing a *copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` containing a *copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a "filled" `Buffer` instance of the specified size. This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures that newly created `Buffer` instances never contain old and potentially sensitive data.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new `Buffer` of the specified `size` whose content *must* be initialized using either [`buf.fill(0)`][`buf.fill()`] or written to completely.
+* [`Buffer.from(array)`] devuelve un nuevo `Buffer` que contiene una *copia* de los octetos proporcionados.
+* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] devuelve un nuevo `Buffer` que *comparte* la misma memoria asignada como el [`ArrayBuffer`] dado.
+* [`Buffer.from(buffer)`] devuelve un nuevo `Buffer` que contiene una *copia* de los contenidos del `Buffer` dado.
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] devuelve un nuevo `Buffer` que contiene una *copia* de la string proporcionada.
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] devuelve una instancia `Buffer` "llena" del tamaño especificado. Este método puede ser significativamente más lento que [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] pero asegura que las nuevas instancias `Buffer` creadas nunca contengan datos viejos y potencialmente sensibles.
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] cada uno devuelve un nuevo `Buffer` del `size` especificado, cuyo contenido *debe* ser inicializado usando ya sea [`buf.fill(0)`][`buf.fill()`] o escrito por completo.
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+Las instancias de `Buffer` devueltas por [`Buffer.allocUnsafe()`] *pueden* ser asignadas fuera de una agrupación de memoria interna compartida si `size` es menor o igual que la mitad [`Buffer.poolSize`]. Las instancias devueltas por [`Buffer.allocUnsafeSlow()`] *nunca* usan la agrupación de memoria interna compartida.
 
-### The `--zero-fill-buffers` command line option
+### La opción de línea de comando `--zero-fill-buffers`
 
 <!-- YAML
 added: v5.10.0
 -->
 
-Node.js can be started using the `--zero-fill-buffers` command line option to force all newly allocated `Buffer` instances created using either `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`] or `new SlowBuffer(size)` to be *automatically zero-filled* upon creation. Use of this flag *changes the default behavior* of these methods and *can have a significant impact* on performance. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain potentially sensitive data.
+Node.js puede ser iniciado usando la opción de línea de comando `--zero-fill-buffers` para forzar todas las nuevas instancias `Buffer` asignadas creadas usando ya sea `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`] o `new SlowBuffer(size)` a ser *automáticamente zero-filled* sobre la creación. El uso de esta bandera *cambia el comportamiento predeterminado* de estos métodos y *puede tener un impacto significativo* en el rendimiento. Se recomienda el uso de la opción `--zero-fill-buffers` solo cuando sea necesario para imponer que las nuevas instancias `Buffer` no puedan contener datos potencialmente sensibles.
 
-Example:
+Ejemplo:
 
 ```txt
 $ node --zero-fill-buffers
@@ -76,13 +76,13 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### What makes `Buffer.allocUnsafe()` and `Buffer.allocUnsafeSlow()` "unsafe"?
+### ¿Qué hace `Buffer.allocUnsafe()` y `Buffer.allocUnsafeSlow()`"inseguros"?
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). While this design makes the allocation of memory quite fast, the allocated segment of memory might contain old data that is potentially sensitive. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+Cuando se llama a [`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow()`], el segmento de la memoria asignada está *sin inicializar*, (no está zeroed-out). Mientras que este diseño hace que la asignación de memoria sea bastante rápida, el segmento asignado de la memoria puede contener datos viejos que son potencialmente sensibles. Usar un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria puede permitir que estos datos viejos se filtren cuando la memoria del `Buffer` es leída.
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+Si bien hay claras ventajas de rendimiento al usar [`Buffer.allocUnsafe()`], se *debe* tener mucho cuidado para así evitar introducir vulnerabilidades de seguridad a una aplicación.
 
-## Buffers and Character Encodings
+## Buffers y Codificaciones de Caracteres
 
 <!-- YAML
 changes:
@@ -95,41 +95,41 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
+`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. Es posible convertir una y otra vez entre instancias de `Buffer` y strings ordinarias de JavaScript utilizando una codificación de caracteres explícita.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
 
-// Prints: 68656c6c6f20776f726c64
+// Imprime: 68656c6c6f20776f726c64
 console.log(buf.toString('hex'));
 
-// Prints: aGVsbG8gd29ybGQ=
+// Imprime: aGVsbG8gd29ybGQ=
 console.log(buf.toString('base64'));
 ```
 
-The character encodings currently supported by Node.js include:
+Las codificaciones de caracteres soportados actualmente por Node.js incluyen:
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - Solo para datos ASCII de 7-bit. Esta codificación es rápida y eliminará el bit alto si se establece.
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
+* `'utf8'` - Multibyte codificado en caracteres Unicode. Muchas páginas web y otros formatos de documento utilizan UTF-8.
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
+* `'utf16le'` - 2 o 4 bytes, caracteres Unicode codificados como little-endian. Los pares sustitutos (U+10000 to U+10FFFF) son soportados.
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'` - Alias de `'utf16le'`.
 
-* `'base64'` - Base64 encoding. When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
+* `'base64'` - Codificación Base64. Al crear un `Buffer` desde una string, esta codificación también aceptará correctamente "URL y nombre de archivo Safe Alphabet" como es especificado en [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - Una forma de codificar el `Buffer` en una cadena codificada de un byte (como es definido por la IANA en [RFC1345](https://tools.ietf.org/html/rfc1345), página 63, para ser el bloque de suplemento Latin-1 y los códigos de control C0 / C1).
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'` - Alias para `'latin1'`.
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
 *Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both 'latin1' and ISO-8859-1 to win-1252. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned win-1252-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
 
-## Buffers and TypedArray
+## Buffers y TypedArray
 
 <!-- YAML
 changes:
@@ -139,17 +139,17 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with the TypedArray specification in [`ECMAScript 2015`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+Instancias de `Buffer` también son instancias de [`Uint8Array`]. Sin embargo, hay incompatibilidades sutiles con la especificación TypedArray en [`ECMAScript 2015`]. Por ejemplo, mientras que [`ArrayBuffer#slice()`] crea una copia de la porción, la implementación de [`Buffer#slice()`][`buf.slice()`] crea una vista sobre los `Buffer` existentes sin copiar, hacer [`Buffer#slice()`][`buf.slice()`] mucho más eficiente.
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` con las siguientes advertencias:
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. La memoria del objeto `Buffer` se copia al [`TypedArray`], no es compartida.
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del objeto `Buffer` es interpretada como un array de distintos elementos, y no como un array, no como un array de bytes del tipo de destino. Es decir, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un elemento 4[`Uint32Array`] con elementos `[1, 2, 3, 4]`, no un [`Uint32Array`] con un solo elemento `[0x1020304]` o `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the TypeArray object's `.buffer` property.
+Es posible crear un nuevo `Buffer` que comparta la misma memoria asignada como un instancia [`TypedArray`] utilizando la propiedad `.buffer` del objeto TypeArray.
 
-Example:
+Ejemplo:
 
 ```js
 const arr = new Uint16Array(2);
@@ -157,60 +157,60 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Copies the contents of `arr`
+// Copia los contenidos de `arr`
 const buf1 = Buffer.from(arr);
 
-// Shares memory with `arr`
+// Comparte la memoria con `arr`
 const buf2 = Buffer.from(arr.buffer);
 
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf1);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf2);
 
 arr[1] = 6000;
 
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf1);
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf2);
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+Note que al crear un `Buffer` usando un [`TypedArray`]'s `.buffer`, es posible usar solo una porción del [`ArrayBuffer`] subyacente pasando parámetros en `byteOffset` y `length`.
 
-Example:
+Ejemplo:
 
 ```js
 const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
-// Prints: 16
+// Imprime: 16
 console.log(buf.length);
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Específicamente, las variantes de [`TypedArray`] aceptan un segundo argumento que es una función de mapeo que es invocada en cada elemento del array indicado:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+El método `Buffer.from()`, sin embargo, no permite el uso de una función de mapeo:
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and ES6 iteration
+## Buffers e Iteración ES6
 
-`Buffer` instances can be iterated over using the [`ECMAScript 2015`] (ES6) `for..of` syntax.
+Instancias de `Buffer` pueden ser iteradas sobre la sintaxis [`ECMAScript 2015`] (ES6) `for..of`.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Imprime:
 //   1
 //   2
 //   3
@@ -219,11 +219,11 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+Adicionalmente, los métodos [`buf.values()`], [`buf.keys()`], y [`buf.entries()`] pueden ser usados para crear iteradores.
 
-## Class: Buffer
+## Clase: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Puede ser construida de varias maneras.
 
 ### new Buffer(array)
 
@@ -239,13 +239,13 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> Estabilidad: 0 - Desaprobada: Use [`Buffer.from(array)`] en su lugar.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} Un array de bytes del cual copiarse.
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` usando un `array` de octetos.
 
-Example:
+Ejemplo:
 
 ```js
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
@@ -280,7 +280,7 @@ This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copy
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
-Example:
+Ejemplo:
 
 ```js
 const arr = new Uint16Array(2);
@@ -321,7 +321,7 @@ changes:
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
-Example:
+Ejemplo:
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -361,7 +361,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = new Buffer(10);
@@ -427,7 +427,7 @@ changes:
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5);
@@ -440,7 +440,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5, 'a');
@@ -451,7 +451,7 @@ console.log(buf);
 
 If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
@@ -481,7 +481,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -517,7 +517,7 @@ When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocati
 
 However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
 
-Example:
+Ejemplo:
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -563,7 +563,7 @@ Returns the actual byte length of a string. This is not the same as [`String.pro
 
 *Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
 
-Example:
+Ejemplo:
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -592,7 +592,7 @@ changes:
 
 Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
-Example:
+Ejemplo:
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -655,9 +655,9 @@ added: v5.10.0
 
 * `array` {Array}
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` usando un `array` de octetos.
 
-Example:
+Ejemplo:
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
@@ -678,7 +678,7 @@ added: v5.10.0
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
-Example:
+Ejemplo:
 
 ```js
 const arr = new Uint16Array(2);
@@ -701,7 +701,7 @@ console.log(buf);
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
-Example:
+Ejemplo:
 
 ```js
 const ab = new ArrayBuffer(10);
@@ -723,7 +723,7 @@ added: v5.10.0
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
-Example:
+Ejemplo:
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -1236,7 +1236,7 @@ added: v1.1.0
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1882,7 +1882,7 @@ added: v0.9.2
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
@@ -1997,7 +1997,7 @@ added: v0.1.90
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
 
-Example:
+Ejemplo:
 
 ```js
 const buf = Buffer.allocUnsafe(256);
@@ -2401,7 +2401,7 @@ In order to avoid the garbage collection overhead of creating many individually 
 
 In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
 
-Example:
+Ejemplo:
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -2436,7 +2436,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
-Example:
+Ejemplo:
 
 ```js
 const { SlowBuffer } = require('buffer');

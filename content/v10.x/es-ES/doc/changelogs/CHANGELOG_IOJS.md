@@ -355,20 +355,20 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 
 Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
 
-* Algunso problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
 * El part sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras que una consulta DNS todavía están en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
 * `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
-* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: trabajar alrededor del problema VS2015 en ICU <56 (steven r. loomis) [#2283](https://github.com/nodejs/node/pull/2283)
-* [[`1f12e03266`](https://github.com/nodejs/node/commit/1f12e03266)] - **(SEMVER-MINOR)** **build**: converger desde joyent/node (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264)
+* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: solucionar problema VS2015 en ICU <56 (steven r. loomis) [#2283](https://github.com/nodejs/node/pull/2283)
+* [[`1f12e03266`](https://github.com/nodejs/node/commit/1f12e03266)] - **(SEMVER-MINOR)** **build**: intl: converger desde joyent/node (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264)
 * [[`071640abdd`](https://github.com/nodejs/node/commit/071640abdd)] - **build**: Intl: bump ICU4C from 54 to 55 (Steven R. Loomis) [#2293](https://github.com/nodejs/node/pull/2293)
 * [[`07a88b0c8b`](https://github.com/nodejs/node/commit/07a88b0c8b)] - **build**: actualizar manifesto para incluir Windows 10 (Lucien Greathouse) [#2332](https://github.com/nodejs/io.js/pull/2332)
 * [[`0bb099f444`](https://github.com/nodejs/node/commit/0bb099f444)] - **build**: expand ~ in install prefix early (Ben Noordhuis) [#2307](https://github.com/nodejs/io.js/pull/2307)
-* [[`7fe6dd8f5d`](https://github.com/nodejs/node/commit/7fe6dd8f5d)] - **crypto**: comprobar si hay errores OpenSSL al ingresar (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342)
+* [[`7fe6dd8f5d`](https://github.com/nodejs/node/commit/7fe6dd8f5d)] - **crypto**: comprobar si hay errores OpenSSL al firmar (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342)
 * [[`605f6ee904`](https://github.com/nodejs/node/commit/605f6ee904)] - **crypto**: corregir pérdida de memoria en PBKDF2Request (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
 * [[`ba6eb8af12`](https://github.com/nodejs/node/commit/ba6eb8af12)] - **crypto**: corregir pérdida de memoria en ECDH::SetPrivateKey (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
 * [[`6a16368611`](https://github.com/nodejs/node/commit/6a16368611)] - **crypto**: corregir pérdida de memoria en PublicKeyCipher::Cipher (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375)
@@ -409,21 +409,21 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 ### Cambios notables
 
 * **buffer**: 
-  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` encima del `Uint8Array` del V8. Cada esfuerzo ha sido realizado para minimizar el impacto del rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia entre versiones anteriores dependerá en cómo se utiliza el `Buffer` dentro de las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
+  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` encima del `Uint8Array` del V8. Cada esfuerzo ha sido realizado para minimizar el impacto en el rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia entre versiones anteriores dependerá de cómo se utiliza el `Buffer` dentro de las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
   * `Buffer` ahora puede tomar `ArrayBuffer`s como un argumento constructor (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
   * Cuando se pasa un buffer simple a `Buffer.concat()`, se regresará un nuevo y copiado objeto `Buffer`; el comportamiento previo era regresar el objeto `Buffer` original (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
 * **build**: el soporte PPC ha sido añadido al núcleo para permitir la compilación en pLinux BE y LE (pronto soporte AIX) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
-* **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primera argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambos (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
-* **freelist**: Desaprueba el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
+* **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primer argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambas cosas (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
+* **freelist**: Desaprobar el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
 * **http**: 
   * Los códigos de estado ahora usan los [nombres IANA](http://www.iana.org/assignments/http-status-codes) oficiales según [RFC7231](https://tools.ietf.org/html/rfc7231), p. ej., `http.STATUS_CODES[414]` ahora devuelve `'URI Too Long'` en lugar de `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
   * Llamar a .getName() en un agente HTTP ya no revuelve dos puntos finales; los agentes HTTPS ya no devolverán dos puntos extras cerca del medio de la string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
 * **node**: 
   * `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
-  * Introduce un nuevo objeto `process.release` que contiene una propiedad de `name` establecida a `'io.js'` y `sourceUrl`, las propiedades `headersUrl` y `libUrl` (sólo en Windows) que contienen URLs para las fuentes relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
+  * Introduce un nuevo objeto `process.release` que contiene una propiedad de `name` establecida a `'io.js'` y `sourceUrl`, las propiedades `headersUrl` y `libUrl` (sólo en Windows) que contienen URLs para los recursos relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
   * The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
-* **repl**: La historia persistente ahora está habilitada por defecto. El archivo de historia ahora está ubicado en ~/.node_repl_history, el cual puede ser anulado por la nueva variable de entorno `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formate del archivo ha sido cambiado a texto sin formato para un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
-* **smalloc**: El módulo `smalloc` ha sido eliminado ya que no es posible proporcionar el API debido a cambios en V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
+* **repl**: La historia persistente ahora está habilitada por defecto. El archivo de historia ahora está ubicado en ~/.node_repl_history, el cual puede ser anulado por la nueva variable de entorno `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formato del archivo ha sido cambiado a texto sin formato para un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
+* **smalloc**: El módulo `smalloc` ha sido eliminado, ya que no es posible proporcionar la API debido a cambios en V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
 * **tls**: Añade los métodos `server.getTicketKeys()` y `server.setTicketKeys()` para la rotación de [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
 * **v8**: Actualizado a 4.4.63.26 
   * ES6: [nombres de propiedades computadas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) habilitados
@@ -455,8 +455,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`e5ada116cd`](https://github.com/nodejs/node/commit/e5ada116cd)] - **buffer**: limpieza menor de rebase (Trevor Norris) [#2003](https://github.com/nodejs/node/pull/2003)
 * [[`b625ab4242`](https://github.com/nodejs/node/commit/b625ab4242)] - **buffer**: corregir el uso de kMaxLength (Trevor Norris) [#2003](https://github.com/nodejs/node/pull/2003)
 * [[`eea66e2a7b`](https://github.com/nodejs/node/commit/eea66e2a7b)] - **(SEMVER-MAJOR)** **buffer**: corregir el caso de un buffer pasado a concat (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937)
-* [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: hacer cambios adicionales al API nativo (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: cambiar el API para devolver MaybeLocal<t> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: hacer cambios adicionales a la API nativa (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: cambiar API para devolver MaybeLocal<t> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: cambiar para usar Maybe<t> API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`d75f5c8d0e`](https://github.com/nodejs/node/commit/d75f5c8d0e)] - **buffer**: culminar con la implementación de FreeCallback (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`63da0dfd3a`](https://github.com/nodejs/node/commit/63da0dfd3a)] - **buffer**: implement Uint8Array backed Buffer (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
@@ -464,191 +464,191 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`971de5e417`](https://github.com/nodejs/node/commit/971de5e417)] - **build**: preparar el instalador de Windows para el soporte de i18n (Frederic Hemberger) [#2247](https://github.com/nodejs/node/pull/2247)
 * [[`2ba8b23661`](https://github.com/nodejs/node/commit/2ba8b23661)] - **build**: añadir la opción 'x86' de vuelta en la configuración (Rod Vagg) [#2233](https://github.com/nodejs/node/pull/2233)
 * [[`b4226e797a`](https://github.com/nodejs/node/commit/b4226e797a)] - **build**: el primer conjunto de actualizaciones para habilitar el soporte PPC (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124)
-* [[`24dd016deb`](https://github.com/nodejs/node/commit/24dd016deb)] - **build**: produce symbol map files on windows (Ali Ijaz Sheikh) [#2243](https://github.com/nodejs/node/pull/2243)
+* [[`24dd016deb`](https://github.com/nodejs/node/commit/24dd016deb)] - **build**: producir archivos de mapas de símbolos en windows (Ali Ijaz Sheikh) [#2243](https://github.com/nodejs/node/pull/2243)
 * [[`423d8944ce`](https://github.com/nodejs/node/commit/423d8944ce)] - **cluster**: do not unconditionally set --debug-port (cjihrig) [#1949](https://github.com/nodejs/node/pull/1949)
 * [[`fa98b97171`](https://github.com/nodejs/node/commit/fa98b97171)] - **cluster**: add handle ref/unref stubs in rr mode (Ben Noordhuis) [#2274](https://github.com/nodejs/node/pull/2274)
-* [[`944f68046c`](https://github.com/nodejs/node/commit/944f68046c)] - **crypto**: remove kMaxLength on randomBytes() (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`3d3c687012`](https://github.com/nodejs/node/commit/3d3c687012)] - **deps**: update V8 to 4.4.63.26 (Michaël Zasso) [#2220](https://github.com/nodejs/node/pull/2220)
-* [[`3aad4fa89a`](https://github.com/nodejs/node/commit/3aad4fa89a)] - **deps**: upgrade v8 to 4.4.63.12 (Ben Noordhuis) [#2092](https://github.com/nodejs/node/pull/2092)
-* [[`70d1f32f56`](https://github.com/nodejs/node/commit/70d1f32f56)] - **(SEMVER-MAJOR)** **deps**: update v8 to 4.4.63.9 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
+* [[`944f68046c`](https://github.com/nodejs/node/commit/944f68046c)] - **crypto**: eliminar kMaxLength de randomBytes() (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`3d3c687012`](https://github.com/nodejs/node/commit/3d3c687012)] - **deps**: actualizar V8 a 4.4.63.26 (Michaël Zasso) [#2220](https://github.com/nodejs/node/pull/2220)
+* [[`3aad4fa89a`](https://github.com/nodejs/node/commit/3aad4fa89a)] - **deps**: actualizar v8 a 4.4.63.12 (Ben Noordhuis) [#2092](https://github.com/nodejs/node/pull/2092)
+* [[`70d1f32f56`](https://github.com/nodejs/node/commit/70d1f32f56)] - **(SEMVER-MAJOR)** **deps**: actualizar v8 a 4.4.63.9 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
 * [[`deb7ee93a7`](https://github.com/nodejs/node/commit/deb7ee93a7)] - **deps**: backport 7b24219346 from v8 upstream (Rod Vagg) [#1805](https://github.com/nodejs/node/pull/1805)
-* [[`d58e780504`](https://github.com/nodejs/node/commit/d58e780504)] - **(SEMVER-MAJOR)** **deps**: update v8 to 4.3.61.21 (Chris Dickinson) [iojs/io.js#1632](https://github.com/iojs/io.js/pull/1632)
-* [[`2a63cf612b`](https://github.com/nodejs/node/commit/2a63cf612b)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`d58e780504`](https://github.com/nodejs/node/commit/d58e780504)] - **(SEMVER-MAJOR)** **deps**: actualizar v8 a 4.3.61.21 (Chris Dickinson) [iojs/io.js#1632](https://github.com/iojs/io.js/pull/1632)
+* [[`2a63cf612b`](https://github.com/nodejs/node/commit/2a63cf612b)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
 * [[`bf63266460`](https://github.com/nodejs/node/commit/bf63266460)] - **deps**: upgrade to npm 2.13.3 (Kat Marchán) [#2284](https://github.com/nodejs/node/pull/2284)
 * [[`ef2c8cd4ec`](https://github.com/nodejs/node/commit/ef2c8cd4ec)] - **(SEMVER-MAJOR)** **dgram**: make send cb act as "error" event handler (Matteo Collina) [#1796](https://github.com/nodejs/node/pull/1796)
 * [[`3da057fef6`](https://github.com/nodejs/node/commit/3da057fef6)] - **(SEMVER-MAJOR)** **dgram**: make send cb act as "error" event handler (Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
-* [[`df1994fe53`](https://github.com/nodejs/node/commit/df1994fe53)] - ***Revert*** "**dns**: remove AI_V4MAPPED hint flag on FreeBSD" (cjihrig) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
-* [[`1721968b22`](https://github.com/nodejs/node/commit/1721968b22)] - **doc**: document repl persistent history changes (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
-* [[`d12df7f159`](https://github.com/nodejs/node/commit/d12df7f159)] - **doc**: update v8 flags in man page (Michaël Zasso) [iojs/io.js#1701](https://github.com/iojs/io.js/pull/1701)
-* [[`d168d01b04`](https://github.com/nodejs/node/commit/d168d01b04)] - **doc**: properly inheriting from EventEmitter (Sakthipriyan Vairamani) [#2168](https://github.com/nodejs/node/pull/2168)
+* [[`df1994fe53`](https://github.com/nodejs/node/commit/df1994fe53)] - ***Revert*** "**dns**: eliminar la bandera pista de AI_V4MAPPED en FreeBSD" (cjihrig) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
+* [[`1721968b22`](https://github.com/nodejs/node/commit/1721968b22)] - **doc**: documentar los cambios persistentes en el historial de repl (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
+* [[`d12df7f159`](https://github.com/nodejs/node/commit/d12df7f159)] - **doc**: actualizar las banderas v8 flags en la página manual (Michaël Zasso) [iojs/io.js#1701](https://github.com/iojs/io.js/pull/1701)
+* [[`d168d01b04`](https://github.com/nodejs/node/commit/d168d01b04)] - **doc**: apropiadamente heredado de EventEmitter (Sakthipriyan Vairamani) [#2168](https://github.com/nodejs/node/pull/2168)
 * [[`500f2538cc`](https://github.com/nodejs/node/commit/500f2538cc)] - **doc**: a listener, not "an" listener (Sam Roberts) [#1025](https://github.com/nodejs/node/pull/1025)
 * [[`54627a919d`](https://github.com/nodejs/node/commit/54627a919d)] - **doc**: server close event does not have an argument (Sam Roberts) [#1025](https://github.com/nodejs/node/pull/1025)
-* [[`ed85c95a9c`](https://github.com/nodejs/node/commit/ed85c95a9c)] - **doc,test**: documents behaviour of non-existent file (Sakthipriyan Vairamani) [#2169](https://github.com/nodejs/node/pull/2169)
-* [[`2965442308`](https://github.com/nodejs/node/commit/2965442308)] - **(SEMVER-MAJOR)** **http**: fix agent.getName() and add tests (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617)
-* [[`2d9456e3e6`](https://github.com/nodejs/node/commit/2d9456e3e6)] - **(SEMVER-MAJOR)** **http**: use official IANA Status Codes (jomo) [#1470](https://github.com/nodejs/node/pull/1470)
+* [[`ed85c95a9c`](https://github.com/nodejs/node/commit/ed85c95a9c)] - **doc,test**: el comportamiento de documentos de archivos no existentes (Sakthipriyan Vairamani) [#2169](https://github.com/nodejs/node/pull/2169)
+* [[`2965442308`](https://github.com/nodejs/node/commit/2965442308)] - **(SEMVER-MAJOR)** **http**: arreglar agent.getName() y añadir pruebas (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617)
+* [[`2d9456e3e6`](https://github.com/nodejs/node/commit/2d9456e3e6)] - **(SEMVER-MAJOR)** **http**: utilizar los Códigos de Estado IANA oficiales (jomo) [#1470](https://github.com/nodejs/node/pull/1470)
 * [[`11e4249227`](https://github.com/nodejs/node/commit/11e4249227)] - **(SEMVER-MAJOR)** **http_server**: `prefinish` vs `finish` (Fedor Indutny) [#1411](https://github.com/nodejs/node/pull/1411)
-* [[`9bc2e26720`](https://github.com/nodejs/node/commit/9bc2e26720)] - **net**: do not set V4MAPPED on FreeBSD (Julien Gilli) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
+* [[`9bc2e26720`](https://github.com/nodejs/node/commit/9bc2e26720)] - **net**: no establecer V4MAPPED en FreeBSD (Julien Gilli) [iojs/io.js#1555](https://github.com/iojs/io.js/pull/1555)
 * [[`ba9ccf227e`](https://github.com/nodejs/node/commit/ba9ccf227e)] - **node**: remove redundant --use-old-buffer (Rod Vagg) [#2275](https://github.com/nodejs/node/pull/2275)
-* [[`ef65321083`](https://github.com/nodejs/node/commit/ef65321083)] - **(SEMVER-MAJOR)** **node**: do not override `message`/`stack` of error (Fedor Indutny) [#2108](https://github.com/nodejs/node/pull/2108)
+* [[`ef65321083`](https://github.com/nodejs/node/commit/ef65321083)] - **(SEMVER-MAJOR)** **node**: no anular `message`/`stack` de error (Fedor Indutny) [#2108](https://github.com/nodejs/node/pull/2108)
 * [[`9f727f5e03`](https://github.com/nodejs/node/commit/9f727f5e03)] - **node-gyp**: detect RC build with x.y.z-rc.n format (Rod Vagg) [#2171](https://github.com/nodejs/node/pull/2171)
-* [[`e52f963632`](https://github.com/nodejs/node/commit/e52f963632)] - **node-gyp**: download header tarball for compile (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
+* [[`e52f963632`](https://github.com/nodejs/node/commit/e52f963632)] - **node-gyp**: descargar el tarball de cabecera para compilar (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
 * [[`902c9ca51d`](https://github.com/nodejs/node/commit/902c9ca51d)] - **node-gyp**: make aware of nightly, next-nightly & rc (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066)
-* [[`4cffaa3f55`](https://github.com/nodejs/node/commit/4cffaa3f55)] - **(SEMVER-MINOR)** **readline**: allow tabs in input (Rich Trott) [#1761](https://github.com/nodejs/node/pull/1761)
+* [[`4cffaa3f55`](https://github.com/nodejs/node/commit/4cffaa3f55)] - **(SEMVER-MINOR)** **readline**: permitir pestañas en entradas (Rich Trott) [#1761](https://github.com/nodejs/node/pull/1761)
 * [[`ed6c249104`](https://github.com/nodejs/node/commit/ed6c249104)] - **(SEMVER-MAJOR)** **repl**: persist history in plain text (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
 * [[`f7d5e4c618`](https://github.com/nodejs/node/commit/f7d5e4c618)] - **(SEMVER-MINOR)** **repl**: default persistence to ~/.node_repl_history (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
 * [[`ea05e760cd`](https://github.com/nodejs/node/commit/ea05e760cd)] - **repl**: don't clobber RegExp.$ properties (Sakthipriyan Vairamani) [#2137](https://github.com/nodejs/node/pull/2137)
 * [[`d20093246b`](https://github.com/nodejs/node/commit/d20093246b)] - **src**: disable vector ICs on arm (Michaël Zasso) [#2220](https://github.com/nodejs/node/pull/2220)
-* [[`04fd4fad46`](https://github.com/nodejs/node/commit/04fd4fad46)] - **(SEMVER-MINOR)** **src**: introduce process.release object (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154)
-* [[`9d34bd1147`](https://github.com/nodejs/node/commit/9d34bd1147)] - **src**: increment NODE_MODULE_VERSION to 45 (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096)
-* [[`ceee8d2807`](https://github.com/nodejs/node/commit/ceee8d2807)] - **test**: add tests for persistent repl history (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
-* [[`8e1a8ffe24`](https://github.com/nodejs/node/commit/8e1a8ffe24)] - **test**: remove two obsolete pummel tests (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
-* [[`ae731ec0fa`](https://github.com/nodejs/node/commit/ae731ec0fa)] - **test**: don't use arguments.callee (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
-* [[`21d31c08e7`](https://github.com/nodejs/node/commit/21d31c08e7)] - **test**: remove obsolete harmony flags (Chris Dickinson)
-* [[`64cf71195c`](https://github.com/nodejs/node/commit/64cf71195c)] - **test**: change the hostname to an invalid name (Sakthipriyan Vairamani) [#2287](https://github.com/nodejs/node/pull/2287)
-* [[`80a1cf7425`](https://github.com/nodejs/node/commit/80a1cf7425)] - **test**: fix messages and use return to skip tests (Sakthipriyan Vairamani) [#2290](https://github.com/nodejs/node/pull/2290)
-* [[`d5ab92bcc1`](https://github.com/nodejs/node/commit/d5ab92bcc1)] - **test**: use common.isWindows consistently (Sakthipriyan Vairamani) [#2269](https://github.com/nodejs/node/pull/2269)
-* [[`bc733f7065`](https://github.com/nodejs/node/commit/bc733f7065)] - **test**: fix fs.readFile('/dev/stdin') tests (Ben Noordhuis) [#2265](https://github.com/nodejs/node/pull/2265)
+* [[`04fd4fad46`](https://github.com/nodejs/node/commit/04fd4fad46)] - **(SEMVER-MINOR)** **src**: introducir el objeto process.release (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154)
+* [[`9d34bd1147`](https://github.com/nodejs/node/commit/9d34bd1147)] - **src**: incrementar NODE_MODULE_VERSION a 45 (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096)
+* [[`ceee8d2807`](https://github.com/nodejs/node/commit/ceee8d2807)] - **test**: añadir pruebas para la historia de repl persistente (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224)
+* [[`8e1a8ffe24`](https://github.com/nodejs/node/commit/8e1a8ffe24)] - **test**: eliminar dos pruebas de pummel obsoletas (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
+* [[`ae731ec0fa`](https://github.com/nodejs/node/commit/ae731ec0fa)] - **test**: no utilizar arguments.callee (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022)
+* [[`21d31c08e7`](https://github.com/nodejs/node/commit/21d31c08e7)] - **test**: eliminar banderas de armonía obsoletas (Chris Dickinson)
+* [[`64cf71195c`](https://github.com/nodejs/node/commit/64cf71195c)] - **test**: cambiar el nombre del host a un nombre inválido (Sakthipriyan Vairamani) [#2287](https://github.com/nodejs/node/pull/2287)
+* [[`80a1cf7425`](https://github.com/nodejs/node/commit/80a1cf7425)] - **test**: corregir mensajes y utilizar volver para saltarse las pruebas (Sakthipriyan Vairamani) [#2290](https://github.com/nodejs/node/pull/2290)
+* [[`d5ab92bcc1`](https://github.com/nodejs/node/commit/d5ab92bcc1)] - **test**: utilizar common.isWindows consistentemente (Sakthipriyan Vairamani) [#2269](https://github.com/nodejs/node/pull/2269)
+* [[`bc733f7065`](https://github.com/nodejs/node/commit/bc733f7065)] - **test**: arreglar las pruebas fs.readFile('/dev/stdin') (Ben Noordhuis) [#2265](https://github.com/nodejs/node/pull/2265)
 * [[`3cbb5870e5`](https://github.com/nodejs/node/commit/3cbb5870e5)] - **tools**: expose skip output to test runner (Johan Bergström) [#2130](https://github.com/nodejs/node/pull/2130)
-* [[`3b021efe11`](https://github.com/nodejs/node/commit/3b021efe11)] - **vm**: fix symbol access (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
-* [[`7b81e4ba36`](https://github.com/nodejs/node/commit/7b81e4ba36)] - **vm**: remove unnecessary access checks (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
+* [[`3b021efe11`](https://github.com/nodejs/node/commit/3b021efe11)] - **vm**: corregir el acceso a los símbolos (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
+* [[`7b81e4ba36`](https://github.com/nodejs/node/commit/7b81e4ba36)] - **vm**: eliminar las verificaciones de acceso innecesarias (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
 * [[`659dadd410`](https://github.com/nodejs/node/commit/659dadd410)] - **vm**: fix property descriptors of sandbox properties (Domenic Denicola) [#1773](https://github.com/nodejs/node/pull/1773)
 * [[`9bac1dbae9`](https://github.com/nodejs/node/commit/9bac1dbae9)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.5.0"></a>
 
-## 2015-07-28, Version 2.5.0, @cjihrig
+## 2015-07-28, Versión 2.5.0, @cjihrig
 
-### Notable changes
+### Cambios notables
 
-* **https**: TLS sessions in Agent are reused (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
-* **src**: base64 decoding is now 50% faster (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
-* **npm**: Upgraded to v2.13.2, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
+* **https**: Se reutilizan las sesiones TLS en Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
+* **src**: la decodificación base64 ahora es 50% más rápida (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
+* **npm**: Actualizado a v2.13.2, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
-* Using multiple REPL instances in parallel may cause some REPL history corruption or loss. [#1634](https://github.com/nodejs/node/issues/1634)
-* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Utilizar múltiples instancias de REPL en paralelo puede causar alguna corrupción o pérdida de la historia de REPL. [#1634](https://github.com/nodejs/node/issues/1634)
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea see [#1435](https://github.com/nodejs/node/issues/1435).
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
-* [[`bf2cd225a8`](https://github.com/nodejs/node/commit/bf2cd225a8)] - **process**: resize stderr on SIGWINCH (Jeremiah Senkpiel) [#2231](https://github.com/nodejs/node/pull/2231)
+* [[`bf2cd225a8`](https://github.com/nodejs/node/commit/bf2cd225a8)] - **process**: redimensionar stderr en SIGWINCH (Jeremiah Senkpiel) [#2231](https://github.com/nodejs/node/pull/2231)
 * [[`99d9d7e716`](https://github.com/nodejs/node/commit/99d9d7e716)] - **benchmark**: add remaining path benchmarks & optimize (Nathan Woltman) [#2103](https://github.com/nodejs/node/pull/2103)
 * [[`66fc8ca22b`](https://github.com/nodejs/node/commit/66fc8ca22b)] - **(SEMVER-MINOR)** **cluster**: emit 'message' event on cluster master (Sam Roberts) [#861](https://github.com/nodejs/node/pull/861)
 * [[`eb35968de7`](https://github.com/nodejs/node/commit/eb35968de7)] - **crypto**: fix legacy SNICallback (Fedor Indutny) [#1720](https://github.com/nodejs/node/pull/1720)
-* [[`fef190cea6`](https://github.com/nodejs/node/commit/fef190cea6)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`b73a7465c5`](https://github.com/nodejs/node/commit/b73a7465c5)] - **deps**: upgrade to npm 2.13.2 (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241)
-* [[`0a7bf81d2f`](https://github.com/nodejs/node/commit/0a7bf81d2f)] - **deps**: update V8 to 4.2.77.21 (Ali Ijaz Sheikh) [#2238](https://github.com/nodejs/node/issues/2238)
-* [[`73cdcdd581`](https://github.com/nodejs/node/commit/73cdcdd581)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`04893a736d`](https://github.com/nodejs/node/commit/04893a736d)] - **deps**: upgrade to npm 2.13.1 (Kat Marchán) [#2210](https://github.com/nodejs/node/pull/2210)
-* [[`a3c1b9720e`](https://github.com/nodejs/node/commit/a3c1b9720e)] - **doc**: add GPG fingerprint for cjihrig (cjihrig) [#2217](https://github.com/nodejs/node/pull/2217)
+* [[`fef190cea6`](https://github.com/nodejs/node/commit/fef190cea6)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`b73a7465c5`](https://github.com/nodejs/node/commit/b73a7465c5)] - **deps**: actualizar a npm 2.13.2 (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241)
+* [[`0a7bf81d2f`](https://github.com/nodejs/node/commit/0a7bf81d2f)] - **deps**: actualizar V8 a 4.2.77.21 (Ali Ijaz Sheikh) [#2238](https://github.com/nodejs/node/issues/2238)
+* [[`73cdcdd581`](https://github.com/nodejs/node/commit/73cdcdd581)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`04893a736d`](https://github.com/nodejs/node/commit/04893a736d)] - **deps**: actualizar a npm 2.13.1 (Kat Marchán) [#2210](https://github.com/nodejs/node/pull/2210)
+* [[`a3c1b9720e`](https://github.com/nodejs/node/commit/a3c1b9720e)] - **doc**: añadir huella dactilar GPG para cjihrig (cjihrig) [#2217](https://github.com/nodejs/node/pull/2217)
 * [[`d9f857df3b`](https://github.com/nodejs/node/commit/d9f857df3b)] - **doc**: note about custom inspect functions (Sakthipriyan Vairamani) [#2142](https://github.com/nodejs/node/pull/2142)
-* [[`4ef2b5fbfb`](https://github.com/nodejs/node/commit/4ef2b5fbfb)] - **doc**: Replace util.debug with console.error (Yosuke Furukawa) [#2214](https://github.com/nodejs/node/pull/2214)
-* [[`b612f085ec`](https://github.com/nodejs/node/commit/b612f085ec)] - **doc**: add joaocgreis as a collaborator (João Reis) [#2208](https://github.com/nodejs/node/pull/2208)
+* [[`4ef2b5fbfb`](https://github.com/nodejs/node/commit/4ef2b5fbfb)] - **doc**: Reemplazar util.debug con console.error (Yosuke Furukawa) [#2214](https://github.com/nodejs/node/pull/2214)
+* [[`b612f085ec`](https://github.com/nodejs/node/commit/b612f085ec)] - **doc**: añadir a joaocgreis como un colaborador (João Reis) [#2208](https://github.com/nodejs/node/pull/2208)
 * [[`6b85d5a4b3`](https://github.com/nodejs/node/commit/6b85d5a4b3)] - **doc**: add TSC meeting minutes 2015-07-15 (Rod Vagg) [#2191](https://github.com/nodejs/node/pull/2191)
-* [[`c7d8b09162`](https://github.com/nodejs/node/commit/c7d8b09162)] - **doc**: recompile before testing core module changes (Phillip Johnsen) [#2051](https://github.com/nodejs/node/pull/2051)
-* [[`9afee6785e`](https://github.com/nodejs/node/commit/9afee6785e)] - **http**: Check this.connection before using it (Sakthipriyan Vairamani) [#2172](https://github.com/nodejs/node/pull/2172)
-* [[`2ca5a3db47`](https://github.com/nodejs/node/commit/2ca5a3db47)] - **https**: reuse TLS sessions in Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
+* [[`c7d8b09162`](https://github.com/nodejs/node/commit/c7d8b09162)] - **doc**: recopilar antes de probar los cambios del módulo núcleo (Phillip Johnsen) [#2051](https://github.com/nodejs/node/pull/2051)
+* [[`9afee6785e`](https://github.com/nodejs/node/commit/9afee6785e)] - **http**: Verificar this.connection antes de usarlo (Sakthipriyan Vairamani) [#2172](https://github.com/nodejs/node/pull/2172)
+* [[`2ca5a3db47`](https://github.com/nodejs/node/commit/2ca5a3db47)] - **https**: reutilizar las sesiones TLS en Agent (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
 * [[`fef87fee1d`](https://github.com/nodejs/node/commit/fef87fee1d)] - **(SEMVER-MINOR)** **lib,test**: add freelist deprecation and test (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176)
 * [[`503b089dd8`](https://github.com/nodejs/node/commit/503b089dd8)] - **net**: don't throw on immediately destroyed socket (Evan Lucas) [#2251](https://github.com/nodejs/node/pull/2251)
 * [[`93660c8b8e`](https://github.com/nodejs/node/commit/93660c8b8e)] - **node**: remove bad fn call and check (Trevor Norris) [#2157](https://github.com/nodejs/node/pull/2157)
 * [[`afd7e37ee0`](https://github.com/nodejs/node/commit/afd7e37ee0)] - **repl**: better empty line handling (Sakthipriyan Vairamani) [#2163](https://github.com/nodejs/node/pull/2163)
 * [[`81ea52aa01`](https://github.com/nodejs/node/commit/81ea52aa01)] - **repl**: improving line continuation handling (Sakthipriyan Vairamani) [#2163](https://github.com/nodejs/node/pull/2163)
-* [[`30edb5aee9`](https://github.com/nodejs/node/commit/30edb5aee9)] - **repl**: preventing REPL crash with inherited properties (Sakthipriyan Vairamani) [#2163](https://github.com/nodejs/node/pull/2163)
+* [[`30edb5aee9`](https://github.com/nodejs/node/commit/30edb5aee9)] - **repl**: prevención del colapso de REPL con propiedades heredadas (Sakthipriyan Vairamani) [#2163](https://github.com/nodejs/node/pull/2163)
 * [[`77fa385e5d`](https://github.com/nodejs/node/commit/77fa385e5d)] - **repl**: fixing `undefined` in invalid REPL keyword error (Sakthipriyan Vairamani) [#2163](https://github.com/nodejs/node/pull/2163)
-* [[`8fd3ce100e`](https://github.com/nodejs/node/commit/8fd3ce100e)] - **src**: make base64 decoding 50% faster (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
-* [[`c786d6341d`](https://github.com/nodejs/node/commit/c786d6341d)] - **test**: do not use public IPs for timeout testing (Rich Trott) [#2057](https://github.com/nodejs/node/pull/2057)
-* [[`4e78cd71c0`](https://github.com/nodejs/node/commit/4e78cd71c0)] - **test**: skip IPv6 part before testing it (Sakthipriyan Vairamani) [#2226](https://github.com/nodejs/node/pull/2226)
+* [[`8fd3ce100e`](https://github.com/nodejs/node/commit/8fd3ce100e)] - **src**: hacer la decodificación base64 50% más rápida (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
+* [[`c786d6341d`](https://github.com/nodejs/node/commit/c786d6341d)] - **test**: no utilizar direcciones IP públicas para las pruebas de tiempo de espera (Rich Trott) [#2057](https://github.com/nodejs/node/pull/2057)
+* [[`4e78cd71c0`](https://github.com/nodejs/node/commit/4e78cd71c0)] - **test**: saltar la parte IPv6 antes de probarla (Sakthipriyan Vairamani) [#2226](https://github.com/nodejs/node/pull/2226)
 * [[`ac70bc8240`](https://github.com/nodejs/node/commit/ac70bc8240)] - **test**: fix valgrind uninitialized memory warning (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
 * [[`ac7d3fa0d9`](https://github.com/nodejs/node/commit/ac7d3fa0d9)] - **test**: add -no_rand_screen to s_client opts on Win (Shigeki Ohtsu) [#2209](https://github.com/nodejs/node/pull/2209)
 * [[`79c865a53f`](https://github.com/nodejs/node/commit/79c865a53f)] - **test**: changing process.exit to return while skipping tests (Sakthipriyan Vairamani) [#2109](https://github.com/nodejs/node/pull/2109)
 * [[`69298d36cf`](https://github.com/nodejs/node/commit/69298d36cf)] - **test**: formatting skip messages for TAP parsing (Sakthipriyan Vairamani) [#2109](https://github.com/nodejs/node/pull/2109)
-* [[`543dabb609`](https://github.com/nodejs/node/commit/543dabb609)] - **timers**: improve Timer.now() performance (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
-* [[`3663b124e6`](https://github.com/nodejs/node/commit/3663b124e6)] - **timers**: remove unused Timer.again() (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
-* [[`bcce5cf9bb`](https://github.com/nodejs/node/commit/bcce5cf9bb)] - **timers**: remove unused Timer.getRepeat() (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
-* [[`f2c83bd202`](https://github.com/nodejs/node/commit/f2c83bd202)] - **timers**: remove unused Timer.setRepeat() (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
-* [[`e11fc67225`](https://github.com/nodejs/node/commit/e11fc67225)] - **(SEMVER-MINOR)** **tls**: add `getTicketKeys()`/`setTicketKeys()` (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227)
-* [[`68b06e94e3`](https://github.com/nodejs/node/commit/68b06e94e3)] - **tools**: use local or specified $NODE for test-npm (Jeremiah Senkpiel) [#1984](https://github.com/nodejs/node/pull/1984)
-* [[`ab479659c7`](https://github.com/nodejs/node/commit/ab479659c7)] - **util**: delay creation of debug context (Ali Ijaz Sheikh) [#2248](https://github.com/nodejs/node/pull/2248)
+* [[`543dabb609`](https://github.com/nodejs/node/commit/543dabb609)] - **timers**: mejorar el rendimiento de Timer.now() (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
+* [[`3663b124e6`](https://github.com/nodejs/node/commit/3663b124e6)] - **timers**: eliminar el Timer.again() sin utilizar (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
+* [[`bcce5cf9bb`](https://github.com/nodejs/node/commit/bcce5cf9bb)] - **timers**: eliminar el Timer.getRepeat() sin utilizar (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
+* [[`f2c83bd202`](https://github.com/nodejs/node/commit/f2c83bd202)] - **timers**: eliminar el Timer.setRepeat() sin utilizar (Ben Noordhuis) [#2256](https://github.com/nodejs/node/pull/2256)
+* [[`e11fc67225`](https://github.com/nodejs/node/commit/e11fc67225)] - **(SEMVER-MINOR)** **tls**: añadir `getTicketKeys()`/`setTicketKeys()` (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227)
+* [[`68b06e94e3`](https://github.com/nodejs/node/commit/68b06e94e3)] - **tools**: usar $NODE local o especificado para test-npm (Jeremiah Senkpiel) [#1984](https://github.com/nodejs/node/pull/1984)
+* [[`ab479659c7`](https://github.com/nodejs/node/commit/ab479659c7)] - **util**: retraso de creación del contexto de depuración (Ali Ijaz Sheikh) [#2248](https://github.com/nodejs/node/pull/2248)
 * [[`6391f4d2fd`](https://github.com/nodejs/node/commit/6391f4d2fd)] - **util**: removing redundant checks in is* functions (Sakthipriyan Vairamani) [#2179](https://github.com/nodejs/node/pull/2179)
 * [[`b148c0dff3`](https://github.com/nodejs/node/commit/b148c0dff3)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 * [[`f90f1e75bb`](https://github.com/nodejs/node/commit/f90f1e75bb)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.4.0"></a>
 
-## 2015-07-17, Version 2.4.0, @Fishrock123
+## 2015-07-17, Versión 2.4.0, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **src**: Added a new `--track-heap-objects` flag to track heap object allocations for heap snapshots (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135).
 * **readline**: Fixed a freeze that affected the repl if the keypress event handler threw (Alex Kocharin) [#2107](https://github.com/nodejs/node/pull/2107).
-* **npm**: Upgraded to v2.13.0, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.0> (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152).
+* **npm**: Actualizado a v2.13.0, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.13.0> (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152).
 
-### Known issues
+### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
-* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
-* [[`f95f9ef6ea`](https://github.com/nodejs/node/commit/f95f9ef6ea)] - **build**: always use prefix=/ for tar-headers (Rod Vagg) [#2082](https://github.com/nodejs/node/pull/2082)
+* [[`f95f9ef6ea`](https://github.com/nodejs/node/commit/f95f9ef6ea)] - **build**: utilizar siempre prefix=/ para tar-headers (Rod Vagg) [#2082](https://github.com/nodejs/node/pull/2082)
 * [[`12bc397207`](https://github.com/nodejs/node/commit/12bc397207)] - **build**: run-ci makefile rule (Alexis Campailla) [#2134](https://github.com/nodejs/node/pull/2134)
-* [[`84012c99e0`](https://github.com/nodejs/node/commit/84012c99e0)] - **build**: fix vcbuild merge issues (Alexis Campailla) [#2131](https://github.com/nodejs/node/pull/2131)
+* [[`84012c99e0`](https://github.com/nodejs/node/commit/84012c99e0)] - **build**: corregir los problemas de unión de vcbuild (Alexis Campailla) [#2131](https://github.com/nodejs/node/pull/2131)
 * [[`47e2c5c828`](https://github.com/nodejs/node/commit/47e2c5c828)] - **build**: bail early if clean is invoked (Johan Bergström) [#2127](https://github.com/nodejs/node/pull/2127)
-* [[`5acad6b163`](https://github.com/nodejs/node/commit/5acad6b163)] - **child_process**: fix arguments comments (Roman Reiss) [#2161](https://github.com/nodejs/node/pull/2161)
-* [[`3c4121c418`](https://github.com/nodejs/node/commit/3c4121c418)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`938cc757bb`](https://github.com/nodejs/node/commit/938cc757bb)] - **deps**: upgrade to npm 2.13.0 (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152)
-* [[`6f306e0ed2`](https://github.com/nodejs/node/commit/6f306e0ed2)] - **doc**: add targos as a collaborator (Michaël Zasso) [#2200](https://github.com/nodejs/node/pull/2200)
-* [[`c019d9a239`](https://github.com/nodejs/node/commit/c019d9a239)] - **doc**: add thefourtheye as a collaborator (Sakthipriyan Vairamani) [#2199](https://github.com/nodejs/node/pull/2199)
-* [[`4e92dbc26b`](https://github.com/nodejs/node/commit/4e92dbc26b)] - **doc**: add TSC members from the combined project (Jeremiah Senkpiel) [#2085](https://github.com/nodejs/node/pull/2085)
+* [[`5acad6b163`](https://github.com/nodejs/node/commit/5acad6b163)] - **child_process**: corregir los comentarios de argumentos (Roman Reiss) [#2161](https://github.com/nodejs/node/pull/2161)
+* [[`3c4121c418`](https://github.com/nodejs/node/commit/3c4121c418)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`938cc757bb`](https://github.com/nodejs/node/commit/938cc757bb)] - **deps**: actualizar a npm 2.13.0 (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152)
+* [[`6f306e0ed2`](https://github.com/nodejs/node/commit/6f306e0ed2)] - **doc**: añadir a targos como un colaborador (Michaël Zasso) [#2200](https://github.com/nodejs/node/pull/2200)
+* [[`c019d9a239`](https://github.com/nodejs/node/commit/c019d9a239)] - **doc**: añadir a thefourtheye como un colaborador (Sakthipriyan Vairamani) [#2199](https://github.com/nodejs/node/pull/2199)
+* [[`4e92dbc26b`](https://github.com/nodejs/node/commit/4e92dbc26b)] - **doc**: añadir a miembros TSC del proyecto combinado (Jeremiah Senkpiel) [#2085](https://github.com/nodejs/node/pull/2085)
 * [[`6c3aabf455`](https://github.com/nodejs/node/commit/6c3aabf455)] - **doc**: add TSC meeting minutes 2015-07-08 (Rod Vagg) [#2184](https://github.com/nodejs/node/pull/2184)
 * [[`30a0d47d51`](https://github.com/nodejs/node/commit/30a0d47d51)] - **doc**: add TSC meeting minutes 2015-07-01 (Rod Vagg) [#2132](https://github.com/nodejs/node/pull/2132)
-* [[`23efb05cc3`](https://github.com/nodejs/node/commit/23efb05cc3)] - **doc**: document fs.watchFile behaviour on ENOENT (Brendan Ashworth) [#2093](https://github.com/nodejs/node/pull/2093)
-* [[`65963ec26f`](https://github.com/nodejs/node/commit/65963ec26f)] - **doc,test**: empty strings in path module (Sakthipriyan Vairamani) [#2106](https://github.com/nodejs/node/pull/2106)
+* [[`23efb05cc3`](https://github.com/nodejs/node/commit/23efb05cc3)] - **doc**: documentar el comportamiento de fs.watchFile en ENOENT (Brendan Ashworth) [#2093](https://github.com/nodejs/node/pull/2093)
+* [[`65963ec26f`](https://github.com/nodejs/node/commit/65963ec26f)] - **doc,test**: vaciar las strings en el módulo de ruta (Sakthipriyan Vairamani) [#2106](https://github.com/nodejs/node/pull/2106)
 * [[`0ab81e6f58`](https://github.com/nodejs/node/commit/0ab81e6f58)] - **docs**: link to more up-to-date v8 docs (Jeremiah Senkpiel) [#2196](https://github.com/nodejs/node/pull/2196)
-* [[`1afc0c9e86`](https://github.com/nodejs/node/commit/1afc0c9e86)] - **fs**: fix error on bad listener type (Brendan Ashworth) [#2093](https://github.com/nodejs/node/pull/2093)
-* [[`2ba84606a6`](https://github.com/nodejs/node/commit/2ba84606a6)] - **path**: assert path.join() arguments equally (Phillip Johnsen) [#2159](https://github.com/nodejs/node/pull/2159)
+* [[`1afc0c9e86`](https://github.com/nodejs/node/commit/1afc0c9e86)] - **fs**: corregir el error en el tipo de listener malo (Brendan Ashworth) [#2093](https://github.com/nodejs/node/pull/2093)
+* [[`2ba84606a6`](https://github.com/nodejs/node/commit/2ba84606a6)] - **path**: afirmar los argumentos path.join() por igual (Phillip Johnsen) [#2159](https://github.com/nodejs/node/pull/2159)
 * [[`bd01603201`](https://github.com/nodejs/node/commit/bd01603201)] - **readline**: fix freeze if `keypress` event throws (Alex Kocharin) [#2107](https://github.com/nodejs/node/pull/2107)
 * [[`59f6b5da2a`](https://github.com/nodejs/node/commit/59f6b5da2a)] - **repl**: Prevent crash when tab-completed with Proxy (Sakthipriyan Vairamani) [#2120](https://github.com/nodejs/node/pull/2120)
-* [[`cf14a2427c`](https://github.com/nodejs/node/commit/cf14a2427c)] - **(SEMVER-MINOR)** **src**: add --track-heap-objects (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135)
-* [[`2b4b600660`](https://github.com/nodejs/node/commit/2b4b600660)] - **test**: fix test-debug-port-from-cmdline (João Reis) [#2186](https://github.com/nodejs/node/pull/2186)
+* [[`cf14a2427c`](https://github.com/nodejs/node/commit/cf14a2427c)] - **(SEMVER-MINOR)** **src**: añadir --track-heap-objects (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135)
+* [[`2b4b600660`](https://github.com/nodejs/node/commit/2b4b600660)] - **test**: arreglar test-debug-port-from-cmdline (João Reis) [#2186](https://github.com/nodejs/node/pull/2186)
 * [[`d4ceb16da2`](https://github.com/nodejs/node/commit/d4ceb16da2)] - **test**: properly clean up temp directory (Roman Reiss) [#2164](https://github.com/nodejs/node/pull/2164)
-* [[`842eb5b853`](https://github.com/nodejs/node/commit/842eb5b853)] - **test**: add test for dgram.setTTL (Evan Lucas) [#2121](https://github.com/nodejs/node/pull/2121)
+* [[`842eb5b853`](https://github.com/nodejs/node/commit/842eb5b853)] - **test**: añadir pruebas para dgram.setTTL (Evan Lucas) [#2121](https://github.com/nodejs/node/pull/2121)
 * [[`cff7300a57`](https://github.com/nodejs/node/commit/cff7300a57)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.3.4"></a>
 
-## 2015-07-09, Version 2.3.4, @Fishrock123
+## 2015-07-09, Versión 2.3.4, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141).
-* **npm**: Upgraded to v2.12.1, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.12.0> and <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
+* **npm**: Actualizado a v2.12.1, puede encontrar las notas de lanzamiento en <https://github.com/npm/npm/releases/tag/v2.12.0> y en <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
 
-### Known issues
+### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
-* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación de la url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
 * [[`0d15161c24`](https://github.com/nodejs/node/commit/0d15161c24)] - **benchmark**: Add some path benchmarks for #1778 (Nathan Woltman) [#1778](https://github.com/nodejs/node/pull/1778)
-* [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: update deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
+* [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: actualizar deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`ca93f7f2e6`](https://github.com/nodejs/node/commit/ca93f7f2e6)] - **deps**: upgrade openssl sources to 1.0.2d (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`b18c841ec1`](https://github.com/nodejs/node/commit/b18c841ec1)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
 * [[`863cdbdd08`](https://github.com/nodejs/node/commit/863cdbdd08)] - **deps**: upgrade to npm 2.12.1 (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112)
@@ -673,7 +673,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) [#2141](https://github.com/nodejs/node/pull/2141).
 
-### Known issues
+### Problemas conocidos
 
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
