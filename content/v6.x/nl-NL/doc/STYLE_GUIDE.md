@@ -11,9 +11,9 @@
 * Howel omstreden, de [Oxford komma](https://en.wikipedia.org/wiki/Serial_comma) heeft de voorkeur ter duidelijkheid.
 * In het algemeen, voorkom persoonlijke voornaamwoorden in referentie documentatie ("Ik", "jij", "wij"). 
   * Voornaamwoorden zijn aanvaardbaar in meer informele documentatie, zoals gidsen.
-  * Gebruik genderneutrale voornaamwoorden en stofnamen. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+  * Gebruik genderneutrale voornaamwoorden en stofnamen. Niet-uitgebreide voorbeelden: 
+    * Ok: "zij", "hun", "hen", "volk", "mensen", "ontwikkelaars", "katten"
+    * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
