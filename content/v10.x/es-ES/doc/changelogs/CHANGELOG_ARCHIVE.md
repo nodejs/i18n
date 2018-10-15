@@ -2163,30 +2163,30 @@ https://github.com/nodejs/node/commit/7cc17a0cea1d25188c103745a7d0c24375e3a609
 * crypto: revisar errores de SSL con ERR_print_errors() (Ben Noordhuis)
 * Ahora los callbacks del dns pasan por MakeCallback
 * Levantar un error cuando se encuentre un archivo package.json malformado. (Ben Leslie)
-* buffers: handle bad length argument in constructor (Ben Noordhuis)
+* buffers: manejar argumento de longitud incorrecta en el constructor (Ben Noordhuis)
 * [#1726](https://github.com/joyent/node/issues/1726), unref process.stdout
-* Doc improvements (Ben Noordhuis, Fedor Indutny, koichik)
-* Upgrade libuv to fe18438
+* Mejoras de doc (Ben Noordhuis, Fedor Indutny, koichik)
+* Actualizar libuv a fe18438
 
 <a id="0.5.7"></a>
 
-## 2011.09.16, Version 0.5.7 (unstable)
+## 2011.09.16, Versión 0.5.7 (inestable)
 
 https://github.com/nodejs/node/commit/558241166c4f3c516e5a448e676db0b57119212f
 
-* Upgrade V8 to 3.6.4
-* Improve Windows compatibility
-* Documentation improvements
-* Debugger and REPL improvements (Fedor Indutny)
-* Add legacy API support: net.Stream(fd), process.stdout.writable, process.stdout.fd
+* Actualizar V8 a 3.6.4
+* Mejorar compatibilidad de Windows
+* Mejoras de documentación
+* Mejoras de depurador y REPL (Fedor Indutny)
+* Añadir soporte para API heredada: net.Stream(fd), process.stdout.writable, process.stdout.fd
 
-* Fix mkdir EEXIST handling (isaacs)
+* Arreglar el manejo de EEXIST de mkdir (isaacs)
 
-* Use net_uv instead of net_legacy for stdio
-* Do not load readline from util.inspect
-* [#1673](https://github.com/joyent/node/issues/1673) Fix bug related to V8 context with accessors (Fedor Indutny)
-* [#1634](https://github.com/joyent/node/issues/1634) util: Fix inspection for Error (koichik)
-* [#1645](https://github.com/joyent/node/issues/1645) fs: Add positioned file writing feature to fs.WriteStream (Thomas Shinnick)
+* Usar net_uv en lugar de net_legacy para stdio
+* No cargar readline desde util.inspect
+* [#1673](https://github.com/joyent/node/issues/1673) Reparar bug relacionado al contexto de V8 con accesores (Fedor Indutny)
+* [#1634](https://github.com/joyent/node/issues/1634) util: Reparar inspección por Error (koichik)
+* [#1645](https://github.com/joyent/node/issues/1645) fs: Añadir función de escritura de archivos posicionada a fs.WriteStream (Thomas Shinnick)
 
 * [#1637](https://github.com/joyent/node/issues/1637) fs: Unguarded fs.watchFile cache statWatchers checking fixed (Thomas Shinnick)
 
