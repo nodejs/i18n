@@ -2212,7 +2212,7 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Arreglar uso de BIO's. (Koichi Kobayashi)
 
 * [#1345](https://github.com/joyent/node/issues/1345) Establecer correctamente socket.remoteAddress con backend de libuv (Bert Belder)
-* [#1429](https://github.com/joyent/node/issues/1429) Don't clobber quick edit mode on windows (Peter Bright)
+* [#1429](https://github.com/joyent/node/issues/1429) No sobrescribir modo de edición rápida en windows (Peter Bright)
 * [#1503](https://github.com/joyent/node/issues/1503) Make libuv backend default on unix, override with `node --use-legacy`
 * [#1565](https://github.com/joyent/node/issues/1565) Fix fs.stat for paths ending with \ on windows (Igor Zinkovsky)
 * [#1568](https://github.com/joyent/node/issues/1568) Fix x509 certificate subject parsing (Koichi Kobayashi)
