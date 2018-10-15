@@ -2262,13 +2262,13 @@ https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 * [#1572](https://github.com/joyent/node/issues/1572) mejorar completación de tab para objetos en el REPL (Nathan Rajlich)
 * [#1563](https://github.com/joyent/node/issues/1563) corregir desbordamiento de buffer en módulo child_process (reportado por Dean McNamee)
 * [#1546](https://github.com/joyent/node/issues/1546) corregir regresión de rendimiento en módulo http (reportado por Brian Geffon)
-* [#1491](https://github.com/joyent/node/issues/1491) add PBKDF2 crypto support (Glen Low)
-* [#1447](https://github.com/joyent/node/issues/1447) remove deprecated http.cat() function (Mikeal Rogers)
-* [#1140](https://github.com/joyent/node/issues/1140) fix incorrect dispatch of vm.runInContext's filename argument (Antranig Basman)
+* [#1491](https://github.com/joyent/node/issues/1491) añadir soporte de crypto PBKDF2 (Glen Low)
+* [#1447](https://github.com/joyent/node/issues/1447) remover función http.cat() desaprobada (Mikeal Rogers)
+* [#1140](https://github.com/joyent/node/issues/1140) reparar envío incorrecto del argumento de nombre de archivo de vm.runInContext (Antranig Basman)
 
-* [#1140](https://github.com/joyent/node/issues/1140) document vm.runInContext() and vm.createContext() (Antranig Basman)
+* [#1140](https://github.com/joyent/node/issues/1140) documentar vm.runInContext() y vm.createContext() (Antranig Basman)
 
-* [#1428](https://github.com/joyent/node/issues/1428) fix os.freemem() on 64 bits freebsd (Artem Zaytsev)
+* [#1428](https://github.com/joyent/node/issues/1428) arreglar os.freemem() en freebsd de 64 bits (Artem Zaytsev)
 * [#1164](https://github.com/joyent/node/issues/1164) make all DNS lookups async, fixes uncatchable exceptions (Koichi Kobayashi)
 
 * fix incorrect ssl shutdown check (Tom Hughes)
