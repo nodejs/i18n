@@ -2238,10 +2238,10 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
 * Añadidas propiedades adicionales a getPeerCertificate (Nathan Rixham, Niclas Hoyer)
 
-* Don't eval repl command twice when an error is thrown (Nathan Rajlich)
+* No evaluar comando repl dos veces cuando se arroje un error (Nathan Rajlich)
 
-* Improve util.isDate() (Nathan Rajlich)
-* Improvements in libuv backend and bindings, upgrade libuv to bd6066cb349a9b3a1b0d87b146ddaee06db31d10
+* Mejorar util.isDate() (Nathan Rajlich)
+* Mejoras en backend y enlazados de libuv, actualizar libuv a bd6066cb349a9b3a1b0d87b146ddaee06db31d10
 
 * Show warning when using lib/sys.js (Maciej Malecki)
 
