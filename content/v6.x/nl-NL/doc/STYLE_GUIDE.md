@@ -4,11 +4,11 @@
   * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `child_process`).
   * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
 * Documenten moeten worden 'word-wrapped' bij 80 tekens.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
+* De formattering beschreven in `.editorconfig` heeft de voorkeur. 
+  * Een [plugin](http://editorconfig.org/#download) is beschikbaar voor sommige editors om automatisch deze regels toe te passen.
+* Mechanische problemen, zoals spelling en grammatica, moeten door tools worden geïdentificeerd, voor zover dit mogelijk is. Als het niet door een tool wordt opgemerkt, dan zouden menselijke reviewers ze moeten aanwijzen.
+* Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Howel omstreden, de [Oxford komma](https://en.wikipedia.org/wiki/Serial_comma) heeft de voorkeur ter duidelijkheid.
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
