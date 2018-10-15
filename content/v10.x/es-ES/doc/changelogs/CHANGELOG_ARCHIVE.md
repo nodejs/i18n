@@ -2293,35 +2293,35 @@ https://github.com/nodejs/node/commit/cfba1f59224ff8602c3fe9145181cad4c6df89a9
 
 * Corrige el manejo de puerto predeterminado de la cabecera de host de http. (Mikeal Rogers)
 
-* [#1440](https://github.com/joyent/node/issues/1440) strip byte order marker when loading `*.js` and `*.json` files (Ben Noordhuis)
+* [#1440](https://github.com/joyent/node/issues/1440) hacer strip al orden de los bytes al cargar archivos `*.js` y `*.json` files (Ben Noordhuis)
 
-* [#1434](https://github.com/joyent/node/issues/1434) Improve util.format() compatibility with browser. (Koichi Kobayashi)
+* [#1434](https://github.com/joyent/node/issues/1434) Mejorar compatibilidad de util.format() con navegador. (Koichi Kobayashi)
 
-* Provide unchecked uint entry points for integer Buffer.read/writeInt methods. (Robert Mustacchi)
+* Proporcionar puntos de entrada de uint sin revisar para métodos Buffer.read/writeInt de enteros. (Robert Mustacchi)
 
-* CMake improvements (Tom Huges)
+* Mejoras de CMake (Tom Huges)
 
-* Upgrade V8 to 3.5.4.
+* Actualizar V8 a 3.5.4.
 
 <a id="0.5.3"></a>
 
-## 2011.08.01, Version 0.5.3 (unstable)
+## 2011.08.01, Versión 0.5.3 (inestable)
 
 https://github.com/nodejs/node/commit/4585330afef44ddfb6a4054bd9b0f190b352628b
 
-* Fix crypto encryption/decryption with Base64. (SAWADA Tadashi)
-* [#243](https://github.com/joyent/node/issues/243) Add an optional length argument to Buffer.write() (koichik)
-* [#657](https://github.com/joyent/node/issues/657) convert nonbuffer data to string in fs.writeFile/Sync (Daniel Pihlström)
+* Mejorar encriptación/descifrado de crypto con Base64. (SAWADA Tadashi)
+* [#243](https://github.com/joyent/node/issues/243) Añadir un argumento de longitud opcional a Buffer.write() (koichik)
+* [#657](https://github.com/joyent/node/issues/657) convertir datos no-buffer a string en fs.writeFile/Sync (Daniel Pihlström)
 
-* Add process.features, remove process.useUV (Ben Noordhuis)
+* Añadir process.features, remover process.useUV (Ben Noordhuis)
 
-* [#324](https://github.com/joyent/node/issues/324) Fix crypto hmac to accept binary keys + add test cases from rfc 2202 and 4231 (Stefan Bühler)
+* [#324](https://github.com/joyent/node/issues/324) Arreglar hmac de crypto para que acepte claves binarias + añadir casos de prueba desde rfc 2202 y 4231 (Stefan Bühler)
 
-* Add Socket::bytesRead, Socket::bytesWritten (Alexander Uvarov)
+* Añadir Socket::bytesRead, Socket::bytesWritten (Alexander Uvarov)
 
-* [#572](https://github.com/joyent/node/issues/572) Don't print result of --eval in CLI (Ben Noordhuis)
-* [#1223](https://github.com/joyent/node/issues/1223) Fix http.ClientRequest crashes if end() was called twice (koichik)
-* [#1383](https://github.com/joyent/node/issues/1383) Emit 'close' after all connections have closed (Felix Geisendörfer)
+* [#572](https://github.com/joyent/node/issues/572) No imprimir resultado de --eval en CLI (Ben Noordhuis)
+* [#1223](https://github.com/joyent/node/issues/1223) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces (koichik)
+* [#1383](https://github.com/joyent/node/issues/1383) Emitir "close" luego de que todas las conexiones se han cerrado (Felix Geisendörfer)
 * Add sprintf-like util.format() function (Ben Noordhuis)
 * Add support for TLS SNI (Fedor Indutny)
 * New http agent implementation. Off by default the command line flag --use-http2 will enable it. "make test-http2" will run the tests for the new implementation. (Mikeal Rogers)
