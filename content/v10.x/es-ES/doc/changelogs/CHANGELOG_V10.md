@@ -178,7 +178,7 @@
 * [[`31812edb2d`](https://github.com/nodejs/node/commit/31812edb2d)] - **src**: eliminar las operaciones de copia innecesarias en el seguimiento (Anna Henningsen) [#20356](https://github.com/nodejs/node/pull/20356)
 * [[`e0d2bc5cce`](https://github.com/nodejs/node/commit/e0d2bc5cce)] - **src**: mejorar la excepción grave (Ruben Bridgewater) [#20294](https://github.com/nodejs/node/pull/20294)
 * [[`44fdd36b96`](https://github.com/nodejs/node/commit/44fdd36b96)] - **src**: remove SecureContext `\_external` getter (Anna Henningsen) [#20237](https://github.com/nodejs/node/pull/20237)
-* [[`81de533836`](https://github.com/nodejs/node/commit/81de533836)] - **src**: create per-isolate strings after platform setup (Ulan Degenbaev) [#20175](https://github.com/nodejs/node/pull/20175)
+* [[`81de533836`](https://github.com/nodejs/node/commit/81de533836)] - **src**: crear cadenas por aislamiento después de configurar la plataforma (Ulan Degenbaev) [#20175](https://github.com/nodejs/node/pull/20175)
 * [[`b5bc6bd94b`](https://github.com/nodejs/node/commit/b5bc6bd94b)] - **src**: fix Systemtap node\_gc\_stop probe (William Cohen) [#20152](https://github.com/nodejs/node/pull/20152)
 * [[`6bf816fde2`](https://github.com/nodejs/node/commit/6bf816fde2)] - **src**: limit foreground tasks draining loop (Ulan Degenbaev) [#19987](https://github.com/nodejs/node/pull/19987)
 * [[`bd2e521096`](https://github.com/nodejs/node/commit/bd2e521096)] - **src**: rename return var in VerifySpkac functions (Daniel Bevenius) [#20218](https://github.com/nodejs/node/pull/20218)
