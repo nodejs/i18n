@@ -2217,15 +2217,15 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * [#1565](https://github.com/joyent/node/issues/1565) Arreglar fs.stat para rutas que terminen en \ en windows (Igor Zinkovsky)
 * [#1568](https://github.com/joyent/node/issues/1568) Reparar análisis de sujeto de certificado x509 (Koichi Kobayashi)
 * [#1586](https://github.com/joyent/node/issues/1586) Hacer que la codificación de escritura de los sockets sea indiferente a mayúsculas y minúsculas (Koichi Kobayashi)
-* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implement fs in libuv, remove libeio and pthread-win32 dependency on windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
+* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implementar fs en libuv, remover libeio y dependencia de pthread-win32 en windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
 
-* [#1592](https://github.com/joyent/node/issues/1592) Don't load-time link against CreateSymbolicLink on windows (Peter Bright)
+* [#1592](https://github.com/joyent/node/issues/1592) No hacer "load-time" al link en oposición a CreateSymbolicLink en windows (Peter Bright)
 
-* [#1601](https://github.com/joyent/node/issues/1601) Improve API consistency when dealing with the socket underlying a HTTP client request (Mikeal Rogers)
+* [#1601](https://github.com/joyent/node/issues/1601) Mejorar consistencia de las API al lidiar con el socket subyacente a una petición de cliente HTTP (Mikeal Rogers)
 
-* [#1610](https://github.com/joyent/node/issues/1610) Remove DigiNotar CA from trusted list (Isaac Schlueter)
+* [#1610](https://github.com/joyent/node/issues/1610) Remover autoridad de certificación DigiNotar de la lista de confiables (Isaac Schlueter)
 
-* [#1617](https://github.com/joyent/node/issues/1617) Added some win32 os functions (Karl Skomski)
+* [#1617](https://github.com/joyent/node/issues/1617) Algunas funciones os de win32 fueron añadidas (Karl Skomski)
 * [#1624](https://github.com/joyent/node/issues/1624) avoid buffer overrun with 'binary' encoding (Koichi Kobayashi)
 * [#1633](https://github.com/joyent/node/issues/1633) make Buffer.write() always set _charsWritten (Koichi Kobayashi)
 * [#1644](https://github.com/joyent/node/issues/1644) Windows: set executables to be console programs (Peter Bright)
