@@ -1955,7 +1955,7 @@ https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 * [#2379](https://github.com/joyent/node/issues/2379): debugger: Solicitar backtrace sin referencias (Fedor Indutny)
 * ayudante de desapilado DTrace simple (Dave Pacheco)
 * crypto: reescribir HexDecode sin snprintf (Roman Shtylman)
-* crypto: no ignorar errores de incialización de DH (Ben Noordhuis)
+* crypto: no ignorar errores de inicialización de DH (Ben Noordhuis)
 
 <a id="0.6.6"></a>
 
@@ -2007,11 +2007,11 @@ https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
 https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
-* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. Está incluído en los paquetes/instaladores e instalado en `make install`.
+* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. Está incluido en los paquetes/instaladores e instalado en `make install`.
 
 * [#2076](https://github.com/joyent/node/issues/2076) Añadir logos al instalador de windows.
 
-* [#1711](https://github.com/joyent/node/issues/1711) Manejar correctamente solicitudes de http sin encabezados. (Ben Noordhuis, Felix Geisendörfer)
+* [#1711](https://github.com/joyent/node/issues/1711) Manejar correctamente solicitudes de http sin cabeceras. (Ben Noordhuis, Felix Geisendörfer)
 
 * TLS: exponer más opciones y constantes de contexto de SSL de openssl. (Ben Noordhuis)
 
@@ -2049,7 +2049,7 @@ https://github.com/nodejs/node/commit/a4402f0b2e410b19375a1d5c5fb7fe7f66f3c7f8
 https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 
 * mejoras de doc (Eric Lovett, Ben Noordhuis, Scott Anderson, Yoji SHIDARA)
-* crypto: hacer seguro para threads (Ben Noordhuis)
+* crypto: proporcionar seguridad en hilos (Ben Noordhuis)
 * arreglar objeto de error de process.kill
 * debugger: manejar correctamente fuente de handle con caracteres multi-byte (Shigeki Ohtsu)
 * hacer que stdout y stderr sean no destructibles (Igor Zinkovsky)
@@ -2082,7 +2082,7 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 * mejoras del sistema de compilación (bnoordhuis)
 * [#1936](https://github.com/joyent/node/issues/1936) tls: no emite "end" desde EncryptedStream (koichik)
 * [#758](https://github.com/joyent/node/issues/758) tls: añadir address(), remoteAddress/remotePort
-* [#1399](https://github.com/joyent/node/issues/1399) http: emitir objeto de Error object después de .abort() (bnoordhuis)
+* [#1399](https://github.com/joyent/node/issues/1399) http: emitir objeto de Error después de .abort() (bnoordhuis)
 * [#1999](https://github.com/joyent/node/issues/1999) fs: hacer que mkdir() se establezca por defecto a 0777 permisos (bnoordhuis)
 * [#2001](https://github.com/joyent/node/issues/2001) corregir códigos de error de pipe
 * [#2002](https://github.com/joyent/node/issues/2002) Socket.write debería restablecer el temporizador de timeout
