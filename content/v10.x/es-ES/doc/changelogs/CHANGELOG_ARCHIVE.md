@@ -2153,16 +2153,16 @@ https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 
 <a id="0.5.8"></a>
 
-## 2011.09.30, Version 0.5.8 (unstable)
+## 2011.09.30, Versión 0.5.8 (inestable)
 
 https://github.com/nodejs/node/commit/7cc17a0cea1d25188c103745a7d0c24375e3a609
 
-* zlib bindings (isaacs)
-* Windows supports TTY ANSI escape codes (Bert Belder)
-* Debugger improvements (Fedor Indutny)
-* crypto: look up SSL errors with ERR_print_errors() (Ben Noordhuis)
-* dns callbacks go through MakeCallback now
-* Raise an error when a malformed package.json file is found. (Ben Leslie)
+* enlazados de zlib (isaacs)
+* Windows soporta códigos de escape TTY ANSI (Bert Belder)
+* Mejoras del depurador (Fedor Indutny)
+* crypto: revisar errores de SSL con ERR_print_errors() (Ben Noordhuis)
+* Ahora los callbacks del dns pasan por MakeCallback
+* Levantar un error cuando se encuentre un archivo package.json malformado. (Ben Leslie)
 * buffers: handle bad length argument in constructor (Ben Noordhuis)
 * [#1726](https://github.com/joyent/node/issues/1726), unref process.stdout
 * Doc improvements (Ben Noordhuis, Fedor Indutny, koichik)
