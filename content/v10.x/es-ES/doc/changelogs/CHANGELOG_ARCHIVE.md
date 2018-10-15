@@ -2102,7 +2102,7 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
 https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 
-* Remover sistema de compilación cmake, soporte para Cygwin, báse de código heredado, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
+* Remover sistema de compilación cmake, soporte para Cygwin, base de código heredado, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
 
 * Mejoras de documentación (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
 
