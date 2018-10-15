@@ -62,7 +62,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 由于`NODE_MODULE`不是一个函数（请参阅`node.h`），因此在其后面没有分号。
 
-The `module_name` must match the filename of the final binary (excluding the .node suffix).
+`module_name`必须和最终的二进制文件名 (不包含.node后缀) 相匹配。
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
