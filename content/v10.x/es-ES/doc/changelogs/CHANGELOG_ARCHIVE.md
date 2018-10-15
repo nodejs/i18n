@@ -2188,30 +2188,30 @@ https://github.com/nodejs/node/commit/558241166c4f3c516e5a448e676db0b57119212f
 * [#1634](https://github.com/joyent/node/issues/1634) util: Reparar inspección por Error (koichik)
 * [#1645](https://github.com/joyent/node/issues/1645) fs: Añadir función de escritura de archivos posicionada a fs.WriteStream (Thomas Shinnick)
 
-* [#1637](https://github.com/joyent/node/issues/1637) fs: Unguarded fs.watchFile cache statWatchers checking fixed (Thomas Shinnick)
+* [#1637](https://github.com/joyent/node/issues/1637) fs: Corregida la revisión sin protección de la caché de fs.watchFile por statWatchers (Thomas Shinnick)
 
-* [#1695](https://github.com/joyent/node/issues/1695) Forward customFds to ChildProcess.spawn
+* [#1695](https://github.com/joyent/node/issues/1695) Enviar customFds también a ChildProcess.spawn
 
-* [#1707](https://github.com/joyent/node/issues/1707) Fix hasOwnProperty security problem in querystring (isaacs)
-* [#1719](https://github.com/joyent/node/issues/1719) Drain OpenSSL error queue
+* [#1707](https://github.com/joyent/node/issues/1707) Corregir problema de seguridad de hasOwnProperty en querystring (isaacs)
+* [#1719](https://github.com/joyent/node/issues/1719) Drenar cola de error de OpenSSL
 
 <a id="0.5.6"></a>
 
-## 2011.09.08, Version 0.5.6 (unstable)
+## 2011.09.08, Versión 0.5.6 (inestable)
 
 https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
-* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Documentation improvements (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
+* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Mejoras de documentación (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
 
-* [#650](https://github.com/joyent/node/issues/650) Improve path parsing on windows (Bert Belder)
+* [#650](https://github.com/joyent/node/issues/650) Mejorar el análisis de rutas en windows (Bert Belder)
 
-* [#752](https://github.com/joyent/node/issues/752) Remove headers sent check in OutgoingMessage.getHeader() (Peter Lyons)
+* [#752](https://github.com/joyent/node/issues/752) Remover revisión de envío de cabeceras en OutgoingMessage.getHeader() (Peter Lyons)
 
-* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Libuv-related bugs fixed (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
+* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Fueron reparados bugs relacionados con libuv (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
 
-* [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Fix BIO's usage. (Koichi Kobayashi)
+* [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Arreglar uso de BIO's. (Koichi Kobayashi)
 
-* [#1345](https://github.com/joyent/node/issues/1345) Correctly set socket.remoteAddress with libuv backend (Bert Belder)
+* [#1345](https://github.com/joyent/node/issues/1345) Establecer correctamente socket.remoteAddress con backend de libuv (Bert Belder)
 * [#1429](https://github.com/joyent/node/issues/1429) Don't clobber quick edit mode on windows (Peter Bright)
 * [#1503](https://github.com/joyent/node/issues/1503) Make libuv backend default on unix, override with `node --use-legacy`
 * [#1565](https://github.com/joyent/node/issues/1565) Fix fs.stat for paths ending with \ on windows (Igor Zinkovsky)
