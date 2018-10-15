@@ -1039,7 +1039,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 <a id="8.8.1"></a>
 
-## 2017-10-25, Versión 8.8.1 (Actual), @cjihrig
+## 2017-10-25, Versión 8.8.1 (Presente), @cjihrig
 
 ### Cambios Notables
 
@@ -1052,26 +1052,26 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`c8396b8370`](https://github.com/nodejs/node/commit/c8396b8370)] - **doc**: eliminar "loader hooks" de las funciones no compatibles (Teppei Sato) [#16465](https://github.com/nodejs/node/pull/16465)
 * [[`2b0bb57055`](https://github.com/nodejs/node/commit/2b0bb57055)] - **doc**: corregir URL errónea (Jon Moss) [#16470](https://github.com/nodejs/node/pull/16470)
 * [[`9ffc32974e`](https://github.com/nodejs/node/commit/9ffc32974e)] - **doc**: corregir error tipográfico en el registro de cambios para 8.8.0 (Alec Perkins) [#16462](https://github.com/nodejs/node/pull/16462)
-* [[`7facaa5031`](https://github.com/nodejs/node/commit/7facaa5031)] - **doc**: fix missing newline character (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
-* [[`16eb7d3a5f`](https://github.com/nodejs/node/commit/16eb7d3a5f)] - **doc**: fix doc styles (Daijiro Wachi) [#16385](https://github.com/nodejs/node/pull/16385)
-* [[`99fdc1d04f`](https://github.com/nodejs/node/commit/99fdc1d04f)] - **doc**: add recommendations for first timers (Refael Ackermann) [#16350](https://github.com/nodejs/node/pull/16350)
-* [[`6fbef7f350`](https://github.com/nodejs/node/commit/6fbef7f350)] - **doc**: fix typo in zlib.md (Luigi Pinca) [#16480](https://github.com/nodejs/node/pull/16480)
-* [[`655e017e40`](https://github.com/nodejs/node/commit/655e017e40)] - **net**: fix timeout with null handle (Anatoli Papirovski) [#16489](https://github.com/nodejs/node/pull/16489)
-* [[`7fad10cc7e`](https://github.com/nodejs/node/commit/7fad10cc7e)] - **test**: make test-v8-serdes work without stdin (Anna Henningsen)
-* [[`12dc06e3e1`](https://github.com/nodejs/node/commit/12dc06e3e1)] - **test**: call toLowerCase on the resolved module (Daniel Bevenius) [#16486](https://github.com/nodejs/node/pull/16486)
-* [[`10894c3835`](https://github.com/nodejs/node/commit/10894c3835)] - **test**: allow for different nsswitch.conf settings (Daniel Bevenius) [#16378](https://github.com/nodejs/node/pull/16378)
-* [[`2a53165aa0`](https://github.com/nodejs/node/commit/2a53165aa0)] - **test**: add missing assertion (cjihrig) [#15519](https://github.com/nodejs/node/pull/15519)
+* [[`7facaa5031`](https://github.com/nodejs/node/commit/7facaa5031)] - **doc**: corregir el caracter de nueva línea faltante (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
+* [[`16eb7d3a5f`](https://github.com/nodejs/node/commit/16eb7d3a5f)] - **doc**: corregir los estilos de doc (Daijiro Wachi) [#16385](https://github.com/nodejs/node/pull/16385)
+* [[`99fdc1d04f`](https://github.com/nodejs/node/commit/99fdc1d04f)] - **doc**: añadir recomendaciones para los novatos (Refael Ackermann) [#16350](https://github.com/nodejs/node/pull/16350)
+* [[`6fbef7f350`](https://github.com/nodejs/node/commit/6fbef7f350)] - **doc**: corregir error tipográfico en zlib.md (Luigi Pinca) [#16480](https://github.com/nodejs/node/pull/16480)
+* [[`655e017e40`](https://github.com/nodejs/node/commit/655e017e40)] - **net**: corregir el "timeout" con un problema de manejador nulo (Anatoli Papirovski) [#16489](https://github.com/nodejs/node/pull/16489)
+* [[`7fad10cc7e`](https://github.com/nodejs/node/commit/7fad10cc7e)] - **test**: hacer que test-v8-serdes funcione sin stdin (Anna Henningsen)
+* [[`12dc06e3e1`](https://github.com/nodejs/node/commit/12dc06e3e1)] - **test**: llamar a toLowerCase en el módulo "resolved" (Daniel Bevenius) [#16486](https://github.com/nodejs/node/pull/16486)
+* [[`10894c3835`](https://github.com/nodejs/node/commit/10894c3835)] - **test**: permitir diferentes configuraciones nsswitch.conf (Daniel Bevenius) [#16378](https://github.com/nodejs/node/pull/16378)
+* [[`2a53165aa0`](https://github.com/nodejs/node/commit/2a53165aa0)] - **test**: añadir aserción faltante (cjihrig) [#15519](https://github.com/nodejs/node/pull/15519)
 
 <a id="8.8.0"></a>
 
-## 2017-10-24, Version 8.8.0 (Current), @MylesBorins
+## 2017-10-24, Versión 8.8.0 (Presente), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **crypto**: 
-  * expose ECDH class [#8188](https://github.com/nodejs/node/pull/8188)
+  * exponer la clase ECDH [#8188](https://github.com/nodejs/node/pull/8188)
 * **http2**: 
-  * http2 is now exposed by default without the need for a flag [#15685](https://github.com/nodejs/node/pull/15685)
+  * http2 ahora está expuesto por defecto sin la necesidad de una bandera [#15685](https://github.com/nodejs/node/pull/15685)
   * a new environment variable NODE\_NO\_HTTP2 has been added to allow userland http2 to be required [#15685](https://github.com/nodejs/node/pull/15685)
   * support has been added for generic `Duplex` streams [#16269](https://github.com/nodejs/node/pull/16269)
 * **module**: 
