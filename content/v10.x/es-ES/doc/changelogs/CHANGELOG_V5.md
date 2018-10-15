@@ -424,7 +424,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **temporizadores**: Tiempos de espera de Node.js internos ahora usan las mismas rutas lógicas que las creadas con `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007) 
   * Esto puede causar un perfil de rendimiento ligeramente diferente en algunas situaciones. Hasta ahora, ha mostrado ser positivo en la mayoría de los casos.
 * **v8**: hacebbackport fb4ccae del upstream v8 (Vladimir Krivosheev) #4231 
-  * eventos de ruptura de v8 ofrecerán mejor soporte para depursdpres externos
+  * eventos de ruptura de v8 ofrecerán mejor soporte para depuradores externos
 * **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
   * Anteriormente, si múltiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
 
@@ -582,7 +582,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`903e8d09e1`](https://github.com/nodejs/node/commit/903e8d09e1)] - **doc**: reparar error tipográfico en el código de muestra pbkdf2Sync (Marc Cuva) [#5306](https://github.com/nodejs/node/pull/5306)
 * [[`79b1c22c9f`](https://github.com/nodejs/node/commit/79b1c22c9f)] - **doc**: reparar salida buf.readInt16LE (Chinedu Francis Nwafili) [#5282](https://github.com/nodejs/node/pull/5282)
 * [[`e46915f2f3`](https://github.com/nodejs/node/commit/e46915f2f3)] - **doc**: nota de limitaciones util.isError() @@toStringTag (cjihrig) [#5414](https://github.com/nodejs/node/pull/5414)
-* [[`935fd21fff`](https://github.com/nodejs/node/commit/935fd21fff)] - **doc**: aclarar error de manejor en net.createServer (Dirceu Pereira Tiegs) [#5353](https://github.com/nodejs/node/pull/5353)
+* [[`935fd21fff`](https://github.com/nodejs/node/commit/935fd21fff)] - **doc**: aclarar error de manejo en net.createServer (Dirceu Pereira Tiegs) [#5353](https://github.com/nodejs/node/pull/5353)
 * [[`93dce6d4fe`](https://github.com/nodejs/node/commit/93dce6d4fe)] - **doc**: documento fs.datasync(Sync) (Ron Korving) [#5402](https://github.com/nodejs/node/pull/5402)
 * [[`96daf51358`](https://github.com/nodejs/node/commit/96daf51358)] - **doc**: añadir a Evan Lucas al CTC (Rod Vagg) [#5275](https://github.com/nodejs/node/pull/5275)
 * [[`31b405d0cf`](https://github.com/nodejs/node/commit/31b405d0cf)] - **doc**: añadir Rich Trott al CTC (Rod Vagg) [#5276](https://github.com/nodejs/node/pull/5276)
