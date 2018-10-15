@@ -87,9 +87,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 接下来，调用`node-gyp build`命令来生成并编译`addon.node`文件。 它将被放置到`build/Release/`目录。
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+当使用`npm install`安装Node.js插件时，npm使用它自己的捆绑版本的`node-gyp`来执行相同操作，以生成用户要求的平台下插件的编译后版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+一旦构建，二进制的插件可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块在Node.js中使用。
 
 ```js
 // hello.js
