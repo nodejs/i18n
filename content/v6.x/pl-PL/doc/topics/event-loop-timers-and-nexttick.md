@@ -8,7 +8,7 @@ Ponieważ większość nowoczesnych jąder jest wielowątkowych, mogą obsługiw
 
 ## Objaśnienie Pętli Zdarzeń
 
-Po uruchomieniu Node.js inicjuje pętlę zdarzeń, przetwarza dostarczony skrypt wejściowy (lub wpada w [REPL](https://nodejs.org/api/repl.html#repl_repl), który nie jest uwzględniony w ten dokument), który może wykonywać asynchroniczne wywołania API, planować zegary lub wywoływać `process.nextTick()`, a następnie rozpoczyna przetwarzanie pętli zdarzeń.
+Po uruchomieniu, Node.js inicjuje pętlę zdarzeń, przetwarza dostarczony skrypt wejściowy (lub wpada w [REPL](https://nodejs.org/api/repl.html#repl_repl), który nie jest uwzględniony w ten dokument), który może wykonywać asynchroniczne wywołania API, planować zegary lub wywoływać `process.nextTick()`, a następnie rozpoczyna przetwarzanie pętli zdarzeń.
 
 Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli zdarzeń.
 
@@ -95,7 +95,7 @@ someAsyncOperation(function() {
 
 Kiedy pętla zdarzeń wchodzi w fazę **odpytywania**, ma pustą kolejkę (`fs.readFile()` nie zostało zakończone), więc będzie czekać na liczbę ms pozostałych do ​​osiągnięcia progu jak najszybszego timera. Podczas gdy jest oczekiwanie 95 ms przejścia, `fs.readFile()` kończy czytanie pliku i jego wywołanie zwrotne, które trwa 10 ms, jest dodawane do kolejki **odpytywania** i wykonany. Po zakończeniu wywołania zwrotnego nie ma więcej wywołań zwrotnych w kolejce, więc pętla zdarzeń zobaczy, że próg najwcześniejszego timera został osiągnięty, a następnie zawinięty do fazy ** timerów** w celu wykonania wywołania zwrotnego timera. W tym przykładzie zobaczysz całkowite opóźnienie pomiędzy zaplanowanym timerem a jego wywoływaniem zwrotnym wykonywanym przez 105ms.
 
-Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli zdarzeń, \[libuv\] (http://libuv.org/) (biblioteka C, która implementuje Node.js pętlę zdarzeń i wszystkie asynchroniczne zachowania platformy) ma również twarde maksimum (zależne od systemu), zanim przestanie odpytywać dla większej ilości wydarzeń.
+Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli zdarzeń, \[libuv\] (http://libuv.org/) (biblioteka C, która implementuje pętlę zdarzeń Node.js i wszystkie asynchroniczne zachowania platformy) ma również twarde maksimum (zależne od systemu), zanim przestanie odpytywać dla większej ilości wydarzeń.
 
 ### Wej/Wyj wywołania zwrotne
 
