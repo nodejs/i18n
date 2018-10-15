@@ -53,14 +53,14 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+注意，所有的Node.js插件都必须导出一个如下模式的初始化函数：
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+由于`NODE_MODULE`不是一个函数（请参阅`node.h`），因此在其后面没有分号。
 
 The `module_name` must match the filename of the final binary (excluding the .node suffix).
 
