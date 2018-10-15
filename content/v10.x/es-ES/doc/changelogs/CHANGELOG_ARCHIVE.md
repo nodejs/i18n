@@ -2269,29 +2269,29 @@ https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 * [#1140](https://github.com/joyent/node/issues/1140) documentar vm.runInContext() y vm.createContext() (Antranig Basman)
 
 * [#1428](https://github.com/joyent/node/issues/1428) arreglar os.freemem() en freebsd de 64 bits (Artem Zaytsev)
-* [#1164](https://github.com/joyent/node/issues/1164) make all DNS lookups async, fixes uncatchable exceptions (Koichi Kobayashi)
+* [#1164](https://github.com/joyent/node/issues/1164) hacer que todas las búsquedas de DNS sean asincrónicas, repara excepciones no atrapables (Koichi Kobayashi)
 
-* fix incorrect ssl shutdown check (Tom Hughes)
+* corregir revisión incorrecta del cierre de ssl (Tom Hughes)
 
-* various cmake fixes (Tom Hughes)
-* improved documentation (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
+* varias correcciones de cmake (Tom Hughes)
+* documentación mejorada (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
 
-* upgrade libuv to commit 835782a
+* actualizar libuv a commit 835782a
 
-* upgrade V8 to 3.5.8
+* actualizar V8 a 3.5.8
 
 <a id="0.5.4"></a>
 
-## 2011.08.12, Version 0.5.4 (unstable)
+## 2011.08.12, Versión 0.5.4 (inestable)
 
 https://github.com/nodejs/node/commit/cfba1f59224ff8602c3fe9145181cad4c6df89a9
 
-* libuv/Windows compatibility improvements
-* Build on Microsoft Visual Studio via GYP. Use generate-projects.bat in the to build sln files. (Peter Bright, Igor Zinkovsky)
+* mejoras de compatibilidad de libuv/Windows
+* Compilar en Microsoft Visual Studio a través de GYP. Usar generate-projects.bat en los archivos "to build" de snl. (Peter Bright, Igor Zinkovsky)
 
-* Make Mikeal's HTTP agent client the default. Use old HTTP client with --use-http1
+* Hacer que el agente de cliente HTTP de Mikeal sea el predeterminado. Usar viejo cliente HTTP con --use-http1
 
-* Fixes https host header default port handling. (Mikeal Rogers)
+* Corrige el manejo de puerto predeterminado de la cabecera de host de http. (Mikeal Rogers)
 
 * [#1440](https://github.com/joyent/node/issues/1440) strip byte order marker when loading `*.js` and `*.json` files (Ben Noordhuis)
 
