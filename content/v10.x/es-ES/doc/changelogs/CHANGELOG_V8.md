@@ -1049,9 +1049,9 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 ### Commits
 
 * [[`db8c92fb42`](https://github.com/nodejs/node/commit/db8c92fb42)] - **doc**: corregir la ortografía en el registro de cambios v8.8.0 (Myles Borins) [#16477](https://github.com/nodejs/node/pull/16477)
-* [[`c8396b8370`](https://github.com/nodejs/node/commit/c8396b8370)] - **doc**: remove loader hooks from unsupported features (Teppei Sato) [#16465](https://github.com/nodejs/node/pull/16465)
-* [[`2b0bb57055`](https://github.com/nodejs/node/commit/2b0bb57055)] - **doc**: fix wrong URL (Jon Moss) [#16470](https://github.com/nodejs/node/pull/16470)
-* [[`9ffc32974e`](https://github.com/nodejs/node/commit/9ffc32974e)] - **doc**: fix typo in changelog for 8.8.0 (Alec Perkins) [#16462](https://github.com/nodejs/node/pull/16462)
+* [[`c8396b8370`](https://github.com/nodejs/node/commit/c8396b8370)] - **doc**: eliminar "loader hooks" de las funciones no compatibles (Teppei Sato) [#16465](https://github.com/nodejs/node/pull/16465)
+* [[`2b0bb57055`](https://github.com/nodejs/node/commit/2b0bb57055)] - **doc**: corregir URL errónea (Jon Moss) [#16470](https://github.com/nodejs/node/pull/16470)
+* [[`9ffc32974e`](https://github.com/nodejs/node/commit/9ffc32974e)] - **doc**: corregir error tipográfico en el registro de cambios para 8.8.0 (Alec Perkins) [#16462](https://github.com/nodejs/node/pull/16462)
 * [[`7facaa5031`](https://github.com/nodejs/node/commit/7facaa5031)] - **doc**: fix missing newline character (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
 * [[`16eb7d3a5f`](https://github.com/nodejs/node/commit/16eb7d3a5f)] - **doc**: fix doc styles (Daijiro Wachi) [#16385](https://github.com/nodejs/node/pull/16385)
 * [[`99fdc1d04f`](https://github.com/nodejs/node/commit/99fdc1d04f)] - **doc**: add recommendations for first timers (Refael Ackermann) [#16350](https://github.com/nodejs/node/pull/16350)
