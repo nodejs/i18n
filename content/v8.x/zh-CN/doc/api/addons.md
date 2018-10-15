@@ -66,9 +66,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 在`hello.cc`示例中，初始化函数为`init`，而插件模块名为`addon`。
 
-### Building
+### 构建
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
 
 ```json
 {
