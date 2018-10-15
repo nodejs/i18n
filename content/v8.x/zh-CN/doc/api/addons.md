@@ -10,9 +10,9 @@ Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[
 
 * [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些超出标准事件循环的更复杂异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
 
-* Node.js的内置库。 Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Node.js的内置库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
