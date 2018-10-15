@@ -64,7 +64,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 `module_name`必须和最终的二进制文件名 (不包含.node后缀) 相匹配。
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+在`hello.cc`示例中，初始化函数为`init`，而插件模块名为`addon`。
 
 ### Building
 
