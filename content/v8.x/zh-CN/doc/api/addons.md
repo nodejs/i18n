@@ -12,19 +12,19 @@ Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[
 
 * Node.js的内置库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有V8和OpenSSL的符号是由Node.js特意导出的，并可以被插件用于不同场景。 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+下面的所有示例都可[下载](https://github.com/nodejs/node-addon-examples)，且可被用于插件开发的起点。
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+这个"Hello world"示例是一个用C++编写的简单插件，其功能等同于如下的JavaScript代码：
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+首先，创建文件`hello.cc`:
 
 ```cpp
 // hello.cc
