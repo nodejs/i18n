@@ -1931,7 +1931,7 @@ L'utilizzo di `crypto.timingSafeEqual` non garantisce che il codice *circostante
 
 ### Legacy Stream API (pre Node.js v0.10)
 
-Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di Stream API unificata e prima che esistessero i [`Buffer`][] object per la gestione dei dati binari. Pertanto, molte delle classi definite `crypto` hanno metodi che non si trovano in genere su altre classi Node.js che implementano gli [stream](stream.html) API (ad esempio `update()`, `final()`, or `digest()`). Inoltre, molti metodi hanno accettato e restituito stringhe con codifica `'latin1'` di default anziché dei `Buffer`. Questo valore di default è stato modificato dopo Node.js v0.8 per utilizzare i [`Buffer`][] object di default.
+Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di Stream API unificata e prima che esistessero i [`Buffer`][] object per la gestione dei dati binari. Pertanto, molte delle classi definite `crypto` hanno metodi che non si trovano in genere su altre classi Node.js che implementano gli [stream](stream.html) API (ad esempio `update()`, `final()` o `digest()`). Inoltre, molti metodi hanno accettato e restituito stringhe con codifica `'latin1'` di default anziché dei `Buffer`. Questo valore di default è stato modificato dopo Node.js v0.8 per utilizzare i [`Buffer`][] object di default.
 
 ### Recenti Modifiche di ECDH
 
