@@ -2243,10 +2243,10 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * Mejorar util.isDate() (Nathan Rajlich)
 * Mejoras en backend y enlazados de libuv, actualizar libuv a bd6066cb349a9b3a1b0d87b146ddaee06db31d10
 
-* Show warning when using lib/sys.js (Maciej Malecki)
+* Mostrar advertencia al usar lib/sys.js (Maciej Malecki)
 
-* Support plus sign in url protocol (Maciej Malecki)
-* Upgrade V8 to 3.6.2
+* Soportar signo más (+) en protocolo de url (Maciej Malecki)
+* Actualizar V8 a 3.6.2
 
 <a id="0.5.5"></a>
 
