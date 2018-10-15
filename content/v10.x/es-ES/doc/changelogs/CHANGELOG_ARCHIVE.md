@@ -2213,10 +2213,10 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
 * [#1345](https://github.com/joyent/node/issues/1345) Establecer correctamente socket.remoteAddress con backend de libuv (Bert Belder)
 * [#1429](https://github.com/joyent/node/issues/1429) No sobrescribir modo de edición rápida en windows (Peter Bright)
-* [#1503](https://github.com/joyent/node/issues/1503) Make libuv backend default on unix, override with `node --use-legacy`
-* [#1565](https://github.com/joyent/node/issues/1565) Fix fs.stat for paths ending with \ on windows (Igor Zinkovsky)
-* [#1568](https://github.com/joyent/node/issues/1568) Fix x509 certificate subject parsing (Koichi Kobayashi)
-* [#1586](https://github.com/joyent/node/issues/1586) Make socket write encoding case-insensitive (Koichi Kobayashi)
+* [#1503](https://github.com/joyent/node/issues/1503) Hacer que el backend de libuv esté predeterminado en unix, solapar con `node --use-legacy`
+* [#1565](https://github.com/joyent/node/issues/1565) Arreglar fs.stat para rutas que terminen en \ en windows (Igor Zinkovsky)
+* [#1568](https://github.com/joyent/node/issues/1568) Reparar análisis de sujeto de certificado x509 (Koichi Kobayashi)
+* [#1586](https://github.com/joyent/node/issues/1586) Hacer que la codificación de escritura de los sockets sea indiferente a mayúsculas y minúsculas (Koichi Kobayashi)
 * [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implement fs in libuv, remove libeio and pthread-win32 dependency on windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
 
 * [#1592](https://github.com/joyent/node/issues/1592) Don't load-time link against CreateSymbolicLink on windows (Peter Bright)
