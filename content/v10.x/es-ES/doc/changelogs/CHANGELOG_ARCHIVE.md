@@ -2234,9 +2234,9 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * Añadir caso de prueba para el certificado de cliente foaf+ssl (Niclas Hoyer)
 * Variable de ambiente RPATH añadida para solapar rutas de librería de tiempo de ejecución (Ashok Mudukutore)
 
-* Added TLS client-side session resumption support (Sean Cunningham)
+* Añadido soporte para reanudación de sesión de client-side de TLS (Sean Cunningham)
 
-* Added additional properties to getPeerCertificate (Nathan Rixham, Niclas Hoyer)
+* Añadidas propiedades adicionales a getPeerCertificate (Nathan Rixham, Niclas Hoyer)
 
 * Don't eval repl command twice when an error is thrown (Nathan Rajlich)
 
