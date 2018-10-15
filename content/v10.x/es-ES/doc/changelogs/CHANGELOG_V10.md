@@ -156,7 +156,7 @@
 * [[`375994f940`](https://github.com/nodejs/node/commit/375994f940)] - **inspector**: Utilizar el tamaño de reserva uv\_listen predeterminado (Eugene Ostroukhov) [#20254](https://github.com/nodejs/node/pull/20254)
 * [[`7b8e9ca7b8`](https://github.com/nodejs/node/commit/7b8e9ca7b8)] - **lib**: exponer FixedQueue internamente y corregir el error nextTick (Anatoli Papirovski) [#20468](https://github.com/nodejs/node/pull/20468)
 * [[`b6de6a7e35`](https://github.com/nodejs/node/commit/b6de6a7e35)] - **lib**: se nombraron funciones anónimas (Carrie Coxwell) [#20408](https://github.com/nodejs/node/pull/20408)
-* [[`9eacd66bcb`](https://github.com/nodejs/node/commit/9eacd66bcb)] - **lib**: make sure `console` is writable (Kyle Farnung) [#20185](https://github.com/nodejs/node/pull/20185)
+* [[`9eacd66bcb`](https://github.com/nodejs/node/commit/9eacd66bcb)] - **lib**: asegurar que `console` sea escribible (Kyle Farnung) [#20185](https://github.com/nodejs/node/pull/20185)
 * [[`17dbf6c77f`](https://github.com/nodejs/node/commit/17dbf6c77f)] - **n-api**: make test\_error functions static (Gabriel Schulhof) 
 * [[`ad793ab93c`](https://github.com/nodejs/node/commit/ad793ab93c)] - **n-api**: test and doc napi\_throw() of a primitive (Gabriel Schulhof) [#20428](https://github.com/nodejs/node/pull/20428)
 * [[`1908668826`](https://github.com/nodejs/node/commit/1908668826)] - **n-api**: document the look of napi\_external values (Gabriel Schulhof) [#20426](https://github.com/nodejs/node/pull/20426)
