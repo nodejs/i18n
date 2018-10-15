@@ -1072,8 +1072,8 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
   * exponer la clase ECDH [#8188](https://github.com/nodejs/node/pull/8188)
 * **http2**: 
   * http2 ahora está expuesto por defecto sin la necesidad de una bandera [#15685](https://github.com/nodejs/node/pull/15685)
-  * a new environment variable NODE\_NO\_HTTP2 has been added to allow userland http2 to be required [#15685](https://github.com/nodejs/node/pull/15685)
-  * support has been added for generic `Duplex` streams [#16269](https://github.com/nodejs/node/pull/16269)
+  * se ha agregado una nueva variable de entorno NODE\_NO\_HTTP2 para permitir que userland http2 sea requerido [#15685](https://github.com/nodejs/node/pull/15685)
+  * se ha agregado soporte para streams `Duplex` genéricas[#16269](https://github.com/nodejs/node/pull/16269)
 * **module**: 
   * resolve and instantiate loader pipeline hooks have been added to the ESM lifecycle [#15445](https://github.com/nodejs/node/pull/15445)
 * **zlib**: 
