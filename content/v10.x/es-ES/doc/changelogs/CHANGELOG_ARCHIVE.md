@@ -2250,18 +2250,18 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
 <a id="0.5.5"></a>
 
-## 2011.08.26, Version 0.5.5 (unstable)
+## 2011.08.26, Versión 0.5.5 (inestable)
 
 https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 
-* typed arrays, implementation from Plesk
-* fix IP multicast on SunOS
-* fix DNS lookup order: IPv4 first, IPv6 second (--use-uv only)
-* remove support for UNIX datagram sockets (--use-uv only)
-* UDP support for Windows (Bert Belder)
-* [#1572](https://github.com/joyent/node/issues/1572) improve tab completion for objects in the REPL (Nathan Rajlich)
-* [#1563](https://github.com/joyent/node/issues/1563) fix buffer overflow in child_process module (reported by Dean McNamee)
-* [#1546](https://github.com/joyent/node/issues/1546) fix performance regression in http module (reported by Brian Geffon)
+* typed arrays, implementación desde Plesk
+* reparar multidifusión de IP en SunOS
+* corregir orden de búsqueda de DNS: IPv4 primero, IPv6 segundo (solo con --use-uv)
+* remover soporte para sockets de datagrama de UNIX (solo con --use-uv)
+* soporte de UDP para Windows (Bert Belder)
+* [#1572](https://github.com/joyent/node/issues/1572) mejorar completación de tab para objetos en el REPL (Nathan Rajlich)
+* [#1563](https://github.com/joyent/node/issues/1563) corregir desbordamiento de buffer en módulo child_process (reportado por Dean McNamee)
+* [#1546](https://github.com/joyent/node/issues/1546) corregir regresión de rendimiento en módulo http (reportado por Brian Geffon)
 * [#1491](https://github.com/joyent/node/issues/1491) add PBKDF2 crypto support (Glen Low)
 * [#1447](https://github.com/joyent/node/issues/1447) remove deprecated http.cat() function (Mikeal Rogers)
 * [#1140](https://github.com/joyent/node/issues/1140) fix incorrect dispatch of vm.runInContext's filename argument (Antranig Basman)
