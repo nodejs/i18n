@@ -218,10 +218,10 @@
 * [[`8ddbac2fd6`](https://github.com/nodejs/node/commit/8ddbac2fd6)] - **tools**: añadir salida de registro a fallos (Ruben Bridgewater) [#20295](https://github.com/nodejs/node/pull/20295)
 * [[`ab13f13a6c`](https://github.com/nodejs/node/commit/ab13f13a6c)] - **tools**: mostrar stdout/stderr para las pruebas de tiempo de espera (Rich Trott) [#20260](https://github.com/nodejs/node/pull/20260)
 * [[`b5584c448a`](https://github.com/nodejs/node/commit/b5584c448a)] - **tools**: modernizar y optimizar doc/addon-verify.js (Vse Mozhet Byt) [#20188](https://github.com/nodejs/node/pull/20188)
-* [[`ff619d39e6`](https://github.com/nodejs/node/commit/ff619d39e6)] - **url**: fix WHATWG host formatting error (Yichao 'Peak' Ji) [#20493](https://github.com/nodejs/node/pull/20493)
-* [[`1b9c40cc71`](https://github.com/nodejs/node/commit/1b9c40cc71)] - **util**: named anonymous functions (Carrie Coxwell) [#20408](https://github.com/nodejs/node/pull/20408)
+* [[`ff619d39e6`](https://github.com/nodejs/node/commit/ff619d39e6)] - **url**: corregir el error de formato del host WHATWG (Yichao 'Peak' Ji) [#20493](https://github.com/nodejs/node/pull/20493)
+* [[`1b9c40cc71`](https://github.com/nodejs/node/commit/1b9c40cc71)] - **util**: se nombraron funciones anónimas (Carrie Coxwell) [#20408](https://github.com/nodejs/node/pull/20408)
 * [[`e854c953fd`](https://github.com/nodejs/node/commit/e854c953fd)] - **util**: improve spliceOne perf (Anatoli Papirovski) [#20453](https://github.com/nodejs/node/pull/20453)
-* [[`3962c734ae`](https://github.com/nodejs/node/commit/3962c734ae)] - **util**: fix isInsideNodeModules inside error (Anatoli Papirovski) [#20266](https://github.com/nodejs/node/pull/20266)
+* [[`3962c734ae`](https://github.com/nodejs/node/commit/3962c734ae)] - **util**: corregir isInsideNodeModules dentro del error (Anatoli Papirovski) [#20266](https://github.com/nodejs/node/pull/20266)
 
 <a id="10.0.0"></a>
 
@@ -320,10 +320,10 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 
 #### Semver mayor
 
-* [[`c9bb91af33`](https://github.com/nodejs/node/commit/c9bb91af33)] - **(SEMVER-MAJOR)** **assert**: remove `errorDiff` property (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
-* [[`eb427caadd`](https://github.com/nodejs/node/commit/eb427caadd)] - **(SEMVER-MAJOR)** **assert**: improve default error messages (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
+* [[`c9bb91af33`](https://github.com/nodejs/node/commit/c9bb91af33)] - **(SEMVER-MAJOR)** **assert**: eliminar la propiedad `errorDiff` (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
+* [[`eb427caadd`](https://github.com/nodejs/node/commit/eb427caadd)] - **(SEMVER-MAJOR)** **assert**: mejorar los mensajes de error predeterminados (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
 * [[`1964978fb8`](https://github.com/nodejs/node/commit/1964978fb8)] - **(SEMVER-MAJOR)** **assert**: detect faulty throws usage (Ruben Bridgewater) [#19867](https://github.com/nodejs/node/pull/19867)
-* [[`9743e756e2`](https://github.com/nodejs/node/commit/9743e756e2)] - **(SEMVER-MAJOR)** **assert**: provide info about actual error (Ruben Bridgewater) [#19884](https://github.com/nodejs/node/pull/19884)
+* [[`9743e756e2`](https://github.com/nodejs/node/commit/9743e756e2)] - **(SEMVER-MAJOR)** **assert**: proporcionar información sobre el error real (Ruben Bridgewater) [#19884](https://github.com/nodejs/node/pull/19884)
 * [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)] - **(SEMVER-MAJOR)** **assert**: deprecate assert.fail partially (Ruben Bridgewater) [#18418](https://github.com/nodejs/node/pull/18418)
 * [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)] - **(SEMVER-MAJOR)** **assert**: use a default message in assert (Ruben Bridgewater) [#18319](https://github.com/nodejs/node/pull/18319)
 * [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)] - **(SEMVER-MAJOR)** **assert**: stricter ifError (Ruben Bridgewater) [#18247](https://github.com/nodejs/node/pull/18247)
