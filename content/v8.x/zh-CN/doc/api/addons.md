@@ -85,7 +85,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 一旦`binding.gyp`文件被创建，使用`node-gyp configure`命令在当前平台中生成相应的项目构建文件。 这会生成一个`Makefile` (在Unix平台)，或 `build/`目录中的`vcxproj` (在Windows中)。
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+接下来，调用`node-gyp build`命令来生成并编译`addon.node`文件。 This will be put into the `build/Release/` directory.
 
 When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
