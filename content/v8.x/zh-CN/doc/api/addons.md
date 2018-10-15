@@ -81,9 +81,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+*注意*：作为`npm`的一部分，`node-gyp`工具的一个版本会和Node.js一起捆绑发布。 此版本并不是给开发者直接使用的，而是仅用于支持`npm install`命令来编译和安装插件的。 想要直接使用`node-gyp`的开发者可以通过使用命令`npm install -g node-gyp`来安装它。 请查阅`node-gyp` [安装说明](https://github.com/nodejs/node-gyp#installation)来获取更多信息，包括特定平台的要求。
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+一旦`binding.gyp`文件被创建，使用`node-gyp configure`命令在当前平台中生成相应的项目构建文件。 这会生成一个`Makefile` (在Unix平台)，或 `build/`目录中的`vcxproj` (在Windows中)。
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
