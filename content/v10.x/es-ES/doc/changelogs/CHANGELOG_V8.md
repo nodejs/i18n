@@ -1075,13 +1075,13 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
   * se ha agregado una nueva variable de entorno NODE\_NO\_HTTP2 para permitir que userland http2 sea requerido [#15685](https://github.com/nodejs/node/pull/15685)
   * se ha agregado soporte para streams `Duplex` genéricas[#16269](https://github.com/nodejs/node/pull/16269)
 * **module**: 
-  * resolve and instantiate loader pipeline hooks have been added to the ESM lifecycle [#15445](https://github.com/nodejs/node/pull/15445)
+  * resolver e instanciar los enlaces de la tubería del cargador que se han agregado al ciclo de vida de ESM [#15445](https://github.com/nodejs/node/pull/15445)
 * **zlib**: 
-  * CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+  * CVE-2017-14919 - En zlib v1.2.9, se realizó un cambio que hace que se genere un error cuando se inicializa un stream de desinflado sin procesar con windowBits establecido en 8. En algunas versiones, esto bloquea a Node y no es posible recuperarse de ello, mientras que en algunas versiones, arroja una excepción. Node.js ahora configurará con gracia los WindowBits en 9 replicando el comportamiento heredado para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 ### Commits
 
-* [[`c62f2e21c0`](https://github.com/nodejs/node/commit/c62f2e21c0)] - **assert**: fix actual and expected order (Steve Jenkins) [#15866](https://github.com/nodejs/node/pull/15866)
+* [[`c62f2e21c0`](https://github.com/nodejs/node/commit/c62f2e21c0)] - **assert**: corregir el orden real y el esperado (Steve Jenkins) [#15866](https://github.com/nodejs/node/pull/15866)
 * [[`c9715bb9c2`](https://github.com/nodejs/node/commit/c9715bb9c2)] - **async_hooks**: skip runtime checks when disabled (Andreas Madsen) [#15454](https://github.com/nodejs/node/pull/15454)
 * [[`11b775beb6`](https://github.com/nodejs/node/commit/11b775beb6)] - **async_hooks**: replace concat w template literals (Rob Adelmann) [#15968](https://github.com/nodejs/node/pull/15968)
 * [[`5d34f2f5a7`](https://github.com/nodejs/node/commit/5d34f2f5a7)] - **benchmark**: improve http2 benchmark configs (James M Snell) [#16239](https://github.com/nodejs/node/pull/16239)
