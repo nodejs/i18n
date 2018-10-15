@@ -1031,24 +1031,24 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`e80d878b3f`](https://github.com/nodejs/node/commit/e80d878b3f)] - **tools**: sin barra diagonal en los patrones de "ignore" (Refael Ackermann) [#16372](https://github.com/nodejs/node/pull/16372)
 * [[`31f54e5fb9`](https://github.com/nodejs/node/commit/31f54e5fb9)] - **tools**: añadir hacer lint-md-clean (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`ea415a663e`](https://github.com/nodejs/node/commit/ea415a663e)] - **tools**: añadir comando lint-md en Makefile (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
-* [[`3522e765be`](https://github.com/nodejs/node/commit/3522e765be)] - **tools**: use remark-preset-lint-node in .remarkrc (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
-* [[`8d62116cf0`](https://github.com/nodejs/node/commit/8d62116cf0)] - **tools**: introduce remark-preset-lint-node (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
-* [[`3d499b3712`](https://github.com/nodejs/node/commit/3d499b3712)] - **tools**: introduce remark-cli@3.0.1 (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
-* [[`55ba1d4115`](https://github.com/nodejs/node/commit/55ba1d4115)] - **util**: expand test coverage for util.deprecate (Ashish Kaila) [#16305](https://github.com/nodejs/node/pull/16305)
-* [[`8fd75fb9b5`](https://github.com/nodejs/node/commit/8fd75fb9b5)] - **(SEMVER-MINOR)** **util**: graduate TextEncoder/TextDecoder, tests (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
+* [[`3522e765be`](https://github.com/nodejs/node/commit/3522e765be)] - **tools**: usar remark-preset-lint-node en .remarkrc (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
+* [[`8d62116cf0`](https://github.com/nodejs/node/commit/8d62116cf0)] - **tools**: introducir remark-preset-lint-node (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
+* [[`3d499b3712`](https://github.com/nodejs/node/commit/3d499b3712)] - **tools**: introducir remark-cli@3.0.1 (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
+* [[`55ba1d4115`](https://github.com/nodejs/node/commit/55ba1d4115)] - **util**: expandir cobertura de la prueba para util.deprecate (Ashish Kaila) [#16305](https://github.com/nodejs/node/pull/16305)
+* [[`8fd75fb9b5`](https://github.com/nodejs/node/commit/8fd75fb9b5)] - **(SEMVER-MINOR)** **util**: graduar pruebas TextEncoder/TextDecoder (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
 
 <a id="8.8.1"></a>
 
-## 2017-10-25, Version 8.8.1 (Current), @cjihrig
+## 2017-10-25, Versión 8.8.1 (Actual), @cjihrig
 
-### Notable Changes
+### Cambios Notables
 
 * **net**: 
-  * Fix timeout with null handle issue. This is a regression in Node 8.8.0 [#16489](https://github.com/nodejs/node/pull/16489)
+  * Corregir el "timeout" con un problema de manejador nulo. Esta es una regresión en Node 8.8.0 [#16489](https://github.com/nodejs/node/pull/16489)
 
 ### Commits
 
-* [[`db8c92fb42`](https://github.com/nodejs/node/commit/db8c92fb42)] - **doc**: fix spelling in v8.8.0 changelog (Myles Borins) [#16477](https://github.com/nodejs/node/pull/16477)
+* [[`db8c92fb42`](https://github.com/nodejs/node/commit/db8c92fb42)] - **doc**: corregir la ortografía en el registro de cambios v8.8.0 (Myles Borins) [#16477](https://github.com/nodejs/node/pull/16477)
 * [[`c8396b8370`](https://github.com/nodejs/node/commit/c8396b8370)] - **doc**: remove loader hooks from unsupported features (Teppei Sato) [#16465](https://github.com/nodejs/node/pull/16465)
 * [[`2b0bb57055`](https://github.com/nodejs/node/commit/2b0bb57055)] - **doc**: fix wrong URL (Jon Moss) [#16470](https://github.com/nodejs/node/pull/16470)
 * [[`9ffc32974e`](https://github.com/nodejs/node/commit/9ffc32974e)] - **doc**: fix typo in changelog for 8.8.0 (Alec Perkins) [#16462](https://github.com/nodejs/node/pull/16462)
