@@ -68,7 +68,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 ### 构建
 
-当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 为了实现这个目标，在项目的根目录创建一个类似JSON格式的文件`binding.gyp`，该文件中包含构建配置信息。 这个文件被[node-gyp](https://github.com/nodejs/node-gyp) (一个专门用于编译Node.js插件的工具) 所使用。
 
 ```json
 {
