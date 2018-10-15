@@ -1813,7 +1813,7 @@ Esto incluye:
 
 * una reparación para la fuga de memoria en el módulo crypto que fue introducido en 6.10.1
 * una reparación para una regresión introducida al repl de windows en 6.10.0
-* una reparación backported para V8 para detener una violación de segmento que podría ocurrir cuando se usa la sintaxis de spread
+* una reparación refactorizada para V8 para detener una violación de segmento que podría ocurrir cuando se usa la sintaxis de spread
 
 Esto también incluye una actualización a zlib 1.2.11 para reparar un [número de CVEs de baja severidad](http://seclists.org/oss-sec/2016/q4/602) que estaban presentes en zlib 1.2.8.
 
@@ -1825,12 +1825,12 @@ Esto también incluye una actualización a zlib 1.2.11 para reparar un [número 
   * actualizar zlib a 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
   * hacer backport a reparaciones de V8 para la regresión de sintaxis de spread causando violaciones de segmento (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * **repl**: 
-  * Revertir commit que quebró pantalla REPL en Windows (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
+  * Revertir commit que rompió la pantalla REPL en Windows (Myles Borins) [#12123](https://github.com/nodejs/node/pull/12123)
 
 ### Commits
 
 * [[`5f644d2f6f`](https://github.com/nodejs/node/commit/5f644d2f6f)] - **crypto**: reparar fuga de memoria si el certificado es revocado (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
-* [[`912f78a566`](https://github.com/nodejs/node/commit/912f78a566)] - **deps**: reparar macro CLEAR_HASH para que sea usable como una única declaración (Sam Roberts) [#11616](https://github.com/nodejs/node/pull/11616)
+* [[`912f78a566`](https://github.com/nodejs/node/commit/912f78a566)] - **deps**: reparar macro CLEAR_HASH para que pueda ser usado como una única declaración (Sam Roberts) [#11616](https://github.com/nodejs/node/pull/11616)
 * [[`abe9132011`](https://github.com/nodejs/node/commit/abe9132011)] - **deps**: actualizar zlib a 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
 * [[`1ff512c185`](https://github.com/nodejs/node/commit/1ff512c185)] - **deps**: hacer backport a e427300 desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
 * [[`8dfc710a06`](https://github.com/nodejs/node/commit/8dfc710a06)] - **deps**: hacer cherry-pick a b9f682b desde upstream V8 (Michaël Zasso) [#12037](https://github.com/nodejs/node/pull/12037)
@@ -1899,7 +1899,7 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
 * [[`b662c117cb`](https://github.com/nodejs/node/commit/b662c117cb)] - **crypto**: devolver el retval de HMAC_Update (Travis Meisenheimer) [#10891](https://github.com/nodejs/node/pull/10891)
 * [[`44510197dd`](https://github.com/nodejs/node/commit/44510197dd)] - **crypto**: freelist_max_len fue removido en OpenSSL 1.1.0 (Adam Langley) [#10859](https://github.com/nodejs/node/pull/10859)
 * [[`34614af53b`](https://github.com/nodejs/node/commit/34614af53b)] - **crypto**: añadir chequeo de certificado emitido por StartCom/WoSign (Shigeki Ohtsu) [#9469](https://github.com/nodejs/node/pull/9469)
-* [[`b4b3bb4c5d`](https://github.com/nodejs/node/commit/b4b3bb4c5d)] - **crypto**: Remover certificados expirados de la lista blanca de CNNIC (Shigeki Ohtsu) [#9469](https://github.com/nodejs/node/pull/9469)
+* [[`b4b3bb4c5d`](https://github.com/nodejs/node/commit/b4b3bb4c5d)] - **crypto**: Remover certificados caducados de la lista blanca de CNNIC (Shigeki Ohtsu) [#9469](https://github.com/nodejs/node/pull/9469)
 * [[`1f44922e34`](https://github.com/nodejs/node/commit/1f44922e34)] - **crypto**: usar CHECK_NE en vez de ABORT o abort (Sam Roberts) [#10413](https://github.com/nodejs/node/pull/10413)
 * [[`ccb6045f2d`](https://github.com/nodejs/node/commit/ccb6045f2d)] - **crypto,tls**: arreglar mutabilidad de los valores de devolución (Rich Trott) [#10795](https://github.com/nodejs/node/pull/10795)
 * [[`3ab070d4e1`](https://github.com/nodejs/node/commit/3ab070d4e1)] - **deps**: hacer backport a dfb8d33 desde upstream de V8 (Michaël Zasso) [#11483](https://github.com/nodejs/node/pull/11483)
