@@ -2226,13 +2226,13 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * [#1610](https://github.com/joyent/node/issues/1610) Remover autoridad de certificación DigiNotar de la lista de confiables (Isaac Schlueter)
 
 * [#1617](https://github.com/joyent/node/issues/1617) Algunas funciones os de win32 fueron añadidas (Karl Skomski)
-* [#1624](https://github.com/joyent/node/issues/1624) avoid buffer overrun with 'binary' encoding (Koichi Kobayashi)
-* [#1633](https://github.com/joyent/node/issues/1633) make Buffer.write() always set _charsWritten (Koichi Kobayashi)
-* [#1644](https://github.com/joyent/node/issues/1644) Windows: set executables to be console programs (Peter Bright)
-* [#1651](https://github.com/joyent/node/issues/1651) improve inspection for sparse array (Koichi Kobayashi)
-* [#1672](https://github.com/joyent/node/issues/1672) set .code='ECONNRESET' on socket hang up errors (Ben Noordhuis)
-* Add test case for foaf+ssl client certificate (Niclas Hoyer)
-* Added RPATH environment variable to override run-time library paths (Ashok Mudukutore)
+* [#1624](https://github.com/joyent/node/issues/1624) evitar el solapamiento del buffer con codificación "binary" (Koichi Kobayashi)
+* [#1633](https://github.com/joyent/node/issues/1633) hacer que Buffer.write() siempre set _charsWritten (Koichi Kobayashi)
+* [#1644](https://github.com/joyent/node/issues/1644) Windows: establecer que ejecutables sean programas de consola (Peter Bright)
+* [#1651](https://github.com/joyent/node/issues/1651) mejorar inspección para arreglo disperso (sparse array) (Koichi Kobayashi)
+* [#1672](https://github.com/joyent/node/issues/1672) establecer .code='ECONNRESET' ante errores de colgado en socket (Ben Noordhuis)
+* Añadir caso de prueba para el certificado de cliente foaf+ssl (Niclas Hoyer)
+* Variable de ambiente RPATH añadida para solapar rutas de librería de tiempo de ejecución (Ashok Mudukutore)
 
 * Added TLS client-side session resumption support (Sean Cunningham)
 
