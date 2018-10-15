@@ -2322,24 +2322,24 @@ https://github.com/nodejs/node/commit/4585330afef44ddfb6a4054bd9b0f190b352628b
 * [#572](https://github.com/joyent/node/issues/572) No imprimir resultado de --eval en CLI (Ben Noordhuis)
 * [#1223](https://github.com/joyent/node/issues/1223) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces (koichik)
 * [#1383](https://github.com/joyent/node/issues/1383) Emitir "close" luego de que todas las conexiones se han cerrado (Felix Geisendörfer)
-* Add sprintf-like util.format() function (Ben Noordhuis)
-* Add support for TLS SNI (Fedor Indutny)
-* New http agent implementation. Off by default the command line flag --use-http2 will enable it. "make test-http2" will run the tests for the new implementation. (Mikeal Rogers)
+* Añadir función util.format() similar a sprintf (Ben Noordhuis)
+* Añadir soporte para SNI de TLS (Fedor Indutny)
+* Nueva implementación de agente http. Desactivado por defecto, la bandera de línea de comando use-http2 lo activará. "make test-http2" ejecutará las pruebas para la nueva implementación. (Mikeal Rogers)
 
-* Revert AMD compatibility. (isaacs)
+* Revertir compatibilidad de AMD. (isaacs)
 
-* Windows: improvements, child_process support.
-* Remove pkg-config file.
-* Fix startup time regressions.
-* doc improvements
+* Windows: mejoras, soporte para child_process.
+* Remover archivo pkg-config.
+* Corregir regresiones del tiempo de arranque.
+* mejoras de doc
 
 <a id="0.5.2"></a>
 
-## 2011.07.22, Version 0.5.2 (unstable)
+## 2011.07.22, Versión 0.5.2 (Inestable)
 
 https://github.com/nodejs/node/commit/08ffce1a00dde1199174b390a64a90b60768ddf5
 
-* libuv improvements; named pipe support
+* mejoras de libuv; soporte para pipe nombrado
 * [#1242](https://github.com/joyent/node/issues/1242) check for SSL_COMP_get_compression_methods() (Ben Noordhuis)
 * [#1348](https://github.com/joyent/node/issues/1348) remove require.paths (isaacs)
 * [#1349](https://github.com/joyent/node/issues/1349) Delimit NODE_PATH with ; on Windows (isaacs)
