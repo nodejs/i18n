@@ -58,7 +58,7 @@ Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dow
 
 Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Połączenia zwrotne timerów działają tak wcześnie, jak tylko mogą zaplanowane po upływie określonego czasu; jednak, planowanie Systemu Operacyjnego lub uruchamianie innych wywołań zwrotnych może się opóźnić im.
 
-***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll)kontroluje timery, które są wykonywane.*
+***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll) kontroluje timery, które są wykonywane.*
 
 Na przykład powiedzmy, że planujesz czas oczekiwania na wykonanie po próg 100 ms, wtedy twój skrypt zaczyna asynchronicznie odczytywać plik, który trwa 95 ms:
 
@@ -106,7 +106,7 @@ Ta faza wykonuje wywołania zwrotne dla niektórych operacji systemowych, takich
 Faza **odpytywania** ma dwie główne funkcje:
 
 1. Wykonywanie skryptów dla timerów, których próg upłynął, a następnie
-2. Przetwarzanie zdarzeń w kolejce **odpytywania **.
+2. Przetwarzanie zdarzeń w kolejce **odpytywania**.
 
 Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych timerów *, nastąpi jedna z dwóch rzeczy:
 
