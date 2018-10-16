@@ -522,31 +522,31 @@ L'API [`util._extend()`][] è stata deprecata.
 
 Tipo: Runtime
 
-The `fs.SyncWriteStream` class was never intended to be a publicly accessible API. No alternative API is available. Please use a userland alternative.
+La classe `fs.SyncWriteStream` non è mai stata concepita come un'API pubblicamente accessibile. Non è disponibile nessun'API alternativa. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0062"></a>
 
 ### DEP0062: node --debug
 
-Type: Runtime
+Tipo: Runtime
 
-`--debug` activates the legacy V8 debugger interface, which has been removed as of V8 5.8. It is replaced by Inspector which is activated with `--inspect` instead.
+`--debug` attiva l'interfaccia legacy del debugger di V8, che è stata rimossa a partire dalla versione V8 5.8. In alternativa viene sostituito tramite l'Inspector che viene attivato con `--inspect`.
 
 <a id="DEP0063"></a>
 
 ### DEP0063: ServerResponse.prototype.writeHeader()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
+L'API `ServerResponse.prototype.writeHeader()` del modulo `http` è stata deprecata. Si prega di utilizzare `ServerResponse.prototype.writeHead()` al suo posto.
 
-The `ServerResponse.prototype.writeHeader()` method was never documented as an officially supported API.
+Il metodo `ServerResponse.prototype.writeHeader()` non è mai stato documentato come un'API ufficialmente supportata.
 
 <a id="DEP0064"></a>
 
 ### DEP0064: tls.createSecurePair()
 
-Type: Runtime
+Tipo: Runtime
 
 The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11.3. Users should use `tls.Socket` instead.
 
