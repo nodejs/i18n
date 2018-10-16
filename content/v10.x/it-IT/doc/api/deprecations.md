@@ -74,23 +74,23 @@ In alternativa, si consiglia vivamente l'utilizzo dei seguenti metodi di costruz
 - [`Buffer.from(buffer)`][] - Crea un `Buffer` che copia `buffer`.
 - [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crea un `Buffer` che copia `string`.
 
-As of v10.0.0, a deprecation warning is printed at runtime when `--pending-deprecation` is used or when the calling code is outside `node_modules` in order to better target developers, rather than users.
+A partire dalla v10.0.0, viene stampato un avviso di deprecazione in fase di esecuzione quando viene utilizzato `--pending-deprecation` o quando il codice chiamante si trova all'esterno di `node_modules` al fine di indirizzare meglio gli sviluppatori, piuttosto che gli utenti.
 
 <a id="DEP0006"></a>
 
 ### DEP0006: child\_process options.customFds
 
-Type: Runtime
+Tipo: Runtime
 
-Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` methods, the `options.customFds` option is deprecated. The `options.stdio` option should be used instead.
+All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_process`][], l'opzione `options.customFds` è stata deprecata. Al suo posto dovrebbe essere utilizzata l'opzione `options.stdio`.
 
 <a id="DEP0007"></a>
 
-### DEP0007: Replace cluster worker.suicide with worker.exitedAfterDisconnect
+### DEP0007: Sostituire il cluster worker.suicide con worker.exitedAfterDisconnect
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-In an earlier version of the Node.js `cluster`, a boolean property with the name `suicide` was added to the `Worker` object. The intent of this property was to provide an indication of how and why the `Worker` instance exited. In Node.js 6.0.0, the old property was deprecated and replaced with a new [`worker.exitedAfterDisconnect`][] property. The old property name did not precisely describe the actual semantics and was unnecessarily emotion-laden.
+In una versione precedente del `cluster` di Node.js è stata aggiunta una proprietà booleana con il nome `suicide` al `Worker` object. Lo scopo di questa proprietà era fornire un'indicazione su come e perché l'istanza `Worker` è stata chiusa. In Node.js 6.0.0, the old property was deprecated and replaced with a new [`worker.exitedAfterDisconnect`][] property. The old property name did not precisely describe the actual semantics and was unnecessarily emotion-laden.
 
 <a id="DEP0008"></a>
 
