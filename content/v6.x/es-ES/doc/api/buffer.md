@@ -297,23 +297,23 @@ deprecated: v6.0.0
 
 > Estabilidad: 0 - Desaprobado: Use [`Buffer.alloc()`] en su lugar (también vea [`Buffer.allocUnsafe()`]).
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Asigna el nuevo `Buffer` de bytes de `size`. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-Unlike [`ArrayBuffers`][`ArrayBuffer`], the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *could contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+A diferencia de [`ArrayBuffers`][`ArrayBuffer`], la memoria subyacente para instancias de `Buffer` creadas de esta forma *no es inicializada*. Los contenidos de un `Buffer` recién creado son desconocidos y *podrían contener datos sensibles*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] en su lugar para inicializar un `Buffer` a ceros.
 
 Ejemplo:
 
 ```js
 const buf = new Buffer(10);
 
-// Prints: (contents may vary): <Buffer 48 21 4b 00 00 00 00 00 30 dd>
+// Imprime: (contents may vary): <Buffer 48 21 4b 00 00 00 00 00 30 dd>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 console.log(buf);
 ```
 
@@ -354,11 +354,11 @@ console.log(buf2.toString());
 added: v5.10.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 * `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
 * `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna el nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
 Ejemplo:
 
@@ -369,7 +369,7 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. A zero-length `Buffer` will be created if `size <= 0`.
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
@@ -403,9 +403,9 @@ A `TypeError` will be thrown if `size` is not a number.
 added: v5.10.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Allocates a new *non-zero-filled* `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
 
@@ -435,9 +435,9 @@ Use of this pre-allocated internal memory pool is a key difference between calli
 added: v5.12.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* and non-pooled `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Allocates a new *non-zero-filled* and non-pooled `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. A zero-length `Buffer` will be created if `size <= 0`.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
 
@@ -2231,7 +2231,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and could contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
