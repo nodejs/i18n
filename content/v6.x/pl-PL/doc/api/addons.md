@@ -129,19 +129,19 @@ Podczas wywoływania [`require()`](globals.html#globals_require) rozszerzenie `.
 
 ## Natywne abstrakcje dla Node.js
 
-Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. Ważne jest, aby zrozumieć, że API V8 może się zmienić drastycznie, jak to już zresztą było, od jednej wersji V8 do drugiej (i jednej ważnej wersji Node.js do następnej). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. Ważne jest, aby zrozumieć, że API V8 może się zmienić drastycznie, jak to już zresztą było, od jednej wersji V8 do drugiej (i jednej ważnej wersji Node.js do następnej). Przy każdej zmianie dodatki mogą wymagać aktualizacji i ponownej kompilacji w celu kontynuowania działania. Harmonogram wydań Node.js został zaprojektowany w taki sposób, aby zminimalizować częstotliwość i wpływ wyżej wymienionych zmian, ale jest niewiele, co Node.js może obecnie zrobić, aby zapewnić stabilność API V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+[Rodzime Abstrakcje dla Node.js](https://github.com/nodejs/nan) (lub `nan`) zapewniają zestaw narzędzi, które zaleca się deweloperom dodatków w celu zachowania zgodności pomiędzy przeszłymi i przyszłymi wersjami V8 i Node.js. Zobacz [przykłady](https://github.com/nodejs/nan/tree/master/examples/)`nan`, aby dowiedzieć się, w jaki sposób można go użyć.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API jest API do budowania rodzimych dodatków. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. Te API będzie Interfejsem Binarnym Aplikacji (ABI) stabilnym poprzez całą wersję Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym mechaniźmie JavaScript i pozwolić modułom skompilowanym dla danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji. Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisanych w tym dokumencie (node-gyp, itp.). Jedyną różnicą jest zbiór API, które są używane przez kod rodzimy. Zamiast korzystać z V8 lub API [Rodzimych Abstrakcji dla Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Dostępne funkcje i sposób ich używania są udokumentowane w sekcji zatytułowanej [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Przykłady dodatków
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
