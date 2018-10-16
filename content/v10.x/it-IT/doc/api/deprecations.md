@@ -766,47 +766,47 @@ D'altra parte, `node-inspect` potrebbe essere installato localmente tramite un g
 
 Tipo: End-of-Life
 
-L'API AsyncHooks Sensitive non è mai stato documentato e ha avuto vari problemi minori. (See https://github.com/nodejs/node/issues/15572.) Use the `AsyncResource` API instead.
+L'API AsyncHooks Sensitive non è mai stato documentato e ha avuto vari problemi minori. (Vedi https://github.com/nodejs/node/issues/15572.) Utilizza l'API `AsyncResource` al suo posto.
 
 <a id="DEP0086"></a>
 
-### DEP0086: Remove runInAsyncIdScope
+### DEP0086: Rimuove runInAsyncIdScope
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`runInAsyncIdScope` doesn't emit the `'before'` or `'after'` event and can thus cause a lot of issues. See https://github.com/nodejs/node/issues/14328 for more details.
+`runInAsyncIdScope` non emette l'evento `'before'` o l'evento `'after'` e ciò può causare un sacco di problemi. Vedi https://github.com/nodejs/node/issues/14328 per maggiori dettagli.
 
 <a id="DEP0089"></a>
 
 ### DEP0089: require('assert')
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-Importing assert directly is not recommended as the exposed functions will use loose equality checks. Use `require('assert').strict` instead. The API is the same as the legacy assert but it will always use strict equality checks.
+L'importazione diretta dell'assert non è consigliata in quanto le funzioni esposte utilizzano controlli di uguaglianza poco dettagliati. Utilizza `require('assert').strict` al suo posto. L'API è la stessa del legacy assert, ma userà sempre controlli di uguaglianza rigorosi.
 
 <a id="DEP0090"></a>
 
-### DEP0090: Invalid GCM authentication tag lengths
+### DEP0090: Lunghezze degli authentication tag di GCM non valide
 
-Type: Runtime
+Tipo: Runtime
 
-Node.js supports all GCM authentication tag lengths which are accepted by OpenSSL when calling [`decipher.setAuthTag()`][]. This behavior will change in a future version at which point only authentication tag lengths of 128, 120, 112, 104, 96, 64, and 32 bits will be allowed. Authentication tags whose length is not included in this list will be considered invalid in compliance with [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Node.js supporta tutte le lunghezze accettate da OpenSSL degli authentication tag di GCM quando viene chiamato [`decipher.setAuthTag()`][]. Questo comportamento cambierà in una versione futura a cui saranno consentite solo lunghezze degli authentication tag corrispondenti a 128, 120, 112, 104, 96, 64 e 32 bit. Gli authentication tag la cui lunghezza non è inclusa in questo elenco saranno considerati non validi in conformità al documento [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 <a id="DEP0091"></a>
 
 ### DEP0091: crypto.DEFAULT_ENCODING
 
-Type: Runtime
+Tipo: Runtime
 
-The [`crypto.DEFAULT_ENCODING`][] property is deprecated.
+La proprietà [`crypto.DEFAULT_ENCODING`][] è deprecata/obsoleta.
 
 <a id="DEP0092"></a>
 
-### DEP0092: Top-level `this` bound to `module.exports`
+### DEP0092: livello superiore `this` associato a `module.exports`
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-Assigning properties to the top-level `this` as an alternative to `module.exports` is deprecated. Developers should use `exports` or `module.exports` instead.
+Assegnare le proprietà al livello superiore `this` come alternativa a `module.exports` è deprecato/obsoleto. Developers should use `exports` or `module.exports` instead.
 
 <a id="DEP0093"></a>
 
