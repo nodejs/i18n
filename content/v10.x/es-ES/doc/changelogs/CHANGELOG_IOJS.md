@@ -675,8 +675,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Problemas conocidos
 
-* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -695,13 +695,13 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * **deps**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
 
-### Known issues
+### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
@@ -728,8 +728,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
@@ -775,11 +775,11 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
@@ -840,11 +840,11 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
@@ -923,10 +923,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1030,10 +1030,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1056,10 +1056,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1107,10 +1107,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1159,7 +1159,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1201,10 +1201,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1254,10 +1254,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1329,10 +1329,10 @@ Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1435,7 +1435,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
@@ -1490,7 +1490,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
@@ -1518,7 +1518,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
@@ -1579,7 +1579,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1651,7 +1651,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * Existen algunos problemas con temporizadores y `unref()` que todavía están por resolverse. Vea [#1152](https://github.com/nodejs/node/pull/1152).
 * Possible small memory leak(s) may still exist but have yet to be properly identified, details at [#1075](https://github.com/nodejs/node/issues/1075).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1708,7 +1708,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Pueden todavía existir posibles una(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1747,7 +1747,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1783,7 +1783,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Known issues
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1861,7 +1861,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1905,7 +1905,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -1982,7 +1982,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 ### Known issues
 
 * Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas tan rápido como es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -2017,8 +2017,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Windows support has some outstanding failures that have not been properly picked up by the io.js CI system due to a combination of factors including human, program and Jenkins errors. See [#1005](https://github.com/nodejs/node/issues/1005) for details & discussion. Expect these problems to be addressed ASAP.
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El soporte de Windows tiene algunas fallas sobresalientes que no han sido recogidas por el sistema io.js CI debido a una combinación de factores, incluyendo errores humanos, de programa y de Jenkins. Vea [#1005](https://github.com/nodejs/node/issues/1005) para detalles & discusión. Espere que estos problemas sean abordados tan pronto como sea posible.
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -2063,7 +2063,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -2121,7 +2121,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
@@ -2208,7 +2208,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774) that should appear in the next patch release.
 
@@ -2261,7 +2261,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ## 2015-02-03, Version 1.1.0, @chrisdickinson
 
-### Notable changes
+### Cambios notables
 
 * debug: fix v8 post-mortem debugging.
 * crypto: publicEncrypt now supports password-protected private keys.
@@ -2286,7 +2286,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Surrogate pair in REPL can freeze terminal (https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal (https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library (https://github.com/nodejs/node/issues/686)
 
 ### Commits
@@ -2360,7 +2360,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ## 2015-01-24, Version 1.0.4, @rvagg
 
-### Notable changes
+### Cambios notables
 
 * npm upgrade to 2.3.0 fixes Windows "uid is undefined" errors
 * crypto.pseudoRandomBytes() is now an alias for crypto.randomBytes() and will block if there is insufficient entropy to produce secure values. See https://github.com/nodejs/node/commit/e5e5980 for details.
