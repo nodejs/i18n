@@ -90,21 +90,21 @@ All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_proce
 
 Tipo: End-of-Life
 
-In una versione precedente del `cluster` di Node.js è stata aggiunta una proprietà booleana con il nome `suicide` al `Worker` object. Lo scopo di questa proprietà era fornire un'indicazione su come e perché l'istanza `Worker` è stata chiusa. In Node.js 6.0.0, the old property was deprecated and replaced with a new [`worker.exitedAfterDisconnect`][] property. The old property name did not precisely describe the actual semantics and was unnecessarily emotion-laden.
+In una versione precedente del `cluster` di Node.js è stata aggiunta una proprietà booleana con il nome `suicide` al `Worker` object. Lo scopo di questa proprietà era fornire un'indicazione su come e perché l'istanza `Worker` è stata chiusa. In Node.js 6.0.0, la vecchia proprietà è stata deprecata e sostituita con una nuova proprietà [`worker.exitedAfterDisconnect`][]. Il vecchio nome della proprietà non descriveva precisamente la semantica attuale ed era inutilmente eccessivo.
 
 <a id="DEP0008"></a>
 
 ### DEP0008: require('constants')
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `constants` module has been deprecated. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
+Il modulo `constants` è stato deprecato. Quando si richiede l'accesso a costanti relative a specifici moduli incorporati di Node.js, gli sviluppatori dovrebbero fare riferimento alla proprietà `constants` esposta dal modulo relativo. Per esempio, `require('fs').constants` e `require('os').constants`.
 
 <a id="DEP0009"></a>
 
-### DEP0009: crypto.pbkdf2 without digest
+### DEP0009: crypto.pbkdf2 senza digest
 
-Type: End-of-Life
+Tipo: End-of-Life
 
 Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previously, a deprecation warning was printed. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
 
