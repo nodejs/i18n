@@ -499,7 +499,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`12ca84fc7f`](https://github.com/nodejs/node/commit/12ca84fc7f)] - **benchmark**: añadir prueba de rendimiento util.format (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
 * [[`b955d02266`](https://github.com/nodejs/node/commit/b955d02266)] - **benchmark**: reparar errores lint (Rich Trott) [#5517](https://github.com/nodejs/node/pull/5517)
 * [[`2abf866b6e`](https://github.com/nodejs/node/commit/2abf866b6e)] - **build**: actualizar el logo de Node.js en el instalador Win (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
-* [[`86900f8f2b`](https://github.com/nodejs/node/commit/86900f8f2b)] - **build**: detectar correctamente la versy clang (Stefan Budeanu) [#5553](https://github.com/nodejs/node/pull/5553)
+* [[`86900f8f2b`](https://github.com/nodejs/node/commit/86900f8f2b)] - **build**: detectar correctamente la versión del clang (Stefan Budeanu) [#5553](https://github.com/nodejs/node/pull/5553)
 * [[`a3017992e4`](https://github.com/nodejs/node/commit/a3017992e4)] - **(SEMVER-MINOR)** **child_process**: añadir opción keepOpen para send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
 * [[`6d4887ccc2`](https://github.com/nodejs/node/commit/6d4887ccc2)] - **(SEMVER-MINOR)** **child_process**: opciones de soporte send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
 * [[`9db827c7aa`](https://github.com/nodejs/node/commit/9db827c7aa)] - **(SEMVER-MINOR)** **constants**: definir ENGINE_METHOD_RSA (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463)
@@ -515,10 +515,10 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`f3971f5817`](https://github.com/nodejs/node/commit/f3971f5817)] - **path**: reparar normalización de los absolutos (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589)
 * [[`e572e421b4`](https://github.com/nodejs/node/commit/e572e421b4)] - **(SEMVER-MINOR)** **repl**: no aceptar ningún argumento para start() (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388)
 * [[`5e6d706758`](https://github.com/nodejs/node/commit/5e6d706758)] - **src,http**: reparar falta de uncaughtException en http (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591)
-* [[`9dc94d7b09`](https://github.com/nodejs/node/commit/9dc94d7b09)] - **test**: añadir intalación test-npm-install al paralelo de conjuntonde pruebas (Myles Borins) [#5166](https://github.com/nodejs/node/pull/5166)
+* [[`9dc94d7b09`](https://github.com/nodejs/node/commit/9dc94d7b09)] - **test**: añadir instalación test-npm-install al paralelo del conjunto de pruebas (Myles Borins) [#5166](https://github.com/nodejs/node/pull/5166)
 * [[`4f20f31b3e`](https://github.com/nodejs/node/commit/4f20f31b3e)] - **test**: eliminar escenarios de depurador roto (Rich Trott) [#5532](https://github.com/nodejs/node/pull/5532)
 * [[`29e26b38c5`](https://github.com/nodejs/node/commit/29e26b38c5)] - **test**: bug repro for vm function redefinition (cjihrig) [#5528](https://github.com/nodejs/node/pull/5528)
-* [[`e6210d5f50`](https://github.com/nodejs/node/commit/e6210d5f50)] - **test**: prevenit prueba flakey en pi2 (Trevor Norris) [#5537](https://github.com/nodejs/node/pull/5537)
+* [[`e6210d5f50`](https://github.com/nodejs/node/commit/e6210d5f50)] - **test**: prevenir prueba flakey en pi2 (Trevor Norris) [#5537](https://github.com/nodejs/node/pull/5537)
 * [[`40b36baa2f`](https://github.com/nodejs/node/commit/40b36baa2f)] - **test**: verificar propiedades de memoryUsage (Wyatt Preul) [#5546](https://github.com/nodejs/node/pull/5546)
 * [[`048c0f4738`](https://github.com/nodejs/node/commit/048c0f4738)] - **tools**: reducir verbosidad de cpplint (Sakthipriyan Vairamani) [#5578](https://github.com/nodejs/node/pull/5578)
 * [[`7965c897e0`](https://github.com/nodejs/node/commit/7965c897e0)] - **tools**: habilitar regla ESLint no-self-assign (Rich Trott) [#5552](https://github.com/nodejs/node/pull/5552)
@@ -534,7 +534,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ### Cambios notables
 
-* **governance**: El Núcleo del Comité Técnico (CTC) añadió cuatro nuevos miembros para ayudar a guiar el el desarrollo más importante de Node.js: Evan Lucas, Rich Trott, Ali Ijaz Sheikh y Сковорода Никита Андреевич (Nikita Skovoroda).
+* **governance**: El Núcleo del Comité Técnico (CTC) añadió cuatro nuevos miembros para ayudar a guiar el desarrollo más importante de Node.js: Evan Lucas, Rich Trott, Ali Ijaz Sheikh y Сковорода Никита Андреевич (Nikita Skovoroda).
 * **openssl**: Actualizar de 1.0.2f a 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507). 
   * Reparar un defecto double-free defect en el análisis de claves DSA mañformadas que potencialmente pudieran ser usadas para DoS o ataques de corrupción de memoria. Es probable que sea muy díficil usar este defecto para un ataque, y por lo tanto es considerado de severidad baja para los usuarios de Node.js. Más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
   * Reparar un defecto que puede causar corrupción de memoria en ciertos casos muy raros relacionados a las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones, entonces ataques prácticos a Node.js usando este defecto son *poco probables* que sean posibles. Más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
