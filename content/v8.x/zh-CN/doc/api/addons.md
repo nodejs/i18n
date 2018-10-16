@@ -129,7 +129,7 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 ## Node.js原生模块抽象接口
 
-本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次更改时，插件需要更新并被重新编译才能继续正常运行。 The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
