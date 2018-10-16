@@ -508,7 +508,7 @@ added: v5.12.0
 
 以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`buf.fill(0)`][`buf.fill()`] 用 0 初始化 `Buffer` 实例。
 
-When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and clean up as many persistent objects.
+当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数持久对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
 However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` and then copying out the relevant bits.
 
