@@ -938,4 +938,4 @@ Si trattava di una funzione di supporto non documentata da non utilizzare all'es
 
 Tipo: Documentation-only
 
-Alias deprecato/obsoleto di [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
+Alias deprecato/obsoleto di [`zlib.bytesWritten`][]. Questo nome originale è stato scelto perché aveva anche senso interpretare il valore come il numero di byte letti dall'engine, ma è incoerente con altri stream all'interno di Node.js che espongono i valori con gli stessi nomi.
