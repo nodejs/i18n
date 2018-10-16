@@ -552,9 +552,9 @@ changes:
 * `encoding` {string} 如果 `string` 是字符串，则该值是它的字符编码方式。 **默认值:**`‘utf8'`。
 * Returns: {integer} `string` 包含的字节数。
 
-返回一个字符串的实际字节长度。 This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为 [<0>String.prototype.length</0>] 返回的是字符串中的 *字符* 数。
 
-For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+此函数假定有效的输入是 `'base64'` 和 `'hex'`。 对于包含 non-Base64/Hex-encoded 的数据的字符串（例如，空格），返回值可能大于从字符串中创建的 `Buffer` 的长度。
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -564,7 +564,7 @@ console.log(`${str}: ${str.length} characters, ` +
 // Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
 ### Class Method: Buffer.compare(buf1, buf2)
 
