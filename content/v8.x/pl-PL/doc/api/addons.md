@@ -789,9 +789,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Przekazywanie owiniętych przedmiotów
+### Przekazywanie zapakowanych obiektów
 
-Oprócz zawijania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `add()`, która może przyjąć dwa obiekty `MyObject` jako argumenty wejściowe:
 
 ```cpp
 // addon.cc
