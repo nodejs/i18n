@@ -62,17 +62,17 @@ La proprietà `CryptoStream.prototype.readyState` è stata deprecata e non dovre
 
 Tipo: Runtime (supporta [`--pending-deprecation`][])
 
-The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
+La funzione `Buffer()` e il constructor `new Buffer()` sono stati deprecati a causa di problemi di usabilità dell'API che potevano potenzialmente causare problemi accidentali di sicurezza.
 
-As an alternative, use of the following methods of constructing `Buffer` objects is strongly recommended:
+In alternativa, si consiglia vivamente l'utilizzo dei seguenti metodi di costruzione dei `Buffer` object:
 
-- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Create a `Buffer` with *initialized* memory.
-- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
-- [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
-- [`Buffer.from(array)`][] - Create a `Buffer` with a copy of `array`
-- [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
-- [`Buffer.from(buffer)`][] - Create a `Buffer` that copies `buffer`.
-- [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Create a `Buffer` that copies `string`.
+- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crea un `Buffer` con memoria *inizializzata*.
+- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Crea un `Buffer` con memoria *non inizializzata*.
+- [`Buffer.allocUnsafeSlow(size)`][] - Crea un `Buffer` con memoria *non inizializzata*.
+- [`Buffer.from(array)`][] - Crea un `Buffer` con una copia di `array`
+- [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Crea un `Buffer` che esegue il wrapping dell'`arrayBuffer` specificato.
+- [`Buffer.from(buffer)`][] - Crea un `Buffer` che copia `buffer`.
+- [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crea un `Buffer` che copia `string`.
 
 As of v10.0.0, a deprecation warning is printed at runtime when `--pending-deprecation` is used or when the calling code is outside `node_modules` in order to better target developers, rather than users.
 
