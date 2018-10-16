@@ -248,7 +248,7 @@ Asigna un nuevo `Buffer` usando un `array` de octetos.
 Ejemplo:
 
 ```js
-// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene los bytes UTF-8 de la string 'buffer'
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
@@ -270,15 +270,15 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] en su lugar.
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`] o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
+* `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] o [`SharedArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad `.buffer` de una instancia [`TypedArray`], el `Buffer` nuevo creado compartirá la misma memoria asignada que el [`TypedArray`].
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
@@ -315,11 +315,11 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(buffer)`] en su lugar.
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} Un `Buffer` existente del cual copiar datos.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 Ejemplo:
 
@@ -329,10 +329,10 @@ const buf2 = new Buffer(buf1);
 
 buf1[0] = 0x61;
 
-// Prints: auffer
+// Imprime: auffer
 console.log(buf1.toString());
 
-// Prints: buffer
+// Imprime: buffer
 console.log(buf2.toString());
 ```
 
@@ -673,8 +673,8 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
+* `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
@@ -699,7 +699,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
@@ -719,9 +719,9 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} Un `Buffer` existente del cual copiar datos.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 Ejemplo:
 
