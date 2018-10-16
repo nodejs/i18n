@@ -266,26 +266,26 @@ deprecated: v6.0.0
 
 Esto crea una vista del [`ArrayBuffer`] o [`SharedArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad `.buffer` de una instancia [`TypedArray`], el `Buffer` nuevo creado compartirá la misma memoria asignada que el [`TypedArray`].
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
 ```js
-const arr = new Uint16Array(2);
+onst arr = new Uint16Array(2);
 
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = new Buffer(arr.buffer);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf);
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf);
 ```
 
@@ -295,7 +295,7 @@ console.log(buf);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.alloc()`] en su lugar (también vea [`Buffer.allocUnsafe()`]).
 
 * `size` {integer} The desired length of the new `Buffer`.
 
@@ -610,7 +610,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
