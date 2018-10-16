@@ -650,26 +650,26 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`0d15161c24`](https://github.com/nodejs/node/commit/0d15161c24)] - **benchmark**: Add some path benchmarks for #1778 (Nathan Woltman) [#1778](https://github.com/nodejs/node/pull/1778)
 * [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: actualizar deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`ca93f7f2e6`](https://github.com/nodejs/node/commit/ca93f7f2e6)] - **deps**: upgrade openssl sources to 1.0.2d (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
-* [[`b18c841ec1`](https://github.com/nodejs/node/commit/b18c841ec1)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`863cdbdd08`](https://github.com/nodejs/node/commit/863cdbdd08)] - **deps**: upgrade to npm 2.12.1 (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112)
-* [[`84b3915764`](https://github.com/nodejs/node/commit/84b3915764)] - **doc**: document current release procedure (Rod Vagg) [#2099](https://github.com/nodejs/node/pull/2099)
-* [[`46140334cd`](https://github.com/nodejs/node/commit/46140334cd)] - **doc**: update AUTHORS list (Rod Vagg) [#2100](https://github.com/nodejs/node/pull/2100)
+* [[`b18c841ec1`](https://github.com/nodejs/node/commit/b18c841ec1)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`863cdbdd08`](https://github.com/nodejs/node/commit/863cdbdd08)] - **deps**: actualizar a npm 2.12.1 (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112)
+* [[`84b3915764`](https://github.com/nodejs/node/commit/84b3915764)] - **doc**: procedimiento de lanzamiento del documento actual (Rod Vagg) [#2099](https://github.com/nodejs/node/pull/2099)
+* [[`46140334cd`](https://github.com/nodejs/node/commit/46140334cd)] - **doc**: actualizar la lista AUTHORS (Rod Vagg) [#2100](https://github.com/nodejs/node/pull/2100)
 * [[`bca53dce76`](https://github.com/nodejs/node/commit/bca53dce76)] - **path**: refactor for performance and consistency (Nathan Woltman) [#1778](https://github.com/nodejs/node/pull/1778)
-* [[`6bef15afe7`](https://github.com/nodejs/node/commit/6bef15afe7)] - **src**: remove traceSyncIO property from process (Bradley Meck) [#2143](https://github.com/nodejs/node/pull/2143)
-* [[`2ba1740ba1`](https://github.com/nodejs/node/commit/2ba1740ba1)] - **test**: add missing crypto checks (Johan Bergström) [#2129](https://github.com/nodejs/node/pull/2129)
+* [[`6bef15afe7`](https://github.com/nodejs/node/commit/6bef15afe7)] - **src**: eliminar la propiedad traceSyncIO del proceso (Bradley Meck) [#2143](https://github.com/nodejs/node/pull/2143)
+* [[`2ba1740ba1`](https://github.com/nodejs/node/commit/2ba1740ba1)] - **test**: añadir las verificaciones criptográficas faltantes (Johan Bergström) [#2129](https://github.com/nodejs/node/pull/2129)
 * [[`180fd392ca`](https://github.com/nodejs/node/commit/180fd392ca)] - **test**: refactor test-repl-tab-complete (Sakthipriyan Vairamani) [#2122](https://github.com/nodejs/node/pull/2122)
-* [[`fb05c8e27d`](https://github.com/nodejs/node/commit/fb05c8e27d)] - ***Revert*** "**test**: add test for missing `close`/`finish` event" (Fedor Indutny)
-* [[`9436a860cb`](https://github.com/nodejs/node/commit/9436a860cb)] - **test**: add test for missing `close`/`finish` event (Mark Plomer) [iojs/io.js#1373](https://github.com/iojs/io.js/pull/1373)
+* [[`fb05c8e27d`](https://github.com/nodejs/node/commit/fb05c8e27d)] - ***Revert*** "**test**: añadir prueba para el evento `close`/`finish` faltante" (Fedor Indutny)
+* [[`9436a860cb`](https://github.com/nodejs/node/commit/9436a860cb)] - **test**: añadir prueba para el evento `close`/`finish` faltante (Mark Plomer) [iojs/io.js#1373](https://github.com/iojs/io.js/pull/1373)
 * [[`ee3ce2ed88`](https://github.com/nodejs/node/commit/ee3ce2ed88)] - **tools**: install gdbinit from v8 to $PREFIX/share (Ali Ijaz Sheikh) [#2123](https://github.com/nodejs/node/pull/2123)
 * [[`dd523c75da`](https://github.com/nodejs/node/commit/dd523c75da)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="1.8.4"></a>
 
-## 2015-07-09, Version 1.8.4, @Fishrock123
+## 2015-07-09, Versión 1.8.4, @Fishrock123
 
 **Maintenance release**
 
-### Notable changes
+### Cambios notables
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) [#2141](https://github.com/nodejs/node/pull/2141).
 
