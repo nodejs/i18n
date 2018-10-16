@@ -327,7 +327,7 @@ addon((msg) => {
 
 ### 对象工厂
 
-就像如下示例所示，插件可以在C++函数中创建并返回新对象。 An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+就像如下示例所示，插件可以在C++函数中创建并返回新对象。 创建一个对象并在返回时包含一个`msg`属性，该属性与传递给`createObject()`的字符串相呼应：
 
 ```cpp
 // addon.cc
@@ -360,7 +360,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+在JavaScript中测试它：
 
 ```js
 // test.js
@@ -372,9 +372,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### 函数工厂
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+另一个常见的场景就是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
