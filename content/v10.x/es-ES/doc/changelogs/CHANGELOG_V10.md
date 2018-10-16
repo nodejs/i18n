@@ -384,7 +384,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`6bab3c23b1`](https://github.com/nodejs/node/commit/6bab3c23b1)] - **(SEMVER-MAJOR)** **deps**: eliminar archivos de OpenSSL-1.0.2 (Shigeki Ohtsu) [#19794](https://github.com/nodejs/node/pull/19794)
 * [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)] - **(SEMVER-MAJOR)** **deps**: actualizar fuentes openssl a 1.1.0h (Shigeki Ohtsu) [#19794](https://github.com/nodejs/node/pull/19794)
 * [[`9759573997`](https://github.com/nodejs/node/commit/9759573997)] - **(SEMVER-MAJOR)** **deps**: cherry-pick 46c4979 from upstream V8 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
-* [[`b4c1222acc`](https://github.com/nodejs/node/commit/b4c1222acc)] - **(SEMVER-MAJOR)** **deps**: skip some V8 tests for ppc and s390 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
+* [[`b4c1222acc`](https://github.com/nodejs/node/commit/b4c1222acc)] - **(SEMVER-MAJOR)** **deps**: saltar algunas pruebas de V8 para ppc y s390 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
 * [[`9396a9f02c`](https://github.com/nodejs/node/commit/9396a9f02c)] - **(SEMVER-MAJOR)** **deps**: cherry-pick 8bfbe25 from upstream V8 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
 * [[`d68ee7eab7`](https://github.com/nodejs/node/commit/d68ee7eab7)] - **(SEMVER-MAJOR)** **deps**: cherry-pick 04a06c9 from upstream V8 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
 * [[`88786fecff`](https://github.com/nodejs/node/commit/88786fecff)] - **(SEMVER-MAJOR)** **deps**: update V8 to 6.5.254.31 (Michaël Zasso) [#18453](https://github.com/nodejs/node/pull/18453)
