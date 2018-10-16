@@ -601,7 +601,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`2b88523836`](https://github.com/nodejs/node/commit/2b88523836)] - **repl**: reparar pila de rastro de número de la columna en modo estricto (Prince J Wesley) [#5416](https://github.com/nodejs/node/pull/5416)
 * [[`51db48f741`](https://github.com/nodejs/node/commit/51db48f741)] - **src,tools**: remover centinela null del arreglo de la fuente (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
 * [[`03a5daba55`](https://github.com/nodejs/node/commit/03a5daba55)] - **src,tools**: drop nul byte from built-in source code (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
-* [[`17d14f3346`](https://github.com/nodejs/node/commit/17d14f3346)] - **src,tools**: allow utf-8 in built-in js source code (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
+* [[`17d14f3346`](https://github.com/nodejs/node/commit/17d14f3346)] - **src,tools**: permitir utf-8 en el código fuente js integrado (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
 * [[`12ae6abc69`](https://github.com/nodejs/node/commit/12ae6abc69)] - **test**: increase timeout for test-tls-fast-writing (Rich Trott) [#5466](https://github.com/nodejs/node/pull/5466)
 * [[`81348e8855`](https://github.com/nodejs/node/commit/81348e8855)] - **test**: apply Linux workaround to Linux only (Rich Trott) [#5471](https://github.com/nodejs/node/pull/5471)
 * [[`c4d9cdb7d0`](https://github.com/nodejs/node/commit/c4d9cdb7d0)] - **test**: allow options for v8 testing (Michael Dawson) [#5502](https://github.com/nodejs/node/pull/5502)
