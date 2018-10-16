@@ -515,21 +515,21 @@ La memoria subyacente para las instancias `Buffer` creada de esta forma *no es i
 
 Al usar [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, asignaciones bajo 4KB son, por defecto, segmentadas desde un solo `Buffer` asignado previamente. Esto permite que las aplicaciones eviten la sobrecarga de la colección de basura que implica crear muchas instancias de `Buffer` asignadas individualmente. Este enfoque mejora el rendimiento y uso de la memoria al eliminar la necesidad de rastrear y limpiar tantos objetos `Persistent`.
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
+Sin embargo, en el caso donde un desarrollador pueda necesitar retener un pedazo pequeño de la memoria de un pool por un período de tiempo predeterminado, puede ser apropiado crear una instancia de `Buffer` un-pooled usando `Buffer.allocUnsafeSlow()` y luego copiar los bits relevantes.
 
 Ejemplo:
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita conservar unos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asignar para datos retenidos
   const sb = Buffer.allocUnsafeSlow(10);
 
-  // Copy the data into the new allocation
+  // Copiar los datos a la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
