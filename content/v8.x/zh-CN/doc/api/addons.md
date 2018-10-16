@@ -206,12 +206,12 @@ $ node-gyp configure build
 
 ### 函数参数
 
-通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 当从JavaScript中调用函数时，参数和返回值都必须映射到/自C/C++代码。
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+以下示例演示如何读取传自JavaScript的函数参数，以及如何返回结果：
 
 ```cpp
-// addon.cc
+/ addon.cc
 #include <node.h>
 
 namespace demo {
@@ -264,7 +264,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+一旦编译后，就可以在Node.js中获取并使用示例插件：
 
 ```js
 // test.js
@@ -273,7 +273,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### 回调函数
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
