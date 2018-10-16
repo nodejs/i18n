@@ -1,7 +1,7 @@
 # Stijlgids
 
-* Documentatie is geschreven in markdown bestanden met namen geformatteerd als `lowercase-with-dashes.md`. 
-  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `child_process`).
+* Documentatie is geschreven in markdown bestanden met namen geformatteerd als `kleineletters-met-koppelteken.md`. 
+  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `kind_proces`).
   * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
 * Documenten moeten worden 'word-wrapped' bij 80 tekens.
 * De formattering beschreven in `.editorconfig` heeft de voorkeur. 
@@ -14,8 +14,8 @@
   * Gebruik genderneutrale voornaamwoorden en stofnamen. Niet-uitgebreide voorbeelden: 
     * Ok: "zij", "hun", "hen", "volk", "mensen", "ontwikkelaars", "katten"
     * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
+* Bij het combineren van verpakkingselementen (haakjes en aanhalingstekens), moet terminaal interpunctie worden geplaatst: 
+  * Binnen het verpakkingselement, wanneer het verpakkingselement een volledige component bevat — een onderwerp, werkwoord, en een object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
 * Documents must start with a level-one heading. An example document will be linked here eventually.
