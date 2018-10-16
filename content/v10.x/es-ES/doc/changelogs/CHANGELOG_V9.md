@@ -620,34 +620,34 @@ Sin commits adicionales. Nueva versión publicada debido a un archivo node-v9.7.
 * [[`a17d6840e1`](https://github.com/nodejs/node/commit/a17d6840e1)] - **src**: corregir advertencia de desaprobación en node\_perf.cc (Daniel Bevenius) [#18877](https://github.com/nodejs/node/pull/18877)
 * [[`46fc507054`](https://github.com/nodejs/node/commit/46fc507054)] - **(SEMVER-MINOR)** **src, test**: metadatos post mortem internos de node (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
 * [[`7853a7fd2a`](https://github.com/nodejs/node/commit/7853a7fd2a)] - **test**: add test for stream unpipe with 'data' listeners (Anna Henningsen) [#18516](https://github.com/nodejs/node/pull/18516)
-* [[`3543c5543b`](https://github.com/nodejs/node/commit/3543c5543b)] - **test**: make sure WriteWrap tests are actually async (Anna Henningsen) [#18676](https://github.com/nodejs/node/pull/18676)
-* [[`7dd3c8af88`](https://github.com/nodejs/node/commit/7dd3c8af88)] - **test**: add url type check in Module options (JiaHerr Tee) [#18664](https://github.com/nodejs/node/pull/18664)
-* [[`1be5e33f03`](https://github.com/nodejs/node/commit/1be5e33f03)] - **test**: replace assert.throws with expectsError (sreepurnajasti) [#17997](https://github.com/nodejs/node/pull/17997)
-* [[`df0d78a7e9`](https://github.com/nodejs/node/commit/df0d78a7e9)] - **test**: stdio pipe behavior tests (Bartosz Sosnowski) [#18614](https://github.com/nodejs/node/pull/18614)
+* [[`3543c5543b`](https://github.com/nodejs/node/commit/3543c5543b)] - **test**: asegurar que pruebas de WriteWrap son realmente asíncronas (Anna Henningsen) [#18676](https://github.com/nodejs/node/pull/18676)
+* [[`7dd3c8af88`](https://github.com/nodejs/node/commit/7dd3c8af88)] - **test**: agregar verificación de tipo de url en opciones de Módulo (JiaHerr Tee) [#18664](https://github.com/nodejs/node/pull/18664)
+* [[`1be5e33f03`](https://github.com/nodejs/node/commit/1be5e33f03)] - **test**: reemplazar assert.throws con expectsError (sreepurnajasti) [#17997](https://github.com/nodejs/node/pull/17997)
+* [[`df0d78a7e9`](https://github.com/nodejs/node/commit/df0d78a7e9)] - **test**: prueba de comportamiento de pipe de stdio (Bartosz Sosnowski) [#18614](https://github.com/nodejs/node/pull/18614)
 * [[`35cddae18f`](https://github.com/nodejs/node/commit/35cddae18f)] - **test**: fix cctest -Wunused-variable warning (Ben Noordhuis) [#18530](https://github.com/nodejs/node/pull/18530)
-* [[`743cf33616`](https://github.com/nodejs/node/commit/743cf33616)] - **test**: introduce SetUpTestCase/TearDownTestCase (Daniel Bevenius) [#18558](https://github.com/nodejs/node/pull/18558)
+* [[`743cf33616`](https://github.com/nodejs/node/commit/743cf33616)] - **test**: introducir SetUpTestCase/TearDownTestCase (Daniel Bevenius) [#18558](https://github.com/nodejs/node/pull/18558)
 * [[`edba129df3`](https://github.com/nodejs/node/commit/edba129df3)] - **test**: http2 compat response.write() error checks (Trivikram) [#18859](https://github.com/nodejs/node/pull/18859)
 * [[`f2dd17bde9`](https://github.com/nodejs/node/commit/f2dd17bde9)] - **(SEMVER-MINOR)** **timers**: allow Immediates to be unrefed (Anatoli Papirovski) [#18139](https://github.com/nodejs/node/pull/18139)
-* [[`37f253e88f`](https://github.com/nodejs/node/commit/37f253e88f)] - **timers**: refactor setImmediate error handling (Anatoli Papirovski) [#17879](https://github.com/nodejs/node/pull/17879)
-* [[`8474f86e9f`](https://github.com/nodejs/node/commit/8474f86e9f)] - **timers**: make setImmediate() immune to tampering (Ben Noordhuis) [#17736](https://github.com/nodejs/node/pull/17736)
-* [[`484e06d89a`](https://github.com/nodejs/node/commit/484e06d89a)] - **tls**: use after free in tls\_wrap (Kyle Farnung) [#18860](https://github.com/nodejs/node/pull/18860)
-* [[`efb4646539`](https://github.com/nodejs/node/commit/efb4646539)] - **tls_wrap**: use DoTryWrite() (Anna Henningsen) [#18676](https://github.com/nodejs/node/pull/18676)
-* [[`d255db3ae7`](https://github.com/nodejs/node/commit/d255db3ae7)] - **tools**: ignore VS compiler output in deps/v8 (Michaël Zasso) [#18952](https://github.com/nodejs/node/pull/18952)
-* [[`fc6ee39ea6`](https://github.com/nodejs/node/commit/fc6ee39ea6)] - **tools**: fix custom eslint rule errors (Ruben Bridgewater) [#18853](https://github.com/nodejs/node/pull/18853)
+* [[`37f253e88f`](https://github.com/nodejs/node/commit/37f253e88f)] - **timers**: refactorizar manejo de errores de setImmediate (Anatoli Papirovski) [#17879](https://github.com/nodejs/node/pull/17879)
+* [[`8474f86e9f`](https://github.com/nodejs/node/commit/8474f86e9f)] - **timers**: hacer setImmediate() inmune a manipulación (Ben Noordhuis) [#17736](https://github.com/nodejs/node/pull/17736)
+* [[`484e06d89a`](https://github.com/nodejs/node/commit/484e06d89a)] - **tls**: utilizar luego de libre en tls\_wrap (Kyle Farnung) [#18860](https://github.com/nodejs/node/pull/18860)
+* [[`efb4646539`](https://github.com/nodejs/node/commit/efb4646539)] - **tls_wrap**: utilizar DoTryWrite() (Anna Henningsen) [#18676](https://github.com/nodejs/node/pull/18676)
+* [[`d255db3ae7`](https://github.com/nodejs/node/commit/d255db3ae7)] - **tools**: ignorar salida de compilador VS en deps/v8 (Michaël Zasso) [#18952](https://github.com/nodejs/node/pull/18952)
+* [[`fc6ee39ea6`](https://github.com/nodejs/node/commit/fc6ee39ea6)] - **tools**: corregir errores de regla personalizados de eslint (Ruben Bridgewater) [#18853](https://github.com/nodejs/node/pull/18853)
 * [[`f8691398e4`](https://github.com/nodejs/node/commit/f8691398e4)] - **tools, test**: fix prof polyfill readline (killagu) [#18641](https://github.com/nodejs/node/pull/18641)
-* [[`38fd7902ef`](https://github.com/nodejs/node/commit/38fd7902ef)] - **tty**: fix console printing on Windows (Anna Henningsen) [#18214](https://github.com/nodejs/node/pull/18214)
-* [[`def51bafbd`](https://github.com/nodejs/node/commit/def51bafbd)] - **url**: reduce deplicated codes in `autoEscapeStr` (Weijia Wang) [#18613](https://github.com/nodejs/node/pull/18613)
-* [[`8e31bf42cf`](https://github.com/nodejs/node/commit/8e31bf42cf)] - **util**: skip type checks in internal getSystemErrorName (Joyee Cheung) [#18546](https://github.com/nodejs/node/pull/18546)
-* [[`28fa906ec1`](https://github.com/nodejs/node/commit/28fa906ec1)] - **(SEMVER-MINOR)** **util**: implement util.getSystemErrorName() (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
-* [[`38797b5804`](https://github.com/nodejs/node/commit/38797b5804)] - **vm**: consolidate validation (Timothy O. Peters) [#18816](https://github.com/nodejs/node/pull/18816)
+* [[`38fd7902ef`](https://github.com/nodejs/node/commit/38fd7902ef)] - **tty**: corregir impresión de consola en Windows (Anna Henningsen) [#18214](https://github.com/nodejs/node/pull/18214)
+* [[`def51bafbd`](https://github.com/nodejs/node/commit/def51bafbd)] - **url**: reducir códigos duplicados en `autoEscapeStr` (Weijia Wang) [#18613](https://github.com/nodejs/node/pull/18613)
+* [[`8e31bf42cf`](https://github.com/nodejs/node/commit/8e31bf42cf)] - **util**: saltar verificaciones de tipo en getSystemErrorName interno (Joyee Cheung) [#18546](https://github.com/nodejs/node/pull/18546)
+* [[`28fa906ec1`](https://github.com/nodejs/node/commit/28fa906ec1)] - **(SEMVER-MINOR)** **util**: implementar util.getSystemErrorName() (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
+* [[`38797b5804`](https://github.com/nodejs/node/commit/38797b5804)] - **vm**: consolidar validación (Timothy O. Peters) [#18816](https://github.com/nodejs/node/pull/18816)
 
 <a id="9.6.1"></a>
 
-## 2018-02-22, Version 9.6.1 (Current), @MylesBorins
+## 2018-02-22, Versión 9.6.1 (Actual), @MylesBorin
 
-This is a special release to fix potentially Semver-Major regression that was released in v9.6.0
+Esta es una actualización especial para corregir potencialmente la regresión de Semver-Major que fue lanzada en v9.6.0
 
-### Notable Changes
+### Cambios Notables
 
 * **events**: 
   * `events.usingDomains` establecido en `false` por defecto se eliminó en 9.6.0, que fue un cambio en comparaciones del comportamiento con 9.5.0. Este cambio de comportamiento fue revertido y el objeto `events` ahora tiene `usingDomains` preestablecido en `false</0, que es el comportamiento en 9.x anteriores a 9.6.0 (Myles Borins) <a href="https://github.com/nodejs/node/pull/18944">#18944</a></li>
@@ -657,14 +657,14 @@ This is a special release to fix potentially Semver-Major regression that was re
 <h3>Commits</h3>
 
 <ul>
-<li>[<a href="https://github.com/nodejs/node/commit/761caec379"><code>761caec379`</a>] - **events**: preset `usingDomains` to false (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
+<li>[<a href="https://github.com/nodejs/node/commit/761caec379"><code>761caec379`</a>] - **events**: preestablecidos `usingDomains` en false (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
   
   
 
 <a id="9.6.0"></a>
 
   
-  ## 2018-02-22, Version 9.6.0 (Current), @MylesBorins
+  ## 2018-02-22, Versión 9.6.0 (Actual), @MylesBorins
   
   ### Notable Changes
   
