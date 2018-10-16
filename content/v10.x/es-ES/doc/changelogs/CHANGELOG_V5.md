@@ -486,10 +486,10 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 ### Cambios notables
 
 * **child_process**: `send()` ahora acepta un parámetro de opciones (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283). 
-  * Actualmente la única opción es `keepOpen`, que mantiene el socket sunyacente abieeto después que el mensaje es enviado.
+  * Actualmente la única opción es `keepOpen`, que mantiene el socket subyacente abierto después que el mensaje es enviado.
 * **constants**: `ENGINE_METHOD_RSA` ahora es expuesto correctamente (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463).
 * Reparas dos regresiones que fueron originadas en v5.7.0: 
-  * **http**: Errores dentro de los callbacks del cliente http ahora se propagan corectamente (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
+  * **http**: Errores dentro de las callbacks del cliente http ahora se propagan correctamente (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
   * **path**: Reparada normalización de rutas absolutas (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589).
 * **repl**: `start()` ya no requiere un parámetro de opciones (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388).
 * **util**: Mejorado el rendimiento de `format()` 50-300% (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360).
@@ -498,7 +498,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 * [[`12ca84fc7f`](https://github.com/nodejs/node/commit/12ca84fc7f)] - **benchmark**: añadir prueba de rendimiento util.format (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
 * [[`b955d02266`](https://github.com/nodejs/node/commit/b955d02266)] - **benchmark**: reparar errores lint (Rich Trott) [#5517](https://github.com/nodejs/node/pull/5517)
-* [[`2abf866b6e`](https://github.com/nodejs/node/commit/2abf866b6e)] - **build**: actualizar el logo de Node.js logo en el instalador Win (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
+* [[`2abf866b6e`](https://github.com/nodejs/node/commit/2abf866b6e)] - **build**: actualizar el logo de Node.js en el instalador Win (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
 * [[`86900f8f2b`](https://github.com/nodejs/node/commit/86900f8f2b)] - **build**: detectar correctamente la versy clang (Stefan Budeanu) [#5553](https://github.com/nodejs/node/pull/5553)
 * [[`a3017992e4`](https://github.com/nodejs/node/commit/a3017992e4)] - **(SEMVER-MINOR)** **child_process**: añadir opción keepOpen para send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
 * [[`6d4887ccc2`](https://github.com/nodejs/node/commit/6d4887ccc2)] - **(SEMVER-MINOR)** **child_process**: opciones de soporte send() (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283)
