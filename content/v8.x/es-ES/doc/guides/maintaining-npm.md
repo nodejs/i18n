@@ -1,6 +1,6 @@
-# Mantenimiento de la npm en Node.js
+# Mantenimiento del npm en Node.js
 
-## Paso 1: Clon npm
+## Paso 1: Clonar al npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
