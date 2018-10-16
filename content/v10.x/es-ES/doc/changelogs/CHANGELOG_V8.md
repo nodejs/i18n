@@ -1028,14 +1028,14 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`3d8a7e97fe`](https://github.com/nodejs/node/commit/3d8a7e97fe)] - **tools**: modernizar license2rtf (Tobias Nießen) [#16220](https://github.com/nodejs/node/pull/16220)
 * [[`d5891b5330`](https://github.com/nodejs/node/commit/d5891b5330)] - **tools**: reemplazar "loop" con "padStart" (Tobias Nießen) [#16220](https://github.com/nodejs/node/pull/16220)
 * [[`b1e2a38d90`](https://github.com/nodejs/node/commit/b1e2a38d90)] - **tools**: corregir cpplint.py cuando la ruta contenga non-ascii (sharkfisher) [#16047](https://github.com/nodejs/node/pull/16047)
-* [[`e80d878b3f`](https://github.com/nodejs/node/commit/e80d878b3f)] - **tools**: sin barra diagonal en los patrones de "ignore" (Refael Ackermann) [#16372](https://github.com/nodejs/node/pull/16372)
+* [[`e80d878b3f`](https://github.com/nodejs/node/commit/e80d878b3f)] - **tools**: sin barra diagonal final en los patrones de "ignore" (Refael Ackermann) [#16372](https://github.com/nodejs/node/pull/16372)
 * [[`31f54e5fb9`](https://github.com/nodejs/node/commit/31f54e5fb9)] - **tools**: añadir hacer lint-md-clean (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`ea415a663e`](https://github.com/nodejs/node/commit/ea415a663e)] - **tools**: añadir comando lint-md en Makefile (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`3522e765be`](https://github.com/nodejs/node/commit/3522e765be)] - **tools**: usar remark-preset-lint-node en .remarkrc (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`8d62116cf0`](https://github.com/nodejs/node/commit/8d62116cf0)] - **tools**: introducir remark-preset-lint-node (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`3d499b3712`](https://github.com/nodejs/node/commit/3d499b3712)] - **tools**: introducir remark-cli@3.0.1 (Daijiro Wachi) [#12756](https://github.com/nodejs/node/pull/12756)
 * [[`55ba1d4115`](https://github.com/nodejs/node/commit/55ba1d4115)] - **util**: expandir cobertura de la prueba para util.deprecate (Ashish Kaila) [#16305](https://github.com/nodejs/node/pull/16305)
-* [[`8fd75fb9b5`](https://github.com/nodejs/node/commit/8fd75fb9b5)] - **(SEMVER-MINOR)** **util**: graduar pruebas TextEncoder/TextDecoder (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
+* [[`8fd75fb9b5`](https://github.com/nodejs/node/commit/8fd75fb9b5)] - **(SEMVER-MINOR)** **util**: graduar TextEncoder/TextDecoder, pruebas (James M Snell) [#15743](https://github.com/nodejs/node/pull/15743)
 
 <a id="8.8.1"></a>
 
@@ -1052,7 +1052,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`c8396b8370`](https://github.com/nodejs/node/commit/c8396b8370)] - **doc**: eliminar "loader hooks" de las funciones no compatibles (Teppei Sato) [#16465](https://github.com/nodejs/node/pull/16465)
 * [[`2b0bb57055`](https://github.com/nodejs/node/commit/2b0bb57055)] - **doc**: corregir URL errónea (Jon Moss) [#16470](https://github.com/nodejs/node/pull/16470)
 * [[`9ffc32974e`](https://github.com/nodejs/node/commit/9ffc32974e)] - **doc**: corregir error tipográfico en el registro de cambios para 8.8.0 (Alec Perkins) [#16462](https://github.com/nodejs/node/pull/16462)
-* [[`7facaa5031`](https://github.com/nodejs/node/commit/7facaa5031)] - **doc**: corregir el caracter de nueva línea faltante (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
+* [[`7facaa5031`](https://github.com/nodejs/node/commit/7facaa5031)] - **doc**: corregir el carácter de nueva línea faltante (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
 * [[`16eb7d3a5f`](https://github.com/nodejs/node/commit/16eb7d3a5f)] - **doc**: corregir los estilos de doc (Daijiro Wachi) [#16385](https://github.com/nodejs/node/pull/16385)
 * [[`99fdc1d04f`](https://github.com/nodejs/node/commit/99fdc1d04f)] - **doc**: añadir recomendaciones para los novatos (Refael Ackermann) [#16350](https://github.com/nodejs/node/pull/16350)
 * [[`6fbef7f350`](https://github.com/nodejs/node/commit/6fbef7f350)] - **doc**: corregir error tipográfico en zlib.md (Luigi Pinca) [#16480](https://github.com/nodejs/node/pull/16480)
@@ -1072,12 +1072,12 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
   * exponer la clase ECDH [#8188](https://github.com/nodejs/node/pull/8188)
 * **http2**: 
   * http2 ahora está expuesto por defecto sin la necesidad de una bandera [#15685](https://github.com/nodejs/node/pull/15685)
-  * se ha agregado una nueva variable de entorno NODE\_NO\_HTTP2 para permitir que userland http2 sea requerido [#15685](https://github.com/nodejs/node/pull/15685)
+  * a new environment variable NODE\_NO\_HTTP2 has been added to allow userland http2 to be required [#15685](https://github.com/nodejs/node/pull/15685)
   * se ha agregado soporte para streams `Duplex` genéricas[#16269](https://github.com/nodejs/node/pull/16269)
 * **module**: 
   * resolver e instanciar los enlaces de la tubería del cargador que se han agregado al ciclo de vida de ESM [#15445](https://github.com/nodejs/node/pull/15445)
 * **zlib**: 
-  * CVE-2017-14919 - En zlib v1.2.9, se realizó un cambio que hace que se genere un error cuando se inicializa un stream de desinflado sin procesar con windowBits establecido en 8. En algunas versiones, esto bloquea a Node y no es posible recuperarse de ello, mientras que en algunas versiones, arroja una excepción. Node.js ahora configurará con gracia los WindowBits en 9 replicando el comportamiento heredado para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+  * CVE-2017-14919 - En zlib v1.2.9, se realizó un cambio que hace que se genere un error cuando se inicializa un stream de desinflado sin procesar con windowBits establecido en 8. En algunas versiones, esto colapsa a Node y no es posible recuperarse de ello, mientras que en algunas versiones, arroja una excepción. Node.js ahora configurará con gracia los WindowBits en 9 replicando el comportamiento heredado para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 ### Commits
 
@@ -1145,7 +1145,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`2b4f3bb39e`](https://github.com/nodejs/node/commit/2b4f3bb39e)] - **doc**: añadir pronombre para fhinkel (F. Hinkelmann) [#16069](https://github.com/nodejs/node/pull/16069)
 * [[`4fdb9f5024`](https://github.com/nodejs/node/commit/4fdb9f5024)] - **doc**: documentar el soporte de shell de windows (Tim Ermilov) [#16104](https://github.com/nodejs/node/pull/16104)
 * [[`6670b35f23`](https://github.com/nodejs/node/commit/6670b35f23)] - **doc**: eliminar variable de referencia indefinida (Adarsh Honawad) [#16106](https://github.com/nodejs/node/pull/16106)
-* [[`0d23412e12`](https://github.com/nodejs/node/commit/0d23412e12)] - **doc**: exento test/doc solo cambia a partir de la regla de 48 horas (Anna Henningsen) [#16135](https://github.com/nodejs/node/pull/16135)
+* [[`0d23412e12`](https://github.com/nodejs/node/commit/0d23412e12)] - **doc**: test/doc exento solo cambia a partir de la regla de 48 horas (Anna Henningsen) [#16135](https://github.com/nodejs/node/pull/16135)
 * [[`e375b8cbae`](https://github.com/nodejs/node/commit/e375b8cbae)] - **doc**: cambiar el nombre de la etiqueta "good first contrib" (Jeremiah Senkpiel) [#16150](https://github.com/nodejs/node/pull/16150)
 * [[`3b7abe1e0d`](https://github.com/nodejs/node/commit/3b7abe1e0d)] - **doc**: corregir la descripción del evento 'close' (James M. Greene) [#15800](https://github.com/nodejs/node/pull/15800)
 * [[`698f358956`](https://github.com/nodejs/node/commit/698f358956)] - **doc**: documentar el módulo de `test/common/dns` (Cameron Burwell) [#15772](https://github.com/nodejs/node/pull/15772)
@@ -1153,7 +1153,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`c2f0700769`](https://github.com/nodejs/node/commit/c2f0700769)] - **doc**: añadir historial para la opción de readline `crlfDelay` (Vse Mozhet Byt) [#16075](https://github.com/nodejs/node/pull/16075)
 * [[`8a151bedfb`](https://github.com/nodejs/node/commit/8a151bedfb)] - **doc**: documentos receptivos, reescribir tamaños de fuente (silverwind) [#15660](https://github.com/nodejs/node/pull/15660)
 * [[`939a580406`](https://github.com/nodejs/node/commit/939a580406)] - **errors**: hacer a `code` y a `name` propiedades configurables (John-David Dalton) [#15694](https://github.com/nodejs/node/pull/15694)
-* [[`0bd2fd5627`](https://github.com/nodejs/node/commit/0bd2fd5627)] - **errors**: hacer propiedades mutables (Rich Trott) [#15694](https://github.com/nodejs/node/pull/15694)
+* [[`0bd2fd5627`](https://github.com/nodejs/node/commit/0bd2fd5627)] - **errors**: hacer mutables a las propiedades (Rich Trott) [#15694](https://github.com/nodejs/node/pull/15694)
 * [[`62f802aee0`](https://github.com/nodejs/node/commit/62f802aee0)] - **fs**: cuenta para el error de asignación de buffer en readFile (Anna Henningsen) [#16219](https://github.com/nodejs/node/pull/16219)
 * [[`f501062363`](https://github.com/nodejs/node/commit/f501062363)] - **fs**: eliminar comentario ya no relevante (Bryan English) [#16285](https://github.com/nodejs/node/pull/16285)
 * [[`ce73ee5f36`](https://github.com/nodejs/node/commit/ce73ee5f36)] - **http**: no destruir a ciegas los sockets de dominio UNIX (Luigi Pinca) [#15650](https://github.com/nodejs/node/pull/15650)
