@@ -400,7 +400,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`ae096ba27c`](https://github.com/nodejs/node/commit/ae096ba27c)] - **(SEMVER-MAJOR)** **doc**: corregir las descripciones de la API para OpenSSL-1.1.0 (Shigeki Ohtsu) [#19794](https://github.com/nodejs/node/pull/19794)
 * [[`c111e133ae`](https://github.com/nodejs/node/commit/c111e133ae)] - **(SEMVER-MAJOR)** **doc**: añadir aviso de desaprobación (Ruben Bridgewater) [#18395](https://github.com/nodejs/node/pull/18395)
 * [[`740c426b21`](https://github.com/nodejs/node/commit/740c426b21)] - **(SEMVER-MAJOR)** **doc**: añadir un mensage de desaprobación para eliminar lttng (Glen Keane) [#18982](https://github.com/nodejs/node/pull/18982)
-* [[`300f5ce346`](https://github.com/nodejs/node/commit/300f5ce346)] - **(SEMVER-MAJOR)** **doc**: deprecate top-level `this` (Hackzzila) [#16878](https://github.com/nodejs/node/pull/16878)
+* [[`300f5ce346`](https://github.com/nodejs/node/commit/300f5ce346)] - **(SEMVER-MAJOR)** **doc**: desaprobar el nivel superior `this` (Hackzzila) [#16878](https://github.com/nodejs/node/pull/16878)
 * [[`dbdcf12187`](https://github.com/nodejs/node/commit/dbdcf12187)] - **(SEMVER-MAJOR)** **doc**: correct buffer changelog ordering (cjihrig) [#18129](https://github.com/nodejs/node/pull/18129)
 * [[`4319780389`](https://github.com/nodejs/node/commit/4319780389)] - **(SEMVER-MAJOR)** **doc**: remove double line break (Ruben Bridgewater) [#17581](https://github.com/nodejs/node/pull/17581)
 * [[`ccc87ebb33`](https://github.com/nodejs/node/commit/ccc87ebb33)] - **(SEMVER-MAJOR)** **doc**: improve documentation for util.deprecate() (Rich Trott) [#16393](https://github.com/nodejs/node/pull/16393)
