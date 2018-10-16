@@ -894,48 +894,48 @@ L'utilizzo dell'argomento `noAssert` non ha più alcuna funzionalità. Tutti gli
 
 <a id="DEP0103"></a>
 
-### DEP0103: process.binding('util').is[...] typechecks
+### DEP0103: i typecheck process.binding('util').is[...]
 
 Tipo: Documentation-only (supporta [`--pending-deprecation`][])
 
-Generalmente l'utilizzo di `process.binding()` dovrebbe essere evitato. The type checking methods in particular can be replaced by using [`util.types`][].
+Generalmente l'utilizzo di `process.binding()` dovrebbe essere evitato. In particolare i metodi di typecheck possono essere sostituiti utilizzando [`util.types`][].
 
 <a id="DEP0104"></a>
 
-### DEP0104: process.env string coercion
+### DEP0104: coercizione della stringa process.env
 
 Tipo: Documentation-only (supporta [`--pending-deprecation`][])
 
-When assigning a non-string property to [`process.env`][], the assigned value is implicitly converted to a string. This behavior is deprecated if the assigned value is not a string, boolean, or number. In the future, such assignment may result in a thrown error. Please convert the property to a string before assigning it to `process.env`.
+Quando si assegna una proprietà diversa da una stringa a [`process.env`][], il valore assegnato viene convertito implicitamente in una stringa. Questo comportamento è deprecato/obsoleto se il valore assegnato non è una stringa, un valore booleano o un numero. In futuro, tale assegnazione potrebbe generare un errore. Si prega di convertire la proprietà in una stringa prima di assegnarla a `process.env`.
 
 <a id="DEP0105"></a>
 
 ### DEP0105: decipher.finaltol
 
-Type: Runtime
+Tipo: Runtime
 
-`decipher.finaltol()` has never been documented and is currently an alias for [`decipher.final()`][]. In the future, this API will likely be removed, and it is recommended to use [`decipher.final()`][] instead.
+`decipher.finaltol()` non è mai stato documentato e attualmente è un alias di [`decipher.final()`][]. In futuro, quest'API verrà probabilmente rimossa e si consiglia l'utilizzo di [`decipher.final()`][].
 
 <a id="DEP0106"></a>
 
-### DEP0106: crypto.createCipher and crypto.createDecipher
+### DEP0106: crypto.createCipher e crypto.createDecipher
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] should be avoided as they use a weak key derivation function (MD5 with no salt) and static initialization vectors. It is recommended to derive a key using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the [`Cipher`][] and [`Decipher`][] objects respectively.
+L'utilizzo di [`crypto.createCipher()`][] e [`crypto.createDecipher()`][] dovrebbe essere evitato in quanto utilizzano una funzione di derivazione della chiave debole (MD5 senza salt) e vettori di inizializzazione statici. Si consiglia di derivare una chiave utilizzando [`crypto.pbkdf2()`][] e di usare [`crypto.createCipheriv()`][] e [`crypto.createDecipheriv()`][] per ottenere rispettivamente gli object [`Cipher`][] e [`Decipher`][].
 
 <a id="DEP0107"></a>
 
 ### DEP0107: tls.convertNPNProtocols()
 
-Type: Runtime
+Tipo: Runtime
 
-This was an undocumented helper function not intended for use outside Node.js core and obsoleted by the removal of NPN (Next Protocol Negotiation) support.
+Si trattava di una funzione di supporto non documentata da non utilizzare all'esterno del core di Node.js e obsoleta da quando è avvenuta la rimozione del supporto NPN (Next Protocol Negotiation).
 
 <a id="DEP0108"></a>
 
 ### DEP0108: zlib.bytesRead
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-Deprecated alias for [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
+Alias deprecato/obsoleto di [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
