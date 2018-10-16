@@ -53,7 +53,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Zwróć uwagę, że wszystkie dodatki Node.js muszą wyeksportować funkcję inicjalizacyjną zgodnie z następującym wzorcem:
 
 ```cpp
 void Initialize(Local<Object> exports);
@@ -66,7 +66,7 @@ Po `NODE_MODULE` nie ma średnika, ponieważ nie jest on funkcją (zobacz `node.
 
 W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
-### Building
+### Konfigurowanie
 
 Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `addon.node`. Aby to zrobić, utwórz plik o nazwie `binding.gyp` na najwyższym poziomie projektu opisującym konfigurację budowy dla Twojego modułu przy użyciu formatu podobnego do JSON. Ten plik jest używany przez [node-gyp](https://github.com/nodejs/node-gyp) — narzędzie napisane specjalnie do kompilacji dodatków Node.js.
 
@@ -197,7 +197,7 @@ using v8::Value;
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+//Sprawdź liczbę przekazanych argumentów.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
