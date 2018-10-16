@@ -640,12 +640,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **net**: Añadida una propiedad Booleana `listening` a los servidores `net` y `http` para indicar si el servidor está escuchando por conexiones. (José Moreira) [#4743](https://github.com/nodejs/node/pull/4743)
 * **node**: La API C++ `node::MakeCallback()` ahora es re-entrar y llamarla desde dentro de otra llamada `MakeCallback()` ya no causa la cola `nextTick` o la cola de microtareas Prometidas sean procesadas fuera de orden. (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
 * **tls**: Añadir un nuevo método `tlsSocket.getProtocol()` para obtener la versión del protocolo TLS negociada de la conexión actual. (Brian White) [#4995](https://github.com/nodejs/node/pull/4995)
-* **vm**: Introducir las nuevas opciones `'produceCachedData'` y `'cachedData'` a `new vm.Script()` para que interactuar con el caché del código de V8. Cuando un nuevo objeto `vm.Script` es creado con el `'produceCachedData'` establecido como `true` un `Buffer` con los datos del caché del código V8 serán producidos y guardados en la propiedad `cachedData` del objeto devuelto. This data in turn may be supplied back to another `vm.Script()` object with a `'cachedData'` option if the supplied source is the same. Successfully executing a script from cached data can speed up instantiation time. See the [API docs](https://nodejs.org/api/vm.html#vm_new_vm_script_code_options) for details. (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
-* **performance**: Improvements in: 
+* **vm**: Introducir las nuevas opciones `'produceCachedData'` y `'cachedData'` a `new vm.Script()` para que interactuar con el caché del código de V8. Cuando un nuevo objeto `vm.Script` es creado con el `'produceCachedData'` establecido como `true` un `Buffer` con los datos del caché del código V8 serán producidos y guardados en la propiedad `cachedData` del objeto devuelto. Estos datos pueden ser suministrados devuelta a otro objeto`vm.Script()` con una opción `'cachedData'` si la fuente suministrada es la misma. Ejecuta con éxito un script desde datos en caché puede acelerar los tiempos de instanciación. Vea los [documentos API](https://nodejs.org/api/vm.html#vm_new_vm_script_code_options) para los detalles. (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
+* **rendimiento**: Mejoras en: 
   * `process.nextTick()` (Ruben Bridgewater) [#5092](https://github.com/nodejs/node/pull/5092)
   * `path` module (Brian White) [#5123](https://github.com/nodejs/node/pull/5123)
   * `querystring` module (Brian White) [#5012](https://github.com/nodejs/node/pull/5012)
-  * `streams` module when processing small chunks (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
+  * `streams` módulo cuando sean procesados fragmentos pequeños (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
 
 ### Commits
 
