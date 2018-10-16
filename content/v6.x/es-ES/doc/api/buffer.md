@@ -323,40 +323,40 @@ console.log(buf);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(string[, encoding])`] [`Buffer.from(string)`] en su lugar.
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `string` {string} String a codificar.
+* `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
 
 Ejemplos:
 
 ```js
 const buf1 = new Buffer('this is a tést');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf1.toString());
 
-// Prints: this is a tC)st
+// Imprime: this is a tC)st
 console.log(buf1.toString('ascii'));
 
 
 const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf2.toString());
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Método de Clase: Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
 * `size` {integer} La longitud deseada del nuevo `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
+* `fill` {string|Buffer|integer} Un valor con el cual llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`
+* `encoding` {string} If `fill` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 
 Asigna el nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
@@ -475,7 +475,7 @@ added: v0.1.90
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The number of bytes contained within `string`.
 
 Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
@@ -658,9 +658,9 @@ added: v5.10.0
 -->
 
 * `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
 
 Ejemplos:
 
@@ -913,7 +913,7 @@ added: v0.5.0
 * `value` {string|Buffer|integer} The value to fill `buf` with.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
 
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
@@ -946,7 +946,7 @@ added: v5.3.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -987,7 +987,7 @@ added: v1.5.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 If `value` is:
@@ -1058,7 +1058,7 @@ added: v5.3.0
 
 * `value` {String|Buffer|Integer} What to search for.
 * `byteOffset` {Integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {String} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {String} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Boolean} `true` if `value` was found in `buf`, `false` otherwise
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -1126,7 +1126,7 @@ added: v6.0.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 Identical to [`buf.indexOf()`], except `buf` is searched from back to front instead of front to back.
@@ -1714,7 +1714,7 @@ Note that JavaScript cannot encode 64-bit integers. This method is intended for 
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to decode to. **Default:** `'utf8'`
+* `encoding` {string} The character encoding to decode to. **Predeterminado:** `'utf8'`
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
 * Returns: {string}
@@ -1826,7 +1826,7 @@ added: v0.1.90
 * `string` {string} String to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`
-* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`
+* `encoding` {string} The character encoding of `string`. **Predeterminado:** `'utf8'`
 * Returns: {integer} Number of bytes written.
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
