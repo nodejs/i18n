@@ -143,9 +143,9 @@ Dostępne funkcje i sposób ich używania są udokumentowane w sekcji zatytułow
 
 ## Przykłady dodatków
 
-Oto kilka przykładów dodatków, które mają ułatwić deweloperom rozpoczęcie pracy. Przykłady wykorzystują API V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Oto kilka przykładów dodatków, które mają ułatwić deweloperom rozpoczęcie pracy. Przykłady wykorzystują API V8. Odwołaj się do [odnośnika V8](https://v8docs.nodesource.com/) w internecie, aby uzyskać pomoc dotyczącą różnych wywołań V8, oraz [Przewodnika Utrwalającego](https://github.com/v8/v8/wiki/Embedder's%20Guide) w V8, aby uzyskać wyjaśnienie kilku używanych pojęć, takich jak uchwyty, zakresy, szablony funkcji itp.
 
-Each of these examples using the following `binding.gyp` file:
+Każdy z poniższych przykładów używa następującego pliku `binding.gyp`:
 
 ```json
 {
@@ -597,7 +597,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+W `myobject.h` dodawana jest statyczna metoda `NewInstance()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
 // myobject.h
@@ -755,7 +755,7 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### Przekazywanie owiniętych przedmiotów
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
 
