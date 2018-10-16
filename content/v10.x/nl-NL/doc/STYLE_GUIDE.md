@@ -22,7 +22,7 @@
 * Voorkeur geven aan het aanbrengen van links boven inlining links — voorkeur `[een link][]` boven `[een link](http://voorbeeld.com)`.
 * Bij het documenteren van API's, noteer de versie van het geïntroduceerde API aan het einde van het segment. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * Bij het gebruik van koppeltekens, gebruik [Em koppeltekens](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" of `Option+Shift+"-"` op macOS) omringd door spaties, overeenkomstig [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Including assets: 
+* Inbegrepen assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
   * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
