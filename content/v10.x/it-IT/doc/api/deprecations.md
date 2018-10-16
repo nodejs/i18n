@@ -432,95 +432,95 @@ L'API [`util.isFunction()`][] è stata deprecata.
 
 ### DEP0050: util.isNull()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNull()`][] API has been deprecated.
+L'API [`util.isNull()`][] è stata deprecata.
 
 <a id="DEP0051"></a>
 
 ### DEP0051: util.isNullOrUndefined()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNullOrUndefined()`][] API has been deprecated.
+L'API [`util.isNullOrUndefined()`][] è stata deprecata.
 
 <a id="DEP0052"></a>
 
 ### DEP0052: util.isNumber()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNumber()`][] API has been deprecated.
+L'API [`util.isNumber()`][] è stata deprecata.
 
 <a id="DEP0053"></a>
 
 ### DEP0053 util.isObject()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isObject()`][] API has been deprecated.
+L'API [`util.isObject()`][] è stata deprecata.
 
 <a id="DEP0054"></a>
 
 ### DEP0054: util.isPrimitive()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isPrimitive()`][] API has been deprecated.
+L'API [`util.isPrimitive()`][] è stata deprecata.
 
 <a id="DEP0055"></a>
 
 ### DEP0055: util.isRegExp()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isRegExp()`][] API has been deprecated.
+L'API [`util.isRegExp()`][] è stata deprecata.
 
 <a id="DEP0056"></a>
 
 ### DEP0056: util.isString()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isString()`][] API has been deprecated.
+L'API [`util.isString()`][] è stata deprecata.
 
 <a id="DEP0057"></a>
 
 ### DEP0057: util.isSymbol()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isSymbol()`][] API has been deprecated.
+L'API [`util.isSymbol()`][] è stata deprecata.
 
 <a id="DEP0058"></a>
 
 ### DEP0058: util.isUndefined()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isUndefined()`][] API has been deprecated.
+L'API [`util.isUndefined()`][] è stata deprecata.
 
 <a id="DEP0059"></a>
 
 ### DEP0059: util.log()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.log()`][] API has been deprecated.
+L'API [`util.log()`][] è stata deprecata.
 
 <a id="DEP0060"></a>
 
 ### DEP0060: util.\_extend()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util._extend()`][] API has been deprecated.
+L'API [`util._extend()`][] è stata deprecata.
 
 <a id="DEP0061"></a>
 
 ### DEP0061: fs.SyncWriteStream
 
-Type: Runtime
+Tipo: Runtime
 
 The `fs.SyncWriteStream` class was never intended to be a publicly accessible API. No alternative API is available. Please use a userland alternative.
 
