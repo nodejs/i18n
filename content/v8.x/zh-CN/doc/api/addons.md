@@ -129,13 +129,13 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 ## Node.js原生模块抽象接口
 
-本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次更改时，插件需要更新并被重新编译才能继续正常运行。 The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次更改时，插件需要更新并被重新编译才能继续正常运行。 Node.js的发布计划旨在最大程度的减少此类更改的频率和影响，但是Node.js无法确保V8 API的稳定性。
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 关于使用说明，请参阅`nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
-> Stability: 1 - Experimental
+> 稳定性: 1 - 实验性
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
