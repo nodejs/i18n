@@ -30,7 +30,7 @@ A volte la deprecazione di un'API può essere annullata. In tali situazioni, que
 
 Tipo: Runtime
 
-Il metodo `OutgoingMessage.prototype.flush()` è stato deprecato. Utilizza `OutgoingMessage.prototype.flushHeaders()` al suo posto.
+Il metodo `OutgoingMessage.prototype.flush()` è deprecato/obsoleto. Utilizza `OutgoingMessage.prototype.flushHeaders()` al suo posto.
 
 <a id="DEP0002"></a>
 
@@ -38,7 +38,7 @@ Il metodo `OutgoingMessage.prototype.flush()` è stato deprecato. Utilizza `Outg
 
 Tipo: End-of-Life
 
-Il modulo `_linklist` è stato deprecato. Si prega di utilizzare un'alternativa userland.
+Il modulo `_linklist` è deprecato/obsoleto. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0003"></a>
 
@@ -46,7 +46,7 @@ Il modulo `_linklist` è stato deprecato. Si prega di utilizzare un'alternativa 
 
 Tipo: Runtime
 
-La proprietà `_writableState.buffer` è stata deprecata. Utilizza il metodo `_writableState.getBuffer()` al suo posto.
+La proprietà `_writableState.buffer` è deprecata/obsoleta. Utilizza il metodo `_writableState.getBuffer()` al suo posto.
 
 <a id="DEP0004"></a>
 
@@ -54,7 +54,7 @@ La proprietà `_writableState.buffer` è stata deprecata. Utilizza il metodo `_w
 
 Tipo: Documentation-only
 
-La proprietà `CryptoStream.prototype.readyState` è stata deprecata e non dovrebbe essere utilizzata.
+La proprietà `CryptoStream.prototype.readyState` è deprecata/obsoleta e non dovrebbe essere utilizzata.
 
 <a id="DEP0005"></a>
 
@@ -62,7 +62,7 @@ La proprietà `CryptoStream.prototype.readyState` è stata deprecata e non dovre
 
 Tipo: Runtime (supporta [`--pending-deprecation`][])
 
-La funzione `Buffer()` e il constructor `new Buffer()` sono stati deprecati a causa di problemi di usabilità dell'API che potevano potenzialmente causare problemi accidentali di sicurezza.
+La funzione `Buffer()` e il constructor `new Buffer()` sono deprecati/obsoleti a causa di problemi di usabilità dell'API che potevano potenzialmente causare problemi accidentali di sicurezza.
 
 In alternativa, si consiglia vivamente l'utilizzo dei seguenti metodi di costruzione dei `Buffer` object:
 
@@ -82,7 +82,7 @@ A partire dalla v10.0.0, viene stampato un avviso di deprecazione in fase di ese
 
 Tipo: Runtime
 
-All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_process`][], l'opzione `options.customFds` è stata deprecata. Al suo posto dovrebbe essere utilizzata l'opzione `options.stdio`.
+All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_process`][], l'opzione `options.customFds` è deprecata/obsoleta. Al suo posto dovrebbe essere utilizzata l'opzione `options.stdio`.
 
 <a id="DEP0007"></a>
 
@@ -98,7 +98,7 @@ In una versione precedente del `cluster` di Node.js è stata aggiunta una propri
 
 Tipo: Documentation-only
 
-Il modulo `constants` è stato deprecato. Quando si richiede l'accesso a costanti relative a specifici moduli incorporati di Node.js, gli sviluppatori dovrebbero fare riferimento alla proprietà `constants` esposta dal modulo relativo. Per esempio, `require('fs').constants` e `require('os').constants`.
+Il modulo `constants` è deprecato/obsoleto. Quando si richiede l'accesso a costanti relative a specifici moduli incorporati di Node.js, gli sviluppatori dovrebbero fare riferimento alla proprietà `constants` esposta dal modulo relativo. Per esempio, `require('fs').constants` e `require('os').constants`.
 
 <a id="DEP0009"></a>
 
@@ -106,61 +106,61 @@ Il modulo `constants` è stato deprecato. Quando si richiede l'accesso a costant
 
 Tipo: End-of-Life
 
-Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previously, a deprecation warning was printed. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+L'utilizzoo dell'API [`crypto.pbkdf2()`][] senza specificare un digest è stato reso obsoleto in Node.js 6.0 poiché il metodo è stato impostato in modo predefinito per utilizzare il digest `'SHA1'` del quale si sconsiglia l'utilizzo. In precedenza, veniva stampato un avviso di deprecazione. A partire da Node.js 8.0.0, chiamare `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinito genererà un `TypeError`.
 
 <a id="DEP0010"></a>
 
 ### DEP0010: crypto.createCredentials
 
-Type: Runtime
+Tipo: Runtime
 
-The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
+L'API [`crypto.createCredentials()`][] è deprecata/obsoleta. Si prega di utilizzare [`tls.createSecureContext()`][] al suo posto.
 
 <a id="DEP0011"></a>
 
 ### DEP0011: crypto.Credentials
 
-Type: Runtime
+Tipo: Runtime
 
-The `crypto.Credentials` class is deprecated. Please use [`tls.SecureContext`][] instead.
+La classe `crypto.Credentials` è deprecata/obsoleta. Si prega di utilizzare [`tls.SecureContext`][] al suo posto.
 
 <a id="DEP0012"></a>
 
 ### DEP0012: Domain.dispose
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`Domain.dispose()` has been removed. Recover from failed I/O actions explicitly via error event handlers set on the domain instead.
+`Domain.dispose()` è stato rimosso. In alternativa puoi ripristinare le azioni esplicite I/O fallite tramite gli event handler degli errori impostati sul dominio.
 
 <a id="DEP0013"></a>
 
-### DEP0013: fs asynchronous function without callback
+### DEP0013: fs funzione asincrona senza callback
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-Calling an asynchronous function without a callback throws a `TypeError` in Node.js 10.0.0 onwards. (See https://github.com/nodejs/node/pull/12562.)
+Chiamare una funzione asincrona senza un callback genera un `TypeError` da Node.js 10.0.0 in poi. (Vedi https://github.com/nodejs/node/pull/12562.)
 
 <a id="DEP0014"></a>
 
-### DEP0014: fs.read legacy String interface
+### DEP0014: interfaccia fs.read legacy String
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The [`fs.read()`][] legacy `String` interface is deprecated. Use the `Buffer` API as mentioned in the documentation instead.
+L'interfaccia [`fs.read()`][] legacy `String` è deprecata/obsoleta. In alternativa utilizza l'API `Buffer` come indicato nella documentazione.
 
 <a id="DEP0015"></a>
 
-### DEP0015: fs.readSync legacy String interface
+### DEP0015: interfaccia fs.readSync legacy String
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The [`fs.readSync()`][] legacy `String` interface is deprecated. Use the `Buffer` API as mentioned in the documentation instead.
+L'interfaccia [`fs.readSync()`][] legacy `String` è deprecata/obsoleta. In alternativa utilizza l'API `Buffer` come indicato nella documentazione.
 
 <a id="DEP0016"></a>
 
 ### DEP0016: GLOBAL/root
 
-Type: Runtime
+Tipo: Runtime
 
 The `GLOBAL` and `root` aliases for the `global` property have been deprecated and should no longer be used.
 
