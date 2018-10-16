@@ -566,7 +566,7 @@ console.log(`${str}: ${str.length} characters, ` +
 
 当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Class 方法：Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
