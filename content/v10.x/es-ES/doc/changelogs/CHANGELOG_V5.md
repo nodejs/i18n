@@ -616,21 +616,21 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`479a43c876`](https://github.com/nodejs/node/commit/479a43c876)] - **test**: permitir que pasen args al ejecutable (Stefan Budeanu) [#5376](https://github.com/nodejs/node/pull/5376)
 * [[`ff75023812`](https://github.com/nodejs/node/commit/ff75023812)] - **test**: reparar test-timers.reliability en OS X (Rich Trott) [#5379](https://github.com/nodejs/node/pull/5379)
 * [[`991f82b4bd`](https://github.com/nodejs/node/commit/991f82b4bd)] - **test**: mitigar test-http-agent flaky (Rich Trott) [#5346](https://github.com/nodejs/node/pull/5346)
-* [[`0f54553a99`](https://github.com/nodejs/node/commit/0f54553a99)] - **test**: increase timeouts on some unref timers tests (Jeremiah Senkpiel) [#5352](https://github.com/nodejs/node/pull/5352)
-* [[`25c01cd779`](https://github.com/nodejs/node/commit/25c01cd779)] - **tls**: fix assert in context.\_external accessor (Ben Noordhuis) [#5521](https://github.com/nodejs/node/pull/5521)
-* [[`5ffd7430d1`](https://github.com/nodejs/node/commit/5ffd7430d1)] - **tools**: apply custom buffer lint rule to /lib only (Rich Trott) [#5371](https://github.com/nodejs/node/pull/5371)
-* [[`fa5d28f246`](https://github.com/nodejs/node/commit/fa5d28f246)] - **tools**: enable additional lint rules (Rich Trott) [#5357](https://github.com/nodejs/node/pull/5357)
-* [[`b44b701e5b`](https://github.com/nodejs/node/commit/b44b701e5b)] - **tools,benchmark**: increase lint compliance (Rich Trott) [#5429](https://github.com/nodejs/node/pull/5429)
+* [[`0f54553a99`](https://github.com/nodejs/node/commit/0f54553a99)] - **test**: incrementar los timeouts en algunas pruebas de temporizadores unref (Jeremiah Senkpiel) [#5352](https://github.com/nodejs/node/pull/5352)
+* [[`25c01cd779`](https://github.com/nodejs/node/commit/25c01cd779)] - **tls**: reparar afirmación en context.\_external accessor (Ben Noordhuis) [#5521](https://github.com/nodejs/node/pull/5521)
+* [[`5ffd7430d1`](https://github.com/nodejs/node/commit/5ffd7430d1)] - **tools**: aplicar regla de búfer lint personalizada solamente a /lib (Rich Trott) [#5371](https://github.com/nodejs/node/pull/5371)
+* [[`fa5d28f246`](https://github.com/nodejs/node/commit/fa5d28f246)] - **tools**: habilitar reglas lint adicionales (Rich Trott) [#5357](https://github.com/nodejs/node/pull/5357)
+* [[`b44b701e5b`](https://github.com/nodejs/node/commit/b44b701e5b)] - **tools,benchmark**: incrementar la conformidad lint (Rich Trott) [#5429](https://github.com/nodejs/node/pull/5429)
 * [[`9424fa5732`](https://github.com/nodejs/node/commit/9424fa5732)] - **url**: group slashed protocols by protocol name (nettofarah) [#5380](https://github.com/nodejs/node/pull/5380)
-* [[`dfe45f13e7`](https://github.com/nodejs/node/commit/dfe45f13e7)] - **url**: fix off-by-one error with parse() (Brian White) [#5394](https://github.com/nodejs/node/pull/5394)
+* [[`dfe45f13e7`](https://github.com/nodejs/node/commit/dfe45f13e7)] - **url**: reparar error off-by-one con parse() (Brian White) [#5394](https://github.com/nodejs/node/pull/5394)
 
 <a id="5.7.0"></a>
 
-## 2016-02-23, Version 5.7.0 (Stable), @rvagg
+## 2016-02-23, Versión 5.7.0 (Estable), @rvagg
 
-### Notable changes
+### Cambios notables
 
-* **buffer**: 
+* **búfer**: 
   * You can now supply an `encoding` argument when filling a Buffer `Buffer#fill(string[, start[, end]][, encoding])`, supplying an existing Buffer will also work with `Buffer#fill(buffer[, start[, end]])`. See the [API documentation](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) for details on how this works. (Trevor Norris) [#4935](https://github.com/nodejs/node/pull/4935)
   * `Buffer#indexOf()` no longer requires a `byteOffset` argument if you also wish to specify an `encoding`: `Buffer#indexOf(val[, byteOffset][, encoding])`. (Trevor Norris) [#4803](https://github.com/nodejs/node/pull/4803)
 * **child_process**: `spawn()` and `spawnSync()` now support a `'shell'` option to allow for optional execution of the given command inside a shell. If set to `true`, `cmd.exe` will be used on Windows and `/bin/sh` elsewhere. A path to a custom shell can also be passed to override these defaults. On Windows, this option allows `.bat.` and `.cmd` files to be executed with `spawn()` and `spawnSync()`. (Colin Ihrig) [#4598](https://github.com/nodejs/node/pull/4598)
