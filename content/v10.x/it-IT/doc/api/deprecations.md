@@ -548,119 +548,119 @@ Il metodo `ServerResponse.prototype.writeHeader()` non è mai stato documentato 
 
 Tipo: Runtime
 
-The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11.3. Users should use `tls.Socket` instead.
+L'API `tls.createSecurePair()` è stata deprecata nella documentazione in Node.js 0.11.3. Gli utenti dovrebbero utilizzare `tls.Socket` al suo posto.
 
 <a id="DEP0065"></a>
 
-### DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic
+### DEP0065: repl.REPL_MODE_MAGIC e NODE_REPL_MODE=magic
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been removed. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js 6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
+La costante `REPL_MODE_MAGIC` del modulo `repl`, utilizzata per l'opzione `replMode`, è stata rimossa. Il suo comportamento è stato funzionalmente identico a quello di `REPL_MODE_SLOPPY` dalla versione Node.js 6.0.0, quando è stata importata la version V8 5.0. Si prega di utilizzare `REPL_MODE_SLOPPY` al suo posto.
 
-The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its value, `magic`, is also removed. Please use `sloppy` instead.
+La variabile d'ambiente `NODE_REPL_MODE` viene utilizzata per impostare l'opzione `replMode` sottostante di una sessione `node` interattiva. Anche il suo valore, `magic`, viene rimosso. Si prega di utilizzare `sloppy` al suo posto.
 
 <a id="DEP0066"></a>
 
 ### DEP0066: outgoingMessage.\_headers, outgoingMessage.\_headerNames
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
+Le proprietà `outgoingMessage._headers` e `outgoingMessage._headerNames` del modulo `http` sono state deprecate. Si prega di utilizzare al loro posto uno dei seguenti metodi pubblici (per esempio `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) per lavorare con intestazioni in uscita (outgoing headers).
 
-The `outgoingMessage._headers` and `outgoingMessage._headerNames` properties were never documented as officially supported properties.
+Le proprietà `outgoingMessage._headers` e `outgoingMessage._headerNames` non sono mai state documentate come proprietà ufficialmente supportate.
 
 <a id="DEP0067"></a>
 
 ### DEP0067: OutgoingMessage.prototype.\_renderHeaders
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `OutgoingMessage.prototype._renderHeaders()` API has been deprecated.
+L'API `OutgoingMessage.prototype._renderHeaders()` del modulo `http` è stata deprecata.
 
-The `OutgoingMessage.prototype._renderHeaders` property was never documented as an officially supported API.
+La proprietà `OutgoingMessage.prototype._renderHeaders` non è mai stata documentata come un'API ufficialmente supportata.
 
 <a id="DEP0068"></a>
 
 ### DEP0068: node debug
 
-Type: Runtime
+Tipo: Runtime
 
-`node debug` corresponds to the legacy CLI debugger which has been replaced with a V8-inspector based CLI debugger available through `node inspect`.
+`node debug` corrisponde al debugger CLI legacy che è stato sostituito con un debugger CLI basato sul V8-inspector disponibile tramite `node inspect`.
 
 <a id="DEP0069"></a>
 
 ### DEP0069: vm.runInDebugContext(string)
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-DebugContext has been removed in V8 and is not available in Node.js 10+.
+DebugContext è stato rimosso in V8 e non è disponibile nelle versioni Node.js 10+.
 
-DebugContext was an experimental API.
+DebugContext era un'API sperimentale.
 
 <a id="DEP0070"></a>
 
 ### DEP0070: async_hooks.currentId()
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`async_hooks.currentId()` was renamed to `async_hooks.executionAsyncId()` for clarity.
+`async_hooks.currentId()` è stato rinominato in `async_hooks.executionAsyncId()` per maggiore chiarezza.
 
-This change was made while `async_hooks` was an experimental API.
+Questa modifica è stata fatta mentre `async_hooks` era un'API sperimentale.
 
 <a id="DEP0071"></a>
 
 ### DEP0071: async_hooks.triggerId()
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`async_hooks.triggerId()` was renamed to `async_hooks.triggerAsyncId()` for clarity.
+`async_hooks.triggerId()` è stato rinominato in `async_hooks.triggerAsyncId()` per maggiore chiarezza.
 
-This change was made while `async_hooks` was an experimental API.
+Questa modifica è stata fatta mentre `async_hooks` era un'API sperimentale.
 
 <a id="DEP0072"></a>
 
 ### DEP0072: async_hooks.AsyncResource.triggerId()
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`async_hooks.AsyncResource.triggerId()` was renamed to `async_hooks.AsyncResource.triggerAsyncId()` for clarity.
+`async_hooks.AsyncResource.triggerId()` è stato rinominato in `async_hooks.AsyncResource.triggerAsyncId()` per maggiore chiarezza.
 
-This change was made while `async_hooks` was an experimental API.
+Questa modifica è stata fatta mentre `async_hooks` era un'API sperimentale.
 
 <a id="DEP0073"></a>
 
-### DEP0073: Several internal properties of net.Server
+### DEP0073: Diverse proprietà interne di net.Server
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-Accessing several internal, undocumented properties of `net.Server` instances with inappropriate names has been deprecated.
+L'accesso a diverse proprietà interne non documentate di istanze `net.Server` con nomi inappropriati è stato deprecato.
 
-As the original API was undocumented and not generally useful for non-internal code, no replacement API is provided.
+Poiché l'API originale non era documentata e in genere non era utile per il codice non-interno, non viene fornita nessun'API sostitutiva.
 
 <a id="DEP0074"></a>
 
 ### DEP0074: REPLServer.bufferedCommand
 
-Type: Runtime
+Tipo: Runtime
 
-The `REPLServer.bufferedCommand` property was deprecated in favor of [`REPLServer.clearBufferedCommand()`][].
+La proprietà `REPLServer.bufferedCommand` è stata deprecata a favore di [`REPLServer.clearBufferedCommand()`][].
 
 <a id="DEP0075"></a>
 
 ### DEP0075: REPLServer.parseREPLKeyword()
 
-Type: Runtime
+Tipo: Runtime
 
-`REPLServer.parseREPLKeyword()` was removed from userland visibility.
+`REPLServer.parseREPLKeyword()` è stato rimosso dalla visibilità dell'userland.
 
 <a id="DEP0076"></a>
 
 ### DEP0076: tls.parseCertString()
 
-Type: Runtime
+Tipo: Runtime
 
-`tls.parseCertString()` is a trivial parsing helper that was made public by mistake. This function can usually be replaced with:
+`tls.parseCertString()` è un banale aiutante per il parsing reso pubblico per errore. This function can usually be replaced with:
 
 ```js
 const querystring = require('querystring');
