@@ -283,21 +283,21 @@ Los argumentos opcionales `byteOffset` y `length` especifican un rango de memori
 Ejemplo:
 
 ```js
-const arr = new Uint16Array(2);
+onst arr = new Uint16Array(2);
 
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = new Buffer(arr.buffer);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf);
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf);
 ```
 
@@ -353,7 +353,7 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.alloc()`] en su lugar (también vea [`Buffer.allocUnsafe()`]).
 
 * `size` {integer} The desired length of the new `Buffer`.
 
