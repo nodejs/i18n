@@ -134,9 +134,9 @@ debug>
 
 * `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
 * `list(5)` - Enumera el código fuente de los scripts con 5 líneas de contexto (5 líneas anteriores y posteriores)
-* `watch(expr)` - Agregar la expresión a la lista de control
-* `unwatch(expr)` - Elimina la expresión de la lista de control
-* `watchers` - Enumera los monitores y sus calores (enumerados automáticamente en cada punto de interrupción)
+* `watch(expr)` - Agregar la expresión a la lista de monitoreo
+* `unwatch(expr)` - Elimina la expresión de la lista de monitoreo
+* `watchers` - Enumera los monitores y sus valores (enumerados automáticamente en cada punto de interrupción)
 * `repl` - Abrir el repl del depurador para la evaluación en el contexto del script de depuración
 * `exec expr` - Ejecuta una expresión en el contexto del script de depuración
 
