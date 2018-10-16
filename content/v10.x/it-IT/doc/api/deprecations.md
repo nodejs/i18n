@@ -234,199 +234,199 @@ L'API `REPLServer.prototype.convertToContext()` è deprecata/obsoleta e non dovr
 
 Tipo: Runtime
 
-The `sys` module is deprecated. Please use the [`util`][] module instead.
+Il modulo `sys` è deprecato/obsoleto. Si prega di utilizzare il modulo [`util`][] al suo posto.
 
 <a id="DEP0026"></a>
 
 ### DEP0026: util.print()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
+L'API [`util.print()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.log()`][] al suo posto.
 
 <a id="DEP0027"></a>
 
 ### DEP0027: util.puts()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
+L'API [`util.puts()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.log()`][] al suo posto.
 
 <a id="DEP0028"></a>
 
 ### DEP0028: util.debug()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+L'API [`util.debug()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.error()`][] al suo posto.
 
 <a id="DEP0029"></a>
 
 ### DEP0029: util.error()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+L'API [`util.error()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.error()`][] al suo posto.
 
 <a id="DEP0030"></a>
 
 ### DEP0030: SlowBuffer
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeSlow(size)`][] instead.
+La classe [`SlowBuffer`][] è stata deprecata. Si prega di utilizzare [`Buffer.allocUnsafeSlow(size)`][] al suo posto.
 
 <a id="DEP0031"></a>
 
 ### DEP0031: ecdh.setPublicKey()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+Adesso il metodo [`ecdh.setPublicKey()`][] è deprecato/obsoleto poiché la sua inclusione nell'API è inutile.
 
 <a id="DEP0032"></a>
 
-### DEP0032: domain module
+### DEP0032: modulo domain
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`domain`][] module is deprecated and should not be used.
+Il modulo [`domain`][] è deprecato/obsoleto e non dovrebbe essere utilizzato.
 
 <a id="DEP0033"></a>
 
 ### DEP0033: EventEmitter.listenerCount()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
+L'API [`EventEmitter.listenerCount(emitter, eventName)`][] è stata deprecata. Si prega di utilizzare [`emitter.listenerCount(eventName)`][] al suo posto.
 
 <a id="DEP0034"></a>
 
 ### DEP0034: fs.exists(path, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.exists(path, callback)`][] API has been deprecated. Please use [`fs.stat()`][] or [`fs.access()`][] instead.
+L'API [`fs.exists(path, callback)`][] è stata deprecata. Si prega di utilizzare al suo posto [`fs.stat()`][] oppure [`fs.access()`][].
 
 <a id="DEP0035"></a>
 
 ### DEP0035: fs.lchmod(path, mode, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchmod(path, mode, callback)`][] API has been deprecated.
+L'API [`fs.lchmod(path, mode, callback)`][] è stata deprecata.
 
 <a id="DEP0036"></a>
 
 ### DEP0036: fs.lchmodSync(path, mode)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchmodSync(path, mode)`][] API has been deprecated.
+L'API [`fs.lchmodSync(path, mode)`][] è stata deprecata.
 
 <a id="DEP0037"></a>
 
 ### DEP0037: fs.lchown(path, uid, gid, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchown(path, uid, gid, callback)`][] API has been deprecated.
+L'API [`fs.lchown(path, uid, gid, callback)`][] è stata deprecata.
 
 <a id="DEP0038"></a>
 
 ### DEP0038: fs.lchownSync(path, uid, gid)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchownSync(path, uid, gid)`][] API has been deprecated.
+L'API [`fs.lchownSync(path, uid, gid)`][] è stata deprecata.
 
 <a id="DEP0039"></a>
 
 ### DEP0039: require.extensions
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`require.extensions`][] property has been deprecated.
+La proprietà [`require.extensions`][] è stata deprecata.
 
 <a id="DEP0040"></a>
 
-### DEP0040: punycode module
+### DEP0040: modulo punycode
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`punycode`][] module has been deprecated. Please use a userland alternative instead.
+Il modulo [`punycode`][] è stato deprecato. Si prega di utilizzare un'alternativa userland al suo posto.
 
 <a id="DEP0041"></a>
 
-### DEP0041: NODE\_REPL\_HISTORY\_FILE environment variable
+### DEP0041: variabile d'ambiente NODE\_REPL\_HISTORY\_FILE
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `NODE_REPL_HISTORY_FILE` environment variable was removed. Please use `NODE_REPL_HISTORY` instead.
+La variabile d'ambiente `NODE_REPL_HISTORY_FILE` è stata rimossa. Si prega di utilizzare `NODE_REPL_HISTORY` al suo posto.
 
 <a id="DEP0042"></a>
 
 ### DEP0042: tls.CryptoStream
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La classe [`tls.CryptoStream`][] è stata deprecata. Si prega di utilizzare [`tls.TLSSocket`][] al suo posto.
 
 <a id="DEP0043"></a>
 
 ### DEP0043: tls.SecurePair
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La classe [`tls.SecurePair`][] è stata deprecata. Si prega di utilizzare [`tls.TLSSocket`][] al suo posto.
 
 <a id="DEP0044"></a>
 
 ### DEP0044: util.isArray()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isArray()`][] API has been deprecated. Please use `Array.isArray()` instead.
+L'API [`util.isArray()`][] è stata deprecata. Si prega di utilizzare `Array.isArray()` al suo posto.
 
 <a id="DEP0045"></a>
 
 ### DEP0045: util.isBoolean()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isBoolean()`][] API has been deprecated.
+L'API [`util.isBoolean()`][] è stata deprecata.
 
 <a id="DEP0046"></a>
 
 ### DEP0046: util.isBuffer()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isBuffer()`][] API has been deprecated. Please use [`Buffer.isBuffer()`][] instead.
+L'API [`util.isBuffer()`][] è stata deprecata. Si prega di utilizzare [`Buffer.isBuffer()`][] al suo posto.
 
 <a id="DEP0047"></a>
 
 ### DEP0047: util.isDate()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isDate()`][] API has been deprecated.
+L'API [`util.isDate()`][] è stata deprecata.
 
 <a id="DEP0048"></a>
 
 ### DEP0048: util.isError()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isError()`][] API has been deprecated.
+L'API [`util.isError()`][] è stata deprecata.
 
 <a id="DEP0049"></a>
 
 ### DEP0049: util.isFunction()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isFunction()`][] API has been deprecated.
+L'API [`util.isFunction()`][] è stata deprecata.
 
 <a id="DEP0050"></a>
 
