@@ -2,17 +2,17 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++之间的接口。
+Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
 
 目前，实现插件的方法相当复杂，涉及到多个组件和API的知识：
 
 * V8: 为了提供JavaScript的实现，目前Node.js使用的C++库。 V8提供了创建对象、调用函数等机制。 V8 API的说明主要在`v8.h`头文件(在Node.js源代码中的`deps/v8/include/v8.h`)中，该文件也可[在线访问](https://v8docs.nodesource.com/)。
 
-* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些超出标准事件循环的更复杂异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
+* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些在标准事件循环之上的更复杂的异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
 
 * Node.js的内置库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有V8和OpenSSL的符号是由Node.js特意导出的，并可以被插件用于不同场景。 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有V8和OpenSSL的符号是由Node.js特意重新导出的，并可以被插件用于不同场景。 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
 
 下面的所有示例都可[下载](https://github.com/nodejs/node-addon-examples)，且可被用于插件开发的起点。
 
