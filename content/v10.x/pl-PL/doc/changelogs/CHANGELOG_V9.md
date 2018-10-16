@@ -2128,7 +2128,7 @@ Fixes for the following CVEs are included in this release:
   
   * The deprecated `Intl.v8BreakIterator` has been removed. [[`668ad44922`](https://github.com/nodejs/node/commit/668ad44922)] [#15238](https://github.com/nodejs/node/pull/15238)
 
-* **OS**
+* **System operacyjny**
   
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] [#14622](https://github.com/nodejs/node/pull/14622)
 
