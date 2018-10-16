@@ -534,49 +534,49 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 * [[`23107ba7b1`](https://github.com/nodejs/node/commit/23107ba7b1)] - **test**: eliminar mensaje de afirmación y agregar ámbito de bloque (wuweiweiwu) [#19054](https://github.com/nodejs/node/pull/19054)
 * [[`cc90bbd0f4`](https://github.com/nodejs/node/commit/cc90bbd0f4)] - **test**: fix flaky inspector-stop-profile-after-done (Rich Trott) [#18126](https://github.com/nodejs/node/pull/18126)
 * [[`8d595bb25c`](https://github.com/nodejs/node/commit/8d595bb25c)] - **test**: verificar bucle sin fin mientras se escribe una cadena vacía (XadillaX) [#18924](https://github.com/nodejs/node/pull/18924)
-* [[`a4550069ca`](https://github.com/nodejs/node/commit/a4550069ca)] - **test**: allow running with `NODE\_PENDING\_DEPRECATION` (Anna Henningsen) [#18991](https://github.com/nodejs/node/pull/18991)
-* [[`fd27165f73`](https://github.com/nodejs/node/commit/fd27165f73)] - **test**: specify 'dir' for directory symlinks (Kyle Farnung) [#19049](https://github.com/nodejs/node/pull/19049)
-* [[`eca333a6e8`](https://github.com/nodejs/node/commit/eca333a6e8)] - **test**: refactor test after review (Andrew Johnston) [#18999](https://github.com/nodejs/node/pull/18999)
+* [[`a4550069ca`](https://github.com/nodejs/node/commit/a4550069ca)] - **test**: permitir ejecutar con `NODE\_PENDING\_DEPRECATION` (Anna Henningsen) [#18991](https://github.com/nodejs/node/pull/18991)
+* [[`fd27165f73`](https://github.com/nodejs/node/commit/fd27165f73)] - **test**: especificar 'dir' para enlaces simbólicos del directorio (Kyle Farnung) [#19049](https://github.com/nodejs/node/pull/19049)
+* [[`eca333a6e8`](https://github.com/nodejs/node/commit/eca333a6e8)] - **test**: refactorizar prueba después de revisión (Andrew Johnston) [#18999](https://github.com/nodejs/node/pull/18999)
 * [[`c943cd09a7`](https://github.com/nodejs/node/commit/c943cd09a7)] - **test**: fix repl-tab-complete --without-ssl (Daniel Bevenius) [#17867](https://github.com/nodejs/node/pull/17867)
-* [[`f864509991`](https://github.com/nodejs/node/commit/f864509991)] - **test,benchmark**: use new Buffer API where appropriate (Сковорода Никита Андреевич) [#18980](https://github.com/nodejs/node/pull/18980)
+* [[`f864509991`](https://github.com/nodejs/node/commit/f864509991)] - **test,benchmark**: utilizar nueva API de Buffer donde sea apropiado (Сковорода Никита Андреевич) [#18980](https://github.com/nodejs/node/pull/18980)
 * [[`479b622e49`](https://github.com/nodejs/node/commit/479b622e49)] - **tls,http2**: handle writes after SSL destroy more gracefully (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987)
-* [[`3d4cda3a7d`](https://github.com/nodejs/node/commit/3d4cda3a7d)] - **(SEMVER-MINOR)** **trace_events**: add file pattern cli option (Andreas Madsen) [#18480](https://github.com/nodejs/node/pull/18480)
-* [[`3e8e1524ac`](https://github.com/nodejs/node/commit/3e8e1524ac)] - **util**: use blue on non-windows systems for number (Gus Caplan) [#18925](https://github.com/nodejs/node/pull/18925)
+* [[`3d4cda3a7d`](https://github.com/nodejs/node/commit/3d4cda3a7d)] - **(SEMVER-MINOR)** **trace_events**: agregar opción de patrón de archivo de cli (Andreas Madsen) [#18480](https://github.com/nodejs/node/pull/18480)
+* [[`3e8e1524ac`](https://github.com/nodejs/node/commit/3e8e1524ac)] - **util**: utilizar azul para el número en sistemas que no sean Windows (Gus Caplan) [#18925](https://github.com/nodejs/node/pull/18925)
 
 <a id="9.7.1"></a>
 
-## 2018-03-02, Version 9.7.1 (Current), @rvagg
+## 2018-03-02, Versión 9.7.1 (Actual), @rvagg
 
-No additional commits. New version published due to a bad node-v9.7.0.pkg file that was published to nodejs.org in the previous release.
+Sin commits adicionales. Nueva versión publicada debido a un archivo node-v9.7.0.pkg malo que fue publicado en nodejs.org en la actualización anterior.
 
 <a id="9.7.0"></a>
 
-## 2018-03-01, Version 9.7.0 (Current), @rvagg prepared by @addaleax
+## 2018-03-01, Versión 9.7.0 (Actual), @rvagg preparado por @addaleax
 
-### Notable Changes
+### Cambios Notables
 
 * **libuv**:
   
-  * Updated to libuv 1.19.2 (Colin Ihrig) [#18918](https://github.com/nodejs/node/pull/18918)
+  * Actualizado a libuv 1.19.2 (Colin Ihrig) [#18918](https://github.com/nodejs/node/pull/18918)
 
 * **src**:
   
-  * Add initial support for Node.js-specific post-mortem metadata (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
+  * Agregar soporte inicial para para metadatos post mortem específicos de Node.js (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
 
 * **timers**:
   
-  * The return value of `setImmediate()` now has `ref()` and `unref()` methods (Anatoli Papirovski) [#18139](https://github.com/nodejs/node/pull/18139)
+  * El valor devuelto de `setImmediate()` ahora tiene los métodos `ref()` y `unref()` (Anatoli Papirovski) [#18139](https://github.com/nodejs/node/pull/18139)
 
 * **util**:
   
-  * It is now possible to get the name for a numerical platform-specific error code as a string (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
+  * Ahora es posible obtener el nombre de un código de error numérico específico de una plataforma como una cadena (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
 
 ### Commits
 
 * [[`5ddef2988b`](https://github.com/nodejs/node/commit/5ddef2988b)] - **async_wrap**: schedule destroy hook as unref (Anatoli Papirovski) [#18241](https://github.com/nodejs/node/pull/18241)
 * [[`be9777c5f6`](https://github.com/nodejs/node/commit/be9777c5f6)] - **benchmark**: add stream.pipe benchmarks (Mathias Buus) [#18617](https://github.com/nodejs/node/pull/18617)
-* [[`4012ae8885`](https://github.com/nodejs/node/commit/4012ae8885)] - **build**: fix coverage build (Yihong Wang) [#18409](https://github.com/nodejs/node/pull/18409)
-* [[`8c934990ef`](https://github.com/nodejs/node/commit/8c934990ef)] - **build**: add node\_lib\_target\_name to cctest deps (Daniel Bevenius) [#18576](https://github.com/nodejs/node/pull/18576)
+* [[`4012ae8885`](https://github.com/nodejs/node/commit/4012ae8885)] - **build**: reparar compilación de cobertura (Yihong Wang) [#18409](https://github.com/nodejs/node/pull/18409)
+* [[`8c934990ef`](https://github.com/nodejs/node/commit/8c934990ef)] - **build**: agregar node\_lib\_target\_name a deps de cctest (Daniel Bevenius) [#18576](https://github.com/nodejs/node/pull/18576)
 * [[`f7e1402923`](https://github.com/nodejs/node/commit/f7e1402923)] - **build**: include the libuv and zlib into node (Yihong Wang) [#18383](https://github.com/nodejs/node/pull/18383)
 * [[`237a363dc7`](https://github.com/nodejs/node/commit/237a363dc7)] - **build**: make gyp user defined variables lowercase (Daniel Bevenius) [#16238](https://github.com/nodejs/node/pull/16238)
 * [[`16ef386507`](https://github.com/nodejs/node/commit/16ef386507)] - **build, win**: vcbuild improvements (Bartosz Sosnowski) [#17015](https://github.com/nodejs/node/pull/17015)
