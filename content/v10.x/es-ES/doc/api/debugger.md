@@ -79,7 +79,7 @@ break in myscript.js:5
 debug> .exit
 ```
 
-El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adiconales disponibles.
+El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adicionales disponibles.
 
 Presionando `enter` sin escribir un comando repetirá el comando del depurador previo.
 
