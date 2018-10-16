@@ -358,46 +358,46 @@ added: v5.10.0
 * `fill` {string|Buffer|integer} Un valor con el cual llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`
 * `encoding` {string} Si `fill` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
 
-Asigna el nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna el nuevo `Buffer` de bytes de `size`. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5);
 
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 console.log(buf);
 ```
 
-The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. A zero-length `Buffer` will be created if `size <= 0`.
+El `size` debe ser menos o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+Si `fill` es especificado, el `Buffer` asignado será inicializado llamando [`buf.fill(fill)`][`buf.fill()`].
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
-// Prints: <Buffer 61 61 61 61 61>
+// Imprime: <Buffer 61 61 61 61 61>
 console.log(buf);
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+Si ambos `fill` y `encoding` son especificados, el `Buffer` asignado será inicializado llamando [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
-// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Imprime: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 console.log(buf);
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+Llamar a [`Buffer.alloc()`] puede ser significativamente más lento que el [`Buffer.allocUnsafe()`] alternativo pero asegura que el contenido de la instancia de `Buffer` recién creada *nunca contendrá datos sensibles*.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
-### Class Method: Buffer.allocUnsafe(size)
+### Método de Clase: Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -405,9 +405,9 @@ added: v5.10.0
 
 * `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
+Asigna un nuevo *non-zero-filled* `Buffer` de bytes `size`. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
+La memoria subyacente para las instancias `Buffer` creada de esta forma *no es inicializada*. Los contenidos del `Buffer` recién creado son desconocidos y *pueden contener datos sensibles*. Use [`Buffer.alloc()`] en su lugar para inicializar instancias de `Buffer` a ceros.
 
 Ejemplo:
 
@@ -423,7 +423,7 @@ buf.fill(0);
 console.log(buf);
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
 Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
 
@@ -437,9 +437,9 @@ added: v5.12.0
 
 * `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* and non-pooled `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. A zero-length `Buffer` will be created if `size <= 0`.
+Allocates a new *non-zero-filled* and non-pooled `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
+La memoria subyacente para las instancias `Buffer` creada de esta forma *no es inicializada*. Los contenidos del `Buffer` recién creado son desconocidos y *pueden contener datos sensibles*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
 
 When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are, by default, sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and cleanup as many `Persistent` objects.
 
@@ -466,7 +466,7 @@ socket.on('readable', () => {
 
 Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
 ### Class Method: Buffer.byteLength(string[, encoding])
 
