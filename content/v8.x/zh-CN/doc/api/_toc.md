@@ -6,7 +6,7 @@
 <div class="line"></div>
 
 * [断言测试](assert.html)
-* [异步Hooks](async_hooks.html)
+* [异步钩子](async_hooks.html)
 * [缓冲区](buffer.html)
 * [C++插件](addons.html)
 * [C++插件 - N-API](n-api.html)
@@ -33,7 +33,7 @@
 * [网络](net.html)
 * [操作系统 (OS)](os.html)
 * [路径](path.html)
-* [性能Hooks](perf_hooks.html)
+* [性能钩子](perf_hooks.html)
 * [进程](process.html)
 * [国际域名编码](punycode.html)
 * [查询字符串](querystring.html)
