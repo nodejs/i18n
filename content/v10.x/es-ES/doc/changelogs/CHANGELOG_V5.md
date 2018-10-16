@@ -536,12 +536,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 * **governance**: El Núcleo del Comité Técnico (CTC) añadió cuatro nuevos miembros para ayudar a guiar el desarrollo más importante de Node.js: Evan Lucas, Rich Trott, Ali Ijaz Sheikh y Сковорода Никита Андреевич (Nikita Skovoroda).
 * **openssl**: Actualizar de 1.0.2f a 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507). 
-  * Reparar un defecto double-free defect en el análisis de claves DSA mañformadas que potencialmente pudieran ser usadas para DoS o ataques de corrupción de memoria. Es probable que sea muy díficil usar este defecto para un ataque, y por lo tanto es considerado de severidad baja para los usuarios de Node.js. Más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
+  * Reparar un defecto double-free defect en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para DoS o ataques de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque, y por lo tanto es considerado de severidad baja para los usuarios de Node.js. Más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
   * Reparar un defecto que puede causar corrupción de memoria en ciertos casos muy raros relacionados a las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones, entonces ataques prácticos a Node.js usando este defecto son *poco probables* que sean posibles. Más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
   * Reparar un defecto que hace que un *[Ataque CacheBleed](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* sea posible. Este defecto permite a los atacantes ejecutar ataques de un solo canal llevando a recuperación potencial todas las claves privadas RSA. Solo afecta la microarquitectura de los Sandy Bridge de Intel (y posiblemente a los más viejos) cuando se use hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Más información disponible en [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
 * Reparadas varias regresiones que aparecieron en v5.7.0: 
   * **`path.relative()`**: 
-    * La salida ya no es incesesariamente verbosa (Brian White) [#5389](https://github.com/nodejs/node/pull/5389).
+    * La salida ya no es innecesesariamente verbosa (Brian White) [#5389](https://github.com/nodejs/node/pull/5389).
     * Resolver las rutas UNC en Windows ahora funciona correctamente (Owen Smith) [#5456](https://github.com/nodejs/node/pull/5456).
     * Resolver rutas con prefijos ahora funciona correctamente desde el directorio raíz (Owen Smith) [#5490](https://github.com/nodejs/node/pull/5490).
   * **url**: Reparado un error off-by-one con `parse()` (Brian White) [#5394](https://github.com/nodejs/node/pull/5394).
@@ -550,13 +550,13 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 ### Commits
 
 * [[`7cae774d9b`](https://github.com/nodejs/node/commit/7cae774d9b)] - **benchmark**: refactorizar para eliminar variables redeclaradas (Rich Trott) [#5468](https://github.com/nodejs/node/pull/5468)
-* [[`6aebe16669`](https://github.com/nodejs/node/commit/6aebe16669)] - **benchmark**: añadir prueb de rendimiento para buf.compare() (Rich Trott) [#5441](https://github.com/nodejs/node/pull/5441)
+* [[`6aebe16669`](https://github.com/nodejs/node/commit/6aebe16669)] - **benchmark**: añadir prueba de rendimiento para buf.compare() (Rich Trott) [#5441](https://github.com/nodejs/node/pull/5441)
 * [[`00660f55c8`](https://github.com/nodejs/node/commit/00660f55c8)] - **benchmark**: mover string-decoder a su propia categoría (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`4650cb3818`](https://github.com/nodejs/node/commit/4650cb3818)] - **benchmark**: reparar los parámetros de configuración (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`3ccb275139`](https://github.com/nodejs/node/commit/3ccb275139)] - **benchmark**: unir url.js con url-resolve.js (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`c1e7dbffaa`](https://github.com/nodejs/node/commit/c1e7dbffaa)] - **benchmark**: mover misc a los directorios categorizados (Andreas Madsen) [#5177](https://github.com/nodejs/node/pull/5177)
 * [[`2f9fee6e8e`](https://github.com/nodejs/node/commit/2f9fee6e8e)] - **benchmark**: usar modo estricto (Rich Trott) [#5336](https://github.com/nodejs/node/pull/5336)
-* [[`4c09e7f359`](https://github.com/nodejs/node/commit/4c09e7f359)] - **build**: eliminar --quiet debla invocación eslint (firedfox) [#5519](https://github.com/nodejs/node/pull/5519)
+* [[`4c09e7f359`](https://github.com/nodejs/node/commit/4c09e7f359)] - **build**: eliminar --quiet de la invocación eslint (firedfox) [#5519](https://github.com/nodejs/node/pull/5519)
 * [[`2c619f2012`](https://github.com/nodejs/node/commit/2c619f2012)] - **build**: ejecuta lint antes de las pruebas (Rich Trott) [#5470](https://github.com/nodejs/node/pull/5470)
 * [[`f349a9a2cf`](https://github.com/nodejs/node/commit/f349a9a2cf)] - **build**: actualizar logo de Node.js en el instalador OSX (Rod Vagg) [#5401](https://github.com/nodejs/node/pull/5401)
 * [[`88f393588a`](https://github.com/nodejs/node/commit/88f393588a)] - **crypto**: PBKDF2 funciona con `int`, no con `ssize_t` (Fedor Indutny) [#5397](https://github.com/nodejs/node/pull/5397)
@@ -564,21 +564,21 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`d3f9b84be8`](https://github.com/nodejs/node/commit/d3f9b84be8)] - **dgram**: maneja casos de direcciones predeterminadas cuando el offset y la longitud son especificados (Matteo Collina)
 * [[`f1f3832934`](https://github.com/nodejs/node/commit/f1f3832934)] - **doc**: actualizar urls NAN en ROADMAP.md y doc/releases.md (ronkorving) [#5472](https://github.com/nodejs/node/pull/5472)
 * [[`51bc062dab`](https://github.com/nodejs/node/commit/51bc062dab)] - **doc**: añadir minutos de reunión CTC 2016-02-17 (Rod Vagg) [#5410](https://github.com/nodejs/node/pull/5410)
-* [[`795c85ba1c`](https://github.com/nodejs/node/commit/795c85ba1c)] - **doc**: reparar error tipográfico en la documentación de child_process documentation (Evan Lucas) [#5474](https://github.com/nodejs/node/pull/5474)
+* [[`795c85ba1c`](https://github.com/nodejs/node/commit/795c85ba1c)] - **doc**: reparar error tipográfico en la documentación de child_process (Evan Lucas) [#5474](https://github.com/nodejs/node/pull/5474)
 * [[`0a56e9690b`](https://github.com/nodejs/node/commit/0a56e9690b)] - **doc**: añadir nota para lectura de string segura binaria (Anton Andesen) [#5155](https://github.com/nodejs/node/pull/5155)
 * [[`ea8331e15f`](https://github.com/nodejs/node/commit/ea8331e15f)] - **doc**: mejoras a la copia de crypto.markdown (Alexander Makarenko) [#5230](https://github.com/nodejs/node/pull/5230)
 * [[`378a772034`](https://github.com/nodejs/node/commit/378a772034)] - **doc**: comportamiento `require` en sistemas insensibles de casos (Hugo Wood)
 * [[`06b7eb6636`](https://github.com/nodejs/node/commit/06b7eb6636)] - **doc**: documentar soporte de codificación base64url (Tristan Slominski) [#5243](https://github.com/nodejs/node/pull/5243)
 * [[`8ec3d904cb`](https://github.com/nodejs/node/commit/8ec3d904cb)] - **doc**: mejorar httpVersionMajor / httpVersionMajor (Jackson Tian) [#5296](https://github.com/nodejs/node/pull/5296)
 * [[`534e88f56c`](https://github.com/nodejs/node/commit/534e88f56c)] - **doc**: reparar enlaces relativos en documentos net (Evan Lucas) [#5358](https://github.com/nodejs/node/pull/5358)
-* [[`7b98a30976`](https://github.com/nodejs/node/commit/7b98a30976)] - **doc**: reparar nivel de la sangría en l función crypto (Brian White) [#5460](https://github.com/nodejs/node/pull/5460)
+* [[`7b98a30976`](https://github.com/nodejs/node/commit/7b98a30976)] - **doc**: reparar nivel de la sangría en la función crypto (Brian White) [#5460](https://github.com/nodejs/node/pull/5460)
 * [[`c0fd802cc2`](https://github.com/nodejs/node/commit/c0fd802cc2)] - **doc**: enlace a páginas man (dcposch@dcpos.ch) [#5073](https://github.com/nodejs/node/pull/5073)
 * [[`f8c6701e22`](https://github.com/nodejs/node/commit/f8c6701e22)] - **doc**: añadir propiedad faltante en el ejemplo clúster (Rafael Cepeda) [#5305](https://github.com/nodejs/node/pull/5305)
 * [[`3bfe0483f0`](https://github.com/nodejs/node/commit/3bfe0483f0)] - **doc**: corregido el nombre del argumento en socket.send (Chris Dew) [#5449](https://github.com/nodejs/node/pull/5449)
 * [[`c8725f5e95`](https://github.com/nodejs/node/commit/c8725f5e95)] - **doc**: reparar enlace en tls, documentos clúster (Alexander Makarenko) [#5364](https://github.com/nodejs/node/pull/5364)
 * [[`7f2cf9af5c`](https://github.com/nodejs/node/commit/7f2cf9af5c)] - **doc**: explicito sobre soporte de VS 2015 en readme (Phillip Johnsen) [#5406](https://github.com/nodejs/node/pull/5406)
 * [[`12d3cdbfea`](https://github.com/nodejs/node/commit/12d3cdbfea)] - **doc**: remover materia vencidas de los documentos internos (Rich Trott) [#5421](https://github.com/nodejs/node/pull/5421)
-* [[`43853679f7`](https://github.com/nodejs/node/commit/43853679f7)] - **doc**: copyedit documento útil (Rich Trott) [#5399](https://github.com/nodejs/node/pull/5399)
+* [[`43853679f7`](https://github.com/nodejs/node/commit/43853679f7)] - **doc**: editar documento “util” (Rich Trott) [#5399](https://github.com/nodejs/node/pull/5399)
 * [[`903e8d09e1`](https://github.com/nodejs/node/commit/903e8d09e1)] - **doc**: reparar error tipográfico en el código de muestra pbkdf2Sync (Marc Cuva) [#5306](https://github.com/nodejs/node/pull/5306)
 * [[`79b1c22c9f`](https://github.com/nodejs/node/commit/79b1c22c9f)] - **doc**: reparar salida buf.readInt16LE (Chinedu Francis Nwafili) [#5282](https://github.com/nodejs/node/pull/5282)
 * [[`e46915f2f3`](https://github.com/nodejs/node/commit/e46915f2f3)] - **doc**: nota de limitaciones util.isError() @@toStringTag (cjihrig) [#5414](https://github.com/nodejs/node/pull/5414)
@@ -599,7 +599,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`91782f1888`](https://github.com/nodejs/node/commit/91782f1888)] - **path**: reparar win32 relative() cuando "to" es un prefijo (Owen Smith) [#5456](https://github.com/nodejs/node/pull/5456)
 * [[`30cec18eeb`](https://github.com/nodejs/node/commit/30cec18eeb)] - **path**: reparar salida verbosa relative() (Brian White) [#5389](https://github.com/nodejs/node/pull/5389)
 * [[`2b88523836`](https://github.com/nodejs/node/commit/2b88523836)] - **repl**: reparar pila de rastro de número de la columna en modo estricto (Prince J Wesley) [#5416](https://github.com/nodejs/node/pull/5416)
-* [[`51db48f741`](https://github.com/nodejs/node/commit/51db48f741)] - **src,tools**: remover sentinela null del arreglo de la fuente(Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
+* [[`51db48f741`](https://github.com/nodejs/node/commit/51db48f741)] - **src,tools**: remover centinela null del arreglo de la fuente (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
 * [[`03a5daba55`](https://github.com/nodejs/node/commit/03a5daba55)] - **src,tools**: drop nul byte from built-in source code (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
 * [[`17d14f3346`](https://github.com/nodejs/node/commit/17d14f3346)] - **src,tools**: allow utf-8 in built-in js source code (Ben Noordhuis) [#5418](https://github.com/nodejs/node/pull/5418)
 * [[`12ae6abc69`](https://github.com/nodejs/node/commit/12ae6abc69)] - **test**: increase timeout for test-tls-fast-writing (Rich Trott) [#5466](https://github.com/nodejs/node/pull/5466)
