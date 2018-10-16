@@ -143,7 +143,7 @@ Dostępne funkcje i sposób ich używania są udokumentowane w sekcji zatytułow
 
 ## Przykłady dodatków
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Oto kilka przykładów dodatków, które mają ułatwić deweloperom rozpoczęcie pracy. Przykłady wykorzystują API V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 Each of these examples using the following `binding.gyp` file:
 
