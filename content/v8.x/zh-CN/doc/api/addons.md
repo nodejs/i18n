@@ -177,9 +177,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## 插件示例
 
-如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 关于各种V8的调用，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅 V8 [嵌入器指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
-Each of these examples using the following `binding.gyp` file:
+这些示例都使用如下的`binding.gyp`文件：
 
 ```json
 {
@@ -192,21 +192,21 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array. For example:
+如果有多个`.cc`文件，只需将额外的文件名添加到`sources`中就可以。 例如：
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+一旦`binding.gyp`文件准备就绪，就可以使用`node-gyp`配置和构建示例插件：
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### 函数参数
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
 The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
 
