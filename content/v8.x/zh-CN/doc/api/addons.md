@@ -119,17 +119,17 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 * 当`node-gyp`运行时，它会检查特定的Node.js发行版本，并下载全部源代码的tarball压缩文件或者只是头文件。 如果下载了全部源代码，插件就可以完全访问Node.js的依赖库。 然而，如果只是下载了Node.js的头文件，那么只有被Node.js导出的符号才能被访问。
 
-* 运行`node-gyp`时可以使用`--nodedir`标志来指向本地的Node.js源镜像。 Using this option, the Addon will have access to the full set of dependencies.
+* 运行`node-gyp`时可以使用`--nodedir`标志来指向本地的Node.js源镜像。 使用这个选项，插件可以访问全部的依赖库。
 
-### Loading Addons using require()
+### 使用require() 加载插件
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 编写[`require()`](modules.html#modules_require)函数的目的就是查找具有`.node`扩展名的文件，并将其初始化为动态链接库。
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+当调用[`require()`](modules.html#modules_require)时，通常可以省略`.node`扩展名，Node.js仍可找到并初始化插件。 但有一点需要注意，Node.js会尝试定位并加载那些享有相同基本名称的JavaScript文件。 例如：如果文件`addon.js`和二进制文件`addon.node`在同一个目录下，那么[`require('addon')`](modules.html#modules_require)会优先考虑`addon.js`文件并加载它。
 
-## Native Abstractions for Node.js
+## Node.js原生模块抽象接口
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
