@@ -806,29 +806,29 @@ La proprietà [`crypto.DEFAULT_ENCODING`][] è deprecata/obsoleta.
 
 Tipo: Documentation-only
 
-Assegnare le proprietà al livello superiore `this` come alternativa a `module.exports` è deprecato/obsoleto. Developers should use `exports` or `module.exports` instead.
+Assegnare le proprietà al livello superiore `this` come alternativa a `module.exports` è deprecato/obsoleto. Gli sviluppatori dovrebbero utilizzare al suo posto `exports` oppure `module.exports`.
 
 <a id="DEP0093"></a>
 
-### DEP0093: crypto.fips is deprecated and replaced.
+### DEP0093: crypto.fips è deprecato/obsoleto e sostituito.
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`crypto.fips`][] property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+La proprietà [`crypto.fips`][] è deprecata/obsoleta. Si prega di utilizzare al suo posto `crypto.setFips()` e `crypto.getFips()`.
 
 <a id="DEP0094"></a>
 
-### DEP0094: Using `assert.fail()` with more than one argument.
+### DEP0094: Utilizzare `assert.fail()` con più di un argomento.
 
-Type: Runtime
+Tipo: Runtime
 
-Using `assert.fail()` with more than one argument is deprecated. Use `assert.fail()` with only one argument or use a different `assert` module method.
+L'utilizzo di `assert.fail()` con più di un argomento è deprecato/obsoleto. Utilizza `assert.fail()` con un solo argomento oppure utilizza un metodo diverso di modulo `assert`.
 
 <a id="DEP0095"></a>
 
 ### DEP0095: timers.enroll()
 
-Type: Runtime
+Tipo: Runtime
 
 `timers.enroll()` is deprecated. Please use the publicly documented [`setTimeout()`][] or [`setInterval()`][] instead.
 
