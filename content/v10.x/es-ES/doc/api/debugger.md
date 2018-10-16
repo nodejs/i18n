@@ -149,17 +149,17 @@ debug>
 ### Varios
 
 * `scripts` - Enumera todos los scripts cargados
-* `>version` - Muestra las versiones de V8
+* `>version` - Muestra la versión de V8
 
 ## Uso avanzado
 
 ### Integración del Inspector V8 para Node.js
 
-La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector V8 permite adjuntar Chrome DevTools a instancias de Node.js para depurar y generar perfiles. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-El Inspector V8 puede ser habilitado al pasar la marca `--inspect` al iniciar una apicación Node.js. Asimismo, es posible suplir un puerto personalizado con ese marcador, por ejemplo el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
+El Inspector V8 puede ser habilitado al pasar la bandera `--inspect` al iniciar una aplicación Node.js. Asimismo, es posible suplir un puerto personalizado con esa bandera. Por ejemplo, el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
 
-Pase el marcador `--inspect-brk` en vez del `--inspect` para interrumpir la primera línea de la aplicación del código.
+Pase la bandera `--inspect-brk`, en vez de `--inspect`, para interrumpir la primera línea del código de aplicación.
 
 ```txt
 $ node --inspect index.js
