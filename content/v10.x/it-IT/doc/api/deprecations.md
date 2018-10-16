@@ -846,7 +846,7 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-Users of `MakeCallback` that add the `domain` property to carry context, should start using the `async_context` variant of `MakeCallback` or `CallbackScope`, or the high-level `AsyncResource` class.
+Gli utenti di `MakeCallback` che aggiungono la proprietà `domain` per portare contesto, dovrebbero iniziare a utilizzare la variante `async_context` di `MakeCallback` o `CallbackScope` oppure la classe di livello superiore `AsyncResource`.
 
 <a id="DEP0098"></a>
 
