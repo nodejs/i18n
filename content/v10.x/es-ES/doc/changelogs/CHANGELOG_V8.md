@@ -987,7 +987,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`ab0d7a64aa`](https://github.com/nodejs/node/commit/ab0d7a64aa)] - **lib**: refactorizar wrap_js_stream para la legibilidad de ES6 (Anna Henningsen) [#16158](https://github.com/nodejs/node/pull/16158)
 * [[`87fd5b798f`](https://github.com/nodejs/node/commit/87fd5b798f)] - **lib**: mover _stream_wrap a internos (Anna Henningsen) [#16158](https://github.com/nodejs/node/pull/16158)
 * [[`96e82509b0`](https://github.com/nodejs/node/commit/96e82509b0)] - **lib**: usar la desestructuración para algunas constantes (Weijia Wang) [#16063](https://github.com/nodejs/node/pull/16063)
-* [[`6be494251b`](https://github.com/nodejs/node/commit/6be494251b)] - **lib**: mover duplicado spliceOne a internal/util (Weijia Wang) [#16221](https://github.com/nodejs/node/pull/16221)
+* [[`6be494251b`](https://github.com/nodejs/node/commit/6be494251b)] - **lib**: mover spliceOne duplicado a internal/util (Weijia Wang) [#16221](https://github.com/nodejs/node/pull/16221)
 * [[`8c0c456c73`](https://github.com/nodejs/node/commit/8c0c456c73)] - **lib**: configurar el canal IPC antes de la consola (Nikolai Vavilov) [#16562](https://github.com/nodejs/node/pull/16562)
 * [[`3a230b42f3`](https://github.com/nodejs/node/commit/3a230b42f3)] - **lib**: los errores internos no deben ser ejecutables (Jon Moss) [#16369](https://github.com/nodejs/node/pull/16369)
 * [[`415fb56735`](https://github.com/nodejs/node/commit/415fb56735)] - **module**: corregir las búsquedas de extensión para el nivel superior principal (Guy Bedford) [#16526](https://github.com/nodejs/node/pull/16526)
