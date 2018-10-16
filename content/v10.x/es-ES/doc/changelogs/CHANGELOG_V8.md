@@ -1201,7 +1201,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`7307e1d2cd`](https://github.com/nodejs/node/commit/7307e1d2cd)] - **src**: añadir "internalBindings" para el aislamiento de enlace (Bradley Farias) [#15759](https://github.com/nodejs/node/pull/15759)
 * [[`c8db0230c9`](https://github.com/nodejs/node/commit/c8db0230c9)] - **src**: usar una verificación ingresada en el contexto más apropiado (Anna Henningsen) [#15691](https://github.com/nodejs/node/pull/15691)
 * [[`419876aabb`](https://github.com/nodejs/node/commit/419876aabb)] - **src**: corregir node_platform que bloquea el drenaje de tareas (Anna Henningsen) [#15639](https://github.com/nodejs/node/pull/15639)
-* [[`33d5262c23`](https://github.com/nodejs/node/commit/33d5262c23)] - **src**: prepare platform for upstream V8 changes (Anna Henningsen) [#15428](https://github.com/nodejs/node/pull/15428)
+* [[`33d5262c23`](https://github.com/nodejs/node/commit/33d5262c23)] - **src**: preparar la plataforma para los cambios de V8 upstream (Anna Henningsen) [#15428](https://github.com/nodejs/node/pull/15428)
 * [[`824be6dc1d`](https://github.com/nodejs/node/commit/824be6dc1d)] - **src**: node_dtrace line continuations clean up (Daniel Bevenius) [#15777](https://github.com/nodejs/node/pull/15777)
 * [[`09660c8511`](https://github.com/nodejs/node/commit/09660c8511)] - **src**: rename perfctr_macros.py-\>noperfctr_macros.py (Daniel Bevenius) [#16100](https://github.com/nodejs/node/pull/16100)
 * [[`2c469e8e29`](https://github.com/nodejs/node/commit/2c469e8e29)] - **test**: fix flaky test-make-doc (Rich Trott) [#16301](https://github.com/nodejs/node/pull/16301)
