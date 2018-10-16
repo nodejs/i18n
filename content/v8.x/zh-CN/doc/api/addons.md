@@ -103,7 +103,7 @@ console.log(addon.hello());
 
 由于编译后插件二进制文件的路径会有所不同，这取决于插件是如何被编译的 (例如：有时它会在`./build/Debug/`)，插件可以使用[bindings](https://github.com/TooTallNate/node-bindings)包来加载编译后的模块。
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+注意，`绑定`包的实现在如何定位插件模块时会更复杂，实际上它在使用类似的try-catch模式：
 
 ```js
 try {
@@ -113,11 +113,11 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### 链接到Node.js自己的依赖库
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 所有的插件必须要链接到V8，并且可以链接到其他的依赖库。 通常，这非常简单，只需要包含适当的`#include <...>`语句 (例如：`#include <v8.h>`)，`node-gyp`会自动定位相应的头文件。 然而，仍有一些事项需要注意：
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* 当`node-gyp`运行时，它会检查特定的Node.js发行版本，并下载全部源代码的tarball压缩文件或者只是头文件。 如果下载了全部源代码，插件就可以完全访问Node.js的依赖库。 However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
