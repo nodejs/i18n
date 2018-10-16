@@ -162,77 +162,77 @@ L'interfaccia [`fs.readSync()`][] legacy `String` è deprecata/obsoleta. In alte
 
 Tipo: Runtime
 
-The `GLOBAL` and `root` aliases for the `global` property have been deprecated and should no longer be used.
+Gli alias `GLOBAL` e `root` per la proprietà `global` sono stati deprecati e non dovrebbero più essere utilizzati.
 
 <a id="DEP0017"></a>
 
 ### DEP0017: Intl.v8BreakIterator
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`Intl.v8BreakIterator` was a non-standard extension and has been removed. See [`Intl.Segmenter`](https://github.com/tc39/proposal-intl-segmenter).
+`Intl.v8BreakIterator` era un'estensione non-standard ed è stata rimossa. Vedi [`Intl.Segmenter`](https://github.com/tc39/proposal-intl-segmenter).
 
 <a id="DEP0018"></a>
 
-### DEP0018: Unhandled promise rejections
+### DEP0018: Promise rejection non gestiti
 
-Type: Runtime
+Tipo: Runtime
 
-Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+I promise rejection non gestiti sono deprecati/obsoleti. In futuro, i promise rejection che non vengono gestiti termineranno il processo Node.js con un valore di uscita diverso da zero.
 
 <a id="DEP0019"></a>
 
-### DEP0019: require('.') resolved outside directory
+### DEP0019: require('.') risolto al di fuori della directory
 
-Type: Runtime
+Tipo: Runtime
 
-In certain cases, `require('.')` may resolve outside the package directory. This behavior is deprecated and will be removed in a future major Node.js release.
+In alcuni casi, `require('.')` potrebbe risolversi al di fuori della directory del pacchetto. Questo comportamento è deprecato/obsoleto e verrà rimosso in una futura versione di Node.js.
 
 <a id="DEP0020"></a>
 
 ### DEP0020: Server.connections
 
-Type: Runtime
+Tipo: Runtime
 
-The [`Server.connections`][] property is deprecated. Please use the [`Server.getConnections()`][] method instead.
+La proprietà [`Server.connections`][] è deprecata/obsoleta. Si prega di utilizzare il metodo [`Server.getConnections()`][] al suo posto.
 
 <a id="DEP0021"></a>
 
 ### DEP0021: Server.listenFD
 
-Type: Runtime
+Tipo: Runtime
 
-The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <number>})`][] instead.
+Il metodo `Server.listenFD()` è deprecato/obsoleto. Si prega di utilizzare [`Server.listen({fd: <number>})`][] al suo posto.
 
 <a id="DEP0022"></a>
 
 ### DEP0022: os.tmpDir()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
+L'API `os.tmpDir()` è deprecata/obsoleta. Si prega di utilizzare [`os.tmpdir()`][] al suo posto.
 
 <a id="DEP0023"></a>
 
 ### DEP0023: os.getNetworkInterfaces()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+Il metodo `os.getNetworkInterfaces()` è deprecato/obsoleto. Si prega di utilizzare la proprietà [`os.networkInterfaces`][] al suo posto.
 
 <a id="DEP0024"></a>
 
 ### DEP0024: REPLServer.prototype.convertToContext()
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `REPLServer.prototype.convertToContext()` API is deprecated and should not be used.
+L'API `REPLServer.prototype.convertToContext()` è deprecata/obsoleta e non dovrebbe essere utilizzata.
 
 <a id="DEP0025"></a>
 
 ### DEP0025: require('sys')
 
-Type: Runtime
+Tipo: Runtime
 
 The `sys` module is deprecated. Please use the [`util`][] module instead.
 
