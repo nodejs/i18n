@@ -137,9 +137,9 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 > 稳定性: 1 - 实验性
 
-N-API是构建原生插件的API。 它独立于底层的JavaScript运行时 (例如 V8) 并作为Node.js的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API是构建原生插件的API。 它独立于底层的JavaScript运行时 (例如 V8) 并作为Node.js的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+为了在上述的"Hello world"示例中使用N-API，需要将`hello.cc`的内容替换如下。 其他所有说明保持不变。
 
 ```cpp
 // hello.cc using N-API
