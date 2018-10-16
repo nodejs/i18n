@@ -660,14 +660,14 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-`tls.parseCertString()` è un banale aiutante per il parsing reso pubblico per errore. This function can usually be replaced with:
+`tls.parseCertString()` è un banale aiutante per il parsing reso pubblico per errore. Questa funzione può essere generalmente sostituita con:
 
 ```js
 const querystring = require('querystring');
 querystring.parse(str, '\n', '=');
 ```
 
-This function is not completely equivalent to `querystring.parse()`. One difference is that `querystring.parse()` does url decoding:
+Questa funzione non è completamente equivalente a `querystring.parse()`. Ad esempio una differenza è che `querystring.parse()` esegue la decodifica url:
 
 ```sh
 > querystring.parse('%E5%A5%BD=1', '\n', '=');
@@ -680,57 +680,57 @@ This function is not completely equivalent to `querystring.parse()`. One differe
 
 ### DEP0077: Module.\_debug()
 
-Type: Runtime
+Tipo: Runtime
 
-`Module._debug()` has been deprecated.
+`Module._debug()` è stato deprecato.
 
-The `Module._debug()` function was never documented as an officially supported API.
+La funzione `Module._debug()` non è mai stata documentata come un'API ufficialmente supportata.
 
 <a id="DEP0078"></a>
 
 ### DEP0078: REPLServer.turnOffEditorMode()
 
-Type: Runtime
+Tipo: Runtime
 
-`REPLServer.turnOffEditorMode()` was removed from userland visibility.
+`REPLServer.turnOffEditorMode()` è stato rimosso dalla visibilità dell'userland.
 
 <a id="DEP0079"></a>
 
-### DEP0079: Custom inspection function on Objects via .inspect()
+### DEP0079: Funzione di ispezione personalizzata sugli Object tramite .inspect()
 
-Type: Runtime
+Tipo: Runtime
 
-Using a property named `inspect` on an object to specify a custom inspection function for [`util.inspect()`][] is deprecated. Use [`util.inspect.custom`][] instead. For backward compatibility with Node.js prior to version 6.4.0, both may be specified.
+L'utilizzo di una proprietà chiamata `inspect` su un object per specificare una funzione di ispezione personalizzata per [`util.inspect()`][] è deprecato/obsoleto. Utilizza [`util.inspect.custom`][] al suo posto. Per la retro-compatibilità con le versioni di Node.js precedenti alla versione 6.4.0, è possibile specificare entrambi.
 
 <a id="DEP0080"></a>
 
 ### DEP0080: path.\_makeLong()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The internal `path._makeLong()` was not intended for public use. However, userland modules have found it useful. The internal API has been deprecated and replaced with an identical, public `path.toNamespacedPath()` method.
+Il `path._makeLong()` interno non era destinato all'utilizzo pubblico. Tuttavia, i moduli userland lo hanno trovato utile. L'API interna è stata deprecata e sostituita con un `path.toNamespacedPath()` identico e pubblico.
 
 <a id="DEP0081"></a>
 
-### DEP0081: fs.truncate() using a file descriptor
+### DEP0081: fs.truncate() utilizzando un file descriptor
 
-Type: Runtime
+Tipo: Runtime
 
-`fs.truncate()` `fs.truncateSync()` usage with a file descriptor has been deprecated. Please use `fs.ftruncate()` or `fs.ftruncateSync()` to work with file descriptors.
+L'utilizzo di `fs.truncate()` `fs.truncateSync()` con un con un file descriptor è stato deprecato. Si prega di utilizzare `fs.ftruncate()` o `fs.ftruncateSync()` per lavorare con i file descriptor.
 
 <a id="DEP0082"></a>
 
 ### DEP0082: REPLServer.prototype.memory()
 
-Type: Runtime
+Tipo: Runtime
 
-`REPLServer.prototype.memory()` is only necessary for the internal mechanics of the `REPLServer` itself. Do not use this function.
+`REPLServer.prototype.memory()` è necessario solo per la meccanica interna del `REPLServer` stesso. Non utilizzare questa funzione.
 
 <a id="DEP0083"></a>
 
-### DEP0083: Disabling ECDH by setting ecdhCurve to false
+### DEP0083: Disattivazione di ECDH impostando ecdhCurve su false
 
-Type: Runtime
+Tipo: Runtime
 
 The `ecdhCurve` option to `tls.createSecureContext()` and `tls.TLSSocket` could be set to `false` to disable ECDH entirely on the server only. This mode is deprecated in preparation for migrating to OpenSSL 1.1.0 and consistency with the client. Use the `ciphers` parameter instead.
 
