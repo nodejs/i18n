@@ -356,7 +356,7 @@ added: v5.10.0
 
 * `size` {integer} La longitud deseada del nuevo `Buffer`.
 * `fill` {string|Buffer|integer} Un valor con el cual llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`
-* `encoding` {string} If `fill` is a string, this is its encoding. **Predeterminado:** `'utf8'`
+* `encoding` {string} Si `fill` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
 
 Asigna el nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
