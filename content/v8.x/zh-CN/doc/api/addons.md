@@ -275,7 +275,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### 回调函数
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+在插件中非常常见的一种做法就是，将JavaScript函数传递给一个C++函数并从中执行它。 如下示例演示了如何调用这样的回调函数：
 
 ```cpp
 // addon.cc
@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+请注意，此示例使用两个参数形式的`Init()`，其中的第二个参数为完整的`module`对象。 这就允许插件使用单个函数完全覆盖`exports`，而不是将函数添加为`exports`的一个属性。
 
-To test it, run the following JavaScript:
+要想测试它，请运行如下JavaScript：
 
 ```js
 // test.js
@@ -323,11 +323,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+请注意，在此示例中，回调函数是以同步方式被调用的。
 
-### Object factory
+### 对象工厂
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+就像如下示例所示，插件可以在C++函数中创建并返回新对象。 An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
 ```cpp
 // addon.cc
