@@ -68,7 +68,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 ### 构建
 
-当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 为了实现这个目标，在项目的根目录创建一个类似JSON格式的文件`binding.gyp`，该文件中包含构建配置信息。 这个文件被[node-gyp](https://github.com/nodejs/node-gyp) (一个专门用于编译Node.js插件的工具) 所使用。
+当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 为了实现这个目标，在项目的根目录中创建一个类似JSON格式的文件`binding.gyp`，该文件中包含模块的构建配置信息。 这个文件被[node-gyp](https://github.com/nodejs/node-gyp) (一个专门用于编译Node.js插件的工具) 所使用。
 
 ```json
 {
@@ -85,11 +85,11 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 一旦`binding.gyp`文件被创建，使用`node-gyp configure`命令在当前平台中生成相应的项目构建文件。 这会生成一个`Makefile` (在Unix平台)，或 `build/`目录中的`vcxproj` (在Windows中)。
 
-接下来，调用`node-gyp build`命令来生成并编译`addon.node`文件。 它将被放置到`build/Release/`目录。
+接下来，调用`node-gyp build`命令来生成并编译`addon.node`文件。 它将被放置到`build/Release/`目录中。
 
-当使用`npm install`安装Node.js插件时，npm使用它自己的捆绑版本的`node-gyp`来执行相同操作，以生成用户要求的平台下插件的编译后版本。
+当使用`npm install`安装Node.js插件时，npm使用它自己捆绑的`node-gyp`来执行相同操作，从而为用户要求的平台生成编译后的版本。
 
-一旦构建，二进制的插件可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块在Node.js中使用。
+一旦构建，就可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块，从而在Node.js中使用二进制的插件。
 
 ```js
 // hello.js
