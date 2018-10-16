@@ -850,61 +850,61 @@ Gli utenti di `MakeCallback` che aggiungono la proprietà `domain` per portare c
 
 <a id="DEP0098"></a>
 
-### DEP0098: AsyncHooks Embedder AsyncResource.emitBefore and AsyncResource.emitAfter APIs
+### DEP0098: Le API AsyncResource.emitBefore e AsyncResource.emitAfter dell'AsyncHooks Embedder
 
-Type: Runtime
+Tipo: Runtime
 
-The embedded API provided by AsyncHooks exposes `.emitBefore()` and `.emitAfter()` methods which are very easy to use incorrectly which can lead to unrecoverable errors.
+L'embedded API fornita da AsyncHooks espone i metodi `.emitBefore()` ed `.emitAfter()` i quali sono molto facili da utilizzare in modo errato e possono portare a errori irreversibili.
 
-Use [`asyncResource.runInAsyncScope()`][] API instead which provides a much safer, and more convenient, alternative. See https://github.com/nodejs/node/pull/18513 for more details.
+Utilizza al suo posto l'API [`asyncResource.runInAsyncScope()`][] che fornisce un'alternativa molto più sicura e più conveniente. Vedi https://github.com/nodejs/node/pull/18513 per maggiori dettagli.
 
 <a id="DEP0099"></a>
 
-### DEP0099: async context-unaware node::MakeCallback C++ APIs
+### DEP0099: async context-unaware node::MakeCallback C++ API
 
-Type: Compile-time
+Tipo: Compile-time
 
-Certain versions of `node::MakeCallback` APIs available to native modules are deprecated. Please use the versions of the API that accept an `async_context` parameter.
+Alcune versioni di API `node::MakeCallback` disponibili per i moduli nativi sono deprecate/obsolete. Si prega di utilizzare le versioni delle API che accettano un parametro `async_context`.
 
 <a id="DEP0100"></a>
 
 ### DEP0100: process.assert()
 
-Type: Runtime
+Tipo: Runtime
 
-`process.assert()` is deprecated. Please use the [`assert`][] module instead.
+`process.assert()` è deprecato/obsoleto. Si prega di utilizzare il modulo [`assert`][] al suo posto.
 
-This was never a documented feature.
+Questa non è mai stata una funzionalità documentata.
 
 <a id="DEP0101"></a>
 
 ### DEP0101: --with-lttng
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `--with-lttng` compile-time option has been removed.
+L'opzione compile-time `--with-lttng` è stata rimossa.
 
 <a id="DEP0102"></a>
 
-### DEP0102: Using `noAssert` in Buffer#(read|write) operations.
+### DEP0102: Utilizzare `noAssert` nelle operazioni Buffer#(read|write).
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-Using the `noAssert` argument has no functionality anymore. All input is going to be verified, no matter if it is set to true or not. Skipping the verification could lead to hard to find errors and crashes.
+L'utilizzo dell'argomento `noAssert` non ha più alcuna funzionalità. Tutti gli input saranno verificati, non importa se un input è impostato su true oppure no. Saltare la verifica potrebbe causare errori e arresti anomali.
 
 <a id="DEP0103"></a>
 
 ### DEP0103: process.binding('util').is[...] typechecks
 
-Type: Documentation-only (supports [`--pending-deprecation`][])
+Tipo: Documentation-only (supporta [`--pending-deprecation`][])
 
-Using `process.binding()` in general should be avoided. The type checking methods in particular can be replaced by using [`util.types`][].
+Generalmente l'utilizzo di `process.binding()` dovrebbe essere evitato. The type checking methods in particular can be replaced by using [`util.types`][].
 
 <a id="DEP0104"></a>
 
 ### DEP0104: process.env string coercion
 
-Type: Documentation-only (supports [`--pending-deprecation`][])
+Tipo: Documentation-only (supporta [`--pending-deprecation`][])
 
 When assigning a non-string property to [`process.env`][], the assigned value is implicitly converted to a string. This behavior is deprecated if the assigned value is not a string, boolean, or number. In the future, such assignment may result in a thrown error. Please convert the property to a string before assigning it to `process.env`.
 
