@@ -732,15 +732,15 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-The `ecdhCurve` option to `tls.createSecureContext()` and `tls.TLSSocket` could be set to `false` to disable ECDH entirely on the server only. This mode is deprecated in preparation for migrating to OpenSSL 1.1.0 and consistency with the client. Use the `ciphers` parameter instead.
+L'opzione `ecdhCurve` su `tls.createSecureContext()` e `tls.TLSSocket` potrebbe essere impostata su `false` per disabilitare completamente ECDH esclusivamente sul server. Questa modalità è deprecata/obsoleta in preparazione alla migrazione a OpenSSL 1.1.0 e alla coerenza con il client. Utilizza il parametro `ciphers` al suo posto.
 
 <a id="DEP0084"></a>
 
-### DEP0084: requiring bundled internal dependencies
+### DEP0084: richiesta di dipendenze interne in bundle
 
-Type: Runtime
+Tipo: Runtime
 
-Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for internal usage are mistakenly exposed to user code through `require()`. These modules are:
+A partire dalle versioni Node.js 4.4.0 e 5.2.0, diversi moduli destinati esclusivamente all'utilizzo interno vengono erroneamente esposti al codice utente tramite `require()`. Questi moduli sono:
 
 - `v8/tools/codemap`
 - `v8/tools/consarray`
@@ -752,11 +752,11 @@ Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for intern
 - `v8/tools/splaytree`
 - `v8/tools/tickprocessor-driver`
 - `v8/tools/tickprocessor`
-- `node-inspect/lib/_inspect` (from 7.6.0)
-- `node-inspect/lib/internal/inspect_client` (from 7.6.0)
-- `node-inspect/lib/internal/inspect_repl` (from 7.6.0)
+- `node-inspect/lib/_inspect` (dalla 7.6.0)
+- `node-inspect/lib/internal/inspect_client` (dalla 7.6.0)
+- `node-inspect/lib/internal/inspect_repl` (dalla 7.6.0)
 
-The `v8/*` modules do not have any exports, and if not imported in a specific order would in fact throw errors. As such there are virtually no legitimate use cases for importing them through `require()`.
+I moduli `v8/*` non hanno esportazioni e, se non verrebbero importati in un ordine specifico, genererebbero degli errori. As such there are virtually no legitimate use cases for importing them through `require()`.
 
 On the other hand, `node-inspect` may be installed locally through a package manager, as it is published on the npm registry under the same name. No source code modification is necessary if that is done.
 
