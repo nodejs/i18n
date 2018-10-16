@@ -20,47 +20,47 @@ Una deprecazione End-of-Life viene utilizzata per identificare il codice che è 
 
 ## Revocare le deprecazioni
 
-A volte la deprecazione di un'API può essere annullata. In such situations, this document will be updated with information relevant to the decision. However, the deprecation identifier will not be modified.
+A volte la deprecazione di un'API può essere annullata. In tali situazioni, questo documento verrà aggiornato con informazioni rilevanti per la decisione. Tuttavia, l'identificatore delle deprecazioni non verrà modificato.
 
-## List of Deprecated APIs
+## Elenco delle API Deprecate/Obsolete
 
 <a id="DEP0001"></a>
 
 ### DEP0001: http.OutgoingMessage.prototype.flush
 
-Type: Runtime
+Tipo: Runtime
 
-The `OutgoingMessage.prototype.flush()` method is deprecated. Use `OutgoingMessage.prototype.flushHeaders()` instead.
+Il metodo `OutgoingMessage.prototype.flush()` è stato deprecato. Utilizza `OutgoingMessage.prototype.flushHeaders()` al suo posto.
 
 <a id="DEP0002"></a>
 
 ### DEP0002: require('\_linklist')
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `_linklist` module is deprecated. Please use a userland alternative.
+Il modulo `_linklist` è stato deprecato. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0003"></a>
 
 ### DEP0003: \_writableState.buffer
 
-Type: Runtime
+Tipo: Runtime
 
-The `_writableState.buffer` property is deprecated. Use the `_writableState.getBuffer()` method instead.
+La proprietà `_writableState.buffer` è stata deprecata. Utilizza il metodo `_writableState.getBuffer()` al suo posto.
 
 <a id="DEP0004"></a>
 
 ### DEP0004: CryptoStream.prototype.readyState
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `CryptoStream.prototype.readyState` property is deprecated and should not be used.
+La proprietà `CryptoStream.prototype.readyState` è stata deprecata e non dovrebbe essere utilizzata.
 
 <a id="DEP0005"></a>
 
 ### DEP0005: Buffer() constructor
 
-Type: Runtime (supports [`--pending-deprecation`][])
+Tipo: Runtime (supporta [`--pending-deprecation`][])
 
 The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
 
