@@ -486,22 +486,22 @@ Ejemplo:
 ```js
 const buf = Buffer.allocUnsafe(10);
 
-// Prints: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
+// Imprime: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 console.log(buf);
 ```
 
 Se producirá un `TypeError` si `size` no es número.
 
-Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
+Note que el módulo `Buffer` asigna previamente una instancia de `Buffer` interna de tamaño [`Buffer.poolSize`] que es usada como un pool para la asignación rápida de nuevas instancias de `Buffer` creadas usando [`Buffer.allocUnsafe()`] y el constructor desaprobado `new Buffer(size)` solo cuando `size` es menor o igual a `Buffer.poolSize >> 1` (piso de [`Buffer.poolSize`] dividido entre dos).
 
-Use of this pre-allocated internal memory pool is a key difference between calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`] provides.
+El uso de este pool de memoria interna asignada previamente es una diferencia clave entre `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Específicamente, `Buffer.alloc(size, fill)` *nunca* usará el pool de `Buffer` interno, mientras que `Buffer.allocUnsafe(size).fill(fill)` *usará* el pool de `Buffer` interno si `size` es menor o igual a la mitad de [`Buffer.poolSize`]. La diferencia es sutil pero puede ser importante cuando una aplicación requiere el rendimiento adicional que proporciona [`Buffer.allocUnsafe()`].
 
-### Class Method: Buffer.allocUnsafeSlow(size)
+### Método de Clase: Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
