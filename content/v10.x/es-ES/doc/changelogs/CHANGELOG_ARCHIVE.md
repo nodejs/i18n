@@ -2340,34 +2340,34 @@ https://github.com/nodejs/node/commit/4585330afef44ddfb6a4054bd9b0f190b352628b
 https://github.com/nodejs/node/commit/08ffce1a00dde1199174b390a64a90b60768ddf5
 
 * mejoras de libuv; soporte para pipe nombrado
-* [#1242](https://github.com/joyent/node/issues/1242) check for SSL_COMP_get_compression_methods() (Ben Noordhuis)
-* [#1348](https://github.com/joyent/node/issues/1348) remove require.paths (isaacs)
-* [#1349](https://github.com/joyent/node/issues/1349) Delimit NODE_PATH with ; on Windows (isaacs)
-* [#1335](https://github.com/joyent/node/issues/1335) Remove EventEmitter from C++
-* [#1357](https://github.com/joyent/node/issues/1357) Load json files with require() (isaacs)
-* [#1374](https://github.com/joyent/node/issues/1374) fix setting ServerResponse.statusCode in writeHead (Trent Mick)
-* Fixed: GC was being run too often.
-* Upgrade V8 to 3.4.14
-* doc improvements
+* [#1242](https://github.com/joyent/node/issues/1242) chequear por SSL_COMP_get_compression_methods() (Ben Noordhuis)
+* [#1348](https://github.com/joyent/node/issues/1348) remover require.paths (isaacs)
+* [#1349](https://github.com/joyent/node/issues/1349) Delimitar NODE_PATH con ; en Windows (isaacs)
+* [#1335](https://github.com/joyent/node/issues/1335) Remover EventEmitter de C++
+* [#1357](https://github.com/joyent/node/issues/1357) Cargar archivos json con require() (isaacs)
+* [#1374](https://github.com/joyent/node/issues/1374) arreglar el establecimiento de ServerResponse.statusCode en writeHead (Trent Mick)
+* Corregido: el GC estaba siendo ejecutado muy seguidamente.
+* Actualizar V8 a 3.4.14
+* mejoras de doc
 
 <a id="0.5.1"></a>
 
-## 2011.07.14, Version 0.5.1 (unstable)
+## 2011.07.14, Versión 0.5.1 (inestable)
 
 https://github.com/nodejs/node/commit/f8bfa54d0fa509f9242637bef2869a1b1e842ec8
 
-* [#1233](https://github.com/joyent/node/issues/1233) Fix os.totalmem on FreeBSD amd64 (Artem Zaytsev)
-* [#1149](https://github.com/joyent/node/issues/1149) IDNA and Punycode support in url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
+* [#1233](https://github.com/joyent/node/issues/1233) Reparar os.totalmem en amd64 de FreeBSD (Artem Zaytsev)
+* [#1149](https://github.com/joyent/node/issues/1149) Soporte de IDNA y Punycode en url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
 
-* Export $CC and $CXX to uv and V8's build systems
+* Exportar $CC y $CXX a sistemas de compilación de uv y V8
 
-* Include pthread-win32 static libraries in build (Igor Zinkovsky)
-* [#1199](https://github.com/joyent/node/issues/1199), [#1094](https://github.com/joyent/node/issues/1094) Fix fs can't handle large file on 64bit platform (koichik)
-* [#1281](https://github.com/joyent/node/issues/1281) Make require a public member of module (isaacs)
-* [#1303](https://github.com/joyent/node/issues/1303) Stream.pipe returns the destination (Elijah Insua)
-* [#1229](https://github.com/joyent/node/issues/1229) Addons should not -DEV_MULTIPLICITY=0 (Brian White)
-* libuv backend improvements
-* Upgrade V8 to 3.4.10
+* Incluir librerías estáticas de pthread-win32 en el build (Igor Zinkovsky)
+* [#1199](https://github.com/joyent/node/issues/1199), [#1094](https://github.com/joyent/node/issues/1094) Arreglar que el fs no puede manejar archivo grande en plataforma de 64bit (koichik)
+* [#1281](https://github.com/joyent/node/issues/1281) Hacer que "require" sea un miembro público del módulo (isaacs)
+* [#1303](https://github.com/joyent/node/issues/1303) Stream.pipe devuelve el destino (Elijah Insua)
+* [#1229](https://github.com/joyent/node/issues/1229) Los complementos no deben tener -DEV_MULTIPLICITY=0 (Brian White)
+* mejoras del backend de libuv
+* Actualizar V8 a 3.4.10
 
 <a id="0.5.0"></a>
 
