@@ -41,7 +41,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
