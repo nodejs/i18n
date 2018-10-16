@@ -830,21 +830,21 @@ L'utilizzo di `assert.fail()` con più di un argomento è deprecato/obsoleto. Ut
 
 Tipo: Runtime
 
-`timers.enroll()` is deprecated. Please use the publicly documented [`setTimeout()`][] or [`setInterval()`][] instead.
+`timers.enroll()` è deprecato/obsoleto. Si prega di utilizzare al suo posto [`setTimeout()`][] oppure [`setInterval()`][] i quali sono documentati pubblicamente.
 
 <a id="DEP0096"></a>
 
 ### DEP0096: timers.unenroll()
 
-Type: Runtime
+Tipo: Runtime
 
-`timers.unenroll()` is deprecated. Please use the publicly documented [`clearTimeout()`][] or [`clearInterval()`][] instead.
+`timers.unenroll()` è deprecato/obsoleto. Si prega di utilizzare al suo posto [`clearTimeout()`][] oppure [`clearInterval()`][] i quali sono documentati pubblicamente.
 
 <a id="DEP0097"></a>
 
-### DEP0097: MakeCallback with domain property
+### DEP0097: MakeCallback con la proprietà domain
 
-Type: Runtime
+Tipo: Runtime
 
 Users of `MakeCallback` that add the `domain` property to carry context, should start using the `async_context` variant of `MakeCallback` or `CallbackScope`, or the high-level `AsyncResource` class.
 
