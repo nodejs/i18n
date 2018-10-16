@@ -233,7 +233,7 @@ using v8::Value;
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+//Sprawdź liczbę przekazanych argumentów.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
