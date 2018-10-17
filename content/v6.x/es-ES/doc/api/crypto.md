@@ -178,7 +178,7 @@ added: v1.0.0
 
 El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Regresa `this` para el encadenamiento de métodos.
+Returns `this` for method chaining.
 
 ### cipher.getAuthTag()
 
@@ -186,7 +186,7 @@ Regresa `this` para el encadenamiento de métodos.
 added: v1.0.0
 -->
 
-El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene al *authentication tag* que ha sido computado por los datos dados cuando e us un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
+El método `cipher.getAuthTag()` regresa a un [`Buffer`][] que contiene la *etiqueta de autenticación* que ha sido computada por los datos dados cuando es un modo de encriptación autenticado (solo `GCM` está actualmente avalado).
 
 El método `cipher.getAuthTag()` solo debría ser llamado luego de haber completado la encriptación al usar el método [`cipher.final()`][].
 
@@ -196,13 +196,13 @@ El método `cipher.getAuthTag()` solo debría ser llamado luego de haber complet
 added: v0.7.1
 -->
 
-El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Y, para desabilitar la llamada adicional predeterminada `cipher.setAutoPadding(false)`.
+El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Para inhabilitar el relleno por defecto, llame a `cipher.setAutoPadding(false)`.
 
 La longitud de todos los datos ingresados debe ser un múltiplo del tamaño del bloque cifrado o el [`cipher.final()`][] arrojará un Error cuando `auto_padding` sea `false`. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
 El método `cipher.setAutoPadding()` debe ser llamado antes del [`cipher.final()`][].
 
-Regresa al `this` para el método de encadenamiento.
+Regresa `this` para el encadenamiento de métodos.
 
 ### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
@@ -210,9 +210,9 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.1.94
 -->
 
-Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando el código específico. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando la codificación especificada. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'base64'` o `'hex'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'base64'` o `'hex'`. Si el `outputEncoding` es especificado, se devuelve una string que usa la codificación especificada. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que se llame a [`cipher.final()`][]. Si se llama a `cipher.update()` después de [`cipher.final()`][] se producirá un error.
 
