@@ -98,7 +98,7 @@ Regresa `true` si la estructura de los datos `spkac` dados es válida o `false` 
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 console.log(cert.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Imprime: “true” o “false”
 ```
 
 ## Tipo: Cipher
