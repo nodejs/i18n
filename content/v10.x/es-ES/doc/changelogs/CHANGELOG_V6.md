@@ -1763,7 +1763,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`72710d05b9`](https://github.com/nodejs/node/commit/72710d05b9)] - **test**: reparar test-domain-abort-on-uncaught defectuoso (Rich Trott) [#11817](https://github.com/nodejs/node/pull/11817)
 * [[`46b2e45b40`](https://github.com/nodejs/node/commit/46b2e45b40)] - **test**: se añadió prueba para propiedades indexadas (AnnaMag) [#11769](https://github.com/nodejs/node/pull/11769)
 * [[`a3f327fd21`](https://github.com/nodejs/node/commit/a3f327fd21)] - **test**: añadir regex a assert.throws (Matej Krajčovič) [#11815](https://github.com/nodejs/node/pull/11815)
-* [[`4d916da0d7`](https://github.com/nodejs/node/commit/4d916da0d7)] - **test**: suspender cuando el proceso secundario muere en fork-net (Joyee Cheung) [#11684](https://github.com/nodejs/node/pull/11684)
+* [`4d916da0d7`](https://github.com/nodejs/node/commit/4d916da0d7)] - **test**: suspender cuando el proceso secundario muera en fork-net (Joyee Cheung) [#11684](https://github.com/nodejs/node/pull/11684)
 * [[`7d4941f01a`](https://github.com/nodejs/node/commit/7d4941f01a)] - **test**: arreglar argumentos en parallel/test-fs-null-bytes.js (Vse Mozhet Byt) [#11601](https://github.com/nodejs/node/pull/11601)
 * [[`cd98f5d303`](https://github.com/nodejs/node/commit/cd98f5d303)] - **test**: reparar test-http-set-timeout-server defectuoso (Santiago Gimeno) [#11790](https://github.com/nodejs/node/pull/11790)
 * [[`67b6d7d123`](https://github.com/nodejs/node/commit/67b6d7d123)] - **test**: añadir prueba para cargar desde carpetas globales (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
