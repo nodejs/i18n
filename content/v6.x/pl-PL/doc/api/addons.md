@@ -244,7 +244,7 @@ console.log('This should be eight:', addon.add(3, 5));
 Powszechną praktyką w Dodatkach jest przekazywanie funkcji JavaScript do funkcji C++ i wykonywanie ich stamtąd. Poniższy przykład ilustruje jak wywołać takie funkcje zwrotne:
 
 ```cpp
-// addon.cc
+// dodatek.cc
 #include <node.h>
 
 namespace demo {
@@ -296,7 +296,7 @@ Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject()`:
 
 ```cpp
-// addon.cc
+// dodatek.cc
 #include <node.h>
 
 namespace demo {
@@ -343,7 +343,7 @@ console.log(obj1.msg, obj2.msg);
 Innym częstym scenariuszem jest tworzenie funkcji JavaScript, które obejmują funkcje C++i zwracanie ich z powrotem do JavaScript:
 
 ```cpp
-// addon.cc
+//dodatek.cc
 #include <node.h>
 
 namespace demo {
@@ -368,7 +368,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omiń to, by pozostawić to anonimowym
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
