@@ -2381,24 +2381,24 @@ https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 
 * docs mejorados.
 * añadir child_process.fork
-* add fs.utimes() and fs.futimes() support (Ben Noordhuis)
-* add process.uptime() (Tom Huges)
-* add path.relative (Tony Huang)
-* add os.getNetworkInterfaces()
-* add remoteAddress and remotePort for client TCP connections (Brian White)
+* añadir soporte para fs.utimes() y fs.futimes() (Ben Noordhuis)
+* añadir process.uptime() (Tom Huges)
+* añadir path.relative (Tony Huang)
+* añadir os.getNetworkInterfaces()
+* añadir remoteAddress y remotePort para conexiones TCP del cliente (Brian White)
 
-* add secureOptions flag, setting ciphers, SSL_OP_CRYPTOPRO_TLSEXT_BUG to TLS (Theo Schlossnagle)
+* añadir bandera secureOptions flag, establecer cifrados, SSL_OP_CRYPTOPRO_TLSEXT_BUG a TLS (Theo Schlossnagle)
 
-* add process.arch (Nathan Rajlich)
+* añadir process.arch (Nathan Rajlich)
 
-* add reading/writing of floats and doubles from/to buffers (Brian White)
-* Allow script to be read from stdin
-* [#477](https://github.com/joyent/node/issues/477) add Buffer::fill method to do memset (Konstantin Käfer)
-* [#573](https://github.com/joyent/node/issues/573) Diffie-Hellman support to crypto module (Håvard Stranden)
-* [#695](https://github.com/joyent/node/issues/695) add 'hex' encoding to buffer (isaacs)
-* [#851](https://github.com/joyent/node/issues/851) Update how REPLServer uses contexts (Ben Weaver)
-* [#853](https://github.com/joyent/node/issues/853) add fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
-* [#889](https://github.com/joyent/node/issues/889) Allow to remove all EventEmitter listeners at once (Felix Geisendörfer)
+* añadir lectura/escritura de floats y dobles desde/hacia buffers (Brian White)
+* Permitir la lectura del script desde stdin
+* [#477](https://github.com/joyent/node/issues/477) añadir método Buffer::fill para hacer memset (Konstantin Käfer)
+* [#573](https://github.com/joyent/node/issues/573) Soporte de Diffie-Hellman para módulo crypto (Håvard Stranden)
+* [#695](https://github.com/joyent/node/issues/695) añadir codificación "hex" al buffer (isaacs)
+* [#851](https://github.com/joyent/node/issues/851) Actualizar la forma en que REPLServer usa los contextos (Ben Weaver)
+* [#853](https://github.com/joyent/node/issues/853) añadir fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
+* [#889](https://github.com/joyent/node/issues/889) Permitir la remoción de todos los listeners de EventEmitter al mismo tiempo (Felix Geisendörfer)
 
 * [#926](https://github.com/joyent/node/issues/926) OpenSSL NPN support (Fedor Indutny)
 
