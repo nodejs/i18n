@@ -191,8 +191,8 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// To jest implementacja metody dodatków
+// Argumenty wejściowe są przekazywane za pomocą
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
