@@ -124,11 +124,11 @@ Gdy kolejka **odpytywania** jest pusta, pętla zdarzeń sprawdzi timery *któryc
 
 Ta faza pozwala osobie wykonać wywołania zwrotne natychmiast po zakończeniu fazy **odpytywania**. Jeśli faza **odpytywania** stanie się bezczynna i skrypty zostały umieszczone w kolejce z `ustawNatychmiastowo()`, pętla zdarzeń może przejść do fazy **sprawdzenia**, zamiast czekać.
 
-`setImmediate()` is actually a special timer that runs in a separate phase of the event loop. It uses a libuv API that schedules callbacks to execute after the **poll** phase has completed.
+`ustawNatychmiastowo()` jest w rzeczywistości specjalnym timerem, który działa w oddzielnej fazie pętli zdarzeń. Używa API libuv, który planuje wywołania zwrotne, aby je wykonywały po zakończeniu fazy **odpytywania**.
 
-Generally, as the code is executed, the event loop will eventually hit the **poll** phase where it will wait for an incoming connection, request, etc. However, if a callback has been scheduled with `setImmediate()` and the **poll** phase becomes idle, it will end and continue to the **check** phase rather than waiting for **poll** events.
+Na ogół, podczas wykonywania kodu, pętla zdarzeń ostatecznie trafi na fazę **odpytywania**, w której będzie czekać na przychodzące połączenie, żądanie, itp. Niemniej, jeśli zaplanowano wywołanie zwrotne z `ustawNatychmiastowo()`, a faza **odpytywania** staje się bezczynna, zakończy się i przejdzie do **sprawdzenia** zamiast czekać na zdarzenia **odpytywania**.
 
-### close callbacks
+### zamknij wywołania zwrotne
 
 If a socket or handle is closed abruptly (e.g. `socket.destroy()`), the `'close'` event will be emitted in this phase. Otherwise it will be emitted via `process.nextTick()`.
 
