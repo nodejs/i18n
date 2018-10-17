@@ -2404,18 +2404,18 @@ https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 
 * [#955](https://github.com/joyent/node/issues/955) Cambiar el manejo de ^C en REPL (isaacs)
 * [#979](https://github.com/joyent/node/issues/979) Añadir a HTTP soporte para Sockets del Dominio de Unix (Mark Cavage)
-* [#1173](https://github.com/joyent/node/issues/1173) [#1170](https://github.com/joyent/node/issues/1170) add AMD, asynchronous module definition (isaacs)
-* DTrace probes: support X-Forwarded-For (Dave Pacheco)
+* [#1173](https://github.com/joyent/node/issues/1173) [#1170](https://github.com/joyent/node/issues/1170) añadir AMD, definición de módulo asíncrono (isaacs)
+* Sondas de DTrace: soportar X-Forwarded-For (Dave Pacheco)
 
 <a id="0.4.12"></a>
 
-## 2011.09.15, Version 0.4.12 (stable)
+## 2011.09.15, Versión 0.4.12 (estable)
 
 https://github.com/nodejs/node/commit/771ba34ca7b839add2ef96879e1ffc684813cf7c
 
-* Improve docs
-* [#1563](https://github.com/joyent/node/issues/1563) overflow in ChildProcess custom_fd.
-* [#1569](https://github.com/joyent/node/issues/1569), parse error on multi-line HTTP headers. (Ben Noordhuis)
+* Mejorar docs
+* [#1563](https://github.com/joyent/node/issues/1563) desbordamiento en custom_fd de ChildProcess.
+* [#1569](https://github.com/joyent/node/issues/1569), analizar error en cabeceras multilínea de HTTP. (Ben Noordhuis)
 * [#1586](https://github.com/joyent/node/issues/1586) net: Socket write encoding case sensitivity (koichik)
 * [#1610](https://github.com/joyent/node/issues/1610) Remove DigiNotar CA from trusted list (isaacs)
 * [#1624](https://github.com/joyent/node/issues/1624) buffer: Avoid overrun with 'binary' encoding. (koichik)
