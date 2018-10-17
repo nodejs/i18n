@@ -211,7 +211,7 @@ $ node-gyp configure build
 以下示例演示如何读取传自JavaScript的函数参数，以及如何返回结果：
 
 ```cpp
-/ addon.cc
+// addon.cc
 #include <node.h>
 
 namespace demo {
@@ -430,7 +430,7 @@ console.log(fn());
 
 ### 包装C++对象
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+也可以包装C++对象／类，从而使得可以通过JavaScript的`new`运算符来创建它们的实例。
 
 ```cpp
 // addon.cc
@@ -451,7 +451,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+然后，在`myobject.h`中，包装类继承自`node::ObjectWrap`：
 
 ```cpp
 // myobject.h
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+在`myobject.cc`中，实现各种想要暴露的方法。 Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
 
 ```cpp
 // myobject.cc
