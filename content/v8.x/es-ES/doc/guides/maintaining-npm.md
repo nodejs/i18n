@@ -33,7 +33,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Paso 4: Extraer y asentar una nueva npm
+## Paso 4: Extraer y asentar un nuevo npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -55,13 +55,13 @@ $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 
 Nota: Por favor, asegúrese de ser el único haciendo actualizaciones que el npm cambia.
 
-## Paso 6: Aplicar revisión de espacios en blanco
+## Paso 6: Aplicar corrección de Whitespace
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Paso 7: Análisis de la construcción
+## Paso 7: Probar la compilación
 
 ```console
 $ make test-npm
