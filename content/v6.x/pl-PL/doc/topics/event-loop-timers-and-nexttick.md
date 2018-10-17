@@ -141,7 +141,7 @@ Jeśli gniazdo lub identyfikator zostaną nagle zamknięte (np.`socket.destroy()
 
 Kolejność wykonywania timerów będzie się bardzo różnić w zależności od kontekstu, w którym są przywoływane. Jeśli oba są wywoływane w obrębie głównego modułu, to w takim razie pomiar czasu będzie związany z wydajnością procesu (na który mogą mieć wpływ inne uruchomione aplikacje na komputerze).
 
-For example, if we run the following script which is not within an I/O cycle (i.e. the main module), the order in which the two timers are executed is non-deterministic, as it is bound by the performance of the process:
+Na przykład, jeśli uruchomimy poniższy skrypt, który nie znajduje się wewnątrz cyklu wej/wyj (np. główny moduł), kolejność, w której występują oba timery są uruchamiane jest niedeterministyczna, ponieważ jest związana z wykonywaniem procesu:
 
 ```js
 // timeout_vs_immediate.js
@@ -164,7 +164,7 @@ immediate
 timeout
 ```
 
-However, if you move the two calls within an I/O cycle, the immediate callback is always executed first:
+Jednakże, jeśli przeniesiesz te dwa wywołania w ramach cyklu wej/wyj, natychmiastowe wywołanie zwrotne jest zawsze wykonywane jako pierwsze:
 
 ```js
 // timeout_vs_immediate.js
