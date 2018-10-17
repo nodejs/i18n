@@ -2436,8 +2436,8 @@ https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 * [#1374](https://github.com/joyent/node/issues/1374) arreglar el establecimiento de ServerResponse.statusCode en writeHead (Trent Mick)
 
 * [#1417](https://github.com/joyent/node/issues/1417) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces
-* [#1497](https://github.com/joyent/node/issues/1497) querystring: Replace 'in' test with 'hasOwnProperty' (isaacs)
-* [#1546](https://github.com/joyent/node/issues/1546) http perf improvement
+* [#1497](https://github.com/joyent/node/issues/1497) querystring: Remplazar prueba "in" con "hasOwnProperty" (isaacs)
+* [#1546](https://github.com/joyent/node/issues/1546) mejora de rendimiento de http
 * fix memleak in libeio (Tom Hughes)
 * cmake improvements (Tom Hughes)
 * node_net.cc: fix incorrect sizeof() (Tom Hughes)
