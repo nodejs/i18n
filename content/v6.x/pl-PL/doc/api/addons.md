@@ -716,7 +716,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Jeszcze raz, aby zbudować ten przykład, plik `mójobiekt.cc` musi zostać dodany do pliku `wiążący.gyp`:
 
 ```json
 {
@@ -732,7 +732,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Przetestuj to z:
 
 ```js
 // test.js
@@ -803,7 +803,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+W `mójobiekt.h` dodano nową publiczną metodę zezwalającą na dostęp do prywatnych wartości po rozpakowaniu obiektu.
 
 ```cpp
 // myobject.h
@@ -835,7 +835,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+Implementacja `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
 // myobject.cc
@@ -909,7 +909,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Przetestuj to z:
 
 ```js
 // test.js
