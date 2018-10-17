@@ -604,11 +604,11 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `list` {Buffer[] | Uint8Array[]} 要合并的 `Buffer` 或 [`Uint8Array`] 实例的列表。
+* `totalLength` {integer} 合并时 `list` 中 `Buffer` 实例的总长度。
+* 返回：{Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer` 。
 
 If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
 
