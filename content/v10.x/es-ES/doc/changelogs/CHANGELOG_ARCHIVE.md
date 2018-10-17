@@ -2371,16 +2371,16 @@ https://github.com/nodejs/node/commit/f8bfa54d0fa509f9242637bef2869a1b1e842ec8
 
 <a id="0.5.0"></a>
 
-## 2011.07.05, Version 0.5.0 (unstable)
+## 2011.07.05, Versión 0.5.0 (inestable)
 
 https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 
-* New non-default libuv backend to support IOCP on Windows. Use --use-uv to enable.
+* Nuevo backend de livub no predeterminado para soportar IOCP en Windows. Usar --use-uv para activar.
 
-* deprecate http.cat
+* desaprobar http.cat
 
-* docs improved.
-* add child_process.fork
+* docs mejorados.
+* añadir child_process.fork
 * add fs.utimes() and fs.futimes() support (Ben Noordhuis)
 * add process.uptime() (Tom Huges)
 * add path.relative (Tony Huang)
