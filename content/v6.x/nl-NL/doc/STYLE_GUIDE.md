@@ -24,7 +24,7 @@
 * Bij het gebruik van koppeltekens, gebruik [Em koppeltekens](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" of `Option+Shift+"-"` op macOS) omringd door spaties, overeenkomstig [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Inbegrepen assets: 
   * Wanneer je een illustratie of een volledig programma wilt toevoegen, voeg dit dan toe aan de passende sub-map in de `assets/`dir.
-  * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
+  * Koppel het zo: `[Asset](/assets/{subdir}/{filename})` voor bestandsgebaseerde attributen, en `![Asset](/assets/{subdir}/{filename})` voor beeldgebaseerde attributen.
   * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
 * For code blocks: 
   * Use language aware fences. ("```js")
