@@ -10,9 +10,9 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidad: 0 - En desuso
+> Estabilidad: 0 - Desaprobado
 
-**La versión del módulo Punycode incluida en Node.js se encuentra en desuso**. Será eliminada de este módulo en una próxima versión de Node.js. Los usuarios que actualmente dependan del módulo `punycode` deberán cambiar al usuario provisto en el módulo [Punycode.js](https://mths.be/punycode).
+**La versión del módulo Punycode incluida en Node.js se encuentra en desuso**. Será eliminada de este módulo en una próxima versión de Node.js. Los usuarios que actualmente dependan del módulo `punycode` deberán cambiar al módulo [Punycode.js](https://mths.be/punycode) proporcionado por el espacio de usuario.
 
 El módulo `punycode` es una versión añadida al módulo [Punycode.js](https://mths.be/punycode). Se puede acceder a través de:
 
