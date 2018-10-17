@@ -751,17 +751,17 @@ added: v8.2.0
 -->
 
 * `object` {Object} 一个支持 `Symbol.toPrimitive` 或 `valueOf()` 的对象。
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `offsetOrEncoding` {number|string} 字节偏移量或编码，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
+* `length` {number} 长度值，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
+对那些其 `valueOf()` 方法返回值如果不严格等于 `object` 的对象，返回 `Buffer.from(object.valueOf(), offsetOrEncoding, length)`。
 
 ```js
 const buf = Buffer.from(new String('this is a test'));
 // Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+对那些支持 `Symbol.toPrimitive` 的对象，返回 `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`。
 
 ```js
 class Foo {
@@ -774,37 +774,37 @@ const buf = Buffer.from(new Foo(), 'utf8');
 // Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-### Class Method: Buffer.isBuffer(obj)
+### Class 方法：Buffer.isBuffer(obj)
 
 <!-- YAML
 added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* 返回：{boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+如果 `obj` 是一个 0>Buffer</0，则返回 `true`，否则返回 `false`。
 
-### Class Method: Buffer.isEncoding(encoding)
+### Class 方法：Buffer.isEncoding(encoding)
 
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} 一个要检查的字符编码名称。
+* 返回值：{boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+如果 `encoding` 包含一个支持的字符编码则返回 `true`，否则返回 `false`。
 
-### Class Property: Buffer.poolSize
+### Class 属性：Buffer.poolSize
 
 <!-- YAML
 added: v0.11.3
 -->
 
-* {integer} **Default:** `8192`
+* {integer} **默认值：** `8192`
 
-This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
+这是决定用于池化的预分配的内部 `Buffer` 实例的大小的字节数。 This value may be modified.
 
 ### buf[index]
 
