@@ -101,7 +101,7 @@ added: v0.11.8
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 console.log(cert.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Imprime: “true” o “false”
 ```
 
 ## Tipo: Cipher
