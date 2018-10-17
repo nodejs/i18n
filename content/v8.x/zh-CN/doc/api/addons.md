@@ -417,7 +417,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+测试：
 
 ```js
 // test.js
@@ -428,7 +428,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### 包装C++对象
 
 It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
