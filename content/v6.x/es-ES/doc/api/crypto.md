@@ -41,7 +41,7 @@ added: v0.11.8
 
 SPKAC es un mecanismo de Solicitud de Firma de Certificado implementado originalmente por Netscape y, en la actualidad, especificado formalmente como parte de [HTML5's `keygen` element][].
 
-El módulo `crypto` ofrece el tipo de `Certificate` para trabajar con datos SPKAC. El uso más común es la salida handling generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
+The `crypto` module provides the `Certificate` class for working with SPKAC data. El uso más común es la salida handling generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
 
 ### nuevo crypto.Certificate()
 
