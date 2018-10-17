@@ -457,15 +457,15 @@ Las instancias de la clase `DiffieHellman` pueden ser creadas usando la función
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera las llaves de Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// intercambian y generan el secreto...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -594,7 +594,7 @@ Las instancias de clase `ECDH` pueden ser creadas usando la función [`crypto.cr
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera las llaves de Alice...
 const alice = crypto.createECDH('secp521r1');
 const aliceKey = alice.generateKeys();
 
