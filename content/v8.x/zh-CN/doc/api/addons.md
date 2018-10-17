@@ -131,13 +131,13 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
 
-[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 关于使用说明，请参阅`nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
+[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 有关如何使用的说明，请参见 `nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
 > 稳定性: 1 - 实验性
 
-N-API是构建原生插件的API。 它独立于底层的JavaScript运行时 (例如 V8) 并作为Node.js的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
+N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
 
 为了在上述的"Hello world"示例中使用N-API，需要将`hello.cc`的内容替换如下。 其他所有说明保持不变。
 
