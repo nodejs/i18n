@@ -693,9 +693,9 @@ console.log(buf.length);
 // Prints: 2
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+如果 `arrayBuffer` 不是 [`ArrayBuffer`] 或 [`SharedArrayBuffer`]， 则抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(buffer)
+### Class 方法：Buffer.from(buffer)
 
 <!-- YAML
 added: v5.10.0
@@ -703,7 +703,7 @@ added: v5.10.0
 
 * `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -717,16 +717,16 @@ console.log(buf2.toString());
 // Prints: buffer
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+如果 `buffer` 不是一个 `Buffer`， 则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(string[, encoding])
+### Class 方法：Buffer.from(string[, encoding])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **默认值:**`‘utf8'`。
+* `string` {string} 要编码的字符串。
+* `encoding` {string} `string` 的字符串编码。 **默认值:**`‘utf8'`。
 
 创建一个包含 `string` 的 `Buffer`。 `encoding` 参数指定 `string` 的字符串编码方式。
 
@@ -742,15 +742,15 @@ console.log(buf1.toString('ascii'));
 // Prints: this is a tC)st
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+如果 `string` 不是一个字符串，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
+### Class 方法：Buffer.from(object[, offsetOrEncoding[, length]])
 
 <!-- YAML
 added: v8.2.0
 -->
 
-* `object` {Object} An object supporting `Symbol.toPrimitive` or `valueOf()`
+* `object` {Object} 一个支持 `Symbol.toPrimitive` 或 `valueOf()` 的对象。
 * `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
 * `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
 
