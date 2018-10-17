@@ -2438,19 +2438,19 @@ https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 * [#1417](https://github.com/joyent/node/issues/1417) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces
 * [#1497](https://github.com/joyent/node/issues/1497) querystring: Remplazar prueba "in" con "hasOwnProperty" (isaacs)
 * [#1546](https://github.com/joyent/node/issues/1546) mejora de rendimiento de http
-* fix memleak in libeio (Tom Hughes)
-* cmake improvements (Tom Hughes)
-* node_net.cc: fix incorrect sizeof() (Tom Hughes)
-* Windows/cygwin: no more GetConsoleTitleW errors on XP (Bert Belder)
-* Doc improvements (koichik, Logan Smyth, Ben Noordhuis, Arnout Kazemier)
+* reparar memleak en libeio (Tom Hughes)
+* mejoras de cmake (Tom Hughes)
+* node_net.cc: corregir sizeof() incorrecta (Tom Hughes)
+* Windows/cygwin: no más errores de GetConsoleTitleW en XP (Bert Belder)
+* Mejoras de doc (koichik, Logan Smyth, Ben Noordhuis, Arnout Kazemier)
 
 <a id="0.4.10"></a>
 
-## 2011.07.19, Version 0.4.10 (stable)
+## 2011.07.19, Versión 0.4.10 (estable)
 
 https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 
-* [#394](https://github.com/joyent/node/issues/394) Fix Buffer drops last null character in UTF-8
+* [#394](https://github.com/joyent/node/issues/394) Corregir que Buffer suelta el último carácter nulo en UTF-8
 * [#829](https://github.com/joyent/node/issues/829) Backport r8577 from V8 (Ben Noordhuis)
 * [#877](https://github.com/joyent/node/issues/877) Don't wait for HTTP Agent socket pool to establish connections.
 * [#915](https://github.com/joyent/node/issues/915) Find kqueue on FreeBSD correctly (Brett Kiefer)
