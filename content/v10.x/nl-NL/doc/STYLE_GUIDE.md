@@ -25,8 +25,8 @@
 * Inbegrepen assets: 
   * Wanneer je een illustratie of een volledig programma wilt toevoegen, voeg dit dan toe aan de passende sub-map in de `assets/`dir.
   * Koppel het zo: `[Asset](/assets/{subdir}/{filename})` voor bestandsgebaseerde attributen, en `![Asset](/assets/{subdir}/{filename})` voor beeldgebaseerde attributen.
-  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
-* For code blocks: 
+  * Voor illustraties, geef de voorkeur aan SVG over andere attributen. Wanneer SVG niet haalbaar is, houd dan goed de bestandsgrootte van het attribuut dat je introduceert in de gaten.
+* Voor code blokken: 
   * Use language aware fences. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
