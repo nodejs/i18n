@@ -612,9 +612,9 @@ changes:
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以已知明确的长度会运行得更快。
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+如果提供了 `totalLength`，则会将其强制转换为无符号整数。 If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
 ```js
 // Create a single `Buffer` from a list of three `Buffer` instances.
