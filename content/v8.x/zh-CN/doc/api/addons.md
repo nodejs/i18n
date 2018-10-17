@@ -1023,7 +1023,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+通过运行如下语句在JavaScript中测试：
 
 ```js
 // test.js
