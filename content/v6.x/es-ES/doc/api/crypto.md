@@ -92,7 +92,7 @@ console.log(publicKey);
 added: v0.11.8
 -->
 
-Regresa `true` si la estructura de los datos `spkac` dados es válida o `false` en caso contrario. El argumento `spkac` debe ser un [`Buffer`][] del Node.js.
+Regresa `true` si la estructura de los datos `spkac` dados es válida o `false` en caso contrario. El argumento `spkac` debe ser un [`Buffer`][] de Node.js.
 
 ```js
 const cert = require('crypto').Certificate();
