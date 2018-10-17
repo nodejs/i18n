@@ -101,7 +101,7 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Imprime: “true” o “false”
 ```
 
-## Tipo: Cipher
+## Clase: Cipher
 
 <!-- YAML
 added: v0.1.94
