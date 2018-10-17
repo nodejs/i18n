@@ -373,7 +373,7 @@ added: v0.5.0
 
 Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave dada es interpretada usando el `inputEncoding` especificado, y el secreto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, `otra_llave_pública` es esperada para ser un [`Buffer`][].
 
-If `output_encoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Una string es devuelta si el `outputEncoding` es dado; de no ser así, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -381,7 +381,7 @@ If `output_encoding` is given a string is returned; otherwise, a [`Buffer`][] is
 added: v0.5.0
 -->
 
-Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Genera valores de claves Diffie-Hellman privadas y públicas, y devuelve la clave pública en el `encoding` especificado. Esta clave debe ser transferida a la otra parte. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getGenerator([encoding])
 
@@ -389,7 +389,7 @@ Generates private and public Diffie-Hellman key values, and returns the public k
 added: v0.5.0
 -->
 
-Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -397,7 +397,7 @@ Returns the Diffie-Hellman generator in the specified `encoding`, which can be `
 added: v0.5.0
 -->
 
-Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Regresa el Diffie-Hellman prime al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrivateKey([encoding])
 
@@ -405,7 +405,7 @@ Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'lat
 added: v0.5.0
 -->
 
-Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPublicKey([encoding])
 
@@ -413,7 +413,7 @@ Returns the Diffie-Hellman private key in the specified `encoding`, which can be
 added: v0.5.0
 -->
 
-Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Regresa la llave pública Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.setPrivateKey(private_key[, encoding])
 
@@ -421,7 +421,7 @@ Returns the Diffie-Hellman public key in the specified `encoding`, which can be 
 added: v0.5.0
 -->
 
-Sets the Diffie-Hellman private key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `private_key` is expected to be a string. If no `encoding` is provided, `private_key` is expected to be a [`Buffer`][].
+Establece la clave privada Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'`, o `'base64'`, `privateKey`, se espera que sea una string. Si el `input_encoding` no es proporcionado, `otra_llave_pública`, se espra que sea un [`Buffer`][].
 
 ### diffieHellman.setPublicKey(public_key[, encoding])
 
@@ -429,7 +429,7 @@ Sets the Diffie-Hellman private key. If the `encoding` argument is provided and 
 added: v0.5.0
 -->
 
-Sets the Diffie-Hellman public key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `public_key` is expected to be a string. If no `encoding` is provided, `public_key` is expected to be a [`Buffer`][].
+Establece la clave pública Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `public_key` is expected to be a string. If no `encoding` is provided, `public_key` is expected to be a [`Buffer`][].
 
 ### diffieHellman.verifyError
 
@@ -492,7 +492,7 @@ If `output_encoding` is given a string will be returned; otherwise a [`Buffer`][
 added: v0.11.14
 -->
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
+Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. Esta clave debe ser transferida a la otra parte.
 
 The `format` arguments specifies point encoding and can be `'compressed'`, `'uncompressed'`, or `'hybrid'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
 
