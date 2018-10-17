@@ -7,7 +7,7 @@ $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-si ya has clonado el npm, asegúrese de que el repositorio es actualizado
+o si ya ha clonado el npm, asegúrese de que el repositorio este actualizado
 
 ```console
 $ git remote update -p
