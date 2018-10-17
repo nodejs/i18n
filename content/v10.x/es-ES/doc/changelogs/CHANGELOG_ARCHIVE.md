@@ -2433,9 +2433,9 @@ https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 * [#738](https://github.com/joyent/node/issues/738) Reparar encriptación/descifrado con Base64. (SAWADA Tadashi)
 * [#1202](https://github.com/joyent/node/issues/1202) aplazo de eventos de error de búsqueda de DNS hasta el siguiente tick por net.createConnection (Ben Noordhuis)
 
-* [#1374](https://github.com/joyent/node/issues/1374) fix setting ServerResponse.statusCode in writeHead (Trent Mick)
+* [#1374](https://github.com/joyent/node/issues/1374) arreglar el establecimiento de ServerResponse.statusCode en writeHead (Trent Mick)
 
-* [#1417](https://github.com/joyent/node/issues/1417) Fix http.ClientRequest crashes if end() was called twice
+* [#1417](https://github.com/joyent/node/issues/1417) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces
 * [#1497](https://github.com/joyent/node/issues/1497) querystring: Replace 'in' test with 'hasOwnProperty' (isaacs)
 * [#1546](https://github.com/joyent/node/issues/1546) http perf improvement
 * fix memleak in libeio (Tom Hughes)
