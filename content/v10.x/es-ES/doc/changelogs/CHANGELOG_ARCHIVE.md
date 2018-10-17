@@ -2416,17 +2416,17 @@ https://github.com/nodejs/node/commit/771ba34ca7b839add2ef96879e1ffc684813cf7c
 * Mejorar docs
 * [#1563](https://github.com/joyent/node/issues/1563) desbordamiento en custom_fd de ChildProcess.
 * [#1569](https://github.com/joyent/node/issues/1569), analizar error en cabeceras multilínea de HTTP. (Ben Noordhuis)
-* [#1586](https://github.com/joyent/node/issues/1586) net: Socket write encoding case sensitivity (koichik)
-* [#1610](https://github.com/joyent/node/issues/1610) Remove DigiNotar CA from trusted list (isaacs)
-* [#1624](https://github.com/joyent/node/issues/1624) buffer: Avoid overrun with 'binary' encoding. (koichik)
-* [#1633](https://github.com/joyent/node/issues/1633) buffer: write() should always set _charsWritten. (koichik)
-* [#1707](https://github.com/joyent/node/issues/1707) hasOwnProperty usage security hole in querystring (isaacs)
-* [#1719](https://github.com/joyent/node/issues/1719) Drain OpenSSL error queue
-* Fix error reporting in net.Server.listen
+* [#1586](https://github.com/joyent/node/issues/1586) net: sensibilidad a mayúsculas y minúsculas en codificación de escritura de Socket (koichik)
+* [#1610](https://github.com/joyent/node/issues/1610) Remover autoridad de certificación DigiNotar de la lista de confiables (isaacs)
+* [#1624](https://github.com/joyent/node/issues/1624) buffer: Evitar el solapamiento con codificación "binary". (koichik)
+* [#1633](https://github.com/joyent/node/issues/1633) buffer: write() siempre debe set _charsWritten. (koichik)
+* [#1707](https://github.com/joyent/node/issues/1707) vacío de seguridad del uso de hasOwnProperty en querystring (isaacs)
+* [#1719](https://github.com/joyent/node/issues/1719) Drenar cola de error de OpenSSL
+* Arreglar reporte de errores en net.Server.listen
 
 <a id="0.4.11"></a>
 
-## 2011.08.17, Version 0.4.11 (stable)
+## 2011.08.17, Versión 0.4.11 (estable)
 
 https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 
