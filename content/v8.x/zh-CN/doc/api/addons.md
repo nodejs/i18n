@@ -791,7 +791,7 @@ console.log(obj2.plusOne());
 
 ### 传递包装的对象
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+除了包装和返回C++对象外，还可以通过使用Node.js的帮助函数`node::ObjectWrap::Unwrap`来解包对象的方式来传递包装的对象。 下面的示例展示了`add()`函数，它可以获取两个`MyObject`对象来作为输入参数：
 
 ```cpp
 // addon.cc
