@@ -243,7 +243,7 @@ decipher.on('readable', () => {
 });
 decipher.on('end', () => {
   console.log(decrypted);
-  // Prints: some clear text data
+  // Imprime: algunos datos de texto limpios
 });
 
 const encrypted =
@@ -276,7 +276,7 @@ const encrypted =
 let decrypted = decipher.update(encrypted, 'hex', 'utf8');
 decrypted += decipher.final('utf8');
 console.log(decrypted);
-// Prints: some clear text data
+  // Imprime: algunos datos de texto limpios
 ```
 
 ### decipher.final([output_encoding])
