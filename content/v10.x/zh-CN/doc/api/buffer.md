@@ -610,9 +610,9 @@ changes:
 
 返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer` 。
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
 
 If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
