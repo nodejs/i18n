@@ -2431,7 +2431,7 @@ https://github.com/nodejs/node/commit/771ba34ca7b839add2ef96879e1ffc684813cf7c
 https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 
 * [#738](https://github.com/joyent/node/issues/738) Reparar encriptación/descifrado con Base64. (SAWADA Tadashi)
-* [#1202](https://github.com/joyent/node/issues/1202) net.createConnection defer DNS lookup error events to next tick (Ben Noordhuis)
+* [#1202](https://github.com/joyent/node/issues/1202) aplazo de eventos de error de búsqueda de DNS hasta el siguiente tick por net.createConnection (Ben Noordhuis)
 
 * [#1374](https://github.com/joyent/node/issues/1374) fix setting ServerResponse.statusCode in writeHead (Trent Mick)
 
