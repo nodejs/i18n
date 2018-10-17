@@ -79,7 +79,7 @@ break in myscript.js:5
 debug> .exit
 ```
 
-El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adiconales disponibles.
+El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adicionales disponibles.
 
 Presionando `enter` sin escribir un comando repetirá el comando del depurador previo.
 
@@ -134,9 +134,9 @@ debug>
 
 * `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
 * `list(5)` - Enumera el código fuente de los scripts con 5 líneas de contexto (5 líneas anteriores y posteriores)
-* `watch(expr)` - Agregar la expresión a la lista de control
-* `unwatch(expr)` - Elimina la expresión de la lista de control
-* `watchers` - Enumera los monitores y sus calores (enumerados automáticamente en cada punto de interrupción)
+* `watch(expr)` - Agregar la expresión a la lista de monitoreo
+* `unwatch(expr)` - Elimina la expresión de la lista de monitoreo
+* `watchers` - Enumera los monitores y sus valores (enumerados automáticamente en cada punto de interrupción)
 * `repl` - Abrir el repl del depurador para la evaluación en el contexto del script de depuración
 * `exec expr` - Ejecuta una expresión en el contexto del script de depuración
 
@@ -149,17 +149,17 @@ debug>
 ### Varios
 
 * `scripts` - Enumera todos los scripts cargados
-* `>version` - Muestra las versiones de V8
+* `>version` - Muestra la versión de V8
 
 ## Uso avanzado
 
 ### Integración del Inspector V8 para Node.js
 
-La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector V8 permite adjuntar Chrome DevTools a instancias de Node.js para depurar y generar perfiles. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-El Inspector V8 puede ser habilitado al pasar la marca `--inspect` al iniciar una apicación Node.js. Asimismo, es posible suplir un puerto personalizado con ese marcador, por ejemplo el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
+El Inspector V8 puede ser habilitado al pasar la bandera `--inspect` al iniciar una aplicación Node.js. Asimismo, es posible suplir un puerto personalizado con esa bandera. Por ejemplo, el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
 
-Pase el marcador `--inspect-brk` en vez del `--inspect` para interrumpir la primera línea de la aplicación del código.
+Pase la bandera `--inspect-brk`, en vez de `--inspect`, para interrumpir la primera línea del código de aplicación.
 
 ```txt
 $ node --inspect index.js

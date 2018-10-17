@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `crypto` ofrece funcionalidad cripográfica que incluye un set de covertores para OpenSSL's hash, HMAC, cipher, decipher, registro y funciones de verificación.
+El módulo `crypto` ofrece funcionalidad criptográfica que incluye un set de empaquetadores para OpenSSL's hash, HMAC, cifrado, descifrado, firma y funciones de verificación.
 
 Use `require('crypto')` para acceder a este módulo.
 
@@ -16,13 +16,13 @@ const hash = crypto.createHmac('sha256', secret)
                    .update('I love cupcakes')
                    .digest('hex');
 console.log(hash);
-// Prints:
+// Imprime:
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 ```
 
 ## Determinar si el soporte de crypto está desactivado
 
-Para Node.js es posible crear sin la ayuda del módulo `crypto`. En estos casos, llamar al comando `require('crypto')` arrojará como resultado un error.
+Es posible que Node.js sea compilado sin incluir soporte para el módulo `crypto`. En estos casos, llamar al comando `require('crypto')` arrojará como resultado un error.
 
 ```js
 let crypto;
@@ -33,7 +33,7 @@ try {
 }
 ```
 
-## Tipo: Certificado
+## Clase: Certificado
 
 <!-- YAML
 added: v0.11.8
@@ -41,7 +41,7 @@ added: v0.11.8
 
 SPKAC es un mecanismo de Solicitud de Firma de Certificado implementado originalmente por Netscape y, en la actualidad, especificado formalmente como parte de [HTML5's `keygen` element][].
 
-El módulo `crypto` ofrece el tipo de `Certificate` para trabajar con datos SPKAC. El uso más común es la salida handling generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
+The `crypto` module provides the `Certificate` class for working with SPKAC data. El uso más común es la salida handling generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
 
 ### nuevo crypto.Certificate()
 
@@ -60,14 +60,14 @@ const cert2 = crypto.Certificate();
 added: v0.11.8
 -->
 
-La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportChallenge()` regresa al desafío del componente en la forma de un [`uffer`][] del Node.js. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
+La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportChallenge()` regresa al desafío del componente en la forma de un [`Buffer`][] del Node.js. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
 
 ```js
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 const challenge = cert.exportChallenge(spkac);
 console.log(challenge.toString('utf8'));
-// Prints: the challenge as a UTF8 string
+// Imprime: el desafío como una string en UTF8
 ```
 
 ### certificate.exportPublicKey(spkac)
@@ -76,14 +76,14 @@ console.log(challenge.toString('utf8'));
 added: v0.11.8
 -->
 
-La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportPublicKey()` regresa al componente clave público en la forma de un [`Buffer`][]. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
+La estructura de los datos `spkac` incluye una llave pública y un desafío. El `certificate.exportPublicKey()` regresa al componente de clave pública en la forma de un [`Buffer`][]. El argumento `spkac` puede ser tanto un string como un [`Buffer`][].
 
 ```js
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 const publicKey = cert.exportPublicKey(spkac);
 console.log(publicKey);
-// Prints: the public key as <Buffer ...>
+// Imprime: la clave pública como <Buffer ...>
 ```
 
 ### certificate.verifySpkac(spkac)
@@ -92,27 +92,27 @@ console.log(publicKey);
 added: v0.11.8
 -->
 
-Regresa `true` si la estructura de los datos `spkac` dados es válida o `false` en caso contrario. El argumento `spkac` debe ser un [`Buffer`][] del Node.js.
+Regresa `true` si la estructura de los datos `spkac` dados es válida o `false` en caso contrario. El argumento `spkac` debe ser un [`Buffer`][] de Node.js.
 
 ```js
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 console.log(cert.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Imprime: “true” o “false”
 ```
 
-## Tipo: Cipher
+## Clase: Cipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Las instancias del tipo de `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
+Las instancias de la clase `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
 
 * Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
 * Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
 
-Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la consigna `new`.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la palabra clave `new`.
 
 Ejemplo: Usar los objetos `Cipher` como streams:
 
@@ -128,7 +128,7 @@ cipher.on('readable', () => {
 });
 cipher.on('end', () => {
   console.log(encrypted);
-  // Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+  // Imprime: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 });
 
 cipher.write('some clear text data');
@@ -157,7 +157,7 @@ const cipher = crypto.createCipher('aes192', 'a password');
 let encrypted = cipher.update('some clear text data', 'utf8', 'hex');
 encrypted += cipher.final('hex');
 console.log(encrypted);
-// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+// Imprime: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 ```
 
 ### cipher.final([output_encoding])

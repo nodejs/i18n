@@ -8,7 +8,7 @@ Ponieważ większość nowoczesnych jąder jest wielowątkowych, mogą obsługiw
 
 ## Objaśnienie Pętli Zdarzeń
 
-Po uruchomieniu Node.js inicjuje pętlę zdarzeń, przetwarza dostarczony skrypt wejściowy (lub wpada w [REPL](https://nodejs.org/api/repl.html#repl_repl), który nie jest uwzględniony w ten dokument), który może wykonywać asynchroniczne wywołania API, planować zegary lub wywoływać `process.nextTick()`, a następnie rozpoczyna przetwarzanie pętli zdarzeń.
+Po uruchomieniu, Node.js inicjuje pętlę zdarzeń, przetwarza dostarczony skrypt wejściowy (lub wpada w [REPL](https://nodejs.org/api/repl.html#repl_repl), który nie jest uwzględniony w ten dokument), który może wykonywać asynchroniczne wywołania API, planować zegary lub wywoływać `process.nextTick()`, a następnie rozpoczyna przetwarzanie pętli zdarzeń.
 
 Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli zdarzeń.
 
@@ -37,7 +37,7 @@ Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli 
 
 Każda faza ma kolejkę wywołania zwrotnego FIFO do wykonania. Podczas gdy każda faza jest wyjątkowa na swój sposób, ogólnie, gdy pętla zdarzeń wchodzi w daną fazę W takim wypadku wykona ona wszystkie operacje właściwe dla tej fazy, następnie wykona wywołania zwrotne w kolejce tej fazy, aż do momentu gdy kolejka wyczerpie się lub zostanie wykonana maksymalna liczba wywołań zwrotnych. Kiedy kolejka została wyczerpana lub osiągnięto limit wywołań zwrotnych, pętla zdarzeń przejdzie do następnej fazy i tak dalej.
 
-Ponieważ każda z tych operacji może zaplanować *więcej* operacji i nowych zdarzeń przetwarzanych w **ankieta** są ustawiane w kolejce przez jądro, ankieta zdarzeń może stać w kolejce, podczas gdy zdarzenia ankietowania są przetwarzane. Jak W rezultacie długotrwałe wywoływania zwrotne mogą znacznie przyspieszyć fazę odpytywania dłużej niż próg timera. Zobacz [**timery**](#timers) i **odpytywanie</​​1>, aby uzyskać więcej informacji.</p> 
+Since any of these operations may schedule *more* operations and new events processed in the **poll** phase are queued by the kernel, poll events can be queued while polling events are being processed. Jak W rezultacie długotrwałe wywoływania zwrotne mogą znacznie przyspieszyć fazę odpytywania dłużej niż próg timera. Zobacz [**timery**](#timers) i **odpytywanie</​​1>, aby uzyskać więcej informacji.</p> 
 
 ***UWAGA:** Występuje niewielka rozbieżność między Windowsem i Implementacją systemu Unix/Linux, ale to nie ma znaczenia dla tej demonstracji. Najważniejsze części są tutaj. Istnieje faktycznie siedem albo osiem kroków, ale te którymi się przejmujemy - te które obecnie wykorzystuje - są powyżej.*
 
@@ -58,7 +58,7 @@ Między każdym uruchomieniem pętli zdarzeń Node.js sprawdza, czy oczekuje dow
 
 Timer określa **próg***, po którym * jest zapewnione wywołanie zwrotne *może być wykonywane*zamiast **dokładnego**czasu, gdy osoba* chce, aby było to wykonane*. Połączenia zwrotne timerów działają tak wcześnie, jak tylko mogą zaplanowane po upływie określonego czasu; jednak, planowanie Systemu Operacyjnego lub uruchamianie innych wywołań zwrotnych może się opóźnić im.
 
-***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll)kontroluje timery, które są wykonywane.*
+***Uwaga**: Z technicznego punktu widzenia [**odpytywanie**faza](#poll) kontroluje timery, które są wykonywane.*
 
 Na przykład powiedzmy, że planujesz czas oczekiwania na wykonanie po próg 100 ms, wtedy twój skrypt zaczyna asynchronicznie odczytywać plik, który trwa 95 ms:
 
@@ -95,7 +95,7 @@ someAsyncOperation(function() {
 
 Kiedy pętla zdarzeń wchodzi w fazę **odpytywania**, ma pustą kolejkę (`fs.readFile()` nie zostało zakończone), więc będzie czekać na liczbę ms pozostałych do ​​osiągnięcia progu jak najszybszego timera. Podczas gdy jest oczekiwanie 95 ms przejścia, `fs.readFile()` kończy czytanie pliku i jego wywołanie zwrotne, które trwa 10 ms, jest dodawane do kolejki **odpytywania** i wykonany. Po zakończeniu wywołania zwrotnego nie ma więcej wywołań zwrotnych w kolejce, więc pętla zdarzeń zobaczy, że próg najwcześniejszego timera został osiągnięty, a następnie zawinięty do fazy ** timerów** w celu wykonania wywołania zwrotnego timera. W tym przykładzie zobaczysz całkowite opóźnienie pomiędzy zaplanowanym timerem a jego wywoływaniem zwrotnym wykonywanym przez 105ms.
 
-Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli zdarzeń, \[libuv\] (http://libuv.org/) (biblioteka C, która implementuje Node.js pętlę zdarzeń i wszystkie asynchroniczne zachowania platformy) ma również twarde maksimum (zależne od systemu), zanim przestanie odpytywać dla większej ilości wydarzeń.
+Uwaga: Aby nie dopuścić do fazy **odpytywania** z powodu zagłodzenia pętli zdarzeń, \[libuv\] (http://libuv.org/) (biblioteka C, która implementuje pętlę zdarzeń Node.js i wszystkie asynchroniczne zachowania platformy) ma również twarde maksimum (zależne od systemu), zanim przestanie odpytywać dla większej ilości wydarzeń.
 
 ### Wej/Wyj wywołania zwrotne
 
@@ -106,7 +106,7 @@ Ta faza wykonuje wywołania zwrotne dla niektórych operacji systemowych, takich
 Faza **odpytywania** ma dwie główne funkcje:
 
 1. Wykonywanie skryptów dla timerów, których próg upłynął, a następnie
-2. Przetwarzanie zdarzeń w kolejce **odpytywania **.
+2. Przetwarzanie zdarzeń w kolejce **odpytywania**.
 
 Kiedy pętla zdarzeń wchodzi w fazę* **odpytywania** i nie ma zaplanowanych timerów *, nastąpi jedna z dwóch rzeczy:
 

@@ -221,7 +221,7 @@ Asigna un nuevo `Buffer` usando un `array` de octetos.
 Ejemplo:
 
 ```js
-// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene los bytes UTF-8 de la string 'buffer'
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
@@ -231,11 +231,11 @@ const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(buffer)`] en su lugar.
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} Un `Buffer` existente del cual copiar datos.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 Ejemplo:
 
@@ -245,10 +245,10 @@ const buf2 = new Buffer(buf1);
 
 buf1[0] = 0x61;
 
-// Prints: auffer
+// Imprime: auffer
 console.log(buf1.toString());
 
-// Prints: buffer
+// Imprime: buffer
 console.log(buf2.toString());
 ```
 
@@ -258,34 +258,34 @@ console.log(buf2.toString());
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] en su lugar.
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`] o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado** `0`
+* `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] o [`SharedArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad `.buffer` de una instancia [`TypedArray`], el `Buffer` nuevo creado compartirá la misma memoria asignada que el [`TypedArray`].
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
 ```js
-const arr = new Uint16Array(2);
+onst arr = new Uint16Array(2);
 
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = new Buffer(arr.buffer);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf);
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf);
 ```
 
@@ -295,25 +295,25 @@ console.log(buf);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.alloc()`] en su lugar (también vea [`Buffer.allocUnsafe()`]).
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Asigna el nuevo `Buffer` de bytes de `size`. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-Unlike [`ArrayBuffers`][`ArrayBuffer`], the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *could contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+A diferencia de [`ArrayBuffers`][`ArrayBuffer`], la memoria subyacente para instancias de `Buffer` creadas de esta forma *no es inicializada*. Los contenidos de un `Buffer` recién creado son desconocidos y *podrían contener datos sensibles*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] en su lugar para inicializar un `Buffer` a ceros.
 
 Ejemplo:
 
 ```js
 const buf = new Buffer(10);
 
-// Prints: (contents may vary): <Buffer 48 21 4b 00 00 00 00 00 30 dd>
+// Imprime: (contents may vary): <Buffer 48 21 4b 00 00 00 00 00 30 dd>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 console.log(buf);
 ```
 
@@ -323,141 +323,141 @@ console.log(buf);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(string[, encoding])`] [`Buffer.from(string)`] en su lugar.
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `string` {string} String a codificar.
+* `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
 
 Ejemplos:
 
 ```js
 const buf1 = new Buffer('this is a tést');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf1.toString());
 
-// Prints: this is a tC)st
+// Imprime: this is a tC)st
 console.log(buf1.toString('ascii'));
 
 
 const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf2.toString());
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Método de Clase: Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `fill` {string|Buffer|integer} Un valor con el cual llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`
+* `encoding` {string} Si `fill` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna el nuevo `Buffer` de bytes de `size`. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5);
 
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 console.log(buf);
 ```
 
-The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+El `size` debe ser menos o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+Si `fill` es especificado, el `Buffer` asignado será inicializado llamando [`buf.fill(fill)`][`buf.fill()`].
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
-// Prints: <Buffer 61 61 61 61 61>
+// Imprime: <Buffer 61 61 61 61 61>
 console.log(buf);
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+Si ambos `fill` y `encoding` son especificados, el `Buffer` asignado será inicializado llamando [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 Ejemplo:
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
-// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Imprime: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 console.log(buf);
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+Llamar a [`Buffer.alloc()`] puede ser significativamente más lento que el [`Buffer.allocUnsafe()`] alternativo pero asegura que el contenido de la instancia de `Buffer` recién creada *nunca contendrá datos sensibles*.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
-### Class Method: Buffer.allocUnsafe(size)
+### Método de Clase: Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Asigna un nuevo *non-zero-filled* `Buffer` de bytes `size`. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
+La memoria subyacente para las instancias `Buffer` creada de esta forma *no es inicializada*. Los contenidos del `Buffer` recién creado son desconocidos y *pueden contener datos sensibles*. Use [`Buffer.alloc()`] en su lugar para inicializar instancias de `Buffer` a ceros.
 
 Ejemplo:
 
 ```js
 const buf = Buffer.allocUnsafe(10);
 
-// Prints: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
+// Imprime: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 console.log(buf);
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
-Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
+Note que el módulo `Buffer` asigna previamente una instancia de `Buffer` interna de tamaño [`Buffer.poolSize`] que es usada como un pool para la asignación rápida de nuevas instancias de `Buffer` creadas usando [`Buffer.allocUnsafe()`] y el constructor desaprobado `new Buffer(size)` solo cuando `size` es menor o igual a `Buffer.poolSize >> 1` (piso de [`Buffer.poolSize`] dividido entre dos).
 
-Use of this pre-allocated internal memory pool is a key difference between calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`] provides.
+El uso de este pool de memoria interna asignada previamente es una diferencia clave entre `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Específicamente, `Buffer.alloc(size, fill)` *nunca* usará el pool de `Buffer` interno, mientras que `Buffer.allocUnsafe(size).fill(fill)` *usará* el pool de `Buffer` interno si `size` es menor o igual a la mitad de [`Buffer.poolSize`]. La diferencia es sutil pero puede ser importante cuando una aplicación requiere el rendimiento adicional que proporciona [`Buffer.allocUnsafe()`].
 
-### Class Method: Buffer.allocUnsafeSlow(size)
+### Método de Clase: Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new *non-zero-filled* and non-pooled `Buffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Asigna un nuevo `Buffer` *no lleno de ceros* y no agrupado de bytes `size`. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, se produce un [`RangeError`]. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
+La memoria subyacente para las instancias `Buffer` creada de esta forma *no es inicializada*. Los contenidos del `Buffer` recién creado son desconocidos y *pueden contener datos sensibles*. Use [`buf.fill(0)`][`buf.fill()`] para inicializar tal instancia de `Buffer` a ceros.
 
-When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are, by default, sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and cleanup as many `Persistent` objects.
+Al usar [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, asignaciones bajo 4KB son, por defecto, segmentadas desde un solo `Buffer` asignado previamente. Esto permite que las aplicaciones eviten la sobrecarga de la colección de basura que implica crear muchas instancias de `Buffer` asignadas individualmente. Este enfoque mejora el rendimiento y uso de la memoria al eliminar la necesidad de rastrear y limpiar tantos objetos `Persistent`.
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
+Sin embargo, en el caso donde un desarrollador pueda necesitar retener un pedazo pequeño de la memoria de un pool por un período de tiempo predeterminado, puede ser apropiado crear una instancia de `Buffer` un-pooled usando `Buffer.allocUnsafeSlow()` y luego copiar los bits relevantes.
 
 Ejemplo:
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita conservar unos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asignar para datos retenidos
   const sb = Buffer.allocUnsafeSlow(10);
 
-  // Copy the data into the new allocation
+  // Copiar los datos a la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
@@ -466,7 +466,7 @@ socket.on('readable', () => {
 
 Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es número.
 
 ### Class Method: Buffer.byteLength(string[, encoding])
 
@@ -475,7 +475,7 @@ added: v0.1.90
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The number of bytes contained within `string`.
 
 Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
@@ -584,8 +584,8 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
+* `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
@@ -610,7 +610,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 Ejemplo:
 
@@ -630,9 +630,9 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} Un `Buffer` existente del cual copiar datos.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 Ejemplo:
 
@@ -658,9 +658,9 @@ added: v5.10.0
 -->
 
 * `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
 
 Ejemplos:
 
@@ -913,7 +913,7 @@ added: v0.5.0
 * `value` {string|Buffer|integer} The value to fill `buf` with.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
 
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
@@ -946,7 +946,7 @@ added: v5.3.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -987,7 +987,7 @@ added: v1.5.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 If `value` is:
@@ -1058,7 +1058,7 @@ added: v5.3.0
 
 * `value` {String|Buffer|Integer} What to search for.
 * `byteOffset` {Integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {String} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {String} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Boolean} `true` if `value` was found in `buf`, `false` otherwise
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -1126,7 +1126,7 @@ added: v6.0.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 Identical to [`buf.indexOf()`], except `buf` is searched from back to front instead of front to back.
@@ -1714,7 +1714,7 @@ Note that JavaScript cannot encode 64-bit integers. This method is intended for 
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to decode to. **Default:** `'utf8'`
+* `encoding` {string} The character encoding to decode to. **Predeterminado:** `'utf8'`
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
 * Returns: {string}
@@ -1826,7 +1826,7 @@ added: v0.1.90
 * `string` {string} String to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`
-* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`
+* `encoding` {string} The character encoding of `string`. **Predeterminado:** `'utf8'`
 * Returns: {integer} Number of bytes written.
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
@@ -2231,7 +2231,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. A zero-length `Buffer` will be created if `size <= 0`.
+Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and could contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 

@@ -227,13 +227,13 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// To jest implementacja metody dodatków
+// Argumenty wejściowe są przekazywane za pomocą
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+//Sprawdź liczbę przekazanych argumentów.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
@@ -594,7 +594,7 @@ console.log(obj.plusOne());
 
 ### Factory of wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Alternatywnie można użyć wzoru fabrycznego, aby uniknąć wyraźnego tworzenia instancji obiektów za pomocą operatora JavaScript `new`:
 
 ```js
 const obj = addon.createObject();
@@ -602,7 +602,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Najpierw zaimplementowana jest metoda `twórzObiekt()` w `dodatku.cc`:
 
 ```cpp
 // addon.cc
@@ -633,10 +633,10 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+W `mójobiekt.h` dodawana jest statyczna metoda `NowaInstancja()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
-// myobject.h
+// mójobiekt.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -665,10 +665,10 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+Implementacja w `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// myobject.cc
+// mójobiekt.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -695,12 +695,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Przygotuj szablon konstruktora
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototyp
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -710,7 +710,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Wywołaj jako konstruktora: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Jeszcze raz, aby zbudować ten przykład, plik `mójobiekt.cc` musi zostać dodany do pliku `wiążący.gyp`:
 
 ```json
 {
@@ -776,24 +776,24 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Druki: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Druki: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Druki: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Druki: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Druki: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Druki: 23
 ```
 
-### Passing wrapped objects around
+### Przekazywanie zapakowanych obiektów
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `dodaj()`, która może przyjąć dwa obiekty `MójObiekt` jako argumenty wejściowe:
 
 ```cpp
 // addon.cc
@@ -839,10 +839,10 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+W `mójobiekt.h` dodano nową publiczną metodę zezwalającą na dostęp do prywatnych wartości po rozpakowaniu obiektu.
 
 ```cpp
-// myobject.h
+// mójobiekt.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -871,10 +871,10 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+Implementacja `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// myobject.cc
+// mójobiekt.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -912,7 +912,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Wywołany konstruktor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());

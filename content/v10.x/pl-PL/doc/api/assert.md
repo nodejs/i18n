@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Alias [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 

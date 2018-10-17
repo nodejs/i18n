@@ -1931,7 +1931,7 @@ L'utilizzo di `crypto.timingSafeEqual` non garantisce che il codice *circostante
 
 ### Legacy Stream API (pre Node.js v0.10)
 
-Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di Stream API unificata e prima che esistessero i [`Buffer`][] object per la gestione dei dati binari. Pertanto, molte delle classi definite `crypto` hanno metodi che non si trovano in genere su altre classi Node.js che implementano gli [stream](stream.html) API (ad esempio `update()`, `final()`, or `digest()`). Inoltre, molti metodi hanno accettato e restituito stringhe con codifica `'latin1'` di default anziché dei `Buffer`. Questo valore di default è stato modificato dopo Node.js v0.8 per utilizzare i [`Buffer`][] object di default.
+Il modulo Crypto è stato aggiunto a Node.js prima che esistesse il concetto di Stream API unificata e prima che esistessero i [`Buffer`][] object per la gestione dei dati binari. Pertanto, molte delle classi definite `crypto` hanno metodi che non si trovano in genere su altre classi Node.js che implementano gli [stream](stream.html) API (ad esempio `update()`, `final()` o `digest()`). Inoltre, molti metodi hanno accettato e restituito stringhe con codifica `'latin1'` di default anziché dei `Buffer`. Questo valore di default è stato modificato dopo Node.js v0.8 per utilizzare i [`Buffer`][] object di default.
 
 ### Recenti Modifiche di ECDH
 
@@ -2013,152 +2013,336 @@ Le seguenti costanti esportate da `crypto.constants` si applicano a vari utilizz
 
 <table>
   <tr>
-    <th>Costante</th>
-    <th>Descrizione</th>
-  </tr>
-  <tr>
-    <td><code>SSL_OP_ALL</code></td>
-    <td>Applica molteplici soluzioni alternative ai bug all'interno di OpenSSL. Vedi
+    <th>
+      Costante
+    </th>
     
-https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html per
-    maggiori dettagli.</td>
+    <th>
+      Descrizione
+    </th>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</code></td>
-    <td>Permette una rinegoziazione legacy non sicura tra OpenSSL ed i client o i server senza patch. Vedi
+    <td>
+      <code>SSL_OP_ALL</code>
+    </td>
     
-https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
+    <td>
+      Applica molteplici soluzioni alternative ai bug all'interno di OpenSSL. Vedi https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html per maggiori dettagli.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_CIPHER_SERVER_PREFERENCE</code></td>
-    <td>Cerca di utilizzare le preferenze del server anziché quelle del client quando si seleziona un cipher. Il comportamento dipende dalla versione del protocollo. Vedi
-    https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.</td>
+    <td>
+      <code>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</code>
+    </td>
+    
+    <td>
+      Permette una rinegoziazione legacy non sicura tra OpenSSL e i client o i server senza patch. Vedi https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_CISCO_ANYCONNECT</code></td>
-    <td>Dà istruzioni a OpenSSL di utilizzare la versione "speshul" di Cisco di DTLS_BAD_VER.</td>
+    <td>
+      <code>SSL_OP_CIPHER_SERVER_PREFERENCE</code>
+    </td>
+    
+    <td>
+      Cerca di utilizzare le preferenze del server anziché quelle del client quando si seleziona un cipher. Il comportamento dipende dalla versione del protocollo. Vedi https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_COOKIE_EXCHANGE</code></td>
-    <td>Dà istruzioni a OpenSSL di attivare lo scambio di cookie.</td>
+    <td>
+      <code>SSL_OP_CISCO_ANYCONNECT</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di utilizzare la versione "speshul" di Cisco di DTLS_BAD_VER.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_CRYPTOPRO_TLSEXT_BUG</code></td>
-    <td>Dà istruzioni a OpenSSL di aggiungere un'estensione server-hello da una versione precedente della bozza cryptopro.</td>
+    <td>
+      <code>SSL_OP_COOKIE_EXCHANGE</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di attivare lo scambio di cookie.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS</code></td>
-    <td>Dà istruzioni a OpenSSL di disabilitare una soluzione alternativa di vulnerabilità SSL 3.0/TLS 1.0 aggiunta in OpenSSL 0.9.6d.</td>
+    <td>
+      <code>SSL_OP_CRYPTOPRO_TLSEXT_BUG</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di aggiungere un'estensione server-hello da una versione precedente della bozza cryptopro.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_EPHEMERAL_RSA</code></td>
-    <td>Dà istruzioni a OpenSSL di utilizzare sempre la chiave tmp_rsa durante l'esecuzione delle operazioni 
-    RSA.</td>
+    <td>
+      <code>SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disabilitare una soluzione alternativa di vulnerabilità SSL 3.0/TLS 1.0 aggiunta in OpenSSL 0.9.6d.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_LEGACY_SERVER_CONNECT</code></td>
-    <td>Consente la connessione iniziale ai server che non supportano RI.</td>
+    <td>
+      <code>SSL_OP_EPHEMERAL_RSA</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di utilizzare sempre la chiave tmp_rsa durante l'esecuzione delle operazioni RSA.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_LEGACY_SERVER_CONNECT</code>
+    </td>
+    
+    <td>
+      Consente la connessione iniziale ai server che non supportano RI.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_MICROSOFT_SESS_ID_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_MSIE_SSLV2_RSA_PADDING</code></td>
-    <td>Dà istruzioni a OpenSSL di disabilitare la soluzione alternativa per una vulnerabilità della versione di protocollo man-in-the-middle nell'implementazione del server SSL 2.0.</td>
+    <td>
+      <code>SSL_OP_MICROSOFT_SESS_ID_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NETSCAPE_CA_DN_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_MSIE_SSLV2_RSA_PADDING</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disabilitare la soluzione alternativa per una vulnerabilità della versione di protocollo man-in-the-middle nell'implementazione del server SSL 2.0.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NETSCAPE_CHALLENGE_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_NETSCAPE_CA_DN_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_NETSCAPE_CHALLENGE_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_COMPRESSION</code></td>
-    <td>Dà istruzioni a OpenSSL di disabilitare il supporto per la compressione SSL/TLS.</td>
+    <td>
+      <code>SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_QUERY_MTU</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_NO_COMPRESSION</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disabilitare il supporto per la compressione SSL/TLS.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</code></td>
-    <td>Dà istruzioni a OpenSSL di avviare sempre una nuova sessione quando si esegue la 
-    rinegoziazione.</td>
+    <td>
+      <code>SSL_OP_NO_QUERY_MTU</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_SSLv2</code></td>
-    <td>Dà istruzioni a OpenSSL di disattivare SSL v2</td>
+    <td>
+      <code>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di avviare sempre una nuova sessione quando si esegue la rinegoziazione.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_SSLv3</code></td>
-    <td>Dà istruzioni a OpenSSL di disattivare SSL v3</td>
+    <td>
+      <code>SSL_OP_NO_SSLv2</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disattivare SSL v2
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_TICKET</code></td>
-    <td>Dà istruzioni a OpenSSL di disabilitare l'uso dei ticket RFC4507bis.</td>
+    <td>
+      <code>SSL_OP_NO_SSLv3</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disattivare SSL v3
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_TLSv1</code></td>
-    <td>Dà istruzioni a OpenSSL di disattivare TLS v1</td>
+    <td>
+      <code>SSL_OP_NO_TICKET</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disabilitare l'uso dei ticket RFC4507bis.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_TLSv1_1</code></td>
-    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.1</td>
+    <td>
+      <code>SSL_OP_NO_TLSv1</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disattivare TLS v1
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_NO_TLSv1_2</code></td>
-    <td>Dà istruzioni a OpenSSL di disattivare TLS v1.2</td>
+    <td>
+      <code>SSL_OP_NO_TLSv1_1</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disattivare TLS v1.1
+    </td>
   </tr>
-    <td><code>SSL_OP_PKCS1_CHECK_1</code></td>
-    <td></td>
-  </tr>
+  
   <tr>
-    <td><code>SSL_OP_PKCS1_CHECK_2</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_NO_TLSv1_2</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disattivare TLS v1.2
+    </td>
   </tr>
+  
+  <td>
+    <code>SSL_OP_PKCS1_CHECK_1</code>
+  </td>
+  
+  <td>
+  </td></tr> 
+  
   <tr>
-    <td><code>SSL_OP_SINGLE_DH_USE</code></td>
-    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
-    i parametri DH temporanei/effimeri.</td>
+    <td>
+      <code>SSL_OP_PKCS1_CHECK_2</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_SINGLE_ECDH_USE</code></td>
-    <td>Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano 
-    i parametri ECDH temporanei/effimeri.</td>
+    <td>
+      <code>SSL_OP_SINGLE_DH_USE</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano i parametri DH temporanei/effimeri.
+    </td>
   </tr>
-    <td><code>SSL_OP_SSLEAY_080_CLIENT_DH_BUG</code></td>
-    <td></td>
-  </tr>
+  
   <tr>
-    <td><code>SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_SINGLE_ECDH_USE</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di creare sempre una nuova chiave quando si utilizzano i parametri ECDH temporanei/effimeri.
+    </td>
   </tr>
+  
+  <td>
+    <code>SSL_OP_SSLEAY_080_CLIENT_DH_BUG</code>
+  </td>
+  
+  <td>
+  </td></tr> 
+  
   <tr>
-    <td><code>SSL_OP_TLS_BLOCK_PADDING_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_TLS_D5_BUG</code></td>
-    <td></td>
+    <td>
+      <code>SSL_OP_TLS_BLOCK_PADDING_BUG</code>
+    </td>
+    
+    <td>
+    </td>
   </tr>
+  
   <tr>
-    <td><code>SSL_OP_TLS_ROLLBACK_BUG</code></td>
-    <td>Dà istruzioni a OpenSSL di disabilitare il rilevamento degli attacchi di rollback della versione.</td>
+    <td>
+      <code>SSL_OP_TLS_D5_BUG</code>
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>SSL_OP_TLS_ROLLBACK_BUG</code>
+    </td>
+    
+    <td>
+      Dà istruzioni a OpenSSL di disabilitare il rilevamento degli attacchi di rollback della versione.
+    </td>
   </tr>
 </table>
 

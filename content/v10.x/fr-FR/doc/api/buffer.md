@@ -4,9 +4,9 @@
 
 > Stabilité: 2 - Stable
 
-Avant l'apparition de [`TypedArray`], Le langage JavaScript n'avait aucun moyen pour lire et manipuler des flux de données binaires. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Avant l'apparition de [`TypedArray`], Le langage JavaScript n'avait aucun moyen pour lire et manipuler des flux de données binaires. La classe de `mémoire tampon` a été introduite dans le cadre de l’API de Node.js pour permettre une interaction avec flux octet dans le flux TCP, les opérations de système de fichiers et d’autres contextes.
 
-With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
+Avec [`TypedArray`] maintenant disponible, la classe `Buffer` implémente le [`Uint8Array`] API d’une manière qui est plus Node.js optimisée et adaptée aux.
 
 Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be changed.
 

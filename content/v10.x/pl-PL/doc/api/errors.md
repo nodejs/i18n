@@ -1141,7 +1141,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_MODULE
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 An [ES6 module](esm.html) could not be resolved.
 
@@ -1149,7 +1149,7 @@ An [ES6 module](esm.html) could not be resolved.
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 A failure occurred resolving imports in an [ES6 module](esm.html).
 
@@ -1214,7 +1214,7 @@ A given value is out of the accepted range.
 
 ### ERR_REQUIRE_ESM
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 An attempt was made to `require()` an [ES6 module](esm.html).
 
@@ -1473,7 +1473,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### ERR_UNKNOWN_FILE_EXTENSION
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1481,7 +1481,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### ERR_UNKNOWN_MODULE_FORMAT
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 An attempt was made to load a module with an unknown or unsupported format.
 

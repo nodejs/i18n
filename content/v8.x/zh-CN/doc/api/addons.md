@@ -2,29 +2,29 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++之间的接口。
+Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
 
 目前，实现插件的方法相当复杂，涉及到多个组件和API的知识：
 
 * V8: 为了提供JavaScript的实现，目前Node.js使用的C++库。 V8提供了创建对象、调用函数等机制。 V8 API的说明主要在`v8.h`头文件(在Node.js源代码中的`deps/v8/include/v8.h`)中，该文件也可[在线访问](https://v8docs.nodesource.com/)。
 
-* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些超出标准事件循环的更复杂异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
+* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些在标准事件循环之上的更复杂的异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
 
-* Node.js的内置库。 Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Node.js的内置库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有V8和OpenSSL的符号是由Node.js特意重新导出的，并可以被插件用于不同场景。 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+下面的所有示例都可[下载](https://github.com/nodejs/node-addon-examples)，且可被用于插件开发的起点。
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+这个"Hello world"示例是一个用C++编写的简单插件，其功能等同于如下的JavaScript代码：
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+首先，创建文件`hello.cc`:
 
 ```cpp
 // hello.cc
@@ -53,22 +53,22 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+注意，所有的Node.js插件都必须导出一个如下模式的初始化函数：
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+由于`NODE_MODULE`不是一个函数（请参阅`node.h`），因此在其后面没有分号。
 
-The `module_name` must match the filename of the final binary (excluding the .node suffix).
+`module_name`必须和最终的二进制文件名 (不包含.node后缀) 相匹配。
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+在`hello.cc`示例中，初始化函数为`init`，而插件模块名为`addon`。
 
-### Building
+### 构建
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 为了实现这个目标，在项目的根目录中创建一个类似JSON格式的文件`binding.gyp`，该文件中包含模块的构建配置信息。 这个文件被[node-gyp](https://github.com/nodejs/node-gyp) (一个专门用于编译Node.js插件的工具) 所使用。
 
 ```json
 {
@@ -81,15 +81,15 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+*注意*：作为`npm`的一部分，`node-gyp`工具的一个版本会和Node.js一起捆绑发布。 此版本并不是给开发者直接使用的，而是仅用于支持`npm install`命令来编译和安装插件的。 想要直接使用`node-gyp`的开发者可以通过使用命令`npm install -g node-gyp`来安装它。 请查阅`node-gyp` [安装说明](https://github.com/nodejs/node-gyp#installation)来获取更多信息，包括特定平台的要求。
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+一旦`binding.gyp`文件被创建，使用`node-gyp configure`命令在当前平台中生成相应的项目构建文件。 这会生成一个`Makefile` (在Unix平台)，或 `build/`目录中的`vcxproj` (在Windows中)。
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+接下来，调用`node-gyp build`命令来生成并编译`addon.node`文件。 它将被放置到`build/Release/`目录中。
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+当使用`npm install`安装Node.js插件时，npm使用它自己捆绑的`node-gyp`来执行相同操作，从而为用户要求的平台生成编译后的版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+一旦构建，就可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块，从而在Node.js中使用二进制的插件。
 
 ```js
 // hello.js
@@ -99,11 +99,11 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+请查看如下示例来获取更多信息，或者参阅<https://github.com/arturadib/node-qt>来查看生产环境中的示例。
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+由于编译后插件二进制文件的路径会有所不同，这取决于插件是如何被编译的 (例如：有时它会在`./build/Debug/`)，插件可以使用[bindings](https://github.com/TooTallNate/node-bindings)包来加载编译后的模块。
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+注意，`bindings`包的实现在如何定位插件模块时会更复杂，实际上它在使用类似的try-catch模式：
 
 ```js
 try {
@@ -113,33 +113,33 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### 链接到Node.js自己的依赖库
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 所有的插件必须要链接到V8，并且可以链接到其他的依赖库。 通常，这非常简单，只需要包含适当的`#include <...>`语句 (例如：`#include <v8.h>`)，`node-gyp`会自动定位相应的头文件。 然而，仍有一些事项需要注意：
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* 当`node-gyp`运行时，它会检查特定的Node.js发行版本，并下载全部源代码的tarball压缩文件或者只是头文件。 如果下载了全部源代码，插件就可以完全访问Node.js的依赖库。 然而，如果只是下载了Node.js的头文件，那么只有被Node.js导出的符号才能被访问。
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* 运行`node-gyp`时可以使用`--nodedir`标志来指向本地的Node.js源镜像。 使用这个选项，插件可以访问全部的依赖库。
 
-### Loading Addons using require()
+### 使用require() 加载插件
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 编写[`require()`](modules.html#modules_require)函数的目的就是查找具有`.node`扩展名的文件，并将其初始化为动态链接库。
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+当调用[`require()`](modules.html#modules_require)时，通常可以省略`.node`扩展名，Node.js仍可找到并初始化插件。 但有一点需要注意，Node.js会首先尝试定位并加载那些享有相同基本名称的JavaScript文件。 例如：如果文件`addon.js`和二进制文件`addon.node`在同一个目录下，那么[`require('addon')`](modules.html#modules_require)会优先考虑`addon.js`文件并加载它。
 
-## Native Abstractions for Node.js
+## Node.js原生模块抽象接口
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次更改时，插件需要更新并被重新编译才能继续正常运行。 Node.js的发布计划旨在最大程度的减少此类更改的频率和影响，但是Node.js无法确保V8 API的稳定性。
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 关于使用说明，请参阅`nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
-> Stability: 1 - Experimental
+> 稳定性: 1 - 实验性
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API是构建原生插件的API。 它独立于底层的JavaScript运行时 (例如 V8) 并作为Node.js的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+为了在上述的"Hello world"示例中使用N-API，需要将`hello.cc`的内容替换如下。 其他所有说明保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -173,13 +173,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+关于可用的函数及其使用方法请参考文档中标题为[C/C++ 插件 - N-API](n-api.html)的部分。
 
-## Addon examples
+## 插件示例
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 关于各种V8的调用，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅 V8 [嵌入器指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
-Each of these examples using the following `binding.gyp` file:
+这些示例都使用如下的`binding.gyp`文件：
 
 ```json
 {
@@ -192,23 +192,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array. For example:
+如果有多个`.cc`文件，只需将额外的文件名添加到`sources`中就可以。 例如：
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+一旦`binding.gyp`文件准备就绪，就可以使用`node-gyp`配置和构建示例插件：
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### 函数参数
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 当从JavaScript中调用函数时，参数和返回值都必须映射到/自C/C++代码。
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+以下示例演示如何读取传自JavaScript的函数参数，以及如何返回结果：
 
 ```cpp
 // addon.cc
@@ -264,7 +264,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+一旦编译后，就可以在Node.js中获取并使用示例插件：
 
 ```js
 // test.js
@@ -273,9 +273,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### 回调函数
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+在插件中非常常见的一种做法就是，将JavaScript函数传递给一个C++函数并从中执行它。 如下示例演示了如何调用这样的回调函数：
 
 ```cpp
 // addon.cc
@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+请注意，此示例使用两个参数形式的`Init()`，其中的第二个参数为完整的`module`对象。 这就允许插件使用单个函数完全覆盖`exports`，而不是将函数添加为`exports`的一个属性。
 
-To test it, run the following JavaScript:
+要想测试它，请运行如下JavaScript：
 
 ```js
 // test.js
@@ -323,11 +323,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+请注意，在此示例中，回调函数是以同步方式被调用的。
 
-### Object factory
+### 对象工厂
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+就像如下示例所示，插件可以在C++函数中创建并返回新对象。 创建一个对象并在返回时包含一个`msg`属性，该属性与传递给`createObject()`的字符串相呼应：
 
 ```cpp
 // addon.cc
@@ -360,7 +360,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+在JavaScript中测试它：
 
 ```js
 // test.js
@@ -372,9 +372,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### 函数工厂
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+另一个常见的场景就是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
@@ -417,7 +417,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+测试：
 
 ```js
 // test.js
@@ -428,9 +428,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### 包装C++对象
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+也可以包装C++对象／类，从而使得可以通过JavaScript的`new`运算符来创建它们的实例。
 
 ```cpp
 // addon.cc
@@ -451,7 +451,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+然后，在`myobject.h`中，包装类继承自`node::ObjectWrap`：
 
 ```cpp
 // myobject.h
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+在`myobject.cc`中，实现各种想要暴露的方法。 如下所示，通过将方法`plusOne()`添加到构造函数中原型的方式来暴露：
 
 ```cpp
 // myobject.cc
@@ -559,7 +559,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+要构建这个示例，必须将`myobject.cc`文件添加到`binding.gyp`中：
 
 ```json
 {
@@ -575,7 +575,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -590,9 +590,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### 包装对象工厂
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+或者，可以通过使用工厂模式来避免显式的使用JavaScript的`new` 操作符来创建对象实例：
 
 ```js
 const obj = addon.createObject();
@@ -600,7 +600,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+首先，在`addon.cc`中实现了`createObject()`方法：
 
 ```cpp
 // addon.cc
@@ -631,7 +631,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+在`myobject.h`中，静态方法`NewInstance()`被添加并用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
 
 ```cpp
 // myobject.h
@@ -663,7 +663,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+`myobject.cc`的实现和之前示例类似：
 
 ```cpp
 // myobject.cc
@@ -750,7 +750,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+再次说明，要构建这个示例，`myobject.cc`文件必须被添加到`binding.gyp`中：
 
 ```json
 {
@@ -766,7 +766,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -789,9 +789,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### 传递包装的对象
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+除了包装和返回C++对象外，还可以通过使用Node.js的帮助函数`node::ObjectWrap::Unwrap`来解包对象的方式来传递包装的对象。 下面的示例展示了`add()`函数，它可以获取两个`MyObject`对象来作为输入参数：
 
 ```cpp
 // addon.cc
@@ -837,7 +837,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+在`myobject.h`中，一个新的公共方法被添加，以允许在解包对象后访问私有类型的值。
 
 ```cpp
 // myobject.h
@@ -869,7 +869,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+`myobject.cc`的实现和之前的类似：
 
 ```cpp
 // myobject.cc
@@ -943,7 +943,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -957,22 +957,22 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit钩子
 
-An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. "AtExit" hooks are registered using the `node::AtExit` API.
+"AtExit"是一个函数，它会在Node.js事件循环结束后，但在JavaScript虚拟机被终止以及Node.js被关闭之前被调用。 "AtExit" 钩子通过使用`node::AtExit` API来进行注册。
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
-* `args` {void\*} A pointer to pass to the callback at exit.
+* `callback` {void (*)(void*)} 一个指向退出时要调用的函数的指针。
+* `args` {void\*} 一个在退出时要传递给回调函数的指针。
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+注册在事件循环结束后但在虚拟机被关闭之前运行的退出钩子函数。
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit有两个参数：一个指向退出时要运行的回调函数的指针，以及一个指向将被传递给回调函数的无类型的上下文数据的指针。
 
-Callbacks are run in last-in first-out order.
+回调函数按照后进先出的顺序运行。
 
-The following `addon.cc` implements AtExit:
+如下的`addon.cc`实现了AtExit：
 
 ```cpp
 // addon.cc
@@ -1023,7 +1023,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+通过运行如下语句在JavaScript中测试：
 
 ```js
 // test.js

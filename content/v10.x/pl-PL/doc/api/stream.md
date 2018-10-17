@@ -973,7 +973,7 @@ myReader.on('readable', () => {
 added: v10.0.0
 -->
 
-> Stability: 1 - Experimental
+> Stabilność: 1 - Eksperymentalne
 
 * Returns: {AsyncIterator} to fully consume the stream.
 

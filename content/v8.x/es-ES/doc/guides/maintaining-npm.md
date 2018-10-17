@@ -1,27 +1,27 @@
-# Mantenimiento de la npm en Node.js
+# Mantenimiento del npm en Node.js
 
-## Paso 1: Clon npm
+## Paso 1: Clonar al npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-si ya has clonado el npm, asegúrese de que el repositorio es actualizado
+o si ya ha clonado el npm, asegúrese de que el repositorio este actualizado
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Paso 2: Construir el lanzamiento
+## Paso 2: Lanzamiento del Build
 
 ```console
 $ git checkout vX.Y.Z
 $ make release
 ```
 
-Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` en el git se lanza en el git como `next` cuando es momento de downstream
+Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` se lanza en el git como `next` cuando es momento de downstream
 
 ## Paso 3: Remover npm anteriores
 
@@ -33,7 +33,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Paso 4: Extraer y asentar una nueva npm
+## Paso 4: Extraer y asentar un nuevo npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -55,13 +55,13 @@ $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 
 Nota: Por favor, asegúrese de ser el único haciendo actualizaciones que el npm cambia.
 
-## Paso 6: Aplicar revisión de espacios en blanco
+## Paso 6: Aplicar corrección de Whitespace
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Paso 7: Análisis de la construcción
+## Paso 7: Probar la compilación
 
 ```console
 $ make test-npm

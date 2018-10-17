@@ -2153,257 +2153,257 @@ https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 
 <a id="0.5.8"></a>
 
-## 2011.09.30, Version 0.5.8 (unstable)
+## 2011.09.30, Versión 0.5.8 (inestable)
 
 https://github.com/nodejs/node/commit/7cc17a0cea1d25188c103745a7d0c24375e3a609
 
-* zlib bindings (isaacs)
-* Windows supports TTY ANSI escape codes (Bert Belder)
-* Debugger improvements (Fedor Indutny)
-* crypto: look up SSL errors with ERR_print_errors() (Ben Noordhuis)
-* dns callbacks go through MakeCallback now
-* Raise an error when a malformed package.json file is found. (Ben Leslie)
-* buffers: handle bad length argument in constructor (Ben Noordhuis)
+* enlazados de zlib (isaacs)
+* Windows soporta códigos de escape TTY ANSI (Bert Belder)
+* Mejoras del depurador (Fedor Indutny)
+* crypto: revisar errores de SSL con ERR_print_errors() (Ben Noordhuis)
+* Ahora los callbacks del dns pasan por MakeCallback
+* Levantar un error cuando se encuentre un archivo package.json malformado. (Ben Leslie)
+* buffers: manejar argumento de longitud incorrecta en el constructor (Ben Noordhuis)
 * [#1726](https://github.com/joyent/node/issues/1726), unref process.stdout
-* Doc improvements (Ben Noordhuis, Fedor Indutny, koichik)
-* Upgrade libuv to fe18438
+* Mejoras de doc (Ben Noordhuis, Fedor Indutny, koichik)
+* Actualizar libuv a fe18438
 
 <a id="0.5.7"></a>
 
-## 2011.09.16, Version 0.5.7 (unstable)
+## 2011.09.16, Versión 0.5.7 (inestable)
 
 https://github.com/nodejs/node/commit/558241166c4f3c516e5a448e676db0b57119212f
 
-* Upgrade V8 to 3.6.4
-* Improve Windows compatibility
-* Documentation improvements
-* Debugger and REPL improvements (Fedor Indutny)
-* Add legacy API support: net.Stream(fd), process.stdout.writable, process.stdout.fd
+* Actualizar V8 a 3.6.4
+* Mejorar compatibilidad de Windows
+* Mejoras de documentación
+* Mejoras de depurador y REPL (Fedor Indutny)
+* Añadir soporte para API heredada: net.Stream(fd), process.stdout.writable, process.stdout.fd
 
-* Fix mkdir EEXIST handling (isaacs)
+* Arreglar el manejo de EEXIST de mkdir (isaacs)
 
-* Use net_uv instead of net_legacy for stdio
-* Do not load readline from util.inspect
-* [#1673](https://github.com/joyent/node/issues/1673) Fix bug related to V8 context with accessors (Fedor Indutny)
-* [#1634](https://github.com/joyent/node/issues/1634) util: Fix inspection for Error (koichik)
-* [#1645](https://github.com/joyent/node/issues/1645) fs: Add positioned file writing feature to fs.WriteStream (Thomas Shinnick)
+* Usar net_uv en lugar de net_legacy para stdio
+* No cargar readline desde util.inspect
+* [#1673](https://github.com/joyent/node/issues/1673) Reparar bug relacionado al contexto de V8 con accesores (Fedor Indutny)
+* [#1634](https://github.com/joyent/node/issues/1634) util: Reparar inspección por Error (koichik)
+* [#1645](https://github.com/joyent/node/issues/1645) fs: Añadir función de escritura de archivos posicionada a fs.WriteStream (Thomas Shinnick)
 
-* [#1637](https://github.com/joyent/node/issues/1637) fs: Unguarded fs.watchFile cache statWatchers checking fixed (Thomas Shinnick)
+* [#1637](https://github.com/joyent/node/issues/1637) fs: Corregida la revisión sin protección de la caché de fs.watchFile por statWatchers (Thomas Shinnick)
 
-* [#1695](https://github.com/joyent/node/issues/1695) Forward customFds to ChildProcess.spawn
+* [#1695](https://github.com/joyent/node/issues/1695) Enviar customFds también a ChildProcess.spawn
 
-* [#1707](https://github.com/joyent/node/issues/1707) Fix hasOwnProperty security problem in querystring (isaacs)
-* [#1719](https://github.com/joyent/node/issues/1719) Drain OpenSSL error queue
+* [#1707](https://github.com/joyent/node/issues/1707) Corregir problema de seguridad de hasOwnProperty en querystring (isaacs)
+* [#1719](https://github.com/joyent/node/issues/1719) Drenar cola de error de OpenSSL
 
 <a id="0.5.6"></a>
 
-## 2011.09.08, Version 0.5.6 (unstable)
+## 2011.09.08, Versión 0.5.6 (inestable)
 
 https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
-* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Documentation improvements (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
+* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Mejoras de documentación (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
 
-* [#650](https://github.com/joyent/node/issues/650) Improve path parsing on windows (Bert Belder)
+* [#650](https://github.com/joyent/node/issues/650) Mejorar el análisis de rutas en windows (Bert Belder)
 
-* [#752](https://github.com/joyent/node/issues/752) Remove headers sent check in OutgoingMessage.getHeader() (Peter Lyons)
+* [#752](https://github.com/joyent/node/issues/752) Remover revisión de envío de cabeceras en OutgoingMessage.getHeader() (Peter Lyons)
 
-* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Libuv-related bugs fixed (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
+* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Fueron reparados bugs relacionados con libuv (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
 
-* [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Fix BIO's usage. (Koichi Kobayashi)
+* [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Arreglar uso de BIO's. (Koichi Kobayashi)
 
-* [#1345](https://github.com/joyent/node/issues/1345) Correctly set socket.remoteAddress with libuv backend (Bert Belder)
-* [#1429](https://github.com/joyent/node/issues/1429) Don't clobber quick edit mode on windows (Peter Bright)
-* [#1503](https://github.com/joyent/node/issues/1503) Make libuv backend default on unix, override with `node --use-legacy`
-* [#1565](https://github.com/joyent/node/issues/1565) Fix fs.stat for paths ending with \ on windows (Igor Zinkovsky)
-* [#1568](https://github.com/joyent/node/issues/1568) Fix x509 certificate subject parsing (Koichi Kobayashi)
-* [#1586](https://github.com/joyent/node/issues/1586) Make socket write encoding case-insensitive (Koichi Kobayashi)
-* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implement fs in libuv, remove libeio and pthread-win32 dependency on windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
+* [#1345](https://github.com/joyent/node/issues/1345) Establecer correctamente socket.remoteAddress con backend de libuv (Bert Belder)
+* [#1429](https://github.com/joyent/node/issues/1429) No sobrescribir modo de edición rápida en windows (Peter Bright)
+* [#1503](https://github.com/joyent/node/issues/1503) Hacer que el backend de libuv esté predeterminado en unix, solapar con `node --use-legacy`
+* [#1565](https://github.com/joyent/node/issues/1565) Arreglar fs.stat para rutas que terminen en \ en windows (Igor Zinkovsky)
+* [#1568](https://github.com/joyent/node/issues/1568) Reparar análisis de sujeto de certificado x509 (Koichi Kobayashi)
+* [#1586](https://github.com/joyent/node/issues/1586) Hacer que la codificación de escritura de los sockets sea indiferente a mayúsculas y minúsculas (Koichi Kobayashi)
+* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implementar fs en libuv, remover libeio y dependencia de pthread-win32 en windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
 
-* [#1592](https://github.com/joyent/node/issues/1592) Don't load-time link against CreateSymbolicLink on windows (Peter Bright)
+* [#1592](https://github.com/joyent/node/issues/1592) No hacer "load-time" al link en oposición a CreateSymbolicLink en windows (Peter Bright)
 
-* [#1601](https://github.com/joyent/node/issues/1601) Improve API consistency when dealing with the socket underlying a HTTP client request (Mikeal Rogers)
+* [#1601](https://github.com/joyent/node/issues/1601) Mejorar consistencia de las API al lidiar con el socket subyacente a una petición de cliente HTTP (Mikeal Rogers)
 
-* [#1610](https://github.com/joyent/node/issues/1610) Remove DigiNotar CA from trusted list (Isaac Schlueter)
+* [#1610](https://github.com/joyent/node/issues/1610) Remover autoridad de certificación DigiNotar de la lista de confiables (Isaac Schlueter)
 
-* [#1617](https://github.com/joyent/node/issues/1617) Added some win32 os functions (Karl Skomski)
-* [#1624](https://github.com/joyent/node/issues/1624) avoid buffer overrun with 'binary' encoding (Koichi Kobayashi)
-* [#1633](https://github.com/joyent/node/issues/1633) make Buffer.write() always set _charsWritten (Koichi Kobayashi)
-* [#1644](https://github.com/joyent/node/issues/1644) Windows: set executables to be console programs (Peter Bright)
-* [#1651](https://github.com/joyent/node/issues/1651) improve inspection for sparse array (Koichi Kobayashi)
-* [#1672](https://github.com/joyent/node/issues/1672) set .code='ECONNRESET' on socket hang up errors (Ben Noordhuis)
-* Add test case for foaf+ssl client certificate (Niclas Hoyer)
-* Added RPATH environment variable to override run-time library paths (Ashok Mudukutore)
+* [#1617](https://github.com/joyent/node/issues/1617) Algunas funciones os de win32 fueron añadidas (Karl Skomski)
+* [#1624](https://github.com/joyent/node/issues/1624) evitar el solapamiento del buffer con codificación "binary" (Koichi Kobayashi)
+* [#1633](https://github.com/joyent/node/issues/1633) hacer que Buffer.write() siempre set _charsWritten (Koichi Kobayashi)
+* [#1644](https://github.com/joyent/node/issues/1644) Windows: establecer que ejecutables sean programas de consola (Peter Bright)
+* [#1651](https://github.com/joyent/node/issues/1651) mejorar inspección para arreglo disperso (sparse array) (Koichi Kobayashi)
+* [#1672](https://github.com/joyent/node/issues/1672) establecer .code='ECONNRESET' ante errores de colgado en socket (Ben Noordhuis)
+* Añadir caso de prueba para el certificado de cliente foaf+ssl (Niclas Hoyer)
+* Variable de ambiente RPATH añadida para solapar rutas de librería de tiempo de ejecución (Ashok Mudukutore)
 
-* Added TLS client-side session resumption support (Sean Cunningham)
+* Añadido soporte para reanudación de sesión de client-side de TLS (Sean Cunningham)
 
-* Added additional properties to getPeerCertificate (Nathan Rixham, Niclas Hoyer)
+* Añadidas propiedades adicionales a getPeerCertificate (Nathan Rixham, Niclas Hoyer)
 
-* Don't eval repl command twice when an error is thrown (Nathan Rajlich)
+* No evaluar comando repl dos veces cuando se arroje un error (Nathan Rajlich)
 
-* Improve util.isDate() (Nathan Rajlich)
-* Improvements in libuv backend and bindings, upgrade libuv to bd6066cb349a9b3a1b0d87b146ddaee06db31d10
+* Mejorar util.isDate() (Nathan Rajlich)
+* Mejoras en backend y enlazados de libuv, actualizar libuv a bd6066cb349a9b3a1b0d87b146ddaee06db31d10
 
-* Show warning when using lib/sys.js (Maciej Malecki)
+* Mostrar advertencia al usar lib/sys.js (Maciej Malecki)
 
-* Support plus sign in url protocol (Maciej Malecki)
-* Upgrade V8 to 3.6.2
+* Soportar signo más (+) en protocolo de url (Maciej Malecki)
+* Actualizar V8 a 3.6.2
 
 <a id="0.5.5"></a>
 
-## 2011.08.26, Version 0.5.5 (unstable)
+## 2011.08.26, Versión 0.5.5 (inestable)
 
 https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 
-* typed arrays, implementation from Plesk
-* fix IP multicast on SunOS
-* fix DNS lookup order: IPv4 first, IPv6 second (--use-uv only)
-* remove support for UNIX datagram sockets (--use-uv only)
-* UDP support for Windows (Bert Belder)
-* [#1572](https://github.com/joyent/node/issues/1572) improve tab completion for objects in the REPL (Nathan Rajlich)
-* [#1563](https://github.com/joyent/node/issues/1563) fix buffer overflow in child_process module (reported by Dean McNamee)
-* [#1546](https://github.com/joyent/node/issues/1546) fix performance regression in http module (reported by Brian Geffon)
-* [#1491](https://github.com/joyent/node/issues/1491) add PBKDF2 crypto support (Glen Low)
-* [#1447](https://github.com/joyent/node/issues/1447) remove deprecated http.cat() function (Mikeal Rogers)
-* [#1140](https://github.com/joyent/node/issues/1140) fix incorrect dispatch of vm.runInContext's filename argument (Antranig Basman)
+* typed arrays, implementación desde Plesk
+* reparar multidifusión de IP en SunOS
+* corregir orden de búsqueda de DNS: IPv4 primero, IPv6 segundo (solo con --use-uv)
+* remover soporte para sockets de datagrama de UNIX (solo con --use-uv)
+* soporte de UDP para Windows (Bert Belder)
+* [#1572](https://github.com/joyent/node/issues/1572) mejorar completación de tab para objetos en el REPL (Nathan Rajlich)
+* [#1563](https://github.com/joyent/node/issues/1563) corregir desbordamiento de buffer en módulo child_process (reportado por Dean McNamee)
+* [#1546](https://github.com/joyent/node/issues/1546) corregir regresión de rendimiento en módulo http (reportado por Brian Geffon)
+* [#1491](https://github.com/joyent/node/issues/1491) añadir soporte de crypto PBKDF2 (Glen Low)
+* [#1447](https://github.com/joyent/node/issues/1447) remover función http.cat() desaprobada (Mikeal Rogers)
+* [#1140](https://github.com/joyent/node/issues/1140) reparar envío incorrecto del argumento de nombre de archivo de vm.runInContext (Antranig Basman)
 
-* [#1140](https://github.com/joyent/node/issues/1140) document vm.runInContext() and vm.createContext() (Antranig Basman)
+* [#1140](https://github.com/joyent/node/issues/1140) documentar vm.runInContext() y vm.createContext() (Antranig Basman)
 
-* [#1428](https://github.com/joyent/node/issues/1428) fix os.freemem() on 64 bits freebsd (Artem Zaytsev)
-* [#1164](https://github.com/joyent/node/issues/1164) make all DNS lookups async, fixes uncatchable exceptions (Koichi Kobayashi)
+* [#1428](https://github.com/joyent/node/issues/1428) arreglar os.freemem() en freebsd de 64 bits (Artem Zaytsev)
+* [#1164](https://github.com/joyent/node/issues/1164) hacer que todas las búsquedas de DNS sean asincrónicas, repara excepciones no atrapables (Koichi Kobayashi)
 
-* fix incorrect ssl shutdown check (Tom Hughes)
+* corregir revisión incorrecta del cierre de ssl (Tom Hughes)
 
-* various cmake fixes (Tom Hughes)
-* improved documentation (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
+* varias correcciones de cmake (Tom Hughes)
+* documentación mejorada (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
 
-* upgrade libuv to commit 835782a
+* actualizar libuv a commit 835782a
 
-* upgrade V8 to 3.5.8
+* actualizar V8 a 3.5.8
 
 <a id="0.5.4"></a>
 
-## 2011.08.12, Version 0.5.4 (unstable)
+## 2011.08.12, Versión 0.5.4 (inestable)
 
 https://github.com/nodejs/node/commit/cfba1f59224ff8602c3fe9145181cad4c6df89a9
 
-* libuv/Windows compatibility improvements
-* Build on Microsoft Visual Studio via GYP. Use generate-projects.bat in the to build sln files. (Peter Bright, Igor Zinkovsky)
+* mejoras de compatibilidad de libuv/Windows
+* Compilar en Microsoft Visual Studio a través de GYP. Usar generate-projects.bat en los archivos "to build" de snl. (Peter Bright, Igor Zinkovsky)
 
-* Make Mikeal's HTTP agent client the default. Use old HTTP client with --use-http1
+* Hacer que el agente de cliente HTTP de Mikeal sea el predeterminado. Usar viejo cliente HTTP con --use-http1
 
-* Fixes https host header default port handling. (Mikeal Rogers)
+* Corrige el manejo de puerto predeterminado de la cabecera de host de http. (Mikeal Rogers)
 
-* [#1440](https://github.com/joyent/node/issues/1440) strip byte order marker when loading `*.js` and `*.json` files (Ben Noordhuis)
+* [#1440](https://github.com/joyent/node/issues/1440) hacer strip al orden de los bytes al cargar archivos `*.js` y `*.json` files (Ben Noordhuis)
 
-* [#1434](https://github.com/joyent/node/issues/1434) Improve util.format() compatibility with browser. (Koichi Kobayashi)
+* [#1434](https://github.com/joyent/node/issues/1434) Mejorar compatibilidad de util.format() con navegador. (Koichi Kobayashi)
 
-* Provide unchecked uint entry points for integer Buffer.read/writeInt methods. (Robert Mustacchi)
+* Proporcionar puntos de entrada de uint sin revisar para métodos Buffer.read/writeInt de enteros. (Robert Mustacchi)
 
-* CMake improvements (Tom Huges)
+* Mejoras de CMake (Tom Huges)
 
-* Upgrade V8 to 3.5.4.
+* Actualizar V8 a 3.5.4.
 
 <a id="0.5.3"></a>
 
-## 2011.08.01, Version 0.5.3 (unstable)
+## 2011.08.01, Versión 0.5.3 (inestable)
 
 https://github.com/nodejs/node/commit/4585330afef44ddfb6a4054bd9b0f190b352628b
 
-* Fix crypto encryption/decryption with Base64. (SAWADA Tadashi)
-* [#243](https://github.com/joyent/node/issues/243) Add an optional length argument to Buffer.write() (koichik)
-* [#657](https://github.com/joyent/node/issues/657) convert nonbuffer data to string in fs.writeFile/Sync (Daniel Pihlström)
+* Mejorar encriptación/descifrado de crypto con Base64. (SAWADA Tadashi)
+* [#243](https://github.com/joyent/node/issues/243) Añadir un argumento de longitud opcional a Buffer.write() (koichik)
+* [#657](https://github.com/joyent/node/issues/657) convertir datos no-buffer a string en fs.writeFile/Sync (Daniel Pihlström)
 
-* Add process.features, remove process.useUV (Ben Noordhuis)
+* Añadir process.features, remover process.useUV (Ben Noordhuis)
 
-* [#324](https://github.com/joyent/node/issues/324) Fix crypto hmac to accept binary keys + add test cases from rfc 2202 and 4231 (Stefan Bühler)
+* [#324](https://github.com/joyent/node/issues/324) Arreglar hmac de crypto para que acepte claves binarias + añadir casos de prueba desde rfc 2202 y 4231 (Stefan Bühler)
 
-* Add Socket::bytesRead, Socket::bytesWritten (Alexander Uvarov)
+* Añadir Socket::bytesRead, Socket::bytesWritten (Alexander Uvarov)
 
-* [#572](https://github.com/joyent/node/issues/572) Don't print result of --eval in CLI (Ben Noordhuis)
-* [#1223](https://github.com/joyent/node/issues/1223) Fix http.ClientRequest crashes if end() was called twice (koichik)
-* [#1383](https://github.com/joyent/node/issues/1383) Emit 'close' after all connections have closed (Felix Geisendörfer)
-* Add sprintf-like util.format() function (Ben Noordhuis)
-* Add support for TLS SNI (Fedor Indutny)
-* New http agent implementation. Off by default the command line flag --use-http2 will enable it. "make test-http2" will run the tests for the new implementation. (Mikeal Rogers)
+* [#572](https://github.com/joyent/node/issues/572) No imprimir resultado de --eval en CLI (Ben Noordhuis)
+* [#1223](https://github.com/joyent/node/issues/1223) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces (koichik)
+* [#1383](https://github.com/joyent/node/issues/1383) Emitir "close" luego de que todas las conexiones se han cerrado (Felix Geisendörfer)
+* Añadir función util.format() similar a sprintf (Ben Noordhuis)
+* Añadir soporte para SNI de TLS (Fedor Indutny)
+* Nueva implementación de agente http. Desactivado por defecto, la bandera de línea de comando use-http2 lo activará. "make test-http2" ejecutará las pruebas para la nueva implementación. (Mikeal Rogers)
 
-* Revert AMD compatibility. (isaacs)
+* Revertir compatibilidad de AMD. (isaacs)
 
-* Windows: improvements, child_process support.
-* Remove pkg-config file.
-* Fix startup time regressions.
-* doc improvements
+* Windows: mejoras, soporte para child_process.
+* Remover archivo pkg-config.
+* Corregir regresiones del tiempo de arranque.
+* mejoras de doc
 
 <a id="0.5.2"></a>
 
-## 2011.07.22, Version 0.5.2 (unstable)
+## 2011.07.22, Versión 0.5.2 (Inestable)
 
 https://github.com/nodejs/node/commit/08ffce1a00dde1199174b390a64a90b60768ddf5
 
-* libuv improvements; named pipe support
-* [#1242](https://github.com/joyent/node/issues/1242) check for SSL_COMP_get_compression_methods() (Ben Noordhuis)
-* [#1348](https://github.com/joyent/node/issues/1348) remove require.paths (isaacs)
-* [#1349](https://github.com/joyent/node/issues/1349) Delimit NODE_PATH with ; on Windows (isaacs)
-* [#1335](https://github.com/joyent/node/issues/1335) Remove EventEmitter from C++
-* [#1357](https://github.com/joyent/node/issues/1357) Load json files with require() (isaacs)
-* [#1374](https://github.com/joyent/node/issues/1374) fix setting ServerResponse.statusCode in writeHead (Trent Mick)
-* Fixed: GC was being run too often.
-* Upgrade V8 to 3.4.14
-* doc improvements
+* mejoras de libuv; soporte para pipe nombrado
+* [#1242](https://github.com/joyent/node/issues/1242) chequear por SSL_COMP_get_compression_methods() (Ben Noordhuis)
+* [#1348](https://github.com/joyent/node/issues/1348) remover require.paths (isaacs)
+* [#1349](https://github.com/joyent/node/issues/1349) Delimitar NODE_PATH con ; en Windows (isaacs)
+* [#1335](https://github.com/joyent/node/issues/1335) Remover EventEmitter de C++
+* [#1357](https://github.com/joyent/node/issues/1357) Cargar archivos json con require() (isaacs)
+* [#1374](https://github.com/joyent/node/issues/1374) arreglar el establecimiento de ServerResponse.statusCode en writeHead (Trent Mick)
+* Corregido: el GC estaba siendo ejecutado muy seguidamente.
+* Actualizar V8 a 3.4.14
+* mejoras de doc
 
 <a id="0.5.1"></a>
 
-## 2011.07.14, Version 0.5.1 (unstable)
+## 2011.07.14, Versión 0.5.1 (inestable)
 
 https://github.com/nodejs/node/commit/f8bfa54d0fa509f9242637bef2869a1b1e842ec8
 
-* [#1233](https://github.com/joyent/node/issues/1233) Fix os.totalmem on FreeBSD amd64 (Artem Zaytsev)
-* [#1149](https://github.com/joyent/node/issues/1149) IDNA and Punycode support in url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
+* [#1233](https://github.com/joyent/node/issues/1233) Reparar os.totalmem en amd64 de FreeBSD (Artem Zaytsev)
+* [#1149](https://github.com/joyent/node/issues/1149) Soporte de IDNA y Punycode en url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
 
-* Export $CC and $CXX to uv and V8's build systems
+* Exportar $CC y $CXX a sistemas de compilación de uv y V8
 
-* Include pthread-win32 static libraries in build (Igor Zinkovsky)
-* [#1199](https://github.com/joyent/node/issues/1199), [#1094](https://github.com/joyent/node/issues/1094) Fix fs can't handle large file on 64bit platform (koichik)
-* [#1281](https://github.com/joyent/node/issues/1281) Make require a public member of module (isaacs)
-* [#1303](https://github.com/joyent/node/issues/1303) Stream.pipe returns the destination (Elijah Insua)
-* [#1229](https://github.com/joyent/node/issues/1229) Addons should not -DEV_MULTIPLICITY=0 (Brian White)
-* libuv backend improvements
-* Upgrade V8 to 3.4.10
+* Incluir librerías estáticas de pthread-win32 en el build (Igor Zinkovsky)
+* [#1199](https://github.com/joyent/node/issues/1199), [#1094](https://github.com/joyent/node/issues/1094) Arreglar que el fs no puede manejar archivo grande en plataforma de 64bit (koichik)
+* [#1281](https://github.com/joyent/node/issues/1281) Hacer que "require" sea un miembro público del módulo (isaacs)
+* [#1303](https://github.com/joyent/node/issues/1303) Stream.pipe devuelve el destino (Elijah Insua)
+* [#1229](https://github.com/joyent/node/issues/1229) Los complementos no deben tener -DEV_MULTIPLICITY=0 (Brian White)
+* mejoras del backend de libuv
+* Actualizar V8 a 3.4.10
 
 <a id="0.5.0"></a>
 
-## 2011.07.05, Version 0.5.0 (unstable)
+## 2011.07.05, Versión 0.5.0 (inestable)
 
 https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 
-* New non-default libuv backend to support IOCP on Windows. Use --use-uv to enable.
+* Nuevo backend de livub no predeterminado para soportar IOCP en Windows. Usar --use-uv para activar.
 
-* deprecate http.cat
+* desaprobar http.cat
 
-* docs improved.
-* add child_process.fork
-* add fs.utimes() and fs.futimes() support (Ben Noordhuis)
-* add process.uptime() (Tom Huges)
-* add path.relative (Tony Huang)
-* add os.getNetworkInterfaces()
-* add remoteAddress and remotePort for client TCP connections (Brian White)
+* docs mejorados.
+* añadir child_process.fork
+* añadir soporte para fs.utimes() y fs.futimes() (Ben Noordhuis)
+* añadir process.uptime() (Tom Huges)
+* añadir path.relative (Tony Huang)
+* añadir os.getNetworkInterfaces()
+* añadir remoteAddress y remotePort para conexiones TCP del cliente (Brian White)
 
-* add secureOptions flag, setting ciphers, SSL_OP_CRYPTOPRO_TLSEXT_BUG to TLS (Theo Schlossnagle)
+* añadir bandera secureOptions flag, establecer cifrados, SSL_OP_CRYPTOPRO_TLSEXT_BUG a TLS (Theo Schlossnagle)
 
-* add process.arch (Nathan Rajlich)
+* añadir process.arch (Nathan Rajlich)
 
-* add reading/writing of floats and doubles from/to buffers (Brian White)
-* Allow script to be read from stdin
-* [#477](https://github.com/joyent/node/issues/477) add Buffer::fill method to do memset (Konstantin Käfer)
-* [#573](https://github.com/joyent/node/issues/573) Diffie-Hellman support to crypto module (Håvard Stranden)
-* [#695](https://github.com/joyent/node/issues/695) add 'hex' encoding to buffer (isaacs)
-* [#851](https://github.com/joyent/node/issues/851) Update how REPLServer uses contexts (Ben Weaver)
-* [#853](https://github.com/joyent/node/issues/853) add fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
-* [#889](https://github.com/joyent/node/issues/889) Allow to remove all EventEmitter listeners at once (Felix Geisendörfer)
+* añadir lectura/escritura de floats y dobles desde/hacia buffers (Brian White)
+* Permitir la lectura del script desde stdin
+* [#477](https://github.com/joyent/node/issues/477) añadir método Buffer::fill para hacer memset (Konstantin Käfer)
+* [#573](https://github.com/joyent/node/issues/573) Soporte de Diffie-Hellman para módulo crypto (Håvard Stranden)
+* [#695](https://github.com/joyent/node/issues/695) añadir codificación "hex" al buffer (isaacs)
+* [#851](https://github.com/joyent/node/issues/851) Actualizar la forma en que REPLServer usa los contextos (Ben Weaver)
+* [#853](https://github.com/joyent/node/issues/853) añadir fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
+* [#889](https://github.com/joyent/node/issues/889) Permitir la remoción de todos los listeners de EventEmitter al mismo tiempo (Felix Geisendörfer)
 
-* [#926](https://github.com/joyent/node/issues/926) OpenSSL NPN support (Fedor Indutny)
+* [#926](https://github.com/joyent/node/issues/926) Soporte para NPN de OpenSSL (Fedor Indutny)
 
-* [#955](https://github.com/joyent/node/issues/955) Change ^C handling in REPL (isaacs)
-* [#979](https://github.com/joyent/node/issues/979) add support for Unix Domain Sockets to HTTP (Mark Cavage)
+* [#955](https://github.com/joyent/node/issues/955) Cambiar el manejo de ^C en REPL (isaacs)
+* [#979](https://github.com/joyent/node/issues/979) Añadir a HTTP soporte para Sockets del Dominio de Unix (Mark Cavage)
 * [#1173](https://github.com/joyent/node/issues/1173) [#1170](https://github.com/joyent/node/issues/1170) add AMD, asynchronous module definition (isaacs)
 * DTrace probes: support X-Forwarded-For (Dave Pacheco)
 
