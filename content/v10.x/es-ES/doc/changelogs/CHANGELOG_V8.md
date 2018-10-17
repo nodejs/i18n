@@ -1383,24 +1383,24 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
   * actualizar libuv a 1.15.0 [#15745](https://github.com/nodejs/node/pull/15745)
   * actualizar V8 a 6.1.534.42 [15393](https://github.com/nodejs/node/pull/15393)
 * **dgram**: 
-  * support for setting dgram socket buffer size [#13623](https://github.com/nodejs/node/pull/13623)
+  * soporte para configurar el tamaño del buffer socket dgram [#13623](https://github.com/nodejs/node/pull/13623)
 * **fs**: 
-  * add support O_DSYNC file open constant [#15451](https://github.com/nodejs/node/pull/15451)
+  * añadir soporte constante de apertura de archivo O_DSYNC [#15451](https://github.com/nodejs/node/pull/15451)
 * **util**: 
-  * deprecate obj.inspect for custom inspection [#15631](https://github.com/nodejs/node/pull/15631)
+  * desaprobar obj.inspect para inspección personalizada [#15631](https://github.com/nodejs/node/pull/15631)
 * **tools, build**: 
-  * there is a fancy new macOS installer [#15179](https://github.com/nodejs/node/pull/15179)
-* **Added new collaborators** 
+  * hay un nuevo instalador de macOS de lujo [#15179](https://github.com/nodejs/node/pull/15179)
+* **Nuevos colaboradores añadidos** 
   * [bmeurer](https://github.com/bmeurer) - Benedikt Meurer
   * [kfarnung](https://github.com/kfarnung) - Kyle Farnung
 
 ### Commits
 
-* [[`16bdbb9e76`](https://github.com/nodejs/node/commit/16bdbb9e76)] - **async_hooks**: fix reference in code comment (Brian White) [#15748](https://github.com/nodejs/node/pull/15748)
-* [[`1bc0c1fb5f`](https://github.com/nodejs/node/commit/1bc0c1fb5f)] - **async_hooks**: consistent internal naming (Andreas Madsen) [#15569](https://github.com/nodejs/node/pull/15569)
-* [[`9da8346c96`](https://github.com/nodejs/node/commit/9da8346c96)] - **async_wrap**: allow user to pass execution_async_id (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
-* [[`09b3faef40`](https://github.com/nodejs/node/commit/09b3faef40)] - **async_wrap**: add constructor for PromiseWrap (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
-* [[`67cef9b182`](https://github.com/nodejs/node/commit/67cef9b182)] - **build**: allow build with system python 3 (Emily Marigold Klassen) [#16058](https://github.com/nodejs/node/pull/16058)
+* [[`16bdbb9e76`](https://github.com/nodejs/node/commit/16bdbb9e76)] - **async_hooks**: corregir referencia en comentario de código (Brian White) [#15748](https://github.com/nodejs/node/pull/15748)
+* [[`1bc0c1fb5f`](https://github.com/nodejs/node/commit/1bc0c1fb5f)] - **async_hooks**: nombre interno consistente (Andreas Madsen) [#15569](https://github.com/nodejs/node/pull/15569)
+* [[`9da8346c96`](https://github.com/nodejs/node/commit/9da8346c96)] - **async_wrap**: permitir al usuario pasar execution_async_id (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
+* [[`09b3faef40`](https://github.com/nodejs/node/commit/09b3faef40)] - **async_wrap**: añadir constructor para PromiseWrap (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
+* [[`67cef9b182`](https://github.com/nodejs/node/commit/67cef9b182)] - **build**: permitir compilar con el sistema python 3 (Emily Marigold Klassen) [#16058](https://github.com/nodejs/node/pull/16058)
 * [[`3d2481e6cb`](https://github.com/nodejs/node/commit/3d2481e6cb)] - **build**: call setlocal in vcbuild.bat (Daniel Bevenius) [#15754](https://github.com/nodejs/node/pull/15754)
 * [[`ed8c89a07d`](https://github.com/nodejs/node/commit/ed8c89a07d)] - **build**: fix shared installing target (Yorkie Liu) [#15148](https://github.com/nodejs/node/pull/15148)
 * [[`7dd0ca40e2`](https://github.com/nodejs/node/commit/7dd0ca40e2)] - **build**: run es-module tests in CI (Benjamin Coe) [#15276](https://github.com/nodejs/node/pull/15276)
