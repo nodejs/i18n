@@ -1,10 +1,10 @@
-# Assert
+# 断言 (Assert)
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定的
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+`assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
 ## assert(value[, message])
 
@@ -15,7 +15,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+[`assert.ok()`][]的别名。
 
 ## assert.deepEqual(actual, expected[, message])
 
