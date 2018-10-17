@@ -522,7 +522,7 @@ L'API [`util._extend()`][] è stata deprecata.
 
 Tipo: Runtime
 
-La classe `fs.SyncWriteStream` non è mai stata concepita come un'API pubblicamente accessibile. Non è disponibile nessun'API alternativa. Si prega di utilizzare un'alternativa userland.
+La classe `fs.SyncWriteStream` non è mai stata concepita come un'API pubblicamente accessibile. Non è disponibile alcuna API alternativa. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0062"></a>
 
@@ -530,7 +530,7 @@ La classe `fs.SyncWriteStream` non è mai stata concepita come un'API pubblicame
 
 Tipo: Runtime
 
-`--debug` attiva l'interfaccia legacy del debugger di V8, che è stata rimossa a partire dalla versione V8 5.8. In alternativa viene sostituito tramite l'Inspector che viene attivato con `--inspect`.
+`--debug` attiva l'interfaccia legacy del debugger di V8, che è stata rimossa a partire dalla versione V8 5.8. In alternativa viene sostituito dall'Inspector che viene attivato con `--inspect`.
 
 <a id="DEP0063"></a>
 
