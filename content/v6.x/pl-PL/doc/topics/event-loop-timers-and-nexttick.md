@@ -130,16 +130,16 @@ Na ogół, podczas wykonywania kodu, pętla zdarzeń ostatecznie trafi na fazę 
 
 ### zamknij wywołania zwrotne
 
-If a socket or handle is closed abruptly (e.g. `socket.destroy()`), the `'close'` event will be emitted in this phase. Otherwise it will be emitted via `process.nextTick()`.
+Jeśli gniazdo lub identyfikator zostaną nagle zamknięte (np.`socket.destroy()`), to zdarzenie `'zamknij'` zostanie wyemitowane w tej fazie. W przeciwnym razie będzie emitowane przez `process.nextTick()`.
 
-## `setImmediate()` vs `setTimeout()`
+## `ustawNatychmiastowo()` vs `ustawKoniecCzasu()`
 
-`setImmediate` and `setTimeout()` are similar, but behave in different ways depending on when they are called.
+`ustawNatychmiastowo` i `ustawKoniecCzasu()` są podobne, ale zachowują się w inny sposób zależnie od tego, kiedy są przywoływane.
 
-* `setImmediate()` is designed to execute a script once the current **poll** phase completes.
-* `setTimeout()` schedules a script to be run after a minimum threshold in ms has elapsed.
+* `ustawNatychmiastowo()` służy do wykonywania skryptu po bieżącym zakończeniu fazy **odpytywania**.
+* `ustawKoniecCzasu()` planuje uruchomienie skryptu po upłynięciu w ms minimalnego progu.
 
-The order in which the timers are executed will vary depending on the context in which they are called. If both are called from within the main module, then timing will be bound by the performance of the process (which can be impacted by other applications running on the machine).
+Kolejność wykonywania timerów będzie się bardzo różnić w zależności od kontekstu, w którym są przywoływane. Jeśli oba są wywoływane w obrębie głównego modułu, to w takim razie pomiar czasu będzie związany z wydajnością procesu (na który mogą mieć wpływ inne uruchomione aplikacje na komputerze).
 
 For example, if we run the following script which is not within an I/O cycle (i.e. the main module), the order in which the two timers are executed is non-deterministic, as it is bound by the performance of the process:
 
