@@ -331,33 +331,33 @@ added: v0.1.94
 
 Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string que utiliza la codificación especificada. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa la codificación especificada. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
-## Tipo: DiffieHellman
+## Clase: DiffieHellman
 
 <!-- YAML
 added: v0.5.0
 -->
 
-The `DiffieHellman` class is a utility for creating Diffie-Hellman key exchanges.
+La clase `DiffieHellman` es útil para crear intercambios en la clave Diffie-Hellman.
 
-Instances of the `DiffieHellman` class can be created using the [`crypto.createDiffieHellman()`][] function.
+Las instancias de la clase `DiffieHellman` pude ser creada usando la función [`rypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera las llaves de Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// intercambian y generan el secreto...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -371,7 +371,7 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 added: v0.5.0
 -->
 
-Computes the shared secret using `other_public_key` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `input_encoding`, and secret is encoded using specified `output_encoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `input_encoding` is not provided, `other_public_key` is expected to be a [`Buffer`][].
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave dada es interpretada usando el `inputEncoding` especificado, y el secreto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, `otra_llave_pública` es esperada para ser un [`Buffer`][].
 
 If `output_encoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
 
@@ -460,7 +460,7 @@ Instances of the `ECDH` class can be created using the [`crypto.createECDH()`][]
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera las llaves de Alice...
 const alice = crypto.createECDH('secp521r1');
 const aliceKey = alice.generateKeys();
 
@@ -482,7 +482,7 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 added: v0.11.14
 -->
 
-Computes the shared secret using `other_public_key` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `input_encoding`, and the returned secret is encoded using the specified `output_encoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `input_encoding` is not provided, `other_public_key` is expected to be a [`Buffer`][].
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using specified `input_encoding`, and the returned secret is encoded using the specified `output_encoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, `otra_llave_pública` es esperada para ser un [`Buffer`][].
 
 If `output_encoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
 
