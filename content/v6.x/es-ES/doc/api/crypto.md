@@ -166,9 +166,9 @@ console.log(encrypted);
 added: v0.1.94
 -->
 
-Regresa cualquiera de los contenidos restantes cifrados. Un string es regresado si el parámetro `output_encoding` es uno de los ` 'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
+Regresa cualquiera de los contenidos restantes cifrados. Un string es regresado si el parámetro `output_encoding` es uno de los ` 'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa un [`Buffer`][].
 
-El objeto `Cipher` puede dejar de ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
+El objeto `Cipher` no puede ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
 
 ### cipher.setAAD(buffer)
 
@@ -178,7 +178,7 @@ added: v1.0.0
 
 El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Regresa al `this` para el método de encadenamiento.
+Regresa `this` para el encadenamiento de métodos.
 
 ### cipher.getAuthTag()
 
