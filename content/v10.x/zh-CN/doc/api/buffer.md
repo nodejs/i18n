@@ -804,7 +804,7 @@ added: v0.11.3
 
 * {integer} **默认值：** `8192`
 
-这是决定用于池化的预分配的内部 `Buffer` 实例的大小的字节数。 This value may be modified.
+这是决定用于池化的预分配的内部 `Buffer` 实例的大小的字节数。 这个值可以修改。
 
 ### buf[index]
 
@@ -813,9 +813,9 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+索引操作符 `[index]` 可用于获取或设置 `buf` 中指定 `index` 位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
-This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
+该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，获取时返回 `undefined`， 设置时什么也不做。
 
 ```js
 // Copy an ASCII string into a `Buffer` one byte at a time.
