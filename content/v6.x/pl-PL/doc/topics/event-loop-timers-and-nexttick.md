@@ -214,7 +214,7 @@ function apiCall(arg, callback) {
 
 Fragment ten sprawdza argument, a jeśli nie jest poprawny, przejdzie do błędy wywołania zwrotnego. Interfejs API zaktualizowany dość niedawno, aby umożliwić przekazywanie argumentów do `process.nextTick()` pozwalając na przyjęcie dowolnych argumentów przekazanych po wywołaniu zwrotnym rozprzestrzenionym jako argumenty wywołania zwrotnego, dzięki czemu nie trzeba zagnieżdżać funkcji.
 
-What we're doing is passing an error back to the user but only *after* we have allowed the rest of the user's code to execute. By using `process.nextTick()` we guarantee that `apiCall()` always runs its callback *after* the rest of the user's code and *before* the event loop is allowed to proceed. To achieve this, the JS call stack is allowed to unwind then immediately execute the provided callback which allows a person to make recursive calls to `process.nextTick()` without reaching a `RangeError: Maximum call stack size exceeded from v8`.
+To, co robimy to przekazywanie błędu do użytkownika, ale tylko *po* tym jak pozwolimy na wykonanie reszty kodu użytkownika. Poprzez użycie `process.nextTick()` gwarantujemy, że `apiCall()` zawsze uruchomi jego wywołanie zwrotne *po* reszcie kodu użytkownika i *przed* dopuszczeniem zdarzenia pętli do nastąpienia. By to osiągnąć, wywołanie stosu JS jest dopuszczone do rozwinięcia, a następnie natychmiast wykonania podanego wywołania zwrotne, które umożliwia osoba wykonująca wywołania rekursywne wobec `process.nextTick()` bez osiągania `BłądZasięgu: Przekroczono maksymalny rozmiar stosu wywołań z wersji v8`.
 
 This philosophy can lead to some potentially problematic situations. Take this snippet for example:
 
