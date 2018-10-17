@@ -190,15 +190,15 @@ immediate
 timeout
 ```
 
-The main advantage to using `setImmediate()` over `setTimeout()` is `setImmediate()` will always be executed before any timers if scheduled within an I/O cycle, independently of how many timers are present.
+Główną zaletą korzystania z `ustawNatychmiastowo()`zamiast`ustawKoniecCzasu()` jest to, że `ustawNatychmiastowo()` zawsze będzie wykonywane przed jakimikolwiek timerami, jeśli są zaplanowane w obrębie cyklu wej/wyj, niezależnie od tego, ile obecnych jest timerów.
 
 ## `process.nextTick()`
 
-### Understanding `process.nextTick()`
+### Zrozumienie `process.nextTick()`
 
-You may have noticed that `process.nextTick()` was not displayed in the diagram, even though it's a part of the asynchronous API. This is because `process.nextTick()` is not technically part of the event loop. Instead, the `nextTickQueue` will be processed after the current operation completes, regardless of the current phase of the event loop.
+Być może zauważyłeś, że `process.nextTick()` nie było wyświetlane w diagramie, mimo że jest częścią asynchronicznego API. To dlatego, że `process.nextTick()` nie jest techniczną częścią pętli zdarzeń. Zamiast tego, `nextTickQueue` będzie przetwarzane po zakończeniu bieżącej operacji, niezależnie od bieżącego etapu pętli zdarzeń.
 
-Looking back at our diagram, any time you call `process.nextTick()` in a given phase, all callbacks passed to `process.nextTick()` will be resolved before the event loop continues. This can create some bad situations because **it allows you to "starve" your I/O by making recursive `process.nextTick()` calls**, which prevents the event loop from reaching the **poll** phase.
+Patrząc jeszcze raz na nasz diagram, za każdym razem, gdy wywołasz`process.nextTick()` w danej fazie, wszystkie wywołania zwrotne przypisane do `process.nextTick()` będą zdeterminowane przed kontynuacją pętli zdarzeń. This can create some bad situations because **it allows you to "starve" your I/O by making recursive `process.nextTick()` calls**, which prevents the event loop from reaching the **poll** phase.
 
 ### Why would that be allowed?
 
