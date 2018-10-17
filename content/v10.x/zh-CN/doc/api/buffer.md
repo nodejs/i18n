@@ -833,7 +833,7 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-* {ArrayBuffer} The underlying `ArrayBuffer` object based on which this `Buffer` object is created.
+* {ArrayBuffer} 底层的 `ArrayBuffer` 对象，基于该对象创建此 `Buffer` 对象。
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -857,11 +857,11 @@ changes:
     description: Additional parameters for specifying offsets are supported now.
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`.
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
+* `target` {Buffer|Uint8Array} 要与 `buf` 比较的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`.
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`.
+* `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`.
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **Default:** [`buf.length`].
 * Returns: {integer}
 
 Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
@@ -1646,7 +1646,7 @@ changes:
 -->
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **默认值：** [`buf.length`].
 * Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
@@ -1813,7 +1813,7 @@ added: v0.1.90
 
 * `encoding` {string} The character encoding to use. **默认值:**`‘utf8'`。
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **默认值：** [`buf.length`].
 * Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
