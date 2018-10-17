@@ -1707,7 +1707,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Known issues
 
-* Pueden todavía existir posibles una(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
+* Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
