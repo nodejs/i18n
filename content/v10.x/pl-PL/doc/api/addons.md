@@ -636,7 +636,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 W `myobject.h` dodawana jest statyczna metoda `NewInstance()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
-// myobject.h
+// mójobiekt.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -668,7 +668,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja w `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// myobject.cc
+// mójobiekt.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -695,12 +695,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Przygotuj szablon konstruktora
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototyp
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -710,7 +710,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Wywołaj jako konstruktora: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -776,19 +776,19 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Druki: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Druki: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Druki: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Druki: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Druki: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Druki: 23
 ```
 
 ### Przekazywanie zapakowanych obiektów
