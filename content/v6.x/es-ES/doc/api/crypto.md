@@ -429,7 +429,7 @@ Establece la clave privada Diffie-Hellman. Si el argumento `encoding` es proporc
 added: v0.5.0
 -->
 
-Establece la clave pública Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `public_key` is expected to be a string. If no `encoding` is provided, `public_key` is expected to be a [`Buffer`][].
+Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. If no `encoding` is provided, `public_key` is expected to be a [`Buffer`][].
 
 ### diffieHellman.verifyError
 
