@@ -890,7 +890,7 @@ L'opzione compile-time `--with-lttng` è stata rimossa.
 
 Tipo: End-of-Life
 
-L'utilizzo dell'argomento `noAssert` non ha più alcuna funzionalità. Tutti gli input saranno verificati, non importa se un input è impostato su true oppure no. Saltare la verifica potrebbe causare errori e arresti anomali.
+L'utilizzo dell'argomento `noAssert` non ha più alcuna funzionalità. Tutti gli input saranno verificati, non importa se un input è impostato su true oppure no. Saltare la verifica potrebbe causare errori e arresti difficili da trovare.
 
 <a id="DEP0103"></a>
 
