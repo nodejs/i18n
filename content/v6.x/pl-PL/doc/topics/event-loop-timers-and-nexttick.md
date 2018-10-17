@@ -216,18 +216,18 @@ Fragment ten sprawdza argument, a jeśli nie jest poprawny, przejdzie do błędy
 
 To, co robimy to przekazywanie błędu do użytkownika, ale tylko *po* tym jak pozwolimy na wykonanie reszty kodu użytkownika. Poprzez użycie `process.nextTick()` gwarantujemy, że `apiCall()` zawsze uruchomi jego wywołanie zwrotne *po* reszcie kodu użytkownika i *przed* dopuszczeniem zdarzenia pętli do nastąpienia. By to osiągnąć, wywołanie stosu JS jest dopuszczone do rozwinięcia, a następnie natychmiast wykonania podanego wywołania zwrotne, które umożliwia osoba wykonująca wywołania rekursywne wobec `process.nextTick()` bez osiągania `BłądZasięgu: Przekroczono maksymalny rozmiar stosu wywołań z wersji v8`.
 
-This philosophy can lead to some potentially problematic situations. Take this snippet for example:
+Ta filozofia może prowadzić do potencjalnie problematycznych sytuacji. Weźmy na przykład ten fragment kodu:
 
 ```js
 let bar;
 
-// this has an asynchronous signature, but calls callback synchronously
+// ma on sygnaturę asynchroniczną, ale wywołuje synchronicznie wywołanie zwrotne
 function someAsyncApiCall(callback) { callback(); }
 
-// the callback is called before `someAsyncApiCall` completes.
+// wywołanie zwrotne jest wywoływane przed zakończeniem `someAsyncApiCall`.
 someAsyncApiCall(() => {
 
-  // since someAsyncApiCall has completed, bar hasn't been assigned any value
+  // ponieważ someAsyncApiCall został zakończony, bar nie ma przypisanej żadnej wartości
   console.log('bar', bar); // undefined
 
 });
@@ -235,7 +235,7 @@ someAsyncApiCall(() => {
 bar = 1;
 ```
 
-The user defines `someAsyncApiCall()` to have an asynchronous signature, but it actually operates synchronously. When it is called, the callback provided to `someAsyncApiCall()` is called in the same phase of the event loop because `someAsyncApiCall()` doesn't actually do anything asynchronously. As a result, the callback tries to reference `bar` even though it may not have that variable in scope yet, because the script has not been able to run to completion.
+Użytkownik definiuje `someAsyncApiCall()`, aby mieć sygnaturę asynchroniczną, ale tak naprawdę działa synchronicznie. When it is called, the callback provided to `someAsyncApiCall()` is called in the same phase of the event loop because `someAsyncApiCall()` doesn't actually do anything asynchronously. As a result, the callback tries to reference `bar` even though it may not have that variable in scope yet, because the script has not been able to run to completion.
 
 By placing the callback in a `process.nextTick()`, the script still has the ability to run to completion, allowing all the variables, functions, etc., to be initialized prior to the callback being called. It also has the advantage of not allowing the event loop to continue. It may be useful for the user to be alerted to an error before the event loop is allowed to continue. Here is the previous example using `process.nextTick()`:
 
