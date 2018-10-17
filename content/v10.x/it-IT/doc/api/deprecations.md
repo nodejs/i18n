@@ -90,7 +90,7 @@ All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_proce
 
 Tipo: End-of-Life
 
-In una versione precedente del `cluster` di Node.js è stata aggiunta una proprietà booleana con il nome `suicide` al `Worker` object. Lo scopo di questa proprietà era fornire un'indicazione su come e perché l'istanza `Worker` è stata chiusa. In Node.js 6.0.0, la vecchia proprietà è stata deprecata e sostituita con una nuova proprietà [`worker.exitedAfterDisconnect`][]. Il vecchio nome della proprietà non descriveva precisamente la semantica attuale ed era inutilmente eccessivo.
+In una versione precedente del `cluster` di Node.js è stata aggiunta una proprietà booleana con il nome `suicide` al `Worker` object. Lo scopo di questa proprietà era fornire un'indicazione su come e perché l'istanza `Worker` è stata chiusa. In Node.js 6.0.0, la vecchia proprietà è stata deprecata e sostituita con una nuova proprietà [`worker.exitedAfterDisconnect`][]. Il vecchio nome della proprietà non descriveva precisamente l’effettiva semantica ed era inutilmente carico di emotività.
 
 <a id="DEP0008"></a>
 
@@ -106,7 +106,7 @@ Il modulo `constants` è deprecato/obsoleto. Quando si richiede l'accesso a cost
 
 Tipo: End-of-Life
 
-L'utilizzoo dell'API [`crypto.pbkdf2()`][] senza specificare un digest è stato reso obsoleto in Node.js 6.0 poiché il metodo è stato impostato in modo predefinito per utilizzare il digest `'SHA1'` del quale si sconsiglia l'utilizzo. In precedenza, veniva stampato un avviso di deprecazione. A partire da Node.js 8.0.0, chiamare `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinito genererà un `TypeError`.
+L'utilizzoo dell'API [`crypto.pbkdf2()`][] senza specificare un digest è stato reso obsoleto in Node.js 6.0 poiché il metodo era stato impostato per utilizzare in modo predefinito il digest `'SHA1'` del quale si sconsiglia l'utilizzo. In precedenza, veniva stampato un avviso di deprecazione. A partire da Node.js 8.0.0, chiamare `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinito genererà un `TypeError`.
 
 <a id="DEP0010"></a>
 
