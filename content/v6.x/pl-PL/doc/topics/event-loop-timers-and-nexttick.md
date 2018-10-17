@@ -198,11 +198,11 @@ Główną zaletą korzystania z `ustawNatychmiastowo()`zamiast`ustawKoniecCzasu(
 
 Być może zauważyłeś, że `process.nextTick()` nie było wyświetlane w diagramie, mimo że jest częścią asynchronicznego API. To dlatego, że `process.nextTick()` nie jest techniczną częścią pętli zdarzeń. Zamiast tego, `nextTickQueue` będzie przetwarzane po zakończeniu bieżącej operacji, niezależnie od bieżącego etapu pętli zdarzeń.
 
-Patrząc jeszcze raz na nasz diagram, za każdym razem, gdy wywołasz`process.nextTick()` w danej fazie, wszystkie wywołania zwrotne przypisane do `process.nextTick()` będą zdeterminowane przed kontynuacją pętli zdarzeń. This can create some bad situations because **it allows you to "starve" your I/O by making recursive `process.nextTick()` calls**, which prevents the event loop from reaching the **poll** phase.
+Patrząc jeszcze raz na nasz diagram, za każdym razem, gdy wywołasz`process.nextTick()` w danej fazie, wszystkie wywołania zwrotne przypisane do `process.nextTick()` będą zdeterminowane przed kontynuacją pętli zdarzeń. Może to stworzyć pewne złe sytuacje, ponieważ **pozwala ci "głodować" swoje wej/wyj przez dokonywanie rekurencji w `process.nextTick()` wywołania**, co zapobiega pętli zdarzeń od osiągnięcia fazy **odpytywania**.
 
-### Why would that be allowed?
+### Dlaczego miałoby to być dozwolone?
 
-Why would something like this be included in Node.js? Part of it is a design philosophy where an API should always be asynchronous even where it doesn't have to be. Take this code snippet for example:
+Dlaczego coś takiego powinno być zawarte w Node.js? Częścią tego jest filozofia projektowania, w której interfejs API powinien zawsze być asynchroniczny, nawet jeśli nie musi być. Weźmy na przykład ten fragment kodu:
 
 ```js
 function apiCall(arg, callback) {
@@ -212,7 +212,7 @@ function apiCall(arg, callback) {
 }
 ```
 
-The snippet does an argument check and if it's not correct, it will pass the error to the callback. The API updated fairly recently to allow passing arguments to `process.nextTick()` allowing it to take any arguments passed after the callback to be propagated as the arguments to the callback so you don't have to nest functions.
+Fragment ten sprawdza argument, a jeśli nie jest poprawny, przejdzie do błędy wywołania zwrotnego. Interfejs API zaktualizowany dość niedawno, aby umożliwić przekazywanie argumentów do `process.nextTick()` pozwalając na przyjęcie dowolnych argumentów przekazanych po wywołaniu zwrotnym rozprzestrzenionym jako argumenty wywołania zwrotnego, dzięki czemu nie trzeba zagnieżdżać funkcji.
 
 What we're doing is passing an error back to the user but only *after* we have allowed the rest of the user's code to execute. By using `process.nextTick()` we guarantee that `apiCall()` always runs its callback *after* the rest of the user's code and *before* the event loop is allowed to proceed. To achieve this, the JS call stack is allowed to unwind then immediately execute the provided callback which allows a person to make recursive calls to `process.nextTick()` without reaching a `RangeError: Maximum call stack size exceeded from v8`.
 
