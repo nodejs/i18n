@@ -861,10 +861,10 @@ changes:
 * `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`.
 * `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`.
 * `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`.
-* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **Default:** [`buf.length`].
-* Returns: {integer}
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** [`buf.length`].
+* 返回：{integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同。 对比是基于各自 `Buffer` 中实际的字节序列。
 
 * `0` is returned if `target` is the same as `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
@@ -915,7 +915,7 @@ added: v0.1.90
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
 * `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
 * `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`].
+* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **默认值：** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
