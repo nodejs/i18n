@@ -2400,10 +2400,10 @@ https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 * [#853](https://github.com/joyent/node/issues/853) añadir fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
 * [#889](https://github.com/joyent/node/issues/889) Permitir la remoción de todos los listeners de EventEmitter al mismo tiempo (Felix Geisendörfer)
 
-* [#926](https://github.com/joyent/node/issues/926) OpenSSL NPN support (Fedor Indutny)
+* [#926](https://github.com/joyent/node/issues/926) Soporte para NPN de OpenSSL (Fedor Indutny)
 
-* [#955](https://github.com/joyent/node/issues/955) Change ^C handling in REPL (isaacs)
-* [#979](https://github.com/joyent/node/issues/979) add support for Unix Domain Sockets to HTTP (Mark Cavage)
+* [#955](https://github.com/joyent/node/issues/955) Cambiar el manejo de ^C en REPL (isaacs)
+* [#979](https://github.com/joyent/node/issues/979) Añadir a HTTP soporte para Sockets del Dominio de Unix (Mark Cavage)
 * [#1173](https://github.com/joyent/node/issues/1173) [#1170](https://github.com/joyent/node/issues/1170) add AMD, asynchronous module definition (isaacs)
 * DTrace probes: support X-Forwarded-For (Dave Pacheco)
 
