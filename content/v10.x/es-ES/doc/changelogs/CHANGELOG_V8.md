@@ -1369,19 +1369,19 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`397ad0936d`](https://github.com/nodejs/node/commit/397ad0936d)] - **tools**: reemplazar concatenación de string con plantilla (Nicola Del Gobbo) [#15827](https://github.com/nodejs/node/pull/15827)
 * [[`e1cff102f4`](https://github.com/nodejs/node/commit/e1cff102f4)] - **tty,doc**: añadir type-check a isatty (Bryan English) [#15567](https://github.com/nodejs/node/pull/15567)
 * [[`6ff397db89`](https://github.com/nodejs/node/commit/6ff397db89)] - **url**: usar util._extend para mejorar profermace (Weijia Wang) [#16081](https://github.com/nodejs/node/pull/16081)
-* [[`f5e56aac0c`](https://github.com/nodejs/node/commit/f5e56aac0c)] - **url**: fix port overflow checking (Rimas Misevičius) [#15794](https://github.com/nodejs/node/pull/15794)
-* [[`c2b1435b55`](https://github.com/nodejs/node/commit/e82e2745af)] - **zlib**: gracefully set windowBits from 8 to 9 (Myles Borins) [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+* [[`f5e56aac0c`](https://github.com/nodejs/node/commit/f5e56aac0c)] - **url**: corregir la comprobación de desbordamiento de puerto (Rimas Misevičius) [#15794](https://github.com/nodejs/node/pull/15794)
+* [[`c2b1435b55`](https://github.com/nodejs/node/commit/e82e2745af)] - **zlib**: elegantemente establecer windowsBits de 8 a 9 (Myles Borins) [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 <a id="8.7.0"></a>
 
-## 2017-10-11, Version 8.7.0 (Current), @MylesBorins
+## 2017-10-11, Versión 8.7.0 (Presente), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
-  * update npm to 5.4.2 [#15600](https://github.com/nodejs/node/pull/15600)
-  * upgrade libuv to 1.15.0 [#15745](https://github.com/nodejs/node/pull/15745)
-  * update V8 to 6.1.534.42 [15393](https://github.com/nodejs/node/pull/15393)
+  * actualizar npm a 5.4.2 [#15600](https://github.com/nodejs/node/pull/15600)
+  * actualizar libuv a 1.15.0 [#15745](https://github.com/nodejs/node/pull/15745)
+  * actualizar V8 a 6.1.534.42 [15393](https://github.com/nodejs/node/pull/15393)
 * **dgram**: 
   * support for setting dgram socket buffer size [#13623](https://github.com/nodejs/node/pull/13623)
 * **fs**: 
