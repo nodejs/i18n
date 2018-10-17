@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-在`myobject.cc`中，实现各种想要暴露的方法。 Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+在`myobject.cc`中，实现各种想要暴露的方法。 如下所示，通过将方法`plusOne()`添加到构造函数中原型的方式来暴露：
 
 ```cpp
 // myobject.cc
@@ -559,7 +559,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+要构建这个示例，必须将`myobject.cc`文件添加到`binding.gyp`中：
 
 ```json
 {
@@ -575,7 +575,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -590,7 +590,7 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### 包装对象工厂
 
 Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
 
