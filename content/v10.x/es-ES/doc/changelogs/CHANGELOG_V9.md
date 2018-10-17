@@ -527,7 +527,7 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 * [[`89edbae7ab`](https://github.com/nodejs/node/commit/89edbae7ab)] - **(SEMVER-MINOR)** **src**: limpiar process.dlopen() (Ben Noordhuis) [#18934](https://github.com/nodejs/node/pull/18934)
 * [[`08b83ee27a`](https://github.com/nodejs/node/commit/08b83ee27a)] - **src**: refactorizar la configuración de propiedades de JS en WriteWrap (Anna Henningsen) [#18963](https://github.com/nodejs/node/pull/18963)
 * [[`4d5cd5c6c5`](https://github.com/nodejs/node/commit/4d5cd5c6c5)] - **src**: corregir mensaje de error en constructor de async\_hooks (Daniel Bevenius) [#19000](https://github.com/nodejs/node/pull/19000)
-* [[`6787913a68`](https://github.com/nodejs/node/commit/6787913a68)] - **test**:agregar más información a assert.strictEqual (Ujjwal Sharma) [#19162](https://github.com/nodejs/node/pull/19162)
+* [[`6787913a68`](https://github.com/nodejs/node/commit/6787913a68)] - **test**: agregar más información a assert.strictEqual (Ujjwal Sharma) [#19162](https://github.com/nodejs/node/pull/19162)
 * [[`ee653ecd09`](https://github.com/nodejs/node/commit/ee653ecd09)] - **test**: mover petición http2 para después de verificación de crypto (Daniel Bevenius) [#19111](https://github.com/nodejs/node/pull/19111)
 * [[`5bbf009c1d`](https://github.com/nodejs/node/commit/5bbf009c1d)] - **test**: verificar símbolos en librería compartida (Yihong Wang) [#18806](https://github.com/nodejs/node/pull/18806)
 * [[`d8833762cb`](https://github.com/nodejs/node/commit/d8833762cb)] - **test**: refactorizar test-async-wrap-getasyncid (Santiago Gimeno) [#18727](https://github.com/nodejs/node/pull/18727)
@@ -561,7 +561,7 @@ Sin commits adicionales. Nueva versión publicada debido a un archivo node-v9.7.
 
 * **src**:
   
-  * Agregar soporte inicial para para metadatos post mortem específicos de Node.js (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
+  * Agregar soporte inicial para metadatos post mortem específicos de Node.js (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
 
 * **timers**:
   
@@ -569,7 +569,7 @@ Sin commits adicionales. Nueva versión publicada debido a un archivo node-v9.7.
 
 * **util**:
   
-  * Ahora es posible obtener el nombre de un código de error numérico específico de una plataforma como una cadena (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
+  * Ahora es posible obtener el nombre de un código de error numérico específico de una plataforma como una string (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
 
 ### Commits
 
