@@ -285,7 +285,7 @@ console.log(decrypted);
 added: v0.1.94
 -->
 
-Regresa cualquiera de los contenidos restantes descifrados. Un string es regresado si el parámetro `output_encoding` es uno ` 'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa al [`Buffer`][].
+Regresa cualquiera de los contenidos restantes descifrados. Un string es regresado si el parámetro `output_encoding` es `'latin1'`, `'base64'` o `'hex'`. De igual forma, si un `output_encoding` no es dado, se regresa un [`Buffer`][].
 
 Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
@@ -297,7 +297,7 @@ added: v1.0.0
 
 El método `decipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Regresa al `this` para el método de encadenamiento.
+Regresa `this` para el encadenamiento de métodos.
 
 ### decipher.setAuthTag(buffer)
 
@@ -305,9 +305,9 @@ Regresa al `this` para el método de encadenamiento.
 added: v1.0.0
 -->
 
-El método `decipher.setAuthTag()` es usado para pasar el recibido de la *authentication tag* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados actualmente). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
+El método `decipher.setAuthTag()` es usado para pasar la *etiqueta de autenticación recibida* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados en la actualiad). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
-Regresa al `this` para el método de encadenamiento.
+Regresa `this` para el encadenamiento de métodos.
 
 ### decipher.setAutoPadding(auto_padding=true)
 
@@ -317,11 +317,11 @@ added: v0.7.1
 
 Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar al `decipher.setAutoPadding(false)` deshabilitará automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
-Desactivar el llenado automático sólo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloques cifrados.
+Desactivar el llenado automático solo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloque de los cifrados.
 
 El método `decipher.setAutoPadding()` debe ser llamado antes de [`decipher.update()`][].
 
-Regresa al `this` para el método de encadenamiento.
+Regresa `this` para el encadenamiento de métodos.
 
 ### decipher.update(data\[, input_encoding\]\[, output_encoding\])
 
@@ -329,7 +329,7 @@ Regresa al `this` para el método de encadenamiento.
 added: v0.1.94
 -->
 
-Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string que el código especificado. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string que utiliza la codificación especificada. Pero, si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
 El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
