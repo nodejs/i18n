@@ -14,14 +14,14 @@ $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Paso 2: Construir el lanzamiento
+## Paso 2: Lanzamiento del Build
 
 ```console
 $ git checkout vX.Y.Z
 $ make release
 ```
 
-Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` en el git se lanza en el git como `next` cuando es momento de downstream
+Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` se lanza en el git como `next` cuando es momento de downstream
 
 ## Paso 3: Remover npm anteriores
 
