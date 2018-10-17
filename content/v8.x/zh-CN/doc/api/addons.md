@@ -137,9 +137,9 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 > 稳定性: 1 - 实验性
 
-N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
+N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是原生代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
 
-为了在上述的"Hello world"示例中使用N-API，需要将`hello.cc`的内容替换如下。 其他所有说明保持不变。
+在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它说明保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -173,13 +173,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-关于可用的函数及其使用方法请参考文档中标题为[C/C++ 插件 - N-API](n-api.html)的部分。
+可用的函数和如何使用它们被记录在标题为 [C/C++ 插件 - N-API](n-api.html) 的部分中。
 
 ## 插件示例
 
-如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 关于各种V8的调用，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅 V8 [嵌入器指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
+如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
-这些示例都使用如下的`binding.gyp`文件：
+这些示例都使用以下 `binding.gyp` 文件：
 
 ```json
 {
@@ -192,13 +192,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }
 ```
 
-如果有多个`.cc`文件，只需将额外的文件名添加到`sources`中就可以。 例如：
+在有多个 `.cc` 文件的情况下，只需将额外的文件名添加到 `sources` 数组中： 例如：
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-一旦`binding.gyp`文件准备就绪，就可以使用`node-gyp`配置和构建示例插件：
+一旦 `binding.gyp` 文件准备就绪，就可以使用 `node-gyp` 配置和构建示例插件：
 
 ```console
 $ node-gyp configure build
