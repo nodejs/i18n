@@ -635,7 +635,7 @@ console.log(bufA.length);
 // Prints: 42
 ```
 
-### Class Method: Buffer.from(array)
+### Class 方法：Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -643,22 +643,22 @@ added: v5.10.0
 
 * `array` {integer[]}
 
-Allocates a new `Buffer` using an `array` of octets.
+使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+如果 `array` 不是一个`Array`，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Class 方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
 * `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **默认值：** `arrayBuffer.length - byteOffset`。
 
