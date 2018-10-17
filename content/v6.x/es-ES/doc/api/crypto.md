@@ -112,7 +112,7 @@ Las instancias de la clase `Cipher` son usadas para encriptar datos. La clase pu
 * Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
 * Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
 
-Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la consigna `new`.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la palabra clave `new`.
 
 Ejemplo: Usar los objetos `Cipher` como streams:
 
@@ -128,7 +128,7 @@ cipher.on('readable', () => {
 });
 cipher.on('end', () => {
   console.log(encrypted);
-  // Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+  // Imprime: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 });
 
 cipher.write('some clear text data');
