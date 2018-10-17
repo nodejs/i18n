@@ -206,9 +206,9 @@ $ node-gyp configure build
 
 ### 函数参数
 
-通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 当从JavaScript中调用函数时，参数和返回值都必须映射到/自C/C++代码。
+插件通常会公开可以从Node.js中运行的JavaScript访问的对象和函数。 当从 JavaScript 调用函数时，输入参数必须映射到 C/C++代码，返回值必须从 C/C++代码映射到 JavaScript。
 
-以下示例演示如何读取传自JavaScript的函数参数，以及如何返回结果：
+以下示例说明如何读取从JavaScript传递的函数参数以及如何返回结果：
 
 ```cpp
 // addon.cc
@@ -264,7 +264,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-一旦编译后，就可以在Node.js中获取并使用示例插件：
+编译完成后，可以从Node.js中获取并使用示例插件：
 
 ```js
 // test.js
@@ -275,7 +275,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### 回调函数
 
-在插件中非常常见的一种做法就是，将JavaScript函数传递给一个C++函数并从中执行它。 如下示例演示了如何调用这样的回调函数：
+将JavaScript函数传递给C++函数并从中执行它们是插件中常见的做法。 以下示例说明了如何调用此类回调函数：
 
 ```cpp
 // addon.cc
@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-请注意，此示例使用两个参数形式的`Init()`，其中的第二个参数为完整的`module`对象。 这就允许插件使用单个函数完全覆盖`exports`，而不是将函数添加为`exports`的一个属性。
+请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是将函数添加为 `exports` 的一个属性。
 
-要想测试它，请运行如下JavaScript：
+要测试它，请运行以下JavaScript：
 
 ```js
 // test.js
@@ -323,11 +323,11 @@ addon((msg) => {
 });
 ```
 
-请注意，在此示例中，回调函数是以同步方式被调用的。
+请注意，在此示例中，回调函数是被同步调用的。
 
 ### 对象工厂
 
-就像如下示例所示，插件可以在C++函数中创建并返回新对象。 创建一个对象并在返回时包含一个`msg`属性，该属性与传递给`createObject()`的字符串相呼应：
+插件可以在C++函数中创建和返回新对象，如以下示例所示。 创建一个对象，并返回一个 `msg` 属性，它与传递给 `createObject()` 的字符串相呼应：
 
 ```cpp
 // addon.cc
@@ -374,7 +374,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### 函数工厂
 
-另一个常见的场景就是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
+另一个常见的场景是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
@@ -430,7 +430,7 @@ console.log(fn());
 
 ### 包装C++对象
 
-也可以包装C++对象／类，从而使得可以通过JavaScript的`new`运算符来创建它们的实例。
+也可以以允许使用JavaScript `new` 运算符创建新实例的方式包装C++对象/类：
 
 ```cpp
 // addon.cc
@@ -451,7 +451,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-然后，在`myobject.h`中，包装类继承自`node::ObjectWrap`：
+然后，在 `myobject.h` 头文件中，包装类从 `node::ObjectWrap` 中继承：
 
 ```cpp
 // myobject.h
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-在`myobject.cc`中，实现各种想要暴露的方法。 如下所示，通过将方法`plusOne()`添加到构造函数中原型的方式来暴露：
+在 `myobject.cc` 中，可以实现各种想要暴露给JavaScript的方法。 如下所示，`plusOne()` 通过将其添加到构造函数的原型中来暴露：
 
 ```cpp
 // myobject.cc
@@ -559,7 +559,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-要构建这个示例，必须将`myobject.cc`文件添加到`binding.gyp`中：
+要构建这个示例，`myobject.cc` 文件必须被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -592,7 +592,7 @@ console.log(obj.plusOne());
 
 ### 包装对象工厂
 
-或者，可以通过使用工厂模式来避免显式的使用JavaScript的`new` 操作符来创建对象实例：
+或者，可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
 
 ```js
 const obj = addon.createObject();
@@ -600,7 +600,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-首先，在`addon.cc`中实现了`createObject()`方法：
+首先，在 `addon.cc` 中实现 `createObject()` 方法：
 
 ```cpp
 // addon.cc
@@ -631,7 +631,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-在`myobject.h`中，静态方法`NewInstance()`被添加并用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
+在 `myobject.h` 中，静态方法 `NewInstance()` 被添加，它用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
 
 ```cpp
 // myobject.h
