@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定的
 
-`assert`模块提供了一组简单的断言测试，可用来测试不变量。
+` assert ` 模块提供了一组简单的断言测试, 可用于测试不变量。
 
 ## assert(value[, message])
 
@@ -41,9 +41,9 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-测试`actual`和`expected`参数之间是否深度相等。 Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
 // WARNING: This does not throw an AssertionError!
