@@ -837,7 +837,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+在`myobject.h`中，一个新的公共方法被添加，以允许在解包对象后访问私有类型的值。
 
 ```cpp
 // myobject.h
@@ -869,7 +869,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+`myobject.cc`的实现和之前的类似：
 
 ```cpp
 // myobject.cc
@@ -943,7 +943,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -957,22 +957,22 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit钩子
 
-An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. "AtExit" hooks are registered using the `node::AtExit` API.
+"AtExit"是一个函数，它会在Node.js事件循环结束后，但在JavaScript虚拟机被终止以及Node.js被关闭之前被调用。 "AtExit" 钩子通过使用`node::AtExit` API来进行注册。
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
-* `args` {void\*} A pointer to pass to the callback at exit.
+* `callback` {void (*)(void*)} 一个指向退出时要调用的函数的指针。
+* `args` {void\*} 一个在退出时要传递给回调函数的指针。
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+注册在事件循环结束后但在虚拟机被关闭之前运行的退出钩子函数。
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit有两个参数：一个指向退出时要运行的回调函数的指针，以及一个指向将被传递给回调函数的无类型的上下文数据的指针。
 
-Callbacks are run in last-in first-out order.
+回调函数按照后进先出的顺序运行。
 
-The following `addon.cc` implements AtExit:
+如下的`addon.cc`实现了AtExit：
 
 ```cpp
 // addon.cc
