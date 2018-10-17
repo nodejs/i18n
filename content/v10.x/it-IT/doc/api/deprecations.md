@@ -756,7 +756,7 @@ A partire dalle versioni Node.js 4.4.0 e 5.2.0, diversi moduli destinati esclusi
 - `node-inspect/lib/internal/inspect_client` (dalla 7.6.0)
 - `node-inspect/lib/internal/inspect_repl` (dalla 7.6.0)
 
-I moduli `v8/*` non hanno esportazioni e, se non verrebbero importati in un ordine specifico, genererebbero degli errori. In quanto tali, non esistono praticamente casi di utilizzo legittimi per importarli tramite `require()`.
+I moduli `v8/*` non hanno esportazioni e, se non importati in un ordine specifico, genererebbero degli errori. In quanto tali, non esistono praticamente casi di utilizzo legittimi per importarli tramite `require()`.
 
 D'altra parte, `node-inspect` potrebbe essere installato localmente tramite un gestore di pacchetti, in quanto è pubblicato sul registro npm con lo stesso nome. Se installato, non è necessaria nessuna modifica del codice sorgente.
 
@@ -766,7 +766,7 @@ D'altra parte, `node-inspect` potrebbe essere installato localmente tramite un g
 
 Tipo: End-of-Life
 
-L'API AsyncHooks Sensitive non è mai stato documentato e ha avuto vari problemi minori. (Vedi https://github.com/nodejs/node/issues/15572.) Utilizza l'API `AsyncResource` al suo posto.
+L'API AsyncHooks Sensitive non è mai stata documentata e ha avuto vari problemi minori. (Vedi https://github.com/nodejs/node/issues/15572.) Utilizza l'API `AsyncResource` al suo posto.
 
 <a id="DEP0086"></a>
 
