@@ -579,7 +579,7 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* 返回：{integer}
 
 Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
