@@ -107,7 +107,7 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 added: v0.1.94
 -->
 
-Las instancias del tipo de `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
+Las instancias de la clase `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
 
 * Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
 * Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
