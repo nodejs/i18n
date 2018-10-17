@@ -750,7 +750,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-再次说明，要构建这个示例，`myobject.cc`文件必须被添加到`binding.gyp`中：
+再强调一次，要想构建这个示例，`myobject.cc` 文件必须要被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -791,7 +791,7 @@ console.log(obj2.plusOne());
 
 ### 传递包装的对象
 
-除了包装和返回C++对象外，还可以通过使用Node.js的帮助函数`node::ObjectWrap::Unwrap`来解包对象的方式来传递包装的对象。 下面的示例展示了`add()`函数，它可以获取两个`MyObject`对象来作为输入参数：
+除了包装和返回C++对象以外，可以通过使用Node.js帮助函数 （`node::ObjectWrap::Unwrap`）解包装它们来传递包装的对象。 下面的示例展示了 `add()` 函数，它可以获取两个 `MyObject` 对象作为输入参数：
 
 ```cpp
 // addon.cc
@@ -837,7 +837,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-在`myobject.h`中，一个新的公共方法被添加，以允许在解包对象后访问私有类型的值。
+在 `myobject.h` 头文件中， 添加了一个新的公共类型方法，以允许在解包装对象后访问私有类型的值。
 
 ```cpp
 // myobject.h
@@ -869,7 +869,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-`myobject.cc`的实现和之前的类似：
+对 `myobject.cc` 的实现和之前的示例类似：
 
 ```cpp
 // myobject.cc
@@ -959,7 +959,7 @@ console.log(result);
 
 ### AtExit钩子
 
-"AtExit"是一个函数，它会在Node.js事件循环结束后，但在JavaScript虚拟机被终止以及Node.js被关闭之前被调用。 "AtExit" 钩子通过使用`node::AtExit` API来进行注册。
+AtExit 钩子是一个函数，它在 Node.js 事件循环结束后，但在 JavaScript 虚拟机被终止与 Node.js 关闭前被调用。 AtExit 钩子使用 `node::AtExit` API注册。
 
 #### void AtExit(callback, args)
 
