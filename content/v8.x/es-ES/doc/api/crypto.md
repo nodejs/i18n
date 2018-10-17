@@ -16,13 +16,13 @@ const hash = crypto.createHmac('sha256', secret)
                    .update('I love cupcakes')
                    .digest('hex');
 console.log(hash);
-// Prints:
+// Imprime:
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 ```
 
 ## Determinar si el soporte de crypto está desactivado
 
-Para Node.js es posible crear sin la ayuda del módulo `crypto`. En estos casos, llamar al comando `require('crypto')` arrojará como resultado un error.
+Es posible que Node.js sea compilado sin incluir soporte para el módulo `crypto`. En estos casos, llamar al comando `require('crypto')` arrojará como resultado un error.
 
 ```js
 let crypto;
@@ -33,7 +33,7 @@ try {
 }
 ```
 
-## Tipo: Certificado
+## Clase: Certificado
 
 <!-- YAML
 added: v0.11.8
