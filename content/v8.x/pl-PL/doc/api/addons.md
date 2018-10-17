@@ -631,7 +631,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-W `myobject.h` dodawana jest statyczna metoda `NewInstance()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
+W `mójobiekt.h` dodawana jest statyczna metoda `NowaInstancja()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
 // mójobiekt.h
@@ -791,7 +791,7 @@ console.log(obj2.plusOne());
 
 ### Przekazywanie zapakowanych obiektów
 
-Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `add()`, która może przyjąć dwa obiekty `MyObject` jako argumenty wejściowe:
+Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `dodaj()`, która może przyjąć dwa obiekty `MójObiekt` jako argumenty wejściowe:
 
 ```cpp
 // addon.cc
@@ -840,7 +840,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 W `mójobiekt.h` dodano nową publiczną metodę zezwalającą na dostęp do prywatnych wartości po rozpakowaniu obiektu.
 
 ```cpp
-// myobject.h
+// mójobiekt.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -872,7 +872,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// myobject.cc
+// mójobiekt.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -910,7 +910,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Wywołany konstruktor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
