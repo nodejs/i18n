@@ -199,25 +199,25 @@ void Add(const FunctionCallbackInfo<Value>& args) {
 
 //Sprawdź liczbę przekazanych argumentów.
   if (args.Length() < 2) {
-    // Throw an Error that is passed back to JavaScript
+    // Zgłoś błąd, który jest przekazywany spowrotem do JavaScript
     isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong number of arguments")));
+        String::NewFromUtf8(izoluj, "Zła liczba argumentów")));
     return;
   }
 
-  // Check the argument types
+  // Sprawdź rodzaje argumentów
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong arguments")));
+        String::NewFromUtf8(izoluj, "Złe argumenty")));
     return;
   }
 
-  // Perform the operation
+  // Wykonaj operację
   double value = args[0]->NumberValue() + args[1]->NumberValue();
-  Local<Number> num = Number::New(isolate, value);
+  Local<Number> num = Number::New(izoluj, wartość);
 
-  // Set the return value (using the passed in
-  // FunctionCallbackInfo<Value>&)
+  // Ustal wartość zwrotną (używając przekazanej
+  // FunkcjiCallbackInfo<Value>&)
   args.GetReturnValue().Set(num);
 }
 
@@ -569,7 +569,7 @@ const obj = addon.createObject();
 Najpierw zaimplementowana jest metoda `twórzObiekt()` w `dodatku.cc`:
 
 ```cpp
-// addon.cc
+// dodatek.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -600,7 +600,7 @@ NODE_MODULE(addon, InitAll)
 W `myobject.h` dodawana jest statyczna metoda `NewInstance()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
-// myobject.h
+// mójobiekt.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -632,7 +632,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja w `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// myobject.cc
+// mójobiekt.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -659,12 +659,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Przygotuj szablon konstruktora
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototyp
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -674,7 +674,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Wywołaj jako konstruktora: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -740,19 +740,19 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Druki: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Druki: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Druki: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Druki: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Druki: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Druki: 23
 ```
 
 ### Przekazywanie zapakowanych obiektów
