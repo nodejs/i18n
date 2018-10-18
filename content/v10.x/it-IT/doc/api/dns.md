@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-I Moduli `dns` contengono funzioni appartenenti a due diverse categorie:
+Il Modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
-1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il name resolution e non devono necessariamente svolgere alcuna network comunication. Questa categoria contiene una sola funzione `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
 
 Ad esempio, guarda `iana.org`.
 
@@ -17,9 +17,9 @@ dns.lookup('iana.org', (err, address, family) => {
 // indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
-2) Le funzioni che si connettono a un effettivo server DNS per eseguire il name resolution e che utilizzano *sempre* la rete per eseguire le DNS queries. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`*tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
+2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`* tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
 
-Below is an example that resolves `'archive.org'` then reverse resolves the IP addresses that are returned.
+Di seguito è riportato un esempio di risoluzione di `'archive.org'`, quindi l'indirizzo IP che ci viene restituito è risolto all'inverso.
 
 ```js
 const dns = require('dns');
@@ -40,24 +40,24 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-There are subtle consequences in choosing one over the other, please consult the [Implementation considerations section](#dns_implementation_considerations) for more information.
+Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazione sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
 
-## Class: dns.Resolver
+## Classe: dns.Resolver
 
 <!-- YAML
 added: v8.3.0
 -->
 
-An independent resolver for DNS requests.
+Un "resolver" indipendente per le richieste DNS.
 
-Note that creating a new resolver uses the default server settings. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolver:
+Si consideri che la creazione di un nuovo "resolver" utilizza le impostazioni di default del server. Le impostazioni utilizzate per un "resolver" che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri "resolver":
 
 ```js
 const { Resolver } = require('dns');
 const resolver = new Resolver();
 resolver.setServers(['4.4.4.4']);
 
-// This request will use the server at 4.4.4.4, independent of global settings.
+// Questa richiesta userà il server 4.4.4.4. indipendentemente dalle impostazioni globali.
 resolver.resolve4('example.org', (err, addresses) => {
   // ...
 });
