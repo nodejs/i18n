@@ -2555,22 +2555,22 @@ https://github.com/nodejs/node/commit/58002d56bc79410c5ff397fc0e1ffec0665db38a
 * Pasar secureProtocol durante la creación de tls.Server (Theo Schlossnagle)
 
 * Que TLS use RC4-SHA por defecto
-* Don't strangely drop out of event loop on HTTPS client uploads [#892](https://github.com/joyent/node/issues/892)
-* Doc improvements
-* Upgrade v8 to 3.1.8.10
+* No abandonar de manera extraña el bucle de evento ante cargas del cliente HTTPS [#892](https://github.com/joyent/node/issues/892)
+* Mejoras de doc
+* Actualizar v8 a 3.1.8.10
 
 <a id="0.4.5"></a>
 
-## 2011.04.01, Version 0.4.5 (stable)
+## 2011.04.01, Versión 0.4.5 (estable)
 
 https://github.com/nodejs/node/commit/787a343b588de26784fef97f953420b53a6e1d73
 
-* Fix listener leak in stream.pipe() (Mikeal Rogers)
-* Retain buffers in fs.read/write() GH-814 (Jorge Chamorro Bieling)
-* TLS performance improvements
-* SlowBuffer.prototype.slice bug GH-843
-* process.stderr.write should return true
-* Immediate pause/resume race condition GH-535 (isaacs)
+* Reparar fuga de listener en stream.pipe() (Mikeal Rogers)
+* Retener buffers en fs.read/write() GH-814 (Jorge Chamorro Bieling)
+* Mejoras de rendimiento de TLS
+* Bug de SlowBuffer.prototype.slice GH-843
+* process.stderr.write debe volver como "true"
+* Pausa/Reanudación inmediata de la condición de carrera GH-535 (isaacs)
 * Set default host header properly GH-721 (isaacs)
 * Upgrade V8 to 3.1.8.8
 
