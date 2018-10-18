@@ -2451,8 +2451,8 @@ https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 
 * [#394](https://github.com/joyent/node/issues/394) Corregir que Buffer suelta el último carácter nulo en UTF-8
-* [#829](https://github.com/joyent/node/issues/829) Backport r8577 from V8 (Ben Noordhuis)
-* [#877](https://github.com/joyent/node/issues/877) Don't wait for HTTP Agent socket pool to establish connections.
+* [#829](https://github.com/joyent/node/issues/829) Backport r8577 desde V8 (Ben Noordhuis)
+* [#877](https://github.com/joyent/node/issues/877) No esperar por el socket del Agente de HTTP para establecer conexiones.
 * [#915](https://github.com/joyent/node/issues/915) Find kqueue on FreeBSD correctly (Brett Kiefer)
 * [#1085](https://github.com/joyent/node/issues/1085) HTTP: Fix race in abort/dispatch code (Stefan Rusu)
 * [#1274](https://github.com/joyent/node/issues/1274) debugger improvement (Yoshihiro Kikuchi)
