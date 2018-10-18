@@ -256,9 +256,9 @@ changes:
 
 Trasmette un datagram sul socket. La `port` e l'`address` di destinazione devono essere specificate.
 
-L'argomento `msg` contiene il messaggio da inviare. A seconda del tipo, può essere applicato un comportamento diverso. Se `msg` è un `Buffer` o un `Uint8Array`, i valori `offset` e `length` specificano rispettivamente l'offset all'interno del `Buffer` dove inizia il messaggio e il numero di byte all'interno del messaggio. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
+L'argomento `msg` contiene il messaggio da inviare. A seconda del tipo, può essere applicato un comportamento diverso. Se `msg` è un `Buffer` o un `Uint8Array`, i valori `offset` e `length` specificano rispettivamente l'offset all'interno del `Buffer` dove inizia il messaggio e il numero di byte all'interno del messaggio. Se `msg` è una `String`, allora viene automaticamente convertito in un `Buffer` con codifica `'utf8'`. Con i messaggi contenenti caratteri multibyte, `offset` e `length` verranno calcolati rispetto alla [lunghezza del byte](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) e non alla posizione del carattere. Se `msg` è un array, `offset` e `length` non devono essere specificati.
 
-The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
+L'argomento `address` è una stringa. Se il valore di `address` è un hostname, verrà utilizzato il DNS per risolvere l'indirizzo dell'host. Se `address` non è fornito oppure corrisponde a false, di default verrà utilizzato `'127.0.0.1'` (per i socket `udp4`) oppure `'::1'` (per i socket `udp6`).
 
 If the socket has not been previously bound with a call to `bind`, the socket is assigned a random port number and is bound to the "all interfaces" address (`'0.0.0.0'` for `udp4` sockets, `'::0'` for `udp6` sockets.)
 
