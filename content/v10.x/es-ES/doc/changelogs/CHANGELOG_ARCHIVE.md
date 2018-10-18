@@ -2521,33 +2521,33 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 
 <a id="0.4.7"></a>
 
-## 2011.04.22, Version 0.4.7 (stable)
+## 2011.04.22, Versión 0.4.7 (estable)
 
 https://github.com/nodejs/node/commit/c85455a954411b38232e79752d4abb61bb75031b
 
-* Don't emit error on ECONNRESET from read() [#670](https://github.com/joyent/node/issues/670)
-* Fix: Multiple pipes to the same stream were broken [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
+* No emitir error ante ECONNRESET desde read() [#670](https://github.com/joyent/node/issues/670)
+* Fix: Múltiples pipes dirigidas hacia el mismo stream estaban dañadas [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
 
-* URL parsing/formatting corrections [#954](https://github.com/joyent/node/issues/954) (isaacs)
+* Correcciones de análisis/formateo de URL [#954](https://github.com/joyent/node/issues/954) (isaacs)
 
-* make it possible to do repl.start('', stream) (Wade Simmons)
-* Add os.loadavg for SunOS (Robert Mustacchi)
-* Fix timeouts with floating point numbers [#897](https://github.com/joyent/node/issues/897) (Jorge Chamorro Bieling)
-* Improve docs.
+* hacer que sea posible hacer repl.start('', stream) (Wade Simmons)
+* Añadir os.loadavg para SunOS (Robert Mustacchi)
+* Corregir timeouts con números de punto flotante [#897](https://github.com/joyent/node/issues/897) (Jorge Chamorro Bieling)
+* Mejorar docs.
 
 <a id="0.4.6"></a>
 
-## 2011.04.13, Version 0.4.6 (stable)
+## 2011.04.13, Versión 0.4.6 (estable)
 
 https://github.com/nodejs/node/commit/58002d56bc79410c5ff397fc0e1ffec0665db38a
 
-* Don't error on ENOTCONN from shutdown() [#670](https://github.com/joyent/node/issues/670)
-* Auto completion of built-in debugger suggests prefix match rather than partial match. (koichik)
+* No emitir error ante ENOTCONN desde shutdown() [#670](https://github.com/joyent/node/issues/670)
+* Auto-completado de built-in debugger sugiere coincidencia de prefijo en lugar de coincidencia parcial. (koichik)
 
-* circular reference in vm modules. [#822](https://github.com/joyent/node/issues/822) (Jakub Lekstan)
+* referencia circular en módulos de vm. [#822](https://github.com/joyent/node/issues/822) (Jakub Lekstan)
 
-* http response.readable should be false after 'end' [#867](https://github.com/joyent/node/issues/867) (Abe Fettig)
-* Implement os.cpus() and os.uptime() on Solaris (Scott McWhirter)
+* response.readable de http debería ser falsa después de "end" [#867](https://github.com/joyent/node/issues/867) (Abe Fettig)
+* Implementar os.cpus() y os.uptime() en Solaris (Scott McWhirter)
 * fs.ReadStream: Allow omission of end option for range reads [#801](https://github.com/joyent/node/issues/801) (Felix Geisendörfer)
 
 * Buffer.write() with UCS-2 should not be write partial char [#916](https://github.com/joyent/node/issues/916) (koichik)
