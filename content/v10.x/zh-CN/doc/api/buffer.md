@@ -554,7 +554,7 @@ changes:
 
 返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为 [<0>String.prototype.length</0>] 返回的是字符串中的 *字符* 数。
 
-此函数假定有效的输入是 `'base64'` 和 `'hex'`。 对于包含 non-Base64/Hex-encoded 的数据的字符串（例如，空格），返回值可能大于从字符串中创建的 `Buffer` 的长度。
+对于 `'base64'` 和 `'hex'`， 此函数假定有效的输入。 对于包含 non-Base64/Hex-encoded 的数据的字符串（例如，空格），返回值可能大于从字符串中创建的 `Buffer` 的长度。
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
