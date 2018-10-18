@@ -176,7 +176,7 @@
 * [[`c0f153528e`](https://github.com/nodejs/node/commit/c0f153528e)] - **src**: eliminar la bandera `kFlagNoShutdown` (Anna Henningsen) [#20388](https://github.com/nodejs/node/pull/20388)
 * [[`58be6efd29`](https://github.com/nodejs/node/commit/58be6efd29)] - **src**: evitar `std::make\_unique` (Anna Henningsen) [#20386](https://github.com/nodejs/node/pull/20386)
 * [[`31812edb2d`](https://github.com/nodejs/node/commit/31812edb2d)] - **src**: eliminar las operaciones de copia innecesarias en el seguimiento (Anna Henningsen) [#20356](https://github.com/nodejs/node/pull/20356)
-* [[`e0d2bc5cce`](https://github.com/nodejs/node/commit/e0d2bc5cce)] - **src**: mejorar la excepción grave (Ruben Bridgewater) [#20294](https://github.com/nodejs/node/pull/20294)
+* [[`e0d2bc5cce`](https://github.com/nodejs/node/commit/e0d2bc5cce)] - **src**: mejorar la excepción fatal (Ruben Bridgewater) [#20294](https://github.com/nodejs/node/pull/20294)
 * [[`44fdd36b96`](https://github.com/nodejs/node/commit/44fdd36b96)] - **src**: remove SecureContext `\_external` getter (Anna Henningsen) [#20237](https://github.com/nodejs/node/pull/20237)
 * [[`81de533836`](https://github.com/nodejs/node/commit/81de533836)] - **src**: crear cadenas por aislamiento después de configurar la plataforma (Ulan Degenbaev) [#20175](https://github.com/nodejs/node/pull/20175)
 * [[`b5bc6bd94b`](https://github.com/nodejs/node/commit/b5bc6bd94b)] - **src**: fix Systemtap node\_gc\_stop probe (William Cohen) [#20152](https://github.com/nodejs/node/pull/20152)
