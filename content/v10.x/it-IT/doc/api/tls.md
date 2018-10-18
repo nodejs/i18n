@@ -955,7 +955,7 @@ openssl s_client -connect 127.0.0.1:8000
 added: v0.10.2
 -->
 
-* Returns: {string[]}
+* Restituisce: {string[]}
 
 Returns an array with the names of the supported SSL ciphers.
 
