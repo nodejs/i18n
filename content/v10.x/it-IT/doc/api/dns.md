@@ -87,7 +87,7 @@ Sono disponibili i seguenti metodi dal modulo `dns`:
 added: v8.3.0
 -->
 
-Cancel all outstanding DNS queries made by this resolver. The corresponding callbacks will be called with an error with code `ECANCELLED`.
+Cancella tutte le query DNS eccezionali effettuate da questo "resolver". I "callback" corrispondenti verranno identificati con il codice di errore `ECANCELLED`.
 
 ## dns.getServers()
 
@@ -95,7 +95,7 @@ Cancel all outstanding DNS queries made by this resolver. The corresponding call
 added: v0.11.3
 -->
 
-- Returns: {string[]}
+- Restituisce: {string[]}
 
 Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 
