@@ -2465,16 +2465,16 @@ https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 
 <a id="0.4.9"></a>
 
-## 2011.06.29, Version 0.4.9 (stable)
+## 2011.06.29, Versión 0.4.9 (estable)
 
 https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 
-* Improve documentation
-* [#1095](https://github.com/joyent/node/issues/1095) error handling bug in stream.pipe() (Felix Geisendörfer)
-* [#1097](https://github.com/joyent/node/issues/1097) Fix a few leaks in node_crypto.cc (Ben Noordhuis)
-* [#562](https://github.com/joyent/node/issues/562) [#1078](https://github.com/joyent/node/issues/1078) Parse file:// urls properly (Ryan Petrello)
-* [#880](https://github.com/joyent/node/issues/880) Option to disable SSLv2 (Jérémy Lal)
-* [#1087](https://github.com/joyent/node/issues/1087) Disabling SSL compression disabled with early OpenSSLs.
+* Mejorar documentación
+* [#1095](https://github.com/joyent/node/issues/1095) error manejando bug en stream.pipe() (Felix Geisendörfer)
+* [#1097](https://github.com/joyent/node/issues/1097) Reparar algunas fugas en node_crypto.cc (Ben Noordhuis)
+* [#562](https://github.com/joyent/node/issues/562) [#1078](https://github.com/joyent/node/issues/1078) Analizar correctamente urls file:// (Ryan Petrello)
+* [#880](https://github.com/joyent/node/issues/880) Opción para inhabilitar SSLv2 (Jérémy Lal)
+* [#1087](https://github.com/joyent/node/issues/1087) Inhabilitar compresión de SSL inhabilitada con versión temprana de OpenSSLs.
 * [#1144](https://github.com/joyent/node/issues/1144) debugger: don't allow users to input non-valid commands (Siddharth Mahendraker)
 
 * Perf improvement for util.inherits
