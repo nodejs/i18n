@@ -235,9 +235,9 @@ someAsyncApiCall(() => {
 bar = 1;
 ```
 
-Użytkownik definiuje `someAsyncApiCall()`, aby mieć sygnaturę asynchroniczną, ale tak naprawdę działa synchronicznie. When it is called, the callback provided to `someAsyncApiCall()` is called in the same phase of the event loop because `someAsyncApiCall()` doesn't actually do anything asynchronously. As a result, the callback tries to reference `bar` even though it may not have that variable in scope yet, because the script has not been able to run to completion.
+Użytkownik definiuje `someAsyncApiCall()`, aby mieć sygnaturę asynchroniczną, ale tak naprawdę działa synchronicznie. Po wywołaniu wywołanie zwrotne dostarczone do `someAsyncApiCall()` jest wywoływane w tej samej fazie pętli zdarzeń, ponieważ `someAsyncApiCall()` nic istotnego nie robi asynchronicznie. W wyniku tego wywołanie zwrotne próbuje nawet odwołać się do `Foobaru` choć może nie mieć jeszcze tej zmiennej w zasięgu, ponieważ skrypt nie jest w stanie działać do końca.
 
-By placing the callback in a `process.nextTick()`, the script still has the ability to run to completion, allowing all the variables, functions, etc., to be initialized prior to the callback being called. It also has the advantage of not allowing the event loop to continue. It may be useful for the user to be alerted to an error before the event loop is allowed to continue. Here is the previous example using `process.nextTick()`:
+Umieszczając wywołanie zwrotne w `process.nextTick()`, skrypt nadal ma możliwość uruchomienia w całości, pozwalając na wszystkie zmienne, funkcje, itp., które należy zainicjować przed wywołaniem wywołania zwrotnego. To również ma tą zaletę nie dopuszczania na kontynuację pętli zdarzeń. Może być użyteczna, aby użytkownik był powiadamiany o błędzie przed dopuszczeniem do kontynuowania pętli zdarzeń. Here is the previous example using `process.nextTick()`:
 
 ```js
 let bar;
