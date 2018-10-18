@@ -189,7 +189,7 @@
 * [[`e19200a666`](https://github.com/nodejs/node/commit/e19200a666)] - **test**: fix flaky http2-flow-control test (Anatoli Papirovski) [#20556](https://github.com/nodejs/node/pull/20556)
 * [[`b2d3db433d`](https://github.com/nodejs/node/commit/b2d3db433d)] - **test**: utilizar common.canCreateSymLink() consistentemente (cjihrig) [#20540](https://github.com/nodejs/node/pull/20540)
 * [[`578e0546e0`](https://github.com/nodejs/node/commit/578e0546e0)] - **test**: corregir test-cli-node-options.js en mips (Ruben Bridgewater) [#20377](https://github.com/nodejs/node/pull/20377)
-* [[`601f138063`](https://github.com/nodejs/node/commit/601f138063)] - **test**: corregir el buffer escrito en mips (Ruben Bridgewater) [#20377](https://github.com/nodejs/node/pull/20377)
+* [[`601f138063`](https://github.com/nodejs/node/commit/601f138063)] - **test**: corregir que el buffer escribe en mips (Ruben Bridgewater) [#20377](https://github.com/nodejs/node/pull/20377)
 * [[`1de67c71fb`](https://github.com/nodejs/node/commit/1de67c71fb)] - **test**: fix common.canCreateSymLink() on non-Windows (Masashi Hirano) [#20511](https://github.com/nodejs/node/pull/20511)
 * [[`70b2e169b4`](https://github.com/nodejs/node/commit/70b2e169b4)] - **test**: arreglar la prueba de error N-API (Gabriel Schulhof) [#20487](https://github.com/nodejs/node/pull/20487)
 * [[`6052ccc009`](https://github.com/nodejs/node/commit/6052ccc009)] - **test**: rename misnamed test (Rich Trott) [#20532](https://github.com/nodejs/node/pull/20532)
