@@ -2483,10 +2483,10 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 
 * [#1177](https://github.com/joyent/node/issues/1177) Remover optimización de búsqueda de node_modules para mejorar el soporte para estructuras del proyecto anidadas (Mathias Buus)
 
-* [#1203](https://github.com/joyent/node/issues/1203) Add missing scope.Close to fs.sendfileSync
+* [#1203](https://github.com/joyent/node/issues/1203) Añadir scope.Close faltante a fs.sendfileSync
 
-* [#1187](https://github.com/joyent/node/issues/1187) Support multiple 'link' headers
-* [#1196](https://github.com/joyent/node/issues/1196) Fix -e/--eval can't load module from node_modules (Koichi Kobayashi)
+* [#1187](https://github.com/joyent/node/issues/1187) Soportar múltiples cabeceras "link"
+* [#1196](https://github.com/joyent/node/issues/1196) Corregir que -e/--eval no puede cargar módulo desde node_modules (Koichi Kobayashi)
 * Upgrade V8 to 3.1.8.25, upgrade http-parser.
 
 <a id="0.4.8"></a>
