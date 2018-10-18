@@ -237,7 +237,7 @@ bar = 1;
 
 Użytkownik definiuje `someAsyncApiCall()`, aby mieć sygnaturę asynchroniczną, ale tak naprawdę działa synchronicznie. Po wywołaniu wywołanie zwrotne dostarczone do `someAsyncApiCall()` jest wywoływane w tej samej fazie pętli zdarzeń, ponieważ `someAsyncApiCall()` nic istotnego nie robi asynchronicznie. W wyniku tego wywołanie zwrotne próbuje nawet odwołać się do `Foobaru` choć może nie mieć jeszcze tej zmiennej w zasięgu, ponieważ skrypt nie jest w stanie działać do końca.
 
-Umieszczając wywołanie zwrotne w `process.nextTick()`, skrypt nadal ma możliwość uruchomienia w całości, pozwalając na wszystkie zmienne, funkcje, itp., które należy zainicjować przed wywołaniem wywołania zwrotnego. To również ma tą zaletę nie dopuszczania na kontynuację pętli zdarzeń. Może być użyteczna, aby użytkownik był powiadamiany o błędzie przed dopuszczeniem do kontynuowania pętli zdarzeń. Here is the previous example using `process.nextTick()`:
+Umieszczając wywołanie zwrotne w `process.nextTick()`, skrypt nadal ma możliwość uruchomienia w całości, pozwalając na wszystkie zmienne, funkcje, itp., które należy zainicjować przed wywołaniem wywołania zwrotnego. To również ma tą zaletę nie dopuszczania na kontynuację pętli zdarzeń. Może być to użyteczne, aby użytkownik był powiadamiany o błędzie przed dopuszczeniem do kontynuowania pętli zdarzeń. Oto poprzedni przykład używający `process.nextTick()`:
 
 ```js
 let bar;
@@ -261,15 +261,15 @@ const server = net.createServer(() => {}).listen(8080);
 server.on('listening', () => {});
 ```
 
-When only a port is passed the port is bound immediately. So the `'listening'` callback could be called immediately. Problem is that the `.on('listening')` will not have been set by that time.
+Gdy tylko port zostanie przekazany, port jest natychmiast związany. Więc Wywołanie zwrotne `"odsłuchiwanie"` może zostać wywołane natychmiast. Problem polega na tym, że `.on("nasłuchiwanie")` nie zostanie ustawione do tego czasu.
 
-To get around this the `'listening'` event is queued in a `nextTick()` to allow the script to run to completion. Which allows the user to set any event handlers they want.
+Aby ominąć `"nasłuchiwanie"`, zdarzenie jest ustawiane w kolejce w `nextTick()` aby umożliwić uruchomienie skryptu w całości. Co pozwala użytkownikowi ustawić dowolne programy obsługi zdarzeń, które chce.
 
-## `process.nextTick()` vs `setImmediate()`
+## `process.nextTick()` vs `ustawNatychmiastowo()`
 
-We have two calls that are similar as far as users are concerned, but their names are confusing.
+O ile te dwa wywołania są podobne dla użytkowników, to ich nazwy są mylące.
 
-* `process.nextTick()` fires immediately on the same phase
+* `process.nextTick()` odpala się natychmiast w tej samej fazie
 * `setImmediate()` fires on the following iteration or 'tick' of the event loop
 
 In essence, the names should be swapped. `process.nextTick()` fires more immediately than `setImmediate()` but this is an artifact of the past which is unlikely to change. Making this switch would break a large percentage of the packages on npm. Every day more new modules are being added, which mean every day we wait, more potential breakages occur. While they are confusing, the names themselves won't change.
