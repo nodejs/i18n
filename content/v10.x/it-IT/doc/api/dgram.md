@@ -112,15 +112,15 @@ added: v0.1.99
 * `address` {string}
 * `callback` {Function} senza parametri. Chiamata quando il binding (collegamento) è completo.
 
-Per i socket UDP, fa sì che il `dgram.Socket` ascolti i messaggi dei datagram su una `port` denominata e sull'`address` facoltativo. Se `port` non è specificato oppure corrisponde a `0`, il sistema operativo tenterà il binding (collegamento) ad una porta casuale. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+Per i socket UDP, fa sì che il `dgram.Socket` ascolti i messaggi dei datagram su una `port` denominata e sull'`address` facoltativo. Se `port` non è specificato oppure corrisponde a `0`, il sistema operativo tenterà il binding (collegamento) ad una porta casuale. Se `address` non è specificato, il sistema operativo tenterà di eseguire il listening (ascolto) su tutti gli indirizzi. Una volta completato il binding, viene emesso un evento `'listening'` e viene chiamata la funzione `callback` opzionale.
 
-Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
+Da notare che specificare un listener di eventi `'listening'` e passare un `callback` al metodo `socket.bind()` non è dannoso ma neanche utile.
 
-A bound datagram socket keeps the Node.js process running to receive datagram messages.
+Un socket datagram che ha completato il binding mantiene il processo Node.js in esecuzione per ricevere i messaggi del datagram.
 
-If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+Se il binding fallisce, viene generato un evento `'error'`. In rari casi (ad esempio quando si tenta di eseguire il binding con un socket chiuso), potrebbe essere generato un [`Error`][].
 
-Example of a UDP server listening on port 41234:
+Esempio di un UDP server listening sulla porta 41234:
 
 ```js
 const dgram = require('dgram');
