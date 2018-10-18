@@ -97,7 +97,7 @@ added: v0.11.3
 
 - Restituisce: {string[]}
 
-Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
+Restituisce un "array" di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
 
 <!-- eslint-disable semi-->
 
@@ -123,8 +123,8 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
-  - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
+  - `family`{integer} Il record "family". Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
+  - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
   - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 - `callback` {Function} 
