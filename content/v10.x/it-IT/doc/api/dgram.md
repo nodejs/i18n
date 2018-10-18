@@ -260,15 +260,15 @@ L'argomento `msg` contiene il messaggio da inviare. A seconda del tipo, può ess
 
 L'argomento `address` è una stringa. Se il valore di `address` è un hostname, verrà utilizzato il DNS per risolvere l'indirizzo dell'host. Se `address` non è fornito oppure corrisponde a false, di default verrà utilizzato `'127.0.0.1'` (per i socket `udp4`) oppure `'::1'` (per i socket `udp6`).
 
-If the socket has not been previously bound with a call to `bind`, the socket is assigned a random port number and is bound to the "all interfaces" address (`'0.0.0.0'` for `udp4` sockets, `'::0'` for `udp6` sockets.)
+Se il socket non è stato precedentemente sottoposto al binding con una chiamata a `bind`, gli viene assegnato un numero di porta casuale e viene sottoposto al binding con l'indirizzo di "tutte le interfacce" (`'0.0.0.0'` per i socket `udp4`, `'::0'` per i socket `udp6`.)
 
-An optional `callback` function may be specified to as a way of reporting DNS errors or for determining when it is safe to reuse the `buf` object. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
+Potrebbe essere specificata una funzione `callback` opzionale come un modo per segnalare gli errori del DNS o per determinare quando è sicuro il riutilizzo del `buf` object. Da notare che le ricerche del DNS ritardano il tempo di invio del ciclo di eventi Node.js (event loop) di almeno un secondo.
 
-The only way to know for sure that the datagram has been sent is by using a `callback`. If an error occurs and a `callback` is given, the error will be passed as the first argument to the `callback`. If a `callback` is not given, the error is emitted as an `'error'` event on the `socket` object.
+L'unico modo per sapere con certezza che il datagram sia stato inviato è l'utilizzo di un `callback`. Se si verifica un errore e viene fornito un `callback`, l'errore verrà passato al `callback` come primo argomento. Se non viene fornito un `callback`, l'errore viene emesso come un evento `'error'` sul `socket` object.
 
-Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
+Offset e length sono facoltativi, ma *devono* essere impostati se vengono utilizzati entrambi. Sono supportati solo quando il primo argomento è un `Buffer` o un `Uint8Array`.
 
-Example of sending a UDP packet to a port on `localhost`;
+Esempio d'invio di un pacchetto UDP a una porta su `localhost`;
 
 ```js
 const dgram = require('dgram');
@@ -279,7 +279,7 @@ client.send(message, 41234, 'localhost', (err) => {
 });
 ```
 
-Example of sending a UDP packet composed of multiple buffers to a port on `127.0.0.1`;
+Esempio d'invio di un pacchetto UDP composto da più buffer su una porta su `127.0.0.1`;
 
 ```js
 const dgram = require('dgram');
@@ -291,7 +291,7 @@ client.send([buf1, buf2], 41234, (err) => {
 });
 ```
 
-Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
+L'invio di più buffer potrebbe essere più veloce o più lento a seconda dell'applicazione e del sistema operativo. È importante eseguire i benchmark per determinare la strategia ottimale per ogni singolo caso. Generalmente parlando, tuttavia, l'invio di più buffer è più veloce.
 
 **Una Nota sulla dimensione del UDP Datagram**
 
