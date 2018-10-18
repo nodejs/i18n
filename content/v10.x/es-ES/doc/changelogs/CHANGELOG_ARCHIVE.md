@@ -2474,8 +2474,8 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 * [#1097](https://github.com/joyent/node/issues/1097) Reparar algunas fugas en node_crypto.cc (Ben Noordhuis)
 * [#562](https://github.com/joyent/node/issues/562) [#1078](https://github.com/joyent/node/issues/1078) Analizar correctamente urls file:// (Ryan Petrello)
 * [#880](https://github.com/joyent/node/issues/880) Opción para inhabilitar SSLv2 (Jérémy Lal)
-* [#1087](https://github.com/joyent/node/issues/1087) Inhabilitar compresión de SSL inhabilitada con versión temprana de OpenSSLs.
-* [#1144](https://github.com/joyent/node/issues/1144) debugger: don't allow users to input non-valid commands (Siddharth Mahendraker)
+* [#1087](https://github.com/joyent/node/issues/1087) Inhabilitar compresión de SSL inhabilitada con OpenSSLs tempranos.
+* [#1144](https://github.com/joyent/node/issues/1144) debugger: no permitir que los usuarios ingresen comandos nó válidos (Siddharth Mahendraker)
 
 * Perf improvement for util.inherits
 
