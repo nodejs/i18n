@@ -124,9 +124,9 @@ changes:
 - `hostname` {string}
 - `options` {integer | Object} 
   - `family`{integer} Il record "family". Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
-  - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
-  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
-  - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
+  - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
+  - `all` {boolean} Quando `true`, il "callback" restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
+  - `verbatim` {boolean} Quando `true`. il "callback" riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il "resolver" DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. New code should use `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
   - `address` {string} A string representation of an IPv4 or IPv6 address.
