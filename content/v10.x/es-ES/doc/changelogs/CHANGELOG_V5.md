@@ -46,7 +46,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: El apoyo oficial para la línea de lanzamiento v5 está programada para caducar alrededor de Junio del 2016. Los usuarios de v5 deberían actualizar a [Node.js v6](CHANGELOG_V6.md).
 
@@ -716,7 +716,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`7f22c8c8a6`](https://github.com/nodejs/node/commit/7f22c8c8a6)] - **src**: remover TickInfo::in_tick() sin uso (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
 * [[`406eb1f516`](https://github.com/nodejs/node/commit/406eb1f516)] - **src**: remover sin uso de TickInfo::last_threw() (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
 * [[`bcec2fecbd`](https://github.com/nodejs/node/commit/bcec2fecbd)] - **src**: añadir AsyncCallbackScope (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
-* [[`2cb1594279`](https://github.com/nodejs/node/commit/2cb1594279)] - **src**: fix MakeCallback error handling (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
+* [[`2cb1594279`](https://github.com/nodejs/node/commit/2cb1594279)] - **src**: reparar el manejo del error MakeCallback (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
 * [[`8d6e679a90`](https://github.com/nodejs/node/commit/8d6e679a90)] - **src,test,tools**: modify for more stringent linting (Rich Trott) [#5214](https://github.com/nodejs/node/pull/5214)
 * [[`7684b0fcdf`](https://github.com/nodejs/node/commit/7684b0fcdf)] - **stream**: fix no data on partial decode (Brian White) [#5226](https://github.com/nodejs/node/pull/5226)
 * [[`f706cb0189`](https://github.com/nodejs/node/commit/f706cb0189)] - **streams**: 5% throughput gain when sending small chunks (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
