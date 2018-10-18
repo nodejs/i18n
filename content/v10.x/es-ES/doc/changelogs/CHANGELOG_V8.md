@@ -1436,7 +1436,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`140c98b327`](https://github.com/nodejs/node/commit/140c98b327)] - **doc**: documentar el CI de la benchmark (Joyee Cheung) [#16086](https://github.com/nodejs/node/pull/16086)
 * [[`66a2c710f2`](https://github.com/nodejs/node/commit/66a2c710f2)] - **doc**: corregir la compilación de sugerencias de macosx-firewall (suraiyah) [#15829](https://github.com/nodejs/node/pull/15829)
 * [[`44719ed74d`](https://github.com/nodejs/node/commit/44719ed74d)] - **doc**: añadir una descripción más clara de la configuración (Emily Platzer) [#15962](https://github.com/nodejs/node/pull/15962)
-* [[`9f6d535b87`](https://github.com/nodejs/node/commit/9f6d535b87)] - **doc**: update style guide for markdown extension (Rich Trott) [#15786](https://github.com/nodejs/node/pull/15786)
+* [[`9f6d535b87`](https://github.com/nodejs/node/commit/9f6d535b87)] - **doc**: actualizar la guía de estilo para la extensión del markdown (Rich Trott) [#15786](https://github.com/nodejs/node/pull/15786)
 * [[`acd4924448`](https://github.com/nodejs/node/commit/acd4924448)] - **doc**: corregir errores tipográficos de los docs de API de http2 (Daniela Borges Matos de Carvalho) [#15778](https://github.com/nodejs/node/pull/15778)
 * [[`74755415cc`](https://github.com/nodejs/node/commit/74755415cc)] - **doc**: corregir: usar correctamente `public key` en lugar de `private key` (Pavel Pomerantsev) [#16038](https://github.com/nodejs/node/pull/16038)
 * [[`0ae84c2434`](https://github.com/nodejs/node/commit/0ae84c2434)] - **doc**: corregir el uso incorrecto de vm.createContext (tshemsedinov) [#16059](https://github.com/nodejs/node/pull/16059)
