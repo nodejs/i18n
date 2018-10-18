@@ -160,13 +160,13 @@ Per i socket UDP, fa sì che `dgram.Socket` ascolti i messaggi dei datagram su u
 
 Da notare che specificare un listener di eventi `'listening'` e passare un `callback` al metodo `socket.bind()` non è dannoso ma neanche utile.
 
-L'`options` object può contenere una proprietà `exclusive` aggiuntiva che viene utilizzata quando si utilizzano i `dgram.Socket` object con il modulo [`cluster`]. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. When `exclusive` is `true`, however, the handle is not shared and attempted port sharing results in an error.
+L'`options` object può contenere una proprietà `exclusive` aggiuntiva che viene utilizzata quando si utilizzano i `dgram.Socket` object con il modulo [`cluster`]. Quando `exclusive` è impostato su `false` (valore predefinito), gli worker del cluster utilizzeranno lo stesso socket handle sottostante permettendo la condivisione dei compiti di gestione delle connessioni. Tuttavia quando `exclusive` è `true`, l'handle non è condiviso e il tentativo di condivisione della porta genera un errore.
 
-A bound datagram socket keeps the Node.js process running to receive datagram messages.
+Un socket datagram che ha completato il binding mantiene il processo Node.js in esecuzione per ricevere i messaggi del datagram.
 
-If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+Se il binding fallisce, viene generato un evento `'error'`. In rari casi (ad esempio quando si tenta di eseguire il binding con un socket chiuso), potrebbe essere generato un [`Error`][].
 
-An example socket listening on an exclusive port is shown below.
+Di seguito viene mostrato un esempio di socket listening su una porta exclusive.
 
 ```js
 socket.bind({
@@ -182,7 +182,7 @@ socket.bind({
 added: v0.1.99
 -->
 
-Close the underlying socket and stop listening for data on it. If a callback is provided, it is added as a listener for the [`'close'`][] event.
+Chiude il socket sottostante e interrompe il listening dei dati su di esso. Se viene fornito un callback, quest'ultimo viene aggiunto come listener per l'evento [`'close'`][].
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
 
@@ -193,9 +193,9 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Instructs the kernel to leave a multicast group at `multicastAddress` using the `IP_DROP_MEMBERSHIP` socket option. This method is automatically called by the kernel when the socket is closed or the process terminates, so most apps will never have reason to call this.
+Dà istruzioni al kernel di lasciare un gruppo multicast su `multicastAddress` utilizzando l'opzione socket `IP_DROP_MEMBERSHIP`. Questo metodo viene chiamato automaticamente dal kernel quando viene chiuso il socket o termina il processo, quindi la maggior parte delle app non avrà mai motivo di chiamarlo.
 
-If `multicastInterface` is not specified, the operating system will attempt to drop membership on all valid interfaces.
+Se `multicastInterface` non è specificato, il sistema operativo tenterà di eliminare l'iscrizione su tutte le interfacce valide.
 
 ### socket.getRecvBufferSize()
 
@@ -203,7 +203,7 @@ If `multicastInterface` is not specified, the operating system will attempt to d
 added: v8.7.0
 -->
 
-* Returns: {number} the `SO_RCVBUF` socket receive buffer size in bytes.
+* Restituisce: {number} il socket `SO_RCVBUF` riceve la dimensione del buffer in byte.
 
 ### socket.getSendBufferSize()
 
@@ -211,7 +211,7 @@ added: v8.7.0
 added: v8.7.0
 -->
 
-* Returns: {number} the `SO_SNDBUF` socket send buffer size in bytes.
+* Restituisce: {number} il socket `SO_SNDBUF` invia la dimensione del buffer in byte.
 
 ### socket.ref()
 
