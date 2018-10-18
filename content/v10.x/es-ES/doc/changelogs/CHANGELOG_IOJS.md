@@ -1521,7 +1521,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
+* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1580,7 +1580,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1650,9 +1650,9 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ### Known issues
 
 * Existen algunos problemas con temporizadores y `unref()` que todavía están por resolverse. Vea [#1152](https://github.com/nodejs/node/pull/1152).
-* Possible small memory leak(s) may still exist but have yet to be properly identified, details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1709,7 +1709,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1748,7 +1748,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1784,7 +1784,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1860,9 +1860,9 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ### Known issues
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1904,9 +1904,9 @@ run-script`. ([@watilde](https://github.com/watilde))
 ### Known issues
 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -1983,7 +1983,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 * Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas tan rápido como es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -2019,7 +2019,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 * El soporte de Windows tiene algunas fallas sobresalientes que no han sido recogidas por el sistema io.js CI debido a una combinación de factores, incluyendo errores humanos, de programa y de Jenkins. Vea [#1005](https://github.com/nodejs/node/issues/1005) para detalles & discusión. Espere que estos problemas sean abordados tan pronto como sea posible.
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -2064,7 +2064,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 ### Known issues
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
@@ -2122,8 +2122,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 ### Known issues
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -2209,8 +2209,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 ### Known issues
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774) that should appear in the next patch release.
+* No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774), eso debería aparecer en el siguiente lanzamiento de parche.
 
 ### Commits
 
@@ -2287,7 +2287,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 ### Known issues
 
 * El par sustituto en REPL puede congelar el terminal (https://github.com/nodejs/node/issues/690)
-* Not possible to build io.js as a static library (https://github.com/nodejs/node/issues/686)
+* No es posible construir io.js como una librería estática (https://github.com/nodejs/node/issues/686)
 
 ### Commits
 
@@ -2435,8 +2435,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* ARMv6 builds still not working, there is a hold-up in V8 on this, issue #283
-* Template strings can cause segfaults in V8 4.1, https://codereview.chromium.org/857433004, also issue #333
+* Las construcciones ARMv6 todavía no funcionan, hay un retraso en V8 en esto, problema #283
+* Las strings plantilla pueden provocar segfaults en V8 4.1, https://codereview.chromium.org/857433004, también problema #333
 
 ### Commits
 
