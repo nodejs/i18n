@@ -303,7 +303,7 @@ La dimensione massima di un datagram `IPv4/v6` dipende dal `MTU` (*Maximum Trans
   
   Per `IPv6`, l'`MTU` minimo è di `1280` ottetti, tuttavia, la dimensione obbligatoria del buffer di riassemblaggio del frammento è di `1500` ottetti. Il valore di `68` ottetti è molto piccolo, poiché la maggior parte delle tecnologie attuali a livello di collegamento, come l'Ethernet, hanno un `MTU` minimo di `1500`.
 
-È impossibile sapere in anticipo l'MTU di ciascun collegamento attraverso il quale un pacchetto potrebbe viaggiare. L'invio di un datagram maggiore del receiver `MTU` non funzionerà perché il pacchetto verrà rilasciato automaticamente senza informare la sorgente che i dati non hanno raggiunto il destinatario previsto.
+È impossibile sapere in anticipo l'MTU di ciascun collegamento attraverso il quale un pacchetto potrebbe viaggiare. L'invio di un datagram maggiore del receiver `MTU` non funzionerà perché il pacchetto verrà rilasciato automaticamente senza informare la sorgente del fatto che i dati non hanno raggiunto il destinatario previsto.
 
 ### socket.setBroadcast(flag)
 
