@@ -2606,8 +2606,8 @@ https://github.com/nodejs/node/commit/c095ce1a1b41ca015758a713283bf1f0bd41e4c4
 * TLS: Promocionar soporte para certificados de cliente GH-774 (Theo Schlossnagle)
 
 * Bugs del Agente de HTTP: GH-787, GH-784, GH-803.
-* Don't call GetMemoryUsage every 5 seconds.
-* Upgrade V8 to 3.1.8.3
+* No llamar a GetMemoryUsage cada 5 segundos.
+* Actualizar V8 a 3.1.8.3
 
 <a id="0.4.2"></a>
 
