@@ -2498,10 +2498,10 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 * [#974](https://github.com/joyent/node/issues/974) Reportar correctamente errores sin rastro (isaacs)
 * [#983](https://github.com/joyent/node/issues/983) Mejorar la detección de errores de JSON.parse en REPL (isaacs)
 * [#836](https://github.com/joyent/node/issues/836) Los errores del socket del agente burbujean hasta req solo si req existe
-* [#1041](https://github.com/joyent/node/issues/1041) Fix event listener leak check timing (koichik)
-* [#1038](https://github.com/joyent/node/issues/1038) Fix dns.resolve() with 'PTR' throws Error: Unknown type "PTR" (koichik)
+* [#1041](https://github.com/joyent/node/issues/1041) Corregir tiempos de la revisión de fugas del listener de eventos (koichik)
+* [#1038](https://github.com/joyent/node/issues/1038) Arreglar dns.resolve() con «'PTR' throws Error: Unknown type "PTR"» (koichik)
 
-* [#1073](https://github.com/joyent/node/issues/1073) Share SSL context between server connections (Fedor Indutny)
+* [#1073](https://github.com/joyent/node/issues/1073) Compartir contexto de SSL entre conexiones del servidor (Fedor Indutny)
 
 * Disable compression with OpenSSL. Improves memory perf.
 * Implement os.totalmem() and os.freemem() for SunOS (Alexandre Marangone)
