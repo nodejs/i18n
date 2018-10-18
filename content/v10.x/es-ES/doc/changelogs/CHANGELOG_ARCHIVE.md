@@ -2459,9 +2459,9 @@ https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 * [#1291](https://github.com/joyent/node/issues/1291) Responder correctamente a HEAD durante la hotpath de end(body) (Reid Burke)
 * [#1304](https://github.com/joyent/node/issues/1304) TLS: Corregir carrera en el código de aborto/conexión (Stefan Rusu)
 * [#1360](https://github.com/joyent/node/issues/1360) Permitir _ dentro de los nombres de host.
-* Revert 37d529f8 - unbreaks debugger command parsing.
-* Bring back global execScript
-* Doc improvements
+* Revertir 37d529f8 - des-romper análisis del comando del depurador.
+* Traer de vuelta execScript global
+* Mejoras de doc
 
 <a id="0.4.9"></a>
 
