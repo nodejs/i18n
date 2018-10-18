@@ -6,7 +6,7 @@
 
 I Moduli `dns` contengono funzioni appartenenti a due diverse categorie:
 
-1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. This category contains only one function: [`dns.lookup()`][]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il name resolution e non devono necessariamente svolgere alcuna network comunication. Questa categoria contiene una sola funzione `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero fare utilizzando [`dns.lookup()`][].**
 
 Ad esempio, guarda `iana.org`.
 
