@@ -90,7 +90,7 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Indica al kernel di unirsi a un gruppo multicast sul `multicastAddress` e sul `multicastInterface` specificati utilizzando l'opzione socket `IP_ADD_MEMBERSHIP`. Se l'argomento `multicastInterface` non è specificato, il sistema operativo sceglierà un'interfaccia e ne aggiungerà l'iscrizione. To add membership to every available interface, call `addMembership` multiple times, once per interface.
+Indica al kernel di unirsi a un gruppo multicast sul `multicastAddress` e sul `multicastInterface` specificati utilizzando l'opzione socket `IP_ADD_MEMBERSHIP`. Se l'argomento `multicastInterface` non è specificato, il sistema operativo sceglierà un'interfaccia e ne aggiungerà l'iscrizione. Per aggiungere l'iscrizione a ogni interfaccia disponibile, chiama più volte `addMembership`, una volta per ogni interfaccia.
 
 ### socket.address()
 
@@ -98,9 +98,9 @@ Indica al kernel di unirsi a un gruppo multicast sul `multicastAddress` e sul `m
 added: v0.1.99
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
-Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
+Restituisce un object contenente le informazioni sull'indirizzo per un socket. Per i socket UDP, quest'object conterrà le proprietà `address`, `family` e `port`.
 
 ### socket.bind(\[port\]\[, address\][, callback])
 
@@ -110,9 +110,9 @@ added: v0.1.99
 
 * `port` {integer}
 * `address` {string}
-* `callback` {Function} with no parameters. Called when binding is complete.
+* `callback` {Function} senza parametri. Chiamata quando il binding (collegamento) è completo.
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+Per i socket UDP, fa sì che il `dgram.Socket` ascolti i messaggi dei datagram su una `port` denominata e sull'`address` facoltativo. Se `port` non è specificato oppure corrisponde a `0`, il sistema operativo tenterà il binding (collegamento) ad una porta casuale. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
