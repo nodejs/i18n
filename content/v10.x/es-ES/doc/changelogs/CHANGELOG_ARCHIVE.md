@@ -2548,13 +2548,13 @@ https://github.com/nodejs/node/commit/58002d56bc79410c5ff397fc0e1ffec0665db38a
 
 * response.readable de http debería ser falsa después de "end" [#867](https://github.com/joyent/node/issues/867) (Abe Fettig)
 * Implementar os.cpus() y os.uptime() en Solaris (Scott McWhirter)
-* fs.ReadStream: Allow omission of end option for range reads [#801](https://github.com/joyent/node/issues/801) (Felix Geisendörfer)
+* fs.ReadStream: Permitir omisión de la opción de final para lecturas largas [#801](https://github.com/joyent/node/issues/801) (Felix Geisendörfer)
 
-* Buffer.write() with UCS-2 should not be write partial char [#916](https://github.com/joyent/node/issues/916) (koichik)
+* Buffer.write() con UCS-2 no debería escribir caracteres parciales [#916](https://github.com/joyent/node/issues/916) (koichik)
 
-* Pass secureProtocol through on tls.Server creation (Theo Schlossnagle)
+* Pasar secureProtocol durante la creación de tls.Server (Theo Schlossnagle)
 
-* TLS use RC4-SHA by default
+* Que TLS use RC4-SHA por defecto
 * Don't strangely drop out of event loop on HTTPS client uploads [#892](https://github.com/joyent/node/issues/892)
 * Doc improvements
 * Upgrade v8 to 3.1.8.10
