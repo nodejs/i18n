@@ -110,7 +110,7 @@ added: v0.1.99
 
 * `port` {integer}
 * `address` {string}
-* `callback` {Function} senza parametri. Chiamata quando il binding (collegamento) è completo.
+* `callback` {Function} senza parametri. Chiamato quando il binding (collegamento) è completo.
 
 Per i socket UDP, fa sì che il `dgram.Socket` ascolti i messaggi dei datagram su una `port` denominata e sull'`address` facoltativo. Se `port` non è specificato oppure corrisponde a `0`, il sistema operativo tenterà il binding (collegamento) ad una porta casuale. Se `address` non è specificato, il sistema operativo tenterà di eseguire il listening (ascolto) su tutti gli indirizzi. Una volta completato il binding, viene emesso un evento `'listening'` e viene chiamata la funzione `callback` opzionale.
 
@@ -219,11 +219,11 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
+Di default, il binding di un socket causerà il blocco della conclusione del processo Node.js finché il socket è aperto. Il metodo `socket.unref()` può essere utilizzato per escludere il socket dal reference count che mantiene attivo il processo Node.js. Il metodo `socket.ref()` aggiunge il socket al reference count e ripristina il comportamento predefinito.
 
-Calling `socket.ref()` multiples times will have no additional effect.
+Chiamare `socket.ref()` più volte non avrà nessun effetto aggiuntivo.
 
-The `socket.ref()` method returns a reference to the socket so calls can be chained.
+Il metodo `socket.ref()` restituisce un riferimento al socket in modo che le chiamate possano essere concatenate.
 
 ### socket.send(msg, \[offset, length,] port [, address\] \[, callback\])
 
@@ -247,16 +247,16 @@ changes:
                  and `length` parameters are optional now.
 -->
 
-* `msg` {Buffer|Uint8Array|string|Array} Message to be sent.
-* `offset` {integer} Offset in the buffer where the message starts.
-* `length` {integer} Number of bytes in the message.
-* `port` {integer} Destination port.
-* `address` {string} Destination hostname or IP address.
-* `callback` {Function} Called when the message has been sent.
+* `msg` {Buffer|Uint8Array|string|Array} Messaggio da inviare.
+* `offset` {integer} Offset nel buffer in cui inizia il messaggio.
+* `length` {integer} Numero di byte nel messaggio.
+* `port` {integer} Porto di destinazione.
+* `address` {string} Hostname di destinazione o indirizzo IP.
+* `callback` {Function} Chiamato quando il messaggio è stato inviato.
 
-Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
+Trasmette un datagram sul socket. La `port` e l'`address` di destinazione devono essere specificate.
 
-The `msg` argument contains the message to be sent. Depending on its type, different behavior can apply. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
+L'argomento `msg` contiene il messaggio da inviare. A seconda del tipo, può essere applicato un comportamento diverso. Se `msg` è un `Buffer` o un `Uint8Array`, i valori `offset` e `length` specificano rispettivamente l'offset all'interno del `Buffer` dove inizia il messaggio e il numero di byte all'interno del messaggio. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
 The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
 
