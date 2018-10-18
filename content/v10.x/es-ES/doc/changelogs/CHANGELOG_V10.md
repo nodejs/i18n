@@ -185,7 +185,7 @@
 * [[`a4dae6c226`](https://github.com/nodejs/node/commit/a4dae6c226)] - **src**: preferir falso en lugar de cero bool (Daniel Bevenius) [#20218](https://github.com/nodejs/node/pull/20218)
 * [[`4c4be85655`](https://github.com/nodejs/node/commit/4c4be85655)] - ***Revert*** "**stream**: evitar que 'end' se emita después de 'error'" (Brian White) [#20449](https://github.com/nodejs/node/pull/20449)
 * [[`05b7b8d506`](https://github.com/nodejs/node/commit/05b7b8d506)] - **stream**: corregir el manejo de errores con la iteración asíncrona (Julien Fontanet) [#20329](https://github.com/nodejs/node/pull/20329)
-* [[`fd912a37a0`](https://github.com/nodejs/node/commit/fd912a37a0)] - **stream**: solo verificar opciones una vez en Duplex ctor (Daniel Bevenius) [#20353](https://github.com/nodejs/node/pull/20353)
+* [[`fd912a37a0`](https://github.com/nodejs/node/commit/fd912a37a0)] - **stream**: solo verificar opciones una vez en ctor Duplex (Daniel Bevenius) [#20353](https://github.com/nodejs/node/pull/20353)
 * [[`e19200a666`](https://github.com/nodejs/node/commit/e19200a666)] - **test**: fix flaky http2-flow-control test (Anatoli Papirovski) [#20556](https://github.com/nodejs/node/pull/20556)
 * [[`b2d3db433d`](https://github.com/nodejs/node/commit/b2d3db433d)] - **test**: utilizar common.canCreateSymLink() consistentemente (cjihrig) [#20540](https://github.com/nodejs/node/pull/20540)
 * [[`578e0546e0`](https://github.com/nodejs/node/commit/578e0546e0)] - **test**: corregir test-cli-node-options.js en mips (Ruben Bridgewater) [#20377](https://github.com/nodejs/node/pull/20377)
