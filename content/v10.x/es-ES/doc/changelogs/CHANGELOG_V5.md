@@ -769,10 +769,10 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ### Cambios notables
 
-* **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
-* **http-parser**: upgrade from 2.6.0 to 2.6.1
-* **npm**: upgrade npm from 3.3.12 to 3.6.0 (Rebecca Turner) [#4958](https://github.com/nodejs/node/pull/4958)
-* **openssl**: upgrade from 1.0.2e to 1.0.2f. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
+* **http**: reparar los defectos en el análisis del encabezado para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
+* **http-parser**: actualizar de 2.6.0 a 2.6.1
+* **npm**: actualizar npm de 3.3.12 a 3.6.0 (Rebecca Turner) [#4958](https://github.com/nodejs/node/pull/4958)
+* **openssl**: actualizar de 1.0.2e a 1.0.2f. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
 
 ### Commits
 
