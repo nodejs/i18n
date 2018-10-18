@@ -1,12 +1,12 @@
-# UDP / Datagram Sockets
+# Socket UDP / Datagram
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
 <!-- name=dgram -->
 
-The `dgram` module provides an implementation of UDP Datagram sockets.
+Il modulo `dgram` fornisce un'implementazione dei socket UDP Datagram.
 
 ```js
 const dgram = require('dgram');
@@ -36,7 +36,7 @@ server.bind(41234);
 added: v0.1.99
 -->
 
-The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagram functionality.
+Il `dgram.Socket` object è un [`EventEmitter`][] che incapsula la funzionalità del datagram.
 
 New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
 
