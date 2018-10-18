@@ -297,13 +297,13 @@ L'invio di più buffer potrebbe essere più veloce o più lento a seconda dell'a
 
 La dimensione massima di un datagram `IPv4/v6` dipende dal `MTU` (*Maximum Transmission Unit*) e dalla dimensione del campo `Payload Length`.
 
-* The `Payload Length` field is `16 bits` wide, which means that a normal payload exceed 64K octets *including* the internet header and data (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header); this is generally true for loopback interfaces, but such long datagram messages are impractical for most hosts and networks.
+* Il campo `Payload Length` è di larghezza `16 bits`, il che significa che un normale payload supera i 64 mila ottetti *inclusi* l'intestazione e i dati d'internet (65,507 byte = 65,535 - 8 byte intestazione UDP - 20 byte intestazione IP); questo è generalmente vero per le interfacce di loopback, ma i messaggi datagram così lunghi sono poco pratici per la maggior parte degli host e delle reti.
 
-* The `MTU` is the largest size a given link layer technology can support for datagram messages. For any link, `IPv4` mandates a minimum `MTU` of `68` octets, while the recommended `MTU` for IPv4 is `576` (typically recommended as the `MTU` for dial-up type applications), whether they arrive whole or in fragments.
+* L'`MTU` è la dimensione più grande che una determinata tecnologia a livello di collegamento può supportare per i messaggi datagram. Per ogni collegamento, `IPv4` richiede un `MTU` minimo di `68` ottetti, mentre l'`MTU` raccomandato per IPv4 è di `576` (in genere raccomandato come `MTU` per le applicazioni di tipo dial-up), sia che arrivino interi o in frammenti.
   
-  For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum fragment reassembly buffer size is `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
+  Per `IPv6`, l'`MTU` minimo è di `1280` ottetti, tuttavia, la dimensione obbligatoria del buffer di riassemblaggio del frammento è di `1500` ottetti. Il valore di `68` ottetti è molto piccolo, poiché la maggior parte delle tecnologie attuali a livello di collegamento, come l'Ethernet, hanno un `MTU` minimo di `1500`.
 
-It is impossible to know in advance the MTU of each link through which a packet might travel. L'invio di un datagram maggiore del receiver `MTU` non funzionerà perché il pacchetto verrà rilasciato automaticamente senza informare la sorgente che i dati non hanno raggiunto il destinatario previsto.
+È impossibile sapere in anticipo l'MTU di ciascun collegamento attraverso il quale un pacchetto potrebbe viaggiare. L'invio di un datagram maggiore del receiver `MTU` non funzionerà perché il pacchetto verrà rilasciato automaticamente senza informare la sorgente che i dati non hanno raggiunto il destinatario previsto.
 
 ### socket.setBroadcast(flag)
 
