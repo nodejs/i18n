@@ -1451,7 +1451,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`5630c8cd5d`](https://github.com/nodejs/node/commit/5630c8cd5d)] - **doc**: añadir entrada faltante TOC en CONTRIBUTING.md (Vse Mozhet Byt) [#15729](https://github.com/nodejs/node/pull/15729)
 * [[`db0ba97bec`](https://github.com/nodejs/node/commit/db0ba97bec)] - **doc**: actualizar control de cambios de fs.utimes{,Sync} (Luigi Pinca) [#15680](https://github.com/nodejs/node/pull/15680)
 * [[`cc902832e2`](https://github.com/nodejs/node/commit/cc902832e2)] - **doc**: editar COLLABORATORS_GUIDE.md para legibilidad (Rich Trott) [#15629](https://github.com/nodejs/node/pull/15629)
-* [[`f8e93e888e`](https://github.com/nodejs/node/commit/f8e93e888e)] - **doc**: fix links in some intra-repository docs (Vse Mozhet Byt) [#15675](https://github.com/nodejs/node/pull/15675)
+* [[`f8e93e888e`](https://github.com/nodejs/node/commit/f8e93e888e)] - **doc**: corregir enlaces en algunos documentos intra-repositorio (Vse Mozhet Byt) [#15675](https://github.com/nodejs/node/pull/15675)
 * [[`9c247c56ab`](https://github.com/nodejs/node/commit/9c247c56ab)] - **doc**: standardize function param/object prop style (Gibson Fahnestock) [#13769](https://github.com/nodejs/node/pull/13769)
 * [[`e5b5a03e00`](https://github.com/nodejs/node/commit/e5b5a03e00)] - **doc**: do not begin yaml value with backtick (Jon Moss) [#15447](https://github.com/nodejs/node/pull/15447)
 * [[`f8805c4465`](https://github.com/nodejs/node/commit/f8805c4465)] - **doc**: fix link in the test/README.md (Rimas Misevičius) [#15642](https://github.com/nodejs/node/pull/15642)
