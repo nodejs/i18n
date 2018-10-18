@@ -2512,12 +2512,12 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 
 * Mejoras de doc
 
-* cleartextstream.destroy() should close(2) the socket. Previously was being mapped to a shutdown(2) syscall.
+* cleartextstream.destroy() debería hacer close(2) al socket. Previamente, estaba siendo mapeada hacia una syscall de shutdown(2).
 
-* No longer compile out asserts and debug statements in normal build.
+* Ya no compilar aserciones y declaraciones del depurador en la compilación normal.
 
-* Debugger improvements.
-* Upgrade V8 to 3.1.8.16.
+* Mejoras del depurador.
+* Actualizar V8 a 3.1.8.16.
 
 <a id="0.4.7"></a>
 
