@@ -48,9 +48,9 @@ Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si 
 added: v8.3.0
 -->
 
-Un "resolver" indipendente per le richieste DNS.
+Un resolver indipendente per le richieste DNS.
 
-Si consideri che la creazione di un nuovo "resolver" utilizza le impostazioni di default del server. Le impostazioni utilizzate per un "resolver" che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri "resolver":
+Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Le impostazioni utilizzate per un resolver che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri resolver:
 
 ```js
 const { Resolver } = require('dns');
@@ -87,7 +87,7 @@ Sono disponibili i seguenti metodi dal modulo `dns`:
 added: v8.3.0
 -->
 
-Cancella tutte le query DNS eccezionali effettuate da questo "resolver". I "callback" corrispondenti verranno identificati con il codice di errore `ECANCELLED`.
+Cancella tutte le query DNS eccezionali effettuate da questo resolver. I callback corrispondenti verranno identificati con il codice di errore `ECANCELLED`.
 
 ## dns.getServers()
 
@@ -97,7 +97,7 @@ added: v0.11.3
 
 - Restituisce: {string[]}
 
-Restituisce un "array" di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
+Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
 
 <!-- eslint-disable semi-->
 
@@ -123,9 +123,9 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family`{integer} Il record "family". Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
+  - `family`{integer} Il record family. Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
   - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
-  - `all` {boolean} Quando `true`, il "callback" restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
+  - `all` {boolean} Quando `true`, il callback restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
   - `verbatim` {boolean} Quando `true`. il "callback" riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il "resolver" DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
