@@ -689,9 +689,9 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 <a id="2.3.3"></a>
 
-## 2015-07-04, Version 2.3.3, @Fishrock123
+## 2015-07-04, Versión 2.3.3, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **deps**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
 
@@ -702,7 +702,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
@@ -713,24 +713,24 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 <a id="1.8.3"></a>
 
-## 2015-07-04, Version 1.8.3, @rvagg
+## 2015-07-04, Versión 1.8.3, @rvagg
 
 **Maintenance release**
 
-## Notable changes
+## Cambios notables
 
-* **v8**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
+* **v8**: Fixed an out-of-band write in utf8 decoder. **Esta es una actualización de seguridad importante** ya que se puede usar para provocar un ataque de denegación de servicio.
 * **openssl**: Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
 * **build**: 
-  * Added support for compiling with Microsoft Visual C++ 2015
+  * Se añadió soporte para compilar con Microsoft Visual C++ 2015
   * Started building and distributing headers-only tarballs along with binaries
 
-### Known issues
+### Problemas conocidos
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -780,7 +780,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
@@ -845,7 +845,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
@@ -928,7 +928,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
@@ -1035,7 +1035,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
@@ -1061,7 +1061,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
@@ -1112,7 +1112,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
@@ -1161,7 +1161,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1206,7 +1206,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
@@ -1259,7 +1259,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1334,7 +1334,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1437,7 +1437,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1491,8 +1491,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
@@ -1519,8 +1519,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
@@ -1581,8 +1581,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1653,8 +1653,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Possible small memory leak(s) may still exist but have yet to be properly identified, details at [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1710,8 +1710,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1749,8 +1749,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1785,8 +1785,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1863,8 +1863,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1907,8 +1907,8 @@ run-script`. ([@watilde](https://github.com/watilde))
 * Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1984,8 +1984,8 @@ run-script`. ([@watilde](https://github.com/watilde))
 * Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas tan rápido como es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2020,8 +2020,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * El soporte de Windows tiene algunas fallas sobresalientes que no han sido recogidas por el sistema io.js CI debido a una combinación de factores, incluyendo errores humanos, de programa y de Jenkins. Vea [#1005](https://github.com/nodejs/node/issues/1005) para detalles & discusión. Espere que estos problemas sean abordados tan pronto como sea posible.
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2065,8 +2065,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2124,7 +2124,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
