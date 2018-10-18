@@ -38,7 +38,7 @@ added: v0.1.99
 
 Il `dgram.Socket` object è un [`EventEmitter`][] che incapsula la funzionalità del datagram.
 
-New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
+Le nuove istanze di `dgram.Socket` sono create utilizzando [`dgram.createSocket()`][]. La parola chiave `new` non dev'essere utilizzata per creare istanze `dgram.Socket`.
 
 ### Event: 'close'
 
@@ -293,7 +293,7 @@ client.send([buf1, buf2], 41234, (err) => {
 
 Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
 
-**A Note about UDP datagram size**
+**Una Nota sulla dimensione del UDP Datagram**
 
 The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmission Unit*) and on the `Payload Length` field size.
 
@@ -303,7 +303,7 @@ The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmi
   
   For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum fragment reassembly buffer size is `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
 
-It is impossible to know in advance the MTU of each link through which a packet might travel. Sending a datagram greater than the receiver `MTU` will not work because the packet will get silently dropped without informing the source that the data did not reach its intended recipient.
+It is impossible to know in advance the MTU of each link through which a packet might travel. L'invio di un datagram maggiore del receiver `MTU` non funzionerà perché il pacchetto verrà rilasciato automaticamente senza informare la sorgente che i dati non hanno raggiunto il destinatario previsto.
 
 ### socket.setBroadcast(flag)
 
