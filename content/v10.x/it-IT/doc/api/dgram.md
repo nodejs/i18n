@@ -46,7 +46,7 @@ Le nuove istanze di `dgram.Socket` sono create utilizzando [`dgram.createSocket(
 added: v0.1.99
 -->
 
-The `'close'` event is emitted after a socket is closed with [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
+L'evento `'close'` viene emesso dopo che un socket è stato chiuso con [`close()`][]. Una volta attivato, non verrà emesso nessun nuovo evento `'message'` su questo socket.
 
 ### Event: 'error'
 
@@ -56,7 +56,7 @@ added: v0.1.99
 
 * `exception` {Error}
 
-The `'error'` event is emitted whenever any error occurs. The event handler function is passed a single `Error` object.
+L'evento `'error'` viene emesso ogni volta che si verifica un errore. La funzione dell'event handler riceve un singolo `Error` object.
 
 ### Event: 'listening'
 
@@ -64,7 +64,7 @@ The `'error'` event is emitted whenever any error occurs. The event handler func
 added: v0.1.99
 -->
 
-The `'listening'` event is emitted whenever a socket begins listening for datagram messages. This occurs as soon as UDP sockets are created.
+L'evento `'listening'` viene emesso ogni volta che un socket inizia ad ascoltare (listening) i messaggi del datagram. Ciò si verifica non appena vengono creati i socket UDP.
 
 ### Event: 'message'
 
@@ -72,14 +72,14 @@ The `'listening'` event is emitted whenever a socket begins listening for datagr
 added: v0.1.99
 -->
 
-The `'message'` event is emitted when a new datagram is available on a socket. The event handler function is passed two arguments: `msg` and `rinfo`.
+L'evento `'message'` viene emesso quando un nuovo datagram è disponibile su un socket. La funzione dell'event handler riceve due argomenti: `msg` e `rinfo`.
 
-* `msg` {Buffer} The message.
-* `rinfo` {Object} Remote address information. 
-  * `address` {string} The sender address.
-  * `family` {string} The address family (`'IPv4'` or `'IPv6'`).
-  * `port` {number} The sender port.
-  * `size` {number} The message size.
+* `msg` {Buffer} Il messaggio.
+* `rinfo` {Object} Informazioni sull'indirizzo remoto. 
+  * `address` {string} L'indirizzo del mittente.
+  * `family` {string} La famiglia di indirizzi (`'IPv4'` o `'IPv6'`).
+  * `port` {number} La porta del mittente.
+  * `size` {number} La dimensione del messaggio.
 
 ### socket.addMembership(multicastAddress[, multicastInterface])
 
