@@ -2590,22 +2590,22 @@ https://github.com/nodejs/node/commit/25122b986a90ba0982697b7abcb0158c302a1019
 
 <a id="0.4.3"></a>
 
-## 2011.03.18, Version 0.4.3 (stable)
+## 2011.03.18, Versión 0.4.3 (estable)
 
 https://github.com/nodejs/node/commit/c095ce1a1b41ca015758a713283bf1f0bd41e4c4
 
-* Don't decrease server connection counter again if destroy() is called more than once GH-431 (Andreas Reich, Anders Conbere)
+* No disminuir el contador de conexiones del servidor si destroy() es llamada más de una vez GH-431 (Andreas Reich, Anders Conbere)
 
-* Documentation improvements (koichik)
+* Mejoras de documentación (koichik)
 
-* Fix bug with setMaxListeners GH-682
-* Start up memory footprint improvement. (Tom Hughes)
-* Solaris improvements.
-* Buffer::Length(Buffer*) should not invoke itself recursively GH-759 (Ben Noordhuis)
+* Corregir bug con setMaxListeners GH-682
+* Iniciar mejora de huella de memoria. (Tom Hughes)
+* Mejoras de Solaris.
+* Buffer::Length(Buffer*) no debe invocarse recursivamente a sí mismo GH-759 (Ben Noordhuis)
 
-* TLS: Advertise support for client certs GH-774 (Theo Schlossnagle)
+* TLS: Promocionar soporte para certificados de cliente GH-774 (Theo Schlossnagle)
 
-* HTTP Agent bugs: GH-787, GH-784, GH-803.
+* Bugs del Agente de HTTP: GH-787, GH-784, GH-803.
 * Don't call GetMemoryUsage every 5 seconds.
 * Upgrade V8 to 3.1.8.3
 
