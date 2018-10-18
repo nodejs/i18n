@@ -756,18 +756,18 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`5c54d4987d`](https://github.com/nodejs/node/commit/5c54d4987d)] - **tools**: habilitar no redeclarar regla para linter (Rich Trott) [#5047](https://github.com/nodejs/node/pull/5047)
 * [[`a3a0cf603a`](https://github.com/nodejs/node/commit/a3a0cf603a)] - **tools**: añadir reglas de función flecha a eslint (cjihrig) [#4813](https://github.com/nodejs/node/pull/4813)
 * [[`bcc26f747f`](https://github.com/nodejs/node/commit/bcc26f747f)] - **tools,doc**: reparar errores linting (Rich Trott) [#5161](https://github.com/nodejs/node/pull/5161)
-* [[`47274704aa`](https://github.com/nodejs/node/commit/47274704aa)] - **url**: fix lint and deopt issues (Brian White) [#5300](https://github.com/nodejs/node/pull/5300)
-* [[`729ad75860`](https://github.com/nodejs/node/commit/729ad75860)] - **url**: improve url.parse() performance (Brian White) [#4892](https://github.com/nodejs/node/pull/4892)
-* [[`6c8378b15b`](https://github.com/nodejs/node/commit/6c8378b15b)] - **vm**: fix `produceCachedData` (Jiho Choi) [#5343](https://github.com/nodejs/node/pull/5343)
-* [[`d1cacb814f`](https://github.com/nodejs/node/commit/d1cacb814f)] - **(SEMVER-MINOR)** **vm**: introduce `cachedData`/`produceCachedData` (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
+* [[`47274704aa`](https://github.com/nodejs/node/commit/47274704aa)] - **url**: reparar problemas de lint y deopt (Brian White) [#5300](https://github.com/nodejs/node/pull/5300)
+* [[`729ad75860`](https://github.com/nodejs/node/commit/729ad75860)] - **url**: mejorar el rendimiento de url.parse() (Brian White) [#4892](https://github.com/nodejs/node/pull/4892)
+* [[`6c8378b15b`](https://github.com/nodejs/node/commit/6c8378b15b)] - **vm**: reparar `produceCachedData` (Jiho Choi) [#5343](https://github.com/nodejs/node/pull/5343)
+* [[`d1cacb814f`](https://github.com/nodejs/node/commit/d1cacb814f)] - **(SEMVER-MINOR)** **vm**: introducir `cachedData`/`produceCachedData` (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
 
 <a id="5.6.0"></a>
 
-## 2016-02-09, Version 5.6.0 (Stable), @jasnell
+## 2016-02-09, Versión 5.6.0 (Estable), @jasnell
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs para los detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
 * **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * **http-parser**: upgrade from 2.6.0 to 2.6.1
