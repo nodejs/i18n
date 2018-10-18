@@ -2571,22 +2571,22 @@ https://github.com/nodejs/node/commit/787a343b588de26784fef97f953420b53a6e1d73
 * Bug de SlowBuffer.prototype.slice GH-843
 * process.stderr.write debe volver como "true"
 * Pausa/Reanudación inmediata de la condición de carrera GH-535 (isaacs)
-* Set default host header properly GH-721 (isaacs)
-* Upgrade V8 to 3.1.8.8
+* Establecer correctamente cabecera de host predeterminada GH-721 (isaacs)
+* Actualizar V8 a 3.1.8.8
 
 <a id="0.4.4"></a>
 
-## 2011.03.26, Version 0.4.4 (stable)
+## 2011.03.26, Versión 0.4.4 (estable)
 
 https://github.com/nodejs/node/commit/25122b986a90ba0982697b7abcb0158c302a1019
 
-* CryptoStream.end shouldn't throw if not writable GH-820
-* Drop out if connection destroyed before connect() GH-819
-* expose https.Agent
-* Correctly setsid in tty.open GH-815
-* Bug fix for failed buffer construction
-* Added support for removing .once listeners (GH-806)
-* Upgrade V8 to 3.1.8.5
+* CryptoStream.end no debería arrojar si no es escribible GH-820
+* Abandonar si la conexión se destruyó antes de connect() GH-819
+* exponer https.Agent
+* Hacer setsid correctamente en tty.open GH-815
+* Corrección de bug para construcción de buffer fallida
+* Soporte añadido para remoción de listeners .once (GH-806)
+* Actualizar V8 a 3.1.8.5
 
 <a id="0.4.3"></a>
 
