@@ -4,19 +4,17 @@
 
 > Stability: 2 - Stable
 
-The `dns` module contains functions belonging to two different categories:
+I Moduli `dns` contengono funzioni appartenenti a due diverse categorie:
 
 1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. This category contains only one function: [`dns.lookup()`][]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
 
-For example, looking up `iana.org`.
+Ad esempio, guarda `iana.org`.
 
 ```js
-const dns = require('dns');
-
 dns.lookup('iana.org', (err, address, family) => {
   console.log('address: %j family: IPv%s', address, family);
 });
-// address: "192.0.43.8" family: IPv4
+// indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
 2) Functions that connect to an actual DNS server to perform name resolution, and that *always* use the network to perform DNS queries. This category contains all functions in the `dns` module *except* [`dns.lookup()`][]. These functions do not use the same set of configuration files used by [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
