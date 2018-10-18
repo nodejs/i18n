@@ -270,11 +270,11 @@ Aby ominąć `"nasłuchiwanie"`, zdarzenie jest ustawiane w kolejce w `nextTick(
 O ile te dwa wywołania są podobne dla użytkowników, to ich nazwy są mylące.
 
 * `process.nextTick()` odpala się natychmiast w tej samej fazie
-* `setImmediate()` fires on the following iteration or 'tick' of the event loop
+* `ustawNatychmiastowo()` odpala się w w następującej iteracji lub "kleszczu" pętli zdarzeń
 
-In essence, the names should be swapped. `process.nextTick()` fires more immediately than `setImmediate()` but this is an artifact of the past which is unlikely to change. Making this switch would break a large percentage of the packages on npm. Every day more new modules are being added, which mean every day we wait, more potential breakages occur. While they are confusing, the names themselves won't change.
+Zasadniczo, nazwy powinny być wymieniane. `process.nextTick()` odpala więcej natychmiastowo niż `ustawNatychmiastowo()` ale jest to artefakt przeszłości, który mało prawdopodobne, że ulegnie zmianie. Dokonanie tego przełącznika byłoby bardzo dużym procentem pakietów na npm. Codziennie coraz więcej nowych modułów zostaje dodanych, co oznacza, że każdego dnia czekamy, pojawia się więcej potencjalnych awarii. Choć są pogmatwane, same nazwy się nie zmienią.
 
-*We recommend developers use `setImmediate()` in all cases because it's easier to reason about (and it leads to code that's compatible with a wider variety of environments, like browser JS.)*
+*Zalecamy programistom stosowanie `ustawNatychmiastowo()` we wszystkich przypadkach, ponieważ jest łatwiejsze do zrozumienia (i prowadzi do kodu kompatybilnego z szerszą gamą środowisk, takich jak przeglądarka JS.)*
 
 ## Why use `process.nextTick()`?
 
