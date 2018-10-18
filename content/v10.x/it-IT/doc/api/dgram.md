@@ -295,7 +295,7 @@ L'invio di più buffer potrebbe essere più veloce o più lento a seconda dell'a
 
 **Una Nota sulla dimensione del UDP Datagram**
 
-The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmission Unit*) and on the `Payload Length` field size.
+La dimensione massima di un datagram `IPv4/v6` dipende dal `MTU` (*Maximum Transmission Unit*) e dalla dimensione del campo `Payload Length`.
 
 * The `Payload Length` field is `16 bits` wide, which means that a normal payload exceed 64K octets *including* the internet header and data (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header); this is generally true for loopback interfaces, but such long datagram messages are impractical for most hosts and networks.
 
