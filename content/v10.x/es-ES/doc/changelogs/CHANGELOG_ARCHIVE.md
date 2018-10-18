@@ -2453,10 +2453,10 @@ https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 * [#394](https://github.com/joyent/node/issues/394) Corregir que Buffer suelta el último carácter nulo en UTF-8
 * [#829](https://github.com/joyent/node/issues/829) Backport r8577 desde V8 (Ben Noordhuis)
 * [#877](https://github.com/joyent/node/issues/877) No esperar por el socket del Agente de HTTP para establecer conexiones.
-* [#915](https://github.com/joyent/node/issues/915) Find kqueue on FreeBSD correctly (Brett Kiefer)
-* [#1085](https://github.com/joyent/node/issues/1085) HTTP: Fix race in abort/dispatch code (Stefan Rusu)
-* [#1274](https://github.com/joyent/node/issues/1274) debugger improvement (Yoshihiro Kikuchi)
-* [#1291](https://github.com/joyent/node/issues/1291) Properly respond to HEAD during end(body) hot path (Reid Burke)
+* [#915](https://github.com/joyent/node/issues/915) Encontrar kqueue en FreeBSD correctamente (Brett Kiefer)
+* [#1085](https://github.com/joyent/node/issues/1085) HTTP: Corregir carrera en código de aborto/envío (Stefan Rusu)
+* [#1274](https://github.com/joyent/node/issues/1274) mejora del depurador (Yoshihiro Kikuchi)
+* [#1291](https://github.com/joyent/node/issues/1291) Responder correctamente a HEAD durante la hotpath de end(body) (Reid Burke)
 * [#1304](https://github.com/joyent/node/issues/1304) TLS: Fix race in abort/connection code (Stefan Rusu)
 * [#1360](https://github.com/joyent/node/issues/1360) Allow _ in url hostnames.
 * Revert 37d529f8 - unbreaks debugger command parsing.
