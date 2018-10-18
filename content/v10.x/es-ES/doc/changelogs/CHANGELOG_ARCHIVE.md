@@ -2477,11 +2477,11 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 * [#1087](https://github.com/joyent/node/issues/1087) Inhabilitar compresión de SSL inhabilitada con OpenSSLs tempranos.
 * [#1144](https://github.com/joyent/node/issues/1144) debugger: no permitir que los usuarios ingresen comandos nó válidos (Siddharth Mahendraker)
 
-* Perf improvement for util.inherits
+* Mejora de rendimiento para util.inherits
 
-* [#1166](https://github.com/joyent/node/issues/1166) Support for signature verification with RSA/DSA public keys (Mark Cavage)
+* [#1166](https://github.com/joyent/node/issues/1166) Soporte para verificación de firma con claves públicas RSA/DSA (Mark Cavage)
 
-* [#1177](https://github.com/joyent/node/issues/1177) Remove node_modules lookup optimization to better support nested project structures (Mathias Buus)
+* [#1177](https://github.com/joyent/node/issues/1177) Remover optimización de búsqueda de node_modules para mejorar el soporte para estructuras del proyecto anidadas (Mathias Buus)
 
 * [#1203](https://github.com/joyent/node/issues/1203) Add missing scope.Close to fs.sendfileSync
 
