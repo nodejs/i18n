@@ -150,17 +150,17 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `options` {Object} Obbligatorio. Supporta le seguenti proprietà: 
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
 * `callback` {Function}
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address` that are passed as properties of an `options` object passed as the first argument. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+Per i socket UDP, fa sì che `dgram.Socket` ascolti i messaggi dei datagram su una `port` denominata e sull'`address` facoltativo che vengono passati come proprietà di un `options` object passato come primo argomento. Se `port` non è specificato oppure corrisponde a `0`, il sistema operativo tenterà il binding (collegamento) a una porta casuale. Se `address` non è specificato, il sistema operativo tenterà di eseguire il listening (ascolto) su tutti gli indirizzi. Una volta completato il binding, viene emesso un evento `'listening'` e viene chiamata la funzione `callback` opzionale.
 
-Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
+Da notare che specificare un listener di eventi `'listening'` e passare un `callback` al metodo `socket.bind()` non è dannoso ma neanche utile.
 
-The `options` object may contain an additional `exclusive` property that is use when using `dgram.Socket` objects with the [`cluster`] module. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. When `exclusive` is `true`, however, the handle is not shared and attempted port sharing results in an error.
+L'`options` object può contenere una proprietà `exclusive` aggiuntiva che viene utilizzata quando si utilizzano i `dgram.Socket` object con il modulo [`cluster`]. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. When `exclusive` is `true`, however, the handle is not shared and attempted port sharing results in an error.
 
 A bound datagram socket keeps the Node.js process running to receive datagram messages.
 
