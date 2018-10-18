@@ -253,7 +253,7 @@ someAsyncApiCall(() => {
 bar = 1;
 ```
 
-Here's another real world example:
+Oto kolejny przykład z życia codziennego:
 
 ```js
 const server = net.createServer(() => {}).listen(8080);
@@ -261,7 +261,7 @@ const server = net.createServer(() => {}).listen(8080);
 server.on('listening', () => {});
 ```
 
-Gdy tylko port zostanie przekazany, port jest natychmiast związany. Więc Wywołanie zwrotne `"odsłuchiwanie"` może zostać wywołane natychmiast. Problem polega na tym, że `.on("nasłuchiwanie")` nie zostanie ustawione do tego czasu.
+Gdy tylko port zostanie przekazany, port jest natychmiast połączony. Więc Wywołanie zwrotne `"odsłuchiwanie"` może zostać wywołane natychmiast. Problem polega na tym, że `.on("nasłuchiwanie")` nie zostanie ustawione do tego czasu.
 
 Aby ominąć `"nasłuchiwanie"`, zdarzenie jest ustawiane w kolejce w `nextTick()` aby umożliwić uruchomienie skryptu w całości. Co pozwala użytkownikowi ustawić dowolne programy obsługi zdarzeń, które chce.
 
