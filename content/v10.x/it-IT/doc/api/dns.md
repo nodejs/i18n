@@ -63,7 +63,7 @@ resolver.resolve4('example.org', (err, addresses) => {
 });
 ```
 
-The following methods from the `dns` module are available:
+Sono disponibili i seguenti metodi dal modulo `dns`:
 
 - [`resolver.getServers()`][`dns.getServers()`]
 - [`resolver.setServers()`][`dns.setServers()`]
