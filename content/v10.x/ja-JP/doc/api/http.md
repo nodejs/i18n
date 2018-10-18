@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 安定性: 2 - ステーブル
 
-To use the HTTP server and client one must `require('http')`.
+HTTPサーバとクライアントを利用するには、`require('http')` を使う必要があります。
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Node.jsのHTTPインターフェースは、HTTPプロトコルにおいて従来利用することが難しかった多くの機能をサポートできるように作られています。 特に、大規模で、ひとまとめにエンコードされたメッセージに向いています。 このインターフェースでは、要求と応答の全体をバッファすることが決してないため、ユーザーはデータをストリームすることができます。
 
-HTTP message headers are represented by an object like this:
+オブジェクトのHTTPメッセージヘッダはこのような形式です：
 
 <!-- eslint-skip -->
 
