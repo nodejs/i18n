@@ -2474,8 +2474,8 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 * [#1097](https://github.com/joyent/node/issues/1097) Reparar algunas fugas en node_crypto.cc (Ben Noordhuis)
 * [#562](https://github.com/joyent/node/issues/562) [#1078](https://github.com/joyent/node/issues/1078) Analizar correctamente urls file:// (Ryan Petrello)
 * [#880](https://github.com/joyent/node/issues/880) Opción para inhabilitar SSLv2 (Jérémy Lal)
-* [#1087](https://github.com/joyent/node/issues/1087) Inhabilitar compresión de SSL inhabilitada con OpenSSLs tempranos.
-* [#1144](https://github.com/joyent/node/issues/1144) debugger: no permitir que los usuarios ingresen comandos nó válidos (Siddharth Mahendraker)
+* [#1087](https://github.com/joyent/node/issues/1087) Deshabilitar compresión de SSL deshabilitada con OpenSSLs tempranos.
+* [#1144](https://github.com/joyent/node/issues/1144) debugger: no permitir que los usuarios ingresen comandos no válidos (Siddharth Mahendraker)
 
 * Mejora de rendimiento para util.inherits
 
@@ -2503,14 +2503,14 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 
 * [#1073](https://github.com/joyent/node/issues/1073) Compartir contexto de SSL entre conexiones del servidor (Fedor Indutny)
 
-* Disable compression with OpenSSL. Improves memory perf.
-* Implement os.totalmem() and os.freemem() for SunOS (Alexandre Marangone)
-* Fix a special characters in URL regression (isaacs)
-* Fix idle timeouts in HTTPS (Felix Geisendörfer)
-* SlowBuffer.write() with 'ucs2' throws ReferenceError. (koichik)
-* http.ServerRequest 'close' sometimes gets an error argument (Felix Geisendörfer)
+* Deshabilitar compresión OpenSSL. Mejora el rendimiento de la memoria.
+* Implementar os.totalmem() y os.freemem() para SunOS (Alexandre Marangone)
+* Corregir caracteres especiales en regresión de URL (isaacs)
+* Arreglar timeouts por inactividad en HTTPS (Felix Geisendörfer)
+* SlowBuffer.write() con "ucs2" arroja un ReferenceError. (koichik)
+* "close" de http.ServerRequest algunas veces obtiene un argumento de error (Felix Geisendörfer)
 
-* Doc improvements
+* Mejoras de doc
 
 * cleartextstream.destroy() should close(2) the socket. Previously was being mapped to a shutdown(2) syscall.
 
