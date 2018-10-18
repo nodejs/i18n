@@ -126,11 +126,11 @@ changes:
   - `family`{integer} Il record "family". Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
   - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
   - `all` {boolean} Quando `true`, il "callback" restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
-  - `verbatim` {boolean} Quando `true`. il "callback" riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il "resolver" DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. New code should use `{ verbatim: true }`.
+  - `verbatim` {boolean} Quando `true`. il "callback" riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il "resolver" DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
-  - `address` {string} A string representation of an IPv4 or IPv6 address.
-  - `family` {integer} `4` or `6`, denoting the family of `address`.
+  - `address` {string} Una stringa che rappresenta un indirizzo IPv4 o IPv6.
+  - `family` {integer} `4` o `6`, che indica la famiglia di `address`.
 
 Resolves a hostname (e.g. `'nodejs.org'`) into the first found A (IPv4) or AAAA (IPv6) record. All `option` properties are optional. If `options` is an integer, then it must be `4` or `6` – if `options` is not provided, then IPv4 and IPv6 addresses are both returned if found.
 
