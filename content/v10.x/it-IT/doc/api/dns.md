@@ -6,7 +6,7 @@
 
 I Moduli `dns` contengono funzioni appartenenti a due diverse categorie:
 
-1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il name resolution e non devono necessariamente svolgere alcuna network comunication. Questa categoria contiene una sola funzione `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero fare utilizzando [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il name resolution e non devono necessariamente svolgere alcuna network comunication. Questa categoria contiene una sola funzione `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
 
 Ad esempio, guarda `iana.org`.
 
@@ -17,7 +17,7 @@ dns.lookup('iana.org', (err, address, family) => {
 // indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
-2) Functions that connect to an actual DNS server to perform name resolution, and that *always* use the network to perform DNS queries. This category contains all functions in the `dns` module *except* [`dns.lookup()`][]. These functions do not use the same set of configuration files used by [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
+2) Le funzioni che si connettono a un effettivo server DNS per eseguire il name resolution e che utilizzano *sempre* la rete per eseguire le DNS queries. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`*tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
 
 Below is an example that resolves `'archive.org'` then reverse resolves the IP addresses that are returned.
 
