@@ -2487,17 +2487,17 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 
 * [#1187](https://github.com/joyent/node/issues/1187) Soportar múltiples cabeceras "link"
 * [#1196](https://github.com/joyent/node/issues/1196) Corregir que -e/--eval no puede cargar módulo desde node_modules (Koichi Kobayashi)
-* Upgrade V8 to 3.1.8.25, upgrade http-parser.
+* Actualizar V8 a 3.1.8.25, actualizar http-parser.
 
 <a id="0.4.8"></a>
 
-## 2011.05.20, Version 0.4.8 (stable)
+## 2011.05.20, Versión 0.4.8 (estable)
 
 https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 
-* [#974](https://github.com/joyent/node/issues/974) Properly report traceless errors (isaacs)
-* [#983](https://github.com/joyent/node/issues/983) Better JSON.parse error detection in REPL (isaacs)
-* [#836](https://github.com/joyent/node/issues/836) Agent socket errors bubble up to req only if req exists
+* [#974](https://github.com/joyent/node/issues/974) Reportar correctamente errores sin rastro (isaacs)
+* [#983](https://github.com/joyent/node/issues/983) Mejorar la detección de errores de JSON.parse en REPL (isaacs)
+* [#836](https://github.com/joyent/node/issues/836) Los errores del socket del agente burbujean hasta req solo si req existe
 * [#1041](https://github.com/joyent/node/issues/1041) Fix event listener leak check timing (koichik)
 * [#1038](https://github.com/joyent/node/issues/1038) Fix dns.resolve() with 'PTR' throws Error: Unknown type "PTR" (koichik)
 
