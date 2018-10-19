@@ -99,7 +99,7 @@ added: v0.11.3
 
 Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 
-For example:
+Por ejemplo:
 
 <!-- eslint-disable semi-->
 
@@ -317,7 +317,7 @@ Uses the DNS protocol to resolve regular expression based records (`NAPTR` recor
 - `order`
 - `preference`
 
-For example:
+Por ejemplo:
 
 <!-- eslint-skip -->
 
@@ -502,7 +502,7 @@ added: v0.11.3
 
 Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
 
-For example:
+Por ejemplo:
 
 ```js
 dns.setServers([
