@@ -166,7 +166,7 @@ Un socket datagram che ha completato il binding mantiene il processo Node.js in 
 
 Se il binding fallisce, viene generato un evento `'error'`. In rari casi (ad esempio quando si tenta di eseguire il binding con un socket chiuso), potrebbe essere generato un [`Error`][].
 
-Di seguito viene mostrato un esempio di socket listening su una porta exclusive.
+Di seguito viene mostrato un esempio di socket che esegue il listening su una porta esclusiva.
 
 ```js
 socket.bind({
