@@ -9,8 +9,8 @@
 * Veranderingen aan documentatie moet worden gecontroleerd met `make lint-md`.
 * Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Gebruik [seriële komma's](https://en.wikipedia.org/wiki/Serial_comma).
-* Avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Personal pronouns are acceptable in colloquial documentation such as guides.
+* Vermijd persoonlijke voornaamwoorden in referentie documentatie ("ik", "jij", "wij"). 
+  * Persoonlijke voornaamwoorden zijn acceptabel in informele documentatie, zoals gidsen.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
