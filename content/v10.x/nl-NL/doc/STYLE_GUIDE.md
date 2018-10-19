@@ -11,8 +11,8 @@
 * Gebruik [seriële komma's](https://en.wikipedia.org/wiki/Serial_comma).
 * Vermijd persoonlijke voornaamwoorden in referentie documentatie ("ik", "jij", "wij"). 
   * Persoonlijke voornaamwoorden zijn acceptabel in informele documentatie, zoals gidsen.
-  * Use gender-neutral pronouns and gender-neutral plural nouns. 
-    * OK: "they", "their", "them", "folks", "people", "developers"
+  * Gebruik geslachtsneutrale voornaamwoorden en geslachtsneutrale meervoudige zelfstandige voornaamwoorden. 
+    * Ok: "zij", "hun", "hen", "volk", "mensen", "ontwikkelaars"
     * NIET Ok: "zijn", "haar", "hem", "jongens", "kerels"
 * Bij het combineren van verpakkingselementen (haakjes en aanhalingstekens), moet terminaal interpunctie worden geplaatst: 
   * Binnen het verpakkingselement, wanneer het verpakkingselement een volledige component bevat — een onderwerp, werkwoord, en een object.
@@ -28,7 +28,7 @@
   * Voor illustraties, geef de voorkeur aan SVG over andere attributen. Wanneer SVG niet haalbaar is, houd dan goed de bestandsgrootte van het attribuut dat je introduceert in de gaten.
 * Voor code blokken: 
   * Gebruik taalbewuste barrières. ("```js")
-  * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
+  * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `aanwinsten/code-voorbeelden` en link er naartoe.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
 * References to constructor functions should use PascalCase.
 * References to constructor instances should use camelCase.
