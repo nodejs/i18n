@@ -227,13 +227,13 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// To jest implementacja metody dodatków
-// Argumenty wejściowe są przekazywane za pomocą
+// This is the implementation of the "add" method
+// Input arguments are passed using the
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-//Sprawdź liczbę przekazanych argumentów.
+  // Check the number of arguments passed.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
@@ -636,7 +636,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 W `mójobiekt.h` dodawana jest statyczna metoda `NowaInstancja()` do obsługi tworzenia instancji obiektu. Ta metoda zastępuje użycie `nowego` w JavaScript:
 
 ```cpp
-// mójobiekt.h
+// myobject.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
@@ -793,7 +793,7 @@ console.log(obj2.plusOne());
 
 ### Przekazywanie zapakowanych obiektów
 
-Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `dodaj()`, która może przyjąć dwa obiekty `MójObiekt` jako argumenty wejściowe:
+In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `dodaj()`, która może przyjąć dwa obiekty `MójObiekt` jako argumenty wejściowe:
 
 ```cpp
 // addon.cc
@@ -842,7 +842,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 W `mójobiekt.h` dodano nową publiczną metodę zezwalającą na dostęp do prywatnych wartości po rozpakowaniu obiektu.
 
 ```cpp
-// mójobiekt.h
+// myobject.h
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 
