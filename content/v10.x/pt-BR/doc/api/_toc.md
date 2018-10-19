@@ -7,7 +7,7 @@ Se este arquivo for movido, tenha certeza de atualizar.
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Teste de asserção](assert.html)
 * [Ganchos Assíncronos](async_hooks.html)
 * [Buffer](buffer.html)
 * [Complementos de C++](addons.html)
@@ -43,7 +43,7 @@ Se este arquivo for movido, tenha certeza de atualizar.
 * [REPL](repl.html)
 * [Transmissão](stream.html)
 * [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Temporizadores](timers.html)
 * [TLS/SSL](tls.html)
 * [Eventos de Rastreamento](tracing.html)
 * [TTY](tty.html)
