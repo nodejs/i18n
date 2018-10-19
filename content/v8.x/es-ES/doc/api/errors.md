@@ -217,7 +217,7 @@ console.error(err.message);
 
 The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
 
-For example:
+Por ejemplo:
 
 ```txt
 Error: Things keep happening!
@@ -275,7 +275,7 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 A subclass of `Error` that indicates the failure of an assertion. Such errors commonly indicate inequality of actual and expected value.
 
-For example:
+Por ejemplo:
 
 ```js
 assert.strictEqual(1, 2);
@@ -286,7 +286,7 @@ assert.strictEqual(1, 2);
 
 A subclass of `Error` that indicates that a provided argument was not within the set or range of acceptable values for a function; whether that is a numeric range, or outside the set of options for a given function parameter.
 
-For example:
+Por ejemplo:
 
 ```js
 require('net').connect(-1);
