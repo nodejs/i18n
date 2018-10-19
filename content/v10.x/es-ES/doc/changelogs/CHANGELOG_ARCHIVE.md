@@ -2661,21 +2661,21 @@ https://github.com/nodejs/node/commit/e8aef84191bc2c1ba2bcaa54f30aabde7f03769b
 
 <a id="0.4.0"></a>
 
-## 2011.02.10, Version 0.4.0 (stable)
+## 2011.02.10, Versión 0.4.0 (estable)
 
 https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 
-* require() improvements (isaacs)
+* Mejoras de require() (isaacs)
   
-  * understand package.json (isaacs)
-  * look for 'node_modules' dir
+  * entender package.json (isaacs)
+  * buscar el directorio "node_modules"
 
-* cmake fixes (Daniel Gröber)
+* Correcciones de cmake (Daniel Gröber)
 
-* http: fix buffer writes to outgoing messages (Russell Haering)
-* Expose UCS-2 Encoding (Konstantin Käfer)
-* Support strings for octal modes (isaacs)
-* Support array-ish args to Buffer ctor (isaacs)
+* http: corregir que el buffer escribe a los mensajes salientes (Russell Haering)
+* Exponer Codificación UCS-2 (Konstantin Käfer)
+* Soportar strings para los modos octales (isaacs)
+* Soportar argumentos similares a arrays para ctor de Buffer (isaacs)
 * cygwin and mingw improvements (Bert Belder)
 * TLS improvements
 * Fewer syscalls during require (Bert Belder, isaacs)
