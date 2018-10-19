@@ -2458,7 +2458,7 @@ https://github.com/nodejs/node/commit/1b8dd65d6e3b82b6863ef38835cc436c5d30c1d5
 * [#1274](https://github.com/joyent/node/issues/1274) mejora del depurador (Yoshihiro Kikuchi)
 * [#1291](https://github.com/joyent/node/issues/1291) Responder correctamente a HEAD durante la hotpath de end(body) (Reid Burke)
 * [#1304](https://github.com/joyent/node/issues/1304) TLS: Corregir carrera en el código de aborto/conexión (Stefan Rusu)
-* [#1360](https://github.com/joyent/node/issues/1360) Permitir _ dentro de los nombres de host.
+* [#1360](https://github.com/joyent/node/issues/1360) Permitir _ dentro de los nombres de host de url.
 * Revertir 37d529f8 - des-romper análisis del comando del depurador.
 * Traer de vuelta execScript global
 * Mejoras de doc
@@ -2526,7 +2526,7 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 https://github.com/nodejs/node/commit/c85455a954411b38232e79752d4abb61bb75031b
 
 * No emitir error ante ECONNRESET desde read() [#670](https://github.com/joyent/node/issues/670)
-* Fix: Múltiples pipes dirigidas hacia el mismo stream estaban dañadas [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
+* Corrección: Múltiples pipes dirigidas hacia el mismo stream estaban dañadas [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
 
 * Correcciones de análisis/formateo de URL [#954](https://github.com/joyent/node/issues/954) (isaacs)
 
