@@ -278,7 +278,7 @@ assert.fail(1, 2, 'whoops', '>');
 // AssertionError [ERR_ASSERTION]: whoops
 ```
 
-*Note*: In the last two cases `actual`, `expected`, and `operator` have no influence on the error message.
+*注意*：在后两种情况中，`actual`， `expected` 和 `operator` 对错误消息没有影响。
 
 ```js
 assert.fail();
@@ -291,7 +291,7 @@ assert.fail('a', 'b');
 // AssertionError [ERR_ASSERTION]: 'a' != 'b'
 ```
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+使用 `stackStartFunction` 截断异常的追溯栈的示例：
 
 ```js
 function suppressFrame() {
