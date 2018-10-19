@@ -1475,7 +1475,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`5f469a26f3`](https://github.com/nodejs/node/commit/5f469a26f3)] - **n-api**: añadir verificación para strings grandes (Michael Dawson) [#15611](https://github.com/nodejs/node/pull/15611)
 * [[`de52eb8680`](https://github.com/nodejs/node/commit/de52eb8680)] - **perf_hooks**: eliminar documentos para API sin implementar (Sam Roberts) [#15641](https://github.com/nodejs/node/pull/15641)
 * [[`e4c461ba7d`](https://github.com/nodejs/node/commit/e4c461ba7d)] - **src**: reemplazar la memoria manual mgmt con std::string (Ben Noordhuis) [#15782](https://github.com/nodejs/node/pull/15782)
-* [[`6642f54184`](https://github.com/nodejs/node/commit/6642f54184)] - **src**: corregir ^ en el seguimiento de la pila con columnOffset de vm (Timothy Gu) [#15771](https://github.com/nodejs/node/pull/15771)
+* [[`6642f54184`](https://github.com/nodejs/node/commit/6642f54184)] - **src**: corregir ^ en el stack trace con columnOffset de vm (Timothy Gu) [#15771](https://github.com/nodejs/node/pull/15771)
 * [[`824b8dfe9e`](https://github.com/nodejs/node/commit/824b8dfe9e)] - **src**: eliminar node_dtrace.h no utilizado de node_win32 (Daniel Bevenius) [#15768](https://github.com/nodejs/node/pull/15768)
 * [[`0004214ea7`](https://github.com/nodejs/node/commit/0004214ea7)] - **src**: limpieza de continuación de línea de macro trace_event (Daniel Bevenius) [#15750](https://github.com/nodejs/node/pull/15750)
 * [[`15063844cb`](https://github.com/nodejs/node/commit/15063844cb)] - **src**: corregir la ruptura de la compilación solo para Windows (Ben Noordhuis) [#15724](https://github.com/nodejs/node/pull/15724)
