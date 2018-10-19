@@ -25,7 +25,7 @@
 * [Fehler](errors.html)
 * [Ereignisse](events.html)
 * [Dateisystem](fs.html)
-* [Globals](globals.html)
+* [Globale Objekte](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
