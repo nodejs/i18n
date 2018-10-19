@@ -452,7 +452,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.ok(value[, message])
 
@@ -463,7 +463,7 @@ added: v0.1.21
 * `value` {any}
 * `message` {any}
 
-Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
+测试 `value` 是否为真值。 它和 `assert.equal(!!value, true, message)` 功能完全一样。
 
 If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned.
 
