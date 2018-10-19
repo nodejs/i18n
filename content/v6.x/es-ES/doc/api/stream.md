@@ -835,7 +835,7 @@ When using an older Node.js library that emits [`'data'`][] events and has a [`s
 
 It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
 
-For example:
+Por ejemplo:
 
 ```js
 const OldReader = require('./old-api-module.js').OldReader;
@@ -968,7 +968,7 @@ The new stream class must then implement one or more specific methods, depending
 
 For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
 
-For example:
+Por ejemplo:
 
 ```js
 const Writable = require('stream').Writable;
@@ -995,7 +995,7 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
   * `write` {Function} Implementation for the [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) method.
   * `writev` {Function} Implementation for the [`stream._writev()`](#stream_writable_writev_chunks_callback) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const Writable = require('stream').Writable;
@@ -1162,7 +1162,7 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a Buffer of size n. Defaults to `false`
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const Readable = require('stream').Readable;
@@ -1331,7 +1331,7 @@ Custom Duplex streams *must* call the `new stream.Duplex([options])` constructor
   * `readableObjectMode` {boolean} Defaults to `false`. Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`.
   * `writableObjectMode` {boolean} Defaults to `false`. Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`.
 
-For example:
+Por ejemplo:
 
 ```js
 const Duplex = require('stream').Duplex;
@@ -1459,7 +1459,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const Transform = require('stream').Transform;
