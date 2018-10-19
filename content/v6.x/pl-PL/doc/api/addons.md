@@ -343,7 +343,7 @@ console.log(obj1.msg, obj2.msg);
 Innym częstym scenariuszem jest tworzenie funkcji JavaScript, które obejmują funkcje C++i zwracanie ich z powrotem do JavaScript:
 
 ```cpp
-//dodatek.cc
+// addon.cc
 #include <node.h>
 
 namespace demo {
@@ -368,7 +368,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omiń to, by pozostawić to anonimowym
+  // omit this to make it anonymous
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
@@ -632,7 +632,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja w `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// mójobiekt.cc
+// myobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -659,12 +659,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Przygotuj szablon konstruktora
+  // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototyp
+  // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -674,7 +674,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Wywołaj jako konstruktora: `new MyObject(...)`
+    // Invoked as constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -760,7 +760,7 @@ console.log(obj2.plusOne());
 Oprócz pakowania i zwracania obiektów C++, można przekazać owinięte obiekty wokół, rozpakowując je za pomocą funkcji pomocnika Node.js`node::ObjectWrap::Unwrap`. Poniższe przykłady pokazują funkcję `dodaj()`, która może przyjąć dwa obiekty `MójObiekt` jako argumenty wejściowe:
 
 ```cpp
-// dodatek.cc
+// addon.cc
 #include <node.h>
 #include <node_object_wrap.h>
 #include "myobject.h"
@@ -838,7 +838,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// mójobiekt.cc
+// myobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -876,7 +876,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Wywołany konstruktor: `new MyObject(...)`
+    // Invoked as constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
