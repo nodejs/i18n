@@ -2707,7 +2707,7 @@ https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 
 <a id="0.3.7"></a>
 
-## 2011.01.27, Version 0.3.7 (unstable)
+## 2011.01.27, Versión 0.3.7 (inestable)
 
 https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 
