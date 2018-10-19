@@ -2,7 +2,7 @@
 
 > Stabilność: 1 - Eksperymentalne
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym mechaniźmie JavaScript i pozwolić modułom skompilowanym dla danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
