@@ -2611,12 +2611,12 @@ https://github.com/nodejs/node/commit/c095ce1a1b41ca015758a713283bf1f0bd41e4c4
 
 <a id="0.4.2"></a>
 
-## 2011.03.02, Version 0.4.2 (stable)
+## 2011.03.02, Versión 0.4.2 (estable)
 
 https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 
-* Improve docs.
-* Fix process.on edge case with signal event (Alexis Sellier)
+* Mejorar docs.
+* Arreglar caso extremo de process.on con evento de señal (Alexis Sellier)
 * Pragma HTTP header comma separation
 * In addition to 'aborted' emit 'close' from incoming requests (Felix Geisendörfer)
 
