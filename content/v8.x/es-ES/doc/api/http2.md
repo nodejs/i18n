@@ -790,7 +790,7 @@ added: v8.4.0
 
 The `'response'` event is emitted when a response `HEADERS` frame has been received for this stream from the connected HTTP/2 server. The listener is invoked with two arguments: an Object containing the received [Headers Object](#http2_headers_object), and flags associated with the headers.
 
-For example:
+Por ejemplo:
 
 ```js
 const http2 = require('http2');
@@ -1491,7 +1491,7 @@ Returns a [Settings Object](#http2_settings_object) containing the deserialized 
 
 Headers are represented as own-properties on JavaScript objects. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an Array of strings (in order to send more than one value per header field).
 
-For example:
+Por ejemplo:
 
 ```js
 const headers = {
