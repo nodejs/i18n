@@ -312,7 +312,7 @@ added: v0.1.97
 
 * `value` {any}
 
-Throws `value` if `value` is truthy. This is useful when testing the `error` argument in callbacks.
+如果 `value` 为真值，抛出`value`。 This is useful when testing the `error` argument in callbacks.
 
 ```js
 const assert = require('assert');
