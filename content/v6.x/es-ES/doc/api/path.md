@@ -60,7 +60,7 @@ added: v0.1.25
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
-For example:
+Por ejemplo:
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -116,7 +116,7 @@ added: v0.1.16
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
-For example:
+Por ejemplo:
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
@@ -136,7 +136,7 @@ added: v0.1.25
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
-For example:
+Por ejemplo:
 
 ```js
 path.extname('index.html');
@@ -269,7 +269,7 @@ The `path.join()` method joins all given `path` segments together using the plat
 
 Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
-For example:
+Por ejemplo:
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -449,7 +449,7 @@ Zero-length `path` segments are ignored.
 
 If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
 
-For example:
+Por ejemplo:
 
 ```js
 path.resolve('/foo/bar', './baz');
