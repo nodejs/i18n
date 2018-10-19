@@ -666,7 +666,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja w `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// mójobiekt.cc
+// myobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -693,12 +693,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Przygotuj szablon konstruktora
+  // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototyp
+  // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -708,7 +708,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Wywołaj jako konstruktora: `new MyObject(...)`
+    // Invoked as constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -872,7 +872,7 @@ class MyObject : public node::ObjectWrap {
 Implementacja `mójobiekt.cc` jest podobna do poprzedniego przykładu:
 
 ```cpp
-// mójobiekt.cc
+// myobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -910,7 +910,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Wywołany konstruktor: `new MyObject(...)`
+    // Invoked as constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
