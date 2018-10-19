@@ -2643,21 +2643,21 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 
 https://github.com/nodejs/node/commit/e8aef84191bc2c1ba2bcaa54f30aabde7f03769b
 
-* Fixed field merging with progressive fields on writeHead() (TJ Holowaychuk)
+* Corregida la unión de campos con campos progresivos en writeHead() (TJ Holowaychuk)
 
-* Make the repl respect node_modules folders (isaacs)
+* Hacer que el repl respete las carpetas de node_modules (isaacs)
 
-* Fix for DNS fail in HTTP request (Richard Rodger)
-* Default to port 80 for http.request and http.get.
-* Improve V8 support for Cygwin (Bert Belder)
-* Fix fs.open param parsing. (Felix Geisendörfer)
-* Fixed null signal.
-* Fix various HTTP and HTTPS bugs
-* cmake improvements (Tom Hughes)
-* Fix: TLS sockets should not be writable after 'end'
-* Fix os.cpus() on cygwin (Brian White)
-* MinGW: OpenSSL support (Bert Belder)
-* Upgrade V8 to 3.1.5, libev to 4.4.
+* Arreglo para falla del DNS en petición de HTTP (Richard Rodger)
+* Enviar por defecto al puerto 80 para http.request y http.get.
+* Mejorar soporte de V8 para Cygwin (Bert Belder)
+* Corregir análisis de param de fs.open. (Felix Geisendörfer)
+* Corregida señal nula.
+* Reparar varios bugs de HTTP y HTTPS
+* Mejoras de cmake (Tom Hughes)
+* Corrección: los sockets de TLS no deben ser escribibles después de "end"
+* Corregir os.cpus() en cygwin (Brian White)
+* MinGW: soporte para OpenSSL (Bert Belder)
+* Actualizar V8 a 3.1.5, libev a 4.4.
 
 <a id="0.4.0"></a>
 
