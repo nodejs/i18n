@@ -8,7 +8,7 @@
   * Een [plugin](http://editorconfig.org/#download) is beschikbaar voor sommige editors om automatisch deze regels toe te passen.
 * Veranderingen aan documentatie moet worden gecontroleerd met `make lint-md`.
 * Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
+* Gebruik [seriële komma's](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
