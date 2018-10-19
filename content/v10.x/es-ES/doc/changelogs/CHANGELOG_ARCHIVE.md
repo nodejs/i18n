@@ -2617,16 +2617,16 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 
 * Mejorar docs.
 * Arreglar caso extremo de process.on con evento de señal (Alexis Sellier)
-* Pragma HTTP header comma separation
-* In addition to 'aborted' emit 'close' from incoming requests (Felix Geisendörfer)
+* Separación con comas en cabecera Pragma de HTTP
+* Además de "aborted", emitir "close" desde las peticiones entrantes (Felix Geisendörfer)
 
-* Fix memleak in vm.runInNewContext
+* Reparar memleak en vm.runInNewContext
 
-* Do not cache modules that throw exceptions (Felix Geisendörfer)
-* Build system changes for libnode (Aria Stewart)
-* Read up the prototype of the 'env' object. (Nathan Rajlich)
-* Add 'close' and 'aborted' events to Agent responses
-* http: fix missing 'drain' events (Russell Haering)
+* No almacenar en caché a los módulos que arrojen excepciones (Felix Geisendörfer)
+* Cambios en el sistema de compilación para libnode (Aria Stewart)
+* Leer el prototipo del objeto "env". (Nathan Rajlich)
+* Añadir eventos "close" y "aborted" a las respuestas del Agente
+* http: corregir eventos "drain" faltantes (Russell Haering)
 * Fix process.stdout.end() throws ENOTSOCK error. (Koichi Kobayashi)
 * REPL bug fixes (isaacs)
 * node_modules folders should be highest priority (isaacs)
