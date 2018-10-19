@@ -183,7 +183,7 @@ For example, there could be one domain in use for an HTTP server, but perhaps we
 
 That is possible via explicit binding.
 
-For example:
+Por ejemplo:
 
 ```js
 // create a top-level domain for the server
