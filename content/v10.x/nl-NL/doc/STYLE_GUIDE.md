@@ -29,9 +29,9 @@
 * Voor code blokken: 
   * Gebruik taalbewuste barrières. ("```js")
   * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `aanwinsten/code-voorbeelden` en link er naartoe.
-* When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
-* References to constructor functions should use PascalCase.
-* References to constructor instances should use camelCase.
+* Bij het gebruik van underscores, sterretjes, en accent grave, gebruik alsjeblieft geschikte wisseltekens (`\_`, `\*` and `` \` `` in plaats van `_`, `*` and `` ` ``).
+* Referenties naar ontwikkelaarsfuncties moeten PascalCase gebruiken.
+* Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * To draw special attention to a note, adhere to the following guidelines: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
