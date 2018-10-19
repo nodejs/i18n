@@ -345,7 +345,7 @@ Note that `resolve()` does not do any observable synchronous work.
 
 *Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
 
-For example:
+Por ejemplo:
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
@@ -375,7 +375,7 @@ changes:
 
 * Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
 
-For example:
+Por ejemplo:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -386,7 +386,7 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). For example:
+The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). Por ejemplo:
 
 ```js
 const server = net.createServer(function onConnection(conn) {
@@ -406,7 +406,7 @@ const server = net.createServer(function onConnection(conn) {
 
 * Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
 
-For example:
+Por ejemplo:
 
 ```js
 const server = net.createServer((conn) => {
