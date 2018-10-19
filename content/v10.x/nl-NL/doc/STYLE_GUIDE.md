@@ -1,12 +1,12 @@
 # Stijlgids
 
 * Documentatie is geschreven in markdown bestanden met namen geformatteerd als `kleineletters-met-koppelteken.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `kind_proces`).
   * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
 * Documenten moeten worden 'word-wrapped' bij 80 tekens.
 * De formattering beschreven in `.editorconfig` heeft de voorkeur. 
   * Een [plugin](http://editorconfig.org/#download) is beschikbaar voor sommige editors om automatisch deze regels toe te passen.
-* Changes to documentation should be checked with `make lint-md`.
+* Veranderingen aan documentatie moet worden gecontroleerd met `make lint-md`.
 * Amerikaans-Engelse spelling heeft de voorkeur. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
