@@ -750,7 +750,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`0e2d068e0b`](https://github.com/nodejs/node/commit/0e2d068e0b)] - **deps**: reemplazar todas las cabeceras en openssl (Shigeki Ohtsu) [#1958](https://github.com/nodejs/node/pull/1958)
 * [[`310b8d1120`](https://github.com/nodejs/node/commit/310b8d1120)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [#1836](https://github.com/nodejs/node/pull/1836)
 * [[`a472946747`](https://github.com/nodejs/node/commit/a472946747)] - **deps**: corregir el error de construcción asm de openssl en x86_win32 (Shigeki Ohtsu) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
-* [[`b2467e3ebf`](https://github.com/nodejs/node/commit/b2467e3ebf)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
+* [[`b2467e3ebf`](https://github.com/nodejs/node/commit/b2467e3ebf)] - **deps**: corregir el error de ensamblaje de openssl assembly en ia32 win32 (Fedor Indutny) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
 * [[`e548abb800`](https://github.com/nodejs/node/commit/e548abb800)] - **deps**: upgrade openssl sources to 1.0.2c (Shigeki Ohtsu) [#1958](https://github.com/nodejs/node/pull/1958)
 * [[`1feaa68e85`](https://github.com/nodejs/node/commit/1feaa68e85)] - **deps**: update asm files for openssl-1.0.2b (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950)
 * [[`151720fae7`](https://github.com/nodejs/node/commit/151720fae7)] - **deps**: replace all headers in openssl (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950)
