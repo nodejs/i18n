@@ -312,7 +312,7 @@ added: v0.1.97
 
 * `value` {any}
 
-如果 `value` 为真值，抛出`value`。 This is useful when testing the `error` argument in callbacks.
+如果 `value` 为真值，抛出`value`。 当在回调函数中测试 `error` 参数时，这一点很有用。
 
 ```js
 const assert = require('assert');
@@ -339,7 +339,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
+测试任何深度不相等。 与 [`assert.deepEqual()`][] 相反。
 
 ```js
 const assert = require('assert');
@@ -374,7 +374,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
