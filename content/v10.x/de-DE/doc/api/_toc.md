@@ -8,7 +8,7 @@
 <div class="line"></div>
 
 * [Annahmen testen](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Asynchrone Auslöser](async_hooks.html)
 * [Puffer](buffer.html)
 * [C++ Erweiterungen](addons.html)
 * [C/C++ Erweiterungen - N-API](n-api.html)
