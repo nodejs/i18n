@@ -145,7 +145,7 @@ The functions available and how to use them are documented in the section titled
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 
 ```json
 {
@@ -158,13 +158,13 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array. For example:
+En casos donde hayan más de un archivo `.cc`, simplemente agregue el nombre de archivo adicional al array de `sources` . Por ejemplo:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo pueden ser configurados y construidos utilizando `node-gyp`:
 
 ```console
 $ node-gyp configure build
