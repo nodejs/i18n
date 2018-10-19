@@ -40,7 +40,7 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazione sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
+Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
 
 ## Classe: dns.Resolver
 
@@ -136,11 +136,11 @@ Risolve un hostname (es. `'nodejs.org'`) nei primi record A (IPv4) oppure AAAA (
 
 Con `tutte` le opzioni impostate a `true`, gli argomenti per il `callback` cambiano `(err, addresses)`, in `addresses` diventando quindi un array di oggetti con le proprietà `address` e `family`.
 
-In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Keep in mind that `err.code` will be set to `'ENOENT'` not only when the hostname does not exist but also when the lookup fails in other ways such as no available file descriptors.
+In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptors.
 
-`dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
+`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nome con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
 
-Example usage:
+Esempio di utilizzo:
 
 ```js
 const dns = require('dns');
