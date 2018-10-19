@@ -2627,19 +2627,19 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 * Leer el prototipo del objeto "env". (Nathan Rajlich)
 * Añadir eventos "close" y "aborted" a las respuestas del Agente
 * http: corregir eventos "drain" faltantes (Russell Haering)
-* Fix process.stdout.end() throws ENOTSOCK error. (Koichi Kobayashi)
-* REPL bug fixes (isaacs)
-* node_modules folders should be highest priority (isaacs)
-* URL parse more safely (isaacs)
-* Expose errno with a string for dns/cares (Felix Geisendörfer)
-* Fix tty.setWindowSize
-* spawn: setuid after chdir (isaacs)
-* SIGUSR1 should break the VM without delay
-* Upgrade V8 to 3.1.8.
+* Corregir que process.stdout.end() arroja error ENOTSOCK. (Koichi Kobayashi)
+* Correcciones de bug de REPL (isaacs)
+* Las carpetas de node_modules deben ser máxima prioridad (isaacs)
+* Realizar el análisis de URL de una forma más segura (isaacs)
+* Exponer errno con una string para dns/cares (Felix Geisendörfer)
+* Corregir tty.setWindowSize
+* spawn: setuid después de chdir (isaacs)
+* SIGUSR1 debe romper la VM sin demora
+* Actualizar V8 a 3.1.8.
 
 <a id="0.4.1"></a>
 
-## 2011.02.19, Version 0.4.1 (stable)
+## 2011.02.19, Versión 0.4.1 (estable)
 
 https://github.com/nodejs/node/commit/e8aef84191bc2c1ba2bcaa54f30aabde7f03769b
 
