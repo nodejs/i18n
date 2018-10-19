@@ -2691,13 +2691,13 @@ https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 
 https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 
-* Add req.abort() for client side requests.
-* Add exception.code for easy testing: Example: if (err.code == 'EADDRINUSE');
+* Añadir eq.abort() para solicitudes laterales al cliente.
+* Añadir exception.code para pruebas sencillas: Ejemplo: if (err.code == 'EADDRINUSE');
 
-* Add process.stderr.
+* Añadir process.stderr.
 
-* require.main is the main module. (Isaac Schlueter)
-* dgram: setMulticastTTL, setMulticastLoopback and addMembership. (Joe Walnes)
+* require.main es el módulo principal. (Isaac Schlueter)
+* dgram: setMulticastTTL, setMulticastLoopback y addMembership. (Joe Walnes)
 
 * Fix throttling in TLS connections
 
