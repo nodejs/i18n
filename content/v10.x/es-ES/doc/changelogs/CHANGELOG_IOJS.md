@@ -935,9 +935,9 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * [[`9c0a1b8cfc`](https://github.com/nodejs/node/commit/9c0a1b8cfc)] - **cluster**: esperar que se cierren los servidores antes de desconectar (Oleg Elifantiev) [#1400](https://github.com/nodejs/node/pull/1400)
 * [[`0f68377f69`](https://github.com/nodejs/node/commit/0f68377f69)] - **crypto**: support FIPS mode of OpenSSL (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
-* [[`38d1afc24d`](https://github.com/nodejs/node/commit/38d1afc24d)] - **(SEMVER-MINOR)** **crypto**: add getCurves() to get supported ECs (Brian White) [#1914](https://github.com/nodejs/node/pull/1914)
-* [[`a4dbf45b59`](https://github.com/nodejs/node/commit/a4dbf45b59)] - **crypto**: update root certificates (Ben Noordhuis) [#1833](https://github.com/nodejs/node/pull/1833)
-* [[`81029c639a`](https://github.com/nodejs/node/commit/81029c639a)] - **debugger**: improve ESRCH error message (Jackson Tian) [#1863](https://github.com/nodejs/node/pull/1863)
+* [[`38d1afc24d`](https://github.com/nodejs/node/commit/38d1afc24d)] - **(SEMVER-MINOR)** **crypto**: añadir getCurves() para que soporten ECs (Brian White) [#1914](https://github.com/nodejs/node/pull/1914)
+* [[`a4dbf45b59`](https://github.com/nodejs/node/commit/a4dbf45b59)] - **crypto**: actualizar los certificados de raíz (Ben Noordhuis) [#1833](https://github.com/nodejs/node/pull/1833)
+* [[`81029c639a`](https://github.com/nodejs/node/commit/81029c639a)] - **debugger**: mejorar el mensaje de error ESRCH (Jackson Tian) [#1863](https://github.com/nodejs/node/pull/1863)
 * [[`2a7fd0ad32`](https://github.com/nodejs/node/commit/2a7fd0ad32)] - **deps**: update UPGRADING.md doc to openssl-1.0.2c (Shigeki Ohtsu) [#1958](https://github.com/nodejs/node/pull/1958)
 * [[`6b3df929e0`](https://github.com/nodejs/node/commit/6b3df929e0)] - **deps**: replace all headers in openssl (Shigeki Ohtsu) [#1958](https://github.com/nodejs/node/pull/1958)
 * [[`664a659696`](https://github.com/nodejs/node/commit/664a659696)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [#1836](https://github.com/nodejs/node/pull/1836)
