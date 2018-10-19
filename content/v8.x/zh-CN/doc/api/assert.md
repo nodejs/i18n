@@ -50,9 +50,9 @@ changes:
 assert.deepEqual(/a/gi, new Date());
 ```
 
-针对[`Map`][] 和 [`Set`][] 的例外。 Maps and Sets have their contained items compared too, as expected.
+针对[`Map`][] 和 [`Set`][] 的例外。 因为 Map 和 Set 也比较了它们包含的项目。
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+“深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
 ```js
 const assert = require('assert');
@@ -89,7 +89,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -118,7 +118,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Generally identical to `assert.deepEqual()` with a few exceptions:
+通常与`assert.deepEqual()`相同，但有一些例外：
 
 1. Primitive values are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ). Set values and Map keys are compared using the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison. (Which means they are free of the [caveats](#assert_caveats)).
 2. [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) too.
