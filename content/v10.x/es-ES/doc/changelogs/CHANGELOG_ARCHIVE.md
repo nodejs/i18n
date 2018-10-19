@@ -2699,11 +2699,11 @@ https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 * require.main es el módulo principal. (Isaac Schlueter)
 * dgram: setMulticastTTL, setMulticastLoopback y addMembership. (Joe Walnes)
 
-* Fix throttling in TLS connections
+* Corregir la regulación (throttling) en las conexiones de TLS
 
-* Add socket.bufferSize
-* MinGW improvements (Bert Belder)
-* Upgrade V8 to 3.1.1
+* Añadir socket.bufferSize
+* Mejoras de MinGW (Bert Belder)
+* Actualizar V8 a 3.1.1
 
 <a id="0.3.7"></a>
 
