@@ -120,9 +120,9 @@ changes:
 
 通常与`assert.deepEqual()`相同，但有一些例外：
 
-1. Primitive values are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ). Set values and Map keys are compared using the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison. (Which means they are free of the [caveats](#assert_caveats)).
-2. [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) too.
-3. [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
+1. 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 对原始值进行比较。 使用 [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero)比较法来比较Set值和Map键值。 (这意味着在比较它们时不会出现[警告](#assert_caveats))。
+2. 对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 也使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
+3. 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
 4. [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
 
 ```js
