@@ -861,59 +861,59 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`6a359b1ce9`](https://github.com/nodejs/node/commit/6a359b1ce9)] - **deps**: actualizar a npm 2.11.3 (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018)
 * [[`6aab2f3b9a`](https://github.com/nodejs/node/commit/6aab2f3b9a)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
 * [[`3e12561b55`](https://github.com/nodejs/node/commit/3e12561b55)] - **deps**: actualizar a npm 2.11.2 (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956)
-* [[`8ac50819b6`](https://github.com/nodejs/node/commit/8ac50819b6)] - **doc**: add security section to README.md (Rod Vagg) [#1948](https://github.com/nodejs/node/pull/1948)
-* [[`1f93b63b11`](https://github.com/nodejs/node/commit/1f93b63b11)] - **doc**: change the info to the same as in gitconfig (Christian Tellnes) [#2000](https://github.com/nodejs/node/pull/2000)
-* [[`0cf94e6856`](https://github.com/nodejs/node/commit/0cf94e6856)] - **doc**: mention CI in Collaborator Guide (Rich Trott) [#1995](https://github.com/nodejs/node/pull/1995)
-* [[`7a3006efe4`](https://github.com/nodejs/node/commit/7a3006efe4)] - **doc**: add TOC links to Collaborator Guide (Rich Trott) [#1994](https://github.com/nodejs/node/pull/1994)
+* [[`8ac50819b6`](https://github.com/nodejs/node/commit/8ac50819b6)] - **doc**: añadir una sección de seguridad a README.md (Rod Vagg) [#1948](https://github.com/nodejs/node/pull/1948)
+* [[`1f93b63b11`](https://github.com/nodejs/node/commit/1f93b63b11)] - **doc**: cambiar la información a la misma que en gitconfig (Christian Tellnes) [#2000](https://github.com/nodejs/node/pull/2000)
+* [[`0cf94e6856`](https://github.com/nodejs/node/commit/0cf94e6856)] - **doc**: mencionar a CI en la Guía de Colaboradores (Rich Trott) [#1995](https://github.com/nodejs/node/pull/1995)
+* [[`7a3006efe4`](https://github.com/nodejs/node/commit/7a3006efe4)] - **doc**: añadir los enlaces TOC links a la Guía de Colaboradores (Rich Trott) [#1994](https://github.com/nodejs/node/pull/1994)
 * [[`30638b150f`](https://github.com/nodejs/node/commit/30638b150f)] - **doc**: add TSC meeting notes 2015-06-10 (Bert Belder) [#1943](https://github.com/nodejs/node/pull/1943)
-* [[`c4ec04136b`](https://github.com/nodejs/node/commit/c4ec04136b)] - **doc**: reformat authors section (Johan Bergström) [#1966](https://github.com/nodejs/node/pull/1966)
-* [[`96165f9be2`](https://github.com/nodejs/node/commit/96165f9be2)] - **doc**: minor clarification in the modules API doc. (Сковорода Никита Андреевич) [#1983](https://github.com/nodejs/node/pull/1983)
+* [[`c4ec04136b`](https://github.com/nodejs/node/commit/c4ec04136b)] - **doc**: reformatear la sección de autores (Johan Bergström) [#1966](https://github.com/nodejs/node/pull/1966)
+* [[`96165f9be2`](https://github.com/nodejs/node/commit/96165f9be2)] - **doc**: una clarificación menor en el documento API de módulos. (Сковорода Никита Андреевич) [#1983](https://github.com/nodejs/node/pull/1983)
 * [[`5c2707c1b2`](https://github.com/nodejs/node/commit/5c2707c1b2)] - **doc**: benchmark/README.md copyedit (Rich Trott) [#1970](https://github.com/nodejs/node/pull/1970)
 * [[`74fdf732d0`](https://github.com/nodejs/node/commit/74fdf732d0)] - **doc**: copyedit COLLABORATOR_GUIDE.md (Rich Trott) [#1964](https://github.com/nodejs/node/pull/1964)
 * [[`5fe6e83640`](https://github.com/nodejs/node/commit/5fe6e83640)] - **doc**: copyedit GOVERNANCE.md (Rich Trott) [#1963](https://github.com/nodejs/node/pull/1963)
-* [[`428526544c`](https://github.com/nodejs/node/commit/428526544c)] - **doc**: add ChALkeR as collaborator (Сковорода Никита Андреевич) [#1927](https://github.com/nodejs/node/pull/1927)
-* [[`5dfe0d5d61`](https://github.com/nodejs/node/commit/5dfe0d5d61)] - **doc**: remove irrelevant SEMVER-MINOR & MAJOR (Rod Vagg)
+* [[`428526544c`](https://github.com/nodejs/node/commit/428526544c)] - **doc**: añadir a ChALkeR como un colaborador (Сковорода Никита Андреевич) [#1927](https://github.com/nodejs/node/pull/1927)
+* [[`5dfe0d5d61`](https://github.com/nodejs/node/commit/5dfe0d5d61)] - **doc**: eliminar el SEMVER-MINOR irrelevante & MAJOR (Rod Vagg)
 * [[`fb8811d95e`](https://github.com/nodejs/node/commit/fb8811d95e)] - **lib,test**: fix whitespace issues (Roman Reiss) [#1971](https://github.com/nodejs/node/pull/1971)
 * [[`a4f4909f3d`](https://github.com/nodejs/node/commit/a4f4909f3d)] - **module**: fix stat with long paths on Windows (Michaël Zasso) [#2013](https://github.com/nodejs/node/pull/2013)
 * [[`a71ee93afe`](https://github.com/nodejs/node/commit/a71ee93afe)] - **module**: reduce syscalls during require search (Pierre Inglebert) [#1920](https://github.com/nodejs/node/pull/1920)
 * [[`671e64ac73`](https://github.com/nodejs/node/commit/671e64ac73)] - **module**: allow long paths for require on Windows (Michaël Zasso)
 * [[`061342a500`](https://github.com/nodejs/node/commit/061342a500)] - **net**: Defer reading until listeners could be added (James Hartig) [#1496](https://github.com/nodejs/node/pull/1496)
 * [[`5d2b846d11`](https://github.com/nodejs/node/commit/5d2b846d11)] - **test**: assert tmp and fixture dirs different (Rich Trott) [#2015](https://github.com/nodejs/node/pull/2015)
-* [[`b0990ef45d`](https://github.com/nodejs/node/commit/b0990ef45d)] - **test**: confirm symlink (Rich Trott) [#2014](https://github.com/nodejs/node/pull/2014)
-* [[`3ba4f71fc4`](https://github.com/nodejs/node/commit/3ba4f71fc4)] - **test**: check result as early as possible (Rich Trott) [#2007](https://github.com/nodejs/node/pull/2007)
+* [[`b0990ef45d`](https://github.com/nodejs/node/commit/b0990ef45d)] - **test**: confirmar symlink (Rich Trott) [#2014](https://github.com/nodejs/node/pull/2014)
+* [[`3ba4f71fc4`](https://github.com/nodejs/node/commit/3ba4f71fc4)] - **test**: verificar el resultado tan pronto como sea posible (Rich Trott) [#2007](https://github.com/nodejs/node/pull/2007)
 * [[`0abcf44d6b`](https://github.com/nodejs/node/commit/0abcf44d6b)] - **test**: add Buffer slice UTF-8 test (Rich Trott) [#1989](https://github.com/nodejs/node/pull/1989)
 * [[`88c1831ff4`](https://github.com/nodejs/node/commit/88c1831ff4)] - **test**: tmpdir creation failures should fail tests (Rich Trott) [#1976](https://github.com/nodejs/node/pull/1976)
-* [[`52a822d944`](https://github.com/nodejs/node/commit/52a822d944)] - **test**: fix test-cluster-worker-disconnect (Santiago Gimeno) [#1919](https://github.com/nodejs/node/pull/1919)
-* [[`7c79490bfb`](https://github.com/nodejs/node/commit/7c79490bfb)] - **test**: only refresh tmpDir for tests that need it (Rich Trott) [#1954](https://github.com/nodejs/node/pull/1954)
-* [[`88d7904c0b`](https://github.com/nodejs/node/commit/88d7904c0b)] - **test**: remove test repetition (Rich Trott) [#1874](https://github.com/nodejs/node/pull/1874)
-* [[`91dfb5e094`](https://github.com/nodejs/node/commit/91dfb5e094)] - **tools**: make test-npm work without global npm (Jeremiah Senkpiel) [#1926](https://github.com/nodejs/node/pull/1926)
+* [[`52a822d944`](https://github.com/nodejs/node/commit/52a822d944)] - **test**: arreglar test-cluster-worker-disconnect (Santiago Gimeno) [#1919](https://github.com/nodejs/node/pull/1919)
+* [[`7c79490bfb`](https://github.com/nodejs/node/commit/7c79490bfb)] - **test**: sólo refrescar tmpDir para pruebas que lo necesiten (Rich Trott) [#1954](https://github.com/nodejs/node/pull/1954)
+* [[`88d7904c0b`](https://github.com/nodejs/node/commit/88d7904c0b)] - **test**: eliminar la repetición de prueba (Rich Trott) [#1874](https://github.com/nodejs/node/pull/1874)
+* [[`91dfb5e094`](https://github.com/nodejs/node/commit/91dfb5e094)] - **tools**: hacer que test-npm funcione sin el npm global (Jeremiah Senkpiel) [#1926](https://github.com/nodejs/node/pull/1926)
 * [[`3777f41562`](https://github.com/nodejs/node/commit/3777f41562)] - **tools**: enable whitespace related rules in eslint (Roman Reiss) [#1971](https://github.com/nodejs/node/pull/1971)
-* [[`626432d843`](https://github.com/nodejs/node/commit/626432d843)] - **util**: dont repeat isBuffer (Brendan Ashworth) [#1988](https://github.com/nodejs/node/pull/1988)
-* [[`1d79f572f1`](https://github.com/nodejs/node/commit/1d79f572f1)] - **util**: move deprecate() to internal module (Brendan Ashworth) [#1988](https://github.com/nodejs/node/pull/1988)
+* [[`626432d843`](https://github.com/nodejs/node/commit/626432d843)] - **util**: no repetir isBuffer (Brendan Ashworth) [#1988](https://github.com/nodejs/node/pull/1988)
+* [[`1d79f572f1`](https://github.com/nodejs/node/commit/1d79f572f1)] - **util**: mover deprecate() al módulo interno (Brendan Ashworth) [#1988](https://github.com/nodejs/node/pull/1988)
 * [[`4b4b1760b5`](https://github.com/nodejs/node/commit/4b4b1760b5)] - **v8**: cherry-pick uclibc build patch from upstream (Ben Noordhuis) [#1974](https://github.com/nodejs/node/pull/1974)
-* [[`5d0cee46bb`](https://github.com/nodejs/node/commit/5d0cee46bb)] - **vm**: remove unnecessary HandleScopes (Ben Noordhuis) [#2001](https://github.com/nodejs/node/pull/2001)
+* [[`5d0cee46bb`](https://github.com/nodejs/node/commit/5d0cee46bb)] - **vm**: eliminar HandleScopes innecesarios (Ben Noordhuis) [#2001](https://github.com/nodejs/node/pull/2001)
 * [[`0ecf9457b5`](https://github.com/nodejs/node/commit/0ecf9457b5)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 * [[`953b3e75e8`](https://github.com/nodejs/node/commit/953b3e75e8)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 * [[`3806d875d3`](https://github.com/nodejs/node/commit/3806d875d3)] - **zlib**: prevent uncaught exception in zlibBuffer (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811)
 
 <a id="2.3.0"></a>
 
-## 2015-06-13, Version 2.3.0, @rvagg
+## 2015-06-13, Versión 2.3.0, @rvagg
 
-### Notable changes
+### Cambios notables
 
-* **libuv**: Upgraded to 1.6.0 and 1.6.1, see [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) for details. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Highlights include: 
-  * Fix TTY becoming blocked on OS X
+* **libuv**: Actualizado a 1.6.0 y 1.6.1, vea [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) para detalles. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Highlights include: 
+  * Corrección del bloqueo de TTY en OS X
   * Fix UDP send callbacks to not to be synchronous
   * Add `uv_os_homedir()` (exposed as `os.homedir()`, see below)
-* **npm**: See full [release notes](https://github.com/npm/npm/releases/tag/v2.11.1) for details. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Highlight: 
-  * Use GIT_SSH_COMMAND (available as of Git 2.3)
+* **npm**: Vea las [notas de lanzamiento](https://github.com/npm/npm/releases/tag/v2.11.1) completas para detalles. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Destacado: 
+  * Uso de GIT_SSH_COMMAND (disponible a partir de Git 2.3)
 * **openssl**: 
-  * Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
+  * Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). Vea el [aviso de seguridad](https://www.openssl.org/news/secadv_20150611.txt) para detalles completos. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
   * Support [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) mode of OpenSSL, see [README](https://github.com/nodejs/node#building-iojs-with-fips-compliant-openssl) for instructions. (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
-* **os**: Add `os.homedir()` method. (Colin Ihrig) [#1791](https://github.com/nodejs/node/pull/1791)
-* **smalloc**: Deprecate whole module. (Vladimir Kurchatkin) [#1822](https://github.com/nodejs/node/pull/1822)
-* Add new collaborators: 
+* **os**: Adición del método `os.homedir()`. (Colin Ihrig) [#1791](https://github.com/nodejs/node/pull/1791)
+* **smalloc**: Desaprobación de todo el módulo. (Vladimir Kurchatkin) [#1822](https://github.com/nodejs/node/pull/1822)
+* Adición de nuevos colaboradores: 
   * Alex Kocharin ([@rlidwka](https://github.com/rlidwka))
   * Christopher Monsanto ([@monsanto](https://github.com/monsanto))
   * Ali Ijaz Sheikh ([@ofrobots](https://github.com/ofrobots))
@@ -921,7 +921,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
   * Domenic Denicola ([@domenic](https://github.com/domenic))
   * Rich Trott ([@Trott](https://github.com/Trott))
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -929,11 +929,11 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
-* [[`9c0a1b8cfc`](https://github.com/nodejs/node/commit/9c0a1b8cfc)] - **cluster**: wait on servers closing before disconnect (Oleg Elifantiev) [#1400](https://github.com/nodejs/node/pull/1400)
+* [[`9c0a1b8cfc`](https://github.com/nodejs/node/commit/9c0a1b8cfc)] - **cluster**: esperar que se cierren los servidores antes de desconectar (Oleg Elifantiev) [#1400](https://github.com/nodejs/node/pull/1400)
 * [[`0f68377f69`](https://github.com/nodejs/node/commit/0f68377f69)] - **crypto**: support FIPS mode of OpenSSL (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
 * [[`38d1afc24d`](https://github.com/nodejs/node/commit/38d1afc24d)] - **(SEMVER-MINOR)** **crypto**: add getCurves() to get supported ECs (Brian White) [#1914](https://github.com/nodejs/node/pull/1914)
 * [[`a4dbf45b59`](https://github.com/nodejs/node/commit/a4dbf45b59)] - **crypto**: update root certificates (Ben Noordhuis) [#1833](https://github.com/nodejs/node/pull/1833)
