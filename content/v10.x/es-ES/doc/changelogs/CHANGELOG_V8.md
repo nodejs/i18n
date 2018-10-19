@@ -1592,36 +1592,36 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`bd7b216936`](https://github.com/nodejs/node/commit/bd7b216936)] - **test**: corregir test-https-writable-true-after-close (Rich Trott) [#15705](https://github.com/nodejs/node/pull/15705)
 * [[`0aea258f0e`](https://github.com/nodejs/node/commit/0aea258f0e)] - **test**: corregir http-writable-true-after-close defectuosa (Matteo Collina) [#15520](https://github.com/nodejs/node/pull/15520)
 * [[`bbdd93f34f`](https://github.com/nodejs/node/commit/bbdd93f34f)] - **test**: saltar prueba al verificar async_hooks (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
-* [[`98fc665940`](https://github.com/nodejs/node/commit/98fc665940)] - **test**: print resource stack on error (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
-* [[`ab7448e0d5`](https://github.com/nodejs/node/commit/ab7448e0d5)] - **tools**: replace concatenation with string templates (Ethan Arrowood) [#15858](https://github.com/nodejs/node/pull/15858)
-* [[`0e707f3f9e`](https://github.com/nodejs/node/commit/0e707f3f9e)] - **tools**: replace concat with template literals (Minya Liang) [#16046](https://github.com/nodejs/node/pull/16046)
-* [[`ca5f4f0ed3`](https://github.com/nodejs/node/commit/ca5f4f0ed3)] - **tools**: use more template literals (Govee91) [#15942](https://github.com/nodejs/node/pull/15942)
-* [[`94c6296d83`](https://github.com/nodejs/node/commit/94c6296d83)] - **tools**: use template literals (Sarah Meyer) [#15956](https://github.com/nodejs/node/pull/15956)
-* [[`eebb2d775a`](https://github.com/nodejs/node/commit/eebb2d775a)] - **(SEMVER-MINOR)** **tools, build**: refactor macOS installer (JP Wesselink) [#15179](https://github.com/nodejs/node/pull/15179)
-* [[`f68f572d7f`](https://github.com/nodejs/node/commit/f68f572d7f)] - **tty**: require readline at top of file (Bryan English) [#15647](https://github.com/nodejs/node/pull/15647)
-* [[`d181147b2c`](https://github.com/nodejs/node/commit/d181147b2c)] - **url**: const-ify APIs, and pass URL by ref (Sam Roberts) [#15615](https://github.com/nodejs/node/pull/15615)
-* [[`1cc4245bfb`](https://github.com/nodejs/node/commit/1cc4245bfb)] - **url**: fix remaining calculation (Rimas Misevičius) [#15637](https://github.com/nodejs/node/pull/15637)
-* [[`34b4180d7d`](https://github.com/nodejs/node/commit/34b4180d7d)] - **url**: change variable name to be more descriptive (Yang-Kichang) [#15551](https://github.com/nodejs/node/pull/15551)
-* [[`58c68c2fcb`](https://github.com/nodejs/node/commit/58c68c2fcb)] - **util**: use faster -0 check (Brian White) [#15726](https://github.com/nodejs/node/pull/15726)
-* [[`d2e1545406`](https://github.com/nodejs/node/commit/d2e1545406)] - **(SEMVER-MINOR)** **util**: deprecate obj.inspect for custom inspection (Rich Trott) [#15631](https://github.com/nodejs/node/pull/15631)
+* [[`98fc665940`](https://github.com/nodejs/node/commit/98fc665940)] - **test**: imprimir pila de recursos en error (Trevor Norris) [#14208](https://github.com/nodejs/node/pull/14208)
+* [[`ab7448e0d5`](https://github.com/nodejs/node/commit/ab7448e0d5)] - **tools**: reemplazar concatenación con plantillas de strings (Ethan Arrowood) [#15858](https://github.com/nodejs/node/pull/15858)
+* [[`0e707f3f9e`](https://github.com/nodejs/node/commit/0e707f3f9e)] - **tools**: reemplazar concatenación con literales de plantilla (Minya Liang) [#16046](https://github.com/nodejs/node/pull/16046)
+* [[`ca5f4f0ed3`](https://github.com/nodejs/node/commit/ca5f4f0ed3)] - **tools**: usar más literales de plantilla (Govee91) [#15942](https://github.com/nodejs/node/pull/15942)
+* [[`94c6296d83`](https://github.com/nodejs/node/commit/94c6296d83)] - **tools**: usar literales de plantilla (Sarah Meyer) [#15956](https://github.com/nodejs/node/pull/15956)
+* [[`eebb2d775a`](https://github.com/nodejs/node/commit/eebb2d775a)] - **(SEMVER-MINOR)** **tools, build**: refactorizar instalador de macOS (JP Wesselink) [#15179](https://github.com/nodejs/node/pull/15179)
+* [[`f68f572d7f`](https://github.com/nodejs/node/commit/f68f572d7f)] - **tty**: requerir readline en la parte superior del archivo (Bryan English) [#15647](https://github.com/nodejs/node/pull/15647)
+* [[`d181147b2c`](https://github.com/nodejs/node/commit/d181147b2c)] - **url**: constantificar APIs, y pasar la URL por ref (Sam Roberts) [#15615](https://github.com/nodejs/node/pull/15615)
+* [[`1cc4245bfb`](https://github.com/nodejs/node/commit/1cc4245bfb)] - **url**: corregir el cálculo restante (Rimas Misevičius) [#15637](https://github.com/nodejs/node/pull/15637)
+* [[`34b4180d7d`](https://github.com/nodejs/node/commit/34b4180d7d)] - **url**: cambiar el nombre de la variable para ser más descriptivo (Yang-Kichang) [#15551](https://github.com/nodejs/node/pull/15551)
+* [[`58c68c2fcb`](https://github.com/nodejs/node/commit/58c68c2fcb)] - **util**: usar la verificación -0 más rápida (Brian White) [#15726](https://github.com/nodejs/node/pull/15726)
+* [[`d2e1545406`](https://github.com/nodejs/node/commit/d2e1545406)] - **(SEMVER-MINOR)** **util**: desaprobar obj.inspect para inspección personalizada (Rich Trott) [#15631](https://github.com/nodejs/node/pull/15631)
 
 <a id="8.6.0"></a>
 
-## 2017-09-26, Version 8.6.0 (Current), @jasnell
+## 2017-09-26, Versión 8.6.0 (Presente), @jasnell
 
-### Notable Changes
+### Cambios Notables
 
 * **crypto** 
-  * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
+  * Soporte para múltiples curvas ECDH. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram** 
-  * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
-  * Custom lookup functions are now supported. [#14560](https://github.com/nodejs/node/pull/14560)
+  * Se añadió la API `setMulticastInterface()`. [#7855](https://github.com/nodejs/node/pull/7855)
+  * Ahora se soportan las funciones de búsqueda personalizadas. [#14560](https://github.com/nodejs/node/pull/14560)
 * **n-api** 
-  * The command-line flag is no longer required to use N-API. [#14902](https://github.com/nodejs/node/pull/14902)
+  * La bandera command-line ya no es necesaria para usar N-API. [#14902](https://github.com/nodejs/node/pull/14902)
 * **tls** 
-  * Docs-only deprecation of `parseCertString()`. [#14245](https://github.com/nodejs/node/pull/14245)
-* **New Contributors** 
-  * Welcome Sebastiaan Deckers (@sebdeckers) as a new Collaborator! [#15354](https://github.com/nodejs/node/pull/15354)
+  * Desaprobación de solo documentos de `parseCertString()`. [#14245](https://github.com/nodejs/node/pull/14245)
+* **Nuevos Colaboradores** 
+  * ¡Bienvenido Sebastiaan Deckers (@sebdeckers) como nuevo Colaborador! [#15354](https://github.com/nodejs/node/pull/15354)
 
 ### Commits
 
