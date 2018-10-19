@@ -150,18 +150,18 @@ const options = {
 };
 dns.lookup('example.com', options, (err, address, family) =>
   console.log('address: %j family: IPv%s', address, family));
-// address: "2606:2800:220:1:248:1893:25c8:1946" family: IPv6
+// indirizzo: "2606:2800:220:1:248:1893:25c8:1946" famiglia: IPv6
 
-// When options.all is true, the result will be an Array.
+// Quando options.all è true, i risultati saranno un Array.
 options.all = true;
 dns.lookup('example.com', options, (err, addresses) =>
   console.log('addresses: %j', addresses));
-// addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
+// indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
 If this method is invoked as its [`util.promisify()`][]ed version, and `all` is not set to `true`, it returns a `Promise` for an `Object` with `address` and `family` properties.
 
-### Supported getaddrinfo flags
+### Flags getaddrinfo supportati
 
 The following flags can be passed as hints to [`dns.lookup()`][].
 
