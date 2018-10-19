@@ -2676,18 +2676,18 @@ https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 * Exponer Codificación UCS-2 (Konstantin Käfer)
 * Soportar strings para los modos octales (isaacs)
 * Soportar argumentos similares a arrays para ctor de Buffer (isaacs)
-* cygwin and mingw improvements (Bert Belder)
-* TLS improvements
-* Fewer syscalls during require (Bert Belder, isaacs)
-* More DTrace probes (Bryan Cantrill, Robert Mustacchi)
-* 'pipe' event on pipe() (Mikeal Rogers)
-* CRL support in TLS (Theo Schlossnagle)
-* HTTP header manipulation methods (Tim Caswell, Charlie Robbins)
-* Upgrade V8 to 3.1.2
+* mejoras de cygwin y mingw (Bert Belder)
+* Mejoras de TLS
+* Menos syscalls durante require (Bert Belder, isaacs)
+* Más sondas de DTrace (Bryan Cantrill, Robert Mustacchi)
+* Evento "pipe" en pipe() (Mikeal Rogers)
+* Soporte de CRL en TLS (Theo Schlossnagle)
+* Métodos de manipulación de cabecera HTTP (Tim Caswell, Charlie Robbins)
+* Actualizar V8 a 3.1.2
 
 <a id="0.3.8"></a>
 
-## 2011.02.04, Version 0.3.8 (unstable)
+## 2011.02.04, Versión 0.3.8 (inestable)
 
 https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 
