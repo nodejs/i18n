@@ -132,11 +132,11 @@ changes:
   - `address` {string} Una stringa che rappresenta un indirizzo IPv4 o IPv6.
   - `family` {integer} `4` o `6`, che indica la famiglia di `address`.
 
-Risolve un hostname (es. `'nodejs.org'`) nel primo record trovato A (IPv4) oppure AAAA (Ipv6). Tutte le proprietà `option` sono facoltative. Se `options` è un intero, allora deve essere `4` o `6` - se `options` non è fornito, allora gli indirizzi IPv4 e IPv6 saranno restituiti entrambi se trovati.
+Risolve un hostname (es. `'nodejs.org'`) nei primi record A (IPv4) oppure AAAA (Ipv6) trovati. Tutte le proprietà `option` sono facoltative. Se `options` è un intero, allora deve essere `4` o `6` - se `options` non è fornito, allora gli indirizzi IPv4 e IPv6 saranno restituiti entrambi, se trovati.
 
-With the `all` option set to `true`, the arguments for `callback` change to `(err, addresses)`, with `addresses` being an array of objects with the properties `address` and `family`.
+Con `tutte` le opzioni impostate a `true`, gli argomenti per il `callback` cambiano `(err, addresses)`, in `addresses` diventando quindi un array di oggetti con le proprietà `address` e `family`.
 
-On error, `err` is an [`Error`][] object, where `err.code` is the error code. Keep in mind that `err.code` will be set to `'ENOENT'` not only when the hostname does not exist but also when the lookup fails in other ways such as no available file descriptors.
+In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Keep in mind that `err.code` will be set to `'ENOENT'` not only when the hostname does not exist but also when the lookup fails in other ways such as no available file descriptors.
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
