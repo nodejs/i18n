@@ -32,8 +32,8 @@
 * Bij het gebruik van underscores, sterretjes, en accent grave, gebruik alsjeblieft geschikte wisseltekens (`\_`, `\*` and `` \` `` in plaats van `_`, `*` and `` ` ``).
 * Referenties naar ontwikkelaarsfuncties moeten PascalCase gebruiken.
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
-* References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
-* To draw special attention to a note, adhere to the following guidelines: 
+* Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.end()` in plaats van `socket.end`.
+* Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
   * Use a capital letter after the "Note:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
