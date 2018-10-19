@@ -180,13 +180,13 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-断言函数 `块` 不会抛出错误。 See [`assert.throws()`][] for more details.
+断言 `block` 函数不会抛出错误。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误返回调用方。
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+下面这个示例会抛出 [`TypeError`][]， 因为在断言部分没有可匹配的错误类型：
 
 ```js
 assert.doesNotThrow(
@@ -197,7 +197,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception (TypeError)..':
+然而，下面的示例会抛出带有错误信息 - “得到不想要的异常 (TypeError)...” 的 `AssertionError` ：
 
 ```js
 assert.doesNotThrow(
