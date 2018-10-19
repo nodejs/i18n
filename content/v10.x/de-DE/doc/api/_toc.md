@@ -43,7 +43,7 @@
 * [REPL](repl.html)
 * [Stream](stream.html)
 * [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Timer](timers.html)
 * [TLS/SSL](tls.html)
 * [Trace Events](tracing.html)
 * [TTY](tty.html)
@@ -57,4 +57,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Mailingliste](https://groups.google.com/group/nodejs)
