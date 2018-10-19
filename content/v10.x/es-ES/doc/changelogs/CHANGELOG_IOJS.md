@@ -806,39 +806,39 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`941ad362a7`](https://github.com/nodejs/node/commit/941ad362a7)] - **doc**: archive io.js TC minutes (Rod Vagg)
 * [[`644b2eaa89`](https://github.com/nodejs/node/commit/644b2eaa89)] - **doc**: renombrar tc-meetings a tsc-meetings (Rod Vagg)
 * [[`1330ee3b27`](https://github.com/nodejs/node/commit/1330ee3b27)] - **doc**: add TC meeting 2015-05-13 minutes (Rod Vagg) [#1700](https://github.com/nodejs/node/pull/1700)
-* [[`392e8fd64e`](https://github.com/nodejs/node/commit/392e8fd64e)] - **doc**: add @shigeki and @mscdex to TC (Rod Vagg) [#2008](https://github.com/nodejs/node/pull/2008)
+* [[`392e8fd64e`](https://github.com/nodejs/node/commit/392e8fd64e)] - **doc**: añadir a @shigeki y a @mscdex a TC (Rod Vagg) [#2008](https://github.com/nodejs/node/pull/2008)
 * [[`af249fa8a1`](https://github.com/nodejs/node/commit/af249fa8a1)] - **net**: wrap connect in nextTick (Evan Lucas) [#2054](https://github.com/nodejs/node/pull/2054)
-* [[`7f63449fde`](https://github.com/nodejs/node/commit/7f63449fde)] - **net**: fix debug for dnsopts (Evan Lucas) [#2059](https://github.com/nodejs/node/pull/2059)
+* [[`7f63449fde`](https://github.com/nodejs/node/commit/7f63449fde)] - **net**: corregir la depuración para dnsopts (Evan Lucas) [#2059](https://github.com/nodejs/node/pull/2059)
 * [[`eabed2f518`](https://github.com/nodejs/node/commit/eabed2f518)] - **repl**: remove obsolete TODO (Rich Trott) [#2081](https://github.com/nodejs/node/pull/2081)
-* [[`a198c68b56`](https://github.com/nodejs/node/commit/a198c68b56)] - **repl**: make 'Unexpected token' errors recoverable (Julien Gilli) [#2052](https://github.com/nodejs/node/pull/2052)
-* [[`d735b2c6ef`](https://github.com/nodejs/node/commit/d735b2c6ef)] - **repl**: fix tab completion for a non-global context (Sangmin Yoon) [#2052](https://github.com/nodejs/node/pull/2052)
+* [[`a198c68b56`](https://github.com/nodejs/node/commit/a198c68b56)] - **repl**: hacer recuperables los errores de 'Unexpected token' (Julien Gilli) [#2052](https://github.com/nodejs/node/pull/2052)
+* [[`d735b2c6ef`](https://github.com/nodejs/node/commit/d735b2c6ef)] - **repl**: corregir la pestaña de corrección para un contexto no global (Sangmin Yoon) [#2052](https://github.com/nodejs/node/pull/2052)
 * [[`8cee8f54fc`](https://github.com/nodejs/node/commit/8cee8f54fc)] - **src**: nix stdin _readableState.reading manipulation (Chris Dickinson) [#454](https://github.com/nodejs/node/pull/454)
 * [[`856c11f8c8`](https://github.com/nodejs/node/commit/856c11f8c8)] - **test**: purge stale disabled tests (Rich Trott) [#2045](https://github.com/nodejs/node/pull/2045)
 * [[`4d5089e181`](https://github.com/nodejs/node/commit/4d5089e181)] - **test**: do not swallow OpenSSL support error (Rich Trott) [#2042](https://github.com/nodejs/node/pull/2042)
-* [[`06721fe005`](https://github.com/nodejs/node/commit/06721fe005)] - **test**: fix test-repl-tab-complete.js (cjihrig) [#2052](https://github.com/nodejs/node/pull/2052)
-* [[`8e9089ac35`](https://github.com/nodejs/node/commit/8e9089ac35)] - **test**: check for error on Windows (Rich Trott) [#2035](https://github.com/nodejs/node/pull/2035)
-* [[`776a65ebcd`](https://github.com/nodejs/node/commit/776a65ebcd)] - **test**: remove obsolete TODO comments (Rich Trott) [#2033](https://github.com/nodejs/node/pull/2033)
-* [[`bdfeb798ad`](https://github.com/nodejs/node/commit/bdfeb798ad)] - **test**: remove obsolete TODO comments (Rich Trott) [#2032](https://github.com/nodejs/node/pull/2032)
-* [[`58e914f9bc`](https://github.com/nodejs/node/commit/58e914f9bc)] - **tools**: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/iojs/io.js/pull/1325)
-* [[`99cbbc0a13`](https://github.com/nodejs/node/commit/99cbbc0a13)] - **tools**: update gyp to 25ed9ac (Ben Noordhuis) [#2074](https://github.com/nodejs/node/pull/2074)
+* [[`06721fe005`](https://github.com/nodejs/node/commit/06721fe005)] - **test**: corregir test-repl-tab-complete.js (cjihrig) [#2052](https://github.com/nodejs/node/pull/2052)
+* [[`8e9089ac35`](https://github.com/nodejs/node/commit/8e9089ac35)] - **test**: comprobar por un error en Windows (Rich Trott) [#2035](https://github.com/nodejs/node/pull/2035)
+* [[`776a65ebcd`](https://github.com/nodejs/node/commit/776a65ebcd)] - **test**: eliminar los comentarios de TODO obsoletos (Rich Trott) [#2033](https://github.com/nodejs/node/pull/2033)
+* [[`bdfeb798ad`](https://github.com/nodejs/node/commit/bdfeb798ad)] - **test**: eliminar los comentarios de TODO obsoletos (Rich Trott) [#2032](https://github.com/nodejs/node/pull/2032)
+* [[`58e914f9bc`](https://github.com/nodejs/node/commit/58e914f9bc)] - **tools**: arreglar gyp para que funcione en MacOSX sin XCode (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/iojs/io.js/pull/1325)
+* [[`99cbbc0a13`](https://github.com/nodejs/node/commit/99cbbc0a13)] - **tools**: actualizar gyp a 25ed9ac (Ben Noordhuis) [#2074](https://github.com/nodejs/node/pull/2074)
 * [[`e3f9335c40`](https://github.com/nodejs/node/commit/e3f9335c40)] - **tools**: re-enable comma-spacing linter rule (Roman Reiss) [#2072](https://github.com/nodejs/node/pull/2072)
-* [[`d91e10b3bd`](https://github.com/nodejs/node/commit/d91e10b3bd)] - **tools**: update eslint to 0.24.0 (Roman Reiss) [#2072](https://github.com/nodejs/node/pull/2072)
-* [[`6c61ca5325`](https://github.com/nodejs/node/commit/6c61ca5325)] - **url**: fix typo in comment (Rich Trott) [#2071](https://github.com/nodejs/node/pull/2071)
+* [[`d91e10b3bd`](https://github.com/nodejs/node/commit/d91e10b3bd)] - **tools**: actualizar eslint a 0.24.0 (Roman Reiss) [#2072](https://github.com/nodejs/node/pull/2072)
+* [[`6c61ca5325`](https://github.com/nodejs/node/commit/6c61ca5325)] - **url**: corregir el error tipográfico en el comentario (Rich Trott) [#2071](https://github.com/nodejs/node/pull/2071)
 * [[`1a51f0058c`](https://github.com/nodejs/node/commit/1a51f0058c)] - **v8**: cherry-pick JitCodeEvent patch from upstream (Ben Noordhuis) [#2075](https://github.com/nodejs/node/pull/2075)
 
 <a id="2.3.1"></a>
 
-## 2015-06-23, Version 2.3.1, @rvagg
+## 2015-06-23, Versión 2.3.1, @rvagg
 
-### Notable changes
+### Cambios notables
 
-* **module**: The number of syscalls made during a `require()` have been significantly reduced again (see [#1801](https://github.com/nodejs/node/pull/1801) from v2.2.0 for previous work), which should lead to a performance improvement (Pierre Inglebert) [#1920](https://github.com/nodejs/node/pull/1920).
+* **module**: El número de llamadas de sistema hechas durante un `require()` se ha reducido significativamente otra vez (vea [#1801](https://github.com/nodejs/node/pull/1801) de v2.2.0 para trabajos previos), lo cual debería conducir a una mejora de rendimiento (Pierre Inglebert) [#1920](https://github.com/nodejs/node/pull/1920).
 * **npm**: 
-  * Upgrade to [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
-  * Upgrade to [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
-* **zlib**: A bug was discovered where the process would abort if the final part of a zlib decompression results in a buffer that would exceed the maximum length of `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). This is now fixed and will instead result in a thrown `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
+  * Actualización a [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
+  * Actualización a [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
+* **zlib**: Se descubrió un error en donde el proceso abortaría si la parte final de una descomprensión zlib resulta en un buffer que excedería la longitud máxima de `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). Esto se corrigió y en su lugar resultará en arrojar `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -846,7 +846,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
@@ -854,13 +854,13 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`d5637e67c9`](https://github.com/nodejs/node/commit/d5637e67c9)] - **buffer**: fix cyclic dependency with util (Brendan Ashworth) [#1988](https://github.com/nodejs/node/pull/1988)
 * [[`c5353d7c62`](https://github.com/nodejs/node/commit/c5353d7c62)] - **build**: remove lint from test-ci on windows (Johan Bergström) [#2004](https://github.com/nodejs/node/pull/2004)
 * [[`c207e8d223`](https://github.com/nodejs/node/commit/c207e8d223)] - **build**: fix pkg-config output parsing in configure (Ben Noordhuis) [#1986](https://github.com/nodejs/node/pull/1986)
-* [[`8d8a26e8f7`](https://github.com/nodejs/node/commit/8d8a26e8f7)] - **build**: don't run lint from test-ci (Johan Bergström) [#1965](https://github.com/nodejs/node/pull/1965)
-* [[`1ec53c044d`](https://github.com/nodejs/node/commit/1ec53c044d)] - **build**: simplify execution of built binary (Johan Bergström) [#1955](https://github.com/nodejs/node/pull/1955)
+* [[`8d8a26e8f7`](https://github.com/nodejs/node/commit/8d8a26e8f7)] - **build**: no ejecutar lint desde test-ci (Johan Bergström) [#1965](https://github.com/nodejs/node/pull/1965)
+* [[`1ec53c044d`](https://github.com/nodejs/node/commit/1ec53c044d)] - **build**: simplificar la ejecución del binario construido (Johan Bergström) [#1955](https://github.com/nodejs/node/pull/1955)
 * [[`3beb880716`](https://github.com/nodejs/node/commit/3beb880716)] - **crypto**: add cert check to CNNIC Whitelist (Shigeki Ohtsu) [#1895](https://github.com/nodejs/node/pull/1895)
-* [[`48c0fb8b1a`](https://github.com/nodejs/node/commit/48c0fb8b1a)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`6a359b1ce9`](https://github.com/nodejs/node/commit/6a359b1ce9)] - **deps**: upgrade to npm 2.11.3 (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018)
-* [[`6aab2f3b9a`](https://github.com/nodejs/node/commit/6aab2f3b9a)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`3e12561b55`](https://github.com/nodejs/node/commit/3e12561b55)] - **deps**: upgrade to npm 2.11.2 (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956)
+* [[`48c0fb8b1a`](https://github.com/nodejs/node/commit/48c0fb8b1a)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`6a359b1ce9`](https://github.com/nodejs/node/commit/6a359b1ce9)] - **deps**: actualizar a npm 2.11.3 (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018)
+* [[`6aab2f3b9a`](https://github.com/nodejs/node/commit/6aab2f3b9a)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`3e12561b55`](https://github.com/nodejs/node/commit/3e12561b55)] - **deps**: actualizar a npm 2.11.2 (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956)
 * [[`8ac50819b6`](https://github.com/nodejs/node/commit/8ac50819b6)] - **doc**: add security section to README.md (Rod Vagg) [#1948](https://github.com/nodejs/node/pull/1948)
 * [[`1f93b63b11`](https://github.com/nodejs/node/commit/1f93b63b11)] - **doc**: change the info to the same as in gitconfig (Christian Tellnes) [#2000](https://github.com/nodejs/node/pull/2000)
 * [[`0cf94e6856`](https://github.com/nodejs/node/commit/0cf94e6856)] - **doc**: mention CI in Collaborator Guide (Rich Trott) [#1995](https://github.com/nodejs/node/pull/1995)
