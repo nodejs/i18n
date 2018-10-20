@@ -53,7 +53,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Tenga en cuenta que todos los Complementos de Node.js deben exportar una función de inicialización siguiendo el patrón:
 
 ```cpp
 void Initialize(Local<Object> exports);
@@ -101,7 +101,7 @@ console.log(addon.hello());
 
 Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Ya que la ruta exacta hacia el Complemento binario compilado puede variar dependiendo de cómo esté compilado (por ejemplo, a veces puede estar en `./build/Debug/`), los Complementos pueden utilizar el paquete [bindings](https://github.com/TooTallNate/node-bindings) para cargar el módulo compilado.
 
 Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
 
@@ -923,7 +923,7 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### Hooks de AtExit
 
 An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. Los hooks de "AtExit" se registran utilizando la API `node::AtExit` .
 
