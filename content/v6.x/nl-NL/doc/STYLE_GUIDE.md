@@ -30,7 +30,7 @@
   * Gebruik taalbewuste barrières. ("```js")
   * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `assets/code-examples` en link er naartoe.
 * Bij het gebruik van underscores, sterretjes en accent grave, gebruik alsjeblieft geschikte wisseltekens (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
-* Referenties naar onwikkelaarsfuncties moeten PascalCase gebruiken.
+* Referenties naar ontwikkelaarsfuncties moeten PascalCase gebruiken.
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.en()` in plaats van `socket.end`.
 * Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken: 
