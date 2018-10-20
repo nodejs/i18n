@@ -36,7 +36,7 @@
 * Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
   * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
   * Gebruik een hoofdletter na het "Opmerking:" label.
-  * Preferably, make the note a new paragraph for better visual distinction.
+  * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
 * Function arguments or object properties should use the following format: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
   * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
