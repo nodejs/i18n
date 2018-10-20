@@ -43,7 +43,7 @@
   * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
 * Functie resultaten moeten het volgende formaat gebruiken: 
   * `* Resultaat: {type|type2} Optionele beschrijving.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
-* Use official styling for capitalization in products and projects. 
-  * OK: JavaScript, Google's V8
-  * NOT OK: Javascript, Google's v8
+  * Bijvoorbeeld: `* Resultaat: {AsyncHook} Een referentie naar <code>asyncHook`.</code>
+* Gebruik officiële opmaak voor gebruik van hoodletters in producten en projecten. 
+  * Ok: JavaScript, Googles V8
+  * Niet Ok: Javascript, Googles V8
