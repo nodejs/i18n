@@ -8,16 +8,16 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Announce the accepted nomination in a TSC meeting and in the TSC mailing list.
 * Suggest the new Collaborator install [`node-core-utils`][] and [set up the credentials](https://github.com/nodejs/node-core-utils#setting-up-credentials) for it.
 
-## Fifteen minutes before the onboarding session
+## Piętnaście minut przed sesją adaptacyjną
 
 * Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
 * Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
-## Onboarding session
+## Sesja adaptacyjna
 
-* This session will cover: 
-  * [local setup](#local-setup)
-  * [project goals & values](#project-goals--values)
+* Ta sesja obejmie: 
+  * [ustawienia lokalne](#local-setup)
+  * [cele projektu & wartości](#project-goals--values)
   * [managing the issue tracker](#managing-the-issue-tracker)
   * [reviewing PRs](#reviewing-prs)
   * [landing PRs](#landing-prs)
