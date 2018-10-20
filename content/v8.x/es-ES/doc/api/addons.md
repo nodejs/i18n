@@ -12,7 +12,7 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * Bibliotecas internas de Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -60,11 +60,11 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+No hay punto y coma después de `NODE_MODULE`, ya que no es una función (vea `node.h`).
 
 El `module_name` debe coincidir con el nombre de archivo del binario final (excluyendo al sufijo .node).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Entonces, en el ejemplo de `hello.cc`, la función de inicialización es `init` y el nombre del módulo de Complemento es `addon`.
 
 ### Building
 
@@ -115,7 +115,7 @@ try {
 
 ### Vincular a las dependencias de Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. Todos los Complementos deben vincularse a V8, y también se pueden vincular a cualquiera de las otras dependencias. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. Sin embargo, existen algunas advertencias a tener en cuenta:
+Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V8, libuv y OpenSSL. Todos los Complementos deben vincularse a V8, y también se pueden vincular a cualquiera de las otras dependencias. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. Sin embargo, existen algunas advertencias a tener en cuenta:
 
 * Cuando se ejecuta `node-gyp`, detectará la versión de lanzamiento específica de Node.js y descargará el tarball de la fuente completa o solo las cabeceras. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. Sin embargo, si solo se descargan las cabeceras de Node.js, entonces solo los símbolos exportados por Node.js estarán disponibles.
 
