@@ -1013,7 +1013,7 @@ assert.throws(
 );
 ```
 
-使用构造函数验证实例：
+使用构造函数验证instanceof：
 
 ```js
 assert.throws(
