@@ -24,7 +24,7 @@ This "Hello world" example is a simple Addon, written in C++, that is the equiva
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Primero, crea el archivo `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -85,7 +85,7 @@ Once the source code has been written, it must be compiled into the binary `addo
 
 Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Esto se colocará dentro del directorio de `build/Release/` .
 
 When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
@@ -115,13 +115,13 @@ try {
 
 ### Linking to Node.js' own dependencies
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. Sin embargo, existen algunas advertencias a tener en cuenta:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. Sin embargo, si solo se descargan las cabeceras de Node.js, entonces solo los símbolos exportados por Node.js estarán disponibles.
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
-### Loading Addons using require()
+### Cargar Complementos utilizando require()
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](globals.html#globals_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
@@ -241,7 +241,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. El siguiente ejemplo ilustra cómo invocar dichos callbacks:
+Es una práctica común dentro de los Complementos, pasar funciones de JavaScript a una función de C++ y ejecutarlas desde allí. El siguiente ejemplo ilustra cómo invocar dichos callbacks:
 
 ```cpp
 // addon.cc
@@ -293,7 +293,7 @@ Tenga en cuenta que, en este ejemplo, la función de callback se invoca de maner
 
 ### Fábrica de objetos
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
+Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++, como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
 
 ```cpp
 // addon.cc
@@ -755,7 +755,7 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### Pasar y distribuir objetos envueltos
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. Los siguientes ejemplos muestran una función `add()` que puede tomar dos objetos `MyObject` como argumentos de entrada:
 
