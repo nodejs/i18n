@@ -2880,23 +2880,23 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 
 * Permitir Strings para puertos en net.Server.listen (Bradley Meck)
 
-* fs bugfixes (Tj Holowaychuk, Tobie Langel, Marco Rogers, isaacs)
-* http bug fixes (Fedor Indutny, Mikeal Rogers)
-* Faster buffers; breaks C++ API (Tim-Smart, Stéphan Kochen)
-* crypto, tls improvements (Paul Querna)
-* Add lfs flags to node addon script
-* Simpler querystring parsing; breaks API (Peter Griess)
-* HTTP trailers (Mark Nottingham)
-* http 100-continue support (Mark Nottingham)
-* Module system simplifications (Herbert Vojčík, isaacs, Tim-Smart)
+* Reparaciones de bugs del fs (Tj Holowaychuk, Tobie Langel, Marco Rogers, isaacs)
+* Reparaciones de bug de http (Fedor Indutny, Mikeal Rogers)
+* Buffers más rápidos; genera ruptura de la API de C++ (Tim-Smart, Stéphan Kochen)
+* crypto, mejoras de tls (Paul Querna)
+* Añadir banderas lfs al script de complemento de node
+* Análisis de querystring más sencillo; genera ruptura de la API (Peter Griess)
+* Trailers de HTTP (Mark Nottingham)
+* Soporte para 100-continue de http (Mark Nottingham)
+* Simplificaciones del sistema de módulos (Herbert Vojčík, isaacs, Tim-Smart)
   
-  * remove require.async
-  * remove registerExtension, add .extensions
-  * expose require.resolve
-  * expose require.cache
-  * require looks in node_modules folders
+  * remover require.async
+  * remover registerExtension, añadir .extensions
+  * exponer require.resolve
+  * exponer require.cache
+  * requerir vistas en las carpetas de node_modules
 
-* Add --eval command line option (TJ Holowaychuk)
+* Añadir opción de línea de comandos --eval (TJ Holowaychuk)
 
 * Commas last in sys.inspect
 * Constants moved from process object to require('constants')
