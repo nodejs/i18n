@@ -42,23 +42,23 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 ## Cele projektu & wartości
 
-* Collaborators are the collective owners of the project
+* Współpracownicy są wspólnymi właścicielami projektu
     
-    * The project has the goals of its contributors
+    * Projekt ma cele dla swoich współpracowników
 
-* There are some higher-level goals and values
+* Istnieją pewne cele i wartości wyższego szczebla
     
-    * Empathy towards users matters (this is in part why we onboard people)
-    * Generally: try to be nice to people!
+    * Empatia wobec użytkowników ma znaczenie (częściowo dlatego, że mamy w zespole ludzi)
+    * Generalnie: staraj się być miły dla ludzi!
     * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
-* We have a [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) that you are expected to follow *and* hold others accountable to
+* Mamy [Zasady Postępowania](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), który oczekuje się o przestrzeganie *i* pociągnięcia innych do odpowiedzialności
 
-## Managing the issue tracker
+## Zarządzanie listą problemów
 
-* You have (mostly) free rein; don't hesitate to close an issue if you are confident that it should be closed
+* Masz (przeważnie) wolną rękę; nie wahaj się zamknąć problemu, jeśli masz pewność, że należy go zamknąć
     
-    * Be nice about closing issues! Let people know why, and that issues and PRs can be reopened if necessary
+    * Bądź miły w zamykaniu problemów! Daj ludziom do zrozumienia dlaczego, a te problemy i PR-y można w razie potrzeby ponownie otworzyć
 
 * [**See "Labels"**](./onboarding-extras.md#labels)
     
