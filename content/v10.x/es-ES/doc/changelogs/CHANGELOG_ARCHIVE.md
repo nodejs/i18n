@@ -2742,12 +2742,12 @@ https://github.com/nodejs/node/commit/bb3e71466e5240626d9d21cf791fe43e87d90011
 
 <a id="0.3.5"></a>
 
-## 2011.01.16, Version 0.3.5 (unstable)
+## 2011.01.16, Versión 0.3.5 (inestable)
 
 https://github.com/nodejs/node/commit/b622bc6305e3c675e0edfcdbaa387d849ad0bba0
 
-* Built-in debugger improvements.
-* Add setsid, setuid, setgid options to child_process.spawn (Isaac Schlueter)
+* Mejoras del depurador integrado.
+* Añadir opciones setsid, setuid, setgid a child_process.spawn (Isaac Schlueter)
 
 * tty module improvements.
 
