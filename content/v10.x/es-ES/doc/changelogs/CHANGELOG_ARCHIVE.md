@@ -2812,24 +2812,24 @@ https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
   * clearTimeouts realizando múltiples llamadas (Michael W)
   * Detección de estructuras circulares por utils.inspect (Tim Cooijmans)
   * Bug de write() en hilo de Apple (Jorge Chamorro Bieling)
-  * Make sure raw mode is disabled when exiting a terminal-based REPL. (Brian White)
+  * Asegurarse de que el modo raw esté deshabilitado cuando exista un REPL con base en el terminal. (Brian White)
 
-* Deprecate process.compile, process.ENV
+* Desaprobar process.compile, process.ENV
 
-* Upgrade V8 to 3.0.3, upgrade http-parser.
+* Actualizar V8 a 3.0.3, actualizar http-parser.
 
 <a id="0.3.1"></a>
 
-## 2010.11.16, Version 0.3.1 (unstable)
+## 2010.11.16, Versión 0.3.1 (inestable)
 
 https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 
-* TLS improvements (Paul Querna)
+* Mejoras de TLS (Paul Querna)
   
-  * Centralize error handling in SecureStream
-  * Add SecurePair for handling of a ssl/tls stream.
+  * Centralizar manejo de errores en SecureStream
+  * Añadir SecurePair para el manejo de un stream de ssl/tls.
 
-* New documentation organization (Micheil Smith)
+* Nueva organización de la documentación (Micheil Smith)
 
 * allowHalfOpen TCP connections disabled by default.
 * Add C++ API for constructing fast buffer from string
