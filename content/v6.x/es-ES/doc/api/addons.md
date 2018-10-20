@@ -230,7 +230,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Una vez compilado, el Complemento de ejemplo puede ser requerido y utilizado desde dentro de Node.js:
 
 ```js
 // test.js
@@ -275,7 +275,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. Esto permite que el Complemento reescriba completamente `exports` con una sóla función, en vez de añadir la función como una propiedad de `exports`.
 
 Para probarlo, ejecute el siguiente JavaScript:
 
@@ -293,7 +293,7 @@ Tenga en cuenta que, en este ejemplo, la función de callback se invoca de maner
 
 ### Fábrica de objetos
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Addons can create and return new objects from within a C++ function as illustrated in the following example. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
 
 ```cpp
 // addon.cc
@@ -383,7 +383,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-To test:
+Para probar:
 
 ```js
 // test.js
@@ -448,7 +448,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+En `myobject.cc`, implemente los métodos varios que deberán ser expuestos. A continuación, se expone el método `plusOne()` añadiéndolo al prototipo del contructor:
 
 ```cpp
 // myobject.cc
@@ -541,7 +541,7 @@ Para construir este ejemplo, el archivo `myobject.cc` debe ser agregado al `bind
 }
 ```
 
-Test it with:
+Pruebelo con:
 
 ```js
 // test.js
@@ -558,7 +558,7 @@ console.log(obj.plusOne());
 
 ### Fábrica de objetos envueltos
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Alternativamente, es posible utilizar un patrón Factory para evitar de manera explícita la creación de instancias de objetos utilizando el operador `new` de JavaScript:
 
 ```js
 const obj = addon.createObject();
@@ -597,7 +597,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. Este método toma el lugar del uso de `new` en JavaScript:
+En `myobject.h`, se añade el método estático `NewInstance()` para manejar la instanciación del objeto. Este método toma el lugar del uso de `new` en JavaScript:
 
 ```cpp
 // myobject.h
@@ -732,7 +732,7 @@ Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agr
 }
 ```
 
-Test it with:
+Pruebelo con:
 
 ```js
 // test.js
@@ -909,7 +909,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Pruebelo con:
 
 ```js
 // test.js
