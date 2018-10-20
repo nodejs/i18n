@@ -2715,17 +2715,17 @@ https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 * Reparar bug en método de fin de "request" de http. (Ali Farhadi)
 * MinGW: mejorar soporte de red (Bert Belder)
 * fs.open debe establecer FD_CLOEXEC
-* DTrace probes (Bryan Cantrill)
-* REPL fixes and improvements (isaacs, Bert Belder)
-* Fix many bugs with legacy http.Client interface
-* Deprecate process.assert. Use require('assert').ok
-* Add callback parameter to socket.setTimeout(). (Ali Farhadi)
-* Fixing bug in http request default encoding (Ali Farhadi)
-* require: A module ID with a trailing slash must be a dir. (isaacs)
+* Sondas de DTrace (Bryan Cantrill)
+* Correcciones y mejoras de REPL (isaacs, Bert Belder)
+* Reparar muchos bugs con interfaz heredada de http.Client
+* Desaprobar process.assert. Usar require('assert').ok
+* Añadir parámetro de callback a socket.setTimeout(). (Ali Farhadi)
+* Reparar bug en codificación por defecto de las solicitudes http (Ali Farhadi)
+* require: La ID de un módulo con una barra diagonal al final debe ser un directorio. (isaacs)
 
-* Add ext_key_usage to getPeerCertificate (Greg Hughes)
+* Añadir ext_key_usage a getPeerCertificate (Greg Hughes)
 
-* Error when child_process.exec hits maxBuffer.
+* Error cuando child_process.exec choca con maxBuffer.
 * Fix option parsing in tls.connect()
 * Upgrade to V8 3.0.10
 
