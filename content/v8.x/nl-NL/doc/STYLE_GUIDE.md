@@ -29,13 +29,13 @@
 * Voor code blokken: 
   * Gebruik taalbewuste barrières. ("```js")
   * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `aanwinsten/code-voorbeelden` en link er naartoe.
-* When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
-* References to constructor functions should use PascalCase.
-* References to constructor instances should use camelCase.
-* References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
-* To draw special attention to a note, adhere to the following guidelines: 
-  * Make the "Note:" label italic, i.e. `*Note*:`.
-  * Use a capital letter after the "Note:" label.
+* Bij het gebruik van underscores, sterretjes en accent grave, gebruik alsjeblieft geschikte wisseltekens (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
+* Referenties naar onwikkelaarsfuncties moeten PascalCase gebruiken.
+* Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
+* Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.en()` in plaats van `socket.end`.
+* Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
+  * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
+  * Gebruik een hoofdletter na het "Opmerking:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
 * Function arguments or object properties should use the following format: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
