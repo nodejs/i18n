@@ -34,11 +34,14 @@
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.end()` in plaats van `socket.end`.
 * Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
-  * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
-  * Gebruik een hoofdletter na het "Opmerking:" label.
-  * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
-* Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken: 
-  * `* \<code>name` {type|type2} Optionele beschrijving. **Default:** `defaultValue`.</code>
+  * Maak het "Opmerking:" label cursief, bijvoorbeeld `*Opmerking*:<0/>.</li>
+<li>Gebruik een hoofdletter na het "Opmerking:" label.</li>
+<li>Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.</li>
+</ul></li>
+<li>Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken:
+
+<ul>
+<li><code>* \<code>name` {type|type2} Optionele beschrijving. **Default:** `defaultValue`.</code>
   * Bijvoorbeeld: `* <code>byteOffset` {integer} Index van eerste te onthullen byte. **Default:** `0`.</code>
   * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 * Functie resultaten moeten het volgende formaat gebruiken: 
