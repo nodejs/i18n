@@ -492,7 +492,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-Tests strict equality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
+使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 测试严格相等性。
 
 ```js
 const assert = require('assert');
@@ -507,7 +507,7 @@ assert.strictEqual(1, '1');
 // AssertionError: 1 === '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不是严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.throws(block\[, error\]\[, message\])
 
@@ -524,11 +524,11 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Expects the function `block` to throw an error.
+期望 `block` 函数抛出一个错误。
 
-If specified, `error` can be a constructor, [`RegExp`][], or validation function.
+如果指定的话，`error` 可以是一个构造函数，[`RegExp`][] 或 验证函数。
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
 
 Validate instanceof using constructor:
 
