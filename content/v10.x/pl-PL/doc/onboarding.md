@@ -31,10 +31,10 @@ apply.whitespace fix`
   * Always continue to PR from your own GitHub fork 
     * Branches in the `nodejs/node` repository are only for release lines
   * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
-  * Make a new branch for each PR you submit.
-  * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+  * Stwórz nową gałąź dla każdego PR, które przesyłasz.
+  * Membership: Consider making your membership in the Node.js GitHub organization public. Ułatwia to identyfikację Współpracowników. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
-* Notifications:
+* Powiadomienia:
   
   * Use <https://github.com/notifications> or set up email
   * Watching the main repo will flood your inbox (several hundred notifications on typical weekdays), so be prepared
