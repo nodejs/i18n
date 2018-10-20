@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
