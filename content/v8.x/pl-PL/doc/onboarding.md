@@ -15,17 +15,17 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Ta sesja obejmie: 
     * [ustawienia lokalne](#local-setup)
     * [cele projektu & wartości](#project-goals--values)
-    * [managing the issue tracker](#managing-the-issue-tracker)
-    * [reviewing PRs](#reviewing-prs)
-    * [landing PRs](#landing-prs)
+    * [zarządzanie listą problemów](#managing-the-issue-tracker)
+    * [przeglądanie PR-ami](#reviewing-prs)
+    * [wyładowywanie Pr-ów](#landing-prs)
 
-## Local setup
+## Ustawienia lokalne
 
 * git:
     
-    * Make sure you have whitespace=fix: `git config --global --add apply.whitespace fix`
-    * Always continue to PR from your own github fork 
-        * Branches in the nodejs/node repository are only for release lines
+    * Upewnij się, że masz ustawione whitespace=fix: `ustawienia git --globalne -- dodaj apply.whitespace fix`
+    * Zawsze kontynuuj PR z własnego rozwidlenia github 
+        * Gałęzie w repozytorium nodejs/node są tylko dla opublikowanych wierszy
     * [See "Updating Node.js from Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
     * Make a new branch for each PR you submit.
     * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
