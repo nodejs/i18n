@@ -65,8 +65,8 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
     * Istnieje [bot](https://github.com/nodejs-github-bot/github-bot), który stosuje etykiety podsystemów (na przykład, `doc`,`test`, `zapewnić`, lub `bufor`), abyśmy wiedzieli, jakie części kodu bazują na modyfikacjach żądania zmiany. Nie jest to oczywiście idealne. Czuj się swobodnie wysyłając znaczące etykiety i usuwając nieznaczące z żądania zmian i problemów.
     * Użyj etykiety `tsc-review`, jeśli temat jest kontrowersyjny lub nie nadchodzi wniosek po dłuższym czasie.
     * `semver-{minor,major}`: 
-        * If a change has the remote *chance* of breaking something, use the `semver-major` label
-        * When adding a semver label, add a comment explaining why you're adding it. Do it right away so you don't forget!
+        * Jeśli zmiana ma nikłą *szansę* złamania czegoś, użyj znacznika `semver-major`
+        * Dodając etykietę semver, dodaj komentarz wyjaśniający, dlaczego ją dodajesz. Zrób to od razu, żebyś nie zapomniał!
 
 * [**See "Who to CC in issues"**](./onboarding-extras.md#who-to-cc-in-issues)
     
