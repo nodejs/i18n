@@ -37,15 +37,15 @@
   * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
   * Gebruik een hoofdletter na het "Opmerking:" label.
   * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
-* Function arguments or object properties should use the following format: 
-  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
-* Gebruik officiële opmaak voor gebruik van hoodletters in producten en projecten. 
+* Functie argumenten of onderwerpseigenscheppen moeten het volgende formaat gebruiken: 
+  * `* \<code>name` {type|type2} Optionele beschrijving. **Default:** `defaultValue`.</code>
+  * Bijvoorbeeld: `* <code>byteOffset` {integer} Index van eerste te onthullen byte. **Default:** `0`.</code>
+  * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
+* Functie resultaten moeten het volgende formaat gebruiken: 
+  * `* Resultaat: {type|type2} Optionele beschrijving.`
+  * Bijvoorbeeld: `* Resultaat: {AsyncHook} Een referentie naar <code>asyncHook`.</code>
+* Gebruik officiële opmaak voor gebruik van hoofdletters in producten en projecten. 
   * Ok: JavaScript, Googles V8
   * Niet Ok: Javascript, Googles V8
 
-See also API documentation structure overview in [doctools README](../tools/doc/README.md).
+Zie ook structuur-overzicht van API documentatie in [doctools LEZEN](../tools/doc/README.md).
