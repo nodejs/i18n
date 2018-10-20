@@ -597,7 +597,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. Este método toma el lugar del uso de `new` en JavaScript:
 
 ```cpp
 // myobject.h
@@ -716,7 +716,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agregado al `binding.gyp`:
 
 ```json
 {
@@ -803,7 +803,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+En `myobject.h`, se agrega un nuevo método público para permitir el acceso a los valores privados después de desenvolver el objeto.
 
 ```cpp
 // myobject.h
@@ -835,7 +835,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+La implementación de `myobject.cc` es similar a la anterior:
 
 ```cpp
 // myobject.cc
@@ -925,7 +925,7 @@ console.log(result);
 
 ### AtExit hooks
 
-An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. "AtExit" hooks are registered using the `node::AtExit` API.
+An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. Los hooks de "AtExit" se registran utilizando la API `node::AtExit` .
 
 #### void AtExit(callback, args)
 
@@ -938,7 +938,7 @@ AtExit takes two parameters: a pointer to a callback function to run at exit, an
 
 Callbacks are run in last-in first-out order.
 
-The following `addon.cc` implements AtExit:
+El siguiente `addon.cc` implementa AtExit:
 
 ```cpp
 // addon.cc
@@ -989,7 +989,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Prueba en JavaScript mediante la ejecución de:
 
 ```js
 // test.js
