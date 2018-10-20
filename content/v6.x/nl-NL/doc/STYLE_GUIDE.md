@@ -33,7 +33,7 @@
 * Referenties naar onwikkelaarsfuncties moeten PascalCase gebruiken.
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.en()` in plaats van `socket.end`.
-* Functie argumenten of onderwerpseigenschappen moeten het volgende formaat gebruiken: 
+* Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken: 
   * `* \<code>name` {type|type2} Optionele beschrijving. **Default:** `defaultValue`</code>
   * Bijvoorbeeld: `* <code>byteOffset` {integer} Index van eerste te onthullen byte. **Default:** `0`</code>
   * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
