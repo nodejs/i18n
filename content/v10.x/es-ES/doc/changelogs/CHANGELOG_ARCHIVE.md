@@ -2834,14 +2834,14 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 * allowHalfOpen para las conexiones TCP está deshabilitada por defecto.
 * Añadir API de C++ para la construcción de "fast buffer" desde string
 * Mover temporizadores inactivos adentro de su propio módulo
-* Gracefully handle EMFILE and server.maxConnections
-* make "node --eval" eval in the global scope. (Jorge Chamorro Bieling)
+* Manejar con gracia EMFILE y server.maxConnections
+* hacer evaluación "node --eval" en el ámbito global. (Jorge Chamorro Bieling)
 
-* Let exit listeners know the exit code (isaacs)
+* Dejar que los listeners de salida conozcan el código de salida (isaacs)
 
-* Handle cyclic links smarter in fs.realpath (isaacs)
-* Remove node-repl (just use 'node' without args)
-* Rewrite libeio After callback to use req->result instead of req->errorno for error checking (Micheil Smith)
+* Manejar los enlaces cíclicos en fs.realpath de una manera más inteligente (isaacs)
+* Remover node-repl (solo usar "node" sin args)
+* Volver a escribir libeio Luego de la callback para que use req->result en lugar de req->errorno para la revisión de errores (Micheil Smith)
 
 * Remove warning about deprecating 'sys' - too aggressive
 
