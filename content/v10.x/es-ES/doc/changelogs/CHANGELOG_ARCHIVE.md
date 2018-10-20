@@ -2711,7 +2711,7 @@ https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 
 https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 
-* Expose agent in http and https client. (Mikeal Rogers)
+* Exponer agente en cliente http y https. (Mikeal Rogers)
 * Fix bug in http request's end method. (Ali Farhadi)
 * MinGW: better net support (Bert Belder)
 * fs.open should set FD_CLOEXEC
