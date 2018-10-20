@@ -2831,9 +2831,9 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 
 * Nueva organización de la documentación (Micheil Smith)
 
-* allowHalfOpen TCP connections disabled by default.
-* Add C++ API for constructing fast buffer from string
-* Move idle timers into its own module
+* allowHalfOpen para las conexiones TCP está deshabilitada por defecto.
+* Añadir API de C++ para la construcción de "fast buffer" desde string
+* Mover temporizadores inactivos adentro de su propio módulo
 * Gracefully handle EMFILE and server.maxConnections
 * make "node --eval" eval in the global scope. (Jorge Chamorro Bieling)
 
