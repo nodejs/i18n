@@ -568,21 +568,19 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个字符串。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes:
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被忽略了，并且这个字符串将被用于 `message`。 这会导致不容易被发现的错误。
 
 <!-- eslint-disable no-restricted-syntax -->
 
 ```js
-// THIS IS A MISTAKE! DO NOT DO THIS!
+// 这是个错误！ 不要这样做！
 assert.throws(myFunction, 'missing foo', 'did not throw with expected message');
-
-// Do this instead.
 assert.throws(myFunction, /missing foo/, 'did not throw with expected message');
 ```
 
-## Caveats
+## 注意事项
 
-For the following cases, consider using ES2015 [`Object.is()`][], which uses the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison.
+在如下情况中，请考虑使用ES2015中的 [`Object.is()`][]，它会使用[SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero)来进行比较。
 
 ```js
 const a = 0;
