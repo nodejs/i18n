@@ -34,8 +34,8 @@
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.end()` in plaats van `socket.end`.
 * Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
-  * Make the "Note:" label italic, i.e. `*Note*:`.
-  * Use a capital letter after the "Note:" label.
+  * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
+  * Gebruik een hoofdletter na het "Opmerking:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
 * Function arguments or object properties should use the following format: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
