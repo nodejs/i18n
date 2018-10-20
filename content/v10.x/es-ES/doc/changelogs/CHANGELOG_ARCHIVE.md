@@ -2713,8 +2713,8 @@ https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 
 * Exponer agente en cliente http y https. (Mikeal Rogers)
 * Reparar bug en método de fin de "request" de http. (Ali Farhadi)
-* MinGW: better net support (Bert Belder)
-* fs.open should set FD_CLOEXEC
+* MinGW: mejorar soporte de red (Bert Belder)
+* fs.open debe establecer FD_CLOEXEC
 * DTrace probes (Bryan Cantrill)
 * REPL fixes and improvements (isaacs, Bert Belder)
 * Fix many bugs with legacy http.Client interface
