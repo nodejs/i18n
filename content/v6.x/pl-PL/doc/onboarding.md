@@ -24,16 +24,16 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * git:
     
     * Upewnij się, że masz ustawione whitespace=fix: `ustawienia git --globalne -- dodaj apply.whitespace fix`
-    * Zawsze kontynuuj PR z własnego rozwidlenia github 
+    * Zawsze wznawiaj PR z własnego rozwidlenia github 
         * Gałęzie w repozytorium nodejs/node są tylko dla opublikowanych wierszy
-    * [See "Updating Node.js from Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
-    * Make a new branch for each PR you submit.
-    * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+    * [Zobacz "Aktualizowanie Node.js z Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
+    * Stwórz nową gałąź dla każdego PR, które przesyłasz.
+    * Członkostwo: Zastanów się nad upublicznieniem członkostwa w Node.js organizacji GitHub. Ułatwia to identyfikację Współpracowników. Instrukcje, jak to zrobić są dostępne w [Publikowanie lub ukrywanie członkostwa organizacji](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
-* Notifications:
+* Powiadomienia:
     
-    * Use <https://github.com/notifications> or set up email
-    * Watching the main repo will flood your inbox (several hundred notifications on typical weekdays), so be prepared
+    * Użyj [https://github.com/powiadomienia](https://github.com/notifications) lub załóż e-mail
+    * Obserwowanie głównego repozytorium zaleje twoją skrzynkę odbiorczą (kilkaset powiadomień w typowe dni powszednie), więc bądź przygotowany
 
 * `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
     
