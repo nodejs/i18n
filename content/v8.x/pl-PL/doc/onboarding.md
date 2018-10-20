@@ -37,10 +37,10 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 * `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
     
-    * If there are any questions after the session, a good place to ask is there!
+    * Jeśli po sesji pojawią się jakieś pytania, to jest dobre miejsce do ich zadania!
     * Presence is not mandatory, but please drop a note there if force-pushing to `master`
 
-## Project goals & values
+## Cele projektu & wartości
 
 * Collaborators are the collective owners of the project
     
