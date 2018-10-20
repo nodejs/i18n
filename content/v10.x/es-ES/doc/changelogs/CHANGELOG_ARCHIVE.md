@@ -2795,18 +2795,18 @@ https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 
 https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
 
-* Quitar la vieja (dañada) implementación de TLS e introducir las nuevas implementación y API que ya fueron probadas. Ver docs. HTTPS not supported in this release.
+* Quitar la vieja (dañada) implementación de TLS e introducir las nuevas implementación y API que ya fueron probadas. Ver docs. HTTPS no está soportado en esta versión.
 
-* Introduce 'os' and 'tty' modules.
+* Introducir módulos "os" y "tty".
 
-* Callback parameters for socket.write() and socket.connect().
-* Support CNAME lookups in DNS module. (Ben Noordhuis)
-* cmake support (Tom Hughes)
-* 'make lint'
-* oprofile support (./configure --oprofile)
-* Lots of bug fixes, including:
+* Parámetros de callback para socket.write() y socket.connect().
+* Soportar búsquedas de CNAME en el módulo DNS. (Ben Noordhuis)
+* Soporte para cmake (Tom Hughes)
+* "make lint"
+* Soporte para oprofile (./configure --oprofile)
+* Montones de reparaciones de bugs, incluyendo:
   
-  * Memory leak in ChildProcess:Spawn(). (Tom Hughes)
+  * Fuga de memoria en ChildProcess:Spawn(). (Tom Hughes)
   * buffer.slice(0, 0)
   * Global variable leaks
   * clearTimeouts calling multiple times (Michael W)
