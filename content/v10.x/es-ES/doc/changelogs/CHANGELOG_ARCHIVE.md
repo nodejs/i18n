@@ -2762,8 +2762,8 @@ https://github.com/nodejs/node/commit/b622bc6305e3c675e0edfcdbaa387d849ad0bba0
 
 https://github.com/nodejs/node/commit/73f53e12e4a5b9ef7dbb4792bd5f8ad403094441
 
-* Primordial mingw build (Bert Belder)
-* HTTPS server
+* Build de mingw primordial (Bert Belder)
+* Servidor HTTPS
 * Built in debugger 'node debug script.js'
 * realpath files during module load (Mihai Călin Bazon)
 * Rename net.Stream to net.Socket (existing name will continue to be supported)
