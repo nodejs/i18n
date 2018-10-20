@@ -36,13 +36,13 @@
 * Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
   * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
   * Gebruik een hoofdletter na het "Opmerking:" label.
-  * Preferably, make the note a new paragraph for better visual distinction.
-* Function arguments or object properties should use the following format: 
-  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
+  * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
+* Functie argumenten of onderwerpseigenschappen moeten het volgende formaat gebruiken: 
+  * `* \<code>naam`{type|type2} Optionele beschrijving. **Default:** `defaultValue`</code>
+  * Bijvoorbeeld:`* <code>byteOffset` {integer} Index van eerste te onthullen byte. **Default:** `0`</code>
+  * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+* Functie resultaten moeten het volgende formaat gebruiken: 
+  * `* Resultaat: {type|type2} Optionele beschrijving.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
   * OK: JavaScript, Google's V8
