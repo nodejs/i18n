@@ -44,8 +44,8 @@
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
-* Use official styling for capitalization in products and projects. 
-  * OK: JavaScript, Google's V8
-  * NOT OK: Javascript, Google's v8
+* Gebruik officiële opmaak voor gebruik van hoodletters in producten en projecten. 
+  * Ok: JavaScript, Googles V8
+  * Niet Ok: Javascript, Googles V8
 
 See also API documentation structure overview in [doctools README](../tools/doc/README.md).
