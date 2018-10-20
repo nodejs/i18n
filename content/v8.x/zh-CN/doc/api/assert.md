@@ -600,4 +600,4 @@ assert(Object.is(str1 / 1, str2 / 1));
 // but Object.is() can!
 ```
 
-For more information, see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+请参考[MDN上关于相等比较和等同性的指南](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)以获取更多信息。
