@@ -46,23 +46,23 @@ apply.whitespace fix`
 
 ## Cele projektu & wartości
 
-* Collaborators are the collective owners of the project
+* Współpracownicy są wspólnymi właścicielami projektu
   
-  * The project has the goals of its contributors
+  * Projekt ma cele dla swoich współpracowników
 
-* There are some higher-level goals and values
+* Istnieją pewne cele i wartości wyższego szczebla
   
-  * Empathy towards users matters (this is in part why we onboard people)
-  * Generally: try to be nice to people!
+  * Empatia wobec użytkowników ma znaczenie (częściowo dlatego, że mamy w zespole ludzi)
+  * Generalnie: staraj się być miły dla ludzi!
   * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
 * You are expected to follow *and* hold others accountable to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Managing the issue tracker
+## Zarządzanie listą problemów
 
 * You have (mostly) free rein; don't hesitate to close an issue if you are confident that it should be closed
   
-  * Be nice about closing issues! Let people know why, and that issues and PRs can be reopened if necessary
+  * Bądź miły w zamykaniu problemów! Let people know why, and that issues and PRs can be reopened if necessary
 
 * [**See "Labels"**](./onboarding-extras.md#labels)
   
