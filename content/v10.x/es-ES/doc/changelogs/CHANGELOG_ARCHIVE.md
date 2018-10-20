@@ -2726,8 +2726,8 @@ https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 * Añadir ext_key_usage a getPeerCertificate (Greg Hughes)
 
 * Error cuando child_process.exec choca con maxBuffer.
-* Fix option parsing in tls.connect()
-* Upgrade to V8 3.0.10
+* Arreglar el análisis de opciones en tls.connect()
+* Actualizar a V8 3.0.10
 
 <a id="0.3.6"></a>
 
