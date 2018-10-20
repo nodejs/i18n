@@ -46,4 +46,4 @@
   * Bijvoorbeeld: `* Resultaat: {AsyncHook} Een referentie naar <code>asyncHook`.</code>
 * Gebruik officiële opmaak voor gebruik van hoodletters in producten en projecten. 
   * Ok: JavaScript, Googles V8
-  * Niet Ok: Javascript, Googles V8
+  * Niet Ok: Javascript, Googles v8
