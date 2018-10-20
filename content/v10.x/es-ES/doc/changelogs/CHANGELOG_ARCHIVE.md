@@ -2856,29 +2856,29 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 
 * nuevo comportamiento de path.join (isaacs)
   
-  * Express desired path.join behavior in tests.
-  * Update fs.realpath to reflect new path.join behavior
-  * Update url.resolve() to use new path.join behavior.
+  * Expresar en las pruebas el comportamiento deseado de path.join.
+  * Actualizar fs.realpath para que refleje el nuevo comportamiento de path.join
+  * Actualizar url.resolve() para que utilice el nuevo comportamiento de path.join.
 
-* API: Move process.binding('evals') to require('vm')
+* API: mover process.binding('evals') a require('vm')
 
-* Fix V8 build on Cygwin (Bert Belder)
-* Add ref to buffer during fs.write and fs.read
-* Fix segfault on test-crypto
-* Upgrade http-parser to latest and V8 to 2.5.3
+* Arreglar compilación de V8 en Cygwin (Bert Belder)
+* Añadir ref al buffer durante fs.write y fs.read
+* Arreglar segfault en test-crypto
+* Actualizar http-parser a su última versión y V8 a 2.5.3
 
 <a id="0.3.0"></a>
 
-## 2010.10.23, Version 0.3.0 (unstable)
+## 2010.10.23, Versión 0.3.0 (inestable)
 
 https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 
-* Bugfix: Do not spin on accept() with EMFILE
-* Improvements to readline.js (Trent Mick, Johan Euphrosine, Brian White)
-* Safe constructors (missing 'new' doesn't segfault)
-* Fix process.nextTick so thrown errors don't confuse it. (Benjamin Thomas)
+* Reparación de bug: No rotar al hacer accept() con EMFILE
+* Mejoras para readline.js (Trent Mick, Johan Euphrosine, Brian White)
+* Constructores seguros (los "new" faltantes no generan segfault)
+* Arreglar process.nextTick para que los errores arrojados no lo confundan. (Benjamin Thomas)
 
-* Allow Strings for ports on net.Server.listen (Bradley Meck)
+* Permitir Strings para puertos en net.Server.listen (Bradley Meck)
 
 * fs bugfixes (Tj Holowaychuk, Tobie Langel, Marco Rogers, isaacs)
 * http bug fixes (Fedor Indutny, Mikeal Rogers)
