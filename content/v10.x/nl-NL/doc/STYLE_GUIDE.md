@@ -37,7 +37,7 @@
   * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
   * Gebruik een hoofdletter na het "Opmerking:" label.
   * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
-* Functie argumenten of onderwerpseigenschappen moeten het volgende formaat gebruiken: 
+* Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken: 
   * `* \<code>name` {type|type2} Optionele beschrijving. **Default:** `defaultValue`.</code>
   * Bijvoorbeeld: `* <code>byteOffset` {integer} Index van eerste te onthullen byte. **Default:** `0`.</code>
   * Het `type` moet refereren naar een Node.js type of een [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
