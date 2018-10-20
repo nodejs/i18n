@@ -2749,12 +2749,12 @@ https://github.com/nodejs/node/commit/b622bc6305e3c675e0edfcdbaa387d849ad0bba0
 * Mejoras del depurador integrado.
 * Añadir opciones setsid, setuid, setgid a child_process.spawn (Isaac Schlueter)
 
-* tty module improvements.
+* Mejoras del módulo tty.
 
-* Upgrade libev to 4.3, libeio to latest, c-ares to 1.7.4
-* Allow third party hooks before main module load. (See 496be457b6a2bc5b01ec13644b9c9783976159b2)
+* Actualizar libev a 4.3, libeio a su última versión, c-ares a 1.7.4
+* Permitir hooks de terceros antes de la carga del módulo principal. (Ver 496be457b6a2bc5b01ec13644b9c9783976159b2)
 
-* Don't stat() on cached modules. (Felix Geisendörfer)
+* No hacer stat() sobre módulos almacenados en memoria caché. (Felix Geisendörfer)
 
 <a id="0.3.4"></a>
 
