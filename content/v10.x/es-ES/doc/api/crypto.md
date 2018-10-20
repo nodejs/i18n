@@ -1588,7 +1588,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
@@ -1615,7 +1615,7 @@ changes:
 - `digest` {string}
 - Returns: {Buffer}
 
-Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de Derivación de Clave Basada en Contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
 Si ocurre un error, se arrojará un `Error`, de no ser así, la clave derivada será devuelta como un [`Buffer`][].
 
@@ -1640,7 +1640,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperado usando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1708,7 +1708,7 @@ added: v0.11.14
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encripta en contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
+Encripta el contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
 
 `key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
@@ -1745,7 +1745,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Un error se producirá si hay un problema generando los bytes.
+Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Se producirá un error si hay un problema generando los bytes.
 
 ```js
 // Synchronous
@@ -1881,7 +1881,7 @@ Cargue y configure el `engine` para algunas o todas las funciones OpenSSL (selec
 
 `engine` puede ser tanto un id o una ruta a la biblioteca compartida del motor.
 
-El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Las `flags` es un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
+El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Los `flags` son un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
