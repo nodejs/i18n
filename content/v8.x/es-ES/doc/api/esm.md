@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
 <!--name=esm-->
 
