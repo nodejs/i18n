@@ -2764,20 +2764,20 @@ https://github.com/nodejs/node/commit/73f53e12e4a5b9ef7dbb4792bd5f8ad403094441
 
 * Build de mingw primordial (Bert Belder)
 * Servidor HTTPS
-* Built in debugger 'node debug script.js'
-* realpath files during module load (Mihai Călin Bazon)
-* Rename net.Stream to net.Socket (existing name will continue to be supported)
+* "node debug script.js" del depurador integrado
+* hacer "realpath" a los archivos durante la carga del módulo (Mihai Călin Bazon)
+* Renombrar net.Stream como net.Socket (el nombre existente continuará siendo soportado)
 
-* Fix process.platform
+* Arreglar process.platform
 
 <a id="0.3.3"></a>
 
-## 2011.01.02, Version 0.3.3 (unstable)
+## 2011.01.02, Versión 0.3.3 (inestable)
 
 https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 
-* TLS improvements.
-* url.parse(url, true) defaults query field to {} (Jeremy Martin)
+* Mejoras de TLS.
+* url.parse(url, true) establece el campo de consulta a {} de manera predeterminada (Jeremy Martin)
 * Upgrade V8 to 3.0.4
 * Handle ECONNABORT properly (Theo Schlossnagle)
 * Fix memory leaks (Tom Hughes)
