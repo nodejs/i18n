@@ -34,7 +34,7 @@
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
 * Verwijzingen naar methoden moeten worden gebruikt met haakjes: bijvoorbeeld `socket.en()` in plaats van `socket.end`.
 * Om op een opmerking speciale aandacht te vestigen, neem de volgende richtlijnen in acht: 
-  * Maak de "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
+  * Maak het "Opmerking:" label cursief, bijvoorbeeld: `*Opmerking*:`.
   * Gebruik een hoofdletter na het "Opmerking:" label.
   * Bij voorkeur, maak de opmerking een nieuwe paragraaf om visueel beter onderscheid te maken.
 * Functie argumenten of onderwerpseigenschappen moeten het volgende format gebruiken: 
