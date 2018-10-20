@@ -2731,14 +2731,14 @@ https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 
 <a id="0.3.6"></a>
 
-## 2011.01.21, Version 0.3.6 (unstable)
+## 2011.01.21, Versión 0.3.6 (inestable)
 
 https://github.com/nodejs/node/commit/bb3e71466e5240626d9d21cf791fe43e87d90011
 
-* REPL and other improvements on MinGW (Bert Belder)
-* listen/bind errors should close net.Server
-* New HTTP and HTTPS client APIs
-* Upgrade V8 to 3.0.9
+* Mejoras de REPL y otros en MinGW (Bert Belder)
+* Los errores de escucha/enlazado deben cerrar net.Server
+* Nuevas APIs del cliente HTTP y HTTPS
+* Actualizar V8 a 3.0.9
 
 <a id="0.3.5"></a>
 
