@@ -2778,24 +2778,24 @@ https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 
 * Mejoras de TLS.
 * url.parse(url, true) establece el campo de consulta a {} de manera predeterminada (Jeremy Martin)
-* Upgrade V8 to 3.0.4
-* Handle ECONNABORT properly (Theo Schlossnagle)
-* Fix memory leaks (Tom Hughes)
-* Add os.cpus(), os.freemem(), os.totalmem(), os.loadavg() and other functions for OSX, Linux, and Cygwin. (Brian White)
+* Actualizar v8 a 3.0.4
+* Manejar ECONNABORT correctamente (Theo Schlossnagle)
+* Reparar fugas de memoria (Tom Hughes)
+* Añadir os.cpus(), os.freemem(), os.totalmem(), os.loadavg() y otras funciones para OSX, Linux, y Cygwin. (Brian White)
 
-* Fix REPL syntax error bug (GH-543), improve how REPL commands are evaluated.
+* Reparar bug de error de sintaxis de REPL (GH-543), mejorar cómo son evaluados los comandos de REPL.
 
-* Use process.stdin instead of process.openStdin().
+* Usar process.stdin en lugar de process.openStdin().
 
-* Disable TLS tests when node doesn't have OpenSSL.
+* Deshabilitar pruebas de TLS cuando node no tenga OpenSSL.
 
 <a id="0.3.2"></a>
 
-## 2010.12.16, Version 0.3.2 (unstable)
+## 2010.12.16, Versión 0.3.2 (inestable)
 
 https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
 
-* Rip out the old (broken) TLS implementation introduce new tested implementation and API. See docs. HTTPS not supported in this release.
+* Quitar la vieja (dañada) implementación de TLS e introducir las nuevas implementación y API que ya fueron probadas. Ver docs. HTTPS not supported in this release.
 
 * Introduce 'os' and 'tty' modules.
 
