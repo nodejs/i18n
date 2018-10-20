@@ -765,24 +765,24 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ## 2016-02-09, Versión 5.6.0 (Estable), @jasnell
 
-Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs para los detalles sobre vulnerabilidades parcheadas.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para los detalles sobre vulnerabilidades parcheadas.
 
 ### Cambios notables
 
 * **http**: reparar los defectos en el análisis del encabezado para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
 * **http-parser**: actualizar de 2.6.0 a 2.6.1
 * **npm**: actualizar npm de 3.3.12 a 3.6.0 (Rebecca Turner) [#4958](https://github.com/nodejs/node/pull/4958)
-* **openssl**: actualizar de 1.0.2e a 1.0.2f. Para mitigar contra los ataques Logjam, ahora los clientes TLS rechazan los handshakes de Diffie-Hellman con parámetros más cortos que 1024 bits, por encima que el límite previo de 768 bits.
+* **openssl**: actualizar de 1.0.2e a 1.0.2f. Para mitigar contra los ataques Logjam, ahora los clientes TLS rechazan los handshakes de Diffie-Hellman con parámetros más cortos que 1024 bits, por encima del límite previo de 768 bits.
 
 ### Commits
 
 * [[`3b6283c163`](https://github.com/nodejs/node/commit/3b6283c163)] - **benchmark**: añadir una declaración constante para `net` (Minwoo Jung) [#3950](https://github.com/nodejs/node/pull/3950)
 * [[`3175f7450e`](https://github.com/nodejs/node/commit/3175f7450e)] - **buffer**: remover código duplicado de fromObject (HUANG Wei) [#4948](https://github.com/nodejs/node/pull/4948)
 * [[`58d67e26a2`](https://github.com/nodejs/node/commit/58d67e26a2)] - **buffer**: validar la lista de elementos en Buffer.concat (Michaël Zasso) [#4951](https://github.com/nodejs/node/pull/4951)
-* [[`bafc86f00e`](https://github.com/nodejs/node/commit/bafc86f00e)] - **buffer**: refactorizar varianles redeclaradas (Rich Trott) [#4886](https://github.com/nodejs/node/pull/4886)
-* [[`0fa4d90b94`](https://github.com/nodejs/node/commit/0fa4d90b94)] - **build**: Añadir variable VARIATION para objetivo binario(Stefan Budeanu) [#4631](https://github.com/nodejs/node/pull/4631)
+* [[`bafc86f00e`](https://github.com/nodejs/node/commit/bafc86f00e)] - **buffer**: refactorizar variantes redeclaradas (Rich Trott) [#4886](https://github.com/nodejs/node/pull/4886)
+* [[`0fa4d90b94`](https://github.com/nodejs/node/commit/0fa4d90b94)] - **build**: Añadir variable VARIATION para objetivo binario (Stefan Budeanu) [#4631](https://github.com/nodejs/node/pull/4631)
 * [[`ec62789152`](https://github.com/nodejs/node/commit/ec62789152)] - **crypto**: reparar pérdida de memoria en LoadPKCS12 (Fedor Indutny) [#5109](https://github.com/nodejs/node/pull/5109)
-* [[`d9e934c71f`](https://github.com/nodejs/node/commit/d9e934c71f)] - **crypto**: añadir los certificados múltiples `pfx` también como certificados múltiples CA (Fedor Indutny) [#5109](https://github.com/nodejs/node/pull/5109)
+* [[`d9e934c71f`](https://github.com/nodejs/node/commit/d9e934c71f)] - **crypto**: añadir los certificados `pfx` también como certificados múltiples CA (Fedor Indutny) [#5109](https://github.com/nodejs/node/pull/5109)
 * [[`0d4b538175`](https://github.com/nodejs/node/commit/0d4b538175)] - **crypto**: usar SSL_CTX_clear_extra_chain_certs. (Adam Langley) [#4919](https://github.com/nodejs/node/pull/4919)
 * [[`abb0f6cd53`](https://github.com/nodejs/node/commit/abb0f6cd53)] - **crypto**: reparar compilación cuando no se provee OCSP-stapling (Adam Langley) [#4914](https://github.com/nodejs/node/pull/4914)
 * [[`755619c554`](https://github.com/nodejs/node/commit/755619c554)] - **crypto**: usar un const SSL_CIPHER (Adam Langley) [#4913](https://github.com/nodejs/node/pull/4913)
@@ -794,8 +794,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`b75263094b`](https://github.com/nodejs/node/commit/b75263094b)] - **deps**: añadir -no_rand_screen para openssl s_client (Shigeki Ohtsu) [#1836](https://github.com/nodejs/node/pull/1836)
 * [[`b312b7914f`](https://github.com/nodejs/node/commit/b312b7914f)] - **deps**: actualizar las fuentes openssl a 1.0.2f (Myles Borins) [#4961](https://github.com/nodejs/node/pull/4961)
 * [[`fa0457ed04`](https://github.com/nodejs/node/commit/fa0457ed04)] - **dns**: arrojar un TypeError en lookupService con puerto inválido (Evan Lucas) [#4839](https://github.com/nodejs/node/pull/4839)
-* [[`c4c8b3bf2e`](https://github.com/nodejs/node/commit/c4c8b3bf2e)] - **doc**: reparar documento de identitación dgram (Rich Trott) [#5118](https://github.com/nodejs/node/pull/5118)
-* [[`027cd2719f`](https://github.com/nodejs/node/commit/027cd2719f)] - **doc**: aclarar el código de conducta de reportar (Julie Pagano) [#5107](https://github.com/nodejs/node/pull/5107)
+* [[`c4c8b3bf2e`](https://github.com/nodejs/node/commit/c4c8b3bf2e)] - **doc**: reparar identación del documento dgram (Rich Trott) [#5118](https://github.com/nodejs/node/pull/5118)
+* [[`027cd2719f`](https://github.com/nodejs/node/commit/027cd2719f)] - **doc**: aclarar el código de conducta de reporte (Julie Pagano) [#5107](https://github.com/nodejs/node/pull/5107)
 * [[`9f7aa6f868`](https://github.com/nodejs/node/commit/9f7aa6f868)] - **doc**: clarificar el soporte de dgram socket.send() para multibúfer (Matteo Collina) [#5130](https://github.com/nodejs/node/pull/5130)
 * [[`a96ae2cb37`](https://github.com/nodejs/node/commit/a96ae2cb37)] - **doc**: la consola es asincrónica a menos que sea un archivo (Ben Noordhuis) [#5133](https://github.com/nodejs/node/pull/5133)
 * [[`4c54c8f309`](https://github.com/nodejs/node/commit/4c54c8f309)] - **doc**: corregir error tipográfico en el documento dgram (Rich Trott) [#5114](https://github.com/nodejs/node/pull/5114)
@@ -811,7 +811,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`8c7f4bab2d`](https://github.com/nodejs/node/commit/8c7f4bab2d)] - **doc**: múltiples mejores en los documentos Stream (Alexander Makarenko) [#5009](https://github.com/nodejs/node/pull/5009)
 * [[`ee013715b9`](https://github.com/nodejs/node/commit/ee013715b9)] - **doc**: mejorar la consistencia del estilo en los documentos VM (Alexander Makarenko) [#5005](https://github.com/nodejs/node/pull/5005)
 * [[`9824b0d132`](https://github.com/nodejs/node/commit/9824b0d132)] - **doc**: reparar los enlaces de anclaje del stream al http y los eventos (piepmatz) [#5007](https://github.com/nodejs/node/pull/5007)
-* [[`2c85f79569`](https://github.com/nodejs/node/commit/2c85f79569)] - **doc**: mejora al documento HTTPS (Alexander Makarenko) [#5002](https://github.com/nodejs/node/pull/5002)
+* [[`2c85f79569`](https://github.com/nodejs/node/commit/2c85f79569)] - **doc**: mejora menor al documento HTTPS (Alexander Makarenko) [#5002](https://github.com/nodejs/node/pull/5002)
 * [[`9cf1370017`](https://github.com/nodejs/node/commit/9cf1370017)] - **doc**: mejorar la consistencia del estilo en los documentos Búfer (Alexander Makarenko) [#5001](https://github.com/nodejs/node/pull/5001)
 * [[`2750cb0613`](https://github.com/nodejs/node/commit/2750cb0613)] - **doc**: consistent styling for functions in TLS docs (Alexander Makarenko) [#5000](https://github.com/nodejs/node/pull/5000)
 * [[`4758bf13a5`](https://github.com/nodejs/node/commit/4758bf13a5)] - **doc**: actualizar LICENSE npm usando license-builder.sh (Rebecca Turner) [#4958](https://github.com/nodejs/node/pull/4958)
@@ -828,7 +828,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`423a58d66f`](https://github.com/nodejs/node/commit/423a58d66f)] - **doc**: show links consistently in deprecations (Sakthipriyan Vairamani) [#4907](https://github.com/nodejs/node/pull/4907)
 * [[`fd87659139`](https://github.com/nodejs/node/commit/fd87659139)] - **doc**: añadir grupo de documentos funcionales (Bryan English) [#4244](https://github.com/nodejs/node/pull/4244)
 * [[`19ed619cff`](https://github.com/nodejs/node/commit/19ed619cff)] - **doc**: remover bind(this) innecesario (Dmitriy Lazarev) [#4797](https://github.com/nodejs/node/pull/4797)
-* [[`5129930786`](https://github.com/nodejs/node/commit/5129930786)] - **doc**: mantener los nombres en de forma ordenada (Sakthipriyan Vairamani) [#4876](https://github.com/nodejs/node/pull/4876)
+* [[`5129930786`](https://github.com/nodejs/node/commit/5129930786)] - **doc**: mantener los nombres de forma ordenada (Sakthipriyan Vairamani) [#4876](https://github.com/nodejs/node/pull/4876)
 * [[`3c46c10d54`](https://github.com/nodejs/node/commit/3c46c10d54)] - **doc**: corregir gramática sin sentido en Buffer::write (Jimb Esser) [#4863](https://github.com/nodejs/node/pull/4863)
 * [[`a1af6fc1a7`](https://github.com/nodejs/node/commit/a1af6fc1a7)] - **doc**: añadir documentos de parámetro `servername` (Alexander Makarenko) [#4729](https://github.com/nodejs/node/pull/4729)
 * [[`f4eeba8467`](https://github.com/nodejs/node/commit/f4eeba8467)] - **doc**: reparar tipo de código de markdowns (Jackson Tian) [#4858](https://github.com/nodejs/node/pull/4858)
@@ -843,9 +843,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`66c74548de`](https://github.com/nodejs/node/commit/66c74548de)] - **doc**: cerrados todos los bloques de códigos, corregidos los errores tipográficos (Robert Jefe Lindstaedt) [#4733](https://github.com/nodejs/node/pull/4733)
 * [[`54e8845b5e`](https://github.com/nodejs/node/commit/54e8845b5e)] - **fs**: refactorizar variables redeclaradas (Rich Trott) [#4959](https://github.com/nodejs/node/pull/4959)
 * [[`fa940cf9bc`](https://github.com/nodejs/node/commit/fa940cf9bc)] - **fs**: remover ramas sin usar (Benjamin Gruenbaum) [#4795](https://github.com/nodejs/node/pull/4795)
-* [[`7bef1b7907`](https://github.com/nodejs/node/commit/7bef1b7907)] - **(SEMVER-MINOR)** **http**: prohibir estrictamente caracteres inválidos para las cabeceras (James M Snell)
+* [[`7bef1b7907`](https://github.com/nodejs/node/commit/7bef1b7907)] - **(SEMVER-MINOR)** **http**: prohibir estrictamente caracteres inválidos de las cabeceras (James M Snell)
 * [[`9b03af254a`](https://github.com/nodejs/node/commit/9b03af254a)] - **http**: remover referencia al onParserExecute (Tom Atkinson) [#4773](https://github.com/nodejs/node/pull/4773)
-* [[`101de9de3f`](https://github.com/nodejs/node/commit/101de9de3f)] - **https**: despejar sesiones en la caché por error (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982)
+* [[`101de9de3f`](https://github.com/nodejs/node/commit/101de9de3f)] - **https**: despejar sesiones en la caché en error (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982)
 * [[`b2c8b7f6d3`](https://github.com/nodejs/node/commit/b2c8b7f6d3)] - **internal/child_process**: llamar a postSend cuando ocurra un error (Fedor Indutny) [#4752](https://github.com/nodejs/node/pull/4752)
 * [[`55030922e5`](https://github.com/nodejs/node/commit/55030922e5)] - **lib**: alcance de las variables búcle (Rich Trott) [#4965](https://github.com/nodejs/node/pull/4965)
 * [[`725ad5b1ce`](https://github.com/nodejs/node/commit/725ad5b1ce)] - **lib**: remover redeclaraciones de la variable string_decoder.js (Rich Trott) [#4978](https://github.com/nodejs/node/pull/4978)
