@@ -530,7 +530,7 @@ changes:
 
 如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
 
-Validate instanceof using constructor:
+使用构造函数验证instanceof：
 
 ```js
 assert.throws(
