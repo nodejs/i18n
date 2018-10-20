@@ -541,7 +541,7 @@ assert.throws(
 );
 ```
 
-Validate error message using [`RegExp`][]:
+使用 [`RegExp`][] 验证错误消息：
 
 ```js
 assert.throws(
@@ -552,7 +552,7 @@ assert.throws(
 );
 ```
 
-Custom error validation:
+自定义错误验证：
 
 ```js
 assert.throws(
@@ -568,7 +568,7 @@ assert.throws(
 );
 ```
 
-Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes:
+注意， `error` 不能是一个字符串。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes:
 
 <!-- eslint-disable no-restricted-syntax -->
 
