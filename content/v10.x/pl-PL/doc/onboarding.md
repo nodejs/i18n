@@ -70,7 +70,7 @@ apply.whitespace fix`
   * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
   * `semver-{minor,major}`: 
     * If a change has the remote *chance* of breaking something, use the `semver-major` label
-    * When adding a `semver-*` label, add a comment explaining why you're adding it. Do it right away so you don't forget!
+    * When adding a `semver-*` label, add a comment explaining why you're adding it. Zrób to od razu, żebyś nie zapomniał!
   * Please add the `author-ready` label for PRs where: 
     * the CI has been started (not necessarily finished),
     * no outstanding review comments exist and
