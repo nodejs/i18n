@@ -1,10 +1,10 @@
 # Proces Adaptacyjny
 
-This document is an outline of the things we tell new Collaborators at their onboarding session.
+Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w ich sesji adaptacyjnej.
 
-## One week before the onboarding session
+## Tydzień przed sesją adaptacyjną
 
-* Confirm that the new Collaborator is using two-factor authentication on their GitHub account. Unless two-factor authentication is enabled, do not give an account elevated privileges such as the ability to land code in the main repository or to start continuous integration (CI) jobs.
+* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Unless two-factor authentication is enabled, do not give an account elevated privileges such as the ability to land code in the main repository or to start continuous integration (CI) jobs.
 
 ## Fifteen minutes before the onboarding session
 
