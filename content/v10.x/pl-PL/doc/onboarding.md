@@ -18,11 +18,11 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Ta sesja obejmie: 
   * [ustawienia lokalne](#local-setup)
   * [cele projektu & wartości](#project-goals--values)
-  * [managing the issue tracker](#managing-the-issue-tracker)
-  * [reviewing PRs](#reviewing-prs)
-  * [landing PRs](#landing-prs)
+  * [zarządzanie listą problemów](#managing-the-issue-tracker)
+  * [przeglądanie PR-ami](#reviewing-prs)
+  * [wyładowywanie Pr-ów](#landing-prs)
 
-## Local setup
+## Ustawienia lokalne
 
 * git:
   
