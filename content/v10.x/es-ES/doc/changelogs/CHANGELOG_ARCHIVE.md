@@ -2809,9 +2809,9 @@ https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
   * Fuga de memoria en ChildProcess:Spawn(). (Tom Hughes)
   * buffer.slice(0, 0)
   * Fugas de la variable global
-  * clearTimeouts calling multiple times (Michael W)
-  * utils.inspect's detection of circular structures (Tim Cooijmans)
-  * Apple's threaded write()s bug (Jorge Chamorro Bieling)
+  * clearTimeouts realizando múltiples llamadas (Michael W)
+  * Detección de estructuras circulares por utils.inspect (Tim Cooijmans)
+  * Bug de write() en hilo de Apple (Jorge Chamorro Bieling)
   * Make sure raw mode is disabled when exiting a terminal-based REPL. (Brian White)
 
 * Deprecate process.compile, process.ENV
