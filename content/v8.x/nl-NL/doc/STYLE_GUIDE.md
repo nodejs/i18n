@@ -28,7 +28,7 @@
   * Voor illustraties, geef de voorkeur aan SVG over andere attributen. Wanneer SVG niet haalbaar is, houd dan goed de bestandsgrootte van het attribuut dat je introduceert in de gaten.
 * Voor code blokken: 
   * Gebruik taalbewuste barrières. ("```js")
-  * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `aanwinsten/code-voorbeelden` en link er naartoe.
+  * Code hoeft niet compleet te zijn — behandel code blokken als een illustratie of hulp om iets duidelijk te maken, niet als compleet werkende programma's. Als een compleet werkend programma nodig is, sluit het dan bij als aanwinsten in `assets/code-examples` en link er naartoe.
 * Bij het gebruik van underscores, sterretjes en accent grave, gebruik alsjeblieft geschikte wisseltekens (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
 * Referenties naar onwikkelaarsfuncties moeten PascalCase gebruiken.
 * Referenties naar ontwikkelaarsfuncties moeten camelCase gebruiken.
