@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 如果考虑使用字符串作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串将被用于 `message`。 这会导致不容易被发现的错误。 如果考虑使用字符串作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
 
 ## assert.strictEqual(actual, expected[, message])
 
