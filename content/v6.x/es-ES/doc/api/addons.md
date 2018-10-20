@@ -1,4 +1,4 @@
-# C++ Addons
+# Complementos de C++
 
 <!--introduced_in=v0.10.0-->
 
@@ -83,7 +83,7 @@ Una vez que el código de fuente haya sido escrito, deberá ser compilado en el 
 
 *Nota: Una versión de la utilidad del `node-gyp` está empaquetada y distribuida con Node.js, como parte de `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.*
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. Esto generará o un `Makefile` (en plataformas Unix) o un archivo `vcxproj` (en Windows) en el directorio `build/` .
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Esto se colocará dentro del directorio de `build/Release/` .
 
@@ -125,7 +125,7 @@ Node.js uses a number of statically linked libraries such as V8, libuv and OpenS
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](globals.html#globals_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-When calling [`require()`](globals.html#globals_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](globals.html#globals_require) will give precedence to the `addon.js` file and load it instead.
+When calling [`require()`](globals.html#globals_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Sin embargo, una de las advertencias es que Node.js primero intentará localizar y cargar los módulos o archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](globals.html#globals_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Abstracciones Nativas para Node.js
 
@@ -170,11 +170,11 @@ Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo pu
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argumentos de función
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. Cuando se invocan funciones desde JavaScript, los argumentos de entrada y el valor de devolución deben ser mapeados para y desde el código C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+El siguiente ejemplo ilustra cómo leer argumentos de función pasados desde JavaScript y cómo devolver un resultado:
 
 ```cpp
 // addon.cc
@@ -340,7 +340,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### Fábrica de funciones
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Otra posibilidad común es crear funciones de JavaScript que envuelvan funciones de C++ y las devuelvan a JavaScript:
 
 ```cpp
 // addon.cc
