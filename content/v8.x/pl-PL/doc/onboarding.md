@@ -4,17 +4,17 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 ## Tydzień przed sesją adaptacyjną
 
-* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Unless two-factor authentication is enabled, do not give an account elevated privileges such as the ability to land code in the main repository or to start continuous integration (CI) jobs.
+* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Jeśli nie włączono uwierzytelniania dwuskładnikowego, nie dawaj podwyższonych przywilejów konta, takich jak możliwość gruntownego kodowania w głównym repozytorium lub kontynuowanie zadań integracyjnych (CI).
 
-## Fifteen minutes before the onboarding session
+## Piętnaście minut przed sesją adaptacyjną
 
-* Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators), and to [the Members team](https://github.com/orgs/nodejs/teams/members) if they are not already part of it. Note that this is the step that gives the account elevated privileges, so do not perform this step (or any subsequent steps) unless two-factor authentication is enabled on the new Collaborator's GitHub account.
+* Przed sesją adaptacyjną, dodaj nowego współpracownika do [zespołu Współpracowników](https://github.com/orgs/nodejs/teams/collaborators), i do [zespołu Członków](https://github.com/orgs/nodejs/teams/members), jeśli do niego jeszcze nie należą. Zauważ, że jest to krok, który daje podwyższone przywileje konta, więc nie wykonuj tego kroku (ani żadnych dalszych), chyba że dwuskładnikowe uwierzytelnianie jest włączone na koncie GitHub nowego Współpracownika.
 
-## Onboarding session
+## Sesja adaptacyjna
 
-* This session will cover: 
-    * [local setup](#local-setup)
-    * [project goals & values](#project-goals--values)
+* Ta sesja obejmie: 
+    * [ustawienia lokalne](#local-setup)
+    * [cele projektu & wartości](#project-goals--values)
     * [managing the issue tracker](#managing-the-issue-tracker)
     * [reviewing PRs](#reviewing-prs)
     * [landing PRs](#landing-prs)
