@@ -2843,18 +2843,18 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 * Remover node-repl (solo usar "node" sin args)
 * Volver a escribir libeio Luego de la callback para que use req->result en lugar de req->errorno para la revisión de errores (Micheil Smith)
 
-* Remove warning about deprecating 'sys' - too aggressive
+* Remover advertencia sobre la depreciación de "sys" - demasiado agresiva
 
-* Make writes to process.env update the real environment. (Ben Noordhuis)
-* Set FD_CLOEXEC flag on stdio FDs before spawning. (Guillaume Tuton)
-* Move ev_loop out of javascript
-* Switch \n with \r\n for all strings printed out.
-* Added support for cross compilation (Rasmus Andersson)
-* Add --profile flag to configure script, enables gprof profiling. (Ben Noordhuis)
+* Hacer que las escrituras a process.env actualicen el ambiente real. (Ben Noordhuis)
+* Establecer bandera FD_CLOEXEC en el FD de stdio antes de hacer spawn. (Guillaume Tuton)
+* Mover ev_loop fuera de javascript
+* Intercambiar \n con \r\n para todas las strings ya impresas.
+* Soporte añadido para compilación cruzada (Rasmus Andersson)
+* Añadir bandera --profile al script de configuración, habilita el perfilado con gprof. (Ben Noordhuis)
 
-* writeFileSync could exhibit pathological behavior when a buffer could not be written to the file in a single write() call.
+* writeFileSync podría mostrar un comportamiento patológico cuando un buffer no puede ser escrito al archivo en una llamada write() sencilla.
 
-* new path.join behavior (isaacs)
+* nuevo comportamiento de path.join (isaacs)
   
   * Express desired path.join behavior in tests.
   * Update fs.realpath to reflect new path.join behavior
