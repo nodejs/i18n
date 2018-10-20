@@ -1,8 +1,8 @@
 # Proces Adaptacyjny
 
-This document is an outline of the things we tell new Collaborators at their onboarding session.
+Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w ich sesji adaptacyjnej.
 
-## One week before the onboarding session
+## Tydzień przed sesją adaptacyjną
 
 * If the new Collaborator is not yet a member of the nodejs GitHub organization, confirm that they are using [two-factor authentication](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). It will not be possible to add them to the organization if they are not using two-factor authentication. If they cannot receive SMS messages from GitHub, try [using a TOTP mobile app](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
 * Announce the accepted nomination in a TSC meeting and in the TSC mailing list.
