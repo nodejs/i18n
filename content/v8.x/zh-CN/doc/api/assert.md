@@ -120,7 +120,7 @@ changes:
 
 通常与`assert.deepEqual()`相同，但有一些例外：
 
-1. 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 对原始值进行比较。 使用 [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero)比较法来比较Set值和Map键值。 (这意味着在比较它们时不会出现[警告](#assert_caveats))。
+1. 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 对原始值进行比较。 使用 [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) 来比较Set值和Map键值。 (这意味着在比较它们时不会出现[警告](#assert_caveats))。
 2. 对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 也使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
 3. 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
 4. [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
