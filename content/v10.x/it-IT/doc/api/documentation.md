@@ -45,12 +45,12 @@ added: v0.6.12
 
 > Stabilità: 1 - Sperimentale
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Ogni documento `.html` ha un corrispondente documento `.json` che presenta le stesse informazioni ma in modo strutturato. Questa funzionalità è sperimentale e aggiunta a beneficio degli IDE e di altre utility che desiderano eseguire operazioni programmatiche con la documentazione.
 
-## Syscalls and man pages
+## Le Syscall e le pagine del manuale
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Le system call (syscall) come open(2) e read(2) definiscono l'interfaccia tra i programmi utente e il sistema operativo sottostante. Questo verrà documentato dalle funzioni Node.js che racchiudono semplicemente una syscall, come ad esempio [`fs.open()`][]. I documenti si collegano alle corrispondenti pagine del man (abbreviazione di pagine del manuale) che descrivono come funzionano le syscall.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Alcune syscall, come lchown(2), sono specifiche BSD. Per esempio ciò significa che [`fs.lchown()`][] funziona solo su macOS e altri sistemi derivati da BSD e non è disponibile su Linux.
 
 Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
