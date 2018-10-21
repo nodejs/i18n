@@ -132,7 +132,7 @@ Na ogół, podczas wykonywania kodu, pętla zdarzeń ostatecznie trafi na fazę 
 
 Jeśli gniazdo lub identyfikator zostaną nagle zamknięte (np.`socket.destroy()`), to zdarzenie `'zamknij'` zostanie wyemitowane w tej fazie. W przeciwnym razie będzie emitowane przez `process.nextTick()`.
 
-## `ustawNatychmiastowo()` vs `ustawKoniecCzasu()`
+## `setImmediate()` kontra `setTimeout()`
 
 `ustawNatychmiastowo` i `ustawKoniecCzasu()` są podobne, ale zachowują się w inny sposób zależnie od tego, kiedy są przywoływane.
 
