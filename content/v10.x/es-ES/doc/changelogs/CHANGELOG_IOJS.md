@@ -719,7 +719,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ## Cambios notables
 
-* **v8**: Fixed an out-of-band write in utf8 decoder. **Esta es una actualización de seguridad importante** ya que se puede usar para provocar un ataque de denegación de servicio.
+* **v8**: Fixed an out-of-band write in utf8 decoder. **Esta es una actualización de seguridad importante** ya que se puede usar para provocar la negación de un ataque de servicio.
 * **openssl**: Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
 * **build**: 
   * Se añadió soporte para compilar con Microsoft Visual C++ 2015
@@ -804,7 +804,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`dbd5dc932d`](https://github.com/nodejs/node/commit/dbd5dc932d)] - **doc**: aclarar los pre-requisitos en benchmark/README.md (Jeremiah Senkpiel) [#2034](https://github.com/nodejs/node/pull/2034)
 * [[`50dbc8e143`](https://github.com/nodejs/node/commit/50dbc8e143)] - **doc**: add TSC meeting minutes 2015-05-27 (Rod Vagg) [#2037](https://github.com/nodejs/node/pull/2037)
 * [[`941ad362a7`](https://github.com/nodejs/node/commit/941ad362a7)] - **doc**: archive io.js TC minutes (Rod Vagg)
-* [[`644b2eaa89`](https://github.com/nodejs/node/commit/644b2eaa89)] - **doc**: renombrar tc-meetings a tsc-meetings (Rod Vagg)
+* [[`644b2eaa89`](https://github.com/nodejs/node/commit/644b2eaa89)] - **doc**: renombrar tc-meetings como tsc-meetings (Rod Vagg)
 * [[`1330ee3b27`](https://github.com/nodejs/node/commit/1330ee3b27)] - **doc**: add TC meeting 2015-05-13 minutes (Rod Vagg) [#1700](https://github.com/nodejs/node/pull/1700)
 * [[`392e8fd64e`](https://github.com/nodejs/node/commit/392e8fd64e)] - **doc**: añadir a @shigeki y a @mscdex a TC (Rod Vagg) [#2008](https://github.com/nodejs/node/pull/2008)
 * [[`af249fa8a1`](https://github.com/nodejs/node/commit/af249fa8a1)] - **net**: wrap connect in nextTick (Evan Lucas) [#2054](https://github.com/nodejs/node/pull/2054)
@@ -816,7 +816,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`856c11f8c8`](https://github.com/nodejs/node/commit/856c11f8c8)] - **test**: purge stale disabled tests (Rich Trott) [#2045](https://github.com/nodejs/node/pull/2045)
 * [[`4d5089e181`](https://github.com/nodejs/node/commit/4d5089e181)] - **test**: do not swallow OpenSSL support error (Rich Trott) [#2042](https://github.com/nodejs/node/pull/2042)
 * [[`06721fe005`](https://github.com/nodejs/node/commit/06721fe005)] - **test**: corregir test-repl-tab-complete.js (cjihrig) [#2052](https://github.com/nodejs/node/pull/2052)
-* [[`8e9089ac35`](https://github.com/nodejs/node/commit/8e9089ac35)] - **test**: comprobar por un error en Windows (Rich Trott) [#2035](https://github.com/nodejs/node/pull/2035)
+* [[`8e9089ac35`](https://github.com/nodejs/node/commit/8e9089ac35)] - **test**: revisar por un error en Windows (Rich Trott) [#2035](https://github.com/nodejs/node/pull/2035)
 * [[`776a65ebcd`](https://github.com/nodejs/node/commit/776a65ebcd)] - **test**: eliminar los comentarios de TODO obsoletos (Rich Trott) [#2033](https://github.com/nodejs/node/pull/2033)
 * [[`bdfeb798ad`](https://github.com/nodejs/node/commit/bdfeb798ad)] - **test**: eliminar los comentarios de TODO obsoletos (Rich Trott) [#2032](https://github.com/nodejs/node/pull/2032)
 * [[`58e914f9bc`](https://github.com/nodejs/node/commit/58e914f9bc)] - **tools**: arreglar gyp para que funcione en MacOSX sin XCode (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/iojs/io.js/pull/1325)
@@ -836,7 +836,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * **npm**: 
   * Actualización a [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
   * Actualización a [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
-* **zlib**: Se descubrió un error en donde el proceso abortaría si la parte final de una descomprensión zlib resulta en un buffer que excedería la longitud máxima de `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). Esto se corrigió y en su lugar resultará en arrojar `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
+* **zlib**: Se descubrió un error en el cual el proceso se abortaría si la parte final de una descomprensión zlib resulta en un buffer que excede la longitud máxima de `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). Esto se corrigió y en su lugar resultará en arrojar `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
 
 ### Problemas conocidos
 
@@ -863,8 +863,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`3e12561b55`](https://github.com/nodejs/node/commit/3e12561b55)] - **deps**: actualizar a npm 2.11.2 (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956)
 * [[`8ac50819b6`](https://github.com/nodejs/node/commit/8ac50819b6)] - **doc**: añadir una sección de seguridad a README.md (Rod Vagg) [#1948](https://github.com/nodejs/node/pull/1948)
 * [[`1f93b63b11`](https://github.com/nodejs/node/commit/1f93b63b11)] - **doc**: cambiar la información a la misma que en gitconfig (Christian Tellnes) [#2000](https://github.com/nodejs/node/pull/2000)
-* [[`0cf94e6856`](https://github.com/nodejs/node/commit/0cf94e6856)] - **doc**: mencionar a CI en la Guía de Colaboradores (Rich Trott) [#1995](https://github.com/nodejs/node/pull/1995)
-* [[`7a3006efe4`](https://github.com/nodejs/node/commit/7a3006efe4)] - **doc**: añadir los enlaces TOC links a la Guía de Colaboradores (Rich Trott) [#1994](https://github.com/nodejs/node/pull/1994)
+* [[`0cf94e6856`](https://github.com/nodejs/node/commit/0cf94e6856)] - **doc**: mencionar CI en la Guía de Colaboradores (Rich Trott) [#1995](https://github.com/nodejs/node/pull/1995)
+* [[`7a3006efe4`](https://github.com/nodejs/node/commit/7a3006efe4)] - **doc**: añadir los enlaces de TOC links a la Guía de Colaboradores (Rich Trott) [#1994](https://github.com/nodejs/node/pull/1994)
 * [[`30638b150f`](https://github.com/nodejs/node/commit/30638b150f)] - **doc**: add TSC meeting notes 2015-06-10 (Bert Belder) [#1943](https://github.com/nodejs/node/pull/1943)
 * [[`c4ec04136b`](https://github.com/nodejs/node/commit/c4ec04136b)] - **doc**: reformatear la sección de autores (Johan Bergström) [#1966](https://github.com/nodejs/node/pull/1966)
 * [[`96165f9be2`](https://github.com/nodejs/node/commit/96165f9be2)] - **doc**: una clarificación menor en el documento API de módulos. (Сковорода Никита Андреевич) [#1983](https://github.com/nodejs/node/pull/1983)
@@ -880,7 +880,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`061342a500`](https://github.com/nodejs/node/commit/061342a500)] - **net**: Defer reading until listeners could be added (James Hartig) [#1496](https://github.com/nodejs/node/pull/1496)
 * [[`5d2b846d11`](https://github.com/nodejs/node/commit/5d2b846d11)] - **test**: assert tmp and fixture dirs different (Rich Trott) [#2015](https://github.com/nodejs/node/pull/2015)
 * [[`b0990ef45d`](https://github.com/nodejs/node/commit/b0990ef45d)] - **test**: confirmar symlink (Rich Trott) [#2014](https://github.com/nodejs/node/pull/2014)
-* [[`3ba4f71fc4`](https://github.com/nodejs/node/commit/3ba4f71fc4)] - **test**: verificar el resultado tan pronto como sea posible (Rich Trott) [#2007](https://github.com/nodejs/node/pull/2007)
+* [[`3ba4f71fc4`](https://github.com/nodejs/node/commit/3ba4f71fc4)] - **test**: revisar el resultado tan pronto como sea posible (Rich Trott) [#2007](https://github.com/nodejs/node/pull/2007)
 * [[`0abcf44d6b`](https://github.com/nodejs/node/commit/0abcf44d6b)] - **test**: add Buffer slice UTF-8 test (Rich Trott) [#1989](https://github.com/nodejs/node/pull/1989)
 * [[`88c1831ff4`](https://github.com/nodejs/node/commit/88c1831ff4)] - **test**: tmpdir creation failures should fail tests (Rich Trott) [#1976](https://github.com/nodejs/node/pull/1976)
 * [[`52a822d944`](https://github.com/nodejs/node/commit/52a822d944)] - **test**: arreglar test-cluster-worker-disconnect (Santiago Gimeno) [#1919](https://github.com/nodejs/node/pull/1919)
@@ -933,7 +933,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ## Commits
 
-* [[`9c0a1b8cfc`](https://github.com/nodejs/node/commit/9c0a1b8cfc)] - **cluster**: esperar que se cierren los servidores antes de desconectar (Oleg Elifantiev) [#1400](https://github.com/nodejs/node/pull/1400)
+* [[`9c0a1b8cfc`](https://github.com/nodejs/node/commit/9c0a1b8cfc)] - **cluster**: esperar a que se cierren los servidores antes de desconectar (Oleg Elifantiev) [#1400](https://github.com/nodejs/node/pull/1400)
 * [[`0f68377f69`](https://github.com/nodejs/node/commit/0f68377f69)] - **crypto**: support FIPS mode of OpenSSL (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
 * [[`38d1afc24d`](https://github.com/nodejs/node/commit/38d1afc24d)] - **(SEMVER-MINOR)** **crypto**: añadir getCurves() para que soporten ECs (Brian White) [#1914](https://github.com/nodejs/node/pull/1914)
 * [[`a4dbf45b59`](https://github.com/nodejs/node/commit/a4dbf45b59)] - **crypto**: actualizar los certificados de raíz (Ben Noordhuis) [#1833](https://github.com/nodejs/node/pull/1833)
@@ -1491,7 +1491,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1519,7 +1519,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
@@ -1581,7 +1581,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1650,10 +1650,10 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ### Known issues
 
 * Existen algunos problemas con temporizadores y `unref()` que todavía están por resolverse. Vea [#1152](https://github.com/nodejs/node/pull/1152).
-* Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
+* Puede(n) todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1707,10 +1707,10 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Known issues
 
-* Pueden todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
+* Puede(n) todavía existir una(s) posible(s) pequeña(s) pérdida(s) de memoria, pero todavía están por identificarse apropiadamente, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1749,7 +1749,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1785,7 +1785,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Posible(s) pérdida(s) de memoria relacionada(s) con TLS restante, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1863,7 +1863,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -1984,7 +1984,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 * Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas tan rápido como es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -2020,7 +2020,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * El soporte de Windows tiene algunas fallas sobresalientes que no han sido recogidas por el sistema io.js CI debido a una combinación de factores, incluyendo errores humanos, de programa y de Jenkins. Vea [#1005](https://github.com/nodejs/node/issues/1005) para detalles & discusión. Espere que estos problemas sean abordados tan pronto como sea posible.
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -2065,7 +2065,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -2123,7 +2123,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
@@ -2210,7 +2210,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible construir io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774), eso debería aparecer en el siguiente lanzamiento de parche.
+* `process.send()` no es sincrónica como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774), eso debería aparecer en el siguiente lanzamiento de parche.
 
 ### Commits
 
@@ -2435,7 +2435,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Known issues
 
-* Las construcciones ARMv6 todavía no funcionan, hay un retraso en V8 en esto, problema #283
+* Las construcciones ARMv6 todavía no funcionan, hay un retraso en V8 en esto, incidente #283
 * Las strings plantilla pueden provocar segfaults en V8 4.1, https://codereview.chromium.org/857433004, también problema #333
 
 ### Commits
