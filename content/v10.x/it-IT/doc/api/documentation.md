@@ -4,21 +4,21 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+L'obiettivo di questa documentazione è di spiegare in modo esaustivo l'API Node.js, sia dal punto di vista di avere un riferimento su cui basarsi sia da un punto di vista concettuale. Ogni sezione descrive un modulo integrato o un concetto di alto livello.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Dove più appropriato, i tipi delle proprietà, gli argomenti dei metodi e gli argomenti forniti agli event handler sono descritti in modo dettagliato in un elenco al di sotto dell'intestazione del topic.
 
-## Contributing
+## Contribuire
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Se vengono trovati degli errori all'interno di questa documentazione, siete pregati di [inviare un issue](https://github.com/nodejs/node/issues/new) o di vedere [la guida su come contribuire](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) per avere indicazioni su come inserire una patch.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Ogni file viene generato in base al corrispondente file `.md` nella cartella `doc/api/` nel source tree di Node.js. La documentazione viene generata utilizzando il programma `tools/doc/generate.js`. All'interno di `doc/template.html` c'è un template HTML.
 
-## Stability Index
+## Indice di Stabilità
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+All'interno di tutta la documentazione ci sono indicazioni riguardo la stabilità di ogni sezione. L'API Node.js è ancora in qualche modo in evoluzione e, con il passare del tempo, alcune parti sono più affidabili e sicure di altre. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 
 The stability indices are as follows:
 
