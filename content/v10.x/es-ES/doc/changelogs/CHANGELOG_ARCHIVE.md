@@ -2629,7 +2629,7 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 * http: corregir eventos "drain" faltantes (Russell Haering)
 * Corregir que process.stdout.end() arroja error ENOTSOCK. (Koichi Kobayashi)
 * Correcciones de bug de REPL (isaacs)
-* Las carpetas de node_modules deben ser máxima prioridad (isaacs)
+* Las carpetas de node_modules deben ser de máxima prioridad (isaacs)
 * Realizar el análisis de URL de una forma más segura (isaacs)
 * Exponer errno con una string para dns/cares (Felix Geisendörfer)
 * Corregir tty.setWindowSize
@@ -2795,7 +2795,7 @@ https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 
 https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
 
-* Quitar la vieja (dañada) implementación de TLS e introducir las nuevas implementación y API que ya fueron probadas. Ver docs. HTTPS no está soportado en esta versión.
+* Quitar la vieja (dañada) implementación de TLS e introducir la nueva implementación y la API que ya fueron probadas. Ver docs. HTTPS no está soportado en esta versión.
 
 * Introducir módulos "os" y "tty".
 
