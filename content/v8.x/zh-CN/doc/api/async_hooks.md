@@ -12,7 +12,7 @@ const async_hooks = require('async_hooks');
 
 ## 术语
 
-一个异步资源代表一个含有相关联回调函数的对象。 这个回调函数可能会被多次调用，例如：在`net.createServer`中的`connection`事件，亦或像在`fs.open`中一样被调用一次。 资源也可以在调用回调函数之前被关闭。 AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+一个异步资源代表一个含有相关联回调函数的对象。 这个回调函数可能会被多次调用，例如：在`net.createServer`中的`connection`事件，亦或像在`fs.open`中一样被调用一次。 资源也可以在调用回调函数之前被关闭。 AsyncHook没有明确区分这些不同情况，但会作为一个抽象概念在资源中代表它们。
 
 ## Public API
 
