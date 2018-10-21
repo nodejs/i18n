@@ -53,4 +53,4 @@ Le system call (syscall) come open(2) e read(2) definiscono l'interfaccia tra i 
 
 Alcune syscall, come lchown(2), sono specifiche BSD. Per esempio ciò significa che [`fs.lchown()`][] funziona solo su macOS e altri sistemi derivati da BSD e non è disponibile su Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+La maggior parte delle syscall Unix ha i suoi equivalenti Windows, ma il comportamento su Windows può variare rispetto a quello su Linux e macOS. Per un esempio dei casi delicati in cui a volte è impossibile sostituire la semantica syscall di Unix su Windows, vedi il [Node issue 4760](https://github.com/nodejs/node/issues/4760).
