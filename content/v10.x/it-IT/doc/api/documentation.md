@@ -23,11 +23,11 @@ All'interno di tutta la documentazione ci sono indicazioni riguardo la stabilit�
 Gli indici di stabilità sono i seguenti:
 
 ```txt
-Stabilità: 0 - Obsoleto. Questa funzione è nota per essere problematica ed è una funzione alla quale potrebbero essere pianificate delle modifiche. Non bisogna farne affidamento. L'utilizzo di questa funzione potrebbe causare l'emissione di avvisi. Per le versioni principali non è prevista la retrocompatibilità.
+Stabilità: 0 - Obsoleto. Questa funzionalità è nota per essere problematica ed è una funzionalità alla quale potrebbero essere pianificate delle modifiche. Non bisogna farne affidamento. L'utilizzo di questa funzionalità potrebbe causare l'emissione di avvisi. Per le versioni principali non è prevista la retrocompatibilità.
 ```
 
 ```txt
-Stabilità: 1 - Sperimentale. Questa funzione è ancora in fase di sviluppo attivo e soggetta a modifiche non retrocompatibili, o addirittura alla rimozione, in qualsiasi versione futura. L'utilizzo di questa funzione non è raccomandato negli ambienti di produzione.
+Stabilità: 1 - Sperimentale. Questa funzionalità è ancora in fase di sviluppo attivo e soggetta a modifiche non retrocompatibili, o addirittura alla rimozione, in qualsiasi versione futura. L'utilizzo di questa funzionalità non è raccomandato negli ambienti di produzione.
 Le funzionalità sperimentali non sono soggette al modello di versione semantica di Node.js.
 ```
 
@@ -35,15 +35,15 @@ Le funzionalità sperimentali non sono soggette al modello di versione semantica
 Stabilità: 2 - Stabile. L'API si è dimostrata soddisfacente. La compatibilità con l'ecosistema npm è una priorità elevata e non verrà interrotta se non strettamente necessario.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+È necessario prestare attenzione quando si utilizzano le funzionalità `Experimental`, in particolare all'interno dei moduli che potrebbero essere utilizzati come dipendenze (o dipendenze delle dipendenze) all'interno di un'applicazione Node.js. Gli utenti finali potrebbero non essere a conoscenza del fatto che vengono utilizzate funzionalità sperimentali e pertanto potrebbero verificarsi errori imprevisti o cambiamenti di comportamento quando vengono effettuate delle modifiche all'API. Per evitare sorprese del genere, le funzionalità `Experimental` potrebbero richiedere un flag della command-line per essere abilitate esplicitamente o potrebbero causare l'emissione di un avviso di processo. Di default, tali avvisi vengono stampati su [`stderr`][] e possono essere gestiti collegando un listener all'evento [`'warning'`][].
 
-## JSON Output
+## Output JSON
 
 <!-- YAML
 added: v0.6.12
 -->
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
