@@ -2852,7 +2852,7 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 * Soporte añadido para compilación cruzada (Rasmus Andersson)
 * Añadir bandera --profile al script de configuración, habilita el perfilado con gprof. (Ben Noordhuis)
 
-* writeFileSync podría mostrar un comportamiento patológico cuando un buffer no puede ser escrito al archivo en una llamada write() sencilla.
+* writeFileSync podría mostrar un comportamiento patológico cuando un buffer no pueda ser escrito al archivo en una llamada write() sencilla.
 
 * nuevo comportamiento de path.join (isaacs)
   
