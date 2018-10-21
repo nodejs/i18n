@@ -325,15 +325,15 @@ added: v8.6.0
 
 *Nota: Tutti i riferimenti allo scope in questa sezione si riferiscono agli [Indici di Zona IPv6](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), definiti nel documento [RFC 4007](https://tools.ietf.org/html/rfc4007). In formato di stringa, un IP con un indice scope è scritto come `'IP%scope'` dove scope è il nome o il numero di un'interfaccia.*
 
-Imposta l'interfaccia multicast in uscita predefinita del socket su un'interfaccia selezionata o torna alla selezione dell'interfaccia di sistema. The `multicastInterface` must be a valid string representation of an IP from the socket's family.
+Imposta l'interfaccia multicast in uscita predefinita del socket su un'interfaccia selezionata o torna alla selezione dell'interfaccia di sistema. Il `multicastInterface` dev'essere la valida rappresentazione della stringa di un IP dalla famiglia del socket.
 
-For IPv4 sockets, this should be the IP configured for the desired physical interface. All packets sent to multicast on the socket will be sent on the interface determined by the most recent successful use of this call.
+Per i socket IPv4, questo dovrebbe essere l'IP configurato per l'interfaccia fisica desiderata. Tutti i pacchetti inviati al multicast sul socket verranno inviati all'interfaccia determinata dall'uso con successo più recente di questa chiamata.
 
-For IPv6 sockets, `multicastInterface` should include a scope to indicate the interface as in the examples that follow. In IPv6, individual `send` calls can also use explicit scope in addresses, so only packets sent to a multicast address without specifying an explicit scope are affected by the most recent successful use of this call.
+Per i socket IPv6, `multicastInterface` dovrebbe includere uno scope per indicare l'interfaccia come negli esempi a seguire. In IPv6, le singole chiamate `send` possono anche utilizzare lo scope esplicito negli indirizzi, pertanto solo i pacchetti inviati ad un indirizzo multicast senza specificare uno scope esplicito sono interessati dall'uso con successo più recente di questa chiamata.
 
-#### Examples: IPv6 Outgoing Multicast Interface
+#### Esempi: Interfaccia Multicast In Uscita IPv6
 
-On most systems, where scope format uses the interface name:
+Sulla maggior parte dei sistemi, in cui il formato dello scope utilizza il nome dell'interfaccia:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -343,7 +343,7 @@ socket.bind(1234, () => {
 });
 ```
 
-On Windows, where scope format uses an interface number:
+Su Windows, in cui il formato dello scope utilizza un numero dell'interfaccia:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -353,9 +353,9 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Example: IPv4 Outgoing Multicast Interface
+#### Esempio: Interfaccia Multicast In Uscita IPv4
 
-All systems use an IP of the host on the desired physical interface:
+Tutti i sistemi utilizzano un IP dell'host sull'interfaccia fisica desiderata:
 
 ```js
 const socket = dgram.createSocket('udp4');
