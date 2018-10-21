@@ -2,17 +2,17 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Over deze documenten](documentation.html)
+* [Gebruik & Voorbeeld](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Stelling testen](assert.html)
+* [Async Haken](async_hooks.html)
 * [Buffer](buffer.html)
 * [C++ Addons](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [Kindprocessen](child_process.html)
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
