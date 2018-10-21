@@ -407,7 +407,7 @@ added: v8.7.0
 
 * `size` {integer}
 
-Imposta l'opzione socket `SO_RCVBUF`. Sets the maximum socket receive buffer in bytes.
+Imposta l'opzione socket `SO_RCVBUF`. Imposta il massimo buffer di ricezione socket in byte.
 
 ### socket.setSendBufferSize(size)
 
@@ -417,7 +417,7 @@ added: v8.7.0
 
 * `size` {integer}
 
-Sets the `SO_SNDBUF` socket option. Sets the maximum socket send buffer in bytes.
+Imposta l'opzione socket `SO_SNDBUF`. Imposta il massimo buffer d'invio socket in byte.
 
 ### socket.setTTL(ttl)
 
@@ -427,9 +427,9 @@ added: v0.1.101
 
 * `ttl` {integer}
 
-Sets the `IP_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
+Imposta l'opzione socket `IP_TTL`. Mentre TTL solitamente sta per "Time to Live", in questo contesto specifica il numero di IP hop che un pacchetto può attraversare. Ogni router o gateway che inoltra un pacchetto decrementa il TTL. Se il TTL viene decrementato fino a 0 da un router, non verrà inoltrato. La modifica dei valori TTL viene in genere eseguita per sonde di rete o multicasting.
 
-The argument to `socket.setTTL()` is a number of hops between 1 and 255. The default on most systems is 64 but can vary.
+L'argomento passato a `socket.setTTL()` è un numero di hop compreso tra 1 e 255. L'impostazione predefinita sulla maggior parte dei sistemi è 64 ma può variare.
 
 ### socket.unref()
 
@@ -437,15 +437,15 @@ The argument to `socket.setTTL()` is a number of hops between 1 and 255. The def
 added: v0.9.1
 -->
 
-By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
+Di default, il binding di un socket causerà il blocco della conclusione del processo Node.js finché il socket è aperto. Il metodo `socket.unref()` può essere utilizzato per escludere il socket dal reference count che mantiene attivo il processo Node.js, consentendo la conclusione del processo anche se il socket è ancora in fase di listening (ascolto).
 
-Calling `socket.unref()` multiple times will have no addition effect.
+Chiamare `socket.unref()` più volte non avrà nessun effetto aggiuntivo.
 
-The `socket.unref()` method returns a reference to the socket so calls can be chained.
+Il metodo `socket.unref()` restituisce un riferimento al socket in modo che le chiamate possano essere concatenate.
 
-### Change to asynchronous `socket.bind()` behavior
+### Passaggio al comportamento asincrono `socket.bind()`
 
-As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code that assumes synchronous behavior, as in the following example:
+A partire da Node.js v0.10, [`dgram.Socket#bind()`][] è passato ad essere un modello di esecuzione asincrono. Codice legacy che assume il comportamento sincrono, come nell'esempio seguente:
 
 ```js
 const s = dgram.createSocket('udp4');
@@ -453,7 +453,7 @@ s.bind(1234);
 s.addMembership('224.0.0.114');
 ```
 
-Must be changed to pass a callback function to the [`dgram.Socket#bind()`][] function:
+Dev'essere modificato per far passare una funzione callback alla funzione [`dgram.Socket#bind()`][]:
 
 ```js
 const s = dgram.createSocket('udp4');
@@ -462,7 +462,7 @@ s.bind(1234, () => {
 });
 ```
 
-## `dgram` module functions
+## Funzioni del modulo `dgram`
 
 ### dgram.createSocket(options[, callback])
 
@@ -479,12 +479,12 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} Available options are: 
-  * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
-  * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
-  * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
-  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
+* `options` {Object} Le opzioni disponibili sono: 
+  * `type` {string} La famiglia del socket. Dev'essere `'udp4'` o `'udp6'`. Obbligatorio.
+  * `reuseAddr` {boolean} Quando è `true` [`socket.bind()`][] riutilizzerà l'indirizzo, anche se un altro processo ne ha già collegato un socket tramite il binding. **Default:** `false`.
+  * `recvBufferSize` {number} - Imposta il valore socket `SO_RCVBUF`.
+  * `sendBufferSize` {number} - Imposta il valore socket `SO_SNDBUF`.
+  * `lookup` {Function} Funzione lookup (di ricerca) personalizzata. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
 * Returns: {dgram.Socket}
 
