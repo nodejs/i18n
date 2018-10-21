@@ -30,7 +30,7 @@ const eid = async_hooks.executionAsyncId();
 // current execution scope to call.
 const tid = async_hooks.triggerAsyncId();
 
-// Create a new AsyncHook instance. All of these callbacks are optional.
+// 创建一个 AsyncHook 实例。 以上所有的回调函数都是可选的。
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
