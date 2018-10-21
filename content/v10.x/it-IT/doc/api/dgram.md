@@ -485,10 +485,10 @@ changes:
   * `recvBufferSize` {number} - Imposta il valore socket `SO_RCVBUF`.
   * `sendBufferSize` {number} - Imposta il valore socket `SO_SNDBUF`.
   * `lookup` {Function} Funzione lookup (di ricerca) personalizzata. **Default:** [`dns.lookup()`][].
-* `callback` {Function} Attached as a listener for `'message'` events. Optional.
-* Returns: {dgram.Socket}
+* `callback` {Function} Allegato come listener per gli eventi `'message'`. Opzionale.
+* Restituisce: {dgram.Socket}
 
-Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Crea un `dgram.Socket` object. Una volta creato il socket, chiamare [`socket.bind()`][] darà istruzioni al socket d'iniziare il listening (ascolto) dei messaggi del datagram. Quando `address` e `port` non vengono passati a [`socket.bind()`][] il metodo collegherà il socket all'indirizzo di "tutte le interfacce" su una porta casuale (ed è una cosa corretta per entrambi i socket `udp4` e `udp6`). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
 
