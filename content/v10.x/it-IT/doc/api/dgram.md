@@ -365,17 +365,17 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Call Results
+#### Risultati della Chiamata
 
-A call on a socket that is not ready to send or no longer open may throw a *Not running* [`Error`][].
+Una chiamata su un socket che non è pronto per l'invio o non è più aperto potrebbe generare un *Not running* [`Error`][].
 
-If `multicastInterface` can not be parsed into an IP then an *EINVAL* [`System Error`][] is thrown.
+Se `multicastInterface` non può essere analizzato tramite il parsing all'interno di un IP, viene generato un *EINVAL* [`System Error`][].
 
-On IPv4, if `multicastInterface` is a valid address but does not match any interface, or if the address does not match the family then a [`System Error`][] such as `EADDRNOTAVAIL` or `EPROTONOSUP` is thrown.
+Su IPv4, se `multicastInterface` è un indirizzo valido ma non corrisponde a nessun'interfaccia o se l'indirizzo non corrisponde alla famiglia, verrà generato un [`System Error`][] come `EADDRNOTAVAIL` o `EPROTONOSUP`.
 
-On IPv6, most errors with specifying or omitting scope will result in the socket continuing to use (or returning to) the system's default interface selection.
+Su IPv6, la maggior parte degli errori con la specifica o l'omissione dello scope farà sì che il socket continui a utilizzare (o restituire) la selezione dell'interfaccia predefinita del sistema.
 
-A socket's address family's ANY address (IPv4 `'0.0.0.0'` or IPv6 `'::'`) can be used to return control of the sockets default outgoing interface to the system for future multicast packets.
+È possibile utilizzare QUALSIASI indirizzo di una famiglia di indirizzi socket (IPv4 `'0.0.0.0'` o IPv6 `'::'`) per restituire il controllo dell'interfaccia in uscita predefinita dei socket al sistema per futuri pacchetti multicast.
 
 ### socket.setMulticastLoopback(flag)
 
@@ -385,7 +385,7 @@ added: v0.3.8
 
 * `flag` {boolean}
 
-Sets or clears the `IP_MULTICAST_LOOP` socket option. When set to `true`, multicast packets will also be received on the local interface.
+Imposta o cancella l'opzione socket `IP_MULTICAST_LOOP`. Se impostato su `true`, verranno ricevuti nell'interfaccia locale anche i pacchetti multicast.
 
 ### socket.setMulticastTTL(ttl)
 
@@ -395,7 +395,7 @@ added: v0.3.8
 
 * `ttl` {integer}
 
-Sets the `IP_MULTICAST_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
+Imposta l'opzione socket `IP_MULTICAST_TTL`. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
 
 The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. The default on most systems is `1` but can vary.
 
