@@ -1,4 +1,4 @@
-# About this Documentation
+# Informazioni riguardo questa Documentazione
 
 <!--introduced_in=v0.10.0-->
 
