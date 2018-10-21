@@ -20,7 +20,7 @@ Todos os exemplos a seguir estão disponíveis para [download](https://github.co
 
 ## Hello world
 
-Este exemplo "Hello world" é um simples Addon, escrito em C++, que é o equivalente do seguinte código JavaScript:
+Este exemplo "Hello world" é um simples Addon, escrito em C++, que é o equivalente ao seguinte código JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
