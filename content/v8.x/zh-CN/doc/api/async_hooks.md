@@ -114,7 +114,7 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 ##### 错误处理
 
-如果任何 `AsyncHook` 回调函数被抛出，应用程序会打印追溯栈并退出。 The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
+如果任何 `AsyncHook` 回调函数被抛出，应用程序会打印追溯栈并退出。 退出路径确实遵循未捕获异常中的路径, 但所有的 `uncaughtException` 监听器都将被删除, 从而强制进程退出。 除非应用程序在运行时添加了`--abort-on-uncaught-exception`参数，`'exit'`回调函数仍会被调用，这这种情况下，回溯栈仍会被打印，应用程序会退出，并留下一个核心文件。
 
 The reason for this error handling behavior is that these callbacks are running at potentially volatile points in an object's lifetime, for example during class construction and destruction. Because of this, it is deemed necessary to bring down the process quickly in order to prevent an unintentional abort in the future. This is subject to change in the future if a comprehensive analysis is performed to ensure an exception can follow the normal control flow without unintentional side effects.
 
