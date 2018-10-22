@@ -25,7 +25,7 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+El modulo `circle.js` exportó las funciones `area()` y `circumference()`. Las funciones y objetivos son añadidas a raíz de un modulo especificando propiedades adicionales en objeto especial `exports`.
 
 Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 
