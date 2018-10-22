@@ -183,7 +183,7 @@
 * openssl: Actualizar a v1.0.1i
 * v8: Actualizar a 3.26.33
 * Añadir una ruta rápida para el análisis simple de URL (Gabriel Wicke)
-* Added support for options parameter in console.dir() (Xavi Magrinyà)
+* Añadidas opciones de apoyo para los parámetros en console.dir() (Xavi Magrinyà)
 * Cluster: fix shared handles on Windows (Alexis Campailla)
 * buffer: Fix incorrect Buffer.compare behavior (Feross Aboukhadijeh)
 * buffer: construct new buffer from buffer toJSON() output (cjihrig)
