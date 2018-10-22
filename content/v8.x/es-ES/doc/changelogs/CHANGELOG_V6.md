@@ -43,7 +43,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras versiones 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [5.x](CHANGELOG_V5.md)
