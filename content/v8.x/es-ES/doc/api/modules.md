@@ -60,7 +60,7 @@ El modulo de sistema está implementado en el modulo `require('module')`.
 
 <!-- type=misc -->
 
-Cuando un archivo es ejecutado directamente desde Node.js `require.main` está ligado a `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Cuando un archivo es ejecutado directamente desde Node.js `require.main` está ligado a `module`. Eso significa que es posible determinar si un archivo fue ejecutado directamente por la prueba `require.main === module`.
 
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
