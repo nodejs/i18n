@@ -106,10 +106,10 @@ apply.whitespace fix`
 * Zatwierdzanie zmiany
   
   * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
-  * Some people like to comment `LGTM` (“Looks Good To Me”)
-  * You have the authority to approve any other collaborator’s work.
-  * You cannot approve your own pull requests.
-  * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it. 
+  * Niektórzy ludzie lubią komentować `LGTM` (“Dla Mnie Wygląda Dobrze”)
+  * Masz upoważnienie do zatwierdzenia pracy innego współpracownika.
+  * Nie możesz zatwierdzać własnych żądań zmian.
+  * Kiedy wprost używasz `Changes requested`, wykaż empatię - komentarze będą zwykle adresowane nawet jeśli z niego nie korzystasz. 
     * If you do, it is nice if you are available later to check whether your comments have been addressed
     * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
