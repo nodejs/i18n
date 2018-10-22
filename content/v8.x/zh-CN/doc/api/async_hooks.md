@@ -75,11 +75,11 @@ added: v8.1.0
 -->
 
 * `callbacks` {Object} 要注册的 [钩子回调函数](#async_hooks_hook_callbacks) 
-  * `init` {Function} The [`init` callback][].
-  * `before` {Function} The [`before` callback][].
-  * `after` {Function} The [`after` callback][].
-  * `destroy` {Function} The [`destroy` callback][].
-* Returns: `{AsyncHook}` Instance used for disabling and enabling hooks
+  * `init` {Function} [`init` 回调函数][]。
+  * `before` {Function} [`before` 回调函数][]
+  * `after` {Function} [`after` 回调函数][]。
+  * `destroy` {Function} [`destroy` 回调函数][]。
+* 返回：用于禁用和启用钩子的 `{AsyncHook}` 实例
 
 Registers functions to be called for different lifetime events of each async operation.
 
