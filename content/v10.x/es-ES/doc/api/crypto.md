@@ -345,15 +345,15 @@ input.pipe(decipher).pipe(output);
 Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
-const crypto = require('crypto');
-const decipher = crypto.createDecipher('aes192', 'a password');
+const crypto = require('crypto'); 
+const decipher = crypto.createDecipher('aes192', 'a password'); 
 
 const encrypted =
-    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
-let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-decrypted += decipher.final('utf8');
-console.log(decrypted);
-// Prints: some clear text data
+    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'; 
+let decrypted = decipher.update(encrypted, 'hex', 'utf8'); 
+decrypted += decipher.final('utf8'); 
+console.log(decrypted); 
+// Imprime: algunos datos limpios
 ```
 
 ### decipher.final([outputEncoding])
