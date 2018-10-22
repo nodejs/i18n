@@ -455,7 +455,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 * {Object}
 
