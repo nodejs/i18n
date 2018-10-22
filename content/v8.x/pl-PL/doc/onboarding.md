@@ -16,8 +16,8 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
     * [ustawienia lokalne](#local-setup)
     * [cele projektu & wartości](#project-goals--values)
     * [zarządzanie listą problemów](#managing-the-issue-tracker)
-    * [przeglądanie PR-ami](#reviewing-prs)
-    * [wyładowywanie Pr-ów](#landing-prs)
+    * [przeglądanie PR](#reviewing-prs)
+    * [wyładowywanie Pr](#landing-prs)
 
 ## Ustawienia lokalne
 
