@@ -70,14 +70,14 @@ In het voorbeeld `hallo.cc`, vervolgens de initialisatie functie `init` en de na
 
 ### Bouwen
 
-Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. Om dit te doen, maak een bestand genaamd `binding.gyp` in het top-level van het project met een beschrijving van de bouwconfiguratie van de module met behulp van een JSON-achtig format. Dit bestand wordt gebruikt door [node-gyp](https://github.com/nodejs/node-gyp) — een tool wat specifiek is geschreven om Node.js Addons te compileren.
 
 ```json
 {
   "targets": [
     {
       "target_name": "addon",
-      "sources": [ "hello.cc" ]
+      "sources": [ "hallo.cc" ]
     }
   ]
 }
