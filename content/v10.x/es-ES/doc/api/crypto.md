@@ -595,10 +595,10 @@ const crypto = require('crypto');
 const assert = require('assert');
 
 // Genera las llaves de Alice...
-const alice = crypto.createECDH('secp521r1');
+const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
