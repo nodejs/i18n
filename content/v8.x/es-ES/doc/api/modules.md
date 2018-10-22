@@ -27,11 +27,11 @@ exports.circumference = (r) => 2 * PI * r;
 
 El modulo `circle.js` exportó las funciones `area()` y `circumference()`. Las funciones y objetivos son añadidas a raíz de un modulo especificando propiedades adicionales en objeto especial `exports`.
 
-Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
+Las variables locales del modulo serán privadas porque el modulo está envuelto en una función por Node.js (see [module wrapper](#modules_the_module_wrapper)). En este ejemplo la variable `PI` está privada para `circle.js`.
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+Un nuevo valor puede ser asignado a `module.exports` (como una función u objeto).
 
-Below, `bar.js` makes use of the `square` module, which exports a Square class:
+A continuación,, `bar.js` hace uso del modulo `square` que exporta una clase cuadrada:
 
 ```js
 const Square = require('./square.js');
@@ -39,7 +39,7 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-The `square` module is defined in `square.js`:
+El modulo `square` está definido en `square.js`:
 
 ```js
 // assigning to exports will not modify module, must use module.exports
@@ -54,13 +54,13 @@ module.exports = class Square {
 };
 ```
 
-The module system is implemented in the `require('module')` module.
+El modulo de sistema está implementado en el modulo `require('module')`.
 
-## Accessing the main module
+## Accediendo al modulo principal
 
 <!-- type=misc -->
 
-When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Cuando un archivo es ejecutado directamente desde Node.js `require.main` está ligado a `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
