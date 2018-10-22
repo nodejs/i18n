@@ -285,15 +285,15 @@ input.pipe(decipher).pipe(output);
 Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
-const crypto = require('crypto');
-const decipher = crypto.createDecipher('aes192', 'a password');
+const crypto = require('crypto'); 
+const decipher = crypto.createDecipher('aes192', 'a password'); 
 
 const encrypted =
-    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
-let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-decrypted += decipher.final('utf8');
-console.log(decrypted);
-// Prints: some clear text data
+    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'; 
+let decrypted = decipher.update(encrypted, 'hex', 'utf8'); 
+decrypted += decipher.final('utf8'); 
+console.log(decrypted); 
+// Imprime: algunos datos limpios
 ```
 
 ### decipher.final([outputEncoding])
@@ -304,7 +304,7 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Regresa cualquiera de los contenidos restantes descifrados. If `outputEncoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
+Regresa cualquiera de los contenidos restantes descifrados. Un string es regresado si el parámetro `output_encoding` es `'latin1'`, `'base64'` o `'hex'`. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
 
 Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
@@ -324,7 +324,7 @@ changes:
 
 El método `decipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-The `decipher.setAAD()` method must be called before [`decipher.update()`][].
+El método `decipher.setAAD()` debe llamarse antes de [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
 
@@ -342,7 +342,7 @@ changes:
 
 El método `decipher.setAuthTag()` es usado para pasar la *etiqueta de autenticación recibida* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados en la actualiad). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+El método `decipher.setAuthTag()` debe ser llamado antes de [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -357,7 +357,7 @@ Cuando los datos han sido encriptados sin un llenado de bloques estándar, llama
 
 Desactivar el llenado automático solo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloque de los cifrados.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+El método `decipher.setAutoPadding()` debe ser llamado antes de [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -374,9 +374,9 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Actualiza el descifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string que utiliza la codificación especificada. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
@@ -420,7 +420,7 @@ added: v0.5.0
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
 
@@ -556,7 +556,7 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
 
