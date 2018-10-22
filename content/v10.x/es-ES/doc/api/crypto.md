@@ -602,11 +602,11 @@ const aliceKey = alice.generateKeys();
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
-const aliceSecret = alice.computeSecret(bobKey);
+// Intercambian y generan el secreto...
+const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
-
-assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
+ 
+assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex')); 
 // OK
 ```
 
