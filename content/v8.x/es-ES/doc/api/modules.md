@@ -70,7 +70,7 @@ Porque `module` provee un `filename` proporciona (normalmente equivalente a `__f
 
 <!-- type=misc -->
 
-The semantics of Node.js's `require()` function were designed to be general enough to support a number of reasonable directory structures. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
+La semántica de la función Node.js's `require()` fue diseñada genérica para apoyar a un numero a razonable de estructuras del directorio. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
 
 Below we give a suggested directory structure that could work:
 
