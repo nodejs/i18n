@@ -81,11 +81,11 @@ added: v8.1.0
   * `destroy` {Function} [`destroy` 回调函数][]。
 * 返回：用于禁用和启用钩子的 `{AsyncHook}` 实例
 
-Registers functions to be called for different lifetime events of each async operation.
+注册针对每个异步操作的不同生命周期事件而调用的函数。
 
-The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
+回调函数`init()`/`before()`/`after()`/`destroy()`在资源生命周期中为各自的异步事件所调用。
 
-All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+所有的回调函数都是可选的。 例如，如果仅仅是资源清理需要被跟踪，则只需要传递 `destroy` 回调函数。 可以传递给 `回调函数` 的所有函数的细节都在 [钩子回调函数](#async_hooks_hook_callbacks) 部分中。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+注意，回调函数将通过原型链来继承：
 
 ```js
 class MyAsyncCallbacks {
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Error Handling
+##### 错误处理
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
