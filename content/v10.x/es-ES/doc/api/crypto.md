@@ -272,7 +272,7 @@ Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un
 
 El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
-### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
 <!-- YAML
 added: v0.1.94
