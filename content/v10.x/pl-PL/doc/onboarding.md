@@ -91,9 +91,9 @@ apply.whitespace fix`
 
 * Podstawowym celem bazy kodu jest jego udoskonalenie.
 * Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. A pull request from a new contributor is an opportunity to grow the community.
-* Review a bit at a time. Do not overwhelm new contributors. 
-  * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
-* Be aware: Your opinion carries a lot of weight!
+* Nie sprawdzaj wszystkiego za jednym razem. Nie przytłaczaj nowych współpracowników. 
+  * It is tempting to micro-optimize. Nie ulegajcie tej pokusie. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
+* Bądź świadomy: Twoja opinia wiele znaczy!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
   * Note that they are nits when you comment: `Nit: change foo() to bar().`
   * If they are stalling the pull request, fix them yourself on merge.
