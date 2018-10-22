@@ -77,12 +77,12 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Kiedy dyskusja się zaostrzyła, możesz poprosić innych Współpracowników o śledzenie tego, otwierając problem w prywatnym repozytorium [nodejs/moderation](https://github.com/nodejs/moderation).
     
     * Jest to repozytorium, do którego mają dostęp wszyscy członkowie `nodejs` organizacji GitHub (nie tylko Współpracownicy rdzenia Node.js). Jego zawartość nie powinna być udostępniana na zewnątrz.
-    * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
+    * Możesz znaleźć pełną politykę moderacji [tutaj](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Reviewing PRs
+## Przeglądanie PR-ów
 
-* The primary goal is for the codebase to improve.
-* Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
+* Podstawowym celem bazy kodu jest jego udoskonalenie.
+* Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. A pull request from a new contributor is an opportunity to grow the community.
 * Review a bit at a time. Do not overwhelm new contributors. 
     * It is tempting to micro-optimize and make everything about relative performance. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
 * Be aware: Your opinion carries a lot of weight!
