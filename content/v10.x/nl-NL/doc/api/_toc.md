@@ -24,7 +24,7 @@
 * [ECMAScript Modules](esm.html)
 * [Fouten](errors.html)
 * [Gebeurtenissen](events.html)
-* [Bestandssyteem](fs.html)
+* [Bestandssysteem](fs.html)
 * [Globale](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
