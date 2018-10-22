@@ -117,7 +117,7 @@ const cert2 = crypto.Certificate();
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
+- `spack` {string | Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
@@ -134,7 +134,7 @@ console.log(challenge.toString('utf8'));
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
+- `spack` {string | Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} El componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
