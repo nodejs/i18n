@@ -91,15 +91,15 @@ Cuando el código `foo` en le paquete `require('bar')`, obtendrá la versión qu
 
 Ademas: para hacer que el modulo busque el proceso mas optimo, en lugar de poner paquetes directamente en `/usr/lib/node`, podriamos ponerlos en `/usr/lib/node_modules/<name>/<version>`. Entonces, Node.js no se molestará en buscar dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-Para que los módulos estén disponibles para el REPL de Node.js, puede ser útil agregar también la carpeta`/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Para que los módulos estén disponibles para el REPL de Node.js, puede ser útil agregar también la carpeta`/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Dado que las búsquedas de módulos que utilizan las carpetas `node_modules` son similares, y se basan en la ruta real de los archivos que requieren las llamadas a `require()`, los paquetes pueden estar en cualquier lugar.
 
-## All Together...
+## Todo junto...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Para obtener el nombre de archivo exacto que se cargará cuando se llame a `require()`, use la función `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+Reuniendo todo lo anterior, aquí está el algoritmo de alto nivel en pseudónimo de lo que `require.resolve()` hace:
 
 ```txt
 require(X) from module at path Y
@@ -160,7 +160,7 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Los módulos se almacenan en caché después de la primera vez que se cargan. Esto significa (entre otras cosas) que cada llamada a `require('foo')` obtendrá exactamente el mismo objeto devuelto, si se resolviera en el mismo archivo.
 
 Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
