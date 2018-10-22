@@ -121,7 +121,7 @@ apply.whitespace fix`
     * That is to say, `url` is there because of `http`, `freelist` is there because of `http`, etc.
   * Things that cannot be done outside of core, or only with significant pain such as `async_hooks`.
 
-* Continuous Integration (CI) Testing:
+* Testowanie w Continuous Integration (CI):
   
   * <https://ci.nodejs.org/> 
     * It is not automatically run. You need to start it manually.
