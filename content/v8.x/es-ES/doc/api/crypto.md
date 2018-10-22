@@ -534,11 +534,11 @@ const aliceKey = alice.generateKeys();
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
-const aliceSecret = alice.computeSecret(bobKey);
+// Intercambian y generan el secreto...
+const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
-
-assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
+ 
+assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex')); 
 // OK
 ```
 
@@ -570,11 +570,11 @@ added: v0.11.14
 - `encoding` {string}
 - `format` {string} Defaults to `uncompressed`.
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. Esta clave debe ser transferida a la otra parte.
+Genera los valores de la clave EC Diffie-Hellman privados y públicos, y devuelve la clave pública en el `format` y `encoding` especificado. Esta clave debe ser transferida a la otra parte.
 
 The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.getPrivateKey([encoding])
 
@@ -584,7 +584,7 @@ added: v0.11.14
 
 - `encoding` {string}
 
-Returns the EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -595,11 +595,11 @@ added: v0.11.14
 - `encoding` {string}
 - `format` {string} Defaults to `uncompressed`.
 
-Returns the EC Diffie-Hellman public key in the specified `encoding` and `format`.
+Devuelve la clave pública EC Diffie-Hellman en el `encoding` y `format` especificado.
 
 The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
+El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es especificado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
 
@@ -610,7 +610,7 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman private key. The `encoding` can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the ECDH object.
 
