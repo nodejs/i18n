@@ -124,9 +124,9 @@ apply.whitespace fix`
 * Testowanie w Continuous Integration (CI):
   
   * <https://ci.nodejs.org/> 
-    * It is not automatically run. You need to start it manually.
-  * Log in on CI is integrated with GitHub. Try to log in now!
-  * You will be using `node-test-pull-request` most of the time. Go there now! 
+    * Nie jest to uruchamiane automatycznie. Musisz uruchomić to ręcznie.
+  * Log in on CI is integrated with GitHub. Spróbuj się zalogować teraz!
+  * Przez większość czasu będziesz używać `node-test-pull-request`. Przejdź tam teraz! 
     * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
   * To start CI testing from this screen, you need to fill in two elements on the form: 
