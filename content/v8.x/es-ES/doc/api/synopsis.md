@@ -36,4 +36,4 @@ $ node example.js
 Server running at http://127.0.0.1:3000/
 ```
 
-Many of the examples in the documentation can be run similarly.
+Cualquiera de los ejemplos en el documento pueden ser ejecutado del mismo modo.
