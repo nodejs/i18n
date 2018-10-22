@@ -70,20 +70,20 @@ Porque `module` provee un `filename` proporciona (normalmente equivalente a `__f
 
 <!-- type=misc -->
 
-La semántica de la función Node.js's `require()` fue diseñada genérica para apoyar a un numero a razonable de estructuras del directorio. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
+La semántica de la función Node.js's `require()` fue diseñada genérica para apoyar a un numero a razonable de estructuras del directorio. Administrador de paquetes programas como `dpkg`, `rpm`, y `npm` esperamos encontrarlo posiblemente para construir programas nativos desde módulos de Node.js sin modificación.
 
-Below we give a suggested directory structure that could work:
+A continuación le sugerimos una estructura de directorio que podría funcionar:
 
-Let's say that we wanted to have the folder at `/usr/lib/node/<some-package>/<some-version>` hold the contents of a specific version of a package.
+Digamos que queríamos tener la carpeta en `/usr/lib/node/<some-package>/<some-version>` manteniendo los contenidos en una versión especifica de un paquete.
 
-Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+Paquetes pueden depender unos de otros. El orden de instalación de paquetes `foo`,, puede ser necesarios para instalar una versión especifica del paquete `bar`. El paquete `bar` puede por si mismo tener dependencias, en algunos casos pueden tener conflictos o tener dependencias cíclicas.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
+Desde Node.js buscamos el `realpath` de algunos módulos cargados (es decir, resuelve los enlaces simbólicos), y luego busca sus dependencias en los archivos `node_modules` descritos como [here](#modules_loading_from_node_modules_folders), esta situación es muy simple de resolver con la siguiente arquitectura:
 
-* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
-* `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-* `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` paquete, versión 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - Contenidos en el paquete `bar` que depende de `foo`.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Enlace simbólico a `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - enlaces simbólicos a los paquetes que dependen de `bar`.
 
 Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
 
