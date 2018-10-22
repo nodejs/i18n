@@ -276,7 +276,7 @@ replServer.on('exit', () => {
 added: v0.11.0
 -->
 
-El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. The listener callback will be called with a reference to the `context` object as the only argument.
+El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` colocada a `true`. The listener callback will be called with a reference to the `context` object as the only argument.
 
 This can be used primarily to re-initialize REPL context to some pre-defined state as illustrated in the following simple example:
 
