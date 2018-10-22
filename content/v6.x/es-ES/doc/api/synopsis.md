@@ -12,13 +12,13 @@ Por favor vea las [ Opciones de Linea de Comando](cli.html#cli_command_line_opti
 
 Un ejemplo de un [servidor web](http.html) escrito con Node.js cuya respuesta es `"¡Hola Mundo!"`:
 
-Los comandos mostrados en este documento comienzan con `$` o con `>` para indicar como debería aparecer en la terminal de un usuario. Do not include the `$` and `>` character they are there to indicate the start of each command.
+Los comandos mostrados en este documento comienzan con `$` o con `>` para indicar como debería aparecer en la terminal de un usuario. No incluir los caracteres `$` y `>` ellos están unicamente para indicar el inicio de un comando.
 
-There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
+Hay algunos tutoriales y ejemplos que siguen esta convención: `$` o `>` para comandos ejecutados por un usuario regular y `#` para comandos que podría ejecutar un administrado.
 
-Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
+Las lineas que no inician con los caracteres `$` o `>` están mostrando la salida del comando anterior.
 
-Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
+En primer lugar, asegúrese de haber descargado e instalado Node.js. Consulte [esta guia](https://nodejs.org/en/download/package-manager/) para mas información sobre la instalación.
 
 Now, create an empty project folder called `projects`, navigate into it: Project folder can be named base on user's current project title but this example will use `projects` as the project folder.
 
