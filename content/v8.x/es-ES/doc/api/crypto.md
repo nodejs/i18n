@@ -211,9 +211,9 @@ El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso d
 
 Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
-### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
 <!-- YAML
 added: v0.1.94
