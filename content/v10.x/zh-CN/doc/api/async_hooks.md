@@ -81,11 +81,11 @@ added: v8.1.0
   * `destroy` {Function} [`destroy` 回调函数][]。
 * Returns: {AsyncHook} Instance used for disabling and enabling hooks
 
-Registers functions to be called for different lifetime events of each async operation.
+注册针对每个异步操作的不同生命周期事件而调用的函数。
 
-The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
+回调函数`init()`/`before()`/`after()`/`destroy()`在资源生命周期中为各自的异步事件所调用。
 
-All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+所有的回调函数都是可选的。 例如，如果仅仅是资源清理需要被跟踪，则只需要传递 `destroy` 回调函数。 可以传递给 `回调函数` 的所有函数的细节都在 [钩子回调函数](#async_hooks_hook_callbacks) 部分中。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+注意，回调函数将通过原型链来继承：
 
 ```js
 class MyAsyncCallbacks {
