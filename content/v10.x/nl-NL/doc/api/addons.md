@@ -119,9 +119,9 @@ try {
 
 Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en OpenSSL. Alle Addons zijn verplicht te linken naar V8 en mogen daarnaast ook naar de andere afhankelijkheden linken. Gewoonlijk is dit simpel als het insluiten van de passende `#include <...>` verklaring ( `#include <v8.h>`) en `node-gyp` zal automatisch de passende titels vinden. Er zijn echter een paar uitzonderingen om zich bewust van te zijn:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Wanneer `node-gyp` uitgevoerd wordt, zal het de specifieke gepubliceerde versie van Node.js detecteren en ofwel de volledige bron tarball downloaden of alleen de titels. Wanneer de volledige bron is gedownload, zullen Addons volledige toegang hebben tot de volledige set van Node.js afhankelijkheden. Echter, wanneer alleen de Node.js titels zijn gedownload, dan zijn alleen de symbolen die zijn geëxporteerd door Node.js beschikbaar.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` kan worden uitgevoerd met behulp van de `--nodedir` wijzend naar de locale Node.js bronafbeelding. Wanneer deze optie gebruikt wordt, dan heeft de Addon volledige toegang hebben tot de volledige set van afhankelijkheden.
 
 ### Loading Addons using require()
 
