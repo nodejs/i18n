@@ -35,7 +35,7 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
     * Użyj [https://github.com/powiadomienia](https://github.com/notifications) lub załóż e-mail
     * Obserwowanie głównego repozytorium zaleje twoją skrzynkę odbiorczą (kilkaset powiadomień w typowe dni powszednie), więc bądź przygotowany
 
-* `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
+* `#node-dev` na [webchat.freenode.net](https://webchat.freenode.net/) jest najlepszym miejscem do interakcji z TSC / innymi Współpracownikami
     
     * Jeśli po sesji pojawią się jakieś pytania, to jest dobre miejsce do ich zadania!
     * Presence is not mandatory, but please drop a note there if force-pushing to `master`
@@ -60,7 +60,7 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
     
     * Bądź miły w zamykaniu problemów! Daj ludziom do zrozumienia dlaczego, a te problemy i PR-y można w razie potrzeby ponownie otworzyć
 
-* [**See "Labels"**](./onboarding-extras.md#labels)
+* [**Zobacz "Etykiety"**](./onboarding-extras.md#labels)
     
     * Istnieje [bot](https://github.com/nodejs-github-bot/github-bot), który stosuje etykiety podsystemów (na przykład, `doc`,`test`, `zapewnić`, lub `bufor`), abyśmy wiedzieli, jakie części kodu bazują na modyfikacjach żądania zmiany. Nie jest to oczywiście idealne. Czuj się swobodnie wysyłając znaczące etykiety i usuwając nieznaczące z żądania zmian i problemów.
     * Użyj etykiety `tsc-review`, jeśli temat jest kontrowersyjny lub nie nadchodzi wniosek po dłuższym czasie.
@@ -70,13 +70,13 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 * [**See "Who to CC in issues"**](./onboarding-extras.md#who-to-cc-in-issues)
     
-    * This will come more naturally over time
-    * For many of the teams listed there, you can ask to be added if you are interested 
+    * Będzie to bardziej naturalnie z czasem
+    * Wiele z zespołów tutaj wymienionych, możesz poprosić aby być dodany, jeśli jesteś zainteresowany 
         * Some are WGs with some process around adding people, others are only there for notifications
 
-* When a discussion gets heated, you can request that other Collaborators keep an eye on it by opening an issue at the private [nodejs/moderation](https://github.com/nodejs/moderation) repository.
+* Kiedy dyskusja się zaostrzyła, możesz poprosić innych Współpracowników o śledzenie tego, otwierając problem w prywatnym repozytorium [nodejs/moderation](https://github.com/nodejs/moderation).
     
-    * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
+    * Jest to repozytorium, do którego mają dostęp wszyscy członkowie `nodejs` organizacji GitHub (nie tylko Współpracownicy rdzenia Node.js). Jego zawartość nie powinna być udostępniana na zewnątrz.
     * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
 ## Reviewing PRs
