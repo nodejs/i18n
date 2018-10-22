@@ -88,13 +88,13 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Bądź świadomy: Twoja opinia wiele znaczy!
 * Nits (żądania o niewielkie zmiany, które nie są niezbędne) są w porządku, ale spróbuj aby uniknąć blokowania żądania zmiany. 
     * Zauważ, że twoje komentarze to nits: `Nit: change foo() to bar().`
-    * If they are stalling the pull request, fix them yourself on merge.
-* Minimum wait for comments time 
-    * There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
-    * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
-    * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
+    * Jeśli blokują one żądanie ściągnięcia, napraw je sam przy scalaniu.
+* Minimalny czas oczekiwania dla komentarzy 
+    * Istnieje minimalny czas oczekiwania, który staramy się przestrzegać dla nietrywialnych zmian, aby ludzie, którzy mogą mieć ważny wkład w tak rozpowszechniony projekt byli w stanie odpowiedzieć.
+    * W przypadku nietrywialnych zmian pozostaw otwartą prośbę na co najmniej 48 godzin (72 godziny w weekend).
+    * Jeśli żądanie wycofania zostanie opuszczone, sprawdź, czy nie przeszkadzałoby im, gdybyś przejął to zadanie (zwłaszcza, jeśli ma już tylko nits).
 
-* Approving a change
+* Zatwierdzanie zmiany
     
     * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
     * Some people like to comment `LGTM` (“Looks Good To Me”)
