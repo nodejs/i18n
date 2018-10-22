@@ -437,7 +437,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 测试严格不相等性。
+使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `!==` ) 测试严格不相等性。
 
 ```js
 const assert = require('assert');
@@ -492,7 +492,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 测试严格相等性。
+使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ) 测试严格相等性。
 
 ```js
 const assert = require('assert');
