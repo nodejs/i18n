@@ -503,34 +503,34 @@ Establece la clave pública Diffie-Hellman. If the `encoding` argument is provid
 added: v0.11.12
 -->
 
-A bit field containing any warnings and/or errors resulting from a check performed during initialization of the `DiffieHellman` object.
+Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante el inicio del objeto `DiffieHellman`.
 
-The following values are valid for this property (as defined in `constants` module):
+Los valores a continuación son válidos para esta propiedad (como es definido en el módulo`constants`):
 
 - `DH_CHECK_P_NOT_SAFE_PRIME`
 - `DH_CHECK_P_NOT_PRIME`
 - `DH_UNABLE_TO_CHECK_GENERATOR`
 - `DH_NOT_SUITABLE_GENERATOR`
 
-## Class: ECDH
+## Clase: ECDH
 
 <!-- YAML
 added: v0.11.14
 -->
 
-The `ECDH` class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH) key exchanges.
+La clase `ECDH` es una utilidad para crear la Curva Elíptica Diffie-Hellman (ECDH) de intercambios de claves.
 
-Instances of the `ECDH` class can be created using the [`crypto.createECDH()`][] function.
+Las instancias de clase `ECDH` pueden ser creadas usando la función [`crypto.createECDH()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
 // Genera las llaves de Alice...
-const alice = crypto.createECDH('secp521r1');
+const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
