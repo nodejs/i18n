@@ -64,7 +64,7 @@ apply.whitespace fix`
   
   * Bądź miły w zamykaniu problemów! Let people know why, and that issues and PRs can be reopened if necessary
 
-* [**See "Labels"**](./onboarding-extras.md#labels)
+* [**Zobacz "Etykiety"**](./onboarding-extras.md#labels)
   
   * There is [a bot](https://github.com/nodejs-github-bot/github-bot) that applies subsystem labels (for example, `doc`, `test`, `assert`, or `buffer`) so that we know what parts of the code base the pull request modifies. It is not perfect, of course. Feel free to apply relevant labels and remove irrelevant labels from pull requests and issues.
   * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
@@ -78,7 +78,7 @@ apply.whitespace fix`
 
 * See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
-  * This will come more naturally over time
+  * Będzie to bardziej naturalnie z czasem
   * For many of the teams listed there, you can ask to be added if you are interested 
     * Some are WGs with some process around adding people, others are only there for notifications
 
