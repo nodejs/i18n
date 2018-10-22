@@ -4,7 +4,7 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 ## Tydzień przed sesją adaptacyjną
 
-* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Jeśli nie włączono uwierzytelniania dwuskładnikowego, nie dawaj podwyższonych przywilejów konta, takich jak możliwość gruntownego kodowania w głównym repozytorium lub kontynuowanie zadań integracyjnych (CI).
+* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Jeśli nie włączono uwierzytelniania dwuskładnikowego, nie dawaj podwyższonych uprzywilejowań konta, takich jak możliwość gruntownego kodowania w głównym repozytorium lub kontynuowanie zadań integracyjnych (CI).
 
 ## Piętnaście minut przed sesją adaptacyjną
 
@@ -23,7 +23,7 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 * git:
     
-    * Upewnij się, że masz ustawione whitespace=fix: `ustawienia git --globalne -- dodaj apply.whitespace fix`
+    * Upewnij się, że masz ustawione whitespace=fix: `git config --global --add apply.whitespace fix`
     * Zawsze wznawiaj PR z własnego rozwidlenia github 
         * Gałęzie w repozytorium nodejs/node są tylko dla opublikowanych wierszy
     * [Zobacz "Aktualizowanie Node.js z Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
