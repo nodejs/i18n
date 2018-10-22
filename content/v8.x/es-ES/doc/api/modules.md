@@ -85,11 +85,11 @@ Desde Node.js buscamos el `realpath` de algunos módulos cargados (es decir, res
 * `/usr/lib/node/foo/1.2.3/node_modules/bar` - Enlace simbólico a `/usr/lib/node/bar/4.3.2/`.
 * `/usr/lib/node/bar/4.3.2/node_modules/*` - enlaces simbólicos a los paquetes que dependen de `bar`.
 
-Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+Por lo tanto, incluso si se encuentra un ciclo, o si hay conflictos de dependencia, cada módulo podrá obtener una versión de su dependencia que puede usar.
 
-When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
+Cuando el código `foo` en le paquete `require('bar')`, obtendrá la versión que es un enlace simbólico dentro de `/usr/lib/node/foo/1.2.3/node_modules/bar`. Entonces, cuando el código en el paquete `bar` llamado `require('quux')`, obtendrá la versión que es un enlace simbólico dentro de `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
-Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in `/usr/lib/node`, we could put them in `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
+Ademas: para hacer que el modulo busque el proceso mas optimo, en lugar de poner paquetes directamente en `/usr/lib/node`, podriamos ponerlos en `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
 
 In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
 
