@@ -82,10 +82,10 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 ## Przeglądanie PR-ów
 
 * Podstawowym celem bazy kodu jest jego udoskonalenie.
-* Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. A pull request from a new contributor is an opportunity to grow the community.
-* Review a bit at a time. Do not overwhelm new contributors. 
-    * It is tempting to micro-optimize and make everything about relative performance. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
-* Be aware: Your opinion carries a lot of weight!
+* Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. Żądanie zmiany od nowego współpracownika jest szansą na rozwój społeczności.
+* Nie sprawdzaj wszystkiego za jednym razem. Nie przytłaczaj nowych współpracowników. 
+    * Kusi do mikro-optymalizacji i uczynienia wszystkiego aby uzyskać względną wydajność. Nie ulegajcie tej pokusie. Często zmieniamy silnik V8. Techniki, które ulepszają wydajność dzisiaj, mogą nie być przydatne w przyszłości.
+* Bądź świadomy: Twoja opinia wiele znaczy!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
     * Note that they are nits when you comment: `Nit: change foo() to bar().`
     * If they are stalling the pull request, fix them yourself on merge.
