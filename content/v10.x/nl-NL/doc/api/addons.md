@@ -16,7 +16,7 @@ Op dit moment is de methode voor het implementeren van Addons nogal ingewikkeld,
 
 * Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
-Alle van de volgende voorbeelden zijn beschikbaar voor [download](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
+Alle van de volgende voorbeelden zijn beschikbaar om te [downloaden](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
 
 ## Hallo wereld
 
