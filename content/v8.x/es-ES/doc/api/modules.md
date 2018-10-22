@@ -91,7 +91,7 @@ Cuando el código `foo` en le paquete `require('bar')`, obtendrá la versión qu
 
 Ademas: para hacer que el modulo busque el proceso mas optimo, en lugar de poner paquetes directamente en `/usr/lib/node`, podriamos ponerlos en `/usr/lib/node_modules/<name>/<version>`. Entonces, Node.js no se molestará en buscar dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Para que los módulos estén disponibles para el REPL de Node.js, puede ser útil agregar también la carpeta`/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
 
 ## All Together...
 
