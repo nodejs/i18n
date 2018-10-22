@@ -524,7 +524,7 @@ El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encodin
 added: v0.11.14
 -->
 
-Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. If `encoding` is provided, `private_key` is expected to be a string; otherwise `private_key` is expected to be a [`Buffer`][]. If `private_key` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the ECDH object.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que el `privateKey` sea una string; de no ser así, se espera que el `privateKey` sea un [`Buffer`][], `TypedArray`, o `DataView`. Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
 
 ### ecdh.setPublicKey(public_key[, encoding])
 
@@ -533,21 +533,21 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
-Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `public_key` is expected to be a string; otherwise a [`Buffer`][] is expected.
+Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `input_encoding` es proporcionado, `otra_llave_pública` es esperada paraque sea un string; de otra manera, se espera un[`Buffer`][].
 
-Note that there is not normally a reason to call this method because `ECDH` only requires a private key and the other party's public key to compute the shared secret. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, tanto [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
-Example (obtaining a shared secret):
+Ejemplo (obteniendo un secreto compartido):
 
 ```js
-const crypto = require('crypto');
-const alice = crypto.createECDH('secp256k1');
+const crypto = require('crypto'); 
+const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: This is a shortcut way to specify one of Alice's previous private
-// keys. It would be unwise to use such a predictable private key in a real
+// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
+// llaves privadas. It would be unwise to use such a predictable private key in a real
 // application.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
@@ -1137,7 +1137,7 @@ added: v0.7.5
 
 Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
-Example (obtaining a shared secret):
+Ejemplo (obteniendo un secreto compartido):
 
 ```js
 const crypto = require('crypto');
