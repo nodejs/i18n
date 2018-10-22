@@ -83,11 +83,11 @@ Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand wo
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+Een versie van het `node-gyp` hulpprogramma is gebundeld en gedistribueerd met Node.js als onderdeel van `npm`. Deze versie is niet direct beschikbaar gesteld om door ontwikkelaars gebruikt te worden en dient alleen ter ondersteuning van de mogelijkheid om de `npm install` opdracht te compileren en het installeren van Addons. Ontwikkelaars die rechtstreeks gebruik willen maken van `node-gyp`, kunnen dit installeren met behulp van de opdracht `npm install -g node-gyp`. Zie de `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) voor meer informatie, inclusief platform-specifieke eisen.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Wanneer het `binding.gyp` bestand eenmaal is gemaakt, gebruik dan `node-gyp configure` om de passende project bouwbestanden voor het huidige platform te genereren. Dit genereert ofwel een `Makefile` (op Unix platforms) of een `vcxproj` bestand (op Windows) in de `build/` map.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Vervolgens, roep de `node-gyp build` opdracht aan om het gecompileerde `addon.node` bestand te genereren. This will be put into the `build/Release/` directory.
 
 When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
