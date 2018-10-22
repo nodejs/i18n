@@ -327,9 +327,9 @@ added: v8.6.0
 
 Imposta l'interfaccia multicast in uscita predefinita del socket su un'interfaccia selezionata o torna alla selezione dell'interfaccia di sistema. Il `multicastInterface` dev'essere la valida rappresentazione della stringa di un IP dalla famiglia del socket.
 
-Per i socket IPv4, questo dovrebbe essere l'IP configurato per l'interfaccia fisica desiderata. Tutti i pacchetti inviati al multicast sul socket verranno inviati all'interfaccia determinata dall'uso con successo più recente di questa chiamata.
+Per i socket IPv4, questo dovrebbe essere l'IP configurato per l'interfaccia fisica desiderata. Tutti i pacchetti inviati al multicast sul socket verranno inviati all'interfaccia determinata dall’ultima volta che questa chiamata è stata utilizzata con successo.
 
-Per i socket IPv6, `multicastInterface` dovrebbe includere uno scope per indicare l'interfaccia come negli esempi a seguire. In IPv6, le singole chiamate `send` possono anche utilizzare lo scope esplicito negli indirizzi, pertanto solo i pacchetti inviati ad un indirizzo multicast senza specificare uno scope esplicito sono interessati dall'uso con successo più recente di questa chiamata.
+Per i socket IPv6, `multicastInterface` dovrebbe includere uno scope per indicare l'interfaccia come negli esempi a seguire. In IPv6, le singole chiamate `send` possono anche utilizzare lo scope esplicito negli indirizzi, pertanto solo i pacchetti inviati ad un indirizzo multicast senza specificare uno scope esplicito sono interessati dall’ultima volta che questa chiamata è stata utilizzata con successo.
 
 #### Esempi: Interfaccia Multicast In Uscita IPv6
 
