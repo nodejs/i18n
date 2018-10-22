@@ -481,7 +481,7 @@ changes:
 
 * `options` {Object} Le opzioni disponibili sono: 
   * `type` {string} La famiglia del socket. Dev'essere `'udp4'` oppure `'udp6'`. Obbligatorio.
-  * `reuseAddr` {boolean} Quando è `true` [`socket.bind()`][] riutilizzerà l'indirizzo, anche se un altro processo ne ha già collegato un socket tramite il binding. **Default:** `false`.
+  * `reuseAddr` {boolean} Quando è `true` [`socket.bind()`][] riutilizzerà l'indirizzo, anche se un altro processo vi ha già collegato un socket tramite il binding. **Default:** `false`.
   * `recvBufferSize` {number} - Imposta il valore socket `SO_RCVBUF`.
   * `sendBufferSize` {number} - Imposta il valore socket `SO_SNDBUF`.
   * `lookup` {Function} Funzione lookup (di ricerca) personalizzata. **Default:** [`dns.lookup()`][].
