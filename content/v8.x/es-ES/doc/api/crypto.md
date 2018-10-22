@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> Estabilidad 2 - Estable
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+El módulo `crypto` provee funcionalidad criptográfica que incluye un conjunto de empaquetadores para hash de OpenSSL, HMAC, cifrar, descifrar, firmar, y verificar funciones.
 
 Use `require('crypto')` para acceder a este módulo.
 
@@ -60,8 +60,8 @@ const cert2 = crypto.Certificate();
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
-- Returns {Buffer} The challenge component of the `spkac` data structure, which includes a public key and a challenge.
+- `spack` {string | Buffer | TypedArray | DataView}
+- Devuelve al {Buffer} el componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -77,8 +77,8 @@ console.log(challenge.toString('utf8'));
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
-- Returns {Buffer} The public key component of the `spkac` data structure, which includes a public key and a challenge.
+- `spack` {string | Buffer | TypedArray | DataView}
+- Devuelve al {Buffer} el componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -95,7 +95,7 @@ added: v0.11.8
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Returns {boolean} `true` if the given `spkac` data structure is valid, `false` otherwise.
+- Devuelve el {boolean} `true` si la estructura de datos `spkac` dada es válida, `false` si no lo es.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -171,7 +171,7 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Regresa cualquiera de los contenidos restantes cifrados. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes cifrados. Un string es regresado si el parámetro `output_encoding` es uno de los ` 'latin1'`, `'base64'` o `'hex'`. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El objeto `Cipher` no puede ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
 
@@ -182,11 +182,11 @@ added: v1.0.0
 -->
 
 - `buffer` {Buffer}
-- Returns the {Cipher} for method chaining.
+- Devuelve al {Cipher} como método cadena.
 
 El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-The `cipher.setAAD()` method must be called before [`cipher.update()`][].
+El método `cipher.setAAD()` debe llamarse antes que [`cipher.update()`][].
 
 ### cipher.getAuthTag()
 
@@ -204,12 +204,12 @@ El método `cipher.getAuthTag()` solo debría ser llamado luego de haber complet
 added: v0.7.1
 -->
 
-- `autoPadding` {boolean} Defaults to `true`.
-- Returns the {Cipher} for method chaining.
+- `autoPadding` {boolean} Por defecto: `true`.
+- Devuelve al {Cipher} como método cadena.
 
 El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Para inhabilitar el relleno por defecto, llame a `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
+Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
 
 The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
 
@@ -305,7 +305,7 @@ added: v0.1.94
 
 - `outputEncoding` {string}
 
-Regresa cualquiera de los contenidos restantes descifrados. If `outputEncoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+Regresa cualquiera de los contenidos restantes descifrados. If `outputEncoding` parameter is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
 
 Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
@@ -321,7 +321,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns the {Cipher} for method chaining.
+- Devuelve al {Cipher} como método cadena.
 
 El método `decipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
@@ -339,7 +339,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns the {Cipher} for method chaining.
+- Devuelve al {Cipher} como método cadena.
 
 El método `decipher.setAuthTag()` es usado para pasar la *etiqueta de autenticación recibida* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados en la actualiad). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
@@ -351,8 +351,8 @@ The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
 added: v0.7.1
 -->
 
-- `autoPadding` {boolean} Defaults to `true`.
-- Returns the {Cipher} for method chaining.
+- `autoPadding` {boolean} Por defecto: `true`.
+- Devuelve al {Cipher} como método cadena.
 
 Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar al `decipher.setAutoPadding(false)` deshabilitará automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
