@@ -23,7 +23,7 @@ Istnieją dwa fundamentalne komponenty procesu Żądania Zmiany: jeden konkretny
   * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
   * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
   * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
-  * [Approving a change](#approving-a-change)
+  * [Zatwierdzanie zmiany](#approving-a-change)
   * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Performance is not everything](#performance-is-not-everything)
   * [Continuous Integration Testing](#continuous-integration-testing)
@@ -368,7 +368,7 @@ Trivial changes, typically limited to small formatting changes or fixes to docum
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
-### Approving a change
+### Zatwierdzanie zmiany
 
 Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
 
