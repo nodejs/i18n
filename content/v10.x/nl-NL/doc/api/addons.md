@@ -103,9 +103,9 @@ console.log(addon.hallo());
 
 Zie alsjeblieft hieronder de voorbeelden voor meer informatie of <https://github.com/arturadib/node-qt> voor een voorbeeld in de productie.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Omdat het exacte pad naar de gecompileerde Addon binary kan variëren, afhankelijk van hoe het is gecompileerd (d.w.z. soms is het in `./build/Debug/`), kunnen Addons het [bindings](https://github.com/TooTallNate/node-bindings) pakket gebruiken om de gecompileerde module te laden.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Merk hierbij op dat terwijl het `bindings` pakket uitvoering geavanceerder is in hoe het Addon modules zoekt, het is in feite met behulp van een try-catch patroon te vergelijken met:
 
 ```js
 try {
