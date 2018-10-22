@@ -23,12 +23,12 @@ All'interno di tutta la documentazione ci sono indicazioni riguardo la stabilit�
 Gli indici di stabilità sono i seguenti:
 
 ```txt
-Stabilità: 0 - Obsoleto. Questa funzionalità è nota per essere problematica ed è una funzionalità alla quale potrebbero essere pianificate delle modifiche. Non bisogna farne affidamento. L'utilizzo di questa funzionalità potrebbe causare l'emissione di avvisi. Per le versioni principali non è prevista la retrocompatibilità.
+Stabilità: 0 - Obsoleto. Questa funzionalità è nota per essere problematica ed è una funzionalità alla quale potrebbero essere pianificate delle modifiche. Non bisogna farci affidamento. L'utilizzo di questa funzionalità potrebbe causare l'emissione di avvisi. Per le versioni principali non è prevista la retrocompatibilità.
 ```
 
 ```txt
 Stabilità: 1 - Sperimentale. Questa funzionalità è ancora in fase di sviluppo attivo e soggetta a modifiche non retrocompatibili, o addirittura alla rimozione, in qualsiasi versione futura. L'utilizzo di questa funzionalità non è raccomandato negli ambienti di produzione.
-Le funzionalità sperimentali non sono soggette al modello di versione semantica di Node.js.
+Le funzionalità sperimentali non sono soggette al modello di Versione Semantica di Node.js.
 ```
 
 ```txt
