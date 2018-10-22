@@ -748,12 +748,12 @@ Note que no hay normalmente una razón para llamar a este método porque `ECDH` 
 Ejemplo (obteniendo un secreto compartido):
 
 ```js
-const crypto = require('crypto');
-const alice = crypto.createECDH('secp256k1');
+const crypto = require('crypto'); 
+const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: This is a shortcut way to specify one of Alice's previous private
-// keys. It would be unwise to use such a predictable private key in a real
+// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
+// llaves privadas. It would be unwise to use such a predictable private key in a real
 // application.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
