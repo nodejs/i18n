@@ -64,7 +64,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Er is geen puntkomma na `NODE_MODULE` omdat het geen functie is (zie `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+De `module_name` moet overeenstemmen met de bestandsnaam van de laatste binary (exclusief het `.node` achtervoegsel).
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
