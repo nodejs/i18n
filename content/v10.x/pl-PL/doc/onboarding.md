@@ -95,7 +95,7 @@ apply.whitespace fix`
   * It is tempting to micro-optimize. Nie ulegajcie tej pokusie. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
 * Bądź świadomy: Twoja opinia wiele znaczy!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
-  * Note that they are nits when you comment: `Nit: change foo() to bar().`
+  * Zauważ, że twoje komentarze to nits: `Nit: change foo() to bar().`
   * If they are stalling the pull request, fix them yourself on merge.
 * Insofar as possible, issues should be identified by tools rather than human reviewers. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
 * Minimum wait for comments time 
