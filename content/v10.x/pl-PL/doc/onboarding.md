@@ -87,10 +87,10 @@ apply.whitespace fix`
   * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
   * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Reviewing PRs
+## Przeglądanie PR-ów
 
-* The primary goal is for the codebase to improve.
-* Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
+* Podstawowym celem bazy kodu jest jego udoskonalenie.
+* Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. A pull request from a new contributor is an opportunity to grow the community.
 * Review a bit at a time. Do not overwhelm new contributors. 
   * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
 * Be aware: Your opinion carries a lot of weight!
