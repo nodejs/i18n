@@ -12,7 +12,7 @@ const async_hooks = require('async_hooks');
 
 ## 术语
 
-一个异步资源代表一个含有相关联回调函数的对象。 这个回调函数可能会被多次调用，例如：在`net.createServer`中的`connection`事件，亦或像在`fs.open`中一样被调用一次。 资源也可以在调用回调函数之前被关闭。 AsyncHook没有明确区分这些不同情况，但会作为一个抽象概念在资源中代表它们。
+一个异步资源代表一个含有相关联回调函数的对象。 这个回调函数可能会被多次调用，例如：在`net.createServer`中的`connection`事件，亦或像在`fs.open`中一样被调用一次。 资源也可以在调用回调函数之前被关闭。 AsyncHook没有明确区分这些不同情况，但会作为一个资源的抽象概念代表它们。
 
 ## 公共API
 
@@ -30,7 +30,7 @@ const eid = async_hooks.executionAsyncId();
 // current execution scope to call.
 const tid = async_hooks.triggerAsyncId();
 
-// 创建一个 AsyncHook 实例。 以上所有的回调函数都是可选的。
+// 创建一个 新的 AsyncHook 实例。 以上所有的回调函数都是可选的。
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
