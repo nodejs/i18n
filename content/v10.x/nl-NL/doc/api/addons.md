@@ -66,11 +66,11 @@ Er is geen puntkomma na `NODE_MODULE` omdat het geen functie is (zie `node.h`).
 
 De `module_name` moet overeenstemmen met de bestandsnaam van de laatste binary (exclusief het `.node` achtervoegsel).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+In het voorbeeld `hallo.cc`, vervolgens de initialisatie functie `init` en de naam van de Addon module is `addon`.
 
-### Building
+### Bouwen
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
