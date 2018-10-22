@@ -108,11 +108,11 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Co należy do Node.js:
     
     * Opinie są różne - z tego powodu dobrze jest mieć szeroką bazę współpracowników!
-    * If Node.js itself needs it (due to historic reasons), then it belongs in Node.js 
-        * That is to say, url is there because of http, freelist is there because of http, etc.
-    * Things that cannot be done outside of core, or only with significant pain (for example `async_hooks`)
+    * Jeśli sam Node.js tego potrzebuje (ze względów przeszłości), to należy to do Node.js 
+        * To znaczy, że url jest tam z powodu http, freelist jest tam z powodu http, itp.
+    * Rzeczy, których nie można zrobić poza rdzeniem lub tylko przy znacznym ucierpieniu (na przykład `async_hooks`)
 
-* Continuous Integration (CI) Testing:
+* Testowanie w Continuous Integration (CI):
     
     * <https://ci.nodejs.org/> 
         * It is not automatically run. You need to start it manually.
