@@ -10,26 +10,26 @@ Op dit moment is de methode voor het implementeren van Addons nogal ingewikkeld,
 
 * V8: de C++ bibliotheek Node.js wordt momenteel gebruikt ten behoeve van de uitvoering van JavaScript. V8 biedt het mechanisme voor het creëren van objecten, aanroepfuncties, enz. V8 API wordt meestal gedocumenteerd in het `v8.h`headerbestand (`deps/v8/include/v8.h` in de Node.js source tree), die ook beschikbaar is [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenis-iteratie, zijn werk-items en alle asynchrone procesvoeringen van het platform implementeerd. Het fungeert ook als een platformoverschrijdende abstractie bibliotheek, wat gemakkelijke, POSIX-achtige toegang geeft op alle belangrijke besturingssystemen naar populaire systeemtaken, zoals de interactie met het bestandssysteem, sockets, timers en systeemgebeurtenissen. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenissenlus, zijn werk-items en alle asynchrone procesvoering van het platform implementeerd. Het fungeert ook als een platformoverschrijdende abstractie bibliotheek, wat gemakkelijke, POSIX-achtige toegang geeft op alle belangrijke besturingssystemen naar populaire systeemtaken, zoals de interactie met het bestandssysteem, sockets, timers en systeemgebeurtenissen. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon auteurs worden aangemoedigd om na te denken over hoe ze kunnen voorkomen dat een gebeurtenissenlus met I/O en andere tijdsintensieve taken wordt geblokkeerd, door het werk te off-loaden via libuv naar niet-blokkerende systeem operaties, werk-threads of een aangepast gebruik van libuv's threads.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Alle van de volgende voorbeelden zijn beschikbaar voor [download](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
 
-## Hello world
+## Hallo wereld
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Dit "Hallo wereld" voorbeeld is een simpele Addon, geschreven in C++, en is gelijkwaardig aan de volgende JavaScript-code:
 
 ```js
-module.exports.hello = () => 'world';
+module.exports.hallo = () => 'wereld';
 ```
 
-First, create the file `hello.cc`:
+Maak eerst het bestand `hallo.cc`:
 
 ```cpp
-// hello.cc
+// hallo.cc
 #include <node.h>
 
 namespace demo {
@@ -43,11 +43,11 @@ using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "wereld"));
 }
 
 void init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "hello", Method);
+  NODE_SET_METHOD(exports, "hallo", Method);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
@@ -55,14 +55,14 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Hou er rekening mee dat alle Node.js Addons een initialisatie functie moeten exporteren, volgens het patroon:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Er is geen puntkomma na `NODE_MODULE` omdat het geen functie is (zie `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
