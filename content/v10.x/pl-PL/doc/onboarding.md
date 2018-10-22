@@ -110,13 +110,13 @@ apply.whitespace fix`
   * Masz upoważnienie do zatwierdzenia pracy innego współpracownika.
   * Nie możesz zatwierdzać własnych żądań zmian.
   * Kiedy wprost używasz `Changes requested`, wykaż empatię - komentarze będą zwykle adresowane nawet jeśli z niego nie korzystasz. 
-    * If you do, it is nice if you are available later to check whether your comments have been addressed
+    * Jeśli używasz, byłoby miło, jeśli będziesz dostępny później, aby sprawdzić, czy do twoich komentarzy ktoś się odniósł
     * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
 
-* What belongs in Node.js:
+* Co należy do Node.js:
   
-  * Opinions vary – it’s good to have a broad collaborator base for that reason!
+  * Opinie są różne - z tego powodu dobrze jest mieć szeroką bazę współpracowników!
   * If Node.js itself needs it (due to historical reasons), then it belongs in Node.js. 
     * That is to say, `url` is there because of `http`, `freelist` is there because of `http`, etc.
   * Things that cannot be done outside of core, or only with significant pain such as `async_hooks`.
