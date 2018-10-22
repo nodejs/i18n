@@ -14,7 +14,7 @@ Op dit moment is de methode voor het implementeren van Addons nogal ingewikkeld,
 
 * Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
 
-* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
+* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
 Alle van de volgende voorbeelden zijn beschikbaar voor [download](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
 
@@ -70,7 +70,7 @@ In het voorbeeld `hallo.cc`, vervolgens de initialisatie functie `init` en de na
 
 ### Bouwen
 
-Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. Om dit te doen, maak een bestand genaamd `binding.gyp` in het top-level van het project met een beschrijving van de bouwconfiguratie van de module met behulp van een JSON-achtig format. Dit bestand wordt gebruikt door [node-gyp](https://github.com/nodejs/node-gyp) — een tool wat specifiek is geschreven om Node.js Addons te compileren.
+Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. Om dit te doen, maak een bestand genaamd `binding.gyp` in het top-level van het project met een beschrijving van de bouwconfiguratie van de module met behulp van een JSON-achtig format. Dit bestand wordt gebruikt door [node-gyp](https://github.com/nodejs/node-gyp) — een tool die specifiek is geschreven om Node.js Addons te compileren.
 
 ```json
 {
@@ -83,7 +83,7 @@ Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand wo
 }
 ```
 
-Een versie van het `node-gyp` hulpprogramma is gebundeld en gedistribueerd met Node.js als onderdeel van `npm`. Deze versie is niet direct beschikbaar gesteld om door ontwikkelaars gebruikt te worden en dient alleen ter ondersteuning van de mogelijkheid om de `npm install` opdracht te compileren en het installeren van Addons. Ontwikkelaars die rechtstreeks gebruik willen maken van `node-gyp`, kunnen dit installeren met behulp van de opdracht `npm install -g node-gyp`. Zie de `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) voor meer informatie, inclusief platform-specifieke eisen.
+Een versie van het `node-gyp` hulpprogramma is gebundeld en gedistribueerd met Node.js als onderdeel van `npm`. Deze versie is niet direct beschikbaar gesteld om door ontwikkelaars gebruikt te worden en dient alleen ter ondersteuning van de mogelijkheid om de `npm install` opdracht te compileren en het installeren van Addons. Ontwikkelaars die rechtstreeks gebruik willen maken van `node-gyp`, kunnen dit installeren met behulp van de opdracht `npm install -g node-gyp`. Zie de `node-gyp` [installatie instructies](https://github.com/nodejs/node-gyp#installation) voor meer informatie, inclusief platform-specifieke eisen.
 
 Wanneer het `binding.gyp` bestand eenmaal is gemaakt, gebruik dan `node-gyp configure` om de passende project bouwbestanden voor het huidige platform te genereren. Dit genereert ofwel een `Makefile` (op Unix platforms) of een `vcxproj` bestand (op Windows) in de `build/` map.
 
@@ -105,7 +105,7 @@ Zie alsjeblieft hieronder de voorbeelden voor meer informatie of <https://github
 
 Omdat het exacte pad naar de gecompileerde Addon binary kan variëren, afhankelijk van hoe het is gecompileerd (d.w.z. soms is het in `./build/Debug/`), kunnen Addons het [bindings](https://github.com/TooTallNate/node-bindings) pakket gebruiken om de gecompileerde module te laden.
 
-Merk hierbij op dat terwijl het `bindings` pakket uitvoering geavanceerder is in hoe het Addon modules zoekt, het is in feite met behulp van een try-catch patroon te vergelijken met:
+Merk hierbij op dat terwijl de `bindings` pakket uitvoering geavanceerder is in hoe het Addon modules zoekt, het is in feite met behulp van een try-catch patroon te vergelijken met:
 
 ```js
 try {
@@ -117,11 +117,11 @@ try {
 
 ### Koppelen aan de eigen afhankelijkheden van Node.js
 
-Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en OpenSSL. Alle Addons zijn verplicht te linken naar V8 en mogen daarnaast ook naar de andere afhankelijkheden linken. Gewoonlijk is dit simpel als het insluiten van de passende `#include <...>` verklaring ( `#include <v8.h>`) en `node-gyp` zal automatisch de passende titels vinden. Er zijn echter een paar uitzonderingen om zich bewust van te zijn:
+Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en OpenSSL. Alle Addons zijn verplicht te linken naar V8 en mogen daarnaast ook naar de andere afhankelijkheden linken. Gewoonlijk is dit zo simpel als het insluiten van de passende `#include <...>` verklaring ( bijv. `#include <v8.h>`) en `node-gyp` zal automatisch de passende titels vinden. Er zijn echter een paar uitzonderingen om zich bewust van te zijn:
 
 * Wanneer `node-gyp` uitgevoerd wordt, zal het de specifieke gepubliceerde versie van Node.js detecteren en ofwel de volledige bron tarball downloaden of alleen de titels. Wanneer de volledige bron is gedownload, zullen Addons volledige toegang hebben tot de volledige set van Node.js afhankelijkheden. Echter, wanneer alleen de Node.js titels zijn gedownload, dan zijn alleen de symbolen die zijn geëxporteerd door Node.js beschikbaar.
 
-* `node-gyp` kan worden uitgevoerd met behulp van de `--nodedir` wijzend naar de locale Node.js bronafbeelding. Wanneer deze optie gebruikt wordt, dan heeft de Addon volledige toegang hebben tot de volledige set van afhankelijkheden.
+* `node-gyp` kan worden uitgevoerd met behulp van de `--nodedir` wijzend naar de locale Node.js bronafbeelding. Wanneer deze optie gebruikt wordt, heeft de Addon volledige toegang tot de volledige set van afhankelijkheden.
 
 ### Loading Addons using require()
 
