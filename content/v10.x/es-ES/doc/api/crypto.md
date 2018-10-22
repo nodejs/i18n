@@ -753,8 +753,8 @@ const alice = crypto.createECDH('secp256k1');
 const bob = crypto.createECDH('secp256k1');
 
 // Note: Esta es una forma de acceso directo para especificar que una de las anteriores
-// llaves privadas. It would be unwise to use such a predictable private key in a real
-// application.
+// llaves privadas. Seria poco recom; endable usaruna clave privada predecible en una 
+// applicacion real.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
