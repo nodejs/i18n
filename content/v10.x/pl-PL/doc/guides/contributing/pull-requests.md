@@ -325,9 +325,9 @@ Reviews that are dismissive or disrespectful of the contributor or any other rev
 
 When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
 
-### Review a bit at a time.
+### Nie sprawdzaj wszystkiego za jednym razem.
 
-Do not overwhelm new contributors.
+Nie przytłaczaj nowych współpracowników.
 
 It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Do not succumb to that temptation.
 
