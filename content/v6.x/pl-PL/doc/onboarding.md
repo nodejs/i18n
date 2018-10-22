@@ -4,11 +4,11 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 
 ## Tydzień przed sesją adaptacyjną
 
-* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Jeśli nie włączono uwierzytelniania dwuskładnikowego, nie dawaj podwyższonych uprzywilejowań konta, takich jak możliwość gruntownego kodowania w głównym repozytorium lub kontynuowanie zadań integracyjnych (CI).
+* Upewnij się, że nowy Współpracownik korzysta z uwierzytelniania dwuskładnikowego na jego Koncie GitHub. Jeśli nie włączono uwierzytelniania dwuskładnikowego, nie dawaj podwyższonych uprzywilejowań konta, takich jak możliwość gruntownego kodowania w głównym repozytorium lub kontynuowanie zadań continous integration (CI).
 
 ## Piętnaście minut przed sesją adaptacyjną
 
-* Przed sesją adaptacyjną, dodaj nowego współpracownika do [zespołu Współpracowników](https://github.com/orgs/nodejs/teams/collaborators), i do [zespołu Członków](https://github.com/orgs/nodejs/teams/members), jeśli do niego jeszcze nie należą. Zauważ, że jest to krok, który daje podwyższone przywileje konta, więc nie wykonuj tego kroku (ani żadnych dalszych), chyba że dwuskładnikowe uwierzytelnianie jest włączone na koncie GitHub nowego Współpracownika.
+* Przed sesją adaptacyjną, dodaj nowego współpracownika do [zespołu Współpracowników](https://github.com/orgs/nodejs/teams/collaborators), i do [zespołu Członków](https://github.com/orgs/nodejs/teams/members), jeśli do niego jeszcze nie należą. Zauważ, że jest to krok, który przyznaje podwyższenie uprzywilejowania konta, więc nie wykonuj tego kroku (ani żadnych dalszych), chyba że dwuskładnikowe uwierzytelnianie jest włączone na koncie GitHub nowego Współpracownika.
 
 ## Sesja adaptacyjna
 
@@ -115,9 +115,9 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
 * Testowanie w Continuous Integration (CI):
     
     * [https://ci.NodeJS.org/](https://ci.nodejs.org/) 
-        * It is not automatically run. You need to start it manually.
-    * Log in on CI is integrated with GitHub. Try to log in now!
-    * You will be using `node-test-pull-request` most of the time. Go there now! 
+        * Nie jest to uruchamiane automatycznie. Musisz uruchomić to ręcznie.
+    * Log in on CI is integrated with GitHub. Spróbuj się zalogować teraz!
+    * Przez większość czasu będziesz używać `node-test-pull-request`. Przejdź tam teraz! 
         * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
     * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
     * To start CI testing from this screen, you need to fill in two elements on the form: 
