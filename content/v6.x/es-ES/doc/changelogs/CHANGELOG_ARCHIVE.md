@@ -175,14 +175,14 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Version 0.11.14 (Unstable)
+## 2014.09.24, Versión 0.11.14 (Inestable)
 
-* uv: Upgrade to v1.0.0-rc1
-* http_parser: Upgrade to v2.3.0
-* npm: Upgrade to v2.0.0
-* openssl: Upgrade to v1.0.1i
-* v8: Upgrade to 3.26.33
-* Add fast path for simple URL parsing (Gabriel Wicke)
+* uv: Actualizar a v1.0.0-rc1
+* http_parser: Actualizar a v2.3.0
+* npm: Actualizar a v2.0.0
+* openssl: Actualizar a v1.0.1i
+* v8: Actualizar a 3.26.33
+* Añadir una ruta rápida para el análisis simple de URL (Gabriel Wicke)
 * Added support for options parameter in console.dir() (Xavi Magrinyà)
 * Cluster: fix shared handles on Windows (Alexis Campailla)
 * buffer: Fix incorrect Buffer.compare behavior (Feross Aboukhadijeh)
