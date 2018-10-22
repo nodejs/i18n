@@ -87,21 +87,21 @@ Een versie van het `node-gyp` hulpprogramma is gebundeld en gedistribueerd met N
 
 Wanneer het `binding.gyp` bestand eenmaal is gemaakt, gebruik dan `node-gyp configure` om de passende project bouwbestanden voor het huidige platform te genereren. Dit genereert ofwel een `Makefile` (op Unix platforms) of een `vcxproj` bestand (op Windows) in de `build/` map.
 
-Vervolgens, roep de `node-gyp build` opdracht aan om het gecompileerde `addon.node` bestand te genereren. This will be put into the `build/Release/` directory.
+Vervolgens, roep de `node-gyp build` opdracht aan om het gecompileerde `addon.node` bestand te genereren. Dit wordt dan in de `build/Release/` map gezet.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Bij gebruik van `npm install` voor het installeren van een Node.js Addon, maakt npm gebruik van de eigen gebundelde versie van `node-gyp` om dezelfde acties uit te voeren, het genereren van een gecompileerde versie van de Addon, voor het gebruikersplatform op aanvraag.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Eenmaal gebouwd, kan de binary Addon worden gebruikt binnen Node.js door [`require()`](modules.html#modules_require) te wijzen naar de gebouwde `addon.node` module:
 
 ```js
-// hello.js
+// hallo.js
 const addon = require('./build/Release/addon');
 
-console.log(addon.hello());
-// Prints: 'world'
+console.log(addon.hallo());
+// Prints: 'wereld'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Zie alsjeblieft hieronder de voorbeelden voor meer informatie of <https://github.com/arturadib/node-qt> voor een voorbeeld in de productie.
 
 Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
 
