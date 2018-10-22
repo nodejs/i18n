@@ -228,9 +228,9 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando el código específico. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][], `TypedArray`, o `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando el código específico. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][], `TypedArray`, o `DataView`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces se omite `inputEncoding`.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'base64'` o `'hex'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que se llame a [`cipher.final()`][]. Si se llama a `cipher.update()` después de [`cipher.final()`][] se producirá un error.
 
@@ -250,23 +250,22 @@ Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son
 Ejemplo: Usando objetos `Decipher` como streams:
 
 ```js
-const crypto = require('crypto');
-const decipher = crypto.createDecipher('aes192', 'a password');
+const crypto = require('crypto'); 
+const decipher = crypto.createDecipher('aes192', 'a password'); 
 
-let decrypted = '';
-decipher.on('readable', () => {
-  const data = decipher.read();
-  if (data)
-    decrypted += data.toString('utf8');
-});
-decipher.on('end', () => {
-  console.log(decrypted);
-  // Prints: some clear text data
-});
+let decrypted = ''; 
+decipher.on('readable', () => {   
+  const data = decipher.read();   
+  if (data)     
+    decrypted += data.toString('utf8'); 
+}); 
+decipher.on('end', () => {   
+  console.log(decrypted);   
+  // Imprime: algunos datos de texto claros 
+}); 
 
-const encrypted =
-    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
-decipher.write(encrypted, 'hex');
+const encrypted =                       
+    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'; decipher.write(encrypted, 'hex'); 
 decipher.end();
 ```
 
@@ -377,7 +376,7 @@ changes:
 
 Actualiza el descifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
