@@ -682,18 +682,18 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * **https**: 
     * Agrega las opciones restantes de tls.createSecureContext() en la string generada por Agent#getName(). Esto permite que https.request() acepte las opciones y genere sockets únicos apropiadamente. (Jeff Principe) [#16402](https://github.com/nodejs/node/pull/16402)
   * **inspector**: 
-    * --inspect-brk para módulos de es (Guy Bedford) [#18194](https://github.com/nodejs/node/pull/18194)
+    * --inspect-brk para módulos es (Guy Bedford) [#18194](https://github.com/nodejs/node/pull/18194)
   * **lib**: 
     * permitir muerte de procesos por número de señal (Sam Roberts) [#16944](https://github.com/nodejs/node/pull/16944)
   * **módulo**: 
     * activar importación dinámica (Myles Borins) [#18387](https://github.com/nodejs/node/pull/18387)
     * ahora la importación dinámica es soportada (Jan Krems) [#15713](https://github.com/nodejs/node/pull/15713)
   * **n-api**: 
-    * agregar métodos al ámbito de callback de open/close (Michael Dawson) [#18089](https://github.com/nodejs/node/pull/18089)
+    * agregar métodos para abrir/cerrar el alcance de la callback (Michael Dawson) [#18089](https://github.com/nodejs/node/pull/18089)
   * **src**: 
     * permitir --perf-(basic-)?prof en NODE_OPTIONS (Leko) [#17600](https://github.com/nodejs/node/pull/17600)
   * **vm**: 
-    * agregar soporte para módulos de es (Gus Caplan) [#17560](https://github.com/nodejs/node/pull/17560)
+    * agregar soporte para módulos es (Gus Caplan) [#17560](https://github.com/nodejs/node/pull/17560)
   ### Commits
   
   * [[`7f5334e243`](https://github.com/nodejs/node/commit/7f5334e243)] - **(SEMVER-MINOR)** **async_hooks**: deprecate unsafe emit{Before,After} (Ali Ijaz Sheikh) [#18513](https://github.com/nodejs/node/pull/18513)
@@ -728,7 +728,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`9e7f8633b6`](https://github.com/nodejs/node/commit/9e7f8633b6)] - **deps**: bache de ICU 60.2 (Steven R. Loomis) [#17687](https://github.com/nodejs/node/pull/17687)
   * [[`11566fe532`](https://github.com/nodejs/node/commit/11566fe532)] - **deps**: cherry-pick dbfe4a49d8 from upstream V8 (Jan Krems) [#16889](https://github.com/nodejs/node/pull/16889)
   * [[`6edf952628`](https://github.com/nodejs/node/commit/6edf952628)] - **doc**: corregir nits en tools/doc/README.md (Vse Mozhet Byt) [#18874](https://github.com/nodejs/node/pull/18874)
-  * [[`7624686888`](https://github.com/nodejs/node/commit/7624686888)] - **doc**: corregir errores menores gramaticales/tipográficos en onboarding.md (Rich Trott) [#18847](https://github.com/nodejs/node/pull/18847)
+  * [[`7624686888`](https://github.com/nodejs/node/commit/7624686888)] - **doc**: corregir errores gramaticales/tipográficos menores en onboarding.md (Rich Trott) [#18847](https://github.com/nodejs/node/pull/18847)
   * [[`2f836e76bd`](https://github.com/nodejs/node/commit/2f836e76bd)] - **doc**: actualizar onboarding.md para completación más rápida de ejercicios (Rich Trott) [#18846](https://github.com/nodejs/node/pull/18846)
   * [[`e1f82735fe`](https://github.com/nodejs/node/commit/e1f82735fe)] - **doc**: documentación mejorada para fs.unlink() (dustinnewman98) [#18843](https://github.com/nodejs/node/pull/18843)
   * [[`63b0c158f7`](https://github.com/nodejs/node/commit/63b0c158f7)] - **doc**: reparar enlace roto en pull-requests.md (Justin Lee) [#18873](https://github.com/nodejs/node/pull/18873)
@@ -741,7 +741,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`cd2fa0412f`](https://github.com/nodejs/node/commit/cd2fa0412f)] - **doc**: activar regla `no-multiple-empty-lines` (Ruben Bridgewater) [#18747](https://github.com/nodejs/node/pull/18747)
   * [[`20ad397f93`](https://github.com/nodejs/node/commit/20ad397f93)] - **doc**: notar que linting es necesario en releases.md (Gibson Fahnestock) [#18776](https://github.com/nodejs/node/pull/18776)
   * [[`0fc33fb282`](https://github.com/nodejs/node/commit/0fc33fb282)] - **doc**: eliminar espacio extra en README.md (Matheus Marchini) [#18822](https://github.com/nodejs/node/pull/18822)
-  * [[`9bec493510`](https://github.com/nodejs/node/commit/9bec493510)] - **doc**: actualizar clase Certificado de crypto. (Antoine AMARA) [#18721](https://github.com/nodejs/node/pull/18721)
+  * [[`9bec493510`](https://github.com/nodejs/node/commit/9bec493510)] - **doc**: actualizar clase Certificate de crypto. (Antoine AMARA) [#18721](https://github.com/nodejs/node/pull/18721)
   * [[`17d4dd5cce`](https://github.com/nodejs/node/commit/17d4dd5cce)] - **doc**: mover Fedor a TSC Emeritus (Myles Borins) [#18752](https://github.com/nodejs/node/pull/18752)
   * [[`92ed0710da`](https://github.com/nodejs/node/commit/92ed0710da)] - **doc**: agregar a mmarchini a colaboradores (Matheus Marchini) [#18740](https://github.com/nodejs/node/pull/18740)
   * [[`b5073a0744`](https://github.com/nodejs/node/commit/b5073a0744)] - **doc**: marcar NAPI_AUTO_LENGTH como código (Tobias Nießen) [#18697](https://github.com/nodejs/node/pull/18697)
@@ -774,17 +774,17 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`74a823c788`](https://github.com/nodejs/node/commit/74a823c788)] - **doc**: mejorar documentación de stream (陈刚) [#18375](https://github.com/nodejs/node/pull/18375)
   * [[`ae372f0e3d`](https://github.com/nodejs/node/commit/ae372f0e3d)] - **doc**: enlazar tipos perdidos (Vse Mozhet Byt) [#18444](https://github.com/nodejs/node/pull/18444)
   * [[`22093abbc8`](https://github.com/nodejs/node/commit/22093abbc8)] - **doc**: agregar a Gibson Fahnestock a TSC (Rich Trott) [#18481](https://github.com/nodejs/node/pull/18481)
-  * [[`61d4e1d207`](https://github.com/nodejs/node/commit/61d4e1d207)] - **doc**: reordenar sección en actualización de rama de PR (Ali Ijaz Sheikh) [#18355](https://github.com/nodejs/node/pull/18355)
+  * [[`61d4e1d207`](https://github.com/nodejs/node/commit/61d4e1d207)] - **doc**: reordenar sección en actualización de rama PR (Ali Ijaz Sheikh) [#18355](https://github.com/nodejs/node/pull/18355)
   * [[`8a627b17a4`](https://github.com/nodejs/node/commit/8a627b17a4)] - **doc**: agregar pending-deprecation a COLLABORATOR_GUIDE (Сковорода Никита Андреевич) [#18433](https://github.com/nodejs/node/pull/18433)
   * [[`b76e111ee4`](https://github.com/nodejs/node/commit/b76e111ee4)] - **doc**: reparar advertencias de página de manuales (Roman Reiss)
   * [[`b841abc328`](https://github.com/nodejs/node/commit/b841abc328)] - **doc**: advertir sobre autenticidad de GCM (Tobias Nießen) [#18376](https://github.com/nodejs/node/pull/18376)
   * [[`2d968ca0d5`](https://github.com/nodejs/node/commit/2d968ca0d5)] - **doc**: Actualizar tools/icu/README.md (Steven R. Loomis) [#16939](https://github.com/nodejs/node/pull/16939)
-  * [[`8c6dc62dc4`](https://github.com/nodejs/node/commit/8c6dc62dc4)] - **doc**: deduplicar enlaces (Vse Mozhet Byt) [#18213](https://github.com/nodejs/node/pull/18213)
+  * [[`8c6dc62dc4`](https://github.com/nodejs/node/commit/8c6dc62dc4)] - **doc**: deduplicación de enlaces (Vse Mozhet Byt) [#18213](https://github.com/nodejs/node/pull/18213)
   * [[`6b1a40e914`](https://github.com/nodejs/node/commit/6b1a40e914)] - **doc**: capitalizar tipos no primitivos (Vse Mozhet Byt) [#18111](https://github.com/nodejs/node/pull/18111)
   * [[`44bf0f4f12`](https://github.com/nodejs/node/commit/44bf0f4f12)] - **domain**: uso abstracto adicional en C++ (Anatoli Papirovski) [#18291](https://github.com/nodejs/node/pull/18291)
-  * [[`35471bcfdf`](https://github.com/nodejs/node/commit/35471bcfdf)] - **domain**: corregir error manejo de emisión (Anatoli Papirovski) [#17588](https://github.com/nodejs/node/pull/17588)
+  * [[`35471bcfdf`](https://github.com/nodejs/node/commit/35471bcfdf)] - **domain**: corregir error en manejo de emisión (Anatoli Papirovski) [#17588](https://github.com/nodejs/node/pull/17588)
   * [[`28edc1db99`](https://github.com/nodejs/node/commit/28edc1db99)] - **events**: utilizar Reflect.apply (Anatoli Papirovski) [#17456](https://github.com/nodejs/node/pull/17456)
-  * [[`3ae5cf205f`](https://github.com/nodejs/node/commit/3ae5cf205f)] - **events**: mover manejo de domino de eventos a dominar (vdeturckheim) [#17403](https://github.com/nodejs/node/pull/17403)
+  * [[`3ae5cf205f`](https://github.com/nodejs/node/commit/3ae5cf205f)] - **events**: mover el manejo del domino de eventos a dominar (vdeturckheim) [#17403](https://github.com/nodejs/node/pull/17403)
   * [[`0568f755da`](https://github.com/nodejs/node/commit/0568f755da)] - **fs**: eliminar comentarios inútiles que duplican nombres de variables (Sergey Golovin) [#18739](https://github.com/nodejs/node/pull/18739)
   * [[`5b75572494`](https://github.com/nodejs/node/commit/5b75572494)] - **fs**: remplazar números mágicos por constantes nombradas (Sergey Golovin) [#18757](https://github.com/nodejs/node/pull/18757)
   * [[`35ce3a8931`](https://github.com/nodejs/node/commit/35ce3a8931)] - **fs**: hacer que las rutas de URL ya no sean experimentales (James M Snell) [#18591](https://github.com/nodejs/node/pull/18591)
