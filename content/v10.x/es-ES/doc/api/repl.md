@@ -418,33 +418,33 @@ changes:
   * `useGlobal` {boolean} Si es `true`, especifica que la función de evaluación predeterminada usará la variable de JavaScript `global` como el contexto que se opone a la creación de un nuevo contexto separado para la instancia REPL. El nodo CLI REPL establece su valor a `true`. **Predeterminado:** `false`.
   * `ignoreUndefined` {boolean} Si es `true`, especifica que el escritor predeterminado no generará el valor de retorno de un comando si el mismo evalúa a `undefined`. **Predeterminado:** `false`.
   * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Predeterminado:** [`util.inspect()`][].
-  * `completer` {Function} An optional function used for custom Tab auto completion. See [`readline.InterfaceCompleter`][] for an example.
-  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. Acceptable values are: 
-    * `repl.REPL_MODE_SLOPPY` - evaluates expressions in sloppy mode.
-    * `repl.REPL_MODE_STRICT` - evaluates expressions in strict mode. This is equivalent to prefacing every repl statement with `'use strict'`.
-  * `breakEvalOnSigint` - Stop evaluating the current piece of code when `SIGINT` is received, i.e. `Ctrl+C` is pressed. This cannot be used together with a custom `eval` function. **Default:** `false`.
+  * `completer` {Function} Una función opcional usada para la auto completación personalizada de pestañas. Ver [`readline.InterfaceCompleter`][] para un ejemplo.
+  * `replMode` {symbol} Una bandera que especifica si el evaluador predeterminado ejecuto todos los comandos de JavaScript en modo estricto o el modo predeterminado (descuidado). Son valores aceptables: 
+    * `repl.REPL_MODE_SLOPPY` - evalúa las expresiones en modo descuidado.
+    * `repl.REPL_MODE_STRICT` - evalúa las expresiones en modo estricto. Esto es equivalente a prologar cada declaración repl con `'uso estricto'`.
+  * `breakEvalOnSigint` - Detener la evaluación del actual pedazo de código cuando `SIGINT` es recibido, e.g. cuando `Ctrl+C` es presionado. Esto no puede utilizarse junto a la función personalizada `eval`. **Predeterminado:** `false`.
 
-The `repl.start()` method creates and starts a `repl.REPLServer` instance.
+El método `repl.start()` crea y comienza una instancia del `repl.REPLServer`.
 
-If `options` is a string, then it specifies the input prompt:
+Si las `opciones` son un string, entonces estas especifican el aviso de entrada:
 
 ```js
 const repl = require('repl');
 
-// a Unix style prompt
+// un aviso estilo Unix style
 repl.start('$ ');
 ```
 
-## The Node.js REPL
+## El REPL de Node.js
 
-Node.js itself uses the `repl` module to provide its own interactive interface for executing JavaScript. This can be used by executing the Node.js binary without passing any arguments (or by passing the `-i` argument):
+En si mismo, Node.Js utiliza el módulo `repl` para proveer su propia interfaz interactiva para ejecutar JavaScript. Esto puede ser usado al ejecutar el binario de Node.Js sin pasar ningún argumento (o al pasar el argumento `-i`):
 
 <!-- eslint-skip -->
 
 ```js
 $ node
 > const a = [1, 2, 3];
-undefined
+indefinido
 > a
 [ 1, 2, 3 ]
 > a.forEach((v) => {
@@ -455,9 +455,9 @@ undefined
 3
 ```
 
-### Environment Variable Options
+### Opciones de Variables de Entorno
 
-Various behaviors of the Node.js REPL can be customized using the following environment variables:
+Varios comportamientos del REPL de Node.js pueden ser personalizados utilizando las siguientes variables de entorno:
 
 * `NODE_REPL_HISTORY` - When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` will disable persistent REPL history. Whitespace will be trimmed from the value.
 * `NODE_REPL_HISTORY_SIZE` - Controls how many lines of history will be persisted if history is available. Must be a positive number. **Default:** `1000`.
