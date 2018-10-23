@@ -464,11 +464,11 @@ const assert = require('assert');
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Genera las llaves de Bob...
+// Generar las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Intercambian y generan el secreto...
+// Intercambiar y generar el secreto...
 const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
  
@@ -482,7 +482,7 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 added: v0.11.14
 -->
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando `inputEncoding` especificado, y el secreto devuelto es codificado usando `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, `otra_llave_pública` es esperada para ser un [`Buffer`][].
+Computa el secreto compartido usando `other_public_key` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando el `input_encoding` especificado, y el secreto devuelto es codificado usando `output_encoding`. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, se espera que `other_public_key` sea un [`Buffer`][].
 
 Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
