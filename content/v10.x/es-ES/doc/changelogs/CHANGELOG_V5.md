@@ -898,7 +898,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`d95e53dc3b`](https://github.com/nodejs/node/commit/d95e53dc3b)] - **test**: refactorizar interruptor (Rich Trott) [#4870](https://github.com/nodejs/node/pull/4870)
 * [[`7f1e3e929a`](https://github.com/nodejs/node/commit/7f1e3e929a)] - **test**: remover condición de carrera en prueba de inundación http (Rich Trott) [#4793](https://github.com/nodejs/node/pull/4793)
 * [[`6539c64e67`](https://github.com/nodejs/node/commit/6539c64e67)] - **test**: investigar variable redeclarada (Rich Trott) [#4854](https://github.com/nodejs/node/pull/4854)
-* [[`62fb941557`](https://github.com/nodejs/node/commit/62fb941557)] - **test**: fix irregular whitespace issue (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
+* [[`62fb941557`](https://github.com/nodejs/node/commit/62fb941557)] - **test**: reparar problema irregular del whitespace (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
 * [[`3b225209f0`](https://github.com/nodejs/node/commit/3b225209f0)] - **test**: fs.link() test runs on same device (Drew Folta) [#4861](https://github.com/nodejs/node/pull/4861)
 * [[`1860eae110`](https://github.com/nodejs/node/commit/1860eae110)] - **test**: refactor test-net-settimeout (Rich Trott) [#4799](https://github.com/nodejs/node/pull/4799)
 * [[`ae9a8cd053`](https://github.com/nodejs/node/commit/ae9a8cd053)] - **test**: mark test-tick-processor flaky (Rich Trott) [#4809](https://github.com/nodejs/node/pull/4809)
