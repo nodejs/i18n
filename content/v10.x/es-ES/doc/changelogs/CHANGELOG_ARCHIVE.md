@@ -2901,8 +2901,8 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Las comas al final en sys.inspect
 * Las constantes fueron movidas desde el objeto del proceso a require('constants')
 * Arreglar el análisis de la memoria de linux (Vitali Lovich)
-* inspect shows function names (Jorge Chamorro Bieling)
-* uncaughtException corner cases (Felix Geisendörfer)
+* inspeccionar los nombres de las funciones para mostrar (Jorge Chamorro Bieling)
+* Casos límite de uncaughtException (Felix Geisendörfer)
 * TCP clients now buffer writes before connection
 * Rename sys module to 'util' (Micheil Smith)
 * Properly set stdio handlers to blocking on SIGTERM and SIGINT (Tom Hughes)
