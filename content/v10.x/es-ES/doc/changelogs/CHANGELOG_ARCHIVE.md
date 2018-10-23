@@ -3157,28 +3157,30 @@ https://github.com/nodejs/node/commit/caa828a242f39b6158084ef4376355161c14fe34
     * Soporte para OpenSSL. Aún sin documentación (ver pruebas). (Rhis Jones)
     * API: Los eventos de "error" sin manejar arrojan.
     
-    * Script class with eval-function-family in binding('evals') plus tests.
+    * Clase de script con familia de función de evaluación en pruebas extra
+      de binding('evals').
       (Herbert Vojcik)
     
     * stream.setKeepAlive (Julian Lamb)
-    * Bugfix: Force no body on http 204 and 304
+    * Corrección de bug: No forzar body en 204 y 304
     
-    * Upgrade Waf to 1.5.16, V8 to 2.2.4.2
+    * Actualizar Waf a 1.5.16, V8 a 2.2.4.2
     
 
 <a id="0.1.91"></a>
 
-## 2010.04.15, Version 0.1.91
+## 2010.04.15, Versión 0.1.91
 
 https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
 
-    * Add incoming.httpVersion
-    * Object.prototype problem with C-Ares binding
+    * Añadir incoming.httpVersion
+    * Problema de Object.prototype con enlazado de C-Ares
     
-    * REPL can be run from multiple different streams. (Matt Ranney)
-    * After V8 heap is compact, don't use a timer every 2 seconds.
+    * REPL puede ejecutarse desde múltiples streams diferentes. (Matt Ranney)
+    * Luego de que el montículo de V8 esté compacto, no utilizar temporizador
+      cada dos segundos.
     
-    * Improve nextTick implementation.
+    * Mejorar la implementación de nextTick.
     * Add primitive support for Upgrading HTTP connections.
       (See commit log for docs 760bba5)
     
