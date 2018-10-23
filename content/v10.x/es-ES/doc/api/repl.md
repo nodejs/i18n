@@ -392,7 +392,7 @@ deprecated: v9.0.0
 
 > Estabilidad: 0-Desaprobada.
 
-Un método interno usado para analizar y ejecutar las palabras claves del `REPLServer`. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
+Un método interno usado para analizar y ejecutar las palabras claves del `REPLServer`. Devuelve `true` si `keyword` es una palabra clave válida, si no `false`.
 
 ## repl.start([options])
 
@@ -408,8 +408,8 @@ changes:
     description: The `options` parameter is optional now.
 -->
 
-* `options` {Object|string} 
-  * `prompt` {string} The input prompt to display. **Default:** `'> '` (with a trailing space).
+* `options` {Objeto|string} 
+  * `prompt` {string} El aviso de entrada para mostrar. **Default:** `'> '` (with a trailing space).
   * `input` {stream.Readable} The `Readable` stream from which REPL input will be read. **Default:** `process.stdin`.
   * `output` {stream.Writable} The `Writable` stream to which REPL output will be written. **Default:** `process.stdout`.
   * `terminal` {boolean} If `true`, specifies that the `output` should be treated as a TTY terminal, and have ANSI/VT100 escape codes written to it. **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
