@@ -3078,25 +3078,25 @@ https://github.com/nodejs/node/commit/9514a4d5476225e8c8310ce5acae2857033bcaaa
 * Corregir el reporte de errno en las excepciones de DNS.
 
 * Soportar buffers en fs.WriteStream.write.
-* Bugfix: Safely decode a utf8 streams that are broken on a multbyte character (http and net). (Felix Geisendörfer)
+* Corrección de buf: Decodificar de manera segura streams en utf8 que están rotos en un carácter multi-byte (http y net). (Felix Geisendörfer)
 
-* Make Buffer's C++ constructor public.
+* Hacer que el constructor C++ de Buffer sea público.
 
-* Deprecate sys.p()
-* FIX path.dirname('/tmp') => '/'. (Jonathan Rentzsch)
+* Desaprobar sys.p()
+* Corregir path.dirname('/tmp') => '/'. (Jonathan Rentzsch)
 
 <a id="0.1.95"></a>
 
-## 2010.05.13, Version 0.1.95
+## 2010.05.13, Versión 0.1.95
 
 https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 
-* Change GC idle notify so that it runs alongside setInterval
-* Install node_buffer.h on make install
-* fs.readFile returns Buffer by default (Tim Caswell)
-* Fix error reporting in child_process callbacks
-* Better logic for testing if an argument is a port
-* Improve error reporting (single line "node.js:176:9" errors)
+* Cambiar la notificación del GC inactivo de modo que se ejecute junto a setInterval
+* Instalar node_buffer.h cuando se hace "make install"
+* fs.readFile devuelve un Buffer predeterminadamente (Tim Caswell)
+* Corregir reporte de errores en las callbacks de child_process
+* Mejorar la lógica para probar si un argumento es un puerto
+* Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
 * Bugfix: Some http responses being truncated (appeared in 0.1.94)
 * Fix long standing net idle timeout bugs. Enable 2 minute timeout by default in HTTP servers.
 
