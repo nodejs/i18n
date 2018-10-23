@@ -363,11 +363,11 @@ added: v0.1.91
 
 * `preserveCursor` {boolean}
 
-The `replServer.displayPrompt()` method readies the REPL instance for input from the user, printing the configured `prompt` to a new line in the `output` and resuming the `input` to accept new input.
+El método `replServer.displayPrompt()` prepara la instancia REPL para la entrada proviniente del usuario, imprimiendo el `aviso` configurado a una nueva línea en la `salida` y resumiendo la `entrada` para aceptar una nueva.
 
-When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
+Cuando una entrada de múltiples lines está siendo introducida, una elipsis se imprime en lugar del "aviso".
 
-When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
+Cuando `preserveCursor` es `true`, la colocación del cursor no se restablecera a `0`.
 
 The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
 
