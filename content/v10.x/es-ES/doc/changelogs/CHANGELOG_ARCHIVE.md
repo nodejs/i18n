@@ -3198,19 +3198,19 @@ https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
     * Unificar la escritura del sistema de red (net2)
      - Nuevo objeto Buffer para datos binarios.
-     - Support UNIX sockets, Pipes
-     - Uniform stream API
-     - Currently no SSL
-     - Legacy modules can be accessed at 'http_old' and 'tcp_old'
+     - Soportar sockets de UNIX, Pipes
+     - API para stream uniforme
+     - Actualmente no hay SSL
+     - Se puede acceder a los módulos heredados en 'http_old' y 'tcp_old'
     
-    * Replace udns with c-ares. (Krishna Rajendran)
-    * New documentation system using Markdown and Ronn
+    * Reemplazar udns con c-ares. (Krishna Rajendran)
+    * Nuevo sistema de documentación que utiliza Markdown y Ronn
       (Tim Caswell, Micheil Smith)
     
-    * Better idle-time GC
-    * Countless small bug fixes.
+    * Mejor GC de tiempo de inactividad
+    * Incontables correcciones de bugs pequeños.
     
-    * Upgrade V8 to 2.2.X, WAF 1.5.15
+    * Actualizar V8 a 2.2.X, WAF 1.5.15
     
 
 <a id="0.1.33"></a>
