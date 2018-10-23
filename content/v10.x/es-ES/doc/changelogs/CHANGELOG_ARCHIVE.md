@@ -2938,27 +2938,27 @@ https://github.com/nodejs/node/commit/b14dd49222687c12f3e8eac597cff4f2674f84e8
 
 * Varias correcciones de bugs (consola, querystring, require)
 * Establecer cwd para procesos secundarios (Bert Belder)
-* Tab completion for readline (Trent Mick)
-* process.title getter/setter for OSX, Linux, Cygwin. (Rasmus Andersson, Bert Belder)
+* Completado de tab para readline (Trent Mick)
+* getter/setter de process.title para OSX, Linux, Cygwin. (Rasmus Andersson, Bert Belder)
 
-* Upgrade V8 to 2.3.6
+* Actualizar V8 a 2.3.6
 
 <a id="0.1.103"></a>
 
-## 2010.08.04, Version 0.1.103
+## 2010.08.04, Versión 0.1.103
 
 https://github.com/nodejs/node/commit/0b925d075d359d03426f0b32bb58a5e05825b4ea
 
-* Implement keep-alive for http.Client (Mikeal Rogers)
-* base64 fixes. (Ben Noordhuis)
-* Fix --debug-brk (Danny Coates)
-* Don't let path.normalize get above the root. (Isaac Schlueter)
-* Allow signals to be used with process.on in addition to process.addListener. (Brian White)
+* Implementar keep-alive para http.Client (Mikeal Rogers)
+* Correcciones de base64. (Ben Noordhuis)
+* Corregir --debug-brk (Danny Coates)
+* No dejar que path.normalize llegue a estar por encima del root. (Isaac Schlueter)
+* Permitir que las señales sean usadas con process.on además de process.addListener. (Brian White)
 
-* Globalize the Buffer object
+* Globalizar el objeto Buffer
 
-* Use kqueue on recent macintosh builds
-* Fix addrlen for unix_dgram sockets (Benjamin Kramer)
+* Usar kqueue en builds macintosh recientes
+* Corregir addrlen para sockets de unix_dgram (Benjamin Kramer)
 * Fix stats.isDirectory() and friends (Benjamin Kramer)
 * Upgrade http-parser, V8 to 2.3.5
 
