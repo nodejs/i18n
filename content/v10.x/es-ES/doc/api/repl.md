@@ -415,9 +415,9 @@ changes:
   * `terminal` {boolean} Si es `true`, especifica que la `salida` debería ser tratada como un TTY de la terminal, y tener códigos de escape ANSI/VT100 escrito en ella. **Predeterminado:** chequear el valor de la propiedad `isTTY` en el stream de `salida` al ser instanciado.
   * `eval` {Función} La función que será usada al evaluar cada línea de entrada dada. **Predeterminado:** un contenedor asíncrono para la función `eval()` de JavaScript. Una función `eval` puede tener errores con `repl.Recoverable` para indicar que la entrada fue incompleta y pedir líneas adicionales.
   * `useColors` {boolean} Si es `true`, especifica que la función predeterminada `writer` debería incluir el estilo de color ANSI para la salida de REPL. Si una función personalizada `writer` es proporcionada entonces esto no tiene efecto. **Predeterminado:** el valor `terminal` de las instancias REPL.
-  * `useGlobal` {boolean} If `true`, specifies that the default evaluation function will use the JavaScript `global` as the context as opposed to creating a new separate context for the REPL instance. The node CLI REPL sets this value to `true`. **Default:** `false`.
-  * `ignoreUndefined` {boolean} If `true`, specifies that the default writer will not output the return value of a command if it evaluates to `undefined`. **Default:** `false`.
-  * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Default:** [`util.inspect()`][].
+  * `useGlobal` {boolean} Si es `true`, especifica que la función de evaluación predeterminada usará la variable de JavaScript `global` como el contexto que se opone a la creación de un nuevo contexto separado para la instancia REPL. El nodo CLI REPL establece su valor a `true`. **Predeterminado:** `false`.
+  * `ignoreUndefined` {boolean} Si es `true`, especifica que el escritor predeterminado no generará el valor de retorno de un comando si el mismo evalúa a `undefined`. **Predeterminado:** `false`.
+  * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Predeterminado:** [`util.inspect()`][].
   * `completer` {Function} An optional function used for custom Tab auto completion. See [`readline.InterfaceCompleter`][] for an example.
   * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. Acceptable values are: 
     * `repl.REPL_MODE_SLOPPY` - evaluates expressions in sloppy mode.
