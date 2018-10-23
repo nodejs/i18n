@@ -3098,11 +3098,11 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 * Mejorar la lógica para probar si un argumento es un puerto
 * Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
 * Corrección de bug: Algunas respuestas http estaban siendo truncadas (aparecido en 0.1.94)
-* Corregir bugs de timeout por inactividad en redes de larga duración. Enable 2 minute timeout by default in HTTP servers.
+* Corregir bugs de agotamiento de tiempo de espera por inactividad en redes de larga duración. Establecer tiempo de espera de dos minutos predeterminadamente en servidores HTTP.
 
-* Add fs.fstat (Ben Noordhuis)
+* Añadir fs.fstat (Ben Noordhuis)
 
-* Upgrade to V8 2.2.9
+* Actualizar a V8 2.2.9
 
 <a id="0.1.94"></a>
 
