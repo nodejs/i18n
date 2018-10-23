@@ -2898,9 +2898,9 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 
 * Añadir opción de línea de comandos --eval (TJ Holowaychuk)
 
-* Commas last in sys.inspect
-* Constants moved from process object to require('constants')
-* Fix parsing of linux memory (Vitali Lovich)
+* Las comas al final en sys.inspect
+* Las constantes fueron movidas desde el objeto del proceso a require('constants')
+* Arreglar el análisis de la memoria de linux (Vitali Lovich)
 * inspect shows function names (Jorge Chamorro Bieling)
 * uncaughtException corner cases (Felix Geisendörfer)
 * TCP clients now buffer writes before connection
