@@ -916,7 +916,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`777ed82162`](https://github.com/nodejs/node/commit/777ed82162)] - **tools**: reparar la detección del constructor para el documento JSON (Timothy Gu) [#4966](https://github.com/nodejs/node/pull/4966)
 * [[`5d55f59c85`](https://github.com/nodejs/node/commit/5d55f59c85)] - **tools**: añadir tipos de propiedad en la documentación de JSON (Timothy Gu) [#4884](https://github.com/nodejs/node/pull/4884)
 * [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subkeys en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
-* [[`34df6a5c0c`](https://github.com/nodejs/node/commit/34df6a5c0c)] - **tools**: enable assorted ESLint error rules (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
+* [[`34df6a5c0c`](https://github.com/nodejs/node/commit/34df6a5c0c)] - **tools**: habilitar reglas de error ESLint clasificadas (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
 * [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: fix setting path containing an ampersand (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
 * [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: change scoping of variables with let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
