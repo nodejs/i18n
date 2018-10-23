@@ -181,7 +181,7 @@ clearTimeout(setTimeout(() => {}, 10));
 
 ###### `type`
 
-`type` 是一个用来识别资源类型的字符串，它会导致 `init` 被调用。 Generally, it will correspond to the name of the resource's constructor.
+`type` 是一个用来识别资源类型的字符串，它会导致 `init` 被调用。 通常情况下，它将对应于资源构造函数的名字。
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -191,9 +191,9 @@ UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
-There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
+还有 `PROMISE` 这种资源类型，它被用于跟踪 `Promise` 实例以及它们计划的异步工作。
 
-Users are able to define their own `type` when using the public embedder API.
+用户可以通过使用公共的 embedder API来定义它们自己的 `type`。
 
 It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
 
