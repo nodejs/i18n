@@ -634,7 +634,7 @@ Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamt
 
 Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
-### References to objects with a lifespan longer than that of the native method
+### Verweise auf Objekte mit einer längeren Lebensdauer als die der nativen Methode
 
 In some cases an addon will need to be able to create and reference objects with a lifespan longer than that of a single native method invocation. For example, to create a constructor and later use that constructor in a request to creates instances, it must be possible to reference the constructor object across many different instance creation requests. This would not be possible with a normal handle returned as a `napi_value` as described in the earlier section. The lifespan of a normal handle is managed by scopes and all scopes must be closed before the end of a native method.
 
