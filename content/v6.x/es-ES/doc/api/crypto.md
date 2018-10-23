@@ -429,7 +429,7 @@ Establece la clave privada Diffie-Hellman. Si el argumento `encoding` es proporc
 added: v0.5.0
 -->
 
-Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. Si el `input_encoding` no es proporcionado, `otra_llave_pública`, se espra que sea un [`Buffer`][].
+Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. Si el `input_encoding` no es proporcionado, se espera que `public_key` sea un [`Buffer`][].
 
 ### diffieHellman.verifyError
 
@@ -437,7 +437,7 @@ Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es propor
 added: v0.11.12
 -->
 
-Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante el inicio del objeto `DiffieHellman`.
+Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante la inicialización del objeto `DiffieHellman`.
 
 Los valores a continuación son válidos para esta propiedad (como es definido en el módulo`constants`):
 
