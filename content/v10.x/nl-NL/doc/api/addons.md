@@ -123,9 +123,9 @@ Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en 
 
 * `node-gyp` kan worden uitgevoerd met behulp van de `--nodedir` wijzend naar de locale Node.js bronafbeelding. Wanneer deze optie gebruikt wordt, heeft de Addon volledige toegang tot de volledige set van afhankelijkheden.
 
-### Loading Addons using require()
+### Addons laden met behulp van require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+De bestandsnaam-extentie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
 When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
