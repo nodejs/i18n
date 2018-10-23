@@ -164,7 +164,7 @@ Disable the callbacks for a given `AsyncHook` instance from the global pool of `
 
 * `asyncId` {number} 异步资源的唯一 ID。
 * `type` {string} 异步资源的类型。
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
+* `triggerAsyncId` {number} 异步资源在其被创建的执行上下文中的唯一 ID。
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
