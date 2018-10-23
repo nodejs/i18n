@@ -862,7 +862,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`95615196de`](https://github.com/nodejs/node/commit/95615196de)] - **src**: limpiar el uso de `__proto__` (Jackson Tian) [#5069](https://github.com/nodejs/node/pull/5069)
 * [[`e93b024214`](https://github.com/nodejs/node/commit/e93b024214)] - **src**: remover comentarios que no sean relevantes (Chris911) [#4843](https://github.com/nodejs/node/pull/4843)
 * [[`a2c257a3ef`](https://github.com/nodejs/node/commit/a2c257a3ef)] - **src**: reparar valores negativos en process.hrtime() (Ben Noordhuis) [#4757](https://github.com/nodejs/node/pull/4757)
-* [[`b46f3b84d4`](https://github.com/nodejs/node/commit/b46f3b84d4)] - **src,deps**: replace LoadLibrary by LoadLibraryW (Cheng Zhao) [iojs/io.js#226](https://github.com/iojs/io.js/pull/226)
+* [[`b46f3b84d4`](https://github.com/nodejs/node/commit/b46f3b84d4)] - **src,deps**: reemplazar LoadLibrary por LoadLibraryW (Cheng Zhao) [iojs/io.js#226](https://github.com/iojs/io.js/pull/226)
 * [[`ee8d4bb075`](https://github.com/nodejs/node/commit/ee8d4bb075)] - **stream**: prevent object map change in TransformState (Evan Lucas) [#5032](https://github.com/nodejs/node/pull/5032)
 * [[`c8b6de244e`](https://github.com/nodejs/node/commit/c8b6de244e)] - **stream**: refactor redeclared variables (Rich Trott) [#4816](https://github.com/nodejs/node/pull/4816)
 * [[`9dcc45e9c5`](https://github.com/nodejs/node/commit/9dcc45e9c5)] - **test**: enable to work pkcs12 test in FIPS mode (Shigeki Ohtsu) [#5150](https://github.com/nodejs/node/pull/5150)
