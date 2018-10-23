@@ -3128,7 +3128,7 @@ https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
 <a id="0.1.93"></a>
 
-## 2010.04.29, Version 0.1.93
+## 2010.04.29, Versión 0.1.93
 
 https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
 
