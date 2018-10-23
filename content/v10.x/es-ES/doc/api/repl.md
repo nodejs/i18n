@@ -387,8 +387,8 @@ deprecated: v9.0.0
 -->
 
 * `keyword` {string} la palabra clave potencial para analizar y ejecutar
-* `rest` {any} any parameters to the keyword command
-* Returns: {boolean}
+* `rest` {any} cualquier parámetro del comando de la palabra clave
+* Devuelve: {boolean}
 
 > Stability: 0 - Deprecated.
 
