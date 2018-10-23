@@ -7,8 +7,8 @@
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Annahmen testen](assert.html)
+* [Asynchrone Auslöser](async_hooks.html)
 * [Puffer](buffer.html)
 * [C++ Erweiterungen](addons.html)
 * [C/C++ Erweiterungen - N-API](n-api.html)
@@ -25,7 +25,7 @@
 * [Fehler](errors.html)
 * [Ereignisse](events.html)
 * [Dateisystem](fs.html)
-* [Globals](globals.html)
+* [Globale Objekte](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
@@ -43,7 +43,7 @@
 * [REPL](repl.html)
 * [Stream](stream.html)
 * [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Timer](timers.html)
 * [TLS/SSL](tls.html)
 * [Trace Events](tracing.html)
 * [TTY](tty.html)
@@ -57,4 +57,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Mailingliste](https://groups.google.com/group/nodejs)

@@ -196,7 +196,7 @@ Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 En casos donde hay más de un archivo `.cc`, simplemente agregue el nombre de archivo adicional a la matriz de `sources`:
 
 ```json
-"sources": ["addon.cc", "myexample.cc"]
+"fuentes": ["addon.cc", "myexample.cc"]
 ```
 
 Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo podrán ser configurados y construidos utilizando `node-gyp`:

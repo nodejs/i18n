@@ -2,7 +2,7 @@
 
 This document explains how to maintain the build files in the codebase.
 
-## Overview
+## 概览
 
 On how to build the Node.js core, see [Building Node.js](../../BUILDING.md).
 

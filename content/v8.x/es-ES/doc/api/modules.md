@@ -6,16 +6,16 @@
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+En el modulo de sistema Node.js cada archivo es tratado como un modulo por separado. Por ejemplo, considere un archivo llamado `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+En la primera linea, `foo.js` carga el modulo `circle.js` que esta en el mismo directorio como `foo.js`.
 
-Here are the contents of `circle.js`:
+Aquí están los contenidos de `circle.js`:
 
 ```js
 const { PI } = Math;
@@ -25,13 +25,13 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+El modulo `circle.js` exportó las funciones `area()` y `circumference()`. Las funciones y objetivos son añadidas a raíz de un modulo especificando propiedades adicionales en objeto especial `exports`.
 
-Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
+Las variables locales del modulo serán privadas porque el modulo está envuelto en una función por Node.js (see [module wrapper](#modules_the_module_wrapper)). En este ejemplo la variable `PI` está privada para `circle.js`.
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+Un nuevo valor puede ser asignado a `module.exports` (como una función u objeto).
 
-Below, `bar.js` makes use of the `square` module, which exports a Square class:
+A continuación,, `bar.js` hace uso del modulo `square` que exporta una clase cuadrada:
 
 ```js
 const Square = require('./square.js');
@@ -39,7 +39,7 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-The `square` module is defined in `square.js`:
+El modulo `square` está definido en `square.js`:
 
 ```js
 // assigning to exports will not modify module, must use module.exports
@@ -54,52 +54,52 @@ module.exports = class Square {
 };
 ```
 
-The module system is implemented in the `require('module')` module.
+El modulo de sistema está implementado en el modulo `require('module')`.
 
-## Accessing the main module
+## Accediendo al modulo principal
 
 <!-- type=misc -->
 
-When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Cuando un archivo es ejecutado directamente desde Node.js `require.main` está ligado a `module`. Eso significa que es posible determinar si un archivo fue ejecutado directamente por la prueba `require.main === module`.
 
-For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
+Para un archivo `foo.js`, este será `true` si se ejecuta vía `node foo.js`, pero `false` si se ejecuta con `require('./foo')`.
 
-Because `module` provides a `filename` property (normally equivalent to `__filename`), the entry point of the current application can be obtained by checking `require.main.filename`.
+Porque `module` provee un `filename` proporciona (normalmente equivalente a `__filename`) el punto de ingreso de la aplicación normal puede ser obtenido comprobando`require.main.filename`.
 
 ## Addenda: Package Manager Tips
 
 <!-- type=misc -->
 
-The semantics of Node.js's `require()` function were designed to be general enough to support a number of reasonable directory structures. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
+La semántica de la función Node.js's `require()` fue diseñada genérica para apoyar a un numero a razonable de estructuras del directorio. Administrador de paquetes programas como `dpkg`, `rpm`, y `npm` esperamos encontrarlo posiblemente para construir programas nativos desde módulos de Node.js sin modificación.
 
-Below we give a suggested directory structure that could work:
+A continuación le sugerimos una estructura de directorio que podría funcionar:
 
-Let's say that we wanted to have the folder at `/usr/lib/node/<some-package>/<some-version>` hold the contents of a specific version of a package.
+Digamos que queríamos tener la carpeta en `/usr/lib/node/<some-package>/<some-version>` manteniendo los contenidos en una versión especifica de un paquete.
 
-Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+Paquetes pueden depender unos de otros. El orden de instalación de paquetes `foo`,, puede ser necesarios para instalar una versión especifica del paquete `bar`. El paquete `bar` puede por si mismo tener dependencias, en algunos casos pueden tener conflictos o tener dependencias cíclicas.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
+Desde Node.js buscamos el `realpath` de algunos módulos cargados (es decir, resuelve los enlaces simbólicos), y luego busca sus dependencias en los archivos `node_modules` descritos como [here](#modules_loading_from_node_modules_folders), esta situación es muy simple de resolver con la siguiente arquitectura:
 
-* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
-* `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-* `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` paquete, versión 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - Contenidos en el paquete `bar` que depende de `foo`.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Enlace simbólico a `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - enlaces simbólicos a los paquetes que dependen de `bar`.
 
-Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+Por lo tanto, incluso si se encuentra un ciclo, o si hay conflictos de dependencia, cada módulo podrá obtener una versión de su dependencia que puede usar.
 
-When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
+Cuando el código `foo` en le paquete `require('bar')`, obtendrá la versión que es un enlace simbólico dentro de `/usr/lib/node/foo/1.2.3/node_modules/bar`. Entonces, cuando el código en el paquete `bar` llamado `require('quux')`, obtendrá la versión que es un enlace simbólico dentro de `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
-Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in `/usr/lib/node`, we could put them in `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
+Ademas: para hacer que el modulo busque el proceso mas optimo, en lugar de poner paquetes directamente en `/usr/lib/node`, podriamos ponerlos en `/usr/lib/node_modules/<name>/<version>`. Entonces, Node.js no se molestará en buscar dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Para que los módulos estén disponibles para el REPL de Node.js, puede ser útil agregar también la carpeta`/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Dado que las búsquedas de módulos que utilizan las carpetas `node_modules` son similares, y se basan en la ruta real de los archivos que requieren las llamadas a `require()`, los paquetes pueden estar en cualquier lugar.
 
-## All Together...
+## Todo junto...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Para obtener el nombre de archivo exacto que se cargará cuando se llame a `require()`, use la función `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+Reuniendo todo lo anterior, aquí está el algoritmo de alto nivel en pseudónimo de lo que `require.resolve()` hace:
 
 ```txt
 require(X) from module at path Y
@@ -160,7 +160,7 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Los módulos se almacenan en caché después de la primera vez que se cargan. Esto significa (entre otras cosas) que cada llamada a `require('foo')` obtendrá exactamente el mismo objeto devuelto, si se resolviera en el mismo archivo.
 
 Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
@@ -455,7 +455,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 * {Object}
 

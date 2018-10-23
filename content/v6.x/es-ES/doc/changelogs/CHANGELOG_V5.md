@@ -31,7 +31,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras versiones 
   * [6.x](CHANGELOG_V6.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)

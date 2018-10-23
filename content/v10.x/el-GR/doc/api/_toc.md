@@ -1,9 +1,9 @@
-@// NB(chrisdickinson): αν μετακινήσετε αυτό το αρχείο, να ενημερώστε το @// tools/doc/html.js να δείχνει στην καινούργια τοποθεσία.
+@// NB(chrisdickinson): αν μετακινήσετε αυτό το αρχείο, ενημερώστε το @// tools/doc/html.js ώστε να δείχνει στην καινούργια τοποθεσία.
 
 <!--introduced_in=v0.10.0-->
 
-* [Σχετικά με αυτά τα Εγχειρίδια](documentation.html)
-* [Παραδειγμα & Χρήση](synopsis.html)
+* [Σχετικά με την Τεκμηρίωση](documentation.html)
+* [Χρήση & Παραδείγματα](synopsis.html)
 
 <div class="line"></div>
 

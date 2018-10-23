@@ -885,7 +885,7 @@ When using an older Node.js library that emits [`'data'`][] events and has a [`s
 
 It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
 
-For example:
+Por ejemplo:
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -1047,7 +1047,7 @@ added: v1.2.0
 
 For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
 
-For example:
+Por ejemplo:
 
 ```js
 const { Writable } = require('stream');
@@ -1076,7 +1076,7 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
   * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const { Writable } = require('stream');
@@ -1267,7 +1267,7 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const { Readable } = require('stream');
@@ -1466,7 +1466,7 @@ changes:
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
-For example:
+Por ejemplo:
 
 ```js
 const { Duplex } = require('stream');
@@ -1594,7 +1594,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-For example:
+Por ejemplo:
 
 ```js
 const { Transform } = require('stream');

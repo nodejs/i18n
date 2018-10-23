@@ -47,7 +47,7 @@ There is no way to prevent the exiting of the event loop at this point, and once
 
 The listener callback function is invoked with the exit code specified either by the [`process.exitCode`][] property, or the `exitCode` argument passed to the [`process.exit()`] method, as the only argument.
 
-For example:
+Por ejemplo:
 
 ```js
 process.on('exit', (code) => {
@@ -100,7 +100,7 @@ In synchronous code, the `'uncaughtException'` event is emitted when the list of
 
 In asynchronous code, the `'unhandledRejection'` event is emitted when the list of unhandled rejections grows, and the `'rejectionHandled'` event is emitted when the list of unhandled rejections shrinks.
 
-For example:
+Por ejemplo:
 
 ```js
 const unhandledRejections = new Map();
@@ -124,7 +124,7 @@ The `'uncaughtException'` event is emitted when an uncaught JavaScript exception
 
 The listener function is called with the `Error` object passed as the only argument.
 
-For example:
+Por ejemplo:
 
 ```js
 process.on('uncaughtException', (err) => {
@@ -174,7 +174,7 @@ The listener function is called with the following arguments:
 * `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
 * `p` the `Promise` that was rejected.
 
-For example:
+Por ejemplo:
 
 ```js
 process.on('unhandledRejection', (reason, p) => {
@@ -273,7 +273,7 @@ Signal events will be emitted when the Node.js process receives a signal. Please
 
 The name of each event will be the uppercase common name for the signal (e.g. `'SIGINT'` for `SIGINT` signals).
 
-For example:
+Por ejemplo:
 
 ```js
 // Begin reading from stdin so the process does not exit.
@@ -718,7 +718,7 @@ added: v0.7.7
 
 The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
 
-For example:
+Por ejemplo:
 
 ```console
 $ node --harmony script.js --version
@@ -750,7 +750,7 @@ added: v0.1.100
 
 The `process.execPath` property returns the absolute pathname of the executable that started the Node.js process.
 
-For example:
+Por ejemplo:
 
 <!-- eslint-disable semi -->
 
@@ -968,7 +968,7 @@ This method will throw an error if the target `pid` does not exist. As a special
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-For example:
+Por ejemplo:
 
 ```js
 process.on('SIGHUP', () => {
@@ -1215,7 +1215,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
     * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
 
-For example:
+Por ejemplo:
 
 <!-- eslint-skip -->
 
@@ -1371,7 +1371,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-For example:
+Por ejemplo:
 
 ```js
 process.stdin.setEncoding('utf8');

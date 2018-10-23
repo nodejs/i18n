@@ -1,4 +1,4 @@
-# Usage
+# Uso
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,7 +6,7 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
+Por favor vea las [ Opciones de Linea de Comando](cli.html#cli_command_line_options) para obtener infomación sobre diferentes opciones y maneras de ejecutar scripts con Node.js.
 
 ## Example
 
@@ -36,4 +36,4 @@ $ node example.js
 Server running at http://127.0.0.1:3000/
 ```
 
-Many of the examples in the documentation can be run similarly.
+Cualquiera de los ejemplos en el documento pueden ser ejecutado del mismo modo.

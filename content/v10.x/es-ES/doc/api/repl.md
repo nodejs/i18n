@@ -276,9 +276,9 @@ replServer.on('exit', () => {
 added: v0.11.0
 -->
 
-El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. The listener callback will be called with a reference to the `context` object as the only argument.
+El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` colocada a `true`. La función oyente de devolución será llamado con una referencia al objeto del `context` como único argumento.
 
-This can be used primarily to re-initialize REPL context to some pre-defined state as illustrated in the following simple example:
+Esto puede ser usado primeramente para reiniciar el contexto REPL a un estado pre-definido como es ilustrado en el siguiente ejemplo:
 
 ```js
 const repl = require('repl');
@@ -293,7 +293,7 @@ initializeContext(r.context);
 r.on('reset', initializeContext);
 ```
 
-When this code is executed, the global `'m'` variable can be modified but then reset to its initial value using the `.clear` command:
+Cuando el código es ejecutado, la variable global `'m'` puede ser modificada pero luego reseteada a su valor inicial utilizando el comando `.clear`:
 
 <!-- eslint-skip -->
 
@@ -318,15 +318,15 @@ Clearing context...
 added: v0.3.0
 -->
 
-* `keyword` {string} The command keyword (*without* a leading `.` character).
-* `cmd` {Object|Function} The function to invoke when the command is processed.
+* `keyword` {string} El comando keyword (*sin un* caracter inicial `.`).
+* `cmd` {Objeto|Función} La función que se utiliza cuando el comando está siendo procesado.
 
-The `replServer.defineCommand()` method is used to add new `.`-prefixed commands to the REPL instance. Such commands are invoked by typing a `.` followed by the `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
+El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocadaos al escribir un `.` seguido de `keyword`. El `cmd` es una `Función` o un `Objeto` con las siguientes propiedades:
 
-* `help` {string} Help text to be displayed when `.help` is entered (Optional).
-* `action` {Function} The function to execute, optionally accepting a single string argument.
+* `help` {string} Texto de ayuda que es mostrado cuando `.help` es introducido (Opcional).
+* `action` {Función} La función para ejecutar, opcionalmente aceptando un único argumento de string.
 
-The following example shows two new commands added to the REPL instance:
+El siguiente ejemplo muestra dos nuesvos comando agregados a la instancia REPL:
 
 ```js
 const repl = require('repl');
@@ -346,13 +346,13 @@ replServer.defineCommand('saybye', function saybye() {
 });
 ```
 
-The new commands can then be used from within the REPL instance:
+Los nuevos comandos pueden ser usados desde dentro de la instancia REPL:
 
 ```txt
-> .sayhello Node.js User
-Hello, Node.js User!
+> .sayhello Usuario de Node.js
+¡Hola, Usuario de Node.Js!
 > .saybye
-Goodbye!
+¡Adiós!
 ```
 
 ### replServer.displayPrompt([preserveCursor])
@@ -363,13 +363,13 @@ added: v0.1.91
 
 * `preserveCursor` {boolean}
 
-The `replServer.displayPrompt()` method readies the REPL instance for input from the user, printing the configured `prompt` to a new line in the `output` and resuming the `input` to accept new input.
+El método `replServer.displayPrompt()` prepara la instancia REPL para la entrada proviniente del usuario, imprimiendo el `aviso` configurado a una nueva línea en la `salida` y resumiendo la `entrada` para aceptar una nueva.
 
-When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
+Cuando una entrada de múltiples lines está siendo introducida, una elipsis se imprime en lugar del "aviso".
 
-When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
+Cuando `preserveCursor` es `true`, la colocación del cursor no se restablecera a `0`.
 
-The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+El método `replServer.displayPrompt` está destinado principalmente para ser llamado desde dentro la función de acción para comandos registrados usando el método `replServer.defineCommand()`.
 
 ### replServer.clearBufferedCommand()
 
@@ -377,7 +377,7 @@ The `replServer.displayPrompt` method is primarily intended to be called from wi
 added: v9.0.0
 -->
 
-The `replServer.clearBufferedCommand()` method clears any command that has been buffered but not yet executed. This method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+El método `replServer.clearBufferedCommand()` borra cualquier comando que ha sido cargado pero no aún ejecutado. Este método está destinado principalmente para ser llamado desde dentro la función acción para comandos registrados utilizando el método `replServer.defineCommand()`.
 
 ### replServer.parseREPLKeyword(keyword, [rest])
 
@@ -386,13 +386,13 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-* `keyword` {string} the potential keyword to parse and execute
-* `rest` {any} any parameters to the keyword command
-* Returns: {boolean}
+* `keyword` {string} la palabra clave potencial para analizar y ejecutar
+* `rest` {any} cualquier parámetro del comando de la palabra clave
+* Devuelve: {boolean}
 
-> Stability: 0 - Deprecated.
+> Estabilidad: 0-Desaprobada.
 
-An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
+Un método interno usado para analizar y ejecutar las palabras claves del `REPLServer`. Devuelve `true` si `keyword` es una palabra clave válida, si no `false`.
 
 ## repl.start([options])
 
@@ -408,12 +408,12 @@ changes:
     description: The `options` parameter is optional now.
 -->
 
-* `options` {Object|string} 
-  * `prompt` {string} The input prompt to display. **Default:** `'> '` (with a trailing space).
-  * `input` {stream.Readable} The `Readable` stream from which REPL input will be read. **Default:** `process.stdin`.
-  * `output` {stream.Writable} The `Writable` stream to which REPL output will be written. **Default:** `process.stdout`.
-  * `terminal` {boolean} If `true`, specifies that the `output` should be treated as a TTY terminal, and have ANSI/VT100 escape codes written to it. **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
-  * `eval` {Function} The function to be used when evaluating each given line of input. **Default:** an async wrapper for the JavaScript `eval()` function. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
+* `options` {Objeto|string} 
+  * `prompt` {string} El aviso de entrada para mostrar. **Predeterminado:** `'> '` (con un espacio al final).
+  * `input` {stream.Readable} El stream `leíble` del cual la entrada del REPL será leída. **Predeterminado:** `process.stdin`.
+  * `output` {stream.Writable} El stream `con permisos de escritura` en el cual la salida del REPL será escrita. **Predeterminado:** `process.stdout`.
+  * `terminal` {boolean} Si es `true`, especifica que la `salida` debería ser tratada como un TTY de la terminal, y tener códigos de escape ANSI/VT100 escrito en ella. **Predeterminado:** chequear el valor de la propiedad `isTTY` en el stream de `salida` al ser instanciado.
+  * `eval` {Función} La función que será usada al evaluar cada línea de entrada dada. **Predeterminado:** un contenedor asíncrono para la función `eval()` de JavaScript. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
   * `useColors` {boolean} If `true`, specifies that the default `writer` function should include ANSI color styling to REPL output. If a custom `writer` function is provided then this has no effect. **Default:** the REPL instances `terminal` value.
   * `useGlobal` {boolean} If `true`, specifies that the default evaluation function will use the JavaScript `global` as the context as opposed to creating a new separate context for the REPL instance. The node CLI REPL sets this value to `true`. **Default:** `false`.
   * `ignoreUndefined` {boolean} If `true`, specifies that the default writer will not output the return value of a command if it evaluates to `undefined`. **Default:** `false`.

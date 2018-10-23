@@ -1,4 +1,4 @@
-# Trace Events
+# Spoorgebeurtenissen
 
 <!--introduced_in=v7.7.0-->
 

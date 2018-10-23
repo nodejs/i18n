@@ -56,7 +56,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras versiones 
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)

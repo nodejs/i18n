@@ -16,7 +16,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
@@ -197,7 +197,7 @@ For example, there could be one domain in use for an HTTP server, but perhaps we
 
 That is possible via explicit binding.
 
-For example:
+Por ejemplo:
 
 ```js
 // create a top-level domain for the server

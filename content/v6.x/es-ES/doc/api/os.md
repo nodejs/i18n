@@ -68,7 +68,7 @@ The properties included on each object include:
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
-For example:
+Por ejemplo:
 
 <!-- eslint-disable semi -->
 

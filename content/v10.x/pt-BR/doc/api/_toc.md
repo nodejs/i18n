@@ -1,4 +1,4 @@
-Se este arquivo for movido, tenha certeza de atualizar.
+@/ / NB(chrisdickinson): se você mover este arquivo, certifique-se de atualizar @/ / tools/doc/html.js para apontar para o novo local.
 
 <!--introduced_in=v0.10.0-->
 
@@ -7,7 +7,7 @@ Se este arquivo for movido, tenha certeza de atualizar.
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Teste de asserção](assert.html)
 * [Ganchos Assíncronos](async_hooks.html)
 * [Buffer](buffer.html)
 * [Complementos de C++](addons.html)
@@ -35,15 +35,15 @@ Se este arquivo for movido, tenha certeza de atualizar.
 * [Net](net.html)
 * [Sistema operacional](os.html)
 * [Caminho](path.html)
-* [Performance Hooks](perf_hooks.html)
+* [Gancho de Desempenho](perf_hooks.html)
 * [Processo](process.html)
-* [Punycode](punycode.html)
-* [Query Strings](querystring.html)
+* [Código Insignificante](punycode.html)
+* [Sequências de consulta](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
 * [Transmissão](stream.html)
-* [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Decodificador de sequência de caracteres](string_decoder.html)
+* [Temporizadores](timers.html)
 * [TLS/SSL](tls.html)
 * [Eventos de Rastreamento](tracing.html)
 * [TTY](tty.html)

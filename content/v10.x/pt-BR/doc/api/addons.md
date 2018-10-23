@@ -1,16 +1,16 @@
-# C++ Addons
+# Complementos de C++
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
+Complementos Node.js são vinculados dinamicamente como objetos compartilhados, escritos em C++, que podem ser carregado em Node.js com a função [`require()`](modules.html#modules_require), utilizando como se fosse um módulo Node.js comum. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
 
-No momento, o método para a implementação de Addons é bastante complicado, envolvendo o conhecimento de vários componentes e APIs:
+No momento, a forma para implementar complementos é complicada, envolvendo conhecimento de vários componentes e APIs:
 
-* V8: biblioteca C++ Node.js usada atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamar funções, etc. API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore de fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
+* V8: biblioteca C++ que o Node.js usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamada de funções, etc. A API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos de Node.js, seus threads de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração de plataforma cruzada, dando acesso fácil, POSIX, como em todos os principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar mais sofisticados assíncrono Addons que precisam ir além do loop de eventos padrão. Addon autores são incentivados a pensar sobre como evitar o bloquear o ciclo de eventos com e/s ou outras tarefas demorada por off-loading trabalham através de libuv sem bloqueia operações do sistema, threads de trabalho ou uma utilização personalizada dos segmentos do libuv.
+* [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos do Node.js, suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração multi-plataforma, dando acesso fácil, no estilo POSIX, aos principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar mais sofisticados assíncrono Addons que precisam ir além do loop de eventos padrão. Addon autores são incentivados a pensar sobre como evitar o bloquear o ciclo de eventos com e/s ou outras tarefas demorada por off-loading trabalham através de libuv sem bloqueia operações do sistema, threads de trabalho ou uma utilização personalizada dos segmentos do libuv.
 
 * Bibliotecas internas de Node.js. Node.js exporta para si um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
 
@@ -20,7 +20,7 @@ Todos os exemplos a seguir estão disponíveis para [download](https://github.co
 
 ## Hello world
 
-Este exemplo "Hello world" é um simples Addon, escrito em C++, que é o equivalente do seguinte código JavaScript:
+Este exemplo "Hello world" é um simples Addon, escrito em C++, que é o equivalente ao seguinte código JavaScript:
 
 ```js
 module.exports.hello = () => 'world';

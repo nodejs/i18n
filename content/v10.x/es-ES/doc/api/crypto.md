@@ -117,7 +117,7 @@ const cert2 = crypto.Certificate();
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
+- `spack` {string | Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
@@ -134,7 +134,7 @@ console.log(challenge.toString('utf8'));
 added: v0.11.8
 -->
 
-- `spkac` {string | Buffer | TypedArray | DataView}
+- `spack` {string | Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} El componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
@@ -272,7 +272,7 @@ Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un
 
 El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
-### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
 <!-- YAML
 added: v0.1.94
@@ -310,23 +310,22 @@ Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son
 Ejemplo: Usando objetos `Decipher` como streams:
 
 ```js
-const crypto = require('crypto');
-const decipher = crypto.createDecipher('aes192', 'a password');
+const crypto = require('crypto'); 
+const decipher = crypto.createDecipher('aes192', 'a password'); 
 
-let decrypted = '';
-decipher.on('readable', () => {
-  const data = decipher.read();
-  if (data)
-    decrypted += data.toString('utf8');
-});
-decipher.on('end', () => {
-  console.log(decrypted);
-  // Prints: some clear text data
-});
+let decrypted = ''; 
+decipher.on('readable', () => {   
+  const data = decipher.read();   
+  if (data)     
+    decrypted += data.toString('utf8'); 
+}); 
+decipher.on('end', () => {   
+  console.log(decrypted);   
+  // Imprime: algunos datos de texto claros 
+}); 
 
-const encrypted =
-    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
-decipher.write(encrypted, 'hex');
+const encrypted =                       
+    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'; decipher.write(encrypted, 'hex'); 
 decipher.end();
 ```
 
@@ -346,15 +345,15 @@ input.pipe(decipher).pipe(output);
 Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
-const crypto = require('crypto');
-const decipher = crypto.createDecipher('aes192', 'a password');
+const crypto = require('crypto'); 
+const decipher = crypto.createDecipher('aes192', 'a password'); 
 
 const encrypted =
-    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
-let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-decrypted += decipher.final('utf8');
-console.log(decrypted);
-// Prints: some clear text data
+    'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'; 
+let decrypted = decipher.update(encrypted, 'hex', 'utf8'); 
+decrypted += decipher.final('utf8'); 
+console.log(decrypted); 
+// Imprime: algunos datos limpios
 ```
 
 ### decipher.final([outputEncoding])
@@ -457,15 +456,15 @@ Las instancias de la clase `DiffieHellman` pueden ser creadas usando la función
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera las llaves de Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// intercambian y generan el secreto...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -594,19 +593,19 @@ Las instancias de clase `ECDH` pueden ser creadas usando la función [`crypto.cr
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
-const alice = crypto.createECDH('secp521r1');
+// Genera las llaves de Alice...
+const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
-const aliceSecret = alice.computeSecret(bobKey);
+// Intercambian y generan el secreto...
+const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
-
-assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
+ 
+assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex')); 
 // OK
 ```
 
@@ -748,13 +747,13 @@ Note que no hay normalmente una razón para llamar a este método porque `ECDH` 
 Ejemplo (obteniendo un secreto compartido):
 
 ```js
-const crypto = require('crypto');
-const alice = crypto.createECDH('secp256k1');
+const crypto = require('crypto'); 
+const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: This is a shortcut way to specify one of Alice's previous private
-// keys. It would be unwise to use such a predictable private key in a real
-// application.
+// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
+// llaves privadas. Seria poco recom; endable usaruna clave privada predecible en una 
+// applicacion real.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
@@ -1588,7 +1587,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
@@ -1615,7 +1614,7 @@ changes:
 - `digest` {string}
 - Returns: {Buffer}
 
-Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de Derivación de Clave Basada en Contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
 Si ocurre un error, se arrojará un `Error`, de no ser así, la clave derivada será devuelta como un [`Buffer`][].
 
@@ -1640,7 +1639,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperado usando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1708,7 +1707,7 @@ added: v0.11.14
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encripta en contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
+Encripta el contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
 
 `key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
@@ -1745,7 +1744,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Un error se producirá si hay un problema generando los bytes.
+Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Se producirá un error si hay un problema generando los bytes.
 
 ```js
 // Synchronous
@@ -1881,7 +1880,7 @@ Cargue y configure el `engine` para algunas o todas las funciones OpenSSL (selec
 
 `engine` puede ser tanto un id o una ruta a la biblioteca compartida del motor.
 
-El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Las `flags` es un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
+El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Los `flags` son un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`

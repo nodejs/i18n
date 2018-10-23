@@ -129,17 +129,17 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 ## Node.js原生模块抽象接口
 
-本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次更改时，插件需要更新并被重新编译才能继续正常运行。 Node.js的发布计划旨在最大程度的减少此类更改的频率和影响，但是Node.js无法确保V8 API的稳定性。
+本文档中的所有示例都直接使用Node.js和V8 API来实现插件。 因此重要的一点就是要理解V8 API可以并曾经从一个V8版本到下一个版本中间发生了巨大的变化（同样从一个主要的Node.js版本到下一个版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
 
-[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 关于使用说明，请参阅`nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
+[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 有关如何使用的说明，请参见 `nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
-> 稳定性: 1 - 实验性
+> 稳定性: 1 - 实验中
 
-N-API是构建原生插件的API。 它独立于底层的JavaScript运行时 (例如 V8) 并作为Node.js的一部分进行维护。 此API将会成为稳定的跨越不同Node.js版本的应用程序二进制接口 (ABI)。 其目的是将插件和底层JavaScript引擎的更改隔离开，并允许为一个Node.js版本编译的模块可以在后续的Node.js版本中运行，而无需重新编译。 插件是使用在此文档中所述的相同方法/工具 (node-gyp) 进行构建/打包的。 唯一的不同之处就是原生代码使用的API集合。 不使用V8或[Node.js原生模块接口](https://github.com/nodejs/nan)，而是使用在N-API中可用的函数。
+N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是原生代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
 
-为了在上述的"Hello world"示例中使用N-API，需要将`hello.cc`的内容替换如下。 其他所有说明保持不变。
+在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它说明保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -173,13 +173,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-关于可用的函数及其使用方法请参考文档中标题为[C/C++ 插件 - N-API](n-api.html)的部分。
+可用的函数和如何使用它们被记录在标题为 [C/C++ 插件 - N-API](n-api.html) 的部分中。
 
 ## 插件示例
 
-如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 关于各种V8的调用，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅 V8 [嵌入器指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
+如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
-这些示例都使用如下的`binding.gyp`文件：
+这些示例都使用以下 `binding.gyp` 文件：
 
 ```json
 {
@@ -192,13 +192,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }
 ```
 
-如果有多个`.cc`文件，只需将额外的文件名添加到`sources`中就可以。 例如：
+在有多个 `.cc` 文件的情况下，只需将额外的文件名添加到 `sources` 数组中： 例如：
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-一旦`binding.gyp`文件准备就绪，就可以使用`node-gyp`配置和构建示例插件：
+一旦 `binding.gyp` 文件准备就绪，就可以使用 `node-gyp` 配置和构建示例插件：
 
 ```console
 $ node-gyp configure build
@@ -206,9 +206,9 @@ $ node-gyp configure build
 
 ### 函数参数
 
-通常情况下，插件会公开一些对象和函数，并允许从Node.js中运行的JavaScript访问他们。 当从JavaScript中调用函数时，参数和返回值都必须映射到/自C/C++代码。
+插件通常会公开可以从Node.js中运行的JavaScript访问的对象和函数。 当从 JavaScript 调用函数时，输入参数必须映射到 C/C++代码，返回值必须从 C/C++代码映射到 JavaScript。
 
-以下示例演示如何读取传自JavaScript的函数参数，以及如何返回结果：
+以下示例说明如何读取从JavaScript传递的函数参数以及如何返回结果：
 
 ```cpp
 // addon.cc
@@ -264,7 +264,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-一旦编译后，就可以在Node.js中获取并使用示例插件：
+编译完成后，可以从Node.js中获取并使用示例插件：
 
 ```js
 // test.js
@@ -275,7 +275,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### 回调函数
 
-在插件中非常常见的一种做法就是，将JavaScript函数传递给一个C++函数并从中执行它。 如下示例演示了如何调用这样的回调函数：
+将JavaScript函数传递给C++函数并从中执行它们是插件中常见的做法。 以下示例说明了如何调用此类回调函数：
 
 ```cpp
 // addon.cc
@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-请注意，此示例使用两个参数形式的`Init()`，其中的第二个参数为完整的`module`对象。 这就允许插件使用单个函数完全覆盖`exports`，而不是将函数添加为`exports`的一个属性。
+请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是将函数添加为 `exports` 的一个属性。
 
-要想测试它，请运行如下JavaScript：
+要测试它，请运行以下JavaScript：
 
 ```js
 // test.js
@@ -323,11 +323,11 @@ addon((msg) => {
 });
 ```
 
-请注意，在此示例中，回调函数是以同步方式被调用的。
+请注意，在此示例中，回调函数是被同步调用的。
 
 ### 对象工厂
 
-就像如下示例所示，插件可以在C++函数中创建并返回新对象。 创建一个对象并在返回时包含一个`msg`属性，该属性与传递给`createObject()`的字符串相呼应：
+插件可以在C++函数中创建和返回新对象，如以下示例所示。 创建一个对象，并返回一个 `msg` 属性，它与传递给 `createObject()` 的字符串相呼应：
 
 ```cpp
 // addon.cc
@@ -374,7 +374,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### 函数工厂
 
-另一个常见的场景就是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
+另一个常见的场景是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
@@ -430,7 +430,7 @@ console.log(fn());
 
 ### 包装C++对象
 
-也可以包装C++对象／类，从而使得可以通过JavaScript的`new`运算符来创建它们的实例。
+也可以以允许使用JavaScript `new` 运算符创建新实例的方式包装C++对象/类：
 
 ```cpp
 // addon.cc
@@ -451,7 +451,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-然后，在`myobject.h`中，包装类继承自`node::ObjectWrap`：
+然后，在 `myobject.h` 头文件中，包装类从 `node::ObjectWrap` 中继承：
 
 ```cpp
 // myobject.h
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-在`myobject.cc`中，实现各种想要暴露的方法。 如下所示，通过将方法`plusOne()`添加到构造函数中原型的方式来暴露：
+在 `myobject.cc` 中，可以实现各种想要暴露给JavaScript的方法。 如下所示，`plusOne()` 通过将其添加到构造函数的原型中来暴露：
 
 ```cpp
 // myobject.cc
@@ -559,7 +559,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-要构建这个示例，必须将`myobject.cc`文件添加到`binding.gyp`中：
+要构建这个示例，`myobject.cc` 文件必须被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -592,7 +592,7 @@ console.log(obj.plusOne());
 
 ### 包装对象工厂
 
-或者，可以通过使用工厂模式来避免显式的使用JavaScript的`new` 操作符来创建对象实例：
+或者，可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
 
 ```js
 const obj = addon.createObject();
@@ -600,7 +600,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-首先，在`addon.cc`中实现了`createObject()`方法：
+首先，在 `addon.cc` 中实现 `createObject()` 方法：
 
 ```cpp
 // addon.cc
@@ -631,7 +631,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-在`myobject.h`中，静态方法`NewInstance()`被添加并用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
+在 `myobject.h` 中，静态方法 `NewInstance()` 被添加，它用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
 
 ```cpp
 // myobject.h
@@ -750,7 +750,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-再次说明，要构建这个示例，`myobject.cc`文件必须被添加到`binding.gyp`中：
+再强调一次，要想构建这个示例，`myobject.cc` 文件必须要被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -791,7 +791,7 @@ console.log(obj2.plusOne());
 
 ### 传递包装的对象
 
-除了包装和返回C++对象外，还可以通过使用Node.js的帮助函数`node::ObjectWrap::Unwrap`来解包对象的方式来传递包装的对象。 下面的示例展示了`add()`函数，它可以获取两个`MyObject`对象来作为输入参数：
+除了包装和返回C++对象以外，可以通过使用Node.js帮助函数 （`node::ObjectWrap::Unwrap`）解包装它们来传递包装的对象。 下面的示例展示了 `add()` 函数，它可以获取两个 `MyObject` 对象作为输入参数：
 
 ```cpp
 // addon.cc
@@ -837,7 +837,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-在`myobject.h`中，一个新的公共方法被添加，以允许在解包对象后访问私有类型的值。
+在 `myobject.h` 头文件中， 添加了一个新的公共类型方法，以允许在解包装对象后访问私有类型的值。
 
 ```cpp
 // myobject.h
@@ -869,7 +869,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-`myobject.cc`的实现和之前的类似：
+对 `myobject.cc` 的实现和之前的示例类似：
 
 ```cpp
 // myobject.cc
@@ -959,7 +959,7 @@ console.log(result);
 
 ### AtExit钩子
 
-"AtExit"是一个函数，它会在Node.js事件循环结束后，但在JavaScript虚拟机被终止以及Node.js被关闭之前被调用。 "AtExit" 钩子通过使用`node::AtExit` API来进行注册。
+AtExit 钩子是一个函数，它在 Node.js 事件循环结束后，但在 JavaScript 虚拟机被终止与 Node.js 关闭前被调用。 AtExit 钩子使用 `node::AtExit` API注册。
 
 #### void AtExit(callback, args)
 
@@ -968,7 +968,7 @@ console.log(result);
 
 注册在事件循环结束后但在虚拟机被关闭之前运行的退出钩子函数。
 
-AtExit有两个参数：一个指向退出时要运行的回调函数的指针，以及一个指向将被传递给回调函数的无类型的上下文数据的指针。
+AtExit 有两个参数：一个退出时要运行的回调函数的指针，和一个要传入回调函数的无类型的上下文数据的指针。
 
 回调函数按照后进先出的顺序运行。
 

@@ -124,24 +124,24 @@ Gdy kolejka **odpytywania** jest pusta, pętla zdarzeń sprawdzi timery *któryc
 
 Ta faza pozwala osobie wykonać wywołania zwrotne natychmiast po zakończeniu fazy **odpytywania**. Jeśli faza **odpytywania** stanie się bezczynna i skrypty zostały umieszczone w kolejce z `ustawNatychmiastowo()`, pętla zdarzeń może przejść do fazy **sprawdzenia**, zamiast czekać.
 
-`setImmediate()` is actually a special timer that runs in a separate phase of the event loop. It uses a libuv API that schedules callbacks to execute after the **poll** phase has completed.
+`ustawNatychmiastowo()` jest w rzeczywistości specjalnym timerem, który działa w oddzielnej fazie pętli zdarzeń. Używa API libuv, który planuje wywołania zwrotne, aby je wykonywały po zakończeniu fazy **odpytywania**.
 
-Generally, as the code is executed, the event loop will eventually hit the **poll** phase where it will wait for an incoming connection, request, etc. However, if a callback has been scheduled with `setImmediate()` and the **poll** phase becomes idle, it will end and continue to the **check** phase rather than waiting for **poll** events.
+Na ogół, podczas wykonywania kodu, pętla zdarzeń ostatecznie trafi na fazę **odpytywania**, w której będzie czekać na przychodzące połączenie, żądanie, itp. Niemniej, jeśli zaplanowano wywołanie zwrotne z `ustawNatychmiastowo()`, a faza **odpytywania** staje się bezczynna, zakończy się i przejdzie do **sprawdzenia** zamiast czekać na zdarzenia **odpytywania**.
 
-### close callbacks
+### zamknij wywołania zwrotne
 
-If a socket or handle is closed abruptly (e.g. `socket.destroy()`), the `'close'` event will be emitted in this phase. Otherwise it will be emitted via `process.nextTick()`.
+Jeśli gniazdo lub identyfikator zostaną nagle zamknięte (np.`socket.destroy()`), to zdarzenie `'zamknij'` zostanie wyemitowane w tej fazie. W przeciwnym razie będzie emitowane przez `process.nextTick()`.
 
-## `setImmediate()` vs `setTimeout()`
+## `setImmediate()` kontra `setTimeout()`
 
-`setImmediate` and `setTimeout()` are similar, but behave in different ways depending on when they are called.
+`ustawNatychmiastowo` i `ustawKoniecCzasu()` są podobne, ale zachowują się w inny sposób zależnie od tego, kiedy są przywoływane.
 
-* `setImmediate()` is designed to execute a script once the current **poll** phase completes.
-* `setTimeout()` schedules a script to be run after a minimum threshold in ms has elapsed.
+* `ustawNatychmiastowo()` służy do wykonywania skryptu po bieżącym zakończeniu fazy **odpytywania**.
+* `ustawKoniecCzasu()` planuje uruchomienie skryptu po upłynięciu w ms minimalnego progu.
 
-The order in which the timers are executed will vary depending on the context in which they are called. If both are called from within the main module, then timing will be bound by the performance of the process (which can be impacted by other applications running on the machine).
+Kolejność wykonywania timerów będzie się bardzo różnić w zależności od kontekstu, w którym są przywoływane. Jeśli oba są wywoływane w obrębie głównego modułu, to w takim razie pomiar czasu będzie związany z wydajnością procesu (na który mogą mieć wpływ inne uruchomione aplikacje na komputerze).
 
-For example, if we run the following script which is not within an I/O cycle (i.e. the main module), the order in which the two timers are executed is non-deterministic, as it is bound by the performance of the process:
+Na przykład, jeśli uruchomimy poniższy skrypt, który nie znajduje się wewnątrz cyklu wej/wyj (np. główny moduł), kolejność, w której występują oba timery są uruchamiane jest niedeterministyczna, ponieważ jest związana z wykonywaniem procesu:
 
 ```js
 // timeout_vs_immediate.js
@@ -164,7 +164,7 @@ immediate
 timeout
 ```
 
-However, if you move the two calls within an I/O cycle, the immediate callback is always executed first:
+Jednakże, jeśli przeniesiesz te dwa wywołania w ramach cyklu wej/wyj, natychmiastowe wywołanie zwrotne jest zawsze wykonywane jako pierwsze:
 
 ```js
 // timeout_vs_immediate.js
@@ -190,19 +190,19 @@ immediate
 timeout
 ```
 
-The main advantage to using `setImmediate()` over `setTimeout()` is `setImmediate()` will always be executed before any timers if scheduled within an I/O cycle, independently of how many timers are present.
+Główną zaletą korzystania z `ustawNatychmiastowo()`zamiast`ustawKoniecCzasu()` jest to, że `ustawNatychmiastowo()` zawsze będzie wykonywane przed jakimikolwiek timerami, jeśli są zaplanowane w obrębie cyklu wej/wyj, niezależnie od tego, ile obecnych jest timerów.
 
 ## `process.nextTick()`
 
-### Understanding `process.nextTick()`
+### Zrozumienie `process.nextTick()`
 
-You may have noticed that `process.nextTick()` was not displayed in the diagram, even though it's a part of the asynchronous API. This is because `process.nextTick()` is not technically part of the event loop. Instead, the `nextTickQueue` will be processed after the current operation completes, regardless of the current phase of the event loop.
+Być może zauważyłeś, że `process.nextTick()` nie było wyświetlane w diagramie, mimo że jest częścią asynchronicznego API. To dlatego, że `process.nextTick()` nie jest techniczną częścią pętli zdarzeń. Zamiast tego, `nextTickQueue` będzie przetwarzane po zakończeniu bieżącej operacji, niezależnie od bieżącego etapu pętli zdarzeń.
 
-Looking back at our diagram, any time you call `process.nextTick()` in a given phase, all callbacks passed to `process.nextTick()` will be resolved before the event loop continues. This can create some bad situations because **it allows you to "starve" your I/O by making recursive `process.nextTick()` calls**, which prevents the event loop from reaching the **poll** phase.
+Patrząc jeszcze raz na nasz diagram, za każdym razem, gdy wywołasz`process.nextTick()` w danej fazie, wszystkie wywołania zwrotne przypisane do `process.nextTick()` będą zdeterminowane przed kontynuacją pętli zdarzeń. Może to stworzyć pewne złe sytuacje, ponieważ **pozwala ci "głodować" swoje wej/wyj przez dokonywanie rekurencji w `process.nextTick()` wywołania**, co zapobiega pętli zdarzeń od osiągnięcia fazy **odpytywania**.
 
-### Why would that be allowed?
+### Dlaczego miałoby to być dozwolone?
 
-Why would something like this be included in Node.js? Part of it is a design philosophy where an API should always be asynchronous even where it doesn't have to be. Take this code snippet for example:
+Dlaczego coś takiego powinno być zawarte w Node.js? Częścią tego jest filozofia projektowania, w której interfejs API powinien zawsze być asynchroniczny, nawet jeśli nie musi być. Weźmy na przykład ten fragment kodu:
 
 ```js
 function apiCall(arg, callback) {
@@ -212,22 +212,22 @@ function apiCall(arg, callback) {
 }
 ```
 
-The snippet does an argument check and if it's not correct, it will pass the error to the callback. The API updated fairly recently to allow passing arguments to `process.nextTick()` allowing it to take any arguments passed after the callback to be propagated as the arguments to the callback so you don't have to nest functions.
+Fragment ten sprawdza argument, a jeśli nie jest poprawny, przejdzie do błędy wywołania zwrotnego. Interfejs API zaktualizowany dość niedawno, aby umożliwić przekazywanie argumentów do `process.nextTick()` pozwalając na przyjęcie dowolnych argumentów przekazanych po wywołaniu zwrotnym rozprzestrzenionym jako argumenty wywołania zwrotnego, dzięki czemu nie trzeba zagnieżdżać funkcji.
 
-What we're doing is passing an error back to the user but only *after* we have allowed the rest of the user's code to execute. By using `process.nextTick()` we guarantee that `apiCall()` always runs its callback *after* the rest of the user's code and *before* the event loop is allowed to proceed. To achieve this, the JS call stack is allowed to unwind then immediately execute the provided callback which allows a person to make recursive calls to `process.nextTick()` without reaching a `RangeError: Maximum call stack size exceeded from v8`.
+To, co robimy to przekazywanie błędu do użytkownika, ale tylko *po* tym jak pozwolimy na wykonanie reszty kodu użytkownika. Poprzez użycie `process.nextTick()` gwarantujemy, że `apiCall()` zawsze uruchomi jego wywołanie zwrotne *po* reszcie kodu użytkownika i *przed* dopuszczeniem zdarzenia pętli do nastąpienia. By to osiągnąć, wywołanie stosu JS jest dopuszczone do rozwinięcia, a następnie natychmiast wykonania podanego wywołania zwrotne, które umożliwia osoba wykonująca wywołania rekursywne wobec `process.nextTick()` bez osiągania `BłądZasięgu: Przekroczono maksymalny rozmiar stosu wywołań z wersji v8`.
 
-This philosophy can lead to some potentially problematic situations. Take this snippet for example:
+Ta filozofia może prowadzić do potencjalnie problematycznych sytuacji. Weźmy na przykład ten fragment kodu:
 
 ```js
 let bar;
 
-// this has an asynchronous signature, but calls callback synchronously
+// ma on sygnaturę asynchroniczną, ale wywołuje synchronicznie wywołanie zwrotne
 function someAsyncApiCall(callback) { callback(); }
 
-// the callback is called before `someAsyncApiCall` completes.
+// wywołanie zwrotne jest wywoływane przed zakończeniem `someAsyncApiCall`.
 someAsyncApiCall(() => {
 
-  // since someAsyncApiCall has completed, bar hasn't been assigned any value
+  // ponieważ someAsyncApiCall został zakończony, bar nie ma przypisanej żadnej wartości
   console.log('bar', bar); // undefined
 
 });
@@ -235,9 +235,9 @@ someAsyncApiCall(() => {
 bar = 1;
 ```
 
-The user defines `someAsyncApiCall()` to have an asynchronous signature, but it actually operates synchronously. When it is called, the callback provided to `someAsyncApiCall()` is called in the same phase of the event loop because `someAsyncApiCall()` doesn't actually do anything asynchronously. As a result, the callback tries to reference `bar` even though it may not have that variable in scope yet, because the script has not been able to run to completion.
+Użytkownik definiuje `someAsyncApiCall()`, aby mieć sygnaturę asynchroniczną, ale tak naprawdę działa synchronicznie. Po wywołaniu wywołanie zwrotne dostarczone do `someAsyncApiCall()` jest wywoływane w tej samej fazie pętli zdarzeń, ponieważ `someAsyncApiCall()` nic istotnego nie robi asynchronicznie. W wyniku tego wywołanie zwrotne próbuje nawet odwołać się do `Foobaru` choć może nie mieć jeszcze tej zmiennej w zasięgu, ponieważ skrypt nie jest w stanie działać do końca.
 
-By placing the callback in a `process.nextTick()`, the script still has the ability to run to completion, allowing all the variables, functions, etc., to be initialized prior to the callback being called. It also has the advantage of not allowing the event loop to continue. It may be useful for the user to be alerted to an error before the event loop is allowed to continue. Here is the previous example using `process.nextTick()`:
+Umieszczając wywołanie zwrotne w `process.nextTick()`, skrypt nadal ma możliwość uruchomienia w całości, pozwalając na wszystkie zmienne, funkcje, itp., które należy zainicjować przed wywołaniem wywołania zwrotnego. To również ma tą zaletę nie dopuszczania na kontynuację pętli zdarzeń. Może być to użyteczne, aby użytkownik był powiadamiany o błędzie przed dopuszczeniem do kontynuowania pętli zdarzeń. Oto poprzedni przykład używający `process.nextTick()`:
 
 ```js
 let bar;
@@ -253,7 +253,7 @@ someAsyncApiCall(() => {
 bar = 1;
 ```
 
-Here's another real world example:
+Oto kolejny przykład z życia codziennego:
 
 ```js
 const server = net.createServer(() => {}).listen(8080);
@@ -261,20 +261,20 @@ const server = net.createServer(() => {}).listen(8080);
 server.on('listening', () => {});
 ```
 
-When only a port is passed the port is bound immediately. So the `'listening'` callback could be called immediately. Problem is that the `.on('listening')` will not have been set by that time.
+Gdy tylko port zostanie przekazany, port jest natychmiast połączony. Więc Wywołanie zwrotne `"odsłuchiwanie"` może zostać wywołane natychmiast. Problem polega na tym, że `.on("nasłuchiwanie")` nie zostanie ustawione do tego czasu.
 
-To get around this the `'listening'` event is queued in a `nextTick()` to allow the script to run to completion. Which allows the user to set any event handlers they want.
+Aby ominąć `"nasłuchiwanie"`, zdarzenie jest ustawiane w kolejce w `nextTick()` aby umożliwić uruchomienie skryptu w całości. Co pozwala użytkownikowi ustawić dowolne programy obsługi zdarzeń, które chce.
 
-## `process.nextTick()` vs `setImmediate()`
+## `process.nextTick()` vs `ustawNatychmiastowo()`
 
-We have two calls that are similar as far as users are concerned, but their names are confusing.
+O ile te dwa wywołania są podobne dla użytkowników, to ich nazwy są mylące.
 
-* `process.nextTick()` fires immediately on the same phase
-* `setImmediate()` fires on the following iteration or 'tick' of the event loop
+* `process.nextTick()` odpala się natychmiast w tej samej fazie
+* `ustawNatychmiastowo()` odpala się w w następującej iteracji lub "kleszczu" pętli zdarzeń
 
-In essence, the names should be swapped. `process.nextTick()` fires more immediately than `setImmediate()` but this is an artifact of the past which is unlikely to change. Making this switch would break a large percentage of the packages on npm. Every day more new modules are being added, which mean every day we wait, more potential breakages occur. While they are confusing, the names themselves won't change.
+Zasadniczo, nazwy powinny być wymieniane. `process.nextTick()` odpala więcej natychmiastowo niż `ustawNatychmiastowo()` ale jest to artefakt przeszłości, który mało prawdopodobne, że ulegnie zmianie. Dokonanie tego przełącznika byłoby bardzo dużym procentem pakietów na npm. Codziennie coraz więcej nowych modułów zostaje dodanych, co oznacza, że każdego dnia czekamy, pojawia się więcej potencjalnych awarii. Choć są pogmatwane, same nazwy się nie zmienią.
 
-*We recommend developers use `setImmediate()` in all cases because it's easier to reason about (and it leads to code that's compatible with a wider variety of environments, like browser JS.)*
+*Zalecamy programistom stosowanie `ustawNatychmiastowo()` we wszystkich przypadkach, ponieważ jest łatwiejsze do zrozumienia (i prowadzi do kodu kompatybilnego z szerszą gamą środowisk, takich jak przeglądarka JS.)*
 
 ## Why use `process.nextTick()`?
 

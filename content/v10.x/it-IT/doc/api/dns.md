@@ -2,26 +2,24 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-The `dns` module contains functions belonging to two different categories:
+Il Modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
-1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. This category contains only one function: [`dns.lookup()`][]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
 
-For example, looking up `iana.org`.
+Ad esempio, guarda `iana.org`.
 
 ```js
-const dns = require('dns');
-
 dns.lookup('iana.org', (err, address, family) => {
   console.log('address: %j family: IPv%s', address, family);
 });
-// address: "192.0.43.8" family: IPv4
+// indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
-2) Functions that connect to an actual DNS server to perform name resolution, and that *always* use the network to perform DNS queries. This category contains all functions in the `dns` module *except* [`dns.lookup()`][]. These functions do not use the same set of configuration files used by [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
+2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`* tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
 
-Below is an example that resolves `'archive.org'` then reverse resolves the IP addresses that are returned.
+Di seguito è riportato un esempio di risoluzione di `'archive.org'`, quindi l'indirizzo IP che ci viene restituito è risolto all'inverso.
 
 ```js
 const dns = require('dns');
@@ -42,30 +40,30 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-There are subtle consequences in choosing one over the other, please consult the [Implementation considerations section](#dns_implementation_considerations) for more information.
+Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
 
-## Class: dns.Resolver
+## Classe: dns.Resolver
 
 <!-- YAML
 added: v8.3.0
 -->
 
-An independent resolver for DNS requests.
+Un resolver indipendente per le richieste DNS.
 
-Note that creating a new resolver uses the default server settings. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolver:
+Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Le impostazioni utilizzate per un resolver che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri resolver:
 
 ```js
 const { Resolver } = require('dns');
 const resolver = new Resolver();
 resolver.setServers(['4.4.4.4']);
 
-// This request will use the server at 4.4.4.4, independent of global settings.
+// Questa richiesta userà il server 4.4.4.4. indipendentemente dalle impostazioni globali.
 resolver.resolve4('example.org', (err, addresses) => {
   // ...
 });
 ```
 
-The following methods from the `dns` module are available:
+Sono disponibili i seguenti metodi dal modulo `dns`:
 
 - [`resolver.getServers()`][`dns.getServers()`]
 - [`resolver.setServers()`][`dns.setServers()`]
@@ -89,7 +87,7 @@ The following methods from the `dns` module are available:
 added: v8.3.0
 -->
 
-Cancel all outstanding DNS queries made by this resolver. The corresponding callbacks will be called with an error with code `ECANCELLED`.
+Cancella tutte le query DNS eccezionali effettuate da questo resolver. I callback corrispondenti verranno identificati con il codice di errore `ECANCELLED`.
 
 ## dns.getServers()
 
@@ -97,9 +95,9 @@ Cancel all outstanding DNS queries made by this resolver. The corresponding call
 added: v0.11.3
 -->
 
-- Returns: {string[]}
+- Restituisce: {string[]}
 
-Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
+Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
 
 <!-- eslint-disable semi-->
 
@@ -125,24 +123,24 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
-  - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
-  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
-  - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
+  - `family`{integer} Il record family. Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
+  - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
+  - `all` {boolean} Quando `true`, il callback restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
+  - `verbatim` {boolean} Quando `true`. il callback riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il resolver DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
-  - `address` {string} A string representation of an IPv4 or IPv6 address.
-  - `family` {integer} `4` or `6`, denoting the family of `address`.
+  - `address` {string} Una stringa che rappresenta un indirizzo IPv4 o IPv6.
+  - `family` {integer} `4` o `6`, che indica la famiglia di `address`.
 
-Resolves a hostname (e.g. `'nodejs.org'`) into the first found A (IPv4) or AAAA (IPv6) record. All `option` properties are optional. If `options` is an integer, then it must be `4` or `6` – if `options` is not provided, then IPv4 and IPv6 addresses are both returned if found.
+Risolve un hostname (es. `'nodejs.org'`) nei primi record A (IPv4) oppure AAAA (Ipv6) trovati. Tutte le proprietà `option` sono facoltative. Se `options` è un intero, allora deve essere `4` o `6` - se `options` non è fornito, allora gli indirizzi IPv4 e IPv6 saranno restituiti entrambi, se trovati.
 
-With the `all` option set to `true`, the arguments for `callback` change to `(err, addresses)`, with `addresses` being an array of objects with the properties `address` and `family`.
+Con `tutte` le opzioni impostate a `true`, gli argomenti per il `callback` cambiano `(err, addresses)`, in `addresses` diventando quindi un array di oggetti con le proprietà `address` e `family`.
 
-On error, `err` is an [`Error`][] object, where `err.code` is the error code. Keep in mind that `err.code` will be set to `'ENOENT'` not only when the hostname does not exist but also when the lookup fails in other ways such as no available file descriptors.
+In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptors.
 
-`dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
+`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nome con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
 
-Example usage:
+Esempio di utilizzo:
 
 ```js
 const dns = require('dns');
@@ -152,18 +150,18 @@ const options = {
 };
 dns.lookup('example.com', options, (err, address, family) =>
   console.log('address: %j family: IPv%s', address, family));
-// address: "2606:2800:220:1:248:1893:25c8:1946" family: IPv6
+// indirizzo: "2606:2800:220:1:248:1893:25c8:1946" famiglia: IPv6
 
-// When options.all is true, the result will be an Array.
+// Quando options.all è true, i risultati saranno un Array.
 options.all = true;
 dns.lookup('example.com', options, (err, addresses) =>
   console.log('addresses: %j', addresses));
-// addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
+// indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
 If this method is invoked as its [`util.promisify()`][]ed version, and `all` is not set to `true`, it returns a `Promise` for an `Object` with `address` and `family` properties.
 
-### Supported getaddrinfo flags
+### Flags getaddrinfo supportati
 
 The following flags can be passed as hints to [`dns.lookup()`][].
 

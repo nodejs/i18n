@@ -1002,7 +1002,7 @@ const setCookie = response.getHeader('set-cookie');
 added: v7.7.0
 -->
 
-* Returns: {string[]}
+* Restituisce: {string[]}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
