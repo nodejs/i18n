@@ -2959,7 +2959,7 @@ https://github.com/nodejs/node/commit/0b925d075d359d03426f0b32bb58a5e05825b4ea
 
 * Usar kqueue en builds macintosh recientes
 * Corregir addrlen para sockets de unix_dgram (Benjamin Kramer)
-* Corregir stats.isDirectory() y demás (Benjamin Kramer)
+* Corregir stats.isDirectory() y amigas (Benjamin Kramer)
 * Actualizar http-parser, V8 a 2.3.5
 
 <a id="0.1.102"></a>
@@ -2987,57 +2987,57 @@ https://github.com/nodejs/node/commit/2a4568c85f33869c75ff43ccd30f0ec188b43eab
 https://github.com/nodejs/node/commit/0174ceb6b24caa0bdfc523934c56af9600fa9b58
 
 * Añadido env a child_process.exec (Сергей Крыжановский)
-* Allow modules to optionally be loaded in separate contexts with env var NODE_MODULE_CONTEXTS=1.
+* Permitir que opcionalmente los módulos sean cargados en contextos separados con la variable de ambiente NODE_MODULE_CONTEXTS=1.
 
-* setTTL and setBroadcast for dgram (Matt Ranney)
+* setTTL y setBroadcast para dgram (Matt Ranney)
 
-* Use execPath for default NODE_PATH, not installPrefix (Isaac Schlueter)
+* Usar execPath para el NODE_PATH por defecto, no installPrefix (Isaac Schlueter)
 
-* Support of console.dir + console.assert (Jerome Etienne)
+* Soporte de console.dir + console.assert (Jerome Etienne)
 
-* on() as alias to addListener()
-* Use javascript port of Ronn to build docs (Jérémy Lal)
-* Upgrade V8 to 2.3.0
+* on() como alias para addListener()
+* Utilizar puerto javascript de Ronn para compilar docs (érémy Lal)
+* Actualizar V8 a 2.3.0
 
 <a id="0.1.100"></a>
 
-## 2010.07.03, Version 0.1.100
+## 2010.07.03, Versión 0.1.100
 
 https://github.com/nodejs/node/commit/a6b8586e947f9c3ced180fe68c233d0c252add8b
 
 * process.execPath (Marshall Culpepper)
 * sys.pump (Mikeal Rogers)
-* Remove ini and mjsunit libraries.
-* Introduce console.log() and friends.
-* Switch order of arguments for Buffer.write (Blake Mizerany)
-* On overlapping buffers use memmove (Matt Ranney)
-* Resolve .local domains with getaddrinfo()
-* Upgrade http-parser, V8 to 2.2.21
+* Remover librerías ini y mjsunit.
+* Introducir console.log() y amigas.
+* Intercambiar orden de los argumentos para Buffer.write (Blake Mizerany)
+* Utilizar memmove en buffers sobrepuestos (Matt Ranney)
+* Resolver dominios .local con getaddrinfo()
+* Actualizar http-parser, V8 a 2.2.21
 
 <a id="0.1.99"></a>
 
-## 2010.06.21, Version 0.1.99
+## 2010.06.21, Versión 0.1.99
 
 https://github.com/nodejs/node/commit/a620b7298f68f68a855306437a3b60b650d61d78
 
-* Datagram sockets (Paul Querna)
-* fs.writeFile could not handle utf8 (Felix Geisendörfer) and now accepts Buffers (Aaron Heckmann)
+* Sockets de datagrama (Paul Querna)
+* fs.writeFile no podía manejar utf8 (Felix Geisendörfer) y ahora acepta Buffers (Aaron Heckmann)
 
-* Fix crypto memory leaks.
+* Reparar fugas de memoria de crypto.
 
-* A replacement for decodeURIComponent that doesn't throw. (Isaac Schlueter)
+* Un remplazo para decodeURIComponent que no arroja. (Isaac Schlueter)
 
-* Only concatenate some incoming HTTP headers. (Peter Griess)
+* Solo concatenar algunas cabeceras HTTP entrantes. (Peter Griess)
 
-* Upgrade V8 to 2.2.18
+* Actualizar V8 a 2.2.18
 
 <a id="0.1.98"></a>
 
-## 2010.06.11, Version 0.1.98
+## 2010.06.11, Versión 0.1.98
 
 https://github.com/nodejs/node/commit/10d8adb08933d1d4cea60192c2a31c56d896733d
 
-* Port to Windows/Cygwin (Raffaele Sena)
+* Conectar con puerto hacia Windows/Cygwin (Raffaele Sena)
 * File descriptor passing on unix sockets. (Peter Griess)
 * Simple, builtin readline library. REPL is now entered by executing "node" without arguments.
 
