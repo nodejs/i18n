@@ -459,17 +459,17 @@ indefinido
 
 Varios comportamientos del REPL de Node.js pueden ser personalizados utilizando las siguientes variables de entorno:
 
-* `NODE_REPL_HISTORY` - When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` will disable persistent REPL history. Whitespace will be trimmed from the value.
-* `NODE_REPL_HISTORY_SIZE` - Controls how many lines of history will be persisted if history is available. Must be a positive number. **Default:** `1000`.
-* `NODE_REPL_MODE` - May be either `'sloppy'` or `'strict'`. **Default:** `'sloppy'`, which will allow non-strict mode code to be run.
+* `NODE_REPL_HISTORY` - Cuando una ruta válida es dada, la historia persistente del REPL será guardada al archivo especificado en vez de `.node_repl_history` en el directorio hogar del usuario. Establecer este valor a `''` deshabilitará la historia persistente del REPL. El espacio en blanco será recortado del valor.
+* `NODE_REPL_HISTORY_SIZE` Controla el número de lineas que persistirán si se dispone de la historia. Debe ser un número positivo. **Predeterminado:** `1000`.
+* `NODE_REPL_MODE` - Puede ser tanto el valor `'descuidado'` como el `'estricto'`. **Predeterminado:** `'descuidado'`, el cuál permitirá que el código en modo no-estricto sea ejecutado.
 
-### Persistent History
+### Historia Persistente
 
-By default, the Node.js REPL will persist history between `node` REPL sessions by saving inputs to a `.node_repl_history` file located in the user's home directory. This can be disabled by setting the environment variable `NODE_REPL_HISTORY=''`.
+Por defecto, el REPL de Node.js persistirá en la historia entre el `nodo` de las sesiones REPL al guardar las entradas en el archivo `.node_repl_history` ubicado en el directorio hogar del usuario. Esto puede ser deshabilitado al establecer la variable de entorno`NODE_REPL_HISTORY=''`.
 
-### Using the Node.js REPL with advanced line-editors
+### Usando el REPL de Node.js con editores de líneas avanzados
 
-For advanced line-editors, start Node.js with the environment variable `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
+Para editores de línea avanzados, inicie Node.js con la variable de entorno `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
 
 For example, the following can be added to a `.bashrc` file:
 
