@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 `TCPSERVERWRAP` 是接收连接的服务器。
 
-`TCPWRAP` 是来自客户端的新连接。 当创建新连接时，`TCPWrap`实例会立刻被构造。 This happens outside of any JavaScript stack (side note: a `executionAsyncId()` of `0` means it's being executed from C++, with no JavaScript stack above it). With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+`TCPWRAP` 是来自客户端的新连接。 当创建新连接时，`TCPWrap`实例会立刻被构造。 这个过程会发生于任何 JavaScript 栈之外 (侧注：`0` 的 `executionAsyncId()` 意味着它是在C++中被运行，且其上面没有 JavaScript 栈)。 只有这些信息，不可能将这些资源就它们被创建的原因链接到一起，因此`triggerAsyncId`的任务就是负责传播什么资源负责新资源的存在。
 
 ###### `resource`
 
