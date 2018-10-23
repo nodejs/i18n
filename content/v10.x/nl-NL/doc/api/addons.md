@@ -127,9 +127,9 @@ Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en 
 
 De bestandsnaam-extentie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). De [`require()`](modules.html#modules_require) functie is geschreven om te zoeken naar bestanden met de `.node` bestands-extentie en initialiseert deze als dynamisch gekoppelde bibliotheken.
 
-Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extentie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extentie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. Bijvoorbeeld, als een bestand `addon.js` in dezelfde map zit als de binair `addon.node`, dan zal [`require('addon')`](modules.html#modules_require) voorkeur geven aan het bestand `addon.js`, en die in plaats daarvan laden.
 
-## Native Abstractions for Node.js
+## Oorspronkelijke abstracties voor Node.js
 
 Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
