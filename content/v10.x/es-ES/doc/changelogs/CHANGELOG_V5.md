@@ -934,14 +934,14 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * Mejoras de rendimiento menores: 
   * **lib**: Usar las funciones flecha en vez de vincular donde sea posible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622). 
     * (Faltante por un error de v5.4.0)
-  * **module**: cache stat() results more aggressively (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
-  * **querystring**: mejorar el rendimiento parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
+  * **module**: el stat() caché resulta más agresivo (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
+  * **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 
-### Known issues
+### Problemas conocidos
 
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos host completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 * Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
