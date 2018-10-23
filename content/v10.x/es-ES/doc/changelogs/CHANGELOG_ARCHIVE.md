@@ -3181,18 +3181,18 @@ https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
       cada dos segundos.
     
     * Mejorar la implementación de nextTick.
-    * Add primitive support for Upgrading HTTP connections.
-      (See commit log for docs 760bba5)
+    * Añadir soporte primitivo para Actualizar las conexiones HTTP.
+      (Ver registro de commit para docs 760bba5)
     
-    * Add timeout and maxBuffer options to child_process.exec
-    * Fix bugs.
+    * Añadir opciones timeout y maxBuffer a child_process.exec
+    * Corregir bugs.
     
-    * Upgrade V8 to 2.2.3.1
+    * Actualizar V8 a 2.2.3.1
     
 
 <a id="0.1.90"></a>
 
-## 2010.04.09, Version 0.1.90
+## 2010.04.09, Versión 0.1.90
 
 https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
