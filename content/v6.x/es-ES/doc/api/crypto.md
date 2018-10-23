@@ -535,9 +535,9 @@ deprecated: v5.2.0
 
 > Estabilidad: 0 - Desaprobado
 
-Establece la clave pública EC Diffie-Hellman. La codificación de claves puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `input_encoding` es proporcionado, `otra_llave_pública` es esperada paraque sea un string; de otra manera, se espera un[`Buffer`][].
+Establece la clave pública EC Diffie-Hellman. La codificación de claves puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `encoding` es proporcionado, se espera que `public_key` sea una string; de otra manera, se espera un [`Buffer`][].
 
-Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, tanto [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -546,9 +546,9 @@ const crypto = require('crypto');
 const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
-// llaves privadas. Seria poco recom; endable usaruna clave privada predecible en una 
-// applicacion real.
+// Note: Esta es una forma de acceso directo para especificar una de las anteriores
+// claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
+// aplicación real.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
