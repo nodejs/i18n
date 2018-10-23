@@ -164,8 +164,8 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 * `asyncId` {number} 异步资源的唯一 ID。
 * `type` {string} 异步资源的类型。
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
+* `triggerAsyncId` {number} 异步资源在其被创建的执行上下文中的唯一 ID。
+* `resource` {Object} 对代表异步操作的资源的引用，在*destroy*时需要被释放。
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
