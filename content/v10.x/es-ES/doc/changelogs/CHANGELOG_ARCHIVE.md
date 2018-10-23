@@ -3106,13 +3106,13 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 
 <a id="0.1.94"></a>
 
-## 2010.05.06, Version 0.1.94
+## 2010.05.06, Versión 0.1.94
 
 https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
-* Look in /usr/local/lib/node for modules, so that there's a way to install modules globally (Issac Schlueter)
+* Buscar módulos en /usr/local/lib/node, de modo que haya una forma de instalar módulos globalmente (Issac Schlueter)
 
-* SSL improvements (Rhys Jones, Paulo Matias)
+* Mejoras de SSL (Rhys Jones, Paulo Matias)
 
 * Added c-ares headers for linux-arm (Jonathan Knezek)
 * Add symbols to release build
