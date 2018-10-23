@@ -502,7 +502,7 @@ Establece la clave pública Diffie-Hellman. If the `encoding` argument is provid
 added: v0.11.12
 -->
 
-Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante el inicio del objeto `DiffieHellman`.
+Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante la inicialización del objeto `DiffieHellman`.
 
 Los valores a continuación son válidos para esta propiedad (como es definido en el módulo`constants`):
 
