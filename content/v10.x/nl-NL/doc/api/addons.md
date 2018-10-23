@@ -125,9 +125,9 @@ Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en 
 
 ### Addons laden met behulp van require()
 
-De bestandsnaam-extentie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+De bestandsnaam-extentie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). De [`require()`](modules.html#modules_require) functie is geschreven om te zoeken naar bestanden met de `.node` bestands-extentie en initialiseert deze als dynamisch gekoppelde bibliotheken.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extentie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions for Node.js
 
