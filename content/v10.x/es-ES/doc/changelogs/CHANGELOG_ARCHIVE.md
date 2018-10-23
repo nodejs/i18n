@@ -3037,7 +3037,7 @@ https://github.com/nodejs/node/commit/a620b7298f68f68a855306437a3b60b650d61d78
 
 https://github.com/nodejs/node/commit/10d8adb08933d1d4cea60192c2a31c56d896733d
 
-* Conectar con puerto hacia Windows/Cygwin (Raffaele Sena)
+* Conectar con puerto a Windows/Cygwin (Raffaele Sena)
 * Descriptor de archivos pasando sockets de unix. (Peter Griess)
 * Librería de readline integrada y simple. Ahora se accede al REPL ejecutando "node" sin argumentos.
 
@@ -3053,31 +3053,31 @@ https://github.com/nodejs/node/commit/0c1aa36835fa6a3557843dcbc6ed6714d353a783
 
 * regulación de HTTP: los mensajes de salida emiten "drain" y write() devuelve "false" cuando el buffer de envío está lleno.
 
-* API: readFileSync without encoding argument now returns a Buffer
+* API: ahora readFileSync sin argumento de codificación devuelve un Buffer
 
-* Improve Buffer C++ API; addons now compile with debugging symbols.
-* Improvements to path.extname() and REPL; add fs.chown().
-* fs.ReadStream now emits buffers, fs.readFileSync returns buffers.
-* Bugfix: parsing HTTP responses to HEAD requests.
-* Port to OpenBSD.
-* Upgrade V8 to 2.2.12, libeio, http-parser.
+* Mejorar API C++ de Buffer; los complementos ahora compilan con símbolos de depuración.
+* Mejoras a path.extname() y REPL; añadir fs.chown().
+* Ahora fs.ReadStream emite buffers, fs.readFileSync devuelve buffers.
+* Corrección de bug: dirigir el análisis de las respuestas HTTP a las peticiones de HEAD.
+* Conectar por puerto a OpenBSD.
+* Actualizar V8 a 2.2.12, libeio, http-parser.
 
 <a id="0.1.96"></a>
 
-## 2010.05.21, Version 0.1.96
+## 2010.05.21, Versión 0.1.96
 
 https://github.com/nodejs/node/commit/9514a4d5476225e8c8310ce5acae2857033bcaaa
 
-* Thrown errors in http and socket call back get bubbled up.
-* Add fs.fsync (Andrew Johnston)
-* Bugfix: signal unregistering (Jonas Pfenniger)
-* Added better error messages for async and sync fs calls with paths (TJ Holowaychuk)
+* Los errores arrojados en http y las callbacks burbujean.
+* Aladir fs.fsync (Andrew Johnston)
+* Corrección de bug: emitir señal de eliminación de registro (Jonas Pfenniger)
+* Fueron añadidos mejores mensajes de error para las llamadas sincrónicas y asincrónicas del fs con rutas (TJ Holowaychuk)
 
-* Support arrays and strings in buffer constructor. (Felix Geisendörfer)
+* Soportar arrays y strings en el constructor de buffer. (Felix Geisendörfer)
 
-* Fix errno reporting in DNS exceptions.
+* Corregir el reporte de errno en las excepciones de DNS.
 
-* Support buffers in fs.WriteStream.write.
+* Soportar buffers en fs.WriteStream.write.
 * Bugfix: Safely decode a utf8 streams that are broken on a multbyte character (http and net). (Felix Geisendörfer)
 
 * Make Buffer's C++ constructor public.
