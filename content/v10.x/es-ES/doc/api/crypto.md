@@ -597,11 +597,11 @@ const assert = require('assert');
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Genera las llaves de Bob...
+// Generar las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Intercambian y generan el secreto...
+// Intercambiar y generar el secreto...
 const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
  
