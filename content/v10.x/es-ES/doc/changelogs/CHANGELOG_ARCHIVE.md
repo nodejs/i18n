@@ -3097,7 +3097,7 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 * Corregir reporte de errores en las callbacks de child_process
 * Mejorar la lógica para probar si un argumento es un puerto
 * Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
-* Bugfix: Some http responses being truncated (appeared in 0.1.94)
+* Corrección de bug: Algunas respuestas http estaban siendo truncadas (aparecido en 0.1.94)
 * Fix long standing net idle timeout bugs. Enable 2 minute timeout by default in HTTP servers.
 
 * Add fs.fstat (Ben Noordhuis)
