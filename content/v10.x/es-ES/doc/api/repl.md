@@ -469,19 +469,19 @@ Por defecto, el REPL de Node.js persistirá en la historia entre el `nodo` de la
 
 ### Usando el REPL de Node.js con editores de líneas avanzados
 
-Para editores de línea avanzados, inicie Node.js con la variable de entorno `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
+Para editores de línea avanzados, inicie Node.js con la variable de entorno `NODE_NO_READLINE=1`. Esto iniciará al REPL principal y el depurador en configuraciones canónicas terminales, lo cual permitirá utilizarlos con `rlwrap`.
 
-For example, the following can be added to a `.bashrc` file:
+Por ejemplo, el siguiente código puede ser añadido al archivo `.bashrc`:
 
 ```text
 alias node="env NODE_NO_READLINE=1 rlwrap node"
 ```
 
-### Starting multiple REPL instances against a single running instance
+### Inicializando múltiples instancias en vez de inicializar solamente una
 
-It is possible to create and run multiple REPL instances against a single running instance of Node.js that share a single `global` object but have separate I/O interfaces.
+Es posible crear e inicializar múltiples instancias REPL en vez de una sola instancia de Node.js que comparta único objeto `global` pero que tenga diferentes interfaces de entrada y salida.
 
-The following example, for instance, provides separate REPLs on `stdin`, a Unix socket, and a TCP socket:
+El siguiente ejemplo, por ejemplo, provee REPLs separadas en `stdin`, un socket de Linux, y un socket TCP:
 
 ```js
 const net = require('net');
@@ -517,7 +517,7 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-Running this application from the command line will start a REPL on stdin. Other REPL clients may connect through the Unix socket or TCP socket. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
+Ejecutar esta aplicación desde la línea de comandos inicializará un REPL en stdin. Otros clientes REPL pueden conectarse a través del socket Unix o el socket TCP. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
 
 By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
 
