@@ -276,9 +276,9 @@ replServer.on('exit', () => {
 added: v0.11.0
 -->
 
-El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` colocada a `true`. The listener callback will be called with a reference to the `context` object as the only argument.
+El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` colocada a `true`. La función oyente de devolución será llamado con una referencia al objeto del `context` como único argumento.
 
-This can be used primarily to re-initialize REPL context to some pre-defined state as illustrated in the following simple example:
+Esto puede ser usado primeramente para reiniciar el contexto REPL a un estado pre-definido como es ilustrado en el siguiente ejemplo:
 
 ```js
 const repl = require('repl');
@@ -293,7 +293,7 @@ initializeContext(r.context);
 r.on('reset', initializeContext);
 ```
 
-When this code is executed, the global `'m'` variable can be modified but then reset to its initial value using the `.clear` command:
+Cuando el código es ejecutado, la variable global `'m'` puede ser modificada pero luego reseteada a su valor inicial utilizando el comando `.clear`:
 
 <!-- eslint-skip -->
 
@@ -318,10 +318,10 @@ Clearing context...
 added: v0.3.0
 -->
 
-* `keyword` {string} The command keyword (*without* a leading `.` character).
-* `cmd` {Object|Function} The function to invoke when the command is processed.
+* `keyword` {string} El comando keyword (*sin un* caracter inicial `.`).
+* `cmd` {Object|Function} La función que se utiliza cuando el comando está siendo procesado.
 
-The `replServer.defineCommand()` method is used to add new `.`-prefixed commands to the REPL instance. Such commands are invoked by typing a `.` followed by the `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
+El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocadaos al escribir un `.` seguido de `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
 
 * `help` {string} Help text to be displayed when `.help` is entered (Optional).
 * `action` {Function} The function to execute, optionally accepting a single string argument.
