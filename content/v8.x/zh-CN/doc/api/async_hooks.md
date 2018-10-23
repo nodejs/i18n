@@ -136,11 +136,11 @@ function debug(...args) {
 
 #### `asyncHook.enable()`
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* 返回：{AsyncHook} 对`asyncHook`的引用。
 
-Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
+为给定的 `AsyncHook` 实例启用回调函数。 If no callbacks are provided enabling is a noop.
 
-The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+在默认情况下，`AsyncHook` 实例被禁用。 如果 `AsyncHook` 实例需要在创建后立即被启用，则可以使用如下模式。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -150,20 +150,20 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### `asyncHook.disable()`
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* 返回：{AsyncHook} 对`asyncHook`的引用。
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of AsyncHook callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
+从将被执行的 AsyncHook 回调函数的全局池中禁用给定 ` AsyncHook ` 实例的回调函数。 一旦钩子被禁用，在被启用之前它不会被再次调用。
 
-For API consistency `disable()` also returns the `AsyncHook` instance.
+为保持 API 的一致性，`disable()` 也返回 `AsyncHook` 的实例。
 
-#### Hook Callbacks
+#### 钩子回调函数
 
-Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
+异步事件生命周期中的关键事件被分为四种类型：实例化，在回调函数被调用之前/之后，以及当实例被销毁时。
 
 ##### `init(asyncId, type, triggerAsyncId, resource)`
 
-* `asyncId` {number} A unique ID for the async resource.
-* `type` {string} The type of the async resource.
+* `asyncId` {number} 异步资源的唯一 ID。
+* `type` {string} 异步资源的类型。
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
