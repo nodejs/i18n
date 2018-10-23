@@ -927,15 +927,15 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Cambios notables
 
 * **events**: asegurate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
-* **fs**: add autoClose option to fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
-* **http**: improves expect header handling (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
-* **node**: allow preload modules with -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
-* **v8,src**: expose statistics about heap spaces (`v8.getHeapSpaceStatistics()`) (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* Minor performance improvements: 
-  * **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622). 
-    * (Mistakenly missing from v5.4.0)
+* **fs**: añadir opción autoClose para fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
+* **http**: mejorar el manejo de la cabecera esperada (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
+* **node**: permitir precargar módulos con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
+* **v8,src**: exponer estadísticas sobre los espacios del montículo (`v8.getHeapSpaceStatistics()`) (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
+* Mejoras de rendimiento menores: 
+  * **lib**: Usar las funciones flecha en vez de vincular donde sea posible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622). 
+    * (Faltante por un error de v5.4.0)
   * **module**: cache stat() results more aggressively (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
-  * **querystring**: improve parse() performance (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
+  * **querystring**: mejorar el rendimiento parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 
 ### Known issues
 
