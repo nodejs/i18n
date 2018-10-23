@@ -3196,8 +3196,8 @@ https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
 
 https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
-    * Merge writing of networking system (net2)
-     - New Buffer object for binary data.
+    * Unificar la escritura del sistema de red (net2)
+     - Nuevo objeto Buffer para datos binarios.
      - Support UNIX sockets, Pipes
      - Uniform stream API
      - Currently no SSL
