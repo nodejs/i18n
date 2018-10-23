@@ -390,9 +390,9 @@ deprecated: v9.0.0
 * `rest` {any} cualquier parámetro del comando de la palabra clave
 * Devuelve: {boolean}
 
-> Stability: 0 - Deprecated.
+> Estabilidad: 0-Desaprobada.
 
-An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
+Un método interno usado para analizar y ejecutar las palabras claves del `REPLServer`. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
 ## repl.start([options])
 
