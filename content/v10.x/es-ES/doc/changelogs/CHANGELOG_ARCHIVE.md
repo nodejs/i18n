@@ -3114,17 +3114,17 @@ https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
 * Mejoras de SSL (Rhys Jones, Paulo Matias)
 
-* Added c-ares headers for linux-arm (Jonathan Knezek)
-* Add symbols to release build
-* HTTP upgrade improvements, docs (Micheil Smith)
-* HTTP server emits 'clientError' instead of printing message
-* Bugfix: Don't emit 'error' twice from http.Client
-* Bugfix: Ignore SIGPIPE
-* Bugfix: destroy() instead of end() http connection at end of pipeline
+* Fueron añadidas cabeceras de c-ares para el brazo de linux (Jonathan Knezek)
+* Añadir símbolos para el lanzamiento de la compilación
+* Mejoras de la actualización de HTTP, docs (Micheil Smith)
+* El servidor de HTTP emite "clientError" en lugar de imprimir mensaje
+* Corrección de bug: No emitir "error" dos veces desde http.Client
+* Corrección de bug: Ignorar SIGPIPE
+* Corrección de bug: hacer destroy() en lugar de end() sobre la conexión de http al final de la tubería
 
-* Bugfix: http.Client may be prematurely released back to the free pool. (Thomas Lee)
+* Corrección de bug: puede que http.Client sea soltado de vuelta en el pool libre. (Thomas Lee)
 
-* Upgrade V8 to 2.2.8
+* Actualizar V8 a 2.2.8
 
 <a id="0.1.93"></a>
 
