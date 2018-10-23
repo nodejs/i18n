@@ -167,9 +167,9 @@ Disable the callbacks for a given `AsyncHook` instance from the global pool of `
 * `triggerAsyncId` {number} 异步资源在其被创建的执行上下文中的唯一 ID。
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+当一个类被构造时，如果有 *可能* 会发出异步事件，则回调函数会被调用。 这并 *不* 意味着在 `destroy` 被调用之前实例必须调用 `before`/`after`，只是这种可能性存在。
 
-This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
+这种行为可以通过类似如下操作进行观察：打开一个资源然后在资源可用之前立即关闭它。 下面的代码片段可以就此进行演示。
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
@@ -177,11 +177,11 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Every new resource is assigned an ID that is unique within the scope of the current process.
+在当前进程的范围内，将为每个新资源分配一个唯一的 ID。
 
 ###### `type`
 
-The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
+`type` 是一个用来识别资源类型的字符串，它会导致 `init` 被调用。 Generally, it will correspond to the name of the resource's constructor.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
