@@ -369,7 +369,7 @@ Cuando una entrada de múltiples lines está siendo introducida, una elipsis se 
 
 Cuando `preserveCursor` es `true`, la colocación del cursor no se restablecera a `0`.
 
-The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+El método `replServer.displayPrompt` está destinado principalmente para ser llamado desde dentro la función de acción para comandos registrados usando el método `replServer.defineCommand()`.
 
 ### replServer.clearBufferedCommand()
 
