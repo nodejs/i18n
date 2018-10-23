@@ -517,10 +517,10 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-Ejecutar esta aplicación desde la línea de comandos inicializará un REPL en stdin. Otros clientes REPL pueden conectarse a través del socket Unix o el socket TCP. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
+Ejecutar esta aplicación desde la línea de comandos inicializará un REPL en stdin. Otros clientes REPL pueden conectarse a través del socket Unix o el socket TCP. `telnet`, por ejemplo, es útil para conectarse a los sockets TCP, mientras los `socat` pueden ser usados por ambos, tanto Unix como sockets TCP.
 
-By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
+Al iniciar un REPL desde un servidor Unix basado en sockets en vez de stdin, es posible conectarse a un proceso Node.js de larga duración sin reiniciarlo.
 
-For an example of running a "full-featured" (`terminal`) REPL over a `net.Server` and `net.Socket` instance, see: <https://gist.github.com/2209310>.
+Por ejemplo al ejecutar una (`terminal`) REPL "con funciones completas" sobre un `net.Server` y una instancia `net.Socket`, véase: <https://gist.github.com/2209310>.
 
-For an example of running a REPL instance over [curl(1)](https://curl.haxx.se/docs/manpage.html), see: <https://gist.github.com/2053342>.
+Por un ejemplo de una instancia REPL ejecutándose sobre [curl(1)](https://curl.haxx.se/docs/manpage.html), véase: <https://gist.github.com/2053342>.
