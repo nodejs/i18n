@@ -232,7 +232,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 在使用 Promises 时，`resource` 会含有`promise`属性，该属性引用正在被初始化的 Promise，而`parentId`属性则被设置为 父 Promise 的`asyncId`，当然前提是它存在，否则为 `undefined`。 例如，当`b = a.then(handler)`时，`a` 会被认为是 `b` 的父Promise。
 
-*Note*: In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
+*注意*：有些时候处于性能考虑，资源对象会被重用，因此将其作为 `WeakMap` 中的键值或向其添加属性是不安全的。
 
 ###### Asynchronous context example
 
