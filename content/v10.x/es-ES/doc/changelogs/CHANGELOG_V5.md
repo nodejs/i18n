@@ -917,16 +917,16 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`5d55f59c85`](https://github.com/nodejs/node/commit/5d55f59c85)] - **tools**: añadir tipos de propiedad en la documentación de JSON (Timothy Gu) [#4884](https://github.com/nodejs/node/pull/4884)
 * [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subkeys en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
 * [[`34df6a5c0c`](https://github.com/nodejs/node/commit/34df6a5c0c)] - **tools**: habilitar reglas de error ESLint clasificadas (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
-* [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: fix setting path containing an ampersand (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
-* [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: change scoping of variables with let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
+* [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: reparar la ruta de configuración que contenga un et (&) (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
+* [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: cambiar el alcance de las variables con let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
 <a id="5.5.0"></a>
 
-## 2016-01-20, Version 5.5.0 (Stable), @evanlucas
+## 2016-01-20, Versión 5.5.0 (Etable), @evanlucas
 
-### Notable Changes
+### Cambios notables
 
-* **events**: make sure console functions exist (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
+* **events**: asegurate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: add autoClose option to fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
 * **http**: improves expect header handling (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
 * **node**: allow preload modules with -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
