@@ -3038,20 +3038,20 @@ https://github.com/nodejs/node/commit/a620b7298f68f68a855306437a3b60b650d61d78
 https://github.com/nodejs/node/commit/10d8adb08933d1d4cea60192c2a31c56d896733d
 
 * Conectar con puerto hacia Windows/Cygwin (Raffaele Sena)
-* File descriptor passing on unix sockets. (Peter Griess)
-* Simple, builtin readline library. REPL is now entered by executing "node" without arguments.
+* Descriptor de archivos pasando sockets de unix. (Peter Griess)
+* Librería de readline integrada y simple. Ahora se accede al REPL ejecutando "node" sin argumentos.
 
-* Add a parameter to spawn() that sets the child's stdio file descriptors. (Orlando Vazquez)
+* Añadir a spawn() un parámetro que establezca los descriptores de archivo stdio del proceso secundario. (Orlando Vazquez)
 
-* Upgrade V8 to 2.2.16, http-parser fixes, upgrade c-ares to 1.7.3.
+* Actualizar V8 a 2.2.16, correcciones de http-parser, actualizar c-ares a 1.7.3.
 
 <a id="0.1.97"></a>
 
-## 2010.05.29, Version 0.1.97
+## 2010.05.29, Versión 0.1.97
 
 https://github.com/nodejs/node/commit/0c1aa36835fa6a3557843dcbc6ed6714d353a783
 
-* HTTP throttling: outgoing messages emit 'drain' and write() returns false when send buffer is full.
+* regulación de HTTP: los mensajes de salida emiten "drain" y write() devuelve "false" cuando el buffer de envío está lleno.
 
 * API: readFileSync without encoding argument now returns a Buffer
 
