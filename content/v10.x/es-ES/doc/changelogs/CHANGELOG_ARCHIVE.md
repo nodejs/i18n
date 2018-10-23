@@ -2903,24 +2903,24 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Arreglar el análisis de la memoria de linux (Vitali Lovich)
 * inspeccionar los nombres de las funciones para mostrar (Jorge Chamorro Bieling)
 * Casos límite de uncaughtException (Felix Geisendörfer)
-* TCP clients now buffer writes before connection
-* Rename sys module to 'util' (Micheil Smith)
-* Properly set stdio handlers to blocking on SIGTERM and SIGINT (Tom Hughes)
+* Los clientes TCP ahora almacenan las escrituras en buffer antes de la conexión
+* Renombrar el módulo "sys" como "util" (Micheil Smith)
+* Establecer correctamente los manejadores de stdio para que bloqueen ante SIGTERM y SIGINT (Tom Hughes)
 
-* Add destroy methods to HTTP messages
+* Añadir métodos de destrucción para los mensajes HTTP
 
-* base64 improvements (isaacs, Jorge Chamorro Bieling)
-* API for defining REPL commands (Sami Samhuri)
-* child_process.exec timeout fix (Aaron Heckmann)
-* Upgrade V8 to 2.5.1, Libev to 4.00, libeio, http-parser
+* Mejoras de base64 (isaacs, Jorge Chamorro Bieling)
+* API para definir los comandos de REPL (Sami Samhuri)
+* Corrección de timeout de child_process.exec (Aaron Heckmann)
+* Actualizar V8 a 2.5.1, Libev a 4.00, libeio, http-parser
 
 <a id="0.2.0"></a>
 
-## 2010.08.20, Version 0.2.0
+## 2010.08.20, Versión 0.2.0
 
 https://github.com/nodejs/node/commit/9283e134e558900ba89d9a33c18a9bdedab07cb9
 
-* process.title support for FreeBSD, Macintosh, Linux
+* Soporte de process.title para FreeBSD, Macintosh, Linux
 * Fix OpenSSL 100% CPU usage on error (Illarionov Oleg)
 * Implement net.Server.maxConnections.
 * Fix process.platform, add process.version.
