@@ -484,7 +484,7 @@ added: v0.11.14
 
 Computa el secreto compartido usando `other_public_key` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando el `input_encoding` especificado, y el secreto devuelto es codificado usando `output_encoding`. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, se espera que `other_public_key` sea un [`Buffer`][].
 
-Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
+Si `output_encoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -504,7 +504,7 @@ El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encodin
 added: v0.11.14
 -->
 
-Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa la llave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.getPublicKey([encoding[, format]])
 
@@ -524,7 +524,7 @@ El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encodin
 added: v0.11.14
 -->
 
-Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que el `privateKey` sea una string; de no ser así, se espera que el `privateKey` sea un [`Buffer`][], `TypedArray`, o `DataView`. Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que `private_key` sea una string; de no ser así, se espera que `private_key` sea un [`Buffer`][], `TypedArray`, o `DataView`. Si `private_key` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
 
 ### ecdh.setPublicKey(public_key[, encoding])
 
@@ -535,7 +535,7 @@ deprecated: v5.2.0
 
 > Estabilidad: 0 - Desaprobado
 
-Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `input_encoding` es proporcionado, `otra_llave_pública` es esperada paraque sea un string; de otra manera, se espera un[`Buffer`][].
+Establece la clave pública EC Diffie-Hellman. La codificación de claves puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `input_encoding` es proporcionado, `otra_llave_pública` es esperada paraque sea un string; de otra manera, se espera un[`Buffer`][].
 
 Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, tanto [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
