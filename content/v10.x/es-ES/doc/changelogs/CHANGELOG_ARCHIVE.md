@@ -2921,23 +2921,23 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 https://github.com/nodejs/node/commit/9283e134e558900ba89d9a33c18a9bdedab07cb9
 
 * Soporte de process.title para FreeBSD, Macintosh, Linux
-* Fix OpenSSL 100% CPU usage on error (Illarionov Oleg)
-* Implement net.Server.maxConnections.
-* Fix process.platform, add process.version.
-* Add --without-snapshot configure option.
-* Readline REPL improvements (Trent Mick)
-* Bug fixes.
-* Upgrade V8 to 2.3.8
+* Corregir uso de 100% del CPU por OpenSSL en error (Illarionov Oleg)
+* Implementar net.Server.maxConnections.
+* Arreglar process.platform, añadir process.version.
+* Añadir opción de configuración para --without-snapshot.
+* Mejoras de Readline de REPL (Trent Mick)
+* Correcciones de bugs.
+* Actualizar V8 a 2.3.8
 
 <a id="0.1.x"></a>
 <a id="0.1.104"></a>
 
-## 2010.08.13, Version 0.1.104
+## 2010.08.13, Versión 0.1.104
 
 https://github.com/nodejs/node/commit/b14dd49222687c12f3e8eac597cff4f2674f84e8
 
-* Various bug fixes (console, querystring, require)
-* Set cwd for child processes (Bert Belder)
+* Varias correcciones de bugs (consola, querystring, require)
+* Establecer cwd para procesos secundarios (Bert Belder)
 * Tab completion for readline (Trent Mick)
 * process.title getter/setter for OSX, Linux, Cygwin. (Rasmus Andersson, Bert Belder)
 
