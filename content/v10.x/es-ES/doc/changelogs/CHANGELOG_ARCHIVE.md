@@ -3132,29 +3132,30 @@ https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
 https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
 
-    * Fixed no 'end' event on long chunked HTTP messages
+    * Se corrigió la ausencia de evento "end" en fragmentos largos de
+      mensajes HTTP
       https://github.com/joyent/node/issues/77
     
-    * Remove legacy modules http_old and tcp_old
-    * Support DNS MX queries (Jérémy Lal)
+    * Remover módulos heredados http_old y tcp_old
+    * Soportar consultas de DNS MX (Jérémy Lal)
     
-    * Fix large socket write (tlb@tlb.org)
-    * Fix child process exit codes (Felix Geisendörfer)
+    * Corregir escritura de sockets larga (tlb@tlb.org)
+    * Corregir códigos de salida del proceso secundario (Felix Geisendörfer)
     
-    * Allow callers to disable PHP/Rails style parameter munging in
-      querystring.stringify (Thomas Lee)
+    * Permitir a los llamadores deshabilitar el parámetro de estilo
+      PHP/Rails haciendo mung en querystring.stringify (Thomas Lee)
     
-    * Upgrade V8 to 2.2.6
+    * Actualizar V8 a 2.2.6
     
 
 <a id="0.1.92"></a>
 
-## 2010.04.23, Version 0.1.92
+## 2010.04.23, Versión 0.1.92
 
 https://github.com/nodejs/node/commit/caa828a242f39b6158084ef4376355161c14fe34
 
-    * OpenSSL support. Still undocumented (see tests). (Rhys Jones)
-    * API: Unhandled 'error' events throw.
+    * Soporte para OpenSSL. Aún sin documentación (ver pruebas). (Rhis Jones)
+    * API: Los eventos de "error" sin manejar arrojan.
     
     * Script class with eval-function-family in binding('evals') plus tests.
       (Herbert Vojcik)
