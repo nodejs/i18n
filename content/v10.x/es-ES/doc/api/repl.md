@@ -377,7 +377,7 @@ El método `replServer.displayPrompt` está destinado principalmente para ser ll
 added: v9.0.0
 -->
 
-The `replServer.clearBufferedCommand()` method clears any command that has been buffered but not yet executed. This method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+El método `replServer.clearBufferedCommand()` borra cualquier comando que ha sido cargado pero no aún ejecutado. Este método está destinado principalmente para ser llamado desde dentro la función acción para comandos registrados utilizando el método `replServer.defineCommand()`.
 
 ### replServer.parseREPLKeyword(keyword, [rest])
 
@@ -386,7 +386,7 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-* `keyword` {string} the potential keyword to parse and execute
+* `keyword` {string} la palabra clave potencial para analizar y ejecutar
 * `rest` {any} any parameters to the keyword command
 * Returns: {boolean}
 
