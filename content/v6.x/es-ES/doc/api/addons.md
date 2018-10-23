@@ -12,7 +12,7 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * Bibliotecas internas de Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 Todos los ejemplos a continuación están disponibles para ser [descargados](https://github.com/nodejs/node-addon-examples) y pueden ser utilizados como un punto de inicio para su propio Complemento.
 
@@ -24,7 +24,7 @@ This "Hello world" example is a simple Addon, written in C++, that is the equiva
 module.exports.hello = () => 'world';
 ```
 
-Primero, crea el archivo `hello.cc`:
+Primero, cree el archivo `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -83,7 +83,7 @@ Una vez que el código de fuente haya sido escrito, deberá ser compilado en el 
 
 *Nota: Una versión de la utilidad del `node-gyp` está empaquetada y distribuida con Node.js, como parte de `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Los desarrolladores que deseen utilizar `node-gyp` directamente, pueden instalarlo utilizando el comando `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.*
 
-Una vez que se haya creado el archivo `binding.gyp`, utilice `node-gyp configure` para generar los archivos de construcción apropiados del proyecto para la plataforma actual. Esto generará o un `Makefile` (en plataformas Unix) o un archivo `vcxproj` (en Windows) en el directorio `build/` .
+Una vez que se haya creado el archivo `binding.gyp`, utilice `node-gyp configure` para generar los archivos de compilación apropiados del proyecto para la plataforma actual. Esto generará o un `Makefile` (en plataformas Unix) o un archivo `vcxproj` (en Windows) en el directorio `build/` .
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Esto se colocará dentro del directorio de `build/Release/` .
 
@@ -158,7 +158,7 @@ Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 }
 ```
 
-En casos donde hayan más de un archivo `.cc`, simplemente agregue el nombre de archivo adicional al array de `sources` . Por ejemplo:
+En casos en los que haya más de un archivo `.cc`, simplemente agregue el nombre de archivo adicional al array de `sources` . Por ejemplo:
 
 ```json
 "fuentes": ["addon.cc", "myexample.cc"]
@@ -989,7 +989,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Prueba en JavaScript mediante la ejecución de:
+Pruébelo en JavaScript mediante la ejecución de:
 
 ```js
 // test.js
