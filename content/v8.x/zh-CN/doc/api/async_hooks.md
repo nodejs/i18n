@@ -120,7 +120,7 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 ##### 在AsyncHooks回调函数中打印
 
-由于打印到控制台是异步操作，`console.log()`会导致AsyncHooks回调函数被调用。 因此在AsyncHooks回调函数中使用`console.log()`或类似的异步操作会导致无限递归。 An easily solution to this when debugging is to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
+由于打印到控制台是异步操作，`console.log()`会导致AsyncHooks回调函数被调用。 因此在AsyncHooks回调函数中使用`console.log()`或类似的异步操作会导致无限递归。 针对这个问题的一种简易解决方案就是，使用类似`fs.writeSync(1, msg)`的同步日志操作。 因为`1`是标准输出的文件描述符，这就打印到标准输出上，同时由于它本身是同步的，因此也不会以递归方式调用AsyncHooks。
 
 ```js
 const fs = require('fs');
@@ -132,7 +132,7 @@ function debug(...args) {
 }
 ```
 
-If an asynchronous operation is needed for logging, it is possible to keep track of what caused the asynchronous operation using the information provided by AsyncHooks itself. The logging should then be skipped when it was the logging itself that caused AsyncHooks callback to call. By doing this the otherwise infinite recursion is broken.
+如果在日志记录时需要异步操作，则可以使用AsyncHooks自身提供的信息来获取导致异步操作的原因。 如果是日志记录本身导致对AsyncHooks回调函数的调用，则日志记录应该被跳过。 通过这种方式，无限递归会被中断。
 
 #### `asyncHook.enable()`
 
