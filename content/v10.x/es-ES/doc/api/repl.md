@@ -319,14 +319,14 @@ added: v0.3.0
 -->
 
 * `keyword` {string} El comando keyword (*sin un* caracter inicial `.`).
-* `cmd` {Object|Function} La función que se utiliza cuando el comando está siendo procesado.
+* `cmd` {Objeto|Función} La función que se utiliza cuando el comando está siendo procesado.
 
-El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocadaos al escribir un `.` seguido de `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
+El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocadaos al escribir un `.` seguido de `keyword`. El `cmd` es una `Función` o un `Objeto` con las siguientes propiedades:
 
-* `help` {string} Help text to be displayed when `.help` is entered (Optional).
-* `action` {Function} The function to execute, optionally accepting a single string argument.
+* `help` {string} Texto de ayuda que es mostrado cuando `.help` es introducido (Opcional).
+* `action` {Función} La función para ejecutar, opcionalmente aceptando un único argumento de string.
 
-The following example shows two new commands added to the REPL instance:
+El siguiente ejemplo muestra dos nuesvos comando agregados a la instancia REPL:
 
 ```js
 const repl = require('repl');
@@ -346,13 +346,13 @@ replServer.defineCommand('saybye', function saybye() {
 });
 ```
 
-The new commands can then be used from within the REPL instance:
+Los nuevos comandos pueden ser usados desde dentro de la instancia REPL:
 
 ```txt
-> .sayhello Node.js User
-Hello, Node.js User!
+> .sayhello Usuario de Node.js
+¡Hola, Usuario de Node.Js!
 > .saybye
-Goodbye!
+¡Adiós!
 ```
 
 ### replServer.displayPrompt([preserveCursor])
