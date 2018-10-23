@@ -905,7 +905,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`57cea9e421`](https://github.com/nodejs/node/commit/57cea9e421)] - **test**: remover test-http-exit-delay (Rich Trott) [#4786](https://github.com/nodejs/node/pull/4786)
 * [[`2119c76d5a`](https://github.com/nodejs/node/commit/2119c76d5a)] - **test**: refactorizar test-fs-watch (Rich Trott) [#4776](https://github.com/nodejs/node/pull/4776)
 * [[`e487b72459`](https://github.com/nodejs/node/commit/e487b72459)] - **test**: mover las pruebas clúster a paralelo (Rich Trott) [#4774](https://github.com/nodejs/node/pull/4774)
-* [[`8c694a658c`](https://github.com/nodejs/node/commit/8c694a658c)] - **test**: improve test-cluster-disconnect-suicide-race (Rich Trott) [#4739](https://github.com/nodejs/node/pull/4739)
+* [[`8c694a658c`](https://github.com/nodejs/node/commit/8c694a658c)] - **test**: mejorar test-cluster-disconnect-suicide-race (Rich Trott) [#4739](https://github.com/nodejs/node/pull/4739)
 * [[`14f5bb7a99`](https://github.com/nodejs/node/commit/14f5bb7a99)] - **test,buffer**: refactor redeclarations (Rich Trott) [#4893](https://github.com/nodejs/node/pull/4893)
 * [[`62479e3406`](https://github.com/nodejs/node/commit/62479e3406)] - **tls**: scope loop vars with let (Rich Trott) [#4853](https://github.com/nodejs/node/pull/4853)
 * [[`d6fbd81a7a`](https://github.com/nodejs/node/commit/d6fbd81a7a)] - **tls_wrap**: reach error reporting for UV_EPROTO (Fedor Indutny) [#4885](https://github.com/nodejs/node/pull/4885)
