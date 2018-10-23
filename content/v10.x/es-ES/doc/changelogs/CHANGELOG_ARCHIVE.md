@@ -2959,34 +2959,34 @@ https://github.com/nodejs/node/commit/0b925d075d359d03426f0b32bb58a5e05825b4ea
 
 * Usar kqueue en builds macintosh recientes
 * Corregir addrlen para sockets de unix_dgram (Benjamin Kramer)
-* Fix stats.isDirectory() and friends (Benjamin Kramer)
-* Upgrade http-parser, V8 to 2.3.5
+* Corregir stats.isDirectory() y demás (Benjamin Kramer)
+* Actualizar http-parser, V8 a 2.3.5
 
 <a id="0.1.102"></a>
 
-## 2010.07.25, Version 0.1.102
+## 2010.07.25, Versión 0.1.102
 
 https://github.com/nodejs/node/commit/2a4568c85f33869c75ff43ccd30f0ec188b43eab
 
-* base64 encoding for Buffers.
-* Buffer support for Cipher, Decipher, Hmac, Sign and Verify (Andrew Naylor)
+* Codificación base64 para Buffers.
+* Soporte de Buffer para Cifrado, Descifrado, Hmac, Firma y Verificar (Andrew Naylor)
 
-* Support for reading byte ranges from files using fs.createReadStream. (Chandra Sekar)
+* Soporte para la lectura de rangos de bytes desde archivos utilizando fs.createReadStream. (Chandra Sekar)
 
-* Fix Buffer.toString() on 0-length slices. (Peter Griess)
+* Corregir Buffer.toString() ante porciones de 0 longitud. (Peter Griess)
 
-* Cache modules based on filename rather than ID (Isaac Schlueter)
-* querystring improvements (Jan Kassens, Micheil Smith)
-* Support DEL in the REPL. (Jérémy Lal)
-* Upgrade http-parser, upgrade V8 to 2.3.2
+* Módulos de caché basados en "filename" en lugar de "ID" (Isaac Schlueter)
+* Mejoras de querystring (Jan Kassens, Micheil Smith)
+* Soportar DEL en el REPL. (Jérémy Lal)
+* Actualizar http-parser, actualizar V8 a 2.3.2
 
 <a id="0.1.101"></a>
 
-## 2010.07.16, Version 0.1.101
+## 2010.07.16, Versión 0.1.101
 
 https://github.com/nodejs/node/commit/0174ceb6b24caa0bdfc523934c56af9600fa9b58
 
-* Added env to child_process.exec (Сергей Крыжановский)
+* Añadido env a child_process.exec (Сергей Крыжановский)
 * Allow modules to optionally be loaded in separate contexts with env var NODE_MODULE_CONTEXTS=1.
 
 * setTTL and setBroadcast for dgram (Matt Ranney)
