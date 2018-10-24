@@ -62,8 +62,8 @@ As propriedades incluídas em cada objeto incluem:
 * `model` {string}
 * `speed` {number} (em MHz)
 * `times` {Object} 
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
+  * `user` {number} O número de milisegundos que a CPU gastou em user mode.
+  * `nice` {number} O número de milisegundos que a CPU gastou em nice mode.
   * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
