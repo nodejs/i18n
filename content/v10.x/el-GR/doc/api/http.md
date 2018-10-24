@@ -49,11 +49,11 @@ added: v0.3.4
 
 Οι συνδέσεις σε δεξαμενή έχουν ενεργοποιημένο το TCP Keep-Alive, αλλά οι εξυπηρετητές ενδέχεται να κλείνουν τις αδρανείς συνδέσεις, στην οποία περίπτωση αφαιρούνται από την δεξαμενή και μια νέα σύνδεση θα γίνει όταν ένα νέο αίτημα HTTP δημιουργηθεί για αυτόν τον υπολογιστή και αυτή τη θύρα. Οι εξυπηρετητές ενδέχεται να αρνούνται τα πολλαπλά αιτήματα μέσω της ίδιας σύνδεσης, στην οποία περίπτωση η σύνδεση θα πρέπει να επαναδημιουργηθεί για κάθε αίτημα και δε μπορεί να γίνει δεξαμενή. Ο `Agent` θα συνεχίσει να στέλνει νέα αιτήματα στον εξυπηρετητή, αλλά το κάθε ένα θα γίνεται μέσω μιας νέας σύνδεσης.
 
-Όταν μια σύνδεση κλείσει είτε από τον πελάτη ή από τον εξυπηρετητή, αφαιρείται από την δεξαμενή. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Όταν μια σύνδεση κλείσει είτε από τον πελάτη ή από τον εξυπηρετητή, αφαιρείται από την δεξαμενή. Οποιαδήποτε αχρησιμοποίητα socket στην δεξαμενή, γίνονται unref για να μην κρατάνε την διαδικασία του Node.js ενεργή όταν δεν υπάρχουν εκκρεμή αιτήματα. (δείτε [`socket.unref()`]).
 
-It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
+Είναι καλή πρακτική, να γίνεται [`destroy()`][] ενός `Agent` όταν αυτός δεν χρησιμοποιείται άλλο, καθώς τα αχρησιμοποίητα Socket χρησιμοποιούν πόρους του Λειτουργικού Συστήματος.
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+Τα socket αφαιρούνται από έναν agent, όταν το socket μεταδίδει ένα συμβάν `'close'` ή ένα συμβάν `'agentRemove'`. Όταν υπάρχει πρόθεση να υπάρχει ένα αίτημα HTTP ανοιχτό για μεγάλο χρονικό διάστημα, χωρίς να είναι δεμένο σε έναν agent, μπορεί να γίνει κάτι σαν το παρακάτω:
 
 ```js
 http.get(options, (res) => {
@@ -63,7 +63,7 @@ http.get(options, (res) => {
 });
 ```
 
-An agent may also be used for an individual request. By providing `{agent: false}` as an option to the `http.get()` or `http.request()` functions, a one-time use `Agent` with default options will be used for the client connection.
+Ένας agent μπορεί επίσης να χρησιμοποιηθεί για ένα μοναδικό αίτημα. Με τη χρήση του `{agent: false}` ως επιλογή στη συνάρτηση `http.get()` ή στη συνάρτηση `http.request()`, θα χρησιμοποιηθεί ένας `Agent` μιας χρήσης με τις προεπιλεγμένες επιλογές για την σύνδεση πελάτη.
 
 `agent:false`:
 
