@@ -487,11 +487,11 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. Αν το έτοιμα είναι τεμαχισμένο, αυτό θα στείλει τον τερματισμό `'0\r\n\r\n'`.
 
-If `data` is specified, it is equivalent to calling [`request.write(data, encoding)`][] followed by `request.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμο με την κλήση του [`request.write(data, encoding)`][] ακολουθούμενο από `request.end(callback)`.
 
-If `callback` is specified, it will be called when the request stream is finished.
+Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
 ### request.flushHeaders()
 
@@ -499,11 +499,11 @@ If `callback` is specified, it will be called when the request stream is finishe
 added: v1.6.0
 -->
 
-Flush the request headers.
+Εκκαθάριση των κεφαλίδων του αιτήματος.
 
-For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
+Για λόγους αποδοτικότητας, το Node.js κάνει προσωρινή αποθήκευση των κεφαλίδων του αιτήματος μέχρι να κληθεί το `request.end()` ή μέχρι να γραφτεί το πρώτο τμήμα των δεδομένων του αιτήματος. Στη συνέχεια, προσπαθεί να εισάγει όλες τις κεφαλίδες και τα δεδομένα του αιτήματος σε ένα πακέτο TCP.
 
-That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` bypasses the optimization and kickstarts the request.
+Αυτό συνήθως είναι το επιθυμητό (εξοικονομεί μια πλήρη διαδρομή TCP), αλλά όχι όταν τα πρώτα δεδομένα δεν έχουν αποσταλεί μέχρι πιθανώς πολύ αργότερα. Το `request.flushHeaders()` αγνοεί οποιαδήποτε βελτιστοποίηση και ξεκινάει το αίτημα άμεσα.
 
 ### request.getHeader(name)
 
@@ -512,7 +512,7 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Επιστρέφει: {any}
 
 Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
 
@@ -978,7 +978,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Επιστρέφει: {any}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
