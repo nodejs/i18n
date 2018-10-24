@@ -241,19 +241,19 @@ added: v0.1.17
 
 Κατά τη διάρκεια του συμβάντος [`'response'`][], μπορούν να προστεθούν ακροατές στο αντικείμενο απόκρισης· ιδιαίτερα για την ακρόαση του συμβάντος `'data'`.
 
-Αν δεν προστεθεί χειριστής [`'response'`][], τότε η απόκριση θα απορρίπτεται εξ'ολοκλήρου. Ωστόσο, αν προστεθεί χειριστής του συμβάντος [`'response'`][], τότε τα δεδομένα από την απόκριση του αντικειμένου **πρέπει** να καταναλωθούν, είτε με την κλήση της συνάρτησης `response.read()` όταν υπάρχει ένα συμβάν `'readable'`, ή με την προσθήκη ενός χειριστή `'data'`, ή με την κλήση της μεθόδου `.resume()`. Μέχρι να καταναλωθούν όλα τα δεδομένα, το συμβάν `'end'` δε θα ενεργοποιηθεί. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Αν δεν προστεθεί χειριστής [`'response'`][], τότε η απόκριση θα απορρίπτεται εξ'ολοκλήρου. Ωστόσο, αν προστεθεί χειριστής του συμβάντος [`'response'`][], τότε τα δεδομένα από την απόκριση του αντικειμένου **πρέπει** να καταναλωθούν, είτε με την κλήση της συνάρτησης `response.read()` όταν υπάρχει ένα συμβάν `'readable'`, ή με την προσθήκη ενός χειριστή `'data'`, ή με την κλήση της μεθόδου `.resume()`. Μέχρι να καταναλωθούν όλα τα δεδομένα, το συμβάν `'end'` δε θα ενεργοποιηθεί. Επίσης, μέχρι να διαβαστούν όλα τα δεδομένα, θα καταναλώνει μνήμη πράγμα που τελικά μπορεί να οδηγήσει σε σφάλμα 'process out of memory'.
 
-Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Το node.js δεν ελέγχει εάν το Content-Length και το μέγεθος του σώματος που έχει μεταδοθεί είναι ίσα ή όχι.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+Το αίτημα υλοποιεί την διεπαφή [Writable Stream](stream.html#stream_class_stream_writable). Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
-### Event: 'abort'
+### Συμβάν: 'abort'
 
 <!-- YAML
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί από τον πελάτη. This event is only emitted on the first call to `abort()`.
 
 ### Event: 'connect'
 
