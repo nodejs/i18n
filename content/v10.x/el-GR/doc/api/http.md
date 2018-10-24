@@ -47,9 +47,9 @@ added: v0.3.4
 
 Ο `Agent` είναι υπεύθυνος για την διαχείριση της μονιμότητας συνδέσεων και την επαναχρησιμοποίηση τους, με τους πελάτες HTTP. Διατηρεί μια ουρά από αιτήματα σε αναμονή για κάθε υπολογιστή και θύρα, επαναχρησιμοποιώντας ένα μοναδικό socket σύνδεσης για κάθε αίτημα, μέχρι να αδειάσει η ουρά, οπότε και το socket καταστρέφεται ή τοποθετείται σε μια δεξαμενή όπου και κρατείται μέχρι να χρησιμοποιηθεί ξανά για αιτήματα του ίδιου υπολογιστή και της ίδιας θύρας. Το αν θα καταστραφεί ή θα μπει στην δεξαμενή, εξαρτάται από την [επιλογή](#http_new_agent_options) `keepAlive`.
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Οι συνδέσεις σε δεξαμενή έχουν ενεργοποιημένο το TCP Keep-Alive, αλλά οι εξυπηρετητές ενδέχεται να κλείνουν τις αδρανείς συνδέσεις, στην οποία περίπτωση αφαιρούνται από την δεξαμενή και μια νέα σύνδεση θα γίνει όταν ένα νέο αίτημα HTTP δημιουργηθεί για αυτόν τον υπολογιστή και αυτή τη θύρα. Οι εξυπηρετητές ενδέχεται να αρνούνται τα πολλαπλά αιτήματα μέσω της ίδιας σύνδεσης, στην οποία περίπτωση η σύνδεση θα πρέπει να επαναδημιουργηθεί για κάθε αίτημα και δε μπορεί να γίνει δεξαμενή. Ο `Agent` θα συνεχίσει να στέλνει νέα αιτήματα στον εξυπηρετητή, αλλά το κάθε ένα θα γίνεται μέσω μιας νέας σύνδεσης.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Όταν μια σύνδεση κλείσει είτε από τον πελάτη ή από τον εξυπηρετητή, αφαιρείται από την δεξαμενή. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
 
 It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
 
