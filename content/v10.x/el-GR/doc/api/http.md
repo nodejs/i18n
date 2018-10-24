@@ -267,7 +267,7 @@ added: v0.7.0
 
 Μεταδίδεται κάθε φορά που ο εξυπηρετητής αποκρίνεται σε ένα αίτημα με μια μέθοδο `CONNECT`. Αν δεν γίνεται ακρόαση αυτού του συμβάντος, θα γίνεται τερματισμός της σύνδεσης των πελατών που λαμβάνουν μια μέθοδο `CONNECT`.
 
-Ένα ζευγάρι εξυπηρετητή και πελάτη, επιδεικνύουν την ακρόαση του συμβάντος `'connect'`:
+Ένα ζευγάρι εξυπηρετητή και πελάτη, που επιδεικνύει την ακρόαση του συμβάντος `'connect'`:
 
 ```js
 const http = require('http');
@@ -400,9 +400,9 @@ added: v0.1.94
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with an upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Μεταδίδεται κάθε φορά που ο εξυπηρετητής αποκρίνεται σε ένα αίτημα με αναβάθμιση. Αν δεν γίνεται ακρόαση για το συμβάν και το αίτημα έχει κωδικό κατάστασης '101 Switching Protocols', θα γίνει τερματισμός της σύνδεσης του πελάτη που λαμβάνει μια κεφαλίδα αναβάθμισης.
 
-A client server pair demonstrating how to listen for the `'upgrade'` event.
+Ένα ζευγάρι εξυπηρετητή και πελάτη, που επιδεικνύει την ακρόαση του συμβάντος `'upgrade'`.
 
 ```js
 const http = require('http');
@@ -451,7 +451,7 @@ srv.listen(1337, '127.0.0.1', () => {
 added: v0.3.8
 -->
 
-Marks the request as aborting. Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
+Σημειώνει πως το αίτημα ματαιώνεται. Η κλήση αυτής της μεθόδου θα προκαλέσει την απόρριψη των εναπομεινάντων δεδομένων του αιτήματος, καθώς και την καταστροφή του socket.
 
 ### request.aborted
 
@@ -459,7 +459,7 @@ Marks the request as aborting. Calling this will cause remaining data in the res
 added: v0.11.14
 -->
 
-If a request has been aborted, this value is the time when the request was aborted, in milliseconds since 1 January 1970 00:00:00 UTC.
+Αν ένα αίτημα έχει ματαιωθεί, αυτή τη τιμή είναι ο στιγμή που ακυρώθηκε το αίτημα, σε χιλιοστά του δευτερολέπτου από την 1η Ιανουαρίου 1970 00:00:00 UTC.
 
 ### request.connection
 
@@ -469,7 +469,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`request.socket`][].
+Δείτε το [`request.socket`][].
 
 ### request.end(\[data[, encoding]\]\[, callback\])
 
@@ -487,7 +487,7 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
 If `data` is specified, it is equivalent to calling [`request.write(data, encoding)`][] followed by `request.end(callback)`.
 
