@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-To use the HTTP server and client one must `require('http')`.
+Για να χρησιμοποιηθεί ο διακομιστής και το πρόγραμμα-πελάτη HTTP, θα πρέπει να γίνει `require('http')`.
 
 The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
