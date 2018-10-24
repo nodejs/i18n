@@ -1626,11 +1626,11 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 ### Commits
 
 * [[`4f7d9392e7`](https://github.com/nodejs/node/commit/4f7d9392e7)] - **assert**: mejorar AssertionError en caso de "Errores (Ruben Bridgewater) [#15025](https://github.com/nodejs/node/pull/15025)
-* [[`f6c65e6e19`](https://github.com/nodejs/node/commit/f6c65e6e19)] - **assert**: fix boxed primitives in deepStrictEqual (Ruben Bridgewater) [#15050](https://github.com/nodejs/node/pull/15050)
-* [[`7fa175f6d3`](https://github.com/nodejs/node/commit/7fa175f6d3)] - **assert**: fix deepEqual inconsistencies (Ruben Bridgewater) [#14491](https://github.com/nodejs/node/pull/14491)
-* [[`17d8dfec70`](https://github.com/nodejs/node/commit/17d8dfec70)] - **async_hooks**: support promise resolve hook (Anna Henningsen) [#15296](https://github.com/nodejs/node/pull/15296)
-* [[`81723a9172`](https://github.com/nodejs/node/commit/81723a9172)] - **(SEMVER-MINOR)** **async_hooks,doc**: some async_hooks improvements (James M Snell) [#15103](https://github.com/nodejs/node/pull/15103)
-* [[`535f8d5281`](https://github.com/nodejs/node/commit/535f8d5281)] - **benchmark**: var to const (Ruben Bridgewater) [#13757](https://github.com/nodejs/node/pull/13757)
+* [[`f6c65e6e19`](https://github.com/nodejs/node/commit/f6c65e6e19)] - **assert**: corregir las primitivas boxed en deepStrictEqual (Ruben Bridgewater) [#15050](https://github.com/nodejs/node/pull/15050)
+* [[`7fa175f6d3`](https://github.com/nodejs/node/commit/7fa175f6d3)] - **assert**: corregir las inconsistencias de deepEqual (Ruben Bridgewater) [#14491](https://github.com/nodejs/node/pull/14491)
+* [[`17d8dfec70`](https://github.com/nodejs/node/commit/17d8dfec70)] - **async_hooks**: soportar el gancho "promise resolve" (Anna Henningsen) [#15296](https://github.com/nodejs/node/pull/15296)
+* [[`81723a9172`](https://github.com/nodejs/node/commit/81723a9172)] - **(SEMVER-MINOR)** **async_hooks,doc**: algunas mejoras de async_hooks (James M Snell) [#15103](https://github.com/nodejs/node/pull/15103)
+* [[`535f8d5281`](https://github.com/nodejs/node/commit/535f8d5281)] - **benchmark**: var a const (Ruben Bridgewater) [#13757](https://github.com/nodejs/node/pull/13757)
 * [[`0f8f37ed45`](https://github.com/nodejs/node/commit/0f8f37ed45)] - **benchmark**: improve and add more inspect benchmarks (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
 * [[`3bf718c3fe`](https://github.com/nodejs/node/commit/3bf718c3fe)] - **benchmark**: enable assert benchmark with short len (Rich Trott) [#15174](https://github.com/nodejs/node/pull/15174)
 * [[`d30a5836b6`](https://github.com/nodejs/node/commit/d30a5836b6)] - **benchmark**: provide default methods for assert (Rich Trott) [#15174](https://github.com/nodejs/node/pull/15174)
