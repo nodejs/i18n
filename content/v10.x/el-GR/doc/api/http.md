@@ -90,9 +90,9 @@ added: v0.3.4
   * `maxSockets` {number} Ο μέγιστος αριθμός socket που επιτρέπονται ανά υπολογιστή. **Προεπιλογή:** `Infinity`.
   * `maxFreeSockets` {number} Μέγιστος αριθμός ανοιχτών socket που μπορούν να μείνουν ανοιχτά σε ελεύθερη κατάσταση. Εφαρμόζεται μόνο αν το `keepAlive` έχει οριστεί ως `true`. **Προεπιλογή:** `256`.
 
-The default [`http.globalAgent`][] that is used by [`http.request()`][] has all of these values set to their respective defaults.
+Το προεπιλεγμένο [`http.globalAgent`][] που χρησιμοποιείται από το [`http.request()`][] έχει όλες τις παραπάνω τιμές ορισμένες στις προεπιλεγμένες τιμές τους.
 
-To configure any of them, a custom [`http.Agent`][] instance must be created.
+Για να γίνει ρύθμιση οποιασδήποτε από τις παραπάνω τιμές, πρέπει να δημιουργηθεί ένα προσαρμοσμένο [`http.Agent`][].
 
 ```js
 const http = require('http');
@@ -107,11 +107,11 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
-* `callback` {Function} Callback function that receives the created socket
-* Returns: {net.Socket}
+* `options` {Object} Επιλογές που περιέχουν τα στοιχεία σύνδεσης. Δείτε το [`net.createConnection()`][] για την μορφή των επιλογών του
+* `callback` {Function} Η συνάρτηση Callback που παραλαμβάνει το δημιουργημένο socket
+* Επιστρέφει: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Δημιουργεί ένα socket/μια ροή που μπορεί να χρησιμοποιηθεί σε αιτήματα HTTP.
 
 By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
 
