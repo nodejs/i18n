@@ -338,7 +338,7 @@ added: v0.3.2
 added: v10.0.0
 -->
 
-Emitted when the server sends a 1xx response (excluding 101 Upgrade). This event is emitted with a callback containing an object with a status code.
+Μεταδίδεται όταν ο εξυπηρετητής αποστέλλει μια απόκριση 1xx (εξαιρείται η απόκριση '101 Upgrade'). Αυτό το συμβάν μεταδίδεται με ένα callback που συμπεριλαμβάνει ένα αντικείμενο με έναν κωδικό κατάστασης HTTP.
 
 ```js
 const http = require('http');
@@ -358,9 +358,9 @@ req.on('information', (res) => {
 });
 ```
 
-101 Upgrade statuses do not fire this event due to their break from the traditional HTTP request/response chain, such as web sockets, in-place TLS upgrades, or HTTP 2.0. To be notified of 101 Upgrade notices, listen for the [`'upgrade'`][] event instead.
+Ο κωδικός κατάστασης '101 Upgrade' δεν ενεργοποιεί αυτό το συμβάν λόγω της διαφοράς του από την παραδοσιακή αλυσίδα αιτημάτων/αποκρίσεων του πρωτοκόλλου HTTP, όπως web sockets, επιτόπου αναβάθμιση πιστοποιητικού TLS, ή HTTP 2.0. Για να γίνει λήψη ειδοποιήσεων '101 Upgrade', θα πρέπει να γίνεται ακρόαση του συμβάντος [`'upgrade'`][].
 
-### Event: 'response'
+### Συμβάν: 'response'
 
 <!-- YAML
 added: v0.1.0
@@ -368,9 +368,9 @@ added: v0.1.0
 
 * `response` {http.IncomingMessage}
 
-Emitted when a response is received to this request. This event is emitted only once.
+Μεταδίδεται όταν ληφθεί μια απόκριση σε αυτό το αίτημα. Το συμβάν μεταδίδεται μόνο μια φορά.
 
-### Event: 'socket'
+### Συμβάν: 'socket'
 
 <!-- YAML
 added: v0.5.3
@@ -378,19 +378,19 @@ added: v0.5.3
 
 * `socket` {net.Socket}
 
-Emitted after a socket is assigned to this request.
+Μεταδίδεται αφού ένα socket αντιστοιχιστεί σε αυτό το αίτημα.
 
-### Event: 'timeout'
+### Συμβάν: 'timeout'
 
 <!-- YAML
 added: v0.7.8
 -->
 
-Emitted when the underlying socket times out from inactivity. This only notifies that the socket has been idle. The request must be aborted manually.
+Μεταδίδεται όταν το υποκείμενο socket εξαντλεί το χρονικό περιθώριο λόγω αδράνειας. Αυτό ειδοποιεί, μόνο, πως το socket έχει μείνει αδρανές. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
 
-See also: [`request.setTimeout()`][].
+Δείτε επίσης: [`request.setTimeout()`][].
 
-### Event: 'upgrade'
+### Συμβάν: 'upgrade'
 
 <!-- YAML
 added: v0.1.94
