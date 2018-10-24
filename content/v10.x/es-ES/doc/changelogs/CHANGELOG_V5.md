@@ -948,8 +948,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 * [[`8d0ca10752`](https://github.com/nodejs/node/commit/8d0ca10752)] - **buffer**: hacer que byteLength funcione correctamente con el Búfer (Jackson Tian) [#4738](https://github.com/nodejs/node/pull/4738)
 * [[`83d2b7707e`](https://github.com/nodejs/node/commit/83d2b7707e)] - **buffer**: remover comentarios TODO innecesarios (Peter Geiss) [#4719](https://github.com/nodejs/node/pull/4719)
-* [[`8182ec094d`](https://github.com/nodejs/node/commit/8182ec094d)] - **build**: add option to select VS version (julien.waechter) [#4645](https://github.com/nodejs/node/pull/4645)
-* [[`4383acd9f4`](https://github.com/nodejs/node/commit/4383acd9f4)] - **build**: fix and refactor VTune config in vcbuild.bat (Rod Vagg) [#4192](https://github.com/nodejs/node/pull/4192)
+* [[`8182ec094d`](https://github.com/nodejs/node/commit/8182ec094d)] - **build**: añadir la opción para seleccionar la versión VS (julien.waechter) [#4645](https://github.com/nodejs/node/pull/4645)
+* [[`4383acd9f4`](https://github.com/nodejs/node/commit/4383acd9f4)] - **build**: reparar y refactorizar la configuración VTune en vcbuild.bat (Rod Vagg) [#4192](https://github.com/nodejs/node/pull/4192)
 * [[`be0b0b8cb9`](https://github.com/nodejs/node/commit/be0b0b8cb9)] - **build**: minor corrections in VTune configure text (Rod Vagg) [#4192](https://github.com/nodejs/node/pull/4192)
 * [[`9571be12f6`](https://github.com/nodejs/node/commit/9571be12f6)] - **cluster**: fix race condition setting suicide prop (Santiago Gimeno) [#4349](https://github.com/nodejs/node/pull/4349)
 * [[`ebd9addcd1`](https://github.com/nodejs/node/commit/ebd9addcd1)] - **crypto**: clear error stack in ECDH::Initialize (Fedor Indutny) [#4689](https://github.com/nodejs/node/pull/4689)
