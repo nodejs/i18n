@@ -954,7 +954,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`9571be12f6`](https://github.com/nodejs/node/commit/9571be12f6)] - **cluster**: fix race condition setting suicide prop (Santiago Gimeno) [#4349](https://github.com/nodejs/node/pull/4349)
 * [[`ebd9addcd1`](https://github.com/nodejs/node/commit/ebd9addcd1)] - **crypto**: limpiar pila de errores en ECDH::Initialize (Fedor Indutny) [#4689](https://github.com/nodejs/node/pull/4689)
 * [[`66b9c0d8bd`](https://github.com/nodejs/node/commit/66b9c0d8bd)] - **debugger**: remover redeclaraciones de variables (Rich Trott) [#4633](https://github.com/nodejs/node/pull/4633)
-* [[`88b2889679`](https://github.com/nodejs/node/commit/88b2889679)] - **dgram**: prevent disabled optimization of bind() (Brian White) [#4613](https://github.com/nodejs/node/pull/4613)
+* [[`88b2889679`](https://github.com/nodejs/node/commit/88b2889679)] - **dgram**: prevenir la optimización deshabilitada de bind() (Brian White) [#4613](https://github.com/nodejs/node/pull/4613)
 * [[`8a11b8c0ef`](https://github.com/nodejs/node/commit/8a11b8c0ef)] - **doc**: restore ICU third-party software licenses (Richard Lau) [#4762](https://github.com/nodejs/node/pull/4762)
 * [[`212a44df03`](https://github.com/nodejs/node/commit/212a44df03)] - **doc**: clarify protocol default in http.request() (cjihrig) [#4714](https://github.com/nodejs/node/pull/4714)
 * [[`3297036345`](https://github.com/nodejs/node/commit/3297036345)] - **doc**: update branch-diff arguments in release doc (Rod Vagg) [#4691](https://github.com/nodejs/node/pull/4691)
