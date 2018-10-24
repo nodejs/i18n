@@ -1625,7 +1625,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 ### Commits
 
-* [[`4f7d9392e7`](https://github.com/nodejs/node/commit/4f7d9392e7)] - **assert**: improve AssertionError in case of "Errors" (Ruben Bridgewater) [#15025](https://github.com/nodejs/node/pull/15025)
+* [[`4f7d9392e7`](https://github.com/nodejs/node/commit/4f7d9392e7)] - **assert**: mejorar AssertionError en caso de "Errores (Ruben Bridgewater) [#15025](https://github.com/nodejs/node/pull/15025)
 * [[`f6c65e6e19`](https://github.com/nodejs/node/commit/f6c65e6e19)] - **assert**: fix boxed primitives in deepStrictEqual (Ruben Bridgewater) [#15050](https://github.com/nodejs/node/pull/15050)
 * [[`7fa175f6d3`](https://github.com/nodejs/node/commit/7fa175f6d3)] - **assert**: fix deepEqual inconsistencies (Ruben Bridgewater) [#14491](https://github.com/nodejs/node/pull/14491)
 * [[`17d8dfec70`](https://github.com/nodejs/node/commit/17d8dfec70)] - **async_hooks**: support promise resolve hook (Anna Henningsen) [#15296](https://github.com/nodejs/node/pull/15296)
