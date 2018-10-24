@@ -514,9 +514,9 @@ added: v1.6.0
 * `name` {string}
 * Επιστρέφει: {any}
 
-Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Διαβάζει μια από τις κεφαλίδες του αιτήματος. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα. Ο τύπος της τιμής επιστροφής εξαρτάται από τις παραμέτρους που θα παρασχεθούν στο [`request.setHeader()`][].
 
-Example:
+Παράδειγμα:
 
 ```js
 request.setHeader('content-type', 'text/html');
@@ -532,9 +532,9 @@ const setCookie = request.getHeader('set-cookie');
 
 ### request.maxHeadersCount
 
-* {number} **Default:** `2000`
+* {number} **Προεπιλογή:** `2000`
 
-Limits maximum response headers count. If set to 0, no limit will be applied.
+Προσθέτει μέγιστο όριο στον αριθμό κεφαλίδων της απόκρισης. Αν οριστεί ως 0, δεν θα προστεθεί κάποιο όριο.
 
 ### request.removeHeader(name)
 
@@ -544,9 +544,9 @@ added: v1.6.0
 
 * `name` {string}
 
-Removes a header that's already defined into headers object.
+Αφαιρεί μια κεφαλίδα που έχει ήδη οριστεί στο αντικείμενο κεφαλίδων.
 
-Example:
+Παράδειγμα:
 
 ```js
 request.removeHeader('Content-Type');
@@ -561,15 +561,15 @@ added: v1.6.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Ορίζει μια μοναδική τιμή για το αντικείμενο κεφαλίδων. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή του θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Επομένως, το [`request.getHeader()`][] μπορεί να επιστρέψει τιμές που δεν είναι string. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
 
-Example:
+Παράδειγμα:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
 ```
 
-or
+ή
 
 ```js
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -829,9 +829,9 @@ added: v5.7.0
 added: v0.7.0
 -->
 
-* {number} **Default:** `2000`
+* {number} **Προεπιλογή:** `2000`
 
-Limits maximum incoming headers count. If set to 0, no limit will be applied.
+Limits maximum incoming headers count. Αν οριστεί ως 0, δεν θα προστεθεί κάποιο όριο.
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -1102,7 +1102,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Therefore, [`response.getHeader()`][] may return non-string values. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
 
 Example:
 
