@@ -48,7 +48,7 @@ $ cd ..
 $ ./configure
 $ make -j4
 $ ./tools/license-builder.sh
-# The following commands are only necessary if there are changes
+# Următoarele comenzi sunt necesare doar dacă există modificări
 $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
