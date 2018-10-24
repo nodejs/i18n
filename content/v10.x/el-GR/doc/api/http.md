@@ -646,13 +646,13 @@ added: v0.1.29
 * `callback` {Function}
 * Επιστρέφει: {boolean}
 
-Αποστέλλει ένα τμήμα του σώματος. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Αποστέλλει ένα τμήμα του σώματος. Καλώντας πολλές φορές αυτή τη μέθοδο, το σώμα ενός αιτήματος μπορεί να αποσταλεί σε έναν εξυπηρετητή — σε αυτήν την περίπτωση προτείνεται να γίνει χρήση της κεφαλίδας `['Transfer-Encoding', 'chunked']` κατά τη δημιουργία του αιτήματος.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+Η παράμετρος `encoding` είναι προαιρετική και ισχύει μόνο όταν το `chunk` είναι string. Από προεπιλογή είναι `'utf8'`.
 
-The `callback` argument is optional and will be called when this chunk of data is flushed.
+Η παράμετρος `callback` είναι προαιρετική και μπορεί να κληθεί όταν αυτό το κομμάτι δεδομένων έχει εκκαθαριστεί.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
 ## Class: http.Server
 
