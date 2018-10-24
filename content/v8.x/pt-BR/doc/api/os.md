@@ -55,12 +55,12 @@ added: v0.3.3
 
 * Retorna: {Array}
 
-The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
+O método `os.cpus()` retorna um array de objetos contendo informações sobre cada núcleo lógico de CPU.
 
-The properties included on each object include:
+As propriedades incluídas em cada objeto incluem:
 
 * `model` {string}
-* `speed` {number} (in MHz)
+* `speed` {number} (em MHz)
 * `times` {Object} 
   * `user` {number} The number of milliseconds the CPU has spent in user mode.
   * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
