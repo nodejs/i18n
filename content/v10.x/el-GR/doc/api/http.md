@@ -183,11 +183,11 @@ added: v0.11.4
 * `options` {Object} Ένα σύνολο επιλογών που παρέχουν πληροφορίες για την γεννήτρια ονομάτων 
   * `host` {string} Ένα όνομα τομέα ή μια διεύθυνση IP διακομιστή για τον οποίο θα εκδοθεί το αίτημα
   * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή
-  * `localAddress` {string} Local interface to bind for network connections when issuing the request
-  * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+  * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος
+  * `family` {integer} Πρέπει να είναι 4 ή 6 εάν δεν ισούται με `undefined`.
+* Επιστρέφει: {string}
 
-Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Λαμβάνει ένα μοναδικό όνομα για ένα σύνολο επιλογών αιτημάτων, για τον προσδιορισμό της επαναχρησιμοποίησης μιας σύνδεσης. Για έναν HTTP agent, η συνάρτηση επιστρέφει `host:port:localAddress` ή `host:port:localAddress:family`. Για έναν HTTPS agent, το όνομα συμπεριλαμβάνει την αρχή πιστοποίησης, το πιστοποιητικό, τους cipher και άλλες συγκεκριμένες HTTPS/TLS επιλογές, για τον προσδιορισμό της επαναχρησιμοποίησης του socket.
 
 ### agent.maxFreeSockets
 
@@ -197,7 +197,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Από προεπιλογή, είναι ορισμένο ως 256. Για agents με ενεργοποιημένο το `keepAlive`, αυτό ορίζει τον μέγιστο αριθμό των socket που μπορούν να παραμείνουν ανοιχτά σε ελεύθερη κατάσταση.
 
 ### agent.maxSockets
 
@@ -207,7 +207,7 @@ added: v0.3.6
 
 * {number}
 
-By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
+Από προεπιλογή, είναι ορισμένο ως `Infinity`. Προσδιορίζει πόσα παράλληλα socket μπορεί να κρατάει ανοιχτά ο agent ανά προέλευση. Η προέλευση είναι η τιμή επιστροφής της συνάρτησης [`agent.getName()`][].
 
 ### agent.requests
 
@@ -217,7 +217,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+Ένα αντικείμενο που περιέχει την ουρά των αιτημάτων που δεν έχουν ανατεθεί ακόμα σε κάποιο socket. Να μην τροποποιηθεί.
 
 ### agent.sockets
 
@@ -227,7 +227,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+Ένα αντικείμενο που περιέχει πίνακες των socket που χρησιμοποιούνται αυτή τη στιγμή απο τον agent. Να μην τροποποιηθεί.
 
 ## Class: http.ClientRequest
 
@@ -235,7 +235,7 @@ An object which contains arrays of sockets currently in use by the agent. Do not
 added: v0.1.17
 -->
 
-This object is created internally and returned from [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα *in-progress*, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. Η κεφαλίδα μπορεί ακόμα να μεταβληθεί χρησιμοποιώντας τις συναρτήσεις API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. Η πραγματική κεφαλίδα θα σταλεί μαζί με το πρώτο κομμάτι δεδομένων ή όταν γίνει κλήση της συνάρτησης [`request.end()`][].
 
 To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
 
