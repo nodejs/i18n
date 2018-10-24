@@ -6,9 +6,9 @@
 
 Για να χρησιμοποιηθεί ο διακομιστής και το πρόγραμμα-πελάτη HTTP, θα πρέπει να γίνει `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Οι διεπαφές HTTP στο Node.js έχουν σχεδιαστεί για να υποστηρίζουν πολλά χαρακτηριστικά των πρωτοκόλλων που είναι κατά παράδοση δύσκολα στη χρήση. Ειδικότερα, μεγάλα, ενδεχομένως κωδικοποιημένα μπλοκ μηνυμάτων. Η διεπαφή έχει σχεδιαστεί να μην μεταφέρει buffer ολόκληρων αιτημάτων ή απαντήσεων — ο χρήστης μπορεί να αποκτήσει τα δεδομένα με ροή.
 
-HTTP message headers are represented by an object like this:
+Τα μηνύματα κεφαλίδας HTTP παρουσιάζονται σαν αντικείμενα, όπως αυτό:
 
 <!-- eslint-skip -->
 
@@ -20,11 +20,11 @@ HTTP message headers are represented by an object like this:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Τα κλειδιά είναι πεζοί χαρακτήρες. Οι τιμές δεν τροποποιούνται.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+Για να υποστηριχθεί ολόκληρο το φάσμα των πιθανών εφαρμογών του πρωτοκόλλου HTTP, το HTTP API του Node.js είναι φτιαγμένο σε πολύ χαμηλό επίπεδο. Ασχολείται μόνο με τον χειρισμό ροών και την ανάλυση μηνυμάτων. Αναλύει ένα μήνυμα σε κεφαλίδες και σώμα, αλλά δεν αναλύει περαιτέρω τις κεφαλίδες ή το σώμα.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Δείτε το [`message.headers`][] για λεπτομέρειες στο πώς μεταχειρίζονται οι διπλότυπες κεφαλίδες.
 
 The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
 
