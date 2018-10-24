@@ -26,7 +26,7 @@
 
 Δείτε το [`message.headers`][] για λεπτομέρειες στο πώς μεταχειρίζονται οι διπλότυπες κεφαλίδες.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Οι ανεπεξέργαστες κεφαλίδες, διατηρούνται όπως παραλήφθηκαν στην ιδιότητα `rawHeaders`, που είναι ένας πίνακας από `[key, value, key2, value2, ...]`. Για παράδειγμα, το προηγούμενο αντικείμενο μηνύματος κεφαλίδας, θα είχε μια λίστα `rawHeaders` όπως η παρακάτω:
 
 <!-- eslint-disable semi -->
 
@@ -39,13 +39,13 @@ The raw headers as they were received are retained in the `rawHeaders` property,
   'accepT', '*/*' ]
 ```
 
-## Class: http.Agent
+## Κλάση: http.Agent
 
 <!-- YAML
 added: v0.3.4
 -->
 
-An `Agent` is responsible for managing connection persistence and reuse for HTTP clients. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+Ο `Agent` είναι υπεύθυνος για την διαχείριση της μονιμότητας συνδέσεων και την επαναχρησιμοποίηση τους, με τους πελάτες HTTP. Διατηρεί μια ουρά από αιτήματα σε αναμονή για κάθε υπολογιστή και θύρα, επαναχρησιμοποιώντας ένα μοναδικό socket σύνδεσης για κάθε αίτημα, μέχρι να αδειάσει η ουρά, οπότε και το socket καταστρέφεται ή τοποθετείται σε μια δεξαμενή όπου και κρατείται μέχρι να χρησιμοποιηθεί ξανά για αιτήματα του ίδιου υπολογιστή και της ίδιας θύρας. Το αν θα καταστραφεί ή θα μπει στην δεξαμενή, εξαρτάται από την [επιλογή](#http_new_agent_options) `keepAlive`.
 
 Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
 
