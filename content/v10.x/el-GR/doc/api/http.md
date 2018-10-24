@@ -583,7 +583,7 @@ added: v0.5.9
 
 * `noDelay` {boolean}
 
-Once a socket is assigned to this request and is connected [`socket.setNoDelay()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setNoDelay()`][].
 
 ### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -594,7 +594,7 @@ added: v0.5.9
 * `enable` {boolean}
 * `initialDelay` {number}
 
-Once a socket is assigned to this request and is connected [`socket.setKeepAlive()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setKeepAlive()`][].
 
 ### request.setTimeout(timeout[, callback])
 
@@ -602,11 +602,11 @@ Once a socket is assigned to this request and is connected [`socket.setKeepAlive
 added: v0.5.9
 -->
 
-* `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* `timeout` {number} Χιλιοστά του Δευτερολέπτου πριν την εξάντληση του χρονικού ορίου του αιτήματος.
+* `callback` {Function} Προαιρετική συνάρτηση που θα κληθεί όταν εξαντληθεί το χρονικό περιθώριο ενός αιτήματος. Είναι το ίδιο με την δέσμευση στο συμβάν `'timeout'`.
+* Επιστρέφει: {http.ClientRequest}
 
-Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setTimeout()`][].
 
 ### request.socket
 
