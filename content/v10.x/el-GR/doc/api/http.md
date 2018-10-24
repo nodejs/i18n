@@ -88,7 +88,7 @@ added: v0.3.4
   * `keepAlive` {boolean} Να παραμένουν ενεργά τα socket ακόμα και όταν δεν υπάρχουν εκκρεμή αιτήματα, ώστε να μπορούν να χρησιμοποιηθούν για μελλοντικά αιτήματα χωρίς την ανάγκη αποκατάστασης μιας σύνδεσης TCP. **Προεπιλογή:** `false`.
   * `keepAliveMsecs` {number} Όταν χρησιμοποιείται η επιλογή `keepAlive`, ορίζει την [αρχική καθυστέρηση](net.html#net_socket_setkeepalive_enable_initialdelay) των πακέτων TCP Keep-Alive. Αγνοείται όταν η επιλογή `keepAlive` είναι `false` ή `undefined`. **Προεπιλογή:** `1000`.
   * `maxSockets` {number} Ο μέγιστος αριθμός socket που επιτρέπονται ανά υπολογιστή. **Προεπιλογή:** `Infinity`.
-  * `maxFreeSockets` {number} Μέγιστος αριθμός ανοιχτών socket που μπορούν να μείνουν ανοιχτά σε ελεύθερη κατάσταση. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
+  * `maxFreeSockets` {number} Μέγιστος αριθμός ανοιχτών socket που μπορούν να μείνουν ανοιχτά σε ελεύθερη κατάσταση. Εφαρμόζεται μόνο αν το `keepAlive` έχει οριστεί ως `true`. **Προεπιλογή:** `256`.
 
 The default [`http.globalAgent`][] that is used by [`http.request()`][] has all of these values set to their respective defaults.
 
