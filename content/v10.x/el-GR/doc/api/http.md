@@ -239,9 +239,9 @@ added: v0.1.17
 
 Για να λάβετε την απάντηση, προσθέστε έναν ακροατή [`'response'`][] στο αντικείμενο της αίτησης. To [`'response'`][] θα μεταδοθεί από το αντικείμενο του αιτήματος όταν ληφθούν οι κεφαλίδες της απόκρισης. Το συμβάν [`'response'`][] εκτελείται με μια παράμετρο, η οποία είναι ένα στιγμιότυπο του [`http.IncomingMessage`][].
 
-During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
+Κατά τη διάρκεια του συμβάντος [`'response'`][], μπορούν να προστεθούν ακροατές στο αντικείμενο απόκρισης· ιδιαίτερα για την ακρόαση του συμβάντος `'data'`.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Αν δεν προστεθεί χειριστής [`'response'`][], τότε η απόκριση θα απορρίπτεται εξ'ολοκλήρου. Ωστόσο, αν προστεθεί χειριστής του συμβάντος [`'response'`][], τότε τα δεδομένα από την απόκριση του αντικειμένου **πρέπει** να καταναλωθούν, είτε με την κλήση της συνάρτησης `response.read()` όταν υπάρχει ένα συμβάν `'readable'`, ή με την προσθήκη ενός χειριστή `'data'`, ή με την κλήση της μεθόδου `.resume()`. Μέχρι να καταναλωθούν όλα τα δεδομένα, το συμβάν `'end'` δε θα ενεργοποιηθεί. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
 
 Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
