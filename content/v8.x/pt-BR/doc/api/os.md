@@ -20,8 +20,8 @@ added: v0.7.8
 
 Uma constante string definindo o marcador de fim-de-linha específico do sistema operacional:
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` em POSIX
+* `\r\n` no Windows
 
 ## os.arch()
 
@@ -29,7 +29,7 @@ Uma constante string definindo o marcador de fim-de-linha específico do sistema
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 O método `os.arch()` retorna uma string identificando a arquitetura de CPU do sistema operacional no qual o binário do Node.js foi compilado.
 
