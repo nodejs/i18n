@@ -53,7 +53,7 @@ Retorna um objeto contendo constantes específicas de sistema operacional, usada
 added: v0.3.3
 -->
 
-* Returns: {Array}
+* Retorna: {Array}
 
 The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
