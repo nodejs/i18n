@@ -38,7 +38,7 @@ Starts the HTTPS server listening for encrypted connections. This method is iden
 
 ### server.maxHeadersCount
 
-- {number} **Default:** `2000`
+- {number} **Προεπιλογή:** `2000`
 
 See [`http.Server#maxHeadersCount`][].
 
