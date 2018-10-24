@@ -1276,7 +1276,7 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Ο χειρισμός αυτού του συμβάντος απαιτεί την κλήση του [`response.writeContinue()`][] εάν ο πελάτης πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος, ή να απαντήσει με ένα κατάλληλο μήνυμα (για παράδειγμα '400 Bad Request') εάν ο πελάτης δεν πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος.
 
 Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
@@ -1385,7 +1385,7 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Ο χειρισμός αυτού του συμβάντος απαιτεί την κλήση του [`response.writeContinue()`][] εάν ο πελάτης πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος, ή να απαντήσει με ένα κατάλληλο μήνυμα (για παράδειγμα '400 Bad Request') εάν ο πελάτης δεν πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος.
 
 Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
