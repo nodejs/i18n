@@ -181,8 +181,8 @@ added: v0.11.4
 -->
 
 * `options` {Object} Ένα σύνολο επιλογών που παρέχουν πληροφορίες για την γεννήτρια ονομάτων 
-  * `host` {string} A domain name or IP address of the server to issue the request to
-  * `port` {number} Port of remote server
+  * `host` {string} Ένα όνομα τομέα ή μια διεύθυνση IP διακομιστή για τον οποίο θα εκδοθεί το αίτημα
+  * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
 * Returns: {string}
