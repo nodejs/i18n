@@ -4,7 +4,7 @@
 
 > Estabilidade: 2 - Estável
 
-The `os` module provides a number of operating system-related utility methods. It can be accessed using:
+O módulo de `os` fornece uma quantidade de métodos utilitários relacionados ao sistema operacional. Ele pode ser acessado usando:
 
 ```js
 const os = require('os');
@@ -18,7 +18,7 @@ added: v0.7.8
 
 * {string}
 
-A string constant defining the operating system-specific end-of-line marker:
+Uma constante string definindo o marcador de fim-de-linha específico do sistema operacional:
 
 * `\n` on POSIX
 * `\r\n` on Windows
@@ -31,7 +31,7 @@ added: v0.5.0
 
 * Returns: {string}
 
-The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+O método `os.arch()` retorna uma string identificando a arquitetura de CPU do sistema operacional no qual o binário do Node.js foi compilado.
 
 The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
@@ -68,7 +68,7 @@ The properties included on each object include:
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
-For example:
+Por exemplo:
 
 <!-- eslint-disable semi -->
 
