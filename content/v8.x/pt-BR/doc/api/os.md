@@ -35,7 +35,7 @@ O método `os.arch()` retorna uma string identificando a arquitetura de CPU do s
 
 Os atuais valores possíveis são: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Equivalente à [`process.arch`] [].
+Equivalente à [`process.arch`][].
 
 ## os.constants
 
@@ -165,7 +165,7 @@ Por exemplo:
 ]
 ```
 
-*Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+*Nota*: Como os valores de `nice` são específicos de UNIX, no Windows os valores de `nice` de todos os processadores são sempre 0.
 
 ## os.endianness()
 
