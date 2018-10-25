@@ -24,9 +24,9 @@ Klucze są pisane małymi literami. Wartości nie są modyfikowane.
 
 W celu obsługi pełnego spektrum możliwych aplikacji HTTP, Node.js HTTP API jest bardzo niskiego poziomu. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Zobacz [`nagłówki.wiadomości`] [], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznikach` właściwość, która jest tablicą `[klucz, wartość, klucz2, wartość2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć`suroweNagłówki` lista jak poniżej:
 
 <!-- eslint-disable semi -->
 
@@ -45,7 +45,7 @@ The raw headers as they were received are retained in the `rawHeaders` property,
 added: v0.3.4
 -->
 
-An `Agent` is responsible for managing connection persistence and reuse for HTTP clients. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
 
 Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
 
