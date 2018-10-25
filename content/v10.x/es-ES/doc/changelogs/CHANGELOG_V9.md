@@ -907,41 +907,41 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 <a id="9.5.0"></a>
 
   
-  ## 2018-01-31, Version 9.5.0 (Current), @evanlucas
+  ## 2018-01-31, Versión 9.5.0 (Actual), @evanlucas
   
-  ### Notable Changes
+  ### Cambios Notables
   
   * **cluster** 
-    * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
+    * agregar cwd en cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
   * **deps** 
-    * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
+    * actualizar libuv a 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
   * **meta** 
-    * add Leko to collaborators (Leko) [#18117](https://github.com/nodejs/node/pull/18117)
-    * add vdeturckheim as collaborator (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
+    * agregar a Leko a colaboradores (Leko) [#18117](https://github.com/nodejs/node/pull/18117)
+    * agregar a vdeturckheim como colaborador (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
   * **n-api** 
-    * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
+    * exponer versión de n-api en process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
   * **perf_hooks** 
-    * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
+    * agregar performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
   * **stream** 
-    * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
+    * evitar writeAfterEnd() mientras termina (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
   ### Commits
   
-  * [[`0a68018ad0`](https://github.com/nodejs/node/commit/0a68018ad0)] - **async_hooks**: update defaultTriggerAsyncIdScope for perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
+  * [[`0a68018ad0`](https://github.com/nodejs/node/commit/0a68018ad0)] - **async_hooks**: actualizar defaultTriggerAsyncIdScope para rendimiento (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
   * [[`dd56bd1591`](https://github.com/nodejs/node/commit/dd56bd1591)] - **async_hooks**: use typed array stack as fast path (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
-  * [[`a880e272ff`](https://github.com/nodejs/node/commit/a880e272ff)] - **async_hooks**: use scope for defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+  * [[`a880e272ff`](https://github.com/nodejs/node/commit/a880e272ff)] - **async_hooks**: utilizar ámbito para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * [[`f56eb2a41e`](https://github.com/nodejs/node/commit/f56eb2a41e)] - **async_hooks**: separate missing from default context (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
-  * [[`2a4f849c39`](https://github.com/nodejs/node/commit/2a4f849c39)] - **async_hooks**: rename initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
-  * [[`ac2f98d6a6`](https://github.com/nodejs/node/commit/ac2f98d6a6)] - **(SEMVER-MINOR)** **async_hooks,http**: set HTTPParser trigger to socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
-  * [[`e9397d67a3`](https://github.com/nodejs/node/commit/e9397d67a3)] - **async_hooks,test**: only use IPv6 in http test (Andreas Madsen) [#18143](https://github.com/nodejs/node/pull/18143)
-  * [[`2efa7d1bfd`](https://github.com/nodejs/node/commit/2efa7d1bfd)] - **benchmark**: implement duration in http test double (Joyee Cheung) [#18380](https://github.com/nodejs/node/pull/18380)
-  * [[`b5ec6ea3d0`](https://github.com/nodejs/node/commit/b5ec6ea3d0)] - **benchmark**: make compare.R easier to understand (Andreas Madsen) [#18373](https://github.com/nodejs/node/pull/18373)
-  * [[`ea19f7db0d`](https://github.com/nodejs/node/commit/ea19f7db0d)] - **benchmark**: use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`cd9bc8bc50`](https://github.com/nodejs/node/commit/cd9bc8bc50)] - **benchmark**: (dgram) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`e19c77b14e`](https://github.com/nodejs/node/commit/e19c77b14e)] - **benchmark**: (child_process) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`5cf5ab154e`](https://github.com/nodejs/node/commit/5cf5ab154e)] - **benchmark**: (buffers) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`71faa5c1b4`](https://github.com/nodejs/node/commit/71faa5c1b4)] - **benchmark**: (events) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`c25d4d66dc`](https://github.com/nodejs/node/commit/c25d4d66dc)] - **benchmark**: (es) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
-  * [[`59271c8f7f`](https://github.com/nodejs/node/commit/59271c8f7f)] - **benchmark**: (fs) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`2a4f849c39`](https://github.com/nodejs/node/commit/2a4f849c39)] - **async_hooks**: renombrar initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+  * [[`ac2f98d6a6`](https://github.com/nodejs/node/commit/ac2f98d6a6)] - **(SEMVER-MINOR)** **async_hooks,http**: establecer disparador de HTTPParser al socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
+  * [[`e9397d67a3`](https://github.com/nodejs/node/commit/e9397d67a3)] - **async_hooks,test**: sólo utilizar IPv6 en prueba de http (Andreas Madsen) [#18143](https://github.com/nodejs/node/pull/18143)
+  * [[`2efa7d1bfd`](https://github.com/nodejs/node/commit/2efa7d1bfd)] - **benchmark**: implementar duración en prueba doble de http (Joyee Cheung) [#18380](https://github.com/nodejs/node/pull/18380)
+  * [[`b5ec6ea3d0`](https://github.com/nodejs/node/commit/b5ec6ea3d0)] - **benchmark**: hacer compare.R más fácil de entender (Andreas Madsen) [#18373](https://github.com/nodejs/node/pull/18373)
+  * [[`ea19f7db0d`](https://github.com/nodejs/node/commit/ea19f7db0d)] - **benchmark**: utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`cd9bc8bc50`](https://github.com/nodejs/node/commit/cd9bc8bc50)] - **benchmark**: (dgram) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`e19c77b14e`](https://github.com/nodejs/node/commit/e19c77b14e)] - **benchmark**: (child_process) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`5cf5ab154e`](https://github.com/nodejs/node/commit/5cf5ab154e)] - **benchmark**: (buffers) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`71faa5c1b4`](https://github.com/nodejs/node/commit/71faa5c1b4)] - **benchmark**: (events) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`c25d4d66dc`](https://github.com/nodejs/node/commit/c25d4d66dc)] - **benchmark**: (es) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
+  * [[`59271c8f7f`](https://github.com/nodejs/node/commit/59271c8f7f)] - **benchmark**: (fs) utilizar desestructuración (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
   * [[`4e19cbef86`](https://github.com/nodejs/node/commit/4e19cbef86)] - **benchmark**: (http) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
   * [[`e9c426b35b`](https://github.com/nodejs/node/commit/e9c426b35b)] - **benchmark**: (misc) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
   * [[`d13d900eee`](https://github.com/nodejs/node/commit/d13d900eee)] - **benchmark**: (http2) use destructuring (Ruben Bridgewater) [#18250](https://github.com/nodejs/node/pull/18250)
