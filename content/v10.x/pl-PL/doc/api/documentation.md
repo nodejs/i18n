@@ -25,11 +25,11 @@ Wskaźniki stabilności są następujące:
 ```txt
 Stabilność: 0 - Przestarzałe. Ta funkcja jest znana jako problematyczna i mogą być
 planowane zmiany. Nie polegaj na niej. Użycie tej funkcji może spowodować pojawienie się
-ostrzeżeń. Backwards compatibility across major versions should not be expected.
+ostrzeżeń. Nie należy się spodziewać wstecznej kompatybilności z podstawowymi wersjami.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
+Stabilność: 1 - Eksperymentalne. This feature is still under active development and
 subject to non-backwards compatible changes, or even removal, in any future
 version. Use of the feature is not recommended in production environments.
 Experimental features are not subject to the Node.js Semantic Versioning model.
