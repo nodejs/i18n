@@ -299,15 +299,15 @@ destroy: 9
 destroy: 5
 ```
 
-*Note*: As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
+*注意*：正如示例所示，`executionAsyncId()` 和 `execution` 两者都提供当前执行上下文的值；该值由对 `before` 和 `after` 的调用所设定。
 
-Only using `execution` to graph resource allocation results in the following:
+仅使用 `execution` 来进行资源分配，会导致如下结果：
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+尽管是 `console.log()` 被调用的原因，但 `TCPSERVERWRAP` 并不是此图的一部分。 这是因为在不提供主机名的情况下绑定端口是 *同步* 操作，但要维护完全的异步 API，用户的回调函数位于 `process.nextTick()`。
 
 The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
