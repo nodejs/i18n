@@ -59,4 +59,4 @@ Funkcje systemowe, takie jak open(2) i read(2), definiują interfejs między pro
 
 Niektóre funkcje systemowe, takie jak Ichown(2), są specyficzne dla BSD. Oznacza to, na przykład, że [`fs.lchown()`][] działa tylko na MacOS i innych pochodnych systemów BSD i nie jest dostępny w systemie Linux.
 
-Większość uniksowych funkcji systemowych ma odpowiedniki Windowsa, ale zachowanie może się różnić w Windowsie względem systemu Linux i macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Większość uniksowych funkcji systemowych ma odpowiedniki Windowsa, ale zachowanie może się różnić w Windowsie względem systemu Linux i macOS. Jednym z przykładów subtelnych sposobów, w jaki to jest czasami niemożliwe do zastąpienia semantyki systemu Unix w systemie Windows, patrz [Problem Node nr 4760](https://github.com/nodejs/node/issues/4760).
