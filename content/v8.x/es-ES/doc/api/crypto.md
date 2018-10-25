@@ -878,7 +878,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Imprime: la firma calculada
 ```
 
 ### sign.sign(privateKey[, outputFormat])
@@ -897,24 +897,24 @@ changes:
   - `passphrase` {string}
 - `outputFormat` {string}
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcula la firma de todos los datos pasados usando [`sign.update()`][] o [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
 The `privateKey` argument can be an object or a string. If `privateKey` is a string, it is treated as a raw key with no passphrase. If `privateKey` is an object, it must contain one or more of the following properties:
 
-- `key`: {string} - PEM encoded private key (required)
-- `passphrase`: {string} - passphrase for the private key
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Clave privada con codificación PEM (requerida)
+- `passphrase`: {string} - frase de contraseña para la clave privada
+- `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to sign the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
+- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
 The `outputFormat` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
-The `Sign` object can not be again used after `sign.sign()` method has been called. Multiple calls to `sign.sign()` will result in an error being thrown.
+El objeto `Sign` no puede ser usado nuevamente después de que el método `sign.sign()` ha sido llamado. Llamadas múltiples a `sign.sign()` van a resultar en un error.
 
 ### sign.update(data[, inputEncoding])
 
@@ -934,13 +934,13 @@ Updates the `Sign` content with the given `data`, the encoding of which is given
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Verify
+## Clase: Verify
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. Puede ser usada de una de las dos maneras:
+La clase `Verify` es una utilidad para verificar firmas. Puede ser usada de una de las dos maneras:
 
 - As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
 - Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
@@ -1012,14 +1012,14 @@ changes:
 Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
 
 - `key`: {string} - PEM encoded public key (required)
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
   Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
