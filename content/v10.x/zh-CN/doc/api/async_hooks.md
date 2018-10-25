@@ -234,7 +234,7 @@ In the case of Promises, the `resource` object will have `promise` property that
 
 In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
 
-###### Asynchronous context example
+###### 异步上下文示例
 
 The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
 
