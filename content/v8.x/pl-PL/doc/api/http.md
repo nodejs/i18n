@@ -111,11 +111,11 @@ added: v0.11.4
 * `callback` {Function} Callback function that receives the created socket
 * Returns: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Tworzy gniazdo/strumień, który będzie używany dla żądań HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+By default, this function is the same as [`net.createConnection()`][]. Jednak, niestandardowi agenci mogą zastąpić tę metodę w przypadku, gdy pożądana jest większa elastyczność.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Gniazdo/strumień może być dostarczony na jeden z dwóch sposobów: przez zwrócenie gniazda/strumienia z tej funkcji lub przekazując gniazdo/strumień do `callback'u`.
 
 `callback` has a signature of `(err, stream)`.
 
@@ -160,9 +160,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Zniszcz wszystkie gniazda, które są aktualnie używane przez agenta.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Zwykle nie jest to konieczne. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
 
 ### agent.freeSockets
 
