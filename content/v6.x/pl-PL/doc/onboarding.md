@@ -79,7 +79,7 @@ Ten dokument jest zakresem rzeczy, o których mówimy nowym Współpracownikom w
     * Jest to repozytorium, do którego mają dostęp wszyscy członkowie `nodejs` organizacji GitHub (nie tylko Współpracownicy rdzenia Node.js). Jego zawartość nie powinna być udostępniana na zewnątrz.
     * Możesz znaleźć pełną politykę moderacji [tutaj](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Przeglądanie PR-ów
+## Przeglądanie PR
 
 * Podstawowym celem bazy kodu jest jego udoskonalenie.
 * Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. Żądanie zmiany od nowego współpracownika jest szansą na rozwój społeczności.
