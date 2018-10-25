@@ -53,20 +53,20 @@ Retorna um objeto contendo constantes específicas de sistema operacional, usada
 added: v0.3.3
 -->
 
-* Returns: {Object[]}
+* Retorna: {Object[]}
 
-The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
+O método `os.cpus()` retorna um array de objetos contendo informações sobre cada núcleo lógico de CPU.
 
-The properties included on each object include:
+As propriedades incluídas em cada objeto incluem:
 
 * `model` {string}
-* `speed` {number} (in MHz)
+* `speed` {number} (em MHz)
 * `times` {Object} 
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
-  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
-  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
-  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+  * `user` {number} O número de milisegundos que a CPU gastou em modo user.
+  * `nice` {number} O número de milisegundos que a CPU gastou em modo nice.
+  * `sys` {number} O número de milisegundos que a CPU gastou em modo sys.
+  * `idle` {number} O número de milisegundos que a CPU gastou em modo idle.
+  * `irq` {number} O número de milisegundos que a CPU gastou em modo irq.
 
 <!-- eslint-disable semi -->
 
@@ -163,7 +163,7 @@ The properties included on each object include:
 ]
 ```
 
-Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+Como os valores de `nice` são específicos de UNIX, no Windows os valores de `nice` de todos os processadores são sempre 0.
 
 ## os.endianness()
 
