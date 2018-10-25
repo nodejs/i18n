@@ -2901,7 +2901,7 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Las comas al final en sys.inspect
 * Las constantes fueron movidas desde el objeto del proceso a require('constants')
 * Arreglar el análisis de la memoria de linux (Vitali Lovich)
-* inspeccionar los nombres de las funciones para mostrar (Jorge Chamorro Bieling)
+* "inspect" muestra los nombres de las funciones (Jorge Chamorro Bieling)
 * Casos límite de uncaughtException (Felix Geisendörfer)
 * Los clientes TCP ahora almacenan las escrituras en buffer antes de la conexión
 * Renombrar el módulo "sys" como "util" (Micheil Smith)
@@ -2936,7 +2936,7 @@ https://github.com/nodejs/node/commit/9283e134e558900ba89d9a33c18a9bdedab07cb9
 
 https://github.com/nodejs/node/commit/b14dd49222687c12f3e8eac597cff4f2674f84e8
 
-* Varias correcciones de bugs (consola, querystring, require)
+* Varias correcciones de bugs (console, querystring, require)
 * Establecer cwd para procesos secundarios (Bert Belder)
 * Completado de tab para readline (Trent Mick)
 * getter/setter de process.title para OSX, Linux, Cygwin. (Rasmus Andersson, Bert Belder)
@@ -3025,7 +3025,7 @@ https://github.com/nodejs/node/commit/a620b7298f68f68a855306437a3b60b650d61d78
 
 * Reparar fugas de memoria de crypto.
 
-* Un remplazo para decodeURIComponent que no arroja. (Isaac Schlueter)
+* Un reemplazo para decodeURIComponent que no arroja. (Isaac Schlueter)
 
 * Solo concatenar algunas cabeceras HTTP entrantes. (Peter Griess)
 
@@ -3093,7 +3093,7 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 
 * Cambiar la notificación del GC inactivo de modo que se ejecute junto a setInterval
 * Instalar node_buffer.h cuando se hace "make install"
-* fs.readFile devuelve un Buffer predeterminadamente (Tim Caswell)
+* fs.readFile devuelve un Buffer por defecto (Tim Caswell)
 * Corregir reporte de errores en las callbacks de child_process
 * Mejorar la lógica para probar si un argumento es un puerto
 * Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
