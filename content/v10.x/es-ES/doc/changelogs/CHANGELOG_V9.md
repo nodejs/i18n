@@ -895,10 +895,10 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`e00bb1657f`](https://github.com/nodejs/node/commit/e00bb1657f)] - **tools**: non-Ascii linter for /lib only (Sarat Addepalli) [#18043](https://github.com/nodejs/node/pull/18043)
   * [[`4f4bfbecbf`](https://github.com/nodejs/node/commit/4f4bfbecbf)] - **tools**: auto fix custom eslint rule (Shobhit Chittora) [#16652](https://github.com/nodejs/node/pull/16652)
   * [[`ef45bb4305`](https://github.com/nodejs/node/commit/ef45bb4305)] - **tools**: fix icu readme lint error (Anatoli Papirovski) [#18445](https://github.com/nodejs/node/pull/18445)
-  * [[`1767ef06f3`](https://github.com/nodejs/node/commit/1767ef06f3)] - **url**: simplificar URLSearchParams del constructor. Eliminar verificar null innecesaria (Mihail Bodrov) [#18700](https://github.com/nodejs/node/pull/18700)
+  * [[`1767ef06f3`](https://github.com/nodejs/node/commit/1767ef06f3)] - **url**: simplificar URLSearchParams del constructor. Eliminar "check null" innecesaria (Mihail Bodrov) [#18700](https://github.com/nodejs/node/pull/18700)
   * [[`07e4ba2519`](https://github.com/nodejs/node/commit/07e4ba2519)] - **url**: simplificar bucle en analizador (Tobias Nießen) [#18468](https://github.com/nodejs/node/pull/18468)
-  * [[`c8f729f7a3`](https://github.com/nodejs/node/commit/c8f729f7a3)] - **v8**: agregar ',' faltante en la sección 'fuantes' de OpenBSD's. (Aaron Bieber) [#18448](https://github.com/nodejs/node/pull/18448)
-  * [[`02afdbc5c6`](https://github.com/nodejs/node/commit/02afdbc5c6)] - **vm**: voltear firma de Module#link's (Gus Caplan) [#18471](https://github.com/nodejs/node/pull/18471)
+  * [[`c8f729f7a3`](https://github.com/nodejs/node/commit/c8f729f7a3)] - **v8**: agregar ',' faltante en la sección 'sources' de OpenBSD's. (Aaron Bieber) [#18448](https://github.com/nodejs/node/pull/18448)
+  * [[`02afdbc5c6`](https://github.com/nodejs/node/commit/02afdbc5c6)] - **vm**: voltear firma de Module#link (Gus Caplan) [#18471](https://github.com/nodejs/node/pull/18471)
   * [[`1cbd76a100`](https://github.com/nodejs/node/commit/1cbd76a100)] - **vm**: agregar módulos (Gus Caplan) [#17560](https://github.com/nodejs/node/pull/17560)
   * [[`c34e2f4fc5`](https://github.com/nodejs/node/commit/c34e2f4fc5)] - **win, build**: reparar opción de intl-none (Birunthan Mohanathas) [#18292](https://github.com/nodejs/node/pull/18292)
   
