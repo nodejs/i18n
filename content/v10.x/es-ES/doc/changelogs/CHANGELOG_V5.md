@@ -993,7 +993,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`d1aabd6264`](https://github.com/nodejs/node/commit/d1aabd6264)] - **test**: reparar los problemas de estilo después de la actualización de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
 * [[`e98bcfa2cb`](https://github.com/nodejs/node/commit/e98bcfa2cb)] - **test**: remover un segundo de retraso de la prueba (Rich Trott) [#4616](https://github.com/nodejs/node/pull/4616)
 * [[`6cfd0b5a32`](https://github.com/nodejs/node/commit/6cfd0b5a32)] - **test**: reparar test-net-socket-local-address flaky (cjihrig) [#4650](https://github.com/nodejs/node/pull/4650)
-* [[`e22cc6c2eb`](https://github.com/nodejs/node/commit/e22cc6c2eb)] - **test**: fix race in test-net-server-pause-on-connect (Rich Trott) [#4637](https://github.com/nodejs/node/pull/4637)
+* [[`e22cc6c2eb`](https://github.com/nodejs/node/commit/e22cc6c2eb)] - **test**: reparar carrera en test-net-server-pause-on-connect (Rich Trott) [#4637](https://github.com/nodejs/node/pull/4637)
 * [[`9164c00bdb`](https://github.com/nodejs/node/commit/9164c00bdb)] - **test**: move resource intensive tests to sequential (Rich Trott) [#4615](https://github.com/nodejs/node/pull/4615)
 * [[`d8ba2c0de4`](https://github.com/nodejs/node/commit/d8ba2c0de4)] - **test**: fix `http-upgrade-client` flakiness (Santiago Gimeno) [#4602](https://github.com/nodejs/node/pull/4602)
 * [[`6018fa1f57`](https://github.com/nodejs/node/commit/6018fa1f57)] - **test**: fix `http-upgrade-agent` flakiness (Santiago Gimeno) [#4520](https://github.com/nodejs/node/pull/4520)
