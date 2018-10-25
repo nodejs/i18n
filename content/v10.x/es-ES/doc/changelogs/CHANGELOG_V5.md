@@ -951,7 +951,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`8182ec094d`](https://github.com/nodejs/node/commit/8182ec094d)] - **build**: añadir la opción para seleccionar la versión VS (julien.waechter) [#4645](https://github.com/nodejs/node/pull/4645)
 * [[`4383acd9f4`](https://github.com/nodejs/node/commit/4383acd9f4)] - **build**: reparar y refactorizar la configuración VTune en vcbuild.bat (Rod Vagg) [#4192](https://github.com/nodejs/node/pull/4192)
 * [[`be0b0b8cb9`](https://github.com/nodejs/node/commit/be0b0b8cb9)] - **build**: correcciones menores en el texto de configuración VTune (Rod Vagg) [#4192](https://github.com/nodejs/node/pull/4192)
-* [[`9571be12f6`](https://github.com/nodejs/node/commit/9571be12f6)] - **cluster**: fix race condition setting suicide prop (Santiago Gimeno) [#4349](https://github.com/nodejs/node/pull/4349)
+* [[`9571be12f6`](https://github.com/nodejs/node/commit/9571be12f6)] - **cluster**: reparar condición de carrera estableciendo una propiedad de suicidio (Santiago Gimeno) [#4349](https://github.com/nodejs/node/pull/4349)
 * [[`ebd9addcd1`](https://github.com/nodejs/node/commit/ebd9addcd1)] - **crypto**: limpiar pila de errores en ECDH::Initialize (Fedor Indutny) [#4689](https://github.com/nodejs/node/pull/4689)
 * [[`66b9c0d8bd`](https://github.com/nodejs/node/commit/66b9c0d8bd)] - **debugger**: remover redeclaraciones de variables (Rich Trott) [#4633](https://github.com/nodejs/node/pull/4633)
 * [[`88b2889679`](https://github.com/nodejs/node/commit/88b2889679)] - **dgram**: prevenir la optimización deshabilitada de bind() (Brian White) [#4613](https://github.com/nodejs/node/pull/4613)
@@ -987,7 +987,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`761cf2bf6a`](https://github.com/nodejs/node/commit/761cf2bf6a)] - **src**: no verificar falla con ERR_peek_error() (Ben Noordhuis) [#4731](https://github.com/nodejs/node/pull/4731)
 * [[`426ff820f5`](https://github.com/nodejs/node/commit/426ff820f5)] - **stream**: prevenir el cambio del mapa del objeto en ReadableState (Evan Lucas) [#4761](https://github.com/nodejs/node/pull/4761)
 * [[`e65f1f7954`](https://github.com/nodejs/node/commit/e65f1f7954)] - **test**: reparar la condición de carrera tls-multi-key (Santiago Gimeno) [#3966](https://github.com/nodejs/node/pull/3966)
-* [[`3727ae0d7d`](https://github.com/nodejs/node/commit/3727ae0d7d)] - **test**: use addon.md block headings as test dir names (Rod Vagg) [#4412](https://github.com/nodejs/node/pull/4412)
+* [[`3727ae0d7d`](https://github.com/nodejs/node/commit/3727ae0d7d)] - **test**: usar encabezados bloque addon.md block como prueba de nombres de dirección (Rod Vagg) [#4412](https://github.com/nodejs/node/pull/4412)
 * [[`a347cd793f`](https://github.com/nodejs/node/commit/a347cd793f)] - **test**: hacer a test-cluster-disconnect-leak de confianza (Rich Trott) [#4736](https://github.com/nodejs/node/pull/4736)
 * [[`a39b28bb5a`](https://github.com/nodejs/node/commit/a39b28bb5a)] - **test**: reparar los problemas de la regla ESLint space-in-parens (Roman Reiss) [#4753](https://github.com/nodejs/node/pull/4753)
 * [[`d1aabd6264`](https://github.com/nodejs/node/commit/d1aabd6264)] - **test**: reparar los problemas de estilo después de la actualización de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
@@ -1004,23 +1004,23 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`4d5ee7a512`](https://github.com/nodejs/node/commit/4d5ee7a512)] - **tools**: actualizar configuración de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
 * [[`2d441493a4`](https://github.com/nodejs/node/commit/2d441493a4)] - **tools**: actualizar eslint a v1.10.3 (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
 * [[`fe23f4241f`](https://github.com/nodejs/node/commit/fe23f4241f)] - **tools**: reparar license-builder.sh para ICU (Richard Lau) [#4762](https://github.com/nodejs/node/pull/4762)
-* [[`5f57005ec9`](https://github.com/nodejs/node/commit/5f57005ec9)] - **(SEMVER-MINOR)** **v8,src**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
+* [[`5f57005ec9`](https://github.com/nodejs/node/commit/5f57005ec9)] - **(SEMVER-MINOR)** **v8,src**: exponer estadísticas sobre los espacios de los montículos (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
 
 <a id="5.4.1"></a>
 
-## 2016-01-12, Version 5.4.1 (Stable), @TheAlphaNerd
+## 2016-01-12, Versión 5.4.1 (Estable), @TheAlphaNerd
 
-### Notable Changes
+### Cambios Notables
 
-* Minor performance improvements: 
-  * **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
-* Various bug fixes
-* Various doc fixes
-* Various test improvements
+* Mejoras de rendimiento menores: 
+  * **module**: mover trabajo innecesario para devolución temprana (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
+* Varios errores arreglados
+* Varias recuperaciones de documentos
+* Varias mejoras de pruebas
 
-### Known issues
+### Problemas conocidos
 
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
