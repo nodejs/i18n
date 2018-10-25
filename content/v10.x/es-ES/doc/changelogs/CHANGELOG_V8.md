@@ -1710,7 +1710,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`a47fe692b1`](https://github.com/nodejs/node/commit/a47fe692b1)] - **(SEMVER-MINOR)** **n-api**: utilizar AsyncResource para seguimiento de Trabajo (Anna Henningsen) [#14697](https://github.com/nodejs/node/pull/14697)
 * [[`8f12b9dce4`](https://github.com/nodejs/node/commit/8f12b9dce4)] - **n-api**: refactorizar napi_addon_register_func (Taylor Woll) [#15088](https://github.com/nodejs/node/pull/15088)
 * [[`a2d340fb00`](https://github.com/nodejs/node/commit/a2d340fb00)] - **n-api**: napi_is_construct_call-\>napi_get_new_target (Sampson Gao) [#14698](https://github.com/nodejs/node/pull/14698)
-* [[`fe9bb7e51e`](https://github.com/nodejs/node/commit/fe9bb7e51e)] - **net**: support passing null to listen() (cjihrig) [#14221](https://github.com/nodejs/node/pull/14221)
+* [[`fe9bb7e51e`](https://github.com/nodejs/node/commit/fe9bb7e51e)] - **net**: soportar pasar "null" a listen() (cjihrig) [#14221](https://github.com/nodejs/node/pull/14221)
 * [[`19d2d6611c`](https://github.com/nodejs/node/commit/19d2d6611c)] - **path**: fix normalize paths ending with two dots (Michaël Zasso) [nodejs-private/node-private#94](https://github.com/nodejs-private/node-private/pull/94)
 * [[`8eeaba62bc`](https://github.com/nodejs/node/commit/8eeaba62bc)] - **readline**: name some anonymous functions (Flandre Scarlet) [#14297](https://github.com/nodejs/node/pull/14297)
 * [[`4907ae7cb9`](https://github.com/nodejs/node/commit/4907ae7cb9)] - **src**: correct typo in trace_event header (Daniel Bevenius) [#15583](https://github.com/nodejs/node/pull/15583)
