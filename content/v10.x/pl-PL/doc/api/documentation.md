@@ -41,7 +41,7 @@ Ekosystemem npm ma wysoki priorytet i nie zostanie złamana, chyba że to absolu
 niezbędne.
 ```
 
-Podczas korzystania z funkcji `Eksperymentalne` należy zachować ostrożność, w szczególności wewnątrz modułów, które mogą być używane jako zależności (lub zależności zależności) wewnątrz aplikacji Node.js. Końcowi odbiorcy mogą nie być tego świadomi, że używane są funkcje eksperymentalne, dlatego mogą wystąpić nieoczekiwane awarie lub zmiany zachowań po wystąpieniu modyfikacji interfejsu API. Aby tego uniknąć tego typu niespodzianki, funkcje `Eksperymentalne` mogą wymagać użycia wiersza polecenia flagi do jawnego ich uruchomienia, lub mogą powodować wyświetlenia ostrzeżenia o procesie. Domyślnie, takie ostrzeżenia są wywoływane jako [`stderr`][] i mogą być obsługiwane przez dołączanie odbiornika do zdarzenia [`'ostrzeżenie'`][].
+Podczas korzystania z funkcji `Eksperymentalne` należy zachować ostrożność, w szczególności wewnątrz modułów, które mogą być używane jako zależności (lub zależności zależności) wewnątrz aplikacji Node.js. Końcowi odbiorcy mogą nie być tego świadomi, że używane są funkcje eksperymentalne, dlatego mogą wystąpić nieoczekiwane awarie lub zmiany zachowań po wystąpieniu modyfikacji interfejsu API. Aby tego uniknąć tego typu niespodzianki, funkcje `Eksperymentalne` mogą wymagać użycia wiersza polecenia flagi do jawnego ich uruchomienia, lub mogą powodować wyświetlenia ostrzeżenia o procesie. Domyślnie, takie ostrzeżenia są wywoływane jako [`stderr`][] i mogą być obsługiwane przez dołączanie odbiornika do zdarzenia [`'warning'`][].
 
 ## Dane wyjściowe JSON
 
