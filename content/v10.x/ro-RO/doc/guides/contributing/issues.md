@@ -55,17 +55,17 @@ Dacă crezi că ai descoperit o eroare în Node.js, te rugăm să completezi ace
 
 Cele două informații importante de care avem nevoie pentru a evalua corect raportul este o descriere a comportamentului pe care îl vezi și un simplu caz de testare pe care îl putem folosi pentru a recrea și noi problema. Dacă nu putem recrea problema, devine imposibil pentru nou să o rezolvăm.
 
-Pentru a exclude posibilitatea introducerii de erori de către codul mediului utilizatorului, cazurile de testare ar trebui să fie limitate, pe cât posibil, *doar* la utilizarea API-urilor Node.js. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+Pentru a exclude posibilitatea introducerii de erori de către codul mediului utilizatorului, cazurile de testare ar trebui să fie limitate, pe cât posibil, *doar* la utilizarea API-urilor Node.js. Dacă eroarea apare numai atunci când utilizezi un modul de destinație specific, există o șansă foarte bună fie ca (a) modulul să aibă o eroare sau (b) ceva din Node.js s-a schimbat și a afectat modulul.
 
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+Vezi [Cum să creezi un exemplu minimal, complet și care poate fi verificat](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## Trierea unui raport de eroare
 
-Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+Odată ce un tichet a fost deschis, nu este neobișnuit să existe discuții în jurul acestuia. Unii colaboratori ar putea avea opinii diferite despre problemă, inclusiv dacă comportamentul observat este o eroare sau o funcționalitate. Această discuție face parte dintr-un proces și ar trebui să fie ținută concentrată, utilă și profesională.
 
-Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
+Răspunsurile scurte, tăiate—care nu oferă niciun context suplimentar și nici nu susțin un detaliu—nu sunt de ajutor și nici profesionale. Prea multe astfel de răspunsuri sunt pur și simplu enervante sau neprietenoase.
 
-Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
+Colaboratorii sunt încurajați să se ajute unul pe altul, să facă progrese cât mai mult posibil, împuternicindu-se reciproc pentru a rezolva problemele în colaborare. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
 ## Resolving a Bug Report
 

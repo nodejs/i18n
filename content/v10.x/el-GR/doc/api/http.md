@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-To use the HTTP server and client one must `require('http')`.
+Για να χρησιμοποιηθεί ο διακομιστής και ο πελάτης HTTP, θα πρέπει να γίνει κλήση `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Οι διεπαφές HTTP στο Node.js έχουν σχεδιαστεί για να υποστηρίζουν πολλά χαρακτηριστικά των πρωτοκόλλων που είναι κατά παράδοση δύσκολα στη χρήση. Ειδικότερα, μεγάλα, ενδεχομένως κωδικοποιημένα μπλοκ μηνυμάτων. Η διεπαφή έχει σχεδιαστεί να μην μεταφέρει buffer ολόκληρων αιτημάτων ή απαντήσεων — ο χρήστης μπορεί να αποκτήσει τα δεδομένα με ροή.
 
-HTTP message headers are represented by an object like this:
+Τα μηνύματα κεφαλίδας HTTP παρουσιάζονται σαν αντικείμενα, όπως αυτό:
 
 <!-- eslint-skip -->
 
@@ -20,13 +20,13 @@ HTTP message headers are represented by an object like this:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Τα κλειδιά είναι πεζοί χαρακτήρες. Οι τιμές δεν τροποποιούνται.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+Για να υποστηριχθεί ολόκληρο το φάσμα των πιθανών εφαρμογών του πρωτοκόλλου HTTP, το HTTP API του Node.js είναι φτιαγμένο σε πολύ χαμηλό επίπεδο. Ασχολείται μόνο με τον χειρισμό ροών και την ανάλυση μηνυμάτων. Αναλύει ένα μήνυμα σε κεφαλίδες και σώμα, αλλά δεν αναλύει περαιτέρω τις κεφαλίδες ή το σώμα.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Δείτε το [`message.headers`][] για λεπτομέρειες στο πώς μεταχειρίζονται οι διπλότυπες κεφαλίδες.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Οι ανεπεξέργαστες κεφαλίδες, διατηρούνται όπως παραλήφθηκαν στην ιδιότητα `rawHeaders`, που είναι ένας πίνακας από `[key, value, key2, value2, ...]`. Για παράδειγμα, το προηγούμενο αντικείμενο μηνύματος κεφαλίδας, θα είχε μια λίστα `rawHeaders` όπως η παρακάτω:
 
 <!-- eslint-disable semi -->
 
@@ -39,21 +39,21 @@ The raw headers as they were received are retained in the `rawHeaders` property,
   'accepT', '*/*' ]
 ```
 
-## Class: http.Agent
+## Κλάση: http.Agent
 
 <!-- YAML
 added: v0.3.4
 -->
 
-An `Agent` is responsible for managing connection persistence and reuse for HTTP clients. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+Ο `Agent` είναι υπεύθυνος για την διαχείριση της διατήρησης συνδέσεων και την επαναχρησιμοποίηση τους, με τους πελάτες HTTP. Διατηρεί μια ουρά από αιτήματα σε αναμονή για κάθε υπολογιστή και θύρα, επαναχρησιμοποιώντας ένα μοναδικό socket σύνδεσης για κάθε αίτημα, μέχρι να αδειάσει η ουρά, οπότε και το socket καταστρέφεται ή τοποθετείται σε μια δεξαμενή όπου και κρατείται μέχρι να χρησιμοποιηθεί ξανά για αιτήματα του ίδιου υπολογιστή και της ίδιας θύρας. Το αν θα καταστραφεί ή θα μπει στην δεξαμενή, εξαρτάται από την [επιλογή](#http_new_agent_options) `keepAlive`.
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Οι συνδέσεις σε δεξαμενή έχουν ενεργοποιημένο το TCP Keep-Alive, αλλά οι εξυπηρετητές ενδέχεται να κλείνουν τις αδρανείς συνδέσεις, στην οποία περίπτωση αφαιρούνται από την δεξαμενή και μια νέα σύνδεση θα γίνει όταν ένα νέο αίτημα HTTP δημιουργηθεί για αυτόν τον υπολογιστή και αυτή τη θύρα. Οι εξυπηρετητές ενδέχεται να αρνούνται τα πολλαπλά αιτήματα μέσω της ίδιας σύνδεσης, στην οποία περίπτωση η σύνδεση θα πρέπει να επαναδημιουργηθεί για κάθε αίτημα και δε μπορεί να γίνει δεξαμενή. Ο `Agent` θα συνεχίσει να στέλνει νέα αιτήματα στον εξυπηρετητή, αλλά το κάθε ένα θα γίνεται μέσω μιας νέας σύνδεσης.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Όταν μια σύνδεση κλείσει είτε από τον πελάτη ή από τον εξυπηρετητή, αφαιρείται από την δεξαμενή. Οποιαδήποτε αχρησιμοποίητα socket στην δεξαμενή, γίνονται unref για να μην κρατάνε την διαδικασία του Node.js ενεργή όταν δεν υπάρχουν εκκρεμή αιτήματα. (δείτε [`socket.unref()`]).
 
-It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
+Είναι καλή πρακτική, να γίνεται [`destroy()`][] ενός `Agent` όταν αυτός δεν χρησιμοποιείται άλλο, καθώς τα αχρησιμοποίητα Socket χρησιμοποιούν πόρους του Λειτουργικού Συστήματος.
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+Τα socket αφαιρούνται από έναν agent, όταν το socket μεταδίδει ένα συμβάν `'close'` ή ένα συμβάν `'agentRemove'`. Όταν υπάρχει πρόθεση να υπάρχει ένα αίτημα HTTP ανοιχτό για μεγάλο χρονικό διάστημα, χωρίς να είναι δεμένο σε έναν agent, μπορεί να γίνει κάτι σαν το παρακάτω:
 
 ```js
 http.get(options, (res) => {
@@ -63,7 +63,7 @@ http.get(options, (res) => {
 });
 ```
 
-An agent may also be used for an individual request. By providing `{agent: false}` as an option to the `http.get()` or `http.request()` functions, a one-time use `Agent` with default options will be used for the client connection.
+Ένας agent μπορεί επίσης να χρησιμοποιηθεί για ένα μοναδικό αίτημα. Με τη χρήση του `{agent: false}` ως επιλογή στη συνάρτηση `http.get()` ή στη συνάρτηση `http.request()`, θα χρησιμοποιηθεί ένας `Agent` μιας χρήσης με τις προεπιλεγμένες επιλογές για την σύνδεση πελάτη.
 
 `agent:false`:
 
@@ -84,15 +84,15 @@ http.get({
 added: v0.3.4
 -->
 
-* `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
-  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **Default:** `false`.
-  * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
-  * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
-  * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
+* `options` {Object} Ένα σύνολο επεξεργάσιμων ρυθμίσεων που θα οριστούν για τον agent. Μπορεί να περιέχει τα παρακάτω πεδία: 
+  * `keepAlive` {boolean} Να παραμένουν ενεργά τα socket ακόμα και όταν δεν υπάρχουν εκκρεμή αιτήματα, ώστε να μπορούν να χρησιμοποιηθούν για μελλοντικά αιτήματα χωρίς την ανάγκη αποκατάστασης μιας σύνδεσης TCP. **Προεπιλογή:** `false`.
+  * `keepAliveMsecs` {number} Όταν χρησιμοποιείται η επιλογή `keepAlive`, ορίζει την [αρχική καθυστέρηση](net.html#net_socket_setkeepalive_enable_initialdelay) των πακέτων TCP Keep-Alive. Αγνοείται όταν η επιλογή `keepAlive` είναι `false` ή `undefined`. **Προεπιλογή:** `1000`.
+  * `maxSockets` {number} Ο μέγιστος αριθμός socket που επιτρέπονται ανά υπολογιστή. **Προεπιλογή:** `Infinity`.
+  * `maxFreeSockets` {number} Μέγιστος αριθμός ανοιχτών socket που μπορούν να μείνουν ανοιχτά σε ελεύθερη κατάσταση. Εφαρμόζεται μόνο αν το `keepAlive` έχει οριστεί ως `true`. **Προεπιλογή:** `256`.
 
-The default [`http.globalAgent`][] that is used by [`http.request()`][] has all of these values set to their respective defaults.
+Το προεπιλεγμένο [`http.globalAgent`][] που χρησιμοποιείται από την συνάρτηση [`http.request()`][] έχει όλες τις παραπάνω τιμές ορισμένες στις προεπιλεγμένες τιμές τους.
 
-To configure any of them, a custom [`http.Agent`][] instance must be created.
+Για να γίνει ρύθμιση οποιασδήποτε από τις παραπάνω τιμές, πρέπει να δημιουργηθεί ένα προσαρμοσμένο [`http.Agent`][].
 
 ```js
 const http = require('http');
@@ -107,17 +107,17 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
-* `callback` {Function} Callback function that receives the created socket
-* Returns: {net.Socket}
+* `options` {Object} Επιλογές που περιέχουν τα στοιχεία σύνδεσης. Δείτε την συνάρτηση [`net.createConnection()`][] για τη μορφή των επιλογών της
+* `callback` {Function} Η συνάρτηση Callback που παραλαμβάνει το δημιουργημένο socket
+* Επιστρέφει: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Δημιουργεί ένα socket/μια ροή που μπορεί να χρησιμοποιηθεί σε αιτήματα HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+Από προεπιλογή, αυτή η συνάρτηση είναι ίδια με την συνάρτηση [`net.createConnection()`][]. Ωστόσο, ένας προσαρμοσμένος agent μπορεί να παρακάμψει αυτή τη μέθοδο, σε περίπτωση που ζητείται μεγαλύτερη προσαρμοστικότητα.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Ένα socket/μια ροή μπορεί να παρέχεται με έναν από τους 2 παρακάτω τρόπους: με την επιστροφή του socket/της ροής από αυτήν την συνάρτηση, ή με το πέρασμα του socket/της ροής στο `callback`.
 
-`callback` has a signature of `(err, stream)`.
+Το `callback` έχει υπογραφή `(err, stream)`.
 
 ### agent.keepSocketAlive(socket)
 
@@ -127,7 +127,7 @@ added: v8.1.0
 
 * `socket` {net.Socket}
 
-Called when `socket` is detached from a request and could be persisted by the `Agent`. Default behavior is to:
+Καλείται όταν ένα `socket` αποσπάται από ένα αίτημα και μπορεί να διατηρηθεί από τον `Agent`. Η προεπιλεγμένη συμπεριφορά είναι:
 
 ```js
 socket.setKeepAlive(true, this.keepAliveMsecs);
@@ -135,7 +135,7 @@ socket.unref();
 return true;
 ```
 
-This method can be overridden by a particular `Agent` subclass. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
+Αυτή η μέθοδος μπορεί να παρακαμφθεί από μια συγκεκριμένη subclass του `Agent`. Εάν αυτή η μέθοδος επιστρέψει μια τιμή falsy, το socket θα καταστραφεί αντί να διατηρηθεί για χρήση με το επόμενο αίτημα.
 
 ### agent.reuseSocket(socket, request)
 
@@ -146,13 +146,13 @@ added: v8.1.0
 * `socket` {net.Socket}
 * `request` {http.ClientRequest}
 
-Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Default behavior is to:
+Καλείται όταν ένα `socket` έχει συνδεθεί στο `request` αφού έχει διατηρηθεί λόγω των επιλογών keep-alive. Η προεπιλεγμένη συμπεριφορά είναι:
 
 ```js
 socket.ref();
 ```
 
-This method can be overridden by a particular `Agent` subclass.
+Αυτή η μέθοδος μπορεί να παρακαμφθεί από μια συγκεκριμένη subclass του `Agent`.
 
 ### agent.destroy()
 
@@ -160,9 +160,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Καταστρέφει όλα τα socket που είναι σε χρήση από τον agent αυτή τη στιγμή.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Συνήθως, δεν χρειάζεται να γίνει αυτό. Ωστόσο, αν χρησιμοποιείτε έναν agent με ενεργό το `keepAlive`, τότε το καλύτερο είναι να γίνεται ρητός τερματισμός του agent όταν δεν θα χρησιμοποιηθεί άλλο. Διαφορετικά, τα socket μπορεί να παραμείνουν ανοιχτά για μεγάλο χρονικό διάστημα πριν ο εξυπηρετητής τερματίσει την λειτουργία τους.
 
 ### agent.freeSockets
 
@@ -172,7 +172,7 @@ added: v0.11.4
 
 * {Object}
 
-An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+Ένα αντικείμενο που περιέχει πίνακες με sockets που αναμένουν την χρήση τους από τον agent, όταν το έχει ενεργοποιηθεί το `keepAlive`. Να μην τροποποιηθεί.
 
 ### agent.getName(options)
 
@@ -180,14 +180,14 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `options` {Object} A set of options providing information for name generation 
-  * `host` {string} A domain name or IP address of the server to issue the request to
-  * `port` {number} Port of remote server
-  * `localAddress` {string} Local interface to bind for network connections when issuing the request
-  * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+* `options` {Object} Ένα σύνολο επιλογών που παρέχουν πληροφορίες για την γεννήτρια ονομάτων 
+  * `host` {string} Ένα όνομα τομέα ή μια διεύθυνση IP διακομιστή για τον οποίο θα εκδοθεί το αίτημα
+  * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή
+  * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος
+  * `family` {integer} Πρέπει να είναι 4 ή 6 εάν δεν ισούται με `undefined`.
+* Επιστρέφει: {string}
 
-Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Λαμβάνει ένα μοναδικό όνομα για ένα σύνολο επιλογών αιτημάτων, για τον προσδιορισμό της επαναχρησιμοποίησης μιας σύνδεσης. Για έναν HTTP agent, η συνάρτηση επιστρέφει `host:port:localAddress` ή `host:port:localAddress:family`. Για έναν HTTPS agent, το όνομα συμπεριλαμβάνει την αρχή πιστοποίησης, το πιστοποιητικό, τους cipher και άλλες συγκεκριμένες HTTPS/TLS επιλογές, για τον προσδιορισμό της επαναχρησιμοποίησης του socket.
 
 ### agent.maxFreeSockets
 
@@ -197,7 +197,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Από προεπιλογή, είναι ορισμένο ως 256. Για agents με ενεργοποιημένο το `keepAlive`, αυτό ορίζει τον μέγιστο αριθμό των socket που μπορούν να παραμείνουν ανοιχτά σε ελεύθερη κατάσταση.
 
 ### agent.maxSockets
 
@@ -207,7 +207,7 @@ added: v0.3.6
 
 * {number}
 
-By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
+Από προεπιλογή, είναι ορισμένο ως `Infinity`. Προσδιορίζει πόσα παράλληλα socket μπορεί να κρατάει ανοιχτά ο agent ανά προέλευση. Η προέλευση είναι η τιμή επιστροφής της συνάρτησης [`agent.getName()`][].
 
 ### agent.requests
 
@@ -217,7 +217,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+Ένα αντικείμενο που περιέχει την ουρά των αιτημάτων που δεν έχουν ανατεθεί ακόμα σε κάποιο socket. Να μην τροποποιηθεί.
 
 ### agent.sockets
 
@@ -227,7 +227,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+Ένα αντικείμενο που περιέχει πίνακες των socket που χρησιμοποιούνται αυτή τη στιγμή απο τον agent. Να μην τροποποιηθεί.
 
 ## Class: http.ClientRequest
 
@@ -235,27 +235,27 @@ An object which contains arrays of sockets currently in use by the agent. Do not
 added: v0.1.17
 -->
 
-This object is created internally and returned from [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα *in-progress*, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. Η κεφαλίδα μπορεί ακόμα να μεταβληθεί χρησιμοποιώντας τις συναρτήσεις API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. Η πραγματική κεφαλίδα θα σταλεί μαζί με το πρώτο κομμάτι δεδομένων ή όταν γίνει κλήση της συνάρτησης [`request.end()`][].
 
-To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Για να λάβετε την απάντηση, προσθέστε έναν ακροατή [`'response'`][] στο αντικείμενο της αίτησης. To [`'response'`][] θα μεταδοθεί από το αντικείμενο του αιτήματος όταν ληφθούν οι κεφαλίδες της απόκρισης. Το συμβάν [`'response'`][] εκτελείται με μια παράμετρο, η οποία είναι ένα στιγμιότυπο του [`http.IncomingMessage`][].
 
-During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
+Κατά τη διάρκεια του συμβάντος [`'response'`][], μπορούν να προστεθούν ακροατές στο αντικείμενο απόκρισης· ιδιαίτερα για την ακρόαση του συμβάντος `'data'`.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Αν δεν προστεθεί χειριστής [`'response'`][], τότε η απόκριση θα απορρίπτεται εξ'ολοκλήρου. Ωστόσο, αν προστεθεί χειριστής του συμβάντος [`'response'`][], τότε τα δεδομένα από την απόκριση του αντικειμένου **πρέπει** να καταναλωθούν, είτε με την κλήση της συνάρτησης `response.read()` όταν υπάρχει ένα συμβάν `'readable'`, ή με την προσθήκη ενός χειριστή `'data'`, ή με την κλήση της μεθόδου `.resume()`. Μέχρι να καταναλωθούν όλα τα δεδομένα, το συμβάν `'end'` δε θα ενεργοποιηθεί. Επίσης, μέχρι να διαβαστούν όλα τα δεδομένα, θα καταναλώνει μνήμη πράγμα που τελικά μπορεί να οδηγήσει σε σφάλμα 'process out of memory'.
 
-Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Το node.js δεν ελέγχει εάν το Content-Length και το μέγεθος του σώματος που έχει μεταδοθεί είναι ίσα ή όχι.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+Το αίτημα υλοποιεί την διεπαφή [Writable Stream](stream.html#stream_class_stream_writable). Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
-### Event: 'abort'
+### Συμβάν: 'abort'
 
 <!-- YAML
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί από τον πελάτη. Αυτό το συμβάν μεταδίδεται μόνο στην πρώτη κλήση του `abort()`.
 
-### Event: 'connect'
+### Συμβάν: 'connect'
 
 <!-- YAML
 added: v0.7.0
@@ -265,22 +265,22 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Μεταδίδεται κάθε φορά που ο εξυπηρετητής αποκρίνεται σε ένα αίτημα με μια μέθοδο `CONNECT`. Αν δεν γίνεται ακρόαση αυτού του συμβάντος, θα γίνεται τερματισμός της σύνδεσης των πελατών που λαμβάνουν μια μέθοδο `CONNECT`.
 
-A client and server pair demonstrating how to listen for the `'connect'` event:
+Ένα ζευγάρι εξυπηρετητή και πελάτη, που επιδεικνύει την ακρόαση του συμβάντος `'connect'`:
 
 ```js
 const http = require('http');
 const net = require('net');
 const url = require('url');
 
-// Create an HTTP tunneling proxy
+// Δημιουργία ενός HTTP tunneling proxy
 const proxy = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
 });
 proxy.on('connect', (req, cltSocket, head) => {
-  // connect to an origin server
+  // σύνδεση στον εξυπηρετητή προορισμού
   const srvUrl = url.parse(`http://${req.url}`);
   const srvSocket = net.connect(srvUrl.port, srvUrl.hostname, () => {
     cltSocket.write('HTTP/1.1 200 Connection Established\r\n' +
@@ -292,10 +292,10 @@ proxy.on('connect', (req, cltSocket, head) => {
   });
 });
 
-// now that proxy is running
+// τώρα που ο proxy εκτελείται
 proxy.listen(1337, '127.0.0.1', () => {
 
-  // make a request to a tunneling proxy
+  // δημιουργία αιτήματος σε ένα proxy tunnel
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -309,7 +309,7 @@ proxy.listen(1337, '127.0.0.1', () => {
   req.on('connect', (res, socket, head) => {
     console.log('got connected!');
 
-    // make a request over an HTTP tunnel
+    // δημιουργία αιτήματος μέσω ενός HTTP tunnel
     socket.write('GET / HTTP/1.1\r\n' +
                  'Host: www.google.com:80\r\n' +
                  'Connection: close\r\n' +
@@ -324,21 +324,21 @@ proxy.listen(1337, '127.0.0.1', () => {
 });
 ```
 
-### Event: 'continue'
+### Συμβάν: 'continue'
 
 <!-- YAML
 added: v0.3.2
 -->
 
-Emitted when the server sends a '100 Continue' HTTP response, usually because the request contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
+Μεταδίδεται όταν ο εξυπηρετητής αποστέλλει μια απόκριση HTTP '100 Continue', συνήθως επειδή το αίτημα περιείχε το 'Expect: 100-continue'. Αυτή είναι μια οδηγία που ο πελάτης θα πρέπει να αποστείλει το σώμα του αιτήματος.
 
-### Event: 'information'
+### Συμβάν: 'information'
 
 <!-- YAML
 added: v10.0.0
 -->
 
-Emitted when the server sends a 1xx response (excluding 101 Upgrade). This event is emitted with a callback containing an object with a status code.
+Μεταδίδεται όταν ο εξυπηρετητής αποστέλλει μια απόκριση 1xx (εξαιρείται η απόκριση '101 Upgrade'). Αυτό το συμβάν μεταδίδεται με ένα callback που συμπεριλαμβάνει ένα αντικείμενο με έναν κωδικό κατάστασης HTTP.
 
 ```js
 const http = require('http');
@@ -349,7 +349,7 @@ const options = {
   path: '/length_request'
 };
 
-// Make a request
+// Δημιουργία αιτήματος
 const req = http.request(options);
 req.end();
 
@@ -358,9 +358,9 @@ req.on('information', (res) => {
 });
 ```
 
-101 Upgrade statuses do not fire this event due to their break from the traditional HTTP request/response chain, such as web sockets, in-place TLS upgrades, or HTTP 2.0. To be notified of 101 Upgrade notices, listen for the [`'upgrade'`][] event instead.
+Ο κωδικός κατάστασης '101 Upgrade' δεν ενεργοποιεί αυτό το συμβάν λόγω της διαφοράς του από την παραδοσιακή αλυσίδα αιτημάτων/αποκρίσεων του πρωτοκόλλου HTTP, όπως web sockets, επιτόπου αναβάθμιση πιστοποιητικού TLS, ή HTTP 2.0. Για να γίνει λήψη ειδοποιήσεων '101 Upgrade', θα πρέπει να γίνεται ακρόαση του συμβάντος [`'upgrade'`][].
 
-### Event: 'response'
+### Συμβάν: 'response'
 
 <!-- YAML
 added: v0.1.0
@@ -368,9 +368,9 @@ added: v0.1.0
 
 * `response` {http.IncomingMessage}
 
-Emitted when a response is received to this request. This event is emitted only once.
+Μεταδίδεται όταν ληφθεί μια απόκριση σε αυτό το αίτημα. Το συμβάν μεταδίδεται μόνο μια φορά.
 
-### Event: 'socket'
+### Συμβάν: 'socket'
 
 <!-- YAML
 added: v0.5.3
@@ -378,19 +378,19 @@ added: v0.5.3
 
 * `socket` {net.Socket}
 
-Emitted after a socket is assigned to this request.
+Μεταδίδεται αφού ένα socket αντιστοιχιστεί σε αυτό το αίτημα.
 
-### Event: 'timeout'
+### Συμβάν: 'timeout'
 
 <!-- YAML
 added: v0.7.8
 -->
 
-Emitted when the underlying socket times out from inactivity. This only notifies that the socket has been idle. The request must be aborted manually.
+Μεταδίδεται όταν το υποκείμενο socket εξαντλεί το χρονικό περιθώριο λόγω αδράνειας. Αυτό ειδοποιεί, μόνο, πως το socket έχει μείνει αδρανές. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
 
-See also: [`request.setTimeout()`][].
+Δείτε επίσης: [`request.setTimeout()`][].
 
-### Event: 'upgrade'
+### Συμβάν: 'upgrade'
 
 <!-- YAML
 added: v0.1.94
@@ -400,14 +400,14 @@ added: v0.1.94
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with an upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Μεταδίδεται κάθε φορά που ο εξυπηρετητής αποκρίνεται σε ένα αίτημα με αναβάθμιση. Αν δεν γίνεται ακρόαση για το συμβάν και το αίτημα έχει κωδικό κατάστασης '101 Switching Protocols', θα γίνει τερματισμός της σύνδεσης του πελάτη που λαμβάνει μια κεφαλίδα αναβάθμισης.
 
-A client server pair demonstrating how to listen for the `'upgrade'` event.
+Ένα ζευγάρι εξυπηρετητή και πελάτη, που επιδεικνύει την ακρόαση του συμβάντος `'upgrade'`.
 
 ```js
 const http = require('http');
 
-// Create an HTTP server
+// Δημιουργία ενός εξυπηρετητή HTTP
 const srv = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
@@ -418,13 +418,13 @@ srv.on('upgrade', (req, socket, head) => {
                'Connection: Upgrade\r\n' +
                '\r\n');
 
-  socket.pipe(socket); // echo back
+  socket.pipe(socket); // επιστροφή echo
 });
 
-// now that server is running
+// τώρα που ο εξυπηρετητής τρέχει
 srv.listen(1337, '127.0.0.1', () => {
 
-  // make a request
+  // δημιουργία αιτήματος
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -451,7 +451,7 @@ srv.listen(1337, '127.0.0.1', () => {
 added: v0.3.8
 -->
 
-Marks the request as aborting. Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
+Σημειώνει πως το αίτημα ματαιώνεται. Η κλήση αυτής της μεθόδου θα προκαλέσει την απόρριψη των εναπομεινάντων δεδομένων του αιτήματος, καθώς και την καταστροφή του socket.
 
 ### request.aborted
 
@@ -459,7 +459,7 @@ Marks the request as aborting. Calling this will cause remaining data in the res
 added: v0.11.14
 -->
 
-If a request has been aborted, this value is the time when the request was aborted, in milliseconds since 1 January 1970 00:00:00 UTC.
+Αν ένα αίτημα έχει ματαιωθεί, αυτή τη τιμή είναι ο στιγμή που ακυρώθηκε το αίτημα, σε χιλιοστά του δευτερολέπτου από την 1η Ιανουαρίου 1970 00:00:00 UTC.
 
 ### request.connection
 
@@ -469,7 +469,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`request.socket`][].
+Δείτε το [`request.socket`][].
 
 ### request.end(\[data[, encoding]\]\[, callback\])
 
@@ -487,11 +487,11 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. Αν το έτοιμα είναι τεμαχισμένο, αυτό θα στείλει τον τερματισμό `'0\r\n\r\n'`.
 
-If `data` is specified, it is equivalent to calling [`request.write(data, encoding)`][] followed by `request.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμο με την κλήση του [`request.write(data, encoding)`][] ακολουθούμενο από `request.end(callback)`.
 
-If `callback` is specified, it will be called when the request stream is finished.
+Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
 ### request.flushHeaders()
 
@@ -499,11 +499,11 @@ If `callback` is specified, it will be called when the request stream is finishe
 added: v1.6.0
 -->
 
-Flush the request headers.
+Εκκαθάριση των κεφαλίδων του αιτήματος.
 
-For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
+Για λόγους αποδοτικότητας, το Node.js κάνει προσωρινή αποθήκευση των κεφαλίδων του αιτήματος μέχρι να κληθεί το `request.end()` ή μέχρι να γραφτεί το πρώτο τμήμα των δεδομένων του αιτήματος. Στη συνέχεια, προσπαθεί να εισάγει όλες τις κεφαλίδες και τα δεδομένα του αιτήματος σε ένα πακέτο TCP.
 
-That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` bypasses the optimization and kickstarts the request.
+Αυτό συνήθως είναι το επιθυμητό (εξοικονομεί μια πλήρη διαδρομή TCP), αλλά όχι όταν τα πρώτα δεδομένα δεν έχουν αποσταλεί μέχρι πιθανώς πολύ αργότερα. Το `request.flushHeaders()` αγνοεί οποιαδήποτε βελτιστοποίηση και ξεκινάει το αίτημα άμεσα.
 
 ### request.getHeader(name)
 
@@ -512,29 +512,29 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Επιστρέφει: {any}
 
-Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Διαβάζει μια από τις κεφαλίδες του αιτήματος. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα. Ο τύπος της τιμής επιστροφής εξαρτάται από τις παραμέτρους που θα παρασχεθούν στο [`request.setHeader()`][].
 
-Example:
+Παράδειγμα:
 
 ```js
 request.setHeader('content-type', 'text/html');
 request.setHeader('Content-Length', Buffer.byteLength(body));
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 const contentType = request.getHeader('Content-Type');
-// contentType is 'text/html'
+// Το contentType είναι 'text/html'
 const contentLength = request.getHeader('Content-Length');
-// contentLength is of type number
+// Το contentLength είναι τύπος number
 const setCookie = request.getHeader('set-cookie');
-// setCookie is of type string[]
+// Το setCookie είναι τύπος string[]
 ```
 
 ### request.maxHeadersCount
 
-* {number} **Default:** `2000`
+* {number} **Προεπιλογή:** `2000`
 
-Limits maximum response headers count. If set to 0, no limit will be applied.
+Προσθέτει μέγιστο όριο στον αριθμό κεφαλίδων της απόκρισης. Αν οριστεί ως 0, δεν θα προστεθεί κάποιο όριο.
 
 ### request.removeHeader(name)
 
@@ -544,9 +544,9 @@ added: v1.6.0
 
 * `name` {string}
 
-Removes a header that's already defined into headers object.
+Αφαιρεί μια κεφαλίδα που έχει ήδη οριστεί στο αντικείμενο κεφαλίδων.
 
-Example:
+Παράδειγμα:
 
 ```js
 request.removeHeader('Content-Type');
@@ -561,15 +561,15 @@ added: v1.6.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Ορίζει μια μοναδική τιμή για το αντικείμενο κεφαλίδων. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή του θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Επομένως, το [`request.getHeader()`][] μπορεί να επιστρέψει τιμές που δεν είναι string. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
 
-Example:
+Παράδειγμα:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
 ```
 
-or
+ή
 
 ```js
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -583,7 +583,7 @@ added: v0.5.9
 
 * `noDelay` {boolean}
 
-Once a socket is assigned to this request and is connected [`socket.setNoDelay()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setNoDelay()`][].
 
 ### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -594,7 +594,7 @@ added: v0.5.9
 * `enable` {boolean}
 * `initialDelay` {number}
 
-Once a socket is assigned to this request and is connected [`socket.setKeepAlive()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setKeepAlive()`][].
 
 ### request.setTimeout(timeout[, callback])
 
@@ -602,11 +602,11 @@ Once a socket is assigned to this request and is connected [`socket.setKeepAlive
 added: v0.5.9
 -->
 
-* `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* `timeout` {number} Χιλιοστά του Δευτερολέπτου πριν την εξάντληση του χρονικού ορίου του αιτήματος.
+* `callback` {Function} Προαιρετική συνάρτηση που θα κληθεί όταν εξαντληθεί το χρονικό περιθώριο ενός αιτήματος. Είναι το ίδιο με την δέσμευση στο συμβάν `'timeout'`.
+* Επιστρέφει: {http.ClientRequest}
 
-Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
+Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setTimeout()`][].
 
 ### request.socket
 
@@ -616,9 +616,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` may also be accessed via `request.connection`.
+Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, τα socket δεν μεταδίδουν `'readable'` συμβάντα, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `request.connection`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const http = require('http');
@@ -631,7 +631,7 @@ req.once('response', (res) => {
   const ip = req.socket.localAddress;
   const port = req.socket.localPort;
   console.log(`Your IP address is ${ip} and your source port is ${port}.`);
-  // consume response object
+  // κατανάλωση απόκρισης του αντικειμένου
 });
 ```
 
@@ -644,23 +644,23 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
-Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Αποστέλλει ένα τμήμα του σώματος. Καλώντας πολλές φορές αυτή τη μέθοδο, το σώμα ενός αιτήματος μπορεί να αποσταλεί σε έναν εξυπηρετητή — σε αυτήν την περίπτωση προτείνεται να γίνει χρήση της κεφαλίδας `['Transfer-Encoding', 'chunked']` κατά τη δημιουργία του αιτήματος.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+Η παράμετρος `encoding` είναι προαιρετική και ισχύει μόνο όταν το `chunk` είναι string. Από προεπιλογή είναι `'utf8'`.
 
-The `callback` argument is optional and will be called when this chunk of data is flushed.
+Η παράμετρος `callback` είναι προαιρετική και μπορεί να κληθεί όταν αυτό το κομμάτι δεδομένων έχει εκκαθαριστεί.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
-## Class: http.Server
+## Κλάση: http.Server
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This class inherits from [`net.Server`][] and has the following additional events:
+Η κλάση κληρονομεί από το [`net.Server`][] και έχει τα παρακάτω πρόσθετα συμβάντα:
 
 ### Event: 'checkContinue'
 
@@ -671,13 +671,13 @@ added: v0.3.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a `100 Continue` as appropriate.
+Μεταδίδεται κάθε φορά που λαμβάνεται ένα αίτημα με κωδικό HTTP `Expect: 100-continue`. Αν δε γίνεται ακρόαση για αυτό το συμβάν, ο εξυπηρετητής θα αποκριθεί αυτόματα με απάντηση `100 Continue` ανάλογα με την περίπτωση.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Ο χειρισμός αυτού του συμβάντος απαιτεί την κλήση του [`response.writeContinue()`][] εάν ο πελάτης πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος, ή να απαντήσει με ένα κατάλληλο μήνυμα (για παράδειγμα '400 Bad Request') εάν ο πελάτης δεν πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
-### Event: 'checkExpectation'
+### Συμβάν: 'checkExpectation'
 
 <!-- YAML
 added: v5.5.0
@@ -686,11 +686,11 @@ added: v5.5.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect` header is received, where the value is not `100-continue`. If this event is not listened for, the server will automatically respond with a `417 Expectation Failed` as appropriate.
+Μεταδίδεται κάθε φορά που λαμβάνεται ένα αίτημα HTTP με κεφαλίδα `Expect`, όταν η τιμή δεν είναι `100-continue`. Αν δε γίνεται ακρόαση για αυτό το συμβάν, ο εξυπηρετητής θα αποκριθεί αυτόματα με απάντηση `417 Expectation Failed` ανάλογα με την περίπτωση.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
-### Event: 'clientError'
+### Συμβάν: 'clientError'
 
 <!-- YAML
 added: v0.1.94
@@ -711,7 +711,7 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-If a client connection emits an `'error'` event, it will be forwarded here. Listener of this event is responsible for closing/destroying the underlying socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Αν η σύνδεση ενός πελάτη μεταδώσει ένα συμβάν `'error'`, θα προωθηθεί εδώ. Η ακρόαση του συμβάντος είναι υπεύθυνη για το κλείσιμο/την καταστροφή του υποκείμενου socket. Για παράδειγμα, κάποιος μπορεί να θέλει να κλείσει ένα socket πιο δυναμικά, με μια προσαρμοσμένη απόκριση HTTP αντί να αποκόψει απότομα την σύνδεση.
 
 Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
 
@@ -829,9 +829,9 @@ added: v5.7.0
 added: v0.7.0
 -->
 
-* {number} **Default:** `2000`
+* {number} **Προεπιλογή:** `2000`
 
-Limits maximum incoming headers count. If set to 0, no limit will be applied.
+Limits maximum incoming headers count. Αν οριστεί ως 0, δεν θα προστεθεί κάποιο όριο.
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -978,7 +978,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Επιστρέφει: {any}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
@@ -1102,7 +1102,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Therefore, [`response.getHeader()`][] may return non-string values. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
 
 Example:
 

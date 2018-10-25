@@ -580,7 +580,7 @@ Returns the value of the first name-value pair whose name is `name`. If there ar
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
 

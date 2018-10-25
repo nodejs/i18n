@@ -413,38 +413,38 @@ changes:
   * `input` {stream.Readable} El stream `leíble` del cual la entrada del REPL será leída. **Predeterminado:** `process.stdin`.
   * `output` {stream.Writable} El stream `con permisos de escritura` en el cual la salida del REPL será escrita. **Predeterminado:** `process.stdout`.
   * `terminal` {boolean} Si es `true`, especifica que la `salida` debería ser tratada como un TTY de la terminal, y tener códigos de escape ANSI/VT100 escrito en ella. **Predeterminado:** chequear el valor de la propiedad `isTTY` en el stream de `salida` al ser instanciado.
-  * `eval` {Función} La función que será usada al evaluar cada línea de entrada dada. **Predeterminado:** un contenedor asíncrono para la función `eval()` de JavaScript. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
-  * `useColors` {boolean} If `true`, specifies that the default `writer` function should include ANSI color styling to REPL output. If a custom `writer` function is provided then this has no effect. **Default:** the REPL instances `terminal` value.
-  * `useGlobal` {boolean} If `true`, specifies that the default evaluation function will use the JavaScript `global` as the context as opposed to creating a new separate context for the REPL instance. The node CLI REPL sets this value to `true`. **Default:** `false`.
-  * `ignoreUndefined` {boolean} If `true`, specifies that the default writer will not output the return value of a command if it evaluates to `undefined`. **Default:** `false`.
-  * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Default:** [`util.inspect()`][].
-  * `completer` {Function} An optional function used for custom Tab auto completion. See [`readline.InterfaceCompleter`][] for an example.
-  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. Acceptable values are: 
-    * `repl.REPL_MODE_SLOPPY` - evaluates expressions in sloppy mode.
-    * `repl.REPL_MODE_STRICT` - evaluates expressions in strict mode. This is equivalent to prefacing every repl statement with `'use strict'`.
-  * `breakEvalOnSigint` - Stop evaluating the current piece of code when `SIGINT` is received, i.e. `Ctrl+C` is pressed. This cannot be used together with a custom `eval` function. **Default:** `false`.
+  * `eval` {Función} La función que será usada al evaluar cada línea de entrada dada. **Predeterminado:** un contenedor asíncrono para la función `eval()` de JavaScript. Una función `eval` puede tener errores con `repl.Recoverable` para indicar que la entrada fue incompleta y pedir líneas adicionales.
+  * `useColors` {boolean} Si es `true`, especifica que la función predeterminada `writer` debería incluir el estilo de color ANSI para la salida de REPL. Si una función personalizada `writer` es proporcionada entonces esto no tiene efecto. **Predeterminado:** el valor `terminal` de las instancias REPL.
+  * `useGlobal` {boolean} Si es `true`, especifica que la función de evaluación predeterminada usará la variable de JavaScript `global` como el contexto que se opone a la creación de un nuevo contexto separado para la instancia REPL. El nodo CLI REPL establece su valor a `true`. **Predeterminado:** `false`.
+  * `ignoreUndefined` {boolean} Si es `true`, especifica que el escritor predeterminado no generará el valor de retorno de un comando si el mismo evalúa a `undefined`. **Predeterminado:** `false`.
+  * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Predeterminado:** [`util.inspect()`][].
+  * `completer` {Function} Una función opcional usada para la auto completación personalizada de pestañas. Ver [`readline.InterfaceCompleter`][] para un ejemplo.
+  * `replMode` {symbol} Una bandera que especifica si el evaluador predeterminado ejecuto todos los comandos de JavaScript en modo estricto o el modo predeterminado (descuidado). Son valores aceptables: 
+    * `repl.REPL_MODE_SLOPPY` - evalúa las expresiones en modo descuidado.
+    * `repl.REPL_MODE_STRICT` - evalúa las expresiones en modo estricto. Esto es equivalente a prologar cada declaración repl con `'uso estricto'`.
+  * `breakEvalOnSigint` - Detener la evaluación del actual pedazo de código cuando `SIGINT` es recibido, e.g. cuando `Ctrl+C` es presionado. Esto no puede utilizarse junto a la función personalizada `eval`. **Predeterminado:** `false`.
 
-The `repl.start()` method creates and starts a `repl.REPLServer` instance.
+El método `repl.start()` crea y comienza una instancia del `repl.REPLServer`.
 
-If `options` is a string, then it specifies the input prompt:
+Si las `opciones` son un string, entonces estas especifican el aviso de entrada:
 
 ```js
 const repl = require('repl');
 
-// a Unix style prompt
+// un aviso estilo Unix style
 repl.start('$ ');
 ```
 
-## The Node.js REPL
+## El REPL de Node.js
 
-Node.js itself uses the `repl` module to provide its own interactive interface for executing JavaScript. This can be used by executing the Node.js binary without passing any arguments (or by passing the `-i` argument):
+En si mismo, Node.Js utiliza el módulo `repl` para proveer su propia interfaz interactiva para ejecutar JavaScript. Esto puede ser usado al ejecutar el binario de Node.Js sin pasar ningún argumento (o al pasar el argumento `-i`):
 
 <!-- eslint-skip -->
 
 ```js
 $ node
 > const a = [1, 2, 3];
-undefined
+indefinido
 > a
 [ 1, 2, 3 ]
 > a.forEach((v) => {
@@ -455,33 +455,33 @@ undefined
 3
 ```
 
-### Environment Variable Options
+### Opciones de Variables de Entorno
 
-Various behaviors of the Node.js REPL can be customized using the following environment variables:
+Varios comportamientos del REPL de Node.js pueden ser personalizados utilizando las siguientes variables de entorno:
 
-* `NODE_REPL_HISTORY` - When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` will disable persistent REPL history. Whitespace will be trimmed from the value.
-* `NODE_REPL_HISTORY_SIZE` - Controls how many lines of history will be persisted if history is available. Must be a positive number. **Default:** `1000`.
-* `NODE_REPL_MODE` - May be either `'sloppy'` or `'strict'`. **Default:** `'sloppy'`, which will allow non-strict mode code to be run.
+* `NODE_REPL_HISTORY` - Cuando una ruta válida es dada, la historia persistente del REPL será guardada al archivo especificado en vez de `.node_repl_history` en el directorio hogar del usuario. Establecer este valor a `''` deshabilitará la historia persistente del REPL. El espacio en blanco será recortado del valor.
+* `NODE_REPL_HISTORY_SIZE` Controla el número de lineas que persistirán si se dispone de la historia. Debe ser un número positivo. **Predeterminado:** `1000`.
+* `NODE_REPL_MODE` - Puede ser tanto el valor `'descuidado'` como el `'estricto'`. **Predeterminado:** `'descuidado'`, el cuál permitirá que el código en modo no-estricto sea ejecutado.
 
-### Persistent History
+### Historia Persistente
 
-By default, the Node.js REPL will persist history between `node` REPL sessions by saving inputs to a `.node_repl_history` file located in the user's home directory. This can be disabled by setting the environment variable `NODE_REPL_HISTORY=''`.
+Por defecto, el REPL de Node.js persistirá en la historia entre el `nodo` de las sesiones REPL al guardar las entradas en el archivo `.node_repl_history` ubicado en el directorio hogar del usuario. Esto puede ser deshabilitado al establecer la variable de entorno`NODE_REPL_HISTORY=''`.
 
-### Using the Node.js REPL with advanced line-editors
+### Usando el REPL de Node.js con editores de líneas avanzados
 
-For advanced line-editors, start Node.js with the environment variable `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
+Para editores de línea avanzados, inicie Node.js con la variable de entorno `NODE_NO_READLINE=1`. Esto iniciará al REPL principal y el depurador en configuraciones canónicas terminales, lo cual permitirá utilizarlos con `rlwrap`.
 
-For example, the following can be added to a `.bashrc` file:
+Por ejemplo, el siguiente código puede ser añadido al archivo `.bashrc`:
 
 ```text
 alias node="env NODE_NO_READLINE=1 rlwrap node"
 ```
 
-### Starting multiple REPL instances against a single running instance
+### Inicializando múltiples instancias en vez de inicializar solamente una
 
-It is possible to create and run multiple REPL instances against a single running instance of Node.js that share a single `global` object but have separate I/O interfaces.
+Es posible crear e inicializar múltiples instancias REPL en vez de una sola instancia de Node.js que comparta único objeto `global` pero que tenga diferentes interfaces de entrada y salida.
 
-The following example, for instance, provides separate REPLs on `stdin`, a Unix socket, and a TCP socket:
+El siguiente ejemplo, por ejemplo, provee REPLs separadas en `stdin`, un socket de Linux, y un socket TCP:
 
 ```js
 const net = require('net');
@@ -517,10 +517,10 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-Running this application from the command line will start a REPL on stdin. Other REPL clients may connect through the Unix socket or TCP socket. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
+Ejecutar esta aplicación desde la línea de comandos inicializará un REPL en stdin. Otros clientes REPL pueden conectarse a través del socket Unix o el socket TCP. `telnet`, por ejemplo, es útil para conectarse a los sockets TCP, mientras los `socat` pueden ser usados por ambos, tanto Unix como sockets TCP.
 
-By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
+Al iniciar un REPL desde un servidor Unix basado en sockets en vez de stdin, es posible conectarse a un proceso Node.js de larga duración sin reiniciarlo.
 
-For an example of running a "full-featured" (`terminal`) REPL over a `net.Server` and `net.Socket` instance, see: <https://gist.github.com/2209310>.
+Por ejemplo al ejecutar una (`terminal`) REPL "con funciones completas" sobre un `net.Server` y una instancia `net.Socket`, véase: <https://gist.github.com/2209310>.
 
-For an example of running a REPL instance over [curl(1)](https://curl.haxx.se/docs/manpage.html), see: <https://gist.github.com/2053342>.
+Por un ejemplo de una instancia REPL ejecutándose sobre [curl(1)](https://curl.haxx.se/docs/manpage.html), véase: <https://gist.github.com/2053342>.

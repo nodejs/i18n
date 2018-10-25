@@ -6,9 +6,9 @@
 
 To use the HTTP server and client one must `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Interfejsy HTTP w Node.js zostały zaprojektowane do obsługi wielu funkcji protokołu, który tradycyjnie był trudny w użyciu. W szczególności duże, prawdopodobnie zakodowane porcjami wiadomości. Interfejs jest ostrożny, aby nigdy nie buforować całych żądań lub odpowiedzi - użytkownik jest w stanie przesyłać strumieniowo dane.
 
-HTTP message headers are represented by an object like this:
+Nagłówki wiadomości HTTP są reprezentowane przez taki obiekt:
 
 <!-- eslint-skip -->
 
@@ -20,13 +20,13 @@ HTTP message headers are represented by an object like this:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Klucze są pisane małymi literami. Wartości nie są modyfikowane.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+W celu obsługi pełnego spektrum możliwych aplikacji HTTP, Node.js HTTP API jest bardzo niskiego poziomu. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Zobacz [`nagłówki.wiadomości`] [], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznikach` właściwość, która jest tablicą `[klucz, wartość, klucz2, wartość2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć`suroweNagłówki` lista jak poniżej:
 
 <!-- eslint-disable semi -->
 
@@ -45,11 +45,11 @@ The raw headers as they were received are retained in the `rawHeaders` property,
 added: v0.3.4
 -->
 
-An `Agent` is responsible for managing connection persistence and reuse for HTTP clients. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. Utrzymuje kolejkę oczekujących żądań dla danego hosta i portu, ponowne wykorzystanie pojedynczego połączenia dla każdego gniazda dopóki kolejka nie będzie pusta, w którym to czasie gniazdo zostanie zniszczone lub umieszczone w puli, w której jest przechowywane do ponownego wykorzystania w przypadku wniosków składanych do tego samego hosta i portu. To, czy zostanie zniszczone, czy połączone, zależy od `Podtrzymania`[Opcji](#http_new_agent_options).
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Połączone połączenia mają włączoną obsługę TCP Keep-Alive, ale serwery mogą nadal zamykać bezczynne połączenia, w takim przypadku zostaną one usunięte z puli i nowe połączenie zostanie utworzone, gdy zostanie utworzone nowe żądanie HTTP dla tego hosta i portu. Serwery mogą również odmawiać dopuszczenia wielu żądań za pośrednictwem tego samego połączenia. W takim przypadku połączenie będzie musiało zostać przetworzone dla każdego żądania i nie będzie można go połączyć. `Agent` nadal będzie robił żądania do tego serwera, ale każdy z nich wystąpi w nowym połączeniu.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Po zamknięciu połączenia przez klienta lub serwer jest ono usunięte z puli. Wszelkie nieużywane gniazda w puli będą nieodkryte, aby utrzymać proces Node.js uruchomiony, gdy nie ma zaległych żądań. (see [`socket.unref()`]).
 
 It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
 
@@ -111,11 +111,11 @@ added: v0.11.4
 * `callback` {Function} Callback function that receives the created socket
 * Returns: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Tworzy gniazdo/strumień, który będzie używany dla żądań HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+By default, this function is the same as [`net.createConnection()`][]. Jednak, niestandardowi agenci mogą zastąpić tę metodę w przypadku, gdy pożądana jest większa elastyczność.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Gniazdo/strumień może być dostarczony na jeden z dwóch sposobów: przez zwrócenie gniazda/strumienia z tej funkcji lub przekazując gniazdo/strumień do `callback'u`.
 
 `callback` has a signature of `(err, stream)`.
 
@@ -160,9 +160,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Zniszcz wszystkie gniazda, które są aktualnie używane przez agenta.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Zwykle nie jest to konieczne. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
 
 ### agent.freeSockets
 

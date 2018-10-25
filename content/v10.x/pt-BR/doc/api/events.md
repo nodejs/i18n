@@ -266,7 +266,7 @@ Returns `true` if the event had listeners, `false` otherwise.
 added: v6.0.0
 -->
 
-- Returns: {Array}
+- Retorna: {Array}
 
 Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
 

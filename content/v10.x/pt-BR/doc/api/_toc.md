@@ -1,4 +1,4 @@
-@/ / NB(chrisdickinson): se você mover este arquivo, certifique-se de atualizar @/ / tools/doc/html.js para apontar para o novo local.
+@// NB(chrisdickinson): se você mover este arquivo, certifique-se de atualizar @// tools/doc/html.js para apontar para o novo local.
 
 <!--introduced_in=v0.10.0-->
 
@@ -38,7 +38,7 @@
 * [Gancho de Desempenho](perf_hooks.html)
 * [Processo](process.html)
 * [Código Insignificante](punycode.html)
-* [Sequências de consulta](querystring.html)
+* [Sequências de Consulta](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
 * [Transmissão](stream.html)

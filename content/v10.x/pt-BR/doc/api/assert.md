@@ -80,7 +80,7 @@ When using the `strict mode`, any `assert` function will use the equality used i
 
 On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
 
-It can be accessed using:
+Ele pode ser acessado usando:
 
 ```js
 const assert = require('assert').strict;
@@ -115,7 +115,7 @@ To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Pl
 
 When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-It can be accessed using:
+Ele pode ser acessado usando:
 
 ```js
 const assert = require('assert');

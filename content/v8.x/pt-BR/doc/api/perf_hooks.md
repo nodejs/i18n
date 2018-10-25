@@ -70,7 +70,7 @@ If `name` is not provided, removes all `PerformanceMeasure` objects from the Per
 added: v8.5.0
 -->
 
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -82,7 +82,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -93,7 +93,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
@@ -437,7 +437,7 @@ The `PerformanceObserverEntryList` class is used to provide access to the `Perfo
 added: v8.5.0
 -->
 
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -449,7 +449,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -460,7 +460,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 

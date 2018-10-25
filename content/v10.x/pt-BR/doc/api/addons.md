@@ -62,7 +62,7 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Há não ponto e vírgula depois de `NODE_MODULE` já que não é uma função (veja em `node.h`).
+Não há ponto e vírgula depois de `NODE_MODULE` já que não é uma função (veja em `node.h`).
 
 O `module_name` deve coincidir com o nome do arquivo do binário final (excluindo o sufixo `.node`).
 

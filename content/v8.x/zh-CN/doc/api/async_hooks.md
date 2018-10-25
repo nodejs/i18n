@@ -83,7 +83,7 @@ added: v8.1.0
 
 注册针对每个异步操作的不同生命周期事件而调用的函数。
 
-回调函数`init()`/`before()`/`after()`/`destroy()`在资源生命周期中为各自的异步事件所调用。
+`init()`/`before()`/`after()`/`destroy()`等回调函数在资源生命周期中为各自的异步事件所调用。
 
 所有的回调函数都是可选的。 例如，如果仅仅是资源清理需要被跟踪，则只需要传递 `destroy` 回调函数。 可以传递给 `回调函数` 的所有函数的细节都在 [钩子回调函数](#async_hooks_hook_callbacks) 部分中。
 
@@ -114,13 +114,13 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 ##### 错误处理
 
-如果任何 `AsyncHook` 回调函数被抛出，应用程序会打印追溯栈并退出。 退出路径确实遵循未捕获异常中的路径, 但所有的 `uncaughtException` 监听器都将被删除, 从而强制进程退出。 除非应用程序在运行时添加了`--abort-on-uncaught-exception`参数，`'exit'`回调函数仍会被调用，这这种情况下，回溯栈仍会被打印，应用程序会退出，并留下一个核心文件。
+如果任何 `AsyncHook` 回调函数抛出异常，应用程序会打印追溯栈并退出。 退出路径确实遵循未捕获异常中的路径, 但所有的 `uncaughtException` 监听器都将被删除, 从而强制进程退出。 除非应用程序在运行时添加了`--abort-on-uncaught-exception`参数，`'exit'`回调函数仍会被调用，在这种情况下，回溯栈仍会被打印，应用程序会退出，并留下一个核心文件。
 
 此错误处理行为的原因在于这些回调函数正在运行在对象的生命周期中潜在的不稳定点上，例如在类构造和析构时。 正因为如此，为了防止在未来被无意中止，迅速杀死进程被认为是必要的。 如果进行综合分析，这点在将来可能会发生变化，以确保异常可以遵循正常的控制流程而不会产生无意的副作用。
 
 ##### 在AsyncHooks回调函数中打印
 
-由于打印到控制台是异步操作，`console.log()`会导致AsyncHooks回调函数被调用。 因此在AsyncHooks回调函数中使用`console.log()`或类似的异步操作会导致无限递归。 针对这个问题的一种简易解决方案就是，使用类似`fs.writeSync(1, msg)`的同步日志操作。 因为`1`是标准输出的文件描述符，这就打印到标准输出上，同时由于它本身是同步的，因此也不会以递归方式调用AsyncHooks。
+由于打印到控制台是异步操作，`console.log()`会导致AsyncHooks回调函数被调用。 因此在AsyncHooks回调函数中使用`console.log()`或类似的异步操作会导致无限递归。 在调试时的一种简易解决方案就是，使用类似 `fs.writeSync(1, msg)` 的同步日志操作。 因为 `1` 是标准输出的文件描述符，这就打印到标准输出上，同时由于它本身是同步的，因此也不会以递归方式调用AsyncHooks。
 
 ```js
 const fs = require('fs');
@@ -132,15 +132,15 @@ function debug(...args) {
 }
 ```
 
-如果在日志记录时需要异步操作，则可以使用AsyncHooks自身提供的信息来获取导致异步操作的原因。 如果是日志记录本身导致对AsyncHooks回调函数的调用，则日志记录应该被跳过。 通过这种方式，无限递归会被中断。
+如果需要异步操作进行日志记录，则可以使用AsyncHooks自身提供的信息来获取导致异步操作的原因。 如果是日志记录本身导致对AsyncHooks回调函数的调用，则日志记录应该被跳过。 通过这种方式，无限递归会被中断。
 
 #### `asyncHook.enable()`
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* 返回：{AsyncHook} 对`asyncHook`的引用。
 
-Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
+为给定的 `AsyncHook` 实例启用回调函数。 如果未提供回调函数，则启用操作为 noop (空操作)。
 
-The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+在默认情况下，`AsyncHook` 实例被禁用。 如果 `AsyncHook` 实例需要在创建后立即被启用，则可以使用如下模式。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -150,26 +150,26 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### `asyncHook.disable()`
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* 返回：{AsyncHook} 对`asyncHook`的引用。
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of AsyncHook callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
+从将被执行的 AsyncHook 回调函数的全局池中禁用给定 ` AsyncHook ` 实例的回调函数。 一旦钩子被禁用，在被启用之前它不会被再次调用。
 
-For API consistency `disable()` also returns the `AsyncHook` instance.
+为保持 API 的一致性，`disable()` 也返回 `AsyncHook` 的实例。
 
-#### Hook Callbacks
+#### 钩子回调函数
 
-Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
+异步事件生命周期中的关键事件被分为四种类型：实例化，在回调函数被调用之前/之后，以及当实例被销毁时。
 
 ##### `init(asyncId, type, triggerAsyncId, resource)`
 
-* `asyncId` {number} A unique ID for the async resource.
-* `type` {string} The type of the async resource.
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
+* `asyncId` {number} 异步资源的唯一 ID。
+* `type` {string} 异步资源的类型。
+* `triggerAsyncId` {number} 异步资源在其被创建的执行上下文中的唯一 ID。
+* `resource` {Object} 对代表异步操作的资源的引用，在*destroy*时需要被释放。
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+当一个类被构造时，如果有 *可能* 会发出异步事件，则回调函数会被调用。 这并 *不* 意味着在 `destroy` 被调用之前实例必须调用 `before`/`after`，只是这种可能性存在。
 
-This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
+这种行为可以通过类似如下操作进行观察：打开一个资源然后在资源可用之前立即关闭它。 下面的代码片段可以就此进行演示。
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
@@ -177,11 +177,11 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Every new resource is assigned an ID that is unique within the scope of the current process.
+在当前进程的范围内，将为每个新资源分配一个唯一的 ID。
 
 ###### `type`
 
-The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
+`type` 是一个用来识别资源类型的字符串，它会导致 `init` 被调用。 通常情况下，它将对应于资源构造函数的名字。
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -191,17 +191,17 @@ UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
-There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
+还有 `PROMISE` 这种资源类型，它被用于跟踪 `Promise` 实例以及它们计划的异步工作。
 
-Users are able to define their own `type` when using the public embedder API.
+用户可以通过使用公共的 embedder API来定义它们自己的 `type`。
 
-*Note:* It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
+*注意：* 可能会有类型名称冲突。 鼓励 Embedders 使用唯一性前缀，例如 npm 包名，来防止监听钩子时发生冲突。
 
 ###### `triggerId`
 
-`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` 是导致 (或 “触发”) 新资源被初始化以及`init`被调用的资源的`asyncId`。 它和`async_hooks.executionAsyncId()`不同，后者只是显示新资源在 *何时* 被创建，而 `triggerAsyncId` 显示 *为什么* 新资源被创建。
 
-The following is a simple demonstration of `triggerAsyncId`:
+下面是 `triggerAsyncId` 的简单演示：
 
 ```js
 async_hooks.createHook({
@@ -215,28 +215,28 @@ async_hooks.createHook({
 require('net').createServer((conn) => {}).listen(8080);
 ```
 
-Output when hitting the server with `nc localhost 8080`:
+当使用 `nc localhost 8080` 访问服务器时的输出：
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
 TCPWRAP(4): trigger: 2 execution: 0
 ```
 
-The `TCPSERVERWRAP` is the server which receives the connections.
+`TCPSERVERWRAP` 是接收连接的服务器。
 
-The `TCPWRAP` is the new connection from the client. When a new connection is made the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack (side note: a `executionAsyncId()` of `0` means it's being executed from C++, with no JavaScript stack above it). With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+`TCPWRAP` 是来自客户端的新连接。 当创建新连接时，`TCPWrap`实例会立刻被构造。 这个过程会发生于任何 JavaScript 栈之外 (旁注：`0` 的 `executionAsyncId()` 意味着它是在C++中被运行，且其上面没有 JavaScript 栈)。 只有这些信息，不可能将这些资源就它们被创建的原因链接到一起，因此`triggerAsyncId`的任务就是负责传播什么资源负责新资源的存在性。
 
 ###### `resource`
 
-`resource` is an object that represents the actual async resource that has been initialized. This can contain useful information that can vary based on the value of `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
+`resource` 是表示已被初始化的实际异步资源的对象。 它可能会包含因 `type` 值而异的有用信息。 例如，对于 `GETADDRINFOREQWRAP` 资源类型，`resource` 提供了在 `net.Server.listen()` 中查找 IP 地址时使用的主机名。 用于访问此信息的 API 目前不被视为公开的，但通过使用 Embedder API，用户可以提供并记录自己的资源对象。 例如，这样的资源对象可以包含将被执行的 SQL 查询。
 
-In the case of Promises, the `resource` object will have `promise` property that refers to the Promise that is being initialized, and a `parentId` property set to the `asyncId` of a parent Promise, if there is one, and `undefined` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent Promise of `b`.
+在使用 Promises 时，`resource` 对象会含有`promise`属性，该属性引用正在被初始化的 Promise，而`parentId`属性则被设置为 父 Promise 的`asyncId`，当然前提是它存在，否则为 `undefined`。 例如，当`b = a.then(handler)`时，`a` 会被认为是 `b` 的父Promise。
 
-*Note*: In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
+*注意*：有些时候处于性能考虑，资源对象会被重用，因此将其作为 `WeakMap` 中的键值或向其添加属性是不安全的。
 
-###### Asynchronous context example
+###### 异步上下文示例
 
-The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
+下面是一个示例，其中包含关于`before`和`after`调用之间的`init`调用的额外信息，特别是从回调函数到`listen()`函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
 
 ```js
 let indent = 0;
@@ -273,7 +273,7 @@ require('net').createServer(() => {}).listen(8080, () => {
 });
 ```
 
-Output from only starting the server:
+仅在服务器启动时的输出：
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1

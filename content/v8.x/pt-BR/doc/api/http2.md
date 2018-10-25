@@ -2074,7 +2074,7 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* Returns: {Array}
+* Retorna: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 

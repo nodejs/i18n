@@ -429,7 +429,7 @@ Establece la clave privada Diffie-Hellman. Si el argumento `encoding` es proporc
 added: v0.5.0
 -->
 
-Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. Si el `input_encoding` no es proporcionado, `otra_llave_pública`, se espra que sea un [`Buffer`][].
+Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. Si el `input_encoding` no es proporcionado, se espera que `public_key` sea un [`Buffer`][].
 
 ### diffieHellman.verifyError
 
@@ -437,7 +437,7 @@ Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es propor
 added: v0.11.12
 -->
 
-Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante el inicio del objeto `DiffieHellman`.
+Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante la inicialización del objeto `DiffieHellman`.
 
 Los valores a continuación son válidos para esta propiedad (como es definido en el módulo`constants`):
 
@@ -464,11 +464,11 @@ const assert = require('assert');
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Genera las llaves de Bob...
+// Generar las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Intercambian y generan el secreto...
+// Intercambiar y generar el secreto...
 const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
  
@@ -482,9 +482,9 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 added: v0.11.14
 -->
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando `inputEncoding` especificado, y el secreto devuelto es codificado usando `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, `otra_llave_pública` es esperada para ser un [`Buffer`][].
+Computa el secreto compartido usando `other_public_key` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando el `input_encoding` especificado, y el secreto devuelto es codificado usando `output_encoding`. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `input_encoding` no es proporcionado, se espera que `other_public_key` sea un [`Buffer`][].
 
-Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
+Si `output_encoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -504,7 +504,7 @@ El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encodin
 added: v0.11.14
 -->
 
-Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa la llave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.getPublicKey([encoding[, format]])
 
@@ -524,7 +524,7 @@ El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encodin
 added: v0.11.14
 -->
 
-Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que el `privateKey` sea una string; de no ser así, se espera que el `privateKey` sea un [`Buffer`][], `TypedArray`, o `DataView`. Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que `private_key` sea una string; de no ser así, se espera que `private_key` sea un [`Buffer`][], `TypedArray`, o `DataView`. Si `private_key` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
 
 ### ecdh.setPublicKey(public_key[, encoding])
 
@@ -535,9 +535,9 @@ deprecated: v5.2.0
 
 > Estabilidad: 0 - Desaprobado
 
-Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `input_encoding` es proporcionado, `otra_llave_pública` es esperada paraque sea un string; de otra manera, se espera un[`Buffer`][].
+Establece la clave pública EC Diffie-Hellman. La codificación de claves puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `encoding` es proporcionado, se espera que `public_key` sea una string; de otra manera, se espera un [`Buffer`][].
 
-Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, tanto [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -546,38 +546,38 @@ const crypto = require('crypto');
 const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
-// llaves privadas. Seria poco recom; endable usaruna clave privada predecible en una 
-// applicacion real.
+// Note: Esta es una forma de acceso directo para especificar una de las anteriores
+// claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
+// aplicación real.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
 
-// Bob uses a newly generated cryptographically strong
-// pseudorandom key pair
+// Bob usa una recien generada criptográficamente fuerte
+// llave par pseudoaleatoria
 bob.generateKeys();
 
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-// aliceSecret and bobSecret should be the same shared secret value
+// el secreto de Alice y Bob debe tener el mismo valor secreto compartido
 console.log(aliceSecret === bobSecret);
 ```
 
-## Class: Hash
+## Clase: Hash
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. It can be used in one of two ways:
+La clase `Hash` es una utilidad para crear resúmenes hash de datos. Puede ser usado de una de las dos maneras:
 
-* As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
-* Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
+* Como una [stream](stream.html) que es legible y escribible, donde los datos son escritos para producir un resumen hash computado en el lado legible, o
+* Usando el método [`hash.update()`][] y [`hash.digest()`][] para producir el hash computado.
 
-The [`crypto.createHash()`][] method is used to create `Hash` instances. `Hash` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createHash()`][] es usado para crear las instancias `Hash`. Los objetos `Hash` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Hash` objects as streams:
+Ejemplo: Usando los objetos `Hash` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -596,7 +596,7 @@ hash.write('some data to hash');
 hash.end();
 ```
 
-Example: Using `Hash` and piped streams:
+Ejemplo: Usando `Hash` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -607,7 +607,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hash).pipe(process.stdout);
 ```
 
-Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
+Ejemplo: Usando los métodos [`hash.update()`][] y [`hash.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -625,34 +625,34 @@ console.log(hash.digest('hex'));
 added: v0.1.92
 -->
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcula el resumen de todos los datos pasados para ser hashed (usando el método [`hash.update()`][]). El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si`encoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
+El objeto `Hash` no puede ser usado nuevamente después de que el método `hash.digest()` ha sido llamado. Llamados múltiples causaran que un error sea arrojado.
 
-### hash.update(data[, input_encoding])
+### hash.Update (datos [, input_encoding])
 
 <!-- YAML
 added: v0.1.92
 -->
 
-Updates the hash content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Actualiza el contenido hash con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Hmac
+## Clase: Hmac
 
 <!-- YAML
 added: v0.1.94
 -->
 
-The `Hmac` Class is a utility for creating cryptographic HMAC digests. It can be used in one of two ways:
+La clase `Hmac` es una utilidad para crear resúmenes criptográficos HMAC. Puede ser usado de una de las dos maneras:
 
-* As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed HMAC digest on the readable side, or
-* Using the [`hmac.update()`][] and [`hmac.digest()`][] methods to produce the computed HMAC digest.
+* Como una [stream](stream.html) que es tanto legible como escribible, donde los datos son escritos para producir un resúmen computado HMAC en el lado legible, o
+* Usando los métodos [`hmac.update()`][] y [`hmac.digest()`][] para producir el resúmen HMAC.
 
-The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createHmac()`][] es usado para crear instancias `Hmac`. Los objetos `Hmac` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Hmac` objects as streams:
+Ejemplo: Usando objetos `Hmac` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -662,7 +662,7 @@ hmac.on('readable', () => {
   const data = hmac.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Imprime:
     //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
   }
 });
@@ -671,7 +671,7 @@ hmac.write('some data to hash');
 hmac.end();
 ```
 
-Example: Using `Hmac` and piped streams:
+Ejemplo: Usando `Hmac` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -682,7 +682,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hmac).pipe(process.stdout);
 ```
 
-Example: Using the [`hmac.update()`][] and [`hmac.digest()`][] methods:
+Ejemplo: Usando los métodos [`hmac.update()`][] y [`hmac.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -690,7 +690,7 @@ const hmac = crypto.createHmac('sha256', 'a secret');
 
 hmac.update('some data to hash');
 console.log(hmac.digest('hex'));
-// Prints:
+// Imprime:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 ```
 
@@ -700,9 +700,9 @@ console.log(hmac.digest('hex'));
 added: v0.1.94
 -->
 
-Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
+Calcula el resúmen HMAC de todos los datos pasados usando [`hmac.update()`][]. El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto;
 
-The `Hmac` object can not be used again after `hmac.digest()` has been called. Multiple calls to `hmac.digest()` will result in an error being thrown.
+El objeto `Hmac` no puede ser usado nuevamente después de que `hmac.digest()` ha sido llamado. Llamadas múltiples a `hmac.digest()` producirá un error.
 
 ### hmac.update(data[, input_encoding])
 
@@ -710,24 +710,24 @@ The `Hmac` object can not be used again after `hmac.digest()` has been called. M
 added: v0.1.94
 -->
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Actualiza el contenido `Hmac` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Sign
+## Clase: Sign
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Sign` Class is a utility for generating signatures. It can be used in one of two ways:
+La clase `Sign` es una utilidad para generar firmas. Puede ser usada de una de las dos maneras:
 
-* As a writable [stream](stream.html), where data to be signed is written and the [`sign.sign()`][] method is used to generate and return the signature, or
-* Using the [`sign.update()`][] and [`sign.sign()`][] methods to produce the signature.
+* Como una [stream](stream.html) escribible, donde los datos a ser firmados están escritos y el método [`sign.sign()`][] es usado para generar y devolver la firma, o
+* Usando los métodos [`sign.update()`][] y [`sign.sign()`][] para producir la firma.
 
-The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createSign()`][] es usado para crear instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no son creados usando directamente la palabra clave `new`.
 
-Example: Using `Sign` objects as streams:
+Ejemplo: Usando objetos`Sign` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -738,12 +738,12 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature using the specified private key and
-// SHA-256. For RSA keys, the algorithm is RSASSA-PKCS1-v1_5 (see padding
-// parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
+// Imprimer: la irma calculada usando la lave privada especificada y el
+// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el padding
+//parametro menor para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
 ```
 
-Example: Using the [`sign.update()`][] and [`sign.sign()`][] methods:
+Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -753,12 +753,12 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Imprime: la firma calculada
 ```
 
-In some cases, a `Sign` instance can also be created by passing in a signature algorithm name, such as 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
 
-Example: signing using legacy signature algorithm name
+Ejemplo: firmando usando el nombre del algoritmo de firma heredado
 
 ```js
 const crypto = require('crypto');
@@ -768,7 +768,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Imprime: la firma calculada
 ```
 
 ### sign.sign(private_key[, output_format])
@@ -782,24 +782,24 @@ changes:
     description: Support for RSASSA-PSS and additional options was added.
 -->
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcula la firma de todos los datos pasados usando [`sign.update()`][] o [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-The `private_key` argument can be an object or a string. If `private_key` is a string, it is treated as a raw key with no passphrase. If `private_key` is an object, it must contain one or more of the following properties:
+El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es una string, se trata como una clave cruda sin frase de contraseña. Si `privateKey` es un objeto, debe contener una o más de las siguientes propiedades:
 
-* `key`: {string} - PEM encoded private key (required)
-* `passphrase`: {string} - passphrase for the private key
-* `padding`: {integer} - Optional padding value for RSA, one of the following:
+* `key`: {string} - Clave privada con codificación PEM (requerida)
+* `passphrase`: {string} - frase de contraseña para la clave privada
+* `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
   * `crypto.constants.RSA_PKCS1_PADDING` (default)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to sign the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
+* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
-The `output_format` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `output_format` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-The `Sign` object can not be again used after `sign.sign()` method has been called. Multiple calls to `sign.sign()` will result in an error being thrown.
+El objeto `Sign` no puede ser usado nuevamente después de que el método `sign.sign()` ha sido llamado. Llamadas múltiples a `sign.sign()` van a resultar en un error.
 
 ### sign.update(data[, input_encoding])
 
@@ -807,17 +807,17 @@ The `Sign` object can not be again used after `sign.sign()` method has been call
 added: v0.1.92
 -->
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Actualiza el contenido `Sign` con el `data` dado, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Verify
+## Clase: Verify
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La clase `Verify` es una utilidad para verificar firmas. Puede ser usada de una de las dos maneras:
 
 * As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
 * Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
@@ -859,9 +859,9 @@ console.log(verify.verify(publicKey, signature));
 added: v0.1.92
 -->
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][] then `input_encoding` is ignored.
+Updates the `Verify` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ### verifier.verify(object, signature[, signature_format])
 
@@ -881,14 +881,14 @@ changes:
 Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
 
 * `key`: {string} - PEM encoded public key (required)
-* `padding`: {integer} - Optional padding value for RSA, one of the following:
+* `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
   * `crypto.constants.RSA_PKCS1_PADDING` (default)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
   Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
 The `signature` argument is the previously calculated signature for the data, in the `signature_format` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signature_format` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][].
 

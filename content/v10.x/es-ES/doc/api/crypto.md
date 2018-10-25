@@ -597,11 +597,11 @@ const assert = require('assert');
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Genera las llaves de Bob...
+// Generar las llaves de Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Intercambian y generan el secreto...
+// Intercambiar y generar el secreto...
 const aliceSecret = alice.computeSecret(bobKey); 
 const bobSecret = bob.computeSecret(aliceKey);
  
@@ -751,21 +751,21 @@ const crypto = require('crypto');
 const alice = crypto.createECDH('secp256k1'); 
 const bob = crypto.createECDH('secp256k1');
 
-// Note: Esta es una forma de acceso directo para especificar que una de las anteriores
-// llaves privadas. Seria poco recom; endable usaruna clave privada predecible en una 
-// applicacion real.
+// Note: Esta es una forma de acceso directo para especificar una de las anteriores
+// claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
+// aplicación real.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
 
-// Bob uses a newly generated cryptographically strong
-// pseudorandom key pair
+// Bob usa una recien generada criptográficamente fuerte
+// llave par pseudoaleatoria
 bob.generateKeys();
 
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-// aliceSecret and bobSecret should be the same shared secret value
+// el secreto de Alice y Bob debe tener el mismo valor secreto compartido
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -878,7 +878,7 @@ hmac.on('readable', () => {
   const data = hmac.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Imprime:
     //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
   }
 });
@@ -906,7 +906,7 @@ const hmac = crypto.createHmac('sha256', 'a secret');
 
 hmac.update('some data to hash');
 console.log(hmac.digest('hex'));
-// Prints:
+// Imprime:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 ```
 
@@ -965,9 +965,9 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature using the specified private key and
-// SHA-256. For RSA keys, the algorithm is RSASSA-PKCS1-v1_5 (see padding
-// parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
+// Imprimer: la irma calculada usando la lave privada especificada y el
+// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el padding
+//parametro menor para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
 ```
 
 Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
@@ -980,7 +980,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Imprime: la firma calculada
 ```
 
 En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
@@ -995,7 +995,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Imprime: la firma calculada
 ```
 
 ### sign.sign(privateKey[, outputFormat])

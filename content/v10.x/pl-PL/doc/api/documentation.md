@@ -4,46 +4,46 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+Celem tej dokumentacji jest wyczerpujące wyjaśnienie Node.js API, zarówno z definicji jak i koncepcyjnego punktu widzenia. Each section describes a built-in module or high-level concept.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+W razie potrzeby typy właściwości, argumenty metody i argumenty dostarczone do programów obsługujących zdarzenia, które są szczegółowo opisane na liście pod tematem nagłówek.
 
 ## Współtworzenie
 
 Jeżeli znajdziesz błąd w tej dokumentacji, proszę [wyślij zgłoszenie](https://github.com/nodejs/node/issues/new) lub przeczytaj [instrukcję współtworzenia](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md), która opisuje wskazówki oraz sposób dodawania poprawek.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Każdy plik jest generowany na podstawie odpowiadającego pliku `.md` w folderze `doc/api/` w drzewie źródłowym Node.js. Dokumentacja jest generowana przy użyciu programu `tools/doc/generate.js`. Szablon HTML znajduje się na `doc/template.html`.
 
 ## Stability Index
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Throughout the documentation are indications of a section's stability. Interfejs API Node.js wciąż nieco się zmienia i w ten sposób dojrzewa, niektóre części są bardziej niezawodne niż inne. Niektóre są tak wypróbowane, że można polegać na tym, że prawdopodobnie wcale się nie zmienią. Inne są zupełnie nowe i eksperymentalne lub znane jako ryzykowne i w trakcie przeprojektowywania.
 
-The stability indices are as follows:
+Wskaźniki stabilności są następujące:
 
 ```txt
-Stability: 0 - Deprecated. This feature is known to be problematic, and changes
-may be planned. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Stabilność: 0 - Przestarzałe. Ta funkcja jest znana jako problematyczna i mogą być
+planowane zmiany. Nie polegaj na niej. Użycie tej funkcji może spowodować pojawienie się
+ostrzeżeń. Nie należy się spodziewać wstecznej kompatybilności z podstawowymi wersjami.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
-subject to non-backwards compatible changes, or even removal, in any future
-version. Use of the feature is not recommended in production environments.
-Experimental features are not subject to the Node.js Semantic Versioning model.
+Stabilność: 1 - Eksperymentalne. Ta funkcja wciąż znajduje się w aktywnym rozwoju i
+podlega zmianom, które nie są kompatybilne wstecznie, a nawet usunięte, w jakiejkolwiek przyszłej
+wersji. Korzystanie z tej funkcji nie jest zalecane w środowiskach produkcyjnych.
+Funkcje eksperymentalne nie podlegają modelowi Semantic Versioning Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable. The API has proven satisfactory. Compatibility with the
-npm ecosystem is a high priority, and will not be broken unless absolutely
-necessary.
+Stabilność: 2 - Stabilne. API zostało zadowalająco sprawdzone. Kompatybilność z
+Ekosystemem npm ma wysoki priorytet i nie zostanie złamana, chyba że to absolutnie
+niezbędne.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+Podczas korzystania z funkcji `Eksperymentalne` należy zachować ostrożność, w szczególności wewnątrz modułów, które mogą być używane jako zależności (lub zależności zależności) wewnątrz aplikacji Node.js. Końcowi odbiorcy mogą nie być tego świadomi, że używane są funkcje eksperymentalne, dlatego mogą wystąpić nieoczekiwane awarie lub zmiany zachowań po wystąpieniu modyfikacji interfejsu API. Aby tego uniknąć tego typu niespodzianki, funkcje `Eksperymentalne` mogą wymagać użycia wiersza polecenia flagi do jawnego ich uruchomienia, lub mogą powodować wyświetlenia ostrzeżenia o procesie. Domyślnie, takie ostrzeżenia są wywoływane jako [`stderr`][] i mogą być obsługiwane przez dołączanie odbiornika do zdarzenia [`'warning'`][].
 
-## JSON Output
+## Dane wyjściowe JSON
 
 <!-- YAML
 added: v0.6.12
@@ -51,12 +51,12 @@ added: v0.6.12
 
 > Stabilność: 1 - Eksperymentalne
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Każdy dokument `.html` zawiera odpowiedni dokument `.json` przedstawiający te same informacje w uporządkowany sposób. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
-## Syscalls and man pages
+## Funkcje systemowe i strony podręcznika systemowego
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Funkcje systemowe, takie jak open(2) i read(2), definiują interfejs między programami użytkownika i bazowym systemem operacyjnym. Funkcje Node.js które po prostu zawijają funkcje systemowe jak [`fs.open()`][], będzie je dokumentował. Dokumenty prowadzą do odpowiedniej strony podręcznika, które opisują sposób działania funkcji systemowych.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Niektóre funkcje systemowe, takie jak Ichown(2), są specyficzne dla BSD. Oznacza to, na przykład, że [`fs.lchown()`][] działa tylko na MacOS i innych pochodnych systemów BSD i nie jest dostępny w systemie Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Większość uniksowych funkcji systemowych ma odpowiedniki Windowsa, ale zachowanie może się różnić w Windowsie względem systemu Linux i macOS. Jednym z przykładów subtelnych sposobów, w jaki to jest czasami niemożliwe do zastąpienia semantyki systemu Unix w systemie Windows, patrz [Problem Node nr 4760](https://github.com/nodejs/node/issues/4760).
