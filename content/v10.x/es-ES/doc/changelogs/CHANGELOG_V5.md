@@ -1001,9 +1001,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`162e16afdb`](https://github.com/nodejs/node/commit/162e16afdb)] - **tools**: habilitar regla no-extra-semi en eslint (Michaël Zasso) [#2205](https://github.com/nodejs/node/pull/2205)
 * [[`031b87d42d`](https://github.com/nodejs/node/commit/031b87d42d)] - **tools**: añadir license-builder.sh para construir LICENSE (Rod Vagg) [#4194](https://github.com/nodejs/node/pull/4194)
 * [[`ec8e0ae697`](https://github.com/nodejs/node/commit/ec8e0ae697)] - **tools**: reparar problemas de estilo después de actualizar eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
-* [[`4d5ee7a512`](https://github.com/nodejs/node/commit/4d5ee7a512)] - **tools**: update eslint config (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
-* [[`2d441493a4`](https://github.com/nodejs/node/commit/2d441493a4)] - **tools**: update eslint to v1.10.3 (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
-* [[`fe23f4241f`](https://github.com/nodejs/node/commit/fe23f4241f)] - **tools**: fix license-builder.sh for ICU (Richard Lau) [#4762](https://github.com/nodejs/node/pull/4762)
+* [[`4d5ee7a512`](https://github.com/nodejs/node/commit/4d5ee7a512)] - **tools**: actualizar configuración de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
+* [[`2d441493a4`](https://github.com/nodejs/node/commit/2d441493a4)] - **tools**: actualizar eslint a v1.10.3 (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
+* [[`fe23f4241f`](https://github.com/nodejs/node/commit/fe23f4241f)] - **tools**: reparar license-builder.sh para ICU (Richard Lau) [#4762](https://github.com/nodejs/node/pull/4762)
 * [[`5f57005ec9`](https://github.com/nodejs/node/commit/5f57005ec9)] - **(SEMVER-MINOR)** **v8,src**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
 
 <a id="5.4.1"></a>
