@@ -4,6 +4,6 @@ Ten dokument jest listą kontrolną rzeczy do zrobienia, gdy współpracownik st
 
 * Usuń współpracownika z @nodejs/collaborators team.
 * Otwórz szybkie żądanie zmiany, aby przenieść Współpracownika do Collaborator Emeriti w pliku README.md.
-* Email the TSC mailing list to notify TSC members that the Collaborator is moving to Collaborator Emeritus.
-* Determine what GitHub teams the Collaborator belongs to. In consultation with the Collaborator, determine which of those teams they should be removed from. 
-    * Some teams may also require a pull request to remove the Collaborator from a team listing. For example, if someone is removed from @nodejs/build, they should also be removed from the Build WG README.md file in the https://github.com/nodejs/build repository.
+* Wyślij maila z listą mailingową TSC, aby powiadomić członków TSC o tym, że Współpracownik jest zmieniany na Emerytowanego Współpracownika.
+* Określ, do których zespołów GitHub należy Współpracownik. W konsultacji z Współpracownikiem, ustal, z których zespołów powinien być usunięty. 
+    * Niektóre zespoły mogą również wymagać żądanie zmiany o usunięciu Współpracownika z listy zespołu. Na przykład, jeśli ktoś został usunięty z @nodejs/build, powinien być również usunięty z pliku Build WG README.md w repozytorium https://github.com/nodejs/build.
