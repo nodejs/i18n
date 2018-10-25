@@ -236,7 +236,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 ###### 异步上下文示例
 
-The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
+下面是一个示例，其中包含关于`before`和`after`调用之间的`init`调用的额外信息，特别是从回调函数到`listen()`函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
 
 ```js
 let indent = 0;
@@ -273,7 +273,7 @@ require('net').createServer(() => {}).listen(8080, () => {
 });
 ```
 
-Output from only starting the server:
+仅在服务器启动时的输出：
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
