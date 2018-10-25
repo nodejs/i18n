@@ -138,7 +138,7 @@ function debug(...args) {
 
 * 返回：{AsyncHook} 对`asyncHook`的引用。
 
-为给定的 `AsyncHook` 实例启用回调函数。 If no callbacks are provided enabling is a noop.
+为给定的 `AsyncHook` 实例启用回调函数。 如果未提供回调函数，则启用操作为 noop (空操作)。
 
 在默认情况下，`AsyncHook` 实例被禁用。 如果 `AsyncHook` 实例需要在创建后立即被启用，则可以使用如下模式。
 
