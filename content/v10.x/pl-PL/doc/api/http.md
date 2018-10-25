@@ -45,11 +45,11 @@ Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznik
 added: v0.3.4
 -->
 
-`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. Utrzymuje kolejkę oczekujących żądań dla danego hosta i portu, ponowne wykorzystanie pojedynczego połączenia dla każdego gniazda dopóki kolejka nie będzie pusta, w którym to czasie gniazdo zostanie zniszczone lub umieszczone w puli, w której jest przechowywane do ponownego wykorzystania w przypadku wniosków składanych do tego samego hosta i portu. To, czy zostanie zniszczone, czy połączone, zależy od `Podtrzymania`[Opcji](#http_new_agent_options).
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Połączone połączenia mają włączoną obsługę TCP Keep-Alive, ale serwery mogą nadal zamykać bezczynne połączenia, w takim przypadku zostaną one usunięte z puli i nowe połączenie zostanie utworzone, gdy zostanie utworzone nowe żądanie HTTP dla tego hosta i portu. Serwery mogą również odmawiać dopuszczenia wielu żądań za pośrednictwem tego samego połączenia. W takim przypadku połączenie będzie musiało zostać przetworzone dla każdego żądania i nie będzie można go połączyć. `Agent` nadal będzie robił żądania do tego serwera, ale każdy z nich wystąpi w nowym połączeniu.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Po zamknięciu połączenia przez klienta lub serwer jest ono usunięte z puli. Wszelkie nieużywane gniazda w puli będą nieodkryte, aby utrzymać proces Node.js uruchomiony, gdy nie ma zaległych żądań. (see [`socket.unref()`]).
 
 It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
 
