@@ -12,20 +12,20 @@ W razie potrzeby typy właściwości, argumenty metody i argumenty dostarczone d
 
 Jeżeli znajdziesz błąd w tej dokumentacji, proszę [wyślij zgłoszenie](https://github.com/nodejs/node/issues/new) lub przeczytaj [instrukcję współtworzenia](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md), która opisuje wskazówki oraz sposób dodawania poprawek.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Każdy plik jest generowany na podstawie odpowiadającego pliku `.md` w folderze `doc/api/` w drzewie źródłowym Node.js. Dokumentacja jest generowana przy użyciu programu `tools/doc/generate.js`. Szablon HTML znajduje się na `doc/template.html`.
 
 ## Stability Index
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Throughout the documentation are indications of a section's stability. Interfejs API Node.js wciąż nieco się zmienia i w ten sposób dojrzewa, niektóre części są bardziej niezawodne niż inne. Niektóre są tak wypróbowane, że można polegać na tym, że prawdopodobnie wcale się nie zmienią. Inne są zupełnie nowe i eksperymentalne lub znane jako ryzykowne i w trakcie przeprojektowywania.
 
-The stability indices are as follows:
+Wskaźniki stabilności są następujące:
 
 ```txt
-Stability: 0 - Deprecated. This feature is known to be problematic, and changes
-may be planned. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Stabilność: 0 - Przestarzałe. Ta funkcja jest znana jako problematyczna i mogą być
+planowane zmiany. Nie polegaj na niej. Użycie tej funkcji może spowodować pojawienie się
+ostrzeżeń. Backwards compatibility across major versions should not be expected.
 ```
 
 ```txt
