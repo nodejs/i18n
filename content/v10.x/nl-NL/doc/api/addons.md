@@ -139,9 +139,9 @@ De [ Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) (o
 
 > Stabiliteit: 1 - Experimenteel
 
-N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelijk van de onderliggende JavaScript runtime (bijv. V8) en wordt onderhouden als een deel van Node.js zelf. Deze API zal Application Binary Interface (ABI) stabiel zijn, over alle versies van Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelijk van de onderliggende JavaScript runtime (bijv. V8) en wordt onderhouden als een deel van Node.js zelf. Deze API zal Application Binary Interface (ABI) stabiel zijn, over alle versies van Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. In plaats van de V8 of [Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) API's, worden de beschikbare functies in de N-API gebruikt.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Om de N-API in het bovenstaande "Hallo wereld" voorbeeld te gebruiken, vervang de inhoud van `hallo.cc` met het volgende. Alle andere instructies blijven hetzelfde.
 
 ```cpp
 // hello.cc using N-API
@@ -175,9 +175,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+De beschikbare functies, en hoe ze gebruikt moeten worden, staan beschreven in de sectie met de titel [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Addon voorbeelden
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
