@@ -29,21 +29,21 @@ ostrzeżeń. Nie należy się spodziewać wstecznej kompatybilności z podstawow
 ```
 
 ```txt
-Stabilność: 1 - Eksperymentalne. This feature is still under active development and
-subject to non-backwards compatible changes, or even removal, in any future
-version. Use of the feature is not recommended in production environments.
-Experimental features are not subject to the Node.js Semantic Versioning model.
+Stabilność: 1 - Eksperymentalne. Ta funkcja wciąż znajduje się w aktywnym rozwoju i
+podlega zmianom, które nie są kompatybilne wstecznie, a nawet usunięte, w jakiejkolwiek przyszłej
+wersji. Korzystanie z tej funkcji nie jest zalecane w środowiskach produkcyjnych.
+Funkcje eksperymentalne nie podlegają modelowi Semantic Versioning Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable. The API has proven satisfactory. Compatibility with the
-npm ecosystem is a high priority, and will not be broken unless absolutely
-necessary.
+Stabilność: 2 - Stabilne. API zostało zadowalająco sprawdzone. Kompatybilność z
+Ekosystemem npm ma wysoki priorytet i nie zostanie złamana, chyba że to absolutnie
+niezbędne.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+Podczas korzystania z funkcji `Eksperymentalne` należy zachować ostrożność, w szczególności wewnątrz modułów, które mogą być używane jako zależności (lub zależności zależności) wewnątrz aplikacji Node.js. Końcowi odbiorcy mogą nie być tego świadomi, że używane są funkcje eksperymentalne, dlatego mogą wystąpić nieoczekiwane awarie lub zmiany zachowań po wystąpieniu modyfikacji interfejsu API. Aby tego uniknąć tego typu niespodzianki, funkcje `Eksperymentalne` mogą wymagać użycia wiersza polecenia flagi do jawnego ich uruchomienia, lub mogą powodować wyświetlenia ostrzeżenia o procesie. Domyślnie, takie ostrzeżenia są wywoływane jako [`stderr`][] i mogą być obsługiwane przez dołączanie odbiornika do zdarzenia [`'ostrzeżenie'`][].
 
-## JSON Output
+## Dane wyjściowe JSON
 
 <!-- YAML
 added: v0.6.12
@@ -51,7 +51,7 @@ added: v0.6.12
 
 > Stabilność: 1 - Eksperymentalne
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Każdy dokument `.html` zawiera odpowiedni dokument `.json` przedstawiający te same informacje w uporządkowany sposób. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
 ## Syscalls and man pages
 
