@@ -20,9 +20,9 @@ Nagłówki wiadomości HTTP są reprezentowane przez taki obiekt:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Klucze są pisane małymi literami. Wartości nie są modyfikowane.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+W celu obsługi pełnego spektrum możliwych aplikacji HTTP, Node.js HTTP API jest bardzo niskiego poziomu. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
 See [`message.headers`][] for details on how duplicate headers are handled.
 
