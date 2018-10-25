@@ -3098,7 +3098,7 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 * Mejorar la lógica para probar si un argumento es un puerto
 * Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
 * Corrección de bug: Algunas respuestas http estaban siendo truncadas (aparecido en 0.1.94)
-* Corregir bugs de agotamiento de tiempo de espera por inactividad en redes de larga duración. Establecer tiempo de espera de dos minutos predeterminadamente en servidores HTTP.
+* Corregir bugs de agotamiento de tiempo de espera por inactividad en redes de larga duración. Establecer tiempo de espera de dos minutos por defecto en servidores HTTP.
 
 * Añadir fs.fstat (Ben Noordhuis)
 
