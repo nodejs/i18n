@@ -138,7 +138,7 @@ function debug(...args) {
 
 * 返回：{AsyncHook} 对`asyncHook`的引用。
 
-为给定的 `AsyncHook` 实例启用回调函数。 If no callbacks are provided enabling is a noop.
+为给定的 `AsyncHook` 实例启用回调函数。 如果未提供回调函数，则启用操作为 noop (空操作)。
 
 在默认情况下，`AsyncHook` 实例被禁用。 如果 `AsyncHook` 实例需要在创建后立即被启用，则可以使用如下模式。
 
@@ -224,13 +224,13 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 `TCPSERVERWRAP` 是接收连接的服务器。
 
-`TCPWRAP` 是来自客户端的新连接。 当创建新连接时，`TCPWrap`实例会立刻被构造。 这个过程会发生于任何 JavaScript 栈之外 (侧注：`0` 的 `executionAsyncId()` 意味着它是在C++中被运行，且其上面没有 JavaScript 栈)。 只有这些信息，不可能将这些资源就它们被创建的原因链接到一起，因此`triggerAsyncId`的任务就是负责传播什么资源负责新资源的存在性。
+`TCPWRAP` 是来自客户端的新连接。 当创建新连接时，`TCPWrap`实例会立刻被构造。 这个过程会发生于任何 JavaScript 栈之外 (旁注：`0` 的 `executionAsyncId()` 意味着它是在C++中被运行，且其上面没有 JavaScript 栈)。 只有这些信息，不可能将这些资源就它们被创建的原因链接到一起，因此`triggerAsyncId`的任务就是负责传播什么资源负责新资源的存在性。
 
 ###### `resource`
 
 `resource` 是表示已被初始化的实际异步资源的对象。 它可能会包含因 `type` 值而异的有用信息。 例如，对于 `GETADDRINFOREQWRAP` 资源类型，`resource` 提供了在 `net.Server.listen()` 中查找 IP 地址时使用的主机名。 用于访问此信息的 API 目前不被视为公开的，但通过使用 Embedder API，用户可以提供并记录自己的资源对象。 例如，这样的资源对象可以包含将被执行的 SQL 查询。
 
-在使用 Promises 时，`resource` 会含有`promise`属性，该属性引用正在被初始化的 Promise，而`parentId`属性则被设置为 父 Promise 的`asyncId`，当然前提是它存在，否则为 `undefined`。 例如，当`b = a.then(handler)`时，`a` 会被认为是 `b` 的父Promise。
+在使用 Promises 时，`resource` 对象会含有`promise`属性，该属性引用正在被初始化的 Promise，而`parentId`属性则被设置为 父 Promise 的`asyncId`，当然前提是它存在，否则为 `undefined`。 例如，当`b = a.then(handler)`时，`a` 会被认为是 `b` 的父Promise。
 
 *注意*：有些时候处于性能考虑，资源对象会被重用，因此将其作为 `WeakMap` 中的键值或向其添加属性是不安全的。
 
