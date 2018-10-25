@@ -87,7 +87,7 @@ apply.whitespace fix`
   * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
   * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Przeglądanie PR-ów
+## Przeglądanie PR
 
 * Podstawowym celem bazy kodu jest jego udoskonalenie.
 * Drugorzędnym (ale bliskim pierwszemu) jest dla osoby przesyłającej kod odnieść sukces. A pull request from a new contributor is an opportunity to grow the community.
