@@ -55,8 +55,8 @@ Każdy dokument `.html` zawiera odpowiedni dokument `.json` przedstawiający te 
 
 ## Funkcje systemowe i strony podręcznika systemowego
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Funkcje systemowe, takie jak open(2) i read(2), definiują interfejs między programami użytkownika i bazowym systemem operacyjnym. Funkcje Node.js które po prostu zawijają funkcje systemowe jak [`fs.open()`][], będzie je dokumentował. Dokumenty prowadzą do odpowiedniej strony podręcznika, które opisują sposób działania funkcji systemowych.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Niektóre funkcje systemowe, takie jak Ichown(2), są specyficzne dla BSD. Oznacza to, na przykład, że [`fs.lchown()`][] działa tylko na MacOS i innych pochodnych systemów BSD i nie jest dostępny w systemie Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Większość uniksowych funkcji systemowych ma odpowiedniki Windowsa, ale zachowanie może się różnić w Windowsie względem systemu Linux i macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
