@@ -234,7 +234,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 *注意*：有些时候处于性能考虑，资源对象会被重用，因此将其作为 `WeakMap` 中的键值或向其添加属性是不安全的。
 
-###### Asynchronous context example
+###### 异步上下文示例
 
 The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
 
