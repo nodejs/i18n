@@ -22,9 +22,9 @@ added: v0.1.21
 
 * `options` {Object} 
   * Nếu hiển thị `message` {string}, thông báo lỗi sẽ được đặt giá trị này.
-  * `actual` {any} Thuộc tính `actual` trong lỗi thực thể sẽ chứa giá trị này. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
+  * `actual` {any} Thuộc tính `actual` trong lỗi thực thể sẽ chứa giá trị này. Được sử dụng nội bộ trong trường hợp lỗi đầu vào `actual`. Ví dụ sử dụng trong [`assert.strictEqual()`].
+  * `expected` {any} Thuộc tính `expected` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ trong lỗi đầu vào `expected`. Ví dụ được sử dụng trong [`assert.strictEqual()`].
+  * `operator` {string} Thuộc tính `operator` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ để chỉ báo hoạt động nào được sử dụng để so sánh ( hoặc hàm xác nhận nào đã kích hoạt lỗi).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
 A subclass of `Error` that indicates the failure of an assertion.
