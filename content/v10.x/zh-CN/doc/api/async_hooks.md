@@ -323,7 +323,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 * `asyncId` {number}
 
-Called immediately after the callback specified in `before` is completed.
+在 `before` 中指定的回调函数结束后立即调用。
 
 If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
