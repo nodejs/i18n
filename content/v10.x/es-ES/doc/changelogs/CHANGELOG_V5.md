@@ -850,8 +850,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`55030922e5`](https://github.com/nodejs/node/commit/55030922e5)] - **lib**: alcance de las variables búcle (Rich Trott) [#4965](https://github.com/nodejs/node/pull/4965)
 * [[`725ad5b1ce`](https://github.com/nodejs/node/commit/725ad5b1ce)] - **lib**: remover redeclaraciones de la variable string_decoder.js (Rich Trott) [#4978](https://github.com/nodejs/node/pull/4978)
 * [[`c09eb44a59`](https://github.com/nodejs/node/commit/c09eb44a59)] - **module**: refactorizar variables redeclaradas (Rich Trott) [#4962](https://github.com/nodejs/node/pull/4962)
-* [[`612ce66c78`](https://github.com/nodejs/node/commit/612ce66c78)] - **net**: refactor redeclared variables (Rich Trott) [#4963](https://github.com/nodejs/node/pull/4963)
-* [[`c9b05dafe0`](https://github.com/nodejs/node/commit/c9b05dafe0)] - **net**: move isLegalPort to internal/net (Evan Lucas) [#4882](https://github.com/nodejs/node/pull/4882)
+* [[`612ce66c78`](https://github.com/nodejs/node/commit/612ce66c78)] - **net**: refactorizar variables redeclaradas (Rich Trott) [#4963](https://github.com/nodejs/node/pull/4963)
+* [[`c9b05dafe0`](https://github.com/nodejs/node/commit/c9b05dafe0)] - **net**: mover isLegalPort a internal/net (Evan Lucas) [#4882](https://github.com/nodejs/node/pull/4882)
 * [[`7003a4e3d8`](https://github.com/nodejs/node/commit/7003a4e3d8)] - **node_contextify**: do not incept debug context (Myles Borins) [#4815](https://github.com/nodejs/node/issues/4815)
 * [[`5a77c095a6`](https://github.com/nodejs/node/commit/5a77c095a6)] - **process**: soporta eventos symbol (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
 * [[`85743c0e92`](https://github.com/nodejs/node/commit/85743c0e92)] - **querystring**: verificar que maxKeys es finito (Myles Borins) [#5066](https://github.com/nodejs/node/pull/5066)
@@ -1021,8 +1021,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Problemas conocidos
 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 * Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### commits
