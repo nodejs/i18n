@@ -177,7 +177,7 @@ added: v0.9.4
 
 O método `os.endianness()` retorna uma string identificando a ordem de bytes da CPU * no qual o binário do Node.js foi compilado*.
 
-Possible values are:
+Valores possíveis:
 
 * `'BE'` for big endian
 * `'LE'` for little endian.
