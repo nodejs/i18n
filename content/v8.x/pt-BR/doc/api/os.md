@@ -179,7 +179,7 @@ O método `os.endianness()` retorna uma string identificando a ordem de bytes da
 
 Valores possíveis:
 
-* `'BE'` for big endian
+* `'BE'` para big endian
 * `'LE'` for little endian.
 
 ## os.freemem()
