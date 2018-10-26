@@ -210,7 +210,7 @@ $ node-gyp configure build
 
 Addons zullen meestal objecten en functies bloodleggen die toegankelijk zijn vanuit JavaScript uitgevoerd binnen Node.js. Wanneer functies worden aangeroepen vanuit JavaScript, moeten de invoer-argumenten en de geretourneerde waarde worden toegewezen van, én naar de C/C++ code.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Het volgende voorbeeld laat zien hoe een functie-argument wat is doorgegeven van JavaScript gelezen moet worden, en hoe het resultaat geretourneerd moet worden:
 
 ```cpp
 // addon.cc
@@ -227,13 +227,13 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// Dit is de implementatie van de "add" methode
+// Invoer-argumenten worden doorgegeven met behulp van
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+  // Controleer het aantal doorgegeven argumenten.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
