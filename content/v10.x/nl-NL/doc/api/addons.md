@@ -194,21 +194,21 @@ Elk van deze voorbeelden met gebruik van het volgende `binding.gyp` bestand:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+In gevallen waar er meer dan één `.cc` bestand is, voeg simpelweg de extra bestandsnaam aan de reeks van `bronnen` toe:
 
 ```json
-"sources": ["addon.cc", "myexample.cc"]
+"bronnen": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Zodra het `binding.gyp` klaar is, kunnen de voorbeeld-Addons worden geconfigureerd en gebouwd met behulp van `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Functie argumenten
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Addons zullen meestal objecten en functies bloodleggen die toegankelijk zijn vanuit JavaScript uitgevoerd binnen Node.js. Wanneer functies worden aangeroepen vanuit JavaScript, moeten de invoer-argumenten en de geretourneerde waarde worden toegewezen van, én naar de C/C++ code.
 
 The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
 
