@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Chế độ nghiêm ngặt (Strict mode)
 
 <!-- YAML
 added: v9.9.0
@@ -76,17 +76,17 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+Khi sử dụng `strict mode`, bất kỳ hàm `assert` nào sẽ dùng tính bình đẳng sử dụng trong chế độ hàm nghiêm ngặt. Vì vậy, theo một cách ví dụ, [`assert.deepEqual()`][] sẽ có chức năng làm việc giống như [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+Trên hết, các thông báo lỗi liên quan đến các đối tượng tạo ra một so sánh sai số lỗi khác thay vì hiển thị cả hai đối tượng. Đó không phải là trường hợp cho chế độ Legacy.
 
-It can be accessed using:
+Nó có thể truy cập bằng cách sử dụng:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Ví dụ về so sánh sai số lỗi:
 
 ```js
 const assert = require('assert').strict;
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.notStrictEqual()`][].
 
