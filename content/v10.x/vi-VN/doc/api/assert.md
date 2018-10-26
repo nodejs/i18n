@@ -111,17 +111,17 @@ Việc sử dụng `NODE_DISABLE_COLORS` biến môi trường để tắt các 
 
 ## Chế độ Legacy
 
-> Tính ổn định: 0 - Phản đối: Sử dụng chế độ nghiêm ngặt thay thế.
+> Tính ổn định: 0 - Không chấp nhận: Sử dụng chế độ nghiêm ngặt thay thế.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Khi truy cập trực tiếp `assert` thay vì truy cập thuộc tính `strict`, [Abstract Equality Comparison (So sánh đẳng thức trừu tượng)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sẽ được dùng cho các hàm không chứa "strict", ví dụ như [`assert.deepEqual()`][].
 
-It can be accessed using:
+Có thể truy cập bằng cách:
 
 ```js
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Chúng tôi khuyến nghị sử dụng [`strict mode`][] thay vì [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison), vì thông thường kết quả trả về sẽ không như mong đợi. Điều này đặc biệt đúng khi các quy tắc so sánh là sai, ví dụ như trong [`assert.deepEqual()`][]:
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Cách gọi khác của [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -168,11 +168,11 @@ changes:
 
 **Chế độ nghiêm ngặt (Strict mode)**
 
-An alias of [`assert.deepStrictEqual()`][].
+Cách gọi khác của [`assert.deepStrictEqual()`][].
 
 **Chế độ Legacy**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.deepStrictEqual()`][] thay thế.
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
