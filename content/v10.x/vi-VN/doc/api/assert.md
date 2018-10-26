@@ -8,11 +8,11 @@ Mô-đun `assert` cung cấp một tập các thí nghiệm xác nhận đơn gi
 
 Mặc dù có sẵn chế độ `strict` và `legacy`, nhưng chúng tôi khuyến nghị chỉ sử dụng [`strict mode`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Để biết thêm thông tin về các so sánh bình đằng được sử dụng, tham khảo thêm [hướng dẫn MDN về sự giống nhau và các so sánh bình đẳng](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Lớp: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Lớp con của `Error` biểu thị sự xác nhận thất bại. Tất cả các lỗi được tạo ra bởi mô-đun `assert` sẽ là thực thể của lớp `AssertionError`.
 
 ### new assert.AssertionError(options)
 
@@ -21,8 +21,8 @@ added: v0.1.21
 -->
 
 * `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
+  * Nếu hiển thị `message` {string}, thông báo lỗi sẽ được đặt giá trị này.
+  * `actual` {any} Thuộc tính `actual` trong lỗi thực thể sẽ chứa giá trị này. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
   * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
