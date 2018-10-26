@@ -527,7 +527,7 @@ assert.fail(new TypeError('need array'));
 // TypeError: need array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+Có thể sử dụng `assert.fail()` với hơn hai đối số nhưng sẽ không được chấp thuận. Tham khảo chi tiết bên dưới.
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -547,9 +547,9 @@ changes:
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
+> Tính ổn định: 0 - Không chấp thuận. Sử dụng `assert.fail([message])` hoặc các hàm xác nhận thay thế.
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+Nếu `message` bị lỗi, thông báo lỗi sẽ được gắn các giá trị riêng biệt của `actual` và `expected` từ `operator` được cung cấp. Nếu cung cấp hai đối số `actual` và `expected`, `operator` sẽ mặc định giá trị là `'!='`. Nếu `message` được cấp như đối số thứ ba nó sẽ được dùng như một thông báo lỗi, và các đối số còn lại sẽ được lưu như các thuộc tính sau này cho đối tượng trả về. Nếu cung cấp `stackStartFunction`, tất cả các khung ngăn xếp phía trên hàm đó sẽ bị loại bỏ khỏi dấu vết ngăn xếp (xem thêm (see [`Error.captureStackTrace`]). Nếu không cung cấp hàm đối số nào, nó sẽ mặc định dùng thông báo `Failed`.
 
 ```js
 const assert = require('assert').strict;
@@ -570,7 +570,7 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+Trong ba trường hợp cuối, `actual`, `expected`, và `operator` sẽ không có ảnh hưởng lên thông báo lỗi.
 
 Example use of `stackStartFunction` for truncating the exception's stacktrace:
 
@@ -835,7 +835,7 @@ Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, mes
 
 If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! Tham khảo chi tiết bên dưới.
 
 ```js
 const assert = require('assert').strict;
