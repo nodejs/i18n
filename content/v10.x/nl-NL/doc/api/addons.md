@@ -269,7 +269,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Het is gebruikelijk binnen Addons om JavaScript functies door te geven naar een C++ functie en deze daar vanuit te executeren. Het volgende voorbeeld laat zien hoe dergelijke callbacks worden aangeroepen:
 
 ```cpp
 // addon.cc
@@ -303,9 +303,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Merk op dat dit voorbeeld een twee-argument vorm gebruikt van `Init()` dat het volledige `module` object als tweede argument gebruikt. Dit maakt het de Addon mogelijk om `exports` geheel te overschrijven met één enkele functie, in plaats van het toevoegen van de functie als bezit van `exports`.
 
-To test it, run the following JavaScript:
+Om dit te testen, draai het volgende JavaScript:
 
 ```js
 // test.js
@@ -313,7 +313,7 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Prints: 'hallo wereld'
 });
 ```
 
