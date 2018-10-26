@@ -1023,22 +1023,22 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
+* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### commits
 
-* [[`ff539c5bb5`](https://github.com/nodejs/node/commit/ff539c5bb5)] - **cluster**: ignore queryServer msgs on disconnection (Santiago Gimeno) [#4465](https://github.com/nodejs/node/pull/4465)
-* [[`00148b3de1`](https://github.com/nodejs/node/commit/00148b3de1)] - **deps**: backport 066747e from upstream V8 (Ali Ijaz Sheikh) [#4625](https://github.com/nodejs/node/pull/4625)
-* [[`3912b5cbda`](https://github.com/nodejs/node/commit/3912b5cbda)] - **doc**: adds usage of readline line-by-line parsing (Robert Jefe Lindstaedt) [#4609](https://github.com/nodejs/node/pull/4609)
-* [[`102fb7d3a1`](https://github.com/nodejs/node/commit/102fb7d3a1)] - **doc**: remove "above" and "below" references (Richard Sun) [#4499](https://github.com/nodejs/node/pull/4499)
-* [[`df87176ae0`](https://github.com/nodejs/node/commit/df87176ae0)] - **doc**: update stylesheet to match frontpage (Roman Reiss) [#4621](https://github.com/nodejs/node/pull/4621)
+* [[`ff539c5bb5`](https://github.com/nodejs/node/commit/ff539c5bb5)] - **cluster**: ignorar mensajes queryServer al desconectar (Santiago Gimeno) [#4465](https://github.com/nodejs/node/pull/4465)
+* [[`00148b3de1`](https://github.com/nodejs/node/commit/00148b3de1)] - **deps**: hacer backport 066747e desde upstream V8 (Ali Ijaz Sheikh) [#4625](https://github.com/nodejs/node/pull/4625)
+* [[`3912b5cbda`](https://github.com/nodejs/node/commit/3912b5cbda)] - **doc**: añadir el uso de análisis de linea por linea de readline (Robert Jefe Lindstaedt) [#4609](https://github.com/nodejs/node/pull/4609)
+* [[`102fb7d3a1`](https://github.com/nodejs/node/commit/102fb7d3a1)] - **doc**: remover referencias de "above" y "below" (Richard Sun) [#4499](https://github.com/nodejs/node/pull/4499)
+* [[`df87176ae0`](https://github.com/nodejs/node/commit/df87176ae0)] - **doc**: actualizar el stylesheet para que coincida con el frontpage (Roman Reiss) [#4621](https://github.com/nodejs/node/pull/4621)
 * [[`ede98d1f98`](https://github.com/nodejs/node/commit/ede98d1f98)] - **doc**: stronger suggestion for userland assert (Wyatt Preul) [#4535](https://github.com/nodejs/node/pull/4535)
-* [[`fdfc72c977`](https://github.com/nodejs/node/commit/fdfc72c977)] - **doc**: label http.IncomingMessage as a Class (Sequoia McDowell) [#4589](https://github.com/nodejs/node/pull/4589)
-* [[`b181e26975`](https://github.com/nodejs/node/commit/b181e26975)] - **doc**: document http's server.listen return value (Sequoia McDowell) [#4590](https://github.com/nodejs/node/pull/4590)
-* [[`97aaeb8519`](https://github.com/nodejs/node/commit/97aaeb8519)] - **doc**: fix description about the latest-codename (Minwoo Jung) [#4583](https://github.com/nodejs/node/pull/4583)
-* [[`0126615d1e`](https://github.com/nodejs/node/commit/0126615d1e)] - **doc**: add Evan Lucas to Release Team (Evan Lucas) [#4579](https://github.com/nodejs/node/pull/4579)
-* [[`ec73c69412`](https://github.com/nodejs/node/commit/ec73c69412)] - **doc**: add Myles Borins to Release Team (Myles Borins) [#4578](https://github.com/nodejs/node/pull/4578)
-* [[`e703c9a4e2`](https://github.com/nodejs/node/commit/e703c9a4e2)] - **doc**: bring releases.md up to date (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
+* [[`fdfc72c977`](https://github.com/nodejs/node/commit/fdfc72c977)] - **doc**: etiquetar a http.IncomingMessage como una Clase (Sequoia McDowell) [#4589](https://github.com/nodejs/node/pull/4589)
+* [[`b181e26975`](https://github.com/nodejs/node/commit/b181e26975)] - **doc**: documentar el valor devuelto de http's server.listen (Sequoia McDowell) [#4590](https://github.com/nodejs/node/pull/4590)
+* [[`97aaeb8519`](https://github.com/nodejs/node/commit/97aaeb8519)] - **doc**: corregir descripción sobre el latest-codename (Minwoo Jung) [#4583](https://github.com/nodejs/node/pull/4583)
+* [[`0126615d1e`](https://github.com/nodejs/node/commit/0126615d1e)] - **doc**: añadir a Evan Lucas al Equipo de Lanzamientos (Evan Lucas) [#4579](https://github.com/nodejs/node/pull/4579)
+* [[`ec73c69412`](https://github.com/nodejs/node/commit/ec73c69412)] - **doc**: añadir a Myles Borins al Equipo de Lanzamientos (Myles Borins) [#4578](https://github.com/nodejs/node/pull/4578)
+* [[`e703c9a4e2`](https://github.com/nodejs/node/commit/e703c9a4e2)] - **doc**: actualizar a la fecha actual a releases.md (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
 * [[`ac1108d5e7`](https://github.com/nodejs/node/commit/ac1108d5e7)] - **doc**: add missing backtick for readline (Brian White) [#4549](https://github.com/nodejs/node/pull/4549)
 * [[`09bc0c6a05`](https://github.com/nodejs/node/commit/09bc0c6a05)] - **doc**: improvements to crypto.markdown copy (James M Snell) [#4435](https://github.com/nodejs/node/pull/4435)
 * [[`787c5d96bd`](https://github.com/nodejs/node/commit/787c5d96bd)] - **http**: remove variable redeclaration (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
