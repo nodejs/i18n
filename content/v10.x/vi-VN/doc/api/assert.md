@@ -375,11 +375,11 @@ Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm,
 
 Nếu `block` là một chức năng mà nó gửi đi lối đồng bộ, `assert.doesNotReject()` sẽ trả về giá trị của `Promise` bị từ chối với lỗi đó. Nếu không có lời hứa nào phản hồi, `assert.doesNotReject()` sẽ trả về `Promise` bị từ chối với lỗi [`ERR_INVALID_RETURN_VALUE`][]. Trong cả hai trường hợp đều bỏ qua quy trình xử lý lỗi.
 
-Hãy nhớ: Việc sử dụng `assert.doesNotReject()` không thực sự hữu ích bởi vì có rất ít lợi ích thu được từ việc nhận giá trị từ chối và liên tục bị từ chối. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotReject()` không thực sự hữu ích bởi vì có rất ít lợi ích thu được từ việc nhận giá trị từ chối và liên tục bị từ chối. Thay vào đó, hãy xem xét việc thêm các nhận xét vào các đoạn mã cụ thể đáng lẽ không đáng bị từ chối và giữ các thông báo lỗi càng chi tiết rõ ràng càng tốt.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Nói một cách rõ ràng hơn, `error` có thể thay thế bằng [`Class`][], [`RegExp`][] hoặc một hàm xác nhận. Tham khảo thêm [`assert.throws()`][].
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+Bên cạnh đó đặc tính đồng bộ nhằm chờ đợi việc hoàn thiện các hành vi tương đồng với [`assert.doesNotThrow()`][].
 
 ```js
 (async () => {
@@ -417,15 +417,15 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+Xác nhận hàm `block` không gửi đi kết quả lỗi.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotThrow()` không thực sự hữu ích vì nó không có lợi ích gì từ việc bắt lỗi sau đó tiếp tục lại gửi đi. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
 When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Nói một cách rõ ràng hơn, `error` có thể thay thế bằng [`Class`][], [`RegExp`][] hoặc một hàm xác nhận. Tham khảo thêm [`assert.throws()`][].
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
