@@ -3254,12 +3254,12 @@ https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 
     * API:
-      - Move process.watchFile into fs module
-      - Move process.inherits to sys
+      - Mover process.watchFile adentro del módulo del fs
+      - Mover process.inherits a sys
     
-    * Improve Solaris port
-    * tcp.Connection.prototype.write now returns boolean to indicate if
-      argument was flushed to the kernel buffer.
+    * Mejorar puerto de Solaris
+    * tcp.Connection.prototype.write ahora devuelve un booleano para indicar
+      si un argumento fue descargado al buffer del kernel.
     
     * Added fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
