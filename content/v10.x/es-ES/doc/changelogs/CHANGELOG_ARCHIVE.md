@@ -3232,25 +3232,24 @@ https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
 https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
-    * Optimize event emitter for single listener
-    * Add process.evalcx, require.registerExtension (Tim Smart)
+    * Optimizar el emisor de eventos para un listener único
+    * Añadir process.evalcx, require.registerExtension (Tim Smart)
     
-    * Replace --cflags with --vars
-    * Fix bugs in fs.create*Stream (Felix Geisendörfer)
+    * Reemplazar --cflags con --vars
+    * Corregir bugs en fs.create*Stream (Felix Geisendörfer)
+    * Desaprobar process.mixin, process.unloop
+    * Remover las excepciones de "Error: (no message)", imprimir stack
+      trace en su lugar
     
-    * Deprecate process.mixin, process.unloop
-    * Remove the 'Error: (no message)' exceptions, print stack
-      trace instead
+    * Correcciones de bugs del analizador de INI (Isaac Schlueter)
+    * Correcciones de FreeBSD (Vanilla Hsu)
     
-    * INI parser bug fixes (Isaac Schlueter)
-    * FreeBSD fixes (Vanilla Hsu)
-    
-    * Upgrade to V8 2.1.3, WAF 1.5.14a, libev
+    * Actualizar a V8 2.1.3, WAF 1.5.14a, libev
     
 
 <a id="0.1.31"></a>
 
-## 2010.03.05, Version 0.1.31
+## 2010.03.05, Versión 0.1.31
 
 https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 
