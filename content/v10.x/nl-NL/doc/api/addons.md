@@ -179,9 +179,9 @@ De beschikbare functies, en hoe ze gebruikt moeten worden, staan beschreven in d
 
 ## Addon voorbeelden
 
-Hier volgen enkele voorbeelden van Addons die bedoeld zijn om ontwikkelaars te helpen aan de slag te gaan. De voorbeelden maken gebruik van de V8-API's. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Hier volgen enkele voorbeelden van Addons die bedoeld zijn om ontwikkelaars te helpen aan de slag te gaan. De voorbeelden maken gebruik van de V8-API's. Raadpleeg de online [V8 verwijzing](https://v8docs.nodesource.com/) voor hulp bij de verschillende V8 oproepen, en V8 [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) voor uitleg over de verschillende concepten zoals handvatten, bereiken, functie patronen, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Elk van deze voorbeelden met gebruik van het volgende `binding.gyp` bestand:
 
 ```json
 {
