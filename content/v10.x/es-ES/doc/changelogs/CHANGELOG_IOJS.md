@@ -1028,7 +1028,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * **http**: Revierte el movimiento de la propiedad `client` de `IncomingMessage` a su prototipo. Although undocumented, this property was used and assumed to be an "own property" in the wild, most notably by [request](https://github.com/request/request) which is used by npm. (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852).
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -1036,25 +1036,25 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
-* [[`c5a1009903`](https://github.com/nodejs/node/commit/c5a1009903)] - **build**: avoid passing empty strings to build flags (Johan Bergström) [#1789](https://github.com/nodejs/node/pull/1789)
+* [[`c5a1009903`](https://github.com/nodejs/node/commit/c5a1009903)] - **build**: evitar pasar strings vacía para construir banderas (Johan Bergström) [#1789](https://github.com/nodejs/node/pull/1789)
 * [[`5d83401086`](https://github.com/nodejs/node/commit/5d83401086)] - **doc**: put SEMVER-MINOR on pre-load module fix 2.2.0 (Rod Vagg)
-* [[`4d6b768e5d`](https://github.com/nodejs/node/commit/4d6b768e5d)] - **http**: revert deprecation of client property (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852)
+* [[`4d6b768e5d`](https://github.com/nodejs/node/commit/4d6b768e5d)] - **http**: revertir la desaprobación de la propiedad del cliente (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852)
 
 <a id="2.2.0"></a>
 
-## 2015-05-31, Version 2.2.0, @rvagg
+## 2015-05-31, Versión 2.2.0, @rvagg
 
-### Notable changes
+### Cambios notables
 
-* **node**: Speed-up `require()` by replacing usage of `fs.statSync()` and `fs.readFileSync()` with internal variants that are faster for this use-case and do not create as many objects for the garbage collector to clean up. The primary two benefits are: significant increase in application start-up time on typical applications and better start-up time for the debugger by eliminating almost all of the thousands of exception events. (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801).
-* **node**: Resolution of pre-load modules (`-r` or `--require`) now follows the standard `require()` rules rather than just resolving paths, so you can now pre-load modules in node_modules. (Ali Ijaz Sheikh) [#1812](https://github.com/nodejs/node/pull/1812).
-* **npm**: Upgraded npm to v2.11.0. New hooks for `preversion`, `version`, and `postversion` lifecycle events, some SPDX-related license changes and license file inclusions. See the [release notes](https://github.com/npm/npm/releases/tag/v2.11.0) for full details.
+* **node**: Acelere `require()` reemplazando el uso de `fs.statSync()` y `fs.readFileSync()` con variantes internas que son más rápidas para este caso de uso y no cree tantos objetos para el recolector de basura se limpie. Los principales dos beneficios son: un incremente significante en el tiempo de inicio de la aplicación en aplicaciones típicas y un mejor tiempo de inicio para el depurador al eliminar casi todos de los miles de eventos de excepción. (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801).
+* **node**: La resolución de los módulos de pre-carga (`-r` o `--require`) ahora sigue las reglas `require()` estándar en lugar de sólo resolver las rutas, por lo que ahora puede pre-cargar módulos en node_modules. (Ali Ijaz Sheikh) [#1812](https://github.com/nodejs/node/pull/1812).
+* **npm**: Upgraded npm to v2.11.0. New hooks for `preversion`, `version`, and `postversion` lifecycle events, some SPDX-related license changes and license file inclusions. Vea las [notas de lanzamiento](https://github.com/npm/npm/releases/tag/v2.11.0) para detalles completos.
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -1062,25 +1062,25 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
-* [[`a77c330c32`](https://github.com/nodejs/node/commit/a77c330c32)] - **(SEMVER-MINOR)** **child_process**: expose ChildProcess constructor (Evan Lucas) [#1760](https://github.com/nodejs/node/pull/1760)
+* [[`a77c330c32`](https://github.com/nodejs/node/commit/a77c330c32)] - **(SEMVER-MINOR)** **child_process**: exponer el constructor ChildProcess (Evan Lucas) [#1760](https://github.com/nodejs/node/pull/1760)
 * [[`3a1bc067d4`](https://github.com/nodejs/node/commit/3a1bc067d4)] - ***Revert*** "**core**: set PROVIDER type as Persistent class id" (Ben Noordhuis) [#1827](https://github.com/nodejs/node/pull/1827)
-* [[`f9fd554500`](https://github.com/nodejs/node/commit/f9fd554500)] - **deps**: make node-gyp work with io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
-* [[`c1afa53648`](https://github.com/nodejs/node/commit/c1afa53648)] - **deps**: upgrade npm to 2.11.0 (Forrest L Norvell) [iojs/io.js#1829](https://github.com/iojs/io.js/pull/1829)
-* [[`ff794498e7`](https://github.com/nodejs/node/commit/ff794498e7)] - **doc**: `fs.*File()` also accept encoding strings (Rich Trott) [#1806](https://github.com/nodejs/node/pull/1806)
+* [[`f9fd554500`](https://github.com/nodejs/node/commit/f9fd554500)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
+* [[`c1afa53648`](https://github.com/nodejs/node/commit/c1afa53648)] - **deps**: actualizar npm a 2.11.0 (Forrest L Norvell) [iojs/io.js#1829](https://github.com/iojs/io.js/pull/1829)
+* [[`ff794498e7`](https://github.com/nodejs/node/commit/ff794498e7)] - **doc**: `fs.*File()` también aceptar strings de codificación (Rich Trott) [#1806](https://github.com/nodejs/node/pull/1806)
 * [[`98649fd31a`](https://github.com/nodejs/node/commit/98649fd31a)] - **doc**: add documentation for AtExit hook (Steve Sharp) [#1014](https://github.com/nodejs/node/pull/1014)
-* [[`eb1856dfd1`](https://github.com/nodejs/node/commit/eb1856dfd1)] - **doc**: clarify stability of fs.watch and relatives (Rich Trott) [#1775](https://github.com/nodejs/node/pull/1775)
+* [[`eb1856dfd1`](https://github.com/nodejs/node/commit/eb1856dfd1)] - **doc**: aclarar la estabilidad de fs.watch y sus relativos (Rich Trott) [#1775](https://github.com/nodejs/node/pull/1775)
 * [[`a74c2c9458`](https://github.com/nodejs/node/commit/a74c2c9458)] - **doc**: state url decoding behavior (Josh Gummersall) [#1731](https://github.com/nodejs/node/pull/1731)
 * [[`ba76a9d872`](https://github.com/nodejs/node/commit/ba76a9d872)] - **doc**: remove bad semver-major entry from CHANGELOG (Rod Vagg) [#1782](https://github.com/nodejs/node/pull/1782)
-* [[`a6a3f8c78d`](https://github.com/nodejs/node/commit/a6a3f8c78d)] - **doc**: fix changelog s/2.0.3/2.1.0 (Rod Vagg)
+* [[`a6a3f8c78d`](https://github.com/nodejs/node/commit/a6a3f8c78d)] - **doc**: corregir changelog s/2.0.3/2.1.0 (Rod Vagg)
 * [[`2c686fd3ce`](https://github.com/nodejs/node/commit/2c686fd3ce)] - **http**: flush stored header (Vladimir Kurchatkin) [#1695](https://github.com/nodejs/node/pull/1695)
-* [[`1eec5f091a`](https://github.com/nodejs/node/commit/1eec5f091a)] - **http**: simplify code and remove unused properties (Brian White) [#1572](https://github.com/nodejs/node/pull/1572)
-* [[`1bbf8d0720`](https://github.com/nodejs/node/commit/1bbf8d0720)] - **lib**: speed up require(), phase 2 (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801)
-* [[`b14fd1a720`](https://github.com/nodejs/node/commit/b14fd1a720)] - **lib**: speed up require(), phase 1 (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801)
-* [[`5abd4ac079`](https://github.com/nodejs/node/commit/5abd4ac079)] - **lib**: simplify nextTick() usage (Brian White) [#1612](https://github.com/nodejs/node/pull/1612)
+* [[`1eec5f091a`](https://github.com/nodejs/node/commit/1eec5f091a)] - **http**: simplificar el código y eliminar propiedades sin utilizar (Brian White) [#1572](https://github.com/nodejs/node/pull/1572)
+* [[`1bbf8d0720`](https://github.com/nodejs/node/commit/1bbf8d0720)] - **lib**: acelerar require(), fase 2 (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801)
+* [[`b14fd1a720`](https://github.com/nodejs/node/commit/b14fd1a720)] - **lib**: acelerar require(), fase 1 (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801)
+* [[`5abd4ac079`](https://github.com/nodejs/node/commit/5abd4ac079)] - **lib**: simplificar el uso de nextTick() (Brian White) [#1612](https://github.com/nodejs/node/pull/1612)
 * [[`5759722cfa`](https://github.com/nodejs/node/commit/5759722cfa)] - **(SEMVER-MINOR)** **src**: fix module search path for preload modules (Ali Ijaz Sheikh) [#1812](https://github.com/nodejs/node/pull/1812)
 * [[`a65762cab6`](https://github.com/nodejs/node/commit/a65762cab6)] - **src**: remove old code (Brendan Ashworth) [#1819](https://github.com/nodejs/node/pull/1819)
 * [[`93a44d5228`](https://github.com/nodejs/node/commit/93a44d5228)] - **src**: fix deferred events not working with -e (Ben Noordhuis) [#1793](https://github.com/nodejs/node/pull/1793)
