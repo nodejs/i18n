@@ -915,18 +915,18 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`e95fd6ae70`](https://github.com/nodejs/node/commit/e95fd6ae70)] - **tools**: aplicar el uso de linting para las herramientas del documento (Rich Trott) [#4973](https://github.com/nodejs/node/pull/4973)
 * [[`777ed82162`](https://github.com/nodejs/node/commit/777ed82162)] - **tools**: reparar la detección del constructor para el documento JSON (Timothy Gu) [#4966](https://github.com/nodejs/node/pull/4966)
 * [[`5d55f59c85`](https://github.com/nodejs/node/commit/5d55f59c85)] - **tools**: añadir tipos de propiedad en la documentación de JSON (Timothy Gu) [#4884](https://github.com/nodejs/node/pull/4884)
-* [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subkeys en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
+* [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subclaves en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
 * [[`34df6a5c0c`](https://github.com/nodejs/node/commit/34df6a5c0c)] - **tools**: habilitar reglas de error ESLint clasificadas (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
 * [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: reparar la ruta de configuración que contenga un et (&) (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
 * [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: cambiar el alcance de las variables con let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
 <a id="5.5.0"></a>
 
-## 2016-01-20, Versión 5.5.0 (Etable), @evanlucas
+## 2016-01-20, Versión 5.5.0 (Estable), @evanlucas
 
 ### Cambios notables
 
-* **events**: asegurate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
+* **events**: asegúrate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: añadir opción autoClose para fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
 * **http**: mejorar el manejo de la cabecera esperada (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
 * **node**: permitir precargar módulos con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
@@ -981,9 +981,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`ff64a4c395`](https://github.com/nodejs/node/commit/ff64a4c395)] - **(SEMVER-MINOR)** **node**: permitir los módulos precargados con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
 * [[`4bc1a47761`](https://github.com/nodejs/node/commit/4bc1a47761)] - **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 * [[`ad63d350d4`](https://github.com/nodejs/node/commit/ad63d350d4)] - **readline**: Remover XXX y el debuglog de salida (Kohei TAKATA) [#4690](https://github.com/nodejs/node/pull/4690)
-* [[`da550aa063`](https://github.com/nodejs/node/commit/da550aa063)] - **repl**: asegurarse que historyPath sea recortado (Evan Lucas) [#4539](https://github.com/nodejs/node/pull/4539)
+* [[`da550aa063`](https://github.com/nodejs/node/commit/da550aa063)] - **repl**: asegúrate que historyPath sea recortado (Evan Lucas) [#4539](https://github.com/nodejs/node/pull/4539)
 * [[`a2c257a3ef`](https://github.com/nodejs/node/commit/a2c257a3ef)] - **src**: reparar valores negativos en process.hrtime() (Ben Noordhuis) [#4757](https://github.com/nodejs/node/pull/4757)
-* [[`8bad51977a`](https://github.com/nodejs/node/commit/8bad51977a)] - **src**: devolver UV_EAI_NODATA en busqueda vacía (cjihrig) [#4715](https://github.com/nodejs/node/pull/4715)
+* [[`8bad51977a`](https://github.com/nodejs/node/commit/8bad51977a)] - **src**: devolver UV_EAI_NODATA en búsqueda vacía (cjihrig) [#4715](https://github.com/nodejs/node/pull/4715)
 * [[`761cf2bf6a`](https://github.com/nodejs/node/commit/761cf2bf6a)] - **src**: no verificar falla con ERR_peek_error() (Ben Noordhuis) [#4731](https://github.com/nodejs/node/pull/4731)
 * [[`426ff820f5`](https://github.com/nodejs/node/commit/426ff820f5)] - **stream**: prevenir el cambio del mapa del objeto en ReadableState (Evan Lucas) [#4761](https://github.com/nodejs/node/pull/4761)
 * [[`e65f1f7954`](https://github.com/nodejs/node/commit/e65f1f7954)] - **test**: reparar la condición de carrera tls-multi-key (Santiago Gimeno) [#3966](https://github.com/nodejs/node/pull/3966)
