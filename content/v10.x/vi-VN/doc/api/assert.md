@@ -185,7 +185,7 @@ assert.deepEqual(/a/gi, new Date());
 
 [`Map`][] và [`Set`][] là có ngoại lệ. Bởi vì `Map` và `Set` đã so sánh các hạng mục bao hàm trong nó như mong đợi.
 
-Đẳng thức "Deep" nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
+Đẳng thức "deep" (sâu) nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
 
 ```js
 const assert = require('assert');
@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu thông số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu thông số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -259,18 +259,18 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Đẳng thức "sâu" có nghĩa các thuộc tính "own" có thể đếm được của đối tượng con sẽ được đánh giá một cách đệ quy theo các quy tắc sau.
 
-### Comparison details
+### Chi tiết so sánh
 
-* Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
+* Các giá trị ban đầu được tiến hành so sánh với [So sánh cùng giá trị](https://tc39.github.io/ecma262/#sec-samevalue), sử dụng bởi [`Object.is()`][].
+* [Các loại thẻ gắn](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) của đối tượng cần giống nhau.
+* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) của các đối tượng được so sánh sử dụng [So sánh đẳng thức nghiêm ngặt](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Chỉ so sánh với [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+* Các tên và thông báo [`Error`][] luôn được so sánh, kể cả chúng không phải là những thuộc tính có thể đếm được.
+* Thuộc tính [`Symbol`][] có thể đếm được cũng sẽ được so sánh.
+* [Các lớp bọc đối tượng](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) được so sánh như là các đối tượng và giá trị không bọc.
+* Các thuộc tính `Object` được so sánh không theo trình tự.
 * `Map` keys and `Set` items are compared unordered.
 * Recursion stops when both sides differ or both sides encounter a circular reference.
 * [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.fail([message])
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -833,7 +833,7 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
 
