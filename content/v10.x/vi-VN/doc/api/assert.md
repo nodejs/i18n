@@ -419,15 +419,15 @@ changes:
 
 Xác nhận hàm `block` không gửi đi kết quả lỗi.
 
-Hãy nhớ: Việc sử dụng `assert.doesNotThrow()` không thực sự hữu ích vì nó không có lợi ích gì từ việc bắt lỗi sau đó tiếp tục lại gửi đi. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotThrow()` không thực sự hữu ích vì nó không có lợi ích gì từ việc bắt lỗi sau đó tiếp tục lại gửi đi. Thay vào đó, hãy xem xét việc thêm các nhận xét cạnh các đoạn mã cụ thể đáng lẽ không nên gửi đi và giữ các thông báo lỗi càng chi tiết rõ ràng càng tốt.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Khi gọi `assert.doesNotThrow()`, nó sẽ gọi ngay lập tức hàm `block`.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Khi phát hiện có lỗi, nó sẽ được chỉ định cùng loại từ tham số `error`, sau đó gửi đi `AssertionError`. Nếu đó là một lỗi khác, hoặc tham số `error` không được xác định, thì lỗi đó sẽ truyền lại cho trình gọi.
 
 Nói một cách rõ ràng hơn, `error` có thể thay thế bằng [`Class`][], [`RegExp`][] hoặc một hàm xác nhận. Tham khảo thêm [`assert.throws()`][].
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Trong ví dụ dưới đây sẽ trả giá trị [`TypeError`][] vì không có loại lỗi nào tương tự trong bộ phận xác nhận:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+Tuy nhiên, trong phần tiếp theo sẽ trả kết quả cho `AssertionError` với thông báo 'Got unwanted exception...' (Nhận kết quả không mong muốn):
 
 <!-- eslint-disable no-restricted-syntax -->
 
