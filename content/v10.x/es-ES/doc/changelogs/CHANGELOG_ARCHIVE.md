@@ -3302,35 +3302,35 @@ https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
         writeHeader(). Ahora acepta reasonPhrase.
     
     * Compactar la basura durante la inactividad.
-    * Configurable debug ports, and --debug-brk (Zoran Tomicic)
+    * Puertos de depuración configurables, y --debug-brk (Zoran Tomicic)
     
-    * Better command line option parsing (Jeremy Ashkenas)
-    * Add fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
+    * Mejor análisis de opciones de la línea de comandos (Jeremy Ashkenas)
+    * Añadir fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
     
-    * Fixes to process.mixin (Rasmus Andersson, Benjamin Thomas)
-    * Upgrade V8 to 2.1.1
+    * Correcciones a process.mixin (Rasmus Andersson, Benjamin Thomas)
+    * Actualizar V8 a 2.1.1
     
 
 <a id="0.1.29"></a>
 
-## 2010.02.17, Version 0.1.29
+## 2010.02.17, Versión 0.1.29
 
 https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
 
-    * Major API Changes
-      - Remove 'file' module
+    * Cambios de API mayores
+      - Remover módulo "file"
       - require('posix') -----------------> require('fs')
       - fs.cat ---------------------------> fs.readFile
       - file.write -----------------------> fs.writeFile
-      - TCP 'receive' event --------------> 'data'
-      - TCP 'eof' event ------------------> 'end'
-      - TCP send() -----------------------> write()
-      - HTTP sendBody() ------------------> write()
-      - HTTP finish() --------------------> close()
-      - HTTP 'body' event ----------------> 'data'
-      - HTTP 'complete' event ------------> 'end'
-      - http.Client.prototype.close() (formerly finish()) no longer
-        takes an argument. Add the 'response' listener manually.
+      - Evento "receive" del TCP --------------> "data"
+      - Evento "eof" del TCP ------------------> "end"
+      - send() del TCP -----------------------> write()
+      - sendBody() de HTTP ------------------> write()
+      - finish() de HTTP--------------------> close()
+      - Evento "body" de HTTP ----------------> "data"
+      - Evento "complete" de HTTP ------------> "end"
+      - http.Client.prototype.close() (formalmente finish()) ya no
+        toma un argumento. Añadir manualmente el listener de "response".
       - Allow strings for the flag argument to fs.open
         ("r", "r+", "w", "w+", "a", "a+")
     
