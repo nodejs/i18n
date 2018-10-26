@@ -171,7 +171,7 @@ Como os valores de `nice` são específicos de UNIX, no Windows os valores de `n
 added: v0.9.4
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
