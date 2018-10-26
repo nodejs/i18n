@@ -107,11 +107,11 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+Việc sử dụng `NODE_DISABLE_COLORS` biến môi trường để tắt các màu sắc. Xin chú ý, điều này cũng tắt các màu trong REPL.
 
-## Legacy mode
+## Chế độ Legacy
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> Tính ổn định: 0 - Phản đối: Sử dụng chế độ nghiêm ngặt thay thế.
 
 When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
@@ -170,7 +170,7 @@ changes:
 
 An alias of [`assert.deepStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
@@ -482,7 +482,7 @@ added: v0.1.21
 
 An alias of [`assert.strictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
@@ -662,7 +662,7 @@ changes:
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -763,7 +763,7 @@ added: v0.1.21
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
