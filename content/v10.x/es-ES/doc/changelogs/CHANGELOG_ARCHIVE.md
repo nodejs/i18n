@@ -3215,20 +3215,20 @@ https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
 <a id="0.1.33"></a>
 
-## 2010.03.19, Version 0.1.33
+## 2010.03.19, Versión 0.1.33
 
 https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
-    * Include lib/ directory in node executable. Compile on demand.
-    * evalcx clean ups (Isaac Z. Schlueter, Tim-Smart)
+    * Incluir lib/ directory en el ejecutable de node. Compilar bajo demanda.
+    * Limpiezas de evalcx (Isaac Z. Schlueter, Tim-Smart)
     
-    * Various fixes, clean ups
-    * V8 upgraded to 2.1.5
+    * Varias correcciones, limpiezas
+    * V8 actualizado a 2.1.5
     
 
 <a id="0.1.32"></a>
 
-## 2010.03.12, Version 0.1.32
+## 2010.03.12, Versión 0.1.32
 
 https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
