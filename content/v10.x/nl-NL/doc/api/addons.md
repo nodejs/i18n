@@ -317,7 +317,7 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt aangeropen.
 
 ### Object factory
 
