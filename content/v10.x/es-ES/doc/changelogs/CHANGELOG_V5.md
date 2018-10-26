@@ -1058,22 +1058,22 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ## 2016-01-06, Versión 5.4.0 (Estable), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **http**: 
-  * A new status code was added: 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
-  * Idle sockets that have been kept alive now handle errors (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
-* This release also includes several minor performance improvements: 
-  * **assert**: deepEqual is now speedier when comparing TypedArrays (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330).
-  * **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [node#3622](https://github.com/nodejs/node/pull/3622).
+  * Se añadió un nuevo código de estatus 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
+  * Los sockets que no se estén usando y se han mantenido vidos ahora manejaran los errores (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
+* Este lanzamiento incluye varias mejoras de rendimiento menores: 
+  * **assert**: deepEqual ahora es más rápido cuando se compara con TypedArrays (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330).
+  * **lib**: Usar funciones flecha en vez de enlazar donde sea posible (Minwoo Jung) [node#3622](https://github.com/nodejs/node/pull/3622).
   * **node**: Improved accessor perf of `process.env` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
-  * **node**: Improved performance of `process.hrtime()` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780), (Evan Lucas) [#4484](https://github.com/nodejs/node/pull/4484).
-  * **node**: Improved GetActiveHandles performance (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
-  * **util**: Use faster iteration in `util.format()` (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964).
+  * **node**: Rendimiento mejorado de `process.hrtime()` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780), (Evan Lucas) [#4484](https://github.com/nodejs/node/pull/4484).
+  * **node**: Mejorar el rendimiento de GetActiveHandles (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
+  * **util**: Usar iteraciones más rápidas en `util.format()` (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964).
 
-### Known issues
+### Problemas conocidos
 
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
@@ -1081,7 +1081,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Commits
 
 * [[`d265fc821a`](https://github.com/nodejs/node/commit/d265fc821a)] - **assert**: typed array deepequal performance fix (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330)
-* [[`6d8053ab56`](https://github.com/nodejs/node/commit/6d8053ab56)] - **buffer**: faster case for create Buffer from new Buffer(0) (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
+* [[`6d8053ab56`](https://github.com/nodejs/node/commit/6d8053ab56)] - **buffer**: caso más rápido para Búfer desde Buffer(0) nuevo (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
 * [[`8781c59878`](https://github.com/nodejs/node/commit/8781c59878)] - **buffer**: refactor create buffer (Jackson Tian) [#4340](https://github.com/nodejs/node/pull/4340)
 * [[`252628294b`](https://github.com/nodejs/node/commit/252628294b)] - **child_process**: guard against race condition (Rich Trott) [#4418](https://github.com/nodejs/node/pull/4418)
 * [[`fcf632bc6a`](https://github.com/nodejs/node/commit/fcf632bc6a)] - **crypto**: load PFX chain the same way as regular one (Fedor Indutny) [#4165](https://github.com/nodejs/node/pull/4165)
