@@ -315,9 +315,9 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 * `asyncId` {number}
 
-When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
+当异步操作被初始化 (例如TCP服务器收到新连接) 或完成时 (例如将数据写入磁盘)，回调函数被调用以通知用户。 `before` 在回调函数被调用之前被执行。 `asyncId` 是被分配给执行回调函数的资源的唯一标识符。
 
-The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
+`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用一次，或者，例如，如果TCP服务器没有接收到任何连接。 将像 TCP 服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
 
 ##### after(asyncId)
 
