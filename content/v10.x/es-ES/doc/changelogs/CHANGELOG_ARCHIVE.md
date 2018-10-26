@@ -3465,38 +3465,40 @@ https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
 https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
-    * Bugfix: don't chunk responses to HTTP/1.0 clients, even if
-      they send Connection: Keep-Alive (e.g. wget)
+    * Corrección de bug: no cortar en pedazos las respuestas a clientes
+      HTTP/1.0, incluso si envían "Connection: Keep-Alive" (p. ej., wget)
     
-    * Bugfix: libeio race condition
-    * Bugfix: Don't segfault on unknown http method
+    * Corrección de bug: condición de carrera de libeio
+    * Corrección de bug: No hacer segfault sobre método http desconocido
     
-    * Simplify exception reporting
-    * Upgrade V8 to 2.0.5.4
+    * Simplificar el reporte de excepciones
+    * Actualizar V8 a 2.0.5.4
     
 
 <a id="0.1.23"></a>
 
-## 2009.12.22, Version 0.1.23
+## 2009.12.22, Versión 0.1.23
 
 https://github.com/nodejs/node/commit/f91e347eeeeac1a8bd6a7b462df0321b60f3affc
 
-    * Bugfix: require("../blah") issues (isaacs)
-    * Bugfix: posix.cat (Jonas Pfenniger)
+    * Corrección de bug: problemas con require("../blah") (isaacs)
+    * Corrección de bug: posix.cat (Jonas Pfenniger)
     
-    * Do not pause request for multipart parsing (Felix Geisendörfer)
+    * No pausar la solicitud de análisis multipartes (Felix Geisendörfer)
     
 
 <a id="0.1.22"></a>
 
-## 2009.12.19, Version 0.1.22
+## 2009.12.19, Versión 0.1.22
 
 https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
 
-    * Bugfix: child modules get wrong id with "index.js" (isaacs)
-    * Bugfix: require("../foo") cycles (isaacs)
+    * Corrección de bug: los módulos hijo obtienen una id incorrecta
+      con "index.js" (isaacs)
+    * Corrección de bug: ciclos de require("../foo") (isaacs)
     
-    * Bugfix: require() should throw error if module does.
+    * Corrección de bug: require() debe arrojar un error si el módulo
+      lo hace.
     * New URI parser stolen from Narwhal (isaacs)
     
     * Bugfix: correctly check kqueue and epoll. (Rasmus Andersson)
