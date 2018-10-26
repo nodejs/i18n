@@ -933,7 +933,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **v8,src**: exponer estadísticas sobre los espacios del montículo (`v8.getHeapSpaceStatistics()`) (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
 * Mejoras de rendimiento menores: 
   * **lib**: Usar las funciones flecha en vez de vincular donde sea posible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622). 
-    * (Faltante por un error de v5.4.0)
+    * (Falta por un error en v5.4.0)
   * **module**: el stat() caché resulta más agresivo (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
   * **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 
@@ -941,7 +941,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos host completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 * Caracteres unicode en las rutas del sistema de archivos no son manejadas consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
@@ -976,7 +976,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`7ce0e04f44`](https://github.com/nodejs/node/commit/7ce0e04f44)] - **lib**: reparar problemas de estilo después de la actualización eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
 * [[`ae5bcf9528`](https://github.com/nodejs/node/commit/ae5bcf9528)] - **lib**: usar las funciones flecha en vez del enlace (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622)
 * [[`0ec093cd41`](https://github.com/nodejs/node/commit/0ec093cd41)] - **lib,test**: remover punto y comas extras (Michaël Zasso) [#2205](https://github.com/nodejs/node/pull/2205)
-* [[`d8f5bd4fe1`](https://github.com/nodejs/node/commit/d8f5bd4fe1)] - **module**: evitar el cuerpo ArgumentsAdaptorTrampoline (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
+* [[`d8f5bd4fe1`](https://github.com/nodejs/node/commit/d8f5bd4fe1)] - **module**: evitar el marco ArgumentsAdaptorTrampoline (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
 * [[`83f8d98806`](https://github.com/nodejs/node/commit/83f8d98806)] - **module**: stat() caché resulta más agresiva (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
 * [[`ff64a4c395`](https://github.com/nodejs/node/commit/ff64a4c395)] - **(SEMVER-MINOR)** **node**: permitir los módulos precargados con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
 * [[`4bc1a47761`](https://github.com/nodejs/node/commit/4bc1a47761)] - **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
@@ -991,7 +991,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`a347cd793f`](https://github.com/nodejs/node/commit/a347cd793f)] - **test**: hacer a test-cluster-disconnect-leak de confianza (Rich Trott) [#4736](https://github.com/nodejs/node/pull/4736)
 * [[`a39b28bb5a`](https://github.com/nodejs/node/commit/a39b28bb5a)] - **test**: reparar los problemas de la regla ESLint space-in-parens (Roman Reiss) [#4753](https://github.com/nodejs/node/pull/4753)
 * [[`d1aabd6264`](https://github.com/nodejs/node/commit/d1aabd6264)] - **test**: reparar los problemas de estilo después de la actualización de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
-* [[`e98bcfa2cb`](https://github.com/nodejs/node/commit/e98bcfa2cb)] - **test**: remover un segundo de retraso de la prueba (Rich Trott) [#4616](https://github.com/nodejs/node/pull/4616)
+* [[`e98bcfa2cb`](https://github.com/nodejs/node/commit/e98bcfa2cb)] - **test**: remover 1 segundo de retraso de la prueba (Rich Trott) [#4616](https://github.com/nodejs/node/pull/4616)
 * [[`6cfd0b5a32`](https://github.com/nodejs/node/commit/6cfd0b5a32)] - **test**: reparar test-net-socket-local-address flaky (cjihrig) [#4650](https://github.com/nodejs/node/pull/4650)
 * [[`e22cc6c2eb`](https://github.com/nodejs/node/commit/e22cc6c2eb)] - **test**: reparar carrera en test-net-server-pause-on-connect (Rich Trott) [#4637](https://github.com/nodejs/node/pull/4637)
 * [[`9164c00bdb`](https://github.com/nodejs/node/commit/9164c00bdb)] - **test**: mover prueba intensiva de recursos a secuencial (Rich Trott) [#4615](https://github.com/nodejs/node/pull/4615)
