@@ -3436,31 +3436,32 @@ https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
 <a id="0.1.25"></a>
 
-## 2010.01.09, Version 0.1.25
+## 2010.01.09, Versión 0.1.25
 
 https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
-    * sys.inspect() improvements (Tim Caswell)
-    * path module improvements (isaacs, Benjamin Thomas)
+    * Mejoras de sys.inspect() (Tim Caswell)
+    * Mejoras del módulo path (isaacs, Benjamin Thomas)
     
     * API: request.uri -> request.url
-      It is no longer an object, but a string. The 'url' module
-      was added to parse that string. That is, node no longer
-      parses the request URL automatically.
+      Ya no es un objeto, sino una string. El módulo "url"
+      fue añadido para analizar esa string. Eso significa que node ya no
+      analiza de manera automática el URL solicitado.
          require('url').parse(request.url)
-      is roughly equivalent to the old request.uri object.
+      es aproximadamente equivalente al viejo objeto request.uri.
       (isaacs)
     
-    * Bugfix: Several libeio related race conditions.
-    * Better errors for multipart library (Felix Geisendörfer)
+    * Corrección de bug: Varias condiciones de carrera relacionadas con
+      libeio.
+    * Mejorar errores para la librería multipartes (Felix Geisendörfer)
     
-    * Bugfix: Update node-waf version to 1.5.10
-    * getmem for freebsd (Vanilla Hsu)
+    * Corrección de bug: Actualizar versión de node-waf a 1.5.10
+    * getmem para freebsd (Vanilla Hsu)
     
 
 <a id="0.1.24"></a>
 
-## 2009.12.31, Version 0.1.24
+## 2009.12.31, Versión 0.1.24
 
 https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
