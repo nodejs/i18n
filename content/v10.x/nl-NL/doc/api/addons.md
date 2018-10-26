@@ -234,31 +234,23 @@ void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   // Controleer het aantal doorgegeven argumenten.
-  if (args.Length() < 2) {
-    // Throw an Error that is passed back to JavaScript
-    isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong number of arguments")));
-    return;
-  }
+  als (args.Length() < 2) {
+    // Gooi een doorgegeven fout terug naar JavaScript
+    isolate-> ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate, "Verkeerde argumenten")));
+     return;
+   }
 
-  // Check the argument types
-  if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
-    isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong arguments")));
-    return;
-  }
-
-  // Perform the operation
-  double value = args[0]->NumberValue() + args[1]->NumberValue();
+  // Voer de bewerking uit
+  dubbele waarde = args[0]->NumberValue() + args[1]->NumberValue();
   Local<Number> num = Number::New(isolate, value);
 
-  // Set the return value (using the passed in
+   // Stel de retourwaarde in (met behulp van doorgegeven in
   // FunctionCallbackInfo<Value>&)
-  args.GetReturnValue().Set(num);
 }
 
 void Init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "add", Add);
+  NODE_SET_METHOD(exports, "add", Voeg toe);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
@@ -266,7 +258,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Eenmaal gecompileerd, kan het voorbeeld Addon vereist zijn, en gebruikt worden vanuit Node.js:
 
 ```js
 // test.js
