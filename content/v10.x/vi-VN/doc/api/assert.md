@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu thông số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
+Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -271,9 +271,9 @@ Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `exp
 * Thuộc tính [`Symbol`][] có thể đếm được cũng sẽ được so sánh.
 * [Các lớp bọc đối tượng](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) được so sánh như là các đối tượng và giá trị không bọc.
 * Các thuộc tính `Object` được so sánh không theo trình tự.
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* Các hạng mục như `Map` và `Set` được so sánh không theo thứ tự.
+* Quá trình đệ quy dừng khi hai bên khác nhau hoặc hai bên gặp phải tham chiếu vòng tròn.
+* Việc so sánh giữa [`WeakMap`][] và [`WeakSet`][] không dựa trên những giá trị của chúng. Tham khảo thêm giải thích chi tiết bên dưới.
 
 ```js
 const assert = require('assert').strict;
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
+Nếu như các giá trị không thỏa mãn bằng nhau, nó sẽ hiển thị`AssertionError` với thuộc tính `message` có giá trị bằng với thuộc tính `message`. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
