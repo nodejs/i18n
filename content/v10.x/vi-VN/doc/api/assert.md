@@ -1,12 +1,12 @@
-# Assert
+# Xác nhận (Assert)
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Tính ổn định: 2 - Stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Mô-đun `assert` cung cấp một tập các thí nghiệm xác nhận đơn giản dùng để kiểm tra các bất biến.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Mặc dù có sẵn chế độ `strict` và `legacy`, nhưng chúng tôi khuyến nghị chỉ sử dụng [`strict mode`][].
 
 For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
