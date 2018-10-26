@@ -3503,22 +3503,23 @@ https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
     
     * Corrección de bug: revisar kqueue y epoll de manera correcta
      (Rasmus Andersson)
-    * Upgrade WAF to 1.5.10
+    * Actualizar WAF a 1.5.10
     
-    * Bugfix: posix.statSync() was crashing
-    * Statically define string symbols for performance improvement
+    * Corrección de bug: posix.statSync() estaba colapsando
+    * Definir estáticamente los símbolos de string para mejoras
+      de rendimiento.
     
-    * Bugfix: ARGV[0] weirdness
-    * Added superCtor to ctor.super_ instead superCtor.prototype.
+    * Corrección de bug: Rareza de ARGV[0]
+    * Añadido superCtor a ctor.super_ en lugar de superCtor.prototype.
       (Johan Dahlberg)
     
-    * http-parser supports webdav methods
+    * http-parser soporta métodos webdav
     * API: http.Client.prototype.request() (Christopher Lenz)
     
 
 <a id="0.1.21"></a>
 
-## 2009.12.06, Version 0.1.21
+## 2009.12.06, Versión 0.1.21
 
 https://github.com/nodejs/node/commit/c6affb64f96a403a14d20035e7fbd6d0ce089db5
 
