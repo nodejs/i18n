@@ -3264,44 +3264,44 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
     * Added fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
     
-    * Add setgid,getgid (James Duncan)
-    * Improve sys.inspect (Benjamin Thomas)
+    * Añadir setgid,getgid (James Duncan)
+    * Mejorar sys.inspect (Benjamin Thomas)
     
-    * Allow passing env to child process (Isaac Schlueter)
+    * Permitir el paso de ambiente al proceso secundario (Isaac Schlueter)
     * fs.createWriteStream, fs.createReadStream (Felix Geisendörfer)
     
-    * Add INI parser (Rob Ellis)
-    * Bugfix: fs.readFile handling encoding (Jacek Becela)
+    * Añadir analizador de INI (Rob Ellis)
+    * Corrección de bug: codificación del manejo de fs.readFile (Jacek Becela)
     
-    * Upgrade V8 to 2.1.2
+    * Actualizar V8 a 2.1.2
     
 
 <a id="0.1.30"></a>
 
-## 2010.02.22, Version 0.1.30
+## 2010.02.22, Versión 0.1.30
 
 https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
-    * Major API Changes
-      - Promises removed. See
+    * Cambios mayores de API
+      - Promesas removidas. Ver
         http://groups.google.com/group/nodejs/msg/426f3071f3eec16b
         http://groups.google.com/group/nodejs/msg/df199d233ff17efa
-        The API for fs was
+        La API para el fs era
            fs.readdir("/usr").addCallback(function (files) {
              puts("/usr files: " + files);
            });
-        It is now
+        Ahora es
            fs.readdir("/usr", function (err, files) {
              if (err) throw err;
              puts("/usr files: " + files);
            });
-      - Synchronous fs operations exposed, use with care.
-      - tcp.Connection.prototype.readPause() and readResume()
-        renamed to pause() and resume()
-      - http.ServerResponse.prototype.sendHeader() renamed to
-        writeHeader(). Now accepts reasonPhrase.
+      - Operaciones del fs sincrónicas expuestas, utilizar con cuidado.
+      - tcp.Connection.prototype.readPause() y readResume()
+        renombrados como pause() y resume()
+      - http.ServerResponse.prototype.sendHeader() renombrado como
+        writeHeader(). Ahora acepta reasonPhrase.
     
-    * Compact garbage on idle.
+    * Compactar la basura durante la inactividad.
     * Configurable debug ports, and --debug-brk (Zoran Tomicic)
     
     * Better command line option parsing (Jeremy Ashkenas)
