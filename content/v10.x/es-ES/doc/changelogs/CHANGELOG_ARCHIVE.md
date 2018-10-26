@@ -3380,22 +3380,23 @@ https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 
 https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
-    * Implemented __dirname (Felix Geisendörfer)
-    * Downcase process.ARGV, process.ENV, GLOBAL
-      (now process.argv, process.env, global)
+    * __dirname implementada (Felix Geisendörfer)
+    * Hacer "downcase" a process.ARGV, process.ENV, GLOBAL
+      (ahora process.argv, process.env, global)
     
-    * Bug Fix: Late promise promise callbacks firing
+    * Corrección de bug: las callbacks de promesa de la promesa final
+      estaban disparándose
       (Felix Geisendörfer, Jonas Pfenniger)
     
-    * Make assert.AssertionError instance of Error
-    * Removed inline require call for querystring
+    * Hacer instancia de error de assert.AssertionError
+    * Removida llamada require de inline para querystring
       (self@cloudhead.net)
     
-    * Add support for MX, TXT, and SRV records in DNS module.
+    * Añadir soporte para los registros de MX, TXT y SRV en el módulo de DNS.
       (Blaine Cook)
     
-    * Bugfix: HTTP client automatically reconnecting
-    * Adding OS X .dmg build scripts. (Standa Opichal)
+    * Corrección de bug: Reconexión automática del cliente HTTP
+    * Adición de scripts de compilación .dmg para OS X. (Standa Opichal)
     
     * Bugfix: ObjectWrap memory leak
     * Bugfix: Multipart handle Content-Type headers with charset
