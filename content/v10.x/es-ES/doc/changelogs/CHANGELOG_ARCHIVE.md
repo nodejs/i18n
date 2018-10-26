@@ -3607,15 +3607,16 @@ https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
 <a id="0.1.17"></a>
 
-## 2009.11.07, Version 0.1.17
+## 2009.11.07, Versión 0.1.17
 
 https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
-    * Feature: process.chdir() (Brandon Beacher)
-    * Revert http parser upgrade. (b893859c34f05db5c45f416949ebc0eee665cca6)
-      Broke keep-alive.
+    * Novedad: process.chdir() (Brandon Beacher)
+    * Revertir actualización del analizador de http.
+      (b893859c34f05db5c45f416949ebc0eee665cca6)
+      keep-alive dañado.
     
-    * API: rename process.inherits to sys.inherits
+    * API: renombrar process.inherits como sys.inherits
     
 
 <a id="0.1.16"></a>
