@@ -453,7 +453,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+Nếu đưa ra `AssertionError` và giá trị được cung cấp cho tham số `message`, giá trị của `message` sẽ được thêm vào thông báo `AssertionError`:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -480,13 +480,13 @@ added: v0.1.21
 
 **Chế độ nghiêm ngặt (Strict mode)**
 
-An alias of [`assert.strictEqual()`][].
+Cách gọi khác của [`assert.strictEqual()`][].
 
 **Chế độ Legacy**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.strictEqual()`][] thay thế.
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Thử nghiệm nhanh, sử dụng [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) để so sánh giữa các tham số `actual` và `expected`.
 
 ```js
 const assert = require('assert');
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
+Nếu giá trị trả về không bằng nhau, `AssertionError` có thuộc tính `message` sẽ gửi đến, và giá trị của nó được đặt vào tham số `message`. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.fail([message])
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nó gửi về `AssertionError` với thông báo lỗi được cấp hoặc thông báo lỗi mặc định. Nếu tham số `message` là một thực thể của [`Error`][] thì nó sẽ được gửi về thay thế cho `AssertionError`.
 
 ```js
 const assert = require('assert').strict;
