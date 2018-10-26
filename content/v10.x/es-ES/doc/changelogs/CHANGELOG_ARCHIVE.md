@@ -3398,14 +3398,16 @@ https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
     * Corrección de bug: Reconexión automática del cliente HTTP
     * Adición de scripts de compilación .dmg para OS X. (Standa Opichal)
     
-    * Bugfix: ObjectWrap memory leak
-    * Bugfix: Multipart handle Content-Type headers with charset
+    * Corrección de bug: fuga de memoria de ObjectWrap
+    * Corrección de bug: Manejo multipartes de las cabeceras Content-Type
+      con charset.
       (Felix Geisendörfer)
     
-    * Upgrade http-parser to fix header overflow attack.
-    * Upgrade V8 to 2.1.0
+    * Actualizar http-parser para corregir ataque de desbordamiento de
+      cabecera.
+    * Actualizar V8 a 2.1.0
     
-    * Various other bug fixes, performance improvements.
+    * Otras correcciones de bugs varias, mejoras de rendimiento.
     
 
 <a id="0.1.26"></a>
