@@ -3523,62 +3523,65 @@ https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
 
 https://github.com/nodejs/node/commit/c6affb64f96a403a14d20035e7fbd6d0ce089db5
 
-    * Feature: Add HTTP client TLS support (Rhys Jones)
-    * Bugfix: use --jobs=1 with WAF
+    * Novedad: Añadir soporte de TLS para el cliente HTTP (Rhys Jones)
+    * Corrección de bug: utilizar --jobs=1 con WAF
     
-    * Bugfix: Don't use chunked encoding for 1.0 requests
-    * Bugfix: Duplicated header weren't handled correctly
+    * Corrección de bug: No utilizar codificación en pedazos para
+      solicitudes 1.0
+    * Corrección de bug: Las cabeceras duplicadas no eran manejadas
+      correctamente
     
-    * Improve sys.inspect (Xavier Shay)
-    * Upgrade v8 to 2.0.3
+    * Mejorar sys.inspect (Xavier Shay)
+    * Actualizar v8 a 2.0.3
     
-    * Use CommonJS assert API (Felix Geisendörfer, Karl Guertin)
+    * Utilizar API de aserción de CommonJS (Felix Geisendörfer, Karl Guertin)
     
 
 <a id="0.1.20"></a>
 
-## 2009.11.28, Version 0.1.20
+## 2009.11.28, Versión 0.1.20
 
 https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
 
-    * Add gnutls version to configure script
-    * Add V8 heap info to process.memoryUsage()
+    * Añadir versión de gnutls al script de configuración
+    * Añadir información del montículo de V8 a process.memoryUsage()
     
-    * process.watchFile callback has 2 arguments with the stat object
-      (choonkeat@gmail.com)
+    * La callback de process.watchFile tiene 2 argumentos con el objeto
+      de stat (choonkeat@gmail.com)
     
 
 <a id="0.1.19"></a>
 
-## 2009.11.28, Version 0.1.19
+## 2009.11.28, Versión 0.1.19
 
 https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
-    * Feature: Initial TLS support for TCP servers and clients.
+    * Novedad: Soporte inicial de TLS para servidores y clientes TCP.
       (Rhys Jones)
     
-    * Add options to process.watchFile()
-    * Add process.umask() (Friedemann Altrock)
+    * Añadir opciones a process.watchFile()
+    * Añadir process.umask() (Friedemann Altrock)
     
-    * Bugfix: only detach timers when active.
-    * Bugfix: lib/file.js write(), shouldn't always emit errors or success
-      (onne@onnlucky.com)
+    * Corrección de bug: solo desprender temporizadores al estar activos.
+    * Corrección de bug: lib/file.js write(), no siempre debe emitir errores
+      o tener éxito (onne@onnlucky.com)
     
-    * Bugfix: Memory leak in fs.write
-      (Reported by onne@onnlucky.com)
+    * Corrección de bug: Fuga de memoria en fs.write
+      (Reportado por onne@onnlucky.com)
     
-    * Bugfix: Fix regular expressions detecting outgoing message headers.
-      (Reported by Elliott Cable)
+    * Corrección de bug: Corregir expresiones regulares al hacer detección
+      de cabeceras de mensajes salientes.
+      (Reportado por Elliott Cable)
     
-    * Improvements to Multipart parser (Felix Geisendörfer)
-    * New HTTP parser
+    * Mejoras al analizador de Multipartes (Felix Geisendörfer)
+    * Nuevo analizador de HTTP
     
-    * Upgrade v8 to 2.0.2
+    * Actualizar v8 a 2.0.2
     
 
 <a id="0.1.18"></a>
 
-## 2009.11.17, Version 0.1.18
+## 2009.11.17, Versión 0.1.18
 
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
