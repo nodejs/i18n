@@ -25,13 +25,13 @@ added: v0.1.21
   * `actual` {any} Thuộc tính `actual` trong lỗi thực thể sẽ chứa giá trị này. Được sử dụng nội bộ trong trường hợp lỗi đầu vào `actual`. Ví dụ sử dụng trong [`assert.strictEqual()`].
   * `expected` {any} Thuộc tính `expected` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ trong lỗi đầu vào `expected`. Ví dụ được sử dụng trong [`assert.strictEqual()`].
   * `operator` {string} Thuộc tính `operator` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ để chỉ báo hoạt động nào được sử dụng để so sánh ( hoặc hàm xác nhận nào đã kích hoạt lỗi).
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * Nếu cung cấp `stackStartFn` {Function}, dấu vết ngăn xếp được tạo ra sẽ loại bỏ các khung lên đến hàm được cung cấp.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Lớp con của `Error` chỉ báo lỗi xác nhận.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Tất cả các thực thể bao hàm các thuộc tính `Error` đượctích hợp (`message` và `name`) và:
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
+* `actual` {any} được đặt giá trị thực trong trường hợp ví dụ như [`assert.strictEqual()`] được sử dụng.
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
 * `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
 * `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
