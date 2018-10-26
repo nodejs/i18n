@@ -125,9 +125,9 @@ Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en 
 
 ### Addons laden met behulp van require()
 
-De bestandsnaam-extentie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). De [`require()`](modules.html#modules_require) functie is geschreven om te zoeken naar bestanden met de `.node` bestands-extentie en initialiseert deze als dynamisch gekoppelde bibliotheken.
+De bestandsnaam-extensie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). De [`require()`](modules.html#modules_require) functie is geschreven om te zoeken naar bestanden met de `.node` bestands-extensie en initialiseert deze als dynamisch gekoppelde bibliotheken.
 
-Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extentie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. Bijvoorbeeld, als een bestand `addon.js` in dezelfde map zit als de binair `addon.node`, dan zal [`require('addon')`](modules.html#modules_require) voorkeur geven aan het bestand `addon.js`, en die in plaats daarvan laden.
+Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extensie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. Bijvoorbeeld, als een bestand `addon.js` in dezelfde map zit als de binair `addon.node`, dan zal [`require('addon')`](modules.html#modules_require) voorkeur geven aan het bestand `addon.js`, en die in plaats daarvan laden.
 
 ## Oorspronkelijke abstracties voor Node.js
 
@@ -144,7 +144,7 @@ N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelij
 Om de N-API in het bovenstaande "Hallo wereld" voorbeeld te gebruiken, vervang de inhoud van `hallo.cc` met het volgende. Alle andere instructies blijven hetzelfde.
 
 ```cpp
-// hello.cc using N-API
+// hallo.cc using N-API
 #include <node_api.h>
 
 namespace demo {
@@ -208,7 +208,7 @@ $ node-gyp configure build
 
 ### Functie argumenten
 
-Addons zullen meestal objecten en functies bloodleggen die toegankelijk zijn vanuit JavaScript uitgevoerd binnen Node.js. Wanneer functies worden aangeroepen vanuit JavaScript, moeten de invoer-argumenten en de geretourneerde waarde worden toegewezen van, én naar de C/C++ code.
+Addons zullen meestal objecten en functies blootleggen die toegankelijk zijn vanuit JavaScript uitgevoerd binnen Node.js. Wanneer functies worden aangeroepen vanuit JavaScript, moeten de invoer-argumenten en de geretourneerde waarde worden toegewezen van, én naar de C/C++ code.
 
 Het volgende voorbeeld laat zien hoe een functie-argument wat is doorgegeven van JavaScript gelezen moet worden, en hoe het resultaat geretourneerd moet worden:
 
@@ -317,7 +317,7 @@ addon((msg) => {
 });
 ```
 
-Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt aangeropen.
+Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt aangeroepen.
 
 ### Object factory
 
