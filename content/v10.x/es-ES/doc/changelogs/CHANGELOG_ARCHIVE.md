@@ -3259,7 +3259,7 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
     
     * Mejorar puerto de Solaris
     * tcp.Connection.prototype.write ahora devuelve un booleano para indicar
-      si un argumento fue descargado al buffer del kernel.
+      si se hizo flush a un argumento hacia el buffer del kernel.
     
     * Added fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
@@ -3331,16 +3331,16 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
       - Evento "complete" de HTTP ------------> "end"
       - http.Client.prototype.close() (formalmente finish()) ya no
         toma un argumento. Añadir manualmente el listener de "response".
-      - Allow strings for the flag argument to fs.open
+      - Permitir hacer fs.open sobre strings para el argumento de bandera
         ("r", "r+", "w", "w+", "a", "a+")
     
-    * Added multiple arg support for sys.puts(), print(), etc.
+    * Añadido soporte de múltiples argumentos para sys.puts(), print(), etc.
       (tj@vision-media.ca)
     
-    * sys.inspect(Date) now shows the date value (Mark Hansen)
-    * Calculate page size with getpagesize for armel (Jérémy Lal)
+    * sys.inspect(Date) ahora muestra el valor de la fecha (Mark Hansen)
+    * Calcular tamaño de página con getpagesize para armel (Jérémy Lal)
     
-    * Bugfix: stderr flushing.
+    * Corrección de bug: flushing de stderr.
     * Bugfix: Promise late chain (Yuichiro MASUI)
     
     * Bugfix: wait() on fired promises
