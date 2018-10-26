@@ -1041,7 +1041,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`e703c9a4e2`](https://github.com/nodejs/node/commit/e703c9a4e2)] - **doc**: actualizar a la fecha actual a releases.md (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
 * [[`ac1108d5e7`](https://github.com/nodejs/node/commit/ac1108d5e7)] - **doc**: añadir backtick faltante para el readline (Brian White) [#4549](https://github.com/nodejs/node/pull/4549)
 * [[`09bc0c6a05`](https://github.com/nodejs/node/commit/09bc0c6a05)] - **doc**: mejoras a la copia de crypto.markdown (James M Snell) [#4435](https://github.com/nodejs/node/pull/4435)
-* [[`787c5d96bd`](https://github.com/nodejs/node/commit/787c5d96bd)] - **http**: remove variable redeclaration (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
+* [[`787c5d96bd`](https://github.com/nodejs/node/commit/787c5d96bd)] - **http**: remover redeclaraciones de variables (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
 * [[`145b66820f`](https://github.com/nodejs/node/commit/145b66820f)] - **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
 * [[`ffb7deb443`](https://github.com/nodejs/node/commit/ffb7deb443)] - **net**: remove hot path comment from connect (Evan Lucas) [#4648](https://github.com/nodejs/node/pull/4648)
 * [[`799aa74d90`](https://github.com/nodejs/node/commit/799aa74d90)] - **net**: fix dns lookup for android (Josh Dague) [#4580](https://github.com/nodejs/node/pull/4580)
