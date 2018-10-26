@@ -180,7 +180,7 @@ O método `os.endianness()` retorna uma string identificando a ordem de bytes da
 Valores possíveis:
 
 * `'BE'` para big endian
-* `'LE'` for little endian.
+* `'LE'` para little endian.
 
 ## os.freemem()
 
@@ -188,9 +188,9 @@ Valores possíveis:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
+O método `os.freemem()` retorna a quantidade de memória livre do sistema em bytes como um número inteiro.
 
 ## os.homedir()
 
@@ -198,7 +198,7 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
