@@ -371,7 +371,7 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
+Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm, cần ngay lập tức gọi hàm và đợi lời hứa hoàn thành việc trả về giá trị. Sau đó kiểm tra xem lời hứa có bị từ chối không.
 
 If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
+Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm, cần ngay lập tức gọi hàm và đợi lời hứa hoàn thành việc trả về giá trị. It will then check that the promise is rejected.
 
 If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
