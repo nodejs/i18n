@@ -3585,24 +3585,24 @@ https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
-    * Feature: process.watchFile() process.unwatchFile()
-    * Feature: "uncaughtException" event on process
+    * Novedad: process.watchFile() process.unwatchFile()
+    * Novedar: evento "uncaughtException" en el proceso
       (Felix Geisendörfer)
     
-    * Feature: 'drain' event to tcp.Connection
-    * Bugfix: Promise.timeout() blocked the event loop
+    * Novedad: Evento "drain" a tcp.Connection
+    * Corrección de bug: Promise.timeout() bloqueaba el bucle de eventos
       (Felix Geisendörfer)
     
-    * Bugfix: sendBody() and chunked utf8 strings
+    * Corrección de bug: sendBody() y strings utf8 cortadas en pedazos
       (Felix Geisendörfer)
     
-    * Supply the strerror as a second arg to the tcp.Connection close
-      event (Johan Sørensen)
+    * Proveer strerror como un segundo argumento al evento de cierre de
+      tcp.Connection (Johan Sørensen)
     
-    * Add EventEmitter.removeListener (frodenius@gmail.com)
-    * Format JSON for inspecting objects (Felix Geisendörfer)
+    * Añadir EventEmitter.removeListener (frodenius@gmail.com)
+    * Dar formato a JSON para la inspección de objetos (Felix Geisendörfer)
     
-    * Upgrade libev to latest CVS
+    * Actualizar libev al útlimo CVS
     
 
 <a id="0.1.17"></a>
