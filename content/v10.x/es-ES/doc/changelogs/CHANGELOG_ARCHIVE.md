@@ -3412,26 +3412,26 @@ https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
 <a id="0.1.26"></a>
 
-## 2010.01.20, Version 0.1.26
+## 2010.01.20, Versión 0.1.26
 
 https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
-    * Bugfix, HTTP eof causing crash (Ben Williamson)
-    * Better error message on SyntaxError
+    * Corrección de bug, eof de HTTP causando colapso (Ben Williamson)
+    * Mejorar mensaje de error en SyntaxError
     
-    * API: Move Promise and EventEmitter into 'events' module
-    * API: Add process.nextTick()
+    * API: Mover Promise y EventEmitter adentro del módulo "events"
+    * API: Añadir process.nextTick()
     
-    * Allow optional params to setTimeout, setInterval
+    * Permitir parámetros opcionales para setTimeout, setInterval
       (Micheil Smith)
     
-    * API: change some Promise behavior (Felix Geisendörfer)
-      - Removed Promise.cancel()
-      - Support late callback binding
-      - Make unhandled Promise errors throw an exception
+    * API: cambiar parte del comportamiento de Promise (Felix Geisendörfer)
+      - Removida Promise.cancel()
+      - Soportar enlazado de callback tardío
+      - Hacer que los errores de Promise sin manejar arrojen una excepción
     
-    * Upgrade V8 to 2.0.6.1
-    * Solaris port (Erich Ocean)
+    * Actualizar V8 a 2.0.6.1
+    * Puerto de Solaris (Erich Ocean)
     
 
 <a id="0.1.25"></a>
