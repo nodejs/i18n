@@ -32,10 +32,10 @@ Lớp con của `Error` chỉ báo lỗi xác nhận.
 Tất cả các thực thể bao hàm các thuộc tính `Error` đượctích hợp (`message` và `name`) và:
 
 * `actual` {any} được đặt giá trị thực trong trường hợp ví dụ như [`assert.strictEqual()`] được sử dụng.
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
-* `operator` {string} Set to the passed in operator value.
+* `expected` {any} được đặt giá trị kỳ vọng trong trường hợp như [`assert.strictEqual()` được sử dụng.
+* `generatedMessage` {boolean} cho biết thông báo có tự động tạo ra (`true`) hay không.
+* `code` {string} luôn luôn được đặt trong chuỗi `ERR_ASSERTION` để chỉ ra lỗi thực sự là lỗi xác nhận.
+* ` operator ` {string} được đặt giá trị toán tử được truyền vào.
 
 ```js
 const assert = require('assert');
