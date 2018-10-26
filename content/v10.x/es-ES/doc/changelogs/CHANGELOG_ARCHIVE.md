@@ -3341,41 +3341,42 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
     * Calcular tamaño de página con getpagesize para armel (Jérémy Lal)
     
     * Corrección de bug: flushing de stderr.
-    * Bugfix: Promise late chain (Yuichiro MASUI)
+    * Corrección de bug: Cadena final de promesa (Yuichiro MASUI)
     
-    * Bugfix: wait() on fired promises
+    * Corrección de bug: wait() sobre promesas disparadas
       (Felix Geisendörfer, Jonas Pfenniger)
     
-    * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for
-      accessor methods. Was causing a crash with Eclipse debugger.
+    * Corrección de bug: Utilizar InstanceTemplate() en lugar de
+      PrototypeTemplate() para métodos accesores. Este estaba causando un
+      colapso con el depurador Eclipse.
       (Zoran Tomicic)
     
-    * Bugfix: Throw from connection.connect if resolving.
-      (Reported by James Golick)
+    * Corrección de bug: Arrojar desde connection.connect si se resuelve.
+      (Reportado por James Golick)
     
 
 <a id="0.1.28"></a>
 
-## 2010.02.09, Version 0.1.28
+## 2010.02.09, Versión 0.1.28
 
 https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 
-    * Use Google's jsmin.py which can be used for evil.
-    * Add posix.truncate()
+    * Utilizar jsmin.py de Google, el cual puede ser usado para mal.
+    * Añadir posix.truncate()
     
-    * Throw errors from server.listen()
-    * stdio bugfix (test by Mikeal Rogers)
+    * Arrojar errores desde server.listen()
+    * Corrección de bug de stdio (prueba por Mikeal Rogers)
     
-    * Module system refactor (Felix Geisendörfer, Blaine Cook)
-    * Add process.setuid(), getuid() (Michael Carter)
+    * Refactorización del sistema de módulos (Felix Geisendörfer, Blaine Cook)
+    * Añadir process.setuid(), getuid() (Michael Carter)
     
-    * sys.inspect refactor (Tim Caswell)
-    * Multipart library rewrite (isaacs)
+    * Refactorización de sys.inspect (Tim Caswell)
+    * Reescribir librería multipartes (isaacs)
     
 
 <a id="0.1.27"></a>
 
-## 2010.02.03, Version 0.1.27
+## 2010.02.03, Versión 0.1.27
 
 https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
