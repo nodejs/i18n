@@ -111,7 +111,7 @@ Việc sử dụng `NODE_DISABLE_COLORS` biến môi trường để tắt các 
 
 ## Chế độ Legacy
 
-> Tính ổn định: 0 - Không chấp nhận: Sử dụng chế độ nghiêm ngặt thay thế.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng chế độ nghiêm ngặt thay thế.
 
 Khi truy cập trực tiếp `assert` thay vì truy cập thuộc tính `strict`, [Abstract Equality Comparison (So sánh đẳng thức trừu tượng)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sẽ được dùng cho các hàm không chứa "strict", ví dụ như [`assert.deepEqual()`][].
 
@@ -174,9 +174,9 @@ Cách gọi khác của [`assert.deepStrictEqual()`][].
 
 > Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.deepStrictEqual()`][] thay thế.
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Giá trị ban đầu được so sánh với [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). Việc thực thi [`assert.deepEqual()`][] không kiểm tra các đối tượng của [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) hoặc các thuộc tính [`Symbol`][] có thể đếm được. Đối với việc kiểm tra như vậy, hãy cân nhắc sử dụng [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] có thể mang lại kết quả không nghĩ tới. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
 // WARNING: This does not throw an AssertionError!
