@@ -572,7 +572,7 @@ assert.fail(1, 2, new TypeError('need array'));
 
 Trong ba trường hợp cuối, `actual`, `expected`, và `operator` sẽ không có ảnh hưởng lên thông báo lỗi.
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+Ví dụ sử dụng dưới đây của `stackStartFunction` dành cho việc cắt bớt dấu vết ngăn lớp dị thường:
 
 ```js
 function suppressFrame() {
