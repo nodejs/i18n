@@ -1051,12 +1051,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`ea6e26d904`](https://github.com/nodejs/node/commit/ea6e26d904)] - **test**: remover importación del módulo de bifurcación duplicado (Rich Trott) [#4634](https://github.com/nodejs/node/pull/4634)
 * [[`b14b2aec5e`](https://github.com/nodejs/node/commit/b14b2aec5e)] - **test**: requerir módulo común solo una vez (Rich Trott) [#4611](https://github.com/nodejs/node/pull/4611)
 * [[`f28a640505`](https://github.com/nodejs/node/commit/f28a640505)] - **test**: solo incluir módulo http una vez (Rich Trott) [#4606](https://github.com/nodejs/node/pull/4606)
-* [[`6f9a96f497`](https://github.com/nodejs/node/commit/6f9a96f497)] - **test**: fix flaky unrefed timers test (Rich Trott) [#4599](https://github.com/nodejs/node/pull/4599)
-* [[`b70eec8f7b`](https://github.com/nodejs/node/commit/b70eec8f7b)] - **tls_legacy**: do not read on OpenSSL's stack (Fedor Indutny) [#4624](https://github.com/nodejs/node/pull/4624)
+* [[`6f9a96f497`](https://github.com/nodejs/node/commit/6f9a96f497)] - **test**: reparar prueba de temporizadores flaky sin refinar (Rich Trott) [#4599](https://github.com/nodejs/node/pull/4599)
+* [[`b70eec8f7b`](https://github.com/nodejs/node/commit/b70eec8f7b)] - **tls_legacy**: no leer en el stack de OpenSSL (Fedor Indutny) [#4624](https://github.com/nodejs/node/pull/4624)
 
 <a id="5.4.0"></a>
 
-## 2016-01-06, Version 5.4.0 (Stable), @Fishrock123
+## 2016-01-06, Versión 5.4.0 (Estable), @Fishrock123
 
 ### Notable changes
 
