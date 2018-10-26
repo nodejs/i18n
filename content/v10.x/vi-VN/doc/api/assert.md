@@ -373,9 +373,9 @@ added: v10.0.0
 
 Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm, cần ngay lập tức gọi hàm và đợi lời hứa hoàn thành việc trả về giá trị. Sau đó kiểm tra xem lời hứa có bị từ chối không.
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Nếu `block` là một chức năng mà nó gửi đi lối đồng bộ, `assert.doesNotReject()` sẽ trả về giá trị của `Promise` bị từ chối với lỗi đó. Nếu không có lời hứa nào phản hồi, `assert.doesNotReject()` sẽ trả về `Promise` bị từ chối với lỗi [`ERR_INVALID_RETURN_VALUE`][]. Trong cả hai trường hợp đều bỏ qua quy trình xử lý lỗi.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotReject()` không thực sự hữu ích bởi vì có rất ít lợi ích thu được từ việc nhận giá trị từ chối và liên tục bị từ chối. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
 
