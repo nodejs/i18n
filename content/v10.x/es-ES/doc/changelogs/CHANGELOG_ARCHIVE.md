@@ -3499,9 +3499,10 @@ https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
     
     * Corrección de bug: require() debe arrojar un error si el módulo
       lo hace.
-    * New URI parser stolen from Narwhal (isaacs)
+    * Nuevo analizador de URI robado de Narwhal (isaacs)
     
-    * Bugfix: correctly check kqueue and epoll. (Rasmus Andersson)
+    * Corrección de bug: revisar kqueue y epoll de manera correcta
+     (Rasmus Andersson)
     * Upgrade WAF to 1.5.10
     
     * Bugfix: posix.statSync() was crashing
