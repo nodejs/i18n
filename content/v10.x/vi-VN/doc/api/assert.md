@@ -176,16 +176,16 @@ Cách gọi khác của [`assert.deepStrictEqual()`][].
 
 Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Giá trị ban đầu được so sánh với [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). Việc thực thi [`assert.deepEqual()`][] không kiểm tra các đối tượng của [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) hoặc các thuộc tính [`Symbol`][] có thể đếm được. Đối với việc kiểm tra như vậy, hãy cân nhắc sử dụng [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] có thể mang lại kết quả không nghĩ tới. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). Việc thực thi [`assert.deepEqual()`][] không kiểm tra các đối tượng của [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) hoặc các thuộc tính [`Symbol`][] có thể đếm được. Đối với việc kiểm tra như vậy, hãy cân nhắc sử dụng [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] có thể mang lại kết quả không nghĩ tới. Các ví dụ sau đây sẽ không cho ra `AssertionError` bởi vì các thuộc tính trên đối tượng [`RegExp`][] không thể đếm được:
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+[`Map`][] và [`Set`][] là có ngoại lệ. Bởi vì `Map` và `Set` đã so sánh các hạng mục bao hàm trong nó như mong đợi.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+Đẳng thức "Deep" nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
 
 ```js
 const assert = require('assert');
@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu thông số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
