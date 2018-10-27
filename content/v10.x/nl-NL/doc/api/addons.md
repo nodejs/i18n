@@ -480,7 +480,7 @@ Pas de verschillende methoden die onthult moeten worden toe in `myobject.cc`. Hi
 
 ```cpp
 // myobject.cc
-#include "myobject.h"
+#voeg toe "myobject.h"
 
 namespace demo {
 
@@ -530,7 +530,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
