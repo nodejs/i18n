@@ -424,7 +424,7 @@ console.log(fn());
 
 ### C++ objecten inpakken
 
-Het is ook mogelijk om C++ objecten/lessen in te pakken, op een zodanige manier dat het toelaat nieuwe exemplaren te creëren met behulp van JavaScript `new` operator:
+Het is ook mogelijk om C++ objecten/klassen in te pakken, op een zodanige manier dat het toelaat nieuwe exemplaren te creëren met behulp van JavaScript `new` operator:
 
 ```cpp
 // addon.cc
@@ -594,7 +594,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-Eerst wordt de `createObject()` methode geimplementeerd in `addon.cc`:
+Eerst wordt de `createObject()` methode geïmplementeerd in `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -708,7 +708,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, verander in construeer oproep.
+    // aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
