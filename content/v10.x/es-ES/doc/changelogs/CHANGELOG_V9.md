@@ -1073,7 +1073,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`78e05da071`](https://github.com/nodejs/node/commit/78e05da071)] - **test**: use shorthand properties (Tobias Nießen) [#18105](https://github.com/nodejs/node/pull/18105)
   * [[`63be0d6daa`](https://github.com/nodejs/node/commit/63be0d6daa)] - **test**: simplificar loadDHParam en prueba de TLS (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
   * [[`1dcae5756e`](https://github.com/nodejs/node/commit/1dcae5756e)] - **test**: mejorar para utilizar string modelo (sreepurnajasti) [#18097](https://github.com/nodejs/node/pull/18097)
-  * [[`0c8b5d5bfb`](https://github.com/nodejs/node/commit/0c8b5d5bfb)] - **test**: fixed typos in napi test (furstenheim) [#18148](https://github.com/nodejs/node/pull/18148)
+  * [[`0c8b5d5bfb`](https://github.com/nodejs/node/commit/0c8b5d5bfb)] - **test**: errores tipográficos en prueba de napi (furstenheim) [#18148](https://github.com/nodejs/node/pull/18148)
   * [[`2aeb025999`](https://github.com/nodejs/node/commit/2aeb025999)] - **test**: add common.crashOnUnhandledRejection to addons/callback-scope (Sho Miyamoto) [#18076](https://github.com/nodejs/node/pull/18076)
   * [[`7706e5f1ea`](https://github.com/nodejs/node/commit/7706e5f1ea)] - **test**: remove orphaned entries from status (Kyle Farnung) [#18092](https://github.com/nodejs/node/pull/18092)
   * [[`5fccb6ea3a`](https://github.com/nodejs/node/commit/5fccb6ea3a)] - **test**: fix spelling in test case comments (Tobias Nießen) [#18018](https://github.com/nodejs/node/pull/18018)
