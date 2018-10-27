@@ -372,7 +372,7 @@ Een ander veelvoorkomend scenario is het creëren van JavaScript functies die C+
 
 ```cpp
 // addon.cc
-#include <node.h>
+#invoegen <node.h>
 
 namespace demo {
 
@@ -387,7 +387,7 @@ using v8::Value;
 
 void MyFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "hello world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "hallo wereld"));
 }
 
 void CreateFunction(const FunctionCallbackInfo<Value>& args) {
@@ -411,20 +411,20 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Om te testen:
 
 ```js
-// test.js
+//test.js
 const addon = require('./build/Release/addon');
 
 const fn = addon();
 console.log(fn());
-// Prints: 'hello world'
+// Prints: 'hallo wereld'
 ```
 
-### Wrapping C++ objects
+### C++ objecten inpakken
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Het is ook mogelijk om C++ objecten/lessen in te pakken, op een zodanige manier dat het toelaat nieuwe exemplaren te creëren met behulp van JavaScript `new` operator:
 
 ```cpp
 // addon.cc
