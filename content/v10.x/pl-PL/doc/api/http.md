@@ -24,9 +24,9 @@ Klucze są pisane małymi literami. Wartości nie są modyfikowane.
 
 W celu obsługi pełnego spektrum możliwych aplikacji HTTP, Node.js HTTP API jest bardzo niskiego poziomu. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-Zobacz [`nagłówki.wiadomości`] [], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
+Zobacz [`message.headers`][], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
 
-Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznikach` właściwość, która jest tablicą `[klucz, wartość, klucz2, wartość2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć`suroweNagłówki` lista jak poniżej:
+Surowe nagłówki, które zostały odebrane, są zachowywane we właściwości `rawHeaders`, która jest tablicą `[key, value, key2, value2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć `rawHeaders` lista jak poniżej:
 
 <!-- eslint-disable semi -->
 
