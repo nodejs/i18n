@@ -445,7 +445,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Vervolgens erft de inpak-klasse van `node::ObjectWrap`: in `myobject.h`
 
 ```cpp
 // myobject.h
@@ -476,7 +476,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Pas de verschillende methoden die onthult moeten worden toe in `myobject.cc`. Hieronder wordt de methode `plusOne()` onthult door ze toe te voegen aan het prototype van de ontwikkelaar:
 
 ```cpp
 // myobject.cc
