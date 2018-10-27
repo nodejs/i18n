@@ -22,11 +22,11 @@ changes:
 
 I domini forniscono un modo per gestire più operazioni di I/O diverse in un singolo gruppo. Se uno qualsiasi degli event emitter o dei callback registrati a un dominio emettono un evento `'error'`, o generano un errore, il domain object verrà avvisato, invece di perdere il contesto dell'errore nell'handler `process.on('uncaughtException')` o provocare l'uscita immediata del programma con un codice di errore.
 
-## Warning: Don't Ignore Errors!
+## Avviso: Non Ignorare gli Errori!
 
 <!-- type=misc -->
 
-Domain error handlers are not a substitute for closing down a process when an error occurs.
+Gli error handler del dominio non sostituiscono la chiusura di un processo quando si verifica un errore.
 
 By the very nature of how [`throw`][] works in JavaScript, there is almost never any way to safely "pick up where you left off", without leaking references, or creating some other sort of undefined brittle state.
 
