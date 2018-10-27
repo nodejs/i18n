@@ -625,7 +625,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h` wordt de statische methode `NewInstance()` toegevoegd om mogelijk te maken het object te vinden. Deze methode wordt gebruikt in plaats van `new` in JavaScript:
 
 ```cpp
 // myobject.h
@@ -657,7 +657,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+De uitvoering in `myobject.cc` is te gebruiken met het vorige voorbeeld:
 
 ```cpp
 // myobject.cc
@@ -708,7 +708,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invoked as plain function `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
