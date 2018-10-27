@@ -321,7 +321,7 @@ Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt 
 
 ### Object fabriek
 
-Zoals je kunt zien in het volgende voorbeeld, kunnen Addons nieuwe objecten creëren en retourneren vanuit een C++ functie. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Zoals je kunt zien in het volgende voorbeeld, kunnen Addons nieuwe objecten creëren en retourneren vanuit een C++ functie. Een object wordt gecreëerd en geretourneerd met een eigenschap `msg` die de tekenreeks doorgegeven aan `createObject()`: herhaalt.
 
 ```cpp
 // addon.cc
@@ -354,21 +354,21 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Om dit te testen in JavaScript:
 
 ```js
 // test.js
 const addon = require('./build/Release/addon');
 
-const obj1 = addon('hello');
-const obj2 = addon('world');
+const obj1 = addon('hallo');
+const obj2 = addon('wereld');
 console.log(obj1.msg, obj2.msg);
-// Prints: 'hello world'
+// Prints: 'hallo wereld'
 ```
 
-### Function factory
+### Functie fabriek
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Een ander veelvoorkomend scenario is het creëren van JavaScript functies die C++ functies inpakken en deze retourneren naar JavaScript:
 
 ```cpp
 // addon.cc
