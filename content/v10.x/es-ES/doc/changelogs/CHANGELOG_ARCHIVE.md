@@ -3261,7 +3261,7 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
     * tcp.Connection.prototype.write ahora devuelve un booleano para indicar
       si se hizo flush a un argumento hacia el buffer del kernel.
     
-    * Added fs.link, fs.symlink, fs.readlink, fs.realpath
+    * Añadidos fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
     
     * Añadir setgid,getgid (James Duncan)
@@ -3586,7 +3586,7 @@ https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
     * Novedad: process.watchFile() process.unwatchFile()
-    * Novedar: evento "uncaughtException" en el proceso
+    * Novedad: evento "uncaughtException" en el proceso
       (Felix Geisendörfer)
     
     * Novedad: Evento "drain" a tcp.Connection
