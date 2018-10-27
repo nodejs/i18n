@@ -536,11 +536,11 @@ socket.on('readable', () => {
 });
 ```
 
-Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` solo debe utilizarse como último recurso *después* de que un desarrollador haya observado la retención indebida de memoria en sus aplicaciones.
 
 Se producirá un `TypeError` si `size` no es número.
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Método de Clase: Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -555,11 +555,11 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`
-* Returns: {integer} The number of bytes contained within `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud de.
+* `encoding` {string} If `string` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
+* Devuelve: {integer} El número de bytes contenidos dentro de `string`.
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+Devuelve la longitud real en bytes de una cadena. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
 
 *Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
 
