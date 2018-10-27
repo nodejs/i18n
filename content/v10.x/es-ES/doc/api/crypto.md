@@ -1612,7 +1612,7 @@ changes:
 - `iterations` {number}
 - `keylen` {number}
 - `digest` {string}
-- Returns: {Buffer}
+- Devuelve: {Buffer}
 
 Proporciona una implementación asincrónica de la función 2 (PBKDF2) de Derivación de Clave Basada en Contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
