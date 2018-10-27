@@ -343,15 +343,15 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
-*Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
+*注意：如果通过假定另一个 `Promise` 的状态而解决当前的 `Promise`，* 这并不意味着 `Promise` 被满足或在这一点上被拒绝了。
 
-For example:
+例如：
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+调用如下的回调函数：
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -373,9 +373,9 @@ changes:
     description: Renamed from currentId
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
 
-For example:
+例如：
 
 ```js
 const async_hooks = require('async_hooks');
