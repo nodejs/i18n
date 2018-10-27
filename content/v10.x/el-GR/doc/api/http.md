@@ -280,7 +280,7 @@ const proxy = http.createServer((req, res) => {
   res.end('okay');
 });
 proxy.on('connect', (req, cltSocket, head) => {
-  // σύνδεση στον εξυπηρετητή προορισμού
+  // σύνδεση στον εξυπηρετητή προέλευσης
   const srvUrl = url.parse(`http://${req.url}`);
   const srvSocket = net.connect(srvUrl.port, srvUrl.hostname, () => {
     cltSocket.write('HTTP/1.1 200 Connection Established\r\n' +
@@ -358,7 +358,7 @@ req.on('information', (res) => {
 });
 ```
 
-Ο κωδικός κατάστασης '101 Upgrade' δεν ενεργοποιεί αυτό το συμβάν λόγω της διαφοράς του από την παραδοσιακή αλυσίδα αιτημάτων/αποκρίσεων του πρωτοκόλλου HTTP, όπως web sockets, επιτόπου αναβάθμιση πιστοποιητικού TLS, ή HTTP 2.0. Για να γίνει λήψη ειδοποιήσεων '101 Upgrade', θα πρέπει να γίνεται ακρόαση του συμβάντος [`'upgrade'`][].
+Ο κωδικός κατάστασης '101 Upgrade' δεν ενεργοποιεί αυτό το συμβάν λόγω της διαφοράς του από την παραδοσιακή αλυσίδα αιτημάτων/αποκρίσεων του πρωτοκόλλου HTTP, όπως web socket, επιτόπου αναβάθμιση πιστοποιητικού TLS, ή HTTP 2.0. Για να γίνει λήψη ειδοποιήσεων '101 Upgrade', θα πρέπει να γίνεται ακρόαση του συμβάντος [`'upgrade'`][].
 
 ### Συμβάν: 'response'
 
