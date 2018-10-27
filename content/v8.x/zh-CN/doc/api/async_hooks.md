@@ -325,7 +325,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 在 `before` 中指定的回调函数结束后立即调用。
 
-*Note:* If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
+*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出*后*，或`域`处理器返回时执行。
 
 ##### `destroy(asyncId)`
 
