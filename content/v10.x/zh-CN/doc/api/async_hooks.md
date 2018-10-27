@@ -349,7 +349,7 @@ The `Promise` is not necessarily fulfilled or rejected at this point if the `Pro
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+调用如下的回调函数：
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
 
 ```js
 const async_hooks = require('async_hooks');
