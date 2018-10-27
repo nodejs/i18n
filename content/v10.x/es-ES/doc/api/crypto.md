@@ -966,9 +966,9 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Imprimer: la irma calculada usando la lave privada especificada y el
-// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el padding
-//parametro menor para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
+// Imprime: la firma calculada usando la clave privada especificada y el
+// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el parámetro
+// padding a continuación para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
 ```
 
 Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
