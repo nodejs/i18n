@@ -200,7 +200,7 @@ added: v2.3.0
 
 * Retorna: {string}
 
-The `os.homedir()` method returns the home directory of the current user as a string.
+O método `os.homedir()` retorna o diretório home do usuário atual como string.
 
 ## os.hostname()
 
@@ -208,9 +208,9 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+O método `os.hostname()` retorna o nome do host do sistema operacional como string.
 
 ## os.loadavg()
 
