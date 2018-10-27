@@ -319,7 +319,7 @@ addon((msg) => {
 
 Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt aangeroepen.
 
-### Object factory
+### Object fabriek
 
 Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
