@@ -125,7 +125,7 @@ Node.js utiliza un número de bibliotecas vinculadas estáticamente, tales como 
 
 La extensión del nombre de archivo del Complemento binario compilado es `.node` (a diferencia de `.dll` o `.so`). The [`require()`](globals.html#globals_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-When calling [`require()`](globals.html#globals_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Sin embargo, una de las advertencias es que Node.js primero intentará localizar y cargar los módulos o archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](globals.html#globals_require) will give precedence to the `addon.js` file and load it instead.
+When calling [`require()`](globals.html#globals_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Sin embargo, una de las advertencias es que Node.js primero intentará localizar y cargar los módulos o archivos de JavaScript que compartan el mismo nombre de base. Por ejemplo, si hay un archivo `addon.js` en el mismo directorio que el `addon.node` binario, entonces [`require('addon')`](globals.html#globals_require) dará precedencia al archivo `addon.js` y lo cargará.
 
 ## Abstracciones Nativas para Node.js
 
