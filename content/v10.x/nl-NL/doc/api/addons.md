@@ -553,7 +553,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Om dit voorbeeld te bouwen, moet het `myobject.cc` bestand toegevoegd worden aan de `binding.gyp`:
 
 ```json
 {
@@ -569,7 +569,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Test dit met:
 
 ```js
 // test.js
@@ -584,9 +584,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### Fabriek van ingepakte objecten
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Als alternatief, is het mogelijk om een fabriekspatroon te gebruiken om het expliciet maken van objectexemplaren te voorkomen met behulp van de JavaScript `new` operator:
 
 ```js
 const obj = addon.createObject();
@@ -594,7 +594,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Eerst wordt de `createObject()` methode geimplementeerd in `addon.cc`:
 
 ```cpp
 // addon.cc
