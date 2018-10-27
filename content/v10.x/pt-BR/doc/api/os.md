@@ -198,7 +198,7 @@ added: v2.3.0
 
 * Retorna: {string}
 
-O método `os.freemem()` retorna a quantidade de memória livre do sistema em bytes como um número inteiro.
+O método `os.homedir()` retorna o diretório home do usuário atual como string.
 
 ## os.hostname()
 
@@ -206,9 +206,9 @@ O método `os.freemem()` retorna a quantidade de memória livre do sistema em by
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+O método `os.hostname()` retorna o nome do host do sistema operacional como string.
 
 ## os.loadavg()
 
@@ -216,7 +216,7 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Returns: {number[]}
+* Retorna: {number[]}
 
 The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
