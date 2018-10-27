@@ -887,7 +887,7 @@ The `process.getgroups()` method returns an array with the supplementary group I
 added: v0.1.28
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 

@@ -173,14 +173,14 @@ Por exemplo:
 added: v0.9.4
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+O método `os.endianness()` retorna uma string identificando a ordem de bytes da CPU * no qual o binário do Node.js foi compilado*.
 
-Possible values are:
+Valores possíveis:
 
-* `'BE'` for big endian
-* `'LE'` for little endian.
+* `'BE'` para big endian
+* `'LE'` para little endian.
 
 ## os.freemem()
 
@@ -188,9 +188,9 @@ Possible values are:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
+O método `os.freemem()` retorna a quantidade de memória livre do sistema em bytes como um número inteiro.
 
 ## os.homedir()
 
@@ -198,9 +198,9 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.homedir()` method returns the home directory of the current user as a string.
+O método `os.homedir()` retorna o diretório home do usuário atual como string.
 
 ## os.hostname()
 
@@ -208,9 +208,9 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+O método `os.hostname()` retorna o nome do host do sistema operacional como string.
 
 ## os.loadavg()
 
@@ -232,7 +232,7 @@ The load average is a UNIX-specific concept with no real equivalent on Windows p
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
@@ -292,7 +292,7 @@ The properties available on the assigned network address object include:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -316,7 +316,7 @@ Equivalent to [`process.platform`][].
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -328,7 +328,7 @@ The `os.release()` method returns a string identifying the operating system rele
 added: v0.9.9
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -338,7 +338,7 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
@@ -348,7 +348,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
@@ -360,7 +360,7 @@ Please see https://en.wikipedia.org/wiki/Uname#Examples for additional informati
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
@@ -390,8 +390,8 @@ The following signal constants are exported by `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descrição</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -557,8 +557,8 @@ The following error constants are exported by `os.constants.errno`:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descrição</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -891,8 +891,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descrição</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1133,8 +1133,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descrição</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>

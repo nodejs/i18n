@@ -539,7 +539,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`804eb3cd73`](https://github.com/nodejs/node/commit/804eb3cd73)] - **(SEMVER-MAJOR)** **src**: eliminar el proceso.\_debugPause() (Ben Noordhuis) [#17060](https://github.com/nodejs/node/pull/17060)
 * [[`c3dc0e0d75`](https://github.com/nodejs/node/commit/c3dc0e0d75)] - **(SEMVER-MAJOR)** **src**: añadir CollectExceptionInfo & errors.SystemError (James M Snell) [#16567](https://github.com/nodejs/node/pull/16567)
 * [[`3d20190a3a`](https://github.com/nodejs/node/commit/3d20190a3a)] - **(SEMVER-MAJOR)** **src**: eliminar lanzamientos en set/getHiddenValue (James M Snell) [#16544](https://github.com/nodejs/node/pull/16544)
-* [[`67c8511ea1`](https://github.com/nodejs/node/commit/67c8511ea1)] - **(SEMVER-MAJOR)** **src**: use internal/errors for startSigintWatchdog (James M Snell) [#16546](https://github.com/nodejs/node/pull/16546)
+* [[`67c8511ea1`](https://github.com/nodejs/node/commit/67c8511ea1)] - **(SEMVER-MAJOR)** **src**: utilizar internal/errors para startSigintWatchdog (James M Snell) [#16546](https://github.com/nodejs/node/pull/16546)
 * [[`cf5f9867ff`](https://github.com/nodejs/node/commit/cf5f9867ff)] - **(SEMVER-MAJOR)** **stream**: 'readable' have precedence over flowing (Matteo Collina) [#18994](https://github.com/nodejs/node/pull/18994)
 * [[`c9794880e8`](https://github.com/nodejs/node/commit/c9794880e8)] - **(SEMVER-MAJOR)** **stream**: make virtual methods errors consistent (Luigi Pinca) [#18813](https://github.com/nodejs/node/pull/18813)
 * [[`5e3f51648e`](https://github.com/nodejs/node/commit/5e3f51648e)] - **(SEMVER-MAJOR)** **stream**: updated streams error handling (Mathias Buus) [#18438](https://github.com/nodejs/node/pull/18438)

@@ -301,29 +301,29 @@ destroy: 5
 
 As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
 
-Only using `execution` to graph resource allocation results in the following:
+仅使用 `execution` 来进行资源分配，会导致如下结果：
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+尽管是 `console.log()` 被调用的原因，但 `TCPSERVERWRAP` 并不是此图的一部分。 这是因为在不提供主机名的情况下绑定端口是 *同步* 操作，但要维护完全的异步 API，用户的回调函数位于 `process.nextTick()`。
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+该图仅显示 *何时*，而不是 *为什么* 资源会被创建，因此要想跟踪 *为什么*，请使用 `triggerAsyncId`。
 
 ##### before(asyncId)
 
 * `asyncId` {number}
 
-When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
+当异步操作被初始化 (例如TCP服务器收到新连接) 或完成时 (例如将数据写入磁盘)，回调函数被调用以通知用户。 `before` 在回调函数被调用之前被执行。 `asyncId` 是被分配给执行回调函数的资源的唯一标识符。
 
-The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
+`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用一次，或者，例如，如果TCP服务器没有接收到任何连接。 将像 TCP 服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
 
 ##### after(asyncId)
 
 * `asyncId` {number}
 
-Called immediately after the callback specified in `before` is completed.
+在 `before` 中指定的回调函数结束后立即调用。
 
 If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 

@@ -3215,396 +3215,408 @@ https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
 <a id="0.1.33"></a>
 
-## 2010.03.19, Version 0.1.33
+## 2010.03.19, Versión 0.1.33
 
 https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
-    * Include lib/ directory in node executable. Compile on demand.
-    * evalcx clean ups (Isaac Z. Schlueter, Tim-Smart)
+    * Incluir lib/ directory en el ejecutable de node. Compilar bajo demanda.
+    * Limpiezas de evalcx (Isaac Z. Schlueter, Tim-Smart)
     
-    * Various fixes, clean ups
-    * V8 upgraded to 2.1.5
+    * Varias correcciones, limpiezas
+    * V8 actualizado a 2.1.5
     
 
 <a id="0.1.32"></a>
 
-## 2010.03.12, Version 0.1.32
+## 2010.03.12, Versión 0.1.32
 
 https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
-    * Optimize event emitter for single listener
-    * Add process.evalcx, require.registerExtension (Tim Smart)
+    * Optimizar el emisor de eventos para un listener único
+    * Añadir process.evalcx, require.registerExtension (Tim Smart)
     
-    * Replace --cflags with --vars
-    * Fix bugs in fs.create*Stream (Felix Geisendörfer)
+    * Reemplazar --cflags con --vars
+    * Corregir bugs en fs.create*Stream (Felix Geisendörfer)
+    * Desaprobar process.mixin, process.unloop
+    * Remover las excepciones de "Error: (no message)", imprimir stack
+      trace en su lugar
     
-    * Deprecate process.mixin, process.unloop
-    * Remove the 'Error: (no message)' exceptions, print stack
-      trace instead
+    * Correcciones de bugs del analizador de INI (Isaac Schlueter)
+    * Correcciones de FreeBSD (Vanilla Hsu)
     
-    * INI parser bug fixes (Isaac Schlueter)
-    * FreeBSD fixes (Vanilla Hsu)
-    
-    * Upgrade to V8 2.1.3, WAF 1.5.14a, libev
+    * Actualizar a V8 2.1.3, WAF 1.5.14a, libev
     
 
 <a id="0.1.31"></a>
 
-## 2010.03.05, Version 0.1.31
+## 2010.03.05, Versión 0.1.31
 
 https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 
     * API:
-      - Move process.watchFile into fs module
-      - Move process.inherits to sys
+      - Mover process.watchFile adentro del módulo del fs
+      - Mover process.inherits a sys
     
-    * Improve Solaris port
-    * tcp.Connection.prototype.write now returns boolean to indicate if
-      argument was flushed to the kernel buffer.
+    * Mejorar puerto de Solaris
+    * tcp.Connection.prototype.write ahora devuelve un booleano para indicar
+      si se hizo flush a un argumento hacia el buffer del kernel.
     
-    * Added fs.link, fs.symlink, fs.readlink, fs.realpath
+    * Añadidos fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
     
-    * Add setgid,getgid (James Duncan)
-    * Improve sys.inspect (Benjamin Thomas)
+    * Añadir setgid,getgid (James Duncan)
+    * Mejorar sys.inspect (Benjamin Thomas)
     
-    * Allow passing env to child process (Isaac Schlueter)
+    * Permitir el paso de ambiente al proceso secundario (Isaac Schlueter)
     * fs.createWriteStream, fs.createReadStream (Felix Geisendörfer)
     
-    * Add INI parser (Rob Ellis)
-    * Bugfix: fs.readFile handling encoding (Jacek Becela)
+    * Añadir analizador de INI (Rob Ellis)
+    * Corrección de bug: codificación del manejo de fs.readFile (Jacek Becela)
     
-    * Upgrade V8 to 2.1.2
+    * Actualizar V8 a 2.1.2
     
 
 <a id="0.1.30"></a>
 
-## 2010.02.22, Version 0.1.30
+## 2010.02.22, Versión 0.1.30
 
 https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
-    * Major API Changes
-      - Promises removed. See
+    * Cambios mayores de API
+      - Promesas removidas. Ver
         http://groups.google.com/group/nodejs/msg/426f3071f3eec16b
         http://groups.google.com/group/nodejs/msg/df199d233ff17efa
-        The API for fs was
+        La API para el fs era
            fs.readdir("/usr").addCallback(function (files) {
              puts("/usr files: " + files);
            });
-        It is now
+        Ahora es
            fs.readdir("/usr", function (err, files) {
              if (err) throw err;
              puts("/usr files: " + files);
            });
-      - Synchronous fs operations exposed, use with care.
-      - tcp.Connection.prototype.readPause() and readResume()
-        renamed to pause() and resume()
-      - http.ServerResponse.prototype.sendHeader() renamed to
-        writeHeader(). Now accepts reasonPhrase.
+      - Operaciones del fs sincrónicas expuestas, utilizar con cuidado.
+      - tcp.Connection.prototype.readPause() y readResume()
+        renombrados como pause() y resume()
+      - http.ServerResponse.prototype.sendHeader() renombrado como
+        writeHeader(). Ahora acepta reasonPhrase.
     
-    * Compact garbage on idle.
-    * Configurable debug ports, and --debug-brk (Zoran Tomicic)
+    * Compactar la basura durante la inactividad.
+    * Puertos de depuración configurables, y --debug-brk (Zoran Tomicic)
     
-    * Better command line option parsing (Jeremy Ashkenas)
-    * Add fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
+    * Mejor análisis de opciones de la línea de comandos (Jeremy Ashkenas)
+    * Añadir fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
     
-    * Fixes to process.mixin (Rasmus Andersson, Benjamin Thomas)
-    * Upgrade V8 to 2.1.1
+    * Correcciones a process.mixin (Rasmus Andersson, Benjamin Thomas)
+    * Actualizar V8 a 2.1.1
     
 
 <a id="0.1.29"></a>
 
-## 2010.02.17, Version 0.1.29
+## 2010.02.17, Versión 0.1.29
 
 https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
 
-    * Major API Changes
-      - Remove 'file' module
+    * Cambios de API mayores
+      - Remover módulo "file"
       - require('posix') -----------------> require('fs')
       - fs.cat ---------------------------> fs.readFile
       - file.write -----------------------> fs.writeFile
-      - TCP 'receive' event --------------> 'data'
-      - TCP 'eof' event ------------------> 'end'
-      - TCP send() -----------------------> write()
-      - HTTP sendBody() ------------------> write()
-      - HTTP finish() --------------------> close()
-      - HTTP 'body' event ----------------> 'data'
-      - HTTP 'complete' event ------------> 'end'
-      - http.Client.prototype.close() (formerly finish()) no longer
-        takes an argument. Add the 'response' listener manually.
-      - Allow strings for the flag argument to fs.open
+      - Evento "receive" del TCP --------------> "data"
+      - Evento "eof" del TCP ------------------> "end"
+      - send() del TCP -----------------------> write()
+      - sendBody() de HTTP ------------------> write()
+      - finish() de HTTP--------------------> close()
+      - Evento "body" de HTTP ----------------> "data"
+      - Evento "complete" de HTTP ------------> "end"
+      - http.Client.prototype.close() (formalmente finish()) ya no
+        toma un argumento. Añadir manualmente el listener de "response".
+      - Permitir hacer fs.open sobre strings para el argumento de bandera
         ("r", "r+", "w", "w+", "a", "a+")
     
-    * Added multiple arg support for sys.puts(), print(), etc.
+    * Añadido soporte de múltiples argumentos para sys.puts(), print(), etc.
       (tj@vision-media.ca)
     
-    * sys.inspect(Date) now shows the date value (Mark Hansen)
-    * Calculate page size with getpagesize for armel (Jérémy Lal)
+    * sys.inspect(Date) ahora muestra el valor de la fecha (Mark Hansen)
+    * Calcular tamaño de página con getpagesize para armel (Jérémy Lal)
     
-    * Bugfix: stderr flushing.
-    * Bugfix: Promise late chain (Yuichiro MASUI)
+    * Corrección de bug: flushing de stderr.
+    * Corrección de bug: Cadena final de promesa (Yuichiro MASUI)
     
-    * Bugfix: wait() on fired promises
+    * Corrección de bug: wait() sobre promesas disparadas
       (Felix Geisendörfer, Jonas Pfenniger)
     
-    * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for
-      accessor methods. Was causing a crash with Eclipse debugger.
+    * Corrección de bug: Utilizar InstanceTemplate() en lugar de
+      PrototypeTemplate() para métodos accesores. Este estaba causando un
+      colapso con el depurador Eclipse.
       (Zoran Tomicic)
     
-    * Bugfix: Throw from connection.connect if resolving.
-      (Reported by James Golick)
+    * Corrección de bug: Arrojar desde connection.connect si se resuelve.
+      (Reportado por James Golick)
     
 
 <a id="0.1.28"></a>
 
-## 2010.02.09, Version 0.1.28
+## 2010.02.09, Versión 0.1.28
 
 https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 
-    * Use Google's jsmin.py which can be used for evil.
-    * Add posix.truncate()
+    * Utilizar jsmin.py de Google, el cual puede ser usado para mal.
+    * Añadir posix.truncate()
     
-    * Throw errors from server.listen()
-    * stdio bugfix (test by Mikeal Rogers)
+    * Arrojar errores desde server.listen()
+    * Corrección de bug de stdio (prueba por Mikeal Rogers)
     
-    * Module system refactor (Felix Geisendörfer, Blaine Cook)
-    * Add process.setuid(), getuid() (Michael Carter)
+    * Refactorización del sistema de módulos (Felix Geisendörfer, Blaine Cook)
+    * Añadir process.setuid(), getuid() (Michael Carter)
     
-    * sys.inspect refactor (Tim Caswell)
-    * Multipart library rewrite (isaacs)
+    * Refactorización de sys.inspect (Tim Caswell)
+    * Reescribir librería multipartes (isaacs)
     
 
 <a id="0.1.27"></a>
 
-## 2010.02.03, Version 0.1.27
+## 2010.02.03, Versión 0.1.27
 
 https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
-    * Implemented __dirname (Felix Geisendörfer)
-    * Downcase process.ARGV, process.ENV, GLOBAL
-      (now process.argv, process.env, global)
+    * __dirname implementada (Felix Geisendörfer)
+    * Hacer "downcase" a process.ARGV, process.ENV, GLOBAL
+      (ahora process.argv, process.env, global)
     
-    * Bug Fix: Late promise promise callbacks firing
+    * Corrección de bug: las callbacks de promesa de la promesa final
+      estaban disparándose
       (Felix Geisendörfer, Jonas Pfenniger)
     
-    * Make assert.AssertionError instance of Error
-    * Removed inline require call for querystring
+    * Hacer instancia de error de assert.AssertionError
+    * Removida llamada require de inline para querystring
       (self@cloudhead.net)
     
-    * Add support for MX, TXT, and SRV records in DNS module.
+    * Añadir soporte para los registros de MX, TXT y SRV en el módulo de DNS.
       (Blaine Cook)
     
-    * Bugfix: HTTP client automatically reconnecting
-    * Adding OS X .dmg build scripts. (Standa Opichal)
+    * Corrección de bug: Reconexión automática del cliente HTTP
+    * Adición de scripts de compilación .dmg para OS X. (Standa Opichal)
     
-    * Bugfix: ObjectWrap memory leak
-    * Bugfix: Multipart handle Content-Type headers with charset
+    * Corrección de bug: fuga de memoria de ObjectWrap
+    * Corrección de bug: Manejo multipartes de las cabeceras Content-Type
+      con charset.
       (Felix Geisendörfer)
     
-    * Upgrade http-parser to fix header overflow attack.
-    * Upgrade V8 to 2.1.0
+    * Actualizar http-parser para corregir ataque de desbordamiento de
+      cabecera.
+    * Actualizar V8 a 2.1.0
     
-    * Various other bug fixes, performance improvements.
+    * Otras correcciones de bugs varias, mejoras de rendimiento.
     
 
 <a id="0.1.26"></a>
 
-## 2010.01.20, Version 0.1.26
+## 2010.01.20, Versión 0.1.26
 
 https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
-    * Bugfix, HTTP eof causing crash (Ben Williamson)
-    * Better error message on SyntaxError
+    * Corrección de bug, eof de HTTP causando colapso (Ben Williamson)
+    * Mejorar mensaje de error en SyntaxError
     
-    * API: Move Promise and EventEmitter into 'events' module
-    * API: Add process.nextTick()
+    * API: Mover Promise y EventEmitter adentro del módulo "events"
+    * API: Añadir process.nextTick()
     
-    * Allow optional params to setTimeout, setInterval
+    * Permitir parámetros opcionales para setTimeout, setInterval
       (Micheil Smith)
     
-    * API: change some Promise behavior (Felix Geisendörfer)
-      - Removed Promise.cancel()
-      - Support late callback binding
-      - Make unhandled Promise errors throw an exception
+    * API: cambiar parte del comportamiento de Promise (Felix Geisendörfer)
+      - Removida Promise.cancel()
+      - Soportar enlazado de callback tardío
+      - Hacer que los errores de Promise sin manejar arrojen una excepción
     
-    * Upgrade V8 to 2.0.6.1
-    * Solaris port (Erich Ocean)
+    * Actualizar V8 a 2.0.6.1
+    * Puerto de Solaris (Erich Ocean)
     
 
 <a id="0.1.25"></a>
 
-## 2010.01.09, Version 0.1.25
+## 2010.01.09, Versión 0.1.25
 
 https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
-    * sys.inspect() improvements (Tim Caswell)
-    * path module improvements (isaacs, Benjamin Thomas)
+    * Mejoras de sys.inspect() (Tim Caswell)
+    * Mejoras del módulo path (isaacs, Benjamin Thomas)
     
     * API: request.uri -> request.url
-      It is no longer an object, but a string. The 'url' module
-      was added to parse that string. That is, node no longer
-      parses the request URL automatically.
+      Ya no es un objeto, sino una string. El módulo "url"
+      fue añadido para analizar esa string. Eso significa que node ya no
+      analiza de manera automática el URL solicitado.
          require('url').parse(request.url)
-      is roughly equivalent to the old request.uri object.
+      es aproximadamente equivalente al viejo objeto request.uri.
       (isaacs)
     
-    * Bugfix: Several libeio related race conditions.
-    * Better errors for multipart library (Felix Geisendörfer)
+    * Corrección de bug: Varias condiciones de carrera relacionadas con
+      libeio.
+    * Mejorar errores para la librería multipartes (Felix Geisendörfer)
     
-    * Bugfix: Update node-waf version to 1.5.10
-    * getmem for freebsd (Vanilla Hsu)
+    * Corrección de bug: Actualizar versión de node-waf a 1.5.10
+    * getmem para freebsd (Vanilla Hsu)
     
 
 <a id="0.1.24"></a>
 
-## 2009.12.31, Version 0.1.24
+## 2009.12.31, Versión 0.1.24
 
 https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
-    * Bugfix: don't chunk responses to HTTP/1.0 clients, even if
-      they send Connection: Keep-Alive (e.g. wget)
+    * Corrección de bug: no cortar en pedazos las respuestas a clientes
+      HTTP/1.0, incluso si envían "Connection: Keep-Alive" (p. ej., wget)
     
-    * Bugfix: libeio race condition
-    * Bugfix: Don't segfault on unknown http method
+    * Corrección de bug: condición de carrera de libeio
+    * Corrección de bug: No hacer segfault sobre método http desconocido
     
-    * Simplify exception reporting
-    * Upgrade V8 to 2.0.5.4
+    * Simplificar el reporte de excepciones
+    * Actualizar V8 a 2.0.5.4
     
 
 <a id="0.1.23"></a>
 
-## 2009.12.22, Version 0.1.23
+## 2009.12.22, Versión 0.1.23
 
 https://github.com/nodejs/node/commit/f91e347eeeeac1a8bd6a7b462df0321b60f3affc
 
-    * Bugfix: require("../blah") issues (isaacs)
-    * Bugfix: posix.cat (Jonas Pfenniger)
+    * Corrección de bug: problemas con require("../blah") (isaacs)
+    * Corrección de bug: posix.cat (Jonas Pfenniger)
     
-    * Do not pause request for multipart parsing (Felix Geisendörfer)
+    * No pausar la solicitud de análisis multipartes (Felix Geisendörfer)
     
 
 <a id="0.1.22"></a>
 
-## 2009.12.19, Version 0.1.22
+## 2009.12.19, Versión 0.1.22
 
 https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
 
-    * Bugfix: child modules get wrong id with "index.js" (isaacs)
-    * Bugfix: require("../foo") cycles (isaacs)
+    * Corrección de bug: los módulos hijo obtienen una id incorrecta
+      con "index.js" (isaacs)
+    * Corrección de bug: ciclos de require("../foo") (isaacs)
     
-    * Bugfix: require() should throw error if module does.
-    * New URI parser stolen from Narwhal (isaacs)
+    * Corrección de bug: require() debe arrojar un error si el módulo
+      lo hace.
+    * Nuevo analizador de URI robado de Narwhal (isaacs)
     
-    * Bugfix: correctly check kqueue and epoll. (Rasmus Andersson)
-    * Upgrade WAF to 1.5.10
+    * Corrección de bug: revisar kqueue y epoll de manera correcta
+     (Rasmus Andersson)
+    * Actualizar WAF a 1.5.10
     
-    * Bugfix: posix.statSync() was crashing
-    * Statically define string symbols for performance improvement
+    * Corrección de bug: posix.statSync() estaba colapsando
+    * Definir estáticamente los símbolos de string para mejoras
+      de rendimiento.
     
-    * Bugfix: ARGV[0] weirdness
-    * Added superCtor to ctor.super_ instead superCtor.prototype.
+    * Corrección de bug: Rareza de ARGV[0]
+    * Añadido superCtor a ctor.super_ en lugar de superCtor.prototype.
       (Johan Dahlberg)
     
-    * http-parser supports webdav methods
+    * http-parser soporta métodos webdav
     * API: http.Client.prototype.request() (Christopher Lenz)
     
 
 <a id="0.1.21"></a>
 
-## 2009.12.06, Version 0.1.21
+## 2009.12.06, Versión 0.1.21
 
 https://github.com/nodejs/node/commit/c6affb64f96a403a14d20035e7fbd6d0ce089db5
 
-    * Feature: Add HTTP client TLS support (Rhys Jones)
-    * Bugfix: use --jobs=1 with WAF
+    * Novedad: Añadir soporte de TLS para el cliente HTTP (Rhys Jones)
+    * Corrección de bug: utilizar --jobs=1 con WAF
     
-    * Bugfix: Don't use chunked encoding for 1.0 requests
-    * Bugfix: Duplicated header weren't handled correctly
+    * Corrección de bug: No utilizar codificación en pedazos para
+      solicitudes 1.0
+    * Corrección de bug: Las cabeceras duplicadas no eran manejadas
+      correctamente
     
-    * Improve sys.inspect (Xavier Shay)
-    * Upgrade v8 to 2.0.3
+    * Mejorar sys.inspect (Xavier Shay)
+    * Actualizar v8 a 2.0.3
     
-    * Use CommonJS assert API (Felix Geisendörfer, Karl Guertin)
+    * Utilizar API de aserción de CommonJS (Felix Geisendörfer, Karl Guertin)
     
 
 <a id="0.1.20"></a>
 
-## 2009.11.28, Version 0.1.20
+## 2009.11.28, Versión 0.1.20
 
 https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
 
-    * Add gnutls version to configure script
-    * Add V8 heap info to process.memoryUsage()
+    * Añadir versión de gnutls al script de configuración
+    * Añadir información del montículo de V8 a process.memoryUsage()
     
-    * process.watchFile callback has 2 arguments with the stat object
-      (choonkeat@gmail.com)
+    * La callback de process.watchFile tiene 2 argumentos con el objeto
+      de stat (choonkeat@gmail.com)
     
 
 <a id="0.1.19"></a>
 
-## 2009.11.28, Version 0.1.19
+## 2009.11.28, Versión 0.1.19
 
 https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
-    * Feature: Initial TLS support for TCP servers and clients.
+    * Novedad: Soporte inicial de TLS para servidores y clientes TCP.
       (Rhys Jones)
     
-    * Add options to process.watchFile()
-    * Add process.umask() (Friedemann Altrock)
+    * Añadir opciones a process.watchFile()
+    * Añadir process.umask() (Friedemann Altrock)
     
-    * Bugfix: only detach timers when active.
-    * Bugfix: lib/file.js write(), shouldn't always emit errors or success
-      (onne@onnlucky.com)
+    * Corrección de bug: solo desprender temporizadores al estar activos.
+    * Corrección de bug: lib/file.js write(), no siempre debe emitir errores
+      o tener éxito (onne@onnlucky.com)
     
-    * Bugfix: Memory leak in fs.write
-      (Reported by onne@onnlucky.com)
+    * Corrección de bug: Fuga de memoria en fs.write
+      (Reportado por onne@onnlucky.com)
     
-    * Bugfix: Fix regular expressions detecting outgoing message headers.
-      (Reported by Elliott Cable)
+    * Corrección de bug: Corregir expresiones regulares al hacer detección
+      de cabeceras de mensajes salientes.
+      (Reportado por Elliott Cable)
     
-    * Improvements to Multipart parser (Felix Geisendörfer)
-    * New HTTP parser
+    * Mejoras al analizador de Multipartes (Felix Geisendörfer)
+    * Nuevo analizador de HTTP
     
-    * Upgrade v8 to 2.0.2
+    * Actualizar v8 a 2.0.2
     
 
 <a id="0.1.18"></a>
 
-## 2009.11.17, Version 0.1.18
+## 2009.11.17, Versión 0.1.18
 
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
-    * Feature: process.watchFile() process.unwatchFile()
-    * Feature: "uncaughtException" event on process
+    * Novedad: process.watchFile() process.unwatchFile()
+    * Novedad: evento "uncaughtException" en el proceso
       (Felix Geisendörfer)
     
-    * Feature: 'drain' event to tcp.Connection
-    * Bugfix: Promise.timeout() blocked the event loop
+    * Novedad: Evento "drain" a tcp.Connection
+    * Corrección de bug: Promise.timeout() bloqueaba el bucle de eventos
       (Felix Geisendörfer)
     
-    * Bugfix: sendBody() and chunked utf8 strings
+    * Corrección de bug: sendBody() y strings utf8 cortadas en pedazos
       (Felix Geisendörfer)
     
-    * Supply the strerror as a second arg to the tcp.Connection close
-      event (Johan Sørensen)
+    * Proveer strerror como un segundo argumento al evento de cierre de
+      tcp.Connection (Johan Sørensen)
     
-    * Add EventEmitter.removeListener (frodenius@gmail.com)
-    * Format JSON for inspecting objects (Felix Geisendörfer)
+    * Añadir EventEmitter.removeListener (frodenius@gmail.com)
+    * Dar formato a JSON para la inspección de objetos (Felix Geisendörfer)
     
-    * Upgrade libev to latest CVS
+    * Actualizar libev al útlimo CVS
     
 
 <a id="0.1.17"></a>
 
-## 2009.11.07, Version 0.1.17
+## 2009.11.07, Versión 0.1.17
 
 https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
-    * Feature: process.chdir() (Brandon Beacher)
-    * Revert http parser upgrade. (b893859c34f05db5c45f416949ebc0eee665cca6)
-      Broke keep-alive.
+    * Novedad: process.chdir() (Brandon Beacher)
+    * Revertir actualización del analizador de http.
+      (b893859c34f05db5c45f416949ebc0eee665cca6)
+      keep-alive dañado.
     
-    * API: rename process.inherits to sys.inherits
+    * API: renombrar process.inherits como sys.inherits
     
 
 <a id="0.1.16"></a>

@@ -1,18 +1,18 @@
-# Assert
+# Xác nhận (Assert)
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Tính ổn định: 2 - Stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Mô-đun `assert` cung cấp một tập các thí nghiệm xác nhận đơn giản dùng để kiểm tra các bất biến.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Mặc dù có sẵn chế độ `strict` và `legacy`, nhưng chúng tôi khuyến nghị chỉ sử dụng [`strict mode`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Để biết thêm thông tin về các so sánh bình đằng được sử dụng, tham khảo thêm [hướng dẫn MDN về sự giống nhau và các so sánh bình đẳng](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Lớp: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Lớp con của `Error` biểu thị sự xác nhận thất bại. Tất cả các lỗi được tạo ra bởi mô-đun `assert` sẽ là thực thể của lớp `AssertionError`.
 
 ### new assert.AssertionError(options)
 
@@ -21,21 +21,21 @@ added: v0.1.21
 -->
 
 * `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * Nếu hiển thị `message` {string}, thông báo lỗi sẽ được đặt giá trị này.
+  * `actual` {any} Thuộc tính `actual` trong lỗi thực thể sẽ chứa giá trị này. Được sử dụng nội bộ trong trường hợp lỗi đầu vào `actual`. Ví dụ sử dụng trong [`assert.strictEqual()`].
+  * `expected` {any} Thuộc tính `expected` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ trong lỗi đầu vào `expected`. Ví dụ được sử dụng trong [`assert.strictEqual()`].
+  * `operator` {string} Thuộc tính `operator` trong lỗi thực thể sẽ chứa giá trị này. Được dùng nội bộ để chỉ báo hoạt động nào được sử dụng để so sánh ( hoặc hàm xác nhận nào đã kích hoạt lỗi).
+  * Nếu cung cấp `stackStartFn` {Function}, dấu vết ngăn xếp được tạo ra sẽ loại bỏ các khung lên đến hàm được cung cấp.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Lớp con của `Error` chỉ báo lỗi xác nhận.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Tất cả các thực thể bao hàm các thuộc tính `Error` đượctích hợp (`message` và `name`) và:
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
-* `operator` {string} Set to the passed in operator value.
+* `actual` {any} được đặt giá trị thực trong trường hợp ví dụ như [`assert.strictEqual()`] được sử dụng.
+* `expected` {any} được đặt giá trị kỳ vọng trong trường hợp như [`assert.strictEqual()` được sử dụng.
+* `generatedMessage` {boolean} cho biết thông báo có tự động tạo ra (`true`) hay không.
+* `code` {string} luôn luôn được đặt trong chuỗi `ERR_ASSERTION` để chỉ ra lỗi thực sự là lỗi xác nhận.
+* ` operator ` {string} được đặt giá trị toán tử được truyền vào.
 
 ```js
 const assert = require('assert');
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Chế độ nghiêm ngặt (Strict mode)
 
 <!-- YAML
 added: v9.9.0
@@ -76,17 +76,17 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+Khi sử dụng `strict mode`, bất kỳ hàm `assert` nào sẽ dùng tính bình đẳng sử dụng trong chế độ hàm nghiêm ngặt. Vì vậy, theo một cách ví dụ, [`assert.deepEqual()`][] sẽ có chức năng làm việc giống như [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+Trên hết, các thông báo lỗi liên quan đến các đối tượng tạo ra một so sánh sai số lỗi khác thay vì hiển thị cả hai đối tượng. Đó không phải là trường hợp cho chế độ Legacy.
 
-It can be accessed using:
+Nó có thể truy cập bằng cách sử dụng:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Ví dụ về so sánh sai số lỗi:
 
 ```js
 const assert = require('assert').strict;
@@ -107,21 +107,21 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+Việc sử dụng `NODE_DISABLE_COLORS` biến môi trường để tắt các màu sắc. Xin chú ý, điều này cũng tắt các màu trong REPL.
 
-## Legacy mode
+## Chế độ Legacy
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng chế độ nghiêm ngặt thay thế.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Khi truy cập trực tiếp `assert` thay vì truy cập thuộc tính `strict`, [Abstract Equality Comparison (So sánh đẳng thức trừu tượng)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sẽ được dùng cho các hàm không chứa "strict", ví dụ như [`assert.deepEqual()`][].
 
-It can be accessed using:
+Có thể truy cập bằng cách:
 
 ```js
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Chúng tôi khuyến nghị sử dụng [`strict mode`][] thay vì [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison), vì thông thường kết quả trả về sẽ không như mong đợi. Điều này đặc biệt đúng khi các quy tắc so sánh là sai, ví dụ như trong [`assert.deepEqual()`][]:
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Cách gọi khác của [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -166,26 +166,26 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
-An alias of [`assert.deepStrictEqual()`][].
+Cách gọi khác của [`assert.deepStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.deepStrictEqual()`][] thay thế.
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Giá trị ban đầu được so sánh với [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). Việc thực thi [`assert.deepEqual()`][] không kiểm tra các đối tượng của [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) hoặc các thuộc tính [`Symbol`][] có thể đếm được. Đối với việc kiểm tra như vậy, hãy cân nhắc sử dụng [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] có thể mang lại kết quả không nghĩ tới. Các ví dụ sau đây sẽ không cho ra `AssertionError` bởi vì các thuộc tính trên đối tượng [`RegExp`][] không thể đếm được:
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+[`Map`][] và [`Set`][] là có ngoại lệ. Bởi vì `Map` và `Set` đã so sánh các hạng mục bao hàm trong nó như mong đợi.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+Đẳng thức "deep" (sâu) nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
 
 ```js
 const assert = require('assert');
@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nếu các giá trị không được cân bằng, `AssertionError` được trả ra với thuộc tính `message` có giá trị của thông số `message`. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -259,21 +259,21 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Đẳng thức "sâu" có nghĩa các thuộc tính "own" có thể đếm được của đối tượng con sẽ được đánh giá một cách đệ quy theo các quy tắc sau.
 
-### Comparison details
+### Chi tiết so sánh
 
-* Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* Các giá trị ban đầu được tiến hành so sánh với [So sánh cùng giá trị](https://tc39.github.io/ecma262/#sec-samevalue), sử dụng bởi [`Object.is()`][].
+* [Các loại thẻ gắn](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) của đối tượng cần giống nhau.
+* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) của các đối tượng được so sánh sử dụng [So sánh đẳng thức nghiêm ngặt](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Chỉ so sánh với [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+* Các tên và thông báo [`Error`][] luôn được so sánh, kể cả chúng không phải là những thuộc tính có thể đếm được.
+* Thuộc tính [`Symbol`][] có thể đếm được cũng sẽ được so sánh.
+* [Các lớp bọc đối tượng](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) được so sánh như là các đối tượng và giá trị không bọc.
+* Các thuộc tính `Object` được so sánh không theo trình tự.
+* Các hạng mục như `Map` và `Set` được so sánh không theo thứ tự.
+* Quá trình đệ quy dừng khi hai bên khác nhau hoặc hai bên gặp phải tham chiếu vòng tròn.
+* Việc so sánh giữa [`WeakMap`][] và [`WeakSet`][] không dựa trên những giá trị của chúng. Tham khảo thêm giải thích chi tiết bên dưới.
 
 ```js
 const assert = require('assert').strict;
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nếu như các giá trị không thỏa mãn bằng nhau, nó sẽ hiển thị`AssertionError` với thuộc tính `message` có giá trị bằng với thuộc tính `message`. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -371,15 +371,15 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
+Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm, cần ngay lập tức gọi hàm và đợi lời hứa hoàn thành việc trả về giá trị. Sau đó kiểm tra xem lời hứa có bị từ chối không.
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Nếu `block` là một chức năng mà nó gửi đi lối đồng bộ, `assert.doesNotReject()` sẽ trả về giá trị của `Promise` bị từ chối với lỗi đó. Nếu không có lời hứa nào phản hồi, `assert.doesNotReject()` sẽ trả về `Promise` bị từ chối với lỗi [`ERR_INVALID_RETURN_VALUE`][]. Trong cả hai trường hợp đều bỏ qua quy trình xử lý lỗi.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotReject()` không thực sự hữu ích bởi vì có rất ít lợi ích thu được từ việc nhận giá trị từ chối và liên tục bị từ chối. Thay vào đó, hãy xem xét việc thêm các nhận xét vào các đoạn mã cụ thể đáng lẽ không đáng bị từ chối và giữ các thông báo lỗi càng chi tiết rõ ràng càng tốt.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Nói một cách rõ ràng hơn, `error` có thể thay thế bằng [`Class`][], [`RegExp`][] hoặc một hàm xác nhận. Tham khảo thêm [`assert.throws()`][].
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+Bên cạnh đó đặc tính đồng bộ nhằm chờ đợi việc hoàn thiện các hành vi tương đồng với [`assert.doesNotThrow()`][].
 
 ```js
 (async () => {
@@ -417,17 +417,17 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+Xác nhận hàm `block` không gửi đi kết quả lỗi.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Hãy nhớ: Việc sử dụng `assert.doesNotThrow()` không thực sự hữu ích vì nó không có lợi ích gì từ việc bắt lỗi sau đó tiếp tục lại gửi đi. Thay vào đó, hãy xem xét việc thêm các nhận xét cạnh các đoạn mã cụ thể đáng lẽ không nên gửi đi và giữ các thông báo lỗi càng chi tiết rõ ràng càng tốt.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Khi gọi `assert.doesNotThrow()`, nó sẽ gọi ngay lập tức hàm `block`.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Khi phát hiện có lỗi, nó sẽ được chỉ định cùng loại từ tham số `error`, sau đó gửi đi `AssertionError`. Nếu đó là một lỗi khác, hoặc tham số `error` không được xác định, thì lỗi đó sẽ truyền lại cho trình gọi.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Nói một cách rõ ràng hơn, `error` có thể thay thế bằng [`Class`][], [`RegExp`][] hoặc một hàm xác nhận. Tham khảo thêm [`assert.throws()`][].
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Trong ví dụ dưới đây sẽ trả giá trị [`TypeError`][] vì không có loại lỗi nào tương tự trong bộ phận xác nhận:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+Tuy nhiên, trong phần tiếp theo sẽ trả kết quả cho `AssertionError` với thông báo 'Got unwanted exception...' (Nhận kết quả không mong muốn):
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -453,7 +453,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+Nếu đưa ra `AssertionError` và giá trị được cung cấp cho tham số `message`, giá trị của `message` sẽ được thêm vào thông báo `AssertionError`:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -478,15 +478,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
-An alias of [`assert.strictEqual()`][].
+Cách gọi khác của [`assert.strictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.strictEqual()`][] thay thế.
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Thử nghiệm nhanh, sử dụng [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) để so sánh giữa các tham số `actual` và `expected`.
 
 ```js
 const assert = require('assert');
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nếu giá trị trả về không bằng nhau, `AssertionError` có thuộc tính `message` sẽ gửi đến, và giá trị của nó được đặt vào tham số `message`. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.fail([message])
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Nó gửi về `AssertionError` với thông báo lỗi được cấp hoặc thông báo lỗi mặc định. Nếu tham số `message` là một thực thể của [`Error`][] thì nó sẽ được gửi về thay thế cho `AssertionError`.
 
 ```js
 const assert = require('assert').strict;
@@ -527,7 +527,7 @@ assert.fail(new TypeError('need array'));
 // TypeError: need array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+Có thể sử dụng `assert.fail()` với hơn hai đối số nhưng sẽ không được chấp thuận. Tham khảo chi tiết bên dưới.
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -547,9 +547,9 @@ changes:
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
+> Tính ổn định: 0 - Không chấp thuận. Sử dụng `assert.fail([message])` hoặc các hàm xác nhận thay thế.
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+Nếu `message` bị lỗi, thông báo lỗi sẽ được gắn các giá trị riêng biệt của `actual` và `expected` từ `operator` được cung cấp. Nếu cung cấp hai đối số `actual` và `expected`, `operator` sẽ mặc định giá trị là `'!='`. Nếu `message` được cấp như đối số thứ ba nó sẽ được dùng như một thông báo lỗi, và các đối số còn lại sẽ được lưu như các thuộc tính sau này cho đối tượng trả về. Nếu cung cấp `stackStartFunction`, tất cả các khung ngăn xếp phía trên hàm đó sẽ bị loại bỏ khỏi dấu vết ngăn xếp (xem thêm (see [`Error.captureStackTrace`]). Nếu không cung cấp hàm đối số nào, nó sẽ mặc định dùng thông báo `Failed`.
 
 ```js
 const assert = require('assert').strict;
@@ -570,9 +570,9 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+Trong ba trường hợp cuối, `actual`, `expected`, và `operator` sẽ không có ảnh hưởng lên thông báo lỗi.
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+Ví dụ sử dụng dưới đây của `stackStartFunction` dành cho việc cắt bớt dấu vết ngăn lớp dị thường:
 
 ```js
 function suppressFrame() {
@@ -658,11 +658,11 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -759,11 +759,11 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Chế độ nghiêm ngặt (Strict mode)**
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Chế độ Legacy**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -833,9 +833,9 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Nếu thông số `message` là một tham số của [`Error`][], thì kết quả nó trả ra sẽ không phải là `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! Tham khảo chi tiết bên dưới.
 
 ```js
 const assert = require('assert').strict;
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
+Chờ đợi lời hứa (promise) `block`, hoặc nếu `block` là một hàm, cần ngay lập tức gọi hàm và đợi lời hứa hoàn thành việc trả về giá trị. It will then check that the promise is rejected.
 
 If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 

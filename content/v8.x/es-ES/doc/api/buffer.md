@@ -536,11 +536,11 @@ socket.on('readable', () => {
 });
 ```
 
-Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` solo debe utilizarse como último recurso *después* de que un desarrollador haya observado la retención indebida de memoria en sus aplicaciones.
 
 Se producirá un `TypeError` si `size` no es número.
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Método de Clase: Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -555,27 +555,27 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`
-* Returns: {integer} The number of bytes contained within `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud de.
+* `encoding` {string} If `string` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
+* Devuelve: {integer} El número de bytes contenidos dentro de `string`.
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+Devuelve la longitud real en bytes de una cadena. Esto no es lo mismo que [`String.prototype.length`] ya que eso devuelve el número de *caracteres* en una string.
 
-*Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+*Note*: For `'base64'` and `'hex'`, this function assumes valid input. Para strings que contienen datos no codificados de forma Base64/Hex (p. e.j espacio en blanco), el valor devuelto puede ser mayor que la longitud de un `Buffer` creado desde la string.
 
 Ejemplo:
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
 
-// Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
+// Imprime: ½ + ¼ = ¾: 9 characters, 12 bytes
 console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+Cuando `string` es un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], la longitud real en bytes es devuelta.
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Método de Clase: Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -588,9 +588,9 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* Devuelve: {integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+Compara `buf1` con `buf2` típicamente con el propósito de clasificar los arrays de instancias de `Buffer`. Esto es el equivalente de llamar a [`buf1.compare(buf2)`][`buf.compare()`].
 
 Ejemplo:
 
@@ -599,12 +599,12 @@ const buf1 = Buffer.from('1234');
 const buf2 = Buffer.from('0123');
 const arr = [buf1, buf2];
 
-// Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
-// (This result is equal to: [buf2, buf1])
+// Imprime: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
+// (Este resultado es igual a: [buf2, buf1])
 console.log(arr.sort(Buffer.compare));
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### Método de Clase: Buffer.concat(list[, totalLength])
 
 <!-- YAML
 added: v0.7.11
@@ -616,14 +616,14 @@ changes:
 -->
 
 * `list` {Array} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `totalLength` {integer} Longitud total de las instancias de `Buffer` en `list` cuando están concatenadas.
+* Devuelve: {Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+Devuelve un nuevo `Buffer` el cual es el resultado de concatenar todas las instancias de `Buffer` juntas en la `list`.
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `Buffer` de longitud cero es devuelto.
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+Si `totalLength` no es proporcionado, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así es más rápido proporcionar la longitud explícitamente si ya es conocido.
 
 If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
@@ -893,7 +893,7 @@ changes:
 * `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
 * `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
-* Returns: {integer}
+* Devuelve: {integer}
 
 Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
 
@@ -1463,7 +1463,7 @@ added: v0.5.0
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads a signed 8-bit integer from `buf` at the specified `offset`.
 
@@ -1496,7 +1496,7 @@ added: v0.5.5
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
 
@@ -1529,7 +1529,7 @@ added: v0.5.5
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
 
@@ -1563,7 +1563,7 @@ added: v0.11.15
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
 
@@ -1592,7 +1592,7 @@ added: v0.5.0
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
@@ -1623,7 +1623,7 @@ added: v0.5.5
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
@@ -1660,7 +1660,7 @@ added: v0.5.5
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
 
@@ -1692,7 +1692,7 @@ added: v0.11.15
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`
-* Returns: {integer}
+* Devuelve: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
 
@@ -1731,7 +1731,7 @@ changes:
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`]
-* Returns: {Buffer}
+* Devuelve: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 

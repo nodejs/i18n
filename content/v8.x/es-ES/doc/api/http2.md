@@ -1463,7 +1463,7 @@ added: v8.4.0
 -->
 
 * `settings` {[Settings Object](#http2_settings_object)}
-* Returns: {Buffer}
+* Devuelve: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 

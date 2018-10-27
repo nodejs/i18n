@@ -754,19 +754,20 @@ const bob = crypto.createECDH('secp256k1');
 // Note: Esta es una forma de acceso directo para especificar una de las anteriores
 // claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
 // aplicación real.
-alice.setPrivateKey(
-  crypto.createHash('sha256').update('alice', 'utf8').digest()
-);
+const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
 
-// Bob usa una recien generada criptográficamente fuerte
-// llave par pseudoaleatoria
-bob.generateKeys();
+hash.on('readable', () => {
+  const data = hash.read();
+  if (data) {
+    console.log(data.toString('hex'));
+    // Imprime:
+    //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
+  }
+});
 
-const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
-const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
-
-// el secreto de Alice y Bob debe tener el mismo valor secreto compartido
-console.log(aliceSecret === bobSecret);
+hash.write('some data to hash');
+hash.end();
 ```
 
 ## Clase: Hash
@@ -820,7 +821,7 @@ const hash = crypto.createHash('sha256');
 
 hash.update('some data to hash');
 console.log(hash.digest('hex'));
-// Prints:
+// Imprime:
 //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
 ```
 
@@ -965,9 +966,9 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Imprimer: la irma calculada usando la lave privada especificada y el
-// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el padding
-//parametro menor para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
+// Imprime: la firma calculada usando la clave privada especificada y el
+// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el parámetro
+// padding a continuación para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
 ```
 
 Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
@@ -1612,7 +1613,7 @@ changes:
 - `iterations` {number}
 - `keylen` {number}
 - `digest` {string}
-- Returns: {Buffer}
+- Devuelve: {Buffer}
 
 Proporciona una implementación asincrónica de la función 2 (PBKDF2) de Derivación de Clave Basada en Contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 

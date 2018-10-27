@@ -549,19 +549,20 @@ const bob = crypto.createECDH('secp256k1');
 // Note: Esta es una forma de acceso directo para especificar una de las anteriores
 // claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
 // aplicación real.
-alice.setPrivateKey(
-  crypto.createHash('sha256').update('alice', 'utf8').digest()
-);
+const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
 
-// Bob usa una recien generada criptográficamente fuerte
-// llave par pseudoaleatoria
-bob.generateKeys();
+hash.on('readable', () => {
+  const data = hash.read();
+  if (data) {
+    console.log(data.toString('hex'));
+    // Imprime:
+    //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
+  }
+});
 
-const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
-const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
-
-// el secreto de Alice y Bob debe tener el mismo valor secreto compartido
-console.log(aliceSecret === bobSecret);
+hash.write('some data to hash');
+hash.end();
 ```
 
 ## Clase: Hash
@@ -615,7 +616,7 @@ const hash = crypto.createHash('sha256');
 
 hash.update('some data to hash');
 console.log(hash.digest('hex'));
-// Prints:
+// Imprime:
 //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
 ```
 
@@ -627,7 +628,7 @@ added: v0.1.92
 
 Calcula el resumen de todos los datos pasados para ser hashed (usando el método [`hash.update()`][]). El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si`encoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-El objeto `Hash` no puede ser usado nuevamente después de que el método `hash.digest()` ha sido llamado. Llamados múltiples causaran que un error sea arrojado.
+El objeto `Hash` no puede ser usado nuevamente después de que el método `hash.digest()` ha sido llamado. Llamados múltiples causarán que un error sea arrojado.
 
 ### hash.Update (datos [, input_encoding])
 
@@ -738,9 +739,9 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Imprimer: la irma calculada usando la lave privada especificada y el
-// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el padding
-//parametro menor para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
+// Imprime: la firma calculada usando la clave privada especificada y el
+// SHA-256. Para las llaves RSA, el algoritmo es RSASSA-PKCS1-v1_5 (ver el parámetro
+// padding a continuación para RSASSA-PSS). El algoritmo es ECDSA para las llaves EC.
 ```
 
 Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
@@ -756,9 +757,9 @@ console.log(sign.sign(privateKey, 'hex'));
 // Imprime: la firma calculada
 ```
 
-En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
+En algunos casos, una instancia `Sign` también puede ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
 
-Ejemplo: firmando usando el nombre del algoritmo de firma heredado
+Ejemplo: firma usando el nombre del algoritmo de firma heredado
 
 ```js
 const crypto = require('crypto');
@@ -788,14 +789,14 @@ El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es u
 
 * `key`: {string} - Clave privada con codificación PEM (requerida)
 * `passphrase`: {string} - frase de contraseña para la clave privada
-* `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
+* `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
-  * `crypto.constants.RSA_PKCS1_PADDING` (default)
+  * `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
   Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
+* `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de la sal al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
 El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -881,14 +882,14 @@ changes:
 Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
 
 * `key`: {string} - PEM encoded public key (required)
-* `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
+* `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
-  * `crypto.constants.RSA_PKCS1_PADDING` (default)
+  * `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
   Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+* `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
 The `signature` argument is the previously calculated signature for the data, in the `signature_format` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signature_format` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][].
 

@@ -850,8 +850,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`55030922e5`](https://github.com/nodejs/node/commit/55030922e5)] - **lib**: alcance de las variables búcle (Rich Trott) [#4965](https://github.com/nodejs/node/pull/4965)
 * [[`725ad5b1ce`](https://github.com/nodejs/node/commit/725ad5b1ce)] - **lib**: remover redeclaraciones de la variable string_decoder.js (Rich Trott) [#4978](https://github.com/nodejs/node/pull/4978)
 * [[`c09eb44a59`](https://github.com/nodejs/node/commit/c09eb44a59)] - **module**: refactorizar variables redeclaradas (Rich Trott) [#4962](https://github.com/nodejs/node/pull/4962)
-* [[`612ce66c78`](https://github.com/nodejs/node/commit/612ce66c78)] - **net**: refactor redeclared variables (Rich Trott) [#4963](https://github.com/nodejs/node/pull/4963)
-* [[`c9b05dafe0`](https://github.com/nodejs/node/commit/c9b05dafe0)] - **net**: move isLegalPort to internal/net (Evan Lucas) [#4882](https://github.com/nodejs/node/pull/4882)
+* [[`612ce66c78`](https://github.com/nodejs/node/commit/612ce66c78)] - **net**: refactorizar variables redeclaradas (Rich Trott) [#4963](https://github.com/nodejs/node/pull/4963)
+* [[`c9b05dafe0`](https://github.com/nodejs/node/commit/c9b05dafe0)] - **net**: mover isLegalPort a internal/net (Evan Lucas) [#4882](https://github.com/nodejs/node/pull/4882)
 * [[`7003a4e3d8`](https://github.com/nodejs/node/commit/7003a4e3d8)] - **node_contextify**: do not incept debug context (Myles Borins) [#4815](https://github.com/nodejs/node/issues/4815)
 * [[`5a77c095a6`](https://github.com/nodejs/node/commit/5a77c095a6)] - **process**: soporta eventos symbol (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
 * [[`85743c0e92`](https://github.com/nodejs/node/commit/85743c0e92)] - **querystring**: verificar que maxKeys es finito (Myles Borins) [#5066](https://github.com/nodejs/node/pull/5066)
@@ -915,25 +915,25 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`e95fd6ae70`](https://github.com/nodejs/node/commit/e95fd6ae70)] - **tools**: aplicar el uso de linting para las herramientas del documento (Rich Trott) [#4973](https://github.com/nodejs/node/pull/4973)
 * [[`777ed82162`](https://github.com/nodejs/node/commit/777ed82162)] - **tools**: reparar la detección del constructor para el documento JSON (Timothy Gu) [#4966](https://github.com/nodejs/node/pull/4966)
 * [[`5d55f59c85`](https://github.com/nodejs/node/commit/5d55f59c85)] - **tools**: añadir tipos de propiedad en la documentación de JSON (Timothy Gu) [#4884](https://github.com/nodejs/node/pull/4884)
-* [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subkeys en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
+* [[`fd5c56698e`](https://github.com/nodejs/node/commit/fd5c56698e)] - **tools**: añadir soporte para subclaves en las herramientas de lanzamiento (Myles Borins) [#4807](https://github.com/nodejs/node/pull/4807)
 * [[`34df6a5c0c`](https://github.com/nodejs/node/commit/34df6a5c0c)] - **tools**: habilitar reglas de error ESLint clasificadas (Roman Reiss) [#4864](https://github.com/nodejs/node/pull/4864)
 * [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: reparar la ruta de configuración que contenga un et (&) (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
 * [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: cambiar el alcance de las variables con let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
 <a id="5.5.0"></a>
 
-## 2016-01-20, Versión 5.5.0 (Etable), @evanlucas
+## 2016-01-20, Versión 5.5.0 (Estable), @evanlucas
 
 ### Cambios notables
 
-* **events**: asegurate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
+* **events**: asegúrate que las funciones de consola existen (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: añadir opción autoClose para fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
 * **http**: mejorar el manejo de la cabecera esperada (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
 * **node**: permitir precargar módulos con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
 * **v8,src**: exponer estadísticas sobre los espacios del montículo (`v8.getHeapSpaceStatistics()`) (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
 * Mejoras de rendimiento menores: 
   * **lib**: Usar las funciones flecha en vez de vincular donde sea posible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622). 
-    * (Faltante por un error de v5.4.0)
+    * (Falta por un error en v5.4.0)
   * **module**: el stat() caché resulta más agresivo (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
   * **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 
@@ -941,7 +941,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos host completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 * Caracteres unicode en las rutas del sistema de archivos no son manejadas consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
@@ -976,14 +976,14 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`7ce0e04f44`](https://github.com/nodejs/node/commit/7ce0e04f44)] - **lib**: reparar problemas de estilo después de la actualización eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
 * [[`ae5bcf9528`](https://github.com/nodejs/node/commit/ae5bcf9528)] - **lib**: usar las funciones flecha en vez del enlace (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622)
 * [[`0ec093cd41`](https://github.com/nodejs/node/commit/0ec093cd41)] - **lib,test**: remover punto y comas extras (Michaël Zasso) [#2205](https://github.com/nodejs/node/pull/2205)
-* [[`d8f5bd4fe1`](https://github.com/nodejs/node/commit/d8f5bd4fe1)] - **module**: evitar el cuerpo ArgumentsAdaptorTrampoline (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
+* [[`d8f5bd4fe1`](https://github.com/nodejs/node/commit/d8f5bd4fe1)] - **module**: evitar el marco ArgumentsAdaptorTrampoline (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
 * [[`83f8d98806`](https://github.com/nodejs/node/commit/83f8d98806)] - **module**: stat() caché resulta más agresiva (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
 * [[`ff64a4c395`](https://github.com/nodejs/node/commit/ff64a4c395)] - **(SEMVER-MINOR)** **node**: permitir los módulos precargados con -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
 * [[`4bc1a47761`](https://github.com/nodejs/node/commit/4bc1a47761)] - **querystring**: mejorar el rendimiento de parse() (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 * [[`ad63d350d4`](https://github.com/nodejs/node/commit/ad63d350d4)] - **readline**: Remover XXX y el debuglog de salida (Kohei TAKATA) [#4690](https://github.com/nodejs/node/pull/4690)
-* [[`da550aa063`](https://github.com/nodejs/node/commit/da550aa063)] - **repl**: asegurarse que historyPath sea recortado (Evan Lucas) [#4539](https://github.com/nodejs/node/pull/4539)
+* [[`da550aa063`](https://github.com/nodejs/node/commit/da550aa063)] - **repl**: asegúrate que historyPath sea recortado (Evan Lucas) [#4539](https://github.com/nodejs/node/pull/4539)
 * [[`a2c257a3ef`](https://github.com/nodejs/node/commit/a2c257a3ef)] - **src**: reparar valores negativos en process.hrtime() (Ben Noordhuis) [#4757](https://github.com/nodejs/node/pull/4757)
-* [[`8bad51977a`](https://github.com/nodejs/node/commit/8bad51977a)] - **src**: devolver UV_EAI_NODATA en busqueda vacía (cjihrig) [#4715](https://github.com/nodejs/node/pull/4715)
+* [[`8bad51977a`](https://github.com/nodejs/node/commit/8bad51977a)] - **src**: devolver UV_EAI_NODATA en búsqueda vacía (cjihrig) [#4715](https://github.com/nodejs/node/pull/4715)
 * [[`761cf2bf6a`](https://github.com/nodejs/node/commit/761cf2bf6a)] - **src**: no verificar falla con ERR_peek_error() (Ben Noordhuis) [#4731](https://github.com/nodejs/node/pull/4731)
 * [[`426ff820f5`](https://github.com/nodejs/node/commit/426ff820f5)] - **stream**: prevenir el cambio del mapa del objeto en ReadableState (Evan Lucas) [#4761](https://github.com/nodejs/node/pull/4761)
 * [[`e65f1f7954`](https://github.com/nodejs/node/commit/e65f1f7954)] - **test**: reparar la condición de carrera tls-multi-key (Santiago Gimeno) [#3966](https://github.com/nodejs/node/pull/3966)
@@ -991,7 +991,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`a347cd793f`](https://github.com/nodejs/node/commit/a347cd793f)] - **test**: hacer a test-cluster-disconnect-leak de confianza (Rich Trott) [#4736](https://github.com/nodejs/node/pull/4736)
 * [[`a39b28bb5a`](https://github.com/nodejs/node/commit/a39b28bb5a)] - **test**: reparar los problemas de la regla ESLint space-in-parens (Roman Reiss) [#4753](https://github.com/nodejs/node/pull/4753)
 * [[`d1aabd6264`](https://github.com/nodejs/node/commit/d1aabd6264)] - **test**: reparar los problemas de estilo después de la actualización de eslint (Michaël Zasso) [nodejs/io.js#2286](https://github.com/nodejs/io.js/pull/2286)
-* [[`e98bcfa2cb`](https://github.com/nodejs/node/commit/e98bcfa2cb)] - **test**: remover un segundo de retraso de la prueba (Rich Trott) [#4616](https://github.com/nodejs/node/pull/4616)
+* [[`e98bcfa2cb`](https://github.com/nodejs/node/commit/e98bcfa2cb)] - **test**: remover 1 segundo de retraso de la prueba (Rich Trott) [#4616](https://github.com/nodejs/node/pull/4616)
 * [[`6cfd0b5a32`](https://github.com/nodejs/node/commit/6cfd0b5a32)] - **test**: reparar test-net-socket-local-address flaky (cjihrig) [#4650](https://github.com/nodejs/node/pull/4650)
 * [[`e22cc6c2eb`](https://github.com/nodejs/node/commit/e22cc6c2eb)] - **test**: reparar carrera en test-net-server-pause-on-connect (Rich Trott) [#4637](https://github.com/nodejs/node/pull/4637)
 * [[`9164c00bdb`](https://github.com/nodejs/node/commit/9164c00bdb)] - **test**: mover prueba intensiva de recursos a secuencial (Rich Trott) [#4615](https://github.com/nodejs/node/pull/4615)
@@ -1021,59 +1021,59 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Problemas conocidos
 
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
-* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### commits
 
-* [[`ff539c5bb5`](https://github.com/nodejs/node/commit/ff539c5bb5)] - **cluster**: ignore queryServer msgs on disconnection (Santiago Gimeno) [#4465](https://github.com/nodejs/node/pull/4465)
-* [[`00148b3de1`](https://github.com/nodejs/node/commit/00148b3de1)] - **deps**: backport 066747e from upstream V8 (Ali Ijaz Sheikh) [#4625](https://github.com/nodejs/node/pull/4625)
-* [[`3912b5cbda`](https://github.com/nodejs/node/commit/3912b5cbda)] - **doc**: adds usage of readline line-by-line parsing (Robert Jefe Lindstaedt) [#4609](https://github.com/nodejs/node/pull/4609)
-* [[`102fb7d3a1`](https://github.com/nodejs/node/commit/102fb7d3a1)] - **doc**: remove "above" and "below" references (Richard Sun) [#4499](https://github.com/nodejs/node/pull/4499)
-* [[`df87176ae0`](https://github.com/nodejs/node/commit/df87176ae0)] - **doc**: update stylesheet to match frontpage (Roman Reiss) [#4621](https://github.com/nodejs/node/pull/4621)
-* [[`ede98d1f98`](https://github.com/nodejs/node/commit/ede98d1f98)] - **doc**: stronger suggestion for userland assert (Wyatt Preul) [#4535](https://github.com/nodejs/node/pull/4535)
-* [[`fdfc72c977`](https://github.com/nodejs/node/commit/fdfc72c977)] - **doc**: label http.IncomingMessage as a Class (Sequoia McDowell) [#4589](https://github.com/nodejs/node/pull/4589)
-* [[`b181e26975`](https://github.com/nodejs/node/commit/b181e26975)] - **doc**: document http's server.listen return value (Sequoia McDowell) [#4590](https://github.com/nodejs/node/pull/4590)
-* [[`97aaeb8519`](https://github.com/nodejs/node/commit/97aaeb8519)] - **doc**: fix description about the latest-codename (Minwoo Jung) [#4583](https://github.com/nodejs/node/pull/4583)
-* [[`0126615d1e`](https://github.com/nodejs/node/commit/0126615d1e)] - **doc**: add Evan Lucas to Release Team (Evan Lucas) [#4579](https://github.com/nodejs/node/pull/4579)
-* [[`ec73c69412`](https://github.com/nodejs/node/commit/ec73c69412)] - **doc**: add Myles Borins to Release Team (Myles Borins) [#4578](https://github.com/nodejs/node/pull/4578)
-* [[`e703c9a4e2`](https://github.com/nodejs/node/commit/e703c9a4e2)] - **doc**: bring releases.md up to date (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
-* [[`ac1108d5e7`](https://github.com/nodejs/node/commit/ac1108d5e7)] - **doc**: add missing backtick for readline (Brian White) [#4549](https://github.com/nodejs/node/pull/4549)
-* [[`09bc0c6a05`](https://github.com/nodejs/node/commit/09bc0c6a05)] - **doc**: improvements to crypto.markdown copy (James M Snell) [#4435](https://github.com/nodejs/node/pull/4435)
-* [[`787c5d96bd`](https://github.com/nodejs/node/commit/787c5d96bd)] - **http**: remove variable redeclaration (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
-* [[`145b66820f`](https://github.com/nodejs/node/commit/145b66820f)] - **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
-* [[`ffb7deb443`](https://github.com/nodejs/node/commit/ffb7deb443)] - **net**: remove hot path comment from connect (Evan Lucas) [#4648](https://github.com/nodejs/node/pull/4648)
-* [[`799aa74d90`](https://github.com/nodejs/node/commit/799aa74d90)] - **net**: fix dns lookup for android (Josh Dague) [#4580](https://github.com/nodejs/node/pull/4580)
-* [[`9accebe087`](https://github.com/nodejs/node/commit/9accebe087)] - **net, doc**: fix line wrapping lint in net.js (James M Snell) [#4588](https://github.com/nodejs/node/pull/4588)
-* [[`37a546b490`](https://github.com/nodejs/node/commit/37a546b490)] - **src**: remove redeclarations of variables (Rich Trott) [#4605](https://github.com/nodejs/node/pull/4605)
-* [[`b515ccc2a1`](https://github.com/nodejs/node/commit/b515ccc2a1)] - **stream**: remove useless if test in transform (zoubin) [#4617](https://github.com/nodejs/node/pull/4617)
-* [[`ea6e26d904`](https://github.com/nodejs/node/commit/ea6e26d904)] - **test**: remove duplicate fork module import (Rich Trott) [#4634](https://github.com/nodejs/node/pull/4634)
-* [[`b14b2aec5e`](https://github.com/nodejs/node/commit/b14b2aec5e)] - **test**: require common module only once (Rich Trott) [#4611](https://github.com/nodejs/node/pull/4611)
-* [[`f28a640505`](https://github.com/nodejs/node/commit/f28a640505)] - **test**: only include http module once (Rich Trott) [#4606](https://github.com/nodejs/node/pull/4606)
-* [[`6f9a96f497`](https://github.com/nodejs/node/commit/6f9a96f497)] - **test**: fix flaky unrefed timers test (Rich Trott) [#4599](https://github.com/nodejs/node/pull/4599)
-* [[`b70eec8f7b`](https://github.com/nodejs/node/commit/b70eec8f7b)] - **tls_legacy**: do not read on OpenSSL's stack (Fedor Indutny) [#4624](https://github.com/nodejs/node/pull/4624)
+* [[`ff539c5bb5`](https://github.com/nodejs/node/commit/ff539c5bb5)] - **cluster**: ignorar mensajes queryServer al desconectar (Santiago Gimeno) [#4465](https://github.com/nodejs/node/pull/4465)
+* [[`00148b3de1`](https://github.com/nodejs/node/commit/00148b3de1)] - **deps**: hacer backport 066747e desde upstream V8 (Ali Ijaz Sheikh) [#4625](https://github.com/nodejs/node/pull/4625)
+* [[`3912b5cbda`](https://github.com/nodejs/node/commit/3912b5cbda)] - **doc**: añadir el uso de análisis de linea por linea de readline (Robert Jefe Lindstaedt) [#4609](https://github.com/nodejs/node/pull/4609)
+* [[`102fb7d3a1`](https://github.com/nodejs/node/commit/102fb7d3a1)] - **doc**: remover referencias de "above" y "below" (Richard Sun) [#4499](https://github.com/nodejs/node/pull/4499)
+* [[`df87176ae0`](https://github.com/nodejs/node/commit/df87176ae0)] - **doc**: actualizar el stylesheet para que coincida con el frontpage (Roman Reiss) [#4621](https://github.com/nodejs/node/pull/4621)
+* [[`ede98d1f98`](https://github.com/nodejs/node/commit/ede98d1f98)] - **doc**: una sugerencia más fuerte para la afirmación userland (Wyatt Preul) [#4535](https://github.com/nodejs/node/pull/4535)
+* [[`fdfc72c977`](https://github.com/nodejs/node/commit/fdfc72c977)] - **doc**: etiquetar a http.IncomingMessage como una Clase (Sequoia McDowell) [#4589](https://github.com/nodejs/node/pull/4589)
+* [[`b181e26975`](https://github.com/nodejs/node/commit/b181e26975)] - **doc**: documentar el valor devuelto de http's server.listen (Sequoia McDowell) [#4590](https://github.com/nodejs/node/pull/4590)
+* [[`97aaeb8519`](https://github.com/nodejs/node/commit/97aaeb8519)] - **doc**: corregir descripción sobre el latest-codename (Minwoo Jung) [#4583](https://github.com/nodejs/node/pull/4583)
+* [[`0126615d1e`](https://github.com/nodejs/node/commit/0126615d1e)] - **doc**: añadir a Evan Lucas al Equipo de Lanzamientos (Evan Lucas) [#4579](https://github.com/nodejs/node/pull/4579)
+* [[`ec73c69412`](https://github.com/nodejs/node/commit/ec73c69412)] - **doc**: añadir a Myles Borins al Equipo de Lanzamientos (Myles Borins) [#4578](https://github.com/nodejs/node/pull/4578)
+* [[`e703c9a4e2`](https://github.com/nodejs/node/commit/e703c9a4e2)] - **doc**: actualizar a la fecha actual a releases.md (cjihrig) [#4540](https://github.com/nodejs/node/pull/4540)
+* [[`ac1108d5e7`](https://github.com/nodejs/node/commit/ac1108d5e7)] - **doc**: añadir backtick faltante para el readline (Brian White) [#4549](https://github.com/nodejs/node/pull/4549)
+* [[`09bc0c6a05`](https://github.com/nodejs/node/commit/09bc0c6a05)] - **doc**: mejoras a la copia de crypto.markdown (James M Snell) [#4435](https://github.com/nodejs/node/pull/4435)
+* [[`787c5d96bd`](https://github.com/nodejs/node/commit/787c5d96bd)] - **http**: remover redeclaraciones de variables (Rich Trott) [#4612](https://github.com/nodejs/node/pull/4612)
+* [[`145b66820f`](https://github.com/nodejs/node/commit/145b66820f)] - **module**: mover trabajo innecesario de una devolución temprana (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
+* [[`ffb7deb443`](https://github.com/nodejs/node/commit/ffb7deb443)] - **net**: remover el comentario del hot path de la conexión (Evan Lucas) [#4648](https://github.com/nodejs/node/pull/4648)
+* [[`799aa74d90`](https://github.com/nodejs/node/commit/799aa74d90)] - **net**: reparar búsqueda de dns para android (Josh Dague) [#4580](https://github.com/nodejs/node/pull/4580)
+* [[`9accebe087`](https://github.com/nodejs/node/commit/9accebe087)] - **net, doc**: reparar el lint de envoltura de línea en net.js (James M Snell) [#4588](https://github.com/nodejs/node/pull/4588)
+* [[`37a546b490`](https://github.com/nodejs/node/commit/37a546b490)] - **src**: remover redeclaraciones de variables (Rich Trott) [#4605](https://github.com/nodejs/node/pull/4605)
+* [[`b515ccc2a1`](https://github.com/nodejs/node/commit/b515ccc2a1)] - **stream**: remover useless si se hace la prueba en transform (zoubin) [#4617](https://github.com/nodejs/node/pull/4617)
+* [[`ea6e26d904`](https://github.com/nodejs/node/commit/ea6e26d904)] - **test**: remover importación del módulo de bifurcación duplicado (Rich Trott) [#4634](https://github.com/nodejs/node/pull/4634)
+* [[`b14b2aec5e`](https://github.com/nodejs/node/commit/b14b2aec5e)] - **test**: requerir módulo común solo una vez (Rich Trott) [#4611](https://github.com/nodejs/node/pull/4611)
+* [[`f28a640505`](https://github.com/nodejs/node/commit/f28a640505)] - **test**: solo incluir módulo http una vez (Rich Trott) [#4606](https://github.com/nodejs/node/pull/4606)
+* [[`6f9a96f497`](https://github.com/nodejs/node/commit/6f9a96f497)] - **test**: reparar prueba de temporizadores flaky sin refinar (Rich Trott) [#4599](https://github.com/nodejs/node/pull/4599)
+* [[`b70eec8f7b`](https://github.com/nodejs/node/commit/b70eec8f7b)] - **tls_legacy**: no leer en el stack de OpenSSL (Fedor Indutny) [#4624](https://github.com/nodejs/node/pull/4624)
 
 <a id="5.4.0"></a>
 
-## 2016-01-06, Version 5.4.0 (Stable), @Fishrock123
+## 2016-01-06, Versión 5.4.0 (Estable), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **http**: 
-  * A new status code was added: 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
-  * Idle sockets that have been kept alive now handle errors (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
-* This release also includes several minor performance improvements: 
-  * **assert**: deepEqual is now speedier when comparing TypedArrays (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330).
-  * **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [node#3622](https://github.com/nodejs/node/pull/3622).
+  * Se añadió un nuevo código de estatus 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
+  * Los sockets que no se estén usando y se han mantenido vidos ahora manejaran los errores (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
+* Este lanzamiento incluye varias mejoras de rendimiento menores: 
+  * **assert**: deepEqual ahora es más rápido cuando se compara con TypedArrays (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330).
+  * **lib**: Usar funciones flecha en vez de enlazar donde sea posible (Minwoo Jung) [node#3622](https://github.com/nodejs/node/pull/3622).
   * **node**: Improved accessor perf of `process.env` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
-  * **node**: Improved performance of `process.hrtime()` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780), (Evan Lucas) [#4484](https://github.com/nodejs/node/pull/4484).
-  * **node**: Improved GetActiveHandles performance (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
-  * **util**: Use faster iteration in `util.format()` (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964).
+  * **node**: Rendimiento mejorado de `process.hrtime()` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780), (Evan Lucas) [#4484](https://github.com/nodejs/node/pull/4484).
+  * **node**: Mejorar el rendimiento de GetActiveHandles (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
+  * **util**: Usar iteraciones más rápidas en `util.format()` (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964).
 
-### Known issues
+### Problemas conocidos
 
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 * Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
@@ -1081,8 +1081,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Commits
 
 * [[`d265fc821a`](https://github.com/nodejs/node/commit/d265fc821a)] - **assert**: typed array deepequal performance fix (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330)
-* [[`6d8053ab56`](https://github.com/nodejs/node/commit/6d8053ab56)] - **buffer**: faster case for create Buffer from new Buffer(0) (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
-* [[`8781c59878`](https://github.com/nodejs/node/commit/8781c59878)] - **buffer**: refactor create buffer (Jackson Tian) [#4340](https://github.com/nodejs/node/pull/4340)
+* [[`6d8053ab56`](https://github.com/nodejs/node/commit/6d8053ab56)] - **buffer**: caso más rápido para Búfer desde Buffer(0) nuevo (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
+* [[`8781c59878`](https://github.com/nodejs/node/commit/8781c59878)] - **buffer**: refactorizar crear el búfer (Jackson Tian) [#4340](https://github.com/nodejs/node/pull/4340)
 * [[`252628294b`](https://github.com/nodejs/node/commit/252628294b)] - **child_process**: guard against race condition (Rich Trott) [#4418](https://github.com/nodejs/node/pull/4418)
 * [[`fcf632bc6a`](https://github.com/nodejs/node/commit/fcf632bc6a)] - **crypto**: load PFX chain the same way as regular one (Fedor Indutny) [#4165](https://github.com/nodejs/node/pull/4165)
 * [[`a5094a35a0`](https://github.com/nodejs/node/commit/a5094a35a0)] - **debugger**: guard against call from non-node context (Ben Noordhuis) [#4328](https://github.com/nodejs/node/pull/4328)
