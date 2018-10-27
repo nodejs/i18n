@@ -321,7 +321,7 @@ Merk hierbij op dat, in dit voorbeeld, tegelijkertijd de callback functie wordt 
 
 ### Object fabriek
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Zoals je kunt zien in het volgende voorbeeld, kunnen Addons nieuwe objecten creëren en retourneren vanuit een C++ functie. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
 ```cpp
 // addon.cc
