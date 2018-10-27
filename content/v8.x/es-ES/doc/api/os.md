@@ -188,7 +188,7 @@ Possible values are:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
 The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
@@ -349,7 +349,7 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
@@ -371,7 +371,7 @@ Please see https://en.wikipedia.org/wiki/Uname#Examples for additional informati
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
