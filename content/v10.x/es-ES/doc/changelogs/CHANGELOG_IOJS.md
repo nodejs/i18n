@@ -1151,55 +1151,55 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ## Cambios notables
 
 * **crypto**: se redujo significativamente el uso de memoria para TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
-* **npm**: Actualizar npm a 2.9.0. Vea las notas de lanzamiento [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para más detalles. Summary: 
-  * Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
-  * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
-  * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
+* **npm**: Actualizar npm a 2.9.0. Vea las notas de lanzamiento [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para más detalles. Resumen: 
+  * Añadir soporte para el campo de autor predeterminado para hacer que `npm init -y` funcione sin user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
+  * Incluir módulos locales en `npm outdated` y `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
+  * El prefijo usado antes del número de versión en `npm version` ahora es configurable a través de `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 
-### Known issues
+### Problemas conocidos
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: los escapes de división son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
 * [[`5404cbc745`](https://github.com/nodejs/node/commit/5404cbc745)] - **buffer**: fix copy() segfault with zero arguments (Trevor Norris) [nodejs/node#1520](https://github.com/nodejs/node/pull/1520)
-* [[`65dd10e9c0`](https://github.com/nodejs/node/commit/65dd10e9c0)] - **build**: remove -J from test-ci (Rod Vagg) [nodejs/node#1544](https://github.com/nodejs/node/pull/1544)
-* [[`74060bb60e`](https://github.com/nodejs/node/commit/74060bb60e)] - **crypto**: track external memory for SSL structures (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
-* [[`f10f379240`](https://github.com/nodejs/node/commit/f10f379240)] - **deps**: make node-gyp work with io.js (cjihrig) [nodejs/node#990](https://github.com/nodejs/node/pull/990)
-* [[`ba0e744c2c`](https://github.com/nodejs/node/commit/ba0e744c2c)] - **deps**: upgrade npm to 2.9.0 (Forrest L Norvell) [nodejs/node#1583](https://github.com/nodejs/node/pull/1583)
-* [[`b3a7da1091`](https://github.com/nodejs/node/commit/b3a7da1091)] - **deps**: update http_parser to 2.5.0 (Fedor Indutny) [nodejs/node#1517](https://github.com/nodejs/node/pull/1517)
-* [[`4030545af6`](https://github.com/nodejs/node/commit/4030545af6)] - **fs**: validate fd on fs.write (Julian Duque) [#1553](https://github.com/nodejs/node/pull/1553)
-* [[`898d423820`](https://github.com/nodejs/node/commit/898d423820)] - **string_decoder**: don't cache Buffer.isEncoding (Brian White) [nodejs/node#1548](https://github.com/nodejs/node/pull/1548)
-* [[`32a6dbcf23`](https://github.com/nodejs/node/commit/32a6dbcf23)] - **test**: extend timeouts for ARMv6 (Rod Vagg) [nodejs/node#1554](https://github.com/nodejs/node/pull/1554)
-* [[`5896fe5cd3`](https://github.com/nodejs/node/commit/5896fe5cd3)] - **test**: adjust Makefile/test-ci, add to vcbuild.bat (Rod Vagg) [nodejs/node#1530](https://github.com/nodejs/node/pull/1530)
-* [[`b72e4bc596`](https://github.com/nodejs/node/commit/b72e4bc596)] - **tls**: destroy singleUse context immediately (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
+* [[`65dd10e9c0`](https://github.com/nodejs/node/commit/65dd10e9c0)] - **build**: eliminar -J de test-ci (Rod Vagg) [nodejs/node#1544](https://github.com/nodejs/node/pull/1544)
+* [[`74060bb60e`](https://github.com/nodejs/node/commit/74060bb60e)] - **crypto**: rastrear memoria externa para estructuras de SSL (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
+* [[`f10f379240`](https://github.com/nodejs/node/commit/f10f379240)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [nodejs/node#990](https://github.com/nodejs/node/pull/990)
+* [[`ba0e744c2c`](https://github.com/nodejs/node/commit/ba0e744c2c)] - **deps**: actualizar npm a 2.9.0 (Forrest L Norvell) [nodejs/node#1583](https://github.com/nodejs/node/pull/1583)
+* [[`b3a7da1091`](https://github.com/nodejs/node/commit/b3a7da1091)] - **deps**: actualizar http_parser a 2.5.0 (Fedor Indutny) [nodejs/node#1517](https://github.com/nodejs/node/pull/1517)
+* [[`4030545af6`](https://github.com/nodejs/node/commit/4030545af6)] - **fs**: validar fd en fs.write (Julian Duque) [#1553](https://github.com/nodejs/node/pull/1553)
+* [[`898d423820`](https://github.com/nodejs/node/commit/898d423820)] - **string_decoder**: no almacenar caché del Buffer.isEncoding (Brian White) [nodejs/node#1548](https://github.com/nodejs/node/pull/1548)
+* [[`32a6dbcf23`](https://github.com/nodejs/node/commit/32a6dbcf23)] - **test**: extender los tiempos de espera para ARMv6 (Rod Vagg) [nodejs/node#1554](https://github.com/nodejs/node/pull/1554)
+* [[`5896fe5cd3`](https://github.com/nodejs/node/commit/5896fe5cd3)] - **test**: ajustar Makefile/test-ci, añadir a vcbuild.bat (Rod Vagg) [nodejs/node#1530](https://github.com/nodejs/node/pull/1530)
+* [[`b72e4bc596`](https://github.com/nodejs/node/commit/b72e4bc596)] - **tls**: destruir el contexto de singleUse inmediatamente (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
 * [[`1cfc455dc5`](https://github.com/nodejs/node/commit/1cfc455dc5)] - **tls**: zero SSL_CTX freelist for a singleUse socket (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
-* [[`7ada680519`](https://github.com/nodejs/node/commit/7ada680519)] - **tls**: destroy SSL once it is out of use (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
-* [[`71274b0263`](https://github.com/nodejs/node/commit/71274b0263)] - **tls_wrap**: use localhost if options.host is empty (Guilherme Souza) [nodejs/node#1493](https://github.com/nodejs/node/pull/1493)
-* [[`0eb74a8b6c`](https://github.com/nodejs/node/commit/0eb74a8b6c)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [nodejs/node#1266](https://github.com/nodejs/node/pull/1266)
+* [[`7ada680519`](https://github.com/nodejs/node/commit/7ada680519)] - **tls**: destruir la SSL una vez esté fuera de uso (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
+* [[`71274b0263`](https://github.com/nodejs/node/commit/71274b0263)] - **tls_wrap**: utilizar localhost si options.host está vacío (Guilherme Souza) [nodejs/node#1493](https://github.com/nodejs/node/pull/1493)
+* [[`0eb74a8b6c`](https://github.com/nodejs/node/commit/0eb74a8b6c)] - **win,node-gyp**: permitir opcionalmente que se pueda renombrar a node.exe/iojs.exe (Bert Belder) [nodejs/node#1266](https://github.com/nodejs/node/pull/1266)
 
 <a id="2.0.2"></a>
 
-## 2015-05-15, Version 2.0.2, @Fishrock123
+## 2015-05-15, Versión 2.0.2, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **win,node-gyp**: the delay-load hook for windows addons has now been correctly enabled by default, it had wrongly defaulted to off in the release version of 2.0.0 (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
 * **os**: `tmpdir()`'s trailing slash stripping has been refined to fix an issue when the temp directory is at '/'. Also considers which slash is used by the operating system. (cjihrig) [#1673](https://github.com/nodejs/node/pull/1673)
 * **tls**: default ciphers have been updated to use gcm and aes128 (Mike MacCana) [#1660](https://github.com/nodejs/node/pull/1660)
 * **build**: v8 snapshots have been re-enabled by default as suggested by the v8 team, since prior security issues have been resolved. This should give some perf improvements to both startup and vm context creation. (Trevor Norris) [#1663](https://github.com/nodejs/node/pull/1663)
-* **src**: fixed preload modules not working when other flags were used before `--require` (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
+* **src**: se corrigieron los módulos de pre-carga que no funcionaban cuando se utilizaban otras banderas previamente `--require` (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
 * **dgram**: fixed `send()`'s callback not being asynchronous (Yosuke Furukawa) [#1313](https://github.com/nodejs/node/pull/1313)
 * **readline**: emitKeys now keeps buffering data until it has enough to parse. This fixes an issue with parsing split escapes. (Alex Kocharin) [#1601](https://github.com/nodejs/node/pull/1601)
 * **cluster**: works now properly emit 'disconnect' to `cluser.worker` (Oleg Elifantiev) [#1386](https://github.com/nodejs/node/pull/1386)
 * **events**: uncaught errors now provide some context (Evan Lucas) [#1654](https://github.com/nodejs/node/pull/1654)
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -1207,7 +1207,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
