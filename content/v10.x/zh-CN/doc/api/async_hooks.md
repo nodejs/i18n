@@ -402,7 +402,7 @@ Note that promise contexts may not get precise `executionAsyncIds` by default. S
 
 #### async_hooks.triggerAsyncId()
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
 
 ```js
 const server = net.createServer((conn) => {
