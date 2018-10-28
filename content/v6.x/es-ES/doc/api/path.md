@@ -227,7 +227,7 @@ added: v0.11.2
 -->
 
 * `path` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 The `path.isAbsolute()` method determines if `path` is an absolute path.
 
