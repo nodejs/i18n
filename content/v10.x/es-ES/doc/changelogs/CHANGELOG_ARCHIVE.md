@@ -3781,53 +3781,53 @@ https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
       módulos
       esto soluciona un problema de carga shebang.
     
-    * Bugfix: Add '--' command line argument for separating v8
-      args from program args.
+    * Bugfix: Añadir argumento de línea de comandos '--' para separar los
+      argumentos de v8 de los argumentos de programas.
     
-    * Add man page.
-    * Add node-repl
+    * Añadir página del manual.
+    * Añadir node-repl
     
-    * Upgrade v8 to 1.3.10
+    * Actualizar v8 a 1.3.10
     
 
 <a id="0.1.9"></a>
 
-## 2009.09.05, Version 0.1.9
+## 2009.09.05, Versión 0.1.9
 
 https://github.com/nodejs/node/commit/ba6c5e38d54de30adfce69a21bafc81c35b07a03
 
-    * Bugfix: Compile on Snow Leopard.
-    * Bugfix: Malformed URIs raising exceptions.
+    * Corrección de bug: Compilar en Snow Leopard.
+    * Corrección de bug: URIs malformadas que están levantando excepciones.
     
 
 <a id="0.1.8"></a>
 
-## 2009.09.04, Version 0.1.8
+## 2009.09.04, Versión 0.1.8
 
 https://github.com/nodejs/node/commit/734e86b9e568de5f694ae290a2b5c9395b70937c
 
-    * Feature: External modules
-    * Feature: setTimeout() for node.tcp.Connection
+    * Novedad: Módulos externos
+    * Novedad: setTimeout() para node.tcp.Connection
     
-    * Feature: add node.cwd(), node.fs.readdir(), node.fs.mkdir()
-    * Bugfix: promise.wait() releasing out of order.
+    * Novedad: añadir node.cwd(), node.fs.readdir(), node.fs.mkdir()
+    * Corrección de bug: promise.wait() está soltando fuera de de orden.
     
-    * Bugfix: Asyncly do getaddrinfo() on Apple.
-    * Disable useless evcom error messages.
+    * Corrección de bug: Hacer getaddrinfo() de manera asíncrona en Apple.
+    * Deshabilitar mensajes de error de evcom inútiles.
     
-    * Better stack traces.
-    * Built natively on x64.
+    * Mejorar los stack traces.
+    * Compilar nativamente en x64.
     
-    * Upgrade v8 to 1.3.9
+    * Actualizar v8 a 1.3.9
     
 
 <a id="0.1.7"></a>
 
-## 2009.08.27, Version 0.1.7
+## 2009.08.27, Versión 0.1.7
 
 https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
-    * Feature: global 'process' object. Emits "exit".
+    * Novedad: objeto "process" global. Emite "exit".
     * Feature: promise.wait()
     
     * Feature: node.stdio
