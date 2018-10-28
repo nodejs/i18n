@@ -1919,7 +1919,7 @@ added: v6.6.0
 
 - `a` {Buffer | TypedArray | DataView}
 - `b` {Buffer | TypedArray | DataView}
-- Returns: {boolean}
+- Devuelve: {boolean}
 
 This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
