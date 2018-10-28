@@ -30,7 +30,7 @@ Gli error handler del dominio non sostituiscono la chiusura di un processo quand
 
 Per la natura stessa di come funziona [`throw`][] in JavaScript, non c'è quasi mai modo di "riprendere da dove si era rimasti", senza perdere riferimenti o creare qualche altro tipo di istruzione fragile indefinita.
 
-Il modo più sicuro per rispondere ad un errore che è stato generato è arrestare il processo. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+Il modo più sicuro per rispondere ad un errore che è stato generato è arrestare il processo. Ovviamente, in un normale web server, potrebbero esserci molte connessioni aperte e non è ragionevole arrestarle improvvisamente poiché qualcun altro potrebbe aver attivato un errore.
 
 The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
 
