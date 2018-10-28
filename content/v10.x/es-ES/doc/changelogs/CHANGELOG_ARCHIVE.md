@@ -3885,14 +3885,15 @@ https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
 https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
-    * Major refactor to evcom.
-    * Enable test-tcp-many-clients.
+    * Refactorización mayor a evcom.
+    * Habilitar test-tcp-many-clients.
     
-    * Add -m32 gcc flag to udns.
-    * Add connection.readPause() and connection.readResume()
-      Add IncomingMessage.prototype.pause() and resume().
+    * Añadir bandera -m32 de gcc a udns.
+    * Añadir connection.readPause() y connection.readResume()
+      Añadir IncomingMessage.prototype.pause() y resume().
     
-    * Fix http benchmark. Wasn't correctly dispatching.
+    * Corregir prueba de rendimiento de http. No estaba haciendo envíos
+      de manera correcta.
     * Bugfix: response.setBodyEncoding("ascii") not working.
     
     * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
