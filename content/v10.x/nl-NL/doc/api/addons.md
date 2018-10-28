@@ -960,11 +960,11 @@ Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-
 
 Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` neemt twee parameters: een pointer naar een callback functie om te draaien bij uitgang, en een pointer naar ongetypte context data wat doorgegeven moet worden naar die callback.
 
-Callbacks are run in last-in first-out order.
+Callbacks worden gedraaid in 'laatste in, eerste uit' volgorde.
 
-The following `addon.cc` implements `AtExit`:
+De volgende `addon.cc` implementeert `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1015,7 +1015,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Test in JavaScript door het volgende te laten draaien:
 
 ```js
 // test.js
