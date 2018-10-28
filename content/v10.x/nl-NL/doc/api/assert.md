@@ -25,7 +25,7 @@ added: v0.1.21
   * `actual` {any} De `actual` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt voor de `actual` fout input in het geval waar bijv. [`assert.strictEqual()`] is gebruikt.
   * `expected` {any} De `expected` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt voor de `expected` fout input waar bijv. [`assert.strictEqual()`] is gebruikt.
   * `operator` {string} De `operator` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt om aan te geven welke werkwijze werd gebruikt ter vergelijking (of welke bevestigingsfunctie de fout heeft veroorzaakt).
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * `stackStartFn` {Function} Indien aanwezig, de gegenereerde stack trace gaat alle frames verwijderen tot aan de verstrekte functie.
 
 A subclass of `Error` that indicates the failure of an assertion.
 
