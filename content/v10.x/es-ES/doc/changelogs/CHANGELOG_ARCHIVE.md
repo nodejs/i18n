@@ -3894,17 +3894,18 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
     
     * Corregir prueba de rendimiento de http. No estaba haciendo envíos
       de manera correcta.
-    * Bugfix: response.setBodyEncoding("ascii") not working.
+    * Corrección de bug: response.setBodyEncoding("ascii") no está
+      funcionando.
     
-    * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
-    * Upgrade v8 to 1.3.4
-      Upgrade libev to 3.8
-      Upgrade http_parser to v0.2
+    * Corrección de bug: Ints negativos en node.fs.read() y on_body de HTTP.
+    * Actualizar v8 a 1.3.4
+      Actualizar libev a 3.8
+      Actualizar http_parser a v0.2
     
 
 <a id="0.1.3"></a>
 
-## 2009.08.06, Version 0.1.3
+## 2009.08.06, Versión 0.1.3
 
 https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
