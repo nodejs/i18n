@@ -3767,18 +3767,19 @@ https://github.com/nodejs/node/commit/5ddc4f5d0c002bac0ae3d62fc0dc58f0d2d83ec4
 
 <a id="0.1.10"></a>
 
-## 2009.09.11, Version 0.1.10
+## 2009.09.11, Versión 0.1.10
 
 https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
 
-    * Feature: raw string encoding "raws"
-    * Feature: access to environ through "ENV"
+    * Novedad: codificación raw de cadenas "raws"
+    * Novedad: acceso a environ a través de "ENV"
     
-    * Feature: add isDirectory, isFile, isSocket, ... methods
-      to stats object.
+    * Novedad: añadir métodos isDirectory, isFile, isSocket, ... 
+      al objeto de stats.
     
-    * Bugfix: Internally use full paths when loading modules
-      this fixes a shebang loading problem.
+    * Corrección de bug: Utilizar rutas completas internamente al cargar
+      módulos
+      esto soluciona un problema de carga shebang.
     
     * Bugfix: Add '--' command line argument for separating v8
       args from program args.
