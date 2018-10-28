@@ -785,7 +785,7 @@ console.log(obj2.plusOne());
 
 ### Geef ingepakte objecten door
 
-Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakte objecten door te geven door ze uit te pakken met behulp van de Node.js hulp functie. `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakte objecten door te geven door ze uit te pakken met behulp van de Node.js hulp functie. `node::ObjectWrap::Unwrap`. De volgende voorbeelden laat de functie `add()` zien, die twee `MyObject` objecten als invoerargumenten kan nemen:
 
 ```cpp
 // addon.cc
@@ -831,7 +831,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h` is een nieuwe publieke methode toegevoegd die toegang geeft tot de privé-waarden, na het uitpakken van het object.
 
 ```cpp
 // myobject.h
@@ -859,8 +859,6 @@ class MyObject : public node::ObjectWrap {
 };
 
 }  // namespace demo
-
-#endif
 ```
 
 The implementation of `myobject.cc` is similar to before:
