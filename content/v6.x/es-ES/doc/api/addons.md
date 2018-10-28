@@ -10,9 +10,9 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Bibliotecas internas de Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C+++ que los Complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap` .
 
-* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. Vea [Vinculación a las dependencias de Node.js](#addons_linking_to_node_js_own_dependencies) para más información.
 
 Todos los ejemplos a continuación están disponibles para ser [descargados](https://github.com/nodejs/node-addon-examples) y pueden ser utilizados como un punto de inicio para su propio Complemento.
 
@@ -68,7 +68,7 @@ Entonces, en el ejemplo de `hello.cc`, la función de inicialización es `init` 
 
 ### Building
 
-Una vez que el código de fuente haya sido escrito, deberá ser compilado en el archivo binario `addon.node` . To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of your module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Una vez que el código de fuente haya sido escrito, deberá ser compilado en el archivo binario `addon.node` . To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of your module using a JSON-like format. Este archivo es utilizado por [node-gyp](https://github.com/nodejs/node-gyp) — una herramienta escrita específicamente para compilar Complementos de Node.js.
 
 ```json
 {
