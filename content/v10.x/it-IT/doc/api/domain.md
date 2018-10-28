@@ -32,9 +32,9 @@ Per la natura stessa di come funziona [`throw`][] in JavaScript, non c'è quasi 
 
 Il modo più sicuro per rispondere ad un errore che è stato generato è arrestare il processo. Ovviamente, in un normale web server, potrebbero esserci molte connessioni aperte e non è ragionevole arrestarle improvvisamente poiché qualcun altro potrebbe aver attivato un errore.
 
-The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
+L'approccio migliore consiste nell'inviare una risposta di errore alla richiesta che ha attivato l'errore stesso, lasciando che gli altri errori finiscano normalmente e interrompendo il listening (ascolto) di nuove richieste in quel worker.
 
-In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
+In questo modo, l'utilizzo di `domain` va di pari passo con il modulo cluster, in quanto il processo master può creare un nuovo worker tramite il fork quando un worker s'imbatte in un errore. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
 
 For example, this is not a good idea:
 
