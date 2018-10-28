@@ -861,7 +861,7 @@ class MyObject : public node::ObjectWrap {
 }  // namespace demo
 ```
 
-The implementation of `myobject.cc` is similar to before:
+De uitvoering van `myobject.cc` is gelijkwaardig aan het vorige voorbeeld:
 
 ```cpp
 // myobject.cc
@@ -935,7 +935,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Test dit met:
 
 ```js
 // test.js
@@ -949,9 +949,9 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit haken
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-lus is afgelopen maar vóórdat JavaScript VM is beëindigd en Node.js afsluit. `AtExit` haken worden geregistreerd met behulp van de `node::AtExit` API.
 
 #### void AtExit(callback, args)
 
