@@ -427,9 +427,9 @@ const server = net.createServer((conn) => {
 
 处理自己的诸如I/O，连接池等异步资源库，或管理回调函数队列的开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
 
-### `class AsyncResource()`
+### `AsyncResource() 类`
 
-The class `AsyncResource` was designed to be extended by the embedder's async resources. Using this users can easily trigger the lifetime events of their own resources.
+`AsyncResource` 类被设计为可由 embedder 的异步资源所扩展。 通过它用户可以轻松触发它们自己资源的生命周期事件。
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
 
