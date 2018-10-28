@@ -3971,74 +3971,75 @@ https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
     * Corrección de bug: los clientes paralelos al servidor no se anexaban
       entre su creación y on_connect.
     
-    * Add 'close' event to node.tcp.Server
-    * Simplify and clean up http.js. (Takes more advantage of event
-      infrastructure.)
+    * Añador evento "close" a node.tcp.Server
+    * Simplificar y limpiar http.js. (Esto hace un mayor uso de la
+      infraestructura de los eventos.)
     
-    * Add benchmark scripts. Run with "make benchmark".
+    * Añadir scripts de pruebas de rendimiento. Ejecutar con "make benchmark".
     
 
 <a id="0.1.0"></a>
 
-## 2009.06.30, Version 0.1.0
+## 2009.06.30, Versión 0.1.0
 
 https://github.com/nodejs/node/commit/813b53938b40484f63e7324c030e33711f26a149
 
-    * Update documentation, use asciidoc.
-    * EventEmitter and Promise interfaces. (Breaks previous API.)
+    * Actualizar documentación, utilizar asciidoc.
+    * Interfaces de EventEmitter y Promise. (Esto rompe con la API anterior.)
     
-    * Remove node.Process constructor in favor of node.createProcess
-    * Add -m32 flags for compiling on x64 platforms.
-      (Thanks to András Bártházi)
+    * Remover el constructor de node.Process a favor de node.createProcess
+    * Añadir banderas -m32 para la compilación en plataformas x64.
+      (Gracias a András Bártházi)
     
-    * Upgrade v8 to 1.2.10 and libev to 3.6
-    * Bugfix: Timer::RepeatSetter wasn't working.
+    * Actualizar v8 a 1.2.10 y libev a 3.6
+    * Corrección de bug: Timer::RepeatSetter no estaba funcionando.
     
-    * Bugfix: Spawning many processes in a loop
-      (reported by Felix Geisendörfer)
+    * Corrección de bug: El spawn de muchos procesos en un bucle
+      (reportado por Felix Geisendörfer)
     
 
 <a id="0.0.6"></a>
 
-## 2009.06.24, Version 0.0.6
+## 2009.06.24, Versión 0.0.6
 
 https://github.com/nodejs/node/commit/fbe0be19ebfb422d8fa20ea5204c1713e9214d5f
 
-    * Load modules via HTTP URLs (Urban Hafner)
-    * Bugfix: Add HTTPConnection->size() and HTTPServer->size()
+    * Cargar módulos a través de los URLs de HTTP (Urban Hafner)
+    * Corrección de bug: Añadir HTTPConnection->size() y HTTPServer->size()
     
-    * New node.Process API
-    * Clean up build tools, use v8's test runner.
+    * Nueva API de node.Process
+    * Limpiar las herramientas de compilación, utilizar el ejecutor de pruebas
+      de V8.
     
-    * Use ev_unref() instead of starting/stopping the eio thread
-      pool watcher.
+    * Utilizar ev_unref() en lugar de iniciar/detener el monitor del fondo de
+      hilos de eio.
     
 
 <a id="0.0.5"></a>
 
-## 2009.06.18, Version 0.0.5
+## 2009.06.18, Versión 0.0.5
 
 https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
 
-    * Support for IPv6
-    * Remove namespace node.constants
+    * Soporte para IPv6
+    * Remover node.constants del espacio de nombres
     
-    * Upgrade v8 to 1.2.8.1
-    * Accept ports as strings in the TCP client and server.
+    * Actualizar v8 a 1.2.8.1
+    * Aceptar puertos como strings el cliente y servidor de TCP.
     
-    * Bugfix: HTTP Client race
-    * Bugfix: freeaddrinfo() wasn't getting called after
-      getaddrinfo() for TCP servers
+    * Corrección de bug: Carrera del Cliente de HTTP
+    * Bugfix: freeaddrinfo() no estaba siendo llamada luego de
+      getaddrinfo() para los servidores TCP
     
-    * Add "opening" to TCP client readyState
-    * Add remoteAddress to TCP client
+    * Añadir "opening" al readyState del cliente TCP
+    * Añadir remoteAddress al cliente TCP
     
-    * Add global print() function.
+    * Añadir función print() global.
     
 
 <a id="0.0.4"></a>
 
-## 2009.06.13, Version 0.0.4
+## 2009.06.13, Versión 0.0.4
 
 https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
