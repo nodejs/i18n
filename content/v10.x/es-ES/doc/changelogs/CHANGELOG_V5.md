@@ -888,9 +888,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`71d7a4457d`](https://github.com/nodejs/node/commit/71d7a4457d)] - **test**: fix redeclared vars in test-vm-* (Rich Trott) [#4997](https://github.com/nodejs/node/pull/4997)
 * [[`38459402a5`](https://github.com/nodejs/node/commit/38459402a5)] - **test**: fix inconsistent styling in test-url (Brian White) [#5014](https://github.com/nodejs/node/pull/5014)
 * [[`4934798c0d`](https://github.com/nodejs/node/commit/4934798c0d)] - **test**: reparaciones de la prueba pummel (Rich Trott) [#4998](https://github.com/nodejs/node/pull/4998)
-* [[`3970504298`](https://github.com/nodejs/node/commit/3970504298)] - **test**: remove var redeclarations in test-crypto-* (Rich Trott) [#4981](https://github.com/nodejs/node/pull/4981)
+* [[`3970504298`](https://github.com/nodejs/node/commit/3970504298)] - **test**: removr redeclaraciones de variables en test-crypto-* (Rich Trott) [#4981](https://github.com/nodejs/node/pull/4981)
 * [[`a2881e2187`](https://github.com/nodejs/node/commit/a2881e2187)] - **test**: remove test-cluster-* var redeclarations (Rich Trott) [#4980](https://github.com/nodejs/node/pull/4980)
-* [[`c3d93299c2`](https://github.com/nodejs/node/commit/c3d93299c2)] - **test**: fix test-http-extra-response flakiness (Santiago Gimeno) [#4979](https://github.com/nodejs/node/pull/4979)
+* [[`c3d93299c2`](https://github.com/nodejs/node/commit/c3d93299c2)] - **test**: reparar la fuente de problemas test-http-extra-response (Santiago Gimeno) [#4979](https://github.com/nodejs/node/pull/4979)
 * [[`0384a43885`](https://github.com/nodejs/node/commit/0384a43885)] - **test**: Add assertion for TLS peer certificate fingerprint (Alan Cohen) [#4923](https://github.com/nodejs/node/pull/4923)
 * [[`48a353fe41`](https://github.com/nodejs/node/commit/48a353fe41)] - **test**: scope redeclared vars in test-child-process* (Rich Trott) [#4944](https://github.com/nodejs/node/pull/4944)
 * [[`89d1149467`](https://github.com/nodejs/node/commit/89d1149467)] - **test**: fix test-tls-zero-clear-in flakiness (Santiago Gimeno) [#4888](https://github.com/nodejs/node/pull/4888)
@@ -1168,22 +1168,22 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`3710028a85`](https://github.com/nodejs/node/commit/3710028a85)] - **test**: remover importaciones `util` no utilizadas (Rich Trott) [#4397](https://github.com/nodejs/node/pull/4397)
 * [[`8c9d0c1f6f`](https://github.com/nodejs/node/commit/8c9d0c1f6f)] - **test**: refactorizar test-net-connect-options-ipv6 (Rich Trott) [#4395](https://github.com/nodejs/node/pull/4395)
 * [[`874209022f`](https://github.com/nodejs/node/commit/874209022f)] - **test**: fix http-response-multiheaders (Santiago Gimeno) [#3958](https://github.com/nodejs/node/pull/3958)
-* [[`71b79bcf54`](https://github.com/nodejs/node/commit/71b79bcf54)] - **test**: test each block in addon.md contains js & cc (Rod Vagg) [#4411](https://github.com/nodejs/node/pull/4411)
-* [[`00b37de243`](https://github.com/nodejs/node/commit/00b37de243)] - **test**: fix domain-top-level-error-handler-throw (Santiago Gimeno) [#4364](https://github.com/nodejs/node/pull/4364)
-* [[`6d14b6520f`](https://github.com/nodejs/node/commit/6d14b6520f)] - **test**: use platformTimeout() in more places (Brian White) [#4387](https://github.com/nodejs/node/pull/4387)
-* [[`82f74caa56`](https://github.com/nodejs/node/commit/82f74caa56)] - **test**: fix flaky test-net-error-twice (Brian White) [#4342](https://github.com/nodejs/node/pull/4342)
-* [[`96501e55be`](https://github.com/nodejs/node/commit/96501e55be)] - **test**: try other ipv6 localhost alternatives (Brian White) [#4325](https://github.com/nodejs/node/pull/4325)
-* [[`69343d6d2e`](https://github.com/nodejs/node/commit/69343d6d2e)] - **tls_wrap**: clear errors on return (Fedor Indutny) [#4515](https://github.com/nodejs/node/pull/4515)
-* [[`ca9812cf4d`](https://github.com/nodejs/node/commit/ca9812cf4d)] - **tools**: fix warning in doc parsing (Shigeki Ohtsu) [#4537](https://github.com/nodejs/node/pull/4537)
-* [[`386030b524`](https://github.com/nodejs/node/commit/386030b524)] - **tools**: implement no-unused-vars for eslint (Rich Trott) [#4536](https://github.com/nodejs/node/pull/4536)
-* [[`14a947fc70`](https://github.com/nodejs/node/commit/14a947fc70)] - **tools**: run tick processor without forking (Matt Loring) [#4224](https://github.com/nodejs/node/pull/4224)
-* [[`8039ca06eb`](https://github.com/nodejs/node/commit/8039ca06eb)] - **util**: faster arrayToHash (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964)
+* [[`71b79bcf54`](https://github.com/nodejs/node/commit/71b79bcf54)] - **test**: probar que cada bloque en addon.md contenga js & cc (Rod Vagg) [#4411](https://github.com/nodejs/node/pull/4411)
+* [[`00b37de243`](https://github.com/nodejs/node/commit/00b37de243)] - **test**: reparar domain-top-level-error-handler-throw (Santiago Gimeno) [#4364](https://github.com/nodejs/node/pull/4364)
+* [[`6d14b6520f`](https://github.com/nodejs/node/commit/6d14b6520f)] - **test**: usar platformTimeout() en más lugares (Brian White) [#4387](https://github.com/nodejs/node/pull/4387)
+* [[`82f74caa56`](https://github.com/nodejs/node/commit/82f74caa56)] - **test**: reparar test-net-error-twice flaky (Brian White) [#4342](https://github.com/nodejs/node/pull/4342)
+* [[`96501e55be`](https://github.com/nodejs/node/commit/96501e55be)] - **test**: probar otros localhost ipv6 alternativos (Brian White) [#4325](https://github.com/nodejs/node/pull/4325)
+* [[`69343d6d2e`](https://github.com/nodejs/node/commit/69343d6d2e)] - **tls_wrap**: limpiar errores en la devolución (Fedor Indutny) [#4515](https://github.com/nodejs/node/pull/4515)
+* [[`ca9812cf4d`](https://github.com/nodejs/node/commit/ca9812cf4d)] - **tools**: reparar advertencia en el análisis del documento (Shigeki Ohtsu) [#4537](https://github.com/nodejs/node/pull/4537)
+* [[`386030b524`](https://github.com/nodejs/node/commit/386030b524)] - **tools**: implementar no-unused-vars para eslint (Rich Trott) [#4536](https://github.com/nodejs/node/pull/4536)
+* [[`14a947fc70`](https://github.com/nodejs/node/commit/14a947fc70)] - **tools**: ejecutar procesador tick sin hacer bifurcación (Matt Loring) [#4224](https://github.com/nodejs/node/pull/4224)
+* [[`8039ca06eb`](https://github.com/nodejs/node/commit/8039ca06eb)] - **util**: arrayToHash más rápido (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964)
 
 <a id="5.3.0"></a>
 
-## 2015-12-16, Version 5.3.0 (Stable), @cjihrig
+## 2015-12-16, Versión 5.3.0 (Estable), @cjihrig
 
-### Notable changes
+### Cambios notables
 
 * **buffer**: 
   * `Buffer.prototype.includes()` has been added to keep parity with TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
