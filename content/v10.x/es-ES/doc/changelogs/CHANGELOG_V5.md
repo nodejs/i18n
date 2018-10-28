@@ -1083,7 +1083,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`d265fc821a`](https://github.com/nodejs/node/commit/d265fc821a)] - **assert**: typed array deepequal performance fix (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330)
 * [[`6d8053ab56`](https://github.com/nodejs/node/commit/6d8053ab56)] - **buffer**: caso más rápido para Búfer desde Buffer(0) nuevo (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
 * [[`8781c59878`](https://github.com/nodejs/node/commit/8781c59878)] - **buffer**: refactorizar crear el búfer (Jackson Tian) [#4340](https://github.com/nodejs/node/pull/4340)
-* [[`252628294b`](https://github.com/nodejs/node/commit/252628294b)] - **child_process**: guard against race condition (Rich Trott) [#4418](https://github.com/nodejs/node/pull/4418)
+* [[`252628294b`](https://github.com/nodejs/node/commit/252628294b)] - **child_process**: proteger contra la condición de carrera (Rich Trott) [#4418](https://github.com/nodejs/node/pull/4418)
 * [[`fcf632bc6a`](https://github.com/nodejs/node/commit/fcf632bc6a)] - **crypto**: load PFX chain the same way as regular one (Fedor Indutny) [#4165](https://github.com/nodejs/node/pull/4165)
 * [[`a5094a35a0`](https://github.com/nodejs/node/commit/a5094a35a0)] - **debugger**: guard against call from non-node context (Ben Noordhuis) [#4328](https://github.com/nodejs/node/pull/4328)
 * [[`b4c51c5b76`](https://github.com/nodejs/node/commit/b4c51c5b76)] - **deps**: backport 200315c from V8 upstream (Vladimir Kurchatkin) [#4128](https://github.com/nodejs/node/pull/4128)
