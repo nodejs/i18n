@@ -889,17 +889,17 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to compare to.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
+* `targetStart` {integer} El offset dentro de `target` en el cual debe comenzar la comparación. **Default:** `0`
+* `targetEnd` {integer} El offset con `target` en el cual debe terminar la comparación (no inclusivo). **Predeterminado:** `target.length`
+* `sourceStart` {integer} El offset dentro de `buf` en el cual debe comenzar la comparación. **Default:** `0`
+* `sourceEnd` {integer} El offset dentro de `buf` en el cual debe terminar la comparación (no inclusivo). **Predeterminado:** [`buf.length`]
 * Devuelve: {integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+Compara `buf` con `target` y devuelve un número que indica si `buf` viene antes, después, o está igual que `target` en el orden de clasificación. La comparación basada en la secuencia real de bytes en cada `Buffer`.
 
-* `0` is returned if `target` is the same as `buf`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* `0` es devuelto si `target` es igual que `buf`
+* `1` es devuelto si `target` debe venir *antes* de `buf` cuando se ordenan.
+* `-1` es devuelto si `target` debe venir *después* de `buf` cuando se ordenan.
 
 Ejemplos:
 
@@ -957,7 +957,7 @@ added: v0.1.90
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
 * `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
 * `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`]
+* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`]
 * Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
@@ -1065,7 +1065,7 @@ changes:
 
 * `value` {string|Buffer|integer} The value to fill `buf` with.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} Where to stop filling `buf` (not inclusive). **Predeterminado:** [`buf.length`]
 * `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
 
@@ -1730,7 +1730,7 @@ changes:
 -->
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **Predeterminado:** [`buf.length`]
 * Devuelve: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
@@ -1909,7 +1909,7 @@ added: v0.1.90
 
 * `encoding` {string} The character encoding to decode to. **Predeterminado:** `'utf8'`
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`]
 * Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
