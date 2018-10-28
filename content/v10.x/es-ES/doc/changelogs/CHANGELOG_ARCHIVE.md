@@ -3727,7 +3727,7 @@ https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
 <a id="0.1.12"></a>
 
-## 2009.09.24, Version 0.1.12
+## 2009.09.24, Versión 0.1.12
 
 https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
 
