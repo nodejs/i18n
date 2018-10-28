@@ -3734,7 +3734,8 @@ https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
     * Novedad: Módulos del sistema, node.libraryPaths
     * API: Remover codificación "raw", renombrar "raws" como "binary".
     
-    * API: Added connection.setNoDElay() to disable Nagle algo.
+    * API: Fue añadida connection.setNoDElay() para deshabilitar el algoritmo
+      de Nagle.
     * Decrease default TCP server backlog to 128
     
     * Bugfix: memory leak involving node.fs.* methods.
