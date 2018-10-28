@@ -864,7 +864,7 @@ class MyObject : public node::ObjectWrap {
 De uitvoering van `myobject.cc` is gelijkwaardig aan het vorige voorbeeld:
 
 ```cpp
-// myobject.cc
+// mijnobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -902,13 +902,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Opgeroepen als contructor: `nieuw MijnObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Aangeroepen als simpele functie `MijnObject(...)`, verander in constueer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -955,12 +955,12 @@ Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Een pointer naar de functie die opgeroepen wordt bij de uitgang.
-* `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij de uitgang.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Een pointer naar de functie die opgeroepen wordt bij het afsluiten.
+* `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij het afsluiten.
 
 Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
 
-`AtExit` neemt twee parameters: een pointer naar een callback functie om te draaien bij uitgang, en een pointer naar ongetypte context data wat doorgegeven moet worden naar die callback.
+`AtExit` neemt twee parameters: een pointer naar een callback functie om te draaien bij het afsluiten, en een pointer naar ongetypte context data wat doorgegeven moet worden naar die callback.
 
 Callbacks worden gedraaid in 'laatste in, eerste uit' volgorde.
 
