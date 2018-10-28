@@ -386,7 +386,7 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). For example:
+从 `executionAsyncId()` 返回的ID和执行时间相关，而不是因果关系 (由`triggerAsyncId()`所提供)。 例如：
 
 ```js
 const server = net.createServer(function onConnection(conn) {
@@ -404,9 +404,9 @@ const server = net.createServer(function onConnection(conn) {
 
 #### `async_hooks.triggerAsyncId()`
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
 
-For example:
+例如：
 
 ```js
 const server = net.createServer((conn) => {
