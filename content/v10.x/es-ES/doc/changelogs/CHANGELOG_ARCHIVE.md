@@ -3736,31 +3736,33 @@ https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
     
     * API: Fue añadida connection.setNoDElay() para deshabilitar el algoritmo
       de Nagle.
-    * Decrease default TCP server backlog to 128
+    * Disminuir el backlog predeterminado del servidor TCP a 128
     
-    * Bugfix: memory leak involving node.fs.* methods.
-    * Upgrade v8 to 1.3.13
+    * Corrección de bug: reparar fuga de memoria que afectaba a los métodos
+      de node.fs.*
+    * Actualizar v8 a 1.3.13
     
 
 <a id="0.1.11"></a>
 
-## 2009.09.18, Version 0.1.11
+## 2009.09.18, Versión 0.1.11
 
 https://github.com/nodejs/node/commit/5ddc4f5d0c002bac0ae3d62fc0dc58f0d2d83ec4
 
-    * API: default to utf8 encoding for node.fs.cat()
-    * API: add node.exec()
+    * API: establecer por defecto la codificación utf8 para node.fs.cat()
+    * API: añadir node.exec()
     
-    * API: node.fs.read() takes a normal encoding parameter.
-    * API: Change arguments of emit(), emitSuccess(), emitError()
+    * API: node.fs.read() toma un parámetro de codificación normal.
+    * API: Cambiar argumentos de emit(), emitSuccess(), emitError()
     
-    * Bugfix: node.fs.write() was stack allocating buffer.
-    * Bugfix: ReportException shouldn't forget the top frame.
+    * Corrección de bug: node.fs.write() estaba asignando pilas para el
+      buffer.
+    * Corrección de bug: ReportException no debería olvidar la trama superior.
     
-    * Improve buffering for HTTP outgoing messages
-    * Fix and reenable x64 macintosh build.
+    * Mejorar el almacenamiento en buffer para mensajes HTTP salientes
+    * Arreglar y volver a habilitar la complicación x64 de macintosh.
     
-    * Upgrade v8 to 1.3.11
+    * Actualizar v8 a 1.3.11
     
 
 <a id="0.1.10"></a>
