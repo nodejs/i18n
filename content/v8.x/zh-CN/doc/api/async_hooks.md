@@ -425,7 +425,7 @@ const server = net.createServer((conn) => {
 
 ## JavaScript Embedder API
 
-Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
+处理自己的诸如I/O，连接池等异步资源库，或管理回调函数队列的开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
 
 ### `class AsyncResource()`
 
