@@ -538,7 +538,7 @@ Si `totalLength` no es proporcionado, se calcula desde las instancias de `Buffer
 
 Si `totalLength` es proporcionado, es forzado a ser un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede `totalLength`, el resultado es truncado a `totalLength`.
 
-Example: Create a single `Buffer` from a list of three `Buffer` instances
+Ejemplo: Crear un `Buffer` único a partir de una lista de tres instancias de `Buffer`
 
 ```js
 const buf1 = Buffer.alloc(10);
@@ -546,19 +546,19 @@ const buf2 = Buffer.alloc(14);
 const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
-// Prints: 42
+// Imprime: 42
 console.log(totalLength);
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
-// Prints: <Buffer 00 00 00 00 ...>
+// Imprime: <Buffer 00 00 00 00 ...>
 console.log(bufA);
 
-// Prints: 42
+// Imprime: 42
 console.log(bufA.length);
 ```
 
-### Class Method: Buffer.from(array)
+### Método de Clase: Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -571,23 +571,23 @@ Asigna un nuevo `Buffer` usando un `array` de octetos.
 Ejemplo:
 
 ```js
-// Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
+// Crea un Buffer nuevo que contiene bytes UTF-8 de la string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+Se producirá un `TypeError` si `array` no es un `Array`.
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Método de Clase: Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Una propiedad [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`
 * `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad de `.buffer` de una instancia [`TypedArray`], el `Buffer` recién creado compartirá la misma memoria asignada que el [`TypedArray`].
 
 Ejemplo:
 
@@ -597,16 +597,16 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = Buffer.from(arr.buffer);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf);
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf);
 ```
 
@@ -618,7 +618,7 @@ Ejemplo:
 const ab = new ArrayBuffer(10);
 const buf = Buffer.from(ab, 0, 2);
 
-// Prints: 2
+// Imprime: 2
 console.log(buf.length);
 ```
 
