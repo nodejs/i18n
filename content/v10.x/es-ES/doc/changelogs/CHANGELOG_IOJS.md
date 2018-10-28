@@ -1123,35 +1123,35 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`c1de6d249e`](https://github.com/nodejs/node/commit/c1de6d249e)] - **(SEMVER-MINOR)** **core**: implement runtime flag to trace sync io (Trevor Norris) [#1707](https://github.com/nodejs/node/pull/1707)
 * [[`9e7099fa4e`](https://github.com/nodejs/node/commit/9e7099fa4e)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [iojs/io.js#990](https://github.com/iojs/io.js/pull/990)
 * [[`c54d057598`](https://github.com/nodejs/node/commit/c54d057598)] - **deps**: actualizar a npm 2.10.1 (Rebecca Turner) [#1763](https://github.com/nodejs/node/pull/1763)
-* [[`367ffd167d`](https://github.com/nodejs/node/commit/367ffd167d)] - **doc**: update AUTHORS list (Rod Vagg) [#1776](https://github.com/nodejs/node/pull/1776)
-* [[`2bb2f06b3e`](https://github.com/nodejs/node/commit/2bb2f06b3e)] - **doc**: fix typo in CONTRIBUTING.md (Rich Trott) [#1755](https://github.com/nodejs/node/pull/1755)
-* [[`515afc6367`](https://github.com/nodejs/node/commit/515afc6367)] - **doc**: path is ignored in url.format (Maurice Butler) [#1753](https://github.com/nodejs/node/pull/1753)
-* [[`f0a8bc3f84`](https://github.com/nodejs/node/commit/f0a8bc3f84)] - **doc**: fix spelling in CHANGELOG (Felipe Batista)
-* [[`86dd244d9b`](https://github.com/nodejs/node/commit/86dd244d9b)] - **doc**: add notes to child_process.fork() and .exec() (Rich Trott) [#1718](https://github.com/nodejs/node/pull/1718)
-* [[`066274794c`](https://github.com/nodejs/node/commit/066274794c)] - **doc**: update links from iojs/io.js to nodejs/io.js (Frederic Hemberger) [#1715](https://github.com/nodejs/node/pull/1715)
-* [[`cb381fe3e0`](https://github.com/nodejs/node/commit/cb381fe3e0)] - **(SEMVER-MINOR)** **net**: return this from setNoDelay and setKeepAlive (Roman Reiss) [#1779](https://github.com/nodejs/node/pull/1779)
+* [[`367ffd167d`](https://github.com/nodejs/node/commit/367ffd167d)] - **doc**: actualizar la lista de AUTHORS (Rod Vagg) [#1776](https://github.com/nodejs/node/pull/1776)
+* [[`2bb2f06b3e`](https://github.com/nodejs/node/commit/2bb2f06b3e)] - **doc**: corregir error tipográfico en CONTRIBUTING.md (Rich Trott) [#1755](https://github.com/nodejs/node/pull/1755)
+* [[`515afc6367`](https://github.com/nodejs/node/commit/515afc6367)] - **doc**: la ruta es ignorada en url.format (Maurice Butler) [#1753](https://github.com/nodejs/node/pull/1753)
+* [[`f0a8bc3f84`](https://github.com/nodejs/node/commit/f0a8bc3f84)] - **doc**: corregir la ortografía en CHANGELOG (Felipe Batista)
+* [[`86dd244d9b`](https://github.com/nodejs/node/commit/86dd244d9b)] - **doc**: añadir notas a child_process.fork() y .exec() (Rich Trott) [#1718](https://github.com/nodejs/node/pull/1718)
+* [[`066274794c`](https://github.com/nodejs/node/commit/066274794c)] - **doc**: actualizar los enlaces de iojs/io.js a nodejs/io.js (Frederic Hemberger) [#1715](https://github.com/nodejs/node/pull/1715)
+* [[`cb381fe3e0`](https://github.com/nodejs/node/commit/cb381fe3e0)] - **(SEMVER-MINOR)** **net**: retornar esto desde setNoDelay y setKeepAlive (Roman Reiss) [#1779](https://github.com/nodejs/node/pull/1779)
 * [[`85d9983009`](https://github.com/nodejs/node/commit/85d9983009)] - **net**: persist net.Socket options before connect (Evan Lucas) [#1518](https://github.com/nodejs/node/pull/1518)
 * [[`39dde3222e`](https://github.com/nodejs/node/commit/39dde3222e)] - **(SEMVER-MINOR)** **net,dgram**: return this from ref and unref methods (Roman Reiss) [#1768](https://github.com/nodejs/node/pull/1768)
-* [[`5773438913`](https://github.com/nodejs/node/commit/5773438913)] - **test**: fix jslint error (Michaël Zasso) [#1743](https://github.com/nodejs/node/pull/1743)
-* [[`867631986f`](https://github.com/nodejs/node/commit/867631986f)] - **test**: fix test-sync-io-option (Santiago Gimeno) [#1734](https://github.com/nodejs/node/pull/1734)
+* [[`5773438913`](https://github.com/nodejs/node/commit/5773438913)] - **test**: corregir el error de jslint (Michaël Zasso) [#1743](https://github.com/nodejs/node/pull/1743)
+* [[`867631986f`](https://github.com/nodejs/node/commit/867631986f)] - **test**: corregir test-sync-io-option (Santiago Gimeno) [#1734](https://github.com/nodejs/node/pull/1734)
 * [[`f29762f4dd`](https://github.com/nodejs/node/commit/f29762f4dd)] - **test**: enable linting for tests (Roman Reiss) [#1721](https://github.com/nodejs/node/pull/1721)
-* [[`2a71f02988`](https://github.com/nodejs/node/commit/2a71f02988)] - **tls**: emit errors happening before handshake finish (Malte-Thorben Bruns) [#1769](https://github.com/nodejs/node/pull/1769)
-* [[`80342f649d`](https://github.com/nodejs/node/commit/80342f649d)] - **tls**: use `.destroy(err)` instead of destroy+emit (Fedor Indutny) [#1711](https://github.com/nodejs/node/pull/1711)
-* [[`9b35be5810`](https://github.com/nodejs/node/commit/9b35be5810)] - **tls**: make server not use DHE in less than 1024bits (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739)
+* [[`2a71f02988`](https://github.com/nodejs/node/commit/2a71f02988)] - **tls**: emitir los errores que ocurren antes de que finalice el establecimiento de comunicación (Malte-Thorben Bruns) [#1769](https://github.com/nodejs/node/pull/1769)
+* [[`80342f649d`](https://github.com/nodejs/node/commit/80342f649d)] - **tls**: utilizar `.destroy(err)` en lugar de destroy+emit (Fedor Indutny) [#1711](https://github.com/nodejs/node/pull/1711)
+* [[`9b35be5810`](https://github.com/nodejs/node/commit/9b35be5810)] - **tls**: hacer que el servidor no utilice DHE en menos de 1024bits (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739)
 * [[`214d02040e`](https://github.com/nodejs/node/commit/214d02040e)] - **util**: speed up common case of formatting string (Сковорода Никита Андреевич) [#1749](https://github.com/nodejs/node/pull/1749)
 * [[`d144e96fbf`](https://github.com/nodejs/node/commit/d144e96fbf)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1763](https://github.com/nodejs/node/pull/1763)
 * [[`0d6d3dda95`](https://github.com/nodejs/node/commit/0d6d3dda95)] - **win,node-gyp**: make delay-load hook C89 compliant (Sharat M R) [TooTallNate/node-gyp#616](https://github.com/TooTallNate/node-gyp/pull/616)
 
 <a id="1.8.2"></a>
 
-## 2015-05-17, Version 1.8.2, @rvagg
+## 2015-05-17, Versión 1.8.2, @rvagg
 
 **Maintenance release**
 
-## Notable changes
+## Cambios notables
 
-* **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
-* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Summary: 
+* **crypto**: se redujo significativamente el uso de memoria para TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
+* **npm**: Actualizar npm a 2.9.0. Vea las notas de lanzamiento [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para más detalles. Summary: 
   * Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
   * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
