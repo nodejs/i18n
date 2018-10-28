@@ -464,7 +464,7 @@ The class `AsyncResource` is designed to be extended by the embedder's async res
 
 当 `AsyncResource` 被初始化时，`init` 钩子将会触发。
 
-The following is an overview of the `AsyncResource` API.
+以下是对 `AsyncResource` API 的概览。
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
@@ -504,7 +504,7 @@ asyncResource.emitAfter();
 
 #### new AsyncResource(type[, options])
 
-* `type` {string} The type of async event.
+* `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
@@ -553,7 +553,7 @@ deprecated: v9.6.0
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitAfter()
 
@@ -567,7 +567,7 @@ Call all `after` callbacks. If nested calls to `emitBefore()` were made, then ma
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitDestroy()
 
