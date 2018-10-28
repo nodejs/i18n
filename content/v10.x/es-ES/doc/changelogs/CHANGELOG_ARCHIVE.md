@@ -3675,28 +3675,30 @@ https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
 https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
-    * Feature: Improved addon builds with node-waf
-    * Feature: node.SignalHandler (Brandon Beacher)
+    * Novedad: Compilaciones de complementos mejoradas con node-waf
+    * Novedad: node.SignalHandler (Brandon Beacher)
     
-    * Feature: Enable V8 debugging (but still need to make a debugger)
-    * API: Rename library /utils.js to /sys.js
+    * Novedad: Habilitar la depuración de V8 (pero todavía se necesita crear
+      un depurador)
+    * API: Renombrar librería /utils.js como /sys.js
     
-    * Clean up Node's build system
-    * Don't use parseUri for HTTP server
+    * Limpiar el sistema de compilación de Node
+    * No utilizar parseUri para el servidor HTTP
     
-    * Remove node.pc
-    * Don't use /bin/sh to create child process except with exec()
+    * Remover node.pc
+    * No utilizar /bin/sh para crear proceso secundario, excepto con exec()
     
-    * API: Add __module to reference current module
-    * API: Remove include() add node.mixin()
+    * API: Añadir __module para referenciar al módulo actual
+    * API: Remover include() añadir node.mixin()
     
-    * Normalize http headers; "Content-Length" becomes "content-length"
-    * Upgrade V8 to 1.3.15
+    * Normalizar cabeceras http; "Content-Length" se convierte en
+      "content-length"
+    * Actualizar V8 a 1.3.15
     
 
 <a id="0.1.13"></a>
 
-## 2009.09.30, Version 0.1.13
+## 2009.09.30, Versión 0.1.13
 
 https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
