@@ -3648,28 +3648,30 @@ https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
 <a id="0.1.15"></a>
 
-## 2009.10.28, Version 0.1.15
+## 2009.10.28, Versión 0.1.15
 
 https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
-    * Many build system fixes (esp. for OSX users)
-    * Feature: promise.timeout() (Felix Geisendörfer)
+    * Muchas correcciones del sistema de compilación (especialmente para
+      usuarios de OSX)
+    * Novedad: promise.timeout() (Felix Geisendörfer)
     
-    * Feature: Added external interface for signal handlers, process.pid, and
-      process.kill() (Brandon Beacher)
+    * Novedad: Añadida interfaz externa para manejadores de señales,
+      process.pid, y process.kill() (Brandon Beacher)
     
-    * API: Rename node.libraryPaths to require.paths
-    * Bugfix: 'data' event for stdio should emit a string
+    * API: Renombrar node.libraryPaths como require.paths
+    * Corrección de bug: el evento "data" para stdio debería emitir una
+      string.
     
-    * Large file support
-    * Upgrade http_parser
+    * Soporte para archivos grandes
+    * Actualizar http_parser
     
-    * Upgrade v8 to 1.3.16
+    * Actualizar v8 a 1.3.16
     
 
 <a id="0.1.14"></a>
 
-## 2009.10.09, Version 0.1.14
+## 2009.10.09, Versión 0.1.14
 
 https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
