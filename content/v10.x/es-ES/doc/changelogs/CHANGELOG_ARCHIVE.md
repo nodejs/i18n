@@ -3625,25 +3625,25 @@ https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
 https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
-    * API: Use CommonJS-style module requiring
-      - require("/sys.js") becomes require("sys")
-      - require("circle.js") becomes require("./circle")
-      - process.path.join() becomes require("path").join()
-      - __module becomes module
+    * API: Utilizar requerimiento de módulos de estilo CommonJS
+      - require("/sys.js") se convierte en require("sys")
+      - require("circle.js") se convierte en require("./circle")
+      - process.path.join() se convierte en require("path").join()
+      - __module se convierte en "module"
     
-    * API: Many namespacing changes
-      - Move node.\* into process.\*
-      - Move node.dns into module "dns"
-      - Move node.fs into module "posix"
-      - process is no longer the global object. GLOBAL is.
-    For more information on the API changes see:
+    * API: Muchos cambios del espacio de nombres
+      - Mover node.\* adentro de process.\*
+      - Mover node.dns adentro del módulo "dns"
+      - Mover node.fs adentro del módulo "posix"
+      - "process" ya no es el objeto global. Es GLOBAL.
+    Para más información sobre los cambios de API, vea:
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
     
-    * Feature: process.platform, process.memoryUsage()
-    * Feature: promise.cancel() (Felix Geisendörfer)
+    * Novedad: process.platform, process.memoryUsage()
+    * Novedad: promise.cancel() (Felix Geisendörfer)
     
-    * Upgrade V8 to 1.3.18
+    * Actualizar V8 a 1.3.18
     
 
 <a id="0.1.15"></a>
