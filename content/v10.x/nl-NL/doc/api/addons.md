@@ -783,9 +783,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Geef ingepakte objecten door
+### Ingepakte objecten doorgeven
 
-Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakte objecten door te geven door ze uit te pakken met behulp van de Node.js hulp functie. `node::ObjectWrap::Unwrap`. De volgende voorbeelden laat de functie `add()` zien, die twee `MyObject` objecten als invoerargumenten kan nemen:
+Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakte objecten door te geven door ze uit te pakken met behulp van de Node.js hulp functie. `node::ObjectWrap::Unwrap`. De volgende voorbeelden laten de `add()` functie zien, die twee `MyObject` objecten als invoerargumenten kan nemen:
 
 ```cpp
 // addon.cc
