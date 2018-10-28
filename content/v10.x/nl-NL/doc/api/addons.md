@@ -955,10 +955,10 @@ Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Een pointer naar de functie die opgeroepen wordt bij de uitgang.
+* `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij de uitgang.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
 
 `AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
