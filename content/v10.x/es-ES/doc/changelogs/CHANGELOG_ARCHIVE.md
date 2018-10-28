@@ -3939,36 +3939,37 @@ https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
       peticiones de clientes sin Content-Lenght.
     
     * Corrección de bug: Números de línea en stack traces.
-    * Bugfix: negative integers in raw encoding stream
+    * Corrección de bug: enteros negativos en stream de codificación raw
     
-    * Bugfix: node.fs.File was not passing args to promise callbacks.
+    * Corrección de bug: node.fs.File no estaba pasando argumentos a las
+      callbacks de promesas.
     
 
 <a id="0.1.1"></a>
 
-## 2009.07.27, Version 0.1.1
+## 2009.07.27, Versión 0.1.1
 
 https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
 
-    * Simplify and clean up ObjectWrap.
-    * Upgrade liboi (which is now called evcom)
-      Upgrade libev to 3.7
-      Upgrade V8 to 1.2.14
+    * Simplificar y limpiar ObjectWrap.
+    * Actualizar liboi (la cual ahora se llama evcom)
+      Actualizar libev a 3.7
+     Actualizar V8 a 1.2.14
     
-    * Array.prototype.encodeUtf8 renamed to node.encodeUtf8(array)
-    * Move EventEmitter.prototype.emit() completely into C++.
+    * Array.prototype.encodeUtf8 fue renombrada como node.encodeUtf8(array)
+    * Mover completamente a EventEmitter.prototype.emit() adentro de C++.
     
-    * Bugfix: Fix memory leak in event emitters.
+    * Corrección de bug: Reparar fuga de memoria en emisores de evento.
       http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
     
-    * Bugfix: Had problems reading scripts with non-ascii characters.
-    * Bugfix: Fix Detach() in node::Server
+    * Corrección de bug: Tenía problemas leyendo scripts con caracteres no-ascii.
+    * Corrección de bug: Arreglar Detach() en node::Server
     
-    * Bugfix: Sockets not properly reattached if reconnected during
-      disconnect event.
+    * Corrección de bug: Los sockets no estaban siendo correctamente
+      re-anexados si había una reconexión durante un evento "disconnect".
     
-    * Bugfix: Server-side clients not attached between creation and
-      on_connect.
+    * Corrección de bug: los clientes paralelos al servidor no se anexaban
+      entre su creación y on_connect.
     
     * Add 'close' event to node.tcp.Server
     * Simplify and clean up http.js. (Takes more advantage of event
