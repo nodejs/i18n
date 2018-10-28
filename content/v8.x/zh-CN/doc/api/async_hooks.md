@@ -433,9 +433,9 @@ const server = net.createServer((conn) => {
 
 当 `AsyncResource` 被初始化时，`init` 钩子将会触发。
 
-*Note*: `before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort.
+*注意：*：`before` 和 `after`回调函数必须以被调用的顺序被解析。 否则，会发生不可恢复错误且进程被终止。
 
-The following is an overview of the `AsyncResource` API.
+以下是对 `AsyncResource` API 的概览。
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
@@ -465,7 +465,7 @@ asyncResource.triggerAsyncId();
 
 #### `AsyncResource(type[, options])`
 
-* `type` {string} The type of async event.
+* `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`
