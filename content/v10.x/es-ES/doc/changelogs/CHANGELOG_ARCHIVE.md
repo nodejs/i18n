@@ -3854,31 +3854,34 @@ https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
 https://github.com/nodejs/node/commit/9c97b1db3099d61cd292aa59ec2227a619f3a7ab
 
-    * Bugfix: Ignore SIGPIPE.
+    * Corrección de bug: Ignorar SIGPIPE.
     
 
 <a id="0.1.5"></a>
 
-## 2009.08.21, Version 0.1.5
+## 2009.08.21, Versión 0.1.5
 
 https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
-    * Bugfix: Buggy connections could crash node.js. Now check
-      connection before sending data every time (Kevin van Zonneveld)
+    * Corrección de bug: Las conexiones con errores pueden colapsar a node.js. 
+      Ahora probar la conexión en cada ocasión antes de enviar datos
+      (Kevin van Zonneveld)
     
-    * Bugfix: stdin fd (0) being ignored by node.File. (Abe Fettig)
-    * API: Remove connection.fullClose()
+    * Corrección de bug: fd (0) de stdin está siendo ignorado por node.File. 
+      (Abe Fettig)
+    * API: Remover connection.fullClose()
     
-    * API: Return the EventEmitter from addListener for chaining.
-    * API: tcp.Connection "disconnect" event renamed to "close"
+    * API: Devolver al EventEmitter desde addListener para el encadenamiento.
+    * API: el evento "disconnect" de tcp.Connection fue renombrado como
+      "close"
     
-    * Upgrade evcom
-      Upgrade v8 to 1.3.6
+    * Actualizar evcom
+      Actualizar v8 a 1.3.6
     
 
 <a id="0.1.4"></a>
 
-## 2009.08.13, Version 0.1.4
+## 2009.08.13, Versión 0.1.4
 
 https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
