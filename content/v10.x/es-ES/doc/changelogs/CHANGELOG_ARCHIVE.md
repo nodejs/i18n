@@ -3621,7 +3621,7 @@ https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
 <a id="0.1.16"></a>
 
-## 2009.11.03, Version 0.1.16
+## 2009.11.03, Versión 0.1.16
 
 https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
