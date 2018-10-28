@@ -711,9 +711,9 @@ const buf = Buffer.from(ab, 0, 2);
 console.log(buf.length);
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+Se producirá un `TypeError` si `arrayBuffer` no es un [`ArrayBuffer`] o un [`SharedArrayBuffer`].
 
-### Class Method: Buffer.from(buffer)
+### Método de Clase: Buffer.from(buffer)
 
 <!-- YAML
 added: v5.10.0
@@ -731,22 +731,22 @@ const buf2 = Buffer.from(buf1);
 
 buf1[0] = 0x61;
 
-// Prints: auffer
+// Imprime: auffer
 console.log(buf1.toString());
 
-// Prints: buffer
+// Imprime: buffer
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+Se producirá un `TypeError` si `buffer` no es un `Buffer`.
 
-### Class Method: Buffer.from(string[, encoding])
+### Método de Clase: Buffer.from(string[, encoding])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
+* `string` {string} Una string a codificar.
 * `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
 Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
@@ -756,20 +756,20 @@ Ejemplos:
 ```js
 const buf1 = Buffer.from('this is a tést');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf1.toString());
 
-// Prints: this is a tC)st
+// Imprime: this is a tC)st
 console.log(buf1.toString('ascii'));
 
 
 const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+Se producirá un `TypeError` si `string` no es una string.
 
 ### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
 
@@ -805,37 +805,37 @@ const buf = Buffer.from(new Foo(), 'utf8');
 // <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-### Class Method: Buffer.isBuffer(obj)
+### Método de Clase: Buffer.isBuffer(obj)
 
 <!-- YAML
 added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+Devuelve `true` si `obj` es un `Buffer`, de otra forma es `false`.
 
-### Class Method: Buffer.isEncoding(encoding)
+### Método de Clase: Buffer.isEncoding(encoding)
 
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} Un nombre de codificación de caracteres a verificar.
+* Devuelve: {boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+Devuelve `true` si `encoding` contiene una codificación de caracteres permitida, de otra forma es `false`.
 
-### Class Property: Buffer.poolSize
+### Propiedad de Clase: Buffer.poolSize
 
 <!-- YAML
 added: v0.11.3
 -->
 
-* {integer} **Default:** `8192`
+* {integer} **Predeterminado:** `8192`
 
-This is the number of bytes used to determine the size of pre-allocated, internal `Buffer` instances used for pooling. This value may be modified.
+Este es el número de bytes usados para determinar el tamaño de instancias internas de `Buffer` pre-asignadas, usadas para realizar pooling. Este valor puede ser modificado.
 
 ### buf[index]
 
@@ -844,7 +844,7 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+El operador de índice `[index]` puede ser usado para obtener y establecer el octeto en la posición `index` en `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
 
@@ -1034,7 +1034,7 @@ changes:
 -->
 
 * `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] to compare to.
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
