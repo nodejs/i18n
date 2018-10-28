@@ -980,7 +980,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
@@ -1146,7 +1146,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
