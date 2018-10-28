@@ -908,7 +908,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Aangeroepen als simpele functie `MijnObject(...)`, verander in constueer oproep.
+    // Aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
