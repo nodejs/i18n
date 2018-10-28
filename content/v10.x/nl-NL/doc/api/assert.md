@@ -21,7 +21,7 @@ added: v0.1.21
 -->
 
 * `opties` {Object} 
-  * `message` {string} indien aanwezig, zal het foutbericht op deze waarde worden ingesteld.
+  * `message` {string} Indien aanwezig, zal het foutbericht op deze waarde worden ingesteld.
   * `actual` {any} De `actual` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt voor de `actual` fout input in het geval waar bijv. [`assert.strictEqual()`] is gebruikt.
   * `expected` {any} De `expected` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt voor de `expected` fout input waar bijv. [`assert.strictEqual()`] is gebruikt.
   * `operator` {string} De `operator` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt om aan te geven welke werkwijze werd gebruikt ter vergelijking (of welke bevestigingsfunctie de fout heeft veroorzaakt).
