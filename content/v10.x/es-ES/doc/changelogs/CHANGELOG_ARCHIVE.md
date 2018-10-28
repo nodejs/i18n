@@ -4052,14 +4052,14 @@ https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
 https://github.com/nodejs/node/commit/4cfc982c776475eb65fb1080e6b575a86505a347
 
-* Many bug fixes including the problem with http.Client on macintosh
+* Muchas correcciones de bugs, incluyendo el problema con http.Client en macintosh
 
-* Upgrades v8 to 1.2.7
+* Actualiza v8 a 1.2.7
 
-* Adds onExit hook
+* Añade hook onExit
 
-* Guard against buffer overflow in http parser
+* Proteger contra el desbordamiento de buffer en el analizador de http
 
-* require() and include() now need the ".js" extension
+* require() e include() ahora necesitan la extensión ".js"
 
-* http.Client uses identity transfer encoding by default.
+* http.Client utiliza por defecto la codificación de transferencia de identidad.
