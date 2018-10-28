@@ -431,7 +431,7 @@ const server = net.createServer((conn) => {
 
 `AsyncResource` 类被设计为可由 embedder 的异步资源所扩展。 通过它用户可以轻松触发它们自己资源的生命周期事件。
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+当 `AsyncResource` 被初始化时，`init` 钩子将会触发。
 
 *Note*: `before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort.
 
