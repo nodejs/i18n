@@ -844,11 +844,11 @@ type: property
 name: [index]
 -->
 
-El operador de índice `[index]` puede ser usado para obtener y establecer el octeto en la posición `index` en `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+El operador de índice `[index]` puede ser usado para obtener y establecer el octeto en la posición `index` en `buf`. Los valores refieren a bytes individuales, por lo que el rango de valor legal está entre `0x00` y `0xFF` (hex) o `0` y `255` (decimal).
 
-This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
+Este operador es heredado de `Uint8Array`, por lo que su comportamiento en el acceso fuera de los límites es el mismo que `UInt8Array` - es decir, obtener devoluciones `undefined` y la configuración no hace nada.
 
-Example: Copy an ASCII string into a `Buffer`, one byte at a time
+Ejemplo: Copiar una string ASCII en un `Buffer`, un byte a la vez
 
 ```js
 const str = 'Node.js';
@@ -858,7 +858,7 @@ for (let i = 0; i < str.length; i++) {
   buf[i] = str.charCodeAt(i);
 }
 
-// Prints: Node.js
+// Imprime: Node.js
 console.log(buf.toString('ascii'));
 ```
 
