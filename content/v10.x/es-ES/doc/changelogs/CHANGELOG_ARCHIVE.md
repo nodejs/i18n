@@ -3714,15 +3714,15 @@ https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
     
     * Añadir advertencia cuando la pila de la co-rutina se hace demasiado
       grande.
-    * Enhance repl library (Ray Morgan)
+    * Habilitar librería repl (Ray Morgan)
     
-    * Bugfix: build script for
-        GCC 4.4 (removed -Werror in V8),
-        on Linux 2.4,
-        and with Python 2.4.4.
+    * Corrección de bug: script de compilación para
+        GCC 4.4 (-Werror removido en V8),
+        en Linux 2.4,
+        y con Python 2.4.4.
     
-    * Add read() and write() to /file.js to read and write
-      whole files at once.
+    * Añadir read() y write() a /file.js para leer y escribir
+      archivos enteros de una sola vez.
     
 
 <a id="0.1.12"></a>
