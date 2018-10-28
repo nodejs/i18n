@@ -3702,16 +3702,18 @@ https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
 https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
-    * Feature: Multipart stream parser (Felix Geisendörfer)
-    * API: Move node.puts(), node.exec() and others to /utils.js
+    * Novedad: Analizador de streams multipartes (Felix Geisendörfer)
+    * API: Mover node.puts(), node.exec() y otros a /utils.js
     
-    * API: Move http, tcp libraries to /http.js and /tcp.js
-    * API: Rename node.exit() to process.exit()
+    * API: Mover librerías de http y tcp a /http.js y /tcp.js
+    * API: Renombrar node.exit() como process.exit()
     
-    * Bugfix: require() and include() should work in callbacks.
-    * Pass the Host header in http.cat calls
+    * Corrección de bug: require() e include() deberían funcionar en
+      las callbacks.
+    * Pasar la cabecera de Host adentro de las llamadas de http.cat
     
-    * Add warning when coroutine stack size grows too large.
+    * Añadir advertencia cuando la pila de la co-rutina se hace demasiado
+      grande.
     * Enhance repl library (Ray Morgan)
     
     * Bugfix: build script for
