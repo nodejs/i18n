@@ -587,7 +587,7 @@ Returns the values of all name-value pairs whose name is `name`. If there are no
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if there is at least one name-value pair whose name is `name`.
 
