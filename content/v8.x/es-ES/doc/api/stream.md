@@ -617,7 +617,7 @@ end
 added: v0.11.14
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 The `readable.isPaused()` method returns the current operating state of the Readable. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
 
