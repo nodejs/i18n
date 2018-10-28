@@ -3828,24 +3828,24 @@ https://github.com/nodejs/node/commit/734e86b9e568de5f694ae290a2b5c9395b70937c
 https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
     * Novedad: objeto "process" global. Emite "exit".
-    * Feature: promise.wait()
+    * Novedad: promise.wait()
     
-    * Feature: node.stdio
-    * Feature: EventEmitters emit "newListener" when listeners are
-      added
+    * Novedad: node.stdio
+    * Novedad: EventEmitters emite "newListener" cuando son añadidos
+      listeners
     
-    * API:  Use flat object instead of array-of-arrays for HTTP
-      headers.
+    * API:  Utilizar objeto plano en lugar de array-of-arrays para cabeceras
+      HTTP.
     
-    * API: Remove buffered file object (node.File)
-    * API: require(), include() are synchronous. (Uses
-      continuations.)
+    * API: Remover objeto de archivo (node.File) almacenado en buffer
+    * API: require(), include() son sincrónicas. (Continuaciones de
+      usos.)
     
-    * API: Deprecate onLoad and onExit.
-    * API: Rename node.Process to node.ChildProcess
+    * API: Desaprobar onLoad y onExit.
+    * API: Renombrar node.Process como node.ChildProcess
     
-    * Refactor node.Process to take advantage of evcom_reader/writer.
-    * Upgrade v8 to 1.3.7
+    * Refactorizar node.Process para sacar provecho de evcom_reader/writer.
+    * Actualizar v8 a 1.3.7
     
 
 <a id="0.1.6"></a>
