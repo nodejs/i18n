@@ -3897,7 +3897,7 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
     * Corrección de bug: response.setBodyEncoding("ascii") no está
       funcionando.
     
-    * Corrección de bug: Ints negativos en node.fs.read() y on_body de HTTP.
+    * Corrección de bug: Enteros negativos en node.fs.read() y on_body de HTTP.
     * Actualizar v8 a 1.3.4
       Actualizar libev a 3.8
       Actualizar http_parser a v0.2
@@ -3909,34 +3909,36 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
 https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
-    * Upgrade v8 to 1.3.2
-    * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not
-      working
+    * Actualizar v8 a 1.3.2
+    * Corrección de bug: node.http.ServerRequest.setBodyEncoding('ascii') no
+      está funcionando
     
-    * Bugfix: node.encodeUtf8 was broken. (Connor Dunn)
-    * Add ranlib to udns Makefile.
+    * Corrección de bug: node.encodeUtf8 estaba dañada. (Connor Dunn)
+    * Añadir ranlib al Makefile de udns.
     
-    * Upgrade evcom - fix accepting too many connections issue.
-    * Initial support for shebang
+    * Actualizar evcom - solucionar el problema de aceptar demasiadas
+      conexiones.
+    * Soporte inicial para shebang
     
-    * Add simple command line switches
-    * Add node.version API
+    * Añadir interruptores simples de la línea de comandos
+    * Añadir API de node.version
     
 
 <a id="0.1.2"></a>
 
-## 2009.08.01, Version 0.1.2
+## 2009.08.01, Versión 0.1.2
 
 https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
 
-    * Add DNS API
-    * node.tcp.Server's backlog option is now an argument to listen()
+    * Añadir API de DNS
+    * La opción de backlog de node.tcp.Server ahora es un argumento para
+      listen()
     
-    * Upgrade V8 to 1.3.1
-    * Bugfix: Default to chunked for client requests without
-      Content-Length.
+    * Actualizar V8 a 1.3.1
+    * Corrección de bug: Establecer "chunked" predeterminadamente al tenerse
+      peticiones de clientes sin Content-Lenght.
     
-    * Bugfix: Line numbers in stack traces.
+    * Corrección de bug: Números de línea en stack traces.
     * Bugfix: negative integers in raw encoding stream
     
     * Bugfix: node.fs.File was not passing args to promise callbacks.
