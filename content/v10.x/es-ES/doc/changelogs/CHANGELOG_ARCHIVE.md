@@ -4043,12 +4043,12 @@ https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
 
 https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
-* Add interrupt() method to server-side HTTP requests.
-* Bugfix: onBodyComplete was not getting called on server-side HTTP
+* Añadir el método interrupt() a las solicitudes HTTP paralelas al servidor.
+* Corrección de bug: onBodyComplete no estaba siendo llamada en el HTTP paralelo al servidor
 
 <a id="0.0.3"></a>
 
-## 2009.06.11, Version 0.0.3
+## 2009.06.11, Versión 0.0.3
 
 https://github.com/nodejs/node/commit/4cfc982c776475eb65fb1080e6b575a86505a347
 
