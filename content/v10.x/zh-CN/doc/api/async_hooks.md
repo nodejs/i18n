@@ -462,7 +462,7 @@ Library developers that handle their own asynchronous resources performing tasks
 
 The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+当 `AsyncResource` 被初始化时，`init` 钩子将会触发。
 
 The following is an overview of the `AsyncResource` API.
 
