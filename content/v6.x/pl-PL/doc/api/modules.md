@@ -428,7 +428,7 @@ module.exports.hello = true; // Exported from require of module
 exports = { hello: false };  // Not exported, only available in the module
 ```
 
-When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`, for example:
+Gdy właściwość `module.exports` zostanie całkowicie zastąpiona przez nowy obiekt, często przypisuje się także `exports`, na przykład:
 
 <!-- eslint-disable func-name-matching -->
 
