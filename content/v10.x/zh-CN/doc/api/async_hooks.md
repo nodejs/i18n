@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些调用时非常有用。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -402,7 +402,7 @@ Note that promise contexts may not get precise `executionAsyncIds` by default. S
 
 #### async_hooks.triggerAsyncId()
 
-* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
+* 返回：{number} 负责调用正在被执行的回调函数的资源ID。
 
 ```js
 const server = net.createServer((conn) => {
@@ -507,7 +507,7 @@ asyncResource.emitAfter();
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动的 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
 Example usage:
 
