@@ -703,4 +703,4 @@ added: v8.10.0
 
 * {string[]}
 
-A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third-party module or not.
+A list of the names of all modules provided by Node.js. Może służyć do weryfikacji jeśli moduł jest obsługiwany przez moduł innej firmy czy też nie.
