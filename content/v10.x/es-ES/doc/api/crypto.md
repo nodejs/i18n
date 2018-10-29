@@ -1078,7 +1078,7 @@ verify.end();
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o Falso
 ```
 
 Ejemplo: Usando los métodos [`verify.update()`][] y [`verify.verify()`][]:
@@ -1092,7 +1092,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o falso
 ```
 
 ### verify.update(data[, inputEncoding])
