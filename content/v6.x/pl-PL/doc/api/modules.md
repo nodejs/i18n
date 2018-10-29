@@ -450,8 +450,8 @@ function require(/* ... */) {
      // W tym momencie eksport nie jest już skrótem do module.exports i
      // ten moduł będzie nadal eksportował pusty obiekt domyślny.
     module.exports = someFunc;
-    // At this point, the module will now export someFunc, instead of the
-    // default object.
+     // W tym momencie moduł wyeksportuje someFunc, zamiast
+     // domyślnego obiektu.
   })(module, module.exports);
   return module.exports;
 }
