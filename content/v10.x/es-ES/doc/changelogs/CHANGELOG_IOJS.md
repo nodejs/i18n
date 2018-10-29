@@ -1244,15 +1244,15 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
   * ahora es posible filtrar por proveedores
   * las banderas de bits han sido eliminadas y reemplazadas con llamadas de método en el objeto de enlace
   * *note that this is an unstable API so feature additions and breaking changes won't change io.js semver*
-* **libuv**: resolves numerous io.js issues: 
+* **libuv**: resuelve numerosos problemas de io.js: 
   * [#862](https://github.com/nodejs/node/issues/862) prevent spawning child processes with invalid stdio file descriptors
-  * [#1397](https://github.com/nodejs/node/issues/1397) fix EPERM error with fs.access(W_OK) on Windows
-  * [#1621](https://github.com/nodejs/node/issues/1621) build errors associated with the bundled libuv
-  * [#1512](https://github.com/nodejs/node/issues/1512) should properly fix Windows termination errors
+  * [#1397](https://github.com/nodejs/node/issues/1397) corregir el error EPERM con fs.access(W_OK) en Windows
+  * [#1621](https://github.com/nodejs/node/issues/1621) errores de compilación asociados con el libuv empaquetado
+  * [#1512](https://github.com/nodejs/node/issues/1512) debería corregir correctamente los errores de terminación de Windows
 * **addons**: the `NODE_DEPRECATED` macro was causing problems when compiling addons with older compilers, this should now be resolved (Ben Noordhuis) [#1626](https://github.com/nodejs/node/pull/1626)
-* **V8**: upgrade V8 from 4.2.77.18 to 4.2.77.20 with minor fixes, including a bug preventing builds on FreeBSD
+* **V8**: actualización de V8 de 4.2.77.18 a 4.2.77.20 con arreglos menores, incluyendo un error que evita las compilaciones en FreeBSD
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -1260,36 +1260,36 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
 * [[`7dde95a8bd`](https://github.com/nodejs/node/commit/7dde95a8bd)] - **async-wrap**: remove before/after calls in init (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
-* [[`bd42ba056a`](https://github.com/nodejs/node/commit/bd42ba056a)] - **async-wrap**: set flags using functions (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
-* [[`4b2c786449`](https://github.com/nodejs/node/commit/4b2c786449)] - **async-wrap**: pass PROVIDER as first arg to init (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
+* [[`bd42ba056a`](https://github.com/nodejs/node/commit/bd42ba056a)] - **async-wrap**: establecer banderas utilizando funciones (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
+* [[`4b2c786449`](https://github.com/nodejs/node/commit/4b2c786449)] - **async-wrap**: pasar PROVIDER como primer argumento a init (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
 * [[`84bf609fd2`](https://github.com/nodejs/node/commit/84bf609fd2)] - **async-wrap**: don't call init callback unnecessarily (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
-* [[`04cc03b029`](https://github.com/nodejs/node/commit/04cc03b029)] - **deps**: update libuv to 1.5.0 (Saúl Ibarra Corretgé) [#1646](https://github.com/nodejs/node/pull/1646)
-* [[`b16d9c28e8`](https://github.com/nodejs/node/commit/b16d9c28e8)] - **deps**: upgrade v8 to 4.2.77.20 (Ben Noordhuis) [#1639](https://github.com/nodejs/node/pull/1639)
+* [[`04cc03b029`](https://github.com/nodejs/node/commit/04cc03b029)] - **deps**: actualizar libuv a 1.5.0 (Saúl Ibarra Corretgé) [#1646](https://github.com/nodejs/node/pull/1646)
+* [[`b16d9c28e8`](https://github.com/nodejs/node/commit/b16d9c28e8)] - **deps**: actualizar v8 a 4.2.77.20 (Ben Noordhuis) [#1639](https://github.com/nodejs/node/pull/1639)
 * [[`9ec3109272`](https://github.com/nodejs/node/commit/9ec3109272)] - **doc**: add TC meeting 2015-04-29 minutes (Rod Vagg) [#1585](https://github.com/nodejs/node/pull/1585)
-* [[`2c7206254c`](https://github.com/nodejs/node/commit/2c7206254c)] - **doc**: fix typo in readme.md (AQNOUCH Mohammed) [#1643](https://github.com/nodejs/node/pull/1643)
-* [[`71dc7152ee`](https://github.com/nodejs/node/commit/71dc7152ee)] - **doc**: fix PR link in CHANGELOG (Brian White) [#1624](https://github.com/nodejs/node/pull/1624)
-* [[`b97b96d05a`](https://github.com/nodejs/node/commit/b97b96d05a)] - **install**: fix NameError (thefourtheye) [#1628](https://github.com/nodejs/node/pull/1628)
-* [[`6ccbe75384`](https://github.com/nodejs/node/commit/6ccbe75384)] - **js_stream**: fix buffer index in DoWrite (Shigeki Ohtsu) [#1635](https://github.com/nodejs/node/pull/1635)
-* [[`c43855c49c`](https://github.com/nodejs/node/commit/c43855c49c)] - **src**: export the ParseEncoding function on Windows (Ivan Kozik) [#1596](https://github.com/nodejs/node/pull/1596)
+* [[`2c7206254c`](https://github.com/nodejs/node/commit/2c7206254c)] - **doc**: corregir error tipográfico en readme.md (AQNOUCH Mohammed) [#1643](https://github.com/nodejs/node/pull/1643)
+* [[`71dc7152ee`](https://github.com/nodejs/node/commit/71dc7152ee)] - **doc**: corregir el enlace de PR en CHANGELOG (Brian White) [#1624](https://github.com/nodejs/node/pull/1624)
+* [[`b97b96d05a`](https://github.com/nodejs/node/commit/b97b96d05a)] - **install**: corregir NameError (thefourtheye) [#1628](https://github.com/nodejs/node/pull/1628)
+* [[`6ccbe75384`](https://github.com/nodejs/node/commit/6ccbe75384)] - **js_stream**: corregir el índice del buffer en DoWrite (Shigeki Ohtsu) [#1635](https://github.com/nodejs/node/pull/1635)
+* [[`c43855c49c`](https://github.com/nodejs/node/commit/c43855c49c)] - **src**: exportar la función ParseEncoding function en Windows (Ivan Kozik) [#1596](https://github.com/nodejs/node/pull/1596)
 * [[`8315b22390`](https://github.com/nodejs/node/commit/8315b22390)] - **src**: fix pedantic cpplint whitespace warnings (Ben Noordhuis) [#1640](https://github.com/nodejs/node/pull/1640)
 * [[`b712af79a7`](https://github.com/nodejs/node/commit/b712af79a7)] - **src**: fix NODE_DEPRECATED macro with old compilers (Ben Noordhuis) [#1626](https://github.com/nodejs/node/pull/1626)
-* [[`2ed10f1349`](https://github.com/nodejs/node/commit/2ed10f1349)] - **src**: fix minor inefficiency in Buffer::New() call (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
-* [[`f696c9efab`](https://github.com/nodejs/node/commit/f696c9efab)] - **src**: fix deprecated use of Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
-* [[`0c8f13df8f`](https://github.com/nodejs/node/commit/0c8f13df8f)] - **tools**: remove unused GuessWordSize function (thefourtheye) [#1638](https://github.com/nodejs/node/pull/1638)
+* [[`2ed10f1349`](https://github.com/nodejs/node/commit/2ed10f1349)] - **src**: corregir la ineficiencia menor en la llamada Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
+* [[`f696c9efab`](https://github.com/nodejs/node/commit/f696c9efab)] - **src**: corregir el uso desaprobado de Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
+* [[`0c8f13df8f`](https://github.com/nodejs/node/commit/0c8f13df8f)] - **tools**: eliminar la función GuessWordSize sin utilizar (thefourtheye) [#1638](https://github.com/nodejs/node/pull/1638)
 
 <a id="2.0.0"></a>
 
-## 2015-05-04, Version 2.0.0, @rvagg
+## 2015-05-04, Versión 2.0.0, @rvagg
 
 ### Breaking changes
 
-Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
+Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
 
 * V8 upgrade to 4.2, minor changes to C++ API
 * `os.tmpdir()` is now cross-platform consistent and no longer returns a path with a trailing slash on any platform
