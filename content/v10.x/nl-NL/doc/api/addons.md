@@ -424,7 +424,7 @@ console.log(fn());
 
 ### C++ objecten inpakken
 
-Het is ook mogelijk om C++ objecten/lessen in te pakken, op een zodanige manier dat het toelaat nieuwe exemplaren te creëren met behulp van JavaScript `new` operator:
+Het is ook mogelijk om C++ objecten/klassen in te pakken, op een zodanige manier dat het toelaat nieuwe exemplaren te creëren met behulp van JavaScript `new` operator:
 
 ```cpp
 // addon.cc
@@ -594,7 +594,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-Eerst wordt de `createObject()` methode geimplementeerd in `addon.cc`:
+Eerst wordt de `createObject()` methode geïmplementeerd in `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -708,7 +708,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, verander in construeer oproep.
+    // aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -744,7 +744,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Nogmaals, om dit voorbeeld te bouwen, moet het `myobject.cc` bestand toegevoegd worden aan de `binding.gyp`:
 
 ```json
 {
@@ -760,7 +760,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Test het met:
 
 ```js
 // test.js
@@ -783,9 +783,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### Ingepakte objecten doorgeven
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakte objecten door te geven door ze uit te pakken met behulp van de Node.js hulp functie. `node::ObjectWrap::Unwrap`. De volgende voorbeelden laten de `add()` functie zien, die twee `MyObject` objecten als invoerargumenten kan nemen:
 
 ```cpp
 // addon.cc
@@ -831,7 +831,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h` is een nieuwe publieke methode toegevoegd die toegang geeft tot de privé-waarden, na het uitpakken van het object.
 
 ```cpp
 // myobject.h
@@ -859,14 +859,12 @@ class MyObject : public node::ObjectWrap {
 };
 
 }  // namespace demo
-
-#endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+De uitvoering van `myobject.cc` is gelijkwaardig aan het vorige voorbeeld:
 
 ```cpp
-// myobject.cc
+// mijnobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -904,13 +902,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Opgeroepen als contructor: `nieuw MijnObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -937,7 +935,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Test dit met:
 
 ```js
 // test.js
@@ -951,22 +949,22 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit haken
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-lus is afgelopen maar vóórdat JavaScript VM is beëindigd en Node.js afsluit. `AtExit` haken worden geregistreerd met behulp van de `node::AtExit` API.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Een pointer naar de functie die opgeroepen wordt bij het afsluiten.
+* `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij het afsluiten.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` neemt twee parameters: een pointer naar een callback functie om te draaien bij het afsluiten, en een pointer naar ongetypte context data wat doorgegeven moet worden naar die callback.
 
-Callbacks are run in last-in first-out order.
+Callbacks worden gedraaid in 'laatste in, eerste uit' volgorde.
 
-The following `addon.cc` implements `AtExit`:
+De volgende `addon.cc` implementeert `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1017,7 +1015,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Test in JavaScript door het volgende te laten draaien:
 
 ```js
 // test.js

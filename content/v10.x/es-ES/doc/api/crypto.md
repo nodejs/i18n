@@ -59,7 +59,7 @@ const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 const challenge = Certificate.exportChallenge(spkac);
 console.log(challenge.toString('utf8'));
-// Prints: the challenge as a UTF8 string
+// Imprime: el desafío como un string UTF8
 ```
 
 ### Certificate.exportPublicKey(spkac[, encoding])
@@ -77,7 +77,7 @@ const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 const publicKey = Certificate.exportPublicKey(spkac);
 console.log(publicKey);
-// Prints: the public key as <Buffer ...>
+// Imprime: la clave pública como <Buffer ...>
 ```
 
 ### Certificate.verifySpkac(spkac)
@@ -93,7 +93,7 @@ added: v9.0.0
 const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 console.log(Certificate.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Imprime: verdadero o falso
 ```
 
 ### Legado API
@@ -238,7 +238,7 @@ added: v1.0.0
 -->
 
 - `buffer` {Buffer}
-- `options` {Object}
+- `opciones` {Object}
 - Devuelve: {Cipher} como método cadena.
 
 Cuando se usa un modo de cifrado autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `cipher.setAAD()` establece el valor usado por el parámetro de entrada de *datos adicional autenticado* (DAA).
@@ -1078,7 +1078,7 @@ verify.end();
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o Falso
 ```
 
 Ejemplo: Usando los métodos [`verify.update()`][] y [`verify.verify()`][]:
@@ -1092,7 +1092,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o falso
 ```
 
 ### verify.update(data[, inputEncoding])
@@ -1919,7 +1919,7 @@ added: v6.6.0
 
 - `a` {Buffer | TypedArray | DataView}
 - `b` {Buffer | TypedArray | DataView}
-- Returns: {boolean}
+- Devuelve: {boolean}
 
 This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 

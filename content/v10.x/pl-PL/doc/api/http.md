@@ -24,9 +24,9 @@ Klucze są pisane małymi literami. Wartości nie są modyfikowane.
 
 W celu obsługi pełnego spektrum możliwych aplikacji HTTP, Node.js HTTP API jest bardzo niskiego poziomu. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-Zobacz [`nagłówki.wiadomości`] [], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
+Zobacz [`message.headers`][], aby uzyskać szczegółowe informacje jak obsługiwane są zduplikowane nagłówki.
 
-Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznikach` właściwość, która jest tablicą `[klucz, wartość, klucz2, wartość2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć`suroweNagłówki` lista jak poniżej:
+Surowe nagłówki, które zostały odebrane, są zachowywane we właściwości `rawHeaders`, która jest tablicą `[key, value, key2, value2, ...]`. Dla przykładu, poprzedni obiekt nagłówka komunikatu może mieć `rawHeaders` lista jak poniżej:
 
 <!-- eslint-disable semi -->
 
@@ -45,9 +45,9 @@ Surowe nagłówki, które zostały odebrane, są zachowywane w `surowychZnacznik
 added: v0.3.4
 -->
 
-`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. Utrzymuje kolejkę oczekujących żądań dla danego hosta i portu, ponowne wykorzystanie pojedynczego połączenia dla każdego gniazda dopóki kolejka nie będzie pusta, w którym to czasie gniazdo zostanie zniszczone lub umieszczone w puli, w której jest przechowywane do ponownego wykorzystania w przypadku wniosków składanych do tego samego hosta i portu. To, czy zostanie zniszczone, czy połączone, zależy od `Podtrzymania`[Opcji](#http_new_agent_options).
+`Agent` jest odpowiedzialny za zarządzanie utrzymywaniem połączenia i ponowne użycie dla klientów HTTP. Utrzymuje kolejkę oczekujących żądań dla danego hosta i portu, ponowne wykorzystanie pojedynczego połączenia dla każdego gniazda dopóki kolejka nie będzie pusta, w którym to czasie gniazdo zostanie zniszczone lub umieszczone w puli, w której jest przechowywane do ponownego wykorzystania w przypadku wniosków składanych do tego samego hosta i portu. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
 
-Połączone połączenia mają włączoną obsługę TCP Keep-Alive, ale serwery mogą nadal zamykać bezczynne połączenia, w takim przypadku zostaną one usunięte z puli i nowe połączenie zostanie utworzone, gdy zostanie utworzone nowe żądanie HTTP dla tego hosta i portu. Serwery mogą również odmawiać dopuszczenia wielu żądań za pośrednictwem tego samego połączenia. W takim przypadku połączenie będzie musiało zostać przetworzone dla każdego żądania i nie będzie można go połączyć. `Agent` nadal będzie robił żądania do tego serwera, ale każdy z nich wystąpi w nowym połączeniu.
+Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Serwery mogą również odmawiać dopuszczenia wielu żądań za pośrednictwem tego samego połączenia. W takim przypadku połączenie będzie musiało zostać przetworzone dla każdego żądania i nie będzie można go połączyć. `Agent` nadal będzie robił żądania do tego serwera, ale każdy z nich wystąpi w nowym połączeniu.
 
 Po zamknięciu połączenia przez klienta lub serwer jest ono usunięte z puli. Wszelkie nieużywane gniazda w puli będą nieodkryte, aby utrzymać proces Node.js uruchomiony, gdy nie ma zaległych żądań. (see [`socket.unref()`]).
 
@@ -115,7 +115,7 @@ Tworzy gniazdo/strumień, który będzie używany dla żądań HTTP.
 
 By default, this function is the same as [`net.createConnection()`][]. Jednak, niestandardowi agenci mogą zastąpić tę metodę w przypadku, gdy pożądana jest większa elastyczność.
 
-Gniazdo/strumień może być dostarczony na jeden z dwóch sposobów: przez zwrócenie gniazda/strumienia z tej funkcji lub przekazując gniazdo/strumień do `callback'u`.
+Gniazdo/strumień może być dostarczone/y na jeden z dwóch sposobów: przez zwrócenie gniazda/strumienia z tej funkcji lub przekazując gniazdo/strumień do `callback`.
 
 `callback` has a signature of `(err, stream)`.
 

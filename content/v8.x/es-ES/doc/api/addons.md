@@ -10,9 +10,9 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Bibliotecas internas de Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C+++ que los Complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap` .
 
-* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. Vea [Vinculación a las dependencias de Node.js](#addons_linking_to_node_js_own_dependencies) para más información.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -81,13 +81,13 @@ Una vez que el código de fuente haya sido escrito, deberá ser compilado en el 
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Los desarrolladores que deseen utilizar `node-gyp` directamente, pueden instalarlo utilizando el comando `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Esta versión no se proporciona directamente a la disposición de los desarrolladores para su uso, y está diseñada solo para brindar soporte a la habilidad de utilizar el comando `node-gyp` para compilar e instalar Complementos. Los desarrolladores que deseen utilizar `node-gyp` directamente, pueden instalarlo utilizando el comando `npm install -g node-gyp`. Vea las [instrucciones de instalación](https://github.com/nodejs/node-gyp#installation) de `node-gyp` para más información, incluyendo los requisitos específicos de la plataforma.
 
 Una vez que se haya creado el archivo `binding.gyp`, utilice `node-gyp configure` para generar los archivos de compilación apropiados del proyecto para la plataforma actual. Esto generará o un `Makefile` (en plataformas Unix) o un archivo `vcxproj` (en Windows) en el directorio `build/` .
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Esto se colocará dentro del directorio de `build/Release/` .
+Después, invoque el comando `node-gyp build` para generar el archivo compilado `addon.node` . Esto se colocará dentro del directorio de `build/Release/` .
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Cuando se utiliza `npm install` para instalar un Complemento de Node.js, npm utiliza su propia versión empaquetada de `node-gyp` para realizar este mismo conjunto de acciones, generando una versión compilada del Complemento para la plataforma del usuario a petición.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 

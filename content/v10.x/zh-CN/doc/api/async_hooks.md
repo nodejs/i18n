@@ -331,7 +331,7 @@ If an uncaught exception occurs during execution of the callback, then `after` w
 
 * `asyncId` {number}
 
-Called after the resource corresponding to `asyncId` is destroyed. It is also called asynchronously from the embedder API `emitDestroy()`.
+在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 被异步调用。
 
 Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
 
@@ -339,9 +339,9 @@ Some resources depend on garbage collection for cleanup, so if a reference is ma
 
 * `asyncId` {number}
 
-Called when the `resolve` function passed to the `Promise` constructor is invoked (either directly or through other means of resolving a promise).
+当传递给 `Promise` 构造器的 `resolve` 函数被调用时，它会被调用 (直接或其他处理promise的方法)。
 
-Note that `resolve()` does not do any observable synchronous work.
+注意 `resolve()` 不会做任何可观察的同步工作。
 
 The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
 
@@ -349,7 +349,7 @@ The `Promise` is not necessarily fulfilled or rejected at this point if the `Pro
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+调用如下的回调函数：
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -402,7 +402,7 @@ Note that promise contexts may not get precise `executionAsyncIds` by default. S
 
 #### async_hooks.triggerAsyncId()
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
 
 ```js
 const server = net.createServer((conn) => {
@@ -462,9 +462,9 @@ Library developers that handle their own asynchronous resources performing tasks
 
 The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+当 `AsyncResource` 被初始化时，`init` 钩子将会触发。
 
-The following is an overview of the `AsyncResource` API.
+以下是对 `AsyncResource` API 的概览。
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
@@ -504,10 +504,10 @@ asyncResource.emitAfter();
 
 #### new AsyncResource(type[, options])
 
-* `type` {string} The type of async event.
+* `type` {string} 异步事件的类型。
 * `options` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+  * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **Default:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
 Example usage:
 
@@ -551,9 +551,9 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+调用所有的 `before` 回调函数以通知进入了一个新的异步执行上下文。 如果对 `emitBefore()` 进行了嵌套调用，`asyncId` 栈会被追踪并被正确解析。
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitAfter()
 
@@ -563,19 +563,19 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+调用所有 `after` 回调函数。 如果对 `emitBefore()` 进行了嵌套调用，请确保正确解析栈。 否则将抛出错误。
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
+如果用户的回调函数抛出错误，同时错误由域或 `'uncaughtException'` 处理程序来处理，则针对栈中的所有 `asyncId`，`emitAfter()` 会被调用。
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitDestroy()
 
-Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+调用所有 `destroy` 钩子。 这应该只被调用一次。 如果被调用多次，将会抛出错误。 **必须** 手动调用它。 如果资源由垃圾回收器回收，则 `destroy` 钩子永不会被调用。
 
 #### asyncResource.asyncId()
 
-* Returns: {number} The unique `asyncId` assigned to the resource.
+* 返回：{number} 分配给资源的唯一性 `asyncId`。
 
 #### asyncResource.triggerAsyncId()
 

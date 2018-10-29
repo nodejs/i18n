@@ -178,7 +178,7 @@ added: v1.0.0
 
 El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Returns `this` for method chaining.
+Regresa `this` para el encadenamiento de métodos.
 
 ### cipher.getAuthTag()
 
@@ -820,12 +820,12 @@ added: v0.1.92
 
 La clase `Verify` es una utilidad para verificar firmas. Puede ser usada de una de las dos maneras:
 
-* As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
-* Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+* Como una [<0>stream](stream.html) escribible donde los datos escritos son usados para validar la firma dada; o,
+* Usando los métodos [`verify.update()`][] y [`verify.verify()`][] para verificar la firma.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createVerify()`][] se emplea para crear instancias `Verify`. Los objetos `Verify` no son creados directamente usando la palabra clave `new`.
 
-Example: Using `Verify` objects as streams:
+Ejemplo usando los objetos `Verify` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -837,10 +837,10 @@ verify.end();
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o Falso
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Ejemplo usando los métodos [`verify.update()`][] y [`verify.verify()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -851,7 +851,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Imprime: Verdadero o falso
 ```
 
 ### verifier.update(data[, input_encoding])
@@ -860,7 +860,7 @@ console.log(verify.verify(publicKey, signature));
 added: v0.1.92
 -->
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el contenido `Verify` con los `data` dados, cuya codiicación es </code>dada en el `input_encoding` y puede ser `'utf8'`, `'ascii'`, o `'latin1'</0>. Si <code>encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -879,25 +879,25 @@ changes:
 * `signature` {string | Buffer | Uint8Array}
 * `signature_format` {string}
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica los datos empleados en los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
-* `key`: {string} - PEM encoded public key (required)
+* `key`: {string} - llave pública PEM codificada (requerido)
 * `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
   * `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empelada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-The `signature` argument is the previously calculated signature for the data, in the `signature_format` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signature_format` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][].
+El argumento `signature` es la firma calculada previamente para los datos, en el `signature_format` pueden ser `'latin1'`, `'hex'`, o `'base64'`. Se espera que la`signature` sea una string si un `signature_format` es especificado, de lo contrario se espera que sea un [`Buffer`][].
 
-Returns `true` or `false` depending on the validity of the signature for the data and public key.
+Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la llave pública.
 
-The `verifier` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+El objeto `verifier` no puede ser usado nuevamente luego de que `verify.verify()` ha sido llamado. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
-## `crypto` module methods and properties
+## Módulo de métodos y propiedades de `crypto`
 
 ### crypto.constants
 
@@ -905,7 +905,7 @@ The `verifier` object can not be used again after `verify.verify()` has been cal
 added: v6.3.0
 -->
 
-Returns an object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas para crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -913,11 +913,11 @@ Returns an object containing commonly used constants for crypto and security rel
 added: v0.9.3
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+La codificación predeterminadas a usar para las funciones que pueden tomar los strings o los [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+El mecanismo `crypto.DEFAULT_ENCODING` se da para la contabilidad con versiones anteriores con programas antiguos que esperan tener como codificación predeterminada `'latin1'`.
 
-New applications should expect the default to be `'buffer'`. This property may become deprecated in a future Node.js release.
+Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta propiedad puede volverse obsoleta en futuras versiones de Node.js.
 
 ### crypto.fips
 
@@ -925,31 +925,31 @@ New applications should expect the default to be `'buffer'`. This property may b
 added: v6.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Las propiedades para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
-### crypto.createCipher(algorithm, password)
+### crypto.createCipher(algoritmo, clave)
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
+Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string or a [`Buffer`][].
+La `password` se emplea para derivar la clave del cipher y la inicialización del vector (IV). El valor debe ser una string `'latin1'` codificada o un [`Buffer`][].
 
-The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+La implementación de `crypto.createCipher()` deriva las claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una itaración y no del salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave por su cuenta empleando [`crypto.pbkdf2()`][] y, usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deberían usar los ciphers en modo contador (por ejemplo, CTR, GCM or CCM) en `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
 
 ### crypto.createCipheriv(algorithm, key, iv)
 
-Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings or [buffers][`Buffer`].
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
 
 ### crypto.createCredentials(details)
 
@@ -958,13 +958,13 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
+> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en vez.
 
-* `details` {Object} Identical to [`tls.createSecureContext()`][].
+* `details`{Object} idénticos a [`tls.createSecureContext()`][].
 
-The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. No debería ser usada. Remplácela con [`tls.createSecureContext()`][], la cual tiene los mismos argumentos y valores de retorno.
 
-Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
+Regresa una `tls.SecureContext` como si [`tls.createSecureContext()`][] hubiese sido llamado.
 
 ### crypto.createDecipher(algorithm, password)
 
@@ -972,11 +972,11 @@ Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been ca
 added: v0.1.94
 -->
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (llave) dados.
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv)
 
@@ -984,11 +984,11 @@ In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`
 added: v0.1.94
 -->
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createDiffieHellman(prime\[, prime_encoding\]\[, generator\][, generator_encoding])
 

@@ -1,14 +1,14 @@
-# Buffer
+# 缓冲区
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定的
 
-Prior to the introduction of [`TypedArray`] in [`ECMAScript 2015`] (ES6), the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations.
+在引入 [`ECMAScript 2015`] (ES6) 的 [`TypedArray`] 之前，JavaScript语言没有读取或操作二进制数据流的机制。 `Buffer` 类作为 Node.js API 的一部分被引入，使得在诸如TCP流或文件操作类的场景中，操作字节流成为可能。
 
-Now that [`TypedArray`] has been added in ES6, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js' use cases.
+现在 [`TypedArray`] 被加入到 ES6 中，`Buffer` 类实现了 [`Uint8Array`] API，使得它针对 Node.js 的使用案例中更加高效。
 
-Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be resized.
+`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 The size of the `Buffer` is established when it is created and cannot be resized.
 
 The `Buffer` class is a global within Node.js, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 

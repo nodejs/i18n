@@ -483,9 +483,9 @@ Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpf
 
 In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. Die folgenden Abschnitte beschreiben die N-API-Funktionen, mit denen Sie die Lebensdauer des Handles gegenüber dem Standard ändern können.
 
-### Die Lebensdauer des Handles kürzer als bei der nativen Methode machen
+### Die Lebensdauer des Handles kürzer halten als bei der nativen Methode
 
-Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. Betrachten Sie zum Beispiel eine native Methode, die eine Loop hat, die die Elemente in einem großen Array durchläuft:
+Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. Betrachten Sie zum Beispiel eine native Methode, die einen Loop hat, die die Elemente in einem großen Array durchläuft:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -498,13 +498,13 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-Dies würde dazu führen, dass eine große Anzahl von Handles erstellt wird, die erhebliche Ressourcen verbrauchen. Zusätzlich, obwohl der native Code nur das neueste Handle verwenden kann, werden auch alle zugehörigen Objekte am Leben erhalten, da sie alle den gleichen Scope haben.
+Dies würde dazu führen, dass eine große Anzahl von Handles erstellt werden, die erhebliche Ressourcen verbrauchen. Zusätzlich, obwohl der native Code nur das neueste Handle verwenden kann, werden auch alle zugehörigen Objekte am Leben erhalten, da sie alle den gleichen Scope haben.
 
 Um diesen Fall zu bearbeiten, bietet N-API die Möglichkeit, einen neuen "Scope" zu erstellen, dem neu erstellte Handles zugeordnet werden. Sobald diese Handles nicht mehr benötigt werden, kann der Scope geschlossen werden und alle mit dem Scope verbundenen Handles werden invalidiert. Die verfügbaren Methoden um Scopes zu öffnen/zu schließen sind [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][].
 
 N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. Es gibt zu jeder Zeit nur einen aktiven Scope, und alle neuen Handles werden diesem Scope zugeordnet, während er aktiv ist. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, in der sie geöffnet werden. Darüber hinaus müssen alle innerhalb einer nativen Methode erstellten Scopes geschlossen werden, bevor von dieser Methode zurückgekehrt wird.
 
-Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] stellt sicher, dass höchstens ein einziges Handle während der Ausführung der Loop gültig ist:
+Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] sicher stellen, dass höchstens ein einziges Handle während der Ausführung des Loops gültig ist:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -530,7 +530,7 @@ Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inne
 
 Die Methoden, die für das Öffnen/Schließen von Escapable-Scopes zur Verfügung stehen, sind folgende: [`napi_open_escapable_handle_scope`][] und [`napi_close_escapable_handle_scope`][].
 
-Die Aufforderung zur Förderung eines Handles erfolgt über [`napi_escape_handle`][], das nur einmal aufgerufen werden kann.
+Die Aufforderung zur Förderung eines Handles erfolgt über [`napi_escape_handle`][], die nur einmal aufgerufen werden kann.
 
 #### napi_open_handle_scope
 
@@ -630,13 +630,13 @@ napi_status napi_escape_handle(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgegeben.
+Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgesendet.
 
 Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 ### Verweise auf Objekte mit einer längeren Lebensdauer als die der nativen Methode
 
-In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. For example, to create a constructor and later use that constructor in a request to creates instances, it must be possible to reference the constructor object across many different instance creation requests. This would not be possible with a normal handle returned as a `napi_value` as described in the earlier section. The lifespan of a normal handle is managed by scopes and all scopes must be closed before the end of a native method.
+In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. Um beispielsweise einen Konstruktor anzulegen und diesen Konstruktor später in einem Request zum Erzeugen von Instanzen zu verwenden, muss es möglich sein, das Konstruktorobjekt über viele verschiedene Instanzerstellungsrequests hinweg zu referenzieren. Dies wäre nicht möglich, wenn, wie im vorigen Abschnitt beschrieben, ein normales Handle als `napi_value` zurückgesendet würde. Die Lebensdauer eines normalen Handles wird von Scopes verwaltet und alle Scopes müssen vor dem Ende einer nativen Methode geschlossen werden.
 
 N-API provides methods to create persistent references to an object. Each persistent reference has an associated count with a value of 0 or higher. The count determines if the reference will keep the corresponding object live. References with a count of 0 do not prevent the object from being collected and are often called 'weak' references. Any count greater than 0 will prevent the object from being collected.
 

@@ -3621,221 +3621,231 @@ https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
 <a id="0.1.16"></a>
 
-## 2009.11.03, Version 0.1.16
+## 2009.11.03, Versión 0.1.16
 
 https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
-    * API: Use CommonJS-style module requiring
-      - require("/sys.js") becomes require("sys")
-      - require("circle.js") becomes require("./circle")
-      - process.path.join() becomes require("path").join()
-      - __module becomes module
+    * API: Utilizar requerimiento de módulos de estilo CommonJS
+      - require("/sys.js") se convierte en require("sys")
+      - require("circle.js") se convierte en require("./circle")
+      - process.path.join() se convierte en require("path").join()
+      - __module se convierte en "module"
     
-    * API: Many namespacing changes
-      - Move node.\* into process.\*
-      - Move node.dns into module "dns"
-      - Move node.fs into module "posix"
-      - process is no longer the global object. GLOBAL is.
-    For more information on the API changes see:
+    * API: Muchos cambios del espacio de nombres
+      - Mover node.\* adentro de process.\*
+      - Mover node.dns adentro del módulo "dns"
+      - Mover node.fs adentro del módulo "posix"
+      - "process" ya no es el objeto global. Es GLOBAL.
+    Para más información sobre los cambios de API, vea:
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
     
-    * Feature: process.platform, process.memoryUsage()
-    * Feature: promise.cancel() (Felix Geisendörfer)
+    * Novedad: process.platform, process.memoryUsage()
+    * Novedad: promise.cancel() (Felix Geisendörfer)
     
-    * Upgrade V8 to 1.3.18
+    * Actualizar V8 a 1.3.18
     
 
 <a id="0.1.15"></a>
 
-## 2009.10.28, Version 0.1.15
+## 2009.10.28, Versión 0.1.15
 
 https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
-    * Many build system fixes (esp. for OSX users)
-    * Feature: promise.timeout() (Felix Geisendörfer)
+    * Muchas correcciones del sistema de compilación (especialmente para
+      usuarios de OSX)
+    * Novedad: promise.timeout() (Felix Geisendörfer)
     
-    * Feature: Added external interface for signal handlers, process.pid, and
-      process.kill() (Brandon Beacher)
+    * Novedad: Añadida interfaz externa para manejadores de señales,
+      process.pid, y process.kill() (Brandon Beacher)
     
-    * API: Rename node.libraryPaths to require.paths
-    * Bugfix: 'data' event for stdio should emit a string
+    * API: Renombrar node.libraryPaths como require.paths
+    * Corrección de bug: el evento "data" para stdio debería emitir una
+      string.
     
-    * Large file support
-    * Upgrade http_parser
+    * Soporte para archivos grandes
+    * Actualizar http_parser
     
-    * Upgrade v8 to 1.3.16
+    * Actualizar v8 a 1.3.16
     
 
 <a id="0.1.14"></a>
 
-## 2009.10.09, Version 0.1.14
+## 2009.10.09, Versión 0.1.14
 
 https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
-    * Feature: Improved addon builds with node-waf
-    * Feature: node.SignalHandler (Brandon Beacher)
+    * Novedad: Compilaciones de complementos mejoradas con node-waf
+    * Novedad: node.SignalHandler (Brandon Beacher)
     
-    * Feature: Enable V8 debugging (but still need to make a debugger)
-    * API: Rename library /utils.js to /sys.js
+    * Novedad: Habilitar la depuración de V8 (pero todavía se necesita crear
+      un depurador)
+    * API: Renombrar librería /utils.js como /sys.js
     
-    * Clean up Node's build system
-    * Don't use parseUri for HTTP server
+    * Limpiar el sistema de compilación de Node
+    * No utilizar parseUri para el servidor HTTP
     
-    * Remove node.pc
-    * Don't use /bin/sh to create child process except with exec()
+    * Remover node.pc
+    * No utilizar /bin/sh para crear proceso secundario, excepto con exec()
     
-    * API: Add __module to reference current module
-    * API: Remove include() add node.mixin()
+    * API: Añadir __module para referenciar al módulo actual
+    * API: Remover include() añadir node.mixin()
     
-    * Normalize http headers; "Content-Length" becomes "content-length"
-    * Upgrade V8 to 1.3.15
+    * Normalizar cabeceras http; "Content-Length" se convierte en
+      "content-length"
+    * Actualizar V8 a 1.3.15
     
 
 <a id="0.1.13"></a>
 
-## 2009.09.30, Version 0.1.13
+## 2009.09.30, Versión 0.1.13
 
 https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
-    * Feature: Multipart stream parser (Felix Geisendörfer)
-    * API: Move node.puts(), node.exec() and others to /utils.js
+    * Novedad: Analizador de streams multipartes (Felix Geisendörfer)
+    * API: Mover node.puts(), node.exec() y otros a /utils.js
     
-    * API: Move http, tcp libraries to /http.js and /tcp.js
-    * API: Rename node.exit() to process.exit()
+    * API: Mover librerías de http y tcp a /http.js y /tcp.js
+    * API: Renombrar node.exit() como process.exit()
     
-    * Bugfix: require() and include() should work in callbacks.
-    * Pass the Host header in http.cat calls
+    * Corrección de bug: require() e include() deberían funcionar en
+      las callbacks.
+    * Pasar la cabecera de Host adentro de las llamadas de http.cat
     
-    * Add warning when coroutine stack size grows too large.
-    * Enhance repl library (Ray Morgan)
+    * Añadir advertencia cuando la pila de la co-rutina se hace demasiado
+      grande.
+    * Habilitar librería repl (Ray Morgan)
     
-    * Bugfix: build script for
-        GCC 4.4 (removed -Werror in V8),
-        on Linux 2.4,
-        and with Python 2.4.4.
+    * Corrección de bug: script de compilación para
+        GCC 4.4 (-Werror removido en V8),
+        en Linux 2.4,
+        y con Python 2.4.4.
     
-    * Add read() and write() to /file.js to read and write
-      whole files at once.
+    * Añadir read() y write() a /file.js para leer y escribir
+      archivos enteros de una sola vez.
     
 
 <a id="0.1.12"></a>
 
-## 2009.09.24, Version 0.1.12
+## 2009.09.24, Versión 0.1.12
 
 https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
 
-    * Feature: System modules, node.libraryPaths
-    * API: Remove "raw" encoding, rename "raws" to "binary".
+    * Novedad: Módulos del sistema, node.libraryPaths
+    * API: Remover codificación "raw", renombrar "raws" como "binary".
     
-    * API: Added connection.setNoDElay() to disable Nagle algo.
-    * Decrease default TCP server backlog to 128
+    * API: Fue añadida connection.setNoDElay() para deshabilitar el algoritmo
+      de Nagle.
+    * Disminuir el backlog predeterminado del servidor TCP a 128
     
-    * Bugfix: memory leak involving node.fs.* methods.
-    * Upgrade v8 to 1.3.13
+    * Corrección de bug: reparar fuga de memoria que afectaba a los métodos
+      de node.fs.*
+    * Actualizar v8 a 1.3.13
     
 
 <a id="0.1.11"></a>
 
-## 2009.09.18, Version 0.1.11
+## 2009.09.18, Versión 0.1.11
 
 https://github.com/nodejs/node/commit/5ddc4f5d0c002bac0ae3d62fc0dc58f0d2d83ec4
 
-    * API: default to utf8 encoding for node.fs.cat()
-    * API: add node.exec()
+    * API: establecer por defecto la codificación utf8 para node.fs.cat()
+    * API: añadir node.exec()
     
-    * API: node.fs.read() takes a normal encoding parameter.
-    * API: Change arguments of emit(), emitSuccess(), emitError()
+    * API: node.fs.read() toma un parámetro de codificación normal.
+    * API: Cambiar argumentos de emit(), emitSuccess(), emitError()
     
-    * Bugfix: node.fs.write() was stack allocating buffer.
-    * Bugfix: ReportException shouldn't forget the top frame.
+    * Corrección de bug: node.fs.write() estaba asignando pilas para el
+      buffer.
+    * Corrección de bug: ReportException no debería olvidar la trama superior.
     
-    * Improve buffering for HTTP outgoing messages
-    * Fix and reenable x64 macintosh build.
+    * Mejorar el almacenamiento en buffer para mensajes HTTP salientes
+    * Arreglar y volver a habilitar la complicación x64 de macintosh.
     
-    * Upgrade v8 to 1.3.11
+    * Actualizar v8 a 1.3.11
     
 
 <a id="0.1.10"></a>
 
-## 2009.09.11, Version 0.1.10
+## 2009.09.11, Versión 0.1.10
 
 https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
 
-    * Feature: raw string encoding "raws"
-    * Feature: access to environ through "ENV"
+    * Novedad: codificación raw de cadenas "raws"
+    * Novedad: acceso a environ a través de "ENV"
     
-    * Feature: add isDirectory, isFile, isSocket, ... methods
-      to stats object.
+    * Novedad: añadir métodos isDirectory, isFile, isSocket, ... 
+      al objeto de stats.
     
-    * Bugfix: Internally use full paths when loading modules
-      this fixes a shebang loading problem.
+    * Corrección de bug: Utilizar rutas completas internamente al cargar
+      módulos
+      esto soluciona un problema de carga shebang.
     
-    * Bugfix: Add '--' command line argument for separating v8
-      args from program args.
+    * Bugfix: Añadir argumento de línea de comandos '--' para separar los
+      argumentos de v8 de los argumentos de programas.
     
-    * Add man page.
-    * Add node-repl
+    * Añadir página del manual.
+    * Añadir node-repl
     
-    * Upgrade v8 to 1.3.10
+    * Actualizar v8 a 1.3.10
     
 
 <a id="0.1.9"></a>
 
-## 2009.09.05, Version 0.1.9
+## 2009.09.05, Versión 0.1.9
 
 https://github.com/nodejs/node/commit/ba6c5e38d54de30adfce69a21bafc81c35b07a03
 
-    * Bugfix: Compile on Snow Leopard.
-    * Bugfix: Malformed URIs raising exceptions.
+    * Corrección de bug: Compilar en Snow Leopard.
+    * Corrección de bug: URIs malformadas que están levantando excepciones.
     
 
 <a id="0.1.8"></a>
 
-## 2009.09.04, Version 0.1.8
+## 2009.09.04, Versión 0.1.8
 
 https://github.com/nodejs/node/commit/734e86b9e568de5f694ae290a2b5c9395b70937c
 
-    * Feature: External modules
-    * Feature: setTimeout() for node.tcp.Connection
+    * Novedad: Módulos externos
+    * Novedad: setTimeout() para node.tcp.Connection
     
-    * Feature: add node.cwd(), node.fs.readdir(), node.fs.mkdir()
-    * Bugfix: promise.wait() releasing out of order.
+    * Novedad: añadir node.cwd(), node.fs.readdir(), node.fs.mkdir()
+    * Corrección de bug: promise.wait() está soltando fuera de de orden.
     
-    * Bugfix: Asyncly do getaddrinfo() on Apple.
-    * Disable useless evcom error messages.
+    * Corrección de bug: Hacer getaddrinfo() de manera asíncrona en Apple.
+    * Deshabilitar mensajes de error de evcom inútiles.
     
-    * Better stack traces.
-    * Built natively on x64.
+    * Mejorar los stack traces.
+    * Compilar nativamente en x64.
     
-    * Upgrade v8 to 1.3.9
+    * Actualizar v8 a 1.3.9
     
 
 <a id="0.1.7"></a>
 
-## 2009.08.27, Version 0.1.7
+## 2009.08.27, Versión 0.1.7
 
 https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
-    * Feature: global 'process' object. Emits "exit".
-    * Feature: promise.wait()
+    * Novedad: objeto "process" global. Emite "exit".
+    * Novedad: promise.wait()
     
-    * Feature: node.stdio
-    * Feature: EventEmitters emit "newListener" when listeners are
-      added
+    * Novedad: node.stdio
+    * Novedad: EventEmitters emite "newListener" cuando son añadidos
+      listeners
     
-    * API:  Use flat object instead of array-of-arrays for HTTP
-      headers.
+    * API:  Utilizar objeto plano en lugar de array-of-arrays para cabeceras
+      HTTP.
     
-    * API: Remove buffered file object (node.File)
-    * API: require(), include() are synchronous. (Uses
-      continuations.)
+    * API: Remover objeto de archivo (node.File) almacenado en buffer
+    * API: require(), include() son sincrónicas. (Continuaciones de
+      usos.)
     
-    * API: Deprecate onLoad and onExit.
-    * API: Rename node.Process to node.ChildProcess
+    * API: Desaprobar onLoad y onExit.
+    * API: Renombrar node.Process como node.ChildProcess
     
-    * Refactor node.Process to take advantage of evcom_reader/writer.
-    * Upgrade v8 to 1.3.7
+    * Refactorizar node.Process para sacar provecho de evcom_reader/writer.
+    * Actualizar v8 a 1.3.7
     
 
 <a id="0.1.6"></a>
@@ -3844,203 +3854,212 @@ https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
 https://github.com/nodejs/node/commit/9c97b1db3099d61cd292aa59ec2227a619f3a7ab
 
-    * Bugfix: Ignore SIGPIPE.
+    * Corrección de bug: Ignorar SIGPIPE.
     
 
 <a id="0.1.5"></a>
 
-## 2009.08.21, Version 0.1.5
+## 2009.08.21, Versión 0.1.5
 
 https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
-    * Bugfix: Buggy connections could crash node.js. Now check
-      connection before sending data every time (Kevin van Zonneveld)
+    * Corrección de bug: Las conexiones con errores pueden colapsar a node.js. 
+      Ahora probar la conexión en cada ocasión antes de enviar datos
+      (Kevin van Zonneveld)
     
-    * Bugfix: stdin fd (0) being ignored by node.File. (Abe Fettig)
-    * API: Remove connection.fullClose()
+    * Corrección de bug: fd (0) de stdin está siendo ignorado por node.File. 
+      (Abe Fettig)
+    * API: Remover connection.fullClose()
     
-    * API: Return the EventEmitter from addListener for chaining.
-    * API: tcp.Connection "disconnect" event renamed to "close"
+    * API: Devolver al EventEmitter desde addListener para el encadenamiento.
+    * API: el evento "disconnect" de tcp.Connection fue renombrado como
+      "close"
     
-    * Upgrade evcom
-      Upgrade v8 to 1.3.6
+    * Actualizar evcom
+      Actualizar v8 a 1.3.6
     
 
 <a id="0.1.4"></a>
 
-## 2009.08.13, Version 0.1.4
+## 2009.08.13, Versión 0.1.4
 
 https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
-    * Major refactor to evcom.
-    * Enable test-tcp-many-clients.
+    * Refactorización mayor a evcom.
+    * Habilitar test-tcp-many-clients.
     
-    * Add -m32 gcc flag to udns.
-    * Add connection.readPause() and connection.readResume()
-      Add IncomingMessage.prototype.pause() and resume().
+    * Añadir bandera -m32 de gcc a udns.
+    * Añadir connection.readPause() y connection.readResume()
+      Añadir IncomingMessage.prototype.pause() y resume().
     
-    * Fix http benchmark. Wasn't correctly dispatching.
-    * Bugfix: response.setBodyEncoding("ascii") not working.
+    * Corregir prueba de rendimiento de http. No estaba haciendo envíos
+      de manera correcta.
+    * Corrección de bug: response.setBodyEncoding("ascii") no está
+      funcionando.
     
-    * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
-    * Upgrade v8 to 1.3.4
-      Upgrade libev to 3.8
-      Upgrade http_parser to v0.2
+    * Corrección de bug: Enteros negativos en node.fs.read() y on_body de HTTP.
+    * Actualizar v8 a 1.3.4
+      Actualizar libev a 3.8
+      Actualizar http_parser a v0.2
     
 
 <a id="0.1.3"></a>
 
-## 2009.08.06, Version 0.1.3
+## 2009.08.06, Versión 0.1.3
 
 https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
-    * Upgrade v8 to 1.3.2
-    * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not
-      working
+    * Actualizar v8 a 1.3.2
+    * Corrección de bug: node.http.ServerRequest.setBodyEncoding('ascii') no
+      está funcionando
     
-    * Bugfix: node.encodeUtf8 was broken. (Connor Dunn)
-    * Add ranlib to udns Makefile.
+    * Corrección de bug: node.encodeUtf8 estaba dañada. (Connor Dunn)
+    * Añadir ranlib al Makefile de udns.
     
-    * Upgrade evcom - fix accepting too many connections issue.
-    * Initial support for shebang
+    * Actualizar evcom - solucionar el problema de aceptar demasiadas
+      conexiones.
+    * Soporte inicial para shebang
     
-    * Add simple command line switches
-    * Add node.version API
+    * Añadir interruptores simples de la línea de comandos
+    * Añadir API de node.version
     
 
 <a id="0.1.2"></a>
 
-## 2009.08.01, Version 0.1.2
+## 2009.08.01, Versión 0.1.2
 
 https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
 
-    * Add DNS API
-    * node.tcp.Server's backlog option is now an argument to listen()
+    * Añadir API de DNS
+    * La opción de backlog de node.tcp.Server ahora es un argumento para
+      listen()
     
-    * Upgrade V8 to 1.3.1
-    * Bugfix: Default to chunked for client requests without
-      Content-Length.
+    * Actualizar V8 a 1.3.1
+    * Corrección de bug: Establecer "chunked" predeterminadamente al tenerse
+      peticiones de clientes sin Content-Lenght.
     
-    * Bugfix: Line numbers in stack traces.
-    * Bugfix: negative integers in raw encoding stream
+    * Corrección de bug: Números de línea en stack traces.
+    * Corrección de bug: enteros negativos en stream de codificación raw
     
-    * Bugfix: node.fs.File was not passing args to promise callbacks.
+    * Corrección de bug: node.fs.File no estaba pasando argumentos a las
+      callbacks de promesas.
     
 
 <a id="0.1.1"></a>
 
-## 2009.07.27, Version 0.1.1
+## 2009.07.27, Versión 0.1.1
 
 https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
 
-    * Simplify and clean up ObjectWrap.
-    * Upgrade liboi (which is now called evcom)
-      Upgrade libev to 3.7
-      Upgrade V8 to 1.2.14
+    * Simplificar y limpiar ObjectWrap.
+    * Actualizar liboi (la cual ahora se llama evcom)
+      Actualizar libev a 3.7
+     Actualizar V8 a 1.2.14
     
-    * Array.prototype.encodeUtf8 renamed to node.encodeUtf8(array)
-    * Move EventEmitter.prototype.emit() completely into C++.
+    * Array.prototype.encodeUtf8 fue renombrada como node.encodeUtf8(array)
+    * Mover completamente a EventEmitter.prototype.emit() adentro de C++.
     
-    * Bugfix: Fix memory leak in event emitters.
+    * Corrección de bug: Reparar fuga de memoria en emisores de evento.
       http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
     
-    * Bugfix: Had problems reading scripts with non-ascii characters.
-    * Bugfix: Fix Detach() in node::Server
+    * Corrección de bug: Tenía problemas leyendo scripts con caracteres no-ascii.
+    * Corrección de bug: Arreglar Detach() en node::Server
     
-    * Bugfix: Sockets not properly reattached if reconnected during
-      disconnect event.
+    * Corrección de bug: Los sockets no estaban siendo correctamente
+      re-anexados si había una reconexión durante un evento "disconnect".
     
-    * Bugfix: Server-side clients not attached between creation and
-      on_connect.
+    * Corrección de bug: los clientes paralelos al servidor no se anexaban
+      entre su creación y on_connect.
     
-    * Add 'close' event to node.tcp.Server
-    * Simplify and clean up http.js. (Takes more advantage of event
-      infrastructure.)
+    * Añador evento "close" a node.tcp.Server
+    * Simplificar y limpiar http.js. (Esto hace un mayor uso de la
+      infraestructura de los eventos.)
     
-    * Add benchmark scripts. Run with "make benchmark".
+    * Añadir scripts de pruebas de rendimiento. Ejecutar con "make benchmark".
     
 
 <a id="0.1.0"></a>
 
-## 2009.06.30, Version 0.1.0
+## 2009.06.30, Versión 0.1.0
 
 https://github.com/nodejs/node/commit/813b53938b40484f63e7324c030e33711f26a149
 
-    * Update documentation, use asciidoc.
-    * EventEmitter and Promise interfaces. (Breaks previous API.)
+    * Actualizar documentación, utilizar asciidoc.
+    * Interfaces de EventEmitter y Promise. (Esto rompe con la API anterior.)
     
-    * Remove node.Process constructor in favor of node.createProcess
-    * Add -m32 flags for compiling on x64 platforms.
-      (Thanks to András Bártházi)
+    * Remover el constructor de node.Process a favor de node.createProcess
+    * Añadir banderas -m32 para la compilación en plataformas x64.
+      (Gracias a András Bártházi)
     
-    * Upgrade v8 to 1.2.10 and libev to 3.6
-    * Bugfix: Timer::RepeatSetter wasn't working.
+    * Actualizar v8 a 1.2.10 y libev a 3.6
+    * Corrección de bug: Timer::RepeatSetter no estaba funcionando.
     
-    * Bugfix: Spawning many processes in a loop
-      (reported by Felix Geisendörfer)
+    * Corrección de bug: El spawn de muchos procesos en un bucle
+      (reportado por Felix Geisendörfer)
     
 
 <a id="0.0.6"></a>
 
-## 2009.06.24, Version 0.0.6
+## 2009.06.24, Versión 0.0.6
 
 https://github.com/nodejs/node/commit/fbe0be19ebfb422d8fa20ea5204c1713e9214d5f
 
-    * Load modules via HTTP URLs (Urban Hafner)
-    * Bugfix: Add HTTPConnection->size() and HTTPServer->size()
+    * Cargar módulos a través de los URLs de HTTP (Urban Hafner)
+    * Corrección de bug: Añadir HTTPConnection->size() y HTTPServer->size()
     
-    * New node.Process API
-    * Clean up build tools, use v8's test runner.
+    * Nueva API de node.Process
+    * Limpiar las herramientas de compilación, utilizar el ejecutor de pruebas
+      de V8.
     
-    * Use ev_unref() instead of starting/stopping the eio thread
-      pool watcher.
+    * Utilizar ev_unref() en lugar de iniciar/detener el monitor del fondo de
+      hilos de eio.
     
 
 <a id="0.0.5"></a>
 
-## 2009.06.18, Version 0.0.5
+## 2009.06.18, Versión 0.0.5
 
 https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
 
-    * Support for IPv6
-    * Remove namespace node.constants
+    * Soporte para IPv6
+    * Remover node.constants del espacio de nombres
     
-    * Upgrade v8 to 1.2.8.1
-    * Accept ports as strings in the TCP client and server.
+    * Actualizar v8 a 1.2.8.1
+    * Aceptar puertos como strings el cliente y servidor de TCP.
     
-    * Bugfix: HTTP Client race
-    * Bugfix: freeaddrinfo() wasn't getting called after
-      getaddrinfo() for TCP servers
+    * Corrección de bug: Carrera del Cliente de HTTP
+    * Bugfix: freeaddrinfo() no estaba siendo llamada luego de
+      getaddrinfo() para los servidores TCP
     
-    * Add "opening" to TCP client readyState
-    * Add remoteAddress to TCP client
+    * Añadir "opening" al readyState del cliente TCP
+    * Añadir remoteAddress al cliente TCP
     
-    * Add global print() function.
+    * Añadir función print() global.
     
 
 <a id="0.0.4"></a>
 
-## 2009.06.13, Version 0.0.4
+## 2009.06.13, Versión 0.0.4
 
 https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
-* Add interrupt() method to server-side HTTP requests.
-* Bugfix: onBodyComplete was not getting called on server-side HTTP
+* Añadir el método interrupt() a las solicitudes HTTP paralelas al servidor.
+* Corrección de bug: onBodyComplete no estaba siendo llamada en el HTTP paralelo al servidor
 
 <a id="0.0.3"></a>
 
-## 2009.06.11, Version 0.0.3
+## 2009.06.11, Versión 0.0.3
 
 https://github.com/nodejs/node/commit/4cfc982c776475eb65fb1080e6b575a86505a347
 
-* Many bug fixes including the problem with http.Client on macintosh
+* Muchas correcciones de bugs, incluyendo el problema con http.Client en macintosh
 
-* Upgrades v8 to 1.2.7
+* Actualiza v8 a 1.2.7
 
-* Adds onExit hook
+* Añade hook onExit
 
-* Guard against buffer overflow in http parser
+* Proteger contra el desbordamiento de buffer en el analizador de http
 
-* require() and include() now need the ".js" extension
+* require() e include() ahora necesitan la extensión ".js"
 
-* http.Client uses identity transfer encoding by default.
+* http.Client utiliza por defecto la codificación de transferencia de identidad.

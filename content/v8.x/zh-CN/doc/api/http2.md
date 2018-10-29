@@ -266,7 +266,7 @@ session.on('timeout', () => { /** .. **/ });
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
 
@@ -388,7 +388,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {undefined}
+* 返回：{undefined}
 
 Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. The given `callback` is registered as a listener on the `'timeout'` event.
 
@@ -404,7 +404,7 @@ added: v8.4.0
   * `lastStreamID` {number} The Stream ID of the last successfully processed `Http2Stream` on this `Http2Session`.
   * `opaqueData` {Buffer|Uint8Array} A `Buffer` or `Uint8Array` instance containing arbitrary additional data to send to the peer upon disconnection. This is used, typically, to provide additional data for debugging failures, if necessary.
 * `callback` {Function} A callback that is invoked after the session shutdown has been completed.
-* Returns: {undefined}
+* 返回：{undefined}
 
 Attempts to shutdown this `Http2Session` using HTTP/2 defined procedures. If specified, the given `callback` function will be invoked once the shutdown process has completed.
 
@@ -613,7 +613,7 @@ added: v8.4.0
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
-* Returns: {undefined}
+* 返回：{undefined}
 
 Updates the priority for this `Http2Stream` instance.
 
@@ -634,7 +634,7 @@ added: v8.4.0
 -->
 
 * code {number} Unsigned 32-bit integer identifying the error code. **Default:** `http2.constant.NGHTTP2_NO_ERROR` (`0x00`)
-* Returns: {undefined}
+* 返回：{undefined}
 
 Sends an `RST_STREAM` frame to the connected HTTP/2 peer, causing this `Http2Stream` to be closed on both sides using [error code](#error_codes) `code`.
 
@@ -644,7 +644,7 @@ Sends an `RST_STREAM` frame to the connected HTTP/2 peer, causing this `Http2Str
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Shortcut for `http2stream.rstStream()` using error code `0x00` (No Error).
 
@@ -654,7 +654,7 @@ Shortcut for `http2stream.rstStream()` using error code `0x00` (No Error).
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Shortcut for `http2stream.rstStream()` using error code `0x01` (Protocol Error).
 
@@ -664,7 +664,7 @@ Shortcut for `http2stream.rstStream()` using error code `0x01` (Protocol Error).
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Shortcut for `http2stream.rstStream()` using error code `0x08` (Cancel).
 
@@ -674,7 +674,7 @@ Shortcut for `http2stream.rstStream()` using error code `0x08` (Cancel).
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Shortcut for `http2stream.rstStream()` using error code `0x07` (Refused Stream).
 
@@ -684,7 +684,7 @@ Shortcut for `http2stream.rstStream()` using error code `0x07` (Refused Stream).
 added: v8.4.0
 -->
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Shortcut for `http2stream.rstStream()` using error code `0x02` (Internal Error).
 
@@ -706,7 +706,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {undefined}
+* 返回：{undefined}
 
 ```js
 const http2 = require('http2');
@@ -818,7 +818,7 @@ added: v8.4.0
 -->
 
 * `headers` {[Headers Object](#http2_headers_object)}
-* Returns: {undefined}
+* 返回：{undefined}
 
 Sends an additional informational `HEADERS` frame to the connected HTTP/2 peer.
 
@@ -853,7 +853,7 @@ added: v8.4.0
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
 * `callback` {Function} Callback that is called once the push stream has been initiated.
-* Returns: {undefined}
+* 返回：{undefined}
 
 Initiates a push stream. The callback is invoked with the new `Http2Stream` instance created for the push stream.
 
@@ -882,7 +882,7 @@ added: v8.4.0
 * `options` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
   * `getTrailers` {function} Callback function invoked to collect trailer headers.
-* Returns: {undefined}
+* 返回：{undefined}
 
 ```js
 const http2 = require('http2');

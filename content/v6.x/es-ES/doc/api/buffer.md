@@ -536,9 +536,9 @@ Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `B
 
 Si `totalLength` no es proporcionado, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así es más rápido proporcionar la longitud explícitamente si ya es conocido.
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Si `totalLength` es proporcionado, es forzado a ser un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede `totalLength`, el resultado es truncado a `totalLength`.
 
-Example: Create a single `Buffer` from a list of three `Buffer` instances
+Ejemplo: Crear un `Buffer` único a partir de una lista de tres instancias de `Buffer`
 
 ```js
 const buf1 = Buffer.alloc(10);
@@ -546,19 +546,19 @@ const buf2 = Buffer.alloc(14);
 const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
-// Prints: 42
+// Imprime: 42
 console.log(totalLength);
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
-// Prints: <Buffer 00 00 00 00 ...>
+// Imprime: <Buffer 00 00 00 00 ...>
 console.log(bufA);
 
-// Prints: 42
+// Imprime: 42
 console.log(bufA.length);
 ```
 
-### Class Method: Buffer.from(array)
+### Método de Clase: Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -571,23 +571,23 @@ Asigna un nuevo `Buffer` usando un `array` de octetos.
 Ejemplo:
 
 ```js
-// Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
+// Crea un Buffer nuevo que contiene bytes UTF-8 de la string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+Se producirá un `TypeError` si `array` no es un `Array`.
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Método de Clase: Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Una propiedad [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`
 * `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad de `.buffer` de una instancia [`TypedArray`], el `Buffer` recién creado compartirá la misma memoria asignada que el [`TypedArray`].
 
 Ejemplo:
 
@@ -597,16 +597,16 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = Buffer.from(arr.buffer);
 
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 console.log(buf);
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 console.log(buf);
 ```
 
@@ -618,13 +618,13 @@ Ejemplo:
 const ab = new ArrayBuffer(10);
 const buf = Buffer.from(ab, 0, 2);
 
-// Prints: 2
+// Imprime: 2
 console.log(buf.length);
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+Se producirá un `TypeError` si `arrayBuffer` no es un [`ArrayBuffer`] o un [`SharedArrayBuffer`].
 
-### Class Method: Buffer.from(buffer)
+### Método de Clase: Buffer.from(buffer)
 
 <!-- YAML
 added: v5.10.0
@@ -642,22 +642,22 @@ const buf2 = Buffer.from(buf1);
 
 buf1[0] = 0x61;
 
-// Prints: auffer
+// Imprime: auffer
 console.log(buf1.toString());
 
-// Prints: buffer
+// Imprime: buffer
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+Se producirá un `TypeError` si `buffer` no es un `Buffer`.
 
-### Class Method: Buffer.from(string[, encoding])
+### Método de Clase: Buffer.from(string[, encoding])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
+* `string` {string} Una string a codificar.
 * `encoding` {string} La codificación de `string`. **Predeterminado:** `'utf8'`
 
 Crea un nuevo `Buffer` que contiene la string `string` de JavaScript dada. Si es proporcionado, el parámetro `encoding` identifica la codificación del carácter de `string`.
@@ -667,52 +667,52 @@ Ejemplos:
 ```js
 const buf1 = Buffer.from('this is a tést');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf1.toString());
 
-// Prints: this is a tC)st
+// Imprime: this is a tC)st
 console.log(buf1.toString('ascii'));
 
 
 const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 
-// Prints: this is a tést
+// Imprime: this is a tést
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+Se producirá un `TypeError` si `string` no es una string.
 
-### Class Method: Buffer.isBuffer(obj)
+### Método de Clase: Buffer.isBuffer(obj)
 
 <!-- YAML
 added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+Devuelve `true` si `obj` es un `Buffer`, de otra forma es `false`.
 
-### Class Method: Buffer.isEncoding(encoding)
+### Método de Clase: Buffer.isEncoding(encoding)
 
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} Un nombre de codificación de caracteres a verificar.
+* Devuelve: {boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+Devuelve `true` si `encoding` contiene una codificación de caracteres permitida, de otra forma es `false`.
 
-### Class Property: Buffer.poolSize
+### Propiedad de Clase: Buffer.poolSize
 
 <!-- YAML
 added: v0.11.3
 -->
 
-* {integer} **Default:** `8192`
+* {integer} **Predeterminado:** `8192`
 
-This is the number of bytes used to determine the size of pre-allocated, internal `Buffer` instances used for pooling. This value may be modified.
+Este es el número de bytes usados para determinar el tamaño de instancias internas de `Buffer` pre-asignadas, usadas para realizar pooling. Este valor puede ser modificado.
 
 ### buf[index]
 
@@ -721,11 +721,11 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+El operador de índice `[index]` puede ser usado para obtener y establecer el octeto en la posición `index` en `buf`. Los valores refieren a bytes individuales, por lo que el rango de valor legal está entre `0x00` y `0xFF` (hex) o `0` y `255` (decimal).
 
-This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
+Este operador es heredado de `Uint8Array`, por lo que su comportamiento en el acceso fuera de los límites es el mismo que `UInt8Array` - es decir, obtener devoluciones `undefined` y la configuración no hace nada.
 
-Example: Copy an ASCII string into a `Buffer`, one byte at a time
+Ejemplo: Copiar una string ASCII en un `Buffer`, un byte a la vez
 
 ```js
 const str = 'Node.js';
@@ -735,7 +735,7 @@ for (let i = 0; i < str.length; i++) {
   buf[i] = str.charCodeAt(i);
 }
 
-// Prints: Node.js
+// Imprime: Node.js
 console.log(buf.toString('ascii'));
 ```
 
@@ -745,18 +745,18 @@ console.log(buf.toString('ascii'));
 added: v0.11.13
 -->
 
-* `target` {Buffer} A `Buffer` to compare to.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
+* `target` {Buffer} Un `Buffer` para comparar.
+* `targetStart` {integer} El offset dentro de `target` en el cual debe comenzar la comparación. **Predeterminado:** `0`
+* `targetEnd` {integer} El offset con `target` en el cual debe terminar la comparación (no inclusivo). **Predeterminado:** `target.length`
+* `sourceStart` {integer} El offset dentro de `buf` en el cual debe comenzar la comparación. **Predeterminado:** `0`
+* `sourceEnd` {integer} El offset dentro de `buf` en el cual debe terminar la comparación (no inclusivo). **Predeterminado:** [`buf.length`]
 * Devuelve: {integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+Compara `buf` con `target` y devuelve un número que indica si `buf` viene antes, después, o está igual que `target` en el orden de clasificación. La comparación basada en la secuencia real de bytes en cada `Buffer`.
 
-* `0` is returned if `target` is the same as `buf`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* `0` es devuelto si `target` es igual que `buf`
+* `1` es devuelto si `target` debe venir *antes* de `buf` cuando se ordenan.
+* `-1` es devuelto si `target` debe venir *después* de `buf` cuando se ordenan.
 
 Ejemplos:
 
@@ -765,23 +765,23 @@ const buf1 = Buffer.from('ABC');
 const buf2 = Buffer.from('BCD');
 const buf3 = Buffer.from('ABCD');
 
-// Prints: 0
+// Imprime: 0
 console.log(buf1.compare(buf1));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf1.compare(buf2));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf1.compare(buf3));
 
-// Prints: 1
+// Imprime: 1
 console.log(buf2.compare(buf1));
 
-// Prints: 1
+// Imprime: 1
 console.log(buf2.compare(buf3));
 
-// Prints: [ <Buffer 41 42 43>, <Buffer 41 42 43 44>, <Buffer 42 43 44> ]
-// (This result is equal to: [buf1, buf3, buf2])
+// Imprime: [ <Buffer 41 42 43>, <Buffer 41 42 43 44>, <Buffer 42 43 44> ]
+// (Este resultado es igual a: [buf1, buf3, buf2])
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
@@ -814,7 +814,7 @@ added: v0.1.90
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
 * `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
 * `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`]
+* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`]
 * Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
@@ -886,7 +886,7 @@ added: v0.11.13
 -->
 
 * `otherBuffer` {Buffer} A `Buffer` to compare to.
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
@@ -912,7 +912,7 @@ added: v0.5.0
 
 * `value` {string|Buffer|integer} The value to fill `buf` with.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} Where to stop filling `buf` (not inclusive). **Predeterminado:** [`buf.length`]
 * `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
 
@@ -1568,7 +1568,7 @@ added: v0.3.0
 -->
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **Predeterminado:** [`buf.length`]
 * Devuelve: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
@@ -1716,7 +1716,7 @@ added: v0.1.90
 
 * `encoding` {string} The character encoding to decode to. **Predeterminado:** `'utf8'`
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`]
 * Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
