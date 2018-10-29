@@ -2158,35 +2158,35 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
 * [[`291346ea51`](https://github.com/nodejs/node/commit/291346ea51)] - **tools,doc**: añadir seguimiento de Google Analytics. (Phillip Johnsen) [#6601](https://github.com/nodejs/node/pull/6601)
 * [[`1ed47d3f33`](https://github.com/nodejs/node/commit/1ed47d3f33)] - **tty**: evitar calentamiento de oob en TTYWrap::GetWindowSize() (Dmitry Tsvettsikh) [#11454](https://github.com/nodejs/node/pull/11454)
 * [[`9e6fcbb34c`](https://github.com/nodejs/node/commit/9e6fcbb34c)] - **url**: reparar el manejo sustituto en encodeAuth() (Timothy Gu) [#11387](https://github.com/nodejs/node/pull/11387)
-* [[`53213004eb`](https://github.com/nodejs/node/commit/53213004eb)] - **util**: improve readability of normalizeEncoding (Joyee Cheung) [#10439](https://github.com/nodejs/node/pull/10439)
-* [[`e54b433c8d`](https://github.com/nodejs/node/commit/e54b433c8d)] - **util**: use ES2015+ Object.is to check negative zero (Shinnosuke Watanabe) [#11332](https://github.com/nodejs/node/pull/11332)
-* [[`2e15d48447`](https://github.com/nodejs/node/commit/2e15d48447)] - **v8**: drop v8::FunctionCallbackInfo\<T\>::NewTarget() (Ben Noordhuis) [#9293](https://github.com/nodejs/node/pull/9293)
-* [[`fd1ffe4f5a`](https://github.com/nodejs/node/commit/fd1ffe4f5a)] - **v8**: fix --always-opt bug (Ben Noordhuis) [#9293](https://github.com/nodejs/node/pull/9293)
-* [[`a55af77fc5`](https://github.com/nodejs/node/commit/a55af77fc5)] - **vm**: refactor vm module (James M Snell) [#11392](https://github.com/nodejs/node/pull/11392)
+* [[`53213004eb`](https://github.com/nodejs/node/commit/53213004eb)] - **util**: mejorar legibilidad de normalizeEncoding (Joyee Cheung) [#10439](https://github.com/nodejs/node/pull/10439)
+* [[`e54b433c8d`](https://github.com/nodejs/node/commit/e54b433c8d)] - **util**: usar ES2015+ Object.is para chequear cero negativo (Shinnosuke Watanabe) [#11332](https://github.com/nodejs/node/pull/11332)
+* [[`2e15d48447`](https://github.com/nodejs/node/commit/2e15d48447)] - **v8**: soltar v8::FunctionCallbackInfo\<T\>::NewTarget() (Ben Noordhuis) [#9293](https://github.com/nodejs/node/pull/9293)
+* [[`fd1ffe4f5a`](https://github.com/nodejs/node/commit/fd1ffe4f5a)] - **v8**: arreglar error de --always-opt (Ben Noordhuis) [#9293](https://github.com/nodejs/node/pull/9293)
+* [[`a55af77fc5`](https://github.com/nodejs/node/commit/a55af77fc5)] - **vm**: refactorizar módulo de vm (James M Snell) [#11392](https://github.com/nodejs/node/pull/11392)
 
 <a id="6.10.0"></a>
 
-## 2017-02-21, Version 6.10.0 'Boron' (LTS), @MylesBorins
+## 2017-02-21, Versión 6.10.0 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 168 commits. This includes 85 which are test related, 34 which are doc related, 12 commits which are updates to dependencies and 5 which are build / tool related.
+Esta actualización de LTS viene con 168 commits. Esto incluye 85 que están relacionados a pruebas, 34 que están relacionados a documentación, 12 commits que son actualizaciones para dependencias y 5 que están relacionados a build / tool.
 
-### Notable Changes
+### Cambios Notables
 
-The SEMVER-MINOR changes include:
+Los cambios de SEMVER-MINOR incluyen:
 
-* **crypto**: allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
-* **deps**: Upgrade INTL ICU to version 58 (Steven R. Loomis) [#9234](https://github.com/nodejs/node/pull/9234)
-* **process**: add `process.memoryUsage.external` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
-* **src**: add wrapper for process.emitWarning() (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
+* **crypto**: permitir agregar certificados adicionales a CAs bien conocidos (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
+* **deps**: Actualizar INTL ICU a versión 58 (Steven R. Loomis) [#9234](https://github.com/nodejs/node/pull/9234)
+* **process**: añadir `process.memoryUsage.external` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
+* **src**: añadir empaquetador para process.emitWarning() (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 
-Notable SEMVER-PATCH changes include:
+Cambios Notables de SEMVER-PATCH incluyen:
 
-* **fs**: cache non-symlinks in realpathSync. (Jeremy Yallop) [#10253](https://github.com/nodejs/node/pull/10253)
-* **repl**: allow autocompletion for scoped packages (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
+* **fs**: almacenar en cache a non-symlinks en realpathSync. (Jeremy Yallop) [#10253](https://github.com/nodejs/node/pull/10253)
+* **repl**: permitir autocompletar para paquetes con ámbito (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
 
 ### Commits
 
-* [[`d532d7497a`](https://github.com/nodejs/node/commit/d532d7497a)] - **async_wrap**: clear destroy_ids vector (Trevor Norris) [#10400](https://github.com/nodejs/node/pull/10400)
+* [[`d532d7497a`](https://github.com/nodejs/node/commit/d532d7497a)] - **async_wrap**: aclarar vector de destroy_ids (Trevor Norris) [#10400](https://github.com/nodejs/node/pull/10400)
 * [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactor buffer benchmarks (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
 * [[`40c7ec62e0`](https://github.com/nodejs/node/commit/40c7ec62e0)] - **buffer**: fix single-character string filling (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * [[`03f0d2ac21`](https://github.com/nodejs/node/commit/03f0d2ac21)] - **buffer**: handle UCS2 `.fill()` properly on BE (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
