@@ -1211,38 +1211,38 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Commits
 
-* [[`8a0e5295b4`](https://github.com/nodejs/node/commit/8a0e5295b4)] - **build**: use backslashes for paths on windows (Johan Bergström) [#1698](https://github.com/nodejs/node/pull/1698)
-* [[`20c9a52227`](https://github.com/nodejs/node/commit/20c9a52227)] - **build**: move --with-intl to intl optgroup (Johan Bergström) [#1680](https://github.com/nodejs/node/pull/1680)
+* [[`8a0e5295b4`](https://github.com/nodejs/node/commit/8a0e5295b4)] - **build**: utilizar barra inversa para rutas en windows (Johan Bergström) [#1698](https://github.com/nodejs/node/pull/1698)
+* [[`20c9a52227`](https://github.com/nodejs/node/commit/20c9a52227)] - **build**: mover --with-intl a intl optgroup (Johan Bergström) [#1680](https://github.com/nodejs/node/pull/1680)
 * [[`36cdc7c8ac`](https://github.com/nodejs/node/commit/36cdc7c8ac)] - **build**: re-enable V8 snapshots (Trevor Norris) [#1663](https://github.com/nodejs/node/pull/1663)
-* [[`5883a59b21`](https://github.com/nodejs/node/commit/5883a59b21)] - **cluster**: disconnect event not emitted correctly (Oleg Elifantiev) [#1386](https://github.com/nodejs/node/pull/1386)
+* [[`5883a59b21`](https://github.com/nodejs/node/commit/5883a59b21)] - **cluster**: desconectar el evento no emitido correctamente (Oleg Elifantiev) [#1386](https://github.com/nodejs/node/pull/1386)
 * [[`0f850f7ae7`](https://github.com/nodejs/node/commit/0f850f7ae7)] - **deps**: provide TXT chunk info in c-ares (Fedor Indutny)
 * [[`7e1c0e75ed`](https://github.com/nodejs/node/commit/7e1c0e75ed)] - **deps**: sync with upstream bagder/c-ares@bba4dc5 (Ben Noordhuis) [#1678](https://github.com/nodejs/node/pull/1678)
 * [[`18d457bd34`](https://github.com/nodejs/node/commit/18d457bd34)] - **dgram**: call send callback asynchronously (Yosuke Furukawa) [#1313](https://github.com/nodejs/node/pull/1313)
-* [[`8b9a1537ad`](https://github.com/nodejs/node/commit/8b9a1537ad)] - **events**: provide better error message for unhandled error (Evan Lucas) [#1654](https://github.com/nodejs/node/pull/1654)
-* [[`19ffb5cf1c`](https://github.com/nodejs/node/commit/19ffb5cf1c)] - **lib**: fix eslint styles (Yosuke Furukawa) [#1539](https://github.com/nodejs/node/pull/1539)
+* [[`8b9a1537ad`](https://github.com/nodejs/node/commit/8b9a1537ad)] - **events**: proporcionar un mejor mensaje de error para el error sin manejar (Evan Lucas) [#1654](https://github.com/nodejs/node/pull/1654)
+* [[`19ffb5cf1c`](https://github.com/nodejs/node/commit/19ffb5cf1c)] - **lib**: corregir los estilos de eslint (Yosuke Furukawa) [#1539](https://github.com/nodejs/node/pull/1539)
 * [[`76937051f8`](https://github.com/nodejs/node/commit/76937051f8)] - **os**: refine tmpdir() trailing slash stripping (cjihrig) [#1673](https://github.com/nodejs/node/pull/1673)
 * [[`aed6bce906`](https://github.com/nodejs/node/commit/aed6bce906)] - **readline**: turn emitKeys into a streaming parser (Alex Kocharin) [#1601](https://github.com/nodejs/node/pull/1601)
 * [[`0a461e5360`](https://github.com/nodejs/node/commit/0a461e5360)] - **src**: fix preload when used with prior flags (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
 * [[`931a0d4634`](https://github.com/nodejs/node/commit/931a0d4634)] - **src**: add type check to v8.setFlagsFromString() (Roman Klauke) [#1652](https://github.com/nodejs/node/pull/1652)
-* [[`08d08668c9`](https://github.com/nodejs/node/commit/08d08668c9)] - **src,deps**: replace LoadLibrary by LoadLibraryW (Cheng Zhao) [#226](https://github.com/nodejs/node/pull/226)
-* [[`4e2f999a62`](https://github.com/nodejs/node/commit/4e2f999a62)] - **test**: fix infinite loop detection (Yosuke Furukawa) [#1681](https://github.com/nodejs/node/pull/1681)
+* [[`08d08668c9`](https://github.com/nodejs/node/commit/08d08668c9)] - **src,deps**: reemplazar LoadLibrary por LoadLibraryW (Cheng Zhao) [#226](https://github.com/nodejs/node/pull/226)
+* [[`4e2f999a62`](https://github.com/nodejs/node/commit/4e2f999a62)] - **test**: corregir la detección de bucle infinito (Yosuke Furukawa) [#1681](https://github.com/nodejs/node/pull/1681)
 * [[`5755fc099f`](https://github.com/nodejs/node/commit/5755fc099f)] - **tls**: update default ciphers to use gcm and aes128 (Mike MacCana) [#1660](https://github.com/nodejs/node/pull/1660)
 * [[`966acb9916`](https://github.com/nodejs/node/commit/966acb9916)] - **tools**: remove closure_linter to eslint on windows (Yosuke Furukawa) [#1685](https://github.com/nodejs/node/pull/1685)
-* [[`c58264e58b`](https://github.com/nodejs/node/commit/c58264e58b)] - **tools**: make eslint work on subdirectories (Roman Reiss) [#1686](https://github.com/nodejs/node/pull/1686)
+* [[`c58264e58b`](https://github.com/nodejs/node/commit/c58264e58b)] - **tools**: hacer que eslint funcione con sub-directorios (Roman Reiss) [#1686](https://github.com/nodejs/node/pull/1686)
 * [[`0b21ab13b7`](https://github.com/nodejs/node/commit/0b21ab13b7)] - **tools**: refactor `make test-npm` into test-npm.sh (Jeremiah Senkpiel) [#1662](https://github.com/nodejs/node/pull/1662)
 * [[`f07b3b600b`](https://github.com/nodejs/node/commit/f07b3b600b)] - **tools**: set eslint comma-spacing to 'warn' (Roman Reiss) [#1672](https://github.com/nodejs/node/pull/1672)
-* [[`f9dd34d301`](https://github.com/nodejs/node/commit/f9dd34d301)] - **tools**: replace closure-linter with eslint (Yosuke Furukawa) [#1539](https://github.com/nodejs/node/pull/1539)
+* [[`f9dd34d301`](https://github.com/nodejs/node/commit/f9dd34d301)] - **tools**: reemplazar closure-linter con eslint (Yosuke Furukawa) [#1539](https://github.com/nodejs/node/pull/1539)
 * [[`64d3210c98`](https://github.com/nodejs/node/commit/64d3210c98)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1667](https://github.com/nodejs/node/issues/1667)
 
 <a id="2.0.1"></a>
 
-## 2015-05-07, Version 2.0.1, @rvagg
+## 2015-05-07, Versión 2.0.1, @rvagg
 
-### Notable changes
+### Cambios notables
 
 * **async_wrap**: (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614) 
-  * it is now possible to filter by providers
-  * bit flags have been removed and replaced with method calls on the binding object
+  * ahora es posible filtrar por proveedores
+  * las banderas de bits han sido eliminadas y reemplazadas con llamadas de método en el objeto de enlace
   * *note that this is an unstable API so feature additions and breaking changes won't change io.js semver*
 * **libuv**: resolves numerous io.js issues: 
   * [#862](https://github.com/nodejs/node/issues/862) prevent spawning child processes with invalid stdio file descriptors
