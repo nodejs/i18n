@@ -77,7 +77,7 @@ const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 const publicKey = Certificate.exportPublicKey(spkac);
 console.log(publicKey);
-// Prints: the public key as <Buffer ...>
+// Imprime: la clave pública como <Buffer ...>
 ```
 
 ### Certificate.verifySpkac(spkac)
@@ -93,7 +93,7 @@ added: v9.0.0
 const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 console.log(Certificate.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Imprime: verdadero o falso
 ```
 
 ### Legado API
@@ -238,7 +238,7 @@ added: v1.0.0
 -->
 
 - `buffer` {Buffer}
-- `options` {Object}
+- `opciones` {Object}
 - Devuelve: {Cipher} como método cadena.
 
 Cuando se usa un modo de cifrado autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `cipher.setAAD()` establece el valor usado por el parámetro de entrada de *datos adicional autenticado* (DAA).
