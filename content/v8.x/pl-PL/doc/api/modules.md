@@ -603,7 +603,7 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-To illustrate the behavior, imagine this hypothetical implementation of `require()`, which is quite similar to what is actually done by `require()`:
+Aby zilustrować zachowanie, wyobraź sobie tę hipotetyczną implementację `require ()`, która jest bardzo podobna do tego, co faktycznie zostało wykonane przez `require ()`:
 
 ```js
 function require(/* ... */) {
