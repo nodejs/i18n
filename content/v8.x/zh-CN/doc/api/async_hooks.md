@@ -325,13 +325,13 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 在 `before` 中指定的回调函数结束后立即调用。
 
-*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出*后*，或`域`处理器返回时执行。
+*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出，或`域`处理器执行*后*运行。
 
 ##### `destroy(asyncId)`
 
 * `asyncId` {number}
 
-在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 被异步调用。
+在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 中被异步调用。
 
 *注意：* 一些资源依赖于垃圾回收以进行清理，因此如果一个引用是到传递给`init`的`资源`对象的，就有可能导致 `destroy` 从不会被调用，进而导致应用程序中的内存泄露。 如果资源不依赖于垃圾回收，这就没有问题。
 
@@ -339,11 +339,11 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 * `asyncId` {number}
 
-当传递给 `Promise` 构造器的 `resolve` 函数被调用时，它会被调用 (直接或其他处理promise的方法)。
+当传递给 `Promise` 构造器的 `resolve` 函数被调用 (被直接调用或通过其他完成promise的方法调用) 时，它会被调用。
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
-*注意：如果通过假定另一个 `Promise` 的状态而解决当前的 `Promise`，* 这并不意味着 `Promise` 被满足或在这一点上被拒绝了。
+*注意：如果通过假定另一个 `Promise` 的状态而完成当前的 `Promise`，* 这并不意味着 `Promise` 被完成或在这一点上被拒绝了。
 
 例如：
 
