@@ -905,7 +905,7 @@ El objeto `verifier` no puede ser usado nuevamente luego de que `verify.verify()
 added: v6.3.0
 -->
 
-Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas para crypto y seguridad. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas para crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -913,11 +913,11 @@ Regresa un objeto que contiene constantes usadas comúnmente para las operacione
 added: v0.9.3
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+La codificación predeterminadas a usar para las funciones que pueden tomar los strings o los [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+El mecanismo `crypto.DEFAULT_ENCODING` se da para la contabilidad con versiones anteriores con programas antiguos que esperan tener como codificación predeterminada `'latin1'`.
 
-New applications should expect the default to be `'buffer'`. This property may become deprecated in a future Node.js release.
+Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta propiedad puede volverse obsoleta en futuras versiones de Node.js.
 
 ### crypto.fips
 
