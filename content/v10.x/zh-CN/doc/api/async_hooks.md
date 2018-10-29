@@ -331,7 +331,7 @@ If an uncaught exception occurs during execution of the callback, then `after` w
 
 * `asyncId` {number}
 
-在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 被异步调用。
+在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 中被异步调用。
 
 Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
 
@@ -339,7 +339,7 @@ Some resources depend on garbage collection for cleanup, so if a reference is ma
 
 * `asyncId` {number}
 
-当传递给 `Promise` 构造器的 `resolve` 函数被调用时，它会被调用 (直接或其他处理promise的方法)。
+当传递给 `Promise` 构造器的 `resolve` 函数被调用 (被直接调用或通过其他完成promise的方法调用) 时，它会被调用。
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
