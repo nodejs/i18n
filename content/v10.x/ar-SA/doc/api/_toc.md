@@ -8,7 +8,7 @@
 <div class="line"></div>
 
 * [الاختبار بالتأكّد](assert.html)
-* [الخطافات الغير متزامنة (async)](async_hooks.html)
+* [الخطافات الغير تزامنية](async_hooks.html)
 * [المخزن المؤقت](buffer.html)
 * [إضافات C++](addons.html)
 * [اضافات C/C++ -N-API](n-api.html)
