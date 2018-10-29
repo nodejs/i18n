@@ -687,7 +687,7 @@ added: v0.1.16
 
 * {boolean}
 
-Whether or not the module is done loading, or is in the process of loading.
+Czy moduł jest załadowany, czy jest w trakcie ładowania.
 
 ### module.parent
 
@@ -718,7 +718,7 @@ added: v0.5.1
 * `id` {string}
 * Returns: {Object} `module.exports` from the resolved module
 
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+Metoda `module.require` zapewnia sposób, aby załadować moduł, jak gdyby `require ()` został wywołany z oryginalnego modułu.
 
 In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
