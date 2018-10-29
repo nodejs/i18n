@@ -984,11 +984,11 @@ De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EV
 added: v0.1.94
 -->
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`).
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createDiffieHellman(prime\[, prime_encoding\]\[, generator\][, generator_encoding])
 
