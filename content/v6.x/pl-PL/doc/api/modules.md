@@ -508,7 +508,7 @@ added: v0.5.1
 
 Metoda `module.require` zapewnia sposób, aby załadować moduł, jak gdyby `require ()` został wywołany z oryginalnego modułu.
 
-Zauważ, że aby to zrobić, musisz uzyskać odwołanie do `modułu` obiektu. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
+Zauważ, że aby to zrobić, musisz uzyskać odwołanie do `modułu` obiektu. Ponieważ `require ()` zwraca ` module.exports`, a `module` jest zazwyczaj *tylko* dostępny w ramach danego modułu kodu, musi być jawnie wyeksportowany, aby mógł być użyty.
 
 ## The `Module` Object
 
