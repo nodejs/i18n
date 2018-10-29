@@ -17,7 +17,7 @@ APIs exposed by N-API are generally used to create and manipulate JavaScript val
 - All JavaScript values are abstracted behind an opaque type named `napi_value`.
 - In case of an error status code, additional information can be obtained using `napi_get_last_error_info`. More information can be found in the error handling section [Error Handling](#n_api_error_handling).
 
-The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. However, we also understand that a C++ API can be easier to use in many cases. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaries built with these wrapper modules will depend on the symbols for the N-API C based functions exported by Node.js. These wrappers are not part of N-API, nor will they be maintained as part of Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
+The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C ++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
 In order to use the N-API functions, include the file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree:
 
@@ -27,11 +27,11 @@ In order to use the N-API functions, include the file [`node_api.h`](https://git
 
 ## Basic N-API Data Types
 
-N-API exposes the following fundamental datatypes as abstractions that are consumed by the various APIs. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API udostępnia następujące podstawowe typy danych jako abstrakcje, które są zużywane przez różne interfejsy API. These APIs should be treated as opaque, introspectable only with other N-API calls.
 
 ### napi_status
 
-Integral status code indicating the success or failure of a N-API call. Currently, the following status codes are supported.
+Integral status code indicating the success or failure of a N-API call. Obecnie obsługiwane są następujące kody stanu.
 
 ```C
 typedef enum {
@@ -53,7 +53,7 @@ typedef enum {
 } napi_status;
 ```
 
-If additional information is required upon an API returning a failed status, it can be obtained by calling `napi_get_last_error_info`.
+Jeśli wymagane są dodatkowe informacje na temat interfejsu API zwracającego status błędu, można je uzyskać, wywołując `napi_get_last_error_info`.
 
 ### napi_extended_error_info
 
@@ -67,8 +67,8 @@ typedef struct {
 ```
 
 - `error_message`: UTF8-encoded string containing a VM-neutral description of the error.
-- `engine_reserved`: Reserved for VM-specific error details. This is currently not implemented for any VM.
-- `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
+- `engine_reserved`: Reserved for VM-specific error details. To nie jest obecnie zaimplementowane dla żadnej maszyny wirtualnej.
+- `engine_error_code`: VM-specific error code. To nie jest obecnie zaimplementowane dla żadnej maszyny wirtualnej.
 - `error_code`: The N-API status code that originated with the last error.
 
 See the [Error Handling](#n_api_error_handling) section for additional information.
