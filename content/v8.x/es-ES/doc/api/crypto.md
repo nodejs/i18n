@@ -1056,7 +1056,7 @@ Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta p
 added: v6.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Las propiedades para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1068,9 +1068,9 @@ added: v0.1.94
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
 
 The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
 
@@ -1087,7 +1087,7 @@ In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
 
@@ -1135,7 +1135,7 @@ added: v0.1.94
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings or [buffers][`Buffer`].
 
