@@ -860,7 +860,7 @@ console.log(verify.verify(publicKey, signature));
 added: v0.1.92
 -->
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `input_encoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el contenido `Verify` con los `data` dados, cuya codiicación es </code>dada en el `input_encoding` y puede ser `'utf8'`, `'ascii'`, o `'latin1'</0>. Si <code>encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -879,17 +879,17 @@ changes:
 * `signature` {string | Buffer | Uint8Array}
 * `signature_format` {string}
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica los datos empleados en los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
-* `key`: {string} - PEM encoded public key (required)
+* `key`: {string} - llave pública PEM codificada (requerido)
 * `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
   * `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empelada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
 The `signature` argument is the previously calculated signature for the data, in the `signature_format` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signature_format` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][].
 
