@@ -571,11 +571,11 @@ deprecated: v9.6.0
 
 #### asyncResource.emitDestroy()
 
-调用所有 `destroy` 钩子。 这应该只被调用一次。 如果被调用多次，将会抛出错误。 **必须** 手动调用它。 If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+调用所有 `destroy` 钩子。 这应该只被调用一次。 如果被调用多次，将会抛出错误。 **必须** 手动调用它。 如果资源由垃圾回收器回收，则 `destroy` 钩子永不会被调用。
 
 #### asyncResource.asyncId()
 
-* Returns: {number} The unique `asyncId` assigned to the resource.
+* 返回：{number} 分配给资源的唯一性 `asyncId`。
 
 #### asyncResource.triggerAsyncId()
 
