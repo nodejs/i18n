@@ -34,20 +34,20 @@ Alle exemplaren bevatten de ingebouwde `Error` eigenschappen (`message` and `nam
 * `actual` {any} Instellen op de werkelijke waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
 * `expected` {any} Instellen op de verwachte waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
 * `generatedMessage` {boolean} Geeft aan of de boodschap automatisch was gegenereerd (`true`) of niet.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
-* `operator` {string} Set to the passed in operator value.
+* `code` {string} Dit is altijd ingesteld op de tekenreeks `ERR_ASSERTION` om aan te geven dat de fout eigenlijk een fout in de bewering is.
+* `operator` {string} Ingesteld op de doorgegeven in beheerderswaarde.
 
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+// Genereer een Beweringsfout om de foutmelding later te vergelijken:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+// verifieer foutuitvoering :
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Strikte modus
 
 <!-- YAML
 added: v9.9.0
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strikte modus**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strikte modus**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strikte modus**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strikte modus**
 
 An alias of [`assert.notStrictEqual()`][].
 
