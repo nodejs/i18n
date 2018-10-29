@@ -506,8 +506,8 @@ asyncResource.emitAfter();
 
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+  * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **Default:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
 Example usage:
 
@@ -551,7 +551,7 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+调用所有的 `before` 回调函数以通知进入了一个新的异步执行上下文。 如果对 `emitBefore()` 进行了嵌套调用，`asyncId` 栈会被追踪并被正确解析。
 
 `before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
@@ -563,7 +563,7 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+调用所有 `after` 回调函数。 如果对 `emitBefore()` 进行了嵌套调用，请确保正确解析栈。 否则将抛出错误。
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
