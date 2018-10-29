@@ -1010,15 +1010,15 @@ changes:
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica los datos empleados en los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
-- `key`: {string} - PEM encoded public key (required)
+- `key`: {string} - llave pública PEM codificada (requerido)
 - `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empelada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
 - `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
