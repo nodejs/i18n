@@ -2206,7 +2206,7 @@ Cambios Notables de SEMVER-PATCH incluyen:
 * [[`e71129ebbc`](https://github.com/nodejs/node/commit/e71129ebbc)] - **deps**: hacer cherry-pick a a715957 desde upstream de V8 (Myles Borins) [#10666](https://github.com/nodejs/node/pull/10666)
 * [[`87839ca036`](https://github.com/nodejs/node/commit/87839ca036)] - **deps**: hacer cherry-pick a 7a88ff3 desde upstream de V8 (Myles Borins) [#10666](https://github.com/nodejs/node/pull/10666)
 * [[`13983d474a`](https://github.com/nodejs/node/commit/13983d474a)] - **deps**: hacer cherry-pick a d800a65 desde upstream de V8 (Myles Borins) [#10666](https://github.com/nodejs/node/pull/10666)
-* [[`f77fcf893f`](https://github.com/nodejs/node/commit/f77fcf893f)] - **deps**: hacer cherry-pick a baba152 desde upstream V8 (Michaël Zasso) [#10689](https://github.com/nodejs/node/pull/10689)
+* [[`f77fcf893f`](https://github.com/nodejs/node/commit/f77fcf893f)] - **deps**: hacer cherry-pick a baba152 desde upstream de V8 (Michaël Zasso) [#10689](https://github.com/nodejs/node/pull/10689)
 * [[`fdc373d639`](https://github.com/nodejs/node/commit/fdc373d639)] - **deps**: reparar error de compilación en v8/lookup.h (Matthew Avery) [#10525](https://github.com/nodejs/node/pull/10525)
 * [[`055f666065`](https://github.com/nodejs/node/commit/055f666065)] - **doc**: change logical to bitwise OR in dns lookup (Sakthipriyan Vairamani (thefourtheye)) [#11037](https://github.com/nodejs/node/pull/11037)
 * [[`78b83e7249`](https://github.com/nodejs/node/commit/78b83e7249)] - **doc**: opción de killSignal acepta valores enteros (Sakthipriyan Vairamani (thefourtheye)) [#10424](https://github.com/nodejs/node/pull/10424)
