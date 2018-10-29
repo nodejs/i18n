@@ -373,7 +373,7 @@ changes:
     description: Renamed from currentId
 -->
 
-* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些调用时非常有用。
 
 例如：
 
@@ -404,7 +404,7 @@ const server = net.createServer(function onConnection(conn) {
 
 #### `async_hooks.triggerAsyncId()`
 
-* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
+* 返回：{number} 负责调用正在被执行的回调函数的资源ID。
 
 例如：
 
@@ -425,7 +425,7 @@ const server = net.createServer((conn) => {
 
 ## JavaScript Embedder API
 
-处理自己的诸如I/O，连接池等异步资源库，或管理回调函数队列的开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
+处理自己的诸如I/O，连接池等异步资源，或管理回调函数队列的库开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
 
 ### `AsyncResource() 类`
 
@@ -468,7 +468,7 @@ asyncResource.triggerAsyncId();
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **默认值：** `executionAsyncId()`
-  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认值：** `false`
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动的 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认值：** `false`
 
 示例用法：
 
