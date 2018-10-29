@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Zapewnia ogólne metody użyteczności podczas interakcji z instancjami `Module` — zmiennej `Module` często występującej w modułach plików. Accessed via `require('module')`.
 
 ### module.builtinModules
 
