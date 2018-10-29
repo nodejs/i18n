@@ -1089,7 +1089,7 @@ Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inici
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createCredentials(details)
 
@@ -1133,7 +1133,7 @@ added: v0.1.94
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
