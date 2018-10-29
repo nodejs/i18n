@@ -59,7 +59,7 @@ const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 const challenge = Certificate.exportChallenge(spkac);
 console.log(challenge.toString('utf8'));
-// Prints: the challenge as a UTF8 string
+// Imprime: el desafío como un string UTF8
 ```
 
 ### Certificate.exportPublicKey(spkac[, encoding])
