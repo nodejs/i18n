@@ -962,9 +962,9 @@ deprecated: v0.11.13
 
 * `details`{Object} idénticos a [`tls.createSecureContext()`][].
 
-El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. No debería ser usada. Remplácela con [`tls.createSecureContext()`][], la cual tiene los mismos argumentos y valores de retorno.
 
-Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
+Regresa una `tls.SecureContext` como si [`tls.createSecureContext()`][] hubiese sido llamado.
 
 ### crypto.createDecipher(algorithm, password)
 
@@ -972,11 +972,11 @@ Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been ca
 added: v0.1.94
 -->
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (llave) dados.
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
+La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv)
 
