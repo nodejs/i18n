@@ -178,7 +178,7 @@ added: v1.0.0
 
 El método `cipher.setAAD()` establece el valor empleado por el parámetro de entrada *additional authenticated data* (AAD) cuando se use un modo autenticado de encriptación (solo el `GCM` es válido actualmente).
 
-Returns `this` for method chaining.
+Regresa `this` para el encadenamiento de métodos.
 
 ### cipher.getAuthTag()
 
