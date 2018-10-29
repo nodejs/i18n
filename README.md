@@ -101,6 +101,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)               | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
 | Dhruv Jain            | [maddhruv](https://github.com/maddhruv)           | [maddhruv](https://twitter.com/maddhruv)                |
 | Franz de Copenhague   | [FranzDeCopenhague](https://github.com/FranzDeCopenhague) | [FranzDeCopenhague](https://twitter.com/FranzDeCopenhag) |
+| Helio Frota           | [helio-frota](https://github.com/helio-frota)     | [heliofrota_](https://twitter.com/heliofrota_)          |
 | Jonathan Cardoso      | [JCMais](https://github.com/JCMais)               | [_jonathancardos](https://twitter.com/_jonathancardos)  |
 | Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)  |
 | Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)   | [lukaszewczak](https://twitter.com/lukaszewczak)        |
