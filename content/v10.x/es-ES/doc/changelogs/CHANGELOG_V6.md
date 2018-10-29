@@ -2187,10 +2187,10 @@ Cambios Notables de SEMVER-PATCH incluyen:
 ### Commits
 
 * [[`d532d7497a`](https://github.com/nodejs/node/commit/d532d7497a)] - **async_wrap**: aclarar vector de destroy_ids (Trevor Norris) [#10400](https://github.com/nodejs/node/pull/10400)
-* [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactor buffer benchmarks (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
-* [[`40c7ec62e0`](https://github.com/nodejs/node/commit/40c7ec62e0)] - **buffer**: fix single-character string filling (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
+* [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactorizar benchmarks de buffer (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
+* [[`40c7ec62e0`](https://github.com/nodejs/node/commit/40c7ec62e0)] - **buffer**: corregir llenado de string de un solo carácter (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * [[`03f0d2ac21`](https://github.com/nodejs/node/commit/03f0d2ac21)] - **buffer**: handle UCS2 `.fill()` properly on BE (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
-* [[`9e76350372`](https://github.com/nodejs/node/commit/9e76350372)] - **build**: add /opt/freeware/... to AIX library path (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
+* [[`9e76350372`](https://github.com/nodejs/node/commit/9e76350372)] - **build**: añadir /opt/freeware/... a ruta de biblioteca de AIX (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
 * [[`7d519fa87c`](https://github.com/nodejs/node/commit/7d519fa87c)] - **build**: add (not) cross-compiled configure flags (Jesús Leganés-Combarro 'piranna) [#10287](https://github.com/nodejs/node/pull/10287)
 * [[`a2f02859b0`](https://github.com/nodejs/node/commit/a2f02859b0)] - **(SEMVER-MINOR)** **crypto**: allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * [[`4e1a5a71c1`](https://github.com/nodejs/node/commit/4e1a5a71c1)] - **crypto**: fix handling of root_cert_store. (Adam Langley) [#9409](https://github.com/nodejs/node/pull/9409)
