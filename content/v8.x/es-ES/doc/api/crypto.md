@@ -1070,13 +1070,13 @@ added: v0.1.94
 
 Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados. Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+La `password` se emplea para derivar la clave del cipher y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
 
-The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+La implementación de `crypto.createCipher()` deriva las claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una itaración y no del salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave por su cuenta empleando [`crypto.pbkdf2()`][] y, usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1085,11 +1085,11 @@ In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s.
 
 ### crypto.createCredentials(details)
 
@@ -1098,11 +1098,11 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
+> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en vez.
 
-- `details` {Object} Identical to [`tls.createSecureContext()`][].
+- `details`{Object} idénticos a [`tls.createSecureContext()`][].
 
-The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
 
 Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
 
@@ -1118,7 +1118,7 @@ added: v0.1.94
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key). Optional `options` argument controls stream behavior.
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
 
 In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
 
@@ -1135,9 +1135,9 @@ added: v0.1.94
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings or [buffers][`Buffer`].
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
