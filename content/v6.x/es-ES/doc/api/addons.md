@@ -99,7 +99,7 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Por favor, vea los ejemplos a continuación para mayor información o <https://github.com/arturadib/node-qt> para ver un ejemplo en producción.
 
 Ya que la ruta exacta hacia el Complemento binario compilado puede variar dependiendo de cómo esté compilado (por ejemplo, a veces puede estar en `./build/Debug/`), los Complementos pueden utilizar el paquete [bindings](https://github.com/TooTallNate/node-bindings) para cargar el módulo compilado.
 
@@ -117,9 +117,9 @@ try {
 
 Node.js utiliza un número de bibliotecas vinculadas estáticamente, tales como V8, libuv y OpenSSL. Todos los Complementos deben vincularse a V8, y también se pueden vincular a cualquiera de las otras dependencias. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. Sin embargo, existen algunas advertencias a tener en cuenta:
 
-* Cuando se ejecuta `node-gyp`, detectará la versión de lanzamiento específica de Node.js y descargará el tarball de la fuente completa o solo las cabeceras. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. Sin embargo, si solo se descargan las cabeceras de Node.js, entonces solo los símbolos exportados por Node.js estarán disponibles.
+* Cuando se ejecuta `node-gyp`, detectará la versión de lanzamiento específica de Node.js y descargará el tarball de la fuente completa o solo las cabeceras. Si se descarga completamente la fuente, los Complementos tendrán acceso completo a todo el conjunto de dependencias de Node.js. Sin embargo, si solo se descargan las cabeceras de Node.js, entonces solo los símbolos exportados por Node.js estarán disponibles.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Al utilizar esta opción, el Complemento tendrá acceso a todo el conjunto de dependencias.
+* `node-gyp` puede ser ejecutado utilizando la bandera `--nodedir` apuntando a una imagen de fuente local de Node.js. Al utilizar esta opción, el Complemento tendrá acceso a todo el conjunto de dependencias.
 
 ### Cargar Complementos utilizando require()
 
