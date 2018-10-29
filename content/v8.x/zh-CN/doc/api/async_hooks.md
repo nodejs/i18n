@@ -467,10 +467,10 @@ asyncResource.triggerAsyncId();
 
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`
+  * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **默认值：** `executionAsyncId()`
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认值：** `false`
 
-Example usage:
+示例用法：
 
 ```js
 class DBQuery extends AsyncResource {
@@ -496,21 +496,21 @@ class DBQuery extends AsyncResource {
 
 #### `asyncResource.emitBefore()`
 
-* Returns: {undefined}
+* 返回：{undefined}
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+调用所有的 `before` 回调函数以通知进入了一个新的异步执行上下文。 如果对 `emitBefore()` 进行了嵌套调用，`asyncId` 栈会被追踪并被正确解析。
 
 #### `asyncResource.emitAfter()`
 
-* Returns: {undefined}
+* 返回：{undefined}
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+调用所有 `after` 回调函数。 如果对 `emitBefore()` 进行了嵌套调用，请确保正确解析栈。 否则将抛出错误。
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
 #### `asyncResource.emitDestroy()`
 
-* Returns: {undefined}
+* 返回：{undefined}
 
 Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
