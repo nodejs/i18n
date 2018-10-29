@@ -27,13 +27,13 @@ added: v0.1.21
   * `operator` {string} De `operator` eigenschap van de fout instantie zal deze waarde bevatten. Intern gebruikt om aan te geven welke werkwijze werd gebruikt ter vergelijking (of welke bevestigingsfunctie de fout heeft veroorzaakt).
   * `stackStartFn` {Function} Indien aanwezig, de gegenereerde stack trace gaat alle frames verwijderen tot aan de verstrekte functie.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Een subklasse van `Error` die het falen van een bewering aangeeft.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Alle exemplaren bevatten de ingebouwde `Error` eigenschappen (`message` and `name`) en:
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
+* `actual` {any} Instellen op de werkelijke waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
+* `expected` {any} Instellen op de verwachte waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
+* `generatedMessage` {boolean} Geeft aan of de boodschap automatisch was gegenereerd (`true`) of niet.
 * `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
 * `operator` {string} Set to the passed in operator value.
 
