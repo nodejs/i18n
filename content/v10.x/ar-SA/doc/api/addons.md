@@ -26,7 +26,7 @@ This "Hello world" example is a simple Addon, written in C++, that is the equiva
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+أولاً، قم بإنشاء ملف `hello.cc`:
 
 ```cpp
 // hello.cc
