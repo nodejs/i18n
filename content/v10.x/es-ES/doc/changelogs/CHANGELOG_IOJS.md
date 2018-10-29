@@ -1314,20 +1314,20 @@ Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-f
   * El REPL puede ser colocado en uno de tres modos utilizando la variable de entorno `NODE_REPL_MODE`: `sloppy`, `strict` o `magic` (predeterminado); el nuevo modo `magic` ejecutará automáticamente las declaraciones de "modo estricto únicamente" en modo estricto (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
 * **smalloc**: el módulo 'smalloc' ha sido desaprobado debido a cambios que vienen en V8 4.4 que lo volverá inutilizable
 * **util**: add Promise, Map and Set inspection support (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
-* **V8**: actualización a 4.2.77.18, vea el [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) para detalles completos. Notable items: 
+* **V8**: actualización a 4.2.77.18, vea el [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) para detalles completos. Artículos notables: 
   * Classes have moved out of staging; the `class` keyword is now usable in strict mode without flags
   * Object literal enhancements have moved out of staging; shorthand method and property syntax is now usable (`{ method() { }, property }`)
   * Rest parameters (`function(...args) {}`) are implemented in staging behind the `--harmony-rest-parameters` flag
   * Computed property names (`{['foo'+'bar']:'bam'}`) are implemented in staging behind the `--harmony-computed-property-names` flag
   * Unicode escapes (`'\u{xxxx}'`) are implemented in staging behind the `--harmony_unicode` flag and the `--harmony_unicode_regexps` flag for use in regular expressions
 * **Windows**: 
-  * Random process termination on Windows fixed (Fedor Indutny) [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
+  * Se corrigió la terminación de proceso aleatoria en Windows (Fedor Indutny) [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
   * The delay-load hook introduced to fix issues with process naming (iojs.exe / node.exe) has been made opt-out for native add-ons. Native add-ons should include `'win_delay_load_hook': 'false'` in their binding.gyp to disable this feature if they experience problems . (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
 * **Governance**: 
-  * Rod Vagg (@rvagg) was added to the Technical Committee (TC)
-  * Jeremiah Senkpiel (@Fishrock123) was added to the Technical Committee (TC)
+  * Se añadió a Rod Vagg (@rvagg) al Comité Técnico (TC por sus siglas en inglés)
+  * Se añadió a Senkpiel (@Fishrock123) al Comité Técnico (TC por sus siglas en inglés)
 
-### Known issues
+### Problemas conocidos
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
@@ -1335,29 +1335,29 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: los escapes de división son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
 * [[`5404cbc745`](https://github.com/nodejs/node/commit/5404cbc745)] - **buffer**: fix copy() segfault with zero arguments (Trevor Norris) [#1520](https://github.com/nodejs/node/pull/1520)
-* [[`3d3083b91f`](https://github.com/nodejs/node/commit/3d3083b91f)] - **buffer**: little improve for Buffer.concat method (Jackson Tian) [#1437](https://github.com/nodejs/node/pull/1437)
+* [[`3d3083b91f`](https://github.com/nodejs/node/commit/3d3083b91f)] - **buffer**: una pequeña mejorar para el método Buffer.concat (Jackson Tian) [#1437](https://github.com/nodejs/node/pull/1437)
 * [[`e67542ae17`](https://github.com/nodejs/node/commit/e67542ae17)] - **build**: disable -Og when building with clang (Ben Noordhuis) [#1609](https://github.com/nodejs/node/pull/1609)
-* [[`78f4b038f8`](https://github.com/nodejs/node/commit/78f4b038f8)] - **build**: turn on debug-safe optimizations with -Og (Ben Noordhuis) [#1569](https://github.com/nodejs/node/pull/1569)
+* [[`78f4b038f8`](https://github.com/nodejs/node/commit/78f4b038f8)] - **build**: encender las optimizaciones de debug-safe con -Og (Ben Noordhuis) [#1569](https://github.com/nodejs/node/pull/1569)
 * [[`a5dcff827a`](https://github.com/nodejs/node/commit/a5dcff827a)] - **build**: Use option groups in configure output (Johan Bergström) [#1533](https://github.com/nodejs/node/pull/1533)
-* [[`2a3c8c187e`](https://github.com/nodejs/node/commit/2a3c8c187e)] - **build**: remove -J from test-ci (Rod Vagg) [#1544](https://github.com/nodejs/node/pull/1544)
-* [[`e6874dd0f9`](https://github.com/nodejs/node/commit/e6874dd0f9)] - **crypto**: track external memory for SSL structures (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
-* [[`935c9d3fa7`](https://github.com/nodejs/node/commit/935c9d3fa7)] - **deps**: make node-gyp work with io.js (cjihrig) [#990](https://github.com/nodejs/node/pull/990)
-* [[`56e4255382`](https://github.com/nodejs/node/commit/56e4255382)] - **deps**: upgrade npm to 2.9.0 (Forrest L Norvell) [#1573](https://github.com/nodejs/node/pull/1573)
+* [[`2a3c8c187e`](https://github.com/nodejs/node/commit/2a3c8c187e)] - **build**: eliminar -J de test-ci (Rod Vagg) [#1544](https://github.com/nodejs/node/pull/1544)
+* [[`e6874dd0f9`](https://github.com/nodejs/node/commit/e6874dd0f9)] - **crypto**: rastrear memoria externa para estructuras de SSL (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
+* [[`935c9d3fa7`](https://github.com/nodejs/node/commit/935c9d3fa7)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [#990](https://github.com/nodejs/node/pull/990)
+* [[`56e4255382`](https://github.com/nodejs/node/commit/56e4255382)] - **deps**: actualizar npm a 2.9.0 (Forrest L Norvell) [#1573](https://github.com/nodejs/node/pull/1573)
 * [[`509b59ea7c`](https://github.com/nodejs/node/commit/509b59ea7c)] - **deps**: enable v8 postmortem debugging again (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
-* [[`01652c7709`](https://github.com/nodejs/node/commit/01652c7709)] - **deps**: upgrade v8 to 4.2.77.18 (Chris Dickinson) [#1506](https://github.com/nodejs/node/pull/1506)
-* [[`01e6632d70`](https://github.com/nodejs/node/commit/01e6632d70)] - **deps**: upgrade v8 to 4.2.77.15 (Ben Noordhuis) [#1399](https://github.com/nodejs/node/pull/1399)
+* [[`01652c7709`](https://github.com/nodejs/node/commit/01652c7709)] - **deps**: actualizar v8 a 4.2.77.18 (Chris Dickinson) [#1506](https://github.com/nodejs/node/pull/1506)
+* [[`01e6632d70`](https://github.com/nodejs/node/commit/01e6632d70)] - **deps**: actualizar v8 a 4.2.77.15 (Ben Noordhuis) [#1399](https://github.com/nodejs/node/pull/1399)
 * [[`db4ded5903`](https://github.com/nodejs/node/commit/db4ded5903)] - **deps**: enable v8 postmortem debugging again (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
-* [[`36cd5fb9d2`](https://github.com/nodejs/node/commit/36cd5fb9d2)] - **(SEMVER-MAJOR)** **deps**: upgrade v8 to 4.2.77.13 (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
-* [[`b3a7da1091`](https://github.com/nodejs/node/commit/b3a7da1091)] - **deps**: update http_parser to 2.5.0 (Fedor Indutny) [#1517](https://github.com/nodejs/node/pull/1517)
-* [[`ac1fb39ce8`](https://github.com/nodejs/node/commit/ac1fb39ce8)] - **doc**: add rvagg to the TC (Rod Vagg) [#1613](https://github.com/nodejs/node/pull/1613)
-* [[`dacc1fa35c`](https://github.com/nodejs/node/commit/dacc1fa35c)] - **doc**: update AUTHORS list (Rod Vagg) [#1586](https://github.com/nodejs/node/pull/1586)
-* [[`2a3a1909ab`](https://github.com/nodejs/node/commit/2a3a1909ab)] - **doc**: add require() lines to child.stdio example (Nick Raienko) [#1504](https://github.com/nodejs/node/pull/1504)
+* [[`36cd5fb9d2`](https://github.com/nodejs/node/commit/36cd5fb9d2)] - **(SEMVER-MAJOR)** **deps**: actualizar v8 a 4.2.77.13 (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
+* [[`b3a7da1091`](https://github.com/nodejs/node/commit/b3a7da1091)] - **deps**: actualizar http_parser a 2.5.0 (Fedor Indutny) [#1517](https://github.com/nodejs/node/pull/1517)
+* [[`ac1fb39ce8`](https://github.com/nodejs/node/commit/ac1fb39ce8)] - **doc**: añadir rvagg al TC (Rod Vagg) [#1613](https://github.com/nodejs/node/pull/1613)
+* [[`dacc1fa35c`](https://github.com/nodejs/node/commit/dacc1fa35c)] - **doc**: actualizar la lista de AUTHORS (Rod Vagg) [#1586](https://github.com/nodejs/node/pull/1586)
+* [[`2a3a1909ab`](https://github.com/nodejs/node/commit/2a3a1909ab)] - **doc**: añadir las líneas de require() al ejemplo de child.stdio (Nick Raienko) [#1504](https://github.com/nodejs/node/pull/1504)
 * [[`02388dbf40`](https://github.com/nodejs/node/commit/02388dbf40)] - **doc**: fix some cross-references (Alexander Gromnitsky) [#1584](https://github.com/nodejs/node/pull/1584)
 * [[`57c4cc26e2`](https://github.com/nodejs/node/commit/57c4cc26e2)] - **doc**: add TC meeting 2015-04-22 minutes (Rod Vagg) [#1556](https://github.com/nodejs/node/pull/1556)
 * [[`b4ad5d7050`](https://github.com/nodejs/node/commit/b4ad5d7050)] - **doc**: improve http.request and https.request opts (Roman Reiss) [#1551](https://github.com/nodejs/node/pull/1551)
