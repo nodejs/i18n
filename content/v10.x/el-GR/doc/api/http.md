@@ -713,9 +713,9 @@ changes:
 
 Αν η σύνδεση ενός πελάτη μεταδώσει ένα συμβάν `'error'`, θα προωθηθεί εδώ. Η ακρόαση του συμβάντος είναι υπεύθυνη για το κλείσιμο/την καταστροφή του υποκείμενου socket. Για παράδειγμα, κάποιος μπορεί να θέλει να κλείσει ένα socket πιο δυναμικά, με μια προσαρμοσμένη απόκριση HTTP αντί να αποκόψει απότομα την σύνδεση.
 
-Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
+Η προεπιλεγμένη συμπεριφορά είναι να κλείσει το socket με απόκριση HTTP '400 Bad Request' εάν αυτό είναι δυνατόν, διαφορετικά το socket καταστρέφεται αμέσως.
 
-`socket` is the [`net.Socket`][] object that the error originated from.
+Το `socket` είναι το αντικείμενο [`net.Socket`][] από το οποίο προήλθε το σφάλμα.
 
 ```js
 const http = require('http');
@@ -729,7 +729,7 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-When the `'clientError'` event occurs, there is no `request` or `response` object, so any HTTP response sent, including response headers and payload, *must* be written directly to the `socket` object. Care must be taken to ensure the response is a properly formatted HTTP response message.
+Όταν παρουσιαστεί το συμβάν `'clientError'`, δεν υπάρχει κανένα αντικείμενο `request` ή `response`, οπότε οποιαδήποτε απόκριση HTTP αποσταλεί, συμπεριλαμβανομένων των αποκρίσεων κεφαλίδων και φορτίου, *πρέπει* να γραφούν απευθείας στο αντικείμενο `socket`. Πρέπει να ληφθεί μέριμνα για να εξασφαλισθεί ότι η απόκριση είναι ένα σωστά μορφοποιημένο μήνυμα απόκρισης HTTP.
 
 `err` is an instance of `Error` with two extra columns:
 
