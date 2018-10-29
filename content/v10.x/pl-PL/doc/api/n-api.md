@@ -8,7 +8,7 @@
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
 
-Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). Jedyną różnicą jest zestaw interfejsów API, które są używane przez kod natywny. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). Jedyną różnicą jest zestaw interfejsów API, które są używane przez kod natywny. Zamiast korzystać z interfejsów API V8 lub [Native Abstractions for Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
 APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
 
