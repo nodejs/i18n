@@ -238,9 +238,9 @@ O método `os.networkInterfaces()` retorna um objeto contendo somente as interfa
 
 Cada chave no objeto retornado identifica uma interface de rede. O valor associado é um array de objetos em que cada um descreve um endereço de rede atribuído.
 
-The properties available on the assigned network address object include:
+As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
-* `address` {string} The assigned IPv4 or IPv6 address
+* `address` {string} O endereço IPv4 ou IPv6 atribuído
 * `netmask` {string} The IPv4 or IPv6 network mask
 * `family` {string} Either `IPv4` or `IPv6`
 * `mac` {string} The MAC address of the network interface
