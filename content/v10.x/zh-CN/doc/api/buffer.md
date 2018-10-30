@@ -548,9 +548,9 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 要计算的长度值
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
 * `encoding` {string} 如果 `string` 是字符串，则该值是它的字符编码方式。 **默认值:**`‘utf8'`。
-* Returns: {integer} `string` 包含的字节数。
+* 返回：{integer} `string` 包含的字节数。
 
 返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为 [<0>String.prototype.length</0>] 返回的是字符串中的 *字符* 数。
 
@@ -581,7 +581,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * 返回：{integer}
 
-比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -612,7 +612,7 @@ changes:
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以已知明确的长度会运行得更快。
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
 
 如果提供了 `totalLength`，则会将其强制转换为无符号整数。 If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
@@ -662,7 +662,7 @@ added: v5.10.0
 * `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0` 。
 * `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`。
 
-该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
+该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会和 [`TypedArray`] 共享相同的已分配内存。
 
 ```js
 const arr = new Uint16Array(2);
@@ -683,7 +683,7 @@ console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-可选的 `byteOffset` 和 0>length</code> 参数指定将与 `Buffer` 共享的 `arrayBuffer` 的内存范围。
+可选的 `byteOffset` 和 0>length</code> 参数指定`arrayBuffer`内将与 `Buffer` 共享的内存范围。
 
 ```js
 const ab = new ArrayBuffer(10);
@@ -783,7 +783,7 @@ added: v0.1.101
 * `obj` {Object}
 * 返回：{boolean}
 
-如果 `obj` 是一个 0>Buffer</0，则返回 `true`，否则返回 `false`。
+如果 `obj` 是一个 `Buffer`，则返回 `true`，否则返回 `false`。
 
 ### Class 方法：Buffer.isEncoding(encoding)
 
@@ -792,7 +792,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} 一个要检查的字符编码名称。
-* 返回值：{boolean}
+* 返回：{boolean}
 
 如果 `encoding` 包含一个支持的字符编码则返回 `true`，否则返回 `false`。
 
@@ -804,7 +804,7 @@ added: v0.11.3
 
 * {integer} **默认值：** `8192`
 
-这是决定用于池化的预分配的内部 `Buffer` 实例的大小的字节数。 这个值可以修改。
+这是决定用于放入内存池的预分配的内部 `Buffer` 实例的大小的字节数。 这个值可以修改。
 
 ### buf[index]
 
@@ -815,7 +815,7 @@ name: [index]
 
 索引操作符 `[index]` 可用于获取或设置 `buf` 中指定 `index` 位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
-该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，获取时返回 `undefined`， 设置时什么也不做。
+该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
 ```js
 // Copy an ASCII string into a `Buffer` one byte at a time.
@@ -864,7 +864,7 @@ changes:
 * `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** [`buf.length`].
 * 返回：{integer}
 
-比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同。 对比是基于各自 `Buffer` 中实际的字节序列。
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
 * `0` is returned if `target` is the same as `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
