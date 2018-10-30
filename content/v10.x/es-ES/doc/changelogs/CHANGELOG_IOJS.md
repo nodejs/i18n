@@ -1179,7 +1179,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`5896fe5cd3`](https://github.com/nodejs/node/commit/5896fe5cd3)] - **test**: ajustar Makefile/test-ci, añadir a vcbuild.bat (Rod Vagg) [nodejs/node#1530](https://github.com/nodejs/node/pull/1530)
 * [[`b72e4bc596`](https://github.com/nodejs/node/commit/b72e4bc596)] - **tls**: destruir el contexto de singleUse inmediatamente (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
 * [[`1cfc455dc5`](https://github.com/nodejs/node/commit/1cfc455dc5)] - **tls**: zero SSL_CTX freelist for a singleUse socket (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
-* [[`7ada680519`](https://github.com/nodejs/node/commit/7ada680519)] - **tls**: destruir la SSL una vez esté fuera de uso (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
+* [[`7ada680519`](https://github.com/nodejs/node/commit/7ada680519)] - **tls**: destruir la SSL una vez que esté fuera de uso (Fedor Indutny) [nodejs/node#1529](https://github.com/nodejs/node/pull/1529)
 * [[`71274b0263`](https://github.com/nodejs/node/commit/71274b0263)] - **tls_wrap**: utilizar localhost si options.host está vacío (Guilherme Souza) [nodejs/node#1493](https://github.com/nodejs/node/pull/1493)
 * [[`0eb74a8b6c`](https://github.com/nodejs/node/commit/0eb74a8b6c)] - **win,node-gyp**: permitir opcionalmente que se pueda renombrar a node.exe/iojs.exe (Bert Belder) [nodejs/node#1266](https://github.com/nodejs/node/pull/1266)
 
@@ -1193,7 +1193,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * **os**: `tmpdir()`'s trailing slash stripping has been refined to fix an issue when the temp directory is at '/'. Also considers which slash is used by the operating system. (cjihrig) [#1673](https://github.com/nodejs/node/pull/1673)
 * **tls**: default ciphers have been updated to use gcm and aes128 (Mike MacCana) [#1660](https://github.com/nodejs/node/pull/1660)
 * **build**: v8 snapshots have been re-enabled by default as suggested by the v8 team, since prior security issues have been resolved. This should give some perf improvements to both startup and vm context creation. (Trevor Norris) [#1663](https://github.com/nodejs/node/pull/1663)
-* **src**: se corrigieron los módulos de pre-carga que no funcionaban cuando se utilizaban otras banderas previamente `--require` (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
+* **src**: se corrigieron los módulos de pre-carga que no funcionaban cuando se utilizaban otras banderas antes de `--require` (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
 * **dgram**: fixed `send()`'s callback not being asynchronous (Yosuke Furukawa) [#1313](https://github.com/nodejs/node/pull/1313)
 * **readline**: emitKeys now keeps buffering data until it has enough to parse. This fixes an issue with parsing split escapes. (Alex Kocharin) [#1601](https://github.com/nodejs/node/pull/1601)
 * **cluster**: works now properly emit 'disconnect' to `cluser.worker` (Oleg Elifantiev) [#1386](https://github.com/nodejs/node/pull/1386)
@@ -1276,10 +1276,10 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`71dc7152ee`](https://github.com/nodejs/node/commit/71dc7152ee)] - **doc**: corregir el enlace de PR en CHANGELOG (Brian White) [#1624](https://github.com/nodejs/node/pull/1624)
 * [[`b97b96d05a`](https://github.com/nodejs/node/commit/b97b96d05a)] - **install**: corregir NameError (thefourtheye) [#1628](https://github.com/nodejs/node/pull/1628)
 * [[`6ccbe75384`](https://github.com/nodejs/node/commit/6ccbe75384)] - **js_stream**: corregir el índice del buffer en DoWrite (Shigeki Ohtsu) [#1635](https://github.com/nodejs/node/pull/1635)
-* [[`c43855c49c`](https://github.com/nodejs/node/commit/c43855c49c)] - **src**: exportar la función ParseEncoding function en Windows (Ivan Kozik) [#1596](https://github.com/nodejs/node/pull/1596)
+* [[`c43855c49c`](https://github.com/nodejs/node/commit/c43855c49c)] - **src**: exportar la función de ParseEncoding en Windows (Ivan Kozik) [#1596](https://github.com/nodejs/node/pull/1596)
 * [[`8315b22390`](https://github.com/nodejs/node/commit/8315b22390)] - **src**: fix pedantic cpplint whitespace warnings (Ben Noordhuis) [#1640](https://github.com/nodejs/node/pull/1640)
 * [[`b712af79a7`](https://github.com/nodejs/node/commit/b712af79a7)] - **src**: fix NODE_DEPRECATED macro with old compilers (Ben Noordhuis) [#1626](https://github.com/nodejs/node/pull/1626)
-* [[`2ed10f1349`](https://github.com/nodejs/node/commit/2ed10f1349)] - **src**: corregir la ineficiencia menor en la llamada Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
+* [[`2ed10f1349`](https://github.com/nodejs/node/commit/2ed10f1349)] - **src**: corregir ineficiencia menor en la llamada de Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
 * [[`f696c9efab`](https://github.com/nodejs/node/commit/f696c9efab)] - **src**: corregir el uso desaprobado de Buffer::New() (Ben Noordhuis) [#1577](https://github.com/nodejs/node/pull/1577)
 * [[`0c8f13df8f`](https://github.com/nodejs/node/commit/0c8f13df8f)] - **tools**: eliminar la función GuessWordSize sin utilizar (thefourtheye) [#1638](https://github.com/nodejs/node/pull/1638)
 
@@ -1312,7 +1312,7 @@ Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-f
 * **repl**: 
   * REPL history can be persisted across sessions if the `NODE_REPL_HISTORY_FILE` environment variable is set to a user accessible file, `NODE_REPL_HISTORY_SIZE` can set the maximum history size and defaults to `1000` (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
   * El REPL puede ser colocado en uno de tres modos utilizando la variable de entorno `NODE_REPL_MODE`: `sloppy`, `strict` o `magic` (predeterminado); el nuevo modo `magic` ejecutará automáticamente las declaraciones de "modo estricto únicamente" en modo estricto (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
-* **smalloc**: el módulo 'smalloc' ha sido desaprobado debido a cambios que vienen en V8 4.4 que lo volverá inutilizable
+* **smalloc**: el módulo 'smalloc' ha sido desaprobado debido a cambios que vienen en V8 4.4 que lo volverán inutilizable
 * **util**: add Promise, Map and Set inspection support (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
 * **V8**: actualización a 4.2.77.18, vea el [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) para detalles completos. Artículos notables: 
   * Classes have moved out of staging; the `class` keyword is now usable in strict mode without flags
@@ -1341,7 +1341,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ### Commits
 
 * [[`5404cbc745`](https://github.com/nodejs/node/commit/5404cbc745)] - **buffer**: fix copy() segfault with zero arguments (Trevor Norris) [#1520](https://github.com/nodejs/node/pull/1520)
-* [[`3d3083b91f`](https://github.com/nodejs/node/commit/3d3083b91f)] - **buffer**: una pequeña mejorar para el método Buffer.concat (Jackson Tian) [#1437](https://github.com/nodejs/node/pull/1437)
+* [[`3d3083b91f`](https://github.com/nodejs/node/commit/3d3083b91f)] - **buffer**: una pequeña mejora para el método Buffer.concat (Jackson Tian) [#1437](https://github.com/nodejs/node/pull/1437)
 * [[`e67542ae17`](https://github.com/nodejs/node/commit/e67542ae17)] - **build**: disable -Og when building with clang (Ben Noordhuis) [#1609](https://github.com/nodejs/node/pull/1609)
 * [[`78f4b038f8`](https://github.com/nodejs/node/commit/78f4b038f8)] - **build**: encender las optimizaciones de debug-safe con -Og (Ben Noordhuis) [#1569](https://github.com/nodejs/node/pull/1569)
 * [[`a5dcff827a`](https://github.com/nodejs/node/commit/a5dcff827a)] - **build**: Use option groups in configure output (Johan Bergström) [#1533](https://github.com/nodejs/node/pull/1533)
@@ -1355,7 +1355,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`db4ded5903`](https://github.com/nodejs/node/commit/db4ded5903)] - **deps**: enable v8 postmortem debugging again (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
 * [[`36cd5fb9d2`](https://github.com/nodejs/node/commit/36cd5fb9d2)] - **(SEMVER-MAJOR)** **deps**: actualizar v8 a 4.2.77.13 (Ben Noordhuis) [#1232](https://github.com/nodejs/node/pull/1232)
 * [[`b3a7da1091`](https://github.com/nodejs/node/commit/b3a7da1091)] - **deps**: actualizar http_parser a 2.5.0 (Fedor Indutny) [#1517](https://github.com/nodejs/node/pull/1517)
-* [[`ac1fb39ce8`](https://github.com/nodejs/node/commit/ac1fb39ce8)] - **doc**: añadir rvagg al TC (Rod Vagg) [#1613](https://github.com/nodejs/node/pull/1613)
+* [[`ac1fb39ce8`](https://github.com/nodejs/node/commit/ac1fb39ce8)] - **doc**: añadir a rvagg al TC (Rod Vagg) [#1613](https://github.com/nodejs/node/pull/1613)
 * [[`dacc1fa35c`](https://github.com/nodejs/node/commit/dacc1fa35c)] - **doc**: actualizar la lista de AUTHORS (Rod Vagg) [#1586](https://github.com/nodejs/node/pull/1586)
 * [[`2a3a1909ab`](https://github.com/nodejs/node/commit/2a3a1909ab)] - **doc**: añadir las líneas de require() al ejemplo de child.stdio (Nick Raienko) [#1504](https://github.com/nodejs/node/pull/1504)
 * [[`02388dbf40`](https://github.com/nodejs/node/commit/02388dbf40)] - **doc**: fix some cross-references (Alexander Gromnitsky) [#1584](https://github.com/nodejs/node/pull/1584)
