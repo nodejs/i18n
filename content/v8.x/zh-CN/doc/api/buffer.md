@@ -43,7 +43,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 * 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 在 Node.js 8.0.0 之前，为这样的 `Buffer` 实例分配的内存 *没有* 被初始化，因此 *可能包含敏感数据*。 这样的 `Buffer` 实例随后 *必须* 被初始化，初始化方式可以通过使用 [`buf.fill(0)`][`buf.fill()`]，或将整个 `Buffer` 写入数据。 虽然此行为是在 *有意* 提高性能，但开发经验表明，创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node.js 8.0.0 开始，`Buffer(num)` 和 `new Buffer(num)` 将会返回具有初始化内存的 `Buffer`。
 * 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
 Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
 
