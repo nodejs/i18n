@@ -476,7 +476,7 @@ changes:
 
 分配一个大小为 `size` 字节的新建 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
-以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] 用 0 初始化 `Buffer` 实例。
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] ，而不是用 0 初始化 `Buffer` 实例。
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -492,7 +492,7 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值），用于废弃的 `new Buffer(size)` 构造器 新创建的 <0>Buffer</0> 实例。
+请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用废弃的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
 
 对这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体地说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外的性能时，这个细微的区别是非常重要的。
 
@@ -510,7 +510,7 @@ added: v5.12.0
 
 当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数持久对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
-然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建非池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
+然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
 
 ```js
 // Need to keep around a few small chunks of memory
