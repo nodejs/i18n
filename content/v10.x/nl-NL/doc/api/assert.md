@@ -93,7 +93,7 @@ const assert = require('assert').strict;
 
 assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 // AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual ... Lines skipped
+// + expected - actual ... Regels overgeslagen
 //
 //   [
 //     [
@@ -107,15 +107,15 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+Om kleuren te deactiveren, gebruik de `NODE_DISABLE_COLORS` omgevingsgrootheid. Houd er rekening mee dat dit ook de kleuren in de REPL zal deactiveren.
 
-## Legacy mode
+## Legacy modus
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> Stabiliteit: 0 - Afgekeurd: Strikte modus te gebruiken.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Bij het rechtstreeks binnengaan van `assert` in plaats van de `strict` eigenschap te gebruiken, zal de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) worden gebruikt voor elke functie zonder "strikt" in de naam, zoals [`assert.deepEqual()`][].
 
-It can be accessed using:
+Het kan worden bereikt met behulp van:
 
 ```js
 const assert = require('assert');
@@ -170,7 +170,7 @@ changes:
 
 An alias of [`assert.deepStrictEqual()`][].
 
-**Legacy mode**
+**Legacy modus**
 
 > Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
@@ -482,7 +482,7 @@ added: v0.1.21
 
 An alias of [`assert.strictEqual()`][].
 
-**Legacy mode**
+**Legacy modus**
 
 > Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
@@ -662,7 +662,7 @@ changes:
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Legacy modus**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -763,7 +763,7 @@ added: v0.1.21
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Legacy modus**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
