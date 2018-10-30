@@ -66,7 +66,7 @@ El `module_name` debe coincidir con el nombre de archivo del binario final (excl
 
 Entonces, en el ejemplo de `hello.cc`, la función de inicialización es `init` y el nombre del módulo de Complemento es `addon`.
 
-### Building
+### Compilación
 
 Una vez que el código de fuente haya sido escrito, deberá ser compilado en el archivo binario `addon.node` . To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
 
@@ -451,7 +451,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Después, en `myobject.h`, la clase que envuelve hereda desde `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -966,11 +966,11 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 * `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registra los hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de muera el VM.
 
 AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
-Callbacks are run in last-in first-out order.
+Los callbacks se ejecutan por orden de última entrada y primera salida.
 
 El siguiente `addon.cc` implementa AtExit:
 
