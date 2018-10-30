@@ -48,7 +48,7 @@ See [`http.Server#maxHeadersCount`][].
 added: v0.11.2
 -->
 
-- `msecs` {number} **Default:** `120000` (2 minutes)
+- `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
 - `callback` {Function}
 
 See [`http.Server#setTimeout()`][].
