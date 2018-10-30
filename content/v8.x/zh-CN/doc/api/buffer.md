@@ -45,14 +45,14 @@ const buf6 = Buffer.from('tést', 'latin1');
 * 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
-Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
+由于 `new Buffer()` 的行为会因第一个传递参数的值的类型而显著改变，对于未能正确验证传递给 `new Buffer()` 的输入参数，或者不能正确初始化新分配的 `Buffer` 的内容的应用程序，会不可避免的将安全和可靠性问题引入到代码中。
 
-To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+为使 `Buffer` 实例的创建更加可靠且不易出错，不同形式的 `new Buffer()` 构造器已被 **弃用**并被不同的 `Buffer.from()`， [`Buffer.alloc()`]，和 [`Buffer.allocUnsafe()`] 方法所替代。
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*开发者应该将现有的所有 `new Buffer()` 构造器都移植到以下的新 API 之一。*
 
-* [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
+* [`Buffer.from(array)`] 返回一个包含被提供的8位字节副本的新的 `Buffer`。
+* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] 返回一个和给出的 [`ArrayBuffer`] 共享已分配内存的新的 `Buffer`。
 * [`Buffer.from(buffer)`] returns a new `Buffer` containing a *copy* of the contents of the given `Buffer`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` containing a *copy* of the provided string.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a "filled" `Buffer` instance of the specified size. This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures that newly created `Buffer` instances never contain old and potentially sensitive data.
