@@ -270,8 +270,8 @@ Test voor gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijk
 * [`Error`][] namen en berichten worden altijd vergeleken, zelfs als deze geen telbare eigenschappen zijn.
 * Telbaar eigen [`Symbol`][] eigenschappen worden ook vergeleken.
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) worden zowel als object als oningepakte waarden vergeleken.
-* `Object` properties are compared unordered.
-* `Map` keys and `Set` items are compared unordered.
+* `Object` eigenschappen worden ongeordend vergeleken.
+* `Map` sleutels en `Set` items worden ongeordend vergeleken.
 * Recursion stops when both sides differ or both sides encounter a circular reference.
 * [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
 
