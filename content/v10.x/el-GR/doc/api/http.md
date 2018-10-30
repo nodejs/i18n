@@ -957,9 +957,9 @@ changes:
 
 Αυτή η μέθοδος αποστέλλει σήμα στον εξυπηρετητή ότι οι κεφαλίδες απόκρισης και το σώμα έχουν αποσταλεί, ο εξυπηρετητής θα πρέπει να θεωρήσει αυτό το μήνυμα ως ολοκληρωμένο. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
 
-Ο ορισμός του `data`, είναι ισοδύναμος με την κλήση του [`response.write(data, encoding)`][] ακολουθούμενου από `response.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμο με την κλήση του [`response.write(data, encoding)`][] ακολουθούμενο από `response.end(callback)`.
 
-If `callback` is specified, it will be called when the response stream is finished.
+Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
 ### response.finished
 
@@ -969,7 +969,7 @@ added: v0.0.2
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Ξεκινάει ως `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
 
 ### response.getHeader(name)
 
@@ -980,9 +980,9 @@ added: v0.4.0
 * `name` {string}
 * Επιστρέφει: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
+Διαβάζει μια κεφαλίδα η οποία έχει προστεθεί στην ουρά, αλλά δεν έχει αποσταλεί στον πελάτη. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα. Ο τύπος της τιμής επιστροφής εξαρτάται από τις παραμέτρους που θα παρασχεθούν στο [`response.setHeader()`][].
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1002,11 +1002,11 @@ const setCookie = response.getHeader('set-cookie');
 added: v7.7.0
 -->
 
-* Returns: {string[]}
+* Επιστρέφει: {string[]}
 
-Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
+Επιστρέφει έναν πίνακα που περιέχει τις μοναδικές τιμές των τρεχόντων εξερχομένων κεφαλίδων. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -1022,9 +1022,9 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Returns: {Object}
+* Επιστρέφει: {Object}
 
-Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
+Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Από την στιγμή που χρησιμοποιείται ένα ρηχό αντίγραφο, οι τιμές του πίνακα μπορούν να μεταλλαχθούν χωρίς περαιτέρω κλήσεις στις διάφορες μεθόδους που σχετίζονται με τις κεφαλίδες της ενότητας http. Τα κλειδιά του επιστρεφόμενου αντικειμένου είναι τα ονόματα των κεφαλίδων, και οι τιμές του είναι οι τιμές της αντίστοιχης κεφαλίδας. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
 The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
