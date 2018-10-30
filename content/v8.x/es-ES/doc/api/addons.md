@@ -177,7 +177,7 @@ Las funciones disponibles y cómo utilizarlas están documentadas en la sección
 
 ## Ejemplos de Complemento
 
-Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de las APIs V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de las APIs V8. Consulte la [referencia de V8](https://v8docs.nodesource.com/) en linea para obtener ayuda referente a las diferentes llamadas de V8, y la [Guía del Embebedor](https://github.com/v8/v8/wiki/Embedder's%20Guide) de V8 para ver una explicación sobre varios conceptos utilizados, tales como handles, ámbitos, plantillas de función, etc.
 
 Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 
