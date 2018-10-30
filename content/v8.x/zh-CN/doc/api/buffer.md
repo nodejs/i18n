@@ -10,7 +10,7 @@
 
 `Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 `Buffer` 的大小在创建时确定，且不能被更改。
 
-`Buffer` 类位于Node.js全局范围内, 因此不太可能需要使用 ` require('buffer').Buffer`。
+`Buffer` 类位于Node.js全局范围内, 因此不太可能需要使用 `require('buffer').Buffer`。
 
 例如：
 
