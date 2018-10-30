@@ -89,7 +89,7 @@ Después, invoque el comando `node-gyp build` para generar el archivo compilado 
 
 Cuando se utiliza `npm install` para instalar un Complemento de Node.js, npm utiliza su propia versión empaquetada de `node-gyp` para realizar este mismo conjunto de acciones, generando una versión compilada del Complemento para la plataforma del usuario a petición.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](globals.html#globals_require) to the built `addon.node` module:
+Una vez que haya sido compilado, el Complemento binario puede ser utilizado desde dentro de Node.js dirigiendo [`require()`](globals.html#globals_require) hacia el módulo `addon.node` compilado:
 
 ```js
 // hello.js
