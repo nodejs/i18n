@@ -630,7 +630,7 @@ napi_status napi_escape_handle(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgesendet.
+Diese API fördert das Handle des JavaScript-Objekts, sodass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgesendet.
 
 Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
