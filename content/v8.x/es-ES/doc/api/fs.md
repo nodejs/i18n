@@ -182,7 +182,7 @@ added: v6.0.0
 
 *Note*: On certain file systems (such as NTFS and HFS+) filenames will always be encoded as UTF-8. On such file systems, passing non-UTF-8 encoded Buffers to `fs` functions will not work as expected.
 
-## Class: fs.FSWatcher
+## Clase: fs.FSWatcher
 
 <!-- YAML
 added: v0.5.8
@@ -194,7 +194,7 @@ The `listener` callback provided to `fs.watch()` receives the returned FSWatcher
 
 El objeto emite estos eventos:
 
-### Event: 'change'
+### Evento: 'change'
 
 <!-- YAML
 added: v0.5.8
@@ -225,7 +225,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Emitted when an error occurs.
+Se emite cuando ocurre un error.
 
 ### watcher.close()
 
@@ -259,7 +259,7 @@ added: v0.1.93
 
 * `fd` {integer} Integer file descriptor used by the ReadStream.
 
-Emitted when the ReadStream's file is opened.
+Se emite cuando se abre el archivo de ReadStream.
 
 ### readStream.bytesRead
 
@@ -267,7 +267,7 @@ Emitted when the ReadStream's file is opened.
 added: 6.4.0
 -->
 
-The number of bytes read so far.
+El número de bytes leídos hasta ahora.
 
 ### readStream.path
 
