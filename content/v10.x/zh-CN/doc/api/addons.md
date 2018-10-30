@@ -133,7 +133,7 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 本文档中的每个示例都直接使用Node.js和V8 API来实现插件。 重要的是要了解V8 API可以并且已经从一个V8版本发展到下一版本而且发生了巨大变化（并将一个主要的Node.js发布到下一版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
 
-The [Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发人员使用的工具，以保持V8和Node.js的过去和未来版本的兼容性。 有关如何使用的说明，请参见 `nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
+[Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发者使用的工具，以保持V8和Node.js新旧版本的兼容性。 有关如何使用的说明，请参见 `nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
@@ -633,7 +633,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-在 `myobject.h` 中，静态方法 `NewInstance()` 被添加，它用来实例化对象。 这个方法与JavaScript中的new操作符功能一样：
+在 `myobject.h` 中，静态方法 `NewInstance()` 被添加，它用来实例化对象。 这个方法用来取代JavaScript中的`new`操作符：
 
 ```cpp
 // myobject.h
