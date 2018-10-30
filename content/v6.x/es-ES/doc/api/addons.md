@@ -119,7 +119,7 @@ Node.js utiliza un número de bibliotecas vinculadas estáticamente, tales como 
 
 * Cuando se ejecuta `node-gyp`, detectará la versión de lanzamiento específica de Node.js y descargará el tarball de la fuente completa o solo las cabeceras. Si se descarga completamente la fuente, los Complementos tendrán acceso completo a todo el conjunto de dependencias de Node.js. Sin embargo, si solo se descargan las cabeceras de Node.js, entonces solo los símbolos exportados por Node.js estarán disponibles.
 
-* `node-gyp` puede ser ejecutado utilizando la bandera `--nodedir` apuntando a una imagen de fuente local de Node.js. Al utilizar esta opción, el Complemento tendrá acceso a todo el conjunto de dependencias.
+* `node-gyp` puede ser ejecutado utilizando la bandera `--nodedir` apuntando hacia una imagen de fuente local de Node.js. Al utilizar esta opción, el Complemento tendrá acceso a todo el conjunto de dependencias.
 
 ### Cargar Complementos utilizando require()
 
@@ -929,12 +929,12 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
-* `args` {void\*} A pointer to pass to the callback at exit.
+* `callback` {void (*)(void*)} Un puntero dirigido hacia la función de llamar en la salida.
+* `args` {void\*} Un puntero para pasar hacia el callback en la salida.
 
 Registra los hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de muera el VM.
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit toma dos parámetros: un puntero dirigido hacia una función de callback para ejecutarse en la salida, y un puntero dirigido hacia datos de contexto no escritos para ser pasados a ese callback.
 
 Los callbacks se ejecutan por orden de última entrada y primera salida.
 
