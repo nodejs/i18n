@@ -396,7 +396,7 @@ console.log(fn());
 
 ### Envolver objetos C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+También es posible envolver objetos/clases de C++ de manera que permita la creación de nuevas instancias mediante el uso del operador `new` de JavaScript:
 
 ```cpp
 // addon.cc
@@ -757,7 +757,7 @@ console.log(obj2.plusOne());
 
 ### Pasar y distribuir objetos envueltos
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. Los siguientes ejemplos muestran una función `add()` que puede tomar dos objetos `MyObject` como argumentos de entrada:
+Además de envolver y devolver objetos de C++, es posible pasar y distribuir objetos envueltos mediante el uso de la función de ayuda `node::ObjectWrap::Unwrap` de Node.js para desenvolverlos. Los siguientes ejemplos muestran una función `add()` que puede tomar dos objetos `MyObject` como argumentos de entrada:
 
 ```cpp
 // addon.cc
