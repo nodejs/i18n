@@ -6,13 +6,13 @@
 
 <!--name=fs-->
 
-File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
+File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. Todos los métodos tienen formas asincrónicas y sincrónicas.
 
-The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. Si la operación se completó con éxito, entonces el primer argumento será `null` o `undefined`.
 
 When using the synchronous form any exceptions are immediately thrown. You can use try/catch to handle exceptions or allow them to bubble up.
 
-Here is an example of the asynchronous version:
+Aquí hay un ejemplo de una versión asincrónica:
 
 ```js
 const fs = require('fs');
@@ -23,7 +23,7 @@ fs.unlink('/tmp/hello', (err) => {
 });
 ```
 
-Here is the synchronous version:
+Aquí está la versión sincrónica:
 
 ```js
 const fs = require('fs');
@@ -94,11 +94,11 @@ added: v6.0.0
 added: v0.5.8
 -->
 
-Objects returned from [`fs.watch()`][] are of this type.
+Los objetos devueltos desde [`fs.watch()`][] son de este tipo.
 
 The `listener` callback provided to `fs.watch()` receives the returned FSWatcher's `change` events.
 
-The object itself emits these events:
+El objeto emite estos eventos:
 
 ### Event: 'change'
 
@@ -109,7 +109,7 @@ added: v0.5.8
 * `eventType` {string} The type of fs change
 * `filename` {string|Buffer} The filename that changed (if relevant/available)
 
-Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
+Se emite cuando algo cambia en un directorio o archivo observado. Vea más detalles en [`fs.watch()`][].
 
 The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a string.
 
