@@ -489,7 +489,7 @@ changes:
 
 Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. Αν το αίτημα είναι τεμαχισμένο, αυτό θα στείλει τον τερματισμό `'0\r\n\r\n'`.
 
-Ο ορισμός του `data`, είναι ισοδύναμο με την κλήση του [`request.write(data, encoding)`][] ακολουθούμενο από `request.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμος με την κλήση του [`request.write(data, encoding)`][] ακολουθούμενου από `request.end(callback)`.
 
 Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
@@ -913,11 +913,11 @@ added: v0.3.0
 
 * `headers` {Object}
 
-This method adds HTTP trailing headers (a header but at the end of the message) to the response.
+Αυτή η μέθοδος προσθέτει τελικές κεφαλίδες HTTP (μια κεφαλίδα στο τέλος του μηνύματος) στην απόκριση.
 
-Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
+Οι τελικές κεφαλίδες μεταδίδονται **μόνο** αν η κωδικοποίηση του τμήματος χρησιμοποιείται για την απόκριση, αν δεν χρησιμοποιείται (π.χ. το αίτημα ήταν HTTP/1.0), αυτές απορρίπτονται σιωπηλά.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. E.g.,
+Σημειώστε ότι το πρωτόκολλο HTTP απαιτεί την αποστολή της κεφαλίδας `Trailer` για να μεταδοθούν οι τελικές κεφαλίδες, με μια λίστα των πεδίων κεφαλίδων ως τιμή της. Για παράδειγμα,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -927,7 +927,7 @@ response.addTrailers({ 'Content-MD5': '7895bf4b8828b55ceaf47747b4bca667' });
 response.end();
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
 ### response.connection
 
@@ -937,7 +937,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`response.socket`][].
+Δείτε το [`response.socket`][].
 
 ### response.end(\[data\]\[, encoding\][, callback])
 
@@ -953,11 +953,11 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Επιστρέφει: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+Αυτή η μέθοδος αποστέλλει σήμα στον εξυπηρετητή ότι οι κεφαλίδες απόκρισης και το σώμα έχουν αποσταλεί, ο εξυπηρετητής θα πρέπει να θεωρήσει αυτό το μήνυμα ως ολοκληρωμένο. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμος με την κλήση του [`response.write(data, encoding)`][] ακολουθούμενου από `response.end(callback)`.
 
 If `callback` is specified, it will be called when the response stream is finished.
 
