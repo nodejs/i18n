@@ -174,16 +174,16 @@ Een alias van [`assert.deepStrictEqual()`][].
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.deepStrictEqual()`][].
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Tests voor gelijkheid tussen de `actual` en de `expected` parameters. Primitieve waarden worden vergeleken met de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) worden overwogen. De [`assert.deepEqual()`][] uitvoering test niet de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] eigenschappen. Voor dergelijke controles, kan men overwegen als alternatief [`assert.deepStrictEqual()`][] te gebruiken. [`assert.deepEqual()`][] kan onverwachte verrassende resultaten geven. Het volgende voorbeeld gooit geen `AssertionError` want de eigenschappen op het [`RegExp`][] object zijn niet telbaar:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// WAARSCHUWING: Dit gaat geen AssertionError gooien!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+Een uitzondering wordt gemaakt voor [`Map`][] and [`Set`][]. `Map`s and `Set`s hebben hun opgenomen items ook vergeleken. als verwacht.
 
 "Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
