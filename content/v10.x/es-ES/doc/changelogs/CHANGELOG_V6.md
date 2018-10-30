@@ -2156,7 +2156,7 @@ Esta actualización de LTS viene con 297 commits. Esto incluye a 124 que están 
 * [[`a13bb54466`](https://github.com/nodejs/node/commit/a13bb54466)] - **tools**: añadir generador gyp de compile_commands.json (Ben Noordhuis) [#7986](https://github.com/nodejs/node/pull/7986)
 * [[`b38d8d6e06`](https://github.com/nodejs/node/commit/b38d8d6e06)] - **tools**: sugerir comando python2 en configure (Roman Reiss) [#11375](https://github.com/nodejs/node/pull/11375)
 * [[`291346ea51`](https://github.com/nodejs/node/commit/291346ea51)] - **tools,doc**: añadir seguimiento de Google Analytics. (Phillip Johnsen) [#6601](https://github.com/nodejs/node/pull/6601)
-* [[`1ed47d3f33`](https://github.com/nodejs/node/commit/1ed47d3f33)] - **tty**: evitar calentamiento de oob en TTYWrap::GetWindowSize() (Dmitry Tsvettsikh) [#11454](https://github.com/nodejs/node/pull/11454)
+* [[`1ed47d3f33`](https://github.com/nodejs/node/commit/1ed47d3f33)] - **tty**: evitar advertencia de oob en TTYWrap::GetWindowSize() (Dmitry Tsvettsikh) [#11454](https://github.com/nodejs/node/pull/11454)
 * [[`9e6fcbb34c`](https://github.com/nodejs/node/commit/9e6fcbb34c)] - **url**: reparar el manejo sustituto en encodeAuth() (Timothy Gu) [#11387](https://github.com/nodejs/node/pull/11387)
 * [[`53213004eb`](https://github.com/nodejs/node/commit/53213004eb)] - **util**: mejorar legibilidad de normalizeEncoding (Joyee Cheung) [#10439](https://github.com/nodejs/node/pull/10439)
 * [[`e54b433c8d`](https://github.com/nodejs/node/commit/e54b433c8d)] - **util**: usar ES2015+ Object.is para chequear cero negativo (Shinnosuke Watanabe) [#11332](https://github.com/nodejs/node/pull/11332)
@@ -2175,19 +2175,19 @@ Esta actualización de LTS viene con 168 commits. Esto incluye 85 que están rel
 Los cambios de SEMVER-MINOR incluyen:
 
 * **crypto**: permitir agregar certificados adicionales a CAs bien conocidos (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
-* **deps**: Actualizar INTL ICU a versión 58 (Steven R. Loomis) [#9234](https://github.com/nodejs/node/pull/9234)
+* **deps**: Actualizar ICU de INTL a versión 58 (Steven R. Loomis) [#9234](https://github.com/nodejs/node/pull/9234)
 * **process**: añadir `process.memoryUsage.external` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
 * **src**: añadir empaquetador para process.emitWarning() (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 
-Cambios Notables de SEMVER-PATCH incluyen:
+Los cambios notables de SEMVER-PATCH incluyen:
 
 * **fs**: almacenar en caché a non-symlinks en realpathSync. (Jeremy Yallop) [#10253](https://github.com/nodejs/node/pull/10253)
-* **repl**: permitir autocompletar para paquetes con ámbito (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
+* **repl**: permitir el auto-completado para paquetes con ámbito (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
 
 ### Commits
 
 * [[`d532d7497a`](https://github.com/nodejs/node/commit/d532d7497a)] - **async_wrap**: aclarar vector de destroy_ids (Trevor Norris) [#10400](https://github.com/nodejs/node/pull/10400)
-* [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactorizar benchmarks de buffer (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
+* [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactorizar pruebas de rendimiento de buffer (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
 * [[`40c7ec62e0`](https://github.com/nodejs/node/commit/40c7ec62e0)] - **buffer**: corregir llenado de string de un solo carácter (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * [[`03f0d2ac21`](https://github.com/nodejs/node/commit/03f0d2ac21)] - **buffer**: handle UCS2 `.fill()` properly on BE (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * [[`9e76350372`](https://github.com/nodejs/node/commit/9e76350372)] - **build**: añadir /opt/freeware/... a ruta de biblioteca de AIX (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
@@ -2218,12 +2218,12 @@ Cambios Notables de SEMVER-PATCH incluyen:
 * [[`c3882f4d8b`](https://github.com/nodejs/node/commit/c3882f4d8b)] - **doc**: advertir sobre input no validado en child_process (Matthew Garrett) [#10466](https://github.com/nodejs/node/pull/10466)
 * [[`11d8f2439b`](https://github.com/nodejs/node/commit/11d8f2439b)] - **doc**: requerir autenticación de doble factor (Rich Trott) [#10529](https://github.com/nodejs/node/pull/10529)
 * [[`017764018c`](https://github.com/nodejs/node/commit/017764018c)] - **doc**: usar "Node.js" en guía de V8 (Rich Trott) [#10438](https://github.com/nodejs/node/pull/10438)
-* [[`636335a1c3`](https://github.com/nodejs/node/commit/636335a1c3)] - **doc**: require() intenta primero los módulos no nativos de núcleo (Vicente Jimenez Aguilar) [#10324](https://github.com/nodejs/node/pull/10324)
+* [[`636335a1c3`](https://github.com/nodejs/node/commit/636335a1c3)] - **doc**: require() prueba primero los módulos del núcleo no nativos (Vicente Jimenez Aguilar) [#10324](https://github.com/nodejs/node/pull/10324)
 * [[`f7c0eb8ba6`](https://github.com/nodejs/node/commit/f7c0eb8ba6)] - **doc**: clarify the review and landing process (Joyee Cheung) [#10202](https://github.com/nodejs/node/pull/10202)
 * [[`b814b4cec7`](https://github.com/nodejs/node/commit/b814b4cec7)] - **doc**: actualizar valor de devolución de writable.write (Tanuja-Sawant) [#9468](https://github.com/nodejs/node/pull/9468)
 * [[`3079ba6e78`](https://github.com/nodejs/node/commit/3079ba6e78)] - **doc**: redireccionar 'Start a Working Group' a repositorio de TSC (William Kapke) [#9655](https://github.com/nodejs/node/pull/9655)
 * [[`8dbba48f70`](https://github.com/nodejs/node/commit/8dbba48f70)] - **doc**: añadir texto de disolución de "Working Group" (William Kapke) [#9656](https://github.com/nodejs/node/pull/9656)
-* [[`1dc7b8918d`](https://github.com/nodejs/node/commit/1dc7b8918d)] - **doc**: reparar errores en stream.md (Fumiya KARASAWA) [#10411](https://github.com/nodejs/node/pull/10411)
+* [[`1dc7b8918d`](https://github.com/nodejs/node/commit/1dc7b8918d)] - **doc**: corregir errores en stream.md (Fumiya KARASAWA) [#10411](https://github.com/nodejs/node/pull/10411)
 * [[`c2156fcba1`](https://github.com/nodejs/node/commit/c2156fcba1)] - **doc**: ejemplo más eficiente en console.md (Vse Mozhet Byt) [#10451](https://github.com/nodejs/node/pull/10451)
 * [[`809ae9da29`](https://github.com/nodejs/node/commit/809ae9da29)] - **doc**: var -> const / let en el console.md (Vse Mozhet Byt) [#10451](https://github.com/nodejs/node/pull/10451)
 * [[`3f289a3efe`](https://github.com/nodejs/node/commit/3f289a3efe)] - **doc**: mejorar explicación de common.mustCall() (Rich Trott) [#10390](https://github.com/nodejs/node/pull/10390)
@@ -2240,7 +2240,7 @@ Cambios Notables de SEMVER-PATCH incluyen:
 * [[`9988f02025`](https://github.com/nodejs/node/commit/9988f02025)] - **doc**: corregir error tipográfico en ejemplo de código del módulo de 'path' (pallxk) [#10136](https://github.com/nodejs/node/pull/10136)
 * [[`718b5902bc`](https://github.com/nodejs/node/commit/718b5902bc)] - **doc**: estandarizar al hacer -j4 (Jonathan Darling) [#9961](https://github.com/nodejs/node/pull/9961)
 * [[`5b6317b10f`](https://github.com/nodejs/node/commit/5b6317b10f)] - **doc**: add note to parallelize make (Jonathan Darling) [#9961](https://github.com/nodejs/node/pull/9961)
-* [[`7815efa5c1`](https://github.com/nodejs/node/commit/7815efa5c1)] - **doc**: añadir alguna información en `tty#setRawMode()` (Jeremiah Senkpiel) [#10147](https://github.com/nodejs/node/pull/10147)
+* [[`7815efa5c1`](https://github.com/nodejs/node/commit/7815efa5c1)] - **doc**: añadir algo de información en `tty#setRawMode()` (Jeremiah Senkpiel) [#10147](https://github.com/nodejs/node/pull/10147)
 * [[`639ef411b4`](https://github.com/nodejs/node/commit/639ef411b4)] - **doc**: actualizar descripción y ejemplos de `path.format` (anoff) [#10046](https://github.com/nodejs/node/pull/10046)
 * [[`e6c74b37b3`](https://github.com/nodejs/node/commit/e6c74b37b3)] - **fs**: remover asignación innecesaria de nulo (Francis Gulotta) [#10260](https://github.com/nodejs/node/pull/10260)
 * [[`709b9b4660`](https://github.com/nodejs/node/commit/709b9b4660)] - **fs**: almacenar en caché a non-symlinks en realpathSync. (Jeremy Yallop) [#10253](https://github.com/nodejs/node/pull/10253)
