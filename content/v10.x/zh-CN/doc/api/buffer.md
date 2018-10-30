@@ -683,7 +683,7 @@ console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-可选的 `byteOffset` 和 0>length</code> 参数指定`arrayBuffer`内将与 `Buffer` 共享的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer`内将与 `Buffer` 共享的内存范围。
 
 ```js
 const ab = new ArrayBuffer(10);
