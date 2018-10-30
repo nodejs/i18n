@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 在 Node.js v6 之前的版本中, `Buffer` 实例通过 `Buffer` 构造函数创建，根据传递参数的不同，它返回 `Buffer` 的不同实例：
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
+* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 在 Node.js 8.0.0 之前，为这样的 `Buffer` 实例分配的内存 *没有* 被初始化，因此 *可能包含敏感数据*。 Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
