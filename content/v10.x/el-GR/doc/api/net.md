@@ -267,7 +267,7 @@ In most operating systems, listening to the [unspecified IPv6 address](https://e
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Δηλώνει αν ο εξυπηρετητής ακούει ή όχι για εισερχόμενες συνδέσεις.
 
 ### server.maxConnections
 
