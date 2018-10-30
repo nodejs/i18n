@@ -16,9 +16,9 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Hello world
+## Hola mundo
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Este ejemplo de "Hola mundo" es un Complemento simple, escrito en C++, el cual es el equivalente del siguiente código de JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
@@ -137,7 +137,7 @@ Las [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan) (o `nan`
 
 > Estabilidad: 1 - Experimental
 
-N-API es una API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las API´s de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
+N-API es una API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las API´s de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
 
 To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
