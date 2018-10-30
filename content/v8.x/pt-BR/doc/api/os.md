@@ -234,9 +234,9 @@ added: v0.6.0
 
 * Retorna: {Object}
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+O método `os.networkInterfaces()` retorna um objeto contendo somente as interfaces as quais foram atribuídas um endereço de rede.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Cada chave no objeto retornado identifica uma interface de rede. O valor associado é um array de objetos em que cada um descreve um endereço de rede atribuído.
 
 The properties available on the assigned network address object include:
 
