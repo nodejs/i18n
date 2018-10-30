@@ -80,13 +80,13 @@ Bij het gebruik van de `strict mode`, zal elke `assert` functie de gelijkheid ge
 
 Bovendien zullen foutmeldingen die betrekking hebben op objecten een fout diff produceren, in plaats van beide objecten weer te geven. Dit is niet het geval voor de legacy modus.
 
-It can be accessed using:
+Het kan worden bereikt met behulp van:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Voorbeeld fout diff:
 
 ```js
 const assert = require('assert').strict;
