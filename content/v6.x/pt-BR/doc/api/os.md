@@ -222,9 +222,9 @@ added: v0.3.3
 
 O método `os.loadavg()` retorna um array contendo os 1, 5, e 15 minutos de carga média.
 
-A carga média é uma medida da atividade do sistema, calculada pelo sistema operacional e expressa como um número fracionário. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+A carga média é uma medida da atividade do sistema, calculada pelo sistema operacional e expressa como um número fracionário. Como regra geral, a carga média deve idealmente ser menor que o número de CPUs lógicas no sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+A carga média é um conceito específico do UNIX com nenhum equivalente real em plataformas Windows. No Windows, o valor de retorno é sempre `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
