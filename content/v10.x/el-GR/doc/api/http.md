@@ -989,11 +989,11 @@ response.setHeader('Content-Type', 'text/html');
 response.setHeader('Content-Length', Buffer.byteLength(body));
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 const contentType = response.getHeader('content-type');
-// contentType is 'text/html'
+// Το contentType είναι 'text/html'
 const contentLength = response.getHeader('Content-Length');
-// contentLength is of type number
+// Το contentLength είναι τύπος number
 const setCookie = response.getHeader('set-cookie');
-// setCookie is of type string[]
+// Το setCookie είναι τύπος string[]
 ```
 
 ### response.getHeaderNames()
@@ -1026,9 +1026,9 @@ added: v7.7.0
 
 Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Από την στιγμή που χρησιμοποιείται ένα ρηχό αντίγραφο, οι τιμές του πίνακα μπορούν να μεταλλαχθούν χωρίς περαιτέρω κλήσεις στις διάφορες μεθόδους που σχετίζονται με τις κεφαλίδες της ενότητας http. Τα κλειδιά του επιστρεφόμενου αντικειμένου είναι τα ονόματα των κεφαλίδων, και οι τιμές του είναι οι τιμές της αντίστοιχης κεφαλίδας. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
-The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+Το αντικείμενο που επιστρέφεται από τη μέθοδο `response.getHeaders()` *δεν* κληρονομεί εξ'ολοκλήρου από το `Object` της Javascript. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Foo', 'bar');
