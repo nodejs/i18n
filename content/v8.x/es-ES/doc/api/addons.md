@@ -103,7 +103,7 @@ Por favor, vea los ejemplos a continuación para mayor información o <https://g
 
 Ya que la ruta exacta hacia el Complemento binario compilado puede variar dependiendo de cómo esté compilado (por ejemplo, a veces puede estar en `./build/Debug/`), los Complementos pueden utilizar el paquete [bindings](https://github.com/TooTallNate/node-bindings) para cargar el módulo compilado.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Tenga en cuenta que mientras el paquete de implementación `bindings` es más sofisticado en cuanto a cómo localiza los módulos de los Complementos, esencialmente está utilizando un patrón de intento de captura similar a:
 
 ```js
 try {
