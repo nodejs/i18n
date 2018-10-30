@@ -871,11 +871,11 @@ added: v8.0.0
 
 * {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `5000` (5 δευτερόλεπτα).
 
-Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου που θα πρέπει να περιμένει ο εξυπηρετητής για περαιτέρω δεδομένα, αφού έχει ολοκληρώσει την εγγραφή της τελευταίας απόκρισης, πριν την καταστροφή του socket. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
+Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου που θα πρέπει να περιμένει ο εξυπηρετητής για περαιτέρω δεδομένα, αφού έχει ολοκληρώσει την εγγραφή της τελευταίας απόκρισης, πριν την καταστροφή του socket. Αν ο εξυπηρετητής λάβει νέα δεδομένα πριν την εξάντληση του χρονικού ορίου του keep-alive, θα γίνει επαναφορά του χρονικού περιθωρίου αδράνειας του [`server.timeout`][].
 
-A value of `0` will disable the keep-alive timeout behavior on incoming connections. A value of `0` makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
+Μια τιμή `0` θα απενεργοποιήσει τη συμπεριφορά εξάντλησης του χρονικού ορίου του keep-alive στις εισερχόμενες συνδέσεις. Μια τιμή `0` κάνει τον εξυπηρετητή http να συμπεριφέρεται όπως σε εκδόσεις Node.js πριν την 8.0.0, όπου δεν υπήρχε εξάντληση του χρονικού ορίου του keep-alive.
 
-The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
+Η λογική εξάντλησης του χρονικού ορίου των socket ρυθμίζεται απευθείας στην σύνδεση, οπότε η αλλαγή αυτής της τιμής επηρεάζει μόνο τις νέες συνδέσεις του εξυπηρετητή, όχι τις προϋπάρχουσες.
 
 ## Class: http.ServerResponse
 
@@ -883,7 +883,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
 
