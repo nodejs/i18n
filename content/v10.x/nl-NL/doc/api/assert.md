@@ -272,8 +272,8 @@ Test voor gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijk
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) worden zowel als object als oningepakte waarden vergeleken.
 * `Object` eigenschappen worden ongeordend vergeleken.
 * `Map` sleutels en `Set` items worden ongeordend vergeleken.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* Recursie stopt als beide zijden verschillen of beide zijden een circulaire verwijzing tegenkomen.
+* [`WeakMap`][] en [`WeakSet`][] vergelijkingen steunen niet op hun waarden. Zie hieronder voor meer informatie.
 
 ```js
 const assert = require('assert').strict;
