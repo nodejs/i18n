@@ -121,7 +121,7 @@ Het kan worden bereikt met behulp van:
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Het is aanbevolen om als alternatief de [`strict mode`][] te gebruiken, omdat de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) vaak verrassende resultaten levert. Dit is met name zo voor [`assert.deepEqual()`][], waar de vergelijkingsregels laks zijn:
 
 ```js
 // WARNING: This does not throw an AssertionError!
