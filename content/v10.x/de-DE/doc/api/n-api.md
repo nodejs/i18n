@@ -504,7 +504,7 @@ Um diesen Fall zu bearbeiten, bietet N-API die Möglichkeit, einen neuen "Scope"
 
 N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. Es gibt zu jeder Zeit nur einen aktiven Scope, und alle neuen Handles werden diesem Scope zugeordnet, während er aktiv ist. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, in der sie geöffnet werden. Darüber hinaus müssen alle innerhalb einer nativen Methode erstellten Scopes geschlossen werden, bevor von dieser Methode zurückgekehrt wird.
 
-Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] sicher stellen, dass höchstens ein einziges Handle während der Ausführung des Loops gültig ist:
+Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] sicherstellen, dass höchstens ein einziges Handle während der Ausführung des Loops gültig ist:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -526,7 +526,7 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", so dass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
+Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", sodass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
 
 Die Methoden, die für das Öffnen/Schließen von Escapable-Scopes zur Verfügung stehen, sind folgende: [`napi_open_escapable_handle_scope`][] und [`napi_close_escapable_handle_scope`][].
 
