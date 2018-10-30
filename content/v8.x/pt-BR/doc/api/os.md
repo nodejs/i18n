@@ -232,7 +232,7 @@ A carga média é um conceito específico do UNIX com nenhum equivalente real em
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
