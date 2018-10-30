@@ -280,45 +280,45 @@ const assert = require('assert').strict;
 
 // This fails because 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
-// AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual
+// AssertieFout: Invoer A verwacht om strikt diep-gelijk invoer B: 
+// + verwacht - bestaand
 //   {
 // -   a: 1
 // +   a: '1'
 //   }
 
-// The following objects don't have own properties
-const date = new Date();
+// De volgende objecten hebben geen eigenschappen
+const datum = nieuwe Datum();
 const object = {};
 const fakeDate = {};
 Object.setPrototypeOf(fakeDate, Date.prototype);
 
-// Different [[Prototype]]:
+// Verschillend [[Prototype]]:
 assert.deepStrictEqual(object, fakeDate);
-// AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual
+// AssertionError: Invoer A verwacht om strikt-gelijke invoer B.
+// + verwacht - bestaand
 // - {}
 // + Date {}
 
-// Different type tags:
+// Verschillende typen labels:
 assert.deepStrictEqual(date, fakeDate);
-// AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual
+// AssertionError: Invoer A verwacht om to strikt diep-gelijk invoer B:
+// + verwacht - bestaand
 // - 2018-04-26T00:49:08.604Z
 // + Date {}
 
 assert.deepStrictEqual(NaN, NaN);
-// OK, because of the SameValue comparison
+// OK, vanwege de SameValue vergelijking
 
-// Different unwrapped numbers:
-assert.deepStrictEqual(new Number(1), new Number(2));
-// AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual
-// - [Number: 1]
-// + [Number: 2]
+// Verschillende uitgepakte nummers:
+assert.deepStrictEqual(nieuw Nummer(1), nieuw Nummer(2));
+// AssertionError: Invoer A verwacht om strikt diep-gelijk invoer B:
+// + verwacht - bestaand
+// - [Nummer: 1]
+// + [Nummer: 2]
 
 assert.deepStrictEqual(new String('foo'), Object('foo'));
-// OK because the object and the string are identical when unwrapped.
+// OK want het object en de tekenreeks zijn identiek wanneer zij uitgepakt zijn.
 
 assert.deepStrictEqual(-0, -0);
 // OK
