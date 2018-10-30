@@ -855,13 +855,13 @@ added: v0.9.12
 added: v0.9.12
 -->
 
-* {number} Timeout in milliseconds. **Default:** `120000` (2 minutes).
+* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `120000` (2 λεπτά).
 
-The number of milliseconds of inactivity before a socket is presumed to have timed out.
+Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου, πριν υποτεθεί ότι έχει εξαντληθεί το χρονικό περιθώριο του socket.
 
-A value of `0` will disable the timeout behavior on incoming connections.
+Μια τιμή `0` θα απενεργοποιήσει την συμπεριφορά χρονικού ορίου στις εισερχόμενες συνδέσεις.
 
-The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
+Η λογική εξάντλησης του χρονικού ορίου των socket ρυθμίζεται απευθείας στην σύνδεση, οπότε η αλλαγή αυτής της τιμής επηρεάζει μόνο τις νέες συνδέσεις του εξυπηρετητή, όχι τις προϋπάρχουσες.
 
 ### server.keepAliveTimeout
 
@@ -869,9 +869,9 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v8.0.0
 -->
 
-* {number} Timeout in milliseconds. **Default:** `5000` (5 seconds).
+* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `5000` (5 δευτερόλεπτα).
 
-The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
+Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου που θα πρέπει να περιμένει ο εξυπηρετητής για περαιτέρω δεδομένα, αφού έχει ολοκληρώσει την εγγραφή της τελευταίας απόκρισης, πριν την καταστροφή του socket. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
 
 A value of `0` will disable the keep-alive timeout behavior on incoming connections. A value of `0` makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
 
