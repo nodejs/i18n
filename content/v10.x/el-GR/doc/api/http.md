@@ -885,25 +885,25 @@ added: v0.1.17
 
 Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+Η απόκριση εφαρμόζει, αλλά δεν κληρονομεί από την διασύνδεση [Εγγράψιμης Ροής](stream.html#stream_class_stream_writable). Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
-### Event: 'close'
+### Συμβάν: 'close'
 
 <!-- YAML
 added: v0.6.7
 -->
 
-Indicates that the underlying connection was terminated before [`response.end()`][] was called or able to flush.
+Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί πριν γίνει κλήση του [`response.end()`][] ή εκκαθάριση.
 
-### Event: 'finish'
+### Συμβάν: 'finish'
 
 <!-- YAML
 added: v0.3.6
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
+Μεταδίδεται όταν έχει αποσταλεί η απόκριση. Πιο συγκεκριμένα, αυτό το συμβάν μεταδίδεται όταν το τελευταίο κομμάτι των κεφαλίδων απόκρισης και του σώματος έχουν παραδοθεί στο λειτουργικό σύστημα για μετάδοση μέσω του δικτύου. Αυτό δεν υπονοεί ότι ο πελάτης έχει παραλάβει οτιδήποτε ακόμα.
 
-After this event, no more events will be emitted on the response object.
+Μετά από αυτό το συμβάν, δεν γίνεται μετάδοση άλλων συμβάντων στο αντικείμενο απόκρισης.
 
 ### response.addTrailers(headers)
 
