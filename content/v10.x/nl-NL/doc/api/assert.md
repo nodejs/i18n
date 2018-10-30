@@ -10,7 +10,7 @@ Een `strict` en een `legacy` module bestaan, maar het is aanbevolen om alleen de
 
 Voor meer informatie over de gebruikte gelijkheidsvergelijkingen zie [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Klasse: assert.AssertionError
 
 Een subklasse van `Error` die het falen van een bewering aangeeft. Alle fouten die door de `assert` module gegooid zijn, zullen instanties zijn van de `AssertionError` klasse.
 
@@ -111,7 +111,7 @@ Om kleuren te deactiveren, gebruik de `NODE_DISABLE_COLORS` omgevingsgrootheid. 
 
 ## Legacy modus
 
-> Stabiliteit: 0 - Afgekeurd: Strikte modus te gebruiken.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief de strikte modus.
 
 Bij het rechtstreeks binnengaan van `assert` in plaats van de `strict` eigenschap te gebruiken, zal de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) worden gebruikt voor elke functie zonder "strikt" in de naam, zoals [`assert.deepEqual()`][].
 
@@ -124,7 +124,7 @@ const assert = require('assert');
 Het is aanbevolen om als alternatief de [`strict mode`][] te gebruiken, omdat de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) vaak verrassende resultaten levert. Dit is met name zo voor [`assert.deepEqual()`][], waar de vergelijkingsregels laks zijn:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// WAARSCHUWING: Dit gaat geen AssertionError gooien!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Een alias van [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -168,11 +168,11 @@ changes:
 
 **Strikte modus**
 
-An alias of [`assert.deepStrictEqual()`][].
+Een alias van [`assert.deepStrictEqual()`][].
 
 **Legacy modus**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.deepStrictEqual()`][].
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
