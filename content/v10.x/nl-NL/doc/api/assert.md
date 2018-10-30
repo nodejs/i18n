@@ -259,9 +259,9 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+Test voor gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kinder objecten recursief ook door de volgende regels worden geëvalueerd.
 
-### Comparison details
+### Vergelijkingsonderdelen
 
 * Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
 * [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
