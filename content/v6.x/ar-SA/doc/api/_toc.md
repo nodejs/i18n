@@ -13,7 +13,7 @@
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
-* [التشفير (Crypto)](crypto.html)
+* [Crypto](crypto.html)
 * [Debugger](debugger.html)
 * [نظام أسماء النطاقات (DNS)](dns.html)
 * [النطاق](domain.html)
