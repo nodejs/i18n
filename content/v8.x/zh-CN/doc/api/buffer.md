@@ -119,17 +119,17 @@ Node.js 当前支持的字符编码包括：
 
 * `'ucs2'` - `'utf16le'` 的别名。
 
-* `'base64'` - Base64 编码。 When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
+* `'base64'` - Base64 编码。 当从字符串创建 `Buffer` 时，按照 [RFC4648, 第 5 章](https://tools.ietf.org/html/rfc4648#section-5) 中指明的，这种编码也将正确地接受 “URL 和文件名安全字母表”。
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - 一种把 `Buffer` 编码成 1 字节编码的字符串的方式（由IANA定义在[RFC1345](https://tools.ietf.org/html/rfc1345) 中第63页，作为Latin-1补充块和C0/C1控制码 ）。
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'` - `'latin1'` 的别名。
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'` - 将每个字节编码为两个十六进制字符。
 
-*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both 'latin1' and ISO-8859-1 to win-1252. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned win-1252-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+*注意*：现代浏览器遵循 [WHATWG 编码标准](https://encoding.spec.whatwg.org/)，将 'latin1' 和 ISO-8859-1 定为 win-1252 的别名。 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 win-1252 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
 
-## Buffers and TypedArray
+## Buffers 和 TypedArray
 
 <!-- YAML
 changes:
@@ -139,17 +139,17 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with the TypedArray specification in [`ECMAScript 2015`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+`Buffer` 实例也是 [`Uint8Array`] 实例。 但是，在[`ECMAScript 2015`] 中存在着与 TypedArray 的微妙不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. `Buffer` 对象的内存是被复制到 [`TypedArray`] 中的，而不是共享的。
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含一个元素 `[0x1020304]` 或 `[0x4030201]` 的 [`Uint32Array`]。
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the TypeArray object's `.buffer` property.
+也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享相同已分配内存的 <0>Buffer</0>。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(2);
@@ -178,9 +178,9 @@ console.log(buf1);
 console.log(buf2);
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+请注意，当使用 [`TypedArray`] 的 `.buffer` 创建 `Buffer`时，也可以通过传入 `byteOffset` 和 `length` 参数只使用 [`ArrayBuffer`] 的一部分。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(20);
