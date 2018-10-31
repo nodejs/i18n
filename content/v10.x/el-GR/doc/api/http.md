@@ -1121,7 +1121,7 @@ response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
-// returns content-type = text/plain
+// επιστρέφει content-type = text/plain
 const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('X-Foo', 'bar');
@@ -1161,7 +1161,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
   const ip = res.socket.remoteAddress;
   const port = res.socket.remotePort;
-  res.end(`Your IP address is ${ip} and your source port is ${port}.`);
+  res.end(`Η διεύθυνση IP σας είναι ${ip} και η θύρα προέλευσης είναι ${port}..`);
 }).listen(3000);
 ```
 
@@ -1268,7 +1268,7 @@ response.writeHead(200, {
 Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
-// returns content-type = text/plain
+// επιστρέφει content-type = text/plain
 const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('X-Foo', 'bar');
@@ -1348,7 +1348,7 @@ added: v0.1.5
 Ζεύγη κλειδιών-τιμών των ονομάτων και των τιμών των κεφαλίδων. Τα ονόματα των κεφαλίδων μετατρέπονται σε πεζούς χαρακτήρες. Παράδειγμα:
 
 ```js
-// Prints something like:
+// Εμφανίζει κάτι σαν το παρακάτω:
 //
 // { 'user-agent': 'curl/7.22.0',
 //   host: '127.0.0.1:8000',
@@ -1358,7 +1358,7 @@ console.log(request.headers);
 
 Τα διπλότυπα στις ανεπεξέργαστες κεφαλίδες χειρίζονται με τους παρακάτω τρόπους, ανάλογα με το όνομα της κεφαλίδας:
 
-* Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
+* Τα διπλότυπα των `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, ή `user-agent` απορρίπτονται.
 * Το `set-cookie` είναι πάντα πίνακας. Τα διπλότυπα προστίθενται στον πίνακα.
 * Για όλες τις άλλες κεφαλίδες, οι τιμές συνενώνονται με διαχωριστικό ', '.
 
@@ -1394,14 +1394,14 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+Η λίστα ανεπεξέργαστων κεφαλίδων αιτήματος/απόκρισης, όπως έχουν ληφθεί.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Σημειώστε ότι τα κλειδιά και οι τιμές βρίσκονται στην ίδια λίστα. *Δεν* είναι μια λίστα πλειάδων. Έτσι, οι μονοί αριθμοί είναι τα κλειδιά, και οι ζυγοί αριθμοί είναι οι αντίστοιχες τιμές τους.
 
-Header names are not lowercased, and duplicates are not merged.
+Τα ονόματα κεφαλίδων δεν έχουν μετατραπεί σε πεζούς χαρακτήρες, και τα διπλότυπα δεν έχουν ενωθεί.
 
 ```js
-// Prints something like:
+// Εμφανίζει κάτι σαν το παρακάτω:
 //
 // [ 'user-agent',
 //   'this is invalid because there can be only one',
