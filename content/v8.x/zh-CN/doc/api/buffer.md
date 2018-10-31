@@ -53,10 +53,10 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 * [`Buffer.from(array)`] 返回一个包含被提供的8位字节副本的新的 `Buffer`。
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] 返回一个和给出的 [`ArrayBuffer`] 共享已分配内存的新的 `Buffer`。
-* [`Buffer.from(buffer)`] returns a new `Buffer` containing a *copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` containing a *copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a "filled" `Buffer` instance of the specified size. This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures that newly created `Buffer` instances never contain old and potentially sensitive data.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new `Buffer` of the specified `size` whose content *must* be initialized using either [`buf.fill(0)`][`buf.fill()`] or written to completely.
+* [`Buffer.from(buffer)`] 返回一个包含给定 `Buffer` 内容*副本*的新的`Buffer`。
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个包含给定字符串 *副本* 的新的 `Buffer`。
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 没个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
 
