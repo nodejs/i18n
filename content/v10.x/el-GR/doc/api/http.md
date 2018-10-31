@@ -1216,7 +1216,7 @@ added: v0.1.29
 
 Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
+Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Similarly, the `204` and `304` responses *must not* include a message body.
 
 `chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. `callback` will be called when this chunk of data is flushed.
 
