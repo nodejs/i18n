@@ -1191,15 +1191,15 @@ added: v0.11.8
 
 * {string}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
+Όταν χρησιμοποιούνται υπονοούμενες κεφαλίδες (χωρίς δηλαδή την ρητή κλήση του [`response.writeHead()`][]), αυτή η ιδιότητα ελέγχει τον μήνυμα κατάστασης που θα αποσταλεί στον πελάτη όταν οι κεφαλίδες εκκαθαριστούν. Αν αυτό παραμείνει `undefined` τότε θα χρησιμοποιηθεί το τυπικό μήνυμα για τον κωδικό κατάστασης.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.statusMessage = 'Not found';
 ```
 
-After response header was sent to the client, this property indicates the status message which was sent out.
+Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει το μήνυμα κατάστασης που έχει αποσταλεί.
 
 ### response.write(chunk\[, encoding\]\[, callback\])
 
@@ -1208,13 +1208,13 @@ added: v0.1.29
 -->
 
 * `chunk` {string|Buffer}
-* `encoding` {string} **Default:** `'utf8'`
+* `encoding` {string} **Προεπιλογή:** `'utf8'`
 * `callback` {Function}
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
-If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
+Αν κληθεί αυτή η μέθοδος και δεν έχει κληθεί το [`response.writeHead()`][], θα γίνει εναλλαγή σε λειτουργία υπονοούμενων κεφαλίδων και θα γίνει εκκαθάριση των υπονοούμενων κεφαλίδων.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
