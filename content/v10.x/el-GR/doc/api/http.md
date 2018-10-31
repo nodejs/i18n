@@ -1216,13 +1216,13 @@ added: v0.1.29
 
 Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
 
-Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Similarly, the `204` and `304` responses *must not* include a message body.
+Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Παρομοίως, οι αποκρίσεις `204` και `304` *δεν πρέπει* να συμπεριλαμβάνουν ένα σώμα απόκρισης.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. `callback` will be called when this chunk of data is flushed.
+Το `chunk` μπορεί να είναι ένα string ή ένα buffer. Αν το `chunk` είναι string, η δεύτερη παράμετρος καθορίζει πως θα γίνει η κωδικοποίησή του σε μια ροή byte. To `callback` θα κληθεί όταν αυτό το κομμάτι των δεδομένων εκκαθαριστεί.
 
-This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+Αυτό είναι το ακατέργαστο σώμα HTTP και δεν έχει καμία σχέση με τις multi-part κωδικοποιήσεις σώματος υψηλότερου επιπέδου, που μπορεί να χρησιμοποιηθούν.
 
-The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
+Την πρώτη φορά που θα κληθεί το [`response.write()`][], θα στείλει τις πληροφορίες κεφαλίδας που βρίσκονται στο buffer, καθώς και το πρώτο κομμάτι δεδομένων στον πελάτη. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
