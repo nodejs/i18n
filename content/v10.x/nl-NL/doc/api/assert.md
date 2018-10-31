@@ -29,10 +29,10 @@ added: v0.1.21
 
 Een subklasse van `Error` die het falen van een bewering aangeeft.
 
-Alle exemplaren bevatten de ingebouwde `Error` eigenschappen (`message` and `name`) en:
+Alle exemplaren bevatten de ingebouwde `Error` eigenschappen (`message` en `name`) en:
 
-* `actual` {any} Instellen op de werkelijke waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
-* `expected` {any} Instellen op de verwachte waarde wanneer bijv. [`assert.strictEqual()`] werd gebruikt.
+* `actual` {any} Instellen op de werkelijke waarde wanneer bijv. [`assert.strictEqual()`] wordt gebruikt.
+* `expected` {any} Instellen op de verwachte waarde wanneer bijv. [`assert.strictEqual()`] wordt gebruikt.
 * `generatedMessage` {boolean} Geeft aan of de boodschap automatisch was gegenereerd (`true`) of niet.
 * `code` {string} Dit is altijd ingesteld op de tekenreeks `ERR_ASSERTION` om aan te geven dat de fout eigenlijk een fout in de bewering is.
 * `operator` {string} Ingesteld op de doorgegeven in beheerderswaarde.
@@ -107,7 +107,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-Om kleuren te deactiveren, gebruik de `NODE_DISABLE_COLORS` omgevingsgrootheid. Houd er rekening mee dat dit ook de kleuren in de REPL zal deactiveren.
+Om kleuren te deactiveren, gebruik de `NODE_DISABLE_COLORS` omgevingsvariabele. Houd er rekening mee dat dit ook de kleuren in de REPL zal deactiveren.
 
 ## Legacy modus
 
@@ -124,7 +124,7 @@ const assert = require('assert');
 Het is aanbevolen om als alternatief de [`strict mode`][] te gebruiken, omdat de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) vaak verrassende resultaten levert. Dit is met name zo voor [`assert.deepEqual()`][], waar de vergelijkingsregels laks zijn:
 
 ```js
-// WAARSCHUWING: Dit gaat geen AssertionError gooien!
+// WAARSCHUWING: Dit gooit geen AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -179,13 +179,13 @@ Tests voor gelijkheid tussen de `actual` en de `expected` parameters. Primitieve
 Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) worden overwogen. De [`assert.deepEqual()`][] uitvoering test niet de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] eigenschappen. Voor dergelijke controles, kan men overwegen als alternatief [`assert.deepStrictEqual()`][] te gebruiken. [`assert.deepEqual()`][] kan onverwachte verrassende resultaten geven. Het volgende voorbeeld gooit geen `AssertionError` want de eigenschappen op het [`RegExp`][] object zijn niet telbaar:
 
 ```js
-// WAARSCHUWING: Dit gaat geen AssertionError gooien!
+// WAARSCHUWING: Dit gooit geen AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-Een uitzondering wordt gemaakt voor [`Map`][] and [`Set`][]. `Map`s and `Set`s hebben hun opgenomen items ook vergeleken. als verwacht.
+Een uitzondering wordt gemaakt voor [`Map`][] en [`Set`][]. `Map`s en `Set`s hebben hun opgenomen items ook vergeleken. als verwacht.
 
-"Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kinder objecten ook worden geëvalueerd:
+"Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kind objecten ook worden geëvalueerd:
 
 ```js
 const assert = require('assert');
@@ -259,9 +259,9 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Test voor gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kinder objecten recursief ook door de volgende regels worden geëvalueerd.
+Test voor diepe gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kind objecten recursief ook door de volgende regels worden geëvalueerd.
 
-### Vergelijkingsonderdelen
+### Vergelijkingsdetails
 
 * Primitieve waarden worden vergeleken met behulp van de [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), gebruikt door [`Object.is()`][].
 * [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) van objecten moeten gelijk zijn.
@@ -278,7 +278,7 @@ Test voor gelijkheid tussen de `actual` en `expected` parameters. "Diepe" gelijk
 ```js
 const assert = require('assert').strict;
 
-// This fails because 1 !== '1'.
+// Dit faalt want 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
 // AssertieFout: Invoer A verwacht om strikt diep-gelijk invoer B: 
 // + verwacht - bestaand
