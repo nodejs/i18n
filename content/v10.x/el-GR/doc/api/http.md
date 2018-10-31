@@ -1232,7 +1232,7 @@ added: v0.1.29
 added: v0.3.0
 -->
 
-Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent. See the [`'checkContinue'`][] event on `Server`.
+Στέλνει στον πελάτη ένα μήνυμα HTTP/1.1 100 Continue, υποδεικνύοντας ότι πρέπει ν αποσταλεί το σώμα του αιτήματος. Δείτε το συμβάν [`'checkContinue'`][] στο `Server`.
 
 ### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
 
@@ -1250,9 +1250,9 @@ changes:
 * `statusMessage` {string}
 * `headers` {Object}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
+Αποστέλλει μια κεφαλίδα απόκρισης στο αίτημα. Ο κωδικός κατάστασης είναι ένας 3ψήφιος κωδικός κατάστασης HTTP, όπως το `404`. Η τελευταία παράμετρος, `headers`, είναι οι κεφαλίδες απόκρισης. Προαιρετικά, μπορεί να οριστεί ένα αναγνώσιμο από ανθρώπους `statusMessage` ως δεύτερη παράμετρος.
 
-Example:
+Παράδειγμα:
 
 ```js
 const body = 'hello world';
