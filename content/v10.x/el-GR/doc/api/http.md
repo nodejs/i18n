@@ -1140,9 +1140,9 @@ added: v0.9.12
 * `callback` {Function}
 * Επιστρέφει: {http.ServerResponse}
 
-Ορίζει την τιμή της εξάντλησης χρονικού ορίου του Socket σε `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Ορίζει την τιμή της εξάντλησης του χρονικού περιθωρίου του Socket σε `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακρόαση στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
 
-If no `'timeout'` listener is added to the request, the response, or the server, then sockets are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Αν δεν έχει προστεθεί ακροατής για το `'timeout'` στο αίτημα, στην απόκριση ή στον εξυπηρετητή, τότε τα socket καταστρέφονται μόλις εξαντληθεί το χρονικό τους περιθώριο. Αν έχει οριστεί κάποιος χειριστής στο συμβάν `'timeout'` του αιτήματος, της απόκρισης ή του εξυπηρετητή, τότε τότε η εξάντληση του χρονικού περιθωρίου των socket πρέπει να χειρίζεται ρητά.
 
 ### response.socket
 
@@ -1152,9 +1152,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
+Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, τα socket δεν μεταδίδουν συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μετά το `response.end()`, η ιδιότητα εκμηδενίζεται. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `response.connection`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const http = require('http');
@@ -1173,15 +1173,15 @@ added: v0.4.0
 
 * {number}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
+Όταν χρησιμοποιούνται υπονοούμενες κεφαλίδες (χωρίς δηλαδή την ρητή κλήση του [`response.writeHead()`][]), αυτή η ιδιότητα ελέγχει τον κωδικό κατάστασης που θα αποσταλεί στον πελάτη όταν οι κεφαλίδες εκκαθαριστούν.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει τον κωδικό κατάστασης που έχει αποσταλεί.
 
 ### response.statusMessage
 
