@@ -1077,46 +1077,46 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`2aeb025999`](https://github.com/nodejs/node/commit/2aeb025999)] - **test**: add common.crashOnUnhandledRejection to addons/callback-scope (Sho Miyamoto) [#18076](https://github.com/nodejs/node/pull/18076)
   * [[`7706e5f1ea`](https://github.com/nodejs/node/commit/7706e5f1ea)] - **test**: eliminar entradas huérfanas del estado (Kyle Farnung) [#18092](https://github.com/nodejs/node/pull/18092)
   * [[`5fccb6ea3a`](https://github.com/nodejs/node/commit/5fccb6ea3a)] - **test**: corregir ortografía en los comentarios del caso de prueba (Tobias Nießen) [#18018](https://github.com/nodejs/node/pull/18018)
-  * [[`3456e61b44`](https://github.com/nodejs/node/commit/3456e61b44)] - **test**: use smaller input file for test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
-  * [[`733df362fa`](https://github.com/nodejs/node/commit/733df362fa)] - **test**: update references to archived repository (Tobias Nießen) [#17924](https://github.com/nodejs/node/pull/17924)
-  * [[`2eb1aa81fa`](https://github.com/nodejs/node/commit/2eb1aa81fa)] - **test**: move common.fires() to inspector-helper (Rich Trott) [#17401](https://github.com/nodejs/node/pull/17401)
-  * [[`167e9c6dcd`](https://github.com/nodejs/node/commit/167e9c6dcd)] - **test**: refactor test-repl (Anna Henningsen) [#17926](https://github.com/nodejs/node/pull/17926)
-  * [[`7b73e704ca`](https://github.com/nodejs/node/commit/7b73e704ca)] - **timers**: attach listOnTimeout function to TimerWrap (Matteo Collina) [#18388](https://github.com/nodejs/node/pull/18388)
+  * [[`3456e61b44`](https://github.com/nodejs/node/commit/3456e61b44)] - **test**: utilizar archivo de entrada más pequeño para test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
+  * [[`733df362fa`](https://github.com/nodejs/node/commit/733df362fa)] - **test**: actualizar referencias al repositorio archivado (Tobias Nießen) [#17924](https://github.com/nodejs/node/pull/17924)
+  * [[`2eb1aa81fa`](https://github.com/nodejs/node/commit/2eb1aa81fa)] - **test**: mover common.fires() a inspector-helper (Rich Trott) [#17401](https://github.com/nodejs/node/pull/17401)
+  * [[`167e9c6dcd`](https://github.com/nodejs/node/commit/167e9c6dcd)] - **test**: refactorizar test-repl (Anna Henningsen) [#17926](https://github.com/nodejs/node/pull/17926)
+  * [[`7b73e704ca`](https://github.com/nodejs/node/commit/7b73e704ca)] - **timers**: adjuntar función listOnTimeout a TimerWrap (Matteo Collina) [#18388](https://github.com/nodejs/node/pull/18388)
   * [[`96b072233a`](https://github.com/nodejs/node/commit/96b072233a)] - **tls**: refactor write queues away (Anna Henningsen) [#17883](https://github.com/nodejs/node/pull/17883)
-  * [[`be9958afb6`](https://github.com/nodejs/node/commit/be9958afb6)] - **tools**: use babel-eslint as ESLint parser (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
-  * [[`715e673d06`](https://github.com/nodejs/node/commit/715e673d06)] - **tools**: add babel-eslint (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
-  * [[`d349fcae11`](https://github.com/nodejs/node/commit/d349fcae11)] - **tools**: update ESLint to 4.15.0 (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
-  * [[`4bc4d004b1`](https://github.com/nodejs/node/commit/4bc4d004b1)] - **tools**: move eslint from tools to tools/node_modules (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
+  * [[`be9958afb6`](https://github.com/nodejs/node/commit/be9958afb6)] - **tools**: utilizar babel-eslint como analizador ESLint (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
+  * [[`715e673d06`](https://github.com/nodejs/node/commit/715e673d06)] - **tools**: agregar babel-eslint (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
+  * [[`d349fcae11`](https://github.com/nodejs/node/commit/d349fcae11)] - **tools**: actualizar ESLint a 4.15.0 (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
+  * [[`4bc4d004b1`](https://github.com/nodejs/node/commit/4bc4d004b1)] - **tools**: mover eslint de tools a tools/node_modules (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
   
   
 
 <a id="9.4.0"></a>
 
   
-  ## 2018-01-10, Version 9.4.0 (Current), @MylesBorins
+  ## 2018-01-10, Versión 9.4.0 (Actual), @MylesBorins
   
-  ### Notable Changes
+  ### Cambios Notables
   
   * **async\_hooks**: 
-    * deprecate AsyncHooks Sensitive API and runInAsyncIdScope. Neither API were documented. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
+    * desaprobar API Sensitiva de AsyncHooks y runInAsyncIdScope. Ninguna API fue documentada. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
   * **deps**: 
-    * update nghttp2 to 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
-    * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
+    * actualizar nghttp2 a 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
+    * actualizar npm a 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
     * cherry-pick 50f7455 from upstream V8 (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
   * **events**: 
     * remove reaches into _events internals (Anatoli Papirovski) [#17440](https://github.com/nodejs/node/pull/17440)
   * **http**: 
-    * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
+    * agregar rawPacket en err del evento `clientError` (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * **http2**: 
-    * implement maxSessionMemory (James M Snell) [#17967](https://github.com/nodejs/node/pull/17967)
-    * add initial support for originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
-    * add altsvc support (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
-    * perf_hooks integration (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
-    * Refactoring and cleanup of Http2Session and Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
+    * implementar maxSessionMemory (James M Snell) [#17967](https://github.com/nodejs/node/pull/17967)
+    * agregar soporte inicial para originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
+    * agregar soporte altsvc (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
+    * integración de perf_hooks (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
+    * Refactorizado y limpieza de Http2Session y Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
   * **net**: 
-    * remove Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
+    * eliminar Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
   * **repl**: 
-    * show lexically scoped vars in tab completion (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
+    * mostrar variables de ámbito léxico en completación de pestaña (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
   * **stream**: 
     * rm {writeable/readable}State.length (Calvin Metcalf) [#12857](https://github.com/nodejs/node/pull/12857)
     * add flow and buffer properties to streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
