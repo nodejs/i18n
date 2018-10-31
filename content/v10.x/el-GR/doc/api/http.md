@@ -1118,7 +1118,7 @@ response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 
 Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
 // returns content-type = text/plain
@@ -1138,9 +1138,9 @@ added: v0.9.12
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.ServerResponse}
+* Επιστρέφει: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Ορίζει την τιμή της εξάντλησης χρονικού ορίου του Socket σε `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then sockets are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
