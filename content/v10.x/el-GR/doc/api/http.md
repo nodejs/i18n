@@ -1261,11 +1261,11 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-This method must only be called once on a message and it must be called before [`response.end()`][] is called.
+Η μέθοδος πρέπει να κληθεί μόνο μια φορά σε ένα μήνυμα, και πρέπει να κληθεί πριν την κλήση του [`response.end()`][].
 
-If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
+Αν κληθεί το [`response.write()`][] ή το [`response.end()`][] πριν την κλήση του, θα υπολογιστούν οι υπονοούμενες/μεταβαλλόμενες κεφαλίδες και θα γίνει η κλήση αυτής της συνάρτησης.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
 // returns content-type = text/plain
@@ -1277,9 +1277,9 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-Note that Content-Length is given in bytes not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. And Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Σημειώστε ότι το Content-Length ορίζεται σε byte και όχι σε αριθμό χαρακτήρων. Το παραπάνω παράδειγμα λειτουργεί επειδή το string `'hello world'` συμπεριλαμβάνει μόνο χαρακτήρες μονού byte. Αν το σώμα περιέχει χαρακτήρες διαφορετικής κωδικοποίησης, τότε θα πρέπει να χρησιμοποιηθεί το `Buffer.byteLength()` για να προσδιοριστεί ο αριθμός των byte στην συγκεκριμένη κωδικοποίηση. Επίσης, το node.js δεν ελέγχει εάν το Content-Length και το μέγεθος του σώματος που έχει μεταδοθεί είναι ίσα ή όχι.
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
 ### response.writeProcessing()
 
@@ -1287,7 +1287,7 @@ Attempting to set a header field name or value that contains invalid characters 
 added: v10.0.0
 -->
 
-Sends a HTTP/1.1 102 Processing message to the client, indicating that the request body should be sent.
+Στέλνει στον πελάτη ένα μήνυμα HTTP/1.1 102 Processing, υποδεικνύοντας ότι πρέπει ν αποσταλεί το σώμα του αιτήματος.
 
 ## Class: http.IncomingMessage
 
@@ -1295,25 +1295,25 @@ Sends a HTTP/1.1 102 Processing message to the client, indicating that the reque
 added: v0.1.17
 -->
 
-An `IncomingMessage` object is created by [`http.Server`][] or [`http.ClientRequest`][] and passed as the first argument to the [`'request'`][] and [`'response'`][] event respectively. It may be used to access response status, headers and data.
+Ένα αντικείμενο `IncomingMessage` δημιουργείται από το [`http.Server`][] ή το [`http.ClientRequest`][] και μεταβιβάζεται ως η πρώτη παράμετρος στο [`'request'`][] ή στο συμβάν [`'response'`][] αντίστοιχα. Μπορεί να χρησιμοποιηθεί για να αποκτηθεί πρόσβαση σε καταστάσεις, κεφαλίδες και δεδομένα απόκρισης.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Υλοποιεί τη διεπαφή [Αναγνώσιμης Ροής](stream.html#stream_class_stream_readable) καθώς και τα παρακάτω συμβάντα, τις μεθόδους και τις ιδιότητες.
 
-### Event: 'aborted'
+### Συμβάν: 'aborted'
 
 <!-- YAML
 added: v0.3.8
 -->
 
-Emitted when the request has been aborted.
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί.
 
-### Event: 'close'
+### Συμβάν: 'close'
 
 <!-- YAML
 added: v0.4.2
 -->
 
-Indicates that the underlying connection was closed. Just like `'end'`, this event occurs only once per response.
+Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί. Όπως και στο `'end'`, αυτό το συμβάν εκτελείται μόνο μια φορά ανά απόκριση.
 
 ### message.aborted
 
@@ -1323,7 +1323,7 @@ added: v10.1.0
 
 * {boolean}
 
-The `message.aborted` property will be `true` if the request has been aborted.
+Η ιδιότητα `message.aborted` θα έχει οριστεί ως `true` αν το αίτημα έχει ματαιωθεί.
 
 ### message.destroy([error])
 
@@ -1333,7 +1333,7 @@ added: v0.3.0
 
 * `error` {Error}
 
-Calls `destroy()` on the socket that received the `IncomingMessage`. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Καλεί το `destroy()` στο socket που έχει λάβει το `IncomingMessage`. Αν το `error` έχει οριστεί, τότε θα μεταδοθεί ένα συμβάν `'error'` και το `error` μεταβιβάζεται ως παράμετρος σε οποιονδήποτε ακροατή (αν υπάρχει) του συμβάντος.
 
 ### message.headers
 
@@ -1343,9 +1343,9 @@ added: v0.1.5
 
 * {Object}
 
-The request/response headers object.
+Το αντικείμενο κεφαλίδων αιτήματος/απόκρισης.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Ζεύγη κλειδιών-τιμών των ονομάτων και των τιμών των κεφαλίδων. Τα ονόματα των κεφαλίδων μετατρέπονται σε πεζούς χαρακτήρες. Παράδειγμα:
 
 ```js
 // Prints something like:
@@ -1356,11 +1356,11 @@ Key-value pairs of header names and values. Header names are lower-cased. Exampl
 console.log(request.headers);
 ```
 
-Duplicates in raw headers are handled in the following ways, depending on the header name:
+Τα διπλότυπα στις ανεπεξέργαστες κεφαλίδες χειρίζονται με τους παρακάτω τρόπους, ανάλογα με το όνομα της κεφαλίδας:
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
-* `set-cookie` is always an array. Duplicates are added to the array.
-* For all other headers, the values are joined together with ', '.
+* Το `set-cookie` είναι πάντα πίνακας. Τα διπλότυπα προστίθενται στον πίνακα.
+* Για όλες τις άλλες κεφαλίδες, οι τιμές συνενώνονται με διαχωριστικό ', '.
 
 ### message.httpVersion
 
@@ -1370,7 +1370,7 @@ added: v0.1.1
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
+Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. Στην περίπτωση της απάντηση πελάτη, είναι η έκδοση HTTP του server που έχει συνδεθεί. Κατά πάσα πιθανότητα είναι `'1.1'` ή `'1.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
