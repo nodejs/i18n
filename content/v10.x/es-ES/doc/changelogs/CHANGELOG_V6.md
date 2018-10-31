@@ -2251,7 +2251,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 * [[`8ea4487ca7`](https://github.com/nodejs/node/commit/8ea4487ca7)] - **(SEMVER-MINOR)** **process**: añadir `process.memoryUsage.external` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
 * [[`6f8b32e754`](https://github.com/nodejs/node/commit/6f8b32e754)] - **promise**: mejores stack traces para --trace-warnings (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
 * [[`1d400ea484`](https://github.com/nodejs/node/commit/1d400ea484)] - ***Revert*** "**repl**: deshabilitar soporte de Ctrl+C en win32 por ahora" (Anna Henningsen) [#8645](https://github.com/nodejs/node/pull/8645)
-* [[`57c4c6f5ae`](https://github.com/nodejs/node/commit/57c4c6f5ae)] - **repl**: apermitir el auto-completado para paquetes con ámbito (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
+* [[`57c4c6f5ae`](https://github.com/nodejs/node/commit/57c4c6f5ae)] - **repl**: permitir el auto-completado para paquetes de ámbito (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
 * [[`5e07bce166`](https://github.com/nodejs/node/commit/5e07bce166)] - **(SEMVER-MINOR)** **src**: añadir empaquetador para process.emitWarning() (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * [[`7da06088eb`](https://github.com/nodejs/node/commit/7da06088eb)] - **src**: describir para qué es NODE_MODULE_VERSION (Sam Roberts) [#10414](https://github.com/nodejs/node/pull/10414)
 * [[`7897e7685f`](https://github.com/nodejs/node/commit/7897e7685f)] - **src**: corregir error de formato de string para nodo de 32 bit (Alex Newman) [#10082](https://github.com/nodejs/node/pull/10082)
@@ -2334,7 +2334,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 * [[`0b243ca178`](https://github.com/nodejs/node/commit/0b243ca178)] - **test**: refactorizar assert.equal, actualizar sintaxis a ES6 (Prieto, Marcos)
 * [[`c57d72089f`](https://github.com/nodejs/node/commit/c57d72089f)] - **test**: refactorizar prueba de socket de http en la tubería (Rich Trott) [#10189](https://github.com/nodejs/node/pull/10189)
 * [[`3f17c180be`](https://github.com/nodejs/node/commit/3f17c180be)] - **test**: var a const en tls-no-cert-required (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
-* [[`6b8d4cab41`](https://github.com/nodejs/node/commit/6b8d4cab41)] - **test**: ordenaje de clave/certificado de tls no es necesario (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
+* [[`6b8d4cab41`](https://github.com/nodejs/node/commit/6b8d4cab41)] - **test**: no es necesario ordenar las clave/certificado de tls (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
 * [[`b2b2774325`](https://github.com/nodejs/node/commit/b2b2774325)] - **test**: refactorizar test-handle-wrap-close-abort (Rich Trott) [#10188](https://github.com/nodejs/node/pull/10188)
 * [[`c65dfa9b12`](https://github.com/nodejs/node/commit/c65dfa9b12)] - **test**: añadir ES6 y strictEqual a test-fs-truncate (Adrian Estrada) [#10167](https://github.com/nodejs/node/pull/10167)
 * [[`951ddb3d53`](https://github.com/nodejs/node/commit/951ddb3d53)] - **test**: mejorar fips de crypto (James Tenenbaum) [#10002](https://github.com/nodejs/node/pull/10002)
@@ -2353,7 +2353,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 * [[`0162908708`](https://github.com/nodejs/node/commit/0162908708)] - **tools**: añadir script de macosx-firwall para evitar popups (Daniel Bevenius) [#10114](https://github.com/nodejs/node/pull/10114)
 * [[`3ac9e01faa`](https://github.com/nodejs/node/commit/3ac9e01faa)] - **url**: add a got host pattern in url.js (Axel Monroy) [#9653](https://github.com/nodejs/node/pull/9653)
 * [[`9eaf2e9517`](https://github.com/nodejs/node/commit/9eaf2e9517)] - **watchdog**: añadir bandera para marcar al manejador como deshabilitado (Bartosz Sosnowski) [#10248](https://github.com/nodejs/node/pull/10248)
-* [[`969dcab5aa`](https://github.com/nodejs/node/commit/969dcab5aa)] - **win,msi**: añadir UIRef requerido para strings localizados (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
+* [[`969dcab5aa`](https://github.com/nodejs/node/commit/969dcab5aa)] - **win,msi**: añadir UIRef requerido para strings localizadas (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
 
 <a id="6.9.5"></a>
 
