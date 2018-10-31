@@ -1063,7 +1063,7 @@ added: v0.9.3
 
 * {boolean}
 
-Boolean (μόνο για ανάγνωση). True if headers were sent, false otherwise.
+Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
 
 ### response.removeHeader(name)
 
@@ -1073,9 +1073,9 @@ added: v0.4.0
 
 * `name` {string}
 
-Removes a header that's queued for implicit sending.
+Αφαιρεί μια κεφαλίδα που έχει τοποθετηθεί σε ουρά για υπονοούμενη αποστολή.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1089,9 +1089,9 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+Όταν είναι True, η κεφαλίδα της Ημερομηνίας θα δημιουργηθεί με αυτόματο τρόπο και θα αποσταλεί με την απόκριση, αν δεν είναι ήδη ορισμένη ως κεφαλίδα. Από προεπιλογή είναι True.
 
-This should only be disabled for testing; HTTP requires the Date header in responses.
+Αυτό πρέπει να απενεργοποιηθεί μόνο για δοκιμές. Το πρωτόκολλο HTTP απαιτεί την κεφαλίδα της Ημερομηνίας στις αποκρίσεις.
 
 ### response.setHeader(name, value)
 
@@ -1102,15 +1102,15 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Therefore, [`response.getHeader()`][] may return non-string values. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
+Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή της θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα. Τιμές που δεν είναι string, θα αποθηκευτούν χωρίς τροποποιήσεις. Επομένως, το [`response.getHeader()`][] μπορεί να επιστρέψει τιμές που δεν είναι string. Ωστόσο, οι τιμές που δεν είναι string θα μετατραπούν σε string για την μετάδοση μέσω δικτύου.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+ή
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
