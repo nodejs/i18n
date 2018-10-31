@@ -4623,7 +4623,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
 * Console 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
-* التشفير (Crypto) 
+* Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
   * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
   * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
