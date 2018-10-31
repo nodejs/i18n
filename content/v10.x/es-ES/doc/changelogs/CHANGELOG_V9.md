@@ -1119,9 +1119,9 @@ Esta es una actualización especial para corregir potencialmente la regresión d
     * mostrar variables de ámbito léxico en completación de pestaña (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
   * **stream**: 
     * rm {writeable/readable}State.length (Calvin Metcalf) [#12857](https://github.com/nodejs/node/pull/12857)
-    * add flow and buffer properties to streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
+    * agregar propiedades de flujo y buffer a los streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
   * **util**: 
-    * allow wildcards in NODE_DEBUG variable (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
+    * permitir comodines en variable NODE_DEBUG (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
   * **zlib**: 
     * add ArrayBuffer support (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
   * **Added new collaborator** 
