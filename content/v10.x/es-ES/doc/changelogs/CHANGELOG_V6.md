@@ -2345,37 +2345,37 @@ Los cambios notables de SEMVER-PATCH incluyen:
 * [[`a56b22e881`](https://github.com/nodejs/node/commit/a56b22e881)] - **test**: reparar test-net-socket-timeout defectuoso (Rich Trott) [#10172](https://github.com/nodejs/node/pull/10172)
 * [[`58c5bdc57c`](https://github.com/nodejs/node/commit/58c5bdc57c)] - **test**: refactorizar test-net-keepalive.js (Kyle Corsi) [#9995](https://github.com/nodejs/node/pull/9995)
 * [[`b868ce6763`](https://github.com/nodejs/node/commit/b868ce6763)] - **timers**: arreglar el manejo de inmediatos aclarados (hveldstra) [#9759](https://github.com/nodejs/node/pull/9759)
-* [[`95a0a67ff3`](https://github.com/nodejs/node/commit/95a0a67ff3)] - **tls**: do not refer to secureOptions as flags (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
-* [[`d50e8d8af9`](https://github.com/nodejs/node/commit/d50e8d8af9)] - **tls**: document and test option-less createServer (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
-* [[`89db5fcc23`](https://github.com/nodejs/node/commit/89db5fcc23)] - **tls**: fix/annotate connect arg comments (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
-* [[`20665f408b`](https://github.com/nodejs/node/commit/20665f408b)] - **tools**: enable block-spacing rule in .eslintrc (Rich Trott) [#10377](https://github.com/nodejs/node/pull/10377)
-* [[`e8effa434e`](https://github.com/nodejs/node/commit/e8effa434e)] - **tools**: enforce consistent operator linebreak style (Michaël Zasso) [#10178](https://github.com/nodejs/node/pull/10178)
-* [[`0162908708`](https://github.com/nodejs/node/commit/0162908708)] - **tools**: add macosx-firwall script to avoid popups (Daniel Bevenius) [#10114](https://github.com/nodejs/node/pull/10114)
+* [[`95a0a67ff3`](https://github.com/nodejs/node/commit/95a0a67ff3)] - **tls**: no referirse a secureOptions como banderas (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
+* [[`d50e8d8af9`](https://github.com/nodejs/node/commit/d50e8d8af9)] - **tls**: documentar y evaluar option-less createServer (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
+* [[`89db5fcc23`](https://github.com/nodejs/node/commit/89db5fcc23)] - **tls**: arreglar/anotar conectar comentarios de argumento (Sam Roberts) [#9800](https://github.com/nodejs/node/pull/9800)
+* [[`20665f408b`](https://github.com/nodejs/node/commit/20665f408b)] - **tools**: habilitar regla de block-spacing en .eslintrc (Rich Trott) [#10377](https://github.com/nodejs/node/pull/10377)
+* [[`e8effa434e`](https://github.com/nodejs/node/commit/e8effa434e)] - **tools**: aplicar estilo de linebreak de operador consistente (Michaël Zasso) [#10178](https://github.com/nodejs/node/pull/10178)
+* [[`0162908708`](https://github.com/nodejs/node/commit/0162908708)] - **tools**: añadir script de macosx-firwall para evitar popups (Daniel Bevenius) [#10114](https://github.com/nodejs/node/pull/10114)
 * [[`3ac9e01faa`](https://github.com/nodejs/node/commit/3ac9e01faa)] - **url**: add a got host pattern in url.js (Axel Monroy) [#9653](https://github.com/nodejs/node/pull/9653)
-* [[`9eaf2e9517`](https://github.com/nodejs/node/commit/9eaf2e9517)] - **watchdog**: add flag to mark handler as disabled (Bartosz Sosnowski) [#10248](https://github.com/nodejs/node/pull/10248)
-* [[`969dcab5aa`](https://github.com/nodejs/node/commit/969dcab5aa)] - **win,msi**: add required UIRef for localized strings (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
+* [[`9eaf2e9517`](https://github.com/nodejs/node/commit/9eaf2e9517)] - **watchdog**: añadir bandera para marcar al manejador como deshabilitado (Bartosz Sosnowski) [#10248](https://github.com/nodejs/node/pull/10248)
+* [[`969dcab5aa`](https://github.com/nodejs/node/commit/969dcab5aa)] - **win,msi**: añadir UIRef requerido para strings localizados (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
 
 <a id="6.9.5"></a>
 
-## 2017-01-31, Version 6.9.5 'Boron' (LTS), @MylesBorins
+## 2017-01-31, Versión 6.9.5 'Boron' (LTS), @MylesBorins
 
-This is a security release of the 'Boron' release line to upgrade OpenSSL to version 1.0.2k
+Esta es una actualización de seguridad de la línea de actualizaciones 'Boron' para actualizar OpenSSL a la versión 1.0.2k
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) han determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
-### Notable Changes
+### Cambios Notables
 
-* **deps**: upgrade openssl sources to 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
+* **deps**: actualizar fuentes de openssl a 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
 
 ### Commits
 
-* [[`87ac44974a`](https://github.com/nodejs/node/commit/87ac44974a)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
-* [[`a4b43a7ef9`](https://github.com/nodejs/node/commit/a4b43a7ef9)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`f5b77fdf8d`](https://github.com/nodejs/node/commit/f5b77fdf8d)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`58fae148fa`](https://github.com/nodejs/node/commit/58fae148fa)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`d623e8c5b9`](https://github.com/nodejs/node/commit/d623e8c5b9)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
-* [[`3f2bef60b8`](https://github.com/nodejs/node/commit/3f2bef60b8)] - **deps**: upgrade openssl sources to 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
-* [[`c4678d2f9a`](https://github.com/nodejs/node/commit/c4678d2f9a)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`87ac44974a`](https://github.com/nodejs/node/commit/87ac44974a)] - **deps**: actualizar asm de openssl y archivos de asm_obsolete (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
+* [[`a4b43a7ef9`](https://github.com/nodejs/node/commit/a4b43a7ef9)] - **deps**: añadir -no_rand_screen a s_client de openssl (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`f5b77fdf8d`](https://github.com/nodejs/node/commit/f5b77fdf8d)] - **deps**: arreglar error de compilación de asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`58fae148fa`](https://github.com/nodejs/node/commit/58fae148fa)] - **deps**: arreglar error de ensamblaje de openssl en win32 de ia32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`d623e8c5b9`](https://github.com/nodejs/node/commit/d623e8c5b9)] - **deps**: copiar todos los archivos de cabecera de openssl para incluir a dir (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
+* [[`3f2bef60b8`](https://github.com/nodejs/node/commit/3f2bef60b8)] - **deps**: actualizar fuentes de openssl a 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
+* [[`c4678d2f9a`](https://github.com/nodejs/node/commit/c4678d2f9a)] - **openssl**: arreglar requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 
 <a id="6.9.4"></a>
 
