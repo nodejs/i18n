@@ -280,7 +280,7 @@ const assert = require('assert').strict;
 
 // Dit faalt want 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
-// AssertieFout: Invoer A verwacht om strikt diep-gelijk invoer B: 
+// AssertieFout: Invoer A verwacht om strikt diep-gelijkte zijn aan invoer B: 
 // + verwacht - bestaand
 //   {
 // -   a: 1
@@ -295,14 +295,14 @@ Object.setPrototypeOf(fakeDate, Date.prototype);
 
 // Verschillend [[Prototype]]:
 assert.deepStrictEqual(object, fakeDate);
-// AssertionError: Invoer A verwacht om strikt-gelijke invoer B.
+// AssertionError: Invoer A verwacht om strikt-gelijk te zijn aan invoer B.
 // + verwacht - bestaand
 // - {}
 // + Date {}
 
 // Verschillende typen labels:
 assert.deepStrictEqual(date, fakeDate);
-// AssertionError: Invoer A verwacht om to strikt diep-gelijk invoer B:
+// AssertionError: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B:
 // + verwacht - bestaand
 // - 2018-04-26T00:49:08.604Z
 // + Date {}
@@ -312,7 +312,7 @@ assert.deepStrictEqual(NaN, NaN);
 
 // Verschillende uitgepakte nummers:
 assert.deepStrictEqual(nieuw Nummer(1), nieuw Nummer(2));
-// AssertionError: Invoer A verwacht om strikt diep-gelijk invoer B:
+// AssertionError: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B:
 // + verwacht - bestaand
 // - [Nummer: 1]
 // + [Nummer: 2]
@@ -325,7 +325,7 @@ assert.deepStrictEqual(-0, -0);
 
 // Verschillende nullen gebruiken de SameValue Vergelijking:
 assert.deepStrictEqual(0, -0);
-// AssertionError: Invoer A verwacht om strikt diep-gelijk input B:
+// AssertionError: Invoer A verwacht om strikt diep-gelijk te zijn aan input B:
 // + verwacht - bestaand
 // - 0
 // + -0
