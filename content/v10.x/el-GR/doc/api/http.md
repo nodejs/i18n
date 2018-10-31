@@ -1116,7 +1116,7 @@ response.setHeader('Content-Type', 'text/html');
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
