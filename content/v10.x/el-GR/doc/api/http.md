@@ -1372,7 +1372,7 @@ added: v0.1.1
 
 Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. Στην περίπτωση της απάντηση πελάτη, είναι η έκδοση HTTP του server που έχει συνδεθεί. Κατά πάσα πιθανότητα είναι `'1.1'` ή `'1.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Επίσης το `message.httpVersionMajor` είναι το πρώτο integer, και το `message.httpVersionMinor` είναι το δεύτερο.
 
 ### message.method
 
@@ -1382,9 +1382,9 @@ added: v0.1.1
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Είναι έγκυρο μόνο για αιτήματα που έχουν προέλθει από το [`http.Server`][].**
 
-The request method as a string. Read only. Example: `'GET'`, `'DELETE'`.
+Η μέθοδος αιτήματος είναι string. Μόνο για ανάγνωση. Παράδειγμα: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders
 
