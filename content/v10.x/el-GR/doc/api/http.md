@@ -1045,11 +1045,11 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
+Επιστρέφει `true` αν η κεφαλίδα που προσδιορίζεται ως `name` έχει οριστεί στις εξερχόμενες κεφαλίδες. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
 
-Example:
+Παράδειγμα:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1063,7 +1063,7 @@ added: v0.9.3
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (μόνο για ανάγνωση). True if headers were sent, false otherwise.
 
 ### response.removeHeader(name)
 
