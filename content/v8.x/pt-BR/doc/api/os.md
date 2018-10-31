@@ -297,7 +297,7 @@ As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -321,7 +321,7 @@ Equivalent to [`process.platform`][].
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -339,7 +339,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -349,7 +349,7 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
@@ -359,7 +359,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
@@ -371,7 +371,7 @@ Please see https://en.wikipedia.org/wiki/Uname#Examples for additional informati
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
