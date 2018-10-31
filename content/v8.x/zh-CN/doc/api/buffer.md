@@ -58,7 +58,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 没个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
 
 ### The `--zero-fill-buffers` command line option
 
