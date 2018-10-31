@@ -14,7 +14,7 @@
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
-* [التشفير (Crypto)](crypto.html)
+* [Crypto](crypto.html)
 * [Debugger](debugger.html)
 * [Deprecated APIs](deprecations.html)
 * [نظام أسماء النطاقات (DNS)](dns.html)
