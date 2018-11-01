@@ -246,7 +246,7 @@ changes:
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (records `A`) per l'`hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv4 addresses (e.g. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (records `A`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv4 ( Esempio `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
 
 ## dns.resolve6(hostname[, options], callback)
 
