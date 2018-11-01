@@ -2400,17 +2400,17 @@ Esta actualización de LTS viene con 312 commits. Esto incluye a 229 que están 
 ### Cambios Notables
 
 * **build**: soporte de biblioteca compartida ahora funciona para compilaciones de AIX (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
-* **deps**: - *npm*: upgrade npm to 3.10.10 (Rebecca Turner) [#9847](https://github.com/nodejs/node/pull/9847) - *V8*: Destructuring of arrow function arguments via computed property no longer throws (Michaël Zasso) [#10386](https://github.com/nodejs/node/pull/10386)
-* **inspector**: /json/version returns object, not an object wrapped in an array (Ben Noordhuis) [#9762](https://github.com/nodejs/node/pull/9762)
-* **module**: using --debug-brk and --eval together now works as expected (Kelvin Jin) [#8876](https://github.com/nodejs/node/pull/8876)
-* **process**: improve performance of nextTick up to 20% (Evan Lucas) [#8932](https://github.com/nodejs/node/pull/8932)
-* **repl**: - the division operator will no longer be accidentally parsed as regex (Teddy Katz) [#10103](https://github.com/nodejs/node/pull/10103) - improved support for generator functions (Teddy Katz) [#9852](https://github.com/nodejs/node/pull/9852)
-* **timers**: Re canceling a cancelled timers will no longer throw (Jeremiah Senkpiel) [#9685](https://github.com/nodejs/node/pull/9685)
+* **deps**: - *npm*: actualizar npm a 3.10.10 (Rebecca Turner) [#9847](https://github.com/nodejs/node/pull/9847) - *V8*: al aplicar destructuring de los argumentos de la función arrow por medio de una propiedad computada ya no arroja nada (Michaël Zasso) [#10386](https://github.com/nodejs/node/pull/10386)
+* **inspector**: /json/version devuelve objeto, no un objeto envuelto en un array (Ben Noordhuis) [#9762](https://github.com/nodejs/node/pull/9762)
+* **module**: usar --debug-brk y --eval juntos ahora funciona como se esperaba (Kelvin Jin) [#8876](https://github.com/nodejs/node/pull/8876)
+* **process**: mejorar rendimiento de nextTick hasta un 20% (Evan Lucas) [#8932](https://github.com/nodejs/node/pull/8932)
+* **repl**: - el operador de división no volverá a ser accidentalmente analizado como regex (Teddy Katz) [#10103](https://github.com/nodejs/node/pull/10103) - se mejoró soporte para funciones de generador (Teddy Katz) [#9852](https://github.com/nodejs/node/pull/9852)
+* **timers**: Re cancelar unos temporizadores cancelados no seguirá arrojando (Jeremiah Senkpiel) [#9685](https://github.com/nodejs/node/pull/9685)
 
 ### Commits
 
-* [[`98b2eae328`](https://github.com/nodejs/node/commit/98b2eae328)] - **benchmark**: split timers benchmark and refactor (Rich Trott) [#9497](https://github.com/nodejs/node/pull/9497)
-* [[`c32c86b3c3`](https://github.com/nodejs/node/commit/c32c86b3c3)] - **benchmark**: reformat code for clarity (Rich Trott) [#9790](https://github.com/nodejs/node/pull/9790)
+* [[`98b2eae328`](https://github.com/nodejs/node/commit/98b2eae328)] - **benchmark**: dividir pruebas de rendimiento de temporizadores y refactorizar (Rich Trott) [#9497](https://github.com/nodejs/node/pull/9497)
+* [[`c32c86b3c3`](https://github.com/nodejs/node/commit/c32c86b3c3)] - **benchmark**: reformatear código para mayor claridad (Rich Trott) [#9790](https://github.com/nodejs/node/pull/9790)
 * [[`a8909b833e`](https://github.com/nodejs/node/commit/a8909b833e)] - **benchmark,lib,test,tools**: remove unneeded . escape (Rich Trott) [#9449](https://github.com/nodejs/node/pull/9449)
 * [[`a9d528be5b`](https://github.com/nodejs/node/commit/a9d528be5b)] - **buffer**: fix range checks for slice() (Trevor Norris) [#9174](https://github.com/nodejs/node/pull/9174)
 * [[`868e5e624c`](https://github.com/nodejs/node/commit/868e5e624c)] - **build**: remove node.dsYM directory (Michaël Zasso) [#10463](https://github.com/nodejs/node/pull/10463)
