@@ -661,10 +661,10 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] value`: `napi_value` repräsentiert das `Objekt`, zu dem wir eine Referenz wollen.
-- `[in] initial_refcount`: Initial reference count for the new reference.
-- `[out] result`: `napi_ref` pointing to the new reference.
+- `[in] initial_refcount`: Initialer Referenzzählwert für die neue Referenz.
+- `[out] result`: `napi_ref` mit dem Hinweis auf die neue Referenz.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API create a new reference with the specified reference count to the `Object` passed in.
 
