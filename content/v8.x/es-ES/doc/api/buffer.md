@@ -556,19 +556,19 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud de.
-* `encoding` {string} If `string` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
+* `encoding` {string} Si `string` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
 * Devuelve: {integer} El número de bytes contenidos dentro de `string`.
 
 Devuelve la longitud real en bytes de una cadena. Esto no es lo mismo que [`String.prototype.length`] ya que eso devuelve el número de *caracteres* en una string.
 
-*Note*: For `'base64'` and `'hex'`, this function assumes valid input. Para strings que contienen datos no codificados de forma Base64/Hex (p. e.j espacio en blanco), el valor devuelto puede ser mayor que la longitud de un `Buffer` creado desde la string.
+*Note*: For `'base64'` and `'hex'`, this function assumes valid input. Para strings que contienen datos no codificados de forma Base64/Hex (p. ej espacio en blanco), el valor devuelto puede ser mayor que la longitud de un `Buffer` creado desde la string.
 
 Ejemplo:
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
 
-// Imprime: ½ + ¼ = ¾: 9 characters, 12 bytes
+// Imprime: // Imprime: ½ + ¼ = ¾: 9 caracteres, 12 bytes
 console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
 ```
@@ -619,13 +619,13 @@ changes:
 * `totalLength` {integer} Longitud total de las instancias de `Buffer` en `list` cuando están concatenadas.
 * Devuelve: {Buffer}
 
-Devuelve un nuevo `Buffer` el cual es el resultado de concatenar todas las instancias de `Buffer` juntas en la `list`.
+Devuelve un nuevo `Buffer`, el cual es el resultado de concatenar juntas todas las instancias de `Buffer` en la `list`.
 
 Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `Buffer` de longitud cero es devuelto.
 
-Si `totalLength` no es proporcionado, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así es más rápido proporcionar la longitud explícitamente si ya es conocido.
+Si `totalLength` no es proporcionado, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así es más rápido proporcionar la longitud explícitamente si ya es conocida.
 
-Si `totalLength` es proporcionado, es forzado a ser un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede `totalLength`, el resultado es truncado a `totalLength`.
+Si `totalLength` es proporcionado, es forzado a ser un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede a `totalLength`, el resultado es truncado a `totalLength`.
 
 Ejemplo: Crear un `Buffer` único a partir de una lista de tres instancias de `Buffer`
 
@@ -672,7 +672,7 @@ Se producirá un `TypeError` si `array` no es un `Array`.
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Una propiedad [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` de un [`TypedArray`].
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`], o la propiedad `.buffer` de un [`TypedArray`].
 * `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`
 * `length` {integer} Número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`
 
@@ -731,7 +731,7 @@ const buf2 = Buffer.from(buf1);
 
 buf1[0] = 0x61;
 
-// Imprime: auffer
+// Imprime: buffer
 console.log(buf1.toString());
 
 // Imprime: buffer
