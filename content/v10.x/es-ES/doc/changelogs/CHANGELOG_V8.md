@@ -1765,14 +1765,14 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`fc1448f357`](https://github.com/nodejs/node/commit/fc1448f357)] - **util**: mejorar el rendimiento del formato (Ruben Bridgewater) [#15422](https://github.com/nodejs/node/pull/15422)
 * [[`5b47f846b0`](https://github.com/nodejs/node/commit/5b47f846b0)] - **util**: corregir índices fuera de los límites en util.inspect (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
 * [[`9e8b1b3ec6`](https://github.com/nodejs/node/commit/9e8b1b3ec6)] - **util**: refactorizar "inspect" para rendimiento y más (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
-* [[`539445890b`](https://github.com/nodejs/node/commit/539445890b)] - **util**: add fast internal array join method (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
-* [[`7d95dc385c`](https://github.com/nodejs/node/commit/7d95dc385c)] - **vm**: support parsing a script in a specific context (Timothy Gu) [#14888](https://github.com/nodejs/node/pull/14888)
+* [[`539445890b`](https://github.com/nodejs/node/commit/539445890b)] - **util**: añadir método rápido de unión de array interna (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
+* [[`7d95dc385c`](https://github.com/nodejs/node/commit/7d95dc385c)] - **vm**: soportar el análisis de un script en un contexto específico (Timothy Gu) [#14888](https://github.com/nodejs/node/pull/14888)
 
 <a id="8.5.0"></a>
 
-## 2017-09-12, Version 8.5.0 (Current), @MylesBorins
+## 2017-09-12, Versión 8.5.0 (Presente), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **build** 
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
