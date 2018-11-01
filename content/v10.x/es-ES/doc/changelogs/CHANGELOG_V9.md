@@ -1098,7 +1098,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   ### Cambios Notables
   
   * **async\_hooks**: 
-    * desaprobar API Sensitiva de AsyncHooks y runInAsyncIdScope. Ninguna API fue documentada. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
+    * desaprobar API Sensible de AsyncHooks y runInAsyncIdScope. Ninguna API fue documentada. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
   * **deps**: 
     * actualizar nghttp2 a 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
     * actualizar npm a 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
@@ -1112,7 +1112,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
     * agregar soporte inicial para originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
     * agregar soporte altsvc (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
     * integración de perf_hooks (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
-    * Refactorizado y limpieza de Http2Session y Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
+    * Refactorización y limpieza de Http2Session y Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
   * **net**: 
     * eliminar Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
   * **repl**: 
@@ -1124,7 +1124,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
     * permitir comodines en variable NODE_DEBUG (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
   * **zlib**: 
     * agregar soporte de ArrayBuffer (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
-  * **Agregado nuevo colaborador** 
+  * **Se añadió un nuevo colaborador** 
     * [starkwang](https://github.com/starkwang) Weijia Wang
   * **Agregado nuevo miembro de TSC** 
     * [danbev](https://github.com/danbev) Daniel Bevenius
@@ -1158,7 +1158,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`3623cf7ec7`](https://github.com/nodejs/node/commit/3623cf7ec7)] - **doc**: agregar guía sobre mantenimiento de archivos de compilación (Joyee Cheung) [#16975](https://github.com/nodejs/node/pull/16975)
   * [[`b593d946e4`](https://github.com/nodejs/node/commit/b593d946e4)] - **doc**: re-alfabetizar secciones en common/README.md (Vse Mozhet Byt) [#17971](https://github.com/nodejs/node/pull/17971)
   * [[`3bcdb3b996`](https://github.com/nodejs/node/commit/3bcdb3b996)] - **doc**: corregir nits de código en common/README (Vse Mozhet Byt) [#17971](https://github.com/nodejs/node/pull/17971)
-  * [[`0ad783afaf`](https://github.com/nodejs/node/commit/0ad783afaf)] - **doc**: reparar enlace para cambiar de api de https (Myles Borins) [#17630](https://github.com/nodejs/node/pull/17630)
+  * [[`0ad783afaf`](https://github.com/nodejs/node/commit/0ad783afaf)] - **doc**: reparar enlace para cambiar de api https (Myles Borins) [#17630](https://github.com/nodejs/node/pull/17630)
   * [[`1181ff7ecc`](https://github.com/nodejs/node/commit/1181ff7ecc)] - **doc**: corregir ortografía (sreepurnajasti) [#17911](https://github.com/nodejs/node/pull/17911)
   * [[`43ac36c6de`](https://github.com/nodejs/node/commit/43ac36c6de)] - **doc**: correcciones de gramática en http2.md (Rich Trott) [#17972](https://github.com/nodejs/node/pull/17972)
   * [[`46f39b590b`](https://github.com/nodejs/node/commit/46f39b590b)] - **doc**: agregar documentos para utilidad common/http2.js (James M Snell) [#17942](https://github.com/nodejs/node/pull/17942)
@@ -1166,7 +1166,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`72ed11ac78`](https://github.com/nodejs/node/commit/72ed11ac78)] - **doc**: mover matthewloring a emeriti (Rich Trott) [#17998](https://github.com/nodejs/node/pull/17998)
   * [[`6efef47c2a`](https://github.com/nodejs/node/commit/6efef47c2a)] - **doc**: mover a joshgav a lista emeriti de TSC (Rich Trott) [#17953](https://github.com/nodejs/node/pull/17953)
   * [[`294c5f4ef0`](https://github.com/nodejs/node/commit/294c5f4ef0)] - **doc**: mejorar sección de seguridad de README.md (Rich Trott) [#17929](https://github.com/nodejs/node/pull/17929)
-  * [[`445c911ba4`](https://github.com/nodejs/node/commit/445c911ba4)] - **doc**: editar por consicion (Rich Trott) [#17891](https://github.com/nodejs/node/pull/17891)
+  * [[`445c911ba4`](https://github.com/nodejs/node/commit/445c911ba4)] - **doc**: editar para consición (Rich Trott) [#17891](https://github.com/nodejs/node/pull/17891)
   * [[`3fd65815f8`](https://github.com/nodejs/node/commit/3fd65815f8)] - **doc**: eliminar x86 de opciones de os.arch() (Gibson Fahnestock) [#17899](https://github.com/nodejs/node/pull/17899)
   * [[`14499f8185`](https://github.com/nodejs/node/commit/14499f8185)] - **doc**: mejorar párrafo de PR-review en CONTRIBUTING.md (Rich Trott) [#17931](https://github.com/nodejs/node/pull/17931)
   * [[`54cf75ddb5`](https://github.com/nodejs/node/commit/54cf75ddb5)] - **doc**: corregir errores tipográficos en CONTRIBUTING.md (Rich Trott) [#17930](https://github.com/nodejs/node/pull/17930)
@@ -1187,7 +1187,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`26fbb0f78a`](https://github.com/nodejs/node/commit/26fbb0f78a)] - **doc**: utilizar líneas nuevas consistentes (Ruben Bridgewater) [#17722](https://github.com/nodejs/node/pull/17722)
   * [[`a63d3c514d`](https://github.com/nodejs/node/commit/a63d3c514d)] - **doc**: actualizar formato para ajustarse a nuestra regla de 80 caracteres (Ruben Bridgewater) [#17722](https://github.com/nodejs/node/pull/17722)
   * [[`59711ae42a`](https://github.com/nodejs/node/commit/59711ae42a)] - **doc**: actualizar lista de AUTHORS (Ruben Bridgewater) [#17805](https://github.com/nodejs/node/pull/17805)
-  * [[`2d11f6b669`](https://github.com/nodejs/node/commit/2d11f6b669)] - **doc**: agregar a starkwang en colaboradores (Weijia Wang) [#17847](https://github.com/nodejs/node/pull/17847)
+  * [[`2d11f6b669`](https://github.com/nodejs/node/commit/2d11f6b669)] - **doc**: agregar a starkwang a los colaboradores (Weijia Wang) [#17847](https://github.com/nodejs/node/pull/17847)
   * [[`fe1f67f184`](https://github.com/nodejs/node/commit/fe1f67f184)] - **doc**: marcar DEP0002 como fin del archivo (Jon Moss) [#17815](https://github.com/nodejs/node/pull/17815)
   * [[`d4666d0d7a`](https://github.com/nodejs/node/commit/d4666d0d7a)] - **doc**: requerir indicador de estado de CI en PRs (Nikolai Vavilov) [#17151](https://github.com/nodejs/node/pull/17151)
   * [[`541d189db9`](https://github.com/nodejs/node/commit/541d189db9)] - **doc**: utilizar ortografía americana según la guía de estilo (sreepurnajasti) [#17818](https://github.com/nodejs/node/pull/17818)
@@ -1203,7 +1203,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`dcfe840a1e`](https://github.com/nodejs/node/commit/dcfe840a1e)] - **doc**: editar preámbulo de CONTRIBUTING.md (Rich Trott) [#17700](https://github.com/nodejs/node/pull/17700)
   * [[`ed9f2fef70`](https://github.com/nodejs/node/commit/ed9f2fef70)] - **doc**: mejorar guía publicada (Evan Lucas) [#17677](https://github.com/nodejs/node/pull/17677)
   * [[`861f6adb70`](https://github.com/nodejs/node/commit/861f6adb70)] - **doc**: algunas mejoras de documento de fs (James M Snell) [#17692](https://github.com/nodejs/node/pull/17692)
-  * [[`ecbc70fe5d`](https://github.com/nodejs/node/commit/ecbc70fe5d)] - **doc**: no todo el código de ejemplo puede se r ejecutado sin 1:1 (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
+  * [[`ecbc70fe5d`](https://github.com/nodejs/node/commit/ecbc70fe5d)] - **doc**: no todo el código de ejemplo puede ser ejecutado sin 1:1 (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
   * [[`68722fd16e`](https://github.com/nodejs/node/commit/68722fd16e)] - **doc**: ajustar redacción de TTY y agregar enlaces inter-doc (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
   * [[`d19343147b`](https://github.com/nodejs/node/commit/d19343147b)] - **doc**: corregir descripción de fs.existsSync (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
   * [[`444362e048`](https://github.com/nodejs/node/commit/444362e048)] - **doc**: mejorar documentation.md (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
