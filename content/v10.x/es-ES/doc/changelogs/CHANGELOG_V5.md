@@ -1188,11 +1188,11 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **buffer**: 
   * `Buffer.prototype.includes()` ha sido añadido para mantener paridad con TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
 * **domains**: 
-  * Fix handling of uncaught exceptions. (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654).
+  * Reparar el manejo de excepciones no detectadas. (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654).
 * **https**: 
-  * Added support for disabling session caching. (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252).
+  * Añadido soporte para deshabilitar el almacenamiento en la caché de la sesión. (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252).
 * **repl**: 
-  * Allow third party modules to be imported using `require()`. This corrects a regression from 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
+  * Permitir que los módulos de terceros sean importados usando `require()`. This corrects a regression from 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
 * **deps**: 
   * Upgrade libuv to 1.8.0. (Saúl Ibarra Corretgé) [#4276](https://github.com/nodejs/node/pull/4276).
 
