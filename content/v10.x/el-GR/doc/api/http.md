@@ -1744,17 +1744,17 @@ req.end();
 
 Αν συμβεί οποιοδήποτε σφάλμα κατά την διάρκεια του αιτήματος (όπως με την επίλυση του DNS, σφάλματα επιπέδου TCP, ή πραγματικά σφάλματα ανάλυσης HTTP), μεταδίδεται ένα συμβάν `'error'` στο επιστρεφόμενο αντικείμενο αιτήματος. Όπως με όλα τα συμβάντα `'error'`, αν δεν έχουν καταχωρηθεί ακροατές, τότε θα εμφανιστεί μήνυμα σφάλματος.
 
-There are a few special headers that should be noted.
+Υπάρχουν μερικές ειδικές κεφαλίδες που θα πρέπει να έχετε κατά νου.
 
-* Sending a 'Connection: keep-alive' will notify Node.js that the connection to the server should be persisted until the next request.
+* Η αποστολή της κεφαλίδας 'Connection: keep-alive' θα ειδοποιήσει την Node.js ότι η σύνδεση με τον εξυπηρετητή θα πρέπει να παραμείνει ενεργή μέχρι το επόμενο αίτημα.
 
-* Sending a 'Content-Length' header will disable the default chunked encoding.
+* Η αποστολή της κεφαλίδας 'Content-Length' θα απενεργοποιήσει την προεπιλεγμένη κωδικοποίηση των κομματιών.
 
-* Sending an 'Expect' header will immediately send the request headers. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. See RFC2616 Section 8.2.3 for more information.
+* Η αποστολή της κεφαλίδας 'Expect', θα στείλε αμέσως τις κεφαλίδες του αιτήματος. Συνήθως, κατά την αποστολή του 'Expect: 100-continue', θα πρέπει να οριστεί ένα χρονικό όριο και ένας ακροατής για το συμβάν `'continue'`. Δείτε την παράγραφο 8.2.3 του RFC2616 για περισσότερες πληροφορίες.
 
-* Sending an Authorization header will override using the `auth` option to compute basic authentication.
+* Η αποστολή μιας κεφαλίδας Authorization θα παρακάμψει την χρήση της επιλογής `auth` για τον υπολογισμό της βασικής εξουσιοδότησης.
 
-Example using a [`URL`][] as `options`:
+Παράδειγμα χρήσης ενός [`URL`][] ως `options`:
 
 ```js
 const options = new URL('http://abc:xyz@example.com');
@@ -1764,7 +1764,7 @@ const req = http.request(options, (res) => {
 });
 ```
 
-In a successful request, the following events will be emitted in the following order:
+Σε ένα επιτυχημένο αίτημα, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `'socket'`
 * `'response'` 
