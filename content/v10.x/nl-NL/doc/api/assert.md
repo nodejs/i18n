@@ -183,7 +183,7 @@ Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web
 assert.deepEqual(/a/gi, new Date());
 ```
 
-Een uitzondering wordt gemaakt voor [`Map`][] en [`Set`][]. `Map`s en `Set`s hebben hun opgenomen items ook vergeleken. als verwacht.
+Een uitzondering wordt gemaakt voor [`Map`][] en [`Set`][]. `Map`s en `Set`s hebben hun opgenomen items ook vergeleken, als verwacht.
 
 "Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kind objecten ook worden geëvalueerd:
 
@@ -288,14 +288,14 @@ assert.deepStrictEqual({ a: 1 }, { a: '1' });
 //   }
 
 // De volgende objecten hebben geen eigenschappen
-const datum = nieuwe Datum();
+const datum = new Date();
 const object = {};
 const fakeDate = {};
 Object.setPrototypeOf(fakeDate, Date.prototype);
 
 // Verschillend [[Prototype]]:
 assert.deepStrictEqual(object, fakeDate);
-// AssertionError: Invoer A verwacht om strikt-gelijk te zijn aan invoer B.
+// AssertionError: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B.
 // + verwacht - bestaand
 // - {}
 // + Date {}
