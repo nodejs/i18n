@@ -1604,15 +1604,15 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
+* `options` {Object | string | URL} Δέχεται τα ίδια `options` με το [`http.request()`][], με το `method` να είναι πάντα ορισμένο ως `GET`. Οι ιδιότητες που κληρονομούνται από την πρωτότυπη μέθοδο, αγνοούνται.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Επιστρέφει: {http.ClientRequest}
 
-Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
+Από την στιγμή που τα περισσότερα αιτήματα είναι αιτήματα GET χωρίς σώματα, η Node.js προσφέρει αυτήν την μέθοδο για ευκολία. Η μόνη διαφορά μεταξύ αυτής της μεθόδου και της μεθόδου [`http.request()`][], είναι ότι ορίζει την μέθοδο να χρησιμοποιεί GET και καλεί το `req.end()` αυτόματα. Σημειώστε ότι το callback θα πρέπει να καταναλώσει τα δεδομένα της απόκρισης, για τους λόγους που αναφέρονται στην ενότητα [`http.ClientRequest`][].
 
-The `callback` is invoked with a single argument that is an instance of [`http.IncomingMessage`][].
+To `callback` καλείται με μια μόνο παράμετρο, η οποία είναι ένα στιγμιότυπο του [`http.IncomingMessage`][].
 
-JSON Fetching Example:
+Παράδειγμα λήψης JSON:
 
 ```js
 http.get('http://nodejs.org/dist/index.json', (res) => {
