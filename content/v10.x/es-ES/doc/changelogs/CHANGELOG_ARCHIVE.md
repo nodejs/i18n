@@ -3635,7 +3635,7 @@ https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
       - Mover node.\* adentro de process.\*
       - Mover node.dns adentro del módulo "dns"
       - Mover node.fs adentro del módulo "posix"
-      - "process" ya no es el objeto global. Es GLOBAL.
+      - "process" ya no es el objeto global. GLOBAL es.
     Para más información sobre los cambios de API, vea:
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6
       http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
@@ -3935,7 +3935,7 @@ https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
       listen()
     
     * Actualizar V8 a 1.3.1
-    * Corrección de bug: Establecer "chunked" predeterminadamente al tenerse
+    * Corrección de bug: Establecer "chunked" de forma predeterminada al tenerse
       peticiones de clientes sin Content-Lenght.
     
     * Corrección de bug: Números de línea en stack traces.
@@ -3971,7 +3971,7 @@ https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
     * Corrección de bug: los clientes paralelos al servidor no se anexaban
       entre su creación y on_connect.
     
-    * Añador evento "close" a node.tcp.Server
+    * Añadir evento "close" a node.tcp.Server
     * Simplificar y limpiar http.js. (Esto hace un mayor uso de la
       infraestructura de los eventos.)
     
