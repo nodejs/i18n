@@ -178,12 +178,12 @@ added: v0.11.14
 - `port` {number}
 - `callback` {Function} 
   - `err` {Error}
-  - `hostname` {string} e.g. `example.com`
-  - `service` {string} e.g. `http`
+  - `hostname` {string} esempio. `example.com`
+  - `service` {string} esempio. `http`
 
 Risolve l'`address` e la `port` specificata in un hostname e in un servizio utilizzando l'implementazione `getnameinfo` del sistema operativo sottostante.
 
-Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta legale, un `TypeError` verrà mostrato.
+Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta valida, un `TypeError` verrà mostrato.
 
 In un errore, `err` è un oggetto di [`Error`][], dove `err.code` è il codice dell'errore.
 
@@ -211,21 +211,21 @@ added: v0.1.27
 
 Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. Quando ha successo, il `records` sarà un array delle risorse dei record. Il tipo e la struttura dei risultati individuali varia in base al suo `rrtype`:
 
-| `rrtype`  | `records` Contiene                       | Tipo di Rilsultato | Metodo Stenografico      |
-| --------- | ---------------------------------------- | ------------------ | ------------------------ |
-| `'A'`     | Indirizzi IPv4 (predefiniti)             | {string}           | [`dns.resolve4()`][]     |
-| `'AAAA'`  | Indirizzi IPv6                           | {string}           | [`dns.resolve6()`][]     |
-| `'CNAME'` | nome canonico del record                 | {string}           | [`dns.resolveCname()`][] |
-| `'MX'`    | mail exchange records                    | {Object}           | [`dns.resolveMx()`][]    |
-| `'NAPTR'` | record del puntatore della name autority | {Object}           | [`dns.resolveNaptr()`][] |
-| `'NS'`    | record del nome del server               | {string}           | [`dns.resolveNs()`][]    |
-| `'PTR'`   | record del puntatore                     | {string}           | [`dns.resolvePtr()`][]   |
-| `'SOA'`   | inizio dei record di authority           | {Object}           | [`dns.resolveSoa()`][]   |
-| `'SRV'`   | record di servizio                       | {Object}           | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | record di testo                          | {string[]}         | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | record qualsiasi                         | {Object}           | [`dns.resolveAny()`][]   |
+| `rrtype`  | `records` Contiene                       | Tipo di Risultato | Metodo Stenografico      |
+| --------- | ---------------------------------------- | ----------------- | ------------------------ |
+| `'A'`     | Indirizzi IPv4 (predefiniti)             | {string}          | [`dns.resolve4()`][]     |
+| `'AAAA'`  | Indirizzi IPv6                           | {string}          | [`dns.resolve6()`][]     |
+| `'CNAME'` | nome canonico del record                 | {string}          | [`dns.resolveCname()`][] |
+| `'MX'`    | mail exchange records                    | {Object}          | [`dns.resolveMx()`][]    |
+| `'NAPTR'` | record del puntatore della name autority | {Object}          | [`dns.resolveNaptr()`][] |
+| `'NS'`    | record del nome del server               | {string}          | [`dns.resolveNs()`][]    |
+| `'PTR'`   | record del puntatore                     | {string}          | [`dns.resolvePtr()`][]   |
+| `'SOA'`   | inizio dei record di authority           | {Object}          | [`dns.resolveSoa()`][]   |
+| `'SRV'`   | record di servizio                       | {Object}          | [`dns.resolveSrv()`][]   |
+| `'TXT'`   | record di testo                          | {string[]}        | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | record qualsiasi                         | {Object}          | [`dns.resolveAny()`][]   |
 
-In caso di errore, `err` è un oggetto di `Error`][], dove `err.code` è uno dei [DNS error codes](#dns_error_codes).
+In caso di errore, `err` è un oggetto di `Error`][], dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
 
 ## dns.resolve4(hostname[, options], callback)
 
