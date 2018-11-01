@@ -40,7 +40,7 @@ Alle exemplaren bevatten de ingebouwde `Error` eigenschappen (`message` en `name
 ```js
 const assert = require('assert');
 
-// Genereer een Beweringsfout om de foutmelding later te vergelijken:
+// Genereer een AssertionError om de foutmelding later te vergelijken:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
@@ -280,7 +280,7 @@ const assert = require('assert').strict;
 
 // Dit faalt want 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
-// AssertieFout: Invoer A verwacht om strikt diep-gelijkte zijn aan invoer B: 
+// AssertieFout: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B: 
 // + verwacht - bestaand
 //   {
 // -   a: 1
