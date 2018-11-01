@@ -888,7 +888,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`71d7a4457d`](https://github.com/nodejs/node/commit/71d7a4457d)] - **test**: fix redeclared vars in test-vm-* (Rich Trott) [#4997](https://github.com/nodejs/node/pull/4997)
 * [[`38459402a5`](https://github.com/nodejs/node/commit/38459402a5)] - **test**: fix inconsistent styling in test-url (Brian White) [#5014](https://github.com/nodejs/node/pull/5014)
 * [[`4934798c0d`](https://github.com/nodejs/node/commit/4934798c0d)] - **test**: reparaciones de la prueba pummel (Rich Trott) [#4998](https://github.com/nodejs/node/pull/4998)
-* [[`3970504298`](https://github.com/nodejs/node/commit/3970504298)] - **test**: removr redeclaraciones de variables en test-crypto-* (Rich Trott) [#4981](https://github.com/nodejs/node/pull/4981)
+* [[`3970504298`](https://github.com/nodejs/node/commit/3970504298)] - **test**: remover re-declaraciones de variables en test-crypto-* (Rich Trott) [#4981](https://github.com/nodejs/node/pull/4981)
 * [[`a2881e2187`](https://github.com/nodejs/node/commit/a2881e2187)] - **test**: remove test-cluster-* var redeclarations (Rich Trott) [#4980](https://github.com/nodejs/node/pull/4980)
 * [[`c3d93299c2`](https://github.com/nodejs/node/commit/c3d93299c2)] - **test**: reparar la fuente de problemas test-http-extra-response (Santiago Gimeno) [#4979](https://github.com/nodejs/node/pull/4979)
 * [[`0384a43885`](https://github.com/nodejs/node/commit/0384a43885)] - **test**: Add assertion for TLS peer certificate fingerprint (Alan Cohen) [#4923](https://github.com/nodejs/node/pull/4923)
