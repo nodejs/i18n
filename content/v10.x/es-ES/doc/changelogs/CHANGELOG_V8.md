@@ -1775,7 +1775,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 ### Cambios Notables
 
 * **build** 
-  * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
+  * Los Snapshots ahora están rehabilitados en V8 [#14875](https://github.com/nodejs/node/pull/14875)
 * **console** 
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
