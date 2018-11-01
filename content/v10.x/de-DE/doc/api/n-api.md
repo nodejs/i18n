@@ -683,9 +683,9 @@ NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API deletes the reference passed in.
+Diese API löscht die eingegebene Referenz.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 #### napi_reference_ref
 
@@ -699,11 +699,11 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be incremented.
-- `[out] result`: The new reference count.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] ref`: `napi_ref`, für die der Referenzzählwert erhöht wird.
+- `[out] result`: Der neue Referenzzählwert.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API increments the reference count for the reference passed in and returns the resulting reference count.
 
