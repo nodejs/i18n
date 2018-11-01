@@ -1687,13 +1687,13 @@ changes:
     * `undefined` (προεπιλογή): χρησιμοποιήστε το [`http.globalAgent`][] για αυτόν τον υπολογιστή και αυτή τη θύρα.
     * Αντικείμενο `Agent`: ρητή χρήση αυτού που μεταβιβάστηκε στο `Agent`.
     * `false`: δημιουργεί έναν νέο `Agent` προς χρήση, με τις προεπιλεγμένες τιμές.
-  * `createConnection` {Function} Μια συνάρτηση που δημιουργεί ένα socket/μια ροή που θα χρησιμοποιείται κάθε φορά που δεν χρησιμοποιείται η επιλογή `agent`. Αυτή μπορεί να χρησιμοποιηθεί για την αποφυγή δημιουργίας μιας προσαρμοσμένης κλάσης `Agent` απλά και μόνο για την παράκαμψη της προεπιλεγμένης συνάρτησης `createConnection`. Δείτε το [`agent.createConnection()`][] για περισσότερες λεπτομέρειες. Any [`Duplex`][] stream is a valid return value.
-  * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `createConnection` {Function} Μια συνάρτηση που δημιουργεί ένα socket/μια ροή που θα χρησιμοποιείται κάθε φορά που δεν χρησιμοποιείται η επιλογή `agent`. Αυτή μπορεί να χρησιμοποιηθεί για την αποφυγή δημιουργίας μιας προσαρμοσμένης κλάσης `Agent` απλά και μόνο για την παράκαμψη της προεπιλεγμένης συνάρτησης `createConnection`. Δείτε το [`agent.createConnection()`][] για περισσότερες λεπτομέρειες. Οποιαδήποτε ροή [`Duplex`][] είναι έγκυρη τιμή επιστροφής.
+  * `timeout` {number}: Ένας αριθμός που ορίζει την εξάντληση του χρονικού περιθωρίου του socket σε χιλιοστά του δευτερολέπτου. Αυτό ορίζει την εξάντληση του χρονικού περιθωρίου πριν γίνει η σύνδεση του socket.
+  * `setHost` {boolean}: Ορίζει αν θα πρέπει να γίνεται αυτόματη προσθήκη της κεφαλίδας `Host`. Από προεπιλογή είναι `true`.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Επιστρέφει: {http.ClientRequest}
 
-Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
+Το Node.js διατηρεί πολλαπλές συνδέσεις ανά εξυπηρετητή για την δημιουργία αιτημάτων HTTP. This function allows one to transparently issue requests.
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
