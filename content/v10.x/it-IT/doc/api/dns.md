@@ -220,12 +220,12 @@ Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'
 | `'NAPTR'` | record del puntatore della name autority | {Object}           | [`dns.resolveNaptr()`][] |
 | `'NS'`    | record del nome del server               | {string}           | [`dns.resolveNs()`][]    |
 | `'PTR'`   | record del puntatore                     | {string}           | [`dns.resolvePtr()`][]   |
-| `'SOA'`   | start of authority records               | {Object}           | [`dns.resolveSoa()`][]   |
-| `'SRV'`   | service records                          | {Object}           | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | text records                             | {string[]}         | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | any records                              | {Object}           | [`dns.resolveAny()`][]   |
+| `'SOA'`   | inizio dei record di authority           | {Object}           | [`dns.resolveSoa()`][]   |
+| `'SRV'`   | record di servizio                       | {Object}           | [`dns.resolveSrv()`][]   |
+| `'TXT'`   | record di testo                          | {string[]}         | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | record qualsiasi                         | {Object}           | [`dns.resolveAny()`][]   |
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+In caso di errore, `err` è un oggetto di `Error`][], dove `err.code` è uno dei [DNS error codes](#dns_error_codes).
 
 ## dns.resolve4(hostname[, options], callback)
 
@@ -239,14 +239,14 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '1.2.3.4', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '1.2.3.4', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Uses the DNS protocol to resolve a IPv4 addresses (`A` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv4 addresses (e.g. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (records `A`) per l'`hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv4 addresses (e.g. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
 
 ## dns.resolve6(hostname[, options], callback)
 
