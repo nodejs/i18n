@@ -159,7 +159,7 @@ dns.lookup('example.com', options, (err, addresses) =>
 // indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, and `all` is not set to `true`, it returns a `Promise` for an `Object` with `address` and `family` properties.
+Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e non è impostato come `true`, il suo risultato è `Promise` per un `Object` con `address` e proprietà `family`.
 
 ### Flags getaddrinfo supportati
 
