@@ -260,14 +260,14 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Uses the DNS protocol to resolve a IPv6 addresses (`AAAA` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv6 addresses.
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv6 (records `AAAA`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv6.
 
 ## dns.resolveCname(hostname, callback)
 
@@ -280,7 +280,7 @@ added: v0.3.2
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve `CNAME` records for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of canonical name records available for the `hostname` (e.g. `['bar.example.com']`).
+Utilizza il protocollo DNS per risolvere i record `CNAME` per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di record di nomi canonici disponibili per l'`hostname` (esempio `['bar.example.com']`).
 
 ## dns.resolveMx(hostname, callback)
 
@@ -291,9 +291,9 @@ added: v0.1.27
 - `hostname` {string}
 - `callback` {Function} 
   - `err` {Error}
-  - `addresses` {Object[]}
+  - `address` {Object}[]}
 
-Uses the DNS protocol to resolve mail exchange records (`MX` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects containing both a `priority` and `exchange` property (e.g. `[{priority: 10, exchange: 'mx.example.com'}, ...]`).
+Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` records) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà, la `priority` e l'`exchange` (ad esembio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
 ## dns.resolveNaptr(hostname, callback)
 
