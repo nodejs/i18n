@@ -666,7 +666,7 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API create a new reference with the specified reference count to the `Object` passed in.
+Diese API erstellt eine neue Referenz mit dem angegebenen Referenzzählwert auf das eingegebene `Objekt`.
 
 #### napi_delete_reference
 
@@ -678,10 +678,10 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` to be deleted.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] ref`: `napi_ref`, die gelöscht werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
 This API deletes the reference passed in.
 
