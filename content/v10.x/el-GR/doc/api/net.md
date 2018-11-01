@@ -502,7 +502,7 @@ Initiate a connection on a given socket. Normally this method is not needed, the
 For TCP connections, available `options` are:
 
 * `port` {number} Required. Port the socket should connect to.
-* `host` {string} Host the socket should connect to. **Default:** `'localhost'`.
+* `host` {string} Host the socket should connect to. **Προεπιλογή:** `'localhost'`.
 * `localAddress` {string} Local address the socket should connect from.
 * `localPort` {number} Local port the socket should connect from.
 * `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
@@ -833,7 +833,7 @@ added: v0.1.90
 -->
 
 * `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
+* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Προεπιλογή:** `'localhost'`.
 * `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
