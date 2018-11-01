@@ -2381,9 +2381,9 @@ A pesar de que el equipo de OpenSSL ha determinado una clasificación de severid
 
 ## 2017-01-05, Versión 6.9.4 'Boron' (LTS), @MylesBorins
 
-Esta es una actualización especial que contiene 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Esta es una actualización especial que contiene 0 commits. Mientras se promocionaban plataformas adicionales para v6.9.3 después de la actualización, los tarballs en el servidor de la actualización fueron sobrescritos y ahora tienen diferentes shasums. Para poder remover cualquier ambigüedad sobre la actualización, hemos optado por hacer una actualización de parche de semver sin ningún cambio.
 
-### Notable Changes
+### Cambios Notables
 
 N/A
 
@@ -2393,13 +2393,13 @@ N/A
 
 <a id="6.9.3"></a>
 
-## 2017-01-03, Version 6.9.3 'Boron' (LTS), @MylesBorins
+## 2017-01-03, Versión 6.9.3 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 312 commits. This includes 229 that are test related, 62 that are docs related, 17 which are build / tools related, and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 312 commits. Esto incluye a 229 que están relacionados a pruebas, 62 que están relacionados a documentación, 17 que están relacionados a build / tools, y 4 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
-* **build**: shared library support is now working for AIX builds (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
+* **build**: soporte de biblioteca compartida ahora funciona para compilaciones de AIX (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
 * **deps**: - *npm*: upgrade npm to 3.10.10 (Rebecca Turner) [#9847](https://github.com/nodejs/node/pull/9847) - *V8*: Destructuring of arrow function arguments via computed property no longer throws (Michaël Zasso) [#10386](https://github.com/nodejs/node/pull/10386)
 * **inspector**: /json/version returns object, not an object wrapped in an array (Ben Noordhuis) [#9762](https://github.com/nodejs/node/pull/9762)
 * **module**: using --debug-brk and --eval together now works as expected (Kelvin Jin) [#8876](https://github.com/nodejs/node/pull/8876)
