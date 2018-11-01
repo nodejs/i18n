@@ -705,7 +705,7 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API increments the reference count for the reference passed in and returns the resulting reference count.
+Diese API erhöht den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierende Referenzzählwert zurück.
 
 #### napi_reference_unref
 
@@ -719,7 +719,7 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref` for which the reference count will be decremented.
 - `[out] result`: The new reference count.
 
