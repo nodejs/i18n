@@ -1192,11 +1192,11 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **https**: 
   * Añadido soporte para deshabilitar el almacenamiento en la caché de la sesión. (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252).
 * **repl**: 
-  * Permitir que los módulos de terceros sean importados usando `require()`. This corrects a regression from 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
+  * Permitir que los módulos de terceros sean importados usando `require()`. Esto corrige una regresión de 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
 * **deps**: 
-  * Upgrade libuv to 1.8.0. (Saúl Ibarra Corretgé) [#4276](https://github.com/nodejs/node/pull/4276).
+  * Actualizar libuv a 1.8.0. (Saúl Ibarra Corretgé) [#4276](https://github.com/nodejs/node/pull/4276).
 
-### Known issues
+### Problemas conocidos
 
 * Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
