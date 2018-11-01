@@ -1422,7 +1422,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+Τα κλειδιά ουράς και οι τιμές των ακατέργαστων αιτημάτων αίτησης/απόκρισης, ακριβώς όπως παραλήφθηκαν. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
 ### message.setTimeout(msecs, callback)
 
@@ -1432,9 +1432,9 @@ added: v0.5.9
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.IncomingMessage}
+* Επιστρέφει: {http.IncomingMessage}
 
-Calls `message.connection.setTimeout(msecs, callback)`.
+Καλεί το `message.connection.setTimeout(msecs, callback)`.
 
 ### message.socket
 
