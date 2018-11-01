@@ -1777,12 +1777,12 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * **build** 
   * Los Snapshots ahora están rehabilitados en V8 [#14875](https://github.com/nodejs/node/pull/14875)
 * **console** 
-  * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
+  * Implementar un mínimo de `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
-  * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
-  * update nghttp2 to v1.25.0 [#14955](https://github.com/nodejs/node/pull/14955)
+  * actualizar libuv a 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
+  * actualizar nghttp2 a v1.25.0 [#14955](https://github.com/nodejs/node/pull/14955)
 * **dns** 
-  * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
+  * Añadir la opción `verbatim` a dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs** 
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
 * **inspector** 
