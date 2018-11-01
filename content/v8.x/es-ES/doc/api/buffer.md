@@ -555,11 +555,11 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud de.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor del cual calcular la longitud.
 * `encoding` {string} Si `string` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
 * Devuelve: {integer} El número de bytes contenidos dentro de `string`.
 
-Devuelve la longitud real en bytes de una cadena. Esto no es lo mismo que [`String.prototype.length`] ya que eso devuelve el número de *caracteres* en una string.
+Devuelve la longitud real en bytes de una string. Esto no es lo mismo que [`String.prototype.length`] ya que eso devuelve el número de *caracteres* en una string.
 
 *Note*: For `'base64'` and `'hex'`, this function assumes valid input. Para strings que contienen datos no codificados de forma Base64/Hex (p. ej espacio en blanco), el valor devuelto puede ser mayor que la longitud de un `Buffer` creado desde la string.
 
