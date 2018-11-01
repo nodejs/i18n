@@ -163,10 +163,10 @@ Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione c
 
 ### Flags getaddrinfo supportati
 
-The following flags can be passed as hints to [`dns.lookup()`][].
+I seguenti flags possono essere passati come suggerimenti a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Returned address types are determined by the types of addresses supported by the current system. For example, IPv4 addresses are only returned if the current system has at least one IPv4 address configured. Loopback addresses are not considered.
-- `dns.V4MAPPED`: If the IPv6 family was specified, but no IPv6 addresses were found, then return IPv4 mapped IPv6 addresses. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
+- `dns.ADDRCONFIG`: Restituisce il tipo di indirizzo, determinato, tra i tipi di indirizzi che il sistema supporta in quel momento. Ad Esempio. Gli indirizzi IPv4 saranno restituiti se nel sistema attualmente è presente almeno un indirizzo IPv4 configurato. Gli indirizzi di loopback non sono considerati.
+- `dns.V4MAPPED`: Se viene specificata la famiglia di indrizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -181,9 +181,9 @@ added: v0.11.14
   - `hostname` {string} e.g. `example.com`
   - `service` {string} e.g. `http`
 
-Resolves the given `address` and `port` into a hostname and service using the operating system's underlying `getnameinfo` implementation.
+Risolve l'`address` e la `port` specificata in un hostname e in un servizio utilizzando l'implementazione `getnameinfo` del sistema operativo sottostante.
 
-If `address` is not a valid IP address, a `TypeError` will be thrown. The `port` will be coerced to a number. If it is not a legal port, a `TypeError` will be thrown.
+Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta legale, un `TypeError` verrà mostrato.
 
 On an error, `err` is an [`Error`][] object, where `err.code` is the error code.
 
