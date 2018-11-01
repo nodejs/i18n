@@ -209,21 +209,21 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[] | Object[] | Object}
 
-Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. When successful, `records` will be an array of resource records. The type and structure of individual results varies based on `rrtype`:
+Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. Quando ha successo, il `records` sarà un array delle risorse dei record. Il tipo e la struttura dei risultati individuali varia in base al suo `rrtype`:
 
-| `rrtype`  | `records` contains             | Result type | Shorthand method         |
-| --------- | ------------------------------ | ----------- | ------------------------ |
-| `'A'`     | IPv4 addresses (default)       | {string}    | [`dns.resolve4()`][]     |
-| `'AAAA'`  | IPv6 addresses                 | {string}    | [`dns.resolve6()`][]     |
-| `'CNAME'` | canonical name records         | {string}    | [`dns.resolveCname()`][] |
-| `'MX'`    | mail exchange records          | {Object}    | [`dns.resolveMx()`][]    |
-| `'NAPTR'` | name authority pointer records | {Object}    | [`dns.resolveNaptr()`][] |
-| `'NS'`    | name server records            | {string}    | [`dns.resolveNs()`][]    |
-| `'PTR'`   | pointer records                | {string}    | [`dns.resolvePtr()`][]   |
-| `'SOA'`   | start of authority records     | {Object}    | [`dns.resolveSoa()`][]   |
-| `'SRV'`   | service records                | {Object}    | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | text records                   | {string[]}  | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | any records                    | {Object}    | [`dns.resolveAny()`][]   |
+| `rrtype`  | `records` Contiene             | Tipo di Rilsultato | Shorthand method         |
+| --------- | ------------------------------ | ------------------ | ------------------------ |
+| `'A'`     | IPv4 addresses (default)       | {string}           | [`dns.resolve4()`][]     |
+| `'AAAA'`  | IPv6 addresses                 | {string}           | [`dns.resolve6()`][]     |
+| `'CNAME'` | canonical name records         | {string}           | [`dns.resolveCname()`][] |
+| `'MX'`    | mail exchange records          | {Object}           | [`dns.resolveMx()`][]    |
+| `'NAPTR'` | name authority pointer records | {Object}           | [`dns.resolveNaptr()`][] |
+| `'NS'`    | name server records            | {string}           | [`dns.resolveNs()`][]    |
+| `'PTR'`   | pointer records                | {string}           | [`dns.resolvePtr()`][]   |
+| `'SOA'`   | start of authority records     | {Object}           | [`dns.resolveSoa()`][]   |
+| `'SRV'`   | service records                | {Object}           | [`dns.resolveSrv()`][]   |
+| `'TXT'`   | text records                   | {string[]}         | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | any records                    | {Object}           | [`dns.resolveAny()`][]   |
 
 On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
 
