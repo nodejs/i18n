@@ -2379,9 +2379,9 @@ A pesar de que el equipo de OpenSSL ha determinado una clasificación de severid
 
 <a id="6.9.4"></a>
 
-## 2017-01-05, Version 6.9.4 'Boron' (LTS), @MylesBorins
+## 2017-01-05, Versión 6.9.4 'Boron' (LTS), @MylesBorins
 
-This is a special release that contains 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Esta es una actualización especial que contiene 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
 ### Notable Changes
 
