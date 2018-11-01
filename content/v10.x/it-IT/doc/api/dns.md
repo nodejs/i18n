@@ -166,7 +166,7 @@ Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione c
 I seguenti flags possono essere passati come suggerimenti a [`dns.lookup()`][].
 
 - `dns.ADDRCONFIG`: Restituisce il tipo di indirizzo, determinato, tra i tipi di indirizzi che il sistema supporta in quel momento. Ad Esempio. Gli indirizzi IPv4 saranno restituiti se nel sistema attualmente è presente almeno un indirizzo IPv4 configurato. Gli indirizzi di loopback non sono considerati.
-- `dns.V4MAPPED`: Se viene specificata la famiglia di indrizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
+- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
