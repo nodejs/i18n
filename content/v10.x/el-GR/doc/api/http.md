@@ -1658,7 +1658,7 @@ added: v0.5.9
 
 * {http.Agent}
 
-Global instance of `Agent` which is used as the default for all HTTP client requests.
+Καθολικό στιγμιότυπο του `Agent` που χρησιμοποιείται από προεπιλογή για όλα τα αιτήματα HTTP των πελατών.
 
 ## http.request(options[, callback])
 
@@ -1672,12 +1672,12 @@ changes:
 -->
 
 * `options` {Object | string | URL} 
-  * `protocol` {string} Protocol to use. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
-  * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
-  * `family` {number} IP address family to use when resolving `host` and `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and v6 will be used.
-  * `port` {number} Port of remote server. **Default:** `80`.
-  * `localAddress` {string} Local interface to bind for network connections.
+  * `protocol` {string} Το πρωτόκολλο που θα χρησιμοποιηθεί. **Προεπιλογή:** `'http:'`.
+  * `host` {string} Ένα όνομα τομέα ή μια διεύθυνση IP εξυπηρετητή για τον οποίο θα εκδοθεί το αίτημα. **Προεπιλογή:** `'localhost'`.
+  * `hostname` {string} Ψευδώνυμο για το `host`. Για υποστήριξη του [`url.parse()`][], το `hostname` προτιμάται από το `host`.
+  * `family` {number} Η οικογένεια διευθύνσεων IP που θα χρησιμοποιηθεί για την επίλυση του `host` και του `hostname`. Οι έγκυρες τιμές είναι `4` ή `6`. Αν δεν έχει οριστεί, θα χρησιμοποιηθούν και η IPv4 και η IPv6.
+  * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή. **Προεπιλογή:** `80`.
+  * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
   * `path` {string} Request path. Should include query string if any. E.G. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
