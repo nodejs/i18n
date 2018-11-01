@@ -1529,7 +1529,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-Για να εξάγετε τις παραμέτρους από το string του επερωτήματος, μπορείτε να χρησιμοποιήσετε την συνάρτηση `require('querystring').parse`, ή μπορείτε να ορίσετε ως `true` την δεύτερη παράμετρο στο `require('url').parse`. Παράδειγμα:
+Για να εξάγετε τις παραμέτρους από το string του ερωτήματος, μπορείτε να χρησιμοποιήσετε την συνάρτηση `require('querystring').parse`, ή μπορείτε να ορίσετε ως `true` την δεύτερη παράμετρο στο `require('url').parse`. Παράδειγμα:
 
 ```txt
 $ node
@@ -1678,16 +1678,16 @@ changes:
   * `family` {number} Η οικογένεια διευθύνσεων IP που θα χρησιμοποιηθεί για την επίλυση του `host` και του `hostname`. Οι έγκυρες τιμές είναι `4` ή `6`. Αν δεν έχει οριστεί, θα χρησιμοποιηθούν και η IPv4 και η IPv6.
   * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή. **Προεπιλογή:** `80`.
   * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος.
-  * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
-  * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
-  * `path` {string} Request path. Should include query string if any. E.G. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
-  * `headers` {Object} An object containing request headers.
-  * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
-  * `agent` {http.Agent | boolean} Controls [`Agent`][] behavior. Possible values: 
-    * `undefined` (default): use [`http.globalAgent`][] for this host and port.
-    * `Agent` object: explicitly use the passed in `Agent`.
-    * `false`: causes a new `Agent` with default values to be used.
-  * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
+  * `socketPath` {string} Unix Domain Socket (χρησιμοποιήστε είτε το `host:port` ή το `socketPath`).
+  * `method` {string} Ένα string που καθορίζει την μέθοδο του αιτήματος HTTP. **Προεπιλογή:** `'GET'`.
+  * `path` {string} Διαδρομή αιτήματος. Θα πρέπει να συμπεριλαμβάνει το string ερωτήματος, αν υπάρχει. Π.Χ. `'/index.html?page=12'`. Ένα exception εμφανίζεται όταν η διαδρομή του αιτήματος περιλαμβάνει μη-έγκυρους χαρακτήρες. Επί του παρόντος, μόνο τα κενά απορρίπτονται, αλλά αυτό είναι κάτι που μπορεί να αλλάξει στο μέλλον. **Προεπιλογή:** `'/'`.
+  * `headers` {Object} Ένα αντικείμενο που περιέχει τις κεφαλίδες του αιτήματος.
+  * `auth` {string} Βασική ταυτοποίηση, όπως `'user:password'`, για τον υπολογισμό μιας κεφαλίδας Authorization.
+  * `agent` {http.Agent | boolean} Ελέγχει την συμπεριφορά του [`Agent`][]. Πιθανές τιμές: 
+    * `undefined` (προεπιλογή): χρησιμοποιήστε το [`http.globalAgent`][] για αυτόν τον υπολογιστή και αυτή τη θύρα.
+    * Αντικείμενο `Agent`: ρητή χρήση αυτού που μεταβιβάστηκε στο `Agent`.
+    * `false`: δημιουργεί έναν νέο `Agent` προς χρήση, με τις προεπιλεγμένες τιμές.
+  * `createConnection` {Function} Μια συνάρτηση που δημιουργεί ένα socket/μια ροή που θα χρησιμοποιείται κάθε φορά που δεν χρησιμοποιείται η επιλογή `agent`. Αυτή μπορεί να χρησιμοποιηθεί για την αποφυγή δημιουργίας μιας προσαρμοσμένης κλάσης `Agent` απλά και μόνο για την παράκαμψη της προεπιλεγμένης συνάρτησης `createConnection`. Δείτε το [`agent.createConnection()`][] για περισσότερες λεπτομέρειες. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
   * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
 * `callback` {Function}
