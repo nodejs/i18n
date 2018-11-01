@@ -1153,7 +1153,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`ba2445046c`](https://github.com/nodejs/node/commit/ba2445046c)] - **test**: no usar cwd para rutas relativas (Johan Bergström) [#4477](https://github.com/nodejs/node/pull/4477)
 * [[`5110e4deed`](https://github.com/nodejs/node/commit/5110e4deed)] - **test**: no asumir cierta estructura de carpeta (Johan Bergström) [#3325](https://github.com/nodejs/node/pull/3325)
 * [[`55c6946400`](https://github.com/nodejs/node/commit/55c6946400)] - **test**: hacer configurable a la ruta temporal (Johan Bergström) [#3325](https://github.com/nodejs/node/pull/3325)
-* [[`b19d19efaa`](https://github.com/nodejs/node/commit/b19d19efaa)] - **test**: extender tiempo de desconexión en modo de Depuración (Rich Trott) [#4431](https://github.com/nodejs/node/pull/4431)
+* [[`b19d19efaa`](https://github.com/nodejs/node/commit/b19d19efaa)] - **test**: extender tiempo de espera en modo de Depuración (Rich Trott) [#4431](https://github.com/nodejs/node/pull/4431)
 * [[`c6a99ddd37`](https://github.com/nodejs/node/commit/c6a99ddd37)] - **test**: remover variables no utilizadas de las pruebas net (Rich Trott) [#4430](https://github.com/nodejs/node/pull/4430)
 * [[`54004f0e26`](https://github.com/nodejs/node/commit/54004f0e26)] - **test**: remove unused vars in ChildProcess tests (Rich Trott) [#4425](https://github.com/nodejs/node/pull/4425)
 * [[`e72112f90e`](https://github.com/nodejs/node/commit/e72112f90e)] - **test**: fix flaky cluster-disconnect-race (Brian White) [#4457](https://github.com/nodejs/node/pull/4457)
@@ -1171,8 +1171,8 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`71b79bcf54`](https://github.com/nodejs/node/commit/71b79bcf54)] - **test**: probar que cada bloque en addon.md contenga js & cc (Rod Vagg) [#4411](https://github.com/nodejs/node/pull/4411)
 * [[`00b37de243`](https://github.com/nodejs/node/commit/00b37de243)] - **test**: reparar domain-top-level-error-handler-throw (Santiago Gimeno) [#4364](https://github.com/nodejs/node/pull/4364)
 * [[`6d14b6520f`](https://github.com/nodejs/node/commit/6d14b6520f)] - **test**: usar platformTimeout() en más lugares (Brian White) [#4387](https://github.com/nodejs/node/pull/4387)
-* [[`82f74caa56`](https://github.com/nodejs/node/commit/82f74caa56)] - **test**: reparar test-net-error-twice flaky (Brian White) [#4342](https://github.com/nodejs/node/pull/4342)
-* [[`96501e55be`](https://github.com/nodejs/node/commit/96501e55be)] - **test**: probar otros localhost ipv6 alternativos (Brian White) [#4325](https://github.com/nodejs/node/pull/4325)
+* [[`82f74caa56`](https://github.com/nodejs/node/commit/82f74caa56)] - **test**: reparar test-net-error-twice defectuosa (Brian White) [#4342](https://github.com/nodejs/node/pull/4342)
+* [[`96501e55be`](https://github.com/nodejs/node/commit/96501e55be)] - **test**: probar otras alternativas al localhost de ipv6 (Brian White) [#4325](https://github.com/nodejs/node/pull/4325)
 * [[`69343d6d2e`](https://github.com/nodejs/node/commit/69343d6d2e)] - **tls_wrap**: limpiar errores en la devolución (Fedor Indutny) [#4515](https://github.com/nodejs/node/pull/4515)
 * [[`ca9812cf4d`](https://github.com/nodejs/node/commit/ca9812cf4d)] - **tools**: reparar advertencia en el análisis del documento (Shigeki Ohtsu) [#4537](https://github.com/nodejs/node/pull/4537)
 * [[`386030b524`](https://github.com/nodejs/node/commit/386030b524)] - **tools**: implementar no-unused-vars para eslint (Rich Trott) [#4536](https://github.com/nodejs/node/pull/4536)
@@ -1186,7 +1186,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Cambios notables
 
 * **buffer**: 
-  * `Buffer.prototype.includes()` has been added to keep parity with TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
+  * `Buffer.prototype.includes()` ha sido añadido para mantener paridad con TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
 * **domains**: 
   * Fix handling of uncaught exceptions. (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654).
 * **https**: 
