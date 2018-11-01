@@ -1444,9 +1444,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-The [`net.Socket`][] object associated with the connection.
+Το αντικείμενο [`net.Socket`][] που σχετίζεται με την σύνδεση.
 
-With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
+Για συνδέσεις με υποστήριξη HTTPS, χρησιμοποιήστε το [`request.socket.getPeerCertificate()`][] για να αποκτήσετε τα στοιχεία ταυτοποίησης του πελάτη.
 
 ### message.statusCode
 
@@ -1456,9 +1456,9 @@ added: v0.1.1
 
 * {number}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Ισχύει μόνο για απόκριση που λήφθηκε από το [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. E.G. `404`.
+Ο 3ψήφιος κωδικός κατάστασης της απόκρισης HTTP. Π.Χ. `404`.
 
 ### message.statusMessage
 
@@ -1468,9 +1468,9 @@ added: v0.11.10
 
 * {string}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Ισχύει μόνο για απόκριση που λήφθηκε από το [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). E.G. `OK` or `Internal Server
+Το μήνυμα της κατάστασης απόκρισης HTTP (φράση). Π.Χ. `OK` ή `Internal Server
 Error`.
 
 ### message.trailers
@@ -1481,7 +1481,7 @@ added: v0.3.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+Το αντικείμενο ουράς αιτήματος/απόκρισης. Συμπληρώνεται μόνο κατά το συμβάν `'end'`.
 
 ### message.url
 
@@ -1491,9 +1491,9 @@ added: v0.1.90
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Είναι έγκυρο μόνο για αιτήματα που έχουν προέλθει από το [`http.Server`][].**
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+String URL αιτήματος. Περιέχει μόνο το URL που είναι παρόν στο αίτημα HTTP. Αν το αίτημα είναι:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -1501,7 +1501,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Τότε το `request.url` θα είναι:
 
 <!-- eslint-disable semi -->
 
@@ -1509,7 +1509,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+Για να αναλύσετε το url στα επιμέρους κομμάτια του, μπορεί να χρησιμοποιηθεί το `require('url').parse(request.url)`. Παράδειγμα:
 
 ```txt
 $ node
@@ -1529,7 +1529,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+Για να εξάγετε τις παραμέτρους από το string του επερωτήματος, μπορείτε να χρησιμοποιήσετε την συνάρτηση `require('querystring').parse`, ή μπορείτε να ορίσετε ως `true` την δεύτερη παράμετρο στο `require('url').parse`. Παράδειγμα:
 
 ```txt
 $ node
@@ -1557,7 +1557,7 @@ added: v0.11.8
 
 * {string[]}
 
-A list of the HTTP methods that are supported by the parser.
+Μια λίστα με μεθόδους HTTP που υποστηρίζονται από τον αναλυτή.
 
 ## http.STATUS_CODES
 
