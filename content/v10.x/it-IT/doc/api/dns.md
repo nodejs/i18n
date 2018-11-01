@@ -185,17 +185,17 @@ Risolve l'`address` e la `port` specificata in un hostname e in un servizio util
 
 Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta legale, un `TypeError` verrà mostrato.
 
-On an error, `err` is an [`Error`][] object, where `err.code` is the error code.
+In un errore, `err` è un oggetto di [`Error`][], dove `err.code` è il codice dell'errore.
 
 ```js
 const dns = require('dns');
 dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
   console.log(hostname, service);
-  // Prints: localhost ssh
+  // Stampa: localhost ssh
 });
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `hostname` and `service` properties.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con `hostname` e le proprietà del `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
@@ -203,8 +203,8 @@ If this method is invoked as its [`util.promisify()`][]ed version, it returns a 
 added: v0.1.27
 -->
 
-- `hostname` {string} Hostname to resolve.
-- `rrtype` {string} Resource record type. **Default:** `'A'`.
+- `hostname` {string} Hostname da risolvere.
+- `rrtype` {string} Tipo di record della risorsa. **Predefinito:** `'A'`.
 - `callback` {Function} 
   - `err` {Error}
   - `records` {string[] | Object[] | Object}
