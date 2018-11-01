@@ -211,10 +211,10 @@ added: v0.1.27
 
 Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. Quando ha successo, il `records` sarà un array delle risorse dei record. Il tipo e la struttura dei risultati individuali varia in base al suo `rrtype`:
 
-| `rrtype`  | `records` Contiene             | Tipo di Rilsultato | Shorthand method         |
+| `rrtype`  | `records` Contiene             | Tipo di Rilsultato | Metodo Stenografico      |
 | --------- | ------------------------------ | ------------------ | ------------------------ |
-| `'A'`     | IPv4 addresses (default)       | {string}           | [`dns.resolve4()`][]     |
-| `'AAAA'`  | IPv6 addresses                 | {string}           | [`dns.resolve6()`][]     |
+| `'A'`     | Indirizzi IPv4 (predefiniti)   | {string}           | [`dns.resolve4()`][]     |
+| `'AAAA'`  | Indirizzi IPv6                 | {string}           | [`dns.resolve6()`][]     |
 | `'CNAME'` | canonical name records         | {string}           | [`dns.resolveCname()`][] |
 | `'MX'`    | mail exchange records          | {Object}           | [`dns.resolveMx()`][]    |
 | `'NAPTR'` | name authority pointer records | {Object}           | [`dns.resolveNaptr()`][] |
