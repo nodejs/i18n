@@ -1567,7 +1567,7 @@ added: v0.1.22
 
 * {Object}
 
-A collection of all the standard HTTP response status codes, and the short description of each. For example, `http.STATUS_CODES[404] === 'Not
+Μια συλλογή με όλους τους καθιερωμένους κωδικούς κατάστασης της απόκρισης HTTP, και μια μικρή περιγραφή για κάθε έναν από αυτούς. Για παράδειγμα, `http.STATUS_CODES[404] === 'Not
 Found'`.
 
 ## http.createServer(\[options\]\[, requestListener\])
@@ -1582,16 +1582,16 @@ changes:
 -->
 
 * `options` {Object} 
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Ορίζει την κλάση `IncomingMessage` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `IncomingMessage`. **Προεπιλογή:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Ορίζει την κλάση `ServerResponse` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `ServerResponse`. **Προεπιλογή:** `ServerResponse`.
 
 * `requestListener` {Function}
 
-* Returns: {http.Server}
+* Επιστρέφει: {http.Server}
 
-Returns a new instance of [`http.Server`][].
+Επιστρέφει ένα νέο στιγμιότυπο του [`http.Server`][].
 
-The `requestListener` is a function which is automatically added to the [`'request'`][] event.
+Το `requestListener` είναι μια συνάρτηση που προστίθεται αυτόματα στο αίτημα [`'request'`][].
 
 ## http.get(options[, callback])
 
