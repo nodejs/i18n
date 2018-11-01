@@ -644,7 +644,7 @@ Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. De
 
 Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt gesammelt wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
 
-There can be multiple persistent references created which refer to the same object, each of which will either keep the object live or not based on its individual count.
+Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinen individuellen Zählwert basiert.
 
 #### napi_create_reference
 
@@ -659,8 +659,8 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `Object` to which we want a reference.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] value`: `napi_value` repräsentiert das `Objekt`, zu dem wir eine Referenz wollen.
 - `[in] initial_refcount`: Initial reference count for the new reference.
 - `[out] result`: `napi_ref` pointing to the new reference.
 
