@@ -293,7 +293,7 @@ added: v0.1.27
   - `err` {Error}
   - `address` {Object}[]}
 
-Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` records) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà, la `priority` e l'`exchange` (ad esembio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
+Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` records) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà, la `priority` e l'`exchange` (ad esempio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
 ## dns.resolveNaptr(hostname, callback)
 
@@ -304,9 +304,9 @@ added: v0.9.12
 - `hostname` {string}
 - `callback` {Function} 
   - `err` {Error}
-  - `addresses` {Object[]}
+  - `address` {Object}[]}
 
-Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects with the following properties:
+Utilizza il protocollo DNS per risolvere i record basati sulle espressioni regolari (Record `NAPTR`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di oggetti con le seguente proprietà:
 
 - `flags`
 - `service`
