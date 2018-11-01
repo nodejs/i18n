@@ -1693,15 +1693,15 @@ changes:
 * `callback` {Function}
 * Επιστρέφει: {http.ClientRequest}
 
-Το Node.js διατηρεί πολλαπλές συνδέσεις ανά εξυπηρετητή για την δημιουργία αιτημάτων HTTP. This function allows one to transparently issue requests.
+Το Node.js διατηρεί πολλαπλές συνδέσεις ανά εξυπηρετητή για την δημιουργία αιτημάτων HTTP. Αυτή η συνάρτηση επιτρέπει την δημιουργία αιτημάτων με διαφάνεια.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string, ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, μπορεί να αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
+Η προαιρετική παράμετρος `callback` θα προστεθεί ως ακροατής μιας χρήσης, για το συμβάν [`'response'`][].
 
-`http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+Το `http.request()` επιστρέφει ένα στιγμιότυπο της κλάσης [`http.ClientRequest`][]. Το στιγμιότυπο `ClientRequest` είναι μια εγγράψιμη ροή. Εάν χρειάζεται να γίνει μεταφόρτωση αρχείου μέσω αιτήματος POST, τότε πρέπει να το γράψετε στο αντικείμενο `ClientRequest`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const postData = querystring.stringify({
@@ -1740,7 +1740,7 @@ req.write(postData);
 req.end();
 ```
 
-Note that in the example `req.end()` was called. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Σημειώστε ότι στο παράδειγμα έγινε κλήση του `req.end()`. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
 
 If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. As with all `'error'` events, if no listeners are registered the error will be thrown.
 
