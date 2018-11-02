@@ -373,9 +373,9 @@ added: v10.0.0
 
 Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotReject()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneerd, zal `assert.doesNotReject()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Let op: Het gebruik van `assert.doesNotReject()` is niet echt nuttig want er is weinig voordeel aan het vangen van een afwijzing om het vervolgens weer te verwerpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten afwijzen en probeer foutberichten zo expressief mogelijk te houden.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
 
