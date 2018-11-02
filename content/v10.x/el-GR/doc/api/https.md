@@ -133,9 +133,9 @@ changes:
 
 Όπως το [`http.get()`][] αλλά για συνδέσεις HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const https = require('https');
@@ -159,7 +159,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Global instance of [`https.Agent`][] for all HTTPS client requests.
+Καθολικό στιγμιότυπο του [`https.Agent`][] για όλα τα αιτήματα HTTPS των πελατών.
 
 ## https.request(options[, callback])
 
@@ -175,17 +175,17 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` **Default:** `'https:'`
-    - `port` **Default:** `443`
-    - `agent` **Default:** `https.globalAgent`
+- `options` {Object | string | URL} Δέχεται όλα τα `options` από το [`http.request()`][], με κάποιες διαφορές στις προεπιλεγμένες τιμές: 
+    - `protocol` **Προεπιλογή:** `'https:'`
+    - `port` **Προεπιλογή:** `443`
+    - `agent` **Προεπιλογή:** `https.globalAgent`
 - `callback` {Function}
 
-Makes a request to a secure web server.
+Αποστέλλει ένα αίτημα σε έναν ασφαλή εξυπηρετητή ιστού.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+Τα παρακάτω πρόσθετα `options` από το [`tls.connect()`][] είναι επίσης αποδεκτά: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string, ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 Example:
 
