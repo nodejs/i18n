@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS είναι το πρωτόκολλο HTTP μέσω TLS/SSL. Στη Node.js υλοποιείται σαν μια ξεχωριστή ενότητα.
 
 ## Class: https.Agent
 
@@ -12,7 +12,7 @@ HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a sep
 added: v0.4.5
 -->
 
-An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
+Ένα αντικείμενο [`Agent`][] για HTTPS, παρόμοιο με το [`http.Agent`][]. Για περισσότερες πληροφορίες. δείτε το [`https.request()`][].
 
 ## Class: https.Server
 
@@ -20,7 +20,7 @@ An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
+Η κλάση είναι μια subclass του `tls.Server` και μεταδίδει συμβάντα παρόμοια με το [`http.Server`][]. Για περισσότερες πληροφορίες, δείτε το [`http.Server`][].
 
 ### server.close([callback])
 
