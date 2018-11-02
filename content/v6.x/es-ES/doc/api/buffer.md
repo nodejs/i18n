@@ -814,41 +814,41 @@ added: v0.1.90
 * `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] en el cual copiar.
 * `targetStart` {integer} El offset dentro de `target` en el cual comenzar a copiar. **Predeterminado:** `0`
 * `sourceStart` {integer} El offset dentro de `buf` en cual comenzar a copiar. **Predeterminado:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`]
-* Returns: {integer} The number of bytes copied.
+* `sourceEnd` {integer} El offset dentro de `buf` en el cual terminar de copiar (no inclusivo). **Predeterminado:** [`buf.length`]
+* Devuelve: {integer} El número de bytes copiados.
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+Copia datos desde una región de `buf` a una región en `target`, incluso si la región de la memoria de `target` se superpone con `buf`.
 
-Example: Create two `Buffer` instances, `buf1` and `buf2`, and copy `buf1` from byte 16 through byte 19 into `buf2`, starting at the 8th byte in `buf2`
+Ejemplo: Crea dos instancias de `Buffer`, `buf1` y `buf2`, y copia `buf1` desde el byte 16 a través del byte 19 en `buf2`, comenzando en el 8º byte en `buf2`
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
 const buf2 = Buffer.allocUnsafe(26).fill('!');
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
 buf1.copy(buf2, 8, 16, 20);
 
-// Prints: !!!!!!!!qrst!!!!!!!!!!!!!
+// Imprime: !!!!!!!!qrst!!!!!!!!!!!!!
 console.log(buf2.toString('ascii', 0, 25));
 ```
 
-Example: Create a single `Buffer` and copy data from one region to an overlapping region within the same `Buffer`
+Ejemplo: Crea una sola copia de `Buffer` y copia datos desde una región a una región superpuesta dentro del mismo `Buffer`
 
 ```js
 const buf = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf[i] = i + 97;
 }
 
 buf.copy(buf, 0, 4, 10);
 
-// Prints: efghijghijklmnopqrstuvwxyz
+// Imprime: efghijghijklmnopqrstuvwxyz
 console.log(buf.toString());
 ```
 
@@ -858,7 +858,7 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
 
@@ -1097,7 +1097,7 @@ console.log(buf.includes('this', 4));
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
@@ -1785,7 +1785,7 @@ console.log(copy);
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
