@@ -14,41 +14,41 @@ const path = require('path');
 
 ` path ` 模块的默认操作根据运行 node.js 应用程序的操作系统 而有所不同。 具体地说, 在 Windows 操作系统上运行时, ` 路径 ` 模块会认为使用的是 Windows 风格的路径。
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+例如, 在 windows 文件路径 ` C:\temp\myfile.html ` 中使用 ` path. basename () ` 函数时, 在 POSIX 上运行和在 windows 上运行将产生不同的结果:
 
-On POSIX:
+在 POSIX 系统上:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+在 Windows系统上:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+若要在任何 操作系统上处理 Windows 文件路径时获得一致的结果, 请使用 [` path. win32 `] []:
 
-On POSIX and Windows:
+在 POSIX 和 Windows 上:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+//返回: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+若要在任何 操作系统上处理 POSIX 文件路径时获得一致的结果, 请使用 [` path.posix `] []:
 
-On POSIX and Windows:
+在 POSIX 和 Windows 上:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// Returns: 'myfile.html'
+// 返回: 'myfile.html'
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+* 注意: *在 Windows 上,Node. js 遵循单驱动器工作目录的理念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 例如， `path.resolve('c:\\')` 可能返回与 `path.resolve('c:')` 不同的结果。 For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
