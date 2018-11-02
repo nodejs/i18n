@@ -1059,7 +1059,7 @@ added: v5.3.0
 * `value` {String|Buffer|Integer} Qué buscar.
 * `byteOffset` {Integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** `0`
 * `encoding` {String} Si `encoding` es una string, esta es su codificación. **Predeterminado:** `'utf8'`
-* Returns: {Boolean} `true` if `value` was found in `buf`, `false` otherwise
+* Devuelve: {Boolean} `true` si `value` fue encontrado en `buf`, de lo contrario es `false`
 
 Equivalente a [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
@@ -1099,14 +1099,14 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+Crea y devuelve un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de claves `buf` (índices).
 
 Ejemplo:
 
 ```js
 const buf = Buffer.from('buffer');
 
-// Prints:
+// Imprime:
 //   0
 //   1
 //   2
@@ -1125,11 +1125,11 @@ added: v6.0.0
 -->
 
 * `value` {string|Buffer|integer} Qué buscar.
-* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** [`buf.length`]`- 1`
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** [`buf.length`]`- 1`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
-* Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
+* Devuelve: {integer} El índice de la última aparición de `value` en `buf` o `-1` si `buf` no contiene `value`.
 
-Identical to [`buf.indexOf()`], except `buf` is searched from back to front instead of front to back.
+Idéntico a [`buf.indexOf()`], excepto que `buf` es buscado de atrás hacia adelante en lugar de delante hacia atrás.
 
 Ejemplos:
 
