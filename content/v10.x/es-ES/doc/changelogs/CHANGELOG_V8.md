@@ -1794,24 +1794,24 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * **os** 
   * Agregue soporte para la notación CIDR a el output del método networkInterfaces(). [#14307](https://github.com/nodejs/node/pull/14307)
 * **perf_hooks** 
-  * Una implementación inicial de la API "Performance Timing" para Node.js. Esta es la misma API de "Performance Timing" implementada por los navegadores modernos con varias propiedades específicas de Node.js. The User Timing mark() and measure() APIs are implemented. [#14680](https://github.com/nodejs/node/pull/14680)
+  * Una implementación inicial de la API "Performance Timing" para Node.js. Esta es la misma API de "Performance Timing" implementada por los navegadores modernos con varias propiedades específicas de Node.js. Son implementadas las API mark() y measure() de "User Timing". [#14680](https://github.com/nodejs/node/pull/14680)
 * **tls** 
-  * multiple PFX in createSecureContext [#14793](https://github.com/nodejs/node/pull/14793)
-* **Added new collaborators** 
+  * PFX múltiple en createSecureContext [ # 14793 ](https://github.com/nodejs/node/pull/14793)
+* **Nuevos colaboradores añadidos** 
   * [BridgeAR](https://github.com/BridgeAR) – Ruben Bridgewater
 
 ### Commits
 
-* [[`87c3e1d7de`](https://github.com/nodejs/node/commit/87c3e1d7de)] - fix --prof-process --preprocess flag (davidmarkclements) [#14966](https://github.com/nodejs/node/pull/14966)
-* [[`bcf0e5d676`](https://github.com/nodejs/node/commit/bcf0e5d676)] - **assert**: handle errors properly with deep*Equal (Ruben Bridgewater) [#15001](https://github.com/nodejs/node/pull/15001)
-* [[`7174dc2e8a`](https://github.com/nodejs/node/commit/7174dc2e8a)] - **assert**: handle sparse arrays in deepStrictEqual (Ruben Bridgewater) [#15027](https://github.com/nodejs/node/pull/15027)
-* [[`b40105df3b`](https://github.com/nodejs/node/commit/b40105df3b)] - **async_hooks**: don't abort unnecessarily (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
-* [[`3e73ea8745`](https://github.com/nodejs/node/commit/3e73ea8745)] - **async_hooks**: improve comments and function names (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
-* [[`700d576962`](https://github.com/nodejs/node/commit/700d576962)] - **async_hooks**: emitAfter correctly on fatalException (Trevor Norris) [#14914](https://github.com/nodejs/node/pull/14914)
-* [[`78a36e0dd1`](https://github.com/nodejs/node/commit/78a36e0dd1)] - **async_wrap**: unroll unnecessarily DRY code (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
-* [[`fadccbaa17`](https://github.com/nodejs/node/commit/fadccbaa17)] - **async_wrap**: return undefined if domain is disposed (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
-* [[`8d11220e0b`](https://github.com/nodejs/node/commit/8d11220e0b)] - **benchmark**: add default configs to buffer benchmark (Rich Trott) [#15175](https://github.com/nodejs/node/pull/15175)
-* [[`7feb99455a`](https://github.com/nodejs/node/commit/7feb99455a)] - **benchmark**: fix issues in dns benchmark (Ian Perkins) [#14936](https://github.com/nodejs/node/pull/14936)
+* [[`87c3e1d7de`](https://github.com/nodejs/node/commit/87c3e1d7de)] - corregir la bandera --prof-process --preprocess (davidmarkclements) [#14966](https://github.com/nodejs/node/pull/14966)
+* [[`bcf0e5d676`](https://github.com/nodejs/node/commit/bcf0e5d676)] - **assert**: manejar los errores adecuadamente con deep*Equal (Ruben Bridgewater) [#15001](https://github.com/nodejs/node/pull/15001)
+* [[`7174dc2e8a`](https://github.com/nodejs/node/commit/7174dc2e8a)] - **assert**: manejar arrays dispersas endeepStrictEqual (Ruben Bridgewater) [#15027](https://github.com/nodejs/node/pull/15027)
+* [[`b40105df3b`](https://github.com/nodejs/node/commit/b40105df3b)] - **async_hooks**: no abortar innecesariamente (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
+* [[`3e73ea8745`](https://github.com/nodejs/node/commit/3e73ea8745)] - **async_hooks**: mejorar comentarios y nombres de las funciones (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
+* [[`700d576962`](https://github.com/nodejs/node/commit/700d576962)] - **async_hooks**: emitAfter correctamente en fatalException (Trevor Norris) [#14914](https://github.com/nodejs/node/pull/14914)
+* [[`78a36e0dd1`](https://github.com/nodejs/node/commit/78a36e0dd1)] - **async_wrap**: desenrollar innecesariamente el código DRY (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
+* [[`fadccbaa17`](https://github.com/nodejs/node/commit/fadccbaa17)] - **async_wrap**: devolver "undefined" si el dominio está dispuesto (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
+* [[`8d11220e0b`](https://github.com/nodejs/node/commit/8d11220e0b)] - **benchmark**: añadir configuraciones predeterminadas a la prueba de rendimiento del buffer (Rich Trott) [#15175](https://github.com/nodejs/node/pull/15175)
+* [[`7feb99455a`](https://github.com/nodejs/node/commit/7feb99455a)] - **benchmark**: solucionar problemas en la prueba de rendimiento del dns (Ian Perkins) [#14936](https://github.com/nodejs/node/pull/14936)
 * [[`978889f8c0`](https://github.com/nodejs/node/commit/978889f8c0)] - **benchmark**: fix dgram/bind-params.js benchmark (Rich Trott) [#14948](https://github.com/nodejs/node/pull/14948)
 * [[`7f1ea7c3af`](https://github.com/nodejs/node/commit/7f1ea7c3af)] - **benchmark**: removed unused arguments from callbacks (Abhishek Raj) [#14919](https://github.com/nodejs/node/pull/14919)
 * [[`ca3ec90285`](https://github.com/nodejs/node/commit/ca3ec90285)] - **benchmark**: convert var to es6 const (Sebastian Murphy) [#12886](https://github.com/nodejs/node/pull/12886)
