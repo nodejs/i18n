@@ -34,19 +34,19 @@ Il modo più sicuro per rispondere ad un errore che è stato generato è arresta
 
 L'approccio migliore consiste nell'inviare una risposta di errore alla richiesta che ha attivato l'errore stesso, lasciando che gli altri errori finiscano normalmente e interrompendo il listening (ascolto) di nuove richieste in quel worker.
 
-In questo modo, l'utilizzo di `domain` va di pari passo con il modulo cluster, in quanto il processo master può creare un nuovo worker tramite il fork quando un worker s'imbatte in un errore. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
+In questo modo, l'utilizzo di `domain` va di pari passo con il modulo cluster, in quanto il processo master può creare un nuovo worker tramite il fork quando un worker s'imbatte in un errore. Per i programmi Node.js che si adattano a più macchine, il proxy di chiusura o il registro di servizio possono prendere nota dell'errore e reagire di conseguenza.
 
-For example, this is not a good idea:
+Ad esempio, questa non è una buona idea:
 
 ```js
-// XXX WARNING! BAD IDEA!
+// XXX ATTENZIONE! PESSIMA IDEA!
 
 const d = require('domain').create();
 d.on('error', (er) => {
-  // The error won't crash the process, but what it does is worse!
-  // Though we've prevented abrupt process restarting, we are leaking
-  // resources like crazy if this ever happens.
-  // This is no better than process.on('uncaughtException')!
+  // L'errore non causerà il crash del processo, bensì qualcosa di peggiore!
+  // Anche se abbiamo impedito il brusco riavvio del processo, perderemo molte
+  // risorse se ciò dovesse accadere.
+  // Questo non è migliore di process.on('uncaughtException')!
   console.log(`error, but oh well ${er.message}`);
 });
 d.run(() => {
