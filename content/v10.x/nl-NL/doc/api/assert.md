@@ -371,7 +371,7 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. It will then check that the promise is not rejected.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
 
 If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
