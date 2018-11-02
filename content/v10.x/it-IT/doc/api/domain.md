@@ -170,14 +170,14 @@ Ogni volta che un `Error` object viene guidato tramite il routing attraverso un 
 
 * `error.domain` Il dominio che ha gestito per primo l'errore.
 * `error.domainEmitter` L'event emitter che ha emesso un evento `'error'` con l'error object.
-* `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
-* `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
+* `error.domainBound` La funzione callback che era collegata al dominio tramite il binding ed ha passato un errore come primo argomento.
+* `error.domainThrown` Un valore booleano che indica se l'errore è stato generato, emesso o passato ad una funzione callback collegata tramite il binding.
 
-## Implicit Binding
+## Binding Implicito
 
 <!--type=misc-->
 
-If domains are in use, then all **new** `EventEmitter` objects (including Stream objects, requests, responses, etc.) will be implicitly bound to the active domain at the time of their creation.
+Se i domini sono in uso, tutti i **nuovi** `EventEmitter` object (inclusi Stream object, richieste, risposte, ecc.) saranno collegati tramite il binding implicitamente al dominio attivo nel momento della loro creazione.
 
 Additionally, callbacks passed to lowlevel event loop requests (such as to `fs.open()`, or other callback-taking methods) will automatically be bound to the active domain. If they throw, then the domain will catch the error.
 
