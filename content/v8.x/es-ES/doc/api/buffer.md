@@ -1003,14 +1003,14 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+Crea y devuelve un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de `[index, byte]` par desde el contenido de `buf`.
 
-Example: Log the entire contents of a `Buffer`
+Ejemplo: Registra todos los contenidos de un `Buffer`
 
 ```js
 const buf = Buffer.from('buffer');
 
-// Prints:
+// Imprime:
 //   [0, 98]
 //   [1, 117]
 //   [2, 102]
@@ -1036,7 +1036,7 @@ changes:
 * `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] to compare to.
 * Devuelve: {boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+Devuelve `true` si ambos `buf` y `otherBuffer` tienen exactamente los mismos bytes, de lo contrario `false`.
 
 Ejemplos:
 
@@ -1045,10 +1045,10 @@ const buf1 = Buffer.from('ABC');
 const buf2 = Buffer.from('414243', 'hex');
 const buf3 = Buffer.from('ABCD');
 
-// Prints: true
+// Imprime: true
 console.log(buf1.equals(buf2));
 
-// Prints: false
+// Imprime: false
 console.log(buf1.equals(buf3));
 ```
 
@@ -1063,13 +1063,13 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value to fill `buf` with.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Predeterminado:** [`buf.length`]
-* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} El valor con el cual llenar `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a llenar `buf`. **Default:** `0`
+* `end` {integer} Donde detener el llenado de `buf` (no inclusivo). **Predeterminado:** [`buf.length`]
+* `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
+* Returns: {Buffer} Una referencia a `buf`.
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
+Llenar `buf` con el `value` especificado. Si el `offset` y `end` no son dados, el `buf` completo se llenará. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
 
 Example: Fill a `Buffer` with the ASCII character `'h'`
 
@@ -1111,7 +1111,7 @@ added: v5.3.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
+* `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -1161,7 +1161,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
+* `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 If `value` is:
@@ -1266,7 +1266,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
-* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`
+* `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
 Identical to [`buf.indexOf()`], except `buf` is searched from back to front instead of front to back.
@@ -1786,7 +1786,7 @@ console.log(buf.slice(-5, -2).toString());
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Returns: {Buffer} Una referencia a `buf`.
 
 Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 2.
 
@@ -1816,7 +1816,7 @@ buf2.swap16();
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Returns: {Buffer} Una referencia a `buf`.
 
 Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 4.
 
@@ -1846,7 +1846,7 @@ buf2.swap32();
 added: v6.3.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Returns: {Buffer} Una referencia a `buf`.
 
 Interprets `buf` as an array of 64-bit numbers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 8.
 
