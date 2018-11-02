@@ -243,43 +243,43 @@ Un array di timer ed event emitter che sono stati esplicitamente aggiunti al dom
 
 ### domain.add(emitter)
 
-* `emitter` {EventEmitter|Timer} emitter or timer to be added to the domain
+* `emitter` {EventEmitter|Timer} emitter o timer da aggiungere al dominio
 
-Explicitly adds an emitter to the domain. If any event handlers called by the emitter throw an error, or if the emitter emits an `'error'` event, it will be routed to the domain's `'error'` event, just like with implicit binding.
+Aggiunge esplicitamente un emitter al dominio. Se qualsiasi event handler chiamato dall'emitter genera un errore oppure se l'emitter emette un evento `'error'`, questo verrà indirizzato all'evento `'error'` del dominio, semplicemente come un binding implicito.
 
-This also works with timers that are returned from [`setInterval()`][] and [`setTimeout()`][]. If their callback function throws, it will be caught by the domain `'error'` handler.
+Questo funziona anche con i timer che vengono restituiti da [`setInterval()`][] e [`setTimeout()`][]. Se la loro funzione callback esegue, essa verrà catturata dall'`'error'` handler del dominio.
 
-If the Timer or `EventEmitter` was already bound to a domain, it is removed from that one, and bound to this one instead.
+Se il Timer o l'`EventEmitter` era già stato collegato a un dominio tramite il binding, allora verrà rimosso da quello e collegato a quest'altro dominio.
 
 ### domain.bind(callback)
 
-* `callback` {Function} The callback function
-* Returns: {Function} The bound function
+* `callback` {Function} La funzione callback
+* Restituisce: {Function} La funzione sottoposta al binding
 
-The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
+La funzione restituita sarà un wrapper attorno alla funzione callback fornita. Quando viene chiamata la funzione restituita, gli eventuali errori generati verranno indirizzati all'`'error'` event del dominio.
 
-#### Example
+#### Esempio
 
 ```js
 const d = domain.create();
 
 function readSomeFile(filename, cb) {
   fs.readFile(filename, 'utf8', d.bind((er, data) => {
-    // if this throws, it will also be passed to the domain
+    // se questo esegue, verrà anche passato al dominio
     return cb(er, data ? JSON.parse(data) : null);
   }));
 }
 
 d.on('error', (er) => {
-  // an error occurred somewhere.
-  // if we throw it now, it will crash the program
-  // with the normal line number and stack message.
+  // un errore che si è verificato da qualche parte.
+  // se lo eseguiamo adesso, il programma si bloccherà 
+  // con il normale numero della riga e lo stack message.
 });
 ```
 
 ### domain.enter()
 
-The `enter()` method is plumbing used by the `run()`, `bind()`, and `intercept()` methods to set the active domain. It sets `domain.active` and `process.domain` to the domain, and implicitly pushes the domain onto the domain stack managed by the domain module (see [`domain.exit()`][] for details on the domain stack). The call to `enter()` delimits the beginning of a chain of asynchronous calls and I/O operations bound to a domain.
+Il metodo `enter()` è il plumbing utilizzato dai metodi `run()`, `bind()` e `intercept()` per impostare il dominio attivo. It sets `domain.active` and `process.domain` to the domain, and implicitly pushes the domain onto the domain stack managed by the domain module (see [`domain.exit()`][] for details on the domain stack). The call to `enter()` delimits the beginning of a chain of asynchronous calls and I/O operations bound to a domain.
 
 Calling `enter()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
 
@@ -352,10 +352,10 @@ d.on('error', (er) => {
 });
 d.run(() => {
   process.nextTick(() => {
-    setTimeout(() => { // simulating some various async stuff
+    setTimeout(() => { // simulando varie operazioni asincrone
       fs.open('non-existent file', 'r', (er, fd) => {
         if (er) throw er;
-        // proceed...
+        // procedere...
       });
     }, 100);
   });
@@ -364,7 +364,7 @@ d.run(() => {
 
 In this example, the `d.on('error')` handler will be triggered, rather than crashing the program.
 
-## Domains and Promises
+## Domini e Promise
 
 As of Node.js 8.0.0, the handlers of Promises are run inside the domain in which the call to `.then()` or `.catch()` itself was made:
 
@@ -379,7 +379,7 @@ d1.run(() => {
 
 d2.run(() => {
   p.then((v) => {
-    // running in d2
+    // in esecuzione all'interno di d2
   });
 });
 ```
@@ -397,7 +397,7 @@ d1.run(() => {
 
 d2.run(() => {
   p.then(p.domain.bind((v) => {
-    // running in d1
+    // in esecuzione all'interno di d1
   }));
 });
 ```
