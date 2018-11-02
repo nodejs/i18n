@@ -153,7 +153,7 @@ Expression assignment to _ now disabled.
 4
 ```
 
-De forma similar, `_error` referirá al último error visto, si hay alguno. Establecer explícitamente `_error` a algún valor deshabilitará este comportamiento.
+De forma similar, `_error` referirá al último error visto, si hubo alguno. Establecer explícitamente `_error` a algún valor deshabilitará este comportamiento.
 
 <!-- eslint-skip -->
 
@@ -185,9 +185,9 @@ undefined
 
 ### Funciones de Evaluación Personalizadas
 
-Cuando un nuevo `repl.REPLServer` es creado, una función de evaluación personalizable puede ser provista. Esto puede ser usada, por ejemplo, para implementar aplicaciones REPL completamente personalizables.
+Cuando un nuevo `repl.REPLServer` es creado, una función de evaluación personalizable puede ser provista. Esta puede ser usada, por ejemplo, para implementar aplicaciones REPL completamente personalizables.
 
-Lo siguiente ilustra un ejemplo hipotético de un REPL que realiza la traducción de un texto de un lenguaje a otro ilustra:
+Lo siguiente ilustra un ejemplo hipotético de un REPL que realiza la traducción de un texto de un lenguaje a otro:
 
 ```js
 const repl = require('repl');
