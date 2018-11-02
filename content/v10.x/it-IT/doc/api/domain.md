@@ -92,33 +92,33 @@ if (cluster.isMaster) {
 
   const domain = require('domain');
 
-  // See the cluster documentation for more details about using
-  // worker processes to serve requests. How it works, caveats, etc.
+  // Vedi la documentazione del cluster per ulteriori dettagli sull'utilizzo
+  // dei processi worker per soddisfare le richieste. Come funziona, avvertenze, ecc.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
     d.on('error', (er) => {
       console.error(`error ${er.stack}`);
 
-      // Note: We're in dangerous territory!
-      // By definition, something unexpected occurred,
-      // which we probably didn't want.
-      // Anything can happen now! Be very careful!
+      // Nota: Siamo in un territorio pericoloso!
+      // Per definizione, si è verificato qualcosa di inaspettato, 
+      // cosa che probabilmente non volevamo.
+      // Adesso può succedere qualsiasi cosa! Stai molto attento!
 
       try {
-        // make sure we close down within 30 seconds
+        // assicurati di chiuderlo entro 30 secondi
         const killtimer = setTimeout(() => {
           process.exit(1);
         }, 30000);
-        // But don't keep the process open just for that!
+        // Ma non mantenere aperto il processo solo per la questione dei 30 secondi!
         killtimer.unref();
 
-        // stop taking new requests.
+        // non prendere più nuove richieste.
         server.close();
 
-        // Let the master know we're dead. This will trigger a
-        // 'disconnect' in the cluster master, and then it will fork
-        // a new worker.
+        // Fai sapere al master che siamo stati arrestati. Ciò attiverà un
+        // 'disconnect' nel master del cluster e quindi creerà tramite il fork
+        // un nuovo worker.
         cluster.worker.disconnect();
 
         // try to send an error to the request that triggered the problem
