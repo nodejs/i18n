@@ -603,8 +603,8 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 
 #### Semver-minor
 
-* [[`b3c1bd38f6`](https://github.com/nodejs/node/commit/b3c1bd38f6)] - **(SEMVER-MINOR)** **assert**: add direct promises support in rejects (Ruben Bridgewater) [#19885](https://github.com/nodejs/node/pull/19885)
-* [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)] - **(SEMVER-MINOR)** **assert**: add rejects() and doesNotReject() (feugy) [#18023](https://github.com/nodejs/node/pull/18023)
+* [[`b3c1bd38f6`](https://github.com/nodejs/node/commit/b3c1bd38f6)] - **(SEMVER-MINOR)** **assert**: añadir soporte para las promesas directas en los rechazos (Ruben Bridgewater) [#19885](https://github.com/nodejs/node/pull/19885)
+* [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)] - **(SEMVER-MINOR)** **assert**: añadir rejects() y doesNotReject() (feugy) [#18023](https://github.com/nodejs/node/pull/18023)
 * [[`559e23a459`](https://github.com/nodejs/node/commit/559e23a459)] - **(SEMVER-MINOR)** **console**: auto-detect color support by default (Anna Henningsen) [#19372](https://github.com/nodejs/node/pull/19372)
 * [[`3f1562dea8`](https://github.com/nodejs/node/commit/3f1562dea8)] - **(SEMVER-MINOR)** **console**: add color support (Anna Henningsen) [#19372](https://github.com/nodejs/node/pull/19372)
 * [[`4fe51755ff`](https://github.com/nodejs/node/commit/4fe51755ff)] - **(SEMVER-MINOR)** **console**: allow `options` object as constructor arg (Anna Henningsen) [#19372](https://github.com/nodejs/node/pull/19372)
