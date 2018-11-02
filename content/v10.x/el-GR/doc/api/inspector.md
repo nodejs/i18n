@@ -73,7 +73,7 @@ added: v8.0.0
 
 * {Object} Το αντικείμενο του μηνύματος ειδοποίησης
 
-Emitted when an inspector notification is received that has its method field set to the `<inspector-protocol-method>` value.
+Μεταδίδεται όταν λαμβάνεται μια ειδοποίηση επιθεωρητή, στην οποία η τιμή του πεδίου της μεθόδου έχει οριστεί ως η τιμή του `<inspector-protocol-method>`.
 
 The following snippet installs a listener on the [`'Debugger.paused'`][] event, and prints the reason for program suspension whenever program execution is suspended (through breakpoints, for example):
 
