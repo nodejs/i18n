@@ -14,11 +14,11 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
+* `port` {number} Η θύρα στην οποία θα ακούει ο επιθεωρητής για συνδέσεις. Προαιρετικό. **Προεπιλογή:** ότι είχε οριστεί στο CLI.
+* `host` {string} Η διεύθυνση στην οποία θα ακούει ο επιθεωρητής για συνδέσεις. Προαιρετικό. **Προεπιλογή:** ότι είχε οριστεί στο CLI.
+* `wait` {boolean} Αναμονή μέχρι να συνδεθεί ένας πελάτης. Προαιρετικό. **Προεπιλογή:** `false`.
 
-Activate inspector on host and port. Equivalent to `node
+Ενεργοποίηση του επιθεωρητή στην ορισμένη διεύθυνση και θύρα. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
 
 If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
