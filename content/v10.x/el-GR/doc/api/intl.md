@@ -19,24 +19,24 @@
 - [`require('util').TextDecoder`][]
 - [Ιδιότητες Διαφυγής Unicode `RegExp`][]
 
-Η Node.js (και η υποκείμενη μηχανή V8) χρησιμοποιεί το [ICU](http://icu-project.org/) για την υλοποίηση αυτών των χαρακτηρηστικών σε native κώδικα C/C++. Ωστόσο, κάποια από αυτά χρειάζονται ένα πολύ μεγάλο αρχείο δεδομένων ICU για να υποστηριχθούν όλες οι γλώσσες του κόσμου. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
+Η Node.js (και η υποκείμενη μηχανή V8) χρησιμοποιεί το [ICU](http://icu-project.org/) για την υλοποίηση αυτών των χαρακτηρηστικών σε native κώδικα C/C++. Ωστόσο, κάποια από αυτά χρειάζονται ένα πολύ μεγάλο αρχείο δεδομένων ICU για να υποστηριχθούν όλες οι γλώσσες του κόσμου. Επειδή αναμένεται ότι οι χρήστες της Node.js θα χρησιμοποιήσουν ένα μικρό μόνο κομμάτι της λειτουργικότητας του ICU, μόνο ένα υποσύνολο του συνόλου δεδομένων του ICU προσφέρεται από προεπιλογή. Προσφέρονται διάφορες επιλογές για την παραμετροποίηση και την επέκταση του συνόλου δεδομένων του ICU κατά μεταγλώττιση ή την εκτέλεση της Node.js.
 
-## Options for building Node.js
+## Επιλογές για τη μεταγλώττιση της Node.js
 
-To control how ICU is used in Node.js, four `configure` options are available during compilation. Additional details on how to compile Node.js are documented in [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
+Για να ελέγξετε πως χρησιμοποιείται το ICU στην Node.js, υπάρχουν τέσσερεις επιλογές `configure` διαθέσιμες κατά τη μεταγλώττιση. Πρόσθετες πληροφορίες για το πως να μεταγλωττίσετε την Node.js είναι υπάρχουν τεκμηριωμένες στο [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
 
 - `--with-intl=none` / `--without-intl`
 - `--with-intl=system-icu`
-- `--with-intl=small-icu` (default)
+- `--with-intl=small-icu` (προεπιλογή)
 - `--with-intl=full-icu`
 
-An overview of available Node.js and JavaScript features for each `configure` option:
+Μια επισκόπηση για την διαθεσιμότητα των χαρακτηριστικών Node.js και Javascript για κάθε επιλογή `configure`:
 
 |                                                      | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
 | ---------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
-| [`String.prototype.normalize()`][]                   | none (function is no-op)          | full                         | full                   | full       |
-| `String.prototype.to*Case()`                         | full                              | full                         | full                   | full       |
-| [`Intl`][]                                           | none (object does not exist)      | partial/full (depends on OS) | partial (English-only) | full       |
+| [`String.prototype.normalize()`][]                   | όχι (η συνάρτηση είναι no-op)     | πλήρης                       | πλήρης                 | πλήρης     |
+| `String.prototype.to*Case()`                         | πλήρης                            | πλήρης                       | πλήρης                 | πλήρης     |
+| [`Intl`][]                                           | όχι (η συνάρτηση είναι no-op)     | partial/full (depends on OS) | partial (English-only) | full       |
 | [`String.prototype.localeCompare()`][]               | partial (not locale-aware)        | full                         | full                   | full       |
 | `String.prototype.toLocale*Case()`                   | partial (not locale-aware)        | full                         | full                   | full       |
 | [`Number.prototype.toLocaleString()`][]              | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
