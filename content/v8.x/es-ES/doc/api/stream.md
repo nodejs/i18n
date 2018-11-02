@@ -4,9 +4,9 @@
 
 > Stability: 2 - Stable
 
-Un stream es una interfaz abstracta para trabajar con datos de streaming en Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+Un stream es una interfaz abstracta para trabajar con datos de streaming en Node.js. El módulo `stream` proporciona una API base que hace sencillo construir objetos que implementan la interfaz de stream.
 
-There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Existen muchos objetos de stream proporcionados por Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
 
 Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
 
