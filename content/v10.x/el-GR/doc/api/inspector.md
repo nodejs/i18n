@@ -75,7 +75,7 @@ added: v8.0.0
 
 Μεταδίδεται όταν λαμβάνεται μια ειδοποίηση επιθεωρητή, στην οποία η τιμή του πεδίου της μεθόδου έχει οριστεί ως η τιμή του `<inspector-protocol-method>`.
 
-The following snippet installs a listener on the [`'Debugger.paused'`][] event, and prints the reason for program suspension whenever program execution is suspended (through breakpoints, for example):
+Το παρακάτω απόσπασμα προσθέτει έναν ακροατή στο συμβάν [`'Debugger.paused'`][], και εμφανίζει το λόγο για τον οποίο έγινε αναστολή του προγράμματος, κάθε φορά που γίνεται αναστολή της εκτέλεσης του (για παράδειγμα, με τη χρήση σημείων διακοπής):
 
 ```js
 session.on('Debugger.paused', ({ params }) => {
@@ -90,7 +90,7 @@ session.on('Debugger.paused', ({ params }) => {
 added: v8.0.0
 -->
 
-Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
+Συνδέεται σε μια περίοδο λειτουργίας του back-end του επιθεωρητή. Ένα exception θα εμφανιστεί αν υπάρχει ήδη μια ενεργή περίοδος λειτουργίας που έχει γίνει είτε μέσω του API είτε με τη σύνδεση κάποιου front-end μέσω της θύρας WebSocket του Επιθεωρητή.
 
 ### session.post(method\[, params\]\[, callback\])
 
