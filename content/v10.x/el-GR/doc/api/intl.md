@@ -32,26 +32,26 @@
 
 Μια επισκόπηση για την διαθεσιμότητα των χαρακτηριστικών Node.js και Javascript για κάθε επιλογή `configure`:
 
-|                                                      | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
-| ---------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
-| [`String.prototype.normalize()`][]                   | όχι (η συνάρτηση είναι no-op)     | πλήρης                       | πλήρης                 | πλήρης     |
-| `String.prototype.to*Case()`                         | πλήρης                            | πλήρης                       | πλήρης                 | πλήρης     |
-| [`Intl`][]                                           | όχι (η συνάρτηση είναι no-op)     | partial/full (depends on OS) | partial (English-only) | full       |
-| [`String.prototype.localeCompare()`][]               | partial (not locale-aware)        | full                         | full                   | full       |
-| `String.prototype.toLocale*Case()`                   | partial (not locale-aware)        | full                         | full                   | full       |
-| [`Number.prototype.toLocaleString()`][]              | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| `Date.prototype.toLocale*String()`                   | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| [WHATWG URL Parser](url.html#url_the_whatwg_url_api) | partial (no IDN support)          | full                         | full                   | full       |
-| [`require('buffer').transcode()`][]                  | none (function does not exist)    | full                         | full                   | full       |
-| [REPL](repl.html#repl_repl)                          | partial (inaccurate line editing) | full                         | full                   | full       |
-| [`require('util').TextDecoder`][]                    | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
-| [Ιδιότητες Διαφυγής Unicode `RegExp`][]              | none (invalid `RegExp` error)     | full                         | full                   | full       |
+|                                                        | `none`                                          | `system-icu`                        | `small-icu`                 | `full-icu` |
+| ------------------------------------------------------ | ----------------------------------------------- | ----------------------------------- | --------------------------- | ---------- |
+| [`String.prototype.normalize()`][]                     | όχι (η συνάρτηση είναι no-op)                   | πλήρης                              | πλήρης                      | πλήρης     |
+| `String.prototype.to*Case()`                           | πλήρης                                          | πλήρης                              | πλήρης                      | πλήρης     |
+| [`Intl`][]                                             | όχι (η συνάρτηση είναι no-op)                   | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [`String.prototype.localeCompare()`][]                 | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
+| `String.prototype.toLocale*Case()`                     | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
+| [`Number.prototype.toLocaleString()`][]                | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| `Date.prototype.toLocale*String()`                     | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [Αναλυτής URL WHATWG](url.html#url_the_whatwg_url_api) | περιορισμένη (χωρίς υποστήριξη IDN)             | πλήρης                              | πλήρης                      | πλήρης     |
+| [`require('buffer').transcode()`][]                    | καμία (η συνάρτηση δεν ορίζεται)                | πλήρης                              | πλήρης                      | πλήρης     |
+| [REPL](repl.html#repl_repl)                            | περιορισμένη (ανακριβής επεξεργασία γραμμών)    | πλήρης                              | πλήρης                      | πλήρης     |
+| [`require('util').TextDecoder`][]                      | περιορισμένη (βασική υποστήριξη κωδικοποιήσεων) | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Unicode) | πλήρης     |
+| [Ιδιότητες Διαφυγής Unicode `RegExp`][]                | καμία (μη-έγκυρο σφάλμα `RegExp`)               | πλήρης                              | πλήρης                      | πλήρης     |
 
-The "(not locale-aware)" designation denotes that the function carries out its operation just like the non-`Locale` version of the function, if one exists. For example, under `none` mode, `Date.prototype.toLocaleString()`'s operation is identical to that of `Date.prototype.toString()`.
+Ο χαρακτηρισμός "(δεν είναι locale-aware)" σημαίνει ότι η συνάρτηση εκτελείται κανονικά, όπως η μη `Locale` έκδοση της συνάρτησης, εάν αυτή υπάρχει. Για παράδειγμα, στην λειτουργία `none`, η λειτουργία της `Date.prototype.toLocaleString()` είναι πανομοιότυπη με τη λειτουργία της `Date.prototype.toString()`.
 
-### Disable all internationalization features (`none`)
+### Απενεργοποίηση όλων των χαρακτηριστικών πολυγλωσσικότητας (`none`)
 
-If this option is chosen, most internationalization features mentioned above will be **unavailable** in the resulting `node` binary.
+Αν χρησιμοποιηθεί αυτή η επιλογή, τα περισσότερα χαρακτηριστικά πολυγλωσσικότητας που αναφέρονται παραπάνω θα είναι **μη διαθέσιμα** στο αρχείο `node` που θα δημιουργηθεί.
 
 ### Build with a pre-installed ICU (`system-icu`)
 
