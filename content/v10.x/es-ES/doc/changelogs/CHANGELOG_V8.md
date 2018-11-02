@@ -1782,19 +1782,19 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
   * actualizar libuv a 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
   * actualizar nghttp2 a v1.25.0 [#14955](https://github.com/nodejs/node/pull/14955)
 * **dns** 
-  * Añadir la opción `verbatim` a dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
+  * Añadir la opción `verbatim` a dns.lookup(). Cuando sea verdadero, los resultados de la resolución de DNS se pasan tal cual como están, sin la reorganización que Node.js hace que, al contrario, coloca las direcciones IPv4 antes que las direcciones IPv6. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs** 
-  * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
+  * agregar fs.copyFile y fs.copyFileSync que permiten una copiado más eficiente de los archivos. [#15034](https://github.com/nodejs/node/pull/15034)
 * **inspector** 
-  * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
+  * Habilitar stack traces asíncronas [#13870](https://github.com/nodejs/node/pull/13870)
 * **module** 
-  * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
+  * Añadir soporte para ESM. Esto está actualmente detrás de la bandera `--experimental-modules` y requiere la extensión .mjs. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
 * **napi** 
-  * implement promise [#14365](https://github.com/nodejs/node/pull/14365)
+  * implementar promesa [#14365](https://github.com/nodejs/node/pull/14365)
 * **os** 
-  * Add support for CIDR notation to the output of the networkInterfaces() method. [#14307](https://github.com/nodejs/node/pull/14307)
+  * Agregue soporte para la notación CIDR a el output del método networkInterfaces(). [#14307](https://github.com/nodejs/node/pull/14307)
 * **perf_hooks** 
-  * An initial implementation of the Performance Timing API for Node.js. This is the same Performance Timing API implemented by modern browsers with a number of Node.js specific properties. The User Timing mark() and measure() APIs are implemented. [#14680](https://github.com/nodejs/node/pull/14680)
+  * Una implementación inicial de la API "Performance Timing" para Node.js. Esta es la misma API de "Performance Timing" implementada por los navegadores modernos con varias propiedades específicas de Node.js. The User Timing mark() and measure() APIs are implemented. [#14680](https://github.com/nodejs/node/pull/14680)
 * **tls** 
   * multiple PFX in createSecureContext [#14793](https://github.com/nodejs/node/pull/14793)
 * **Added new collaborators** 
