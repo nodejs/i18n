@@ -377,9 +377,9 @@ Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotRe
 
 Let op: Het gebruik van `assert.doesNotReject()` is niet echt nuttig want er is weinig voordeel aan het vangen van een afwijzing om het vervolgens weer te verwerpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten afwijzen en probeer foutberichten zo expressief mogelijk te houden.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Wanneer dit is gespecificeerd, kan een `error` een [`Class`][], [`RegExp`][] of een valideringsfunctie zijn. Zie [`assert.throws()`][] voor meer details.
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+Naast de async aard te wachten op de voltooiing, gedraagt het zich identiek aan [`assert.doesNotThrow()`][].
 
 ```js
 (async () => {
@@ -417,7 +417,7 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+Beweert dat de functie `block` geen fout gooit.
 
 Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
@@ -425,7 +425,7 @@ When `assert.doesNotThrow()` is called, it will immediately call the `block` fun
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Wanneer dit is gespecificeerd, kan een `error` een [`Class`][], [`RegExp`][] of een valideringsfunctie zijn. Zie [`assert.throws()`][] voor meer details.
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
