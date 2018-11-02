@@ -185,13 +185,13 @@ Per evitare un utilizzo eccessivo della memoria, i `Domain` object non vengono a
 
 Per nidificare i `Domain` object come i children di un `Domain` parent essi devono essere aggiunti esplicitamente.
 
-I percorsi di binding impliciti generano errori ed eventi `'error'` per l'evento `'error'` del `Domain`, ma non registrano l'`EventEmitter` sul `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
+I percorsi di binding impliciti generano errori ed eventi `'error'` per l'evento `'error'` del `Domain`, ma non registrano l'`EventEmitter` sul `Domain`. Il binding implicito si occupa solo degli errori generati e degli eventi `'error'`.
 
-## Explicit Binding
+## Binding Esplicito
 
 <!--type=misc-->
 
-Sometimes, the domain in use is not the one that ought to be used for a specific event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
+A volte, il dominio in uso non è quello che dovrebbe essere utilizzato per uno specifico event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
 
 For example, there could be one domain in use for an HTTP server, but perhaps we would like to have a separate domain to use for each request.
 
