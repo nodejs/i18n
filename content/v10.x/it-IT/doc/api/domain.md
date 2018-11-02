@@ -121,38 +121,38 @@ if (cluster.isMaster) {
         // un nuovo worker.
         cluster.worker.disconnect();
 
-        // try to send an error to the request that triggered the problem
+        // prova ad inviare un errore alla richiesta che ha attivato il problema
         res.statusCode = 500;
         res.setHeader('content-type', 'text/plain');
         res.end('Oops, there was a problem!\n');
       } catch (er2) {
-        // oh well, not much we can do at this point.
+        // oh beh, non c'è molto da fare a questo punto.
         console.error(`Error sending 500! ${er2.stack}`);
       }
     });
 
-    // Because req and res were created before this domain existed,
-    // we need to explicitly add them.
-    // See the explanation of implicit vs explicit binding below.
+    // Poiché req e res sono stati creati prima dell'esistenza di questo dominio,
+    // è necessario aggiungerli esplicitamente.
+    // Vedi la differenza tra binding implicito ed esplicito qui sotto.
     d.add(req);
     d.add(res);
 
-    // Now run the handler function in the domain.
+    // Ora esegui la funzione handler all'interno del dominio.
     d.run(() => {
-      handleRequest(req, res);
+      handleRequest(req, res)
     });
   });
   server.listen(PORT);
 }
 
-// This part is not important. Just an example routing thing.
-// Put fancy application logic here.
+// Questa parte non è importante. Un semplice esempio di routing.
+// Metti qui la logica delle applicazioni interessate.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
-      // We do some async stuff, and then...
+      // Facciamo alcune operazioni asincrone, successivamente...
       setTimeout(() => {
-        // Whoops!
+        // Ops!
         flerb.bark();
       }, timeout);
       break;
@@ -162,13 +162,13 @@ function handleRequest(req, res) {
 }
 ```
 
-## Additions to Error objects
+## Aggiunte agli Error object
 
 <!-- type=misc -->
 
-Any time an `Error` object is routed through a domain, a few extra fields are added to it.
+Ogni volta che un `Error` object viene guidato tramite il routing attraverso un dominio, ad esso vengono assegnati alcuni campi aggiuntivi.
 
-* `error.domain` The domain that first handled the error.
+* `error.domain` Il dominio che ha gestito per primo l'errore.
 * `error.domainEmitter` The event emitter that emitted an `'error'` event with the error object.
 * `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
 * `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
