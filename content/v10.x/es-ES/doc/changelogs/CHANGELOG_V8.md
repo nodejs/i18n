@@ -1734,9 +1734,9 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`93c08b0735`](https://github.com/nodejs/node/commit/93c08b0735)] - **test**: mejorar pruebas de inspección de util (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
 * [[`59f183640b`](https://github.com/nodejs/node/commit/59f183640b)] - **test**: refactorizar prueba para legibilidad (Refael Ackermann) [#13003](https://github.com/nodejs/node/pull/13003)
 * [[`757c34276b`](https://github.com/nodejs/node/commit/757c34276b)] - **test**: corregir el orden real y el esperado (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
-* [[`5125c08c50`](https://github.com/nodejs/node/commit/5125c08c50)] - **test**: eliminar las pruebas de depuración obsoletas (Rich Trott) [#15139](https://github.com/nodejs/node/pull/15139)
+* [[`5125c08c50`](https://github.com/nodejs/node/commit/5125c08c50)] - **test**: eliminar las pruebas del depurador obsoletas (Rich Trott) [#15139](https://github.com/nodejs/node/pull/15139)
 * [[`7dfd570cad`](https://github.com/nodejs/node/commit/7dfd570cad)] - **test**: añadir test-benchmark-assert (Rich Trott) [#15174](https://github.com/nodejs/node/pull/15174)
-* [[`a9066459ad`](https://github.com/nodejs/node/commit/a9066459ad)] - **test**: convertir el buffer de benchmark a runBenchmark (Jon Moss) [#15349](https://github.com/nodejs/node/pull/15349)
+* [[`a9066459ad`](https://github.com/nodejs/node/commit/a9066459ad)] - **test**: convertir la prueba de rendimiento de buffer a runBenchmark (Jon Moss) [#15349](https://github.com/nodejs/node/pull/15349)
 * [[`45cdbcfee6`](https://github.com/nodejs/node/commit/45cdbcfee6)] - **test**: crear función de runBenchmark compartida (Jon Moss) [#15004](https://github.com/nodejs/node/pull/15004)
 * [[`ba96c8f23e`](https://github.com/nodejs/node/commit/ba96c8f23e)] - **test**: no omitir cuando common.mustCall() esté pendiente (cjihrig) [#15421](https://github.com/nodejs/node/pull/15421)
 * [[`50b6203a33`](https://github.com/nodejs/node/commit/50b6203a33)] - **(SEMVER-MINOR)** **test**: añadir prueba de regresión para 5691 (Anna Henningsen) [#14697](https://github.com/nodejs/node/pull/14697)
@@ -1745,7 +1745,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`a92f3dfd8c`](https://github.com/nodejs/node/commit/a92f3dfd8c)] - **test**: hacer a test-http-agent-maxsockets robusto (Rich Trott) [#15192](https://github.com/nodejs/node/pull/15192)
 * [[`edece30930`](https://github.com/nodejs/node/commit/edece30930)] - **test**: eliminar temporizador aleatorio en test-tls-fast-writing (Rich Trott) [#15138](https://github.com/nodejs/node/pull/15138)
 * [[`b1a0bdcdaf`](https://github.com/nodejs/node/commit/b1a0bdcdaf)] - **test**: eliminar caso de prueba defectuoso (Ruben Bridgewater) [#15110](https://github.com/nodejs/node/pull/15110)
-* [[`cd238e2c0e`](https://github.com/nodejs/node/commit/cd238e2c0e)] - **test**: comprobar array de inspección con clave de string vacía (Rahul Mishra) [#15258](https://github.com/nodejs/node/pull/15258)
+* [[`cd238e2c0e`](https://github.com/nodejs/node/commit/cd238e2c0e)] - **test**: comprobar inspección de array con clave de string vacía (Rahul Mishra) [#15258](https://github.com/nodejs/node/pull/15258)
 * [[`3ce501c8ff`](https://github.com/nodejs/node/commit/3ce501c8ff)] - **test**: mejorar la cobertura de alerta de procesos (James M Snell) [#15212](https://github.com/nodejs/node/pull/15212)
 * [[`a2c335b973`](https://github.com/nodejs/node/commit/a2c335b973)] - **test**: corregir sequential/test-async-wrap-getasyncid (Anna Henningsen) [#15319](https://github.com/nodejs/node/pull/15319)
 * [[`94e2b5c371`](https://github.com/nodejs/node/commit/94e2b5c371)] - **test**: refactorizar test-debug-prompt (Rich Trott) [#15141](https://github.com/nodejs/node/pull/15141)
@@ -1760,7 +1760,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`e014983ec4`](https://github.com/nodejs/node/commit/e014983ec4)] - **test,process**: ejecutar suite 'abort' en Windows (Refael Ackermann) [#15056](https://github.com/nodejs/node/pull/15056)
 * [[`6a94c1aa3b`](https://github.com/nodejs/node/commit/6a94c1aa3b)] - **timers**: clarificar comentario de lib/timer.js (Daniel Bevenius) [#11018](https://github.com/nodejs/node/pull/11018)
 * [[`ee157e5a7f`](https://github.com/nodejs/node/commit/ee157e5a7f)] - **tls**: preferir ruta sobre puerto en conección (Bryan English) [#14564](https://github.com/nodejs/node/pull/14564)
-* [[`9049f09e0f`](https://github.com/nodejs/node/commit/9049f09e0f)] - **tools**: hacer cumplir el espaciado constante dentro de los soportes (Sebastiaan Deckers) [#14162](https://github.com/nodejs/node/pull/14162)
+* [[`9049f09e0f`](https://github.com/nodejs/node/commit/9049f09e0f)] - **tools**: hacer cumplir un espaciado constante dentro de las llaves (signo de puntuación) (Sebastiaan Deckers) [#14162](https://github.com/nodejs/node/pull/14162)
 * [[`6c221b83e3`](https://github.com/nodejs/node/commit/6c221b83e3)] - **url**: corregir el manejo de letras de la unidad de windows (Benjamin Coe) [#15490](https://github.com/nodejs/node/pull/15490)
 * [[`fc1448f357`](https://github.com/nodejs/node/commit/fc1448f357)] - **util**: mejorar el rendimiento del formato (Ruben Bridgewater) [#15422](https://github.com/nodejs/node/pull/15422)
 * [[`5b47f846b0`](https://github.com/nodejs/node/commit/5b47f846b0)] - **util**: corregir índices fuera de los límites en util.inspect (Ruben Bridgewater) [#14881](https://github.com/nodejs/node/pull/14881)
@@ -1777,14 +1777,14 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * **build** 
   * Los Snapshots ahora están rehabilitados en V8 [#14875](https://github.com/nodejs/node/pull/14875)
 * **console** 
-  * Implementar un mínimo de `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
+  * Implementar el mínimo de `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
   * actualizar libuv a 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
   * actualizar nghttp2 a v1.25.0 [#14955](https://github.com/nodejs/node/pull/14955)
 * **dns** 
-  * Añadir la opción `verbatim` a dns.lookup(). Cuando sea verdadero, los resultados de la resolución de DNS se pasan tal cual como están, sin la reorganización que Node.js hace que, al contrario, coloca las direcciones IPv4 antes que las direcciones IPv6. [#14731](https://github.com/nodejs/node/pull/14731)
+  * Añadir la opción `verbatim` a dns.lookup(). Cuando es verdadero, los resultados de la resolución de DNS se pasan tal como están, sin la reorganización que hace Node.js, que, al contrario, coloca las direcciones IPv4 antes de las direcciones IPv6. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs** 
-  * agregar fs.copyFile y fs.copyFileSync que permiten una copiado más eficiente de los archivos. [#15034](https://github.com/nodejs/node/pull/15034)
+  * agregar fs.copyFile y fs.copyFileSync, que permiten una copia más eficiente de los archivos. [#15034](https://github.com/nodejs/node/pull/15034)
 * **inspector** 
   * Habilitar stack traces asíncronas [#13870](https://github.com/nodejs/node/pull/13870)
 * **module** 
@@ -1804,7 +1804,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 * [[`87c3e1d7de`](https://github.com/nodejs/node/commit/87c3e1d7de)] - corregir la bandera --prof-process --preprocess (davidmarkclements) [#14966](https://github.com/nodejs/node/pull/14966)
 * [[`bcf0e5d676`](https://github.com/nodejs/node/commit/bcf0e5d676)] - **assert**: manejar los errores adecuadamente con deep*Equal (Ruben Bridgewater) [#15001](https://github.com/nodejs/node/pull/15001)
-* [[`7174dc2e8a`](https://github.com/nodejs/node/commit/7174dc2e8a)] - **assert**: manejar arrays dispersas endeepStrictEqual (Ruben Bridgewater) [#15027](https://github.com/nodejs/node/pull/15027)
+* [[`7174dc2e8a`](https://github.com/nodejs/node/commit/7174dc2e8a)] - **assert**: manejar arrays dispersas en deepStrictEqual (Ruben Bridgewater) [#15027](https://github.com/nodejs/node/pull/15027)
 * [[`b40105df3b`](https://github.com/nodejs/node/commit/b40105df3b)] - **async_hooks**: no abortar innecesariamente (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
 * [[`3e73ea8745`](https://github.com/nodejs/node/commit/3e73ea8745)] - **async_hooks**: mejorar comentarios y nombres de las funciones (Trevor Norris) [#14722](https://github.com/nodejs/node/pull/14722)
 * [[`700d576962`](https://github.com/nodejs/node/commit/700d576962)] - **async_hooks**: emitAfter correctamente en fatalException (Trevor Norris) [#14914](https://github.com/nodejs/node/pull/14914)
@@ -1813,7 +1813,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`8d11220e0b`](https://github.com/nodejs/node/commit/8d11220e0b)] - **benchmark**: añadir configuraciones predeterminadas a la prueba de rendimiento del buffer (Rich Trott) [#15175](https://github.com/nodejs/node/pull/15175)
 * [[`7feb99455a`](https://github.com/nodejs/node/commit/7feb99455a)] - **benchmark**: solucionar problemas en la prueba de rendimiento del dns (Ian Perkins) [#14936](https://github.com/nodejs/node/pull/14936)
 * [[`978889f8c0`](https://github.com/nodejs/node/commit/978889f8c0)] - **benchmark**: corregir la prueba de rendimiento de dgram/bind-params.js (Rich Trott) [#14948](https://github.com/nodejs/node/pull/14948)
-* [[`7f1ea7c3af`](https://github.com/nodejs/node/commit/7f1ea7c3af)] - **benchmark**: eliminados los argumentos no utilizados de los callbacks (Abhishek Raj) [#14919](https://github.com/nodejs/node/pull/14919)
+* [[`7f1ea7c3af`](https://github.com/nodejs/node/commit/7f1ea7c3af)] - **benchmark**: eliminados los argumentos no utilizados de las callbacks (Abhishek Raj) [#14919](https://github.com/nodejs/node/pull/14919)
 * [[`ca3ec90285`](https://github.com/nodejs/node/commit/ca3ec90285)] - **benchmark**: var convertida a la constante es6 (Sebastian Murphy) [#12886](https://github.com/nodejs/node/pull/12886)
 * [[`bda5585012`](https://github.com/nodejs/node/commit/bda5585012)] - **buffer**: corregir la exportación de la constante MAX_LENGTH (Anna Henningsen) [#14821](https://github.com/nodejs/node/pull/14821)
 * [[`b9e1f60333`](https://github.com/nodejs/node/commit/b9e1f60333)] - **buffer**: incrementar la cobertura removiendo el código muerto (Marcelo Gobelli) [#15100](https://github.com/nodejs/node/pull/15100)
@@ -1828,7 +1828,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`9d373981f4`](https://github.com/nodejs/node/commit/9d373981f4)] - **build**: eliminar código duplicado (Ruslan Bekenev) [#13482](https://github.com/nodejs/node/pull/13482)
 * [[`e12a9c567c`](https://github.com/nodejs/node/commit/e12a9c567c)] - **build**: rehabilitar snapshots en v8.x (Myles Borins) [#14875](https://github.com/nodejs/node/pull/14875)
 * [[`3a68b0bb98`](https://github.com/nodejs/node/commit/3a68b0bb98)] - **console**: mejorar console.group() (Rich Trott) [#14999](https://github.com/nodejs/node/pull/14999)
-* [[`a46e59d52d`](https://github.com/nodejs/node/commit/a46e59d52d)] - **(SEMVER-MINOR)** **console**: implementar un mínimo de `console.group()` (Rich Trott) [#14910](https://github.com/nodejs/node/pull/14910)
+* [[`a46e59d52d`](https://github.com/nodejs/node/commit/a46e59d52d)] - **(SEMVER-MINOR)** **console**: implementar el mínimo de `console.group()` (Rich Trott) [#14910](https://github.com/nodejs/node/pull/14910)
 * [[`78a71aa123`](https://github.com/nodejs/node/commit/78a71aa123)] - **crypto**: corregir error de createCipher en modo wrap (Shigeki Ohtsu) [#15037](https://github.com/nodejs/node/pull/15037)
 * [[`41bf40e209`](https://github.com/nodejs/node/commit/41bf40e209)] - **crypto**: avisar si se usa el modo contador en createCipher (Shigeki Ohtsu) [#13821](https://github.com/nodejs/node/pull/13821)
 * [[`ba5a697bdb`](https://github.com/nodejs/node/commit/ba5a697bdb)] - **deps**: hacer cherry-pick a 5005faed5 desde upstream de V8 (Miguel Martins) [#15177](https://github.com/nodejs/node/pull/15177)
@@ -1850,7 +1850,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`1a2f749e16`](https://github.com/nodejs/node/commit/1a2f749e16)] - **deps**: corregir prueba de v8 de inspector (Eugene Ostroukhov) [#14827](https://github.com/nodejs/node/pull/14827)
 * [[`13577d4ada`](https://github.com/nodejs/node/commit/13577d4ada)] - **dns**: añadir la opción `verbatim` a dns.lookup() (Ben Noordhuis) [#14731](https://github.com/nodejs/node/pull/14731)
 * [[`ffed33710c`](https://github.com/nodejs/node/commit/ffed33710c)] - **doc**: añadir el doc ESM a _toc.md y all.md (Vse Mozhet Byt) [#15248](https://github.com/nodejs/node/pull/15248)
-* [[`1b51287603`](https://github.com/nodejs/node/commit/1b51287603)] - **doc**: corregir el nivel de markdown de propiedades de Error (Sam Roberts) [#15247](https://github.com/nodejs/node/pull/15247)
+* [[`1b51287603`](https://github.com/nodejs/node/commit/1b51287603)] - **doc**: corregir el nivel de markdown de propiedad de Error (Sam Roberts) [#15247](https://github.com/nodejs/node/pull/15247)
 * [[`af3b173e82`](https://github.com/nodejs/node/commit/af3b173e82)] - **doc**: añadir espacio faltante en test/README.md (Vse Mozhet Byt) [#15278](https://github.com/nodejs/node/pull/15278)
 * [[`c90c68e8a0`](https://github.com/nodejs/node/commit/c90c68e8a0)] - **doc**: documentar bytes a caracteres después de setEncoding (Jessica Quynh Tran) [#13442](https://github.com/nodejs/node/pull/13442)
 * [[`ea86cb59b9`](https://github.com/nodejs/node/commit/ea86cb59b9)] - **doc**: describir qué son los problemas de seguridad (Sam Roberts) [#14485](https://github.com/nodejs/node/pull/14485)
