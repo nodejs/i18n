@@ -179,9 +179,9 @@ Ogni volta che un `Error` object viene guidato tramite il routing attraverso un 
 
 Se i domini sono in uso, tutti i **nuovi** `EventEmitter` object (inclusi Stream object, richieste, risposte, ecc.) saranno collegati tramite il binding implicitamente al dominio attivo nel momento della loro creazione.
 
-Additionally, callbacks passed to lowlevel event loop requests (such as to `fs.open()`, or other callback-taking methods) will automatically be bound to the active domain. If they throw, then the domain will catch the error.
+Inoltre, i callback passati a richieste di cicli di eventi (event loop) di basso livello (come ad esempio `fs.open()` o altri metodi di callback) saranno automaticamente collegati al dominio attivo tramite il binding. Se eseguono, allora il dominio catturerà l'errore.
 
-In order to prevent excessive memory usage, `Domain` objects themselves are not implicitly added as children of the active domain. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
+Per evitare un utilizzo eccessivo della memoria, i `Domain` object non vengono aggiunti in modo implicito come dei children del dominio attivo. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
 
 To nest `Domain` objects as children of a parent `Domain` they must be explicitly added.
 
