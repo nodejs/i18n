@@ -311,37 +311,37 @@ function readSomeFile(filename, cb) {
     // callback in quanto si presume che esso sia l'argomento 'Error'
     // e che quindi sia stato intercettato dal dominio.
 
-    // if this throws, it will also be passed to the domain
-    // so the error-handling logic can be moved to the 'error'
-    // event on the domain instead of being repeated throughout
-    // the program.
+    // se questo esegue, verrà anche passato al dominio 
+    // in modo che la logica dell'error-handling possa essere spostata all'evento 
+    // 'error' sul dominio invece di essere ripetuta all'interno di tutto
+    // il programma.
     return cb(null, JSON.parse(data));
   }));
 }
 
 d.on('error', (er) => {
-  // an error occurred somewhere.
-  // if we throw it now, it will crash the program
-  // with the normal line number and stack message.
+  // un errore che si è verificato da qualche parte.
+  // se lo eseguiamo adesso, il programma si bloccherà 
+  // con il normale numero della riga e lo stack message.
 });
 ```
 
 ### domain.remove(emitter)
 
-* `emitter` {EventEmitter|Timer} emitter or timer to be removed from the domain
+* `emitter` {EventEmitter|Timer} emitter o timer da rimuovere dal dominio
 
-The opposite of [`domain.add(emitter)`][]. Removes domain handling from the specified emitter.
+L'opposto di [`domain.add(emitter)`][]. Rimuove la gestione del dominio dall'emitter specificato.
 
 ### domain.run(fn[, ...args])
 
 * `fn` {Function}
 * `...args` {any}
 
-Run the supplied function in the context of the domain, implicitly binding all event emitters, timers, and lowlevel requests that are created in that context. Optionally, arguments can be passed to the function.
+Esegue la funzione fornita nel contesto del dominio, collegando implicitamente tramite il binding tutti gli event emitter, i timer e le richieste di basso livello create in tale contesto. Facoltativamente, gli argomenti possono essere passati alla funzione.
 
-This is the most basic way to use a domain.
+Questo è il modo più semplice per usare un dominio.
 
-Example:
+Esempio:
 
 ```js
 const domain = require('domain');
