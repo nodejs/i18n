@@ -916,7 +916,7 @@ added: v0.5.0
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} Una referencia a `buf`.
 
-Llenar `buf` con el `value` especificado. Si el `offset` y `end` no son dados, el `buf` completo se llenará. Esto pretende ser una pequeña simplificación para permitir que la creación y llenado de un `Buffer` sea realizado en una sola línea.
+Llena `buf` con el `value` especificado. Si el `offset` y `end` no son dados, el `buf` completo se llenará. Esto pretende ser una pequeña simplificación para permitir que la creación y llenado de un `Buffer` sea realizado en una sola línea.
 
 Ejemplo: Llenar un `Buffer` con el carácter ASCII `'h'`
 
