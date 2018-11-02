@@ -419,7 +419,7 @@ changes:
   * `ignoreUndefined` {boolean} Si es `true`, especifica que el escritor predeterminado no generará el valor de retorno de un comando si este evalúa a `undefined`. **Predeterminado:** `false`.
   * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Predeterminado:** [`util.inspect()`][].
   * `completer` {Function} Una función opcional usada para la autocompletación personalizada de pestañas. Vea [`readline.InterfaceCompleter`][] para un ejemplo.
-  * `replMode` {symbol} Una bandera que especifica si el evaluador predeterminado ejecuto todos los comandos de JavaScript en modo estricto o en modo predeterminado (descuidado). Son valores aceptables: 
+  * `replMode` {symbol} Una bandera que especifica si el evaluador predeterminado ejecuta todos los comandos de JavaScript en modo estricto o en modo predeterminado (descuidado). Son valores aceptables: 
     * `repl.REPL_MODE_SLOPPY` - evalúa las expresiones en modo descuidado.
     * `repl.REPL_MODE_STRICT` - evalúa las expresiones en modo estricto. Esto es equivalente a prologar cada declaración repl con `'use strict'`.
   * `breakEvalOnSigint` - Detener la evaluación del actual pedazo de código cuando `SIGINT` es recibido, e.g. cuando `Ctrl+C` es presionado. Esto no puede utilizarse junto a la función personalizada `eval`. **Predeterminado:** `false`.
@@ -523,4 +523,4 @@ Al iniciar un REPL desde un servidor Unix basado en sockets en vez de stdin, es 
 
 Por ejemplo al ejecutar una (`terminal`) REPL "con funciones completas" sobre un `net.Server` y una instancia `net.Socket`, véase: <https://gist.github.com/2209310>.
 
-Por un ejemplo de una instancia REPL ejecutándose sobre [curl(1)](https://curl.haxx.se/docs/manpage.html), véase: <https://gist.github.com/2053342>.
+Para un ejemplo de una instancia REPL ejecutándose sobre [curl(1)](https://curl.haxx.se/docs/manpage.html), véase: <https://gist.github.com/2053342>.
