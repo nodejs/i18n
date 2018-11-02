@@ -362,11 +362,11 @@ d.run(() => {
 });
 ```
 
-In this example, the `d.on('error')` handler will be triggered, rather than crashing the program.
+In questo esempio, l'`d.on('error')` handler verrà attivato anziché arrestare il programma.
 
 ## Domini e Promise
 
-As of Node.js 8.0.0, the handlers of Promises are run inside the domain in which the call to `.then()` or `.catch()` itself was made:
+A partire da Node.js 8.0.0, gli handler dei Promise vengono eseguiti all'interno del dominio in cui è stata effettuata la chiamata a `.then()` o `.catch()`:
 
 ```js
 const d1 = domain.create();
@@ -402,4 +402,4 @@ d2.run(() => {
 });
 ```
 
-Note that domains will not interfere with the error handling mechanisms for Promises, i.e. no `'error'` event will be emitted for unhandled `Promise` rejections.
+Da notare che i domini non interferiscono con i meccanismi dell'error handling per i Promise, cioè l'evento `'error'` non verrà emesso per i `Promise` rejection non gestiti.
