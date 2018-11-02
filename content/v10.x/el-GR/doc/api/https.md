@@ -278,13 +278,13 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Make sure the certificate is issued to the host we are connected to
+    // Σιγουρέψου ότι το πιστοποιητικό έχει εκδοθεί στον υπολογιστή που έχουμε συνδεθεί
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
     }
 
-    // Pin the public key, similar to HPKP pin-sha25 pinning
+    // Να γίνει pin του δημόσιου κλειδιού, παρομοίως με το pinning HPKP pin-sha25
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
       const msg = 'Certificate verification error: ' +
@@ -293,7 +293,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Pin the exact certificate, rather then the pub key
+    // Να γίνει pin του συγκεκριμένου πιστοποιητικού, και όχι του δημόσιου κλειδιού
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
@@ -303,7 +303,7 @@ const options = {
       return new Error(msg);
     }
 
-    // This loop is informational only.
+    // Αυτός ο βρόγχος είναι απλά ενημερωτικός.
     // Εμφάνιση του αποτυπώματος του πιστοποιητικού και του 
     // δημόσιου κλειδιού όλων των πιστοποιητικών στην αλυσίδα. 
     // Είναι συνηθισμένο να γίνεται pinning του δημόσιου κλειδιού του
@@ -327,7 +327,7 @@ options.agent = new https.Agent(options);
 const req = https.request(options, (res) => {
   console.log('All OK. Server matched our pinned cert or public key');
   console.log('statusCode:', res.statusCode);
-  // Print the HPKP values
+  // Εκτύπωση των τιμών HPKP
   console.log('headers:', res.headers['public-key-pins']);
 
   res.on('data', (d) => {});
