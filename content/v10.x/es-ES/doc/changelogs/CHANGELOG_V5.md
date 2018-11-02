@@ -1218,7 +1218,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`3b3061365a`](https://github.com/nodejs/node/commit/3b3061365a)] - **doc**: actualizar los canales irc: #node.js y #node-dev (Nelson Pecora) [#2743](https://github.com/nodejs/node/pull/2743)
 * [[`9538fd02e5`](https://github.com/nodejs/node/commit/9538fd02e5)] - **doc**: aclarar eventos de error en documentación de módulo HTTP (Lenny Markus) [#4275](https://github.com/nodejs/node/pull/4275)
 * [[`c6efd535e4`](https://github.com/nodejs/node/commit/c6efd535e4)] - **doc**: corregir código de ejemplo incorrecto http.get (Hideki Yamamura) [#4263](https://github.com/nodejs/node/pull/4263)
-* [[`498c9adb08`](https://github.com/nodejs/node/commit/498c9adb08)] - **doc**: add CTC meeting minutes 2015-10-28 (Rod Vagg) [#3661](https://github.com/nodejs/node/pull/3661)
+* [[`498c9adb08`](https://github.com/nodejs/node/commit/498c9adb08)] - **doc**: añadir minutos de reunión CTC 2015-10-28 (Rod Vagg) [#3661](https://github.com/nodejs/node/pull/3661)
 * [[`671347cf13`](https://github.com/nodejs/node/commit/671347cf13)] - **doc**: fixup socket.remoteAddress (Arthur Gautier) [#4198](https://github.com/nodejs/node/pull/4198)
 * [[`f050cab3d8`](https://github.com/nodejs/node/commit/f050cab3d8)] - **doc**: copyedit console doc (Rich Trott) [#4225](https://github.com/nodejs/node/pull/4225)
 * [[`1a21a5368b`](https://github.com/nodejs/node/commit/1a21a5368b)] - **doc**: move description of 'equals' method to right place (janriemer) [#4227](https://github.com/nodejs/node/pull/4227)
