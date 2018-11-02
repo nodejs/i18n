@@ -185,9 +185,9 @@ changes:
 
 Τα παρακάτω πρόσθετα `options` από το [`tls.connect()`][] είναι επίσης αποδεκτά: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-Το `options` μπορεί να είναι ένα αντικείμενο, ένα string, ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string, ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const https = require('https');
@@ -214,7 +214,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Example using options from [`tls.connect()`][]:
+Παράδειγμα με χρήση επιλογών από το [`tls.connect()`][]:
 
 ```js
 const options = {
@@ -232,9 +232,9 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Alternatively, opt out of connection pooling by not using an [`Agent`][].
+Εναλλακτικά, μπορείτε να αρνηθείτε τη συγκέντρωση συνδέσεων, χωρίς να χρησιμοποιήσετε έναν [`Agent`][].
 
-Example:
+Παράδειγμα:
 
 ```js
 const options = {
@@ -252,7 +252,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example using a [`URL`][] as `options`:
+Παράδειγμα χρήσης ενός [`URL`][] ως `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
@@ -262,7 +262,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
+Παράδειγμα pinning του αποτυπώματος ενός πιστοποιητικού, ή ενός δημόσιου κλειδιού (παρόμοιο με το `pin-sha256`):
 
 ```js
 const tls = require('tls');
