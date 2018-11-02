@@ -191,24 +191,24 @@ I percorsi di binding impliciti generano errori ed eventi `'error'` per l'evento
 
 <!--type=misc-->
 
-A volte, il dominio in uso non è quello che dovrebbe essere utilizzato per uno specifico event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
+A volte, il dominio in uso non è quello che dovrebbe essere utilizzato per uno specifico event emitter. Oppure, l'event emitter potrebbe essere stato creato nel contesto di un dominio quando però dovrebbe essere collegato tramite il binding ad un altro dominio.
 
-For example, there could be one domain in use for an HTTP server, but perhaps we would like to have a separate domain to use for each request.
+Ad esempio, potrebbe esserci un dominio in uso per un server HTTP ma sarebbe più utile avere un dominio separato da utilizzare per ogni richiesta.
 
-That is possible via explicit binding.
+Questo è possibile tramite il binding esplicito.
 
 ```js
-// create a top-level domain for the server
+// crea un dominio di alto livello per il server
 const domain = require('domain');
 const http = require('http');
 const serverDomain = domain.create();
 
 serverDomain.run(() => {
-  // server is created in the scope of serverDomain
+  // il server è creato nello scope di serverDomain
   http.createServer((req, res) => {
-    // req and res are also created in the scope of serverDomain
-    // however, we'd prefer to have a separate domain for each request.
-    // create it first thing, and add req and res to it.
+    // req e res sono anch'essi creati nello scope di serverDomain
+    // tuttavia, preferiremmo avere un dominio separato per ogni richiesta.
+    // prima di tutto crea il dominio, successivamente aggiungi req e res ad esso.
     const reqd = domain.create();
     reqd.add(req);
     reqd.add(res);
@@ -227,19 +227,19 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* Returns: {Domain}
+* Restituisce: {Domain}
 
 ## Class: Domain
 
-The `Domain` class encapsulates the functionality of routing errors and uncaught exceptions to the active `Domain` object.
+La classe `Domain` incapsula la funzionalità degli errori di routing e delle eccezioni non rilevate sul `Domain` object attivo.
 
-`Domain` is a child class of [`EventEmitter`][]. To handle the errors that it catches, listen to its `'error'` event.
+`Domain` è una classe child di [`EventEmitter`][]. Per gestire gli errori rilevati, esegui il listening (ascolto) del loro evento `'error'`.
 
 ### domain.members
 
 * {Array}
 
-An array of timers and event emitters that have been explicitly added to the domain.
+Un array di timer ed event emitter che sono stati esplicitamente aggiunti al dominio.
 
 ### domain.add(emitter)
 
