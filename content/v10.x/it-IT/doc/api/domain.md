@@ -169,7 +169,7 @@ function handleRequest(req, res) {
 Ogni volta che un `Error` object viene guidato tramite il routing attraverso un dominio, ad esso vengono assegnati alcuni campi aggiuntivi.
 
 * `error.domain` Il dominio che ha gestito per primo l'errore.
-* `error.domainEmitter` The event emitter that emitted an `'error'` event with the error object.
+* `error.domainEmitter` L'event emitter che ha emesso un evento `'error'` con l'error object.
 * `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
 * `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
 
