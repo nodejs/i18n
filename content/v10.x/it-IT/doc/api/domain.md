@@ -256,7 +256,7 @@ Se il Timer o l'`EventEmitter` era già stato collegato a un dominio tramite il 
 * `callback` {Function} La funzione callback
 * Restituisce: {Function} La funzione sottoposta al binding
 
-La funzione restituita sarà un wrapper attorno alla funzione callback fornita. Quando viene chiamata la funzione restituita, gli eventuali errori generati verranno indirizzati all'`'error'` event del dominio.
+La funzione restituita sarà un wrapper attorno alla funzione callback fornita. Quando viene chiamata la funzione restituita, gli eventuali errori generati verranno indirizzati all'evento `'error'` del dominio.
 
 #### Esempio
 
@@ -279,9 +279,9 @@ d.on('error', (er) => {
 
 ### domain.enter()
 
-Il metodo `enter()` è il plumbing utilizzato dai metodi `run()`, `bind()` e `intercept()` per impostare il dominio attivo. It sets `domain.active` and `process.domain` to the domain, and implicitly pushes the domain onto the domain stack managed by the domain module (see [`domain.exit()`][] for details on the domain stack). The call to `enter()` delimits the beginning of a chain of asynchronous calls and I/O operations bound to a domain.
+Il metodo `enter()` è il plumbing utilizzato dai metodi `run()`, `bind()` e `intercept()` per impostare il dominio attivo. Imposta `domain.active` e `process.domain` nel dominio ed inserisce implicitamente il dominio in cima allo stack del dominio gestito dal modulo domain (vedi [`domain.exit()`][] per i dettagli sullo stack del dominio). La chiamata ad `enter()` delimita l'inizio di una catena di chiamate asincrone e operazioni I/O collegate tramite il binding a un dominio.
 
-Calling `enter()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
+Chiamare `enter()` fa sì che cambi solo il dominio attivo e non altera il dominio stesso. `enter()` ed `exit()` possono essere chiamati un numero arbitrario di volte su un singolo dominio.
 
 ### domain.exit()
 
@@ -289,7 +289,7 @@ The `exit()` method exits the current domain, popping it off the domain stack. A
 
 If there are multiple, nested domains bound to the current execution context, `exit()` will exit any domains nested within this domain.
 
-Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
+Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` ed `exit()` possono essere chiamati un numero arbitrario di volte su un singolo dominio.
 
 ### domain.intercept(callback)
 
@@ -384,7 +384,7 @@ d2.run(() => {
 });
 ```
 
-A callback may be bound to a specific domain using [`domain.bind(callback)`][]:
+Un callback potrebbe essere collegato tramite il binding a un dominio specifico utilizzando [`domain.bind(callback)`][]:
 
 ```js
 const d1 = domain.create();
