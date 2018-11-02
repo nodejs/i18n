@@ -102,7 +102,7 @@ added: v8.0.0
 * `params` {Object}
 * `callback` {Function}
 
-Posts a message to the inspector back-end. `callback` will be notified when a response is received. `callback` is a function that accepts two optional arguments - error and message-specific result.
+Αποστέλλει ένα μήνυμα στο back-end του επιθεωρητή. Το `callback` θα ειδοποιηθεί όταν ληφθεί μια απόκριση. To `callback` είναι μια συνάρτηση που δέχεται δυο προαιρετικές παραμέτρους - error και αποτέλεσμα με βάση το συγκεκριμένο μήνυμα.
 
 ```js
 session.post('Runtime.evaluate', { expression: '2 + 2' },
@@ -110,9 +110,9 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 // Output: { type: 'number', value: 4, description: '4' }
 ```
 
-The latest version of the V8 inspector protocol is published on the [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
+Η πιο πρόσφατη έκδοση του πρωτοκόλλου του επιθεωρητή V8 δημοσιεύεται στο [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Node inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
+Ο επιθεωρητής της Node υποστηρίζει όλους τους τομείς του Chrome DevTools Protocol που δηλώνονται απο την V8. Οι τομείς του Chrome DevTools Protocol domain παρέχουν μια διεπαφή για αλληλεπίδραση με κάποιον από τους runtime agent που χρησιμοποιούνται για την επιθεώρηση της κατάστασης της εφαρμογής, και για την ακρόαση συμβάντων run-time.
 
 ### session.disconnect()
 
@@ -120,7 +120,7 @@ Node inspector supports all the Chrome DevTools Protocol domains declared by V8.
 added: v8.0.0
 -->
 
-Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Άμεσος τερματισμός της περιόδου λειτουργίας. Όλα τα μηνύματα callback, θα κληθούν με ένα error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
 ## Example usage
 
