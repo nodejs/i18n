@@ -112,7 +112,7 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 
 Η πιο πρόσφατη έκδοση του πρωτοκόλλου του επιθεωρητή V8 δημοσιεύεται στο [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Ο επιθεωρητής της Node υποστηρίζει όλους τους τομείς του Chrome DevTools Protocol που δηλώνονται απο την V8. Οι τομείς του Chrome DevTools Protocol domain παρέχουν μια διεπαφή για αλληλεπίδραση με κάποιον από τους runtime agent που χρησιμοποιούνται για την επιθεώρηση της κατάστασης της εφαρμογής, και για την ακρόαση συμβάντων run-time.
+Ο επιθεωρητής της Node υποστηρίζει όλους τους τομείς του Chrome DevTools Protocol που δηλώνονται από την V8. Οι τομείς του Chrome DevTools Protocol domain παρέχουν μια διεπαφή για αλληλεπίδραση με κάποιον από τους runtime agent που χρησιμοποιούνται για την επιθεώρηση της κατάστασης της εφαρμογής, και για την ακρόαση συμβάντων run-time.
 
 ### session.disconnect()
 
