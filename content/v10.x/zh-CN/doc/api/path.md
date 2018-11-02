@@ -1,18 +1,18 @@
-# Path
+# 路径
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定的
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+`path` 模块提供了一些工具函数，用于处理文件与目录的路径。 可以通过如下方式使用：
 
 ```js
 const path = require('path');
 ```
 
-## Windows vs. POSIX
+## Windows 与 POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+` path ` 模块的默认操作根据运行 node.js 应用程序的操作系统 而有所不同。 具体地说, 在 Windows 操作系统上运行时, ` 路径 ` 模块会认为使用的是 Windows 风格的路径。
 
 For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
 
