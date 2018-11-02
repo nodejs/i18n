@@ -120,13 +120,13 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 added: v8.0.0
 -->
 
-Άμεσος τερματισμός της περιόδου λειτουργίας. Όλα τα μηνύματα callback, θα κληθούν με ένα error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Άμεσος τερματισμός της περιόδου λειτουργίας. Όλα τα μηνύματα callback, θα κληθούν με ένα error. Για να ξαναγίνει δυνατή η αποστολή μηνυμάτων, θα πρέπει να κληθεί το [`session.connect()`]. Οι επανασυνδεδεμένες συνεδρίες θα χάσουν την κατάσταση του επιθεωρητή, όπως τους ενεργοποιημένους agent ή ρυθμισμένα σημεία διακοπής.
 
-## Example usage
+## Παράδειγμα χρήσης
 
 ### CPU Profiler
 
-Apart from the debugger, various V8 Profilers are available through the DevTools protocol. Here's a simple example showing how to use the [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
+Εκτός από τον εντοπισμό σφαλμάτων, διάφοροι άλλοι δημιουργοί προφίλ είναι διαθέσιμοι μέσω του πρωτοκόλλου DevTools. Εδώ είναι ένα πολύ απλό παράδειγμα που δείχνει τον τρόπο χρήσης του [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
 
 ```js
 const inspector = require('inspector');
