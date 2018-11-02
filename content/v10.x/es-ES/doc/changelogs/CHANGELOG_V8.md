@@ -1874,7 +1874,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`9b9e7b4044`](https://github.com/nodejs/node/commit/9b9e7b4044)] - **doc**: añadir nota para la ruta de compilación de Windows (Kyle Lamse) [#14354](https://github.com/nodejs/node/pull/14354)
 * [[`57c7eae1df`](https://github.com/nodejs/node/commit/57c7eae1df)] - **doc**: reformular el texto de child_process.execSync() (hafiz) [#14953](https://github.com/nodejs/node/pull/14953)
 * [[`188713ca46`](https://github.com/nodejs/node/commit/188713ca46)] - **doc**: embellecer los formatos de net.md (sevenryze) [#14987](https://github.com/nodejs/node/pull/14987)
-* [[`a8648e287c`](https://github.com/nodejs/node/commit/a8648e287c)] - **doc**: enlace a la cabecera correcta de "OS Constants" en los documentos (James Kyle) [#14969](https://github.com/nodejs/node/pull/14969)
+* [[`a8648e287c`](https://github.com/nodejs/node/commit/a8648e287c)] - **doc**: enlace al encabezado de "OS Constants" correcto en los documentos (James Kyle) [#14969](https://github.com/nodejs/node/pull/14969)
 * [[`e187c98186`](https://github.com/nodejs/node/commit/e187c98186)] - **doc**: eliminar a misterdjules de la lista de miembros de CTC (Julien Gilli) [#1498](https://github.com/nodejs/node/pull/1498)
 * [[`78b2bc77f2`](https://github.com/nodejs/node/commit/78b2bc77f2)] - **doc**: actualizar el código de ejemplo de http2.md (RefinedSoftwareLLC) [#14979](https://github.com/nodejs/node/pull/14979)
 * [[`6179c2764a`](https://github.com/nodejs/node/commit/6179c2764a)] - **doc**: corregir el documento para napi_get_value_string_utf8 (Daniel Taveras) [#14529](https://github.com/nodejs/node/pull/14529)
