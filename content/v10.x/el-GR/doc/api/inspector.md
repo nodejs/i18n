@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> Stability: 1 - Experimental
+> Σταθερότητα: 1 - Πειραματικό
 
-The `inspector` module provides an API for interacting with the V8 inspector.
+Η ενότητα `inspector` παρέχει ένα API για την αλληλεπίδραση με τον επιθεωρητή V8.
 
-It can be accessed using:
+Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
 
 ```js
 const inspector = require('inspector');
