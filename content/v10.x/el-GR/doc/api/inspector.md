@@ -136,11 +136,11 @@ session.connect();
 
 session.post('Profiler.enable', () => {
   session.post('Profiler.start', () => {
-    // invoke business logic under measurement here...
+    // να κληθεί η επιχειρησιακή λογική μέτρησης εδώ...
 
-    // some time later...
+    // λίγη ώρα αργότερα...
     session.post('Profiler.stop', (err, { profile }) => {
-      // write profile to disk, upload, etc.
+      // εγγραφή του προφίλ στον δίσκο, αποστολή, κλπ.
       if (!err) {
         fs.writeFileSync('./profile.cpuprofile', JSON.stringify(profile));
       }
