@@ -640,7 +640,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 
 #### Semver-patch
 
-* [[`655ab65a90`](https://github.com/nodejs/node/commit/655ab65a90)] - **assert**: validate the block return type (Ruben Bridgewater) [#19886](https://github.com/nodejs/node/pull/19886)
+* [[`655ab65a90`](https://github.com/nodejs/node/commit/655ab65a90)] - **assert**: validar el tipo de retorno de bloqueo (Ruben Bridgewater) [#19886](https://github.com/nodejs/node/pull/19886)
 * [[`e9a33da58c`](https://github.com/nodejs/node/commit/e9a33da58c)] - **assert**: fix actual & expected input (Ruben Bridgewater) [#19925](https://github.com/nodejs/node/pull/19925)
 * [[`9c06770443`](https://github.com/nodejs/node/commit/9c06770443)] - **assert**: lazy load acorn (Ruben Bridgewater) [#19863](https://github.com/nodejs/node/pull/19863)
 * [[`252eb2deb2`](https://github.com/nodejs/node/commit/252eb2deb2)] - **assert**: fix error message (Ruben Bridgewater) [#19865](https://github.com/nodejs/node/pull/19865)
