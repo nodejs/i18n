@@ -56,26 +56,26 @@ d.run(() => {
 });
 ```
 
-By using the context of a domain, and the resilience of separating our program into multiple worker processes, we can react more appropriately, and handle errors with much greater safety.
+Utilizzando il contesto di un dominio e l'elasticità di separare il nostro programma in più processi worker, possiamo reagire in modo più appropriato e gestire gli errori con maggiore sicurezza.
 
 ```js
-// Much better!
+// Molto meglio!
 
 const cluster = require('cluster');
 const PORT = +process.env.PORT || 1337;
 
 if (cluster.isMaster) {
-  // A more realistic scenario would have more than 2 workers,
-  // and perhaps not put the master and worker in the same file.
+  // Uno scenario più realistico avrebbe più di 2 worker
+  // e forse non avrebbe messo master e worker nello stesso file.
   //
-  // It is also possible to get a bit fancier about logging, and
-  // implement whatever custom logic is needed to prevent DoS
-  // attacks and other bad behavior.
+  // È anche possibile essere un pò più interessati alla registrazione e 
+  // implementare qualsiasi logica personalizzata necessaria per prevenire attacchi 
+  // DoS e altri comportamenti scorretti.
   //
-  // See the options in the cluster documentation.
+  // Vedi le opzioni nella documentazione del cluster.
   //
-  // The important thing is that the master does very little,
-  // increasing our resilience to unexpected errors.
+  // L'importante è che il master faccia molto poco,
+  // aumentando la nostra capacità di reagire agli errori imprevisti.
 
   cluster.fork();
   cluster.fork();
@@ -86,9 +86,9 @@ if (cluster.isMaster) {
   });
 
 } else {
-  // the worker
+  // il worker
   //
-  // This is where we put our bugs!
+  // Qui è dove abbiamo messo i nostri bug!
 
   const domain = require('domain');
 
