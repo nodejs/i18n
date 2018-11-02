@@ -305,9 +305,10 @@ const options = {
 
     // This loop is informational only.
     // Εμφάνιση του αποτυπώματος του πιστοποιητικού και του 
-    // δημόσιου κλειδιού όλων των πιστοποιητικών στην αλυσίδα. Its common to pin the public key of the issuer on the public
-    // internet, while pinning the public key of the service in sensitive
-    // environments.
+    // δημόσιου κλειδιού όλων των πιστοποιητικών στην αλυσίδα. 
+    // Είναι συνηθισμένο να γίνεται pinning του δημόσιου κλειδιού του
+    // εκδότη στο ίντερνετ, ενώ να γίνεται pinning του δημόσιου κλειδιού
+    // της υπηρεσίας σε ευαίσθητες εφαρμογές.
     do {
       console.log('Subject Common Name:', cert.subject.CN);
       console.log('  Certificate SHA256 fingerprint:', cert.fingerprint256);
@@ -338,7 +339,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Outputs for example:
+Ο παραπάνω κώδικας, μπορεί να εμφανίσει για παράδειγμα:
 
 ```text
 Subject Common Name: github.com
