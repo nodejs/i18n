@@ -785,7 +785,7 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser usados para limitar la comparación a rangos específicos dentro de `target` y `buf` respectivamente.
 
 Ejemplos:
 
@@ -793,17 +793,17 @@ Ejemplos:
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 const buf2 = Buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
 
-// Prints: 0
+// Imprime: 0
 console.log(buf1.compare(buf2, 5, 9, 0, 4));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf1.compare(buf2, 0, 6, 4));
 
-// Prints: 1
+// Imprime: 1
 console.log(buf1.compare(buf2, 5, 6, 5));
 ```
 
-A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength` or `sourceEnd > source.byteLength`.
+Se producirá un `RangeError` si `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength` o `sourceEnd > source.byteLength`.
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
@@ -811,9 +811,9 @@ A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetE
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
-* `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
+* `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] en el cual copiar.
+* `targetStart` {integer} El offset dentro de `target` en el cual comenzar a copiar. **Predeterminado:** `0`
+* `sourceStart` {integer} El offset dentro de `buf` en cual comenzar a copiar. **Predeterminado:** `0`
 * `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`]
 * Returns: {integer} The number of bytes copied.
 
