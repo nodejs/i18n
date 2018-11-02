@@ -12,7 +12,7 @@ HTTPS είναι το πρωτόκολλο HTTP μέσω TLS/SSL. Στη Node.js
 added: v0.4.5
 -->
 
-Ένα αντικείμενο [`Agent`][] για HTTPS, παρόμοιο με το [`http.Agent`][]. Για περισσότερες πληροφορίες. δείτε το [`https.request()`][].
+Ένα αντικείμενο [`Agent`][] για HTTPS, παρόμοιο με το [`http.Agent`][]. Για περισσότερες πληροφορίες δείτε το [`https.request()`][].
 
 ## Class: https.Server
 
@@ -79,7 +79,7 @@ added: v8.0.0
 added: v0.3.4
 -->
 
-- `options` {Object} Δέχεται `options` από το [`tls.createServer()`][], το [`tls.createSecureContext()`][] και τό [`http.createServer()`][].
+- `options` {Object} Δέχεται `options` από το [`tls.createServer()`][], το [`tls.createSecureContext()`][] και τo [`http.createServer()`][].
 - `requestListener` {Function} Ένας ακροατής που θα προστεθεί στο συμβάν `'request'`.
 
 Παράδειγμα:
