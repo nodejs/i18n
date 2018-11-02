@@ -1112,35 +1112,35 @@ added: v5.3.0
 * `value` {string|Buffer|integer} Qué buscar.
 * `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** `0`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
-* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
+* Devuelve: {boolean} `true` si `value` fue encontrado en `buf`, de otra forma es `false`.
 
-Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
+Equivalente a [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
-// Prints: true
+// Imprime: true
 console.log(buf.includes('this'));
 
-// Prints: true
+// Imprime: true
 console.log(buf.includes('is'));
 
-// Prints: true
+// Imprime: true
 console.log(buf.includes(Buffer.from('a buffer')));
 
-// Prints: true
-// (97 is the decimal ASCII value for 'a')
+// Imprime: true
+// (97 es el valor ASCII decimal para 'a')
 console.log(buf.includes(97));
 
-// Prints: false
+// Imprime: false
 console.log(buf.includes(Buffer.from('a buffer example')));
 
-// Prints: true
+// Imprime: true
 console.log(buf.includes(Buffer.from('a buffer example').slice(0, 8)));
 
-// Prints: false
+// Imprime: false
 console.log(buf.includes('this', 4));
 ```
 
@@ -1162,51 +1162,51 @@ changes:
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** `0`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
-* Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
+* Devuelve: {integer} El índice de la primera aparición de `value` en `buf` o `-1` si `buf` no contiene `value`.
 
-If `value` is:
+Si `value` es:
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
+* una string, `value` es interpretado de acuerdo a la codificación de caracteres en `encoding`.
 * a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+* un número, `value` será interpretado como un valor entero de 8-bit sin signo entre `0` y `255`.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
-// Prints: 0
+// Imprime: 0
 console.log(buf.indexOf('this'));
 
-// Prints: 2
+// Imprime: 2
 console.log(buf.indexOf('is'));
 
-// Prints: 8
+// Imprime: 8
 console.log(buf.indexOf(Buffer.from('a buffer')));
 
-// Prints: 8
-// (97 is the decimal ASCII value for 'a')
+// Imprime: 8
+// (97 es el valor ASCII decimal para 'a')
 console.log(buf.indexOf(97));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf.indexOf(Buffer.from('a buffer example')));
 
-// Prints: 8
+// Imprime: 8
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
 
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
 
-// Prints: 4
+// Imprime: 4
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'ucs2'));
 
-// Prints: 6
+// Imprime: 6
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'ucs2'));
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Si `value` no es una string, un número, o un `Buffer`, este método producirá un `TypeError`. Si `value` es un número, será forzado a ser un valor byte válido, un entero entre 0 y 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN` or 0, like `{}`, `[]`, `null` or `undefined`, will search the whole buffer. This behavior matches [`String#indexOf()`].
+Si `byteOffset` no es un número, será forzado a ser un número. Any arguments that coerce to `NaN` or 0, like `{}`, `[]`, `null` or `undefined`, will search the whole buffer. This behavior matches [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1308,9 +1308,9 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'ucs2'));
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'ucs2'));
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Si `value` no es una string, un número, o un `Buffer`, este método producirá un `TypeError`. Si `value` es un número, será forzado a ser un valor byte válido, un entero entre 0 y 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+Si `byteOffset` no es un número, será forzado a ser un número. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
