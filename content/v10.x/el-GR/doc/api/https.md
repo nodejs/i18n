@@ -304,8 +304,8 @@ const options = {
     }
 
     // This loop is informational only.
-    // Print the certificate and public key fingerprints of all certs in the
-    // chain. Its common to pin the public key of the issuer on the public
+    // Εμφάνιση του αποτυπώματος του πιστοποιητικού και του 
+    // δημόσιου κλειδιού όλων των πιστοποιητικών στην αλυσίδα. Its common to pin the public key of the issuer on the public
     // internet, while pinning the public key of the service in sensitive
     // environments.
     do {
