@@ -916,25 +916,25 @@ added: v0.5.0
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} Una referencia a `buf`.
 
-Llenar `buf` con el `value` especificado. Si el `offset` y `end` no son dados, el `buf` completo se llenará. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
+Llenar `buf` con el `value` especificado. Si el `offset` y `end` no son dados, el `buf` completo se llenará. Esto pretende ser una pequeña simplificación para permitir que la creación y llenado de un `Buffer` sea realizado en una sola línea.
 
-Example: Fill a `Buffer` with the ASCII character `'h'`
+Ejemplo: Llenar un `Buffer` con el carácter ASCII `'h'`
 
 ```js
 const b = Buffer.allocUnsafe(50).fill('h');
 
-// Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+// Imprime: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 console.log(b.toString());
 ```
 
-`value` is coerced to a `uint32` value if it is not a String or Integer.
+`value` es forzado a ser un valor `uint32` si no es una String o un Entero.
 
-If the final write of a `fill()` operation falls on a multi-byte character, then only the first bytes of that character that fit into `buf` are written.
+Si la escritura final de una operación `fill()` cae en un carácter multi-byte, entonces solo se escriben los primeros bytes de ese carácter que encajen en `buf`.
 
-Example: Fill a `Buffer` with a two-byte character
+Ejemplo: Llena un `Buffer` con un carácter de dos bytes
 
 ```js
-// Prints: <Buffer c8 a2 c8>
+// Imprime: <Buffer c8 a2 c8>
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 ```
 
@@ -944,8 +944,8 @@ console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
+* `value` {string|Buffer|integer} Qué buscar.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** `0`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
@@ -985,8 +985,8 @@ console.log(buf.includes('this', 4));
 added: v1.5.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
+* `value` {string|Buffer|integer} Qué buscar.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** `0`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
@@ -1124,8 +1124,8 @@ for (const key of buf.keys()) {
 added: v6.0.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
+* `value` {string|Buffer|integer} Qué buscar.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Default:** [`buf.length`]`- 1`
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
