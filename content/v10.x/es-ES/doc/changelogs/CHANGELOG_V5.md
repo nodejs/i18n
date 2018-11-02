@@ -1253,18 +1253,18 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`86a3bd09b0`](https://github.com/nodejs/node/commit/86a3bd09b0)] - **test**: corregir tls-inception (Santiago Gimeno) [#4195](https://github.com/nodejs/node/pull/4195)
 * [[`1e89830a11`](https://github.com/nodejs/node/commit/1e89830a11)] - **test**: no asumir que openssl s\_client soporta -ssl3 (Ben Noordhuis) [#4204](https://github.com/nodejs/node/pull/4204)
 * [[`c5b4f6bc99`](https://github.com/nodejs/node/commit/c5b4f6bc99)] - **(SEMVER-MINOR)** **tls**: introducir `secureContext` para `tls.connect` (Fedor Indutny) [#4246](https://github.com/nodejs/node/pull/4246)
-* [[`e0bb118a1d`](https://github.com/nodejs/node/commit/e0bb118a1d)] - **tls_wrap**: inherit from the `AsyncWrap` first (Fedor Indutny) [#4268](https://github.com/nodejs/node/pull/4268)
-* [[`d63cceeb10`](https://github.com/nodejs/node/commit/d63cceeb10)] - **tools**: add .editorconfig (ronkorving) [#2993](https://github.com/nodejs/node/pull/2993)
-* [[`4b267df93e`](https://github.com/nodejs/node/commit/4b267df93e)] - **udp**: remove a needless instanceof Buffer check (ronkorving) [#4301](https://github.com/nodejs/node/pull/4301)
+* [[`e0bb118a1d`](https://github.com/nodejs/node/commit/e0bb118a1d)] - **tls_wrap**: heredar primero de `AsyncWrap` (Fedor Indutny) [#4268](https://github.com/nodejs/node/pull/4268)
+* [[`d63cceeb10`](https://github.com/nodejs/node/commit/d63cceeb10)] - **tools**: añadir .editorconfig (ronkorving) [#2993](https://github.com/nodejs/node/pull/2993)
+* [[`4b267df93e`](https://github.com/nodejs/node/commit/4b267df93e)] - **udp**: eliminar una verificación no necesaria de instanceof Buffer (ronkorving) [#4301](https://github.com/nodejs/node/pull/4301)
 
 <a id="5.2.0"></a>
 
-## 2015-12-09, Version 5.2.0 (Stable), @rvagg
+## 2015-12-09, Versión 5.2.0 (Estable), @rvagg
 
-### Notable changes
+### Cambios notables
 
 * **build**: 
-  * Add support for Intel's VTune JIT profiling when compiled with `--enable-vtune-profiling`. For more information about VTune, see <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
+  * Añadido soporte para el perfilador de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
   * Properly enable V8 snapshots by default. Due to a configuration error, snapshots have been kept off by default when the intention is for the feature to be enabled. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
 * **crypto**: 
   * Simplify use of ECDH (Elliptic Curve Diffie-Hellman) objects (created via `crypto.createECDH(curve_name)`) with private keys that are not dynamically generated via `generateKeys()`. The public key is now computed when explicitly setting a private key. Added validity checks to reduce the possibility of computing weak or invalid shared secrets. Also, deprecated the `setPublicKey()` method for ECDH objects as its usage is unnecessary and can lead to inconsistent state. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
