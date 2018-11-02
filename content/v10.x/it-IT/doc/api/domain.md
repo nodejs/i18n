@@ -285,31 +285,31 @@ Chiamare `enter()` fa sì che cambi solo il dominio attivo e non altera il domin
 
 ### domain.exit()
 
-Il metodo `exit()` chiude il dominio corrente, facendolo saltare fuori dallo stack del dominio. Ogni volta che l'esecuzione passa al contesto di una catena diversa di chiamate asincrone è importante assicurarsi che il dominio corrente venga chiuso. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
+Il metodo `exit()` chiude il dominio corrente, facendolo saltare fuori dallo stack del dominio. Ogni volta che l'esecuzione passa al contesto di una catena diversa di chiamate asincrone è importante assicurarsi che il dominio corrente venga chiuso. La chiamata ad `exit()` delimita la fine o l'interruzione della catena di chiamate asincrone e operazioni I/O collegate a un dominio tramite il binding.
 
-If there are multiple, nested domains bound to the current execution context, `exit()` will exit any domains nested within this domain.
+Se esistono più domini nidificati collegati tramite il binding al contesto di esecuzione corrente, `exit()` chiuderà tutti i domini nidificati all'interno di questo dominio.
 
-Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` ed `exit()` possono essere chiamati un numero arbitrario di volte su un singolo dominio.
+Chiamare `exit()` fa sì che cambi solo il dominio attivo e non altera il dominio stesso. `enter()` ed `exit()` possono essere chiamati un numero arbitrario di volte su un singolo dominio.
 
 ### domain.intercept(callback)
 
-* `callback` {Function} The callback function
-* Returns: {Function} The intercepted function
+* `callback` {Function} La funzione callback
+* Restituisce: {Function} La funzione intercettata
 
-This method is almost identical to [`domain.bind(callback)`][]. However, in addition to catching thrown errors, it will also intercept [`Error`][] objects sent as the first argument to the function.
+Questo metodo è quasi identico a [`domain.bind(callback)`][]. Tuttavia, oltre a rilevare gli errori generati, intercetterà anche gli [`Error`][] object inviati come primo argomento della funzione.
 
-In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
+In questo modo, il modello `if (err) return callback(err);` in comune può essere sostituito con un singolo error handler in un unico posto.
 
-#### Example
+#### Esempio
 
 ```js
 const d = domain.create();
 
 function readSomeFile(filename, cb) {
   fs.readFile(filename, 'utf8', d.intercept((data) => {
-    // note, the first argument is never passed to the
-    // callback since it is assumed to be the 'Error' argument
-    // and thus intercepted by the domain.
+    // Da notare che il primo argomento non viene mai passato al
+    // callback in quanto si presume che esso sia l'argomento 'Error'
+    // e che quindi sia stato intercettato dal dominio.
 
     // if this throws, it will also be passed to the domain
     // so the error-handling logic can be moved to the 'error'
