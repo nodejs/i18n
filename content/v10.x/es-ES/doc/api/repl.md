@@ -227,9 +227,9 @@ function isRecoverableError(error) {
 }
 ```
 
-### Personalizando la salida REPL
+### Personalización de la salida REPL
 
-Por defecto, las instancias `repl.REPLServer` formatean la salida usando el método [`util.inspect()`][] antes de escribir la entrada al stream `Writable` provisto (`process.stdout` por defecto). La opción booleana `useColors` puede ser especificada en la construcción para ordenar al escritor predeterminado a utilizar códigos al estilo ANSI para colorizar la salida del método `util.inspect()`.
+Por defecto, las instancias `repl.REPLServer` formatean la salida usando el método [`util.inspect()`][] antes de escribir la entrada al stream `Writable` provisto (`process.stdout` por defecto). La opción booleana `useColors` puede ser especificada en la construcción para ordenar al escritor predeterminado a utilizar códigos al estilo ANSI para colorear la salida del método `util.inspect()`.
 
 Es posible personalizar totalmente la salida de la instancia `repl.REPLServer` al pasarle una nueva función al usar la opción `writer` en la construcción. El siguiente ejemplo, convierte un texto de entrada a mayúsculas:
 
@@ -253,15 +253,15 @@ function myWriter(output) {
 added: v0.1.91
 -->
 
-La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Las instancias del `repl.REPLServer` son creadas usando el método `repl.start()` y *no deberían* ser creadas directamnte utilizando la `nueva` palabra clave de JavaScript.
+La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Las instancias del `repl.REPLServer` son creadas usando el método `repl.start()` y *no deberían* ser creadas directamente utilizando la `nueva` palabra clave de JavaScript.
 
-### Evento: 'salida'
+### Evento: 'exit'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-El evento `'salida'` es emitido cuando el REPL es cerrado, sea por la introducción del comando `.exit`, el usuario presionando `<ctrl>-C` dos veces para señalar `SIGINT`, o al presionar `<ctrl>-D` para señalar `'fin'` en el stream de entrada. La función oyente de devolución es invocada sin ningún argumento.
+El evento `'exit'` es emitido cuando el REPL es cerrado, sea por la introducción del comando `.exit`, el usuario presionando `<ctrl>-C` dos veces para señalar `SIGINT`, o al presionar `<ctrl>-D` para señalar `'fin'` en el stream de entrada. La función oyente de devolución es invocada sin ningún argumento.
 
 ```js
 replServer.on('exit', () => {
@@ -276,7 +276,7 @@ replServer.on('exit', () => {
 added: v0.11.0
 -->
 
-El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` colocada a `true`. La función oyente de devolución será llamado con una referencia al objeto del `context` como único argumento.
+El evento `'reset'` es emitido cuando el contexto de REPL es reseteado. Esto ocurre siempre que el comando `.clear` es recibido como entrada *a menos* que el REPL esté usando el evaluador predeterminado y la instancia del `repl.REPLServer` haya sido creada con la opción `useGlobal` establecida a `true`. La función oyente de devolución será llamado con una referencia al objeto del `context` como único argumento.
 
 Esto puede ser usado primeramente para reiniciar el contexto REPL a un estado pre-definido como es ilustrado en el siguiente ejemplo:
 
@@ -318,15 +318,15 @@ Clearing context...
 added: v0.3.0
 -->
 
-* `keyword` {string} El comando keyword (*sin un* caracter inicial `.`).
+* `keyword` {string} El comando keyword (*sin un* carácter inicial `.`).
 * `cmd` {Objeto|Función} La función que se utiliza cuando el comando está siendo procesado.
 
-El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocadaos al escribir un `.` seguido de `keyword`. El `cmd` es una `Función` o un `Objeto` con las siguientes propiedades:
+El método `replServer.defineCommand()` es usado para añadir nuevos comandos `.` prefijados a la instancia REPL. Estos comandos son invocados al escribir un `.` seguido de la`keyword`. El `cmd` es una `Function` o un `Object` con las siguientes propiedades:
 
 * `help` {string} Texto de ayuda que es mostrado cuando `.help` es introducido (Opcional).
-* `action` {Función} La función para ejecutar, opcionalmente aceptando un único argumento de string.
+* `action` {Function} La función a ejecutar, opcionalmente aceptando un único argumento de string.
 
-El siguiente ejemplo muestra dos nuesvos comando agregados a la instancia REPL:
+El siguiente ejemplo muestra dos nuevos comandos agregados a la instancia REPL:
 
 ```js
 const repl = require('repl');
