@@ -181,11 +181,11 @@ Se i domini sono in uso, tutti i **nuovi** `EventEmitter` object (inclusi Stream
 
 Inoltre, i callback passati a richieste di cicli di eventi (event loop) di basso livello (come ad esempio `fs.open()` o altri metodi di callback) saranno automaticamente collegati al dominio attivo tramite il binding. Se eseguono, allora il dominio catturerà l'errore.
 
-Per evitare un utilizzo eccessivo della memoria, i `Domain` object non vengono aggiunti in modo implicito come dei children del dominio attivo. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
+Per evitare un utilizzo eccessivo della memoria, i `Domain` object non vengono aggiunti in modo implicito come dei children del dominio attivo. Se fossero aggiunti, sarebbe troppo facile impedire che gli object di richiesta e risposta vengano raccolti correttamente tramite la garbage collection.
 
-To nest `Domain` objects as children of a parent `Domain` they must be explicitly added.
+Per nidificare i `Domain` object come i children di un `Domain` parent essi devono essere aggiunti esplicitamente.
 
-Implicit binding routes thrown errors and `'error'` events to the `Domain`'s `'error'` event, but does not register the `EventEmitter` on the `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
+I percorsi di binding impliciti generano errori ed eventi `'error'` per l'evento `'error'` del `Domain`, ma non registrano l'`EventEmitter` sul `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
 
 ## Explicit Binding
 
