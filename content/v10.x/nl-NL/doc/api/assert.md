@@ -375,7 +375,7 @@ Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelij
 
 Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotReject()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneerd, zal `assert.doesNotReject()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
-Let op: Het gebruik van `assert.doesNotReject()` is niet echt nuttig want er is weinig voordeel aan het vangen van een afwijzing om het vervolgens weer te verwerpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten afwijzen en probeer foutberichten zo expressief mogelijk te houden.
+Let op: Het gebruik van `assert.doesNotReject()` is niet echt nuttig want er is weinig voordeel aan het vangen van een afwijzing om het vervolgens wéér te werpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten afwijzen en probeer foutberichten zo expressief mogelijk te houden.
 
 Wanneer dit is gespecificeerd, kan een `error` een [`Class`][], [`RegExp`][] of een valideringsfunctie zijn. Zie [`assert.throws()`][] voor meer details.
 
@@ -419,9 +419,9 @@ changes:
 
 Beweert dat de functie `block` geen fout gooit.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Let op: Het gebruik van `assert.doesNotThrow()` is niet nuttig, want er is geen voordeel aan het vangen van een afwijzing om het vervolgens wéér te werpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten gooien en probeer de foutberichten zo expressief mogelijk te houden.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddelijk de `block` functie aanroepen.
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
