@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // 返回: 'myfile.html'
 ```
 
-* 注意: *在 Windows 上,Node. js 遵循单驱动器工作目录的理念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 例如， `path.resolve('c:\\')` 可能返回与 `path.resolve('c:')` 不同的结果。 For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+* 注意: *在 Windows 上,Node. js 遵循单驱动器工作目录的理念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 例如， `path.resolve('c:\\')` 可能返回与 `path.resolve('c:')` 不同的结果。 有关详细信息, 请参阅 [ 此 MSDN 页 ](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths)。
 
 ## path.basename(path[, ext])
 
