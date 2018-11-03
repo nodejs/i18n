@@ -1491,7 +1491,7 @@ changes:
 * `byteLength` {integer} 要读取的字节数。 必须满足 `0 < byteLength <= 6`。
 * 返回：{integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+从 `buf` 中指定的 `offset` 地址读取 `byteLength` 字节，并且读取的结果被解析为二进制有符号补码数。 最大支持48位的精度。
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1518,10 +1518,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. 必须满足 `0 <= offset <= buf.length - 1`。
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 1`。
+* 返回：{integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+从 `buf` 中指定的 `offset` 地址读取一个无符号8位整型数。
 
 ```js
 const buf = Buffer.from([1, -2]);
