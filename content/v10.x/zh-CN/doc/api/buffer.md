@@ -867,8 +867,8 @@ changes:
 比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
 * 如果 `target` 与 `buf` 相同，则返回 `0`。
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
+* 在排序时，如果 `target` 应当排在 `buf` *后面*，则返回 `-1`。
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -890,7 +890,7 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 // (This result is equal to: [buf1, buf3, buf2])
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中限制对比在指定的范围内。
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -904,7 +904,7 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 // Prints: 1
 ```
 
-[`ERR_INDEX_OUT_OF_RANGE`] is thrown if `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength`, or `sourceEnd > source.byteLength`.
+如果 `targetStart < 0`，`sourceStart < 0`，`targetEnd > target.byteLength`，或 `sourceEnd > source.byteLength`，则抛出 [`ERR_INDEX_OUT_OF_RANGE`] 错误。
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
@@ -912,8 +912,8 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
+* `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **Default:** `0`.
 * `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **默认值：** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
