@@ -423,7 +423,7 @@ Let op: Het gebruik van `assert.doesNotThrow()` is niet nuttig, want er is geen 
 
 Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddelijk de `block` functie aanroepen.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
 Wanneer dit is gespecificeerd, kan een `error` een [`Class`][], [`RegExp`][] of een valideringsfunctie zijn. Zie [`assert.throws()`][] voor meer details.
 
