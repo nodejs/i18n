@@ -555,19 +555,19 @@ Wanneer het `message` falsy is, wordt de foutmelding ingesteld als de waarden va
 const assert = require('assert').strict;
 
 assert.fail('a', 'b');
-// AssertionError [ERR_ASSERTION]: 'a' != 'b'
+// Assertiefout [ERR_ASSERTION]: 'a' != 'b'
 
 assert.fail(1, 2, undefined, '>');
-// AssertionError [ERR_ASSERTION]: 1 > 2
+// Assertiefout [ERR_ASSERTION]: 1 > 2
 
 assert.fail(1, 2, 'fail');
-// AssertionError [ERR_ASSERTION]: fail
+// Assertiefout [ERR_ASSERTION]: mislukt
 
 assert.fail(1, 2, 'whoops', '>');
-// AssertionError [ERR_ASSERTION]: whoops
+// Assertiefout [ERR_ASSERTION]: oeps
 
 assert.fail(1, 2, new TypeError('need array'));
-// TypeError: need array
+// TypeError: reeks nodig
 ```
 
 In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
