@@ -913,12 +913,12 @@ added: v0.1.90
 -->
 
 * `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
-* `targetStart` {integer} `target` 中开始复制进的偏移量。 **Default:** `0`.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **默认值：** [`buf.length`].
-* Returns: {integer} The number of bytes copied.
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`。
+* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`。
+* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`].
+* 返回：{integer} 被复制的字节数。
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
 
 ```js
 // Create two `Buffer` instances.
@@ -960,9 +960,9 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
 ```js
 // Log the entire contents of a `Buffer`.
@@ -992,8 +992,8 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} `buf` 要比较的 `Buffer` 或 [`Uint8Array`]。
+* 返回：{boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
