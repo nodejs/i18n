@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -371,9 +371,9 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
 
-Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotReject()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneerd, zal `assert.doesNotReject()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
+Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotReject()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneert, zal `assert.doesNotReject()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
 Let op: Het gebruik van `assert.doesNotReject()` is niet echt nuttig want er is weinig voordeel aan het vangen van een afwijzing om het vervolgens wéér te werpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten afwijzen en probeer foutberichten zo expressief mogelijk te houden.
 
@@ -421,7 +421,7 @@ Beweert dat de functie `block` geen fout gooit.
 
 Let op: Het gebruik van `assert.doesNotThrow()` is niet nuttig, want er is geen voordeel aan het vangen van een afwijzing om het vervolgens wéér te werpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten gooien en probeer de foutberichten zo expressief mogelijk te houden.
 
-Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddelijk de `block` functie aanroepen.
+Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddellijk de `block` functie aanroepen.
 
 Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. Wanneer de fout van een ander type is, of al de `error` parameter ongedefinieerd is, dan wordt de fout teruggegeven aan de aanroepfunctie.
 
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddelijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. It will then check that the promise is rejected.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. It will then check that the promise is rejected.
 
 If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
