@@ -995,7 +995,7 @@ changes:
 * `otherBuffer` {Buffer} `buf` 要比较的 `Buffer` 或 [`Uint8Array`]。
 * 返回：{boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+如果 `buf` 和 `otherBuffer` 具有完全相同的字节，则返回 `true`，否则返回 `false`。
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1030,13 +1030,13 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **默认值:**`‘utf8'`。
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} 用来填充 `buf` 的值。
+* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`。
+* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`].
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的字符编码。 **默认值:**`‘utf8'`。
+* 返回：{Buffer} `buf` 的引用。
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
+用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。
 
 ```js
 // Fill a `Buffer` with the ASCII character 'h'.
@@ -1047,7 +1047,7 @@ console.log(b.toString());
 // Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` is coerced to a `uint32` value if it is not a string or integer.
+`value` 如果不是一个字符串或整数，则会被强制转换为 `uint32` 值。
 
 If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
 
