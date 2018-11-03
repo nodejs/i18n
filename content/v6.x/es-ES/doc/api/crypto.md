@@ -891,9 +891,9 @@ Verifica los datos empleados, utilizando el `object` y la `signature` dados. El 
 
 * `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-El argumento `signature` es la firma calculada previamente para los datos, en el `signature_format`, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Se espera que la`signature` sea una string si un `signature_format` es especificado, de lo contrario se espera que sea un [`Buffer`][].
+El argumento `signature` es la firma calculada previamente para los datos, en el `signature_format`, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Se espera que la `signature` sea una string si un `signature_format` es especificado, de lo contrario se espera que sea un [`Buffer`][].
 
-Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la llave pública.
+Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la clave pública.
 
 El objeto `verifier` no puede ser usado nuevamente luego de que `verify.verify()` ha sido llamado. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
