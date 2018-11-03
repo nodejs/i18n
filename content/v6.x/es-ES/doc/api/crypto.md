@@ -549,20 +549,20 @@ const bob = crypto.createECDH('secp256k1');
 // Note: Esta es una forma de acceso directo para especificar una de las anteriores
 // claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
 // aplicación real.
-const crypto = require('crypto');
-const hash = crypto.createHash('sha256');
+alice.setPrivateKey(
+  crypto.createHash('sha256').update('alice', 'utf8').digest()
+);
 
-hash.on('readable', () => {
-  const data = hash.read();
-  if (data) {
-    console.log(data.toString('hex'));
-    // Imprime:
-    //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
-  }
-});
+// Bob usa una nueva generada criptográficamente fuerte
+// clave par pseudoaleatoria
+bob.generateKeys();
 
-hash.write('some data to hash');
-hash.end();
+const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
+const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
+
+// El secreto de Alice y de Bob debe tener el mismo valor de secreto compartido 
+
+console.log(aliceSecret === bobSecret);
 ```
 
 ## Clase: Hash
@@ -796,7 +796,7 @@ El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es u
   
   Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-* `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de la sal al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
+* `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) la establece en el valor máximo permitido.
 
 El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -851,7 +851,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Imprime: Verdadero o falso
+// Imprime: Verdadero o Falso
 ```
 
 ### verifier.update(data[, input_encoding])
@@ -860,7 +860,7 @@ console.log(verify.verify(publicKey, signature));
 added: v0.1.92
 -->
 
-Actualiza el contenido `Verify` con los `data` dados, cuya codiicación es </code>dada en el `input_encoding` y puede ser `'utf8'`, `'ascii'`, o `'latin1'</0>. Si <code>encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
+Actualiza el contenido de `Verify` con la `data` proporcionada, cuya codificación es </code>dada en el `input_encoding` y puede ser `'utf8'`, `'ascii'`, o `'latin1'</0>. Si <code>encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -879,7 +879,7 @@ changes:
 * `signature` {string | Buffer | Uint8Array}
 * `signature_format` {string}
 
-Verifica los datos empleados en los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
+Verifica los datos empleados, utilizando el `object` y la `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
 * `key`: {string} - llave pública PEM codificada (requerido)
 * `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
