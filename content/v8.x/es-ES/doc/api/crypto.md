@@ -639,20 +639,20 @@ const bob = crypto.createECDH('secp256k1');
 // Note: Esta es una forma de acceso directo para especificar una de las anteriores
 // claves privadas de Alice. Sería poco inteligente usar una clave privada predecible en una 
 // aplicación real.
-const crypto = require('crypto');
-const hash = crypto.createHash('sha256');
+alice.setPrivateKey(
+  crypto.createHash('sha256').update('alice', 'utf8').digest()
+);
 
-hash.on('readable', () => {
-  const data = hash.read();
-  if (data) {
-    console.log(data.toString('hex'));
-    // Imprime:
-    //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
-  }
-});
+// Bob usa una nueva generada criptográficamente fuerte
+// clave par pseudoaleatoria
+bob.generateKeys();
 
-hash.write('some data to hash');
-hash.end();
+const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
+const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
+
+// El secreto de Alice y de Bob debe tener el mismo valor de secreto compartido 
+
+console.log(aliceSecret === bobSecret);
 ```
 
 ## Clase: Hash
@@ -911,7 +911,7 @@ The `privateKey` argument can be an object or a string. If `privateKey` is a str
   
   Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de la sal al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
+- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) la establece en el valor máximo permitido.
 
 The `outputFormat` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -974,7 +974,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Imprime: Verdadero o falso
+// Imprime: Verdadero o Falso
 ```
 
 ### verify.update(data[, inputEncoding])
@@ -1010,7 +1010,7 @@ changes:
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
 
-Verifica los datos empleados en los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
+Verifica los datos empleados, utilizando el `object` y la `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
 - `key`: {string} - llave pública PEM codificada (requerido)
 - `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
@@ -1020,7 +1020,7 @@ Verifica los datos empleados en los `object` y `signature` dados. El argumento `
   
   Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empelada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - longitud de la sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
+- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
