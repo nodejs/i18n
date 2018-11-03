@@ -22,7 +22,7 @@
 * [DNS](dns.html)
 * [Dominio](domain.html)
 * [Moduli ECMAScript](esm.html)
-* [Errori](errors.html)
+* [Errors](errors.html)
 * [Eventi](events.html)
 * [File System](fs.html)
 * [Globali](globals.html)
