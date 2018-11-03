@@ -280,7 +280,7 @@ const assert = require('assert').strict;
 
 // Dit faalt want 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
-// AssertieFout: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B: 
+// AssertionError: Invoer A verwacht om strikt diep-gelijk te zijn aan invoer B: 
 // + verwacht - bestaand
 //   {
 // -   a: 1
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -555,16 +555,16 @@ Wanneer het `message` falsy is, wordt de foutmelding ingesteld als de waarden va
 const assert = require('assert').strict;
 
 assert.fail('a', 'b');
-// Assertiefout [ERR_ASSERTION]: 'a' != 'b'
+// AssertionError [ERR_ASSERTION]: 'a' != 'b'
 
 assert.fail(1, 2, undefined, '>');
-// Assertiefout [ERR_ASSERTION]: 1 > 2
+// AssertionError [ERR_ASSERTION]: 1 > 2
 
 assert.fail(1, 2, 'fail');
-// Assertiefout [ERR_ASSERTION]: mislukt
+// AssertionError [ERR_ASSERTION]: mislukt
 
 assert.fail(1, 2, 'whoops', '>');
-// Assertiefout [ERR_ASSERTION]: oeps
+// AssertionError [ERR_ASSERTION]: oeps
 
 assert.fail(1, 2, new TypeError('need array'));
 // TypeError: reeks nodig
