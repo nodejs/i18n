@@ -2025,40 +2025,40 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 * [[`8f34b834b7`](https://github.com/nodejs/node/commit/8f34b834b7)] - **tools**: actualizar GYP a 324dd166 (Refael Ackermann) [#14718](https://github.com/nodejs/node/pull/14718)
 * [[`e4ea45412e`](https://github.com/nodejs/node/commit/e4ea45412e)] - **tools**: eliminar el archivo package-lock.json perdido (Rich Trott) [#14873](https://github.com/nodejs/node/pull/14873)
 * [[`37c43ede43`](https://github.com/nodejs/node/commit/37c43ede43)] - **tools**: corregir update-eslint.sh (Myles Borins) [#14850](https://github.com/nodejs/node/pull/14850)
-* [[`b0f4539ce5`](https://github.com/nodejs/node/commit/b0f4539ce5)] - **tools**: delete an unused argument (phisixersai) [#14251](https://github.com/nodejs/node/pull/14251)
-* [[`9da6c1056c`](https://github.com/nodejs/node/commit/9da6c1056c)] - **tools**: checkout for unassigned DEP00XX codes (James M Snell) [#14702](https://github.com/nodejs/node/pull/14702)
-* [[`bd40cc6ef8`](https://github.com/nodejs/node/commit/bd40cc6ef8)] - **tracing**: Update to use new Platform tracing apis (Matt Loring) [#14001](https://github.com/nodejs/node/pull/14001)
-* [[`a4fc43202e`](https://github.com/nodejs/node/commit/a4fc43202e)] - **url**: remove unused code from autoEscapeStr (Cyril Lakech) [#15086](https://github.com/nodejs/node/pull/15086)
-* [[`2aec977fa2`](https://github.com/nodejs/node/commit/2aec977fa2)] - **util**: remove duplicate code in format (Anatoli Papirovski) [#15098](https://github.com/nodejs/node/pull/15098)
-* [[`de10c0f515`](https://github.com/nodejs/node/commit/de10c0f515)] - **util**: fix inspect array w. negative maxArrayLength (Ruben Bridgewater) [#14880](https://github.com/nodejs/node/pull/14880)
-* [[`c3c6cb1c13`](https://github.com/nodejs/node/commit/c3c6cb1c13)] - **util**: use proper circular reference checking (Anna Henningsen) [#14790](https://github.com/nodejs/node/pull/14790)
+* [[`b0f4539ce5`](https://github.com/nodejs/node/commit/b0f4539ce5)] - **tools**: eliminar un argumento no utilizado (phisixersai) [#14251](https://github.com/nodejs/node/pull/14251)
+* [[`9da6c1056c`](https://github.com/nodejs/node/commit/9da6c1056c)] - **tools**: comprobación de códigos DEP00XX sin asignar (James M Snell) [#14702](https://github.com/nodejs/node/pull/14702)
+* [[`bd40cc6ef8`](https://github.com/nodejs/node/commit/bd40cc6ef8)] - **tracing**: Actualizar para usar las nuevas apis de seguimiento de Plataformas (Matt Loring) [#14001](https://github.com/nodejs/node/pull/14001)
+* [[`a4fc43202e`](https://github.com/nodejs/node/commit/a4fc43202e)] - **url**: eliminar código no utilizado de autoEscapeStr (Cyril Lakech) [#15086](https://github.com/nodejs/node/pull/15086)
+* [[`2aec977fa2`](https://github.com/nodejs/node/commit/2aec977fa2)] - **util**: eliminar código duplicado en format (Anatoli Papirovski) [#15098](https://github.com/nodejs/node/pull/15098)
+* [[`de10c0f515`](https://github.com/nodejs/node/commit/de10c0f515)] - **util**: corregir array de inspección con maxArrayLength negativo (Ruben Bridgewater) [#14880](https://github.com/nodejs/node/pull/14880)
+* [[`c3c6cb1c13`](https://github.com/nodejs/node/commit/c3c6cb1c13)] - **util**: utilizar la verificación de referencia circular adecuada (Anna Henningsen) [#14790](https://github.com/nodejs/node/pull/14790)
 
 <a id="8.4.0"></a>
 
-## 2017-08-15, Version 8.4.0 (Current), @addaleax
+## 2017-08-15, Versión 8.4.0 (Presente), @addaleax
 
-### Notable changes
+### Cambios notables
 
 * **HTTP2**
   
-  * Experimental support for the built-in `http2` has been added via the `--expose-http2` flag. [#14239](https://github.com/nodejs/node/pull/14239)
+  * Soporte experimental para el `http2` incorporado se ha agregado a través de la bandera `--expose-http2`. [#14239](https://github.com/nodejs/node/pull/14239)
 
 * **Inspector**
   
-  * `require()` is available in the inspector console now. [#8837](https://github.com/nodejs/node/pull/8837)
-  * Multiple contexts, as created by the `vm` module, are supported now. [#14465](https://github.com/nodejs/node/pull/14465)
+  * `require()` ahora está disponible en la consola del inspector. [#8837](https://github.com/nodejs/node/pull/8837)
+  * Ahora se admiten contextos múltiples, según lo creado por el módulo de `vm`. [#14465](https://github.com/nodejs/node/pull/14465)
 
 * **N-API**
   
-  * New APIs for creating number values have been introduced. [#14573](https://github.com/nodejs/node/pull/14573)
+  * Se han introducido nuevas API para crear valores numéricos. [#14573](https://github.com/nodejs/node/pull/14573)
 
 * **Stream**
   
-  * For `Duplex` streams, the high water mark option can now be set independently for the readable and the writable side. [#14636](https://github.com/nodejs/node/pull/14636)
+  * Para flujos `Dúplex`, la opción de marca de agua superior ahora se puede configurar de forma independiente para el lado legible y el lado escribible. [#14636](https://github.com/nodejs/node/pull/14636)
 
 * **Util**
   
-  * `util.format` now supports the `%o` and `%O` specifiers for printing objects. [#14558](https://github.com/nodejs/node/pull/14558)
+  * `util.format` ahora admite los especificadores `%o` y `%O` para imprimir objetos. [#14558](https://github.com/nodejs/node/pull/14558)
 
 ### Commits
 
