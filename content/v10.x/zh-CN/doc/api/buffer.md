@@ -1173,7 +1173,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 如果 `value` 是空的，并且 `byteOffset` 大于等于 `buf.length`，则返回 `buf.length`。
 
 ### buf.keys()
 
@@ -1181,9 +1181,9 @@ console.log(b.indexOf('b', []));
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+创建并返回一个包含 `buf` 键（索引）的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1211,10 +1211,10 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** [`buf.length`]`- 1`。
 * `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* 返回：{integer} 在 `buf` 中 `value` 最后一次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
 Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
 
