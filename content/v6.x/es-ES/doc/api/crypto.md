@@ -881,17 +881,17 @@ changes:
 
 Verifica los datos empleados, utilizando el `object` y la `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
 
-* `key`: {string} - llave pública PEM codificada (requerido)
+* `key`: {string} - clave pública PEM codificada (requerida)
 * `padding`: {integer} - Valor de padding opcional para RSA, uno de los siguientes:
   
   * `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empelada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empleada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
 * `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-El argumento `signature` es la firma calculada previamente para los datos, en el `signature_format` pueden ser `'latin1'`, `'hex'`, o `'base64'`. Se espera que la`signature` sea una string si un `signature_format` es especificado, de lo contrario se espera que sea un [`Buffer`][].
+El argumento `signature` es la firma calculada previamente para los datos, en el `signature_format`, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Se espera que la`signature` sea una string si un `signature_format` es especificado, de lo contrario se espera que sea un [`Buffer`][].
 
 Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la llave pública.
 
