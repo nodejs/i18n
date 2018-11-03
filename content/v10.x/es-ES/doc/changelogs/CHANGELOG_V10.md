@@ -686,7 +686,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`f274e6921f`](https://github.com/nodejs/node/commit/f274e6921f)] - **crypto**: corregir explicación en CipherBase::SetAuthTag (Tobias Nießen) [#20197](https://github.com/nodejs/node/pull/20197)
 * [[`2ac6658296`](https://github.com/nodejs/node/commit/2ac6658296)] - **crypto,doc**: corregir códigos de desaprobación no asignados (James M Snell) [#18492](https://github.com/nodejs/node/pull/18492)
 * [[`ffd57cd7b2`](https://github.com/nodejs/node/commit/ffd57cd7b2)] - **deps**: actualizar a libuv 1.20.2 (cjihrig) [#20129](https://github.com/nodejs/node/pull/20129)
-* [[`60eb95ad7d`](https://github.com/nodejs/node/commit/60eb95ad7d)] - **deps**: bump V8 embedder string (Myles Borins) [#20105](https://github.com/nodejs/node/pull/20105)
+* [[`60eb95ad7d`](https://github.com/nodejs/node/commit/60eb95ad7d)] - **deps**: hacer bump a string de incrustación de V8 (Myles Borins) [#20105](https://github.com/nodejs/node/pull/20105)
 * [[`1f01112b6f`](https://github.com/nodejs/node/commit/1f01112b6f)] - **deps**: patch V8 to 6.6.346.24 (Myles Borins) [#19995](https://github.com/nodejs/node/pull/19995)
 * [[`aa5ae9e91d`](https://github.com/nodejs/node/commit/aa5ae9e91d)] - **deps**: c-ares float, win ipv6 bad fec0 prefix (Rod Vagg) [#19939](https://github.com/nodejs/node/pull/19939)
 * [[`dbc6163977`](https://github.com/nodejs/node/commit/dbc6163977)] - **deps**: c-ares float, manual ares\_ssize\_t definition (Rod Vagg) [#19939](https://github.com/nodejs/node/pull/19939)
