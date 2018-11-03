@@ -549,7 +549,7 @@ changes:
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik `assert.fail([message])` of andere bevestigingsfuncties als alternatief.
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+Wanneer het `message` fout is, wordt de foutmelding ingesteld als de waarden van `actual` en `expected` gescheiden door de verstrekte `operator`. Wanneer alleen de twee `actual` en `expected` argumenten zijn verstrekt, dan zal de `operator` naar de standaard `'!='` gaan. Wanneer `message` is verschaft als derde argument, zal het als foutmelding gebruikt worden en de andere argumenten worden dan opgeslagen als eigenschappen op het geworpen object. Wanneer `stackStartFunction` is verschaft, dan zullen alle stack frames boven die functie worden verwijderd van stacktrace (zie [`Error.captureStackTrace`]). Wanneer geen argumenten worden gegeven, dan wordt het standaard `Failed` bericht gebruikt.
 
 ```js
 const assert = require('assert').strict;
