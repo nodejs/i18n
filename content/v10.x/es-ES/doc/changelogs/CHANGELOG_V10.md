@@ -748,7 +748,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`7248171e4c`](https://github.com/nodejs/node/commit/7248171e4c)] - **doc**: unificar las estructuras de la sección (Vse Mozhet Byt) [#20028](https://github.com/nodejs/node/pull/20028)
 * [[`98008dc6a0`](https://github.com/nodejs/node/commit/98008dc6a0)] - **doc**: "close event" no toma ningún argumento (Indranil Dasgupta) [#20031](https://github.com/nodejs/node/pull/20031)
 * [[`b806b04688`](https://github.com/nodejs/node/commit/b806b04688)] - **doc**: incluir código de error en la documentación de buffer (Rich Trott) [#19982](https://github.com/nodejs/node/pull/19982)
-* [[`846f4e1c9f`](https://github.com/nodejs/node/commit/846f4e1c9f)] - **doc**: add missing type=misc top comments (Vse Mozhet Byt) [#20022](https://github.com/nodejs/node/pull/20022)
+* [[`846f4e1c9f`](https://github.com/nodejs/node/commit/846f4e1c9f)] - **doc**: añadir comentarios superiores de type=misc faltantes (Vse Mozhet Byt) [#20022](https://github.com/nodejs/node/pull/20022)
 * [[`86c1f19a8c`](https://github.com/nodejs/node/commit/86c1f19a8c)] - **doc**: add missing YAML keyword in v8.md metadata (Vse Mozhet Byt) [#20023](https://github.com/nodejs/node/pull/20023)
 * [[`cb2e78aca3`](https://github.com/nodejs/node/commit/cb2e78aca3)] - **doc**: remove \_writableState reference (Anatoli Papirovski) [#20004](https://github.com/nodejs/node/pull/20004)
 * [[`e635723157`](https://github.com/nodejs/node/commit/e635723157)] - **doc**: add net socket write signature (Gurin, Sebastian) [#19967](https://github.com/nodejs/node/pull/19967)
