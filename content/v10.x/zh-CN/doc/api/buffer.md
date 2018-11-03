@@ -1125,9 +1125,9 @@ changes:
 
 如果 `value` 是：
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
-* a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+* 一个字符串，则 `value` 根据 `encoding` 的字符编码进行解析。
+* 一个 `Buffer` 或 [`Uint8Array`]， `value` 会被作为一个整体使用。 如果要比较部分 `Buffer`，请使用 [`buf.slice()`]。
+* 一个数字，`value` 会解析为一个介于 `0` 到 `255` 之间的无符号八位整数值。
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1153,9 +1153,9 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 // Prints: 6
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果强制转换结果是 `NaN` 或 `0`，那么将会搜索整个buffer。 该行为和 [`String#indexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1173,7 +1173,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
 
 ### buf.keys()
 
