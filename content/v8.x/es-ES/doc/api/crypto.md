@@ -1024,7 +1024,7 @@ Verifica los datos empleados, utilizando el `object` y la `signature` dados. El 
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
-Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la llave pública.
+Regresa `true` o `false`, dependiendo de los valores de la firma para los datos y la clave pública.
 
 The `verify` object can not be used again after `verify.verify()` has been called. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
