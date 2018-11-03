@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
 
 ## assert.fail([message])
 
@@ -524,7 +524,7 @@ assert.fail('boom');
 // AssertionError [ERR_ASSERTION]: boom
 
 assert.fail(new TypeError('need array'));
-// TypeError: benodigd reeks
+// TypeError: reeks benodigd
 ```
 
 Het gebruik van `assert.fail()` met meer dan twee argumenten is mogelijk maar verouderd. Zie hieronder voor meer details.
