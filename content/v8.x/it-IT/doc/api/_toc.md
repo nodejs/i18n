@@ -20,7 +20,7 @@
 * [DNS](dns.html)
 * [Dominio](domain.html)
 * [ECMAScript Modules](esm.html)
-* [Errori](errors.html)
+* [Errors](errors.html)
 * [Eventi](events.html)
 * [File System](fs.html)
 * [Globali](globals.html)
