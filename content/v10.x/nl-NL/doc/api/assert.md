@@ -423,11 +423,11 @@ Let op: Het gebruik van `assert.doesNotThrow()` is niet nuttig, want er is geen 
 
 Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddelijk de `block` functie aanroepen.
 
-Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. Wanneer de fout van een ander type is, of al de `error` parameter ongedefinieerd is, dan wordt de fout teruggegeven aan de aanroepfunctie.
 
 Wanneer dit is gespecificeerd, kan een `error` een [`Class`][], [`RegExp`][] of een valideringsfunctie zijn. Zie [`assert.throws()`][] voor meer details.
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Het volgende, bijvoorbeeld, zal de [`TypeError`][] gooien, want er is geen overeenkomstig fout type in de bewering:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+Het volgende zal echter resulteren in een `AssertionError` met de boodschap 'Kreeg ongewenste uitzondering...':
 
 <!-- eslint-disable no-restricted-syntax -->
 
