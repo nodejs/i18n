@@ -1216,7 +1216,7 @@ changes:
 * `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
 * 返回：{integer} 在 `buf` 中 `value` 最后一次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+与 [`buf.indexOf()`] 类似，但 [`buf.indexOf()`] 是搜索第一次出现的索引。
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
@@ -1244,9 +1244,9 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 // Prints: 4
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果参数被强制转换后得到 `NaN`，例如 `{}` 或 `undefined`，那么将会搜索整个buffer。 该行为和 [`String#lastIndexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1267,7 +1267,7 @@ console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`，那么返回 `byteOffset`。
 
 ### buf.length
 
@@ -1275,9 +1275,9 @@ If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
 added: v0.1.90
 -->
 
-* {integer}
+* {整型}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+返回为 `buf` 分配的内存量（以字节为单位）。 注意，这并不一定反映 `buf` 中可用的数据量。
 
 ```js
 // Create a `Buffer` and write a shorter ASCII string to it.
@@ -1293,7 +1293,7 @@ console.log(buf.length);
 // Prints: 1234
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+虽然 `length` 属性不是不可变的，但是更改 `length` 的值可能会导致不确定和不一致的行为。 Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
 
 ```js
 let buf = Buffer.allocUnsafe(10);
