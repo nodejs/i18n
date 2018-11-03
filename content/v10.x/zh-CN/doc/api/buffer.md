@@ -1275,7 +1275,7 @@ console.log(b.lastIndexOf('b', []));
 added: v0.1.90
 -->
 
-* {整型}
+* {integer}
 
 返回为 `buf` 分配的内存量（以字节为单位）。 注意，这并不一定反映 `buf` 中可用的数据量。
 
@@ -1293,7 +1293,7 @@ console.log(buf.length);
 // Prints: 1234
 ```
 
-虽然 `length` 属性不是不可变的，但是更改 `length` 的值可能会导致不确定和不一致的行为。 Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+虽然 `length` 属性不是不可变的，但是更改 `length` 的值可能会导致不确定和不一致的行为。 那些希望更改 `Buffer` 的长度的应用程序应当将 `length` 视为只读的参数，并且使用 [`buf.slice()`] 创建一个新的 `Buffer`。
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1315,9 +1315,9 @@ console.log(buf.length);
 deprecated: v8.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`buf.buffer`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`buf.buffer`]。
 
-The `buf.parent` property is a deprecated alias for `buf.buffer`.
+`buf.parent` 属性是 `buf.buffer` 不推荐使用的别名。
 
 ### buf.readDoubleBE(offset)
 
@@ -1333,8 +1333,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`.
-* Returns: {number}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 8`。
+* 返回：{number}
 
 Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
 
@@ -1917,7 +1917,7 @@ changes:
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 8`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
