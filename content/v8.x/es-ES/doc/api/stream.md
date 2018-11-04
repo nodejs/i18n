@@ -22,11 +22,11 @@ Mientras es importante para todos los usuarios de Node.js entender como trabaja 
 
 Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. La primera sección explica los elementos de la API de stream que se requieren para *utilizar* streams en una aplicación. La segunda sección explica los elementos de la API que se requieren para *implementar* nuevos tipos de streams.
 
-## Types of Streams
+## Tipos de Streams
 
-There are four fundamental stream types within Node.js:
+Existen cuatro tipos fundamentales de stream en Node.js:
 
-* [Readable](#stream_class_stream_readable) - streams from which data can be read (for example [`fs.createReadStream()`][]).
+* [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
 * [Writable](#stream_class_stream_writable) - streams to which data can be written (for example [`fs.createWriteStream()`][]).
 * [Duplex](#stream_class_stream_duplex) - streams that are both Readable and Writable (for example [`net.Socket`][]).
 * [Transform](#stream_class_stream_transform) - Duplex streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
