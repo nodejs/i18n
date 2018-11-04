@@ -140,7 +140,7 @@ Con l’option `all` impostata su `true`, gli argomenti per il `callback` cambia
 
 In caso di errore, `err` è un [`Error`][] object, dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptor.
 
-`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nome con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
+`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nomi con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [Sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
 
 Esempio di utilizzo:
 
@@ -158,17 +158,17 @@ dns.lookup('example.com', options, (err, address, family) =>
 options.all = true;
 dns.lookup('example.com', options, (err, addresses) =>
   console.log('addresses: %j', addresses));
-// indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
+// addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e non è impostato come `true`, il suo risultato è `Promise` per un `Object` con `address` e proprietà `family`.
+Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e `all` non è impostato come `true`, restituisce una `Promise` per un `Object` con proprietà `address` e `family`.
 
 ### Flags getaddrinfo supportati
 
 I seguenti flags possono essere passati come suggerimenti a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Restituisce il tipo di indirizzo, determinato, tra i tipi di indirizzi che il sistema supporta in quel momento. Ad Esempio. Gli indirizzi IPv4 saranno restituiti se nel sistema attualmente è presente almeno un indirizzo IPv4 configurato. Gli indirizzi di loopback non sono considerati.
-- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
+- `dns.ADDRCONFIG`: I tipi di indirizzo restituiti sono determinati dai tipi di indirizzi supportati dal sistema corrente. Ad esempio, vengono restituiri indirizzi IPv4 solo se nel sistema attuale è configurato almeno un indirizzo IPv4. Gli indirizzi di loopback non sono considerati.
+- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non viene trovato alcun indirizzo IPv6, allora viene restituito un indirizzo IPv4 mappato come un indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -180,14 +180,14 @@ added: v0.11.14
 - `port` {number}
 - `callback` {Function} 
   - `err` {Error}
-  - `hostname` {string} esempio. `example.com`
-  - `service` {string} esempio. `http`
+  - `hostname` {string} es. `example.com`
+  - `service` {string} es. `http`
 
 Risolve l'`address` e la `port` specificata in un hostname e in un servizio utilizzando l'implementazione `getnameinfo` del sistema operativo sottostante.
 
-Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta valida, un `TypeError` verrà mostrato.
+Se l'`address` non è un indirizzo IP valido, verrà emesso un `TypeError`. La `port` sarà associata a un numero. Se non è una porta valida, verrà emesso un `TypeError`.
 
-In un errore, `err` è un oggetto di [`Error`][], dove `err.code` è il codice dell'errore.
+In un errore, `err` è un [`Error`][] object, dove `err.code` è il codice dell'errore.
 
 ```js
 const dns = require('dns');
@@ -197,7 +197,7 @@ dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
 });
 ```
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con `hostname` e le proprietà del `service`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce una `Promise` per un `Object` con proprietà `hostname` e `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
