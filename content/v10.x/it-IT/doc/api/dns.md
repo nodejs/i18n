@@ -21,7 +21,7 @@ console.log('address: %j family: IPv%s', address, family);
 
 2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns` *tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
 
-Di seguito è riportato un esempio di risoluzione di `'archive.org'`, quindi l'indirizzo IP che ci viene restituito è risolto all'inverso.
+Di seguito è riportato un esempio di risoluzione di `'archive.org'`, che poi all’inverso risolve gli indirizzi IP restituiti.
 
 ```js
 const dns = require('dns');
@@ -42,7 +42,7 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
+Ci sono sottili differenze nello scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
 
 ## Classe: dns.Resolver
 
@@ -52,7 +52,7 @@ added: v8.3.0
 
 Un resolver indipendente per le richieste DNS.
 
-Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Le impostazioni utilizzate per un resolver che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri resolver:
+Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Impostando i server utilizzati per un resolver utilizzando [`resolver.setServers()`][`dns.setServers()`] non ha nessun effetto sugli altri resolver:
 
 ```js
 const { Resolver } = require('dns');
