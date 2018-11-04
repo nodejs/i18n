@@ -29,9 +29,9 @@ Existen cuatro tipos fundamentales de stream en Node.js:
 * [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
 * [Escribible](#stream_class_stream_writable) - streams en los que se pueden escribir datos (por ejemplo [`fs.createWriteStream()`][]).
 * [Dúplex](#stream_class_stream_duplex) - streams que son tanto Legibles como Escribibles (por ejemplo [`net.Socket`][]).
-* [Transform](#stream_class_stream_transform) - Duplex streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
+* [Transformar](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
 
-### Object Mode
+### Modo Objeto
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
