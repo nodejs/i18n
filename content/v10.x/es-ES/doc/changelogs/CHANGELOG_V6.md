@@ -2590,7 +2590,7 @@ Esta actualización de LTS viene con 312 commits. Esto incluye a 229 que están 
 * [[`4fce85554a`](https://github.com/nodejs/node/commit/4fce85554a)] - **test**: refactorizar prueba para la escucha de red en fd0 (Julian Duque) [#10025](https://github.com/nodejs/node/pull/10025)
 * [[`b7619e3b16`](https://github.com/nodejs/node/commit/b7619e3b16)] - **test**: actualizar assert.equal() a assert.strictEqual() (Peter Diaz) [#10024](https://github.com/nodejs/node/pull/10024)
 * [[`a6096041c6`](https://github.com/nodejs/node/commit/a6096041c6)] - **test**: usar const o let y assert.strictEqual (Christopher Rokita) [#10001](https://github.com/nodejs/node/pull/10001)
-* [[`cc8100a529`](https://github.com/nodejs/node/commit/cc8100a529)] - **test**: reparar pruebas de asignación de buffer (levsoroka) [#9998](https://github.com/nodejs/node/pull/9998)
+* [[`cc8100a529`](https://github.com/nodejs/node/commit/cc8100a529)] - **test**: arreglar pruebas de asignación de buffer (levsoroka) [#9998](https://github.com/nodejs/node/pull/9998)
 * [[`eb61d918b1`](https://github.com/nodejs/node/commit/eb61d918b1)] - **test**: Se añadieron más validaciones a setEncoding (Paul Lucas) [#9997](https://github.com/nodejs/node/pull/9997)
 * [[`fe59a67b6e`](https://github.com/nodejs/node/commit/fe59a67b6e)] - **test**: usar domain-http de strictEqual() (cdnadmin) [#9996](https://github.com/nodejs/node/pull/9996)
 * [[`ced89ede03`](https://github.com/nodejs/node/commit/ced89ede03)] - **test**: refactorizar test-cluster-worker-events (fmizzell) [#9994](https://github.com/nodejs/node/pull/9994)
