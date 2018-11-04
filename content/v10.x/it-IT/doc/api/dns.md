@@ -4,7 +4,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il Modulo `dns` contiene funzioni appartenenti a due diverse categorie:
+Il modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
 1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
 
