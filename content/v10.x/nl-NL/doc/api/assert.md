@@ -603,7 +603,7 @@ changes:
 
 * `value` {any}
 
-Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
+Werpt `value` wanneer `value` niet `undefined` is, of `null`. Dit is handig bij het testen van het `error` argument in callbacks. De stack trace bevat alle frames van de fout die is doorgegeven aan `ifError()` inclusief de potentiële nieuwe frames voor `ifError()` zelf. Kijk hieronder voor een voorbeeld.
 
 ```js
 const assert = require('assert').strict;
@@ -617,7 +617,7 @@ assert.ifError('error');
 assert.ifError(new Error());
 // AssertionError [ERR_ASSERTION]: ifError got unwanted exception: Error
 
-// Create some random error frames.
+// Creëer willekeurige fout frames.
 let err;
 (function errorFrame() {
   err = new Error('test error');
@@ -660,11 +660,11 @@ changes:
 
 **Strikte modus**
 
-An alias of [`assert.notDeepStrictEqual()`][].
+Een alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy modus**
 
-> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.notDeepStrictEqual()`][].
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
