@@ -570,7 +570,7 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: reeks nodig
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+In de laatste drie gevallen hebben `actual`, `expected`, en `operator` geen invloed op de foutmelding.
 
 Example use of `stackStartFunction` for truncating the exception's stacktrace:
 
