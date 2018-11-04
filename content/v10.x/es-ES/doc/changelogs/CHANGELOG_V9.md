@@ -1233,7 +1233,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`79d3198b7f`](https://github.com/nodejs/node/commit/79d3198b7f)] - **http2**: add aligned padding strategy (James M Snell) [#17938](https://github.com/nodejs/node/pull/17938)
   * [[`2b6a5d90bd`](https://github.com/nodejs/node/commit/2b6a5d90bd)] - **http2**: agregar soporte inicial para originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
   * [[`9ad7a9a333`](https://github.com/nodejs/node/commit/9ad7a9a333)] - **http2**: agregar soporte de altsvc (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
-  * [[`e7a727e9ba`](https://github.com/nodejs/node/commit/e7a727e9ba)] - **http2**: limitar estrictamente el numero de streams concurrentes (James M Snell) [#16766](https://github.com/nodejs/node/pull/16766)
+  * [[`e7a727e9ba`](https://github.com/nodejs/node/commit/e7a727e9ba)] - **http2**: limitar estrictamente el número de streams concurrentes (James M Snell) [#16766](https://github.com/nodejs/node/pull/16766)
   * [[`06aaaa8ad7`](https://github.com/nodejs/node/commit/06aaaa8ad7)] - **http2**: integración de perf_hooks (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
   * [[`a003ded7fb`](https://github.com/nodejs/node/commit/a003ded7fb)] - **http2**: eliminar palabras duplicadas en comentarios (Tobias Nießen) [#17939](https://github.com/nodejs/node/pull/17939)
   * [[`1b7ce1ea02`](https://github.com/nodejs/node/commit/1b7ce1ea02)] - **http2**: implementar ref() y unref() en sesiones de cliente (Kelvin Jin) [#17620](https://github.com/nodejs/node/pull/17620)
