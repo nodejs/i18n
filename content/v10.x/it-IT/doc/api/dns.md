@@ -125,10 +125,10 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family`{integer} Il record family. Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
+  - `family`{integer} Il record family. Deve essere `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
   - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
   - `all` {boolean} Quando `true`, il callback restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
-  - `verbatim` {boolean} Quando `true`. il callback riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il resolver DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
+  - `verbatim` {boolean} Quando `true` il callback riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il resolver DNS li ha restituiti. Quando `false`, gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
   - `address` {string} Una stringa che rappresenta un indirizzo IPv4 o IPv6.
@@ -136,9 +136,9 @@ changes:
 
 Risolve un hostname (es. `'nodejs.org'`) nei primi record A (IPv4) oppure AAAA (Ipv6) trovati. Tutte le proprietà `option` sono facoltative. Se `options` è un intero, allora deve essere `4` o `6` - se `options` non è fornito, allora gli indirizzi IPv4 e IPv6 saranno restituiti entrambi, se trovati.
 
-Con `tutte` le opzioni impostate a `true`, gli argomenti per il `callback` cambiano `(err, addresses)`, in `addresses` diventando quindi un array di oggetti con le proprietà `address` e `family`.
+Con l’option `all` impostata su `true`, gli argomenti per il `callback` cambiano in `(err, addresses)`, con `addresses` che rappresenta un array di oggetti con le proprietà `address` e `family`.
 
-In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptors.
+In caso di errore, `err` è un [`Error`][] object, dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptor.
 
 `dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nome con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
 
