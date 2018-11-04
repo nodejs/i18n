@@ -220,11 +220,11 @@ added: v0.3.3
 
 * Retorna: {Array}
 
-The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
+O método `os.loadavg()` retorna um array contendo os 1, 5, e 15 minutos de carga média.
 
-The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+A carga média é uma medida da atividade do sistema, calculada pelo sistema operacional e expressa como um número fracionário. Como regra geral, a carga média deve idealmente ser menor que o número de CPUs lógicas no sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+A carga média é um conceito específico do UNIX com nenhum equivalente real em plataformas Windows. No Windows, o valor de retorno é sempre `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
@@ -234,13 +234,13 @@ added: v0.6.0
 
 * Retorna: {Object}
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+O método `os.networkInterfaces()` retorna um objeto contendo somente as interfaces as quais foram atribuídas um endereço de rede.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Cada chave no objeto retornado identifica uma interface de rede. O valor associado é um array de objetos em que cada um descreve um endereço de rede atribuído.
 
-The properties available on the assigned network address object include:
+As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
-* `address` {string} The assigned IPv4 or IPv6 address
+* `address` {string} O endereço IPv4 ou IPv6 atribuído
 * `netmask` {string} The IPv4 or IPv6 network mask
 * `family` {string} Either `IPv4` or `IPv6`
 * `mac` {string} The MAC address of the network interface

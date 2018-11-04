@@ -1,4 +1,4 @@
-# التشفير (Crypto)
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 

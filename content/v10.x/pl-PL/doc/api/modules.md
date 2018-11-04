@@ -640,20 +640,20 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-To illustrate the behavior, imagine this hypothetical implementation of `require()`, which is quite similar to what is actually done by `require()`:
+Aby zilustrować zachowanie, wyobraź sobie tę hipotetyczną implementację `require ()`, która jest bardzo podobna do tego, co faktycznie zostało wykonane przez `require ()`:
 
 ```js
 function require(/* ... */) {
   const module = { exports: {} };
   ((module, exports) => {
     // Module code here. In this example, define a function.
-    function someFunc() {}
-    exports = someFunc;
-    // At this point, exports is no longer a shortcut to module.exports, and
-    // this module will still export an empty default object.
+    funkcja someFunc () {}
+     eksport = someFunc;
+     // W tym momencie eksport nie jest już skrótem do module.exports i
+     // ten moduł będzie nadal eksportował pusty obiekt domyślny.
     module.exports = someFunc;
-    // At this point, the module will now export someFunc, instead of the
-    // default object.
+     // W tym momencie moduł wyeksportuje someFunc, zamiast
+     // domyślnego obiektu.
   })(module, module.exports);
   return module.exports;
 }
@@ -687,7 +687,7 @@ added: v0.1.16
 
 * {boolean}
 
-Whether or not the module is done loading, or is in the process of loading.
+Czy moduł jest załadowany, czy jest w trakcie ładowania.
 
 ### module.parent
 
@@ -718,7 +718,7 @@ added: v0.5.1
 * `id` {string}
 * Returns: {Object} `module.exports` from the resolved module
 
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+Metoda `module.require` zapewnia sposób, aby załadować moduł, jak gdyby `require ()` został wywołany z oryginalnego modułu.
 
 In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Zapewnia ogólne metody użyteczności podczas interakcji z instancjami `Module` — zmiennej `Module` często występującej w modułach plików. Accessed via `require('module')`.
 
 ### module.builtinModules
 
@@ -740,7 +740,7 @@ added: v9.3.0
 
 * {string[]}
 
-A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third party or not.
+Lista nazw wszystkich modułów dostarczonych przez Node.js. Can be used to verify if a module is maintained by a third party or not.
 
 Note that `module` in this context isn't the same object that's provided by the [module wrapper](#modules_the_module_wrapper). To access it, require the `Module` module:
 

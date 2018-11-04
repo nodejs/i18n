@@ -1,4 +1,4 @@
-# Modules
+# Módulos
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,16 +6,16 @@
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+No sistema de módulos do Node.js, cada arquivo é tratado como um módulo separado. Por exemplo, considere o arquivo `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+Na primeira linha, `foo.js` carrega o módulo `circle.js` que está no mesmo diretório de `foo.js`.
 
-Here are the contents of `circle.js`:
+Eis o conteúdo de `circle.js`:
 
 ```js
 const { PI } = Math;
@@ -25,7 +25,7 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+O módulo `circle.js` exportou as funções `area()` e `circumference()`. Funções e objetos são adicionados à raiz de um módulo, especificando propriedades adicionais no objeto especial de `exports`.
 
 Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 

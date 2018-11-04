@@ -236,7 +236,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 ###### 异步上下文示例
 
-下面是一个示例，其中包含关于`before`和`after`调用之间的`init`调用的额外信息，特别是从回调函数到`listen()`函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
+下面是一个示例，其中包含介于`before`和`after`之间的`init`调用的额外信息，特别是到`listen()`的回调函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
 
 ```js
 let indent = 0;
@@ -301,7 +301,7 @@ destroy: 5
 
 *注意*：正如示例所示，`executionAsyncId()` 和 `execution` 两者都提供当前执行上下文的值；该值由对 `before` 和 `after` 的调用所设定。
 
-仅使用 `execution` 来进行资源分配，会导致如下结果：
+仅使用 `execution` 来图示资源分配，会导致如下结果：
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
@@ -317,7 +317,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 当异步操作被初始化 (例如TCP服务器收到新连接) 或完成时 (例如将数据写入磁盘)，回调函数被调用以通知用户。 `before` 在回调函数被调用之前被执行。 `asyncId` 是被分配给执行回调函数的资源的唯一标识符。
 
-`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用一次，或者，例如，如果TCP服务器没有接收到任何连接。 将像 TCP 服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
+`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用0次，或者，例如，如果TCP服务器没有接收到任何连接。 将像TCP服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
 
 ##### `after(asyncId)`
 
@@ -325,13 +325,13 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 在 `before` 中指定的回调函数结束后立即调用。
 
-*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出*后*，或`域`处理器返回时执行。
+*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出，或`域`处理器执行*后*运行。
 
 ##### `destroy(asyncId)`
 
 * `asyncId` {number}
 
-在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 被异步调用。
+在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 中被异步调用。
 
 *注意：* 一些资源依赖于垃圾回收以进行清理，因此如果一个引用是到传递给`init`的`资源`对象的，就有可能导致 `destroy` 从不会被调用，进而导致应用程序中的内存泄露。 如果资源不依赖于垃圾回收，这就没有问题。
 
@@ -339,11 +339,11 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 * `asyncId` {number}
 
-当传递给 `Promise` 构造器的 `resolve` 函数被调用时，它会被调用 (直接或其他处理promise的方法)。
+当传递给 `Promise` 构造器的 `resolve` 函数被调用 (被直接调用或通过其他完成promise的方法调用) 时，它会被调用。
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
-*注意：如果通过假定另一个 `Promise` 的状态而解决当前的 `Promise`，* 这并不意味着 `Promise` 被满足或在这一点上被拒绝了。
+*注意：如果通过假定另一个 `Promise` 的状态而完成当前的 `Promise`，* 这并不意味着 `Promise` 被完成或在这一点上被拒绝了。
 
 例如：
 
@@ -373,7 +373,7 @@ changes:
     description: Renamed from currentId
 -->
 
-* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些调用时非常有用。
 
 例如：
 
@@ -404,7 +404,7 @@ const server = net.createServer(function onConnection(conn) {
 
 #### `async_hooks.triggerAsyncId()`
 
-* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
+* 返回：{number} 负责调用正在被执行的回调函数的资源ID。
 
 例如：
 
@@ -425,7 +425,7 @@ const server = net.createServer((conn) => {
 
 ## JavaScript Embedder API
 
-处理自己的诸如I/O，连接池等异步资源库，或管理回调函数队列的开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
+处理自己的诸如I/O，连接池等异步资源，或管理回调函数队列的库开发者可以使用 `AsyncWrap` JavaScript API，以确保适当的回调函数被调用。
 
 ### `AsyncResource() 类`
 
@@ -468,7 +468,7 @@ asyncResource.triggerAsyncId();
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **默认值：** `executionAsyncId()`
-  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认值：** `false`
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动的 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认值：** `false`
 
 示例用法：
 

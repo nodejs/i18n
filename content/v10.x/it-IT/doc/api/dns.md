@@ -159,14 +159,14 @@ dns.lookup('example.com', options, (err, addresses) =>
 // indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, and `all` is not set to `true`, it returns a `Promise` for an `Object` with `address` and `family` properties.
+Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e non è impostato come `true`, il suo risultato è `Promise` per un `Object` con `address` e proprietà `family`.
 
 ### Flags getaddrinfo supportati
 
-The following flags can be passed as hints to [`dns.lookup()`][].
+I seguenti flags possono essere passati come suggerimenti a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Returned address types are determined by the types of addresses supported by the current system. For example, IPv4 addresses are only returned if the current system has at least one IPv4 address configured. Loopback addresses are not considered.
-- `dns.V4MAPPED`: If the IPv6 family was specified, but no IPv6 addresses were found, then return IPv4 mapped IPv6 addresses. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
+- `dns.ADDRCONFIG`: Restituisce il tipo di indirizzo, determinato, tra i tipi di indirizzi che il sistema supporta in quel momento. Ad Esempio. Gli indirizzi IPv4 saranno restituiti se nel sistema attualmente è presente almeno un indirizzo IPv4 configurato. Gli indirizzi di loopback non sono considerati.
+- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -178,24 +178,24 @@ added: v0.11.14
 - `port` {number}
 - `callback` {Function} 
   - `err` {Error}
-  - `hostname` {string} e.g. `example.com`
-  - `service` {string} e.g. `http`
+  - `hostname` {string} esempio. `example.com`
+  - `service` {string} esempio. `http`
 
-Resolves the given `address` and `port` into a hostname and service using the operating system's underlying `getnameinfo` implementation.
+Risolve l'`address` e la `port` specificata in un hostname e in un servizio utilizzando l'implementazione `getnameinfo` del sistema operativo sottostante.
 
-If `address` is not a valid IP address, a `TypeError` will be thrown. The `port` will be coerced to a number. If it is not a legal port, a `TypeError` will be thrown.
+Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta valida, un `TypeError` verrà mostrato.
 
-On an error, `err` is an [`Error`][] object, where `err.code` is the error code.
+In un errore, `err` è un oggetto di [`Error`][], dove `err.code` è il codice dell'errore.
 
 ```js
 const dns = require('dns');
 dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
   console.log(hostname, service);
-  // Prints: localhost ssh
+  // Stampa: localhost ssh
 });
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `hostname` and `service` properties.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con `hostname` e le proprietà del `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
@@ -203,29 +203,29 @@ If this method is invoked as its [`util.promisify()`][]ed version, it returns a 
 added: v0.1.27
 -->
 
-- `hostname` {string} Hostname to resolve.
-- `rrtype` {string} Resource record type. **Default:** `'A'`.
+- `hostname` {string} Hostname da risolvere.
+- `rrtype` {string} Tipo di record della risorsa. **Predefinito:** `'A'`.
 - `callback` {Function} 
   - `err` {Error}
   - `records` {string[] | Object[] | Object}
 
-Uses the DNS protocol to resolve a hostname (e.g. `'nodejs.org'`) into an array of the resource records. The `callback` function has arguments `(err, records)`. When successful, `records` will be an array of resource records. The type and structure of individual results varies based on `rrtype`:
+Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. Quando ha successo, il `records` sarà un array delle risorse dei record. Il tipo e la struttura dei risultati individuali varia in base al suo `rrtype`:
 
-| `rrtype`  | `records` contains             | Result type | Shorthand method         |
-| --------- | ------------------------------ | ----------- | ------------------------ |
-| `'A'`     | IPv4 addresses (default)       | {string}    | [`dns.resolve4()`][]     |
-| `'AAAA'`  | IPv6 addresses                 | {string}    | [`dns.resolve6()`][]     |
-| `'CNAME'` | canonical name records         | {string}    | [`dns.resolveCname()`][] |
-| `'MX'`    | mail exchange records          | {Object}    | [`dns.resolveMx()`][]    |
-| `'NAPTR'` | name authority pointer records | {Object}    | [`dns.resolveNaptr()`][] |
-| `'NS'`    | name server records            | {string}    | [`dns.resolveNs()`][]    |
-| `'PTR'`   | pointer records                | {string}    | [`dns.resolvePtr()`][]   |
-| `'SOA'`   | start of authority records     | {Object}    | [`dns.resolveSoa()`][]   |
-| `'SRV'`   | service records                | {Object}    | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | text records                   | {string[]}  | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | any records                    | {Object}    | [`dns.resolveAny()`][]   |
+| `rrtype`  | `records` Contiene                       | Tipo di Risultato | Metodo Stenografico      |
+| --------- | ---------------------------------------- | ----------------- | ------------------------ |
+| `'A'`     | Indirizzi IPv4 (predefiniti)             | {string}          | [`dns.resolve4()`][]     |
+| `'AAAA'`  | Indirizzi IPv6                           | {string}          | [`dns.resolve6()`][]     |
+| `'CNAME'` | nome canonico del record                 | {string}          | [`dns.resolveCname()`][] |
+| `'MX'`    | mail exchange records                    | {Object}          | [`dns.resolveMx()`][]    |
+| `'NAPTR'` | record del puntatore della name autority | {Object}          | [`dns.resolveNaptr()`][] |
+| `'NS'`    | record del nome del server               | {string}          | [`dns.resolveNs()`][]    |
+| `'PTR'`   | record del puntatore                     | {string}          | [`dns.resolvePtr()`][]   |
+| `'SOA'`   | inizio dei record di authority           | {Object}          | [`dns.resolveSoa()`][]   |
+| `'SRV'`   | record di servizio                       | {Object}          | [`dns.resolveSrv()`][]   |
+| `'TXT'`   | record di testo                          | {string[]}        | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | record qualsiasi                         | {Object}          | [`dns.resolveAny()`][]   |
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+In caso di errore, `err` è un oggetto di `Error`][], dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
 
 ## dns.resolve4(hostname[, options], callback)
 
@@ -239,14 +239,14 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '1.2.3.4', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '1.2.3.4', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Uses the DNS protocol to resolve a IPv4 addresses (`A` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv4 addresses (e.g. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (records `A`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv4 ( Esempio `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
 
 ## dns.resolve6(hostname[, options], callback)
 
@@ -260,14 +260,14 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Uses the DNS protocol to resolve a IPv6 addresses (`AAAA` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv6 addresses.
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv6 (records `AAAA`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv6.
 
 ## dns.resolveCname(hostname, callback)
 
@@ -280,7 +280,7 @@ added: v0.3.2
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve `CNAME` records for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of canonical name records available for the `hostname` (e.g. `['bar.example.com']`).
+Utilizza il protocollo DNS per risolvere i record `CNAME` per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di record di nomi canonici disponibili per l'`hostname` (esempio `['bar.example.com']`).
 
 ## dns.resolveMx(hostname, callback)
 
@@ -291,9 +291,9 @@ added: v0.1.27
 - `hostname` {string}
 - `callback` {Function} 
   - `err` {Error}
-  - `addresses` {Object[]}
+  - `address` {Object}[]}
 
-Uses the DNS protocol to resolve mail exchange records (`MX` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects containing both a `priority` and `exchange` property (e.g. `[{priority: 10, exchange: 'mx.example.com'}, ...]`).
+Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` records) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà, la `priority` e l'`exchange` (ad esempio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
 ## dns.resolveNaptr(hostname, callback)
 
@@ -304,9 +304,9 @@ added: v0.9.12
 - `hostname` {string}
 - `callback` {Function} 
   - `err` {Error}
-  - `addresses` {Object[]}
+  - `address` {Object}[]}
 
-Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects with the following properties:
+Utilizza il protocollo DNS per risolvere i record basati sulle espressioni regolari (Record `NAPTR`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di oggetti con le seguente proprietà:
 
 - `flags`
 - `service`

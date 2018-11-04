@@ -467,9 +467,9 @@ NAPI_NO_RETURN void napi_fatal_error(const char* location,
 ```
 
 - `[in] location`: Optionale Stelle, an der der Fehler aufgetreten ist.
-- `[in] location_len`: Die Länge der Position in Bytes, oder `NAPI_AUTO_LENGTH` wenn sie null-terminiert ist.
+- `[in] location_len`: Die Länge der Position in Bytes oder `NAPI_AUTO_LENGTH`, wenn sie null-terminiert ist.
 - `[in] message`: Die mit dem Fehler im Zusammenhang stehende Nachricht.
-- `[in] location_len`: Die Länge der Nachricht in Bytes, oder `NAPI_AUTO_LENGTH` wenn sie null-terminiert ist.
+- `[in] location_len`: Die Länge der Nachricht in Bytes oder `NAPI_AUTO_LENGTH`, wenn sie null-terminiert ist.
 
 Der Funktionsaufruf wird nicht zurückgesendet, der Prozess wird abgebrochen.
 
@@ -477,7 +477,7 @@ Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception ausst
 
 ## Object Lifetime Management
 
-Während N-API-Aufrufe erfolgen, können Handles auf Objekte im Heap für die zugrunde liegende VM als `napi_values` zurückgesendet werden. Diese Handles müssen die Objekte so lange "live" halten, bis sie vom nativen Code nicht mehr benötigt werden, sonst könnten die Objekte eingesammelt werden, bevor der native Code mit ihnen beendet wurde.
+Während N-API-Aufrufe erfolgen, können Handles auf Objekte im Heap für die zugrunde liegende VM als `napi_values` zurückgesendet werden. Diese Handles müssen die Objekte so lange "live" halten, bis sie vom nativen Code nicht mehr benötigt werden, sonst könnten die Objekte eingesammelt werden, bevor der native Code sie benutzt hat.
 
 Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpft. Die Lebensdauer für den Standard-Scope ist an die Lebensdauer des nativen Methodenaufrufs gebunden. Das Ergebnis ist, dass die Handles standardmäßig gültig bleiben und die mit diesen Handles verbundenen Objekte während der Lebensdauer des nativen Methodenaufrufs live gehalten werden.
 
@@ -504,7 +504,7 @@ Um diesen Fall zu bearbeiten, bietet N-API die Möglichkeit, einen neuen "Scope"
 
 N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. Es gibt zu jeder Zeit nur einen aktiven Scope, und alle neuen Handles werden diesem Scope zugeordnet, während er aktiv ist. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, in der sie geöffnet werden. Darüber hinaus müssen alle innerhalb einer nativen Methode erstellten Scopes geschlossen werden, bevor von dieser Methode zurückgekehrt wird.
 
-Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] sicher stellen, dass höchstens ein einziges Handle während der Ausführung des Loops gültig ist:
+Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] sicherstellen, dass höchstens ein einziges Handle während der Ausführung des Loops gültig ist:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -526,7 +526,7 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", so dass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
+Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", sodass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
 
 Die Methoden, die für das Öffnen/Schließen von Escapable-Scopes zur Verfügung stehen, sind folgende: [`napi_open_escapable_handle_scope`][] und [`napi_close_escapable_handle_scope`][].
 
@@ -630,7 +630,7 @@ napi_status napi_escape_handle(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgesendet.
+Diese API fördert das Handle des JavaScript-Objekts, sodass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgesendet.
 
 Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
@@ -638,13 +638,13 @@ Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exc
 
 In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. Um beispielsweise einen Konstruktor anzulegen und diesen Konstruktor später in einem Request zum Erzeugen von Instanzen zu verwenden, muss es möglich sein, das Konstruktorobjekt über viele verschiedene Instanzerstellungsrequests hinweg zu referenzieren. Dies wäre nicht möglich, wenn, wie im vorigen Abschnitt beschrieben, ein normales Handle als `napi_value` zurückgesendet würde. Die Lebensdauer eines normalen Handles wird von Scopes verwaltet und alle Scopes müssen vor dem Ende einer nativen Methode geschlossen werden.
 
-N-API provides methods to create persistent references to an object. Each persistent reference has an associated count with a value of 0 or higher. The count determines if the reference will keep the corresponding object live. References with a count of 0 do not prevent the object from being collected and are often called 'weak' references. Any count greater than 0 will prevent the object from being collected.
+N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat eine zugehörige Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt gesammelt wird und oft als "schwache" Referenzen bezeichnet werden. Jeder Zählwert größer als 0 verhindert, dass das Objekt gesammelt wird.
 
-References can be created with an initial reference count. The count can then be modified through [`napi_reference_ref`][] and [`napi_reference_unref`][]. If an object is collected while the count for a reference is 0, all subsequent calls to get the object associated with the reference [`napi_get_reference_value`][] will return NULL for the returned `napi_value`. An attempt to call [`napi_reference_ref`][] for a reference whose object has been collected will result in an error.
+Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt gesammelt wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den zurückgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt gesammelt wurde, führt zu einem Fehler.
 
-References must be deleted once they are no longer required by the addon. When a reference is deleted it will no longer prevent the corresponding object from being collected. Failure to delete a persistent reference will result in a 'memory leak' with both the native memory for the persistent reference and the corresponding object on the heap being retained forever.
+Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt gesammelt wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
 
-There can be multiple persistent references created which refer to the same object, each of which will either keep the object live or not based on its individual count.
+Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinen individuellen Zählwert basiert.
 
 #### napi_create_reference
 
@@ -659,14 +659,14 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `Object` to which we want a reference.
-- `[in] initial_refcount`: Initial reference count for the new reference.
-- `[out] result`: `napi_ref` pointing to the new reference.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] value`: `napi_value` repräsentiert das `Objekt`, zu dem wir eine Referenz wollen.
+- `[in] initial_refcount`: Initialer Referenzzählwert für die neue Referenz.
+- `[out] result`: `napi_ref` mit dem Hinweis auf die neue Referenz.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API create a new reference with the specified reference count to the `Object` passed in.
+Diese API erstellt eine neue Referenz mit dem angegebenen Referenzzählwert auf das eingegebene `Objekt`.
 
 #### napi_delete_reference
 
@@ -678,14 +678,14 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` to be deleted.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] ref`: `napi_ref`, die gelöscht werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API deletes the reference passed in.
+Diese API löscht die eingegebene Referenz.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 #### napi_reference_ref
 
@@ -699,13 +699,13 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be incremented.
-- `[out] result`: The new reference count.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] ref`: `napi_ref`, für die der Referenzzählwert erhöht wird.
+- `[out] result`: Der neue Referenzzählwert.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API increments the reference count for the reference passed in and returns the resulting reference count.
+Diese API erhöht den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierende Referenzzählwert zurück.
 
 #### napi_reference_unref
 
@@ -719,7 +719,7 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref` for which the reference count will be decremented.
 - `[out] result`: The new reference count.
 

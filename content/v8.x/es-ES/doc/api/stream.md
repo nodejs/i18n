@@ -4,34 +4,34 @@
 
 > Stability: 2 - Stable
 
-A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+Un stream es una interfaz abstracta para trabajar con datos de streaming en Node.js. El módulo `stream` proporciona una API base que hace sencillo construir objetos que implementan la interfaz de stream.
 
-There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Existen muchos objetos de stream proporcionados por Node.js. Por ejemplo, una [solicitud a un servidor HTTP](http.html#http_class_http_incomingmessage) y un [`process.stdout`][] son instancias de stream.
 
-Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
+Los streams pueden ser legible, escribibles, o ambos. Todos los streams son instancias de [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+Se puede acceder al módulo `stream` utilizando:
 
 ```js
 const stream = require('stream');
 ```
 
-While it is important for all Node.js users to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely (if ever) have need to use the `stream` module directly.
+Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de flujo, raramente (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
-## Organization of this Document
+## Organización de este Documento
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. La primera sección explica los elementos de la API de stream que se requieren para *utilizar* streams en una aplicación. La segunda sección explica los elementos de la API que se requieren para *implementar* nuevos tipos de streams.
 
-## Types of Streams
+## Tipos de Streams
 
-There are four fundamental stream types within Node.js:
+Existen cuatro tipos fundamentales de stream en Node.js:
 
-* [Readable](#stream_class_stream_readable) - streams from which data can be read (for example [`fs.createReadStream()`][]).
-* [Writable](#stream_class_stream_writable) - streams to which data can be written (for example [`fs.createWriteStream()`][]).
-* [Duplex](#stream_class_stream_duplex) - streams that are both Readable and Writable (for example [`net.Socket`][]).
-* [Transform](#stream_class_stream_transform) - Duplex streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
+* [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
+* [Escribible](#stream_class_stream_writable) - streams en los que se pueden escribir datos (por ejemplo [`fs.createWriteStream()`][]).
+* [Dúplex](#stream_class_stream_duplex) - streams que son tanto Legibles como Escribibles (por ejemplo [`net.Socket`][]).
+* [Transformar](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
 
-### Object Mode
+### Modo Objeto
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 

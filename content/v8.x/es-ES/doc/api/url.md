@@ -546,7 +546,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### urlSearchParams.entries()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -593,7 +593,7 @@ Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### urlSearchParams.keys()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Returns an ES6 Iterator over the names of each name-value pair.
 
@@ -657,13 +657,13 @@ Returns the search parameters serialized as a string, with characters percent-en
 
 #### urlSearchParams.values()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Returns an ES6 Iterator over the values of each name-value pair.
 
 #### urlSearchParams\[@@iterator\]()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 

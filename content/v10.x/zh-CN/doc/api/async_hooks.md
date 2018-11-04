@@ -236,7 +236,7 @@ In some cases the resource object is reused for performance reasons, it is thus 
 
 ###### 异步上下文示例
 
-下面是一个示例，其中包含关于`before`和`after`调用之间的`init`调用的额外信息，特别是从回调函数到`listen()`函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
+下面是一个示例，其中包含介于`before`和`after`之间的`init`调用的额外信息，特别是到`listen()`的回调函数是如何使用的。 输出格式略作了些调整以便调用上下文更易于查看。
 
 ```js
 let indent = 0;
@@ -301,7 +301,7 @@ destroy: 5
 
 As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
 
-仅使用 `execution` 来进行资源分配，会导致如下结果：
+仅使用 `execution` 来图示资源分配，会导致如下结果：
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
@@ -317,7 +317,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 当异步操作被初始化 (例如TCP服务器收到新连接) 或完成时 (例如将数据写入磁盘)，回调函数被调用以通知用户。 `before` 在回调函数被调用之前被执行。 `asyncId` 是被分配给执行回调函数的资源的唯一标识符。
 
-`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用一次，或者，例如，如果TCP服务器没有接收到任何连接。 将像 TCP 服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
+`before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用0次，或者，例如，如果TCP服务器没有接收到任何连接。 将像TCP服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
 
 ##### after(asyncId)
 
@@ -331,7 +331,7 @@ If an uncaught exception occurs during execution of the callback, then `after` w
 
 * `asyncId` {number}
 
-在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 被异步调用。
+在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 中被异步调用。
 
 Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
 
@@ -339,7 +339,7 @@ Some resources depend on garbage collection for cleanup, so if a reference is ma
 
 * `asyncId` {number}
 
-当传递给 `Promise` 构造器的 `resolve` 函数被调用时，它会被调用 (直接或其他处理promise的方法)。
+当传递给 `Promise` 构造器的 `resolve` 函数被调用 (被直接调用或通过其他完成promise的方法调用) 时，它会被调用。
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些被调用的函数时非常有用。
+* 返回：{number} 当前执行上下文的 `asyncId`。 在追踪某些调用时非常有用。
 
 ```js
 const async_hooks = require('async_hooks');
@@ -402,7 +402,7 @@ Note that promise contexts may not get precise `executionAsyncIds` by default. S
 
 #### async_hooks.triggerAsyncId()
 
-* 返回：{number} 负责调用回调函数且正在被执行的资源ID。
+* 返回：{number} 负责调用正在被执行的回调函数的资源ID。
 
 ```js
 const server = net.createServer((conn) => {
@@ -507,7 +507,7 @@ asyncResource.emitAfter();
 * `type` {string} 异步事件的类型。
 * `options` {Object} 
   * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+  * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动的 `emitDestroy`。 This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
 Example usage:
 

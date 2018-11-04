@@ -1,57 +1,57 @@
-# Internationalization Support
+# Πολυγλωσσική Υποστήριξη
 
 <!--introduced_in=v8.2.0-->
 
 <!-- type=misc -->
 
-Node.js has many features that make it easier to write internationalized programs. Some of them are:
+Η Node.js έχει πολλά χαρακτηριστικά που επιτρέπουν την εύκολη δημιουργία προγραμμάτων σε πολλαπλές γλώσσες. Κάποια από αυτά είναι:
 
-- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
+- Συναρτήσεις που είναι Locale-sensitive ή Unicode-aware στις [προδιαγραφές της γλώσσας ECMAScript](https://tc39.github.io/ecma262/): 
     - [`String.prototype.normalize()`][]
     - [`String.prototype.toLowerCase()`][]
     - [`String.prototype.toUpperCase()`][]
-- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
+- Όλες οι λειτουργίες που περιγράφονται στις [προδιαγραφές του API Πολυγλωσσικής Υποστήριξης ECMAScript](https://tc39.github.io/ecma402/) (γνωστό ως ECMA-402): 
     - [`Intl`][] object
-    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
-- The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
+    - Locale-sensitive μέθοδοι όπως η [`String.prototype.localeCompare()`][] και η [`Date.prototype.toLocaleString()`][]
+- Υποστήριξη του [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api) για [πολυγλωσσικά ονόματα τομέων](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs)
 - [`require('buffer').transcode()`][]
-- More accurate [REPL](repl.html#repl_repl) line editing
+- Ακριβέστερη επεξεργασία γραμμών [REPL](repl.html#repl_repl)
 - [`require('util').TextDecoder`][]
-- [`RegExp` Unicode Property Escapes][]
+- [Ιδιότητες Διαφυγής Unicode `RegExp`][]
 
-Node.js (and its underlying V8 engine) uses [ICU](http://icu-project.org/) to implement these features in native C/C++ code. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
+Η Node.js (και η υποκείμενη μηχανή V8) χρησιμοποιεί το [ICU](http://icu-project.org/) για την υλοποίηση αυτών των χαρακτηριστικών σε native κώδικα C/C++. Ωστόσο, κάποια από αυτά χρειάζονται ένα πολύ μεγάλο αρχείο δεδομένων ICU για να υποστηριχθούν όλες οι γλώσσες του κόσμου. Επειδή αναμένεται ότι οι χρήστες της Node.js θα χρησιμοποιήσουν ένα μικρό μόνο κομμάτι της λειτουργικότητας του ICU, μόνο ένα υποσύνολο του συνόλου δεδομένων του ICU προσφέρεται από προεπιλογή. Προσφέρονται διάφορες επιλογές για την παραμετροποίηση και την επέκταση του συνόλου δεδομένων του ICU κατά μεταγλώττιση ή την εκτέλεση της Node.js.
 
-## Options for building Node.js
+## Επιλογές για τη μεταγλώττιση της Node.js
 
-To control how ICU is used in Node.js, four `configure` options are available during compilation. Additional details on how to compile Node.js are documented in [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
+Για να ελέγξετε πως χρησιμοποιείται το ICU στην Node.js, υπάρχουν τέσσερις επιλογές `configure` διαθέσιμες κατά τη μεταγλώττιση. Πρόσθετες πληροφορίες για το πως να μεταγλωττίσετε την Node.js είναι υπάρχουν τεκμηριωμένες στο [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
 
 - `--with-intl=none` / `--without-intl`
 - `--with-intl=system-icu`
-- `--with-intl=small-icu` (default)
+- `--with-intl=small-icu` (προεπιλογή)
 - `--with-intl=full-icu`
 
-An overview of available Node.js and JavaScript features for each `configure` option:
+Μια επισκόπηση για την διαθεσιμότητα των χαρακτηριστικών Node.js και Javascript για κάθε επιλογή `configure`:
 
-|                                                      | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
-| ---------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
-| [`String.prototype.normalize()`][]                   | none (function is no-op)          | full                         | full                   | full       |
-| `String.prototype.to*Case()`                         | full                              | full                         | full                   | full       |
-| [`Intl`][]                                           | none (object does not exist)      | partial/full (depends on OS) | partial (English-only) | full       |
-| [`String.prototype.localeCompare()`][]               | partial (not locale-aware)        | full                         | full                   | full       |
-| `String.prototype.toLocale*Case()`                   | partial (not locale-aware)        | full                         | full                   | full       |
-| [`Number.prototype.toLocaleString()`][]              | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| `Date.prototype.toLocale*String()`                   | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| [WHATWG URL Parser](url.html#url_the_whatwg_url_api) | partial (no IDN support)          | full                         | full                   | full       |
-| [`require('buffer').transcode()`][]                  | none (function does not exist)    | full                         | full                   | full       |
-| [REPL](repl.html#repl_repl)                          | partial (inaccurate line editing) | full                         | full                   | full       |
-| [`require('util').TextDecoder`][]                    | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
-| [`RegExp` Unicode Property Escapes][]                | none (invalid `RegExp` error)     | full                         | full                   | full       |
+|                                                        | `none`                                          | `system-icu`                        | `small-icu`                 | `full-icu` |
+| ------------------------------------------------------ | ----------------------------------------------- | ----------------------------------- | --------------------------- | ---------- |
+| [`String.prototype.normalize()`][]                     | όχι (η συνάρτηση είναι no-op)                   | πλήρης                              | πλήρης                      | πλήρης     |
+| `String.prototype.to*Case()`                           | πλήρης                                          | πλήρης                              | πλήρης                      | πλήρης     |
+| [`Intl`][]                                             | όχι (η συνάρτηση είναι no-op)                   | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [`String.prototype.localeCompare()`][]                 | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
+| `String.prototype.toLocale*Case()`                     | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
+| [`Number.prototype.toLocaleString()`][]                | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| `Date.prototype.toLocale*String()`                     | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [Αναλυτής URL WHATWG](url.html#url_the_whatwg_url_api) | περιορισμένη (χωρίς υποστήριξη IDN)             | πλήρης                              | πλήρης                      | πλήρης     |
+| [`require('buffer').transcode()`][]                    | καμία (η συνάρτηση δεν ορίζεται)                | πλήρης                              | πλήρης                      | πλήρης     |
+| [REPL](repl.html#repl_repl)                            | περιορισμένη (ανακριβής επεξεργασία γραμμών)    | πλήρης                              | πλήρης                      | πλήρης     |
+| [`require('util').TextDecoder`][]                      | περιορισμένη (βασική υποστήριξη κωδικοποιήσεων) | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Unicode) | πλήρης     |
+| [Ιδιότητες Διαφυγής Unicode `RegExp`][]                | καμία (μη-έγκυρο σφάλμα `RegExp`)               | πλήρης                              | πλήρης                      | πλήρης     |
 
-The "(not locale-aware)" designation denotes that the function carries out its operation just like the non-`Locale` version of the function, if one exists. For example, under `none` mode, `Date.prototype.toLocaleString()`'s operation is identical to that of `Date.prototype.toString()`.
+Ο χαρακτηρισμός "(δεν είναι locale-aware)" σημαίνει ότι η συνάρτηση εκτελείται κανονικά, όπως η μη `Locale` έκδοση της συνάρτησης, εάν αυτή υπάρχει. Για παράδειγμα, στην λειτουργία `none`, η λειτουργία της `Date.prototype.toLocaleString()` είναι πανομοιότυπη με τη λειτουργία της `Date.prototype.toString()`.
 
-### Disable all internationalization features (`none`)
+### Απενεργοποίηση όλων των χαρακτηριστικών πολυγλωσσικότητας (`none`)
 
-If this option is chosen, most internationalization features mentioned above will be **unavailable** in the resulting `node` binary.
+Αν χρησιμοποιηθεί αυτή η επιλογή, τα περισσότερα χαρακτηριστικά πολυγλωσσικότητας που αναφέρονται παραπάνω θα είναι **μη διαθέσιμα** στο αρχείο `node` που θα δημιουργηθεί.
 
 ### Build with a pre-installed ICU (`system-icu`)
 

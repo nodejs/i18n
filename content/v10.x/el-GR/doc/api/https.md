@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS είναι το πρωτόκολλο HTTP μέσω TLS/SSL. Στη Node.js υλοποιείται σαν μια ξεχωριστή ενότητα.
 
 ## Class: https.Agent
 
@@ -12,7 +12,7 @@ HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a sep
 added: v0.4.5
 -->
 
-An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
+Ένα αντικείμενο [`Agent`][] για HTTPS, παρόμοιο με το [`http.Agent`][]. Για περισσότερες πληροφορίες δείτε το [`https.request()`][].
 
 ## Class: https.Server
 
@@ -20,7 +20,7 @@ An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
+Η κλάση είναι μια subclass του `tls.Server` και μεταδίδει συμβάντα παρόμοια με το [`http.Server`][]. Για περισσότερες πληροφορίες, δείτε το [`http.Server`][].
 
 ### server.close([callback])
 
@@ -30,17 +30,17 @@ added: v0.1.90
 
 - `callback` {Function}
 
-See [`server.close()`][`http.close()`] from the HTTP module for details.
+Για πληροφορίες, δείτε το [`server.close()`][`http.close()`] από την ενότητα HTTP.
 
 ### server.listen()
 
-Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Εκκινεί τον εξυπηρετητή HTTPS για ακρόαση κρυπτογραφημένων συνδέσεων. Η μέθοδος είναι πανομοιότυπη με το [`server.listen()`][] από το [`net.Server`][].
 
 ### server.maxHeadersCount
 
 - {number} **Προεπιλογή:** `2000`
 
-See [`http.Server#maxHeadersCount`][].
+Δείτε το [`http.Server#maxHeadersCount`][].
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -48,10 +48,10 @@ See [`http.Server#maxHeadersCount`][].
 added: v0.11.2
 -->
 
-- `msecs` {number} **Default:** `120000` (2 minutes)
+- `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
 - `callback` {Function}
 
-See [`http.Server#setTimeout()`][].
+Δείτε το [`http.Server#setTimeout()`][].
 
 ### server.timeout
 
@@ -59,9 +59,9 @@ See [`http.Server#setTimeout()`][].
 added: v0.11.2
 -->
 
-- {number} **Default:** `120000` (2 minutes)
+- {number} **Προεπιλογή:** `120000` (2 λεπτά)
 
-See [`http.Server#timeout`][].
+Δείτε το [`http.Server#timeout`][].
 
 ### server.keepAliveTimeout
 
@@ -69,9 +69,9 @@ See [`http.Server#timeout`][].
 added: v8.0.0
 -->
 
-- {number} **Default:** `5000` (5 seconds)
+- {number} **Προεπιλογή:** `5000` (5 δευτερόλεπτα)
 
-See [`http.Server#keepAliveTimeout`][].
+Δείτε το [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
 
@@ -79,10 +79,10 @@ See [`http.Server#keepAliveTimeout`][].
 added: v0.3.4
 -->
 
-- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-- `requestListener` {Function} A listener to be added to the `'request'` event.
+- `options` {Object} Δέχεται `options` από το [`tls.createServer()`][], το [`tls.createSecureContext()`][] και τo [`http.createServer()`][].
+- `requestListener` {Function} Ένας ακροατής που θα προστεθεί στο συμβάν `'request'`.
 
-Example:
+Παράδειγμα:
 
 ```js
 // curl -k https://localhost:8000/
@@ -100,7 +100,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Or
+Ή
 
 ```js
 const https = require('https');
@@ -128,14 +128,14 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
+- `options` {Object | string | URL} Δέχεται τα ίδια `options` με το [`https.request()`][], με το `method` να είναι πάντα ορισμένο ως `GET`.
 - `callback` {Function}
 
-Like [`http.get()`][] but for HTTPS.
+Όπως το [`http.get()`][] αλλά για συνδέσεις HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const https = require('https');
@@ -159,7 +159,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Global instance of [`https.Agent`][] for all HTTPS client requests.
+Καθολικό στιγμιότυπο του [`https.Agent`][] για όλα τα αιτήματα HTTPS των πελατών.
 
 ## https.request(options[, callback])
 
@@ -175,19 +175,19 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` **Default:** `'https:'`
-    - `port` **Default:** `443`
-    - `agent` **Default:** `https.globalAgent`
+- `options` {Object | string | URL} Δέχεται όλα τα `options` από το [`http.request()`][], με κάποιες διαφορές στις προεπιλεγμένες τιμές: 
+    - `protocol` **Προεπιλογή:** `'https:'`
+    - `port` **Προεπιλογή:** `443`
+    - `agent` **Προεπιλογή:** `https.globalAgent`
 - `callback` {Function}
 
-Makes a request to a secure web server.
+Αποστέλλει ένα αίτημα σε έναν ασφαλή εξυπηρετητή ιστού.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+Τα παρακάτω πρόσθετα `options` από το [`tls.connect()`][] είναι επίσης αποδεκτά: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string, ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
-Example:
+Παράδειγμα:
 
 ```js
 const https = require('https');
@@ -214,7 +214,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Example using options from [`tls.connect()`][]:
+Παράδειγμα με χρήση επιλογών από το [`tls.connect()`][]:
 
 ```js
 const options = {
@@ -232,9 +232,9 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Alternatively, opt out of connection pooling by not using an [`Agent`][].
+Εναλλακτικά, μπορείτε να αρνηθείτε τη συγκέντρωση συνδέσεων, χωρίς να χρησιμοποιήσετε έναν [`Agent`][].
 
-Example:
+Παράδειγμα:
 
 ```js
 const options = {
@@ -252,7 +252,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example using a [`URL`][] as `options`:
+Παράδειγμα χρήσης ενός [`URL`][] ως `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
@@ -262,7 +262,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
+Παράδειγμα pinning του αποτυπώματος ενός πιστοποιητικού, ή ενός δημόσιου κλειδιού (παρόμοιο με το `pin-sha256`):
 
 ```js
 const tls = require('tls');
@@ -278,13 +278,13 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Make sure the certificate is issued to the host we are connected to
+    // Σιγουρέψου ότι το πιστοποιητικό έχει εκδοθεί στον υπολογιστή που έχουμε συνδεθεί
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
     }
 
-    // Pin the public key, similar to HPKP pin-sha25 pinning
+    // Να γίνει pin του δημόσιου κλειδιού, παρομοίως με το pinning HPKP pin-sha25
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
       const msg = 'Certificate verification error: ' +
@@ -293,7 +293,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Pin the exact certificate, rather then the pub key
+    // Να γίνει pin του συγκεκριμένου πιστοποιητικού, και όχι του δημόσιου κλειδιού
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
@@ -303,11 +303,12 @@ const options = {
       return new Error(msg);
     }
 
-    // This loop is informational only.
-    // Print the certificate and public key fingerprints of all certs in the
-    // chain. Its common to pin the public key of the issuer on the public
-    // internet, while pinning the public key of the service in sensitive
-    // environments.
+    // Αυτός ο βρόγχος είναι απλά ενημερωτικός.
+    // Εμφάνιση του αποτυπώματος του πιστοποιητικού και του 
+    // δημόσιου κλειδιού όλων των πιστοποιητικών στην αλυσίδα. 
+    // Είναι συνηθισμένο να γίνεται pinning του δημόσιου κλειδιού του
+    // εκδότη στο ίντερνετ, ενώ να γίνεται pinning του δημόσιου κλειδιού
+    // της υπηρεσίας σε ευαίσθητες εφαρμογές.
     do {
       console.log('Subject Common Name:', cert.subject.CN);
       console.log('  Certificate SHA256 fingerprint:', cert.fingerprint256);
@@ -326,7 +327,7 @@ options.agent = new https.Agent(options);
 const req = https.request(options, (res) => {
   console.log('All OK. Server matched our pinned cert or public key');
   console.log('statusCode:', res.statusCode);
-  // Print the HPKP values
+  // Εκτύπωση των τιμών HPKP
   console.log('headers:', res.headers['public-key-pins']);
 
   res.on('data', (d) => {});
@@ -338,7 +339,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Outputs for example:
+Ο παραπάνω κώδικας, μπορεί να εμφανίσει για παράδειγμα:
 
 ```text
 Subject Common Name: github.com

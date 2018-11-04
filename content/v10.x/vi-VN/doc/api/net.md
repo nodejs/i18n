@@ -4,7 +4,7 @@
 
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> Tính ổn định: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -49,7 +49,7 @@ See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
-### Event: 'close'
+### Sự kiện: 'close'
 
 <!-- YAML
 added: v0.5.0
@@ -97,23 +97,23 @@ Returns the bound `address`, the address `family` name, and `port` of the server
 
 For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
 
-Example:
+Ví dụ:
 
 ```js
 const server = net.createServer((socket) => {
   socket.end('goodbye\n');
 }).on('error', (err) => {
-  // handle errors here
+  // xử lý các lỗi tại đây
   throw err;
 });
 
-// grab an arbitrary unused port.
+// sử dụng tùy ý một port chưa được sử dụng.
 server.listen(() => {
-  console.log('opened server on', server.address());
+  console.log('server được mở tại', server.address());
 });
 ```
 
-Don't call `server.address()` until the `'listening'` event has been emitted.
+Không gọi `server.address()` cho đến khi sự kiện `'listening'` được gọi lên.
 
 ### server.close([callback])
 
@@ -121,7 +121,7 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Returns: {net.Server}
+* Trả về: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -552,7 +552,7 @@ If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(optio
 added: v0.1.90
 -->
 
-* Returns: {net.Socket}
+* Trả về: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 

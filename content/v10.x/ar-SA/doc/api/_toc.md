@@ -36,7 +36,7 @@
 * [ نظام التشغيل](os.html)
 * [المسار](path.html)
 * [خطافات الاداء](perf_hooks.html)
-* [العملية](process.html)
+* [الاجراء](process.html)
 * [Punycode](punycode.html)
 * [سلاسل الاستعلام](querystring.html)
 * [Readline](readline.html)

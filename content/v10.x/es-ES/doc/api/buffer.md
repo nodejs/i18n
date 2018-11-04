@@ -1078,7 +1078,7 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
+* `value` {string|Buffer|integer} Qué buscar.
 * `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
 * `encoding` {string} Si `value` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 * Devuelve: {boolean} `true` si `value` se encontró en `buf`, y `false` de lo contrario.

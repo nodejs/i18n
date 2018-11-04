@@ -74,7 +74,7 @@ $ node --zero-fill-buffers
 
 ### 是什么令 `Buffer.allocUnsafe()` 和 `Buffer.allocUnsafeSlow()` “不安全”？
 
-当调用 [`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow()`] 时，被分配的内存段是 *未初始化的* （没有用 0 填充）。 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用由 [`Buffer.allocUnsafe()`] 创建的没有被 *完全* 重写内存的 `Buffer`，在 `Buffer` 内存可读的情况下，可能泄露旧数据。
+当调用 [`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow()`] 时，被分配的内存段是 *未初始化的* （没有用 0 填充）。 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用由 [`Buffer.allocUnsafe()`] 创建的没有被 *完全* 重写内存的 `Buffer`，在 `Buffer` 内存被读取的时候，可能泄露旧数据。
 
 虽然使用 [`Buffer.allocUnsafe()`] 有明显的性能优势，但 *必须* 要额外小心，以避免给应用程序带来安全漏洞。
 
@@ -476,7 +476,7 @@ changes:
 
 分配一个大小为 `size` 字节的新建 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
-以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] 用 0 初始化 `Buffer` 实例。
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] ，而不是用 0 初始化 `Buffer` 实例。
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -492,7 +492,7 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值），用于废弃的 `new Buffer(size)` 构造器 新创建的 <0>Buffer</0> 实例。
+请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用废弃的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
 
 对这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体地说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外的性能时，这个细微的区别是非常重要的。
 
@@ -510,7 +510,7 @@ added: v5.12.0
 
 当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数持久对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
-然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建非池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
+然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -548,9 +548,9 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 要计算的长度值
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
 * `encoding` {string} 如果 `string` 是字符串，则该值是它的字符编码方式。 **默认值:**`‘utf8'`。
-* Returns: {integer} `string` 包含的字节数。
+* 返回：{integer} `string` 包含的字节数。
 
 返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为 [<0>String.prototype.length</0>] 返回的是字符串中的 *字符* 数。
 
@@ -581,7 +581,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * 返回：{integer}
 
-比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -612,7 +612,7 @@ changes:
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以已知明确的长度会运行得更快。
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
 
 如果提供了 `totalLength`，则会将其强制转换为无符号整数。 If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
@@ -662,7 +662,7 @@ added: v5.10.0
 * `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0` 。
 * `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`。
 
-该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
+该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会和 [`TypedArray`] 共享相同的已分配内存。
 
 ```js
 const arr = new Uint16Array(2);
@@ -683,7 +683,7 @@ console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-可选的 `byteOffset` 和 0>length</code> 参数指定将与 `Buffer` 共享的 `arrayBuffer` 的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer`内将与 `Buffer` 共享的内存范围。
 
 ```js
 const ab = new ArrayBuffer(10);
@@ -783,7 +783,7 @@ added: v0.1.101
 * `obj` {Object}
 * 返回：{boolean}
 
-如果 `obj` 是一个 0>Buffer</0，则返回 `true`，否则返回 `false`。
+如果 `obj` 是一个 `Buffer`，则返回 `true`，否则返回 `false`。
 
 ### Class 方法：Buffer.isEncoding(encoding)
 
@@ -792,7 +792,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} 一个要检查的字符编码名称。
-* 返回值：{boolean}
+* 返回：{boolean}
 
 如果 `encoding` 包含一个支持的字符编码则返回 `true`，否则返回 `false`。
 
@@ -804,7 +804,7 @@ added: v0.11.3
 
 * {integer} **默认值：** `8192`
 
-这是决定用于池化的预分配的内部 `Buffer` 实例的大小的字节数。 这个值可以修改。
+这是决定用于放入内存池的预分配的内部 `Buffer` 实例的大小的字节数。 这个值可以修改。
 
 ### buf[index]
 
@@ -815,7 +815,7 @@ name: [index]
 
 索引操作符 `[index]` 可用于获取或设置 `buf` 中指定 `index` 位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
-该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，获取时返回 `undefined`， 设置时什么也不做。
+该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
 ```js
 // Copy an ASCII string into a `Buffer` one byte at a time.
@@ -864,11 +864,11 @@ changes:
 * `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** [`buf.length`].
 * 返回：{integer}
 
-比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同。 对比是基于各自 `Buffer` 中实际的字节序列。
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
-* `0` is returned if `target` is the same as `buf`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* 如果 `target` 与 `buf` 相同，则返回 `0`。
+* 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
+* 在排序时，如果 `target` 应当排在 `buf` *后面*，则返回 `-1`。
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -890,7 +890,7 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 // (This result is equal to: [buf1, buf3, buf2])
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中限制对比在指定的范围内。
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -904,7 +904,7 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 // Prints: 1
 ```
 
-[`ERR_INDEX_OUT_OF_RANGE`] is thrown if `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength`, or `sourceEnd > source.byteLength`.
+如果 `targetStart < 0`，`sourceStart < 0`，`targetEnd > target.byteLength`，或 `sourceEnd > source.byteLength`，则抛出 [`ERR_INDEX_OUT_OF_RANGE`] 错误。
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
@@ -912,13 +912,13 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **默认值：** [`buf.length`].
-* Returns: {integer} The number of bytes copied.
+* `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`。
+* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`。
+* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`].
+* 返回：{integer} 被复制的字节数。
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
 
 ```js
 // Create two `Buffer` instances.
@@ -960,9 +960,9 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
 ```js
 // Log the entire contents of a `Buffer`.
@@ -992,10 +992,10 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} `buf` 要比较的 `Buffer` 或 [`Uint8Array`]。
+* 返回：{boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+如果 `buf` 和 `otherBuffer` 具有完全相同的字节，则返回 `true`，否则返回 `false`。
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1030,13 +1030,13 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **默认值:**`‘utf8'`。
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} 用来填充 `buf` 的值。
+* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`。
+* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`].
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的字符编码。 **默认值:**`‘utf8'`。
+* 返回：{Buffer} `buf` 的引用。
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
+用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。
 
 ```js
 // Fill a `Buffer` with the ASCII character 'h'.
@@ -1047,9 +1047,9 @@ console.log(b.toString());
 // Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` is coerced to a `uint32` value if it is not a string or integer.
+`value` 如果不是一个字符串或整数，则会被强制转换为 `uint32` 值。
 
-If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
+如果 `fill()` 操作的最后一次写入的是一个多字节字符，则只有字符中适合 `buf` 长度的字节会被写入。
 
 ```js
 // Fill a `Buffer` with a two-byte character.
@@ -1058,7 +1058,7 @@ console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 // Prints: <Buffer c8 a2 c8>
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid fill data remains, an exception is thrown:
+如果 `value` 包含无效字符，则会被截断；如果没有有效的填充数据，则抛出异常：
 
 ```js
 const buf = Buffer.allocUnsafe(5);
@@ -1077,12 +1077,12 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is its encoding. **默认值:**`‘utf8'`。
-* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
+* `value` {string|Buffer|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`。
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的字符编码。 **默认值:**`‘utf8'`。
+* 返回：{boolean} 如果在 `buf` 中找到 `value`， 则返回 `true`，否则返回 `false`。
 
-Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
+相当于 [`buf.indexOf() !== -1`][`buf.indexOf()`]。
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1118,16 +1118,16 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
-* Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`。
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 首次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-If `value` is:
+如果 `value` 是：
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
-* a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+* 一个字符串，则 `value` 根据 `encoding` 的字符编码进行解析。
+* 一个 `Buffer` 或 [`Uint8Array`]， `value` 会被作为一个整体使用。 如果要比较部分 `Buffer`，请使用 [`buf.slice()`]。
+* 一个数字，`value` 会解析为一个介于 `0` 到 `255` 之间的无符号八位整数值。
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1153,9 +1153,9 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 // Prints: 6
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果强制转换结果是 `NaN` 或 `0`，那么将会搜索整个buffer。 该行为和 [`String#indexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1173,7 +1173,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 如果 `value` 是空的，并且 `byteOffset` 大于等于 `buf.length`，则返回 `buf.length`。
 
 ### buf.keys()
 
@@ -1181,9 +1181,9 @@ If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `b
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+创建并返回一个包含 `buf` 键（索引）的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1211,12 +1211,12 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** [`buf.length`]`- 1`。
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 最后一次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+与 [`buf.indexOf()`] 类似，但 [`buf.indexOf()`] 是搜索第一次出现的索引。
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
@@ -1244,9 +1244,9 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 // Prints: 4
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果参数被强制转换后得到 `NaN`，例如 `{}` 或 `undefined`，那么将会搜索整个buffer。 该行为和 [`String#lastIndexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1267,7 +1267,7 @@ console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`，那么返回 `byteOffset`。
 
 ### buf.length
 
@@ -1277,7 +1277,7 @@ added: v0.1.90
 
 * {integer}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+返回为 `buf` 分配的内存量（以字节为单位）。 注意，这并不一定反映 `buf` 中可用的数据量。
 
 ```js
 // Create a `Buffer` and write a shorter ASCII string to it.
@@ -1293,7 +1293,7 @@ console.log(buf.length);
 // Prints: 1234
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+虽然 `length` 属性不是不可变的，但是更改 `length` 的值可能会导致不确定和不一致的行为。 那些希望更改 `Buffer` 的长度的应用程序应当将 `length` 视为只读的参数，并且使用 [`buf.slice()`] 创建一个新的 `Buffer`。
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1315,9 +1315,9 @@ console.log(buf.length);
 deprecated: v8.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`buf.buffer`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`buf.buffer`]。
 
-The `buf.parent` property is a deprecated alias for `buf.buffer`.
+`buf.parent` 属性是 `buf.buffer` 不推荐使用的别名。
 
 ### buf.readDoubleBE(offset)
 
@@ -1333,10 +1333,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`.
-* Returns: {number}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 8`。
+* 返回：{number}
 
-Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个64位双精度浮点数（`readDoubleBE()` 返回大端格式，`readDoubleLE()`返回小端格式）。
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1363,10 +1363,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
-* Returns: {number}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 4`。
+* 返回：{number}
 
-Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个32位单精度浮点数（`readFloatBE()` 返回大端格式，`readFloatLE()` 返回小端格式）。
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
@@ -1391,12 +1391,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 1`。
+* 返回：{integer}
 
-Reads a signed 8-bit integer from `buf` at the specified `offset`.
+从 `buf` 中指定的 `offset` 地址读取一个有符号8位整型数。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
 ```js
 const buf = Buffer.from([-1, 5]);
@@ -1423,12 +1423,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 2`。
+* 返回：{integer}
 
-Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个有符号16位整形数（`readInt16BE()` 返回大端格式，`readInt16LE()` 返回小端格式）。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1455,12 +1455,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 4`。
+* 返回：{integer}
 
-Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个有符号32位整形数（`readInt32BE()` 返回大端格式，`readInt32LE()` 返回小端格式）。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1487,11 +1487,11 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} 要读取的字节数。 必须满足 `0 < byteLength <= 6`。
+* 返回：{integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+从 `buf` 中指定的 `offset` 地址读取 `byteLength` 字节，并且读取的结果被解析为二进制有符号补码数。 最大支持48位的精度。
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1518,10 +1518,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 1`。
+* 返回：{integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+从 `buf` 中指定的 `offset` 地址读取一个无符号8位整型数。
 
 ```js
 const buf = Buffer.from([1, -2]);
@@ -1548,7 +1548,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to read. 必须满足 `0 <= offset <= buf.length - 2`。
 * Returns: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
@@ -1582,7 +1582,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to read. 必须满足 `0 <= offset <= buf.length - 4`。
 * Returns: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
@@ -1612,8 +1612,8 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to read. 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} Number of bytes to read. 必须满足 `0 < byteLength <= 6`。
 * Returns: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
@@ -1917,7 +1917,7 @@ changes:
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 8`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
@@ -1951,7 +1951,7 @@ changes:
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 4`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
@@ -1983,7 +1983,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 1`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2015,7 +2015,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 2`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
@@ -2047,7 +2047,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 4`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
@@ -2079,8 +2079,8 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} Number of bytes to write. 必须满足 `0 < byteLength <= 6`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
@@ -2112,7 +2112,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 1`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
@@ -2144,7 +2144,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 2`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
@@ -2180,7 +2180,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 4`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
@@ -2214,8 +2214,8 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} Number of bytes to write. 必须满足 `0 < byteLength <= 6`。
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.

@@ -2,9 +2,9 @@
 
 > Stabilność: 1 - Eksperymentalne
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym silniku JavaScript i pozwolić modułom skompilowanym danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji.
 
-Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisane w sekcji zatytułowanej [Dodatki C ++ ](addons.html). Jedyną różnicą jest zestaw interfejsów API, które są używane przez kod natywny. Zamiast korzystać z interfejsów API V8 lub [Native Abstractions for Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
 APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
 
@@ -29,7 +29,7 @@ The documentation for N-API is structured as follows:
 - [Promises](#n_api_promises)
 - [Script Execution](#n_api_script_execution)
 
-The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. However, we also understand that a C++ API can be easier to use in many cases. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaries built with these wrapper modules will depend on the symbols for the N-API C based functions exported by Node.js. These wrappers are not part of N-API, nor will they be maintained as part of Node.js. One such example is: [node-api](https://github.com/nodejs/node-api).
+The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C ++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-api](https://github.com/nodejs/node-api).
 
 In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. Na przykład:
 
@@ -39,11 +39,11 @@ In order to use the N-API functions, include the file [node_api.h](https://githu
 
 ## Basic N-API Data Types
 
-N-API exposes the following fundamental datatypes as abstractions that are consumed by the various APIs. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API udostępnia następujące podstawowe typy danych jako abstrakcje, które są zużywane przez różne interfejsy API. These APIs should be treated as opaque, introspectable only with other N-API calls.
 
 ### napi_status
 
-Integral status code indicating the success or failure of a N-API call. Currently, the following status codes are supported.
+Integral status code indicating the success or failure of a N-API call. Obecnie obsługiwane są następujące kody stanu.
 
 ```C
 typedef enum {
@@ -63,7 +63,7 @@ typedef enum {
 } napi_status;
 ```
 
-If additional information is required upon an API returning a failed status, it can be obtained by calling `napi_get_last_error_info`.
+Jeśli wymagane są dodatkowe informacje na temat interfejsu API zwracającego status błędu, można je uzyskać, wywołując `napi_get_last_error_info`.
 
 ### napi_extended_error_info
 
@@ -77,8 +77,8 @@ typedef struct {
 ```
 
 - `error_message`: UTF8-encoded string containing a VM-neutral description of the error.
-- `engine_reserved`: Reserved for VM-specific error details. This is currently not implemented for any VM.
-- `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
+- `engine_reserved`: Reserved for VM-specific error details. To nie jest obecnie zaimplementowane dla żadnej maszyny wirtualnej.
+- `engine_error_code`: VM-specific error code. To nie jest obecnie zaimplementowane dla żadnej maszyny wirtualnej.
 - `error_code`: The N-API status code that originated with the last error.
 
 See the [Error Handling](#n_api_error_handling) section for additional information.
@@ -95,7 +95,7 @@ This is an opaque pointer that is used to represent a JavaScript value.
 
 #### napi_handle_scope
 
-This is an abstraction used to control and modify the lifetime of objects created within a particular scope. In general, N-API values are created within the context of a handle scope. When a native method is called from JavaScript, a default handle scope will exist. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
+Jest to abstrakcja używana do kontrolowania i modyfikowania czasu życia obiektów utworzonych w określonym zakresie. In general, N-API values are created within the context of a handle scope. When a native method is called from JavaScript, a default handle scope will exist. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
 
 Handle scopes are created using [`napi_open_handle_scope`][] and are destroyed using [`napi_close_handle_scope`][]. Closing the scope can indicate to the GC that all `napi_value`s created during the lifetime of the handle scope are no longer referenced from the current stack frame.
 

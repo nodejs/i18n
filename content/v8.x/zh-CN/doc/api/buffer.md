@@ -4,15 +4,15 @@
 
 > 稳定性：2 - 稳定的
 
-在引入 [`ECMAScript 2015`] (ES6) 的 [`TypedArray`] 之前，JavaScript语言没有读取或操作二进制数据流的机制。 `Buffer` 类作为 Node.js API 的一部分被引入，使得在诸如TCP流或文件操作类的场景中，操作字节流成为可能。
+在引入 [`ECMAScript 2015`] (ES6) 中的 [`TypedArray`] 之前，JavaScript语言没有读取或操作二进制数据流的机制。 `Buffer` 类作为 Node.js API 的一部分被引入，使得在诸如TCP流或文件操作类的场景中，和8位字节流交互成为可能。
 
-现在 [`TypedArray`] 被加入到 ES6 中，`Buffer` 类实现了 [`Uint8Array`] API，使得它针对 Node.js 的使用案例中更加高效。
+现在 [`TypedArray`] 被加入到 ES6 中，`Buffer` 类实现了 [`Uint8Array`] API，使得它在针对 Node.js 的使用案例中更加高效。
 
-`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 The size of the `Buffer` is established when it is created and cannot be resized.
+`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 `Buffer` 的大小在创建时确定，且不能被更改。
 
-The `Buffer` class is a global within Node.js, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+`Buffer` 类位于Node.js全局范围内, 因此不太可能需要使用 `require('buffer').Buffer`。
 
-Examples:
+例如：
 
 ```js
 // Creates a zero-filled Buffer of length 10.
@@ -37,38 +37,38 @@ const buf5 = Buffer.from('tést');
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
-## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, 和 `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to v6, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+在 Node.js v6 之前的版本中, `Buffer` 实例通过 `Buffer` 构造函数创建，根据传递参数的不同，它返回 `Buffer` 的不同实例：
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 在 Node.js 8.0.0 之前，为这样的 `Buffer` 实例分配的内存 *没有* 被初始化，因此 *可能包含敏感数据*。 这样的 `Buffer` 实例随后 *必须* 被初始化，初始化方式可以通过使用 [`buf.fill(0)`][`buf.fill()`]，或将整个 `Buffer` 写入数据。 虽然此行为是在 *有意* 提高性能，但开发经验表明，创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node.js 8.0.0 开始，`Buffer(num)` 和 `new Buffer(num)` 将会返回具有初始化内存的 `Buffer`。
+* 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
+* 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
-Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
+由于 `new Buffer()` 的行为会因第一个传递参数的值的类型而显著改变，对于未能正确验证传递给 `new Buffer()` 的输入参数，或者不能正确初始化新分配的 `Buffer` 的内容的应用程序，会不可避免的将安全和可靠性问题引入到代码中。
 
-To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+为使 `Buffer` 实例的创建更加可靠且不易出错，不同形式的 `new Buffer()` 构造器已被 **弃用**并被不同的 `Buffer.from()`， [`Buffer.alloc()`]，和 [`Buffer.allocUnsafe()`] 方法所替代。
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*开发者应该将现有的所有 `new Buffer()` 构造器都移植到以下的新 API 之一。*
 
-* [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` containing a *copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` containing a *copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a "filled" `Buffer` instance of the specified size. This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures that newly created `Buffer` instances never contain old and potentially sensitive data.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new `Buffer` of the specified `size` whose content *must* be initialized using either [`buf.fill(0)`][`buf.fill()`] or written to completely.
+* [`Buffer.from(array)`] 返回一个包含被提供的8位字节副本的新的 `Buffer`。
+* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] 返回一个和给出的 [`ArrayBuffer`] 共享已分配内存的新的 `Buffer`。
+* [`Buffer.from(buffer)`] 返回一个包含给定 `Buffer` 内容*副本*的新的`Buffer`。
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个包含给定字符串 *副本* 的新的 `Buffer`。
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 没个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
 
-### The `--zero-fill-buffers` command line option
+### `--zero-fill-buffers` 命令行选项
 
 <!-- YAML
 added: v5.10.0
 -->
 
-Node.js can be started using the `--zero-fill-buffers` command line option to force all newly allocated `Buffer` instances created using either `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`] or `new SlowBuffer(size)` to be *automatically zero-filled* upon creation. Use of this flag *changes the default behavior* of these methods and *can have a significant impact* on performance. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain potentially sensitive data.
+Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能在性能上具有显著的影响*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
 
-Example:
+例如：
 
 ```txt
 $ node --zero-fill-buffers
@@ -76,13 +76,13 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### What makes `Buffer.allocUnsafe()` and `Buffer.allocUnsafeSlow()` "unsafe"?
+### 是什么令 `Buffer.allocUnsafe()` 和 `Buffer.allocUnsafeSlow()` “不安全”？
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). While this design makes the allocation of memory quite fast, the allocated segment of memory might contain old data that is potentially sensitive. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+当调用 [`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow()`] 时，被分配的内存段是 *未初始化的* （没有用 0 填充）。 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用由 [`Buffer.allocUnsafe()`] 创建的没有被 *完全* 重写内存的 `Buffer`，在 `Buffer` 内存被读取的时候，可能泄露旧数据。
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+虽然使用 [`Buffer.allocUnsafe()`] 有明显的性能优势，但 *必须* 要额外小心，以避免给应用程序带来安全漏洞。
 
-## Buffers and Character Encodings
+## Buffer 与字符编码
 
 <!-- YAML
 changes:
@@ -95,9 +95,9 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
+`Buffer` 实例被普遍用于表示编码字符的序列，例如：UTF-8，UCS2， Base64，甚至十六进制编码的数据。 通过使用显式字符编码，可以将 `Buffer` 实例和普通 JavaScript 字符串之间进行相互转换。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
@@ -109,27 +109,27 @@ console.log(buf.toString('hex'));
 console.log(buf.toString('base64'));
 ```
 
-The character encodings currently supported by Node.js include:
+Node.js 当前支持的字符编码包括：
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - 仅支持 7 位 ASCII 数据。 此编码速度很快，而且一旦设置，会剥离高位。
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
+* `'utf8'` - 多字节编码的 Unicode 字符。 很多网页或者其它文档的编码格式都是使用 UTF-8 的。
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
+* `'utf16le'` - 2 或 4 个字节，小端字节编码的 Unicode 字符。 支持代理对（(U+10000 到 U+10FFFF) ）。
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'` - `'utf16le'` 的别名。
 
-* `'base64'` - Base64 encoding. When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
+* `'base64'` - Base64 编码。 当从字符串创建 `Buffer` 时，按照 [RFC4648, 第 5 章](https://tools.ietf.org/html/rfc4648#section-5) 中指明的，这种编码也将正确地接受 “URL 和文件名安全字母表”。
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - 一种把 `Buffer` 编码成 1 字节编码的字符串的方式（由IANA定义在[RFC1345](https://tools.ietf.org/html/rfc1345) 中第63页，作为Latin-1补充块和C0/C1控制码 ）。
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'` - `'latin1'` 的别名。
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'` - 将每个字节编码为两个十六进制字符。
 
-*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both 'latin1' and ISO-8859-1 to win-1252. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned win-1252-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+*注意*：现代浏览器遵循 [WHATWG 编码标准](https://encoding.spec.whatwg.org/)，将 'latin1' 和 ISO-8859-1 定为 win-1252 的别名。 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 win-1252 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
 
-## Buffers and TypedArray
+## Buffers 和 TypedArray
 
 <!-- YAML
 changes:
@@ -139,17 +139,17 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with the TypedArray specification in [`ECMAScript 2015`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+`Buffer` 实例也是 [`Uint8Array`] 实例。 但是，在[`ECMAScript 2015`] 中存在着与 TypedArray 的微妙不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. `Buffer` 对象的内存是被复制到 [`TypedArray`] 中的，而不是共享的。
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含一个元素 `[0x1020304]` 或 `[0x4030201]` 的 [`Uint32Array`]。
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the TypeArray object's `.buffer` property.
+也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享相同已分配内存的 <0>Buffer</0>。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(2);
@@ -178,9 +178,9 @@ console.log(buf1);
 console.log(buf2);
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+请注意，当使用 [`TypedArray`] 的 `.buffer` 创建 `Buffer`时，也可以通过传入 `byteOffset` 和 `length` 参数只使用 [`ArrayBuffer`] 的一部分。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(20);
@@ -190,11 +190,11 @@ const buf = Buffer.from(arr.buffer, 0, 16);
 console.log(buf.length);
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+`Buffer.from()` 和 [`TypedArray.from()`] 有不同的签名和实现。 具体而言，[`TypedArray`] 的变体接受第二个参数，它是在类型数组的每个元素上调用的映射函数：
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+但是 `Buffer.from()` 方法不支持使用映射函数：
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
