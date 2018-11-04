@@ -572,7 +572,7 @@ assert.fail(1, 2, new TypeError('need array'));
 
 In de laatste drie gevallen hebben `actual`, `expected`, en `operator` geen invloed op de foutmelding.
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+Voorbeeld van gebruik van `stackStartFunction` om de stacktrace van de uitzondering af te korten:
 
 ```js
 function suppressFrame() {
