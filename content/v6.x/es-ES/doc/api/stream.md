@@ -27,7 +27,7 @@ Este documento está dividido en dos secciones principales, con una tercera secc
 Existen cuatro tipos fundamentales de stream en Node.js:
 
 * [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
-* [Writable](#stream_class_stream_writable) - streams to which data can be written (for example [`fs.createWriteStream()`][]).
+* [Escribible](#stream_class_stream_writable) - streams en los que se pueden escribir datos (por ejemplo [`fs.createWriteStream()`][]).
 * [Duplex](#stream_class_stream_duplex) - streams that are both Readable and Writable (for example [`net.Socket`][]).
 * [Transform](#stream_class_stream_transform) - Duplex streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
 
