@@ -6,18 +6,20 @@
 
 Il modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
-1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori che cercano di eseguire la funzione di name resolution nello stesso modo in cui si comportano le altre applicazioni del medesimo sistema operativo dovrebbero utilizzare [`dns.lookup()`][].**
 
 Ad esempio, guarda `iana.org`.
 
 ```js
+const dns = require('dns');
+
 dns.lookup('iana.org', (err, address, family) => {
-  console.log('address: %j family: IPv%s', address, family);
+console.log('address: %j family: IPv%s', address, family);
 });
 // indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
-2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`* tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
+2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns` *tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
 
 Di seguito è riportato un esempio di risoluzione di `'archive.org'`, quindi l'indirizzo IP che ci viene restituito è risolto all'inverso.
 
