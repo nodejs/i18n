@@ -8,7 +8,7 @@ Il modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
 1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori che cercano di eseguire la funzione di name resolution nello stesso modo in cui si comportano le altre applicazioni del medesimo sistema operativo dovrebbero utilizzare [`dns.lookup()`][].**
 
-Ad esempio, guarda `iana.org`.
+Ad esempio, cercando `iana.org`.
 
 ```js
 const dns = require('dns');
@@ -99,7 +99,7 @@ added: v0.11.3
 
 - Restituisce: {string[]}
 
-Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
+Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa includerà una sezione per la porta se ne è stata utilizzata una personalizzata.
 
 <!-- eslint-disable semi-->
 
