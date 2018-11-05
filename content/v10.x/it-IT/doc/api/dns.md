@@ -524,20 +524,20 @@ Ogni query DNS può restituire uno dei seguenti codici di errore:
 - `dns.NOTIMP`: Il server DNS non ha la funzione richiesta implementata.
 - `dns.REFUSED`: Il server DNS ha rifiutato la query.
 - `dns.BADQUERY`: La query DNS non è formattata correttamente.
-- `dns.BADNAME`: hostname non formattato correttamente.
-- `dns.BADFAMILY`: famiglia di indirizzi non supportata.
-- `dns.BADRESP`: la risposta DNS non è formattata correttamente.
-- `dns.CONNREFUSED`: non è possibile contattare il server DNS.
-- `dns.TIMEOUT`: Timeout while contacting DNS servers.
-- `dns.EOF`: End of file.
-- `dns.FILE`: Error reading file.
-- `dns.NOMEM`: Out of memory.
-- `dns.DESTRUCTION`: Channel is being destroyed.
-- `dns.BADSTR`: Misformatted string.
-- `dns.BADFLAGS`: Illegal flags specified.
-- `dns.NONAME`: Given hostname is not numeric.
-- `dns.BADHINTS`: Illegal hints flags specified.
-- `dns.NOTINITIALIZED`: c-ares library initialization not yet performed.
+- `dns.BADNAME`: Hostname non formattato correttamente.
+- `dns.BADFAMILY`: Famiglia di indirizzi non supportata.
+- `dns.BADRESP`: La risposta DNS non è formattata correttamente.
+- `dns.CONNREFUSED`: Non è possibile contattare il server DNS.
+- `dns.TIMEOUT`: Timeout mentre il server DNS veniva contattato.
+- `dns.EOF`: Fine del file.
+- `dns.FILE`: Errore di lettura del file.
+- `dns.NOMEM`: Memoria terminata.
+- `dns.DESTRUCTION`: Il canale si sta distruggendo.
+- `dns.BADSTR`: Stringa non formattata correttamente.
+- `dns.BADFLAGS`: La flag specificata non è valida.
+- `dns.NONAME`: L'hostname non è numerico.
+- `dns.BADHINTS`: Il suggerimento specificato della flag non è valida.
+- `dns.NOTINITIALIZED`: L'inizializzazione della libreria c-ares non è stata eseguita.
 - `dns.LOADIPHLPAPI`: Error loading `iphlpapi.dll`.
 - `dns.ADDRGETNETWORKPARAMS`: Could not find `GetNetworkParams` function.
 - `dns.CANCELLED`: DNS query cancelled.
