@@ -75,10 +75,10 @@ added: v8.1.0
 -->
 
 * `callbacks` {Object} De [Hook Callbacks](#async_hooks_hook_callbacks) te registreren 
-  * `init` {Function} The [`init` callback][].
-  * `before` {Function} The [`before` callback][].
-  * `after` {Function} The [`after` callback][].
-  * `destroy` {Function} The [`destroy` callback][].
+  * `init` {Function} De [`init` callback][].
+  * `before` {Function} De [`before` callback][].
+  * `after` {Function} De [`after` callback][].
+  * `destroy` {Function} De [`destroy` callback][].
 * Geeft als resultaat: {AsyncHook} Instantie gebruikt voor het aan- en uitschakelen van haken
 
 Registreert functies op te roepen voor de levensduur van de verschillende gebeurtenissen van elke async bewerking.
