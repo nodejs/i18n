@@ -1067,8 +1067,8 @@ function throwingSecond() {
 function notThrowing() {}
 
 // Het tweede argument is een tekenreeks en de invoerfunctie heeft een Fout geworpen.
-// The first case will not throw as it does not match for the error message
-// thrown by the input function!
+// Het eerste voorval zal niet werpen omdat het niet overeenkomt met de foutmelding 
+// geworpen door de invoerfunctie!
 assert.throws(throwingFirst, 'Second');
 // In the next example the message has no benefit over the message from the
 // error and since it is not clear if the user intended to actually match
