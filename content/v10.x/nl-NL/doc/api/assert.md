@@ -896,7 +896,7 @@ Naast de async aard te wachten op voltooiing, gedraagt het zich identiek aan [`a
 
 Wanneer dit is gespecificeerd, kan de `error` een [`Class`][] zijn, een [`RegExp`][], een validatiefunctie, een object waarvoor iedere eigenschap getest wordt, of een foutvoorval waarbij iedere eigenschap wordt getest, inclusief de ontelbare `message` en `name` eigenschappen.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
+Wanneer dit is gespecificeerd, zal `message` het bericht zijn wat verstrekt wordt door de `AssertionError` als het blok het niet afwijst.
 
 ```js
 (async () => {
@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+Let op dat `error` geen tekenreeks kan zijn. Wanneer een tekenreeks wordt verstrekt als tweede argument, dan wordt verondersteld dat `error` wordt weggelaten, en wordt als alternatief de tekenreeks voor `message` gebruikt. Dit kan leiden tot makkelijk te missen fouten. Lees alsjeblieft het voorbeeld in [`assert.throws()`][] nauwkeurig door, wanneer het gebruik van een tekenreeks als tweede argument wordt overwogen.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Let op dat `error` geen tekenreeks kan zijn. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Dit kan leiden tot makkelijk te missen fouten. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
