@@ -890,11 +890,11 @@ added: v10.0.0
 
 Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
 
-Als `block` een functie is en synchronisch een fout gooit, zal `assert.rejects()` een afgewezen `Promise` retourneren met die fout. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Als `block` een functie is en synchronisch een fout gooit, zal `assert.rejects()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneert, zal `assert.rejects()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
-Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
+Naast de async aard te wachten op voltooiing, gedraagt het zich identiek aan [`assert.throws()`][].
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Wanneer dit is gespecificeerd, kan de `error` een [`Class`][] zijn, een [`RegExp`][], een validatiefunctie, een object waarvoor iedere eigenschap getest wordt, of een foutvoorval waarbij iedere eigenschap wordt getest, inclusief de ontelbare `message` en `name` eigenschappen.
 
 If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
 
@@ -981,7 +981,7 @@ changes:
 
 Expects the function `block` to throw an error.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Wanneer dit is gespecificeerd, kan de `error` een [`Class`][] zijn, een [`RegExp`][], een validatiefunctie, een object waarvoor iedere eigenschap getest wordt, of een foutvoorval waarbij iedere eigenschap wordt getest, inclusief de ontelbare `message` en `name` eigenschappen.
 
 If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
 
