@@ -1269,7 +1269,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **crypto**: 
   * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede lleva a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
   * Actualizar los certificados raíz de la lista actual almacenada mantenida por Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
-  * Multiple CA certificates can now be passed with the `ca` option to TLS methods as an array of strings or in a single new-line separated string. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
+  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una nuevo string solo separado. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
 * **tools**: Include a tick processor in core, exposed via the `--prof-process` command-line argument which can be used to process V8 profiling output files generated when using the `--prof` command-line argument. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
 
 ### Known issues
