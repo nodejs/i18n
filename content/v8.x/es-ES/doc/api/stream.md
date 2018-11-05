@@ -49,7 +49,7 @@ Los datos son almacenados en Buffer en los streams Legibles cuando la implementa
 
 Una vez que el tamaño total del buffer de lectura interno alcanza el límite especificado por `highWaterMark`, el stream parará temporalmente de leer los datos desde el recurso subyacente, hasta que los datos almacenados en buffer actualmente se puedan consumir (es decir, el stream parará de llamar al método `readable._read()` interno que se utiliza para llenar el buffer de lectura).
 
-Data is buffered in Writable streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
+Los datos se almacenan en buffer en streams Escribibles cuando el método [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) se llama repetidamente. Mientras el tamaño total del buffer de escritura interno sea inferior al límite establecido por `highWaterMark`, las llamadas a `writable.write()` devolverán `true`. Una vez el tamaño del buffer interno alcanza o excede el `highWaterMark`, se devolverá `false`.
 
 A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to limit the buffering of data to acceptable levels such that sources and destinations of differing speeds will not overwhelm the available memory.
 
