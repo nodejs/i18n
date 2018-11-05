@@ -1002,18 +1002,18 @@ assert.throws(
   }
 );
 
-// Fails due to the different `message` and `name` properties:
+// Mislukt vanwege de verschillende `bericht` en `naam` eigenschappen:
 assert.throws(
   () => {
     const otherErr = new Error('Not found');
     otherErr.code = 404;
     throw otherErr;
   },
-  err // This tests for `message`, `name` and `code`.
+  err // Dit test voor `bericht`, `naam` en `code`.
 );
 ```
 
-Validate instanceof using constructor:
+Valideer instantie van met behulp van de constructor:
 
 ```js
 assert.throws(
@@ -1024,9 +1024,9 @@ assert.throws(
 );
 ```
 
-Validate error message using [`RegExp`][]:
+Valideer foutmelding met behulp van [`RegExp`][]:
 
-Using a regular expression runs `.toString` on the error object, and will therefore also include the error name.
+Gebruik van een reguliere expressie draait `.toString` op het fout-object, en zal daarom ook de naam van de fout bevatten.
 
 ```js
 assert.throws(
@@ -1037,7 +1037,7 @@ assert.throws(
 );
 ```
 
-Custom error validation:
+Aangepaste fout validatie:
 
 ```js
 assert.throws(
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Let op dat `error` geen tekenreeks kan zijn. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Dit kan leiden tot makkelijk te missen fouten. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Let op dat `error` geen tekenreeks kan zijn. Wanneer een tekenreeks wordt verstrekt als tweede argument, dan wordt verondersteld dat `error` wordt weggelaten, en wordt als alternatief de tekenreeks voor `message` gebruikt. Dit kan leiden tot makkelijk te missen fouten. Het gebruik van hetzelfde bericht als de geworpen foutmelding zal resulteren in een `ERR_AMBIGUOUS_ARGUMENT` fout. Lees alsjeblieft het voorbeeld hieronder nauwkeurig door, wanneer het gebruik van een tekenreeks als tweede argument wordt overwogen:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -1066,7 +1066,7 @@ function throwingSecond() {
 }
 function notThrowing() {}
 
-// The second argument is a string and the input function threw an Error.
+// Het tweede argument is een tekenreeks en de invoerfunctie heeft een Fout geworpen.
 // The first case will not throw as it does not match for the error message
 // thrown by the input function!
 assert.throws(throwingFirst, 'Second');
