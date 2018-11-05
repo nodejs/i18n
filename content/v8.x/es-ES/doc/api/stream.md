@@ -70,23 +70,23 @@ const server = http.createServer((req, res) => {
 
   let body = '';
   // Obtiene los datos como una cadena utf8.
-  // If an encoding is not set, Buffer objects will be received.
+  // Si no se establece una codificación, se recibirán los objetos de Buffer.
   req.setEncoding('utf8');
 
-  // Readable streams emit 'data' events once a listener is added
+  // Los streams Legibles emiten eventos de 'data' una vez que se agrega un listener
   req.on('data', (chunk) => {
     body += chunk;
   });
 
-  // the end event indicates that the entire body has been received
+  // el final del evento indica que todo el cuerpo se ha recibido
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
-      // write back something interesting to the user:
+      // escriba algo interesante para el usuario:
       res.write(typeof data);
       res.end();
     } catch (er) {
-      // uh oh! bad json!
+      // ¡uh oh! ¡json malo!
       res.statusCode = 400;
       return res.end(`error: ${er.message}`);
     }
@@ -103,7 +103,7 @@ server.listen(1337);
 // error: Unexpected token o in JSON at position 1
 ```
 
-[Writable](#stream_class_stream_writable) streams (such as `res` in the example) expose methods such as `write()` and `end()` that are used to write data onto the stream.
+Los streams [Escribibles](#stream_class_stream_writable) (como `res` en el ejemplo) exponen métodos como `write()` y `end()` que se utilizan para escribir datos en el stream.
 
 [Readable](#stream_class_stream_readable) streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
 
