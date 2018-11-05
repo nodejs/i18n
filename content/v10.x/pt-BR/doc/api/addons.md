@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Complementos Node.js são vinculados dinamicamente como objetos compartilhados, escritos em C++, que podem ser carregado em Node.js com a função [`require()`](modules.html#modules_require), utilizando como se fosse um módulo Node.js comum. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
+Complementos Node.js são vinculados dinamicamente como objetos compartilhados, escritos em C++, que podem ser carregados no Node.js com a função [`require()`](modules.html#modules_require), e usados como se fossem um módulo Node.js comum. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
 
 No momento, a forma para implementar complementos é complicada, envolvendo conhecimento de vários componentes e APIs:
 
