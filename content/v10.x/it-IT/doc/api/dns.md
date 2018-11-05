@@ -341,7 +341,7 @@ added: v0.1.90
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve name server records (`NS` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of name server records available for `hostname` (e.g. `['ns1.example.com', 'ns2.example.com']`).
+Utilizza il protocollo DNS per risolvere i record di name server ( record `NS`) per l'`hostname`. L'argomento dell'`addresses` passato alla funzione di `callback` conterrà un array di record con i name server disponibili per l'`hostname` (es.`['ns1.example.com', 'ns2.example.com']`).
 
 ## dns.resolvePtr(hostname, callback)
 
