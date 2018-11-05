@@ -440,7 +440,7 @@ Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'
   - `err` {Error}
   - `ret` {Object[]}
 
-Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query). The `ret` argument passed to the `callback` function will be an array containing various types of records. Each object has a property `type` that indicates the type of the current record. And depending on the `type`, additional properties will be present on the object:
+Utilizza il protocollo DNS per risolvere tutti i record (conosciuti anche come `ANY` o query `*`). L'argomento `ret` passato alla funzione di `callback` sarà un array contenente vari tipi di record. Ogni oggetto ha una proprietà `type` che indica il tipo del record attuale. E a seconda del `type`, saranno presenti proprietà aggiuntive sull'oggetto:
 
 | Type      | Properties                                                                                                                                      |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
