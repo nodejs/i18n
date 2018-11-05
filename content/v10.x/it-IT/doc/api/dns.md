@@ -442,20 +442,20 @@ Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'
 
 Utilizza il protocollo DNS per risolvere tutti i record (conosciuti anche come `ANY` o query `*`). L'argomento `ret` passato alla funzione di `callback` sarà un array contenente vari tipi di record. Ogni oggetto ha una proprietà `type` che indica il tipo del record attuale. E a seconda del `type`, saranno presenti proprietà aggiuntive sull'oggetto:
 
-| Type      | Properties                                                                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'A'`     | `address` / `ttl`                                                                                                                               |
-| `'AAAA'`  | `address` / `ttl`                                                                                                                               |
-| `'CNAME'` | `value`                                                                                                                                         |
-| `'MX'`    | Refer to [`dns.resolveMx()`][]                                                                                                                  |
-| `'NAPTR'` | Refer to [`dns.resolveNaptr()`][]                                                                                                               |
-| `'NS'`    | `value`                                                                                                                                         |
-| `'PTR'`   | `value`                                                                                                                                         |
-| `'SOA'`   | Refer to [`dns.resolveSoa()`][]                                                                                                                 |
-| `'SRV'`   | Refer to [`dns.resolveSrv()`][]                                                                                                                 |
-| `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dns.resolveTxt()`][], eg. `{ entries: ['...'], type: 'TXT' }` |
+| Type      | Proprietà                                                                                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'A'`     | `address` / `ttl`                                                                                                                                              |
+| `'AAAA'`  | `address` / `ttl`                                                                                                                                              |
+| `'CNAME'` | `value`                                                                                                                                                        |
+| `'MX'`    | Fai riferimento a [`dns.resolveMx()`][]                                                                                                                        |
+| `'NAPTR'` | Fai riferimento a [`dns.resolveNaptr()`][]                                                                                                                     |
+| `'NS'`    | `value`                                                                                                                                                        |
+| `'PTR'`   | `value`                                                                                                                                                        |
+| `'SOA'`   | Fai riferimento a [`dns.resolveSoa()`][]                                                                                                                       |
+| `'SRV'`   | Fai riferimento a [`dns.resolveSrv()`][]                                                                                                                       |
+| `'TXT'`   | Questo tipo di record contiene un array di proprietà chiamate `entries` che fanno riferimento a `dns.resolveTxt()`][], es. `{ entries: ['...'], type: 'TXT' }` |
 
-Here is an example of the `ret` object passed to the callback:
+Questo è un esempio dell'oggetto `ret` passato alla funzione di callback:
 
 <!-- eslint-disable semi -->
 
@@ -486,7 +486,7 @@ added: v0.1.16
   - `err` {Error}
   - `hostnames` {string[]}
 
-Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an array of hostnames.
+Svolge una query DNS inversa che risolve un indirizzo IPv4 o IPv6 a un array di hostname.
 
 On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
 
