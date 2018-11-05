@@ -935,7 +935,7 @@ added: v0.1.94
 
 Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
 
 La `password` se emplea para derivar la clave del cifrado y la inicialización del vector (IV). El valor debe ser una string codificada en `'latin1'` o un [`Buffer`][].
 
@@ -947,9 +947,9 @@ De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_B
 
 Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [vector de inicialización](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'` o [buffers][`Buffer`].
+The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'` o [buffers][`Buffer`].
 
 ### crypto.createCredentials(details)
 
@@ -974,9 +974,9 @@ added: v0.1.94
 
 Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados.
 
-La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
+La implementación de `crypto.createDecipher()<code> deriva claves usando la función OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
-De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
+De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv)
 
@@ -984,11 +984,11 @@ De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EV
 added: v0.1.94
 -->
 
-Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`).
+Crea y regresa un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+El `algorithm` es dependiente de OpenSSL, ejemplos de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
+La `key` es la clave no procesada usada por el `algorithm`, e `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'`, [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createDiffieHellman(prime\[, prime_encoding\]\[, generator\][, generator_encoding])
 
