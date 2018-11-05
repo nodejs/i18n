@@ -43,9 +43,9 @@ Las instancias de stream se cambian al modo objeto utilizando la opción `object
 
 Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) almacenarán datos en un buffer interno, que puede ser recuperado utilizando `writable._writableState.getBuffer()` o `readable._readableState.buffer`, respectivamente.
 
-La cantidad de datos almacenados potencialmente en buffer depende de la opción `highWaterMark` que se pasa al constructor de streams. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepency_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+La cantidad de datos almacenados potencialmente en buffer depende de la opción `highWaterMark` que se pasa al constructor de streams. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepency_after_calling_readable_setencoding). Para los streams que operan en modo objeto, `highWaterMark` especifica un número total de objetos.
 
-Data is buffered in Readable streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
+Los datos son almacenados en Buffer en los streams Legibles cuando la implementación llama a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Si el consumidor del Stream no llama a [`stream.read()`](#stream_readable_read_size), los datos se quedarán en la cola interna hasta que se consumen.
 
 Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
 
