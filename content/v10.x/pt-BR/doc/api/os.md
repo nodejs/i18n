@@ -239,7 +239,7 @@ Cada chave no objeto retornado identifica uma interface de rede. O valor associa
 As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
 * `address` {string} O endereço IPv4 ou IPv6 atribuído
-* `netmask` {string} The IPv4 or IPv6 network mask
+* `netmask` {string} máscara de rede IPv4 ou IPv6
 * `family` {string} Either `IPv4` or `IPv6`
 * `mac` {string} The MAC address of the network interface
 * `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
