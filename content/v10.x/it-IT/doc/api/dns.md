@@ -517,17 +517,17 @@ Il metodo `dns.setServers()` non deve essere chiamato quando una query DNS è in
 
 Ogni query DNS può restituire uno dei seguenti codici di errore:
 
-- `dns.NODATA`: DNS server returned answer with no data.
-- `dns.FORMERR`: DNS server claims query was misformatted.
-- `dns.SERVFAIL`: DNS server returned general failure.
-- `dns.NOTFOUND`: Domain name not found.
-- `dns.NOTIMP`: DNS server does not implement requested operation.
-- `dns.REFUSED`: DNS server refused query.
-- `dns.BADQUERY`: Misformatted DNS query.
-- `dns.BADNAME`: Misformatted hostname.
-- `dns.BADFAMILY`: Unsupported address family.
-- `dns.BADRESP`: Misformatted DNS reply.
-- `dns.CONNREFUSED`: Could not contact DNS servers.
+- `dns.NODATA`: Il server DNS restituisce una risposta senza dati.
+- `dns.FORMERR`: Il server DNS segnala una query non formattata.
+- `dns.SERVFAIL`: Il server DNS restituisce un errore generale.
+- `dns.NOTFOUND`: Il nome del dominio non è stato trovato.
+- `dns.NOTIMP`: Il server DNS non ha la funzione richiesta implementata.
+- `dns.REFUSED`: Il server DNS ha rifiutato la query.
+- `dns.BADQUERY`: La query DNS non è formattata correttamente.
+- `dns.BADNAME`: hostname non formattato correttamente.
+- `dns.BADFAMILY`: famiglia di indirizzi non supportata.
+- `dns.BADRESP`: la risposta DNS non è formattata correttamente.
+- `dns.CONNREFUSED`: non è possibile contattare il server DNS.
 - `dns.TIMEOUT`: Timeout while contacting DNS servers.
 - `dns.EOF`: End of file.
 - `dns.FILE`: Error reading file.
