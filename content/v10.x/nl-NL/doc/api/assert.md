@@ -944,8 +944,8 @@ Test strikte gelijkheid tussen de `actual` en de `expected` parameters, als bepa
 const assert = require('assert').strict;
 
 assert.strictEqual(1, 2);
-// AssertionError [ERR_ASSERTION]: Input A expected to strictly equal input B:
-// + expected - actual
+// AssertionError [ERR_ASSERTION]: Invoer A verwacht om strikt gelijk te zijn aan invoer B:
+// + verwacht - werkelijk
 // - 1
 // + 2
 
@@ -953,13 +953,13 @@ assert.strictEqual(1, 1);
 // OK
 
 assert.strictEqual(1, '1');
-// AssertionError [ERR_ASSERTION]: Input A expected to strictly equal input B:
-// + expected - actual
+// AssertionError [ERR_ASSERTION]: Invoer A verwacht om strikt gelijk te zijn aan invoer B:
+// + verwacht - werkelijk
 // - 1
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
+Wannner de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
