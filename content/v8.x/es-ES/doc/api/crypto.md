@@ -1028,7 +1028,7 @@ Regresa `true` o `false`, dependiendo de los valores de la firma para los datos 
 
 The `verify` object can not be used again after `verify.verify()` has been called. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
-## Módulo de métodos y propiedades de `crypto`
+## Métodos y propiedades del módulo `crypto`
 
 ### crypto.constants
 
@@ -1036,7 +1036,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas para crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
+Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas con crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1044,9 +1044,9 @@ Regresa un objeto que contiene constantes usadas comúnmente para las operacione
 added: v0.9.3
 -->
 
-La codificación predeterminadas a usar para las funciones que pueden tomar los strings o los [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
+La codificación predeterminada a usar para las funciones que pueden tomar strings o [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
 
-El mecanismo `crypto.DEFAULT_ENCODING` se da para la contabilidad con versiones anteriores con programas antiguos que esperan tener como codificación predeterminada `'latin1'`.
+El mecanismo `crypto.DEFAULT_ENCODING` se da para la compatibilidad con versiones anteriores con programas antiguos que esperan tener `'latin1'` como codificación predeterminada.
 
 Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta propiedad puede volverse obsoleta en futuras versiones de Node.js.
 
@@ -1056,7 +1056,7 @@ Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta p
 added: v6.0.0
 -->
 
-Las propiedades para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
+La propiedad para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1070,7 +1070,7 @@ added: v0.1.94
 
 Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados. Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
 La `password` se emplea para derivar la clave del cipher y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
 
@@ -1087,7 +1087,7 @@ De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_B
 
 Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
 La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
@@ -1135,7 +1135,7 @@ added: v0.1.94
 
 Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
-El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
 La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
 
