@@ -822,7 +822,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`3b9803838c`](https://github.com/nodejs/node/commit/3b9803838c)] - **doc**: clarificar intento de uso de util.inspect (Gus Caplan) [#17375](https://github.com/nodejs/node/pull/17375)
 * [[`70f23ec9c0`](https://github.com/nodejs/node/commit/70f23ec9c0)] - **doc**: corregir typo en Buffer.prototype.fill() (cjihrig) [#17501](https://github.com/nodejs/node/pull/17501)
 * [[`c60c93cba2`](https://github.com/nodejs/node/commit/c60c93cba2)] - **doc, http2**: añadir secciones para server.close() (Chris Miller) [#19802](https://github.com/nodejs/node/pull/19802)
-* [[`04491db1d3`](https://github.com/nodejs/node/commit/04491db1d3)] - **doc, src**: sort + fill up cli options and env vars (willhayslett) [#19878](https://github.com/nodejs/node/pull/19878)
+* [[`04491db1d3`](https://github.com/nodejs/node/commit/04491db1d3)] - **doc, src**: clasificar + llenar las opciones de cli y vars de ambiente (willhayslett) [#19878](https://github.com/nodejs/node/pull/19878)
 * [[`f600e95ff0`](https://github.com/nodejs/node/commit/f600e95ff0)] - **doc, tools**: make type parsing more strict (Vse Mozhet Byt) [#19881](https://github.com/nodejs/node/pull/19881)
 * [[`82a7347050`](https://github.com/nodejs/node/commit/82a7347050)] - **doc,assert,timers**: assign deprecation codes (Anna Henningsen) [#18564](https://github.com/nodejs/node/pull/18564)
 * [[`0799b60f50`](https://github.com/nodejs/node/commit/0799b60f50)] - **doc,http2**: add parameters for Http2Session:connect event (Ujjwal Sharma) [#20193](https://github.com/nodejs/node/pull/20193)
