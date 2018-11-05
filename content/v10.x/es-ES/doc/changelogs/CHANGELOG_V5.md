@@ -1297,7 +1297,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`def681a07e`](https://github.com/nodejs/node/commit/def681a07e)] - **crypto**: deshabilitar crypto.createCipher en modo FIPS (Stefan Budeanu) [#3754](https://github.com/nodejs/node/pull/3754)
 * [[`ce423f3624`](https://github.com/nodejs/node/commit/ce423f3624)] - **debugger**: introducir método exec para el depurador (Jackson Tian)
 * [[`99fd1ec28d`](https://github.com/nodejs/node/commit/99fd1ec28d)] - **deps**: hacer backport 819b40a desde el upstream de v8 (Michaël Zasso) [#3937](https://github.com/nodejs/node/pull/3937)
-* [[`82252b2a17`](https://github.com/nodejs/node/commit/82252b2a17)] - **doc**: add brief Node.js overview to README (wurde) [#4174](https://github.com/nodejs/node/pull/4174)
+* [[`82252b2a17`](https://github.com/nodejs/node/commit/82252b2a17)] - **doc**: añadir un breve resumen de Node.js a README (wurde) [#4174](https://github.com/nodejs/node/pull/4174)
 * [[`634c5f1f81`](https://github.com/nodejs/node/commit/634c5f1f81)] - **doc**: url.format - true slash postfix behaviour (fansworld-claudio) [#4119](https://github.com/nodejs/node/pull/4119)
 * [[`6f957a70d8`](https://github.com/nodejs/node/commit/6f957a70d8)] - **doc**: s/node.js/Node.js in readme (Rod Vagg) [#3998](https://github.com/nodejs/node/pull/3998)
 * [[`0cd4a52392`](https://github.com/nodejs/node/commit/0cd4a52392)] - **doc**: improve child_process.markdown wording (yorkie) [#4138](https://github.com/nodejs/node/pull/4138)
