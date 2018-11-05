@@ -240,10 +240,10 @@ As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
 * `address` {string} O endereço IPv4 ou IPv6 atribuído
 * `netmask` {string} máscara de rede IPv4 ou IPv6
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `family` {string} `IPv4` ou `IPv6`
+* `mac` {string} O endereço MAC da interface de rede
+* `internal` {boolean} `true` Se a interface de rede é loopback ou interface similar que não é acessível remotamente; caso contrário `false`
+* `scopeid` {number} O ID de escopo numérico IPv6 (somente especificado quando `family` é `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 
 <!-- eslint-skip -->
