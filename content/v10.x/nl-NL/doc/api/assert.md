@@ -983,12 +983,12 @@ Verwacht dat de functie `block` een fout werpt.
 
 Wanneer dit is gespecificeerd, kan de `error` een [`Class`][] zijn, een [`RegExp`][], een validatiefunctie, een object waarvoor iedere eigenschap getest wordt, of een foutvoorval waarbij iedere eigenschap wordt getest, inclusief de ontelbare `message` en `name` eigenschappen.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+Wanneer dit is gespecificeerd, zal `message` het bericht zijn wat verstrekt wordt door de `AssertionError` als het blok het niet werpt.
 
-Custom error object / error instance:
+Aangepast fout-object / fout-instantie:
 
 ```js
-const err = new TypeError('Wrong value');
+const err = new TypeError('Verkeerde waarde');
 err.code = 404;
 
 assert.throws(
@@ -998,7 +998,7 @@ assert.throws(
   {
     name: 'TypeError',
     message: 'Wrong value'
-    // Note that only properties on the error object will be tested!
+    // Let op: alleen de eigenschappen op het fout object zal getest worden!
   }
 );
 
