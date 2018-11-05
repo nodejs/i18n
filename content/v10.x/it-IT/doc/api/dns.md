@@ -488,7 +488,7 @@ added: v0.1.16
 
 Svolge una query DNS inversa che risolve un indirizzo IPv4 o IPv6 a un array di hostname.
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+In caso di errore, `err` è un oggetto [`Error`][], dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
 
 ## dns.setServers(servers)
 
@@ -496,9 +496,9 @@ On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS er
 added: v0.11.3
 -->
 
-- `servers` {string[]} array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses
+- `servers` {string[]} un array di stringhe formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6)
 
-Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
+Imposta un indirizzo IP e una porta sul server che verrà utilizzata quando di svolge la risoluzione di un DNS. L'argomento `servers` è un array di indirizzi formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6). If the port is the IANA default DNS port (53) it can be omitted.
 
 ```js
 dns.setServers([
