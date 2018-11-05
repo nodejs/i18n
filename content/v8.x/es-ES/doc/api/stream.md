@@ -143,7 +143,7 @@ myStream.write('some more data');
 myStream.end('done writing data');
 ```
 
-#### Class: stream.Writable
+#### Clase: stream.Writable
 
 <!-- YAML
 added: v0.9.4
@@ -157,7 +157,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más evento, y no se realizarán más cálculos.
 
 Not all Writable streams will emit the `'close'` event.
 
@@ -514,7 +514,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más evento, y no se realizarán más cálculos.
 
 Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'` event.
 
