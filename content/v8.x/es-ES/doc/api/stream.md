@@ -117,24 +117,24 @@ Los desarrolladores que deseen implementar nuevos tipos de streams deben consult
 
 ### Streams Escribibles
 
-Writable streams are an abstraction for a *destination* to which data is written.
+Los streams Escribibles son una abstracción para un *destino* en el que se escriben datos.
 
-Examples of [Writable](#stream_class_stream_writable) streams include:
+Los ejemplos de streams [Escribibles](#stream_class_stream_writable) incluyen:
 
-* [HTTP requests, on the client](http.html#http_class_http_clientrequest)
-* [HTTP responses, on the server](http.html#http_class_http_serverresponse)
-* [fs write streams](fs.html#fs_class_fs_writestream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
-* [child process stdin](child_process.html#child_process_subprocess_stdin)
+* [solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
+* [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
+* [fs escribe streams](fs.html#fs_class_fs_writestream)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [proceso secundario stdin](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
-*Note*: Some of these examples are actually [Duplex](#stream_class_stream_duplex) streams that implement the [Writable](#stream_class_stream_writable) interface.
+*Nota*: algunos de estos ejemplos realmente son streams [Dúplex](#stream_class_stream_duplex) que implementan la interfaz [Escribible](#stream_class_stream_writable).
 
-All [Writable](#stream_class_stream_writable) streams implement the interface defined by the `stream.Writable` class.
+Todos los streams [Escribibles](#stream_class_stream_writable) implementan la interfaz definida por la clase `stream.Writable`.
 
-While specific instances of [Writable](#stream_class_stream_writable) streams may differ in various ways, all Writable streams follow the same fundamental usage pattern as illustrated in the example below:
+Mientras las instancias específicas de los streams [Escribibles](#stream_class_stream_writable) pueden diferir de varias maneras, todos los streams Escribibles siguen el mismo patrón de uso fundamental, como se ilustra en el siguiente ejemplo:
 
 ```js
 const myStream = getWritableStreamSomehow();
@@ -431,9 +431,9 @@ Examples of Readable streams include:
 * [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
 * [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
 * [fs read streams](fs.html#fs_class_fs_readstream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
 * [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
@@ -926,9 +926,9 @@ Duplex streams are streams that implement both the [Readable](#stream_class_stre
 
 Examples of Duplex streams include:
 
-* [TCP sockets](net.html#net_class_net_socket)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
 #### Class: stream.Transform
 
@@ -942,8 +942,8 @@ Transform streams are [Duplex](#stream_class_stream_duplex) streams where the ou
 
 Examples of Transform streams include:
 
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
 ##### transform.destroy([error])
 
