@@ -1070,9 +1070,9 @@ function notThrowing() {}
 // Het eerste voorval zal niet werpen omdat het niet overeenkomt met de foutmelding 
 // geworpen door de invoerfunctie!
 assert.throws(throwingFirst, 'Second');
-// In the next example the message has no benefit over the message from the
-// error and since it is not clear if the user intended to actually match
-// against the error message, Node.js thrown an `ERR_AMBIGUOUS_ARGUMENT` error.
+// In het volgende voorbeeld heeft het bericht geen voordeel boven het bericht van de
+// fout en omdat het niet duidelijk is of de gebruiker het heeft bedoeld om daadwerkelijk overeen te komen 
+// met de foutmelding, Node.js heeft een `ERR_AMBIGUOUS_ARGUMENT` fout geworpen.
 assert.throws(throwingSecond, 'Second');
 // Throws an error:
 // TypeError [ERR_AMBIGUOUS_ARGUMENT]
