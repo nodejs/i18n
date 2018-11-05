@@ -68,7 +68,7 @@ if (cluster.isMaster) {
   // Uno scenario più realistico avrebbe più di 2 worker
   // e forse non avrebbe messo master e worker nello stesso file.
   //
-  // È anche possibile essere un pò più interessati alla registrazione e 
+  // È anche possibile essere un pò più elaborati nella registrazione e 
   // implementare qualsiasi logica personalizzata necessaria per prevenire attacchi 
   // DoS e altri comportamenti scorretti.
   //
@@ -146,7 +146,7 @@ if (cluster.isMaster) {
 }
 
 // Questa parte non è importante. Un semplice esempio di routing.
-// Metti qui la logica delle applicazioni interessate.
+// Metti qui una logica delle applicazioni elaborata.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
