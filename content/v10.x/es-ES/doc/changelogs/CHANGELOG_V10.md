@@ -776,7 +776,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`87880466b1`](https://github.com/nodejs/node/commit/87880466b1)] - **doc**: corrección acerca de la propiedad `decodeStrings` de `stream.Writable` (Ryusei Yamaguchi) [#19752](https://github.com/nodejs/node/pull/19752)
 * [[`28e5c462d4`](https://github.com/nodejs/node/commit/28e5c462d4)] - **doc**: corregir el estilo de documentación de buf.indexOf() (Rich Trott) [#19861](https://github.com/nodejs/node/pull/19861)
 * [[`38c97f5dc7`](https://github.com/nodejs/node/commit/38c97f5dc7)] - **doc**: corregir puntuación en doc/releases.md (erwinwahyura) [#19774](https://github.com/nodejs/node/pull/19774)
-* [[`51c2c51029`](https://github.com/nodejs/node/commit/51c2c51029)] - **doc**: explicar caso extremo al asignar un puerto al url (nodeav) [#19645](https://github.com/nodejs/node/pull/19645)
+* [[`51c2c51029`](https://github.com/nodejs/node/commit/51c2c51029)] - **doc**: explicar caso extremo al asignar un puerto a un url (nodeav) [#19645](https://github.com/nodejs/node/pull/19645)
 * [[`99c77dc018`](https://github.com/nodejs/node/commit/99c77dc018)] - **doc**: mejorar ejemplo de CCM (Tobias Nießen) [#19851](https://github.com/nodejs/node/pull/19851)
 * [[`dff214153f`](https://github.com/nodejs/node/commit/dff214153f)] - **doc**: especificar los tipos de Arrays definitivos (Vse Mozhet Byt) [#19895](https://github.com/nodejs/node/pull/19895)
 * [[`321c178faa`](https://github.com/nodejs/node/commit/321c178faa)] - **doc**: añadir citas faltantes en los valores predeterminados de las strings (Vse Mozhet Byt) [#19894](https://github.com/nodejs/node/pull/19894)
