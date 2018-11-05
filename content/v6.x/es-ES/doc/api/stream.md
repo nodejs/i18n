@@ -105,17 +105,17 @@ server.listen(1337);
 
 Los streams [Escribibles](#stream_class_stream_writable) (como `res` en el ejemplo) exponen métodos como `write()` y `end()` que se utilizan para escribir datos en el stream.
 
-[Readable](#stream_class_stream_readable) streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
+Los streams [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmitter`][] para notificar al código de la aplicación cuando los datos estén disponibles para leerse fuera del stream. Esos datos disponibles pueden leerse del stream de múltiples maneras.
 
-Both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable) streams use the [`EventEmitter`][] API in various ways to communicate the current state of the stream.
+Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmitter`][] de varias maneras para comunicar el estado actual del stream.
 
-[Duplex](#stream_class_stream_duplex) and [Transform](#stream_class_stream_transform) streams are both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable).
+Los streams [Dúplex](#stream_class_stream_duplex) y [Transformados](#stream_class_stream_transform) son tanto [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable).
 
-Applications that are either writing data to or consuming data from a stream are not required to implement the stream interfaces directly and will generally have no reason to call `require('stream')`.
+Las aplicaciones que escriben o consumen datos de un stream, no requieren implementar interfaces de stream directamente y generalmente no tendrán razones para llamar a `require('stream')`.
 
-Developers wishing to implement new types of streams should refer to the section [API for Stream Implementers](#stream_api_for_stream_implementers).
+Los desarrolladores que deseen implementar nuevos tipos de streams deben consultar la sección [API para Implementadores de Stream](#stream_api_for_stream_implementers).
 
-### Writable Streams
+### Streams Escribibles
 
 Writable streams are an abstraction for a *destination* to which data is written.
 
