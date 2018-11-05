@@ -498,7 +498,7 @@ added: v0.11.3
 
 - `servers` {string[]} un array di stringhe formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6)
 
-Imposta un indirizzo IP e una porta sul server che verrà utilizzata quando di svolge la risoluzione di un DNS. L'argomento `servers` è un array di indirizzi formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6). If the port is the IANA default DNS port (53) it can be omitted.
+Imposta un indirizzo IP e una porta sul server che verrà utilizzata quando di svolge la risoluzione di un DNS. L'argomento `servers` è un array di indirizzi formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6). La porta può essere omessa se è utilizzata quella predefinita assegnata dallo IANA per i DNS (53).
 
 ```js
 dns.setServers([
@@ -509,13 +509,13 @@ dns.setServers([
 ]);
 ```
 
-An error will be thrown if an invalid address is provided.
+Un errore sarà generato se verrà fornito un indirizzo non valido.
 
-The `dns.setServers()` method must not be called while a DNS query is in progress.
+Il metodo `dns.setServers()` non deve essere chiamato quando una query DNS è in corso.
 
-## Error codes
+## Codici di errore
 
-Each DNS query can return one of the following error codes:
+Ogni query DNS può restituire uno dei seguenti codici di errore:
 
 - `dns.NODATA`: DNS server returned answer with no data.
 - `dns.FORMERR`: DNS server claims query was misformatted.
@@ -542,7 +542,7 @@ Each DNS query can return one of the following error codes:
 - `dns.ADDRGETNETWORKPARAMS`: Could not find `GetNetworkParams` function.
 - `dns.CANCELLED`: DNS query cancelled.
 
-## Implementation considerations
+## Considerazioni sull'implementazione
 
 Although [`dns.lookup()`][] and the various `dns.resolve*()/dns.reverse()` functions have the same goal of associating a network name with a network address (or vice versa), their behavior is quite different. These differences can have subtle but significant consequences on the behavior of Node.js programs.
 
