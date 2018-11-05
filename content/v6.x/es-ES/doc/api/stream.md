@@ -53,23 +53,23 @@ Los datos se almacenan en buffer en streams Escribibles cuando el método [`writ
 
 Un objetivo clave de la API de `stream`, particularmente del método [`stream.pipe()`], es limitar el almacenamiento de datos en buffer a niveles aceptables, tal que las fuentes y destinatarios de diferentes velocidades no agoten la memoria disponible.
 
-Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformado](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
+Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformado](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Debido a que los datos se pueden escribir en el socket a una velocidad más rápida o más lenta que la de los datos recibidos, es importante para cada lado (y para el buffer) operar independientemente del otro.
 
-## API for Stream Consumers
+## API para los Consumidores de Stream
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Casi todas las aplicaciones de Node.js, no importa lo simples que sean, utilizan streams de alguna manera. El siguiente, es un ejemplo del uso de streams en una aplicación de Node.js que implementa un servidor HTTP:
 
 ```js
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req is an http.IncomingMessage, which is a Readable Stream
-  // res is an http.ServerResponse, which is a Writable Stream
+  // req es un http.IncomingMessage, el cual es un Stream Legible
+  // res es un http.ServerResponse, el cual es un Strema Escribible
 
   let body = '';
-  // Get the data as utf8 strings.
+  // Obtiene los datos como una cadena utf8.
   // If an encoding is not set, Buffer objects will be received.
   req.setEncoding('utf8');
 
