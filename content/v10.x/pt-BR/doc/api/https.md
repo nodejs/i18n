@@ -4,9 +4,9 @@
 
 > Estabilidade: 2 - Estável
 
-HTTPS é o protocolo HTTP sobre SSL/TLS. Em node. js, isso é implementado como um módulo separado.
+HTTPS é o protocolo HTTP sobre SSL/TLS. No node.js, isso é implementado como um módulo separado.
 
-## Classe: https. Agente
+## Classe: https.Agent
 
 <!-- YAML
 added: v0.4.5
