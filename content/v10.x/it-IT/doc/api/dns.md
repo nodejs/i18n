@@ -402,7 +402,7 @@ added: v0.1.27
   - `err` {Error}
   - `addresses` {Object[]}
 
-Uses the DNS protocol to resolve service records (`SRV` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of objects with the following properties:
+Utilizza il protocollo DNS per risolvere i record di servizio (record `SRV`) per l'`hostname`. L'argomento `addresses` passato alla funzione di `callback` sarà un array di oggetti con le seguenti proprietà:
 
 - `priority`
 - `weight`
@@ -431,7 +431,7 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[][]}
 
-Uses the DNS protocol to resolve text queries (`TXT` records) for the `hostname`. The `records` argument passed to the `callback` function is a two-dimensional array of the text records available for `hostname` (e.g. `[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Each sub-array contains TXT chunks of one record. Depending on the use case, these could be either joined together or treated separately.
+Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'`hostname`. L'argomento `records` passato alla funzione di `callback` è un array bidimensionale dei record di testo disponibili per l'`hostname` (es.`[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Ogni array secondario contiene un pezzo del record TXT. Depending on the use case, these could be either joined together or treated separately.
 
 ## dns.resolveAny(hostname, callback)
 
