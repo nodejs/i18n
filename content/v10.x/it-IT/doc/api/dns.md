@@ -354,7 +354,7 @@ added: v6.0.0
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve pointer records (`PTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of strings containing the reply records.
+Utilizza il protocollo DNS per risolvere i record di puntatore (record `PTR`) per l'`hostname`. L'argomento `addresses` passato alla funzione di `callback` sarà un array di stringhe contenente il record di risposta.
 
 ## dns.resolveSoa(hostname, callback)
 
@@ -367,7 +367,7 @@ added: v0.11.10
   - `err` {Error}
   - `address` {Object}
 
-Uses the DNS protocol to resolve a start of authority record (`SOA` record) for the `hostname`. The `address` argument passed to the `callback` function will be an object with the following properties:
+Utilizza il protocollo DNS per risolvere il record di start of authority (record `SOA`) per l'`hostname`. L'argomento `address` passato alla funzione di `callback` sarà un oggetto con le seguenti proprietà:
 
 - `nsname`
 - `hostmaster`
