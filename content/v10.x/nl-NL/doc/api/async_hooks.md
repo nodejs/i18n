@@ -12,18 +12,18 @@ const async_hooks = require('async_hooks');
 
 ## Terminologie
 
-Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. This callback may be called multiple times, for example, the `'connection'` event in `net.createServer()`, or just a single time like in `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. Deze callback kan meerdere keren worden opgeroepen, bijvoorbeeld, de `'connection'` gebeurtenis in `net.createServer()`, of slechts een enkele keer als in `fs.open()`. Een hulpmiddel kan ook worden gesloten voordat de callback wordt aangeroepen. `AsyncHook` maakt geen uitvoerig onderscheid tussen deze verschillende gevallen, maar zal ze vertegenwoordigen als het abstracte concept wat een hulpbron is.
 
-## Public API
+## Openbare API
 
-### Overview
+### Overzicht
 
-Following is a simple overview of the public API.
+Hier volgt een simpel overzicht van de openbare API.
 
 ```js
 const async_hooks = require('async_hooks');
 
-// Return the ID of the current execution context.
+// Retourneer de ID van de huidige executie context.
 const eid = async_hooks.executionAsyncId();
 
 // Return the ID of the handle responsible for triggering the callback of the
