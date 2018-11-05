@@ -979,7 +979,7 @@ changes:
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Expects the function `block` to throw an error.
+Verwacht dat de functie `block` een fout werpt.
 
 Wanneer dit is gespecificeerd, kan de `error` een [`Class`][] zijn, een [`RegExp`][], een validatiefunctie, een object waarvoor iedere eigenschap getest wordt, of een foutvoorval waarbij iedere eigenschap wordt getest, inclusief de ontelbare `message` en `name` eigenschappen.
 
