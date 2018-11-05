@@ -41,7 +41,7 @@ Las instancias de stream se cambian al modo objeto utilizando la opción `object
 
 <!--type=misc-->
 
-Both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable) streams will store data in an internal buffer that can be retrieved using `writable._writableState.getBuffer()` or `readable._readableState.buffer`, respectively.
+Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) almacenarán datos en un buffer interno, que puede ser recuperado utilizando `writable._writableState.getBuffer()` o `readable._readableState.buffer`, respectivamente.
 
 The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepency_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
 
