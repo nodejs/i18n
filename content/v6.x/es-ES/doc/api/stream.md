@@ -33,7 +33,7 @@ Existen cuatro tipos fundamentales de stream en Node.js:
 
 ### Modo Objeto
 
-Todos los streams creados por las APIs de Node.js operan exclusivamente sobre cadenas y objetos de `Buffer`. Sin embargo, es posible que las implementaciones de streams trabajen con otros tipos de valores de JavaScrips (con la excepción de `null`, que tiene un propósito especial en streams). Such streams are considered to operate in "object mode".
+Todos los streams creados por las APIs de Node.js operan exclusivamente sobre cadenas y objetos de `Buffer`. Sin embargo, es posible que las implementaciones de streams trabajen con otros tipos de valores de JavaScrips (con la excepción de `null`, que tiene un propósito especial en streams). Tales streams son considerados para operar en "modo objeto".
 
 Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
 
