@@ -536,11 +536,11 @@ Ogni query DNS può restituire uno dei seguenti codici di errore:
 - `dns.BADSTR`: Stringa non formattata correttamente.
 - `dns.BADFLAGS`: La flag specificata non è valida.
 - `dns.NONAME`: L'hostname non è numerico.
-- `dns.BADHINTS`: Il suggerimento specificato della flag non è valida.
+- `dns.BADHINTS`: Il suggerimento specificato della flag non è valido.
 - `dns.NOTINITIALIZED`: L'inizializzazione della libreria c-ares non è stata eseguita.
-- `dns.LOADIPHLPAPI`: Error loading `iphlpapi.dll`.
-- `dns.ADDRGETNETWORKPARAMS`: Could not find `GetNetworkParams` function.
-- `dns.CANCELLED`: DNS query cancelled.
+- `dns.LOADIPHLPAPI`: Errore di caricamento di `iphlpapi.dll`.
+- `dns.ADDRGETNETWORKPARAMS`: Impossibile trovare la funzione `GetNetworkParams`.
+- `dns.CANCELLED`: La query DNS è annullata.
 
 ## Considerazioni sull'implementazione
 
