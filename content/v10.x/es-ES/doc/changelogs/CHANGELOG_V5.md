@@ -1324,7 +1324,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`bbcb2a2e65`](https://github.com/nodejs/node/commit/bbcb2a2e65)] - **doc**: aclarar el comportamiento de carga del módulo (cjihrig) [#3920](https://github.com/nodejs/node/pull/3920)
 * [[`0997178037`](https://github.com/nodejs/node/commit/0997178037)] - **doc**: añadir referencia para buffer.inspect() (cjihrig) [#3921](https://github.com/nodejs/node/pull/3921)
 * [[`6c16c40283`](https://github.com/nodejs/node/commit/6c16c40283)] - **doc**: aclarar elementos notables de v5.1.1 (Rod Vagg) [#4156](https://github.com/nodejs/node/pull/4156)
-* [[`4c8800c2de`](https://github.com/nodejs/node/commit/4c8800c2de)] - **fs,doc**: use `target` instead of `destination` (yorkie) [#3912](https://github.com/nodejs/node/pull/3912)
+* [[`4c8800c2de`](https://github.com/nodejs/node/commit/4c8800c2de)] - **fs,doc**: usar `target` en vez de `destination` (yorkie) [#3912](https://github.com/nodejs/node/pull/3912)
 * [[`1f0e8dca8e`](https://github.com/nodejs/node/commit/1f0e8dca8e)] - **installer**: install the tick processor (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
 * [[`e8e4e0718b`](https://github.com/nodejs/node/commit/e8e4e0718b)] - **meta**: remove use of profanity in source (Myles Borins) [#4122](https://github.com/nodejs/node/pull/4122)
 * [[`13834caa28`](https://github.com/nodejs/node/commit/13834caa28)] - **module**: fix column offsets in errors (Tristian Flanagan) [#2867](https://github.com/nodejs/node/pull/2867)
