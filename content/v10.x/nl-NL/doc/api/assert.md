@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes worden genegeerd
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.fail([message])
 
@@ -666,7 +666,7 @@ Een alias of [`assert.notDeepStrictEqual()`][].
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.notDeepStrictEqual()`][].
 
-Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
+Test voor alle diepe ongelijkheid. Tegenovergestelde van [`assert.deepEqual()`][].
 
 ```js
 const assert = require('assert');
@@ -698,10 +698,10 @@ assert.notDeepEqual(obj1, obj3);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
-// OK: obj1 and obj4 are not deeply equal
+// OK: obj1 en obj4 zijn niet diep gelijk
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
+Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -738,7 +738,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
+Test op diep strikte ongelijkheid. Tegenovergestelde van [`assert.deepStrictEqual()`][].
 
 ```js
 const assert = require('assert').strict;
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -833,7 +833,7 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaat van de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! Zie hieronder voor meer details.
 
