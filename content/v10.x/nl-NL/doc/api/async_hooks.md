@@ -59,12 +59,12 @@ function before(asyncId) { }
 // nadien is opgeroepen net nadat de callback van de hulpbron is beëindigd.
 function after(asyncId) { }
 
-// destroy is called when an AsyncWrap instance is destroyed.
+// destroy wordt opgeroepen wanneer een AsyncWrap wordt afgesloten.
 function destroy(asyncId) { }
 
-// promiseResolve is called only for promise resources, when the
-// `resolve` function passed to the `Promise` constructor is invoked
-// (either directly or through other means of resolving a promise).
+// promiseResolve wordt alleen opgeroepen voor belofte hulpbronnen, wanneer de 
+// `resolve` functie doorgegeven aan de `Promise` constructor is aangeroepen
+// (hetzij direct of door middel van een andere manier om een belofte op te lossen).
 function promiseResolve(asyncId) { }
 ```
 
@@ -79,13 +79,13 @@ added: v8.1.0
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
   * `destroy` {Function} The [`destroy` callback][].
-* Returns: {AsyncHook} Instance used for disabling and enabling hooks
+* Geeft als resultaat: {AsyncHook} Instantie gebruikt voor het aan- en uitschakelen van haken
 
-Registers functions to be called for different lifetime events of each async operation.
+Register functies op te roepen voor de levensduur van de verschillende gebeurtenissen van elke async bewerking.
 
-The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
+De callbacks `init()` / `before()` / `after()` / `destroy()` worden opgeroepen voor de respectieve asynchrone gebeurtenis tijdens de levensduur van een hulpbron.
 
-All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Alle callback's zijn optioneel. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
 
 ```js
 const async_hooks = require('async_hooks');
