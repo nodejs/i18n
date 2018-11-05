@@ -298,7 +298,7 @@ Chiamare `exit()` fa sì che cambi solo il dominio attivo e non altera il domini
 
 Questo metodo è quasi identico a [`domain.bind(callback)`][]. Tuttavia, oltre a rilevare gli errori generati, intercetterà anche gli [`Error`][] object inviati come primo argomento della funzione.
 
-In questo modo, il modello `if (err) return callback(err);` in comune può essere sostituito con un singolo error handler in un unico posto.
+In questo modo, il comune modello `if (err) return callback(err);` può essere sostituito con un singolo error handler in un unico posto.
 
 #### Esempio
 
@@ -362,7 +362,7 @@ d.run(() => {
 });
 ```
 
-In questo esempio, l'`d.on('error')` handler verrà attivato anziché arrestare il programma.
+In questo esempio, il `d.on('error')` handler verrà attivato anziché arrestare il programma.
 
 ## Domini e Promise
 
