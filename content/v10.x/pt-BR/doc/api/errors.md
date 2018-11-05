@@ -1061,7 +1061,7 @@ A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronou
 
 A Node.js API function was called with an incompatible `this` value.
 
-Example:
+Exemplo:
 
 ```js
 const urlSearchParams = new URLSearchParams('foo=bar&baz=new');
@@ -1338,7 +1338,7 @@ An attempt was made to call [`stream.unshift()`][] after the `'end'` event was e
 
 Prevents an abort if a string decoder was set on the Socket or if the decoder is in `objectMode`.
 
-Example
+Exemplo
 
 ```js
 const Socket = require('net').Socket;
