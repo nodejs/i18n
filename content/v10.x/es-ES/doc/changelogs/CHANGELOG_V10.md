@@ -867,7 +867,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`9f122e3b55`](https://github.com/nodejs/node/commit/9f122e3b55)] - **fs**: arrojar errores de fs.close en JS (Joyee Cheung) [#17338](https://github.com/nodejs/node/pull/17338)
 * [[`6ca10de946`](https://github.com/nodejs/node/commit/6ca10de946)] - **fs**: simplificar la colección de contextos de errores en C++ (Joyee Cheung) [#17338](https://github.com/nodejs/node/pull/17338)
 * [[`14ad0bd6a0`](https://github.com/nodejs/node/commit/14ad0bd6a0)] - **fs**: remover macro sin uso (James M Snell) [#17689](https://github.com/nodejs/node/pull/17689)
-* [[`c0d6327dcf`](https://github.com/nodejs/node/commit/c0d6327dcf)] - **fs**: refactor After for easier maintainability (James M Snell) [#17689](https://github.com/nodejs/node/pull/17689)
+* [[`c0d6327dcf`](https://github.com/nodejs/node/commit/c0d6327dcf)] - **fs**: refactorizar "After" para que su mantenimiento sea más sencillo (James M Snell) [#17689](https://github.com/nodejs/node/pull/17689)
 * [[`2ca227f642`](https://github.com/nodejs/node/commit/2ca227f642)] - **fs**: refactor FSReqWrap and After (James M Snell) [#17689](https://github.com/nodejs/node/pull/17689)
 * [[`49275c450a`](https://github.com/nodejs/node/commit/49275c450a)] - **http**: remove duplicate parser unset (Anatoli Papirovski) [#20126](https://github.com/nodejs/node/pull/20126)
 * [[`cda94b2bb8`](https://github.com/nodejs/node/commit/cda94b2bb8)] - **http**: cleanup parser properties (Anatoli Papirovski) [#20126](https://github.com/nodejs/node/pull/20126)
