@@ -85,7 +85,7 @@ Register functies op te roepen voor de levensduur van de verschillende gebeurten
 
 De callbacks `init()` / `before()` / `after()` / `destroy()` worden opgeroepen voor de respectieve asynchrone gebeurtenis tijdens de levensduur van een hulpbron.
 
-Alle callback's zijn optioneel. Bijvoorbeeld, als alleen de hulpbron opruiming moet worden bijgehouden, dan hoeft alleen de `destroy` callback worden doorgegeven. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Alle callback's zijn optioneel. Bijvoorbeeld, als alleen de hulpbron opruiming moet worden bijgehouden, dan hoeft alleen de `destroy` callback worden doorgegeven. De bijzonderheden van alle functies die kunnen worden doorgegeven aan de `callbacks` zijn in de [Hook Callbacks](#async_hooks_hook_callbacks) sectie.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+Let op: de callbacks worden overgenomen via de prototypeketen:
 
 ```js
 class MyAsyncCallbacks {
