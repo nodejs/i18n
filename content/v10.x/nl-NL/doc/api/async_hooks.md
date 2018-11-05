@@ -74,14 +74,14 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} De [Hook Callbacks](#async_hooks_hook_callbacks) te registreren 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
   * `destroy` {Function} The [`destroy` callback][].
 * Geeft als resultaat: {AsyncHook} Instantie gebruikt voor het aan- en uitschakelen van haken
 
-Register functies op te roepen voor de levensduur van de verschillende gebeurtenissen van elke async bewerking.
+Registreert functies op te roepen voor de levensduur van de verschillende gebeurtenissen van elke async bewerking.
 
 De callbacks `init()` / `before()` / `after()` / `destroy()` worden opgeroepen voor de respectieve asynchrone gebeurtenis tijdens de levensduur van een hulpbron.
 
