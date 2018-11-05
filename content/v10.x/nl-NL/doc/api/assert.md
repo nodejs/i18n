@@ -1074,20 +1074,20 @@ assert.throws(throwingFirst, 'Second');
 // fout en omdat het niet duidelijk is of de gebruiker het heeft bedoeld om daadwerkelijk overeen te komen 
 // met de foutmelding, Node.js heeft een `ERR_AMBIGUOUS_ARGUMENT` fout geworpen.
 assert.throws(throwingSecond, 'Second');
-// Throws an error:
+// Werpt een fout:
 // TypeError [ERR_AMBIGUOUS_ARGUMENT]
 
-// The string is only used (as message) in case the function does not throw:
+// De tekenreeks wordt alleen gebruikt (als bericht) in het geval dat de functie niet werpt:
 assert.throws(notThrowing, 'Second');
-// AssertionError [ERR_ASSERTION]: Missing expected exception: Second
+// AssertionError [ERR_ASSERTION]: Mist verwachte uitzondering: Tweede
 
-// If it was intended to match for the error message do this instead:
+// Als bedoeld was om met het foutbericht overeen te komen, doe dit dan als alternatief:
 assert.throws(throwingSecond, /Second$/);
-// Does not throw because the error messages match.
+// Werpt niet omdat de foutberichten overeenkomen.
 assert.throws(throwingFirst, /Second$/);
 // Throws an error:
 // Error: First
 //     at throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. This might lead to difficult-to-spot errors.
+Vanwege de verwarrende notatie, is het aanbevolen de tekenreeks niet als tweede argument te gebruiken. Dit kan leiden tot moeilijk te vinden fouten.
