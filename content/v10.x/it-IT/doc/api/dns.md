@@ -431,7 +431,7 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[][]}
 
-Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'`hostname`. L'argomento `records` passato alla funzione di `callback` è un array bidimensionale dei record di testo disponibili per l'`hostname` (es.`[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Ogni array secondario contiene un pezzo del record TXT. Depending on the use case, these could be either joined together or treated separately.
+Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'`hostname`. L'argomento `records` passato alla funzione di `callback` è un array bidimensionale dei record di testo disponibili per l'`hostname` (es.`[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Ogni array secondario contiene un pezzo del record TXT. A seconda dell'utilizzo, questi potrebbero essere sia uniti che trattati separatamente.
 
 ## dns.resolveAny(hostname, callback)
 
