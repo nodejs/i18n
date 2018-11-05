@@ -1070,13 +1070,13 @@ added: v0.1.94
 
 Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
-La `password` se emplea para derivar la clave del cipher y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+La `password` se emplea para derivar la clave del cifrado y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
 
-La implementación de `crypto.createCipher()` deriva las claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una itaración y no del salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
+La implementación de `crypto.createCipher()` deriva claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
-De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave por su cuenta empleando [`crypto.pbkdf2()`][] y, usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave y un IV por su cuenta empleando [`crypto.pbkdf2()`][], así como usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1087,7 +1087,7 @@ De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_B
 
 Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
 La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
@@ -1118,7 +1118,7 @@ added: v0.1.94
 
 Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (llave) dados. Optional `options` argument controls stream behavior.
 
-La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
+La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
 De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
@@ -1135,7 +1135,7 @@ added: v0.1.94
 
 Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
 La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
 
