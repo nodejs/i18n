@@ -34,7 +34,7 @@ const tid = async_hooks.triggerAsyncId();
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
-// Allow callbacks of this AsyncHook instance to call. This is not an implicit
+// Sta callbacks van deze AsyncHook instantie toe om op te roepen. This is not an implicit
 // action after running the constructor, and must be explicitly run to begin
 // executing callbacks.
 asyncHook.enable();
