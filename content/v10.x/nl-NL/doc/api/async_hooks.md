@@ -46,17 +46,17 @@ asyncHook.disable();
 // Het volgende zijn de callbacks die kunnen worden doorgegeven aan createHook().
 //
 
-// init wordt opgeroepen gedurende object constructie. The resource may not have
-// completed construction when this callback runs, therefore all fields of the
-// resource referenced by "asyncId" may not have been populated.
-function init(asyncId, type, triggerAsyncId, resource) { }
+// init wordt opgeroepen gedurende object constructie. Het kan zijn dat de hulpbron niet 
+// de constructie heeft afgerond, daarom zijn wellicht niet alle velden van de
+// hulpbron, gerefereerd door "asyncId", gevuld.
+functie init(asyncId, type, triggerAsyncId, hulpbron) { }
 
-// before is called just before the resource's callback is called. It can be
-// called 0-N times for handles (e.g. TCPWrap), and will be called exactly 1
-// time for requests (e.g. FSReqWrap).
+// voorheen is opgeroepen net voordat de callback van de hulpbron wordt opgeroepen. Het kan zijn 
+// 0-N keer opgeroepen voor grepen (bijv. TCPWrap), en wordt opgeroepen, precies 1 
+// keer voor verzoeken (bijv. FSReqWrap).
 function before(asyncId) { }
 
-// after is called just after the resource's callback has finished.
+// nadien is opgeroepen net nadat de callback van de hulpbron is beëindigd.
 function after(asyncId) { }
 
 // destroy is called when an AsyncWrap instance is destroyed.
