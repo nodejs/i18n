@@ -1282,11 +1282,11 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Commits
 
 * [[`08a3f29fd4`](https://github.com/nodejs/node/commit/08a3f29fd4)] - **buffer**: reparar la verificación de rango para slowToString (Matt Loring) [#4019](https://github.com/nodejs/node/pull/4019)
-* [[`e3a8e8bba4`](https://github.com/nodejs/node/commit/e3a8e8bba4)] - **buffer**: Prevent Buffer constructor deopt (Bryce Baril) [#4158](https://github.com/nodejs/node/pull/4158)
-* [[`0e18e68324`](https://github.com/nodejs/node/commit/0e18e68324)] - **buffer**: fix writeInt{B,L}E for some neg values (Peter A. Bigot) [#3994](https://github.com/nodejs/node/pull/3994)
-* [[`ab5b529dd2`](https://github.com/nodejs/node/commit/ab5b529dd2)] - **buffer**: default to UTF8 in byteLength() (Tom Gallacher) [#4010](https://github.com/nodejs/node/pull/4010)
-* [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: move checkFloat from lib into src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
-* [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: add "--partly-static" build options (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
+* [[`e3a8e8bba4`](https://github.com/nodejs/node/commit/e3a8e8bba4)] - **buffer**: Prevenir constructor deopt Buffer (Bryce Baril) [#4158](https://github.com/nodejs/node/pull/4158)
+* [[`0e18e68324`](https://github.com/nodejs/node/commit/0e18e68324)] - **buffer**: corregir writeInt{B,L}E para algunos valores neg (Peter A. Bigot) [#3994](https://github.com/nodejs/node/pull/3994)
+* [[`ab5b529dd2`](https://github.com/nodejs/node/commit/ab5b529dd2)] - **buffer**: predeterminar a UTF8 en byteLength() (Tom Gallacher) [#4010](https://github.com/nodejs/node/pull/4010)
+* [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: mover a checkFloat de lib para src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
+* [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: añadir opciones de compilación "--partly-static" (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
 * [[`a76d788119`](https://github.com/nodejs/node/commit/a76d788119)] - **build**: update signtool description, add url (Rod Vagg) [#4011](https://github.com/nodejs/node/pull/4011)
 * [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: add Intel Vtune profiling support (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
 * [[`7793c364fc`](https://github.com/nodejs/node/commit/7793c364fc)] - **child_process**: flush consuming streams (Dave) [#4071](https://github.com/nodejs/node/pull/4071)
