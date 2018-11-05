@@ -833,9 +833,9 @@ changes:
 
 Test of `value` truthy is. Het is gelijkwaardig aan `assert.equal(!!value, true, message)`.
 
-Als de `value` niet truthy is, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter `undefined` is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+Als de `value` niet truthy is, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter `undefined` is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`. Wanneer er geen enkel argument tot stand komt dan wordt het `message` ingesteld op de tekenreeks: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! Zie hieronder voor meer details.
+Let op dat de foutmelding in de `repl` anders zal zijn dan de melding die in het bestand is geworpen! Zie hieronder voor meer details.
 
 ```js
 const assert = require('assert').strict;
@@ -846,7 +846,7 @@ assert.ok(1);
 // OK
 
 assert.ok();
-// AssertionError: No value argument passed to `assert.ok()`
+// AssertionError: Geen waardeargument doorgegeven aan `assert.ok()`
 
 assert.ok(false, 'it\'s false');
 // AssertionError: it's false
@@ -857,23 +857,23 @@ assert.ok(typeof 123 === 'string');
 
 // In a file (e.g. test.js):
 assert.ok(typeof 123 === 'string');
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: De uitdrukking is geëvalueerd op een falsy waarde:
 //
 //   assert.ok(typeof 123 === 'string')
 
 assert.ok(false);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: De uitdrukking is geëvalueerd op een falsy waarde:
 //
 //   assert.ok(false)
 
 assert.ok(0);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: De uitdrukking is geëvalueerd op een falsy waarde:
 //
 //   assert.ok(0)
 
-// Using `assert()` works the same:
+// Using `assert()` werkt hetzelfde:
 assert(0);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: De uitdrukking is geëvalueerd op een falsy waarde:
 //
 //   assert(0)
 ```
@@ -888,9 +888,9 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. It will then check that the promise is rejected.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
 
-If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Als `block` een functie is en synchronisch een fout gooit, zal `assert.rejects()` een afgewezen `Promise` retourneren met die fout. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
 Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
 
