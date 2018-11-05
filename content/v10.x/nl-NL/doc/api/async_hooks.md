@@ -26,11 +26,11 @@ const async_hooks = require('async_hooks');
 // Retourneer de ID van de huidige executie context.
 const eid = async_hooks.executionAsyncId();
 
-// Return the ID of the handle responsible for triggering the callback of the
-// current execution scope to call.
+// Retourneer de ID van de greep die verantwoordelijk is voor het genereren van de callback van de
+// huidige op te roepen executie execution-omvang.
 const tid = async_hooks.triggerAsyncId();
 
-// Create a new AsyncHook instance. All of these callbacks are optional.
+// Creëer een nieuwe AsyncHook instantie. Al deze callback's zijn optioneel.
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
