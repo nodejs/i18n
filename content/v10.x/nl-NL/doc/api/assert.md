@@ -371,7 +371,7 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte is afgewezen.
 
 Als `block` een functie is en synchronisch een fout gooit, zal `assert.doesNotReject()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneert, zal `assert.doesNotReject()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
@@ -689,13 +689,13 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.notDeepEqual(obj1, obj1);
-// AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
+// AssertionError: { a: { b: 1 } } niet diep gelijk { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj2);
-// OK: obj1 and obj2 are not deeply equal
+// OK: obj1 en obj2 zijn niet diep gelijk
 
 assert.notDeepEqual(obj1, obj3);
-// AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
+// AssertionError: { a: { b: 1 } } niet diep gelijk { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
 // OK: obj1 en obj4 zijn niet diep gelijk
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte niet is afgewezen.
+Wacht op de `block` toezegging of zal, indien `block` een functie is, onmiddellijk de functie oproepen en wachten tot de geretourneerde toezegging is volbracht. Het gaat dan nakijken of de belofte is afgewezen.
 
 Als `block` een functie is en synchronisch een fout gooit, zal `assert.rejects()` een afgewezen `Promise` retourneren met die fout. Wanneer de functie geen belofte retourneert, zal `assert.rejects()` een afgewezen `Promise` met een [`ERR_INVALID_RETURN_VALUE`][] fout retourneren. In beide gevallen wordt de foutafhandeling overgeslagen.
 
@@ -959,7 +959,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-Wannner de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
+Wanneer de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
