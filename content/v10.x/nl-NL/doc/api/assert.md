@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -831,9 +831,9 @@ changes:
 * `value` {any}
 * `message` {any}
 
-Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
+Test of `value` truthy is. Het is gelijkwaardig aan `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+Als de `value` niet truthy is, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter `undefined` is, wordt er een standaard foutmelding toegewezen. Wanneer de `message` parameter een voorval is van een [`Error`][] dan zal die gegooid worden in plaats van de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! Zie hieronder voor meer details.
 
