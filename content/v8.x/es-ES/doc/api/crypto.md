@@ -1089,7 +1089,7 @@ Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inici
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [vector de inicialización](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createCredentials(details)
 
@@ -1098,9 +1098,9 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en vez.
+> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en su lugar.
 
-- `details`{Object} idénticos a [`tls.createSecureContext()`][].
+- `details`{Object} Idéntico a [`tls.createSecureContext()`][].
 
 El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. No debería ser usada. Remplácela con [`tls.createSecureContext()`][], la cual tiene los mismos argumentos y valores de retorno.
 
@@ -1116,9 +1116,9 @@ added: v0.1.94
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (llave) dados. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados. Optional `options` argument controls stream behavior.
 
-La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
+The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
 De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
@@ -1137,7 +1137,7 @@ Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vecto
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cifrado disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [vector de inicialización](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'` o [buffers][`Buffer`].
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
