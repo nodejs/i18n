@@ -34,19 +34,19 @@ const tid = async_hooks.triggerAsyncId();
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
-// Sta callbacks van deze AsyncHook instantie toe om op te roepen. This is not an implicit
-// action after running the constructor, and must be explicitly run to begin
-// executing callbacks.
+// Sta callbacks van deze AsyncHook instantie toe om op te roepen. Dit is geen impliciete
+// actie na het uitvoeren van de constructor, en moeten expliciet worden gedraaid om te beginnen met het
+// uitvoeren van callbacks.
 asyncHook.enable();
 
-// Disable listening for new asynchronous events.
+// Luisteren naar nieuwe asynchrone gebeurtenissen uitschakelen.
 asyncHook.disable();
 
 //
-// The following are the callbacks that can be passed to createHook().
+// Het volgende zijn de callbacks die kunnen worden doorgegeven aan createHook().
 //
 
-// init is called during object construction. The resource may not have
+// init wordt opgeroepen gedurende object constructie. The resource may not have
 // completed construction when this callback runs, therefore all fields of the
 // resource referenced by "asyncId" may not have been populated.
 function init(asyncId, type, triggerAsyncId, resource) { }
