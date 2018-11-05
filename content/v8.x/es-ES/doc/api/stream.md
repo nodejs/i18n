@@ -47,7 +47,7 @@ La cantidad de datos almacenados potencialmente en buffer depende de la opción 
 
 Los datos son almacenados en Buffer en los streams Legibles cuando la implementación llama a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Si el consumidor del Stream no llama a [`stream.read()`](#stream_readable_read_size), los datos se quedarán en la cola interna hasta que se consumen.
 
-Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
+Una vez que el tamaño total del buffer de lectura interno alcanza el límite especificado por `highWaterMark`, el stream parará temporalmente de leer los datos desde el recurso subyacente, hasta que los datos almacenados en buffer actualmente se puedan consumir (es decir, el stream parará de llamar al método `readable._read()` interno que se utiliza para llenar el buffer de lectura).
 
 Data is buffered in Writable streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
