@@ -2816,7 +2816,7 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 * [[`cf5a00e904`](https://github.com/nodejs/node/commit/cf5a00e904)] - **inspector**: no sugerir el uso de localhost (Eugene Ostroukhov) [#9451](https://github.com/nodejs/node/pull/9451)
 * [[`b5bcd25c7b`](https://github.com/nodejs/node/commit/b5bcd25c7b)] - **inspector**: fix request path nullptr dereference (Ben Noordhuis) [#9184](https://github.com/nodejs/node/pull/9184)
 * [[`b3f8f8902d`](https://github.com/nodejs/node/commit/b3f8f8902d)] - **inspector**: no URLs when the debugger is connected (Eugene Ostroukhov) [#8919](https://github.com/nodejs/node/pull/8919)
-* [[`a178abfae6`](https://github.com/nodejs/node/commit/a178abfae6)] - **lib**: change == to === in linkedlist (jedireza) [#9362](https://github.com/nodejs/node/pull/9362)
+* [[`a178abfae6`](https://github.com/nodejs/node/commit/a178abfae6)] - **lib**: cambiar == a === en linkedlist (jedireza) [#9362](https://github.com/nodejs/node/pull/9362)
 * [[`5efb3c373a`](https://github.com/nodejs/node/commit/5efb3c373a)] - **lib**: fix beforeExit not working with -e (Ben Noordhuis) [#8821](https://github.com/nodejs/node/pull/8821)
 * [[`0f1a22d28a`](https://github.com/nodejs/node/commit/0f1a22d28a)] - **net**: fix ambiguity in EOF handling (Fedor Indutny) [#9066](https://github.com/nodejs/node/pull/9066)
 * [[`58b60fc79d`](https://github.com/nodejs/node/commit/58b60fc79d)] - **repl**: don’t write to input stream in editor mode (Anna Henningsen) [#9207](https://github.com/nodejs/node/pull/9207)
