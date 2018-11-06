@@ -1020,7 +1020,7 @@ Crea un objeto de intercambio de clave `DiffieHellman` y genera un prime de `pri
 added: v0.11.14
 -->
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curve_name` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Crea una clave de intercambio de objeto de una Curva Elíptica Diffie-Hellman (`ECDH`) empleando una curva específica y predeterminada por el string `curve_name`. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
 
 ### crypto.createHash(algorithm)
 
@@ -1028,11 +1028,11 @@ Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a pr
 added: v0.1.92
 -->
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`.
+Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-Example: generating the sha256 sum of a file
+Eemplos: generando la suma sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1052,17 +1052,17 @@ input.on('readable', () => {
 });
 ```
 
-### crypto.createHmac(algorithm, key)
+### crypto.createHmac(algoritmo, clave)
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`.
+Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
 
 Example: generating the sha256 HMAC of a file
 
