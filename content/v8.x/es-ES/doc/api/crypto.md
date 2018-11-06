@@ -1191,7 +1191,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1202,11 +1202,11 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-Example: generating the sha256 sum of a file
+Eemplos: generando la suma sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1236,11 +1236,11 @@ added: v0.1.94
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
 
 Example: generating the sha256 HMAC of a file
 
