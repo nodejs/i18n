@@ -996,9 +996,9 @@ La `key` es la clave no procesada usada por el `algorithm`, e `iv` es un [initia
 added: v0.11.12
 -->
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, una string o un [`Buffer`][]. If `generator` is not specified, the value `2` is used.
 
 The `prime_encoding` and `generator_encoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
 
