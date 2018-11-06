@@ -142,7 +142,7 @@ const trace_events = require('trace_events');
 const categories = ['node.perf', 'node.async_hooks'];
 const tracing = trace_events.createTracing({ categories });
 tracing.enable();
-// do stuff
+// faz algo
 tracing.disable();
 ```
 
@@ -160,9 +160,9 @@ Given the file `test.js` below, the command `node --trace-event-categories node.
 
 ```js
 const trace_events = require('trace_events');
-const t1 = trace_events.createTracing({ categories: ['node.async_hooks'] });
-const t2 = trace_events.createTracing({ categories: ['node.perf'] });
-const t3 = trace_events.createTracing({ categories: ['v8'] });
+const t1 = trace_events.createTracing({ categorias: ['node.async_hooks'] });
+const t2 = trace_events.createTracing({ categorias: ['node.perf'] });
+const t3 = trace_events.createTracing({ categorias: ['v8'] });
 
 t1.enable();
 t2.enable();
