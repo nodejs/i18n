@@ -1162,9 +1162,9 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, una string o un [`Buffer`][]. If `generator` is not specified, the value `2` is used.
 
 The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
 
