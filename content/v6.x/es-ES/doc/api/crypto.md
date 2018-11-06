@@ -1064,7 +1064,7 @@ El `algorithm` es dependiente de los algoritmos disponibles respaldados por la v
 
 El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
 
-Example: generating the sha256 HMAC of a file
+Ejemplo: generando el HMAC sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1084,21 +1084,21 @@ input.on('readable', () => {
 });
 ```
 
-### crypto.createSign(algorithm)
+### crypto.createSign(algoritmo)
 
 <!-- YAML
 added: v0.1.92
 -->
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms.
+Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles.
 
-### crypto.createVerify(algorithm)
+### crypto.createVerify(algoritmo)
 
 <!-- YAML
 added: v0.1.92
 -->
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms.
+Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firmas disponibles.
 
 ### crypto.getCiphers()
 
@@ -1106,7 +1106,7 @@ Creates and returns a `Verify` object that uses the given algorithm. Use [`crypt
 added: v0.9.3
 -->
 
-Returns an array with the names of the supported cipher algorithms.
+Regresa una matriz con los nombres de los algoritmos cifrados respaldados.
 
 Ejemplo:
 
@@ -1121,7 +1121,7 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-Returns an array with the names of the supported elliptic curves.
+Regresa una matriz con los nombres de las curvas elípticas respaldadas.
 
 Ejemplo:
 
@@ -1136,7 +1136,7 @@ console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
 added: v0.7.5
 -->
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Ejemplo (obteniendo un secreto compartido):
 
