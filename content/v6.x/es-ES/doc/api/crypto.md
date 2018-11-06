@@ -998,13 +998,13 @@ added: v0.11.12
 
 Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
 
-El argumento `generator` puede ser un número, una string o un [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, una string o un [`Buffer`][]. Si el `generator` no es especificado, entonces, el valor `2<0> no es usado.</p>
 
-The `prime_encoding` and `generator_encoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+<p>Los argumentos <code>prime_encoding` y `generator_encoding` pueden ser `'latin1'`, `'hex'`, o `'base64'`.
 
-If `prime_encoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][] is expected.
+Si se especifica el `prime_encoding`, `prime` será una string, sino se espera un [`Buffer`][].
 
-If `generator_encoding` is specified, `generator` is expected to be a string; otherwise either a number or [`Buffer`][] is expected.
+Si se especifica `generator_encoding`, se espera que `generator` sea una string; de lo contrario, se espera que sea un número o un [`Buffer`][].
 
 ### crypto.createDiffieHellman(prime_length[, generator])
 
@@ -1012,7 +1012,7 @@ If `generator_encoding` is specified, `generator` is expected to be a string; ot
 added: v0.5.0
 -->
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `prime_length` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Crea un objeto de intercambio de clave `DiffieHellman` y genera un prime de `primeLength` bits, usando un `generator` numérico opcional específico. El valor `2<code> será usado si <0>generator` no es especificado.
 
 ### crypto.createECDH(curve_name)
 
