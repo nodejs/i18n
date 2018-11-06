@@ -1136,7 +1136,7 @@ console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
 added: v0.7.5
 -->
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Ejemplo (obteniendo un secreto compartido):
 
