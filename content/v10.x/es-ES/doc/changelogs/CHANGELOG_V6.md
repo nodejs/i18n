@@ -2730,7 +2730,7 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 
 ### Cambios Notables
 
-* **buffer**: coerce slice parameters consistently (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
+* **buffer**: coaccionar parámetros de porción consistentemente (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
 * **deps**: - *npm*: upgrade npm to 3.10.9 (Kat Marchán) [#9286](https://github.com/nodejs/node/pull/9286) - *V8*: Various fixes to destructuring edge cases - cherry-pick 3c39bac from V8 upstream (Cristian Cavalli) [#9138](https://github.com/nodejs/node/pull/9138) - cherry pick 7166503 from upstream v8 (Cristian Cavalli) [#9173](https://github.com/nodejs/node/pull/9173)
 * **gtest**: the test reporter now outputs tap comments as yamlish (Johan Bergström) [#9262](https://github.com/nodejs/node/pull/9262)
 * **inspector**: inspector now prompts user to use 127.0.0.1 rather than localhost (Eugene Ostroukhov) [#9451](https://github.com/nodejs/node/pull/9451)
