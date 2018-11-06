@@ -37,7 +37,7 @@ All streams created by Node.js APIs operate exclusively on strings and `Buffer` 
 
 Las instancias de stream se cambian al modo objeto utilizando la opción `objectMode` cuando se crea el stream. Intentar cambiar un stream existente al modo objeto, no es seguro.
 
-### Buffering
+### Almacenamiento en Buffer
 
 <!--type=misc-->
 
