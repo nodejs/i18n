@@ -6,11 +6,11 @@
 
 Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro categorie di errori:
 
-- Errori JavaScript standard come ad esempio: 
+- Errori standard di JavaScript, come ad esempio: 
   - {EvalError} : generato quando una chiamata a `eval()` fallisce.
-  - {SyntaxError} : thrown in response to improper JavaScript language syntax.
-  - {RangeError} : thrown when a value is not within an expected range
-  - {ReferenceError} : thrown when using undefined variables
+  - {SyntaxError} : generato in risposta ad un utilizzo improprio della sintassi del linguaggio JavaScript.
+  - {RangeError} : generato quando un valore non rientra nell'intervallo previsto
+  - {ReferenceError} : generato quando si utilizzano variabili non definite
   - {TypeError} : thrown when passing arguments of the wrong type
   - {URIError} : thrown when a global URI handling function is misused.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
