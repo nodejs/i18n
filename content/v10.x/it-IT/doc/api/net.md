@@ -4,17 +4,17 @@
 
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
+Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server stream-based TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e client ([` net.createConnection()`] []).
 
-It can be accessed using:
+Ci si può accedere usando:
 
 ```js
 const net = require('net');
 ```
 
-## IPC Support
+## Supporto IPC
 
 The `net` module supports IPC with named pipes on Windows, and UNIX domain sockets on other operating systems.
 
