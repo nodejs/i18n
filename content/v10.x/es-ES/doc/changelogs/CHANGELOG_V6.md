@@ -2715,20 +2715,20 @@ Esta actualización de LTS viene con 312 commits. Esto incluye a 229 que están 
 * [[`a5d27f3515`](https://github.com/nodejs/node/commit/a5d27f3515)] - **tools**: habilitar nueva línea final en .editorconfig (Roman Reiss) [#9410](https://github.com/nodejs/node/pull/9410)
 * [[`e94b72e41e`](https://github.com/nodejs/node/commit/e94b72e41e)] - **tools**: remove unneeded escaping in generate.js (Rich Trott) [#9781](https://github.com/nodejs/node/pull/9781)
 * [[`f05f0fe74e`](https://github.com/nodejs/node/commit/f05f0fe74e)] - **tools**: rechazar espacio en blanco posterior para markdown (Sam Roberts) [#9676](https://github.com/nodejs/node/pull/9676)
-* [[`0256b7b057`](https://github.com/nodejs/node/commit/0256b7b057)] - **tools**: use better regexp for manpage references (Anna Henningsen) [#9632](https://github.com/nodejs/node/pull/9632)
-* [[`232026d8b9`](https://github.com/nodejs/node/commit/232026d8b9)] - **tools**: improve docopen target in Makefile (Sakthipriyan Vairamani (thefourtheye)) [#9436](https://github.com/nodejs/node/pull/9436)
-* [[`79e0577702`](https://github.com/nodejs/node/commit/79e0577702)] - **tools**: make run-valgrind.py useful (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
-* [[`8a8646c0b2`](https://github.com/nodejs/node/commit/8a8646c0b2)] - **tools**: fix run-valgrind.py script (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
-* [[`5401b04648`](https://github.com/nodejs/node/commit/5401b04648)] - **tools**: copy run-valgrind.py to tools/ (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
-* [[`12fe071abf`](https://github.com/nodejs/node/commit/12fe071abf)] - **util**: move the case 'latin1' (Jackson Tian) [#9646](https://github.com/nodejs/node/pull/9646)
+* [[`0256b7b057`](https://github.com/nodejs/node/commit/0256b7b057)] - **tools**: usar un mejor regexp para referencias de la página de manual (Anna Henningsen) [#9632](https://github.com/nodejs/node/pull/9632)
+* [[`232026d8b9`](https://github.com/nodejs/node/commit/232026d8b9)] - **tools**: mejorar objetivo de docopen en Makefile (Sakthipriyan Vairamani (thefourtheye)) [#9436](https://github.com/nodejs/node/pull/9436)
+* [[`79e0577702`](https://github.com/nodejs/node/commit/79e0577702)] - **tools**: hacer útil a run-valgrind.py (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
+* [[`8a8646c0b2`](https://github.com/nodejs/node/commit/8a8646c0b2)] - **tools**: arreglar script de run-valgrind.py (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
+* [[`5401b04648`](https://github.com/nodejs/node/commit/5401b04648)] - **tools**: copiar run-valgrind.py a tools/ (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
+* [[`12fe071abf`](https://github.com/nodejs/node/commit/12fe071abf)] - **util**: mover el caso 'latin1' (Jackson Tian) [#9646](https://github.com/nodejs/node/pull/9646)
 
 <a id="6.9.2"></a>
 
-## 2016-12-06, Version 6.9.2 'Boron' (LTS), @thealphanerd
+## 2016-12-06, Versión 6.9.2 'Boron' (LTS), @thealphanerd
 
-This LTS release comes with 144 commits. This includes 47 that are docs related, 46 that are test related, 15 which are build / tools related, and 9 commits which are updates to dependencies.
+Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están relacionados a documentación, 46 que están relacionados con pruebas, 15 que están relacionados a build / tools, y 9 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: coerce slice parameters consistently (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
 * **deps**: - *npm*: upgrade npm to 3.10.9 (Kat Marchán) [#9286](https://github.com/nodejs/node/pull/9286) - *V8*: Various fixes to destructuring edge cases - cherry-pick 3c39bac from V8 upstream (Cristian Cavalli) [#9138](https://github.com/nodejs/node/pull/9138) - cherry pick 7166503 from upstream v8 (Cristian Cavalli) [#9173](https://github.com/nodejs/node/pull/9173)
