@@ -2738,14 +2738,14 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 
 ### Commits
 
-* [[`f3b0cf5052`](https://github.com/nodejs/node/commit/f3b0cf5052)] - **async_wrap**: call destroy() callback in uv_idle_t (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
-* [[`3e5b2eb49c`](https://github.com/nodejs/node/commit/3e5b2eb49c)] - **async_wrap**: make Initialize a static class member (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
-* [[`9ed60d308c`](https://github.com/nodejs/node/commit/9ed60d308c)] - **async_wrap**: mode constructor/destructor to .cc (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
-* [[`5eeac8cc57`](https://github.com/nodejs/node/commit/5eeac8cc57)] - **benchmark**: add microbenchmarks for ES Map (Rod Vagg) [#7581](https://github.com/nodejs/node/pull/7581)
-* [[`e108f20d5c`](https://github.com/nodejs/node/commit/e108f20d5c)] - **buffer**: use correct name for custom inspect symbol (Charmander) [#9289](https://github.com/nodejs/node/pull/9289)
-* [[`0cffa3c87e`](https://github.com/nodejs/node/commit/0cffa3c87e)] - **buffer**: coerce offset using Math.trunc() (cjihrig) [#9341](https://github.com/nodejs/node/pull/9341)
-* [[`0276e9e82c`](https://github.com/nodejs/node/commit/0276e9e82c)] - **buffer**: coerce slice parameters consistently (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
-* [[`c1aee029d5`](https://github.com/nodejs/node/commit/c1aee029d5)] - **build**: start comments at beginning of line (Sakthipriyan Vairamani (thefourtheye)) [#9375](https://github.com/nodejs/node/pull/9375)
+* [[`f3b0cf5052`](https://github.com/nodejs/node/commit/f3b0cf5052)] - **async_wrap**: llamar a callback de destroy() en uv_idle_t (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
+* [[`3e5b2eb49c`](https://github.com/nodejs/node/commit/3e5b2eb49c)] - **async_wrap**: hacer de Initialize un miembro de la clase estática (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
+* [[`9ed60d308c`](https://github.com/nodejs/node/commit/9ed60d308c)] - **async_wrap**: modo constructor/destructor a .cc (Trevor Norris) [#10096](https://github.com/nodejs/node/pull/10096)
+* [[`5eeac8cc57`](https://github.com/nodejs/node/commit/5eeac8cc57)] - **benchmark**: añadir micro pruebas de rendimiento para "ES Map" (Rod Vagg) [#7581](https://github.com/nodejs/node/pull/7581)
+* [[`e108f20d5c`](https://github.com/nodejs/node/commit/e108f20d5c)] - **buffer**: usar nombre correcto para símbolo de inspección personalizado (Charmander) [#9289](https://github.com/nodejs/node/pull/9289)
+* [[`0cffa3c87e`](https://github.com/nodejs/node/commit/0cffa3c87e)] - **buffer**: coaccionar offset usando Math.trunc() (cjihrig) [#9341](https://github.com/nodejs/node/pull/9341)
+* [[`0276e9e82c`](https://github.com/nodejs/node/commit/0276e9e82c)] - **buffer**: coaccionar parámetros de porción consistentemente (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
+* [[`c1aee029d5`](https://github.com/nodejs/node/commit/c1aee029d5)] - **build**: empezar comentarios al comienzo de la línea (Sakthipriyan Vairamani (thefourtheye)) [#9375](https://github.com/nodejs/node/pull/9375)
 * [[`1ed58ed7fe`](https://github.com/nodejs/node/commit/1ed58ed7fe)] - **build**: reduce noise from doc target (Daniel Bevenius) [#9457](https://github.com/nodejs/node/pull/9457)
 * [[`5c2ed2eefe`](https://github.com/nodejs/node/commit/5c2ed2eefe)] - **build**: make node-gyp output silent (Sakthipriyan Vairamani (thefourtheye)) [#8990](https://github.com/nodejs/node/pull/8990)
 * [[`c857586fd7`](https://github.com/nodejs/node/commit/c857586fd7)] - **build**: use wxneeded on openbsd (Aaron Bieber) [#9232](https://github.com/nodejs/node/pull/9232)
