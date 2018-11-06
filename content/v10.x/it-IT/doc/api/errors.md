@@ -11,7 +11,7 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
   - {SyntaxError} : generato in risposta ad un utilizzo improprio della sintassi del linguaggio JavaScript.
   - {RangeError} : generato quando un valore non rientra nell'intervallo previsto
   - {ReferenceError} : generato quando si utilizzano variabili non definite
-  - {TypeError} : thrown when passing arguments of the wrong type
+  - {TypeError} : generato quando vengono passati argomenti di tipo errato
   - {URIError} : thrown when a global URI handling function is misused.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
 - And User-specified errors triggered by application code.
