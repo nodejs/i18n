@@ -1022,7 +1022,7 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -1045,7 +1045,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
@@ -1075,7 +1075,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Example:
+Exemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1104,13 +1104,13 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
 
-Example:
+Exemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+ou
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1138,7 +1138,7 @@ added: v0.9.12
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.ServerResponse}
+* Retorna: {http.ServerResponse}
 
 Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -1154,14 +1154,14 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-Example:
+Exemplo:
 
 ```js
 const http = require('http');
 const server = http.createServer((req, res) => {
   const ip = res.socket.remoteAddress;
   const port = res.socket.remotePort;
-  res.end(`Your IP address is ${ip} and your source port is ${port}.`);
+  res.end(`Seu endereço IP é ${ip} e sua porta é ${port}.`);
 }).listen(3000);
 ```
 
@@ -1175,7 +1175,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Exemplo:
 
 ```js
 response.statusCode = 404;
@@ -1193,7 +1193,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Example:
+Exemplo:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1210,7 +1210,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Returns: {boolean}
+* Retorna: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1252,7 +1252,7 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Example:
+Exemplo:
 
 ```js
 const body = 'hello world';
@@ -1432,7 +1432,7 @@ added: v0.5.9
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.IncomingMessage}
+* Retorna: {http.IncomingMessage}
 
 Calls `message.connection.setTimeout(msecs, callback)`.
 
