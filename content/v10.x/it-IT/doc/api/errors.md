@@ -25,7 +25,7 @@ Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o 
 
 Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Errore` e dallo stile dell'API che viene richiamata.
 
-All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
+Tutti gli errori JavaScript sono gestiti come eccezioni che generano e inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
 ```js
 // Throws with a ReferenceError because z is undefined
