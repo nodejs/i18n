@@ -183,7 +183,7 @@ changes:
 
 Faz uma requesição para um web server seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+As seguintes `opções` adicionais do [`tls.connect()`][] também são aceitas: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
 `options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 
