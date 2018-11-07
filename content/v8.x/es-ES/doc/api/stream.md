@@ -51,7 +51,7 @@ Una vez que el tamaño total del buffer de lectura interno alcanza el límite es
 
 Los datos se almacenan en buffer en streams Escribibles cuando el método [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) se llama repetidamente. Mientras el tamaño total del buffer de escritura interno sea inferior al límite establecido por `highWaterMark`, las llamadas a `writable.write()` devolverán `true`. Una vez el tamaño del buffer interno alcanza o excede el `highWaterMark`, se devolverá `false`.
 
-Un objetivo clave de la API de `stream`, particularmente del método [`stream.pipe()`], es limitar el almacenamiento de datos en buffer a niveles aceptables, tal que las fuentes y destinatarios de diferentes velocidades no agoten la memoria disponible.
+Un objetivo clave de la API de `stream`, particularmente del método [`stream.pipe()`], es limitar el almacenamiento de datos en buffer a niveles aceptables, tales que las fuentes y destinatarios de diferentes velocidades no agoten la memoria disponible.
 
 Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformador](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Debido a que los datos se pueden escribir en el socket a una velocidad más rápida o más lenta que la de los datos recibidos, es importante para cada lado (y para el buffer) operar independientemente del otro.
 
@@ -78,7 +78,7 @@ const server = http.createServer((req, res) => {
     body += chunk;
   });
 
-  // el final del evento indica que todo el cuerpo se ha recibido
+  // el evento final indica que todo el cuerpo se ha recibido
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
