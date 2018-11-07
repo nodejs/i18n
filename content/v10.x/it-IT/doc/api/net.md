@@ -16,7 +16,7 @@ const net = require('net');
 
 ## Supporto IPC
 
-Il modulo `net` supporta IPC con le pipe denominate su Windows e dominio UNIX prese su altri sistemi operativi.
+Il modulo `net` supporta IPC con le pipe denominate su Windows e di dominio UNIX prese su altri sistemi operativi.
 
 ### Identificazione dei percorsi per le connessioni IPC
 
