@@ -19,7 +19,7 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
 
 All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
 
-## Error Propagation and Interception
+## Propagazione e Intercettazione degli Errori
 
 <!--type=misc-->
 
