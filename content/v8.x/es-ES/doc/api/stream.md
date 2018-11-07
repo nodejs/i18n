@@ -111,7 +111,7 @@ Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#
 
 Los streams [Dúplex](#stream_class_stream_duplex) y [Transformadores](#stream_class_stream_transform) son tanto [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable).
 
-Las aplicaciones que escriben o consumen datos de un stream, no requieren implementar interfaces de stream directamente y generalmente no tendrán razones para llamar a `require('stream')`.
+Las aplicaciones que escriben o consumen datos de un stream no requieren implementar interfaces de stream directamente y, por lo general, no tendrán razones para llamar a `require('stream')`.
 
 Los desarrolladores que deseen implementar nuevos tipos de streams deben consultar la sección [API para Implementadores de Stream](#stream_api_for_stream_implementers).
 
@@ -122,12 +122,12 @@ Los streams Escribibles son una abstracción para un *destino* en el que se escr
 Los ejemplos de streams [Escribibles](#stream_class_stream_writable) incluyen:
 
 * [solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
-* [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
-* [fs escribe streams](fs.html#fs_class_fs_writestream)
+* [respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
+* [streams de escritura del fs](fs.html#fs_class_fs_writestream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
-* [proceso secundario stdin](child_process.html#child_process_subprocess_stdin)
+* [stdin de proceso secundario](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
 *Nota*: algunos de estos ejemplos realmente son streams [Dúplex](#stream_class_stream_duplex) que implementan la interfaz [Escribible](#stream_class_stream_writable).
@@ -157,7 +157,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más evento, y no se realizarán más cálculos.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
 Not all Writable streams will emit the `'close'` event.
 
@@ -514,7 +514,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más evento, y no se realizarán más cálculos.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
 Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'` event.
 
