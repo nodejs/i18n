@@ -28,12 +28,12 @@ Node.js supporta diversi meccanismi per la propagazione e la gestione degli erro
 Tutti gli errori JavaScript sono gestiti come eccezioni che generano e inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
 ```js
-// Throws with a ReferenceError because z is undefined
-try {
+// Viene generato con un ReferenceError perchè z è indefinito
+prova {
   const m = 1;
   const n = m + z;
 } catch (err) {
-  // Handle the error here.
+  // Gestisci l'errore qui.
 }
 ```
 
