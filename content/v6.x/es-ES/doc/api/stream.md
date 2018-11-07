@@ -16,7 +16,7 @@ Se puede acceder al módulo `stream` utilizando:
 const stream = require('stream');
 ```
 
-Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de flujo, raramente (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
+Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
 ## Organización de este Documento
 
@@ -29,11 +29,11 @@ Existen cuatro tipos fundamentales de stream en Node.js:
 * [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
 * [Escribible](#stream_class_stream_writable) - streams en los que se pueden escribir datos (por ejemplo [`fs.createWriteStream()`][]).
 * [Dúplex](#stream_class_stream_duplex) - streams que son tanto Legibles como Escribibles (por ejemplo [`net.Socket`][]).
-* [Transformado](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
+* [Transformador](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
 
 ### Modo Objeto
 
-Todos los streams creados por las APIs de Node.js operan exclusivamente sobre cadenas y objetos de `Buffer`. Sin embargo, es posible que las implementaciones de streams trabajen con otros tipos de valores de JavaScrips (con la excepción de `null`, que tiene un propósito especial en streams). Tales streams son considerados para operar en "modo objeto".
+Todos los streams creados por las APIs de Node.js operan exclusivamente sobre cadenas y objetos de `Buffer`. Sin embargo, es posible que las implementaciones de streams trabajen con otros tipos de valores de JavaScript (con la excepción de `null`, que tiene un propósito especial en streams). Tales streams son considerados para operar en "modo objeto".
 
 Las instancias de stream se cambian al modo objeto utilizando la opción `objectMode` cuando se crea el stream. Intentar cambiar un stream existente al modo objeto, no es seguro.
 
