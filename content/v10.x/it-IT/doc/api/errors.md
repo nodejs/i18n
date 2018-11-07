@@ -23,7 +23,7 @@ Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o 
 
 <!--type=misc-->
 
-Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Errore` e dallo stile dell'API che viene richiamata.
 
 All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
 
