@@ -6,7 +6,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server stream-based TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e i client ([` net.createConnection()`] []).
+Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server basati in stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e i client ([` net.createConnection()`] []).
 
 Ci si può accedere usando:
 
