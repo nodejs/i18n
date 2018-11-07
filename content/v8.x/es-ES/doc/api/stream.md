@@ -53,7 +53,7 @@ Los datos se almacenan en buffer en streams Escribibles cuando el método [`writ
 
 Un objetivo clave de la API de `stream`, particularmente del método [`stream.pipe()`], es limitar el almacenamiento de datos en buffer a niveles aceptables, tal que las fuentes y destinatarios de diferentes velocidades no agoten la memoria disponible.
 
-Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformado](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Debido a que los datos se pueden escribir en el socket a una velocidad más rápida o más lenta que la de los datos recibidos, es importante para cada lado (y para el buffer) operar independientemente del otro.
+Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformador](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Debido a que los datos se pueden escribir en el socket a una velocidad más rápida o más lenta que la de los datos recibidos, es importante para cada lado (y para el buffer) operar independientemente del otro.
 
 ## API para los Consumidores de Stream
 
@@ -69,7 +69,7 @@ const server = http.createServer((req, res) => {
   // res es un http.ServerResponse, el cual es un Strema Escribible
 
   let body = '';
-  // Obtiene los datos como una cadena utf8.
+  // Obtiene los datos como cadenas utf8.
   // Si no se establece una codificación, se recibirán los objetos de Buffer.
   req.setEncoding('utf8');
 
@@ -109,7 +109,7 @@ Los streams [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmi
 
 Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmitter`][] de varias maneras para comunicar el estado actual del stream.
 
-Los streams [Dúplex](#stream_class_stream_duplex) y [Transformados](#stream_class_stream_transform) son tanto [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable).
+Los streams [Dúplex](#stream_class_stream_duplex) y [Transformadores](#stream_class_stream_transform) son tanto [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable).
 
 Las aplicaciones que escriben o consumen datos de un stream, no requieren implementar interfaces de stream directamente y generalmente no tendrán razones para llamar a `require('stream')`.
 
