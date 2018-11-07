@@ -1701,7 +1701,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Example:
+Exemplo:
 
 ```js
 const postData = querystring.stringify({
