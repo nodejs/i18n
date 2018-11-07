@@ -494,7 +494,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // fazer alguma coisa com o elemento
 }
 ```
 
@@ -518,7 +518,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // fazer alguma coisa com o elemento
   status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
