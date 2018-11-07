@@ -399,7 +399,7 @@ Stats {
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a block device.
 
@@ -409,7 +409,7 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a character device.
 
@@ -993,7 +993,7 @@ See also: chmod(2).
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constant               | Octal   | Description              |
+| Constante              | Octal   | Descrição                |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
