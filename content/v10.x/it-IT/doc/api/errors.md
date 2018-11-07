@@ -13,17 +13,17 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
   - {ReferenceError} : generato quando si utilizzano variabili non definite
   - {TypeError} : generato quando vengono passati argomenti di tipo errato
   - {URIError} : thrown when a global URI handling function is misused.
-- System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
+- Errori di sistema innescati da restrizioni implicite del sistema operativo, come ad esempio tentare, di aprire un file che non esiste, tentare di inviare dati su un socket chiuso, etc;
 - And User-specified errors triggered by application code.
-- `AssertionError`s are a special class of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
+- Gli `AssertionError` sono una classe speciale di errori che possono essere generati ogni volta che Node.js rileva una violazione logica eccezionale che non dovrebbe mai verificarsi. Questi di solito vengono generati dal modulo `assert`.
 
-All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
+Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o sono istanze della, classe standard JavaScript {Error} e garantiscono di fornire *almeno* le proprietà disponibili su quella classe.
 
 ## Propagazione e Intercettazione degli Errori
 
 <!--type=misc-->
 
-Node.js supports several mechanisms for propagating and handling errors that occur while an application is running. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
 
 All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
 
