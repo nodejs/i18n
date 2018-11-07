@@ -43,18 +43,18 @@ Con poche eccezioni, le API *Sincrone* (qualsiasi metodo di blocco che non accet
 
 Gli errori che si verificano all'interno di *Api asincrone* possono essere segnalati in diversi modi:
 
-- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo parametro a quella funzione. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo parametro a quella funzione. Se questo primo parametro non è `null` ed è un istanza di `Error`, allora si è verificato un errore che dovrebbe essere gestito.
 
 <!-- eslint-disable no-useless-return -->
 
     js
       const fs = require('fs');
-      fs.readFile('a file that does not exist', (err, data) => {
+      fs.readFile('un file che non esiste', (err, data) => {
         if (err) {
-          console.error('There was an error reading the file!', err);
+          console.error('C'è stato un errore durante la lettura del file!', err);
           return;
         }
-        // Otherwise handle the data
+        // Altrimenti gestisci i dati
       });
 
 - When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
