@@ -11,7 +11,7 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
   - {SyntaxError} : generato in risposta ad un utilizzo improprio della sintassi del linguaggio JavaScript.
   - {RangeError} : generato quando un valore non rientra nell'intervallo previsto
   - {ReferenceError} : generato quando si utilizzano variabili non definite
-  - {TypeError} : generato quando vengono passati argomenti di tipo errato
+  - {TypeError} : generato quando vengono passati parametri di tipo errato
   - {URIError} : thrown when a global URI handling function is misused.
 - Errori di sistema innescati da restrizioni implicite del sistema operativo, come ad esempio tentare, di aprire un file che non esiste, tentare di inviare dati su un socket chiuso, etc;
 - And User-specified errors triggered by application code.
@@ -43,7 +43,7 @@ Con poche eccezioni, le API *Sincrone* (qualsiasi metodo di blocco che non accet
 
 Gli errori che si verificano all'interno di *Api asincrone* possono essere segnalati in diversi modi:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo parametro a quella funzione. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
 
 <!-- eslint-disable no-useless-return -->
 
