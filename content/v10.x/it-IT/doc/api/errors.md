@@ -37,7 +37,7 @@ prova {
 }
 ```
 
-Any use of the JavaScript `throw` mechanism will raise an exception that *must* be handled using `try / catch` or the Node.js process will exit immediately.
+Qualsiasi utilizzo del meccanismo JavaScript `throw` creerà un'eccezione che *deve* essere gestita utilizzando `try / catch` altrimenti il processo Node.js uscirà immediatamente.
 
 With few exceptions, *Synchronous* APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
 
