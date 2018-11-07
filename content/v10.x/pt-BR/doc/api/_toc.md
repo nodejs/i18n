@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [Sobre estas Documentações](documentation.html)
+* [Sobre estas documentações](documentation.html)
 * [Uso & Exemplo](synopsis.html)
 
 <div class="line"></div>

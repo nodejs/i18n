@@ -1265,66 +1265,66 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 * **build**: 
   * Añadido soporte para el perfilador de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
-  * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Due to a configuration error, snapshots have been kept off by default when the intention is for the feature to be enabled. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
+  * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Debido a un error de configuración, los snapshots han sido mantenido por fuera de manera predeterminada cuando la intención es que la característica esté habilitada. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
 * **crypto**: 
-  * Simplify use of ECDH (Elliptic Curve Diffie-Hellman) objects (created via `crypto.createECDH(curve_name)`) with private keys that are not dynamically generated via `generateKeys()`. The public key is now computed when explicitly setting a private key. Added validity checks to reduce the possibility of computing weak or invalid shared secrets. Also, deprecated the `setPublicKey()` method for ECDH objects as its usage is unnecessary and can lead to inconsistent state. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
-  * Update root certificates from the current list stored maintained by Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
-  * Multiple CA certificates can now be passed with the `ca` option to TLS methods as an array of strings or in a single new-line separated string. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
-* **tools**: Include a tick processor in core, exposed via the `--prof-process` command-line argument which can be used to process V8 profiling output files generated when using the `--prof` command-line argument. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
+  * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede lleva a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
+  * Actualizar los certificados raíz de la lista actual almacenada mantenida por Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
+  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una nuevo string solo separado. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
+* **tools**: Incluir un procesador tick en el núcleo, expuesto a través del argumento de la línea de comando `--prof-process` que puede ser usado para procesar archivos de salida de perfilado V8 generados usando el argumento de línea de comando `--prof`. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
 
-### Known issues
+### Problemas conocidos
 
-* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
-* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
+* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Llamar a `dns.setServers()` mientras que una consulta de DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
-* [[`08a3f29fd4`](https://github.com/nodejs/node/commit/08a3f29fd4)] - **buffer**: fix range checking for slowToString (Matt Loring) [#4019](https://github.com/nodejs/node/pull/4019)
-* [[`e3a8e8bba4`](https://github.com/nodejs/node/commit/e3a8e8bba4)] - **buffer**: Prevent Buffer constructor deopt (Bryce Baril) [#4158](https://github.com/nodejs/node/pull/4158)
-* [[`0e18e68324`](https://github.com/nodejs/node/commit/0e18e68324)] - **buffer**: fix writeInt{B,L}E for some neg values (Peter A. Bigot) [#3994](https://github.com/nodejs/node/pull/3994)
-* [[`ab5b529dd2`](https://github.com/nodejs/node/commit/ab5b529dd2)] - **buffer**: default to UTF8 in byteLength() (Tom Gallacher) [#4010](https://github.com/nodejs/node/pull/4010)
-* [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: move checkFloat from lib into src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
-* [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: add "--partly-static" build options (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
-* [[`a76d788119`](https://github.com/nodejs/node/commit/a76d788119)] - **build**: update signtool description, add url (Rod Vagg) [#4011](https://github.com/nodejs/node/pull/4011)
-* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: add Intel Vtune profiling support (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
-* [[`7793c364fc`](https://github.com/nodejs/node/commit/7793c364fc)] - **child_process**: flush consuming streams (Dave) [#4071](https://github.com/nodejs/node/pull/4071)
-* [[`f29c5d6e70`](https://github.com/nodejs/node/commit/f29c5d6e70)] - **configure**: `v8_use_snapshot` should be `true` (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962)
-* [[`da5ac55c83`](https://github.com/nodejs/node/commit/da5ac55c83)] - **(SEMVER-MINOR)** **crypto**: simplify using pre-existing keys with ECDH (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511)
-* [[`cfc97641ee`](https://github.com/nodejs/node/commit/cfc97641ee)] - **crypto**: fix native module compilation with FIPS (Stefan Budeanu) [#4023](https://github.com/nodejs/node/pull/4023)
-* [[`b81b45dabd`](https://github.com/nodejs/node/commit/b81b45dabd)] - **crypto**: update root certificates (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951)
-* [[`def681a07e`](https://github.com/nodejs/node/commit/def681a07e)] - **crypto**: disable crypto.createCipher in FIPS mode (Stefan Budeanu) [#3754](https://github.com/nodejs/node/pull/3754)
-* [[`ce423f3624`](https://github.com/nodejs/node/commit/ce423f3624)] - **debugger**: introduce exec method for debugger (Jackson Tian)
-* [[`99fd1ec28d`](https://github.com/nodejs/node/commit/99fd1ec28d)] - **deps**: backport 819b40a from V8 upstream (Michaël Zasso) [#3937](https://github.com/nodejs/node/pull/3937)
-* [[`82252b2a17`](https://github.com/nodejs/node/commit/82252b2a17)] - **doc**: add brief Node.js overview to README (wurde) [#4174](https://github.com/nodejs/node/pull/4174)
+* [[`08a3f29fd4`](https://github.com/nodejs/node/commit/08a3f29fd4)] - **buffer**: reparar la verificación de rango para slowToString (Matt Loring) [#4019](https://github.com/nodejs/node/pull/4019)
+* [[`e3a8e8bba4`](https://github.com/nodejs/node/commit/e3a8e8bba4)] - **buffer**: Prevenir constructor deopt Buffer (Bryce Baril) [#4158](https://github.com/nodejs/node/pull/4158)
+* [[`0e18e68324`](https://github.com/nodejs/node/commit/0e18e68324)] - **buffer**: corregir writeInt{B,L}E para algunos valores neg (Peter A. Bigot) [#3994](https://github.com/nodejs/node/pull/3994)
+* [[`ab5b529dd2`](https://github.com/nodejs/node/commit/ab5b529dd2)] - **buffer**: predeterminar a UTF8 en byteLength() (Tom Gallacher) [#4010](https://github.com/nodejs/node/pull/4010)
+* [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: mover a checkFloat de lib para src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
+* [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: añadir opciones de compilación "--partly-static" (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
+* [[`a76d788119`](https://github.com/nodejs/node/commit/a76d788119)] - **build**: actualizar la descripción de signtool, añadir url (Rod Vagg) [#4011](https://github.com/nodejs/node/pull/4011)
+* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: añadir soporte de perfilado Intel Vtune (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
+* [[`7793c364fc`](https://github.com/nodejs/node/commit/7793c364fc)] - **child_process**: limpiar a los streams que estén consumiendo (Dave) [#4071](https://github.com/nodejs/node/pull/4071)
+* [[`f29c5d6e70`](https://github.com/nodejs/node/commit/f29c5d6e70)] - **configure**: `v8_use_snapshot` debería ser `true` (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962)
+* [[`da5ac55c83`](https://github.com/nodejs/node/commit/da5ac55c83)] - **(SEMVER-MINOR)** **crypto**: simplificar el uso de las claves preexistentes con ECDH (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511)
+* [[`cfc97641ee`](https://github.com/nodejs/node/commit/cfc97641ee)] - **crypto**: reparar compilación de módulo nativo con FIPS (Stefan Budeanu) [#4023](https://github.com/nodejs/node/pull/4023)
+* [[`b81b45dabd`](https://github.com/nodejs/node/commit/b81b45dabd)] - **crypto**: actualizar los certificados de raíz (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951)
+* [[`def681a07e`](https://github.com/nodejs/node/commit/def681a07e)] - **crypto**: deshabilitar crypto.createCipher en modo FIPS (Stefan Budeanu) [#3754](https://github.com/nodejs/node/pull/3754)
+* [[`ce423f3624`](https://github.com/nodejs/node/commit/ce423f3624)] - **debugger**: introducir método exec para el depurador (Jackson Tian)
+* [[`99fd1ec28d`](https://github.com/nodejs/node/commit/99fd1ec28d)] - **deps**: hacer backport 819b40a desde el upstream de v8 (Michaël Zasso) [#3937](https://github.com/nodejs/node/pull/3937)
+* [[`82252b2a17`](https://github.com/nodejs/node/commit/82252b2a17)] - **doc**: añadir un breve resumen de Node.js a README (wurde) [#4174](https://github.com/nodejs/node/pull/4174)
 * [[`634c5f1f81`](https://github.com/nodejs/node/commit/634c5f1f81)] - **doc**: url.format - true slash postfix behaviour (fansworld-claudio) [#4119](https://github.com/nodejs/node/pull/4119)
-* [[`6f957a70d8`](https://github.com/nodejs/node/commit/6f957a70d8)] - **doc**: s/node.js/Node.js in readme (Rod Vagg) [#3998](https://github.com/nodejs/node/pull/3998)
-* [[`0cd4a52392`](https://github.com/nodejs/node/commit/0cd4a52392)] - **doc**: improve child_process.markdown wording (yorkie) [#4138](https://github.com/nodejs/node/pull/4138)
-* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: add JungMinu to collaborators (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
+* [[`6f957a70d8`](https://github.com/nodejs/node/commit/6f957a70d8)] - **doc**: s/node.js/Node.js en readme (Rod Vagg) [#3998](https://github.com/nodejs/node/pull/3998)
+* [[`0cd4a52392`](https://github.com/nodejs/node/commit/0cd4a52392)] - **doc**: mejorar la redacción de child_process.markdown (yorkie) [#4138](https://github.com/nodejs/node/pull/4138)
+* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: añadir a JungMinu a los colaboradores collaborators (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
 * [[`fa0cdf75d9`](https://github.com/nodejs/node/commit/fa0cdf75d9)] - **doc**: add iarna to collaborators (Rebecca Turner) [#4144](https://github.com/nodejs/node/pull/4144)
 * [[`424eb962b1`](https://github.com/nodejs/node/commit/424eb962b1)] - **doc**: add zkat to collaborators (Kat Marchán) [#4142](https://github.com/nodejs/node/pull/4142)
 * [[`85b601224b`](https://github.com/nodejs/node/commit/85b601224b)] - **doc**: add HTTP working group (James M Snell) [#3919](https://github.com/nodejs/node/pull/3919)
-* [[`f4164bd8df`](https://github.com/nodejs/node/commit/f4164bd8df)] - **doc**: update links to use https where possible (jpersson) [#4054](https://github.com/nodejs/node/pull/4054)
-* [[`3169eed1e3`](https://github.com/nodejs/node/commit/3169eed1e3)] - **doc**: add links and backticks around names (jpersson) [#4054](https://github.com/nodejs/node/pull/4054)
-* [[`f3417e2574`](https://github.com/nodejs/node/commit/f3417e2574)] - **doc**: standardize references to node.js in docs (Scott Buchanan) [#4136](https://github.com/nodejs/node/pull/4136)
-* [[`95dd60c657`](https://github.com/nodejs/node/commit/95dd60c657)] - **doc**: reword https.Agent example text (Jan Krems) [#4075](https://github.com/nodejs/node/pull/4075)
-* [[`c61237d3ea`](https://github.com/nodejs/node/commit/c61237d3ea)] - **doc**: fix internal link to child.send() (Luigi Pinca) [#4089](https://github.com/nodejs/node/pull/4089)
-* [[`aaeced915e`](https://github.com/nodejs/node/commit/aaeced915e)] - **doc**: fix the exception description (yorkie) [#3658](https://github.com/nodejs/node/pull/3658)
-* [[`a2b7596ac0`](https://github.com/nodejs/node/commit/a2b7596ac0)] - **doc**: fix color of linked code blocks (jpersson) [#4068](https://github.com/nodejs/node/pull/4068)
-* [[`f3c50f5fb5`](https://github.com/nodejs/node/commit/f3c50f5fb5)] - **doc**: fix rare case of misaligned columns (Roman Reiss) [#3948](https://github.com/nodejs/node/pull/3948)
-* [[`f0a2e2cdec`](https://github.com/nodejs/node/commit/f0a2e2cdec)] - **doc**: message.header duplication correction (Bryan English) [#3997](https://github.com/nodejs/node/pull/3997)
-* [[`b1dfa8bebb`](https://github.com/nodejs/node/commit/b1dfa8bebb)] - **doc**: fix typo in README (Rich Trott) [#4000](https://github.com/nodejs/node/pull/4000)
-* [[`4602e01221`](https://github.com/nodejs/node/commit/4602e01221)] - **doc**: replace sane with reasonable (Lewis Cowper) [#3980](https://github.com/nodejs/node/pull/3980)
-* [[`4849a54386`](https://github.com/nodejs/node/commit/4849a54386)] - **doc**: Adding best practises for crypto.pbkdf2 (Tom Gallacher) [#3290](https://github.com/nodejs/node/pull/3290)
-* [[`77251d99de`](https://github.com/nodejs/node/commit/77251d99de)] - **doc**: numeric flags to fs.open (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
-* [[`f4ca007b42`](https://github.com/nodejs/node/commit/f4ca007b42)] - **doc**: clarify that fs streams expect blocking fd (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
-* [[`26eeae8016`](https://github.com/nodejs/node/commit/26eeae8016)] - **doc**: fix broken references (Alexander Gromnitsky) [#3944](https://github.com/nodejs/node/pull/3944)
-* [[`f90227b0e8`](https://github.com/nodejs/node/commit/f90227b0e8)] - **doc**: move fs.existsSync() deprecation message (Martin Forsberg) [#3942](https://github.com/nodejs/node/pull/3942)
-* [[`bbcb2a2e65`](https://github.com/nodejs/node/commit/bbcb2a2e65)] - **doc**: clarify module loading behavior (cjihrig) [#3920](https://github.com/nodejs/node/pull/3920)
-* [[`0997178037`](https://github.com/nodejs/node/commit/0997178037)] - **doc**: add reference for buffer.inspect() (cjihrig) [#3921](https://github.com/nodejs/node/pull/3921)
-* [[`6c16c40283`](https://github.com/nodejs/node/commit/6c16c40283)] - **doc**: clarify v5.1.1 notable items (Rod Vagg) [#4156](https://github.com/nodejs/node/pull/4156)
-* [[`4c8800c2de`](https://github.com/nodejs/node/commit/4c8800c2de)] - **fs,doc**: use `target` instead of `destination` (yorkie) [#3912](https://github.com/nodejs/node/pull/3912)
+* [[`f4164bd8df`](https://github.com/nodejs/node/commit/f4164bd8df)] - **doc**: actualizar los enlaces para que usen https donde sea posible (jpersson) [#4054](https://github.com/nodejs/node/pull/4054)
+* [[`3169eed1e3`](https://github.com/nodejs/node/commit/3169eed1e3)] - **doc**: añadir enlaces y backticks alrededor de los nombres (jpersson) [#4054](https://github.com/nodejs/node/pull/4054)
+* [[`f3417e2574`](https://github.com/nodejs/node/commit/f3417e2574)] - **doc**: estandarizar las referencias a node.js en los documentos (Scott Buchanan) [#4136](https://github.com/nodejs/node/pull/4136)
+* [[`95dd60c657`](https://github.com/nodejs/node/commit/95dd60c657)] - **doc**: reescribir el texto de ejemplo https.Agent (Jan Krems) [#4075](https://github.com/nodejs/node/pull/4075)
+* [[`c61237d3ea`](https://github.com/nodejs/node/commit/c61237d3ea)] - **doc**: corregir el enlace interno a child.send() (Luigi Pinca) [#4089](https://github.com/nodejs/node/pull/4089)
+* [[`aaeced915e`](https://github.com/nodejs/node/commit/aaeced915e)] - **doc**: corregir la descripción de la excepción (yorkie) [#3658](https://github.com/nodejs/node/pull/3658)
+* [[`a2b7596ac0`](https://github.com/nodejs/node/commit/a2b7596ac0)] - **doc**: corregir el color de bloques de códigos enlazados (jpersson) [#4068](https://github.com/nodejs/node/pull/4068)
+* [[`f3c50f5fb5`](https://github.com/nodejs/node/commit/f3c50f5fb5)] - **doc**: reparar un caso raro de columnas desalineadas (Roman Reiss) [#3948](https://github.com/nodejs/node/pull/3948)
+* [[`f0a2e2cdec`](https://github.com/nodejs/node/commit/f0a2e2cdec)] - **doc**: corrección de duplicación de message.header (Bryan English) [#3997](https://github.com/nodejs/node/pull/3997)
+* [[`b1dfa8bebb`](https://github.com/nodejs/node/commit/b1dfa8bebb)] - **doc**: corregir error tipográfico en README (Rich Trott) [#4000](https://github.com/nodejs/node/pull/4000)
+* [[`4602e01221`](https://github.com/nodejs/node/commit/4602e01221)] - **doc**: reemplazar sano con razonable (Lewis Cowper) [#3980](https://github.com/nodejs/node/pull/3980)
+* [[`4849a54386`](https://github.com/nodejs/node/commit/4849a54386)] - **doc**: Añadir las mejores prácticas para crypto.pbkdf2 (Tom Gallacher) [#3290](https://github.com/nodejs/node/pull/3290)
+* [[`77251d99de`](https://github.com/nodejs/node/commit/77251d99de)] - **doc**: banderas numéricas para fs.open (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
+* [[`f4ca007b42`](https://github.com/nodejs/node/commit/f4ca007b42)] - **doc**: aclarar que streams fs esperan bloquear el fd (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
+* [[`26eeae8016`](https://github.com/nodejs/node/commit/26eeae8016)] - **doc**: corregir referencias erróneas (Alexander Gromnitsky) [#3944](https://github.com/nodejs/node/pull/3944)
+* [[`f90227b0e8`](https://github.com/nodejs/node/commit/f90227b0e8)] - **doc**: mover mensaje de desaprobación fs.existsSync() (Martin Forsberg) [#3942](https://github.com/nodejs/node/pull/3942)
+* [[`bbcb2a2e65`](https://github.com/nodejs/node/commit/bbcb2a2e65)] - **doc**: aclarar el comportamiento de carga del módulo (cjihrig) [#3920](https://github.com/nodejs/node/pull/3920)
+* [[`0997178037`](https://github.com/nodejs/node/commit/0997178037)] - **doc**: añadir referencia para buffer.inspect() (cjihrig) [#3921](https://github.com/nodejs/node/pull/3921)
+* [[`6c16c40283`](https://github.com/nodejs/node/commit/6c16c40283)] - **doc**: aclarar elementos notables de v5.1.1 (Rod Vagg) [#4156](https://github.com/nodejs/node/pull/4156)
+* [[`4c8800c2de`](https://github.com/nodejs/node/commit/4c8800c2de)] - **fs,doc**: usar `target` en vez de `destination` (yorkie) [#3912](https://github.com/nodejs/node/pull/3912)
 * [[`1f0e8dca8e`](https://github.com/nodejs/node/commit/1f0e8dca8e)] - **installer**: install the tick processor (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
 * [[`e8e4e0718b`](https://github.com/nodejs/node/commit/e8e4e0718b)] - **meta**: remove use of profanity in source (Myles Borins) [#4122](https://github.com/nodejs/node/pull/4122)
 * [[`13834caa28`](https://github.com/nodejs/node/commit/13834caa28)] - **module**: fix column offsets in errors (Tristian Flanagan) [#2867](https://github.com/nodejs/node/pull/2867)

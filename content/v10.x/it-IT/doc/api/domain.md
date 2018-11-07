@@ -32,7 +32,7 @@ Per la natura stessa di come funziona [`throw`][] in JavaScript, non c'è quasi 
 
 Il modo più sicuro per rispondere ad un errore che è stato generato è arrestare il processo. Ovviamente, in un normale web server, potrebbero esserci molte connessioni aperte e non è ragionevole arrestarle improvvisamente poiché qualcun altro potrebbe aver attivato un errore.
 
-L'approccio migliore consiste nell'inviare una risposta di errore alla richiesta che ha attivato l'errore stesso, lasciando che gli altri errori finiscano normalmente e interrompendo il listening (ascolto) di nuove richieste in quel worker.
+L'approccio migliore consiste nell'inviare una risposta di errore alla richiesta che ha attivato l'errore stesso, lasciando che le altre finiscano normalmente e interrompendo il listening (ascolto) di nuove richieste in quel worker.
 
 In questo modo, l'utilizzo di `domain` va di pari passo con il modulo cluster, in quanto il processo master può creare un nuovo worker tramite il fork quando un worker s'imbatte in un errore. Per i programmi Node.js che si adattano a più macchine, il proxy di chiusura o il registro di servizio possono prendere nota dell'errore e reagire di conseguenza.
 
@@ -68,7 +68,7 @@ if (cluster.isMaster) {
   // Uno scenario più realistico avrebbe più di 2 worker
   // e forse non avrebbe messo master e worker nello stesso file.
   //
-  // È anche possibile essere un pò più interessati alla registrazione e 
+  // È anche possibile essere un pò più elaborati nella registrazione e 
   // implementare qualsiasi logica personalizzata necessaria per prevenire attacchi 
   // DoS e altri comportamenti scorretti.
   //
@@ -146,7 +146,7 @@ if (cluster.isMaster) {
 }
 
 // Questa parte non è importante. Un semplice esempio di routing.
-// Metti qui la logica delle applicazioni interessate.
+// Metti qui una logica delle applicazioni elaborata.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
@@ -298,7 +298,7 @@ Chiamare `exit()` fa sì che cambi solo il dominio attivo e non altera il domini
 
 Questo metodo è quasi identico a [`domain.bind(callback)`][]. Tuttavia, oltre a rilevare gli errori generati, intercetterà anche gli [`Error`][] object inviati come primo argomento della funzione.
 
-In questo modo, il modello `if (err) return callback(err);` in comune può essere sostituito con un singolo error handler in un unico posto.
+In questo modo, il comune modello `if (err) return callback(err);` può essere sostituito con un singolo error handler in un unico posto.
 
 #### Esempio
 
@@ -362,7 +362,7 @@ d.run(() => {
 });
 ```
 
-In questo esempio, l'`d.on('error')` handler verrà attivato anziché arrestare il programma.
+In questo esempio, il `d.on('error')` handler verrà attivato anziché arrestare il programma.
 
 ## Domini e Promise
 

@@ -1,70 +1,70 @@
-# Async Hooks
+# Async Haken
 
 <!--introduced_in=v8.1.0-->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
+De `async_hooks` module verschaft een API om callbacks te registreren die de levensduur van asynchrone hulpmiddelen bijhoudt die zijn gecreëerd binnen een Node.js toepassing. Het kan worden bereikt met behulp van:
 
 ```js
 const async_hooks = require('async_hooks');
 ```
 
-## Terminology
+## Terminologie
 
-An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `'connection'` event in `net.createServer()`, or just a single time like in `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. Deze callback kan meerdere keren worden opgeroepen, bijvoorbeeld, de `'connection'` gebeurtenis in `net.createServer()`, of slechts een enkele keer als in `fs.open()`. Een hulpmiddel kan ook worden gesloten voordat de callback wordt aangeroepen. `AsyncHook` maakt geen uitvoerig onderscheid tussen deze verschillende gevallen, maar zal ze vertegenwoordigen als het abstracte concept wat een hulpbron is.
 
-## Public API
+## Openbare API
 
-### Overview
+### Overzicht
 
-Following is a simple overview of the public API.
+Hier volgt een simpel overzicht van de openbare API.
 
 ```js
 const async_hooks = require('async_hooks');
 
-// Return the ID of the current execution context.
+// Retourneer de ID van de huidige executie context.
 const eid = async_hooks.executionAsyncId();
 
-// Return the ID of the handle responsible for triggering the callback of the
-// current execution scope to call.
+// Retourneer de ID van de greep die verantwoordelijk is voor het genereren van de callback van de
+// huidige op te roepen executie execution-omvang.
 const tid = async_hooks.triggerAsyncId();
 
-// Create a new AsyncHook instance. All of these callbacks are optional.
+// Creëer een nieuwe AsyncHook instantie. Al deze callback's zijn optioneel.
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
-// Allow callbacks of this AsyncHook instance to call. This is not an implicit
-// action after running the constructor, and must be explicitly run to begin
-// executing callbacks.
+// Sta callbacks van deze AsyncHook instantie toe om op te roepen. Dit is geen impliciete
+// actie na het uitvoeren van de constructor, en moeten expliciet worden gedraaid om te beginnen met het
+// uitvoeren van callbacks.
 asyncHook.enable();
 
-// Disable listening for new asynchronous events.
+// Luisteren naar nieuwe asynchrone gebeurtenissen uitschakelen.
 asyncHook.disable();
 
 //
-// The following are the callbacks that can be passed to createHook().
+// Het volgende zijn de callbacks die kunnen worden doorgegeven aan createHook().
 //
 
-// init is called during object construction. The resource may not have
-// completed construction when this callback runs, therefore all fields of the
-// resource referenced by "asyncId" may not have been populated.
-function init(asyncId, type, triggerAsyncId, resource) { }
+// init wordt opgeroepen gedurende object constructie. Het kan zijn dat de hulpbron niet 
+// de constructie heeft afgerond, daarom zijn wellicht niet alle velden van de
+// hulpbron, gerefereerd door "asyncId", gevuld.
+functie init(asyncId, type, triggerAsyncId, hulpbron) { }
 
-// before is called just before the resource's callback is called. It can be
-// called 0-N times for handles (e.g. TCPWrap), and will be called exactly 1
-// time for requests (e.g. FSReqWrap).
+// voorheen is opgeroepen net voordat de callback van de hulpbron wordt opgeroepen. Het kan zijn 
+// 0-N keer opgeroepen voor grepen (bijv. TCPWrap), en wordt opgeroepen, precies 1 
+// keer voor verzoeken (bijv. FSReqWrap).
 function before(asyncId) { }
 
-// after is called just after the resource's callback has finished.
+// nadien is opgeroepen net nadat de callback van de hulpbron is beëindigd.
 function after(asyncId) { }
 
-// destroy is called when an AsyncWrap instance is destroyed.
+// destroy wordt opgeroepen wanneer een AsyncWrap wordt afgesloten.
 function destroy(asyncId) { }
 
-// promiseResolve is called only for promise resources, when the
-// `resolve` function passed to the `Promise` constructor is invoked
-// (either directly or through other means of resolving a promise).
+// promiseResolve wordt alleen opgeroepen voor belofte hulpbronnen, wanneer de 
+// `resolve` functie doorgegeven aan de `Promise` constructor is aangeroepen
+// (hetzij direct of door middel van een andere manier om een belofte op te lossen).
 function promiseResolve(asyncId) { }
 ```
 
@@ -74,18 +74,18 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
-  * `init` {Function} The [`init` callback][].
-  * `before` {Function} The [`before` callback][].
-  * `after` {Function} The [`after` callback][].
-  * `destroy` {Function} The [`destroy` callback][].
-* Returns: {AsyncHook} Instance used for disabling and enabling hooks
+* `callbacks` {Object} De [Hook Callbacks](#async_hooks_hook_callbacks) te registreren 
+  * `init` {Function} De [`init` callback][].
+  * `before` {Function} De [`before` callback][].
+  * `after` {Function} De [`after` callback][].
+  * `destroy` {Function} De [`destroy` callback][].
+* Geeft als resultaat: {AsyncHook} Instantie gebruikt voor het aan- en uitschakelen van haken
 
-Registers functions to be called for different lifetime events of each async operation.
+Registreert functies op te roepen voor de levensduur van de verschillende gebeurtenissen van elke async bewerking.
 
-The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
+De callbacks `init()` / `before()` / `after()` / `destroy()` worden opgeroepen voor de respectieve asynchrone gebeurtenis tijdens de levensduur van een hulpbron.
 
-All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Alle callback's zijn optioneel. Bijvoorbeeld, als alleen de hulpbron opruiming moet worden bijgehouden, dan hoeft alleen de `destroy` callback worden doorgegeven. De bijzonderheden van alle functies die kunnen worden doorgegeven aan de `callbacks` zijn in de [Hook Callbacks](#async_hooks_hook_callbacks) sectie.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+Let op: de callbacks worden overgenomen via de prototypeketen:
 
 ```js
 class MyAsyncCallbacks {

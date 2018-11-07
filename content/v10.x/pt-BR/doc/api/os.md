@@ -239,11 +239,11 @@ Cada chave no objeto retornado identifica uma interface de rede. O valor associa
 As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
 * `address` {string} O endereço IPv4 ou IPv6 atribuído
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `netmask` {string} máscara de rede IPv4 ou IPv6
+* `family` {string} `IPv4` ou `IPv6`
+* `mac` {string} O endereço MAC da interface de rede
+* `internal` {boolean} `true` Se a interface de rede é loopback ou interface similar que não é acessível remotamente; caso contrário `false`
+* `scopeid` {number} O ID de escopo numérico IPv6 (somente especificado quando `family` é `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 
 <!-- eslint-skip -->
@@ -295,7 +295,7 @@ As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -319,7 +319,7 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -337,7 +337,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -347,7 +347,7 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
@@ -357,7 +357,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
@@ -375,7 +375,7 @@ changes:
                  component on Windows.
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 

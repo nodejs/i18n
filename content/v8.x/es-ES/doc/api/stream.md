@@ -16,7 +16,7 @@ Se puede acceder al módulo `stream` utilizando:
 const stream = require('stream');
 ```
 
-Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de flujo, raramente (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
+Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
 ## Organización de este Documento
 
@@ -29,64 +29,64 @@ Existen cuatro tipos fundamentales de stream en Node.js:
 * [Legible](#stream_class_stream_readable) - streams desde los cuales los datos se pueden leer (por ejemplo [`fs.createReadStream()`][]).
 * [Escribible](#stream_class_stream_writable) - streams en los que se pueden escribir datos (por ejemplo [`fs.createWriteStream()`][]).
 * [Dúplex](#stream_class_stream_duplex) - streams que son tanto Legibles como Escribibles (por ejemplo [`net.Socket`][]).
-* [Transformar](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
+* [Transformador](#stream_class_stream_transform) - strems Dúplex que pueden modificar o transformar los datos mientras se escriben y leen (por ejemplo [`zlib.createDeflate()`][]).
 
 ### Modo Objeto
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
-Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
+Las instancias de stream se cambian al modo objeto utilizando la opción `objectMode` cuando se crea el stream. Intentar cambiar un stream existente al modo objeto, no es seguro.
 
-### Buffering
-
-<!--type=misc-->
-
-Both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable) streams will store data in an internal buffer that can be retrieved using `writable._writableState.getBuffer()` or `readable._readableState.buffer`, respectively.
-
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
-
-Data is buffered in Readable streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
-
-Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
-
-Data is buffered in Writable streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
-
-A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to limit the buffering of data to acceptable levels such that sources and destinations of differing speeds will not overwhelm the available memory.
-
-Because [Duplex](#stream_class_stream_duplex) and [Transform](#stream_class_stream_transform) streams are both Readable and Writable, each maintain *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [Duplex](#stream_class_stream_duplex) streams whose Readable side allows consumption of data received *from* the socket and whose Writable side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
-
-## API for Stream Consumers
+### Almacenamiento en Buffer
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) almacenarán datos en un buffer interno, que puede ser recuperado utilizando `writable._writableState.getBuffer()` o `readable._readableState.buffer`, respectivamente.
+
+La cantidad de datos almacenados potencialmente en buffer depende de la opción `highWaterMark` que se pasa al constructor de streams. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Para los streams que operan en modo objeto, `highWaterMark` especifica un número total de objetos.
+
+Los datos son almacenados en Buffer en los streams Legibles cuando la implementación llama a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Si el consumidor del Stream no llama a [`stream.read()`](#stream_readable_read_size), los datos se quedarán en la cola interna hasta que se consumen.
+
+Una vez que el tamaño total del buffer de lectura interno alcanza el límite especificado por `highWaterMark`, el stream parará temporalmente de leer los datos desde el recurso subyacente, hasta que los datos almacenados en buffer actualmente se puedan consumir (es decir, el stream parará de llamar al método `readable._read()` interno que se utiliza para llenar el buffer de lectura).
+
+Los datos se almacenan en buffer en streams Escribibles cuando el método [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) se llama repetidamente. Mientras el tamaño total del buffer de escritura interno sea inferior al límite establecido por `highWaterMark`, las llamadas a `writable.write()` devolverán `true`. Una vez el tamaño del buffer interno alcanza o excede el `highWaterMark`, se devolverá `false`.
+
+Un objetivo clave de la API de `stream`, particularmente del método [`stream.pipe()`], es limitar el almacenamiento de datos en buffer a niveles aceptables, tales que las fuentes y destinatarios de diferentes velocidades no agoten la memoria disponible.
+
+Debido a que los streams [Dúplex](#stream_class_stream_duplex) y [Transformador](#stream_class_stream_transform) son tanto Legibles como Escribibles, cada uno mantiene *dos* buffers internos separados utilizados para leer y escribir, lo que permite a cada lado operar independientemente del otro, mientras mantiene un apropiado y eficiente flujo de datos. Por ejemplo, las instancias [`net.Socket`][] son streams [Dúplex](#stream_class_stream_duplex) cuyo lado Legible permite el consumo de los datos recibidos *desde* el socket y cuyo lado Escribible permite escribir los datos *al* socket. Debido a que los datos se pueden escribir en el socket a una velocidad más rápida o más lenta que la de los datos recibidos, es importante para cada lado (y para el buffer) operar independientemente del otro.
+
+## API para los Consumidores de Stream
+
+<!--type=misc-->
+
+Casi todas las aplicaciones de Node.js, no importa lo simples que sean, utilizan streams de alguna manera. El siguiente, es un ejemplo del uso de streams en una aplicación de Node.js que implementa un servidor HTTP:
 
 ```js
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req is an http.IncomingMessage, which is a Readable Stream
-  // res is an http.ServerResponse, which is a Writable Stream
+  // req es un http.IncomingMessage, el cual es un Stream Legible
+  // res es un http.ServerResponse, el cual es un Strema Escribible
 
   let body = '';
-  // Get the data as utf8 strings.
-  // If an encoding is not set, Buffer objects will be received.
+  // Obtiene los datos como cadenas utf8.
+  // Si no se establece una codificación, se recibirán los objetos de Buffer.
   req.setEncoding('utf8');
 
-  // Readable streams emit 'data' events once a listener is added
+  // Los streams Legibles emiten eventos de 'data' una vez que se agrega un listener
   req.on('data', (chunk) => {
     body += chunk;
   });
 
-  // the end event indicates that the entire body has been received
+  // el evento final indica que todo el cuerpo se ha recibido
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
-      // write back something interesting to the user:
+      // escriba algo interesante para el usuario:
       res.write(typeof data);
       res.end();
     } catch (er) {
-      // uh oh! bad json!
+      // ¡uh oh! ¡json malo!
       res.statusCode = 400;
       return res.end(`error: ${er.message}`);
     }
@@ -103,38 +103,38 @@ server.listen(1337);
 // error: Unexpected token o in JSON at position 1
 ```
 
-[Writable](#stream_class_stream_writable) streams (such as `res` in the example) expose methods such as `write()` and `end()` that are used to write data onto the stream.
+Los streams [Escribibles](#stream_class_stream_writable) (como `res` en el ejemplo) exponen métodos como `write()` y `end()` que se utilizan para escribir datos en el stream.
 
-[Readable](#stream_class_stream_readable) streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
+Los streams [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmitter`][] para notificar al código de la aplicación cuando los datos estén disponibles para leerse fuera del stream. Esos datos disponibles pueden leerse del stream de múltiples maneras.
 
-Both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable) streams use the [`EventEmitter`][] API in various ways to communicate the current state of the stream.
+Tanto los streams [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable) utilizan la API [`EventEmitter`][] de varias maneras para comunicar el estado actual del stream.
 
-[Duplex](#stream_class_stream_duplex) and [Transform](#stream_class_stream_transform) streams are both [Writable](#stream_class_stream_writable) and [Readable](#stream_class_stream_readable).
+Los streams [Dúplex](#stream_class_stream_duplex) y [Transformadores](#stream_class_stream_transform) son tanto [Escribibles](#stream_class_stream_writable) como [Legibles](#stream_class_stream_readable).
 
-Applications that are either writing data to or consuming data from a stream are not required to implement the stream interfaces directly and will generally have no reason to call `require('stream')`.
+Las aplicaciones que escriben o consumen datos de un stream no requieren implementar interfaces de stream directamente y, por lo general, no tendrán razones para llamar a `require('stream')`.
 
-Developers wishing to implement new types of streams should refer to the section [API for Stream Implementers](#stream_api_for_stream_implementers).
+Los desarrolladores que deseen implementar nuevos tipos de streams deben consultar la sección [API para Implementadores de Stream](#stream_api_for_stream_implementers).
 
-### Writable Streams
+### Streams Escribibles
 
-Writable streams are an abstraction for a *destination* to which data is written.
+Los streams Escribibles son una abstracción para un *destino* en el que se escriben datos.
 
-Examples of [Writable](#stream_class_stream_writable) streams include:
+Los ejemplos de streams [Escribibles](#stream_class_stream_writable) incluyen:
 
-* [HTTP requests, on the client](http.html#http_class_http_clientrequest)
-* [HTTP responses, on the server](http.html#http_class_http_serverresponse)
-* [fs write streams](fs.html#fs_class_fs_writestream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
-* [child process stdin](child_process.html#child_process_subprocess_stdin)
+* [solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
+* [respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
+* [streams de escritura del fs](fs.html#fs_class_fs_writestream)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [stdin de proceso secundario](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
-*Note*: Some of these examples are actually [Duplex](#stream_class_stream_duplex) streams that implement the [Writable](#stream_class_stream_writable) interface.
+*Nota*: algunos de estos ejemplos realmente son streams [Dúplex](#stream_class_stream_duplex) que implementan la interfaz [Escribible](#stream_class_stream_writable).
 
-All [Writable](#stream_class_stream_writable) streams implement the interface defined by the `stream.Writable` class.
+Todos los streams [Escribibles](#stream_class_stream_writable) implementan la interfaz definida por la clase `stream.Writable`.
 
-While specific instances of [Writable](#stream_class_stream_writable) streams may differ in various ways, all Writable streams follow the same fundamental usage pattern as illustrated in the example below:
+Mientras las instancias específicas de los streams [Escribibles](#stream_class_stream_writable) pueden diferir de varias maneras, todos los streams Escribibles siguen el mismo patrón de uso fundamental, como se ilustra en el siguiente ejemplo:
 
 ```js
 const myStream = getWritableStreamSomehow();
@@ -143,7 +143,7 @@ myStream.write('some more data');
 myStream.end('done writing data');
 ```
 
-#### Class: stream.Writable
+#### Clase: stream.Writable
 
 <!-- YAML
 added: v0.9.4
@@ -157,7 +157,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
 Not all Writable streams will emit the `'close'` event.
 
@@ -431,9 +431,9 @@ Examples of Readable streams include:
 * [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
 * [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
 * [fs read streams](fs.html#fs_class_fs_readstream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
 * [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
@@ -514,7 +514,7 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
 Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'` event.
 
@@ -926,9 +926,9 @@ Duplex streams are streams that implement both the [Readable](#stream_class_stre
 
 Examples of Duplex streams include:
 
-* [TCP sockets](net.html#net_class_net_socket)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
 #### Class: stream.Transform
 
@@ -942,8 +942,8 @@ Transform streams are [Duplex](#stream_class_stream_duplex) streams where the ou
 
 Examples of Transform streams include:
 
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
 ##### transform.destroy([error])
 

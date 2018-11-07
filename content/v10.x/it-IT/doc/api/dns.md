@@ -4,22 +4,24 @@
 
 > Stabilità: 2 - Stabile
 
-Il Modulo `dns` contiene funzioni appartenenti a due diverse categorie:
+Il modulo `dns` contiene funzioni appartenenti a due diverse categorie:
 
-1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori cercano di eseguire la funzione di name resolution nello stesso modo in cui le altre applicazioni del medesimo sistema operativo dovrebbero comportarsi utilizzando [`dns.lookup()`][].**
+1) Le funzioni che utilizzano li sistema operativo sottostante per eseguire il "name resolution" e non devono necessariamente svolgere alcuna comunicazione di rete. Questa categoria contiene una sola funzione: `dns.lookup()`][]. **Gli sviluppatori che cercano di eseguire la funzione di name resolution nello stesso modo in cui si comportano le altre applicazioni del medesimo sistema operativo dovrebbero utilizzare [`dns.lookup()`][].**
 
-Ad esempio, guarda `iana.org`.
+Ad esempio, cercando `iana.org`.
 
 ```js
+const dns = require('dns');
+
 dns.lookup('iana.org', (err, address, family) => {
-  console.log('address: %j family: IPv%s', address, family);
+console.log('address: %j family: IPv%s', address, family);
 });
 // indirizzo: "192.0.43.8" famiglia: IPv4
 ```
 
-2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns`* tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
+2) Le funzioni che si connettono a un effettivo server DNS per eseguire il "name resolution" e che utilizzano *sempre* la rete per eseguire le query DNS. Questa categoria contiene tutte le funzioni presenti sul modulo `dns` *tranne* [`dns.lookup()`][]. Queste funzioni non utilizzano lo stesso set di file di configurazione utilizzato da [`dns.lookup()`][] (es. `/etc/hosts`). Queste funzioni dovrebbero essere utilizzate dagli sviluppatori che non vogliono utilizzare il sistema operativo sottostante per il name resolution e vogliono invece eseguire *sempre* delle query DNS.
 
-Di seguito è riportato un esempio di risoluzione di `'archive.org'`, quindi l'indirizzo IP che ci viene restituito è risolto all'inverso.
+Di seguito è riportato un esempio di risoluzione di `'archive.org'`, che poi all’inverso risolve gli indirizzi IP restituiti.
 
 ```js
 const dns = require('dns');
@@ -40,7 +42,7 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-Queste sono le sottili differenze di scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
+Ci sono sottili differenze nello scegliere un metodo rispetto all'altro, si prega quindi di consultare la [Sezione di considerazioni sull'implementazione](#dns_implementation_considerations) per maggiori dettagli.
 
 ## Classe: dns.Resolver
 
@@ -50,7 +52,7 @@ added: v8.3.0
 
 Un resolver indipendente per le richieste DNS.
 
-Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Le impostazioni utilizzate per un resolver che utilizzano [`resolver.setServers()`][`dns.setServers()`] non hanno nessun effetto sugli altri resolver:
+Si consideri che la creazione di un nuovo resolver utilizza le impostazioni di default del server. Impostando i server utilizzati per un resolver utilizzando [`resolver.setServers()`][`dns.setServers()`] non ha nessun effetto sugli altri resolver:
 
 ```js
 const { Resolver } = require('dns');
@@ -97,7 +99,7 @@ added: v0.11.3
 
 - Restituisce: {string[]}
 
-Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa, includerà una sezione per la porta, se è stata utilizzata una personalizzata.
+Restituisce un array di stringe di indirizzi IP, formattati secondo gli standard [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), che sono attualmente configurati per la risoluzione dei DNS. La stringa includerà una sezione per la porta se ne è stata utilizzata una personalizzata.
 
 <!-- eslint-disable semi-->
 
@@ -123,10 +125,10 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family`{integer} Il record family. Deve essere di `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
+  - `family`{integer} Il record family. Deve essere `4` o `6`. Gli indirizzi IPv4 e IPv6 sono entrambi restituiti per default.
   - `hints`{number} Uno o più [supported `getaddrinfo` flags][]. I flag multipli possono essere passati bit per bit `oppure` utilizzando i loro valori.
   - `all` {boolean} Quando `true`, il callback restituisce tutti gli indirizzi risolti in un array. Altrimenti, restituisce un singolo indirizzo. **Default:** `false`.
-  - `verbatim` {boolean} Quando `true`. il callback riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il resolver DNS li ha restituiti. Quando `falso`, invece gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
+  - `verbatim` {boolean} Quando `true` il callback riceve gli indirizzi IPv4 e IPv6 nell'ordine in cui il resolver DNS li ha restituiti. Quando `false`, gli indirizzi IPv4 vengono messi prima di quelli IPv6. **Default:** attualmente `false` (gli indirizzi sono riordinati) ma questo verrà cambiato in un futuro non troppo lontano. Il nuovo codice da utilizzare `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
   - `address` {string} Una stringa che rappresenta un indirizzo IPv4 o IPv6.
@@ -134,11 +136,11 @@ changes:
 
 Risolve un hostname (es. `'nodejs.org'`) nei primi record A (IPv4) oppure AAAA (Ipv6) trovati. Tutte le proprietà `option` sono facoltative. Se `options` è un intero, allora deve essere `4` o `6` - se `options` non è fornito, allora gli indirizzi IPv4 e IPv6 saranno restituiti entrambi, se trovati.
 
-Con `tutte` le opzioni impostate a `true`, gli argomenti per il `callback` cambiano `(err, addresses)`, in `addresses` diventando quindi un array di oggetti con le proprietà `address` e `family`.
+Con l’option `all` impostata su `true`, gli argomenti per il `callback` cambiano in `(err, addresses)`, con `addresses` che rappresenta un array di oggetti con le proprietà `address` e `family`.
 
-In caso di errore, `err` è un oggetto di [`Error`][], dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptors.
+In caso di errore, `err` è un [`Error`][] object, dove l'`err.code` è il codice dell'errore. Si tenga a mente che l'`err.code` sarà impostato a `'ENOENT'` non solo quando l'hostname non esiste, ma anche quando la procedura di lookup fallisce per qualsiasi motivo come nel caso di mancanza dei file descriptor.
 
-`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nome con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
+`dns.lookup()` non ha necessariamente a che fare con il protocollo DNS. L'implementazione utilizza una semplificazione del sistema operativo che permette di associare nomi con indirizzi e viceversa. Questa implementazione può avere conseguenze sottili ma comunque importanti sul comportamento di qualsiasi programma sviluppato con Node.js. Si prega quindi di prendersi del tempo per consultare la [Sezione delle considerazioni sull'implementazione](#dns_implementation_considerations) prima di usare il `dns.lookup()`.
 
 Esempio di utilizzo:
 
@@ -156,17 +158,17 @@ dns.lookup('example.com', options, (err, address, family) =>
 options.all = true;
 dns.lookup('example.com', options, (err, addresses) =>
   console.log('addresses: %j', addresses));
-// indirizzo: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
+// addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e non è impostato come `true`, il suo risultato è `Promise` per un `Object` con `address` e proprietà `family`.
+Se questo metodo viene invocato come [`util.promisify()`][] nella sua versione corrente, e `all` non è impostato come `true`, restituisce una `Promise` per un `Object` con proprietà `address` e `family`.
 
 ### Flags getaddrinfo supportati
 
 I seguenti flags possono essere passati come suggerimenti a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Restituisce il tipo di indirizzo, determinato, tra i tipi di indirizzi che il sistema supporta in quel momento. Ad Esempio. Gli indirizzi IPv4 saranno restituiti se nel sistema attualmente è presente almeno un indirizzo IPv4 configurato. Gli indirizzi di loopback non sono considerati.
-- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non vengono trovati, allora viene restituito un indirizzo IPv4 mappato come uno indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
+- `dns.ADDRCONFIG`: I tipi di indirizzo restituiti sono determinati dai tipi di indirizzi supportati dal sistema corrente. Ad esempio, vengono restituiri indirizzi IPv4 solo se nel sistema attuale è configurato almeno un indirizzo IPv4. Gli indirizzi di loopback non sono considerati.
+- `dns.V4MAPPED`: Se viene specificata la famiglia di indirizzi IPv6, ma non viene trovato alcun indirizzo IPv6, allora viene restituito un indirizzo IPv4 mappato come un indirizzo IPv6. Attenzione, questo potrebbe non essere supportato in qualche sistema operativo (ad esempio FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -178,14 +180,14 @@ added: v0.11.14
 - `port` {number}
 - `callback` {Function} 
   - `err` {Error}
-  - `hostname` {string} esempio. `example.com`
-  - `service` {string} esempio. `http`
+  - `hostname` {string} es. `example.com`
+  - `service` {string} es. `http`
 
 Risolve l'`address` e la `port` specificata in un hostname e in un servizio utilizzando l'implementazione `getnameinfo` del sistema operativo sottostante.
 
-Se l'`address` non è un indirizzo IP valido, un `TypeError` verrà mostrato. La `port` sarà associata a un numero. Se non è una porta valida, un `TypeError` verrà mostrato.
+Se l'`address` non è un indirizzo IP valido, verrà emesso un `TypeError`. La `port` sarà associata a un numero. Se non è una porta valida, verrà emesso un `TypeError`.
 
-In un errore, `err` è un oggetto di [`Error`][], dove `err.code` è il codice dell'errore.
+In un errore, `err` è un [`Error`][] object, dove `err.code` è il codice dell'errore.
 
 ```js
 const dns = require('dns');
@@ -195,7 +197,7 @@ dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
 });
 ```
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con `hostname` e le proprietà del `service`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce una `Promise` per un `Object` con proprietà `hostname` e `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
@@ -211,7 +213,7 @@ added: v0.1.27
 
 Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'`) in un array dei record delle risorse. La funzione di `callback` ha come argomenti `(err, records)`. Quando ha successo, il `records` sarà un array delle risorse dei record. Il tipo e la struttura dei risultati individuali varia in base al suo `rrtype`:
 
-| `rrtype`  | `records` Contiene                       | Tipo di Risultato | Metodo Stenografico      |
+| `rrtype`  | `records` contiene                       | Tipo di Risultato | Metodo Stenografico      |
 | --------- | ---------------------------------------- | ----------------- | ------------------------ |
 | `'A'`     | Indirizzi IPv4 (predefiniti)             | {string}          | [`dns.resolve4()`][]     |
 | `'AAAA'`  | Indirizzi IPv6                           | {string}          | [`dns.resolve6()`][]     |
@@ -225,7 +227,7 @@ Utilizzare il protocollo DNS per risolvere un hostname (ad esempio `'nodejs.org'
 | `'TXT'`   | record di testo                          | {string[]}        | [`dns.resolveTxt()`][]   |
 | `'ANY'`   | record qualsiasi                         | {Object}          | [`dns.resolveAny()`][]   |
 
-In caso di errore, `err` è un oggetto di `Error`][], dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
+In caso di errore, `err` è un `Error`][] object, dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
 
 ## dns.resolve4(hostname[, options], callback)
 
@@ -241,12 +243,12 @@ changes:
 
 - `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '1.2.3.4', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
+  - `ttl` {boolean} Recupera il valore del Time-To-Live (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '1.2.3.4', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (records `A`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv4 ( Esempio `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv4 (record `A`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv4 (es. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
 
 ## dns.resolve6(hostname[, options], callback)
 
@@ -262,12 +264,12 @@ changes:
 
 - `hostname` {string} Hostname da risolvere.
 - `options` {Object} 
-  - `ttl` {boolean} Recupera il valore del Time-To-Life (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
+  - `ttl` {boolean} Recupera il valore del Time-To-Live (TTL) di ogni record. Quando `true`, il callback riceve un array di oggetti `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` invece di un array di stringhe, con il TTL espresso in secondi.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Utilizza il protocollo DNS per risolvere gli indirizzi IPv6 (records `AAAA`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv6.
+Utilizza il protocollo DNS per risolvere gli indirizzi IPv6 (record `AAAA`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di indirizzi IPv6.
 
 ## dns.resolveCname(hostname, callback)
 
@@ -293,7 +295,7 @@ added: v0.1.27
   - `err` {Error}
   - `address` {Object}[]}
 
-Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` records) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà, la `priority` e l'`exchange` (ad esempio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
+Utilizza il protocollo DNS per risolvere i record di scambio mail (`MX` record) per l'`hostname`. L’argomento `addresses` passato alla funzione di `callback` conterrà un array di oggetti che contiene entrambe le proprietà `priority` e `exchange` (ad esempio: `{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
 ## dns.resolveNaptr(hostname, callback)
 
@@ -306,7 +308,7 @@ added: v0.9.12
   - `err` {Error}
   - `address` {Object}[]}
 
-Utilizza il protocollo DNS per risolvere i record basati sulle espressioni regolari (Record `NAPTR`) per l'`hostname`. Gli argomenti degli `addresses` passati alla funzione del `callback` conterrà un array di oggetti con le seguente proprietà:
+Utilizza il protocollo DNS per risolvere i record basati sulle espressioni regolari (record `NAPTR`) per l'`hostname`. L’argomento `addresses` passato alla funzione del `callback` conterrà un array di oggetti con le seguente proprietà:
 
 - `flags`
 - `service`
@@ -339,7 +341,7 @@ added: v0.1.90
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve name server records (`NS` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of name server records available for `hostname` (e.g. `['ns1.example.com', 'ns2.example.com']`).
+Utilizza il protocollo DNS per risolvere i record di name server ( record `NS`) per l'`hostname`. L'argomento dell'`addresses` passato alla funzione di `callback` conterrà un array di record con i name server disponibili per l'`hostname` (es.`['ns1.example.com', 'ns2.example.com']`).
 
 ## dns.resolvePtr(hostname, callback)
 
@@ -352,7 +354,7 @@ added: v6.0.0
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve pointer records (`PTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of strings containing the reply records.
+Utilizza il protocollo DNS per risolvere i record di puntatore (record `PTR`) per l'`hostname`. L'argomento `addresses` passato alla funzione di `callback` sarà un array di stringhe contenente il record di risposta.
 
 ## dns.resolveSoa(hostname, callback)
 
@@ -365,7 +367,7 @@ added: v0.11.10
   - `err` {Error}
   - `address` {Object}
 
-Uses the DNS protocol to resolve a start of authority record (`SOA` record) for the `hostname`. The `address` argument passed to the `callback` function will be an object with the following properties:
+Utilizza il protocollo DNS per risolvere il record di start of authority (record `SOA`) per l'`hostname`. L'argomento `address` passato alla funzione di `callback` sarà un oggetto con le seguenti proprietà:
 
 - `nsname`
 - `hostmaster`
@@ -400,7 +402,7 @@ added: v0.1.27
   - `err` {Error}
   - `addresses` {Object[]}
 
-Uses the DNS protocol to resolve service records (`SRV` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of objects with the following properties:
+Utilizza il protocollo DNS per risolvere i record di servizio (record `SRV`) per l'`hostname`. L'argomento `addresses` passato alla funzione di `callback` sarà un array di oggetti con le seguenti proprietà:
 
 - `priority`
 - `weight`
@@ -429,7 +431,7 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[][]}
 
-Uses the DNS protocol to resolve text queries (`TXT` records) for the `hostname`. The `records` argument passed to the `callback` function is a two-dimensional array of the text records available for `hostname` (e.g. `[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Each sub-array contains TXT chunks of one record. Depending on the use case, these could be either joined together or treated separately.
+Utilizza il protocollo DNS per risolvere le query di testo (record `TXT`) per l'`hostname`. L'argomento `records` passato alla funzione di `callback` è un array bidimensionale dei record di testo disponibili per l'`hostname` (es.`[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Ogni array secondario contiene un pezzo del record TXT. A seconda dell'utilizzo, questi potrebbero essere sia uniti che trattati separatamente.
 
 ## dns.resolveAny(hostname, callback)
 
@@ -438,22 +440,22 @@ Uses the DNS protocol to resolve text queries (`TXT` records) for the `hostname`
   - `err` {Error}
   - `ret` {Object[]}
 
-Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query). The `ret` argument passed to the `callback` function will be an array containing various types of records. Each object has a property `type` that indicates the type of the current record. And depending on the `type`, additional properties will be present on the object:
+Utilizza il protocollo DNS per risolvere tutti i record (conosciuti anche come `ANY` o query `*`). L'argomento `ret` passato alla funzione di `callback` sarà un array contenente vari tipi di record. Ogni oggetto ha una proprietà `type` che indica il tipo del record attuale. E a seconda del `type`, saranno presenti proprietà aggiuntive sull'oggetto:
 
-| Type      | Properties                                                                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'A'`     | `address` / `ttl`                                                                                                                               |
-| `'AAAA'`  | `address` / `ttl`                                                                                                                               |
-| `'CNAME'` | `value`                                                                                                                                         |
-| `'MX'`    | Refer to [`dns.resolveMx()`][]                                                                                                                  |
-| `'NAPTR'` | Refer to [`dns.resolveNaptr()`][]                                                                                                               |
-| `'NS'`    | `value`                                                                                                                                         |
-| `'PTR'`   | `value`                                                                                                                                         |
-| `'SOA'`   | Refer to [`dns.resolveSoa()`][]                                                                                                                 |
-| `'SRV'`   | Refer to [`dns.resolveSrv()`][]                                                                                                                 |
-| `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dns.resolveTxt()`][], eg. `{ entries: ['...'], type: 'TXT' }` |
+| Type      | Proprietà                                                                                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'A'`     | `address` / `ttl`                                                                                                                                              |
+| `'AAAA'`  | `address` / `ttl`                                                                                                                                              |
+| `'CNAME'` | `value`                                                                                                                                                        |
+| `'MX'`    | Fai riferimento a [`dns.resolveMx()`][]                                                                                                                        |
+| `'NAPTR'` | Fai riferimento a [`dns.resolveNaptr()`][]                                                                                                                     |
+| `'NS'`    | `value`                                                                                                                                                        |
+| `'PTR'`   | `value`                                                                                                                                                        |
+| `'SOA'`   | Fai riferimento a [`dns.resolveSoa()`][]                                                                                                                       |
+| `'SRV'`   | Fai riferimento a [`dns.resolveSrv()`][]                                                                                                                       |
+| `'TXT'`   | Questo tipo di record contiene un array di proprietà chiamate `entries` che fanno riferimento a `dns.resolveTxt()`][], es. `{ entries: ['...'], type: 'TXT' }` |
 
-Here is an example of the `ret` object passed to the callback:
+Questo è un esempio dell'oggetto `ret` passato alla funzione di callback:
 
 <!-- eslint-disable semi -->
 
@@ -484,9 +486,9 @@ added: v0.1.16
   - `err` {Error}
   - `hostnames` {string[]}
 
-Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an array of hostnames.
+Svolge una query DNS inversa che risolve un indirizzo IPv4 o IPv6 a un array di hostname.
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+In caso di errore, `err` è un oggetto [`Error`][], dove `err.code` è uno dei [codici di errore DNS](#dns_error_codes).
 
 ## dns.setServers(servers)
 
@@ -494,9 +496,9 @@ On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS er
 added: v0.11.3
 -->
 
-- `servers` {string[]} array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses
+- `servers` {string[]} un array di stringhe formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6)
 
-Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
+Imposta un indirizzo IP e una porta sul server che verrà utilizzata quando di svolge la risoluzione di un DNS. L'argomento `servers` è un array di indirizzi formattato con [rfc5952](https://tools.ietf.org/html/rfc5952#section-6). La porta può essere omessa se è utilizzata quella predefinita assegnata dallo IANA per i DNS (53).
 
 ```js
 dns.setServers([
@@ -507,40 +509,40 @@ dns.setServers([
 ]);
 ```
 
-An error will be thrown if an invalid address is provided.
+Un errore sarà generato se verrà fornito un indirizzo non valido.
 
-The `dns.setServers()` method must not be called while a DNS query is in progress.
+Il metodo `dns.setServers()` non deve essere chiamato quando una query DNS è in corso.
 
-## Error codes
+## Codici di errore
 
-Each DNS query can return one of the following error codes:
+Ogni query DNS può restituire uno dei seguenti codici di errore:
 
-- `dns.NODATA`: DNS server returned answer with no data.
-- `dns.FORMERR`: DNS server claims query was misformatted.
-- `dns.SERVFAIL`: DNS server returned general failure.
-- `dns.NOTFOUND`: Domain name not found.
-- `dns.NOTIMP`: DNS server does not implement requested operation.
-- `dns.REFUSED`: DNS server refused query.
-- `dns.BADQUERY`: Misformatted DNS query.
-- `dns.BADNAME`: Misformatted hostname.
-- `dns.BADFAMILY`: Unsupported address family.
-- `dns.BADRESP`: Misformatted DNS reply.
-- `dns.CONNREFUSED`: Could not contact DNS servers.
-- `dns.TIMEOUT`: Timeout while contacting DNS servers.
-- `dns.EOF`: End of file.
-- `dns.FILE`: Error reading file.
-- `dns.NOMEM`: Out of memory.
-- `dns.DESTRUCTION`: Channel is being destroyed.
-- `dns.BADSTR`: Misformatted string.
-- `dns.BADFLAGS`: Illegal flags specified.
-- `dns.NONAME`: Given hostname is not numeric.
-- `dns.BADHINTS`: Illegal hints flags specified.
-- `dns.NOTINITIALIZED`: c-ares library initialization not yet performed.
-- `dns.LOADIPHLPAPI`: Error loading `iphlpapi.dll`.
-- `dns.ADDRGETNETWORKPARAMS`: Could not find `GetNetworkParams` function.
-- `dns.CANCELLED`: DNS query cancelled.
+- `dns.NODATA`: Il server DNS restituisce una risposta senza dati.
+- `dns.FORMERR`: Il server DNS segnala una query non formattata.
+- `dns.SERVFAIL`: Il server DNS restituisce un errore generale.
+- `dns.NOTFOUND`: Il nome del dominio non è stato trovato.
+- `dns.NOTIMP`: Il server DNS non ha la funzione richiesta implementata.
+- `dns.REFUSED`: Il server DNS ha rifiutato la query.
+- `dns.BADQUERY`: La query DNS non è formattata correttamente.
+- `dns.BADNAME`: Hostname non formattato correttamente.
+- `dns.BADFAMILY`: Famiglia di indirizzi non supportata.
+- `dns.BADRESP`: La risposta DNS non è formattata correttamente.
+- `dns.CONNREFUSED`: Non è possibile contattare il server DNS.
+- `dns.TIMEOUT`: Timeout mentre il server DNS veniva contattato.
+- `dns.EOF`: Fine del file.
+- `dns.FILE`: Errore di lettura del file.
+- `dns.NOMEM`: Memoria terminata.
+- `dns.DESTRUCTION`: Il canale si sta distruggendo.
+- `dns.BADSTR`: Stringa non formattata correttamente.
+- `dns.BADFLAGS`: La flag specificata non è valida.
+- `dns.NONAME`: L'hostname non è numerico.
+- `dns.BADHINTS`: Il suggerimento specificato della flag non è valido.
+- `dns.NOTINITIALIZED`: L'inizializzazione della libreria c-ares non è stata eseguita.
+- `dns.LOADIPHLPAPI`: Errore di caricamento di `iphlpapi.dll`.
+- `dns.ADDRGETNETWORKPARAMS`: Impossibile trovare la funzione `GetNetworkParams`.
+- `dns.CANCELLED`: La query DNS è annullata.
 
-## Implementation considerations
+## Considerazioni sull'implementazione
 
 Although [`dns.lookup()`][] and the various `dns.resolve*()/dns.reverse()` functions have the same goal of associating a network name with a network address (or vice versa), their behavior is quite different. These differences can have subtle but significant consequences on the behavior of Node.js programs.
 

@@ -1028,7 +1028,7 @@ Regresa `true` o `false`, dependiendo de los valores de la firma para los datos 
 
 The `verify` object can not be used again after `verify.verify()` has been called. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
-## Módulo de métodos y propiedades de `crypto`
+## Métodos y propiedades del módulo `crypto`
 
 ### crypto.constants
 
@@ -1036,7 +1036,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas para crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
+Regresa un objeto que contiene constantes usadas comúnmente para las operaciones relacionadas con crypto y seguridad. Las constantes específicas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1044,9 +1044,9 @@ Regresa un objeto que contiene constantes usadas comúnmente para las operacione
 added: v0.9.3
 -->
 
-La codificación predeterminadas a usar para las funciones que pueden tomar los strings o los [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
+La codificación predeterminada a usar para las funciones que pueden tomar strings o [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
 
-El mecanismo `crypto.DEFAULT_ENCODING` se da para la contabilidad con versiones anteriores con programas antiguos que esperan tener como codificación predeterminada `'latin1'`.
+El mecanismo `crypto.DEFAULT_ENCODING` se da para la compatibilidad con versiones anteriores con programas antiguos que esperan tener `'latin1'` como codificación predeterminada.
 
 Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta propiedad puede volverse obsoleta en futuras versiones de Node.js.
 
@@ -1056,7 +1056,7 @@ Las nuevas aplicaciones deberían esperar que por defecto sea `'buffer'`. Esta p
 added: v6.0.0
 -->
 
-Las propiedades para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
+La propiedad para verificar y controlar si un proveedor de crypto compatible FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1072,11 +1072,11 @@ Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dad
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `password` se emplea para derivar la clave del cipher y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+La `password` se emplea para derivar la clave del cifrado y la inicialización del vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
 
-La implementación de `crypto.createCipher()` deriva las claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una itaración y no del salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
+La implementación de `crypto.createCipher()` deriva claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
-De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave por su cuenta empleando [`crypto.pbkdf2()`][] y, usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave y un IV por su cuenta empleando [`crypto.pbkdf2()`][], así como usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1089,7 +1089,7 @@ Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inici
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos debe ser string codificadas `'utf8'` [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'`, [Buffers][`Buffer`], `TypedArray`, o `DataView`s.
 
 ### crypto.createCredentials(details)
 
@@ -1098,9 +1098,9 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en vez.
+> Estabilidad: 0 - Estable: Use [`tls.createSecureContext()`][] en su lugar.
 
-- `details`{Object} idénticos a [`tls.createSecureContext()`][].
+- `details`{Object} Idéntico a [`tls.createSecureContext()`][].
 
 El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. No debería ser usada. Remplácela con [`tls.createSecureContext()`][], la cual tiene los mismos argumentos y valores de retorno.
 
@@ -1116,11 +1116,11 @@ added: v0.1.94
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (llave) dados. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados. Optional `options` argument controls stream behavior.
 
-La implementación de `The implementation of <code> deriva claves usando la unción OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y no de salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. La baja interacción cuenta y el algoritmo de hash no criptográficamente seguro permite que las claves sean probadas rápidamente.
+La implementación de `crypto.createDecipher()<code> deriva claves usando la función OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
 
-De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
+De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1133,11 +1133,11 @@ added: v0.1.94
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Crea y regresa un objeto `Decipher` que usa un `algorithm`, una `key` y un vector de inicialización (`iv`). Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados. Optional `options` argument controls stream behavior.
 
 El `algorithm` es dependiente del OpenSSL, ejemplo de estos son `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben usar string codificados `'utf8'` o [buffers][`Buffer`].
+La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'` o [buffers][`Buffer`].
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
@@ -1162,11 +1162,11 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, una string o un [`Buffer`][]. Si el `generator` no es especificado, entonces, el valor `2<0> no es usado.</p>
 
-The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+<p>The <code>primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
 
 If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
 
@@ -1181,7 +1181,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. El valor `2<code> será usado si <0>generator` no es especificado.
 
 ### crypto.createECDH(curveName)
 
@@ -1191,7 +1191,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1202,11 +1202,11 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-Example: generating the sha256 sum of a file
+Eemplos: generando la suma sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1236,13 +1236,13 @@ added: v0.1.94
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada. Optional `options` argument controls stream behavior.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
 
-Example: generating the sha256 HMAC of a file
+Ejemplo: generando el HMAC sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1271,7 +1271,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1282,7 +1282,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.getCiphers()
 
@@ -1290,7 +1290,7 @@ Creates and returns a `Verify` object that uses the given algorithm. Use [`crypt
 added: v0.9.3
 -->
 
-Returns an array with the names of the supported cipher algorithms.
+Regresa una matriz con los nombres de los algoritmos cifrados respaldados.
 
 Ejemplo:
 
@@ -1305,7 +1305,7 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-Returns an array with the names of the supported elliptic curves.
+Regresa una matriz con los nombres de las curvas elípticas respaldadas.
 
 Ejemplo:
 
@@ -1322,7 +1322,7 @@ added: v0.7.5
 
 - `groupName` {string}
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Ejemplo (obteniendo un secreto compartido):
 
