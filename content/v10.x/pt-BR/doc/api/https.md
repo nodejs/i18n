@@ -20,7 +20,7 @@ Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. Consul
 added: v0.3.4
 -->
 
-Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. See [`http.Server`][] for more information.
+Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`http.Server`][] para obter mais informações.
 
 ### server.close ([callback])
 
