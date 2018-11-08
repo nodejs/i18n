@@ -95,9 +95,9 @@ added: v0.1.90
 
 Restituisce `l'indirizzo` associato, l'indirizzo denominato `family` e la `port` del server come riportato dal sistema operativo se si ascolta su un socket IP (utile per trovare quale porta è stata assegnata quando si ottiene un indirizzo assegnato dal sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
-For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
+Per un server in ascolto su una pipe o un socket di dominio UNIX, viene restituito il nome sotto forma di una stringa.
 
-Example:
+Esempio:
 
 ```js
 const server = net.createServer((socket) => {
