@@ -100,14 +100,14 @@ Per un server in ascolto su una pipe o un socket di dominio UNIX, viene restitui
 Esempio:
 
 ```js
-const server = net.createServer((socket) => {
-  socket.end('goodbye\n');
-}).on('error', (err) => {
-  // handle errors here
-  throw err;
+const server = net.createServer ((socket) => {
+   socket.end('goodbye\n');
+}). on('error', (err) = > {
+   // gestisce gli errori qui
+   throw err;
 });
 
-// grab an arbitrary unused port.
+// prendi una porta inutilizzata arbitraria.
 server.listen(() => {
   console.log('opened server on', server.address());
 });
