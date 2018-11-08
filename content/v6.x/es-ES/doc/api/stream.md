@@ -183,21 +183,21 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
         // ¡última vez!
         writer.write(data, encoding, callback);
       } else {
-        // see if we should continue, or wait
-        // don't pass the callback, because we're not done yet.
+        // ver si deberíamos continuar o, esperar
+        // no pase el callback, porque todavía no hemos terminado.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
+      // ¡Tenía que parar temprano!
+      // escribe un poco más una vez que se vacíe
       writer.once('drain', write);
     }
   }
 }
 ```
 
-##### Event: 'error'
+##### Evento: 'error'
 
 <!-- YAML
 added: v0.9.4
