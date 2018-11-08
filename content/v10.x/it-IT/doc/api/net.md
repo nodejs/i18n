@@ -125,7 +125,7 @@ added: v0.1.90
 
 Impedisci al server di accettare nuove connessioni e mantiene le connessioni esistenti. Questa funzione è asincrona, il server è finalmente chiuso quando tutte le connessioni sono terminate e il server emette un evento [`'close'`][]. Il `callback` facoltativo verrà chiamato una volta che si verifica l'evento `'close'`. Diversamente da quell'evento, sarà chiamato con un `Errore` come suo unico argomento se il server non era aperto quando era chiuso.
 
-### connessioni del server
+### server.connections
 
 <!-- YAML
 added: v0.2.0
@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 Il numero di connessioni simultanee sul server.
 
-Questo diventa `null` quando si invia un socket a un figlio con [`child_process.fork()`][]. Per effettuare il polling dei fork e ottenere il numero corrente di connessioni attive, utilizza invece (la funzione) asincrona [`server.getConnections()`][].
+Questo diventa `null` quando si invia un socket a un child con [`child_process.fork()`][]. Per effettuare il polling dei fork e ottenere il numero corrente di connessioni attive, utilizza invece l'asincronia [`server.getConnections()`][].
 
 ### server.getConnections(callback)
 
@@ -148,11 +148,11 @@ added: v0.9.7
 
 Assegnare asincronicamente il numero di connessioni simultanee sul server. Funziona quando i socket sono stati inviati ai fork.
 
-La callback dovrebbe prendere due argomenti `err` e `count`.
+La callback dovrebbe accettare due argomenti `err` e `count`.
 
 ### server.listen()
 
-Avvia un server che "ascolta" le connessioni. Un `net.Server` può essere un TCP o un server [IPC](#net_ipc_support) in base a ciò che ascolta.
+Avvia un server che esegue il listening per le connessioni. Un `net.Server` può essere un TCP o un server [IPC](#net_ipc_support) in base a ciò che ascolta.
 
 Possibili firme:
 
