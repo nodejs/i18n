@@ -2175,21 +2175,21 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 * **DNS**
   
-  * Independent DNS resolver instances are supported now, with support for cancelling the corresponding requests. [#14518](https://github.com/nodejs/node/pull/14518)
+  * Ahora se admiten instancias de resolución de DNS independientes, con soporte para cancelar las solicitudes correspondientes. [#14518](https://github.com/nodejs/node/pull/14518)
 
 * **N-API**
   
-  * Multiple N-API functions for error handling have been changed to support assigning error codes. [#13988](https://github.com/nodejs/node/pull/13988)
+  * Se han cambiado varias funciones de la N-API para el manejo de errores para soportar la asignación de códigos de error. [#13988](https://github.com/nodejs/node/pull/13988)
 
 * **REPL**
   
-  * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
+  * Se ha mejorado el soporte de autocompletado para `require()`. [#14409](https://github.com/nodejs/node/pull/14409)
 
 * **Utilities**
   
-  * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
+  * El Estándar de Codificación WHATWG (`TextDecoder` y `TextEncoder`) se ha implementado como una función experimental. [#13644](https://github.com/nodejs/node/pull/13644)
 
-* **Added new collaborators**
+* **Nuevos colaboradores añadidos**
   
   * [XadillaX](https://github.com/XadillaX) – Khaidi Chu
   * [gabrielschulhof](https://github.com/gabrielschulhof) – Gabriel Schulhof
