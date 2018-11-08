@@ -248,7 +248,7 @@ writer.on('pipe', (src) => {
 reader.pipe(writer);
 ```
 
-##### Event: 'unpipe'
+##### Evento: 'unpipe'
 
 <!-- YAML
 added: v0.9.4
