@@ -232,7 +232,7 @@ Utiliza [`util.inspect()`][] en el `obj` e imprime la cadena resultante en `stdo
 added: v0.1.100
 -->
 
-Imprime a `stderr` con newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Imprime a `stderr` con newline. Se pueden pasar múltiples argumentos, con el primero usado como mensaje primario y todos los adicionales usados como valores de sustitución similares a printf(3) (todos los argumentos se pasan a [`util.format()`][]).
 
 ```js
 const code = 5;
@@ -242,7 +242,7 @@ console.error('error', code);
 // Prints: error 5, to stderr
 ```
 
-If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
+Si los elementos de formato (por ejemplo, `%d`) no se encuentran en la primera cadena, se llama a [`util.inspect()`][] en cada argumento y los valores de cadena resultantes se concatenan. Ver [`util.format()`][] para más información.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -250,7 +250,7 @@ If formatting elements (e.g. `%d`) are not found in the first string then [`util
 added: v0.1.100
 -->
 
-The `console.info()` function is an alias for [`console.log()`][].
+La función `console.info()` es un alias para [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -258,7 +258,7 @@ The `console.info()` function is an alias for [`console.log()`][].
 added: v0.1.100
 -->
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Imprime a `stdout` con newline. Se pueden pasar múltiples argumentos, con el primero usado como mensaje primario y todos los adicionales usados como valores de sustitución similares a printf(3) (todos los argumentos se pasan a [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -268,7 +268,7 @@ console.log('count:', count);
 // Prints: count: 5, to stdout
 ```
 
-See [`util.format()`][] for more information.
+Ver [`util.format()`][] para más información.
 
 ### console.time(label)
 
@@ -276,7 +276,7 @@ See [`util.format()`][] for more information.
 added: v0.1.104
 -->
 
-* `label` {string}
+* `identificación` {string}
 
 Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when you call [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
@@ -286,7 +286,7 @@ Starts a timer that can be used to compute the duration of an operation. Timers 
 added: v0.1.104
 -->
 
-* `label` {string}
+* `identificación` {string}
 
 Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
 
