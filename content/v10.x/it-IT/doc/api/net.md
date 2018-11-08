@@ -235,12 +235,12 @@ server.listen({
 added: v0.1.90
 -->
 
-* `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `path` {string} Percorso che il server deve ascoltare. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
+* Restituisce: {net.Server}
 
-Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
+Avvia un server [IPC](#net_ipc_support) che "ascolti" le connessioni sul `path` indicato.
 
 #### server.listen(\[port[, host[, backlog]]\]\[, callback\])
 
@@ -254,7 +254,7 @@ added: v0.1.90
 * `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
 * Restituisce: {net.Server}
 
-Start a TCP server listening for connections on the given `port` and `host`.
+Avvia un server TCP che ascolti le connessioni sulla `port` e sull' `host`.
 
 If `port` is omitted or is 0, the operating system will assign an arbitrary unused port, which can be retrieved by using `server.address().port` after the [`'listening'`][] event has been emitted.
 
