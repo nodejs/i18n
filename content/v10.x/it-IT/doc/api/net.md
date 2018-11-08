@@ -33,7 +33,7 @@ net.createServer().listen(
   path.join('\\\\?\\pipe', process.cwd(), 'myctl'));
 ```
 
-## Class: net.Server
+## Classe: Server di rete
 
 <!-- YAML
 added: v0.1.90
@@ -41,13 +41,13 @@ added: v0.1.90
 
 Questa classe viene utilizzata per creare un server TCP o [IPC](#net_ipc_support).
 
-### new net.Server(\[options\]\[, connectionListener\])
+### nuovo Server di rete (\[options\]\[, connectionListener\])
 
 * Restituisce: {net.Server}
 
 Vedi [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
-`net.Server` is an [`EventEmitter`][] with the following events:
+`net.Server` è un [`EventEmitter`][] con i seguenti eventi:
 
 ### Event: 'close'
 
