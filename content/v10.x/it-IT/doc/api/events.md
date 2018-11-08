@@ -101,7 +101,7 @@ myEmitter.emit('event');
 // Ignored
 ```
 
-## Error events
+## Eventi error
 
 Quando si verifica un errore all'interno di un'istanza `EventEmitter`, l'azione tipica è l'emissione di un evento `'error'`. Questi vengono trattati come casi speciali all'interno di Node.js.
 
@@ -113,14 +113,14 @@ myEmitter.emit('error', new Error('whoops!'));
 // Throws and crashes Node.js
 ```
 
-Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Note, however, that the `domain` module has been deprecated.)
+Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il `domain` module è stato deprecato.)
 
-As a best practice, listeners should always be added for the `'error'` events.
+Per una miglior pratica, è necessario aggiungere sempre dei listener per gli eventi `'error'`.
 
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.on('error', (err) => {
-  console.error('whoops! there was an error');
+  console.error( 'ops! there was an error');
 });
 myEmitter.emit('error', new Error('whoops!'));
 // Prints: whoops! there was an error
