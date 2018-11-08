@@ -75,7 +75,7 @@ added: v0.1.90
 
 * {Error}
 
-Emesso quando si verifica un errore. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emesso quando si verifica un errore. A differenza di [`net.Socket`][], il [`'close'`][] l'evento **non** sarà emesso direttamente in seguito a questo evento a meno che [`server.close ()`][] sia denominato manualmente. See the example in discussion of [`server.listen()`][].
 
 ### Event: 'listening'
 
