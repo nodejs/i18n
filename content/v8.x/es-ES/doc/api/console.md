@@ -342,7 +342,7 @@ added: v0.1.104
 
 * `identificación` {string}
 
-Inicia un temporizador que puede utilizarse para calcular la duración de una operación. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Inicia un temporizador que puede utilizarse para calcular la duración de una operación. Los temporizadores se identifican mediante una `identificación` única. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Las duraciones del temporizador son precisas en menos de un milisegundo.
 
 ### console.timeEnd(label)
 
@@ -358,7 +358,7 @@ changes:
 
 * `identificación` {string}
 
-Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
+Detiene un temporizador que se inició previamente llamando a [`console.time()`][] e imprime el resultado en `stdout`:
 
 ```js
 console.time('100-elements');
@@ -367,7 +367,7 @@ console.timeEnd('100-elements');
 // prints 100-elements: 225.438ms
 ```
 
-*Note*: As of Node.js v6.0.0, `console.timeEnd()` deletes the timer to avoid leaking it. On older versions, the timer persisted. This allowed `console.timeEnd()` to be called multiple times for the same label. This functionality was unintended and is no longer supported.
+*Note*: As of Node.js v6.0.0, `console.timeEnd()` deletes the timer to avoid leaking it. En las versiones anteriores, el temporizador persistió. Esto permitió que `console.timeEnd()` fuera llamado varias veces para la misma identificación. Esta funcionalidad no fue intencionada y ya no es compatible.
 
 ### console.trace(\[message\]\[, ...args\])
 
@@ -378,12 +378,12 @@ added: v0.1.104
 * `message` {any}
 * `...args` {any}
 
-Prints to `stderr` the string `'Trace :'`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
+Imprime a `stderr` la cadena `'Trace:'`, seguida del mensaje formateado [`util.format()`][] y la traza de la pila hasta la posición actual en el código.
 
 ```js
-console.trace('Show me');
-// Prints: (stack trace will vary based on where trace is called)
-//  Trace: Show me
+console.trace('Muéstrame');
+// Prints: (el trazado de la pila variará en función de dónde se llame el trazado)
+//  Trace: Muéstrame
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
 //    at bound (domain.js:287:14)
