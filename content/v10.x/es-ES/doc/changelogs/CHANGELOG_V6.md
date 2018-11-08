@@ -2904,13 +2904,13 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 
 ## 2016-10-18, Versión 6.9.0 'Boron' (LTS), @rvagg
 
-Esta actualización marca la transición de Node.js v6 a Soporte de Largo Plazo (LTS por sus siglas en inglés) con el nombre clave de 'Boron'. La línea de actualizaciones de v6 ahora se mueve a "LTS Activo" y seguirá allí hasta Abril de 2018. After that time it will move in to "Maintenance" until end of life in April 2019.
+Esta actualización marca la transición de Node.js v6 a Soporte de Largo Plazo (LTS por sus siglas en inglés) con el nombre clave de 'Boron'. La línea de actualizaciones de v6 ahora se mueve a "LTS Activo" y seguirá allí hasta Abril de 2018. Luego de ese momento, será movida a "Mantenimiento" hasta el final de Abril de 2019.
 
-This is also a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
+Esto también es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
-* **crypto**: Don't automatically attempt to load an OpenSSL configuration file, from the `OPENSSL_CONF` environment variable or from the default location for the current platform. Always triggering a configuration file load attempt may allow an attacker to load compromised OpenSSL configuration into a Node.js process if they are able to place a file in a default location. (Fedor Indutny, Rod Vagg)
+* **crypto**: no intentar automáticamente cargar un archivo de configuración de OpenSSL de la variable de ambiente de `OPENSSL_CONF`, o de la ubicación predeterminada para la plataforma actual. Always triggering a configuration file load attempt may allow an attacker to load compromised OpenSSL configuration into a Node.js process if they are able to place a file in a default location. (Fedor Indutny, Rod Vagg)
 * **node**: Introduce the `process.release.lts` property, set to `"Boron"`. This value is `"Argon"` for v4 LTS releases and `undefined` for all other releases. (Rod Vagg)
 * **V8**: Backport fix for CVE-2016-5172, an arbitrary memory read. The parser in V8 mishandled scopes, potentially allowing an attacker to obtain sensitive information from arbitrary memory locations via crafted JavaScript code. This vulnerability would require an attacker to be able to execute arbitrary JavaScript code in a Node.js process. (Rod Vagg)
 * **v8_inspector**: Generate a UUID for each execution of the inspector. This provides additional security to prevent unauthorized clients from connecting to the Node.js process via the v8_inspector port when running with `--inspect`. Since the debugging protocol allows extensive access to the internals of a running process, and the execution of arbitrary code, it is important to limit connections to authorized tools only. Vulnerability originally reported by Jann Horn. (Eugene Ostroukhov)
