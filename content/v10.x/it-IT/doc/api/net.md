@@ -103,7 +103,7 @@ Esempio:
 const server = net.createServer ((socket) => {
    socket.end('goodbye\n');
 }). on('error', (err) = > {
-   // gestire gli errori qui
+   // esegui handle degli errori qui
    lancia err;
 });
 
