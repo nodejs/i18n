@@ -95,11 +95,11 @@ Gli errori generati in questo modo *non possono* essere intercettati usando `try
 
 Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per determinare esattamente in che modo vengono propagati gli errori creati da questi metodi.
 
-### Error-first callbacks
+### Callback error-first
 
 <!--type=misc-->
 
-Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an *error-first callback* (sometimes referred to as a *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
