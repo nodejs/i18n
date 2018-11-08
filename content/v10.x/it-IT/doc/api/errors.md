@@ -74,7 +74,7 @@ Gli errori che si verificano all'interno di *Api asincrone* possono essere segna
   connection.pipe(process.stdout);
   ```
 
-- A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try / catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
+- Una manciata di tipici metodi asincroni nell'API Node.js potrebbero comunque usare il meccanismo `throw` per generare eccezioni che devono essere gestite utilizzando `try / catch`. Non esiste una lista completa di tali metodi; consultare la documentazione di ogni metodo per determinare il meccanismo più appropriato di gestione degli errori.
 
 The use of the `'error'` event mechanism is most common for [stream-based](stream.html) and [event emitter-based](events.html#events_class_eventemitter) APIs, which themselves represent a series of asynchronous operations over time (as opposed to a single operation that may pass or fail).
 
