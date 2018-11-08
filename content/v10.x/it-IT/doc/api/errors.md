@@ -91,7 +91,7 @@ setImmediate(() => {
 });
 ```
 
-Errors generated in this way *cannot* be intercepted using `try / catch` as they are thrown *after* the calling code has already exited.
+Gli errori generati in questo modo *non possono* essere intercettati usando `try / catch` poiché sono generati *dopo* che il codice chiamante è già stato terminato.
 
 Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
