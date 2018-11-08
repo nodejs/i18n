@@ -46,7 +46,7 @@ myEmitter.on('event', function(a, b) {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-It is possible to use ES6 Arrow Functions as listeners, however, when doing so, the `this` keyword will no longer reference the `EventEmitter` instance:
+È possibile utilizzare le Funzioni Arrow E26 come listener, tuttavia, facendo questo, la parola chiave `this` non si riferirà più all'istanza `EventEmitter`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -57,9 +57,9 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Asynchronous vs. Synchronous
+## Asynchronous vs. Sincrono
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
+L'`EventEmitter` chiama tutti i listener in maniera sincrona nell'ordine in cui sono stati registrati. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
 
 ```js
 const myEmitter = new MyEmitter();
