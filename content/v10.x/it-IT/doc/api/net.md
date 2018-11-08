@@ -93,7 +93,7 @@ added: v0.1.90
 
 * Restituisce: {Object}
 
-Restituisce `l'indirizzo` associato, l'indirizzo denominato `family` e la `porta` del server come riportato dal sistema operativo se si ascolta su un socket IP (utile per trovare quale porta è stata assegnata quando si ottiene un indirizzo assegnato dal sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Restituisce `l'indirizzo` associato, l'indirizzo denominato `family` e la `porta` del server come riportato dal sistema operativo se si esegue il listening su un socket IP (utile per trovare quale porta è stata assegnata quando si ottiene un indirizzo assegnato dal sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
 Per un server in ascolto su una pipe o un socket di dominio UNIX, viene restituito il nome sotto forma di una stringa.
 
@@ -103,7 +103,7 @@ Esempio:
 const server = net.createServer ((socket) => {
    socket.end('goodbye\n');
 }). on('error', (err) = > {
-   // esegui handle degli errori qui
+   // esegui l'handle degli errori qui
    lancia err;
 });
 
@@ -152,7 +152,7 @@ La callback dovrebbe prendere due argomenti `err` e `count`.
 
 ### server.listen()
 
-Avvia un server che "ascolta" le connessioni. Un `net.Server` può essere un TCP o un server [IPC](#net_ipc_support) in base a ciò che "ascolta".
+Avvia un server che "ascolta" le connessioni. Un `net.Server` può essere un TCP o un server [IPC](#net_ipc_support) in base a ciò che ascolta.
 
 Possibili firme:
 
@@ -169,7 +169,7 @@ Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [ socket (7)](http
 
 Il metodo `server.listen()` può essere chiamato di nuovo se e solo se ci fosse un errore durante la prima chiamata di `server.listen()` o di ` server.close()` è stata chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
 
-Uno degli errori più comuni generati durante "l'ascolto" è `EADDRINUSE`. Ciò accade quando un altro server sta già "ascoltando" sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe riprovare dopo un certo periodo di tempo:
+Uno degli errori più comuni generati durante "l'ascolto" è `EADDRINUSE`. Ciò accade quando un altro server sta già eseguendo il listening sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe riprovare dopo un certo periodo di tempo:
 
 ```js
 server.on('error', (e) => {
@@ -198,7 +198,7 @@ Avvia un server che "ascolta" le connessioni su un determinato `handle` che è g
 
 L'object `handle` può essere sia un server che un socket (qualsiasi cosa con un sottostante membro del `_handle `), o un oggetto con un membro `fd ` che è un descrittore di file valido.
 
-"L'ascolto" su un descrittore di file non è supportato su Windows.
+Il listening su un descrittore di file non è supportato su Windows.
 
 #### server.listen(options[, callback])
 
