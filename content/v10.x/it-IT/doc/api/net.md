@@ -276,9 +276,9 @@ added: v5.7.0
 added: v0.2.0
 -->
 
-Imposta questa proprietà per rifiutare le connessioni quando si ottiene un conteggio elevato delle connessioni del server.
+Imposta questa proprietà per rifiutare le connessioni quando il conteggio della connessione del server diventa alto.
 
-Non è consigliabile utilizzare questa opzione una volta che un socket è stato inviato a un figlio con [`child_process.fork()`][].
+Non è consigliabile utilizzare questa opzione una volta che un socket è stato inviato a un child con [`child_process.fork()`][].
 
 ### server.ref()
 
@@ -288,7 +288,7 @@ added: v0.9.1
 
 * Restituisce: {net.Server}
 
-Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
+A differenza di`unref()`, chiamare `ref()` su un server precedente `unref`ed *non* permetterà l'uscita dal programma se esso è l'unico server rimasto ( l'azione predefinita). Se il server `ref`ed sta chiamando `ref()` di nuovo non avrà effetto.
 
 ### server.unref()
 
@@ -298,7 +298,7 @@ added: v0.9.1
 
 * Restituisce: {net.Server}
 
-Chiamare `unref ()` su un server consentirà l'uscita del programma se questo è l'unico server attivo nel sistema degli eventi. If the server is already `unref`ed calling `unref()` again will have no effect.
+Chiamare `unref ()` su un server consentirà l'uscita dal programma se questo è l'unico server attivo nel sistema degli eventi. If the server is already `unref`ed calling `unref()` again will have no effect.
 
 ## Classe: net.Socket
 
