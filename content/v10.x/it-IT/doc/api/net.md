@@ -217,9 +217,9 @@ added: v0.11.14
 
 Se è specificata la `porta`, si comporta come
 <a href="#net_server_listen_port_host_backlog_callback">
-<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
+<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se è specificato il `percorso`, si comporta come [` server.listen (path [, backlog] [, callback]) `] [` server.listen (path) `]. Se nessuno di essi viene specificato, verrà generato un errore.
 
-If `exclusive` is `false` (default), then cluster workers will use the same underlying handle, allowing connection handling duties to be shared. When `exclusive` is `true`, the handle is not shared, and attempted port sharing results in an error. An example which listens on an exclusive port is shown below.
+Se `exclusive` è `false` (predefinito), i lavoratori del cluster utilizzeranno lo stesso handle sottostante, che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non è condiviso e il tentativo di condivisione della porta genera un errore. Un esempio di "ascolto" su una exclusive port è mostrato sotto.
 
 ```js
 server.listen({
@@ -249,10 +249,10 @@ added: v0.1.90
 -->
 
 * `port` {number}
-* `host` {string}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `host`{string}
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
+* Restituisce: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
