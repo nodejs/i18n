@@ -161,11 +161,11 @@ Possibili firme:
 * [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] per i server [IPC](#net_ipc_support)
 * [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) per i server TCP
 
-Questa funzione è asincrona. Quando il server inizia ad "ascoltare", il [`'listening'`][] verrà emesso. L'ultimo parametro `callback` verrà aggiunto come un listener per l'evento [`'listening'`][].
+Questa funzione è asincrona. Quando il server inizia ad eseguire il listening, il[`'listening'`][] verrà emesso. L'ultimo parametro `callback` verrà aggiunto come un listener per l'evento [`'listening'`][].
 
-Tutti i metodi di ` listen()` possono prendere un parametro ` backlog` per specificare la massima lunghezza della coda delle connessioni in sospeso. La lunghezza effettiva sarà determinata dal sistema operativo attraverso le impostazioni di sysctl come `tcp_max_syn_backlog` e `somaxconn` su Linux. Il valore predefinito di questo parametro è 511 (non 512).
+Tutti i metodi di `listen()` possono prendere un parametro `backlog` per specificare la massima lunghezza della coda delle connessioni in sospeso. La lunghezza effettiva sarà determinata dal sistema operativo attraverso le impostazioni di sysctl come `tcp_max_syn_backlog` e `somaxconn` su Linux. Il valore predefinito di questo parametro è 511 (non 512).
 
-Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [ socket (7)](http://man7.org/linux/man-pages/man7/socket.7.html)per i dettagli).
+Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html)per i dettagli).
 
 Il metodo `server.listen()` può essere chiamato di nuovo se e solo se ci fosse un errore durante la prima chiamata di `server.listen()` o di ` server.close()` è stata chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
 
