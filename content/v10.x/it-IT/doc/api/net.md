@@ -191,14 +191,14 @@ added: v0.5.10
 
 * `handle` {Object}
 * `backlog`{number} Parametro comune delle funzioni [`server.listen()`][]
-* `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Returns: {net.Server}
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][]
+* Restituisce: {net.Server}
 
-Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
+Avvia un server che "ascolta" le connessioni su un determinato `handle` che è già stato associato a una porta, a un socket di dominio UNIX o a una pipe denominata Windows.
 
-The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
+L'object `handle` può essere sia un server che un socket (qualsiasi cosa con un sottostante membro del `_handle `), o un oggetto con un membro `fd ` che è un descrittore di file valido.
 
-Listening on a file descriptor is not supported on Windows.
+"L'ascolto" su un descrittore di file non è supportato su Windows.
 
 #### server.listen(options[, callback])
 
@@ -206,9 +206,9 @@ Listening on a file descriptor is not supported on Windows.
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `options` {Object} Obbligatorio. Supporta le seguenti proprietà: 
   * `port` {number}
-  * `host` {string}
+  * `host`{string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
   * `backlog` {number} Common parameter of [`server.listen()`][] functions.
   * `exclusive` {boolean} **Default:** `false`
