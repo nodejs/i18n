@@ -75,20 +75,20 @@ const { Console } = console;
 * `stdout` {Writable}
 * `stderr` {Writable}
 
-Crea una nueva `Console` con una o dos instancias de secuencia grabables. `stdout` es una secuencia de escritura para imprimir el registro o la salida de información. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crea una nueva `Console` con una o dos instancias de secuencia grabables. `stdout` es una secuencia de escritura para imprimir el registro o la salida de información. `stderr` se utiliza para la salida de advertencia o error. Si no se proporciona `stderr`, se utiliza `stdout` para `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// logger simple personalizado
 const logger = new Console(output, errorOutput);
-// use it like console
+// usarlo como console
 const count = 5;
 logger.log('count: %d', count);
-// in stdout.log: count 5
+// en stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+La `console` global es una `console` especial cuya salida se envía a [`process.stdout`][] y [`process.stderr`][]. Es equivalente a llamar:
 
 ```js
 new Console(process.stdout, process.stderr);
@@ -104,7 +104,7 @@ added: v0.1.101
 * `message` {any}
 * `...args` {any}
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, an `AssertionError` is thrown. If provided, the error `message` is formatted using [`util.format()`][] and used as the error message.
+Una simple prueba de afirmación que verifica si el `valor` es verdadero. Si no lo es, se lanza un `AssertionError`. Si se proporciona, el `mensaje` de error se formatea utilizando [`util.format()`][] y se utiliza como mensaje de error.
 
 ```js
 console.assert(true, 'does nothing');
