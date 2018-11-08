@@ -206,7 +206,7 @@ added: v8.3.0
 
 * `identificación` {string} La identificación de la pantalla para el contador. Por defecto es `'default'`.
 
-Resets the internal counter specific to `label`.
+Restablece el contador interno específico de la `identificación`.
 
 <!-- eslint-skip -->
 
