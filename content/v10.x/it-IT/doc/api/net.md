@@ -209,7 +209,7 @@ added: v0.11.14
 * `options` {Object} Obbligatorio. Supporta le seguenti proprietà: 
   * `port` {number}
   * `host`{string}
-  * Il `path` della {string} verrà ignorato se la `porta` è specificata. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+  * `path` {string} verrà ignorato se la `porta` è specificata. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
   * `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
   * `exclusive`{boolean}**Default** `false`
 * `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
@@ -217,9 +217,9 @@ added: v0.11.14
 
 Se è specificata la `porta`, si comporta come
 <a href="#net_server_listen_port_host_backlog_callback">
-<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se è specificato il `percorso`, si comporta come [` server.listen (path [, backlog] [, callback]) `] [` server.listen (path) `]. Se nessuno di essi viene specificato, verrà generato un errore.
+<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se è specificato il `percorso`, si comporta come [`server.listen (path [, backlog] [, callback])`][`server.listen (path)`]. Se nessuno di essi viene specificato, verrà generato un errore.
 
-Se `exclusive` è `false` (predefinito), i lavoratori del cluster utilizzeranno lo stesso handle sottostante, che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non è condiviso e il tentativo di condivisione della porta genera un errore. Un esempio di "ascolto" su una exclusive port è mostrato sotto.
+Se `exclusive` è `false` (predefinito), i lavoratori del cluster utilizzeranno lo stesso handle sottostante, che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non è condiviso e il tentativo di condivisione della porta genera un errore. Un esempio che esegue il listening su una exclusive port è mostrato qui di seguito.
 
 ```js
 server.listen({
@@ -240,7 +240,7 @@ added: v0.1.90
 * `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
 * Restituisce: {net.Server}
 
-Avvia un server [IPC](#net_ipc_support) che "ascolti" le connessioni sul `path` indicato.
+Avvia un server [IPC](#net_ipc_support) che esegua il listening per le connessioni sul `path` indicato.
 
 #### server.listen(\[port[, host[, backlog]]\]\[, callback\])
 
