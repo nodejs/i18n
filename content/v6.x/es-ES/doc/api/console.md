@@ -329,4 +329,4 @@ console.trace('Muéstrame');
 added: v0.1.100
 -->
 
-The `console.warn()` function is an alias for [`console.error()`][].
+La función `console.warn()` es un alias para [`console.error()`][].
