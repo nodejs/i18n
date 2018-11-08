@@ -55,7 +55,7 @@ Vedi [`net.createServer([options][, connectionListener])`][`net.createServer()`]
 added: v0.5.0
 -->
 
-Emesso quando il server si chiude. Tieni presente che se esistono connessioni, questo evento non viene emesso fino a quando tutte le connessioni sono terminate.
+Emesso quando il server si chiude. Tieni presente che se esistono connessioni, questo evento non viene emesso fino a quando tutte le connessioni non sono terminate.
 
 ### Event: 'connection'
 
