@@ -1115,7 +1115,7 @@ const fs = require('fs');
 
 const server = http2.createServer();
 server.on('stream', (stream) => {
-  const fd = fs.openSync('/some/file', 'r');
+  const fd = fs.openSync('/algum/arquivo', 'r');
 
   const stat = fs.fstatSync(fd);
   const headers = {
@@ -1341,8 +1341,8 @@ server.on('stream', (stream, headers, flags) => {
     [HTTP2_HEADER_STATUS]: 200,
     [HTTP2_HEADER_CONTENT_TYPE]: 'text/plain'
   });
-  stream.write('hello ');
-  stream.end('world');
+  stream.write('ola ');
+  stream.end('mundo');
 });
 ```
 
