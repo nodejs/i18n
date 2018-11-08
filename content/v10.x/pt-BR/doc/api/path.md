@@ -388,7 +388,7 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(Todos os espaços entre a linha com "" devem ser ignorados — são somente para formatação)
 ```
 
 A [`TypeError`][] is thrown if `path` is not a string.
@@ -417,7 +417,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Returns: {string}
+* Retorna: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -510,7 +510,7 @@ added: v9.0.0
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retorna: {string}
 
 On Windows systems only, returns an equivalent [namespace-prefixed path](https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
