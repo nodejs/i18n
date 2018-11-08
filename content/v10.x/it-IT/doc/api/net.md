@@ -104,16 +104,16 @@ const server = net.createServer ((socket) => {
    socket.end('goodbye\n');
 }). on('error', (err) = > {
    // gestisce gli errori qui
-   throw err;
+   lancia err;
 });
 
 // prendi una porta inutilizzata arbitraria.
 server.listen(() => {
-  console.log('opened server on', server.address());
+   console.log ('server aperto su', server.address ());
 });
 ```
 
-Don't call `server.address()` until the `'listening'` event has been emitted.
+Non chiamare `server.address()` finché non è stato emesso l'evento `'listening'`.
 
 ### server.close([callback])
 
@@ -121,7 +121,7 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
