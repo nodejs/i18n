@@ -341,7 +341,7 @@ Once the `readline.Interface` instance is created, the most common case is to li
 
 ```js
 rl.on('line', (line) => {
-  console.log(`Received: ${line}`);
+  console.log(`Recebido: ${line}`);
 });
 ```
 
