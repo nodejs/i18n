@@ -113,7 +113,7 @@ myEmitter.emit('error', new Error('whoops!'));
 // Throws and crashes Node.js
 ```
 
-To guard against crashing the Node.js process the [`domain`][] module can be used. (Note, however, that the `domain` module has been deprecated.)
+Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Note, however, that the `domain` module has been deprecated.)
 
 As a best practice, listeners should always be added for the `'error'` events.
 
