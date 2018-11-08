@@ -30,7 +30,7 @@ myEmitter.emit('event');
 
 ## Passaggio di argomenti e `this` ai listener
 
-Il metodo `eventEmitter.emit()` consente di passare un set arbitrario di argomenti alle funzioni listener. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+Il metodo `eventEmitter.emit()` consente di passare un set arbitrario di argomenti alle funzioni listener. È importante tenere a mente che nel momento in cui viene chiamata una funzione listener ordinaria, la parola chiave standard `this` viene intenzionalmente impostata per fare riferimento all'istanza `EventEmitter` alla quale è allegato il listener.
 
 ```js
 const myEmitter = new MyEmitter();
