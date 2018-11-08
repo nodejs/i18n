@@ -75,7 +75,7 @@ added: v0.1.90
 
 * {Error}
 
-Emesso quando si verifica un errore. A differenza di [`net.Socket`][], il [`'close'`][] l'evento **non** sarà emesso direttamente in seguito a questo evento a meno che [`server.close ()`][] sia denominato manualmente. See the example in discussion of [`server.listen()`][].
+Emesso quando si verifica un errore. A differenza di [`net.Socket`][], il [`'close'`][] l'evento **non** sarà emesso direttamente in seguito a questo evento a meno che [`server.close ()`][] sia denominato manualmente. Vedi l'esempio nella discussione di [`server.listen()`][].
 
 ### Event: 'listening'
 
@@ -83,17 +83,17 @@ Emesso quando si verifica un errore. A differenza di [`net.Socket`][], il [`'clo
 added: v0.1.90
 -->
 
-Emitted when the server has been bound after calling [`server.listen()`][].
+Emesso quando il server è stato associato dopo aver chiamato [` server.listen()`][].
 
-### server.address()
+### indirizzi del server()
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
-Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Restituisce `l'indirizzo` associato, l'indirizzo denominato `family` e la `port` del server come riportato dal sistema operativo se si ascolta su un socket IP (utile per trovare quale porta è stata assegnata quando si ottiene un indirizzo assegnato dal sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
 For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
 
