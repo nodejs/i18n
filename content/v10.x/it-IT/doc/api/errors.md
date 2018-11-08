@@ -135,7 +135,7 @@ try {
 }
 ```
 
-Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è chiamata in modo asincrono. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
+Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è chiamata in modo asincrono. Per quando il callback è stato chiamato, il codice circostante (incluso il blocco `try { } catch (err) { }` sarà già stato chiuso. Nella maggior parte dei casi, generare un errore all'interno del callback **può causare il crash del processo Node.js**. Se sono abilitati i [domini](domain.html), oppure un handler è stato registrato con `process.on('uncaughtException')`, tali errori possono essere intercettati.
 
 ## Class: Error
 
