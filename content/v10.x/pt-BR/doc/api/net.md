@@ -471,9 +471,9 @@ Initiate a connection on a given socket.
 Possible signatures:
 
 * [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
-* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] for TCP connections.
-* Returns: {net.Socket} The socket itself.
+* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] para conexões [IPC](#net_ipc_support).
+* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexões TCP.
+* Retorna: {net.Socket} O próprio socket.
 
 This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
@@ -495,7 +495,7 @@ changes:
 
 * `options` {Object}
 * `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Initiate a connection on a given socket. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
 
@@ -552,7 +552,7 @@ If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(optio
 added: v0.1.90
 -->
 
-* Returns: {net.Socket}
+* Retorna: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -568,7 +568,7 @@ If `exception` is specified, an [`'error'`][] event will be emitted and any list
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
 
@@ -592,7 +592,7 @@ The numeric representation of the local port. For example, `80` or `21`.
 
 ### socket.pause()
 
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
 
@@ -767,8 +767,8 @@ When the connection is established, a [`'connect'`][] event will be emitted on t
 Possible signatures:
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
-* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
+* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] para conexões [IPC](#net_ipc_support).
+* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] para conexões TCP.
 
 The [`net.connect()`][] function is an alias to this function.
 
