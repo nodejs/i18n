@@ -298,9 +298,9 @@ added: v0.9.1
 
 * Restituisce: {net.Server}
 
-Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
+Chiamare `unref ()` su un server consentirà l'uscita del programma se questo è l'unico server attivo nel sistema degli eventi. If the server is already `unref`ed calling `unref()` again will have no effect.
 
-## Class: net.Socket
+## Classe: net.Socket
 
 <!-- YAML
 added: v0.3.4
