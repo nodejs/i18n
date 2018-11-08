@@ -1444,8 +1444,8 @@ server.on('stream', (stream, headers, flags) => {
     [HTTP2_HEADER_STATUS]: 200,
     [HTTP2_HEADER_CONTENT_TYPE]: 'text/plain'
   });
-  stream.write('hello ');
-  stream.end('world');
+  stream.write('ola ');
+  stream.end('mundo');
 });
 ```
 
@@ -1587,7 +1587,7 @@ const options = {
   cert: fs.readFileSync('server-cert.pem')
 };
 
-// Create a secure HTTP/2 server
+// Cria o servidor HTTP/2 seguro
 const server = http2.createSecureServer(options);
 
 server.on('stream', (stream, headers) => {
@@ -1595,7 +1595,7 @@ server.on('stream', (stream, headers) => {
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Hello World</h1>');
+  stream.end('<h1>Ola Mundo</h1>');
 });
 
 server.listen(80);
@@ -1644,7 +1644,7 @@ Returns a `ClientHttp2Session` instance.
 const http2 = require('http2');
 const client = http2.connect('https://localhost:1234');
 
-/* Use the client */
+/* Usa o cliente */
 
 client.close();
 ```
@@ -1655,11 +1655,11 @@ client.close();
 added: v8.4.0
 -->
 
-#### Error Codes for RST_STREAM and GOAWAY
+#### Códigos de erro para RST_STREAM e GOAWAY
 
 <a id="error_codes"></a>
 
-| Value  | Name                | Constant                                      |
+| Valor  | Nome                | Constante                                     |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -1705,7 +1705,7 @@ const http2 = require('http2');
 const packed = http2.getPackedSettings({ enablePush: false });
 
 console.log(packed.toString('base64'));
-// Prints: AAIAAAAA
+// Imprime: AAIAAAAA
 ```
 
 ### http2.getUnpackedSettings(buf)
@@ -1840,7 +1840,7 @@ const server = net.createServer((socket) => {
   let name = '';
   socket.setEncoding('utf8');
   socket.on('data', (chunk) => name += chunk);
-  socket.on('end', () => socket.end(`hello ${name}`));
+  socket.on('end', () => socket.end(`ola ${name}`));
 });
 
 server.listen(8000);
@@ -2277,7 +2277,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Retorna: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2302,7 +2302,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Returns: {string}
+* Retorna: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -2338,7 +2338,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2437,7 +2437,7 @@ Attempting to set a header field name or value that contains invalid characters 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
 ```js
-// returns content-type = text/plain
+// retorna content-type = text/plain
 const server = http2.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('X-Foo', 'bar');
@@ -2454,7 +2454,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http2.Http2ServerResponse}
+* Retorna: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2538,7 +2538,7 @@ added: v8.4.0
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Retorna: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -2579,7 +2579,7 @@ For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may
 Example:
 
 ```js
-const body = 'hello world';
+const body = 'ola mundo';
 response.writeHead(200, {
   'Content-Length': Buffer.byteLength(body),
   'Content-Type': 'text/plain' });
