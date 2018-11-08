@@ -40,14 +40,14 @@ All instances contain the built-in `Error` properties (`message` and `name`) and
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+// Gera um AssertionError para comparar a mensagem de erro posteriormente:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+// Verifica a saída do erro:
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Um alias de [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
