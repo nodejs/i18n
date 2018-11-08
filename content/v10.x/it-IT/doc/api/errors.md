@@ -23,7 +23,7 @@ Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o 
 
 <!--type=misc-->
 
-Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Error` e dallo stile dell'API che viene richiamata.
+Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Error` e dallo stile dell'API che viene chiamata.
 
 Tutti gli errori JavaScript sono gestiti come eccezioni che generano e inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
@@ -99,7 +99,7 @@ Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per 
 
 <!--type=misc-->
 
-La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come parametro. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene richiamata con l'oggetto `Error` (se presente) passato come primo parametro. Se non è stato generato alcun errore, il primo parametro verrà passato come `null`.
+La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come parametro. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` (se presente) passato come primo parametro. Se non è stato generato alcun errore, il primo parametro verrà passato come `null`.
 
 ```js
 const fs = require('fs');
@@ -135,7 +135,7 @@ try {
 }
 ```
 
-This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
+Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è chiamata in modo asincrono. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
 ## Class: Error
 
