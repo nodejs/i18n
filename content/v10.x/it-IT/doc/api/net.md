@@ -55,7 +55,7 @@ Vedi [`net.createServer([options][, connectionListener])`][`net.createServer()`]
 added: v0.5.0
 -->
 
-Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
+Emesso quando il server si chiude. Tieni presente che se esistono connessioni, questo evento non viene emesso fino a quando tutte le connessioni sono terminate.
 
 ### Event: 'connection'
 
@@ -63,9 +63,9 @@ Emitted when the server closes. Note that if connections exist, this event is no
 added: v0.1.90
 -->
 
-* {net.Socket} The connection object
+* {net.Socket} L'object della connessione
 
-Emitted when a new connection is made. `socket` is an instance of `net.Socket`.
+Emesso quando viene effettuata una nuova connessione. `socket`è un'istanza di `net.socket`.
 
 ### Event: 'error'
 
@@ -75,7 +75,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emesso quando si verifica un errore. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
 
 ### Event: 'listening'
 
