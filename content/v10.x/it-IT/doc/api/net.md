@@ -6,7 +6,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server basati in stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e i client ([` net.createConnection()`] []).
+Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server basati in stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e per i client ([` net.createConnection()`] []).
 
 Ci si può accedere usando:
 
@@ -16,13 +16,13 @@ const net = require('net');
 
 ## Supporto IPC
 
-Il modulo `net` supporta IPC con le pipe denominate su Windows e di dominio UNIX prese su altri sistemi operativi.
+Il modulo `net` supporta IPC con pipe denominate su Windows e i socket di dominio UNIX su altri sistemi operativi.
 
 ### Identificazione dei percorsi per le connessioni IPC
 
-[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] and [`socket.connect()`][] prendi un parametro `path` per identificare gli endpoint IPC.
+[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] e [`socket.connect()`][] prendi un parametro `path` per identificare gli endpoint IPC.
 
-Su UNIX, il dominio locale è anche noto come il dominio UNIX. Il percorso è un pathname del filesystem. Esso viene troncato per `sizeof (sockaddr_un.sun_path) - 1`, che varia su diversi sistemi operativi tra 91 e 107 byte. I valori tipici sono 107 su Linux e 103 su macOS. Il percorso è soggetto alle stesse convenzioni di denominazione e alle stesse verifiche dei permessi sulla creazione di file. Se il socket del dominio UNIX (che è visibile come un file system path) viene creato e utilizzato in combinazione con una delle astrazioni API di Node.js come [`net.createServer()`][], sarà scollegato come parte di [`server.close()`][]. D'altra parte, se viene creato e utilizzato al di fuori di queste astrazioni, l'utente avrà bisogno di rimuoverlo manualmente. Lo stesso si applica quando il percorso è stato creato da un'API Node.js ma il programma si interrompe bruscamente. In breve, un socket di dominio UNIX una volta creato con successo sarà visibile nel filesystem e rimarrà fino a quando non è collegato.
+Su UNIX, il dominio locale è anche noto come il dominio UNIX. Il percorso è un pathname del filesystem. Esso viene troncato per `sizeof (sockaddr_un.sun_path) - 1`, che varia su diversi sistemi operativi compresi tra 91 e 107 byte. I valori tipici sono 107 su Linux e 103 su macOS. Il percorso è soggetto alle stesse convenzioni di denominazione e alle stesse verifiche dei permessi sulla creazione di file. Se il socket del dominio UNIX (che è visibile come un file system path) viene creato e utilizzato in combinazione con una delle astrazioni dell'API di Node.js come [`net.createServer()`][], sarà scollegato come parte di [`server.close()`][]. D'altra parte, se viene creato e utilizzato al di fuori di queste astrazioni, l'utente avrà bisogno di rimuoverlo manualmente. Lo stesso si applica quando il percorso è stato creato da un'API Node.js ma il programma si interrompe bruscamente. In breve, un socket di dominio UNIX una volta creato con successo sarà visibile nel filesystem e rimarrà fino a quando non è collegato.
 
 Su Windows, il dominio locale viene implementato utilizzando una pipe denominata. Il percorso *deve* fare riferimento a un accesso in `\\?\pipe` o `\\.\ pipe`. Qualsiasi carattere è permesso, ma quest'ultimo potrebbe eseguire alcuni processi di denominazione di pipe, come la risoluzione di `..` sequenze. Nonostante quello che potrebbe sembrare, lo spazio dei nomi della pipe è piatto. Le pipe *non perdureranno*. Vengono rimossi quando viene chiuso l'ultimo riferimento ad esse. A differenza dei socket di dominio UNIX, Windows chiuderà e rimuoverà la pipe quando si chiude il processo di proprietà.
 
@@ -123,18 +123,18 @@ added: v0.1.90
 
 * Restituisce: {net.Server}
 
-Impedisci al server di accettare nuove connessioni e mantiene le connessioni esistenti. Questa funzione è asincrona, il server è finalmente chiuso quando tutte le connessioni sono terminate e il server emette un evento [`'close'`][]. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
+Impedisci al server di accettare nuove connessioni e mantiene le connessioni esistenti. Questa funzione è asincrona, il server è finalmente chiuso quando tutte le connessioni sono terminate e il server emette un evento [`'close'`][]. Il `callback` facoltativo verrà chiamato una volta che si verifica l'evento `'close'`. Diversamente da quell'evento, sarà chiamato con un `Errore` come suo unico argomento se il server non era aperto quando era chiuso.
 
-### server.connections
+### connessioni del server
 
 <!-- YAML
 added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`server.getConnections()`][].
 
-The number of concurrent connections on the server.
+Il numero di connessioni simultanee sul server.
 
 This becomes `null` when sending a socket to a child with [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
 
