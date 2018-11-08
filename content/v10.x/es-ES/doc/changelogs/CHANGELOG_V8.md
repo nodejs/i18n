@@ -2208,7 +2208,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`0ebb4dff17`](https://github.com/nodejs/node/commit/0ebb4dff17)] - **build**: co-diseñar tarball binario en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * [[`7f5bcbd2e9`](https://github.com/nodejs/node/commit/7f5bcbd2e9)] - **build,test**: ejecutar pruebas de v8 en windows (Kunal Pathak) [#13992](https://github.com/nodejs/node/pull/13992)
 * [[`5ab4471d72`](https://github.com/nodejs/node/commit/5ab4471d72)] - **build,tools**: no forzar el prefijo de co-diseño (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
-* [[`7b96944254`](https://github.com/nodejs/node/commit/7b96944254)] - **build,win**: fix python detection script (Jason Ginchereau) [#14546](https://github.com/nodejs/node/pull/14546)
+* [[`7b96944254`](https://github.com/nodejs/node/commit/7b96944254)] - **build,win**: corregir el script de detección de python (Jason Ginchereau) [#14546](https://github.com/nodejs/node/pull/14546)
 * [[`1f16c43e80`](https://github.com/nodejs/node/commit/1f16c43e80)] - **child_process**: fix handle passing w large payloads (Anna Henningsen) [#14588](https://github.com/nodejs/node/pull/14588)
 * [[`9c1199e88f`](https://github.com/nodejs/node/commit/9c1199e88f)] - **(SEMVER-MINOR)** **console**: add console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * [[`255b9bfa8a`](https://github.com/nodejs/node/commit/255b9bfa8a)] - **console,test**: make message test more accurate (Anna Henningsen) [#14580](https://github.com/nodejs/node/pull/14580)
