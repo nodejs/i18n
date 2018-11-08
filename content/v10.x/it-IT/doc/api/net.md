@@ -256,7 +256,7 @@ added: v0.1.90
 
 Avvia un server TCP che ascolti le connessioni sulla `port` e sull' `host`.
 
-If `port` is omitted or is 0, the operating system will assign an arbitrary unused port, which can be retrieved by using `server.address().port` after the [`'listening'`][] event has been emitted.
+Se la `port` è omessa o è 0, il sistema operativo assegnerà arbitrariamente una porta non utilizzata, che può essere recuperata usando ` server.address (). port` dopo che è stato emesso l'evento [`'listening' `][].
 
 If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
 
