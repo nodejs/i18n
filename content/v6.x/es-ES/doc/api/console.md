@@ -97,19 +97,19 @@ console.assert(false, 'Whoops %s', 'didn\'t work');
 // AssertionError: Whoops didn't work
 ```
 
-*Note: the `console.assert()` method is implemented differently in Node.js than the `console.assert()` method [available in browsers](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).*
+*Nota: el método `console.assert()` se implementa de forma diferente en Node.js que el método `console.assert()` [disponible en los navegadores](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).*
 
-Specifically, in browsers, calling `console.assert()` with a falsy assertion will cause the `message` to be printed to the console without interrupting execution of subsequent code. In Node.js, however, a falsy assertion will cause an `AssertionError` to be thrown.
+Específicamente, en los navegadores, llamar `console.assert()` con una aserción falsa hará que el `mensaje` se imprima en la consola sin interrumpir la ejecución del código subsiguiente. En Node.js, sin embargo, una aserción falsa causará que un `AssertionError` sea lanzado.
 
-Functionality approximating that implemented by browsers can be implemented by extending Node.js' `console` and overriding the `console.assert()` method.
+La funcionalidad que se aproxima a la implementada por los navegadores puede ser implementada extendiendo la `console` de Node.js y anulando el método `console.assert()`.
 
-In the following example, a simple module is created that extends and overrides the default behavior of `console` in Node.js.
+En el siguiente ejemplo, se crea un módulo simple que se extiende y anula el comportamiento predeterminado de la `console` en Node.js.
 
 ```js
 'use strict';
 
-// Creates a simple extension of console with a
-// new impl for assert without monkey-patching.
+// Crea una simple extensión de la consola con una
+// new impl para assert sin monkey-patching.
 const myConsole = Object.create(console, {
   assert: {
     value(assertion, message, ...args) {
@@ -128,12 +128,12 @@ const myConsole = Object.create(console, {
 module.exports = myConsole;
 ```
 
-This can then be used as a direct replacement for the built in console:
+Esto puede ser usado como un reemplazo directo para la consola integrada:
 
 ```js
 const console = require('./myConsole');
-console.assert(false, 'this message will print, but no error thrown');
-console.log('this will also print');
+console.assert(false, 'este mensaje se imprimirá, pero no se producirá ningún error');
+console.log('esto también imprimirá');
 ```
 
 ### console.clear()
