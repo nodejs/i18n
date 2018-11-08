@@ -57,7 +57,7 @@ Gli errori che si verificano all'interno di *Api asincrone* possono essere segna
         // Altrimenti gestisci i dati
       });
 
-- When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
+- Quando un metodo asincrono viene chiamato su un oggetto che è un [`EventEmitter`][], gli errori possono essere indirizzati all'`'error'` dell'evento di quell'oggetto.
   
   ```js
   const net = require('net');
