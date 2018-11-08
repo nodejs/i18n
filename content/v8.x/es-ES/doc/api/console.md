@@ -245,13 +245,13 @@ added: v0.1.101
   * `depth` {number}
   * `colors` {boolean}
 
-Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`. An optional `options` object may be passed to alter certain aspects of the formatted string:
+Utiliza [`util.inspect()`][] en el `obj` e imprime la cadena resultante en `stdout`. Esta función evita cualquier función personalizada `inspect()` definida en `obj`. Un objeto opcional de `opciones` puede ser pasado para alterar ciertos aspectos de la cadena formateada:
 
-* `showHidden` - if `true` then the object's non-enumerable and symbol properties will be shown too. Defaults to `false`.
+* `showHidden` - si es `true`, también se mostrarán las propiedades no numéricas y de símbolo del objeto. Por defecto es `false`.
 
-* `depth` - tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely, pass `null`.
+* `depth` - indica [`util.inspect()`][] cuántas veces se debe volver a realizar la operación mientras se formatea el objeto. Esto es útil para inspeccionar objetos grandes y complicados. Por defecto es `2`. Para que se devuelva indefinidamente, pass `null`.
 
-* `colors` - if `true`, then the output will be styled with ANSI color codes. Defaults to `false`. Colors are customizable; see [customizing `util.inspect()` colors][].
+* `colors` - si es `true`, entonces la salida será estilizada con códigos de color ANSI. Por defecto es `false`. Los colores se pueden personalizar; véase [customizing `util.inspect()` colors][].
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -262,7 +262,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Imprime a `stderr` con newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const code = 5;
