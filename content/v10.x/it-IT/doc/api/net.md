@@ -196,7 +196,7 @@ added: v0.5.10
 
 Avvia un server che "ascolta" le connessioni su un determinato `handle` che è già stato associato a una porta, a un socket di dominio UNIX o a una pipe denominata Windows.
 
-L'object `handle` può essere sia un server che un socket (qualsiasi cosa con un sottostante membro del `_handle `), o un oggetto con un membro `fd ` che è un descrittore di file valido.
+L'object `handle` può essere sia un server che un socket (qualsiasi cosa con un membro del `_handle ` sottostante), o un object con un membro `fd ` che è un descrittore di file valido.
 
 Il listening su un descrittore di file non è supportato su Windows.
 
@@ -215,11 +215,11 @@ added: v0.11.14
 * `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
 * Restituisce: {net.Server}
 
-Se è specificata la `porta`, si comporta come
+Se è la `porta` è specificata, si comporta come
 <a href="#net_server_listen_port_host_backlog_callback">
-<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se è specificato il `percorso`, si comporta come [`server.listen (path [, backlog] [, callback])`][`server.listen (path)`]. Se nessuno di essi viene specificato, verrà generato un errore.
+<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se il `percorso` è specificato, si comporta come [`server.listen (path [, backlog] [, callback])`][`server.listen (path)`]. Se nessuno di essi viene specificato, verrà lanciato un errore.
 
-Se `exclusive` è `false` (predefinito), i lavoratori del cluster utilizzeranno lo stesso handle sottostante, che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non è condiviso e il tentativo di condivisione della porta genera un errore. Un esempio che esegue il listening su una exclusive port è mostrato qui di seguito.
+Se `exclusive` è `false` (predefinito), i lavoratori del cluster, quindi, utilizzeranno lo stesso handle sottostante che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non viene condiviso e il tentativo di condivisione della porta genera un errore. Un esempio che esegue il listening su una exclusive port è mostrato qui di seguito.
 
 ```js
 server.listen({
@@ -254,11 +254,11 @@ added: v0.1.90
 * `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
 * Restituisce: {net.Server}
 
-Avvia un server TCP che ascolti le connessioni sulla `port` e sull' `host`.
+Avvia un server TCP che esegua il listening per le connessioni sulla `porta` e sull' `host`.
 
-Se la `port` è omessa o è 0, il sistema operativo assegnerà arbitrariamente una porta non utilizzata, che può essere recuperata usando ` server.address (). port` dopo che è stato emesso l'evento [`'listening' `][].
+Se la `porta` è omessa o è 0, il sistema operativo assegnerà arbitrariamente una porta non utilizzata, che può essere recuperata usando `server.address().port` dopo che l'evento [`'listening'`][] è stato emesso.
 
-Se viene omesso l'`host`, il server accetterà connessioni su un [indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) quando IPv6 è disponibile, oppure [l'indirizzo IPv4 non specificato ](https://en.wikipedia.org/wiki/0.0.0.0) altrimenti su (` 0.0.0.0 `).
+Se l'`host` viene omesso, il server accetterà connessioni su un [indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) quando IPv6 è disponibile, oppure [l'indirizzo IPv4 non specificato ](https://en.wikipedia.org/wiki/0.0.0.0) o altrimenti su (` 0.0.0.0 `).
 
 Nella maggior parte dei sistemi operativi, "ascoltare" [l'indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) potrebbe fare in modo che `net.Server ` ascolti anche sull'indirizzo IPv4 [non specificato](https://en.wikipedia.org/wiki/0.0.0.0) (` 0.0.0.0 `).
 
