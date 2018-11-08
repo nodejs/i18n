@@ -1234,7 +1234,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`dfc8bedbc5`](https://github.com/nodejs/node/commit/dfc8bedbc5)] - **doc**: cambiar las referencias de node a Node.js (Roman Klauke) [#4177](https://github.com/nodejs/node/pull/4177)
 * [[`7a518788e9`](https://github.com/nodejs/node/commit/7a518788e9)] - **doc, test**: símbolos como nombres de evento (Bryan English) [#4151](https://github.com/nodejs/node/pull/4151)
 * [[`425a3545d2`](https://github.com/nodejs/node/commit/425a3545d2)] - **(SEMVER-MINOR)** **domains**: corregir el manejo de excepciones no capturadas (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654)
-* [[`acef181fde`](https://github.com/nodejs/node/commit/acef181fde)] - **(SEMVER-MINOR)** **https**: soporta deshabilitar el guardado en el caché de la sesión (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252)
+* [[`acef181fde`](https://github.com/nodejs/node/commit/acef181fde)] - **(SEMVER-MINOR)** **https**: soportar la desactivación del guardado en el caché de la sesión (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252)
 * [[`2a60e2ad71`](https://github.com/nodejs/node/commit/2a60e2ad71)] - **module,src**: no envolver los módulos con un lineOffset -1 (cjihrig) [#4298](https://github.com/nodejs/node/pull/4298)
 * [[`d3c498b1b7`](https://github.com/nodejs/node/commit/d3c498b1b7)] - **node**: remover variables sin usar en AppendExceptionLine (Yazhong Liu) [#4264](https://github.com/nodejs/node/pull/4264)
 * [[`aad6b9f0eb`](https://github.com/nodejs/node/commit/aad6b9f0eb)] - **repl**: mostrar el mensaje de error cuando se cargue el directorio (Prince J Wesley) [#4170](https://github.com/nodejs/node/pull/4170)
@@ -1264,7 +1264,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Cambios notables
 
 * **build**: 
-  * Añadido soporte para el perfilador de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
+  * Añadir soporte para el perfilaje de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
   * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Debido a un error de configuración, los snapshots han sido mantenido por fuera de manera predeterminada cuando la intención es que la característica esté habilitada. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
 * **crypto**: 
   * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede lleva a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
