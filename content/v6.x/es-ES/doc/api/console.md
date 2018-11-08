@@ -142,9 +142,9 @@ console.log('esto también imprimirá');
 added: v6.13.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Cuando el `stdout` es un TTY, al llamar a `console.clear()` se intentará borrar el TTY. Cuando el `stdout` no es un TTY, este método no hace nada.
 
-*Note*: The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+*Nota*: El funcionamiento específico de `console.clear()` puede variar según el sistema operativo y el tipo de terminal. Para la mayoría de los sistemas operativos Linux, `console.clear()` funciona de forma similar al comando `clear` shell. En Windows, `console.clear()` borrará sólo la salida en la viewport actual del terminal para el binario Node.js.
 
 ### console.count([label])
 
@@ -152,7 +152,7 @@ When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY.
 added: v6.13.0
 -->
 
-* `label` {string} The display label for the counter. Defaults to `'default'`.
+* `identificación` {string} La identificación de la pantalla para el contador. Por defecto es `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 
@@ -186,7 +186,7 @@ undefined
 added: v6.13.0
 -->
 
-* `label` {string} The display label for the counter. Defaults to `'default'`.
+* `identificación` {string} La identificación de la pantalla para el contador. Por defecto es `'default'`.
 
 Resets the internal counter specific to `label`.
 
