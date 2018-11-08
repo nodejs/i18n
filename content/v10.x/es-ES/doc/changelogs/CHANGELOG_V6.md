@@ -2872,22 +2872,22 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 * [[`7b75cb9e5a`](https://github.com/nodejs/node/commit/7b75cb9e5a)] - **test,lib,benchmark**: hacer coincidir nombres de funciones (Rich Trott) [#9113](https://github.com/nodejs/node/pull/9113)
 * [[`9cb236ff45`](https://github.com/nodejs/node/commit/9cb236ff45)] - **tls**: reparar fuga de combinación de WriteWrap+TLSWrap (Fedor Indutny) [#9586](https://github.com/nodejs/node/pull/9586)
 * [[`bd7c1e7542`](https://github.com/nodejs/node/commit/bd7c1e7542)] - **tools**: permitir a test.py usar rutas completas de pruebas (Francis Gulotta) [#9694](https://github.com/nodejs/node/pull/9694)
-* [[`2388648bea`](https://github.com/nodejs/node/commit/2388648bea)] - **tools**: make --repeat work with -j in test.py (Rich Trott) [#9249](https://github.com/nodejs/node/pull/9249)
-* [[`07d34f98b2`](https://github.com/nodejs/node/commit/07d34f98b2)] - **tools**: remove dangling eslint symlink (Sam Roberts) [#9299](https://github.com/nodejs/node/pull/9299)
-* [[`a120199ea9`](https://github.com/nodejs/node/commit/a120199ea9)] - **tools**: enable ES2016 syntax support in ESLint (Michaël Zasso) [#9218](https://github.com/nodejs/node/pull/9218)
-* [[`9077f63dcf`](https://github.com/nodejs/node/commit/9077f63dcf)] - **tools**: replace custom lint rule for getter/setter (Rich Trott) [#9194](https://github.com/nodejs/node/pull/9194)
-* [[`e9d5cd79bb`](https://github.com/nodejs/node/commit/e9d5cd79bb)] - **tools**: update ESLint to v3.8.0 (Rich Trott) [#9112](https://github.com/nodejs/node/pull/9112)
+* [[`2388648bea`](https://github.com/nodejs/node/commit/2388648bea)] - **tools**: hacer que --repeat funcione con -j en test.py (Rich Trott) [#9249](https://github.com/nodejs/node/pull/9249)
+* [[`07d34f98b2`](https://github.com/nodejs/node/commit/07d34f98b2)] - **tools**: remover enlace simbólico de eslint que está colgando (Sam Roberts) [#9299](https://github.com/nodejs/node/pull/9299)
+* [[`a120199ea9`](https://github.com/nodejs/node/commit/a120199ea9)] - **tools**: habilitar soporte de sintaxis de ES2016 en ESLint (Michaël Zasso) [#9218](https://github.com/nodejs/node/pull/9218)
+* [[`9077f63dcf`](https://github.com/nodejs/node/commit/9077f63dcf)] - **tools**: reemplazar regla de lint personalizada por getter/setter (Rich Trott) [#9194](https://github.com/nodejs/node/pull/9194)
+* [[`e9d5cd79bb`](https://github.com/nodejs/node/commit/e9d5cd79bb)] - **tools**: actualizar ESLint a v3.8.0 (Rich Trott) [#9112](https://github.com/nodejs/node/pull/9112)
 * [[`87285ed984`](https://github.com/nodejs/node/commit/87285ed984)] - **tools**: avoid let in for loops (jessicaquynh) [#9049](https://github.com/nodejs/node/pull/9049)
-* [[`e2bb2a2550`](https://github.com/nodejs/node/commit/e2bb2a2550)] - **tools**: fix release script on macOS 10.12 (Evan Lucas) [#8824](https://github.com/nodejs/node/pull/8824)
-* [[`8b85d47112`](https://github.com/nodejs/node/commit/8b85d47112)] - **tools**: use long format for gpg fingerprint (Myles Borins) [#9258](https://github.com/nodejs/node/pull/9258)
-* [[`52a04bbfe2`](https://github.com/nodejs/node/commit/52a04bbfe2)] - **util**: use template strings (Alejandro Oviedo Garcia) [#9120](https://github.com/nodejs/node/pull/9120)
-* [[`7dc875c08a`](https://github.com/nodejs/node/commit/7dc875c08a)] - **v8**: update make-v8.sh to use git (Jaideep Bajwa) [#9393](https://github.com/nodejs/node/pull/9393)
+* [[`e2bb2a2550`](https://github.com/nodejs/node/commit/e2bb2a2550)] - **tools**: reparar script de lanzamiento en macOS 10.12 (Evan Lucas) [#8824](https://github.com/nodejs/node/pull/8824)
+* [[`8b85d47112`](https://github.com/nodejs/node/commit/8b85d47112)] - **tools**: usar formato largo para huella digital de gpg (Myles Borins) [#9258](https://github.com/nodejs/node/pull/9258)
+* [[`52a04bbfe2`](https://github.com/nodejs/node/commit/52a04bbfe2)] - **util**: usar strings modelo (Alejandro Oviedo Garcia) [#9120](https://github.com/nodejs/node/pull/9120)
+* [[`7dc875c08a`](https://github.com/nodejs/node/commit/7dc875c08a)] - **v8**: actualizar make-v8.sh para usar git (Jaideep Bajwa) [#9393](https://github.com/nodejs/node/pull/9393)
 
 <a id="6.9.1"></a>
 
-## 2016-10-19, Version 6.9.1 'Boron' (LTS), @thealphanerd
+## 2016-10-19, Versión 6.9.1 'Boron' (LTS), @thealphanerd
 
-### Notable changes
+### Cambios notables
 
 * **streams**: Fix a regression introduced in v6.8.0 in readable stream that caused unpipe to remove the wrong stream (Anna Henningsen)
 
