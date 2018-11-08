@@ -2922,33 +2922,33 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`c947d448da`](https://github.com/nodejs/node/commit/c947d448da)] - **deps**: hacer cherry-pick a 0e14baf712 desde upstream de V8 (Rod Vagg) [nodejs/node-private#80](https://github.com/nodejs/node-private/pull/80)
 * [[`647afe9d9a`](https://github.com/nodejs/node/commit/647afe9d9a)] - **inspector**: generar UUID para objetivos de depuración (Eugene Ostroukhov) [nodejs/node-private#79](https://github.com/nodejs/node-private/pull/79)
 * [[`1ea0358a91`](https://github.com/nodejs/node/commit/1ea0358a91)] - **node**: argumento de cli de --openssl-config (Fedor Indutny) [nodejs/node-private#78](https://github.com/nodejs/node-private/pull/78)
-* [[`455272ad33`](https://github.com/nodejs/node/commit/455272ad33)] - **(SEMVER-MINOR)** **src**: add process.release.lts property (Rod Vagg) [#3212](https://github.com/nodejs/node/pull/3212)
-* [[`9ace073949`](https://github.com/nodejs/node/commit/9ace073949)] - **win,build**: try multiple timeservers when signing (Rod Vagg) [#9155](https://github.com/nodejs/node/pull/9155)
+* [[`455272ad33`](https://github.com/nodejs/node/commit/455272ad33)] - **(SEMVER-MINOR)** **src**: añadir propiedad de process.release.lts (Rod Vagg) [#3212](https://github.com/nodejs/node/pull/3212)
+* [[`9ace073949`](https://github.com/nodejs/node/commit/9ace073949)] - **win,build**: intentar múltiples servidores de tiempo al firmar (Rod Vagg) [#9155](https://github.com/nodejs/node/pull/9155)
 
 <a id="6.8.1"></a>
 
-## 2016-10-14, Version 6.8.1 (Current), @evanlucas
+## 2016-10-14, Versión 6.8.1 (Current), @evanlucas
 
-### Notable changes
+### Cambios notables
 
-* **build**: Fix building with shared zlib. (Bradley T. Hughes) [#9077](https://github.com/nodejs/node/pull/9077)
-* **stream**: Fix regression in `stream.Writable` subclass `instanceof` checks. (Anna Henningsen) [#9088](https://github.com/nodejs/node/pull/9088)
-* **timers**: Fix regression where immediates that are cleared in the callback would never be called. (Brian White) [#9086](https://github.com/nodejs/node/pull/9086)
+* **build**: Reparar compilación con zlib compartido. (Bradley T. Hughes) [#9077](https://github.com/nodejs/node/pull/9077)
+* **stream**: Arreglar regresión en chequeos de `instanceof` de subclase de `stream.Writable`. (Anna Henningsen) [#9088](https://github.com/nodejs/node/pull/9088)
+* **timers**: Arreglar regresión donde inmediatos que estén borrados en el callback nunca serían llamados. (Brian White) [#9086](https://github.com/nodejs/node/pull/9086)
 
 ### Commits
 
-* [[`8d2206fe41`](https://github.com/nodejs/node/commit/8d2206fe41)] - **build**: add -DZLIB_CONST when building with --shared-zlib (Bradley T. Hughes) [#9077](https://github.com/nodejs/node/pull/9077)
-* [[`8c4fab0a28`](https://github.com/nodejs/node/commit/8c4fab0a28)] - **stream**: fix `Writable` subclass instanceof checks (Anna Henningsen) [#9088](https://github.com/nodejs/node/pull/9088)
-* [[`7171bd6311`](https://github.com/nodejs/node/commit/7171bd6311)] - **timers**: fix regression with clearImmediate() (Brian White) [#9086](https://github.com/nodejs/node/pull/9086)
+* [[`8d2206fe41`](https://github.com/nodejs/node/commit/8d2206fe41)] - **build**: añadir -DZLIB_CONST cuando se construya con --shared-zlib (Bradley T. Hughes) [#9077](https://github.com/nodejs/node/pull/9077)
+* [[`8c4fab0a28`](https://github.com/nodejs/node/commit/8c4fab0a28)] - **stream**: reparar chequeos de instanceof de subclase de `Writable` (Anna Henningsen) [#9088](https://github.com/nodejs/node/pull/9088)
+* [[`7171bd6311`](https://github.com/nodejs/node/commit/7171bd6311)] - **timers**: arreglar regresión con clearImmediate() (Brian White) [#9086](https://github.com/nodejs/node/pull/9086)
 
 <a id="6.8.0"></a>
 
-## 2016-10-12, Version 6.8.0 (Current), @Fishrock123
+## 2016-10-12, Versión 6.8.0 (Current), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
 * **fs**: 
-  * `SyncWriteStream` now inherits from `Stream.Writable`. (Anna Henningsen) [#8830](https://github.com/nodejs/node/pull/8830) 
+  * `SyncWriteStream` ahora hereda de `Stream.Writable`. (Anna Henningsen) [#8830](https://github.com/nodejs/node/pull/8830) 
     * Practically, this means that when stdio is piped to a file, stdout and stderr will still be `Writable` streams.
   * `fs.existsSync()` has been undeprecated. `fs.exists()` remains deprecated. (Dan Fabulich) [#8364](https://github.com/nodejs/node/pull/8364)
 * **http**: `http.request()` now accepts a `timeout` option. (Rene Weber) [#8101](https://github.com/nodejs/node/pull/8101)
