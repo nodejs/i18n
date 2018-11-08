@@ -6,7 +6,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server basati in stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e per i client ([` net.createConnection()`] []).
+Il modulo di `rete` fornisce un'API di rete asincrona per la creazione dei server basati in stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e per i client ([` net.createConnection()`] []).
 
 Ci si può accedere usando:
 
@@ -16,7 +16,7 @@ const net = require('net');
 
 ## Supporto IPC
 
-Il modulo `net` supporta IPC con pipe denominate su Windows e i socket di dominio UNIX su altri sistemi operativi.
+Il modulo di `rete` supporta IPC con pipe denominate su Windows e i socket di dominio UNIX su altri sistemi operativi.
 
 ### Identificazione dei percorsi per le connessioni IPC
 
