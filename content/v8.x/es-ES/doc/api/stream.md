@@ -159,7 +159,7 @@ added: v0.9.4
 
 El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
-Not all Writable streams will emit the `'close'` event.
+No todos los streams Escribibles emitirán el evento `'close'`.
 
 ##### Event: 'drain'
 
