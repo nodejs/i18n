@@ -1269,7 +1269,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **crypto**: 
   * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede conducir a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
   * Actualizar los certificados raíz de la lista actual almacenada mantenida por Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
-  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una nuevo string solo separado. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
+  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una sola string separada de nueva línea. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
 * **tools**: Incluir un procesador tick en el núcleo, expuesto a través del argumento de la línea de comando `--prof-process` que puede ser usado para procesar archivos de salida de perfilado V8 generados usando el argumento de línea de comando `--prof`. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
 
 ### Problemas conocidos
@@ -1288,7 +1288,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: mover a checkFloat de lib para src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
 * [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: añadir opciones de compilación "--partly-static" (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
 * [[`a76d788119`](https://github.com/nodejs/node/commit/a76d788119)] - **build**: actualizar la descripción de signtool, añadir url (Rod Vagg) [#4011](https://github.com/nodejs/node/pull/4011)
-* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: añadir soporte de perfilado Intel Vtune (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
+* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: añadir soporte de perfilaje Intel Vtune (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
 * [[`7793c364fc`](https://github.com/nodejs/node/commit/7793c364fc)] - **child_process**: limpiar a los streams que estén consumiendo (Dave) [#4071](https://github.com/nodejs/node/pull/4071)
 * [[`f29c5d6e70`](https://github.com/nodejs/node/commit/f29c5d6e70)] - **configure**: `v8_use_snapshot` debería ser `true` (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962)
 * [[`da5ac55c83`](https://github.com/nodejs/node/commit/da5ac55c83)] - **(SEMVER-MINOR)** **crypto**: simplificar el uso de las claves preexistentes con ECDH (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511)
@@ -1301,7 +1301,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`634c5f1f81`](https://github.com/nodejs/node/commit/634c5f1f81)] - **doc**: url.format - true slash postfix behaviour (fansworld-claudio) [#4119](https://github.com/nodejs/node/pull/4119)
 * [[`6f957a70d8`](https://github.com/nodejs/node/commit/6f957a70d8)] - **doc**: s/node.js/Node.js en readme (Rod Vagg) [#3998](https://github.com/nodejs/node/pull/3998)
 * [[`0cd4a52392`](https://github.com/nodejs/node/commit/0cd4a52392)] - **doc**: mejorar la redacción de child_process.markdown (yorkie) [#4138](https://github.com/nodejs/node/pull/4138)
-* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: añadir a JungMinu a los colaboradores collaborators (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
+* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: añadir a JungMinu a los colaboradores (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
 * [[`fa0cdf75d9`](https://github.com/nodejs/node/commit/fa0cdf75d9)] - **doc**: add iarna to collaborators (Rebecca Turner) [#4144](https://github.com/nodejs/node/pull/4144)
 * [[`424eb962b1`](https://github.com/nodejs/node/commit/424eb962b1)] - **doc**: add zkat to collaborators (Kat Marchán) [#4142](https://github.com/nodejs/node/pull/4142)
 * [[`85b601224b`](https://github.com/nodejs/node/commit/85b601224b)] - **doc**: add HTTP working group (James M Snell) [#3919](https://github.com/nodejs/node/pull/3919)
