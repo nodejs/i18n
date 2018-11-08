@@ -171,7 +171,7 @@ Si una llamanda a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_
 
 ```js
 // Escribe los datos en el stream escribible suministrado un millón de veces.
-// Be attentive to back-pressure.
+// Esté atento a la contrapresión.
 function writeOneMillionTimes(writer, data, encoding, callback) {
   let i = 1000000;
   write();
