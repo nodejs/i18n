@@ -36,7 +36,7 @@ server.on('stream', (stream, headers) => {
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Hello World</h1>');
+  stream.end('<h1>Ola mundo</h1>');
 });
 
 server.listen(8443);
@@ -217,8 +217,8 @@ session.on('stream', (stream, headers, flags) => {
     ':status': 200,
     'content-type': 'text/plain'
   });
-  stream.write('hello ');
-  stream.end('world');
+  stream.write('ola ');
+  stream.end('mundo');
 });
 ```
 
@@ -235,7 +235,7 @@ server.on('stream', (stream, headers) => {
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Hello World</h1>');
+  stream.end('<h1>Ola mundo</h1>');
 });
 
 server.listen(80);
@@ -867,7 +867,7 @@ const client = http2.connect('http://example.org:8000');
 const { NGHTTP2_CANCEL } = http2.constants;
 const req = client.request({ ':path': '/' });
 
-// Cancel the stream if there's no activity after 5 seconds
+// Cancela o stream se não tiver atividade após 5 segundos
 req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 ```
 
