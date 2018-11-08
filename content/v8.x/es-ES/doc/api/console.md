@@ -1,8 +1,8 @@
-# Console
+# Consola
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 El módulo de `console` proporciona una consola de depuración simple que es similar al mecanismo de consola JavaScript proporcionado por los navegadores web.
 
@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La clase `Console` se puede utilizar para crear un registrador simple con flujos de salida configurables y se puede acceder a ella utilizando `require('console').Console` o `console.Console` (o sus contrapartes desestructuradas):
 
 ```js
 const { Console } = require('console');
@@ -113,7 +113,7 @@ console.assert(false, 'Whoops %s', 'didn\'t work');
 // AssertionError: Whoops didn't work
 ```
 
-*Note*: The `console.assert()` method is implemented differently in Node.js than the `console.assert()` method [available in browsers](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).
+*Nota*: El método `console.assert()` se implementa de forma diferente en Node.js que el método `console.assert()` [disponible en los navegadores](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).
 
 Específicamente, en los navegadores, llamar `console.assert()` con una aserción falsa hará que el `mensaje` se imprima en la consola sin interrumpir la ejecución del código subsiguiente. En Node.js, sin embargo, una aserción falsa causará que un `AssertionError` sea lanzado.
 
@@ -231,7 +231,7 @@ added: v8.0.0
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+La función `console.debug()` es un alias para [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -282,9 +282,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Aumenta la sangría de las líneas siguientes en dos espacios.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Si se proporcionan una o más `identificaciones`, éstas se imprimen primero sin la sangría adicional.
 
 ### console.groupCollapsed()
 
@@ -292,7 +292,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias para [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -300,7 +300,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Disminuye la sangría de las líneas siguientes en dos espacios.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -342,7 +342,7 @@ added: v0.1.104
 
 * `identificación` {string}
 
-Inicia un temporizador que puede utilizarse para calcular la duración de una operación. Los temporizadores se identifican mediante una `identificación` única. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Las duraciones del temporizador son precisas en menos de un milisegundo.
+Inicia un temporizador que puede utilizarse para calcular la duración de una operación. Los temporizadores se identifican mediante una `identificación` única. Utilice la misma `identificación` cuando llame a [`console.timeEnd()`][] para detener el temporizador y enviar el tiempo transcurrido en milisegundos a `stdout`. Las duraciones del temporizador son precisas en menos de un milisegundo.
 
 ### console.timeEnd(label)
 
