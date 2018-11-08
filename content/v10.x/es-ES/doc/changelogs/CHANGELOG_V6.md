@@ -2949,10 +2949,10 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 
 * **fs**: 
   * `SyncWriteStream` ahora hereda de `Stream.Writable`. (Anna Henningsen) [#8830](https://github.com/nodejs/node/pull/8830) 
-    * Practically, this means that when stdio is piped to a file, stdout and stderr will still be `Writable` streams.
-  * `fs.existsSync()` has been undeprecated. `fs.exists()` remains deprecated. (Dan Fabulich) [#8364](https://github.com/nodejs/node/pull/8364)
-* **http**: `http.request()` now accepts a `timeout` option. (Rene Weber) [#8101](https://github.com/nodejs/node/pull/8101)
-* **module**: The module loader now maintains its own realpath cache. (Anna Henningsen) [#8100](https://github.com/nodejs/node/pull/8100)
+    * Prácticamente, esto significa que cuando stdio esté canalizado a un archivo, stdout y stderr seguirán siendo streams `Writable`.
+  * `fs.existsSync()` ya no está desaprobado. `fs.exists()` continúa desaprobado. (Dan Fabulich) [#8364](https://github.com/nodejs/node/pull/8364)
+* **http**: `http.request()` ahora acepta una opción de `timeout`. (Rene Weber) [#8101](https://github.com/nodejs/node/pull/8101)
+* **module**: El cargador de módulo ahora mantiene su propia caché de realpath. (Anna Henningsen) [#8100](https://github.com/nodejs/node/pull/8100)
 * **npm**: Upgraded to 3.10.8 (Kat Marchán) [#8706](https://github.com/nodejs/node/pull/8706)
 * **stream**: `Duplex` streams now show proper `instanceof Stream.Writable`. (Anna Henningsen) [#8834](https://github.com/nodejs/node/pull/8834)
 * **timers**: Improved `setTimeout`/`Interval` performance by up to 22%. (Brian White) [#8661](https://github.com/nodejs/node/pull/8661)
