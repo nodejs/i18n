@@ -256,7 +256,7 @@ added: v0.9.4
 
 * `src` {stream.Readable} The source stream that [unpiped][`stream.unpipe()`] this writable
 
-The `'unpipe'` event is emitted when the [`stream.unpipe()`][] method is called on a [Readable](#stream_class_stream_readable) stream, removing this [Writable](#stream_class_stream_writable) from its set of destinations.
+El evento de `'unpipe'` se emite cuando el método [`stream.unpipe()`][] se llama en un stream [Legible](#stream_class_stream_readable), eliminando este [Escribible](#stream_class_stream_writable) de su conjunto de destinos.
 
 ```js
 const writer = getWritableStreamSomehow();
