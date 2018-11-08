@@ -93,7 +93,7 @@ setImmediate(() => {
 
 Gli errori generati in questo modo *non possono* essere intercettati usando `try / catch` poiché sono generati *dopo* che il codice chiamante è già stato terminato.
 
-Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
+Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per determinare esattamente in che modo vengono propagati gli errori creati da questi metodi.
 
 ### Error-first callbacks
 
