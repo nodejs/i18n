@@ -180,7 +180,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
     do {
       i--;
       if (i === 0) {
-        // last time!
+        // ¡última vez!
         writer.write(data, encoding, callback);
       } else {
         // see if we should continue, or wait
