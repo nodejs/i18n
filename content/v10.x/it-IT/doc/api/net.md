@@ -26,7 +26,7 @@ Su UNIX, il dominio locale è anche noto come il dominio UNIX. Il percorso è un
 
 Su Windows, il dominio locale viene implementato utilizzando una pipe denominata. Il percorso *deve* fare riferimento a un accesso in `\\?\pipe` o `\\.\ pipe`. Qualsiasi carattere è permesso, ma quest'ultimo potrebbe eseguire alcuni processi di denominazione di pipe, come la risoluzione di `..` sequenze. Nonostante quello che potrebbe sembrare, lo spazio dei nomi della pipe è piatto. Le pipe *non perdureranno*. Vengono rimossi quando viene chiuso l'ultimo riferimento ad esse. A differenza dei socket di dominio UNIX, Windows chiuderà e rimuoverà la pipe quando si chiude il processo di proprietà.
 
-JavaScript string escaping requires paths to be specified with extra backslash escaping such as:
+L'escaping della stringa JavaScript richiede che i percorsi siano specificati con una barra rovesciata extra di escaping come:
 
 ```js
 net.createServer().listen(
@@ -39,13 +39,13 @@ net.createServer().listen(
 added: v0.1.90
 -->
 
-This class is used to create a TCP or [IPC](#net_ipc_support) server.
+Questa classe viene utilizzata per creare un server TCP o [IPC](#net_ipc_support).
 
 ### new net.Server(\[options\]\[, connectionListener\])
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
+Vedi [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
