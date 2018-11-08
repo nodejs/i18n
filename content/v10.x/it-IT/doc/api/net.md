@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 Il numero di connessioni simultanee sul server.
 
-Questo diventa `null` quando si invia un socket a un figlio con [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+Questo diventa `null` quando si invia un socket a un figlio con [`child_process.fork()`][]. Per effettuare il polling dei fork e ottenere il numero corrente di connessioni attive, utilizza invece (la funzione) asincrona [`server.getConnections()`][].
 
 ### server.getConnections(callback)
 
@@ -144,15 +144,15 @@ Questo diventa `null` quando si invia un socket a un figlio con [`child_process.
 added: v0.9.7
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
+Assegnare asincronicamente il numero di connessioni simultanee sul server. Funziona quando i socket sono stati inviati ai fork.
 
-Callback should take two arguments `err` and `count`.
+La callback dovrebbe prendere due argomenti `err` e `count`.
 
 ### server.listen()
 
-Start a server listening for connections. A `net.Server` can be a TCP or an [IPC](#net_ipc_support) server depending on what it listens to.
+Avvia un server che ascolta le connessioni. A `net.Server` can be a TCP or an [IPC](#net_ipc_support) server depending on what it listens to.
 
 Possible signatures:
 
