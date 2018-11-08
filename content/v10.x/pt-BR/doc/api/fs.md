@@ -419,7 +419,7 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a file system directory.
 
@@ -429,7 +429,7 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
 
@@ -439,7 +439,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -449,7 +449,7 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a socket.
 
@@ -459,7 +459,7 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
