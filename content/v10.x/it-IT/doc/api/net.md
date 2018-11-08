@@ -169,7 +169,7 @@ Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [ socket (7)](http
 
 Il metodo `server.listen()` può essere chiamato di nuovo se e solo se ci fosse un errore durante la prima chiamata di `server.listen()` o di ` server.close()` è stata chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
 
-Uno degli errori più comuni generati durante "l'ascolto" è `EADDRINUSE`. Ciò accade quando un altro server sta già "ascoltando" sulla/o `port` / `path` / `handle` richiesto. One way to handle this would be to retry after a certain amount of time:
+Uno degli errori più comuni generati durante "l'ascolto" è `EADDRINUSE`. Ciò accade quando un altro server sta già "ascoltando" sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe riprovare dopo un certo periodo di tempo:
 
 ```js
 server.on('error', (e) => {
@@ -190,7 +190,7 @@ added: v0.5.10
 -->
 
 * `handle` {Object}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][]
 * `callback` {Function} Common parameter of [`server.listen()`][] functions
 * Returns: {net.Server}
 
