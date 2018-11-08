@@ -2161,17 +2161,17 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 <a id="8.3.0"></a>
 
-## 2017-08-09, Version 8.3.0 (Current), @addaleax
+## 2017-08-09, Versión 8.3.0 (Presente), @addaleax
 
-### Notable changes
+### Cambios Notables
 
 #### V8 6.0
 
-The V8 engine has been upgraded to version 6.0, which has a significantly changed performance profile. [#14574](https://github.com/nodejs/node/pull/14574)
+El motor V8 se ha actualizado a la versión 6.0, que tiene un perfil de rendimiento significativamente modificado. [#14574](https://github.com/nodejs/node/pull/14574)
 
-More detailed information on performance differences can be found at https://medium.com/the-node-js-collection/get-ready-a-new-v8-is-coming-node-js-performance-is-changing-46a63d6da4de
+Puede encontrar información más detallada sobre las diferencias de rendimiento en https://medium.com/the-node-js-collection/get-ready-a-new-v8-is-coming-node-js-performance-is-changing-46a63d6da4de
 
-#### Other notable changes
+#### Otros cambios notables
 
 * **DNS**
   
