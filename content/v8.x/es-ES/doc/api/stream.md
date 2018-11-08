@@ -16,7 +16,7 @@ Se puede acceder al módulo `stream` utilizando:
 const stream = require('stream');
 ```
 
-Mientras es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
+Aunque es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
 ## Organización de este Documento
 
@@ -78,7 +78,7 @@ const server = http.createServer((req, res) => {
     body += chunk;
   });
 
-  // el evento final indica que todo el cuerpo se ha recibido
+  // el evento del final indica que todo el cuerpo se ha recibido
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
