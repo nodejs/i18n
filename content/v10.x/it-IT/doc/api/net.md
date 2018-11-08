@@ -260,7 +260,7 @@ Se la `porta` è omessa o è 0, il sistema operativo assegnerà arbitrariamente 
 
 Se l'`host` viene omesso, il server accetterà connessioni su un [indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) quando IPv6 è disponibile, oppure [l'indirizzo IPv4 non specificato ](https://en.wikipedia.org/wiki/0.0.0.0) o altrimenti su (` 0.0.0.0 `).
 
-Nella maggior parte dei sistemi operativi, "ascoltare" [l'indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) potrebbe fare in modo che `net.Server ` ascolti anche sull'indirizzo IPv4 [non specificato](https://en.wikipedia.org/wiki/0.0.0.0) (` 0.0.0.0 `).
+Nella maggior parte dei sistemi operativi, eseguire il listening per [l'indirizzo IPv6 non specificato](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) può portare anche il `net.Server` ad eseguire i listening sull' [indirizzo IPv4 non specificato](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
 ### server.listening
 
@@ -270,7 +270,7 @@ added: v5.7.0
 
 * {boolean} Indica se il server "sta ascoltando" o meno le connessioni.
 
-### massime connessioni del server
+### server.maxConnections
 
 <!-- YAML
 added: v0.2.0
