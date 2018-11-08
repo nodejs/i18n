@@ -2889,22 +2889,22 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 
 ### Cambios notables
 
-* **streams**: Fix a regression introduced in v6.8.0 in readable stream that caused unpipe to remove the wrong stream (Anna Henningsen)
+* **streams**: Corregir una regresión introducida en v6.8.0 en stream legible que causó que unpipe removiera el stream equivocado (Anna Henningsen)
 
 ### Commits
 
-* [[`2c3bbb576c`](https://github.com/nodejs/node/commit/2c3bbb576c)] - **doc**: fix changelog index for v6.9.0 (Rod Vagg) [#9168](https://github.com/nodejs/node/pull/9168)
-* [[`f4b766f5b7`](https://github.com/nodejs/node/commit/f4b766f5b7)] - **streams**: fix regression in `unpipe()` (Anna Henningsen) [#9171](https://github.com/nodejs/node/pull/9171)
-* [[`6072326009`](https://github.com/nodejs/node/commit/6072326009)] - **test**: add regression test for `unpipe()` (Niels Nielsen) [#9171](https://github.com/nodejs/node/pull/9171)
-* [[`9f248a4d83`](https://github.com/nodejs/node/commit/9f248a4d83)] - **tools**: check tag is on github before release (Rod Vagg) [#9142](https://github.com/nodejs/node/pull/9142)
-* [[`c74d3a700a`](https://github.com/nodejs/node/commit/c74d3a700a)] - **tools**: make detached SHASUM .sig file for releases (Rod Vagg) [#9071](https://github.com/nodejs/node/pull/9071)
-* [[`955bbf876f`](https://github.com/nodejs/node/commit/955bbf876f)] - **tools**: explicitly set digest algo for SHASUM to 256 (Rod Vagg) [#9071](https://github.com/nodejs/node/pull/9071)
+* [[`2c3bbb576c`](https://github.com/nodejs/node/commit/2c3bbb576c)] - **doc**: arreglar índice de registro de cambios para v6.9.0 (Rod Vagg) [#9168](https://github.com/nodejs/node/pull/9168)
+* [[`f4b766f5b7`](https://github.com/nodejs/node/commit/f4b766f5b7)] - **streams**: corregir regresión en `unpipe()` (Anna Henningsen) [#9171](https://github.com/nodejs/node/pull/9171)
+* [[`6072326009`](https://github.com/nodejs/node/commit/6072326009)] - **test**: añadir prueba de regresión para `unpipe()` (Niels Nielsen) [#9171](https://github.com/nodejs/node/pull/9171)
+* [[`9f248a4d83`](https://github.com/nodejs/node/commit/9f248a4d83)] - **tools**: chequear si etiqueta está en github antes del lanzamiento (Rod Vagg) [#9142](https://github.com/nodejs/node/pull/9142)
+* [[`c74d3a700a`](https://github.com/nodejs/node/commit/c74d3a700a)] - **tools**: hacer archivo .sig de SHASUM desprendido para lanzamientos (Rod Vagg) [#9071](https://github.com/nodejs/node/pull/9071)
+* [[`955bbf876f`](https://github.com/nodejs/node/commit/955bbf876f)] - **tools**: establecer explícitamente algoritmo de digestión para SHASUM a 256 (Rod Vagg) [#9071](https://github.com/nodejs/node/pull/9071)
 
 <a id="6.9.0"></a>
 
-## 2016-10-18, Version 6.9.0 'Boron' (LTS), @rvagg
+## 2016-10-18, Versión 6.9.0 'Boron' (LTS), @rvagg
 
-This release marks the transition of Node.js v6 into Long Term Support (LTS) with the codename 'Boron'. The v6 release line now moves in to "Active LTS" and will remain so until April 2018. After that time it will move in to "Maintenance" until end of life in April 2019.
+Esta actualización marca la transición de Node.js v6 a Soporte de Largo Plazo (LTS por sus siglas en inglés) con el nombre clave de 'Boron'. La línea de actualizaciones de v6 ahora se mueve a "LTS Activo" y seguirá allí hasta Abril de 2018. After that time it will move in to "Maintenance" until end of life in April 2019.
 
 This is also a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
