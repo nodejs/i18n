@@ -167,9 +167,9 @@ Tutti i metodi di `listen()` possono prendere un parametro `backlog` per specifi
 
 Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html)per i dettagli).
 
-Il metodo `server.listen()` può essere chiamato di nuovo se e solo se ci fosse un errore durante la prima chiamata di `server.listen()` o di ` server.close()` è stata chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
+Il metodo `server.listen()` può essere chiamato ancora se e solo se c'è stato un errore durante la prima chiamata `server.listen()` o se il `server.close()` è stato chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
 
-Uno degli errori più comuni generati durante "l'ascolto" è `EADDRINUSE`. Ciò accade quando un altro server sta già eseguendo il listening sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe riprovare dopo un certo periodo di tempo:
+Uno degli errori più comuni generati durante il listening è `EADDRINUSE`. Ciò accade quando un altro server sta già eseguendo il listening sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe quello di riprovare dopo un certo periodo di tempo:
 
 ```js
 server.on('error', (e) => {
