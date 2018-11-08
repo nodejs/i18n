@@ -172,7 +172,7 @@ added: v8.3.0
 
 * `identificación` {string} La identificación de la pantalla para el contador. Por defecto es `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Mantiene un contador interno específico para la `identificación` y `stdout` a la salida el número de veces que se ha llamado a `console.count()` con la `identificación` dada.
 
 <!-- eslint-skip -->
 
