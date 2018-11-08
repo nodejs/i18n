@@ -167,7 +167,7 @@ No todos los streams Escribibles emitirán el evento `'close'`.
 added: v0.9.4
 -->
 
-Si una llamanda a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
+Si una llamanda a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento de `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
 
 ```js
 // Escribe los datos en el stream escribible suministrado un millón de veces.
@@ -205,9 +205,9 @@ added: v0.9.4
 
 * {Error}
 
-The `'error'` event is emitted if an error occurred while writing or piping data. The listener callback is passed a single `Error` argument when called.
+El evento de `'error'` se emite si un error se produjo mientras se escribían o canalizaban datos. El callback listener pasa un solo argumento de `Error` cuando se llama.
 
-*Note*: The stream is not closed when the `'error'` event is emitted.
+*Nota*: El stream no está cerrado cuando se emite el evento de `'error'`.
 
 ##### Event: 'finish'
 
