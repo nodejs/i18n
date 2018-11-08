@@ -35,23 +35,23 @@ const out = getStreamSomehow();
 const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
-myConsole.log('hello world');
-// Prints: hello world, to out
-myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
-myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+myConsole.log('hola mundo');
+// Prints: hola mundo, to out
+myConsole.log('hola %s', 'mundo');
+// Prints: hola mundo, to out
+myConsole.error(new Error('Whoops, algo malo pasó'));
+// Prints: [Error: Whoops, algo malo pasó], to err
 
 const name = 'Will Robinson';
-myConsole.warn(`Danger ${name}! Peligro!`);
-// Prints: ¡Peligro Will Robinson! Danger!, to err
+myConsole.warn(`Peligro ${name}! Peligro!`);
+// Prints: ¡Peligro Will Robinson! Peligro!, to err
 ```
 
-## Class: Console
+## Clase: Consola
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console`:
+La clase `Console` se puede utilizar para crear un logger simple con flujos de salida configurables y se puede acceder a ella utilizando `require('console').Console` o `console.Console`:
 
 ```js
 const Console = require('console').Console;
@@ -63,7 +63,7 @@ const Console = console.Console;
 
 ### new Console(stdout[, stderr])
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crea una nueva `Console` con una o dos instancias de secuencia grabables. `stdout` es una secuencia de escritura para imprimir el registro o la salida de información. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
