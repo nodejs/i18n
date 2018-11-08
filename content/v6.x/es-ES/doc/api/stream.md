@@ -215,7 +215,7 @@ El evento de `'error'` se emite si un error se produjo mientras se escribían o 
 added: v0.9.4
 -->
 
-The `'finish'` event is emitted after the [`stream.end()`](#stream_writable_end_chunk_encoding_callback) method has been called, and all data has been flushed to the underlying system.
+El evento de `'finish'` se emite después de que el método [`stream.end()`](#stream_writable_end_chunk_encoding_callback) se haya llamado, y todos los datos hayan sido vaciados en el sistema subyacente.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -228,7 +228,7 @@ writer.on('finish', () => {
 });
 ```
 
-##### Event: 'pipe'
+##### Evento: 'pipe'
 
 <!-- YAML
 added: v0.9.4
