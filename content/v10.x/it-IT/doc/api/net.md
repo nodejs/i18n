@@ -258,9 +258,9 @@ Avvia un server TCP che ascolti le connessioni sulla `port` e sull' `host`.
 
 Se la `port` è omessa o è 0, il sistema operativo assegnerà arbitrariamente una porta non utilizzata, che può essere recuperata usando ` server.address (). port` dopo che è stato emesso l'evento [`'listening' `][].
 
-If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
+Se viene omesso l'`host`, il server accetterà connessioni su un [indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) quando IPv6 è disponibile, oppure [l'indirizzo IPv4 non specificato ](https://en.wikipedia.org/wiki/0.0.0.0) altrimenti su (` 0.0.0.0 `).
 
-In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
+Nella maggior parte dei sistemi operativi, "ascoltare" [l'indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) potrebbe fare in modo che `net.Server ` ascolti anche sull'indirizzo IPv4 [non specificato](https://en.wikipedia.org/wiki/0.0.0.0) (` 0.0.0.0 `).
 
 ### server.listening
 
@@ -268,17 +268,17 @@ In most operating systems, listening to the [unspecified IPv6 address](https://e
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Indica se il server "sta ascoltando" o meno le connessioni.
 
-### server.maxConnections
+### massime connessioni del server
 
 <!-- YAML
 added: v0.2.0
 -->
 
-Set this property to reject connections when the server's connection count gets high.
+Imposta questa proprietà per rifiutare le connessioni quando si ottiene un conteggio elevato delle connessioni del server.
 
-It is not recommended to use this option once a socket has been sent to a child with [`child_process.fork()`][].
+Non è consigliabile utilizzare questa opzione una volta che un socket è stato inviato a un figlio con [`child_process.fork()`][].
 
 ### server.ref()
 
@@ -286,7 +286,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
