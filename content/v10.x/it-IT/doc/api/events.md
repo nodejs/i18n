@@ -73,7 +73,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Gestione degli eventi in una sola volta
 
-When a listener is registered using the `eventEmitter.on()` method, that listener will be invoked *every time* the named event is emitted.
+Nel momento in cui un listener viene registrato utilizzando il metodo `eventEmitter.on()`, quel listener verrà invocato *ogni volta* che l'evento con nome viene emesso.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -87,7 +87,7 @@ myEmitter.emit('event');
 // Prints: 2
 ```
 
-Using the `eventEmitter.once()` method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and *then* called.
+Utilizzando il metodo `eventEmitter.once()`, è possibile registrare un listener che venga chiamato al massimo una volta per un evento particolare. Once the event is emitted, the listener is unregistered and *then* called.
 
 ```js
 const myEmitter = new MyEmitter();
