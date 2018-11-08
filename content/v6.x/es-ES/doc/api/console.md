@@ -11,24 +11,24 @@ El módulo exporta dos componentes específicos:
 * Una clase de `console` con métodos como `console.log()`, `console.error()` y `console.warn()` que pueden utilizarse para escribir en cualquier secuencia Node.js.
 * Una instancia de `console` global configurada para escribir en [`process.stdout`][] y [`process.stderr`][]. La `console` global puede ser utilizada sin necesidad de llamar `require('console')`.
 
-***Advertencia***: Los métodos de los objetos de la consola global no son consistentemente sincrónicos como las APIs del navegador a las que se asemejan, ni consistentemente asincrónicos como todas las otras secuencias de Node.js. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Advertencia***: Los métodos de los objetos de la consola global no son consistentemente sincrónicos como las APIs del navegador a las que se asemejan, ni consistentemente asincrónicos como todas las otras secuencias de Node.js. Consulte la [nota sobre I/O](process.html#process_a_note_on_process_i_o) de proceso para obtener más información.
 
-Example using the global `console`:
+Ejemplo usando la `console` global:
 
 ```js
-console.log('hello world');
-// Prints: hello world, to stdout
-console.log('hello %s', 'world');
-// Prints: hello world, to stdout
-console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+console.log('hola mundo');
+// Prints: hola mundo, to stdout
+console.log('hola %s', 'mundo');
+// Prints: hola mundo, a stdout
+console.error(new Error('Whoops, algo malo pasó'));
+// Prints: [Error: Whoops, algo malo pasó], a stderr
 
 const name = 'Will Robinson';
-console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+console.warn(`Peligro ${name}! Peligro!`);
+// Prints: ¡Peligro Will Robinson! Peligro!, a stderr
 ```
 
-Example using the `Console` class:
+Ejemplo utilizando la clase `Console`:
 
 ```js
 const out = getStreamSomehow();
@@ -43,8 +43,8 @@ myConsole.error(new Error('Whoops, something bad happened'));
 // Prints: [Error: Whoops, something bad happened], to err
 
 const name = 'Will Robinson';
-myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+myConsole.warn(`Danger ${name}! Peligro!`);
+// Prints: ¡Peligro Will Robinson! Danger!, to err
 ```
 
 ## Class: Console
