@@ -701,7 +701,7 @@ added: v0.11.14
 - `encoding` {string}
 - Devuelve: {Buffer | string} La clave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-### ecdh.getPublicKey(\[encoding\]\[, format\])
+### ecdh.getPublicKey(\[encoding\]\[, formato\])
 
 <!-- YAML
 added: v0.11.14
