@@ -345,7 +345,7 @@ process.nextTick(() => {
 });
 ```
 
-See also: [`writable.cork()`][].
+Vea también: [`writable.cork()`][].
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
 
