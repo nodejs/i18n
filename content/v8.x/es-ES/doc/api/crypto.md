@@ -442,7 +442,7 @@ added: v0.5.0
 
 - `encoding` {string}
 
-Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Se regresa una string si el `encoding` es dado, sino un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -483,7 +483,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave privada Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada Diffie-Hellman. Se espera que la `privateKey` sea una string si el argumento `encoding` es dado y es `'latin1'`, `'hex'`, o `'base64'`. De lo contrario, la `privateKey` sera un [`Buffer`][], `TypedArray` o `DataView` si no es dado el `encoding`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -494,7 +494,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave pública Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave pública Diffie-Hellman. Se espera que la`publicKey` sea una string si el argumento `encoding` es dado y es un `'latin1'`, `'hex'` or`'base64'`. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 ### diffieHellman.verifyError
 
