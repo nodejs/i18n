@@ -1909,7 +1909,7 @@ added: v10.0.0
 
 - `bool` {boolean} `true` para habilitar el modo FIPS.
 
-Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Throws an error if FIPS mode is not available.
+Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Produce un error si el modo FIPS no está disponible.
 
 ### crypto.timingSafeEqual(a, b)
 
@@ -1921,7 +1921,7 @@ added: v6.6.0
 - `b` {Buffer | TypedArray | DataView}
 - Devuelve: {boolean}
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función está basada en un algoritmo de tiempo constante. Devuelve true si `a` es igual a `b`, sin perder información de tiempo que le permita adivinar a un atacante uno de los valores. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
 
