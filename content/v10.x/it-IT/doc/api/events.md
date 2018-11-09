@@ -291,7 +291,7 @@ added: v1.0.0
 
 - Restituisce: {integer}
 
-Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
+Restituisce il valore corrente max di listener per l'`EventEmitter` che è impostato dall'[`emitter.setMaxListeners(n)`][] o di default in [`EventEmitter.defaultMaxListeners`][].
 
 ### emitter.listenerCount(eventName)
 
@@ -299,10 +299,10 @@ Returns the current max listener value for the `EventEmitter` which is either se
 added: v3.2.0
 -->
 
-- `eventName` {string|symbol} The name of the event being listened for
-- Returns: {integer}
+- `eventName`{string|symbol} Il nome dell'evento sottoposto al listening
+- Restituisce: {integer}
 
-Returns the number of listeners listening to the event named `eventName`.
+Restituisce il numero di listener sottoposti al listening dell'evento con nome `eventName`.
 
 ### emitter.listeners(eventName)
 
