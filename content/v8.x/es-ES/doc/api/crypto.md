@@ -1157,9 +1157,9 @@ changes:
                  from `binary` to `utf8`.
 -->
 
-- `prime` {string | Buffer | TypedArray | DataView}
+- `prime`{string | Buffer | TypedArray | DataView}
 - `primeEncoding` {string}
-- `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
+- `generator` {number | string | Buffer | TypedArray | DataView} Valores predeterminados de `2`.
 - `generatorEncoding` {string}
 
 Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
@@ -1179,7 +1179,7 @@ added: v0.5.0
 -->
 
 - `primeLength` {number}
-- `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
+- `generator` {number | string | Buffer | TypedArray | DataView} Valores predeterminados de `2`.
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. El valor `2<code> será usado si <0>generator` no es especificado.
 
