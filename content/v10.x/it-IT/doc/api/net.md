@@ -516,11 +516,11 @@ Per le connessioni IPC<0>, le `options` disponibili sono:</p>
 
 #### socket.connect(path[, connectListener])
 
-* `path` {string} Path the client should connect to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* `path` {string} Percorso a cui il client dovrebbe connettersi. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `connectListener`{Function} Parametro comune dei metodi [`server.listen()`][]. Verrà aggiunto una volta come un listener per l'evento [`'connect'`][].
+* Restituisce: {net.Socket} Il socket stesso.
 
-Initiate an [IPC](#net_ipc_support) connection on the given socket.
+Inizia una connessione [IPC](#net_ipc_support) sul socket indicato.
 
 Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{ path: path }` as `options`.
 
