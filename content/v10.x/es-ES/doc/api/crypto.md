@@ -1319,7 +1319,7 @@ changes:
                  from `binary` to `utf8`.
 -->
 
-- `prime` {string | Buffer | TypedArray | DataView}
+- `prime`{string | Buffer | TypedArray | DataView}
 - `primeEncoding` {string}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
