@@ -522,7 +522,7 @@ Per le connessioni IPC<0>, le `options` disponibili sono:</p>
 
 Inizia una connessione [IPC](#net_ipc_support) sul socket indicato.
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{ path: path }` as `options`.
+Pseudonimo per `socket.connect(options[, connectListener])`][`socket.connect(options)`] chiamati/e con`{ path: path }` come `options`.
 
 #### socket.connect(port\[, host\]\[, connectListener\])
 
@@ -530,14 +530,14 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 added: v0.1.90
 -->
 
-* `port` {number} Port the client should connect to.
-* `host` {string} Host the client should connect to.
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* `port` {number} Porta a cui il client dovrebbe connettersi.
+* `host` {string} Host a cui il client dovrebbe connettersi.
+* `connectListener`{Function} Parametro comune dei metodi [`server.listen()`][]. Verrà aggiunto una volta come un listener per l'evento [`'connect'`][].
+* Restituisce: {net.Socket} Il socket stesso.
 
-Initiate a TCP connection on the given socket.
+Inizia una connessione TPC sul socket indicato.
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{port: port, host: host}` as `options`.
+Pseudonimo per `socket.connect(options[, connectListener])`][`socket.connect(options)`] chiamati/e con`{port: port, host: host}` come `options`.
 
 ### socket.connecting
 
@@ -545,7 +545,7 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 added: v6.1.0
 -->
 
-If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] was called and haven't yet finished. Will be set to `false` before emitting `'connect'` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
+Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora finito. Will be set to `false` before emitting `'connect'` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
 
 ### socket.destroy([exception])
 
@@ -553,7 +553,7 @@ If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(optio
 added: v0.1.90
 -->
 
-* Returns: {net.Socket}
+* Restituisce: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
