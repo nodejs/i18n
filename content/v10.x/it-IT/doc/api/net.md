@@ -377,7 +377,7 @@ added: v0.1.90
 
 Emesso quando l'altra estremità del socket invia un pacchetto FIN, terminando così il lato leggibile del socket.
 
-By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
+Per impostazione predefinita (`allowHalfOpen` è `false`) il socket invierà un pacchetto FIN indietro e distruggerà il suo descrittore di file una volta che ha scritto la sua coda di scrittura in sospeso. Tuttavia, se `allowHalfOpen` è impostato su `true`, il socket non sarà automaticamente [`end ()`] [`socket.end()`] il suo lato scrivibile, consentendo all'utente di scrivere una quantità arbitraria di dati. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
 
 ### Event: 'error'
 
@@ -387,7 +387,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitted when an error occurs. The `'close'` event will be called directly following this event.
+Emesso quando si verifica un errore. The `'close'` event will be called directly following this event.
 
 ### Event: 'lookup'
 
