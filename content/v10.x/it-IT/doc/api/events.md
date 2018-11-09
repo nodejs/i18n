@@ -157,10 +157,10 @@ Il fatto che l'evento venga attivato prima dell'aggiunta del listener genera un 
 
 ```js
 const myEmitter = new MyEmitter();
-// Only do this once so we don't loop forever
+// Fallo solo una volta per non andare in loop 
 myEmitter.once('newListener', (event, listener) => {
   if (event === 'event') {
-    // Insert a new listener in front
+    // Aggiungi un nuovo listener prima 
     myEmitter.on('event', () => {
       console.log('B');
     });
@@ -170,7 +170,7 @@ myEmitter.on('event', () => {
   console.log('A');
 });
 myEmitter.emit('event');
-// Prints:
+// Stampa:
 //   B
 //   A
 ```
