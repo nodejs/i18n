@@ -298,7 +298,7 @@ changes:
 
 Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. Si se proporciona, la función `callback` opcional se adjunta como un listener para el evento de [`'finish'`][].
 
-Llamar al método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) producirá un error.
+Llamar al método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) levantará un error.
 
 ```js
 // escriba 'hello, ' y luego termine con 'world!'
