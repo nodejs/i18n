@@ -104,7 +104,7 @@ const server = net.createServer ((socket) => {
    socket.end('goodbye\n');
 }). on('error', (err) = > {
    // esegui l'handle degli errori qui
-   lancia err;
+   throw err;
 });
 
 // prendi una porta inutilizzata arbitraria.
@@ -561,7 +561,7 @@ Se `exception` è specificata, verrà emesso un evento [`'error'`][] e tutti i l
 
 ### socket.destroyed
 
-* {boolean} Indica se la connessione è stata distrutta o meno. Once a connection is destroyed no further data can be transferred using it.
+* {boolean} Indica se la connessione è stata distrutta o meno. Una volta che una connessione è stata distrutta, non è possibile trasferire ulteriori dati utilizzandola.
 
 ### socket.end(\[data\]\[, encoding\])
 
@@ -569,7 +569,7 @@ Se `exception` è specificata, verrà emesso un evento [`'error'`][] e tutti i l
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
 
