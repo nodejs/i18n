@@ -353,7 +353,7 @@ Vea también: [`writable.cork()`][].
 added: v0.9.4
 -->
 
-* `chunk` {string|Buffer} The data to write
+* `chunk` {string|Buffer} Los datos a escribir
 * `encoding` {string} La codificación, si `chunk` es un String
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
