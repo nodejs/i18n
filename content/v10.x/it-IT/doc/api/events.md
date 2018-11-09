@@ -317,16 +317,16 @@ changes:
 -->
 
 - `eventName` {string|symbol}
-- Returns: {Function[]}
+- Restituisce: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`.
+Restituisce una copia dell'array dei listener per l'evento con nome `eventName`.
 
 ```js
 server.on('connection', (stream) => {
   console.log('someone connected!');
 });
 console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
+// Stampa: [ [Function] ]
 ```
 
 ### emitter.off(eventName, listener)
@@ -337,9 +337,9 @@ added: v10.0.0
 
 - `eventName` {string|symbol}
 - `listener` {Function}
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
-Alias for [`emitter.removeListener()`][].
+Alias di [`emitter.removeListener()`][].
 
 ### emitter.on(eventName, listener)
 
@@ -347,9 +347,9 @@ Alias for [`emitter.removeListener()`][].
 added: v0.1.101
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
-- Returns: {EventEmitter}
+- `eventName` {string|symbol} Il nome dell'evento.
+- `listener` {Function} La funzione callback
+- Restituisce: {EventEmitter}
 
 Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -381,7 +381,7 @@ added: v0.3.0
 
 - `eventName` {string|symbol} The name of the event.
 - `listener` {Function} The callback function
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
@@ -413,7 +413,7 @@ added: v6.0.0
 
 - `eventName` {string|symbol} The name of the event.
 - `listener` {Function} The callback function
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -433,7 +433,7 @@ added: v6.0.0
 
 - `eventName` {string|symbol} The name of the event.
 - `listener` {Function} The callback function
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
 
@@ -452,7 +452,7 @@ added: v0.1.26
 -->
 
 - `eventName` {string|symbol}
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -468,7 +468,7 @@ added: v0.1.26
 
 - `eventName` {string|symbol}
 - `listener` {Function}
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
@@ -526,7 +526,7 @@ added: v0.3.5
 -->
 
 - `n` {integer}
-- Returns: {EventEmitter}
+- Restituisce: {EventEmitter}
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
 
@@ -539,7 +539,7 @@ added: v9.4.0
 -->
 
 - `eventName` {string|symbol}
-- Returns: {Function[]}
+- Restituisce: {Function[]}
 
 Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
 
