@@ -741,7 +741,7 @@ By default, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is ca
 ```js
 reader.pipe(writer, { end: false });
 reader.on('end', () => {
-  writer.end('Goodbye\n');
+  writer.end('Adeus\n');
 });
 ```
 
@@ -756,7 +756,7 @@ added: v0.9.4
 -->
 
 * `size` {number} Optional argument to specify how much data to read.
-* Returns: {string|Buffer|null}
+* Retorna: {string|Buffer|null}
 
 The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
 
@@ -771,7 +771,7 @@ const readable = getReadableStreamSomehow();
 readable.on('readable', () => {
   let chunk;
   while (null !== (chunk = readable.read())) {
-    console.log(`Received ${chunk.length} bytes of data.`);
+    console.log(`Recebeu ${chunk.length} bytes de dados.`);
   }
 });
 ```
@@ -788,7 +788,7 @@ Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][
 added: v9.3.0
 -->
 
-* Returns: {number}
+* Retorna: {number}
 
 Returns the value of `highWaterMark` passed when constructing this `Readable`.
 
@@ -1283,7 +1283,7 @@ const { Writable } = require('stream');
 
 class MyWritable extends Writable {
   constructor(options) {
-    // Calls the stream.Writable() constructor
+    // Chama o construtor stream.Writable()
     super(options);
     // ...
   }
@@ -1385,7 +1385,7 @@ const { Writable } = require('stream');
 const myWritable = new Writable({
   write(chunk, encoding, callback) {
     if (chunk.toString().indexOf('a') >= 0) {
-      callback(new Error('chunk is invalid'));
+      callback(new Error('chunk é inválido'));
     } else {
       callback();
     }
@@ -1408,7 +1408,7 @@ class MyWritable extends Writable {
 
   _write(chunk, encoding, callback) {
     if (chunk.toString().indexOf('a') >= 0) {
-      callback(new Error('chunk is invalid'));
+      callback(new Error('chunk é invalido'));
     } else {
       callback();
     }
@@ -1473,7 +1473,7 @@ const { Readable } = require('stream');
 
 class MyReadable extends Readable {
   constructor(options) {
-    // Calls the stream.Readable(options) constructor
+    // Chama o construtor stream.Readable(options) 
     super(options);
     // ...
   }
@@ -1614,7 +1614,7 @@ const myReadable = new Readable({
       process.nextTick(() => this.emit('error', err));
       return;
     }
-    // do some work
+    // faz algo
   }
 });
 ```
