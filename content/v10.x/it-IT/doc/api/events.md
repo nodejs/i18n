@@ -36,7 +36,7 @@ Il metodo `eventEmitter.emit()` consente di passare un set arbitrario di argomen
 const myEmitter = new MyEmitter();
 myEmitter.on('event', function(a, b) {
   console.log(a, b, this, this === myEmitter);
-  // Prints:
+  // Stampa:
   //   a b MyEmitter {
   //     domain: null,
   //     _events: { event: [Function] },
@@ -52,7 +52,7 @@ myEmitter.emit('event', 'a', 'b');
 const myEmitter = new MyEmitter();
 myEmitter.on('event', (a, b) => {
   console.log(a, b, this);
-  // Prints: a b {}
+  // Stampa: a b {}
 });
 myEmitter.emit('event', 'a', 'b');
 ```
@@ -82,9 +82,9 @@ myEmitter.on('event', () => {
   console.log(++m);
 });
 myEmitter.emit('event');
-// Prints: 1
+// Stampa: 1
 myEmitter.emit('event');
-// Prints: 2
+// Stampa: 2
 ```
 
 Utilizzando il metodo `eventEmitter.once()`, è possibile registrare un listener che venga chiamato al massimo una volta per un evento particolare. Una volta che l'evento viene emesso, il listener viene eliminato dal registro e *poi* chiamato.
@@ -96,12 +96,12 @@ myEmitter.once('event', () => {
   console.log(++m);
 });
 myEmitter.emit('event');
-// Prints: 1
+// Stampa: 1
 myEmitter.emit('event');
-// Ignored
+// Ignorato
 ```
 
-## Eventi error
+## Error event
 
 Quando si verifica un errore all'interno di un'istanza `EventEmitter`, l'azione tipica è l'emissione di un evento `'error'`. Questi vengono trattati come casi speciali all'interno di Node.js.
 
