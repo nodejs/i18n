@@ -231,9 +231,9 @@ emitter.once('event', () => {
 });
 ```
 
-The [`--trace-warnings`][] command line flag can be used to display the stack trace for such warnings.
+Il flag [`--trace-warnings`][] della command line può essere utilizzato per mostrare la stack trace di tali avvisi.
 
-The emitted warning can be inspected with [`process.on('warning')`][] and will have the additional `emitter`, `type` and `count` properties, referring to the event emitter instance, the event’s name and the number of attached listeners, respectively. Its `name` property is set to `'MaxListenersExceededWarning'`.
+L'avviso emesso può essere ispezionato con [`process.on('warning')`][] e avrà le proprietà aggiuntive `emitter`, `type` e `count`, che si riferiscono rispettivamente all'istanza dell'event emitter, al nome dell'evento e al numero di listener allegati. Its `name` property is set to `'MaxListenersExceededWarning'`.
 
 ### emitter.addListener(eventName, listener)
 
