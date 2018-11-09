@@ -420,9 +420,9 @@ added: v0.5.0
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La llave dada es interpretada usando el `inputEncoding` especificado mientras que el secreto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si no se da el `inputEncoding`, se espera que una `otherPublicKey` sea un [`Buffer`][], un`TypedArray` o `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Si el `outputEncoding` es dado, se devuelve una string; de lo contrario, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.generateKeys([encoding])
 
