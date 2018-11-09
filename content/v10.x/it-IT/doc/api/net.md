@@ -318,14 +318,14 @@ Esso può ache essere creato da Node.js e trasmesso all'utente quando una connes
 added: v0.3.4
 -->
 
-Creates a new socket object.
+Crea un nuovo socket object.
 
-* `options` {Object} Available options are: 
-  * `fd` {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-* Returns: {net.Socket}
+* `options` {Object} Le opzioni disponibili sono: 
+  * `fd`{number} Se specificato, rivesti un socket esistente con il descrittore di file specificato, altrimenti verrà creato un nuovo socket.
+  * `allowHalfOpen`{boolean} Indica se sono consentite le connessioni TPC semi-aperte. Vedi [`net.createServer()`][] e l'evento [`'end'`][] per dettagli. **Default:** `false`.
+  * `readable` {boolean} Consenti le letture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
+  * `readable` {boolean} Consenti le scritture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
+* Restituisce: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
