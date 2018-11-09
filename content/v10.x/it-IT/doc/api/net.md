@@ -605,7 +605,7 @@ added: v0.9.1
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Opposite of `unref()`, calling `ref()` on a previously `unref`ed socket will *not* let the program exit if it's the only socket left (the default behavior). If the socket is `ref`ed calling `ref` again will have no effect.
+A differenza di`unref()`, chiamare `ref()` su un socket precedente `unref`ed *non* permetterà l'uscita dal programma se esso è l'unico socket rimasto ( l'azione predefinita). Se il socket `ref`ed sta chiamando `ref` di nuovo non avrà effetto.
 
 ### socket.remoteAddress
 
@@ -613,7 +613,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed socket will *no
 added: v0.5.10
 -->
 
-The string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`. Value may be `undefined` if the socket is destroyed (for example, if the client disconnected).
+La rappresentazione della stringa dell'indirizzo IP remoto. Ad esempio, `'74.125.127.100'` or `'2001:4860:a005::68'`. Il valore può essere `undefined` se il socket viene distrutto (ad esempio, se il client è disconnesso).
 
 ### socket.remoteFamily
 
@@ -621,7 +621,7 @@ The string representation of the remote IP address. For example, `'74.125.127.10
 added: v0.11.14
 -->
 
-The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
+La rappresentazione della stringa della famiglia IP remota. `'IPv4'` o `'IPv6'`.
 
 ### socket.remotePort
 
@@ -629,13 +629,13 @@ The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 added: v0.5.10
 -->
 
-The numeric representation of the remote port. For example, `80` or `21`.
+La rappresentazione numerica della porta remota. Per esempio, `80` o `21`.
 
 ### socket.resume()
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
-Resumes reading after a call to [`socket.pause()`][].
+Riprende la lettura dopo una chiamata a [`socket.pause()`][].
 
 ### socket.setEncoding([encoding])
 
@@ -643,9 +643,9 @@ Resumes reading after a call to [`socket.pause()`][].
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
-Set the encoding for the socket as a [Readable Stream](stream.html#stream_class_stream_readable). See [`readable.setEncoding()`][] for more information.
+Imposta la codifica per il socket come [Readable Stream](stream.html#stream_class_stream_readable). Vedi [`readable.setEncoding()`][] per maggiori informazioni.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -655,9 +655,9 @@ added: v0.1.92
 
 * `enable` {boolean} **Default:** `false`
 * `initialDelay` {number} **Default:** `0`
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
-Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
+Abilita/disabilita la funzionalità keep-alive e opzionalmente imposta il ritardo iniziale prima che la prima indagine keepalive venga inviata su un socket inattivo.
 
 Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
 
