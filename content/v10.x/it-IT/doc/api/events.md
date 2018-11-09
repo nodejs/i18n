@@ -120,10 +120,10 @@ Per una miglior pratica, è necessario aggiungere sempre dei listener per gli ev
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.on('error', (err) => {
-  console.error( 'ops! there was an error');
+  console.error('whoops! there was an error');
 });
 myEmitter.emit('error', new Error('whoops!'));
-// Prints: whoops! there was an error
+// Stampa: whoops! there was an error
 ```
 
 ## Class: EventEmitter
