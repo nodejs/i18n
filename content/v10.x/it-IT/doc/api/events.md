@@ -149,7 +149,7 @@ added: v0.1.26
 - `eventName`{string|symbol} Il nome dell'evento sottoposto al listening
 - `listener` {Function} La funzione dell'event handler
 
-The `EventEmitter` instance will emit its own `'newListener'` event *before* a listener is added to its internal array of listeners.
+L'istanza `EventEmitter` emetterà il proprio event `'newListener'` *prima* che venga aggiunto un listener al suo array di listener interno.
 
 Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
 
