@@ -296,16 +296,16 @@ changes:
 * `encoding` {string} The encoding, if `chunk` is a string
 * `callback` {Function} Callback opcional para cuando el stream se finalice
 
-Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. Si se proporciona, la función `callback` opcional se adjunta como un listener para el evento de [`'finish'`][].
 
-Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
+Llamar al método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) producirá un error.
 
 ```js
-// write 'hello, ' and then end with 'world!'
+// escriba 'hello, ' y luego termine con 'world!'
 const file = fs.createWriteStream('example.txt');
 file.write('hello, ');
 file.end('world!');
-// writing more now is not allowed!
+// ¡escribir más ahora no está permitido!
 ```
 
 ##### writable.setDefaultEncoding(encoding)
@@ -319,7 +319,7 @@ changes:
     description: This method now returns a reference to `writable`.
 -->
 
-* `encoding` {string} The new default encoding
+* `encoding` {string} La nueva codificación predeterminada
 * Returns: `this`
 
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
