@@ -291,16 +291,16 @@ added: v0.9.4
 * `encoding` {string} La codificación, si `chunk` es un String
 * `callback` {Function} Callback opcional para cuando el stream se finalice
 
-Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. Si se proporciona, la función `callback` opcional se adjunta como un listener para el evento de [`'finish'`][].
 
-Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
+Llamar al método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) producirá un error.
 
 ```js
-// write 'hello, ' and then end with 'world!'
+// escriba 'hello, ' y luego termine con 'world!'
 const file = fs.createWriteStream('example.txt');
 file.write('hello, ');
 file.end('world!');
-// writing more now is not allowed!
+// ¡escribir más ahora no está permitido!
 ```
 
 ##### writable.setDefaultEncoding(encoding)
@@ -309,8 +309,8 @@ file.end('world!');
 added: v0.11.15
 -->
 
-* `encoding` {string} The new default encoding
-* Returns: {this}
+* `encoding` {string} La nueva codificación predeterminada
+* Devuelve: {this}
 
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
 
@@ -600,7 +600,7 @@ readable.isPaused(); // === false
 added: v0.9.4
 -->
 
-* Returns: {this}
+* Devuelve: {this}
 
 The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
 
@@ -703,7 +703,7 @@ A Readable stream in object mode will always return a single item from a call to
 added: v0.9.4
 -->
 
-* Returns: {this}
+* Devuelve: {this}
 
 The `readable.resume()` method causes an explicitly paused Readable stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
@@ -724,7 +724,7 @@ added: v0.9.4
 -->
 
 * `encoding` {string} The encoding to use.
-* Returns: {this}
+* Devuelve: {this}
 
 The `readable.setEncoding()` method sets the character encoding for data read from the Readable stream.
 
