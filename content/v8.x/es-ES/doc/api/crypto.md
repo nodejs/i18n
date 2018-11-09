@@ -494,7 +494,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave pública Diffie-Hellman. Se espera que la`publicKey` sea una string si el argumento `encoding` es dado y es un `'latin1'`, `'hex'` or`'base64'`. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave pública Diffie-Hellman. Se espera que la`publicKey` sea una string si el argumento `encoding` es dado y es un `'latin1'`, `'hex'` or`'base64'`. Si `encoding` no es dado, se espera que la `publicKey` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### diffieHellman.verifyError
 
