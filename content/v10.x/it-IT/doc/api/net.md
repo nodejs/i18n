@@ -512,7 +512,7 @@ Per le connessioni TPC, le `options` disponibili sono:
 
 Per le connessioni IPC<0>, le `options` disponibili sono:</p> 
 
-* `path` {string} Richiesto. Percorso a cui il client dovrebbe connettersi. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections). Se fornito, le opzioni specifiche TCP sopra sono ignorate.
+* `path` {string} Richiesto. Percorso a cui il client dovrebbe connettersi. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections). Se fornite, le opzioni specifiche TCP sopra vengono ignorate.
 
 #### socket.connect(path[, connectListener])
 
@@ -545,7 +545,7 @@ Pseudonimo per `socket.connect(options[, connectListener])`][`socket.connect(opt
 added: v6.1.0
 -->
 
-Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora finito. Sarà impostato su `false` prima di emettere l'evento `'connect'` e/o chiamare [`socket.connect(options[,connectListener])`][` socket.connect (options)`]'s callback.
+Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora terminato. Sarà impostato su `false` prima di emettere l'evento `'connect'` e/o chiamare [`socket.connect(options[,connectListener])`][` socket.connect (options)`]'s callback.
 
 ### socket.destroy([exception])
 
