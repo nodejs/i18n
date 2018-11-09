@@ -556,9 +556,9 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. Se interpreta la clave suministrada utilizando un `inputEncoding`, y el secreto devuelto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, se espera que `otherPublocKey` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Si el `outputEncoding` es dado, una string sera devuelta, sino se regresará un [`Buffer`][].
 
 ### ecdh.generateKeys([encoding[, format]])
 
