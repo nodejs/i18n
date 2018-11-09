@@ -327,7 +327,7 @@ Crea un nuovo socket object.
   * `readable` {boolean} Consenti le scritture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
 * Restituisce: {net.Socket}
 
-The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
+Il socket recentemente creato può essere un socket TCP o uno streaming [IPC](#net_ipc_support) endpoint, a seconda di cosa esso [`connect ()`] [`socket.connect()`] per.
 
 ### Event: 'close'
 
@@ -335,9 +335,9 @@ The newly created socket can be either a TCP socket or a streaming [IPC](#net_ip
 added: v0.1.90
 -->
 
-* `hadError` {boolean} `true` if the socket had a transmission error.
+* `hadError` {boolean} `true` se il socket ha avuto un errore di trasmissione.
 
-Emitted once the socket is fully closed. The argument `hadError` is a boolean which says if the socket was closed due to a transmission error.
+Emesso quando il socket è completamente chiuso. L'argomento `hadError` è un booleano che dice se il socket è stato chiuso a causa di un errore di trasmissione.
 
 ### Event: 'connect'
 
