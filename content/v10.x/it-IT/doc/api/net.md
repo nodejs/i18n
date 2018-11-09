@@ -659,7 +659,7 @@ added: v0.1.92
 
 Abilita/disabilita la funzionalità keep-alive e opzionalmente imposta il ritardo iniziale prima che la prima indagine keepalive venga inviata su un socket inattivo.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
+Imposta `initialDelay` (in millisecondi) per impostare il ritardo tra l'ultimo pacchetto di dati ricevuto e la prima indagine di keepalive. Impostando `0` come `initialDelay` lascerà il valore non modificato rispetto all'impostazione predefinita (o precedente).
 
 ### socket.setNoDelay([noDelay])
 
