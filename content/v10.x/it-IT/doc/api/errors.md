@@ -11,53 +11,53 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
   - {SyntaxError} : generato in risposta ad un utilizzo improprio della sintassi del linguaggio JavaScript.
   - {RangeError} : generato quando un valore non rientra nell'intervallo previsto
   - {ReferenceError} : generato quando si utilizzano variabili non definite
-  - {TypeError} : generato quando vengono passati argomenti di tipo errato
+  - {TypeError} : generato quando vengono passati parametri di tipo errato
   - {URIError} : thrown when a global URI handling function is misused.
-- System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
+- Errori di sistema innescati da restrizioni implicite del sistema operativo, come ad esempio tentare, di aprire un file che non esiste, tentare di inviare dati su un socket chiuso, etc;
 - And User-specified errors triggered by application code.
-- `AssertionError`s are a special class of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
+- Gli `AssertionError` sono una classe speciale di errori che possono essere generati ogni volta che Node.js rileva una violazione logica eccezionale che non dovrebbe mai verificarsi. Questi di solito vengono generati dal modulo `assert`.
 
-All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
+Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o sono istanze della, classe standard JavaScript {Error} e garantiscono di fornire *almeno* le proprietà disponibili su quella classe.
 
-## Error Propagation and Interception
+## Propagazione e Intercettazione degli Errori
 
 <!--type=misc-->
 
-Node.js supports several mechanisms for propagating and handling errors that occur while an application is running. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Error` e dallo stile dell'API che viene chiamata.
 
-All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
+Tutti gli errori JavaScript sono gestiti come eccezioni che generano e inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
 ```js
-// Throws with a ReferenceError because z is undefined
-try {
+// Viene generato con un ReferenceError perchè z è indefinito
+prova {
   const m = 1;
   const n = m + z;
 } catch (err) {
-  // Handle the error here.
+  // Gestisci l'errore qui.
 }
 ```
 
-Any use of the JavaScript `throw` mechanism will raise an exception that *must* be handled using `try / catch` or the Node.js process will exit immediately.
+Qualsiasi utilizzo del meccanismo JavaScript `throw` creerà un'eccezione che *deve* essere gestita utilizzando `try / catch` altrimenti il processo Node.js uscirà immediatamente.
 
-With few exceptions, *Synchronous* APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
+Con poche eccezioni, le API *Sincrone* (qualsiasi metodo di blocco che non accetta una funzione `callback`, come ad esempio [`fs.readFileSync`][]), utilizzerà `throw` per segnalare gli errori.
 
-Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
+Gli errori che si verificano all'interno di *Api asincrone* possono essere segnalati in diversi modi:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo parametro a quella funzione. Se questo primo parametro non è `null` ed è un istanza di `Error`, allora si è verificato un errore che dovrebbe essere gestito.
 
 <!-- eslint-disable no-useless-return -->
 
     js
       const fs = require('fs');
-      fs.readFile('a file that does not exist', (err, data) => {
+      fs.readFile('un file che non esiste', (err, data) => {
         if (err) {
-          console.error('There was an error reading the file!', err);
+          console.error('C'è stato un errore durante la lettura del file!', err);
           return;
         }
-        // Otherwise handle the data
+        // Altrimenti gestisci i dati
       });
 
-- When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
+- Quando un metodo asincrono viene chiamato su un oggetto che è un [`EventEmitter`][], gli errori possono essere indirizzati all'`'error'` dell'evento di quell'oggetto.
   
   ```js
   const net = require('net');
@@ -74,7 +74,7 @@ Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
   connection.pipe(process.stdout);
   ```
 
-- A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try / catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
+- Una manciata di tipici metodi asincroni nell'API Node.js potrebbero comunque usare il meccanismo `throw` per generare eccezioni che devono essere gestite utilizzando `try / catch`. Non esiste una lista completa di tali metodi; consultare la documentazione di ogni metodo per determinare il meccanismo più appropriato di gestione degli errori.
 
 The use of the `'error'` event mechanism is most common for [stream-based](stream.html) and [event emitter-based](events.html#events_class_eventemitter) APIs, which themselves represent a series of asynchronous operations over time (as opposed to a single operation that may pass or fail).
 
@@ -91,22 +91,22 @@ setImmediate(() => {
 });
 ```
 
-Errors generated in this way *cannot* be intercepted using `try / catch` as they are thrown *after* the calling code has already exited.
+Gli errori generati in questo modo *non possono* essere intercettati usando `try / catch` poiché sono generati *dopo* che il codice chiamante è già stato terminato.
 
-Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
+Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per determinare esattamente in che modo vengono propagati gli errori creati da questi metodi.
 
-### Error-first callbacks
+### Callback error-first
 
 <!--type=misc-->
 
-Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an *error-first callback* (sometimes referred to as a *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come parametro. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` (se presente) passato come primo parametro. Se non è stato generato alcun errore, il primo parametro verrà passato come `null`.
 
 ```js
 const fs = require('fs');
 
 function errorFirstCallback(err, data) {
   if (err) {
-    console.error('There was an error', err);
+    console.error('C'è stato un errore', err);
     return;
   }
   console.log(data);
@@ -116,7 +116,7 @@ fs.readFile('/some/file/that/does-not-exist', errorFirstCallback);
 fs.readFile('/some/file/that/does-exist', errorFirstCallback);
 ```
 
-The JavaScript `try / catch` mechanism **cannot** be used to intercept errors generated by asynchronous APIs. A common mistake for beginners is to try to use `throw` inside an error-first callback:
+Il meccanismo JavaScript `try / catch` **non può** essere usato per intercettare errori generati da API asincrone. Un errore comune per i principianti è quello di cercare di usare `throw` all'interno di un callback error-first:
 
 ```js
 // THIS WILL NOT WORK:
@@ -135,7 +135,7 @@ try {
 }
 ```
 
-This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
+Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è chiamata in modo asincrono. Per quando il callback è stato chiamato, il codice circostante (incluso il blocco `try { } catch (err) { }` sarà già stato chiuso. Nella maggior parte dei casi, generare un errore all'interno del callback **può causare il crash del processo Node.js**. Se sono abilitati i [domini](domain.html), oppure un handler è stato registrato con `process.on('uncaughtException')`, tali errori possono essere intercettati.
 
 ## Class: Error
 

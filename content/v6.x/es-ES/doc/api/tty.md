@@ -35,7 +35,7 @@ The `tty.ReadStream` class is a subclass of [`net.Socket`][] that represents the
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Por defecto es `false`.
 
 ### readStream.isTTY
 

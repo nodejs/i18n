@@ -64,7 +64,7 @@ Alternatively, `options` can be an object containing these properties:
 
 - `family` {number} - The record family. If present, must be the integer `4` or `6`. If not provided, both IP v4 and v6 addresses are accepted.
 - `hints`: {number} - If present, it should be one or more of the supported `getaddrinfo` flags. If `hints` is not provided, then no flags are passed to `getaddrinfo`. Multiple flags can be passed through `hints` by bitwise `OR`ing their values. See [supported `getaddrinfo` flags][] for more information on supported flags.
-- `all`: {boolean} - When `true`, the callback returns all resolved addresses in an array, otherwise returns a single address. Defaults to `false`.
+- `all`: {boolean} - When `true`, the callback returns all resolved addresses in an array, otherwise returns a single address. Por defecto es `false`.
 
 All properties are optional.
 

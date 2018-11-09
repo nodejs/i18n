@@ -20,7 +20,7 @@ Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. Consul
 added: v0.3.4
 -->
 
-Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. See [`http.Server`][] for more information.
+Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`http.Server`][] para obter mais informações.
 
 ### server.close ([callback])
 
@@ -183,7 +183,7 @@ changes:
 
 Faz uma requesição para um web server seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+As seguintes `opções` adicionais do [`tls.connect()`][] também são aceitas: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
 `options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 

@@ -1136,7 +1136,7 @@ console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
 added: v0.7.5
 -->
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -1151,7 +1151,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* El Secreto de Alice y el de Bob deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1161,7 +1161,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Returns an array of the names of the supported hash algorithms, such as `RSA-SHA256`.
+Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1170,17 +1170,17 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
+### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
 
 <!-- YAML
 added: v0.5.5
 -->
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
-The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs, `err` will be set; otherwise `err` will be null. The successfully generated `derivedKey` will be passed as a [`Buffer`][].
+La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
@@ -1202,11 +1202,11 @@ An array of supported digest functions can be retrieved using [`crypto.getHashes
 added: v0.9.3
 -->
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
 If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 

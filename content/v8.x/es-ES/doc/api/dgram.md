@@ -479,7 +479,7 @@ changes:
 
 * `options` {Object} Available options are: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. Defaults to `false`.
+  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. Por defecto es `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
   * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
   * `lookup` {Function} Custom lookup function. Defaults to [`dns.lookup()`][].

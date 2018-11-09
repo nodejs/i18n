@@ -30,7 +30,7 @@ Prior versions of Node.js required the use of the `--trace-events-enabled` flag 
 ```txt
 node --trace-events-enabled
 
-// is equivalent to
+// É equivalente a
 
 node --trace-event-categories v8,node,node.async_hooks
 ```
@@ -152,7 +152,7 @@ tracing.disable();
 added: v10.0.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 Returns a comma-separated list of all currently-enabled trace event categories. The current set of enabled trace event categories is determined by the *union* of all currently-enabled `Tracing` objects and any categories enabled using the `--trace-event-categories` flag.
 

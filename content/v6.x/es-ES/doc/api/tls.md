@@ -352,7 +352,7 @@ added: v0.11.4
 
 * `socket` {net.Socket|stream.Duplex} On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
 * `options` {Object} 
-  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. Defaults to `false`.
+  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. Por defecto es `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance.
   * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Clients always request a server certificate. Servers (`isServer` is true) may optionally set `requestCert` to true to request a client certificate.
   * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
@@ -738,7 +738,7 @@ added: v0.3.2
 * `options` {Object} 
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. Defaults to `120` seconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out.
   * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. Defaults to `false`.
-  * `rejectUnauthorized` {boolean} If `true` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. Defaults to `false`.
+  * `rejectUnauthorized` {boolean} If `true` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. Por defecto es `false`.
   * `NPNProtocols` {string[]|Buffer} An array of strings or a `Buffer` naming possible NPN protocols. (Protocols should be ordered by their priority.)
   * `ALPNProtocols` {string[]|Buffer} An array of strings or a `Buffer` naming possible ALPN protocols. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
   * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a SecureContext instance. (`tls.createSecureContext(...)` can be used to get a proper SecureContext.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
@@ -891,7 +891,7 @@ deprecated: v0.11.3
 * `rejectUnauthorized` {boolean} `true` to specify whether a server should automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
 * `options` 
   * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. Defaults to `false`.
+  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. Por defecto es `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance
   * `requestCert`: Optional, see [`tls.createServer()`][]
   * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]

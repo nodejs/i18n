@@ -1234,7 +1234,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`dfc8bedbc5`](https://github.com/nodejs/node/commit/dfc8bedbc5)] - **doc**: cambiar las referencias de node a Node.js (Roman Klauke) [#4177](https://github.com/nodejs/node/pull/4177)
 * [[`7a518788e9`](https://github.com/nodejs/node/commit/7a518788e9)] - **doc, test**: símbolos como nombres de evento (Bryan English) [#4151](https://github.com/nodejs/node/pull/4151)
 * [[`425a3545d2`](https://github.com/nodejs/node/commit/425a3545d2)] - **(SEMVER-MINOR)** **domains**: corregir el manejo de excepciones no capturadas (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654)
-* [[`acef181fde`](https://github.com/nodejs/node/commit/acef181fde)] - **(SEMVER-MINOR)** **https**: soporta deshabilitar el guardado en el caché de la sesión (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252)
+* [[`acef181fde`](https://github.com/nodejs/node/commit/acef181fde)] - **(SEMVER-MINOR)** **https**: soportar la desactivación del guardado en el caché de la sesión (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252)
 * [[`2a60e2ad71`](https://github.com/nodejs/node/commit/2a60e2ad71)] - **module,src**: no envolver los módulos con un lineOffset -1 (cjihrig) [#4298](https://github.com/nodejs/node/pull/4298)
 * [[`d3c498b1b7`](https://github.com/nodejs/node/commit/d3c498b1b7)] - **node**: remover variables sin usar en AppendExceptionLine (Yazhong Liu) [#4264](https://github.com/nodejs/node/pull/4264)
 * [[`aad6b9f0eb`](https://github.com/nodejs/node/commit/aad6b9f0eb)] - **repl**: mostrar el mensaje de error cuando se cargue el directorio (Prince J Wesley) [#4170](https://github.com/nodejs/node/pull/4170)
@@ -1264,12 +1264,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 ### Cambios notables
 
 * **build**: 
-  * Añadido soporte para el perfilador de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
-  * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Debido a un error de configuración, los snapshots han sido mantenido por fuera de manera predeterminada cuando la intención es que la característica esté habilitada. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
+  * Añadir soporte para el perfilaje de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. Para más información sobre VTune, vea <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
+  * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Debido a un error de configuración, los snapshots han sido mantenidos por fuera de manera predeterminada cuando la intención es que la característica debe estar habilitada. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
 * **crypto**: 
-  * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede lleva a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
+  * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede conducir a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
   * Actualizar los certificados raíz de la lista actual almacenada mantenida por Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
-  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una nuevo string solo separado. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
+  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una sola string separada de nueva línea. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
 * **tools**: Incluir un procesador tick en el núcleo, expuesto a través del argumento de la línea de comando `--prof-process` que puede ser usado para procesar archivos de salida de perfilado V8 generados usando el argumento de línea de comando `--prof`. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
 
 ### Problemas conocidos
@@ -1288,7 +1288,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`fcf0e8ebdf`](https://github.com/nodejs/node/commit/fcf0e8ebdf)] - **buffer**: mover a checkFloat de lib para src (Matt Loring) [#3763](https://github.com/nodejs/node/pull/3763)
 * [[`12649f4496`](https://github.com/nodejs/node/commit/12649f4496)] - **build**: añadir opciones de compilación "--partly-static" (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
 * [[`a76d788119`](https://github.com/nodejs/node/commit/a76d788119)] - **build**: actualizar la descripción de signtool, añadir url (Rod Vagg) [#4011](https://github.com/nodejs/node/pull/4011)
-* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: añadir soporte de perfilado Intel Vtune (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
+* [[`ed255abdc1`](https://github.com/nodejs/node/commit/ed255abdc1)] - **(SEMVER-MINOR)** **build,src**: añadir soporte de perfilaje Intel Vtune (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785)
 * [[`7793c364fc`](https://github.com/nodejs/node/commit/7793c364fc)] - **child_process**: limpiar a los streams que estén consumiendo (Dave) [#4071](https://github.com/nodejs/node/pull/4071)
 * [[`f29c5d6e70`](https://github.com/nodejs/node/commit/f29c5d6e70)] - **configure**: `v8_use_snapshot` debería ser `true` (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962)
 * [[`da5ac55c83`](https://github.com/nodejs/node/commit/da5ac55c83)] - **(SEMVER-MINOR)** **crypto**: simplificar el uso de las claves preexistentes con ECDH (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511)
@@ -1301,7 +1301,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`634c5f1f81`](https://github.com/nodejs/node/commit/634c5f1f81)] - **doc**: url.format - true slash postfix behaviour (fansworld-claudio) [#4119](https://github.com/nodejs/node/pull/4119)
 * [[`6f957a70d8`](https://github.com/nodejs/node/commit/6f957a70d8)] - **doc**: s/node.js/Node.js en readme (Rod Vagg) [#3998](https://github.com/nodejs/node/pull/3998)
 * [[`0cd4a52392`](https://github.com/nodejs/node/commit/0cd4a52392)] - **doc**: mejorar la redacción de child_process.markdown (yorkie) [#4138](https://github.com/nodejs/node/pull/4138)
-* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: añadir a JungMinu a los colaboradores collaborators (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
+* [[`fd5ed6888d`](https://github.com/nodejs/node/commit/fd5ed6888d)] - **doc**: añadir a JungMinu a los colaboradores (Minwoo Jung) [#4143](https://github.com/nodejs/node/pull/4143)
 * [[`fa0cdf75d9`](https://github.com/nodejs/node/commit/fa0cdf75d9)] - **doc**: add iarna to collaborators (Rebecca Turner) [#4144](https://github.com/nodejs/node/pull/4144)
 * [[`424eb962b1`](https://github.com/nodejs/node/commit/424eb962b1)] - **doc**: add zkat to collaborators (Kat Marchán) [#4142](https://github.com/nodejs/node/pull/4142)
 * [[`85b601224b`](https://github.com/nodejs/node/commit/85b601224b)] - **doc**: add HTTP working group (James M Snell) [#3919](https://github.com/nodejs/node/pull/3919)
@@ -1318,7 +1318,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [[`4602e01221`](https://github.com/nodejs/node/commit/4602e01221)] - **doc**: reemplazar sano con razonable (Lewis Cowper) [#3980](https://github.com/nodejs/node/pull/3980)
 * [[`4849a54386`](https://github.com/nodejs/node/commit/4849a54386)] - **doc**: Añadir las mejores prácticas para crypto.pbkdf2 (Tom Gallacher) [#3290](https://github.com/nodejs/node/pull/3290)
 * [[`77251d99de`](https://github.com/nodejs/node/commit/77251d99de)] - **doc**: banderas numéricas para fs.open (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
-* [[`f4ca007b42`](https://github.com/nodejs/node/commit/f4ca007b42)] - **doc**: aclarar que streams fs esperan bloquear el fd (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
+* [[`f4ca007b42`](https://github.com/nodejs/node/commit/f4ca007b42)] - **doc**: aclarar que las streams fs esperan bloquear el fd (Carl Lei) [#3641](https://github.com/nodejs/node/pull/3641)
 * [[`26eeae8016`](https://github.com/nodejs/node/commit/26eeae8016)] - **doc**: corregir referencias erróneas (Alexander Gromnitsky) [#3944](https://github.com/nodejs/node/pull/3944)
 * [[`f90227b0e8`](https://github.com/nodejs/node/commit/f90227b0e8)] - **doc**: mover mensaje de desaprobación fs.existsSync() (Martin Forsberg) [#3942](https://github.com/nodejs/node/pull/3942)
 * [[`bbcb2a2e65`](https://github.com/nodejs/node/commit/bbcb2a2e65)] - **doc**: aclarar el comportamiento de carga del módulo (cjihrig) [#3920](https://github.com/nodejs/node/pull/3920)

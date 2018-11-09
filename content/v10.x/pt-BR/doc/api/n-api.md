@@ -494,7 +494,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // fazer alguma coisa com o elemento
 }
 ```
 
@@ -518,7 +518,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // fazer alguma coisa com o elemento
   status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
@@ -793,7 +793,7 @@ napi_value Init(napi_env env, napi_value exports) {
 To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOTE: partial example, not all referenced code is included
+// NOTE: exemplo parcial, nem todo código referenciado está incluso.
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
@@ -861,7 +861,7 @@ N-API values are represented by the type `napi_value`. Any N-API call that requi
 
 ```C
 typedef enum {
-  // ES6 types (corresponds to typeof)
+  // ES6 types (corresponde ao typeof)
   napi_undefined,
   napi_null,
   napi_boolean,
@@ -2789,7 +2789,7 @@ assert(napi_ok == status);
 if (is_instance) {
   // napi_unwrap() ...
 } else {
-  // otherwise...
+  // caso contrário...
 }
 ```
 

@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
 <!--type=module-->
 
-Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause `Function` objects ("listeners") to be called.
+Gran parte della core API di Node.js è costruita intorno ad un'architettura event-driven idiomatica ed asincrona nella quale alcuni tipi di object (chiamati "emitter") emettono eventi con nome che determinano che i `Function` object ("listener") vengano chiamati.
 
-For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
+Per esempio: un object [`net.Server`][] emette un evento ogni volta che un peer si connette ad esso; un [`fs.ReadStream`][] emette un evento quando viene aperto il file; uno [stream](stream.html) emette un evento ogni volta che i dati sono disponibili per la lettura.
 
-All objects that emit events are instances of the `EventEmitter` class. These objects expose an `eventEmitter.on()` function that allows one or more functions to be attached to named events emitted by the object. Typically, event names are camel-cased strings but any valid JavaScript property key can be used.
+Tutti gli object che emettono eventi sono istanze della class `EventEmitter`. Questi object espongono una funzione `eventEmitter.on()` la quale consente che una o più funzioni vengano allegate agli eventi con nome emessi dagli object. Generalmente, i nomi degli eventi sono stringhe con notazione a cammello tuttavia è possibile utilizzare qualsiasi proprietà key di JavaScript valida.
 
-When the `EventEmitter` object emits an event, all of the functions attached to that specific event are called *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
+Nel momento in cui l'object `EventEmitter` emette un evento, tutte le funzioni allegate a quello specifico evento vengono chiamate *in maniera sincrona*. Qualsiasi valore restituito dai listener chiamati viene *ignorato* e verrà scartato.
 
-The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
+L'esempio seguente mostra un'istanza `EventEmitter` semplice con un singolo listener. Il metodo `eventEmitter.on()` viene utilizzato per registrare i listener, mentre il metodo `eventEmitter.emit()` viene utilizzato per attivare l'evento.
 
 ```js
 const EventEmitter = require('events');
@@ -28,9 +28,9 @@ myEmitter.on('event', () => {
 myEmitter.emit('event');
 ```
 
-## Passing arguments and `this` to listeners
+## Passaggio di argomenti e `this` ai listener
 
-The `eventEmitter.emit()` method allows an arbitrary set of arguments to be passed to the listener functions. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+Il metodo `eventEmitter.emit()` consente di passare un set arbitrario di argomenti alle funzioni listener. È importante tenere a mente che nel momento in cui viene chiamata una funzione listener ordinaria, la parola chiave standard `this` viene intenzionalmente impostata per fare riferimento all'istanza `EventEmitter` alla quale è allegato il listener.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -46,7 +46,7 @@ myEmitter.on('event', function(a, b) {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-It is possible to use ES6 Arrow Functions as listeners, however, when doing so, the `this` keyword will no longer reference the `EventEmitter` instance:
+È possibile utilizzare le Funzioni Arrow E26 come listener, tuttavia, facendo questo, la parola chiave `this` non si riferirà più all'istanza `EventEmitter`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -57,9 +57,9 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Asynchronous vs. Synchronous
+## Asincrono vs. Sincrono
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
+L'`EventEmitter` chiama tutti i listener in maniera sincrona nell'ordine in cui sono stati registrati. Ciò è importante per assicurare la corretta sequenza degli eventi e per evitare condizioni di competizione o errori logici. Nei casi appropriati, è possibile passare le funzioni listener ad una modalità di operazione asincrona utilizzando i metodi `setImmediate()` o `process.nextTick()`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -71,9 +71,9 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Handling events only once
+## Gestione degli eventi di una sola volta
 
-When a listener is registered using the `eventEmitter.on()` method, that listener will be invoked *every time* the named event is emitted.
+Nel momento in cui un listener viene registrato utilizzando il metodo `eventEmitter.on()`, quel listener verrà invocato *ogni volta* che l'evento con nome viene emesso.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -87,7 +87,7 @@ myEmitter.emit('event');
 // Prints: 2
 ```
 
-Using the `eventEmitter.once()` method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and *then* called.
+Utilizzando il metodo `eventEmitter.once()`, è possibile registrare un listener che venga chiamato al massimo una volta per un evento particolare. Una volta che l'evento viene emesso, il listener viene eliminato dal registro e *poi* chiamato.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -101,11 +101,11 @@ myEmitter.emit('event');
 // Ignored
 ```
 
-## Error events
+## Eventi error
 
-When an error occurs within an `EventEmitter` instance, the typical action is for an `'error'` event to be emitted. These are treated as special cases within Node.js.
+Quando si verifica un errore all'interno di un'istanza `EventEmitter`, l'azione tipica è l'emissione di un evento `'error'`. Questi vengono trattati come casi speciali all'interno di Node.js.
 
-If an `EventEmitter` does *not* have at least one listener registered for the `'error'` event, and an `'error'` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
+Se un `EventEmitter` *non*possiede almeno un listener registrato per l'evento `'error'`, e un evento `'error'` viene emesso, l'errore viene generato, viene stampata una stack trace, e il processo Node.js si conclude.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -113,14 +113,14 @@ myEmitter.emit('error', new Error('whoops!'));
 // Throws and crashes Node.js
 ```
 
-To guard against crashing the Node.js process the [`domain`][] module can be used. (Note, however, that the `domain` module has been deprecated.)
+Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il `domain` module è stato deprecato.)
 
-As a best practice, listeners should always be added for the `'error'` events.
+Per una miglior pratica, è necessario aggiungere sempre dei listener per gli eventi `'error'`.
 
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.on('error', (err) => {
-  console.error('whoops! there was an error');
+  console.error( 'ops! there was an error');
 });
 myEmitter.emit('error', new Error('whoops!'));
 // Prints: whoops! there was an error

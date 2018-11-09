@@ -420,9 +420,9 @@ added: v0.5.0
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La llave dada es interpretada usando el `inputEncoding` especificado mientras que el secreto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si no se da el `inputEncoding`, se espera que una `otherPublicKey` sea un [`Buffer`][], un`TypedArray` o `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Si el `outputEncoding` es dado, se devuelve una string; de lo contrario, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -442,7 +442,7 @@ added: v0.5.0
 
 - `encoding` {string}
 
-Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Se regresa una string si el `encoding` es dado, sino un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -483,7 +483,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave privada Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada Diffie-Hellman. Se espera que la `privateKey` sea una string si el argumento `encoding` es dado y es `'latin1'`, `'hex'`, o `'base64'`. De lo contrario, la `privateKey` sera un [`Buffer`][], `TypedArray` o `DataView` si no es dado el `encoding`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -494,7 +494,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave pública Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave pública Diffie-Hellman. Se espera que la`publicKey` sea una string si el argumento `encoding` es dado y es un `'latin1'`, `'hex'` or`'base64'`. Si `encoding` no es dado, se espera que la `publicKey` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -556,9 +556,9 @@ changes:
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 
-Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. Se interpreta la clave suministrada utilizando un `inputEncoding`, y el secreto devuelto es codificado usando el `outputEncoding` especificado. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, se espera que `otherPublocKey` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Si el `outputEncoding` es dado, una string sera devuelta, sino se regresará un [`Buffer`][].
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -567,11 +567,11 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- `format` {string} Defaults to `uncompressed`.
+- `formato` {string} Por defecto esta `sincomprimir`.
 
 Genera los valores de la clave EC Diffie-Hellman privados y públicos, y devuelve la clave pública en el `format` y `encoding` especificado. Esta clave debe ser transferida a la otra parte.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+El argumento `formato` especifica la codificación de puntos y puede ser `'comprimido'` o `'sincomprimir'`. Si el `formato` no está especificado, el punto será regresado en un formato `'sincomprimir'`.
 
 El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -585,18 +585,18 @@ added: v0.11.14
 
 Regresa la llave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-### ecdh.getPublicKey(\[encoding\]\[, format\])
+### ecdh.getPublicKey(\[encoding\]\[, formato\])
 
 <!-- YAML
 added: v0.11.14
 -->
 
 - `encoding` {string}
-- `format` {string} Defaults to `uncompressed`.
+- `formato` {string} Por defecto esta `sincomprimir`.
 
 Devuelve la clave pública EC Diffie-Hellman en el `encoding` y `format` especificado.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+El argumento `formato` especifica la codificación de puntos y puede ser `'comprimido'` o `'sincomprimir'`. Si el `formato` no es especificado, el punto será regresado en un formato `'sinconprimir'`.
 
 El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es especificado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -609,9 +609,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si el `encoding` es dado, se espera que la `clavePrivada` sea una string, sino un [`Buffer`][], `TypedArray`, or `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
+Si la `clavePrivada` es inválida para la curva especificada cuando el objeto `ECDH` fue creado, un error es arrojado. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -1157,9 +1157,9 @@ changes:
                  from `binary` to `utf8`.
 -->
 
-- `prime` {string | Buffer | TypedArray | DataView}
+- `prime`{string | Buffer | TypedArray | DataView}
 - `primeEncoding` {string}
-- `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
+- `generator` {number | string | Buffer | TypedArray | DataView} Valores predeterminados de `2`.
 - `generatorEncoding` {string}
 
 Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
@@ -1179,7 +1179,7 @@ added: v0.5.0
 -->
 
 - `primeLength` {number}
-- `generator` {number | string | Buffer | TypedArray | DataView} Defaults to `2`.
+- `generator` {number | string | Buffer | TypedArray | DataView} Valores predeterminados de `2`.
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. El valor `2<code> será usado si <0>generator` no es especificado.
 
@@ -1322,7 +1322,7 @@ added: v0.7.5
 
 - `groupName` {string}
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -1337,7 +1337,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* El Secreto de Alice y el de Bob deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1347,7 +1347,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Returns an array of the names of the supported hash algorithms, such as `RSA-SHA256`.
+Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1356,7 +1356,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
+### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
 
 <!-- YAML
 added: v0.5.5
@@ -1384,11 +1384,11 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
-The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs, `err` will be set; otherwise `err` will be null. The successfully generated `derivedKey` will be passed as a [`Buffer`][].
+La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
@@ -1428,11 +1428,11 @@ changes:
 - `keylen` {number}
 - `digest` {string}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
 If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 

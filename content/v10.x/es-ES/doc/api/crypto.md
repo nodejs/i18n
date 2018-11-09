@@ -701,7 +701,7 @@ added: v0.11.14
 - `encoding` {string}
 - Devuelve: {Buffer | string} La clave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-### ecdh.getPublicKey(\[encoding\]\[, format\])
+### ecdh.getPublicKey(\[encoding\]\[, formato\])
 
 <!-- YAML
 added: v0.11.14
@@ -1319,7 +1319,7 @@ changes:
                  from `binary` to `utf8`.
 -->
 
-- `prime` {string | Buffer | TypedArray | DataView}
+- `prime`{string | Buffer | TypedArray | DataView}
 - `primeEncoding` {string}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
@@ -1504,7 +1504,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* El Secreto de Alice y el de Bob deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1531,7 +1531,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
+### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
 
 <!-- YAML
 added: v0.5.5

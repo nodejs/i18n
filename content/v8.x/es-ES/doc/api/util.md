@@ -261,11 +261,11 @@ changes:
 
 * `object` {any} Any JavaScript primitive or Object.
 * `options` {Object} 
-  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. Defaults to `false`.
-  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Defaults to `false`. Colors are customizable, see [Customizing `util.inspect` colors][].
+  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. Por defecto es `false`.
+  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. Esto es útil para inspeccionar objetos grandes y complicados. Por defecto es `2`. To make it recurse indefinitely pass `null`.
+  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Por defecto es `false`. Colors are customizable, see [Customizing `util.inspect` colors][].
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. Defaults to `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. Defaults to `false`.
+  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. Por defecto es `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Defaults to `100`. Set to `null` to show all array elements. Set to `0` or negative to show no array elements.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. Defaults to 60 for legacy compatibility.
 
@@ -553,7 +553,7 @@ Different Node.js build configurations support different sets of encodings. Whil
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. Defaults to `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` if decoding failures are fatal. Defaults to `false`. This option is only supported when ICU is enabled (see [Internationalization](intl.html)).
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. Defaults to `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. Por defecto es `false`.
 
 Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
@@ -561,7 +561,7 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
 * `options` {Object} 
-  * `stream` {boolean} `true` if additional chunks of data are expected. Defaults to `false`.
+  * `stream` {boolean} `true` if additional chunks of data are expected. Por defecto es `false`.
 * Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.

@@ -737,7 +737,7 @@ added: v7.6.0
   * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. Defaults to `true`.
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. Defaults to `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. Defaults to `true`.
-  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. Defaults to `false`.
+  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. Por defecto es `false`.
 
 Returns a customizable serialization of a URL String representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
@@ -900,8 +900,8 @@ added: v0.1.25
 -->
 
 * `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. Defaults to `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. Defaults to `false`.
+* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. Por defecto es `false`.
+* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. Por defecto es `false`.
 
 The `url.parse()` method takes a URL string, parses it, and returns a URL object.
 

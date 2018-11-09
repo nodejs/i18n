@@ -43,7 +43,7 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 ### new net.Server(\[options\]\[, connectionListener\])
 
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
@@ -91,7 +91,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -121,7 +121,7 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -158,8 +158,8 @@ Possible signatures:
 
 * [`server.listen(handle[, backlog][, callback])`][`server.listen(handle)`]
 * [`server.listen(options[, callback])`][`server.listen(options)`]
-* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
-* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) for TCP servers
+* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] para servidores [IPC](#net_ipc_support)
+* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) para servidores TCP
 
 This function is asynchronous. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
 
@@ -174,7 +174,7 @@ One of the most common errors raised when listening is `EADDRINUSE`. This happen
 ```js
 server.on('error', (e) => {
   if (e.code === 'EADDRINUSE') {
-    console.log('Address in use, retrying...');
+    console.log('Endereço em uso, tentando novamente...');
     setTimeout(() => {
       server.close();
       server.listen(PORT, HOST);
@@ -192,7 +192,7 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
 
@@ -237,7 +237,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -251,7 +251,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -285,7 +285,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
@@ -295,7 +295,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Retorna: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
@@ -324,7 +324,7 @@ Creates a new socket object.
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-* Returns: {net.Socket}
+* Retorna: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
@@ -432,7 +432,7 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -471,9 +471,9 @@ Initiate a connection on a given socket.
 Possible signatures:
 
 * [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
-* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] for TCP connections.
-* Returns: {net.Socket} The socket itself.
+* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] para conexões [IPC](#net_ipc_support).
+* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexões TCP.
+* Retorna: {net.Socket} O próprio socket.
 
 This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
@@ -495,7 +495,7 @@ changes:
 
 * `options` {Object}
 * `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Initiate a connection on a given socket. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
 
@@ -552,7 +552,7 @@ If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(optio
 added: v0.1.90
 -->
 
-* Returns: {net.Socket}
+* Retorna: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -568,7 +568,7 @@ If `exception` is specified, an [`'error'`][] event will be emitted and any list
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
 
@@ -592,7 +592,7 @@ The numeric representation of the local port. For example, `80` or `21`.
 
 ### socket.pause()
 
-* Returns: {net.Socket} The socket itself.
+* Retorna: {net.Socket} O próprio socket.
 
 Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
 
@@ -767,8 +767,8 @@ When the connection is established, a [`'connect'`][] event will be emitted on t
 Possible signatures:
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
-* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
+* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] para conexões [IPC](#net_ipc_support).
+* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] para conexões TCP.
 
 The [`net.connect()`][] function is an alias to this function.
 

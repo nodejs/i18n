@@ -6,7 +6,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `net` fornisce un'API di rete asincrona per la creazione dei server stream-based TCP o [IPC](#net_ipc_support) ([`net.createServer()`] []) e i client ([` net.createConnection()`] []).
+Il modulo di `rete` fornisce un'API di rete asincrona per la creazione dei server basati sullo stream TCP o [IPC](#net_ipc_support) ([`net.createServer()`][]) e per i client ([`net.createConnection()`][]).
 
 Ci si può accedere usando:
 
@@ -16,38 +16,38 @@ const net = require('net');
 
 ## Supporto IPC
 
-Il modulo `net` supporta IPC con le pipe denominate su Windows e dominio UNIX prese su altri sistemi operativi.
+Il modulo di `rete` supporta IPC con pipe denominate su Windows e i socket di dominio UNIX su altri sistemi operativi.
 
 ### Identificazione dei percorsi per le connessioni IPC
 
-[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] and [`socket.connect()`][] prendi un parametro `path` per identificare gli endpoint IPC.
+[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] e [`socket.connect()`][] prendi un parametro `path` per identificare gli endpoint IPC.
 
-Su UNIX, il dominio locale è anche noto come il dominio UNIX. Il percorso è un pathname del filesystem. Esso viene troncato per `sizeof (sockaddr_un.sun_path) - 1`, che varia su diversi sistemi operativi tra 91 e 107 byte. I valori tipici sono 107 su Linux e 103 su macOS. Il percorso è soggetto alle stesse convenzioni di denominazione e alle stesse verifiche dei permessi sulla creazione di file. If the UNIX domain socket (that is visible as a file system path) is created and used in conjunction with one of Node.js' API abstractions such as [`net.createServer()`][], it will be unlinked as part of [`server.close()`][]. On the other hand, if it is created and used outside of these abstractions, the user will need to manually remove it. The same applies when the path was created by a Node.js API but the program crashes abruptly. In short, a UNIX domain socket once successfully created will be visible in the filesystem, and will persist until unlinked.
+Su UNIX, il dominio locale è anche noto come il dominio UNIX. Il percorso è un pathname del filesystem. Esso viene troncato per `sizeof (sockaddr_un.sun_path) - 1`, che varia su diversi sistemi operativi compresi tra 91 e 107 byte. I valori tipici sono 107 su Linux e 103 su macOS. Il percorso è soggetto alle stesse convenzioni di denominazione e alle stesse verifiche dei permessi sulla creazione di file. Se il socket del dominio UNIX (che è visibile come un file system path) viene creato e utilizzato in combinazione con una delle astrazioni dell'API di Node.js come [`net.createServer()`][], sarà scollegato come parte del [`server.close()`][]. D'altra parte, se viene creato e utilizzato al di fuori di queste astrazioni, l'utente avrà bisogno di rimuoverlo manualmente. Lo stesso si applica quando il percorso è stato creato da un'API Node.js ma il programma si interrompe bruscamente. In breve, un socket di dominio UNIX una volta creato con successo sarà visibile nel filesystem e perdurerà fino a quando non verrà scollegato.
 
-On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in `\\?\pipe` or `\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving `..` sequences. Despite how it might look, the pipe namespace is flat. Pipes will *not persist*. They are removed when the last reference to them is closed. Unlike UNIX domain sockets, Windows will close and remove the pipe when the owning process exits.
+Su Windows, il dominio locale viene implementato utilizzando una pipe denominata. Il percorso *deve* fare riferimento ad un ingresso nella `\\?\pipe` o `\\.\pipe`. Qualsiasi carattere è permesso, ma quest'ultimo potrebbe eseguire alcune elaborazioni dei nomi del pipe, come la risoluzione di `..` sequenze. Nonostante quello che potrebbe sembrare, lo spazio dei nomi della pipe è flat. Le pipe *non perdureranno*. Vengono rimosse quando viene chiuso l'ultimo riferimento ad esse. A differenza dei socket di dominio UNIX, Windows chiuderà e rimuoverà la pipe quando esce dal processo di proprietà.
 
-JavaScript string escaping requires paths to be specified with extra backslash escaping such as:
+L'escaping della stringa JavaScript richiede che i percorsi siano specificati con una barra rovesciata extra di escaping come:
 
 ```js
 net.createServer().listen(
   path.join('\\\\?\\pipe', process.cwd(), 'myctl'));
 ```
 
-## Class: net.Server
+## Classe: Server di rete
 
 <!-- YAML
 added: v0.1.90
 -->
 
-This class is used to create a TCP or [IPC](#net_ipc_support) server.
+Questa classe viene utilizzata per creare un server TCP o [IPC](#net_ipc_support).
 
-### new net.Server(\[options\]\[, connectionListener\])
+### nuovo Server di rete (\[options\]\[, connectionListener\])
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
+Vedi [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
-`net.Server` is an [`EventEmitter`][] with the following events:
+`net.Server` è un [`EventEmitter`][] con i seguenti eventi:
 
 ### Event: 'close'
 
@@ -55,7 +55,7 @@ See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 added: v0.5.0
 -->
 
-Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
+Emesso quando il server si chiude. Tieni presente che se esistono connessioni, questo evento non viene emesso fino a quando tutte le connessioni non sono terminate.
 
 ### Event: 'connection'
 
@@ -63,9 +63,9 @@ Emitted when the server closes. Note that if connections exist, this event is no
 added: v0.1.90
 -->
 
-* {net.Socket} The connection object
+* {net.Socket} L'object della connessione
 
-Emitted when a new connection is made. `socket` is an instance of `net.Socket`.
+Emesso quando viene effettuata una nuova connessione. `socket`è un'istanza di `net.socket`.
 
 ### Event: 'error'
 
@@ -75,7 +75,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emesso quando si verifica un errore. A differenza di [`net.Socket`][], l'evento [`'close'`][] **non** sarà emesso direttamente in seguito a questo evento a meno che [`server.close ()`][] sia denominato manualmente. Vedi l'esempio nella discussione del [`server.listen()`][].
 
 ### Event: 'listening'
 
@@ -83,37 +83,37 @@ Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event w
 added: v0.1.90
 -->
 
-Emitted when the server has been bound after calling [`server.listen()`][].
+Emesso quando il server ha eseguito la funzione di binding dopo aver chiamato [` server.listen()`][].
 
-### server.address()
+### indirizzi del server()
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
-Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Restituisce `l'indirizzo` della funzione binding, l'indirizzo denominato `family` e la `porta` del server come riportato dal sistema operativo se si esegue il listening su un socket IP (utile per trovare quale porta è stata assegnata quando si ottiene un indirizzo assegnato dal sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
-For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
+Per un server in ascolto su una pipe o un socket di dominio UNIX, viene restituito il nome sotto forma di una stringa.
 
-Example:
+Esempio:
 
 ```js
-const server = net.createServer((socket) => {
-  socket.end('goodbye\n');
-}).on('error', (err) => {
-  // handle errors here
-  throw err;
+const server = net.createServer ((socket) => {
+   socket.end('goodbye\n');
+}). on('error', (err) = > {
+   // esegui l'handle degli errori qui
+   lancia err;
 });
 
-// grab an arbitrary unused port.
+// prendi una porta inutilizzata arbitraria.
 server.listen(() => {
-  console.log('opened server on', server.address());
+   console.log ('server aperto su', server.address ());
 });
 ```
 
-Don't call `server.address()` until the `'listening'` event has been emitted.
+Non chiamare `server.address()` finché non è stato emesso l'evento `'listening'`.
 
 ### server.close([callback])
 
@@ -121,9 +121,9 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
+Impedisci al server di accettare nuove connessioni e mantiene le connessioni esistenti. Questa funzione è asincrona, il server è finalmente chiuso quando tutte le connessioni sono terminate e il server emette un evento [`'close'`][]. Il `callback` facoltativo verrà chiamato una volta che si verifica l'evento `'close'`. Diversamente da quell'evento, sarà chiamato con un `Errore` come suo unico argomento se il server non era aperto quando era chiuso.
 
 ### server.connections
 
@@ -132,11 +132,11 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`server.getConnections()`][].
 
-The number of concurrent connections on the server.
+Il numero di connessioni simultanee sul server.
 
-This becomes `null` when sending a socket to a child with [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+Questo diventa `null` quando si invia un socket a un child con [`child_process.fork()`][]. Per effettuare il polling dei fork e ottenere il numero corrente di connessioni attive, utilizza invece l'asincronia [`server.getConnections()`][].
 
 ### server.getConnections(callback)
 
@@ -144,32 +144,32 @@ This becomes `null` when sending a socket to a child with [`child_process.fork()
 added: v0.9.7
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
+Assegnare asincronicamente il numero di connessioni simultanee sul server. Funziona quando i socket sono stati inviati ai fork.
 
-Callback should take two arguments `err` and `count`.
+La callback dovrebbe accettare due argomenti `err` e `count`.
 
 ### server.listen()
 
-Start a server listening for connections. A `net.Server` can be a TCP or an [IPC](#net_ipc_support) server depending on what it listens to.
+Avvia un server che esegue il listening per le connessioni. Un `net.Server` può essere un TCP o un server [IPC](#net_ipc_support) in base a ciò che ascolta.
 
-Possible signatures:
+Possibili firme:
 
 * [`server.listen(handle[, backlog][, callback])`][`server.listen(handle)`]
 * [`server.listen(options[, callback])`][`server.listen(options)`]
-* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
-* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) for TCP servers
+* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] per i server [IPC](#net_ipc_support)
+* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) per i server TCP
 
-This function is asynchronous. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+Questa funzione è asincrona. Quando il server inizia ad eseguire il listening, il[`'listening'`][] verrà emesso. L'ultimo parametro `callback` verrà aggiunto come un listener per l'evento [`'listening'`][].
 
-All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
+Tutti i metodi di `listen()` possono prendere un parametro `backlog` per specificare la massima lunghezza della coda delle connessioni in sospeso. La lunghezza effettiva sarà determinata dal sistema operativo attraverso le impostazioni di sysctl come `tcp_max_syn_backlog` e `somaxconn` su Linux. Il valore predefinito di questo parametro è 511 (non 512).
 
-All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) for details).
+Tutti [`net.Socket`][] sono impostati su `SO_REUSEADDR` (vedi [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html)per i dettagli).
 
-The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. Otherwise, an `ERR_SERVER_ALREADY_LISTEN` error will be thrown.
+Il metodo `server.listen()` può essere chiamato ancora se e solo se c'è stato un errore durante la prima chiamata `server.listen()` o se il `server.close()` è stato chiamato. In caso contrario, verrà lanciato un errore `ERR_SERVER_ALREADY_LISTEN`.
 
-One of the most common errors raised when listening is `EADDRINUSE`. This happens when another server is already listening on the requested `port` / `path` / `handle`. One way to handle this would be to retry after a certain amount of time:
+Uno degli errori più comuni generati durante il listening è `EADDRINUSE`. Ciò accade quando un altro server sta già eseguendo il listening sulla/o `port` / `path` / `handle` richiesto. Un modo per eseguire l'handle sarebbe quello di riprovare dopo un certo periodo di tempo:
 
 ```js
 server.on('error', (e) => {
@@ -190,15 +190,15 @@ added: v0.5.10
 -->
 
 * `handle` {Object}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions
-* `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Returns: {net.Server}
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][]
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][]
+* Restituisce: {net.Server}
 
-Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
+Avvia un server che "ascolta" le connessioni su un determinato `handle` che è già stato associato a una porta, a un socket di dominio UNIX o a una pipe denominata Windows.
 
-The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
+L'object `handle` può essere sia un server che un socket (qualsiasi cosa con un membro del `_handle ` sottostante), o un object con un membro `fd ` che è un descrittore di file valido.
 
-Listening on a file descriptor is not supported on Windows.
+Il listening su un descrittore di file non è supportato su Windows.
 
 #### server.listen(options[, callback])
 
@@ -206,19 +206,20 @@ Listening on a file descriptor is not supported on Windows.
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `options` {Object} Obbligatorio. Supporta le seguenti proprietà: 
   * `port` {number}
-  * `host` {string}
-  * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-  * `backlog` {number} Common parameter of [`server.listen()`][] functions.
-  * `exclusive` {boolean} **Default:** `false`
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+  * `host`{string}
+  * `path` {string} verrà ignorato se la `porta` è specificata. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+  * `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
+  * `exclusive`{boolean}**Default** `false`
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
+* Restituisce: {net.Server}
 
-If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
-<code>server.listen([port[, host[, backlog]]][, callback])</code></a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
+Se è la `porta` è specificata, si comporta come
+<a href="#net_server_listen_port_host_backlog_callback">
+<code> server.listen([port [, host[, backlog]]][, callback])</code> </a>. Altrimenti, se il `percorso` è specificato, si comporta come [`server.listen (path [, backlog] [, callback])`][`server.listen (path)`]. Se nessuno di essi viene specificato, verrà lanciato un errore.
 
-If `exclusive` is `false` (default), then cluster workers will use the same underlying handle, allowing connection handling duties to be shared. When `exclusive` is `true`, the handle is not shared, and attempted port sharing results in an error. An example which listens on an exclusive port is shown below.
+Se `exclusive` è `false` (predefinito), i lavoratori del cluster, quindi, utilizzeranno lo stesso handle sottostante che consente di condividere i compiti di handling delle connessioni. Quando `exclusive` è `true`, l'handle non viene condiviso e il tentativo di condivisione della porta genera un errore. Un esempio che esegue il listening su una exclusive port è mostrato qui di seguito.
 
 ```js
 server.listen({
@@ -234,12 +235,12 @@ server.listen({
 added: v0.1.90
 -->
 
-* `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `path` {string} Percorso che il server deve ascoltare. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
+* Restituisce: {net.Server}
 
-Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
+Avvia un server [IPC](#net_ipc_support) che esegua il listening per le connessioni sul `path` indicato.
 
 #### server.listen(\[port[, host[, backlog]]\]\[, callback\])
 
@@ -248,18 +249,18 @@ added: v0.1.90
 -->
 
 * `port` {number}
-* `host` {string}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `host`{string}
+* `backlog`{number} Parametro comune delle funzioni [`server.listen()`][].
+* `callback`{Function} Parametro comune delle funzioni [`server.listen()`][].
+* Restituisce: {net.Server}
 
-Start a TCP server listening for connections on the given `port` and `host`.
+Avvia un server TCP che esegua il listening per le connessioni sulla `porta` e sull' `host`.
 
-If `port` is omitted or is 0, the operating system will assign an arbitrary unused port, which can be retrieved by using `server.address().port` after the [`'listening'`][] event has been emitted.
+Se la `porta` è omessa o è 0, il sistema operativo assegnerà arbitrariamente una porta non utilizzata, che può essere recuperata usando `server.address().port` dopo che l'evento [`'listening'`][] è stato emesso.
 
-If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
+Se l'`host` viene omesso, il server accetterà connessioni su un [indirizzo IPv6 non specificato ](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) quando IPv6 è disponibile, oppure [l'indirizzo IPv4 non specificato ](https://en.wikipedia.org/wiki/0.0.0.0) o altrimenti su (` 0.0.0.0 `).
 
-In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
+Nella maggior parte dei sistemi operativi, eseguire il listening per [l'indirizzo IPv6 non specificato](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) può portare anche il `net.Server` ad eseguire i listening sull' [indirizzo IPv4 non specificato](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
 ### server.listening
 
@@ -267,7 +268,7 @@ In most operating systems, listening to the [unspecified IPv6 address](https://e
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Indica se il server "sta ascoltando" o meno le connessioni.
 
 ### server.maxConnections
 
@@ -275,9 +276,9 @@ added: v5.7.0
 added: v0.2.0
 -->
 
-Set this property to reject connections when the server's connection count gets high.
+Imposta questa proprietà per rifiutare le connessioni quando il conteggio della connessione del server diventa alto.
 
-It is not recommended to use this option once a socket has been sent to a child with [`child_process.fork()`][].
+Non è consigliabile utilizzare questa opzione una volta che un socket è stato inviato a un child con [`child_process.fork()`][].
 
 ### server.ref()
 
@@ -285,9 +286,9 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
+A differenza di`unref()`, chiamare `ref()` su un server precedente `unref`ed *non* permetterà l'uscita dal programma se esso è l'unico server rimasto ( l'azione predefinita). Se il server `ref`ed sta chiamando `ref()` di nuovo non avrà effetto.
 
 ### server.unref()
 
@@ -295,21 +296,21 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Restituisce: {net.Server}
 
-Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
+Chiamare `unref ()` su un server consentirà l'uscita dal programma se questo è l'unico server attivo nel sistema degli eventi. Se il server `unref`ed sta già chiamando `unref()` nuovamente, non avrà effetto.
 
-## Class: net.Socket
+## Classe: net.Socket
 
 <!-- YAML
 added: v0.3.4
 -->
 
-This class is an abstraction of a TCP socket or a streaming [IPC](#net_ipc_support) endpoint (uses named pipes on Windows, and UNIX domain sockets otherwise). A `net.Socket` is also a [duplex stream](stream.html#stream_class_stream_duplex), so it can be both readable and writable, and it is also an [`EventEmitter`][].
+Questa classe è un'astrazione di un socket TCP o un endpoint di streaming [IPC](#net_ipc_support) (utilizza le pipe denominate su Windows e, in caso contrario, i socket UNIX del dominio). Un `net.Socket` è anche un [duplex stream](stream.html#stream_class_stream_duplex), in modo tale che possa essere sia leggibile che scrivibile ed è anche un [`EventEmitter`][].
 
-A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
+Un `net.Socket` può essere creato dall'utente e utilizzato direttamente per interagire con un server. Per esempio, esso viene restituito da una [`net.createConnection()`][] in modo tale che l'utente possa utilizzarlo per comunicare con il server.
 
-It can also be created by Node.js and passed to the user when a connection is received. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
+Esso può ache essere creato da Node.js e trasmesso all'utente quando una connessione viene ricevuta. Per esempio, esso viene trasmesso ai listener di un evento [`'connection'`][] emesso su un [`net.Server`][], in modo tale che l'utente possa utilizzarlo per interagire con il client.
 
 ### new net.Socket([options])
 
