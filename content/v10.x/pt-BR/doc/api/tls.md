@@ -268,7 +268,7 @@ The `server.addContext()` method adds a secure context that will be used if the 
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
 
@@ -303,7 +303,7 @@ Returns the current number of concurrent connections on the server.
 added: v3.0.0
 -->
 
-* Returns: {Buffer}
+* Retorna: {Buffer}
 
 Returns a `Buffer` instance holding the keys currently used for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
 
@@ -389,7 +389,7 @@ The `'secureConnect'` event is emitted after the handshaking process for a new c
 added: v0.11.4
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns the bound `address`, the address `family` name, and `port` of the underlying socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -407,7 +407,7 @@ Returns the reason why the peer's certificate was not been verified. This proper
 added: v0.11.4
 -->
 
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if the peer certificate was signed by one of the CAs specified when creating the `tls.TLSSocket` instance, otherwise `false`.
 
@@ -433,7 +433,7 @@ Always returns `true`. This may be used to distinguish TLS sockets from regular 
 added: v0.11.4
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns an object representing the cipher name. The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
 
@@ -447,7 +447,7 @@ See `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIP
 added: v5.0.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns an object representing the type, name, and size of parameter of an ephemeral key exchange in [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) on a client connection. It returns an empty object when the key exchange is not ephemeral. As this is only supported on a client socket; `null` is returned if called on a server socket. The supported types are `'DH'` and `'ECDH'`. The `name` property is available only when type is `'ECDH'`.
 
@@ -472,7 +472,7 @@ added: v0.11.4
 -->
 
 * `detailed` {boolean} Include the full certificate chain if `true`, otherwise include just the peer's certificate.
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns an object representing the peer's certificate. The returned object has some properties corresponding to the fields of the certificate.
 
@@ -496,7 +496,7 @@ For example:
      OU: 'Test TLS Certificate',
      CN: 'localhost' },
   issuerCertificate:
-   { ... another certificate, possibly with an .issuerCertificate ... },
+   { ... um outro certificado, possivelmente com um .issuerCertificate ... },
   raw: < RAW DER buffer >,
   pubkey: < RAW DER buffer >,
   valid_from: 'Nov 11 09:52:22 2009 GMT',
@@ -526,7 +526,7 @@ Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to
 added: v5.7.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
 
@@ -632,7 +632,7 @@ added: v0.11.11
 -->
 
 * `size` {number} The maximum TLS fragment size. The maximum value is `16384`. **Default:** `16384`.
-* Returns: {boolean}
+* Retorna: {boolean}
 
 The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
 
@@ -767,7 +767,7 @@ const options = {
 
 const socket = tls.connect(8000, options, () => {
   console.log('client connected',
-              socket.authorized ? 'authorized' : 'unauthorized');
+              socket.authorized ? 'autorizado' : 'não autorizado');
   process.stdin.pipe(socket);
   process.stdin.resume();
 });
