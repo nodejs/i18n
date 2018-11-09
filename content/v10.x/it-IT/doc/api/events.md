@@ -221,7 +221,7 @@ Di default, è possibile registrare un massimo di `10` listener per ogni singolo
 
 Prestare attenzione durante la configurazione dell'`EventEmitter.defaultMaxListeners` poiché la modifica influenza *tutte* le istanze `EventEmitter`, incluse quelle create precedentemente alla modifica. Tuttavia, chiamare [`emitter.setMaxListeners(n)`][] mantiene la precedenza su `EventEmitter.defaultMaxListeners`.
 
-Da notare che questo non è un limite rigido. The `EventEmitter` instance will allow more listeners to be added but will output a trace warning to stderr indicating that a "possible EventEmitter memory leak" has been detected. For any single `EventEmitter`, the `emitter.getMaxListeners()` and `emitter.setMaxListeners()` methods can be used to temporarily avoid this warning:
+Da notare che questo non è un limite rigido. The `EventEmitter` instance will allow more listeners to be added but will output a trace warning to stderr indicating that a "possible EventEmitter memory leak" has been detected. Per ogni singolo `EventEmitter`, si possono utilizzare i metodi `emitter.getMaxListeners()` e `emitter.setMaxListeners()` per evitare temporaneamente questo avviso:
 
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
