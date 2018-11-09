@@ -423,7 +423,7 @@ Attivato immediatamente dopo `'connect'`.
 added: v0.1.90
 -->
 
-Emesso se il socket scade dall'inattività. This is only to notify that the socket has been idle. The user must manually close the connection.
+Emesso se il socket scade dall'inattività. Questo è solo per informare che il socket è rimasto inattivo. L'utente deve chiudere manualmente la connessione.
 
 Vedi anche: [`socket.setTimeout()`][].
 
@@ -435,7 +435,7 @@ added: v0.1.90
 
 * Restituisce: {Object}
 
-Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+Restituisce `l'indirizzo` della funzione binding, l'indirizzo denominato `family` e la `porta` del socket come riportato dal sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
 
