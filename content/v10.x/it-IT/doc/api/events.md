@@ -187,10 +187,10 @@ changes:
                  now yields the original listener function.
 -->
 
-- `eventName` {string|symbol} The event name
-- `listener` {Function} The event handler function
+- `eventName` {string|symbol} Il nome dell'evento
+- `listener` {Function} La funzione dell'event handler
 
-The `'removeListener'` event is emitted *after* the `listener` is removed.
+L'event `'removeListener'` viene emesso *dopo* l'eliminazione del `listener`.
 
 ### EventEmitter.listenerCount(emitter, eventName)
 
@@ -199,7 +199,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza [`emitter.listenerCount()`][] al suo posto.
 
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
