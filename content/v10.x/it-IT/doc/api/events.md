@@ -256,9 +256,9 @@ added: v0.1.26
 - `...args` {any}
 - Restituisce: {boolean}
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+Chiama in maniera sincrona ognuno dei listener registrati per l'evento con nome `eventName`, nell'ordine di registrazione, passando gli argomenti forniti a ciascuno.
 
-Returns `true` if the event had listeners, `false` otherwise.
+Restituisce `true` se l'evento ha avuto listener, `false` in caso contrario.
 
 ### emitter.eventNames()
 
@@ -266,9 +266,9 @@ Returns `true` if the event had listeners, `false` otherwise.
 added: v6.0.0
 -->
 
-- Returns: {Array}
+- Restituisce: {Array}
 
-Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
+Restituisce un array che elenca gli eventi per i quali l'emitter ha registrato i listener. I valori nell'array saranno stringhe o `Symbol`.
 
 ```js
 const EventEmitter = require('events');
