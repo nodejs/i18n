@@ -2161,7 +2161,7 @@ Esta versión marca la transición de Node.js v8 a "Long Term Support" (LTS) con
 
 <a id="8.3.0"></a>
 
-## 2017-08-09, Versión 8.3.0 (Presente), @addaleax
+## 2017-08-09, Versión 8.3.0 (Actual), @addaleax
 
 ### Cambios Notables
 
@@ -2175,7 +2175,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 * **DNS**
   
-  * Ahora se admiten instancias de resolución de DNS independientes, con soporte para cancelar las solicitudes correspondientes. [#14518](https://github.com/nodejs/node/pull/14518)
+  * Ahora se admiten instancias del resolvedor de DNS independientes, con soporte para cancelar las solicitudes correspondientes. [#14518](https://github.com/nodejs/node/pull/14518)
 
 * **N-API**
   
@@ -2196,7 +2196,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 ### Commits
 
-* [[`e2356e72e7`](https://github.com/nodejs/node/commit/e2356e72e7)] - **assert**: mejorar deepEqual Set y mapear el peor de los casos (Ruben Bridgewater) [#14258](https://github.com/nodejs/node/pull/14258)
+* [[`e2356e72e7`](https://github.com/nodejs/node/commit/e2356e72e7)] - **assert**: mejorar el peor de los casos de deepEqual Set y Map (Ruben Bridgewater) [#14258](https://github.com/nodejs/node/pull/14258)
 * [[`9252b8c057`](https://github.com/nodejs/node/commit/9252b8c057)] - **assert**: refactorizar para reducir las rutas de código innecesarias (Ruben Bridgewater) [#13973](https://github.com/nodejs/node/pull/13973)
 * [[`89586f6684`](https://github.com/nodejs/node/commit/89586f6684)] - **assert**: corregir el uso incorrecto de ERR_INVALID_ARG_TYPE (Tobias Nießen) [#14011](https://github.com/nodejs/node/pull/14011)
 * [[`26785a23bb`](https://github.com/nodejs/node/commit/26785a23bb)] - **assert**: refactorizar el código (Ruben Bridgewater) [#13862](https://github.com/nodejs/node/pull/13862)
@@ -2204,16 +2204,16 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`9b104b4ea8`](https://github.com/nodejs/node/commit/9b104b4ea8)] - **benchmark**: añadir mapa de aserción y establecer pruebas de rendimiento (Ruben Bridgewater) [#14258](https://github.com/nodejs/node/pull/14258)
 * [[`2c364ab291`](https://github.com/nodejs/node/commit/2c364ab291)] - **buffer**: eliminar un especificador de atributo añadido incorrectamente (Jiajie Hu) [#14466](https://github.com/nodejs/node/pull/14466)
 * [[`c0f0c38535`](https://github.com/nodejs/node/commit/c0f0c38535)] - **build**: habilitar linting de C++ para src/*/* (jeyanthinath) [#14497](https://github.com/nodejs/node/pull/14497)
-* [[`87e108059b`](https://github.com/nodejs/node/commit/87e108059b)] - **build**: corregir compilar sin icu (Jimmy Thomson) [#14533](https://github.com/nodejs/node/pull/14533)
+* [[`87e108059b`](https://github.com/nodejs/node/commit/87e108059b)] - **build**: corregir la compilación sin icu (Jimmy Thomson) [#14533](https://github.com/nodejs/node/pull/14533)
 * [[`0ebb4dff17`](https://github.com/nodejs/node/commit/0ebb4dff17)] - **build**: co-diseñar tarball binario en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * [[`7f5bcbd2e9`](https://github.com/nodejs/node/commit/7f5bcbd2e9)] - **build,test**: ejecutar pruebas de v8 en windows (Kunal Pathak) [#13992](https://github.com/nodejs/node/pull/13992)
 * [[`5ab4471d72`](https://github.com/nodejs/node/commit/5ab4471d72)] - **build,tools**: no forzar el prefijo de co-diseño (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * [[`7b96944254`](https://github.com/nodejs/node/commit/7b96944254)] - **build,win**: corregir el script de detección de python (Jason Ginchereau) [#14546](https://github.com/nodejs/node/pull/14546)
-* [[`1f16c43e80`](https://github.com/nodejs/node/commit/1f16c43e80)] - **child_process**: arreglar el handle pasando con grandes cargas útiles (Anna Henningsen) [#14588](https://github.com/nodejs/node/pull/14588)
+* [[`1f16c43e80`](https://github.com/nodejs/node/commit/1f16c43e80)] - **child_process**: arreglar el paso de handles con grandes cargas útiles (Anna Henningsen) [#14588](https://github.com/nodejs/node/pull/14588)
 * [[`9c1199e88f`](https://github.com/nodejs/node/commit/9c1199e88f)] - **(SEMVER-MINOR)** **console**: añadir console.count() y console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * [[`255b9bfa8a`](https://github.com/nodejs/node/commit/255b9bfa8a)] - **console,test**: hacer que la prueba del mensaje sea más precisa (Anna Henningsen) [#14580](https://github.com/nodejs/node/pull/14580)
 * [[`51c1afafa6`](https://github.com/nodejs/node/commit/51c1afafa6)] - **crypto**: cambiar las fallas de segmentación a CHECKs (Tobias Nießen) [#14548](https://github.com/nodejs/node/pull/14548)
-* [[`e2b306c831`](https://github.com/nodejs/node/commit/e2b306c831)] - **(SEMVER-MINOR)** **deps**: hacer backport a las strings rehash después de la deserialización (Yang Guo) [#14004](https://github.com/nodejs/node/pull/14004)
+* [[`e2b306c831`](https://github.com/nodejs/node/commit/e2b306c831)] - **(SEMVER-MINOR)** **deps**: hacer backport a las strings de rehash después de la deserialización (Yang Guo) [#14004](https://github.com/nodejs/node/pull/14004)
 * [[`2dbf95d5ee`](https://github.com/nodejs/node/commit/2dbf95d5ee)] - **(SEMVER-MINOR)** **deps**: hacer backport a c0f1ff2 desde upstream de V8 (Michaël Zasso) [#14004](https://github.com/nodejs/node/pull/14004)
 * [[`efd297a5c9`](https://github.com/nodejs/node/commit/efd297a5c9)] - **(SEMVER-MINOR)** **deps**: corregir compilación de complementos con VS2013 (Bartosz Sosnowski) [#14004](https://github.com/nodejs/node/pull/14004)
 * [[`160e2f03d2`](https://github.com/nodejs/node/commit/160e2f03d2)] - **(SEMVER-MINOR)** **deps**: limitar la prueba de v8 regress/regress-crbug-514081 (Michael Dawson) [#14004](https://github.com/nodejs/node/pull/14004)
@@ -2221,7 +2221,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`d9273ed5ed`](https://github.com/nodejs/node/commit/d9273ed5ed)] - **deps**: hacer cherry-pick a 18ea996 desde upstream de c-ares (Anna Henningsen) [#13883](https://github.com/nodejs/node/pull/13883)
 * [[`32b30d519e`](https://github.com/nodejs/node/commit/32b30d519e)] - **(SEMVER-MINOR)** **dns**: nombrar funciones generadas (Anna Henningsen) [#14518](https://github.com/nodejs/node/pull/14518)
 * [[`0982810208`](https://github.com/nodejs/node/commit/0982810208)] - **(SEMVER-MINOR)** **dns**: añadir channel.cancel() (Anna Henningsen) [#14518](https://github.com/nodejs/node/pull/14518)
-* [[`69e41dc5da`](https://github.com/nodejs/node/commit/69e41dc5da)] - **(SEMVER-MINOR)** **dns**: habilitar el uso de solucionadores de cuidados independientes (Anna Henningsen) [#14518](https://github.com/nodejs/node/pull/14518)
+* [[`69e41dc5da`](https://github.com/nodejs/node/commit/69e41dc5da)] - **(SEMVER-MINOR)** **dns**: habilitar el uso de solucionadores de cares independientes (Anna Henningsen) [#14518](https://github.com/nodejs/node/pull/14518)
 * [[`ad901ed272`](https://github.com/nodejs/node/commit/ad901ed272)] - **doc**: añadir a gabrielschulhof a los colaboradores (Gabriel Schulhof) [#14692](https://github.com/nodejs/node/pull/14692)
 * [[`dd586c6bd4`](https://github.com/nodejs/node/commit/dd586c6bd4)] - **doc**: borrar comentario innecesario de eslint-plugin-markdown (Vse Mozhet Byt) [#14598](https://github.com/nodejs/node/pull/14598)
 * [[`8c80e91a2e`](https://github.com/nodejs/node/commit/8c80e91a2e)] - **doc**: corregir error tipográfico en writing-and-running-benchmarks.md (Yuta Hiroto) [#14600](https://github.com/nodejs/node/pull/14600)
@@ -2263,7 +2263,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`b849b3d223`](https://github.com/nodejs/node/commit/b849b3d223)] - **n-api**: reutilizar napi_env entre módulos (Gabriel Schulhof) [#14217](https://github.com/nodejs/node/pull/14217)
 * [[`6078dea35d`](https://github.com/nodejs/node/commit/6078dea35d)] - **n-api**: crear directamente "Local" desde "Persistent" (Kyle Farnung) [#14211](https://github.com/nodejs/node/pull/14211)
 * [[`f2efdc880f`](https://github.com/nodejs/node/commit/f2efdc880f)] - **(SEMVER-MINOR)** **n-api**: añadir parámetro de código a los ayudantes de error (Michael Dawson) [#13988](https://github.com/nodejs/node/pull/13988)
-* [[`fa134dd60c`](https://github.com/nodejs/node/commit/fa134dd60c)] - **n-api**: Añadir rutas rápidas para los getters enteros (Anna Henningsen) [#14393](https://github.com/nodejs/node/pull/14393)
+* [[`fa134dd60c`](https://github.com/nodejs/node/commit/fa134dd60c)] - **n-api**: Añadir rutas rápidas para los getters de enteros (Anna Henningsen) [#14393](https://github.com/nodejs/node/pull/14393)
 * [[`58446912a6`](https://github.com/nodejs/node/commit/58446912a6)] - **net**: corregir bytesWritten durante writev (Brendan Ashworth) [#14236](https://github.com/nodejs/node/pull/14236)
 * [[`b41ae9847e`](https://github.com/nodejs/node/commit/b41ae9847e)] - **path**: corregir las rutas relativas de volumen de win32 (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * [[`509039fcaf`](https://github.com/nodejs/node/commit/509039fcaf)] - **path**: eliminar copias de strings innecesarias (Tobias Nießen) [#14438](https://github.com/nodejs/node/pull/14438)
@@ -2276,9 +2276,9 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`32ba8aea0b`](https://github.com/nodejs/node/commit/32ba8aea0b)] - **repl**: corregir el viejo historial de manejo de errores (Ruben Bridgewater) [#13733](https://github.com/nodejs/node/pull/13733)
 * [[`264e4345f8`](https://github.com/nodejs/node/commit/264e4345f8)] - **src**: reutilizar la string 'ondone' en node_crypto.cc (Tobias Nießen) [#14587](https://github.com/nodejs/node/pull/14587)
 * [[`6ae6469d4a`](https://github.com/nodejs/node/commit/6ae6469d4a)] - **src**: utilizar cadenas existentes sobre la creación de otras nuevas (Anna Henningsen) [#14587](https://github.com/nodejs/node/pull/14587)
-* [[`eb068a0526`](https://github.com/nodejs/node/commit/eb068a0526)] - **src**: eliminar Connection::ClearError() no utilizado (Ben Noordhuis) [#14514](https://github.com/nodejs/node/pull/14514)
-* [[`4b01d8cac3`](https://github.com/nodejs/node/commit/4b01d8cac3)] - **src**: reemplazar aserción CHECK_LE en node_api.cc (Ben Noordhuis) [#14514](https://github.com/nodejs/node/pull/14514)
-* [[`3c6b5e5fac`](https://github.com/nodejs/node/commit/3c6b5e5fac)] - **src**: manejar adecuadamente el temporizador en los cuidados ChannelWrap (Anna Henningsen) [#14634](https://github.com/nodejs/node/pull/14634)
+* [[`eb068a0526`](https://github.com/nodejs/node/commit/eb068a0526)] - **src**: eliminar Connection::ClearError() no utilizada (Ben Noordhuis) [#14514](https://github.com/nodejs/node/pull/14514)
+* [[`4b01d8cac3`](https://github.com/nodejs/node/commit/4b01d8cac3)] - **src**: reemplazar aserción con CHECK_LE en node_api.cc (Ben Noordhuis) [#14514](https://github.com/nodejs/node/pull/14514)
+* [[`3c6b5e5fac`](https://github.com/nodejs/node/commit/3c6b5e5fac)] - **src**: manejar adecuadamente el temporizador en los ChannelWrap de cares (Anna Henningsen) [#14634](https://github.com/nodejs/node/pull/14634)
 * [[`8c5cd1439e`](https://github.com/nodejs/node/commit/8c5cd1439e)] - **src**: evitar des-referencia sin verificación de existencia (Timothy Gu) [#14591](https://github.com/nodejs/node/pull/14591)
 * [[`8a3bc874fa`](https://github.com/nodejs/node/commit/8a3bc874fa)] - **src**: corregir la interacción de process.abort() con V8 (Anna Henningsen) [#13985](https://github.com/nodejs/node/pull/13985)
 * [[`997204a213`](https://github.com/nodejs/node/commit/997204a213)] - **(SEMVER-MINOR)** **src**: corregir nuevas advertencias del compilador de V8 (Michaël Zasso) [#14004](https://github.com/nodejs/node/pull/14004)
@@ -2304,9 +2304,9 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`23cd934d71`](https://github.com/nodejs/node/commit/23cd934d71)] - **test**: refactorizar test-httpparser.response.js (erdun) [#14290](https://github.com/nodejs/node/pull/14290)
 * [[`91b6ba1973`](https://github.com/nodejs/node/commit/91b6ba1973)] - **test**: refactorizar test-benchmark-timers (Rich Trott) [#14464](https://github.com/nodejs/node/pull/14464)
 * [[`c2853893cf`](https://github.com/nodejs/node/commit/c2853893cf)] - **test**: refactorizar test-http-parser.js (Rich Trott) [#14431](https://github.com/nodejs/node/pull/14431)
-* [[`4ff562f41e`](https://github.com/nodejs/node/commit/4ff562f41e)] - **test**: hacer a la prueba crypto defectuosa más determinista (Ben Noordhuis) [#14451](https://github.com/nodejs/node/pull/14451)
-* [[`100e862dfa`](https://github.com/nodejs/node/commit/100e862dfa)] - **test**: renombrar purueba de crypto (Ben Noordhuis) [#14451](https://github.com/nodejs/node/pull/14451)
-* [[`f8c2302a66`](https://github.com/nodejs/node/commit/f8c2302a66)] - **test**: usar Common.must Call () en lugar del handle exit (笑斌) [#14262](https://github.com/nodejs/node/pull/14262)
+* [[`4ff562f41e`](https://github.com/nodejs/node/commit/4ff562f41e)] - **test**: hacer que la prueba de crypto defectuosa sea más determinista (Ben Noordhuis) [#14451](https://github.com/nodejs/node/pull/14451)
+* [[`100e862dfa`](https://github.com/nodejs/node/commit/100e862dfa)] - **test**: renombrar prueba de crypto (Ben Noordhuis) [#14451](https://github.com/nodejs/node/pull/14451)
+* [[`f8c2302a66`](https://github.com/nodejs/node/commit/f8c2302a66)] - **test**: usar Common.mustCall() en lugar del handle de salida (笑斌) [#14262](https://github.com/nodejs/node/pull/14262)
 * [[`0ff19b0c4c`](https://github.com/nodejs/node/commit/0ff19b0c4c)] - **test**: changed error message validator (Pratik Jain) [#14443](https://github.com/nodejs/node/pull/14443)
 * [[`14f6a5a367`](https://github.com/nodejs/node/commit/14f6a5a367)] - **test**: fix flaky test-force-repl (Rich Trott) [#14439](https://github.com/nodejs/node/pull/14439)
 * [[`5057c7a953`](https://github.com/nodejs/node/commit/5057c7a953)] - **test**: replace concatenation with template literal (rockcoder23) [#14270](https://github.com/nodejs/node/pull/14270)
