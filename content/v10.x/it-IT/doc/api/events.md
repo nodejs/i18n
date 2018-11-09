@@ -208,7 +208,7 @@ const myEmitter = new MyEmitter();
 myEmitter.on('event', () => {});
 myEmitter.on('event', () => {});
 console.log(EventEmitter.listenerCount(myEmitter, 'event'));
-// Prints: 2
+// Stampa: 2
 ```
 
 ### EventEmitter.defaultMaxListeners
