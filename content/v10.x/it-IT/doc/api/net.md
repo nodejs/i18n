@@ -545,7 +545,7 @@ Pseudonimo per `socket.connect(options[, connectListener])`][`socket.connect(opt
 added: v6.1.0
 -->
 
-Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora terminato. Sarà impostato su `false` prima di emettere l'evento `'connect'` e/o chiamare [`socket.connect(options[,connectListener])`][` socket.connect (options)`]'s callback.
+Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora terminato. Sarà impostato su `false` prima di emettere l'evento `'connect'` e/o chiamare le calback dei [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
 ### socket.destroy([exception])
 
@@ -561,7 +561,7 @@ Se `exception` è specificata, verrà emesso un evento [`'error'`][] e tutti i l
 
 ### socket.destroyed
 
-* {boolean} Indica se la connessione è stata distrutta o meno. Una volta che una connessione è stata distrutta, non è possibile trasferire ulteriori dati utilizzandola.
+* {boolean} Indica se la connessione è distrutta o meno. Una volta che una connessione è stata distrutta, non è possibile trasferire ulteriori dati utilizzandola.
 
 ### socket.end(\[data\]\[, encoding\])
 
@@ -571,9 +571,9 @@ added: v0.1.90
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Semi-chiudi il socket. cioè, invia un pacchetto FIN. È possibile che il server invii ancora alcuni dati.
+Semi-chiude il socket. cioè, invia un pacchetto FIN. È possibile che il server invii ancora alcuni dati.
 
-Se è specificato `data`, è equivalente alla chiamata `socket.write (data, encoding)` seguito da [` socket.end()`][].
+Se `data` è specificato, è equivalente alla chiamata `socket.write (data, encoding)` seguito da [` socket.end()`][].
 
 ### socket.localAddress
 
@@ -581,7 +581,7 @@ Se è specificato `data`, è equivalente alla chiamata `socket.write (data, enco
 added: v0.9.6
 -->
 
-La rappresentazione della stringa dell'indirizzo IP locale su cui si connette il client remoto. Ad esempio, in un server in ascolto su `'0.0.0.0'`, se un client si connette su `'192.168.1.1'`, il valore del `socket.localAddress ` sarebbe `'192.168.1.1'`.
+La rappresentazione della stringa dell'indirizzo IP locale sul quale si sta connettendo il client remoto. Ad esempio, in un server in ascolto su `'0.0.0.0'`, se un client si connette su `'192.168.1.1'`, il valore del `socket.localAddress ` sarebbe `'192.168.1.1'`.
 
 ### socket.localPort
 
@@ -613,7 +613,7 @@ A differenza di`unref()`, chiamare `ref()` su un socket precedente `unref`ed *no
 added: v0.5.10
 -->
 
-La rappresentazione della stringa dell'indirizzo IP remoto. Ad esempio, `'74.125.127.100'` or `'2001:4860:a005::68'`. Il valore può essere `undefined` se il socket viene distrutto (ad esempio, se il client è disconnesso).
+La rappresentazione della stringa dell'indirizzo IP remoto. Ad esempio, `'74.125.127.100'` o `'2001:4860:a005::68'`. Il valore può essere `undefined` se il socket viene distrutto (ad esempio, se il client è disconnesso).
 
 ### socket.remoteFamily
 
@@ -645,7 +645,7 @@ added: v0.1.90
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Imposta la codifica per il socket come [Readable Stream](stream.html#stream_class_stream_readable). Vedi [`readable.setEncoding()`][] per maggiori informazioni.
+Imposta la codifica per il socket come un [Readable Stream](stream.html#stream_class_stream_readable). Vedi [`readable.setEncoding()`][] per maggiori informazioni.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
 
