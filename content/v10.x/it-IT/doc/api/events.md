@@ -138,7 +138,7 @@ The `EventEmitter` class is defined and exposed by the `events` module:
 const EventEmitter = require('events');
 ```
 
-All `EventEmitter`s emit the event `'newListener'` when new listeners are added and `'removeListener'` when existing listeners are removed.
+Tutti gli `EventEmitter` emettono l'event `'newListener'` quando vengono aggiunti nuovi listener e `'removeListener'` quando vengono eliminati listener esistenti.
 
 ### Event: 'newListener'
 
@@ -146,8 +146,8 @@ All `EventEmitter`s emit the event `'newListener'` when new listeners are added 
 added: v0.1.26
 -->
 
-- `eventName` {string|symbol} The name of the event being listened for
-- `listener` {Function} The event handler function
+- `eventName`{string|symbol} Il nome dell'evento sottoposto al listening
+- `listener` {Function} La funzione dell'event handler
 
 The `EventEmitter` instance will emit its own `'newListener'` event *before* a listener is added to its internal array of listeners.
 
