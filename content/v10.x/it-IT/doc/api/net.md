@@ -443,9 +443,9 @@ Restituisce `l'indirizzo` della funzione binding, l'indirizzo denominato `family
 added: v0.3.8
 -->
 
-`net.Socket` ha la proprietà che permette al `socket.write()` di funzionare sempre. Questo è per aiutare gli utenti ad essere operativi nell'immediato. Il computer non può sempre tenere il passo con la quantità di dati che viene scritta per un socket: la connessione di rete potrebbe essere troppo lenta. Node.js accoderà internamente i dati scritti per un socket e li invierà via cavo quando è possibile. (Internally it is polling on the socket's file descriptor for being writable).
+`net.Socket` ha la proprietà che permette al `socket.write()` di funzionare sempre. Questo è per aiutare gli utenti ad essere operativi nell'immediato. Il computer non può sempre tenere il passo con la quantità di dati che viene scritta per un socket: la connessione di rete potrebbe essere troppo lenta. Node.js accoderà internamente i dati scritti per un socket e li invierà via cavo quando è possibile. (Internamente sta eseguendo il polling sul descrittore di file del socket per essere scrivibile).
 
-The consequence of this internal buffering is that memory may grow. This property shows the number of characters currently buffered to be written. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
+La conseguenza di questo buffering interno è che la memoria può crescere. This property shows the number of characters currently buffered to be written. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
 
 Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
 
@@ -455,7 +455,7 @@ Users who experience large or growing `bufferSize` should attempt to "throttle" 
 added: v0.5.3
 -->
 
-The amount of received bytes.
+La quantità di byte ricevuti.
 
 ### socket.bytesWritten
 
@@ -463,7 +463,7 @@ The amount of received bytes.
 added: v0.5.3
 -->
 
-The amount of bytes sent.
+La quantità di byte inviati.
 
 ### socket.connect()
 
