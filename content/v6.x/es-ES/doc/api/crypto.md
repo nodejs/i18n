@@ -1182,7 +1182,7 @@ La función de `callback` dada es llamada a través de dos argumentos: `err` y `
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
 Ejemplo:
 
@@ -1208,7 +1208,7 @@ If an error occurs an Error will be thrown, otherwise the derived key will be re
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
 Ejemplo:
 
