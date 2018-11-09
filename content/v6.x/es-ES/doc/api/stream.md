@@ -287,11 +287,11 @@ Vea también: [`writable.uncork()`][].
 added: v0.9.4
 -->
 
-* `chunk` {string|Buffer|any} Datos opcionales para escribir. Para streams que no operan en modo objeto, `chunk` debe ser una cadena o un `Buffer`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
-* `encoding` {string} The encoding, if `chunk` is a String
-* `callback` {Function} Optional callback for when the stream is finished
+* `chunk` {string|Buffer|any} Datos opcionales para escribir. Para streams que no operan en modo objeto, `chunk` debe ser una cadena o un `Buffer`. Para streams del modo objeto, `chunk` debe ser cualquier valor de JavaScript diferente a `null`.
+* `encoding` {string} La codificación, si `chunk` es un String
+* `callback` {Function} Callback opcional para cuando el stream se finalice
 
-Calling the `writable.end()` method signals that no more data will be written to the [Writable](#stream_class_stream_writable). The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
 
 Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
 
@@ -354,7 +354,7 @@ added: v0.9.4
 -->
 
 * `chunk` {string|Buffer} The data to write
-* `encoding` {string} The encoding, if `chunk` is a String
+* `encoding` {string} La codificación, si `chunk` es un String
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
