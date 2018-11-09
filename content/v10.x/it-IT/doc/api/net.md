@@ -324,10 +324,10 @@ Crea un nuovo socket object.
   * `fd`{number} Se specificato, rivesti un socket esistente con il descrittore di file specificato, altrimenti verrà creato un nuovo socket.
   * `allowHalfOpen`{boolean} Indica se sono consentite le connessioni TPC semi-aperte. Vedi [`net.createServer()`][] e l'evento [`'end'`][] per dettagli. **Default:** `false`.
   * `readable` {boolean} Consenti le letture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
-  * `readable` {boolean} Consenti le scritture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
+  * `writable` {boolean} Consenti le scritture sul socket quando viene passato un `fd`, altrimenti ignorato. **Default:** `false`.
 * Restituisce: {net.Socket}
 
-Il socket recentemente creato può essere un socket TCP o uno streaming [IPC](#net_ipc_support) endpoint, a seconda di cosa esso [`connect ()`] [`socket.connect()`] per.
+Il socket recentemente creato può essere un socket TCP o uno streaming [IPC](#net_ipc_support) endpoint, ciò dipende a che cosa esso (fa connettere) [`connect()`] il [`socket.connect()`].
 
 ### Event: 'close'
 
@@ -337,7 +337,7 @@ added: v0.1.90
 
 * `hadError` {boolean} `true` se il socket ha avuto un errore di trasmissione.
 
-Emesso quando il socket è completamente chiuso. L'argomento `hadError` è un booleano che dice se il socket è stato chiuso a causa di un errore di trasmissione.
+Emesso quando il socket è completamente chiuso. L'argomento `hadError` è un booleano che indica se il socket è stato chiuso a causa di un errore di trasmissione.
 
 ### Event: 'connect'
 
@@ -355,7 +355,7 @@ added: v0.1.90
 
 * {Buffer|string}
 
-Emesso quando i dati sono ricevuti. L'argomento `data` sarà un `Buffer` o una `string`. La codifica dei dati è impostata da [`socket.setEncoding()`][].
+Emesso quando i dati vengono ricevuti. L'argomento `data` sarà un `Buffer` o una `string`. La codifica dei dati è impostata da [`socket.setEncoding()`][].
 
 Ricorda che i **dati andranno persi** se non ci sono listener quando un `Socket` emette un evento `"data"`.
 
@@ -367,7 +367,7 @@ added: v0.1.90
 
 Emesso quando il buffer di scrittura diventa vuoto. Può essere utilizzato per eseguire il throttling degli uploads.
 
-Vedi inoltre: i valori restituiti di `socket.write()`.
+Vedi inoltre: i valori restituiti del `socket.write()`.
 
 ### Event: 'end'
 
