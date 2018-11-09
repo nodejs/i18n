@@ -16,9 +16,9 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Hola mundo
+## Hello world
 
-Este ejemplo de "Hola mundo" es un Complemento simple, escrito en C++, el cual es el equivalente del siguiente código de JavaScript:
+Este ejemplo de "Hello world" es un Complemento simple, escrito en C++, el cual es el equivalente del siguiente código de JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
@@ -137,7 +137,7 @@ Las [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan) (o `nan`
 
 > Estabilidad: 1 - Experimental
 
-N-API es una API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recopilación. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las API´s de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
+N-API es una API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recopilación. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las APIs de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
 
 To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
@@ -964,13 +964,13 @@ Un hook de "AtExit" es una función que se invoca luego de que el bucle de event
 #### void AtExit(callback, args)
 
 * `callback` {void (*)(void*)} Un puntero dirigido hacia la función de llamar en la salida.
-* `args` {void\*} Un puntero para pasar hacia el callback en la salida.
+* `args` {void\*} Un puntero para pasar hacia la callback en la salida.
 
-Registra los hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de muera el VM.
+Registra los hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de que el VM sea asesinado.
 
-AtExit toma dos parámetros: un puntero dirigido hacia una función de callback para ejecutarse en la salida, y un puntero dirigido hacia datos de contexto no escritos para ser pasados a ese callback.
+AtExit toma dos parámetros: un puntero dirigido hacia una función de callback para ejecutarse en la salida, y un puntero dirigido hacia datos de contexto no escritos para ser pasados a esa callback.
 
-Los callbacks se ejecutan por orden de última entrada y primera salida.
+Las callbacks se ejecutan por orden de última entrada y primera salida.
 
 El siguiente `addon.cc` implementa AtExit:
 
