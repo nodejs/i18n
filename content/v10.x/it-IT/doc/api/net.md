@@ -109,7 +109,7 @@ const server = net.createServer ((socket) => {
 
 // prendi una porta inutilizzata arbitraria.
 server.listen(() => {
-   console.log ('server aperto su', server.address ());
+   console.log ('opened server on', server.address ());
 });
 ```
 
@@ -561,7 +561,7 @@ Se `exception` è specificata, verrà emesso un evento [`'error'`][] e tutti i l
 
 ### socket.destroyed
 
-* {boolean} Indicates if the connection is destroyed or not. Once a connection is destroyed no further data can be transferred using it.
+* {boolean} Indica se la connessione è stata distrutta o meno. Once a connection is destroyed no further data can be transferred using it.
 
 ### socket.end(\[data\]\[, encoding\])
 
