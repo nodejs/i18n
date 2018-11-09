@@ -423,9 +423,9 @@ Attivato immediatamente dopo `'connect'`.
 added: v0.1.90
 -->
 
-Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user must manually close the connection.
+Emesso se il socket scade dall'inattività. This is only to notify that the socket has been idle. The user must manually close the connection.
 
-See also: [`socket.setTimeout()`][].
+Vedi anche: [`socket.setTimeout()`][].
 
 ### socket.address()
 
@@ -433,7 +433,7 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
