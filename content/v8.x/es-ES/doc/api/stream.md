@@ -294,9 +294,9 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} The encoding, if `chunk` is a string
-* `callback` {Function} Optional callback for when the stream is finished
+* `callback` {Function} Callback opcional para cuando el stream se finalice
 
-Calling the `writable.end()` method signals that no more data will be written to the [Writable](#stream_class_stream_writable). The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
 
 Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
 
