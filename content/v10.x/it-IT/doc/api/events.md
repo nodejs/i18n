@@ -105,7 +105,7 @@ myEmitter.emit('event');
 
 Quando si verifica un errore all'interno di un'istanza `EventEmitter`, l'azione tipica è l'emissione di un evento `'error'`. Questi vengono trattati come casi speciali all'interno di Node.js.
 
-Se un `EventEmitter` *non*possiede almeno un listener registrato per l'event `'error'`, ed un event `'error'` viene emesso, l'errore viene generato, viene stampata una stack trace, e il processo Node.js si conclude.
+Se un `EventEmitter` *non* possiede almeno un listener registrato per l'event `'error'`, ed un event `'error'` viene emesso, l'errore viene generato, viene stampata una stack trace, e il processo Node.js si conclude.
 
 ```js
 const myEmitter = new MyEmitter();
