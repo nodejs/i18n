@@ -1180,7 +1180,7 @@ Proporciona implementación asincrónica de una clave de Derivación de Función
 
 La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
@@ -1206,7 +1206,7 @@ Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) impleme
 
 If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
