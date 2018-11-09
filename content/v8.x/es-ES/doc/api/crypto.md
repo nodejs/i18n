@@ -1337,7 +1337,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* aliceSecret and bobSecret should be the same */
+/* El Secreto de Alice y el de Bob deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1347,7 +1347,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Returns an array of the names of the supported hash algorithms, such as `RSA-SHA256`.
+Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1356,7 +1356,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
+### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
 
 <!-- YAML
 added: v0.5.5
@@ -1384,7 +1384,7 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
 The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs, `err` will be set; otherwise `err` will be null. The successfully generated `derivedKey` will be passed as a [`Buffer`][].
 
