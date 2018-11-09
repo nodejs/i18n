@@ -377,7 +377,7 @@ added: v0.1.90
 
 Emesso quando l'altra estremità del socket invia un pacchetto FIN, terminando così il lato leggibile del socket.
 
-Per impostazione predefinita (`allowHalfOpen` è `false`) il socket invierà un pacchetto FIN indietro e distruggerà il suo descrittore di file una volta che ha scritto la sua coda di scrittura in sospeso. Tuttavia, se `allowHalfOpen` è impostato su `true`, il socket non sarà automaticamente [`end ()`] [`socket.end()`] il suo lato scrivibile, consentendo all'utente di scrivere una quantità arbitraria di dati. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
+Per impostazione predefinita (`allowHalfOpen` è `false`) il socket invierà un pacchetto FIN indietro e distruggerà il suo descrittore di file una volta che ha scritto la sua coda di scrittura in sospeso. Tuttavia, se `allowHalfOpen` è impostato su `true`, il socket non sarà automaticamente [`end ()`] [`socket.end()`] il suo lato scrivibile, consentendo all'utente di scrivere una quantità arbitraria di dati. L'utente deve chiamare [`end()`] [`socket.end ()`] esplicitamente per chiudere la connessione (cioè rinviare un pacchetto FIN).
 
 ### Event: 'error'
 
@@ -387,7 +387,7 @@ added: v0.1.90
 
 * {Error}
 
-Emesso quando si verifica un errore. The `'close'` event will be called directly following this event.
+Emesso quando si verifica un errore. L'evento `'close'` sarà chiamata direttamente dopo questo evento.
 
 ### Event: 'lookup'
 
@@ -400,22 +400,22 @@ changes:
     description: The `host` parameter is supported now.
 -->
 
-Emitted after resolving the hostname but before connecting. Not applicable to UNIX sockets.
+Emesso dopo aver risolto l'hostname ma prima della connessione. Non applicabile ai socket UNIX.
 
-* `err` {Error|null} The error object. See [`dns.lookup()`][].
-* `address` {string} The IP address.
-* `family` {string|null} The address type. See [`dns.lookup()`][].
-* `host` {string} The hostname.
+* `err` {Error|null} L'object dell'errore. Vedi [`dns.lookup()`][].
+* `address` {string} L'indirizzo IP.
+* `family` {string|null} Il tipo di indirizzo. Vedi [`dns.lookup()`][].
+* `host` {string} L'hostname.
 
-### Event: 'ready'
+### Evento: 'ready'
 
 <!-- YAML
 added: v9.11.0
 -->
 
-Emitted when a socket is ready to be used.
+Emesso quando un socket è pronto per essere utilizzato.
 
-Triggered immediately after `'connect'`.
+Attivato immediatamente dopo `'connect'`.
 
 ### Event: 'timeout'
 
