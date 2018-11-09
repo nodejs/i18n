@@ -56,7 +56,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 * [`Buffer.from(buffer)`] 返回一个包含给定 `Buffer` 内容*副本*的新的`Buffer`。
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个包含给定字符串 *副本* 的新的 `Buffer`。
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 没个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 每个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
 
 如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
 
@@ -66,7 +66,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 added: v5.10.0
 -->
 
-Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能在性能上具有显著的影响*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
+Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能明显影响性能*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
 
 例如：
 
