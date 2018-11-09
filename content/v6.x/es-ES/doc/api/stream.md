@@ -312,7 +312,7 @@ added: v0.11.15
 * `encoding` {string} La nueva codificación predeterminada
 * Devuelve: {this}
 
-The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
+El método `writable.setDefaultEncoding()` establece el `encoding` predeterminado para un stream [Escribible](#stream_class_stream_writable).
 
 ##### writable.uncork()
 
@@ -320,7 +320,7 @@ The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Wr
 added: v0.11.2
 -->
 
-The `writable.uncork()` method flushes all data buffered since [`stream.cork()`][] was called.
+El método `writable.uncork()` vacía todos los datos almacenados en el buffer desde que [`stream.cork()`][] se llamó.
 
 When using [`writable.cork()`][] and `writable.uncork()` to manage the buffering of writes to a stream, it is recommended that calls to `writable.uncork()` be deferred using `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
 
