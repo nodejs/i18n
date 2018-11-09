@@ -200,7 +200,7 @@ The `Buffer.from()` method, however, does not support the use of a mapping funct
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Imprime:
 //   1
 //   2
 //   3
@@ -326,9 +326,9 @@ const buf2 = new Buffer(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Prints: auffer
+// Imprime: auffer
 console.log(buf2.toString());
-// Prints: buffer
+// Imprime: buffer
 ```
 
 ### new Buffer(size)
@@ -580,7 +580,7 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* Retorna: {integer}
 
 Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
@@ -782,7 +782,7 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
@@ -793,7 +793,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* Retorna: {boolean}
 
 Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
 
@@ -1182,7 +1182,7 @@ If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `b
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Retorna: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
@@ -1365,7 +1365,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
-* Returns: {number}
+* Retorna: {number}
 
 Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
 
@@ -1520,7 +1520,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* Retorna: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
@@ -1550,7 +1550,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
-* Returns: {integer}
+* Retorna: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
@@ -1584,7 +1584,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
-* Returns: {integer}
+* Retorna: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
 
@@ -1615,7 +1615,7 @@ changes:
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
-* Returns: {integer}
+* Retorna: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
 
@@ -1648,7 +1648,7 @@ changes:
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
-* Returns: {Buffer}
+* Retorna: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1785,7 +1785,7 @@ Note that JavaScript cannot encode 64-bit integers. This method is intended for 
 added: v0.9.2
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
@@ -1850,7 +1850,7 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Retorna: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
