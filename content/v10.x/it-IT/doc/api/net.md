@@ -365,9 +365,9 @@ Ricorda che i **dati andranno persi** se non ci sono listener quando un `Socket`
 added: v0.1.90
 -->
 
-Emesso quando il buffer di scrittura diventa vuoto. Can be used to throttle uploads.
+Emesso quando il buffer di scrittura diventa vuoto. Può essere utilizzato per eseguire il throttling degli uploads.
 
-See also: the return values of `socket.write()`.
+Vedi inoltre: i valori restituiti di `socket.write()`.
 
 ### Event: 'end'
 
@@ -375,7 +375,7 @@ See also: the return values of `socket.write()`.
 added: v0.1.90
 -->
 
-Emitted when the other end of the socket sends a FIN packet, thus ending the readable side of the socket.
+Emesso quando l'altra estremità del socket invia un pacchetto FIN, terminando così il lato leggibile del socket.
 
 By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
 
