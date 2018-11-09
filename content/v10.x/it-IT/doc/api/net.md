@@ -500,19 +500,19 @@ changes:
 
 Inizia una connessione su un socket indicato. Normalmente questo metodo non è necessario, il socket deve essere creato e aperto con [`net.createConnection()`][]. Utilizza questo solo quando si implementa un socket personalizzato.
 
-Per le connessioni TPC, sono disponibili delle `options`:
+Per le connessioni TPC, le `options` disponibili sono:
 
 * `port` {number} Richiesto. Porta a cui il socket dovrebbe connettersi.
 * `host`{string} Host a cui il socket dovrebbe connettersi. **Default:** `'localhost'`.
 * `localAdress`{string} Indirizzo locale dal quale il socket dovrebbe connettersi.
 * `localPort`{number} porta locale dalla quale dovrebbe connettersi il socket.
-* `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
-* `hints` {number} Optional [`dns.lookup()` hints][].
-* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
+* `family` {number}: La versione dello stack IP può essere `4` o `6`. **Default:** `4`.
+* `hints` {number} Facoltativo [`dns.lookup()` hints][].
+* `lookup` {Function} Funzione lookup (di ricerca) personalizzata. **Default:** [`dns.lookup()`][].
 
-For [IPC](#net_ipc_support) connections, available `options` are:
+Per le connessioni IPC<0>, le `options` disponibili sono:</p> 
 
-* `path` {string} Required. Path the client should connect to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections). If provided, the TCP-specific options above are ignored.
+* `path` {string} Richiesto. Percorso a cui il client dovrebbe connettersi. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections). Se fornito, le opzioni specifiche TCP sopra sono ignorate.
 
 #### socket.connect(path[, connectListener])
 
