@@ -127,7 +127,7 @@ const fs = require('fs');
 const util = require('util');
 
 function debug(...args) {
-  // use a function like this one when debugging inside an AsyncHooks callback
+  // use uma função como essa quando estiver debugando dentro de um callback de AsyncHooks
   fs.writeSync(1, `${util.format(...args)}\n`);
 }
 ```
@@ -173,7 +173,7 @@ This behavior can be observed by doing something like opening a resource then cl
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
-// OR
+// Ou
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
