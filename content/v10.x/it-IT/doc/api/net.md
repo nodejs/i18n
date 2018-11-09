@@ -571,9 +571,9 @@ added: v0.1.90
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
+Semi-chiudi il socket. cioè, invia un pacchetto FIN. È possibile che il server invii ancora alcuni dati.
 
-If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
+Se è specificato `data`, è equivalente alla chiamata `socket.write (data, encoding)` seguito da [` socket.end()`][].
 
 ### socket.localAddress
 
@@ -581,7 +581,7 @@ If `data` is specified, it is equivalent to calling `socket.write(data, encoding
 added: v0.9.6
 -->
 
-The string representation of the local IP address the remote client is connecting on. For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
+La rappresentazione della stringa dell'indirizzo IP locale su cui si connette il client remoto. Ad esempio, in un server in ascolto su `'0.0.0.0'`, se un client si connette su `'192.168.1.1'`, il valore del `socket.localAddress ` sarebbe `'192.168.1.1'`.
 
 ### socket.localPort
 
@@ -589,13 +589,13 @@ The string representation of the local IP address the remote client is connectin
 added: v0.9.6
 -->
 
-The numeric representation of the local port. For example, `80` or `21`.
+La rappresentazione numerica della porta locale. Per esempio, `80` o `21`.
 
 ### socket.pause()
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
-Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
+Mette in pausa la lettura dei dati. Questo significa che gli eventi [`'data'`][] non verranno emessi. Utile per rallentare un caricamento.
 
 ### socket.ref()
 
@@ -603,7 +603,7 @@ Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Us
 added: v0.9.1
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed socket will *not* let the program exit if it's the only socket left (the default behavior). If the socket is `ref`ed calling `ref` again will have no effect.
 
