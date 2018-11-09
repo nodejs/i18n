@@ -377,7 +377,7 @@ added: v0.1.90
 
 Emesso quando l'altra estremità del socket invia un pacchetto FIN, terminando così il lato leggibile del socket.
 
-Per impostazione predefinita (`allowHalfOpen` è `false`) il socket invierà un pacchetto FIN indietro e distruggerà il suo descrittore di file una volta che ha scritto la sua coda di scrittura in sospeso. Tuttavia, se `allowHalfOpen` è impostato su `true`, il socket non sarà automaticamente [`end ()`] [`socket.end()`] il suo lato scrivibile, consentendo all'utente di scrivere una quantità arbitraria di dati. L'utente deve chiamare [`end()`] [`socket.end ()`] esplicitamente per chiudere la connessione (cioè rinviare un pacchetto FIN).
+Per impostazione predefinita (`allowHalfOpen` è `false`) il socket invierà un pacchetto FIN indietro e distruggerà il suo descrittore di file una volta che ha scritto la sua coda di scrittura in sospeso. Tuttavia, se `allowHalfOpen` è impostato su `true`, il socket non [`end ()`][`socket.end()`] automaticamente il suo lato scrivibile, consentendo all'utente di scrivere una quantità arbitraria di dati. L'utente deve chiamare [`end()`][`socket.end ()`] esplicitamente per chiudere la connessione (cioè rinviando un pacchetto FIN).
 
 ### Event: 'error'
 
@@ -387,7 +387,7 @@ added: v0.1.90
 
 * {Error}
 
-Emesso quando si verifica un errore. L'evento `'close'` sarà chiamata direttamente dopo questo evento.
+Emesso quando si verifica un errore. L'evento `'close'` sarà chiamato direttamente dopo questo evento.
 
 ### Event: 'lookup'
 
@@ -435,7 +435,7 @@ added: v0.1.90
 
 * Restituisce: {Object}
 
-Restituisce `l'indirizzo` della funzione binding, l'indirizzo denominato `family` e la `porta` del socket come riportato dal sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+Restituisce `l'indirizzo` della funzione binding, l'indirizzo del nome della `family` e la `porta` del socket come riportato dal sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
 
@@ -443,9 +443,9 @@ Restituisce `l'indirizzo` della funzione binding, l'indirizzo denominato `family
 added: v0.3.8
 -->
 
-`net.Socket` ha la proprietà che permette al `socket.write()` di funzionare sempre. Questo è per aiutare gli utenti ad essere operativi nell'immediato. Il computer non può sempre tenere il passo con la quantità di dati che viene scritta per un socket: la connessione di rete potrebbe essere troppo lenta. Node.js accoderà internamente i dati scritti per un socket e li invierà via cavo quando è possibile. (Internamente sta eseguendo il polling sul descrittore di file del socket per essere scrivibile).
+`net.Socket` ha la proprietà che permette al `socket.write()` di funzionare sempre. Questo è per aiutare gli utenti ad essere operativi nell'immediato. Il computer non può sempre tenere il passo con la quantità di dati che viene scritta per un socket: la connessione di rete potrebbe essere semplicemente troppo lenta. Node.js accoderà internamente i dati scritti ad un socket e li invierà via cavo quando è possibile. (Internamente sta eseguendo il polling sul descrittore di file del socket per renderlo scrivibile).
 
-La conseguenza di questo buffering interno è che la memoria può crescere. Questa proprietà mostra il numero di caratteri attualmente memorizzati nel buffer per essere scritti. (Il numero di caratteri è approssimativamente uguale al numero di byte da scrivere, ma il buffer può contenere stringhe e le stringhe sono codificate con la modalità lazy, quindi il numero esatto di byte non è noto.)
+La conseguenza di questo buffering interno è che la memoria può crescere. Questa proprietà mostra il numero di caratteri attualmente memorizzati nel buffer per essere scritti. (Il numero di caratteri è approssimativamente uguale al numero di byte da scrivere, ma il buffer può contenere stringhe e le stringhe sono codificate in modalità lazy, quindi il numero esatto di byte non è noto.)
 
 Gli utenti con esperienza di `bufferSize` di grandi dimensioni o in crescita dovrebbero tentare di "accelerare" i flussi di dati nel loro programma con [`socket.pause()`][] e [`socket.resume()`][].
 
