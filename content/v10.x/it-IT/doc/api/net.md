@@ -545,7 +545,7 @@ Pseudonimo per `socket.connect(options[, connectListener])`][`socket.connect(opt
 added: v6.1.0
 -->
 
-Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora finito. Will be set to `false` before emitting `'connect'` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
+Se`true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] è stato chiamato e non è stato ancora finito. Sarà impostato su `false` prima di emettere l'evento `'connect'` e/o chiamare [`socket.connect(options[,connectListener])`][` socket.connect (options)`]'s callback.
 
 ### socket.destroy([exception])
 
@@ -555,9 +555,9 @@ added: v0.1.90
 
 * Restituisce: {net.Socket}
 
-Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
+Garantisce che non si verifichi più attività di I/O su questo socket. Solo necessario in caso di errori (errore di analisi o simili).
 
-If `exception` is specified, an [`'error'`][] event will be emitted and any listeners for that event will receive `exception` as an argument.
+Se `exception` è specificata, verrà emesso un evento [`'error'`][] e tutti i listener per quell'evento riceveranno `exception` come argomento.
 
 ### socket.destroyed
 
