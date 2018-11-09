@@ -132,7 +132,7 @@ myEmitter.emit('error', new Error('whoops!'));
 added: v0.1.26
 -->
 
-The `EventEmitter` class is defined and exposed by the `events` module:
+La class `EventEmitter` viene definita ed esposta dal module `events`:
 
 ```js
 const EventEmitter = require('events');
@@ -151,9 +151,9 @@ added: v0.1.26
 
 L'istanza `EventEmitter` emetterà il proprio event `'newListener'` *prima* che venga aggiunto un listener al suo array di listener interno.
 
-Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
+Ai listener registrati per l'event `'newListener'` verrà passato il nome dell'evento ed un riferimento al listener che viene aggiunto.
 
-The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
+Il fatto che l'evento venga attivato prima dell'aggiunta del listener genera un sottile ma importante effetto collaterale: ogni listener *aggiuntivo* registrato allo stesso `name` *all'interno* della callback `'newListener'` verrà inserito *prima* del listener che è in procinto di essere aggiunto.
 
 ```js
 const myEmitter = new MyEmitter();
