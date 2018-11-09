@@ -279,7 +279,7 @@ El método `writable.cork()` fuerza a que todos los datos escribibles sean almac
 
 The primary intent of `writable.cork()` is to avoid a situation where writing many small chunks of data to a stream do not cause a backup in the internal buffer that would have an adverse impact on performance. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
 
-See also: [`writable.uncork()`][].
+Vea también: [`writable.uncork()`][].
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
 
@@ -287,7 +287,7 @@ See also: [`writable.uncork()`][].
 added: v0.9.4
 -->
 
-* `chunk` {string|Buffer|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string or a `Buffer`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {string|Buffer|any} Datos opcionales para escribir. Para streams que no operan en modo objeto, `chunk` debe ser una cadena o un `Buffer`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} The encoding, if `chunk` is a String
 * `callback` {Function} Optional callback for when the stream is finished
 
