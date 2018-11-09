@@ -476,7 +476,7 @@ Possibili firme:
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] per le connessioni TPC.
 * Restituisce: {net.Socket} Il socket stesso.
 
-Questa funzione è asincrona. Quando viene stabilita la connessione, verrà emesso l'evento [`'connect'`][]. Se c'è un problema di connessione, invece di un evento [`'connect'`][], verrà generato un evento [`'error'`][] con l'errore passato al listener dell' [`'error'`][]. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Questa funzione è asincrona. Quando viene stabilita la connessione, verrà emesso l'evento [`'connect'`][]. Se c'è un problema di connessione, invece di un evento [`'connect'`][], verrà generato un evento [`'error'`][] con l'errore passato al listener dell' [`'error'`][]. L'ultimo parametro `connectListener`, se fornito, sarà aggiunto **una volta** come un listener per l'evento [`'connect'`][].
 
 #### socket.connect(options[, connectListener])
 
@@ -498,14 +498,14 @@ changes:
 * `connectListener`{Function} Parametro comune dei metodi [`server.listen()`][]. Verrà aggiunto una volta come un listener per l'evento [`'connect'`][].
 * Restituisce: {net.Socket} Il socket stesso.
 
-Inizia una connessione su un socket indicato. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
+Inizia una connessione su un socket indicato. Normalmente questo metodo non è necessario, il socket deve essere creato e aperto con [`net.createConnection()`][]. Utilizza questo solo quando si implementa un socket personalizzato.
 
-For TCP connections, available `options` are:
+Per le connessioni TPC, sono disponibili delle `options`:
 
-* `port` {number} Required. Port the socket should connect to.
-* `host` {string} Host the socket should connect to. **Default:** `'localhost'`.
-* `localAddress` {string} Local address the socket should connect from.
-* `localPort` {number} Local port the socket should connect from.
+* `port` {number} Richiesto. Porta a cui il socket dovrebbe connettersi.
+* `host`{string} Host a cui il socket dovrebbe connettersi. **Default:** `'localhost'`.
+* `localAdress`{string} Indirizzo locale dal quale il socket dovrebbe connettersi.
+* `localPort`{number} porta locale dalla quale dovrebbe connettersi il socket.
 * `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
 * `hints` {number} Optional [`dns.lookup()` hints][].
 * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
