@@ -57,7 +57,7 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Asincrono contro Sincrono
+## Asincrono vs. Sincrono
 
 L'`EventEmitter` chiama tutti i listener in maniera sincrona nell'ordine in cui sono stati registrati. Ciò è importante per assicurare la corretta sequenza degli eventi e per evitare condizioni di competizione o errori logici. Nei casi appropriati, è possibile passare le funzioni listener ad una modalità di operazione asincrona utilizzando i metodi `setImmediate()` o `process.nextTick()`:
 
