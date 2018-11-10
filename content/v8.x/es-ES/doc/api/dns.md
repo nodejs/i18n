@@ -127,7 +127,7 @@ changes:
 - `options` {integer | Object} 
   - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
   - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
-  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`
+  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Predeterminado:** `false`
   - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
