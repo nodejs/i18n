@@ -349,7 +349,7 @@ added: v8.4.0
 * `options` {Object}
   
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Predeterminado:** `false`
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `getTrailers` {Function} Callback function invoked to collect trailer headers.
@@ -850,7 +850,7 @@ added: v8.4.0
 
 * `headers` {[Headers Object](#http2_headers_object)}
 * `options` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Predeterminado:** `false`
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
 * `callback` {Function} Callback that is called once the push stream has been initiated.
 * Returns: {undefined}
