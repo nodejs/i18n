@@ -2999,7 +2999,7 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`aaebbf9708`](https://github.com/nodejs/node/commit/aaebbf9708)] - **doc**: fomentar 2FA antes de hacer onboarding (Rich Trott) [#8776](https://github.com/nodejs/node/pull/8776)
 * [[`f07054dd49`](https://github.com/nodejs/node/commit/f07054dd49)] - **doc**: añadir paso opcional al documento de onboarding (Rich Trott) [#8774](https://github.com/nodejs/node/pull/8774)
 * [[`dceaa0ba4a`](https://github.com/nodejs/node/commit/dceaa0ba4a)] - **doc**: remover solución que está fallando en BUILDING.md (Christopher Fujino) [#8763](https://github.com/nodejs/node/pull/8763)
-* [[`0522aa0dc0`](https://github.com/nodejs/node/commit/0522aa0dc0)] - **doc**: añadir formatos de commits para publicar artículos del blog (fen) [#8631](https://github.com/nodejs/node/pull/8631)
+* [[`0522aa0dc0`](https://github.com/nodejs/node/commit/0522aa0dc0)] - **doc**: añadir formatos de commit para publicar artículos del blog (fen) [#8631](https://github.com/nodejs/node/pull/8631)
 * [[`98e425eed4`](https://github.com/nodejs/node/commit/98e425eed4)] - **doc**: corregir nivel de título en tls.md (yorkie) [#8782](https://github.com/nodejs/node/pull/8782)
 * [[`e7c0f34f20`](https://github.com/nodejs/node/commit/e7c0f34f20)] - **doc**: añadir información de added: para crypto.timingSafeEqual() (Marc-Aurèle DARCHE) [#8796](https://github.com/nodejs/node/pull/8796)
 * [[`4fb051426c`](https://github.com/nodejs/node/commit/4fb051426c)] - **doc**: habilitar regla de remark-lint de no-file-name-articles (Сковорода Никита Андреевич) [#8713](https://github.com/nodejs/node/pull/8713)
