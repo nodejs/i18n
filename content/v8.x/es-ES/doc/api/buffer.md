@@ -1357,7 +1357,7 @@ buf.write('some string', 0, 'ascii');
 console.log(buf.length);
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+Mientras que la propiedad `length` no es inmutable, cambiar el valor de `length` puede resultar en un comportamiento indefinido e incoherente. Las aplicaciones que deseen modificar la longitud de un `Buffer` deberían, por lo tanto, tratar a `length` como solo de lectura y usar [`buf.slice()`] para crear un nuevo `Buffer`.
 
 Ejemplos:
 
@@ -1366,12 +1366,12 @@ let buf = Buffer.allocUnsafe(10);
 
 buf.write('abcdefghj', 0, 'ascii');
 
-// Prints: 10
+// Imprime: 10
 console.log(buf.length);
 
 buf = buf.slice(0, 5);
 
-// Prints: 5
+// Imprime: 5
 console.log(buf.length);
 ```
 
@@ -1393,11 +1393,11 @@ The `buf.parent` property is a deprecated alias for `buf.buffer`.
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {number}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 8`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
+* Devuelve: {number}
 
-Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
+Lee un doble de 64-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readDoubleBE()` devuelve big endian, `readDoubleLE()` devuelve little endian).
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
@@ -1428,9 +1428,9 @@ console.log(buf.readDoubleLE(1, true));
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {number}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
+* Devuelve: {number}
 
 Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
 
@@ -1461,8 +1461,8 @@ console.log(buf.readFloatLE(1, true));
 added: v0.5.0
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads a signed 8-bit integer from `buf` at the specified `offset`.
@@ -1494,8 +1494,8 @@ console.log(buf.readInt8(2));
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
@@ -1527,8 +1527,8 @@ console.log(buf.readInt16LE(1));
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
@@ -1560,7 +1560,7 @@ console.log(buf.readInt32LE(1));
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
 * Devuelve: {integer}
@@ -1590,8 +1590,8 @@ console.log(buf.readIntBE(1, 6).toString(16));
 added: v0.5.0
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
@@ -1621,8 +1621,8 @@ console.log(buf.readUInt8(2));
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
@@ -1658,8 +1658,8 @@ console.log(buf.readUInt16LE(2).toString(16));
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
@@ -1689,9 +1689,9 @@ console.log(buf.readUInt32LE(1).toString(16));
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
@@ -2018,7 +2018,7 @@ added: v0.11.15
 
 * `value` {number} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
@@ -2051,7 +2051,7 @@ added: v0.11.15
 
 * `value` {number} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
@@ -2082,7 +2082,7 @@ added: v0.5.0
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2113,7 +2113,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
@@ -2144,7 +2144,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
@@ -2176,7 +2176,7 @@ added: v0.11.15
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
@@ -2207,7 +2207,7 @@ added: v0.5.0
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
@@ -2238,7 +2238,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
@@ -2273,7 +2273,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
@@ -2307,7 +2307,7 @@ added: v0.5.5
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
