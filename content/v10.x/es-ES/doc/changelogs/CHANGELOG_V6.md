@@ -2189,7 +2189,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 * [[`d532d7497a`](https://github.com/nodejs/node/commit/d532d7497a)] - **async_wrap**: aclarar vector de destroy_ids (Trevor Norris) [#10400](https://github.com/nodejs/node/pull/10400)
 * [[`75d6f111aa`](https://github.com/nodejs/node/commit/75d6f111aa)] - **benchmark**: refactorizar pruebas de rendimiento de buffer (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
 * [[`40c7ec62e0`](https://github.com/nodejs/node/commit/40c7ec62e0)] - **buffer**: corregir llenado de string de un solo carácter (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
-* [[`03f0d2ac21`](https://github.com/nodejs/node/commit/03f0d2ac21)] - **buffer**: handle UCS2 `.fill()` properly on BE (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
+* [[`03f0d2ac21`](https://github.com/nodejs/node/commit/03f0d2ac21)] - **buffer**: manejar `.fill()` de UCS2 de manera apropiada en BE (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * [[`9e76350372`](https://github.com/nodejs/node/commit/9e76350372)] - **build**: añadir /opt/freeware/... a ruta de biblioteca de AIX (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
 * [[`7d519fa87c`](https://github.com/nodejs/node/commit/7d519fa87c)] - **build**: add (not) cross-compiled configure flags (Jesús Leganés-Combarro 'piranna) [#10287](https://github.com/nodejs/node/pull/10287)
 * [[`a2f02859b0`](https://github.com/nodejs/node/commit/a2f02859b0)] - **(SEMVER-MINOR)** **crypto**: permitir agregar certificados adicionales a CAs bien conocidos (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
@@ -2953,9 +2953,9 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
   * `fs.existsSync()` ya no está desaprobado. `fs.exists()` continúa desaprobado. (Dan Fabulich) [#8364](https://github.com/nodejs/node/pull/8364)
 * **http**: `http.request()` ahora acepta una opción de `timeout`. (Rene Weber) [#8101](https://github.com/nodejs/node/pull/8101)
 * **module**: El cargador de módulo ahora mantiene su propia caché de realpath. (Anna Henningsen) [#8100](https://github.com/nodejs/node/pull/8100)
-* **npm**: Upgraded to 3.10.8 (Kat Marchán) [#8706](https://github.com/nodejs/node/pull/8706)
-* **stream**: `Duplex` streams now show proper `instanceof Stream.Writable`. (Anna Henningsen) [#8834](https://github.com/nodejs/node/pull/8834)
-* **timers**: Improved `setTimeout`/`Interval` performance by up to 22%. (Brian White) [#8661](https://github.com/nodejs/node/pull/8661)
+* **npm**: Se actualizó a 3.10.8 (Kat Marchán) [#8706](https://github.com/nodejs/node/pull/8706)
+* **stream**: `Duplex` los streams ahora muestran una `instanceof Stream.Writable` apropiada. (Anna Henningsen) [#8834](https://github.com/nodejs/node/pull/8834)
+* **timers**: Se mejoró el rendimiento de `setTimeout`/`Interval` hasta un 22%. (Brian White) [#8661](https://github.com/nodejs/node/pull/8661)
 
 ### Commits
 
