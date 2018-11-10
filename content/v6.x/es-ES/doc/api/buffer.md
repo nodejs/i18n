@@ -1407,11 +1407,11 @@ added: v0.11.15
 -->
 
 * `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a leer. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
+* `byteLength` {integer} Número de bytes a leer. Debe satisfacer: `0 < byteLength <= 6`.
+* `noAssert` {boolean} ¿Saltar validación de `offset` y `byteLength`? **Predeterminado:** `false`.
 * Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+Lee el número de bytes `byteLength` desde `buf` en el `offset` especificado e interpreta el resultado como un valor con signo del complemento de dos. Soporta hasta 48 bits de precisión.
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1420,13 +1420,13 @@ Ejemplos:
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
-// Prints: -546f87a9cbee
+// Imprime: -546f87a9cbee
 console.log(buf.readIntLE(0, 6).toString(16));
 
-// Prints: 1234567890ab
+// Imprime: 1234567890ab
 console.log(buf.readIntBE(0, 6).toString(16));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readIntBE(1, 6).toString(16));
 ```
 
@@ -1440,7 +1440,7 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+Lee un entero de 8-bit desde `buf` en el `offset` especificado.
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1449,13 +1449,13 @@ Ejemplos:
 ```js
 const buf = Buffer.from([1, -2]);
 
-// Prints: 1
+// Imprime: 1
 console.log(buf.readUInt8(0));
 
-// Prints: 254
+// Imprime: 254
 console.log(buf.readUInt8(1));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readUInt8(2));
 ```
 
@@ -1471,7 +1471,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
+Lee un entero de 16-bit sin signo desde `buf` en el `offset` especificado con el formato endian especificado (`readUInt16BE()` devuelve big endian, `readUInt16LE()` devuelve little endian).
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1480,19 +1480,19 @@ Ejemplos:
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56]);
 
-// Prints: 1234
+// Imprime: 1234
 console.log(buf.readUInt16BE(0).toString(16));
 
-// Prints: 3412
+// Imprime: 3412
 console.log(buf.readUInt16LE(0).toString(16));
 
-// Prints: 3456
+// Imprime: 3456
 console.log(buf.readUInt16BE(1).toString(16));
 
-// Prints: 5634
+// Imprime: 5634
 console.log(buf.readUInt16LE(1).toString(16));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readUInt16LE(2).toString(16));
 ```
 
@@ -1536,11 +1536,11 @@ added: v0.11.15
 -->
 
 * `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a leer. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Predeterminado:** `false`
+* `byteLength` {integer} Número de bytes a leer. Debe satisfacer: `0 < byteLength <= 6`.
+* `noAssert` {boolean} ¿Saltar validación de `offset` y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
+Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Soporta hasta 48 bits de precisión.
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2138,7 +2138,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
+* `byteLength` {integer} Number of bytes to write. Debe satisfacer: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
