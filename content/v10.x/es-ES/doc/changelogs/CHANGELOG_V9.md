@@ -1349,34 +1349,34 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`5514330406`](https://github.com/nodejs/node/commit/5514330406)] - **tls**: utilizar nombre de clase correcto en mensaje de desaprobación (Anna Henningsen) [#17561](https://github.com/nodejs/node/pull/17561)
   * [[`4dacff72b5`](https://github.com/nodejs/node/commit/4dacff72b5)] - **tools**: do not override V8's gitignore (Yang Guo) [#18010](https://github.com/nodejs/node/pull/18010)
   * [[`adc59a3e71`](https://github.com/nodejs/node/commit/adc59a3e71)] - **tools**: host remark-preset-lint-node in-tree (Jon Moss) [#17441](https://github.com/nodejs/node/pull/17441)
-  * [[`c91a7c09ae`](https://github.com/nodejs/node/commit/c91a7c09ae)] - **tools**: add check for using process.binding crypto (Daniel Bevenius) [#17867](https://github.com/nodejs/node/pull/17867)
-  * [[`4391ea4a57`](https://github.com/nodejs/node/commit/4391ea4a57)] - **tools**: enable array-callback-return ESLint rule (Rich Trott) [#17858](https://github.com/nodejs/node/pull/17858)
-  * [[`b89cda4cbd`](https://github.com/nodejs/node/commit/b89cda4cbd)] - **tools**: fix AttributeError: *\_exit*\_ on Python 2.6 (Dmitriy Kasyanov) [#17663](https://github.com/nodejs/node/pull/17663)
-  * [[`2d07243cac`](https://github.com/nodejs/node/commit/2d07243cac)] - **tools**: autofixer for lowercase-name-for-primitive (Shobhit Chittora) [#17715](https://github.com/nodejs/node/pull/17715)
-  * [[`7ef876d89d`](https://github.com/nodejs/node/commit/7ef876d89d)] - **tools**: fix man pages linking regex (Diego Rodríguez Baquero) [#17724](https://github.com/nodejs/node/pull/17724)
-  * [[`6531401cde`](https://github.com/nodejs/node/commit/6531401cde)] - **tools**: add number-isnan rule (Jon Moss) [#17556](https://github.com/nodejs/node/pull/17556)
-  * [[`eaa2d9116a`](https://github.com/nodejs/node/commit/eaa2d9116a)] - **tools**: simplify lowercase-name-for-primitive rule (cjihrig) [#17653](https://github.com/nodejs/node/pull/17653)
-  * [[`3ad8cf14f5`](https://github.com/nodejs/node/commit/3ad8cf14f5)] - **tools**: add lowercase-name-for-primitive eslint rule (Weijia Wang) [#17568](https://github.com/nodejs/node/pull/17568)
-  * [[`7bf6be0b7c`](https://github.com/nodejs/node/commit/7bf6be0b7c)] - **trace_events**: stop tracing agent in process.exit() (Andreas Madsen) [#18005](https://github.com/nodejs/node/pull/18005)
-  * [[`ed7f59a1ee`](https://github.com/nodejs/node/commit/ed7f59a1ee)] - **url**: added url fragment lookup table (Hakan Kimeiga) [#17627](https://github.com/nodejs/node/pull/17627)
-  * [[`28ef3de2ba`](https://github.com/nodejs/node/commit/28ef3de2ba)] - **url**: added space to class string of iterator objects (Haejin Jo) [#17558](https://github.com/nodejs/node/pull/17558)
-  * [[`6d9b1e4c83`](https://github.com/nodejs/node/commit/6d9b1e4c83)] - **util**: allow wildcards in NODE_DEBUG variable (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
-  * [[`6cc622f01b`](https://github.com/nodejs/node/commit/6cc622f01b)] - **vm**: allow modifying context name in inspector (Timothy Gu) [#17720](https://github.com/nodejs/node/pull/17720)
-  * [[`e2767114ff`](https://github.com/nodejs/node/commit/e2767114ff)] - **vm**: never abort on caught syntax error (Anna Henningsen) [#17394](https://github.com/nodejs/node/pull/17394)
-  * [[`7bf4102db9`](https://github.com/nodejs/node/commit/7bf4102db9)] - **win, build**: fix without-intl option (Bartosz Sosnowski) [#17614](https://github.com/nodejs/node/pull/17614)
-  * [[`584e74d8cc`](https://github.com/nodejs/node/commit/584e74d8cc)] - **(SEMVER-MINOR)** **zlib**: add ArrayBuffer support (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
+  * [[`c91a7c09ae`](https://github.com/nodejs/node/commit/c91a7c09ae)] - **tools**: agregar verificación para utilizar crypto de process.binding (Daniel Bevenius) [#17867](https://github.com/nodejs/node/pull/17867)
+  * [[`4391ea4a57`](https://github.com/nodejs/node/commit/4391ea4a57)] - **tools**: activar regla array-callback-return de ESLint (Rich Trott) [#17858](https://github.com/nodejs/node/pull/17858)
+  * [[`b89cda4cbd`](https://github.com/nodejs/node/commit/b89cda4cbd)] - **tools**: corregir AttributeError: *\_exit*\_ en Python 2.6 (Dmitriy Kasyanov) [#17663](https://github.com/nodejs/node/pull/17663)
+  * [[`2d07243cac`](https://github.com/nodejs/node/commit/2d07243cac)] - **tools**: autocorrector para lowercase-name-for-primitive (Shobhit Chittora) [#17715](https://github.com/nodejs/node/pull/17715)
+  * [[`7ef876d89d`](https://github.com/nodejs/node/commit/7ef876d89d)] - **tools**: corregir páginas de manuales enlazando expresiones regulares (Diego Rodríguez Baquero) [#17724](https://github.com/nodejs/node/pull/17724)
+  * [[`6531401cde`](https://github.com/nodejs/node/commit/6531401cde)] - **tools**: agregar regla number-isnan (Jon Moss) [#17556](https://github.com/nodejs/node/pull/17556)
+  * [[`eaa2d9116a`](https://github.com/nodejs/node/commit/eaa2d9116a)] - **tools**: simplificar regla lowercase-name-for-primitive (cjihrig) [#17653](https://github.com/nodejs/node/pull/17653)
+  * [[`3ad8cf14f5`](https://github.com/nodejs/node/commit/3ad8cf14f5)] - **tools**: agregar regla lowercase-name-for-primitive de eslint (Weijia Wang) [#17568](https://github.com/nodejs/node/pull/17568)
+  * [[`7bf6be0b7c`](https://github.com/nodejs/node/commit/7bf6be0b7c)] - **trace_events**: detener agente de rastreo en process.exit() (Andreas Madsen) [#18005](https://github.com/nodejs/node/pull/18005)
+  * [[`ed7f59a1ee`](https://github.com/nodejs/node/commit/ed7f59a1ee)] - **url**: agregada tabla de búsqueda de fragmento de url (Hakan Kimeiga) [#17627](https://github.com/nodejs/node/pull/17627)
+  * [[`28ef3de2ba`](https://github.com/nodejs/node/commit/28ef3de2ba)] - **url**: espacio agregado a cadena de clase de objetos iteradores (Haejin Jo) [#17558](https://github.com/nodejs/node/pull/17558)
+  * [[`6d9b1e4c83`](https://github.com/nodejs/node/commit/6d9b1e4c83)] - **util**: permitir comodines en variable NODE_DEBUG (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
+  * [[`6cc622f01b`](https://github.com/nodejs/node/commit/6cc622f01b)] - **vm**: permitir modificación de nombre de contexto en inspector (Timothy Gu) [#17720](https://github.com/nodejs/node/pull/17720)
+  * [[`e2767114ff`](https://github.com/nodejs/node/commit/e2767114ff)] - **vm**: nunca abortar en error de sintaxis capturado (Anna Henningsen) [#17394](https://github.com/nodejs/node/pull/17394)
+  * [[`7bf4102db9`](https://github.com/nodejs/node/commit/7bf4102db9)] - **win, build**: arreglar opción without-intl (Bartosz Sosnowski) [#17614](https://github.com/nodejs/node/pull/17614)
+  * [[`584e74d8cc`](https://github.com/nodejs/node/commit/584e74d8cc)] - **(SEMVER-MINOR)** **zlib**: agregar soporte de ArrayBuffer (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
   
   
 
 <a id="9.3.0"></a>
 
   
-  ## 2017-12-12, Version 9.3.0 (Current), @MylesBorins
+  ## 2017-12-12, Versión 9.3.0 (Actual), @MylesBorins
   
-  ### Notable Changes
+  ### Cambios Notables
   
   * **async\_hooks**: 
-    * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
+    * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
     * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
   * **console**: 
     * console.debug can now be used outside of the inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
