@@ -528,9 +528,9 @@ added: v0.3.5
 - `n` {integer}
 - Restituisce: {EventEmitter}
 
-Di default gli `EventEmitter` stamperanno un avviso nel caso in cui vengano aggiunti più di `10` listener per un particolare evento. Questa è un'utile impostazione predefinita che contribuisce a trovare perdite di memoria. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+Di default gli `EventEmitter` stamperanno un avviso nel caso in cui vengano aggiunti più di `10` listener per un particolare evento. Questa è un'utile impostazione predefinita che contribuisce a trovare perdite di memoria. Ovviamente, non tutti gli eventi dovrebbero essere limitati a soli 10 listener. Il metodo `emitter.setMaxListeners()` consente di modificare i limiti per questa specifica istanza di `EventEmitter`. Il valore può essere impostato su `Infinity` (o `0`) per indicare un numero illimitato di listener.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Restituisce un riferimento all'`EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.rawListeners(eventName)
 
@@ -541,7 +541,7 @@ added: v9.4.0
 - `eventName` {string|symbol}
 - Restituisce: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
+Restituisce una copia dell'array dei listener per l'evento con nome `eventName`, includendo qualsiasi wrapper (come quelli creati da `.once()`).
 
 ```js
 const emitter = new EventEmitter();
