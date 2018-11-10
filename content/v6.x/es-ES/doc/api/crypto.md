@@ -1245,7 +1245,7 @@ Todos los paddings se definen en `crypto.constants`.
 added: v6.6.0
 -->
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin perder información que permita a un atacante adivinar uno de los valores. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, and they must have the same length.
 
