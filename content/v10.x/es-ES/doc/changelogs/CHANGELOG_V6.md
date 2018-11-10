@@ -2968,7 +2968,7 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`ee319b739c`](https://github.com/nodejs/node/commit/ee319b739c)] - **buffer**: añadir chequeos de isSharedArrayBuffer (Ojas Shirekar) [#8510](https://github.com/nodejs/node/pull/8510)
 * [[`38fdbcd7f7`](https://github.com/nodejs/node/commit/38fdbcd7f7)] - **build**: hacer una dep de compilación de complementos. en node_version.h (Anna Henningsen) [#8861](https://github.com/nodejs/node/pull/8861)
 * [[`f057d193ec`](https://github.com/nodejs/node/commit/f057d193ec)] - **build**: ejecutar cctests como parte del objetivo de test-ci (Ben Noordhuis) [#8034](https://github.com/nodejs/node/pull/8034)
-* [[`a202be6690`](https://github.com/nodejs/node/commit/a202be6690)] - **build**: no compilar icu con -fno-rtti (Ben Noordhuis) [#8886](https://github.com/nodejs/node/pull/8886)
+* [[`a202be6690`](https://github.com/nodejs/node/commit/a202be6690)] - **build**: no construir icu con -fno-rtti (Ben Noordhuis) [#8886](https://github.com/nodejs/node/pull/8886)
 * [[`296254f141`](https://github.com/nodejs/node/commit/296254f141)] - **build**: remover interruptor de VS 2013 de vcbuild.bat (Ben Noordhuis) [#8067](https://github.com/nodejs/node/pull/8067)
 * [[`a425c4da98`](https://github.com/nodejs/node/commit/a425c4da98)] - **build**: ejecutar `npm install` para compilaciones de documentos en tarball (Anna Henningsen) [#8413](https://github.com/nodejs/node/pull/8413)
 * [[`3d3bce6ca1`](https://github.com/nodejs/node/commit/3d3bce6ca1)] - **cluster**: remover argumento de backlog no usado (Brian White) [#8877](https://github.com/nodejs/node/pull/8877)
