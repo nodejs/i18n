@@ -1737,7 +1737,7 @@ Genera datos pseudo-aleatorios criptográficamente fuertes. El argumento `size` 
 Si una función `callback` es proporcionada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si ocurre un error, `err` será un objeto `Error`; de no ser así será `null`. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
-// Asynchronous
+// Asincrónico
 const crypto = require('crypto');
 crypto.randomBytes(256, (err, buf) => {
   if (err) throw err;
@@ -1748,7 +1748,7 @@ crypto.randomBytes(256, (err, buf) => {
 Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Se producirá un error si hay un problema generando los bytes.
 
 ```js
-// Synchronous
+// Sincrónico
 const buf = crypto.randomBytes(256);
 console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
