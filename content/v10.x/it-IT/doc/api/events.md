@@ -6,11 +6,11 @@
 
 <!--type=module-->
 
-Gran parte della core API di Node.js è costruita intorno ad un'architettura event-driven idiomatica ed asincrona nella quale alcuni tipi di object (chiamati "emitter") emettono eventi con nome che determinano che i `Function` object ("listener") vengano chiamati.
+Gran parte dell'API core di Node.js è basata su un'architettura event-driven idiomatica ed asincrona nella quale alcuni tipi di object (chiamati "emitter") emettono eventi con nome che determinano che i `Function` object ("listener") vengano chiamati.
 
 Per esempio: un object [`net.Server`][] emette un evento ogni volta che un peer si connette ad esso; un [`fs.ReadStream`][] emette un evento quando viene aperto il file; uno [stream](stream.html) emette un evento ogni volta che i dati sono disponibili per la lettura.
 
-Tutti gli object che emettono eventi sono istanze della class `EventEmitter`. Questi object espongono una funzione `eventEmitter.on()` la quale consente che una o più funzioni vengano allegate agli eventi con nome emessi dagli object. Generalmente, i nomi degli eventi sono stringhe con notazione a cammello tuttavia è possibile utilizzare qualsiasi proprietà key di JavaScript valida.
+Tutti gli object che emettono eventi sono istanze della classe `EventEmitter`. Questi object espongono una funzione `eventEmitter.on()` la quale consente che una o più funzioni vengano allegate agli eventi con nome emessi dagli object. Generalmente, i nomi degli eventi sono stringhe con notazione a cammello tuttavia è possibile utilizzare qualsiasi proprietà key di JavaScript valida.
 
 Nel momento in cui l'object `EventEmitter` emette un evento, tutte le funzioni allegate a quello specifico evento vengono chiamate *in maniera sincrona*. Qualsiasi valore restituito dai listener chiamati viene *ignorato* e verrà scartato.
 
