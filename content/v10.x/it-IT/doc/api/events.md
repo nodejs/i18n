@@ -46,7 +46,7 @@ myEmitter.on('event', function(a, b) {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-È possibile utilizzare le Funzioni Arrow E26 come listener, tuttavia, facendo questo, la parola chiave `this` non si riferirà più all'istanza `EventEmitter`:
+È possibile utilizzare le Funzioni Arrow E26 come listener, tuttavia, facendo ciò, la parola chiave `this` non si riferirà più all'istanza `EventEmitter`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -71,7 +71,7 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Gestione degli eventi di una sola volta
+## Gestione degli eventi solo una volta
 
 Nel momento in cui un listener viene registrato utilizzando il metodo `eventEmitter.on()`, quel listener verrà invocato *ogni volta* che l'evento con nome viene emesso.
 
