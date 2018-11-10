@@ -1441,7 +1441,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
