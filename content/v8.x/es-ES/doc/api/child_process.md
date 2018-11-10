@@ -115,7 +115,7 @@ changes:
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * `callback` {Function} called with the output when process terminates. 
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -206,8 +206,8 @@ changes:
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Predeterminado:** `false`.
 * `callback` {Function} Called with the output when process terminates. 
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -265,7 +265,7 @@ changes:
   * `execArgv` {Array} List of string arguments passed to the executable. **Default:** `process.execArgv`
   * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`
   * `stdio` {Array|string} See [`child_process.spawn()`][]'s [`stdio`][]. When this option is provided, it overrides `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. For instance `[0, 1, 2, 'ipc']`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Predeterminado:** `false`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
 * Returns: {ChildProcess}
@@ -310,8 +310,8 @@ changes:
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Returns: {ChildProcess}
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
@@ -531,7 +531,7 @@ changes:
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. **Default:** `200*1024` If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execFileSync()` method is generally identical to [`child_process.execFile()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
@@ -569,7 +569,7 @@ changes:
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. **Default:** `200*1024` If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execSync()` method is generally identical to [`child_process.exec()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. *Note that if the child process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.*
@@ -613,8 +613,8 @@ changes:
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. **Default:** `200*1024` If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Returns: {Object} 
   * `pid` {number} Pid of the child process.
   * `output` {Array} Array of results from stdio output.
