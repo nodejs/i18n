@@ -263,7 +263,7 @@ changes:
   * `env` {Object} Environment key-value pairs.
   * `execPath` {string} Executable used to create the child process.
   * `execArgv` {Array} List of string arguments passed to the executable. **Default:** `process.execArgv`
-  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Default:** `false`
+  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`
   * `stdio` {Array|string} See [`child_process.spawn()`][]'s [`stdio`][]. When this option is provided, it overrides `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. For instance `[0, 1, 2, 'ipc']`.
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
