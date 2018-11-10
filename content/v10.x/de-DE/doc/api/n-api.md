@@ -743,9 +743,9 @@ Die `napi_value`, die in oder aus diesen Methoden übertragen wird, ist ein Hand
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, für die wir das entsprechende `Object` anfordern.
-- `[out] result`: The `napi_value` for the `Object` referenced by the `napi_ref`.
+- `[out] result`: Die `napi_value` für das `Object` referenziert durch die `napi_ref`.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
 If still valid, this API returns the `napi_value` representing the JavaScript `Object` associated with the `napi_ref`. Otherwise, result will be NULL.
 
