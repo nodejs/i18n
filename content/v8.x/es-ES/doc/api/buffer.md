@@ -1465,63 +1465,61 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads a signed 8-bit integer from `buf` at the specified `offset`.
+Lee un entero de 8-bit con signo desde `buf` en el `offset` especificado.
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from([-1, 5]);
 
-// Prints: -1
+// Imprime: -1
 console.log(buf.readInt8(0));
 
-// Prints: 5
+// Imprime: 5
 console.log(buf.readInt8(1));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readInt8(2));
 ```
 
 ### buf.readInt16BE(offset[, noAssert])
 
-### buf.readInt16LE(offset[, noAssert])
+### buf.readInt16BE(offset[, noAssert])
 
 <!-- YAML
 added: v0.5.5
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
+Lee un entero de 16-bit con signo desde `buf` en el `offset` especificado con el formato endian especificado (`readInt16BE()` devuelve big endian, `readInt16LE()` devuelve little endian).
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
 
 Ejemplos:
 
 ```js
-const buf = Buffer.from([0, 5]);
-
-// Prints: 5
+// Imprime: 5
 console.log(buf.readInt16BE());
 
-// Prints: 1280
+// Imprime: 1280
 console.log(buf.readInt16LE());
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readInt16LE(1));
 ```
 
 ### buf.readInt32BE(offset[, noAssert])
 
-### buf.readInt32LE(offset[, noAssert])
+### buf.readInt32BE(offset[, noAssert])
 
 <!-- YAML
 added: v0.5.5
@@ -1531,24 +1529,24 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
+Lee un entero de 32-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readInt32BE()` devuelve big endian, `readInt32LE()` devuelve little endian).
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
 
-// Prints: 5
+// Imprime: 5
 console.log(buf.readInt32BE());
 
-// Prints: 83886080
+// Imprime: 83886080
 console.log(buf.readInt32LE());
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readInt32LE(1));
 ```
 
@@ -1560,8 +1558,8 @@ console.log(buf.readInt32LE(1));
 added: v0.11.15
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Número de bytes a leer. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
 * Devuelve: {integer}
 
@@ -1621,7 +1619,7 @@ console.log(buf.readUInt8(2));
 added: v0.5.5
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
@@ -1689,8 +1687,8 @@ console.log(buf.readUInt32LE(1).toString(16));
 added: v0.11.15
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Número de bytes a leer. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Predeterminado:** `false`
 * Devuelve: {integer}
 
@@ -2112,7 +2110,7 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -2174,7 +2172,7 @@ added: v0.11.15
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
@@ -2237,7 +2235,7 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -2305,7 +2303,7 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
