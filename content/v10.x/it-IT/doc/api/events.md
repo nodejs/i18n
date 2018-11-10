@@ -456,9 +456,9 @@ added: v0.1.26
 
 Rimuove tutti i listeners, oppure quelli del `eventName` specificato.
 
-Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
+Da notare che eliminare listener aggiunti in un altro punto del codice è una cattiva pratica, in particolare nei casi in cui l'istanza `EventEmitter` è stata creata da qualche altro componente o modulo (es. socket o file stream).
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.removeListener(eventName, listener)
 
@@ -470,7 +470,7 @@ added: v0.1.26
 - `listener` {Function}
 - Restituisce: {EventEmitter}
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Rimuove il `listener` specificato dall'array del listener per l'evento con nome `eventName`.
 
 ```js
 const callback = (stream) => {
@@ -481,7 +481,7 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 ```
 
-`removeListener()` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
+`removeListener()` eliminerà, al massimo, un'istanza di un listener dall'array del listener. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
 
 Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
 
