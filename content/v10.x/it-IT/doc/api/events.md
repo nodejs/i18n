@@ -504,14 +504,14 @@ myEmitter.on('event', callbackB);
 // callbackA removes listener callbackB but it will still be called.
 // Internal listener array at time of emit [callbackA, callbackB]
 myEmitter.emit('event');
-// Prints:
+// Stampa:
 //   A
 //   B
 
 // callbackB is now removed.
 // Internal listener array [callbackA]
 myEmitter.emit('event');
-// Prints:
+// Stampa:
 //   A
 ```
 
