@@ -481,7 +481,7 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 ```
 
-`removeListener()` eliminerà, al massimo, un'istanza di un listener dall'array del listener. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
+`removeListener()` eliminerà, al massimo, un'istanza di un listener dall'array del listener. Se qualunque listener singolo è stato aggiunto molteplici volte all'array del listener per l'`eventName` indicato, allora è necessario chiamare più volte `removeListener()` per eliminare ogni istanza.
 
 Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
 
