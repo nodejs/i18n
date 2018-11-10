@@ -928,7 +928,7 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser usados para limitar la comparación a rangos específicos dentro de `target` y `buf` respectivamente.
+Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser usados para limitar la comparación a rangos específicos dentro de `target` y `buf`, respectivamente.
 
 Ejemplos:
 
@@ -962,7 +962,7 @@ added: v0.1.90
 
 Copia datos desde una región de `buf` a una región en `target`, incluso si la región de la memoria de `target` se superpone con `buf`.
 
-Ejemplo: Crea dos instancias de `Buffer`, `buf1` y `buf2`, y copia `buf1` desde el byte 16 a través del byte 19 en `buf2`, comenzando en el 8º byte en `buf2`
+Ejemplo: Crea dos instancias de `Buffer`, `buf1` y `buf2`, y copia `buf1` desde el byte 16 hasta el byte 19 en `buf2`, comenzando en el 8º byte en `buf2`
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
