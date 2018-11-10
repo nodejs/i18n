@@ -1245,21 +1245,21 @@ Todos los paddings se definen en `crypto.constants`.
 added: v6.6.0
 -->
 
-Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin perder información que permita a un atacante adivinar uno de los valores. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin perder información que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resumenes de HMAC o los valores secretis como cookies de autenticacion o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
-`a` and `b` must both be `Buffer`s, and they must have the same length.
+`a` y `b` deben ser ambas `Buffers` y tener la misma longitud.
 
-**Note**: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
+**Nota**: El uso de `crypto.timingSafeEqual` no garantixa que el código *cercano* sea seguro momentáneamente. Debe tener cuidado al asegurarse que el código cercano no introduce vulnerabilidades de tiempo.
 
-### crypto.privateEncrypt(private_key, buffer)
+### crypto.privateEncrypt(clave_privada, buffer)
 
 <!-- YAML
 added: v1.1.0
 -->
 
-Encrypts `buffer` with `private_key`.
+Encripta el `buffer` con la `clave_privada`.
 
-La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
+La `private_key` puede ser un objeto o una string. Si la `clave_privada` es una string, sera tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
 * `clave`: {string} - Clave privada codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
@@ -1269,17 +1269,17 @@ La `private_key` puede ser un objeto o una string. If `private_key` is a string,
 
 Todos los paddings se definen en `crypto.constants`.
 
-### crypto.publicDecrypt(public_key, buffer)
+### crypto.publicDecrypt(clave_pública, buffer)
 
 <!-- YAML
 added: v1.1.0
 -->
 
-Decrypts `buffer` with `public_key`.
+Desencripta el `buffer` con la `clave_pública`.
 
-`public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
+La `clave_pública` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded public key
+* `clave`: {string} - Clave pública codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
@@ -1298,9 +1298,9 @@ added: v0.11.14
 
 Encrypts `buffer` with `public_key`.
 
-`public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
+La `clave_pública` puede ser un objeto o una string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded public key
+* `clave`: {string} - Clave pública codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
