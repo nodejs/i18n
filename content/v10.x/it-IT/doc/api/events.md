@@ -361,14 +361,14 @@ server.on('connection', (stream) => {
 
 Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
+Di default, gli event listener vengono invocati nell'ordine in cui vengono aggiunti. Il metodo `emitter.prependListener()` può essere utilizzato come alternativa per aggiungere l'event listener all'inizio dell'array dei listener.
 
 ```js
 const myEE = new EventEmitter();
 myEE.on('foo', () => console.log('a'));
 myEE.prependListener('foo', () => console.log('b'));
 myEE.emit('foo');
-// Prints:
+// Stampa:
 //   b
 //   a
 ```
@@ -379,8 +379,8 @@ myEE.emit('foo');
 added: v0.3.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} Il nome dell'evento.
+- `listener` {Function} La funzione callback
 - Restituisce: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
