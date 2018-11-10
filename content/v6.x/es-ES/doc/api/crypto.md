@@ -1182,7 +1182,7 @@ La función de `callback` dada es llamada a través de dos argumentos: `err` y `
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1194,21 +1194,21 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, key) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
 
-### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
+### crypto.pbkdf2Sync(clave, salt, iteraciones, keylen, resumen)
 
 <!-- YAML
 added: v0.9.3
 -->
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Provee una implementación asincrónica de la clave basada en contraseña de Derivación de Función 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
-If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1218,7 +1218,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(private_key, buffer)
 
@@ -1226,9 +1226,9 @@ An array of supported digest functions can be retrieved using [`crypto.getHashes
 added: v0.11.14
 -->
 
-Decrypts `buffer` with `private_key`.
+Descifra un `buffer` con la `private_key`.
 
-`private_key` can be an object or a string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
 
 * `key`: {string} - PEM encoded private key
 * `passphrase`: {string} - Optional passphrase for the private key
@@ -1259,7 +1259,7 @@ added: v1.1.0
 
 Encrypts `buffer` with `private_key`.
 
-`private_key` can be an object or a string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
 
 * `key`: {string} - PEM encoded private key
 * `passphrase`: {string} - Optional passphrase for the private key
