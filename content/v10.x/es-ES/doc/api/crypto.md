@@ -1714,7 +1714,7 @@ Encripta el contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][]
 
 Debido a que las claves públicas RSA pueden ser derivadas de claves privadas, una clave privada puede ser pasada en lugar de una clave pública.
 
-### crypto.randomBytes(size[, callback])
+### crypto.randomBytes(tamaño[, callback])
 
 <!-- YAML
 added: v0.5.8
