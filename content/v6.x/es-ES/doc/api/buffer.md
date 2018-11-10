@@ -1508,7 +1508,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
+Lee un entero de 32-bit sin signo desde `buf` en el `offset` especificado con el formato endian especificado (`readUInt32BE()` devuelve big endian, `readUInt32LE()` devuelve little endian).
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1517,13 +1517,13 @@ Ejemplos:
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
 
-// Prints: 12345678
+// Imprime: 12345678
 console.log(buf.readUInt32BE(0).toString(16));
 
-// Prints: 78563412
+// Imprime: 78563412
 console.log(buf.readUInt32LE(0).toString(16));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readUInt32LE(1).toString(16));
 ```
 
@@ -1540,7 +1540,7 @@ added: v0.11.15
 * `noAssert` {boolean} ¿Saltar validación de `offset` y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Soporta hasta 48 bits de precisión.
+Lee el número de bytes `byteLength` desde `buf` en el `offset` especificado e interpreta el resultado como un entero sin signo. Soporta hasta 48 bits de precisión.
 
 Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1549,13 +1549,13 @@ Ejemplos:
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
-// Prints: 1234567890ab
+// Imprime: 1234567890ab
 console.log(buf.readUIntBE(0, 6).toString(16));
 
-// Prints: ab9078563412
+// Imprime: ab9078563412
 console.log(buf.readUIntLE(0, 6).toString(16));
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readUIntBE(1, 6).toString(16));
 ```
 
@@ -1565,32 +1565,32 @@ console.log(buf.readUIntBE(1, 6).toString(16));
 added: v0.3.0
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** `0`
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Predeterminado:** [`buf.length`]
+* `start` {integer} Dónde comenzará el nuevo `Buffer`. **Predeterminado:** `0`
+* `end` {integer} Dónde terminará el nuevo `Buffer` (no incluido). **Predeterminado:** [`buf.length`]
 * Devuelve: {Buffer}
 
-Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
+Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
 
-**Note that modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.**
+**Tenga en cuenta que modificar el nuevo segmento `Buffer` modificará la memoria en el `Buffer` original ya que la memoria asignada de los dos objetos se superpone.**
 
-Example: Create a `Buffer` with the ASCII alphabet, take a slice, and then modify one byte from the original `Buffer`
+Ejemplo: Crear un `Buffer` con el alfabeto ASCII, tomar un segmento, y luego modificar un byte del `Buffer` original
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
 const buf2 = buf1.slice(0, 3);
 
-// Prints: abc
+// Imprime: abc
 console.log(buf2.toString('ascii', 0, buf2.length));
 
 buf1[0] = 33;
 
-// Prints: !bc
+// Imprime: !bc
 console.log(buf2.toString('ascii', 0, buf2.length));
 ```
 
