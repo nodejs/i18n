@@ -757,7 +757,7 @@ N-API-Module werden ähnlich wie andere Module registriert, nur dass anstelle de
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-The next difference is the signature for the `Init` method. For a N-API module it is as follows:
+Der nächste Unterschied ist die Signatur für die `Init`-Methode. Für ein N-API-Modul sieht es wie folgt aus:
 
 ```C
 napi_value Init(napi_env env, napi_value exports);
