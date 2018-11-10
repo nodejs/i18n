@@ -643,7 +643,7 @@ added: v0.7.1
   * `execArgv` {Array} list of string arguments passed to the Node.js executable. **Default:** `process.execArgv`
   * `exec` {string} file path to worker file. **Default:** `process.argv[1]`
   * `args` {Array} string arguments passed to worker. **Default:**: `process.argv.slice(2)`
-  * `silent` {boolean} whether or not to send output to parent's stdio. **Default:** `false`
+  * `silent` {boolean} whether or not to send output to parent's stdio. **Predeterminado:** `false`
   * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
   * `uid` {number} Sets the user identity of the process. (see setuid(2))
   * `gid` {number} Sets the group identity of the process. (see setgid(2))
@@ -661,7 +661,7 @@ added: v0.7.1
 * `settings` {Object} 
   * `exec` {string} file path to worker file. **Default:** `process.argv[1]`
   * `args` {Array} string arguments passed to worker. **Default:**: `process.argv.slice(2)`
-  * `silent` {boolean} whether or not to send output to parent's stdio. **Default:** `false`
+  * `silent` {boolean} whether or not to send output to parent's stdio. **Predeterminado:** `false`
   * `stdio` {Array} Configures the stdio of forked processes. When this option is provided, it overrides `silent`.
 
 `setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
