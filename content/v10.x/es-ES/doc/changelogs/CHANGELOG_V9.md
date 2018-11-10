@@ -1377,31 +1377,31 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   
   * **async\_hooks**: 
     * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
-    * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
-  * **console**: 
-    * console.debug can now be used outside of the inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
+    * agregar tipos de proveedores para el servidor de red (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
+  * **consola**: 
+    * console.debug ahora puede ser utilizado fuera del inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
   * **deps**: 
-    * upgrade libuv to 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
-    * patch V8 to 6.2.414.46 (Myles Borins) [#17206](https://github.com/nodejs/node/pull/17206)
+    * actualizar libuv a 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
+    * parchear V8 a 6.2.414.46 (Myles Borins) [#17206](https://github.com/nodejs/node/pull/17206)
   * **module**: 
-    * module.builtinModules will return a list of built in modules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
+    * module.builtinModules devolverá una lista de módulos compilados (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
   * **n-api**: 
-    * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+    * agregar ayudante para los complementos para obtener el bucle del evento (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
   * **process**: 
-    * process.setUncaughtExceptionCaptureCallback can now be used to customize behavior for `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
-    * A signal handler is now able to receive the signal code that triggered the handler. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
+    * process.setUncaughtExceptionCaptureCallback ahora puede ser utilizado para personalizar comportamiento de `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
+    * Un manejador de señal ahora es capaz de recibir el código de señal que activó el manejador. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
   * **src**: 
-    * embedders can now use Node::CreatePlatform to create an instance of NodePlatform (Cheng Zhao) [#16981](https://github.com/nodejs/node/pull/16981)
+    * los embedders ahora pueden utilizar Node::CreatePlatform para crear una instancia de NodePlatform (Cheng Zhao) [#16981](https://github.com/nodejs/node/pull/16981)
   * **stream**: 
-    * writable.writableHighWaterMark and readable.readableHighWaterMark will return the values the stream object was instantiated with (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
-  * **Added new collaborators** 
+    * writable.writableHighWaterMark y readable.readableHighWaterMark devolverán los valores con los que fue instanciado el objeto stream (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
+  * **Nuevos colaboradores añadidos** 
     * [maclover7](https://github.com/maclover7) Jon Moss
     * [guybedford](https://github.com/guybedford) Guy Bedford
     * [hashseed](https://github.com/hashseed) Yang Guo
   ### Commits
   
-  * [[`623b589921`](https://github.com/nodejs/node/commit/623b589921)] - tools/doc: add tools/remark-* to eslintignore (Ivan Wei) [#17240](https://github.com/nodejs/node/pull/17240)
-  * [[`cf0d7cfc46`](https://github.com/nodejs/node/commit/cf0d7cfc46)] - **async_hooks**: add destroy event for gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
+  * [[`623b589921`](https://github.com/nodejs/node/commit/623b589921)] - tools/doc: agregar tools/remark-* a eslintignore (Ivan Wei) [#17240](https://github.com/nodejs/node/pull/17240)
+  * [[`cf0d7cfc46`](https://github.com/nodejs/node/commit/cf0d7cfc46)] - **async_hooks**: agregar evento destruir para AsyncResources de gced (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
   * [[`cf7e15cf78`](https://github.com/nodejs/node/commit/cf7e15cf78)] - **(SEMVER-MINOR)** **async_hooks**: add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
   * [[`e0ce7cf1e9`](https://github.com/nodejs/node/commit/e0ce7cf1e9)] - **(SEMVER-MINOR)** **async_wrap**: add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
   * [[`cbd0be59f0`](https://github.com/nodejs/node/commit/cbd0be59f0)] - **benchmark**: fix http/simple.js benchmark (Anatoli Papirovski) [#17583](https://github.com/nodejs/node/pull/17583)
