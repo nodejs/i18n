@@ -751,7 +751,7 @@ Wenn diese API noch gültig ist, gibt sie die `napi_value` zurück, das das Java
 
 ## Modulregistrierung
 
-N-API modules are registered in a manner similar to other modules except that instead of using the `NODE_MODULE` macro the following is used:
+N-API-Module werden ähnlich wie andere Module registriert, nur dass anstelle des `NODE_MODULE`-Makros folgendes verwendet wird:
 
 ```C
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
