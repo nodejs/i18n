@@ -1566,7 +1566,7 @@ added: v0.3.0
 -->
 
 * `start` {integer} Dónde comenzará el nuevo `Buffer`. **Predeterminado:** `0`
-* `end` {integer} Dónde terminará el nuevo `Buffer` (no incluido). **Predeterminado:** [`buf.length`]
+* `end` {integer} Dónde terminará el nuevo `Buffer` (no inclusivo). **Predeterminado:** [`buf.length`]
 * Devuelve: {Buffer}
 
 Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
