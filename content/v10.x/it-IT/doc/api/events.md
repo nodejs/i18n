@@ -515,9 +515,9 @@ myEmitter.emit('event');
 //   A
 ```
 
-Because listeners are managed using an internal array, calling this will change the position indices of any listener registered *after* the listener being removed. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
+Poiché i listener vengono gestiti utilizzando un array interno, chiamare questo modificherà gli indici di posizione di ciascun listener registrato *in seguito* all'eliminazione del listener. Ciò non avrà nessun impatto sull'ordine in cui i listener vengono chiamati, ma indica che qualsiasi copia dell'array del listener restituita dal metodo `emitter.listeners()` dovrà essere ricreata.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.setMaxListeners(n)
 
