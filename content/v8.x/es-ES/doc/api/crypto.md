@@ -1390,7 +1390,7 @@ La función de `callback` dada es llamada a través de dos argumentos: `err` y `
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1402,11 +1402,11 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
 
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
-### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
+### crypto.pbkdf2Sync(clave, salt, iteraciones, keylen, resumen)
 
 <!-- YAML
 added: v0.9.3
@@ -1428,13 +1428,13 @@ changes:
 - `keylen` {number}
 - `digest` {string}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Provee una implementación asincrónica de la clave basada en contraseña de Derivación de Función 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
 
-If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
 El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
 
-El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1444,7 +1444,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
