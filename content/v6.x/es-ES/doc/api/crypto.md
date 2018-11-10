@@ -1228,16 +1228,16 @@ added: v0.11.14
 
 Descifra un `buffer` con la `private_key`.
 
-La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, es tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded private key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `clave`: {string} - Clave privada codificada PEM
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.timingSafeEqual(a, b)
 
@@ -1259,15 +1259,15 @@ added: v1.1.0
 
 Encrypts `buffer` with `private_key`.
 
-La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded private key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `clave`: {string} - Clave privada codificada PEM
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.publicDecrypt(public_key, buffer)
 
@@ -1280,15 +1280,15 @@ Decrypts `buffer` with `public_key`.
 `public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
 
 * `key`: {string} - PEM encoded public key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.publicEncrypt(public_key, buffer)
 
@@ -1301,15 +1301,15 @@ Encrypts `buffer` with `public_key`.
 `public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
 
 * `key`: {string} - PEM encoded public key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.randomBytes(size[, callback])
 
