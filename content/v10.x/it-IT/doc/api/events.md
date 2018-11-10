@@ -435,15 +435,15 @@ added: v6.0.0
 - `listener` {Function} La funzione callback
 - Restituisce: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
+Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. La volta successiva in cui viene attivato `eventName`, il listener viene eliminato, e poi invocato.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
+  console.log('Ah, abbiamo il nostro primo utente!');
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.removeAllListeners([eventName])
 
@@ -454,7 +454,7 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - Restituisce: {EventEmitter}
 
-Removes all listeners, or those of the specified `eventName`.
+Rimuove tutti i listeners, oppure quelli del `eventName` specificato.
 
 Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
 
