@@ -1247,24 +1247,24 @@ added: v0.11.15
 
 Lee un doble de 64-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readDoubleBE()` devuelve big endian, `readDoubleLE()` devuelve little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
 
-// Prints: 8.20788039913184e-304
+// Imprime: 8.20788039913184e-304
 console.log(buf.readDoubleBE());
 
-// Prints: 5.447603722011605e-270
+// Imprime: 5.447603722011605e-270
 console.log(buf.readDoubleLE());
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readDoubleLE(1));
 
-// Warning: reads passed end of buffer!
-// This will result in a segmentation fault! Don't do this!
+// Advertencia: ¡Las lecturas pasaron el final de buffer!
+// ¡Esto resultará en una falla de segmentación! ¡No hagas esto!
 console.log(buf.readDoubleLE(1, true));
 ```
 
@@ -1276,30 +1276,30 @@ console.log(buf.readDoubleLE(1, true));
 added: v0.11.15
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {number}
 
-Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
+Lee un float de 32-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readFloatBE()` devuelve big endian, `readFloatLE()` devuelve little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
 
-// Prints: 2.387939260590663e-38
+// Imprime: 2.387939260590663e-38
 console.log(buf.readFloatBE());
 
-// Prints: 1.539989614439558e-36
+// Imprime: 1.539989614439558e-36
 console.log(buf.readFloatLE());
 
-// Throws an exception: RangeError: Index out of range
+// Arroja una excepción: RangeError: Índice fuera de rango
 console.log(buf.readFloatLE(1));
 
-// Warning: reads passed end of buffer!
-// This will result in a segmentation fault! Don't do this!
+// Advertencia: ¡Las lecturas pasaron el final del buffer!
+// ¡Esto resultará en una falla de segmentación! ¡No hagas esto!
 console.log(buf.readFloatLE(1, true));
 ```
 
@@ -1309,13 +1309,13 @@ console.log(buf.readFloatLE(1, true));
 added: v0.5.0
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads a signed 8-bit integer from `buf` at the specified `offset`.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1348,7 +1348,7 @@ added: v0.5.5
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1375,13 +1375,13 @@ console.log(buf.readInt16LE(1));
 added: v0.5.5
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1415,7 +1415,7 @@ added: v0.11.15
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -1438,13 +1438,13 @@ console.log(buf.readIntBE(1, 6).toString(16));
 added: v0.5.0
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -1475,7 +1475,7 @@ added: v0.5.5
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -1506,13 +1506,13 @@ console.log(buf.readUInt16LE(2).toString(16));
 added: v0.5.5
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} ¿Saltar validación de `offset`? **Predeterminado:** `false`
 * Devuelve: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -1544,7 +1544,7 @@ added: v0.11.15
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que `offset` esté más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -1884,7 +1884,7 @@ added: v0.11.15
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -1915,7 +1915,7 @@ added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -1977,7 +1977,7 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -2040,7 +2040,7 @@ added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
@@ -2106,7 +2106,7 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
