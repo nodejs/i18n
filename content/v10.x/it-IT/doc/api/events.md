@@ -201,7 +201,7 @@ deprecated: v4.0.0
 
 > Stabilità: 0 - Deprecato: Utilizza [`emitter.listenerCount()`][] al suo posto.
 
-A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
+Un metodo di classe che restituisce il numero di listener per un determinato `eventName` registrato su un `emitter` specifico.
 
 ```js
 const myEmitter = new MyEmitter();
