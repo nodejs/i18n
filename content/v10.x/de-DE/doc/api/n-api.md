@@ -747,9 +747,9 @@ Die `napi_value`, die in oder aus diesen Methoden übertragen wird, ist ein Hand
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-If still valid, this API returns the `napi_value` representing the JavaScript `Object` associated with the `napi_ref`. Otherwise, result will be NULL.
+Wenn diese API noch gültig ist, gibt sie die `napi_value` zurück, das das JavaScript-`Object` repräsentiert, das dem `napi_ref` zugeordnet ist. Andernfalls ist das Ergebnis NULL.
 
-## Module registration
+## Modulregistrierung
 
 N-API modules are registered in a manner similar to other modules except that instead of using the `NODE_MODULE` macro the following is used:
 
