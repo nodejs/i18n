@@ -860,7 +860,7 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Crea y devuelve un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de `[index, byte]` par desde el contenido de `buf`.
+Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de pares `[index, byte]` desde el contenido de `buf`.
 
 Ejemplo: Registra todos los contenidos de un `Buffer`
 
@@ -885,7 +885,7 @@ for (const pair of buf.entries()) {
 added: v0.11.13
 -->
 
-* `otherBuffer` {Buffer} Un `Buffer` al cual comparar.
+* `otherBuffer` {Buffer} Un `Buffer` con el cual comparar.
 * Devuelve: {boolean}
 
 Devuelve `true` si ambos `buf` y `otherBuffer` tienen exactamente los mismos bytes, de lo contrario `false`.
@@ -912,7 +912,7 @@ added: v0.5.0
 
 * `value` {string|Buffer|integer} El valor con el cual llenar `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a llenar `buf`. **Predeterminado:** `0`
-* `end` {integer} Donde detener el llenado de `buf` (no inclusivo). **Predeterminado:** [`buf.length`]
+* `end` {integer} Dónde detener el llenado de `buf` (no inclusivo). **Predeterminado:** [`buf.length`]
 * `encoding` {string} Si `value` es una string, esa es su codificación. **Predeterminado:** `'utf8'`
 * Returns: {Buffer} Una referencia a `buf`.
 
@@ -1038,7 +1038,7 @@ Si `byteOffset` no es un número, será forzado a ser un número. Cualquier argu
 const b = Buffer.from('abcdef');
 
 // Pasando un valor que es un número, pero no un valor byte válido
-// Imprime: 2, equivalente a buscar por 99 o 'c'
+// Imprime: 2, equivalente a buscar 99 o 'c'
 console.log(b.indexOf(99.9));
 console.log(b.indexOf(256 + 99));
 
@@ -1099,7 +1099,7 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Crea y devuelve un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de claves `buf` (índices).
+Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de claves `buf` (índices).
 
 Ejemplo:
 
