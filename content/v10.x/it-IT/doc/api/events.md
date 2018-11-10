@@ -221,7 +221,7 @@ Di default, è possibile registrare un massimo di `10` listener per ogni singolo
 
 Prestare attenzione durante la configurazione dell'`EventEmitter.defaultMaxListeners` poiché la modifica influenza *tutte* le istanze `EventEmitter`, incluse quelle create precedentemente alla modifica. Tuttavia, chiamare [`emitter.setMaxListeners(n)`][] mantiene la precedenza su `EventEmitter.defaultMaxListeners`.
 
-Da notare che questo non è un limite rigido. The `EventEmitter` instance will allow more listeners to be added but will output a trace warning to stderr indicating that a "possible EventEmitter memory leak" has been detected. Per ogni singolo `EventEmitter`, si possono utilizzare i metodi `emitter.getMaxListeners()` e `emitter.setMaxListeners()` per evitare temporaneamente questo avviso:
+Da notare che questo non è un limite rigido. L'istanza `EventEmitter` permetterà di aggiungere ulteriori listener ma produrrà un trace warning su stderr indicante che è stata rilevata una "possibile perdita di memoria di EventEmitter". Per ogni singolo `EventEmitter`, si possono utilizzare i metodi `emitter.getMaxListeners()` e `emitter.setMaxListeners()` per evitare temporaneamente questo avviso:
 
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
@@ -351,7 +351,7 @@ added: v0.1.101
 - `listener` {Function} La funzione callback
 - Restituisce: {EventEmitter}
 
-Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Aggiunge la funzione `listener` alla fine dell'array dei listener per l'evento con nome `eventName`. Non viene effettuato nessun controllo per verificare se il `listener` sia già stato aggiunto. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
 ```js
 server.on('connection', (stream) => {
