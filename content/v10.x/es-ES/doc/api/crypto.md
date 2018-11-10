@@ -1592,7 +1592,7 @@ Un array de funciones de compilación compatibles puede ser recuperada usando [`
 
 Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
-### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
+### crypto.pbkdf2Sync(clave, salt, iteraciones, keylen, resumen)
 
 <!-- YAML
 added: v0.9.3
