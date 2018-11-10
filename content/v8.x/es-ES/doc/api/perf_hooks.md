@@ -139,7 +139,7 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
 Returns the current high resolution millisecond timestamp.
 
