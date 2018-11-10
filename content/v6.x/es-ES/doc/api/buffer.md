@@ -1136,57 +1136,57 @@ Ejemplos:
 ```js
 const buf = Buffer.from('this buffer is a buffer');
 
-// Prints: 0
+// Imprime: 0
 console.log(buf.lastIndexOf('this'));
 
-// Prints: 17
+// Imprime: 17
 console.log(buf.lastIndexOf('buffer'));
 
-// Prints: 17
+// Imprime: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
 
-// Prints: 15
-// (97 is the decimal ASCII value for 'a')
+// Imprime: 15
+// (97 es el valor ASCII decimal para 'a')
 console.log(buf.lastIndexOf(97));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
 
-// Prints: 5
+// Imprime: 5
 console.log(buf.lastIndexOf('buffer', 5));
 
-// Prints: -1
+// Imprime: -1
 console.log(buf.lastIndexOf('buffer', 4));
 
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
 
-// Prints: 6
+// Imprime: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'ucs2'));
 
-// Prints: 4
+// Imprime: 4
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'ucs2'));
 ```
 
 Si `value` no es una string, un número, o un `Buffer`, este método producirá un `TypeError`. Si `value` es un número, será forzado a ser un valor byte válido, un entero entre 0 y 255.
 
-Si `byteOffset` no es un número, será forzado a ser un número. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+Si `byteOffset` no es un número, será forzado a ser un número. Cualquier argumento que fuerce a `NaN`, como `{}` o `undefined`, buscará todo el buffer. Este comportamiento coincide con [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
 
-// Passing a value that's a number, but not a valid byte
-// Prints: 2, equivalent to searching for 99 or 'c'
+// Pasando un valor que es un número, pero no un byte válido
+// Imprime: 2, equivalente a buscar 99 o 'c'
 console.log(b.lastIndexOf(99.9));
 console.log(b.lastIndexOf(256 + 99));
 
-// Passing a byteOffset that coerces to NaN
-// Prints: 1, searching the whole buffer
+// Pasando un byteOffset que fuerza a NaN
+// Imprime: 1, buscando todo el buffer
 console.log(b.lastIndexOf('b', undefined));
 console.log(b.lastIndexOf('b', {}));
 
-// Passing a byteOffset that coerces to 0
-// Prints: -1, equivalent to passing 0
+// Pasando un byteOffset que fuerza a 0
+// Imprime: -1, equivalente a pasar 0
 console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
@@ -1199,19 +1199,19 @@ added: v0.1.90
 
 * {integer}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+Devuelve la cantidad de memoria asignada para `buf` en bytes. Tenga en cuenta que esto no necesariamente refleja la cantidad de datos "utilizables" dentro de `buf`.
 
-Example: Create a `Buffer` and write a shorter ASCII string to it
+Ejemplo: Crear un `Buffer` y escribir una string ASCII más corta en él
 
 ```js
 const buf = Buffer.alloc(1234);
 
-// Prints: 1234
+// Imprime: 1234
 console.log(buf.length);
 
 buf.write('some string', 0, 'ascii');
 
-// Prints: 1234
+// Imprime: 1234
 console.log(buf.length);
 ```
 
