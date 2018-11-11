@@ -151,7 +151,7 @@ Tutti gli errori generati da Node.js, inclusi tutti gli errori di Sistema e di J
 
 - `message` {string}
 
-Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggio di testo fornito. Se un oggetto viene passato come `message`, il messaggio di testo è generato chiamando `message.toString()`. La proprietà `Error.stack` rappresenterà il punto nel codice in cui è stato chiamato `new Error()`. Le stack traces sono dipendenti dalle [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
+Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggio di testo fornito. Se un oggetto viene passato come `message`, il messaggio di testo è generato chiamando `message.toString()`. La proprietà `Error.stack` rappresenterà il punto nel codice in cui è stato chiamato `new Error()`. Le stack traces sono dipendenti dalle [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Le Stack traces si estendono solo a (a) l'inizio del *synchronous code execution*, oppure (b) il numero di frame dato dalla proprietà `Error.stackTraceLimit`, qualunque sia il più piccolo.
 
 ### Error.captureStackTrace(targetObject[, constructorOpt])
 
