@@ -2019,9 +2019,9 @@ added: v0.11.15
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
+Escribe el `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeDoubleBE()` escribe big endian, `writeDoubleLE()` escribe little endian). `value` *debe* ser un doble válido de 64-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un doble de 64-bits.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2030,12 +2030,12 @@ const buf = Buffer.allocUnsafe(8);
 
 buf.writeDoubleBE(0xdeadbeefcafebabe, 0);
 
-// Prints: <Buffer 43 eb d5 b7 dd f9 5f d7>
+// Imprime: <Buffer 43 eb d5 b7 dd f9 5f d7>
 console.log(buf);
 
 buf.writeDoubleLE(0xdeadbeefcafebabe, 0);
 
-// Prints: <Buffer d7 5f f9 dd b7 d5 eb 43>
+// Imprime: <Buffer d7 5f f9 dd b7 d5 eb 43>
 console.log(buf);
 ```
 
@@ -2052,9 +2052,9 @@ added: v0.11.15
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
+Escribe el `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float válido de 32-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un float de 32-bits.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2063,12 +2063,12 @@ const buf = Buffer.allocUnsafe(4);
 
 buf.writeFloatBE(0xcafebabe, 0);
 
-// Prints: <Buffer 4f 4a fe bb>
+// Imprime: <Buffer 4f 4a fe bb>
 console.log(buf);
 
 buf.writeFloatLE(0xcafebabe, 0);
 
-// Prints: <Buffer bb fe 4a 4f>
+// Imprime: <Buffer bb fe 4a 4f>
 console.log(buf);
 ```
 
@@ -2078,14 +2078,14 @@ console.log(buf);
 added: v0.5.0
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero con signo de 8-bits. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2109,14 +2109,14 @@ console.log(buf);
 added: v0.5.5
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2140,14 +2140,14 @@ console.log(buf);
 added: v0.5.5
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2171,7 +2171,7 @@ console.log(buf);
 added: v0.11.15
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
@@ -2179,7 +2179,7 @@ added: v0.11.15
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2203,14 +2203,14 @@ console.log(buf);
 added: v0.5.0
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 1`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2234,14 +2234,14 @@ console.log(buf);
 added: v0.5.5
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 2`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2269,14 +2269,14 @@ console.log(buf);
 added: v0.5.5
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 4`.
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
@@ -2302,7 +2302,7 @@ console.log(buf);
 added: v0.5.5
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
@@ -2310,7 +2310,7 @@ added: v0.5.5
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
 Ejemplos:
 
