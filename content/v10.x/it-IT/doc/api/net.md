@@ -678,9 +678,9 @@ Disabilità l'algoritmo di Nagle. Per impostazione predefinita, le connessioni T
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
-Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. By default `net.Socket` do not have a timeout.
+Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. Come predefinito `net.Socket` non ha un timeout.
 
 When an idle timeout is triggered the socket will receive a [`'timeout'`][] event but the connection will not be severed. The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
 
