@@ -110,7 +110,7 @@ Se un `EventEmitter` *non* possiede almeno un listener registrato per l'event `'
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.emit('error', new Error('whoops!'));
-// Throws and crashes Node.js
+// Genera e causa il crash di Node.js
 ```
 
 Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il `domain` module è stato deprecato.)
@@ -226,7 +226,7 @@ Da notare che questo non è un limite rigido. L'istanza `EventEmitter` permetter
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
 emitter.once('event', () => {
-  // do stuff
+  // fai operazione
   emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
 });
 ```
