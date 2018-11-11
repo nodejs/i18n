@@ -1876,9 +1876,9 @@ Tenga en cuenta que JavaScript no puede codificar enteros de 64-bits. Este méto
 added: v0.9.2
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
+Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implícitamente llama a esta función al convertir en una string a una instancia de `Buffer`.
 
 Ejemplo:
 
@@ -1886,7 +1886,7 @@ Ejemplo:
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
 const json = JSON.stringify(buf);
 
-// Prints: {"type":"Buffer","data":[1,2,3,4,5]}
+// Imprime: {"type":"Buffer","data":[1,2,3,4,5]}
 console.log(json);
 
 const copy = JSON.parse(json, (key, value) => {
@@ -1895,7 +1895,7 @@ const copy = JSON.parse(json, (key, value) => {
     value;
 });
 
-// Prints: <Buffer 01 02 03 04 05>
+// Imprime: <Buffer 01 02 03 04 05>
 console.log(copy);
 ```
 
@@ -1910,7 +1910,7 @@ added: v0.1.90
 * `end` {integer} El offset de bytes en el cual detener la decodificación (no inclusivo). **Predeterminado:** [`buf.length`]
 * Devuelve: {string}
 
-Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
+Decodifica `buf` en una string de acuerdo a la codificación de caracteres especificados en `encoding`. `start` y `end` pueden pasarse para decodificar solo un subconjunto de `buf`.
 
 The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
 
@@ -1920,26 +1920,26 @@ Ejemplos:
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
-// Prints: abcdefghijklmnopqrstuvwxyz
+// Imprime: abcdefghijklmnopqrstuvwxyz
 console.log(buf1.toString('ascii'));
 
-// Prints: abcde
+// Imprime: abcde
 console.log(buf1.toString('ascii', 0, 5));
 
 
 const buf2 = Buffer.from('tést');
 
-// Prints: 74c3a97374
+// Imprime: 74c3a97374
 console.log(buf2.toString('hex'));
 
-// Prints: té
+// Imprime: té
 console.log(buf2.toString('utf8', 0, 3));
 
-// Prints: té
+// Imprime: té
 console.log(buf2.toString(undefined, 0, 3));
 ```
 
@@ -1951,14 +1951,14 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
+Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) para valores de `buf` (bytes). Esta función es llamada automáticamente cuando un `Buffer` es usado en una declaración `for..of`.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from('buffer');
 
-// Prints:
+// Imprime:
 //   98
 //   117
 //   102
@@ -1969,7 +1969,7 @@ for (const value of buf.values()) {
   console.log(value);
 }
 
-// Prints:
+// Imprime:
 //   98
 //   117
 //   102
@@ -1987,13 +1987,13 @@ for (const value of buf) {
 added: v0.1.90
 -->
 
-* `string` {string} String to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`
-* `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`
-* `encoding` {string} The character encoding of `string`. **Predeterminado:** `'utf8'`
-* Returns: {integer} Number of bytes written.
+* `string` {string} String que se escribirá en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir la `string`. **Default:** `0`
+* `length` {integer} Número de bytes a escribir. **Predeterminado:** `buf.length - offset`
+* `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`
+* Devuelve: {integer} Número de bytes escritos.
 
-Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
+Escribe el `string` en `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro `length` es el número de bytes a escribir. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
 
 Ejemplo:
 
