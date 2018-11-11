@@ -680,9 +680,9 @@ added: v0.1.90
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. Come predefinito `net.Socket` non ha un timeout.
+Imposta il socket perché entri in pausa dopo `timeout` in millisecondi di inattività sul socket. Come predefinito `net.Socket` non ha un timeout.
 
-When an idle timeout is triggered the socket will receive a [`'timeout'`][] event but the connection will not be severed. The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
+Quando viene attivato un timeout di inattività, il socket riceverà un evento[`'timeout'`][] ma la connessione non verrà interrotta. L'utente deve chiamare manualmente [`socket.end()`][] o [`socket.destroy()`][] per terminare la connessione.
 
 ```js
 socket.setTimeout(3000);
@@ -692,9 +692,9 @@ socket.on('timeout', () => {
 });
 ```
 
-If `timeout` is 0, then the existing idle timeout is disabled.
+Se il `timeout` è 0, il timeout di inattività esistente è disattivato.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'timeout'`][] event.
+Il parametro `callback` facoltativo verrà aggiunto come one-time listener per l'evento [`'timeout'`][].
 
 ### socket.unref()
 
@@ -702,7 +702,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 added: v0.9.1
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Restituisce: {net.Socket} Il socket stesso.
 
 Calling `unref()` on a socket will allow the program to exit if this is the only active socket in the event system. If the socket is already `unref`ed calling `unref()` again will have no effect.
 
