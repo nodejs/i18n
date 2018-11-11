@@ -499,7 +499,7 @@ added: v0.11.12
   * [`maxBuffer`][] {number} Largest amount of data (in bytes) allowed on stdout or stderr - if exceeded child process is killed.
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `'cmd.exe'` on Windows. A different shell can be specified as a string. The shell should understand the `-c` switch on UNIX, or `/s /c` on Windows. **Default:** to `false` (no shell).
-* Returns: {Object} 
+* Devuelve: {Object} 
   * `pid` {number} Pid of the child process.
   * `output` {Array} Array of results from stdio output.
   * `stdout` {Buffer|string} The contents of `output[1]`.
