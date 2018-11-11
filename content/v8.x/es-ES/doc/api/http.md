@@ -185,7 +185,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+* Devuelve: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -478,7 +478,7 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
@@ -921,7 +921,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -957,7 +957,7 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
