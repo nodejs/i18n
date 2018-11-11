@@ -350,7 +350,7 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // The data will not be flushed until uncork() is called a second time.
+  // Los datos no se vaciarán hasta que se llame a uncork() por segunda vez.
   stream.uncork();
 });
 ```
@@ -383,7 +383,7 @@ changes:
 * `chunk` {string|Buffer|Uint8Array|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} The encoding, if `chunk` is a string
 * `callback` {Function} Callback para cuando este fragmento de datos se vacíe
-* Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
+* Devuelve: {boolean} `false` si el stream desea que el código de llamada espere a que se emita el evento de `'drain'` antes de continuar escribiendo datos adicionales; de lo contrarió es `true`.
 
 The `writable.write()` method writes some data to the stream, and calls the supplied `callback` once the data has been fully handled. If an error occurs, the `callback` *may or may not* be called with the error as its first argument. To reliably detect write errors, add a listener for the `'error'` event.
 
