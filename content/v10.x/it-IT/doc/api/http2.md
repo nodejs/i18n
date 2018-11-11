@@ -2,9 +2,9 @@
 
 <!--introduced_in=v8.4.0-->
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). Ci si può accedere utilizzando:
 
 ```js
 const http2 = require('http2');
