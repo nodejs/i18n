@@ -1758,23 +1758,23 @@ buf1[0] = 33;
 console.log(buf2.toString('ascii', 0, buf2.length));
 ```
 
-Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
+La especificación de índices negativos causa que el segmento se genere en relación al final de `buf`, en lugar de al inicio.
 
 Ejemplos:
 
 ```js
 const buf = Buffer.from('buffer');
 
-// Prints: buffe
-// (Equivalent to buf.slice(0, 5))
+// Imprime: buffe
+// (Equivalente a buf.slice(0, 5))
 console.log(buf.slice(-6, -1).toString());
 
-// Prints: buff
-// (Equivalent to buf.slice(0, 4))
+// Imprime: buff
+// (Equivalente a buf.slice(0, 4))
 console.log(buf.slice(-6, -2).toString());
 
-// Prints: uff
-// (Equivalent to buf.slice(1, 4))
+// Imprime: uff
+// (Equivalente a buf.slice(1, 4))
 console.log(buf.slice(-5, -2).toString());
 ```
 
@@ -1786,25 +1786,25 @@ added: v5.10.0
 
 * Returns: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 2.
+Interpreta `buf` como un array de enteros de 16-bit sin signos y cambia el orden de bytes *en el lugar*. Arroja un `RangeError` si [`buf.length`] no es un múltiplo de 2.
 
 Ejemplos:
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 console.log(buf1);
 
 buf1.swap16();
 
-// Prints: <Buffer 02 01 04 03 06 05 08 07>
+// Imprime: <Buffer 02 01 04 03 06 05 08 07>
 console.log(buf1);
 
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
-// Throws an exception: RangeError: Buffer size must be a multiple of 16-bits
+// Arroja una excepción: RangeError: El tamaño del buffer debe ser un múltiplo de 16-bits
 buf2.swap16();
 ```
 
@@ -1816,25 +1816,25 @@ added: v5.10.0
 
 * Returns: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 4.
+Interpreta `buf` como un array de enteros de 32-bits sin signo y cambia el orden de bytes *en el lugar*. Arroja un `RangeError` si [`buf.length`] no es un múltiplo de 4.
 
 Ejemplos:
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 console.log(buf1);
 
 buf1.swap32();
 
-// Prints: <Buffer 04 03 02 01 08 07 06 05>
+// Imprime: <Buffer 04 03 02 01 08 07 06 05>
 console.log(buf1);
 
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
-// Throws an exception: RangeError: Buffer size must be a multiple of 32-bits
+// Arroja una excepción: RangeError: El tamaño del buffer debe ser un múltiplo de 32-bits
 buf2.swap32();
 ```
 
@@ -1846,7 +1846,7 @@ added: v6.3.0
 
 * Returns: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of 64-bit numbers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 8.
+Interpreta `buf` como un array de números de 64-bits y cambia el orden de los bytes *en el lugar*. Arroja un `RangeError` si [`buf.length`] no es un múltiplo de 8.
 
 Ejemplos:
 
