@@ -141,7 +141,7 @@ Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è 
 
 <!--type=class-->
 
-A generic JavaScript `Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+Un `Error` object generico di Javascript che non denota alcuna circostanza specifica per cui si è verificato l'errore. Gli `Error` objects acquisiscono una "stack trace" che specifica il punto esatto, all'interno del codice, in cui è stato istanziato l'`Errore`, è potrebbe fornire una descrizione di testo dell'errore.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
