@@ -2083,11 +2083,11 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero con signo de 8-bits. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero válido con signo de 8-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero con signo de 8-bits.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` es interpretado y escrito como un entero con signo de complemento a dos.
 
 Ejemplos:
 
@@ -2097,7 +2097,7 @@ const buf = Buffer.allocUnsafe(2);
 buf.writeInt8(2, 0);
 buf.writeInt8(-2, 1);
 
-// Prints: <Buffer 02 fe>
+// Imprime: <Buffer 02 fe>
 console.log(buf);
 ```
 
@@ -2114,11 +2114,11 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* ser un entero válido con signo de 16-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero con signo de 16-bits.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` es interpretado y escrito como un entero con signo de complemento a dos.
 
 Ejemplos:
 
@@ -2128,7 +2128,7 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeInt16BE(0x0102, 0);
 buf.writeInt16LE(0x0304, 2);
 
-// Prints: <Buffer 01 02 04 03>
+// Imprime: <Buffer 01 02 04 03>
 console.log(buf);
 ```
 
@@ -2149,7 +2149,7 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` es interpretado y escrito como un entero con signo de complemento a dos.
 
 Ejemplos:
 
