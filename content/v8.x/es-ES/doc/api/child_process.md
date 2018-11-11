@@ -615,7 +615,7 @@ changes:
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Predeterminado:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
-* Returns: {Object} 
+* Devuelve: {Object} 
   * `pid` {number} Pid of the child process.
   * `output` {Array} Array of results from stdio output.
   * `stdout` {Buffer|string} The contents of `output[1]`.
