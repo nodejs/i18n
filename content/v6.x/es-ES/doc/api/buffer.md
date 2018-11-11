@@ -1917,7 +1917,7 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero válido con signo de 8-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero con signo de 8-bits.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero válido de 8-bits con signo. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero de 8-bits con signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1948,7 +1948,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* ser un entero válido con signo de 16-bits. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero con signo de 16-bits.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* ser un entero válido 16-bits con signo. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero de 16-bits con signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1979,7 +1979,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt32BE()` escribe big endian, `writeInt32LE()` escribe little endian). `value` *debe* ser un entero válido de 32-bits con signo. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero de 32-bits con signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -1993,7 +1993,7 @@ const buf = Buffer.allocUnsafe(8);
 buf.writeInt32BE(0x01020304, 0);
 buf.writeInt32LE(0x05060708, 4);
 
-// Prints: <Buffer 01 02 03 04 08 07 06 05>
+// Imprime: <Buffer 01 02 03 04 08 07 06 05>
 console.log(buf);
 ```
 
@@ -2007,7 +2007,7 @@ added: v0.11.15
 
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
+* `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
@@ -2138,7 +2138,7 @@ added: v0.5.5
 
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Debe satisfacer: `0 < byteLength <= 6`.
+* `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
