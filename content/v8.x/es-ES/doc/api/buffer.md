@@ -1853,22 +1853,22 @@ Ejemplos:
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 console.log(buf1);
 
 buf1.swap64();
 
-// Prints: <Buffer 08 07 06 05 04 03 02 01>
+// Imprime: <Buffer 08 07 06 05 04 03 02 01>
 console.log(buf1);
 
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
-// Throws an exception: RangeError: Buffer size must be a multiple of 64-bits
+// Arroja una excepción: RangeError: El tamaño del buffer debe ser un múltiplo de 64-bits
 buf2.swap64();
 ```
 
-Note that JavaScript cannot encode 64-bit integers. This method is intended for working with 64-bit floats.
+Tenga en cuenta que JavaScript no puede codificar enteros de 64-bits. Este método está diseñado para trabajar con floats de 64-bits.
 
 ### buf.toJSON()
 
@@ -1905,10 +1905,10 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to decode to. **Predeterminado:** `'utf8'`
-* `start` {integer} The byte offset to start decoding at. **Default:** `0`
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`]
-* Returns: {string}
+* `encoding` {string} La codificación de caracteres a decodificar. **Predeterminado:** `'utf8'`
+* `start` {integer} El offset de bytes en el cual comenzar la decodificación. **Default:** `0`
+* `end` {integer} El offset de bytes en el cual detener la decodificación (no inclusivo). **Predeterminado:** [`buf.length`]
+* Devuelve: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
