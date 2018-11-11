@@ -2058,7 +2058,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -2094,7 +2094,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
