@@ -435,11 +435,11 @@ added: v6.0.0
 - `listener` {Function} La funzione callback
 - Restituisce: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. La volta successiva in cui viene attivato `eventName`, il listener viene eliminato, e poi invocato.
+Aggiunge una funzione `listener` **one-time** per l'evento con nome `eventName` all'*inizio* dell'array dei listener. La volta successiva in cui viene attivato `eventName`, il listener viene eliminato, e poi invocato.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, abbiamo il nostro primo utente!');
+  console.log('Ah, we have our first user!');
 });
 ```
 
@@ -481,7 +481,7 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 ```
 
-`removeListener()` eliminerà, al massimo, un'istanza di un listener dall'array del listener. Se qualunque listener singolo è stato aggiunto molteplici volte all'array del listener per l'`eventName` indicato, allora è necessario chiamare più volte `removeListener()` per eliminare ogni istanza.
+`removeListener()` eliminerà, al massimo, un'istanza di un listener dall'array del listener. Se un qualunque listener singolo è stato aggiunto molteplici volte all'array del listener per l'`eventName` indicato, allora è necessario chiamare più volte `removeListener()` per eliminare ogni istanza.
 
 Da notare che una volta che viene emesso un evento, tutti i listener allegati ad esso al momento dell'emissione verranno chiamati in ordine. Ciò implica che qualunque chiamata di `removeListener()` o `removeAllListeners()` *successiva* all'emissione e *precedente* al termine dell'esecuzione dell'ultimo listener non verrà eliminata dall'`emit()` in corso. Gli eventi successivi si comporteranno come previsto.
 
