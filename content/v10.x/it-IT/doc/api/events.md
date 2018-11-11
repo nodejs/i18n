@@ -383,7 +383,7 @@ added: v0.3.0
 - `listener` {Function} La funzione callback
 - Restituisce: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName`. La volta successiva in cui viene attivato `eventName`, il listener viene eliminato e poi invocato.
+Aggiunge una funzione `listener` **one-time** per l'evento con nome `eventName`. La volta successiva in cui viene attivato `eventName`, il listener viene eliminato e poi invocato.
 
 ```js
 server.once('connection', (stream) => {
