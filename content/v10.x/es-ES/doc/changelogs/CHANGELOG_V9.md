@@ -1359,7 +1359,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * [[`3ad8cf14f5`](https://github.com/nodejs/node/commit/3ad8cf14f5)] - **tools**: agregar regla lowercase-name-for-primitive de eslint (Weijia Wang) [#17568](https://github.com/nodejs/node/pull/17568)
   * [[`7bf6be0b7c`](https://github.com/nodejs/node/commit/7bf6be0b7c)] - **trace_events**: detener agente de rastreo en process.exit() (Andreas Madsen) [#18005](https://github.com/nodejs/node/pull/18005)
   * [[`ed7f59a1ee`](https://github.com/nodejs/node/commit/ed7f59a1ee)] - **url**: agregada tabla de búsqueda de fragmento de url (Hakan Kimeiga) [#17627](https://github.com/nodejs/node/pull/17627)
-  * [[`28ef3de2ba`](https://github.com/nodejs/node/commit/28ef3de2ba)] - **url**: espacio agregado a cadena de clase de objetos iteradores (Haejin Jo) [#17558](https://github.com/nodejs/node/pull/17558)
+  * [[`28ef3de2ba`](https://github.com/nodejs/node/commit/28ef3de2ba)] - **url**: espacio agregado a string de clase de objetos iteradores (Haejin Jo) [#17558](https://github.com/nodejs/node/pull/17558)
   * [[`6d9b1e4c83`](https://github.com/nodejs/node/commit/6d9b1e4c83)] - **util**: permitir comodines en variable NODE_DEBUG (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
   * [[`6cc622f01b`](https://github.com/nodejs/node/commit/6cc622f01b)] - **vm**: permitir modificación de nombre de contexto en inspector (Timothy Gu) [#17720](https://github.com/nodejs/node/pull/17720)
   * [[`e2767114ff`](https://github.com/nodejs/node/commit/e2767114ff)] - **vm**: nunca abortar en error de sintaxis capturado (Anna Henningsen) [#17394](https://github.com/nodejs/node/pull/17394)
@@ -1378,7 +1378,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
   * **async\_hooks**: 
     * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
     * agregar tipos de proveedores para el servidor de red (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
-  * **consola**: 
+  * **console**: 
     * console.debug ahora puede ser utilizado fuera del inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
   * **deps**: 
     * actualizar libuv a 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
