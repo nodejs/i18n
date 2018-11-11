@@ -1987,13 +1987,13 @@ for (const value of buf) {
 added: v0.1.90
 -->
 
-* `string` {string} String que se escribirá en `buf`.
+* `string` {string} String a ser escrita en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir la `string`. **Default:** `0`
 * `length` {integer} Número de bytes a escribir. **Predeterminado:** `buf.length - offset`
 * `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`
 * Devuelve: {integer} Número de bytes escritos.
 
-Escribe el `string` en `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro `length` es el número de bytes a escribir. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
+Escribe el `string` en `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro `length` es el número de bytes a escribir. Si `buf` no contenía suficiente espacio para ajustar el string completo, solo una parte del `string` será escrita. Sin embargo, no se escribirán caracteres codificados parcialmente.
 
 Ejemplo:
 
@@ -2002,7 +2002,7 @@ const buf = Buffer.allocUnsafe(256);
 
 const len = buf.write('\u00bd + \u00bc = \u00be', 0);
 
-// Prints: 12 bytes: ½ + ¼ = ¾
+// Imprime: 12 bytes: ½ + ¼ = ¾
 console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
 ```
 
@@ -2014,10 +2014,10 @@ console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
 added: v0.11.15
 -->
 
-* `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {number} Número a ser escrito en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy: `0 <= offset <= buf.length - 8`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
 
@@ -2047,10 +2047,10 @@ console.log(buf);
 added: v0.11.15
 -->
 
-* `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {number} Número a ser escrito en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
 
@@ -2079,9 +2079,9 @@ added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 1`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
 
@@ -2110,9 +2110,9 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 2`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
 
@@ -2141,9 +2141,9 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
 
@@ -2172,10 +2172,10 @@ added: v0.11.15
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
@@ -2204,9 +2204,9 @@ added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 1`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
 
@@ -2235,9 +2235,9 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 2`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
@@ -2270,9 +2270,9 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - 4`.
+* `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
 
@@ -2303,10 +2303,10 @@ added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
 * `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
-* Returns: {integer} `offset` plus the number of bytes written.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
 
