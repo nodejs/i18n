@@ -158,7 +158,7 @@ Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggi
 - `targetObject` {Object}
 - `constructorOpt` {Function}
 
-Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
+Crea una proprietà `.stack` su `targetObject`, la quale quando viene accessata restituisce una stringa che rappresenta il punto esatto all'interno del codice in cui è stata chiamata `Error.captureStackTrace()`.
 
 ```js
 const myObject = {};
@@ -166,9 +166,9 @@ Error.captureStackTrace(myObject);
 myObject.stack;  // similar to `new Error().stack`
 ```
 
-The first line of the trace will be prefixed with `${myObject.name}: ${myObject.message}`.
+La prima linea della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
 
-The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
+Il parametro opzionale `constructorOpt` accetta una funzione. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
 The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
