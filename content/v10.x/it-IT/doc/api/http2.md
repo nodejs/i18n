@@ -89,11 +89,11 @@ added: v8.4.0
 
 Le istanze della classe `http2.Http2Session` rappresentano un'attiva sessione di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
 
-Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
+Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `http2session.type` può essere utilizzata per determinare la modalità in cui una `Http2Session` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `Http2Session`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `Http2Server` o `Http2Stream`.
 
-#### `Http2Session` and Sockets
+#### "`Http2Session` and Sockets"
 
-Every `Http2Session` instance is associated with exactly one [`net.Socket`][] or [`tls.TLSSocket`][] when it is created. When either the `Socket` or the `Http2Session` are destroyed, both will be destroyed.
+Ogni istanza `Http2Session` è associata esattamente ad una [`net.Socket`] [] o [`tls.TLSSocket`] [] quando viene creata. When either the `Socket` or the `Http2Session` are destroyed, both will be destroyed.
 
 Because the of the specific serialization and processing requirements imposed by the HTTP/2 protocol, it is not recommended for user code to read data from or write data to a `Socket` instance bound to a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
 
