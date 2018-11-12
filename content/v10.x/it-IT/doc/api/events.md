@@ -291,7 +291,7 @@ added: v1.0.0
 
 - Restituisce: {integer}
 
-Restituisce il valore corrente max di listener per l'`EventEmitter` che è impostato dall'[`emitter.setMaxListeners(n)`][] o di default in [`EventEmitter.defaultMaxListeners`][].
+Restituisce il valore corrente massimo di listener per l'`EventEmitter` che è impostato dall'[`emitter.setMaxListeners(n)`][] o di default in [`EventEmitter.defaultMaxListeners`][].
 
 ### emitter.listenerCount(eventName)
 
@@ -359,9 +359,9 @@ server.on('connection', (stream) => {
 });
 ```
 
-Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
+Restituisce un riferimento all'`EventEmitter`, in modo che le chiamate possano essere concatenate.
 
-Di default, gli event listener vengono invocati nell'ordine in cui vengono aggiunti. Il metodo `emitter.prependListener()` può essere utilizzato come alternativa per aggiungere l'event listener all'inizio dell'array dei listener.
+Di default, gli eventi listener vengono invocati nell'ordine in cui vengono aggiunti. Il metodo `emitter.prependListener()` può essere utilizzato come alternativa per aggiungere l'evento listener all'inizio dell'array dei listener.
 
 ```js
 const myEE = new EventEmitter();
@@ -393,7 +393,7 @@ server.once('connection', (stream) => {
 
 Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
 
-Di default, gli event listener vengono invocati nell'ordine in cui vengono aggiunti. Il metodo `emitter.prependListener()` può essere utilizzato come alternativa per aggiungere l'event listener all'inizio dell'array dei listener.
+Di default, gli eventi listener vengono invocati nell'ordine in cui vengono aggiunti. Il metodo `emitter.prependListener()` può essere utilizzato come alternativa per aggiungere l'evento listener all'inizio dell'array dei listener.
 
 ```js
 const myEE = new EventEmitter();
