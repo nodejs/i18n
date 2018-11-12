@@ -137,10 +137,10 @@ added: v8.4.0
 -->
 
 * `type` {integer} Il tipo di frame.
-* `code` {integer} The error code.
-* `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
+* `code` {integer} Il codice errore.
+* `id` {integer} L'id del flusso (o `0` se il frame non è associato a un flusso).
 
-The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. If the frame that could not be sent is associated with a specific `Http2Stream`, an attempt to emit `'frameError'` event on the `Http2Stream` is made.
+L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `Http2Stream`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `Http2Stream`.
 
 If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. If the event is not associated with a stream, the `Http2Session` will be shut down immediately following the `'frameError'` event.
 
