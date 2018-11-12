@@ -511,7 +511,7 @@ added: v5.12.0
 
 分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`buf.fill(0)`][`buf.fill()`] 来用 0 初始化 `Buffer` 实例。
 
 When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are, by default, sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and cleanup as many `Persistent` objects.
 
