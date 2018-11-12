@@ -14,11 +14,11 @@ const http2 = richiede('http2');
 
 L'API core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
-Il Core API di `Http2` è molto più simmetrica tra client e server di `http` API. For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
+Il Core API di `Http2` è molto più simmetrica tra client e server di `http` API. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice client-side che dal codice server-side.
 
-### Server-side example
+### Esempio sul lato server
 
-The following illustrates a simple HTTP/2 server using the Core API. Since there are no browsers known that support [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), the use of [`http2.createSecureServer()`][] is necessary when communicating with browser clients.
+Quanto segue illustra un semplice server HTTP/2 che utilizza l'API Core. Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [` http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
 
 ```js
 const http2 = require('http2');
@@ -1520,7 +1520,7 @@ changes:
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
-Since there are no browsers known that support [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), the use of [`http2.createSecureServer()`][] is necessary when communicating with browser clients.
+Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [` http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
 
 ```js
 const http2 = require('http2');
