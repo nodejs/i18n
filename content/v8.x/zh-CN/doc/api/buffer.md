@@ -386,12 +386,12 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]。
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `string` {string} 要编码的字符串。
+* `encoding` {string} `string` 的字符串编码。 **默认值: ** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+创建一个包含给定 JavaScript 字符串 `string` 的新的 `Buffer`。 如果提供，`encoding` 参数指定 `string` 的字符编码方式。
 
-Examples:
+例如：
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -409,7 +409,7 @@ const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 console.log(buf2.toString());
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Class 方法：Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
