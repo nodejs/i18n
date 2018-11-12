@@ -2346,7 +2346,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`ebb90900af`](https://github.com/nodejs/node/commit/ebb90900af)] - **tools**: omitir la solución para el nuevo llvm (nanaya) [#14077](https://github.com/nodejs/node/pull/14077)
 * [[`c0ea5d8ce5`](https://github.com/nodejs/node/commit/c0ea5d8ce5)] - **tools**: incluir siempre llvm_version en la configuración (nanaya) [#14077](https://github.com/nodejs/node/pull/14077)
 * [[`32259421ca`](https://github.com/nodejs/node/commit/32259421ca)] - **url**: actualizar el comportamiento de sort() sin parámetros (Timothy Gu) [#14185](https://github.com/nodejs/node/pull/14185)
-* [[`9a3fc10dd4`](https://github.com/nodejs/node/commit/9a3fc10dd4)] - **(SEMVER-MINOR)** **util**: implement WHATWG Encoding Standard API (James M Snell) [#13644](https://github.com/nodejs/node/pull/13644)
+* [[`9a3fc10dd4`](https://github.com/nodejs/node/commit/9a3fc10dd4)] - **(SEMVER-MINOR)** **util**: implementar la API de Codificación Estándar de WHATWG (James M Snell) [#13644](https://github.com/nodejs/node/pull/13644)
 * [[`f593960d35`](https://github.com/nodejs/node/commit/f593960d35)] - **util**: refactor util module (James M Snell) [#13803](https://github.com/nodejs/node/pull/13803)
 * [[`357873ddb0`](https://github.com/nodejs/node/commit/357873ddb0)] - **(SEMVER-MINOR)** **v8**: fix stack overflow in recursive method (Ben Noordhuis) [#14004](https://github.com/nodejs/node/pull/14004)
 * [[`a8132943c5`](https://github.com/nodejs/node/commit/a8132943c5)] - **zlib**: fix crash when initializing failed (Anna Henningsen) [#14666](https://github.com/nodejs/node/pull/14666)
