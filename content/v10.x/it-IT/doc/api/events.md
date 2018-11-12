@@ -501,14 +501,14 @@ myEmitter.on('event', callbackA);
 
 myEmitter.on('event', callbackB);
 
-// callbackA removes listener callbackB but it will still be called.
-// Internal listener array at time of emit [callbackA, callbackB]
+// callbackA elimina il listener callbackB tuttavia verrà ancora chiamata.
+// Internal listener array al momento dell'emit [callbackA, callbackB]
 myEmitter.emit('event');
 // Stampa:
 //   A
 //   B
 
-// callbackB is now removed.
+// callbackB viene ora eliminata.
 // Internal listener array [callbackA]
 myEmitter.emit('event');
 // Stampa:
@@ -517,7 +517,7 @@ myEmitter.emit('event');
 
 Poiché i listener vengono gestiti utilizzando un array interno, chiamare questo modificherà gli indici di posizione di ciascun listener registrato *in seguito* all'eliminazione del listener. Ciò non avrà nessun impatto sull'ordine in cui i listener vengono chiamati, ma indica che qualsiasi copia dell'array del listener restituita dal metodo `emitter.listeners()` dovrà essere ricreata.
 
-Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
+Restituisce un riferimento all'`EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.setMaxListeners(n)
 
