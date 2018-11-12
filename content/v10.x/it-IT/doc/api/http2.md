@@ -142,7 +142,7 @@ added: v8.4.0
 
 L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `Http2Stream`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `Http2Stream`.
 
-Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. If the event is not associated with a stream, the `Http2Session` will be shut down immediately following the `'frameError'` event.
+Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. Se l'evento non è associato a un flusso, `Http2Session` verrà arrestato immediatamente dopo l'evento `'frameError'`.
 
 #### Event: 'goaway'
 
@@ -150,9 +150,9 @@ Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e 
 added: v8.4.0
 -->
 
-* `errorCode` {number} The HTTP/2 error code specified in the `GOAWAY` frame.
-* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
-* `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
+* `errorCode` {number} Il codice di errore HTTP/2 specificato nel "frame" `GOAWAY`.
+* `lastStreamID` {number} L'ID dell'ultimo stream che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
+* `opaqueData` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `GOAWAY`, verrà passata un'istanza `Buffer` contenente tali dati.
 
 The `'goaway'` event is emitted when a `GOAWAY` frame is received.
 
