@@ -3079,7 +3079,7 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`1a4207d91d`](https://github.com/nodejs/node/commit/1a4207d91d)] - **test**: varias mejoras de pruebas (James M Snell) [#8468](https://github.com/nodejs/node/pull/8468)
 * [[`c4f0bb237a`](https://github.com/nodejs/node/commit/c4f0bb237a)] - **test**: expandir cobertura de prueba para url.js (Junshu Okamoto) [#8976](https://github.com/nodejs/node/pull/8976)
 * [[`4e9b6a0022`](https://github.com/nodejs/node/commit/4e9b6a0022)] - **test**: reparar test-child-process-fork-regr-gh-2847 (Santiago Gimeno) [#8954](https://github.com/nodejs/node/pull/8954)
-* [[`b579fcab45`](https://github.com/nodejs/node/commit/b579fcab45)] - **test**: remove FIXME pummel/test-tls-securepair-client (Alfred Cepeda) [#8757](https://github.com/nodejs/node/pull/8757)
+* [[`b579fcab45`](https://github.com/nodejs/node/commit/b579fcab45)] - **test**: remover pummel/test-tls-securepair-client de FIXME (Alfred Cepeda) [#8757](https://github.com/nodejs/node/pull/8757)
 * [[`9b0733fd49`](https://github.com/nodejs/node/commit/9b0733fd49)] - **test**: run faster and cleanup after run (Wyatt Preul) [#8848](https://github.com/nodejs/node/pull/8848)
 * [[`df0211d95e`](https://github.com/nodejs/node/commit/df0211d95e)] - **test**: refactor test-net-server-max-connections (Rich Trott) [#8931](https://github.com/nodejs/node/pull/8931)
 * [[`147a06d4a5`](https://github.com/nodejs/node/commit/147a06d4a5)] - **test**: enable addons test to pass with debug build (Daniel Bevenius) [#8836](https://github.com/nodejs/node/pull/8836)
