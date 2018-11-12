@@ -278,9 +278,9 @@ changes:
 
 该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(2);
@@ -315,13 +315,13 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(buffer)`]。
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
 
-Example:
+例如：
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -353,15 +353,15 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.alloc()`]（也请参阅 [`Buffer.allocUnsafe()`]）。
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，且 *可能包含敏感数据*。 使用 [`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = new Buffer(10);
@@ -384,7 +384,7 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]。
 
 * `string` {string} String to encode.
 * `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
@@ -436,7 +436,7 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
@@ -477,7 +477,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
 
@@ -509,7 +509,7 @@ added: v5.12.0
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
 
@@ -2432,7 +2432,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
