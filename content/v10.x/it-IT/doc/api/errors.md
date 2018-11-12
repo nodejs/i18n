@@ -43,7 +43,7 @@ Con poche eccezioni, le API *Sincrone* (qualsiasi metodo di blocco che non accet
 
 Gli errori che si verificano all'interno di *Api asincrone* possono essere segnalati in diversi modi:
 
-- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo parametro a quella funzione. Se questo primo parametro non è `null` ed è un istanza di `Error`, allora si è verificato un errore che dovrebbe essere gestito.
+- La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo argomento a quella funzione. Se questo primo argomento non è `null` ed è un istanza di `Error`, allora si è verificato un errore che dovrebbe essere gestito.
 
 <!-- eslint-disable no-useless-return -->
 
@@ -99,14 +99,14 @@ Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per 
 
 <!--type=misc-->
 
-La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come parametro. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` (se presente) passato come primo parametro. Se non è stato generato alcun errore, il primo parametro verrà passato come `null`.
+La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come un argomento. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` (se presente) passato come primo argomento. Se non è stato generato alcun errore, il primo argomento verrà passato come `null`.
 
 ```js
 const fs = require('fs');
 
 function errorFirstCallback(err, data) {
   if (err) {
-    console.error('C'è stato un errore', err);
+    console.error('There was an error', err);
     return;
   }
   console.log(data);
@@ -168,9 +168,9 @@ myObject.stack;  // similar to `new Error().stack`
 
 La prima linea della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
 
-Il parametro opzionale `constructorOpt` accetta una funzione. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
+L'argomento facoltativo `constructorOpt` accetta una funzione. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
+L'argomento `constructorOpt` è utile per nascondere all'utente finale i dettagli di implementazione della generazione dell'errore. Ad esempio:
 
 ```js
 function MyError() {
