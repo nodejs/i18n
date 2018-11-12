@@ -547,22 +547,22 @@ Restituisce una copia dell'array dei listener per l'evento con nome `eventName`,
 const emitter = new EventEmitter();
 emitter.once('log', () => console.log('log once'));
 
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
+// Restituisce un nuovo Array con una funzione `onceWrapper` che ha una proprietà 
+// `listener` che contiene la funzione binding originale del listener sopra 
 const listeners = emitter.rawListeners('log');
 const logFnWrapper = listeners[0];
 
-// logs "log once" to the console and does not unbind the `once` event
+// registra "log once" alla console e non rimuove il binding dell'evento`once` 
 logFnWrapper.listener();
 
-// logs "log once" to the console and removes the listener
+// registra "log once" alla console ed elimina il listener
 logFnWrapper();
 
 emitter.on('log', () => console.log('log persistently'));
-// will return a new Array with a single function bound by `.on()` above
+// restituirà un nuovo Array con un singola funzione collegata tramite binding da `.on()` sopra
 const newListeners = emitter.rawListeners('log');
 
-// logs "log persistently" twice
+// registra "log persistently" due volte
 newListeners[0]();
 emitter.emit('log');
 ```
