@@ -10,7 +10,7 @@ Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://to
 const http2 = require('http2');
 ```
 
-## Core API
+## "Core API"
 
 The Core API provides a low-level interface designed specifically around support for HTTP/2 protocol features. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
 
