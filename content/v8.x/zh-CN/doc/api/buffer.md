@@ -201,11 +201,11 @@ console.log(buf.length);
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and ES6 iteration
+## Buffers和ES6迭代
 
-`Buffer` instances can be iterated over using the [`ECMAScript 2015`] (ES6) `for..of` syntax.
+`Buffer`实例可以通过使用[`ECMAScript 2015`] (ES6) `for..of`进行迭代。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
@@ -219,7 +219,7 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+而且，可以通过 [`buf.values()`], [`buf.keys()`], 和 [`buf.entries()`] 方法来创建迭代器。
 
 ## Class: Buffer
 
