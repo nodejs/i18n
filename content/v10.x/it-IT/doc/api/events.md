@@ -387,7 +387,7 @@ Aggiunge una funzione `listener` **one-time** per l'evento con nome `eventName`.
 
 ```js
 server.once('connection', (stream) => {
-  console.log('Ah, abbiamo il nostro primo utente!');
+  console.log('Ah, we have our first user!');
 });
 ```
 
@@ -423,7 +423,7 @@ server.prependListener('connection', (stream) => {
 });
 ```
 
-Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
+Restituisce un riferimento all'`EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.prependOnceListener(eventName, listener)
 
@@ -443,7 +443,7 @@ server.prependOnceListener('connection', (stream) => {
 });
 ```
 
-Restituisce un riferimento all' `EventEmitter`, in modo che le chiamate possano essere concatenate.
+Restituisce un riferimento all'`EventEmitter`, in modo che le chiamate possano essere concatenate.
 
 ### emitter.removeAllListeners([eventName])
 
@@ -454,7 +454,7 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - Restituisce: {EventEmitter}
 
-Rimuove tutti i listeners, oppure quelli del `eventName` specificato.
+Rimuove tutti i listeners, oppure quelli dell'`eventName` specificato.
 
 Da notare che eliminare listener aggiunti in un altro punto del codice è una cattiva pratica, in particolare nei casi in cui l'istanza `EventEmitter` è stata creata da qualche altro componente o modulo (es. socket o file stream).
 
