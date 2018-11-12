@@ -3166,27 +3166,27 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`ac6927f549`](https://github.com/nodejs/node/commit/ac6927f549)] - **tools**: hacer a linting de alineación de argumento más estricto (Rich Trott) [#8642](https://github.com/nodejs/node/pull/8642)
 * [[`8684cea9b7`](https://github.com/nodejs/node/commit/8684cea9b7)] - **tools**: asegurarse que enlaces son pasados correctamente a marcado (Timothy Gu) [#8494](https://github.com/nodejs/node/pull/8494)
 * [[`a12ff5cc5d`](https://github.com/nodejs/node/commit/a12ff5cc5d)] - **tools**: limpiar formato de icu/README.md (Сковорода Никита Андреевич) [#8660](https://github.com/nodejs/node/pull/8660)
-* [[`fc68b12bc3`](https://github.com/nodejs/node/commit/fc68b12bc3)] - **(SEMVER-MINOR)** **util**: Add format for SharedArrayBuffer (Yosuke Furukawa) [#8587](https://github.com/nodejs/node/pull/8587)
-* [[`38be15549e`](https://github.com/nodejs/node/commit/38be15549e)] - **util**: don't init Debug if it's not needed yet (Bryan English) [#8452](https://github.com/nodejs/node/pull/8452)
-* [[`7728f95967`](https://github.com/nodejs/node/commit/7728f95967)] - **util**: simplify SIMD setup (Dany Shaanan) [#8579](https://github.com/nodejs/node/pull/8579)
-* [[`8282d6fc60`](https://github.com/nodejs/node/commit/8282d6fc60)] - **vm**: add error message if we abort (Franziska Hinkelmann) [#8634](https://github.com/nodejs/node/pull/8634)
-* [[`b83f51a326`](https://github.com/nodejs/node/commit/b83f51a326)] - **win,msi**: mark INSTALLDIR property as secure (João Reis) [#8795](https://github.com/nodejs/node/pull/8795)
-* [[`623d3c6eb5`](https://github.com/nodejs/node/commit/623d3c6eb5)] - **win,tools**: ignore linting for line breaks (João Reis) [#8785](https://github.com/nodejs/node/pull/8785)
-* [[`7403aaa13f`](https://github.com/nodejs/node/commit/7403aaa13f)] - **zlib**: tighten up dictionary tests (Tarjei Husøy) [#8512](https://github.com/nodejs/node/pull/8512)
+* [[`fc68b12bc3`](https://github.com/nodejs/node/commit/fc68b12bc3)] - **(SEMVER-MINOR)** **util**: Añadir formato para SharedArrayBuffer (Yosuke Furukawa) [#8587](https://github.com/nodejs/node/pull/8587)
+* [[`38be15549e`](https://github.com/nodejs/node/commit/38be15549e)] - **util**: no iniciar Depuración si no es necesario todavía (Bryan English) [#8452](https://github.com/nodejs/node/pull/8452)
+* [[`7728f95967`](https://github.com/nodejs/node/commit/7728f95967)] - **util**: simplificar instalación de SIMD (Dany Shaanan) [#8579](https://github.com/nodejs/node/pull/8579)
+* [[`8282d6fc60`](https://github.com/nodejs/node/commit/8282d6fc60)] - **vm**: añadir mensaje de error si abortamos (Franziska Hinkelmann) [#8634](https://github.com/nodejs/node/pull/8634)
+* [[`b83f51a326`](https://github.com/nodejs/node/commit/b83f51a326)] - **win,msi**: marcar propiedad de INSTALLDIR como segura (João Reis) [#8795](https://github.com/nodejs/node/pull/8795)
+* [[`623d3c6eb5`](https://github.com/nodejs/node/commit/623d3c6eb5)] - **win,tools**: ignorar linting para saltos de línea (João Reis) [#8785](https://github.com/nodejs/node/pull/8785)
+* [[`7403aaa13f`](https://github.com/nodejs/node/commit/7403aaa13f)] - **zlib**: endurecer pruebas de diccionario (Tarjei Husøy) [#8512](https://github.com/nodejs/node/pull/8512)
 * [[`15474951a5`](https://github.com/nodejs/node/commit/15474951a5)] - **zlib**: fix raw inflate with custom dictionary (Tarjei Husøy) [#8512](https://github.com/nodejs/node/pull/8512)
 
 <a id="6.7.0"></a>
 
-## 2016-09-27, Version 6.7.0 (Current), @evanlucas
+## 2016-09-27, Versión 6.7.0 (Current), @evanlucas
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js debería consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
 Semver Minor:
 
 * **openssl**: 
-  * Upgrade to 1.0.2i, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-2178 and CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
+  * Actualizar a 1.0.21, arregla un número de defectos que impactan a Node.js: CVE-2016-6304 ("extensión de Solicitud de Estado de OCSP crecimiento de memoria ilimitada", severidad alta), CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
   * Upgrade to 1.0.2j, fixes a defect included in 1.0.2i resulting in a crash when using CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
   * Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
 * **http**: CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
