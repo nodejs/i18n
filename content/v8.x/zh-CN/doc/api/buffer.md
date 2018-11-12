@@ -515,9 +515,9 @@ added: v5.12.0
 
 当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数`持久`对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
+然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
 
-Example:
+例如：
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -536,11 +536,11 @@ socket.on('readable', () => {
 });
 ```
 
-Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` 应当仅仅作为开发者已经在他们的应用程序中观察到过度的内存保留*之后*的终极手段使用。
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Class 方法：Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -555,15 +555,15 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {integer} The number of bytes contained within `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
+* `encoding` {string} 如果 `string` 是字符串，则该值是它的字符编码方式。 **默认值: ** `'utf8'`
+* 返回：{integer} `string` 包含的字节数。
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为该属性返回的是字符串中的 *字符* 数。
 
-*Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+*注意：*：对于 `'base64'` 和 `'hex'`，此函数假定输入有效。 对于包含 non-Base64/Hex-encoded 数据（例如：空格）的字符串，返回值可能大于从字符串创建的 `Buffer` 的长度。
 
-Example:
+例如：
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -573,7 +573,7 @@ console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
 ### Class Method: Buffer.compare(buf1, buf2)
 
