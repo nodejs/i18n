@@ -7,7 +7,7 @@
 Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). Ci si può accedere utilizzando:
 
 ```js
-const http2 = require('http2');
+const http2 = richiede('http2');
 ```
 
 ## "Core API"
