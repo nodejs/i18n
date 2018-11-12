@@ -154,9 +154,9 @@ added: v8.4.0
 * `lastStreamID` {number} L'ID dell'ultimo stream che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
 * `opaqueData` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `GOAWAY`, verrà passata un'istanza `Buffer` contenente tali dati.
 
-The `'goaway'` event is emitted when a `GOAWAY` frame is received.
+L'evento `'goaway'` viene emesso quando viene ricevuto un frame `GOAWAY`.
 
-The `Http2Session` instance will be shut down automatically when the `'goaway'` event is emitted.
+L'istanza `Http2Session` verrà arrestata automaticamente quando viene emesso l'evento `'goaway'`.
 
 #### Event: 'localSettings'
 
@@ -164,11 +164,11 @@ The `Http2Session` instance will be shut down automatically when the `'goaway'` 
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` ricevuto.
 
-The `'localSettings'` event is emitted when an acknowledgment `SETTINGS` frame has been received.
+L'evento `'localSettings'` viene emesso quando è stato ricevuto un frame di conferma `SETTINGS`.
 
-When using `http2session.settings()` to submit new settings, the modified settings do not take effect until the `'localSettings'` event is emitted.
+Quando si utilizza `http2session.setting()` per inviare nuove impostazioni, le impostazioni modificate non hanno effetto finché non viene emesso l'evento `'localSettings'`.
 
 ```js
 session.settings({ enablePush: false });
@@ -184,7 +184,7 @@ session.on('localSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` ricevuto.
 
 The `'remoteSettings'` event is emitted when a new `SETTINGS` frame is received from the connected peer.
 
