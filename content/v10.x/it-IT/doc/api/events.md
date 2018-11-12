@@ -105,7 +105,7 @@ myEmitter.emit('event');
 
 Quando si verifica un errore all'interno di un'istanza `EventEmitter`, l'azione tipica è l'emissione di un evento `'error'`. Questi vengono trattati come casi speciali all'interno di Node.js.
 
-Se un `EventEmitter` *non* possiede almeno un listener registrato per l'event `'error'`, ed un event `'error'` viene emesso, l'errore viene generato, viene stampata una stack trace, e il processo Node.js si conclude.
+Se un `EventEmitter` *non* possiede almeno un listener registrato per l'evento `'error'`, ed un evento `'error'` viene emesso, l'errore viene generato, viene stampata una stack trace, e il processo Node.js si conclude.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -113,7 +113,7 @@ myEmitter.emit('error', new Error('whoops!'));
 // Genera e causa il crash di Node.js
 ```
 
-Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il modulo `domain` è stato deprecato.)
+Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il modulo [`domain`][]. (Nota, tuttavia, che il modulo `domain` è stato deprecato.)
 
 Per una miglior pratica, è necessario aggiungere sempre dei listener per gli eventi `'error'`.
 
@@ -132,13 +132,13 @@ myEmitter.emit('error', new Error('whoops!'));
 added: v0.1.26
 -->
 
-La class `EventEmitter` viene definita ed esposta dal module `events`:
+La classe `EventEmitter` viene definita ed esposta dal modulo `events`:
 
 ```js
 const EventEmitter = require('events');
 ```
 
-Tutti gli `EventEmitter` emettono l'event `'newListener'` quando vengono aggiunti nuovi listener e `'removeListener'` quando vengono eliminati listener esistenti.
+Tutti gli `EventEmitter` emettono l'evento `'newListener'` quando vengono aggiunti nuovi listener e `'removeListener'` quando vengono eliminati listener esistenti.
 
 ### Event: 'newListener'
 
@@ -190,7 +190,7 @@ changes:
 - `eventName` {string|symbol} Il nome dell'evento
 - `listener` {Function} La funzione dell'event handler
 
-L'event `'removeListener'` viene emesso *dopo* l'eliminazione del `listener`.
+L'evento `'removeListener'` viene emesso *dopo* l'eliminazione del `listener`.
 
 ### EventEmitter.listenerCount(emitter, eventName)
 
