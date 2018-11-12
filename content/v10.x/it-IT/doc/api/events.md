@@ -113,7 +113,7 @@ myEmitter.emit('error', new Error('whoops!'));
 // Genera e causa il crash di Node.js
 ```
 
-Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il `domain` module è stato deprecato.)
+Per impedire l'arresto anomalo del processo di Node.js è possibile utilizzare il [`domain`][] module. (Nota, tuttavia, che il modulo `domain` è stato deprecato.)
 
 Per una miglior pratica, è necessario aggiungere sempre dei listener per gli eventi `'error'`.
 
