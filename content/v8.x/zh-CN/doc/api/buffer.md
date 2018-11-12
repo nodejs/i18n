@@ -475,13 +475,13 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] ，而不是用 0 初始化 `Buffer` 实例。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -495,7 +495,7 @@ buf.fill(0);
 console.log(buf);
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
 Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
 
