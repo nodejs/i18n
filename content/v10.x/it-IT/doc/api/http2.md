@@ -10,11 +10,11 @@ Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://to
 const http2 = richiede('http2');
 ```
 
-## Core API
+## API Core
 
 L'API core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
-Il Core API di `Http2` è molto più simmetrica tra client e server di `http` API. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice client-side che dal codice server-side.
+Il Core API di `Http2` è molto più simmetrica tra client e server di `http` API. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice "client-side" che dal codice "server-side".
 
 ### Esempio sul lato server
 
@@ -31,18 +31,18 @@ const server = http2.createSecureServer({
 server.on('error', (err) => console.error(err));
 
 server.on('stream', (stream, headers) => {
-  // stream is a Duplex
+  // Lo stream è un Duplex
   stream.respond({
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Hello World</h1>');
+  stream.end('<h1>Ciao Mondo</h1>');
 });
 
 server.listen(8443);
 ```
 
-To generate the certificate and key for this example, run:
+Per generare il certificato e la chiave per questo esempio, eseguire:
 
 ```bash
 openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
