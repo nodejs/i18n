@@ -3187,9 +3187,9 @@ Semver Minor:
 
 * **openssl**: 
   * Actualizar a 1.0.21, arregla un número de defectos que impactan a Node.js: CVE-2016-6304 ("extensión de Solicitud de Estado de OCSP crecimiento de memoria ilimitada", severidad alta), CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
-  * Upgrade to 1.0.2j, fixes a defect included in 1.0.2i resulting in a crash when using CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
-  * Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
-* **http**: CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
+  * Actualizar a 1.0.2j, arregla un defecto incluido en 1.0.2i que resultaba en un colapso cuando se usaban CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
+  * Remover soporta para cargar módulos de motores de terceros dinámicos. Un atacante puede esconder código malicioso para ser insertado en Node.js al momento de la ejecución enmascarándose como uno de los módulos de motor dinámicos. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
+* **http**: CVE-2016-5325 - Validar apropidamente los caracteres permitidos en la `reason` del argumento en `ServerResponse#writeHead()`. Arregla un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde `throw` puede occurrir cuando se configuran respuestas de HTTP, usuarios deberían estar ya adoptando try/catch aquí. Originalmente reportado por Evan Lucas y Romain Gaucher. (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
 
 Semver Patch:
 
