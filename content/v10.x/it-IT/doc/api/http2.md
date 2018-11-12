@@ -186,7 +186,7 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` ricevuto.
 
-The `'remoteSettings'` event is emitted when a new `SETTINGS` frame is received from the connected peer.
+L'evento `'remoteSettings'` viene emesso quando viene ricevuto un nuovo frame `SETTINGS` dal peer connesso.
 
 ```js
 session.on('remoteSettings', (settings) => {
@@ -200,10 +200,10 @@ session.on('remoteSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `stream` {Http2Stream} A reference to the stream
-* `headers` {HTTP/2 Headers Object} An object describing the headers
-* `flags` {number} The associated numeric flags
-* `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
+* `stream` {Http2Stream} Un riferimento al flusso
+* `headers` {HTTP/2 Headers Object} Un oggetto che descrive le intestazioni
+* `flags` {number} I flag numerici associati
+* `rawHeaders` {Array} Un array contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
 
 The `'stream'` event is emitted when a new `Http2Stream` is created.
 
