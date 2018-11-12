@@ -421,13 +421,13 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
+* `size` {integer} 新建 `Buffer` 的所需长度。
+* `fill` {string|Buffer|integer} 用来预填充新建 `Buffer` 的值。 **默认值：** `0`
+* `encoding` {string} 如果 `fill` 是字符串，则该值是它的字符编码方式。 **默认值：** `'utf8'`
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `fill` 是 `未定义的`，则 `Buffer` 将会被 *0 填充*。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(5);
@@ -436,11 +436,11 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+如果指定了 `fill`，则会调用 [`buf.fill(fill)`][`buf.fill()`] 初始化已分配的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(5, 'a');
@@ -449,9 +449,9 @@ const buf = Buffer.alloc(5, 'a');
 console.log(buf);
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+如果同时指定了 `fill` 和 `encoding`，则会调用 [`buf.fill(fill, encoding)`][`buf.fill()`] 初始化已分配的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
@@ -460,11 +460,11 @@ const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 console.log(buf);
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+调用 [`Buffer.alloc()`] 会明显比另一个方法 [`Buffer.allocUnsafe()`] 慢，但是能够确保新建 `Buffer` 实例的内容 *不会包含敏感数据*。
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.allocUnsafe(size)
+### Class 方法：Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
