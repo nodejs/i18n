@@ -93,9 +93,9 @@ Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a second
 
 #### "`Http2Session` and Sockets"
 
-Ogni istanza `Http2Session` è associata esattamente ad una [`net.Socket`] [] o [`tls.TLSSocket`] [] quando viene creata. When either the `Socket` or the `Http2Session` are destroyed, both will be destroyed.
+Ogni istanza `Http2Session` è associata esattamente ad una [`net.Socket`] [] o [`tls.TLSSocket`] [] quando viene creata. Quando o il `Socket` o la `Http2Session` vengono distrutti, entrambi verranno distrutti.
 
-Because the of the specific serialization and processing requirements imposed by the HTTP/2 protocol, it is not recommended for user code to read data from or write data to a `Socket` instance bound to a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
+Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
 
 Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
 
