@@ -36,7 +36,7 @@ server.on('stream', (stream, headers) => {
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Ciao Mondo</h1>');
+  stream.end('<h1>Hello World</h1>');
 });
 
 server.listen(8443);
@@ -49,9 +49,9 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
   -keyout localhost-privkey.pem -out localhost-cert.pem
 ```
 
-### Client-side example
+### Esempio sul lato client
 
-The following illustrates an HTTP/2 client:
+Di seguito viene illustrato un client HTTP/2:
 
 ```js
 const http2 = require('http2');
@@ -79,7 +79,7 @@ req.on('end', () => {
 req.end();
 ```
 
-### Class: Http2Session
+### Corso: "Http2Session"
 
 <!-- YAML
 added: v8.4.0
@@ -87,9 +87,9 @@ added: v8.4.0
 
 * Extends: {EventEmitter}
 
-Instances of the `http2.Http2Session` class represent an active communications session between an HTTP/2 client and server. Instances of this class are *not* intended to be constructed directly by user code.
+Le istanze della classe `http2.Http2Session` rappresentano un'attiva sessione di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
 
-Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
+Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
 
 #### `Http2Session` and Sockets
 
