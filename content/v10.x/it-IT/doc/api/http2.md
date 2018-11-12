@@ -95,9 +95,9 @@ Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a second
 
 Ogni istanza `Http2Session` è associata esattamente ad una [`net.Socket`] [] o [`tls.TLSSocket`] [] quando viene creata. Quando o il `Socket` o la `Http2Session` vengono distrutti, entrambi verranno distrutti.
 
-Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
+Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `Http2Session`. Facendo così si può mettere la sessione HTTP/2 in uno stato indeterminato, rendendo così inutilizzabili la sessione e il socket.
 
-Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
+Una volta che un `Socket` è stato associato a `Http2Session`, il codice utente deve fare affidamento esclusivamente sull'API di `Http2Session`.
 
 #### Event: 'close'
 
@@ -105,7 +105,7 @@ Once a `Socket` has been bound to an `Http2Session`, user code should rely solel
 added: v8.4.0
 -->
 
-The `'close'` event is emitted once the `Http2Session` has been destroyed. Its listener does not expect any arguments.
+L'evento `'close'` viene emesso quando la `Http2Session` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
 
 #### Event: 'connect'
 
@@ -113,12 +113,12 @@ The `'close'` event is emitted once the `Http2Session` has been destroyed. Its l
 added: v8.4.0
 -->
 
-* `session` {Http2Session}
+* `sessione` {Http2Session}
 * `socket` {net.Socket}
 
-The `'connect'` event is emitted once the `Http2Session` has been successfully connected to the remote peer and communication may begin.
+L'evento `'connect'` viene emesso quando la `Http2Session` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
 
-User code will typically not listen for this event directly.
+Il codice utente tipicamente non ascolta direttamente questo evento.
 
 #### Event: 'error'
 
@@ -128,7 +128,7 @@ added: v8.4.0
 
 * `error` {Error}
 
-The `'error'` event is emitted when an error occurs during the processing of an `Http2Session`.
+L'evento `'errore'` viene emesso quando si verifica un errore durante l'elaborazione di una `Http2Session`.
 
 #### Event: 'frameError'
 
@@ -136,7 +136,7 @@ The `'error'` event is emitted when an error occurs during the processing of an 
 added: v8.4.0
 -->
 
-* `type` {integer} The frame type.
+* `type` {integer} Il tipo di frame.
 * `code` {integer} The error code.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
