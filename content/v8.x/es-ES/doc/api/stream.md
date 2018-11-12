@@ -277,7 +277,7 @@ added: v0.11.2
 
 El método `writable.cork()` fuerza a que todos los datos escribibles sean almacenados en la memoria. Los datos almacenados en buffer se vaciarán cuando se llamen los métodos [`stream.uncork()`][] o [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-The primary intent of `writable.cork()` is to avoid a situation where writing many small chunks of data to a stream do not cause a backup in the internal buffer that would have an adverse impact on performance. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
+La intención principal de `writable.cork()` es evitar una situación en la que escribir muchos fragmentos pequeños de datos al stream no cause una copia de seguridad en el buffer interno, eso tendría un impacto adverso en el rendimiento. En tales situaciones, las implementaciones que utilizan el método `writable._writev()` pueden realizar escrituras almacenadas en buffer de una manera más optimizada.
 
 Vea también: [`writable.uncork()`][].
 
@@ -387,7 +387,7 @@ changes:
 
 El método `writable.write()` escribe algunos datos en el stream, y llama al `callback` suministrado una vez que los datos se han manejado completamente. Si se produce un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. Para detectar confiablemente errores de escritura, agregue un listener para el evento de `'error'`.
 
-El valor devuelto es `true` si el buffer interno es menor que el `highWaterMark` configurado cuando se creó el stream después de admitir el `chunk`. If `false` is returned, further attempts to write data to the stream should stop until the [`'drain'`][] event is emitted.
+El valor devuelto es `true` si el buffer interno es menor que el `highWaterMark` configurado cuando se creó el stream después de admitir el `chunk`. Si se devuelve `false`, los intentos adicionales para escribir datos en el stream deberían detenerse hasta que el evento de [`'drain'`][] se emita.
 
 While a stream is not draining, calls to `write()` will buffer `chunk`, and return false. Once all currently buffered chunks are drained (accepted for delivery by the operating system), the `'drain'` event will be emitted. It is recommended that once write() returns false, no more chunks be written until the `'drain'` event is emitted. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
 
