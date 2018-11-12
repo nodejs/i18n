@@ -10,11 +10,11 @@ Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://to
 const http2 = richiede('http2');
 ```
 
-## "Core API"
+## Core API
 
-The Core API provides a low-level interface designed specifically around support for HTTP/2 protocol features. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
+L'API core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
-The `http2` Core API is much more symmetric between client and server than the `http` API. For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
+Il Core API di `Http2` è molto più simmetrica tra client e server di `http` API. For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
 
 ### Server-side example
 
