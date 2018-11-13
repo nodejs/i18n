@@ -763,7 +763,7 @@ Der nächste Unterschied ist die Signatur für die `Init`-Methode. Für ein N-AP
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-Der Rückgabewert von `Init` wird als das `exports`-Objekt für das Modul behandelt. The `Init` method is passed an empty object via the `exports` parameter as a convenience. If `Init` returns NULL, the parameter passed as `exports` is exported by the module. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
+Der Rückgabewert von `Init` wird als das `exports`-Objekt für das Modul behandelt. Der `Init`-Methode wird ein leeres Objekt über den `exports`-Parameter zur Vereinfachung übergeben. Wenn `Init` NULL zurückgibt, wird der als `exports` übergebene Parameter vom Modul exportiert. N-API-Module können das `module`-Objekt nicht ändern, können aber alles als `exports`-Eigenschaft des Moduls angeben.
 
 To add the method `hello` as a function so that it can be called as a method provided by the addon:
 
