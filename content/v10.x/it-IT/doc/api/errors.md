@@ -191,13 +191,13 @@ La proprietà `Error.stackTraceLimit` specifica il numero di stack frames collez
 
 Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi Stack trace catturata *dopo* che il valore è stato cambiato.
 
-If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
+Se impostato su un valore non numerico, o impostato su un valore numerico negativo, le stack trace non cattureranno nessun frame.
 
 ### error.code
 
 - {string}
 
-The `error.code` property is a string label that identifies the kind of error. See [Node.js Error Codes](#nodejs-error-codes) for details about specific codes.
+La proprietà `error.code` è un etichetta di stringa che identifica il tipo de errore. See [Node.js Error Codes](#nodejs-error-codes) for details about specific codes.
 
 ### error.message
 
