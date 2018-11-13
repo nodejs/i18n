@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons są dynamicznie połączonymi obiektami współdzielonymi, napisanymi w C ++, które można załadować do Node.js za pomocą funkcji [`require()`](globals.html#globals_require) i używane tak, jakby były zwykłym modułem Node.js. Są one używane głównie w celu zapewnienia interfejsu między JavaScriptem uruchomionym w Node.js i bibliotekami C / C ++.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](globals.html#globals_require) function, and used just as if they were an ordinary Node.js module. Są one używane głównie w celu zapewnienia interfejsu między JavaScriptem uruchomionym w Node.js i bibliotekami C / C ++.
 
 W chwili obecnej metoda wykonania Addons jest dość skomplikowana, obejmująca znajomość kilku komponentów i interfejsów API:
 
