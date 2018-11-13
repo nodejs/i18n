@@ -49,7 +49,7 @@ Un `Agent` è responsabile della gestione della persistenza della connessione e 
 
 Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
 
-Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (vedi [`socket.unref()`]).
+Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool non verranno rimossi per non mantenere in esecuzione il processo Node.js quando non ci sono richieste in sospeso. (vedi [`socket.unref()`]).
 
 It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
 
