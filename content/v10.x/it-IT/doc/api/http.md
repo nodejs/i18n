@@ -51,19 +51,19 @@ Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i ser
 
 Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool non verranno rimossi per non mantenere in esecuzione il processo Node.js quando non ci sono richieste in sospeso. (vedi [`socket.unref()`]).
 
-It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
+È buona prassi [`destroy()`][] un'istanza `Agent` quando non è più in uso, poiché i socket inutilizzati consumano risorse del sistema operativo.
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+I socket vengono rimossi da un agente quando il socket emette un evento `'close'` o un evento `'agentRemove'`. Quando si intende mantenere una richiesta HTTP aperta per un lungo periodo senza tenerla nell'agente, si può fare qualcosa di simile a quanto segue:
 
 ```js
 http.get(options, (res) => {
-  // Do stuff
+  // Fai operazione
 }).on('socket', (socket) => {
   socket.emit('agentRemove');
 });
 ```
 
-An agent may also be used for an individual request. By providing `{agent: false}` as an option to the `http.get()` or `http.request()` functions, a one-time use `Agent` with default options will be used for the client connection.
+Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` one-time con opzioni predefinite per la connessione client.
 
 `agent:false`:
 
