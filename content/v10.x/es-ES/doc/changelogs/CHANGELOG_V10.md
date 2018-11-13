@@ -952,7 +952,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`67f1d76956`](https://github.com/nodejs/node/commit/67f1d76956)] - **src**: introducir el uso de pipes en string native-layer (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
 * [[`f7f1437d44`](https://github.com/nodejs/node/commit/f7f1437d44)] - **src**: añadir ayudante para el ámbito before/after sin llamadas de JS (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
 * [[`f734b3eb04`](https://github.com/nodejs/node/commit/f734b3eb04)] - **src**: proporcionarle a StreamBases la capacidad de solicitar datos (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
-* [[`c412150582`](https://github.com/nodejs/node/commit/c412150582)] - **src**: make `FileHandle` a (readonly) `StreamBase` (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
+* [[`c412150582`](https://github.com/nodejs/node/commit/c412150582)] - **src**: hacer que `FileHandle` sea un `StreamBase` (de solo lectura) (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
 * [[`8695273948`](https://github.com/nodejs/node/commit/8695273948)] - **src**: tighten handle scopes for stream operations (Anna Henningsen) [#18936](https://github.com/nodejs/node/pull/18936)
 * [[`a7e298a4a2`](https://github.com/nodejs/node/commit/a7e298a4a2)] - **src**: init emit*env\_nonstring\_warning* (Daniel Bevenius) [#19283](https://github.com/nodejs/node/pull/19283)
 * [[`e0bd2f31e5`](https://github.com/nodejs/node/commit/e0bd2f31e5)] - **src**: move `Environment` ctor/dtor into env.cc (Anna Henningsen) [#19202](https://github.com/nodejs/node/pull/19202)
