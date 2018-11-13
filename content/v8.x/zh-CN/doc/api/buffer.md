@@ -423,7 +423,7 @@ changes:
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 * `fill` {string|Buffer|integer} 用来预填充新建 `Buffer` 的值。 **默认值：** `0`
-* `encoding` {string} 如果 `fill` 是字符串，则该值是它的字符编码方式。 **默认值：** `'utf8'`
+* `encoding` {string} 如果 `fill` 是字符串，则该值是它的编码方式。 **默认值：** `'utf8'`
 
 分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `fill` 是 `未定义的`，则 `Buffer` 将会被 *0 填充*。
 
