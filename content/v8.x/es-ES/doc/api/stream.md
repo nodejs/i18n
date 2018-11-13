@@ -474,7 +474,7 @@ Específicamente, en cualquier momento dado, cada Legible está en uno de los tr
 * `readable._readableState.flowing = false`
 * `readable._readableState.flowing = true`
 
-Cuando `readable._readableState.flowing` es `null`, ningún mecanismo para consumir los datos de los streams se proporciona, así que el stream no generará sus datos. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable._readableState.flowing` to `true`, causing the Readable to begin actively emitting events as data is generated.
+Cuando `readable._readableState.flowing` es `null`, ningún mecanismo para consumir los datos de los streams se proporciona, así que el stream no generará sus datos. Mientras se encuentre en este estado, adjuntar un listener para el eventos de `'data'`, llamar al método `readable.pipe()`, o llamar al método `readable.resume()` cambiará `readable._readableState.flowing` a `true`, causando que el Legible comience a emitir eventos activamente a medida que se generan los datos.
 
 Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable._readableState.flowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable._readableState.flowing` to switch to `true`.
 
