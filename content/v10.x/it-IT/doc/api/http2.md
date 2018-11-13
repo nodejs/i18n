@@ -272,9 +272,9 @@ added: v9.4.0
 
 * `callback` {Function}
 
-Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Once closed, `http2session.destroy()` *might* be called if there are no open `Http2Stream` instances.
+Chiudi con grazia la `Http2Session`, consentendo a qualsiasi flusso esistente di completarsi da solo e impedendo alle nuove istanze `Http2Stream` di essere create. Una volta chiuso, `http2session.destroy()` *potrebbe* essere chiamato se non ci sono istanze `Http2Stream` aperte.
 
-If specified, the `callback` function is registered as a handler for the `'close'` event.
+Se specificato, la funzione `callback` è registrata come gestore per l'evento `'close'`.
 
 #### http2session.closed
 
@@ -284,7 +284,7 @@ added: v9.4.0
 
 * {boolean}
 
-Will be `true` if this `Http2Session` instance has been closed, otherwise `false`.
+Sarà `true` se questa istanza `Http2Session` è stata chiusa, altrimenti `false`.
 
 #### http2session.connecting
 
