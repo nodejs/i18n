@@ -497,7 +497,7 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于使用 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用废弃的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
+请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 该快速分配池将被用于使用 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用已弃用的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
 
 对于这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体的说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外的性能时，这个细微的区别是非常重要的。
 
