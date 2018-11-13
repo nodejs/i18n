@@ -2401,11 +2401,11 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 ### Commits
 
 * [[`53c52ac38e`](https://github.com/nodejs/node/commit/53c52ac38e)] - **N-API**: Reutilizar instancias de ObjectTemplate (Gabriel Schulhof) [#13999](https://github.com/nodejs/node/pull/13999)
-* [[`86c06c01ec`](https://github.com/nodejs/node/commit/86c06c01ec)] - **async-hooks,net**: ensure asyncId=null if no handle (Matt Sergeant) [#13938](https://github.com/nodejs/node/pull/13938)
-* [[`71ee15d340`](https://github.com/nodejs/node/commit/71ee15d340)] - **async_hooks**: make AsyncResource match emitInit (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
-* [[`1aac2c09e7`](https://github.com/nodejs/node/commit/1aac2c09e7)] - **async_hooks**: rename internal emit functions (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
-* [[`0c69ec12a9`](https://github.com/nodejs/node/commit/0c69ec12a9)] - **async_hooks**: fix nested hooks mutation (Andreas Madsen) [#14143](https://github.com/nodejs/node/pull/14143)
-* [[`3211eff935`](https://github.com/nodejs/node/commit/3211eff935)] - **async_hooks**: move restoreTmpHooks call to init (Ruben Bridgewater) [#14054](https://github.com/nodejs/node/pull/14054)
+* [[`86c06c01ec`](https://github.com/nodejs/node/commit/86c06c01ec)] - **async-hooks,net**: asegurar asyncId=null si no hay handle (Matt Sergeant) [#13938](https://github.com/nodejs/node/pull/13938)
+* [[`71ee15d340`](https://github.com/nodejs/node/commit/71ee15d340)] - **async_hooks**: hacer coincidir a AsyncResource con emitInit (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
+* [[`1aac2c09e7`](https://github.com/nodejs/node/commit/1aac2c09e7)] - **async_hooks**: renombrar funciones internas de emit (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
+* [[`0c69ec12a9`](https://github.com/nodejs/node/commit/0c69ec12a9)] - **async_hooks**: corregir mutaciones de los ganchos anidados (Andreas Madsen) [#14143](https://github.com/nodejs/node/pull/14143)
+* [[`3211eff935`](https://github.com/nodejs/node/commit/3211eff935)] - **async_hooks**: mover la llamada restoreTmpHooks a init (Ruben Bridgewater) [#14054](https://github.com/nodejs/node/pull/14054)
 * [[`76ba1b59bc`](https://github.com/nodejs/node/commit/76ba1b59bc)] - **async_hooks**: C++ Embedder API overhaul (Andreas Madsen) [#14040](https://github.com/nodejs/node/pull/14040)
 * [[`544300ee48`](https://github.com/nodejs/node/commit/544300ee48)] - **async_hooks**: require parameter in emitBefore (Andreas Madsen) [#14050](https://github.com/nodejs/node/pull/14050)
 * [[`9f66f1924f`](https://github.com/nodejs/node/commit/9f66f1924f)] - **async_hooks**: use common emitBefore and emitAfter (Andreas Madsen) [#14050](https://github.com/nodejs/node/pull/14050)
