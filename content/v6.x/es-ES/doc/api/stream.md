@@ -406,22 +406,22 @@ Todos los streams [Legibles](#stream_class_stream_readable) implementas la inter
 
 Los streams Legibles operan efectivamente en uno de dos modos: fluido y pausado.
 
-When in flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
+Cuando está en modo fluido, los datos se leen desde el sistema subyacente de manera automática y se envían a una aplicación lo más rápido posible utilizando eventos a través de las interfaz [`EventEmitter`][].
 
-In paused mode, the [`stream.read()`](#stream_readable_read_size) method must be called explicitly to read chunks of data from the stream.
+En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado explíticamente para leer fragmentos de datos desde el stream.
 
-All [Readable](#stream_class_stream_readable) streams begin in paused mode but can be switched to flowing mode in one of the following ways:
+Todos los streams [Legibles](#stream_class_stream_readable) comienzan en el modo pausado, pero pueden cambiarse al modo fluido de una de las siguientes maneras:
 
-* Adding a [`'data'`][] event handler.
-* Calling the [`stream.resume()`](#stream_readable_resume) method.
-* Calling the [`stream.pipe()`][] method to send the data to a [Writable](#stream_class_stream_writable).
+* Agregar un manejado de eventos de [`'data'`][].
+* Llamar al método de [`stream.resume()`](#stream_readable_resume).
+* Llamar al método de [`stream.pipe()`][] para enviar los datos a un [Escribible](#stream_class_stream_writable).
 
-The Readable can switch back to paused mode using one of the following:
+El Legible puede volver a cambiar al modo pausado utilizando uno de los siguientes:
 
 * If there are no pipe destinations, by calling the [`stream.pause()`](#stream_readable_pause) method.
 * If there are pipe destinations, by removing any [`'data'`][] event handlers, and removing all pipe destinations by calling the [`stream.unpipe()`][] method.
 
-The important concept to remember is that a Readable will not generate data until a mechanism for either consuming or ignoring that data is provided. If the consuming mechanism is disabled or taken away, the Readable will *attempt* to stop generating the data.
+El concepto importante a recordar es que un Legible no generará datos hasta que se proporcione un mecanismo para consumir o ignorar esos datos. Si el mecanismo de consumo se desactiva o se retira, el Legible *intentará* detener la generación de los datos.
 
 *Note*: For backwards compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
 
