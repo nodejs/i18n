@@ -437,11 +437,11 @@ Los ejemplos de streams Legibles incluyen:
 * [procesos secundarios stdout y stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
-All [Readable](#stream_class_stream_readable) streams implement the interface defined by the `stream.Readable` class.
+Todos los streams [Legibles](#stream_class_stream_readable) implementas la interfaz definida por la clase `stream.Readable`.
 
-#### Two Modes
+#### Dos Modos
 
-Readable streams effectively operate in one of two modes: flowing and paused.
+Los streams Legibles operan efectivamente en uno de dos modos: fluido y pausado.
 
 When in flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
 
