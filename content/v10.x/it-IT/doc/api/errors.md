@@ -208,7 +208,7 @@ The `error.message` property is the string description of the error as set by ca
 ```js
 const err = new Error('The message');
 console.error(err.message);
-// Prints: The message
+// Stampa: Il messaggio
 ```
 
 ### error.stack
