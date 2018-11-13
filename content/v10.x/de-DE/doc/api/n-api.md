@@ -834,11 +834,11 @@ NAPI_MODULE_INIT() {
 }
 ```
 
-Dieses Makro beinhaltet `NAPI_MODULE` und deklariert eine `Init`-Funktion mit einem speziellen Namen und mit einer Sichtbarkeit außerhalb des Addons. Dies ermöglicht es Node.js, das Modul zu initialisieren, auch wenn es mehrfach geladen wird.
+Dieses Makro beinhaltet `NAPI_MODULE` und deklariert eine `Init`-Funktion mit einem speziellen Namen und mit einer Sichtbarkeit über das Addon hinaus. Dies ermöglicht es Node.js, das Modul zu initialisieren, auch wenn es mehrfach geladen wird.
 
 Die Variablen `env` und `exports` sind nach dem Aufrufen des Makros im Funktionsbody verfügbar.
 
-Weitere Informationen zum Einstellen von Eigenschaften von Objekten finden Sie im Abschnitt über [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_properties).
+Weitere Informationen zum Einstellen der Eigenschaften von Objekten finden Sie im Abschnitt über [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_properties).
 
 Weitere Informationen zum Erstellen von Addon-Modulen im Allgemeinen finden Sie in der bestehenden API.
 
