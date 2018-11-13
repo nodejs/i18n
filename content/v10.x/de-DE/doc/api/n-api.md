@@ -765,7 +765,7 @@ napi_value Init(napi_env env, napi_value exports);
 
 Der Rückgabewert von `Init` wird als das `exports`-Objekt für das Modul behandelt. Der `Init`-Methode wird ein leeres Objekt über den `exports`-Parameter zur Vereinfachung übergeben. Wenn `Init` NULL zurückgibt, wird der als `exports` übergebene Parameter vom Modul exportiert. N-API-Module können das `module`-Objekt nicht ändern, können aber alles als `exports`-Eigenschaft des Moduls angeben.
 
-To add the method `hello` as a function so that it can be called as a method provided by the addon:
+Hinzufügen der `hello`-Methode als Funktion, sodass sie als eine vom Addon bereitgestellte Methode aufgerufen werden kann:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -778,7 +778,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To set a function to be returned by the `require()` for the addon:
+Um eine Funktion festzulegen, die von `require()` für das Addon zurückgegeben wird:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -793,7 +793,7 @@ napi_value Init(napi_env env, napi_value exports) {
 To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOTE: partial example, not all referenced code is included
+// BEACHTE: Teilbeispiel, nicht alle erwähnten Codes sind enthalten.
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
