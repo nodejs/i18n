@@ -203,7 +203,7 @@ console.log(buf.length);
 
 ## Buffers和ES6迭代
 
-`Buffer`实例可以通过使用[`ECMAScript 2015`] (ES6) `for..of`进行迭代。
+`Buffer`实例可以通过使用[`ECMAScript 2015`] (ES6) 中的`for..of`进行迭代。
 
 例如：
 
