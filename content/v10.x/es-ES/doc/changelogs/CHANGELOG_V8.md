@@ -2374,11 +2374,11 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
-### Notable changes
+### Cambios notables
 
 * **Async Hooks**
   
-  * Multiple improvements to Promise support in `async_hooks` have been made.
+  * Se han realizado múltiples mejoras al soporte de Promise en `async_hooks`.
 
 * **Build**
   
