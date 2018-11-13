@@ -92,7 +92,7 @@ added: v0.3.4
 
 L'[`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
 
-To configure any of them, a custom [`http.Agent`][] instance must be created.
+Per configurarne uno qualsiasi, è necessario creare un'istanza [`http.Agent`][] personalizzata.
 
 ```js
 const http = require('http');
@@ -107,7 +107,7 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
+* `options` {Object} Opzioni contenenti i dettagli di connessione. Controllare [`net.createConnection(`][]) per il formato delle opzioni
 * `callback` {Function} Callback function that receives the created socket
 * Returns: {net.Socket}
 
