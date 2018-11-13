@@ -2395,12 +2395,12 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 * **npm**
   
-  * The `npm` CLI has been updated to version 5.3.0. In particular, it now comes with the `npx` binary, which is also shipped with Node. [[`dc3f6b9ac1`](https://github.com/nodejs/node/commit/dc3f6b9ac1)] [#14235](https://github.com/nodejs/node/pull/14235)
-  * `npm` Changelogs: - [v5.0.4](https://github.com/npm/npm/releases/tag/v5.0.4) - [v5.1.0](https://github.com/npm/npm/releases/tag/v5.1.0) - [v5.2.0](https://github.com/npm/npm/releases/tag/v5.2.0) - [v5.3.0](https://github.com/npm/npm/releases/tag/v5.3.0)
+  * El `npm` CLI se ha actualizado a la versión 5.3.0. En particular, ahora viene con el binario `npx`, que también se entrega con Node. [[`dc3f6b9ac1`](https://github.com/nodejs/node/commit/dc3f6b9ac1)] [#14235](https://github.com/nodejs/node/pull/14235)
+  * Controles de cambio de `npm`: - [v5.0.4](https://github.com/npm/npm/releases/tag/v5.0.4) - [v5.1.0](https://github.com/npm/npm/releases/tag/v5.1.0) - [v5.2.0](https://github.com/npm/npm/releases/tag/v5.2.0) - [v5.3.0](https://github.com/npm/npm/releases/tag/v5.3.0)
 
 ### Commits
 
-* [[`53c52ac38e`](https://github.com/nodejs/node/commit/53c52ac38e)] - **N-API**: Reuse ObjectTemplate instances (Gabriel Schulhof) [#13999](https://github.com/nodejs/node/pull/13999)
+* [[`53c52ac38e`](https://github.com/nodejs/node/commit/53c52ac38e)] - **N-API**: Reutilizar instancias de ObjectTemplate (Gabriel Schulhof) [#13999](https://github.com/nodejs/node/pull/13999)
 * [[`86c06c01ec`](https://github.com/nodejs/node/commit/86c06c01ec)] - **async-hooks,net**: ensure asyncId=null if no handle (Matt Sergeant) [#13938](https://github.com/nodejs/node/pull/13938)
 * [[`71ee15d340`](https://github.com/nodejs/node/commit/71ee15d340)] - **async_hooks**: make AsyncResource match emitInit (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
 * [[`1aac2c09e7`](https://github.com/nodejs/node/commit/1aac2c09e7)] - **async_hooks**: rename internal emit functions (Andreas Madsen) [#14152](https://github.com/nodejs/node/pull/14152)
