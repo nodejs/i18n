@@ -294,7 +294,7 @@ added: v10.0.0
 
 * {boolean}
 
-Will be `true` if this `Http2Session` instance is still connecting, will be set to `false` before emitting `connect` event and/or calling the `http2.connect` callback.
+Sarà `true` se questa istanza `Http2Session` è ancora connessa, sarà impostata su `false` prima di emettere l'evento `connect` e/o chiamando il callback `http2.connect`.
 
 #### http2session.destroy(\[error,\]\[code\])
 
@@ -302,8 +302,8 @@ Will be `true` if this `Http2Session` instance is still connecting, will be set 
 added: v8.4.0
 -->
 
-* `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
-* `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
+* `error` {Error} Un oggetto `Error` se la `Http2Session` viene distrutta a causa di un errore.
+* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
 
 Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
 
