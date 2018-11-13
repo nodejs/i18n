@@ -638,7 +638,7 @@ Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exc
 
 In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. Um beispielsweise einen Konstruktor anzulegen und diesen Konstruktor später in einem Request zum Erzeugen von Instanzen zu verwenden, muss es möglich sein, das Konstruktorobjekt über viele verschiedene Instanzerstellungsrequests hinweg zu referenzieren. Dies wäre nicht möglich, wenn, wie im vorigen Abschnitt beschrieben, ein normales Handle als `napi_value` zurückgesendet würde. Die Lebensdauer eines normalen Handles wird von Scopes verwaltet und alle Scopes müssen vor dem Ende einer nativen Methode geschlossen werden.
 
-N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat eine zugehörige Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt gesammelt wird und oft als "schwache" Referenzen bezeichnet werden. Jeder Zählwert größer als 0 verhindert, dass das Objekt gesammelt wird.
+N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat einen zugehörigen Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt gesammelt und oft als "schwache" Referenzen bezeichnet wird. Jeder Zählwert größer als 0 verhindert, dass das Objekt gesammelt wird.
 
 Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt gesammelt wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den zurückgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt gesammelt wurde, führt zu einem Fehler.
 
@@ -838,11 +838,11 @@ Dieses Makro beinhaltet `NAPI_MODULE` und deklariert eine `Init`-Funktion mit ei
 
 Die Variablen `env` und `exports` sind nach dem Aufrufen des Makros im Funktionsbody verfügbar.
 
-For more details on setting properties on objects, see the section on [Working with JavaScript Properties](#n_api_working_with_javascript_properties).
+Weitere Informationen zum Einstellen von Eigenschaften von Objekten finden Sie im Abschnitt über [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_properties).
 
-For more details on building addon modules in general, refer to the existing API.
+Weitere Informationen zum Erstellen von Addon-Modulen im Allgemeinen finden Sie in der bestehenden API.
 
-## Working with JavaScript Values
+## Arbeiten mit JavaScript-Eigenschaften
 
 N-API exposes a set of APIs to create all types of JavaScript values. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
