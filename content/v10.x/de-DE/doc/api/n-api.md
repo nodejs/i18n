@@ -638,13 +638,13 @@ Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exc
 
 In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. Um beispielsweise einen Konstruktor anzulegen und diesen Konstruktor später in einem Request zum Erzeugen von Instanzen zu verwenden, muss es möglich sein, das Konstruktorobjekt über viele verschiedene Instanzerstellungsrequests hinweg zu referenzieren. Dies wäre nicht möglich, wenn, wie im vorigen Abschnitt beschrieben, ein normales Handle als `napi_value` zurückgesendet würde. Die Lebensdauer eines normalen Handles wird von Scopes verwaltet und alle Scopes müssen vor dem Ende einer nativen Methode geschlossen werden.
 
-N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat einen zugehörigen Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt gesammelt und oft als "schwache" Referenzen bezeichnet wird. Jeder Zählwert größer als 0 verhindert, dass das Objekt gesammelt wird.
+N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat einen zugehörigen Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt erfasst und oft als "schwache" Referenzen bezeichnet wird. Jeder Zählwert größer als 0 verhindert, dass das Objekt erfasst wird.
 
-Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt gesammelt wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den zurückgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt gesammelt wurde, führt zu einem Fehler.
+Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt erfasst wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den ausgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt erfasst wurde, führt zu einem Fehler.
 
-Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt gesammelt wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
+Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt erfasst wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz, als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
 
-Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinen individuellen Zählwert basiert.
+Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinem individuellen Zählwert basiert.
 
 #### napi_create_reference
 
@@ -681,11 +681,11 @@ NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, die gelöscht werden soll.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API löscht die eingegebene Referenz.
 
-Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_reference_ref
 
@@ -745,13 +745,13 @@ Die `napi_value`, die in oder aus diesen Methoden übertragen wird, ist ein Hand
 - `[in] ref`: `napi_ref`, für die wir das entsprechende `Object` anfordern.
 - `[out] result`: Die `napi_value` für das `Object` referenziert durch die `napi_ref`.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Wenn diese API noch gültig ist, gibt sie die `napi_value` zurück, das das JavaScript-`Object` repräsentiert, das dem `napi_ref` zugeordnet ist. Andernfalls ist das Ergebnis NULL.
 
 ## Modulregistrierung
 
-N-API-Module werden ähnlich wie andere Module registriert, nur dass anstelle des `NODE_MODULE`-Makros folgendes verwendet wird:
+N-API-Module werden ähnlich wie andere Module registriert, nur dass anstatt des `NODE_MODULE`-Makros folgendes verwendet wird:
 
 ```C
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
