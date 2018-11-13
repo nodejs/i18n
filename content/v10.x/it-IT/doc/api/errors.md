@@ -215,10 +215,10 @@ console.error(err.message);
 
 - {string}
 
-The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
+La proprietà `error.stack` è una stringa che descrive il punto esatto all'interno del codice in cui è stato istanziato l'`Errore`.
 
 ```txt
-Error: Things keep happening!
+Errore: Continuano ad accadere cose!
    at /home/gbusey/file.js:525:2
    at Frobnicator.refrobulate (/home/gbusey/business-logic.js:424:21)
    at Actor.<anonymous> (/home/gbusey/actors.js:400:8)
