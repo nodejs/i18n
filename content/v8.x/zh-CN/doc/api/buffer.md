@@ -319,7 +319,7 @@ changes:
 
 * `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
 
-将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
+将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
 
 例如：
 
