@@ -704,7 +704,7 @@ added: v0.9.1
 
 * Restituisce: {net.Socket} Il socket stesso.
 
-Chiamare `unref ()` su un socket consentirà l'uscita dal programma se questo è l'unico socket attivo nel sistema degli eventi. Se il socket `unref`ed sta già chiamando `unref()` nuovamente, non avrà effetto.
+Chiamare `unref ()` su un socket consentirà l'uscita dal programma se questo è l'unico socket attivo nel sistema degli eventi. Se il socket è già stato passato a `unref` chiamare nuovamente `unref()` non avrà alcun effetto.
 
 ### socket.write(data\[, encoding\]\[, callback\])
 
