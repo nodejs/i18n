@@ -515,7 +515,7 @@ added: v5.12.0
 
 当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，默认情况下会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数`持久`对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
-然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是合适的创建方法。
+然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是非常恰当的创建方法。
 
 例如：
 
@@ -536,7 +536,7 @@ socket.on('readable', () => {
 });
 ```
 
-`Buffer.allocUnsafeSlow()` 应当仅仅作为开发者已经在他们的应用程序中观察到过度的内存保留*之后*的终极手段使用。
+`Buffer.allocUnsafeSlow()` 应当只作为当开发者在他们的应用程序中观察到过度的内存保留*之后*的终极手段使用。
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
@@ -556,7 +556,7 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
-* `encoding` {string} 如果 `string` 是字符串，则该值是它的字符编码方式。 **默认值: ** `'utf8'`
+* `encoding` {string} 如果 `string` 是字符串，则该值是它的编码方式。 **默认值: ** `'utf8'`
 * 返回：{integer} `string` 包含的字节数。
 
 返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为该属性返回的是字符串中的 *字符* 数。
