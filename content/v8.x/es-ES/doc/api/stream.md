@@ -460,13 +460,13 @@ El Legible puede volver a cambiar al modo pausado utilizando uno de los siguient
 
 El concepto importante a recordar es que un Legible no generará datos hasta que se proporcione un mecanismo para consumir o ignorar esos datos. Si el mecanismo de consumo se desactiva o se retira, el Legible *intentará* detener la generación de los datos.
 
-*Note*: For backwards compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
+*Nota*: Por razones de compatibilidad con versiones anteriores, remover los manejadores de evento de [`'data'`][] **no** pausará automáticamente el stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
 
-*Note*: If a [Readable](#stream_class_stream_readable) is switched into flowing mode and there are no consumers available to handle the data, that data will be lost. This can occur, for instance, when the `readable.resume()` method is called without a listener attached to the `'data'` event, or when a `'data'` event handler is removed from the stream.
+*Nota*: si un [Legible](#stream_class_stream_readable) se cambia al modo fluido y y no hay consumidores disponibles para manejar los datos, esos datos se perderán. Esto puedo suceder, por ejemplo, cuando el método de `readable.resume()` se llama sin un listener adjunto al evento de `'data'`, o cuando un manejador del evento de `'data'` se elimina del stream.
 
-#### Three States
+#### Tres Estados
 
-The "two modes" of operation for a Readable stream are a simplified abstraction for the more complicated internal state management that is happening within the Readable stream implementation.
+Los "dos modos" de operación para un stream Legible son una abstracción simplificada para la administración del estado interno más complicado que está ocurriendo dentro de la implementación del stream Legible.
 
 Specifically, at any given point in time, every Readable is in one of three possible states:
 
