@@ -575,7 +575,7 @@ console.log(`${str}: ${str.length} characters, ` +
 
 当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Class 方法：Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -588,11 +588,11 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* 返回：{integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
-Example:
+例如：
 
 ```js
 const buf1 = Buffer.from('1234');
