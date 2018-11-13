@@ -74,7 +74,7 @@ http.get({
   path: '/',
   agent: false  // create a new agent just for this one request
 }, (res) => {
-  // Do stuff with response
+  // Fai operazione con risposta
 });
 ```
 
@@ -84,9 +84,9 @@ http.get({
 added: v0.3.4
 -->
 
-* `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
-  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **Default:** `false`.
-  * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
+* `options` {Object} Set di opzioni configurabili da impostare sull'agente. Può avere i seguenti campi: 
+  * `keepAlive` {boolean} Mantiene i socket attivi anche quando non ci sono richieste in sospeso, in modo che possano essere utilizzate per richieste future senza dover ristabilire una connessione TCP. **Default:** `false`.
+  * `keepAliveMsecs` {number} Quando si utilizza l'opzione `keepAlive`, specifica il [ritardo iniziale](net.html#net_socket_setkeepalive_enable_initialdelay) per i pacchetti Keep-alive TCP. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
 
