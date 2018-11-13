@@ -205,7 +205,7 @@ added: v8.4.0
 * `flags` {number} I flag numerici associati
 * `rawHeaders` {Array} Un array contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
 
-The `'stream'` event is emitted when a new `Http2Stream` is created.
+L'evento `'stream'` viene emesso quando viene creato un nuovo `Http2Stream`.
 
 ```js
 const http2 = require('http2');
