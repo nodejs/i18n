@@ -8,7 +8,7 @@ Per utilizzare il server HTTP ed il client è necessario chiamare `require('http
 
 Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
-HTTP message headers are represented by an object like this:
+Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
 <!-- eslint-skip -->
 
@@ -20,7 +20,7 @@ HTTP message headers are represented by an object like this:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Keys are lowercased. I valori non vengono modificati.
 
 In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
