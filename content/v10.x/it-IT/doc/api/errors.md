@@ -203,7 +203,7 @@ La proprietà `error.code` è un etichetta di stringa che identifica il tipo de 
 
 - {string}
 
-The `error.message` property is the string description of the error as set by calling `new Error(message)`. The `message` passed to the constructor will also appear in the first line of the stack trace of the `Error`, however changing this property after the `Error` object is created *may not* change the first line of the stack trace (for example, when `error.stack` is read before this property is changed).
+The `error.message` property is the string description of the error as set by calling `new Error(message)`. Il `message` passato al constructor apparirà anche nella prima riga dello stack trace dell'`Error`, tuttavia cambiando questa proprietà dopo che l'`Error` object è stato creato *potrebbe non* cambiare la prima riga dello stack trace (ad esempio, quando `error.stack` viene letto prima che questa proprietà sia cambiata).
 
 ```js
 const err = new Error('The message');
