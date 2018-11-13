@@ -385,19 +385,19 @@ write('hello', () => {
 
 A Writable stream in object mode will always ignore the `encoding` argument.
 
-### Readable Streams
+### Streams Legibles
 
-Readable streams are an abstraction for a *source* from which data is consumed.
+Los streams legibles son una abstracción para una *fuente* a partir de la cual se consumen los datos.
 
-Examples of Readable streams include:
+Los ejemplos de streams Legibles incluyen:
 
-* [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
-* [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
-* [fs read streams](fs.html#fs_class_fs_readstream)
+* [respuestas HTTP, en el cliente](http.html#http_class_http_incomingmessage)
+* [solicitudes HTTP, en el servidor](http.html#http_class_http_incomingmessage)
+* [streams de lectura del fs](fs.html#fs_class_fs_readstream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
-* [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
+* [procesos secundarios stdout y stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
 All [Readable](#stream_class_stream_readable) streams implement the interface defined by the `stream.Readable` class.
