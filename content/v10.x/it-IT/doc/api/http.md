@@ -22,9 +22,9 @@ Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
 Keys are lowercased. I valori non vengono modificati.
 
-Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node.js è di livello molto basso. Si occupa esclusivamente della gestione dello stream e dell'analisi dei messaggi. Analizza un messaggio negli header e nel corpo ma non analizza gli header effettivi o il corpo.
+Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node.js è di livello molto basso. Si occupa esclusivamente della gestione dello stream e dell'analisi dei messaggi. Analizza un messaggio nelle intestazioni e nel corpo ma non analizza le intestazioni effettive o il corpo.
 
-Vedere [` message.headers`][] per i dettagli su come vengono gestiti gli header duplicati.
+Vedere [` message.headers`][] per i dettagli su come vengono gestiti le intestazioni duplicate.
 
 Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
 
