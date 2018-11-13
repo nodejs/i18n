@@ -431,13 +431,13 @@ El concepto importante a recordar es que un Legible no generará datos hasta que
 
 Los "dos modos" de operación para un stream Legible son una abstracción simplificada para la administración del estado interno más complicado que está ocurriendo dentro de la implementación del stream Legible.
 
-Specifically, at any given point in time, every Readable is in one of three possible states:
+Específicamente, en cualquier momento dado, cada Legible está en uno de los tres posibles estados:
 
 * `readable._readableState.flowing = null`
 * `readable._readableState.flowing = false`
 * `readable._readableState.flowing = true`
 
-When `readable._readableState.flowing` is `null`, no mechanism for consuming the streams data is provided so the stream will not generate its data. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable._readableState.flowing` to `true`, causing the Readable to begin actively emitting events as data is generated.
+Cuando `readable._readableState.flowing` es `null`, ningún mecanismo para consumir los datos de los streams se proporciona, así que el stream no generará sus datos. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable._readableState.flowing` to `true`, causing the Readable to begin actively emitting events as data is generated.
 
 Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable._readableState.flowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable._readableState.flowing` to switch to `true`.
 
