@@ -17,7 +17,7 @@ APIs exposed by N-API are generally used to create and manipulate JavaScript val
 - All JavaScript values are abstracted behind an opaque type named `napi_value`.
 - In case of an error status code, additional information can be obtained using `napi_get_last_error_info`. More information can be found in the error handling section [Error Handling](#n_api_error_handling).
 
-The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C ++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
+The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
 In order to use the N-API functions, include the file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree:
 
