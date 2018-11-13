@@ -4,7 +4,7 @@
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym silniku JavaScript i pozwolić modułom skompilowanym danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji.
 
-Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisane w sekcji zatytułowanej [Dodatki C ++ ](addons.html). Jedyną różnicą jest zestaw interfejsów API, które są używane przez kod natywny. Zamiast korzystać z interfejsów API V8 lub [Native Abstractions for Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
+Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisane w sekcji zatytułowanej [Dodatki C++ ](addons.html). Jedyną różnicą jest zestaw interfejsów API, które są używane przez kod natywny. Zamiast korzystać z interfejsów API V8 lub [Native Abstractions for Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
 APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
 
@@ -29,7 +29,7 @@ The documentation for N-API is structured as follows:
 - [Promises](#n_api_promises)
 - [Script Execution](#n_api_script_execution)
 
-The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C ++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-api](https://github.com/nodejs/node-api).
+The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. Rozumiemy jednak, że C++ API może być łatwiejsze w użyciu w wielu przypadkach. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaria zbudowane z tych modułów osłaniających będą zależeć od symboli dla funkcji opartych na N-API C eksportowanych przez Node.js. Te opakowania nie są częścią N-API, ani nie będą utrzymywane jako część Node.js. One such example is: [node-api](https://github.com/nodejs/node-api).
 
 In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. Na przykład:
 
