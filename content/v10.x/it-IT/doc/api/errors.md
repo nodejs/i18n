@@ -197,7 +197,7 @@ Se impostato su un valore non numerico, o impostato su un valore numerico negati
 
 - {string}
 
-La proprietà `error.code` è un etichetta di stringa che identifica il tipo de errore. See [Node.js Error Codes](#nodejs-error-codes) for details about specific codes.
+La proprietà `error.code` è un etichetta di stringa che identifica il tipo de errore. Visualizza [Node.js Error Codes](#nodejs-error-codes) per i dettagli riguardanti codici specifici.
 
 ### error.message
 
