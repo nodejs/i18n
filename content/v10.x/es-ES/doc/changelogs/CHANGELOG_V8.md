@@ -2358,21 +2358,21 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 ### Cambios notables
 
-* **http**: Writes no longer abort if the Socket is missing.
-* **process, async_hooks**: Avoid problems when `triggerAsyncId` is `undefined`.
-* **zlib**: Streams no longer attempt to process data when destroyed.
+* **http**: Las escrituras ya no abortan si falta el Socket.
+* **process, async_hooks**: Evitar problemas cuando `triggerAsyncId` es `undefined`.
+* **zlib**: Los Streams ya no intentan procesar datos cuando se destruyen.
 
 ### Commits
 
-* [[`8d426bbeec`](https://github.com/nodejs/node/commit/8d426bbeec)] - **http**: do not abort if socket is missing (Matteo Collina) [#14387](https://github.com/nodejs/node/pull/14387)
-* [[`302c19b006`](https://github.com/nodejs/node/commit/302c19b006)] - **process**: triggerAsyncId can be undefined (Matteo Collina) [#14387](https://github.com/nodejs/node/pull/14387)
-* [[`6fce1a314e`](https://github.com/nodejs/node/commit/6fce1a314e)] - **zlib**: check if the stream is destroyed before push (Matteo Collina) [#14330](https://github.com/nodejs/node/pull/14330)
+* [[`8d426bbeec`](https://github.com/nodejs/node/commit/8d426bbeec)] - **http**: no abortar si falta el socket (Matteo Collina) [#14387](https://github.com/nodejs/node/pull/14387)
+* [[`302c19b006`](https://github.com/nodejs/node/commit/302c19b006)] - **process**: triggerAsyncId puede ser indefinido (Matteo Collina) [#14387](https://github.com/nodejs/node/pull/14387)
+* [[`6fce1a314e`](https://github.com/nodejs/node/commit/6fce1a314e)] - **zlib**: comprobar si el stream se destruye antes de empujar (Matteo Collina) [#14330](https://github.com/nodejs/node/pull/14330)
 
 <a id="8.2.0"></a>
 
-## 2017-07-19, Version 8.2.0 (Current), @fishrock123
+## 2017-07-19, Versión 8.2.0 (Actual), @fishrock123
 
-Big thanks to @addaleax who prepared the vast majority of this release.
+Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 ### Notable changes
 
