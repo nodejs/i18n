@@ -6,7 +6,7 @@
 
 Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-Le interfacce HTTP in Node.js sono progettate per supportare numerose caratteristiche del protocollo che tradizionalmente sono state difficili da utilizzare. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
 HTTP message headers are represented by an object like this:
 
