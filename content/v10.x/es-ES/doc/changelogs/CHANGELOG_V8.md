@@ -2382,11 +2382,11 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 * **Build**
   
-  * The compiler version requirement to build Node with GCC has been raised to GCC 4.9.4. [[`820b011ed6`](https://github.com/nodejs/node/commit/820b011ed6)] [#13466](https://github.com/nodejs/node/pull/13466)
+  * El requisito de la versión del compilador para compilar Node con GCC se ha elevado a GCC 4.9.4. [[`820b011ed6`](https://github.com/nodejs/node/commit/820b011ed6)] [#13466](https://github.com/nodejs/node/pull/13466)
 
 * **Cluster**
   
-  * Users now have more fine-grained control over the inspector port used by individual cluster workers. Previously, cluster workers were restricted to incrementing from the master's debug port. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] [#14140](https://github.com/nodejs/node/pull/14140)
+  * Los usuarios ahora tienen un control más preciso sobre el puerto del inspector utilizado por los workers de clústers individuales. Anteriormente, los workers del clúster estaban restringidos a incrementarse desde el puerto de depuración del master. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] [#14140](https://github.com/nodejs/node/pull/14140)
 
 * **DNS**
   
