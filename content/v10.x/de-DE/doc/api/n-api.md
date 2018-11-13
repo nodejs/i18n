@@ -790,7 +790,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
+Um eine Klasse zu definieren, sodass neue Instanzen erstellt werden können (oft verwendet mit [Object Wrap](#n_api_object_wrap)):
 
 ```C
 // BEACHTE: Teilbeispiel, nicht alle erwähnten Codes sind enthalten.
@@ -817,7 +817,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-If you expect that your module will be loaded multiple times during the lifetime of the Node.js process, you can use the `NAPI_MODULE_INIT` macro to initialize your module:
+Wenn Sie erwarten, dass Ihr Modul während der Lebensdauer des Node.js-Prozesses mehrmals geladen wird, können Sie das `NAPI_MODULE_INIT`-Makro verwenden, um Ihr Modul zu initialisieren:
 
 ```C
 NAPI_MODULE_INIT() {
@@ -834,9 +834,9 @@ NAPI_MODULE_INIT() {
 }
 ```
 
-This macro includes `NAPI_MODULE`, and declares an `Init` function with a special name and with visibility beyond the addon. This will allow Node.js to initialize the module even if it is loaded multiple times.
+Dieses Makro beinhaltet `NAPI_MODULE` und deklariert eine `Init`-Funktion mit einem speziellen Namen und mit einer Sichtbarkeit außerhalb des Addons. Dies ermöglicht es Node.js, das Modul zu initialisieren, auch wenn es mehrfach geladen wird.
 
-The variables `env` and `exports` will be available inside the function body following the macro invocation.
+Die Variablen `env` und `exports` sind nach dem Aufrufen des Makros im Funktionsbody verfügbar.
 
 For more details on setting properties on objects, see the section on [Working with JavaScript Properties](#n_api_working_with_javascript_properties).
 
