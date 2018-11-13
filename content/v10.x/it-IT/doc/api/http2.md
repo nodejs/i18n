@@ -217,17 +217,17 @@ session.on('stream', (stream, headers, flags) => {
     ':status': 200,
     'content-type': 'text/plain'
   });
-  stream.write('hello ');
+  stream.write('hello');
   stream.end('world');
 });
 ```
 
-On the server side, user code will typically not listen for this event directly, and would instead register a handler for the `'stream'` event emitted by the `net.Server` or `tls.Server` instances returned by `http2.createServer()` and `http2.createSecureServer()`, respectively, as in the example below:
+Sul lato server, il codice utente tipicamente non ascolta direttamente questo evento, e dovrebbe invece registrare un gestore per l'evento `'stream'` emesso dalle istanze `net.Server` o `tls.Server` restituite da `http2.createServer()` e `http2.createSecureServer()`, rispettivamente, come nell'esempio seguente:
 
 ```js
 const http2 = require('http2');
 
-// Create an unencrypted HTTP/2 server
+// Creare un server HTTP/2 non crittografato
 const server = http2.createServer();
 
 server.on('stream', (stream, headers) => {
@@ -247,7 +247,7 @@ server.listen(80);
 added: v8.4.0
 -->
 
-After the `http2session.setTimeout()` method is used to set the timeout period for this `Http2Session`, the `'timeout'` event is emitted if there is no activity on the `Http2Session` after the configured number of milliseconds.
+Dopo che è stato usato il metodo `http2session.setTimeout()` per impostare il periodo di timeout per questa `Http2Session`, l'evento `'timeout'` viene emesso se non c'è attività su `Http2Session` dopo il numero configurato di millisecondi.
 
 ```js
 session.setTimeout(2000);
