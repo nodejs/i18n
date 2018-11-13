@@ -278,7 +278,7 @@ changes:
 
 该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定 `arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
 例如：
 
