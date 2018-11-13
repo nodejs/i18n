@@ -2390,8 +2390,8 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 * **DNS**
   
-  * The server used for DNS queries can now use a custom port. [[`ebe7bb29aa`](https://github.com/nodejs/node/commit/ebe7bb29aa)] [#13723](https://github.com/nodejs/node/pull/13723)
-  * Support for `dns.resolveAny()` has been added. [[`6e30e2558e`](https://github.com/nodejs/node/commit/6e30e2558e)] [#13137](https://github.com/nodejs/node/pull/13137)
+  * El servidor utilizado para consultas DNS ahora puede usar un puerto personalizado. [[`ebe7bb29aa`](https://github.com/nodejs/node/commit/ebe7bb29aa)] [#13723](https://github.com/nodejs/node/pull/13723)
+  * Ha sido añadido soporte para `dns.resolveAny()`. [[`6e30e2558e`](https://github.com/nodejs/node/commit/6e30e2558e)] [#13137](https://github.com/nodejs/node/pull/13137)
 
 * **npm**
   
