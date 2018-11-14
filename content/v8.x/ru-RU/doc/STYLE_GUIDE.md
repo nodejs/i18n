@@ -5,8 +5,8 @@
   * Некоторые файлы, такие как markdown файлы высокого уровня, являются исключением.
 * Переход на новую строку в документах ограничена 80 символами.
 * Форматирование, описанное в `.editorconfig`, является предпочтительным. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
+  * [plugin](http://editorconfig.org/#download) доступен для некоторых редакторов, чтобы автоматически применять эти правила.
+* Механические проблемы, такие как орфография и грамматика, должны определяться инструментами (tools), насколько это возможно. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
