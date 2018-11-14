@@ -7,7 +7,7 @@
 * Форматирование, описанное в `.editorconfig`, является предпочтительным. 
   * [plugin](http://editorconfig.org/#download) доступен для некоторых редакторов, чтобы автоматически применять эти правила.
 * Changes to documentation should be checked with `make lint-md`.
-* Предпочтительна американская орфография английского языка. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Предпочтительна американская орфография английского языка. "Capitalize" против "Capitalise", "color" против "colour", и т. д.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Избегайте употребления личных местоимений в справочной документации («я», «вы», «мы»). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
