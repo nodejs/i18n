@@ -3195,12 +3195,12 @@ Parche de Semver:
 
 * **buffer**: exceso de bytes sin relleno en objetos de `Buffer` nuevos creados con `Buffer.concat()` mientras se proporciona un parámetro de `totalLength` que excede la extensión de los objetos de `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
 * **src**: Reparar regresión donde pasar una contraseña vacía y/o salt a crypto.pbkdf2() causaría un error fatal (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
-* **tls**: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian). (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
-* **v8**: Fix regression where a regex on a frozen object was broken (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
+* **tls**: CVE-2016-7099 - Reparar chequeo de validación de certificado de comodín inválido, por el cual un servidor de TLS podría ser capaz de servir un certificado de comodín inválido para su hostname, debido a una validación inapropiada de `*.` en la string del comodín. Originalmente reportado por Alexander Minozhenko y James Bunton (Atlassian). (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
+* **v8**: Arreglar regresión donde una regex en un objeto congelado estaba rota (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
 
 ### Commits
 
-* [[`8fb8c46303`](https://github.com/nodejs/node/commit/8fb8c46303)] - **buffer**: zero-fill uninitialized bytes in .concat() (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
+* [[`8fb8c46303`](https://github.com/nodejs/node/commit/8fb8c46303)] - **buffer**: bytes sin inicializar sin relleno en .concat() (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
 * [[`e5998c44b4`](https://github.com/nodejs/node/commit/e5998c44b4)] - **crypto**: no construir motores de hardware (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
 * [[`ed4cd2eebe`](https://github.com/nodejs/node/commit/ed4cd2eebe)] - **deps**: hacer cherry-pick a 34880eb3dc desde upstream de V8 (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
 * [[`f8ad0dc0e2`](https://github.com/nodejs/node/commit/f8ad0dc0e2)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
@@ -3210,16 +3210,16 @@ Parche de Semver:
 * [[`c08d81df50`](https://github.com/nodejs/node/commit/c08d81df50)] - **deps**: actualizar fuentes de openssl a 1.0.2j (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
 * [[`2573efc9df`](https://github.com/nodejs/node/commit/2573efc9df)] - **deps**: actualizar archivos asm y asm_obsolete de openssl (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
 * [[`67751f3d7e`](https://github.com/nodejs/node/commit/67751f3d7e)] - **deps**: añadir -no_rand_screen a s_client de openssl (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`4382de338b`](https://github.com/nodejs/node/commit/4382de338b)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`cfa00611b0`](https://github.com/nodejs/node/commit/cfa00611b0)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`3e4ea603b3`](https://github.com/nodejs/node/commit/3e4ea603b3)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
-* [[`8937fd0dbb`](https://github.com/nodejs/node/commit/8937fd0dbb)] - **deps**: upgrade openssl sources to 1.0.2i (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
-* [[`c0f13e56a2`](https://github.com/nodejs/node/commit/c0f13e56a2)] - **http**: check reason chars in writeHead (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
-* [[`743f0c9164`](https://github.com/nodejs/node/commit/743f0c9164)] - **lib**: make tls.checkServerIdentity() more strict (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
-* [[`38bed98a92`](https://github.com/nodejs/node/commit/38bed98a92)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`a25fc3f715`](https://github.com/nodejs/node/commit/a25fc3f715)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`5902ba3989`](https://github.com/nodejs/node/commit/5902ba3989)] - **src**: Malloc/Calloc size 0 returns non-null pointer (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
-* [[`a14d832884`](https://github.com/nodejs/node/commit/a14d832884)] - **test**: remove openssl options of -no_<prot> (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
+* [[`4382de338b`](https://github.com/nodejs/node/commit/4382de338b)] - **deps**: reparar error de compilación de asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`cfa00611b0`](https://github.com/nodejs/node/commit/cfa00611b0)] - **deps**: reparar error de ensamblaje de openssl en win32 de ia32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`3e4ea603b3`](https://github.com/nodejs/node/commit/3e4ea603b3)] - **deps**: copiar todos los archivos de cabeceras de openssl para incluir a dir (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
+* [[`8937fd0dbb`](https://github.com/nodejs/node/commit/8937fd0dbb)] - **deps**: actualizar fuentes de openssl a 1.0.2i (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
+* [[`c0f13e56a2`](https://github.com/nodejs/node/commit/c0f13e56a2)] - **http**: chequear carácteres de razón en writeHead (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
+* [[`743f0c9164`](https://github.com/nodejs/node/commit/743f0c9164)] - **lib**: hacer tls.checkServerIdentity() más estricto (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
+* [[`38bed98a92`](https://github.com/nodejs/node/commit/38bed98a92)] - **openssl**: arreglar requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`a25fc3f715`](https://github.com/nodejs/node/commit/a25fc3f715)] - **openssl**: arreglar requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`5902ba3989`](https://github.com/nodejs/node/commit/5902ba3989)] - **src**: tamaño 0 de Malloc/Calloc devuelve puntero no nulo (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
+* [[`a14d832884`](https://github.com/nodejs/node/commit/a14d832884)] - **test**: remover opciones de openssl de -no_<prot> (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
 
 <a id="6.6.0"></a>
 
