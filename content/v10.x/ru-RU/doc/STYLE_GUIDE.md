@@ -32,7 +32,7 @@
 * При использовании символов нижнего подчеркивания, звездочки и обратных кавычек, пожалуйста, используйте правильные выделения (`\_`, `\*` и `` \` `` вместо `_`, `*` и `` ` ``).
 * Ссылки на функции разработчика должны использовать PascalCase.
 * Ссылки на экземпляры разработчика должны использовать PascalCase.
-* References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
+* Ссылки на методы должны быть с использованием скобок: например, `socket.end()` вместо `socket.end`.
 * To draw special attention to a note, adhere to the following guidelines: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
   * Use a capital letter after the "Note:" label.
