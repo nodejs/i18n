@@ -20,7 +20,7 @@
 * Знак, завершающий предложение, помещайте внутри парных знаков препинания - точка ставится внутри скобок и кавычек, не после.
 * Документы должны начинаться с заголовка первого уровня.
 * Предпочтительно прикреплять ссылки, а не встраивать - предпочтение `[a link][]` к `[a link](http://example.com)`.
-* При документировании API, обратите внимание, когда была предоставлена версия API в конце раздела. If an API has been deprecated, also note the first version that the API appeared deprecated in.
+* При документировании API, обратите внимание, когда была предоставлена версия API в конце раздела. Если API устарел, обратите также внимание на первую версию, в которой устаревший API появился.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
