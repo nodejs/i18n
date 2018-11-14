@@ -13,7 +13,7 @@
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+    * НЕПРАВИЛЬНО: "его", "её", "ему", "ей", "ребята", "чуваки"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
