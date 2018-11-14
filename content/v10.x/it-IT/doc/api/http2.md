@@ -12,9 +12,9 @@ const http2 = richiede('http2');
 
 ## Core API
 
-Il Core API fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
+L'API Core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
-Il Core API di `http2` è molto più simmetrico tra il client e il server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice client-side che dal codice server-side.
+L'API Core di `http2` è molto più simmetrico tra il client e il server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice client-side che dal codice server-side.
 
 ### Esempio sul lato server
 
@@ -329,7 +329,7 @@ added: v9.4.0
 
 * {boolean|undefined}
 
-Value is `undefined` if the `Http2Session` session socket has not yet been connected, `true` if the `Http2Session` is connected with a `TLSSocket`, and `false` if the `Http2Session` is connected to any other kind of socket or stream.
+Il valore è `"undefined"` se il socket di sessione `"Http2Session"` non è stato ancora connesso, sarà `"true"` se la `"Http2Session"` è connessa a un `"TLSSocket"` e `"false"` se la `"Http2Session"` è collegata a qualsiasi altro tipo di socket o flusso.
 
 #### http2session.goaway([code, [lastStreamID, [opaqueData]]])
 
