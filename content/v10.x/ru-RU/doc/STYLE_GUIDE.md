@@ -27,7 +27,7 @@
   * Ссылка на это так: `[Asset](/assets/{subdir}/{filename})` для файловых активов, и `![Asset](/assets/{subdir}/{filename})` для активов образов.
   * Для иллюстраций желательно использовать формат SVG. Когда невозможно применить SVG, пожалуйста, внимательно следите за размером файла актива, который вы вставляете.
 * Для блоков кода: 
-  * Use language aware fences. ("```js")
+  * Используйте языковые барьеры. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
 * References to constructor functions should use PascalCase.
