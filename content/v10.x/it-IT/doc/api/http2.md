@@ -12,7 +12,7 @@ const http2 = richiede('http2');
 
 ## Core API
 
-Il Core API fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) è.
+Il Core API fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
 Il Core API di `http2` è molto più simmetrico tra il client e il server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice client-side che dal codice server-side.
 
@@ -31,7 +31,7 @@ const server = http2.createSecureServer({
 server.on('error', (err) => console.error(err));
 
 server.on('stream', (stream, headers) => {
-  // Lo stream è un Duplex
+  // Lo stream è un "Duplex"
   stream.respond({
     'content-type': 'text/html',
     ':status': 200
