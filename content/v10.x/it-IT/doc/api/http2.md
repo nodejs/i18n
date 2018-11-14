@@ -14,11 +14,11 @@ const http2 = richiede('http2');
 
 Il "Core API" fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) è.
 
-Il "Core API" di `Http2` è molto più simmetrico tra "client" e "server" di `http` API. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice "client-side" che dal codice "server-side".
+Il "Core API" di `Http2` è molto più simmetrico tra "client" e "server" dell'API di `http`. Ad esempio, la maggior parte degli eventi, come `'error'`, `'connect'` e `'stream'`, possono essere emessi sia dal codice "client-side" che dal codice "server-side".
 
 ### Esempio sul lato server
 
-Quanto segue illustra un semplice server HTTP/2 che utilizza l'API Core. Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [` http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
+Quanto segue illustra un semplice server HTTP/2 che utilizza l'API Core. Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [`http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
 
 ```js
 const http2 = require('http2');
@@ -85,11 +85,11 @@ req.end();
 added: v8.4.0
 -->
 
-* Extends: {EventEmitter}
+* Estendendo: {EventEmitter}
 
 Le istanze della classe `http2.Http2Session` rappresentano un'attiva sessione di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
 
-Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `http2session.type` può essere utilizzata per determinare la modalità in cui una `Http2Session` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `Http2Session`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `Http2Server` o `Http2Stream`.
+Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `"http2session.type"` può essere utilizzata per determinare la modalità in cui una `"Http2Session"` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `"Http2Session"`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `"Http2Server"` o `"Http2Stream"`.
 
 #### "`Http2Session` and Sockets"
 
@@ -1520,7 +1520,7 @@ changes:
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
-Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [` http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
+Poiché non ci sono browser conosciuti che supportino [HTTP/2 non crittografato](https://http2.github.io/faq/#does-http2-require-encryption), l'uso di [`http2.createSecureServer()`] [] è necessario durante la comunicazione con i client browser.
 
 ```js
 const http2 = require('http2');
