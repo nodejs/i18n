@@ -3193,8 +3193,8 @@ Semver Minor:
 
 Parche de Semver:
 
-* **buffer**: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
-* **src**: Fix regression where passing an empty password and/or salt to crypto.pbkdf2() would cause a fatal error (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
+* **buffer**: exceso de bytes sin relleno en objetos de `Buffer` nuevos creados con `Buffer.concat()` mientras se proporciona un parámetro de `totalLength` que excede la extensión de los objetos de `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
+* **src**: Reparar regresión donde pasar una contraseña vacía y/o salt a crypto.pbkdf2() causaría un error fatal (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
 * **tls**: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian). (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
 * **v8**: Fix regression where a regex on a frozen object was broken (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
 
