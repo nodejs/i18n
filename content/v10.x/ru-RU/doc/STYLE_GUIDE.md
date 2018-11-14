@@ -31,7 +31,7 @@
   * Код не должен быть полным - рассмотрите блоки кода как иллюстрацию или помощь для вашей точки, а не как полные запущенные программы. Если нужна полная работающая программа, включите ее как актив `assets/code-examples` и сделайте ссылку на него.
 * При использовании символов нижнего подчеркивания, звездочки и обратных кавычек, пожалуйста, используйте правильные выделения (`\_`, `\*` и `` \` `` вместо `_`, `*` и `` ` ``).
 * Ссылки на функции разработчика должны использовать PascalCase.
-* References to constructor instances should use camelCase.
+* Ссылки на экземпляры разработчика должны использовать PascalCase.
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * To draw special attention to a note, adhere to the following guidelines: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
