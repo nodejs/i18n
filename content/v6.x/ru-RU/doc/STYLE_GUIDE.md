@@ -15,9 +15,9 @@
     * ПРАВИЛЬНО: "они", "их", "им", "народ", "люди", "разработчики", "кошки"
     * НЕПРАВИЛЬНО: "его", "её", "ему", "ей", "ребята", "чуваки"
 * При сочетании парных знаков препинания (скобки и кавычки), завершающий знак препинания должен располагаться: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
+  * Внутри парных знаков препинания, если заключенные внутри элементы составляют полное предложение - подлежащее, сказуемое и определение.
+  * Вне парных знаков препинания, если внутри заключена только часть предложения.
+* Знак, завершающий предложение, помещайте внутри парных знаков препинания - точка ставится внутри скобок и кавычек, не после.
 * Documents must start with a level-one heading. An example document will be linked here eventually.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
