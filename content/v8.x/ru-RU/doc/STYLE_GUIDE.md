@@ -11,8 +11,8 @@
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Избегайте личных местоимений в справочной документации ("я", "вы", "мы"). 
   * Местоимения допустимы в более нелитературной документации, такой как руководства.
-  * Используйте гендерно-нейтральные местоимения и имена нарицательные. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
+  * Используйте гендерно-нейтральные местоимения и имена нарицательные. Некоторые примеры: 
+    * ПРАВИЛЬНО: "они", "их", "им", "народ", "люди", "разработчики", "кошки"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
