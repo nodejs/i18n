@@ -389,7 +389,7 @@ Il numero massimo di ping in sospeso (non riconosciuti) è determinato dall'opzi
 
 Se fornito, il `"payload"` deve essere un `"Buffer"`, `"TypedArray"` o `"DataView"` contenenti 8 byte di dati che saranno trasmessi con il `"PING"` e restituiti con il riconoscimento ping.
 
-The callback will be invoked with three arguments: an error argument that will be `null` if the `PING` was successfully acknowledged, a `duration` argument that reports the number of milliseconds elapsed since the ping was sent and the acknowledgment was received, and a `Buffer` containing the 8-byte `PING` payload.
+Il "callback" sarà invocato con tre argomenti: un argomento di errore che sarà `"null"` se il `"PING"` è stato riconosciuto con successo, un argomento `"duration"` che riporta il numero di millisecondi trascorsi da quando il ping è stato inviato e quando il riconoscimento è stato ricevuto ed un `"Buffer"` contenente il payload di 8 byte `"PING"`.
 
 ```js
 session.ping(Buffer.from('abcdefgh'), (err, duration, payload) => {
@@ -400,7 +400,7 @@ session.ping(Buffer.from('abcdefgh'), (err, duration, payload) => {
 });
 ```
 
-If the `payload` argument is not specified, the default payload will be the 64-bit timestamp (little endian) marking the start of the `PING` duration.
+Se l'argomento `"payload"` non è specificato, il payload predefinito sarà la marca temporale a 64-bit ("little endian") che segna l'inizio della durata del `"PING"`.
 
 #### http2session.ref()
 
@@ -408,7 +408,7 @@ If the `payload` argument is not specified, the default payload will be the 64-b
 added: v9.4.0
 -->
 
-Calls [`ref()`][`net.Socket.prototype.ref()`] on this `Http2Session` instance's underlying [`net.Socket`].
+Chiama [`"ref()"`] [`"net.Socket.prototype.ref()"`] su questa istanza`"Http2Session"` sottostante a [`"net.Socket"`].
 
 #### http2session.remoteSettings
 
@@ -418,7 +418,7 @@ added: v8.4.0
 
 * {HTTP/2 Settings Object}
 
-A prototype-less object describing the current remote settings of this `Http2Session`. The remote settings are set by the *connected* HTTP/2 peer.
+Un oggetto senza prototipo che descrive le attuali impostazioni remote di `"Http2Session"`. Le impostazioni remote sono impostate dal peer HTTP/2 *connesso*.
 
 #### http2session.setTimeout(msecs, callback)
 
@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. The given `callback` is registered as a listener on the `'timeout'` event.
+Utilizzato per impostare una funzione di callback quando non ci sono attività su `Http2Session` dopo `"msecs"` millisecondi. The given `callback` is registered as a listener on the `'timeout'` event.
 
 #### http2session.socket
 
