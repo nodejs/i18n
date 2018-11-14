@@ -164,11 +164,11 @@ L'istanza `"Http2Session"` verrà arrestata automaticamente quando viene emesso 
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` ricevuto.
+* `"settings"` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
 
-L'evento `'localSettings'` viene emesso quando è stato ricevuto un frame di conferma `SETTINGS`.
+L'evento `'localSettings'` viene emesso quando è stato ricevuto un frame di conferma `"SETTINGS"`.
 
-Quando si utilizza `http2session.setting()` per inviare nuove impostazioni, le impostazioni modificate non hanno effetto finché non viene emesso l'evento `'localSettings'`.
+Quando si utilizza `"http2session.setting"()` per inviare nuove impostazioni, le impostazioni modificate non hanno effetto finché non viene emesso l'evento `'localSettings'`.
 
 ```js
 session.settings({ enablePush: false });
@@ -178,15 +178,15 @@ session.on('localSettings', (settings) => {
 });
 ```
 
-#### Event: 'remoteSettings'
+#### Evento: 'remoteSettings'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` ricevuto.
+* `"settings"` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
 
-L'evento `'remoteSettings'` viene emesso quando viene ricevuto un nuovo frame `SETTINGS` dal peer connesso.
+L'evento `'remoteSettings'` viene emesso quando viene ricevuto un nuovo frame `"SETTINGS"` dal peer connesso.
 
 ```js
 session.on('remoteSettings', (settings) => {
@@ -194,18 +194,18 @@ session.on('remoteSettings', (settings) => {
 });
 ```
 
-#### Event: 'stream'
+#### Evento: 'stream'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* `stream` {Http2Stream} Un riferimento al flusso
-* `headers` {HTTP/2 Headers Object} Un oggetto che descrive le intestazioni
-* `flags` {number} I flag numerici associati
-* `rawHeaders` {Array} Un array contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
+* `"stream"` {Http2Stream} Un riferimento al flusso
+* `"headers"` {HTTP/2 Headers Object} Un oggetto che descrive le intestazioni
+* `"flags"` {number} I flag numerici associati
+* `"rawHeaders"` {Array} Un "array" contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
 
-L'evento `'stream'` viene emesso quando viene creato un nuovo `Http2Stream`.
+L'evento `'stream'` viene emesso quando viene creato un nuovo `"Http2Stream"`.
 
 ```js
 const http2 = require('http2');
@@ -222,7 +222,7 @@ session.on('stream', (stream, headers, flags) => {
 });
 ```
 
-Sul lato server, il codice utente tipicamente non ascolta direttamente questo evento, e dovrebbe invece registrare un gestore per l'evento `'stream'` emesso dalle istanze `net.Server` o `tls.Server` restituite da `http2.createServer()` e `http2.createSecureServer()`, rispettivamente, come nell'esempio seguente:
+Sul lato server, il codice utente tipicamente non ascolta direttamente questo evento, e dovrebbe invece registrare un gestore per l'evento `'stream'` emesso dalle istanze `"net.Server"` o `"tls.Server"` restituite da `"http2.createServer"()` e `"http2.createSecureServer"()`, rispettivamente, come nell'esempio seguente:
 
 ```js
 const http2 = require('http2');
@@ -241,13 +241,13 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-#### Event: 'timeout'
+#### Evento: 'timeout'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-Dopo che è stato usato il metodo `http2session.setTimeout()` per impostare il periodo di timeout per questa `Http2Session`, l'evento `'timeout'` viene emesso se non c'è attività su `Http2Session` dopo il numero configurato di millisecondi.
+Dopo che è stato usato il metodo `"http2session.setTimeout"()` per impostare il periodo di timeout per questa `"Http2Session"`, l'evento `'timeout'` viene emesso se non c'è attività su `"Http2Session"` dopo il numero configurato di millisecondi.
 
 ```js
 session.setTimeout(2000);
@@ -262,7 +262,7 @@ added: v9.4.0
 
 * {string|undefined}
 
-Il valore sarà `undefined` se la `Http2Session` non è ancora connessa a un socket, `h2c` se la `Http2Session` non è collegata a un `TLSSocket`, o restituirà il valore della proprietà `alpnProtocol` del `TLSSocket` connesso.
+Il valore sarà `"undefined"` se la `"Http2Session"` non è ancora connessa a un socket, `"h2c"` se la `"Http2Session"` non è collegata a un `"TLSSocke"t`, o restituirà il valore della proprietà `"alpnProtocol"` del `"TLSSocket"` connesso.
 
 #### http2session.close([callback])
 
@@ -272,9 +272,9 @@ added: v9.4.0
 
 * `callback` {Function}
 
-Chiudi con grazia la `Http2Session`, consentendo a qualsiasi flusso esistente di completarsi da solo e impedendo alle nuove istanze `Http2Stream` di essere create. Una volta chiuso, `http2session.destroy()` *potrebbe* essere chiamato se non ci sono istanze `Http2Stream` aperte.
+Chiudi con attenzione la `"Http2Session"`, consentendo a qualsiasi flusso esistente di completarsi da solo e impedendo alle nuove istanze `"Http2Stream"` di essere create. Una volta chiuso, `"http2session.destroy"()` *potrebbe* essere richiamato se non ci sono istanze `"Http2Stream"` aperte.
 
-Se specificato, la funzione `callback` è registrata come gestore per l'evento `'close'`.
+Se specificato, la funzione `"callback"` è registrata come gestore per l'evento `'close'`.
 
 #### http2session.closed
 
@@ -284,7 +284,7 @@ added: v9.4.0
 
 * {boolean}
 
-Sarà `true` se questa istanza `Http2Session` è stata chiusa, altrimenti `false`.
+Sarà `"true"` se questa istanza `"Http2Session"` è stata chiusa, altrimenti `"false"`.
 
 #### http2session.connecting
 
@@ -294,7 +294,7 @@ added: v10.0.0
 
 * {boolean}
 
-Sarà `true` se questa istanza `Http2Session` è ancora connessa, sarà impostata su `false` prima di emettere l'evento `connect` e/o chiamando il callback `http2.connect`.
+Sarà `"true"` se questa istanza `"Http2Session"` è ancora connessa, sarà impostata su `"false"` prima di emettere l'evento `"connect"` e/o chiamando il "callback"`"http2.connect"`.
 
 #### http2session.destroy(\[error,\]\[code\])
 
@@ -302,14 +302,14 @@ Sarà `true` se questa istanza `Http2Session` è ancora connessa, sarà impostat
 added: v8.4.0
 -->
 
-* `error` {Error} Un oggetto `Error` se la `Http2Session` viene distrutta a causa di un errore.
-* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. Se non specificato, e `error` non è indefinito, il valore predefinito è `INTERNAL_ERROR`, altrimenti il valore predefinito è `NO_ERROR`.
+* `"error"` {Error} Un oggetto `"Error"` se la `"Http2Session"` viene distrutta a causa di un errore.
+* `"code"` {number} Il codice di errore HTTP/2 da inviare nel frame `"GOAWAY"` finale. Se non specificato, e `"error"` non è indefinito, il valore predefinito è `"INTERNAL_ERROR"`, altrimenti il valore predefinito è `"NO_ERROR"`.
 
-Termina immediatamente `Http2Session` e il `net.Socket` associato o `tls.TLSSocket`.
+Termina immediatamente `"Http2Session"` e il `"net.Socket"` associato o `"tls.TLSSocket"`.
 
-Una volta distrutto, `Http2Session` emetterà l'evento `'close'`. Se `error` non è indefinito, un evento `'error'` verrà emesso immediatamente prima dell'evento `'close'`.
+Una volta distrutto, `"Http2Session"` emetterà l'evento `'close'`. Se `"error"` non è indefinito, un evento `'error'` verrà emesso immediatamente prima dell'evento `'close'`.
 
-Se sono rimasti aperti `Http2Streams` associati a `Http2Session`, anche quelli verranno distrutti.
+Se sono rimasti aperti `"Http2Streams"` associati a `"Http2Session"`, anche quelli verranno distrutti.
 
 #### http2session.destroyed
 
