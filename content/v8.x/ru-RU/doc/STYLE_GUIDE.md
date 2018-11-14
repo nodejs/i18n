@@ -37,7 +37,7 @@
   * Make the "Note:" label italic, i.e. `*Note*:`.
   * Use a capital letter after the "Note:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
-* Function arguments or object properties should use the following format: 
+* Параметры функций и свойства объекта должны использовать следующий формат: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
   * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
