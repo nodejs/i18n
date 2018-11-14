@@ -2781,7 +2781,7 @@ Esta actualización de LTS viene con 144 commits. Esto incluye a 47 que están r
 * [[`ae3ce7ff60`](https://github.com/nodejs/node/commit/ae3ce7ff60)] - **doc**: clarificar documentos de toSpring de buffer. (Olan Byrne) [#8984](https://github.com/nodejs/node/pull/8984)
 * [[`a5860b4dbd`](https://github.com/nodejs/node/commit/a5860b4dbd)] - **doc**: clarificar relación entre un archivo y un módulo (marzelin) [#9026](https://github.com/nodejs/node/pull/9026)
 * [[`6f212b910b`](https://github.com/nodejs/node/commit/6f212b910b)] - **doc**: mencionar env insensible a mayúsculas y minúsculas en windows (Oliver Salzburg) [#9166](https://github.com/nodejs/node/pull/9166)
-* [[`ee01594d07`](https://github.com/nodejs/node/commit/ee01594d07)] - **doc**: reparar formato en proceso (Rod Machen) [#9235](https://github.com/nodejs/node/pull/9235)
+* [[`ee01594d07`](https://github.com/nodejs/node/commit/ee01594d07)] - **doc**: repara formato en proceso (Rod Machen) [#9235](https://github.com/nodejs/node/pull/9235)
 * [[`4f2523697c`](https://github.com/nodejs/node/commit/4f2523697c)] - **doc**: reparar enlace a cli.md en vm.md (Daniel Bevenius) [#9481](https://github.com/nodejs/node/pull/9481)
 * [[`1b792742e8`](https://github.com/nodejs/node/commit/1b792742e8)] - **doc**: añadir a Sakthipriyan al CTC (Rod Vagg) [#9427](https://github.com/nodejs/node/pull/9427)
 * [[`4c4b0f7a0e`](https://github.com/nodejs/node/commit/4c4b0f7a0e)] - **doc**: añadir actas de reunión del CTC del 2016-10-26 (Rich Trott) [#9348](https://github.com/nodejs/node/pull/9348)
@@ -3140,7 +3140,7 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 * [[`14025db8c5`](https://github.com/nodejs/node/commit/14025db8c5)] - **test**: limpiar test-child-process-disconnect.js (Pavol Otcenas) [#8602](https://github.com/nodejs/node/pull/8602)
 * [[`9032ba60a5`](https://github.com/nodejs/node/commit/9032ba60a5)] - **test**: reemplazar var por const test-tls-zero-clear-in (Sébastien Barbieri) [#8621](https://github.com/nodejs/node/pull/8621)
 * [[`1aa1740f12`](https://github.com/nodejs/node/commit/1aa1740f12)] - **test**: mejorar cobertura del módulo de utilidades (Michaël Zasso) [#8633](https://github.com/nodejs/node/pull/8633)
-* [[`28d009be76`](https://github.com/nodejs/node/commit/28d009be76)] - **test**: se refactorizó test-crypto-random.js (Tobias Kahse) [#8632](https://github.com/nodejs/node/pull/8632)
+* [[`28d009be76`](https://github.com/nodejs/node/commit/28d009be76)] - **test**: test-crypto-random.js refactorizado (Tobias Kahse) [#8632](https://github.com/nodejs/node/pull/8632)
 * [[`a89deb9c59`](https://github.com/nodejs/node/commit/a89deb9c59)] - **test**: limpiar test-c-ares.js (Yevgen Safronov) [#8577](https://github.com/nodejs/node/pull/8577)
 * [[`9c3d521d90`](https://github.com/nodejs/node/commit/9c3d521d90)] - **test**: mejorar pruebas de child_process (Dennis Schwartz) [#8617](https://github.com/nodejs/node/pull/8617)
 * [[`ba88f5b8f8`](https://github.com/nodejs/node/commit/ba88f5b8f8)] - **test**: mejorar cobertura del módulo de buffer (Michaël Zasso) [#8552](https://github.com/nodejs/node/pull/8552)
@@ -3179,7 +3179,7 @@ Esto también es una actualización de seguridad. Todos los usuarios de Node.js 
 
 ## 2016-09-27, Versión 6.7.0 (Current), @evanlucas
 
-Esto es una actualización de seguridad. Todos los usuarios de Node.js debería consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Cambios notables
 
@@ -3189,7 +3189,7 @@ Semver Minor:
   * Actualizar a 1.0.21, arregla un número de defectos que impactan a Node.js: CVE-2016-6304 ("extensión de Solicitud de Estado de OCSP crecimiento de memoria ilimitada", severidad alta), CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
   * Actualizar a 1.0.2j, arregla un defecto incluido en 1.0.2i que resultaba en un colapso cuando se usaban CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
   * Remover soporte para cargar módulos de motores de terceros dinámicos. Un atacante puede esconder código malicioso para ser insertado en Node.js al momento de la ejecución enmascarándose como uno de los módulos de motor dinámicos. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
-* **http**: CVE-2016-5325 - Validar apropidamente los caracteres permitidos en la `reason` del argumento en `ServerResponse#writeHead()`. Arregla un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde `throw` puede occurrir cuando se configuran respuestas de HTTP, usuarios deberían estar ya adoptando try/catch aquí. Originalmente reportado por Evan Lucas y Romain Gaucher. (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
+* **http**: CVE-2016-5325 - Validar apropiadamente los caracteres permitidos en la `reason` del argumento en `ServerResponse#writeHead()`. Arregla un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde `throw` puede ocurrir cuando se configuran respuestas de HTTP, los usuarios deberían estar ya adoptando try/catch aquí. Originalmente reportado por Evan Lucas y Romain Gaucher. (Evan Lucas) [nodejs/node-private#60](https://github.com/nodejs/node-private/pull/60)
 
 Parche de Semver:
 
