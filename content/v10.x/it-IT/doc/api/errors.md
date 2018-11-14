@@ -28,7 +28,7 @@ Node.js supporta diversi meccanismi per la propagazione e la gestione degli erro
 Tutti gli errori JavaScript sono gestiti come eccezioni che generano ed inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
 ```js
-// Viene generato con un ReferenceError perchè z è indefinito
+// Viene generato con un ReferenceError perché z è indefinito
 prova {
   const m = 1;
   const n = m + z;
@@ -37,11 +37,11 @@ prova {
 }
 ```
 
-Qualsiasi utilizzo del meccanismo JavaScript `throw` creerà un'eccezione che *deve* essere gestita utilizzando `try / catch` altrimenti il processo Node.js uscirà immediatamente.
+Qualsiasi utilizzo del meccanismo JavaScript `throw` creerà un'eccezione che *deve* essere gestita utilizzando `try / catch` altrimenti il processo Node.js verrà chiuso immediatamente.
 
 Con poche eccezioni, le API *Sincrone* (qualsiasi metodo di blocco che non accetta una funzione `callback`, come ad esempio [`fs.readFileSync`][]), utilizzerà `throw` per segnalare gli errori.
 
-Gli errori che si verificano all'interno di *Api asincrone* possono essere segnalati in diversi modi:
+Gli errori che si verificano all'interno di *API Asincrone* possono essere segnalati in diversi modi:
 
 - La maggior parte dei metodi asincroni che accettano una funzione `callback` accetteranno un oggetto `Error` passato come primo argomento a quella funzione. Se questo primo argomento non è `null` ed è un istanza di `Error`, allora si è verificato un errore che dovrebbe essere gestito.
 
@@ -57,7 +57,7 @@ Gli errori che si verificano all'interno di *Api asincrone* possono essere segna
         // Altrimenti gestisci i dati
       });
 
-- Quando un metodo asincrono viene chiamato su un oggetto che è un [`EventEmitter`][], gli errori possono essere indirizzati all'`'error'` dell'evento di quell'oggetto.
+- Quando un metodo asincrono viene chiamato su un oggetto che è un [`EventEmitter`][], gli errori possono essere indirizzati all'`'error'` event di quell'oggetto.
   
   ```js
   const net = require('net');
