@@ -3,8 +3,8 @@
 * Документация, написанная в markdown файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
   * Подчеркивания в названии файла допускается только, когда они присутствуют в теме, о которой пойдет речь в документе (например, `child_process`).
   * Некоторые файлы, такие как markdown файлы высокого уровня, являются исключением.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
+* Переход на новую строку в документах ограничена 80 символами.
+* Форматирование, описанное в `.editorconfig`, является предпочтительным. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
