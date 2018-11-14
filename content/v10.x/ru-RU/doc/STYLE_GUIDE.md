@@ -28,7 +28,7 @@
   * Для иллюстраций желательно использовать формат SVG. Когда невозможно применить SVG, пожалуйста, внимательно следите за размером файла актива, который вы вставляете.
 * Для блоков кода: 
   * Используйте языковые барьеры. ("```js")
-  * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
+  * Код не должен быть полным - рассмотрите блоки кода как иллюстрацию или помощь для вашей точки, а не как полные запущенные программы. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
 * References to constructor functions should use PascalCase.
 * References to constructor instances should use camelCase.
