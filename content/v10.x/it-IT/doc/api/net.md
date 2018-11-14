@@ -739,7 +739,7 @@ Possibili firme:
 
 <!-- YAML
 added: v0.7.0
---> Alias to [
+--> Pseudonimo per [
 
 `net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -749,7 +749,7 @@ added: v0.7.0
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
+Pseudonimo per [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
 ### net.connect(port\[, host\]\[, connectListener\])
 
@@ -757,13 +757,13 @@ Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
+Pseudonimo per [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
 ## net.createConnection()
 
-A factory function, which creates a new [`net.Socket`][], immediately initiates connection with [`socket.connect()`][], then returns the `net.Socket` that starts the connection.
+Una funzione factory, che crea un nuovo [`net.Socket`][], avvia immediatamente la connessione con [`socket.connect()`][], quindi restituisce il `net.Socket` che avvia la connessione.
 
-When the connection is established, a [`'connect'`][] event will be emitted on the returned socket. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
 Possible signatures:
 
