@@ -3,8 +3,8 @@
 * Документация, написанная в markdown файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Некоторые файлы, такие как markdown файлы высокого уровня, являются исключением.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
+* Переход на новую строку в документах ограничена 80 символами.
+* Форматирование, описанное в `.editorconfig`, является предпочтительным. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
