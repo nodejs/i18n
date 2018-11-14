@@ -107,7 +107,7 @@ added: v8.4.0
 
 L'evento `'close'` viene emesso quando la `"Http2Session"` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
 
-#### Event: 'connect'
+#### Evento: 'connect'
 
 <!-- YAML
 added: v8.4.0
@@ -116,11 +116,11 @@ added: v8.4.0
 * `sessione` {Http2Session}
 * `socket` {net.Socket}
 
-L'evento `'connect'` viene emesso quando la `Http2Session` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
+L'evento `'connect'` viene emesso quando la `"Http2Session"` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
 
 Il codice utente tipicamente non ascolta direttamente questo evento.
 
-#### Event: 'error'
+#### Evento: 'error'
 
 <!-- YAML
 added: v8.4.0
@@ -128,37 +128,37 @@ added: v8.4.0
 
 * `error` {Error}
 
-L'evento `'errore'` viene emesso quando si verifica un errore durante l'elaborazione di una `Http2Session`.
+L'evento `'error'` viene emesso quando si verifica un errore durante l'elaborazione di una `"Http2Session"`.
 
-#### Event: 'frameError'
-
-<!-- YAML
-added: v8.4.0
--->
-
-* `type` {integer} Il tipo di frame.
-* `code` {integer} Il codice errore.
-* `id` {integer} L'id del flusso (o `0` se il frame non è associato a un flusso).
-
-L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `Http2Stream`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `Http2Stream`.
-
-Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. Se l'evento non è associato a un flusso, `Http2Session` verrà arrestato immediatamente dopo l'evento `'frameError'`.
-
-#### Event: 'goaway'
+#### Evento: 'frameError'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* `errorCode` {number} Il codice di errore HTTP/2 specificato nel "frame" `GOAWAY`.
-* `lastStreamID` {number} L'ID dell'ultimo stream che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
-* `opaqueData` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `GOAWAY`, verrà passata un'istanza `Buffer` contenente tali dati.
+* `"type"` {integer} Il tipo di frame.
+* `"code"` {integer} Il codice errore.
+* `id` {integer} L'id del flusso (o `0` se il frame non è associato ad un flusso).
 
-L'evento `'goaway'` viene emesso quando viene ricevuto un frame `GOAWAY`.
+L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `"Http2Stream"`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `"Http2Stream"`.
 
-L'istanza `Http2Session` verrà arrestata automaticamente quando viene emesso l'evento `'goaway'`.
+Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. Se l'evento non è associato a un flusso, `"Http2Session"` verrà arrestato immediatamente dopo l'evento `'frameError'`.
 
-#### Event: 'localSettings'
+#### Evento: 'goaway'
+
+<!-- YAML
+added: v8.4.0
+-->
+
+* `"errorCode"` {number} Il codice di errore HTTP/2 specificato nel "frame" `"GOAWAY"`.
+* `"lastStreamID"` {number} L'ID dell'ultimo flusso che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
+* `"opaqueData"` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `"GOAWAY"`, verrà passata un'istanza `"Buffer"` contenente tali dati.
+
+L'evento `'goaway'` viene emesso quando viene ricevuto un frame `"GOAWAY"`.
+
+L'istanza `"Http2Session"` verrà arrestata automaticamente quando viene emesso l'evento `'goaway'`.
+
+#### Evento: 'localSettings'
 
 <!-- YAML
 added: v8.4.0
