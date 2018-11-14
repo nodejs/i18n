@@ -14,7 +14,7 @@
   * Используйте гендерно-нейтральные местоимения и имена нарицательные. Некоторые примеры: 
     * ПРАВИЛЬНО: "они", "их", "им", "народ", "люди", "разработчики", "кошки"
     * НЕПРАВИЛЬНО: "его", "её", "ему", "ей", "ребята", "чуваки"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+* При сочетании парных знаков препинания (скобки и кавычки), завершающий знак препинания должен располагаться: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
