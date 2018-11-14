@@ -1439,55 +1439,55 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
+* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
 * [[`53ed89d927`](https://github.com/nodejs/node/commit/53ed89d927)] - ***Revert*** "**build**: use %PYTHON% instead of python" (Rod Vagg) [#1475](https://github.com/nodejs/node/pull/1475)
-* [[`f23b96352b`](https://github.com/nodejs/node/commit/f23b96352b)] - **src**: revert NODE_MODULE_VERSION to 43 (Chris Dickinson) [#1460](https://github.com/nodejs/node/pull/1460)
+* [[`f23b96352b`](https://github.com/nodejs/node/commit/f23b96352b)] - **src**: revertir NODE_MODULE_VERSION a 43 (Chris Dickinson) [#1460](https://github.com/nodejs/node/pull/1460)
 * [[`431673ebd1`](https://github.com/nodejs/node/commit/431673ebd1)] - **buffer**: fast-case for empty string in byteLength (Jackson Tian) [#1441](https://github.com/nodejs/node/pull/1441)
 * [[`1b22bad35f`](https://github.com/nodejs/node/commit/1b22bad35f)] - **build**: fix logic for shared library flags (Jeremiah Senkpiel) [#1454](https://github.com/nodejs/node/pull/1454)
-* [[`91943a99d5`](https://github.com/nodejs/node/commit/91943a99d5)] - **build**: use %PYTHON% instead of python (Rod Vagg) [#1444](https://github.com/nodejs/node/pull/1444)
-* [[`c7769d417b`](https://github.com/nodejs/node/commit/c7769d417b)] - **build**: Expose xz compression level (Johan Bergström) [#1428](https://github.com/nodejs/node/pull/1428)
-* [[`a530b2baf1`](https://github.com/nodejs/node/commit/a530b2baf1)] - **build**: fix error message in configure (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`92dfb794f9`](https://github.com/nodejs/node/commit/92dfb794f9)] - **build**: enable ssl support on arm64 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`7de0dcde83`](https://github.com/nodejs/node/commit/7de0dcde83)] - **deps**: make node-gyp work with io.js (cjihrig) [#990](https://github.com/nodejs/node/pull/990)
-* [[`4870213f9e`](https://github.com/nodejs/node/commit/4870213f9e)] - **deps**: upgrade npm to 2.8.3 (Forrest L Norvell)
+* [[`91943a99d5`](https://github.com/nodejs/node/commit/91943a99d5)] - **build**: utilizar %PYTHON% en lugar de python (Rod Vagg) [#1444](https://github.com/nodejs/node/pull/1444)
+* [[`c7769d417b`](https://github.com/nodejs/node/commit/c7769d417b)] - **build**: Exponer el nivel de compresión xz (Johan Bergström) [#1428](https://github.com/nodejs/node/pull/1428)
+* [[`a530b2baf1`](https://github.com/nodejs/node/commit/a530b2baf1)] - **build**: corregir el mensaje de error en la configuración (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`92dfb794f9`](https://github.com/nodejs/node/commit/92dfb794f9)] - **build**: habilitar el soporte de ssl en arm64 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`7de0dcde83`](https://github.com/nodejs/node/commit/7de0dcde83)] - **deps**: hacer que node-gyp funcione con io.js (cjihrig) [#990](https://github.com/nodejs/node/pull/990)
+* [[`4870213f9e`](https://github.com/nodejs/node/commit/4870213f9e)] - **deps**: actualizar npm a 2.8.3 (Forrest L Norvell)
 * [[`49bb7ded2c`](https://github.com/nodejs/node/commit/49bb7ded2c)] - **deps**: fix git case sensitivity issue in npm (Chris Dickinson) [#1456](https://github.com/nodejs/node/pull/1456)
 * [[`4830b4bce8`](https://github.com/nodejs/node/commit/4830b4bce8)] - **deps**: add docs to upgrade openssl (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`11bec72c87`](https://github.com/nodejs/node/commit/11bec72c87)] - **deps**: update asm files for openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`11bec72c87`](https://github.com/nodejs/node/commit/11bec72c87)] - **deps**: actualizar los archivos asm para openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
 * [[`53924d8ebe`](https://github.com/nodejs/node/commit/53924d8ebe)] - **deps**: update asm Makefile for openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`418e839456`](https://github.com/nodejs/node/commit/418e839456)] - **deps**: update openssl.gyp/gypi for openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`02f12ab666`](https://github.com/nodejs/node/commit/02f12ab666)] - **deps**: update opensslconf.h for 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`eb7a23595f`](https://github.com/nodejs/node/commit/eb7a23595f)] - **deps**: add x32 and arm64 support for opensslconf.h (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`033a663127`](https://github.com/nodejs/node/commit/033a663127)] - **deps**: replace all headers in openssl (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`418e839456`](https://github.com/nodejs/node/commit/418e839456)] - **deps**: actualizar openssl.gyp/gypi para openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`02f12ab666`](https://github.com/nodejs/node/commit/02f12ab666)] - **deps**: actualizar opensslconf.h para 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`eb7a23595f`](https://github.com/nodejs/node/commit/eb7a23595f)] - **deps**: añadir soporte de x32 y arm64 para opensslconf.h (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`033a663127`](https://github.com/nodejs/node/commit/033a663127)] - **deps**: reemplazar todas las cabeceras en openssl (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
 * [[`ae8831f240`](https://github.com/nodejs/node/commit/ae8831f240)] - **deps**: backport openssl patch of alt cert chains 1 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`71316c46d9`](https://github.com/nodejs/node/commit/71316c46d9)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`d293a4f096`](https://github.com/nodejs/node/commit/d293a4f096)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`e4872d7405`](https://github.com/nodejs/node/commit/e4872d7405)] - **deps**: upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`71316c46d9`](https://github.com/nodejs/node/commit/71316c46d9)] - **deps**: arreglar el error de compilación de asm de openssl en x86_win32 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`d293a4f096`](https://github.com/nodejs/node/commit/d293a4f096)] - **deps**: reparar el error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`e4872d7405`](https://github.com/nodejs/node/commit/e4872d7405)] - **deps**: actualizar openssl a 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
 * [[`a1c9ef3142`](https://github.com/nodejs/node/commit/a1c9ef3142)] - **deps, build**: add support older assembler (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
 * [[`76f219c128`](https://github.com/nodejs/node/commit/76f219c128)] - **doc**: Document forced pushing with git (Johan Bergström) [#1420](https://github.com/nodejs/node/pull/1420)
 * [[`12e51d56c1`](https://github.com/nodejs/node/commit/12e51d56c1)] - **doc**: add Addon API WG (Rod Vagg) [#1226](https://github.com/nodejs/node/pull/1226)
 * [[`7956a13dad`](https://github.com/nodejs/node/commit/7956a13dad)] - **http**: logically respect maxSockets (fengmk2) [#1242](https://github.com/nodejs/node/pull/1242)
-* [[`5b844e140b`](https://github.com/nodejs/node/commit/5b844e140b)] - **module**: fix style (Roman Reiss) [#1453](https://github.com/nodejs/node/pull/1453)
+* [[`5b844e140b`](https://github.com/nodejs/node/commit/5b844e140b)] - **module**: corregir el estilo (Roman Reiss) [#1453](https://github.com/nodejs/node/pull/1453)
 * [[`3ad82c335d`](https://github.com/nodejs/node/commit/3ad82c335d)] - **(SEMVER-MINOR)** **module**: handle NODE_PATH in require('.') (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
-* [[`cd60ff0328`](https://github.com/nodejs/node/commit/cd60ff0328)] - **net**: add fd into listen2 debug info (Jackson Tian) [#1442](https://github.com/nodejs/node/pull/1442)
+* [[`cd60ff0328`](https://github.com/nodejs/node/commit/cd60ff0328)] - **net**: añadir fd a la información de depuración de listen2 (Jackson Tian) [#1442](https://github.com/nodejs/node/pull/1442)
 * [[`10e31ba56c`](https://github.com/nodejs/node/commit/10e31ba56c)] - **(SEMVER-MINOR)** **node**: allow multiple arguments passed to nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
 * [[`116c54692a`](https://github.com/nodejs/node/commit/116c54692a)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`62f5f4cec9`](https://github.com/nodejs/node/commit/62f5f4cec9)] - **src**: remove duplicate byteLength from Buffer (Jackson Tian) [#1438](https://github.com/nodejs/node/pull/1438)
-* [[`51d0808c90`](https://github.com/nodejs/node/commit/51d0808c90)] - **stream**: remove duplicated expression (Yazhong Liu) [#1444](https://github.com/nodejs/node/pull/1444)
-* [[`deb9d23d7b`](https://github.com/nodejs/node/commit/deb9d23d7b)] - **test**: fix error message check for openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-* [[`ca8c9ec2c8`](https://github.com/nodejs/node/commit/ca8c9ec2c8)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
+* [[`62f5f4cec9`](https://github.com/nodejs/node/commit/62f5f4cec9)] - **src**: eliminar byteLength duplicada del Buffer (Jackson Tian) [#1438](https://github.com/nodejs/node/pull/1438)
+* [[`51d0808c90`](https://github.com/nodejs/node/commit/51d0808c90)] - **stream**: eliminar la expresión duplicada (Yazhong Liu) [#1444](https://github.com/nodejs/node/pull/1444)
+* [[`deb9d23d7b`](https://github.com/nodejs/node/commit/deb9d23d7b)] - **test**: corregir la verificación del mensaje de error para openssl-1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* [[`ca8c9ec2c8`](https://github.com/nodejs/node/commit/ca8c9ec2c8)] - **win,node-gyp**: permitir opcionalmente que se pueda renombrar a node.exe/iojs.exe (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
 
 <a id="1.7.1"></a>
 
-## 2015-04-14, Version 1.7.1, @rvagg
+## 2015-04-14, Versión 1.7.1, @rvagg
 
-### Notable changes
+### Cambios notables
 
 * **build**: A syntax error in the Makefile for release builds caused 1.7.0 to be DOA and unreleased. (Rod Vagg) [#1421](https://github.com/nodejs/node/pull/1421).
 
-### Known issues
+### Problemas conocidos
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
