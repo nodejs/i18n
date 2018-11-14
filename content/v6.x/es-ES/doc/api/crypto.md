@@ -1020,7 +1020,7 @@ Crea un objeto de intercambio de clave `DiffieHellman` y genera un prime de `pri
 added: v0.11.14
 -->
 
-Crea una clave de intercambio de objeto de una Curva Elíptica Diffie-Hellman (`ECDH`) empleando una curva específica y predeterminada por el string `curve_name`. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
+Crea un objeto de intercambio de claves de Curva Elíptica Diffie-Hellman (`ECDH`) empleando una curva específica y predeterminada por el string `curve_name`. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
 
 ### crypto.createHash(algorithm)
 
