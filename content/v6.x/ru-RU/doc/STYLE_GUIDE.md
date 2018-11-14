@@ -1,8 +1,8 @@
 # Руководство по стилю
 
-* Документация, написанная в отмеченных файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
+* Документация, написанная в markdown файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
   * Подчеркивания в названии файла допускается только, когда они присутствуют в теме, о которой пойдет речь в документе (например, `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
+  * Некоторые файлы, такие как markdown файлы высокого уровня, являются исключением.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
