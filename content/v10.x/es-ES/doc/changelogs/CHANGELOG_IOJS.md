@@ -1569,14 +1569,14 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * **npm**: actualizar npm a 2.7.5. Vea [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) para detalles. Incluye dos correcciones de seguridad importantes. Resumen: 
   * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalizar los enlaces simbólicos que apuntan a objetivos afuera de la raíz de extracción. Esto evita que los paquetes que contienen enlaces simbólicos anulen los objetivos afuera de las rutas esperadas para un paquete. Gracias [Tim Cuthbertson](http://gfxmonk.net/) y al equipo de [Lift Security](https://liftsecurity.io/) por trabajar con el equipo npm para identificar este problema. ([@othiym23](https://github.com/othiym23))
-  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention. ([@isaacs](https://github.com/isaacs))
+  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Las versiones de paquete no pueden ser de más de 256 caracteres de largo. Esto evita una situación el la cual el análisis del número de versión puede utilizar exponencialmente más tiempo y memoria para analizar, conduciendo a una potencial negación de servicio. Gracias a Adam Baldwin de Lift Security por traer esto a nuestra atención. ([@isaacs](https://github.com/isaacs))
   * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that GitHub shortcuts work with private repositories. ([@iarna](https://github.com/iarna))
   * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when there are paths to fix up. ([@othiym23](https://github.com/othiym23))
-* **openssl**: preliminary work has been done for an upcoming upgrade to OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). See [#589](https://github.com/nodejs/node/issues/589) for additional details.
+* **openssl**: se ha realizado un trabajo preliminar para una próxima actualización de OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). Vea [#589](https://github.com/nodejs/node/issues/589) para detalles adicionales.
 * **timers**: a minor memory leak when timers are unreferenced was fixed, alongside some related timers issues [#1330](https://github.com/nodejs/node/pull/1330) (Fedor Indutny). This appears to have fixed the remaining leak reported in [#1075](https://github.com/nodejs/node/issues/1075).
 * **android**: it is now possible to compile io.js for Android and related devices [#1307](https://github.com/nodejs/node/pull/1307) (Giovanny Andres Gongora Granada).
 
-### Known issues
+### Problemas conocidos
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
@@ -1586,8 +1586,8 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 ### Commits
 
-* [[`3a69b7689b`](https://github.com/io.js/io.js/commit/3a69b7689b)] - **benchmark**: add rsa/aes-gcm performance test (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/nodejs/node/pull/1325)
-* [[`1c709f3aa9`](https://github.com/io.js/io.js/commit/1c709f3aa9)] - **benchmark**: add/remove hash algorithm (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/nodejs/node/pull/1325)
+* [[`3a69b7689b`](https://github.com/io.js/io.js/commit/3a69b7689b)] - **benchmark**: añadir prueba de rendimiento de rsa/aes-gcm (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/nodejs/node/pull/1325)
+* [[`1c709f3aa9`](https://github.com/io.js/io.js/commit/1c709f3aa9)] - **benchmark**: añadir/eliminar el algoritmo hash (Shigeki Ohtsu) [iojs/io.js#1325](https://github.com/nodejs/node/pull/1325)
 * [[`a081c7c522`](https://github.com/io.js/io.js/commit/a081c7c522)] - **benchmark**: fix chunky client benchmark execution (Brian White) [iojs/io.js#1257](https://github.com/nodejs/node/pull/1257)
 * [[`65d4d25f52`](https://github.com/io.js/io.js/commit/65d4d25f52)] - **build**: default to armv7+vfpv3 for android (Giovanny Andres Gongora Granada) [iojs/io.js#1307](https://github.com/nodejs/node/pull/1307)
 * [[`6a134f7d70`](https://github.com/io.js/io.js/commit/6a134f7d70)] - **build**: avoid passing private flags from pmake (Johan Bergström) [iojs/io.js#1334](https://github.com/nodejs/node/pull/1334)
