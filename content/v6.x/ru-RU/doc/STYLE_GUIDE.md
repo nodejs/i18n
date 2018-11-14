@@ -9,8 +9,8 @@
 * Механические проблемы, такие как орфография и грамматика, должны определяться инструментами (tools), насколько это возможно. Если не обнаружены с помощью инструмента, они должны быть отмечены рецензентами.
 * Предпочтительна американская орфография английского языка. "Capitalize" против "Capitalise", "color" против "colour", и т. д.
 * Хотя спорная, [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) предпочтительна для ясности.
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
+* Избегайте личных местоимений в справочной документации ("я", "вы", "мы"). 
+  * Местоимения допустимы в более нелитературной документации, такой как руководства.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
