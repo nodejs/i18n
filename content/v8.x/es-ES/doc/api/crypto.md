@@ -1191,7 +1191,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
+Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1202,7 +1202,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
 
-Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hash` que puede ser usado para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
