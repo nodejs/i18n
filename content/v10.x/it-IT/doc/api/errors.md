@@ -11,13 +11,13 @@ Le applicazioni in esecuzione in Node.js in genere riscontreranno quattro catego
   - {SyntaxError} : generato in risposta ad un utilizzo improprio della sintassi del linguaggio JavaScript.
   - {RangeError} : generato quando un valore non rientra nell'intervallo previsto
   - {ReferenceError} : generato quando si utilizzano variabili non definite
-  - {TypeError} : generato quando vengono passati parametri di tipo errato
+  - {TypeError} : generato quando vengono passati argomenti di tipo errato
   - {URIError} : thrown when a global URI handling function is misused.
-- Errori di sistema innescati da restrizioni implicite del sistema operativo, come ad esempio tentare, di aprire un file che non esiste, tentare di inviare dati su un socket chiuso, etc;
+- Errori di sistema innescati da restrizioni implicite del sistema operativo, come ad esempio tentare di aprire un file che non esiste, tentare di inviare dati su un socket chiuso, etc;
 - And User-specified errors triggered by application code.
 - Gli `AssertionError` sono una classe speciale di errori che possono essere generati ogni volta che Node.js rileva una violazione logica eccezionale che non dovrebbe mai verificarsi. Questi di solito vengono generati dal modulo `assert`.
 
-Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o sono istanze della, classe standard JavaScript {Error} e garantiscono di fornire *almeno* le proprietà disponibili su quella classe.
+Tutti gli errori JavaScript e di Sistema generati da Node.js ereditano dalla, o sono istanze della, classe standard JavaScript {Error} e garantiscono di fornire *almeno* le proprietà disponibili su quella classe.
 
 ## Propagazione e Intercettazione degli Errori
 
@@ -25,7 +25,7 @@ Tutti gli errori JavaScript e di sistema generati da Node.js ereditano dalla, o 
 
 Node.js supporta diversi meccanismi per la propagazione e la gestione degli errori che si verificano mentre un'applicazione è in esecuzione. Il modo in cui questi errori vengono segnalati e gestiti dipende interamente dal tipo di `Error` e dallo stile dell'API che viene chiamata.
 
-Tutti gli errori JavaScript sono gestiti come eccezioni che generano e inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
+Tutti gli errori JavaScript sono gestiti come eccezioni che generano ed inviano *immediatamente* un errore usando il meccanismo standard di JavaScript `throw`. Questi vengono gestiti utilizzando il [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) fornito dal linguaggio JavaScript.
 
 ```js
 // Viene generato con un ReferenceError perchè z è indefinito
