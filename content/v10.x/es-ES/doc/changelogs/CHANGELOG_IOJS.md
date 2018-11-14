@@ -1360,85 +1360,85 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`2a3a1909ab`](https://github.com/nodejs/node/commit/2a3a1909ab)] - **doc**: añadir las líneas de require() al ejemplo de child.stdio (Nick Raienko) [#1504](https://github.com/nodejs/node/pull/1504)
 * [[`02388dbf40`](https://github.com/nodejs/node/commit/02388dbf40)] - **doc**: fix some cross-references (Alexander Gromnitsky) [#1584](https://github.com/nodejs/node/pull/1584)
 * [[`57c4cc26e2`](https://github.com/nodejs/node/commit/57c4cc26e2)] - **doc**: add TC meeting 2015-04-22 minutes (Rod Vagg) [#1556](https://github.com/nodejs/node/pull/1556)
-* [[`b4ad5d7050`](https://github.com/nodejs/node/commit/b4ad5d7050)] - **doc**: improve http.request and https.request opts (Roman Reiss) [#1551](https://github.com/nodejs/node/pull/1551)
-* [[`7dc8eec0a6`](https://github.com/nodejs/node/commit/7dc8eec0a6)] - **doc**: deprecate smalloc module (Ben Noordhuis) [#1566](https://github.com/nodejs/node/pull/1566)
+* [[`b4ad5d7050`](https://github.com/nodejs/node/commit/b4ad5d7050)] - **doc**: mejorar las optimizaciones de http.request y https.request (Roman Reiss) [#1551](https://github.com/nodejs/node/pull/1551)
+* [[`7dc8eec0a6`](https://github.com/nodejs/node/commit/7dc8eec0a6)] - **doc**: desaprobar el módulo smalloc (Ben Noordhuis) [#1566](https://github.com/nodejs/node/pull/1566)
 * [[`1bcdf46ca7`](https://github.com/nodejs/node/commit/1bcdf46ca7)] - **doc**: add TC meeting 2015-04-15 minutes (Rod Vagg) [#1498](https://github.com/nodejs/node/pull/1498)
-* [[`391cae3595`](https://github.com/nodejs/node/commit/391cae3595)] - **doc**: Add Known issues to v1.7.0/1.7.1 CHANGELOG (Yosuke Furukawa) [#1473](https://github.com/nodejs/node/pull/1473)
-* [[`e55fdc47a7`](https://github.com/nodejs/node/commit/e55fdc47a7)] - **doc**: fix util.deprecate example (Nick Raienko) [#1535](https://github.com/nodejs/node/pull/1535)
-* [[`5178f93bc0`](https://github.com/nodejs/node/commit/5178f93bc0)] - **doc**: Add Addon API (NAN) to working group list (Julian Duque) [#1523](https://github.com/nodejs/node/pull/1523)
+* [[`391cae3595`](https://github.com/nodejs/node/commit/391cae3595)] - **doc**: Añadir Problemas conocidos al CHANGELOG v1.7.0/1.7.1 (Yosuke Furukawa) [#1473](https://github.com/nodejs/node/pull/1473)
+* [[`e55fdc47a7`](https://github.com/nodejs/node/commit/e55fdc47a7)] - **doc**: corregir el ejemplo util.deprecate (Nick Raienko) [#1535](https://github.com/nodejs/node/pull/1535)
+* [[`5178f93bc0`](https://github.com/nodejs/node/commit/5178f93bc0)] - **doc**: Añadir Addon API (NAN) a la lista de grupo de trabajo (Julian Duque) [#1523](https://github.com/nodejs/node/pull/1523)
 * [[`f3cc50f811`](https://github.com/nodejs/node/commit/f3cc50f811)] - **doc**: add TC meeting 2015-04-08 minutes (Rod Vagg) [#1497](https://github.com/nodejs/node/pull/1497)
 * [[`bb254b533b`](https://github.com/nodejs/node/commit/bb254b533b)] - **doc**: update branch to master (Roman Reiss) [#1511](https://github.com/nodejs/node/pull/1511)
-* [[`22aafa5597`](https://github.com/nodejs/node/commit/22aafa5597)] - **doc**: add Fishrock123 to the TC (Jeremiah Senkpiel) [#1507](https://github.com/nodejs/node/pull/1507)
-* [[`b16a328ede`](https://github.com/nodejs/node/commit/b16a328ede)] - **doc**: add spaces to child.kill example (Nick Raienko) [#1503](https://github.com/nodejs/node/pull/1503)
-* [[`26327757f8`](https://github.com/nodejs/node/commit/26327757f8)] - **doc**: update AUTHORS list (Rod Vagg) [#1476](https://github.com/nodejs/node/pull/1476)
-* [[`f9c681cf62`](https://github.com/nodejs/node/commit/f9c681cf62)] - **fs**: validate fd on fs.write (Julian Duque) [#1553](https://github.com/nodejs/node/pull/1553)
-* [[`801b47acc5`](https://github.com/nodejs/node/commit/801b47acc5)] - **gitignore**: ignore xcode workspaces and projects (Roman Klauke) [#1562](https://github.com/nodejs/node/pull/1562)
-* [[`d5ce47e433`](https://github.com/nodejs/node/commit/d5ce47e433)] - **(SEMVER-MINOR)** **lib**: deprecate the smalloc module (Ben Noordhuis) [#1564](https://github.com/nodejs/node/pull/1564)
+* [[`22aafa5597`](https://github.com/nodejs/node/commit/22aafa5597)] - **doc**: añadir a Fishrock123 al TC (Jeremiah Senkpiel) [#1507](https://github.com/nodejs/node/pull/1507)
+* [[`b16a328ede`](https://github.com/nodejs/node/commit/b16a328ede)] - **doc**: añadir espacios al ejemplo child.kill (Nick Raienko) [#1503](https://github.com/nodejs/node/pull/1503)
+* [[`26327757f8`](https://github.com/nodejs/node/commit/26327757f8)] - **doc**: actualizar la lista AUTHORS (Rod Vagg) [#1476](https://github.com/nodejs/node/pull/1476)
+* [[`f9c681cf62`](https://github.com/nodejs/node/commit/f9c681cf62)] - **fs**: validar fd en fs.write (Julian Duque) [#1553](https://github.com/nodejs/node/pull/1553)
+* [[`801b47acc5`](https://github.com/nodejs/node/commit/801b47acc5)] - **gitignore**: ignorar los proyectos y espacios de trabajo de xcode (Roman Klauke) [#1562](https://github.com/nodejs/node/pull/1562)
+* [[`d5ce47e433`](https://github.com/nodejs/node/commit/d5ce47e433)] - **(SEMVER-MINOR)** **lib**: desaprobar el módulo de smalloc (Ben Noordhuis) [#1564](https://github.com/nodejs/node/pull/1564)
 * [[`7384ca83f9`](https://github.com/nodejs/node/commit/7384ca83f9)] - **module**: remove '' from Module.globalPaths (Chris Yip) [#1488](https://github.com/nodejs/node/pull/1488)
 * [[`b4f5898395`](https://github.com/nodejs/node/commit/b4f5898395)] - **net**: ensure Write/ShutdownWrap references handle (Fedor Indutny) [#1590](https://github.com/nodejs/node/pull/1590)
-* [[`4abe2fa1cf`](https://github.com/nodejs/node/commit/4abe2fa1cf)] - **(SEMVER-MINOR)** **net**: add lookup option to Socket.prototype.connect (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
+* [[`4abe2fa1cf`](https://github.com/nodejs/node/commit/4abe2fa1cf)] - **(SEMVER-MINOR)** **net**: añadir la opción de búsqueda a Socket.prototype.connect (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
 * [[`1bef717476`](https://github.com/nodejs/node/commit/1bef717476)] - **(SEMVER-MINOR)** **net**: cleanup connect logic (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
-* [[`c7782c0af8`](https://github.com/nodejs/node/commit/c7782c0af8)] - **node**: improve nextTick performance (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
+* [[`c7782c0af8`](https://github.com/nodejs/node/commit/c7782c0af8)] - **node**: mejorar el rendimiento de nextTick (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
 * [[`b57cc51d8d`](https://github.com/nodejs/node/commit/b57cc51d8d)] - **(SEMVER-MAJOR)** **os**: remove trailing slash from os.tmpdir() (Christian Tellnes) [#747](https://github.com/nodejs/node/pull/747)
 * [[`ca219b00d1`](https://github.com/nodejs/node/commit/ca219b00d1)] - **repl**: fix for a+ fd clearing the file on read (Chris Dickinson) [#1605](https://github.com/nodejs/node/pull/1605)
 * [[`051d482b15`](https://github.com/nodejs/node/commit/051d482b15)] - **repl**: fix \_debugger by properly proxying repl (Chris Dickinson) [#1605](https://github.com/nodejs/node/pull/1605)
-* [[`2e2fce0502`](https://github.com/nodejs/node/commit/2e2fce0502)] - **repl**: fix persistent history and env variable name (Roman Reiss) [#1593](https://github.com/nodejs/node/pull/1593)
+* [[`2e2fce0502`](https://github.com/nodejs/node/commit/2e2fce0502)] - **repl**: corregir el historial persistente y el nombre de la variable env (Roman Reiss) [#1593](https://github.com/nodejs/node/pull/1593)
 * [[`ea5195ccaf`](https://github.com/nodejs/node/commit/ea5195ccaf)] - **repl**: do not save history for non-terminal repl (Fedor Indutny) [#1575](https://github.com/nodejs/node/pull/1575)
 * [[`0450ce7db2`](https://github.com/nodejs/node/commit/0450ce7db2)] - **repl**: add mode detection, cli persistent history (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
 * [[`c1b9913e1f`](https://github.com/nodejs/node/commit/c1b9913e1f)] - **(SEMVER-MAJOR)** **src**: bump NODE_MODULE_VERSION due to V8 API (Rod Vagg) [#1532](https://github.com/nodejs/node/pull/1532)
-* [[`279f6116aa`](https://github.com/nodejs/node/commit/279f6116aa)] - **src**: fix -Wmissing-field-initializers warning (Ben Noordhuis) [#1606](https://github.com/nodejs/node/pull/1606)
-* [[`73062521a4`](https://github.com/nodejs/node/commit/73062521a4)] - **src**: deprecate smalloc public functions (Ben Noordhuis) [#1565](https://github.com/nodejs/node/pull/1565)
-* [[`ccb199af17`](https://github.com/nodejs/node/commit/ccb199af17)] - **src**: fix deprecation warnings (Ben Noordhuis) [#1565](https://github.com/nodejs/node/pull/1565)
+* [[`279f6116aa`](https://github.com/nodejs/node/commit/279f6116aa)] - **src**: corregir la advertencia -Wmissing-field-initializers (Ben Noordhuis) [#1606](https://github.com/nodejs/node/pull/1606)
+* [[`73062521a4`](https://github.com/nodejs/node/commit/73062521a4)] - **src**: desaprobar las funciones públicas de smalloc (Ben Noordhuis) [#1565](https://github.com/nodejs/node/pull/1565)
+* [[`ccb199af17`](https://github.com/nodejs/node/commit/ccb199af17)] - **src**: corregir las advertencias de desaprobación (Ben Noordhuis) [#1565](https://github.com/nodejs/node/pull/1565)
 * [[`609fa0de03`](https://github.com/nodejs/node/commit/609fa0de03)] - **src**: fix NODE_DEPRECATED macro (Ben Noordhuis) [#1565](https://github.com/nodejs/node/pull/1565)
-* [[`3c92ca2b5c`](https://github.com/nodejs/node/commit/3c92ca2b5c)] - **(SEMVER-MINOR)** **src**: add ability to get/set effective uid/gid (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
+* [[`3c92ca2b5c`](https://github.com/nodejs/node/commit/3c92ca2b5c)] - **(SEMVER-MINOR)** **src**: añadir la habilidad para obtener/establecer el uid/gid efectivo (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
 * [[`30b7349176`](https://github.com/nodejs/node/commit/30b7349176)] - **stream_base**: dispatch reqs in the stream impl (Fedor Indutny) [#1563](https://github.com/nodejs/node/pull/1563)
-* [[`0fa6c4a6fc`](https://github.com/nodejs/node/commit/0fa6c4a6fc)] - **string_decoder**: don't cache Buffer.isEncoding (Brian White) [#1548](https://github.com/nodejs/node/pull/1548)
-* [[`f9b226c1c1`](https://github.com/nodejs/node/commit/f9b226c1c1)] - **test**: extend timeouts for ARMv6 (Rod Vagg) [#1554](https://github.com/nodejs/node/pull/1554)
+* [[`0fa6c4a6fc`](https://github.com/nodejs/node/commit/0fa6c4a6fc)] - **string_decoder**: no almacenar caché de Buffer.isEncoding (Brian White) [#1548](https://github.com/nodejs/node/pull/1548)
+* [[`f9b226c1c1`](https://github.com/nodejs/node/commit/f9b226c1c1)] - **test**: extender los tiempos de espera para ARMv6 (Rod Vagg) [#1554](https://github.com/nodejs/node/pull/1554)
 * [[`bfae8236b1`](https://github.com/nodejs/node/commit/bfae8236b1)] - **test**: fix test-net-dns-custom-lookup test assertion (Evan Lucas) [#1531](https://github.com/nodejs/node/pull/1531)
-* [[`547213913b`](https://github.com/nodejs/node/commit/547213913b)] - **test**: adjust Makefile/test-ci, add to vcbuild.bat (Rod Vagg) [#1530](https://github.com/nodejs/node/pull/1530)
-* [[`550c2638c0`](https://github.com/nodejs/node/commit/550c2638c0)] - **tls**: use `SSL_set_cert_cb` for async SNI/OCSP (Fedor Indutny) [#1464](https://github.com/nodejs/node/pull/1464)
-* [[`1787416376`](https://github.com/nodejs/node/commit/1787416376)] - **tls**: destroy singleUse context immediately (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
+* [[`547213913b`](https://github.com/nodejs/node/commit/547213913b)] - **test**: ajustar Makefile/test-ci, añadir a vcbuild.bat (Rod Vagg) [#1530](https://github.com/nodejs/node/pull/1530)
+* [[`550c2638c0`](https://github.com/nodejs/node/commit/550c2638c0)] - **tls**: usar `SSL_set_cert_cb` para el SNI/OCSP asincrónico (Fedor Indutny) [#1464](https://github.com/nodejs/node/pull/1464)
+* [[`1787416376`](https://github.com/nodejs/node/commit/1787416376)] - **tls**: destruir el contexto de singleUse inmediatamente (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
 * [[`2684c902c4`](https://github.com/nodejs/node/commit/2684c902c4)] - **tls**: zero SSL_CTX freelist for a singleUse socket (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
-* [[`2d241b3b82`](https://github.com/nodejs/node/commit/2d241b3b82)] - **tls**: destroy SSL once it is out of use (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
-* [[`f7620fb96d`](https://github.com/nodejs/node/commit/f7620fb96d)] - **tls_wrap**: Unlink TLSWrap and SecureContext objects (Сковорода Никита Андреевич) [#1580](https://github.com/nodejs/node/pull/1580)
-* [[`a7d74633f2`](https://github.com/nodejs/node/commit/a7d74633f2)] - **tls_wrap**: use localhost if options.host is empty (Guilherme Souza) [#1493](https://github.com/nodejs/node/pull/1493)
-* [[`702997c1f0`](https://github.com/nodejs/node/commit/702997c1f0)] - ***Revert*** "**url**: significantly improve the performance of the url module" (Rod Vagg) [#1602](https://github.com/nodejs/node/pull/1602)
+* [[`2d241b3b82`](https://github.com/nodejs/node/commit/2d241b3b82)] - **tls**: destruir la SSL una vez que esté fuera de uso (Fedor Indutny) [#1529](https://github.com/nodejs/node/pull/1529)
+* [[`f7620fb96d`](https://github.com/nodejs/node/commit/f7620fb96d)] - **tls_wrap**: Desvincular lo objetos TLSWrap y SecureContext (Сковорода Никита Андреевич) [#1580](https://github.com/nodejs/node/pull/1580)
+* [[`a7d74633f2`](https://github.com/nodejs/node/commit/a7d74633f2)] - **tls_wrap**: utilizar localhost si options.host está vacío (Guilherme Souza) [#1493](https://github.com/nodejs/node/pull/1493)
+* [[`702997c1f0`](https://github.com/nodejs/node/commit/702997c1f0)] - ***Revert*** "**url**: mejorar significativamente el rendimiento del módulo url" (Rod Vagg) [#1602](https://github.com/nodejs/node/pull/1602)
 * [[`0daed24883`](https://github.com/nodejs/node/commit/0daed24883)] - ***Revert*** "**url**: delete href cache on all setter code paths" (Rod Vagg) [#1602](https://github.com/nodejs/node/pull/1602)
 * [[`0f39ef4ca1`](https://github.com/nodejs/node/commit/0f39ef4ca1)] - ***Revert*** "**url**: fix treatment of some values as non-empty" (Rod Vagg) [#1602](https://github.com/nodejs/node/pull/1602)
 * [[`66877216bd`](https://github.com/nodejs/node/commit/66877216bd)] - **url**: fix treatment of some values as non-empty (Petka Antonov) [#1589](https://github.com/nodejs/node/pull/1589)
 * [[`dbdd81a91b`](https://github.com/nodejs/node/commit/dbdd81a91b)] - **url**: delete href cache on all setter code paths (Petka Antonov) [#1589](https://github.com/nodejs/node/pull/1589)
-* [[`3fd7fc429c`](https://github.com/nodejs/node/commit/3fd7fc429c)] - **url**: significantly improve the performance of the url module (Petka Antonov) [#1561](https://github.com/nodejs/node/pull/1561)
+* [[`3fd7fc429c`](https://github.com/nodejs/node/commit/3fd7fc429c)] - **url**: mejorar significativamente el rendimiento del módulo url (Petka Antonov) [#1561](https://github.com/nodejs/node/pull/1561)
 * [[`bf7ac08dd0`](https://github.com/nodejs/node/commit/bf7ac08dd0)] - **util**: add Map and Set inspection support (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
-* [[`30e83d2e84`](https://github.com/nodejs/node/commit/30e83d2e84)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
+* [[`30e83d2e84`](https://github.com/nodejs/node/commit/30e83d2e84)] - **win,node-gyp**: permitir opcionalmente que se pueda renombrar a node.exe/iojs.exe (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
 * [[`3bda6cbfa4`](https://github.com/nodejs/node/commit/3bda6cbfa4)] - **(SEMVER-MAJOR)** **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
 
 <a id="1.8.1"></a>
 
-## 2015-04-20, Version 1.8.1, @chrisdickinson
+## 2015-04-20, Versión 1.8.1, @chrisdickinson
 
-### Notable changes
+### Cambios notables
 
-* **NOTICE**: Skipped v1.8.0 due to problems with release tooling. See [#1436](https://github.com/nodejs/node/issues/1436) for details.
+* **NOTE**: Se omitió la v1.8.0 debido a problemas con las herramientas de lanzamiento. Vea [#1436](https://github.com/nodejs/node/issues/1436) para más detalles.
 * **build**: Support for building io.js as a static library (Marat Abdullin) [#1341](https://github.com/nodejs/node/pull/1341)
-* **deps**: Upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389) 
-  * Users should see performance improvements when using the crypto API. See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) for details.
-* **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Includes improved git support. Summary: 
+* **deps**: Actualización de openssl a 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389) 
+  * Los usuarios deberían ver las mejoras de rendimiento al utilizar la API criptográfica. Vea [aquí](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) para detalles.
+* **npm**: Actualización de npm a 2.8.3. Vea las [notas de lanzamiento](https://github.com/npm/npm/releases/tag/v2.8.3) para detalles. Incluye soporte de git mejorada. Resumen: 
   * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH URLs always have a valid protocol when stored in `resolved` fields in `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
   * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Switch the order in which hosted Git providers are checked to `git:`, `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in an effort to go from most to least likely to succeed, to make for less confusing error message. ([@othiym23](https://github.com/othiym23))
   * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: Don't send body with HTTP GET requests when logging in. ([@smikes](https://github.com/smikes))
-  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Use the new version of `hosted-git-info` to pass along credentials embedded in git URLs. Test it. Test it a lot. ([@othiym23](https://github.com/othiym23))
+  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Utilice la nueva versión de `hosted-git-info` para pasar credenciales incrustadas en git URLs. Pruébelo. Pruébelo mucho. ([@othiym23](https://github.com/othiym23))
   * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Scoped packages with `peerDependencies` were installing the `peerDependencies` into the wrong directory. ([@ewie](https://github.com/ewie))
   * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Use git shorthand and git URLs as presented by user. Support new `hosted-git-info` shortcut syntax. Save shorthand in `package.json`. Try cloning via `git:`, `git+ssh:`, and `git+https:`, in that order, when supported by the underlying hosting provider. ([@othiym23](https://github.com/othiym23))
-* **src**: Allow multiple arguments to be passed to process.nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
-* **module**: The interaction of `require('.')` with `NODE_PATH` has been restored and deprecated. This functionality will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
+* **src**: Permite que se pasen múltiples argumentos a process.nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
+* **module**: Se restauró y desaprobó la interacción de `require('.')` con `NODE_PATH`. Esta función será eliminada en un punto en el futuro. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
 
-### Known issues
+### Problemas conocidos
 
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras que una consulta DNS está en progreso puede causar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
 * readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
