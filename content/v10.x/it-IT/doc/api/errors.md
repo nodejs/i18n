@@ -187,7 +187,7 @@ new MyError().stack;
 
 - {number}
 
-La proprietà `Error.stackTraceLimit` specifica il numero di stack frames collezionati da una stack trace (generata da `new Error().stack` o da `Error.captureStackTrace(obj)`).
+La proprietà `Error.stackTraceLimit` specifica il numero di stack frame collezionati da una stack trace (generata da `new Error().stack` o da `Error.captureStackTrace(obj)`).
 
 Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi Stack trace catturata *dopo* che il valore è stato cambiato.
 
