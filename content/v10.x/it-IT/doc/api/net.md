@@ -721,19 +721,19 @@ Invia dati sul socket. Il secondo parametro specifica la codifica nel file in ca
 
 Restituisce `true ` se l'intero i dati sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
 
-The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
+Il parametro facoltativo `callback` verrà eseguito quando i dati saranno finalmente scritti - questo potrebbe non essere immediato.
 
 See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
 
 ## net.connect() 
 
-Aliases to [`net.createConnection()`][`net.createConnection()`].
+Pseudomini per [`net.createConnection()`][`net.createConnection()`].
 
-Possible signatures:
+Possibili firme:
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
-* [`net.connect(path[, connectListener])`][`net.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] for TCP connections.
+* [`net.connect(path[, connectListener])`][`net.connect(path)`] per connessioni [IPC](#net_ipc_support).
+* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] per le connessioni TPC.
 
 ### net.connect(options[, connectListener])
 
