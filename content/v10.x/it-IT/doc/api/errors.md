@@ -143,9 +143,9 @@ Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è 
 
 Un `Error` object generico di Javascript che non denota alcuna circostanza specifica per cui si è verificato l'errore. Gli `Error` objects acquisiscono una "stack trace" che specifica il punto esatto, all'interno del codice, in cui è stato istanziato l'`Errore`, è potrebbe fornire una descrizione di testo dell'errore.
 
-Solo per crypto, gli `Error` objects includerà no l'errore stack OpensSSL in una proprietà separata chiamata `opensslErrorStack` se questa è disponibile quando l'errore viene generato.
+Solo per crypto, gli `Error` objects includeranno l'error stack OpensSSL in una proprietà separata chiamata `opensslErrorStack` se questa è disponibile quando l'errore viene generato.
 
-Tutti gli errori generati da Node.js, inclusi tutti gli errori di Sistema e di Javascript, o saranno istanze della o erediteranno dalla, classe `Error`.
+Tutti gli errori generati da Node.js, inclusi tutti gli errori di Sistema e di Javascript, o saranno istanze della classe `Error` oppure erediteranno da essa.
 
 ### nuovo Error(message)
 
