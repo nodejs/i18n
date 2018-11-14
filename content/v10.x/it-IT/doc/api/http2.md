@@ -150,9 +150,9 @@ Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e 
 added: v8.4.0
 -->
 
-* `"errorCode"` {number} Il codice di errore HTTP/2 specificato nel "frame" `"GOAWAY"`.
-* `"lastStreamID"` {number} L'ID dell'ultimo flusso che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
-* `"opaqueData"` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `"GOAWAY"`, verrà passata un'istanza `"Buffer"` contenente tali dati.
+* `errorCode` {number} Il codice di errore HTTP/2 specificato nel "frame" `"GOAWAY"`.
+* `lastStreamID` {number} L'ID dell'ultimo flusso che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
+* `opaqueData` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `"GOAWAY"`, verrà passata un'istanza `"Buffer"` contenente tali dati.
 
 L'evento `'goaway'` viene emesso quando viene ricevuto un frame `"GOAWAY"`.
 
@@ -164,7 +164,7 @@ L'istanza `"Http2Session"` verrà arrestata automaticamente quando viene emesso 
 added: v8.4.0
 -->
 
-* `"settings"` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
 
 L'evento `'localSettings'` viene emesso quando è stato ricevuto un frame di conferma `"SETTINGS"`.
 
@@ -184,7 +184,7 @@ session.on('localSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `"settings"` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `"SETTINGS"` ricevuto.
 
 L'evento `'remoteSettings'` viene emesso quando viene ricevuto un nuovo frame `"SETTINGS"` dal peer connesso.
 
@@ -200,10 +200,10 @@ session.on('remoteSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `"stream"` {Http2Stream} Un riferimento al flusso
-* `"headers"` {HTTP/2 Headers Object} Un oggetto che descrive le intestazioni
-* `"flags"` {number} I flag numerici associati
-* `"rawHeaders"` {Array} Un "array" contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
+* `stream` {Http2Stream} Un riferimento al flusso
+* `headers` {HTTP/2 Headers Object} Un oggetto che descrive le intestazioni
+* `flags` {number} I flag numerici associati
+* `rawHeaders` {Array} Un "array" contenente i nomi delle intestazioni raw seguiti dai loro rispettivi valori.
 
 L'evento `'stream'` viene emesso quando viene creato un nuovo `"Http2Stream"`.
 
@@ -302,8 +302,8 @@ Sarà `"true"` se questa istanza `"Http2Session"` è ancora connessa, sarà impo
 added: v8.4.0
 -->
 
-* `"error"` {Error} Un oggetto `"Error"` se la `"Http2Session"` viene distrutta a causa di un errore.
-* `"code"` {number} Il codice di errore HTTP/2 da inviare nel frame `"GOAWAY"` finale. Se non specificato, e `"error"` non è indefinito, il valore predefinito è `"INTERNAL_ERROR"`, altrimenti il valore predefinito è `"NO_ERROR"`.
+* `error` {Error} Un oggetto `"Error"` se la `"Http2Session"` viene distrutta a causa di un errore.
+* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `"GOAWAY"` finale. Se non specificato, e `"error"` non è indefinito, il valore predefinito è `"INTERNAL_ERROR"`, altrimenti il valore predefinito è `"NO_ERROR"`.
 
 Termina immediatamente `"Http2Session"` e il `"net.Socket"` associato o `"tls.TLSSocket"`.
 
@@ -337,9 +337,9 @@ Il valore è `"undefined"` se il socket di sessione `"Http2Session"` non è stat
 added: v9.4.0
 -->
 
-* `"code"` {number} Un codice d'errore HTTP/2
-* `"lastStreamID"` {number} L'ID numerico dell'ultimo `"Http2Stream"` elaborato
-* `"opaqueData"` {Buffer|TypedArray|DataView} Un'istanza `"TypedArray"` o `"DataView"` contenente dati aggiuntivi da trasportare all'interno del frame `"GOAWAY"`.
+* `code` {number} Un codice d'errore HTTP/2
+* `lastStreamID` {number} L'ID numerico dell'ultimo `"Http2Stream"` elaborato
+* `opaqueData` {Buffer|TypedArray|DataView} Un'istanza `"TypedArray"` o `"DataView"` contenente dati aggiuntivi da trasportare all'interno del frame `"GOAWAY"`.
 
 Trasmette un frame `"GOAWAY"` al peer connesso *senza* spegnere la `"Http2Session"`.
 
@@ -379,7 +379,7 @@ Indica se `"Http2Session"` è attualmente in attesa di un riconoscimento per un 
 added: v8.9.3
 -->
 
-* `"payload"` {Buffer|TypedArray|DataView} "Payload ping" facoltativo.
+* `payload` {Buffer|TypedArray|DataView} "Payload ping" facoltativo.
 * `callback` {Function}
 * Restituisce: {boolean}
 
@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Utilizzato per impostare una funzione di callback quando non ci sono attività su `Http2Session` dopo `"msecs"` millisecondi. The given `callback` is registered as a listener on the `'timeout'` event.
+Utilizzato per impostare una funzione di callback quando non ci sono attività su `Http2Session` dopo `"msecs"` millisecondi. La `callback` fornita è registrata come ascoltatore sull'evento `'timeout'`.
 
 #### http2session.socket
 
