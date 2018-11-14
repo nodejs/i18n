@@ -303,13 +303,13 @@ added: v8.4.0
 -->
 
 * `error` {Error} Un oggetto `Error` se la `Http2Session` viene distrutta a causa di un errore.
-* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
+* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. Se non specificato, e `error` non è indefinito, il valore predefinito è `INTERNAL_ERROR`, altrimenti il valore predefinito è `NO_ERROR`.
 
-Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
+Termina immediatamente `Http2Session` e il `net.Socket` associato o `tls.TLSSocket`.
 
-Once destroyed, the `Http2Session` will emit the `'close'` event. If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
+Una volta distrutto, `Http2Session` emetterà l'evento `'close'`. Se `error` non è indefinito, un evento `'error'` verrà emesso immediatamente prima dell'evento `'close'`.
 
-If there are any remaining open `Http2Streams` associated with the `Http2Session`, those will also be destroyed.
+Se sono rimasti aperti `Http2Streams` associati a `Http2Session`, anche quelli verranno distrutti.
 
 #### http2session.destroyed
 
@@ -319,7 +319,7 @@ added: v8.4.0
 
 * {boolean}
 
-Will be `true` if this `Http2Session` instance has been destroyed and must no longer be used, otherwise `false`.
+Sarà `true` se questa istanza `Http2Session` è stata distrutta e non deve più essere utilizzata, altrimenti `false`.
 
 #### http2session.encrypted
 
