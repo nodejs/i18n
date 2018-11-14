@@ -713,19 +713,19 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
-* `callback` {Function}
-* Returns: {boolean}
+* `encoding` {string} Usato solo quando i dato è `string`. **Default:** `utf8`.
+* `callback` {Function} 
+* Restituisce: {boolean}
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Invia dati sul socket. Il secondo parametro specifica la codifica nel file in caso di una stringa - come predefinito per UTF8 encoding.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
+Restituisce `true ` se l'intero i dati sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
 
 The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
 
 See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
 
-## net.connect()
+## net.connect() 
 
 Aliases to [`net.createConnection()`][`net.createConnection()`].
 
