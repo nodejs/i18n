@@ -1240,7 +1240,7 @@ Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada. Optional
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
+La `key` es la clave HMAC empleada para generar el hash criptográfico de HMAC.
 
 Ejemplo: generando el HMAC sha256 de un archivo
 
