@@ -95,17 +95,17 @@ Ogni istanza `"Http2Session"` mostrerà comportamenti leggermente diversi a seco
 
 Ogni istanza `"Http2Session"` è associata esattamente ad una [`"net.Socket"`] [] o [`"tls.TLSSocket"`] [] quando viene creata. Quando o il `Socket` o la `"Http2Session"` vengono distrutti, entrambi verranno distrutti.
 
-Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `Http2Session`. Facendo così si può mettere la sessione HTTP/2 in uno stato indeterminato, rendendo così inutilizzabili la sessione e il socket.
+Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `"Http2Session"`. Facendo così si può mettere la sessione HTTP/2 in uno stato indeterminato, rendendo così inutilizzabili la sessione e il socket.
 
-Una volta che un `Socket` è stato associato a `Http2Session`, il codice utente deve fare affidamento esclusivamente sull'API di `Http2Session`.
+Una volta che un `Socket` è stato associato ad `"Http2Session"`, il codice utente deve fare affidamento esclusivamente sull'API di `"Http2Session"`.
 
-#### Event: 'close'
+#### Evento: 'close'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-L'evento `'close'` viene emesso quando la `Http2Session` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
+L'evento `'close'` viene emesso quando la `"Http2Session"` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
 
 #### Event: 'connect'
 
