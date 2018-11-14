@@ -2372,7 +2372,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 
 ## 2017-07-19, Versión 8.2.0 (Actual), @fishrock123
 
-Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
+Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 
 ### Cambios notables
 
@@ -2386,7 +2386,7 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 * **Cluster**
   
-  * Los usuarios ahora tienen un control más preciso sobre el puerto del inspector utilizado por los workers de clústers individuales. Anteriormente, los workers del clúster estaban restringidos a incrementarse desde el puerto de depuración del master. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] [#14140](https://github.com/nodejs/node/pull/14140)
+  * Los usuarios ahora tienen un control más preciso sobre el puerto del inspector utilizado por los workers individuales del clúster. Anteriormente, los workers del clúster estaban restringidos a incrementarse desde el puerto de depuración del master. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] [#14140](https://github.com/nodejs/node/pull/14140)
 
 * **DNS**
   
@@ -2395,8 +2395,8 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 
 * **npm**
   
-  * El `npm` CLI se ha actualizado a la versión 5.3.0. En particular, ahora viene con el binario `npx`, que también se entrega con Node. [[`dc3f6b9ac1`](https://github.com/nodejs/node/commit/dc3f6b9ac1)] [#14235](https://github.com/nodejs/node/pull/14235)
-  * Controles de cambio de `npm`: - [v5.0.4](https://github.com/npm/npm/releases/tag/v5.0.4) - [v5.1.0](https://github.com/npm/npm/releases/tag/v5.1.0) - [v5.2.0](https://github.com/npm/npm/releases/tag/v5.2.0) - [v5.3.0](https://github.com/npm/npm/releases/tag/v5.3.0)
+  * El CLI de `npm` se ha actualizado a la versión 5.3.0. En particular, ahora viene con el binario `npx`, que también se entrega con Node. [[`dc3f6b9ac1`](https://github.com/nodejs/node/commit/dc3f6b9ac1)] [#14235](https://github.com/nodejs/node/pull/14235)
+  * Registros de cambio de `npm`: - [v5.0.4](https://github.com/npm/npm/releases/tag/v5.0.4) - [v5.1.0](https://github.com/npm/npm/releases/tag/v5.1.0) - [v5.2.0](https://github.com/npm/npm/releases/tag/v5.2.0) - [v5.3.0](https://github.com/npm/npm/releases/tag/v5.3.0)
 
 ### Commits
 
@@ -2408,12 +2408,12 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 * [[`3211eff935`](https://github.com/nodejs/node/commit/3211eff935)] - **async_hooks**: mover la llamada restoreTmpHooks a init (Ruben Bridgewater) [#14054](https://github.com/nodejs/node/pull/14054)
 * [[`76ba1b59bc`](https://github.com/nodejs/node/commit/76ba1b59bc)] - **async_hooks**: revisión de la API de C++ Embedder (Andreas Madsen) [#14040](https://github.com/nodejs/node/pull/14040)
 * [[`544300ee48`](https://github.com/nodejs/node/commit/544300ee48)] - **async_hooks**: requerir parámetro en emitBefore (Andreas Madsen) [#14050](https://github.com/nodejs/node/pull/14050)
-* [[`9f66f1924f`](https://github.com/nodejs/node/commit/9f66f1924f)] - **async_hooks**: usar el común emitBefore y emitAfter (Andreas Madsen) [#14050](https://github.com/nodejs/node/pull/14050)
-* [[`7b369d12cf`](https://github.com/nodejs/node/commit/7b369d12cf)] - **async_hooks**: corregir el nextTick triggerAsyncId predeterminado (Andreas Madsen) [#14026](https://github.com/nodejs/node/pull/14026)
+* [[`9f66f1924f`](https://github.com/nodejs/node/commit/9f66f1924f)] - **async_hooks**: usar emitBefore y emitAfter comunes (Andreas Madsen) [#14050](https://github.com/nodejs/node/pull/14050)>
+* [[`7b369d12cf`](https://github.com/nodejs/node/commit/7b369d12cf)] - **async_hooks**: corregir el triggerAsyncId de nextTick predeterminado (Andreas Madsen) [#14026](https://github.com/nodejs/node/pull/14026)
 * [[`2eabd92639`](https://github.com/nodejs/node/commit/2eabd92639)] - **async_hooks**: reducir la duplicación con factory (Ruben Bridgewater) [#13755](https://github.com/nodejs/node/pull/13755)
-* [[`8f37f5dd01`](https://github.com/nodejs/node/commit/8f37f5dd01)] - **async_hooks**: id de apilamiento adecuado para Promesas (Anna Henningsen) [#13585](https://github.com/nodejs/node/pull/13585)
+* [[`8f37f5dd01`](https://github.com/nodejs/node/commit/8f37f5dd01)] - **async_hooks**: apilamiento de ids adecuado para Promesas (Anna Henningsen) [#13585](https://github.com/nodejs/node/pull/13585)
 * [[`3bb4ec80ae`](https://github.com/nodejs/node/commit/3bb4ec80ae)] - **(SEMVER-MINOR)** **async_hooks**: renombrar currentId y triggerId (Andreas Madsen) [#13490](https://github.com/nodejs/node/pull/13490)
-* [[`8b57b09c15`](https://github.com/nodejs/node/commit/8b57b09c15)] - ***Revert*** "**async_hooks**: solo configurar ganchos si se utiliza " (Trevor Norris) [#13509](https://github.com/nodejs/node/pull/13509)
+* [[`8b57b09c15`](https://github.com/nodejs/node/commit/8b57b09c15)] - ***Revertir*** "**async_hooks**: solo configurar ganchos si se utilizan" (Trevor Norris) [#13509](https://github.com/nodejs/node/pull/13509)
 * [[`a44260326c`](https://github.com/nodejs/node/commit/a44260326c)] - **(SEMVER-MINOR)** **async_hooks**: usar objetos de recursos para Promesas (Anna Henningsen) [#13452](https://github.com/nodejs/node/pull/13452)
 * [[`2122e2fe89`](https://github.com/nodejs/node/commit/2122e2fe89)] - **async_wrap**: usar kTotals para habilitar PromiseHook (Trevor Norris) [#13509](https://github.com/nodejs/node/pull/13509)
 * [[`96279e83e7`](https://github.com/nodejs/node/commit/96279e83e7)] - **async_wrap**: exponer la API de enable/disablePromiseHook (Anna Henningsen) [#13509](https://github.com/nodejs/node/pull/13509)
@@ -2422,7 +2422,7 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 * [[`3d0b66a7c2`](https://github.com/nodejs/node/commit/3d0b66a7c2)] - **benchmark,lib,test**: utilizar llaves para bloque multilínea (Rich Trott) [#13995](https://github.com/nodejs/node/pull/13995)
 * [[`bed13444b1`](https://github.com/nodejs/node/commit/bed13444b1)] - **buffer**: eliminar la comprobación de MAX_SAFE_INTEGER en longitud (Rich Trott) [#14131](https://github.com/nodejs/node/pull/14131)
 * [[`683f743e61`](https://github.com/nodejs/node/commit/683f743e61)] - **(SEMVER-MINOR)** **buffer**: soportar strings boxed y toPrimitive (James M Snell) [#13725](https://github.com/nodejs/node/pull/13725)
-* [[`7794030700`](https://github.com/nodejs/node/commit/7794030700)] - **(SEMVER-MINOR)** **buffer**: añadir el objeto "constants" (Anna Henningsen) [#13467](https://github.com/nodejs/node/pull/13467)
+* [[`7794030700`](https://github.com/nodejs/node/commit/7794030700)] - **(SEMVER-MINOR)** **buffer**: añadir el objeto de constantes (Anna Henningsen) [#13467](https://github.com/nodejs/node/pull/13467)
 * [[`1444601a57`](https://github.com/nodejs/node/commit/1444601a57)] - **build**: evitar que VsDevCmd.bat cambie cwd (Nikolai Vavilov) [#14303](https://github.com/nodejs/node/pull/14303)
 * [[`6b052e7c42`](https://github.com/nodejs/node/commit/6b052e7c42)] - **(SEMVER-MINOR)** **build**: añadir npx a los instaladores (Kat Marchán) [#14235](https://github.com/nodejs/node/pull/14235)
 * [[`922f58f8ca`](https://github.com/nodejs/node/commit/922f58f8ca)] - **build**: ejecutar test-hash-seed al final de test-v8 (Michaël Zasso) [#14219](https://github.com/nodejs/node/pull/14219)
@@ -2432,14 +2432,14 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 * [[`c972364848`](https://github.com/nodejs/node/commit/c972364848)] - **build**: eliminar la dependencia de la biblioteca de icu io (Ben Noordhuis) [#13656](https://github.com/nodejs/node/pull/13656)
 * [[`f2d7b803f1`](https://github.com/nodejs/node/commit/f2d7b803f1)] - **build**: limpiar config_fips.gypi (Daniel Bevenius) [#13837](https://github.com/nodejs/node/pull/13837)
 * [[`897405d62c`](https://github.com/nodejs/node/commit/897405d62c)] - **build,win**: omitir `vcvarsall.bat` si env está configurado (Refael Ackermann) [#13806](https://github.com/nodejs/node/pull/13806)
-* [[`dc0ae8be56`](https://github.com/nodejs/node/commit/dc0ae8be56)] - **build,win**: respetar la versión VS para la compilación de complementos (João Reis) [#13911](https://github.com/nodejs/node/pull/13911)
+* [[`dc0ae8be56`](https://github.com/nodejs/node/commit/dc0ae8be56)] - **build,win**: respetar la versión de VS para la compilación de complementos (João Reis) [#13911](https://github.com/nodejs/node/pull/13911)
 * [[`cd9ef939ba`](https://github.com/nodejs/node/commit/cd9ef939ba)] - **build,win**: usar la última versión de VS instalada por defecto (João Reis) [#13911](https://github.com/nodejs/node/pull/13911)
 * [[`79ead795b9`](https://github.com/nodejs/node/commit/79ead795b9)] - **build,windows**: restaurar DISTTYPEDIR (Refael Ackermann) [#13969](https://github.com/nodejs/node/pull/13969)
 * [[`949f7be5a0`](https://github.com/nodejs/node/commit/949f7be5a0)] - **build,windows**: implementar la detección de python PEP514 (Refael Ackermann) [#13900](https://github.com/nodejs/node/pull/13900)
 * [[`096080b69c`](https://github.com/nodejs/node/commit/096080b69c)] - **child_process**: refactorizar normalizeSpawnArguments() (Rich Trott) [#14149](https://github.com/nodejs/node/pull/14149)
 * [[`09eb58894e`](https://github.com/nodejs/node/commit/09eb58894e)] - **child_process**: corregir el manejo de NODE_HANDLE sin handles (Santiago Gimeno) [#13235](https://github.com/nodejs/node/pull/13235)
-* [[`16f2600ecf`](https://github.com/nodejs/node/commit/16f2600ecf)] - **child_process**: emitir mensajes IPC en el siguiente tick (cjihrig) [#13856](https://github.com/nodejs/node/pull/13856)
-* [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] - **(SEMVER-MINOR)** **cluster**: puerto de inspector superior (cornholio) [#14140](https://github.com/nodejs/node/pull/14140)
+* [[`16f2600ecf`](https://github.com/nodejs/node/commit/16f2600ecf)] - **child_process**: emitir mensajes IPC ante "next tick" (cjihrig) [#13856](https://github.com/nodejs/node/pull/13856)
+* [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] - **(SEMVER-MINOR)** **cluster**: anulación del puerto del inspector (cornholio) [#14140](https://github.com/nodejs/node/pull/14140)
 * [[`26f85e75f9`](https://github.com/nodejs/node/commit/26f85e75f9)] - **cluster**: eliminar "todo" obsoleto (Ruben Bridgewater) [#13734](https://github.com/nodejs/node/pull/13734)
 * [[`816f98f5d0`](https://github.com/nodejs/node/commit/816f98f5d0)] - **console**: usar un objeto plano para la pila de error (Ruben Bridgewater) [#13743](https://github.com/nodejs/node/pull/13743)
 * [[`932791063b`](https://github.com/nodejs/node/commit/932791063b)] - **(SEMVER-MINOR)** **deps**: revisar para mejorar la versión de npx (Kat Marchán) [#14235](https://github.com/nodejs/node/pull/14235)
@@ -2450,7 +2450,7 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 * [[`ebe7bb29aa`](https://github.com/nodejs/node/commit/ebe7bb29aa)] - **(SEMVER-MINOR)** **dns**: hacer que `dns.setServers` soporte un puerto personalizado (XadillaX) [#13723](https://github.com/nodejs/node/pull/13723)
 * [[`7df10f529d`](https://github.com/nodejs/node/commit/7df10f529d)] - **doc**: corregir la documentación de inspectPort en cluster.md (Anna Henningsen) [#14349](https://github.com/nodejs/node/pull/14349)
 * [[`7a116d4a60`](https://github.com/nodejs/node/commit/7a116d4a60)] - **doc**: añadir orientación sobre la prueba de nuevos errores (Michael Dawson) [#14207](https://github.com/nodejs/node/pull/14207)
-* [[`6f13d7da67`](https://github.com/nodejs/node/commit/6f13d7da67)] - **doc**: moverel enlace LTS README para aumentar la prominencia (Gibson Fahnestock) [#14259](https://github.com/nodejs/node/pull/14259)
+* [[`6f13d7da67`](https://github.com/nodejs/node/commit/6f13d7da67)] - **doc**: mover el enlace de LTS README para aumentar su prominencia (Gibson Fahnestock) [#14259](https://github.com/nodejs/node/pull/14259)
 * [[`c0703f0d4c`](https://github.com/nodejs/node/commit/c0703f0d4c)] - **(SEMVER-MINOR)** **doc**: correcciones en cluster.md (cornholio) [#14140](https://github.com/nodejs/node/pull/14140)
 * [[`e91a7a447d`](https://github.com/nodejs/node/commit/e91a7a447d)] - **doc**: actualizar umask para mayor claridad (James Sumners) [#14170](https://github.com/nodejs/node/pull/14170)
 * [[`157ef23fc3`](https://github.com/nodejs/node/commit/157ef23fc3)] - **doc**: añadir aviso sobre la opción useGlobal en los documentos de repl (starkwang) [#13866](https://github.com/nodejs/node/pull/13866)
@@ -2458,7 +2458,7 @@ Muchas gracias a @addaleax que preparó la gran mayoría de este lanzamiento.
 * [[`eb90ad61fb`](https://github.com/nodejs/node/commit/eb90ad61fb)] - **doc**: añadir espacio faltante (Timothy Gu) [#14181](https://github.com/nodejs/node/pull/14181)
 * [[`01b98a769f`](https://github.com/nodejs/node/commit/01b98a769f)] - **doc**: eliminadas las menciones redundantes a los códigos de error (jklepatch) [#13627](https://github.com/nodejs/node/pull/13627)
 * [[`575dcdcf0e`](https://github.com/nodejs/node/commit/575dcdcf0e)] - **doc**: corregir stream Dúplex en el doc de allowHalfOpen (Rich Trott) [#14127](https://github.com/nodejs/node/pull/14127)
-* [[`cfa5e0c3b6`](https://github.com/nodejs/node/commit/cfa5e0c3b6)] - **doc**: notar las condiciones del evento 'resize' en Windows (Dean Coakley) [#13576](https://github.com/nodejs/node/pull/13576)
+* [[`cfa5e0c3b6`](https://github.com/nodejs/node/commit/cfa5e0c3b6)] - **doc**: hacer notar las condiciones del evento 'resize' en Windows (Dean Coakley) [#13576](https://github.com/nodejs/node/pull/13576)
 * [[`217e1dc7b1`](https://github.com/nodejs/node/commit/217e1dc7b1)] - **doc**: corregir error en http.md (Moogen Tian) [#14126](https://github.com/nodejs/node/pull/14126)
 * [[`32ddb666b6`](https://github.com/nodejs/node/commit/32ddb666b6)] - **doc**: match debugger output & instructions to master behavior (Jan Krems) [#13885](https://github.com/nodejs/node/pull/13885)
 * [[`9e6a4d6e27`](https://github.com/nodejs/node/commit/9e6a4d6e27)] - **doc**: add documentation on ICU (Timothy Gu) [#13916](https://github.com/nodejs/node/pull/13916)
