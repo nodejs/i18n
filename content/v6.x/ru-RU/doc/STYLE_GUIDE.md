@@ -7,7 +7,7 @@
 * Форматирование, описанное в `.editorconfig`, является предпочтительным. 
   * [plugin](http://editorconfig.org/#download) доступен для некоторых редакторов, чтобы автоматически применять эти правила.
 * Механические проблемы, такие как орфография и грамматика, должны определяться инструментами (tools), насколько это возможно. Если не обнаружены с помощью инструмента, они должны быть отмечены рецензентами.
-* Предпочтительна американская орфография английского языка. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Предпочтительна американская орфография английского языка. "Capitalize" против "Capitalise", "color" против "colour", и т. д.
 * Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
