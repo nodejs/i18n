@@ -339,9 +339,9 @@ added: v9.4.0
 
 * `"code"` {number} Un codice d'errore HTTP/2
 * `"lastStreamID"` {number} L'ID numerico dell'ultimo `"Http2Stream"` elaborato
-* `opaqueData` {Buffer|TypedArray|DataView} A `TypedArray` or `DataView` instance containing additional data to be carried within the `GOAWAY` frame.
+* `"opaqueData"` {Buffer|TypedArray|DataView} Un'istanza `"TypedArray"` o `"DataView"` contenente dati aggiuntivi da trasportare all'interno del frame `"GOAWAY"`.
 
-Transmits a `GOAWAY` frame to the connected peer *without* shutting down the `Http2Session`.
+Trasmette un frame `"GOAWAY"` al peer connesso *senza* spegnere la `"Http2Session"`.
 
 #### http2session.localSettings
 
@@ -351,7 +351,7 @@ added: v8.4.0
 
 * {HTTP/2 Settings Object}
 
-A prototype-less object describing the current local settings of this `Http2Session`. The local settings are local to *this* `Http2Session` instance.
+Un oggetto senza prototipo che descrive le attuali impostazioni locali di `"Http2Session"`. Le impostazioni locali sono locali per *questa* istanza `"Http2Session"`.
 
 #### http2session.originSet
 
@@ -361,7 +361,7 @@ added: v9.4.0
 
 * {string[]|undefined}
 
-If the `Http2Session` is connected to a `TLSSocket`, the `originSet` property will return an `Array` of origins for which the `Http2Session` may be considered authoritative.
+Se `"Http2Session"` è connesso a `"TLSSocket"`, la proprietà `"originSet"` restituirà una `matrice` di origini per cui `"Http2Session"` può essere considerata autorevole.
 
 #### http2session.pendingSettingsAck
 
@@ -371,7 +371,7 @@ added: v8.4.0
 
 * {boolean}
 
-Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Will be `false` once all sent SETTINGS frames have been acknowledged.
+Indica se `"Http2Session"` è attualmente in attesa di un riconoscimento per un frame `"SETTINGS"` inviato. Sarà `"true"` dopo aver chiamato il metodo `"http2session.settings()"`. Sarà `falso` una volta che tutti i frame di IMPOSTAZIONI inviati sono stati riconosciuti.
 
 #### http2session.ping([payload, ]callback)
 
@@ -379,15 +379,15 @@ Indicates whether or not the `Http2Session` is currently waiting for an acknowle
 added: v8.9.3
 -->
 
-* `payload` {Buffer|TypedArray|DataView} Optional ping payload.
+* `"payload"` {Buffer|TypedArray|DataView} "Payload ping" facoltativo.
 * `callback` {Function}
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
+Invia un frame `"PING"` al peer HTTP/2 connesso. È necessario fornire una funzione `"callback"`. Il metodo restituirà `"true"` se è stato inviato il `"PING"`, altrimenti restituirà `"false"`.
 
-The maximum number of outstanding (unacknowledged) pings is determined by the `maxOutstandingPings` configuration option. The default maximum is 10.
+Il numero massimo di ping in sospeso (non riconosciuti) è determinato dall'opzione di configurazione `maxOutstandingPings`. Il massimo di default è 10.
 
-If provided, the `payload` must be a `Buffer`, `TypedArray`, or `DataView` containing 8 bytes of data that will be transmitted with the `PING` and returned with the ping acknowledgment.
+Se fornito, il `"payload"` deve essere un `"Buffer"`, `"TypedArray"` o `"DataView"` contenenti 8 byte di dati che saranno trasmessi con il `"PING"` e restituiti con il riconoscimento ping.
 
 The callback will be invoked with three arguments: an error argument that will be `null` if the `PING` was successfully acknowledged, a `duration` argument that reports the number of milliseconds elapsed since the ping was sent and the acknowledgment was received, and a `Buffer` containing the 8-byte `PING` payload.
 
