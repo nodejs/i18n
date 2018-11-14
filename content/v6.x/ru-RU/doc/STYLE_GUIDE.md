@@ -21,8 +21,8 @@
 * Документы должны начинаться с заголовка первого уровня. Пример документа будет прикреплен здесь в конечном итоге.
 * Предпочтительно прикреплять ссылки, а не встраивать - предпочтение `[a link][]` к `[a link](http://example.com)`.
 * При документировании API, обратите внимание, когда была предоставлена версия API в конце раздела. Если API устарел, обратите также внимание на первую версию, в которой устаревший API появился.
-* When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Including assets: 
+* При использовании тире, используйте [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" или `Option+Shift+"-"` на macOS), окруженный пробелами, согласно с [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
+* Включая активы: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
   * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
