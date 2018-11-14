@@ -2348,7 +2348,7 @@ Puede encontrar información más detallada sobre las diferencias de rendimiento
 * [[`32259421ca`](https://github.com/nodejs/node/commit/32259421ca)] - **url**: actualizar el comportamiento de sort() sin parámetros (Timothy Gu) [#14185](https://github.com/nodejs/node/pull/14185)
 * [[`9a3fc10dd4`](https://github.com/nodejs/node/commit/9a3fc10dd4)] - **(SEMVER-MINOR)** **util**: implementar la API de Codificación Estándar de WHATWG (James M Snell) [#13644](https://github.com/nodejs/node/pull/13644)
 * [[`f593960d35`](https://github.com/nodejs/node/commit/f593960d35)] - **util**: refactorizar módulo "util" (James M Snell) [#13803](https://github.com/nodejs/node/pull/13803)
-* [[`357873ddb0`](https://github.com/nodejs/node/commit/357873ddb0)] - **(SEMVER-MINOR)** **v8**: corregir el de desbordamiento de pila en método recursivo (Ben Noordhuis) [#14004](https://github.com/nodejs/node/pull/14004)
+* [[`357873ddb0`](https://github.com/nodejs/node/commit/357873ddb0)] - **(SEMVER-MINOR)** **v8**: corregir el desbordamiento de pila en método recursivo (Ben Noordhuis) [#14004](https://github.com/nodejs/node/pull/14004)
 * [[`a8132943c5`](https://github.com/nodejs/node/commit/a8132943c5)] - **zlib**: corregir el colapso cuando falla la inicialización (Anna Henningsen) [#14666](https://github.com/nodejs/node/pull/14666)
 * [[`e529914e70`](https://github.com/nodejs/node/commit/e529914e70)] - **zlib**: corregir la interacción de la descarga y needDrain (Anna Henningsen) [#14527](https://github.com/nodejs/node/pull/14527)
 
