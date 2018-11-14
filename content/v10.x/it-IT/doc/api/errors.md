@@ -99,7 +99,7 @@ Gli sviluppatori devono fare riferimento alla documentazione di ogni metodo per 
 
 <!--type=misc-->
 
-La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modelli idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come un argomento. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` (se presente) passato come primo argomento. Se non è stato generato alcun errore, il primo argomento verrà passato come `null`.
+La maggior parte dei metodi asincroni esposti dalla core API di Node.js seguono un modello idiomatico denominato *error-first callback* (a volte indicato anche come *Node.js style callback*). Con questo modello, una funzione callback viene passata al metodo come un argomento. Quando l'operazione è completata oppure viene generato un errore, la funzione di callback viene chiamata con l'oggetto `Error` passato come primo argomento (se presente). Se non è stato generato alcun errore, il primo argomento verrà passato come `null`.
 
 ```js
 const fs = require('fs');
