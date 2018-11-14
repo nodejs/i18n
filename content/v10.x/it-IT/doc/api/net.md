@@ -763,15 +763,16 @@ Pseudonimo per [`net.createConnection(port[, host][, connectListener])`][`net.cr
 
 Una funzione factory, che crea un nuovo [`net.Socket`][], avvia immediatamente la connessione con [`socket.connect()`][], quindi restituisce il `net.Socket` che avvia la connessione.
 
-Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. L'ultimo parametro `connectListener<code>, se fornito,
+verrà aggiunto <strong>una volta</strong> come listener per l'evento [<0>'connect'`][].
 
-Possible signatures:
+Possibili firme:
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
-* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
+* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] per le connessioni [IPC](#net_ipc_support).
+* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] per le connessioni TPC.
 
-The [`net.connect()`][] function is an alias to this function.
+La funzione [`net.connect()`][] è un pseudonimo di questa funzione.
 
 ### net.createConnection(options[, connectListener])
 
@@ -779,13 +780,13 @@ The [`net.connect()`][] function is an alias to this function.
 added: v0.1.90
 -->
 
-* `options` {Object} Required. Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
+* `options` {Object} Richiesto. Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
 * `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
 For available options, see [`new net.Socket([options])`][`new net.Socket(options)`] and [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
-Additional options:
+Opzioni aggiuntive:
 
 * `timeout` {number} If set, will be used to call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
 
