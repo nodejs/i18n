@@ -1052,7 +1052,7 @@ input.on('readable', () => {
 });
 ```
 
-### crypto.createHmac(algoritmo, clave)
+### crypto.createHmac(algorithm, key)
 
 <!-- YAML
 added: v0.1.94
