@@ -25,7 +25,7 @@
 * Включая активы: 
   * Если вы хотите добавить иллюстрацию или целую программу, добавьте ее к соответствующему подкаталогу в `assets/` dir.
   * Ссылка на это так: `[Asset](/assets/{subdir}/{filename})` для файловых активов, и `![Asset](/assets/{subdir}/{filename})` для активов образов.
-  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
+  * Для иллюстраций предпочтительней SVG другим активам. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
 * For code blocks: 
   * Use language aware fences. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
