@@ -1659,11 +1659,11 @@ added: v6.6.0
 - `a` {Buffer | TypedArray | DataView}
 - `b` {Buffer | TypedArray | DataView}
 
-Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin perder información que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resumenes de HMAC o los valores secretis como cookies de autenticacion o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin filtrar información sobre el tiempo que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
 
-*Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Debe tener cuidado al asegurarse que el código cercano no introduce vulnerabilidades de tiempo.
+*Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
 
 ## Notes
 
