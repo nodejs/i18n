@@ -389,7 +389,7 @@ added: v6.0.0
   * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su`'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
 * Restituisce: {Object}
 
-Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. Su Windows, i campi `uid` e `gid` sono `-1`, e `shell` è `null`.
 
 The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
