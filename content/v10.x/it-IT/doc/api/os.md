@@ -4,7 +4,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `os` fornisce numerosi metodi di utilità relativi al sistema operativo. Ci si può accedere utilizzando:
+Il modulo `os` fornisce un numero di metodi di utilità relativi al sistema operativo. Ci si può accedere utilizzando:
 
 ```js
 const os = require('os');
@@ -35,7 +35,7 @@ Il metodo `os.arch()` restituisce una stringa che identifica l'architettura dell
 
 I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Il modulo `os` fornisce numerosi metodi di utilità relativi al sistema operativo.
+Equivalente a [`process.arch`][].
 
 ## os.constants
 
@@ -55,7 +55,7 @@ added: v0.3.3
 
 * Restituisce: {Object[]}
 
-Il metodo `os.cpus()` restituisce una matrice di oggetti contenenti informazioni su ciascun core della CPU logica.
+Il metodo `os.cpus()` restituisce una matrice di oggetti contenenti informazioni riguardo a ciascun core della CPU logica.
 
 Le proprietà incluse in ogni oggetto includono:
 
