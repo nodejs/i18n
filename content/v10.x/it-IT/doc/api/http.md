@@ -115,9 +115,9 @@ Produce un socket/stream da utilizzare per le richieste HTTP.
 
 Di default, questa funzione è la stessa di [`net.createConnection()`][]. Tuttavia, gli agenti personalizzati possono sovrascrivere questo metodo nel caso in cui si desideri una maggiore flessibilità.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Un socket/stream può essere fornito in due modi: restituendo il socket/stream da questa funzione, o passando il socket/stream al `callback`.
 
-`callback` has a signature of `(err, stream)`.
+`callback` ha una firma di `(err, stream)`.
 
 ### agent.keepSocketAlive(socket)
 
@@ -127,7 +127,7 @@ added: v8.1.0
 
 * `socket` {net.Socket}
 
-Called when `socket` is detached from a request and could be persisted by the `Agent`. Default behavior is to:
+Chiamato quando il `socket` è scollegato da una richiesta e potrebbe essere mantenuto dall'`Agent`. Il comportamento predefinito è:
 
 ```js
 socket.setKeepAlive(true, this.keepAliveMsecs);
@@ -135,7 +135,7 @@ socket.unref();
 return true;
 ```
 
-This method can be overridden by a particular `Agent` subclass. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
 
 ### agent.reuseSocket(socket, request)
 
