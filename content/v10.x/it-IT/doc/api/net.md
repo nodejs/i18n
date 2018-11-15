@@ -856,11 +856,11 @@ Crea un nuovo server TPC o [IPC](#net_ipc_support).
 * `connectionListener` {Function} Imposta automaticamente come listener per l'evento [`'connection'`][].
 * Restituisce: {net.Server}
 
-Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi l'evento [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
+Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi gli eventi [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
 
-Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata verrà messo in pausa e nessun dato verrà letto dal suo handle. Ciò consente alle connessioni di essere passate tra processi senza che nessun dato sia letto dal processo originale. Per iniziare a leggere i dati da un socket messo in pausa, chiamare [`socket.resume()`][].
+Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata, quindi, verrà messo in pausa e nessun dato verrà letto dal suo handle. Questo permette alle connessioni di essere passate tra i processi senza che nessun dato venga letto dal processo originale. Per iniziare la lettura dei dati da un socket messo in pausa, chiamare [`socket.resume()`][].
 
-Il server può essere un server TCP o un server [IPC](#net_ipc_support),ciò dipende a che cosa esso (fa ascoltare) [`listen()`] il [`server.listen()`].
+Il server può essere un server TCP o un server [IPC](#net_ipc_support), in base a che cosa esso (fa ascoltare) [`listen()`] il [`server.listen()`].
 
 Ecco un esempio di un server echo TCP che ascolta le connessioni sulla porta 8124:
 
@@ -883,13 +883,13 @@ server.listen(8124, () => {
 });
 ```
 
-Provalo utilizzando `telnet`:
+Prova questo utilizzando `telnet`:
 
 ```console
 $ telnet localhost 8124
 ```
 
-Per eseguire il listening sul socket `/tmp/echo.sock` la terza riga a partire dall'ultimo sarebbe stata appena cambiato per:
+Per eseguire il listening sul socket `/tmp/echo.sock` la terza riga a partire dall'ultima sarebbe stata appena modificata in:
 
 ```js
 server.listen('/tmp/echo.sock', () => {
