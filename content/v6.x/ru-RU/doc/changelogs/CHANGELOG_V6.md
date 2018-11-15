@@ -4668,7 +4668,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * REPL 
   * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
   * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
-* Timers 
+* Таймеры 
   * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams 
   * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
