@@ -173,12 +173,12 @@ added: v0.9.4
 
 * Restituisce: {string}
 
-Il metodo`os.endianness()` restituisce una stringa che identifica l'endianità del CPU *per cui il binario Node.js è stato compilato*.
+Il metodo`os.endianness()` restituisce una stringa che identifica l'ordine dei byte del CPU *per cui il binario Node.js è stato compilato*.
 
 I valori possibili sono:
 
-* `'BE'` for big endian
-* `'LE'` for little endian.
+* `'BE'` per big endian
+* `'LE'` per little endian.
 
 ## os.freemem()
 
@@ -186,9 +186,9 @@ I valori possibili sono:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
+Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come numero intero.
 
 ## os.homedir()
 
@@ -196,9 +196,9 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.homedir()` method returns the home directory of the current user as a string.
+Il metodo `os.homedir()` restituisce la directory home dell'utente corrente come una stringa.
 
 ## os.hostname()
 
@@ -206,9 +206,9 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+Il metodo `os.hostname()` restituisce l'hostname del sistema operativo come una stringa.
 
 ## os.loadavg()
 
@@ -216,13 +216,13 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Returns: {number[]}
+* Restituisce: {number[]}
 
-The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
+Il metodo `os.loadavg()` restituisce un array contenente le medie di caricamento di 1, 5 e 15 minuti.
 
-The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+La media di caricamento è una misura dell'attività del sistema, calcolata dal sistema operativo ed espressa come un numero frazionario. Come regola generale, la medi di caricamento dovrebbe idealmente essere inferiore al numero di CPU logiche nel sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+La media del caricamento è un concetto specifico UNIX che non ha equivalenti reali sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
@@ -230,7 +230,7 @@ The load average is a UNIX-specific concept with no real equivalent on Windows p
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
