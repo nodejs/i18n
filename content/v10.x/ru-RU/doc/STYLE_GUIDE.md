@@ -41,7 +41,7 @@
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
   * Например: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
-* Function returns should use the following format: 
+* Функция обратной связи должна иметь следующий формат: 
   * `* Returns: {type|type2} Optional description.`
   * Например: `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
