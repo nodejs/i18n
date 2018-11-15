@@ -36,7 +36,7 @@
 * Параметры функций и свойства объекта должны использовать следующий формат: 
   * `* \<code>name` {type|type2} Дополнительное описание. **Default:** `defaultValue`</code>
   * Например, `* <code>byteOffset` {integer} Индекс первого байта для отображения. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+  * `тип` должен ссылаться на тип Node.js или [тип JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
