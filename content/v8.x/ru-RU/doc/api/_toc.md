@@ -1,7 +1,7 @@
 @// NB(chrisdickinson): Если вы перемещаете этот файл, обязательно обновите tools/doc/html.js до @// в месте нового расположения.
 
 * [Об этих документах](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Примеры использования &](synopsis.html)
 
 <div class="line"></div>
 
