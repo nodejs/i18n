@@ -3223,16 +3223,16 @@ Parche de Semver:
 
 <a id="6.6.0"></a>
 
-## 2016-09-14, Version 6.6.0 (Current), @Fishrock123
+## 2016-09-14, Versión 6.6.0 (Current), @Fishrock123
 
-### Notable changes
+### Cambios notables
 
-* **crypto**: Added `crypto.timingSafeEqual()`. (not-an-aardvark) [#8304](https://github.com/nodejs/node/pull/8304)
-* **events**: Made the "max event listeners" memory leak warning more accessible. (Anna Henningsen) [#8298](https://github.com/nodejs/node/pull/8298)
-* **promises**: Unhandled rejections now emit a [process warning](https://nodejs.org/dist/latest-v6.x/docs/api/process.html#process_event_warning) after the first tick. (Benjamin Gruenbaum) [#8223](https://github.com/nodejs/node/pull/8223)
-* **repl**: Added auto alignment for `.editor` mode. (Prince J Wesley) [#8241](https://github.com/nodejs/node/pull/8241)
-* **util**: Some functionality has been added to `util.inspect()`: 
-  * Returning `this` from a custom inspect function now works. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
+* **crypto**: Se añadió `crypto.timingSafeEqual()`. (not-an-aardvark) [#8304](https://github.com/nodejs/node/pull/8304)
+* **events**: Hacer a la advertencia de fuga de memoria de "max event listeners" más accesible. (Anna Henningsen) [#8298](https://github.com/nodejs/node/pull/8298)
+* **promises**: Rechazos no manejados ahora emiten una [process warning](https://nodejs.org/dist/latest-v6.x/docs/api/process.html#process_event_warning) después del primer tick. (Benjamin Gruenbaum) [#8223](https://github.com/nodejs/node/pull/8223)
+* **repl**: Se añadió alineación automática para el modo de `.editor`. (Prince J Wesley) [#8241](https://github.com/nodejs/node/pull/8241)
+* **util**: Alguna funcionalidad ha sido añadida a `util.inspect()`: 
+  * Devolver `this` de una función de inspección personalizada ahora funciona. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
   * Added support for Symbol-based custom inspection methods. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
 
 ### Commits
