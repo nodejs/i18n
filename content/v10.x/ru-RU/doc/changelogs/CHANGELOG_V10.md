@@ -283,7 +283,7 @@
   * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
   * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
   * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Timers 
+* Таймеры 
   * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS 
   * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
