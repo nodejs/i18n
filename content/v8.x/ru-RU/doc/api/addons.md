@@ -12,7 +12,7 @@ Node.js Addons are dynamically-linked shared objects, written in C++, that can b
 
 * Внутренние библиотеки Node.js. Node.js сам экспортирует некоторое количество API C++, которое расширения могут использовать &mdash;, наиболее важным из которых является класс `node::ObjectWrap`.
 
-* Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Только символы V8 и OpenSSL целенаправленно реэкспортированы Node.js и могут быть использованы расширениями для различных областей. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Только символы V8 и OpenSSL целенаправленно реэкспортированы Node.js и могут быть использованы расширениями для различных областей. Для дополнительной информации смотрите [Связь с зависимостями Node.js](#addons_linking_to_node_js_own_dependencies).
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
