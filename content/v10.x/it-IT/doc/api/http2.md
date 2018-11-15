@@ -91,7 +91,7 @@ Le istanze della classe `"http2.Http2Session"` rappresentano un'attiva sessione 
 
 Ogni istanza `"Http2Session"` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `"http2session.type"` può essere utilizzata per determinare la modalità in cui una `"Http2Session"` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `"Http2Session"`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `"Http2Server"` o `"Http2Stream"`.
 
-#### `"Http2Session"` ed i Sockets
+#### `"Http2Session"` ed i Socket
 
 Ogni istanza `"Http2Session"` è associata esattamente ad una [`"net.Socket"`] [] o [`"tls.TLSSocket"`] [] quando viene creata. Quando o il `Socket` o la `"Http2Session"` vengono distrutti, entrambi verranno distrutti.
 
@@ -113,7 +113,7 @@ L'evento `'close'` viene emesso quando la `"Http2Session"` è stata distrutta. I
 added: v8.4.0
 -->
 
-* `sessione` {Http2Session}
+* `session` {Http2Session}
 * `socket` {net.Socket}
 
 L'evento `'connect'` viene emesso quando la `"Http2Session"` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
