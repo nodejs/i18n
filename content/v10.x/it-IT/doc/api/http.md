@@ -241,7 +241,7 @@ Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object r
 
 Durante l'evento [`'response'`][], è possibile aggiungere listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
-Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
 
 Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
