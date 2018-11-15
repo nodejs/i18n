@@ -3233,11 +3233,11 @@ Parche de Semver:
 * **repl**: Se añadió alineación automática para el modo de `.editor`. (Prince J Wesley) [#8241](https://github.com/nodejs/node/pull/8241)
 * **util**: Alguna funcionalidad ha sido añadida a `util.inspect()`: 
   * Devolver `this` de una función de inspección personalizada ahora funciona. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
-  * Added support for Symbol-based custom inspection methods. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
+  * Se añadió soporte para métodos de inspección personalizada de Symbol-based. (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
 
 ### Commits
 
-* [[`2ecc8c4c23`](https://github.com/nodejs/node/commit/2ecc8c4c23)] - **async_wrap**: add a missing case to test-async-wrap-throw-no-init (yorkie) [#8198](https://github.com/nodejs/node/pull/8198)
+* [[`2ecc8c4c23`](https://github.com/nodejs/node/commit/2ecc8c4c23)] - **async_wrap**: añadir un caso faltante a test-async-wrap-throw-no-init (yorkie) [#8198](https://github.com/nodejs/node/pull/8198)
 * [[`00f4bc3105`](https://github.com/nodejs/node/commit/00f4bc3105)] - **benchmark**: add benches for fs.stat & fs.statSync (Anna Henningsen) [#8338](https://github.com/nodejs/node/pull/8338)
 * [[`7cc1391287`](https://github.com/nodejs/node/commit/7cc1391287)] - **benchmark**: fix off-by-one error in fs benchmarks (Anna Henningsen) [#8338](https://github.com/nodejs/node/pull/8338)
 * [[`6e3db283ed`](https://github.com/nodejs/node/commit/6e3db283ed)] - **buffer**: fix ArrayBuffer checks (Brian White) [#8453](https://github.com/nodejs/node/pull/8453)
