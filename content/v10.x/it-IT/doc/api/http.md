@@ -146,13 +146,13 @@ added: v8.1.0
 * `socket` {net.Socket}
 * `request` {http.ClientRequest}
 
-Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Default behavior is to:
+Chiamato quando il `socket` è collegato alla `request` dopo essere stato mantenuto a causa delle opzioni keep-alive. Il comportamento predefinito è:
 
 ```js
 socket.ref();
 ```
 
-This method can be overridden by a particular `Agent` subclass.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`.
 
 ### agent.destroy()
 
@@ -160,9 +160,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Distruggi qualsiasi socket attualmente utilizzato dall'agente.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Solitamente non è necessario farlo. Tuttavia, se si utilizza un agente con `keepAlive` attivato, è preferibile arrestare esplicitamente l'agente quando non verrà più utilizzato. In caso contrario, i socket potrebbero rimanere aperti per un periodo piuttosto lungo prima che il server li interrompa.
 
 ### agent.freeSockets
 
@@ -172,7 +172,7 @@ added: v0.11.4
 
 * {Object}
 
-An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+Un object che contiene array di socket attualmente in attesa di utilizzo da parte dell'agente quando `keepAlive` è abilitato. Non modificare.
 
 ### agent.getName(options)
 
@@ -180,9 +180,9 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `options` {Object} A set of options providing information for name generation 
-  * `host` {string} A domain name or IP address of the server to issue the request to
-  * `port` {number} Port of remote server
+* `options` {Object} Un set di opzioni che forniscono informazioni per la generazione del nome 
+  * `host` {string} Un nome di dominio o un indirizzo IP del server a cui inviare la richiesta
+  * `port` {number} Porta del server remoto
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
 * Returns: {string}
