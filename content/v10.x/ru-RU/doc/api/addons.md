@@ -20,13 +20,13 @@ All of the following examples are available for [download](https://github.com/no
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Пример "Hello world" - простое расширение, написанное на C++, что является эквивалентом следующего кода JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Во-первых, создайте файл `hello.cc`:
 
 ```cpp
 // hello.cc
