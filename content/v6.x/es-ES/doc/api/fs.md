@@ -223,7 +223,7 @@ Please note that `atime`, `mtime`, `birthtime`, and `ctime` are instances of [`D
 
 ### Stat Time Values
 
-The times in the stat object have the following semantics:
+Los tiempos en el objeto de estadística tienen la siguiente semántica:
 
 * `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
 * `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
@@ -1122,7 +1122,7 @@ added: v5.10.0
 * `options` {string|Object} 
   * `encoding` {string} default = `'utf8'`
 
-The synchronous version of [`fs.mkdtemp()`][]. Returns the created folder path.
+La versión sincrónica de [`fs.mkdtemp()`][]. Returns the created folder path.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
@@ -1549,7 +1549,7 @@ added: v0.8.6
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncate()` is called.
+Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. Un descriptor de archivos también puede ser pasado como el primer argumento. In this case, `fs.ftruncate()` is called.
 
 ## fs.truncateSync(path, len)
 
@@ -1735,7 +1735,7 @@ fs.watchFile('message.text', (curr, prev) => {
 });
 ```
 
-These stat objects are instances of `fs.Stat`.
+Estos objetos de estadística son instancias de `fs.Stat`.
 
 If you want to be notified when the file was modified, not just accessed, you need to compare `curr.mtime` and `prev.mtime`.
 
