@@ -48,4 +48,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Отслеживание проблем](https://github.com/nodejs/node)
-* [Mailing List](http://groups.google.com/group/nodejs)
+* [Список рассылки](http://groups.google.com/group/nodejs)
