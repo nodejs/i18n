@@ -163,7 +163,7 @@ Le proprietà incluse in ogni oggetto includono:
 ]
 ```
 
-Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+Perché i valori di `nice` sono specifiche di UNIX, su Windows i valori `nice` di tutto i processori sono sempre 0.
 
 ## os.endianness()
 
@@ -171,11 +171,11 @@ Because `nice` values are UNIX-specific, on Windows the `nice` values of all pro
 added: v0.9.4
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+Il metodo`os.endianness()` restituisce una stringa che identifica l'endianità del CPU *per cui il binario Node.js è stato compilato*.
 
-Possible values are:
+I valori possibili sono:
 
 * `'BE'` for big endian
 * `'LE'` for little endian.
