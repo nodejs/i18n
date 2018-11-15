@@ -41,18 +41,18 @@
 * [REPL](repl.html)
 * [Стрим](stream.html)
 * [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Таймеры](timers.html)
 * [TLS/SSL](tls.html)
 * [Tracing](tracing.html)
 * [TTY](tty.html)
-* [UDP/Datagram](dgram.html)
+* [UDP/Датаграмма](dgram.html)
 * [URL](url.html)
-* [Utilities](util.html)
+* [Утилиты](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [GitHub Repo & Отслеживание проблем](https://github.com/nodejs/node)
+* [Список рассылки](https://groups.google.com/group/nodejs)
