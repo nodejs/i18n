@@ -3018,7 +3018,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **Process**
+* **Процесс**
   
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] [#12725](https://github.com/nodejs/node/pull/12725).
