@@ -723,7 +723,7 @@ Restituisce `true ` se l'intero i dati sono stati scaricati con successo nel ker
 
 Il parametro facoltativo `callback` verrà eseguito quando i dati saranno finalmente scritti - questo potrebbe non essere immediato.
 
-See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
+Per ulteriori informazioni, vedi il metodo `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
 ## net.connect() 
 
@@ -852,12 +852,12 @@ added: v0.5.0
 Crea un nuovo server TPC o [IPC](#net_ipc_support).
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
-* `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Returns: {net.Server}
+  * `allowHalfOpen`{boolean} Indica se sono consentite le connessioni TPC semi-aperte. **Default:** `false`.
+  * `pauseOnConnect` {boolean} indica se il socket deve essere messo in pausa sulle connessioni in entrata. **Default:** `false`.
+* `connectionListener` {Function} Imposta automaticamente come listener per l'evento [`'connection'`][].
+* Restituisce: {net.Server}
 
-If `allowHalfOpen` is set to `true`, when the other end of the socket sends a FIN packet, the server will only send a FIN packet back when [`socket.end()`][] is explicitly called, until then the connection is half-closed (non-readable but still writable). See [`'end'`][] event and [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13) for more information.
+Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi l'evento [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
 
 If `pauseOnConnect` is set to `true`, then the socket associated with each incoming connection will be paused, and no data will be read from its handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
 
