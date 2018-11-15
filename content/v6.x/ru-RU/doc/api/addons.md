@@ -14,17 +14,17 @@
 
 * Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Только символы V8 и OpenSSL целенаправленно реэкспортированы Node.js и могут быть использованы расширениями для различных областей. Для дополнительной информации смотрите [Связь с зависимостями Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as a starting-point for your own Addon.
+Все следующие примеры доступны для [загрузки](https://github.com/nodejs/node-addon-examples) и могут быть использованы как отправная точка для вашего собственного расширения.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Пример "Hello world" - простое расширение, написанное на C++, что является эквивалентом следующего кода JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Во-первых, создайте файл `hello.cc`:
 
 ```cpp
 // hello.cc
