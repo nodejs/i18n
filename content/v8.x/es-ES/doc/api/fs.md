@@ -367,7 +367,7 @@ Emitted when the WriteStream's file is opened.
 added: v0.4.7
 -->
 
-The number of bytes written so far. Does not include data that is still queued for writing.
+El número de bytes escritos hasta ahora. Does not include data that is still queued for writing.
 
 ### writeStream.path
 
@@ -665,7 +665,7 @@ changes:
 
 Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
 
-See also: chmod(2)
+Vea también: chmod(2)
 
 ### File modes
 
@@ -719,7 +719,7 @@ changes:
 
 Synchronously changes the permissions of a file. Returns `undefined`. This is the synchronous version of [`fs.chmod()`][].
 
-See also: chmod(2)
+Vea también: chmod(2)
 
 ## fs.chown(path, uid, gid, callback)
 
@@ -1287,7 +1287,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). For example,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1379,7 +1379,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
+lchmod(2) asincrónico. No arguments other than a possible exception are given to the completion callback.
 
 Only available on macOS.
 
@@ -1528,7 +1528,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously creates a directory. No arguments other than a possible exception are given to the completion callback. `mode` defaults to `0o777`.
+Crea un directorio de manera asincrónica. No arguments other than a possible exception are given to the completion callback. `mode` defaults to `0o777`.
 
 See also: mkdir(2)
 
@@ -1547,7 +1547,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Synchronously creates a directory. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
 
 See also: mkdir(2)
 
@@ -1789,7 +1789,7 @@ changes:
   * `err` {Error}
   * `files` {string[]|Buffer[]}
 
-Asynchronous readdir(3). Reads the contents of a directory. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
+Asynchronous readdir(3). Lee los contenidos de un directorio. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
 
@@ -2426,7 +2426,7 @@ The `fs.watch` API is not 100% consistent across platforms, and is unavailable i
 
 The recursive option is only supported on macOS and Windows.
 
-#### Availability
+#### Disponibilidad
 
 <!--type=misc-->
 
