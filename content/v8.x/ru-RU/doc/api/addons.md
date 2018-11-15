@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Они преимущественно используются для предоставления интерфейса между JavaScript, выполняемого в Node.js, и библиотеками C/C++.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
 
