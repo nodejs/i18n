@@ -719,13 +719,13 @@ added: v0.1.90
 
 Invia dati sul socket. Il secondo parametro specifica la codifica nel file in caso di una stringa - come predefinito per UTF8 encoding.
 
-Restituisce `true ` se il dato intero è stato scaricato con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
+Restituisce `true ` se i dati interi sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti i dati o una parte sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
 
 Il parametro facoltativo `callback` verrà eseguito quando i dati saranno finalmente scritti - questo potrebbe non essere immediato.
 
 Per ulteriori informazioni, vedi il metodo `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-## net.connect() 
+## net.connect()
 
 Pseudomini per [`net.createConnection()`][`net.createConnection()`].
 
@@ -763,8 +763,7 @@ Pseudonimo per [`net.createConnection(port[, host][, connectListener])`][`net.cr
 
 Una funzione factory, che crea un nuovo [`net.Socket`][], avvia immediatamente la connessione con [`socket.connect()`][], quindi restituisce il `net.Socket` che avvia la connessione.
 
-Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. L'ultimo parametro `connectListener<code>, se fornito,
-verrà aggiunto <strong>una volta</strong> come listener per l'evento [<0>'connect'`][].
+Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. L'ultimo parametro `connectListener`, se fornito, verrà aggiunto **una volta** come listener per l'evento [`'connect'`][].
 
 Possibili firme:
 
