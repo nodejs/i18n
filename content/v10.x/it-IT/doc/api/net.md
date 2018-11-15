@@ -821,12 +821,12 @@ added: v0.1.90
 -->
 
 * `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
-Initiates an [IPC](#net_ipc_support) connection.
+Inizia una connessione [IPC](#net_ipc_support).
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(path[, connectListener])`][`socket.connect(path)`], then returns the `net.Socket` that starts the connection.
+Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(path[, connectListener])`] [` socket.connect (path)`], quindi restituisce il `net.Socket` che avvia la connessione.
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
 
@@ -834,14 +834,14 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.1.90
 -->
 
-* `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `port`{number} Porta a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+* `host`{string} Host a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
-Initiates a TCP connection.
+Inizia una connessione TPC.
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
+Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`],quindi restituisce il `net.Socket` che avvia la connessione.
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
@@ -849,7 +849,7 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.5.0
 -->
 
-Creates a new TCP or [IPC](#net_ipc_support) server.
+Crea un nuovo server TPC o [IPC](#net_ipc_support).
 
 * `options` {Object} 
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
