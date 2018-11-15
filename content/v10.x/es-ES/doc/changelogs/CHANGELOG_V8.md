@@ -2460,7 +2460,7 @@ Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 * [[`575dcdcf0e`](https://github.com/nodejs/node/commit/575dcdcf0e)] - **doc**: corregir stream Dúplex en el doc de allowHalfOpen (Rich Trott) [#14127](https://github.com/nodejs/node/pull/14127)
 * [[`cfa5e0c3b6`](https://github.com/nodejs/node/commit/cfa5e0c3b6)] - **doc**: hacer notar las condiciones del evento 'resize' en Windows (Dean Coakley) [#13576](https://github.com/nodejs/node/pull/13576)
 * [[`217e1dc7b1`](https://github.com/nodejs/node/commit/217e1dc7b1)] - **doc**: corregir error en http.md (Moogen Tian) [#14126](https://github.com/nodejs/node/pull/14126)
-* [[`32ddb666b6`](https://github.com/nodejs/node/commit/32ddb666b6)] - **doc**: match debugger output & instructions to master behavior (Jan Krems) [#13885](https://github.com/nodejs/node/pull/13885)
+* [[`32ddb666b6`](https://github.com/nodejs/node/commit/32ddb666b6)] - **doc**: hacer coincidir el output y las instrucciones del depurador con el comportamiento del master (Jan Krems) [#13885](https://github.com/nodejs/node/pull/13885)
 * [[`9e6a4d6e27`](https://github.com/nodejs/node/commit/9e6a4d6e27)] - **doc**: add documentation on ICU (Timothy Gu) [#13916](https://github.com/nodejs/node/pull/13916)
 * [[`23c67de3df`](https://github.com/nodejs/node/commit/23c67de3df)] - **doc**: fix padding mode of crypto.publicDecrypt (MoonBall) [#14036](https://github.com/nodejs/node/pull/14036)
 * [[`99f0a6bdb5`](https://github.com/nodejs/node/commit/99f0a6bdb5)] - **doc**: add CTC members to Collaborators list (Rich Trott) [#13284](https://github.com/nodejs/node/pull/13284)
