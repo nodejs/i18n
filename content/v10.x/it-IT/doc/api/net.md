@@ -790,7 +790,7 @@ Opzioni aggiuntive:
 
 * `timeout` {number} Se impostato, verrà utilizzato per chiamare [`socket.setTimeout (timeout)`][] dopo che il socket è creato, ma prima che inizi la connessione.
 
-Following is an example of a client of the echo server described in the [`net.createServer()`][] section:
+Di seguito è riportato un esempio di un client del server echo descritto nella sezione [`net.createServer()`][]:
 
 ```js
 const net = require('net');
