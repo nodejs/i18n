@@ -1,4 +1,4 @@
-# Debugger
+# Отладчик
 
 <!--introduced_in=v0.9.12-->
 
