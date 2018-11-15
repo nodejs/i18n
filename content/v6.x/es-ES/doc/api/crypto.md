@@ -1230,7 +1230,7 @@ Descifra un `buffer` con la `private_key`.
 
 La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, es tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `clave`: {string} - Clave privada codificada PEM
+* `key`: {string} - Clave privada codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
