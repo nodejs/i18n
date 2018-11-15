@@ -323,7 +323,7 @@ added: v0.3.3
 
 Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di vedere: https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni
+Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare per ulteriori informazioni https://en.wikipedia.org/wiki/Uname#Examples.
 
 ## os.tmpdir()
 
@@ -339,7 +339,7 @@ changes:
 
 * Restituisce: {string}
 
-The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
+Il metodo `os.tmpdir()` restituisce una stringa che specifica la directory predefinita del sistema operativo per i file temporanei.
 
 ## os.totalmem()
 
@@ -347,9 +347,9 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
+Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come numero intero.
 
 ## os.type()
 
@@ -357,11 +357,11 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
+Il metodo `os.type()` restituisce una stringa che identifica il nome del sistema operativo restituito da [uname(3)](https://linux.die.net/man/3/uname). Per esempio su linux `'Linux'`, su macOS `'Darwin'` e su Windows `'Windows_NT'`.
 
-Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
+Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni sull'output dell'esecuzione di [uname(3)](https://linux.die.net/man/3/uname) su vari sistemi operativi.
 
 ## os.uptime()
 
@@ -375,7 +375,7 @@ changes:
                  component on Windows.
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
