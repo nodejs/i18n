@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-Расширения Node.js - это динамически связанные общие объекты, написанные на C++, которые могут быть загружены в Node.js с помощью функции [`require()`](globals.html#globals_require), и использованы так, как если они были бы обычным модулем Node.js. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Расширения Node.js - это динамически связанные общие объекты, написанные на C++, которые могут быть загружены в Node.js с помощью функции [`require()`](globals.html#globals_require), и использованы так, как если они были бы обычным модулем Node.js. Они преимущественно используются для предоставления интерфейса между JavaScript, выполняемого в Node.js, и библиотеками C/C++.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
 
