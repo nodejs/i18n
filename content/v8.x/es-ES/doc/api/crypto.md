@@ -1271,7 +1271,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1282,7 +1282,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.getCiphers()
 
@@ -1290,7 +1290,7 @@ Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHas
 added: v0.9.3
 -->
 
-Regresa una matriz con los nombres de los algoritmos cifrados respaldados.
+Regresa un array con los nombres de los algoritmos cifrados respaldados.
 
 Ejemplo:
 
@@ -1305,7 +1305,7 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-Regresa una matriz con los nombres de las curvas elípticas respaldadas.
+Regresa un array con los nombres de las curvas elípticas respaldadas.
 
 Ejemplo:
 
@@ -1322,7 +1322,7 @@ added: v0.7.5
 
 - `groupName` {string}
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero vea [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
