@@ -4,7 +4,7 @@
 
 Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Они преимущественно используются для предоставления интерфейса между JavaScript, выполняемого в Node.js, и библиотеками C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+На данный момент способ реализации расширений достаточно сложный, включает в себя знания о нескольких компонентах и интерфейсов API:
 
 * V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
