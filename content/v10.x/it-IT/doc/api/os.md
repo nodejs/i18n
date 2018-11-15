@@ -63,10 +63,10 @@ Le proprietà incluse in ogni oggetto includono:
 * `speed` {number} (in MHz)
 * `times` {Object} 
   * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
-  * `nice` {number} Il numero di millisecondi che la CPU ha speso in nice mode.
-  * `sys` {number} Il numero di millisecondi che la CPU ha speso in sys mode.
-  * `idle` {number} Il numero di millisecondi che la CPU ha speso in idle mode.
-  * `irq` {number} Il numero di millisecondi che la CPU ha speso in irq mode.
+  * `nice` {number} Il numero di millisecondi che la CPU ha speso nella modalità nice.
+  * `sys` {number} Il numero di millisecondi che la CPU ha speso nella modalità sys.
+  * `idle` {number} Il numero di millisecondi che la CPU ha speso nella modalità idle.
+  * `irq` {number} Il numero di millisecondi che la CPU ha speso nella modalità irq.
 
 <!-- eslint-disable semi -->
 
@@ -163,7 +163,7 @@ Le proprietà incluse in ogni oggetto includono:
 ]
 ```
 
-Perché i valori di `nice` sono specifiche di UNIX, su Windows i valori `nice` di tutto i processori sono sempre 0.
+Poiché i valori `nice` sono specifiche di UNIX, su Windows i valori `nice` di tutti i processori sono sempre 0.
 
 ## os.endianness()
 
@@ -173,7 +173,7 @@ added: v0.9.4
 
 * Restituisce: {string}
 
-Il metodo`os.endianness()` restituisce una stringa che identifica l'ordine dei byte del CPU *per cui il binario Node.js è stato compilato*.
+Il metodo`os.endianness()` restituisce una stringa che identifica l'endianness (l'ordine dei byte) della CPU *per la quale il binario Node.js è stato compilato*.
 
 I valori possibili sono:
 
@@ -188,7 +188,7 @@ added: v0.3.3
 
 * Restituisce: {integer}
 
-Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come numero intero.
+Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come un numero intero.
 
 ## os.homedir()
 
@@ -220,9 +220,9 @@ added: v0.3.3
 
 Il metodo `os.loadavg()` restituisce un array contenente le medie di caricamento di 1, 5 e 15 minuti.
 
-La media di caricamento è una misura dell'attività del sistema, calcolata dal sistema operativo ed espressa come un numero frazionario. Come regola generale, la medi di caricamento dovrebbe idealmente essere inferiore al numero di CPU logiche nel sistema.
+La media di caricamento è una misura dell'attività del sistema, calcolata dal sistema operativo ed espressa come un numero frazionario. Come regola generale, la media di caricamento dovrebbe idealmente essere inferiore al numero di CPU logiche nel sistema.
 
-La media del caricamento è un concetto specifico UNIX che non ha equivalenti reali sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
+La media del caricamento è un concetto specifico UNIX con nessun equivalente reale sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
