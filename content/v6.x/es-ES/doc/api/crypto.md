@@ -1277,49 +1277,49 @@ added: v1.1.0
 
 Desencripta el `buffer` con la `public_key`.
 
-La `public_key` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
+`public_key` can be an object or a string. Si la `public_key` es una string, será tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
 
-* `clave`: {string} - Clave pública codificada PEM
+* `key`: {string} - PEM encoded public key
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
-Debido a qie las claves públicas RSA puede derivar de claves privadas y, una clave privada puede ser pasada en vez de una pública.
+Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
 Todos los paddings se definen en `crypto.constants`.
 
-### crypto.publicEncrypt(clave_pública, buffer)
+### crypto.publicEncrypt(public_key, buffer)
 
 <!-- YAML
 added: v0.11.14
 -->
 
-Encripta al `buffer` con la `clave_pública`.
+Encripta al `buffer` con la `public_key`.
 
-La `public_key` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como una clave si frase de contraseña y, usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
+La `public_key` puede ser un objeto o una string. Si la `public_key` es una string, será tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `public_key` es un objeto, entonces será interpretada como un objeto hash con las claves:
 
-* `clave`: {string} - Clave pública codificada PEM
+* `key`: {string} - Clave pública codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
-Debido a qie las claves públicas RSA puede derivar de claves privadas y, una clave privada puede ser pasada en vez de una pública.
+Debido a que las claves públicas RSA pueden derivar de claves privadas, una clave privada puede ser pasada en vez de una pública.
 
 Todos los paddings se definen en `crypto.constants`.
 
-### crypto.randomBytes(tamaño[, callback])
+### crypto.randomBytes(size[, callback])
 
 <!-- YAML
 added: v0.5.8
 -->
 
-Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `tamaño` es un número que indica el número de bytes a generar.
+Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `size` es un número que indica el número de bytes a generar.
 
-Si una función `callback` es dada, los bytes son geberados asincrónicamente y, la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` sera un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
+Si una función `callback` es dada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` será un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
 // Asincrónico
@@ -1330,7 +1330,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y, devueltos como [`Buffer`][]. Un error sera arrojado si hay un problema al generar los bytes.
+Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y devueltos como [`Buffer`][]. Un error será arrojado si hay un problema al generar los bytes.
 
 ```js
 // Sincrónico
