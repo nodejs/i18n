@@ -242,7 +242,7 @@
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
 * Child Process 
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Console 
+* Консоль 
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto 
   * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
