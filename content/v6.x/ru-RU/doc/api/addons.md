@@ -4,7 +4,7 @@
 
 Расширения Node.js - это динамически связанные общие объекты, написанные на C++, которые могут быть загружены в Node.js с помощью функции [`require()`](globals.html#globals_require), и использованы так, как если они были бы обычным модулем Node.js. Они преимущественно используются для предоставления интерфейса между JavaScript, выполняемого в Node.js, и библиотеками C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+На данный момент способ реализации расширений достаточно сложный, включает в себя знания о нескольких компонентах и интерфейсов API:
 
 * V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
