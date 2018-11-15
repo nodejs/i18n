@@ -1497,7 +1497,7 @@ Decrypts `buffer` with `key`.
 
 `key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
 
-Debido a qie las claves públicas RSA puede derivar de claves privadas y, una clave privada puede ser pasada en vez de una pública.
+Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
 ### crypto.publicEncrypt(key, buffer)
 
@@ -1516,9 +1516,9 @@ Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with 
 
 `key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
 
-Debido a qie las claves públicas RSA puede derivar de claves privadas y, una clave privada puede ser pasada en vez de una pública.
+Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
-### crypto.randomBytes(tamaño[, callback])
+### crypto.randomBytes(size[, callback])
 
 <!-- YAML
 added: v0.5.8
@@ -1529,9 +1529,9 @@ added: v0.5.8
   - `err` {Error}
   - `buf` {Buffer}
 
-Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `tamaño` es un número que indica el número de bytes a generar.
+Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `size` es un número que indica el número de bytes a generar.
 
-Si una función `callback` es dada, los bytes son geberados asincrónicamente y, la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` sera un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
+Si una función `callback` es dada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` será un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
 // Asincrónico
@@ -1542,7 +1542,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y, devueltos como [`Buffer`][]. Un error sera arrojado si hay un problema al generar los bytes.
+Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y devueltos como [`Buffer`][]. Un error será arrojado si hay un problema al generar los bytes.
 
 ```js
 // Sincrónico
