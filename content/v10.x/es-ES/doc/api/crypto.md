@@ -1504,7 +1504,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* El Secreto de Alice y el de Bob deben ser iguales*/
+/* aliceSecret y bobSecret deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1531,7 +1531,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
+### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
 
 <!-- YAML
 added: v0.5.5
