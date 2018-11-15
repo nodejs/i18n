@@ -41,7 +41,7 @@
 * [Строки запроса](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
-* [Stream](stream.html)
+* [Стрим](stream.html)
 * [String Decoder](string_decoder.html)
 * [Timers](timers.html)
 * [TLS/SSL](tls.html)
