@@ -861,9 +861,9 @@ Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket 
 
 Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata verrà messo in pausa e nessun dato verrà letto dal suo handle. Ciò consente alle connessioni di essere passate tra processi senza che nessun dato sia letto dal processo originale. Per iniziare a leggere i dati da un socket messo in pausa, chiamare [`socket.resume()`][].
 
-The server can be a TCP server or an [IPC](#net_ipc_support) server, depending on what it [`listen()`][`server.listen()`] to.
+Il server può essere un server TCP o un server [IPC](#net_ipc_support),ciò dipende a che cosa esso (fa ascoltare) [`listen()`] il [`server.listen()`].
 
-Here is an example of an TCP echo server which listens for connections on port 8124:
+Ecco un esempio di un server echo TCP che ascolta le connessioni sulla porta 8124:
 
 ```js
 const net = require('net');
@@ -884,13 +884,13 @@ server.listen(8124, () => {
 });
 ```
 
-Test this by using `telnet`:
+Provalo utilizzando `telnet`:
 
 ```console
 $ telnet localhost 8124
 ```
 
-To listen on the socket `/tmp/echo.sock` the third line from the last would just be changed to:
+Per eseguire il listening sul socket `/tmp/echo.sock` la terza riga a partire dall'ultimo sarebbe stata appena cambiato per:
 
 ```js
 server.listen('/tmp/echo.sock', () => {
@@ -898,7 +898,7 @@ server.listen('/tmp/echo.sock', () => {
 });
 ```
 
-Use `nc` to connect to a UNIX domain socket server:
+Utilizza `nc` per connettersi a un server socket di dominio UNIX:
 
 ```console
 $ nc -U /tmp/echo.sock
@@ -910,9 +910,9 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
+Verifica se l'input è un indirizzo IP. Restituisce `0` per stringhe non valide, restituisce `4` per gli indirizzi IP versione 4 e restituisce `6` per gli indirizzi IP versione 6.
 
 ## net.isIPv4(input)
 
@@ -920,9 +920,9 @@ Tests if input is an IP address. Returns `0` for invalid strings, returns `4` fo
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if input is a version 4 IP address, otherwise returns `false`.
+Restituisce `true` se l'input è un indirizzo IP versione 4, altrimenti restituisce `false`.
 
 ## net.isIPv6(input)
 
@@ -930,6 +930,6 @@ Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if input is a version 6 IP address, otherwise returns `false`.
+Restituisce `true` se l'input è un indirizzo IP versione 6, altrimenti restituisce `false`.
