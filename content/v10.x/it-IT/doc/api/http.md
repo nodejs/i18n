@@ -6,7 +6,7 @@
 
 Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente è in grado di trasmettere dati.
 
 Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
@@ -217,7 +217,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+Un object che contiene queue di richieste che non sono ancora state assegnate ai socket. Non modificare.
 
 ### agent.sockets
 
@@ -227,7 +227,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+Un object che contiene array di socket attualmente in uso dall'agente. Non modificare.
 
 ## Class: http.ClientRequest
 
