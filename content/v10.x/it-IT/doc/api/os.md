@@ -323,7 +323,7 @@ added: v0.3.3
 
 Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare per ulteriori informazioni https://en.wikipedia.org/wiki/Uname#Examples.
+Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni.
 
 ## os.tmpdir()
 
@@ -349,7 +349,7 @@ added: v0.3.3
 
 * Restituisce: {integer}
 
-Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come numero intero.
+Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come un numero intero.
 
 ## os.type()
 
@@ -386,10 +386,10 @@ added: v6.0.0
 -->
 
 * `options` {Object} 
-  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, l'`username`, la `shell` e I valori dell'`homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
+  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su`'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
 * Restituisce: {Object}
 
-Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, solitamente è un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
 The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
