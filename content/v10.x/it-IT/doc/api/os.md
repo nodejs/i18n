@@ -232,18 +232,18 @@ added: v0.6.0
 
 * Restituisce: {Object}
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+Il metodo `os.networkInterfaces()` restituisce un object contenente solo le interfacce di rete a cui è stato assegnato un indirizzo di rete.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. Il valore associato è un array degli object che descrivono ciascuno un indirizzo di rete assegnato.
 
-The properties available on the assigned network address object include:
+Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono:
 
-* `address` {string} The assigned IPv4 or IPv6 address
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `address` {string} L'indirizzo IPv4 o IPv6 assegnato
+* `netmask` {string} La maschera di rete IPv4 o IPv6
+* `family` {string} o `IPv4` oppure `IPv6`
+* `mac` {string} L'indirizzo MAC dell'interfaccia di rete
+* `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
+* `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 
 <!-- eslint-skip -->
