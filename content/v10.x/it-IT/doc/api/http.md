@@ -235,9 +235,9 @@ Un object che contiene array di socket attualmente in uso dall'agente. Non modif
 added: v0.1.17
 -->
 
-This object is created internally and returned from [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Questo object viene creato internamente e restituito da [`http.request()`][]. Rappresenta una richiesta *in corso* il cui header è già stato inserito nelle queue. L'intestazione può ancora essere modificata utilizzando le API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. L'intestazione effettiva verrà inviata insieme al primo chunk di dati o quando si chiama [`request.end()`][].
 
-To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
 
 During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
 
