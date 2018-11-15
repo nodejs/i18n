@@ -226,7 +226,7 @@ Please note that `atime`, `mtime`, `birthtime`, and `ctime` are instances of [`D
 Los tiempos en el objeto de estadística tienen la siguiente semántica:
 
 * `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
-* `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
+* `mtime` "Modified Time" - Time when file data last modified. Cambiado por las llamadas de sistema mknod(2), utimes(2), y write(2).
 * `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
 * `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
@@ -453,7 +453,7 @@ added: v0.1.30
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica los permisos de un archivo. No arguments other than a possible exception are given to the completion callback.
 
 Vea también: chmod(2)
 
@@ -496,7 +496,7 @@ added: v0.1.97
 * `uid` {integer}
 * `gid` {integer}
 
-Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
 
 See also: chown(2)
 
@@ -591,7 +591,7 @@ added: v0.1.31
   * `autoClose` {boolean}
   * `start` {integer}
 
-Returns a new [`WriteStream`][] object. (See [Writable Stream](stream.html#stream_class_stream_writable)).
+Devuelve un objeto nuevo de [`WriteStream`][]. (See [Writable Stream](stream.html#stream_class_stream_writable)).
 
 `options` is an object or string with the following defaults:
 
@@ -812,7 +812,7 @@ added: v0.1.95
 
 * `fd` {integer}
 
-Synchronous fstat(2). Returns an instance of [`fs.Stats`][].
+Synchronous fstat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.fsync(fd, callback)
 
@@ -1024,7 +1024,7 @@ added: v0.1.30
 
 * `path` {string|Buffer}
 
-Synchronous lstat(2). Returns an instance of [`fs.Stats`][].
+Synchronous lstat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.mkdir(path[, mode], callback)
 
@@ -1050,7 +1050,7 @@ added: v0.1.21
 * `path` {string|Buffer}
 * `mode` {integer}
 
-Crea un directorio de manera sincrónica. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Returns `undefined`. Esta es la versión sincrónica de [`fs.mkdir()`][].
 
 See also: mkdir(2)
 
@@ -1205,7 +1205,7 @@ added: v0.1.21
 * `flags` {string|number}
 * `mode` {integer}
 
-Synchronous version of [`fs.open()`][]. Returns an integer representing the file descriptor.
+Versión sincrónica de [`fs.open()`][]. Returns an integer representing the file descriptor.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -1387,7 +1387,7 @@ added: v0.1.21
 * `length` {integer}
 * `position` {integer}
 
-Synchronous version of [`fs.read()`][]. Returns the number of `bytesRead`.
+Versión sincrónica de [`fs.read()`][]. Returns the number of `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -1502,7 +1502,7 @@ added: v0.1.21
 
 * `path` {string|Buffer}
 
-Synchronous stat(2). Returns an instance of [`fs.Stats`][].
+Synchronous stat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.symlink(target, path[, type], callback)
 
@@ -1902,7 +1902,7 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
   <tr>
     <td><code>F_OK</code></td>
-    <td>Flag indicating that the file is visible to the calling process.</td>
+    <td>Bandera que indica que el archivo es visible para el proceso de llamada.</td>
   </tr>
   <tr>
     <td><code>R_OK</code></td>
@@ -1915,14 +1915,14 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
   <tr>
     <td><code>X_OK</code></td>
-    <td>Flag indicating that the file can be executed by the calling
-    process.</td>
+    <td>Bandera que indica que el archivo puede ser ejecutado por el proceso
+    de llamada.</td>
   </tr>
 </table>
 
 ### File Open Constants
 
-The following constants are meant for use with `fs.open()`.
+Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
 
 <table>
   <tr>
@@ -1943,7 +1943,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_CREAT</code></td>
-    <td>Flag indicating to create the file if it does not already exist.</td>
+    <td>Bandera que indica crear el archivo, si este aún no existe.</td>
   </tr>
   <tr>
     <td><code>O_EXCL</code></td>
@@ -1998,7 +1998,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_NONBLOCK</code></td>
-    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
+    <td>Bandera que indica abrir el archivo en modo de no-bloqueo, cuando sea posible.</td>
   </tr>
 </table>
 
