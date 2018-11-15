@@ -859,7 +859,7 @@ Crea un nuovo server TPC o [IPC](#net_ipc_support).
 
 Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi l'evento [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
 
-If `pauseOnConnect` is set to `true`, then the socket associated with each incoming connection will be paused, and no data will be read from its handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
+Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata verrà messo in pausa e nessun dato verrà letto dal suo handle. Ciò consente alle connessioni di essere passate tra processi senza che nessun dato sia letto dal processo originale. Per iniziare a leggere i dati da un socket messo in pausa, chiamare [`socket.resume()`][].
 
 The server can be a TCP server or an [IPC](#net_ipc_support) server, depending on what it [`listen()`][`server.listen()`] to.
 
