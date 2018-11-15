@@ -1230,7 +1230,7 @@ Descifra un `buffer` con la `private_key`.
 
 La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, es tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `key`: {string} - Clave privada codificada PEM
+* `key`: {string} - PEM encoded private key
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
@@ -1245,23 +1245,23 @@ Todos los paddings se definen en `crypto.constants`.
 added: v6.6.0
 -->
 
-Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin perder información que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resumenes de HMAC o los valores secretis como cookies de autenticacion o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin filtrar información sobre el tiempo que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
-`a` y `b` deben ser ambas `Buffers` y tener la misma longitud.
+`a` y `b` deben ser ambos `Buffers` y tener la misma longitud.
 
-**Nota**: El uso de `crypto.timingSafeEqual` no garantixa que el código *cercano* sea seguro momentáneamente. Debe tener cuidado al asegurarse que el código cercano no introduce vulnerabilidades de tiempo.
+**Nota**: El uso de `crypto.timingSafeEqual` no garantiza que el código *cercano* sea seguro en cuanto a tiempo. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
 
-### crypto.privateEncrypt(clave_privada, buffer)
+### crypto.privateEncrypt(private_key, buffer)
 
 <!-- YAML
 added: v1.1.0
 -->
 
-Encripta el `buffer` con la `clave_privada`.
+Encripta el `buffer` con la `private_key`.
 
-La `private_key` puede ser un objeto o una string. Si la `clave_privada` es una string, sera tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
+La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, sera tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `clave`: {string} - Clave privada codificada PEM
+* `key`: {string} - Clave privada codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
 * `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
@@ -1269,15 +1269,15 @@ La `private_key` puede ser un objeto o una string. Si la `clave_privada` es una 
 
 Todos los paddings se definen en `crypto.constants`.
 
-### crypto.publicDecrypt(clave_pública, buffer)
+### crypto.publicDecrypt(public_key, buffer)
 
 <!-- YAML
 added: v1.1.0
 -->
 
-Desencripta el `buffer` con la `clave_pública`.
+Desencripta el `buffer` con la `public_key`.
 
-La `clave_pública` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
+La `public_key` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
 
 * `clave`: {string} - Clave pública codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
@@ -1298,7 +1298,7 @@ added: v0.11.14
 
 Encripta al `buffer` con la `clave_pública`.
 
-La `clave_pública` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como una clave si frase de contraseña y, usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
+La `public_key` puede ser un objeto o una string. Si la `clave_pública` es una string, sera tratada como una clave si frase de contraseña y, usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `clave_pública` es un objeto, entonces sera interpretada como un objeto hash con las claves:
 
 * `clave`: {string} - Clave pública codificada PEM
 * `passphrase`: {string} - Frase de contraseña opcional para la clave privada
