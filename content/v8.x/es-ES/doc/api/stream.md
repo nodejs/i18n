@@ -16,7 +16,7 @@ Se puede acceder al módulo `stream` utilizando:
 const stream = require('stream');
 ```
 
-Aunque es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
+Aunque es importante para todos los usuarios de Node.js entender cómo trabaja streams, el módulo `stream`, en sí, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
 ## Organización de este Documento
 
@@ -167,7 +167,7 @@ No todos los streams Escribibles emitirán el evento `'close'`.
 added: v0.9.4
 -->
 
-Si una llamanda a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento de `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
+Si una llamada a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento de `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
 
 ```js
 // Escribe los datos en el stream escribible suministrado un millón de veces.
@@ -437,7 +437,7 @@ Los ejemplos de streams Legibles incluyen:
 * [procesos secundarios stdout y stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
-Todos los streams [Legibles](#stream_class_stream_readable) implementas la interfaz definida por la clase `stream.Readable`.
+Todos los streams [Legibles](#stream_class_stream_readable) implementan la interfaz definida por la clase `stream.Readable`.
 
 #### Dos Modos
 
@@ -445,11 +445,11 @@ Los streams Legibles operan efectivamente en uno de dos modos: fluido y pausado.
 
 Cuando está en modo fluido, los datos se leen desde el sistema subyacente de manera automática y se envían a una aplicación lo más rápido posible utilizando eventos a través de las interfaz [`EventEmitter`][].
 
-En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado explíticamente para leer piezas de datos desde el stream.
+En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado explícitamente para leer piezas de datos desde el stream.
 
 Todos los streams [Legibles](#stream_class_stream_readable) comienzan en el modo pausado, pero pueden cambiarse al modo fluido de una de las siguientes maneras:
 
-* Agregar un manejado de eventos de [`'data'`][].
+* Agregar un manejador de eventos de [`'data'`][].
 * Llamar al método de [`stream.resume()`](#stream_readable_resume).
 * Llamar al método de [`stream.pipe()`][] para enviar los datos a un [Escribible](#stream_class_stream_writable).
 
