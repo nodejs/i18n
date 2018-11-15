@@ -12,7 +12,7 @@
 
 * [libuv](https://github.com/libuv/libuv): Библиотека на C, реализующая цикл событий Node.js, работу с потоками и все асинхронное поведение платформы. Она также обеспечивает кросс-платформенную абстракцию, предоставляя простой POSIX-подобный доступ к системным задачам большинства операционных систем, таким как взаимодействие с файловой системой, сокетам, таймера и системным событиям. libuv также предлагает pthreads-подобную абстракцию потоков, которая может быть использована для усиления более сложных асинхронных расширений, которым необходимо выйти за рамки стандартного цикла событий. Авторам расширения предлагается подумать о том, как избежать блокировки цикла событий ввода/вывода или других задач, которые занимают много времени, чтобы загрузить работу через libuv в неблокирующие системные операции, рабочие потоки или пользовательское использование потоков libuv.
 
-* Внутренние библиотеки Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Внутренние библиотеки Node.js. Node.js сам экспортирует некоторое количество API C++, которое расширения могут использовать &mdash;, наиболее важным из которых является класс `node::ObjectWrap`.
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
