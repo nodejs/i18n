@@ -713,13 +713,13 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Usato solo quando i dato è `string`. **Default:** `utf8`.
+* `encoding` {string} Usato solo quando il dato è `string`. **Default:** `utf8`.
 * `callback` {Function} 
 * Restituisce: {boolean}
 
 Invia dati sul socket. Il secondo parametro specifica la codifica nel file in caso di una stringa - come predefinito per UTF8 encoding.
 
-Restituisce `true ` se l'intero i dati sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
+Restituisce `true ` se il dato intero è stato scaricato con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
 
 Il parametro facoltativo `callback` verrà eseguito quando i dati saranno finalmente scritti - questo potrebbe non essere immediato.
 
