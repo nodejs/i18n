@@ -820,7 +820,7 @@ added: v0.1.90
 -->
 
 * `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato al [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener (che esegue il listening) "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
 Inizia una connessione [IPC](#net_ipc_support).
@@ -833,9 +833,9 @@ Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su
 added: v0.1.90
 -->
 
-* `port`{number} Porta a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host`{string} Host a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
-* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* `port`{number} Porta a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+* `host`{string} Host a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener (che esegue il listening) "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
 Inizia una connessione TPC.
@@ -851,8 +851,8 @@ added: v0.5.0
 Crea un nuovo server TPC o [IPC](#net_ipc_support).
 
 * `options` {Object} 
-  * `allowHalfOpen`{boolean} Indica se sono consentite le connessioni TPC semi-aperte. **Default:** `false`.
-  * `pauseOnConnect` {boolean} indica se il socket deve essere messo in pausa sulle connessioni in entrata. **Default:** `false`.
+  * `allowHalfOpen`{boolean} Indica se le connessioni TPC semi-aperte sono consentite. **Default:** `false`.
+  * `pauseOnConnect` {boolean} indica se il socket dovrebbe essere messo in pausa sulle connessioni in entrata. **Default:** `false`.
 * `connectionListener` {Function} Imposta automaticamente come listener per l'evento [`'connection'`][].
 * Restituisce: {net.Server}
 
