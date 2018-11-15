@@ -63,10 +63,10 @@ Le proprietà incluse in ogni oggetto includono:
 * `speed` {number} (in MHz)
 * `times` {Object} 
   * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
-  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
-  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
-  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+  * `nice` {number} Il numero di millisecondi che la CPU ha speso in nice mode.
+  * `sys` {number} Il numero di millisecondi che la CPU ha speso in sys mode.
+  * `idle` {number} Il numero di millisecondi che la CPU ha speso in idle mode.
+  * `irq` {number} Il numero di millisecondi che la CPU ha speso in irq mode.
 
 <!-- eslint-disable semi -->
 
