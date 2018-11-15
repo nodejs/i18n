@@ -377,7 +377,7 @@ changes:
 
 * Restituisce: {integer}
 
-The `os.uptime()` method returns the system uptime in number of seconds.
+Il metodo `os.uptime()` restituisce il tempo di attività del sistema in un numero di secondi.
 
 ## os.userInfo([options])
 
@@ -386,10 +386,10 @@ added: v6.0.0
 -->
 
 * `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
-* Returns: {Object}
+  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, l'`username`, la `shell` e I valori dell'`homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
+* Restituisce: {Object}
 
-The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, solitamente è un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
 The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
