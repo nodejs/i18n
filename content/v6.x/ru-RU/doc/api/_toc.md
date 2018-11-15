@@ -5,10 +5,10 @@
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
+* [Подтверждающее тестирование](assert.html)
+* [Буфер](buffer.html)
+* [Расширения C++](addons.html)
+* [Расширения C/C++ - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
