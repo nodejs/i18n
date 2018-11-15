@@ -236,7 +236,7 @@
   * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
 * Async_hooks 
   * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* Buffer 
+* Буфер 
   * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
