@@ -237,7 +237,7 @@ added: v0.1.17
 
 Questo object viene creato internamente e restituito da [`http.request()`][]. Rappresenta una richiesta *in corso* il cui header è già stato inserito nelle queue. L'intestazione può ancora essere modificata utilizzando le API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. L'intestazione effettiva verrà inviata insieme al primo chunk di dati o quando si chiama [`request.end()`][].
 
-Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] verrà emessa dall'object richiesta una volta che le intestazioni di risposta siano state ricevute. L'evento [`'response'`][] viene eseguito con un argomento che è un'istanza di [`http.IncomingMessage`][].
 
 During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
 
