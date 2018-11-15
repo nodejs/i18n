@@ -241,11 +241,11 @@ Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object r
 
 Durante l'evento [`'response'`][], è possibile aggiungere listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
-Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Inoltre, finché i dati non vengono letti, consumerà memoria che alla fine può portare a un errore di 'elaborazione insufficiente'.
 
-Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Node.js non controlla se Content-Length e la lunghezza del corpo che è stata trasmessa siano uguali o meno.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+La richiesta implementa l'interfaccia [Writable Stream](stream.html#stream_class_stream_writable). Questo è un [`EventEmitter`][] con i seguenti eventi:
 
 ### Event: 'abort'
 
@@ -253,7 +253,7 @@ The request implements the [Writable Stream](stream.html#stream_class_stream_wri
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Emesso quando la richiesta è stata interrotta dal client. This event is only emitted on the first call to `abort()`.
 
 ### Event: 'connect'
 
