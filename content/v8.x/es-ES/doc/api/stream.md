@@ -443,7 +443,7 @@ Todos los streams [Legibles](#stream_class_stream_readable) implementan la inter
 
 Los streams Legibles operan efectivamente en uno de dos modos: fluido y pausado.
 
-Cuando está en modo fluido, los datos se leen desde el sistema subyacente de manera automática y se envían a una aplicación lo más rápido posible utilizando eventos a través de las interfaz [`EventEmitter`][].
+Cuando está en modo fluido, los datos se leen desde el sistema subyacente de manera automática y se envían a una aplicación lo más rápido posible utilizando eventos a través de la interfaz [`EventEmitter`][].
 
 En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado explícitamente para leer piezas de datos desde el stream.
 
