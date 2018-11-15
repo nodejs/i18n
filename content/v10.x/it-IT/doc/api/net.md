@@ -779,15 +779,15 @@ La funzione [`net.connect()`][] è un pseudonimo di questa funzione.
 added: v0.1.90
 -->
 
-* `options` {Object} Richiesto. Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
-* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][]. Se fornito, sarà aggiunto come un listener per l'evento [`'connect'`][] sul socket restituito una volta.
+* `options` {Object} Richiesto. Verrà passato sia alla chiamata [`new net.Socket([options])`][`new net.Socket(options)` che al metodo [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][]. Se fornito, sarà aggiunto una volta come un listener per l'evento [`'connect'`][] sul socket restituito.
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
 Per le opzioni disponibili, vedi [`new net.Socket([options])`][`new net.Socket(options)`] e [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
 Opzioni aggiuntive:
 
-* `timeout` {number} Se impostato, verrà utilizzato per chiamare [`socket.setTimeout (timeout)`][] dopo che il socket è creato, ma prima che inizi la connessione.
+* `timeout` {number} Se impostato, verrà utilizzato per chiamare [`socket.setTimeout (timeout)`][] dopo che il socket viene creato, ma prima che inizi la connessione.
 
 Di seguito è riportato un esempio di un client del server echo descritto nella sezione [`net.createServer()`][]:
 
