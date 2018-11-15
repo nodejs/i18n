@@ -1020,7 +1020,7 @@ Crea un objeto de intercambio de clave `DiffieHellman` y genera un prime de `pri
 added: v0.11.14
 -->
 
-Crea una clave de intercambio de objeto de una Curva Elíptica Diffie-Hellman (`ECDH`) empleando una curva específica y predeterminada por el string `curve_name`. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
+Crea un objeto de intercambio de claves de Curva Elíptica Diffie-Hellman (`ECDH`) empleando una curva específica y predeterminada por el string `curve_name`. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
 
 ### crypto.createHash(algorithm)
 
@@ -1028,7 +1028,7 @@ Crea una clave de intercambio de objeto de una Curva Elíptica Diffie-Hellman (`
 added: v0.1.92
 -->
 
-Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado.
+Crea y regresa un objeto `Hash` que puede ser usado para generar el resumen de hash usando el `algorithm` dado.
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
@@ -1052,7 +1052,7 @@ input.on('readable', () => {
 });
 ```
 
-### crypto.createHmac(algoritmo, clave)
+### crypto.createHmac(algorithm, key)
 
 <!-- YAML
 added: v0.1.94
@@ -1062,7 +1062,7 @@ Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada.
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
+La `key` es la clave HMAC empleada para generar el hash criptográfico de HMAC.
 
 Ejemplo: generando el HMAC sha256 de un archivo
 
@@ -1084,21 +1084,21 @@ input.on('readable', () => {
 });
 ```
 
-### crypto.createSign(algoritmo)
+### crypto.createSign(algorithm)
 
 <!-- YAML
 added: v0.1.92
 -->
 
-Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles.
+Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms.
 
-### crypto.createVerify(algoritmo)
+### crypto.createVerify(algorithm)
 
 <!-- YAML
 added: v0.1.92
 -->
 
-Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firmas disponibles.
+Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener un array con los nombres de los algoritmos de firmas disponibles.
 
 ### crypto.getCiphers()
 
@@ -1106,7 +1106,7 @@ Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHas
 added: v0.9.3
 -->
 
-Regresa una matriz con los nombres de los algoritmos cifrados respaldados.
+Regresa un array con los nombres de los algoritmos cifrados respaldados.
 
 Ejemplo:
 
@@ -1121,7 +1121,7 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-Regresa una matriz con los nombres de las curvas elípticas respaldadas.
+Regresa un array con los nombres de las curvas elípticas respaldadas.
 
 Ejemplo:
 
@@ -1136,7 +1136,7 @@ console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
 added: v0.7.5
 -->
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero vea [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita la interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirá cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -1151,7 +1151,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* El Secreto de Alice y el de Bob deben ser iguales*/
+/* aliceSecret y bobSecret deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1161,7 +1161,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
+Devuelve un array con los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1170,19 +1170,19 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
+### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
 
 <!-- YAML
 added: v0.5.5
 -->
 
-Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
 La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1194,7 +1194,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, key) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
@@ -1202,13 +1202,13 @@ An array of supported digest functions can be retrieved using [`crypto.getHashes
 added: v0.9.3
 -->
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Proporciona una implementación sincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) desde `password`, `salt` e `iterations`.
 
-If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+El argumento de `iterations` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura será la llave derivada, y tomará un tiempo mayor en completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1218,7 +1218,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(private_key, buffer)
 
@@ -1226,18 +1226,18 @@ An array of supported digest functions can be retrieved using [`crypto.getHashes
 added: v0.11.14
 -->
 
-Decrypts `buffer` with `private_key`.
+Descifra un `buffer` con la `private_key`.
 
-`private_key` can be an object or a string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, es tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
 * `key`: {string} - PEM encoded private key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.timingSafeEqual(a, b)
 
@@ -1245,11 +1245,11 @@ All paddings are defined in `crypto.constants`.
 added: v6.6.0
 -->
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin filtrar información sobre el tiempo que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
-`a` and `b` must both be `Buffer`s, and they must have the same length.
+`a` y `b` deben ser ambos `Buffers` y tener la misma longitud.
 
-**Note**: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
+**Nota**: El uso de `crypto.timingSafeEqual` no garantiza que el código *cercano* sea seguro en cuanto a tiempo. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
 
 ### crypto.privateEncrypt(private_key, buffer)
 
@@ -1257,17 +1257,17 @@ This function is based on a constant-time algorithm. Returns true if `a` is equa
 added: v1.1.0
 -->
 
-Encrypts `buffer` with `private_key`.
+Encripta el `buffer` con la `private_key`.
 
-`private_key` can be an object or a string. If `private_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `private_key` is an object, it is interpreted as a hash object with the keys:
+La `private_key` puede ser un objeto o una string. Si la `private_key` es una string, sera tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. Pero, si la `private_key` es un objeto, se interpreta como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded private key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `key`: {string} - Clave privada codificada PEM
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.publicDecrypt(public_key, buffer)
 
@@ -1275,20 +1275,20 @@ All paddings are defined in `crypto.constants`.
 added: v1.1.0
 -->
 
-Decrypts `buffer` with `public_key`.
+Desencripta el `buffer` con la `public_key`.
 
-`public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
+`public_key` can be an object or a string. Si la `public_key` es una string, será tratada como la clave sin frase de contraseña y usará `RSA_PKCS1_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
 
 * `key`: {string} - PEM encoded public key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.publicEncrypt(public_key, buffer)
 
@@ -1296,20 +1296,20 @@ All paddings are defined in `crypto.constants`.
 added: v0.11.14
 -->
 
-Encrypts `buffer` with `public_key`.
+Encripta al `buffer` con la `public_key`.
 
-`public_key` can be an object or a string. If `public_key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`. If `public_key` is an object, it is interpreted as a hash object with the keys:
+La `public_key` puede ser un objeto o una string. Si la `public_key` es una string, será tratada como una clave sin frase de contraseña y usará `RSA_PKCS1_OAEP_PADDING`. Pero, si la `public_key` es un objeto, entonces será interpretada como un objeto hash con las claves:
 
-* `key`: {string} - PEM encoded public key
-* `passphrase`: {string} - Optional passphrase for the private key
-* `padding` : An optional padding value, one of the following: 
+* `key`: {string} - Clave pública codificada PEM
+* `passphrase`: {string} - Frase de contraseña opcional para la clave privada
+* `padding` : Un valor de llenado opcional puede ser uno de los siguientes: 
   * `crypto.constants.RSA_NO_PADDING`
   * `crypto.constants.RSA_PKCS1_PADDING`
   * `crypto.constants.RSA_PKCS1_OAEP_PADDING`
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Debido a que las claves públicas RSA pueden derivar de claves privadas, una clave privada puede ser pasada en vez de una pública.
 
-All paddings are defined in `crypto.constants`.
+Todos los paddings se definen en `crypto.constants`.
 
 ### crypto.randomBytes(size[, callback])
 
@@ -1317,12 +1317,12 @@ All paddings are defined in `crypto.constants`.
 added: v0.5.8
 -->
 
-Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
+Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `size` es un número que indica el número de bytes a generar.
 
-If a `callback` function is provided, the bytes are generated asynchronously and the `callback` function is invoked with two arguments: `err` and `buf`. If an error occurs, `err` will be an Error object; otherwise it is null. The `buf` argument is a [`Buffer`][] containing the generated bytes.
+Si una función `callback` es dada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` será un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
-// Asynchronous
+// Asincrónico
 const crypto = require('crypto');
 crypto.randomBytes(256, (err, buf) => {
   if (err) throw err;
@@ -1330,10 +1330,10 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-If the `callback` function is not provided, the random bytes are generated synchronously and returned as a [`Buffer`][]. An error will be thrown if there is a problem generating the bytes.
+Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y devueltos como [`Buffer`][]. Un error será arrojado si hay un problema al generar los bytes.
 
 ```js
-// Synchronous
+// Sincrónico
 const buf = crypto.randomBytes(256);
 console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);

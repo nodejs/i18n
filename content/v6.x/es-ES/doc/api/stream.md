@@ -16,7 +16,7 @@ Se puede acceder al módulo `stream` utilizando:
 const stream = require('stream');
 ```
 
-Aunque es importante para todos los usuarios de Node.js entender como trabaja streams, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
+Aunque es importante para todos los usuarios de Node.js entender cómo trabaja streams, el módulo `stream`, en sí, es más útil para los desarrolladores que crean nuevos tipos de instancias de stream. Los desarrolladores que *consumen* principalmente objetos de stream rara vez (o nunca) tienen la necesidad de utilizar el módulo `stream` directamente.
 
 ## Organización de este Documento
 
@@ -167,7 +167,7 @@ No todos los streams Escribibles emitirán el evento `'close'`.
 added: v0.9.4
 -->
 
-Si una llamanda a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento de `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
+Si una llamada a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento de `'drain'` se emitirá cuando sea apropiado reanudar la escritura de datos en el stream.
 
 ```js
 // Escribe los datos en el stream escribible suministrado un millón de veces.
@@ -215,7 +215,7 @@ El evento de `'error'` se emite si un error se produjo mientras se escribían o 
 added: v0.9.4
 -->
 
-El evento de `'finish'` se emite después de que el método [`stream.end()`](#stream_writable_end_chunk_encoding_callback) ha sido llamado, y todos los datos a los que se les ha hecho flush en el sistema subyacente.
+El evento `'finish'` es emitido después que el método [`stream.end()`](#stream_writable_end_chunk_encoding_callback) ha sido llamado, y todos los datos han sido vaciados al sistema subyacente.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -277,7 +277,7 @@ added: v0.11.2
 
 El método `writable.cork()` fuerza a que todos los datos escribibles sean almacenados en la memoria. Los datos almacenados en buffer se vaciarán cuando se llamen los métodos [`stream.uncork()`][] o [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-The primary intent of `writable.cork()` is to avoid a situation where writing many small chunks of data to a stream do not cause a backup in the internal buffer that would have an adverse impact on performance. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
+La intención principal de `writable.cork()` es evitar una situación en la que escribir muchas piezas pequeñas de datos al stream no cause una copia de seguridad en el buffer interno, eso tendría un impacto adverso en el rendimiento. En tales situaciones, las implementaciones que utilizan el método `writable._writev()` pueden realizar escrituras almacenadas en buffer de una manera más optimizada.
 
 Vea también: [`writable.uncork()`][].
 
@@ -291,7 +291,7 @@ added: v0.9.4
 * `encoding` {string} La codificación, si `chunk` es un String
 * `callback` {Function} Callback opcional para cuando el stream se finalice
 
-Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir un último fragmento adicional de datos inmediatamente antes de cerrar el stream. Si se proporciona, la función `callback` opcional se adjunta como un listener para el evento de [`'finish'`][].
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [Escribible](#stream_class_stream_writable). Los argumentos `chunk` y `encoding` opcionales permiten escribir una última pieza adicional de datos inmediatamente antes de cerrar el stream. Si se proporciona, la función `callback` opcional se adjunta como un listener para el evento de [`'finish'`][].
 
 Llamar al método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) levantará un error.
 
@@ -340,7 +340,7 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // The data will not be flushed until uncork() is called a second time.
+  // Los datos no se vaciarán hasta que se llame a uncork() por segunda vez.
   stream.uncork();
 });
 ```
@@ -355,14 +355,14 @@ added: v0.9.4
 
 * `chunk` {string|Buffer} Los datos a escribir
 * `encoding` {string} La codificación, si `chunk` es un String
-* `callback` {Function} Callback para cuando este fragmento de datos se vacíe
-* Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
+* `callback` {Function} Callback para cuando esta pieza de datos se vacíe
+* Devuelve: {boolean} `false` si el stream desea que el código de llamada espere a que se emita el evento de `'drain'` antes de continuar escribiendo datos adicionales; de lo contrarió es `true`.
 
-The `writable.write()` method writes some data to the stream, and calls the supplied `callback` once the data has been fully handled. If an error occurs, the `callback` *may or may not* be called with the error as its first argument. To reliably detect write errors, add a listener for the `'error'` event.
+El método `writable.write()` escribe algunos datos en el stream, y llama al `callback` suministrado una vez que los datos se han manejado completamente. Si se produce un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. Para detectar confiablemente errores de escritura, agregue un listener para el evento de `'error'`.
 
-The return value is `true` if the internal buffer is less than the `highWaterMark` configured when the stream was created after admitting `chunk`. If `false` is returned, further attempts to write data to the stream should stop until the [`'drain'`][] event is emitted.
+El valor devuelto es `true` si el buffer interno es menor que el `highWaterMark` configurado cuando se creó el stream después de admitir el `chunk`. Si se devuelve `false`, los intentos adicionales para escribir datos en el stream deberían detenerse hasta que el evento de [`'drain'`][] se emita.
 
-While a stream is not draining, calls to `write()` will buffer `chunk`, and return false. Once all currently buffered chunks are drained (accepted for delivery by the operating system), the `'drain'` event will be emitted. It is recommended that once write() returns false, no more chunks be written until the `'drain'` event is emitted. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
+While a stream is not draining, calls to `write()` will buffer `chunk`, and return false. Once all currently buffered chunks are drained (accepted for delivery by the operating system), the `'drain'` event will be emitted. Se recomienda que una vez que write() devuelva “false”, no se escriban más piezas hasta que se emita el evento de `'drain'`. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
 
 Writing data while the stream is not draining is particularly problematic for a [Transform](#stream_class_stream_transform), because the `Transform` streams are paused by default until they are piped or an `'data'` or `'readable'` event handler is added.
 
@@ -385,59 +385,59 @@ write('hello', () => {
 
 A Writable stream in object mode will always ignore the `encoding` argument.
 
-### Readable Streams
+### Streams Legibles
 
-Readable streams are an abstraction for a *source* from which data is consumed.
+Los streams legibles son una abstracción para una *fuente* a partir de la cual se consumen los datos.
 
-Examples of Readable streams include:
+Los ejemplos de streams Legibles incluyen:
 
-* [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
-* [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
-* [fs read streams](fs.html#fs_class_fs_readstream)
+* [respuestas HTTP, en el cliente](http.html#http_class_http_incomingmessage)
+* [solicitudes HTTP, en el servidor](http.html#http_class_http_incomingmessage)
+* [streams de lectura del fs](fs.html#fs_class_fs_readstream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
-* [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
+* [procesos secundarios stdout y stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
-All [Readable](#stream_class_stream_readable) streams implement the interface defined by the `stream.Readable` class.
+Todos los streams [Legibles](#stream_class_stream_readable) implementan la interfaz definida por la clase `stream.Readable`.
 
-#### Two Modes
+#### Dos Modos
 
-Readable streams effectively operate in one of two modes: flowing and paused.
+Los streams Legibles operan efectivamente en uno de dos modos: fluido y pausado.
 
-When in flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
+Cuando está en modo fluido, los datos se leen desde el sistema subyacente de manera automática y se envían a una aplicación lo más rápido posible utilizando eventos a través de las interfaz [`EventEmitter`][].
 
-In paused mode, the [`stream.read()`](#stream_readable_read_size) method must be called explicitly to read chunks of data from the stream.
+En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado explícitamente para leer piezas de datos desde el stream.
 
-All [Readable](#stream_class_stream_readable) streams begin in paused mode but can be switched to flowing mode in one of the following ways:
+Todos los streams [Legibles](#stream_class_stream_readable) comienzan en el modo pausado, pero pueden cambiarse al modo fluido de una de las siguientes maneras:
 
-* Adding a [`'data'`][] event handler.
-* Calling the [`stream.resume()`](#stream_readable_resume) method.
-* Calling the [`stream.pipe()`][] method to send the data to a [Writable](#stream_class_stream_writable).
+* Agregar un manejador de eventos de [`'data'`][].
+* Llamar al método de [`stream.resume()`](#stream_readable_resume).
+* Llamar al método de [`stream.pipe()`][] para enviar los datos a un [Escribible](#stream_class_stream_writable).
 
-The Readable can switch back to paused mode using one of the following:
+El Legible puede volver a cambiar al modo pausado utilizando uno de los siguientes:
 
 * If there are no pipe destinations, by calling the [`stream.pause()`](#stream_readable_pause) method.
 * If there are pipe destinations, by removing any [`'data'`][] event handlers, and removing all pipe destinations by calling the [`stream.unpipe()`][] method.
 
-The important concept to remember is that a Readable will not generate data until a mechanism for either consuming or ignoring that data is provided. If the consuming mechanism is disabled or taken away, the Readable will *attempt* to stop generating the data.
+El concepto importante a recordar es que un Legible no generará datos hasta que se proporcione un mecanismo para consumir o ignorar esos datos. Si el mecanismo de consumo se desactiva o se retira, el Legible *intentará* detener la generación de los datos.
 
-*Note*: For backwards compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
+*Nota*: Por razones de compatibilidad con versiones anteriores, remover los manejadores de evento de [`'data'`][] **no** pausará automáticamente el stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
 
-*Note*: If a [Readable](#stream_class_stream_readable) is switched into flowing mode and there are no consumers available to handle the data, that data will be lost. This can occur, for instance, when the `readable.resume()` method is called without a listener attached to the `'data'` event, or when a `'data'` event handler is removed from the stream.
+*Nota*: si un [Legible](#stream_class_stream_readable) se cambia al modo fluido y y no hay consumidores disponibles para manejar los datos, esos datos se perderán. Esto puedo suceder, por ejemplo, cuando el método de `readable.resume()` se llama sin un listener adjunto al evento de `'data'`, o cuando un manejador del evento de `'data'` se elimina del stream.
 
-#### Three States
+#### Tres Estados
 
-The "two modes" of operation for a Readable stream are a simplified abstraction for the more complicated internal state management that is happening within the Readable stream implementation.
+Los "dos modos" de operación para un stream Legible son una abstracción simplificada para la administración del estado interno más complicado que está ocurriendo dentro de la implementación del stream Legible.
 
-Specifically, at any given point in time, every Readable is in one of three possible states:
+Específicamente, en cualquier momento dado, cada Legible está en uno de los tres posibles estados:
 
 * `readable._readableState.flowing = null`
 * `readable._readableState.flowing = false`
 * `readable._readableState.flowing = true`
 
-When `readable._readableState.flowing` is `null`, no mechanism for consuming the streams data is provided so the stream will not generate its data. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable._readableState.flowing` to `true`, causing the Readable to begin actively emitting events as data is generated.
+Cuando `readable._readableState.flowing` es `null`, ningún mecanismo para consumir los datos de los streams se proporciona, así que el stream no generará sus datos. Mientras se encuentre en este estado, adjuntar un listener para el eventos de `'data'`, llamar al método `readable.pipe()`, o llamar al método `readable.resume()` cambiará `readable._readableState.flowing` a `true`, causando que el Legible comience a emitir eventos activamente a medida que se generan los datos.
 
 Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable._readableState.flowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable._readableState.flowing` to switch to `true`.
 

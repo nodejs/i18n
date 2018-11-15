@@ -205,7 +205,7 @@ added: v0.5.0
   * `env` {Object} Environment key-value pairs.
   * `execPath` {string} Executable used to create the child process.
   * `execArgv` {Array} List of string arguments passed to the executable. **Default:** `process.execArgv`
-  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Default:** `false`
+  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`
   * `stdio` {Array} Supports the array version of [`child_process.spawn()`][]'s [`stdio`][] option. When this option is provided, it overrides `silent`. The array must contain exactly one item with value `'ipc'` or an error will be thrown. For instance `[0, 1, 2, 'ipc']`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
@@ -499,7 +499,7 @@ added: v0.11.12
   * [`maxBuffer`][] {number} Largest amount of data (in bytes) allowed on stdout or stderr - if exceeded child process is killed.
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `'cmd.exe'` on Windows. A different shell can be specified as a string. The shell should understand the `-c` switch on UNIX, or `/s /c` on Windows. **Default:** to `false` (no shell).
-* Returns: {Object} 
+* Devuelve: {Object} 
   * `pid` {number} Pid of the child process.
   * `output` {Array} Array of results from stdio output.
   * `stdout` {Buffer|string} The contents of `output[1]`.

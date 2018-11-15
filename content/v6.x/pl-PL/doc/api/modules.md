@@ -438,16 +438,16 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-Aby zilustrować zachowanie, wyobraź sobie tę hipotetyczną implementację `require ()`, która jest bardzo podobna do tego, co faktycznie zostało wykonane przez `require ()`:
+Aby zilustrować zachowanie, wyobraź sobie tę hipotetyczną implementację `require()`, która jest bardzo podobna do tego, co faktycznie zostało wykonane przez `require ()`:
 
 ```js
 function require(/* ... */) {
   const module = { exports: {} };
   ((module, exports) => {
     // Your module code here. In this example, define a function.
-    funkcja someFunc () {}
-     eksport = someFunc;
-     // W tym momencie eksport nie jest już skrótem do module.exports i
+    funkcja someFunc() {}
+     exports = someFunc;
+     // W tym momencie exports nie jest już skrótem do module.exports i
      // ten moduł będzie nadal eksportował pusty obiekt domyślny.
     module.exports = someFunc;
      // W tym momencie moduł wyeksportuje someFunc, zamiast
@@ -506,7 +506,7 @@ added: v0.5.1
 * `id` {string}
 * Returns: {Object} `module.exports` from the resolved module
 
-Metoda `module.require` zapewnia sposób, aby załadować moduł, jak gdyby `require ()` został wywołany z oryginalnego modułu.
+Metoda `module.require` zapewnia sposób, aby załadować moduł, jak gdyby `require()` został wywołany z oryginalnego modułu.
 
 Zauważ, że aby to zrobić, musisz uzyskać odwołanie do `modułu` obiektu. Ponieważ `require ()` zwraca ` module.exports`, a `module` jest zazwyczaj *tylko* dostępny w ramach danego modułu kodu, musi być jawnie wyeksportowany, aby mógł być użyty.
 

@@ -1,4 +1,4 @@
-# File System
+# Файловая система
 
 <!--introduced_in=v0.10.0-->
 

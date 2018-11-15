@@ -488,7 +488,7 @@ added: v6.1.0
 -->
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Returns: {Object} 
+* Devuelve: {Object} 
     * `user` {integer}
     * `system` {integer}
 
@@ -514,7 +514,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Returns: {string}
+* Devuelve: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -814,7 +814,7 @@ if (process.getegid) {
 added: v2.0.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -832,7 +832,7 @@ if (process.geteuid) {
 added: v0.1.31
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -972,7 +972,7 @@ As with [`require.main`][], `process.mainModule` will be `undefined` if there is
 added: v0.1.16
 -->
 
-* Returns: {Object} 
+* Devuelve: {Object} 
     * `rss` {integer}
     * `heapTotal` {integer}
     * `heapUsed` {integer}
@@ -1441,7 +1441,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 

@@ -318,9 +318,9 @@ Creates a new socket object.
 
 * `options` {Object} Available options are: 
   * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Predeterminado:** `false`
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Predeterminado:** `false`
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Predeterminado:** `false`
 * Returns: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
@@ -831,8 +831,8 @@ added: v0.5.0
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Predeterminado:** `false`
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Predeterminado:** `false`
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
 * Returns: {net.Server}
 

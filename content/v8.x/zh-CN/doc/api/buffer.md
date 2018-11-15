@@ -45,7 +45,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 * 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
-由于 `new Buffer()` 的行为会因第一个传递参数的值的类型而显著改变，对于未能正确验证传递给 `new Buffer()` 的输入参数，或者不能正确初始化新分配的 `Buffer` 的内容的应用程序，会不可避免的将安全和可靠性问题引入到代码中。
+由于 `new Buffer()` 的行为会因第一个传递参数值的类型而变化很大，对于未能正确验证传递给 `new Buffer()` 的输入参数，或者不能正确初始化新分配的 `Buffer` 的内容的应用程序，会不可避免的将安全和可靠性问题引入到代码中。
 
 为使 `Buffer` 实例的创建更加可靠且不易出错，不同形式的 `new Buffer()` 构造器已被 **弃用**并被不同的 `Buffer.from()`， [`Buffer.alloc()`]，和 [`Buffer.allocUnsafe()`] 方法所替代。
 
@@ -56,7 +56,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 * [`Buffer.from(buffer)`] 返回一个包含给定 `Buffer` 内容*副本*的新的`Buffer`。
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个包含给定字符串 *副本* 的新的 `Buffer`。
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 没个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 每个都返回一个给定 `大小` 的新的 `Buffer`，该 `Buffer` 的内容 *必须* 使用 [`buf.fill(0)`][<0>buf.fill()</0>] 或通过全部写入数据来初始化。
 
 如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
 
@@ -66,7 +66,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 added: v5.10.0
 -->
 
-Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能在性能上具有显著的影响*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
+Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能明显影响性能*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
 
 例如：
 
@@ -145,7 +145,7 @@ changes:
 
 1. `Buffer` 对象的内存是被复制到 [`TypedArray`] 中的，而不是共享的。
 
-2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含一个元素 `[0x1020304]` 或 `[0x4030201]` 的 [`Uint32Array`]。
+2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含 `[0x1020304]` 或 `[0x4030201]` 一个元素的 [`Uint32Array`]。
 
 也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享相同已分配内存的 <0>Buffer</0>。
 
@@ -201,11 +201,11 @@ console.log(buf.length);
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and ES6 iteration
+## Buffers和ES6迭代
 
-`Buffer` instances can be iterated over using the [`ECMAScript 2015`] (ES6) `for..of` syntax.
+`Buffer`实例可以通过使用[`ECMAScript 2015`] (ES6) 中的`for..of`进行迭代。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
@@ -219,11 +219,11 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+而且，可以通过 [`buf.values()`], [`buf.keys()`], 和 [`buf.entries()`] 方法来创建迭代器。
 
 ## Class: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+`Buffer` 类是一个直接处理二进制数据的全局类型。 它能够以多种方式构建。
 
 ### new Buffer(array)
 
@@ -239,13 +239,13 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(array)`]。
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} 要从中复制的字节数组。
 
-Allocates a new `Buffer` using an `array` of octets.
+使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
@@ -270,17 +270,17 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuffer)`]。
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
+* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`
+* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+可选的 `byteOffset` 和 `length` 参数指定 `arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(2);
@@ -315,13 +315,13 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(buffer)`]。
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
 
-Example:
+例如：
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -353,15 +353,15 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.alloc()`]（也请参阅 [`Buffer.allocUnsafe()`]）。
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，且 *可能包含敏感数据*。 使用 [`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = new Buffer(10);
@@ -384,14 +384,14 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]。
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `string` {string} 要编码的字符串。
+* `encoding` {string} `string` 的编码。 **默认值: ** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+创建一个包含给定 JavaScript 字符串 `string` 的新的 `Buffer`。 如果提供，`encoding` 参数指定 `string` 的字符编码方式。
 
-Examples:
+例如：
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -409,7 +409,7 @@ const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 console.log(buf2.toString());
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Class 方法：Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
@@ -421,13 +421,13 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
+* `size` {integer} 新建 `Buffer` 的所需长度。
+* `fill` {string|Buffer|integer} 用来预填充新建 `Buffer` 的值。 **默认值：** `0`
+* `encoding` {string} 如果 `fill` 是字符串，则该值是它的编码方式。 **默认值：** `'utf8'`
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `fill` 是 `未定义的`，则 `Buffer` 将会被 *0 填充*。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(5);
@@ -436,11 +436,11 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+如果指定了 `fill`，则会调用 [`buf.fill(fill)`][`buf.fill()`] 初始化已分配的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(5, 'a');
@@ -449,9 +449,9 @@ const buf = Buffer.alloc(5, 'a');
 console.log(buf);
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+如果同时指定了 `fill` 和 `encoding`，则会调用 [`buf.fill(fill, encoding)`][`buf.fill()`] 初始化已分配的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
@@ -460,11 +460,11 @@ const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 console.log(buf);
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+调用 [`Buffer.alloc()`] 会明显比另一个方法 [`Buffer.allocUnsafe()`] 慢，但是能够确保新建 `Buffer` 实例的内容 *不会包含敏感数据*。
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.allocUnsafe(size)
+### Class 方法：Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -475,13 +475,13 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] ，而不是用 0 初始化 `Buffer` 实例。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -495,29 +495,29 @@ buf.fill(0);
 console.log(buf);
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
+请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 该快速分配池将被用于使用 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用已弃用的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
 
-Use of this pre-allocated internal memory pool is a key difference between calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`] provides.
+对于这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体的说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外性能时，这个细微的区别是非常重要的。
 
-### Class Method: Buffer.allocUnsafeSlow(size)
+### Class 方法：Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances to zeroes.
+以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`buf.fill(0)`][`buf.fill()`] 来用 0 初始化 `Buffer` 实例。
 
-When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are, by default, sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and cleanup as many `Persistent` objects.
+当使用 [`Buffer.allocUnsafe()`] 分配新建的 `Buffer` 实例时，当分配的内存小于 4KB 时，默认情况下会从一个单一的预先分配的 `Buffer` 中切割出来。 这使得应用程序可以避免因创建太多单独分配的 `Buffer` 实例而过度使用垃圾回收机制。 这个方法像大多数`持久`对象一样通过消除追踪与清理的需求，改善了性能与内存的使用。
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
+然而，当开发者可能需要在不确定的时间段里从内存池中保留一小块内存的情况下，使用 `Buffer.allocUnsafeSlow()` 创建不使用内存池的 `Buffer` 实例，然后拷贝出相关的位是非常恰当的创建方法。
 
-Example:
+例如：
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -536,11 +536,11 @@ socket.on('readable', () => {
 });
 ```
 
-Use of `Buffer.allocUnsafeSlow()` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` 应当只作为当开发者在他们的应用程序中观察到过度的内存保留*之后*的终极手段使用。
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Class 方法：Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -555,15 +555,15 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {integer} The number of bytes contained within `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
+* `encoding` {string} 如果 `string` 是字符串，则该值是它的编码方式。 **默认值: ** `'utf8'`
+* 返回：{integer} `string` 包含的字节数。
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为该属性返回的是字符串中的 *字符* 数。
 
-*Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+*注意：*：对于 `'base64'` 和 `'hex'`，此函数假定输入有效。 对于包含 non-Base64/Hex-encoded 数据（例如：空格）的字符串，返回值可能大于从字符串创建的 `Buffer` 的长度。
 
-Example:
+例如：
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -573,9 +573,9 @@ console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Class 方法：Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -588,11 +588,11 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* 返回：{integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
-Example:
+例如：
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -2432,7 +2432,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 

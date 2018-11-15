@@ -362,7 +362,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### url.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -370,7 +370,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Returns: {string}
+* Devuelve: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -651,7 +651,7 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
@@ -687,7 +687,7 @@ added: v7.4.0, v6.13.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -710,7 +710,7 @@ added: v7.4.0, v6.13.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 

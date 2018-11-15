@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-To use the HTTP server and client one must `require('http')`.
+Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
-HTTP message headers are represented by an object like this:
+Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
 <!-- eslint-skip -->
 
@@ -20,13 +20,13 @@ HTTP message headers are represented by an object like this:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Keys are lowercased. I valori non vengono modificati.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node.js è di livello molto basso. Si occupa esclusivamente della gestione dello stream e dell'analisi dei messaggi. Analizza un messaggio nelle intestazioni e nel corpo ma non analizza le intestazioni effettive o il corpo.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Vedere [` message.headers`][] per i dettagli su come vengono gestiti le intestazioni duplicate.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
 
 <!-- eslint-disable semi -->
 
@@ -45,25 +45,25 @@ The raw headers as they were received are retained in the `rawHeaders` property,
 added: v0.3.4
 -->
 
-An `Agent` is responsible for managing connection persistence and reuse for HTTP clients. It maintains a queue of pending requests for a given host and port, reusing a single socket connection for each until the queue is empty, at which time the socket is either destroyed or put into a pool where it is kept to be used again for requests to the same host and port. Whether it is destroyed or pooled depends on the `keepAlive` [option](#http_new_agent_options).
+Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la coda non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool non verranno rimossi per non mantenere in esecuzione il processo Node.js quando non ci sono richieste in sospeso. (vedi [`socket.unref()`]).
 
-It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
+È buona prassi [`destroy()`][] un'istanza `Agent` quando non è più in uso, poiché i socket inutilizzati consumano risorse del sistema operativo.
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+I socket vengono rimossi da un agente quando il socket emette un evento `'close'` o un evento `'agentRemove'`. Quando si intende mantenere una richiesta HTTP aperta per un lungo periodo senza tenerla nell'agente, si può fare qualcosa di simile a quanto segue:
 
 ```js
 http.get(options, (res) => {
-  // Do stuff
+  // Fai operazione
 }).on('socket', (socket) => {
   socket.emit('agentRemove');
 });
 ```
 
-An agent may also be used for an individual request. By providing `{agent: false}` as an option to the `http.get()` or `http.request()` functions, a one-time use `Agent` with default options will be used for the client connection.
+Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` one-time con opzioni predefinite per la connessione client.
 
 `agent:false`:
 
@@ -74,7 +74,7 @@ http.get({
   path: '/',
   agent: false  // create a new agent just for this one request
 }, (res) => {
-  // Do stuff with response
+  // Fai operazione con risposta
 });
 ```
 
@@ -84,15 +84,15 @@ http.get({
 added: v0.3.4
 -->
 
-* `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
-  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **Default:** `false`.
-  * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
-  * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
-  * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
+* `options` {Object} Set di opzioni configurabili da impostare sull'agente. Può avere i seguenti campi: 
+  * `keepAlive` {boolean} Mantiene i socket attivi anche quando non ci sono richieste in sospeso, in modo che possano essere utilizzate per richieste future senza dover ristabilire una connessione TCP. **Default:** `false`.
+  * `keepAliveMsecs` {number} Quando si utilizza l'opzione `keepAlive`, specifica il [ritardo iniziale](net.html#net_socket_setkeepalive_enable_initialdelay) per i pacchetti Keep-alive TCP. Ignorato quando l'opzione `keepAlive` è `false` o `undefined`. **Default:** `1000`.
+  * `maxSockets` {number} Numero massimo di socket da consentire per host. **Default:** `Infinity`.
+  * `maxFreeSockets` {number} Numero massimo di socket da lasciare aperti in uno stato libero. Rilevante solo se `keepAlive` è impostato su `true`. **Default:** `256`.
 
-The default [`http.globalAgent`][] that is used by [`http.request()`][] has all of these values set to their respective defaults.
+L'[`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
 
-To configure any of them, a custom [`http.Agent`][] instance must be created.
+Per configurarne uno qualsiasi, è necessario creare un'istanza [`http.Agent`][] personalizzata.
 
 ```js
 const http = require('http');
@@ -107,7 +107,7 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
+* `options` {Object} Opzioni contenenti i dettagli di connessione. Controllare [`net.createConnection(`][]) per il formato delle opzioni
 * `callback` {Function} Callback function that receives the created socket
 * Returns: {net.Socket}
 

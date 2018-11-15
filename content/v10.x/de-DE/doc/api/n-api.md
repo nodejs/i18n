@@ -638,13 +638,13 @@ Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exc
 
 In einigen Fällen muss ein Addon in der Lage sein, Objekte mit einer längeren Lebensdauer als die einer einzigen nativen Methodenaufrufung zu erstellen und zu referenzieren. Um beispielsweise einen Konstruktor anzulegen und diesen Konstruktor später in einem Request zum Erzeugen von Instanzen zu verwenden, muss es möglich sein, das Konstruktorobjekt über viele verschiedene Instanzerstellungsrequests hinweg zu referenzieren. Dies wäre nicht möglich, wenn, wie im vorigen Abschnitt beschrieben, ein normales Handle als `napi_value` zurückgesendet würde. Die Lebensdauer eines normalen Handles wird von Scopes verwaltet und alle Scopes müssen vor dem Ende einer nativen Methode geschlossen werden.
 
-N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat eine zugehörige Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt gesammelt wird und oft als "schwache" Referenzen bezeichnet werden. Jeder Zählwert größer als 0 verhindert, dass das Objekt gesammelt wird.
+N-API bietet Methoden zum Erstellen persistenter Referenzen auf ein Objekt. Jede persistente Referenz hat einen zugehörigen Zählwert mit einem Wert von 0 oder höher. Der Zählwert bestimmt, ob die Referenz das entsprechende Objekt am Leben erhält. Referenzen mit einem Zählwert von 0 verhindern nicht, dass das Objekt erfasst und oft als "schwache" Referenzen bezeichnet wird. Jeder Zählwert größer als 0 verhindert, dass das Objekt erfasst wird.
 
-Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt gesammelt wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den zurückgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt gesammelt wurde, führt zu einem Fehler.
+Referenzen können mit einem anfänglichen Referenzzählwert erstellt werden. Der Zählwert kann durch [`napi_reference_ref`][] und [`napi_reference_unref`][] modifiziert werden. Wenn ein Objekt erfasst wird, während der Zählwert für eine Referenz 0 ist, geben alle nachfolgenden Aufrufe, um das Objekt zur Referenz [`napi_get_reference_value`][] zuzuordnen, NULL für den ausgegebenen `napi_value` zurück. Ein Versuch, [`napi_reference_ref`][] für eine Referenz aufzurufen, deren Objekt erfasst wurde, führt zu einem Fehler.
 
-Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt gesammelt wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
+Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt werden. Wenn eine Referenz gelöscht wird, verhindert sie nicht mehr, dass das entsprechende Objekt erfasst wird. Wenn eine persistente Referenz nicht gelöscht wird, führt dies zu einem "Memory Leak", bei dem sowohl der native Speicher für die persistente Referenz, als auch das entsprechende Objekt auf dem Heap für immer erhalten bleiben.
 
-Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinen individuellen Zählwert basiert.
+Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinem individuellen Zählwert basiert.
 
 #### napi_create_reference
 
@@ -681,11 +681,11 @@ NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, die gelöscht werden soll.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API löscht die eingegebene Referenz.
 
-Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_reference_ref
 
@@ -705,7 +705,7 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-Diese API erhöht den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierende Referenzzählwert zurück.
+Diese API erhöht den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierenden Referenzzählwert zurück.
 
 #### napi_reference_unref
 
@@ -720,12 +720,12 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] ref`: `napi_ref` for which the reference count will be decremented.
-- `[out] result`: The new reference count.
+- `[in] ref`: `napi_ref`, für die der Referenzzählwert verringert wird.
+- `[out] result`: Der neue Referenzzählwert.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API decrements the reference count for the reference passed in and returns the resulting reference count.
+Diese API verringert den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierenden Referenzzählwert zurück.
 
 #### napi_get_reference_value
 
@@ -739,33 +739,33 @@ NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
                                                  napi_value* result);
 ```
 
-the `napi_value passed` in or out of these methods is a handle to the object to which the reference is related.
+Die `napi_value`, die in oder aus diesen Methoden übertragen wird, ist ein Handle für das Objekt, auf das sich die Referenz bezieht.
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which we requesting the corresponding `Object`.
-- `[out] result`: The `napi_value` for the `Object` referenced by the `napi_ref`.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] ref`: `napi_ref`, für die wir das entsprechende `Object` anfordern.
+- `[out] result`: Die `napi_value` für das `Object` referenziert durch die `napi_ref`.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-If still valid, this API returns the `napi_value` representing the JavaScript `Object` associated with the `napi_ref`. Otherwise, result will be NULL.
+Wenn diese API noch gültig ist, gibt sie die `napi_value` zurück, das das JavaScript-`Object` repräsentiert, das dem `napi_ref` zugeordnet ist. Andernfalls ist das Ergebnis NULL.
 
-## Module registration
+## Modulregistrierung
 
-N-API modules are registered in a manner similar to other modules except that instead of using the `NODE_MODULE` macro the following is used:
+N-API-Module werden ähnlich wie andere Module registriert, nur dass anstatt des `NODE_MODULE`-Makros Folgendes verwendet wird:
 
 ```C
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-The next difference is the signature for the `Init` method. For a N-API module it is as follows:
+Der nächste Unterschied ist die Signatur für die `Init`-Methode. Für ein N-API-Modul sieht es wie folgt aus:
 
 ```C
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-The return value from `Init` is treated as the `exports` object for the module. The `Init` method is passed an empty object via the `exports` parameter as a convenience. If `Init` returns NULL, the parameter passed as `exports` is exported by the module. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
+Der Rückgabewert von `Init` wird als das `exports`-Objekt für das Modul behandelt. Der `Init`-Methode wird ein leeres Objekt über den `exports`-Parameter zur Vereinfachung übergeben. Wenn `Init` NULL zurückgibt, wird der als `exports` übergebene Parameter vom Modul exportiert. N-API-Module können das `module`-Objekt nicht ändern, können aber alles als `exports`-Eigenschaft des Moduls angeben.
 
-To add the method `hello` as a function so that it can be called as a method provided by the addon:
+Hinzufügen der `hello`-Methode als Funktion, sodass sie als eine vom Addon bereitgestellte Methode aufgerufen werden kann:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -778,7 +778,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To set a function to be returned by the `require()` for the addon:
+Um eine Funktion festzulegen, die von `require()` für das Addon zurückgegeben wird:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -790,10 +790,10 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
+Um eine Klasse zu definieren, sodass neue Instanzen erstellt werden können (oft verwendet mit [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOTE: partial example, not all referenced code is included
+// BEACHTE: Teilbeispiel, nicht alle erwähnten Codes sind enthalten.
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
@@ -817,7 +817,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-If you expect that your module will be loaded multiple times during the lifetime of the Node.js process, you can use the `NAPI_MODULE_INIT` macro to initialize your module:
+Wenn Sie erwarten, dass Ihr Modul während der Lebensdauer des Node.js-Prozesses mehrmals geladen wird, können Sie das `NAPI_MODULE_INIT`-Makro verwenden, um Ihr Modul zu initialisieren:
 
 ```C
 NAPI_MODULE_INIT() {
@@ -834,15 +834,15 @@ NAPI_MODULE_INIT() {
 }
 ```
 
-This macro includes `NAPI_MODULE`, and declares an `Init` function with a special name and with visibility beyond the addon. This will allow Node.js to initialize the module even if it is loaded multiple times.
+Dieses Makro beinhaltet `NAPI_MODULE` und deklariert eine `Init`-Funktion mit einem speziellen Namen und mit einer Sichtbarkeit über das Addon hinaus. Dies ermöglicht es Node.js, das Modul zu initialisieren, auch wenn es mehrfach geladen wird.
 
-The variables `env` and `exports` will be available inside the function body following the macro invocation.
+Die Variablen `env` und `exports` sind nach dem Aufrufen des Makros im Funktionsbody verfügbar.
 
-For more details on setting properties on objects, see the section on [Working with JavaScript Properties](#n_api_working_with_javascript_properties).
+Weitere Informationen zum Einstellen der Eigenschaften von Objekten finden Sie im Abschnitt über [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_properties).
 
-For more details on building addon modules in general, refer to the existing API.
+Weitere Informationen zum Erstellen von Addon-Modulen im Allgemeinen finden Sie in der bestehenden API.
 
-## Working with JavaScript Values
+## Arbeiten mit JavaScript-Eigenschaften
 
 N-API exposes a set of APIs to create all types of JavaScript values. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 

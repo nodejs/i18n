@@ -1,49 +1,49 @@
 # Руководство по стилю
 
-* Документация, написанная в отмеченных файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
+* Документация, написанная в markdown файлах с названиями, отформатированными как `строчные буквы-с-тире.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+  * Некоторые файлы, такие как markdown файлы высокого уровня, являются исключением.
+* Переход на новую строку в документах ограничена 80 символами.
+* Форматирование, описанное в `.editorconfig`, является предпочтительным. 
+  * [plugin](http://editorconfig.org/#download) доступен для некоторых редакторов, чтобы автоматически применять эти правила.
+* Механические проблемы, такие как орфография и грамматика, должны определяться инструментами (tools), насколько это возможно. Если не обнаружены с помощью инструмента, они должны быть отмечены рецензентами.
+* Предпочтительна американская орфография английского языка. "Capitalize" против "Capitalise", "color" против "colour", и т. д.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading. An example document will be linked here eventually.
-* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
-* When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Including assets: 
-  * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
-  * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
-* For code blocks: 
-  * Use language aware fences. ("```js")
-  * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
-* When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
-* References to constructor functions should use PascalCase.
-* References to constructor instances should use camelCase.
-* References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
+* Избегайте личных местоимений в справочной документации ("я", "вы", "мы"). 
+  * Местоимения допустимы в более нелитературной документации, такой как руководства.
+  * Используйте гендерно-нейтральные местоимения и имена нарицательные. Некоторые примеры: 
+    * ПРАВИЛЬНО: "они", "их", "им", "народ", "люди", "разработчики", "кошки"
+    * НЕПРАВИЛЬНО: "его", "её", "ему", "ей", "ребята", "чуваки"
+* При сочетании парных знаков препинания (скобки и кавычки), завершающий знак препинания должен располагаться: 
+  * Внутри парных знаков препинания, если заключенные внутри элементы составляют полное предложение - подлежащее, сказуемое и определение.
+  * Вне парных знаков препинания, если внутри заключена только часть предложения.
+* Знак, завершающий предложение, помещайте внутри парных знаков препинания - точка ставится внутри скобок и кавычек, не после.
+* Документы должны начинаться с заголовка первого уровня. Пример документа будет прикреплен здесь в конечном итоге.
+* Предпочтительно прикреплять ссылки, а не встраивать - предпочтение `[a link][]` к `[a link](http://example.com)`.
+* При документировании API, обратите внимание, когда была предоставлена версия API в конце раздела. Если API устарел, обратите также внимание на первую версию, в которой устаревший API появился.
+* При использовании тире, используйте [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" или `Option+Shift+"-"` на macOS), окруженный пробелами, согласно с [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
+* Включая активы: 
+  * Если вы хотите добавить иллюстрацию или целую программу, добавьте ее к соответствующему подкаталогу в `assets/` dir.
+  * Ссылка на это так: `[Asset](/assets/{subdir}/{filename})` для файловых активов, и `![Asset](/assets/{subdir}/{filename})` для активов образов.
+  * Для иллюстраций предпочтительней SVG другим активам. Когда невозможно применить SVG, пожалуйста, внимательно следите за размером файла актива, который вы вставляете.
+* Для блоков кода: 
+  * Используйте языковые барьеры. ("```js")
+  * Код не должен быть полным - рассмотрите блоки кода как иллюстрацию или помощь для вашей точки, а не как полные запущенные программы. Если нужна полная работающая программа, включите ее как актив `assets/code-examples` и сделайте ссылку на него.
+* При использовании символов нижнего подчеркивания, звездочки и обратных кавычек, пожалуйста, используйте правильные выделения (`\_`, `\*` и `` \` `` вместо `_`, `*` и `` ` ``).
+* Ссылки на функции разработчика должны использовать PascalCase.
+* Ссылки на экземпляры разработчика должны использовать PascalCase.
+* Ссылки на методы должны быть с использованием скобок: например, `socket.end()` вместо `socket.end`.
 * To draw special attention to a note, adhere to the following guidelines: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
   * Use a capital letter after the "Note:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
-* Function arguments or object properties should use the following format: 
-  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
+* Параметры функций и свойства объекта должны использовать следующий формат: 
+  * `* \<code>name` {type|type2} Дополнительное описание. **Default:** `defaultValue`</code>
+  * Например, `* <code>byteOffset` {integer} Индекс первого байта для отображения. **Default:** `0`</code>
+  * `тип` должен ссылаться на тип Node.js или [тип JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+* Функция обратной связи должна иметь следующий формат: 
+  * `* Возврат: {type|type2} Дополнительное описание.`
+  * Например, `* Возврат: {AsyncHook} Ссылка на <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
   * OK: JavaScript, Google's V8
   * NOT OK: Javascript, Google's v8

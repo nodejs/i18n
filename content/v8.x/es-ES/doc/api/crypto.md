@@ -1191,7 +1191,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de casa curva elíptica disponible.
+Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1202,7 +1202,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
 
-Crea y regresa un objeto `Hash` que puede ser usada para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
+Crea y regresa un objeto `Hash` que puede ser usado para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
@@ -1240,7 +1240,7 @@ Crea y regresa un objeto `Hmac` que usa el `algorithm` y la `key` dada. Optional
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Ejemplo de ellos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
-El `key` es la clave HMAC empleada para generar el hash criptográico de HMAC.
+La `key` es la clave HMAC empleada para generar el hash criptográfico de HMAC.
 
 Ejemplo: generando el HMAC sha256 de un archivo
 
@@ -1271,7 +1271,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1282,7 +1282,7 @@ added: v0.1.92
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
 
-Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHashes()`][] para obtener una matríz de nombres de los algoritmos de firmas disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y regresa un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.getCiphers()
 
@@ -1290,7 +1290,7 @@ Crea y regresa un objeto `Verify` que usa el algoritmo dado. Usa [`crypto.getHas
 added: v0.9.3
 -->
 
-Regresa una matriz con los nombres de los algoritmos cifrados respaldados.
+Regresa un array con los nombres de los algoritmos cifrados respaldados.
 
 Ejemplo:
 
@@ -1305,7 +1305,7 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-Regresa una matriz con los nombres de las curvas elípticas respaldadas.
+Regresa un array con los nombres de las curvas elípticas respaldadas.
 
 Ejemplo:
 
@@ -1322,7 +1322,7 @@ added: v0.7.5
 
 - `groupName` {string}
 
-Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero se ve [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita el interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirpa cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
+Crea un objeto de intercambio de clave predeterminada `DiffieHellman`. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero vea [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita la interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirá cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -1337,7 +1337,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* El Secreto de Alice y el de Bob deben ser iguales*/
+/* aliceSecret y bobSecret deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1347,7 +1347,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
+Devuelve un array con los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1356,7 +1356,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
+### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
 
 <!-- YAML
 added: v0.5.5
@@ -1384,13 +1384,13 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
 La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1402,7 +1402,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
@@ -1428,13 +1428,13 @@ changes:
 - `keylen` {number}
 - `digest` {string}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Proporciona una implementación sincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
-If an error occurs an Error will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1444,7 +1444,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1529,12 +1529,12 @@ added: v0.5.8
   - `err` {Error}
   - `buf` {Buffer}
 
-Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
+Genera datos pseudoaleatorios criptográficamente fuertes. El argumento `size` es un número que indica el número de bytes a generar.
 
-If a `callback` function is provided, the bytes are generated asynchronously and the `callback` function is invoked with two arguments: `err` and `buf`. If an error occurs, `err` will be an Error object; otherwise it is null. The `buf` argument is a [`Buffer`][] containing the generated bytes.
+Si una función `callback` es dada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si un error ocurre, `err` será un objeto de Error, de lo contrario sera nulo. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
-// Asynchronous
+// Asincrónico
 const crypto = require('crypto');
 crypto.randomBytes(256, (err, buf) => {
   if (err) throw err;
@@ -1542,10 +1542,10 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-If the `callback` function is not provided, the random bytes are generated synchronously and returned as a [`Buffer`][]. An error will be thrown if there is a problem generating the bytes.
+Si la función `callback` no es dada, los bytes aleatorios son generados sincrónicamente y devueltos como [`Buffer`][]. Un error será arrojado si hay un problema al generar los bytes.
 
 ```js
-// Synchronous
+// Sincrónico
 const buf = crypto.randomBytes(256);
 console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
@@ -1659,11 +1659,11 @@ added: v6.6.0
 - `a` {Buffer | TypedArray | DataView}
 - `b` {Buffer | TypedArray | DataView}
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin filtrar información sobre el tiempo que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
 
-*Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
+*Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
 
 ## Notes
 

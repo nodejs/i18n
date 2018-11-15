@@ -1504,7 +1504,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* El Secreto de Alice y el de Bob deben ser iguales*/
+/* aliceSecret y bobSecret deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1531,7 +1531,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
+### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
 
 <!-- YAML
 added: v0.5.5
@@ -1737,7 +1737,7 @@ Genera datos pseudo-aleatorios criptográficamente fuertes. El argumento `size` 
 Si una función `callback` es proporcionada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si ocurre un error, `err` será un objeto `Error`; de no ser así será `null`. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
-// Asynchronous
+// Asincrónico
 const crypto = require('crypto');
 crypto.randomBytes(256, (err, buf) => {
   if (err) throw err;
@@ -1748,7 +1748,7 @@ crypto.randomBytes(256, (err, buf) => {
 Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Se producirá un error si hay un problema generando los bytes.
 
 ```js
-// Synchronous
+// Sincrónico
 const buf = crypto.randomBytes(256);
 console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
@@ -1909,7 +1909,7 @@ added: v10.0.0
 
 - `bool` {boolean} `true` para habilitar el modo FIPS.
 
-Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Throws an error if FIPS mode is not available.
+Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Produce un error si el modo FIPS no está disponible.
 
 ### crypto.timingSafeEqual(a, b)
 
@@ -1921,7 +1921,7 @@ added: v6.6.0
 - `b` {Buffer | TypedArray | DataView}
 - Devuelve: {boolean}
 
-This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
+Esta función está basada en un algoritmo de tiempo constante. Devuelve true si `a` es igual a `b`, sin perder información de tiempo que le permita adivinar a un atacante uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
 
