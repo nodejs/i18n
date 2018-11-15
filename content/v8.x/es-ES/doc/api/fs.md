@@ -359,7 +359,7 @@ added: v0.1.93
 
 * `fd` {integer} Integer file descriptor used by the WriteStream.
 
-Emitted when the WriteStream's file is opened.
+Se emite cuando se abre el archivo de WriteStream.
 
 ### writeStream.bytesWritten
 
@@ -1573,7 +1573,7 @@ changes:
   * `err` {Error}
   * `folder` {string}
 
-Creates a unique temporary directory.
+Crea un único directorio temporal.
 
 Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
 
@@ -1671,11 +1671,11 @@ Asynchronous file open. See open(2). `flags` can be:
 
 * `'wx+'` - Like `'w+'` but fails if `path` exists.
 
-* `'a'` - Open file for appending. The file is created if it does not exist.
+* `'a'` - Open file for appending. El archivo se crea si no existe.
 
 * `'ax'` - Like `'a'` but fails if `path` exists.
 
-* `'a+'` - Open file for reading and appending. The file is created if it does not exist.
+* `'a+'` - Open file for reading and appending. El archivo se crea si no existe.
 
 * `'ax+'` - Like `'a+'` but fails if `path` exists.
 
@@ -2490,7 +2490,7 @@ changes:
 
 Watch for changes on `filename`. The callback `listener` will be called each time the file is accessed.
 
-The `options` argument may be omitted. If provided, it should be an object. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds. The default is `{ persistent: true, interval: 5007 }`.
+The `options` argument may be omitted. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds. The default is `{ persistent: true, interval: 5007 }`.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
@@ -2707,7 +2707,7 @@ changes:
 * `position` {integer}
 * `encoding` {string}
 
-Synchronous versions of [`fs.write()`][]. Returns the number of bytes written.
+Synchronous versions of [`fs.write()`][]. Devuelve el número de bytes escritos.
 
 ## FS Constants
 
@@ -2851,7 +2851,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IFDIR</code></td>
-    <td>File type constant for a directory.</td>
+    <td>Constante de tipo de archivo para un directorio.</td>
   </tr>
   <tr>
     <td><code>S_IFCHR</code></td>
@@ -2898,7 +2898,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>File mode indicating executable by owner.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
@@ -2914,7 +2914,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>File mode indicating executable by group.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
