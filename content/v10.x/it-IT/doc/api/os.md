@@ -244,7 +244,7 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 * `mac` {string} L'indirizzo MAC dell'interfaccia di rete
 * `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
 * `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
-* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+* `cidr` {string} L'indirizzo IPv4 o IPv6 assegnato con il prefisso di routing nella notazione CIDR. Se la `netmask` non è valida, questa proprietà è impostata su `null`.
 
 <!-- eslint-skip -->
 
@@ -295,11 +295,11 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
+Il metodo `os.platform()` restituisce una stringa che identifica la piattaforma del sistema operativo impostata durante il tempo di compilazione di Node.js.
 
-Currently possible values are:
+I valori attualmente possibili sono:
 
 * `'aix'`
 * `'darwin'`
@@ -309,9 +309,9 @@ Currently possible values are:
 * `'sunos'`
 * `'win32'`
 
-Equivalent to [`process.platform`][].
+Equivalente per [`process.platform`][].
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
+Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, il supporto Android in Node.js è considerato [per essere sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) in questo momento.
 
 ## os.release()
 
@@ -319,11 +319,11 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.release()` method returns a string identifying the operating system release.
+Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
+Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## os.tmpdir()
 
