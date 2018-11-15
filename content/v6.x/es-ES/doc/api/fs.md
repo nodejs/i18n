@@ -2025,7 +2025,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IFCHR</code></td>
-    <td>File type constant for a character-oriented device file.</td>
+    <td>Constante de tipo de archivo para un archivo de dispositivo orientado por caracteres.</td>
   </tr>
   <tr>
     <td><code>S_IFBLK</code></td>
@@ -2056,7 +2056,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
-    <td>File mode indicating readable, writable and executable by owner.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRUSR</code></td>
