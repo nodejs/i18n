@@ -234,13 +234,13 @@ added: v0.6.0
 
 Il metodo `os.networkInterfaces()` restituisce un object contenente solo le interfacce di rete a cui è stato assegnato un indirizzo di rete.
 
-Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. Il valore associato è un array degli object che descrivono ciascuno un indirizzo di rete assegnato.
+Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. Il valore associato è un array degli object che descrivono, ognuno, un indirizzo di rete assegnato.
 
 Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono:
 
 * `address` {string} L'indirizzo IPv4 o IPv6 assegnato
 * `netmask` {string} La maschera di rete IPv4 o IPv6
-* `family` {string} o `IPv4` oppure `IPv6`
+* `family` {string} O `IPv4` oppure `IPv6`
 * `mac` {string} L'indirizzo MAC dell'interfaccia di rete
 * `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
 * `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
@@ -309,9 +309,9 @@ I valori attualmente possibili sono:
 * `'sunos'`
 * `'win32'`
 
-Equivalente per [`process.platform`][].
+Equivalente a [`process.platform`][].
 
-Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, il supporto Android in Node.js è considerato [per essere sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) in questo momento.
+Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è da essere considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## os.release()
 
