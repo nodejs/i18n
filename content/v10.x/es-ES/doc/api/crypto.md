@@ -1921,7 +1921,7 @@ added: v6.6.0
 - `b` {Buffer | TypedArray | DataView}
 - Devuelve: {boolean}
 
-Esta función está basada en un algoritmo de tiempo constante. Devuelve true si `a` es igual a `b`, sin perder información de tiempo que le permita adivinar a un atacante uno de los valores. Esto es adecuado para comparar los resumenes de HMAC o los valores secretis como cookies de autenticacion o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
+Esta función está basada en un algoritmo de tiempo constante. Devuelve true si `a` es igual a `b`, sin perder información de tiempo que le permita adivinar a un atacante uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
 
