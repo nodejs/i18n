@@ -3249,7 +3249,7 @@ Parche de Semver:
 * [[`afb9917f16`](https://github.com/nodejs/node/commit/afb9917f16)] - **(SEMVER-MINOR)** **crypto**: añadir crypto.timingSafeEqual() (not-an-aardvark) [#8304](https://github.com/nodejs/node/pull/8304)
 * [[`1640e7a4da`](https://github.com/nodejs/node/commit/1640e7a4da)] - **crypto**: reparar chequeo de codificación de getDecoder() (atstojanov) [#8301](https://github.com/nodejs/node/pull/8301)
 * [[`49f996f4f6`](https://github.com/nodejs/node/commit/49f996f4f6)] - **crypto**: hacer al chequeo de fallo de malloc multiplataforma (Rich Trott) [#8352](https://github.com/nodejs/node/pull/8352)
-* [[`9c460d7475`](https://github.com/nodejs/node/commit/9c460d7475)] - **deps**: add back no-op harmony shipping flags (Ali Ijaz Sheikh) [#8445](https://github.com/nodejs/node/pull/8445)
+* [[`9c460d7475`](https://github.com/nodejs/node/commit/9c460d7475)] - **deps**: añadir de nuevo banderas de envío de harmony no-op (Ali Ijaz Sheikh) [#8445](https://github.com/nodejs/node/pull/8445)
 * [[`c8bcf1b591`](https://github.com/nodejs/node/commit/c8bcf1b591)] - **deps**: workaround clang-3.4 ICE (Ali Ijaz Sheikh) [#8343](https://github.com/nodejs/node/pull/8343)
 * [[`ac3471ca23`](https://github.com/nodejs/node/commit/ac3471ca23)] - **deps**: v8_inspector update (Eugene Ostroukhov) [#8150](https://github.com/nodejs/node/pull/8150)
 * [[`f829660c71`](https://github.com/nodejs/node/commit/f829660c71)] - **deps**: cherry-pick 8ed65b97 from V8's upstream (Anna Henningsen) [#8411](https://github.com/nodejs/node/pull/8411)
