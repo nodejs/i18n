@@ -367,7 +367,7 @@ Se emite cuando se abre el archivo de WriteStream.
 added: v0.4.7
 -->
 
-El número de bytes escritos hasta ahora. Does not include data that is still queued for writing.
+El número de bytes escritos hasta ahora. No incluye datos que todavía están en cola para escritura.
 
 ### writeStream.path
 
@@ -717,7 +717,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Synchronously changes the permissions of a file. Returns `undefined`. This is the synchronous version of [`fs.chmod()`][].
+Cambia de manera sincrónica los permisos de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
 
 Vea también: chmod(2)
 
@@ -763,7 +763,7 @@ changes:
 * `uid` {integer}
 * `gid` {integer}
 
-Synchronously changes owner and group of a file. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
 
 See also: chown(2)
 
@@ -1011,7 +1011,7 @@ fs.exists('/etc/passwd', (exists) => {
 });
 ```
 
-**Note that the parameter to this callback is not consistent with other Node.js callbacks.** Normally, the first parameter to a Node.js callback is an `err` parameter, optionally followed by other parameters. The `fs.exists()` callback has only one boolean parameter. This is one reason `fs.access()` is recommended instead of `fs.exists()`.
+**Note that the parameter to this callback is not consistent with other Node.js callbacks.** Normally, the first parameter to a Node.js callback is an `err` parameter, optionally followed by other parameters. The `fs.exists()` callback has only one boolean parameter. Esta es una razón por la que se recomienda a `fs.access()` en lugar de `fs.exists()`.
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
@@ -1681,7 +1681,7 @@ Asynchronous file open. See open(2). `flags` can be:
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created. It defaults to `0o666` (readable and writable).
 
-The callback gets two arguments `(err, fd)`.
+El callback obtiene dos argumentos `(err, fd)`.
 
 The exclusive flag `'x'` (`O_EXCL` flag in open(2)) ensures that `path` is newly created. On POSIX systems, `path` is considered to exist even if it is a symlink to a non-existent file. The exclusive flag may or may not work with network file systems.
 
@@ -1705,7 +1705,7 @@ fs.open('<directory>', 'a+', (err, fd) => {
 
 Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
+Las funciones basadas en `fs.open()` también exhiben este comportamiento. eg. `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
@@ -1759,7 +1759,7 @@ Read data from the file specified by `fd`.
 
 `position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
-The callback is given the three arguments, `(err, bytesRead, buffer)`.
+Al callback se le dan tres argumentos, `(err, bytesRead, buffer)`.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `bytesRead` and `buffer` properties.
 
@@ -2266,7 +2266,7 @@ added: v0.8.6
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
 
-Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncateSync()` is called.
+Synchronous truncate(2). Returns `undefined`. Un descriptor de archivo también puede ser pasado como el primer argumento. In this case, `fs.ftruncateSync()` is called.
 
 ## fs.unlink(path, callback)
 
@@ -2408,7 +2408,7 @@ changes:
   * `eventType` {string}
   * `filename` {string|Buffer}
 
-Watch for changes on `filename`, where `filename` is either a file or a directory. The returned object is a [`fs.FSWatcher`][].
+Watch for changes on `filename`, where `filename` is either a file or a directory. El objeto devuelto es un [`fs.FSWatcher`][].
 
 The second argument is optional. If `options` is provided as a string, it specifies the `encoding`. Otherwise `options` should be passed as an object.
 
@@ -2430,7 +2430,7 @@ The recursive option is only supported on macOS and Windows.
 
 <!--type=misc-->
 
-This feature depends on the underlying operating system providing a way to be notified of filesystem changes.
+Esta función depende del sistema operativo subyacente, proporcionando una manera para estar notificado de los cambios del sistema de archivos.
 
 * On Linux systems, this uses [`inotify`]
 * On BSD systems, this uses [`kqueue`]
@@ -2623,7 +2623,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer.
+Escribe datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` can be a string or a buffer.
 
 The `encoding` option is ignored if `data` is a buffer. It defaults to `'utf8'`.
 
@@ -2669,7 +2669,7 @@ changes:
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
 
-The synchronous version of [`fs.writeFile()`][]. Returns `undefined`.
+La versión sincrónica de [`fs.writeFile()`][]. Returns `undefined`.
 
 ## fs.writeSync(fd, buffer[, offset[, length[, position]]])
 
@@ -2711,7 +2711,7 @@ Synchronous versions of [`fs.write()`][]. Devuelve el número de bytes escritos.
 
 ## FS Constants
 
-The following constants are exported by `fs.constants`.
+Las siguientes constantes son exportadas por `fs.constants`.
 
 *Note*: Not every constant will be available on every operating system.
 
@@ -2788,7 +2788,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_APPEND</code></td>
-    <td>Flag indicating that data will be appended to the end of the file.</td>
+    <td>Bandera que indica que los datos serán anexados al final del archivo.</td>
   </tr>
   <tr>
     <td><code>O_DIRECTORY</code></td>
@@ -2799,7 +2799,7 @@ The following constants are meant for use with `fs.open()`.
   <td><code>O_NOATIME</code></td>
     <td>Flag indicating reading accesses to the file system will no longer
     result in an update to the `atime` information associated with the file.
-    This flag is available on Linux operating systems only.</td>
+    Esta bandera solo está disponible en sistemas operativos de Linux.</td>
   </tr>
   <tr>
     <td><code>O_NOFOLLOW</code></td>
