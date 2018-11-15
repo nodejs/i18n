@@ -807,7 +807,7 @@ client.on('end', () => {
 });
 ```
 
-Per connettersi sul socket `/tmp/echo.sock ` la seconda riga dovrebbe essere modificata per:
+Per connettersi sul socket `/tmp/echo.sock` la seconda riga sarebbe stata solamente modificata in:
 
 ```js
 const client = net.createConnection({ path: '/tmp/echo.sock' });
@@ -819,7 +819,7 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 added: v0.1.90
 -->
 
-* `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato al [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
 * `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato per [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
