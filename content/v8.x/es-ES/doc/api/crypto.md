@@ -1384,11 +1384,11 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) desde `password`, `salt` e `iterations`.
+Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
 La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-El argumento de `iterations` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura será la llave derivada, y tomará un tiempo mayor en completarse.
+The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
 El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
@@ -1402,11 +1402,11 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
-### crypto.pbkdf2Sync(clave, salt, iteraciones, keylen, resumen)
+### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
 <!-- YAML
 added: v0.9.3
@@ -1428,11 +1428,11 @@ changes:
 - `keylen` {number}
 - `digest` {string}
 
-Provee una implementación asincrónica de la clave basada en contraseña de Derivación de Función 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) desde `password`, `salt` e `iterations`.
+Proporciona una implementación sincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
 Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
-El argumento de `iterations` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura será la llave derivada, y tomará un tiempo mayor en completarse.
+The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
 El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
@@ -1444,7 +1444,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-Una matríz de funciones de compilación respaldadas puede ser recuperada empleando [`crypto.getHashes()`][].
+Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
