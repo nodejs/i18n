@@ -108,8 +108,8 @@ added: v0.11.4
 -->
 
 * `options` {Object} Opzioni contenenti i dettagli di connessione. Controllare [`net.createConnection(`][]) per il formato delle opzioni
-* `callback` {Function} Callback function that receives the created socket
-* Returns: {net.Socket}
+* `callback` {Function} Funzione callback che riceve il socket creato
+* Restituisce: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
