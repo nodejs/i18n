@@ -1,4 +1,4 @@
-# Console
+# Консоль
 
 <!--introduced_in=v0.10.13-->
 
