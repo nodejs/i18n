@@ -4414,19 +4414,19 @@ The following significant changes have been made since the previous Node.js v5.0
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Modules 
+* Модули 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
-* Net 
+* Сеть 
   * DNS hints no longer implicitly set [#6021](https://github.com/nodejs/node/pull/6021).
   * Improved error handling and type checking [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
 * npm 
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Path 
+* Путь 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Process 
+* Процесс 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
