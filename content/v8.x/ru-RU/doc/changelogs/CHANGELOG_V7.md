@@ -1990,7 +1990,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* Buffer 
+* Буфер 
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
