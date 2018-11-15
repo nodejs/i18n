@@ -663,7 +663,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica los permisos de un archivo. No arguments other than a possible exception are given to the completion callback.
 
 Vea también: chmod(2)
 
@@ -763,7 +763,7 @@ changes:
 * `uid` {integer}
 * `gid` {integer}
 
-Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
 
 See also: chown(2)
 
@@ -962,7 +962,7 @@ changes:
   * `autoClose` {boolean}
   * `start` {integer}
 
-Returns a new [`WriteStream`][] object. (See [Writable Stream](stream.html#stream_class_stream_writable)).
+Devuelve un objeto nuevo de [`WriteStream`][]. (See [Writable Stream](stream.html#stream_class_stream_writable)).
 
 `options` is an object or string with the following defaults:
 
@@ -1219,7 +1219,7 @@ added: v0.1.95
 
 * `fd` {integer}
 
-Synchronous fstat(2). Returns an instance of [`fs.Stats`][].
+Synchronous fstat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.fsync(fd, callback)
 
@@ -1505,7 +1505,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Synchronous lstat(2). Returns an instance of [`fs.Stats`][].
+Synchronous lstat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.mkdir(path[, mode], callback)
 
@@ -1547,7 +1547,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Crea un directorio de manera sincrónica. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Returns `undefined`. Esta es la versión sincrónica de [`fs.mkdir()`][].
 
 See also: mkdir(2)
 
@@ -1723,7 +1723,7 @@ changes:
 * `flags` {string|number}
 * `mode` {integer} **Default:** `0o666`
 
-Synchronous version of [`fs.open()`][]. Returns an integer representing the file descriptor.
+Versión sincrónica de [`fs.open()`][]. Returns an integer representing the file descriptor.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -1983,7 +1983,7 @@ changes:
 * `length` {integer}
 * `position` {integer}
 
-Synchronous version of [`fs.read()`][]. Returns the number of `bytesRead`.
+Versión sincrónica de [`fs.read()`][]. Returns the number of `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -2188,7 +2188,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Synchronous stat(2). Returns an instance of [`fs.Stats`][].
+Synchronous stat(2). Devuelve una instancia de [`fs.Stats`][].
 
 ## fs.symlink(target, path[, type], callback)
 
@@ -2726,7 +2726,7 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
   <tr>
     <td><code>F_OK</code></td>
-    <td>Flag indicating that the file is visible to the calling process.</td>
+    <td>Bandera que indica que el archivo es visible para el proceso de llamada.</td>
   </tr>
   <tr>
     <td><code>R_OK</code></td>
@@ -2739,14 +2739,14 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
   <tr>
     <td><code>X_OK</code></td>
-    <td>Flag indicating that the file can be executed by the calling
-    process.</td>
+    <td>Bandera que indica que el archivo puede ser ejecutado por el proceso
+    de llamada.</td>
   </tr>
 </table>
 
 ### File Open Constants
 
-The following constants are meant for use with `fs.open()`.
+Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
 
 <table>
   <tr>
@@ -2767,7 +2767,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_CREAT</code></td>
-    <td>Flag indicating to create the file if it does not already exist.</td>
+    <td>Bandera que indica crear el archivo, si este aún no existe.</td>
   </tr>
   <tr>
     <td><code>O_EXCL</code></td>
@@ -2828,7 +2828,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_NONBLOCK</code></td>
-    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
+    <td>Bandera que indica abrir el archivo en modo de no-bloqueo, cuando sea posible.</td>
   </tr>
 </table>
 
