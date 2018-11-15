@@ -2855,7 +2855,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IFCHR</code></td>
-    <td>File type constant for a character-oriented device file.</td>
+    <td>Constante de tipo de archivo para un archivo de dispositivo orientado por caracteres.</td>
   </tr>
   <tr>
     <td><code>S_IFBLK</code></td>
