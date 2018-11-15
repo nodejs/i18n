@@ -14,7 +14,7 @@
 
 * Внутренние библиотеки Node.js. Node.js сам экспортирует некоторое количество API C++, которое расширения могут использовать &mdash;, наиболее важным из которых является класс `node::ObjectWrap`.
 
-* Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Для дополнительной информации смотрите [Связь с зависимостями Node.js](#addons_linking_to_node_js_own_dependencies).
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
