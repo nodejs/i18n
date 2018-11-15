@@ -197,7 +197,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Di default è impostato a 256. Per gli agenti con `keepAlive` abilitato, questo stabilisce il numero massimo di socket che verranno lasciati aperti nello stato libero.
 
 ### agent.maxSockets
 
@@ -207,7 +207,7 @@ added: v0.3.6
 
 * {number}
 
-By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
+Di default è impostato su `Infinity`. Determina quanti socket simultanei l'agente può avere aperto per origine. Origin is the returned value of [`agent.getName()`][].
 
 ### agent.requests
 
