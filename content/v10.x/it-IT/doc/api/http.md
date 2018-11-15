@@ -239,9 +239,9 @@ Questo object viene creato internamente e restituito da [`http.request()`][]. Ra
 
 Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] verrà emessa dall'object richiesta una volta che le intestazioni di risposta siano state ricevute. L'evento [`'response'`][] viene eseguito con un argomento che è un'istanza di [`http.IncomingMessage`][].
 
-During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
+Durante l'evento [`'response'`][], è possibile aggiungere listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
 
 Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
