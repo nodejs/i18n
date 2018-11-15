@@ -111,9 +111,9 @@ added: v0.11.4
 * `callback` {Function} Funzione callback che riceve il socket creato
 * Restituisce: {net.Socket}
 
-Produce un socket /stream da utilizzare per le richieste HTTP.
+Produce un socket/stream da utilizzare per le richieste HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+Di default, questa funzione è la stessa di [`net.createConnection()`][]. Tuttavia, gli agenti personalizzati possono sovrascrivere questo metodo nel caso in cui si desideri una maggiore flessibilità.
 
 A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
 
