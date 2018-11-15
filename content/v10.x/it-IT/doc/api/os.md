@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-The `os` module provides a number of operating system-related utility methods. It can be accessed using:
+Il modulo `os` fornisce numerosi metodi di utilità relativi al sistema operativo. Ci si può accedere utilizzando:
 
 ```js
 const os = require('os');
@@ -18,10 +18,10 @@ added: v0.7.8
 
 * {string}
 
-A string constant defining the operating system-specific end-of-line marker:
+Una costante di stringa che definisce il marker di fine riga specifico del sistema operativo:
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` su POSIX
+* `\r\n` su Windows
 
 ## os.arch()
 
@@ -29,13 +29,13 @@ A string constant defining the operating system-specific end-of-line marker:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+Il metodo `os.arch()` restituisce una stringa che identifica l'architettura della CPU del sistema operativo per la quale è stato compilato il binario Node.js.
 
-The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Equivalent to [`process.arch`][].
+Il modulo `os` fornisce numerosi metodi di utilità relativi al sistema operativo.
 
 ## os.constants
 
@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
+Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, i segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
 
 ## os.cpus()
 
@@ -53,16 +53,16 @@ Returns an object containing commonly used operating system specific constants f
 added: v0.3.3
 -->
 
-* Returns: {Object[]}
+* Restituisce: {Object[]}
 
-The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
+Il metodo `os.cpus()` restituisce una matrice di oggetti contenenti informazioni su ciascun core della CPU logica.
 
-The properties included on each object include:
+Le proprietà incluse in ogni oggetto includono:
 
 * `model` {string}
 * `speed` {number} (in MHz)
 * `times` {Object} 
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
+  * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
   * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
   * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
