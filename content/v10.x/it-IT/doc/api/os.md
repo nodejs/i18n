@@ -323,7 +323,7 @@ added: v0.3.3
 
 Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
+Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di vedere: https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni
 
 ## os.tmpdir()
 
@@ -337,7 +337,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
