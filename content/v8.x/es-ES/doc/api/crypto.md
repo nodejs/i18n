@@ -1337,7 +1337,7 @@ bob.generateKeys();
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-/* El Secreto de Alice y el de Bob deben ser iguales*/
+/* aliceSecret y bobSecret deben ser iguales*/
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -1347,7 +1347,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-Devuelve una matríz de los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
+Devuelve un array con los nombres de los algoritmos de hash respaldados, tales como `RSA-SHA256`.
 
 Ejemplo:
 
@@ -1356,7 +1356,7 @@ const hashes = crypto.getHashes();
 console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
-### crypto.pbkdf2(clave, salt, iteracioness, keylen, resumen, callback)
+### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
 
 <!-- YAML
 added: v0.5.5
@@ -1384,11 +1384,11 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Proporciona implementación asincrónica de una clave de Derivación de Función 2 (PBKDF2) basada en contraseña. Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) desde `password`, `salt` e `iterations`.
 
 La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+El argumento de `iterations` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura será la llave derivada, y tomará un tiempo mayor en completarse.
 
 El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
@@ -1428,11 +1428,11 @@ changes:
 - `keylen` {number}
 - `digest` {string}
 
-Provee una implementación asincrónica de la clave basada en contraseña de Derivación de Función 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitado (`keylen`) desde `password`, `salt` e `iteraciones`.
+Provee una implementación asincrónica de la clave basada en contraseña de Derivación de Función 2 (PBKDF2). Un algoritmo resumido de HMAC seleccionado y especificado por el `digest` es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) desde `password`, `salt` e `iterations`.
 
 Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
-El argumento de `iteraciones` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura sera la llave derivada, y tomará un tiempo mayor de completarse.
+El argumento de `iterations` debe ser un número establecido lo más alto posible. Entre más alto sea el número de iteraciones, más segura será la llave derivada, y tomará un tiempo mayor en completarse.
 
 El `salt` debe ser también tan único como sea posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
