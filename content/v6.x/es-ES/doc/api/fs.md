@@ -378,7 +378,7 @@ fs.open('myfile', 'r', (err, fd) => {
 
 The "not recommended" examples above check for accessibility and then use the file; the "recommended" examples are better because they use the file directly and handle the error, if any.
 
-In general, check for the accessibility of a file only if the file won’t be used directly, for example when its accessibility is a signal from another process.
+En general, verifique la accesibilidad de un archivo solo si el archivo no será utilizado directamente, por ejemplo, cuando su accesibilidad sea un señal de otro proceso.
 
 ## fs.accessSync(path[, mode])
 
@@ -1488,7 +1488,7 @@ added: v0.0.2
 
 Asynchronous stat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object.
 
-In case of an error, the `err.code` will be one of [Common System Errors](errors.html#errors_common_system_errors).
+En caso de que ocurra un error, el `err.code` será uno de los [Errores de Sistema Comunes](errors.html#errors_common_system_errors). 
 
 Using `fs.stat()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Instead, user code should open/read/write the file directly and handle the error raised if the file is not available.
 
