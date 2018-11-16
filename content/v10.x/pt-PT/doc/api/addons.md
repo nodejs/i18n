@@ -6,13 +6,13 @@
 
 Complementos de Node.js são vinculados dinamicamente objetos compartilhados, escritos em C++, que pode ser carregado em Node.js usando a função [`require()`](modules.html#modules_require), e usado só como se fossem um normal módulo de Node.js. Eles são usados principalmente para fornecerem uma interface entre o JavaScript em execução em bibliotecas de Node.js e C/C++.
 
-No momento, o método para a implementação de Complementos é bastante complicado, envolvendo o conhecimento de vários componentes e APIS:
+No momento, o método para a implementação de Complementos é bastante complicado, envolvendo o conhecimento de vários componentes e APIs:
 
 * V8: a biblioteca C++ do Node.js é usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamandos as funções, etc. Api do V8 é documentado sobretudo no `v8.h` header do arquivo (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): A biblioteca C que implementa os ciclos de evento do Node.js, as suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração multi-plataforma, dando acesso fácil, no estilo POSIX, aos principais sistemas operacionais para muitas tarefas comuns do sistema, tais como, interagir com os sistema de arquivos, soquetes, temporizadores e sistemas de evento. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar assíncronos mais sofisticados, Complementos que precisam ir além do ciclo de eventos padrão. Complementos de autores são encorajados a pensar em como evitar o bloqueio do ciclo de eventos com I/O ou outra tarefas de uso intensivo, descarregando o trabalho via libuv para operações de sistema não bloqueantes, tópicos de trablho ou uso personalizado de tópicos do libuv.
 
-* Bibliotecas internas do Node.js. O Node.js exporta para si um número de APIS de C++ que no Complementa pode usar &mdash; o mais importante dos quais é a classe `node::ObjectWrap`.
+* Bibliotecas internas do Node.js. O Node.js exporta para si um número de APIs de C++ que no Complementa pode usar &mdash; o mais importante dos quais é a classe `node::ObjectWrap`.
 
 * O Node.js incluí um número de outras bibliotecas estaticamente vinculadads incluindo OpenSSl. Estas outras bibliotecas estão localizadas no diretório `deps/` na árvore de origem do Node.js. Apenas os símbolos de libuv, OpenSSL, V8 e zlib são propositadamente re-exportados pelo Node.js e podem ser usado por várias estensões por Complementos. Ver [Ligar paras as dependências do próprio Node.js](#addons_linking_to_node_js_own_dependencies) para informação adicional.
 
@@ -131,13 +131,13 @@ Ao chamar [`require()`](modules.html#modules_require), a extensão `.node` pode,
 
 ## Abstrações Nativas para o Node.js
 
-Cada dos examplos ilustrados neste documento faz uso direto do Node.js e APIS de V8 para a implementação de Complementos. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Cada dos examplos ilustrados neste documento faz uso direto do Node.js e APIs de V8 para a implementação de Complementos. É importante entender que o API do V8 podem e mudou drasticamente de uma versão V8 para o próximo(e um grande lançamento de Node.js para o próximo). O que faz com que cada mude, os Complementos que podem ser necessários para ser atualizado e recompilado para continuar a funcionar. O calendário de lançamento do Node.js é projetado para minimizar a frequência e o impacto de trais mudanças, mas há pouca coisa que Node.js pode fazer atualmente para garantir a estabilidade dos APIs do V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+As [Abstrações Nativas para o Node.js](https://github.com/nodejs/nan)(ou `ann`) fornece um conjunto de ferramentas em que os desenvolvedores de Complemento são recomendados para usar para manter a compatibilidade entre os lançamentos passados e futuros de V8 e Node.js. Veja os [examplos](https://github.com/nodejs/nan/tree/master/examples/) de `ann` para uma ilustração de como pode ser usado.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Estabilidade: 1 - Experimental
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
