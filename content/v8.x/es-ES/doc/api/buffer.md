@@ -2346,7 +2346,7 @@ Note that this is a property on the `buffer` module returned by `require('buffer
 added: v3.0.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
 
 An alias for [`buffer.constants.MAX_LENGTH`][]
 
@@ -2385,15 +2385,15 @@ Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced w
 
 Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
-## Class: SlowBuffer
+## Clase: SlowBuffer
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-Returns an un-pooled `Buffer`.
+Devuelve un `Buffer` sin agrupar.
 
 In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object.
 
@@ -2426,7 +2426,7 @@ Use of `SlowBuffer` should be used only as a last resort *after* a developer has
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
@@ -2464,9 +2464,9 @@ Note that `buffer.constants` is a property on the `buffer` module returned by `r
 added: 8.2.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+En arquitecturas de 32-bits, este valor es `(2^30)-1` (~1GB). En arquitecturas de 64-bits, este valor es `(2^31)-1` (~2GB).
 
 This value is also available as [`buffer.kMaxLength`][].
 
