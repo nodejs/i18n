@@ -441,7 +441,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a regular file.
+Restituisce `true` se l'`fs.Stats` object descrive un normale file.
 
 ### stats.isSocket()
 
@@ -449,9 +449,9 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a socket.
+Restituisce `true` se l'`fs.Stats` object descrive un socket.
 
 ### stats.isSymbolicLink()
 
@@ -459,71 +459,71 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a symbolic link.
+Restituisce `true` se l'`fs.Stats` object descrive un collegamento simbolico (symlink).
 
-This method is only valid when using [`fs.lstat()`][].
+Questo metodo è valido solo quando si utilizza [`fs.lstat()`][].
 
 ### stats.dev
 
 * {number}
 
-The numeric identifier of the device containing the file.
+L'identificativo numerico del device che contiene il file.
 
 ### stats.ino
 
 * {number}
 
-The file system specific "Inode" number for the file.
+Il numero "Inode" specifico del file system per il file.
 
 ### stats.mode
 
 * {number}
 
-A bit-field describing the file type and mode.
+Un campo di bit che descrive il tipo e la modalità del file.
 
 ### stats.nlink
 
 * {number}
 
-The number of hard-links that exist for the file.
+Il numero di collegamenti reali esistenti per il file.
 
 ### stats.uid
 
 * {number}
 
-The numeric user identifier of the user that owns the file (POSIX).
+L'identificativo numerico utente dell'utente proprietario del file (POSIX).
 
 ### stats.gid
 
 * {number}
 
-The numeric group identifier of the group that owns the file (POSIX).
+L'identificatore numerico gruppo del gruppo che possiede il file (POSIX).
 
 ### stats.rdev
 
 * {number}
 
-A numeric device identifier if the file is considered "special".
+Un identificativo numerico del device se il file è considerato "speciale".
 
 ### stats.size
 
 * {number}
 
-The size of the file in bytes.
+La dimensione del file in byte.
 
 ### stats.blksize
 
 * {number}
 
-The file system block size for i/o operations.
+La dimensione del blocco del file system per le operazioni di i/o.
 
 ### stats.blocks
 
 * {number}
 
-The number of blocks allocated for this file.
+Il numero di blocchi assegnati per questo file.
 
 ### stats.atimeMs
 
@@ -533,7 +533,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was accessed expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file dall'inizio del dal POSIX Epoch espresso in millisecondi.
 
 ### stats.mtimeMs
 
@@ -543,7 +543,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was modified expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta che questo file è stato modificato dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.ctimeMs
 
@@ -553,7 +553,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time the file status was changed expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta in cui lo stato del file è stato modificato dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.birthtimeMs
 
