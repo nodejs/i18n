@@ -2402,23 +2402,23 @@ En el caso donde un desarrollador necesite retener una pequeña porción de memo
 Ejemplo:
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener unos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asignar para los datos retenidos
   const sb = SlowBuffer(10);
 
-  // Copy the data into the new allocation
+  // Copiar los datos dentro de la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+El uso de `SlowBuffer` debe ser empleado solo como último recurso *después* de que un desarrollador haya observado una retención de memoria indebida en sus aplicaciones.
 
 ### new SlowBuffer(size)
 
@@ -2428,11 +2428,11 @@ deprecated: v6.0.0
 
 > Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-* `size` {integer} The desired length of the new `SlowBuffer`.
+* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
 Asigna el nuevo `Buffer` de bytes de `size`. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
 
-The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
+La memoria subyacente para instancias de `SlowBuffer` *no está inicializada*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] para inicializar un `SlowBuffer` a ceros.
 
 Ejemplo:
 
