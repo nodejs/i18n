@@ -265,9 +265,9 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emesso ogni volta che un server risponde a una richiesta con un metodo `CONNECT`. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emesso ogni volta che un server risponde a una richiesta con un metodo `CONNECT`. Se questo evento non viene sottoposto al listening, ai client che ricevono un metodo `CONNECT` si chiuderanno le connessioni.
 
-A client and server pair demonstrating how to listen for the `'connect'` event:
+Una coppia di client e server che dimostra come eseguire il listening dell'evento `'connect'`:
 
 ```js
 const http = require('http');
