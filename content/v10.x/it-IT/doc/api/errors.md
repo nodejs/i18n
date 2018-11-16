@@ -267,9 +267,9 @@ The string representing the stack trace is lazily generated when the `error.stac
 
 The number of frames captured by the stack trace is bounded by the smaller of `Error.stackTraceLimit` or the number of available frames on the current event loop tick.
 
-System-level errors are generated as augmented `Error` instances, which are detailed [here](#errors_system_errors).
+Gli errori a livello di sistema sono generati come `Error` instances aumentate, che sono dettagliate [qui](#errors_system_errors).
 
-## Class: AssertionError
+## Classe: AssertionError
 
 A subclass of `Error` that indicates the failure of an assertion. For details, see [`Class: assert.AssertionError`][].
 
