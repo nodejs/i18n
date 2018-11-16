@@ -62,7 +62,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 После `NODE_MODULE` нет точки с запятой, потому что это не функция (смотрите `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the .node suffix).
+`module_name` должно совпадать с именем конечного бинарного файла (кроме суффикса .node).
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
