@@ -129,15 +129,15 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-*Nota:* Su Windows Node.js segue il concetto di working directory per unità. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza un backslash. Ad esempio `fs.readdirSync('c:\\')` può potenzialmente restituire un risultato diverso da `fs.readdirSync('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
-### URL object support
+### Supporto degli URL object
 
 <!-- YAML
 added: v7.6.0
---> For most 
+--> Per la maggior parte delle funzioni del modulo 
 
-`fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
+`fs`, gli argomenti `path` o `filename` possono essere passati come [`URL`][] object WHATWG. Sono supportati solo gli [`URL`][] object che utilizzano il protocollo `file:`.
 
 ```js
 const fs = require('fs');
@@ -146,11 +146,11 @@ const fileUrl = new URL('file:///tmp/hello');
 fs.readFileSync(fileUrl);
 ```
 
-`file:` URLs are always absolute paths.
+Gli URL `file:` sono sempre percorsi assoluti.
 
-Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
+L'utilizzo degli [`URL`][] object WHATWG potrebbe introdurre comportamenti specifici della piattaforma.
 
-On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
+Su Windows, gli URL `file:` con un hostname vengono convertiti in percorsi UNC, mentre gli URL `file:` con lettere di unità vengono convertiti in percorsi assoluti locali. Gli URL `file:` senza hostname o lettera di unità genereranno:
 
 ```js
 // On Windows :
