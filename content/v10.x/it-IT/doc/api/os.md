@@ -418,22 +418,19 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Inviato per indicare quando un terminale di controllo è chiuso o un parent    process si chiude.</td>
+    <td>Inviato per segnalare quando un terminale di controllo è chiuso o un parent    process si chiude.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process
-    (`(Ctrl+C)`).</td>
+    <td>Inviato per segnalare quando un utente desidera interrompere un processo    (`(Ctrl + C)`).</td>
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Sent to indicate when a user wishes to terminate a process and perform a
-    core dump.</td>
+    <td>Inviato per segnalare quando un utente desidera terminare un processo ed eseguire un    core dump.</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Sent to a process to notify that it has attempted to perform an illegal,
-    malformed, unknown, or privileged instruction.</td>
+    <td>Inviato a un processo per notificare che ha tentato di eseguire un'istruzione illegale, non valida, sconosciuta o privilegiata.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
