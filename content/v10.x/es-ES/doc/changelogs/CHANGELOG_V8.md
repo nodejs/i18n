@@ -2526,7 +2526,7 @@ Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 * [[`41f79fb22f`](https://github.com/nodejs/node/commit/41f79fb22f)] - **src**: refactorizar PBKDF2Request (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`233740c594`](https://github.com/nodejs/node/commit/233740c594)] - **src**: eliminar las asignaciones extra del heap en las funciones DH (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`8e51d3151d`](https://github.com/nodejs/node/commit/8e51d3151d)] - **src**: evitar la asignación del heap en hmac.digest() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
-* [[`8be9bd139f`](https://github.com/nodejs/node/commit/8be9bd139f)] - **src**: remove extra heap allocation in GetSession() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
+* [[`8be9bd139f`](https://github.com/nodejs/node/commit/8be9bd139f)] - **src**: eliminar la asignación extra del heap en GetSession() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`8dd6866303`](https://github.com/nodejs/node/commit/8dd6866303)] - **src**: make CipherBase::kind_ const (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`0fcb8b1029`](https://github.com/nodejs/node/commit/0fcb8b1029)] - **src**: remove unused Local (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`db65422f0d`](https://github.com/nodejs/node/commit/db65422f0d)] - **src**: remove superfluous cipher_ data member (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
