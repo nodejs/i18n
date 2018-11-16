@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
+* [これらのドキュメントについて](documentation.html)
 * [Usage & Example](synopsis.html)
 
 <div class="line"></div>
@@ -34,11 +34,11 @@
 * [Modules](modules.html)
 * [Net](net.html)
 * [OS](os.html)
-* [Path](path.html)
+* [パス](path.html)
 * [Performance Hooks](perf_hooks.html)
-* [Process](process.html)
+* [プロセス](process.html)
 * [Punycode](punycode.html)
-* [Query Strings](querystring.html)
+* [クエリ文字列](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
 * [Stream](stream.html)
@@ -56,5 +56,5 @@
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [GitHub リポジトリ & Issue トラッカー](https://github.com/nodejs/node)
+* [メーリングリスト](https://groups.google.com/group/nodejs)
