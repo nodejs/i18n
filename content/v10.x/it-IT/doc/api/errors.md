@@ -166,7 +166,7 @@ Error.captureStackTrace(myObject);
 myObject.stack;  // similar to `new Error().stack`
 ```
 
-La prima linea della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
+La prima riga della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
 
 L'argomento facoltativo `constructorOpt` accetta una funzione. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
