@@ -14,7 +14,7 @@ const http2 = richiede('http2');
 
 L'API Core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
 
-L'API Core di `http2` è molto più simmetrico tra il client e il server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'errore'`, `'connetti'` e `'stream'`, possono essere emessi sia dal codice del lato client che dal codice del lato server.
+Il Core API di `http2` è molto più simmetrico tra client e server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'error'`, `'connect'` e `'stream'`, possono essere emessi sia dal codice del lato client che dal codice del lato server.
 
 ### Esempio sul lato server
 
@@ -87,17 +87,17 @@ added: v8.4.0
 
 * Estendendo: {EventEmitter}
 
-Le istanze della classe `"http2.Http2Session"` rappresentano un'attiva sessione di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
+Le istanze della classe `http2.Http2Session` rappresentano una sessione attiva di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
 
-Ogni istanza `"Http2Session"` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `"http2session.type"` può essere utilizzata per determinare la modalità in cui una `"Http2Session"` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `"Http2Session"`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `"Http2Server"` o `"Http2Stream"`.
+Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `http2session.type` può essere utilizzata per determinare la modalità in cui una `Http2Session` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `Http2Session`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `Http2Server` o `Http2Stream`.
 
-#### `"Http2Session"` ed i Socket
+#### `Http2Session` ed i Socket
 
-Ogni istanza `"Http2Session"` è associata esattamente ad una [`"net.Socket"`] [] o [`"tls.TLSSocket"`] [] quando viene creata. Quando o il `Socket` o la `"Http2Session"` vengono distrutti, entrambi verranno distrutti.
+Ogni istanza `Http2Session` è associata esattamente ad una [`net.Socket`] [] o [`tls.TLSSocket`] [] quando viene creata. Quando o il `Socket` o la `Http2Session` vengono distrutti, entrambi verranno distrutti.
 
-Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `"Http2Session"`. Facendo così si può mettere la sessione HTTP/2 in uno stato indeterminato, rendendo così inutilizzabili la sessione e il socket.
+Visti i requisiti di serializzazione e di elaborazione specifici imposti dal protocollo HTTP/2, non è consigliato per il codice utente di leggere dati da o scrivere dati su un'istanza `Socket` associata a `Http2Session`. Facendo così si può mettere la sessione HTTP/2 in uno stato indeterminato, rendendo così inutilizzabili la sessione e il socket.
 
-Una volta che un `Socket` è stato associato ad `"Http2Session"`, il codice utente deve fare affidamento esclusivamente sull'API di `"Http2Session"`.
+Una volta che un `Socket` è stato associato ad `"Http2Session"`, il codice utente deve fare affidamento esclusivamente sull'API di `Http2Session`.
 
 #### Evento: 'close'
 
@@ -105,7 +105,7 @@ Una volta che un `Socket` è stato associato ad `"Http2Session"`, il codice uten
 added: v8.4.0
 -->
 
-L'evento `'close'` viene emesso quando la `"Http2Session"` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
+L'evento `'close'` viene emesso quando la `Http2Session` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
 
 #### Evento: 'connect'
 
