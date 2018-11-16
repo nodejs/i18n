@@ -207,7 +207,7 @@ added: v0.3.6
 
 * {number}
 
-Di default è impostato su `Infinity`. Determina quanti socket simultanei l'agente può avere aperto per origine. Origin is the returned value of [`agent.getName()`][].
+Di default è impostato su `Infinity`. Determina quanti socket simultanei l'agente può tenere aperti per origine. L'origine è il valore restituito di [`agent.getName()`][].
 
 ### agent.requests
 
@@ -239,7 +239,7 @@ Questo object viene creato internamente e restituito da [`http.request()`][]. Ra
 
 Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] verrà emessa dall'object richiesta una volta che le intestazioni di risposta siano state ricevute. L'evento [`'response'`][] viene eseguito con un argomento che è un'istanza di [`http.IncomingMessage`][].
 
-Durante l'evento [`'response'`][], è possibile aggiungere listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
+Durante l'evento [`'response'`][], è possibile aggiungere altri listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
 Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Inoltre, finché i dati non vengono letti, consumerà memoria che alla fine può portare a un errore di 'elaborazione insufficiente'.
 
