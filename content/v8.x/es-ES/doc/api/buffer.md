@@ -2174,10 +2174,10 @@ added: v0.11.15
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
+* `noAssert` {boolean} ¿Saltar validación de `value`, `offset`, y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
+Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es definid cuando `value` es cualquier cosa distinta a un entero con signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2208,7 +2208,7 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero válido de 8-bits sin signo. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 8-bits sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2305,10 +2305,10 @@ added: v0.5.5
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
+* `noAssert` {boolean} ¿Saltar validación de `value`, `offset`, y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
+Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. Behavior is undefined when `value` is anything other than an unsigned integer.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2319,12 +2319,12 @@ const buf = Buffer.allocUnsafe(6);
 
 buf.writeUIntBE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Imprime: <Buffer 12 34 56 78 90 ab>
 console.log(buf);
 
 buf.writeUIntLE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer ab 90 78 56 34 12>
+// Imprime: <Buffer ab 90 78 56 34 12>
 console.log(buf);
 ```
 
