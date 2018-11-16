@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, i segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
+Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
 
 ## os.cpus()
 
@@ -55,7 +55,7 @@ added: v0.3.3
 
 * Restituisce: {Object[]}
 
-Il metodo `os.cpus()` restituisce una matrice di oggetti contenenti informazioni riguardo a ciascun core della CPU logica.
+Il metodo `os.cpus()` restituisce un array degli object contenenti informazioni riguardo a ciascun core della CPU logica.
 
 Le proprietà incluse in ogni oggetto includono:
 
