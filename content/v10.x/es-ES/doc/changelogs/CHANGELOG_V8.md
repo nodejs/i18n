@@ -2521,7 +2521,7 @@ Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 * [[`e4b70199b3`](https://github.com/nodejs/node/commit/e4b70199b3)] - **src**: evitar el doble free en randomBytes() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`ad0669bfe6`](https://github.com/nodejs/node/commit/ad0669bfe6)] - **src**: simplificar PBKDF2Request (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`8f4b84ba42`](https://github.com/nodejs/node/commit/8f4b84ba42)] - **src**: eliminar PBKDF2Request::release() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
-* [[`b5802c7bf1`](https://github.com/nodejs/node/commit/b5802c7bf1)] - **src**: avoid heap allocation in crypto.pbkdf2() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
+* [[`b5802c7bf1`](https://github.com/nodejs/node/commit/b5802c7bf1)] - **src**: evitar la asignación del heap en crypto.pbkdf2() (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`1c3e090eba`](https://github.com/nodejs/node/commit/1c3e090eba)] - **src**: make array arg length compile-time checkable (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`41f79fb22f`](https://github.com/nodejs/node/commit/41f79fb22f)] - **src**: refactor PBKDF2Request (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
 * [[`233740c594`](https://github.com/nodejs/node/commit/233740c594)] - **src**: remove extra heap allocations in DH functions (Ben Noordhuis) [#14122](https://github.com/nodejs/node/pull/14122)
