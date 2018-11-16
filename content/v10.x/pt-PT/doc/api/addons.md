@@ -119,13 +119,13 @@ try {
 
 O Node.js usas um número de bilbliotecas vinculadas estaticamente, tal como, V8, libuv e OpenSSL. Todos os Complementos são requeridos para vincular para o V8 e também pode vincular para qualquer outras dependências. Tipicamente, este é tão simples quanto incluir a declaração apropriada `#include <...>` (por exemplo, `#include <v8.h>`) e `node-gyp` irá localizar os cabeçalhos apropriados, automaticamente. No entanto, existe algumas advertências que é preciso estar ciente:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Quando é executado `node-gyp`, irá detetar a versão específica do Node.js e irá fazer download da fonte completa do tarball ou apenas os cabeçalhos. Se a fonte completar já estiver sido importada, os Addons terão acesso completo para o conjunto completo das dependências do Node.js. No entanto, se apenas os cabeçalhos do Node.js tiverem sido importados, então somente os símbolos exportados pelo Node.js estarão disponíveis.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` pode ser executado ao usar a "flag" `--nodedir` apontando para uma imagem fonte do Node.js. Usando esta opção, o Complemento terá acesso ao conjunto completo das dependências.
 
-### Loading Addons using require()
+### Carregando Complementos usando require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+A extensão nome do arquivo do Complemento binário compilado é `.node`(como contra para `.dll` ou `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
 When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
