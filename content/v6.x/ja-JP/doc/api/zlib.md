@@ -4,7 +4,7 @@
 
 > Stability: 2 - Stable
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. It can be accessed using:
+`zlib` モジュールは、 Gzip と Deflate/Inflate を利用して実装される圧縮機能を提供します。 It can be accessed using:
 
 ```js
 const zlib = require('zlib');
@@ -43,7 +43,7 @@ zlib.unzip(buffer, (err, buffer) => {
 });
 ```
 
-## Compressing HTTP requests and responses
+## HTTP リクエストとレスポンスの圧縮
 
 The `zlib` module can be used to implement support for the `gzip` and `deflate` content-encoding mechanisms defined by [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
 
