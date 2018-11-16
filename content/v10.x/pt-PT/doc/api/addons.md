@@ -125,9 +125,9 @@ O Node.js usas um número de bilbliotecas vinculadas estaticamente, tal como, V8
 
 ### Carregando Complementos usando require()
 
-A extensão nome do arquivo do Complemento binário compilado é `.node`(como contra para `.dll` ou `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+A extensão nome do arquivo do Complemento binário compilado é `.node`(como contra para `.dll` ou `.so`). A função [`require()`](modules.html#modules_require) é escrita para procurar por aquivo com a extensão de arquivo `.node` e inicializar aquelas bibliotecas vinculadas dinamicamente.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Ao chamar [`require()`](modules.html#modules_require), a extensão `.node` pode, geralmente, ser omitida e o Node.js ainda encontrará e inicializará o Complemento. Uma ressalva, no entanto, é que o Node.js primeiro, tentará localizar e carregar módulos ou arquivos de JavaScript que acontecem para compartilhar o mesmo nome de base. Por exemplo, se existe um arquivo `addon.js` no mesmo diretório como o binário `addon.node`, então o [`require('addon')`](modules.html#modules_require) irá dar precedência ao arquivo `addon.js` e carregá-lo, em vez disso.
 
 ## Native Abstractions for Node.js
 
