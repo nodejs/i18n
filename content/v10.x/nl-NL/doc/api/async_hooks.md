@@ -126,21 +126,21 @@ Omdat het printen naar de console een asynchrone bewerking is, zal `console.log(
 const fs = require('fs');
 const util = require('util');
 
-function debug(...args) {
-  // use a function like this one when debugging inside an AsyncHooks callback
+functie foutoplossing(...args) {
+  // gebruik een functie zoals deze bij het fout opsporen binnen een AsyncHooks callback
   fs.writeSync(1, `${util.format(...args)}\n`);
 }
 ```
 
-If an asynchronous operation is needed for logging, it is possible to keep track of what caused the asynchronous operation using the information provided by AsyncHooks itself. The logging should then be skipped when it was the logging itself that caused AsyncHooks callback to call. By doing this the otherwise infinite recursion is broken.
+Wanneer een asynchrone bewerking nodig is voor het aanmelden, is het mogelijk om bij te houden wat de oorzaak is van de asynchrone bewerking met behulp van de informatie die AsyncHooks heeft aangeleverd. De registratie moet in dit geval worden overgeslagen omdat het de registratie zelf was die heeft veroorzaakt dat de AsyncHooks callback dit meldde. Door dit te doen, wordt de anderzijds oneindige recursie gebroken.
 
 #### asyncHook.enable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Retourneert: {AsyncHook} Een referentie naar `asyncHook`.
 
-Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
+Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wannneer geen callbacks toegeleverd zijn is het inschakelen een noop.
 
-The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+De `AsyncHook` instantie is als standaard uitgeschakeld. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
 
 ```js
 const async_hooks = require('async_hooks');
