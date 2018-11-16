@@ -322,9 +322,9 @@ Viene emesso quando file descriptor sottostante a `fs.ReadStream` è stato chius
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the `ReadStream`.
+* `fd` {integer} File descriptor intero utilizzato dal `ReadStream`.
 
-Emitted when the `fs.ReadStream`'s file descriptor has been opened.
+Viene emesso quando il file descriptor dell'`fs.ReadStream` è stato aperto.
 
 ### Event: 'ready'
 
@@ -332,9 +332,9 @@ Emitted when the `fs.ReadStream`'s file descriptor has been opened.
 added: v9.11.0
 -->
 
-Emitted when the `fs.ReadStream` is ready to be used.
+Viene emesso quando l'`fs.ReadStream` è pronto per essere utilizzato.
 
-Fires immediately after `'open'`.
+Esegue immediatamente dopo `'open'`.
 
 ### readStream.bytesRead
 
@@ -344,7 +344,7 @@ added: v6.4.0
 
 * {number}
 
-The number of bytes that have been read so far.
+Il numero di byte che sono stati letti finora.
 
 ### readStream.path
 
@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. If `path` is passed as a string, then `readStream.path` will be a string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
+Il percorso del file da cui lo stream sta eseguendo il reading (la lettura) come specificato nel primo argomento su `fs.createReadStream()`. Se `path` viene passato come una stringa, allora `readStream.path` sarà una stringa. Se `path` viene passato come un `Buffer`, allora `readStream.path` sarà un `Buffer`.
 
 ## Class: fs.Stats
 
@@ -367,9 +367,9 @@ changes:
     description: Added times as numbers.
 -->
 
-A `fs.Stats` object provides information about a file.
+Un `fs.Stats` object fornisce informazioni riguardanti un file.
 
-Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and their synchronous counterparts are of this type.
+Gli object restituiti da [`fs.stat()`][], [`fs.lstat()`][] e [`fs.fstat()`][] e le loro controparti sincrone sono di questo tipo.
 
 ```console
 Stats {
@@ -399,9 +399,9 @@ Stats {
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a block device.
+Restituisce `true` se l'`fs.Stats` object descrive un block device.
 
 ### stats.isCharacterDevice()
 
@@ -409,9 +409,9 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a character device.
+Restituisce `true` se l'`fs.Stats` object descrive un character device.
 
 ### stats.isDirectory()
 
@@ -419,9 +419,9 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a file system directory.
+Restituisce `true` se l'`fs.Stats` object descrive una directory del file system.
 
 ### stats.isFIFO()
 
@@ -429,9 +429,9 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
+Restituisce `true` se l'`fs.Stats` object descrive un pipe first-in-first-out (FIFO).
 
 ### stats.isFile()
 
@@ -439,7 +439,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -652,7 +652,7 @@ added: v9.11.0
 
 Emitted when the `fs.WriteStream` is ready to be used.
 
-Fires immediately after `'open'`.
+Esegue immediatamente dopo `'open'`.
 
 ### writeStream.bytesWritten
 
