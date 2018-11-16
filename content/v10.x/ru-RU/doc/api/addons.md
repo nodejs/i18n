@@ -66,7 +66,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Так, в примере `hello.cc` функция инициализации это - `init`, а имя модуля расширения это - `addon`.
 
 ### Building
 
