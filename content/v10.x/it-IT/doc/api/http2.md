@@ -116,7 +116,7 @@ added: v8.4.0
 * `session` {Http2Session}
 * `socket` {net.Socket}
 
-L'evento `'connect'` viene emesso quando la `"Http2Session"` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
+L'evento `'connect'` viene emesso quando la `Http2Session` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
 
 Il codice utente tipicamente non ascolta direttamente questo evento.
 
@@ -128,7 +128,7 @@ added: v8.4.0
 
 * `error` {Error}
 
-L'evento `'error'` viene emesso quando si verifica un errore durante l'elaborazione di una `"Http2Session"`.
+L'evento `'error'` viene emesso quando si verifica un errore durante l'elaborazione di una `Http2Session`.
 
 #### Evento: 'frameError'
 
@@ -136,8 +136,8 @@ L'evento `'error'` viene emesso quando si verifica un errore durante l'elaborazi
 added: v8.4.0
 -->
 
-* `"type"` {integer} Il tipo di frame.
-* `"code"` {integer} Il codice errore.
+* `type` {integer} Il tipo di frame.
+* `code` {integer} Il codice errore.
 * `id` {integer} L'id del flusso (o `0` se il frame non è associato ad un flusso).
 
 L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `"Http2Stream"`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `"Http2Stream"`.
