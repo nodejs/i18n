@@ -150,38 +150,38 @@ Gli URL `file:` sono sempre percorsi assoluti.
 
 L'utilizzo degli [`URL`][] object WHATWG potrebbe introdurre comportamenti specifici della piattaforma.
 
-Su Windows, gli URL `file:` con un hostname vengono convertiti in percorsi UNC, mentre gli URL `file:` con lettere di unità vengono convertiti in percorsi assoluti locali. Gli URL `file:` senza hostname o lettera di unità genereranno:
+Su Windows, gli URL `file:` con un hostname vengono convertiti in percorsi UNC, mentre gli URL `file:` con lettere di unità vengono convertiti in percorsi assoluti locali. Gli URL `file:` senza hostname o lettera di unità genereranno un'esecuzione:
 
 ```js
-// On Windows :
+// Su Windows :
 
-// - WHATWG file URLs with hostname convert to UNC path
+// - Gli URL dei file WHATWG con hostname convertiti in percorso UNC
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - WHATWG file URLs with drive letters convert to absolute path
+// - Gli URL dei file WHATWG con le lettere di unità convertite in percorso assoluto
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - WHATWG file URLs without hostname must have a drive letters
+// - Gli URL dei file WHATWG senza hostname devono contenere lettere di unità
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
+// TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file dev'essere assoluto
 ```
 
-`file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
+Gli URL `file:` con lettere di unità devono utilizzare `:` come separatore subito dopo la lettera di unità. L'utilizzo di un altro separatore genererà un'esecuzione.
 
-On all other platforms, `file:` URLs with a hostname are unsupported and will result in a throw:
+Su tutte le altre piattaforme, gli URL `file:` con un hostname non sono supportati e generano un'esecuzione:
 
 ```js
-// On other platforms:
+// Su altre piattaforme:
 
-// - WHATWG file URLs with hostname are unsupported
+// - Gli URL dei file WHATWG con hostname non sono supportati
 // file://hostname/p/a/t/h/file => throw!
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: must be absolute
+// TypeError [ERR_INVALID_FILE_URL_PATH]: deve essere assoluto
 
-// - WHATWG file URLs convert to absolute path
+// - Gli URL dei file WHATWG vengono convertiti nel percorso assoluto
 // file:///tmp/hello => /tmp/hello
 fs.readFileSync(new URL('file:///tmp/hello'));
 ```
