@@ -233,11 +233,11 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Most operating systems limit the number of file descriptors that may be open at any given time so it is critical to close the descriptor when operations are completed. Failure to do so will result in a memory leak that will eventually cause an application to crash.
+La maggior parte dei sistemi operativi limita il numero di file descriptor che potrebbero essere aperti in un dato momento quindi è fondamentale chiudere il descriptor quando le operazioni sono state completate. In caso contrario, si verificherà una perdita di memoria che causerà l'arresto anomalo dell'applicazione.
 
-## Threadpool Usage
+## Utilizzato del Threadpool
 
-Note that all file system APIs except `fs.FSWatcher()` and those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che tutte le API del file system eccetto `fs.FSWatcher()` e quelle che sono esplicitamente sincrone utilizzando il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
 ## Class: fs.FSWatcher
 
@@ -245,9 +245,9 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v0.5.8
 -->
 
-A successful call to [`fs.watch()`][] method will return a new `fs.FSWatcher` object.
+Una chiamata al metodo [`fs.watch()`][] avvenuta con successo restituirà un nuovo `fs.FSWatcher` object.
 
-All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` event whenever a specific watched file is modified.
+Tutti gli `fs.FSWatcher` object sono [`EventEmitter`][] che emetteranno un evento `'change'` ogni volta che viene modificato un determinato file sottoposto al watching.
 
 ### Event: 'change'
 
@@ -255,12 +255,12 @@ All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` 
 added: v0.5.8
 -->
 
-* `eventType` {string} The type of change event that has occurred
-* `filename` {string|Buffer} The filename that changed (if relevant/available)
+* `eventType` {string} Il tipo di evento change che si è verificato
+* `filename` {string|Buffer} Il filename che è cambiato (se rilevante/disponibile)
 
-Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
+Viene emesso quando qualcosa cambia in una directory o in un file sottoposto al watching. Vedi ulteriori dettagli in [`fs.watch()`][].
 
-The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
+L'argomento `filename` potrebbe non essere fornito a seconda del supporto del sistema operativo. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
 
 ```js
 // Example when handled through fs.watch() listener
