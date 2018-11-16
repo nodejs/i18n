@@ -732,7 +732,7 @@ Pseudomini per [`net.createConnection()`][`net.createConnection()`].
 Possibili firme:
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
-* [`net.connect(path[, connectListener])`][`net.connect(path)`] per connessioni [IPC](#net_ipc_support).
+* [`net.connect(path[, connectListener])`][`net.connect(path)`] per le connessioni [IPC](#net_ipc_support).
 * [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] per le connessioni TPC.
 
 ### net.connect(options[, connectListener])
@@ -771,7 +771,7 @@ Possibili firme:
 * [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] per le connessioni [IPC](#net_ipc_support).
 * [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] per le connessioni TPC.
 
-La funzione [`net.connect()`][] è un pseudonimo di questa funzione.
+La funzione [`net.connect()`][] è uno pseudonimo di questa funzione.
 
 ### net.createConnection(options[, connectListener])
 
@@ -819,7 +819,7 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 added: v0.1.90
 -->
 
-* `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato al [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
 * `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener (che esegue il listening) "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
