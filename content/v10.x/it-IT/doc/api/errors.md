@@ -257,11 +257,11 @@ makeFaster();
 //       at node.js:906:3
 ```
 
-The location information will be one of:
+Le informazioni di posizione saranno di tipo:
 
-- `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
-- `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
-- `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
+- `native`, se il frame rappresenta una chiamata interna a V8 (come in `[].forEach`).
+- `plain-filename.js:line:column`, se il frame rappresenta una chiamata interna a Node.js.
+- `/absolute/path/to/file.js:line:column`, se il frame rappresenta una chiamata in un programma utente, o le relative dipendenze.
 
 The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
 
