@@ -135,7 +135,7 @@ socket.unref();
 return true;
 ```
 
-Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`. Se questo metodo restituisce un valore falso, il socket verrà distrutto anziché essere mantenuto per l'utilizzo con la richiesta successiva.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`. Se questo metodo restituisce un valore falso, il socket verrà distrutto anziché mantenuto per essere utilizzato con la richiesta successiva.
 
 ### agent.reuseSocket(socket, request)
 
