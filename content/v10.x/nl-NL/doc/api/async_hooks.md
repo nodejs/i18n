@@ -167,21 +167,21 @@ Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen
 * `triggerAsyncId` {number} Het unieke ID van de async hulpbron in wiens uitvoeringscontext deze async hulpbron is gemaakt.
 * `resource` {Object} Referentie naar de hulpbron die de async operatie representeert, moet worden vrijgegeven tijdens het *destroy*.
 
-Wordt opgeroepen wanneer een klasse wordt samengesteld die de *possibility* heeft om een asynchrone gebeurtenis uit te zenden. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Wordt opgeroepen wanneer een klasse wordt samengesteld die de *possibility* heeft om een asynchrone gebeurtenis uit te zenden. Dit betekent *niet* dat de instantie moet oproepen `voordat`/`nadat` voordat `vernietigen` is opgeroepen, maar alleen dat de mogelijkheid bestaat.
 
-This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
+Dit gedrag kan worden waargenomen door iets te doen zoals het openen van een hulpbron en het dan te sluiten voordat de hulpbron kan worden gebruikt. Het volgende fragment toont dit.
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
-// OR
+// OF
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Every new resource is assigned an ID that is unique within the scope of the current process.
+Aan iedere nieuwe hulpbron wordt een ID toegewezen die uniek is binnen de werkingssfeer van het huidige proces.
 
 ###### `type`
 
-The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
+Het `type` is een tekenreeks die aangeeft welk type hulpbron het oproepen van `init` heeft veroorzaakt. Over het algemeen, dit zal overeen komen met de naam van de hulpbron constructor.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -191,11 +191,11 @@ UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
-There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
+Er is ook het `PROMISE` hulpbron type, die wordt gebruikt om `Promise` instanties bij te houden en asyncrhoon werk door hen.
 
-Users are able to define their own `type` when using the public embedder API.
+Gebruikers kunnen hun eigen `type` definiëren bij het gebruik van de openbare embedder API.
 
-It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
+Het is mogelijk om type naam conflicties te hebben. Embedders worden aangemoedigd om gebruik te maken van unieke voorvoegsels, zoals de naam van het npm pakket, om conflicten te voorkomen bij het luisteren naar de haken.
 
 ###### `triggerAsyncId`
 
