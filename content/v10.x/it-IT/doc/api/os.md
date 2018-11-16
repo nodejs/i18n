@@ -391,7 +391,7 @@ added: v6.0.0
 
 Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. Su Windows, i campi `uid` e `gid` sono `-1`, e `shell` è `null`.
 
-The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
+Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema operativo. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
 ## OS Constants
 
