@@ -860,7 +860,7 @@ Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket 
 
 Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata, quindi, verrà messo in pausa e nessun dato verrà letto dal suo handle. Questo permette alle connessioni di essere passate tra i processi senza che nessun dato venga letto dal processo originale. Per iniziare la lettura dei dati da un socket messo in pausa, chiamare [`socket.resume()`][].
 
-Il server può essere un server TCP o un server [IPC](#net_ipc_support), in base a che cosa esso (fa ascoltare) [`listen()`] il [`server.listen()`].
+Il server può essere un server TCP o un server [IPC](#net_ipc_support), in base a che cosa esso (fa ascoltare) [`listen()`] al [`server.listen()`].
 
 Ecco un esempio di un server echo TCP che ascolta le connessioni sulla porta 8124:
 
