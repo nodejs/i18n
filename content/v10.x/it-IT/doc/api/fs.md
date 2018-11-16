@@ -186,46 +186,46 @@ fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///tmp/hello'));
 ```
 
-A `file:` URL having encoded slash characters will result in a throw on all platforms:
+Un URL `file:` che presenta caratteri slash codificati genererà un'esecuzione su tutte le piattaforme:
 
 ```js
-// On Windows
+// Su Windows
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-\ or / characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+\ o / codificati */
 
-// On POSIX
+// Su POSIX
 fs.readFileSync(new URL('file:///p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-/ characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+/ codificati */
 ```
 
-On Windows, `file:` URLs having encoded backslash will result in a throw:
+Su Windows, gli URL `file:` con il backslash codificato provocheranno un'esecuzione:
 
 ```js
-// On Windows
+// Su Windows
 fs.readFileSync(new URL('file:///C:/path/%5C'));
 fs.readFileSync(new URL('file:///C:/path/%5c'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-\ or / characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+\ o / codificati */
 ```
 
-## File Descriptors
+## I File Descriptor
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. Each open file is assigned a simple numeric identifier called a *file descriptor*. At the system-level, all file system operations use these file descriptors to identify and track each specific file. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+Sui sistemi POSIX, per ogni processo, il kernel mantiene una tabella dei file e delle risorse attualmente aperti. Ad ogni file aperto viene assegnato un semplice identificatore numerico chiamato *file descriptor*. A livello di sistema, tutte le operazioni del file system utilizzano questi file descriptor per identificare e tracciare ogni specifico file. I sistemi Windows utilizzano un meccanismo diverso ma concettualmente simile per il tracciamento delle risorse. Per semplificare le cose per gli utenti, Node.js astrae le specifiche differenze tra i sistemi operativi e assegna a tutti i file aperti un file descriptor numerico.
 
-The `fs.open()` method is used to allocate a new file descriptor. Once allocated, the file descriptor may be used to read data from, write data to, or request information about the file.
+Il metodo `fs.open()` viene utilizzato per allocare un nuovo file descriptor. Una volta allocato, il file descriptor potrebbe essere utilizzato per leggere dati, scrivere dati o richiedere informazioni sul file.
 
 ```js
 fs.open('/open/some/file.txt', 'r', (err, fd) => {
   if (err) throw err;
   fs.fstat(fd, (err, stat) => {
     if (err) throw err;
-    // use stat
+    // utilizza stat
 
-    // always close the file descriptor!
+    // chiudere sempre il file descriptor!
     fs.close(fd, (err) => {
       if (err) throw err;
     });
