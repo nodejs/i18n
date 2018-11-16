@@ -241,7 +241,7 @@ Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object r
 
 Durante l'evento [`'response'`][], è possibile aggiungere altri listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
-Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Inoltre, finché i dati non vengono letti, consumerà memoria che alla fine può portare a un errore di 'elaborazione insufficiente'.
+Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Inoltre, finché i dati non vengono letti, esso consumerà memoria che alla fine può portare a un errore di 'elaborazione insufficiente'.
 
 Node.js non controlla se Content-Length e la lunghezza del corpo che è stata trasmessa siano uguali o meno.
 
@@ -253,7 +253,7 @@ La richiesta implementa l'interfaccia [Writable Stream](stream.html#stream_class
 added: v1.4.1
 -->
 
-Emesso quando la richiesta è stata interrotta dal client. This event is only emitted on the first call to `abort()`.
+Emesso quando la richiesta è stata interrotta dal client. Questo evento viene emesso esclusivamente alla prima chiamata a `abort()`.
 
 ### Event: 'connect'
 
@@ -265,7 +265,7 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emesso ogni volta che un server risponde a una richiesta con un metodo `CONNECT`. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
 
 A client and server pair demonstrating how to listen for the `'connect'` event:
 
