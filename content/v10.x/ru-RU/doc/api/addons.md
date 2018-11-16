@@ -70,7 +70,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 ### Сборка
 
-Как только исходный код был записан, он должен быть скомпилирован в двоичный файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Как только исходный код был записан, он должен быть скомпилирован в двоичный файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Этот файл используется [node-gyp](https://github.com/nodejs/node-gyp) - инструментом, написанным специально для компиляции расширений Node.js.
 
 ```json
 {
