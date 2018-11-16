@@ -116,11 +116,11 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 Wanneer `AsyncHook` callbacks gooien, zal de toepassing de stack trace afdrukken en afsluiten. Het uitgangspad zal dat van een niet gevangen uitzondering volgen, maar alle `'uncaughtException'` luisteraars worden verwijderd, en daarmee dwingt het het proces om af te sluiten. De `'exit'` callbacks zullen nog steeds genoemd worden, tenzij de toepassing wordt uitgevoerd met `--abort-on-uncaught-exception`, in welk geval een stack trace zal worden geprint en de toepassing afsluit en het kernbestand verlaat.
 
-De reden voor dit gedrag voor foutafhandeling is dat deze callbacks op potentieel vluchtige punten in de levensduur van een object worden gedraaid, bijvoorbeeld tijdens klasseconstructie en -vernietiging. Om deze reden is wordt het noodzakelijk geacht om het proces snel neer te halen om een onbedoelde afbreking in de toekomst te voorkomen. This is subject to change in the future if a comprehensive analysis is performed to ensure an exception can follow the normal control flow without unintentional side effects.
+De reden voor dit gedrag voor foutafhandeling is dat deze callbacks op potentieel vluchtige punten in de levensduur van een object worden gedraaid, bijvoorbeeld tijdens klasseconstructie en -vernietiging. Om deze reden is wordt het noodzakelijk geacht om het proces snel neer te halen om een onbedoelde afbreking in de toekomst te voorkomen. Dit is onder voorbehoud van wijzigingen in de toekomst wanneer een uitgebreide analyse wordt uitgevoerd om ervoor te zorgen dat een uitzondering de normale controlestroom kan volgen zonder onbedoelde bijwerkingen.
 
-##### Printing in AsyncHooks callbacks
+##### Printen in AsyncHooks callbacks
 
-Because printing to the console is an asynchronous operation, `console.log()` will cause the AsyncHooks callbacks to be called. Using `console.log()` or similar asynchronous operations inside an AsyncHooks callback function will thus cause an infinite recursion. An easy solution to this when debugging is to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
+Omdat het printen naar de console een asynchrone bewerking is, zal `console.log()` veroorzaken dat de AsyncHooks-callbacks worden genoemd. Using `console.log()` or similar asynchronous operations inside an AsyncHooks callback function will thus cause an infinite recursion. An easy solution to this when debugging is to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
