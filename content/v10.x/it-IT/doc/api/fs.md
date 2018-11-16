@@ -40,7 +40,7 @@ try {
 }
 ```
 
-Da notare che non esiste un ordine garantito quando si utilizzano metodi asincroni. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Da notare che non esiste un ordine garantito quando si utilizzano metodi asincroni. Quindi il seguente codice è soggetto a errori perché l'operazione `fs.stat()` potrebbe essere completata prima dell'operazione `fs.rename()`.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Per ordinare in modo corretto le operazioni, spostare la chiamata `fs.stat()` all'interno del callback dell'operazione `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Nei processi occupati, il programmatore è *fortemente incoraggiato* a utilizzare le versioni asincrone di queste chiamate. Le versioni sincrone bloccheranno l'intero processo fino al loro completamento, interrompendo tutte le connessioni.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Anche se non è consigliato, la maggior parte delle funzioni fs consente di omettere l'argomento del callback, in tal caso viene utilizzato un callback predefinito che riesegue gli errori. Per ottenere una traccia (trace) per il sito di chiamata originale, impostare la variabile di ambiente `NODE_DEBUG`:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omettere la funzione callback sulle funzioni fs asincrone è obsoleto e potrebbe generare un qualche errore in futuro.
 
 ```txt
 $ cat script.js
@@ -86,7 +86,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-## File paths
+## Percorsi dei File
 
 Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
 
