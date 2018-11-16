@@ -2188,12 +2188,12 @@ const buf = Buffer.allocUnsafe(6);
 
 buf.writeIntBE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Imprime: <Buffer 12 34 56 78 90 ab>
 console.log(buf);
 
 buf.writeIntLE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer ab 90 78 56 34 12>
+// Imprime: <Buffer ab 90 78 56 34 12>
 console.log(buf);
 ```
 
@@ -2251,13 +2251,13 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeUInt16BE(0xdead, 0);
 buf.writeUInt16BE(0xbeef, 2);
 
-// Prints: <Buffer de ad be ef>
+// Imprime: <Buffer de ad be ef>
 console.log(buf);
 
 buf.writeUInt16LE(0xdead, 0);
 buf.writeUInt16LE(0xbeef, 2);
 
-// Prints: <Buffer ad de ef be>
+// Imprime: <Buffer ad de ef be>
 console.log(buf);
 ```
 
@@ -2274,7 +2274,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt32BE()` escribe big endian, `writeUInt32LE()` escribe little endian). `value` debe ser un entero válido de 32-bits sin signo. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 32-bits sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2285,12 +2285,12 @@ const buf = Buffer.allocUnsafe(4);
 
 buf.writeUInt32BE(0xfeedface, 0);
 
-// Prints: <Buffer fe ed fa ce>
+// Imprime: <Buffer fe ed fa ce>
 console.log(buf);
 
 buf.writeUInt32LE(0xfeedface, 0);
 
-// Prints: <Buffer ce fa ed fe>
+// Imprime: <Buffer ce fa ed fe>
 console.log(buf);
 ```
 
@@ -2308,7 +2308,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value`, `offset`, y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. Behavior is undefined when `value` is anything other than an unsigned integer.
+Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2334,9 +2334,9 @@ console.log(buf);
 added: v0.5.4
 -->
 
-* {integer} **Default:** `50`
+* {integer} **Predeterminado:** `50`
 
-Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`] for more details on `buf.inspect()` behavior.
+Devuelve el número máximo de bytes que serán devueltos cuando `buf.inspect()` es llamado. Esto puede ser reemplazado por módulos de usuario. Vea [`util.inspect()`] para más detalles sobre el comportamiento de `buf.inspect()`.
 
 Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
