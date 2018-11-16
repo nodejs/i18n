@@ -158,12 +158,12 @@ Voor API constistentie zal `disable()` ook de `AsyncHook` instantie retourneren.
 
 #### Haak Callbacks
 
-Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
+Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen zijn gecategoriseerd in vier gebieden: instantiëren, voor/nadat de callback wordt genoemd, en wanneer de instantie wordt vernietigd.
 
 ##### init(asyncId, type, triggerAsyncId, resource)
 
-* `asyncId` {number} A unique ID for the async resource.
-* `type` {string} The type of the async resource.
+* `asyncId` {number} Een unieke ID voor de async hulpbron.
+* `type` {string} Het type van de async hulpbron.
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
