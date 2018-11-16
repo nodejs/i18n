@@ -226,9 +226,9 @@ De `TCPSERVERWRAP` is de server die de verbindingen ontvangt.
 
 De `TCPWRAP` is de nieuwe verbinding van de client. Wanneer een nieuwe verbinding is gemaakt, wordt onmiddellijk de `TCPWrap` instantie geconstrueerd. Dit gebeurt buiten elke JavaScript stack om. (Een `executionAsyncId()` van `0` betekent dat het uitgevoerd wordt vanuit C++ met geen JavaScript stack erboven.) Met enkel die informatie, zou het onmogelijk zijn om hulpbronnen samen te stellen uit het oogpunt van wat hun creatie heeft veroorzaakt, dus `triggerAsyncId` wordt de taak gegeven bekend te maken welke hulpbron verantwoordelijk is voor het bestaan van de nieuwe hulpbron.
 
-###### `resource`
+###### `hulpbron`
 
-`resource` is an object that represents the actual async resource that has been initialized. This can contain useful information that can vary based on the value of `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
+`resource` is een object dat de werkelijke async hulpbron die is geïnitialiseerd vertegenwoordigt. Dit kan nuttige informatie bevatten welke kan variëren afhankelijk van de waarde van `type`. Bijvoorbeeld, voor het `GETADDRINFOREQWRAP` hulpbron type, `resource` verschaft de hostnaam die is gebruikt wanneer het IP adres wordt opgezocht voor de hostnaam in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Here, `b` is considered a chained promise.
 
