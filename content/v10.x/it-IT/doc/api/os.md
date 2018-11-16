@@ -311,7 +311,7 @@ I valori attualmente possibili sono:
 
 Equivalente a [`process.platform`][].
 
-Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è da essere considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## os.release()
 
@@ -393,7 +393,7 @@ Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente effic
 
 Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema operativo. Questo differisce dal risultato di `os.homedir()`, il quale esegue il query di diverse variabili d'ambiente per la home directory prima di ritornare alla risposta del sistema operativo.
 
-## OS Constants
+## Constanti del SO
 
 Le seguenti costante vengono esportate da `os.constants`.
 
