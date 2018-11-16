@@ -563,7 +563,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the creation time of this file expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica il momento della creazione di questo file dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.atime
 
@@ -573,7 +573,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was accessed.
+Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file.
 
 ### stats.mtime
 
@@ -583,7 +583,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was modified.
+Il timestamp che indica l'ultima volta che questo file è stato modificato.
 
 ### stats.ctime
 
@@ -593,7 +593,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time the file status was changed.
+Il timestamp che indica l'ultima volta che lo stato del file è stato modificato.
 
 ### stats.birthtime
 
@@ -603,13 +603,13 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the creation time of this file.
+Il timestamp che indica il momento della creazione di questo file.
 
-### Stat Time Values
+### Valori Stat Time
 
-The `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` properties are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. The `Date` and number values are not connected. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
+Le proprietà `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` sono [numeri](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) che contengono i momenti corrispondenti in millisecondi. La loro precisione è specifica a seconda della piattaforma. `atime`, `mtime`, `ctime` e `birthtime` sono rappresentazioni alternate del [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object per i diversi momenti/orari. Il `Date` e i valori numeri non sono collegati. L'assegnazione di un nuovo valore numerico o la modifica del valore `Date` non si riflettono nella rappresentazione alternata corrispondente.
 
-The times in the stat object have the following semantics:
+I momenti nello stat object hanno la seguente semantica:
 
 * `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
 * `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
