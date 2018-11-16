@@ -164,7 +164,7 @@ Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen
 
 * `asyncId` {number} Een unieke ID voor de async hulpbron.
 * `type` {string} Het type van de async hulpbron.
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
+* `triggerAsyncId` {number} Het unieke ID van de async hulpbron in wiens uitvoeringscontext deze async hulpbron is gemaakt.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
