@@ -2201,23 +2201,23 @@ En el caso donde un desarrollador necesite retener una pequeña porción de memo
 Ejemplo:
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener unos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asignar para los datos retenidos
   const sb = SlowBuffer(10);
 
-  // Copy the data into the new allocation
+  // Copiar los datos dentro de la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+El uso de `SlowBuffer` debe ser empleado solo como último recurso *después* de que un desarrollador haya observado una retención de memoria indebida en sus aplicaciones.
 
 ### new SlowBuffer(size)
 
@@ -2227,11 +2227,11 @@ deprecated: v6.0.0
 
 > Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-* `size` {integer} The desired length of the new `SlowBuffer`.
+* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
-Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
+Asigna un nuevo `SlowBuffer` de `size` bytes. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, un [`RangeError`] es arrojado. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and could contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
+La memoria subyacente para instancias de `SlowBuffer` *no está inicializada*. Los contenidos de un `SlowBuffer` recién creado son desconocidos y pueden contener datos sensibles. Use [`buf.fill(0)`][`buf.fill()`] para inicializar un `SlowBuffer` a ceros.
 
 Ejemplo:
 
@@ -2240,11 +2240,11 @@ const SlowBuffer = require('buffer').SlowBuffer;
 
 const buf = new SlowBuffer(5);
 
-// Prints: (contents may vary): <Buffer 78 e0 82 02 01>
+// Imprime: (contents may vary): <Buffer 78 e0 82 02 01>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 console.log(buf);
 ```
