@@ -418,8 +418,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Sent to indicate when a controlling terminal is closed or a parent
-    process exits.</td>
+    <td>Inviato per indicare quando un terminale di controllo è chiuso o un parent    process si chiude.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
