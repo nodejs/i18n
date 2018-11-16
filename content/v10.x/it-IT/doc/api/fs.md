@@ -88,11 +88,11 @@ Error: EISDIR: illegal operation on a directory, read
 
 ## Percorsi dei File
 
-Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
+La maggior parte delle operazioni `fs` accettano i percorsi dei file che potrebbero essere specificati sotto forma di una stringa, di un [`Buffer`][] o di un [`URL`][] object utilizzando il protocollo `file:`.
 
-String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
+I percorsi sotto forma di stringa vengono interpretati come sequenze di caratteri UTF-8 che identificano il filename assoluto o relativo. I percorsi relativi verranno risolti relativamente alla working directory corrente come specificato da `process.cwd()`.
 
-Example using an absolute path on POSIX:
+Esempio utilizzando un percorso assoluto su POSIX:
 
 ```js
 const fs = require('fs');
@@ -105,7 +105,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Example using a relative path on POSIX (relative to `process.cwd()`):
+Esempio utilizzando un percorso relativo su POSIX (relativo a `process.cwd()`):
 
 ```js
 fs.open('file.txt', 'r', (err, fd) => {
@@ -116,9 +116,9 @@ fs.open('file.txt', 'r', (err, fd) => {
 });
 ```
 
-Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
+I percorsi specificati utilizzando un [`Buffer`][] sono utili principalmente su determinati sistemi operativi POSIX che trattano i percorsi dei file come sequenze opache di byte. Su tali sistemi è possibile che il singolo percorso di un file contenga sequenze secondarie che utilizzano molteplici codifiche di caratteri. Come con i percorsi sotto forma di stringa, i percorsi sotto forma di `Buffer` potrebbero essere relativi o assoluti:
 
-Example using an absolute path on POSIX:
+Esempio utilizzando un percorso assoluto su POSIX:
 
 ```js
 fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
@@ -129,7 +129,7 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows Node.js segue il concetto di working directory per unità. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ### URL object support
 
