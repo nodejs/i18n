@@ -233,18 +233,18 @@ I frame sono generati solo per le funzioni JavaScript. Se, ad esempio, l'esecuzi
 const cheetahify = require('./native-binding.node');
 
 function makeFaster() {
-  // cheetahify *synchronously* calls speedy.
+  // cheetahify  chiama speedy *in modo sincrono*.
   cheetahify(function speedy() {
     throw new Error('oh no!');
   });
 }
 
 makeFaster();
-// will throw:
+// genererà:
 //   /home/gbusey/file.js:6
-//       throw new Error('oh no!');
+//       genera nuovo errore ('oh no!');
 //           ^
-//   Error: oh no!
+//   Errore: oh no!
 //       at speedy (/home/gbusey/file.js:6:11)
 //       at makeFaster (/home/gbusey/file.js:5:3)
 //       at Object.<anonymous> (/home/gbusey/file.js:10:1)
