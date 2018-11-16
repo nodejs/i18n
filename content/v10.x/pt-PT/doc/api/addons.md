@@ -89,23 +89,23 @@ Uma vez que o arquivo `binding.gyp` estiver criado, use `node-gyp configure` par
 
 Depois, invoque o comando `node-gyp build` para gerar o arquivo compilado `addon.node`. Este irá pôr no diretório `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Ao usar `npm install` para instalar um Complemento do Node.js, npm usa o seu própria pacote de versão do `node-gyp` para executar este mesmo conjunto de ações, gerando uma versão compilada do Complemento para a plataforma do utilizador sob demanda.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Uma vez que o compilou, o Complemento binário pode ser usado dentro do Node.js ao apontar [`require()`](modules.html#modules_require) para o módulo compilado `addon.node`:
 
 ```js
-// hello.js
+// ola.js
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'world'
+// Prints: 'mundo'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Por favor, veja os exemplos abaixo para mais informação ou <https://github.com/arturadib/node-qt> para um exemplo em produção.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Por causa do caminho exato para o Complemento binário compilado pode variar dependendo em como é compilado (isto é, algumas isso pode ser no `./build/Debug/`), Complementos podem usar o pacote [bindings](https://github.com/TooTallNate/node-bindings) para carregar o módulo compilado.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Note que enquanto que a implementação do pacote `bindings` é mais sofisticado em como localizza os módulos de Complementação, é essencial usando o padrão try-catch similar a:
 
 ```js
 try {
