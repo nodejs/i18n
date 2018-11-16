@@ -6,7 +6,7 @@
 
 Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente è in grado di trasmettere dati.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente in grado di eseguire lo streaming dei dati.
 
 Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
@@ -20,11 +20,11 @@ Gli header dei messaggi HTTP sono rappresentati da un object come questo:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. I valori non vengono modificati.
+Le chiavi sono minuscole. I valori non vengono modificati.
 
 Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node.js è di livello molto basso. Si occupa esclusivamente della gestione dello stream e dell'analisi dei messaggi. Analizza un messaggio nelle intestazioni e nel corpo ma non analizza le intestazioni effettive o il corpo.
 
-Vedere [` message.headers`][] per i dettagli su come vengono gestiti le intestazioni duplicate.
+Vedere [` message.headers`][] per i dettagli su come vengono gestite le intestazioni duplicate.
 
 Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
 
@@ -45,7 +45,7 @@ Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà
 added: v0.3.4
 -->
 
-Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la coda non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
+Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la queue non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
 
 Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
 
