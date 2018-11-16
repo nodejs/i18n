@@ -2172,7 +2172,7 @@ added: v0.5.4
 
 Devuelve el número máximo de bytes que serán devueltos cuando `buf.inspect()` es llamado. Esto puede ser reemplazado por módulos de usuario. Vea [`util.inspect()`] para más detalles sobre el comportamiento de `buf.inspect()`.
 
-Note that this is a property on the `buffer` module as returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que esto es una propiedad en el módulo `buffer` tal como es devuelto por `require('buffer')`, no en el `Buffer` global o una instancia de `Buffer`.
 
 ## buffer.kMaxLength
 
@@ -2180,19 +2180,19 @@ Note that this is a property on the `buffer` module as returned by `require('buf
 added: v3.0.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+En arquitecturas de 32-bits, este valor es `(2^30)-1` (~1GB). En arquitecturas de 64-bits, este valor es `(2^31)-1` (~2GB).
 
-## Class: SlowBuffer
+## Clase: SlowBuffer
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-Returns an un-pooled `Buffer`.
+Devuelve un `Buffer` sin agrupar.
 
 In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object. This approach improves both performance and memory usage since v8 does not need to track and cleanup as many `Persistent` objects.
 
@@ -2225,7 +2225,7 @@ Use of `SlowBuffer` should be used only as a last resort *after* a developer has
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
