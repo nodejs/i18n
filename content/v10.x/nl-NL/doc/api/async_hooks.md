@@ -140,7 +140,7 @@ Wanneer een asynchrone bewerking nodig is voor het aanmelden, is het mogelijk om
 
 Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wannneer geen callbacks toegeleverd zijn is het inschakelen een noop.
 
-De `AsyncHook` instantie is als standaard uitgeschakeld. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+De `AsyncHook` instantie is als standaard uitgeschakeld. Wanneer de `AsyncHook` instantie moet worden ingeschakeld onmiddelijk na creatie, kan het volgende patroon worden gebruikt.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -150,13 +150,13 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### asyncHook.disable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Retourneert: {AsyncHook} Een referentie naar `asyncHook`.
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
+Schakel de callbacks uit om een gegeven `AsyncHook` instantie uit de globale groep van `AsyncHook` callbacks uit te voeren. Zodra een haak is uitgeschakeld, zal het niet opnieuw opgeroepen worden totdat het weer is ingeschakeld.
 
-For API consistency `disable()` also returns the `AsyncHook` instance.
+Voor API constistentie zal `disable()` ook de `AsyncHook` instantie retourneren.
 
-#### Hook Callbacks
+#### Haak Callbacks
 
 Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
 
