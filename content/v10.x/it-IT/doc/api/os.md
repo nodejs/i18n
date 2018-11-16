@@ -430,7 +430,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Inviato a un processo per notificare che ha tentato di eseguire un'istruzione illegale, non valida, sconosciuta o privilegiata.</td>
+    <td>Inviato a un processo per notificare che hanno tentato di eseguire un'istruzione illegale, non valida, sconosciuta o privilegiata.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
