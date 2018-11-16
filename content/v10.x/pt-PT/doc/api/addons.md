@@ -74,20 +74,20 @@ Uma vez que o código-fonte foi escritom ele deve ser compilado no arquivo biná
 
 ```json
 {
-  "targets": [
+  "targets": [ \\alvos
     {
-      "target_name": "addon",
-      "sources": [ "hello.cc" ]
+      "target_name": "addon", \\nome do alvo
+      "sources": [ "ola.cc" ] \\fonte onde "extrai" o arquivo "ola.cc"
     }
   ]
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+Uma verão da utilidade `node-gyp` é empacotado e distribuído com Node.js como uma parte de `npm`. Esta versão não é feita para ser diretamente disponível para desenvolvedores para usar e é, somente, destinado apenas para suportar a habilidade para usar o comando `npm install` para compilar e instalar Complementos. Desenvolvedores que desejam usar diretamente `node-gyp` podem instalá-lo, usando o comando `npm install -g node-gyp`. Veja as [instruções de instalação](https://github.com/nodejs/node-gyp#installation) de `node-gyp` para mais informações, incluindo requerimentos de plataformas específicas.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Uma vez que o arquivo `binding.gyp` estiver criado, use `node-gyp configure` para gerar os arquivos de compilação do projeto apropriados, para a plataforma atual. Este irá gerar tanto um `Makefile` (nas plataformas Unix) ou um arquivo `vcxproj` (no Windows) no diretório `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Depois, invoque o comando `node-gyp build` para gerar o arquivo compilado `addon.node`. Este irá pôr no diretório `build/Release/`.
 
 When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
