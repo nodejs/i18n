@@ -611,12 +611,12 @@ Le proprietà `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` sono [numeri](https
 
 I momenti nello stat object hanno la seguente semantica:
 
-* `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
-* `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
-* `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `atime` "Access Time" - Momento in cui è avvenuto l'ultimo accesso ai dati del file. Modificato dalle system call mknod(2), utimes(2) e read(2).
+* `mtime` "Modified Time" - Momento in cui è avvenuta l'ultima modifica ai dati del file. Modificato dalle system call mknod(2), utimes(2) e write(2).
+* `ctime` "Change Time" - Momento in cui è avvenuta l'ultima modifica dello stato del file (modifica dei dati inode). Modificato dalle system call chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2) e write(2).
+* `birthtime` "Birth Time" - Momento in cui è stato creato il file. Impostato una sola volta quando viene creato il file. Sui filesystem in cui il birthtime non è disponibile, questo campo potrebbe contenere il `ctime` o `1970-01-01T00:00Z` (cioè, unix epoch timestamp `0`). Da notare che questo valore può essere maggiore di `atime` o `mtime` in questo caso. Su Darwin e altre varianti di FreeBSD, si imposta anche se il `atime` è impostato esplicitamente su un valore precedente rispetto all'attuale `birthtime` utilizzando la system call utimes(2).
 
-Prior to Node.js v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
+Prima di Node.js v0.12, il `ctime` conteneva il `birthtime` sui sistemi Windows. Da notare che a partire dalla v0.12, `ctime` non è "creation time" e sui sistemi Unix non lo è mai stato.
 
 ## Class: fs.WriteStream
 
