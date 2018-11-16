@@ -199,9 +199,9 @@ Het is mogelijk om type naam conflicties te hebben. Embedders worden aangemoedig
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. Dit is anders dan `async_hooks.executionAsyncId()` die alleen laat zien *wanneer* een hulpbron werd gecreeerd, terwijl `triggerAsyncId` laat zien *waarom* een hulpbron werd gecreeerd.
 
-The following is a simple demonstration of `triggerAsyncId`:
+Het volgende is een simpele demonstratie van `triggerAsyncId`:
 
 ```js
 async_hooks.createHook({
@@ -215,7 +215,7 @@ async_hooks.createHook({
 require('net').createServer((conn) => {}).listen(8080);
 ```
 
-Output when hitting the server with `nc localhost 8080`:
+Uitvoer bij het bewerken van de server met `nc localhost 8080`:
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
