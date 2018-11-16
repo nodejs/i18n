@@ -129,9 +129,9 @@ A extensão nome do arquivo do Complemento binário compilado é `.node`(como co
 
 Ao chamar [`require()`](modules.html#modules_require), a extensão `.node` pode, geralmente, ser omitida e o Node.js ainda encontrará e inicializará o Complemento. Uma ressalva, no entanto, é que o Node.js primeiro, tentará localizar e carregar módulos ou arquivos de JavaScript que acontecem para compartilhar o mesmo nome de base. Por exemplo, se existe um arquivo `addon.js` no mesmo diretório como o binário `addon.node`, então o [`require('addon')`](modules.html#modules_require) irá dar precedência ao arquivo `addon.js` e carregá-lo, em vez disso.
 
-## Native Abstractions for Node.js
+## Abstrações Nativas para o Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Cada dos examplos ilustrados neste documento faz uso direto do Node.js e APIS de V8 para a implementação de Complementos. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
