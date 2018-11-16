@@ -699,9 +699,9 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
-Example:
+例如：
 
 ```js
 const ab = new ArrayBuffer(10);
