@@ -6,17 +6,17 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+Il modulo `fs` fornisce un'API per interagire con il file system in un modo strettamente modellato attorno alle funzioni POSIX standard.
 
-To use this module:
+Per utilizzare questo modulo:
 
 ```js
 const fs = require('fs');
 ```
 
-All file system operations have synchronous and asynchronous forms.
+Tutte le operazioni del file system hanno forme sincrone e asincrone.
 
-The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+La forma asincrona accetta sempre un callback di completamento come suo ultimo argomento. Gli argomenti passati al callback di completamento dipendono dal metodo ma il primo argomento è sempre riservato per un'eccezione. Se l'operazione è stata completata correttamente, il primo argomento sarà `null` oppure `undefined`.
 
 ```js
 const fs = require('fs');
@@ -27,7 +27,7 @@ fs.unlink('/tmp/hello', (err) => {
 });
 ```
 
-Exceptions that occur using synchronous operations are thrown immediately and may be handled using `try`/`catch`, or may be allowed to bubble up.
+Le eccezioni che si verificano utilizzando le operazioni sincrone vengono eseguite immediatamente e potrebbero essere gestite utilizzando `try`/`catch` oppure potrebbero essere autorizzate al bubble up.
 
 ```js
 const fs = require('fs');
@@ -36,11 +36,11 @@ try {
   fs.unlinkSync('/tmp/hello');
   console.log('successfully deleted /tmp/hello');
 } catch (err) {
-  // handle the error
+  // gestire l'errore
 }
 ```
 
-Note that there is no guaranteed ordering when using asynchronous methods. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Da notare che non esiste un ordine garantito quando si utilizzano metodi asincroni. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
