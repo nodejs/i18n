@@ -625,9 +625,9 @@ changes:
 
 如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+如果提供了 `totalLength`，则会将其强制转换为无符号整数。 如果 `列表` 中的所有 `Buffer` 长度之和超过 `totalLength`，则结果会被截取为 `totalLength`。
 
-Example: Create a single `Buffer` from a list of three `Buffer` instances
+例如：从包含三个 `Buffer` 实例的列表创建一个单一的 `Buffer`。
 
 ```js
 const buf1 = Buffer.alloc(10);
@@ -647,7 +647,7 @@ console.log(bufA);
 console.log(bufA.length);
 ```
 
-### Class Method: Buffer.from(array)
+### 类方法：Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -655,18 +655,18 @@ added: v5.10.0
 
 * `array` {Array}
 
-Allocates a new `Buffer` using an `array` of octets.
+使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+如果 `array` 不是一个`Array`，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
