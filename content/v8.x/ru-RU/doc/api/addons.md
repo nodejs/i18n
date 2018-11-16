@@ -68,7 +68,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 ### Сборка
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+Как только исходный код был записан, он должен быть скомпилирован в двоичный файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
 
 ```json
 {
