@@ -604,7 +604,7 @@ const arr = [buf1, buf2];
 console.log(arr.sort(Buffer.compare));
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### 类方法：Buffer.concat(list[, totalLength])
 
 <!-- YAML
 added: v0.7.11
@@ -615,7 +615,7 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Array} List of `Buffer` or [`Uint8Array`] instances to concat.
+* `list` {Array} 要合并的 `Buffer` 或 [`Uint8Array`] 实例的列表。
 * `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
 * Returns: {Buffer}
 
