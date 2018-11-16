@@ -158,12 +158,12 @@ Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggi
 - `targetObject` {Object}
 - `constructorOpt` {Function}
 
-Crea una proprietà `.stack` su `targetObject`, la quale quando viene accessata restituisce una stringa che rappresenta il punto esatto all'interno del codice in cui è stata chiamata `Error.captureStackTrace()`.
+Crea una proprietà `.stack` su `targetObject`, la quale quando viene acceduta restituisce una stringa che rappresenta il punto esatto all'interno del codice in cui è stata chiamata `Error.captureStackTrace()`.
 
 ```js
 const myObject = {};
 Error.captureStackTrace(myObject);
-myObject.stack;  // similar to `new Error().stack`
+myObject.stack;  // simile a `new Error().stack`
 ```
 
 La prima riga della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
@@ -189,7 +189,7 @@ new MyError().stack;
 
 La proprietà `Error.stackTraceLimit` specifica il numero di stack frame collezionati da una stack trace (generata da `new Error().stack` o da `Error.captureStackTrace(obj)`).
 
-Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi Stack trace catturata *dopo* che il valore è stato cambiato.
+Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi stack trace catturata *dopo* che il valore è stato cambiato.
 
 Se impostato su un valore non numerico, o impostato su un valore numerico negativo, le stack trace non cattureranno nessun frame.
 
