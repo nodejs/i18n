@@ -14,22 +14,22 @@ No momento, o método para a implementação de Complementos é bastante complic
 
 * Bibliotecas internas do Node.js. O Node.js exporta para si um número de APIS de C++ que no Complementa pode usar &mdash; o mais importante dos quais é a classe `node::ObjectWrap`.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* O Node.js incluí um número de outras bibliotecas estaticamente vinculadads incluindo OpenSSl. Estas outras bibliotecas estão localizadas no diretório `deps/` na árvore de origem do Node.js. Apenas os símbolos de libuv, OpenSSL, V8 e zlib são propositadamente re-exportados pelo Node.js e podem ser usado por várias estensões por Complementos. Ver [Ligar paras as dependências do próprio Node.js](#addons_linking_to_node_js_own_dependencies) para informação adicional.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Todos os exemplos seguinte estão disponível para [download](https://github.com/nodejs/node-addon-examples) e podem ser usados como um ponto de início para um Complemento.
 
-## Hello world
+## Olá mundo
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Este exemplo de "Olá mundo" é um simples Complemento, escrito em C++, que é o equivalente do seguinte código em JavaScript:
 
 ```js
-module.exports.hello = () => 'world';
+module.exports.ola = () => 'mundo';
 ```
 
-First, create the file `hello.cc`:
+Primeiro, crie o arquivo `ola.cc`:
 
 ```cpp
-// hello.cc
+// ola.cc
 #include <node.h>
 
 namespace demo {
@@ -52,25 +52,25 @@ void init(Local<Object> exports) {
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 
-}  // namespace demo
+}  // demonstração namespace
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Note que todos os Complementos do Node.js devem exportar uma função inicial seguindo o padrão:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Não há nenhuma vírgula depois de `NODE_MODULE` que não seja uma função (veja `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+O `nome_modulo` deve coincidir o nome do arquivo do binário final (excluindo o sufixo `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+No exemplo `ola.cc`, em seguida, a função de inicialização é `init` e o nome do módulo de Complemento é `addon`.
 
-### Building
+### Compilando
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Uma vez que o código-fonte foi escritom ele deve ser compilado no arquivo binário `addon.node`. Para fazê-lo, crie um arquivo chamado `binding.gyp` no nível superior do projeto descrevendo a configuração da compilação do módulo usando um formato como o JSON. Neste arquivo é usado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar Complementos do Node.js.
 
 ```json
 {
