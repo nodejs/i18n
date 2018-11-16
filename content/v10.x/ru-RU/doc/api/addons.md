@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 Так, в примере `hello.cc` функция инициализации это - `init`, а имя модуля расширения это - `addon`.
 
-### Building
+### Сборка
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
