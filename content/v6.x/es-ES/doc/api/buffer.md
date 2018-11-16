@@ -2192,11 +2192,11 @@ deprecated: v6.0.0
 
 > Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-Devuelve un `Buffer` sin agrupar.
+Devuelve un `Buffer` no-agrupado.
 
-In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object. This approach improves both performance and memory usage since v8 does not need to track and cleanup as many `Persistent` objects.
+Para evitar la sobrecarga de recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, por defecto, las asignaciones debajo de 4KB se recortan desde un único objecto asignado más grande. Este enfoque mejora tanto el rendimiento como el uso de la memoria, ya que v8 no necesita rastrear y limpiar tantos objetos `Persistent`.
 
-In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
+En el caso donde un desarrollador necesite retener una pequeña porción de memoria de un pool por un tiempo indeterminado, puede que sea apropiado crear una instancia de `Buffer` no-agrupado utilizando `SlowBuffer` y luego crear una copia de los bits relevantes.
 
 Ejemplo:
 
