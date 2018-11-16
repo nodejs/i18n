@@ -260,14 +260,14 @@ added: v0.5.8
 
 Viene emesso quando qualcosa cambia in una directory o in un file sottoposto al watching. Vedi ulteriori dettagli in [`fs.watch()`][].
 
-L'argomento `filename` potrebbe non essere fornito a seconda del supporto del sistema operativo. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
+L'argomento `filename` potrebbe non essere fornito a seconda del supporto del sistema operativo. Se il `filename` viene fornito, esso verrà fornito come `Buffer` se `fs.watch()` viene chiamato con la sua opzione di `encoding` impostata su `'buffer'`, altrimenti il `filename` sarà una stringa UTF-8.
 
 ```js
-// Example when handled through fs.watch() listener
+// Esempio quando gestito attraverso il listener fs.watch() 
 fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
   if (filename) {
     console.log(filename);
-    // Prints: <Buffer ...>
+    // Stampa: <Buffer ...>
   }
 });
 ```
@@ -278,7 +278,7 @@ fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
 added: v10.0.0
 -->
 
-Emitted when the watcher stops watching for changes.
+Viene emesso quando il watcher smette di osservare i cambiamenti.
 
 ### Event: 'error'
 
@@ -288,7 +288,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Emitted when an error occurs while watching the file.
+Viene emesso quando si verifica un errore durante l'osservazione del file.
 
 ### watcher.close()
 
@@ -296,7 +296,7 @@ Emitted when an error occurs while watching the file.
 added: v0.5.8
 -->
 
-Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSWatcher` object is no longer usable.
+Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, l'`fs.FSWatcher` object non è più utilizzabile.
 
 ## Class: fs.ReadStream
 
@@ -304,9 +304,9 @@ Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSW
 added: v0.1.93
 -->
 
-A successful call to `fs.createReadStream()` will return a new `fs.ReadStream` object.
+Una chiamata a `fs.createReadStream()` avvenuta con successo restituirà un nuovo `fs.ReadStream` object.
 
-All `fs.ReadStream` objects are [Readable Streams](stream.html#stream_class_stream_readable).
+Tutti gli `fs.ReadStream` object sono degli [Readable Stream](stream.html#stream_class_stream_readable).
 
 ### Event: 'close'
 
@@ -314,7 +314,7 @@ All `fs.ReadStream` objects are [Readable Streams](stream.html#stream_class_stre
 added: v0.1.93
 -->
 
-Emitted when the `fs.ReadStream`'s underlying file descriptor has been closed.
+Viene emesso quando file descriptor sottostante a `fs.ReadStream` è stato chiuso.
 
 ### Event: 'open'
 
