@@ -296,7 +296,7 @@ Viene emesso quando si verifica un errore durante l'osservazione del file.
 added: v0.5.8
 -->
 
-Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, l'`fs.FSWatcher` object non è più utilizzabile.
+Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, l’object `fs.FSWatcher` non è più utilizzabile.
 
 ## Class: fs.ReadStream
 
@@ -324,7 +324,7 @@ added: v0.1.93
 
 * `fd` {integer} File descriptor intero utilizzato dal `ReadStream`.
 
-Viene emesso quando il file descriptor dell'`fs.ReadStream` è stato aperto.
+Viene emesso quando il file descriptor del `fs.ReadStream` è stato aperto.
 
 ### Event: 'ready'
 
@@ -332,7 +332,7 @@ Viene emesso quando il file descriptor dell'`fs.ReadStream` è stato aperto.
 added: v9.11.0
 -->
 
-Viene emesso quando l'`fs.ReadStream` è pronto per essere utilizzato.
+Viene emesso quando il `fs.ReadStream` è pronto per essere utilizzato.
 
 Esegue immediatamente dopo `'open'`.
 
@@ -411,7 +411,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive un character device.
+Restituisce `true` se il `fs.Stats` object descrive un character device.
 
 ### stats.isDirectory()
 
@@ -421,7 +421,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive una directory del file system.
+Restituisce `true` se l’object `fs.Stats` descrive una directory del file system.
 
 ### stats.isFIFO()
 
@@ -431,7 +431,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive un pipe first-in-first-out (FIFO).
+Restituisce `true` se l'object `fs.Stats` descrive un pipe first-in-first-out (FIFO).
 
 ### stats.isFile()
 
@@ -441,7 +441,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive un normale file.
+Restituisce `true` se l'object `fs.Stats` descrive un normale file.
 
 ### stats.isSocket()
 
@@ -451,7 +451,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive un socket.
+Restituisce `true` se l'object `fs.Stats` descrive un socket.
 
 ### stats.isSymbolicLink()
 
@@ -461,7 +461,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`fs.Stats` object descrive un collegamento simbolico (symlink).
+Restituisce `true` se l'object `fs.Stats` descrive un collegamento simbolico (symlink).
 
 Questo metodo è valido solo quando si utilizza [`fs.lstat()`][].
 
@@ -533,7 +533,7 @@ added: v8.1.0
 
 * {number}
 
-Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file dall'inizio del dal POSIX Epoch espresso in millisecondi.
+Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.mtimeMs
 
