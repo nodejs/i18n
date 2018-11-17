@@ -3193,14 +3193,14 @@ Semver Minor:
 
 Parche de Semver:
 
-* **buffer**: exceso de bytes sin relleno en objetos de `Buffer` nuevos creados con `Buffer.concat()` mientras se proporciona un parámetro de `totalLength` que excede la extensión de los objetos de `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
-* **src**: Reparar regresión donde pasar una contraseña vacía y/o salt a crypto.pbkdf2() causaría un error fatal (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
+* **buffer**: llenar con ceros el exceso de bytes en los nuevos objetos `Buffer` creados con `Buffer.concat()` mientras se proporciona un parámetro de `totalLength` que excede la extensión de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
+* **src**: Reparar regresión en la que pasar una contraseña vacía y/o salt a crypto.pbkdf2() causaría un error fatal (Rich Trott) [#8572](https://github.com/nodejs/node/pull/8572)
 * **tls**: CVE-2016-7099 - Reparar chequeo de validación de certificado de comodín inválido, por el cual un servidor de TLS podría ser capaz de servir un certificado de comodín inválido para su hostname, debido a una validación inapropiada de `*.` en la string del comodín. Originalmente reportado por Alexander Minozhenko y James Bunton (Atlassian). (Ben Noordhuis) [nodejs/node-private#75](https://github.com/nodejs/node-private/pull/75)
-* **v8**: Arreglar regresión donde una regex en un objeto congelado estaba rota (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
+* **v8**: Arreglar regresión en la que una regex en un objeto congelado estaba rota (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
 
 ### Commits
 
-* [[`8fb8c46303`](https://github.com/nodejs/node/commit/8fb8c46303)] - **buffer**: bytes sin inicializar sin relleno en .concat() (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
+* [[`8fb8c46303`](https://github.com/nodejs/node/commit/8fb8c46303)] - **buffer**: bytes sin inicializar llenados con ceros en .concat() (Сковорода Никита Андреевич) [nodejs/node-private#64](https://github.com/nodejs/node-private/pull/64)
 * [[`e5998c44b4`](https://github.com/nodejs/node/commit/e5998c44b4)] - **crypto**: no construir motores de hardware (Ben Noordhuis) [nodejs/node-private#73](https://github.com/nodejs/node-private/pull/73)
 * [[`ed4cd2eebe`](https://github.com/nodejs/node/commit/ed4cd2eebe)] - **deps**: hacer cherry-pick a 34880eb3dc desde upstream de V8 (Myles Borins) [#8673](https://github.com/nodejs/node/pull/8673)
 * [[`f8ad0dc0e2`](https://github.com/nodejs/node/commit/f8ad0dc0e2)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
