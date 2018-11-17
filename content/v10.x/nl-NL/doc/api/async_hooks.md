@@ -452,7 +452,7 @@ Promise.resolve(1729).then(() => {
 
 In dit voorbeeld, maakte het toevoegen van een actuele hook functie het mogelijk dat het traceren van beloften werd ingeschakeld. In het voorbeeld hierboven zijn twee beloften; de belofte die is gecreëerd door `Promise.resolve()` en de belofte geretourneerd door de oproep om `then()`. In het voorbeeld hierboven, krijgt de eerste belofte de `asyncId` `6` en de laatste krijgt `asyncId` `7`. Gedurende de uitvoering van de `then()` callback, voeren we uit in de context van belofte met `asyncId` `7`. Deze belofte werd getriggerd door async resource `6`.
 
-Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
+Een andere subtiliteit met beloften is dat `before` en `after` callback alleen op geketende beloften worden gedraaid. Dit betekent dat beloften die niet zijn gecreëerd door `then()`/`catch()` geen `before` en `after` callbacks op hen afgevuurd krijgen. Voor meer informatie zie de details van de V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
 ## JavaScript Embedder API
 
