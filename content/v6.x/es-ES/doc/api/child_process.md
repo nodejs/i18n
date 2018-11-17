@@ -23,11 +23,11 @@ ls.on('close', (code) => {
 });
 ```
 
-Por defecto, los pipes para `stdin`, `stdout` y `stderr` son establecidos entre el proceso primario de Node.js y el proceso secundario generado. Es posible transmitir datos a través de estos pipes en forma una forma non-blocking. *Note, however, that some programs use line-buffered I/O internally. While that does not affect Node.js, it can mean that data sent to the child process may not be immediately consumed.*
+Por defecto, los pipes para `stdin`, `stdout` y `stderr` son establecidos entre el proceso primario de Node.js y el proceso secundario generado. Es posible transmitir datos a través de estos pipes en forma una forma non-blocking. *Sin embargo, tenga en cuenta que algunos programas utilizan internamente E/S buffers en forma de línea. Aunque eso no afecta a Node.js, puede significar que los datos enviados al proceso secundario pueden no ser consumidos inmediatamente.*
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
+El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente en una forma sincrónica que bloquea el bucle de evento hasta que el proceso generado exista o sea finalizado.
 
-For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas para [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
     * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
       passing the `stdout` and `stderr` to a callback function when complete.
