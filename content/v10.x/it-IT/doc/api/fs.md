@@ -237,7 +237,7 @@ La maggior parte dei sistemi operativi limita il numero di file descriptor che p
 
 ## Utilizzo del Threadpool
 
-Da notare che tutte le API del file system eccetto `fs.FSWatcher()` e quelle che sono esplicitamente sincrone utilizzando il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
+Da notare che tutte le API del file system eccetto `fs.FSWatcher()` e quelle che sono esplicitamente sincrone utilizzano il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
 ## Class: fs.FSWatcher
 
