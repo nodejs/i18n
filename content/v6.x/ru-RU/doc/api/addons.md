@@ -89,7 +89,7 @@ NODE_MODULE(module_name, Initialize)
 
 При использовании `npm install` для установки расширения Node.js, npm использует собственную версию `node-gyp` для выполнения того же набора действий, создавая скомпилированную версию Addon для платформы пользователя по запросу.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](globals.html#globals_require) to the built `addon.node` module:
+После создания бинарное расширение может быть использовано как часть Node.js с указанием [`require()`](globals.html#globals_require) для создания модуля `addon.node`:
 
 ```js
 // hello.js
