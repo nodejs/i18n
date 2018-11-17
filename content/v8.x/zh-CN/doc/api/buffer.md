@@ -864,7 +864,7 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-The `buffer` property references the underlying `ArrayBuffer` object based on which this Buffer object is created.
+`buffer` 属性基于创建此 Buffer 对象的 `ArrayBuffer` 对象。
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -888,8 +888,8 @@ changes:
     description: Additional parameters for specifying offsets are supported now.
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to compare to.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`
+* `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始对比的偏移量。 **Default:** `0`
 * `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
 * `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
