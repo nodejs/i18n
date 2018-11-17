@@ -85,7 +85,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Эта версия не предоставляется непосредственно для использования разработчиками и предназначена только для поддержки возможности использования команды `npm install` для компиляции и установки расширений. Разработчики, которые хотят напрямую использовать `node-gyp`, могут установить ее, используя команду `npm install -g node-gyp`. Для более подробной информации смотрите </a> инструкции по установке `node-gyp` , включая требования к платформе.</p> 
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+После создания файла `binding.gyp`, используйте `node-gyp configure`, чтобы создать файлы соответствующего проекта для текущей платформы. Это так же сгенерирует файл `Makefile` (в платформах Unix) или файл `vcxproj` (в системе Windows) в директории `build/`.
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
