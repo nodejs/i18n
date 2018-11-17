@@ -392,17 +392,17 @@ const server = net.createServer(function onConnection(conn) {
   async_hooks.executionAsyncId();
 
 }).listen(port, function onListening() {
-  // Returns the ID of a TickObject (i.e. process.nextTick()) because all
-  // callbacks passed to .listen() are wrapped in a nextTick().
+  // Retourneert de ID van een TickObject (i.e. process.nextTick()) want alle
+  // callbacks doorgegeven om te  .luisteren() zitten ingepakt in een nextTick().
   async_hooks.executionAsyncId();
 });
 ```
 
-Note that promise contexts may not get precise `executionAsyncIds` by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Observeer dat belofte contexten standaard geen precieze `executionAsyncIds` krijgen. Zie de sectie over [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 #### async_hooks.triggerAsyncId()
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* Retourneert: {number} De ID van de hulpbron verantwoordelijk voor het aanroepen van de callback die op dit moment wordt uitgevoerd.
 
 ```js
 const server = net.createServer((conn) => {
