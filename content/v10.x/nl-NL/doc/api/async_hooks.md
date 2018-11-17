@@ -156,7 +156,7 @@ Schakel de callbacks uit om een gegeven `AsyncHook` instantie uit de globale gro
 
 Voor API constistentie zal `disable()` ook de `AsyncHook` instantie retourneren.
 
-#### Haak Callbacks
+#### Hook Callbacks
 
 Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen zijn gecategoriseerd in vier gebieden: instantiëren, voor/nadat de callback wordt genoemd, en wanneer de instantie wordt vernietigd.
 
@@ -167,7 +167,7 @@ Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen
 * `triggerAsyncId` {number} Het unieke ID van de async hulpbron in wiens uitvoeringscontext deze async hulpbron is gemaakt.
 * `resource` {Object} Referentie naar de hulpbron die de async operatie representeert, moet worden vrijgegeven tijdens het *destroy*.
 
-Wordt opgeroepen wanneer een klasse wordt samengesteld die de *possibility* heeft om een asynchrone gebeurtenis uit te zenden. Dit betekent *niet* dat de instantie moet oproepen `voordat`/`nadat` voordat `vernietigen` is opgeroepen, maar alleen dat de mogelijkheid bestaat.
+Wordt opgeroepen wanneer een klasse wordt samengesteld die de *mogelijkheid* heeft om een asynchrone gebeurtenis uit te zenden. Dit betekent *niet* dat de instantie moet oproepen `before`/`after` before `destroy` is opgeroepen, maar alleen dat de mogelijkheid bestaat.
 
 Dit gedrag kan worden waargenomen door iets te doen zoals het openen van een hulpbron en het dan te sluiten voordat de hulpbron kan worden gebruikt. Het volgende fragment toont dit.
 
@@ -177,7 +177,7 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Aan iedere nieuwe hulpbron wordt een ID toegewezen die uniek is binnen de werkingssfeer van het huidige proces.
+Aan iedere nieuwe hulpbron wordt een ID toegewezen dat uniek is binnen de werkingssfeer van het huidige proces.
 
 ###### `type`
 
@@ -195,11 +195,11 @@ Er is ook het `PROMISE` hulpbron type, die wordt gebruikt om `Promise` instantie
 
 Gebruikers kunnen hun eigen `type` definiëren bij het gebruik van de openbare embedder API.
 
-Het is mogelijk om type naam conflicties te hebben. Embedders worden aangemoedigd om gebruik te maken van unieke voorvoegsels, zoals de naam van het npm pakket, om conflicten te voorkomen bij het luisteren naar de haken.
+Het is mogelijk om type naam conflicten te hebben. Embedders worden aangemoedigd om gebruik te maken van unieke voorvoegsels, zoals de naam van het npm pakket, om conflicten te voorkomen bij het luisteren naar de hooks.
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. Dit is anders dan `async_hooks.executionAsyncId()` die alleen laat zien *wanneer* een hulpbron werd gecreeerd, terwijl `triggerAsyncId` laat zien *waarom* een hulpbron werd gecreeerd.
+`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. Dit is anders dan `async_hooks.executionAsyncId()` die alleen laat zien *wanneer* een hulpbron werd gecreëerd, terwijl `triggerAsyncId` laat zien *waarom* een hulpbron werd gecreëerd.
 
 Het volgende is een simpele demonstratie van `triggerAsyncId`:
 
@@ -307,9 +307,9 @@ Het gebruik van enkel `execution` om de hulpbronbestemming in kaart te zetten, r
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. Dit is omdat het binden aan een uitgang zonder de hostnaam een *synchronous* werking is, maar om een complete asynchrone API te behouden, wordt de callback van de gebruiker geplaatst in een `process.nextTick()`.
+De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. Dit is omdat het binden aan een uitgang zonder de hostnaam een *synchrone* werking is, maar om een complete asynchrone API te behouden, wordt de callback van de gebruiker geplaatst in een `process.nextTick()`.
 
-De grafiek laat alleen zien *wanneer* een bron werd gecreeerd, niet *waarom*, dus om het *waarom* bij te houden, gebruik `triggerAsyncId`.
+De grafiek laat alleen zien *wanneer* een bron werd gecreëerd, niet *waarom*, dus om het *waarom* bij te houden, gebruik `triggerAsyncId`.
 
 ##### voor(asyncId)
 
