@@ -138,14 +138,14 @@ Wanneer een asynchrone bewerking nodig is voor het aanmelden, is het mogelijk om
 
 * Retourneert: {AsyncHook} Een referentie naar `asyncHook`.
 
-Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wannneer geen callbacks toegeleverd zijn is het inschakelen een noop.
+Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wanneer geen callbacks toegeleverd zijn is het inschakelen een noop.
 
-De `AsyncHook` instantie is als standaard uitgeschakeld. Wanneer de `AsyncHook` instantie moet worden ingeschakeld onmiddelijk na creatie, kan het volgende patroon worden gebruikt.
+De `AsyncHook` instantie is als standaard uitgeschakeld. Wanneer de `AsyncHook` instantie moet worden ingeschakeld onmiddellijk na creatie, kan het volgende patroon worden gebruikt.
 
 ```js
-const async_hooks = require('async_hooks');
+constistentie async_hooks = require('async_hooks');
 
-const hook = async_hooks.createHook(callbacks).enable();
+constistentie hook = async_hooks.createHook(callbacks).enable();
 ```
 
 #### asyncHook.disable()
