@@ -922,7 +922,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * [[`fccff2702e`](https://github.com/nodejs/node/commit/fccff2702e)] - ***Revertir*** "**process**: añadir constantes y comparación de la versión" (Rod Vagg) [#20062](https://github.com/nodejs/node/pull/20062)
 * [[`eeb1b9dcb7`](https://github.com/nodejs/node/commit/eeb1b9dcb7)] - ***Revertir*** "**process**: añadir más propiedades de versión a este lanzamiento" (Tobias Nießen) [#19577](https://github.com/nodejs/node/pull/19577)
 * [[`f2396ee60c`](https://github.com/nodejs/node/commit/f2396ee60c)] - **repl**: esconder detrás de una bandera la función de espera de nivel superior (Timothy Gu) [#19604](https://github.com/nodejs/node/pull/19604)
-* [[`1fc373bdf6`](https://github.com/nodejs/node/commit/1fc373bdf6)] - ***Reverirt*** "**repl**: refactorizar las pruebas para que no dependan del tiempo" (Ruben Bridgewater) [#18715](https://github.com/nodejs/node/pull/18715)
+* [[`1fc373bdf6`](https://github.com/nodejs/node/commit/1fc373bdf6)] - ***Revertir*** "**repl**: refactorizar las pruebas para que no dependan del tiempo" (Ruben Bridgewater) [#18715](https://github.com/nodejs/node/pull/18715)
 * [[`de848ac1e0`](https://github.com/nodejs/node/commit/de848ac1e0)] - **repl**: refactorizar las pruebas para que no dependan del tiempo (Bradley Farias) [#17828](https://github.com/nodejs/node/pull/17828)
 * [[`727339e9c2`](https://github.com/nodejs/node/commit/727339e9c2)] - **repl**: arreglar regresión del uso de colores de util.inspect() (Ben Noordhuis) [#17565](https://github.com/nodejs/node/pull/17565)
 * [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)] - **repl**: soportar la espera de nivel superior (Timothy Gu) [#15566](https://github.com/nodejs/node/pull/15566)
