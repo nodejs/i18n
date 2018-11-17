@@ -89,7 +89,7 @@ A version of the `node-gyp` utility is bundled and distributed with Node.js as p
 
 Затем используйте команду `node-gyp build`, чтобы создать скомпилированный файл `addon.node`. Это будет помещено в директорию `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+При использовании `npm install` для установки расширения Node.js, npm использует собственную версию `node-gyp` для выполнения того же набора действий, создавая скомпилированную версию Addon для платформы пользователя по запросу.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
