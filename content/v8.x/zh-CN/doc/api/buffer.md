@@ -848,7 +848,7 @@ name: [index]
 
 该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
-Example: Copy an ASCII string into a `Buffer`, one byte at a time
+示例：将 ASCII 字符串复制到 `Buffer` 中, 一次一个字节
 
 ```js
 const str = 'Node.js';
