@@ -16,7 +16,7 @@ const fs = require('fs');
 
 Tutte le operazioni del file system hanno forme sincrone e asincrone.
 
-La forma asincrona accetta sempre un callback di completamento come suo ultimo argomento. Gli argomenti passati al callback di completamento dipendono dal metodo ma il primo argomento è sempre riservato per un'eccezione. Se l'operazione è stata completata correttamente, il primo argomento sarà `null` oppure `undefined`.
+La forma asincrona accetta sempre un callback di completamento come suo ultimo argomento. Gli argomenti passati al callback di completamento dipendono dal metodo, ma il primo argomento è sempre riservato per un'eccezione. Se l'operazione è stata completata correttamente, il primo argomento sarà `null` oppure `undefined`.
 
 ```js
 const fs = require('fs');
