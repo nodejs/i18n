@@ -835,7 +835,7 @@ added: v0.11.3
 
 * {integer} **默认值：** `8192`
 
-This is the number of bytes used to determine the size of pre-allocated, internal `Buffer` instances used for pooling. This value may be modified.
+这是用于决定预分配的内部 `Buffer` 实例大小的字节数。 这个值可以修改。
 
 ### buf[index]
 
