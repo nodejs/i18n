@@ -143,9 +143,9 @@ Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wanneer geen cal
 De `AsyncHook` instantie is als standaard uitgeschakeld. Wanneer de `AsyncHook` instantie moet worden ingeschakeld onmiddellijk na creatie, kan het volgende patroon worden gebruikt.
 
 ```js
-constistentie async_hooks = require('async_hooks');
+const async_hooks = require('async_hooks');
 
-constistentie hook = async_hooks.createHook(callbacks).enable();
+const hook = async_hooks.createHook(callbacks).enable();
 ```
 
 #### asyncHook.disable()
