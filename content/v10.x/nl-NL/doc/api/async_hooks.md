@@ -412,31 +412,31 @@ const server = net.createServer((conn) => {
   async_hooks.triggerAsyncId();
 
 }).listen(port, () => {
-  // Even though all callbacks passed to .listen() are wrapped in a nextTick()
-  // the callback itself exists because the call to the server's .listen()
-  // was made. So the return value would be the ID of the server.
+  // Hoewel alle callbacks doorgegeven aan .listen() zijn verpakt in een nextTick()
+  // bestaat de callback zelf omdat de oproep naar de .listen() server
+  // werd gemaakt. Dus zou de geretourneerde waarde de ID van de server zijn.
   async_hooks.triggerAsyncId();
 });
 ```
 
-Note that promise contexts may not get valid `triggerAsyncId`s by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Observeer dat belofte contexten standaard geen precieze `triggerAsyncId`s krijgen. Zie de sectie over [promise execution tracking](#async_hooks_promise_execution_tracking).
 
-## Promise execution tracking
+## Belofteuitvoering tracering
 
-By default, promise executions are not assigned `asyncId`s due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. This means that programs using promises or `async`/`await` will not get correct execution and trigger ids for promise callback contexts by default.
+Als standaard, worden belofte uitvoeringen geen `asyncId`s toegewezen vanwege de relatieve dure aard van de [belofte introspectie API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) verschaft door de V8. Dit betekent dat programma's die gebruik maken van beloften of `async`/`await` geen correcte uitvoering krijgen en standaard id's triggeren voor belofte callback contexten.
 
-Here's an example:
+Hier is een voorbeeld:
 
 ```js
 const ah = require('async_hooks');
 Promise.resolve(1729).then(() => {
   console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
 });
-// produces:
+// produceert:
 // eid 1 tid 0
 ```
 
-Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
+Observeer dat de `then()` claimt te hebben uitgevoerd in de context van het externe bereik, ook al was er een asynchrone sprong bij betrokken. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
 
 Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
