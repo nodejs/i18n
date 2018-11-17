@@ -116,11 +116,11 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 Wanneer `AsyncHook` callbacks gooien, zal de toepassing de stack trace afdrukken en afsluiten. Het uitgangspad zal dat van een niet gevangen uitzondering volgen, maar alle `'uncaughtException'` luisteraars worden verwijderd, en daarmee dwingt het het proces om af te sluiten. De `'exit'` callbacks zullen nog steeds genoemd worden, tenzij de toepassing wordt uitgevoerd met `--abort-on-uncaught-exception`, in welk geval een stack trace zal worden geprint en de toepassing afsluit en het kernbestand verlaat.
 
-De reden voor dit gedrag voor foutafhandeling is dat deze callbacks op potentieel vluchtige punten in de levensduur van een object worden gedraaid, bijvoorbeeld tijdens klasseconstructie en -vernietiging. Om deze reden is wordt het noodzakelijk geacht om het proces snel neer te halen om een onbedoelde afbreking in de toekomst te voorkomen. Dit is onder voorbehoud van wijzigingen in de toekomst wanneer een uitgebreide analyse wordt uitgevoerd om ervoor te zorgen dat een uitzondering de normale controlestroom kan volgen zonder onbedoelde bijwerkingen.
+De reden voor dit gedrag voor foutafhandeling is dat deze callbacks op potentieel vluchtige punten in de levensduur van een object worden gedraaid, bijvoorbeeld tijdens klasseconstructie en -vernietiging. Om deze reden wordt het noodzakelijk geacht om het proces snel neer te halen om een onbedoelde afbreking in de toekomst te voorkomen. Dit is onder voorbehoud van wijzigingen in de toekomst wanneer een uitgebreide analyse wordt uitgevoerd om ervoor te zorgen dat een uitzondering de normale controlestroom kan volgen zonder onbedoelde bijwerkingen.
 
 ##### Printen in AsyncHooks callbacks
 
-Omdat het printen naar de console een asynchrone bewerking is, zal `console.log()` veroorzaken dat de AsyncHooks-callbacks worden opgeroepen. Het gebruik van `console.log()` of soortgelijke asynchrone operaties binnen een AsyncHooks callback-functie zal dus tot een oneindige recursie leiden. Een gemakkelijke oplossing hiervoor is door een synchrone logboekoperatie te gebruiken bij foutopsporing, zoals `fs.writeSync(1, msg)`. Dit zal naar stdout printen omdat `1` de bestandsbeschrijver is voor stdout en zal AsyncHooks niet recursief oproepen omdat het synchroon is.
+Omdat het printen naar de console een asynchrone bewerking is, zal `console.log()` er voor zorgen dat de AsyncHooks-callbacks worden opgeroepen. Het gebruik van `console.log()` of soortgelijke asynchrone operaties binnen een AsyncHooks callback-functie zal dus tot een oneindige recursie leiden. Een gemakkelijke oplossing hiervoor is een synchrone logboekoperatie te gebruiken bij foutopsporing, zoals `fs.writeSync(1, msg)`. Dit zal naar stdout printen omdat `1` de bestandsbeschrijver is voor stdout en zal AsyncHooks niet recursief oproepen omdat het synchroon is.
 
 ```js
 const fs = require('fs');
@@ -307,11 +307,11 @@ Het gebruik van enkel `execution` om de hulpbronbestemming in kaart te zetten, r
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. Dit is omdat het binden aan een uitgang zonder de hostnaam een *synchronous* werking is, maar om een complete asynchrone API te behouden, wordt de callback van de gebruiker geplaatst in een `process.nextTick()`.
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+De grafiek laat alleen zien *wanneer* een bron werd gecreeerd, niet *waarom*, dus om het *waarom* bij te houden, gebruik `triggerAsyncId`.
 
-##### before(asyncId)
+##### voor(asyncId)
 
 * `asyncId` {number}
 
