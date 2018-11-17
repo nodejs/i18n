@@ -406,9 +406,9 @@ Observeer dat belofte contexten standaard geen precieze `executionAsyncIds` krij
 
 ```js
 const server = net.createServer((conn) => {
-  // The resource that caused (or triggered) this callback to be called
-  // was that of the new connection. Thus the return value of triggerAsyncId()
-  // is the asyncId of "conn".
+  // De hulpbron die heeft veroorzaakt (of getriggered) dat deze callback werd aangeroepen
+  // was die van de nieuwe verbinding. Dus de geretourneerde waarde van triggerAsyncId()
+  // is de asyncId van "conn".
   async_hooks.triggerAsyncId();
 
 }).listen(port, () => {
