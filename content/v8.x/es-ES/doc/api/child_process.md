@@ -4,7 +4,7 @@
 
 > Stability: 2 - Stable
 
-The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
+El módulo `child_process` proporciona la habilidad de generar procesos secundarios en una forma similar, pero no idéntica, a popen(3). Esta capacidad es proporcionada principalmente por la función [`child_process.spawn()`][]:
 
 ```js
 const { spawn } = require('child_process');
@@ -23,7 +23,7 @@ ls.on('close', (code) => {
 });
 ```
 
-By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. It is possible to stream data through these pipes in a non-blocking way. *Note, however, that some programs use line-buffered I/O internally. While that does not affect Node.js, it can mean that data sent to the child process may not be immediately consumed.*
+By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. Es posible transmitir datos a través de estos pipes en forma una forma non-blocking. *Note, however, that some programs use line-buffered I/O internally. While that does not affect Node.js, it can mean that data sent to the child process may not be immediately consumed.*
 
 The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
 
