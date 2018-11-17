@@ -236,7 +236,7 @@ In sommige gevallen wordt het hulpbron object hergebruikt voor prestatie redenen
 
 ###### Voorbeeld van de asynchrone context
 
-Het volgende is een voorbeeld met aanvullende informatie over de oproepen aan `init` tussen de `before` en `after` oproepen, specifiek hoe de callback naar `listen()` eruit zal zien. The output formatting is slightly more elaborate to make calling context easier to see.
+Het volgende is een voorbeeld met aanvullende informatie over de oproepen aan `init` tussen de `before` en `after` oproepen, specifiek hoe de callback naar `listen()` eruit zal zien. De uitvoer opmaak is iets meer uitgebreid zodat de oproepende context beter te zien is.
 
 ```js
 let indent = 0;
@@ -266,14 +266,14 @@ async_hooks.createHook({
 }).enable();
 
 require('net').createServer(() => {}).listen(8080, () => {
-  // Let's wait 10ms before logging the server started.
+  // Laten we 10 minuten wachten met aanmelden op de server.
   setTimeout(() => {
     console.log('>>>', async_hooks.executionAsyncId());
   }, 10);
 });
 ```
 
-Output from only starting the server:
+Uitvoer alleen van het starten van de server:
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
