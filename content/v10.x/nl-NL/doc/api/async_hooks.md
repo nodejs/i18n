@@ -234,9 +234,9 @@ In het geval van Beloften, zal het `resource` object een `promise` eigenschap he
 
 In sommige gevallen wordt het hulpbron object hergebruikt voor prestatie redenen, het is daarom niet veilig om het als sleutel te gebruiken in een `WeakMap` of om eigenschappen toe te voegen.
 
-###### Asynchronous context example
+###### Voorbeeld van de asynchrone context
 
-The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
+Het volgende is een voorbeeld met aanvullende informatie over de oproepen aan `init` tussen de `before` en `after` oproepen, specifiek hoe de callback naar `listen()` eruit zal zien. The output formatting is slightly more elaborate to make calling context easier to see.
 
 ```js
 let indent = 0;
