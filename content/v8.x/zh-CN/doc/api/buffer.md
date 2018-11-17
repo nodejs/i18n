@@ -892,12 +892,12 @@ changes:
 * `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`
 * `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`
 * `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`
-* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **Default:** [`buf.length`]
-* Returns: {integer}
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** [`buf.length`]
+* 返回：{integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
-* `0` is returned if `target` is the same as `buf`
+* 如果 `target` 与 `buf` 相同，则返回 `0`
 * `1` is returned if `target` should come *before* `buf` when sorted.
 * `-1` is returned if `target` should come *after* `buf` when sorted.
 
