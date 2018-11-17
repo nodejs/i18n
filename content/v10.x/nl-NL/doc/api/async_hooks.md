@@ -436,13 +436,13 @@ Promise.resolve(1729).then(() => {
 // eid 1 tid 0
 ```
 
-Observeer dat de `then()` claimt te hebben uitgevoerd in de context van het externe bereik, ook al was er een asynchrone sprong bij betrokken. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
+Observeer dat de `then()` claimt te hebben uitgevoerd in de context van het externe bereik, ook al was er een asynchrone sprong bij betrokken. Observeer ook dat de `triggerAsyncId` waarde `0` is, wat betekent dat wij context missen over de hulpbron die de `then()` uitvoer heeft veroorzaakt (getriggered).
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
+Het installeren van async hooks via `async_hooks.createHook` bemogelijkt belofteuitvoering tracering. Voorbeeld:
 
 ```js
 const ah = require('async_hooks');
-ah.createHook({ init() {} }).enable(); // forces PromiseHooks to be enabled.
+ah.createHook({ init() {} }).enable(); // dwingt PromiseHooks in te schakelen.
 Promise.resolve(1729).then(() => {
   console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
 });
@@ -450,7 +450,7 @@ Promise.resolve(1729).then(() => {
 // eid 7 tid 6
 ```
 
-In this example, adding any actual hook function enabled the tracking of promises. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then()`. In the example above, the first promise got the `asyncId` `6` and the latter got `asyncId` `7`. During the execution of the `then()` callback, we are executing in the context of promise with `asyncId` `7`. This promise was triggered by async resource `6`.
+In dit voorbeeld, maakte het toevoegen van een actuele hook functie het mogelijk dat het traceren van beloften werd ingeschakeld. In het voorbeeld hierboven zijn twee beloften; de belofte die is gecreëerd door `Promise.resolve()` en de belofte geretourneerd door de oproep om `then()`. In het voorbeeld hierboven, krijgt de eerste belofte de `asyncId` `6` en de laatste krijgt `asyncId` `7`. Gedurende de uitvoering van de `then()` callback, voeren we uit in de context van belofte met `asyncId` `7`. Deze belofte werd getriggerd door async resource `6`.
 
 Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
