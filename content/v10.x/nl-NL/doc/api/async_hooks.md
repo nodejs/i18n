@@ -333,31 +333,31 @@ Wanneer een ongevangen uitzondering optreedt tijdens de uitvoering van de callba
 
 Wordt aangeroepen nadat de hulpbron die overeenkomt met `asyncId` wordt vernietigd. Het wordt ook asynchroon aangeroepen vanuit de embedder API `emitDestroy()`.
 
-Sommige hulpbronnen zijn afhankelijk van afvalcollectie voor een opruiming, dus wanneer een referentie wordt gemaakt naar het `resource` object doorgegeven aan `init` is het mogelijk dat `destroy` nooit wordt aangeroepen, wat een geheugenlekkage in de toepassing veroorzaakt. If the resource does not depend on garbage collection, then this will not be an issue.
+Sommige hulpbronnen zijn afhankelijk van afvalcollectie voor een opruiming, dus wanneer een referentie wordt gemaakt naar het `resource` object doorgegeven aan `init` is het mogelijk dat `destroy` nooit wordt aangeroepen, wat een geheugenlekkage in de toepassing veroorzaakt. Wanneer de hulpbron niet afhankelijk is van afvalcollectie, dan zal dit geen probleem zijn.
 
 ##### promiseResolve(asyncId)
 
 * `asyncId` {number}
 
-Called when the `resolve` function passed to the `Promise` constructor is invoked (either directly or through other means of resolving a promise).
+Aangeroepen wanneer de `resolve` functie doorgegeven aan de `Promise` constructor wordt aangeroepen (rechtstreeks of via andere middelen om een belofte op te lossen).
 
-Note that `resolve()` does not do any observable synchronous work.
+Observeer dat `resolve()` geen waarneembaar synchroon werk doet.
 
-The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
+De `Promise` wordt nu niet noodzakelijkerwijs vervuld of verworpen als de `Promise` werd opgelost door de veronderstelling van een andere `Promise`.
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+roept de volgende callbacks op:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
-  promise resolve 5      # corresponds to resolve(true)
-init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
-  before 6               # the then() callback is entered
-  promise resolve 6      # the then() callback resolves the promise by returning
-  after 6
+  promise resolve 5      # correspondeerd om (true) op te lossen
+init for PROMISE with id 6, trigger id: 5  # de Belofte geretourneerd door dan()
+  voor 6               # de dan() callback wordt ingevoerd
+  belofte oplossing 6      # de dan() callback lost de belofte op door
+  na 6 te retourneren
 ```
 
 #### async_hooks.executionAsyncId()
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* Retourneert: {number} The `asyncId` van de huidige uitvoeringscontext. Nuttig voor het bijhouden wanneer er iets oproept.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -382,13 +382,13 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`):
+De ID die is geretourneerd vanuit `executionAsyncId()` is gerelateerd aan de timing van de uitvoering, niet causaliteit (die wordt gedekt door `triggerAsyncId()`):
 
 ```js
 const server = net.createServer(function onConnection(conn) {
-  // Returns the ID of the server, not of the new connection, because the
-  // onConnection callback runs in the execution scope of the server's
-  // MakeCallback().
+  // Retourneert de ID van de server, niet van de nieuwe connectie, want de
+  // onConnection callback draait in het uitvoeringskader van de
+  // MakeCallback() server.
   async_hooks.executionAsyncId();
 
 }).listen(port, function onListening() {
