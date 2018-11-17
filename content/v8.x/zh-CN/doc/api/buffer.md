@@ -889,10 +889,10 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
-* `targetStart` {integer} `target` 中开始对比的偏移量。 **Default:** `0`
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
+* `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`
+* `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **Default:** [`buf.length`]
 * Returns: {integer}
 
 Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
