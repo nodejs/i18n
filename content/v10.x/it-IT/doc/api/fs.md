@@ -129,7 +129,7 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza un backslash. Ad esempio `fs.readdirSync('c:\\')` può potenzialmente restituire un risultato diverso da `fs.readdirSync('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `fs.readdirSync('c:\\')` può potenzialmente restituire un risultato diverso da `fs.readdirSync('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ### Supporto degli URL object
 
