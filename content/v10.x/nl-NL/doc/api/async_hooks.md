@@ -138,7 +138,7 @@ Wanneer een asynchrone bewerking nodig is voor het aanmelden, is het mogelijk om
 
 * Retourneert: {AsyncHook} Een referentie naar `asyncHook`.
 
-Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wanneer geen callbacks toegeleverd zijn is het inschakelen een noop.
+Schakel de callbacks voor een gegeven `AsyncHook` instantie in. Wanneer geen callbacks toegeleverd zijn is het inschakelen een no-op.
 
 De `AsyncHook` instantie is als standaard uitgeschakeld. Wanneer de `AsyncHook` instantie moet worden ingeschakeld onmiddellijk na creatie, kan het volgende patroon worden gebruikt.
 
