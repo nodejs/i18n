@@ -299,15 +299,15 @@ destroy: 9
 destroy: 5
 ```
 
-As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
+Zoals geïllustreerd in het voorbeeld, geven `executionAsyncId()` en `execution` ieder de waarde aan van de huidige uitvoeringscontext; die wordt afgebakend door het aanroepen van `before` en `after`.
 
-Only using `execution` to graph resource allocation results in the following:
+Het gebruik van enkel `execution` om de hulpbronbestemming in kaart te zetten, resulteert in het volgende:
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
 
 The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
