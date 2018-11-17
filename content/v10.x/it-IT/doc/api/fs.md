@@ -235,7 +235,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 
 La maggior parte dei sistemi operativi limita il numero di file descriptor che potrebbero essere aperti in un dato momento quindi è fondamentale chiudere il descriptor quando le operazioni sono state completate. In caso contrario, si verificherà una perdita di memoria che causerà l'arresto anomalo dell'applicazione.
 
-## Utilizzato del Threadpool
+## Utilizzo del Threadpool
 
 Da notare che tutte le API del file system eccetto `fs.FSWatcher()` e quelle che sono esplicitamente sincrone utilizzando il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
