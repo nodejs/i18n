@@ -296,7 +296,7 @@ Viene emesso quando si verifica un errore durante l'osservazione del file.
 added: v0.5.8
 -->
 
-Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, l’object `fs.FSWatcher` non è più utilizzabile.
+Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, il `fs.FSWatcher` object non è più utilizzabile.
 
 ## Class: fs.ReadStream
 
@@ -421,7 +421,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l’object `fs.Stats` descrive una directory del file system.
+Restituisce `true` se il `fs.Stats` object descrive una directory del file system.
 
 ### stats.isFIFO()
 
@@ -441,7 +441,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'object `fs.Stats` descrive un normale file.
+Restituisce `true` se il `fs.Stats` object descrive un normale file.
 
 ### stats.isSocket()
 
@@ -451,7 +451,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'object `fs.Stats` descrive un socket.
+Restituisce `true` se il `fs.Stats` object descrive un socket.
 
 ### stats.isSymbolicLink()
 
@@ -461,7 +461,7 @@ added: v0.1.10
 
 * Restituisce: {boolean}
 
-Restituisce `true` se l'object `fs.Stats` descrive un collegamento simbolico (symlink).
+Restituisce `true` se il `fs.Stats` object descrive un collegamento simbolico (symlink).
 
 Questo metodo è valido solo quando si utilizza [`fs.lstat()`][].
 
