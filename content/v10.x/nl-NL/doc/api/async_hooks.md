@@ -317,13 +317,13 @@ De grafiek laat alleen zien *wanneer* een bron werd gecreëerd, niet *waarom*, d
 
 Wanneer een asynchrone bewerking wordt geïnitieerd (zoals de TCP server die een nieuwe verbinding ontvangt) of compleet maakt (zoals het schrijven van data naar een disk) wordt er een callback opgeroepen om de gebruiker hierover te informeren. De `before` callback wordt opgeroepen net voordat de genoemde callback wordt uitgevoerd. `asyncId` is de unieke identificatie die is toegewezen aan de hulpbron die op het punt staat de callback uit te voeren.
 
-De `before` callback zal 0 tot N keer opgeroepen worden. De `before` callback wordt over het algemeen 0 keer opgeroepen als de asynchrone werking geannuleerd is of, bijvoorbeeld, als er geen verbindingen worden ontvangen door een TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
+De `before` callback zal 0 tot N keer opgeroepen worden. De `before` callback wordt over het algemeen 0 keer opgeroepen als de asynchrone werking geannuleerd is of, bijvoorbeeld, als er geen verbindingen worden ontvangen door een TCP server. Hardnekkige asynchrone hulpbronnen zoals een TCP server zullen over het algemeen de `before` callback meerdere keren oproepen, terwijl andere werkingen zoals `fs.open()` het maar één keer oproept.
 
 ##### after(asyncId)
 
 * `asyncId` {number}
 
-Called immediately after the callback specified in `before` is completed.
+Wordt onmiddellijk opgeroepen nadat de callback die is aangeduid in `before` is voltooid.
 
 If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
