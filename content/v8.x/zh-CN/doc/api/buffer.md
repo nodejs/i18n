@@ -1066,12 +1066,12 @@ changes:
 * `value` {string|Buffer|integer} 用来填充 `buf` 的值。
 * `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`
 * `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`]
-* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **Default:** `'utf8'`
-* Returns: {Buffer} A reference to `buf`.
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* 返回：{Buffer} `buf` 的引用。
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
+用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。 这是一个小小的简化，以允许在单行上创建和填充 `Buffer`。
 
-Example: Fill a `Buffer` with the ASCII character `'h'`
+示例：以 ASCII 字符 `'h'` 填充一个 `Buffer`。
 
 ```js
 const b = Buffer.allocUnsafe(50).fill('h');
