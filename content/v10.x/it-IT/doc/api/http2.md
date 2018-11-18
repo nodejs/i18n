@@ -513,9 +513,9 @@ added: v9.4.0
 -->
 
 * `alt` {string} Una descrizione della configurazione del servizio alternativo definita da [RFC 7838](https://tools.ietf.org/html/rfc7838).
-* `originOrStream` {number|string|URL|Object} Either a URL string specifying the origin (or an `Object` with an `origin` property) or the numeric identifier of an active `Http2Stream` as given by the `http2stream.id` property.
+* `originOrStream` {number|string|URL|Object} Può essere o una stringa URL che specifica l'origine (o un `Object` con una proprietà `origin`) o il valore numerico identificatore di un `Http2Stream` attivo come specificato dalla proprietà `http2stream.id`.
 
-Submits an `ALTSVC` frame (as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838)) to the connected client.
+Invia un frame `ALTSVC` (come definito da [RFC 7838](https://tools.ietf.org/html/rfc7838)) al client connesso.
 
 ```js
 const http2 = require('http2');
