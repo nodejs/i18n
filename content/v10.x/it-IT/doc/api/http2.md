@@ -453,13 +453,13 @@ Tutte le altre interazioni verranno indirizzate direttamente al socket.
 added: v8.4.0
 -->
 
-Provides miscellaneous information about the current state of the `Http2Session`.
+Fornisce informazioni varie sullo stato attuale di `Http2Session`.
 
 * {Object} 
-  * `effectiveLocalWindowSize` {number} The current local (receive) flow control window size for the `Http2Session`.
-  * `effectiveRecvDataLength` {number} The current number of bytes that have been received since the last flow control `WINDOW_UPDATE`.
-  * `nextStreamID` {number} The numeric identifier to be used the next time a new `Http2Stream` is created by this `Http2Session`.
-  * `localWindowSize` {number} The number of bytes that the remote peer can send without receiving a `WINDOW_UPDATE`.
+  * `effectiveLocalWindowSize` {number} La dimensione della finestra di controllo del flusso locale (di ricezione) corrente per la `Http2Session`.
+  * `effectiveRecvDataLength` {number} Il numero corrente di byte che sono stati ricevuti dall'ultimo controllo di flusso `WINDOW_UPDATE`.
+  * `nextStreamID` {number} L'identificatore numerico da utilizzare la volta successiva che un nuovo `Http2Stream` viene creato da questa `Http2Session`.
+  * `localWindowSize` {number} Il numero di byte che il peer remoto può inviare senza ricevere un `WINDOW_UPDATE`.
   * `lastProcStreamID` {number} The numeric id of the `Http2Stream` for which a `HEADERS` or `DATA` frame was most recently received.
   * `remoteWindowSize` {number} The number of bytes that this `Http2Session` may send without receiving a `WINDOW_UPDATE`.
   * `outboundQueueSize` {number} The number of frames currently within the outbound queue for this `Http2Session`.
