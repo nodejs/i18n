@@ -480,7 +480,7 @@ Aggiorna le impostazioni locali correnti per questa `Http2Session` e invia un nu
 
 Una volta chiamata, la proprietà `http2session.pendingSettingsAck` sarà `true` mentre la sessione è in attesa che il peer remoto riconosca le nuove impostazioni.
 
-The new settings will not become effective until the `SETTINGS` acknowledgment is received and the `'localSettings'` event is emitted. It is possible to send multiple `SETTINGS` frames while acknowledgment is still pending.
+Le nuove impostazioni non diventeranno effettive finché non viene ricevuto il riconoscimento `SETTINGS` e viene emesso l'evento `'localSettings'`. È possibile inviare più fotogrammi di `SETTINGS` mentre il riconoscimento è ancora in sospeso.
 
 #### http2session.type
 
@@ -490,7 +490,7 @@ added: v8.4.0
 
 * {number}
 
-The `http2session.type` will be equal to `http2.constants.NGHTTP2_SESSION_SERVER` if this `Http2Session` instance is a server, and `http2.constants.NGHTTP2_SESSION_CLIENT` if the instance is a client.
+`http2session.type` sarà uguale a `http2.constants.NGHTTP2_SESSION_SERVER` se questa istanza `Http2Session` è un server e `http2.constants.NGHTTP2_SESSION_CLIENT` se l'istanza è un client.
 
 #### http2session.unref()
 
