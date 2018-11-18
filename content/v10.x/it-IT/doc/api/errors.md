@@ -295,9 +295,9 @@ doesNotExist;
 // genera ReferenceError, doesNotExist non è una variabile in questo programma.
 ```
 
-Unless an application is dynamically generating and running code, `ReferenceError` instances should always be considered a bug in the code or its dependencies.
+A meno che un'applicazione non stia generando ed eseguendo codice in modo dinamico, le istanze di `ReferenceError` dovrebbero sempre essere considerate come un bug nel codice o nelle relative dipendenze.
 
-## Class: SyntaxError
+## Classe: SyntaxError
 
 A subclass of `Error` that indicates that a program is not valid JavaScript. These errors may only be generated and propagated as a result of code evaluation. Code evaluation may happen as a result of `eval`, `Function`, `require`, or [vm](vm.html). These errors are almost always indicative of a broken program.
 
