@@ -389,7 +389,7 @@ added: v0.11.15
 * `path` {string|Buffer}
 * `mode` {integer}
 
-Synchronous version of [`fs.access()`][]. This throws if any accessibility checks fail, and does nothing otherwise.
+Versión sincrónica de [`fs.access()`][]. This throws if any accessibility checks fail, and does nothing otherwise.
 
 ## fs.appendFile(file, data[, options], callback)
 
@@ -406,7 +406,7 @@ added: v0.6.7
 * `callback` {Function} 
   * `err` {Error}
 
-Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` can be a string or a buffer.
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un búfer.
 
 Ejemplo:
 
@@ -417,15 +417,15 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
 ```
 
-Any specified file descriptor has to have been opened for appending.
+Cualquier descriptor de archivo especificado debe haber sido abierto para anexar.
 
-*Note*: If a file descriptor is specified as the `file`, it will not be closed automatically.
+*Nota*: Si un descriptor de archivo se especifica como el `file`, no será cerrado automáticamente.
 
 ## fs.appendFileSync(file, data[, options])
 
@@ -466,7 +466,7 @@ added: v0.6.7
 * `path` {string|Buffer}
 * `mode` {integer}
 
-Cambia de manera sincrónica los permisos de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
+Cambia de manera sincrónica los permisos de un archivo. Devuelve `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
 
 Vea también: chmod(2)
 
@@ -482,9 +482,9 @@ added: v0.1.97
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously changes owner and group of a file. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica el propietario y el grupo de un archivo. No arguments other than a possible exception are given to the completion callback.
 
-See also: chown(2)
+Vea también: chown(2)
 
 ## fs.chownSync(path, uid, gid)
 
@@ -498,7 +498,7 @@ added: v0.1.97
 
 Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
 
-See also: chown(2)
+Vea también: chown(2)
 
 ## fs.close(fd, callback)
 
@@ -574,7 +574,7 @@ An example to read the last 10 bytes of a file which is 100 bytes long:
 fs.createReadStream('sample.txt', {start: 90, end: 99});
 ```
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 ## fs.createWriteStream(path[, options])
 
@@ -611,7 +611,7 @@ If `autoClose` is set to true (default behavior) on `error` or `end` the file de
 
 Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 ## fs.exists(path, callback)
 
@@ -1293,7 +1293,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -1822,7 +1822,7 @@ added: v0.1.29
 * `callback` {Function} 
   * `err` {Error}
 
-Escribe datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` can be a string or a buffer.
+Escribe datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer.
 
 The `encoding` option is ignored if `data` is a buffer. It defaults to `'utf8'`.
 
@@ -1835,7 +1835,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -1845,7 +1845,7 @@ Any specified file descriptor has to support writing.
 
 Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
-*Note*: If a file descriptor is specified as the `file`, it will not be closed automatically.
+*Nota*: Si un descriptor de archivo se especifica como el `file`, no será cerrado automáticamente.
 
 ## fs.writeFileSync(file, data[, options])
 
