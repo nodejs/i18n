@@ -288,11 +288,11 @@ Node.js will generate and throw `RangeError` instances *immediately* as a form o
 
 Una sottoclasse di `Error` che indica che c'è stato un tentativo di accesso ad una variabile che non è stata definita. Such errors commonly indicate typos in code, or an otherwise broken program.
 
-While client code may generate and propagate these errors, in practice, only V8 will do so.
+Mentre il codice di tipo client potrebbe generare e propagare questi errori, in pratica, solo V8 lo farà.
 
 ```js
 doesNotExist;
-// throws ReferenceError, doesNotExist is not a variable in this program.
+// genera ReferenceError, doesNotExist non è una variabile in questo programma.
 ```
 
 Unless an application is dynamically generating and running code, `ReferenceError` instances should always be considered a bug in the code or its dependencies.
