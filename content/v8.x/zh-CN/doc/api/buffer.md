@@ -1005,7 +1005,7 @@ added: v1.1.0
 
 从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
-Example: Log the entire contents of a `Buffer`
+示例：记录 `Buffer` 的完整内容。
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1033,12 +1033,12 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] to compare to.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
+* 返回：{boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+如果 `buf` 和 `otherBuffer` 具有完全相同的字节，则返回 `true`，否则返回 `false`。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1063,10 +1063,10 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value to fill `buf` with.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
+* `value` {string|Buffer|integer} 用来填充 `buf` 的值。
+* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`
+* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`]
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **Default:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
 
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
