@@ -349,7 +349,7 @@ added: v0.1.93
 added: v0.1.93
 -->
 
-Emitted when the `WriteStream`'s underlying file descriptor has been closed.
+Se emite cuando el descriptor de archivo subyacente de `WriteStream` ha sido cerrado.
 
 ### Event: 'open'
 
@@ -357,7 +357,7 @@ Emitted when the `WriteStream`'s underlying file descriptor has been closed.
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the WriteStream.
+* `fd` {integer} Descriptor de archivo de enteros utilizado por el WriteStream.
 
 Se emite cuando se abre el archivo de WriteStream.
 
