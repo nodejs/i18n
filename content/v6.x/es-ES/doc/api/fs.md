@@ -238,7 +238,7 @@ Prior to Node v0.12, the `ctime` held the `birthtime` on Windows systems. Note t
 added: v0.1.93
 -->
 
-`WriteStream` is a [Writable Stream](stream.html#stream_class_stream_writable).
+`WriteStream` es un [Stream Editable](stream.html#stream_class_stream_writable).
 
 ### Event: 'open'
 
