@@ -460,9 +460,9 @@ Fornisce informazioni varie sullo stato attuale di `Http2Session`.
   * `effectiveRecvDataLength` {number} Il numero corrente di byte che sono stati ricevuti dall'ultimo controllo di flusso `WINDOW_UPDATE`.
   * `nextStreamID` {number} L'identificatore numerico da utilizzare la volta successiva che un nuovo `Http2Stream` viene creato da questa `Http2Session`.
   * `localWindowSize` {number} Il numero di byte che il peer remoto può inviare senza ricevere un `WINDOW_UPDATE`.
-  * `lastProcStreamID` {number} The numeric id of the `Http2Stream` for which a `HEADERS` or `DATA` frame was most recently received.
-  * `remoteWindowSize` {number} The number of bytes that this `Http2Session` may send without receiving a `WINDOW_UPDATE`.
-  * `outboundQueueSize` {number} The number of frames currently within the outbound queue for this `Http2Session`.
+  * `lastProcStreamID` {number} L'ID numerico di `Http2Stream` per il quale è stato ricevuto di recente un frame `HEADERS` o `DATA`.
+  * `remoteWindowSize` {number} Il numero di byte che questa `Http2Session` può inviare senza ricevere un `WINDOW_UPDATE`.
+  * `outboundQueueSize` {number} Il numero di frame attualmente all'interno della coda in uscita per questa `Http2Session`.
   * `deflateDynamicTableSize` {number} The current size in bytes of the outbound header compression state table.
   * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
 
