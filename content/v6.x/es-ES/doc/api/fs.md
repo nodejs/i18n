@@ -232,7 +232,7 @@ Los tiempos en el objeto de estadística tienen la siguiente semántica:
 
 Prior to Node v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
-## Class: fs.WriteStream
+## Clase: fs.WriteStream
 
 <!-- YAML
 added: v0.1.93
@@ -240,25 +240,25 @@ added: v0.1.93
 
 `WriteStream` es un [Stream Editable](stream.html#stream_class_stream_writable).
 
-### Event: 'open'
+### Evento: 'open'
 
 <!-- YAML
 added: v0.1.93
 -->
 
-* `fd` {Integer} Integer file descriptor used by the WriteStream.
+* `fd` {Integer} Descriptor de archivo de enteros utilizado por el WriteStream.
 
 Se emite cuando se abre el archivo de WriteStream.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the WriteStream.
+* `fd` {integer} Descriptor de archivo de enteros utilizado por el WriteStream.
 
-Emitted when the `WriteStream`'s underlying file descriptor has been closed.
+Se emite cuando el descriptor de archivo subyacente de `WriteStream` ha sido cerrado.
 
 ### writeStream.bytesWritten
 
