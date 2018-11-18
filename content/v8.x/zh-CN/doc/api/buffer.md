@@ -898,10 +898,10 @@ changes:
 比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
 * 如果 `target` 与 `buf` 相同，则返回 `0`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
+* 在排序时，如果 `target` 应当排在 `buf` *后面*，则返回 `-1`。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from('ABC');
