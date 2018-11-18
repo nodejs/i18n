@@ -434,36 +434,35 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>Inviato a un processo quando si è verificata un'eccezione.</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>Inviato a un processo per richiedere l'annullamento.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td>Sinonimo di <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>Inviato a un processo per notificare che ha causato un errore del bus.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>Inviato a un processo per notificare che ha eseguito un'operazione aritmetica non consentita.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>Inviato a un processo per terminarlo immediatamente.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>Inviato a un processo per identificare le condizioni definite dall'utente.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>Inviato a un processo per notificare un errore di segmentazione.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
