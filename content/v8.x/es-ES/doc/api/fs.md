@@ -335,13 +335,13 @@ Los tiempos en el objeto de estadística tienen la siguiente semántica:
 
 Prior to Node v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
-## Class: fs.WriteStream
+## Clase: fs.WriteStream
 
 <!-- YAML
 added: v0.1.93
 -->
 
-`WriteStream` is a [Writable Stream](stream.html#stream_class_stream_writable).
+`WriteStream` es un [Stream Editable](stream.html#stream_class_stream_writable).
 
 ### Event: 'close'
 
