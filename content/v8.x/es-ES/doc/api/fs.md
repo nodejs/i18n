@@ -406,9 +406,9 @@ Prueba los permisos de un usuario para el archivo o directorio especificado por 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-The final argument, `callback`, is a callback function that is invoked with a possible error argument. If any of the accessibility checks fail, the error argument will be an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
+El argumento final, `callback`, es una función de callback que se invoca con un posible argumento de error. If any of the accessibility checks fail, the error argument will be an `Error` object. El siguiente ejemplo verifica si el archivo `/etc/passwd` puede ser leído y escrito por el proceso actual.
 
 ```js
 fs.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK, (err) => {
@@ -420,7 +420,7 @@ Using `fs.access()` to check for the accessibility of a file before calling `fs.
 
 Por ejemplo:
 
-**write (NOT RECOMMENDED)**
+**escribir (NO SE RECOMIENDA)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -436,7 +436,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**write (RECOMMENDED)**
+**escribir (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -453,7 +453,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**read (NOT RECOMMENDED)**
+**leer (NO RECOMENDADO)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -473,7 +473,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**read (RECOMMENDED)**
+**leer (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
@@ -490,7 +490,7 @@ fs.open('myfile', 'r', (err, fd) => {
 });
 ```
 
-The "not recommended" examples above check for accessibility and then use the file; the "recommended" examples are better because they use the file directly and handle the error, if any.
+Los ejemplos anteriores "no recomendados" verifican la accesibilidad y luego utilizan el archivo; los ejemplos "recomendados" son mejores porque utilizan el archivo directamente y manejan el error, si los hay.
 
 In general, check for the accessibility of a file only if the file will not be used directly, for example when its accessibility is a signal from another process.
 
@@ -515,7 +515,7 @@ Synchronously tests a user's permissions for the file or directory specified by 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
 If any of the accessibility checks fail, an `Error` will be thrown. Otherwise, the method will return `undefined`.
 
@@ -1017,7 +1017,7 @@ Using `fs.exists()` to check for the existence of a file before calling `fs.open
 
 Por ejemplo:
 
-**write (NOT RECOMMENDED)**
+**escribir (NO SE RECOMIENDA)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1032,7 +1032,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**write (RECOMMENDED)**
+**escribir (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -1049,7 +1049,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**read (NOT RECOMMENDED)**
+**leer (NO RECOMENDADO)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1063,7 +1063,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**read (RECOMMENDED)**
+**leer (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
