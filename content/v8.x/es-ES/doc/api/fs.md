@@ -298,7 +298,7 @@ Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and
 * `stats.isFIFO()`
 * `stats.isSocket()`
 
-For a regular file [`util.inspect(stats)`][] would return a string very similar to this:
+Para un archivo normal [`util.inspect(stats)`][] devolvería una string muy similar a esto:
 
 ```console
 Stats {
