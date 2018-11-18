@@ -3349,19 +3349,19 @@ Parche de Semver:
 * [[`f346dee940`](https://github.com/nodejs/node/commit/f346dee940)] - **win,build**: reenviar release_urlbase a configure (João Reis) [#8430](https://github.com/nodejs/node/pull/8430)
 * [[`6bb057ec6a`](https://github.com/nodejs/node/commit/6bb057ec6a)] - **win,build**: salir cuando complementos fallan en compilarse (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
 * [[`14d356d0ab`](https://github.com/nodejs/node/commit/14d356d0ab)] - **win,build**: omitir encontrar a VS cuando no sea necesario (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
-* [[`81d063e174`](https://github.com/nodejs/node/commit/81d063e174)] - **win,build**: fail on invalid option in vcbuild (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
+* [[`81d063e174`](https://github.com/nodejs/node/commit/81d063e174)] - **win,build**: fallar en opción en inválida en vcbuild (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
 
 <a id="6.5.0"></a>
 
-## 2016-08-26, Version 6.5.0 (Current), @evanlucas
+## 2016-08-26, Versión 6.5.0 (Current), @evanlucas
 
-### Notable changes
+### Cambios notables
 
-* **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
-* **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
+* **buffer**: Reparar regresión introducida en v.6.4.0 que prevenía a .write() al final del buffer (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
+* **deps**: actualizar V8 a 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
 * **inspector**: 
-  * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
-  * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
+  * reparar cuelgue de inspector mientras se desconecta (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
+  * añadir soporte para excepción no atrapada (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
 * ***Revert*** "**repl,util**: insert carriage returns in output" (Evan Lucas) [#8143](https://github.com/nodejs/node/pull/8143)
 
