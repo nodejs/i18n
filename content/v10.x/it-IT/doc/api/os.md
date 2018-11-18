@@ -311,7 +311,7 @@ I valori attualmente possibili sono:
 
 Equivalente a [`process.platform`][].
 
-Il valore `'android'` può anche essere restituito se il Node.js è costruito sul Sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+Può anche essere restituito il valore `'android'` se il Node.js è costruito sul sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## os.release()
 
@@ -386,10 +386,10 @@ added: v6.0.0
 -->
 
 * `options` {Object} 
-  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su`'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
+  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
 * Restituisce: {Object}
 
-Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include l'/il/la `username`, `uid`, `gid`, `shell` e l'`homedir`. Su Windows, i campi `uid` e `gid` sono `-1`, e `shell` è `null`.
+Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include `username`, `uid`, `gid`, `shell` e `homedir`. Su Windows, i campi `uid` e `gid` sono `-1` e `shell` è `null`.
 
 Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema operativo. Questo differisce dal risultato di `os.homedir()`, il quale esegue il query di diverse variabili d'ambiente per la home directory prima di ritornare alla risposta del sistema operativo.
 
