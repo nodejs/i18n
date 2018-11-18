@@ -522,19 +522,19 @@ const http2 = require('http2');
 
 const server = http2.createServer();
 server.on('session', (session) => {
-  // Set altsvc for origin https://example.org:80
+  // Imposta altsvc per originare https://example.org:80
   session.altsvc('h2=":8000"', 'https://example.org:80');
 });
 
 server.on('stream', (stream) => {
-  // Set altsvc for a specific stream
+  // imposta altsvc per un flusso specifico
   stream.session.altsvc('h2=":8000"', stream.id);
 });
 ```
 
-Sending an `ALTSVC` frame with a specific stream ID indicates that the alternate service is associated with the origin of the given `Http2Stream`.
+Inviare un frame `ALTSVC` con un ID di flusso specifico indica che il servizio alternativo è associato all'origine del `Http2Stream` specificato.
 
-The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
+L'`alt` e la stringa di origine *devono* contenere solo byte ASCII e sono interpretati rigorosamente come una sequenza di byte ASCII. Il valore speciale `'clear'` può essere passato per cancellare qualsiasi servizio alternativo precedentemente impostato per un dato dominio.
 
 When a string is passed for the `originOrStream` argument, it will be parsed as a URL and the origin will be derived. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
 
