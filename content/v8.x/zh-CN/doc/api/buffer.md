@@ -960,9 +960,9 @@ added: v0.1.90
 * `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`]
 * 返回：{integer} 被复制的字节数。
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
 
-Example: Create two `Buffer` instances, `buf1` and `buf2`, and copy `buf1` from byte 16 through byte 19 into `buf2`, starting at the 8th byte in `buf2`
+示例：创建两个 `Buffer` 实例，`buf1` 和 `buf2`，并将 `buf1` 中的第 16 到 19 字节复制到 `buf2` 中的第 8 字节起始的位置。
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
@@ -979,7 +979,7 @@ buf1.copy(buf2, 8, 16, 20);
 console.log(buf2.toString('ascii', 0, 25));
 ```
 
-Example: Create a single `Buffer` and copy data from one region to an overlapping region within the same `Buffer`
+示例：创建单个的 `Buffer` 并在 `Buffer` 内将数据从一个区域复制到一个重叠区域。
 
 ```js
 const buf = Buffer.allocUnsafe(26);
@@ -1001,9 +1001,9 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
 Example: Log the entire contents of a `Buffer`
 
