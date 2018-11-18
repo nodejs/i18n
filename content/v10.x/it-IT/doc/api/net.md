@@ -820,7 +820,7 @@ added: v0.1.90
 -->
 
 * `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener (che esegue il listening) "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una tantum" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
 Inizia una connessione [IPC](#net_ipc_support).
@@ -835,12 +835,12 @@ added: v0.1.90
 
 * `port`{number} Porta a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
 * `host`{string} Host a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
-* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener (che esegue il listening) "una volta" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una tantum" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
 Inizia una connessione TPC.
 
-Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`],quindi restituisce il `net.Socket` che avvia la connessione.
+Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], quindi restituisce il `net.Socket` che avvia la connessione.
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
@@ -853,7 +853,7 @@ Crea un nuovo server TPC o [IPC](#net_ipc_support).
 * `options` {Object} 
   * `allowHalfOpen`{boolean} Indica se le connessioni TPC semi-aperte sono consentite. **Default:** `false`.
   * `pauseOnConnect` {boolean} indica se il socket dovrebbe essere messo in pausa sulle connessioni in entrata. **Default:** `false`.
-* `connectionListener` {Function} Imposta automaticamente come listener per l'evento [`'connection'`][].
+* `connectionListener` {Function} Imposta automaticamente un listener per l'evento [`'connection'`][].
 * Restituisce: {net.Server}
 
 Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi gli eventi [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
