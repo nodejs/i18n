@@ -219,9 +219,9 @@ Para un archivo normal [`util.inspect(stats)`][] devolvería una string muy simi
       birthtime: Mon, 10 Oct 2011 23:24:11 GMT }
     
 
-Please note that `atime`, `mtime`, `birthtime`, and `ctime` are instances of [`Date`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date) object and to compare the values of these objects you should use appropriate methods. For most general uses [`getTime()`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime) will return the number of milliseconds elapsed since *1 January 1970 00:00:00 UTC* and this integer should be sufficient for any comparison, however there are additional methods which can be used for displaying fuzzy information. More details can be found in the [MDN JavaScript Reference](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date) page.
+Por favor, tenga en cuenta que `atime`, `mtime`, `birthtime`, y `ctime` son instancias del objeto [`Date`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date), y para comparar los valores de estos objetos usted debería utilizar métodos apropiados. For most general uses [`getTime()`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime) will return the number of milliseconds elapsed since *1 January 1970 00:00:00 UTC* and this integer should be sufficient for any comparison, however there are additional methods which can be used for displaying fuzzy information. Puede encontrar más detalles en la página de [Referencia de Javascript de MDN](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date) .
 
-### Stat Time Values
+### Valores del Tiempo de Estadísticas
 
 Los tiempos en el objeto de estadística tienen la siguiente semántica:
 
@@ -287,10 +287,10 @@ added: v0.11.15
 * `callback` {Function} 
   * `err` {Error}
 
-Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values.
+Prueba los permisos de un usuario para el archivo o directorio especificado por `path`. El argumento `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los valores posibles de `mode`. Es posible crear una máscara que consista del bitwise O de dos o más valores.
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
-* `fs.constants.R_OK` - `path` can be read by the calling process.
+* `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
+* `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
 
