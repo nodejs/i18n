@@ -1080,7 +1080,7 @@ const b = Buffer.allocUnsafe(50).fill('h');
 console.log(b.toString());
 ```
 
-`value` is coerced to a `uint32` value if it is not a String or Integer.
+如果 `value` 不是一个字符串或整数，则会被强制转换为 `uint32` 值。
 
 If the final write of a `fill()` operation falls on a multi-byte character, then only the first bytes of that character that fit into `buf` are written.
 
