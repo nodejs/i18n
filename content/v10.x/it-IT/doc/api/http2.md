@@ -463,10 +463,10 @@ Fornisce informazioni varie sullo stato attuale di `Http2Session`.
   * `lastProcStreamID` {number} L'ID numerico di `Http2Stream` per il quale è stato ricevuto di recente un frame `HEADERS` o `DATA`.
   * `remoteWindowSize` {number} Il numero di byte che questa `Http2Session` può inviare senza ricevere un `WINDOW_UPDATE`.
   * `outboundQueueSize` {number} Il numero di frame attualmente all'interno della coda in uscita per questa `Http2Session`.
-  * `deflateDynamicTableSize` {number} The current size in bytes of the outbound header compression state table.
-  * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
+  * `deflateDynamicTableSize` {number} La dimensione corrente in byte della tabella di stato della compressione dell'intestazione in uscita.
+  * `inflateDynamicTableSize` {number} La dimensione corrente in byte della tabella di stato della compressione dell'intestazione in entrata.
 
-An object describing the current status of this `Http2Session`.
+Un oggetto che descrive lo stato corrente di questa `Http2Session`.
 
 #### http2session.settings(settings)
 
@@ -476,9 +476,9 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object}
 
-Updates the current local settings for this `Http2Session` and sends a new `SETTINGS` frame to the connected HTTP/2 peer.
+Aggiorna le impostazioni locali correnti per questa `Http2Session` e invia un nuovo `SETTINGS` frame al peer HTTP/2 connesso.
 
-Once called, the `http2session.pendingSettingsAck` property will be `true` while the session is waiting for the remote peer to acknowledge the new settings.
+Una volta chiamata, la proprietà `http2session.pendingSettingsAck` sarà `true` mentre la sessione è in attesa che il peer remoto riconosca le nuove impostazioni.
 
 The new settings will not become effective until the `SETTINGS` acknowledgment is received and the `'localSettings'` event is emitted. It is possible to send multiple `SETTINGS` frames while acknowledgment is still pending.
 
