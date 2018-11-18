@@ -928,9 +928,9 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中限制对比在指定的范围内。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -946,7 +946,7 @@ console.log(buf1.compare(buf2, 0, 6, 4));
 console.log(buf1.compare(buf2, 5, 6, 5));
 ```
 
-A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength` or `sourceEnd > source.byteLength`.
+如果 `targetStart < 0`，`sourceStart < 0`，`targetEnd > target.byteLength`，或 `sourceEnd > source.byteLength`，则抛出 `RangeError` 错误。
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
@@ -954,11 +954,11 @@ A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetE
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
-* `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`]
-* Returns: {integer} The number of bytes copied.
+* `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`
+* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`
+* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`]
+* 返回：{integer} 被复制的字节数。
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
 
