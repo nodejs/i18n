@@ -103,7 +103,7 @@ console.log(addon.hello());
 
 Из-за того, что точный путь к скомпилированному бинарному расширению может варьироваться в зависимости от того, как он скомпилирован (например, иногда это может быть `./build/Debug/`) расширения могут использовать пакет [bindings](https://github.com/TooTallNate/node-bindings) для загрузки скомпилированного модуля.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Обратите внимание, что хотя реализация пакета `bindings` более сложна в том, как он находит модули расширения, по существу используется модель try-catch, похожая на:
 
 ```js
 try {
