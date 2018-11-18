@@ -439,13 +439,13 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but limits available methods to ones safe to use with HTTP/2.
+Restituisce un oggetto `Proxy` che funge da `net.Socket` (o `tls.TLSSocket`) ma limita i metodi disponibili a quelli sicuri da utilizzare con HTTP/2.
 
-`destroy`, `emit`, `end`, `pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. See [`Http2Session` and Sockets][] for more information.
+`destroy`, `emit`, `end`, `pause`, `read`, `resume`, and `write` genereranno un errore con il codice `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Guardare [`Http2Session` ed i Socket][] per maggiori informazioni.
 
-`setTimeout` method will be called on this `Http2Session`.
+Il metodo `setTimeout` verrà chiamato su questa `Http2Session`.
 
-All other interactions will be routed directly to the socket.
+Tutte le altre interazioni verranno indirizzate direttamente al socket.
 
 #### http2session.state
 
