@@ -962,7 +962,7 @@ added: v0.1.90
 
 复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
 
-示例：创建两个 `Buffer` 实例，`buf1` 和 `buf2`，并将 `buf1` 中的第 16 到 19 字节复制到 `buf2` 中的第 8 字节起始的位置。
+例如：创建两个 `Buffer` 实例，`buf1` 和 `buf2`，并将 `buf1` 中的第 16 到 19 字节复制到 `buf2` 中的第 8 字节起始的位置。
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
@@ -979,7 +979,7 @@ buf1.copy(buf2, 8, 16, 20);
 console.log(buf2.toString('ascii', 0, 25));
 ```
 
-示例：创建单个的 `Buffer` 并在 `Buffer` 内将数据从一个区域复制到一个重叠区域。
+例如：创建单个的 `Buffer` 并在 `Buffer` 内将数据从一个区域复制到一个重叠区域。
 
 ```js
 const buf = Buffer.allocUnsafe(26);
@@ -1005,7 +1005,7 @@ added: v1.1.0
 
 从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
-示例：记录 `Buffer` 的完整内容。
+例如：记录 `Buffer` 的完整内容。
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1069,9 +1069,9 @@ changes:
 * `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
 * 返回：{Buffer} `buf` 的引用。
 
-用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。 这是一个小小的简化，以允许在单行上创建和填充 `Buffer`。
+用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。 这是一个细微的简化，以允许使用单行代码创建和填充 `Buffer`。
 
-示例：以 ASCII 字符 `'h'` 填充一个 `Buffer`。
+例如：以 ASCII 字符 `'h'` 填充一个 `Buffer`。
 
 ```js
 const b = Buffer.allocUnsafe(50).fill('h');
