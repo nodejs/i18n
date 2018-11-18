@@ -3362,17 +3362,17 @@ Parche de Semver:
 * **inspector**: 
   * reparar cuelgue de inspector mientras se desconecta (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * añadir soporte para excepción no atrapada (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
-* **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
-* ***Revert*** "**repl,util**: insert carriage returns in output" (Evan Lucas) [#8143](https://github.com/nodejs/node/pull/8143)
+* **repl**: Corregir el guardado del texto de módulo editor en `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
+* ***Revert*** "**repl,util**: insertar retorno de carro en output" (Evan Lucas) [#8143](https://github.com/nodejs/node/pull/8143)
 
 ### Commits
 
-* [[`5bc311909f`](https://github.com/nodejs/node/commit/5bc311909f)] - **assert**: remove code that is never reached (Rich Trott) [#8132](https://github.com/nodejs/node/pull/8132)
-* [[`e371545dfe`](https://github.com/nodejs/node/commit/e371545dfe)] - **buffer**: allow .write() offset to be at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
-* [[`dcd065522e`](https://github.com/nodejs/node/commit/dcd065522e)] - **(SEMVER-MINOR)** **build**: don't include V8 from node.gyp (Michaël Zasso) [#7016](https://github.com/nodejs/node/pull/7016)
-* [[`92ecbc4edc`](https://github.com/nodejs/node/commit/92ecbc4edc)] - **build**: cherry pick V8 change for windows DLL support (Stefan Budeanu) [#8084](https://github.com/nodejs/node/pull/8084)
-* [[`4e4c091542`](https://github.com/nodejs/node/commit/4e4c091542)] - **build**: windows sharedlib support (Stefan Budeanu) [#8084](https://github.com/nodejs/node/pull/8084)
-* [[`f4c3456610`](https://github.com/nodejs/node/commit/f4c3456610)] - **build**: do not lint src dir for JS errors (Rich Trott) [#8128](https://github.com/nodejs/node/pull/8128)
+* [[`5bc311909f`](https://github.com/nodejs/node/commit/5bc311909f)] - **assert**: remover código que nunca es alcanzado (Rich Trott) [#8132](https://github.com/nodejs/node/pull/8132)
+* [[`e371545dfe`](https://github.com/nodejs/node/commit/e371545dfe)] - **buffer**: permitir que offset de .write() esté al final del buffer (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
+* [[`dcd065522e`](https://github.com/nodejs/node/commit/dcd065522e)] - **(SEMVER-MINOR)** **build**: no incluir V8 desde node.gyp (Michaël Zasso) [#7016](https://github.com/nodejs/node/pull/7016)
+* [[`92ecbc4edc`](https://github.com/nodejs/node/commit/92ecbc4edc)] - **build**: hacer cherry pick a cambio de V8 para soporte DLL de windows (Stefan Budeanu) [#8084](https://github.com/nodejs/node/pull/8084)
+* [[`4e4c091542`](https://github.com/nodejs/node/commit/4e4c091542)] - **build**: soporte de sharedlib de windows (Stefan Budeanu) [#8084](https://github.com/nodejs/node/pull/8084)
+* [[`f4c3456610`](https://github.com/nodejs/node/commit/f4c3456610)] - **build**: no hacer lint a directorio de src por errores de JS (Rich Trott) [#8128](https://github.com/nodejs/node/pull/8128)
 * [[`71343b6caa`](https://github.com/nodejs/node/commit/71343b6caa)] - **child_process**: reuse existing no-op function (cjihrig) [#8164](https://github.com/nodejs/node/pull/8164)
 * [[`0884c70535`](https://github.com/nodejs/node/commit/0884c70535)] - **child_process**: workaround fd passing issue on OS X (Santiago Gimeno) [#7572](https://github.com/nodejs/node/pull/7572)
 * [[`8eb6e71758`](https://github.com/nodejs/node/commit/8eb6e71758)] - **configure**: reword help for --without-npm (BlackYoup) [#7471](https://github.com/nodejs/node/pull/7471)
