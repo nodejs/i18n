@@ -249,7 +249,7 @@ added: v0.1.93
 added: v0.1.93
 -->
 
-Emitted when the `ReadStream`'s underlying file descriptor has been closed.
+Emitido cuando el descriptor de archivo subyacente de `ReadStream` ha sido cerrado.
 
 ### Event: 'open'
 
