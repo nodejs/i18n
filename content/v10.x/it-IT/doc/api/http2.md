@@ -498,7 +498,7 @@ added: v8.4.0
 added: v9.4.0
 -->
 
-Calls [`unref()`][`net.Socket.prototype.unref()`] on this `Http2Session` instance's underlying [`net.Socket`].
+Chiama [`unref()`] [`net.Socket.prototype.unref()`] su questa istanza `Http2Session` sottostante a [`net.Socket`].
 
 ### Class: ServerHttp2Session
 
@@ -512,7 +512,7 @@ added: v8.4.0
 added: v9.4.0
 -->
 
-* `alt` {string} A description of the alternative service configuration as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838).
+* `alt` {string} Una descrizione della configurazione del servizio alternativo definita da [RFC 7838](https://tools.ietf.org/html/rfc7838).
 * `originOrStream` {number|string|URL|Object} Either a URL string specifying the origin (or an `Object` with an `origin` property) or the numeric identifier of an active `Http2Stream` as given by the `http2stream.id` property.
 
 Submits an `ALTSVC` frame (as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838)) to the connected client.
