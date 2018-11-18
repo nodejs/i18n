@@ -299,7 +299,7 @@ A meno che un'applicazione non stia generando ed eseguendo codice in modo dinami
 
 ## Classe: SyntaxError
 
-A subclass of `Error` that indicates that a program is not valid JavaScript. These errors may only be generated and propagated as a result of code evaluation. Code evaluation may happen as a result of `eval`, `Function`, `require`, or [vm](vm.html). These errors are almost always indicative of a broken program.
+A subclass of `Error` that indicates that a program is not valid JavaScript. Questi errori potrebbero essere generati e propagati solamente come risultato di una valutazione del codice. La valutazione del codice potrebbe accadere come risultato di `eval`, `Function`, `require`, o [vm](vm.html). These errors are almost always indicative of a broken program.
 
 ```js
 try {
