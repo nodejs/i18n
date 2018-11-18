@@ -305,19 +305,19 @@ A subclass of `Error` that indicates that a program is not valid JavaScript. Que
 try {
   require('vm').runInThisContext('binary ! isNotOk');
 } catch (err) {
-  // err will be a SyntaxError
+  // l'errore sarà del tipo SyntaxError
 }
 ```
 
-`SyntaxError` instances are unrecoverable in the context that created them – they may only be caught by other contexts.
+Le istanze di tipo `SyntaxError` non sono recuperabili nel contesto che le ha create - possono essere catturate solo da altri contesti.
 
-## Class: TypeError
+## Classe: TypeError
 
-A subclass of `Error` that indicates that a provided argument is not an allowable type. For example, passing a function to a parameter which expects a string would be considered a `TypeError`.
+Una sottoclasse di `Error` che indica che un argomento fornito non è un tipo di argomento consentito. Ad esempio, passare una funzione a un parametro che si aspetta una stringa verrebbe considerato un `TypeError`.
 
 ```js
 require('url').parse(() => { });
-// throws TypeError, since it expected a string
+// genera TypeError, dato che si aspettava una stringa
 ```
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
