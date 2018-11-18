@@ -33,7 +33,7 @@ added: v0.5.0
 
 Il metodo `os.arch()` restituisce una stringa che identifica l'architettura della CPU del sistema operativo per la quale è stato compilato il binario Node.js.
 
-I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` e `'x64'`.
 
 Equivalente a [`process.arch`][].
 
