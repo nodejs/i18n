@@ -848,7 +848,7 @@ name: [index]
 
 该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
-示例：将 ASCII 字符串复制到 `Buffer` 中, 一次一个字节
+例如：将 ASCII 字符串复制到 `Buffer` 中, 一次一个字节
 
 ```js
 const str = 'Node.js';
@@ -890,12 +890,12 @@ changes:
 
 * `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
 * `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`
-* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** `target.length`
 * `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`
 * `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** [`buf.length`]
 * 返回：{integer}
 
-比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于每个 `Buffer` 中实际的字节序列。
 
 * 如果 `target` 与 `buf` 相同，则返回 `0`
 * 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
@@ -928,7 +928,7 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中限制对比在指定的范围内。
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中将对比限制在指定的范围内。
 
 例如：
 
