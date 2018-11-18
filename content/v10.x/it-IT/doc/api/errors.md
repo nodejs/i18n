@@ -271,7 +271,7 @@ Gli errori a livello di sistema sono generati come `Error` instances aumentate, 
 
 ## Classe: AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. For details, see [`Class: assert.AssertionError`][].
+Una sottoclasse di `Error` che indica il fallimento di un assertion. For details, see [`Class: assert.AssertionError`][].
 
 ## Class: RangeError
 
