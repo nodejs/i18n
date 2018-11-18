@@ -163,7 +163,7 @@ Le proprietà incluse in ogni oggetto includono:
 ]
 ```
 
-Poiché i valori `nice` sono specifiche di UNIX, su Windows i valori `nice` di tutti i processori sono sempre 0.
+Poiché i valori `nice` sono specifici di UNIX, su Windows i valori `nice` di tutti i processori sono sempre 0.
 
 ## os.endianness()
 
