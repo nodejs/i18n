@@ -3343,12 +3343,12 @@ Parche de Semver:
 * [[`6ae7af0fa3`](https://github.com/nodejs/node/commit/6ae7af0fa3)] - **url**: mantener autenticación en `url.resolve()` si host coincide (Ilkka Myller) [#8215](https://github.com/nodejs/node/pull/8215)
 * [[`eec5d02266`](https://github.com/nodejs/node/commit/eec5d02266)] - **url**: `url.format()` decodifica todos los `#` en `search` (Ilkka Myller) [#8072](https://github.com/nodejs/node/pull/8072)
 * [[`d67ece2f68`](https://github.com/nodejs/node/commit/d67ece2f68)] - **util**: mejorar firma de función de `util._extend` (Sakthipriyan Vairamani) [#8187](https://github.com/nodejs/node/pull/8187)
-* [[`e9c4805c1f`](https://github.com/nodejs/node/commit/e9c4805c1f)] - **(SEMVER-MINOR)** **util**: allow returning `this` from custom inspect (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
-* [[`4cb55ff392`](https://github.com/nodejs/node/commit/4cb55ff392)] - **(SEMVER-MINOR)** **util**: allow symbol-based custom inspection methods (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
-* [[`151d1ea6a6`](https://github.com/nodejs/node/commit/151d1ea6a6)] - **vm**: change ContextifyScript to Script in comment (Daniel Bevenius) [#8415](https://github.com/nodejs/node/pull/8415)
-* [[`f346dee940`](https://github.com/nodejs/node/commit/f346dee940)] - **win,build**: forward release_urlbase to configure (João Reis) [#8430](https://github.com/nodejs/node/pull/8430)
-* [[`6bb057ec6a`](https://github.com/nodejs/node/commit/6bb057ec6a)] - **win,build**: exit when addons fail to build (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
-* [[`14d356d0ab`](https://github.com/nodejs/node/commit/14d356d0ab)] - **win,build**: skip finding VS when not needed (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
+* [[`e9c4805c1f`](https://github.com/nodejs/node/commit/e9c4805c1f)] - **(SEMVER-MINOR)** **util**: permitir devolver `this` desde inspección personalizada (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
+* [[`4cb55ff392`](https://github.com/nodejs/node/commit/4cb55ff392)] - **(SEMVER-MINOR)** **util**: permitir métodos de inspección personalizada basados en symbol (Anna Henningsen) [#8174](https://github.com/nodejs/node/pull/8174)
+* [[`151d1ea6a6`](https://github.com/nodejs/node/commit/151d1ea6a6)] - **vm**: cambiar ContextifyScript a Script en comentario (Daniel Bevenius) [#8415](https://github.com/nodejs/node/pull/8415)
+* [[`f346dee940`](https://github.com/nodejs/node/commit/f346dee940)] - **win,build**: reenviar release_urlbase a configure (João Reis) [#8430](https://github.com/nodejs/node/pull/8430)
+* [[`6bb057ec6a`](https://github.com/nodejs/node/commit/6bb057ec6a)] - **win,build**: salir cuando complementos fallan en compilarse (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
+* [[`14d356d0ab`](https://github.com/nodejs/node/commit/14d356d0ab)] - **win,build**: omitir encontrar a VS cuando no sea necesario (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
 * [[`81d063e174`](https://github.com/nodejs/node/commit/81d063e174)] - **win,build**: fail on invalid option in vcbuild (João Reis) [#8412](https://github.com/nodejs/node/pull/8412)
 
 <a id="6.5.0"></a>
