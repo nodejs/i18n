@@ -482,7 +482,7 @@ added: v0.1.97
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia de manera asincrónica el propietario y el grupo de un archivo. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica el propietario y el grupo de un archivo. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Vea también: chown(2)
 
@@ -496,7 +496,7 @@ added: v0.1.97
 * `uid` {integer}
 * `gid` {integer}
 
-Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Devuelve `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
 
 Vea también: chown(2)
 
@@ -510,7 +510,7 @@ added: v0.0.2
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous close(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.closeSync(fd)
 
@@ -520,7 +520,7 @@ added: v0.1.21
 
 * `fd` {integer}
 
-Synchronous close(2). Returns `undefined`.
+close(2) sincrónico. Devuelve `undefined`.
 
 ## fs.constants
 
@@ -562,7 +562,7 @@ const defaults = {
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
-If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Si se especifica `fd`, `ReadStream` ignorará el argumento `path` y usará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is your responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
 
@@ -755,7 +755,7 @@ added: v0.4.7
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchown(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fchown(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchownSync(fd, uid, gid)
 
@@ -824,7 +824,7 @@ added: v0.1.96
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fsync(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fsyncSync(fd)
 
@@ -965,7 +965,7 @@ deprecated: v0.4.7
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous lchown(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.lchownSync(path, uid, gid)
 
@@ -1436,7 +1436,7 @@ added: v0.0.2
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous rename(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.renameSync(oldPath, newPath)
 
@@ -1459,7 +1459,7 @@ added: v0.0.2
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous rmdir(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 *Note*: Using `fs.rmdir()` on a file (not a directory) results in an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
 
@@ -1516,7 +1516,7 @@ added: v0.1.31
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` (default is `'file'`) and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+Asynchronous symlink(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` (default is `'file'`) and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
 Here is an example below:
 
@@ -1572,7 +1572,7 @@ added: v0.0.2
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous unlink(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous unlink(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.unlinkSync(path)
 
