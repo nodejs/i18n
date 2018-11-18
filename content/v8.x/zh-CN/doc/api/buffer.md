@@ -623,7 +623,7 @@ changes:
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
 
 如果提供了 `totalLength`，则会将其强制转换为无符号整数。 如果 `列表` 中的所有 `Buffer` 长度之和超过 `totalLength`，则结果会被截取为 `totalLength`。
 
@@ -664,7 +664,7 @@ added: v5.10.0
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-如果 `array` 不是一个`Array`，则会抛出 `TypeError` 错误。
+如果 `array` 不是一个 `Array`，则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
