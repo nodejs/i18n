@@ -279,14 +279,14 @@ A subclass of `Error` that indicates that a provided argument was not within the
 
 ```js
 require('net').connect(-1);
-// throws "RangeError: "port" option should be >= 0 and < 65536: -1"
+// genera "RangeError: l'opzione "port" dovrebbe essere >= 0 and < 65536: -1"
 ```
 
 Node.js will generate and throw `RangeError` instances *immediately* as a form of argument validation.
 
-## Class: ReferenceError
+## Classe: ReferenceError
 
-A subclass of `Error` that indicates that an attempt is being made to access a variable that is not defined. Such errors commonly indicate typos in code, or an otherwise broken program.
+Una sottoclasse di `Error` che indica che c'è stato un tentativo di accesso ad una variabile che non è stata definita. Such errors commonly indicate typos in code, or an otherwise broken program.
 
 While client code may generate and propagate these errors, in practice, only V8 will do so.
 
