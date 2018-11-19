@@ -1082,7 +1082,7 @@ fs.open('myfile', 'r', (err, fd) => {
 
 The "not recommended" examples above check for existence and then use the file; the "recommended" examples are better because they use the file directly and handle the error, if any.
 
-In general, check for the existence of a file only if the file won’t be used directly, for example when its existence is a signal from another process.
+En general, verifique la existencia de un archivo solo si el archivo no será utilizado directamente, por ejemplo, cuando su existencia sea una señal de otro proceso.
 
 ## fs.existsSync(path)
 
@@ -1098,9 +1098,9 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Synchronous version of [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
+Versión sincrónica de [`fs.exists()`][]. Devuelve `true` si la ruta existe, de lo contrario `false` .
 
-Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
+Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` no utiliza un callback.)
 
 ## fs.fchmod(fd, mode, callback)
 
@@ -1119,7 +1119,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
+fchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -1379,7 +1379,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-lchmod(2) asincrónico. No arguments other than a possible exception are given to the completion callback.
+lchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Only available on macOS.
 
@@ -1528,7 +1528,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Crea un directorio de manera asincrónica. No arguments other than a possible exception are given to the completion callback. `mode` defaults to `0o777`.
+Crea un directorio de manera asincrónica. Ningún argumento que no sea una posible excepción es dado al callback de terminación. `mode` defaults to `0o777`.
 
 See also: mkdir(2)
 
