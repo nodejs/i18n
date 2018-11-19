@@ -1108,46 +1108,46 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
-    <td>Indicates that the service provider failed to initialized.</td>
+    <td>Indica che il service provider non è riuscito ad inizializzare.</td>
   </tr>
   <tr>
     <td><code>WSASYSCALLFAILURE</code></td>
-    <td>Indicates a system call failure.</td>
+    <td>Indica un errore di chiamata di sistema.</td>
   </tr>
   <tr>
     <td><code>WSASERVICE_NOT_FOUND</code></td>
-    <td>Indicates that a service was not found.</td>
+    <td>Indica che un servizio non è stato trovato.</td>
   </tr>
   <tr>
     <td><code>WSATYPE_NOT_FOUND</code></td>
-    <td>Indicates that a class type was not found.</td>
+    <td>Indica che non è stato trovato un tipo di classe.</td>
   </tr>
   <tr>
     <td><code>WSA_E_NO_MORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica che non ci sono ulteriori risultati.</td>
   </tr>
   <tr>
     <td><code>WSA_E_CANCELLED</code></td>
-    <td>Indicates that the call was canceled.</td>
+    <td>Indica che la chiamata è stata annullata.</td>
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indicates that a database query was refused.</td>
+    <td>Indica che una database query è stata rifiutata.</td>
   </tr>
 </table>
 
-### dlopen Constants
+### Costanti dlopen
 
-If available on the operating system, the following constants are exported in `os.constants.dlopen`. See dlopen(3) for detailed information.
+Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in `os.constants.dlopen`. Vedi dlopen(3) per informazioni dettagliate.
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
-    <td>Perform lazy binding. Node.js sets this flag by default.</td>
+    <td>Esegui il lazy binding. Node.js imposta questo flag come predefinito.</td>
   </tr>
   <tr>
     <td><code>RTLD_NOW</code></td>
