@@ -73,9 +73,9 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### What makes `Buffer.allocUnsafe()` and `Buffer.allocUnsafeSlow()` "unsafe"?
+### Co sprawia `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). While this design makes the allocation of memory quite fast, the allocated segment of memory might contain old data that is potentially sensitive. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
 
 While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
 
