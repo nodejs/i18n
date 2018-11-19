@@ -409,7 +409,7 @@ const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 console.log(buf2.toString());
 ```
 
-### Class 方法：Buffer.alloc(size[, fill[, encoding]])
+### 类方法：Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
@@ -464,7 +464,7 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class 方法：Buffer.allocUnsafe(size)
+### 类方法：Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -501,7 +501,7 @@ console.log(buf);
 
 对于这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体的说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外性能时，这个细微的区别是非常重要的。
 
-### Class 方法：Buffer.allocUnsafeSlow(size)
+### 类方法：Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
@@ -540,7 +540,7 @@ socket.on('readable', () => {
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class 方法：Buffer.byteLength(string[, encoding])
+### 类方法：Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -575,7 +575,7 @@ console.log(`${str}: ${str.length} characters, ` +
 
 当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
-### Class 方法：Buffer.compare(buf1, buf2)
+### 类方法：Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
