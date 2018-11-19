@@ -36,7 +36,7 @@
 | ------------------------------------------------------ | ----------------------------------------------- | ----------------------------------- | --------------------------- | ---------- |
 | [`String.prototype.normalize()`][]                     | όχι (η συνάρτηση είναι no-op)                   | πλήρης                              | πλήρης                      | πλήρης     |
 | `String.prototype.to*Case()`                           | πλήρης                                          | πλήρης                              | πλήρης                      | πλήρης     |
-| [`Intl`][]                                             | όχι (η συνάρτηση είναι no-op)                   | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [`Intl`][]                                             | καμία (το αντικείμενο δεν ορίζεται)             | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
 | [`String.prototype.localeCompare()`][]                 | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
 | `String.prototype.toLocale*Case()`                     | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
 | [`Number.prototype.toLocaleString()`][]                | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
@@ -99,15 +99,15 @@ console.log(spanish.format(january));
 
 Το ICU μπορεί να εντοπίσει και να φορτώσει αυτόματα μια μεγάλη ποικιλία μορφών δεδομένων, αλλά τα δεδομένα θα πρέπει να είναι κατάλληλα για την έκδοση του ICU, και το αρχείο να έχει ονομαστεί κατάλληλα. Το πιο συχνό όνομα για τα αρχεία δεδομένων είναι το `icudt5X[bl].dat`, όπου το `5X` επισημαίνει την έκδοση ICU για την οποία προορίζεται, και το `b` ή το `l` που επισημαίνει το endianness του συστήματος. Διαβάστε το άρθρο ["ICU Data"](http://userguide.icu-project.org/icudata) στον Οδηγό Χρήστη του ICU για περισσότερες υποστηριζόμενες μορφές, καθώς και για περισσότερες λεπτομέρειες για τα δεδομένα του ICU γενικότερα.
 
-Το στοιχείο [full-icu](https://www.npmjs.com/package/full-icu) του npm μπορεί να απλοποιήσει σημαντικά την εγκατάσταση των δεδομένων του ICU, ανιχνεύοντας την έκδοση του ICU που χρησιμοποιεί το εκτελέσιμο αρχείο `node` που εκτελείται, και κατεβάζοντας το αντίστοιχο αρχείο δεδομένων. After installing the module through `npm i full-icu`, the data file will be available at `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
+Το στοιχείο [full-icu](https://www.npmjs.com/package/full-icu) του npm μπορεί να απλοποιήσει σημαντικά την εγκατάσταση των δεδομένων του ICU, ανιχνεύοντας την έκδοση του ICU που χρησιμοποιεί το εκτελέσιμο αρχείο `node` που εκτελείται, και κατεβάζοντας το αντίστοιχο αρχείο δεδομένων. Αφού εγκαταστήσετε το στοιχείο μέσω της εντολής `npm i full-icu`, το αρχείο δεδομένων θα είναι διαθέσιμο στη διαδρομή `./node_modules/full-icu`. Αυτή η διαδρομή μπορεί να χρησιμοποιηθεί είτε με την μεταβλητή `NODE_ICU_DATA` είτε με την παράμετρο κονσόλας `--icu-data-dir` όπως δείχνουν τα παραδείγματα που δείξαμε παραπάνω, για να ενεργοποιηθεί η πλήρης υποστήριξη `Intl`.
 
-### Embed the entire ICU (`full-icu`)
+### Ενσωμάτωση ολόκληρου του ICU (`full-icu`)
 
-This option makes the resulting binary link against ICU statically and include a full set of ICU data. A binary created this way has no further external dependencies and supports all locales, but might be rather large. See [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) on how to compile a binary using this mode.
+Αυτή η επιλογή συνδέει στατικά το αρχείο που προκύπτει από τη μεταγλώττιση με το ICU, και συμπεριλαμβάνει ένα πλήρες σύνολο δεδομένων του ICU. Το αρχείο που δημιουργείται με αυτόν τον τρόπο, δεν έχει άλλες εξαρτήσεις, υποστηρίζει όλες τις γλώσσες, αλλά μπορεί να είναι αρκετά μεγάλο. Δείτε το [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) για περισσότερες πληροφορίες σχετικά με το πως να μεταγλωττίσετε χρησιμοποιώντας αυτή τη λειτουργία.
 
-## Detecting internationalization support
+## Ανίχνευση πολυγλωσσικής υποστήριξης
 
-To verify that ICU is enabled at all (`system-icu`, `small-icu`, or `full-icu`), simply checking the existence of `Intl` should suffice:
+Για να επιβεβαιώσετε ότι το ICU είναι ενεργό με οποιονδήποτε τρόπο (`system-icu`, `small-icu`, ή `full-icu`), ο απλός έλεγχος ύπαρξης του `Intl` είναι αρκετός:
 
 ```js
 const hasICU = typeof Intl === 'object';
