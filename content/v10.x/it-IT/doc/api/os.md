@@ -940,79 +940,79 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>Indica che la risorsa non è un socket.</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica che è richiesto un indirizzo di destinazione.</td>
   </tr>
   <tr>
-    <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td><code>WSAEDESTADDRREQ</code></td>
+    <td>Indica che la dimensione del messaggio è troppo grande.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>Indica il tipo di protocollo errato per il socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>Indica un'opzione di protocollo errata.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>Indica che il protocollo non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>Indica che il tipo di socket non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>Indica che l'operazione non è supportata.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>Indica che il protocollo family non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>Indica che la famiglia di indirizzi non è supportata.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica che l'indirizzo di rete è già in uso.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>Indica che l'indirizzo di rete non è disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica che la rete è inattiva.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica che il network non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica che la connessione di rete è stata ripristinata.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>Indica che la connessione è stata interrotta.</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
-    <td>Indicates that the connection has been reset by the peer.</td>
+    <td>Indica che la connessione è stata ripristinata dal peer.</td>
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indicates that there is no buffer space available.</td>
+    <td>Indica che non è disponibile ulteriore spazio sul buffer.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indicates that the socket is already connected.</td>
+    <td>Indica che il socket è già connesso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
