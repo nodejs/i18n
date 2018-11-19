@@ -523,16 +523,15 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>Inviato a un processo quando è trascorso un timer virtuale.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>Inviato a un processo quando è trascorso un timer di sistema.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>Inviato a un processo quando il terminale di controllo ha cambiato le sue dimensioni.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
