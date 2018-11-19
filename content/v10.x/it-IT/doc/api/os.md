@@ -708,39 +708,39 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
-    <td>Indicates that there are too many hard links to a file.</td>
+    <td>Indica che ci sono troppi collegamenti fisici a un file.</td>
   </tr>
   <tr>
     <td><code>EMSGSIZE</code></td>
-    <td>Indicates that the provided message is too long.</td>
+    <td>Indica che il messaggio fornito è troppo lungo.</td>
   </tr>
   <tr>
     <td><code>EMULTIHOP</code></td>
-    <td>Indicates that a multihop was attempted.</td>
+    <td>Indica che è stato tentato un multihop.</td>
   </tr>
   <tr>
     <td><code>ENAMETOOLONG</code></td>
-    <td>Indicates that the filename is too long.</td>
+    <td>Indica che il filename è troppo grande.</td>
   </tr>
   <tr>
     <td><code>ENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica che la rete è inattiva.</td>
   </tr>
   <tr>
     <td><code>ENETRESET</code></td>
-    <td>Indicates that the connection has been aborted by the network.</td>
+    <td>Indica che la connessione è stata interrotta dalla rete.</td>
   </tr>
   <tr>
     <td><code>ENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica che il network non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>ENFILE</code></td>
-    <td>Indicates too many open files in the system.</td>
+    <td>Indica troppi file aperti nel sistema.</td>
   </tr>
   <tr>
     <td><code>ENOBUFS</code></td>
-    <td>Indicates that no buffer space is available.</td>
+    <td>Indica che non è disponibile ulteriore spazio sul buffer.</td>
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
