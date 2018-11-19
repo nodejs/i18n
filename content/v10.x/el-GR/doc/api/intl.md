@@ -97,9 +97,9 @@ console.log(spanish.format(january));
 
 (αν έχουν οριστεί και οι 2 τρόποι, προτεραιότητα έχει η παράμετρος κονσόλας`--icu-data-dir`.)
 
-ICU is able to automatically find and load a variety of data formats, but the data must be appropriate for the ICU version, and the file correctly named. The most common name for the data file is `icudt5X[bl].dat`, where `5X` denotes the intended ICU version, and `b` or `l` indicates the system's endianness. Check ["ICU Data"](http://userguide.icu-project.org/icudata) article in the ICU User Guide for other supported formats and more details on ICU data in general.
+Το ICU μπορεί να εντοπίσει και να φορτώσει αυτόματα μια μεγάλη ποικιλία μορφών δεδομένων, αλλά τα δεδομένα θα πρέπει να είναι κατάλληλα για την έκδοση του ICU, και το αρχείο να έχει ονομαστεί κατάλληλα. Το πιο συχνό όνομα για τα αρχεία δεδομένων είναι το `icudt5X[bl].dat`, όπου το `5X` επισημαίνει την έκδοση ICU για την οποία προορίζεται, και το `b` ή το `l` που επισημαίνει το endianness του συστήματος. Διαβάστε το άρθρο ["ICU Data"](http://userguide.icu-project.org/icudata) στον Οδηγό Χρήστη του ICU για περισσότερες υποστηριζόμενες μορφές, καθώς και για περισσότερες λεπτομέρειες για τα δεδομένα του ICU γενικότερα.
 
-The [full-icu](https://www.npmjs.com/package/full-icu) npm module can greatly simplify ICU data installation by detecting the ICU version of the running `node` executable and downloading the appropriate data file. After installing the module through `npm i full-icu`, the data file will be available at `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
+Το στοιχείο [full-icu](https://www.npmjs.com/package/full-icu) του npm μπορεί να απλοποιήσει σημαντικά την εγκατάσταση των δεδομένων του ICU, ανιχνεύοντας την έκδοση του ICU που χρησιμοποιεί το εκτελέσιμο αρχείο `node` που εκτελείται, και κατεβάζοντας το αντίστοιχο αρχείο δεδομένων. After installing the module through `npm i full-icu`, the data file will be available at `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
 
 ### Embed the entire ICU (`full-icu`)
 
