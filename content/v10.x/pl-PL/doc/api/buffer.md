@@ -8,7 +8,7 @@ Prior to the introduction of [`TypedArray`], the JavaScript language had no mech
 
 With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
 
-Przypadki klasy `Buffer` są podobne do tablic liczb całkowitych, ale odpowiadają stałym w rozmiarze przydziałom pamięci surowej poza stertą V8. The size of the `Buffer` is established when it is created and cannot be changed.
+Przypadki klasy `Bufora` są podobne do tablic liczb całkowitych, ale odpowiadają stałym w rozmiarze przydziałom pamięci surowej poza stertą V8. The size of the `Buffer` is established when it is created and cannot be changed.
 
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
@@ -16,22 +16,22 @@ The `Buffer` class is within the global scope, making it unlikely that one would
 // Tworzy wypełniony zerem Buffer o długości 10.
 const buf1 = Buffer.alloc(10);
 
-// Tworzy wypełniony wartością zerową Buffer o długości 10, wypełniony przez 0x1.
+// Tworzy wypełniony wartością zerową Bufor o długości 10, wypełniony przez 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Tworzy niezainicjowany buffer o długości 10.
-// To jest szybsze niż Buffer wywołujący.alloc (), ale zwrócone
+// Tworzy niezainicjowany bufor o długości 10.
+// To jest szybsze niż Bufor wywołujący.alloc (), ale zwrócone
 // Instancja bufora może zawierać stare dane, które muszą być
 // zastąpione przy użyciu metody wypełnij() lub pisz().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Tworzy Buffer zawierający [0x1, 0x2, 0x3].
+// Tworzy Bufor zawierający [0x1, 0x2, 0x3].
 const buf4 = Buffer.from([1, 2, 3]);
 
-// Tworzy Buffer zawierający UTF-8 bajtów [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Tworzy Bufor zawierający UTF-8 bajtów [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Tworzy Buffer zawierający Latin-1 bajt [0x74, 0xe9, 0x73, 0x74].
+// Tworzy Bufor zawierający Latin-1 bajt [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
@@ -40,8 +40,8 @@ const buf6 = Buffer.from('tést', 'latin1');
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
 * Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* Przekazywanie ciągu znaków, tablicy lub `Bufora` ako pierwszego argumentu powoduje skopiowanie znakuprzekazał dane obiektu do `Bufora`.
+* Przekazanie [`ArrayBuffer`] lub [`SharedArrayBuffer`] zwraca `Bufor`, który dzieli przydzieloną pamięć z danym buforem tablicy.
 
 Because the behavior of `new Buffer()` is different depending on the type of the first argument, security and reliability issues can be inadvertently introduced into applications when argument validation or `Buffer` initialization is not performed.
 
