@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 W wersjach Node.js sprzed v6, `Buffer` przypadki były tworzone przy użyciu funkcji konstruktora `Buffer`, który różnie przydziela zwrócony `Buffer` w oparciu o dostarczone argumenty:
 
-* Przekazywanie liczby jako pierwszego argumentu do `Buffer()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Buffer` o określonym rozmiarze. The memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be initialized *manually* by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`.
+* Przekazywanie liczby jako pierwszego argumentu do `Buffer()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Buffer` o określonym rozmiarze. Pamięć przydzielona do takich przypadków `Buffer` jest *niezainicjowana* i *może zawierać wrażliwe dane*. Takie przypadki `Buffer` *muszą* być zainicjowane *ręcznie* przy użyciu albo [`buf.fill(0)`][`buf.fill()`] albo pisanie dokładnie do `Buffer`. Podczas gdy takie zachowanie jest *mierzone* na poprawę wydajności, doświadczenie developmentu pokazało, że wymagane jest bardziej wyraźne rozróżnienie między tworzeniem szybkiego, ale niezainicjowanego `Buffer` a tworzeniem wolniejszego, ale bezpieczniejszego `Buffer`.
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
