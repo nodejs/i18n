@@ -718,11 +718,11 @@ added: v0.9.4
 
 El método `readable.read()` saca algunos datos del buffer interno y los devuelve. Si no hay datos disponibles para leer, se devuelve `null`. Por defecto, los datos se devolverán como un objeto de `Buffer`, a menos que se haya especificado una codificación utilizando el método `readable.setEncoding()` o el stream se opere en el modo objeto.
 
-The optional `size` argument specifies a specific number of bytes to read. If `size` bytes are not available to be read, `null` will be returned *unless* the stream has ended, in which case all of the data remaining in the internal buffer will be returned.
+El argumento opcional `size` especifica un número determinado de bytes a leer. Si los bytes de `size` no están disponibles para ser leídos, se devolverá `null` *a menos que* el stream haya terminado, en cuyo caso se devolverán los datos restantes en el buffer interno.
 
-If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
+Si el argumento `size` no se especifica, se devolverán todos los datos en el buffer interno.
 
-The `readable.read()` method should only be called on Readable streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
+El método `readable.read()` solo debe llamarse en streams Legibles que operan en el modo pausado. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
 
 ```js
 const readable = getReadableStreamSomehow();
