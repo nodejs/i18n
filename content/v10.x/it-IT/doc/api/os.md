@@ -486,7 +486,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>Inviato per dare istruzioni al sistema operativo di continuare un processo in sospeso.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
