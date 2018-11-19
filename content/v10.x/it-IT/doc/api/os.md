@@ -820,46 +820,44 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indicates no such device or address.</td>
+    <td>Indica che non vi è alcun dispositivo o indirizzo di questo tipo.</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indicates that an operation is not supported on the socket.
-    Note that while `ENOTSUP` and `EOPNOTSUPP` have the same value on Linux,
-    according to POSIX.1 these error values should be distinct.)</td>
+    <td>Indica che un operazione non è supportata sul socket.
+    Ricorda che mentre `ENOTSUP` e` EOPNOTSUPP` hanno lo stesso valore su Linux, secondo POSIX.1 questi valori di errore dovrebbero essere distinti.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>Indica che un valore è troppo grande per essere memorizzato nel tipo di dati forniti.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>Indica che l'operazione non è consentita.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>Indica una pipe danneggiata.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>Indica un errore di protocollo.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>Indica che un protocollo non è supportato.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>Indica il tipo sbagliato di protocollo per un socket.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>Indica che i risultati sono troppo grandi.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>Indica che il file system è di sola lettura.</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
