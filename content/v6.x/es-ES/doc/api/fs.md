@@ -634,7 +634,7 @@ fs.exists('/etc/passwd', (exists) => {
 });
 ```
 
-**Note that the parameter to this callback is not consistent with other Node.js callbacks.** Normally, the first parameter to a Node.js callback is an `err` parameter, optionally followed by other parameters. The `fs.exists()` callback has only one boolean parameter. Esta es una razón por la que se recomienda a `fs.access()` en lugar de `fs.exists()`.
+**Note that the parameter to this callback is not consistent with other Node.js callbacks.** Normally, the first parameter to a Node.js callback is an `err` parameter, optionally followed by other parameters. El callback `fs.exists()` solo tiene un parámetro booleano. Esta es una razón por la que se recomienda a `fs.access()` en lugar de `fs.exists()`.
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
