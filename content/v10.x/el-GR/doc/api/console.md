@@ -1,10 +1,10 @@
-# Console
+# Κονσόλα
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+Η ενότητα `console` παρέχει μια απλή κονσόλα αποσφαλμάτωσης που είναι παρόμοια με τον μηχανισμό κονσόλας της JavaScript που παρέχεται από τους περιηγητές.
 
 The module exports two specific components:
 
