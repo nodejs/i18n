@@ -664,7 +664,7 @@ added: v0.9.4
 * `options` {Object} Pipe options 
   * `end` {boolean} Finaliza el escritor cuando termina el lector. Por defecto es `true`.
 
-The `readable.pipe()` method attaches a [Writable](#stream_class_stream_writable) stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [Writable](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
+El método `readable.pipe()` adjunta un stream [Escribible](#stream_class_stream_writable) al `readable`, ocasionando el cambio automático al modo fluido y el envío de todos sus datos al adjunto [Escribible](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
 
 The following example pipes all of the data from the `readable` into a file named `file.txt`:
 
