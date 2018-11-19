@@ -461,9 +461,9 @@ Aunque `readable._readableState.flowing` sea `false`, pueden acumularse datos de
 
 La API del stream Legible ha evolucionado a través de varias versiones de Node.js y proporciona múltiples métodos para consumir datos de stream. En general, los desarrolladores deben elegir *uno* de los métodos para consumir datos y *nunca deberían* utilizar múltiples métodos para consumir datos desde un solo stream.
 
-Use of the `readable.pipe()` method is recommended for most users as it has been implemented to provide the easiest way of consuming stream data. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.pause()`/`readable.resume()` APIs.
+Para la mayoría de los usuarios se recomienda utilizar el método `readable.pipe()`, ya que se ha implementado para proporcionar la manera más sencilla de consumir datos de stream. Los desarrolladores que requieran un control más preciso sobre la transferencia y generación de datos pueden utilizar las APIs [`EventEmitter`][] y `readable.pause()`/`readable.resume()`.
 
-#### Class: stream.Readable
+#### Clase: stream.Readable
 
 <!-- YAML
 added: v0.9.4
@@ -471,7 +471,7 @@ added: v0.9.4
 
 <!--type=class-->
 
-##### Event: 'close'
+##### Evento: 'close'
 
 <!-- YAML
 added: v0.9.4
