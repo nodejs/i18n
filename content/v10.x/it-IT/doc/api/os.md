@@ -684,27 +684,27 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
-    <td>Indicates that an invalid argument was provided.</td>
+    <td>Indica che è stato fornito un argomento non valido.</td>
   </tr>
   <tr>
     <td><code>EIO</code></td>
-    <td>Indicates an otherwise unspecified I/O error.</td>
+    <td>Indica un errore di I/O altrimenti non specificato.</td>
   </tr>
   <tr>
     <td><code>EISCONN</code></td>
-    <td>Indicates that the socket is connected.</td>
+    <td>Indica che il socket è connesso.</td>
   </tr>
   <tr>
     <td><code>EISDIR</code></td>
-    <td>Indicates that the path is a directory.</td>
+    <td>Indica che il percorso è una directory.</td>
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
-    <td>Indicates too many levels of symbolic links in a path.</td>
+    <td>Indica troppi livelli di collegamenti simbolici in un percorso.</td>
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica che ci sono troppi file aperti.</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
