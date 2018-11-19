@@ -490,20 +490,19 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>Inviato per dare istruzioni al sistema operativo di interrompere un processo.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>Inviato a un processo per richiedergli di fermarsi.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>Inviato per indicare quando un utente desidera interrompere un processo.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>Inviato a un processo quando viene letto dal TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
@@ -512,7 +511,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>Inviato a un processo quando un socket ha dati urgenti da leggere.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
