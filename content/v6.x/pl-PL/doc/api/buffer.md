@@ -78,13 +78,13 @@ $ node --zero-fill-buffers
 
 ### Co sprawia `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
 
-Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Używając `Bufora` utworzonego przez [`Buffer.allocUnsafe()`] bez *kompletnego* nadpisywania pamięci może doprowadzić do wycieku tych staryc danych kiedy pamięć `Bufora` jest odczytywana.
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+Chociaż istnieją wyraźne zalety związane z wydajnością korzystania z [` Buffer.allocUnsafe()`], *należy* zachować szczególną ostrożność, aby uniknąć wprowadzenia naruszenia bezpieczeństwa do aplikacji.
 
-## Buffers and Character Encodings
+## Bufory i Kodowanie Znaków
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64 or even Hex-encoded data. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
+Przypadki `Bufora` są powszechnie używane do reprezentowania sekwencji zakodowanych znaków takich jak UTF-8, UCS2, Base64 lub nawet dane zakodowane przy użyciu. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
 
 Przykład:
 
@@ -214,9 +214,9 @@ deprecated: v6.0.0
 
 > Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `tablica` {integer[]} Tablica bajtów do skopiowania.
 
-Allocates a new `Buffer` using an `array` of octets.
+Przydziela nowy `Bufor` używając `tablicy` oktetów.
 
 Przykład:
 
@@ -231,7 +231,7 @@ const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Stabilność: 0 - Przestarzałe: w zamian Użyj [`Buffer.from(buffer)`].
 
 * `buffer` {Buffer} An existing `Buffer` to copy data from.
 
@@ -566,7 +566,7 @@ added: v5.10.0
 
 * `array` {Array}
 
-Allocates a new `Buffer` using an `array` of octets.
+Przydziela nowy `Bufor` używając `tablicy` oktetów.
 
 Przykład:
 
