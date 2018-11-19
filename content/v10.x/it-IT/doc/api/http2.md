@@ -536,15 +536,15 @@ Inviare un frame `ALTSVC` con un ID di flusso specifico indica che il servizio a
 
 L'`alt` e la stringa di origine *devono* contenere solo byte ASCII e sono interpretati rigorosamente come una sequenza di byte ASCII. Il valore speciale `'clear'` può essere passato per cancellare qualsiasi servizio alternativo precedentemente impostato per un dato dominio.
 
-When a string is passed for the `originOrStream` argument, it will be parsed as a URL and the origin will be derived. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
+Quando una stringa viene passata per l'argomento `originOrStream`, verrà analizzata come un URL e l'origine verrà derivata. Ad esempio, l'origine dell'URL HTTP `'https://example.org/foo/bar'` è la stringa ASCII `'https://example.org'`. Un errore verrà generato se la stringa data non può essere analizzata come URL o se non è possibile derivare un'origine valida.
 
-A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
+Un oggetto `URL`, o qualsiasi oggetto con una proprietà `origin`, può essere passato come `originOrStream`, nel qual caso il valore dell'`origin` sarà utilizzata. Il valore della proprietà `origin` *deve* essere un'origine ASCII correttamente serializzata.
 
-#### Specifying alternative services
+#### Specifica di servizi alternativi
 
-The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
+Il formato del parametro `alt` è rigorosamente definito da [RFC 7838](https://tools.ietf.org/html/rfc7838) come una stringa ASCII contenente un elenco delimitato da virgole di protocolli "alternativi" associati ad un host ed una porta specifici.
 
-For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. The host and port *must* be contained within the quote (`"`) characters.
+Ad esempio, il valore `'h2 = "example.org:81"'` indica che il protocollo HTTP/2 è disponibile sull'host `'example.org'` sulla porta TCP/IP 81. L'host e la porta *devono* essere contenuti all'interno di virgolette (`"`).
 
 Multiple alternatives may be specified, for instance: `'h2="example.org:81",
 h2=":82"'`.
