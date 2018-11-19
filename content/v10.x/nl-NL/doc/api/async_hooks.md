@@ -154,7 +154,7 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 Schakel de callbacks uit om een gegeven `AsyncHook` instantie uit de globale groep van `AsyncHook` callbacks uit te voeren. Zodra een haak is uitgeschakeld, zal het niet opnieuw opgeroepen worden totdat het weer is ingeschakeld.
 
-Voor API constistentie zal `disable()` ook de `AsyncHook` instantie retourneren.
+Voor API consistentie zal `disable()` ook de `AsyncHook` instantie retourneren.
 
 #### Hook Callbacks
 
@@ -353,7 +353,7 @@ roept de volgende callbacks op:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
-  promise resolve 5      # correspondeerd om (true) op te lossen
+  promise resolve 5      # correspondeert om (true) op te lossen
 init for PROMISE with id 6, trigger id: 5  # de Belofte geretourneerd door dan()
   voor 6               # de dan() callback wordt ingevoerd
   belofte oplossing 6      # de dan() callback lost de belofte op door
@@ -393,7 +393,7 @@ const server = net.createServer(function onConnection(conn) {
 
 }).listen(port, function onListening() {
   // Retourneert de ID van een TickObject (i.e. process.nextTick()) want alle
-  // callbacks doorgegeven om te  .luisteren() zitten ingepakt in een nextTick().
+  // callbacks doorgegeven om te  .listen() zitten ingepakt in een nextTick().
   async_hooks.executionAsyncId();
 });
 ```
@@ -421,7 +421,7 @@ const server = net.createServer((conn) => {
 
 Observeer dat belofte contexten standaard geen precieze `triggerAsyncId`s krijgen. Zie de sectie over [promise execution tracking](#async_hooks_promise_execution_tracking).
 
-## Belofteuitvoering tracering
+## Belofte uitvoering tracering
 
 Als standaard, worden belofte uitvoeringen geen `asyncId`s toegewezen vanwege de relatieve dure aard van de [belofte introspectie API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) verschaft door de V8. Dit betekent dat programma's die gebruik maken van beloften of `async`/`await` geen correcte uitvoering krijgen en standaard id's triggeren voor belofte callback contexten.
 
