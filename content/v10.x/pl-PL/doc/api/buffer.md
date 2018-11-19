@@ -75,11 +75,11 @@ $ node --zero-fill-buffers
 
 ### Co sprawia `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
 
-Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Używając `Bufora` utworzonego przez [`Buffer.allocUnsafe()`] bez *kompletnego* nadpisywania pamięci może doprowadzić do wycieku tych staryc danych kiedy pamięć `Bufora` jest odczytywana.
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+Chociaż istnieją wyraźne zalety związane z wydajnością korzystania z [` Buffer.allocUnsafe()`], *należy* zachować szczególną ostrożność, aby uniknąć wprowadzenia naruszenia bezpieczeństwa do aplikacji.
 
-## Buffers and Character Encodings
+## Bufory i Kodowanie Znaków
 
 <!-- YAML
 changes:
@@ -235,9 +235,9 @@ changes:
 
 > Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `tablica` {integer[]} Tablica bajtów do skopiowania.
 
-Allocates a new `Buffer` using an `array` of octets.
+Przydziela nowy `Bufor` używając `tablicy` oktetów.
 
 ```js
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
@@ -313,7 +313,7 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Stabilność: 0 - Przestarzałe: w zamian Użyj [`Buffer.from(buffer)`].
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
 
@@ -644,7 +644,7 @@ added: v5.10.0
 
 * `array` {integer[]}
 
-Allocates a new `Buffer` using an `array` of octets.
+Przydziela nowy `Bufor` używając `tablicy` oktetów.
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
