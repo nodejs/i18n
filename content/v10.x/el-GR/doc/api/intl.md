@@ -71,10 +71,10 @@ const english = new Intl.DateTimeFormat('en', { month: 'long' });
 const spanish = new Intl.DateTimeFormat('es', { month: 'long' });
 
 console.log(english.format(january));
-// Prints "January"
+// Τυπώνει "January"
 console.log(spanish.format(january));
-// Prints "M01" on small-icu
-// Should print "enero"
+// Τυπώνει "M01" on small-icu
+// Θα έπρεπε να τυπώσει "enero"
 ```
 
 Αυτός ο τρόπος παρέχει μια καλή ισορροπία μεταξύ χαρακτηριστικών και μέγεθος αρχείου, και είναι η προεπιλεγμένη συμπεριφορά αν δεν χρησιμοποιηθεί κάποια επιλογή του `--with-intl`. Τα αρχεία που διανέμονται επίσημα, μεταγλωττίζονται με αυτόν τον τρόπο.
