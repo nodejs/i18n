@@ -113,13 +113,13 @@ console.log(spanish.format(january));
 const hasICU = typeof Intl === 'object';
 ```
 
-Alternatively, checking for `process.versions.icu`, a property defined only when ICU is enabled, works too:
+Εναλλακτικά, ο έλεγχος του `process.versions.icu`, μια ιδιότητα που ορίζεται μόνο όταν έχει ενεργοποιηθεί το ICU, είναι επίσης ένας αποδεκτός τρόπος:
 
 ```js
 const hasICU = typeof process.versions.icu === 'string';
 ```
 
-To check for support for a non-English locale (i.e. `full-icu` or `system-icu`), [`Intl.DateTimeFormat`][] can be a good distinguishing factor:
+Για να ελέγξετε αν υπάρχει υποστήριξη για μια γλώσσα εκτός των Αγγλικών (π.χ. `full-icu` ή `system-icu`), το [`Intl.DateTimeFormat`][] είναι ένας πολύ καλός τρόπος:
 
 ```js
 const hasFullICU = (() => {
@@ -133,7 +133,7 @@ const hasFullICU = (() => {
 })();
 ```
 
-For more verbose tests for `Intl` support, the following resources may be found to be helpful:
+Για περισσότερες και αναλυτικότερες δοκιμές για την υποστήριξη του `Intl`, οι παρακάτω πόροι μπορεί να βοηθήσουν:
 
-- [btest402](https://github.com/srl295/btest402): Generally used to check whether Node.js with `Intl` support is built correctly.
-- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): ECMAScript's official conformance test suite includes a section dedicated to ECMA-402.
+- [btest402](https://github.com/srl295/btest402): Χρησιμοποιείται για να ελέγξουμε αν έχει μεταγλωττιστεί σωστά το Node.js για το `Intl`.
+- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): Η επίσημη σουίτα δοκιμών συμμόρφωσης του ECMAScript περιλαμβάνει μια ενότητα αφιερωμένη στο ECMA-402.
