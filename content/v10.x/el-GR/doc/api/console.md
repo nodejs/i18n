@@ -92,7 +92,7 @@ changes:
   * `ignoreErrors` {boolean} Αγνοεί τα σφάλματα όταν γίνεται εγγραφή στις υποκείμενες ροές. **Προεπιλογή:** `true`.
   * `colorMode` {boolean|string} Ορίζει την υποστήριξη χρωμάτων για αυτό το στιγμιότυπο `Console`. Αν οριστεί ως `true`, επιτρέπει τον χρωματισμό κατά την επιθεώρηση τιμών, ενώ αν οριστεί ως `'auto'` ορίσει την υποστήριξη χρώματος στην τιμή της ιδιότητας `isTTY` και η τιμή του επιστρέφεται από το `getColorDepth()` στην αντίστοιχη ροή του. **Προεπιλογή:** `'auto'`.
 
-Δημιουργεί ένα νέο `Console` με μια ή δύο εγγράψιμες ροές. Το `stdout` είναι μια εγγράψιμη ροή που τυπώνει την έξοδο καταγραφής ή πληροφοριών. Το `stderr` χρησιμοποιείται για έξοδο προειδοποιήσεων ή σφαλμάτων. If `stderr` is not provided, `stdout` is used for `stderr`.
+Δημιουργεί ένα νέο `Console` με μια ή δύο εγγράψιμες ροές. Το `stdout` είναι μια εγγράψιμη ροή που τυπώνει την έξοδο καταγραφής ή πληροφοριών. Το `stderr` χρησιμοποιείται για έξοδο προειδοποιήσεων ή σφαλμάτων. Αν δεν παρέχεται έξοδος `stderr`, τότε χρησιμοποιείται η έξοδος `stdout` και για το `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
@@ -105,7 +105,7 @@ logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+Το καθολικό `console` είναι ένα ειδικό στιγμιότυπο `Console` του οποίου η έξοδος γίνεται στο [`process.stdout`][] και στο [`process.stderr`][]. Είναι ισοδύναμο της παρακάτω κλήσης:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -123,10 +123,10 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `value` {any} Οποιαδήποτε τιμή που είναι πιθανώς αληθής.
+* `...message` {any} Όλες οι παράμετροι, εκτός από το `value`, χρησιμοποιούνται ως μήνυμα σφάλματος.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+Ένας απλός έλεγχος ισχυρισμού για το αν το `value` είναι αληθές. Αν δεν είναι, καταγράφεται ως `Assertion failed`. Αν παρέχεται, το σφάλμα `message` μορφοποιείται με τη χρήση του [`util.format()`][] μεταφέροντας όλες τις παραμέτρους του μηνύματος. Η έξοδος χρησιμοποιείται ως το μήνυμα σφάλματος.
 
 ```js
 console.assert(true, 'does nothing');
@@ -135,7 +135,7 @@ console.assert(false, 'Whoops %s work', 'didn\'t');
 // Assertion failed: Whoops didn't work
 ```
 
-Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
+Η κλήση του `console.assert()` με έναν λάθος ισχυρισμό, θα προκαλέσει την εκτύπωση του `message` στην κονσόλα, χωρίς να διακοπεί η εκτέλεση του κώδικα που ακολουθεί.
 
 ### console.clear()
 
