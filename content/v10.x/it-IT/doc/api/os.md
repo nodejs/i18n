@@ -466,8 +466,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>Inviato a un processo quando ha tentato di scrivere su una pipe    disconnessa.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
