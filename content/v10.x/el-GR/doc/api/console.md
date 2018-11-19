@@ -6,14 +6,14 @@
 
 Η ενότητα `console` παρέχει μια απλή κονσόλα αποσφαλμάτωσης που είναι παρόμοια με τον μηχανισμό κονσόλας της JavaScript που παρέχεται από τους περιηγητές.
 
-The module exports two specific components:
+Η ενότητα εξάγει δύο συγκεκριμένα μέρη:
 
-* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Μια κλάση `Console` με μεθόδους όπως τα `console.log()`, `console.error()` και `console.warn()` που μπορούν να χρησιμοποιηθούν για να γράψουν σε οποιαδήποτε ροή της Node.js.
+* Ένα καθολικό στιγμιότυπο του `console` που έχει ρυθμιστεί για να γράφει στα [`process.stdout`][] και [`process.stderr`][]. Το καθολικό `console` μπορεί να χρησιμοποιείται και χωρίς να γίνει κλήση του `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Προσοχή***: Οι μέθοδοι αντικειμένων της καθολικής κονσόλας δεν είναι ούτε συνεπώς σε συγχρονισμό όπως τα API των περιηγητών που παρομοιάζουν, ούτε είναι συνεπώς ασύγχρονα όπως όλες οι άλλες ροές της Node.js. Δείτε την [σημείωση για το I/O των διαδικασιών](process.html#process_a_note_on_process_i_o) για περισσότερες πληροφορίες.
 
-Example using the global `console`:
+Παράδειγμα χρήσης του καθολικού `console`:
 
 ```js
 console.log('hello world');
@@ -28,7 +28,7 @@ console.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Example using the `Console` class:
+Παράδειγμα χρησιμοποιώντας την κλάση `Console`:
 
 ```js
 const out = getStreamSomehow();
