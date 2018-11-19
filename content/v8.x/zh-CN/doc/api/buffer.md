@@ -1084,7 +1084,7 @@ console.log(b.toString());
 
 如果 `fill()` 操作的最后一次写入的是一个多字节字符，则只有能够填入 `buf` 的最前面字节会被写入。
 
-Example: Fill a `Buffer` with a two-byte character
+例如：用两个字节的字符填充 `Buffer`。
 
 ```js
 // Prints: <Buffer c8 a2 c8>
