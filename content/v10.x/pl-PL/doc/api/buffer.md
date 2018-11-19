@@ -47,7 +47,7 @@ Because the behavior of `new Buffer()` is different depending on the type of the
 
 To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*Programiści powinni przeprowadzić migrację wszystkich istniejących zastosowań konstruktorów `nowego Bufora()` do jednego z tych nowych interfejsów API.*
 
 * [`Buffer.from(array)`] returns a new `Buffer` that *contains a copy* of the provided octets.
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
