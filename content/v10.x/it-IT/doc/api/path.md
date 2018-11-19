@@ -12,36 +12,36 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-L'operazione predefinita del modulo `path` varia in base al sistema operativo su cui è in esecuzione un'applicazione Node.js. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+L'operazione predefinita del modulo `path` varia in base al sistema operativo su cui è in esecuzione un'applicazione Node.js. In particolare, quando si esegue su un sistema operativo Windows, il modulo `path` assumerà che i percorsi in stile Windows vengano utilizzati.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+Ad esempio, se si utilizza la funzione `path.basename()` con il percorso file Windows `C:\temp\myfile.html`, si otterranno risultati diversi durante l'esecuzione su POSIX rispetto a quando viene eseguito Su Windows:
 
-On POSIX:
+Su POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+Su Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Per ottenere risultati consistenti quando si utilizzano i file path Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
 
-On POSIX and Windows:
+Su POSIX e Windows:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Per ottenere risultati consistenti quando si utilizzano i file path Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
 
-On POSIX and Windows:
+Su POSIX e Windows:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
