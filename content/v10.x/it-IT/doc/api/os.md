@@ -470,7 +470,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>Inviato a un processo quando trascorre un timer di sistema.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
@@ -506,8 +506,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>Inviato a un processo quando si scrive alla TTY mentre è in    backgrond.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
@@ -1100,7 +1099,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
-    <td>Indicates that the procedure call table is invalid.</td>
+    <td>Indica che la tabella di procedura di chiamata non è valida.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
@@ -1168,7 +1167,7 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
   </tr>
 </table>
 
-### libuv Constants
+### Costanti libuv
 
 <table>
   <tr>
