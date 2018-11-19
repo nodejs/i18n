@@ -658,9 +658,9 @@ reader.on('end', () => {
 });
 ```
 
-One important caveat is that if the Readable stream emits an error during processing, the Writable destination *is not closed* automatically. If an error occurs, it will be necessary to *manually* close each stream in order to prevent memory leaks.
+Una advertencia importancia es que se el stream Legible emite un error durante el procesamiento, el destino del Escribible *no se cierra* automáticamente. Si ocurre un error, será necesario cerrar *manualmente* cada stream en orden, para evitar fugas de memoria.
 
-*Note*: The [`process.stderr`][] and [`process.stdout`][] Writable streams are never closed until the Node.js process exits, regardless of the specified options.
+*Nota*: Los streams Escribibles [`process.stderr`][] y [`process.stdout`][] nunca se cierran hasta que el proceso de Node.js se termina, sin importar las opciones especificadas.
 
 ##### readable.read([size])
 
