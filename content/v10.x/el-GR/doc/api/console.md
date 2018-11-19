@@ -143,9 +143,9 @@ console.assert(false, 'Whoops %s work', 'didn\'t');
 added: v8.3.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Όταν το `stdout` είναι ένα TTY, η κλήση του `console.clear()` θα προσπαθήσει να εκκαθαρίσει ολόκληρο το TTY. Όταν το `stdout` δεν είναι ένα TTY, αυτή η μέθοδος δεν κάνει τίποτα.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+Η ακριβής λειτουργία του `console.clear()` μπορεί να διαφοροποιείται μεταξύ λειτουργικών συστημάτων και τύπων κονσόλας. Για τις περισσότερες διανομές Linux, το `console.clear()` λειτουργεί παρόμοια με την κλήση της εντολής κελύφους `clear`. Στα Windows, το `console.clear()` θα εκκαθαρίσει μόνο την έξοδο της τρέχουσας προβολής τερματικού του Node.js.
 
 ### console.count([label='default'])
 
@@ -153,9 +153,9 @@ The specific operation of `console.clear()` can vary across operating systems an
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} Η ετικέτα προβολής για τον μετρητή. **Προεπιλογή:** `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Διατηρεί έναν εσωτερικό μετρητή ειδικά για το `label` και τυπώνει στο `stdout` πόσες φορές κλήθηκε το `console.count()` με το συγκεκριμένο `label`.
 
 <!-- eslint-skip -->
 
@@ -187,9 +187,9 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} Η ετικέτα προβολής για τον μετρητή. **Προεπιλογή:** `'default'`.
 
-Resets the internal counter specific to `label`.
+Μηδενίζει τον εσωτερικό μετρητή του `label`.
 
 <!-- eslint-skip -->
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+Η συνάρτηση `console.debug()` είναι ένα ψευδώνυμο για το [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -229,8 +229,8 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
+  * `showHidden` {boolean} Αν είναι `true`, τότε θα εμφανιστούν και οι ιδιότητες συμβόλων και μη-καταμέτρησης του αντικειμένου. **Προεπιλογή:** `false`.
+  * `depth` {number} Ενημερώνει το [`util.inspect()`][] πόσες φορές να ανατρέξει κατά την μορφοποίηση του αντικειμένου. Αυτό είναι χρήσιμο για την επιθεώρηση μεγάλων και μπερδεμένων αντικειμένων. To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
 Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
