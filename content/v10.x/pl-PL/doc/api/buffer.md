@@ -56,9 +56,9 @@ To make the creation of `Buffer` instances more reliable and less error-prone, t
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+Przypadki `Bufora` zwrócone przez [`Buffer.allocUnsafe()`] *mogą* być przydzielone ze wspólnej puli pamięci wewnętrznej, jeśli `rozmiar` jest mniejszy lub równy połowie [`Buffer.poolSize`]. Przypadki zwrócone przez [`Buffer.allocUnsafeSlow()`] *nigdy* nie używają dzielonej puli wewnętrznej pamięci.
 
-### The `--zero-fill-buffers` command line option
+### Opcja linii polecenia `--zero-fill-buffers`
 
 <!-- YAML
 added: v5.10.0
