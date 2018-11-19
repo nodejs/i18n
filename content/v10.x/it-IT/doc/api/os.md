@@ -764,59 +764,59 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
-    <td>Indications that a link has been severed.</td>
+    <td>Indicazione che un collegamento è stato interrotto.</td>
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indicates that there is not enough space.</td>
+    <td>Indica che non c'è abbastanza spazio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indicates that there is no message of the desired type.</td>
+    <td>Indica che non vi è alcun messaggio del tipo desiderato.</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indicates that a given protocol is not available.</td>
+    <td>Indica che un determinato protocollo non è disponibile.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indicates that there is no space available on the device.</td>
+    <td>Indica che non c'è spazio disponibile sul dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
-    <td>Indicates that there are no stream resources available.</td>
+    <td>Indica che non ci sono risorse di streaming disponibili.</td>
   </tr>
   <tr>
     <td><code>ENOSTR</code></td>
-    <td>Indicates that a given resource is not a stream.</td>
+    <td>Indica che una determinata risorsa non è uno stream.</td>
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indicates that a function has not been implemented.</td>
+    <td>Indica che una funzione non è stata implementata.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica che il socket non è connesso.</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indicates that the path is not a directory.</td>
+    <td>Indica che il percorso non è una directory.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica che la directory non è vuota.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indicates that the given item is not a socket.</td>
+    <td>Indica che l'elemento considerato non è un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indicates that a given operation is not supported.</td>
+    <td>Indica che una determinata operazione non è supportata.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indicates an inappropriate I/O control operation.</td>
+    <td>Indica un'operazione di controllo I/O inappropriata.</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
