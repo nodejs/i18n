@@ -515,12 +515,11 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>Inviato a un processo quando ha superato il limite di utilizzo della CPU.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>Inviato a un processo quando cresce un file più grande del massimo    consentito.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
