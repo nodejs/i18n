@@ -89,13 +89,13 @@ console.log(spanish.format(january));
     env NODE_ICU_DATA=/some/directory node
     ```
 
-- The [`--icu-data-dir`][] CLI parameter:
+- Παράμετρος Κονσόλας [`--icu-data-dir`][]:
     
     ```shell
     node --icu-data-dir=/some/directory
     ```
 
-(If both are specified, the `--icu-data-dir` CLI parameter takes precedence.)
+(αν έχουν οριστεί και οι 2 τρόποι, προτεραιότητα έχει η παράμετρος κονσόλας`--icu-data-dir`.)
 
 ICU is able to automatically find and load a variety of data formats, but the data must be appropriate for the ICU version, and the file correctly named. The most common name for the data file is `icudt5X[bl].dat`, where `5X` denotes the intended ICU version, and `b` or `l` indicates the system's endianness. Check ["ICU Data"](http://userguide.icu-project.org/icudata) article in the ICU User Guide for other supported formats and more details on ICU data in general.
 
