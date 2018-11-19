@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+Η κλάση `Console` μπορεί να χρησιμοποιηθεί για τη δημιουργία ενός απλού καταγραφέα με ρυθμιζόμενες ροές εξόδου, και μπορεί να χρησιμοποιηθεί είτε το `require('console').Console` ή το `console.Console` (ή οι αδόμητες αντιστοιχίες τους) για να αποκτηθεί πρόσβαση σε αυτόν:
 
 ```js
 const { Console } = require('console');
@@ -89,10 +89,10 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} Αγνοεί τα σφάλματα όταν γίνεται εγγραφή στις υποκείμενες ροές. **Προεπιλογή:** `true`.
+  * `colorMode` {boolean|string} Ορίζει την υποστήριξη χρωμάτων για αυτό το στιγμιότυπο `Console`. Αν οριστεί ως `true`, επιτρέπει τον χρωματισμό κατά την επιθεώρηση τιμών, ενώ αν οριστεί ως `'auto'` ορίσει την υποστήριξη χρώματος στην τιμή της ιδιότητας `isTTY` και η τιμή του επιστρέφεται από το `getColorDepth()` στην αντίστοιχη ροή του. **Προεπιλογή:** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Δημιουργεί ένα νέο `Console` με μια ή δύο εγγράψιμες ροές. Το `stdout` είναι μια εγγράψιμη ροή που τυπώνει την έξοδο καταγραφής ή πληροφοριών. Το `stderr` χρησιμοποιείται για έξοδο προειδοποιήσεων ή σφαλμάτων. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
