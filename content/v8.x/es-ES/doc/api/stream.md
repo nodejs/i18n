@@ -713,10 +713,10 @@ Return the value of `highWaterMark` passed when constructing this `Readable`.
 added: v0.9.4
 -->
 
-* `size` {number} Optional argument to specify how much data to read.
+* `size` {number} Argumento opcional para especificar la cantidad de datos a leer.
 * Return {string|Buffer|null}
 
-The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
+El método `readable.read()` saca algunos datos del buffer interno y los devuelve. Si no hay datos disponibles para leer, se devuelve `null`. Por defecto, los datos se devolverán como un objeto de `Buffer`, a menos que se haya especificado una codificación utilizando el método `readable.setEncoding()` o el stream se opere en el modo objeto.
 
 The optional `size` argument specifies a specific number of bytes to read. If `size` bytes are not available to be read, `null` will be returned *unless* the stream has ended, in which case all of the data remaining in the internal buffer will be returned.
 
