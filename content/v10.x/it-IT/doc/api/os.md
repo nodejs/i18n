@@ -1020,36 +1020,35 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
-    <td>Indicates that data cannot be sent after the socket has been
-    shutdown.</td>
+    <td>Indica che i dati non possono essere inviati dopo che il socket è stato    spento.</td>
   </tr>
   <tr>
     <td><code>WSAETOOMANYREFS</code></td>
-    <td>Indicates that there are too many references.</td>
+    <td>Indica che ci sono troppi riferimenti.</td>
   </tr>
   <tr>
     <td><code>WSAETIMEDOUT</code></td>
-    <td>Indicates that the connection has timed out.</td>
+    <td>Indica che la connessione è scaduta.</td>
   </tr>
   <tr>
     <td><code>WSAECONNREFUSED</code></td>
-    <td>Indicates that the connection has been refused.</td>
+    <td>Indica che la connessione è stata rifiutata.</td>
   </tr>
   <tr>
     <td><code>WSAELOOP</code></td>
-    <td>Indicates that a name cannot be translated.</td>
+    <td>Indica che un nome non può essere tradotto.</td>
   </tr>
   <tr>
     <td><code>WSAENAMETOOLONG</code></td>
-    <td>Indicates that a name was too long.</td>
+    <td>Indica che il nome era troppo lungo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTDOWN</code></td>
-    <td>Indicates that a network host is down.</td>
+    <td>Indica che un host di rete è inattivo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indicates that there is no route to a network host.</td>
+    <td>Indica che non esiste una rotta verso un host di rete.</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
