@@ -73,7 +73,7 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### Co sprawia `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
+### Co czyni `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
 
 Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Używając `Bufora` utworzonego przez [`Buffer.allocUnsafe()`] bez *kompletnego* nadpisywania pamięci może doprowadzić do wycieku tych staryc danych kiedy pamięć `Bufora` jest odczytywana.
 
@@ -269,10 +269,10 @@ changes:
 > Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `byteOffset` {integer} Indeks pierwszego bajtu do pokazania. **Default:** `0`.
+* `length` {integer} Liczba bajtów do pokazania. **Default:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+To umożliwia podgląd [`ArrayBuffer`] lub [`SharedArrayBuffer`] bez kopiowania zasadniczej pamięci. Na przykład po przekazaniu odwołania do własności `.bufora` przypadku [`TypedArray`], nowo utworzony `Bufora` będzie dzielił tę samą przydzieloną pamięc co [`TypedArray`].
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
@@ -317,7 +317,7 @@ changes:
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Kopiuje przekazane dane `bufora` do nowego przypadku `Bufora`.
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -660,8 +660,8 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `byteOffset` {integer} Indeks pierwszego bajtu do pokazania. **Default:** `0`.
+* `length` {integer} Liczba bajtów do pokazania. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
@@ -704,7 +704,7 @@ added: v5.10.0
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Kopiuje przekazane dane `bufora` do nowego przypadku `Bufora`.
 
 ```js
 const buf1 = Buffer.from('buffer');
