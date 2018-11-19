@@ -17,15 +17,15 @@
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Τυπώνει: hello world, στο stdout
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Τυπώνει: hello world, στο stdout
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+// Τυπώνει: [Error: Whoops, something bad happened], στο stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Τυπώνει: Danger Will Robinson! Danger!, στο stderr
 ```
 
 Παράδειγμα χρησιμοποιώντας την κλάση `Console`:
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Prints: hello world, to out
+// Τυπώνει: hello world, στο out
 myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
+// Τυπώνει: hello world, στο out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+// Τυπώνει [Error: Whoops, something bad happened], στο err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Τυπώνει: Danger Will Robinson! Danger!, στο err
 ```
 
 ## Class: Console
@@ -97,12 +97,12 @@ changes:
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// απλός προσαρμοσμένος καταγραφέας
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// χρήση σαν κονσόλα
 const count = 5;
 logger.log('count: %d', count);
-// in stdout.log: count 5
+// στο stdout.log: count 5
 ```
 
 Το καθολικό `console` είναι ένα ειδικό στιγμιότυπο `Console` του οποίου η έξοδος γίνεται στο [`process.stdout`][] και στο [`process.stderr`][]. Είναι ισοδύναμο της παρακάτω κλήσης:
@@ -264,9 +264,9 @@ added: v0.1.100
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Prints: error #5, to stderr
+// Τυπώνει: error #5, to stderr
 console.error('error', code);
-// Prints: error 5, to stderr
+// Τυπώνει: error 5, to stderr
 ```
 
 Αν δε βρεθούν στοιχεία μορφοποίησης (π.χ. `%d`) στο πρώτο string, τότε καλείται το [`util.inspect()`][] σε κάθε παράμετρο, και οι τιμές των αποτελεσμάτων συνενώνονται. Δείτε το [`util.format()`][] για περισσότερες πληροφορίες.
@@ -279,9 +279,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Αυξάνει την εσοχή των γραμμών που ακολουθούν, κατά δύο διαστήματα.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Αν παρέχονται ένα ή περισσότερα `label`, τότε αυτά τυπώνονται πρώτα χωρίς κάποια εσοχή.
 
 ### console.groupCollapsed()
 
@@ -289,7 +289,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Ψευδώνυμο του [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -297,7 +297,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Μειώνει την εσοχή των γραμμών που ακολουθούν, κατά δύο διαστήματα.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+Η συνάρτηση `console.info()` είναι ένα ψευδώνυμο για την συνάρτηση [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -319,17 +319,17 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Τυπώνει στο `stdout` με χαρακτήρα αλλαγής γραμμής. Μπορούν να μεταδοθούν πολλαπλές παράμετροι, με την πρώτη να χρησιμοποιείται ως το κυρίως μήνυμα, και οι υπόλοιπες ως αντικαταστάτες, όπως στο printf(3) (όλες οι παράμετροι μεταφέρονται στο [`util.format()`][]).
 
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Prints: count: 5, to stdout
+// Τυπώνει: count: 5, στο stdout
 console.log('count:', count);
-// Prints: count: 5, to stdout
+// Τυπώνει: count: 5, στο stdout
 ```
 
-See [`util.format()`][] for more information.
+Δείτε το [`util.format()`][] για περισσότερες πληροφορίες.
 
 ### console.table(tabularData[, properties])
 
