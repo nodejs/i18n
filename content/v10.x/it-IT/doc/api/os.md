@@ -676,11 +676,11 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica che un'operazione è già in corso.</td>
   </tr>
   <tr>
     <td><code>EINTR</code></td>
-    <td>Indicates that a function call was interrupted.</td>
+    <td>Indica che una chiamata di funzione è stata interrotta.</td>
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
