@@ -636,43 +636,43 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>Indica che è stato evitato un deadlock delle risorse.</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica che è richiesto un indirizzo di destinazione.</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
-    <td>Indicates that an argument is out of the domain of the function.</td>
+    <td>Indica che un argomento è fuori dal dominio della funzione.</td>
   </tr>
   <tr>
     <td><code>EDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica che la quota del disco è stata superata.</td>
   </tr>
   <tr>
     <td><code>EEXIST</code></td>
-    <td>Indicates that the file already exists.</td>
+    <td>Indica che il file esiste già.</td>
   </tr>
   <tr>
     <td><code>EFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica un indirizzo del puntatore non valido.</td>
   </tr>
   <tr>
     <td><code>EFBIG</code></td>
-    <td>Indicates that the file is too large.</td>
+    <td>Indica che il file è troppo grande.</td>
   </tr>
   <tr>
     <td><code>EHOSTUNREACH</code></td>
-    <td>Indicates that the host is unreachable.</td>
+    <td>Indica che l'host non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>EIDRM</code></td>
-    <td>Indicates that the identifier has been removed.</td>
+    <td>Indica che l'identifier è stato rimosso.</td>
   </tr>
   <tr>
-    <td><code>EILSEQ</code></td>
-    <td>Indicates an illegal byte sequence.</td>
+    <td><code>EIDRM</code></td>
+    <td>Indica una sequenza di byte non valida.</td>
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
