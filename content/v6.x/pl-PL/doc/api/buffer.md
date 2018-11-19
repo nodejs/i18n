@@ -58,9 +58,9 @@ Aby uczynić tworzenie przypadków `Bufora` bardziej instances more niezawodnymi
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] zwraca "wypełniony" przypadek `Bufora` o określonym rozmiarze. Ta metoda może być znacząco wolniejsza niż [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] ale zapewnia, że nowo tworzone przypadki `Bufora` nigdy nie zawierają starych i otencjalnie wrażliwych danych.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] każdy zwraca nowy `Bufor` o określonym `rozmiarze` którego zawartość *musi* być albo zainicjowana przy użyciu [`buf.fill(0)`][`buf.fill()`] albo kompletnie napisana.
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+Przypadki `Bufora` zwrócone przez [`Buffer.allocUnsafe()`] *mogą* być przydzielone ze wspólnej puli pamięci wewnętrznej, jeśli `rozmiar` jest mniejszy lub równy połowie [`Buffer.poolSize`]. Przypadki zwrócone przez [`Buffer.allocUnsafeSlow()`] *nigdy* nie używają dzielonej puli wewnętrznej pamięci.
 
-### The `--zero-fill-buffers` command line option
+### Opcja linii polecenia `--zero-fill-buffers`
 
 <!-- YAML
 added: v5.10.0
