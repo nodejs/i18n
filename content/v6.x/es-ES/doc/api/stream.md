@@ -457,9 +457,9 @@ pass.resume(); // debe llamarse para hacer que se emita 'data'
 
 Aunque `readable._readableState.flowing` sea `false`, pueden acumularse datos dentro del buffer interno del stream.
 
-#### Choose One
+#### Elegir Uno
 
-The Readable stream API evolved across multiple Node.js versions and provides multiple methods of consuming stream data. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
+La API del stream Legible ha evolucionado a través de varias versiones de Node.js y proporciona múltiples métodos para consumir datos de stream. En general, los desarrolladores deben elegir *uno* de los métodos para consumir datos y *nunca deberían* utilizar múltiples métodos para consumir datos desde un solo stream.
 
 Use of the `readable.pipe()` method is recommended for most users as it has been implemented to provide the easiest way of consuming stream data. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.pause()`/`readable.resume()` APIs.
 
