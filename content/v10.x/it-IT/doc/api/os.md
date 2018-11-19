@@ -1151,18 +1151,15 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
   </tr>
   <tr>
     <td><code>RTLD_NOW</code></td>
-    <td>Resolve all undefined symbols in the library before dlopen(3)
-    returns.</td>
+    <td>Risolvi tutti i simboli non definiti nella libreria prima che restituisca dlopen(3).</td>
   </tr>
   <tr>
     <td><code>RTLD_GLOBAL</code></td>
-    <td>Symbols defined by the library will be made available for symbol
-    resolution of subsequently loaded libraries.</td>
+    <td>I simboli definiti dalla libreria saranno resi disponibili per la    risoluzione dei simboli delle librerie caricate successivamente.</td>
   </tr>
   <tr>
     <td><code>RTLD_LOCAL</code></td>
-    <td>The converse of `RTLD_GLOBAL`. This is the default behavior if neither
-    flag is specified.</td>
+    <td>Il contrario di `RTLD_GLOBAL`. Questa è l'azione predefinita se non è specificato nessun flag.</td>
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
@@ -1175,8 +1172,8 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
