@@ -576,42 +576,39 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>Indica che l'elenco degli argomenti è più lungo del previsto.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>Indica che l'operazione non ha avuto permessi sufficienti.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica che l'indirizzo di rete è già in uso.</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>Indica che l'indirizzo di rete non è al momento disponibile per    l'uso.</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>Indica che la famiglia di indirizzi di rete non è supportata.</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indicates that there is currently no data available and to try the
-    operation again later.</td>
+    <td>Indica che al momento non ci sono dati disponibili e di riprovare l'operazione più tardi.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>Indica che il socket ha già una connessione in sospeso in corso.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>Indica che un file descriptor non è valido.</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>Indica un messaggio di dati non valido.</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
