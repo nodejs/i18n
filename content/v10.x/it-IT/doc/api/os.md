@@ -1088,15 +1088,15 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
-    <td>Indicates that a graceful shutdown is in progress.</td>
+    <td>Indica che è in corso l'esecuzione del graceful shoutdown.</td>
   </tr>
   <tr>
     <td><code>WSAENOMORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica che non ci sono ulteriori risultati.</td>
   </tr>
   <tr>
     <td><code>WSAECANCELLED</code></td>
-    <td>Indicates that an operation has been canceled.</td>
+    <td>Indica che un operazione è stata annullata.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
@@ -1104,7 +1104,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
-    <td>Indicates an invalid service provider.</td>
+    <td>Indica un service provider non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
