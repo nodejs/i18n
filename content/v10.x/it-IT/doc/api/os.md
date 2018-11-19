@@ -869,7 +869,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indica che l'handle del file è obsoleto.</td>
+    <td>Indica che file handle è obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
@@ -895,48 +895,48 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
 #### Costanti di errore specifico di Windows
 
-The following error codes are specific to the Windows operating system:
+I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>Indica un chiamata di funzione interrotta.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>Indica un file handle non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>Indica la mancanza di autorizzazioni sufficienti per completare l'operazione.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica un indirizzo del puntatore non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>Indica che è stato trasmesso un argomento non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica che ci sono troppi file aperti.</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>Indica che una risorsa è temporaneamente non disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>Indica che un'operazione è attualmente in corso.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica che un'operazione è già in corso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
