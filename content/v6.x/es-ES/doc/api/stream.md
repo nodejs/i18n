@@ -572,7 +572,7 @@ readable: null
 end
 ```
 
-*Nota*: En general, los mecanismos de evento de `readable.pipe()` y de `'data'` son más fáciles de entender que el evento `'readable'`. However, handling `'readable'` might result in increased throughput.
+*Nota*: En general, los mecanismos de evento de `readable.pipe()` y de `'data'` son más fáciles de entender que el evento `'readable'`. Sin embargo, el manejo de `'readable'` podría resultar en un aumento del rendimiento.
 
 ##### readable.isPaused()
 
@@ -582,7 +582,7 @@ added: v0.11.14
 
 * Devuelve: {boolean}
 
-The `readable.isPaused()` method returns the current operating state of the Readable. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
+El método `readable.isPaused()` devuelve el estado operativo actual del Legible. This is used primarily by the mechanism that underlies the `readable.pipe()` method. En la mayorías de los casos típicos, no habrá razones para utilizar este método directamente.
 
 ```js
 const readable = new stream.Readable();
@@ -602,7 +602,7 @@ added: v0.9.4
 
 * Devuelve: {this}
 
-The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
+El método `readable.pause()` causará que un stream en el modo fluido detenga la emisión de eventos de [`'data'`][], y salga del modo fluido. Todos los datos que estén disponibles permanecerán en el buffer interno.
 
 ```js
 const readable = getReadableStreamSomehow();
