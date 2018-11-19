@@ -546,20 +546,20 @@ Il formato del parametro `alt` è rigorosamente definito da [RFC 7838](https://t
 
 Ad esempio, il valore `'h2 = "example.org:81"'` indica che il protocollo HTTP/2 è disponibile sull'host `'example.org'` sulla porta TCP/IP 81. L'host e la porta *devono* essere contenuti all'interno di virgolette (`"`).
 
-Multiple alternatives may be specified, for instance: `'h2="example.org:81",
+Possono essere specificate più alternative, ad esempio: `'h2="example.org:81",
 h2=":82"'`.
 
-The protocol identifier (`'h2'` in the examples) may be any valid [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids).
+L'identificativo del protocollo (`'h2'` negli esempi) può essere qualsiasi [ID protocollo ALPN](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids) valido.
 
-The syntax of these values is not validated by the Node.js implementation and are passed through as provided by the user or received from the peer.
+La sintassi di questi valori non è convalidata dall'implementazione Node.js e viene trasmessa come fornita dall'utente o ricevuta dal peer.
 
-### Class: ClientHttp2Session
+### Corso: ClientHttp2Session
 
 <!-- YAML
 added: v8.4.0
 -->
 
-#### Event: 'altsvc'
+#### Evento: 'altsvc'
 
 <!-- YAML
 added: v9.4.0
@@ -569,7 +569,7 @@ added: v9.4.0
 * `origin`: {string}
 * `streamId`: {number}
 
-The `'altsvc'` event is emitted whenever an `ALTSVC` frame is received by the client. The event is emitted with the `ALTSVC` value, origin, and stream ID. If no `origin` is provided in the `ALTSVC` frame, `origin` will be an empty string.
+L'evento `'altsvc'` viene emesso ogni volta che un frame `ALTSVC` viene ricevuto dal client. L'evento viene emesso con il valore `ALTSVC`, l'origine e l'ID del flusso. Se nessun `origin` è fornito nel frame `ALTSVC`, `origin` sarà una stringa vuota.
 
 ```js
 const http2 = require('http2');
