@@ -564,7 +564,7 @@ const defaults = {
 
 Si se especifica `fd`, `ReadStream` ignorará el argumento `path` y usará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is your responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
+Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si ocurre un error. It is your responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
