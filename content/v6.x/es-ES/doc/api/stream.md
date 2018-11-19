@@ -448,14 +448,14 @@ const writable = new Writable();
 
 pass.pipe(writable);
 pass.unpipe(writable);
-// flowing is now false
+// el flujo ahora es "false"
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
-pass.write('ok'); // will not emit 'data'
-pass.resume(); // must be called to make 'data' being emitted
+pass.write('ok'); // no emitirá 'data'
+pass.resume(); // debe llamarse para hacer que se emita 'data'
 ```
 
-While `readable._readableState.flowing` is `false`, data may be accumulating within the streams internal buffer.
+Aunque `readable._readableState.flowing` sea `false`, pueden acumularse datos dentro del buffer interno del stream.
 
 #### Choose One
 
