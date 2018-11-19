@@ -591,8 +591,8 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `options` {Object}
   
-  * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
+  * `endStream` {boolean} Sarà `true` se il lato `Http2Stream` *scrivibile* dovrebbe essere chiuso inizialmente, ad esempio quando si invia una richiesta `GET` che non dovrebbe aspettarsi un corpo payload.
+  * `exclusive` {boolean} Quando è `true` e `parent` identifica un flusso genitore, il flusso creato viene reso l'unica dipendenza diretta del genitore, e tutte le altre dipendenze esistenti sono rese dipendenti dal flusso appena creato. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
