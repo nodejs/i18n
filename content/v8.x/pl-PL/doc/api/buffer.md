@@ -47,15 +47,15 @@ W wersjach Node.js sprzed v6, przypadki `Bufora` były tworzone przy użyciu fun
 
 Ponieważ zachowanie `nowego Bufora()` zmienia się znacząco w zależności od typu wartości przekazanej jako pierwszy argument, aplikacje niepoprawnie sprawdzające argumenty wejściowe przekazane do `nowego Bufora()` lub niepoprawnie inicjujące nowo przydzieloną zawartość `Bufora`, mogą nieumyślnie wprowadzić problemy z bezpieczeństwem i niezawodnością do swojego kodu.
 
-To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+Aby uczynić tworzenie przypadków `Bufora` bardziej instances more niezawodnymi i mniej podatnymi na błąd, różne formy konstruktora `nowego Bufora()` zostały **usunięte** i zastąpione przez oddzielne metody `Buffer.from()`, [`Buffer.alloc()`], i [`Buffer.allocUnsafe()`].
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*Programiści powinni przeprowadzić migrację wszystkich istniejących zastosowań konstruktorów `nowego Bufora()` do jednego z tych nowych interfejsów API.*
 
-* [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` containing a *copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` containing a *copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a "filled" `Buffer` instance of the specified size. This method can be significantly slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but ensures that newly created `Buffer` instances never contain old and potentially sensitive data.
+* [`Buffer.from(array)`] zwraca nowy `Buffer` zwierający *kopię* danych oktetów.
+* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] zwraca nowy `Bufor` który *posiada* tę samą przydzieloną pamięć co dany [`ArrayBuffer`].
+* [`Buffer.from(buffer)`] zwraca nowy `Buffer` zwierający *kopię* zawartości danego `Bufora`.
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] zwraca nowy `Bufor` zwierający *kopię* danego ciągu znaków.
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] zwraca "wypełniony" przypadek `Bufora` o określonym rozmiarze. Ta metoda może być znacząco wolniejsza niż [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] ale zapewnia, że nowo tworzone przypadki `Bufora` nigdy nie zawierają starych i otencjalnie wrażliwych danych.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new `Buffer` of the specified `size` whose content *must* be initialized using either [`buf.fill(0)`][`buf.fill()`] or written to completely.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
