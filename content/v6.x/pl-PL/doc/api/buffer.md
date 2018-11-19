@@ -21,27 +21,27 @@ const buf1 = Buffer.alloc(10);
 // Tworzy wypełniony wartością zerową Buffer o długości 10, wypełniony przez 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Creates an uninitialized buffer of length 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Tworzy niezainicjowany buffer o długości 10.
+// To jest szybsze niż Buffer wywołujący.alloc (), ale zwrócone
+// Instancja bufora może zawierać stare dane, które muszą być
+// zastąpione przy użyciu metody wypełnij() lub pisz().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Creates a Buffer containing [0x1, 0x2, 0x3].
+// Tworzy Buffer zawierający [0x1, 0x2, 0x3].
 const buf4 = Buffer.from([1, 2, 3]);
 
-// Creates a Buffer containing UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Tworzy Buffer zawierający UTF-8 bajtów [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Creates a Buffer containing Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
+// Tworzy Buffer zawierający Latin-1 bajt [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
 ## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to v6, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+W wersjach Node.js sprzed v6, `Buffer` przypadki były tworzone przy użyciu funkcji konstruktora `Buffer`, który różnie przydziela zwrócony `Buffer` w oparciu o dostarczone argumenty:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. The memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be initialized *manually* by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`.
+* Przekazywanie liczby jako pierwszego argumentu do `Buffer()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Buffer` o określonym rozmiarze. The memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be initialized *manually* by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`.
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
