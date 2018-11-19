@@ -63,7 +63,7 @@
 
 Αυτή η επιλογή δημιουργεί στατική σύνδεση μεταξύ του σχετικού αρχείου της Node με την βιβλιοθήκη ICU, και συμπεριλαμβάνει ένα υποσύνολο των δεδομένων του ICU (συνήθως μόνο στην Αγγλική Γλώσσα) στο εκτελέσιμο αρχείο `node`.
 
-Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
+Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `small-icu`. Χαρακτηριστικά που απαιτούν πρόσθετα τοπικά δεδομένα του ICU, όπως το [`Intl.DateTimeFormat`][], γενικά λειτουργούν μόνο στην Αγγλική γλώσσα:
 
 ```js
 const january = new Date(9e8);
@@ -77,13 +77,13 @@ console.log(spanish.format(january));
 // Should print "enero"
 ```
 
-This mode provides a good balance between features and binary size, and it is the default behavior if no `--with-intl` flag is passed. The official binaries are also built in this mode.
+Αυτός ο τρόπος παρέχει μια καλή ισορροπία μεταξύ χαρακτηριστικών και μέγεθος αρχείου, και είναι η προεπιλεγμένη συμπεριφορά αν δεν χρησιμοποιηθεί κάποια επιλογή του `--with-intl`. Τα αρχεία που διανέμονται επίσημα, μεταγλωττίζονται με αυτόν τον τρόπο.
 
-#### Providing ICU data at runtime
+#### Παροχή δεδομένων ICU κατά την εκτέλεση (runtime)
 
-If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
+Αν χρησιμοποιηθεί η επιλογή `small-icu`, ο διαχειριστής μπορεί να παρέχει περισσότερα δεδομένα γλώσσας κατά την εκτέλεση, έτσι ώστε όλες οι μέθοδοι JS να λειτουργούν σε όλες τις γλώσσες του ICU. Υποθέτοντας ότι το αρχείο δεδομένων είναι αποθηκευμένο στη διαδρομή `/some/directory`, μπορεί να γίνει διαθέσιμο στο ICU μέσω ενός απο τους παρακάτω τρόπους:
 
-- The [`NODE_ICU_DATA`][] environment variable:
+- Μεταβλητή περιβάλλοντος [`NODE_ICU_DATA`][]:
     
     ```shell
     env NODE_ICU_DATA=/some/directory node
