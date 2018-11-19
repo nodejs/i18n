@@ -593,13 +593,13 @@ added: v8.4.0
   
   * `endStream` {boolean} Sarà `true` se il lato `Http2Stream` *scrivibile* dovrebbe essere chiuso inizialmente, ad esempio quando si invia una richiesta `GET` che non dovrebbe aspettarsi un corpo payload.
   * `exclusive` {boolean} Quando è `true` e `parent` identifica un flusso genitore, il flusso creato viene reso l'unica dipendenza diretta del genitore, e tutte le altre dipendenze esistenti sono rese dipendenti dal flusso appena creato. **Default:** `false`.
-  * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
-  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `parent` {number} Specifica l'identificatore numerico di un flusso dal quale il flusso appena creato dipende.
+  * `weight` {number} Specifica la dipendenza relativa di un flusso in relazione ad altri flussi con lo stesso `parent`. Il valore è un numero che va da `1` a `256` (inclusi).
+  * `waitForTrailers` {boolean} Quando è `true`, `Http2Stream` emetterà l'evento `'wantTrailers'` dopo che l'ultimo frame `DATA` è stato inviato.
 
-* Returns: {ClientHttp2Stream}
+* Restituisce: {ClientHttp2Stream}
 
-For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
+Solo per istanze Client HTTP/2 `Http2Session`, l'`http2session.request()` crea e restituisce un'istanza `Http2Stream` che può essere utilizzata per inviare una richiesta HTTP/2 al server connesso.
 
 This method is only available if `http2session.type` is equal to `http2.constants.NGHTTP2_SESSION_CLIENT`.
 
@@ -1058,7 +1058,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `options` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Quando è `true`, `Http2Stream` emetterà l'evento `'wantTrailers'` dopo che l'ultimo frame `DATA` è stato inviato.
 
 ```js
 const http2 = require('http2');
@@ -1101,7 +1101,7 @@ changes:
 * `headers` {HTTP/2 Headers Object}
 * `options` {Object} 
   * `statCheck` {Function}
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Quando è `true`, `Http2Stream` emetterà l'evento `'wantTrailers'` dopo che l'ultimo frame `DATA` è stato inviato.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} The amount of data from the fd to send.
 
@@ -1178,7 +1178,7 @@ changes:
 * `options` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Callback function invoked in the case of an error before send.
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Quando è `true`, `Http2Stream` emetterà l'evento `'wantTrailers'` dopo che l'ultimo frame `DATA` è stato inviato.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} The amount of data from the fd to send.
 
