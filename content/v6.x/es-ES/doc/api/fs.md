@@ -564,7 +564,7 @@ const defaults = {
 
 Si se especifica `fd`, `ReadStream` ignorará el argumento `path` y usará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si ocurre un error. It is your responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
+Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si ocurre un error. Es su responsabilidad cerrarlo y asegurarse de que no hayan pérdidas del descriptor de archivo. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
@@ -607,7 +607,7 @@ const defaults = {
 
 `options` may also include a `start` option to allow writing data at some position past the beginning of the file. Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`. The `defaultEncoding` can be any one of those accepted by [`Buffer`][].
 
-If `autoClose` is set to true (default behavior) on `error` or `end` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is your responsibility to close it and make sure there's no file descriptor leak.
+If `autoClose` is set to true (default behavior) on `error` or `end` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. Es su responsabilidad cerrarlo y asegurarse de que no hayan pérdidas del descriptor de archivo.
 
 Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
@@ -705,7 +705,7 @@ fs.open('myfile', 'r', (err, fd) => {
 
 The "not recommended" examples above check for existence and then use the file; the "recommended" examples are better because they use the file directly and handle the error, if any.
 
-In general, check for the existence of a file only if the file won’t be used directly, for example when its existence is a signal from another process.
+En general, verifique la existencia de un archivo solo si el archivo no será utilizado directamente, por ejemplo, cuando su existencia sea una señal de otro proceso.
 
 ## fs.existsSync(path)
 
@@ -715,9 +715,9 @@ added: v0.1.21
 
 * `path` {string|Buffer}
 
-Synchronous version of [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
+Versión sincrónica de [`fs.exists()`][]. Devuelve `true` si la ruta existe, de lo contrario `false` .
 
-Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
+Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` no utiliza un callback.)
 
 ## fs.fchmod(fd, mode, callback)
 
@@ -730,7 +730,7 @@ added: v0.4.7
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
+fchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -938,7 +938,7 @@ deprecated: v0.4.7
 * `callback` {Function} 
   * `err` {Error}
 
-lchmod(2) asincrónico. No arguments other than a possible exception are given to the completion callback.
+lchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Only available on macOS.
 
@@ -1037,7 +1037,7 @@ added: v0.1.8
 * `callback` {Function} 
   * `err` {Error}
 
-Crea un directorio de manera asincrónica. No arguments other than a possible exception are given to the completion callback. `mode` defaults to `0o777`.
+Crea un directorio de manera asincrónica. Ningún argumento que no sea una posible excepción es dado al callback de terminación. `mode` defaults to `0o777`.
 
 See also: mkdir(2)
 
