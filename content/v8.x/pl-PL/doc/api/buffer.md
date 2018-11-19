@@ -56,7 +56,7 @@ Aby uczynić tworzenie przypadków `Bufora` bardziej instances more niezawodnymi
 * [`Buffer.from(buffer)`] zwraca nowy `Buffer` zwierający *kopię* zawartości danego `Bufora`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] zwraca nowy `Bufor` zwierający *kopię* danego ciągu znaków.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] zwraca "wypełniony" przypadek `Bufora` o określonym rozmiarze. Ta metoda może być znacząco wolniejsza niż [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] ale zapewnia, że nowo tworzone przypadki `Bufora` nigdy nie zawierają starych i otencjalnie wrażliwych danych.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new `Buffer` of the specified `size` whose content *must* be initialized using either [`buf.fill(0)`][`buf.fill()`] or written to completely.
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] każdy zwraca nowy `Bufor` o określonym `rozmiarze` którego zawartość *musi* być albo zainicjowana przy użyciu [`buf.fill(0)`][`buf.fill()`] albo kompletnie napisana.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
 
