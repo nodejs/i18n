@@ -1295,7 +1295,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 ## fs.exists(path, callback)
 
