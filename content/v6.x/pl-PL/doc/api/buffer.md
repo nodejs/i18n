@@ -4,13 +4,13 @@
 
 > Stability: 2 - Stable
 
-Przed wprowadzeniem [`TypedArray`] w [`ECMAScript 2015`] (ES6), język JavaScript nie posiadał mechanizmu do czytania lub manipulowania strumieni danych binarnych. Klasa `Buffer` została wprowadzona jako część Node.js API, aby umożliwić interakcję ze strumieniami oktetów w kontekście rzeczy jak strumienie TCP i operacje systemu plików.
+Przed wprowadzeniem [`TypedArray`] w [`ECMAScript 2015`] (ES6), język JavaScript nie posiadał mechanizmu do czytania lub manipulowania strumieni danych binarnych. Klasa `Bufora` została wprowadzona jako część Node.js API, aby umożliwić interakcję ze strumieniami oktetów w kontekście rzeczy jak strumienie TCP i operacje systemu plików.
 
-Teraz, gdy [`TypedArray `] został dodany w ES6, klasa `Buffer` implementuje[`Uint8Array`] API w sposób bardziej zoptymalizowany i odpowiedni dla przypadków użycia Node.js.
+Teraz, gdy [`TypedArray `] został dodany w ES6, klasa `Bufora` implementuje[`Uint8Array`] API w sposób bardziej zoptymalizowany i odpowiedni dla przypadków użycia Node.js.
 
-Przypadki klasy `Buffer` są podobne do tablic liczb całkowitych, ale odpowiadają stałym w rozmiarze przydziałom pamięci surowej poza stertą V8. Rozmiar `Buffer` jest ustanawiany, kiedy jest ten kreowany i nie może ulec zmianie.
+Przypadki klasy `Bufora` są podobne do tablic liczb całkowitych, ale odpowiadają stałym w rozmiarze przydziałom pamięci surowej poza stertą V8. Rozmiar `Bufora` jest ustanawiany, kiedy jest ten kreowany i nie może ulec zmianie.
 
-Klasa `Buffer` jest globalna w Node.js, co oznacza małe prawdopodobieństwo potrzeby użycia `require('buffer').Buffer`.
+Klasa `Bufora` jest globalna w Node.js, co oznacza małe prawdopodobieństwo potrzeby użycia `require('buffer').Buffer`.
 
 Przykłady:
 
@@ -18,32 +18,32 @@ Przykłady:
 // Tworzy wypełniony zerem Buffer o długości 10.
 const buf1 = Buffer.alloc(10);
 
-// Tworzy wypełniony wartością zerową Buffer o długości 10, wypełniony przez 0x1.
+// Tworzy wypełniony wartością zerową Bufor o długości 10, wypełniony przez 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Tworzy niezainicjowany buffer o długości 10.
-// To jest szybsze niż Buffer wywołujący.alloc (), ale zwrócone
+// Tworzy niezainicjowany bufor o długości 10.
+// To jest szybsze niż Bufor wywołujący.alloc (), ale zwrócone
 // Instancja bufora może zawierać stare dane, które muszą być
 // zastąpione przy użyciu metody wypełnij() lub pisz().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Tworzy Buffer zawierający [0x1, 0x2, 0x3].
+// Tworzy Bufor zawierający [0x1, 0x2, 0x3].
 const buf4 = Buffer.from([1, 2, 3]);
 
-// Tworzy Buffer zawierający UTF-8 bajtów [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Tworzy Bufor zawierający UTF-8 bajtów [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Tworzy Buffer zawierający Latin-1 bajt [0x74, 0xe9, 0x73, 0x74].
+// Tworzy Bufor zawierający Latin-1 bajt [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
 ## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
 
-W wersjach Node.js sprzed v6, `Buffer` przypadki były tworzone przy użyciu funkcji konstruktora `Buffer`, który różnie przydziela zwrócony `Buffer` w oparciu o dostarczone argumenty:
+W wersjach Node.js sprzed v6, przypadki `Bufora` były tworzone przy użyciu funkcji konstruktora `Bufora`, który różnie przydziela zwrócony `Bufor` w oparciu o dostarczone argumenty:
 
-* Przekazywanie liczby jako pierwszego argumentu do `Buffer()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Buffer` o określonym rozmiarze. Pamięć przydzielona do takich przypadków `Buffer` jest *niezainicjowana* i *może zawierać wrażliwe dane*. Takie przypadki `Buffer` *muszą* być zainicjowane *ręcznie* przy użyciu albo [`buf.fill(0)`][`buf.fill()`] albo pisanie dokładnie do `Buffer`. Podczas gdy takie zachowanie jest *mierzone* na poprawę wydajności, doświadczenie developmentu pokazało, że wymagane jest bardziej wyraźne rozróżnienie między tworzeniem szybkiego, ale niezainicjowanego `Buffer` a tworzeniem wolniejszego, ale bezpieczniejszego `Buffer`.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* Przekazywanie liczby jako pierwszego argumentu do `Bufora()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Bufora` o określonym rozmiarze. Pamięć przydzielona do takich przypadków `Bufora` jest *niezainicjowana* i *może zawierać wrażliwe dane*. Takie przypadki `Bufora` *muszą* być zainicjowane *ręcznie* przy użyciu albo [`buf.fill(0)`][`buf.fill()`] albo pisanie dokładnie do `Bufora`. Podczas gdy takie zachowanie jest *mierzone* na poprawę wydajności, doświadczenie developmentu pokazało, że wymagane jest bardziej wyraźne rozróżnienie między tworzeniem szybkiego, ale niezainicjowanego `Bufora` a tworzeniem wolniejszego, ale bezpieczniejszego `Bufora`.
+* Przekazywanie ciągu znaków, tablicy lub `Bufora` ako pierwszego argumentu powoduje skopiowanie znakuprzekazał dane obiektu do `Bufora`.
+* Przekazanie [`ArrayBuffer`] lub [`SharedArrayBuffer`] zwraca `Bufor`, który dzieli przydzieloną pamięć z danym buforem tablicy.
 
 Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
 
