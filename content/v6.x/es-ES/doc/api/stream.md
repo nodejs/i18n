@@ -510,7 +510,7 @@ added: v0.9.4
 
 El evento `'end'` se emite cuando no hay más datos para ser consumidos del stream.
 
-*Note*: The `'end'` event **will not be emitted** unless the data is completely consumed. This can be accomplished by switching the stream into flowing mode, or by calling [`stream.read()`](#stream_readable_read_size) repeatedly until all data has been consumed.
+*Nota*: El evento `'end'` **no se emitirá** a menos que los datos se consuman en su totalidad. Esto se puede lograr cambiando el stream al modo fluido, o al llamar a [`stream.read()`](#stream_readable_read_size) repetidamente hasta que todos los datos se consuman.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -522,7 +522,7 @@ readable.on('end', () => {
 });
 ```
 
-##### Event: 'error'
+##### Evento: 'error'
 
 <!-- YAML
 added: v0.9.4
@@ -530,7 +530,7 @@ added: v0.9.4
 
 * {Error}
 
-The `'error'` event may be emitted by a Readable implementation at any time. Typically, this may occur if the underlying stream is unable to generate data due to an underlying internal failure, or when a stream implementation attempts to push an invalid chunk of data.
+El evento de `'error'` puede emitirse por una implementación del Legible en cualquier momento. Typically, this may occur if the underlying stream is unable to generate data due to an underlying internal failure, or when a stream implementation attempts to push an invalid chunk of data.
 
 The listener callback will be passed a single `Error` object.
 
