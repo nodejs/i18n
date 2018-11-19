@@ -1162,8 +1162,7 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
-    <td>Make a self-contained library use its own symbols in preference to
-    symbols from previously loaded libraries.</td>
+    <td>Fai in modo che una libreria incorporata utilizzi i suoi stessi simboli rispetto ai     simboli delle librerie precedentemente caricate.</td>
   </tr>
 </table>
 
