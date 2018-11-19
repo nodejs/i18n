@@ -263,7 +263,7 @@ Le informazioni di posizione saranno di tipo:
 - `plain-filename.js:line:column`, se il frame rappresenta una chiamata interna a Node.js.
 - `/absolute/path/to/file.js:line:column`, se il frame rappresenta una chiamata in un programma utente, o le relative dipendenze.
 
-The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
+La stringa che rappresenta la stack trace è generata în modalità lazi quando **si effettua l'accesso** alla proprietà `error.stack`.
 
 The number of frames captured by the stack trace is bounded by the smaller of `Error.stackTraceLimit` or the number of available frames on the current event loop tick.
 
@@ -320,13 +320,13 @@ require('url').parse(() => { });
 // genera TypeError, dato che si aspettava una stringa
 ```
 
-Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
+Node.js genererà e mostrerà le istanze `TypeError` *immediatamente* come una forma di validazione dell'argomento.
 
-## Exceptions vs. Errors
+## Eccezioni vs. Errori
 
 <!--type=misc-->
 
-A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+Un'eccezione JavaScript viene generata come risultato di un operazione non valida o come obbiettivo di un'istruzione `throw`. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
