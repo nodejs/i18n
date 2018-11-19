@@ -2015,7 +2015,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. Przykład:
 
 ```js
 // Prints something like:
@@ -2173,7 +2173,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Przykład:
 
 ```txt
 $ node
@@ -2193,7 +2193,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Przykład:
 
 ```txt
 $ node
@@ -2306,7 +2306,7 @@ added: v8.4.0
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+Przykład:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2322,7 +2322,7 @@ added: v8.4.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Example:
+Przykład:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2344,7 +2344,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+Przykład:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2365,7 +2365,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+Przykład:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2391,7 +2391,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Example:
+Przykład:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2420,7 +2420,7 @@ added: v8.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Przykład:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2480,7 +2480,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but ap
 
 All other interactions will be routed directly to the socket.
 
-Example:
+Przykład:
 
 ```js
 const http2 = require('http2');
@@ -2501,7 +2501,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Przykład:
 
 ```js
 response.statusCode = 404;
@@ -2576,7 +2576,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Example:
+Przykład:
 
 ```js
 const body = 'hello world';
