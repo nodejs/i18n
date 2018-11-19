@@ -4,7 +4,7 @@
 
 > Stability: 2 - Stable
 
-Prior to the introduction of [`TypedArray`] in [`ECMAScript 2015`] (ES6), the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations.
+Przed wprowadzeniem [`TypedArray`] w [`ECMAScript 2015`] (ES6), język JavaScript nie posiadał mechanizmu do czytania lub manipulowania strumieni danych binarnych. Klasa `Buffer` została wprowadzona jako część Node.js API, aby umożliwić interakcję ze strumieniami oktetów w kontekście rzeczy jak strumienie TCP i operacje systemu plików.
 
 Now that [`TypedArray`] has been added in ES6, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js' use cases.
 
