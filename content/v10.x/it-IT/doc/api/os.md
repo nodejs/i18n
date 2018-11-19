@@ -563,16 +563,16 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
 </table>
 
-### Error Constants
+### Costanti di Errore
 
-The following error constants are exported by `os.constants.errno`:
+Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
-#### POSIX Error Constants
+#### Costanti di errore POSIX
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
