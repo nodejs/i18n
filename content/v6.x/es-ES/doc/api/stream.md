@@ -551,7 +551,7 @@ readable.on('readable', () => {
 
 El evento `'readable'` también se emitirá una vez que se haya alcanzado el final de los datos del stream, pero antes de que se emita el evento `'end'`.
 
-Effectively, the `'readable'` event indicates that the stream has new information: either new data is available or the end of the stream has been reached. In the former case, [`stream.read()`](#stream_readable_read_size) will return the available data. In the latter case, [`stream.read()`](#stream_readable_read_size) will return `null`. For instance, in the following example, `foo.txt` is an empty file:
+Efectivamente, el evento `'readable'` indica que el stream tiene nueva información: ya sean nuevos datos disponibles o que se ha alcanzado el final del stream. En el primer caso, [`stream.read()`](#stream_readable_read_size) devolverá los datos disponibles. En el último caso, [`stream.read()`](#stream_readable_read_size) devolverá `null`. Por ejemplo, en el siguiente caso, `foo.txt` es un archivo vacío:
 
 ```js
 const fs = require('fs');
@@ -564,7 +564,7 @@ rr.on('end', () => {
 });
 ```
 
-The output of running this script is:
+La salida de ejecutar este script es:
 
 ```txt
 $ node test.js
@@ -572,7 +572,7 @@ readable: null
 end
 ```
 
-*Note*: In general, the `readable.pipe()` and `'data'` event mechanisms are easier to understand than the `'readable'` event. However, handling `'readable'` might result in increased throughput.
+*Nota*: En general, los mecanismos de evento de `readable.pipe()` y de `'data'` son más fáciles de entender que el evento `'readable'`. However, handling `'readable'` might result in increased throughput.
 
 ##### readable.isPaused()
 
