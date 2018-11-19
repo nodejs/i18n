@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 W wersjach Node.js sprzed v6, przypadki `Bufora` były tworzone przy użyciu funkcji konstruktora `Bufora`, który różnie przydziela zwrócony `Bufor` w oparciu o dostarczone argumenty:
 
-* Przekazywanie liczby jako pierwszego argumentu do `Bufora()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Bufora` o określonym rozmiarze. Pamięć przydzielona do takich przypadków `Bufora` jest *niezainicjowana* i *może zawierać wrażliwe dane*. Takie przypadki `Bufora` *muszą* być zainicjowane *ręcznie* przy użyciu albo [`buf.fill(0)`][`buf.fill()`] albo pisanie dokładnie do `Bufora`. Podczas gdy takie zachowanie jest *mierzone* na poprawę wydajności, doświadczenie developmentu pokazało, że wymagane jest bardziej wyraźne rozróżnienie między tworzeniem szybkiego, ale niezainicjowanego `Bufora` a tworzeniem wolniejszego, ale bezpieczniejszego `Bufora`.
+* Przekazywanie liczby jako pierwszego argumentu do `Bufora()` (e.g. `new Buffer(10)`), przydziela nowy obiekt `Bufora` o określonym rozmiarze. Pamięć przydzielona do takich przypadków `Bufora` jest *niezainicjowana* i *może zawierać wrażliwe dane*. Takie przypadki `Bufora`*muszą* być zainicjowane *ręcznie* przy użyciu albo [`buf.fill(0)`][`buf.fill()`] albo pisanie dokładnie do `Bufora`. Podczas gdy takie zachowanie jest *mierzone* na poprawę wydajności, doświadczenie developmentu pokazało, że wymagane jest bardziej wyraźne rozróżnienie między tworzeniem szybkiego, ale niezainicjowanego `Bufora` a tworzeniem wolniejszego, ale bezpieczniejszego `Bufora`.
 * Przekazywanie ciągu znaków, tablicy lub `Bufora` ako pierwszego argumentu powoduje skopiowanie znakuprzekazał dane obiektu do `Bufora`.
 * Przekazanie [`ArrayBuffer`] lub [`SharedArrayBuffer`] zwraca `Bufor`, który dzieli przydzieloną pamięć z danym buforem tablicy.
 
@@ -76,7 +76,7 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### Co sprawia `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
+### Co czyni `Buffer.allocUnsafe()` i `Buffer.allocUnsafeSlow()` "niepewnymi"?
 
 Podczas wywoływania [`Buffer.allocUnsafe()`] i [`Buffer.allocUnsafeSlow()`], segment przydzielonej pamięci jest *niezainicjowany* (nie jest wyzerowany). Podczas gdy ten projekt sprawia, że przydział pamięci jest dość szybki, przydzielony segment pamięci może zawierać stare dane, które są potencjalnie wrażliwe. Używając `Bufora` utworzonego przez [`Buffer.allocUnsafe()`] bez *kompletnego* nadpisywania pamięci może doprowadzić do wycieku tych staryc danych kiedy pamięć `Bufora` jest odczytywana.
 
@@ -233,9 +233,9 @@ deprecated: v6.0.0
 
 > Stabilność: 0 - Przestarzałe: w zamian Użyj [`Buffer.from(buffer)`].
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `bufor` {Buffer} Istniejący `Bufor` do skopiowania danych.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Kopiuje przekazane dane `bufora` do nowego przypadku `Bufora`.
 
 Przykład:
 
@@ -252,19 +252,19 @@ console.log(buf1.toString());
 console.log(buf2.toString());
 ```
 
-### new Buffer(arrayBuffer[, byteOffset [, length]])
+### nowy Bufor(arrayBuffer[, byteOffset [, length]])
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] instead.
+> Stabilność: 0 - Przestarzałe: w zamian Użyj [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`].
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Domyślne:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} Indeks pierwszego bajtu do pokazania. **Domyślne:** `0`
+* `length` {integer} Liczba bajtów do pokazania. **Domyślne:** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+To umożliwia podgląd [`ArrayBuffer`] lub [`SharedArrayBuffer`] bez kopiowania zasadniczej pamięci. Na przykład po przekazaniu odwołania do własności `.bufora` przypadku [`TypedArray`], nowo utworzony `Bufora` będzie dzielił tę samą przydzieloną pamięc co [`TypedArray`].
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
@@ -584,8 +584,8 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Domyślne:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} Indeks pierwszego bajtu do pokazania. **Domyślne:** `0`
+* `length` {integer} Liczba bajtów do pokazania. **Domyślne:** `arrayBuffer.length - byteOffset`
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
@@ -630,9 +630,9 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `bufor` {Buffer} Istniejący `Bufor` do skopiowania danych.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Kopiuje przekazane dane `bufora` do nowego przypadku `Bufora`.
 
 Przykład:
 
