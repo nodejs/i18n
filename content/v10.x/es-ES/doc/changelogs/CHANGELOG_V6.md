@@ -3410,7 +3410,7 @@ Parche de Semver:
 * [[`b1922e7b5b`](https://github.com/nodejs/node/commit/b1922e7b5b)] - **dtrace**: arreglar ayudante de ustack para V8 5.1 (Ali Ijaz Sheikh) [#6482](https://github.com/nodejs/node/pull/6482)
 * [[`92de0bc1a6`](https://github.com/nodejs/node/commit/92de0bc1a6)] - **inspector**: reparar cuelgue de inspector mientras se desconecta (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
 * [[`bfd8265ec2`](https://github.com/nodejs/node/commit/bfd8265ec2)] - **inspector**: añadir soporte para excepción no atrapada (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
-* [[`089a1cbecb`](https://github.com/nodejs/node/commit/089a1cbecb)] - **net**: añadir chequeo de extensión se normalicen argumentos (Brian White) [#8112](https://github.com/nodejs/node/pull/8112)
+* [[`089a1cbecb`](https://github.com/nodejs/node/commit/089a1cbecb)] - **net**: añadir chequeo de extensión cuando se normalicen argumentos (Brian White) [#8112](https://github.com/nodejs/node/pull/8112)
 * [[`17b8381585`](https://github.com/nodejs/node/commit/17b8381585)] - **net**: remover variables innecesarias (Brian White) [#8112](https://github.com/nodejs/node/pull/8112)
 * [[`fbc5805e65`](https://github.com/nodejs/node/commit/fbc5805e65)] - **readline**: desencadenamiento de keypress para carácter de escape (Prince J Wesley) [#7382](https://github.com/nodejs/node/pull/7382)
 * [[`66e66e59a4`](https://github.com/nodejs/node/commit/66e66e59a4)] - **(SEMVER-MINOR)** **repl**: reparar repl luego de actualización de V8 (Ali Ijaz Sheikh) [#7016](https://github.com/nodejs/node/pull/7016)
