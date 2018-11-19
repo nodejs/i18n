@@ -469,7 +469,7 @@ Otherwise, the value of `options.stdio` is an array where each index corresponds
 5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. It is shared with the child process, similar to how {Stream} objects can be shared.
 6. `null`, `undefined` - Use default value. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. For fd 3 and up, the default is `'ignore'`.
 
-Example:
+Przykład:
 
 ```js
 const { spawn } = require('child_process');
@@ -799,7 +799,7 @@ added: v0.1.90
 
 Returns the process identifier (PID) of the child process.
 
-Example:
+Przykład:
 
 ```js
 const { spawn } = require('child_process');
