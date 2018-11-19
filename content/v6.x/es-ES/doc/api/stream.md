@@ -491,9 +491,9 @@ added: v0.9.4
 
 El evento de `'data'` se emite cuando el stream está cediendo la propiedad de una pieza de datos a un consumidor. Esto puede ocurrir cada vez que el stream se cambia al modo fluido para llamar a 0>readable.pipe()</code>, `readable.resume()`, o al adjuntar un callback del listener al evento de `'data'`. El evento de `'data'` también se emitirá siempre que el método `readable.read()` sea llamado y una pieza de datos esté disponible para ser devuelta.
 
-Attaching a `'data'` event listener to a stream that has not been explicitly paused will switch the stream into flowing mode. Data will then be passed as soon as it is available.
+Adjuntar un listener del evento de `'data'` a un stream que no ha sido pausado explícitamente cambiará el stream al modo fluido. Entonces, los datos se pasarán tan pronto estén disponibles.
 
-The listener callback will be passed the chunk of data as a string if a default encoding has been specified for the stream using the `readable.setEncoding()` method; otherwise the data will be passed as a `Buffer`.
+El callback del listener se pasará a la pieza de datos como una cadena si una codificación predeterminada se ha especificado para el stream utilizando el método `readable.setEncoding()`; de lo contrario, los datos serán pasados como un `Buffer`.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -502,13 +502,13 @@ readable.on('data', (chunk) => {
 });
 ```
 
-##### Event: 'end'
+##### Evento: 'end'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-The `'end'` event is emitted when there is no more data to be consumed from the stream.
+El evento `'end'` se emite cuando no hay más datos para ser consumidos del stream.
 
 *Note*: The `'end'` event **will not be emitted** unless the data is completely consumed. This can be accomplished by switching the stream into flowing mode, or by calling [`stream.read()`](#stream_readable_read_size) repeatedly until all data has been consumed.
 
