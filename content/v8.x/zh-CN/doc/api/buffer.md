@@ -699,7 +699,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的内存范围。
 
 例如：
 
