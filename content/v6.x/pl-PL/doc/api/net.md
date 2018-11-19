@@ -62,7 +62,7 @@ Returns the bound address, the address family name, and port of the server as re
 
 For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
 
-Example:
+Przykład:
 
 ```js
 const server = net.createServer((socket) => {
