@@ -45,7 +45,7 @@ W wersjach Node.js sprzed v6, przypadki `Bufora` były tworzone przy użyciu fun
 * Przekazywanie ciągu znaków, tablicy lub `Bufora` ako pierwszego argumentu powoduje skopiowanie znakuprzekazał dane obiektu do `Bufora`.
 * Przekazanie [`ArrayBuffer`] lub [`SharedArrayBuffer`] zwraca `Bufor`, który dzieli przydzieloną pamięć z danym buforem tablicy.
 
-Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
+Ponieważ zachowanie `nowego Bufora()` zmienia się znacząco w zależności od typu wartości przekazanej jako pierwszy argument, aplikacje niepoprawnie sprawdzające argumenty wejściowe przekazane do `nowego Bufora()` lub niepoprawnie inicjujące nowo przydzieloną zawartość `Bufora`, mogą nieumyślnie wprowadzić problemy z bezpieczeństwem i niezawodnością do swojego kodu.
 
 To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
 
