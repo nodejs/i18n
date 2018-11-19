@@ -1016,7 +1016,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica che il socket non è connesso.</td>
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
@@ -1053,7 +1053,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica che la directory non è vuota.</td>
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
@@ -1065,7 +1065,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica che la quota del disco è stata superata.</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
