@@ -526,7 +526,7 @@ added: v0.9.4
 
 * `chunk` {Buffer|string|any} La pieza de datos. Para streams que no están operando en el modo objeto, la pieza será una cadena o un `Buffer`. Para streams que están en el modo objeto, la pieza puede ser cualquier valor JavaScript diferente a `null`.
 
-The `'data'` event is emitted whenever the stream is relinquishing ownership of a chunk of data to a consumer. This may occur whenever the stream is switched in flowing mode by calling `readable.pipe()`, `readable.resume()`, or by attaching a listener callback to the `'data'` event. The `'data'` event will also be emitted whenever the `readable.read()` method is called and a chunk of data is available to be returned.
+El evento de `'data'` se emite cuando el stream está cediendo la propiedad de una pieza de datos a un consumidor. Esto puede ocurrir cada vez que el stream se cambia al modo fluido para llamar a 0>readable.pipe()</code>, `readable.resume()`, o al adjuntar un callback del listener al evento de `'data'`. El evento de `'data'` también se emitirá siempre que el método `readable.read()` sea llamado y una pieza de datos esté disponible para ser devuelta.
 
 Attaching a `'data'` event listener to a stream that has not been explicitly paused will switch the stream into flowing mode. Data will then be passed as soon as it is available.
 
