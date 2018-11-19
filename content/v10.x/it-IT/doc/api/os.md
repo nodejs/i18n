@@ -1056,11 +1056,11 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
-    <td>Indicates that there are too many processes.</td>
+    <td>Indica che ci sono troppi processi.</td>
   </tr>
   <tr>
     <td><code>WSAEUSERS</code></td>
-    <td>Indicates that the user quota has been exceeded.</td>
+    <td>Indica che la quota utente è stata superata.</td>
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
@@ -1068,23 +1068,23 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
-    <td>Indicates a stale file handle reference.</td>
+    <td>Indica un riferimento di un file handle obsoleto.</td>
   </tr>
   <tr>
     <td><code>WSAEREMOTE</code></td>
-    <td>Indicates that the item is remote.</td>
+    <td>Indica che l'elemento è remoto.</td>
   </tr>
   <tr>
     <td><code>WSASYSNOTREADY</code></td>
-    <td>Indicates that the network subsystem is not ready.</td>
+    <td>Indica che il sottosistema di rete non è pronto.</td>
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
-    <td>Indicates that the `winsock.dll` version is out of range.</td>
+    <td>Indica che la versione `winsock.dll` è fuori dall'intervallo.</td>
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
-    <td>Indicates that successful WSAStartup has not yet been performed.</td>
+    <td>Indica che un WSAStartup di esito positivo non è stato ancora eseguito.</td>
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
