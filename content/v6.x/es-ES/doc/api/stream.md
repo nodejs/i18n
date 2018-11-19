@@ -649,7 +649,7 @@ const w = fs.createWriteStream('file.txt.gz');
 r.pipe(z).pipe(w);
 ```
 
-Por defecto, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) se llama en stream Escribible de destino cuando el stream Legible de origen emite [`'end'`][], así que el destino ya no es escribible. To disable this default behavior, the `end` option can be passed as `false`, causing the destination stream to remain open, as illustrated in the following example:
+Por defecto, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) se llama en stream Escribible de destino cuando el stream Legible de origen emite [`'end'`][], así que el destino ya no es escribible. Para deshabilitar este comportamiento predeterminado, la opción `end` se puede pasar como `false`, causando que el stream de destino permanezca abierto, como se muestra en el siguiente ejemplo:
 
 ```js
 reader.pipe(writer, { end: false });
