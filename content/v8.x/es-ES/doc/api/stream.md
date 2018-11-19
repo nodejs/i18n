@@ -516,7 +516,7 @@ added: v0.9.4
 
 El evento `'close'` se emite cuando el stream y cualquiera de sus recursos subyacentes (un descriptor de archivo, por ejemplo) se han cerrado. El evento indica que no se emitirán más eventos, y no se realizarán más cálculos.
 
-Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'` event.
+No todos los streams [Legibles](#stream_class_stream_readable) emitirán el evento `'close'`.
 
 ##### Event: 'data'
 
@@ -524,7 +524,7 @@ Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'
 added: v0.9.4
 -->
 
-* `chunk` {Buffer|string|any} The chunk of data. For streams that are not operating in object mode, the chunk will be either a string or `Buffer`. For streams that are in object mode, the chunk can be any JavaScript value other than `null`.
+* `chunk` {Buffer|string|any} La pieza de datos. Para streams que no están operando en el modo objeto, la pieza será una cadena o un `Buffer`. Para streams que están en el modo objeto, la pieza puede ser cualquier valor JavaScript diferente a `null`.
 
 The `'data'` event is emitted whenever the stream is relinquishing ownership of a chunk of data to a consumer. This may occur whenever the stream is switched in flowing mode by calling `readable.pipe()`, `readable.resume()`, or by attaching a listener callback to the `'data'` event. The `'data'` event will also be emitted whenever the `readable.read()` method is called and a chunk of data is available to be returned.
 
