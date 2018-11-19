@@ -582,7 +582,7 @@ added: v0.11.14
 
 * Devuelve: {boolean}
 
-El método `readable.isPaused()` devuelve el estado operativo actual del Legible. This is used primarily by the mechanism that underlies the `readable.pipe()` method. En la mayorías de los casos típicos, no habrá razones para utilizar este método directamente.
+El método `readable.isPaused()` devuelve el estado operativo actual del Legible. Esto es utilizado principalmente por el mecanismo subyacente al método `readable.pipe()`. En la mayorías de los casos típicos, no habrá razones para utilizar este método directamente.
 
 ```js
 const readable = new stream.Readable();
@@ -627,20 +627,20 @@ added: v0.9.4
 * `options` {Object} Pipe options 
   * `end` {boolean} Finaliza el escritor cuando termina el lector. Por defecto es `true`.
 
-El método `readable.pipe()` adjunta un stream [Escribible](#stream_class_stream_writable) al `readable`, ocasionando el cambio automático al modo fluido y el envío de todos sus datos al adjunto [Escribible](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
+El método `readable.pipe()` adjunta un stream [Escribible](#stream_class_stream_writable) al `readable`, ocasionando el cambio automático al modo fluido y el envío de todos sus datos al adjunto [Escribible](#stream_class_stream_writable). El flujo de datos se gestionará automáticamente para que el stream Escribible de destino no se vea abrumado por un stream Legible más rápido.
 
 The following example pipes all of the data from the `readable` into a file named `file.txt`:
 
 ```js
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// All the data from readable goes into 'file.txt'
+// Todos los datos del legible van al 'file.txt'
 readable.pipe(writable);
 ```
 
-It is possible to attach multiple Writable streams to a single Readable stream.
+Es posible adjuntar múltiples streams Escribibles en un solo stream Legible.
 
-The `readable.pipe()` method returns a reference to the *destination* stream making it possible to set up chains of piped streams:
+El método `readable.pipe()` devuelve una referencia al stream de *destino*, haciendo posible configurar cadenas de streams canalizadas:
 
 ```js
 const r = fs.createReadStream('file.txt');
@@ -649,7 +649,7 @@ const w = fs.createWriteStream('file.txt.gz');
 r.pipe(z).pipe(w);
 ```
 
-By default, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is called on the destination Writable stream when the source Readable stream emits [`'end'`][], so that the destination is no longer writable. To disable this default behavior, the `end` option can be passed as `false`, causing the destination stream to remain open, as illustrated in the following example:
+Por defecto, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) se llama en stream Escribible de destino cuando el stream Legible de origen emite [`'end'`][], así que el destino ya no es escribible. To disable this default behavior, the `end` option can be passed as `false`, causing the destination stream to remain open, as illustrated in the following example:
 
 ```js
 reader.pipe(writer, { end: false });
