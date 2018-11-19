@@ -660,9 +660,9 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} The destination for writing data
+* `destination` {stream.Writable} El destino para escribir datos
 * `options` {Object} Pipe options 
-  * `end` {boolean} End the writer when the reader ends. Defaults to `true`.
+  * `end` {boolean} Finaliza el escritor cuando termina el lector. Por defecto es `true`.
 
 The `readable.pipe()` method attaches a [Writable](#stream_class_stream_writable) stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [Writable](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
 
