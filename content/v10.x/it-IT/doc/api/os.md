@@ -744,24 +744,23 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
-    <td>Indicates that no message is available on the stream head read
-    queue.</td>
+    <td>Indica che nessun messaggio è disponibile sulla coda    di lettura dello stream head.</td>
   </tr>
   <tr>
     <td><code>ENODEV</code></td>
-    <td>Indicates that there is no such device.</td>
+    <td>Indica che non esiste un dispositivo del genere.</td>
   </tr>
   <tr>
     <td><code>ENOENT</code></td>
-    <td>Indicates that there is no such file or directory.</td>
+    <td>Indica che non esiste tale file o directory.</td>
   </tr>
   <tr>
     <td><code>ENOEXEC</code></td>
-    <td>Indicates an exec format error.</td>
+    <td>Indica un errore di formato exec.</td>
   </tr>
   <tr>
     <td><code>ENOLCK</code></td>
-    <td>Indicates that there are no locks available.</td>
+    <td>Indica che non ci sono blocchi disponibili.</td>
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
