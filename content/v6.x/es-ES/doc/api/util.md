@@ -186,7 +186,7 @@ added: v0.3.0
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. Por defecto es `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. Esto es útil para inspeccionar objetos grandes y complicados. Por defecto es `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Por defecto es `false`. Colors are customizable, see [Customizing `util.inspect` colors][].
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. Defaults to `true`.
+  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. Por defecto es `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. Por defecto es `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Defaults to `100`. Set to `null` to show all array elements. Set to `0` or negative to show no array elements.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. Defaults to 60 for legacy compatibility.
