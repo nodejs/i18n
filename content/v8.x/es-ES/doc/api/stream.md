@@ -577,16 +577,16 @@ Al callback del listener se le pasará un solo objeto de `Error`.
 added: v0.9.4
 -->
 
-El evento `'readable'` se emite cuando hay datos disponibles para leerse desde el stream. In some cases, attaching a listener for the `'readable'` event will cause some amount of data to be read into an internal buffer.
+El evento `'readable'` se emite cuando hay datos disponibles para leerse desde el stream. En algunos casos, adjuntar un listener a un evento `'readable'` causará que cierta cantidad de datos se lea en un buffer interno.
 
 ```javascript
 const readable = getReadableStreamSomehow();
 readable.on('readable', () => {
-  // there is some data to read now
+  // hay algunos datos para leer ahora
 });
 ```
 
-The `'readable'` event will also be emitted once the end of the stream data has been reached but before the `'end'` event is emitted.
+El evento `'readable'` también se emitirá una vez que se haya alcanzado el final de los datos del stream, pero antes de que se emita el evento `'end'`.
 
 Effectively, the `'readable'` event indicates that the stream has new information: either new data is available or the end of the stream has been reached. In the former case, [`stream.read()`](#stream_readable_read_size) will return the available data. In the latter case, [`stream.read()`](#stream_readable_read_size) will return `null`. For instance, in the following example, `foo.txt` is an empty file:
 
