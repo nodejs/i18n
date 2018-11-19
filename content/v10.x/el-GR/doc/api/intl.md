@@ -53,11 +53,11 @@
 
 Αν χρησιμοποιηθεί αυτή η επιλογή, τα περισσότερα χαρακτηριστικά πολυγλωσσικότητας που αναφέρονται παραπάνω θα είναι **μη διαθέσιμα** στο αρχείο `node` που θα δημιουργηθεί.
 
-### Build with a pre-installed ICU (`system-icu`)
+### Μεταγλώττιση με προ-εγκατεστημένο ICU (`system-icu`)
 
-Node.js can link against an ICU build already installed on the system. In fact, most Linux distributions already come with ICU installed, and this option would make it possible to reuse the same set of data used by other components in the OS.
+Η node.js μπορεί να συνδεθεί με ένα ICU που είναι ήδη εγκατεστημένο στο σύστημα. Στην πραγματικότητα, οι περισσότερες διανομές Linux έχουν κάποια έκδοση ICU προ-εγκατεστημένη, και αυτή η επιλογή καθιστά δυνατή την επαναχρησιμοποίηση του συνόλου δεδομένων που χρησιμοποιούν άλλα στοιχεία του Λειτουργικού Συστήματος.
 
-Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
+Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
 
 ### Embed a limited set of ICU data (`small-icu`)
 
