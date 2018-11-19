@@ -474,15 +474,15 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>Nviato a un processo per richiedere la cessazione.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>Inviato a un processo quando termina un child process.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>Inviato a un processo per segnalare un errore di stack su un coprocessore.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
