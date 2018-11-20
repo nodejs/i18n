@@ -272,9 +272,9 @@ added: v9.4.0
 
 * `callback` {Function}
 
-Chiudi con attenzione la `"Http2Session"`, consentendo a qualsiasi flusso esistente di completarsi da solo e impedendo alle nuove istanze `"Http2Stream"` di essere create. Una volta chiuso, `"http2session.destroy"()` *potrebbe* essere richiamato se non ci sono istanze `"Http2Stream"` aperte.
+Chiude con attenzione la `Http2Session`, consentendo a qualsiasi stream esistente di completarsi da solo e impedendo a nuove istanze `Http2Stream` di essere create. Una volta chiuso, `http2session.destroy()` *potrebbe* essere richiamato se non ci sono istanze `Http2Stream` aperte.
 
-Se specificato, la funzione `"callback"` è registrata come gestore per l'evento `'close'`.
+Se specificato, la funzione `callback` è registrata come gestore per l'evento `'close'`.
 
 #### http2session.closed
 
@@ -284,7 +284,7 @@ added: v9.4.0
 
 * {boolean}
 
-Sarà `"true"` se questa istanza `"Http2Session"` è stata chiusa, altrimenti `"false"`.
+Sarà `true` se questa istanza `Http2Session` è stata chiusa, altrimenti `false`.
 
 #### http2session.connecting
 
@@ -294,7 +294,7 @@ added: v10.0.0
 
 * {boolean}
 
-Sarà `"true"` se questa istanza `"Http2Session"` è ancora connessa, sarà impostata su `"false"` prima di emettere l'evento `"connect"` e/o chiamando il "callback"`"http2.connect"`.
+Sarà `true` se questa istanza `Http2Session` è ancora in connessione, sarà impostata su `false` prima di emettere l'evento `connect` e/o chiamare il callback `http2.connect`.
 
 #### http2session.destroy(\[error,\]\[code\])
 
@@ -302,8 +302,8 @@ Sarà `"true"` se questa istanza `"Http2Session"` è ancora connessa, sarà impo
 added: v8.4.0
 -->
 
-* `error` {Error} Un oggetto `"Error"` se la `"Http2Session"` viene distrutta a causa di un errore.
-* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `"GOAWAY"` finale. Se non specificato, e `"error"` non è indefinito, il valore predefinito è `"INTERNAL_ERROR"`, altrimenti il valore predefinito è `"NO_ERROR"`.
+* `error` {Error} Un `Error` object se la `Http2Session` viene distrutta a causa di un errore.
+* `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. Se non specificato, e `"error"` non è indefinito, il valore predefinito è `"INTERNAL_ERROR"`, altrimenti il valore predefinito è `"NO_ERROR"`.
 
 Termina immediatamente `"Http2Session"` e il `"net.Socket"` associato o `"tls.TLSSocket"`.
 
