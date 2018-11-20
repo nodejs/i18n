@@ -12,7 +12,7 @@ const http2 = richiede('http2');
 
 ## Core API
 
-L'API Core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, La [Compatibilità API](#http2_compatibility_api) lo è.
+L'API Core fornisce un'interfaccia di basso livello progettata specificatamente intorno al supporto per funzionalità del protocollo HTTP/2. È specificatamente *non* progettata per compatibilità con l'esistente API del modulo [HTTP/1](http.html). Tuttavia, la [Compatibilità API](#http2_compatibility_api) lo è.
 
 Il Core API di `http2` è molto più simmetrico tra client e server rispetto all'API `http`. Ad esempio, la maggior parte degli eventi, come `'error'`, `'connect'` e `'stream'`, possono essere emessi sia dal codice del lato client che dal codice del lato server.
 
@@ -89,7 +89,7 @@ added: v8.4.0
 
 Le istanze della classe `http2.Http2Session` rappresentano una sessione attiva di comunicazione tra un client HTTP/2 e un server. Le istanze di questa classe *non* sono progettate per essere costruite direttamente dal codice utente.
 
-Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `http2session.type` può essere utilizzata per determinare la modalità in cui una `Http2Session` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `Http2Session`, dato che la maggior parte delle interazioni sono generalmente effettuate tramite interazioni con oggetti `Http2Server` o `Http2Stream`.
+Ogni istanza `Http2Session` mostrerà comportamenti leggermente diversi a seconda che stia operando come server o come client. La proprietà di `http2session.type` può essere utilizzata per determinare la modalità in cui una `Http2Session` è in funzione. Sul lato server, il codice utente dovrebbe raramente avere l'occasione di lavorare direttamente con l'oggetto `Http2Session`, dato che la maggior parte delle azioni sono generalmente effettuate tramite interazioni con oggetti `Http2Server` o `Http2Stream`.
 
 #### `Http2Session` ed i Socket
 
@@ -105,7 +105,7 @@ Una volta che un `Socket` è stato associato ad `"Http2Session"`, il codice uten
 added: v8.4.0
 -->
 
-L'evento `'close'` viene emesso quando la `Http2Session` è stata distrutta. Il suo ascoltatore non si aspetta alcuna discussione.
+L'evento `'close'` viene emesso quando la `Http2Session` è stata distrutta. Il suo listener non si aspetta alcun argomento.
 
 #### Evento: 'connect'
 
@@ -118,7 +118,7 @@ added: v8.4.0
 
 L'evento `'connect'` viene emesso quando la `Http2Session` è stata correttamente collegata al peer remoto e può iniziare la comunicazione.
 
-Il codice utente tipicamente non ascolta direttamente questo evento.
+Il codice utente tipicamente non esegue direttamente il listening per questo evento.
 
 #### Evento: 'error'
 
@@ -138,11 +138,11 @@ added: v8.4.0
 
 * `type` {integer} Il tipo di frame.
 * `code` {integer} Il codice errore.
-* `id` {integer} L'id del flusso (o `0` se il frame non è associato ad un flusso).
+* `id` {integer} L'id dello stream (o `0` se il frame non è associato ad uno stream).
 
 L'evento `'frameError'` viene emesso quando si verifica un errore durante il tentativo di inviare un frame sulla sessione. Se il frame che non è stato possibile inviare è associato ad uno specifico `"Http2Stream"`, viene eseguito un tentativo di emettere un evento `'frameError'` sul `"Http2Stream"`.
 
-Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. Se l'evento non è associato a un flusso, `"Http2Session"` verrà arrestato immediatamente dopo l'evento `'frameError'`.
+Se l'evento `'frameError'` è associato a uno stream, lo stream verrà rimosso e distrutto immediatamente dopo l'evento `'frameError'`. Se l'evento non è associato a uno stream, `"Http2Session"` verrà arrestato immediatamente dopo l'evento `'frameError'`.
 
 #### Evento: 'goaway'
 
@@ -150,8 +150,8 @@ Se l'evento `'frameError'` è associato a un flusso, il flusso verrà rimosso e 
 added: v8.4.0
 -->
 
-* `errorCode` {number} Il codice di errore HTTP/2 specificato nel "frame" `"GOAWAY"`.
-* `lastStreamID` {number} L'ID dell'ultimo flusso che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
+* `errorCode` {number} Il codice di errore HTTP/2 specificato nel frame `"GOAWAY"`.
+* `lastStreamID` {number} L'ID dell'ultimo stream che il peer remoto ha elaborato correttamente (o `0` se non è specificato alcun ID).
 * `opaqueData` {Buffer} Se sono stati inclusi ulteriori dati opachi nel frame `"GOAWAY"`, verrà passata un'istanza `"Buffer"` contenente tali dati.
 
 L'evento `'goaway'` viene emesso quando viene ricevuto un frame `"GOAWAY"`.
