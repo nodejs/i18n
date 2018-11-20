@@ -329,7 +329,7 @@ added: v9.4.0
 
 * {boolean|undefined}
 
-Il valore è `"undefined"` se il socket di sessione `"Http2Session"` non è stato ancora connesso, sarà `"true"` se la `"Http2Session"` è connessa a un `"TLSSocket"` e `"false"` se la `"Http2Session"` è collegata a qualsiasi altro tipo di socket o flusso.
+Il valore è `undefined` se il socket di sessione `Http2Session` non è stato ancora connesso, sarà `true` se la `Http2Session` è connessa a un `TLSSocket` e `false` se la `Http2Session` è collegata a qualsiasi altro tipo di socket o stream.
 
 #### http2session.goaway([code, [lastStreamID, [opaqueData]]])
 
@@ -338,7 +338,7 @@ added: v9.4.0
 -->
 
 * `code` {number} Un codice d'errore HTTP/2
-* `lastStreamID` {number} L'ID numerico dell'ultimo `"Http2Stream"` elaborato
+* `lastStreamID` {number} L'ID numerico dell'ultimo `Http2Stream` elaborato
 * `opaqueData` {Buffer|TypedArray|DataView} Un'istanza `"TypedArray"` o `"DataView"` contenente dati aggiuntivi da trasportare all'interno del frame `"GOAWAY"`.
 
 Trasmette un frame `"GOAWAY"` al peer connesso *senza* spegnere la `"Http2Session"`.
