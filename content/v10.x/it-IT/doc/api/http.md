@@ -63,7 +63,7 @@ http.get(options, (res) => {
 });
 ```
 
-Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` one-time con opzioni predefinite per la connessione client.
+Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` una tantum con opzioni predefinite per la connessione client.
 
 `agent:false`:
 
@@ -72,7 +72,7 @@ http.get({
   hostname: 'localhost',
   port: 80,
   path: '/',
-  agent: false  // create a new agent just for this one request
+  agent: false  // crea un nuovo agent solo per questa richiesta
 }, (res) => {
   // Fai operazione con risposta
 });
