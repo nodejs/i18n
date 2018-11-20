@@ -619,7 +619,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indica che non esiste nessun child processes.</td>
+    <td>Indica che non ci sono child process.</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
