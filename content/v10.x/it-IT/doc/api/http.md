@@ -26,7 +26,7 @@ Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node
 
 Vedere [` message.headers`][] per i dettagli su come vengono gestite le intestazioni duplicate.
 
-Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
+Gli header grezzi così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
 
 <!-- eslint-disable semi -->
 
@@ -45,9 +45,9 @@ Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà
 added: v0.3.4
 -->
 
-Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la queue non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
+Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la coda non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
 
-Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
+Le connessioni in pool dispongono di TCP Keep-Alive abilitato, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
 
 Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool verranno passati a unref per non mantenere in esecuzione il processo Node.js quando non sono presenti richieste in sospeso. (vedi [`socket.unref()`]).
 
