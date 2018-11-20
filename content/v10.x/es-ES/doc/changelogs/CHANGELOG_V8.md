@@ -2642,11 +2642,11 @@ Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 * [[`c732bf613d`](https://github.com/nodejs/node/commit/c732bf613d)] - **tools**: añadir script para actualizar ESLint (Rich Trott) [#13895](https://github.com/nodejs/node/pull/13895)
 * [[`6a5c37655d`](https://github.com/nodejs/node/commit/6a5c37655d)] - **tools**: actualizar a ESLint 4.1.0 (Rich Trott) [#13895](https://github.com/nodejs/node/pull/13895)
 * [[`4ecff6cad7`](https://github.com/nodejs/node/commit/4ecff6cad7)] - **tools,benchmark**: utilizar linting de sangría más estricto (Rich Trott) [#13895](https://github.com/nodejs/node/pull/13895)
-* [[`d23c49f951`](https://github.com/nodejs/node/commit/d23c49f951)] - **url**: do not use HandleScope in ToObject (Bradley Farias) [#14096](https://github.com/nodejs/node/pull/14096)
-* [[`cf6afe3331`](https://github.com/nodejs/node/commit/cf6afe3331)] - **url**: normalize port on scheme change (Timothy Gu) [#13997](https://github.com/nodejs/node/pull/13997)
-* [[`783cf50a76`](https://github.com/nodejs/node/commit/783cf50a76)] - **util**: delete unused argument 'depth' (kadoufall) [#14267](https://github.com/nodejs/node/pull/14267)
-* [[`a675c3d3b7`](https://github.com/nodejs/node/commit/a675c3d3b7)] - **util**: remove redundant declaration (Vse Mozhet Byt) [#14199](https://github.com/nodejs/node/pull/14199)
-* [[`8cba959a93`](https://github.com/nodejs/node/commit/8cba959a93)] - **util**: add callbackify (Refael Ackermann) [#13750](https://github.com/nodejs/node/pull/13750)
+* [[`d23c49f951`](https://github.com/nodejs/node/commit/d23c49f951)] - **url**: no usar HandleScope en ToObject (Bradley Farias) [#14096](https://github.com/nodejs/node/pull/14096)
+* [[`cf6afe3331`](https://github.com/nodejs/node/commit/cf6afe3331)] - **url**: normalizar puerto en cambio de esquema (Timothy Gu) [#13997](https://github.com/nodejs/node/pull/13997)
+* [[`783cf50a76`](https://github.com/nodejs/node/commit/783cf50a76)] - **util**: eliminar el argumento no utilizado 'depth' (kadoufall) [#14267](https://github.com/nodejs/node/pull/14267)
+* [[`a675c3d3b7`](https://github.com/nodejs/node/commit/a675c3d3b7)] - **util**: eliminar declaración redundante (Vse Mozhet Byt) [#14199](https://github.com/nodejs/node/pull/14199)
+* [[`8cba959a93`](https://github.com/nodejs/node/commit/8cba959a93)] - **util**: añadir callbackify (Refael Ackermann) [#13750](https://github.com/nodejs/node/pull/13750)
 
 <a id="8.1.4"></a>
 
