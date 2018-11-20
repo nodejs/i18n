@@ -90,7 +90,7 @@ added: v0.3.4
   * `maxSockets` {number} Numero massimo di socket da consentire per host. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Numero massimo di socket da lasciare aperti in uno stato libero. Rilevante solo se `keepAlive` è impostato su `true`. **Default:** `256`.
 
-L'[`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
+Il [`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
 
 Per configurarne uno qualsiasi, è necessario creare un'istanza [`http.Agent`][] personalizzata.
 
@@ -187,7 +187,7 @@ added: v0.11.4
   * `family` {integer} Deve essere 4 o 6 se questo non è uguale a `undefined`.
 * Restituisce: {string}
 
-Ottenere un nome univoco per un set di opzioni di richiesta, per determinare se una connessione può essere riutilizzata. Per un agente HTTP, questo restituisce `host:port:localAddress` or `host:port:localAddress:family`. Per un agente HTTPS, il nome include CA, certificati, crittografie ed altre opzioni specifiche HTTPS/TLS che determinano la riusabilità del socket.
+Ottenere un nome univoco per un set di opzioni di richiesta, per determinare se una connessione può essere riutilizzata. Per un agente HTTP, questo restituisce `host:port:localAddress` o `host:port:localAddress:family`. Per un agente HTTPS, il nome include CA, certificati, crittografie ed altre opzioni specifiche HTTPS/TLS che determinano la riusabilità del socket.
 
 ### agent.maxFreeSockets
 
@@ -217,7 +217,7 @@ added: v0.5.9
 
 * {Object}
 
-Un object che contiene queue di richieste che non sono ancora state assegnate ai socket. Non modificare.
+Un object che contiene code di richieste che non sono ancora state assegnate ai socket. Non modificare.
 
 ### agent.sockets
 
@@ -235,7 +235,7 @@ Un object che contiene array di socket attualmente in uso dall'agente. Non modif
 added: v0.1.17
 -->
 
-Questo object viene creato internamente e restituito da [`http.request()`][]. Rappresenta una richiesta *in corso* il cui header è già stato inserito nelle queue. L'intestazione può ancora essere modificata utilizzando le API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. L'intestazione effettiva verrà inviata insieme al primo chunk di dati o quando si chiama [`request.end()`][].
+Questo object viene creato internamente e restituito da [`http.request()`][]. Rappresenta una richiesta *in corso* il cui header è già stato inserito nella coda. L'intestazione può ancora essere modificata utilizzando le API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. L'intestazione effettiva verrà inviata insieme al primo chunk di dati o quando si chiama [`request.end()`][].
 
 Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] verrà emessa dall'object richiesta una volta che le intestazioni di risposta siano state ricevute. L'evento [`'response'`][] viene eseguito con un argomento che è un'istanza di [`http.IncomingMessage`][].
 
