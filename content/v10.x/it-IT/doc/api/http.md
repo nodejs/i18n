@@ -6,7 +6,7 @@
 
 Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente in grado di eseguire lo streaming dei dati.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente è in grado di eseguire lo streaming dei dati.
 
 Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
