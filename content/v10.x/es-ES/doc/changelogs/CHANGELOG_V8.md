@@ -2659,53 +2659,53 @@ Esta es una versión de seguridad. Todos los usuarios de Node.js deben consultar
 * **build**: 
   * Deshabilitar snapshots de V8: El hashseed incrustado en el snapshot actualmente es el mismo para todas las ejecuciones del binario. Esto abre a node a ataques de colisión que podrían resultar en una Denegación de Servicio. Hemos desactivado temporalmente los snapshots hasta que se encuentre una solución más robusta. (Ali Ijaz Sheikh)
 * **deps**: 
-  * CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
+  * CVE-2017-1000381 - La función c-ares ares_parse_naptr_reply(), que se usa para analizar las respuestas NAPTR, podría activarse para leer la memoria fuera del bufer de entrada dado si el paquete de respuesta DNS pasado se elaboró de una manera particular. Este parche verifica que haya suficientes datos para los elementos requeridos de un registro NAPTR (2 int16, 3 bytes para longitudes de string) antes de procesar un registro. (David Drysdale)
 
 ### Commits
 
-* [[`51d69d2bec`](https://github.com/nodejs/node/commit/51d69d2bec)] - **build**: disable V8 snapshots (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
-* [[`d70fac47af`](https://github.com/nodejs/node/commit/d70fac47af)] - **deps**: cherry-pick 9478908a49 from cares upstream (David Drysdale) [nodejs/node-private#88](https://github.com/nodejs/node-private/pull/88)
-* [[`803d689873`](https://github.com/nodejs/node/commit/803d689873)] - **test**: verify hash seed uniqueness (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
+* [[`51d69d2bec`](https://github.com/nodejs/node/commit/51d69d2bec)] - **build**: deshabilitar snapshots de V8 (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
+* [[`d70fac47af`](https://github.com/nodejs/node/commit/d70fac47af)] - **deps**: hacer cherry-pick a 9478908a49 desde upstream de cares (David Drysdale) [nodejs/node-private#88](https://github.com/nodejs/node-private/pull/88)
+* [[`803d689873`](https://github.com/nodejs/node/commit/803d689873)] - **test**: verificar la singularidad de la hash seed (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
 
 <a id="8.1.3"></a>
 
-## 2017-06-29, Version 8.1.3 (Current), @addaleax
+## 2017-06-29, Versión 8.1.3 (Actual), @addaleax
 
-### Notable changes
+### Cambios notables
 
-* **Stream** Two regressions with the `stream` module have been fixed: 
-  * The `finish` event will now always be emitted after the `error` event if one is emitted: [[`0a9e96e86c`](https://github.com/nodejs/node/commit/0a9e96e86c)] [#13850](https://github.com/nodejs/node/pull/13850)
-  * In object mode, readable streams can now use `undefined` again. [[`5840138e70`](https://github.com/nodejs/node/commit/5840138e70)] [#13760](https://github.com/nodejs/node/pull/13760)
+* **Stream** Se han corregido dos regresiones con el módulo `stream`: 
+  * El evento `finish` ahora siempre se emitirá después del evento `error` si se emite uno: [[`0a9e96e86c`](https://github.com/nodejs/node/commit/0a9e96e86c)] [#13850](https://github.com/nodejs/node/pull/13850)
+  * En el modo "object", los streams legibles ahora pueden usar `undefined` nuevamente. [[`5840138e70`](https://github.com/nodejs/node/commit/5840138e70)] [#13760](https://github.com/nodejs/node/pull/13760)
 
 ### Commits
 
-* [[`11f45623ac`](https://github.com/nodejs/node/commit/11f45623ac)] - **benchmark**: remove needless RegExp capturing (Vse Mozhet Byt) [#13718](https://github.com/nodejs/node/pull/13718)
-* [[`2ce236e173`](https://github.com/nodejs/node/commit/2ce236e173)] - **build**: check for linter in bin rather than lib (Rich Trott) [#13645](https://github.com/nodejs/node/pull/13645)
-* [[`18f073f0fe`](https://github.com/nodejs/node/commit/18f073f0fe)] - **build**: fail linter if linting not available (Gibson Fahnestock) [#13658](https://github.com/nodejs/node/pull/13658)
-* [[`465bd48b14`](https://github.com/nodejs/node/commit/465bd48b14)] - **configure**: add mips64el to valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
-* [[`1fe455f525`](https://github.com/nodejs/node/commit/1fe455f525)] - **dgram**: change parameter name in set(Multicast)TTL (Tobias Nießen) [#13747](https://github.com/nodejs/node/pull/13747)
-* [[`a63e54a94c`](https://github.com/nodejs/node/commit/a63e54a94c)] - **doc**: update backporting guide (Refael Ackermann) [#13749](https://github.com/nodejs/node/pull/13749)
-* [[`0bb53a7aa2`](https://github.com/nodejs/node/commit/0bb53a7aa2)] - **doc**: make socket IPC examples more robust (cjihrig) [#13196](https://github.com/nodejs/node/pull/13196)
-* [[`57b7285400`](https://github.com/nodejs/node/commit/57b7285400)] - **doc**: mention rebasing of v?.x-staging post release (Anna Henningsen) [#13742](https://github.com/nodejs/node/pull/13742)
-* [[`cb932835d5`](https://github.com/nodejs/node/commit/cb932835d5)] - **doc**: `path.relative` uses `cwd` (DuanPengfei) [#13714](https://github.com/nodejs/node/pull/13714)
-* [[`61714acbe5`](https://github.com/nodejs/node/commit/61714acbe5)] - **doc**: add hasIntl to test/common/README.md (Daniel Bevenius) [#13699](https://github.com/nodejs/node/pull/13699)
-* [[`2a95cfb4ef`](https://github.com/nodejs/node/commit/2a95cfb4ef)] - **doc**: fix typo in changelog (Teddy Katz) [#13713](https://github.com/nodejs/node/pull/13713)
-* [[`31ae193b99`](https://github.com/nodejs/node/commit/31ae193b99)] - **doc**: small makeover for onboarding.md (Anna Henningsen) [#13413](https://github.com/nodejs/node/pull/13413)
-* [[`c27ffadf8e`](https://github.com/nodejs/node/commit/c27ffadf8e)] - **doc**: fix a few n-api doc issues (Michael Dawson) [#13650](https://github.com/nodejs/node/pull/13650)
-* [[`c142f1d316`](https://github.com/nodejs/node/commit/c142f1d316)] - **doc**: fix minor issues reported in #9538 (Tobias Nießen) [#13491](https://github.com/nodejs/node/pull/13491)
-* [[`f28dd8e680`](https://github.com/nodejs/node/commit/f28dd8e680)] - **doc**: fixes a typo in the async_hooks documentation (Chris Young) [#13666](https://github.com/nodejs/node/pull/13666)
-* [[`58e177cde1`](https://github.com/nodejs/node/commit/58e177cde1)] - **doc**: document and test that methods return this (Sam Roberts) [#13531](https://github.com/nodejs/node/pull/13531)
-* [[`f5f2a0e968`](https://github.com/nodejs/node/commit/f5f2a0e968)] - **doc**: sort and update /cc list for inspector issues (Aditya Anand) [#13632](https://github.com/nodejs/node/pull/13632)
-* [[`dc06a0a85a`](https://github.com/nodejs/node/commit/dc06a0a85a)] - **doc**: note that EoL platforms are not supported (Gibson Fahnestock) [#12672](https://github.com/nodejs/node/pull/12672)
-* [[`9b74dded0d`](https://github.com/nodejs/node/commit/9b74dded0d)] - **doc**: update async_hooks providers list (Anna Henningsen) [#13561](https://github.com/nodejs/node/pull/13561)
-* [[`cc922310e3`](https://github.com/nodejs/node/commit/cc922310e3)] - **doc**: fix out of date napi_callback doc (XadillaX) [#13570](https://github.com/nodejs/node/pull/13570)
-* [[`8cb7d96569`](https://github.com/nodejs/node/commit/8cb7d96569)] - **fs**: don't conflate data and callback in appendFile (Nikolai Vavilov) [#11607](https://github.com/nodejs/node/pull/11607)
-* [[`233545a81c`](https://github.com/nodejs/node/commit/233545a81c)] - **inspector,cluster**: fix inspect port assignment (cornholio) [#13619](https://github.com/nodejs/node/pull/13619)
-* [[`cbe7c5c617`](https://github.com/nodejs/node/commit/cbe7c5c617)] - **lib**: correct typo in createSecureContext (Daniel Bevenius) [#13653](https://github.com/nodejs/node/pull/13653)
-* [[`f49dd21b2f`](https://github.com/nodejs/node/commit/f49dd21b2f)] - **n-api**: avoid crash in napi_escape_scope() (Michael Dawson) [#13651](https://github.com/nodejs/node/pull/13651)
-* [[`28166770bd`](https://github.com/nodejs/node/commit/28166770bd)] - **net**: fix abort on bad address input (Ruben Bridgewater) [#13726](https://github.com/nodejs/node/pull/13726)
-* [[`e786926de9`](https://github.com/nodejs/node/commit/e786926de9)] - **readline,repl,url,util**: remove needless capturing (Vse Mozhet Byt) [#13718](https://github.com/nodejs/node/pull/13718)
-* [[`3322191d2f`](https://github.com/nodejs/node/commit/3322191d2f)] - **src**: don't set --icu_case_mapping flag on startup (Ben Noordhuis) [#13698](https://github.com/nodejs/node/pull/13698)
+* [[`11f45623ac`](https://github.com/nodejs/node/commit/11f45623ac)] - **benchmark**: eliminar captura innecesaria de RegExp (Vse Mozhet Byt) [#13718](https://github.com/nodejs/node/pull/13718)
+* [[`2ce236e173`](https://github.com/nodejs/node/commit/2ce236e173)] - **build**: verificar si hay un linter en bin en lugar de lib (Rich Trott) [#13645](https://github.com/nodejs/node/pull/13645)
+* [[`18f073f0fe`](https://github.com/nodejs/node/commit/18f073f0fe)] - **build**: fallar linter si el linting no está disponible (Gibson Fahnestock) [#13658](https://github.com/nodejs/node/pull/13658)
+* [[`465bd48b14`](https://github.com/nodejs/node/commit/465bd48b14)] - **configure**: añadir mips64el a valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
+* [[`1fe455f525`](https://github.com/nodejs/node/commit/1fe455f525)] - **dgram**: cambiar nombre de parámetro en set(Multicast)TTL (Tobias Nießen) [#13747](https://github.com/nodejs/node/pull/13747)
+* [[`a63e54a94c`](https://github.com/nodejs/node/commit/a63e54a94c)] - **doc**: actualizar guía de backporting (Refael Ackermann) [#13749](https://github.com/nodejs/node/pull/13749)
+* [[`0bb53a7aa2`](https://github.com/nodejs/node/commit/0bb53a7aa2)] - **doc**: hacer ejemplos de socket IPC más robustos (cjihrig) [#13196](https://github.com/nodejs/node/pull/13196)
+* [[`57b7285400`](https://github.com/nodejs/node/commit/57b7285400)] - **doc**: mencionar el rebase de v?.x-staging posterior al lanzamiento (Anna Henningsen) [#13742](https://github.com/nodejs/node/pull/13742)
+* [[`cb932835d5`](https://github.com/nodejs/node/commit/cb932835d5)] - **doc**: `path.relative` usa `cwd` (DuanPengfei) [#13714](https://github.com/nodejs/node/pull/13714)
+* [[`61714acbe5`](https://github.com/nodejs/node/commit/61714acbe5)] - **doc**: añadir hasIntl a test/common/README.md (Daniel Bevenius) [#13699](https://github.com/nodejs/node/pull/13699)
+* [[`2a95cfb4ef`](https://github.com/nodejs/node/commit/2a95cfb4ef)] - **doc**: corregir error tipográfico en registro de cambios (Teddy Katz) [#13713](https://github.com/nodejs/node/pull/13713)
+* [[`31ae193b99`](https://github.com/nodejs/node/commit/31ae193b99)] - **doc**: pequeño cambio de imagen para onboarding.md (Anna Henningsen) [#13413](https://github.com/nodejs/node/pull/13413)
+* [[`c27ffadf8e`](https://github.com/nodejs/node/commit/c27ffadf8e)] - **doc**: corregir algunos problemas de doc n-api (Michael Dawson) [#13650](https://github.com/nodejs/node/pull/13650)
+* [[`c142f1d316`](https://github.com/nodejs/node/commit/c142f1d316)] - **doc**: corregir problemas menores resportados en #9538 (Tobias Nießen) [#13491](https://github.com/nodejs/node/pull/13491)
+* [[`f28dd8e680`](https://github.com/nodejs/node/commit/f28dd8e680)] - **doc**: corregir un error tipográfico en la documentación de async_hooks (Chris Young) [#13666](https://github.com/nodejs/node/pull/13666)
+* [[`58e177cde1`](https://github.com/nodejs/node/commit/58e177cde1)] - **doc**: documentar y probar que los métodos devuelvan esto (Sam Roberts) [#13531](https://github.com/nodejs/node/pull/13531)
+* [[`f5f2a0e968`](https://github.com/nodejs/node/commit/f5f2a0e968)] - **doc**: ordenar y actualizar la lista de /cc para problemas de inspector (Aditya Anand) [#13632](https://github.com/nodejs/node/pull/13632)
+* [[`dc06a0a85a`](https://github.com/nodejs/node/commit/dc06a0a85a)] - **doc**: tener en cuenta que las plataformas EoL no son soportadas (Gibson Fahnestock) [#12672](https://github.com/nodejs/node/pull/12672)
+* [[`9b74dded0d`](https://github.com/nodejs/node/commit/9b74dded0d)] - **doc**: actualizar la lista de proveedores de async_hooks (Anna Henningsen) [#13561](https://github.com/nodejs/node/pull/13561)
+* [[`cc922310e3`](https://github.com/nodejs/node/commit/cc922310e3)] - **doc**: corregir documento fuera de fecha de napi_callback (XadillaX) [#13570](https://github.com/nodejs/node/pull/13570)
+* [[`8cb7d96569`](https://github.com/nodejs/node/commit/8cb7d96569)] - **fs**: no confundir los datos y la callback en appendFile (Nikolai Vavilov) [#11607](https://github.com/nodejs/node/pull/11607)
+* [[`233545a81c`](https://github.com/nodejs/node/commit/233545a81c)] - **inspector,cluster**: corregir asignación del puerto del inspector (cornholio) [#13619](https://github.com/nodejs/node/pull/13619)
+* [[`cbe7c5c617`](https://github.com/nodejs/node/commit/cbe7c5c617)] - **lib**: corregir error tipográfico en createSecureContext (Daniel Bevenius) [#13653](https://github.com/nodejs/node/pull/13653)
+* [[`f49dd21b2f`](https://github.com/nodejs/node/commit/f49dd21b2f)] - **n-api**: evitar el colapso en napi_escape_scope() (Michael Dawson) [#13651](https://github.com/nodejs/node/pull/13651)
+* [[`28166770bd`](https://github.com/nodejs/node/commit/28166770bd)] - **net**: corregir abortar en entrada de dirección incorrecta (Ruben Bridgewater) [#13726](https://github.com/nodejs/node/pull/13726)
+* [[`e786926de9`](https://github.com/nodejs/node/commit/e786926de9)] - **readline,repl,url,util**: eliminar captura innecesaria (Vse Mozhet Byt) [#13718](https://github.com/nodejs/node/pull/13718)
+* [[`3322191d2f`](https://github.com/nodejs/node/commit/3322191d2f)] - **src**: no establecer la bandera --icu_case_mapping en el inicio (Ben Noordhuis) [#13698](https://github.com/nodejs/node/pull/13698)
 * [[`a27a35b997`](https://github.com/nodejs/node/commit/a27a35b997)] - **src**: fix decoding base64 with whitespace (Nikolai Vavilov) [#13660](https://github.com/nodejs/node/pull/13660)
 * [[`5b3e5fac38`](https://github.com/nodejs/node/commit/5b3e5fac38)] - **src**: remove void casts for clear_error_on_return (Daniel Bevenius) [#13669](https://github.com/nodejs/node/pull/13669)
 * [[`0a9e96e86c`](https://github.com/nodejs/node/commit/0a9e96e86c)] - **stream**: finish must always follow error (Matteo Collina) [#13850](https://github.com/nodejs/node/pull/13850)
