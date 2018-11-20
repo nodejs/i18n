@@ -442,7 +442,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Sinonimo di <code>SIGABRT</code></td>
+    <td>Sinonimo per <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
@@ -450,7 +450,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Inviato a un processo per notificare che ha eseguito un'operazione aritmetica non consentita.</td>
+    <td>Inviato a un processo per notificare che ha eseguito     un'operazione aritmetica non consentita.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
@@ -474,7 +474,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Nviato a un processo per richiedere la cessazione.</td>
+    <td>Inviato a un processo per richiedere la cessazione.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
@@ -506,7 +506,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Inviato a un processo quando si scrive alla TTY mentre è in    backgrond.</td>
+    <td>Inviato a un processo quando si scrive alla TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
@@ -538,7 +538,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Sinonimo di <code>SIGIO</code></td>
+    <td>Sinonimo per <code>SIGIO</code></td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
@@ -550,7 +550,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Sinonimo di <code>SIGPWR</code></td>
+    <td>Sinonimo per <code>SIGPWR</code></td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
@@ -558,7 +558,7 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Sinonimo di <code>SIGSYS</code></td>
+    <td>Sinonimo per <code>SIGSYS</code></td>
   </tr>
 </table>
 
@@ -595,11 +595,11 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indica che al momento non ci sono dati disponibili e di riprovare l'operazione più tardi.</td>
+    <td>Indica che al momento non ci sono dati disponibili e di riprovare     l'operazione più tardi.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indica che il socket ha già una connessione in sospeso in corso.</td>
+    <td>Indica che il socket ha già una connessione in sospeso    in corso.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
@@ -731,7 +731,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENETUNREACH</code></td>
-    <td>Indica che il network non è raggiungibile.</td>
+    <td>Indica che la rete non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>ENFILE</code></td>
@@ -739,7 +739,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOBUFS</code></td>
-    <td>Indica che non è disponibile ulteriore spazio sul buffer.</td>
+    <td>Indica che lo spazio sul buffer non è disponibile.</td>
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
@@ -823,12 +823,12 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indica che un operazione non è supportata sul socket.
-    Ricorda che mentre `ENOTSUP` e` EOPNOTSUPP` hanno lo stesso valore su Linux, secondo POSIX.1 questi valori di errore dovrebbero essere distinti.)</td>
+    <td>Indica che un'operazione non è supportata sul socket.
+    Ricorda che mentre `ENOTSUP` e` EOPNOTSUPP` hanno lo stesso valore su Linux,    secondo POSIX.1 questi valori di errore dovrebbero essere distinti.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indica che un valore è troppo grande per essere memorizzato nel tipo di dati forniti.</td>
+    <td>Indica che un valore è troppo grande per essere memorizzato in un   tipo di dati fornito.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
@@ -868,7 +868,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indica che file handle è obsoleto.</td>
+    <td>Indica che il file handle è obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
@@ -892,7 +892,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
 </table>
 
-#### Costanti di errore specifico di Windows
+#### Costanti di Errore Specifico di Windows
 
 I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
@@ -991,7 +991,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indica che il network non è raggiungibile.</td>
+    <td>Indica che la rete non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
@@ -1007,7 +1007,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indica che non è disponibile ulteriore spazio sul buffer.</td>
+    <td>Indica che lo spazio sul buffer non è disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
@@ -1047,7 +1047,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indica che non esiste una rotta verso un host di rete.</td>
+    <td>Indica che non esiste un collegamento ad un host di rete.</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
