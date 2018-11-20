@@ -348,8 +348,8 @@ Vengono fornite le seguenti proprietà:
 
 - `code` {string} La stringa error code
 - `errno` {number} L'error number fornito dal sistema
-- `message` {string} A system-provided human readable description of the error
-- `syscall` {string} The name of the system call that triggered the error
+- `message` {string} Una descrizione dell'errore in forma leggibile
+- `syscall` {string} Il nome della chiamata di sistema che ha causato l'errore
 - `path` {Buffer} When reporting a file system error, the `path` will identify the file path.
 - `dest` {Buffer} When reporting a file system error, the `dest` will identify the file path destination (if any).
 
