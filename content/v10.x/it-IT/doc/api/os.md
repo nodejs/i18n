@@ -1131,7 +1131,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indica che una database query è stata rifiutata.</td>
+    <td>Indica che un database query è stata rifiutato.</td>
   </tr>
 </table>
 
@@ -1158,7 +1158,7 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
   </tr>
   <tr>
     <td><code>RTLD_LOCAL</code></td>
-    <td>Il contrario di `RTLD_GLOBAL`. Questa è l'azione predefinita se non è specificato nessun flag.</td>
+    <td>Il contrario di `RTLD_GLOBAL`. Questa è l'azione predefinita se non è specificato nessun    flag.</td>
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
