@@ -12,9 +12,9 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-L'operazione predefinita del modulo `path` varia in base al sistema operativo su cui è in esecuzione un'applicazione Node.js. In particolare, quando si esegue su un sistema operativo Windows, il modulo `path` assumerà che i percorsi in stile Windows vengano utilizzati.
+L'operazione predefinita del modulo `path` varia in base al sistema operativo su cui è in esecuzione un'applicazione Node.js. In particolare, quando si esegue su un sistema operativo Windows, il modulo `path` presumerà che i percorsi in stile Windows vengano utilizzati.
 
-Ad esempio, se si utilizza la funzione `path.basename()` con il percorso file Windows `C:\temp\myfile.html`, si otterranno risultati diversi durante l'esecuzione su POSIX rispetto a quando viene eseguito Su Windows:
+Ad esempio, utilizzando la funzione `path.basename()` con il percorso file Windows `C:\temp\myfile.html`, si otterranno risultati diversi durante l'esecuzione su POSIX rispetto a quando viene eseguito su Windows:
 
 Su POSIX:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-Per ottenere risultati consistenti quando si utilizzano i file path Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
+Per ottenere risultati consistenti quando si lavora con i file path di Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
 
 Su POSIX e Windows:
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-Per ottenere risultati consistenti quando si utilizzano i file path Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
+Per ottenere risultati consistenti quando si lavora con i file path di POSIX su qualsiasi sistema operativo, utilizzare [`path.posix`][]:
 
 Su POSIX e Windows:
 
@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `path.resolve ('c: \\')` può potenzialmente restituire un risultato diverso da `path.resolve ('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows, Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `path.resolve ('c: \\')` può potenzialmente restituire un risultato diverso da `path.resolve ('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
