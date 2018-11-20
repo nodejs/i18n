@@ -330,15 +330,15 @@ Un'eccezione JavaScript viene generata come risultato di un operazione non valid
 
 Alcune eccezione sono *non recuperabili* al livello di JavaScript. Tali eccezione causeranno *sempre* l'arresto del processo Node.js. Gli esempi includono verifiche `assert()` o chiamate `abort()` nel livello di C++.
 
-## System Errors
+## Errori di Sistema
 
-System errors are generated when exceptions occur within the Node.js runtime environment. Typically, these are operational errors that occur when an application violates an operating system constraint such as attempting to read a file that does not exist or when the user does not have sufficient permissions.
+Gli errori di sistema sono generati quando si verificano eccezioni all'interno dell'ambiente di runtime di Node.js. Di solito, questi sono errori operativi che si verificano quando un'applicazione viola un vincolo del sistema operativo come ad esempio provare a leggere un file che non esiste oppure quando l'utente non dispone dei permessi necessari.
 
-System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
+Gli errori di sistema sono di solito generati al livello di syscall: un elenco esaustivo di codici di errore e il loro significato è disponibile eseguendo `man 2 intro` o `man 3 errno` sulla maggior parte dei sistemi operativi Unix; oppure [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
-In Node.js, system errors are represented as augmented `Error` objects with added properties.
+In Node.js gli errori di sistema sono rappresentati come `Error` objects con proprietà aggiunte.
 
-### Class: SystemError
+### Classe: SystemError
 
 ### error.info
 
