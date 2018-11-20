@@ -1091,7 +1091,7 @@ console.log(b.toString());
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid fill data remains, no filling is performed:
+如果 `value` 包含无效字符，则会被截断；如果没有有效的填充数据保留，则抛出异常：
 
 ```js
 const buf = Buffer.allocUnsafe(5);
@@ -1109,14 +1109,14 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
+* `value` {string|Buffer|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* 返回：{boolean} 如果在 `buf` 中找到 `value`， 则返回 `true`，否则返回 `false`。
 
-Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
+相当于 [`buf.indexOf() !== -1`][`buf.indexOf()`]。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1159,7 +1159,7 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
@@ -1264,7 +1264,7 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
