@@ -342,12 +342,12 @@ In Node.js gli errori di sistema sono rappresentati come `Error` objects con pro
 
 ### error.info
 
-`SystemError` instances may have an additional `info` property whose value is an object with additional details about the error conditions.
+Le istanze di `SystemError` potrebbero avere un ulterior proprietà `info` il cui valore è un oggetto con dettagli aggiuntivi riguardanti le condizioni dell'errore.
 
-The following properties are provided:
+Vengono fornite le seguenti proprietà:
 
-- `code` {string} The string error code
-- `errno` {number} The system-provided error number
+- `code` {string} La stringa error code
+- `errno` {number} L'error number fornito dal sistema
 - `message` {string} A system-provided human readable description of the error
 - `syscall` {string} The name of the system call that triggered the error
 - `path` {Buffer} When reporting a file system error, the `path` will identify the file path.
