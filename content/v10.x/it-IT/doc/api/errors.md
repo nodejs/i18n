@@ -326,7 +326,7 @@ Node.js genererà e mostrerà le istanze `TypeError` *immediatamente* come una f
 
 <!--type=misc-->
 
-Un'eccezione JavaScript viene generata come risultato di un operazione non valida o come obbiettivo di un'istruzione `throw`. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+Un'eccezione JavaScript viene generata come risultato di un operazione non valida o come obbiettivo di un'istruzione `throw`. Anche se non è richiesto che questi valori siano istanze di `Error` o classi che ereditano da `Error`, tutte le eccezioni generate da Node.js o dal Runtime JavaScript *saranno* istanze di `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
