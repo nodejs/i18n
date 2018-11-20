@@ -305,11 +305,11 @@ added: v8.4.0
 * `error` {Error} Un `Error` object se la `Http2Session` viene distrutta a causa di un errore.
 * `code` {number} Il codice di errore HTTP/2 da inviare nel frame `GOAWAY` finale. Se non specificato, e `error` non è indefinito, il valore predefinito è `INTERNAL_ERROR`, altrimenti il valore predefinito è `NO_ERROR`.
 
-Termina immediatamente `"Http2Session"` e il `"net.Socket"` associato o `"tls.TLSSocket"`.
+Termina immediatamente `Http2Session` e il `net.Socket` o `tls.TLSSocket` associati.
 
-Una volta distrutto, `"Http2Session"` emetterà l'evento `'close'`. Se `"error"` non è indefinito, un evento `'error'` verrà emesso immediatamente prima dell'evento `'close'`.
+Una volta distrutto, `Http2Session` emetterà l'evento `'close'`. Se `error` non è indefinito, un evento `'error'` verrà emesso immediatamente prima dell'evento `'close'`.
 
-Se sono rimasti aperti `"Http2Streams"` associati a `"Http2Session"`, anche quelli verranno distrutti.
+Se sono rimasti aperti `Http2Streams` associati a `Http2Session`, anche quelli verranno distrutti.
 
 #### http2session.destroyed
 
