@@ -2650,11 +2650,11 @@ Muchas gracias a @addaleax que preparó la mayor parte de este lanzamiento.
 
 <a id="8.1.4"></a>
 
-## 2017-07-11, Version 8.1.4 (Current), @evanlucas
+## 2017-07-11, Versión 8.1.4 (Actual), @evanlucas
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
+Esta es una versión de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la versión de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para detalles sobre las vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
 * **build**: 
   * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
