@@ -36,7 +36,7 @@
 | ------------------------------------------------------ | ----------------------------------------------- | ----------------------------------- | --------------------------- | ---------- |
 | [`String.prototype.normalize()`][]                     | όχι (η συνάρτηση είναι no-op)                   | πλήρης                              | πλήρης                      | πλήρης     |
 | `String.prototype.to*Case()`                           | πλήρης                                          | πλήρης                              | πλήρης                      | πλήρης     |
-| [`Intl`][]                                             | όχι (η συνάρτηση είναι no-op)                   | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
+| [`Intl`][]                                             | καμία (το αντικείμενο δεν ορίζεται)             | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
 | [`String.prototype.localeCompare()`][]                 | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
 | `String.prototype.toLocale*Case()`                     | περιορισμένη (δεν είναι locale-aware)           | πλήρης                              | πλήρης                      | πλήρης     |
 | [`Number.prototype.toLocaleString()`][]                | περιορισμένη (δεν είναι locale-aware)           | περιορισμένη/πλήρης (ανάλογα το ΛΣ) | περιορισμένη (μόνο Αγγλικά) | πλήρης     |
@@ -53,17 +53,17 @@
 
 Αν χρησιμοποιηθεί αυτή η επιλογή, τα περισσότερα χαρακτηριστικά πολυγλωσσικότητας που αναφέρονται παραπάνω θα είναι **μη διαθέσιμα** στο αρχείο `node` που θα δημιουργηθεί.
 
-### Build with a pre-installed ICU (`system-icu`)
+### Μεταγλώττιση με προ-εγκατεστημένο ICU (`system-icu`)
 
-Node.js can link against an ICU build already installed on the system. In fact, most Linux distributions already come with ICU installed, and this option would make it possible to reuse the same set of data used by other components in the OS.
+Η node.js μπορεί να συνδεθεί με ένα ICU που είναι ήδη εγκατεστημένο στο σύστημα. Στην πραγματικότητα, οι περισσότερες διανομές Linux έχουν κάποια έκδοση ICU προ-εγκατεστημένη, και αυτή η επιλογή καθιστά δυνατή την επαναχρησιμοποίηση του συνόλου δεδομένων που χρησιμοποιούν άλλα στοιχεία του Λειτουργικού Συστήματος.
 
-Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
+Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `system-icu`. Χαρακτηριστικά που απαιτούν πρόσθετα τοπικά δεδομένα του ICU, όπως για παράδειγμα το [`Intl.DateTimeFormat`][] *ίσως* υποστηρίζονται τμηματικά ή πλήρως, ανάλογα με την πληρότητα των δεδομένων του ICU που έχει εγκατασταθεί στο σύστημα.
 
-### Embed a limited set of ICU data (`small-icu`)
+### Ενσωμάτωση περιορισμένου σετ δεδομένων ICU (`small-icu`)
 
-This option makes the resulting binary link against the ICU library statically, and includes a subset of ICU data (typically only the English locale) within the `node` executable.
+Αυτή η επιλογή δημιουργεί στατική σύνδεση μεταξύ του σχετικού αρχείου της Node με την βιβλιοθήκη ICU, και συμπεριλαμβάνει ένα υποσύνολο των δεδομένων του ICU (συνήθως μόνο στην Αγγλική Γλώσσα) στο εκτελέσιμο αρχείο `node`.
 
-Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
+Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `small-icu`. Χαρακτηριστικά που απαιτούν πρόσθετα τοπικά δεδομένα του ICU, όπως το [`Intl.DateTimeFormat`][], γενικά λειτουργούν μόνο στην Αγγλική γλώσσα:
 
 ```js
 const january = new Date(9e8);
@@ -71,55 +71,55 @@ const english = new Intl.DateTimeFormat('en', { month: 'long' });
 const spanish = new Intl.DateTimeFormat('es', { month: 'long' });
 
 console.log(english.format(january));
-// Prints "January"
+// Τυπώνει "January"
 console.log(spanish.format(january));
-// Prints "M01" on small-icu
-// Should print "enero"
+// Τυπώνει "M01" on small-icu
+// Θα έπρεπε να τυπώσει "enero"
 ```
 
-This mode provides a good balance between features and binary size, and it is the default behavior if no `--with-intl` flag is passed. The official binaries are also built in this mode.
+Αυτός ο τρόπος παρέχει μια καλή ισορροπία μεταξύ χαρακτηριστικών και μέγεθος αρχείου, και είναι η προεπιλεγμένη συμπεριφορά αν δεν χρησιμοποιηθεί κάποια επιλογή του `--with-intl`. Τα αρχεία που διανέμονται επίσημα, μεταγλωττίζονται με αυτόν τον τρόπο.
 
-#### Providing ICU data at runtime
+#### Παροχή δεδομένων ICU κατά την εκτέλεση (runtime)
 
-If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
+Αν χρησιμοποιηθεί η επιλογή `small-icu`, ο διαχειριστής μπορεί να παρέχει περισσότερα δεδομένα γλώσσας κατά την εκτέλεση, έτσι ώστε όλες οι μέθοδοι JS να λειτουργούν σε όλες τις γλώσσες του ICU. Υποθέτοντας ότι το αρχείο δεδομένων είναι αποθηκευμένο στη διαδρομή `/some/directory`, μπορεί να γίνει διαθέσιμο στο ICU μέσω ενός απο τους παρακάτω τρόπους:
 
-- The [`NODE_ICU_DATA`][] environment variable:
+- Μεταβλητή περιβάλλοντος [`NODE_ICU_DATA`][]:
     
     ```shell
     env NODE_ICU_DATA=/some/directory node
     ```
 
-- The [`--icu-data-dir`][] CLI parameter:
+- Παράμετρος Κονσόλας [`--icu-data-dir`][]:
     
     ```shell
     node --icu-data-dir=/some/directory
     ```
 
-(If both are specified, the `--icu-data-dir` CLI parameter takes precedence.)
+(αν έχουν οριστεί και οι 2 τρόποι, προτεραιότητα έχει η παράμετρος κονσόλας`--icu-data-dir`.)
 
-ICU is able to automatically find and load a variety of data formats, but the data must be appropriate for the ICU version, and the file correctly named. The most common name for the data file is `icudt5X[bl].dat`, where `5X` denotes the intended ICU version, and `b` or `l` indicates the system's endianness. Check ["ICU Data"](http://userguide.icu-project.org/icudata) article in the ICU User Guide for other supported formats and more details on ICU data in general.
+Το ICU μπορεί να εντοπίσει και να φορτώσει αυτόματα μια μεγάλη ποικιλία μορφών δεδομένων, αλλά τα δεδομένα θα πρέπει να είναι κατάλληλα για την έκδοση του ICU, και το αρχείο να έχει ονομαστεί κατάλληλα. Το πιο συχνό όνομα για τα αρχεία δεδομένων είναι το `icudt5X[bl].dat`, όπου το `5X` επισημαίνει την έκδοση ICU για την οποία προορίζεται, και το `b` ή το `l` που επισημαίνει το endianness του συστήματος. Διαβάστε το άρθρο ["ICU Data"](http://userguide.icu-project.org/icudata) στον Οδηγό Χρήστη του ICU για περισσότερες υποστηριζόμενες μορφές, καθώς και για περισσότερες λεπτομέρειες για τα δεδομένα του ICU γενικότερα.
 
-The [full-icu](https://www.npmjs.com/package/full-icu) npm module can greatly simplify ICU data installation by detecting the ICU version of the running `node` executable and downloading the appropriate data file. After installing the module through `npm i full-icu`, the data file will be available at `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
+Το στοιχείο [full-icu](https://www.npmjs.com/package/full-icu) του npm μπορεί να απλοποιήσει σημαντικά την εγκατάσταση των δεδομένων του ICU, ανιχνεύοντας την έκδοση του ICU που χρησιμοποιεί το εκτελέσιμο αρχείο `node` που εκτελείται, και κατεβάζοντας το αντίστοιχο αρχείο δεδομένων. Αφού εγκαταστήσετε το στοιχείο μέσω της εντολής `npm i full-icu`, το αρχείο δεδομένων θα είναι διαθέσιμο στη διαδρομή `./node_modules/full-icu`. Αυτή η διαδρομή μπορεί να χρησιμοποιηθεί είτε με την μεταβλητή `NODE_ICU_DATA` είτε με την παράμετρο κονσόλας `--icu-data-dir` όπως δείχνουν τα παραδείγματα που δείξαμε παραπάνω, για να ενεργοποιηθεί η πλήρης υποστήριξη `Intl`.
 
-### Embed the entire ICU (`full-icu`)
+### Ενσωμάτωση ολόκληρου του ICU (`full-icu`)
 
-This option makes the resulting binary link against ICU statically and include a full set of ICU data. A binary created this way has no further external dependencies and supports all locales, but might be rather large. See [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) on how to compile a binary using this mode.
+Αυτή η επιλογή συνδέει στατικά το αρχείο που προκύπτει από τη μεταγλώττιση με το ICU, και συμπεριλαμβάνει ένα πλήρες σύνολο δεδομένων του ICU. Το αρχείο που δημιουργείται με αυτόν τον τρόπο, δεν έχει άλλες εξαρτήσεις, υποστηρίζει όλες τις γλώσσες, αλλά μπορεί να είναι αρκετά μεγάλο. Δείτε το [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) για περισσότερες πληροφορίες σχετικά με το πως να μεταγλωττίσετε χρησιμοποιώντας αυτή τη λειτουργία.
 
-## Detecting internationalization support
+## Ανίχνευση πολυγλωσσικής υποστήριξης
 
-To verify that ICU is enabled at all (`system-icu`, `small-icu`, or `full-icu`), simply checking the existence of `Intl` should suffice:
+Για να επιβεβαιώσετε ότι το ICU είναι ενεργό με οποιονδήποτε τρόπο (`system-icu`, `small-icu`, ή `full-icu`), ο απλός έλεγχος ύπαρξης του `Intl` είναι αρκετός:
 
 ```js
 const hasICU = typeof Intl === 'object';
 ```
 
-Alternatively, checking for `process.versions.icu`, a property defined only when ICU is enabled, works too:
+Εναλλακτικά, ο έλεγχος του `process.versions.icu`, μια ιδιότητα που ορίζεται μόνο όταν έχει ενεργοποιηθεί το ICU, είναι επίσης ένας αποδεκτός τρόπος:
 
 ```js
 const hasICU = typeof process.versions.icu === 'string';
 ```
 
-To check for support for a non-English locale (i.e. `full-icu` or `system-icu`), [`Intl.DateTimeFormat`][] can be a good distinguishing factor:
+Για να ελέγξετε αν υπάρχει υποστήριξη για μια γλώσσα εκτός των Αγγλικών (π.χ. `full-icu` ή `system-icu`), το [`Intl.DateTimeFormat`][] είναι ένας πολύ καλός τρόπος:
 
 ```js
 const hasFullICU = (() => {
@@ -133,7 +133,7 @@ const hasFullICU = (() => {
 })();
 ```
 
-For more verbose tests for `Intl` support, the following resources may be found to be helpful:
+Για περισσότερες και αναλυτικότερες δοκιμές για την υποστήριξη του `Intl`, οι παρακάτω πόροι μπορεί να βοηθήσουν:
 
-- [btest402](https://github.com/srl295/btest402): Generally used to check whether Node.js with `Intl` support is built correctly.
-- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): ECMAScript's official conformance test suite includes a section dedicated to ECMA-402.
+- [btest402](https://github.com/srl295/btest402): Χρησιμοποιείται για να ελέγξουμε αν έχει μεταγλωττιστεί σωστά το Node.js για το `Intl`.
+- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): Η επίσημη σουίτα δοκιμών συμμόρφωσης του ECMAScript περιλαμβάνει μια ενότητα αφιερωμένη στο ECMA-402.

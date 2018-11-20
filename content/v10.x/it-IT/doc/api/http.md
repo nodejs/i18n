@@ -6,7 +6,7 @@
 
 Per utilizzare il server HTTP ed il client è necessario chiamare `require('http')`.
 
-Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Le interfacce HTTP in Node.js sono progettate per supportare numerose funzionalità del protocollo che tradizionalmente sono state difficili da utilizzare. In particolare, messaggi di grandi dimensioni, possibilmente codificati per il chunk. L'interfaccia fa attenzione a non bufferizzare intere richieste o risposte — l'utente è in grado di eseguire lo streaming dei dati.
 
 Gli header dei messaggi HTTP sono rappresentati da un object come questo:
 
@@ -20,13 +20,13 @@ Gli header dei messaggi HTTP sono rappresentati da un object come questo:
   'accept': '*/*' }
 ```
 
-Keys are lowercased. I valori non vengono modificati.
+Le chiavi sono minuscole. I valori non vengono modificati.
 
 Per supportare l'intera gamma di possibili applicazioni HTTP, l'API HTTP di Node.js è di livello molto basso. Si occupa esclusivamente della gestione dello stream e dell'analisi dei messaggi. Analizza un messaggio nelle intestazioni e nel corpo ma non analizza le intestazioni effettive o il corpo.
 
-Vedere [` message.headers`][] per i dettagli su come vengono gestiti le intestazioni duplicate.
+Vedere [` message.headers`][] per i dettagli su come vengono gestite le intestazioni duplicate.
 
-Gli header raw così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
+Gli header grezzi così come sono stati ricevuti vengono mantenuti nella proprietà `rawHeaders`, che è un array di `[key, value, key2, value2, ...]`. Ad esempio, l'object dell'intestazione del messaggio precedente potrebbe avere un elenco `rawHeaders` simile al seguente:
 
 <!-- eslint-disable semi -->
 
@@ -47,11 +47,11 @@ added: v0.3.4
 
 Un `Agent` è responsabile della gestione della persistenza della connessione e del riutilizzo per i client HTTP. Mantiene una coda di richieste in sospeso per un host e una porta determinati, riutilizzando una singola connessione socket per ciascuna finché la coda non è vuota, momento in cui il socket viene distrutto o inserito in un pool in cui viene mantenuto per essere utilizzato nuovamente per le richieste allo stesso host e alla stessa porta. Se viene distrutto o inserito in un pool dipende dall'[opzione](#http_new_agent_options) `keepAlive`.
 
-Le connessioni in pool dispongono di TCP Keep-Alive abilitato per loro, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
+Le connessioni in pool dispongono di TCP Keep-Alive abilitato, ma i server potrebbero comunque chiudere le connessioni inattive, nel qual caso verranno rimosse dal pool e verrà creata una nuova connessione quando viene effettuata una nuova richiesta HTTP per quell'host e quella porta. I server possono anche rifiutare di consentire più richieste sulla stessa connessione, nel qual caso la connessione dovrà essere ricreata per ogni richiesta e non può essere inserita in un pool. L'`Agent` effettuerà comunque le richieste su quel server, ma ognuna si verificherà su una nuova connessione.
 
-Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool non verranno rimossi per non mantenere in esecuzione il processo Node.js quando non ci sono richieste in sospeso. (vedi [`socket.unref()`]).
+Quando una connessione viene chiusa dal client o dal server, viene rimossa dal pool. Tutti i socket inutilizzati nel pool verranno passati a unref per non mantenere in esecuzione il processo Node.js quando non sono presenti richieste in sospeso. (vedi [`socket.unref()`]).
 
-È buona prassi [`destroy()`][] un'istanza `Agent` quando non è più in uso, poiché i socket inutilizzati consumano risorse del sistema operativo.
+È buona prassi, eseguire [`destroy()`][] su un'istanza `Agent` quando non è più in uso, poiché i socket inutilizzati consumano risorse del sistema operativo.
 
 I socket vengono rimossi da un agente quando il socket emette un evento `'close'` o un evento `'agentRemove'`. Quando si intende mantenere una richiesta HTTP aperta per un lungo periodo senza tenerla nell'agente, si può fare qualcosa di simile a quanto segue:
 
@@ -63,7 +63,7 @@ http.get(options, (res) => {
 });
 ```
 
-Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` one-time con opzioni predefinite per la connessione client.
+Un agente può anche essere utilizzato per una singola richiesta. Fornendo `{agent: false}` come opzione per le funzioni `http.get()` o `http.request()`, verrà utilizzato un `Agent` una tantum con opzioni predefinite per la connessione client.
 
 `agent:false`:
 
@@ -72,7 +72,7 @@ http.get({
   hostname: 'localhost',
   port: 80,
   path: '/',
-  agent: false  // create a new agent just for this one request
+  agent: false  // crea un nuovo agent solo per questa richiesta
 }, (res) => {
   // Fai operazione con risposta
 });
@@ -90,7 +90,7 @@ added: v0.3.4
   * `maxSockets` {number} Numero massimo di socket da consentire per host. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Numero massimo di socket da lasciare aperti in uno stato libero. Rilevante solo se `keepAlive` è impostato su `true`. **Default:** `256`.
 
-L'[`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
+Il [`http.globalAgent`][] predefinito utilizzato da [`http.request()`][] ha tutti questi valori impostati sui rispettivi valori predefiniti.
 
 Per configurarne uno qualsiasi, è necessario creare un'istanza [`http.Agent`][] personalizzata.
 
@@ -108,16 +108,16 @@ added: v0.11.4
 -->
 
 * `options` {Object} Opzioni contenenti i dettagli di connessione. Controllare [`net.createConnection(`][]) per il formato delle opzioni
-* `callback` {Function} Callback function that receives the created socket
-* Returns: {net.Socket}
+* `callback` {Function} Funzione callback che riceve il socket creato
+* Restituisce: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Produce un socket/stream da utilizzare per le richieste HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+Di default, questa funzione è la stessa di [`net.createConnection()`][]. Tuttavia, gli agenti personalizzati possono sovrascrivere questo metodo nel caso in cui si desideri una maggiore flessibilità.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Un socket/stream può essere fornito in due modi: restituendo il socket/stream da questa funzione, o passando il socket/stream al `callback`.
 
-`callback` has a signature of `(err, stream)`.
+`callback` ha una firma di `(err, stream)`.
 
 ### agent.keepSocketAlive(socket)
 
@@ -127,7 +127,7 @@ added: v8.1.0
 
 * `socket` {net.Socket}
 
-Called when `socket` is detached from a request and could be persisted by the `Agent`. Default behavior is to:
+Chiamato quando il `socket` è scollegato da una richiesta e potrebbe essere mantenuto dall'`Agent`. Il comportamento predefinito è:
 
 ```js
 socket.setKeepAlive(true, this.keepAliveMsecs);
@@ -135,7 +135,7 @@ socket.unref();
 return true;
 ```
 
-This method can be overridden by a particular `Agent` subclass. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`. Se questo metodo restituisce un valore falso, il socket verrà distrutto anziché mantenuto per essere utilizzato con la richiesta successiva.
 
 ### agent.reuseSocket(socket, request)
 
@@ -146,13 +146,13 @@ added: v8.1.0
 * `socket` {net.Socket}
 * `request` {http.ClientRequest}
 
-Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Default behavior is to:
+Chiamato quando il `socket` è collegato alla `request` dopo essere stato mantenuto a causa delle opzioni keep-alive. Il comportamento predefinito è:
 
 ```js
 socket.ref();
 ```
 
-This method can be overridden by a particular `Agent` subclass.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`.
 
 ### agent.destroy()
 
@@ -160,9 +160,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Distruggi qualsiasi socket attualmente utilizzato dall'agente.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Solitamente non è necessario farlo. Tuttavia, se si utilizza un agente con `keepAlive` attivato, è preferibile arrestare esplicitamente l'agente quando non verrà più utilizzato. In caso contrario, i socket potrebbero rimanere aperti per un periodo piuttosto lungo prima che il server li interrompa.
 
 ### agent.freeSockets
 
@@ -172,7 +172,7 @@ added: v0.11.4
 
 * {Object}
 
-An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+Un object che contiene array di socket attualmente in attesa di utilizzo da parte dell'agente quando `keepAlive` è abilitato. Non modificare.
 
 ### agent.getName(options)
 
@@ -180,14 +180,14 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `options` {Object} A set of options providing information for name generation 
-  * `host` {string} A domain name or IP address of the server to issue the request to
-  * `port` {number} Port of remote server
-  * `localAddress` {string} Local interface to bind for network connections when issuing the request
-  * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+* `options` {Object} Un set di opzioni che forniscono informazioni per la generazione del nome 
+  * `host` {string} Un nome di dominio o un indirizzo IP del server a cui inviare la richiesta
+  * `port` {number} Porta del server remoto
+  * `localAddress` {string} Interfaccia locale per eseguire il binding per le connessioni di rete durante l'emissione della richiesta
+  * `family` {integer} Deve essere 4 o 6 se questo non è uguale a `undefined`.
+* Restituisce: {string}
 
-Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Ottenere un nome univoco per un set di opzioni di richiesta, per determinare se una connessione può essere riutilizzata. Per un agente HTTP, questo restituisce `host:port:localAddress` o `host:port:localAddress:family`. Per un agente HTTPS, il nome include CA, certificati, crittografie ed altre opzioni specifiche HTTPS/TLS che determinano la riusabilità del socket.
 
 ### agent.maxFreeSockets
 
@@ -197,7 +197,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Di default è impostato a 256. Per gli agenti con `keepAlive` abilitato, questo stabilisce il numero massimo di socket che verranno lasciati aperti nello stato libero.
 
 ### agent.maxSockets
 
@@ -207,7 +207,7 @@ added: v0.3.6
 
 * {number}
 
-By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
+Di default è impostato su `Infinity`. Determina quanti socket simultanei l'agente può tenere aperti per origine. L'origine è il valore restituito di [`agent.getName()`][].
 
 ### agent.requests
 
@@ -217,7 +217,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+Un object che contiene code di richieste che non sono ancora state assegnate ai socket. Non modificare.
 
 ### agent.sockets
 
@@ -227,7 +227,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+Un object che contiene array di socket attualmente in uso dall'agente. Non modificare.
 
 ## Class: http.ClientRequest
 
@@ -235,17 +235,17 @@ An object which contains arrays of sockets currently in use by the agent. Do not
 added: v0.1.17
 -->
 
-This object is created internally and returned from [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Questo object viene creato internamente e restituito da [`http.request()`][]. Rappresenta una richiesta *in corso* il cui header è già stato inserito nella coda. L'intestazione può ancora essere modificata utilizzando le API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. L'intestazione effettiva verrà inviata insieme al primo chunk di dati o quando si chiama [`request.end()`][].
 
-To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] verrà emessa dall'object richiesta una volta che le intestazioni di risposta siano state ricevute. L'evento [`'response'`][] viene eseguito con un argomento che è un'istanza di [`http.IncomingMessage`][].
 
-During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
+Durante l'evento [`'response'`][], è possibile aggiungere altri listener all'object risposta; in particolare per sottoporre al listening l'evento `'data'`.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Se non viene aggiunto nessun [`'response'`][] handler, allora la risposta verrà completamente scartata. Tuttavia, se viene aggiunto un handler di eventi [`'response'`][], allora i dati dell'object risposta **devono** essere consumati, chiamando `response.read()` ogni volta che si verifica un evento `'readable'`, o aggiungendo un `'data'` handler, oppure chiamando il metodo `.resume()`. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Inoltre, finché i dati non vengono letti, esso consumerà memoria che alla fine può portare a un errore di 'elaborazione insufficiente'.
 
-Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Node.js non controlla se Content-Length e la lunghezza del corpo che è stata trasmessa siano uguali o meno.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+La richiesta implementa l'interfaccia [Writable Stream](stream.html#stream_class_stream_writable). Questo è un [`EventEmitter`][] con i seguenti eventi:
 
 ### Event: 'abort'
 
@@ -253,7 +253,7 @@ The request implements the [Writable Stream](stream.html#stream_class_stream_wri
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Emesso quando la richiesta è stata interrotta dal client. Questo evento viene emesso esclusivamente alla prima chiamata a `abort()`.
 
 ### Event: 'connect'
 
@@ -265,9 +265,9 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emesso ogni volta che un server risponde a una richiesta con un metodo `CONNECT`. Se questo evento non viene sottoposto al listening, ai client che ricevono un metodo `CONNECT` si chiuderanno le connessioni.
 
-A client and server pair demonstrating how to listen for the `'connect'` event:
+Una coppia di client e server che dimostra come eseguire il listening dell'evento `'connect'`:
 
 ```js
 const http = require('http');

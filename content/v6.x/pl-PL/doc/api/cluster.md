@@ -672,7 +672,7 @@ Note that:
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`
 * the defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called
 
-Example:
+Przykład:
 
 ```js
 const cluster = require('cluster');

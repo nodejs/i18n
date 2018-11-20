@@ -4,7 +4,7 @@
 
 > Stability: 2 - Stable
 
-The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
+El módulo `child_process` proporciona la habilidad de generar procesos secundarios en una forma similar, pero no idéntica, a popen(3). Esta capacidad es proporcionada principalmente por la función [`child_process.spawn()`][]:
 
 ```js
 const { spawn } = require('child_process');
@@ -23,34 +23,34 @@ ls.on('close', (code) => {
 });
 ```
 
-By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. It is possible to stream data through these pipes in a non-blocking way. *Note, however, that some programs use line-buffered I/O internally. While that does not affect Node.js, it can mean that data sent to the child process may not be immediately consumed.*
+By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. Es posible transmitir datos a través de estos pipes en forma una forma non-blocking. *Sin embargo, tenga en cuenta que algunos programas utilizan internamente E/S buffers en forma de línea. Aunque eso no afecta a Node.js, puede significar que los datos enviados al proceso secundario pueden no ser consumidos inmediatamente.*
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
+El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente en una forma sincrónica que bloquea el bucle de evento hasta que el proceso generado exista o sea finalizado.
 
-For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas para [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Tenga en cuenta que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
-      passing the `stdout` and `stderr` to a callback function when complete.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
-      it spawns the command directly without first spawning a shell.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
-      specified module with an IPC communication channel established that allows
-      sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of
-      [`child_process.exec()`][] that *will* block the Node.js event loop.
-    * [`child_process.execFileSync()`][]: a synchronous version of
-      [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: genera un shell y ejecuta un comando dentro de ese shell,
+      pasar `stdout` y `stderr` a una función de callback cuando termine.
+    * [`child_process.execFile()`][]: similar a [`child_process.exec()`][] excepto que
+      genera el comando directamente sin primero generar un shell.
+    * [`child_process.fork()`][]: genera un nuevo proceso de Node.js e invoca un
+      módulo especificado con un canal de comunicación IPC establecido que permite
+      enviar mensajes entre primario y secundario.
+    * [`child_process.execSync()`][]: una versión sincrónica de 
+      [`child_process.exec()`][] que *bloqueará* el bucle de evento de Node.js.
+    * [`child_process.execFileSync()`][]: una versión sincrónica de 
+      [`child_process.execFile()`][] que *bloqueará* el bucle de evento de Node.js.
     
 
-For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
+Para ciertos casos de uso, como la automatización de scripts de shell, las [contrapartes sincrónicas](#child_process_synchronous_process_creation) pueden ser más convenientes. Sin embargo, en muchos casos, los métodos sincrónicos pueden tener un impacto significativo en el rendimiento debido al bloqueo del bucle de eventos mientras se completan los procesos generados.
 
-## Asynchronous Process Creation
+## Creación de Procesos Asincrónicos
 
-The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
+Todos los métodos [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], y [`child_process.execFile()`][] siguen el patrón de programación asíncrono idiomático típico de otras APIs de Node.js.
 
-Each of the methods returns a [`ChildProcess`][] instance. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
+Cada uno de los métodos devuelve una instancia de [`ChildProcess`][]. Estos objetos implementan la API de [`EventEmitter`][], permitiendo que el proceso primario registre las funciones del listener que son llamadas cuando ocurren ciertos eventos durante el ciclo de vida del proceso secundario.
 
-The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additionally allow for an optional `callback` function to be specified that is invoked when the child process terminates.
+Los métodos [`child_process.exec()`][] y [`child_process.execFile()`][] adicionalmente siguen una función de `callback` opcional para especificar que es invocada cuando el proceso secundario termina.
 
 ### Spawning `.bat` and `.cmd` files on Windows
 

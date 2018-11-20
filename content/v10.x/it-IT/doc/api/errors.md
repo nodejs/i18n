@@ -137,11 +137,11 @@ try {
 
 Questo non funzionerà perché la funzione callback passata a `fs.redFile()` è chiamata in modo asincrono. Per quando il callback è stato chiamato, il codice circostante (incluso il blocco `try { } catch (err) { }` sarà già stato chiuso. Nella maggior parte dei casi, generare un errore all'interno del callback **può causare il crash del processo Node.js**. Se sono abilitati i [domini](domain.html), oppure un handler è stato registrato con `process.on('uncaughtException')`, tali errori possono essere intercettati.
 
-## Class: Error
+## Classe: Errore
 
 <!--type=class-->
 
-Un `Error` object generico di Javascript che non denota alcuna circostanza specifica per cui si è verificato l'errore. Gli `Error` object acquisiscono una "stack trace" che specifica il punto esatto, all'interno del codice, in cui è stato istanziato l'`Errore`, e potrebbe fornire una descrizione di testo dell'errore.
+Un `Error` object generico di JavaScript che non denota alcuna circostanza specifica per cui si è verificato l'errore. Gli `Error` object acquisiscono una "stack trace" che specifica il punto esatto, all'interno del codice, in cui è stato istanziato l'`Errore`, e potrebbe fornire una descrizione di testo dell'errore.
 
 Solo per crypto, gli `Error` object includeranno l'error stack OpensSSL in una proprietà separata chiamata `opensslErrorStack` se questa è disponibile quando l'errore viene generato.
 
@@ -151,22 +151,22 @@ Tutti gli errori generati da Node.js, inclusi tutti gli errori di Sistema e di J
 
 - `message` {string}
 
-Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggio di testo fornito. Se un oggetto viene passato come `message`, il messaggio di testo è generato chiamando `message.toString()`. La proprietà `Error.stack` rappresenterà il punto esatto all'interno del codice in cui è stato chiamato `new Error()`. Le stack trace sono dipendenti dalle [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Le Stack trace si estendono solo a (a) l'inizio del *synchronous code execution*, oppure (b) il numero di frame dato dalla proprietà `Error.stackTraceLimit`, qualunque sia il più piccolo.
+Crea un nuovo `Error` object e imposta la proprietà `error.message` al messaggio di testo fornito. Se un oggetto viene passato come `message`, il messaggio di testo è generato chiamando `message.toString()`. La proprietà `error.stack` rappresenterà il punto esatto all'interno del codice in cui è stato chiamato `new Error()`. Le stack trace sono dipendenti dalle [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Le Stack trace si estendono solo a (a) l'inizio del *synchronous code execution*, oppure (b) il numero di frame dato dalla proprietà `Error.stackTraceLimit`, qualunque sia il più piccolo.
 
 ### Error.captureStackTrace(targetObject[, constructorOpt])
 
 - `targetObject` {Object}
 - `constructorOpt` {Function}
 
-Crea una proprietà `.stack` su `targetObject`, la quale quando viene accessata restituisce una stringa che rappresenta il punto esatto all'interno del codice in cui è stata chiamata `Error.captureStackTrace()`.
+Crea una proprietà `.stack` su `targetObject`, la quale quando viene acceduta restituisce una stringa che rappresenta il punto esatto all'interno del codice in cui è stata chiamata `Error.captureStackTrace()`.
 
 ```js
 const myObject = {};
 Error.captureStackTrace(myObject);
-myObject.stack;  // similar to `new Error().stack`
+myObject.stack;  // simile a `new Error().stack`
 ```
 
-La prima linea della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
+La prima riga della traccia avrà come prefisso `${myObject.name}: ${myObject.message}`.
 
 L'argomento facoltativo `constructorOpt` accetta una funzione. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
@@ -189,7 +189,7 @@ new MyError().stack;
 
 La proprietà `Error.stackTraceLimit` specifica il numero di stack frame collezionati da una stack trace (generata da `new Error().stack` o da `Error.captureStackTrace(obj)`).
 
-Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi Stack trace catturata *dopo* che il valore è stato cambiato.
+Il valore predefinito è `10` ma può essere impostato su un qualsiasi numero JavaScript valido. Le modifiche influiranno su qualsiasi stack trace catturata *dopo* che il valore è stato cambiato.
 
 Se impostato su un valore non numerico, o impostato su un valore numerico negativo, le stack trace non cattureranno nessun frame.
 
@@ -227,24 +227,24 @@ Errore: Continuano ad accadere cose!
 
 La prima riga viene formattata come `<error class name>: <error message>`, ed è seguita da una serie di stack frame (ogni riga inizia con "at"). Ogni frame descrive un sito di chiamata all'interno del codice che conduce all'errore generato. V8 prova a mostrare un nome per ogni funzione (dal nome della variabile, nome della funzione, o nome del metodo dell'oggetto), ma a volte non riuscirà a trovare un nome adatto. Se V8 non riesce a determinare un nome per la funzione, per quel frame verrà mostrata solo la posizione. Altrimenti, il nome determinato per la funzione verrà mostrato con le informazioni riguardanti la posizione aggiunte tra parentesi.
 
-I frame sono generati solo per le funzioni JavaScript. If, for example, execution synchronously passes through a C++ addon function called `cheetahify` which itself calls a JavaScript function, the frame representing the `cheetahify` call will not be present in the stack traces:
+I frame sono generati solo per le funzioni JavaScript. Se, ad esempio, l'esecuzione passa in modo sincrono attraverso una funzione aggiuntiva di C++ chiamata `cheetahify` la quale anche essa chiama una funzione JavaScript, il frame che rappresenta la chiamata a `cheetahify` non sarà presente nelle Stack trace:
 
 ```js
 const cheetahify = require('./native-binding.node');
 
 function makeFaster() {
-  // cheetahify *synchronously* calls speedy.
+  // cheetahify  chiama speedy *in modo sincrono*.
   cheetahify(function speedy() {
     throw new Error('oh no!');
   });
 }
 
 makeFaster();
-// will throw:
+// genererà:
 //   /home/gbusey/file.js:6
-//       throw new Error('oh no!');
+//       genera nuovo errore ('oh no!');
 //           ^
-//   Error: oh no!
+//   Errore: oh no!
 //       at speedy (/home/gbusey/file.js:6:11)
 //       at makeFaster (/home/gbusey/file.js:5:3)
 //       at Object.<anonymous> (/home/gbusey/file.js:10:1)
@@ -257,99 +257,99 @@ makeFaster();
 //       at node.js:906:3
 ```
 
-The location information will be one of:
+Le informazioni di posizione saranno di tipo:
 
-- `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
-- `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
-- `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
+- `native`, se il frame rappresenta una chiamata interna a V8 (come in `[].forEach`).
+- `plain-filename.js:line:column`, se il frame rappresenta una chiamata interna a Node.js.
+- `/absolute/path/to/file.js:line:column`, se il frame rappresenta una chiamata in un programma utente, o le relative dipendenze.
 
-The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
+La stringa che rappresenta la stack trace è generata în modalità lazi quando **si effettua l'accesso** alla proprietà `error.stack`.
 
 The number of frames captured by the stack trace is bounded by the smaller of `Error.stackTraceLimit` or the number of available frames on the current event loop tick.
 
-System-level errors are generated as augmented `Error` instances, which are detailed [here](#errors_system_errors).
+Gli errori a livello di sistema sono generati come `Error` instances aumentate, che sono dettagliate [qui](#errors_system_errors).
 
-## Class: AssertionError
+## Classe: AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. For details, see [`Class: assert.AssertionError`][].
+Una sottoclasse di `Error` che indica il fallimento di un assertion. Per ulteriori dettagli, visualizza [`Class: assert.AssertionError`][].
 
-## Class: RangeError
+## Classe: RangeError
 
 A subclass of `Error` that indicates that a provided argument was not within the set or range of acceptable values for a function; whether that is a numeric range, or outside the set of options for a given function parameter.
 
 ```js
 require('net').connect(-1);
-// throws "RangeError: "port" option should be >= 0 and < 65536: -1"
+// genera "RangeError: l'opzione "port" dovrebbe essere >= 0 and < 65536: -1"
 ```
 
 Node.js will generate and throw `RangeError` instances *immediately* as a form of argument validation.
 
-## Class: ReferenceError
+## Classe: ReferenceError
 
-A subclass of `Error` that indicates that an attempt is being made to access a variable that is not defined. Such errors commonly indicate typos in code, or an otherwise broken program.
+Una sottoclasse di `Error` che indica che c'è stato un tentativo di accesso ad una variabile che non è stata definita. Such errors commonly indicate typos in code, or an otherwise broken program.
 
-While client code may generate and propagate these errors, in practice, only V8 will do so.
+Mentre il codice di tipo client potrebbe generare e propagare questi errori, in pratica, solo V8 lo farà.
 
 ```js
 doesNotExist;
-// throws ReferenceError, doesNotExist is not a variable in this program.
+// genera ReferenceError, doesNotExist non è una variabile in questo programma.
 ```
 
-Unless an application is dynamically generating and running code, `ReferenceError` instances should always be considered a bug in the code or its dependencies.
+A meno che un'applicazione non stia generando ed eseguendo codice in modo dinamico, le istanze di `ReferenceError` dovrebbero sempre essere considerate come un bug nel codice o nelle relative dipendenze.
 
-## Class: SyntaxError
+## Classe: SyntaxError
 
-A subclass of `Error` that indicates that a program is not valid JavaScript. These errors may only be generated and propagated as a result of code evaluation. Code evaluation may happen as a result of `eval`, `Function`, `require`, or [vm](vm.html). These errors are almost always indicative of a broken program.
+A subclass of `Error` that indicates that a program is not valid JavaScript. Questi errori potrebbero essere generati e propagati solamente come risultato di una valutazione del codice. La valutazione del codice potrebbe accadere come risultato di `eval`, `Function`, `require`, o [vm](vm.html). These errors are almost always indicative of a broken program.
 
 ```js
 try {
   require('vm').runInThisContext('binary ! isNotOk');
 } catch (err) {
-  // err will be a SyntaxError
+  // l'errore sarà del tipo SyntaxError
 }
 ```
 
-`SyntaxError` instances are unrecoverable in the context that created them – they may only be caught by other contexts.
+Le istanze di tipo `SyntaxError` non sono recuperabili nel contesto che le ha create - possono essere catturate solo da altri contesti.
 
-## Class: TypeError
+## Classe: TypeError
 
-A subclass of `Error` that indicates that a provided argument is not an allowable type. For example, passing a function to a parameter which expects a string would be considered a `TypeError`.
+Una sottoclasse di `Error` che indica che un argomento fornito non è un tipo di argomento consentito. Ad esempio, passare una funzione a un parametro che si aspetta una stringa verrebbe considerato un `TypeError`.
 
 ```js
 require('url').parse(() => { });
-// throws TypeError, since it expected a string
+// genera TypeError, dato che si aspettava una stringa
 ```
 
-Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
+Node.js genererà e mostrerà le istanze `TypeError` *immediatamente* come una forma di validazione dell'argomento.
 
-## Exceptions vs. Errors
+## Eccezioni vs. Errori
 
 <!--type=misc-->
 
-A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+Un'eccezione JavaScript viene generata come risultato di un operazione non valida o come obbiettivo di un'istruzione `throw`. Anche se non è richiesto che questi valori siano istanze di `Error` o classi che ereditano da `Error`, tutte le eccezioni generate da Node.js o dal Runtime JavaScript *saranno* istanze di `Error`.
 
-Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
+Alcune eccezione sono *non recuperabili* al livello di JavaScript. Tali eccezione causeranno *sempre* l'arresto del processo Node.js. Gli esempi includono verifiche `assert()` o chiamate `abort()` nel livello di C++.
 
-## System Errors
+## Errori di Sistema
 
-System errors are generated when exceptions occur within the Node.js runtime environment. Typically, these are operational errors that occur when an application violates an operating system constraint such as attempting to read a file that does not exist or when the user does not have sufficient permissions.
+Gli errori di sistema sono generati quando si verificano eccezioni all'interno dell'ambiente di runtime di Node.js. Di solito, questi sono errori operativi che si verificano quando un'applicazione viola un vincolo del sistema operativo come ad esempio provare a leggere un file che non esiste oppure quando l'utente non dispone dei permessi necessari.
 
-System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
+Gli errori di sistema sono di solito generati al livello di syscall: un elenco esaustivo di codici di errore e il loro significato è disponibile eseguendo `man 2 intro` o `man 3 errno` sulla maggior parte dei sistemi operativi Unix; oppure [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
-In Node.js, system errors are represented as augmented `Error` objects with added properties.
+In Node.js gli errori di sistema sono rappresentati come `Error` objects con proprietà aggiunte.
 
-### Class: SystemError
+### Classe: SystemError
 
 ### error.info
 
-`SystemError` instances may have an additional `info` property whose value is an object with additional details about the error conditions.
+Le istanze di `SystemError` potrebbero avere un ulterior proprietà `info` il cui valore è un oggetto con dettagli aggiuntivi riguardanti le condizioni dell'errore.
 
-The following properties are provided:
+Vengono fornite le seguenti proprietà:
 
-- `code` {string} The string error code
-- `errno` {number} The system-provided error number
-- `message` {string} A system-provided human readable description of the error
-- `syscall` {string} The name of the system call that triggered the error
+- `code` {string} La stringa error code
+- `errno` {number} L'error number fornito dal sistema
+- `message` {string} Una descrizione dell'errore in forma leggibile
+- `syscall` {string} Il nome della chiamata di sistema che ha causato l'errore
 - `path` {Buffer} When reporting a file system error, the `path` will identify the file path.
 - `dest` {Buffer} When reporting a file system error, the `dest` will identify the file path destination (if any).
 

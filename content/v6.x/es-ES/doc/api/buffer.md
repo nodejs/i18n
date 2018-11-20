@@ -2008,10 +2008,10 @@ added: v0.11.15
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
+* `noAssert` {boolean} ¿Saltar validación de `value`, `offset`, y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
+Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es definid cuando `value` es cualquier cosa distinta a un entero con signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2022,12 +2022,12 @@ const buf = Buffer.allocUnsafe(6);
 
 buf.writeUIntBE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Imprime: <Buffer 12 34 56 78 90 ab>
 console.log(buf);
 
 buf.writeUIntLE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer ab 90 78 56 34 12>
+// Imprime: <Buffer ab 90 78 56 34 12>
 console.log(buf);
 ```
 
@@ -2042,7 +2042,7 @@ added: v0.5.0
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
+Escribe el `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero válido de 8-bits sin signo. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 8-bits sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2056,7 +2056,7 @@ buf.writeUInt8(0x4, 1);
 buf.writeUInt8(0x23, 2);
 buf.writeUInt8(0x42, 3);
 
-// Prints: <Buffer 03 04 23 42>
+// Imprime: <Buffer 03 04 23 42>
 console.log(buf);
 ```
 
@@ -2073,7 +2073,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt16BE()` escribe big endian, `writeUInt16LE()` escribe little endian). `value` debe ser un entero válido de 16-bits sin signo. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 16-bits sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2085,13 +2085,13 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeUInt16BE(0xdead, 0);
 buf.writeUInt16BE(0xbeef, 2);
 
-// Prints: <Buffer de ad be ef>
+// Imprime: <Buffer de ad be ef>
 console.log(buf);
 
 buf.writeUInt16LE(0xdead, 0);
 buf.writeUInt16LE(0xbeef, 2);
 
-// Prints: <Buffer ad de ef be>
+// Imprime: <Buffer ad de ef be>
 console.log(buf);
 ```
 
@@ -2108,7 +2108,7 @@ added: v0.5.5
 * `noAssert` {boolean} ¿Saltar validación de `value` y `offset`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt32BE()` escribe big endian, `writeUInt32LE()` escribe little endian). `value` debe ser un entero válido de 32-bits sin signo. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 32-bits sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2119,12 +2119,12 @@ const buf = Buffer.allocUnsafe(4);
 
 buf.writeUInt32BE(0xfeedface, 0);
 
-// Prints: <Buffer fe ed fa ce>
+// Imprime: <Buffer fe ed fa ce>
 console.log(buf);
 
 buf.writeUInt32LE(0xfeedface, 0);
 
-// Prints: <Buffer ce fa ed fe>
+// Imprime: <Buffer ce fa ed fe>
 console.log(buf);
 ```
 
@@ -2139,10 +2139,10 @@ added: v0.5.5
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Predeterminado:** `false`
+* `noAssert` {boolean} ¿Saltar validación de `value`, `offset`, y `byteLength`? **Predeterminado:** `false`
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
+Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
 
 Configurar `noAssert` a `true` permite que la forma codificada de `value` se extienda más allá del final de `buf`, pero el comportamiento resultante es indefinido.
 
@@ -2153,12 +2153,12 @@ const buf = Buffer.allocUnsafe(6);
 
 buf.writeIntBE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Imprime: <Buffer 12 34 56 78 90 ab>
 console.log(buf);
 
 buf.writeIntLE(0x1234567890ab, 0, 6);
 
-// Prints: <Buffer ab 90 78 56 34 12>
+// Imprime: <Buffer ab 90 78 56 34 12>
 console.log(buf);
 ```
 
@@ -2168,11 +2168,11 @@ console.log(buf);
 added: v0.5.4
 -->
 
-* {integer} **Default:** `50`
+* {integer} **Predeterminado:** `50`
 
-Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`] for more details on `buf.inspect()` behavior.
+Devuelve el número máximo de bytes que serán devueltos cuando `buf.inspect()` es llamado. Esto puede ser reemplazado por módulos de usuario. Vea [`util.inspect()`] para más detalles sobre el comportamiento de `buf.inspect()`.
 
-Note that this is a property on the `buffer` module as returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que esto es una propiedad en el módulo `buffer` tal como es devuelto por `require('buffer')`, no en el `Buffer` global o una instancia de `Buffer`.
 
 ## buffer.kMaxLength
 
@@ -2180,44 +2180,44 @@ Note that this is a property on the `buffer` module as returned by `require('buf
 added: v3.0.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+En arquitecturas de 32-bits, este valor es `(2^30)-1` (~1GB). En arquitecturas de 64-bits, este valor es `(2^31)-1` (~2GB).
 
-## Class: SlowBuffer
+## Clase: SlowBuffer
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-Returns an un-pooled `Buffer`.
+Devuelve un `Buffer` no-agrupado.
 
-In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object. This approach improves both performance and memory usage since v8 does not need to track and cleanup as many `Persistent` objects.
+Para evitar la sobrecarga de recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, por defecto, las asignaciones debajo de 4KB se recortan desde un único objecto asignado más grande. Este enfoque mejora tanto el rendimiento como el uso de la memoria, ya que v8 no necesita rastrear y limpiar tantos objetos `Persistent`.
 
-In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
+En el caso donde un desarrollador necesite retener una pequeña porción de memoria de un pool por un tiempo indeterminado, puede que sea apropiado crear una instancia de `Buffer` no-agrupado utilizando `SlowBuffer` y luego crear una copia de los bits relevantes.
 
 Ejemplo:
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener unos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asignar para los datos retenidos
   const sb = SlowBuffer(10);
 
-  // Copy the data into the new allocation
+  // Copiar los datos dentro de la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+El uso de `SlowBuffer` debe ser empleado solo como último recurso *después* de que un desarrollador haya observado una retención de memoria indebida en sus aplicaciones.
 
 ### new SlowBuffer(size)
 
@@ -2225,13 +2225,13 @@ Use of `SlowBuffer` should be used only as a last resort *after* a developer has
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Desaprobado: Use [`Buffer.allocUnsafeSlow()`], en su lugar.
 
-* `size` {integer} The desired length of the new `SlowBuffer`.
+* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
-Allocates a new `SlowBuffer` of `size` bytes. The `size` must be less than or equal to the value of [`buffer.kMaxLength`]. Otherwise, a [`RangeError`] is thrown. Un `Buffer` de longitud cero será creado si `size <= 0`.
+Asigna un nuevo `SlowBuffer` de `size` bytes. El `size` debe ser menor o igual al valor de [`buffer.kMaxLength`]. De lo contrario, un [`RangeError`] es arrojado. Un `Buffer` de longitud cero será creado si `size <= 0`.
 
-The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and could contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
+La memoria subyacente para instancias de `SlowBuffer` *no está inicializada*. Los contenidos de un `SlowBuffer` recién creado son desconocidos y pueden contener datos sensibles. Use [`buf.fill(0)`][`buf.fill()`] para inicializar un `SlowBuffer` a ceros.
 
 Ejemplo:
 
@@ -2240,11 +2240,11 @@ const SlowBuffer = require('buffer').SlowBuffer;
 
 const buf = new SlowBuffer(5);
 
-// Prints: (contents may vary): <Buffer 78 e0 82 02 01>
+// Imprime: (contents may vary): <Buffer 78 e0 82 02 01>
 console.log(buf);
 
 buf.fill(0);
 
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 console.log(buf);
 ```

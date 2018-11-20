@@ -61,7 +61,7 @@ See [`__dirname`][] for the directory name of the current module.
 
 `__filename` is not actually a global but rather local to each module.
 
-Examples:
+Przykłady:
 
 Running `node example.js` from `/Users/mjr`
 

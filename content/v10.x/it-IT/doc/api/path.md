@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+Il modulo `path` fornisce utility per lavorare con percorsi di file e directory. Ci si può accedere utilizzando:
 
 ```js
 const path = require('path');
@@ -12,43 +12,43 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+L'operazione predefinita del modulo `path` varia in base al sistema operativo su cui è in esecuzione un'applicazione Node.js. In particolare, quando si esegue su un sistema operativo Windows, il modulo `path` presumerà che i percorsi in stile Windows vengano utilizzati.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+Ad esempio, utilizzando la funzione `path.basename()` con il percorso file Windows `C:\temp\myfile.html`, si otterranno risultati diversi durante l'esecuzione su POSIX rispetto a quando viene eseguito su Windows:
 
-On POSIX:
+Su POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+Su Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Per ottenere risultati consistenti quando si lavora con i file path di Windows su qualsiasi sistema operativo, utilizzare [`path.win32`][]:
 
-On POSIX and Windows:
+Su POSIX e Windows:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Per ottenere risultati consistenti quando si lavora con i file path di POSIX su qualsiasi sistema operativo, utilizzare [`path.posix`][]:
 
-On POSIX and Windows:
+Su POSIX e Windows:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows, Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `path.resolve ('c: \\')` può potenzialmente restituire un risultato diverso da `path.resolve ('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -62,10 +62,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
-* Returns: {string}
+* `ext` {string} Un'estensione di file opzionale
+* Restituisce: {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+I metodi `path.basename()`restituiscono l'ultima porzione di un ` percorso`, simile al comando Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -75,7 +75,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 // Returns: 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+Un [`TypeError`][] è lanciato se `path` non è una stringa o se `ext` è indicato e non è una stringa.
 
 ## path.delimiter
 

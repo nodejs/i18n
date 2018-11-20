@@ -875,7 +875,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Example:
+Przykład:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -884,7 +884,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Przykład:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -927,7 +927,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Example:
+Przykład:
 
 ```js
 try {
@@ -938,7 +938,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Przykład:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -1150,7 +1150,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Przykład:
 
 ```js
 const fs = require('fs');
@@ -1190,7 +1190,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Przykład:
 
 ```js
 const fs = require('fs');
@@ -1316,7 +1316,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Przykład:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -2177,7 +2177,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Example:
+Asynchronously reads the entire contents of a file. Przykład:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -2190,7 +2190,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Przykład:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -3090,7 +3090,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Example:
+Przykład:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -3099,7 +3099,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Przykład:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -3538,7 +3538,7 @@ Node.js makes no guarantees about the atomicity of the copy operation. If an err
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Przykład:
 
 ```js
 const fs = require('fs');

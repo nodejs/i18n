@@ -6,17 +6,17 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+Il modulo `fs` fornisce un'API per interagire con il file system in un modo strettamente modellato attorno alle funzioni POSIX standard.
 
-To use this module:
+Per utilizzare questo modulo:
 
 ```js
 const fs = require('fs');
 ```
 
-All file system operations have synchronous and asynchronous forms.
+Tutte le operazioni del file system hanno forme sincrone e asincrone.
 
-The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+La forma asincrona accetta sempre un callback di completamento come suo ultimo argomento. Gli argomenti passati al callback di completamento dipendono dal metodo, ma il primo argomento è sempre riservato per un'eccezione. Se l'operazione è stata completata correttamente, il primo argomento sarà `null` oppure `undefined`.
 
 ```js
 const fs = require('fs');
@@ -27,7 +27,7 @@ fs.unlink('/tmp/hello', (err) => {
 });
 ```
 
-Exceptions that occur using synchronous operations are thrown immediately and may be handled using `try`/`catch`, or may be allowed to bubble up.
+Le eccezioni che si verificano utilizzando le operazioni sincrone vengono eseguite immediatamente e potrebbero essere gestite utilizzando `try`/`catch` oppure potrebbero essere autorizzate al bubble up.
 
 ```js
 const fs = require('fs');
@@ -36,11 +36,11 @@ try {
   fs.unlinkSync('/tmp/hello');
   console.log('successfully deleted /tmp/hello');
 } catch (err) {
-  // handle the error
+  // gestire l'errore
 }
 ```
 
-Note that there is no guaranteed ordering when using asynchronous methods. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Da notare che non esiste un ordine garantito quando si utilizzano metodi asincroni. Quindi il seguente codice è soggetto a errori perché l'operazione `fs.stat()` potrebbe essere completata prima dell'operazione `fs.rename()`.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Per ordinare in modo corretto le operazioni, spostare la chiamata `fs.stat()` all'interno del callback dell'operazione `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Nei processi occupati, il programmatore è *fortemente incoraggiato* a utilizzare le versioni asincrone di queste chiamate. Le versioni sincrone bloccheranno l'intero processo fino al loro completamento, interrompendo tutte le connessioni.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Anche se non è consigliato, la maggior parte delle funzioni fs consente di omettere l'argomento del callback, in tal caso viene utilizzato un callback predefinito che riesegue gli errori. Per ottenere una traccia (trace) per il sito di chiamata originale, impostare la variabile di ambiente `NODE_DEBUG`:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omettere la funzione callback sulle funzioni fs asincrone è obsoleto e potrebbe generare un qualche errore in futuro.
 
 ```txt
 $ cat script.js
@@ -86,13 +86,13 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-## File paths
+## Percorsi dei File
 
-Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
+La maggior parte delle operazioni `fs` accettano i percorsi dei file che potrebbero essere specificati sotto forma di una stringa, di un [`Buffer`][] o di un [`URL`][] object utilizzando il protocollo `file:`.
 
-String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
+I percorsi sotto forma di stringa vengono interpretati come sequenze di caratteri UTF-8 che identificano il filename assoluto o relativo. I percorsi relativi verranno risolti relativamente alla working directory corrente come specificato da `process.cwd()`.
 
-Example using an absolute path on POSIX:
+Esempio utilizzando un percorso assoluto su POSIX:
 
 ```js
 const fs = require('fs');
@@ -105,7 +105,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Example using a relative path on POSIX (relative to `process.cwd()`):
+Esempio utilizzando un percorso relativo su POSIX (relativo a `process.cwd()`):
 
 ```js
 fs.open('file.txt', 'r', (err, fd) => {
@@ -116,9 +116,9 @@ fs.open('file.txt', 'r', (err, fd) => {
 });
 ```
 
-Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
+I percorsi specificati utilizzando un [`Buffer`][] sono utili principalmente su determinati sistemi operativi POSIX che trattano i percorsi dei file come sequenze opache di byte. Su tali sistemi è possibile che il singolo percorso di un file contenga sequenze secondarie che utilizzano molteplici codifiche di caratteri. Come con i percorsi sotto forma di stringa, i percorsi sotto forma di `Buffer` potrebbero essere relativi o assoluti:
 
-Example using an absolute path on POSIX:
+Esempio utilizzando un percorso assoluto su POSIX:
 
 ```js
 fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
@@ -129,15 +129,15 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `fs.readdirSync('c:\\')` può potenzialmente restituire un risultato diverso da `fs.readdirSync('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
-### URL object support
+### Supporto degli URL object
 
 <!-- YAML
 added: v7.6.0
---> For most 
+--> Per la maggior parte delle funzioni del modulo 
 
-`fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
+`fs`, gli argomenti `path` o `filename` possono essere passati come [`URL`][] object WHATWG. Sono supportati solo gli [`URL`][] object che utilizzano il protocollo `file:`.
 
 ```js
 const fs = require('fs');
@@ -146,86 +146,86 @@ const fileUrl = new URL('file:///tmp/hello');
 fs.readFileSync(fileUrl);
 ```
 
-`file:` URLs are always absolute paths.
+Gli URL `file:` sono sempre percorsi assoluti.
 
-Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
+L'utilizzo degli [`URL`][] object WHATWG potrebbe introdurre comportamenti specifici della piattaforma.
 
-On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
+Su Windows, gli URL `file:` con un hostname vengono convertiti in percorsi UNC, mentre gli URL `file:` con lettere di unità vengono convertiti in percorsi assoluti locali. Gli URL `file:` senza hostname o lettera di unità genereranno un'esecuzione:
 
 ```js
-// On Windows :
+// Su Windows :
 
-// - WHATWG file URLs with hostname convert to UNC path
+// - Gli URL dei file WHATWG con hostname convertiti in percorso UNC
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - WHATWG file URLs with drive letters convert to absolute path
+// - Gli URL dei file WHATWG con le lettere di unità convertite in percorso assoluto
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - WHATWG file URLs without hostname must have a drive letters
+// - Gli URL dei file WHATWG senza hostname devono contenere lettere di unità
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
+// TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file dev'essere assoluto
 ```
 
-`file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
+Gli URL `file:` con lettere di unità devono utilizzare `:` come separatore subito dopo la lettera di unità. L'utilizzo di un altro separatore genererà un'esecuzione.
 
-On all other platforms, `file:` URLs with a hostname are unsupported and will result in a throw:
+Su tutte le altre piattaforme, gli URL `file:` con un hostname non sono supportati e generano un'esecuzione:
 
 ```js
-// On other platforms:
+// Su altre piattaforme:
 
-// - WHATWG file URLs with hostname are unsupported
+// - Gli URL dei file WHATWG con hostname non sono supportati
 // file://hostname/p/a/t/h/file => throw!
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: must be absolute
+// TypeError [ERR_INVALID_FILE_URL_PATH]: deve essere assoluto
 
-// - WHATWG file URLs convert to absolute path
+// - Gli URL dei file WHATWG vengono convertiti nel percorso assoluto
 // file:///tmp/hello => /tmp/hello
 fs.readFileSync(new URL('file:///tmp/hello'));
 ```
 
-A `file:` URL having encoded slash characters will result in a throw on all platforms:
+Un URL `file:` che presenta caratteri slash codificati genererà un'esecuzione su tutte le piattaforme:
 
 ```js
-// On Windows
+// Su Windows
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-\ or / characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+\ o / codificati */
 
-// On POSIX
+// Su POSIX
 fs.readFileSync(new URL('file:///p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-/ characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+/ codificati */
 ```
 
-On Windows, `file:` URLs having encoded backslash will result in a throw:
+Su Windows, gli URL `file:` con il backslash codificato provocheranno un'esecuzione:
 
 ```js
-// On Windows
+// Su Windows
 fs.readFileSync(new URL('file:///C:/path/%5C'));
 fs.readFileSync(new URL('file:///C:/path/%5c'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
-\ or / characters */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
+\ o / codificati */
 ```
 
-## File Descriptors
+## I File Descriptor
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. Each open file is assigned a simple numeric identifier called a *file descriptor*. At the system-level, all file system operations use these file descriptors to identify and track each specific file. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+Sui sistemi POSIX, per ogni processo, il kernel mantiene una tabella dei file e delle risorse attualmente aperti. Ad ogni file aperto viene assegnato un semplice identificatore numerico chiamato *file descriptor*. A livello di sistema, tutte le operazioni del file system utilizzano questi file descriptor per identificare e tracciare ogni specifico file. I sistemi Windows utilizzano un meccanismo diverso ma concettualmente simile per il tracciamento delle risorse. Per semplificare le cose per gli utenti, Node.js astrae le specifiche differenze tra i sistemi operativi e assegna a tutti i file aperti un file descriptor numerico.
 
-The `fs.open()` method is used to allocate a new file descriptor. Once allocated, the file descriptor may be used to read data from, write data to, or request information about the file.
+Il metodo `fs.open()` viene utilizzato per allocare un nuovo file descriptor. Una volta allocato, il file descriptor potrebbe essere utilizzato per leggere dati, scrivere dati o richiedere informazioni sul file.
 
 ```js
 fs.open('/open/some/file.txt', 'r', (err, fd) => {
   if (err) throw err;
   fs.fstat(fd, (err, stat) => {
     if (err) throw err;
-    // use stat
+    // utilizza stat
 
-    // always close the file descriptor!
+    // chiudere sempre il file descriptor!
     fs.close(fd, (err) => {
       if (err) throw err;
     });
@@ -233,11 +233,11 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Most operating systems limit the number of file descriptors that may be open at any given time so it is critical to close the descriptor when operations are completed. Failure to do so will result in a memory leak that will eventually cause an application to crash.
+La maggior parte dei sistemi operativi limita il numero di file descriptor che potrebbero essere aperti in un dato momento quindi è fondamentale chiudere il descriptor quando le operazioni sono state completate. In caso contrario, si verificherà una perdita di memoria che causerà l'arresto anomalo dell'applicazione.
 
-## Threadpool Usage
+## Utilizzo del Threadpool
 
-Note that all file system APIs except `fs.FSWatcher()` and those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che tutte le API del file system eccetto `fs.FSWatcher()` e quelle che sono esplicitamente sincrone utilizzano il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
 ## Class: fs.FSWatcher
 
@@ -245,9 +245,9 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v0.5.8
 -->
 
-A successful call to [`fs.watch()`][] method will return a new `fs.FSWatcher` object.
+Una chiamata al metodo [`fs.watch()`][] avvenuta con successo restituirà un nuovo `fs.FSWatcher` object.
 
-All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` event whenever a specific watched file is modified.
+Tutti gli `fs.FSWatcher` object sono [`EventEmitter`][] che emetteranno un evento `'change'` ogni volta che viene modificato un determinato file sottoposto al watching.
 
 ### Event: 'change'
 
@@ -255,19 +255,19 @@ All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` 
 added: v0.5.8
 -->
 
-* `eventType` {string} The type of change event that has occurred
-* `filename` {string|Buffer} The filename that changed (if relevant/available)
+* `eventType` {string} Il tipo di evento change che si è verificato
+* `filename` {string|Buffer} Il filename che è cambiato (se rilevante/disponibile)
 
-Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
+Viene emesso quando qualcosa cambia in una directory o in un file sottoposto al watching. Vedi ulteriori dettagli in [`fs.watch()`][].
 
-The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
+L'argomento `filename` potrebbe non essere fornito a seconda del supporto del sistema operativo. Se il `filename` viene fornito, esso verrà fornito come `Buffer` se `fs.watch()` viene chiamato con la sua opzione di `encoding` impostata su `'buffer'`, altrimenti il `filename` sarà una stringa UTF-8.
 
 ```js
-// Example when handled through fs.watch() listener
+// Esempio quando gestito attraverso il listener fs.watch() 
 fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
   if (filename) {
     console.log(filename);
-    // Prints: <Buffer ...>
+    // Stampa: <Buffer ...>
   }
 });
 ```
@@ -278,7 +278,7 @@ fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
 added: v10.0.0
 -->
 
-Emitted when the watcher stops watching for changes.
+Viene emesso quando il watcher smette di osservare i cambiamenti.
 
 ### Event: 'error'
 
@@ -288,7 +288,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Emitted when an error occurs while watching the file.
+Viene emesso quando si verifica un errore durante l'osservazione del file.
 
 ### watcher.close()
 
@@ -296,7 +296,7 @@ Emitted when an error occurs while watching the file.
 added: v0.5.8
 -->
 
-Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSWatcher` object is no longer usable.
+Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Una volta fermato, il `fs.FSWatcher` object non è più utilizzabile.
 
 ## Class: fs.ReadStream
 
@@ -304,9 +304,9 @@ Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSW
 added: v0.1.93
 -->
 
-A successful call to `fs.createReadStream()` will return a new `fs.ReadStream` object.
+Una chiamata a `fs.createReadStream()` avvenuta con successo restituirà un nuovo `fs.ReadStream` object.
 
-All `fs.ReadStream` objects are [Readable Streams](stream.html#stream_class_stream_readable).
+Tutti gli `fs.ReadStream` object sono degli [Readable Stream](stream.html#stream_class_stream_readable).
 
 ### Event: 'close'
 
@@ -314,7 +314,7 @@ All `fs.ReadStream` objects are [Readable Streams](stream.html#stream_class_stre
 added: v0.1.93
 -->
 
-Emitted when the `fs.ReadStream`'s underlying file descriptor has been closed.
+Viene emesso quando file descriptor sottostante a `fs.ReadStream` è stato chiuso.
 
 ### Event: 'open'
 
@@ -322,9 +322,9 @@ Emitted when the `fs.ReadStream`'s underlying file descriptor has been closed.
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the `ReadStream`.
+* `fd` {integer} File descriptor intero utilizzato dal `ReadStream`.
 
-Emitted when the `fs.ReadStream`'s file descriptor has been opened.
+Viene emesso quando il file descriptor del `fs.ReadStream` è stato aperto.
 
 ### Event: 'ready'
 
@@ -332,9 +332,9 @@ Emitted when the `fs.ReadStream`'s file descriptor has been opened.
 added: v9.11.0
 -->
 
-Emitted when the `fs.ReadStream` is ready to be used.
+Viene emesso quando il `fs.ReadStream` è pronto per essere utilizzato.
 
-Fires immediately after `'open'`.
+Esegue immediatamente dopo `'open'`.
 
 ### readStream.bytesRead
 
@@ -344,7 +344,7 @@ added: v6.4.0
 
 * {number}
 
-The number of bytes that have been read so far.
+Il numero di byte che sono stati letti finora.
 
 ### readStream.path
 
@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. If `path` is passed as a string, then `readStream.path` will be a string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
+Il percorso del file da cui lo stream sta eseguendo il reading (la lettura) come specificato nel primo argomento su `fs.createReadStream()`. Se `path` viene passato come una stringa, allora `readStream.path` sarà una stringa. Se `path` viene passato come un `Buffer`, allora `readStream.path` sarà un `Buffer`.
 
 ## Class: fs.Stats
 
@@ -367,9 +367,9 @@ changes:
     description: Added times as numbers.
 -->
 
-A `fs.Stats` object provides information about a file.
+Un `fs.Stats` object fornisce informazioni riguardanti un file.
 
-Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and their synchronous counterparts are of this type.
+Gli object restituiti da [`fs.stat()`][], [`fs.lstat()`][] e [`fs.fstat()`][] e le loro controparti sincrone sono di questo tipo.
 
 ```console
 Stats {
@@ -399,9 +399,9 @@ Stats {
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a block device.
+Restituisce `true` se l'`fs.Stats` object descrive un block device.
 
 ### stats.isCharacterDevice()
 
@@ -409,9 +409,9 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a character device.
+Restituisce `true` se il `fs.Stats` object descrive un character device.
 
 ### stats.isDirectory()
 
@@ -419,9 +419,9 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a file system directory.
+Restituisce `true` se il `fs.Stats` object descrive una directory del file system.
 
 ### stats.isFIFO()
 
@@ -429,9 +429,9 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
+Restituisce `true` se l'object `fs.Stats` descrive un pipe first-in-first-out (FIFO).
 
 ### stats.isFile()
 
@@ -439,9 +439,9 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a regular file.
+Restituisce `true` se il `fs.Stats` object descrive un normale file.
 
 ### stats.isSocket()
 
@@ -449,9 +449,9 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a socket.
+Restituisce `true` se il `fs.Stats` object descrive un socket.
 
 ### stats.isSymbolicLink()
 
@@ -459,71 +459,71 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a symbolic link.
+Restituisce `true` se il `fs.Stats` object descrive un collegamento simbolico (symlink).
 
-This method is only valid when using [`fs.lstat()`][].
+Questo metodo è valido solo quando si utilizza [`fs.lstat()`][].
 
 ### stats.dev
 
 * {number}
 
-The numeric identifier of the device containing the file.
+L'identificativo numerico del device che contiene il file.
 
 ### stats.ino
 
 * {number}
 
-The file system specific "Inode" number for the file.
+Il numero "Inode" specifico del file system per il file.
 
 ### stats.mode
 
 * {number}
 
-A bit-field describing the file type and mode.
+Un campo di bit che descrive il tipo e la modalità del file.
 
 ### stats.nlink
 
 * {number}
 
-The number of hard-links that exist for the file.
+Il numero di collegamenti reali esistenti per il file.
 
 ### stats.uid
 
 * {number}
 
-The numeric user identifier of the user that owns the file (POSIX).
+L'identificativo numerico utente dell'utente proprietario del file (POSIX).
 
 ### stats.gid
 
 * {number}
 
-The numeric group identifier of the group that owns the file (POSIX).
+L'identificatore numerico gruppo del gruppo che possiede il file (POSIX).
 
 ### stats.rdev
 
 * {number}
 
-A numeric device identifier if the file is considered "special".
+Un identificativo numerico del device se il file è considerato "speciale".
 
 ### stats.size
 
 * {number}
 
-The size of the file in bytes.
+La dimensione del file in byte.
 
 ### stats.blksize
 
 * {number}
 
-The file system block size for i/o operations.
+La dimensione del blocco del file system per le operazioni di i/o.
 
 ### stats.blocks
 
 * {number}
 
-The number of blocks allocated for this file.
+Il numero di blocchi assegnati per questo file.
 
 ### stats.atimeMs
 
@@ -533,7 +533,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was accessed expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.mtimeMs
 
@@ -543,7 +543,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was modified expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta che questo file è stato modificato dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.ctimeMs
 
@@ -553,7 +553,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time the file status was changed expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica l'ultima volta in cui lo stato del file è stato modificato dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.birthtimeMs
 
@@ -563,7 +563,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the creation time of this file expressed in milliseconds since the POSIX Epoch.
+Il timestamp che indica il momento della creazione di questo file dall'inizio del POSIX Epoch espresso in millisecondi.
 
 ### stats.atime
 
@@ -573,7 +573,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was accessed.
+Il timestamp che indica l'ultima volta in cui è stato effettuato l'accesso a questo file.
 
 ### stats.mtime
 
@@ -583,7 +583,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was modified.
+Il timestamp che indica l'ultima volta che questo file è stato modificato.
 
 ### stats.ctime
 
@@ -593,7 +593,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time the file status was changed.
+Il timestamp che indica l'ultima volta che lo stato del file è stato modificato.
 
 ### stats.birthtime
 
@@ -603,20 +603,20 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the creation time of this file.
+Il timestamp che indica il momento della creazione di questo file.
 
-### Stat Time Values
+### Valori Stat Time
 
-The `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` properties are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. The `Date` and number values are not connected. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
+Le proprietà `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` sono [numeri](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) che contengono i momenti corrispondenti in millisecondi. La loro precisione è specifica a seconda della piattaforma. `atime`, `mtime`, `ctime` e `birthtime` sono rappresentazioni alternate del [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object per i diversi momenti/orari. Il `Date` e i valori numeri non sono collegati. L'assegnazione di un nuovo valore numerico o la modifica del valore `Date` non si riflettono nella rappresentazione alternata corrispondente.
 
-The times in the stat object have the following semantics:
+I momenti nello stat object hanno la seguente semantica:
 
-* `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
-* `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
-* `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `atime` "Access Time" - Momento in cui è avvenuto l'ultimo accesso ai dati del file. Modificato dalle system call mknod(2), utimes(2) e read(2).
+* `mtime` "Modified Time" - Momento in cui è avvenuta l'ultima modifica ai dati del file. Modificato dalle system call mknod(2), utimes(2) e write(2).
+* `ctime` "Change Time" - Momento in cui è avvenuta l'ultima modifica dello stato del file (modifica dei dati inode). Modificato dalle system call chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2) e write(2).
+* `birthtime` "Birth Time" - Momento in cui è stato creato il file. Impostato una sola volta quando viene creato il file. Sui filesystem in cui il birthtime non è disponibile, questo campo potrebbe contenere il `ctime` o `1970-01-01T00:00Z` (cioè, unix epoch timestamp `0`). Da notare che questo valore può essere maggiore di `atime` o `mtime` in questo caso. Su Darwin e altre varianti di FreeBSD, si imposta anche se il `atime` è impostato esplicitamente su un valore precedente rispetto all'attuale `birthtime` utilizzando la system call utimes(2).
 
-Prior to Node.js v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
+Prima di Node.js v0.12, il `ctime` conteneva il `birthtime` sui sistemi Windows. Da notare che a partire dalla v0.12, `ctime` non è "creation time" e sui sistemi Unix non lo è mai stato.
 
 ## Class: fs.WriteStream
 
@@ -652,7 +652,7 @@ added: v9.11.0
 
 Emitted when the `fs.WriteStream` is ready to be used.
 
-Fires immediately after `'open'`.
+Esegue immediatamente dopo `'open'`.
 
 ### writeStream.bytesWritten
 
@@ -1295,7 +1295,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 ## fs.exists(path, callback)
 

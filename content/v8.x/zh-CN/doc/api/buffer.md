@@ -409,7 +409,7 @@ const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 console.log(buf2.toString());
 ```
 
-### Class 方法：Buffer.alloc(size[, fill[, encoding]])
+### 类方法：Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
@@ -464,7 +464,7 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class 方法：Buffer.allocUnsafe(size)
+### 类方法：Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -501,7 +501,7 @@ console.log(buf);
 
 对于这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体的说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外性能时，这个细微的区别是非常重要的。
 
-### Class 方法：Buffer.allocUnsafeSlow(size)
+### 类方法：Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
@@ -540,7 +540,7 @@ socket.on('readable', () => {
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-### Class 方法：Buffer.byteLength(string[, encoding])
+### 类方法：Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -575,7 +575,7 @@ console.log(`${str}: ${str.length} characters, ` +
 
 当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
-### Class 方法：Buffer.compare(buf1, buf2)
+### 类方法：Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -604,7 +604,7 @@ const arr = [buf1, buf2];
 console.log(arr.sort(Buffer.compare));
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### 类方法：Buffer.concat(list[, totalLength])
 
 <!-- YAML
 added: v0.7.11
@@ -615,19 +615,19 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Array} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `list` {Array} 要合并的 `Buffer` 或 [`Uint8Array`] 实例的列表。
+* `totalLength` {integer} 合并时 `list` 中 `Buffer` 实例的总长度。
+* 返回：{Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer`。
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+如果没有提供 `totalLength`，则从 `list` 中的 `Buffer` 实例计算得到。 但是为了计算 `totalLength`，会导致需要执行额外的循环，所以以显式方式提供已知长度会运行得更快。
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+如果提供了 `totalLength`，则会将其强制转换为无符号整数。 如果 `列表` 中的所有 `Buffer` 长度之和超过 `totalLength`，则结果会被截取为 `totalLength`。
 
-Example: Create a single `Buffer` from a list of three `Buffer` instances
+例如：从包含三个 `Buffer` 实例的列表创建一个单一的 `Buffer`。
 
 ```js
 const buf1 = Buffer.alloc(10);
@@ -647,7 +647,7 @@ console.log(bufA);
 console.log(bufA.length);
 ```
 
-### Class Method: Buffer.from(array)
+### 类方法：Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -655,30 +655,30 @@ added: v5.10.0
 
 * `array` {Array}
 
-Allocates a new `Buffer` using an `array` of octets.
+使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
-Example:
+例如：
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+如果 `array` 不是一个 `Array`，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
+* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`
+* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会和 [`TypedArray`] 共享相同的已分配内存。
 
-Example:
+例如：
 
 ```js
 const arr = new Uint16Array(2);
@@ -699,9 +699,9 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的内存范围。
 
-Example:
+例如：
 
 ```js
 const ab = new ArrayBuffer(10);
@@ -711,19 +711,19 @@ const buf = Buffer.from(ab, 0, 2);
 console.log(buf.length);
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+如果 `arrayBuffer` 不是 [`ArrayBuffer`] 或 [`SharedArrayBuffer`]， 则抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(buffer)
+### 类方法：Buffer.from(buffer)
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `buffer` {Buffer} An existing `Buffer` to copy data from.
+* `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
 
-Example:
+例如：
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -738,20 +738,20 @@ console.log(buf1.toString());
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+如果 `buffer` 不是一个 `Buffer`， 则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(string[, encoding])
+### 类方法：Buffer.from(string[, encoding])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`
+* `string` {string} 要编码的字符串。
+* `encoding` {string} `string` 的编码。 **默认值: ** `'utf8'`
 
-Creates a new `Buffer` containing the given JavaScript string `string`. If provided, the `encoding` parameter identifies the character encoding of `string`.
+创建一个包含给定 JavaScript 字符串 `string` 的新的 `Buffer`。 如果提供，`encoding` 参数指定 `string` 的字符编码方式。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from('this is a tést');
@@ -769,30 +769,30 @@ const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 console.log(buf2.toString());
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+如果 `string` 不是一个字符串，则会抛出 `TypeError` 错误。
 
-### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
+### 类方法：Buffer.from(object[, offsetOrEncoding[, length]])
 
 <!-- YAML
 added: v8.2.0
 -->
 
-* `object` {Object} An object supporting `Symbol.toPrimitive` or `valueOf()`
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `object` {Object} 一个支持 `Symbol.toPrimitive` 或 `valueOf()` 的对象。
+* `offsetOrEncoding` {number|string} 字节偏移量或编码，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
+* `length` {number} 长度值，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
+对那些其 `valueOf()` 函数返回值不严格等于 `object` 的对象，返回 `Buffer.from(object.valueOf(), offsetOrEncoding, length)`。
 
-For example:
+例如：
 
 ```js
 const buf = Buffer.from(new String('this is a test'));
 // <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+对那些支持 `Symbol.toPrimitive` 的对象，返回 `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`。
 
-For example:
+例如：
 
 ```js
 class Foo {
@@ -805,37 +805,37 @@ const buf = Buffer.from(new Foo(), 'utf8');
 // <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-### Class Method: Buffer.isBuffer(obj)
+### 类方法：Buffer.isBuffer(obj)
 
 <!-- YAML
 added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* 返回：{boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+如果 `obj` 是一个 `Buffer`，则返回 `true`，否则返回 `false`。
 
-### Class Method: Buffer.isEncoding(encoding)
+### 类方法：Buffer.isEncoding(encoding)
 
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} 一个要检查的字符编码名称。
+* 返回：{boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+如果 `encoding` 包含一个支持的字符编码则返回 `true`，否则返回 `false`。
 
-### Class Property: Buffer.poolSize
+### 类属性：Buffer.poolSize
 
 <!-- YAML
 added: v0.11.3
 -->
 
-* {integer} **Default:** `8192`
+* {integer} **默认值：** `8192`
 
-This is the number of bytes used to determine the size of pre-allocated, internal `Buffer` instances used for pooling. This value may be modified.
+这是用于决定预分配的内部 `Buffer` 实例大小的字节数。 这个值可以修改。
 
 ### buf[index]
 
@@ -844,11 +844,11 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+索引操作符 `[index]` 可用于在 `buf` 中指定的 `index` 位置获取或设置八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
-This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
+该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
-Example: Copy an ASCII string into a `Buffer`, one byte at a time
+例如：将 ASCII 字符串复制到 `Buffer` 中, 一次一个字节
 
 ```js
 const str = 'Node.js';
@@ -864,7 +864,7 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-The `buffer` property references the underlying `ArrayBuffer` object based on which this Buffer object is created.
+`buffer` 属性基于创建此 Buffer 对象的 `ArrayBuffer` 对象。
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -888,20 +888,20 @@ changes:
     description: Additional parameters for specifying offsets are supported now.
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to compare to.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
-* Returns: {integer}
+* `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** `target.length`
+* `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** [`buf.length`]
+* 返回：{integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于每个 `Buffer` 中实际的字节序列。
 
-* `0` is returned if `target` is the same as `buf`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* 如果 `target` 与 `buf` 相同，则返回 `0`
+* 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
+* 在排序时，如果 `target` 应当排在 `buf` *后面*，则返回 `-1`。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -928,9 +928,9 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中将对比限制在指定的范围内。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -946,7 +946,7 @@ console.log(buf1.compare(buf2, 0, 6, 4));
 console.log(buf1.compare(buf2, 5, 6, 5));
 ```
 
-A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength` or `sourceEnd > source.byteLength`.
+如果 `targetStart < 0`，`sourceStart < 0`，`targetEnd > target.byteLength`，或 `sourceEnd > source.byteLength`，则抛出 `RangeError` 错误。
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
@@ -954,15 +954,15 @@ A `RangeError` will be thrown if: `targetStart < 0`, `sourceStart < 0`, `targetE
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
-* `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`]
-* Returns: {integer} The number of bytes copied.
+* `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`
+* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`
+* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`]
+* 返回：{integer} 被复制的字节数。
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
 
-Example: Create two `Buffer` instances, `buf1` and `buf2`, and copy `buf1` from byte 16 through byte 19 into `buf2`, starting at the 8th byte in `buf2`
+例如：创建两个 `Buffer` 实例，`buf1` 和 `buf2`，并将 `buf1` 中的第 16 到 19 字节复制到 `buf2` 中的第 8 字节起始的位置。
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
@@ -979,7 +979,7 @@ buf1.copy(buf2, 8, 16, 20);
 console.log(buf2.toString('ascii', 0, 25));
 ```
 
-Example: Create a single `Buffer` and copy data from one region to an overlapping region within the same `Buffer`
+例如：创建单个的 `Buffer` 并在 `Buffer` 内将数据从一个区域复制到一个重叠区域。
 
 ```js
 const buf = Buffer.allocUnsafe(26);
@@ -1001,11 +1001,11 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+从 `buf` 的内容中，创建并返回一个 `[index, byte]` 对形式的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
-Example: Log the entire contents of a `Buffer`
+例如：记录 `Buffer` 的完整内容。
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1033,12 +1033,12 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] to compare to.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
+* 返回：{boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+如果 `buf` 和 `otherBuffer` 具有完全相同的字节，则返回 `true`，否则返回 `false`。
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1063,15 +1063,15 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value to fill `buf` with.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} 用来填充 `buf` 的值。
+* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`
+* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`]
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* 返回：{Buffer} `buf` 的引用。
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
+用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。 这是一个细微的简化，以允许使用单行代码创建和填充 `Buffer`。
 
-Example: Fill a `Buffer` with the ASCII character `'h'`
+例如：以 ASCII 字符 `'h'` 填充一个 `Buffer`。
 
 ```js
 const b = Buffer.allocUnsafe(50).fill('h');
@@ -1080,18 +1080,18 @@ const b = Buffer.allocUnsafe(50).fill('h');
 console.log(b.toString());
 ```
 
-`value` is coerced to a `uint32` value if it is not a String or Integer.
+如果 `value` 不是一个字符串或整数，则会被强制转换为 `uint32` 值。
 
-If the final write of a `fill()` operation falls on a multi-byte character, then only the first bytes of that character that fit into `buf` are written.
+如果 `fill()` 操作的最后一次写入的是一个多字节字符，则只有能够填入 `buf` 的最前面字节会被写入。
 
-Example: Fill a `Buffer` with a two-byte character
+例如：用两个字节的字符填充 `Buffer`。
 
 ```js
 // Prints: <Buffer c8 a2 c8>
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid fill data remains, no filling is performed:
+如果 `value` 包含无效字符，则会被截断；如果没有有效的填充数据保留，则抛出异常：
 
 ```js
 const buf = Buffer.allocUnsafe(5);
@@ -1109,14 +1109,14 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
+* `value` {string|Buffer|integer} 要搜索的值。
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* 返回：{boolean} 如果在 `buf` 中找到 `value`， 则返回 `true`，否则返回 `false`。
 
-Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
+相当于 [`buf.indexOf() !== -1`][`buf.indexOf()`]。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1159,7 +1159,7 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
@@ -1264,7 +1264,7 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.

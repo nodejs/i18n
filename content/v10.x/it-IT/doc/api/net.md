@@ -713,26 +713,26 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Usato solo quando i dato è `string`. **Default:** `utf8`.
+* `encoding` {string} Usato solo quando il dato è `string`. **Default:** `utf8`.
 * `callback` {Function} 
 * Restituisce: {boolean}
 
 Invia dati sul socket. Il secondo parametro specifica la codifica nel file in caso di una stringa - come predefinito per UTF8 encoding.
 
-Restituisce `true ` se l'intero i dati sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
+Restituisce `true ` se i dati interi sono stati scaricati con successo nel kernel buffer. Restituisce `false` se tutti i dati o una parte sono stati messi in coda nella memoria utente. [`'drain'`][] verrà emesso quando il buffer è di nuovo libero.
 
 Il parametro facoltativo `callback` verrà eseguito quando i dati saranno finalmente scritti - questo potrebbe non essere immediato.
 
-See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
+Per ulteriori informazioni, vedi il metodo `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-## net.connect() 
+## net.connect()
 
 Pseudomini per [`net.createConnection()`][`net.createConnection()`].
 
 Possibili firme:
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
-* [`net.connect(path[, connectListener])`][`net.connect(path)`] per connessioni [IPC](#net_ipc_support).
+* [`net.connect(path[, connectListener])`][`net.connect(path)`] per le connessioni [IPC](#net_ipc_support).
 * [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] per le connessioni TPC.
 
 ### net.connect(options[, connectListener])
@@ -763,8 +763,7 @@ Pseudonimo per [`net.createConnection(port[, host][, connectListener])`][`net.cr
 
 Una funzione factory, che crea un nuovo [`net.Socket`][], avvia immediatamente la connessione con [`socket.connect()`][], quindi restituisce il `net.Socket` che avvia la connessione.
 
-Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. L'ultimo parametro `connectListener<code>, se fornito,
-verrà aggiunto <strong>una volta</strong> come listener per l'evento [<0>'connect'`][].
+Quando viene stabilita la connessione, verrà emesso un evento [`'connect'`][] sul socket restituito. L'ultimo parametro `connectListener`, se fornito, verrà aggiunto **una volta** come listener per l'evento [`'connect'`][].
 
 Possibili firme:
 
@@ -772,7 +771,7 @@ Possibili firme:
 * [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] per le connessioni [IPC](#net_ipc_support).
 * [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] per le connessioni TPC.
 
-La funzione [`net.connect()`][] è un pseudonimo di questa funzione.
+La funzione [`net.connect()`][] è uno pseudonimo di questa funzione.
 
 ### net.createConnection(options[, connectListener])
 
@@ -780,17 +779,17 @@ La funzione [`net.connect()`][] è un pseudonimo di questa funzione.
 added: v0.1.90
 -->
 
-* `options` {Object} Richiesto. Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `options` {Object} Richiesto. Verrà passato sia alla chiamata [`new net.Socket([options])`][`new net.Socket(options)` che al metodo [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][]. Se fornito, sarà aggiunto una volta come un listener per l'evento [`'connect'`][] sul socket restituito.
+* Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
-For available options, see [`new net.Socket([options])`][`new net.Socket(options)`] and [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+Per le opzioni disponibili, vedi [`new net.Socket([options])`][`new net.Socket(options)`] e [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
 Opzioni aggiuntive:
 
-* `timeout` {number} If set, will be used to call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
+* `timeout` {number} Se impostato, verrà utilizzato per chiamare [`socket.setTimeout (timeout)`][] dopo che il socket viene creato, ma prima che inizi la connessione.
 
-Following is an example of a client of the echo server described in the [`net.createServer()`][] section:
+Di seguito è riportato un esempio di un client del server echo descritto nella sezione [`net.createServer()`][]:
 
 ```js
 const net = require('net');
@@ -808,7 +807,7 @@ client.on('end', () => {
 });
 ```
 
-To connect on the socket `/tmp/echo.sock` the second line would just be changed to:
+Per connettersi sul socket `/tmp/echo.sock` la seconda riga sarebbe stata solamente modificata in:
 
 ```js
 const client = net.createConnection({ path: '/tmp/echo.sock' });
@@ -820,13 +819,13 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 added: v0.1.90
 -->
 
-* `path` {string} Path the socket should connect to. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `path` {string} Percorso a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(path[, host][, connectListener])`][`socket.connect(path, host)`]. Vedi [Identificazione dei percorsi per le connessioni IPC](#net_identifying_paths_for_ipc_connections).
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una tantum" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
-Initiates an [IPC](#net_ipc_support) connection.
+Inizia una connessione [IPC](#net_ipc_support).
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(path[, connectListener])`][`socket.connect(path)`], then returns the `net.Socket` that starts the connection.
+Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(path[, connectListener])`] [` socket.connect (path)`], quindi restituisce il `net.Socket` che avvia la connessione.
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
 
@@ -834,14 +833,14 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.1.90
 -->
 
-* `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `port`{number} Porta a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+* `host`{string} Host a cui il socket dovrebbe connettersi. Sarà passato a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
+* `connectListener` {Function} Parametro comune delle funzioni [`net.createConnection()`][], un listener "una tantum" per l'evento `'connect'` sul socket d'inizio. Sarà passato a [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* Restituisce: {net.Socket} Il socket appena creato utilizzato per avviare la connessione.
 
-Initiates a TCP connection.
+Inizia una connessione TPC.
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
+Questa funzione crea un nuovo [`net.Socket`][] con tutte le opzioni impostate su default, avvia immediatamente la connessione con [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], quindi restituisce il `net.Socket` che avvia la connessione.
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
@@ -849,21 +848,21 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.5.0
 -->
 
-Creates a new TCP or [IPC](#net_ipc_support) server.
+Crea un nuovo server TPC o [IPC](#net_ipc_support).
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
-* `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Returns: {net.Server}
+  * `allowHalfOpen`{boolean} Indica se le connessioni TPC semi-aperte sono consentite. **Default:** `false`.
+  * `pauseOnConnect` {boolean} indica se il socket dovrebbe essere messo in pausa sulle connessioni in entrata. **Default:** `false`.
+* `connectionListener` {Function} Imposta automaticamente un listener per l'evento [`'connection'`][].
+* Restituisce: {net.Server}
 
-If `allowHalfOpen` is set to `true`, when the other end of the socket sends a FIN packet, the server will only send a FIN packet back when [`socket.end()`][] is explicitly called, until then the connection is half-closed (non-readable but still writable). See [`'end'`][] event and [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13) for more information.
+Se `allowHalfOpen` è impostato su `true`, quando l'altra estremità del socket invia un pacchetto FIN, il server invierà un pacchetto FIN solo quando [`socket.end()`][] viene chiamato esplicitamente, fino a quel momento la connessione è semichiusa (non leggibile ma ancora scrivibile). Per ulteriori informazioni, vedi gli eventi [`'end'`][] e [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13).
 
-If `pauseOnConnect` is set to `true`, then the socket associated with each incoming connection will be paused, and no data will be read from its handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
+Se `pauseOnConnect` è impostato su `true`, il socket associato a ciascuna connessione in entrata verrà messo in pausa e nessun dato verrà letto dal suo handle. Questo permette alle connessioni di essere passate tra i processi senza che nessun dato venga letto dal processo originale. Per iniziare la lettura dei dati da un socket messo in pausa, chiamare [`socket.resume()`][].
 
-The server can be a TCP server or an [IPC](#net_ipc_support) server, depending on what it [`listen()`][`server.listen()`] to.
+Il server può essere un server TCP o un server [IPC](#net_ipc_support), in base a che cosa esso (fa ascoltare) [`listen()`] al [`server.listen()`].
 
-Here is an example of an TCP echo server which listens for connections on port 8124:
+Ecco un esempio di un server echo TCP che ascolta le connessioni sulla porta 8124:
 
 ```js
 const net = require('net');
@@ -884,13 +883,13 @@ server.listen(8124, () => {
 });
 ```
 
-Test this by using `telnet`:
+Provalo utilizzando `telnet`:
 
 ```console
 $ telnet localhost 8124
 ```
 
-To listen on the socket `/tmp/echo.sock` the third line from the last would just be changed to:
+Per eseguire il listening sul socket `/tmp/echo.sock` la terza riga a partire dall'ultima sarebbe stata appena modificata in:
 
 ```js
 server.listen('/tmp/echo.sock', () => {
@@ -898,7 +897,7 @@ server.listen('/tmp/echo.sock', () => {
 });
 ```
 
-Use `nc` to connect to a UNIX domain socket server:
+Utilizza `nc` per connettersi a un server socket di dominio UNIX:
 
 ```console
 $ nc -U /tmp/echo.sock
@@ -910,9 +909,9 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
+Verifica se l'input è un indirizzo IP. Restituisce `0` per stringhe non valide, restituisce `4` per gli indirizzi IP versione 4 e restituisce `6` per gli indirizzi IP versione 6.
 
 ## net.isIPv4(input)
 
@@ -920,9 +919,9 @@ Tests if input is an IP address. Returns `0` for invalid strings, returns `4` fo
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if input is a version 4 IP address, otherwise returns `false`.
+Restituisce `true` se l'input è un indirizzo IP versione 4, altrimenti restituisce `false`.
 
 ## net.isIPv6(input)
 
@@ -930,6 +929,6 @@ Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Returns `true` if input is a version 6 IP address, otherwise returns `false`.
+Restituisce `true` se l'input è un indirizzo IP versione 6, altrimenti restituisce `false`.

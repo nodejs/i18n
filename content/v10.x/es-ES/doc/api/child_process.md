@@ -31,17 +31,17 @@ El método [`child_process.spawn()`][] genera el proceso secundario asincrónica
 
 Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
-      passing the `stdout` and `stderr` to a callback function when complete.
+    * [`child_process.exec()`][]: genera un shell y ejecuta un comando dentro de ese shell,
+      pasar `stdout` y `stderr` a una función de callback cuando termine.
     * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
       it spawns the command directly without first spawning a shell by default.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
-      specified module with an IPC communication channel established that allows
-      sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of
-      [`child_process.exec()`][] that *will* block the Node.js event loop.
-    * [`child_process.execFileSync()`][]: a synchronous version of
-      [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.fork()`][]: genera un nuevo proceso de Node.js e invoca un
+      módulo especificado con un canal de comunicación IPC establecido que permite
+      enviar mensajes entre primario y secundario.
+    * [`child_process.execSync()`][]: una versión sincrónica de 
+      [`child_process.exec()`][] que *bloqueará* el bucle de evento de Node.js.
+    * [`child_process.execFileSync()`][]: una versión sincrónica de 
+      [`child_process.execFile()`][] que *bloqueará* el bucle de evento de Node.js.
     
 
 Para ciertos casos de uso, como la automatización de scripts de shell, las [synchronous counterparts](#child_process_synchronous_process_creation) pueden ser más convenientes. En muchos casos, sin embargo, los métodos sincrónicos pueden tener un impacto significativo en el rendimiento debido al bloqueo del bucle de eventos mientras se completan los procesos generados.

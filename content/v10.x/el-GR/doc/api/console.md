@@ -1,34 +1,34 @@
-# Console
+# Κονσόλα
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> Σταθερότητα: 2 - Σταθερό
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+Η ενότητα `console` παρέχει μια απλή κονσόλα αποσφαλμάτωσης που είναι παρόμοια με τον μηχανισμό κονσόλας της JavaScript που παρέχεται από τους περιηγητές.
 
-The module exports two specific components:
+Η ενότητα εξάγει δύο συγκεκριμένα μέρη:
 
-* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Μια κλάση `Console` με μεθόδους όπως τα `console.log()`, `console.error()` και `console.warn()` που μπορούν να χρησιμοποιηθούν για να γράψουν σε οποιαδήποτε ροή της Node.js.
+* Ένα καθολικό στιγμιότυπο του `console` που έχει ρυθμιστεί για να γράφει στα [`process.stdout`][] και [`process.stderr`][]. Το καθολικό `console` μπορεί να χρησιμοποιείται και χωρίς να γίνει κλήση του `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Προσοχή***: Οι μέθοδοι αντικειμένων της καθολικής κονσόλας δεν είναι ούτε συνεπώς σε συγχρονισμό όπως τα API των περιηγητών που παρομοιάζουν, ούτε είναι συνεπώς ασύγχρονα όπως όλες οι άλλες ροές της Node.js. Δείτε την [σημείωση για το I/O των διαδικασιών](process.html#process_a_note_on_process_i_o) για περισσότερες πληροφορίες.
 
-Example using the global `console`:
+Παράδειγμα χρήσης του καθολικού `console`:
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Τυπώνει: hello world, στο stdout
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Τυπώνει: hello world, στο stdout
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+// Τυπώνει: [Error: Whoops, something bad happened], στο stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Τυπώνει: Danger Will Robinson! Danger!, στο stderr
 ```
 
-Example using the `Console` class:
+Παράδειγμα χρησιμοποιώντας την κλάση `Console`:
 
 ```js
 const out = getStreamSomehow();
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Prints: hello world, to out
+// Τυπώνει: hello world, στο out
 myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
+// Τυπώνει: hello world, στο out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+// Τυπώνει [Error: Whoops, something bad happened], στο err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Τυπώνει: Danger Will Robinson! Danger!, στο err
 ```
 
 ## Class: Console
@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+Η κλάση `Console` μπορεί να χρησιμοποιηθεί για τη δημιουργία ενός απλού καταγραφέα με ρυθμιζόμενες ροές εξόδου, και μπορεί να χρησιμοποιηθεί είτε το `require('console').Console` ή το `console.Console` (ή οι αδόμητες αντιστοιχίες τους) για να αποκτηθεί πρόσβαση σε αυτόν:
 
 ```js
 const { Console } = require('console');
@@ -89,23 +89,23 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} Αγνοεί τα σφάλματα όταν γίνεται εγγραφή στις υποκείμενες ροές. **Προεπιλογή:** `true`.
+  * `colorMode` {boolean|string} Ορίζει την υποστήριξη χρωμάτων για αυτό το στιγμιότυπο `Console`. Αν οριστεί ως `true`, επιτρέπει τον χρωματισμό κατά την επιθεώρηση τιμών, ενώ αν οριστεί ως `'auto'` ορίσει την υποστήριξη χρώματος στην τιμή της ιδιότητας `isTTY` και η τιμή του επιστρέφεται από το `getColorDepth()` στην αντίστοιχη ροή του. **Προεπιλογή:** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Δημιουργεί ένα νέο `Console` με μια ή δύο εγγράψιμες ροές. Το `stdout` είναι μια εγγράψιμη ροή που τυπώνει την έξοδο καταγραφής ή πληροφοριών. Το `stderr` χρησιμοποιείται για έξοδο προειδοποιήσεων ή σφαλμάτων. Αν δεν παρέχεται έξοδος `stderr`, τότε χρησιμοποιείται η έξοδος `stdout` και για το `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// απλός προσαρμοσμένος καταγραφέας
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// χρήση σαν κονσόλα
 const count = 5;
 logger.log('count: %d', count);
-// in stdout.log: count 5
+// στο stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+Το καθολικό `console` είναι ένα ειδικό στιγμιότυπο `Console` του οποίου η έξοδος γίνεται στο [`process.stdout`][] και στο [`process.stderr`][]. Είναι ισοδύναμο της παρακάτω κλήσης:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -123,10 +123,10 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `value` {any} Οποιαδήποτε τιμή που είναι πιθανώς αληθής.
+* `...message` {any} Όλες οι παράμετροι, εκτός από το `value`, χρησιμοποιούνται ως μήνυμα σφάλματος.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+Ένας απλός έλεγχος ισχυρισμού για το αν το `value` είναι αληθές. Αν δεν είναι, καταγράφεται ως `Assertion failed`. Αν παρέχεται, το σφάλμα `message` μορφοποιείται με τη χρήση του [`util.format()`][] μεταφέροντας όλες τις παραμέτρους του μηνύματος. Η έξοδος χρησιμοποιείται ως το μήνυμα σφάλματος.
 
 ```js
 console.assert(true, 'does nothing');
@@ -135,7 +135,7 @@ console.assert(false, 'Whoops %s work', 'didn\'t');
 // Assertion failed: Whoops didn't work
 ```
 
-Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
+Η κλήση του `console.assert()` με έναν λάθος ισχυρισμό, θα προκαλέσει την εκτύπωση του `message` στην κονσόλα, χωρίς να διακοπεί η εκτέλεση του κώδικα που ακολουθεί.
 
 ### console.clear()
 
@@ -143,9 +143,9 @@ Calling `console.assert()` with a falsy assertion will only cause the `message` 
 added: v8.3.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Όταν το `stdout` είναι ένα TTY, η κλήση του `console.clear()` θα προσπαθήσει να εκκαθαρίσει ολόκληρο το TTY. Όταν το `stdout` δεν είναι ένα TTY, αυτή η μέθοδος δεν κάνει τίποτα.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+Η ακριβής λειτουργία του `console.clear()` μπορεί να διαφοροποιείται μεταξύ λειτουργικών συστημάτων και τύπων κονσόλας. Για τις περισσότερες διανομές Linux, το `console.clear()` λειτουργεί παρόμοια με την κλήση της εντολής κελύφους `clear`. Στα Windows, το `console.clear()` θα εκκαθαρίσει μόνο την έξοδο της τρέχουσας προβολής τερματικού του Node.js.
 
 ### console.count([label='default'])
 
@@ -153,9 +153,9 @@ The specific operation of `console.clear()` can vary across operating systems an
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} Η ετικέτα προβολής για τον μετρητή. **Προεπιλογή:** `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Διατηρεί έναν εσωτερικό μετρητή ειδικά για το `label` και τυπώνει στο `stdout` πόσες φορές κλήθηκε το `console.count()` με το συγκεκριμένο `label`.
 
 <!-- eslint-skip -->
 
@@ -187,9 +187,9 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} Η ετικέτα προβολής για τον μετρητή. **Προεπιλογή:** `'default'`.
 
-Resets the internal counter specific to `label`.
+Μηδενίζει τον εσωτερικό μετρητή του `label`.
 
 <!-- eslint-skip -->
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+Η συνάρτηση `console.debug()` είναι ένα ψευδώνυμο για το [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -229,11 +229,11 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
+  * `showHidden` {boolean} Αν είναι `true`, τότε θα εμφανιστούν και οι ιδιότητες συμβόλων και μη-καταμέτρησης του αντικειμένου. **Προεπιλογή:** `false`.
+  * `depth` {number} Ενημερώνει το [`util.inspect()`][] πόσες φορές να ανατρέξει κατά την μορφοποίηση του αντικειμένου. Αυτό είναι χρήσιμο για την επιθεώρηση μεγάλων και μπερδεμένων αντικειμένων. Για να γίνεται επ'αορίστου, χρησιμοποιήστε την τιμή `null`. **Προεπιλογή:** `2`.
+  * `colors` {boolean} Αν είναι `true`, τότε η έξοδος θα χρησιμοποιεί κωδικούς χρωμάτων ANSI. Τα χρώματα είναι παραμετροποιήσιμα· δείτε την ενότητα [παραμετροποίηση χρωμάτων `util.inspect()`][]. **Προεπιλογή:** `false`.
 
-Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
+Χρησιμοποιεί το [`util.inspect()`][] στο `obj` και τυπώνει το string του αποτελέσματος στο `stdout`. Αυτή η συνάρτηση αγνοεί οποιαδήποτε προσαρμοσμένη συνάρτηση `inspect()` έχει οριστεί στο `obj`.
 
 ### console.dirxml(...data)
 
@@ -248,7 +248,7 @@ changes:
 
 * `...data` {any}
 
-This method calls `console.log()` passing it the arguments received. Please note that this method does not produce any XML formatting.
+Αυτή η μέθοδος καλεί το `console.log()` και μεταδίδει τις παραμέτρους που έλαβε. Παρακαλώ σημειώστε ότι αυτή η μέθοδος δεν παράγει κάποια μορφοποίηση XML.
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -259,17 +259,17 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Τυπώνει στο `stderr` με χαρακτήρα αλλαγής γραμμής. Μπορούν να μεταδοθούν πολλαπλές παράμετροι, με την πρώτη να χρησιμοποιείται ως το κυρίως μήνυμα, και οι υπόλοιπες ως αντικαταστάτες, όπως στο printf(3) (όλες οι παράμετροι μεταφέρονται στο [`util.format()`][]).
 
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Prints: error #5, to stderr
+// Τυπώνει: error #5, to stderr
 console.error('error', code);
-// Prints: error 5, to stderr
+// Τυπώνει: error 5, to stderr
 ```
 
-If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
+Αν δε βρεθούν στοιχεία μορφοποίησης (π.χ. `%d`) στο πρώτο string, τότε καλείται το [`util.inspect()`][] σε κάθε παράμετρο, και οι τιμές των αποτελεσμάτων συνενώνονται. Δείτε το [`util.format()`][] για περισσότερες πληροφορίες.
 
 ### console.group([...label])
 
@@ -279,9 +279,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Αυξάνει την εσοχή των γραμμών που ακολουθούν, κατά δύο διαστήματα.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Αν παρέχονται ένα ή περισσότερα `label`, τότε αυτά τυπώνονται πρώτα χωρίς κάποια εσοχή.
 
 ### console.groupCollapsed()
 
@@ -289,7 +289,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Ψευδώνυμο του [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -297,7 +297,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Μειώνει την εσοχή των γραμμών που ακολουθούν, κατά δύο διαστήματα.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+Η συνάρτηση `console.info()` είναι ένα ψευδώνυμο για την συνάρτηση [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -319,17 +319,17 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Τυπώνει στο `stdout` με χαρακτήρα αλλαγής γραμμής. Μπορούν να μεταδοθούν πολλαπλές παράμετροι, με την πρώτη να χρησιμοποιείται ως το κυρίως μήνυμα, και οι υπόλοιπες ως αντικαταστάτες, όπως στο printf(3) (όλες οι παράμετροι μεταφέρονται στο [`util.format()`][]).
 
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Prints: count: 5, to stdout
+// Τυπώνει: count: 5, στο stdout
 console.log('count:', count);
-// Prints: count: 5, to stdout
+// Τυπώνει: count: 5, στο stdout
 ```
 
-See [`util.format()`][] for more information.
+Δείτε το [`util.format()`][] για περισσότερες πληροφορίες.
 
 ### console.table(tabularData[, properties])
 
