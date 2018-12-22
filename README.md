@@ -28,6 +28,7 @@ Help us get the documentation translated into your native language and reach mor
 - [Norwegian](https://crowdin.com/project/nodejs/no)
 - [Polish](https://crowdin.com/project/nodejs/pl)
 - [Portuguese](https://crowdin.com/project/nodejs/pt-PT)
+- [Portuguese (Brazil)](https://crowdin.com/project/nodejs/pt-BR)
 - [Romanian](https://crowdin.com/project/nodejs/ro)
 - [Russian](https://crowdin.com/project/nodejs/ru)
 - [Slovak](https://crowdin.com/project/nodejs/sk)
