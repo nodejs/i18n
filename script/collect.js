@@ -34,9 +34,9 @@ async function getDocsForNodeVersion (major, version) {
 
   // removes files other than markdown
   walk(tempDocDir, {directories: false})
-  .filter(file => path.extname(file.relativePath.toLowerCase()) !== '.md')
-  .forEach(file => fs.unlinkSync(path.join(tempDocDir, file.relativePath)))
-  
+    .filter(file => path.extname(file.relativePath.toLowerCase()) !== '.md')
+    .forEach(file => fs.unlinkSync(path.join(tempDocDir, file.relativePath)))
+
   await fs.copy(tempDocDir, docDir)
 
   fs.remove(tempDir)
