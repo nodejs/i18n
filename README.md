@@ -95,6 +95,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Name                  | GitHub                                            | Twitter                                                 |
 |:----------------------|:--------------------------------------------------|:--------------------------------------------------------|
 | Adam Miller           | [amiller-gh](https://github.com/amiller-gh)       | [millea9](https://twitter.com/millea9)                  |
+| Alexey Temnykov       | [Alex-Temny](https://github.com/Alex-Temny)       | [temnykov](https://twitter.com/temnykov)                |
 | Andrew Bus            | [iAndrewCA](https://github.com/iAndrewCA)         | [AndrewPaulBus](https://twitter.com/AndrewPaulBus)      |
 | Antoine Olivier       | [Toinane](https://github.com/Toinane)             | [Toinane](https://twitter.com/Toinane)                  |
 | Amor                  | [amorist](https://github.com/amorist)             | [amor90s](https://twitter.com/amor90s)                  |
