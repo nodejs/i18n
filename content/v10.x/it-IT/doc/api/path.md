@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Nota:* Su Windows, Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. Ad esempio `path.resolve ('c: \\')` può potenzialmente restituire un risultato diverso da `path.resolve ('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* Su Windows, Node.js segue il concetto di working directory per unità. Questa azione può essere osservata quando si utilizza un percorso di unità senza backslash. Ad esempio `path.resolve ('c: \\')` può potenzialmente restituire un risultato diverso da `path.resolve ('c:')`. Per maggiori informazioni, vedi [questa pagina MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -65,7 +65,7 @@ changes:
 * `ext` {string} Un'estensione di file opzionale
 * Restituisce: {string}
 
-I metodi `path.basename()`restituiscono l'ultima porzione di un ` percorso`, simile al comando Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
+I metodi `path.basename()`restituiscono l'ultima porzione di un ` path`, simile al comando `basename` Unix. I separatori di directory finali vengono ignorati, vedere [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
