@@ -737,6 +737,11 @@ An invalid HTTP/2 header value was specified.
 An invalid HTTP informational status code has been specified. Informational
 status codes must be an integer between `100` and `199` (inclusive).
 
+<a id="ERR_HTTP2_INVALID_ORIGIN"></a>
+### ERR_HTTP2_INVALID_ORIGIN
+
+HTTP/2 `ORIGIN` frames require a valid origin.
+
 <a id="ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH"></a>
 ### ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH
 
@@ -775,11 +780,22 @@ required to send an acknowledgment that it has received and applied the new
 be sent at any given time. This error code is used when that limit has been
 reached.
 
+<a id="ERR_HTTP2_NESTED_PUSH"></a>
+### ERR_HTTP2_NESTED_PUSH
+
+An attempt was made to initiate a new push stream from within a push stream.
+Nested push streams are not permitted.
+
 <a id="ERR_HTTP2_NO_SOCKET_MANIPULATION"></a>
 ### ERR_HTTP2_NO_SOCKET_MANIPULATION
 
 An attempt was made to directly manipulate (read, write, pause, resume, etc.) a
 socket attached to an `Http2Session`.
+
+<a id="ERR_HTTP2_ORIGIN_LENGTH"></a>
+### ERR_HTTP2_ORIGIN_LENGTH
+
+HTTP/2 `ORIGIN` frames are limited to a length of 16382 bytes.
 
 <a id="ERR_HTTP2_OUT_OF_STREAMS"></a>
 ### ERR_HTTP2_OUT_OF_STREAMS
@@ -826,11 +842,22 @@ send something other than a regular file.
 
 The `Http2Session` closed with a non-zero error code.
 
+<a id="ERR_HTTP2_SETTINGS_CANCEL"></a>
+### ERR_HTTP2_SETTINGS_CANCEL
+
+The `Http2Session` settings canceled.
+
 <a id="ERR_HTTP2_SOCKET_BOUND"></a>
 ### ERR_HTTP2_SOCKET_BOUND
 
 An attempt was made to connect a `Http2Session` object to a `net.Socket` or
 `tls.TLSSocket` that had already been bound to another `Http2Session` object.
+
+<a id="ERR_HTTP2_SOCKET_UNBOUND"></a>
+### ERR_HTTP2_SOCKET_UNBOUND
+
+An attempt was made to use the `socket` property of an `Http2Session` that
+has already been closed.
 
 <a id="ERR_HTTP2_STATUS_101"></a>
 ### ERR_HTTP2_STATUS_101
@@ -860,6 +887,19 @@ A non-zero error code was been specified in an `RST_STREAM` frame.
 When setting the priority for an HTTP/2 stream, the stream may be marked as
 a dependency for a parent stream. This error code is used when an attempt is
 made to mark a stream and dependent of itself.
+
+<a id="ERR_HTTP2_TRAILERS_ALREADY_SENT"></a>
+### ERR_HTTP2_TRAILERS_ALREADY_SENT
+
+Trailing headers have already been sent on the `Http2Stream`.
+
+<a id="ERR_HTTP2_TRAILERS_NOT_READY"></a>
+### ERR_HTTP2_TRAILERS_NOT_READY
+
+The `http2stream.sendTrailers()` method cannot be called until after the
+`'wantTrailers'` event is emitted on an `Http2Stream` object. The
+`'wantTrailers'` event will only be emitted if the `waitForTrailers` option
+is set for the `Http2Stream`.
 
 <a id="ERR_HTTP2_UNSUPPORTED_PROTOCOL"></a>
 ### ERR_HTTP2_UNSUPPORTED_PROTOCOL
@@ -1067,6 +1107,31 @@ multiple of the element size.
 While calling `napi_create_typedarray()`, `(length * size_of_element) +
 byte_offset` was larger than the length of given `buffer`.
 
+<a id="ERR_NAPI_TSFN_CALL_JS"></a>
+### ERR_NAPI_TSFN_CALL_JS
+
+An error occurred while invoking the JavaScript portion of the thread-safe
+function.
+
+<a id="ERR_NAPI_TSFN_GET_UNDEFINED"></a>
+### ERR_NAPI_TSFN_GET_UNDEFINED
+
+An error occurred while attempting to retrieve the JavaScript `undefined`
+value.
+
+<a id="ERR_NAPI_TSFN_START_IDLE_LOOP"></a>
+### ERR_NAPI_TSFN_START_IDLE_LOOP
+
+On the main thread, values are removed from the queue associated with the
+thread-safe function in an idle loop. This error indicates that an error
+has occurred when attemping to start the loop.
+
+<a id="ERR_NAPI_TSFN_STOP_IDLE_LOOP"></a>
+### ERR_NAPI_TSFN_STOP_IDLE_LOOP
+
+Once no more items are left in the queue, the idle loop must be suspended. This
+error indicates that the idle loop has failed to stop.
+
 <a id="ERR_NO_ICU"></a>
 ### ERR_NO_ICU
 
@@ -1107,11 +1172,31 @@ A call was made and the UDP subsystem was not running.
 <a id="ERR_STDERR_CLOSE"></a>
 ### ERR_STDERR_CLOSE
 
+<!-- YAML
+removed: v8.16.0
+changes:
+  - version: v8.16.0
+    pr-url: https://github.com/nodejs/node/pull/23053
+    description: Rather than emitting an error, `process.stderr.end()` now
+                 only closes the stream side but not the underlying resource,
+                 making this error obsolete.
+-->
+
 An attempt was made to close the `process.stderr` stream. By design, Node.js
 does not allow `stdout` or `stderr` streams to be closed by user code.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 ### ERR_STDOUT_CLOSE
+
+<!-- YAML
+removed: v8.16.0
+changes:
+  - version: v8.16.0
+    pr-url: https://github.com/nodejs/node/pull/23053
+    description: Rather than emitting an error, `process.stderr.end()` now
+                 only closes the stream side but not the underlying resource,
+                 making this error obsolete.
+-->
 
 An attempt was made to close the `process.stdout` stream. By design, Node.js
 does not allow `stdout` or `stderr` streams to be closed by user code.
@@ -1200,8 +1285,6 @@ entry types were found.
 A given value is out of the accepted range.
 
 [`ERR_INVALID_ARG_TYPE`]: #ERR_INVALID_ARG_TYPE
-[`subprocess.kill()`]: child_process.html#child_process_subprocess_kill_signal
-[`subprocess.send()`]: child_process.html#child_process_subprocess_send_message_sendhandle_options_callback
 [`fs.readFileSync`]: fs.html#fs_fs_readfilesync_path_options
 [`fs.readdir`]: fs.html#fs_fs_readdir_path_options_callback
 [`fs.unlink`]: fs.html#fs_fs_unlink_path_callback
@@ -1214,9 +1297,12 @@ A given value is out of the accepted range.
 [`new URLSearchParams(iterable)`]: url.html#url_constructor_new_urlsearchparams_iterable
 [`process.on('uncaughtException')`]: process.html#process_event_uncaughtexception
 [`process.send()`]: process.html#process_process_send_message_sendhandle_options_callback
+[`subprocess.kill()`]: child_process.html#child_process_subprocess_kill_signal
+[`subprocess.send()`]: child_process.html#child_process_subprocess_send_message_sendhandle_options_callback
 [ICU]: intl.html#intl_internationalization_support
 [Node.js Error Codes]: #nodejs-error-codes
 [V8's stack trace API]: https://github.com/v8/v8/wiki/Stack-Trace-API
+[WHATWG Supported Encodings]: util.md#whatwg-supported-encodings
 [WHATWG URL API]: url.html#url_the_whatwg_url_api
 [domains]: domain.html
 [event emitter-based]: events.html#events_class_eventemitter
@@ -1226,4 +1312,3 @@ A given value is out of the accepted range.
 [syscall]: http://man7.org/linux/man-pages/man2/syscall.2.html
 [try-catch]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
 [vm]: vm.html
-[WHATWG Supported Encodings]: util.md#whatwg-supported-encodings

@@ -198,8 +198,8 @@ Each placeholder token is replaced with the converted value from the
 corresponding argument. Supported placeholders are:
 
 * `%s` - `String`.
-* `%d` - `Number` (integer or floating point value).
-* `%i` - Integer.
+* `%d` - `Number` (integer or floating point value) or `BigInt`.
+* `%i` - Integer or `BigInt`.
 * `%f` - Floating point value.
 * `%j` - JSON. Replaced with the string `'[Circular]'` if the argument
 contains circular references.
@@ -298,12 +298,12 @@ changes:
     description: The `constructor` parameter can refer to an ES6 class now.
 -->
 
+* `constructor` {Function}
+* `superConstructor` {Function}
+
 Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and
 `extends` keywords to get language level inheritance support. Also note
 that the two styles are [semantically incompatible][].
-
-* `constructor` {Function}
-* `superConstructor` {Function}
 
 Inherit the prototype methods from one [constructor][] into another. The
 prototype of `constructor` will be set to a new object created from
@@ -357,9 +357,17 @@ stream.write('With ES6');
 ```
 
 ## util.inspect(object[, options])
+## util.inspect(object[, showHidden[, depth[, colors]]])
 <!-- YAML
 added: v0.3.0
 changes:
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/22788
+    description: The `sorted` option is supported now.
+  - version: v10.6.0
+    pr-url: https://github.com/nodejs/node/pull/20725
+    description: Inspecting linked lists and similar objects is now possible
+                 up to the maximum call stack size.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19259
     description: The `WeakMap` and `WeakSet` entries can now be inspected.
@@ -387,8 +395,9 @@ changes:
     properties will be included in the formatted result as well as [`WeakMap`][]
     and [`WeakSet`][] entries. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting
-    the `object`. This is useful for inspecting large complicated objects.
-    To make it recurse indefinitely pass `null`. **Default:** `2`.
+    the `object`. This is useful for inspecting large complicated objects. To
+    make it recurse up to the maximum call stack size pass `Infinity` or `null`.
+    **Default:** `2`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color
     codes. Colors are customizable, see [Customizing `util.inspect` colors][].
     **Default:** `false`.
@@ -397,10 +406,6 @@ changes:
   * `showProxy` {boolean} If `true`, then objects and functions that are
     `Proxy` objects will be introspected to show their `target` and `handler`
     objects. **Default:** `false`.
-    <!--
-    TODO(BridgeAR): Deprecate `maxArrayLength` and replace it with
-                    `maxEntries`.
-    -->
   * `maxArrayLength` {number} Specifies the maximum number of `Array`,
     [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when
     formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or
@@ -415,7 +420,10 @@ changes:
     objects the same as arrays. Note that no text will be reduced below 16
     characters, no matter the `breakLength` size. For more information, see the
     example below. **Default:** `true`.
-
+  * `sorted` {boolean|Function} If set to `true` or a function, all properties
+    of an object and Set and Map entries will be sorted in the returned string.
+    If set to `true` the [default sort][] is going to be used. If set to a
+    function, it is used as a [compare function][].
 * Returns: {string} The representation of passed object
 
 The `util.inspect()` method returns a string representation of `object` that is
@@ -529,6 +537,34 @@ console.log(inspect(weakSet, { showHidden: true }));
 // WeakSet { { a: 1 }, { b: 2 } }
 ```
 
+The `sorted` option makes sure the output is identical, no matter of the
+properties insertion order:
+
+```js
+const { inspect } = require('util');
+const assert = require('assert');
+
+const o1 = {
+  b: [2, 3, 1],
+  a: '`a` comes before `b`',
+  c: new Set([2, 3, 1])
+};
+console.log(inspect(o1, { sorted: true }));
+// { a: '`a` comes before `b`', b: [ 2, 3, 1 ], c: Set { 1, 2, 3 } }
+console.log(inspect(o1, { sorted: (a, b) => b.localeCompare(a) }));
+// { c: Set { 3, 2, 1 }, b: [ 2, 3, 1 ], a: '`a` comes before `b`' }
+
+const o2 = {
+  c: new Set([2, 1, 3]),
+  a: '`a` comes before `b`',
+  b: [2, 3, 1]
+};
+assert.strict.equal(
+  inspect(o1, { sorted: true }),
+  inspect(o2, { sorted: true })
+);
+```
+
 Please note that `util.inspect()` is a synchronous method that is mainly
 intended as a debugging tool. Some input values can have a significant
 performance overhead that can block the event loop. Use this function
@@ -567,9 +603,10 @@ terminals.
 
 <!-- type=misc -->
 
-Objects may also define their own `[util.inspect.custom](depth, opts)`
-(or the equivalent but deprecated `inspect(depth, opts)`) function that
-`util.inspect()` will invoke and use the result of when inspecting the object:
+Objects may also define their own
+[`[util.inspect.custom](depth, opts)`][util.inspect.custom] (or the equivalent
+but deprecated `inspect(depth, opts)`) function, which `util.inspect()` will
+invoke and use the result of when inspecting the object:
 
 ```js
 const util = require('util');
@@ -621,10 +658,41 @@ util.inspect(obj);
 ### util.inspect.custom
 <!-- YAML
 added: v6.6.0
+changes:
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/20857
+    description: This is now defined as a shared symbol.
 -->
 
-A {symbol} that can be used to declare custom inspect functions, see
-[Custom inspection functions on Objects][].
+* {symbol} that can be used to declare custom inspect functions.
+
+In addition to being accessible through `util.inspect.custom`, this
+symbol is [registered globally][global symbol registry] and can be
+accessed in any environment as `Symbol.for('nodejs.util.inspect.custom')`.
+
+```js
+const inspect = Symbol.for('nodejs.util.inspect.custom');
+
+class Password {
+  constructor(value) {
+    this.value = value;
+  }
+
+  toString() {
+    return 'xxxxxxxx';
+  }
+
+  [inspect]() {
+    return `Password <${this.toString()}>`;
+  }
+}
+
+const password = new Password('r0sebud');
+console.log(password);
+// Prints Password <xxxxxxxx>
+```
+
+See [Custom inspection functions on Objects][] for more details.
 
 ### util.inspect.defaultOptions
 <!-- YAML
@@ -939,6 +1007,7 @@ useful for addon developers who prefer to do type checking in JavaScript.
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or
@@ -946,8 +1015,6 @@ Returns `true` if the value is a built-in [`ArrayBuffer`][] or
 
 See also [`util.types.isArrayBuffer()`][] and
 [`util.types.isSharedArrayBuffer()`][].
-
-For example:
 
 ```js
 util.types.isAnyArrayBuffer(new ArrayBuffer());  // Returns true
@@ -959,11 +1026,10 @@ util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an `arguments` object.
-
-For example:
 
 <!-- eslint-disable prefer-rest-params -->
 ```js
@@ -977,13 +1043,12 @@ function foo() {
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance.
 This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is
 desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
-
-For example:
 
 ```js
 util.types.isArrayBuffer(new ArrayBuffer());  // Returns true
@@ -995,14 +1060,13 @@ util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an [async function][].
 Note that this only reports back what the JavaScript engine is seeing;
 in particular, the return value may not match the original source code if
 a transpilation tool was used.
-
-For example:
 
 ```js
 util.types.isAsyncFunction(function foo() {});  // Returns false
@@ -1014,14 +1078,10 @@ util.types.isAsyncFunction(async function foo() {});  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
-Returns `true` if the value is a `BigInt64Array` instance. The
-`--harmony-bigint` command line flag is required in order to use the
-`BigInt64Array` type, but it is not required in order to use
-`isBigInt64Array()`.
-
-For example:
+Returns `true` if the value is a `BigInt64Array` instance.
 
 ```js
 util.types.isBigInt64Array(new BigInt64Array());   // Returns true
@@ -1033,14 +1093,10 @@ util.types.isBigInt64Array(new BigUint64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
-Returns `true` if the value is a `BigUint64Array` instance. The
-`--harmony-bigint` command line flag is required in order to use the
-`BigUint64Array` type, but it is not required in order to use
-`isBigUint64Array()`.
-
-For example:
+Returns `true` if the value is a `BigUint64Array` instance.
 
 ```js
 util.types.isBigUint64Array(new BigInt64Array());   // Returns false
@@ -1052,20 +1108,40 @@ util.types.isBigUint64Array(new BigUint64Array());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a boolean object, e.g. created
 by `new Boolean()`.
 
-For example:
-
 ```js
 util.types.isBooleanObject(false);  // Returns false
 util.types.isBooleanObject(true);   // Returns false
-util.types.isBooleanObject(new Boolean(false));   // Returns true
-util.types.isBooleanObject(new Boolean(true));    // Returns true
+util.types.isBooleanObject(new Boolean(false)); // Returns true
+util.types.isBooleanObject(new Boolean(true));  // Returns true
 util.types.isBooleanObject(Boolean(false)); // Returns false
-util.types.isBooleanObject(Boolean(true)); // Returns false
+util.types.isBooleanObject(Boolean(true));  // Returns false
+```
+
+### util.types.isBoxedPrimitive(value)
+<!-- YAML
+added: v10.11.0
+-->
+
+* `value` {any}
+* Returns: {boolean}
+
+Returns `true` if the value is any boxed primitive object, e.g. created
+by `new Boolean()`, `new String()` or `Object(Symbol())`.
+
+For example:
+
+```js
+util.types.isBoxedPrimitive(false); // Returns false
+util.types.isBoxedPrimitive(new Boolean(false)); // Returns true
+util.types.isBoxedPrimitive(Symbol('foo')); // Returns false
+util.types.isBoxedPrimitive(Object(Symbol('foo'))); // Returns true
+util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 ```
 
 ### util.types.isDataView(value)
@@ -1073,11 +1149,10 @@ util.types.isBooleanObject(Boolean(true)); // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
-
-For example:
 
 ```js
 const ab = new ArrayBuffer(20);
@@ -1092,11 +1167,10 @@ See also [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Date`][] instance.
-
-For example:
 
 ```js
 util.types.isDate(new Date());  // Returns true
@@ -1107,6 +1181,7 @@ util.types.isDate(new Date());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a native `External` value.
@@ -1116,11 +1191,10 @@ Returns `true` if the value is a native `External` value.
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float32Array`][] instance.
-
-For example:
 
 ```js
 util.types.isFloat32Array(new ArrayBuffer());  // Returns false
@@ -1133,11 +1207,10 @@ util.types.isFloat32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float64Array`][] instance.
-
-For example:
 
 ```js
 util.types.isFloat64Array(new ArrayBuffer());  // Returns false
@@ -1150,14 +1223,13 @@ util.types.isFloat64Array(new Float64Array());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a generator function.
 Note that this only reports back what the JavaScript engine is seeing;
 in particular, the return value may not match the original source code if
 a transpilation tool was used.
-
-For example:
 
 ```js
 util.types.isGeneratorFunction(function foo() {});  // Returns false
@@ -1169,6 +1241,7 @@ util.types.isGeneratorFunction(function* foo() {});  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a generator object as returned from a
@@ -1176,8 +1249,6 @@ built-in generator function.
 Note that this only reports back what the JavaScript engine is seeing;
 in particular, the return value may not match the original source code if
 a transpilation tool was used.
-
-For example:
 
 ```js
 function* foo() {}
@@ -1190,11 +1261,10 @@ util.types.isGeneratorObject(generator);  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int8Array`][] instance.
-
-For example:
 
 ```js
 util.types.isInt8Array(new ArrayBuffer());  // Returns false
@@ -1207,11 +1277,10 @@ util.types.isInt8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int16Array`][] instance.
-
-For example:
 
 ```js
 util.types.isInt16Array(new ArrayBuffer());  // Returns false
@@ -1224,11 +1293,10 @@ util.types.isInt16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int32Array`][] instance.
-
-For example:
 
 ```js
 util.types.isInt32Array(new ArrayBuffer());  // Returns false
@@ -1241,11 +1309,10 @@ util.types.isInt32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Map`][] instance.
-
-For example:
 
 ```js
 util.types.isMap(new Map());  // Returns true
@@ -1256,12 +1323,11 @@ util.types.isMap(new Map());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in
 [`Map`][] instance.
-
-For example:
 
 ```js
 const map = new Map();
@@ -1276,11 +1342,10 @@ util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object][].
-
-For example:
 
 <!-- eslint-skip -->
 ```js
@@ -1294,11 +1359,10 @@ util.types.isModuleNamespaceObject(ns);  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an instance of a built-in [`Error`][] type.
-
-For example:
 
 ```js
 util.types.isNativeError(new Error());  // Returns true
@@ -1311,12 +1375,11 @@ util.types.isNativeError(new RangeError());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created
 by `new Number()`.
-
-For example:
 
 ```js
 util.types.isNumberObject(0);  // Returns false
@@ -1328,11 +1391,10 @@ util.types.isNumberObject(new Number(0));   // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Promise`][].
-
-For example:
 
 ```js
 util.types.isPromise(Promise.resolve(42));  // Returns true
@@ -1343,11 +1405,10 @@ util.types.isPromise(Promise.resolve(42));  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a [`Proxy`][] instance.
-
-For example:
 
 ```js
 const target = {};
@@ -1361,11 +1422,10 @@ util.types.isProxy(proxy);  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a regular expression object.
-
-For example:
 
 ```js
 util.types.isRegExp(/abc/);  // Returns true
@@ -1377,11 +1437,10 @@ util.types.isRegExp(new RegExp('abc'));  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Set`][] instance.
-
-For example:
 
 ```js
 util.types.isSet(new Set());  // Returns true
@@ -1392,12 +1451,11 @@ util.types.isSet(new Set());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in
 [`Set`][] instance.
-
-For example:
 
 ```js
 const set = new Set();
@@ -1412,13 +1470,12 @@ util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance.
 This does *not* include [`ArrayBuffer`][] instances. Usually, it is
 desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
-
-For example:
 
 ```js
 util.types.isSharedArrayBuffer(new ArrayBuffer());  // Returns false
@@ -1430,12 +1487,11 @@ util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a string object, e.g. created
 by `new String()`.
-
-For example:
 
 ```js
 util.types.isStringObject('foo');  // Returns false
@@ -1447,12 +1503,11 @@ util.types.isStringObject(new String('foo'));   // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a symbol object, created
 by calling `Object()` on a `Symbol` primitive.
-
-For example:
 
 ```js
 const symbol = Symbol('foo');
@@ -1465,11 +1520,10 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`TypedArray`][] instance.
-
-For example:
 
 ```js
 util.types.isTypedArray(new ArrayBuffer());  // Returns false
@@ -1484,11 +1538,10 @@ See also [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8Array`][] instance.
-
-For example:
 
 ```js
 util.types.isUint8Array(new ArrayBuffer());  // Returns false
@@ -1501,11 +1554,10 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
-
-For example:
 
 ```js
 util.types.isUint8ClampedArray(new ArrayBuffer());  // Returns false
@@ -1518,11 +1570,10 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint16Array`][] instance.
-
-For example:
 
 ```js
 util.types.isUint16Array(new ArrayBuffer());  // Returns false
@@ -1535,11 +1586,10 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint32Array`][] instance.
-
-For example:
 
 ```js
 util.types.isUint32Array(new ArrayBuffer());  // Returns false
@@ -1552,11 +1602,10 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
-
-For example:
 
 ```js
 util.types.isWeakMap(new WeakMap());  // Returns true
@@ -1567,11 +1616,10 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakSet`][] instance.
-
-For example:
 
 ```js
 util.types.isWeakSet(new WeakSet());  // Returns true
@@ -1582,11 +1630,10 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 added: v10.0.0
 -->
 
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
-
-For example:
 
 ```js
 const module = new WebAssembly.Module(wasmBuffer);
@@ -1603,6 +1650,8 @@ applications and modules should be updated to find alternative approaches.
 added: v0.7.5
 deprecated: v6.0.0
 -->
+* `target` {Object}
+* `source` {Object}
 
 > Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
 
@@ -2088,21 +2137,17 @@ Deprecated predecessor of `console.log`.
 [`'uncaughtException'`]: process.html#process_event_uncaughtexception
 [`'warning'`]: process.html#process_event_warning
 [`Array.isArray()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
-[`ArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 [`ArrayBuffer.isView()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/isView
-[async function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-[`assert.deepStrictEqual()`]: assert.html#assert_assert_deepstrictequal_actual_expected_message
+[`ArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 [`Buffer.isBuffer()`]: buffer.html#buffer_class_method_buffer_isbuffer_obj
-[`console.error()`]: console.html#console_console_error_data_args
-[`console.log()`]: console.html#console_console_log_data_args
 [`DataView`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
 [`Date`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 [`Error`]: errors.html#errors_class_error
 [`Float32Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
 [`Float64Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
-[`Int8Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array
 [`Int16Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array
 [`Int32Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array
+[`Int8Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array
 [`Map`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 [`Object.assign()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 [`Promise`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
@@ -2110,6 +2155,16 @@ Deprecated predecessor of `console.log`.
 [`Set`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [`SharedArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer
 [`TypedArray`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+[`Uint16Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array
+[`Uint32Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array
+[`Uint8Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+[`Uint8ClampedArray`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray
+[`WeakMap`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+[`WeakSet`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+[`WebAssembly.Module`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module
+[`assert.deepStrictEqual()`]: assert.html#assert_assert_deepstrictequal_actual_expected_message
+[`console.error()`]: console.html#console_console_error_data_args
+[`console.log()`]: console.html#console_console_log_data_args
 [`util.format()`]: #util_util_format_format_args
 [`util.inspect()`]: #util_util_inspect_object_options
 [`util.promisify()`]: #util_util_promisify_original
@@ -2118,20 +2173,18 @@ Deprecated predecessor of `console.log`.
 [`util.types.isDate()`]: #util_util_types_isdate_value
 [`util.types.isNativeError()`]: #util_util_types_isnativeerror_value
 [`util.types.isSharedArrayBuffer()`]: #util_util_types_issharedarraybuffer_value
-[`Uint8Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
-[`Uint8ClampedArray`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray
-[`Uint16Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array
-[`Uint32Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array
-[`WeakMap`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
-[`WeakSet`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
-[`WebAssembly.Module`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module
+[Common System Errors]: errors.html#errors_common_system_errors
 [Custom inspection functions on Objects]: #util_custom_inspection_functions_on_objects
 [Custom promisified functions]: #util_custom_promisified_functions
 [Customizing `util.inspect` colors]: #util_customizing_util_inspect_colors
 [Internationalization]: intl.html
 [Module Namespace Object]: https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects
 [WHATWG Encoding Standard]: https://encoding.spec.whatwg.org/
-[Common System Errors]: errors.html#errors_common_system_errors
-[constructor]: https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor
+[async function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+[compare function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters
+[constructor]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
+[default sort]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+[global symbol registry]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for
 [list of deprecated APIS]: deprecations.html#deprecations_list_of_deprecated_apis
 [semantically incompatible]: https://github.com/nodejs/node/issues/4179
+[util.inspect.custom]: #util_util_inspect_custom

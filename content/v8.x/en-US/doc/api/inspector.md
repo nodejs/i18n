@@ -14,12 +14,12 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* port {number} Port to listen on for inspector connections. Optional,
-  defaults to what was specified on the CLI.
-* host {string} Host to listen on for inspector connections. Optional,
-  defaults to what was specified on the CLI.
-* wait {boolean} Block until a client has connected. Optional, defaults
-  to false.
+* `port` {number} Port to listen on for inspector connections. Optional.
+  **Default:** what was specified on the CLI.
+* `host` {string} Host to listen on for inspector connections. Optional.
+  **Default:** what was specified on the CLI.
+* `wait` {boolean} Block until a client has connected. Optional.
+  **Default:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has
@@ -121,7 +121,7 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 The latest version of the V8 inspector protocol is published on the
 [Chrome DevTools Protocol Viewer][].
 
-Node inspector supports all the Chrome DevTools Protocol domains declared
+Node.js inspector supports all the Chrome DevTools Protocol domains declared
 by V8. Chrome DevTools Protocol domain provides an interface for interacting
 with one of the runtime agents used to inspect the application state and listen
 to the run-time events.
@@ -136,8 +136,34 @@ with an error. [`session.connect()`] will need to be called to be able to send
 messages again. Reconnected session will lose all inspector state, such as
 enabled agents or configured breakpoints.
 
+## Example usage
 
-[`session.connect()`]: #inspector_session_connect
+### CPU Profiler
+
+Apart from the debugger, various V8 Profilers are available through the DevTools
+protocol. Here's a simple example showing how to use the [CPU profiler][]:
+
+```js
+const inspector = require('inspector');
+
+const session = new inspector.Session();
+session.connect();
+
+session.post('Profiler.enable', () => {
+  session.post('Profiler.start', () => {
+    // invoke business logic under measurement here...
+
+    // some time later...
+    session.post('Profiler.stop', ({ profile }) => {
+      // write profile to disk, upload, etc.
+    });
+  });
+});
+```
+
+
 [`Debugger.paused`]: https://chromedevtools.github.io/devtools-protocol/v8/Debugger/#event-paused
 [`EventEmitter`]: events.html#events_class_eventemitter
+[`session.connect()`]: #inspector_session_connect
+[CPU Profiler]: https://chromedevtools.github.io/devtools-protocol/v8/Profiler
 [Chrome DevTools Protocol Viewer]: https://chromedevtools.github.io/devtools-protocol/v8/

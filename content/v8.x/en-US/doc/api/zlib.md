@@ -301,9 +301,9 @@ Each class takes an `options` object. All options are optional.
 Note that some options are only relevant when compressing, and are
 ignored by the decompression classes.
 
-* `flush` {integer} (default: `zlib.constants.Z_NO_FLUSH`)
-* `finishFlush` {integer} (default: `zlib.constants.Z_FINISH`)
-* `chunkSize` {integer} (default: 16\*1024)
+* `flush` {integer} **Default:** `zlib.constants.Z_NO_FLUSH`
+* `finishFlush` {integer} **Default:** `zlib.constants.Z_FINISH`
+* `chunkSize` {integer} **Default:** `16 * 1024`
 * `windowBits` {integer}
 * `level` {integer} (compression only)
 * `memLevel` {integer} (compression only)
@@ -418,7 +418,7 @@ Close the underlying handle.
 added: v0.5.8
 -->
 
-`kind` defaults to `zlib.constants.Z_FULL_FLUSH`.
+* `kind` **Default:** `zlib.constants.Z_FULL_FLUSH`
 
 Flush pending data. Don't call this frivolously, premature flushes negatively
 impact the effectiveness of the compression algorithm.
@@ -713,6 +713,7 @@ Decompress a chunk of data with [Unzip][].
 [`Content-Encoding`]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11
 [`DataView`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
 [`TypedArray`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
 [DeflateRaw]: #zlib_class_zlib_deflateraw
 [Deflate]: #zlib_class_zlib_deflate
 [Gunzip]: #zlib_class_zlib_gunzip
@@ -721,6 +722,5 @@ Decompress a chunk of data with [Unzip][].
 [Inflate]: #zlib_class_zlib_inflate
 [Memory Usage Tuning]: #zlib_memory_usage_tuning
 [Unzip]: #zlib_class_zlib_unzip
-[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
 [options]: #zlib_class_options
 [zlib documentation]: https://zlib.net/manual.html#Constants

@@ -400,28 +400,28 @@ parameter is undefined, a default error message is assigned. If the `message`
 parameter is an instance of an [`Error`][] then it will be thrown instead of the
 `AssertionError`.
 
-## assert.doesNotReject(block[, error][, message])
+## assert.doesNotReject(asyncFn[, error][, message])
 <!-- YAML
 added: v10.0.0
 -->
-* `block` {Function|Promise}
+* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `message` {string|Error}
+* `message` {string}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the
-function and awaits the returned promise to complete. It will then check that
-the promise is not rejected.
+Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately
+calls the function and awaits the returned promise to complete. It will then
+check that the promise is not rejected.
 
-If `block` is a function and it throws an error synchronously,
+If `asyncFn` is a function and it throws an error synchronously,
 `assert.doesNotReject()` will return a rejected `Promise` with that error. If
 the function does not return a promise, `assert.doesNotReject()` will return a
 rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases
 the error handler is skipped.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there
-is little benefit by catching a rejection and then rejecting it again. Instead,
-consider adding a comment next to the specific code path that should not reject
-and keep error messages as expressive as possible.
+Using `assert.doesNotReject()` is actually not useful because there is little
+benefit in catching a rejection and then rejecting it again. Instead, consider
+adding a comment next to the specific code path that should not reject and keep
+error messages as expressive as possible.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation
 function. See [`assert.throws()`][] for more details.
@@ -447,7 +447,7 @@ assert.doesNotReject(Promise.reject(new TypeError('Wrong value')))
   });
 ```
 
-## assert.doesNotThrow(block[, error][, message])
+## assert.doesNotThrow(fn[, error][, message])
 <!-- YAML
 added: v0.1.21
 changes:
@@ -458,18 +458,18 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
-* `block` {Function}
+* `fn` {Function}
 * `error` {RegExp|Function}
-* `message` {string|Error}
+* `message` {string}
 
-Asserts that the function `block` does not throw an error.
+Asserts that the function `fn` does not throw an error.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there
-is no benefit by catching an error and then rethrowing it. Instead, consider
+Using `assert.doesNotThrow()` is actually not useful because there
+is no benefit in catching an error and then rethrowing it. Instead, consider
 adding a comment next to the specific code path that should not throw and keep
 error messages as expressive as possible.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block`
+When `assert.doesNotThrow()` is called, it will immediately call the `fn`
 function.
 
 If an error is thrown and it is the same type as that specified by the `error`
@@ -587,7 +587,7 @@ assert.fail(new TypeError('need array'));
 Using `assert.fail()` with more than two arguments is possible but deprecated.
 See below for further details.
 
-## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
+## assert.fail(actual, expected[, message[, operator[, stackStartFn]]])
 <!-- YAML
 added: v0.1.21
 changes:
@@ -600,7 +600,7 @@ changes:
 * `expected` {any}
 * `message` {string|Error}
 * `operator` {string} **Default:** `'!='`
-* `stackStartFunction` {Function} **Default:** `assert.fail`
+* `stackStartFn` {Function} **Default:** `assert.fail`
 
 > Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert
 > functions instead.
@@ -610,7 +610,7 @@ If `message` is falsy, the error message is set as the values of `actual` and
 `expected` arguments are provided, `operator` will default to `'!='`. If
 `message` is provided as third argument it will be used as the error message and
 the other arguments will be stored as properties on the thrown object. If
-`stackStartFunction` is provided, all stack frames above that function will be
+`stackStartFn` is provided, all stack frames above that function will be
 removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are
 given, the default message `Failed` will be used.
 
@@ -636,7 +636,7 @@ assert.fail(1, 2, new TypeError('need array'));
 In the last three cases `actual`, `expected`, and `operator` have no
 influence on the error message.
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+Example use of `stackStartFn` for truncating the exception's stacktrace:
 
 ```js
 function suppressFrame() {
@@ -667,7 +667,7 @@ changes:
 Throws `value` if `value` is not `undefined` or `null`. This is useful when
 testing the `error` argument in callbacks. The stack trace contains all frames
 from the error passed to `ifError()` including the potential new frames for
-`ifError()` itself. See below for an example.
+`ifError()` itself.
 
 ```js
 const assert = require('assert').strict;
@@ -954,19 +954,19 @@ assert(0);
 //   assert(0)
 ```
 
-## assert.rejects(block[, error][, message])
+## assert.rejects(asyncFn[, error][, message])
 <!-- YAML
 added: v10.0.0
 -->
-* `block` {Function|Promise}
+* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `message` {string|Error}
+* `message` {string}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the
-function and awaits the returned promise to complete. It will then check that
-the promise is rejected.
+Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately
+calls the function and awaits the returned promise to complete. It will then
+check that the promise is rejected.
 
-If `block` is a function and it throws an error synchronously,
+If `asyncFn` is a function and it throws an error synchronously,
 `assert.rejects()` will return a rejected `Promise` with that error. If the
 function does not return a promise, `assert.rejects()` will return a rejected
 `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error
@@ -981,7 +981,7 @@ each property will be tested for including the non-enumerable `message` and
 `name` properties.
 
 If specified, `message` will be the message provided by the `AssertionError` if
-the block fails to reject.
+the `asyncFn` fails to reject.
 
 ```js
 (async () => {
@@ -1052,7 +1052,7 @@ If the values are not strictly equal, an `AssertionError` is thrown with a
 `message` parameter is an instance of an [`Error`][] then it will be thrown
 instead of the `AssertionError`.
 
-## assert.throws(block[, error][, message])
+## assert.throws(fn[, error][, message])
 <!-- YAML
 added: v0.1.21
 changes:
@@ -1067,11 +1067,11 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
-* `block` {Function}
+* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `message` {string|Error}
+* `message` {string}
 
-Expects the function `block` to throw an error.
+Expects the function `fn` to throw an error.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function,
 a validation object where each property will be tested for strict deep equality,
@@ -1080,8 +1080,9 @@ equality including the non-enumerable `message` and `name` properties. When
 using an object, it is also possible to use a regular expression, when
 validating against a string property. See below for examples.
 
-If specified, `message` will be the message provided by the `AssertionError` if
-the block fails to throw.
+If specified, `message` will be appended to the message provided by the
+`AssertionError` if the `fn` call fails to throw or in case the error validation
+fails.
 
 Custom validation object/error instance:
 
@@ -1232,8 +1233,8 @@ assert.throws(throwingFirst, /Second$/);
 Due to the confusing notation, it is recommended not to use a string as the
 second argument. This might lead to difficult-to-spot errors.
 
-[`ERR_INVALID_RETURN_VALUE`]: errors.html#errors_err_invalid_return_value
 [`Class`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+[`ERR_INVALID_RETURN_VALUE`]: errors.html#errors_err_invalid_return_value
 [`Error.captureStackTrace`]: errors.html#errors_error_capturestacktrace_targetobject_constructoropt
 [`Error`]: errors.html#errors_class_error
 [`Map`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
@@ -1246,18 +1247,18 @@ second argument. This might lead to difficult-to-spot errors.
 [`WeakSet`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
 [`assert.deepEqual()`]: #assert_assert_deepequal_actual_expected_message
 [`assert.deepStrictEqual()`]: #assert_assert_deepstrictequal_actual_expected_message
-[`assert.doesNotThrow()`]: #assert_assert_doesnotthrow_block_error_message
+[`assert.doesNotThrow()`]: #assert_assert_doesnotthrow_fn_error_message
 [`assert.notDeepStrictEqual()`]: #assert_assert_notdeepstrictequal_actual_expected_message
 [`assert.notStrictEqual()`]: #assert_assert_notstrictequal_actual_expected_message
 [`assert.ok()`]: #assert_assert_ok_value_message
 [`assert.strictEqual()`]: #assert_assert_strictequal_actual_expected_message
-[`assert.throws()`]: #assert_assert_throws_block_error_message
+[`assert.throws()`]: #assert_assert_throws_fn_error_message
 [`strict mode`]: #assert_strict_mode
 [Abstract Equality Comparison]: https://tc39.github.io/ecma262/#sec-abstract-equality-comparison
+[Object wrappers]: https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript
 [Object.prototype.toString()]: https://tc39.github.io/ecma262/#sec-object.prototype.tostring
 [SameValue Comparison]: https://tc39.github.io/ecma262/#sec-samevalue
 [Strict Equality Comparison]: https://tc39.github.io/ecma262/#sec-strict-equality-comparison
 [enumerable "own" properties]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties
 [mdn-equality-guide]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
 [prototype-spec]: https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots
-[Object wrappers]: https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript

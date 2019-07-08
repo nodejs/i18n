@@ -96,10 +96,7 @@ onboarding session.
       `semver-major` label
     * When adding a `semver-*` label, add a comment explaining why you're adding
       it. Do it right away so you don't forget!
-  * Please add the `author-ready` label for PRs where:
-    * the CI has been started (not necessarily finished),
-    * no outstanding review comments exist and
-    * at least one collaborator approved the PR.
+  * Please add the [`author-ready`][] label for PRs, if applicable.
 
 * See [Who to CC in the issue tracker][who-to-cc].
   * This will come more naturally over time
@@ -138,8 +135,7 @@ onboarding session.
   * There is a minimum waiting time which we try to respect for non-trivial
     changes so that people who may have important input in such a distributed
     project are able to respond.
-  * For non-trivial changes, leave the pull request open for at least 48 hours
-    (72 hours on a weekend).
+  * For non-trivial changes, leave the pull request open for at least 48 hours.
   * If a pull request is abandoned, check if they'd mind if you took it over
     (especially if it just has nits left).
 * Approving a change
@@ -211,13 +207,12 @@ needs to be pointed out separately during the onboarding.
     -1`
 * Collaborators are in alphabetical order by GitHub username.
 * Optionally, include your personal pronouns.
-* Label your pull request with the `doc` and `notable-change` labels.
+* Label your pull request with the `doc`, `notable-change`, and `fast-track`
+  labels.
 * Run CI on the PR. Because the PR does not affect any code, use the
-  `node-test-pull-request-lite` CI task. Alternatively, use the usual
-  `node-test-pull-request` CI task and cancel it after the linter and one other
-  subtask have passed.
-* After one or two approvals, land the PR (PRs of this type do not need to wait
-  for 48/72 hours to land).
+  `node-test-pull-request-lite-pipeline` CI task.
+* After two Collaborator approvals for the change and two Collaborator approvals
+  for fast-tracking, land the PR.
   * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:`
     metadata.
   * [`node-core-utils`][] automates the generation of metadata and the landing
@@ -246,7 +241,8 @@ needs to be pointed out separately during the onboarding.
   the [summit](https://github.com/nodejs/summit) repository for details.
 
 [Code of Conduct]: https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md
-[`core-validate-commit`]: https://github.com/evanlucas/core-validate-commit
+[`author-ready`]: https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#author-ready-pull-requests
+[`core-validate-commit`]: https://github.com/nodejs/core-validate-commit
 [`git-node`]: https://github.com/nodejs/node-core-utils/blob/master/docs/git-node.md
 [`node-core-utils`]: https://github.com/nodejs/node-core-utils
 [Landing Pull Requests]: https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests
