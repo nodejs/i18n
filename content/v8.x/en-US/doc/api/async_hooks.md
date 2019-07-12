@@ -147,10 +147,10 @@ unintentional side effects.
 Because printing to the console is an asynchronous operation, `console.log()`
 will cause the AsyncHooks callbacks to be called. Using `console.log()` or
 similar asynchronous operations inside an AsyncHooks callback function will thus
-cause an infinite recursion. An easily solution to this when debugging is
-to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This
-will print to stdout because `1` is the file descriptor for stdout and will
-not invoke AsyncHooks recursively because it is synchronous.
+cause an infinite recursion. An easy solution to this when debugging is to use a
+synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to
+stdout because `1` is the file descriptor for stdout and will not invoke
+AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
@@ -236,8 +236,8 @@ resource's constructor.
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
 JSSTREAM, PIPECONNECTWRAP, PIPEWRAP, PROCESSWRAP, QUERYWRAP, SHUTDOWNWRAP,
-SIGNALWRAP, STATWATCHER, TCPCONNECTWRAP, TCPSERVER, TCPWRAP, TIMERWRAP, TTYWRAP,
-UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
+SIGNALWRAP, STATWATCHER, TCPCONNECTWRAP, TCPSERVERWRAP, TCPWRAP, TIMERWRAP,
+TTYWRAP, UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
@@ -301,10 +301,10 @@ and document their own resource objects. For example, such a resource object
 could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property
-that refers to the Promise that is being initialized, and a `parentId` property
-set to the `asyncId` of a parent Promise, if there is one, and `undefined`
+that refers to the Promise that is being initialized, and a `isChainedPromise`
+property, set to `true` if the promise has a parent promise, and `false`
 otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered
-a parent Promise of `b`.
+a parent Promise of `b`. Here, `b` is considered a chained promise.
 
 *Note*: In some cases the resource object is reused for performance reasons,
 it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
@@ -593,15 +593,11 @@ JavaScript API so that all the appropriate callbacks are called.
 
 ### `class AsyncResource()`
 
-The class `AsyncResource` was designed to be extended by the embedder's async
-resources. Using this users can easily trigger the lifetime events of their
+The class `AsyncResource` is designed to be extended by the embedder's async
+resources. Using this, users can easily trigger the lifetime events of their
 own resources.
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
-
-*Note*: `before` and `after` calls must be unwound in the same order that they
-are called. Otherwise, an unrecoverable exception will occur and the process
-will abort.
 
 The following is an overview of the `AsyncResource` API.
 
@@ -615,11 +611,13 @@ const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
 
-// Call AsyncHooks before callbacks.
-asyncResource.emitBefore();
-
-// Call AsyncHooks after callbacks.
-asyncResource.emitAfter();
+// Run a function in the execution context of the resource. This will
+// * establish the context of the resource
+// * trigger the AsyncHooks before callbacks
+// * call the provided function `fn` with the supplied arguments
+// * trigger the AsyncHooks after callbacks
+// * restore the original execution context
+asyncResource.runInAsyncScope(fn, thisArg, ...args);
 
 // Call AsyncHooks destroy callbacks.
 asyncResource.emitDestroy();
@@ -629,6 +627,14 @@ asyncResource.asyncId();
 
 // Return the trigger ID for the AsyncResource instance.
 asyncResource.triggerAsyncId();
+
+// Call AsyncHooks before callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
+asyncResource.emitBefore();
+
+// Call AsyncHooks after callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
+asyncResource.emitAfter();
 ```
 
 #### `AsyncResource(type[, options])`
@@ -636,12 +642,11 @@ asyncResource.triggerAsyncId();
 * `type` {string} The type of async event.
 * `options` {Object}
   * `triggerAsyncId` {number} The ID of the execution context that created this
-  async event. **Default:** `executionAsyncId()`
+  async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the
   object is garbage collected. This usually does not need to be set (even if
   `emitDestroy` is called manually), unless the resource's asyncId is retrieved
-  and the sensitive API's `emitDestroy` is called with it.
-  **Default:** `false`
+  and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
 Example usage:
 
@@ -654,9 +659,7 @@ class DBQuery extends AsyncResource {
 
   getInfo(query, callback) {
     this.db.get(query, (err, data) => {
-      this.emitBefore();
-      callback(err, data);
-      this.emitAfter();
+      this.runInAsyncScope(callback, null, err, data);
     });
   }
 
@@ -667,7 +670,26 @@ class DBQuery extends AsyncResource {
 }
 ```
 
+#### `asyncResource.runInAsyncScope(fn[, thisArg, ...args])`
+<!-- YAML
+added: v8.12.0
+-->
+
+* `fn` {Function} The function to call in the execution context of this async
+  resource.
+* `thisArg` {any} The receiver to be used for the function call.
+* `...args` {any} Optional arguments to pass to the function.
+
+Call the provided function with the provided arguments in the execution context
+of the async resource. This will establish the context, trigger the AsyncHooks
+before callbacks, call the function, trigger the AsyncHooks after callbacks, and
+then restore the original execution context.
+
 #### `asyncResource.emitBefore()`
+<!-- YAML
+deprecated: v8.12.0
+-->
+> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * Returns: {undefined}
 
@@ -675,7 +697,17 @@ Call all `before` callbacks to notify that a new asynchronous execution context
 is being entered. If nested calls to `emitBefore()` are made, the stack of
 `asyncId`s will be tracked and properly unwound.
 
+`before` and `after` calls must be unwound in the same order that they
+are called. Otherwise, an unrecoverable exception will occur and the process
+will abort. For this reason, the `emitBefore` and `emitAfter` APIs are
+considered deprecated. Please use `runInAsyncScope`, as it provides a much safer
+alternative.
+
 #### `asyncResource.emitAfter()`
+<!-- YAML
+deprecated: v8.12.0
+-->
+> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * Returns: {undefined}
 
@@ -685,6 +717,12 @@ make sure the stack is unwound properly. Otherwise an error will be thrown.
 If the user's callback throws an exception, `emitAfter()` will automatically be
 called for all `asyncId`s on the stack if the error is handled by a domain or
 `'uncaughtException'` handler.
+
+`before` and `after` calls must be unwound in the same order that they
+are called. Otherwise, an unrecoverable exception will occur and the process
+will abort. For this reason, the `emitBefore` and `emitAfter` APIs are
+considered deprecated. Please use `runInAsyncScope`, as it provides a much safer
+alternative.
 
 #### `asyncResource.emitDestroy()`
 
@@ -705,6 +743,7 @@ never be called.
 constructor.
 
 [`after` callback]: #async_hooks_after_asyncid
+[`asyncResource.runInAsyncScope()`]: #async_hooks_asyncresource_runinasyncscope_fn_thisarg_args
 [`before` callback]: #async_hooks_before_asyncid
 [`destroy` callback]: #async_hooks_destroy_asyncid
 [`init` callback]: #async_hooks_init_asyncid_type_triggerasyncid_resource

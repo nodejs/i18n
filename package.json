@@ -3,9 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "nodeVersions": {
-    "v10.x": "v10.5.0",
-    "v8.x": "v8.11.3",
-    "v6.x": "v6.14.2"
+    "v12.x": "v12.6.0",
+    "v10.x": "v10.16.0",
+    "v8.x": "v8.16.0"
   },
   "description": "The home of translated Node.js documentation",
   "repository": "https://github.com/nodejs/i18n",

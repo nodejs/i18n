@@ -116,16 +116,16 @@ added: v0.3.4
   Can have the following fields:
   * `keepAlive` {boolean} Keep sockets around even when there are no
     outstanding requests, so they can be used for future requests without
-    having to reestablish a TCP connection. Defaults to `false`
+    having to reestablish a TCP connection. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies
     the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay)
     for TCP Keep-Alive packets. Ignored when the
-    `keepAlive` option is `false` or `undefined`. Defaults to `1000`.
+    `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Maximum number of sockets to allow per
-    host. Defaults to `Infinity`.
+    host. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Maximum number of sockets to leave open
     in a free state. Only relevant if `keepAlive` is set to `true`.
-    Defaults to `256`.
+    **Default:** `256`.
 
 The default [`http.globalAgent`][] that is used by [`http.request()`][] has all
 of these values set to their respective defaults.
@@ -625,8 +625,9 @@ added: v0.5.9
 * `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `timeout` event.
 
-Once a socket is assigned to this request and is connected
-[`socket.setTimeout()`][] will be called.
+If no socket is assigned to this request then [`socket.setTimeout()`][] will be
+called immediately. Otherwise [`socket.setTimeout()`][] will be called after the
+assigned socket is connected.
 
 Returns `request`.
 
@@ -748,10 +749,11 @@ changes:
 
 If a client connection emits an `'error'` event, it will be forwarded here.
 Listener of this event is responsible for closing/destroying the underlying
-socket. For example, one may wish to more gracefully close the socket with an
-HTTP '400 Bad Request' response instead of abruptly severing the connection.
+socket. For example, one may wish to more gracefully close the socket with a
+custom HTTP response instead of abruptly severing the connection.
 
-Default behavior is to destroy the socket immediately on malformed request.
+Default behavior is to close the socket with an HTTP '400 Bad Request' response
+if possible, otherwise the socket is immediately destroyed.
 
 `socket` is the [`net.Socket`][] object that the error originated from.
 
@@ -877,17 +879,36 @@ connections.
 added: v0.7.0
 -->
 
-* {number} Defaults to 2000.
+* {number} **Default:** `2000`
 
-Limits maximum incoming headers count, equal to 2000 by default. If set to 0 -
-no limit will be applied.
+Limits maximum incoming headers count. If set to 0 - no limit will be applied.
+
+### server.headersTimeout
+<!-- YAML
+added: v8.14.0
+-->
+
+* {number} **Default:** `40000`
+
+Limit the amount of time the parser will wait to receive the complete HTTP
+headers.
+
+In case of inactivity, the rules defined in [server.timeout][] apply. However,
+that inactivity based timeout would still allow the connection to be kept open
+if the headers are being sent very slowly (by default, up to a byte per 2
+minutes). In order to prevent this, whenever header data arrives an additional
+check is made that more than `server.headersTimeout` milliseconds has not
+passed since the connection was established. If the check fails, a `'timeout'`
+event is emitted on the server object, and (by default) the socket is destroyed.
+See [server.timeout][] for more information on how timeout behaviour can be
+customised.
 
 ### server.setTimeout([msecs][, callback])
 <!-- YAML
 added: v0.9.12
 -->
 
-* `msecs` {number} Defaults to 120000 (2 minutes).
+* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on
@@ -908,7 +929,7 @@ Returns `server`.
 added: v0.9.12
 -->
 
-* {number} Timeout in milliseconds. Defaults to 120000 (2 minutes).
+* {number} Timeout in milliseconds. **Default:** `120000` (2 minutes).
 
 The number of milliseconds of inactivity before a socket is presumed
 to have timed out.
@@ -923,7 +944,7 @@ value only affects new connections to the server, not any existing connections.
 added: v8.0.0
 -->
 
-* {number} Timeout in milliseconds. Defaults to 5000 (5 seconds).
+* {number} Timeout in milliseconds. **Default:** `5000` (5 seconds).
 
 The number of milliseconds of inactivity a server needs to wait for additional
 incoming data, after it has finished writing the last response, before a socket
@@ -1286,7 +1307,7 @@ added: v0.1.29
 -->
 
 * `chunk` {string|Buffer}
-* `encoding` {string}
+* `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
 * Returns: {boolean}
 
@@ -1302,8 +1323,7 @@ _must not_ include a message body.
 
 `chunk` can be a string or a buffer. If `chunk` is a string,
 the second parameter specifies how to encode it into a byte stream.
-By default the `encoding` is `'utf8'`. `callback` will be called when this chunk
-of data is flushed.
+`callback` will be called when this chunk of data is flushed.
 
 *Note*: This is the raw HTTP body and has nothing to do with
 higher-level multi-part body encodings that may be used.
@@ -1402,7 +1422,7 @@ following additional events, methods, and properties.
 added: v0.3.8
 -->
 
-Emitted when the request has been aborted and the network socket has closed.
+Emitted when the request has been aborted.
 
 ### Event: 'close'
 <!-- YAML
@@ -1411,6 +1431,44 @@ added: v0.4.2
 
 Indicates that the underlying connection was closed.
 Just like `'end'`, this event occurs only once per response.
+
+### message.aborted
+<!-- YAML
+added: v8.13.0
+-->
+
+* {boolean}
+
+The `message.aborted` property will be `true` if the request has
+been aborted.
+
+### message.complete
+<!-- YAML
+added: v0.3.0
+-->
+
+* {boolean}
+
+The `message.complete` property will be `true` if a complete HTTP message has
+been received and successfully parsed.
+
+This property is particularly useful as a means of determining if a client or
+server fully transmitted a message before a connection was terminated:
+
+```js
+const req = http.request({
+  host: '127.0.0.1',
+  port: 8080,
+  method: 'POST'
+}, (res) => {
+  res.resume();
+  res.on('end', () => {
+    if (!res.complete)
+      console.error(
+        'The connection was terminated while the message was still being sent');
+  });
+});
+```
 
 ### message.destroy([error])
 <!-- YAML
@@ -1748,6 +1806,16 @@ added: v0.5.9
 Global instance of `Agent` which is used as the default for all HTTP client
 requests.
 
+## http.maxHeaderSize
+<!-- YAML
+added: v8.15.0
+-->
+
+* {number}
+
+Read-only property specifying the maximum allowed size of HTTP headers in bytes.
+Defaults to 8KB. Configurable using the [`--max-http-header-size`][] CLI option.
+
 ## http.request(options[, callback])
 <!-- YAML
 added: v0.3.6
@@ -1758,24 +1826,24 @@ changes:
 -->
 
 * `options` {Object | string | URL}
-  * `protocol` {string} Protocol to use. Defaults to `http:`.
+  * `protocol` {string} Protocol to use. **Default:** `http:`.
   * `host` {string} A domain name or IP address of the server to issue the
-    request to. Defaults to `localhost`.
+    request to. **Default:** `localhost`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][],
     `hostname` is preferred over `host`.
   * `family` {number} IP address family to use when resolving `host` and
     `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and
     v6 will be used.
-  * `port` {number} Port of remote server. Defaults to 80.
+  * `port` {number} Port of remote server. **Default:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of host:port or
     socketPath).
-  * `method` {string} A string specifying the HTTP request method. Defaults to
+  * `method` {string} A string specifying the HTTP request method. **Default:**
     `'GET'`.
-  * `path` {string} Request path. Defaults to `'/'`. Should include query
-    string if any. E.G. `'/index.html?page=12'`. An exception is thrown when
-    the request path contains illegal characters. Currently, only spaces are
-    rejected but that may change in the future.
+  * `path` {string} Request path. Should include query string if any.
+    E.G. `'/index.html?page=12'`. An exception is thrown when the request path
+    contains illegal characters. Currently, only spaces are rejected but that
+    may change in the future. **Default:** `'/'`.
   * `headers` {Object} An object containing request headers.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an
     Authorization header.
@@ -1925,6 +1993,7 @@ will be emitted in the following order:
 Note that setting the `timeout` option or using the `setTimeout` function will
 not abort the request or do anything besides add a `timeout` event.
 
+[`--max-http-header-size`]: cli.html#cli_max_http_header_size_size
 [`'checkContinue'`]: #http_event_checkcontinue
 [`'request'`]: #http_event_request
 [`'response'`]: #http_event_response
@@ -1951,8 +2020,8 @@ not abort the request or do anything besides add a `timeout` event.
 [`removeHeader(name)`]: #http_request_removeheader_name
 [`request.end()`]: #http_request_end_data_encoding_callback
 [`request.setTimeout()`]: #http_request_settimeout_timeout_callback
-[`request.socket`]: #http_request_socket
 [`request.socket.getPeerCertificate()`]: tls.html#tls_tlssocket_getpeercertificate_detailed
+[`request.socket`]: #http_request_socket
 [`request.write(data, encoding)`]: #http_request_write_chunk_encoding_callback
 [`response.end()`]: #http_response_end_data_encoding_callback
 [`response.setHeader()`]: #http_response_setheader_name_value

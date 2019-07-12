@@ -64,9 +64,11 @@ This class is used to create a TCP or [IPC][] server.
 
 ### new net.Server([options][, connectionListener])
 
+* `options` {Object} See
+  [`net.createServer([options][, connectionListener])`][`net.createServer()`].
+* `connectionListener` {Function} Automatically set as a listener for the
+  [`'connection'`][] event.
 * Returns: {net.Server}
-
-See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
@@ -112,7 +114,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Returns: {Object|string}
 
 Returns the bound `address`, the address `family` name, and `port` of the server
 as reported by the operating system if listening on an IP socket
@@ -121,8 +123,6 @@ as reported by the operating system if listening on an IP socket
 
 For a server listening on a pipe or UNIX domain socket, the name is returned
 as a string.
-
-Example:
 
 ```js
 const server = net.createServer((socket) => {
@@ -145,6 +145,7 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
+* `callback` {Function} Called when the server is closed
 * Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing
@@ -166,13 +167,14 @@ The number of concurrent connections on the server.
 
 This becomes `null` when sending a socket to a child with
 [`child_process.fork()`][]. To poll forks and get current number of active
-connections use asynchronous [`server.getConnections()`][] instead.
+connections, use asynchronous [`server.getConnections()`][] instead.
 
 ### server.getConnections(callback)
 <!-- YAML
 added: v0.9.7
 -->
 
+* `callback` {Function}
 * Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works
@@ -394,8 +396,6 @@ it to interact with the client.
 added: v0.3.4
 -->
 
-Creates a new socket object.
-
 * `options` {Object} Available options are:
   * `fd` {number} If specified, wrap around an existing socket with
     the given file descriptor, otherwise a new socket will be created.
@@ -407,6 +407,8 @@ Creates a new socket object.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed,
     otherwise ignored. **Default:** `false`.
 * Returns: {net.Socket}
+
+Creates a new socket object.
 
 The newly created socket can be either a TCP socket or a streaming [IPC][]
 endpoint, depending on what it [`connect()`][`socket.connect()`] to.
@@ -656,18 +658,20 @@ called with `{port: port, host: host}` as `options`.
 added: v6.1.0
 -->
 
-If `true` -
+If `true`,
+[`socket.connect(options[, connectListener])`][`socket.connect(options)`] was
+called and has not yet finished. It will stay `true` until the socket becomes
+connected, then it is set to `false` and the `'connect'` event is emitted.  Note
+that the
 [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
-was called and haven't yet finished. Will be set to `false` before emitting
-`'connect'` event and/or calling
-[`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s
-callback.
+callback is a listener for the `'connect'` event.
 
 ### socket.destroy([exception])
 <!-- YAML
 added: v0.1.90
 -->
 
+* `exception` {Object}
 * Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in
@@ -681,11 +685,14 @@ listeners for that event will receive `exception` as an argument.
 * {boolean} Indicates if the connection is destroyed or not. Once a
   connection is destroyed no further data can be transferred using it.
 
-### socket.end([data][, encoding])
+### socket.end([data][, encoding][, callback])
 <!-- YAML
 added: v0.1.90
 -->
 
+* `data` {string|Buffer|Uint8Array}
+* `encoding` {string} Only used when data is `string`. **Default:** `'utf8'`.
+* `callback` {Function} Optional callback for when the socket is finished.
 * Returns: {net.Socket} The socket itself.
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the
@@ -709,8 +716,7 @@ connects on `'192.168.1.1'`, the value of `socket.localAddress` would be
 added: v0.9.6
 -->
 
-The numeric representation of the local port. For example,
-`80` or `21`.
+The numeric representation of the local port. For example, `80` or `21`.
 
 ### socket.pause()
 
@@ -718,6 +724,17 @@ The numeric representation of the local port. For example,
 
 Pauses the reading of data. That is, [`'data'`][] events will not be emitted.
 Useful to throttle back an upload.
+
+### socket.pending
+<!-- YAML
+added: v10.16.0
+-->
+
+* {boolean}
+
+This is `true` if the socket is not connected yet, either because `.connect()`
+has not yet been called or because it is still in the process of connecting
+(see [`socket.connecting`][]).
 
 ### socket.ref()
 <!-- YAML
@@ -751,8 +768,7 @@ The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 added: v0.5.10
 -->
 
-The numeric representation of the remote port. For example,
-`80` or `21`.
+The numeric representation of the remote port. For example, `80` or `21`.
 
 ### socket.resume()
 
@@ -765,6 +781,7 @@ Resumes reading after a call to [`socket.pause()`][].
 added: v0.1.90
 -->
 
+* `encoding` {string}
 * Returns: {net.Socket} The socket itself.
 
 Set the encoding for the socket as a [Readable Stream][]. See
@@ -804,6 +821,8 @@ algorithm, they buffer data before sending it off. Setting `true` for
 added: v0.1.90
 -->
 
+* `timeout` {number}
+* `callback` {Function}
 * Returns: {net.Socket} The socket itself.
 
 Sets the socket to timeout after `timeout` milliseconds of inactivity on
@@ -877,6 +896,9 @@ Possible signatures:
 <!-- YAML
 added: v0.7.0
 -->
+* `options` {Object}
+* `connectListener` {Function}
+
 Alias to
 [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -884,6 +906,8 @@ Alias to
 <!-- YAML
 added: v0.1.90
 -->
+* `path` {string}
+* `connectListener` {Function}
 
 Alias to
 [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
@@ -892,6 +916,9 @@ Alias to
 <!-- YAML
 added: v0.1.90
 -->
+* `port` {number}
+* `host` {string}
+* `connectListener` {Function}
 
 Alias to
 [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
@@ -1015,8 +1042,6 @@ then returns the `net.Socket` that starts the connection.
 added: v0.5.0
 -->
 
-Creates a new TCP or [IPC][] server.
-
 * `options` {Object}
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP
     connections are allowed. **Default:** `false`.
@@ -1025,6 +1050,8 @@ Creates a new TCP or [IPC][] server.
 * `connectionListener` {Function} Automatically set as a listener for the
   [`'connection'`][] event.
 * Returns: {net.Server}
+
+Creates a new TCP or [IPC][] server.
 
 If `allowHalfOpen` is set to `true`, when the other end of the socket
 sends a FIN packet, the server will only send a FIN packet back when
@@ -1089,6 +1116,7 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
+* `input` {string}
 * Returns: {integer}
 
 Tests if input is an IP address. Returns `0` for invalid strings,
@@ -1100,6 +1128,7 @@ addresses.
 added: v0.3.0
 -->
 
+* `input` {string}
 * Returns: {boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
@@ -1109,6 +1138,7 @@ Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 added: v0.3.0
 -->
 
+* `input` {string}
 * Returns: {boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
@@ -1138,6 +1168,7 @@ Returns `true` if input is a version 6 IP address, otherwise returns `false`.
 [`net.createConnection(port, host)`]: #net_net_createconnection_port_host_connectlistener
 [`net.createServer()`]: #net_net_createserver_options_connectionlistener
 [`new net.Socket(options)`]: #net_new_net_socket_options
+[`readable.setEncoding()`]: stream.html#stream_readable_setencoding_encoding
 [`server.close()`]: #net_server_close_callback
 [`server.getConnections()`]: #net_server_getconnections_callback
 [`server.listen()`]: #net_server_listen
@@ -1149,14 +1180,14 @@ Returns `true` if input is a version 6 IP address, otherwise returns `false`.
 [`socket.connect(options)`]: #net_socket_connect_options_connectlistener
 [`socket.connect(path)`]: #net_socket_connect_path_connectlistener
 [`socket.connect(port, host)`]: #net_socket_connect_port_host_connectlistener
+[`socket.connecting`]: #net_socket_connecting
 [`socket.destroy()`]: #net_socket_destroy_exception
-[`socket.end()`]: #net_socket_end_data_encoding
+[`socket.end()`]: #net_socket_end_data_encoding_callback
 [`socket.pause()`]: #net_socket_pause
 [`socket.resume()`]: #net_socket_resume
 [`socket.setEncoding()`]: #net_socket_setencoding_encoding
 [`socket.setTimeout()`]: #net_socket_settimeout_timeout_callback
 [`socket.setTimeout(timeout)`]: #net_socket_settimeout_timeout_callback
-[`readable.setEncoding()`]: stream.html#stream_readable_setencoding_encoding
 [IPC]: #net_ipc_support
 [Identifying paths for IPC connections]: #net_identifying_paths_for_ipc_connections
 [Readable Stream]: stream.html#stream_class_stream_readable

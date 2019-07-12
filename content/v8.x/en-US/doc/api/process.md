@@ -212,7 +212,7 @@ changes:
     description: Not handling Promise rejections has been deprecated.
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8223
-    description: Unhandled Promise rejections have been will now emit
+    description: Unhandled Promise rejections will now emit
                  a process warning.
 -->
 
@@ -349,6 +349,9 @@ Signal events will be emitted when the Node.js process receives a signal. Please
 refer to signal(7) for a listing of standard POSIX signal names such as
 `SIGINT`, `SIGHUP`, etc.
 
+The signal handler will receive the signal's name (`'SIGINT'`,
+ `'SIGTERM'`, etc.) as the first argument.
+
 The name of each event will be the uppercase common name for the signal (e.g.
 `'SIGINT'` for `SIGINT` signals).
 
@@ -361,10 +364,18 @@ process.stdin.resume();
 process.on('SIGINT', () => {
   console.log('Received SIGINT. Press Control-D to exit.');
 });
+
+// Using a single function to handle multiple signals
+function handle(signal) {
+  console.log(`Received ${signal}`);
+}
+
+process.on('SIGINT', handle);
+process.on('SIGTERM', handle);
 ```
 
 * `SIGUSR1` is reserved by Node.js to start the [debugger][]. It's possible to
-  install a listener but doing so will _not_ stop the debugger from starting.
+  install a listener but doing so might interfere with the debugger.
 * `SIGTERM` and `SIGINT` have default handlers on non-Windows platforms that
   reset the terminal mode before exiting with code `128 + signal number`. If one
   of these signals has a listener installed, its default behavior will be
@@ -487,6 +498,8 @@ $ bash -c 'exec -a customArgv0 ./node'
 <!-- YAML
 added: v7.1.0
 -->
+
+* {Object}
 
 If the Node.js process was spawned with an IPC channel (see the
 [Child Process][] documentation), the `process.channel`
@@ -620,7 +633,17 @@ process.
 ```js
 console.log(`Current directory: ${process.cwd()}`);
 ```
+## process.debugPort
+<!-- YAML
+added: v0.7.2
+-->
+* {number}
 
+The port used by Node.js's debugger when enabled.
+
+```js
+process.debugPort = 5858;
+```
 ## process.disconnect()
 <!-- YAML
 added: v0.7.2
@@ -645,11 +668,11 @@ added: 8.0.0
 * `warning` {string|Error} The warning to emit.
 * `options` {Object}
   * `type` {string} When `warning` is a String, `type` is the name to use
-    for the *type* of warning being emitted. Default: `Warning`.
+    for the *type* of warning being emitted. **Default:** `Warning`.
   * `code` {string} A unique identifier for the warning instance being emitted.
   * `ctor` {Function} When `warning` is a String, `ctor` is an optional
-    function used to limit the generated stack trace. Default
-    `process.emitWarning`
+    function used to limit the generated stack trace. **Default:**
+    `process.emitWarning`.
   * `detail` {string} Additional text to include with the error.
 
 The `process.emitWarning()` method can be used to emit custom or application
@@ -690,11 +713,11 @@ added: v6.0.0
 
 * `warning` {string|Error} The warning to emit.
 * `type` {string} When `warning` is a String, `type` is the name to use
-  for the *type* of warning being emitted. Default: `Warning`.
+  for the *type* of warning being emitted. **Default:** `Warning`.
 * `code` {string} A unique identifier for the warning instance being emitted.
 * `ctor` {Function} When `warning` is a String, `ctor` is an optional
-  function used to limit the generated stack trace. Default
-  `process.emitWarning`
+  function used to limit the generated stack trace. **Default:**
+  `process.emitWarning`.
 
 The `process.emitWarning()` method can be used to emit custom or application
 specific process warnings. These can be listened for by adding a handler to the
@@ -863,7 +886,7 @@ console.log(process.env.test);
 added: v0.7.7
 -->
 
-* {Object}
+* {Array}
 
 The `process.execArgv` property returns the set of Node.js-specific command-line
 options passed when the Node.js process was launched. These options do not
@@ -915,7 +938,7 @@ For example:
 added: v0.1.13
 -->
 
-* `code` {integer} The exit code. Defaults to `0`.
+* `code` {integer} The exit code. **Default:** `0`.
 
 The `process.exit()` method instructs Node.js to terminate the process
 synchronously with an exit status of `code`. If `code` is omitted, exit uses
@@ -1149,7 +1172,7 @@ added: v0.0.6
 
 * `pid` {number} A process ID
 * `signal` {string|number} The signal to send, either as a string or number.
-  Defaults to `'SIGTERM'`.
+  **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by
 `pid`.
@@ -1188,6 +1211,8 @@ the debugger, see [Signal Events][].
 <!-- YAML
 added: v0.1.17
 -->
+
+* {Object}
 
 The `process.mainModule` property provides an alternative way of retrieving
 [`require.main`][]. The difference is that if the main module changes at
@@ -1394,7 +1419,7 @@ console.log(`This platform is ${process.platform}`);
 
 The value `'android'` may also be returned if the Node.js is built on the
 Android operating system. However, Android support in Node.js
-[is experimental][Supported platforms].
+[is experimental][Android building].
 
 ## process.ppid
 <!-- YAML
@@ -1417,6 +1442,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3212
     description: The `lts` property is now supported.
 -->
+
+* {Object}
 
 The `process.release` property returns an Object containing metadata related to
 the current release, including URLs for the source tarball and headers-only
@@ -1676,9 +1703,7 @@ important ways:
 
 1. They are used internally by [`console.log()`][] and [`console.error()`][],
    respectively.
-2. They cannot be closed ([`end()`][] will throw).
-3. They will never emit the [`'finish'`][] event.
-4. Writes may be synchronous depending on what the stream is connected to
+2. Writes may be synchronous depending on what the stream is connected to
    and whether the system is Windows or POSIX:
    - Files: *synchronous* on Windows and POSIX
    - TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
@@ -1898,19 +1923,16 @@ cases:
 
 
 [`'exit'`]: #process_event_exit
-[`'finish'`]: stream.html#stream_event_finish
 [`'message'`]: child_process.html#child_process_event_message
 [`'rejectionHandled'`]: #process_event_rejectionhandled
 [`'uncaughtException'`]: #process_event_uncaughtexception
 [`ChildProcess.disconnect()`]: child_process.html#child_process_subprocess_disconnect
-[`subprocess.kill()`]: child_process.html#child_process_subprocess_kill_signal
 [`ChildProcess.send()`]: child_process.html#child_process_subprocess_send_message_sendhandle_options_callback
 [`ChildProcess`]: child_process.html#child_process_class_childprocess
 [`Error`]: errors.html#errors_class_error
 [`EventEmitter`]: events.html#events_class_eventemitter
 [`console.error()`]: console.html#console_console_error_data_args
 [`console.log()`]: console.html#console_console_log_data_args
-[`end()`]: stream.html#stream_writable_end_chunk_encoding_callback
 [`net.Server`]: net.html#net_class_net_server
 [`net.Socket`]: net.html#net_class_net_socket
 [`process.argv`]: #process_process_argv
@@ -1921,17 +1943,18 @@ cases:
 [`promise.catch()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
 [`require.main`]: modules.html#modules_accessing_the_main_module
 [`setTimeout(fn, 0)`]: timers.html#timers_settimeout_callback_delay_args
+[`subprocess.kill()`]: child_process.html#child_process_subprocess_kill_signal
+[Android building]: https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os
 [Child Process]: child_process.html
 [Cluster]: cluster.html
-[debugger]: debugger.html
 [Duplex]: stream.html#stream_duplex_and_transform_streams
 [LTS]: https://github.com/nodejs/LTS/
-[note on process I/O]: process.html#process_a_note_on_process_i_o
-[process_emit_warning]: #process_process_emitwarning_warning_type_code_ctor
-[process_warning]: #process_event_warning
 [Readable]: stream.html#stream_readable_streams
 [Signal Events]: #process_signal_events
 [Stream compatibility]: stream.html#stream_compatibility_with_older_node_js_versions
-[Supported platforms]: https://github.com/nodejs/node/blob/master/BUILDING.md#supported-platforms-1
 [TTY]: tty.html#tty_tty
 [Writable]: stream.html#stream_writable_streams
+[debugger]: debugger.html
+[note on process I/O]: process.html#process_a_note_on_process_i_o
+[process_emit_warning]: #process_process_emitwarning_warning_type_code_ctor
+[process_warning]: #process_event_warning

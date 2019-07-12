@@ -228,6 +228,8 @@ The `'removeListener'` event is emitted *after* the `listener` is removed.
 added: v0.9.12
 deprecated: v4.0.0
 -->
+* `emitter` {EventEmitter} The emitter to query
+* `eventName` {string|symbol} The event name
 
 > Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
 
@@ -286,8 +288,8 @@ Its `name` property is set to `'MaxListenersExceededWarning'`.
 <!-- YAML
 added: v0.1.26
 -->
-- `eventName` {string|symbol}
-- `listener` {Function}
+* `eventName` {string|symbol}
+* `listener` {Function}
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -295,9 +297,9 @@ Alias for `emitter.on(eventName, listener)`.
 <!-- YAML
 added: v0.1.26
 -->
-- `eventName` {string|symbol}
+* `eventName` {string|symbol}
 - `...args` {any}
-- Returns: {boolean}
+* Returns: {boolean}
 
 Synchronously calls each of the listeners registered for the event named
 `eventName`, in the order they were registered, passing the supplied arguments
@@ -310,7 +312,7 @@ Returns `true` if the event had listeners, `false` otherwise.
 added: v6.0.0
 -->
 
-- Returns: {Array}
+* Returns: {Array}
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array will be strings or `Symbol`s.
@@ -333,7 +335,7 @@ console.log(myEE.eventNames());
 added: v1.0.0
 -->
 
-- Returns: {integer}
+* Returns: {integer}
 
 Returns the current max listener value for the `EventEmitter` which is either
 set by [`emitter.setMaxListeners(n)`][] or defaults to
@@ -358,8 +360,8 @@ changes:
     description: For listeners attached using `.once()` this returns the
                  original listeners instead of wrapper functions now.
 -->
-- `eventName` {string|symbol}
-- Returns: {Function[]}
+* `eventName` {string|symbol}
+* Returns: {Function[]}
 
 Returns a copy of the array of listeners for the event named `eventName`.
 
@@ -501,8 +503,8 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 <!-- YAML
 added: v0.1.26
 -->
-- `eventName` {string|symbol}
-- Returns: {EventEmitter}
+* `eventName` {string|symbol}
+* Returns: {EventEmitter}
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -516,9 +518,9 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 <!-- YAML
 added: v0.1.26
 -->
-- `eventName` {string|symbol}
-- `listener` {Function}
-- Returns: {EventEmitter}
+* `eventName` {string|symbol}
+* `listener` {Function}
+* Returns: {EventEmitter}
 
 Removes the specified `listener` from the listener array for the event named
 `eventName`.
@@ -579,14 +581,34 @@ being removed. This will not impact the order in which listeners are called,
 but it means that any copies of the listener array as returned by
 the `emitter.listeners()` method will need to be recreated.
 
+When a single function has been added as a handler multiple times for a single
+event (as in the example below), `removeListener()` will remove the most
+recently added instance. In the example the `once('ping')`
+listener is removed:
+
+```js
+const ee = new EventEmitter();
+
+function pong() {
+  console.log('pong');
+}
+
+ee.on('ping', pong);
+ee.once('ping', pong);
+ee.removeListener('ping', pong);
+
+ee.emit('ping');
+ee.emit('ping');
+```
+
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ### emitter.setMaxListeners(n)
 <!-- YAML
 added: v0.3.5
 -->
-- `n` {integer}
-- Returns: {EventEmitter}
+* `n` {integer}
+* Returns: {EventEmitter}
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -601,8 +623,8 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 <!-- YAML
 added: v9.4.0
 -->
-- `eventName` {string|symbol}
-- Returns: {Function[]}
+* `eventName` {string|symbol}
+* Returns: {Function[]}
 
 Returns a copy of the array of listeners for the event named `eventName`,
 including any wrappers (such as those created by `.once()`).
@@ -629,6 +651,47 @@ const newListeners = emitter.rawListeners('log');
 // logs "log persistently" twice
 newListeners[0]();
 emitter.emit('log');
+```
+
+## events.once(emitter, name)
+<!-- YAML
+added: v10.16.0
+-->
+* `emitter` {EventEmitter}
+* `name` {string}
+* Returns: {Promise}
+
+Creates a `Promise` that is resolved when the `EventEmitter` emits the given
+event or that is rejected when the `EventEmitter` emits `'error'`.
+The `Promise` will resolve with an array of all the arguments emitted to the
+given event.
+
+```js
+const { once, EventEmitter } = require('events');
+
+async function run() {
+  const ee = new EventEmitter();
+
+  process.nextTick(() => {
+    ee.emit('myevent', 42);
+  });
+
+  const [value] = await once(ee, 'myevent');
+  console.log(value);
+
+  const err = new Error('kaboom');
+  process.nextTick(() => {
+    ee.emit('error', err);
+  });
+
+  try {
+    await once(ee, 'myevent');
+  } catch (err) {
+    console.log('error happened', err);
+  }
+}
+
+run();
 ```
 
 [`--trace-warnings`]: cli.html#cli_trace_warnings
