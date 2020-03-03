@@ -7,4 +7,4 @@ files:
   - source: /content/v12.x/en-US/**/*.md
     translation: /content/v12.x/%locale%/**/%original_file_name%
   - source: /content/v13.x/en-US/**/*.md
-    translation: /content/v12.x/%locale%/**/%original_file_name%
+    translation: /content/v13.x/%locale%/**/%original_file_name%
