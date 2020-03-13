@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidad: 2 - Estable
+> Estability: 2 - Estable
 
-Un stream es una interfaz abstracta para trabajar con transmisión de datos en Node.js. El módulo `stream` proporciona una API base que hace sencillo contruir objetos que implementan la interfaz stream.
+Un stream es una interfaz abstracta para trabajar con datos de streaming en Node.js. El módulo `stream` proporciona una API base que hace sencillo construir objetos que implementan la interfaz de stream.
 
-Existen muchos objetos stream que son proporcionados por Node.js. Por ejemplo, [request to an HTTP server](http.html#http_class_http_incomingmessage) y [`process.stdout`][] ambos son instancias stream.
+Existen muchos objetos de stream proporcionados por Node.js. Por ejemplo, una [solicitud a un servidor HTTP](http.html#http_class_http_incomingmessage) y un [`process.stdout`][] son instancias de stream.
 
-Los streams pueden ser legibles, escribibles o ambas. Todos los streams son instancias de [`EventEmitter`][].
+Los streams pueden ser legible, escribibles, o ambos. Todos los streams son instancias de [`EventEmitter`][].
 
-El módulo `stream` puede ser accedido usando:
+Se puede acceder al módulo `stream` utilizando:
 
 ```js
 const stream = require('stream');
@@ -20,18 +20,18 @@ Mientras es importante entender cómo los streams funcionan, el módulo `stream`
 
 ## Organización de este Documento
 
-Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. La primera sección explica los elementos del API del stream que son requeridos para usar *usar* streams con una aplicación. La segunda sección explica los elementos de la API que son necesarios para *implementar* nuevos tipos de streams.
+Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. La primera sección explica los elementos de la API de stream que se requieren para *utilizar* streams en una aplicación. La segunda sección explica los elementos de la API que se requieren para *implementar* nuevos tipos de streams.
 
 ## Tipos de Streams
 
-Existen cuatro tipo fundamentales de stream en Node.js:
+Existen cuatro tipos fundamentales de stream en Node.js:
 
-* [`Readable`][] - stream de donde los datos pueden ser leídos (por ejemplo [`fs.createReadStream()`][]).
-* [`Writable`][] - streams donde los datos pueden ser escritos (por ejemplo [`fs.createWriteStream()`][]).
-* [`Duplex`][] - streams que son tanto `Readable` como `Writable` (por ejemplo [`net.Socket`][]).
-* [`Transform`][] - `Duplex` streams que pueden modificar o transformar los datos mientras son escritos y leídos (por ejemplo [`zlib.createDeflate()`][]).
+* [`Writable`][] - streams to which data can be written (for example, [`fs.createWriteStream()`][]).
+* [`Readable`][] - streams from which data can be read (for example, [`fs.createReadStream()`][]).
+* [`Duplex`][] - streams that are both `Readable` and `Writable` (for example, [`net.Socket`][]).
+* [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example, [`zlib.createDeflate()`][]).
 
-Adicionalmente, este módulo incluye la funciones de utilidad [pipeline](#stream_stream_pipeline_streams_callback) y [finished](#stream_stream_finished_stream_callback).
+Additionally, this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
 
 ### Modo Objeto
 
@@ -39,13 +39,13 @@ Todos los streams que son creados por las APIs de Node.js operan exclusivamente 
 
 Las instancias stream son cambiadas a modo objeto usando la opción `objectMode` cuando el stream es creado. No es seguro. intentar cambiar un stream existente a modo objeto.
 
-### Almacenamiento en búfer
+### Almacenamiento en Buffer
 
 <!--type=misc-->
 
 Los streams [`Writable`][] y [`Readable`][] van a almacenar los datos en un búfer interno, que puede ser recuperado usando `writable.writableBuffer` o `readable.readableBuffer`, respectivamente.
 
-La cantidad de datos potencialmente guardados en un búfer depende de la opción `highWaterMark` pasadas por el constructor de streams. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Para operar stream en modo objeto, `highWaterMark` especifica un número total de objetos´.
+The amount of data potentially buffered depends on the `highWaterMark` option passed into the stream's constructor. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Para operar stream en modo objeto, `highWaterMark` especifica un número total de objetos´.
 
 Los datos son guardados en streams `Readable` cuando la implementación llama a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Si el consumidor del stream no llama a [`stream.read()`](#stream_readable_read_size), los datos se quedarán en la cola interna hasta que se consumen.
 
@@ -55,7 +55,7 @@ Los datos son almacenados en streams `Writable` cuando el método [`writable.wri
 
 Un objetivo clave del API de `stream`, particularmente el método [`stream.pipe()`], es limitar el almacenamiento de datos a niveles aceptables, para que la fuentes y los destinos de diferentes velocidades no abrumen la memoria disponible.
 
-Porque ambos streams [`Duplex`][] y [`Transform`][] son `Readable` y `Writable`, cada uno mantiene *dos* búferes internos separados usados para leer y escribir, permitiendo cada lado operar independientemente del otro, mientras se mantiene un flujo de datos apropiado y eficiente. Por ejemplo, las instancias [`net.Socket`][] son streams [`Duplex`][] cuyo lado `Readable` permite el consumo de datos recibidos *del* socket y cuyo lado `Writable` permite escribir datos *al* socket. Porque los datos pueden ser escritos al socket a una tasa más rápida o más lenta que los datos que son recibidos, es importante para cada lado operar (y almacenar) independientemente del otro.
+Because [`Duplex`][] and [`Transform`][] streams are both `Readable` and `Writable`, each maintains *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [`Duplex`][] streams whose `Readable` side allows consumption of data received *from* the socket and whose `Writable` side allows writing data *to* the socket. Porque los datos pueden ser escritos al socket a una tasa más rápida o más lenta que los datos que son recibidos, es importante para cada lado operar (y almacenar) independientemente del otro.
 
 ## API para los Consumidores de Stream
 
@@ -67,12 +67,12 @@ Casi todas las aplicaciones Node.js, no importa que tan simple sea, usa streams 
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req es un http.IncomingMessage, que es un Stream Legible
-  // res es un http.ServerResponse, que es un Stream Escribible
+  // req es un http.IncomingMessage, el cual es un Stream Legible
+  // res es un http.ServerResponse, el cual es un Strema Escribible
 
   let body = '';
-  // Obtiene los datos como strings utf8.
-  // Si no se establece una codificación, los objetos Buffer van a ser recibidos.
+  // Obtiene los datos como cadenas utf8.
+  // Si no se establece una codificación, se recibirán los objetos de Buffer.
   req.setEncoding('utf8');
 
   // Los streams legibles emiten eventos "data" una vez que se añade un listener
@@ -123,13 +123,13 @@ Los streams escribibles son una abstracción para un *destino* al que se le han 
 
 Ejemplos de streams [`Writable`][] streams incluyen:
 
-* [Solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
-* [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
-* [streams write fs](fs.html#fs_class_fs_writestream)
+* [solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
+* [respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
+* [streams de escritura del fs](fs.html#fs_class_fs_writestream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
-* [proceso secundario stdin](child_process.html#child_process_subprocess_stdin)
+* [stdin de proceso secundario](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
 Algunos de estos ejemplos son en realidad streams [`Duplex`][] que implementan la interfaz [`Writable`][].
@@ -146,7 +146,6 @@ myStream.end('done writing data');
 ```
 
 #### Clase: stream.Writable
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -154,17 +153,20 @@ added: v0.9.4
 <!--type=class-->
 
 ##### Evento: 'close'
-
 <!-- YAML
 added: v0.9.4
+changes:
+  - version: v10.0.0
+    pr-url: https://github.com/nodejs/node/pull/18438
+    description: Add `emitClose` option to specify if `'close'` is emitted on
+                 destroy.
 -->
 
-El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) fueron cerrados. El evento indica que no se emitirán más eventos, y no ocurrirá ninguna computación adicional.
+El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) han sido cerrados. El evento indica que no se emitirán más eventos, y no se producirá ninguna computación adicional.
 
-No todos los streams `Writable` emitirán el evento `'close'`.
+A [`Writable`][] stream will always emit the `'close'` event if it is created with the `emitClose` option.
 
 ##### Evento: 'drain'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -173,7 +175,7 @@ Si una llamada a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_c
 
 ```js
 // Escribe los datos en el stream escribible suministrado un millón de veces.
-// Está atento a la contrapresión.
+// Esté atento a la contrapresión.
 function writeOneMillionTimes(writer, data, encoding, callback) {
   let i = 1000000;
   write();
@@ -185,13 +187,13 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
         // ¡última vez!
         writer.write(data, encoding, callback);
       } else {
-        // ver si deberíamos continuar, o espera
-        // no pases la callback, porque no hemos terminado aún.
+        // ver si deberíamos continuar o, esperar
+        // no pase el callback, porque todavía no hemos terminado.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // ¡tuve que parar temprano!
+      // ¡Tenía que parar temprano!
       // escribe un poco más una vez que se vacíe
       writer.once('drain', write);
     }
@@ -200,7 +202,6 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
 ```
 
 ##### Evento: 'error'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -212,7 +213,6 @@ El evento `'error'` es emitido si ocurrió un error mientras se escribian datos 
 El stream no es cerrado cuando el evento `'error'` es emitido.
 
 ##### Evento: 'finish'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -226,12 +226,11 @@ for (let i = 0; i < 100; i++) {
 }
 writer.end('This is the end\n');
 writer.on('finish', () => {
-  console.error('All writes are now complete.');
+  console.log('All writes are now complete.');
 });
 ```
 
 ##### Evento: 'pipe'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -244,14 +243,13 @@ El evento `'pipe'` es emitido cuando el método [`stream.pipe()`][] es llamado e
 const writer = getWritableStreamSomehow();
 const reader = getReadableStreamSomehow();
 writer.on('pipe', (src) => {
-  console.error('something is piping into the writer');
+  console.log('Something is piping into the writer.');
   assert.equal(src, reader);
 });
 reader.pipe(writer);
 ```
 
 ##### Evento: 'unpipe'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -266,7 +264,7 @@ Esto también es emitido en caso de que este stream [`Writable`][] emita un erro
 const writer = getWritableStreamSomehow();
 const reader = getReadableStreamSomehow();
 writer.on('unpipe', (src) => {
-  console.error('Something has stopped piping into the writer.');
+  console.log('Something has stopped piping into the writer.');
   assert.equal(src, reader);
 });
 reader.pipe(writer);
@@ -274,7 +272,6 @@ reader.unpipe(writer);
 ```
 
 ##### writable.cork()
-
 <!-- YAML
 added: v0.11.2
 -->
@@ -286,21 +283,19 @@ La intención primordial de `writable.cork()` es evitar una situación donde esc
 Vea también: [`writable.uncork()`][].
 
 ##### writable.destroy([error])
-
 <!-- YAML
 added: v8.0.0
 -->
 
+* `error` {Error}
 * Devuelve: {this}
 
-Destruye el stream, y emite el `'error'` pasado y un evento `'close'`. Después de esta llamada, el stream escribible ha terminado, y llamadas posteriores al `write()` / `end()` darán un error `ERR_STREAM_DESTROYED`. Los implementadores no deberían sobreescribir este método, pero implementa [`writable._destroy()`](#stream_writable_destroy_err_callback) en su lugar.
+Destruye el stream, y emite el `'error'` pasado y un evento `'close'`. After this call, the writable stream has ended and subsequent calls to `write()` or `end()` will result in an `ERR_STREAM_DESTROYED` error. Los implementadores no deberían sobreescribir este método, pero implementa [`writable._destroy()`](#stream_writable_destroy_err_callback) en su lugar.
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
-
 <!-- YAML
 added: v0.9.4
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18780
     description: This method now returns a reference to `writable`.
@@ -310,7 +305,7 @@ changes:
 -->
 
 * `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer`o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
-* `encoding` {string} La codificación si `chunk` es un string
+* `encoding` {string} The encoding if `chunk` is a string
 * `callback` {Function} Callback opcional cuando el stream esté terminado
 * Devuelve: {this}
 
@@ -328,11 +323,9 @@ file.end('world!');
 ```
 
 ##### writable.setDefaultEncoding(encoding)
-
 <!-- YAML
 added: v0.11.15
 changes:
-
   - version: v6.1.0
     pr-url: https://github.com/nodejs/node/pull/5040
     description: This method now returns a reference to `writable`.
@@ -344,7 +337,6 @@ changes:
 El método `writable.setDefaultEncoding()`establece el `encoding` predeterminado para un stream [`Writable`][].
 
 ##### writable.uncork()
-
 <!-- YAML
 added: v0.11.2
 -->
@@ -369,15 +361,23 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // Los datos no serán arrojados hasta que uncork() sea llamado una segunda vez.
+  // Los datos no se vaciarán hasta que se llame a uncork() por segunda vez.
   stream.uncork();
 });
 ```
 
 Vea también: [`writable.cork()`][].
 
-##### writable.writableHighWaterMark
+##### writable.writable
+<!-- YAML
+added: v0.8.0
+-->
 
+* {boolean}
+
+Is `true` if it is safe to call [`writable.write()`][].
+
+##### writable.writableHighWaterMark
 <!-- YAML
 added: v9.3.0
 -->
@@ -387,7 +387,6 @@ added: v9.3.0
 Devuelve el valor del `highWaterMark` pasado al construir este `Writable`.
 
 ##### writable.writableLength
-
 <!-- YAML
 added: v9.4.0
 -->
@@ -395,11 +394,9 @@ added: v9.4.0
 Esta propiedad contiene el número de bytes (u objetos) en la cola a ser escritos. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
-
 <!-- YAML
 added: v0.9.4
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -409,7 +406,7 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para los streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
+* `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer`o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 * `encoding` {string} La codificación si `chunk` es un string
 * `callback` {Function} Hace callback para cuando este fragmento de datos es arrojado
 * Devuelve: {boolean} `false`si el stream desea por el código llamando a esperar por el evento `'drain'` sea emitido antes de continuar esperando escribir datos adicionales; de otra manera `true`.
@@ -420,7 +417,7 @@ El valor devuelto es `true` si el búfer interno es menor que el `highWaterMark`
 
 Mientras que un stream no esté draining, llamadas a `write()` almacenaran `chunk`, y devolverán false. Una vez que todos los fragmentos almacenados son vaciados (aceptado para entrega por el sistema operativo), el evento `'drain'` será emitido. Es recomendado que una vez que `write()` devuelva false, no se escribirán más fragmentos hasta que sea emitido el evento `'drain'`. Mientras se llame `write()` en un stream donde el vaciado no está permitido, Node.js va a almacenar todos los fragmentos escritos hasta que el uso máximo de la memoria ocurra, en ese punto se anulará incondicionalmente. Incluso antes de que se anule, alto uso de la memoria causará un pobre desempeño del colector de basura, y un RSS alto (que no es típicamente liberado de vuelta al sistema, incluso después que la memoria ya no es requerida). Dado que los sockets TCP no pueden ser drenados si el peer remoto no lee los datos, escribir un socket que no se está vaciando puede llevar a vulnerabilidad explotable remota.
 
-Escribir datos mientras que el stream no está drenando es particularmente problemático para un [`Transform`][], porque los streams `Transform` son pausados de manera predeterminada hasta que se les realice pipe, o se añada `'data'`, o un manejador de eventos `'readable'`.
+Writing data while the stream is not draining is particularly problematic for a [`Transform`][], because the `Transform` streams are paused by default until they are piped or a `'data'` or `'readable'` event handler is added.
 
 Si los datos a ser escritos pueden ser generados o traídos cuando se requieren, es recomendado encapsular la lógica en un [`Readable`][] y usar [`stream.pipe()`][]. Sin embargo, si se prefiere llamar a `write()`, es posible respetar la contrapresión y evitar problemas de memoria usando el evento [`'drain'`][]:
 
@@ -435,7 +432,7 @@ function write(data, cb) {
 
 // Espera que se llame cb antes de escribir algo más.
 write('hello', () => {
-  console.log('write completed, do more writes now');
+  console.log('Write completed, do more writes now.');
 });
 ```
 
@@ -458,13 +455,13 @@ Ejemplos de streams `Readable` inlcuyen:
 
 Todos los streams [`Readable`][] implementan la interfaz definida por la clase `stream.Readable`.
 
-#### Dos modos
+#### Two Reading Modes
 
-Los streams `Readable` operan de forma efectiva en uno de dos modos: fluido y pausado.
+`Readable` streams effectively operate in one of two modes: flowing and paused. These modes are separate from [object mode](#stream_object_mode). A [`Readable`][] stream can be in object mode or not, regardless of whether it is in flowing mode or paused mode.
 
-Cuando sea el modo fluido, los datos son leídos del sistema subyacente automáticamente, y son proporcionados a una aplicación tan pronto como sea posible usando eventos a través de la interfaz [`EventEmitter`][].
+* In flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
 
-En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado para leer explícitamente fragmentos de datos del stream.
+* En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado para leer explícitamente fragmentos de datos del stream.
 
 Todos los streams [`Readable`][] comienzan en el modo pausado, pero pueden ser cambiados al modo fluido en una de las siguientes maneras:
 
@@ -479,9 +476,11 @@ El `Readable` puede ser cambiado de vuelta al modo pausado usando alguno de los 
 
 El concepto importante a recordar es que un `Readable` no va a generar datos hasta que sea proporcionado un mecanismo para ya sea consumir o ignorar los datos. Si el mecanismo de consumir los datos está deshabilitado o es quitado, el `Readable` va a *intentar* de dejar de generar los datos.
 
-Por razones de compatibilidad con versiones anteriores, quitar el manejador de eventos [`'data'`][], **no** va a pausar el stream automáticamente. También, si hay destinos que fueron pipe, entonces llamar a [`stream.pause()`](#stream_readable_pause) no va a garantizar que el stream va a *permanecer* pausado una vez que esos destinos se vacíen y pidan más datos.
+For backward compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. También, si hay destinos que fueron pipe, entonces llamar a [`stream.pause()`](#stream_readable_pause) no va a garantizar que el stream va a *permanecer* pausado una vez que esos destinos se vacíen y pidan más datos.
 
 Si un [`Readable`][] es cambiado al modo fluido y no hay consumidores disponibles para manejar los datos, los datos se perderán. Esto puede ocurrir, por ejemplo, cuando el método `readable.resume()` es llamado sin un listener adjunto al evento `'data'`, o cuando el manejador de evento `'data'` es eliminado del stream.
+
+Adding a [`'readable'`][] event handler automatically make the stream to stop flowing, and the data to be consumed via [`readable.read()`](#stream_readable_read_size). If the [`'readable'`] event handler is removed, then the stream will start flowing again if there is a [`'data'`][] event handler.
 
 #### Tres Estados
 
@@ -489,13 +488,13 @@ Los "dos modos" de operación para un stream `Readable` son una abstracción sim
 
 Específicamente, en cualquier momento dado, cada `Readable` está en uno de tres estados posibles:
 
-* `readable.readableFlowing = null`
-* `readable.readableFlowing = false`
-* `readable.readableFlowing = true`
+* `readable.readableFlowing === null`
+* `readable.readableFlowing === false`
+* `readable.readableFlowing === true`
 
-Cuando `readable.readableFlowing` es `null`, ningún mecanismo para consumir los datos de los streams es proporcionado, entonces el stream no generará sus datos. Mientras se esté en este estado, adjuntar un listener para el evento `'data'`, llamar el método `readable.pipe()`, o llamar el método `readable.resume()`, cambiará `readable.readableFlowing` a `true`, causando que el `Readable` comience a emitir eventos activamente mientras los datos sean generados.
+When `readable.readableFlowing` is `null`, no mechanism for consuming the stream's data is provided. Therefore, the stream will not generate data. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable.readableFlowing` to `true`, causing the `Readable` to begin actively emitting events as data is generated.
 
-Llamar a `readable.pause()`, `readable.unpipe()`, o recibir una "contrapresión" causará que el `readable.readableFlowing` sea establecido como `false`, interrumpiendo temporalmente el flujo de los eventos pero *no* interrumpiendo la generación de datos. Mientras en este estado, adjuntar un listener para el evento `'data'` no causará que `readable.readableFlowing` cambie a `true`.
+Calling `readable.pause()`, `readable.unpipe()`, or receiving backpressure will cause the `readable.readableFlowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event will not switch `readable.readableFlowing` to `true`.
 
 ```js
 const { PassThrough, Writable } = require('stream');
@@ -504,23 +503,22 @@ const writable = new Writable();
 
 pass.pipe(writable);
 pass.unpipe(writable);
-// readableFlowing ahora es false
+// readableFlowing is now false
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
-pass.write('ok'); // no va a emitir 'data'
-pass.resume(); // debe ser llamado para hacer que 'data' sea emitido
+pass.write('ok');  // will not emit 'data'
+pass.resume();     // must be called to make stream emit 'data'
 ```
 
-Mientras `readable.readableFlowing` es `false`, los datos pueden ser que se esten acumulando dentro del búfer interno de los streams.
+While `readable.readableFlowing` is `false`, data may be accumulating within the stream's internal buffer.
 
-#### Escoge uno
+#### Choose One API Style
 
-El API del stream `Readable` ha evolucionado a través de de múltiples versiones de Node.js y ha proporcionado múltiples métodos de consumir los datos del stream. En general, los desarrolladores deberían elegir *uno* de estos métodos de consumir datos y *nunca deberían* usar varios métodos de consumo de datos de un solo stream.
+El API del stream `Readable` ha evolucionado a través de de múltiples versiones de Node.js y ha proporcionado múltiples métodos de consumir los datos del stream. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream. Specifically, using a combination of `on('data')`, `on('readable')`, `pipe()`, or async iterators could lead to unintuitive behavior.
 
-Es recomendado el uso del método `readable.pipe()` para la mayoría de los usuarios, como ha sido implementado para proporcionar la manera más sencilla de consumo de datos del stream. Los desarrolladores que requieren un control más detallado sobre la transferencia y generación de datos pueden usar los APIS [`EventEmitter`][] y `readable.pause()`/`readable.resume()`.
+Es recomendado el uso del método `readable.pipe()` para la mayoría de los usuarios, como ha sido implementado para proporcionar la manera más sencilla de consumo de datos del stream. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.on('readable')`/`readable.read()` or the `readable.pause()`/`readable.resume()` APIs.
 
 #### Clase: stream.Readable
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -528,17 +526,20 @@ added: v0.9.4
 <!--type=class-->
 
 ##### Evento: 'close'
-
 <!-- YAML
 added: v0.9.4
+changes:
+  - version: v10.0.0
+    pr-url: https://github.com/nodejs/node/pull/18438
+    description: Add `emitClose` option to specify if `'close'` is emitted on
+                 destroy.
 -->
 
 El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) han sido cerrados. El evento indica que no se emitirán más eventos, y no se producirá ninguna computación adicional.
 
-No todos los streams [`Readable`][] emitirán el evento `'close'`.
+A [`Readable`][] stream will always emit the `'close'` event if it is created with the `emitClose` option.
 
 ##### Evento: 'data'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -559,7 +560,6 @@ readable.on('data', (chunk) => {
 ```
 
 ##### Evento: 'end'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -579,7 +579,6 @@ readable.on('end', () => {
 ```
 
 ##### Evento: 'error'
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -591,11 +590,9 @@ El evento `'error'` puede ser emitido por una implementación de `Readable` en c
 El callback del listener aprobará un solo objeto `Error`.
 
 ##### Evento: 'readable'
-
 <!-- YAML
 added: v0.9.4
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17979
     description: >
@@ -645,10 +642,9 @@ end
 
 En general, los mecanismos de eventos `readable.pipe()` y `'data'` son más sencillos de entender que el evento `'readable'`. Sin embargo, manejar `'readable'` podría resultar en un aumento del rendimiento.
 
-Si tanto `'readable'` y [`'data'`][] son usados al mismo tiempo, `'readable'` toma la prioridad de controlar el flujo, es decir, `'data'` será emitido solo cuando [`stream.read()`](#stream_readable_read_size) es llamado.
+If both `'readable'` and [`'data'`][] are used at the same time, `'readable'` takes precedence in controlling the flow, i.e. `'data'` will be emitted only when [`stream.read()`](#stream_readable_read_size) is called. The `readableFlowing` property would become `false`. If there are `'data'` listeners when `'readable'` is removed, the stream will start flowing, i.e. `'data'` events will be emitted without calling `.resume()`.
 
 ##### readable.destroy([error])
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -659,7 +655,6 @@ added: v8.0.0
 Destruye el stream, luego emite `'error'` y `'close'`. Después de esta llamada, el stream legible liberará cualquier recurso interno y las llamadas posteriores a `push()` serán ignoradas. Los implementadores no deberían sobreescribir este método, en su lugar implementar [`readable._destroy()`](#stream_readable_destroy_err_callback).
 
 ##### readable.isPaused()
-
 <!-- YAML
 added: v0.11.14
 -->
@@ -679,7 +674,6 @@ readable.isPaused(); // === false
 ```
 
 ##### readable.pause()
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -701,16 +695,17 @@ readable.on('data', (chunk) => {
 });
 ```
 
-##### readable.pipe(destination[, options])
+El método `readable.pause()` no tiene efecto si existe un listener de evento `'readable'`.
 
+##### readable.pipe(destination[, options])
 <!-- YAML
 added: v0.9.4
 -->
 
 * `destination` {stream.Writable} El destino para escribir datos
-* `opciones` {Object} Opciones pipe 
+* `options` {Object} Pipe options
   * `end` {boolean} Finaliza el escritor cuando el lector termina. **Predeterminado:** `true`.
-* Devuelve: {stream.Writable} haciendo posible preparar cadenas de piped streams
+* Returns: {stream.Writable} The *destination*, allowing for a chain of pipes if it is a [`Duplex`][] or a [`Transform`][] stream
 
 El método `readable.pipe()` adjunta un stream [`Writable`][] al `readable`, causando el cambio automático a modo fluido y empujando todos sus datos al [`Writable`][] adjunto. El flujo de datos será automáticamente manejado para que el stream `Writable` de destino no sea abrumado por un stream `Readable` más rápido.
 
@@ -723,7 +718,6 @@ const writable = fs.createWriteStream('file.txt');
 // Todos los datos del legible van a ''file.txt''
 readable.pipe(writable);
 ```
-
 Es posible adjuntar múltiples streams `Writable` en un solo stream `Readable`.
 
 El método `readable.pipe()` puede devolver una referencia al stream *destination*, haciendo posible establecer cadenas de streams piped:
@@ -736,7 +730,7 @@ const w = fs.createWriteStream('file.txt.gz');
 r.pipe(z).pipe(w);
 ```
 
-De manera predeterminada, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) es llamado en el stream `Writable` de destino cuando el stream `Readable` fuente emite [`'end'`][], para que el destino no sea más escribible. Para desactivar este comportamiento predeterminado, la opción `end` puede ser pasada como `false`, causando que el stream de destino permanezca abierto, como se ilustra en el siguiente ejemplo:
+De manera predeterminada, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) es llamado en el stream `Writable` de destino cuando el stream `Readable` fuente emite [`'end'`][], para que el destino no sea más escribible. To disable this default behavior, the `end` option can be passed as `false`, causing the destination stream to remain open:
 
 ```js
 reader.pipe(writer, { end: false });
@@ -750,13 +744,12 @@ Una advertencia importante es que si el stream `Readable` emite un error durante
 Los streams [`process.stderr`][] y [`process.stdout`][] `Writable` nunca son cerrados hasta que el proceso Node.js se cierra, independientemente de las opciones especificadas.
 
 ##### readable.read([size])
-
 <!-- YAML
 added: v0.9.4
 -->
 
 * `size` {number} Argumento opcional para especificar cuántos datos se van a leer.
-* Devuelve: {string|Buffer|null}
+* Devuelve: {string|Buffer|null|any}
 
 El método `readable.read()` sustrae algunos datos del búfer interno y los devuelve. Si no hay datos disponibles para leer, se devuelve `null`. De manera predeterminada, los datos se devolverán como un objeto `Buffer`, a menos de que una codificación haya sido especificada usando el método `readable.setEncoding()`, o que el stream esté operando en modo objeto.
 
@@ -764,7 +757,7 @@ El argumento `size` opcional especifica un número de bytes para leer. Si el `si
 
 Si el `size` del argumento no es especificado, todos los datos que están en el búfer interno serán devueltos.
 
-El método `readable.read()` solo debería ser llamado en los streams `Readable` operando en modo pausado. En modo fluido, `readable.read()` es llamado automáticamente hasta que el búfer interno es vaciado completamente.
+The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -776,38 +769,45 @@ readable.on('readable', () => {
 });
 ```
 
-Un stream `Readable` en modo objeto siempre devolverá un solo ítem de una llamada a [`readable.read(size)`](#stream_readable_read_size), sin importar el valor del argumento `size`.
+Note that the `while` loop is necessary when processing data with `readable.read()`. Only after `readable.read()` returns `null`, [`'readable'`]() will be emitted.
 
-Si el método `readable.read()` devuelve un fragmento de datos, un evento `'data'`también será emitido.
+A `Readable` stream in object mode will always return a single item from a call to [`readable.read(size)`](#stream_readable_read_size), regardless of the value of the `size` argument.
 
-Llamar a [`stream.read([size])`](#stream_readable_read_size) después del evento [`'end'`][] ha sido emitido devolverá `null`. No se levantará ningún error runtime.
+If the `readable.read()` method returns a chunk of data, a `'data'` event will also be emitted.
+
+Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][] event has been emitted will return `null`. No se levantará ningún error runtime.
+
+##### readable.readable
+<!-- YAML
+added: v0.8.0
+-->
+
+* {boolean}
+
+Is `true` if it is safe to call [`readable.read()`][].
 
 ##### readable.readableHighWaterMark
-
 <!-- YAML
 added: v9.3.0
 -->
 
-* Devuelve: {number}
+* {number}
 
-Devuelve el valor del `highWaterMark` pasado al construir este `Readable`.
+Returns the value of `highWaterMark` passed when constructing this `Readable`.
 
 ##### readable.readableLength
-
 <!-- YAML
 added: v9.4.0
 -->
 
-* Devielve: {number}
+* {number}
 
-Esta propiedad contiene el número de bytes (u objetos) en esta cola, listos para ser leídos. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
+This property contains the number of bytes (or objects) in the queue ready to be read. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
 
 ##### readable.resume()
-
 <!-- YAML
 added: v0.9.4
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18994
     description: The `resume()` has no effect if there is a `'readable'` event
@@ -816,9 +816,9 @@ changes:
 
 * Devuelve: {this}
 
-El método `readable.resume()` causa que un stream `Readable` explícitamente pausado se reanude la emisión de eventos [`'data'`][], cambiando el stream a modo fluido.
+The `readable.resume()` method causes an explicitly paused `Readable` stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
-El método `readable.resume()` puede ser usado para consumir completamente los datos de un stream sin procesar ningunos de esos datos como es ilustrado en el siguiente ejemplo:
+The `readable.resume()` method can be used to fully consume the data from a stream without actually processing any of that data:
 
 ```js
 getReadableStreamSomehow()
@@ -828,10 +828,9 @@ getReadableStreamSomehow()
   });
 ```
 
-El método `readable.resume()` no tiene efecto si existe un listener de evento `'readable'`.
+The `readable.resume()` method has no effect if there is a `'readable'` event listener.
 
 ##### readable.setEncoding(encoding)
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -839,23 +838,22 @@ added: v0.9.4
 * `encoding` {string} La codificación a usar.
 * Devuelve: {this}
 
-El método `readable.setEncoding()` establece la codificación de caracteres para los datos leídos del stream `Readable`.
+The `readable.setEncoding()` method sets the character encoding for data read from the `Readable` stream.
 
 De manera predeterminada, no se asigna ninguna codificación y los datos del stream se van a devolver como objetos `Buffer`. Establecer una codificación causa que los datos del stream sean devueltos como strings de la codificación especificada en vez de un objeto `Buffer`. Por ejemplo, llamar a `readable.setEncoding('utf8')` causará que la salida de datos sea interpretada como datos UTF.8, y sean pasados como strings. Llamar a `readable.setEncoding('hex')` causará que los datos sean codificados en un formato string hexadecimal.
 
-El stream `Readable` va a manejar correctamente caracteres multi-byte entregados a través del stream que de lo contrario no es decodificado de manera correcta si se extrae del stream como objetos `Buffer`.
+The `Readable` stream will properly handle multi-byte characters delivered through the stream that would otherwise become improperly decoded if simply pulled from the stream as `Buffer` objects.
 
 ```js
 const readable = getReadableStreamSomehow();
 readable.setEncoding('utf8');
 readable.on('data', (chunk) => {
   assert.equal(typeof chunk, 'string');
-  console.log('got %d characters of string data', chunk.length);
+  console.log('Got %d characters of string data:', chunk.length);
 });
 ```
 
 ##### readable.unpipe([destination])
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -863,7 +861,7 @@ added: v0.9.4
 * `destination` {stream.Writable} Stream específico opcional para no hacer pipe
 * Devuelve: {this}
 
-El método `readable.unpipe()` separa un stream `Writable` que fue adjuntado anteriormente usando el método [`stream.pipe()`][].
+The `readable.unpipe()` method detaches a `Writable` stream previously attached using the [`stream.pipe()`][] method.
 
 Si el `destination` no es especificado, entonces *todos* los pipes son separados.
 
@@ -873,23 +871,21 @@ Si el `destination` es especificado, pero no se configura ningún pipe para él.
 const fs = require('fs');
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// Todos los datos del legible van a ''file.txt'',
-// pero solo por el primer segundo
+// All the data from readable goes into 'file.txt',
+// but only for the first second
 readable.pipe(writable);
 setTimeout(() => {
-  console.log('Stop writing to file.txt');
+  console.log('Stop writing to file.txt.');
   readable.unpipe(writable);
-  console.log('Manually close the file stream');
+  console.log('Manually close the file stream.');
   writable.end();
 }, 1000);
 ```
 
 ##### readable.unshift(chunk)
-
 <!-- YAML
 added: v0.9.11
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -899,9 +895,9 @@ changes:
 
 El método `readable.unshift()` empuja un fragmento de datos de vuelta al búfer interno. Esto es útil en ciertas situaciones, cuando un stream está siendo consumido por código que necesita "no-consumir" alguna cantidad de datos que ha sido sacada de forma optimista de la fuente, para que los datos puedan ser pasados a otra parte.
 
-El método `stream.unshift(chunk)` no puede ser llamado después que el evento [`'end'`][] ha sido emitido, o se producirá un error runtime.
+The `stream.unshift(chunk)` method cannot be called after the [`'end'`][] event has been emitted or a runtime error will be thrown.
 
-Los desarrolladores que usan `stream.unshift()` a menudo deberían considerar a cambiar a usar el stream [`Transform`][] en su lugar. Vea la sección [API para los Implementadores de Stream](#stream_api_for_stream_implementers) para más información.
+Developers using `stream.unshift()` often should consider switching to use of a [`Transform`][] stream instead. Vea la sección [API para los Implementadores de Stream](#stream_api_for_stream_implementers) para más información.
 
 ```js
 // Sustrae un encabezado delimitado por \n\n
@@ -939,10 +935,9 @@ function parseHeader(stream, callback) {
 }
 ```
 
-A diferencia de [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` no va a terminar el proceso de lectura al resetear el estado de lectura interno del stream. Esto puede causar resultados inesperados si `readable.unshift()` es llamado durante una lectura (es decir desde una implementación [`stream._read()`](#stream_readable_read_size_1) en un stream personalizado). Siguiendo la llamada a `readable.unshift()` con un inmediato [`stream.push('')`](#stream_readable_push_chunk_encoding) va a restablecer el estado de la lectura de forma adecuada, sin embargo es mejor simplemente evitar llamar a `readable.unshift()` mientras en el proceso de realizar una lectura.
+Unlike [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` will not end the reading process by resetting the internal reading state of the stream. This can cause unexpected results if `readable.unshift()` is called during a read (i.e. from within a [`stream._read()`](#stream_readable_read_size_1) implementation on a custom stream). Following the call to `readable.unshift()` with an immediate [`stream.push('')`](#stream_readable_push_chunk_encoding) will reset the reading state appropriately, however it is best to simply avoid calling `readable.unshift()` while in the process of performing a read.
 
 ##### readable.wrap(stream)
-
 <!-- YAML
 added: v0.9.4
 -->
@@ -950,9 +945,9 @@ added: v0.9.4
 * `stream` {Stream} Un stream legible de "viejo estilo"
 * Devuelve: {this}
 
-Versiones anteriores de v0.10 de Node.js tenían streams que no implementaban la API del módulo `stream` como está definido actualmente. (Vea [Compatibility](#stream_compatibility_with_older_node_js_versions) para más información.)
+Prior to Node.js 0.10, streams did not implement the entire `stream` module API as it is currently defined. (See [Compatibility](#stream_compatibility_with_older_node_js_versions) for more information.)
 
-Cuando se use una librería de Node.js más vieja que emite eventos [`'data'`][] y tiene un método [`stream.pause()`](#stream_readable_pause) que solo es consultivo, el método `readable.wrap()` puede ser usado para crear un stream [`Readable`][] que usa el viejo stream y su fuente de datos.
+When using an older Node.js library that emits [`'data'`][] events and has a [`stream.pause()`](#stream_readable_pause) method that is advisory only, the `readable.wrap()` method can be used to create a [`Readable`][] stream that uses the old stream as its data source.
 
 Rara vez será necesario usar `readable.wrap()` pero el método ha sido proporcionado como una conveniencia para interactuar con aplicaciones y bibliotecas más viejas.
 
@@ -968,14 +963,13 @@ myReader.on('readable', () => {
 ```
 
 ##### readable\[Symbol.asyncIterator\]()
-
 <!-- YAML
 added: v10.0.0
 -->
 
 > Estabilidad: 1 - Experimental
 
-* Devuelve: {AsyncIterator} para consumir completamente el stream.
+* Returns: {AsyncIterator} to fully consume the stream.
 
 ```js
 const fs = require('fs');
@@ -992,16 +986,14 @@ async function print(readable) {
 print(fs.createReadStream('file')).catch(console.log);
 ```
 
-Si el bucle termina con un `break` o un `throw`, el stream será destruido. En otros términos, iterar sobre una secuencia consumirá completamente el stream. El stream será leído en fragmentos de igual tamaño a la opción `highWaterMark`. En el ejemplo de código anterior, los datos van a estar en un solo fragmento si el archivo tiene menos que 64kb de datos porque no se proporciona ninguna opción `highWaterMark` a [`fs.createReadStream()`][].
+If the loop terminates with a `break` or a `throw`, the stream will be destroyed. In other terms, iterating over a stream will consume the stream fully. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
 
 ### Streams Duplex y de Transformación
 
 #### Clase: stream.Duplex
-
 <!-- YAML
 added: v0.9.4
 changes:
-
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8834
     description: Instances of `Duplex` now return `true` when
@@ -1010,47 +1002,45 @@ changes:
 
 <!--type=class-->
 
-Los streams dúplex son streams que implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
+Duplex streams are streams that implement both the [`Readable`][] and [`Writable`][] interfaces.
 
-Ejemplos de un stream `Duplex` incluyen:
+Examples of `Duplex` streams include:
 
 * [sockets TCP](net.html#net_class_net_socket)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 
 #### Clase: stream.Transform
-
 <!-- YAML
 added: v0.9.4
 -->
 
 <!--type=class-->
 
-Los streams de transformación son streams [`Duplex`][] donde la salida es de alguna manera relacionada con la entrada. Como todos los streams [`Duplex`][], los streams `Transform` implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
+Transform streams are [`Duplex`][] streams where the output is in some way related to the input. Like all [`Duplex`][] streams, `Transform` streams implement both the [`Readable`][] and [`Writable`][] interfaces.
 
-Ejemplos de streams `Transform` incluyen:
+Examples of `Transform` streams include:
 
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 
 ##### transform.destroy([error])
-
 <!-- YAML
 added: v8.0.0
 -->
+* `error` {Error}
 
-Destruye el stream, luego emite `'error'`. Después de esta llamada, el stream de transformación liberaría cualquier recurso interno. los implementadores no deberían sobreescribir este método, en su lugar implementa [`readable._destroy()`](#stream_readable_destroy_err_callback). La implementación predeterminada de `_destroy()` para `Transform` también emite `'close'`.
+Destruye el stream, luego emite `'error'`. Después de esta llamada, el stream de transformación liberaría cualquier recurso interno. Los implementadores no deberían sobreescribir este método, en su lugar implementar [`readable._destroy()`](#stream_readable_destroy_err_callback). The default implementation of `_destroy()` for `Transform` also emit `'close'`.
 
 ### stream.finished(stream, callback)
-
 <!-- YAML
 added: v10.0.0
 -->
 
-* `stream` {Stream} Un stream legible y/o escribible.
+* `stream` {Stream} A readable and/or writable stream.
 * `callback` {Function} Una función callback que toma un argumento error opcional.
 
-Una función para ser notificado cuando un stream ya no es legible, escribible, ha experimentado un evento error o un evento de cierre prematuro.
+A function to get notified when a stream is no longer readable, writable or has experienced an error or a premature close event.
 
 ```js
 const { finished } = require('stream');
@@ -1059,18 +1049,18 @@ const rs = fs.createReadStream('archive.tar');
 
 finished(rs, (err) => {
   if (err) {
-    console.error('Stream failed', err);
+    console.error('Stream failed.', err);
   } else {
-    console.log('Stream is done reading');
+    console.log('Stream is done reading.');
   }
 });
 
 rs.resume(); // drain the stream
 ```
 
-Especialmente útil en escenarios de manejo de error donde un stream es destruido y prematuramente cerrado (como una solicitud HTTP abortada), y no emitirá `'end'` o `'finish'`.
+Especially useful in error handling scenarios where a stream is destroyed prematurely (like an aborted HTTP request), and will not emit `'end'` or `'finish'`.
 
-El API `finished` también es promisify'able;
+The `finished` API is promisify-able as well;
 
 ```js
 const finished = util.promisify(stream.finished);
@@ -1079,7 +1069,7 @@ const rs = fs.createReadStream('archive.tar');
 
 async function run() {
   await finished(rs);
-  console.log('Stream is done reading');
+  console.log('Stream is done reading.');
 }
 
 run().catch(console.error);
@@ -1087,15 +1077,14 @@ rs.resume(); // drain the stream
 ```
 
 ### stream.pipeline(...streams[, callback])
-
 <!-- YAML
 added: v10.0.0
 -->
 
-* `...streams` {Stream} Dos o más streams para hacer pipe de por medio.
+* `...streams` {Stream} Two or more streams to pipe between.
 * `callback` {Function} Una función callback que toma un argumento error opcional.
 
-Un método módulo para hacer pipe entre streams reenviando errores y limpiando correctamente y proporcionando un callback cuando el pipeline es completado.
+A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
 ```js
 const { pipeline } = require('stream');
@@ -1105,7 +1094,7 @@ const zlib = require('zlib');
 // Usa el API pipeline para hacer fácilmente pipe a una serie de streams 
 // juntos y ser notificado cuando el pipeline sea completado.
 
-// Un pipeline para hacer gzip eficientemente a un archivo tar potencialmente gigantesco :
+// A pipeline to gzip a potentially huge tar file efficiently:
 
 pipeline(
   fs.createReadStream('archive.tar'),
@@ -1113,15 +1102,15 @@ pipeline(
   fs.createWriteStream('archive.tar.gz'),
   (err) => {
     if (err) {
-      console.error('Pipeline failed', err);
+      console.error('Pipeline failed.', err);
     } else {
-      console.log('Pipeline succeeded');
+      console.log('Pipeline succeeded.');
     }
   }
 );
 ```
 
-El API `pipeline` también es promisify'able:
+The `pipeline` API is promisify-able as well:
 
 ```js
 const pipeline = util.promisify(stream.pipeline);
@@ -1132,7 +1121,7 @@ async function run() {
     zlib.createGzip(),
     fs.createWriteStream('archive.tar.gz')
   );
-  console.log('Pipeline succeeded');
+  console.log('Pipeline succeeded.');
 }
 
 run().catch(console.error);
@@ -1145,7 +1134,6 @@ run().catch(console.error);
 El API del módulo `stream` ha sido diseñado para hacer posible implementar fácilmente streams usando el modelo prototipo heredado de JavaScript.
 
 Primero, un desarrollador de stream declararía una nueva clase JavaScript que extiende una de las 4 clases de stream básicas (`stream.Writable`, `stream.Readable`, `stream.Duplex`, o `stream.Transform`), asegurándose que llamen el constructor de clase primaria apropiado:
-
 ```js
 const { Writable } = require('stream');
 
@@ -1159,87 +1147,18 @@ class MyWritable extends Writable {
 
 La nueva clase stream entonces debe implementar una o métodos más específicos, dependiendo del tipo de stream siendo creado, como es detallado en el siguiente gráfico:
 
-<table>
-  <thead>
-    <tr>
-      <th>
-        <p>Casos de uso</p>
-      </th>
-      <th>
-        <p>Clase</p>
-      </th>
-      <th>
-        <p>Método(s) a implementar</p>
-      </th>
-    </tr>
-  </thead>
-  <tr>
-    <td>
-      <p>Solo lectura</p>
-    </td>
-    <td>
-      <p>[`Readable`](#stream_class_stream_readable)</p>
-    </td>
-    <td>
-      <p><code>[_read][stream-_read]</code></p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p>Solo escritura</p>
-    </td>
-    <td>
-      <p>[`Writable`](#stream_class_stream_writable)</p>
-    </td>
-    <td>
-      <p>
-        <code>[_write][stream-_write]</code>,
-        <code>[_writev][stream-_writev]</code>,
-        <code>[_final][stream-_final]</code>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p>Lectura y escritura</p>
-    </td>
-    <td>
-      <p>[`Duplex`](#stream_class_stream_duplex)</p>
-    </td>
-    <td>
-      <p>
-        <code>[_read][stream-_read]</code>,
-        <code>[_write][stream-_write]</code>,
-        <code>[_writev][stream-_writev]</code>,
-        <code>[_final][stream-_final]</code></p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p>Opera en datos escritos, luego lee el resultado</p>
-    </td>
-    <td>
-      <p>[`Transform`](#stream_class_stream_transform)</p>
-    </td>
-    <td>
-      <p>
-        <code>[_transform][stream-_transform]</code>,
-        <code>[_flush][stream-_flush]</code>,
-        <code>[_final][stream-_final]</code>
-      </p>
-    </td>
-  </tr>
-</table>
+| Casos de uso                                    | Clase         | Método(s) a implementar                                                                                 |
+| ----------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| Solo lectura                                    | [`Readable`]  | <code>[_read][stream-_read]</code>                                                                               |
+| Solo escritura                                  | [`Writable`]  | <code>[_write][stream-_write]</code>, <code>[_writev][stream-_writev]</code>, <code>[_final][stream-_final]</code>                           |
+| Lectura y escritura                             | [`Duplex`]    | <code>[_read][stream-_read]</code>, <code>[_write][stream-_write]</code>, <code>[_writev][stream-_writev]</code>, <code>[_final][stream-_final]</code> |
+| Opera en datos escritos, luego lee el resultado | [`Transform`] | <code>[_transform][stream-_transform]</code>, <code>[_flush][stream-_flush]</code>, <code>[_final][stream-_final]</code>                          |
 
-El código de implementación para un stream *nunca* debería llamar los métodos "públicos" de un stream que son destinados a ser utilizados por consumidores (tal como se describe en la sección [Api para Consumidores de Stream](#stream_api_for_stream_consumers)). Hacerlo puede provocar efectos secundarios en el código de la aplicación consumiendo el stream.
+The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). Doing so may lead to adverse side effects in application code consuming the stream.
 
-### Construcción Simplificada
-
-<!-- YAML
+### Construcción Simplificada<!-- YAML
 added: v1.2.0
--->
-
-Para muchos casos simples, es imposible construir un stream sin depender de la herencia. Esto puede ser logrado al crear instancias directamente de los objetos `stream.Writable`, `stream.Readable`, `stream.Duplex` o `stream.Transform` y pasar métodos apropiados como opciones de constructor.
+-->Para muchos casos simples, es imposible construir un stream sin depender de la herencia. Esto puede ser logrado al crear instancias directamente de los objetos `stream.Writable`, `stream.Readable`, `stream.Duplex` o `stream.Transform` y pasar métodos apropiados como opciones de constructor.
 
 ```js
 const { Writable } = require('stream');
@@ -1253,31 +1172,32 @@ const myWritable = new Writable({
 
 ### Implementando un Stream Writable
 
-La clase `stream.Writable` es extendida para implementar un stream [`Writable`][].
+The `stream.Writable` class is extended to implement a [`Writable`][] stream.
 
-Streams `Writable` personalizados *deben* llamar el constructor `new stream.Writable([options])` e implementar el método `writable._write()`. El método `writable._writev()` también *pudiera* ser implementado.
+Custom `Writable` streams *must* call the `new stream.Writable([options])` constructor and implement the `writable._write()` method. The `writable._writev()` method *may* also be implemented.
 
-#### Constructor: new stream.Writable([options])
-
-<!-- YAML
+#### Constructor: new stream.Writable([options])<!-- YAML
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18438
     description: >
       Add `emitClose` option to specify if `'close'` is emitted on destroy
--->
-
-* `opciones` {Object} 
+  - version: v10.16.0
+    pr-url: https://github.com/nodejs/node/pull/22795
+    description: >
+      Add `autoDestroy` option to automatically `destroy()` the stream
+      when it emits `'finish'` or errors
+-->* `opciones` {Object}
   * `highWaterMark` {number} Nivel del búfer cuando [`stream.write()`](#stream_writable_write_chunk_encoding_callback) empieza a devolver `false`. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
-  * `decodeStrings` {boolean} Si codificar o no los strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
+  * `decodeStrings` {boolean} Whether to encode `string`s passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback) to `Buffer`s (with the encoding specified in the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) call) before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). Other types of data are not converted (i.e. `Buffer`s are not decoded into `string`s). Setting to false will prevent `string`s from being converted.  **Predeterminado:** `true`.
+  * `defaultEncoding` {string} The default encoding that is used when no encoding is specified as an argument to [`stream.write()`](#stream_writable_write_chunk_encoding_callback). **Predeterminado:** `'utf8'`.
   * `objectMode` {boolean} Ya sea [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) una operación válida o no. Cuando es establecido, se hace posible escribir otros valores de JavaScript aparte de string, `Buffer` o `Uint8Array` si lo soporta la implementación del stream. **Predeterminado:** `false`.
-  * `emitClose` {boolean} Si el stream debería emitir `'close'` después que ha sido destruido, o no. **Predeterminado:** `true`.
+  * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Predeterminado:** `true`.
   * `write` {Function} Implementación para el método [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1).
   * `writev` {Function} Implementación para el método [`stream._writev()`](#stream_writable_writev_chunks_callback).
   * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_writable_destroy_err_callback).
   * `final` {Function} Implementación para el método [`stream._final()`](#stream_writable_final_callback).
-
+  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **Predeterminado:** `false`.
 ```js
 const { Writable } = require('stream');
 
@@ -1304,7 +1224,7 @@ function MyWritable(options) {
 util.inherits(MyWritable, Writable);
 ```
 
-O se use el enfoque del Constructor Simplificado:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Writable } = require('stream');
@@ -1321,63 +1241,55 @@ const myWritable = new Writable({
 
 #### writable.\_write(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} El fragmento a ser escrito. **Siempre** será un búfer a menos que la opción `decodeStrings` fue establecida como `false` o que el stream está operando en modo objeto.
+* `chunk` {Buffer|string|any} The `Buffer` to be written, converted from the `string` passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback). If the stream's `decodeStrings` option is `false` or the stream is operating in object mode, the chunk will not be converted & will be whatever was passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback).
 * `encoding` {string} Si el fragmento es un string, entonces `encoding` es el codificador de carácter de ese string. Si el fragmento es un `Buffer`, o si el stream está operando en modo objeto, `encoding` pudiera ser ignorado.
 * `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando el procesamiento es completado para el fragmento suministrado.
 
-Todas las implementaciones de stream `Writable` deben proporcionar un método [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) para enviar datos al recurso subyacente.
+All `Writable` stream implementations must provide a [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) method to send data to the underlying resource.
 
-Los streams [`Transform`][] proporcionan su propia implementación de [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1).
+[`Transform`][] streams provide their own implementation of the [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1).
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
+This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
 
 El método `callback` debe ser llamado para señalar que la escritura se terminó con éxito o falló con un error. El primer argumento pasado al `callback` debe ser el objeto `Error` si la llamada falla, o `null` si la escritura tuvo éxito.
 
 Todas las llamadas a `writable.write()` que ocurren en el tiempo que `writable._write()` es llamado y el `callback` es llamado causará que los datos escritos sean almacenados en el búfer. Cuando el `callback` es invocado, el stream pudiera emitir un evento [`'drain'`][]. Si una implementación de stream es capaz de procesar múltiples fragmentos de datas al mismo tiempo, el método `writable._writev()` debería ser implementado.
 
-Si la propiedad `decodeStrings` es establecida explícitamente a `false` en las opciones del constructor, entonces `chunk` permanecerá como el mismo objeto que es pasado a `.write()`, y pudiera ser un string en vez de un `Buffer`. Esto es para soportar implementaciones que tienen un manejador optimizado para ciertas codificaciones de datos string. En ese caso, el argumento `encoding`, va a indicar la codificación de caracteres del string. De otra manera, el argumento `encoding` puede ser ignorado con seguridad.
+If the `decodeStrings` property is explicitly set to `false` in the constructor options, then `chunk` will remain the same object that is passed to `.write()`, and may be a string rather than a `Buffer`. This is to support implementations that have an optimized handling for certain string data encodings. In that case, the `encoding` argument will indicate the character encoding of the string. Otherwise, the `encoding` argument can be safely ignored.
 
 El método `writable._write()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### writable.\_writev(chunks, callback)
 
-* `chunks` {Object[]} Los fragmentos a ser escritos. Cada fragmento tiene el siguiente formato: `{ chunk: ..., encoding: ... }`.
+* `chunks` {Object[]} The chunks to be written. Cada fragmento tiene el siguiente formato: `{ chunk: ..., encoding: ... }`.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error) para ser invocada cuando el procesamiento de los fragmentos suministrados es completado.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
+This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
 
 El método `writable._writev()` puede ser implementado en conjunto con `writable._write()` en las implementaciones del steam que son capaces de procesar al mismo tiempo múltiples fragmentos de datos. Si es implementado, el método será llamado con todos los fragmentos de datos que están siendo almacenados en la cola de escritura.
 
 El método `writable._writev()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
-#### writable.\_destroy(err, callback)
-
-<!-- YAML
+#### writable.\_destroy(err, callback)<!-- YAML
 added: v8.0.0
--->
-
-* `err` {Error} Un posible error.
+-->* `err` {Error} Un posible error.
 * `callback` {Function} Una función callback que toma un argumento error opcional.
 
 El método `_destroy()` es llamado por [`writable.destroy()`](#stream_writable_destroy_error). Puede ser sobrescrito por clases secundarias pero **no debe** ser llamado directamente.
 
-#### writable.\_final(callback)
-
-<!-- YAML
+#### writable.\_final(callback)<!-- YAML
 added: v8.0.0
--->
+-->* `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando terminó de escribir los datos restantes.
 
-* `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando terminó de escribir los datos restantes.
+El método `_final()` **no debe** ser llamado directamente. It may be implemented by child classes, and if so, will be called by the internal `Writable` class methods only.
 
-El método `_final()` **no debe** ser llamado directamente. Puede ser implementado por clases secundarias, y si se hace, será llamado solamente por métodos de clase `Writable` internos.
-
-Esta función opcional será llamada antes de que el stream cierre, demorando el evento `'finish'` hasta que `callback` es llamado. Esto es útil para cerrar recursos o escribir datos almacenados antes de que un stream termine.
+This optional function will be called before the stream closes, delaying the `'finish'` event until `callback` is called. Esto es útil para cerrar recursos o escribir datos almacenados antes de que un stream termine.
 
 #### Errores al Escribir
 
-Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Arrojar un `Error` desde dentro del `writable._write()` puede resultar en un comportamiento inesperado e inconsistente dependiendo de cómo se está usando el stream. Usar la callback asegura el manejo de errores consistente y predecible.
+Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. This will cause an `'error'` event to be emitted by the `Writable`. Throwing an `Error` from within `writable._write()` can result in unexpected and inconsistent behavior depending on how the stream is being used. Usar la callback asegura el manejo de errores consistente y predecible.
 
-Si un stream `Readable` hace pipe en un stream `Writable` cuando `Writable` emite un error, no se le hará pipe al stream `Readable`.
+If a `Readable` stream pipes into a `Writable` stream when `Writable` emits an error, the `Readable` stream will be unpiped.
 
 ```js
 const { Writable } = require('stream');
@@ -1395,17 +1307,12 @@ const myWritable = new Writable({
 
 #### Un Stream Escribible de Ejemplo
 
-Lo siguiente muestra una implementación de stream `Writable` personalizada algo simplista (y un poco inútil). Mientras esta instancia de stream `Writable` específica no es de ninguna utilidad real, el ejemplo ilustra cada uno de los elementos requeridos de una instancia de stream [`Writable`][] personalizada:
+The following illustrates a rather simplistic (and somewhat pointless) custom `Writable` stream implementation. While this specific `Writable` stream instance is not of any real particular usefulness, the example illustrates each of the required elements of a custom [`Writable`][] stream instance:
 
 ```js
 const { Writable } = require('stream');
 
 class MyWritable extends Writable {
-  constructor(options) {
-    super(options);
-    // ...
-  }
-
   _write(chunk, encoding, callback) {
     if (chunk.toString().indexOf('a') >= 0) {
       callback(new Error('chunk is invalid'));
@@ -1418,7 +1325,7 @@ class MyWritable extends Writable {
 
 #### Decodificación de Búferes en un Stream Escribible
 
-La decodificación de búferes es una tarea común, por ejemplo, cuando se use tranformadores cuya entrada es un string. No es un proceso trivial cuando se use codificación de caracteres multi-byte, tal como UTF-8. El siguiente ejemplo muestra cómo decodificar strings multi-byte usando `StringDecoder` y [`Writable`][].
+La decodificación de búferes es una tarea común, por ejemplo, cuando se use tranformadores cuya entrada es un string. No es un proceso trivial cuando se use codificación de caracteres multi-byte, tal como UTF-8. The following example shows how to decode multi-byte strings using `StringDecoder` and [`Writable`][].
 
 ```js
 const { Writable } = require('stream');
@@ -1455,19 +1362,24 @@ console.log(w.data); // currency: €
 
 ### Implementando un Stream Legible
 
-La clase `stream.Readable` es extendida para implementar un stream [`Readable`][].
+The `stream.Readable` class is extended to implement a [`Readable`][] stream.
 
-Streams `Readable` personalizados *deben* llamar el constructor `new stream.Readable([options])` e implementar el método `readable._read()`.
+Custom `Readable` streams *must* call the `new stream.Readable([options])` constructor and implement the `readable._read()` method.
 
-#### new stream.Readable([options])
-
-* `opciones` {Object} 
-  * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
+#### new stream.Readable([options])<!-- YAML
+changes:
+  - version: v10.16.0
+    pr-url: https://github.com/nodejs/node/pull/22795
+    description: >
+      Add `autoDestroy` option to automatically `destroy()` the stream
+      when it emits `'end'` or errors
+-->* `opciones` {Object}
+  * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
-  * `objectMode` {boolean} Si este stream debería comportarse como un stream de objetos, o no. Significa que [`stream.read(n)`](#stream_readable_read_size) devuelve un solo valor en vez de un `Buffer` de tamaño `n`. **Predeterminado:** `false`.
+  * `objectMode` {boolean} Si este stream debería comportarse como un stream de objetos, o no. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Predeterminado:** `false`.
   * `read` {Function} Implementación para el método [`stream._read()`](#stream_readable_read_size_1).
-  * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_readable_destroy_err_callback).
-
+  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
+  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **Predeterminado:** `false`.
 ```js
 const { Readable } = require('stream');
 
@@ -1480,7 +1392,7 @@ class MyReadable extends Readable {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES6:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Readable } = require('stream');
@@ -1494,7 +1406,7 @@ function MyReadable(options) {
 util.inherits(MyReadable, Readable);
 ```
 
-O se use el enfoque del Constructor Simplificado:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Readable } = require('stream');
@@ -1506,63 +1418,49 @@ const myReadable = new Readable({
 });
 ```
 
-#### readable.\_read(size)
-
-<!-- YAML
+#### readable.\_read(size)<!-- YAML
 added: v0.9.4
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17979
     description: call `_read()` only once per microtick
--->
+-->* `size` {number} Números de bytes para ser leídos asincrónicamente
 
-* `size` {number} Números de bytes para ser leídos asincrónicamente
+This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
-
-Todas las implementaciones de stream `Readable` deben proporcionar una implementación del método `readable._read()` para recoger datos del recurso subyacente.
+All `Readable` stream implementations must provide an implementation of the `readable._read()` method to fetch data from the underlying resource.
 
 Cuando `readable._read()` es llamado, si hay datos disponibles de la fuente, la implementación debería comenzar a enviar esos datos a dentro de la cola de lectura usando el método [`this.push(dataChunk)`](#stream_readable_push_chunk_encoding). `_read()` debería continuar leyendo del recurso y enviar datos hasta que `readable.push()` devuelva `false`. Solo cuando `_read()` es llamado otra vez después que se ha detenido debería continuar el envío de datos adicionales a la cola.
 
-Una vez que el método `readable._read()` ha sido llamado, no será llamado de nuevo hasta que el método [`readable.push()`](#stream_readable_push_chunk_encoding) sea llamado. `readable._read()` está garantizado a ser llamado una sola vez dentro de una ejecución sincrónica, es decir un microtick.
+Once the `readable._read()` method has been called, it will not be called again until the [`readable.push()`](#stream_readable_push_chunk_encoding) method is called. `readable._read()` is guaranteed to be called only once within a synchronous execution, i.e. a microtick.
 
 El argumento `size` es consultivo. Para implementaciones donde un "read" es una sola operación que devuelve datos, puede usar el argumento `size` para determinar cuántos datos recoger. Otras implementaciones pudieran ignorar este argumento y simplemente proporcionar los datos cuando estén disponibles. No hay que "esperar" hasta que los bytes de `size` estén disponibles antes de llamar a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
 
 El método `readable._read()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
-#### readable.\_destroy(err, callback)
-
-<!-- YAML
+#### readable.\_destroy(err, callback)<!-- YAML
 added: v8.0.0
--->
-
-* `err` {Error} Un posible error.
-* `callback` {Function} Una función callback que toma un argumento error adicional.
+-->* `err` {Error} Un posible error.
+* `callback` {Function} Una función callback que toma un argumento error opcional.
 
 El método `_destroy()` es llamado por [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobrescrito por clases secundarias pero **no debe** ser llamado directamente.
 
-#### readable.push(chunk[, encoding])
-
-<!-- YAML
+#### readable.push(chunk[, encoding])<!-- YAML
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
--->
-
-* `chunk` {Buffer|Uint8Array|string|null|any} Fragmento de datos a ser empujados en la cola de lectura. Para los streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor JavaScript.
-* `encoding` {string} Codificación de los fragmentos string. Debe ser una codificación `Buffer`, tales como `'utf8'` o `'ascii'`.
-* Devuelve: {boolean} `true` si fragmentos de datos adicionales pueden seguir siendo empujados; de otra manera `false`.
+-->* `chunk` {Buffer|Uint8Array|string|null|any} Fragmento de datos a ser empujados en la cola de lectura. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor JavaScript.
+* `encoding` {string} Codificación de los fragmentos string. Must be a valid `Buffer` encoding, such as `'utf8'` or `'ascii'`.
+* Returns: {boolean} `true` if additional chunks of data may continue to be pushed; `false` otherwise.
 
 Cuando `chunk` es un `Buffer`, `Uint8Array` o un `string`, el `chunk` de datos será añadido a la cola interna para los usuarios del stream a consumir. Pasar `chunk` como `null` señala el final del stream (EOF), después que no se pueden escribir más datos.
 
-Cuando el `Readable` opera en modo pausado, los datos añadidos con `readable.push()` pueden ser leídos llamando el método [`readable.read()`](#stream_readable_read_size) cuando el evento [`'readable'`][] es emitido.
+When the `Readable` is operating in paused mode, the data added with `readable.push()` can be read out by calling the [`readable.read()`](#stream_readable_read_size) method when the [`'readable'`][] event is emitted.
 
-Cuando `Readable` está operando en modo fluido, los datos añadidos con `readable.push()`serán entregados al emitir un evento `'data'`.
+When the `Readable` is operating in flowing mode, the data added with `readable.push()` will be delivered by emitting a `'data'` event.
 
-El método `readable.push()` está diseñado para ser tan flexible como sea posible. Por ejemplo, cuando se envuelve una fuente de bajo-nivel que proporciona alguna forma de mecanismo de pausar/resumir, y una callback de datos, la fuente de bajo-nivel puede ser envuelta por la instancia `Readable` personalizada como se muestra en el siguiente ejemplo:
+El método `readable.push()` está diseñado para ser tan flexible como sea posible. For example, when wrapping a lower-level source that provides some form of pause/resume mechanism, and a data callback, the low-level source can be wrapped by the custom `Readable` instance:
 
 ```js
 // la fuente es un objeto con métodos readStop() y readStart(),
@@ -1595,16 +1493,13 @@ class SourceWrapper extends Readable {
 }
 ```
 
-El método `readable.push()` está previsto ser llamado solo por implementadores `Readable`, y solo desde dentro del método `readable._read()`.
+The `readable.push()` method is intended be called only by `Readable` implementers, and only from within the `readable._read()` method.
 
 Para streams que no estén operando en modo objeto, si el parámetro `chunk` de `readable.push()` es `undefined`, será tratado como un string vacío o un búfer. Vea [`readable.push('')`][] para más información.
 
 #### Errores al Escribir
 
-Es recomendado que los errores que ocurran durante el procesamiento del método `readable._read()` sean emitidos usando el evento `'error'` en vez de ser arrojados. Arrojar un `Error` desde dentro del `readable._read()` puede resultar en un comportamiento inesperado e inconsistente dependiendo si el stream está operando en modo fluido o modo pausado. Usar el evento `'error'` asegura el manejo de errores consistente y predecible.
-
-<!-- eslint-disable no-useless-return -->
-
+Es recomendado que los errores que ocurran durante el procesamiento del método `readable._read()` sean emitidos usando el evento `'error'` en vez de ser arrojados. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Usar el evento `'error'` asegura el manejo de errores consistente y predecible.
 ```js
 const { Readable } = require('stream');
 
@@ -1619,11 +1514,7 @@ const myReadable = new Readable({
 });
 ```
 
-#### Un Ejemplo de Conteo de Stream
-
-<!--type=example-->
-
-El siguiente es un ejemplo básico de un stream `Readable` que emite los numerales de 1 a 1,000,000 en orden ascendente y luego termina.
+#### Un Ejemplo de Conteo de Stream<!--type=example-->The following is a basic example of a `Readable` stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
 
 ```js
 const { Readable } = require('stream');
@@ -1650,32 +1541,26 @@ class Counter extends Readable {
 
 ### Implementando un Stream Dúplex
 
-Un stream [`Duplex`][] es uno que implementa tanto [`Readable`][] como [`Writable`][], como una conexión de socket TCP.
+A [`Duplex`][] stream is one that implements both [`Readable`][] and [`Writable`][], such as a TCP socket connection.
 
-Porque JavaScript no tiene soporte para múltiples herencias, la clase `stream.Duplex` es extendida para implementar un stream [`Duplex`][] (a diferencia de extender las clases `stream.Readable` *y* `stream.Writable`).
+Because JavaScript does not have support for multiple inheritance, the `stream.Duplex` class is extended to implement a [`Duplex`][] stream (as opposed to extending the `stream.Readable` *and* `stream.Writable` classes).
 
-La clase `stream.Duplex` hereda prototípicamente de `stream.Readable` y parasitariamente de `stream.Writable`, pero `instanceof` va a funcionar de forma correcta para las ambas clases de base, debido a la anulación de [`Symbol.hasInstance`][] en `stream.Writable`.
+The `stream.Duplex` class prototypically inherits from `stream.Readable` and parasitically from `stream.Writable`, but `instanceof` will work properly for both base classes due to overriding [`Symbol.hasInstance`][] on `stream.Writable`.
 
-Streams `Duplex` personalizados *deben* llamar el constructor `new stream.Duplex([options])` e implementar *ambos* métodos `readable._read()` y `writable._write()`.
+Custom `Duplex` streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
 
-#### new stream.Duplex(options)
-
-<!-- YAML
+#### new stream.Duplex(options)<!-- YAML
 changes:
-
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14636
     description: The `readableHighWaterMark` and `writableHighWaterMark` options
                  are supported now.
--->
-
-* `opciones` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
+-->* `options` {Object} Passed to both `Writable` and `Readable` constructors. También tiene los siguientes campos:
   * `allowHalfOpen` {boolean} Si se establece como `false`, entonces el stream va a terminar el lado escribible automáticamente cuando el lado legible termine. **Predeterminado:** `true`.
   * `readableObjectMode` {boolean} Establece `objectMode` para el lado legible del stream. No tiene efecto si `objectMode` es `true`. **Predeterminado:** `false`.
   * `writableObjectMode` {boolean} Establece `objectMode` para el lado escribible del stream. No tiene efecto si `objectMode` es `true`. **Predeterminado:** `false`.
   * `readableHighWaterMark` {number} Establece `highWaterMark` para el lado legible del stream. No tiene efecto si se proporciona `highWaterMark`.
   * `writableHighWaterMark` {number} Establece `highWaterMark` para el lado escribible del stream. No tiene efecto si se proporciona `highWaterMark`.
-
 ```js
 const { Duplex } = require('stream');
 
@@ -1718,7 +1603,7 @@ const myDuplex = new Duplex({
 
 #### Un Ejemplo de Stream Dúplex
 
-Lo siguiente muestra un ejemplo simple de un stream `Duplex` que envuelve un objeto fuente de bajo-nivel hipotético donde se pueden escribir datos, y de donde esos datos pueden ser leídos, aunque usando un API que no es compatible con streams Node.js. Lo siguiente muestra un ejemplo simple de un stream `Duplex` que almacena datos ya escritos entrantes vía la interfaz [`Writable`][], que se vuelve a leer vía la interfaz [`Readable`][].
+The following illustrates a simple example of a `Duplex` stream that wraps a hypothetical lower-level source object to which data can be written, and from which data can be read, albeit using an API that is not compatible with Node.js streams. The following illustrates a simple example of a `Duplex` stream that buffers incoming written data via the [`Writable`][] interface that is read back out via the [`Readable`][] interface.
 
 ```js
 const { Duplex } = require('stream');
@@ -1746,13 +1631,13 @@ class MyDuplex extends Duplex {
 }
 ```
 
-El aspecto más importante de un stream `Duplex` es que los lados `Readable` y `Writable` operan independientemente uno del otro, a pesar de coexistir dentro de una sola instancia objeto.
+The most important aspect of a `Duplex` stream is that the `Readable` and `Writable` sides operate independently of one another despite co-existing within a single object instance.
 
 #### Modo Objeto de Streams Dúplex
 
-Para los streams `Duplex`, el `objectMode` puede ser establecido exclusivamente para cualquiera de los dos lados `Readable` o `Writable` usando las opciones `readableObjectMode` y `writableObjectMode`, respectivamente.
+For `Duplex` streams, `objectMode` can be set exclusively for either the `Readable` or `Writable` side using the `readableObjectMode` and `writableObjectMode` options respectively.
 
-Por ejemplo, en el siguiente ejemplar, un nuevo stream `Transform` (que es un tipo de stream [`Duplex`][]) es creado que tiene un lado `Writable` en modo objeto que acepta números JavaScript que son convertidos en strings hexadecimales en el lado `Readable`.
+In the following example, for instance, a new `Transform` stream (which is a type of [`Duplex`][] stream) is created that has an object mode `Writable` side that accepts JavaScript numbers that are converted to hexadecimal strings on the `Readable` side.
 
 ```js
 const { Transform } = require('stream');
@@ -1786,22 +1671,21 @@ myTransform.write(100);
 
 ### Implementando un Stream de Transformación
 
-Un stream [`Transform`][] es un stream [`Duplex`][] donde la salida es computada de alguna manera desde la entrada. Los ejemplos incluyen streams [zlib](zlib.html) o streams [crypto](crypto.html) que comprimen, encriptan o descifran los datos.
+A [`Transform`][] stream is a [`Duplex`][] stream where the output is computed in some way from the input. Los ejemplos incluyen streams [zlib](zlib.html) o streams [crypto](crypto.html) que comprimen, encriptan o descifran los datos.
 
-No es requerido que la salida sea del mismo tamaño que la entrada, del mismo número de fragmentos, o que lleguen al mismo tiempo. Por ejemplo, un stream `Hash` solo tendrá un solo fragmento de salida, que es proporcionado cuando la entrada ha terminado. Un stream `zlib` producirá una salida que, o es mucho más pequeña o mucho más grande que su entrada.
+There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. For example, a `Hash` stream will only ever have a single chunk of output which is provided when the input is ended. A `zlib` stream will produce output that is either much smaller or much larger than its input.
 
-La clase `stream.Transform` es extendida para implementar un stream [`Transform`][].
+The `stream.Transform` class is extended to implement a [`Transform`][] stream.
 
-La clase `stream.Transform` hereda prototípicamente de `stream.Duplex` e implementa su propia versión de los métodos `writable._write()` y `readable._read()`. Implementaciones `Transform` personalizadas*deben* implementar el método [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) y también *pudieran* implementar el método [`transform._flush()`](#stream_transform_flush_callback).
+La clase `stream.Transform` hereda prototípicamente de `stream.Duplex` e implementa su propia versión de los métodos `writable._write()` y `readable._read()`. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
 
-Debe tenerse cuidado cuando se usen los streams `Transform` en esos datos escritos al stream, pueden causar que el lado `Writable` del stream se convierta en pausado si la salida en el lado `Readable` no es consumida.
+Care must be taken when using `Transform` streams in that data written to the stream can cause the `Writable` side of the stream to become paused if the output on the `Readable` side is not consumed.
 
 #### new stream.Transform([options])
 
-* `opciones` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
+* `options` {Object} Passed to both `Writable` and `Readable` constructors. También tiene los siguientes campos:
   * `transform` {Function} Implementación para el método [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
   * `flush` {Function} Implementación para el método [`stream._flush()`](#stream_transform_flush_callback).
-
 ```js
 const { Transform } = require('stream');
 
@@ -1847,11 +1731,11 @@ Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `
 
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada cuando los datos han sido arrojados.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
+This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
 En algunos casos, una operación de transformación pudiera emitir un bit adicional de datos en el final del stream. Por ejemplo, un stream de compresión `zlib` va a almacenar una cantidad de estado interno usado para la compresión óptima de la salida. Cuando el stream termina, sin embargo, esos datos adicionales necesitan ser arrojados para que los datos comprimidos estén completos.
 
-Implementaciones [`Transform`][] personalizadas *pudieran* implementar el método `transform._flush()`. Esto será llamado cuando no hay más datos escritos para ser consumidos, pero antes de que el evento [`'end'`][] es emitido señalando el final del stream [`Readable`][].
+Custom [`Transform`][] implementations *may* implement the `transform._flush()` method. This will be called when there is no more written data to be consumed, but before the [`'end'`][] event is emitted signaling the end of the [`Readable`][] stream.
 
 Dentro de la implementación `transform._flush()`, el método `readable.push()` puede ser llamado cero o más veces, según corresponda. La función `callback` debe ser llamada cuando la operación de descarga es completada.
 
@@ -1859,19 +1743,19 @@ El método `transform._flush()` es ajustado con un subrayado porque es interno a
 
 #### transform.\_transform(fragmento, codificación, callback)
 
-* `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o que el stream esté operando en modo objeto.
+* `chunk` {Buffer|string|any} The `Buffer` to be transformed, converted from the `string` passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback). If the stream's `decodeStrings` option is `false` or the stream is operating in object mode, the chunk will not be converted & will be whatever was passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback).
 * `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignóralo en este caso.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada después que el `chunk` proporcionado ha sido procesado.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
+This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
-Todas las implementaciones de stream `Transform` deben proporcionar un método `_transform()` para aceptar la entrada y producir una salida. La implementación `transform._transform()` maneja los bytes que están siendo escritos, computa una salida, luego pasa esa salida a la porción legible usando el método `readable.push()`.
+All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. La implementación `transform._transform()` maneja los bytes que están siendo escritos, computa una salida, luego pasa esa salida a la porción legible usando el método `readable.push()`.
 
 El método `transform.push()` puede ser llamado cero o más veces para generar salida de un solo fragmento de entrada, dependiendo de cuanto hay para la salida como resultado del fragmento.
 
 Es posible que ninguna salida sea generada de cualquier fragmento de datos de entrada.
 
-La función `callback` debe ser llamada solo cuando el fragmento actual sea completamente consumido. El primer argumento pasado al `callback` debe ser un objeto `Error` si ocurre un error mientras se procesa la entrada, o de caso contrario `null`. Si un segundo argumento es pasado al `callback`, será reenviado al método `readable.push()`. En otras palabras los siguientes son equivalentes:
+La función `callback` debe ser llamada solo cuando el fragmento actual sea completamente consumido. El primer argumento pasado al `callback` debe ser un objeto `Error` si ocurre un error mientras se procesa la entrada, o de caso contrario `null`. Si un segundo argumento es pasado al `callback`, será reenviado al método `readable.push()`. In other words, the following are equivalent:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1890,22 +1774,14 @@ El método `transform._transform()` es ajustado con un subrayado porque es inter
 
 #### Clase: stream.PassThrough
 
-La clase `stream.PassThrough` es una implementación trivial de un stream [`Transform`][] que simplemente pasa los bytes de entrada a través de la salida. Su propósito es principalmente para ejemplos y pruebas, pero hay algunos casos de uso donde `stream.PassThrough` es útil como un bloque de construcción para nuevos tipos de streams.
+The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Su propósito es principalmente para ejemplos y pruebas, pero hay algunos casos de uso donde `stream.PassThrough` es útil como un bloque de construcción para nuevos tipos de streams.
 
-## Notas Adicionales
+## Notas adicionales<!--type=misc-->### Compatibilidad con las versiones anteriores de Node.js<!--type=misc-->Prior to Node.js 0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
 
-<!--type=misc-->
-
-### Compatibilidad con las versiones anteriores de Node.js
-
-<!--type=misc-->
-
-En las versiones anteriores de v0.10 de Node.js, la interfaz del stream `Readable` era más simple, pero también menos potente y menos útil.
-
-* En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Las aplicaciones que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
+* Rather than waiting for calls to the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Las aplicaciones que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
 * El método [`stream.pause()`](#stream_readable_pause) era consultivo, en vez de garantizado. Esto significaba que era necesario estar preparado para recibir eventos [`'data'`][] *incluso cuando el stream estaba en estado pausado*.
 
-En Node.js v0.10, la clase [`Readable`][] fue añadida. Para compatibilidad con versiones anteriores con programas Node.js más viejos, los streams `Readable` cambian a "modo fluido" cuando un manejador de evento [`'data'`][] es añadido, o cuando el método [`stream.resume()`](#stream_readable_resume) es llamado. El efecto es que, incluso cuando no se use el nuevo método [`stream.read()`](#stream_readable_read_size) y el evento [`'readable'`][], ya no será necesario preocuparse por la pérdida de fragmentos [`'data'`][].
+In Node.js 0.10, the [`Readable`][] class was added. For backward compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. El efecto es que, incluso cuando no se use el nuevo método [`stream.read()`](#stream_readable_read_size) y el evento [`'readable'`][], ya no será necesario preocuparse por la pérdida de fragmentos [`'data'`][].
 
 Mientras que la mayoría de las aplicaciones continuarán funcionando con normalidad, esto introduce un caso extremo en las siguientes condiciones:
 
@@ -1919,32 +1795,32 @@ Por ejemplo, considera el siguiente código:
 // ¡ADVERTENCIA!  ¡ROTO!
 net.createServer((socket) => {
 
-  // añadimos un listener 'end', pero nunca consume los datos
+  // we add an 'end' listener, but never consume the data
   socket.on('end', () => {
-    // Nunca llegará aquí.
+    // It will never get here.
     socket.end('The message was received but was not processed.\n');
   });
 
 }).listen(1337);
 ```
 
-En versiones anteriores de v0.10 de Node.js, los datos de mensajes entrantes serían simplemente descartados. Sin embargo, a partir de Node.js v0.10 y versiones posteriores, el socket permanece pausado para siempre.
+Prior to Node.js 0.10, the incoming message data would be simply discarded. However, in Node.js 0.10 and beyond, the socket remains paused forever.
 
 La solución alternativa en esta situación es llamar al método [`stream.resume()`](#stream_readable_resume) para iniciar el flujo de datos:
 
 ```js
-// Solución alternativa
+// Workaround
 net.createServer((socket) => {
   socket.on('end', () => {
     socket.end('The message was received but was not processed.\n');
   });
 
-  // inicia el flujo de datos, descartándolo.
+  // start the flow of data, discarding it.
   socket.resume();
 }).listen(1337);
 ```
 
-Además de los nuevos streams `Readable` cambiando a modo fluido, los streams con un estilo pre-v0.10 pueden ser envueltos en una clase `Readable` usando el método [`readable.wrap()`][`stream.wrap()`].
+In addition to new `Readable` streams switching into flowing mode, pre-0.10 style streams can be wrapped in a `Readable` class using the [`readable.wrap()`][`stream.wrap()`] method.
 
 ### `readable.read(0)`
 
@@ -1952,7 +1828,7 @@ Hay algunos casos donde es necesario activar una actualización de los mecanismo
 
 Si el búfer de lectura interno está por debajo de `highWaterMark`, y el stream no está actualmente leyendo, entonces llamar a `stream.read(0)` va a activar una llamada de [`stream._read()`](#stream_readable_read_size_1) de bajo-nivel.
 
-Mientras que la mayoría de las aplicaciones casi nunca necesitan hacer esto, hay situaciones dentro de Node.js donde esto se hace, particularmente en la clase interna del stream `Readable`.
+While most applications will almost never need to do this, there are situations within Node.js where this is done, particularly in the `Readable` stream class internals.
 
 ### `readable.push('')`
 
@@ -1964,6 +1840,6 @@ Empujar un string de cero-bytes, un `Buffer` o un `Uint8Array` a un stream que n
 
 El uso de `readable.setEncoding()` cambiará el comportamiento de cómo opera `highWaterMark` en modo no-objeto.
 
-Generalmente, el tamaño del búfer actual es medido contra `highWaterMark` en *bytes*. Sin embargo, después que se llama `setEncoding()`, la función de comparación empezará a medir el tamaño del búfer en *caracteres*.
+Generalmente, el tamaño del búfer actual es medido contra `highWaterMark` en _bytes_. Sin embargo, después que se llama `setEncoding()`, la función de comparación empezará a medir el tamaño del búfer en _caracteres_.
 
 Esto no es un problema en casos comunes con `latin1` o `ascii`. Pero es aconsejado ser consciente sobre este comportamiento cuando se trabaje con strings que pudieran contener caracteres multi-byte.
