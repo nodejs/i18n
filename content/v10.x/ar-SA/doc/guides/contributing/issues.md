@@ -27,8 +27,7 @@
 
 عند فتح تذكرة جديدة في متعقب أخطاء `nodejs/node` ، سيتم تقديم قالب أساسي للمستخدمين والذي يجب ملؤه.
 
-```markdown
-<!--
+```markdown<!--
 شكرًا لك على التبليغ عن خطأ.
 
 متعقب الأخطاء هذا هو للأخطاء والمشاكل التي وجدت في نواة Node.js.
@@ -42,9 +41,7 @@ Subsystem: if known, please specify affected core module name
 
 If possible, please provide code that demonstrates the problem, keeping it as
 simple and free of external dependencies as you are able.
--->
-
-* **Version**:
+-->* **Version**:
 * **Platform**:
 * **Subsystem**:
 
