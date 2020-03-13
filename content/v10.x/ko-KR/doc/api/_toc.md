@@ -1,4 +1,4 @@
-@// 주의(chrisdickinson): 이 파일을 이동하려거든, be sure to update @// tools/doc/html.js to point at the new location.
+@// 주의(chrisdickinson): 이 파일을 이동시킬 경우, @// tools/doc/html.js 가 이동시킨 경로를 참조하도록 업데이트해야 합니다.
 
 <!--introduced_in=v0.10.0-->
 
@@ -18,7 +18,7 @@
 * [콘솔](console.html)
 * [암호화](crypto.html)
 * [디버거](debugger.html)
-* [폐기된 API](deprecations.html)
+* [폐기 예정인 API](deprecations.html)
 * [DNS](dns.html)
 * [도메인](domain.html)
 * [ECMAScript 모듈](esm.html)
@@ -52,6 +52,7 @@
 * [유틸리티](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
