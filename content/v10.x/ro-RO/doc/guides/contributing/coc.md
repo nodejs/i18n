@@ -12,7 +12,7 @@ Comunitățile deschise, diverse și inclusive trăiesc și mor pe baza încrede
 
 Toți contribuitorii la Node.js acceptă tacit să respecte atât litera, cât și spiritul [Codului de Conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Nerespectarea sau respingerea unei astfel de acțiuni va determina scăderea respectului față de contribuții.
 
-Un *actor rău intenționat* este cineva care încalcă în mod repetat *spiritul* Codului de conduită prin eșecul coerent al autoreglementării modului în care aceștia interacționează cu alți contribuitori în proiect. În acest fel, actorii rău intenționați înstrăinează alți contribuitori, descurajează colaborarea și, în general, reflectă slab asupra proiectului în ansamblu.
+A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. În acest fel, actorii rău intenționați înstrăinează alți contribuitori, descurajează colaborarea și, în general, reflectă slab asupra proiectului în ansamblu.
 
 A fi un actor de acest fel poate fi intenționat sau neintenționat. În mod obișnuit, comportamentul rău neintenționat poate fi corectat cu ușurință prin a-ți cere scuze și a corecta cursul, *chiar dacă nu ai pe deplin convingerea că trebuie să faci asta.*. Acordând altor contribuitori avantajului îndoielii și având dorința sinceră de a recunoaște că *este posibil* ca tu să fi greșit este esențial pentru orice colaborarea de succes.
 
