@@ -1,31 +1,31 @@
-# Maintaining the Build files
+# Manutenzione dei file di Build
 
-This document explains how to maintain the build files in the codebase.
+Questo documento spiega come mantenere i file di build nel codebase.
 
-## Overview
+## Panoramica
 
-On how to build the Node.js core, see [Building Node.js](../../BUILDING.md).
+Per le istruzioni su come costruire il Node.js core, vedi [Costruire Node.js](../../BUILDING.md).
 
-There are three main build files that may be directly run when building Node.js:
+Ci sono tre file di build principali che possono essere eseguiti direttamente durante la costruzione di Node.js:
 
-- `configure`: A Python 2 script that detects system capabilities and runs [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). It generates `config.gypi` which includes parameters used by GYP to create platform-dependent build files. Its output is usually in one of these formats: Makefile, MSbuild, ninja, or XCode project files. (Note: the main Makefile mentioned below is maintained separately by humans). For a detailed guide on this script, see [configure](#configure).
-- `vcbuild.bat`: A Windows Batch Script that locates build tools, provides a subset of the targets available in the [Makefile](#makefile), and a few targets of its own. For a detailed guide on this script, see [vcbuild.bat](#vcbuild.bat).
+- `configure`: A Python 2 script that detects system capabilities and runs [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). It generates `config.gypi` which includes parameters used by GYP to create platform-dependent build files. Its output is usually in one of these formats: Makefile, MSbuild, ninja, or XCode project files (the main Makefile mentioned below is maintained separately by humans). For a detailed guide on this script, see [configure](#configure).
+- `vcbuild.bat`: A Windows Batch Script that locates build tools, provides a subset of the targets available in the [Makefile](#makefile), and a few targets of its own. For a detailed guide on this script, see [vcbuild.bat](#vcbuildbat).
 - `Makefile`: A Makefile that can be run with GNU Make. It provides a set of targets that build and test the Node.js binary, produce releases and documentation, and interact with the CI to run benchmarks or tests. For a detailed guide on this file, see [Makefile](#makefile).
 
-On Windows `vcbuild.bat` runs [configure](#configure) before building the Node.js binary, on other systems `configure` must be run manually before running `make` on the `Makefile`.
+Su Windows `vcbuild.bat` esegue [configure](#configure) prima di costruire il binario Node.js, su altri sistemi `configure` deve essere eseguito manualmente prima di eseguire `make` sul `Makefile`.
 
 ## vcbuild.bat
 
-To see the help text, run `.\vcbuild help`. Update this file when you need to update the build and testing process on Windows.
+Per vedere il testo guida, eseguire `.\vcbuild help`. Aggiorna questo file quando è necessario aggiornare il processo di build e test su Windows.
 
 ## configure
 
-To see the help text, run `python configure --help`. Update this file when you need to update the configuration process.
+Per vedere il testo guida, eseguire `python configure --help`. Aggiornare questo file quando è necessario aggiornare il processo di configurazione.
 
 ## Makefile
 
-To see the help text, run `make help`. This file is not generated, it is maintained by humans. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuild.bat) is used instead.
+Per vedere il testo guida, eseguire `make help`. Questo file non è generato, è mantenuto dagli umani. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuildbat) is used instead.
 
-### Options
+### Option
 
-- `-j <n>`: number of threads used to build the binary. Note that on the non-ci targets, the parallel tests will take up all the available cores, regardless of this option.
+- `-j <n>`: numero di thread utilizzati per costruire il binario. Notare che sui target non-ci, i test paralleli impegneranno tutti i core disponibili, indipendentemente da questa opzione.
