@@ -1,20 +1,20 @@
-# Maintaining npm in Node.js
+# Menținere npm în Node.js
 
-## Step 1: Clone npm
+## Pasul 1: Clonează npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-or if you already have npm cloned make sure the repo is up to date
+sau dacă ai npm deja clonat, asigură-te că depozitul este actualizat
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Step 2: Build release
+## Pasul 2: Realizează eliberarea
 
 ```console
 $ git checkout vX.Y.Z
@@ -23,32 +23,32 @@ $ make release
 
 Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
-## Step 3: Remove old npm
+## Pasul 3: Elimină vechiul npm
 
 ```console
-$ cd /path/to/node
+$ cd /calea/către/node
 $ git remote update -p
 $ git checkout -b npm-x.y.z origin/master
 $ cd deps
 $ rm -rf npm
 ```
 
-## Step 4: Extract and commit new npm
+## Pasul 4: Extrage și comite noul npm
 
 ```console
-$ tar zxf /path/to/npm/release/npm-x.y.z.tgz
+$ tar zxf /calea/către/lansarea/npm/npm-x.y.z.tgz
 $ git add -A npm
-$ git commit -m "deps: upgrade npm to x.y.z"
+$ git commit -m "dependențe: actualizare npm la x.y.z"
 $ cd ..
 ```
 
-## Step 5: Update licenses
+## Pasul 5: Actualizare licențe
 
 ```console
 $ ./configure
 $ make -j4
 $ ./tools/license-builder.sh
-# The following commands are only necessary if there are changes
+# Următoarele comenzi sunt necesare doar dacă există modificări
 $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
