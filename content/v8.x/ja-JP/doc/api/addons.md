@@ -1,18 +1,18 @@
-# C++ Addons
+# C++ アドオン
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. 主に、Node.jsで実行されているJavaScript と C/C++ のライブラリ間のインタフェースを提供するために使用されます。
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+ - V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8はオブジェクトを作ったり、関数を呼び出したりするなどの機能を持ちます。 V8 のAPIに関するほとんどのドキュメントは `v8.h` ヘッダーdファイルに記載されています。 Node.js のソースツリー内 (`deps/v8/include/v8.h`)や、[オンライン](https://v8docs.nodesource.com/)で閲覧できます。
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+ - [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+ - Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+ - Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -68,7 +68,7 @@ In the `hello.cc` example, then, the initialization function is `init` and the A
 
 ### Building
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -133,6 +133,7 @@ Each of the examples illustrated in this document make direct use of the Node.js
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
+
 ## N-API
 
 > Stability: 1 - Experimental
@@ -151,7 +152,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", 6, &greeting);
+  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -203,6 +204,7 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 ```console
 $ node-gyp configure build
 ```
+
 
 ### Function arguments
 
@@ -272,6 +274,7 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
+
 
 ### Callbacks
 
@@ -372,6 +375,7 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
+
 ### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -427,6 +431,7 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
+
 
 ### Wrapping C++ objects
 
@@ -789,6 +794,7 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
+
 ### Passing wrapped objects around
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
@@ -963,7 +969,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
+* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
