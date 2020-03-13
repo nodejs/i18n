@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [Über diese Dokumente](documentation.html)
+* [Über diese Dokumentation](documentation.html)
 * [Verwendung & Beispiele](synopsis.html)
 
 <div class="line"></div>
@@ -52,6 +52,7 @@
 * [Werkzeuge](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
