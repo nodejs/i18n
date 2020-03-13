@@ -12,7 +12,7 @@ Otwarte, różnorodne i przyjazne społeczności żyją i umierają na zasadzie 
 
 Wszyscy kontrybutorzy Node.js zgadzają się nie podważać i przestrzegać zarówno listu jak i myśli [Kodeksu Przestępowania](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Niepowodzenie lub odmowa przestrzegania tej zasady będzie skutkować uprzejmym odrzuceniem kontrybucji.
 
-*Złoczyńca* to ktoś, kto częstokroć narusza *myśl* Kodeksu Postępowania przez konsekwentny brak samoregulacji sposobu w jaki wchodzi w interakcję z innymi kontrybutorami. Postępując tak, złoczyńcy wykluczają innych kontrybutorów, zniechęcają do kolaboracji i zwyczajnie stawiają cały projekt w złym świetle.
+A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. Postępując tak, złoczyńcy wykluczają innych kontrybutorów, zniechęcają do kolaboracji i zwyczajnie stawiają cały projekt w złym świetle.
 
 Bycie złoczyńcą może być umyślne lub nieumyślne. Nieumyślne złe zachowanie może być zazwyczaj łatwo poprawione przez szybkie złożenie przeprosin i naprawienie swojego błędu *nawet jeśli nie jesteś w pełni przekonany, że musisz to zrobić*. Dawanie innym kontrybutorom kredytu zaufania i szczere chęci przyznania się, że *możesz* być w błędzie jest kluczowe do każdej pomyślnej otwartej kolaboracji.
 
