@@ -1,5 +1,4 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
-
 * [About these Docs](documentation.html)
 * [Usage & Example](synopsis.html)
 
@@ -8,7 +7,7 @@
 * [Assertion Testing](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
-* [C++ Addons](addons.html)
+* [Node. js doplňky jsou dynamicky přidávané sdílené objekty napsané v jazyce C++, které mohou být nahrány přímo do Node. js s použitím require() funkce a použity jakoby byly normální Node. js moduly. Jsou primárně použity jako rozhraní mezi JavaScript kódem běžícím v Node. js a C/C++ knihovnami](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
@@ -22,7 +21,7 @@
 * [ECMAScript Modules](esm.html)
 * [Errors](errors.html)
 * [Events](events.html)
-* [File System](fs.html)
+* [Souborový systém](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
@@ -55,4 +54,3 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
