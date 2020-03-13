@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stabile
+> Stabilità: 2 - Stable
 
 <!--name=module-->
 
@@ -115,20 +115,17 @@ require(X) dal modulo al path Y
 5. THROW "not found"
 
 LOAD_AS_FILE(X)
-
 1. Se X è un file, carica X come JavaScript text.  STOP
 2. Se X.js è un file, carica X.js come JavaScript text.  STOP
 3. Se X.json è un file, analizza (parsing) X.json in cerca di un JavaScript Object.  STOP
 4. Se X.node è un file, carica X.node come addon binario.  STOP
 
 LOAD_INDEX(X)
-
 1. Se X/index.js è un file, carica X/index.js come JavaScript text.  STOP
 2. Se X/index.json è un file, analizza (parsing) X/index.json in cerca di un JavaScript object. STOP
 3. Se X/index.node è un file, carica X/index.node come addon binario.  STOP
 
 LOAD_AS_DIRECTORY(X)
-
 1. Se X/package.json è un file,
    a. Analizza (parsing) X/package.json, e cerca il "main" field.
    b. lascia M = X + (json main field)
@@ -137,17 +134,15 @@ LOAD_AS_DIRECTORY(X)
 2. LOAD_INDEX(X)
 
 LOAD_NODE_MODULES(X, START)
-
-1. lascia DIRS=NODE_MODULES_PATHS(START)
+1. let DIRS = NODE_MODULES_PATHS(START)
 2. per ogni DIR in DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
-
 1. lascia PARTS = path split(START)
 2. lascia I = count of PARTS - 1
-3. lascia DIRS = []
+3. let DIRS = [GLOBAL_FOLDERS]
 4. mentre I >= 0,
    a. se PARTS[I] = "node_modules" CONTINUE
    b. DIR = path join(PARTS[0 .. I] + "node_modules")
@@ -162,7 +157,7 @@ NODE_MODULES_PATHS(START)
 
 I moduli vengono memorizzati nella cache dopo il loro primo caricamento. Ciò significa (tra le altre cose) che ogni chiamata a `require('foo')`, se si risolvesse nello stesso file, restituirebbe esattamente lo stesso object.
 
-Chiamate multiple a `require('foo')` potrebbero non portare alla ripetuta esecuzione del codice del modulo. Questa è una caratteristica importante. Con essa, gli object "parzialmente completi" possono essere restituiti, consentendo così il caricamento delle dipendenze transitive anche quando avrebbero causato dei cicli.
+Provided `require.cache` is not modified, multiple calls to `require('foo')` will not cause the module code to be executed multiple times. Questa è una caratteristica importante. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
 Per fare in modo che un modulo esegua più volte il codice, esporta una funzione e chiamala.
 
@@ -274,22 +269,22 @@ Se questo era in una cartella all'interno di `./some-library`, allora `require('
 
 Questo è il grado di consapevolezza di Node.js riguardo i file `package.json`.
 
-Se manca il file specificato dalla voce `'main'` di `package.json` e non può essere risolto, Node.js segnalerà l'intero modulo come mancante con l'errore predefinito:
+If there is no `package.json` file present in the directory, or if the `'main'` entry is missing or cannot be resolved, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
+
+* `./some-library/index.js`
+* `./some-library/index.node`
+
+If these attempts fail, then Node.js will report the entire module as missing with the default error:
 
 ```txt
 Errore: Impossibile trovare il modulo 'some-library'
 ```
 
-Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà di caricare un file `index.js` o un file `index.node` al di fuori di quella directory. Ad esempio, se non c'era un file `package.json` nell'esempio precedente, allora `require('./some-library')` avrebbe tentato di caricare:
-
-* `./some-library/index.js`
-* `./some-library/index.node`
-
 ## Caricamento dalle cartelle `node_modules`
 
 <!--type=misc-->
 
-Se l'identificatore del modulo passato a `require()` non è un [core](#modules_core_modules) module, e non inizia con `'/'`, `'../'` o `'./'`, allora Node.js inizia nella parent directory del modulo attuale, e aggiunge `/node_modules`, tentando di caricare il modulo da quella posizione. Node non aggiungerà `node_modules` ad un percorso che termina già in `node_modules`.
+Se l'identificatore del modulo passato a `require()` non è un [core](#modules_core_modules) module, e non inizia con `'/'`, `'../'` o `'./'`, allora Node.js inizia nella parent directory del modulo attuale, e aggiunge `/node_modules`, tentando di caricare il modulo da quella posizione. Node.js will not append `node_modules` to a path already ending in `node_modules`.
 
 Se non viene trovato lì, allora passa alla parent directory e così via fino a raggiungere il root del file system.
 
@@ -316,7 +311,7 @@ Su Windows, `NODE_PATH` è delimitato da punti e virgola (`;`) anziché da due p
 
 `NODE_PATH` è ancora supportato, ma è meno necessario ora che l'ecosistema Node.js ha stabilito una convenzione per la localizzazione dei moduli dipendenti. A volte le distribuzioni che si basano su `NODE_PATH` mostrano comportamenti sorprendenti quando le persone non sanno che `NODE_PATH` deve essere impostato. A volte le dipendenze di un modulo cambiano, causando il caricamento di una versione diversa (o anche di un modulo diverso) durante la ricerca di `NODE_PATH`.
 
-Inoltre, Node.js cercherà nelle seguenti posizioni:
+Additionally, Node.js will search in the following list of GLOBAL_FOLDERS:
 
 * 1: `$HOME/.node_modules`
 * 2: `$HOME/.node_libraries`
@@ -342,15 +337,14 @@ Prima che venga eseguito il codice di un modulo, Node.js lo sottoporrà al wrapp
 
 In questo modo, Node.js realizza alcune cose:
 
-* Mantiene le variabili top-level (definite con `var`, `const` o `let`) nello scope del modulo anziché nel global object.
-* Aiuta a fornire alcune variabili di tipo globale ma che in realtà sono specifiche per il modulo, come ad esempio: 
-  * Gli object `module` ed `exports` che l'implementor può utilizzare per esportare i valori dal modulo.
-  * Le variabili convenienti `__filename` e `__dirname`, contenenti il filename assoluto ed il percorso della directory del modulo.
+- Mantiene le variabili top-level (definite con `var`, `const` o `let`) nello scope del modulo anziché nel global object.
+- Aiuta a fornire alcune variabili di tipo globale ma che in realtà sono specifiche per il modulo, come ad esempio:
+  - Gli object `module` ed `exports` che l'implementor può utilizzare per esportare i valori dal modulo.
+  - Le variabili convenienti `__filename` e `__dirname`, contenenti il filename assoluto ed il percorso della directory del modulo.
 
 ## Lo scope di un modulo
 
 ### \_\_dirname
-
 <!-- YAML
 added: v0.1.27
 -->
@@ -371,7 +365,6 @@ console.log(path.dirname(__filename));
 ```
 
 ### \_\_filename
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -380,7 +373,7 @@ added: v0.0.1
 
 * {string}
 
-Il filename del modulo attuale. E' il percorso assoluto risolto dell'attuale file del modulo.
+Il filename del modulo attuale. This is the current module file's absolute path with symlinks resolved.
 
 Per un programma principale questo non è necessariamente uguale al filename usato nella command line.
 
@@ -405,7 +398,6 @@ Dati due moduli: `a` e `b`, dove `b` è una dipendenza di `a` e c'è una directo
 I riferimenti a `__filename` all'interno di `b.js` restituiranno `/Users/mjr/app/node_modules/b/b.js` mentre i riferimenti a `__filename` all'interno di `a.js` restituiranno `/Users/mjr/app/a.js`.
 
 ### exports
-
 <!-- YAML
 added: v0.1.12
 -->
@@ -415,7 +407,6 @@ added: v0.1.12
 Un riferimento a `module.exports` più facile da digitare. Vedi la sezione [exports shortcut](#modules_exports_shortcut) per capire quando utilizzare `exports` e quando utilizzare `module.exports`.
 
 ### module
-
 <!-- YAML
 added: v0.1.16
 -->
@@ -427,7 +418,6 @@ added: v0.1.16
 Un riferimento al modulo attuale, vedi la sezione [`module` object][]. In particolare, `module.exports` è usato per definire ciò che un modulo esporta e rende disponibile attraverso `require()`.
 
 ### require()
-
 <!-- YAML
 added: v0.1.13
 -->
@@ -436,20 +426,29 @@ added: v0.1.13
 
 * {Function}
 
-Per richiedere i moduli.
+Used to import modules, `JSON`, and local files. Modules can be imported from `node_modules`. Local modules and JSON files can be imported using a relative path (e.g. `./`, `./foo`, `./bar/baz`, `../foo`) that will be resolved against the directory named by [`__dirname`][] (if defined) or the current working directory.
+
+```js
+// Importing a local module:
+const myLocalModule = require('./path/myLocalModule');
+
+// Importing a JSON file:
+const jsonData = require('./path/filename.json');
+
+// Importing a module from node_modules or Node.js built-in module:
+const crypto = require('crypto');
+```
 
 #### require.cache
-
 <!-- YAML
 added: v0.3.0
 -->
 
 * {Object}
 
-I moduli vengono sottoposti al caching all'interno di quest'object quando sono richiesti. Eliminando un valore chiave (key value) da quest'object, il prossimo `require` ricaricherà il modulo. Da notare che questo non viene applicato agli [addon nativi](addons.html), per i quali il ricaricamento darà come risultato un errore.
+I moduli vengono sottoposti al caching all'interno di quest'object quando sono richiesti. Eliminando un valore chiave (key value) da quest'object, il prossimo `require` ricaricherà il modulo. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
 
 #### require.extensions
-
 <!-- YAML
 added: v0.3.0
 deprecated: v0.10.6
@@ -476,16 +475,15 @@ Da notare che il numero di operazioni del file system, che il sistema modulo dev
 In altre parole, l'aggiunta di estensioni rallenta il caricatore (loader) dei moduli e dovrebbe essere evitata.
 
 #### require.main
-
 <!-- YAML
 added: v0.1.17
 -->
 
 * {Object}
 
-L'object `Module` che rappresenta lo script d'input caricato all'avvio del processo di Node.js. Vedi ["Accesso al modulo principale"](#modules_accessing_the_main_module).
+The `Module` object representing the entry script loaded when the Node.js process launched. See ["Accessing the main module"](#modules_accessing_the_main_module).
 
-Nello script `entry.js`:
+In `entry.js` script:
 
 ```js
 console.log(require.main);
@@ -494,9 +492,6 @@ console.log(require.main);
 ```sh
 node entry.js
 ```
-
-<!-- eslint-skip -->
-
 ```js
 Module {
   id: '.',
@@ -512,70 +507,48 @@ Module {
      '/node_modules' ] }
 ```
 
-#### require.resolve(request[, options])
-
-<!-- YAML
+#### require.resolve(request[, options])<!-- YAML
 added: v0.3.0
 changes:
-
   - version: v8.9.0
     pr-url: https://github.com/nodejs/node/pull/16397
     description: The `paths` option is now supported.
--->
-
-* `request` {string} Il percorso del modulo da risolvere.
-* `options` {Object} 
-  * `paths` {string[]} Percorsi dai quali risolvere la posizione dei moduli. Se presenti, questi percorsi vengono utilizzati al posto dei percorsi di risoluzione predefiniti. Da notare che ognuno di questi percorsi viene utilizzato come punto di partenza per l'algoritmo di risoluzione del modulo, nel senso che la gerarchia di `node_modules` viene controllata da questa posizione.
+-->* `request` {string} Il percorso del modulo da risolvere.
+* `options` {Object}
+  * `paths` {string[]} Percorsi dai quali risolvere la posizione dei moduli. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
 * Restituisce: {string}
 
 Utilizza il sistema `require()` interno per cercare la posizione di un modulo ma, anziché caricare il modulo, è sufficiente restituire il filename risolto.
 
-#### require.resolve.paths(request)
-
-<!-- YAML
+#### require.resolve.paths(request)<!-- YAML
 added: v8.9.0
--->
-
-* `request` {string} Il percorso del modulo da cui vengono recuperati i percorsi di ricerca.
+-->* `request` {string} Il percorso del modulo da cui vengono recuperati i percorsi di ricerca.
 * Restituisce: {string[]|null}
 
-Restituisce un array contenente i percorsi cercati durante la risoluzione di `request` oppure di `null` se la stringa `request` fa riferimento ad un core module, ad esempio `http` oppure `fs`.
+Returns an array containing the paths searched during resolution of `request` or `null` if the `request` string references a core module, for example `http` or `fs`.
 
-## L'Object `module`
-
-<!-- YAML
+## L'Object `module`<!-- YAML
 added: v0.1.16
--->
-
-<!-- type=var -->
-
-<!-- name=module -->
-
-* {Object}
+--><!-- type=var --><!-- name=module -->* {Object}
 
 In ogni modulo, la variabile libera `module` è un riferimento all'object che rappresenta il modulo attuale. Per comodità, `module.exports` è accessibile anche tramite il modulo globale `exports`. `module` in realtà è più propriamente locale per ogni modulo, non globale.
 
-### module.children
-
-<!-- YAML
+### module.children<!-- YAML
 added: v0.1.16
--->
+-->* {module[]}
 
-* {module[]}
-
-Gli object module richiesti da questo modulo.
+The module objects required for the first time by this one.
 
 ### module.exports
-
 <!-- YAML
 added: v0.1.16
 -->
 
 * {Object}
 
-L'object `module.exports` viene creato dal sistema `Module`. A volte questo non è accettabile; molti vogliono che il loro modulo sia un'istanza di qualche classe. Per fare ciò, assegna l'object di esportazione desiderato a `module.exports`. Da notare che assegnare l'object desiderato a `exports` vincolerà nuovamente la variabile `exports` locale, e probabilmente non è ciò che si desidera.
+The `module.exports` object is created by the `Module` system. A volte questo non è accettabile; molti vogliono che il loro modulo sia un'istanza di qualche classe. Per fare ciò, assegna l'object di esportazione desiderato a `module.exports`. Da notare che assegnare l'object desiderato a `exports` vincolerà nuovamente la variabile `exports` locale, e probabilmente non è ciò che si desidera.
 
-Ad esempio, supponiamo di creare un modulo chiamato `a.js`:
+For example, suppose we were making a module called `a.js`:
 
 ```js
 const EventEmitter = require('events');
@@ -589,7 +562,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-Quindi in un altro file potremmo fare:
+Then in another file we could do:
 
 ```js
 const a = require('./a');
@@ -616,7 +589,6 @@ console.log(x.a);
 ```
 
 #### exports shortcut
-
 <!-- YAML
 added: v0.1.16
 -->
@@ -630,10 +602,7 @@ module.exports.hello = true; // Esportato da require del modulo
 exports = { hello: false };  // Non esportato, solo disponibile nel modulo
 ```
 
-Quando la proprietà `module.exports` viene completamente sostituita da un nuovo object, di solito si riassegna anche `exports`:
-
-<!-- eslint-disable func-name-matching -->
-
+When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`:
 ```js
 module.exports = exports = function Constructor() {
   // ... ecc.
@@ -660,7 +629,6 @@ function require(/* ... */) {
 ```
 
 ### module.filename
-
 <!-- YAML
 added: v0.1.16
 -->
@@ -669,18 +637,13 @@ added: v0.1.16
 
 Il filename completamente risolto nel modulo.
 
-### module.id
-
-<!-- YAML
+### module.id<!-- YAML
 added: v0.1.16
--->
-
-* {string}
+-->* {string}
 
 L'identificatore per il modulo. In genere è filename completamente risolto.
 
 ### module.loaded
-
 <!-- YAML
 added: v0.1.16
 -->
@@ -690,7 +653,6 @@ added: v0.1.16
 Indipendentemente dal fatto che il modulo abbia completato il caricamento o sia in fase di caricamento.
 
 ### module.parent
-
 <!-- YAML
 added: v0.1.16
 -->
@@ -699,51 +661,48 @@ added: v0.1.16
 
 Il modulo che ha richiesto per primo questo modulo.
 
-### module.paths
-
-<!-- YAML
+### module.paths<!-- YAML
 added: v0.4.0
--->
-
-* {string[]}
+-->* {string[]}
 
 I percorsi di ricerca per il modulo.
 
-### module.require(id)
-
-<!-- YAML
+### module.require(id)<!-- YAML
 added: v0.5.1
--->
-
-* `id` {string}
+-->* `id` {string}
 * Restituisce: {Object} `module.exports` dal modulo risolto
 
 Il metodo `module.require` fornisce un modo per caricare un modulo come se `require()` fosse chiamato dal modulo originale.
 
-Per fare ciò, è necessario ottenere un riferimento all'object `module`. Poiché `require()` restituisce `module.exports`, e `module` è in genere disponibile *solo* all'interno del codice di un modulo specifico, deve essere esportato esplicitamente per essere usato.
+In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## L'Object `Module`
-
-<!-- YAML
+## L'Object `Module`<!-- YAML
 added: v0.3.7
--->
-
-* {Object}
+-->* {Object}
 
 Fornisce metodi di utilità generale quando interagisce con istanze di `Module` — la variabile `module` che si vede spesso nei file module. Accesso effettuato tramite `require('module')`.
 
-### module.builtinModules
-
-<!-- YAML
+### module.builtinModules<!-- YAML
 added: v9.3.0
--->
+-->* {string[]}
 
-* {string[]}
+Un elenco dei nomi di tutti i moduli forniti da Node.js. Can be used to verify if a module is maintained by a third party or not.
 
-Un elenco dei nomi di tutti i moduli forniti da Node.js. Può essere usato per verificare se un modulo è gestito da terzi oppure no.
-
-Da notare che `module` in questo contesto non è lo stesso object fornito dal [wrapping](#modules_the_module_wrapper). Per accedervi, richiedi il modulo `Module`:
+Note that `module` in this context isn't the same object that's provided by the [module wrapper](#modules_the_module_wrapper). To access it, require the `Module` module:
 
 ```js
 const builtin = require('module').builtinModules;
+```
+
+### module.createRequireFromPath(filename)<!-- YAML
+added: v10.12.0
+-->* `filename` {string} Filename to be used to construct the relative require function.
+* Returns: {[`require`][]} Require function
+
+```js
+const { createRequireFromPath } = require('module');
+const requireUtil = createRequireFromPath('../src/utils');
+
+// require `../src/utils/some-tool`
+requireUtil('./some-tool');
 ```
