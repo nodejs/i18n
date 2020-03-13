@@ -2,13 +2,14 @@
 
 Los metadatos postmortem son constantes presentes en la compilación final, la cual puede ser usada por debuggers y otras herramientas para navegar a través de estructuras internas de software cuando se analice su memoria (ya sea en un proceso de ejecución o en un volcado de memoria). Node.js proporciona estos metadatos y su compilación para V8 y para estructuras internas de Node.js.
 
+
 ### Metadatos Postmortem V8
 
 V8 prefija todas las constantes postmortem con `v8dbg_`, y ellas permiten la inspección de objetos en la cabecera. V8 genera aquellos símbolos con un script (`deps/v8/tools/gen-postmortem-metadata.py`), y Node.js siempre incluye estas constantes en la compilación final.
 
 ### Símbolos de Depuración de Node.js
 
-Node prefija todas las constantes postmortem con `nodedbg_`, y ellas complementan las constantes V8 al proporcionar formas de inspeccionar estructuras específicas de Node, tales como `node::Environment`, `node::BaseObject` y sus clases descendientes desde `src/utils.h` y otros. Esas constantes son declaradas en `src/node_postmortem_metadata.cc`, y la mayoría estaban estaban calculadas en el tiempo de la compilación.
+Node.js prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node.js-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Esas constantes son declaradas en `src/node_postmortem_metadata.cc`, y la mayoría estaban estaban calculadas en el tiempo de la compilación.
 
 #### Calcular el offset de miembros de clase
 
@@ -42,7 +43,7 @@ class ReqWrap : public AsyncWrap {
 };
 ```
 
-También hay pruebas en `test/cctest/test_node_postmortem_metadata.cc` para asegurarse de que todos los metadatos postmortem de Node son calculados correctamente.
+There are also tests on `test/cctest/test_node_postmortem_metadata.cc` to make sure all Node.js postmortem metadata are calculated correctly.
 
 ## Herramientas y referencias
 
