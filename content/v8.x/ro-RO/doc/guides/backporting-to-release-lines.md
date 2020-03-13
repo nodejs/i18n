@@ -38,7 +38,7 @@ git checkout -b backport-10157-to-v6.x v6.x-staging
 git clean -xfd ./test/
 ```
 
-1. After creating the branch, apply the changes to the branch. The cherry-pick will likely fail due to conflicts. In that case, you will see something like this:
+4. After creating the branch, apply the changes to the branch. The cherry-pick will likely fail due to conflicts. In that case, you will see something like this:
 
 ```shell
 # Say the $SHA is 773cdc31ef
@@ -49,16 +49,16 @@ hint: with 'git add <paths>' or 'git rm <paths>'
 hint: and commit the result with 'git commit'
 ```
 
-1. Make the required changes to remove the conflicts, add the files to the index using `git add`, and then commit the changes. That can be done with `git cherry-pick --continue`.
-2. Leave the commit message as is. If you think it should be modified, comment in the Pull Request.
-3. Make sure `make -j4 test` passes.
-4. Push the changes to your fork
-5. Open a pull request: 
-    1. Be sure to target the `v6.x-staging` branch in the pull request.
-    2. Include the backport target in the pull request title in the following format — `[v6.x backport] <commit title>`. Example: `[v6.x backport] process: improve performance of nextTick`
-    3. Check the checkbox labeled "Allow edits from maintainers".
-    4. In the description add a reference to the original PR
-    5. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
-6. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v6.x-staging`
+5. Make the required changes to remove the conflicts, add the files to the index using `git add`, and then commit the changes. That can be done with `git cherry-pick --continue`.
+6. Leave the commit message as is. If you think it should be modified, comment in the Pull Request.
+7. Make sure `make -j4 test` passes.
+8. Push the changes to your fork
+9. Open a pull request:
+   1. Be sure to target the `v6.x-staging` branch in the pull request.
+   2. Include the backport target in the pull request title in the following format — `[v6.x backport] <commit title>`. Example: `[v6.x backport] process: improve performance of nextTick`
+   3. Check the checkbox labeled "Allow edits from maintainers".
+   4. In the description add a reference to the original PR
+   5. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
+10. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v6.x-staging`
 
 After the PR lands replace the `backport-requested-v6.x` label on the original PR with `backported-to-v6.x`.
