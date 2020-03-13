@@ -1,8 +1,6 @@
-# Domain
-
+# 도메인
 <!-- YAML
 changes:
-
   - version: v8.8.0
     description: Any `Promise`s created in VM contexts no longer have a
                  `.domain` property. Their handlers are still executed in the
@@ -93,7 +91,7 @@ if (cluster.isMaster) {
   const domain = require('domain');
 
   // See the cluster documentation for more details about using
-  // worker processes to serve requests.  How it works, caveats, etc.
+  // worker processes to serve requests. How it works, caveats, etc.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
@@ -103,7 +101,7 @@ if (cluster.isMaster) {
       // Note: We're in dangerous territory!
       // By definition, something unexpected occurred,
       // which we probably didn't want.
-      // Anything can happen now!  Be very careful!
+      // Anything can happen now! Be very careful!
 
       try {
         // make sure we close down within 30 seconds
@@ -116,7 +114,7 @@ if (cluster.isMaster) {
         // stop taking new requests.
         server.close();
 
-        // Let the master know we're dead.  This will trigger a
+        // Let the master know we're dead. This will trigger a
         // 'disconnect' in the cluster master, and then it will fork
         // a new worker.
         cluster.worker.disconnect();
@@ -145,7 +143,7 @@ if (cluster.isMaster) {
   server.listen(PORT);
 }
 
-// This part is not important.  Just an example routing thing.
+// This part is not important. Just an example routing thing.
 // Put fancy application logic here.
 function handleRequest(req, res) {
   switch (req.url) {
