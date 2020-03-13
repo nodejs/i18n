@@ -1,32 +1,31 @@
-# C++ Addons
+# Πρόσθετα C++
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Τα πρόσθετα της Node.js είναι δυναμικά συνδεδεμένα κοινόχρηστα αντικείμενα, γραμμένα σε C++, που μπορούν να φορτωθούν στη Node.js χρησιμοποιώντας την συνάρτηση [`require()`](modules.html#modules_require), και να χρησιμοποιούνται σαν κανονικές ενότητες της Node.js. Χρησιμοποιούνται κυρίως για την παροχή μιας διεπαφής μεταξύ της javaScript που τρέχει στη Node.js και των βιβλιοθηκών της C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
+Αυτή τη στιγμή, η μέθοδος για τη δημιουργία Πρόσθετων είναι κάπως περίπλοκη, αφού απαιτεί τη γνώση διαφόρων στοιχείων και API:
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+ - V8: η βιβλιοθήκη C++ που χρησιμοποιεί προς το παρόν η Node.js για να παρέχει την υλοποίηση της Javascript. Η V8 παρέχει τους μηχανισμούς για τη δημιουργία αντικειμένων, την κλήση συναρτήσεων, κλπ. Το API της βιβλιοθήκης V8's τεκμηριώνεται κατά κύριο λόγο στο αρχείο κεφαλίδας `v8.h` (`deps/v8/include/v8.h` στο δέντρο του πηγαίου κώδικα της Node.js), ενώ είναι επίσης διαθέσιμη και [διαδικτυακά](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+ - [libuv](https://github.com/libuv/libuv): Η βιβλιοθήκη C που υλοποιεί τον βρόχο συμβάντων της Node.js, τα νήματα εργασίας και όλες τις ασύγχρονες συμπεριφορές της πλατφόρμας. Επίσης, χρησιμοποιείται σαν μια cross-platform αφαιρετική βιβλιοθήκη που επιτρέπει την εύκολη, σαν POSIX, πρόσβαση σε όλα τα κύρια λειτουργικά συστήματα σε διάφορες κοινές εργασίες συστήματος, όπως η διασύνδεση με το σύστημα αρχείων, τα socket, τα χρονόμετρα και τα συμβάντα συστήματος. Η libuv επίσης παρέχει ένα σύστημα παρόμοιο με το pthreads για την αφαίρεση νημάτων, που μπορεί να επιτρέψει την χρήση πιο εξεζητημένων ασύγχρονων Πρόσθετων, τα οποία ξεφεύγουν από τον βασικό βρόχο συμβάντων. Οι δημιουργοί των πρόσθετων ενθαρρύνονται να σκεφτούν πως θα αποφύγουν την αναμονή του βρόχου συμβάντων όταν χρησιμοποιούνται εργασίες I/O ή άλλες εργασίες που απαιτούν χρόνο, μεταθέτοντας την εργασία στο λειτουργικό σύστημα, σε νήματα εργασίας ή σε προσαρμοσμένα νήματα libuv.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+ - Εσωτερικές βιβλιοθήκες Node.js. Η Node.js συμπεριλαμβάνει μια σειρά από C++ API, που μπορούν να χρησιμοποιηθούν από τα Πρόσθετα &mdash; εκ των οποίων η πιο σημαντική είναι η κλάση `node::ObjectWrap`.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+ - Η Node.js συμπεριλαμβάνει μια σειρά από άλλες βιβλιοθήκες, που συνδέονται στατικά, όπως η βιβλιοθήκη OpenSSL. Αυτές οι βιβλιοθήκες βρίσκονται στον φάκελο `deps/` στο δέντρο του πηγαίου κώδικα της Node.js. Μόνο τα σύμβολα των βιβλιοθηκών libuv, OpenSSL, V8 και zlib επανεξάγονται σκόπιμα από την Node.js και μπορούν να χρησιμοποιηθούν ποικιλοτρόπως από τα Πρόσθετα. Δείτε το κεφάλαιο [Σύνδεση με τις εξαρτήσεις της Node.js](#addons_linking_to_node_js_own_dependencies) για περισσότερες πληροφορίες.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Όλα τα παρακάτω παραδείγματα είναι διαθέσιμα για [λήψη](https://github.com/nodejs/node-addon-examples) και μπορούν να χρησιμοποιηθούν ως βάση για ένα Πρόσθετο.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Αυτό το παράδειγμα "Hello world" είναι ένα πολύ απλό Πρόσθετο, γραμμένο σε C++, το οποίο είναι ισοδύναμο με τον παρακάτω κώδικα JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Αρχικά, δημιουργήστε το αρχείο `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -37,40 +36,144 @@ namespace demo {
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(
+      isolate, "world", NewStringType::kNormal).ToLocalChecked());
 }
 
-void init(Local<Object> exports) {
+void Initialize(Local<Object> exports) {
   NODE_SET_METHOD(exports, "hello", Method);
 }
 
-NODE_MODULE(NODE_GYP_MODULE_NAME, init)
+NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Σημειώστε ότι όλα τα Πρόσθετα της Node.js πρέπει να εξάγουν μια συνάρτηση αρχικοποίησης, χρησιμοποιώντας το παρακάτω πρότυπο:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Δεν υπάρχει ερωτηματικό μετά το `NODE_MODULE` καθώς δεν είναι συνάρτηση (δείτε το `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Το `module_name` θα πρέπει να αντιστοιχεί το όνομα αρχείου του πρόσθετου (με εξαίρεση την κατάληξη `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
-### Building
+When building addons with `node-gyp`, using the macro `NODE_GYP_MODULE_NAME` as the first parameter of `NODE_MODULE()` will ensure that the name of the final binary will be passed to `NODE_MODULE()`.
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+### Context-aware addons
+
+There are environments in which Node.js addons may need to be loaded multiple times in multiple contexts. For example, the [Electron](https://electronjs.org/) runtime runs multiple instances of Node.js in a single process. Each instance will have its own `require()` cache, and thus each instance will need a native addon to behave correctly when loaded via `require()`. From the addon's perspective, this means that it must support multiple initializations.
+
+A context-aware addon can be constructed by using the macro `NODE_MODULE_INITIALIZER`, which expands to the name of a function which Node.js will expect to find when it loads an addon. An addon can thus be initialized as in the following example:
+
+```cpp
+using namespace v8;
+
+extern "C" NODE_MODULE_EXPORT void
+NODE_MODULE_INITIALIZER(Local<Object> exports,
+                        Local<Value> module,
+                        Local<Context> context) {
+  /* Perform addon initialization steps here. */
+}
+```
+
+Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
+
+The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+* `Local<Object> exports`,
+* `Local<Value> module`, and
+* `Local<Context> context`
+
+The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
+
+The context-aware addon can be structured to avoid global static data by performing the following steps:
+* defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
+* constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
+* storing the instance of the class in a `v8::External`, and
+* passing the `v8::External` to all methods exposed to JavaScript by passing it to the `v8::FunctionTemplate` constructor which creates the native-backed JavaScript functions. The `v8::FunctionTemplate` constructor's third parameter accepts the `v8::External`.
+
+This will ensure that the per-addon-instance data reaches each binding that can be called from JavaScript. The per-addon-instance data must also be passed into any asynchronous callbacks the addon may create.
+
+The following example illustrates the implementation of a context-aware addon:
+
+```cpp
+#include <node.h>
+
+using namespace v8;
+
+class AddonData {
+ public:
+  AddonData(Isolate* isolate, Local<Object> exports):
+      call_count(0) {
+    // Link the existence of this object instance to the existence of exports.
+    exports_.Reset(isolate, exports);
+    exports_.SetWeak(this, DeleteMe, WeakCallbackType::kParameter);
+  }
+
+  ~AddonData() {
+    if (!exports_.IsEmpty()) {
+      // Reset the reference to avoid leaking data.
+      exports_.ClearWeak();
+      exports_.Reset();
+    }
+  }
+
+  // Per-addon data.
+  int call_count;
+
+ private:
+  // Method to call when "exports" is about to be garbage-collected.
+  static void DeleteMe(const WeakCallbackInfo<AddonData>& info) {
+    delete info.GetParameter();
+  }
+
+  // Weak handle to the "exports" object. An instance of this class will be
+  // destroyed along with the exports object to which it is weakly bound.
+  v8::Persistent<v8::Object> exports_;
+};
+
+static void Method(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  // Retrieve the per-addon-instance data.
+  AddonData* data =
+      reinterpret_cast<AddonData*>(info.Data().As<External>()->Value());
+  data->call_count++;
+  info.GetReturnValue().Set((double)data->call_count);
+}
+
+// Initialize this addon to be context-aware.
+NODE_MODULE_INIT(/* exports, module, context */) {
+  Isolate* isolate = context->GetIsolate();
+
+  // Create a new instance of AddonData for this instance of the addon.
+  AddonData* data = new AddonData(isolate, exports);
+  // Wrap the data in a v8::External so we can pass it to the method we expose.
+  Local<External> external = External::New(isolate, data);
+
+  // Expose the method "Method" to JavaScript, and make sure it receives the
+  // per-addon-instance data we created above by passing `external` as the
+  // third parameter to the FunctionTemplate constructor.
+  exports->Set(context,
+               String::NewFromUtf8(isolate, "method", NewStringType::kNormal)
+                  .ToLocalChecked(),
+               FunctionTemplate::New(isolate, Method, external)
+                  ->GetFunction(context).ToLocalChecked()).FromJust();
+}
+```
+
+### Χτίσιμο
+
+Όταν η γραφή του πηγαίου κώδικα έχει ολοκληρωθεί, θα πρέπει να μεταγλωττιστεί στο αρχείο `addon.node`. Για να γίνει η μεταγλώττιση, δημιουργήστε ένα αρχείο με όνομα `binding.gyp` μέσα στον κύριο φάκελο του project, που περιγράφει την διαμόρφωση του χτισίματος του πρόσθετου, σε μορφή παρόμοια με JSON. Το αρχείο αυτό χρησιμοποιείται από το [node-gyp](https://github.com/nodejs/node-gyp) — ένα εργαλείο που έχει δημιουργηθεί ειδικά για τη μεταγλώττιση Πρόσθετων για την Node.js.
 
 ```json
 {
@@ -83,29 +186,29 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+Μια έκδοση του εργαλείου `node-gyp` συμπεριλαμβάνεται και διανέμεται μαζί με την Node.js ως μέρος του `npm`. Αυτή η έκδοση δεν είναι άμεσα διαθέσιμη για χρήση από τους προγραμματιστές, αλλά προορίζεται για να υποστηρίξει την δυνατότητα μεταγλώττισης και εγκατάστασης Πρόσθετων μέσω της εντολής `npm install`. Οι προγραμματιστές που θέλουν να χρησιμοποιήσουν το εργαλείο `node-gyp`, μπορούν να το εγκαταστήσουν χρησιμοποιώντας την εντολή `npm install -g node-gyp`. Δείτε τις [οδηγίες εγκατάστασης](https://github.com/nodejs/node-gyp#installation) του `node-gyp` για περισσότερες πληροφορίες, συμπεριλαμβανομένων των απαιτήσεων ανά πλατφόρμα.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Αφού δημιουργηθεί το αρχείο `binding.gyp`, χρησιμοποιήστε την εντολή `node-gyp configure` για να δημιουργήσετε τα κατάλληλα αρχεία χτισίματος για την τρέχουσα πλατφόρμα. Η εκτέλεση της εντολής θα δημιουργήσει είτε ένα αρχείο `Makefile` (σε συστήματα Unix) ή ένα αρχείο`vcxproj` (σε συστήματα Windows) στον φάκελο `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Στη συνέχεια, εκτελέστε την εντολή `node-gyp build` για να δημιουργήσετε το μεταγλωττισμένο αρχείο `addon.node`. Το αρχείο θα τοποθετηθεί μέσα στον φάκελο `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Όταν χρησιμοποιείτε την εντολή `npm install` για να εγκαταστήσετε ένα πρόσθετο για τη Node.js, το npm χρησιμοποιεί την δική του -ενσωματωμένη- έκδοση της `node-gyp` για να εκτελέσει την ίδια σειρά ενεργειών, δημιουργώντας μια μεταγλωττισμένη έκδοση του Πρόσθετου για την πλατφόρμα του χρήστη, όπως απαιτείται.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Μόλις χτιστεί, το Πρόσθετο μπορεί να χρησιμοποιηθεί εντός της Node.js χρησιμοποιώντας την συνάρτηση [`require()`](modules.html#modules_require) δείχνοντας το μεταγλωττισμένο αρχείο `addon.node` του πρόσθετου:
 
 ```js
 // hello.js
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'world'
+// Τυπώνει: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Για περισσότερες πληροφορίες, δείτε τα παρακάτω παραδείγματα, ή δείτε το <https://github.com/arturadib/node-qt> για ένα παράδειγμα σε χρήση.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Επειδή το ακριβές μονοπάτι προς το μεταγλωττισμένο Πρόσθετο αλλάζει ανάλογα με τον τρόπο μεταγλώττισης (για παράδειγμα, κάποιες φορές βρίσκεται στον φάκελο `./build/Debug/`), τα Πρόσθετα μπορούν να χρησιμοποιούν το πακέτο [bindings](https://github.com/TooTallNate/node-bindings) για να φορτώνουν τη μεταγλωττισμένη ενότητα.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Σημειώστε ότι, παρόλο που η υλοποίηση του πακέτου `bindings` είναι πιο εξελιγμένη στο πως εντοπίζει τις Πρόσθετες ενότητες, ουσιαστικά πρόκειται για ένα μοτίβο try-catch παρόμοιο με το παρακάτω:
 
 ```js
 try {
@@ -115,33 +218,35 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Σύνδεση με τις εξαρτήσεις της Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+H Node.js χρησιμοποιεί μια πληθώρα στατικά συνδεδεμένων βιβλιοθηκών, όπως οι: V8, libuv και OpenSSL. Όλα τα Πρόσθετα πρέπει να συνδέονται με την βιβλιοθήκη V8 και μπορούν να συνδέονται σε οποιαδήποτε άλλη βιβλιοθήκη, όπως απαιτείται. Συνήθως, αυτό είναι τόσο απλό όσο η χρήση μιας κατάλληλης δήλωσης `#include <...>` (π.χ. `#include <v8.h>`) και το εργαλείο `node-gyp` θα εντοπίσει τις κατάλληλες κεφαλίδες αυτόματα. Ωστόσο, υπάρχουν κάποιες επιφυλάξεις που θα πρέπει να έχετε κατά νου:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Όταν εκτελείται το εργαλείο `node-gyp`, θα εντοπίσει την συγκεκριμένη έκδοση της Node.js και είτε θα ανακτήσει όλο τον πηγαίο κώδικα, ή μόνο τις κεφαλίδες. Αν ανακτηθεί ο πλήρης πηγαίος κώδικας, τα Πρόσθετα θα έχουν πλήρη πρόσβαση σε όλο το σετ εξαρτήσεων της Node.js. Ωστόσο, αν ανακτηθούν μόνο οι κεφαλίδες της Node.js, τότε μόνο τα σύμβολα που εξάγονται από την Node.js θα είναι διαθέσιμα.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* Το εργαλείο `node-gyp` μπορεί να τρέξει χρησιμοποιώντας την επιλογή `--nodedir`, δείχνοντας σε ένα τοπικό αντίγραφο του κώδικα της Node.js. Χρησιμοποιώντας αυτή την επιλογή, το Πρόσθετο θα έχει πλήρη πρόσβαση σε όλο το σετ των εξαρτήσεων.
 
-### Loading Addons using require()
+### Φόρτωση Προσθέτων με τη χρήση της require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Η επέκταση του ονόματος ενός μεταγλωττισμένου Πρόσθετου είναι `.node` (και όχι `.dll` ή `.so`). Η συνάρτηση [`require()`](modules.html#modules_require) είναι φτιαγμένη να ψάχνει για αρχεία με την επέκταση `.node` και να τα αρχικοποιεί ως δυναμικά συνδεδεμένες βιβλιοθήκες.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Κατά την κλήση της συνάρτησης [`require()`](modules.html#modules_require), συνήθως μπορεί να παραλειφθεί η επέκταση `.node` και η Node.js θα βρει και θα αρχικοποιήσει το Πρόσθετο. Ωστόσο, αυτό θα πρέπει να χρησιμοποιείται με επιφύλαξη, καθώς η Node.js θα βρει και θα φορτώσει ενότητες ή αρχεία JavaScript που τυχαίνει να έχουν το ίδιο όνομα. Για παράδειγμα, αν υπάρχει ένα αρχείο `addon.js` στον ίδιο φάκελο με το αρχείο `addon.node`,τότε η συνάρτηση [`require('addon')`](modules.html#modules_require) θα δώσει will give προτεραιότητα στο αρχείο `addon.js` και θα φορτώσει αυτό.
 
 ## Native Abstractions for Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Όλα τα παραδείγματα που εμφανίζονται σε αυτό το έγγραφο, κάνουν άμεση χρήση των API της Node.js και της V8 για την υλοποίηση Πρόσθετων. Είναι σημαντικό να καταλάβουμε ότι το API της V8 μπορεί, και έχει αλλάξει δραματικά από μια έκδοση της, στην επόμενη (και από μια μείζονα έκδοση της Node.js στην επόμενη). Με κάθε αλλαγή, τα Πρόσθετα θα πρέπει να ενημερωθούν και να επαναμεταγλωττιστούν για να μπορούν να λειτουργήσουν. Το σχέδιο εκδόσεων της Node.js σχεδιάζεται με τρόπο που θα ελαχιστοποιήσει την συχνότητα και τις επιπτώσεις αυτών των αλλαγών, αλλά αυτό δε μπορεί να εγγυηθεί και για τα API της V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+Η βιβλιοθήκη [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ή `nan`) παρέχει μια σειρά εργαλείων που προτείνεται να χρησιμοποιούν οι προγραμματιστές Πρόσθετων, για την διατήρηση συμβατότητας μεταξύ παλαιών και μελλοντικών εκδόσεων της V8 και της Node.js. Δείτε τα [παραδείγματα](https://github.com/nodejs/nan/tree/master/examples/) της βιβλιοθήκης `nan` για μια επεξήγηση του πως μπορεί να χρησιμοποιηθεί.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Σταθερότητα: 2 - Σταθερό
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+Το N-API είναι ένα API για δημιουργία native Πρόσθετων. Είναι ανεξάρτητο από την υποκείμενη μηχανή JavaScript (π.χ. V8) και συντηρείται από την ίδια την Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Προορίζεται για την απομόνωση των Πρόσθετων από αλλαγές στην υποκείμενη μηχανή JavaScript και επιτρέπει τις ενότητες που έχουν μεταγλωττιστεί σε μια έκδοση της Node.js, να τρέχουν και στις μελλοντικές εκδόσεις χωρίς να επαναμεταγλωττιστούν. Τα πρόσθετα χτίζονται και γίνονται πακέτο, χρησιμοποιώντας την ίδια προσέγγιση και τα ίδια εργαλεία, που περιγράφονται σε αυτό το έγγραφο (node-gyp, κλπ). Η μόνη διαφορά είναι το σύνολο των API που χρησιμοποιούνται από τον native κώδικα. Αντί να χρησιμοποιηθεί το API της V8 ή του [Native Abstractions for Node.js](https://github.com/nodejs/nan), χρησιμοποιούνται οι συναρτήσεις που είναι διαθέσιμες στο N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
+
+Για να χρησιμοποιήσετε το N-API στο παράδειγμα "Hello world" που είδαμε πριν, αντικαταστήστε το περιεχόμενο του αρχείου `hello.cc` με τον παρακάτω κώδικα. Οι υπόλοιπες οδηγίες παραμένουν ίδιες.
 
 ```cpp
 // hello.cc using N-API
@@ -153,7 +258,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
+  status = napi_create_string_utf8(env, "world", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -175,13 +280,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Οι συναρτήσεις που είναι διαθέσιμες και ο τρόπος χρήσης τους, τεκμηριώνονται στην ενότητα [Πρόσθετα C/C++ - N-API](n-api.html).
 
-## Addon examples
+## Παραδείγματα Πρόσθετων
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Ακολουθούν κάποια παραδείγματα Πρόσθετων, που προορίζονται ως βοήθεια στους προγραμματιστές που θέλουν να ξεκινήσουν να φτιάξουν Πρόσθετα. Τα παραδείγματα χρησιμοποιούν το API της V8. Ανατρέξτε στις [πληροφορίες της V8](https://v8docs.nodesource.com/) για βοήθεια με διάφορες κλήσεις της V*, και στο [Οδηγό Ενσωμάτωσης](https://github.com/v8/v8/wiki/Embedder's%20Guide) της V8 για επεξήγηση διαφόρων εννοιών που χρησιμοποιούνται, όπως για παράδειγμα: χειριστές, scope (πεδία εφαρμογής), συναρτήσεις, πρότυπα, κλπ.
 
-Each of these examples using the following `binding.gyp` file:
+Όλα τα παραδείγματα χρησιμοποιούν το παρακάτω αρχείο `binding.gyp`:
 
 ```json
 {
@@ -194,23 +299,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+Σε περιπτώσεις που υπάρχουν περισσότερα από ένα αρχεία `.cc`, απλά προσθέστε τα επιπλέον ονόματα αρχείων στον πίνακα `sources`:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Όταν το αρχείο `binding.gyp` είναι έτοιμο, τα παραδείγματα Πρόσθετων μπορούν να ρυθμιστούν και να μεταγλωττιστούν με την χρήση του `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Παράμετροι συναρτήσεων
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Τα Πρόσθετα συνήθως εκθέτουν αντικείμενα και συναρτήσεις που μπορούν να χρησιμοποιηθούν από την JavaScript που τρέχει εντός της Node.js. Όταν οι συναρτήσεις καλούνται από την JavaScript, οι παράμετροι εισόδου και η τιμή επιστροφής πρέπει να δεθούν από και προς τον κώδικα C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Το παρακάτω παράδειγμα επεξηγεί πως να διαβάσουμε τις παραμέτρους που μεταδίδονται από την JavaScript, καθώς και πώς να γίνει επιστροφή του αποτελέσματος:
 
 ```cpp
 // addon.cc
@@ -222,6 +327,7 @@ using v8::Exception;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::String;
@@ -237,19 +343,24 @@ void Add(const FunctionCallbackInfo<Value>& args) {
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong number of arguments")));
+        String::NewFromUtf8(isolate,
+                            "Wrong number of arguments",
+                            NewStringType::kNormal).ToLocalChecked()));
     return;
   }
 
   // Check the argument types
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Wrong arguments")));
+        String::NewFromUtf8(isolate,
+                            "Wrong arguments",
+                            NewStringType::kNormal).ToLocalChecked()));
     return;
   }
 
   // Perform the operation
-  double value = args[0]->NumberValue() + args[1]->NumberValue();
+  double value =
+      args[0].As<Number>()->Value() + args[1].As<Number>()->Value();
   Local<Number> num = Number::New(isolate, value);
 
   // Set the return value (using the passed in
@@ -266,7 +377,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Όταν μεταγλωττιστεί, το παράδειγμα Πρόσθετου μπορεί να χρησιμοποιηθεί εντός της Node.js:
 
 ```js
 // test.js
@@ -275,9 +386,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### Callback
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Είναι συνηθισμένη τακτική των Πρόσθετων να γίνεται μετάδοση των συναρτήσεων της JavaScript σε μια συνάρτηση C++ και να γίνεται εκεί η εκτέλεσή τους. Το παρακάτω παράδειγμα επεξηγεί πώς να γίνει ένα τέτοιο callback:
 
 ```cpp
 // addon.cc
@@ -285,10 +396,12 @@ It is common practice within Addons to pass JavaScript functions to a C++ functi
 
 namespace demo {
 
+using v8::Context;
 using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Null;
 using v8::Object;
 using v8::String;
@@ -296,10 +409,14 @@ using v8::Value;
 
 void RunCallback(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
   Local<Function> cb = Local<Function>::Cast(args[0]);
   const unsigned argc = 1;
-  Local<Value> argv[argc] = { String::NewFromUtf8(isolate, "hello world") };
-  cb->Call(Null(isolate), argc, argv);
+  Local<Value> argv[argc] = {
+      String::NewFromUtf8(isolate,
+                          "hello world",
+                          NewStringType::kNormal).ToLocalChecked() };
+  cb->Call(context, Null(isolate), argc, argv).ToLocalChecked();
 }
 
 void Init(Local<Object> exports, Local<Object> module) {
@@ -311,9 +428,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Σημειώστε ότι αυτό το παράδειγμα χρησιμοποιεί μια μορφή της `Init()` με δύο παραμέτρους, που λαμβάνει ένα πλήρες αντικείμενο `module` ως δεύτερη παράμετρο. Αυτό επιτρέπει την πλήρη αντικατάσταση των `exports` από τα Πρόσθετα, με τη χρήση μιας και μοναδικής συνάρτησης, αντί να προστίθεται η συνάρτηση ως ιδιότητα των `exports`.
 
-To test it, run the following JavaScript:
+Για να το δοκιμάσετε, εκτελέστε τον παρακάτω κώδικα JavaScript:
 
 ```js
 // test.js
@@ -321,15 +438,15 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Τυπώνει: 'hello world'
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Σημειώστε πως, σε αυτό το παράδειγμα, η συνάρτηση callback καλείται συγχρονισμένα.
 
-### Object factory
+### Εργοστάσιο Αντικειμένων
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Τα Πρόσθετα μπορούν να δημιουργούν και να επιστρέφουν νέα αντικείμενα, εντός μιας συνάρτησης C++, όπως επεξηγείται στο παρακάτω παράδειγμα. Ένα αντικείμενο δημιουργείται και επιστρέφεται με την ιδιότητα `msg`, που τυπώνει το string που μεταδόθηκε στο `createObject()`:
 
 ```cpp
 // addon.cc
@@ -337,18 +454,26 @@ Addons can create and return new objects from within a C++ function as illustrat
 
 namespace demo {
 
+using v8::Context;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void CreateObject(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   Local<Object> obj = Object::New(isolate);
-  obj->Set(String::NewFromUtf8(isolate, "msg"), args[0]->ToString());
+  obj->Set(context,
+           String::NewFromUtf8(isolate,
+                               "msg",
+                               NewStringType::kNormal).ToLocalChecked(),
+                               args[0]->ToString(context).ToLocalChecked())
+           .FromJust();
 
   args.GetReturnValue().Set(obj);
 }
@@ -362,7 +487,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Για να το δοκιμάσετε στη JavaScript:
 
 ```js
 // test.js
@@ -371,12 +496,12 @@ const addon = require('./build/Release/addon');
 const obj1 = addon('hello');
 const obj2 = addon('world');
 console.log(obj1.msg, obj2.msg);
-// Prints: 'hello world'
+// Τυπώνει: 'hello world'
 ```
 
-### Function factory
+### Εργοστάσιο Συναρτήσεων
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Ένα άλλο συνηθισμένο σενάριο είναι η δημιουργία συναρτήσεων JavaScript που εσωκλείουν συναρτήσεις C++ και τις επιστρέφουν στην JavaScript:
 
 ```cpp
 // addon.cc
@@ -384,28 +509,33 @@ Another common scenario is creating JavaScript functions that wrap C++ functions
 
 namespace demo {
 
+using v8::Context;
 using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void MyFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "hello world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(
+      isolate, "hello world", NewStringType::kNormal).ToLocalChecked());
 }
 
 void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
+  Local<Context> context = isolate->GetCurrentContext();
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
-  Local<Function> fn = tpl->GetFunction();
+  Local<Function> fn = tpl->GetFunction(context).ToLocalChecked();
 
   // omit this to make it anonymous
-  fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
+  fn->SetName(String::NewFromUtf8(
+      isolate, "theFunction", NewStringType::kNormal).ToLocalChecked());
 
   args.GetReturnValue().Set(fn);
 }
@@ -419,7 +549,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Για δοκιμή:
 
 ```js
 // test.js
@@ -427,12 +557,12 @@ const addon = require('./build/Release/addon');
 
 const fn = addon();
 console.log(fn());
-// Prints: 'hello world'
+// Τυπώνει: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Εγκλεισμός Αντικειμένων C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Είναι επίσης δυνατό να εσωκλείσετε αντικείμενα/κλάσεις C++ με τρόπο που επιτρέπει τη δημιουργία νέων στιγμιοτύπων με τη χρήση του χειριστή JavaScript `new`:
 
 ```cpp
 // addon.cc
@@ -453,7 +583,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Έτσι, μέσα στο αρχείο `myobject.h`, η κλάση εγκλεισμού κληρονομεί από το `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -484,7 +614,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Στο αρχείο `myobject.cc`, γίνεται υλοποίηση των μεθόδων που θέλουμε να εκθέσουμε. Στο παρακάτω παράδειγμα, η μέθοδος `plusOne()` εκτίθεται προσθέτοντάς την στο πρωτότυπο του constructor:
 
 ```cpp
 // myobject.cc
@@ -498,6 +628,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::Persistent;
@@ -517,23 +648,28 @@ void MyObject::Init(Local<Object> exports) {
 
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
-  constructor.Reset(isolate, tpl->GetFunction());
-  exports->Set(String::NewFromUtf8(isolate, "MyObject"),
-               tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
+  exports->Set(context, String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked(),
+               tpl->GetFunction(context).ToLocalChecked()).FromJust();
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
@@ -541,7 +677,6 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     // Invoked as plain function `MyObject(...)`, turn into construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Function> cons = Local<Function>::New(isolate, constructor);
     Local<Object> result =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
@@ -561,7 +696,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Για να μεταγλωττίσετε αυτό το παράδειγμα, το αρχείο `myobject.cc` πρέπει να προστεθεί στο αρχείο `binding.gyp`:
 
 ```json
 {
@@ -577,7 +712,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Δοκιμάστε το με τον παρακάτω κώδικα:
 
 ```js
 // test.js
@@ -585,24 +720,26 @@ const addon = require('./build/Release/addon');
 
 const obj = new addon.MyObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Τυπώνει: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Τυπώνει: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Τυπώνει: 13
 ```
 
-### Factory of wrapped objects
+The destructor for a wrapper object will run when the object is garbage-collected. For destructor testing, there are command-line flags that can be used to make it possible to force garbage collection. These flags are provided by the underlying V8 JavaScript engine. They are subject to change or removal at any time. They are not documented by Node.js or V8, and they should never be used outside of testing.
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+### Εργοστάσιο Εσώκλειστων Αντικειμένων
+
+Εναλλακτικά, είναι πιθανό να χρησιμοποιήσετε ένα υπόδειγμα εργοστασίου για να αποφύγετε την ρητή δημιουργία στιγμιότυπου αντικειμένων με την χρήση του χειριστή JavaScript `new`:
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// Αντί για:
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Πρώτα, υλοποιείται η μέθοδος `createObject()` στο αρχείο `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -633,7 +770,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+Στο αρχείο `myobject.h`, προστίθεται η στατική μέθοδος `NewInstance()` για τον χειρισμό της δημιουργίας στιγμιότυπου του αντικειμένου. Αυτή η μέθοδος αντικαθιστά την χρήση του χειριστή `new` στην JavaScript:
 
 ```cpp
 // myobject.h
@@ -665,7 +802,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+Η υλοποίηση στο αρχείο `myobject.cc` είναι παρόμοια με το προηγούμενο παράδειγμα:
 
 ```cpp
 // myobject.cc
@@ -680,6 +817,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::Persistent;
@@ -697,21 +835,25 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
-  constructor.Reset(isolate, tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
@@ -720,7 +862,6 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Object> instance =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
     args.GetReturnValue().Set(instance);
@@ -752,7 +893,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Για άλλη μια φορά, για να μεταγλωττίσετε αυτό το παράδειγμα, το αρχείο `myobject.cc` πρέπει να προστεθεί στο αρχείο `binding.gyp`:
 
 ```json
 {
@@ -768,7 +909,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Δοκιμάστε το με τον παρακάτω κώδικα:
 
 ```js
 // test.js
@@ -776,24 +917,24 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Τυπώνει: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Τυπώνει: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Τυπώνει: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Τυπώνει: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Τυπώνει: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Τυπώνει: 23
 ```
 
-### Passing wrapped objects around
+### Μετάδοση των εσώκλειστων αντικειμένων
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Επιπρόσθετα του εγκλεισμού και της επιστροφής αντικειμένων C++, είναι δυνατό να γίνεται μετάδοση αντικειμένων με την αφαίρεσή τους από τον εγκλεισμό, με τη χρήση της βοηθητικής συνάρτησης της Node.js `node::ObjectWrap::Unwrap`. Τα παρακάτω παραδείγματα δείχνουν μια συνάρτηση `add()` που μπορεί να πάρει σαν παραμέτρους εισόδου δύο αντικείμενα `MyObject`:
 
 ```cpp
 // addon.cc
@@ -803,6 +944,7 @@ In addition to wrapping and returning C++ objects, it is possible to pass wrappe
 
 namespace demo {
 
+using v8::Context;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
@@ -817,11 +959,12 @@ void CreateObject(const FunctionCallbackInfo<Value>& args) {
 
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   MyObject* obj1 = node::ObjectWrap::Unwrap<MyObject>(
-      args[0]->ToObject());
+      args[0]->ToObject(context).ToLocalChecked());
   MyObject* obj2 = node::ObjectWrap::Unwrap<MyObject>(
-      args[1]->ToObject());
+      args[1]->ToObject(context).ToLocalChecked());
 
   double sum = obj1->value() + obj2->value();
   args.GetReturnValue().Set(Number::New(isolate, sum));
@@ -839,7 +982,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+Στο αρχείο `myobject.h`, μια δημόσια μέθοδος προστίθεται, για να επιτρέψει την πρόσβαση σε ιδιωτικές τιμές μετά την αφαίρεση του αντικειμένου από τον εγκλεισμό του.
 
 ```cpp
 // myobject.h
@@ -871,7 +1014,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+Η υλοποίηση του αρχείου `myobject.cc` είναι παρόμοια με πριν:
 
 ```cpp
 // myobject.cc
@@ -886,6 +1029,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::Persistent;
 using v8::String;
@@ -902,18 +1046,22 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  constructor.Reset(isolate, tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
@@ -921,7 +1069,6 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     // Invoked as plain function `MyObject(...)`, turn into construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Function> cons = Local<Function>::New(isolate, constructor);
     Local<Object> instance =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
@@ -945,7 +1092,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Δοκιμάστε το με τον παρακάτω κώδικα:
 
 ```js
 // test.js
@@ -956,25 +1103,25 @@ const obj2 = addon.createObject(20);
 const result = addon.add(obj1, obj2);
 
 console.log(result);
-// Prints: 30
+// Τυπώνει: 30
 ```
 
 ### AtExit hooks
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Ένα `AtExit` hook είναι μια συνάρτηση που καλείται αφού ο βρόχος συμβάντων της Node.js έχει ολοκληρωθεί, αλλά πριν τερματιστεί η εικονική μηχανή της javaScript και η Node.js τερματίσει τη λειτουργία της. Τα `AtExit` hook καταχωρούνται με τη χρήση του API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
+* `args` <span class="type">&lt;void\*&gt;</span> Ένας δείκτης που μεταδίδεται στο callback κατά την έξοδο.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Καταχωρεί hook εξόδου, που εκτελούνται αφού ολοκληρωθεί ο βρόχος συμβάντων, αλλά πριν τον τερματισμό της εικονικής μηχανής.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+Η συνάρτηση `AtExit` δέχεται δύο παραμέτρους: έναν δείκτη προς μια συνάρτηση callback που θα τρέξει κατά την έξοδο, και έναν δείκτη προς δεδομένα χωρίς τύπο που μεταδίδονται στο προαναφερόμενο callback.
 
-Callbacks are run in last-in first-out order.
+Τα callback εκτελούνται με σειρά Last-in First-out.
 
-The following `addon.cc` implements `AtExit`:
+Το παρακάτω αρχείο `addon.cc` υλοποιεί την συνάρτηση `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1025,7 +1172,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Δοκιμάστε το στην JavaScript εκτελώντας:
 
 ```js
 // test.js
