@@ -1,35 +1,32 @@
-# Query String
+# String de Consulta
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estability: 2 - Estable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
+El módulo `querystring` proporciona utilidades para análisis y formateo de strings de consulta de URL. Se puede acceder a él utilizando:
 
 ```js
 const querystring = require('querystring');
 ```
 
 ## querystring.escape(str)
-
 <!-- YAML
 added: v0.1.25
 -->
 
 * `str` {string}
 
-The `querystring.escape()` method performs URL percent-encoding on the given `str` in a manner that is optimized for the specific requirements of URL query strings.
+El método `querystring.escape()` realiza codificación porcentual de URL en el `str` dado, de una forma que está optimizada para los requerimientos específicos de las strings de consulta de URL.
 
-The `querystring.escape()` method is used by `querystring.stringify()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement percent-encoding implementation if necessary by assigning `querystring.escape` to an alternative function.
+El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que sea utilizado de forma directa. Principalmente, se exporta para permitir que el código de aplicación proporcione una codificación porcentual de remplazo, de ser necesario, asignando `querystring.escape` a una función alternativa.
 
 ## querystring.parse(str[, sep[, eq[, options]]])
-
 <!-- YAML
 added: v0.1.25
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10967
     description: Multiple empty entries are now parsed correctly (e.g. `&=&=`).
@@ -41,19 +38,16 @@ changes:
     description: The `eq` parameter may now have a length of more than `1`.
 -->
 
-* `str` {string} The URL query string to parse
-* `sep` {string} The substring used to delimit key and value pairs in the query string. Defaults to `'&'`.
-* `eq` {string}. The substring used to delimit keys and values in the query string. Defaults to `'='`.
-* `options` {Object} 
-  * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. Defaults to `querystring.unescape()`.
-  * `maxKeys` {number} Specifies the maximum number of keys to parse. Defaults to `1000`. Specify `0` to remove key counting limitations.
+* `str` {string} La string de consulta de URL a analizar
+* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valor en la string de consulta. **Predeterminado:** `'&'`.
+* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la string de consulta. **Predeterminado:** `'='`.
+* `opciones` {Object}
+  * `decodeURIComponent` {Function} La función que se utiliza al decodificar caracteres de codificación porcentual en la string de consulta. **Predeterminado:** `querystring.unescape()`.
+  * `maxKeys` {number} Especifica el número máximo de claves a analizar. Especifique `0` para remover las limitaciones del conteo de claves. **Default:** `1000`.
 
-The `querystring.parse()` method parses a URL query string (`str`) into a collection of key and value pairs.
+El método `querystring.parse()` analiza una string de consulta de URL (`str`) en una colección de pares de clave y valor.
 
-For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
-
-<!-- eslint-skip -->
-
+Por ejemplo, la string de consulta `'foo=bar&abc=xyz&abc=123'` es analizada en:
 ```js
 {
   foo: 'bar',
@@ -61,62 +55,60 @@ For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 }
 ```
 
-*Note*: The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+*Note*: The object returned by the `querystring.parse()` method _does not_ prototypically inherit from the JavaScript `Object`. Esto significa que métodos típicos de `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified as illustrated in the following example:
+Por defecto, se asumirá que los caracteres codificados porcentualmente dentro de la string de consulta utilizan codificación UTF-8. Si se utiliza una codificación de caracteres alternativa, entonces se deberá especificar una opción `decodeURIComponent` alternativa, como se ilustra en el siguiente ejemplo:
 
 ```js
-// Assuming gbkDecodeURIComponent function already exists...
+// Asumiento que la función gbkDecodeURIComponent ya existe...
 
 querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
 ```
 
-## querystring.stringify(obj[, sep[, eq[, options]]])
-
-<!-- YAML
+## querystring.stringify(obj[, sep[, eq[, options]]])<!-- YAML
 added: v0.1.25
--->
+-->* `obj` {Object} El objeto a serializar en una string de consulta de URL
+* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valor en la string de consulta. **Predeterminado:** `'&'`.
+* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la string de consulta. **Predeterminado:** `'='`.
+* `options`
+  * `encodeURIComponent` {Function} La función a utilizar al convertir caracteres no seguros de URL a codificación porcentual en la string de consulta. **Predeterminado:** `querystring.escape()`.
 
-* `obj` {Object} The object to serialize into a URL query string
-* `sep` {string} The substring used to delimit key and value pairs in the query string. Defaults to `'&'`.
-* `eq` {string}. The substring used to delimit keys and values in the query string. Defaults to `'='`.
-* `options` 
-  * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. Defaults to `querystring.escape()`.
+El método `querystring.stringify()` produce una string de consulta partiendo de un `obj` dado, mediante la iteración a través de las "propiedades propias" del objeto.
 
-The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
+It serializes the following types of values passed in `obj`:
+{string|number|boolean|string[]|number[]|boolean[]}
+Any other input values will be coerced to empty strings.
 
-It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
-
-Por ejemplo:
+For example:
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
-// returns 'foo=bar&baz=qux&baz=quux&corge='
+// devuelve 'foo=bar&baz=qux&baz=quux&corge='
 
 querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
-// returns 'foo:bar;baz:qux'
+// devuelve 'foo:bar;baz:qux'
 ```
 
-By default, characters requiring percent-encoding within the query string will be encoded as UTF-8. If an alternative encoding is required, then an alternative `encodeURIComponent` option will need to be specified as illustrated in the following example:
+Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si una codificación alternativa es requerida, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
-// Assuming gbkEncodeURIComponent function already exists,
+// Asumiendo que la función gbkEncodeURIComponent ya existe,
 
 querystring.stringify({ w: '中文', foo: 'bar' }, null, null,
                       { encodeURIComponent: gbkEncodeURIComponent });
 ```
 
 ## querystring.unescape(str)
-
 <!-- YAML
 added: v0.1.25
 -->
 
 * `str` {string}
 
-The `querystring.unescape()` method performs decoding of URL percent-encoded characters on the given `str`.
 
-The `querystring.unescape()` method is used by `querystring.parse()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement decoding implementation if necessary by assigning `querystring.unescape` to an alternative function.
+El método `querystring.unescape()`realiza la decodificación de caracteres codificados en porcentaje de URL en la `str` dada.
 
-By default, the `querystring.unescape()` method will attempt to use the JavaScript built-in `decodeURIComponent()` method to decode. If that fails, a safer equivalent that does not throw on malformed URLs will be used.
+El método `querystring.unescape()` es utilizado por `querystring.parse()` y generalmente no se espera que se use directamente. Principalmente, es exportado para permitir que el código de aplicación pueda proporcionar una implementación de codificación de reemplazo si es necesario, asignando `querystring.unescape` a una función alternativa.
+
+Por defecto, el método `querystring.unescape()` intentará utilizar el método incorporado de JavaScript `decodeURIComponent()` para decodificar. Si falla, se utilizará un equivalente más seguro que no arroje en URLs mal formadas.
