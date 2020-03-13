@@ -1,21 +1,19 @@
 # Objets Globaux
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
 Ces objets sont disponibles dans tous les modules. Les variables suivantes peuvent apparaître comme globales mais ne sont pas. Elles n’existent que dans la portée des modules, voir la [documentation du système de module](modules.html) :
 
-* [`__dirname`][]
-* [`__filename`][]
-* [`exports`][]
-* [`module`][]
-* [`require()`][]
+- [`__dirname`][]
+- [`__filename`][]
+- [`exports`][]
+- [`module`][]
+- [`require()`][]
 
 Les objets listés ici sont spécifiques à Node.js. Il y a un certain nombre d' [objets built-in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) faisant partie du langage JavaScript lui-même, qui sont également accessibles globalement.
 
 ## Classe: Buffer
-
 <!-- YAML
 added: v0.1.103
 -->
@@ -35,7 +33,6 @@ Cette variable peut sembler globale mais ne l'est pas. Voir [`__dirname`].
 Cette variable peut sembler globale mais ne l'est pas. Voir [`__filename`].
 
 ## clearImmediate(immediateObject)
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -45,7 +42,6 @@ added: v0.9.1
 [`clearImmediate`] est décrite dans la section [timers](timers.html).
 
 ## clearInterval(intervalObject)
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -55,7 +51,6 @@ added: v0.0.1
 [`clearInterval`] est décrite dans la section [timers](timers.html).
 
 ## clearTimeout(timeoutObject)
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -65,7 +60,6 @@ added: v0.0.1
 [`clearTimeout`] est décrite dans la section [timers](timers.html).
 
 ## console
-
 <!-- YAML
 added: v0.1.100
 -->
@@ -81,7 +75,6 @@ Utilisé pour écrire vers stdout et stderr. Voir la section [`console`][].
 Cette variable peut sembler globale mais ne l'est pas. Voir [`exports`].
 
 ## global
-
 <!-- YAML
 added: v0.1.27
 -->
@@ -97,7 +90,6 @@ Dans les navigateurs, la portée la plus haute est la portée globale. Cela sign
 Cette variable peut sembler globale mais ne l'est pas. Voir [`module`].
 
 ## process
-
 <!-- YAML
 added: v0.1.7
 -->
@@ -113,7 +105,6 @@ L'objet process. Voir la section [objet `process`][].
 Cette variable peut sembler globale mais ne l'est pas. Voir [`require()`].
 
 ## setImmediate(callback[, ...args])
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -123,7 +114,6 @@ added: v0.9.1
 [`setImmediate`] est décrite dans la section [timers](timers.html).
 
 ## setInterval(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -133,7 +123,6 @@ added: v0.0.1
 [`setInterval`] est décrite dans la section [timers](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -143,21 +132,30 @@ added: v0.0.1
 [`setTimeout`] est décrite dans la section [timers](timers.html).
 
 ## URL
-
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-La classe `URL` WHATWG. Voir la section [`URL`][].
+The WHATWG `URL` class. See the [`URL`][] section.
 
 ## URLSearchParams
-
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-La classe `URLSearchParams` WHATWG. Voir la section [`URLSearchParams`][].
+The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+
+## WebAssembly
+<!-- YAML
+added: v8.0.0
+-->
+
+<!-- type=global -->
+
+* {Object}
+
+The object that acts as the namespace for all W3C [WebAssembly](https://webassembly.org) related functionality. See the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/WebAssembly) for usage and compatibility.
