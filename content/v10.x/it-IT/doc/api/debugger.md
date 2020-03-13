@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Stabilità: 2 - Stabile
+> Stabilità: 2 - Stable
 
 <!-- type=misc -->
 
@@ -23,9 +23,6 @@ debug>
 Il debugger client di Node.js non è un debugger completo, ma sono ugualmente possibili semplici step e ispezioni.
 
 L'inserimento dell'istruzione `debugger;` nel codice sorgente di uno script abiliterà un breakpoint in quella posizione nel codice:
-
-<!-- eslint-disable no-debugger -->
-
 ```js
 // myscript.js
 global.x = 5;
@@ -104,8 +101,8 @@ Per iniziare a guardare un expression, digita `watch('my_expression')`. Il coman
 * `setBreakpoint()`, `sb()` - Imposta il breakpoint sulla riga corrente
 * `setBreakpoint(line)`, `sb(line)` - Imposta il breakpoint su una riga specifica
 * `setBreakpoint('fn()')`, `sb(...)` - Imposta il breakpoint sulla prima istruzione nel corpo delle funzioni
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Imposta il breakpoint sulla prima riga di `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Cancella il breakpoint nella riga 1 di `script.js`
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
 
 È possibile anche impostare un breakpoint all'interno di un file (modulo) che non è ancora stato caricato:
 
@@ -165,7 +162,9 @@ Per inserire un break sulla prima riga del codice dell'applicazione, passa il fl
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
 To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
+    chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
 (Nell'esempio qui sopra, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 alla fine dell'URL è generato al volo, varia in diverse sessioni di debug.)
+
+If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.
