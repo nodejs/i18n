@@ -1,64 +1,57 @@
-# About this Documentation
+# Acerca de esta documentación
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+El objetivo de esta documentación es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Cada sección describe un módulo integrado o un concepto de alto nivel.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Cuando es apropiado, los tipos de propiedades, los argumentos de métodos, y los argumentos proporcionados a los manejadores de eventos son detallados en una lista bajo el título de cada tema.
 
-## Contributing
+## Contribuyendo
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Si encuentras errores en esta documentación, por favor [abre una nueva incidencia](https://github.com/nodejs/node/issues/new) o revisa [la guia de contribución](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para obtener ayuda en como enviar un arreglo del error.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Cada archivo es generado basado en el correspondiente archivo `.md` en la carpeta `doc/api/` en el arbol fuente de Node.Js. La documentación es generada usando el programa `tools/doc/generate.js`. Una plantilla de HTML está ubicada en `doc/template.html`.
 
-## Stability Index
+## Índice de Estabilidad
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+A lo largo de la documentación se indica la estabilidad de cada sección. La API de Node.js está aún, de cierta forma, cambiando, y mientras se vuelve más madura, ciertas partes son más confiables que otras. Algunas están tan bien probadas, y tan confiables, que es muy poco probable que alguna vez vayan a cambiar. Otras son muy recientes y experimentables, o se sabe que son peligrosas y están en proceso de ser rediseñadas.
 
-The stability indices are as follows:
+Los índices de estabilidad son los siguientes:
 
 ```txt
-Stability: 0 - Deprecated
-This feature is known to be problematic, and changes may be planned. Do
-not rely on it. Use of the feature may cause warnings to be emitted.
-Backwards compatibility across major versions should not be expected.
+Estabilidad: 0 - Obsoleta
+Esta funcionalidad es conocida como problemática, y puede tener cambios planificados. No confíes en ella. Uso de esta funcionalidad puede causar que se emitan advertencias.
+La compatibilidad hacia atrás a través de las versiones principales no debe ser esperada.
 ```
 
 ```txt
-Stability: 1 - Experimental
-This feature is still under active development and subject to non-backwards
-compatible changes, or even removal, in any future version. Use of the feature
-is not recommended in production environments. Experimental features are not
-subject to the Node.js Semantic Versioning model.
+Estabilidad: 1 - Experimental
+Esta funcionalidad está aún bajo desarrollo activo y se encuentra sujeta a cambios de compatibilidad no hacia atrás, o incluso removida, en cualquier versión futura. El uso de esta funcionalidad no es recomendado en entornos de producción. Las características experimentales no son sujetas al modelo versionado semántico de Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable
-The API has proven satisfactory. Compatibility with the npm ecosystem
-is a high priority, and will not be broken unless absolutely necessary.
+Estabilidad: 2 - Estable
+La API ha sido probado satisfactoriamente. Compatibilidad con el ecosistema npm es una prioridad, y no se rompe a menos que sea absolutamente necesaria.
 ```
 
-*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
+*Nota*: Debe tener precaución al usar funcionalidades `Experimentales`, particularmente dentro de módulos que pueden ser usado como dependencias (o dependencias de dependencias) dentro de una aplicación Node.js. Los usuarios finales pueden no ser conscientes que funcionalidades experimentales están siendo usadas, y por lo tanto, pueden experimentar fallos no esperados o cambios en el comportamiento cuando ocurran modificaciones a la API. Para ayudar a evitar tales sorpresas, funcionalidades `Experimentales` pueden requerir una bandera de la línea de comandos para permitirlas explícitamente, o puede causar que una advertencia del proceso sea emitida. Por defecto, dichas advertencias son impresas en [`stderr`][] y pueden ser manejadas adjuntandoles una función oyente al evento [`process.on('warning')`][].
 
-## JSON Output
-
+## Salida JSON
 <!-- YAML
 added: v0.6.12
 -->
 
 > Estabilidad: 1 - Experimental
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Cada documento `.html` tiene un correspondiente documento `.json` presentando la misma información de forma estructurada. Esta funcionalidad es experimental, y es añadidad para el beneficio de las IDEs y otras utilidade que desean hacer cosas programáticas con la documentación.
 
-## Syscalls and man pages
+## Syscalls y páginas man
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Llamadas de Sistemas como open(2) y read(2) definen la interfaz entre los programas de usuario y el sistema operativo subyacente. Las funciones de Node.js que simplemente envuelven a un syscall, como [`fs.open()`][], lo documentarán. Los documentos enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo funcionan las syscalls.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Algunas syscalls, como Ichown(2), son específicas BSD. Esto significa, por ejemplo, que [`fs.lchown()`][] solo funciona en macOS y otros sistemas BSD derivados, y no está disponible en Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+La mayoría de las syscalls tienen equivalentes en Windows, pero el comportamiento puede diferir en Windows relativo a Linux y macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
