@@ -1,9 +1,17 @@
 # Menținere npm în Node.js
 
+New pull requests should be opened when a "next" version of npm has been released. Once the "next" version has been promoted to "latest" the PR should be updated as necessary.
+
+Two weeks after the "latest" release has been promoted it can land on master assuming no major regressions are found. There are no additional constraints for Semver-Major releases.
+
+The specific Node.js release streams the new version will be able to land into are at the discretion of the release and LTS teams.
+
+This process only covers full updates to new versions of npm. Cherry-picked changes can be reviewed and landed via the normal consensus seeking process.
+
 ## Pasul 1: Clonează npm
 
 ```console
-$ git clone https://github.com/npm/npm.git
+$ git clone https://github.com/npm/cli.git npm
 $ cd npm
 ```
 
@@ -21,7 +29,7 @@ $ git checkout vX.Y.Z
 $ make release
 ```
 
-Notă: te rog rulează `npm dist-tag ls npm` și asigură-te că acesta este `ultimul` **dist-tag**. `ultimul` în git este de obicei eliberat ca `următorul` când este timpul pentru downstream
+Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
 ## Pasul 3: Elimină vechiul npm
 
