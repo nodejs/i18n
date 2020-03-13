@@ -1,76 +1,70 @@
 # Registro de Cambios de Node.js 0.10
 
 <!--lint disable prohibited-strings-->
-
 <!--lint disable maximum-line-length-->
 
 <table>
-  
 <tr>
 <th colspan="2">Estable</th>
 </tr>
-  
-  <tr>
-    <td valign="top">
-      
-<a href="#0.10.48">0.10.48</a><br />
-<a href="#0.10.47">0.10.47</a><br />
-<a href="#0.10.46">0.10.46</a><br />
-<a href="#0.10.45">0.10.45</a><br />
-<a href="#0.10.44">0.10.44</a><br />
-<a href="#0.10.43">0.10.43</a><br />
-<a href="#0.10.42">0.10.42</a><br />
-<a href="#0.10.41">0.10.41</a><br />
-<a href="#0.10.40">0.10.40</a><br />
-<a href="#0.10.39">0.10.39</a><br />
-<a href="#0.10.38">0.10.38</a><br />
-<a href="#0.10.37">0.10.37</a><br />
-<a href="#0.10.36">0.10.36</a><br />
-<a href="#0.10.35">0.10.35</a><br />
-<a href="#0.10.34">0.10.34</a><br />
-<a href="#0.10.33">0.10.33</a><br />
-<a href="#0.10.32">0.10.32</a><br />
-<a href="#0.10.31">0.10.31</a><br />
-<a href="#0.10.30">0.10.30</a><br />
-<a href="#0.10.29">0.10.29</a><br />
-<a href="#0.10.28">0.10.28</a><br />
-<a href="#0.10.27">0.10.27</a><br />
-<a href="#0.10.26">0.10.26</a><br />
-<a href="#0.10.25">0.10.25</a><br />
-<a href="#0.10.24">0.10.24</a><br />
-<a href="#0.10.23">0.10.23</a><br />
-    </td>
-    
-    <td valign="top">
-      
-<a href="#0.10.22">0.10.22</a><br />
-<a href="#0.10.21">0.10.21</a><br />
-<a href="#0.10.20">0.10.20</a><br />
-<a href="#0.10.19">0.10.19</a><br />
-<a href="#0.10.18">0.10.18</a><br />
-<a href="#0.10.17">0.10.17</a><br />
-<a href="#0.10.16">0.10.16</a><br />
-<a href="#0.10.15">0.10.15</a><br />
-<a href="#0.10.14">0.10.14</a><br />
-<a href="#0.10.13">0.10.13</a><br />
-<a href="#0.10.12">0.10.12</a><br />
-<a href="#0.10.11">0.10.11</a><br />
-<a href="#0.10.10">0.10.10</a><br />
-<a href="#0.10.9">0.10.9</a><br />
-<a href="#0.10.8">0.10.8</a><br />
-<a href="#0.10.7">0.10.7</a><br />
-<a href="#0.10.6">0.10.6</a><br />
-<a href="#0.10.5">0.10.5</a><br />
-<a href="#0.10.4">0.10.4</a><br />
-<a href="#0.10.3">0.10.3</a><br />
-<a href="#0.10.2">0.10.2</a><br />
-<a href="#0.10.1">0.10.1</a><br />
-<a href="#0.10.0">0.10.0</a><br />
-    </td>
-  </tr>
+<tr>
+<td valign="top">
+<a href="#0.10.48">0.10.48</a><br/>
+<a href="#0.10.47">0.10.47</a><br/>
+<a href="#0.10.46">0.10.46</a><br/>
+<a href="#0.10.45">0.10.45</a><br/>
+<a href="#0.10.44">0.10.44</a><br/>
+<a href="#0.10.43">0.10.43</a><br/>
+<a href="#0.10.42">0.10.42</a><br/>
+<a href="#0.10.41">0.10.41</a><br/>
+<a href="#0.10.40">0.10.40</a><br/>
+<a href="#0.10.39">0.10.39</a><br/>
+<a href="#0.10.38">0.10.38</a><br/>
+<a href="#0.10.37">0.10.37</a><br/>
+<a href="#0.10.36">0.10.36</a><br/>
+<a href="#0.10.35">0.10.35</a><br/>
+<a href="#0.10.34">0.10.34</a><br/>
+<a href="#0.10.33">0.10.33</a><br/>
+<a href="#0.10.32">0.10.32</a><br/>
+<a href="#0.10.31">0.10.31</a><br/>
+<a href="#0.10.30">0.10.30</a><br/>
+<a href="#0.10.29">0.10.29</a><br/>
+<a href="#0.10.28">0.10.28</a><br/>
+<a href="#0.10.27">0.10.27</a><br/>
+<a href="#0.10.26">0.10.26</a><br/>
+<a href="#0.10.25">0.10.25</a><br/>
+<a href="#0.10.24">0.10.24</a><br/>
+<a href="#0.10.23">0.10.23</a><br/>
+</td>
+<td valign="top">
+<a href="#0.10.22">0.10.22</a><br/>
+<a href="#0.10.21">0.10.21</a><br/>
+<a href="#0.10.20">0.10.20</a><br/>
+<a href="#0.10.19">0.10.19</a><br/>
+<a href="#0.10.18">0.10.18</a><br/>
+<a href="#0.10.17">0.10.17</a><br/>
+<a href="#0.10.16">0.10.16</a><br/>
+<a href="#0.10.15">0.10.15</a><br/>
+<a href="#0.10.14">0.10.14</a><br/>
+<a href="#0.10.13">0.10.13</a><br/>
+<a href="#0.10.12">0.10.12</a><br/>
+<a href="#0.10.11">0.10.11</a><br/>
+<a href="#0.10.10">0.10.10</a><br/>
+<a href="#0.10.9">0.10.9</a><br/>
+<a href="#0.10.8">0.10.8</a><br/>
+<a href="#0.10.7">0.10.7</a><br/>
+<a href="#0.10.6">0.10.6</a><br/>
+<a href="#0.10.5">0.10.5</a><br/>
+<a href="#0.10.4">0.10.4</a><br/>
+<a href="#0.10.3">0.10.3</a><br/>
+<a href="#0.10.2">0.10.2</a><br/>
+<a href="#0.10.1">0.10.1</a><br/>
+<a href="#0.10.0">0.10.0</a><br/>
+</td>
+</tr>
 </table>
 
-* Otras Versiones 
+* Otras Versiones
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -80,15 +74,15 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Nota*: Node.js v0.10 está cubierto por el [Plan de Soporte de Largo Plazo de Node.js](https://github.com/nodejs/LTS) y va a ser mantenido hasta Octubre del 2016.
+*Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
 
 <a id="0.10.48"></a>
 
 ## 2016-10-18, Versión 0.10.48 (Mantenimiento), @rvagg
 
-Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Cambios notables
 
@@ -104,14 +98,14 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-09-27, Version 0.10.47 (Mantenimiento), @rvagg
 
-Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Cambios notables:
+### Cambios Notables:
 
 * buffer: Rellena con ceros los bytes en exceso en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenados. (Сковорода Никита Андреевич)
-* http: 
-  * CVE-2016-5325 - Apropiadamente válido para los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
-  * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
+* http:
+  - CVE-2016-5325 - Apropiadamente válido para los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
+  - Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
 * openssl: Actualizar a 1.0.1u, repara un número de defectos impactando a Node.js: CVE-2016-6304 ("OCSP Estado de la solicitud de extensión sin límite crecimiento de la memoria", severidad alta), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306.
 * tls: CVE-2016-7099 - Repara una verificación de la validación del certificado del comodín, por lo tanto un servidor TLS pudiera ser capaz de servir un certificado de comodín inválido para su hostname debido a una validación impropia de `*.` en el string del comodín. Reportado originalmente por Alexander Minozhenko y James Bunton (Atlassian) (Ben Noordhuis)
 
@@ -138,7 +132,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 * libuv: (CVE-2014-9748) Repara un bug en la implementación de bloqueo de leer/escribir para Windows XP y Windows 2003 que puede llevar a un comportamiento no definido y potencialmente peligroso. Se puede conseguir más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Repara una potencial vulnerabilidad de desbordamiento en el Búfer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 , o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
@@ -152,12 +146,12 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-05-06, Versión 0.10.45 (Mantenimiento), @rvagg
 
-### Cambios notables:
+### Cambios Notables:
 
 * npm: Corregir números de versiones erróneos en código de v2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* openssl: Actualizar a v1.0.1t, abordando las vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
-  * Repara CVE-2016-2107 "Oráculo de relleno en la verificación AES-NI CBC MAC"
-  * Vea https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ para los detalles completos
+* openssl: Actualizar a v1.0.1t, abordando las vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+  - Repara CVE-2016-2107 "Oráculo de relleno en la verificación AES-NI CBC MAC"
+  - Vea https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ para los detalles completos
 
 ### Commits:
 
@@ -190,17 +184,17 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-03-04, Versión 0.10.43 (Mantenimiento), @rvagg
 
-### Cambios notables:
+### Cambios Notables:
 
 * http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de cabecera permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
-* dominio: 
-  * Previene una salida debido a que se arroja una excepción en vez de emitir un evento `'uncaughtException'` en el objeto `process` cuando ningún manejador de errores es establecido en el dominio donde se arroja un error, y un listener del evento `'uncaughtException'` es establecido en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-  * Repara un problema donde el proceso no abortaría en la llamada de función adecuada si un error es arrojado dentro del dominio sin un manejador de errores y es usado`--abort-on-uncaught-exception`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-* openssl: Actualizar de 1.0.1r a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508 
-  * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
-  * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones, por lo que los ataques prácticos a través de Node.js usando este defecto son *poco probables* que sucedan. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
-  * Reparar un defecto que hace que el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/) sea posible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y los más viejos posiblemente) cuando se use hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
-  * Elimina el soporte SSLv2, el argumento de la línea de comando `--enable-ssl2` ahora producirá un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad donde SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente roto y no debería ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* dominio:
+  - Previene una salida debido a que se arroja una excepción en vez de emitir un evento `'uncaughtException'` en el objeto `process` cuando ningún manejador de errores es establecido en el dominio donde se arroja un error, y un listener del evento `'uncaughtException'` es establecido en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+  - Repara un problema donde el proceso no abortaría en la llamada de función adecuada si un error es arrojado dentro del dominio sin un manejador de errores y es usado`--abort-on-uncaught-exception`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+* openssl: Actualizar de 1.0.1r a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
+  - Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
+  - Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones, por lo que los ataques prácticos a través de Node.js usando este defecto son _poco probables_ que sucedan. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
+  - Reparar un defecto que hace que el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/) sea posible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y los más viejos posiblemente) cuando se use hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
+  - Elimina el soporte SSLv2, el argumento de la línea de comando `--enable-ssl2` ahora producirá un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad donde SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente roto y no debería ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
 ### Commits:
 
@@ -216,19 +210,19 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-02-09, Versión 0.10.42 (Mantenimiento), @jasnell
 
-Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para detalles de vulnerabilidades parcheadas.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para los detalles de vulnerabilidades parcheadas.
 
 ### Cambios notables
 
 * http: reparar los defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el pedido a contrabandear (CVE-2016-2086) divisor de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP incluyendo la restricción de caracteres aceptables.
 * http-parser: actualizar de 1.0 a 1.1
 * openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
-* src: 
-  * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
-  * permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
-* compilación: 
-  * archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
-  * Un archivo headers.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
+* src:
+  - introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
+  - permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
+* compilación:
+  - archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
+  - Un archivo headers.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
 
 ### Commits
 
@@ -383,9 +377,9 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * uv: Actualizar a v0.10.29
 * child_process: soporta de manera correcta args opcionales (cjihrig)
 * crypto: Deshabilita autonegociación para SSLv2/3 de manera predeterminada (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
-  
+
   Este es un cambio de comportamiento, de manera predeterminada no permitiremos la negociación a SSLv2 o SSLv3. Si deseas este comportamiento, ejecuta Node.js con `--enable-ssl2` o `--enable-ssl3`, respectivamente.
-  
+
   Esto no cambia el comportamiento para los usuarios que estén solicitando específicamente `SSLv2_method` or `SSLv3_method`. Mientras este comportamiento no es recomendado, es asumido que tu sabes lo que estás haciendo dado que tu eres el que lo está pidiendo específicamente para usar estos métodos.
 
 <a id="0.10.32"></a>
@@ -448,11 +442,9 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * openssl: a 1.0.1h (CVE-2014-0224)
 * npm: actualizar a 1.4.14
 * utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
-  
-  * *NOTA* Esto introduce un cambio radical, anteriormente tu podías construir UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 válidos, ahora los pares de sustitución que no tienen pareja son reemplazados con un carácter UTF-8 desconocido. Para restaurar la vieja funcionalidad, simplemente ten ambiente variable NODE_INVALID_UTF8 establecido.
+  - *NOTA* Esto introduce un cambio radical, anteriormente tu podías construir UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 válidos, ahora los pares de sustitución que no tienen pareja son reemplazados con un carácter UTF-8 desconocido. Para restaurar la vieja funcionalidad, simplemente ten ambiente variable NODE_INVALID_UTF8 establecido.
 
 * child_process: no establecer args antes de arrojar (Greg Sabia Tucker)
-
 * child_process: spawn() no arroja TypeError (Greg Sabia Tucker)
 * constants: exportar O_NONBLOCK (Fedor Indutny)
 * crypto: mejorar el uso de memoria (Alexis Campailla)
@@ -595,8 +587,8 @@ https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
 
 https://github.com/nodejs/node/commit/d7234c8d50a1af73f60d2d3c0cc7eed17429a481
 
-* tls: reparar colgado esporádico y lecturas parciales (Fedor Indutny) 
-  * reparar "¡npm ERR! cb() nunca llamado!"
+* tls: reparar colgado esporádico y lecturas parciales (Fedor Indutny)
+  - reparar "¡npm ERR! cb() nunca llamado!"
 
 <a id="0.10.19"></a>
 
