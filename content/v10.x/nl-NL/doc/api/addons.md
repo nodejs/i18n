@@ -1,20 +1,19 @@
 # C++ Addons
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
 Node.js Addons zijn dynamisch gekoppelde gedeelde objecten, geschreven in C++ die in Node.js kunnen worden geladen met behulp van de [`require()`](modules.html#modules_require)functie, en kunnen worden gebruikt alsof zij een gewone Node.js module zijn. Ze worden voornamelijk gebruikt als interface tussen JavaScript uitgevoerd in Node.js en C/C++ bibliotheken.
 
 Op dit moment is de methode voor het implementeren van Addons nogal ingewikkeld, waarbij kennis van de verschillende componenten en API's noodzakelijk is:
 
-* V8: de C++ bibliotheek die Node.js momenteel gebruikt ten behoeve van de uitvoering van JavaScript. V8 biedt het mechanisme voor het creëren van objecten, aanroepfuncties, enz. V8 API wordt meestal gedocumenteerd in het `v8.h`headerbestand (`deps/v8/include/v8.h` in de Node.js source tree), die ook beschikbaar is [online](https://v8docs.nodesource.com/).
+ - V8: de C++ bibliotheek die Node.js momenteel gebruikt ten behoeve van de uitvoering van JavaScript. V8 biedt het mechanisme voor het creëren van objecten, aanroepfuncties, enz. V8 API wordt meestal gedocumenteerd in het `v8.h`headerbestand (`deps/v8/include/v8.h` in de Node.js source tree), die ook beschikbaar is [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenissenlus, zijn werk-items, en alle asynchrone procesvoering van het platform implementeert. Het fungeert ook als een platformoverschrijdende abstractie bibliotheek, wat gemakkelijke, POSIX-achtige toegang geeft tot alle belangrijke besturingssystemen naar populaire systeemtaken, zoals de interactie met het bestandssysteem, sockets, timers, en systeemgebeurtenissen. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon auteurs worden aangemoedigd om na te denken over hoe ze kunnen voorkomen dat een gebeurtenissenlus met I/O en andere tijdsintensieve taken wordt geblokkeerd, door het werk te off-loaden via libuv naar niet-blokkerende systeem operaties, werk-threads of een aangepast gebruik van libuv's threads.
+ - [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenissenlus, zijn werk-items, en alle asynchrone procesvoering van het platform implementeert. Het fungeert ook als een platformoverschrijdende abstractie bibliotheek, wat gemakkelijke, POSIX-achtige toegang geeft tot alle belangrijke besturingssystemen naar populaire systeemtaken, zoals de interactie met het bestandssysteem, sockets, timers, en systeemgebeurtenissen. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon auteurs worden aangemoedigd om na te denken over hoe ze kunnen voorkomen dat een gebeurtenissenlus met I/O en andere tijdsintensieve taken wordt geblokkeerd, door het werk te off-loaden via libuv naar niet-blokkerende systeem operaties, werk-threads of een aangepast gebruik van libuv's threads.
 
-* Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
+ - Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
 
-* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
+ - Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
 Alle van de volgende voorbeelden zijn beschikbaar om te [downloaden](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
 
@@ -29,7 +28,7 @@ module.exports.hallo = () => 'wereld';
 Maak eerst het bestand `hallo.cc`:
 
 ```cpp
-// hallo.cc
+// hello.cc
 #include <node.h>
 
 namespace demo {
@@ -37,20 +36,22 @@ namespace demo {
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "wereld"));
+  args.GetReturnValue().Set(String::NewFromUtf8(
+      isolate, "world", NewStringType::kNormal).ToLocalChecked());
 }
 
-void init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "hallo", Method);
+void Initialize(Local<Object> exports) {
+  NODE_SET_METHOD(exports, "hello", Method);
 }
 
-NODE_MODULE(NODE_GYP_MODULE_NAME, init)
+NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 }  // namespace demo
 ```
@@ -66,7 +67,109 @@ Er is geen puntkomma na `NODE_MODULE` omdat het geen functie is (zie `node.h`).
 
 De `module_name` moet overeenstemmen met de bestandsnaam van de laatste binary (exclusief het `.node` achtervoegsel).
 
-In het voorbeeld `hallo.cc`, vervolgens de initialisatie functie `init` en de naam van de Addon module is `addon`.
+In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
+
+When building addons with `node-gyp`, using the macro `NODE_GYP_MODULE_NAME` as the first parameter of `NODE_MODULE()` will ensure that the name of the final binary will be passed to `NODE_MODULE()`.
+
+### Context-aware addons
+
+There are environments in which Node.js addons may need to be loaded multiple times in multiple contexts. For example, the [Electron](https://electronjs.org/) runtime runs multiple instances of Node.js in a single process. Each instance will have its own `require()` cache, and thus each instance will need a native addon to behave correctly when loaded via `require()`. From the addon's perspective, this means that it must support multiple initializations.
+
+A context-aware addon can be constructed by using the macro `NODE_MODULE_INITIALIZER`, which expands to the name of a function which Node.js will expect to find when it loads an addon. An addon can thus be initialized as in the following example:
+
+```cpp
+using namespace v8;
+
+extern "C" NODE_MODULE_EXPORT void
+NODE_MODULE_INITIALIZER(Local<Object> exports,
+                        Local<Value> module,
+                        Local<Context> context) {
+  /* Perform addon initialization steps here. */
+}
+```
+
+Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
+
+The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+* `Local<Object> exports`,
+* `Local<Value> module`, and
+* `Local<Context> context`
+
+The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
+
+The context-aware addon can be structured to avoid global static data by performing the following steps:
+* defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
+* constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
+* storing the instance of the class in a `v8::External`, and
+* passing the `v8::External` to all methods exposed to JavaScript by passing it to the `v8::FunctionTemplate` constructor which creates the native-backed JavaScript functions. The `v8::FunctionTemplate` constructor's third parameter accepts the `v8::External`.
+
+This will ensure that the per-addon-instance data reaches each binding that can be called from JavaScript. The per-addon-instance data must also be passed into any asynchronous callbacks the addon may create.
+
+The following example illustrates the implementation of a context-aware addon:
+
+```cpp
+#include <node.h>
+
+using namespace v8;
+
+class AddonData {
+ public:
+  AddonData(Isolate* isolate, Local<Object> exports):
+      call_count(0) {
+    // Link the existence of this object instance to the existence of exports.
+    exports_.Reset(isolate, exports);
+    exports_.SetWeak(this, DeleteMe, WeakCallbackType::kParameter);
+  }
+
+  ~AddonData() {
+    if (!exports_.IsEmpty()) {
+      // Reset the reference to avoid leaking data.
+      exports_.ClearWeak();
+      exports_.Reset();
+    }
+  }
+
+  // Per-addon data.
+  int call_count;
+
+ private:
+  // Method to call when "exports" is about to be garbage-collected.
+  static void DeleteMe(const WeakCallbackInfo<AddonData>& info) {
+    delete info.GetParameter();
+  }
+
+  // Weak handle to the "exports" object. An instance of this class will be
+  // destroyed along with the exports object to which it is weakly bound.
+  v8::Persistent<v8::Object> exports_;
+};
+
+static void Method(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  // Retrieve the per-addon-instance data.
+  AddonData* data =
+      reinterpret_cast<AddonData*>(info.Data().As<External>()->Value());
+  data->call_count++;
+  info.GetReturnValue().Set((double)data->call_count);
+}
+
+// Initialize this addon to be context-aware.
+NODE_MODULE_INIT(/* exports, module, context */) {
+  Isolate* isolate = context->GetIsolate();
+
+  // Create a new instance of AddonData for this instance of the addon.
+  AddonData* data = new AddonData(isolate, exports);
+  // Wrap the data in a v8::External so we can pass it to the method we expose.
+  Local<External> external = External::New(isolate, data);
+
+  // Expose the method "Method" to JavaScript, and make sure it receives the
+  // per-addon-instance data we created above by passing `external` as the
+  // third parameter to the FunctionTemplate constructor.
+  exports->Set(context,
+               String::NewFromUtf8(isolate, "method", NewStringType::kNormal)
+                  .ToLocalChecked(),
+               FunctionTemplate::New(isolate, Method, external)
+                  ->GetFunction(context).ToLocalChecked()).FromJust();
+}
+```
 
 ### Bouwen
 
@@ -137,14 +240,16 @@ De [ Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) (o
 
 ## N-API
 
-> Stabiliteit: 1 - Experimenteel
+> Stabiliteit: 2 - stabiel
 
-N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelijk van de onderliggende JavaScript runtime (bijv. V8) en wordt onderhouden als een deel van Node.js zelf. Deze API zal Application Binary Interface (ABI) stabiel zijn, over alle versies van Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. In plaats van de V8 of [Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) API's, worden de beschikbare functies in de N-API gebruikt.
+N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelijk van de onderliggende JavaScript runtime (bijv. V8) en wordt onderhouden als een deel van Node.js zelf. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. In plaats van de V8 of [Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) API's, worden de beschikbare functies in de N-API gebruikt.
+
+Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
 Om de N-API in het bovenstaande "Hallo wereld" voorbeeld te gebruiken, vervang de inhoud van `hallo.cc` met het volgende. Alle andere instructies blijven hetzelfde.
 
 ```cpp
-// hallo.cc using N-API
+// hello.cc using N-API
 #include <node_api.h>
 
 namespace demo {
@@ -153,7 +258,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
+  status = napi_create_string_utf8(env, "world", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -222,35 +327,49 @@ using v8::Exception;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
-// Dit is de implementatie van de "add" methode
-// Invoer-argumenten worden doorgegeven met behulp van
+// This is the implementation of the "add" method
+// Input arguments are passed using the
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Controleer het aantal doorgegeven argumenten.
-  als (args.Length() < 2) {
-    // Gooi een doorgegeven fout terug naar JavaScript
-    isolate-> ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Verkeerde argumenten")));
-     return;
-   }
+  // Check the number of arguments passed.
+  if (args.Length() < 2) {
+    // Throw an Error that is passed back to JavaScript
+    isolate->ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate,
+                            "Wrong number of arguments",
+                            NewStringType::kNormal).ToLocalChecked()));
+    return;
+  }
 
-  // Voer de bewerking uit
-  dubbele waarde = args[0]->NumberValue() + args[1]->NumberValue();
+  // Check the argument types
+  if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
+    isolate->ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate,
+                            "Wrong arguments",
+                            NewStringType::kNormal).ToLocalChecked()));
+    return;
+  }
+
+  // Perform the operation
+  double value =
+      args[0].As<Number>()->Value() + args[1].As<Number>()->Value();
   Local<Number> num = Number::New(isolate, value);
 
-   // Stel de retourwaarde in (met behulp van doorgegeven in
+  // Set the return value (using the passed in
   // FunctionCallbackInfo<Value>&)
+  args.GetReturnValue().Set(num);
 }
 
 void Init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "add", Voeg toe);
+  NODE_SET_METHOD(exports, "add", Add);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
@@ -277,10 +396,12 @@ Het is gebruikelijk binnen Addons om JavaScript functies door te geven naar een 
 
 namespace demo {
 
+using v8::Context;
 using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Null;
 using v8::Object;
 using v8::String;
@@ -288,10 +409,14 @@ using v8::Value;
 
 void RunCallback(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
   Local<Function> cb = Local<Function>::Cast(args[0]);
   const unsigned argc = 1;
-  Local<Value> argv[argc] = { String::NewFromUtf8(isolate, "hello world") };
-  cb->Call(Null(isolate), argc, argv);
+  Local<Value> argv[argc] = {
+      String::NewFromUtf8(isolate,
+                          "hello world",
+                          NewStringType::kNormal).ToLocalChecked() };
+  cb->Call(context, Null(isolate), argc, argv).ToLocalChecked();
 }
 
 void Init(Local<Object> exports, Local<Object> module) {
@@ -329,18 +454,26 @@ Zoals je kunt zien in het volgende voorbeeld, kunnen Addons nieuwe objecten cre�
 
 namespace demo {
 
+using v8::Context;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void CreateObject(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   Local<Object> obj = Object::New(isolate);
-  obj->Set(String::NewFromUtf8(isolate, "msg"), args[0]->ToString());
+  obj->Set(context,
+           String::NewFromUtf8(isolate,
+                               "msg",
+                               NewStringType::kNormal).ToLocalChecked(),
+                               args[0]->ToString(context).ToLocalChecked())
+           .FromJust();
 
   args.GetReturnValue().Set(obj);
 }
@@ -372,32 +505,37 @@ Een ander veelvoorkomend scenario is het creëren van JavaScript functies die C+
 
 ```cpp
 // addon.cc
-#invoegen <node.h>
+#include <node.h>
 
 namespace demo {
 
+using v8::Context;
 using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
 
 void MyFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "hallo wereld"));
+  args.GetReturnValue().Set(String::NewFromUtf8(
+      isolate, "hello world", NewStringType::kNormal).ToLocalChecked());
 }
 
 void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
+  Local<Context> context = isolate->GetCurrentContext();
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
-  Local<Function> fn = tpl->GetFunction();
+  Local<Function> fn = tpl->GetFunction(context).ToLocalChecked();
 
   // omit this to make it anonymous
-  fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
+  fn->SetName(String::NewFromUtf8(
+      isolate, "theFunction", NewStringType::kNormal).ToLocalChecked());
 
   args.GetReturnValue().Set(fn);
 }
@@ -480,7 +618,7 @@ Pas de verschillende methoden die onthult moeten worden toe in `myobject.cc`. Hi
 
 ```cpp
 // myobject.cc
-#voeg toe "myobject.h"
+#include "myobject.h"
 
 namespace demo {
 
@@ -490,6 +628,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::Persistent;
@@ -509,31 +648,35 @@ void MyObject::Init(Local<Object> exports) {
 
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
-  constructor.Reset(isolate, tpl->GetFunction());
-  exports->Set(String::NewFromUtf8(isolate, "MyObject"),
-               tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
+  exports->Set(context, String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked(),
+               tpl->GetFunction(context).ToLocalChecked()).FromJust();
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
+    // Invoked as plain function `MyObject(...)`, turn into construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Function> cons = Local<Function>::New(isolate, constructor);
     Local<Object> result =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
@@ -583,6 +726,8 @@ console.log(obj.plusOne());
 console.log(obj.plusOne());
 // Prints: 13
 ```
+
+The destructor for a wrapper object will run when the object is garbage-collected. For destructor testing, there are command-line flags that can be used to make it possible to force garbage collection. These flags are provided by the underlying V8 JavaScript engine. They are subject to change or removal at any time. They are not documented by Node.js or V8, and they should never be used outside of testing.
 
 ### Fabriek van ingepakte objecten
 
@@ -672,6 +817,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::Persistent;
@@ -689,30 +835,33 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
-  constructor.Reset(isolate, tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
     // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
+    // Invoked as plain function `MyObject(...)`, turn into construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Object> instance =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
     args.GetReturnValue().Set(instance);
@@ -760,7 +909,7 @@ Nogmaals, om dit voorbeeld te bouwen, moet het `myobject.cc` bestand toegevoegd 
 }
 ```
 
-Test het met:
+Test dit met:
 
 ```js
 // test.js
@@ -795,6 +944,7 @@ Naast het verpakken en retourneren van C++ objecten, is het mogelijk om ingepakt
 
 namespace demo {
 
+using v8::Context;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
@@ -809,11 +959,12 @@ void CreateObject(const FunctionCallbackInfo<Value>& args) {
 
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   MyObject* obj1 = node::ObjectWrap::Unwrap<MyObject>(
-      args[0]->ToObject());
+      args[0]->ToObject(context).ToLocalChecked());
   MyObject* obj2 = node::ObjectWrap::Unwrap<MyObject>(
-      args[1]->ToObject());
+      args[1]->ToObject(context).ToLocalChecked());
 
   double sum = obj1->value() + obj2->value();
   args.GetReturnValue().Set(Number::New(isolate, sum));
@@ -864,7 +1015,7 @@ class MyObject : public node::ObjectWrap {
 De uitvoering van `myobject.cc` is gelijkwaardig aan het vorige voorbeeld:
 
 ```cpp
-// mijnobject.cc
+// myobject.cc
 #include <node.h>
 #include "myobject.h"
 
@@ -876,6 +1027,7 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
+using v8::NewStringType;
 using v8::Object;
 using v8::Persistent;
 using v8::String;
@@ -892,26 +1044,29 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl->SetClassName(String::NewFromUtf8(
+      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  constructor.Reset(isolate, tpl->GetFunction());
+  Local<Context> context = isolate->GetCurrentContext();
+  constructor.Reset(isolate, tpl->GetFunction(context).ToLocalChecked());
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
+  Local<Context> context = isolate->GetCurrentContext();
 
   if (args.IsConstructCall()) {
-    // Opgeroepen als contructor: `nieuw MijnObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    // Invoked as constructor: `new MyObject(...)`
+    double value = args[0]->IsUndefined() ?
+        0 : args[0]->NumberValue(context).FromMaybe(0);
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Aangeroepen als simpele functie `MyObject(...)`, verander in construeer oproep.
+    // Invoked as plain function `MyObject(...)`, turn into construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
-    Local<Context> context = isolate->GetCurrentContext();
     Local<Function> cons = Local<Function>::New(isolate, constructor);
     Local<Object> instance =
         cons->NewInstance(context, argc, argv).ToLocalChecked();
@@ -955,7 +1110,7 @@ Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Een pointer naar de functie die opgeroepen wordt bij het afsluiten.
+* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
 * `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij het afsluiten.
 
 Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
