@@ -23,9 +23,6 @@ debug>
 Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
 
 Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
-
-<!-- eslint-disable no-debugger -->
-
 ```js
 // myscript.js
 global.x = 5;
@@ -104,8 +101,8 @@ Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La 
 * `setBreakpoint()`, `sb()` - Ajoute un point d'arrêt sur la ligne courante
 * `setBreakpoint(line)`, `sb(line)` - Ajoute un point d'arrêt sur une ligne spécifique
 * `setBreakpoint('fn()')`, `sb(...)` - Ajoute un point d'arrêt sur la première instruction du corps de la fonction
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Ajoute un point d'arrêt sur la première ligne de `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Supprime le point d'arrêt à la ligne 1 de `script.js`
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
 
 Il est également possible d'ajouter un point d'arrêt dans un fichier (module) qui n'est pas encore chargé:
 
@@ -165,7 +162,9 @@ Pour arrêter l'exécution sur la première ligne du code de l'application, pass
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
 To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
+    chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
 (Dans l'example ci-dessus, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 à la fin de l'URL est généré à la volée, il varie à chaque session de débogage.)
+
+If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.
