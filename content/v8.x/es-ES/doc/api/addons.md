@@ -1,37 +1,36 @@
-# C++ Addons
+# Complementos de C++
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Se utilizan principalmente para proporcionar una interfaz entre JavaScript ejecutándose en Node.js y bibliotecas de C/C++.
+Los Complementos de Node.js son objetos compartidos dinámicamente enlazados, escritos en C++, que pueden ser cargados en Node.js usando la función [`require()`](modules.html#modules_require), y usados como si fueran una modulo de Node.js ordinario. Se utilizan principalmente para proporcionar una interfaz entre JavaScript ejecutándose en Node.js y bibliotecas de C/C++.
 
 Por el momento, el método para implementar Complementos es algo complicado, implicando conocimientos de diversos componentes y APIs :
 
-* V8: la biblioteca de C++ que Node.js utiliza actualmente para proporcionar la implementación de JavaScript. V8 proporciona los mecanismos para crear objetos, llamar funciones, etc. La API de V8 está documentada principalmente en el archivo de cabecera `v8.h` (`deps/v8/include/v8.h` en el árbol de fuente de Node.js), la cual también está disponible [en línea](https://v8docs.nodesource.com/).
+ - V8: la biblioteca de C++ que Node.js utiliza actualmente para proporcionar la implementación de JavaScript. V8 proporciona los mecanismos para crear objetos, llamar funciones, etc. La API de V8 está documentada principalmente en el archivo de cabecera `v8.h` (`deps/v8/include/v8.h` en el árbol de fuente de Node.js), la cual también está disponible [en línea](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): La biblioteca de C que implementa el bucle de eventos de Node.js, sus hilos de workers y todos los comportamientos asincrónicos de la plataforma. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv también proporciona una abstracción de hilos similar a pthreads que puede ser utilizada para brindar poder a Complementos asincrónicos más sofisticados que necesiten moverse más allá del bucle de eventos estándar. A los autores de Complementos se les anima a pensar sobre cómo evitar el bloqueo del bucle de eventos con I/O u otras tareas de alto consumo de tiempo mediante la descarga de trabajo por medio de libuv para operaciones que no bloquean el sistema, hilos del worker o un uso personalizado de los hilos de libuv.
+ - [libuv](https://github.com/libuv/libuv): La biblioteca de C que implementa el bucle de eventos de Node.js, sus hilos de workers y todos los comportamientos asincrónicos de la plataforma. También funciona como una biblioteca de abstracción multiplataforma, proporcionando un fácil acceso similar a POSIX en todos los grandes sistemas operativos para muchas tareas de sistema comunes, tales como interactuar con el sistema de archivos, los sockets, los temporizadores, y los eventos de sistema. libuv también proporciona una abstracción de hilos similar a pthreads que puede ser utilizada para brindar poder a Complementos asincrónicos más sofisticados que necesiten moverse más allá del bucle de eventos estándar. A los autores de Complementos se les anima a pensar sobre cómo evitar el bloqueo del bucle de eventos con I/O u otras tareas de alto consumo de tiempo mediante la descarga de trabajo por medio de libuv para operaciones que no bloquean el sistema, hilos del worker o un uso personalizado de los hilos de libuv.
 
-* Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C+++ que los Complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap` .
+ - Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C+++ que los Complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap` .
 
-* Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Solo los símbolos de V8 y OpenSSL son reexportados deliberadamente por Node.js y pueden ser utilizados en varios grados por los Complementos. Vea [Vinculación a las dependencias de Node.js](#addons_linking_to_node_js_own_dependencies) para más información.
+ - Node.js incluye otras bibliotecas vinculadas estáticamente, entre las que se encuentra OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/`, en el árbol de fuente de Node.js. Sólo los símbolos libuv, OpenSSL, V8 y zlib son deliberadamente reexportados por Node.js y pueden ser utilizados en diferentes niveles por los complementos. Vea [Vinculación a las dependencias de Node.js](#addons_linking_to_node_js_own_dependencies) para más información.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Complemento.
 
 ## Hello world
 
 Este ejemplo de "Hello world" es un Complemento simple, escrito en C++, el cual es el equivalente del siguiente código de JavaScript:
 
 ```js
-module.exports.hello = () => 'world';
+module.exports.hola = () => 'mundo';
 ```
 
 Primero, cree el archivo `hello.cc`:
 
 ```cpp
-// hello.cc
+// hola.cc
 #include <node.h>
 
 namespace demo {
-
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
@@ -41,11 +40,11 @@ using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "mundo"));
 }
 
 void init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "hello", Method);
+  NODE_SET_METHOD(exports, "hola", Method);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
@@ -68,7 +67,7 @@ Entonces, en el ejemplo de `hello.cc`, la función de inicialización es `init` 
 
 ### Compilación
 
-Una vez que el código de fuente haya sido escrito, deberá ser compilado en el archivo binario `addon.node` . To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+Una vez que el código de fuente haya sido escrito, deberá ser compilado en el archivo binario `addon.node` . Para hacerlo, haga un archivo llamado `binding.gyp` en el nivel superior del proyecto, describiendo la configuración de construcción del módulo utilizando un formato similar a JSON. Este archivo es utilizado por [node-gyp](https://github.com/nodejs/node-gyp) — una herramienta escrita específicamente para compilar Complementos de Node.js.
 
 ```json
 {
@@ -89,14 +88,14 @@ Después, invoque el comando `node-gyp build` para generar el archivo compilado 
 
 Cuando se utiliza `npm install` para instalar un Complemento de Node.js, npm utiliza su propia versión empaquetada de `node-gyp` para realizar este mismo conjunto de acciones, generando una versión compilada del Complemento para la plataforma del usuario a petición.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Una vez construido, el complemento binario puede ser utilizado desde dentro de Node.js señalando [`require()`](modules.html#modules_require) al módulo construido `addon.node` :
 
 ```js
 // hello.js
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'world'
+// Imprime: 'world'
 ```
 
 Por favor, vea los ejemplos a continuación para mayor información o <https://github.com/arturadib/node-qt> para ver un ejemplo en producción.
@@ -123,9 +122,9 @@ Node.js utiliza un número de bibliotecas vinculadas estáticamente, tales como 
 
 ### Cargar Complementos utilizando require()
 
-La extensión del nombre de archivo del Complemento binario compilado es `.node` (a diferencia de `.dll` o `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+La extensión del nombre de archivo del Complemento binario compilado es `.node` (a diferencia de `.dll` o `.so`). La función [`require()`](modules.html#modules_require) está escrita para buscar archivos con la extensión `.node` e inicializarlos como bibliotecas vinculadas dinámicamente.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Sin embargo, una de las advertencias es que Node.js primero intentará localizar y cargar los módulos o archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Al llamar [`require()`](modules.html#modules_require), generalmente se puede omitir la extensión `.node` y aún así Node.js encontrará e inicializará el Complemento. Sin embargo, una de las advertencias es que Node.js primero intentará localizar y cargar los módulos o archivos de JavaScript que compartan el mismo nombre de base. Por ejemplo, si hay un archivo `addon.js` en el mismo directorio que el archivo binario `addon.node`, entonces [`require('addon')`](modules.html#modules_require) le dará prioridad al archivo `addon.js` y lo cargará en su lugar.
 
 ## Abstracciones Nativas para Node.js
 
@@ -133,13 +132,14 @@ Cada uno de los ejemplos ilustrados en este documento hacen uso directo de las A
 
 Las [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan) (o `nan`) proporcionan un conjunto de herramientas recomendadas para ser utilizadas por los desarrolladores de Complementos, para mantener la compatibilidad entre versiones anteriores y futuras de V8 y Node.js. Vea los [ejemplos](https://github.com/nodejs/nan/tree/master/examples/) de `nan` para una ilustración de cómo se puede utilizar.
 
+
 ## N-API
 
 > Estabilidad: 1 - Experimental
 
-N-API es una API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recopilación. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las APIs de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
+N-API es una API para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recopilación. Los Complementos son construidos/empaquetados con el mismo enfoque/herramientas descritas en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar el V8 o las APIs de [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Para utilizar N-API en el ejemplo anterior de "Hello World", reemplace el contenido de `hello.cc` con lo siguiente. Todas las demás instrucciones siguen siendo las mismas.
 
 ```cpp
 // hello.cc using N-API
@@ -151,7 +151,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", 6, &greeting);
+  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -177,7 +177,7 @@ Las funciones disponibles y cómo utilizarlas están documentadas en la sección
 
 ## Ejemplos de Complemento
 
-Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de las APIs V8. Consulte la [referencia de V8](https://v8docs.nodesource.com/) en linea para obtener ayuda referente a las diferentes llamadas de V8, y la [Guía del Embebedor](https://github.com/v8/v8/wiki/Embedder's%20Guide) de V8 para ver una explicación sobre varios conceptos utilizados, tales como handles, ámbitos, plantillas de función, etc.
+Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de las APIs V8. Consulte el [V8 reference](https://v8docs.nodesource.com/) en línea para obtener ayuda referente a las diferentes llamadas de V8, y el [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) de V8 para una explicación acerca de varios conceptos utilizados, tales como handles, scopes, plantillas de función, etc.
 
 Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 
@@ -198,17 +198,18 @@ En casos en los que haya más de un archivo `.cc`, simplemente agregue el nombre
 "fuentes": ["addon.cc", "myexample.cc"]
 ```
 
-Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo pueden ser configurados y construidos utilizando `node-gyp`:
+Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo podrán ser configurados y construidos utilizando `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
+
 ### Argumentos de función
 
-Los Complementos generalmente expondrán objetos y funciones que pueden ser accedidos desde JavaScript, ejecutándose dentro de Node.js. Cuando se invocan funciones desde JavaScript, los argumentos de entrada y el valor de devolución deben ser mapeados para y desde el código C/C++.
+Los complementos generalmente expondrán objetos y funciones que pueden ser accedidos desde JavaScript, ejecutándose dentro de Node.js. Cuando se invocan funciones desde JavaScript, los argumentos de entrada y el valor de devolución deben ser mapeados para y desde el código C/C++.
 
-El siguiente ejemplo ilustra cómo leer argumentos de función pasados desde JavaScript y cómo devolver un resultado:
+En el siguiente ejemplo se ilustra cómo leer argumentos de función pasados desde JavaScript y cómo devolver un resultado:
 
 ```cpp
 // addon.cc
@@ -225,8 +226,8 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// Esta es la implementación del método "add"
+// Los argumentos de entrada se pasan utilizando el
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
@@ -264,7 +265,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Una vez compilado, el Complemento de ejemplo puede ser requerido y utilizado desde dentro de Node.js:
+Una vez compilado, el complemento de ejemplo puede ser requerido y utilizado desde dentro de Node.js:
 
 ```js
 // test.js
@@ -273,9 +274,10 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
+
 ### Callbacks
 
-Dentro de los Complementos, es una práctica común pasar funciones de JavaScript a una función de C++ y ejecutarlas desde allí. El siguiente ejemplo ilustra cómo invocar dichos callbacks:
+Es una práctica común dentro de los Complementos pasar funciones de JavaScript a una función de C++ y ejecutarlas desde allí. El siguiente ejemplo ilustra cómo invocar dichos callbacks:
 
 ```cpp
 // addon.cc
@@ -323,11 +325,11 @@ addon((msg) => {
 });
 ```
 
-Tenga en cuenta que, en este ejemplo, la función de callback se invoca de manera sincrónica.
+Tenga en cuenta que, en este ejemplo, la función callback se invoca de manera sincronizada.
 
 ### Fábrica de objetos
 
-Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++, como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
+Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
 
 ```cpp
 // addon.cc
@@ -372,9 +374,10 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
+
 ### Fábrica de funciones
 
-Otra posibilidad común es crear funciones de JavaScript que envuelvan funciones de C++ y las devuelvan a JavaScript:
+Otra posibilidad común es crear funciones de JavaScript que envuelvan funciones de C++ y regresarlas a JavaScript:
 
 ```cpp
 // addon.cc
@@ -427,6 +430,7 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
+
 
 ### Envolver objetos C++
 
@@ -482,7 +486,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-En `myobject.cc`, implemente los métodos varios que deberán ser expuestos. A continuación, se expone el método `plusOne()` añadiéndolo al prototipo del contructor:
+En `myobject.cc`, implemente los métodos varios que deben ser expuestos. A continuación, se expone el método `plusOne()` añadiéndolo al prototipo del constructor:
 
 ```cpp
 // myobject.cc
@@ -559,7 +563,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Para construir este ejemplo, el archivo `myobject.cc` debe ser agregado al `binding.gyp`:
+Para construir este ejemplo, el archivo `myobject.cc` debe ser agregado a `binding.gyp`:
 
 ```json
 {
@@ -575,7 +579,7 @@ Para construir este ejemplo, el archivo `myobject.cc` debe ser agregado al `bind
 }
 ```
 
-Pruebelo con:
+Prueba con:
 
 ```js
 // test.js
@@ -592,7 +596,7 @@ console.log(obj.plusOne());
 
 ### Fábrica de objetos envueltos
 
-Alternativamente, es posible utilizar un patrón Factory para evitar de manera explícita la creación de instancias de objetos utilizando el operador `new` de JavaScript:
+Alternativamente, es posible utilizar un patrón Factory para evitar explícitamente crear instancias de objetos utilizando el operador `new` de Javascript:
 
 ```js
 const obj = addon.createObject();
@@ -600,7 +604,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-Primero, se implementa el método `createObject()` en `addon.cc`:
+En primer lugar, se implementa el método `createObject()` en `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -631,7 +635,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-En `myobject.h`, se añade el método estático `NewInstance()` para manejar la instanciación del objeto. Este método toma el lugar del uso de `new` en JavaScript:
+En `myobject.h`, se añade el método estático `NewInstance()` para manejar la instancia del objeto. Este método toma el lugar de la utilización de `new` en JavaScript:
 
 ```cpp
 // myobject.h
@@ -750,7 +754,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agregado al `binding.gyp`:
+Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agregado a `binding.gyp`:
 
 ```json
 {
@@ -766,7 +770,7 @@ Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agr
 }
 ```
 
-Pruebelo con:
+Prueba con:
 
 ```js
 // test.js
@@ -788,6 +792,7 @@ console.log(obj2.plusOne());
 console.log(obj2.plusOne());
 // Prints: 23
 ```
+
 
 ### Pasar y distribuir objetos envueltos
 
@@ -943,7 +948,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Pruebelo con:
+Prueba con:
 
 ```js
 // test.js
@@ -963,14 +968,14 @@ Un hook de "AtExit" es una función que se invoca luego de que el bucle de event
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} Un puntero dirigido hacia la función de llamar en la salida.
+* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
 * `args` {void\*} Un puntero para pasar hacia la callback en la salida.
 
-Registra los hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de que el VM sea asesinado.
+Registra hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de que muera el VM.
 
 AtExit toma dos parámetros: un puntero dirigido hacia una función de callback para ejecutarse en la salida, y un puntero dirigido hacia datos de contexto no escritos para ser pasados a esa callback.
 
-Las callbacks se ejecutan por orden de última entrada y primera salida.
+Los callbacks se ejecutan por orden de última entrada y primera salida.
 
 El siguiente `addon.cc` implementa AtExit:
 
@@ -1023,7 +1028,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Pruébelo en JavaScript mediante la ejecución de:
+Prueba en JavaScript mediante la ejecución de:
 
 ```js
 // test.js
