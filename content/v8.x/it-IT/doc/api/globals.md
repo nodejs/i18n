@@ -1,21 +1,19 @@
-# Global Objects
+# Object Globali
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Questi object sono disponibili in tutti i moduli. Le seguenti variabili potrebbero sembrare globali ma non lo sono. Esistono solo nel campo di applicazione dei moduli, visualizza la [module system documentation](modules.html):
 
-* [`__dirname`][]
-* [`__filename`][]
-* [`exports`][]
-* [`module`][]
-* [`require()`][]
+- [`__dirname`][]
+- [`__filename`][]
+- [`exports`][]
+- [`module`][]
+- [`require()`][]
 
-The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Gli object qui elencati sono specifici a Node.js. Ci sono un numero di [object incorporati](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) che sono parte del linguaggio JavaScript, i quali sono anch'essi accessibili a livello globale.
 
 ## Class: Buffer
-
 <!-- YAML
 added: v0.1.103
 -->
@@ -24,48 +22,44 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Utilizzato per gestire i dati binari. Visualizza la [sezione buffer](buffer.html).
 
 ## \_\_dirname
 
-This variable may appear to be global but is not. See [`__dirname`].
+Questa variabile può sembrare globale ma non lo è. Visualizza [`__dirname`].
 
 ## \_\_filename
 
-This variable may appear to be global but is not. See [`__filename`].
+Questa variabile può sembrare globale ma non lo è. Visualizza [`__filename`].
 
 ## clearImmediate(immediateObject)
-
 <!-- YAML
 added: v0.9.1
 -->
 
 <!--type=global-->
 
-[`clearImmediate`] is described in the [timers](timers.html) section.
+[`clearImmediate`] è descritta nella sezione [timers](timers.html).
 
 ## clearInterval(intervalObject)
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!--type=global-->
 
-[`clearInterval`] is described in the [timers](timers.html) section.
+[`clearInterval`] è descritto nella sezione [timers](timers.html).
 
 ## clearTimeout(timeoutObject)
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!--type=global-->
 
-[`clearTimeout`] is described in the [timers](timers.html) section.
+[`clearTimeout`] è descritto nella sezione [timers](timers.html).
 
 ## console
-
 <!-- YAML
 added: v0.1.100
 -->
@@ -74,30 +68,28 @@ added: v0.1.100
 
 * {Object}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Utilizzato per la stampa su stdout e stderr. Visualizza la sezione [`console`][].
 
-## exports
+## export
 
-This variable may appear to be global but is not. See [`exports`].
+Questa variabile può sembrare globale ma non lo è. Visualizza [`exports`].
 
-## global
-
+## globale
 <!-- YAML
 added: v0.1.27
 -->
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Object} Il namespace object globale.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+Nei browser, l'ambito principale è l'ambito globale. Ciò significa che all'interno del browser `var qualcosa` definirà una nuova variabile globale. In Node.js tutto ciò è diverso. L'ambito di livello superiore non è l'ambito globale; `var qualcosa` all'interno di un modulo Node.js sarà locale a quel modulo.
 
 ## module
 
-This variable may appear to be global but is not. See [`module`].
+Questa variabile può sembrare globale ma non lo è. Visualizza [`module`].
 
 ## process
-
 <!-- YAML
 added: v0.1.7
 -->
@@ -106,38 +98,35 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+L'object del processo. Visualizza la sezione [object del `processo`][].
 
 ## require()
 
-This variable may appear to be global but is not. See [`require()`].
+Questa variabile può sembrare globale ma non lo è. Visualizza [`require()`].
 
 ## setImmediate(callback[, ...args])
-
 <!-- YAML
 added: v0.9.1
 -->
 
 <!-- type=global -->
 
-[`setImmediate`] is described in the [timers](timers.html) section.
+[`setImmediate`] è descritto nella sezione [timers](timers.html).
 
 ## setInterval(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!-- type=global -->
 
-[`setInterval`] is described in the [timers](timers.html) section.
+[`setInterval`] è descritto nella sezione [timers](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!-- type=global -->
 
-[`setTimeout`] is described in the [timers](timers.html) section.
+[`setTimeout`] è descritto nella sezione [timers](timers.html).
