@@ -1,64 +1,64 @@
-# How to Backport a Pull Request to a Release Line
+# Cómo realizar Backport a una Pull Request a una Línea de Lanzamiento
 
-## Staging branches
+## Ramas de escenificación
 
-Each release line has a staging branch that the releaser will use as a scratch pad while preparing a release. The branch name is formatted as follows: `vN.x-staging` where `N` is the major release number.
+Cada línea de la release tiene un branch de staging que el publicador usará como un bloc de notas al preparar la release. El nombre del branch tiene el siguiente formato: `vN.x-staging`, donde `N` es el número del major release.
 
-*Note*: For the active staging branches see the [Release Schedule](https://github.com/nodejs/Release#release-schedule1).
+*Nota*: Para los branch de staging activos vea el [Calendario de Release](https://github.com/nodejs/Release#release-schedule1).
 
-## What needs to be backported?
+## ¿Qué necesita recibir un backport?
 
-If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
+Si un cherry-pick de master no aterriza limpiamente en una rama de escenificación, el publicador marcará la pull request con una etiqueta particular para esa línea de lanzamiento (por ejemplo: `backport-requested-vN.x`), especificando a nuestras herramientas que esta pull request no debe ser incluida. Entonces, el publicador agregará un comentario solicitando que se realice un backport para una pull request.
 
-## What can be backported?
+## ¿A qué se le puede hacer backport?
 
-The "Current" release line is much more lenient than the LTS release lines in what can be landed. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
+La línea de lanzamiento "Actual" es mucho más indulgente que las líneas de lanzamiento LTS en lo que se puede aterrizar. Nuestras líneas de lanzamiento LTS (vea el [Plan de Lanzamiento](https://github.com/nodejs/Release#release-plan)) requieren que los commits maduren en el lanzamiento Actual por al menos 2 semanas antes de que puedan aterrizar en una rama de escenificación de LTS. Solo después de la "maduración" a esos commits se les podrá hacer cherry-pick o backport.
 
-## How to submit a backport pull request
+## Cómo enviar una pull request de backport
 
-For the following steps, let's assume that a backport is needed for the v6.x release line. All commands will use the `v6.x-staging` branch as the target branch. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
+Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comandos usarán la rama `v6.x-staging` como la rama objetivo. Para enviar una pull request de backport a otra rama, simplemente reemplácela con la rama de escenificación para la línea de lanzamiento hacia la que está dirigida.
 
-1. Checkout the staging branch for the targeted release line
-2. Make sure that the local staging branch is up to date with the remote
-3. Create a new branch off of the staging branch
+1. Compruebe la rama de escenificación para la línea de lanzamiento especificada
+2. Asegúrese de que la rama de escenificación local esté actualizada con el remoto
+3. Cree una nueva rama fuera de la rama de escenificación
 
 ```shell
-# Assuming your fork of Node.js is checked out in $NODE_DIR,
-# the origin remote points to your fork, and the upstream remote points
-# to git://github.com/nodejs/node
+# Asumiendo que su bifurcación de Node.js es verificada en $NODE_DIR,
+# el remoto de origen señala a su bifurcación, y el remoto upstream señala
+# a git://github.com/nodejs/node
 cd $NODE_DIR
-# If v6.x-staging is checked out `pull` should be used instead of `fetch`
+# Si v6.x-staging es verificado, debe usarse `pull` en lugar de` fetch`
 git fetch upstream v6.x-staging:v6.x-staging -f
-# Assume we want to backport PR #10157
+# Suponiendo que queremos realizar un backport para la PR #10157
 git checkout -b backport-10157-to-v6.x v6.x-staging
-# Ensure there are no test artifacts from previous builds
-# Note that this command deletes all files and directories
-# not under revision control below the ./test directory.
-# It is optional and should be used with caution.
+# Asegúrese de que no haya artefactos de prueba de compilaciones anteriores
+# Tenga en cuenta que este comando elimina todos los archivos y directorios
+# que no están bajo el control de revisión de ./test directory.
+# Es opcional y debe ser usado con precaución.
 git clean -xfd ./test/
 ```
 
-1. After creating the branch, apply the changes to the branch. The cherry-pick will likely fail due to conflicts. In that case, you will see something like this:
+4. Después de crear la rama, aplique los cambios a la rama. El cherry-pick probablemente fallará debido a los conflictos. En ese caso, verá algo así:
 
 ```shell
-# Say the $SHA is 773cdc31ef
-$ git cherry-pick $SHA # Use your commit hash
-error: could not apply 773cdc3... <commit title>
-hint: after resolving the conflicts, mark the corrected paths
-hint: with 'git add <paths>' or 'git rm <paths>'
-hint: and commit the result with 'git commit'
+# Diga que $SHA es 773cdc31ef
+$ git cherry-pick $SHA # Use su hash de commit 
+error: podría no aplicar 773cdc3... <commit title>
+pista: después de resolver los conflictos, marque las rutas corregidas 
+pista: con 'git add <paths>' or 'git rm <paths>
+pista: y realice un commit de los resultados con 'git commit'
 ```
 
-1. Make the required changes to remove the conflicts, add the files to the index using `git add`, and then commit the changes. That can be done with `git cherry-pick --continue`.
-2. Leave the commit message as is. If you think it should be modified, comment in the Pull Request.
-3. Make sure `make -j4 test` passes.
-4. Push the changes to your fork
-5. Open a pull request: 
-    1. Be sure to target the `v6.x-staging` branch in the pull request.
-    2. Include the backport target in the pull request title in the following format — `[v6.x backport] <commit title>`. Example: `[v6.x backport] process: improve performance of nextTick`
-    3. Check the checkbox labeled "Allow edits from maintainers".
-    4. In the description add a reference to the original PR
-    5. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
-6. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v6.x-staging`
+5. Realice los cambios requeridos para eliminar los conflictos, añada los archivos al índice usando `git add`, y luego plasme los cambios vía commit. Eso se puede hacer con `git cherry-pick --continue`.
+6. Deje el mensaje del commit como está. Si piensa que debe ser modificado, comente en la Pull Request.
+7. Asegúrese de que `make -j4 test` pase.
+8. Impulse los cambios a su bifurcación
+9. Abra una pull request:
+   1. Asegúrese de apuntar a la rama `v6.x-staging` en la pull request.
+   2. Incluya el objetivo del backport en el título de la pull request en el siguiente formato — `[v6.x backport] <commit title>`. Ejemplo: `proceso [v6.x backport]: mejorar el rendimiento de nextTick`
+   3. Compruebe la casilla de verificación etiquetada como "Permitir ediciones de mantenedores".
+   4. En la descripción añada una referencia a la PR original
+   5. Ejecute un trabajo de CI [`node-test-pull-request`][] (con `REBASE_ONTO` establecido en el valor predeterminado `<pr base branch>`)
+10. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v6.x-staging`
 
-After the PR lands replace the `backport-requested-v6.x` label on the original PR with `backported-to-v6.x`.
+Después de que aterrice la PR, reemplace la etiqueta `backport-requested-v6.x` en la PR original con `backported-to-v6.x`.
