@@ -1,31 +1,35 @@
-# Debugger
+# مصحح الأخطاء
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+يشتمل الـ Node.js على مصحح أخطاء مستقل يمكن استعماله عبر مدقق الـ V8 و عميل تصحيح الأخطاء المدمج. للبدء في استعماله قم بتشغيل الـ Node.js مع المعطى `inspect` متبوعا الملف المراد تصحيحه، سيتم عرض مربع حوار يشير إلى نجاح تشغيل المصحح:
 
 ```txt
 $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help, see: https://nodejs.org/en/docs/inspector
 < Debugger attached.
+
 Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   console.log('world');
 debug>
+
+Break on start in myscript.js:1
+> 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
+  2 setTimeout(() => {
+  3   console.log('world');
+debug
 ```
 
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
-
-<!-- eslint-disable no-debugger -->
-
 ```js
 // myscript.js
 global.x = 5;
@@ -43,6 +47,12 @@ $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help, see: https://nodejs.org/en/docs/inspector
 < Debugger attached.
+
+Break on start in myscript.js:1
+> 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
+  2 setTimeout(() => {
+  3   console.log('world');
+debug>
 Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
@@ -165,7 +175,9 @@ To break on the first line of the application code, pass the `--inspect-brk` fla
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
 To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
+    chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
 (In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+
+If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.
