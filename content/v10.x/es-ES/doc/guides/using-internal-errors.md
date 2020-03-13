@@ -2,11 +2,11 @@
 
 ## Qué es internal/errors.js
 
-El módulo `require('internal/errors')` es un módulo solo interno que se puede usar para producir instancias `Error`, `TypeError` y `RangeError` que utilizan un código de error estático, permanente y un mensaje parametrizado opcionalmente.
+El módulo `requiere('internal/errors')` es un módulo solo interno que se puede usar para producir instancias `Error`, `TypeError` y `RangeError` que utilizan un código de error estático y permanente y un mensaje parametrizado opcionalmente.
 
-La intención del módulo es permitir que los errores proporcionados por Node.js tengan asignado un identificador permanente. Sin un identificador permanente, el código de usuario puede necesitar inspeccionar los mensajes de error para distinguir un error de otro. Un resultado desafortunado de esa práctica es que los cambios en los mensajes de error resultan en un código roto en el ecosistema. Por esa razón, Node.js ha considerado que los cambios en los mensajes de error son cambios de ruptura. Al proporcionar un identificador permanente para un error específico, reducimos la necesidad de un código de usuario para inspeccionar los mensajes de error.
+La intención del módulo es permitir que los errores proporcionados por Node.js tengan asignado un identificador permanente. Sin un identificador permanente, el código de usuario puede necesitar inspeccionar los mensajes de error para disinguir un error de otro. Un resultado desafortunado de esa práctica es que los cambios en los mensajes de error resultan en un código dañado en el ecosistema. Por esa razón, Node.js ha considerado que los cambios en los mensajes de error son cambios de ruptura. Al proporcionar un identificador permanente para un error específico, reducimos la necesidad de un código de usuario para inspeccionar los mensajes de error.
 
-*Nota*: Cambiar un error existente para usar el módulo `internal/errors` debe considerarse un cambio `semver-major`.
+Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
 
 ## Usar internal/errors.js
 
@@ -41,12 +41,9 @@ E('EXAMPLE_KEY1', 'This is the error value', TypeError);
 E('EXAMPLE_KEY2', (a, b) => `${a} ${b}`, RangeError);
 ```
 
-El primer argumento pasado a `E()` es el identificador estático. El segundo argumento es una String con etiquetas de reemplazo de estilo opcional `util.format()` (por ejemplo, `%s`, `%d`), o una función devolviendo una String. Los argumentos adicionales opcionales pasados a la función `errors.message()` (que es usada por las clases `errors.Error`, `errors.TypeError` y `errors.RangeError`), se utilizará para formatear el mensaje de error. El tercer argumento es la clase base que el nuevo error extenderá.
+El primer argumento pasado a `E()` es el identificador estático. El segundo argumento es una String con etiquetas de reemplazo de estilo opcional `util.format()` (ejemplo, `%s`, `%d`), o una función que devuelve una String. Los argumentos adicionales opcionales pasados a la función ` errors.message ()` (que es utilizada por las clases ` errores.Error `, ` errores.TypeError ` y ` errores.RangeError ` clases), se utilizará para formatear el mensaje de error. El tercer argumento es la clase base que el nuevo error extenderá.
 
 Es posible crear múltiples clases derivadas proporcionando argumentos adicionales. Las otras serán expuestas como propiedades de la clase principal:
-
-<!-- eslint-disable no-unreachable -->
-
 ```js
 E('EXAMPLE_KEY', 'Error message', TypeError, RangeError);
 
@@ -70,7 +67,7 @@ Al agregar un nuevo error, también se puede(n) requerir la(s) prueba(s) corresp
 E('ERR_SOCKET_ALREADY_BOUND', 'Socket is already bound');
 ```
 
-Si el mensaje de error no es una string constante, las pruebas para validar el formato del mensaje según los parámetros utilizados al crear el error deben agregarse a `test/parallel/test-internal-errors.js`. Estas pruebas deben validar todas las diferentes formas en que se pueden usar los parámetros para generar la string de mensaje final. Un ejemplo simple es:
+Si el mensaje de error no es una string constante, las pruebas para validar el formato del mensaje según los parámetros utilizados al crear el error deben agregarse a `test/parallel/test-internal-errors.js`.  Estas pruebas deben validar todas las diferentes formas en que se pueden usar los parámetros para generar la string de mensaje final. Un ejemplo simple es:
 
 ```js
 // // Prueba ERR_TLS_CERT_ALTNAME_INVALID
@@ -79,7 +76,7 @@ assert.strictEqual(
   'Hostname/IP does not match certificate\'s altnames: altname');
 ```
 
-Además, también debe haber pruebas que validen el uso del error en función de dónde se utiliza en el código base. Para estas pruebas, excepto en casos especiales, solo deben validar que se recibe el código esperado y NO validar el mensaje. Esto reducirá la cantidad de cambio de prueba requerido cuando cambie el mensaje de un error.
+Además, también debe haber pruebas que validen el uso del error en función de dónde se utiliza en el código base.  Para estas pruebas, excepto en casos especiales, solo deben validar que se recibe el código esperado y NO validar el mensaje.  Esto reducirá la cantidad de cambio de prueba requerido cuando cambie el mensaje de un error.
 
 ```js
 assert.throws(() => {
