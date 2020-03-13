@@ -1,5 +1,4 @@
 @// NB(chrisdickinson): se sposti questo file, assicurati di aggiornare tools/doc/html.js in modo @// che punti nella nuova posizione.
-
 * [Informazioni su questi documenti](documentation.html)
 * [Utilizzo & Esempio](synopsis.html)
 
@@ -16,11 +15,11 @@
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [API obsoleti](deprecations.html)
 * [DNS](dns.html)
 * [Dominio](domain.html)
-* [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
+* [Moduli ECMAScript](esm.html)
+* [Errori](errors.html)
 * [Eventi](events.html)
 * [File System](fs.html)
 * [Globali](globals.html)
@@ -55,4 +54,3 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
