@@ -1,59 +1,51 @@
-# Issues
+# イシュー
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [イシュー上で貢献する方法](#how-to-contribute-in-issues)
+* [一般的なヘルプ](#asking-for-general-help)
+* [非技術的な話題についての議論](#discussing-non-technical-topics)
+* [バグレポートの提出](#submitting-a-bug-report)
+* [バグレポートのトリアージ](#triaging-a-bug-report)
+* [バグレポートの解決](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## イシュー上で貢献する方法
 
-For any issue, there are fundamentally three ways an individual can contribute:
+どのようなイシューにも、個人が貢献できる方法は基本的に3つあります:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
-2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+1. 議論のためにイシューを開く: 例えば、Node.js 上でバグを発見したと思ったら、`nodejs/node`のイシュートラッカー上に新しいイシューを作成することでそれを報告できます。
+2. イシューのトリアージを手伝う: 有用な詳細情報 (バグを実証するテストケース) を提供したり、イシューへの対処方法を提案することで、トリアージを手伝うことができます。
+3. イシューの解決を手伝う: 基本的に、報告されたイシューが問題にならないと示すか、より多くの場合では、具体的でレビュー可能な方法で`nodejs/node`の一部を変更するプルリクエストを開くことで解決を手伝うことができます。
 
-## Asking for General Help
+## 一般的なヘルプ
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+`nodejs/node` リポジトリが非常に活発であるため、Node.js を使用した一般的なヘルプに関する質問やリクエストは [Node.js ヘルプリポジトリ](https://github.com/nodejs/help/issues)に問い合わせる必要があります。
 
-## Discussing non-technical topics
+## 非技術的な話題についての議論
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+非技術的な話題についての議論 (知的財産や商標についてなど) は、[Technical Steering Committee (TSC) リポジトリ](https://github.com/nodejs/TSC/issues)に問い合わせる必要があります。
 
-## Submitting a Bug Report
+## バグレポートの提出
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+`nodejs/node` のイシュートラッカーで新しいイシューを開くと、ユーザーは入力すべき基本テンプレートを与えられます。
 
-```markdown
-<!--
-Thank you for reporting an issue.
+```markdown<!--
+問題を報告してくれてありがとうございます。
 
-This issue tracker is for bugs and issues found within Node.js core.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+このイシュートラッカーは Node.js のコア部分で見つかったバグや問題のためのものです。
+もし、より一般的なサポートが必要な場合は、ヘルプリポジトリにイシューを開いてください。 https://github.com/nodejs/help
 
 
-Please fill in as much of the template below as you're able.
+以下のテンプレートに可能な限り記入をしてください。
 
-Version: output of `node -v`
-Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
-Subsystem: if known, please specify affected core module name
+Version: `node -v` の出力
+Platform: `uname -a` の出力 (UNIX)、もしくは、バージョンと 32 あるいは 64-bit か (Windows)
+Subsystem: わかっている場合は、該当するコアモジュール名を指定してください
 
-If possible, please provide code that demonstrates the problem, keeping it as
-simple and free of external dependencies as you are able.
--->
-
-* **Version**:
+できれば、可能な限りシンプルで外部依存関係のない、問題を再現するコードを書いてください。
+-->* **Version**:
 * **Platform**:
-* **Subsystem**:
+* **Subsystem**:<!-- このコメントの下に問題の詳細を入力してください。 -->```
 
-<!-- Enter your issue details below this comment. -->
-```
-
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+Node.js でバグを発見したと思う場合は、出来る範囲でテンプレートに従ってこのフォームを埋めてください。 すべての質問に答えられなくても気にせずに、出来る限り埋めてください。
 
 The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
 
@@ -61,7 +53,7 @@ In order to rule out the possibility of bugs introduced by userland code, test c
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## バグレポートのトリアージ
 
 Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
@@ -69,6 +61,6 @@ Short, clipped responses—that provide neither additional context nor supportin
 
 Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
-## Resolving a Bug Report
+## バグレポートの解決
 
 In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
