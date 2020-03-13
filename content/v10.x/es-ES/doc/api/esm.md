@@ -1,7 +1,6 @@
-# Módulos ECMAScript
+# Módulos de ECMAScript
 
 <!--introduced_in=v8.5.0-->
-
 <!-- type=misc -->
 
 > Estabilidad: 1 - Experimental
@@ -10,13 +9,13 @@
 
 Node.js contiene soporte para los Módulos ES basado en el [EP de Node.js para Módulos ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Los mensajes de error todavía están siendo pulidos.
+No todas las características del EP están completas y se desembarcarán cuando el soporte de VM y la implementación estén listos. Los mensajes de error todavía están siendo pulidos.
 
 ## Habilitación
 
 <!-- type=misc -->
 
-The `--experimental-modules` flag can be used to enable features for loading ESM modules.
+La bandera de `--experimental-modules` puede ser utilizada para habilitar funcionalidades para cargar módulos ESM.
 
 Una vez esto haya sido establecido, los archivos que terminan en `.mjs` serán capaces de ser cargados como Módulos ES.
 
@@ -56,7 +55,7 @@ La metapropiedad `import.meta` es un `Object` que contiene la siguiente propieda
 
 `require.extensions` no es utilizado por `import`. Lo que se espera es que los loader hooks puedan proporcionar este flujo de trabajo en el futuro.
 
-### No `require.cache`
+### No hay `require.cache`
 
 `require.cache` no es usado por `import`. Tiene un caché separado.
 
@@ -67,13 +66,13 @@ Los ESM son resueltos y almacenados en caché basándose en la semántica de [UR
 Los módulos serán cargados múltiples veces si el especificador `import` utilizado para resolverlos tiene una consulta o fragmento diferente.
 
 ```js
-import './foo?query=1'; // loads ./foo with query of "?query=1"
-import './foo?query=2'; // loads ./foo with query of "?query=2"
+import './foo?query=1'; // carga ./foo con la consulta de "?query=1"
+import './foo?query=2'; // carga ./foo con la consulta de"?query=2"
 ```
 
 Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser cargados.
 
-## Interop with existing modules
+## Interoperabilidad con módulos existentes
 
 Todos los módulos CommonJS, JSON y C++ pueden ser utilizados con `import`.
 
@@ -82,14 +81,38 @@ Los módulos que se carguen de esta manera sólo se cargarán una vez, incluso s
 Al cargarlos a través de `import`, estos módulos proporcionarán una exportación `default` simple que representa el valor de `module.exports` al momento de culminar la evaluación.
 
 ```js
-import fs from 'fs';
-fs.readFile('./foo.txt', (err, body) => {
+// foo.js
+module.exports = { one: 1 };
+
+// bar.mjs
+import foo from './foo.js';
+foo.one === 1; // true
+```
+
+Builtin modules will provide named exports of their public API, as well as a default export which can be used for, among other things, modifying the named exports. Named exports of builtin modules are updated when the corresponding exports property is accessed, redefined, or deleted.
+
+```js
+import EventEmitter from 'events';
+const e = new EventEmitter();
+```
+
+```js
+import { readFile } from 'fs';
+readFile('./foo.txt', (err, source) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(body);
+    console.log(source);
   }
 });
+```
+
+```js
+import fs, { readFileSync } from 'fs';
+
+fs.readFileSync = () => Buffer.from('Hello, ESM');
+
+fs.readFileSync === readFileSync;
 ```
 
 ## Loader hooks
@@ -98,11 +121,11 @@ fs.readFile('./foo.txt', (err, body) => {
 
 Para personalizar la resolución del módulo predeterminado, los loader hooks pueden, opcionalmente, ser proporcionados a través de un argumento `--loader ./loader-name.mjs` a Node.js.
 
-When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
+Cuando los hooks son utilizados, solo son aplicados a la carga de los módulos ES y no a ningún modulo CommonJS cargado.
 
 ### Resolve hook
 
-The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
+Para un modulo y archivo URL padre dado, el hook de resolución devuelve el formato del modulo y el archivo URL resuelto:
 
 ```js
 const baseURL = new URL('file://');
@@ -124,14 +147,14 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Este puede ser uno de los siguientes:
 
-| `formato`   | Descripción                                                     |
-| ----------- | --------------------------------------------------------------- |
-| `'esm'`     | Carga un módulo de JavaScript estándar                          |
-| `'cjs'`     | Carga un módulo de CommonJS de estilo nodo                      |
-| `'builtin'` | Load a node builtin CommonJS module                             |
-| `'json'`    | Carga un archivo JSON                                           |
-| `'addon'`   | Carga un [Addon de C++](addons.html)                            |
-| `'dynamic'` | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
+| `formato`   | Descripción                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| `'esm'`     | Carga un módulo de JavaScript estándar                           |
+| `'cjs'`     | Carga un módulo de CommonJS de estilo nodo                       |
+| `'builtin'` | Load a node builtin CommonJS module                              |
+| `'json'`    | Carga un archivo JSON                                            |
+| `'addon'`   | Carga un [Addon de C++](addons.html)                             |
+| `'dynamic'` | Usa un [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node.js builtin modules support could be written:
 
@@ -178,11 +201,11 @@ Con este cargador, corriendo:
 NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 ```
 
-would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
+debería de cargar el modulo `x.js` como un modulo ES con soporte de resolución relativa (con la carga de `node_modules` omitida en este ejemplo).
 
 ### Dynamic instantiate hook
 
-To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
+Para crear un modulo dinámico personalizado que no corresponda a uno de las interpretaciones del `format` existente, se puede utilizar el hook `dynamicInstantiate`. Este hook es llamado solo para módulos que retornan `format: 'dynamic'` desde el hook `resolve`.
 
 ```js
 export async function dynamicInstantiate(url) {
