@@ -1,8 +1,8 @@
-# Debugger
+# 디버거
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> 안정성: 2 - 안정
 
 <!-- type=misc -->
 
@@ -23,9 +23,6 @@ debug>
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
-
-<!-- eslint-disable no-debugger -->
-
 ```js
 // myscript.js
 global.x = 5;
@@ -165,7 +162,9 @@ To break on the first line of the application code, pass the `--inspect-brk` fla
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
 To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
+    chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
 (In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+
+If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.
