@@ -1,19 +1,19 @@
-# Cómo escribir una prueba para el proyecto Node.js
+# Cómo escribir una prueba para el proyecto de Node.js
 
 ## ¿Qué es una prueba?
 
-La mayoría de las pruebas en la base de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba falla si:
+La mayoría de las pruebas en el núcleo de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba fallará si:
 
-- Sale al establecer `process.exitCode` a un número distinto a cero. 
+- Se sale al configurar `process.exitCode` a un número distinto de cero.
   - Esto es realizado usualmente haciendo que una aserción arroje un Error no capturado.
-  - Ocasionalmente, usar `process.exit(code)` puede ser apropiado.
-- Nunca sale. En este caso, el corredor de prueba terminará la prueba porque establece un límite de tiempo máximo.
+  - Ocasionalmente, puede ser apropiado utilizar `process.exit(code)`.
+- Nunca se sale. En este caso, el corredor de prueba terminará la prueba porque establece un límite de tiempo máximo.
 
 Añadir pruebas cuando:
 
 - Se añada una nueva funcionalidad.
 - Se reparen regresiones y errores.
-- Se amplíe la cobertura de la prueba.
+- Se expanda la cobertura de prueba.
 
 ## Estructura del directorio de la prueba
 
@@ -28,9 +28,8 @@ Analicemos esta prueba básica de la suite de prueba de Node.js:
 const common = require('../common');                                   // 2
 const fixtures = require('../common/fixtures');                        // 3
 
-// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
-// 5
-// en el encabezado http.                                                 // 6
+// Esta prueba se asegura de que el http-parser pueda manejar caracteres de UTF-8  // 5
+// en la cabecera de http.                                                 // 6
 
 const assert = require('assert');                                      // 8
 const http = require('http');                                          // 9
@@ -71,8 +70,8 @@ require('../common');
 ### **Líneas 5-6**
 
 ```javascript
-// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
-// en el encabezado http.
+// Esta prueba se asegura de que el http-parser pueda manejar caracteres de UTF-8
+// en la cabecera de http.
 ```
 
 Una prueba debe iniciar con un comentario que contenga una breve descripción de lo que está diseñada a probar.
@@ -94,9 +93,9 @@ Las instrucciones require se ordenan en orden [ASCII](http://man7.org/linux/man-
 
 Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servidor HTTP acepte caracteres `non-ASCII` en las cabeceras de una solicitud entrante. Cosas interesantes que tomar en cuenta:
 
-- Si la prueba no depende de un número de puerto específico, entonces siempre usa 0, en lugar de un valor arbitrario, ya que permite que las pruebas se ejecuten en paralelo de forma segura, ya que el sistema operativo asignará un puerto aleatorio. Si la prueba requiere un puerto específico, por ejemplo si la prueba verifica que asignar un puerto específico funciona como se espera, entonces está bien asignar un número de puerto específico.
-- El uso de `common.mustCall` para verificar que algunos callbacks/listeners son llamados.
-- El servidor HTTP cierra una vez que se han ejecutado todas las comprobaciones. De esta forma, la prueba puede salir con gracia. Recuerde que para que una prueba tenga éxito, debe salir con una código de estado de 0.
+- Si la prueba no depende de un número de puerto específico, entonces siempre utilice 0 en lugar de un valor arbitrario, ya que permite que las pruebas se ejecuten en paralelo de forma segura, ya que el sistema operativo asignará un puerto aleatorio. Si la prueba requiere un puerto específico, por ejemplo, si la prueba verifica que asignar un puerto específico funciona como se espera, entonces está bien asignar un número de puerto específico.
+- El uso de `common.mustCall` para verificar que algunas callbacks o algunos listeners son llamados.
+- El servidor HTTP se cierra una vez se hayan ejecutado todas las verificaciones. De esta forma, la prueba puede salir con gracia. Recuerde que para que una prueba tenga éxito, debe salir con un código de estado de 0.
 
 ## Recomendaciones generales
 
@@ -112,7 +111,7 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 creará un tiempo de espera de 4 segundos en la mayoría de las plataformas, pero un tiempo de espera más largo en plataformas más lentas.
 
-### El API *common*
+### La API *common*
 
 Utilice los helpers del módulo `common` tanto como sea posible. Por favor consulte la [documentación del archivo common](https://github.com/nodejs/node/tree/master/test/common) para los detalles completos acerca de los helpers.
 
@@ -133,7 +132,7 @@ process.on('exit', function() {
   assert.equal(response, 1, 'http request "response" callback was not called');
 });
 
-const server = http.createServer(function(req, res) {
+const server = http.createServer((req, res) => {
   request++;
   res.end();
 }).listen(0, function() {
@@ -141,7 +140,7 @@ const server = http.createServer(function(req, res) {
     agent: null,
     port: this.address().port
   };
-  http.get(options, function(res) {
+  http.get(options, (res) => {
     response++;
     res.resume();
     server.close();
@@ -156,21 +155,20 @@ Esta prueba se puede simplificar enormemente al usar `common.mustCall` de esta f
 const common = require('../common');
 const http = require('http');
 
-const server = http.createServer(common.mustCall(function(req, res) {
+const server = http.createServer(common.mustCall((req, res) => {
   res.end();
 })).listen(0, function() {
   const options = {
     agent: null,
     port: this.address().port
   };
-  http.get(options, common.mustCall(function(res) {
+  http.get(options, common.mustCall((res) => {
     res.resume();
     server.close();
   }));
 });
 
 ```
-
 #### Módulo Countdown
 
 El [módulo Countdown](https://github.com/nodejs/node/tree/master/test/common#countdown-module) common proporciona un mecanismo de cuenta regresiva simple para pruebas que requieren que se realice una acción particular después de un número determinado de tareas completadas (por ejemplo, apagar un servidor HTTP después de un número específico de solicitudes).
@@ -183,17 +181,33 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // La cuenta regresiva será invocada ahora.
+countdown.dec(); // La callback countdown será invocada ahora.
+```
+
+#### Testing promises
+
+When writing tests involving promises, it is generally good to wrap the `onFulfilled` handler, otherwise the test could successfully finish if the promise never resolves (pending promises do not keep the event loop alive). The `common` module automatically adds a handler that makes the process crash - and hence, the test fail - in the case of an `unhandledRejection` event. It is possible to disable it with `common.disableCrashOnUnhandledRejection()` if needed.
+
+```javascript
+const common = require('../common');
+const assert = require('assert');
+const fs = require('fs').promises;
+
+// Wrap the `onFulfilled` handler in `common.mustCall()`.
+fs.readFile('test-file').then(
+  common.mustCall(
+    (content) => assert.strictEqual(content.toString(), 'test2')
+  ));
 ```
 
 ### Banderas
 
-Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando específicas establecidas. Para lograr esto, añada un comentario `// Flags:` en el preámbulo de la prueba, seguido por las banderas. Por ejemplo, para permitir que una prueba requiera algunos de los módulos `internal/*`, añada la bandera `--expose-internals`. Una prueba que requeriría `internal/freelist` podría comenzar de esta forma:
+Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando específicas establecidas. Para lograr esto, añada un comentario `// Flags:` en el preámbulo de la prueba, seguido por las banderas. Por ejemplo, para permitir que una prueba requiera algunos de los módulos `internal/*`, añada la bandera `--expose-internals`. Una prueba que requeriría `internal/freelist` podría empezar de esta forma:
 
 ```javascript
 'use strict';
 
-// Flags: --expose-internals
+// Banderas: --expose-internals
 
 require('../common');
 const assert = require('assert');
@@ -207,30 +221,43 @@ Al escribir aserciones, prefiera las versiones estrictas:
 - `assert.strictEqual()` sobre `assert.equal()`
 - `assert.deepStrictEqual()` sobre `assert.deepEqual()`
 
-Al usar `assert.throws()`, si es posible, proporcione el mensaje de error completo:
+Al utilizar `assert.throws()`, si es posible, proporcione el mensaje de error completo:
 
 ```js
 assert.throws(
   () => {
     throw new Error('Wrong value');
   },
-  /^Error: Wrong value$/ // En lugar de algo como /Valor incorrecto/
+  /^Error: Wrong value$/ // En lugar de algo como /Wrong value/
 );
 ```
 
-### Características ES.Next
+### Console output
+
+Output written by tests to stdout or stderr, such as with `console.log()` or `console.error()`, can be useful when writing tests, as well as for debugging them during later maintenance. The output will be suppressed by the test runner (`./tools/test.py`) unless the test fails, but will always be displayed when running tests directly with `node`. For failing tests, the test runner will include the output along with the failed test assertion in the test report.
+
+Some output can help debugging by giving context to test failures. For example, when troubleshooting tests that timeout in CI. With no log statements, we have no idea where the test got hung up.
+
+There have been cases where tests fail without `console.log()`, and then pass when its added, so be cautious about its use, particularly in tests of the I/O and streaming APIs.
+
+Excessive use of console output is discouraged as it can overwhelm the display, including the Jenkins console and test report displays. Be particularly cautious of output in loops, or other contexts where output may be repeated many times in the case of failure.
+
+In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
+
+
+### ES.Next features
 
 Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. Sin embargo, al escribir pruebas, para la facilidad del backporting, se recomienda usar aquellas características ES.Next que pueden ser usadas directamente sin una bandera en [todas las ramas mantenidas](https://github.com/nodejs/lts). [node.green](http://node.green/) enumera las características disponibles en cada versión, tales como:
 
 - `let` y `const` sobre `var`
-- Literales de la plantilla sobre la concatenación de la string
+- Literales de plantilla sobre la concatenación de strings
 - Funciones de flecha cuando sea apropiado
 
 ## Nombrar Archivos de Prueba
 
-Archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. El segundo módulo o subsistema siendo probado. El tercero es usualmente el método o nombre del evento siendo probado. Los componentes posteriores del nombre agregan más información acerca de lo que está siendo probado.
+Los archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. El segundo es el módulo o subsistema siendo probado. El tercero es usualmente el método o el nombre del evento siendo probado. Los componentes posteriores del nombre añaden más información acerca de lo que está siendo probado.
 
-Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede ser nombrada `test-process-before-exit.js`. Si la prueba específicamente verificó que la función flecha funcionó correctamente con el evento `beforeExit`, entonces puede ser nombrada `test-process-before-exit-arrow-functions.js`.
+Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede ser nombrada `test-process-before-exit.js`. Si la prueba específicamente verificó que las funciones flecha funcionaron correctamente con el evento `beforeExit`, entonces puede ser nombrada `test-process-before-exit-arrow-functions.js`.
 
 ## Pruebas Importadas
 
@@ -250,15 +277,15 @@ Algunas de las pruebas para la implementación (nombrada `test-whatwg-url-*.js`)
 /* eslint-enable */
 ```
 
-Para mejorar las pruebas que han sido importadas de esta forma, por favor enviar un PR al proyecto upstream primero. Cuando el cambio propuesto se combina con el proyecto upstream, envíe otro PR aquí para actualizar Node.js en consecuencia. Asegúrese de actualizar el hash en el siguiente URL `WPT Refs:`.
+Para mejorar las pruebas que han sido importadas de esta manera, por favor envíe una PR al proyecto upstream primero. Cuando el cambio propuesto se fusione con el proyecto upstream, envíe otro PR aquí para actualizar Node.js en consecuencia. Asegúrese de actualizar el hash en el URL siguiendo las `WPT Refs:`.
 
 ## Prueba de la Unidad C++
 
-El código C++ puede ser probado usando [Google Test](https://github.com/google/googletest). La mayoría de las características en Node.js pueden ser probadas usando los métodos descritos previamente en este documento. Pero hay casos donde estas podrían no ser suficientes, por ejemplo escribir código para Node.js que solo será llamado cuando Node.js esté incrustado.
+El código C++ puede ser probado utilizando [Google Test](https://github.com/google/googletest). La mayoría de las funcionalidades en Node.js pueden ser probadas utilizando los métodos descritos previamente en este documento. Pero hay casos en donde estos pueden no ser suficientes, por ejemplo, al escribir código para Node.js que sólo será llamado cuando Node.js esté incrustado.
 
-### Añadir una nueva prueba
+### Añadiendo una nueva prueba
 
-La prueba de unidad debe ser colocada en `test/cctest` y nombrada con el prefijo `test` seguida por el nombre de la unidad siendo probada. Por ejemplo, el siguiente código sería colocado en `test/cctest/test_env.cc`:
+La prueba de unidad debe ser colocada en `test/cctest` y nombrada con el prefijo `test`, seguido por el nombre de la unidad que está siendo probada. Por ejemplo, el siguiente código será colocado en `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
@@ -288,7 +315,7 @@ static void at_exit_callback(void* arg) {
 }
 ```
 
-Luego añada la prueba al `sources` en el objetivo `cctest` en node.gyp:
+Luego añada la prueba a las `sources` en el objetivo de `cctest` en node.gyp:
 
 ```console
 'sources': [
@@ -297,20 +324,29 @@ Luego añada la prueba al `sources` en el objetivo `cctest` en node.gyp:
 ],
 ```
 
-Tenga en cuenta que los únicos recursos que deben ser incluidos en el objetivo cctest son pruebas reales o archivos fuente auxiliares. Puede que sea necesario incluir archivos de objeto específicos que son compilados por el objetivo `node` y esto puede ser hecho al añadirlos a la sección `libraries` en el objetivo cctest.
+Note que las únicos recursos que deben ser incluidos en el objetivo de cctest son pruebas reales o archivos de fuente auxiliares. Puede que sea necesario incluir archivos de objeto específicos que sean compilados por el objetivo de `node` y esto puede ser hecho al añadirlos a la sección `libraries` en el objetivo de cctest.
 
-La prueba puede ser realizada al ejecutar el objetivo `cctest`:
+La prueba puede ejecutarse al correr el objetivo de `cctest`:
 
 ```console
 $ make cctest
 ```
 
+A filter can be applied to run single/multiple test cases:
+```console
+$ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
+```
+
+`cctest` can also be run directly which can be useful when debugging:
+```console
+$ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
+```
+
 ### Accesorio de prueba Node.js
+Hay un [accesorio de pruebas](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) llamado `node_test_fixture.h`, el cual puede ser incluido por las pruebas de unidad. El accesorio se encarga de configurar el ambiente de Node.js y de desmontarlo después de que las pruebas hayan finalizado.
 
-Hay un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) nombrado `node_test_fixture.h` el cual puede ser incluido por pruebas de unidad. El accesorio se encarga de configurar el ambiente Node.js y de desmontarlo luego de que las pruebas han terminado.
+También contiene un ayudante para crear argumentos a ser pasados a Node.js. Dependerá de lo que se esté probando si esto es necesario o no.
 
-También contiene un helper para crear argumentos para ser pasados a Node.js. Dependerá de lo que se está probando si esto es necesario o no.
+### Cobertura de Prueba
 
-### Cobertura de la Prueba
-
-Para generar un reporte de cobertura de la prueba, vea la [Sección Cobertura de prueba de la guía Pull Requests](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
+To generate a test coverage report, see the [Test Coverage section of the Building guide](https://github.com/nodejs/node/blob/master/BUILDING.md#running-coverage).
