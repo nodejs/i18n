@@ -27,8 +27,7 @@ Discutarea subiectelor non-tehnice (cum ar fi proprietatea intelectuală și mar
 
 Când se deschide un tichet nou în trackerul de tichete `nodejs/node`, utilizatorii vor primi un șablon de bază care trebuie completat.
 
-```markdown
-<!--
+```markdown<!--
 Mulțumim pentru raportarea unei probleme.
 
 Acest tracker de tichete este pentru erori și probleme găsite în nucleul Node.js.
@@ -42,14 +41,9 @@ Platform: ieșirea comenzii „uname -a” (UNIX), sau versiune și 32 sau 64-bi
 Subsystem: dacă se cunoaște, te rog specifică numele modulului din nucleu afectat
 
 Dacă este posibil, te rog furnizează codul care demonstrează problema, păstrându-l pe cât de simplu posibil și fără dependențe externe.
--->
-
-* **Version**:
+-->* **Version**:
 * **Platform**:
-* **Subsystem**:
-
-<!-- Introdu detaliile problemei tale sub acest comentariu. -->
-```
+* **Subsystem**:<!-- Introdu detaliile problemei tale sub acest comentariu. -->```
 
 Dacă crezi că ai descoperit o eroare în Node.js, te rugăm să completezi acest formular, urmând șablonul cât mai bine posibil. Nu-ți face griji dacă nu poți răspunde la fiecare detaliu, doar completează ceea ce poți.
 
@@ -67,6 +61,6 @@ Răspunsurile scurte, tăiate—care nu oferă niciun context suplimentar și ni
 
 Colaboratorii sunt încurajați să se ajute unul pe altul, să facă progrese cât mai mult posibil, împuternicindu-se reciproc pentru a rezolva problemele în colaborare. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
-## Resolving a Bug Report
+## Rezolvarea unui raport de eroare
 
 In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
