@@ -1,34 +1,32 @@
-# Building Node.js with Ninja
+# Erstellen von Node.js mit Ninja
 
-The purpose of this guide is to show how to build Node.js using [Ninja](https://ninja-build.org/), as doing so can be significantly quicker than using `make`. Please see [Ninja's site](https://ninja-build.org/) for installation instructions (unix only).
+Der Zweck dieser Anleitung ist, zu zeigen, wie man unter Verwendung von [Ninja](https://ninja-build.org/) Node.js aufbaut. Dies kann deutlich schneller sein, als die Verwendung von `make`. Sehen Sie dazu auf [Ninja's site](https://ninja-build.org/) die Installationsanleitungen (nur Unix) ein.
 
-To build Node.js with ninja, there are 3 steps that must be taken:
+Um Node.js mit Ninja herzustellen, gibt es 3 notwendige Stufen:
 
-1. Configure the project's OS-based build rules via `./configure --ninja`.
-2. Run `ninja -C out/Release` to produce a compiled release binary.
-3. Lastly, make symlink to `./node` using `ln -fs out/Release/node node`.
+1. Konfigurieren der Projekt OS-basierten Regeln mittels `./configure --ninja`.
+2. Um eine kompilierte Binärdatei zu erzeugen, führen Sie `ninja -C out/Release` aus.
+3. Letztlich Symlink mit `./node` using `ln -fs out/Release/node node` erzeugen.
 
-When running `ninja -C out/Release` you will see output similar to the following if the build has succeeded:
+Wenn `ninja -C out/Release` ausgeführt wird, erhalten Sie eine ähnliche Ausgabe wie nachfolgend, wenn der Build ordnungsgemäß verlief:
 
 ```txt
 ninja: Entering directory `out/Release`
 [4/4] LINK node, POSTBUILDS
 ```
 
-The bottom line will change while building, showing the progress as `[finished/total]` build steps. This is useful output that `make` does not produce and is one of the benefits of using Ninja. Also, Ninja will likely compile much faster than even `make -j4` (or `-j<number of processor threads on your machine>`).
+Die untere Zeile verändert sich beim erstellen, sie zeigt den Fortschritt als `[finished/total]`. Dies ist eine nützliche Ausgabe, welche `make` nicht erzeugt und dies ist einer der Vorteile von Ninja. Desweiteren wird Ninja wahrscheinlich schneller kompilieren als selbst `make -j4` (oder `-j<number of processor threads on your machine>`).
 
-## Considerations
+## Erwägungen
 
-Ninja builds vary slightly from `make` builds. If you wish to run `make test` after, `make` will likely still need to rebuild some amount of Node.js.
+Ninja Builds unterscheiden sich leicht von `make` builds. Wenn Sie `make test` hinterher laufen lassen, wird `make` wahrscheinlich einiges von Node.js neu erstellen müssen.
 
-As such, if you wish to run the tests, it can be helpful to invoke the test runner directly, like so: `tools/test.py --mode=release message parallel sequential -J`
+Wenn Sie daher die Tests laufen lassen wollen, kann es hilfreich sein, das Testprogramm, wie folgend, direkt aufzurufen: `tools/test.py --mode=release message parallel sequential -J`
 
 ## Alias
 
-`alias nnode='./configure --ninja && ninja -C out/Release && ln -fs
-out/Release/node node'`
+`alias nnode='./configure --ninja && ninja -C out/Release && ln -fs out/Release/node node'`
 
-## Producing a debug build
+## Ein Debug-Build erstellen
 
-The above alias can be modified slightly to produce a debug build, rather than a release build as shown below: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs
-out/Debug/node node_g'`
+Das obige Alias kann kann zur Erstellung eines Debug-Builds leicht modifiziert werden, ganz im Gegensatz zum Release-Build wie folgend gezeigt: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs out/Debug/node node_g'`
