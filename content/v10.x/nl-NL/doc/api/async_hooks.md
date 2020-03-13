@@ -14,6 +14,8 @@ const async_hooks = require('async_hooks');
 
 Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. Deze callback kan meerdere keren worden opgeroepen, bijvoorbeeld, de `'connection'` gebeurtenis in `net.createServer()`, of slechts een enkele keer als in `fs.open()`. Een hulpmiddel kan ook worden gesloten voordat de callback wordt aangeroepen. `AsyncHook` maakt geen uitvoerig onderscheid tussen deze verschillende gevallen, maar zal ze vertegenwoordigen als het abstracte concept wat een hulpbron is.
 
+If [`Worker`][]s are used, each thread has an independent `async_hooks` interface, and each thread will use a new set of async IDs.
+
 ## Openbare API
 
 ### Overzicht
@@ -74,7 +76,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} De [Hook Callbacks](#async_hooks_hook_callbacks) te registreren 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register
   * `init` {Function} De [`init` callback][].
   * `before` {Function} De [`before` callback][].
   * `after` {Function} De [`after` callback][].
@@ -120,15 +122,15 @@ De reden voor dit gedrag voor foutafhandeling is dat deze callbacks op potentiee
 
 ##### Printen in AsyncHooks callbacks
 
-Omdat het printen naar de console een asynchrone bewerking is, zal `console.log()` er voor zorgen dat de AsyncHooks-callbacks worden opgeroepen. Het gebruik van `console.log()` of soortgelijke asynchrone operaties binnen een AsyncHooks callback-functie zal dus tot een oneindige recursie leiden. Een gemakkelijke oplossing hiervoor is een synchrone logboekoperatie te gebruiken bij foutopsporing, zoals `fs.writeSync(1, msg)`. Dit zal naar stdout printen omdat `1` de bestandsbeschrijver is voor stdout en zal AsyncHooks niet recursief oproepen omdat het synchroon is.
+Omdat het printen naar de console een asynchrone bewerking is, zal `console.log()` er voor zorgen dat de AsyncHooks-callbacks worden opgeroepen. Het gebruik van `console.log()` of soortgelijke asynchrone operaties binnen een AsyncHooks callback-functie zal dus tot een oneindige recursie leiden. An easy solution to this when debugging is to use a synchronous logging operation such as `fs.writeFileSync(file, msg, flag)`. This will print to the file and will not invoke AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
 const util = require('util');
 
-functie foutoplossing(...args) {
-  // gebruik een functie zoals deze bij het fout opsporen binnen een AsyncHooks callback
-  fs.writeSync(1, `${util.format(...args)}\n`);
+function debug(...args) {
+  // use a function like this one when debugging inside an AsyncHooks callback
+  fs.writeFileSync('log.out', `${util.format(...args)}\n`, { flag: 'a' });
 }
 ```
 
@@ -165,9 +167,9 @@ Belangrijke gebeurtenissen gedurende de levensduur van asynchrone gebeurtenissen
 * `asyncId` {number} Een unieke ID voor de async hulpbron.
 * `type` {string} Het type van de async hulpbron.
 * `triggerAsyncId` {number} Het unieke ID van de async hulpbron in wiens uitvoeringscontext deze async hulpbron is gemaakt.
-* `resource` {Object} Referentie naar de hulpbron die de async operatie representeert, moet worden vrijgegeven tijdens het *destroy*.
+* `resource` {Object} Referentie naar de hulpbron die de async operatie representeert, moet worden vrijgegeven tijdens het _destroy_.
 
-Wordt opgeroepen wanneer een klasse wordt samengesteld die de *mogelijkheid* heeft om een asynchrone gebeurtenis uit te zenden. Dit betekent *niet* dat de instantie moet oproepen `before`/`after` before `destroy` is opgeroepen, maar alleen dat de mogelijkheid bestaat.
+Wordt opgeroepen wanneer een klasse wordt samengesteld die de _mogelijkheid_ heeft om een asynchrone gebeurtenis uit te zenden. Dit betekent _niet_ dat de instantie moet oproepen `before`/`after` before `destroy` is opgeroepen, maar alleen dat de mogelijkheid bestaat.
 
 Dit gedrag kan worden waargenomen door iets te doen zoals het openen van een hulpbron en het dan te sluiten voordat de hulpbron kan worden gebruikt. Het volgende fragment toont dit.
 
@@ -177,7 +179,7 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Aan iedere nieuwe hulpbron wordt een ID toegewezen dat uniek is binnen de werkingssfeer van het huidige proces.
+Every new resource is assigned an ID that is unique within the scope of the current Node.js instance.
 
 ###### `type`
 
@@ -186,8 +188,8 @@ Het `type` is een tekenreeks die aangeeft welk type hulpbron het oproepen van `i
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
 JSSTREAM, PIPECONNECTWRAP, PIPEWRAP, PROCESSWRAP, QUERYWRAP, SHUTDOWNWRAP,
-SIGNALWRAP, STATWATCHER, TCPCONNECTWRAP, TCPSERVER, TCPWRAP, TIMERWRAP, TTYWRAP,
-UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
+SIGNALWRAP, STATWATCHER, TCPCONNECTWRAP, TCPSERVERWRAP, TCPWRAP, TIMERWRAP,
+TTYWRAP, UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
@@ -199,7 +201,7 @@ Het is mogelijk om type naam conflicten te hebben. Embedders worden aangemoedigd
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. Dit is anders dan `async_hooks.executionAsyncId()` die alleen laat zien *wanneer* een hulpbron werd gecreëerd, terwijl `triggerAsyncId` laat zien *waarom* een hulpbron werd gecreëerd.
+`triggerAsyncId` is de `asyncId` van de hulpbron die het initialiseren van de nieuwe hulpbron heeft veroorzaakt (of "getriggered") en waardoor `init` getriggered werd om op te roepen. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
 Het volgende is een simpele demonstratie van `triggerAsyncId`:
 
@@ -218,8 +220,8 @@ require('net').createServer((conn) => {}).listen(8080);
 Uitvoer bij het bewerken van de server met `nc localhost 8080`:
 
 ```console
-TCPSERVERWRAP(2): trigger: 1 execution: 1
-TCPWRAP(4): trigger: 2 execution: 0
+TCPSERVERWRAP(5): trigger: 1 execution: 1
+TCPWRAP(7): trigger: 5 execution: 0
 ```
 
 De `TCPSERVERWRAP` is de server die de verbindingen ontvangt.
@@ -228,7 +230,7 @@ De `TCPWRAP` is de nieuwe verbinding van de client. Wanneer een nieuwe verbindin
 
 ###### `hulpbron`
 
-`resource` is een object dat de werkelijke async hulpbron die is geïnitialiseerd vertegenwoordigt. Dit kan nuttige informatie bevatten welke kan variëren afhankelijk van de waarde van `type`. Bijvoorbeeld, voor het `GETADDRINFOREQWRAP` hulpbron type, `resource` verschaft de hostnaam die is gebruikt wanneer het IP adres wordt opgezocht voor de hostnaam in `net.Server.listen()`. De API voor toegang tot deze informatie wordt momenteel niet als publiek beschouwd, maar door gebruik van de Embedder API, kunnen gebruikers hun eigen hulpbron objecten verschaffen en documenteren. Bijvoorbeeld, kan een dergelijk hulpbron object de SQL-query bevatten die wordt uitgevoerd.
+`resource` is een object dat de werkelijke async hulpbron die is geïnitialiseerd vertegenwoordigt. Dit kan nuttige informatie bevatten welke kan variëren afhankelijk van de waarde van `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the host in `net.Server.listen()`. De API voor toegang tot deze informatie wordt momenteel niet als publiek beschouwd, maar door gebruik van de Embedder API, kunnen gebruikers hun eigen hulpbron objecten verschaffen en documenteren. Bijvoorbeeld, kan een dergelijk hulpbron object de SQL-query bevatten die wordt uitgevoerd.
 
 In het geval van Beloften, zal het `resource` object een `promise` eigenschap hebben die refereert naar de `Promise` die wordt geïnitialiseerd, en een `isChainedPromise` eigenschap, ingesteld naar `true` wanneer de belofte een ouder belofte heeft, en `false` als het anders is. Bijvoorbeeld, in het geval van `b = a.then(handler)`, `a` wordt beschouwd als een ouder `Promise` of `b`. Hier wordt `b` beschouwd als een geketende belofte.
 
@@ -251,22 +253,25 @@ async_hooks.createHook({
   },
   before(asyncId) {
     const indentStr = ' '.repeat(indent);
-    fs.writeSync(1, `${indentStr}before:  ${asyncId}\n`);
+    fs.writeFileSync('log.out',
+                     `${indentStr}before:  ${asyncId}\n`, { flag: 'a' });
     indent += 2;
   },
   after(asyncId) {
     indent -= 2;
     const indentStr = ' '.repeat(indent);
-    fs.writeSync(1, `${indentStr}after:   ${asyncId}\n`);
+    fs.writeFileSync('log.out',
+                     `${indentStr}after:  ${asyncId}\n`, { flag: 'a' });
   },
   destroy(asyncId) {
     const indentStr = ' '.repeat(indent);
-    fs.writeSync(1, `${indentStr}destroy: ${asyncId}\n`);
+    fs.writeFileSync('log.out',
+                     `${indentStr}destroy:  ${asyncId}\n`, { flag: 'a' });
   },
 }).enable();
 
 require('net').createServer(() => {}).listen(8080, () => {
-  // Laten we 10 minuten wachten met aanmelden op de server.
+  // Let's wait 10ms before logging the server started.
   setTimeout(() => {
     console.log('>>>', async_hooks.executionAsyncId());
   }, 10);
@@ -276,27 +281,18 @@ require('net').createServer(() => {}).listen(8080, () => {
 Uitvoer alleen van het starten van de server:
 
 ```console
-TCPSERVERWRAP(2): trigger: 1 execution: 1
-TickObject(3): trigger: 2 execution: 1
-before:  3
-  Timeout(4): trigger: 3 execution: 3
-  TIMERWRAP(5): trigger: 3 execution: 3
-after:   3
-destroy: 3
-before:  5
-  before:  4
-    TTYWRAP(6): trigger: 4 execution: 4
-    SIGNALWRAP(7): trigger: 4 execution: 4
-    TTYWRAP(8): trigger: 4 execution: 4
->>> 4
-    TickObject(9): trigger: 4 execution: 4
-  after:   4
-after:   5
-before:  9
-after:   9
-destroy: 4
-destroy: 9
-destroy: 5
+TCPSERVERWRAP(5): trigger: 1 execution: 1
+TickObject(6): trigger: 5 execution: 1
+before:  6
+  Timeout(7): trigger: 6 execution: 6
+after:   6
+destroy: 6
+before:  7
+>>> 7
+  TickObject(8): trigger: 7 execution: 7
+after:   7
+before:  8
+after:   8
 ```
 
 Zoals geïllustreerd in het voorbeeld, geven `executionAsyncId()` en `execution` ieder de waarde aan van de huidige uitvoeringscontext; die wordt afgebakend door het aanroepen van `before` en `after`.
@@ -304,12 +300,12 @@ Zoals geïllustreerd in het voorbeeld, geven `executionAsyncId()` en `execution`
 Het gebruik van enkel `execution` om de hulpbronbestemming in kaart te zetten, resulteert in het volgende:
 
 ```console
-TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
+Timeout(7) -> TickObject(6) -> root(1)
 ```
 
 De `TCPSERVERWRAP` is geen deel van deze grafiek, ook al was het de reden om `console.log()` op te roepen. Dit is omdat het binden aan een uitgang zonder de hostnaam een *synchrone* werking is, maar om een complete asynchrone API te behouden, wordt de callback van de gebruiker geplaatst in een `process.nextTick()`.
 
-De grafiek laat alleen zien *wanneer* een bron werd gecreëerd, niet *waarom*, dus om het *waarom* bij te houden, gebruik `triggerAsyncId`.
+The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
 ##### voor(asyncId)
 
@@ -325,7 +321,7 @@ De `before` callback zal 0 tot N keer opgeroepen worden. De `before` callback wo
 
 Wordt onmiddellijk opgeroepen nadat de callback die is aangeduid in `before` is voltooid.
 
-Wanneer een ongevangen uitzondering optreedt tijdens de uitvoering van de callback, zal `after` draaien *nadat* de `'uncaughtException'` gebeurtenis is uitgezonden of een `domain`'s beheerder draait.
+If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
 ##### destroy(asyncId)
 
@@ -365,7 +361,6 @@ init for PROMISE with id 6, trigger id: 5  # de Belofte geretourneerd door dan()
 <!-- YAML
 added: v8.1.0
 changes:
-
   - version: v8.2.0
     pr-url: https://github.com/nodejs/node/pull/13490
     description: Renamed from `currentId`
@@ -385,15 +380,14 @@ fs.open(path, 'r', (err, fd) => {
 De ID die is geretourneerd vanuit `executionAsyncId()` is gerelateerd aan de timing van de uitvoering, niet causaliteit (die wordt gedekt door `triggerAsyncId()`):
 
 ```js
-const server = net.createServer(function onConnection(conn) {
-  // Retourneert de ID van de server, niet van de nieuwe connectie, want de
-  // onConnection callback draait in het uitvoeringskader van de
-  // MakeCallback() server.
+const server = net.createServer((conn) => {
+  // Returns the ID of the server, not of the new connection, because the
+  // callback runs in the execution scope of the server's MakeCallback().
   async_hooks.executionAsyncId();
 
-}).listen(port, function onListening() {
-  // Retourneert de ID van een TickObject (i.e. process.nextTick()) want alle
-  // callbacks doorgegeven om te  .listen() zitten ingepakt in een nextTick().
+}).listen(port, () => {
+  // Returns the ID of a TickObject (i.e. process.nextTick()) because all
+  // callbacks passed to .listen() are wrapped in a nextTick().
   async_hooks.executionAsyncId();
 });
 ```
@@ -423,9 +417,7 @@ Observeer dat belofte contexten standaard geen precieze `triggerAsyncId`s krijge
 
 ## Belofte uitvoering tracering
 
-Als standaard, worden belofte uitvoeringen geen `asyncId`s toegewezen vanwege de relatieve dure aard van de [belofte introspectie API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) verschaft door de V8. Dit betekent dat programma's die gebruik maken van beloften of `async`/`await` geen correcte uitvoering krijgen en standaard id's triggeren voor belofte callback contexten.
-
-Hier is een voorbeeld:
+By default, promise executions are not assigned `asyncId`s due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk/edit) provided by V8. Dit betekent dat programma's die gebruik maken van beloften of `async`/`await` geen correcte uitvoering krijgen en standaard id's triggeren voor belofte callback contexten.
 
 ```js
 const ah = require('async_hooks');
@@ -438,7 +430,7 @@ Promise.resolve(1729).then(() => {
 
 Observeer dat de `then()` claimt te hebben uitgevoerd in de context van het externe bereik, ook al was er een asynchrone sprong bij betrokken. Observeer ook dat de `triggerAsyncId` waarde `0` is, wat betekent dat wij context missen over de hulpbron die de `then()` uitvoer heeft veroorzaakt (getriggered).
 
-Het installeren van async hooks via `async_hooks.createHook` bemogelijkt belofteuitvoering tracering. Voorbeeld:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking:
 
 ```js
 const ah = require('async_hooks');
@@ -452,64 +444,56 @@ Promise.resolve(1729).then(() => {
 
 In dit voorbeeld, maakte het toevoegen van een actuele hook functie het mogelijk dat het traceren van beloften werd ingeschakeld. In het voorbeeld hierboven zijn twee beloften; de belofte die is gecreëerd door `Promise.resolve()` en de belofte geretourneerd door de oproep om `then()`. In het voorbeeld hierboven, krijgt de eerste belofte de `asyncId` `6` en de laatste krijgt `asyncId` `7`. Gedurende de uitvoering van de `then()` callback, voeren we uit in de context van belofte met `asyncId` `7`. Deze belofte werd getriggerd door async resource `6`.
 
-Een andere subtiliteit met beloften is dat `before` en `after` callback alleen op geketende beloften worden gedraaid. Dit betekent dat beloften die niet zijn gecreëerd door `then()`/`catch()` geen `before` en `after` callbacks op hen afgevuurd krijgen. Voor meer informatie zie de details van de V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
+Een andere subtiliteit met beloften is dat `before` en `after` callback alleen op geketende beloften worden gedraaid. Dit betekent dat beloften die niet zijn gecreëerd door `then()`/`catch()` geen `before` en `after` callbacks op hen afgevuurd krijgen. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk/edit) API.
 
 ## JavaScript Embedder API
 
-Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
+Bibliotheek-ontwikkelaars die zich met hun eigen asynchrone hulpbronnen voor het uitvoeren van taken bezighouden, zoals I/O, connection pooling, of het beheren van callback wachtrijen, kunnen de `AsyncWrap` JavaScript API gebruiken, zodat alle passende callbacks aangeroepen worden.
 
 ### Class: AsyncResource
 
-The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
+De class `AsyncResource` is ontworpen om door de embedder async hulpbronnen te worden verlengd. Bij gebruik hiervan, kunnen gebruikers makkelijk de levensduur gebeurtenissen van hun eigen hulpbronnen activeren.
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+De `init` hook zal geactiveerd worden wanneer een `AsyncResource` wordt geïnstantieerd.
 
-The following is an overview of the `AsyncResource` API.
+Het volgende is een overzicht van de `AsyncResource` API.
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
 
-// AsyncResource() is meant to be extended. Instantiating a
-// new AsyncResource() also triggers init. If triggerAsyncId is omitted then
-// async_hook.executionAsyncId() is used.
+// AsyncResource() is bedoeld om te worden uitgebreid. Het instantiëren van een
+// new AsyncResource() leidt ook tot init. Als triggerAsyncId wordt weggelaten dan wordt
+// async_hook.executionAsyncId() gebruikt.
 const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
 
-// Run a function in the execution context of the resource. This will
-// * establish the context of the resource
-// * trigger the AsyncHooks before callbacks
-// * call the provided function `fn` with the supplied arguments
-// * trigger the AsyncHooks after callbacks
-// * restore the original execution context
+// Draai een functie in de executie context van de hulpbron. Dit zal
+// * bevestig de context van de hulpbron
+// * trigger de AsyncHooks voor callbacks
+// * roep de geleverde functie aan `fn` met de aangevoerde argumenten
+// * trigger de AsyncHooks na callbacks
+// * herstel de originele executie context
 asyncResource.runInAsyncScope(fn, thisArg, ...args);
 
-// Call AsyncHooks destroy callbacks.
+// Roep AsyncHooks vernietig callbacks aan.
 asyncResource.emitDestroy();
 
-// Return the unique ID assigned to the AsyncResource instance.
+// Retourneer de unieke ID toegewezen aan de AsyncResource instantie.
 asyncResource.asyncId();
 
-// Return the trigger ID for the AsyncResource instance.
+// Retourneer de trigger ID voor de AsyncResource instantie.
 asyncResource.triggerAsyncId();
-
-// Call AsyncHooks before callbacks.
-// Deprecated: Use asyncResource.runInAsyncScope instead.
-asyncResource.emitBefore();
-
-// Call AsyncHooks after callbacks.
-// Deprecated: Use asyncResource.runInAsyncScope instead.
-asyncResource.emitAfter();
 ```
 
-#### new AsyncResource(type[, options])
+#### nieuwe AsyncResource(type[, options])
 
-* `type` {string} The type of async event.
-* `options` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+* `type` {string} Het type async event.
+* `options` {Object}
+  * `triggerAsyncId` {number} De ID van de uitvoeringscontext die deze async event heeft gecreëerd. **Standaard:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} Schakelt automatisch `emitDestroy` uit wanneer het object afval is opgehaald. Dit hoeft meestal niet te worden ingesteld (zelfs als `emitDestroy` handmatig werd aangeroepen), tenzij de `asyncId` hulpbronnen zijn ontvangen en met gevoelige API's `emitDestroy` is aangeroepen. **Standaard:** `false`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -532,51 +516,48 @@ class DBQuery extends AsyncResource {
 ```
 
 #### asyncResource.runInAsyncScope(fn[, thisArg, ...args])
-
 <!-- YAML
 added: v9.6.0
 -->
 
-* `fn` {Function} The function to call in the execution context of this async resource.
-* `thisArg` {any} The receiver to be used for the function call.
-* `...args` {any} Optional arguments to pass to the function.
+* `fn` {Function} De aan te roepen functie in de executie context van deze async hulpbron.
+* `thisArg` {any} De te gebruiken ontvanger voor de functie oproep.
+* `...args` {any} Optionele argumenten om door te geven aan de functie.
 
-Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
+Roep de geleverde functie op met de verstrekte argumenten in de executie context van de async hulpbron. Dit zal de context vaststellen, de AsyncHooks triggeren voor de callbacks, de functie oproepen, de AsyncHook na callbacks triggeren, en dan de originele executie context herstellen.
 
 #### asyncResource.emitBefore()
-
 <!-- YAML
 deprecated: v9.6.0
 -->
+> Stabiliteit: 0 - Afgekeurd: Gebruik [`asyncResource.runInAsyncScope()`][] als alternatief.
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+Roep alle `before` callbacks aan om te waarschuwen dat een nieuwe asynchrone executie context wordt ingevoerd. Wanneer er geneste aanroepen naar `emitBefore()` worden gemaakt, zal de stack van `asyncId`s worden bijgehouden en naar behoren afgewikkeld.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
-
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` en `after` calls moeten worden afgewikkeld in dezelfde volgorde als waarin ze worden aangeroepen. Anders zal zich een onherstelbare uitzondering voordoen en het proces zal afbreken. Om deze reden worden de `emitBefore` en `emitAfter` APIs beschouwd als afgekeurd. Gebruik alsjeblieft `runInAsyncScope`, want het biedt een veel veiliger alternatief.
 
 #### asyncResource.emitAfter()
-
 <!-- YAML
 deprecated: v9.6.0
 -->
+> Stabiliteit: 0 - Afgekeurd: Gebruik [`asyncResource.runInAsyncScope()`][] als alternatief.
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+Roep alle `after` callbacks aan. Wanneer geneste aanroepen naar `emitBefore()` werden gemaakt, zorg er dan voor dat de stack goed wordt afgewikkeld. Anders zal er een fout worden geworpen.
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+Wanneer de callback van de gebruiker een uitzondering werpt, zal automatisch `emitAfter()` worden aangeroepen voor alle `asyncId`s op de stack als de fout wordt afgehandeld door een domein of een `'uncaughtException'` beheerder.
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
-
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` en `after` calls moeten worden afgewikkeld in dezelfde volgorde als waarin ze worden aangeroepen. Anders zal zich een onherstelbare uitzondering voordoen en het proces zal afbreken. Om deze reden worden de `emitBefore` en `emitAfter` APIs beschouwd als afgekeurd. Gebruik alsjeblieft `runInAsyncScope`, want het biedt een veel veiliger alternatief.
 
 #### asyncResource.emitDestroy()
 
-Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+* Returns: {AsyncResource} A reference to `asyncResource`.
+
+Roep alle `destroy` hooks aan. Dit hoeft maar één keer aangeroepen te worden. Er zal een fout geworpen worden als dit meer dan eens wordt aangeroepen. Dit **moet** handmatig worden aangeroepen. Als de hulpbron nog moet worden verzameld door de GC dan zullen de `destroy` hooks nooit worden aangeroepen.
 
 #### asyncResource.asyncId()
 
-* Returns: {number} The unique `asyncId` assigned to the resource.
+* Retourneert: {number} De unieke `asyncId` toegewezen aan de hulpbron.
 
 #### asyncResource.triggerAsyncId()
 
-* Returns: {number} The same `triggerAsyncId` that is passed to the `AsyncResource` constructor.
+* Retourneert: {number} Dezelfde `triggerAsyncId` die wordt doorgegeven aan de `AsyncResource` constructor.
