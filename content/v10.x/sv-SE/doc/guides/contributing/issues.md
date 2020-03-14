@@ -1,13 +1,13 @@
-# Issues
+# Ärenden
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
+* [Hur man bidra i ärende](#how-to-contribute-in-issues)
 * [Asking for General Help](#asking-for-general-help)
 * [Discussing non-technical topics](#discussing-non-technical-topics)
 * [Submitting a Bug Report](#submitting-a-bug-report)
 * [Triaging a Bug Report](#triaging-a-bug-report)
 * [Resolving a Bug Report](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## Hur man bidra i ärende
 
 For any issue, there are fundamentally three ways an individual can contribute:
 
