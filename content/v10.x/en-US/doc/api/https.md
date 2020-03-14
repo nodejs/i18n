@@ -4,24 +4,21 @@
 
 > Stability: 2 - Stable
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a
-separate module.
+HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: https.Agent
 <!-- YAML
 added: v0.4.5
 -->
 
-An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See
-[`https.request()`][] for more information.
+An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Class: https.Server
 <!-- YAML
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as
-[`http.Server`][]. See [`http.Server`][] for more information.
+This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
 
 ### server.close([callback])
 <!-- YAML
@@ -34,8 +31,7 @@ See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 ### server.listen()
 
-Starts the HTTPS server listening for encrypted connections.
-This method is identical to [`server.listen()`][] from [`net.Server`][].
+Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 
 ### server.maxHeadersCount
@@ -50,7 +46,7 @@ See [`http.Server#maxHeadersCount`][].
 
 See [`http.Server#headersTimeout`][].
 
-### server.setTimeout([msecs][, callback])
+### server.setTimeout(\[msecs\]\[, callback\])
 <!-- YAML
 added: v0.11.2
 -->
@@ -76,12 +72,11 @@ added: v8.0.0
 
 See [`http.Server#keepAliveTimeout`][].
 
-## https.createServer([options][, requestListener])
+## https.createServer(\[options\]\[, requestListener\])
 <!-- YAML
 added: v0.3.4
 -->
-* `options` {Object} Accepts `options` from [`tls.createServer()`][],
- [`tls.createSecureContext()`][] and [`http.createServer()`][].
+* `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 * `requestListener` {Function} A listener to be added to the `'request'` event.
 * Returns: {https.Server}
 
@@ -119,7 +114,7 @@ https.createServer(options, (req, res) => {
 ```
 
 ## https.get(options[, callback])
-## https.get(url[, options][, callback])
+## https.get(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
@@ -132,15 +127,12 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 * `url` {string | URL}
-* `options` {Object | string | URL} Accepts the same `options` as
-  [`https.request()`][], with the `method` always set to `GET`.
+* `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 * `callback` {Function}
 
 Like [`http.get()`][] but for HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a
-string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][]
-object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -166,7 +158,7 @@ added: v0.5.9
 Global instance of [`https.Agent`][] for all HTTPS client requests.
 
 ## https.request(options[, callback])
-## https.request(url[, options][, callback])
+## https.request(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
@@ -182,8 +174,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 * `url` {string | URL}
-* `options` {Object | string | URL} Accepts all `options` from
-  [`http.request()`][], with some differences in default values:
+* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
   - `protocol` **Default:** `'https:'`
   - `port` **Default:** `443`
   - `agent` **Default:** `https.globalAgent`
@@ -191,14 +182,9 @@ changes:
 
 Makes a request to a secure web server.
 
-The following additional `options` from [`tls.connect()`][] are also accepted:
-`ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`,
-`honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`,
-`secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a
-string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][]
-object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -270,8 +256,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example pinning on certificate fingerprint, or the public key (similar to
-`pin-sha256`):
+Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
 
 ```js
 const tls = require('tls');
@@ -363,25 +348,3 @@ All OK. Server matched our pinned cert or public key
 statusCode: 200
 headers: max-age=0; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="RRM1dGqnDFsCJXBTHky16vi1obOlCgFFn/yOhI/y+ho="; pin-sha256="k2v657xBsOVe1PQRwOsHsw3bsGT2VzIqz5K+59sNQws="; pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="IQBnNBEiFuhj+8x6X8XLgh01V9Ic5/V3IRQLNFFc7v4="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0="; pin-sha256="LvRiGEjRqfzurezaWuj8Wie2gyHMrW5Q06LspMnox7A="; includeSubDomains
 ```
-
-[`Agent`]: #https_class_https_agent
-[`URL`]: url.html#url_the_whatwg_url_api
-[`http.Agent`]: http.html#http_class_http_agent
-[`http.Server#keepAliveTimeout`]: http.html#http_server_keepalivetimeout
-[`http.Server#maxHeadersCount`]: http.html#http_server_maxheaderscount
-[`http.Server#headersTimeout`]: http.html#http_server_headerstimeout
-[`http.Server#setTimeout()`]: http.html#http_server_settimeout_msecs_callback
-[`http.Server#timeout`]: http.html#http_server_timeout
-[`http.Server`]: http.html#http_class_http_server
-[`http.close()`]: http.html#http_server_close_callback
-[`http.createServer()`]: http.html#http_http_createserver_options_requestlistener
-[`http.get()`]: http.html#http_http_get_options_callback
-[`http.request()`]: http.html#http_http_request_options_callback
-[`https.Agent`]: #https_class_https_agent
-[`https.request()`]: #https_https_request_options_callback
-[`net.Server`]: net.html#net_class_net_server
-[`server.listen()`]: net.html#net_server_listen
-[`tls.connect()`]: tls.html#tls_tls_connect_options_callback
-[`tls.createSecureContext()`]: tls.html#tls_tls_createsecurecontext_options
-[`tls.createServer()`]: tls.html#tls_tls_createserver_options_secureconnectionlistener
-[`url.parse()`]: url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost
