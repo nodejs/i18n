@@ -1,12 +1,12 @@
-# Timers
+# Temporizadores
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
 
 The `timer` module exposes a global API for scheduling functions to be called at some future period of time. Because the timer functions are globals, there is no need to call `require('timers')` to use the API.
 
-The timer functions within Node.js implement a similar API as the timers API provided by Web Browsers but use a different internal implementation that is built around [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick).
+The timer functions within Node.js implement a similar API as the timers API provided by Web Browsers but use a different internal implementation that is built around [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/).
 
 ## Class: Immediate
 
@@ -15,7 +15,6 @@ This object is created internally and is returned from [`setImmediate()`][]. It 
 By default, when an immediate is scheduled, the Node.js event loop will continue running as long as the immediate is active. The `Immediate` object returned by [`setImmediate()`][] exports both `immediate.ref()` and `immediate.unref()` functions that can be used to control this default behavior.
 
 ### immediate.ref()
-
 <!-- YAML
 added: v9.7.0
 -->
@@ -27,7 +26,6 @@ When called, requests that the Node.js event loop *not* exit so long as the `Imm
 By default, all `Immediate` objects are "ref'ed", making it normally unnecessary to call `immediate.ref()` unless `immediate.unref()` had been called previously.
 
 ### immediate.unref()
-
 <!-- YAML
 added: v9.7.0
 -->
@@ -43,7 +41,6 @@ This object is created internally and is returned from [`setTimeout()`][] and [`
 By default, when a timer is scheduled using either [`setTimeout()`][] or [`setInterval()`][], the Node.js event loop will continue running as long as the timer is active. Each of the `Timeout` objects returned by these functions export both `timeout.ref()` and `timeout.unref()` functions that can be used to control this default behavior.
 
 ### timeout.ref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -54,8 +51,18 @@ When called, requests that the Node.js event loop *not* exit so long as the `Tim
 
 By default, all `Timeout` objects are "ref'ed", making it normally unnecessary to call `timeout.ref()` unless `timeout.unref()` had been called previously.
 
-### timeout.unref()
+### timeout.refresh()
+<!-- YAML
+added: v10.2.0
+-->
 
+* Returns: {Timeout} a reference to `timeout`
+
+Sets the timer's start time to the current time, and reschedules the timer to call its callback at the previously specified duration adjusted to the current time. This is useful for refreshing a timer without allocating a new JavaScript object.
+
+Using this on a timer that has already called its callback will reactivate the timer.
+
+### timeout.unref()
 <!-- YAML
 added: v0.9.1
 -->
@@ -71,12 +78,11 @@ Calling `timeout.unref()` creates an internal timer that will wake the Node.js e
 A timer in Node.js is an internal construct that calls a given function after a certain period of time. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
 
 ### setImmediate(callback[, ...args])
-
 <!-- YAML
 added: v0.9.1
 -->
 
-* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
+* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 * `...args` {any} Optional arguments to pass when the `callback` is called.
 * Returns: {Immediate} for use with [`clearImmediate()`][]
 
@@ -107,7 +113,6 @@ timerExample();
 ```
 
 ### setInterval(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -124,7 +129,6 @@ When `delay` is larger than `2147483647` or less than `1`, the `delay` will be s
 If `callback` is not a function, a [`TypeError`][] will be thrown.
 
 ### setTimeout(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -161,7 +165,6 @@ The [`setImmediate()`][], [`setInterval()`][], and [`setTimeout()`][] methods ea
 It is not possible to cancel timers that were created using the promisified variants of [`setImmediate()`][], [`setTimeout()`][].
 
 ### clearImmediate(immediate)
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -171,7 +174,6 @@ added: v0.9.1
 Cancels an `Immediate` object created by [`setImmediate()`][].
 
 ### clearInterval(timeout)
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -181,7 +183,6 @@ added: v0.0.1
 Cancels a `Timeout` object created by [`setInterval()`][].
 
 ### clearTimeout(timeout)
-
 <!-- YAML
 added: v0.0.1
 -->
