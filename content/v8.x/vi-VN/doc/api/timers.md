@@ -1,8 +1,8 @@
-# Timers
+# Bộ hẹn giờ
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Tính ổn định: 2 - Stable
 
 The `timer` module exposes a global API for scheduling functions to be called at some future period of time. Because the timer functions are globals, there is no need to call `require('timers')` to use the API.
 
@@ -19,7 +19,6 @@ This object is created internally and is returned from [`setTimeout()`][] and [`
 By default, when a timer is scheduled using either [`setTimeout()`][] or [`setInterval()`][], the Node.js event loop will continue running as long as the timer is active. Each of the `Timeout` objects returned by these functions export both `timeout.ref()` and `timeout.unref()` functions that can be used to control this default behavior.
 
 ### timeout.ref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -31,7 +30,6 @@ When called, requests that the Node.js event loop *not* exit so long as the `Tim
 Returns a reference to the `Timeout`.
 
 ### timeout.unref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -47,7 +45,6 @@ Returns a reference to the `Timeout`.
 A timer in Node.js is an internal construct that calls a given function after a certain period of time. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
 
 ### setImmediate(callback[, ...args])
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -82,7 +79,6 @@ timerExample();
 ```
 
 ### setInterval(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -98,7 +94,6 @@ When `delay` is larger than `2147483647` or less than `1`, the `delay` will be s
 If `callback` is not a function, a [`TypeError`][] will be thrown.
 
 ### setTimeout(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -134,7 +129,6 @@ The [`setImmediate()`][], [`setInterval()`][], and [`setTimeout()`][] methods ea
 It is not possible to cancel timers that were created using the promisified variants of [`setImmediate()`][], [`setTimeout()`][].
 
 ### clearImmediate(immediate)
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -144,7 +138,6 @@ added: v0.9.1
 Cancels an `Immediate` object created by [`setImmediate()`][].
 
 ### clearInterval(timeout)
-
 <!-- YAML
 added: v0.0.1
 -->
@@ -154,7 +147,6 @@ added: v0.0.1
 Cancels a `Timeout` object created by [`setInterval()`][].
 
 ### clearTimeout(timeout)
-
 <!-- YAML
 added: v0.0.1
 -->
