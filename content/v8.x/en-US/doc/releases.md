@@ -106,11 +106,7 @@ $ changelog-maker --group --start-ref v2.3.1
 
 #### Step 2: Update the appropriate doc/changelogs/CHANGELOG_*.md file
 
-There is a separate `CHANGELOG_*.md` file for each major Node.js release line.
-These are located in the `doc/changelogs/` directory. Once the formatted list
-of changes is collected, it must be added to the top of the relevant changelog
-file in the release branch (e.g. a release for Node.js v4 would be added to the
-`/doc/changelogs/CHANGELOG_V4.md`).
+There is a separate `CHANGELOG_*.md` file for each major Node.js release line. These are located in the `doc/changelogs/` directory. Once the formatted list of changes is collected, it must be added to the top of the relevant changelog file in the release branch (e.g. a release for Node.js v4 would be added to the `/doc/changelogs/CHANGELOG_V4.md`).
 
 **Please do *not* add the changelog entries to the root `CHANGELOG.md` file.**
 
@@ -134,43 +130,23 @@ The new entry should take the following form:
 
 The release type should be either Current, LTS, or Maintenance, depending on the type of release being produced.
 
-Be sure that the `<a>` tag, as well as the two headings, are not
-indented at all.
+Be sure that the `<a>` tag, as well as the two headings, are not indented at all.
 
-At the top of each `CHANGELOG_*.md` file, and in the root `CHANGELOG.md` file,
-there is a table indexing all releases in each major release line. A link to
-the new release needs to be added to each. Follow the existing examples and be
-sure to add the release to the *top* of the list.
+At the top of each `CHANGELOG_*.md` file, and in the root `CHANGELOG.md` file, there is a table indexing all releases in each major release line. A link to the new release needs to be added to each. Follow the existing examples and be sure to add the release to the *top* of the list.
 
-In the root `CHANGELOG.md` file, the most recent release for each release line
-is shown in **bold** in the index. When updating the index, please make sure
-to update the display accordingly by removing the bold styling from the previous
-release.
+In the root `CHANGELOG.md` file, the most recent release for each release line is shown in **bold** in the index. When updating the index, please make sure to update the display accordingly by removing the bold styling from the previous release.
 
 #### Step 3: Update any REPLACEME and DEP00XX tags in the docs
 
-If this release includes new APIs then it is necessary to document that they
-were first added in this version. The relevant commits should already include
-`REPLACEME` tags as per the example in the
-[docs README](../tools/doc/README.md). Check for these tags with
-`grep REPLACEME doc/api/*.md`, and substitute this node version with
-`sed -i "s/REPLACEME/$VERSION/g" doc/api/*.md` or
-`perl -pi -e "s/REPLACEME/$VERSION/g" doc/api/*.md`.
+If this release includes new APIs then it is necessary to document that they were first added in this version. The relevant commits should already include `REPLACEME` tags as per the example in the [docs README](../tools/doc/README.md). Check for these tags with `grep REPLACEME doc/api/*.md`, and substitute this node version with `sed -i "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g" doc/api/*.md`.
 
 *Note*: `$VERSION` should be prefixed with a `v`
 
-If this release includes any new deprecations it is necessary to ensure that
-those are assigned a proper static deprecation code. These are listed in the
-docs (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. The code
-must be assigned a number (e.g. `DEP0012`). Note that this assignment should
-occur when the PR is landed, but a check will be made when the release built
-is run.
+If this release includes any new deprecations it is necessary to ensure that those are assigned a proper static deprecation code. These are listed in the docs (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. The code must be assigned a number (e.g. `DEP0012`). Note that this assignment should occur when the PR is landed, but a check will be made when the release built is run.
 
 ### 4. Create Release Commit
 
-The `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h`, and
-`REPLACEME` changes should be the final commit that will be tagged for the
-release. When committing these to git, use the following message format:
+The `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h`, and `REPLACEME` changes should be the final commit that will be tagged for the release. When committing these to git, use the following message format:
 
 ```txt
 YYYY-MM-DD, Version x.y.z (Release Type)
@@ -269,8 +245,7 @@ Merge your release proposal branch into the stable branch that you are releasing
 
 Cherry-pick the release commit to `master`. After cherry-picking, edit `src/node_version.h` to ensure the version macros contain whatever values were previously on `master`. `NODE_VERSION_IS_RELEASE` should be `0`.
 
-Run `make lint` before pushing to `master`, to make sure the Changelog
-formatting passes the lint rules on `master`.
+Run `make lint` before pushing to `master`, to make sure the Changelog formatting passes the lint rules on `master`.
 
 ### 12. Promote and Sign the Release Builds
 
@@ -294,8 +269,7 @@ Use `tools/release.sh` to promote and sign the build. When run, it will perform 
 
 If you didn't wait for ARM builds in the previous step before promoting the release, you should re-run `tools/release.sh` after the ARM builds have finished. That will move the ARM artifacts into the correct location. You will be prompted to re-sign SHASUMS256.txt.
 
-*Note*: It is possible to only sign a release by running
-`./tools/release.sh -s vX.Y.Z`.
+*Note*: It is possible to only sign a release by running `./tools/release.sh -s vX.Y.Z`.
 
 ### 13. Check the Release
 
