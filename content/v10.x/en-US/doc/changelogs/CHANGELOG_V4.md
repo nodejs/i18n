@@ -69,23 +69,20 @@
   * [Archive](CHANGELOG_ARCHIVE.md)
 
 
-*Note*: Node.js v4 is covered by the
-[Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and
-will be supported actively until April 2017 and maintained until April 2018.
+*Note*: Node.js v4 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2017 and maintained until April 2018.
 
 <a id="4.9.1"></a>
+
 ## 2018-03-29, Version 4.9.1 'Argon' (Maintenance), @MylesBorins
 
 ### Notable Changes
 
 No additional commits.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little
-endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based
-environments. This has been fixed in our infrastructure and we are doing this release to ensure that
-the hosted binaries are adhering to our platform support contract.
+Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
 
 <a id="4.9.0"></a>
+
 ## 2018-03-28, Version 4.9.0 'Argon' (Maintenance), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
@@ -119,6 +116,7 @@ Fixes for the following CVEs are included in this release:
 * [[`ebc46448a4`](https://github.com/nodejs/node/commit/ebc46448a4)] - **tools**: update certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 
 <a id="4.8.7"></a>
+
 ## 2017-12-08, Version 4.8.7 'Argon' (Maintenance), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
@@ -144,10 +142,10 @@ Fixes for the following CVEs are included in this release:
 * [[`f7eb162d0d`](https://github.com/nodejs/node/commit/f7eb162d0d)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 
 <a id="4.8.6"></a>
+
 ## 2017-11-07, Version 4.8.6 'Argon' (Maintenance), @MylesBorins
 
-This Maintenance release comes with 47 commits. This includes 26 commits which are updates to dependencies,
-8 which are build / tool related, 4 which are doc related, and 2 which are test related.
+This Maintenance release comes with 47 commits. This includes 26 commits which are updates to dependencies, 8 which are build / tool related, 4 which are doc related, and 2 which are test related.
 
 This release includes a security update to openssl that has been deemed low severity for the Node.js project.
 
@@ -212,6 +210,7 @@ This release includes a security update to openssl that has been deemed low seve
 * [[`31bf595b94`](https://github.com/nodejs/node/commit/31bf595b94)] - **zlib**: fix node crashing on invalid options (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
 
 <a id="4.8.5"></a>
+
 ## 2017-10-24, Version 4.8.5 'Argon' (Maintenance), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
@@ -226,6 +225,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`f5defa2a7c`](https://github.com/nodejs/node/commit/733578bb2e)] - **zlib**: gracefully set windowBits from 8 to 9 (Myles Borins) [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 <a id="4.8.4"></a>
+
 ## 2017-07-11, Version 4.8.4 'Argon' (Maintenance), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
@@ -244,8 +244,8 @@ This is a security release. All Node.js users should consult the security releas
 * [[`d6969a717f`](https://github.com/nodejs/node/commit/d6969a717f)] - **http**: use Buffer.from to avoid Buffer(num) call (Сковорода Никита Андреевич) [nodejs/node-private#83](https://github.com/nodejs/node-private/pull/83)
 * [[`58a8f150e5`](https://github.com/nodejs/node/commit/58a8f150e5)] - **test**: verify hash seed uniqueness (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
 
-
 <a id="4.8.3"></a>
+
 ## 2017-05-02, Version 4.8.3 'Argon' (Maintenance), @MylesBorins
 
 ### Notable Changes
@@ -278,12 +278,12 @@ This is a security release. All Node.js users should consult the security releas
 * [[`6d3aaa72a8`](https://github.com/nodejs/node/commit/6d3aaa72a8)] - **tls**: TLSSocket emits 'error' on handshake failure (Mariusz 'koder' Chwalba) [#8805](https://github.com/nodejs/node/pull/8805)
 
 <a id="4.8.2"></a>
+
 ## 2017-04-04, Version 4.8.2 'Argon' (Maintenance), @MylesBorins
 
 This is a maintenance release to fix a memory leak that was introduced in 4.8.1.
 
-It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602)
-that were present in zlib 1.2.8.
+It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
 
 ### Notable Changes
 
@@ -299,11 +299,10 @@ that were present in zlib 1.2.8.
 * [[`2e52a2699b`](https://github.com/nodejs/node/commit/2e52a2699b)] - **deps**: upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
 
 <a id="4.8.1"></a>
+
 ## 2017-03-21, Version 4.8.1 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 147 commits. This includes 55 which are test related,
-41 which are doc related,  11 which are build / tool related,
-and 1 commits which are updates to dependencies.
+This LTS release comes with 147 commits. This includes 55 which are test related, 41 which are doc related,  11 which are build / tool related, and 1 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -465,11 +464,10 @@ and 1 commits which are updates to dependencies.
 * [[`2c84601062`](https://github.com/nodejs/node/commit/2c84601062)] - **util**: don't init Debug if it's not needed yet (Bryan English) [#8452](https://github.com/nodejs/node/pull/8452)
 
 <a id="4.8.0"></a>
+
 ## 2017-02-21, Version 4.8.0 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 118 commits. This includes 73 which are doc
-related, 19 which are test related, 6 which are build / tool related, and 5
-commits which are updates to dependencies.
+This LTS release comes with 118 commits. This includes 73 which are doc related, 19 which are test related, 6 which are build / tool related, and 5 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -611,14 +609,12 @@ commits which are updates to dependencies.
 * [[`fa11f4b1fc`](https://github.com/nodejs/node/commit/fa11f4b1fc)] - **win,msi**: add required UIRef for localized strings (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
 
 <a id="4.7.3"></a>
+
 ## 2017-01-31, Version 4.7.3 'Argon' (LTS), @MylesBorins
 
 This is a security release of the 'Argon' release line to upgrade OpenSSL to version 1.0.2k
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js
-crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node
-users is "low". Details on this determination can be found
-[on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Notable Changes
 
@@ -635,12 +631,10 @@ users is "low". Details on this determination can be found
 * [[`e3915a415b`](https://github.com/nodejs/node/commit/e3915a415b)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 
 <a id="4.7.2"></a>
+
 ## 2017-01-05, Version 4.7.2 'Argon' (LTS), @MylesBorins
 
-This is a special release that contains 0 commits. While promoting additional
-platforms for v4.7.1 after the release, the tarballs on the release server were
-overwritten and now have different shasums. In order to remove any ambiguity
-around the release we have opted to do a semver patch release with no changes.
+This is a special release that contains 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
 ### Notable Changes
 
@@ -651,11 +645,10 @@ N/A
 N/A
 
 <a id="4.7.1"></a>
+
 ## 2017-01-03, Version 4.7.1 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 180 commits. This includes 117 which are test related,
-34 which are doc related, 15 which are build / tool related, and 1 commit which is
-an update to dependencies.
+This LTS release comes with 180 commits. This includes 117 which are test related, 34 which are doc related, 15 which are build / tool related, and 1 commit which is an update to dependencies.
 
 ### Notable Changes
 
@@ -847,11 +840,10 @@ an update to dependencies.
 * [[`011ee0ba8b`](https://github.com/nodejs/node/commit/011ee0ba8b)] - **tools**: copy run-valgrind.py to tools/ (Ben Noordhuis) [#9520](https://github.com/nodejs/node/pull/9520)
 
 <a id="4.7.0"></a>
+
 ## 2016-12-06, Version 4.7.0 'Argon' (LTS), @thealphanerd
 
-This LTS release comes with 108 commits. This includes 30 which are doc
-related, 28 which are test related, 16 which are build / tool related, and 4
-commits which are updates to dependencies.
+This LTS release comes with 108 commits. This includes 30 which are doc related, 28 which are test related, 16 which are build / tool related, and 4 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -983,6 +975,7 @@ Notable SEMVER-PATCH changes include:
 * [[`9a02414a29`](https://github.com/nodejs/node/commit/9a02414a29)] - **zlib**: fix raw inflate with custom dictionary (Tarjei Husøy)
 
 <a id="4.6.2"></a>
+
 ## 2016-11-08, Version 4.6.2 'Argon' (LTS), @thealphanerd
 
 This LTS release comes with 219 commits. This includes 80 commits that are docs related, 58 commits that are test related, 20 commits that are build / tool related, and 9 commits that are updates to dependencies.
@@ -1219,6 +1212,7 @@ This LTS release comes with 219 commits. This includes 80 commits that are docs 
 * [[`99f85b8340`](https://github.com/nodejs/node/commit/99f85b8340)] - **win,msi**: Added Italian translation (Matteo Collina) [#4647](https://github.com/nodejs/node/pull/4647)
 
 <a id="4.6.1"></a>
+
 ## 2016-10-18, Version 4.6.1 'Argon' (LTS), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
@@ -1233,6 +1227,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`5a0daa6c2f`](https://github.com/nodejs/node/commit/5a0daa6c2f)] - **win,build**: try multiple timeservers when signing (Rod Vagg) [#9155](https://github.com/nodejs/node/pull/9155)
 
 <a id="4.6.0"></a>
+
 ## 2016-09-27, Version 4.6.0 'Argon' (LTS), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
@@ -1274,6 +1269,7 @@ Semver Patch:
 * [[`c7a601c090`](https://github.com/nodejs/node/commit/c7a601c090)] - **test**: remove openssl options of -no_<prot> (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
 
 <a id="4.5.0"></a>
+
 ## 2016-08-15, Version 4.5.0 'Argon' (LTS), @thealphanerd
 
 ### Notable Changes
@@ -1389,7 +1385,7 @@ Semver Patch:
 * [[`b08ff33c01`](https://github.com/nodejs/node/commit/b08ff33c01)] - **doc**: add `added:` information for https (Anna Henningsen) [#7392](https://github.com/nodejs/node/pull/7392)
 * [[`1d99059bb1`](https://github.com/nodejs/node/commit/1d99059bb1)] - **doc**: add `added:` information for dns (Julian Duque) [#7021](https://github.com/nodejs/node/pull/7021)
 * [[`a0ca24b798`](https://github.com/nodejs/node/commit/a0ca24b798)] - **doc**: add `added:` information for console (Adrian Estrada) [#6995](https://github.com/nodejs/node/pull/6995)
-* [[`eb08c17a20`](https://github.com/nodejs/node/commit/eb08c17a20)] - **doc**: add `added: ` data for cli.md (Rich Trott) [#6960](https://github.com/nodejs/node/pull/6960)
+* [[`eb08c17a20`](https://github.com/nodejs/node/commit/eb08c17a20)] - **doc**: add `added:` data for cli.md (Rich Trott) [#6960](https://github.com/nodejs/node/pull/6960)
 * [[`ec9038478f`](https://github.com/nodejs/node/commit/ec9038478f)] - **doc**: add `added:` information for child_process (Anna Henningsen) [#6927](https://github.com/nodejs/node/pull/6927)
 * [[`e52b2b07d7`](https://github.com/nodejs/node/commit/e52b2b07d7)] - **doc**: add `added:` information for assert (Rich Trott) [#6688](https://github.com/nodejs/node/pull/6688)
 * [[`75e4f74c54`](https://github.com/nodejs/node/commit/75e4f74c54)] - **doc**: fix cluster worker 'message' event (cjihrig) [#7309](https://github.com/nodejs/node/pull/7309)
@@ -1570,6 +1566,7 @@ Semver Patch:
 * [[`7d66752f1f`](https://github.com/nodejs/node/commit/7d66752f1f)] - **zlib**: release callback and buffer after processing (Matt Lavin) [#6955](https://github.com/nodejs/node/pull/6955)
 
 <a id="4.4.7"></a>
+
 ## 2016-06-28, Version 4.4.7 'Argon' (LTS), @thealphanerd
 
 This LTS release comes with 89 commits. This includes 46 commits that are docs related, 11 commits that are test related, 8 commits that are build related, and 4 commits that are benchmark related.
@@ -1681,6 +1678,7 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
 * [[`cc3645cff3`](https://github.com/nodejs/node/commit/cc3645cff3)] - **tools**: lint for alignment of variable assignments (Rich Trott) [#6869](https://github.com/nodejs/node/pull/6869)
 
 <a id="4.4.6"></a>
+
 ## 2016-06-23, Version 4.4.6 'Argon' (LTS), @thealphanerd
 
 ### Notable Changes
@@ -1694,6 +1692,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 * [[`134c3b3977`](https://github.com/nodejs/node/commit/134c3b3977)] - **deps**: backport 3a9bfec from v8 upstream (Ben Noordhuis) [nodejs/node-private#38](https://github.com/nodejs/node-private/pull/38)
 
 <a id="4.4.5"></a>
+
 ## 2016-05-24, Version 4.4.5 'Argon' (LTS), @thealphanerd
 
 ### Notable Changes
@@ -1786,6 +1785,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 * [[`48684af55f`](https://github.com/nodejs/node/commit/48684af55f)] - **zlib**: fix use after null when calling .close (James Lal) [#5982](https://github.com/nodejs/node/pull/5982)
 
 <a id="4.4.4"></a>
+
 ## 2016-05-05, Version 4.4.4 'Argon' (LTS), @thealphanerd
 
 ### Notable changes
@@ -1807,6 +1807,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 * [[`72f9952516`](https://github.com/nodejs/node/commit/72f9952516)] - **deps**: upgrade openssl sources to 1.0.2h (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551)
 
 <a id="4.4.3"></a>
+
 ## 2016-04-12, Version 4.4.3 'Argon' (LTS), @thealphanerd
 
 ### Notable Changes
@@ -1874,6 +1875,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 * [[`f7eb48302c`](https://github.com/nodejs/node/commit/f7eb48302c)] - **win,build**: build and test add-ons on test-ci (Bogdan Lobor) [#5886](https://github.com/nodejs/node/pull/5886)
 
 <a id="4.4.2"></a>
+
 ## 2016-03-31, Version 4.4.2 'Argon' (LTS), @thealphanerd
 
 ### Notable Changes
@@ -1931,11 +1933,10 @@ This release is specifically related to a Buffer overflow vulnerability discover
 * [[`3a901b0e3e`](https://github.com/nodejs/node/commit/3a901b0e3e)] - **tools**: remove unused imports (Sakthipriyan Vairamani) [#5765](https://github.com/nodejs/node/pull/5765)
 
 <a id="4.4.1"></a>
+
 ## 2016-03-22, Version 4.4.1 'Argon' (LTS), @thealphanerd
 
-This LTS release comes with 113 commits, 56 of which are doc related,
-18 of which are build / tooling related, 16 of which are test related
-and 7 which are benchmark related.
+This LTS release comes with 113 commits, 56 of which are doc related, 18 of which are build / tooling related, 16 of which are test related and 7 which are benchmark related.
 
 ### Notable Changes
 * **build**:
@@ -2067,12 +2068,10 @@ and 7 which are benchmark related.
 * [[`0e97a3ea51`](https://github.com/nodejs/node/commit/0e97a3ea51)] - **win,build**: support Visual C++ Build Tools 2015 (João Reis) [#5627](https://github.com/nodejs/node/pull/5627)
 
 <a id="4.4.0"></a>
+
 ## 2016-03-08, Version 4.4.0 'Argon' (LTS), @thealphanerd
 
-In December we announced that we would be doing a minor release in order to
-get a number of voted on SEMVER-MINOR changes into LTS. Our ability to release this
-was delayed due to the unforeseen security release v4.3. We are quickly bumping to
-v4.4 in order to bring you the features that we had committed to releasing.
+In December we announced that we would be doing a minor release in order to get a number of voted on SEMVER-MINOR changes into LTS. Our ability to release this was delayed due to the unforeseen security release v4.3. We are quickly bumping to v4.4 in order to bring you the features that we had committed to releasing.
 
 This release also includes over 70 fixes to our docs and over 50 fixes to tests.
 
@@ -2330,6 +2329,7 @@ Notable semver patch changes include:
 * [[`57a5f8731a`](https://github.com/nodejs/node/commit/57a5f8731a)] - **url**: change scoping of variables with let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
 <a id="4.3.2"></a>
+
 ## 2016-03-02, Version 4.3.2 'Argon' (LTS), @thealphanerd
 
 This is a security release with only a single commit, an update to openssl due to a recent security advisory. You can read more about the security advisory on [the Node.js website](https://nodejs.org/en/blog/vulnerability/openssl-march-2016/)
@@ -2346,6 +2346,7 @@ This is a security release with only a single commit, an update to openssl due t
 * [[`c133797d09`](https://github.com/nodejs/node/commit/c133797d09)] - **deps**: upgrade openssl to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507)
 
 <a id="4.3.1"></a>
+
 ## 2016-02-16, Version 4.3.1 'Argon' (LTS), @thealphanerd
 
 ### Notable changes
@@ -2432,6 +2433,7 @@ This is a security release with only a single commit, an update to openssl due t
 * [[`720b03dca7`](https://github.com/nodejs/node/commit/720b03dca7)] - **tools**: add license-builder.sh to construct LICENSE (Rod Vagg) [#4194](https://github.com/nodejs/node/pull/4194)
 
 <a id="4.3.0"></a>
+
 ## 2016-02-09, Version 4.3.0 'Argon' (LTS), @jasnell
 
 This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
@@ -2457,6 +2459,7 @@ Note that this release includes a non-backward compatible change to address a se
 * [[`da3750f981`](https://github.com/nodejs/node/commit/da3750f981)] - **(SEMVER-MAJOR)** **src**: add --security-revert command line flag (James M Snell)
 
 <a id="4.2.6"></a>
+
 ## 2016-01-21, Version 4.2.6 'Argon' (LTS), @TheAlphaNerd
 
 ### Notable changes
@@ -2476,6 +2479,7 @@ Note that this release includes a non-backward compatible change to address a se
 * [[`1f8e1472cc`](https://github.com/nodejs/node/commit/1f8e1472cc)] - **test**: add test for debugging one line files (cjihrig) [#4298](https://github.com/nodejs/node/pull/4298)
 
 <a id="4.2.5"></a>
+
 ## 2016-01-20, Version 4.2.5 'Argon' (LTS), @TheAlphaNerd
 
 Maintenance update.
@@ -2702,6 +2706,7 @@ Maintenance update.
 * [[`1bf84b9d41`](https://github.com/nodejs/node/commit/1bf84b9d41)] - **util,src**: allow lookup of hidden values (cjihrig) [#3988](https://github.com/nodejs/node/pull/3988)
 
 <a id="4.2.4"></a>
+
 ## 2015-12-23, Version 4.2.4 'Argon' (LTS), @jasnell
 
 Maintenance update.
@@ -2879,6 +2884,7 @@ Maintenance update.
 * [[`4733a60158`](https://github.com/nodejs/node/commit/4733a60158)] - **zlib**: pass kind to recursive calls to flush (Myles Borins) [#3534](https://github.com/nodejs/node/pull/3534)
 
 <a id="4.2.3"></a>
+
 ## 2015-12-04, Version 4.2.3 'Argon' (LTS), @rvagg
 
 Security Update
@@ -2888,8 +2894,7 @@ Security Update
 * **http**: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
 * **openssl**: Upgrade to 1.0.2e, containing fixes for:
   - CVE-2015-3193 "BN_mod_exp may produce incorrect results on x86_64", an attack may be possible against a Node.js TLS server using DHE key exchange. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
-  - CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
-  (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
+  - CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
 * **v8**: Backport fix for CVE-2015-6764, a bug in `JSON.stringify()` that can result in out-of-bounds reads for arrays. (Ben Noordhuis)
 
 ### Known issues
@@ -2907,6 +2912,7 @@ Security Update
 * [[`1c8e6de78e`](https://github.com/nodejs/node/commit/1c8e6de78e)] - **http**: fix pipeline regression (Fedor Indutny)
 
 <a id="4.2.2"></a>
+
 ## 2015-11-03, Version 4.2.2 'Argon' (LTS), @jasnell
 
 ### Notable changes
@@ -3001,6 +3007,7 @@ This is an LTS maintenance release that addresses a number of issues:
 * [[`0b32bbbf69`](https://github.com/nodejs/node/commit/0b32bbbf69)] - **v8**: pull fix for builtin code size on PPC (Michael Dawson) [#3474](https://github.com/nodejs/node/pull/3474)
 
 <a id="4.2.1"></a>
+
 ## 2015-10-13, Version 4.2.1 'Argon' (LTS), @jasnell
 
 ### Notable changes
@@ -3024,6 +3031,7 @@ This is an LTS maintenance release that addresses a number of issues:
 * [[`c245a199a7`](https://github.com/nodejs/node/commit/c245a199a7)] - **lib**: fix undefined timeout regression (Ryan Graham) [#3331](https://github.com/nodejs/node/pull/3331)
 
 <a id="4.2.0"></a>
+
 ## 2015-10-07, Version 4.2.0 'Argon' (LTS), @jasnell
 
 ### Notable changes
@@ -3110,6 +3118,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`b5c51fdba0`](https://github.com/nodejs/node/commit/b5c51fdba0)] - **util**: fix check for Array constructor (Evan Lucas) [#3119](https://github.com/nodejs/node/pull/3119)
 
 <a id="4.1.2"></a>
+
 ## 2015-10-05, Version 4.1.2 (Stable), @rvagg
 
 ### Notable changes
@@ -3178,6 +3187,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`d8ab4e185d`](https://github.com/nodejs/node/commit/d8ab4e185d)] - **util**: optimize promise introspection (Ben Noordhuis) [#3130](https://github.com/nodejs/node/pull/3130)
 
 <a id="4.1.1"></a>
+
 ## 2015-09-22, Version 4.1.1 (Stable), @rvagg
 
 ### Notable changes
@@ -3231,6 +3241,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`6ea8ec1c59`](https://github.com/nodejs/node/commit/6ea8ec1c59)] - **tools**: single, cross-platform tick processor (Matt Loring) [#2868](https://github.com/nodejs/node/pull/2868)
 
 <a id="4.1.0"></a>
+
 ## 2015-09-17, Version 4.1.0 (Stable), @Fishrock123
 
 ### Notable changes
@@ -3316,6 +3327,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`e035266805`](https://github.com/nodejs/node/commit/e035266805)] - **win,msi**: fix documentation shortcut url (Brian White) [#2781](https://github.com/nodejs/node/pull/2781)
 
 <a id="4.0.0"></a>
+
 ## 2015-09-08, Version 4.0.0 (Stable), @rvagg
 
 ### Notable changes
