@@ -2,105 +2,105 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
-The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
+`tls` 模块提供了对传输层安全性 (TLS) 及构建于 OpenSSL 之上的安全套接字层 （SSL）的实现。 此模块可通过如下方式访问：
 
 ```js
 const tls = require('tls');
 ```
 
-## TLS/SSL Concepts
+## TLS/SSL 概念
 
-The TLS/SSL is a public/private key infrastructure (PKI). For most common cases, each client and server must have a *private key*.
+TLS/SSL 是一个基于公钥/私钥的架构 （PKI）。 对于最常见的情况，每个客户端和服务器必须具有一个 *私钥*。
 
-Private keys can be generated in multiple ways. The example below illustrates use of the OpenSSL command-line interface to generate a 2048-bit RSA private key:
+私钥可通过多种方式生成。 如下示例子演示了如何通过 OpenSSL 命令行界面生成 2048 位的 RSA 私钥：
 
 ```sh
 openssl genrsa -out ryans-key.pem 2048
 ```
 
-With TLS/SSL, all servers (and some clients) must have a *certificate*. Certificates are *public keys* that correspond to a private key, and that are digitally signed either by a Certificate Authority or by the owner of the private key (such certificates are referred to as "self-signed"). The first step to obtaining a certificate is to create a *Certificate Signing Request* (CSR) file.
+在使用 TLS/SSL 时，所有服务器 （和一些客户端）必须具有 *证书*。 证书是和私钥对应的 *公钥*，并且由证书颁发机构或私钥所有者（这样的证书被称作“自签名的”）进行数字签名。 获取证书的第一步是创建一个 *证书签名请求* （CSR）文件。
 
-The OpenSSL command-line interface can be used to generate a CSR for a private key:
+OpenSSL 命令行界面可被用于生成一个针对私钥的 CSR。
 
 ```sh
 openssl req -new -sha256 -key ryans-key.pem -out ryans-csr.pem
 ```
 
-Once the CSR file is generated, it can either be sent to a Certificate Authority for signing or used to generate a self-signed certificate.
+一旦 CSR 文件生成，它可被发送给证书颁发机构以获取签名，或者用于生成自签名证书。
 
-Creating a self-signed certificate using the OpenSSL command-line interface is illustrated in the example below:
+下面的示例演示了如何使用 OpenSSL 命令行界面创建一个自签名证书。
 
 ```sh
 openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 ```
 
-Once the certificate is generated, it can be used to generate a `.pfx` or `.p12` file:
+一旦证书被生成，它就可以被用于生成 `.pfx` 或 `.p12` 文件：
 
 ```sh
 openssl pkcs12 -export -in ryans-cert.pem -inkey ryans-key.pem \
       -certfile ca-cert.pem -out ryans.pfx
 ```
 
-Where:
+其中：
 
-* `in`: is the signed certificate
-* `inkey`: is the associated private key
-* `certfile`: is a concatenation of all Certificate Authority (CA) certs into a single file, e.g. `cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
+* `in`：是已签名的证书
+* `inkey`：是关联的私钥
+* `certfile`：是所有证书颁发机构（CA）的证书连接而成的单一文件，即：`cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
 
-### Perfect Forward Secrecy
+### 完美前向安全
 
 <!-- type=misc -->
 
-The term "[Forward Secrecy](https://en.wikipedia.org/wiki/Perfect_forward_secrecy)" or "Perfect Forward Secrecy" describes a feature of key-agreement (i.e., key-exchange) methods. That is, the server and client keys are used to negotiate new temporary keys that are used specifically and only for the current communication session. Practically, this means that even if the server's private key is compromised, communication can only be decrypted by eavesdroppers if the attacker manages to obtain the key-pair specifically generated for the session.
+术语 "[前向安全](https://en.wikipedia.org/wiki/Perfect_forward_secrecy)" 或 "完美前向安全" 描述了密钥协商（即密钥交换）方法的一个特征。 这就是，服务器端和客户端密钥用于协商仅用于当前通讯会话的新临时密钥。 在实际上，这意味着即使服务器的私钥泄露，如果攻击者能够获取专门针对某个会话的密钥对，窃听者也只能解密该会话中的通讯。
 
-Perfect Forward Secrecy is achieved by randomly generating a key pair for key-agreement on every TLS/SSL handshake (in contrast to using the same key for all sessions). Methods implementing this technique are called "ephemeral".
+完美前向安全是通过针对每一个 TLS/SSL 握手的密钥协商随机生成密钥对（与针对所有会话使用相同的密钥相比）来实现的。 实现此技术的方法被称为 "ephemeral"。
 
-Currently two methods are commonly used to achieve Perfect Forward Secrecy (note the character "E" appended to the traditional abbreviations):
+目前有两种常见方法来实现完美前向安全（注意：字符 "E" 被追加到传统缩写之后）：
 
-* [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - An ephemeral version of the Diffie Hellman key-agreement protocol.
-* [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - An ephemeral version of the Elliptic Curve Diffie Hellman key-agreement protocol.
+* [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - Diffie Hellman 密钥协议的 ephemeral 版本。
+* [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - Elliptic Curve Diffie Hellman 密钥协议的 ephemeral 版本。
 
-Ephemeral methods may have some performance drawbacks, because key generation is expensive.
+由于密钥生成的系统开销很大，ephemeral 方法可能在性能上会有缺陷。
 
-To use Perfect Forward Secrecy using `DHE` with the `tls` module, it is required to generate Diffie-Hellman parameters and specify them with the `dhparam` option to [`tls.createSecureContext()`][]. The following illustrates the use of the OpenSSL command-line interface to generate such parameters:
+要想通过 `DHE` 方法和 `tls` 模块来使用完美前向安全，要求生成 Diffie-Hellman 参数并在 [`tls.createSecureContext()`][] 的 `dhparam` 参数中进行指定。 下面演示了如何通过 OpenSSL 命令行界面来生成这些参数：
 
 ```sh
 openssl dhparam -outform PEM -out dhparam.pem 2048
 ```
 
-If using Perfect Forward Secrecy using `ECDHE`, Diffie-Hellman parameters are not required and a default ECDHE curve will be used. The `ecdhCurve` property can be used when creating a TLS Server to specify the list of names of supported curves to use, see [`tls.createServer()`] for more info.
+如果通过 `ECDHE` 方法使用完美前向安全，Diffie-Hellman 参数不是必须的，默认的 ECDHE 曲线将被使用。 当创建 TLS 服务器时，`ecdhCurve` 属性可被用于指定支持的曲线名称列表，请参阅 [`tls.createServer()`] 以获取更多信息。
 
-### ALPN, NPN, and SNI
-
-<!-- type=misc -->
-
-ALPN (Application-Layer Protocol Negotiation Extension), NPN (Next Protocol Negotiation) and, SNI (Server Name Indication) are TLS handshake extensions:
-
-* ALPN/NPN - Allows the use of one TLS server for multiple protocols (HTTP, SPDY, HTTP/2)
-* SNI - Allows the use of one TLS server for multiple hostnames with different SSL certificates.
-
-*Note*: Use of ALPN is recommended over NPN. The NPN extension has never been formally defined or documented and generally not recommended for use.
-
-### Client-initiated renegotiation attack mitigation
+### ALPN, NPN, 及 SNI
 
 <!-- type=misc -->
 
-The TLS protocol allows clients to renegotiate certain aspects of the TLS session. Unfortunately, session renegotiation requires a disproportionate amount of server-side resources, making it a potential vector for denial-of-service attacks.
+ALPN (应用层协议协商扩展)，NPN (下一代协议协商) 和 SNI (服务器名称指示) 都是 TLS 握手扩展：
 
-To mitigate the risk, renegotiation is limited to three times every ten minutes. An `'error'` event is emitted on the [`tls.TLSSocket`][] instance when this threshold is exceeded. The limits are configurable:
+* ALPN/NPN - 允许在一个 TLS 服务器上使用多种协议 (HTTP, SPDY, HTTP/2)
+* SNI - 允许使用一个 TLS 服务器支持多个具有不同 SSL 证书的主机名。
 
-* `tls.CLIENT_RENEG_LIMIT` {number} Specifies the number of renegotiation requests. Defaults to `3`.
-* `tls.CLIENT_RENEG_WINDOW` {number} Specifies the time renegotiation window in seconds. Defaults to `600` (10 minutes).
+*注意*：推荐使用 ALPN 而不是 NPN。 NPN 扩展从未被正式定义或记录，一般不推荐使用。
 
-*Note*: The default renegotiation limits should not be modified without a full understanding of the implications and risks.
+### 客户端发起的重新协商攻击缓解
 
-To test the renegotiation limits on a server, connect to it using the OpenSSL command-line client (`openssl s_client -connect address:port`) then input `R<CR>` (i.e., the letter `R` followed by a carriage return) multiple times.
+<!-- type=misc -->
 
-## Modifying the Default TLS Cipher suite
+TLS 协议允许客户端重新协商 TLS 会话的特定方面。 遗憾的是，会话重新协商需要不成比例的服务器端资源，这使得它成为拒绝服务攻击的潜在载体。
 
-Node.js is built with a default suite of enabled and disabled TLS ciphers. Currently, the default cipher suite is:
+为了减轻风险，重新协商以每十分钟三次为上限。 当超出此上限时，在 [`tls.TLSSocket`][] 实例上会发出 `'error'` 事件。 此限制是可以配置的：
+
+* `tls.CLIENT_RENEG_LIMIT` {number} 指定重新协商请求的数量。 **Default:** `3`.
+* `tls.CLIENT_RENEG_WINDOW` {number} 指定以秒计的重新协商请求时间段。 **Default:** `600` (10 minutes).
+
+*注意*：如果没有对其影响和风险有充分的理解，不应修改默认的重新协商限制。
+
+要想测试服务器上的重新协商限制，使用 OpenSSL 命令行客户端 (`openssl s_client -connect address:port`) 连接服务器，然后多次输入 `R&lt;CR&gt;` (即：字母 `R` 然后回车键) 。
+
+## 修改默认的 TLS 密码套件
+
+Node.js 是使用默认的已启用和已禁用的 TLS 密码套件来构建的。 当前，默认的密码套件是：
 
 ```txt
 ECDHE-RSA-AES128-GCM-SHA256:
@@ -126,65 +126,62 @@ HIGH:
 !CAMELLIA
 ```
 
-This default can be replaced entirely using the `--tls-cipher-list` command line switch. For instance, the following makes `ECDHE-RSA-AES128-GCM-SHA256:!RC4` the default TLS cipher suite:
+可以通过 `--tls-cipher-list` 命令行开关来完全替换此默认设置。 例如：以下值将 `ECDHE-RSA-AES128-GCM-SHA256:!RC4` 作为默认的 TLS 密码套件：
 
 ```sh
 node --tls-cipher-list="ECDHE-RSA-AES128-GCM-SHA256:!RC4"
 ```
 
-The default can also be replaced on a per client or server basis using the `ciphers` option from [`tls.createSecureContext()`][], which is also available in [`tls.createServer()`], [`tls.connect()`], and when creating new [`tls.TLSSocket`]s.
+默认值也可以通过 [`tls.createSecureContext()`][] 中的 `ciphers` 选项来针对每个客户端或服务器端来替换，该选项同样在 [`tls.createServer()`], [`tls.connect()`]，以及创建新的 [`tls.TLSSocket`] 时可用。
 
-Consult [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT) for details on the format.
+请参阅 [OpenSSL 密码列表格式文档](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT) 以获取格式的细节信息。
 
-*Note*: The default cipher suite included within Node.js has been carefully selected to reflect current security best practices and risk mitigation. Changing the default cipher suite can have a significant impact on the security of an application. The `--tls-cipher-list` switch and `ciphers` option should by used only if absolutely necessary.
+*注意*：Node.js 中包含的默认密码套件是被精心挑选的，以反映当前安全最佳实践和风险缓解。 更改默认的密码套件会对应用程序的安全性产生重大影响。 `--tls-cipher-list` 开关以及 `ciphers` 选项只有在绝对必要时被使用。
 
-The default cipher suite prefers GCM ciphers for [Chrome's 'modern cryptography' setting](https://www.chromium.org/Home/chromium-security/education/tls#TOC-Cipher-Suites) and also prefers ECDHE and DHE ciphers for Perfect Forward Secrecy, while offering *some* backward compatibility.
+The default cipher suite prefers GCM ciphers for [Chrome's 'modern cryptography' setting] and also prefers ECDHE and DHE ciphers for Perfect Forward Secrecy, while offering *some* backward compatibility.
 
-128 bit AES is preferred over 192 and 256 bit AES in light of [specific attacks affecting larger AES key sizes](https://www.schneier.com/blog/archives/2009/07/another_new_aes.html).
+128 bit AES is preferred over 192 and 256 bit AES in light of [specific attacks affecting larger AES key sizes].
 
-Old clients that rely on insecure and deprecated RC4 or DES-based ciphers (like Internet Explorer 6) cannot complete the handshaking process with the default configuration. If these clients *must* be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT).
+依赖于不安全和已弃用的 RC4 或基于 DES 密码的旧客户端（如：Internet Explorer 6），在默认设置下无法完成握手过程。 如果这些客户端 _必须_ 被支持，[TLS 建议](https://wiki.mozilla.org/Security/Server_Side_TLS) 必须提供兼容的密码套件。 关于格式的细节，请参阅 [OpenSSL 密码列表格式文档](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT)。
 
-## Class: tls.Server
-
+## 类：tls.Server
 <!-- YAML
 added: v0.3.2
 -->
 
-The `tls.Server` class is a subclass of `net.Server` that accepts encrypted connections using TLS or SSL.
+`tls.Server` 类是 `net.Server` 的子类，该类接受使用 TLS 或 SSL 的加密连接。
 
-### Event: 'newSession'
-
+### 事件：'newSession'
 <!-- YAML
 added: v0.9.2
 -->
 
-The `'newSession'` event is emitted upon creation of a new TLS session. This may be used to store sessions in external storage. The listener callback is passed three arguments when called:
+在创建新的 TLS 会话时，`'newSession'` 事件会被发出。 这可被用于将会话保存在外部存储中。 当被调用时，监听器回调函数将被赋予三个参数：
 
-* `sessionId` - The TLS session identifier
-* `sessionData` - The TLS session data
-* `callback` {Function} A callback function taking no arguments that must be invoked in order for data to be sent or received over the secure connection.
+* `sessionId` - TLS 会话标识符
+* `sessionData` - TLS 会话数据
+* `callback` {Function} 为了在安全连接中发送和接收数据的，不接受任何参数的回调函数。
 
-*Note*: Listening for this event will have an effect only on connections established after the addition of the event listener.
+*注意*：监听此事件仅对在事件监听器被添加后建立的连接产生作用。
 
-### Event: 'OCSPRequest'
-
+### 事件：'OCSPRequest'
 <!-- YAML
 added: v0.11.13
 -->
 
-The `'OCSPRequest'` event is emitted when the client sends a certificate status request. The listener callback is passed three arguments when called:
+当客户端发出证书状态查询时，`'OCSPRequest'` 事件被发送。 当被调用时，监听器回调函数将被赋予三个参数：
 
-* `certificate` {Buffer} The server certificate
-* `issuer` {Buffer} The issuer's certificate
-* `callback` {Function} A callback function that must be invoked to provide the results of the OCSP request.
+* `certificate` {Buffer} 服务器端证书
+* `issuer` {Buffer} 签发者证书
+* `callback` {Function} 一个必须被调用以提供 OCSP 请求结果的回调函数。
 
-The server's current certificate can be parsed to obtain the OCSP URL and certificate ID; after obtaining an OCSP response, `callback(null, resp)` is then invoked, where `resp` is a `Buffer` instance containing the OCSP response. Both `certificate` and `issuer` are `Buffer` DER-representations of the primary and issuer's certificates. These can be used to obtain the OCSP certificate ID and OCSP endpoint URL.
+服务器的当前证书可被解析以获取 OCSP URL及证书 ID；在获取 OCSP 响应之后，`callback(null, resp)` 将被调用，其中 `resp` 是一个包含 OCSP 响应的 `Buffer` 实例。 `certificate` 和 `issuer` 都是 `Buffer` 的DER 形式表示的主要及颁发机构的证书。 这些可被用于获取 OCSP 证书 ID以及 OCSP 终端 URL。
 
-Alternatively, `callback(null, null)` may be called, indicating that there was no OCSP response.
+或者，可以调用 `callback(null, null)`，来表明没有 OCSP 响应。
 
-Calling `callback(err)` will result in a `socket.destroy(err)` call.
+调用 `callback(err)` 将会导致 `socket.destroy(err)` 被调用。
 
-The typical flow of an OCSP Request is as follows:
+典型的 OCSP 请求流程如下所示：
 
 1. Client connects to the server and sends an `'OCSPRequest'` (via the status info extension in ClientHello).
 2. Server receives the request and emits the `'OCSPRequest'` event, calling the listener if registered.
@@ -192,28 +189,27 @@ The typical flow of an OCSP Request is as follows:
 4. Server receives `OCSPResponse` from the CA and sends it back to the client via the `callback` argument
 5. Client validates the response and either destroys the socket or performs a handshake.
 
-*Note*: The `issuer` can be `null` if the certificate is either self-signed or the issuer is not in the root certificates list. (An issuer may be provided via the `ca` option when establishing the TLS connection.)
+*注意*：如果证书为自签名的，或者 issuer 不在根证书列表中，`issuer` 的值可能为 `null`。 （在建立 TLS 连接时，issuer 可以通过 `ca` 选项来提供。）
 
-*Note*: Listening for this event will have an effect only on connections established after the addition of the event listener.
+*注意*：监听此事件仅对在事件监听器被添加后建立的连接产生作用。
 
-*Note*: An npm module like [asn1.js](https://npmjs.org/package/asn1.js) may be used to parse the certificates.
+*注意*：像 [asn1.js](https://npmjs.org/package/asn1.js) 这样的 npm 模块可被用于解析证书。
 
-### Event: 'resumeSession'
-
+### 事件：'resumeSession'
 <!-- YAML
 added: v0.9.2
 -->
 
-The `'resumeSession'` event is emitted when the client requests to resume a previous TLS session. The listener callback is passed two arguments when called:
+当客户端请求继续以前的 TLS 会话时，将发出 `'resumeSession'` 事件。 当被调用时，监听器回调函数将被赋予两个参数：
 
-* `sessionId` - The TLS/SSL session identifier
-* `callback` {Function} A callback function to be called when the prior session has been recovered.
+* `sessionId` - TLS/SSL 会话标识符
+* `callback` {Function} 当上一个会话被恢复时被调用的回调函数。
 
-When called, the event listener may perform a lookup in external storage using the given `sessionId` and invoke `callback(null, sessionData)` once finished. If the session cannot be resumed (i.e., doesn't exist in storage) the callback may be invoked as `callback(null, null)`. Calling `callback(err)` will terminate the incoming connection and destroy the socket.
+当被调用时，事件监听器可能会使用给定的 `sessionId` 在外部存储中查找，并在结束时调用 `callback(null, sessionData)`。 如果会话无法恢复（即：在存储中不存在），则会以 `callback(null, null)` 的形式调用回调函数。 调用 `callback(err)` 将会终止传入的连接并销毁套接字。
 
-*Note*: Listening for this event will have an effect only on connections established after the addition of the event listener.
+*注意*：监听此事件仅对在事件监听器被添加后建立的连接产生作用。
 
-The following illustrates resuming a TLS session:
+下面演示了如何恢复 TLS 会话：
 
 ```js
 const tlsSessionStore = {};
@@ -226,237 +222,228 @@ server.on('resumeSession', (id, cb) => {
 });
 ```
 
-### Event: 'secureConnection'
-
+### 事件：'secureConnection'
 <!-- YAML
 added: v0.3.2
 -->
 
-The `'secureConnection'` event is emitted after the handshaking process for a new connection has successfully completed. The listener callback is passed a single argument when called:
+在新建连接的握手过程成功完成后，将发出 `'secureConnection'` 事件。 当被调用时，监听器回调函数将被赋予一个参数：
 
-* `tlsSocket` {tls.TLSSocket} The established TLS socket.
+* `tlsSocket` {tls.TLSSocket} 已建立的 TLS 套接字。
 
-The `tlsSocket.authorized` property is a `boolean` indicating whether the client has been verified by one of the supplied Certificate Authorities for the server. If `tlsSocket.authorized` is `false`, then `socket.authorizationError` is set to describe how authorization failed. Note that depending on the settings of the TLS server, unauthorized connections may still be accepted.
+`tlsSocket.authorized` 属性为 `boolean` 类型，它指示客户端是否已由提供的服务器证书颁发机构之一进行了验证。 如果 `tlsSocket.authorized` 的值为 `false`，则 `socket.authorizationError` 被赋值以描述授权如何失败。 注意：根据 TLS 服务器的设置，未经授权的连接仍可能被接受。
 
-The `tlsSocket.npnProtocol` and `tlsSocket.alpnProtocol` properties are strings that contain the selected NPN and ALPN protocols, respectively. When both NPN and ALPN extensions are received, ALPN takes precedence over NPN and the next protocol is selected by ALPN.
+`tlsSocket.npnProtocol` 和 `tlsSocket.alpnProtocol` 属性是分别包含选定的 NPN 及 ALPN 协议的字符串。 当 NPN 和 ALPN 扩展都被接收时，ALPN 会优先于 NPN，下一个协议则由 ALPN 选择。
 
-When ALPN has no selected protocol, `tlsSocket.alpnProtocol` returns `false`.
+如果 ALPN 没有选定的协议，`tlsSocket.alpnProtocol` 会返回 `false`。
 
-The `tlsSocket.servername` property is a string containing the server name requested via SNI.
+`tlsSocket.servername` 属性是包含通过 SNI 请求的服务器名称的字符串。
 
-### Event: 'tlsClientError'
-
+### 事件：'tlsClientError'
 <!-- YAML
 added: v6.0.0
 -->
 
-The `'tlsClientError'` event is emitted when an error occurs before a secure connection is established. The listener callback is passed two arguments when called:
+在建立安全连接之前发生错误时，将发出 `'tlsClientError'` 事件。 当被调用时，监听器回调函数将被赋予两个参数：
 
-* `exception` {Error} The `Error` object describing the error
-* `tlsSocket` {tls.TLSSocket} The `tls.TLSSocket` instance from which the error originated.
+* `exception` {Error} 用于描述错误的 `Error` 对象
+* `tlsSocket` {tls.TLSSocket} 产生错误根源的 `tls.TLSSocket` 实例。
 
 ### server.addContext(hostname, context)
-
 <!-- YAML
 added: v0.5.3
 -->
 
-* `hostname` {string} A SNI hostname or wildcard (e.g. `'*'`)
-* `context` {Object} An object containing any of the possible properties from the [`tls.createSecureContext()`][] `options` arguments (e.g. `key`, `cert`, `ca`, etc).
+* `hostname` {string} 一个 SNI 主机名或通配符 （例如：`'*'`）
+* `context` {Object} 包含来自于 [`tls.createSecureContext()`][] `options` 参数 （例如：`key`, `cert`, `ca`等）中任何可能属性的对象。
 
-The `server.addContext()` method adds a secure context that will be used if the client request's SNI hostname matches the supplied `hostname` (or wildcard).
+`server.addContext()` 方法添加了一个安全上下文，如果客户端请求的 SNI 主机名和提供的 `hostname` （或通配符）相匹配，该上下文将被使用。
 
 ### server.address()
-
 <!-- YAML
 added: v0.6.0
 -->
 
-Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
+返回操作系统报告的绑定地址，地址系列名，以及服务器端口号。 请查阅 [`net.Server.address()`][] 以获取更多信息。
 
 ### server.close([callback])
-
 <!-- YAML
 added: v0.3.2
 -->
 
-* `callback` {Function} An optional listener callback that will be registered to listen for the server instance's `'close'` event.
+* `callback` {Function} 一个可选的监听器回调函数，该函数将被注册并监听服务器实例的 `'close'` 事件。
 
-The `server.close()` method stops the server from accepting new connections.
+`server.close()` 方法会阻止服务器接受新连接。
 
-This function operates asynchronously. The `'close'` event will be emitted when the server has no more open connections.
+此函数以异步方式运行。 当服务器没有更多的打开连接时，将发出 `'close'` 事件。
 
 ### server.connections
-
 <!-- YAML
 added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`server.getConnections()`][]。
 
-Returns the current number of concurrent connections on the server.
+返回服务器上当前的并发连接数。
 
 ### server.getTicketKeys()
-
 <!-- YAML
 added: v3.0.0
 -->
 
-Returns a `Buffer` instance holding the keys currently used for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt)
+返回一个 `Buffer` 实例，该实例中包含用于当前 [TLS 会话凭据](https://www.ietf.org/rfc/rfc5077.txt) 加密/解密的密钥 。
 
 ### server.listen()
 
-Starts the server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+启动监听加密连接的服务器。 此方法与 [`net.Server`][] 中的 [`server.listen()`][] 相同。
 
 ### server.setTicketKeys(keys)
-
 <!-- YAML
 added: v3.0.0
 -->
 
-* `keys` {Buffer} The keys used for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
+* `keys` {Buffer} 用于 [TLS 会话凭据](https://www.ietf.org/rfc/rfc5077.txt) 加密/解密的密钥。
 
-Updates the keys for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
+更新用于加密/解密 [TLS 会话凭据](https://www.ietf.org/rfc/rfc5077.txt) 的密钥。
 
-*Note*: The key's `Buffer` should be 48 bytes long. See `ticketKeys` option in [tls.createServer](#tls_tls_createserver_options_secureconnectionlistener) for more information on how it is used.
+*注意*：密钥的 `Buffer` 应为 48 个字节长。 请参阅 [tls.createServer](#tls_tls_createserver_options_secureconnectionlistener) 中的 `ticketKeys` 选项以获取更多关于如何使用它的信息。
 
-*Note*: Changes to the ticket keys are effective only for future server connections. Existing or currently pending server connections will use the previous keys.
+*注意*：对凭据密钥的更改仅对该更改之后的服务器连接有效。 现有的或待处理的服务器连接将使用以前的密钥。
 
-## Class: tls.TLSSocket
 
+## 类：tls.TLSSocket
 <!-- YAML
 added: v0.11.4
 -->
 
-The `tls.TLSSocket` is a subclass of [`net.Socket`][] that performs transparent encryption of written data and all required TLS negotiation.
+`tls.TLSSocket` 是对写入数据及所有必须的 TLS 协商进行透明加密的 [`net.Socket`][] 类的子类，
 
-Instances of `tls.TLSSocket` implement the duplex [Stream](stream.html#stream_stream) interface.
+`tls.TLSSocket` 的实例实现了双工的 [Stream](stream.html#stream_stream) 接口。
 
-*Note*: Methods that return TLS connection metadata (e.g. [`tls.TLSSocket.getPeerCertificate()`][] will only return data while the connection is open.
+*注意*：返回 TLS 连接元数据的方法（例如：[`tls.TLSSocket.getPeerCertificate()`][]）只有在连接被打开时返回数据。
 
 ### new tls.TLSSocket(socket[, options])
-
 <!-- YAML
 added: v0.11.4
 changes:
-
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2564
     description: ALPN options are supported now.
 -->
 
-* `socket` {net.Socket|stream.Duplex} On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
-* `options` {Object} 
-  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. Defaults to `false`.
-  * `server` {net.Server} An optional [`net.Server`][] instance.
-  * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Clients always request a server certificate. Servers (`isServer` is true) may optionally set `requestCert` to true to request a client certificate.
-  * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
-  * `NPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `ALPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `SNICallback`: Optional, see [`tls.createServer()`][]
-  * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
-  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
-  * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
+* `socket` {net.Socket|stream.Duplex} 在服务器端，任何的 `Duplex` 流。 在客户端，[`net.Socket`][] 的任何实例 （对于客户端的通用 `Duplex` 流支持，必须使用 [`tls.connect()`][]）。
+* `options` {Object}
+  * `isServer`：SSL/TLS 协议是不对称的，TLSSockets 必须知道它们是否要作为服务器还是客户端。 如果值为 `true`，TLS 套接字将被实例化为服务器。 **默认:** `false`.
+  * `server` {net.Server} 可选的 [`net.Server`][] 实例。
+  * `requestCert`：是否通过请求证书来对远程对等方进行身份验证。 客户端始终请求服务器的证书。 服务器 (`isServer` 的值为 true）可以选择性的将 `requestCert` 的值设置为 true，以请求客户端证书。
+  * `rejectUnauthorized`：可选的，请参阅 [`tls.createServer()`][]
+  * `NPNProtocols`：可选，请参阅 [`tls.createServer()`][]
+  * `ALPNProtocols`：可选，请参阅 [`tls.createServer()`][]
+  * `SNICallback`: 可选，请参阅 [`tls.createServer()`][]
+  * `session` {Buffer} 包含 TLS 会话的可选 `Buffer` 实例。
+  * `requestOCSP` {boolean} 如果值为 `true`，指定 OCSP 状态请求扩展将被添加到客户端 hello 消息中，且在建立安全通信之前发出 `'OCSPResponse'` 事件。
+  * `secureContext`：可选 通过 [`tls.createSecureContext()`][] 创建的可选的 TLS 上下文对象。 如果 _没有_ 提供 `secureContext`，则会通过传递完整的 `options` 对象给 `tls.createSecureContext()` 来创建一个。
+  * ...: 可选 如果缺少 `secureContext` 选项，则会使用可选的 [`tls.createSecureContext()`][] 选项，否则它们将被忽略。
 
-Construct a new `tls.TLSSocket` object from an existing TCP socket.
+从现有的 TCP 套接字中构造一个新的 `tls.TLSSocket` 对象。
 
-### Event: 'OCSPResponse'
-
+### 事件：'OCSPResponse'
 <!-- YAML
 added: v0.11.13
 -->
 
-The `'OCSPResponse'` event is emitted if the `requestOCSP` option was set when the `tls.TLSSocket` was created and an OCSP response has been received. The listener callback is passed a single argument when called:
+当 `tls.TLSSocket` 被创建且已收到 OCSP 响应时，如果 `requestOCSP` 选项被设置，将发出 `'OCSPResponse'` 事件。 当被调用时，监听器回调函数将被赋予一个参数：
 
-* `response` {Buffer} The server's OCSP response
+* `response` {Buffer} 服务器的 OCSP 响应
 
-Typically, the `response` is a digitally signed object from the server's CA that contains information about server's certificate revocation status.
+通常，`response` 是来自服务器 CA 的数字签名对象，它包含服务器证书废止的状态信息。
 
-### Event: 'secureConnect'
-
+### 事件：'secureConnect'
 <!-- YAML
 added: v0.11.4
 -->
 
-The `'secureConnect'` event is emitted after the handshaking process for a new connection has successfully completed. The listener callback will be called regardless of whether or not the server's certificate has been authorized. It is the client's responsibility to check the `tlsSocket.authorized` property to determine if the server certificate was signed by one of the specified CAs. If `tlsSocket.authorized === false`, then the error can be found by examining the `tlsSocket.authorizationError` property. If either ALPN or NPN was used, the `tlsSocket.alpnProtocol` or `tlsSocket.npnProtocol` properties can be checked to determine the negotiated protocol.
+在新建连接的握手过程成功完成后，将发出 `'secureConnect'` 事件。 无论服务器的证书是否已被授权，监听器回调函数都将被调用。 客户端有责任检查 `tlsSocket.authorized` 属性来确定服务器证书是否由指定的 CA 之一签名。 如果 `tlsSocket.authorized === false`，可通过检查 `tlsSocket.authorizationError` 属性来发现错误。 如果 ALPN 和 NPN 都没有被使用，可通过检查 `tlsSocket.alpnProtocol` 或 `tlsSocket.npnProtocol` 属性来确定已协商的协议。
 
 ### tlsSocket.address()
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the bound address, the address family name, and port of the underlying socket as reported by the operating system. Returns an object with three properties, e.g. `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+返回操作系统报告的绑定地址，地址系列名，以及服务器端口号。 返回包含三个属性的对象，例如：`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### tlsSocket.authorizationError
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the reason why the peer's certificate was not been verified. This property is set only when `tlsSocket.authorized === false`.
+返回对等方证书未被验证的原因。 只有在 `tlsSocket.authorized === false` 时，此属性被设置。
 
 ### tlsSocket.authorized
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns `true` if the peer certificate was signed by one of the CAs specified when creating the `tls.TLSSocket` instance, otherwise `false`.
+在创建 `tls.TLSSocket` 实例时，如果对等方证书由指定的 CA 之一签名，返回 `true`，否则返回 `false`。
 
 ### tlsSocket.disableRenegotiation()
-
 <!-- YAML
 added: v8.4.0
 -->
 
-Disables TLS renegotiation for this `TLSSocket` instance. Once called, attempts to renegotiate will trigger an `'error'` event on the `TLSSocket`.
+禁用此 `TLSSocket` 实例的 TLS 重新协商。 一旦调用，重新协商的尝试会触发 `TLSSocket` 上的 `'error'` 事件。
 
 ### tlsSocket.encrypted
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Always returns `true`. This may be used to distinguish TLS sockets from regular `net.Socket` instances.
+总是返回 `true`。 它也可以被用于区分 TLS 套接字和常规的 `net.Socket` 实例。
 
 ### tlsSocket.getCipher()
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns an object representing the cipher name. The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
+返回代表密码名称的对象。 `version` 键是一个传统字段，它始终包含 `'TLSv1/SSLv3'` 值。
 
-For example: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`
+例如：`{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`
 
-See `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.0.2/ssl/SSL_CIPHER_get_name.html for more information.
+请参阅 https://www.openssl.org/docs/man1.0.2/ssl/SSL_CIPHER_get_name.html 中的 `SSL_CIPHER_get_name()` 以获取更多信息。
 
 ### tlsSocket.getEphemeralKeyInfo()
-
 <!-- YAML
 added: v5.0.0
 -->
 
-Returns an object representing the type, name, and size of parameter of an ephemeral key exchange in [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) on a client connection. It returns an empty object when the key exchange is not ephemeral. As this is only supported on a client socket; `null` is returned if called on a server socket. The supported types are `'DH'` and `'ECDH'`. The `name` property is available only when type is 'ECDH'.
+返回一个代表类型，名称，以及在客户端连接的 [完美前向安全](#tls_perfect_forward_secrecy) 中用于交换的 ephemeral 密钥大小的对象。 当密钥交换不是 ephemeral 时，返回一个空对象。 因为这只在客户端套接字中支持，如果在服务器套接字上调用，则返回 `null`。 支持的类型为：`'DH'` 和 `'ECDH'`。 只有当类型为 'ECDH' 时，`name` 属性可用。
 
-For Example: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`
+例如：`{ type: 'ECDH', name: 'prime256v1', size: 256 }`
+
+### tlsSocket.getFinished()
+<!-- YAML
+added: v8.12.0
+-->
+
+* Returns: {Buffer|undefined} The latest `Finished` message that has been sent to the socket as part of a SSL/TLS handshake, or `undefined` if no `Finished` message has been sent yet.
+
+As the `Finished` messages are message digests of the complete handshake (with a total of 192 bits for TLS 1.0 and more for SSL 3.0), they can be used for external authentication procedures when the authentication provided by SSL/TLS is not desired or is not enough.
+
+Corresponds to the `SSL_get_finished` routine in OpenSSL and may be used to implement the `tls-unique` channel binding from [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
 ### tlsSocket.getPeerCertificate([detailed])
-
 <!-- YAML
 added: v0.11.4
 -->
 
-* `detailed` {boolean} Include the full certificate chain if `true`, otherwise include just the peer's certificate.
+* `detailed` {boolean} 如果值为 `true`，则包含完整的证书链，否则只包含对等方的证书。
 
-Returns an object representing the peer's certificate. The returned object has some properties corresponding to the fields of the certificate.
+返回代表对等方证书的对象。 返回的对象具有和证书中字段相对应的属性。
 
-If the full certificate chain was requested, each certificate will include a `issuerCertificate` property containing an object representing its issuer's certificate.
+如果请求完整的证书链，每个证书将包含 `issuerCertificate` 属性，该属性包含一个代表颁发者证书的对象。
 
-For example:
+例如：
 
 ```text
 { subject:
@@ -477,136 +464,135 @@ For example:
    { ... another certificate, possibly with a .issuerCertificate ... },
   raw: < RAW DER buffer >,
   valid_from: 'Nov 11 09:52:22 2009 GMT',
-  valid_to: 'Nov  6 09:52:22 2029 GMT',
+  valid_to: 'Nov 6 09:52:22 2029 GMT',
   fingerprint: '2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF',
   serialNumber: 'B9B0D332A1AA5635' }
 ```
 
-If the peer does not provide a certificate, an empty object will be returned.
+如果对等方没有提供证书，则返回一个空对象。
+
+### tlsSocket.getPeerFinished()
+<!-- YAML
+added: v8.12.0
+-->
+
+* Returns: {Buffer|undefined} The latest `Finished` message that is expected or has actually been received from the socket as part of a SSL/TLS handshake, or `undefined` if there is no `Finished` message so far.
+
+As the `Finished` messages are message digests of the complete handshake (with a total of 192 bits for TLS 1.0 and more for SSL 3.0), they can be used for external authentication procedures when the authentication provided by SSL/TLS is not desired or is not enough.
+
+Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to implement the `tls-unique` channel binding from [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
 ### tlsSocket.getProtocol()
-
 <!-- YAML
 added: v5.7.0
 -->
 
-Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
+返回一个包含当前连接的已协商过的 SSL/TLS 协议版本号的字符串。 对于尚未完成握手过程的已连接套接字，将返回 `'unknown'` 值。 对于服务器套接字或断开连接的客户端套接字，将返回 `null` 值。
 
-Example responses include:
+响应示例包括：
 
-* `SSLv3`
 * `TLSv1`
 * `TLSv1.1`
 * `TLSv1.2`
 * `unknown`
 
-See https://www.openssl.org/docs/man1.0.2/ssl/SSL_get_version.html for more information.
+请参阅 https://www.openssl.org/docs/man1.0.2/ssl/SSL_get_version.html 以获取更多信息。
 
 ### tlsSocket.getSession()
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the ASN.1 encoded TLS session or `undefined` if no session was negotiated. Can be used to speed up handshake establishment when reconnecting to the server.
+返回一个 ASN.1 编码的 TLS 会话，如果没有协商任何会话，则返回 `undefined`。 当重新连接到服务器时，此方法可被用于加快握手过程的创建。
 
 ### tlsSocket.getTLSTicket()
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the TLS session ticket or `undefined` if no session was negotiated.
+返回 TLS 会话凭据，或者当没有协商任何会话时返回 `undefined`。
 
-*Note*: This only works with client TLS sockets. Useful only for debugging, for session reuse provide `session` option to [`tls.connect()`][].
+*注意*：它只适用于客户端 TLS 套接字。 仅用于调试，对于会话的重用，可为 [`tls.connect()`][] 提供 `session` 选项。
 
 ### tlsSocket.localAddress
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the string representation of the local IP address.
+返回代表本地 IP 地址的字符串。
 
 ### tlsSocket.localPort
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the numeric representation of the local port.
+返回代表本地端口号的数字。
 
 ### tlsSocket.remoteAddress
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`.
+返回代表远程 IP 地址的字符串。 例如： `'74.125.127.100'` 或 `'2001:4860:a005::68'`。
 
 ### tlsSocket.remoteFamily
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
+返回代表远程 IP 地址系列名的字符串。 `'IPv4'` 或 `'IPv6'`。
 
 ### tlsSocket.remotePort
-
 <!-- YAML
 added: v0.11.4
 -->
 
-Returns the numeric representation of the remote port. For example, `443`.
+返回代表远程端口号的数字。 例如：`443`。
 
 ### tlsSocket.renegotiate(options, callback)
-
 <!-- YAML
 added: v0.11.8
 -->
 
-* `options` {Object} 
-  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. Defaults to `true`.
+* `options` {Object}
+  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. 如果验证失败，则会发出 `'error'` 事件；`err.code` 包含 OpenSSL 错误代码。 **Default:** `true`.
   * `requestCert`
-* `callback` {Function} A function that will be called when the renegotiation request has been completed.
+* `callback` {Function} 当重新协商请求结束后被调用的函数。
 
-The `tlsSocket.renegotiate()` method initiates a TLS renegotiation process. Upon completion, the `callback` function will be passed a single argument that is either an `Error` (if the request failed) or `null`.
+`tlsSocket.renegotiate()` 方法启动 TLS 重新协商过程。 结束后，`callback` 函数会被赋予一个参数，该参数为 `Error` （如果请求失败）或 `null`。
 
-*Note*: This method can be used to request a peer's certificate after the secure connection has been established.
+*注意*：在建立安全连接后，此方法可被用于请求对等方的证书。
 
-*Note*: When running as the server, the socket will be destroyed with an error after `handshakeTimeout` timeout.
+*注意*：当以服务器方式运行时，如果 `handshakeTimeout` 超时，套接字将被销毁并出错。
 
 ### tlsSocket.setMaxSendFragment(size)
-
 <!-- YAML
 added: v0.11.11
 -->
 
-* `size` {number} The maximum TLS fragment size. Defaults to `16384`. The maximum value is `16384`.
+* `size` {number} TLS 片段大小的最大值。 The maximum value is `16384`. **Default:** `16384`.
 
-The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
+`tlsSocket.setMaxSendFragment()` 方法会设置 TLS 片段大小的最大值。 如果成功设置限制，则返回 `true`，否则返回 `false`。
 
-Smaller fragment sizes decrease the buffering latency on the client: larger fragments are buffered by the TLS layer until the entire fragment is received and its integrity is verified; large fragments can span multiple roundtrips and their processing can be delayed due to packet loss or reordering. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
+较小的片段大小会减少客户端的缓冲延迟；在收到完整的片段且其完整性已被验证之前，较大的片段会在 TLS 层被缓冲；较大的片段可能需要多次的交互才能完成数据的传输，同时由于数据包丢失或重新排序，其处理可能会延迟。 然而，较小的片段会增加额外的 TLS 帧字节和 CPU 开销，这可能会降低服务器的整体吞吐量。
 
 ## tls.checkServerIdentity(host, cert)
-
 <!-- YAML
 added: v0.8.4
 -->
 
-* `host` {string} The hostname to verify the certificate against
-* `cert` {Object} An object representing the peer's certificate. The returned object has some properties corresponding to the fields of the certificate.
+* `host` {string} 用于验证证书的主机名
+* `cert` {Object} 代表对等方证书的对象。 返回的对象具有和证书中字段相对应的属性。
 
-Verifies the certificate `cert` is issued to host `host`.
+验证颁发给主机 `host` 的证书 `cert`。
 
-Returns {Error} object, populating it with the reason, host, and cert on failure. On success, returns {undefined}.
+返回 {Error} 对象，在失败时用reason，host，及 cert 来填充该对象。 成功时，返回 {undefined}。
 
-*Note*: This function can be overwritten by providing alternative function as part of the `options.checkServerIdentity` option passed to `tls.connect()`. The overwriting function can call `tls.checkServerIdentity()` of course, to augment the checks done with additional verification.
+*注意*：通过将替代函数作为传递给 `tls.connect()` 的 `options.checkServerIdentity` 选项的一部分，此函数可被重写。 重写函数当然可以调用 `tls.checkServerIdentity()`，以增加通过额外验证实现的检查。
 
-*Note*: This function is only called if the certificate passed all other checks, such as being issued by trusted CA (`options.ca`).
+*注意*：只有在证书通过所有其他检查，例如由受信任的 CA （`options.ca`）颁发的检查时，此函数才会被调用。
 
-The cert object contains the parsed certificate and will have a structure similar to:
+cert 对象包含已解析的证书，并将具有如下的类似结构：
 
 ```text
 { subject:
@@ -634,11 +620,9 @@ The cert object contains the parsed certificate and will have a structure simila
 ```
 
 ## tls.connect(options[, callback])
-
 <!-- YAML
 added: v0.11.3
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12839
     description: The `lookup` option is supported now.
@@ -654,28 +638,28 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `options` {Object} 
-  * `host` {string} Host the client should connect to, defaults to 'localhost'.
-  * `port` {number} Port the client should connect to.
-  * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
-  * `socket` {stream.Duplex} Establish secure connection on a given socket rather than creating a new socket. Typically, this is an instance of [`net.Socket`][], but any `Duplex` stream is allowed. If this option is specified, `path`, `host` and `port` are ignored, except for certificate validation. Usually, a socket is already connected when passed to `tls.connect()`, but it can be connected later. Note that connection/disconnection/destruction of `socket` is the user's responsibility, calling `tls.connect()` will not cause `net.connect()` to be called.
-  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. Defaults to `true`.
-  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
-  * `servername`: {string} Server name for the SNI (Server Name Indication) TLS extension.
-  * `checkServerIdentity(servername, cert)` {Function} A callback function to be used (instead of the builtin `tls.checkServerIdentity()` function) when checking the server's hostname (or the provided `servername` when explicitly set) against the certificate. This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
-  * `session` {Buffer} A `Buffer` instance, containing TLS session.
-  * `minDHSize` {number} Minimum size of the DH parameter in bits to accept a TLS connection. When a server offers a DH parameter with a size less than `minDHSize`, the TLS connection is destroyed and an error is thrown. Defaults to `1024`.
-  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
-  * `lookup`: {Function} Custom lookup function. Defaults to [`dns.lookup()`][].
-  * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
+* `options` {Object}
+  * `host` {string} 客户端应连接到的主机。 **Default:** `'localhost'`.
+  * `port` {number} 客户端应连接到的端口。
+  * `path` {string} 创建和路径关联的 unix 套接字连接。 如果此选项被指定，则 `host` 和 `port` 会被忽略。
+  * `socket` {stream.Duplex} 建立到给定套接字的安全连接，而不是创建一个新的套接字。 通常情况下，这是 [`net.Socket`][] 的实例，但允许任何的 `Duplex` 流。 如果指定此选项，除了在证书验证时，`path`, `host` 和 `port` 将被忽略。 通常，当传递给 `tls.connect()` 时，套接字已连接，但它也可在稍后被连接。 注意：连接/断开连接/销毁 `socket` 是用户的责任，调用 `tls.connect()` 并不会导致对 `net.connect()` 的调用。
+  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. 如果验证失败，则会发出 `'error'` 事件；`err.code` 包含 OpenSSL 错误代码。 **Default:** `true`.
+  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 NPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer` 的格式应该是这样的：`[len][name][len][name]...`。例如：`0x05hello0x05world`，其中的首字节为下一个协议名的长度。 传入一个数组通常会更简单，例如：`['hello', 'world']`。
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 ALPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer` 的格式应该是这样的：`[len][name][len][name]...`，例如：`0x05hello0x05world`，其中首字节为下一个协议名的长度。 传入一个数组通常会更简单，例如：`['hello', 'world']`。
+  * `servername`: {string} SNI (服务器名称指示) TLS 扩展的服务器名。
+  * `checkServerIdentity(servername, cert)` {Function} 当针对证书检查服务器的主机名 (如果明确设置，则为 `servername`) 时，将被使用的回调函数 (而不是内置的 `tls.checkServerIdentity()` 函数)。 如果验证失败，则应返回 {Error}。 如果 `servername` 和 `cert` 已验证，此方法应返回 `undefined`。
+  * `session` {Buffer} 包含 TLS 会话的 `Buffer` 实例。
+  * `minDHSize` {number} 用来接受 TLS 连接的，以位为单位的 DH 参数大小的最小值。 当服务器提供的 DH 参数的大小小于 `minDHSize` 时，TLS 连接将被销毁，且将抛出错误。 **Default:** `1024`.
+  * `secureContext`：可选 通过 [`tls.createSecureContext()`][] 创建的可选的 TLS 上下文对象。 如果 _没有_ 提供 `secureContext`，则会通过传递完整的 `options` 对象给 `tls.createSecureContext()` 来创建一个。
+  * `lookup`: {Function} 自定义查找函数。 **Default:** [`dns.lookup()`][].
+  * ...: 可选 如果缺少 `secureContext` 选项，则会使用可选的 [`tls.createSecureContext()`][] 选项，否则它们将被忽略。
 * `callback` {Function}
 
-The `callback` function, if specified, will be added as a listener for the [`'secureConnect'`][] event.
+如果指定了 `callback` 函数，则该函数将被添加为 [`'secureConnect'`][] 事件的监听器。
 
-`tls.connect()` returns a [`tls.TLSSocket`][] object.
+`tls.connect()` 返回一个 [`tls.TLSSocket`][] 对象。
 
-The following implements a simple "echo server" example:
+如下实现了一个简单的 "echo server" 示例：
 
 ```js
 const tls = require('tls');
@@ -705,7 +689,7 @@ socket.on('end', () => {
 });
 ```
 
-Or
+或
 
 ```js
 const tls = require('tls');
@@ -731,40 +715,37 @@ socket.on('end', () => {
 ```
 
 ## tls.connect(path\[, options\]\[, callback\])
-
 <!-- YAML
 added: v0.11.3
 -->
 
-* `path` {string} Default value for `options.path`.
-* `options` {Object} See [`tls.connect()`][].
-* `callback` {Function} See [`tls.connect()`][].
+* `path` {string} `options.path` 的默认值。
+* `options` {Object} 请参阅 [`tls.connect()`][]。
+* `callback` {Function} 请参阅 [`tls.connect()`][]。
 
-Same as [`tls.connect()`][] except that `path` can be provided as an argument instead of an option.
+与 [`tls.connect()`][] 相同，但不同之处在于 `path` 可以通过参数，而不是选项的方式提供。
 
-*Note*: A path option, if specified, will take precedence over the path argument.
+*注意*：如果指定 path 选项，它将优于 path 参数。
 
 ## tls.connect(port\[, host\]\[, options\][, callback])
-
 <!-- YAML
 added: v0.11.3
 -->
 
-* `port` {number} Default value for `options.port`.
-* `host` {string} Optional default value for `options.host`.
-* `options` {Object} See [`tls.connect()`][].
-* `callback` {Function} See [`tls.connect()`][].
+* `port` {number} `options.port` 的默认值。
+* `host` {string} 可选的 `options.host` 的默认值。
+* `options` {Object} 请参阅 [`tls.connect()`][]。
+* `callback` {Function} 请参阅 [`tls.connect()`][]。
 
-Same as [`tls.connect()`][] except that `port` and `host` can be provided as arguments instead of options.
+与 [`tls.connect()`][] 相同，但不同之处在于 `port` 和 `host` 可以通过参数，而不是选项的方式提供。
 
-*Note*: A port or host option, if specified, will take precedence over any port or host argument.
+*注意*：如果指定 port 或 host 选项，它将优于 port 或 host 参数。
+
 
 ## tls.createSecureContext(options)
-
 <!-- YAML
 added: v0.11.13
 changes:
-
   - version: v7.3.0
     pr-url: https://github.com/nodejs/node/pull/10294
     description: If the `key` option is an array, individual entries do not
@@ -776,40 +757,38 @@ changes:
                  CA certificates.
 -->
 
-* `options` {Object} 
-  * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} Optional PFX or PKCS12 encoded private key and certificate chain. `pfx` is an alternative to providing `key` and `cert` individually. PFX is usually encrypted, if it is, `passphrase` will be used to decrypt it. Multiple PFX can be provided either as an array of unencrypted PFX buffers, or an array of objects in the form `{buf: <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted PFX will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
-  * `key` {string|string[]|Buffer|Buffer[]|Object[]} Optional private keys in PEM format. PEM allows the option of private keys being encrypted. Encrypted keys will be decrypted with `options.passphrase`. Multiple keys using different algorithms can be provided either as an array of unencrypted key strings or buffers, or an array of objects in the form `{pem:
-<string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted keys will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
-  * `passphrase` {string} Optional shared passphrase used for a single private key and/or a PFX.
-  * `cert` {string|string[]|Buffer|Buffer[]} Optional cert chains in PEM format. One cert chain should be provided per private key. Each cert chain should consist of the PEM formatted certificate for a provided private `key`, followed by the PEM formatted intermediate certificates (if any), in order, and not including the root CA (the root CA must be pre-known to the peer, see `ca`). When providing multiple cert chains, they do not have to be in the same order as their private keys in `key`. If the intermediate certificates are not provided, the peer will not be able to validate the certificate, and the handshake will fail.
-  * `ca` {string|string[]|Buffer|Buffer[]} Optionally override the trusted CA certificates. Default is to trust the well-known CAs curated by Mozilla. Mozilla's CAs are completely replaced when CAs are explicitly specified using this option. The value can be a string or Buffer, or an Array of strings and/or Buffers. Any string or Buffer can contain multiple PEM CAs concatenated together. The peer's certificate must be chainable to a CA trusted by the server for the connection to be authenticated. When using certificates that are not chainable to a well-known CA, the certificate's CA must be explicitly specified as a trusted or the connection will fail to authenticate. If the peer uses a certificate that doesn't match or chain to one of the default CAs, use the `ca` option to provide a CA certificate that the peer's certificate can match or chain to. For self-signed certificates, the certificate is its own CA, and must be provided.
-  * `crl` {string|string[]|Buffer|Buffer[]} Optional PEM formatted CRLs (Certificate Revocation Lists).
-  * `ciphers` {string} Optional cipher suite specification, replacing the default. For more information, see [modifying the default cipher suite](#tls_modifying_the_default_tls_cipher_suite).
-  * `honorCipherOrder` {boolean} Attempt to use the server's cipher suite preferences instead of the client's. When `true`, causes `SSL_OP_CIPHER_SERVER_PREFERENCE` to be set in `secureOptions`, see [OpenSSL Options](crypto.html#crypto_openssl_options) for more information.
-  * `ecdhCurve` {string} A string describing a named curve or a colon separated list of curve NIDs or names, for example `P-521:P-384:P-256`, to use for ECDH key agreement, or `false` to disable ECDH. Set to `auto` to select the curve automatically. Defaults to [`tls.DEFAULT_ECDH_CURVE`]. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
-  * `dhparam` {string|Buffer} Diffie Hellman parameters, required for [Perfect Forward Secrecy](#tls_perfect_forward_secrecy). Use `openssl dhparam` to create the parameters. The key length must be greater than or equal to 1024 bits, otherwise an error will be thrown. It is strongly recommended to use 2048 bits or larger for stronger security. If omitted or invalid, the parameters are silently discarded and DHE ciphers will not be available.
-  * `secureProtocol` {string} Optional SSL method to use, default is `"SSLv23_method"`. The possible values are listed as [SSL_METHODS](https://www.openssl.org/docs/man1.0.2/ssl/ssl.html#DEALING-WITH-PROTOCOL-METHODS), use the function names as strings. For example, `"SSLv3_method"` to force SSL version 3.
-  * `secureOptions` {number} Optionally affect the OpenSSL protocol behavior, which is not usually necessary. This should be used carefully if at all! Value is a numeric bitmask of the `SSL_OP_*` options from [OpenSSL Options](crypto.html#crypto_openssl_options).
-  * `sessionIdContext` {string} Optional opaque identifier used by servers to ensure session state is not shared between applications. Unused by clients.
+* `options` {Object}
+  * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} 可选的 PFX 或 PKCS12 编码的私钥和证书链。 相对于分别提供 `key` 和 `cert`，`pfx` 是一种替代方式。 PFX 通常是加密的，如果是的话，`passphrase` 将被用于对其进行解密。 可以提供多个 PFX，其提供方式可以是一个未加密的 PFX 缓冲区数组，或是以 `{buf: <string|buffer>[, passphrase: <string>]}` 格式提供的对象数组。 对象形式只能在数组中使用。 `object.passphrase` 是可选的。 如果提供了 `object.passphrase`，将使用它对加密的 PFX 进行解密，如未提供，则使用 `options.passphrase`。
+  * `key` {string|string[]|Buffer|Buffer[]|Object[]} 可选的 PEM 格式私钥。 PEM 允许对私钥选项进行加密。 加密的密钥将通过 `options.passphrase` 进行解密。 使用不同算法的多个密钥可以通过未加密的密钥字符串数组或缓冲区来提供，也可以通过 `{pem: <string|buffer>[, passphrase: <string>]}` 格式的对象数组来提供。 对象形式只能在数组中使用。 `object.passphrase` 是可选的。 如果提供了 `object.passphrase`，将使用它对加密密钥进行解密，如未提供，则使用 `options.passphrase` 进行解密。
+  * `passphrase` {string} 可选的共享密码，可用于单个私钥和/或 PFX。
+  * `cert` {string|string[]|Buffer|Buffer[]} 可选的 PEM 格式证书链。 应对每个私钥提供一个证书链。 每个证书链应该包含针对已提供私 `钥` 的 PEM 格式的证书，按照次序，随后是 PEM 格式的中间证书 (如存在)，且不包含根 CA (根 CA 对于对等方必须是预知的，请参阅 `ca`) 。 当提供多个证书链时，其次序不必和 `key` 中私钥的次序一致。 如未提供中间证书，对等方就无法验证证书，握手过程就会失败。
+  * `ca` {string|string[]|Buffer|Buffer[]} 可选的覆盖受信任 CA 的证书。 默认值为信任由 Mozilla 策展的知名 CA。 当使用此选项显式指定 CA 时，会彻底替换 Mozilla 的 CA。 该值可以是字符串或缓冲区，或者是字符串数组和/或缓冲区。 任何字符串或缓冲区都可以包含多个连接到一起的 PEM CA。 对等方证书必须可以链接到受服务器信任的CA，才能对连接进行身份验证。 当使用不能链接到知名 CA 的证书时，证书的 CA 必须被显式指定为受信任的，否则连接无法进行身份验证。 如果对等方使用一个不匹配，或和默认 CA 无法链接的证书，请使用 `ca` 选项来提供一个 CA 证书以便对等方证书可以匹配或链入。 对于自签名证书，证书就是自己的 CA，因此必须被提供。
+  * `crl` {string|string[]|Buffer|Buffer[]} 可选的 PEM 格式的 CRLs (证书吊销列表)。
+  * `ciphers` {string} 可选的密码套件规范，用来替换默认值。 请参阅 [更改默认密码套件](#tls_modifying_the_default_tls_cipher_suite) 以获取更多信息。
+  * `honorCipherOrder` {boolean} 尝试使用服务器的，而不是客户端的密码套件偏好。 当值为 `true` 时，将 `SSL_OP_CIPHER_SERVER_PREFERENCE` 赋值给 `secureOptions`，请参阅 [OpenSSL Options](crypto.html#crypto_openssl_options) 以获取更多信息。
+  * `ecdhCurve` {string} 描述一个已命名曲线，或者以冒号分隔的曲线 NID 或名称列表的字符串，例如：`P-521:P-384:P-256`，以便用于 ECDH 密钥协商，或者，当值为 `false` 时，禁用 ECDH。 设置为 `auto` 来自动选择曲线。 Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve. **Default:** [`tls.DEFAULT_ECDH_CURVE`].
+  * `dhparam` {string|Buffer} Diffie Hellman 参数，是 [完美前向安全](#tls_perfect_forward_secrecy) 的必选参数。 运行 `openssl dhparam` 来创建参数。 密钥长度必须大于或等于 1024 位，否则会抛出错误。 强烈建议使用 2048 位或更高位以提高安全性。 如果忽略或无效，参数将以静默方式被丢弃，DHE 密码将不可用。
+  * `secureProtocol` {string} Optional SSL method to use, default is `'SSLv23_method'`. 可能的值被列入 [SSL_METHODS](https://www.openssl.org/docs/man1.0.2/ssl/ssl.html#DEALING-WITH-PROTOCOL-METHODS)，将函数名作为字符串。 For example, `'SSLv3_method'` to force SSL version 3.
+  * `secureOptions` {number} 可选的能够影响 OpenSSL 协议行为的选项，通常是不需要的。 如果有的话，应小心使用！ 其值是 [OpenSSL Options](crypto.html#crypto_openssl_options) 中 `SSL_OP_*` 选项的数字位掩码。
+  * `sessionIdContext` {string} 可选的服务器使用的不透明标识符，以确保会话状态不会在应用程序间共享。 未被客户端使用。
 
-*Note*:
+*注意*：
 
-* [`tls.createServer()`][] sets the default value of the `honorCipherOrder` option to `true`, other APIs that create secure contexts leave it unset.
+* [`tls.createServer()`][] 将 `honorCipherOrder` 选项的默认值设置为 `true`，其他创建安全上下文的 API 可不必理会。
 
-* [`tls.createServer()`][] uses a 128 bit truncated SHA1 hash value generated from `process.argv` as the default value of the `sessionIdContext` option, other APIs that create secure contexts have no default value.
+* [`tls.createServer()`][] 使用从 `process.argv` 生成的 128 位截断的 SHA1 哈希值，并将其作为 `sessionIdContext` 选项的默认值，其他创建安全上下文的 API 没有默认值。
 
-The `tls.createSecureContext()` method creates a credentials object.
+`tls.createSecureContext()` 方法创建一个安全凭据对象。
 
-A key is *required* for ciphers that make use of certificates. Either `key` or `pfx` can be used to provide it.
+对于使用证书的密码，密钥是 *必须的*。 `key` 或 `pfx` 都可被用于该目的。
 
-If the 'ca' option is not given, then Node.js will use the default publicly trusted list of CAs as given in <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
+如果 'ca' 选项未被提供，Node.js 将会使用 <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt> 中给出的默认的公开受信任 CA 列表。
+
 
 ## tls.createServer(\[options\]\[, secureConnectionListener\])
-
 <!-- YAML
 added: v0.3.2
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11984
     description: The `ALPNProtocols` and `NPNProtocols` options can
@@ -819,23 +798,23 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `options` {Object} 
-  * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. Defaults to `120` seconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out.
-  * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. Defaults to `false`.
-  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. Defaults to `true`.
-  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
-  * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a SecureContext instance. (`tls.createSecureContext(...)` can be used to get a proper SecureContext.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
-  * `sessionTimeout` {number} An integer specifying the number of seconds after which the TLS session identifiers and TLS session tickets created by the server will time out. See [SSL_CTX_set_timeout](https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_timeout.html) for more details.
-  * `ticketKeys`: A 48-byte `Buffer` instance consisting of a 16-byte prefix, a 16-byte HMAC key, and a 16-byte AES key. This can be used to accept TLS session tickets on multiple instances of the TLS server.
-  * ...: Any [`tls.createSecureContext()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
+* `options` {Object}
+  * `handshakeTimeout` {number} 如果 SSL/TLS 握手过程没有在指定的毫秒数内完成，则终止连接。 如果握手过程超时，则会在 `tls.Server` 对象上发出 `'tlsClientError'`。 **Default:** `120000` (120 seconds).
+  * `requestCert` {boolean} 如果值为 `true`，服务器会从发出连接的客户端请求一个证书，并尝试验证该证书。 **Default:** `false`.
+  * `rejectUnauthorized` {boolean} 如果值不是 `false`，服务器将会拒绝任何未被已提供的 CA 列表所授权的连接。 只有当 `requestCert` 的值为 `true` 时，此选项才有效。 **Default:** `true`.
+  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 NPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer` 的格式应该是这样的：`[len][name][len][name]...`。例如：`0x05hello0x05world`，其中的首字节为下一个协议名的长度。 传入一个数组通常会更简单，例如：`['hello', 'world']`。 (协议应按其优先级进行排序。)
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 ALPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer` 的格式应该是这样的：`[len][name][len][name]...`，例如：`0x05hello0x05world`，其中首字节为下一个协议名的长度。 传入一个数组通常会更简单，例如：`['hello', 'world']`。 (协议应该按照它们的优先级进行排序。) 当服务器从客户端收到 NPN 和 ALPN 扩展时，ALPN 会优于 NPN，且服务器不会将 NPN 扩展发送到客户端。
+  * `SNICallback(servername, cb)` {Function} 当客户端支持 SNI TLS 扩展时将被调用的函数。 当被调用时，将传递两个参数：`servername` 和 `cb`。 `SNICallback` 将会调用 `cb(null, ctx)`，其中 `ctx` 是 SecureContext 的实例。 (`tls.createSecureContext(...)` 可被用于获得正确的 SecureContext。) 如果未提供 `SNICallback`，含有高级 API 的默认回调函数将被使用 (如下所示)。
+  * `sessionTimeout` {number} 指定由服务器创建的 TLS 会话标识符及 TLS 会话凭据超时秒数的一个整数值。 请参阅 [SSL_CTX_set_timeout](https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_timeout.html) 以获取更多信息。
+  * `ticketKeys`: 一个 48 字节的 `Buffer` 实例，其中包含 16 个字节的前缀，16 个字节的 HMAC 密钥，以及 16 个字节的 AES 密钥。 它可被用于接受多个 TLS 服务器实例上的 TLS 会话凭据。
+  * ...: 可以提供任何的 [`tls.createSecureContext()`][] 选项。 对于服务器，通常需要标识符选项 (`pfx` 或 `key`/`cert`)。
 * `secureConnectionListener` {Function}
 
-Creates a new [tls.Server](#tls_class_tls_server). The `secureConnectionListener`, if provided, is automatically set as a listener for the [`'secureConnection'`][] event.
+创建一个新的 [tls.Server](#tls_class_tls_server)。 如果提供了 `secureConnectionListener`，它会被自动设置为 [`'secureConnection'`][] 事件的监听器。
 
-*Note*: The `ticketKeys` options is automatically shared between `cluster` module workers.
+*注意*：`ticketKeys` 选项会自动在 `cluster` 模块的 worker 之间共享。
 
-The following illustrates a simple echo server:
+如下演示了一个简单的 echo 服务器：
 
 ```js
 const tls = require('tls');
@@ -864,7 +843,7 @@ server.listen(8000, () => {
 });
 ```
 
-Or
+或
 
 ```js
 const tls = require('tls');
@@ -890,115 +869,108 @@ server.listen(8000, () => {
 });
 ```
 
-This server can be tested by connecting to it using `openssl s_client`:
+可以通过使用 `openssl s_client` 来连接到服务器以对其进行测试。
 
 ```sh
 openssl s_client -connect 127.0.0.1:8000
 ```
 
 ## tls.getCiphers()
-
 <!-- YAML
 added: v0.10.2
 -->
 
-Returns an array with the names of the supported SSL ciphers.
+返回一个受支持的 SSL 密码名称的数组。
 
-For example:
+例如：
 
 ```js
 console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
 ```
 
 ## tls.DEFAULT_ECDH_CURVE
-
 <!-- YAML
 added: v0.11.13
 -->
 
-The default curve name to use for ECDH key agreement in a tls server. The default value is `'prime256v1'` (NIST P-256). Consult [RFC 4492](https://www.rfc-editor.org/rfc/rfc4492.txt) and [FIPS.186-4](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) for more details.
+在 tls 服务器中用于 ECDH 密钥协议的默认曲线名称。 默认值为：`'prime256v1'` (NIST P-256)。 请参阅 [RFC 4492](https://www.rfc-editor.org/rfc/rfc4492.txt) 和 [FIPS.186-4](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 以获取详细信息。
 
-## Deprecated APIs
 
-### Class: CryptoStream
+## 已弃用的 API
 
+### 类：CryptoStream
 <!-- YAML
 added: v0.3.4
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`tls.TLSSocket`][]。
 
-The `tls.CryptoStream` class represents a stream of encrypted data. This class has been deprecated and should no longer be used.
+`tls.CryptoStream` 类表示加密数据流。 此类已被弃用因此不应再被使用。
 
 #### cryptoStream.bytesWritten
-
 <!-- YAML
 added: v0.3.4
 deprecated: v0.11.3
 -->
 
-The `cryptoStream.bytesWritten` property returns the total number of bytes written to the underlying socket *including* the bytes required for the implementation of the TLS protocol.
+`cryptoStream.bytesWritten` 属性返回写入到底层套接字中的总计字节数，其中 *包含* 实现 TLS 协议所必须的字节。
 
-### Class: SecurePair
-
+### 类：SecurePair
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`tls.TLSSocket`][]。
 
-Returned by [`tls.createSecurePair()`][].
+由 [`tls.createSecurePair()`][] 返回。
 
-#### Event: 'secure'
-
+#### 事件：'secure'
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
 -->
 
-The `'secure'` event is emitted by the `SecurePair` object once a secure connection has been established.
+一旦建立了安全连接，`SecurePair` 对象就会发出 `'secure'` 事件。
 
-As with checking for the server [`secureConnection`](#tls_event_secureconnection) event, `pair.cleartext.authorized` should be inspected to confirm whether the certificate used is properly authorized.
+和检查服务器 [`secureConnection`](#tls_event_secureconnection) 事件一样，应当检查 `pair.cleartext.authorized` 以确定被使用的证书是否被正确的授权。
 
 ### tls.createSecurePair(\[context\]\[, isServer\]\[, requestCert\]\[, rejectUnauthorized\][, options])
-
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
 changes:
-
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2564
     description: ALPN options are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`tls.TLSSocket`][]。
 
-* `context` {Object} A secure context object as returned by `tls.createSecureContext()`
-* `isServer` {boolean} `true` to specify that this TLS connection should be opened as a server.
-* `requestCert` {boolean} `true` to specify whether a server should request a certificate from a connecting client. Only applies when `isServer` is `true`.
-* `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
-* `options` 
-  * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. Defaults to `false`.
-  * `server` {net.Server} An optional [`net.Server`][] instance
-  * `requestCert`: Optional, see [`tls.createServer()`][]
-  * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
-  * `NPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `ALPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `SNICallback`: Optional, see [`tls.createServer()`][]
-  * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
+* `context` {Object} 由 `tls.createSecureContext()` 返回的安全上下文对象。
+* `isServer` {boolean} `true` 指定 TLS 连接是否以服务器方式打开。
+* `requestCert` {boolean} `true` 指定服务器是否应该请求连接客户端的证书。 只适用于当 `isServer` 的值为 `true`时。
+* `rejectUnauthorized` {boolean} 如果值不是 `false`，服务器会自动拒绝具有无效证书的客户端。 只适用于当 `isServer` 的值为 `true`时。
+* `options`
+  * `secureContext`：来自 [`tls.createSecureContext()`][] 的可选的 TLS 上下文对象。
+  * `isServer`：如果值为 `true`，则 TLS 套接字将被以服务器模式初始化。 **默认:** `false`.
+  * `server` {net.Server} 可选的 [`net.Server`][] 实例
+  * `requestCert`：可选的，请参阅 [`tls.createServer()`][]
+  * `rejectUnauthorized`：可选的，请参阅 [`tls.createServer()`][]
+  * `NPNProtocols`：可选，请参阅 [`tls.createServer()`][]
+  * `ALPNProtocols`：可选，请参阅 [`tls.createServer()`][]
+  * `SNICallback`: 可选，请参阅 [`tls.createServer()`][]
+  * `session` {Buffer} 包含 TLS 会话的可选 `Buffer` 实例。
+  * `requestOCSP` {boolean} 如果值为 `true`，指定 OCSP 状态请求扩展将被添加到客户端 hello 消息中，且在建立安全通信之前发出 `'OCSPResponse'` 事件。
 
-Creates a new secure pair object with two streams, one of which reads and writes the encrypted data and the other of which reads and writes the cleartext data. Generally, the encrypted stream is piped to/from an incoming encrypted data stream and the cleartext one is used as a replacement for the initial encrypted stream.
+创建具有两个流的新安全对对象，其中一个读取和写入加密数据，另一个读取和写入明文数据。 通常，加密流和传入的加密数据流通过管道传输，而明文流则用于替换初始加密流。
 
-`tls.createSecurePair()` returns a `tls.SecurePair` object with `cleartext` and `encrypted` stream properties.
+`tls.createSecurePair()` 返回含有 `cleartext` 和 `encrypted` 流属性的 `tls.SecurePair` 对象。
 
-*Note*: `cleartext` has the same API as [`tls.TLSSocket`][].
+*注意*：`cleartext` 具有和 [`tls.TLSSocket`][] 相同的API。
 
-*Note*: The `tls.createSecurePair()` method is now deprecated in favor of `tls.TLSSocket()`. For example, the code:
+*注意*：`tls.createSecurePair()` 方法现已被弃用，推荐使用 `tls.TLSSocket()`。 例如，代码：
 
 ```js
 pair = tls.createSecurePair(/* ... */);
@@ -1006,10 +978,10 @@ pair.encrypted.pipe(socket);
 socket.pipe(pair.encrypted);
 ```
 
-can be replaced by:
+可被替换为：
 
 ```js
 secure_socket = tls.TLSSocket(socket, options);
 ```
 
-where `secure_socket` has the same API as `pair.cleartext`.
+其中 `secure_socket` 含有和 `pair.cleartext` 相同的 API。
