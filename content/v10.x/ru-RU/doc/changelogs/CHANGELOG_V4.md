@@ -1,68 +1,62 @@
 # Node.js 4 ChangeLog
 
 <!--lint disable prohibited-strings-->
-
 <!--lint disable maximum-line-length-->
 
 <table>
-  <tr>
-    
+<tr>
 <th>LTS 'Argon'</th>
 <th>Stable</th>
-  </tr>
-  
-  <tr>
-    <td valign="top">
-      
-<a href="#4.9.1">4.9.1</a><br />
-<a href="#4.9.0">4.9.0</a><br />
-<a href="#4.8.7">4.8.7</a><br />
-<a href="#4.8.6">4.8.6</a><br />
-<a href="#4.8.5">4.8.5</a><br />
-<a href="#4.8.4">4.8.4</a><br />
-<a href="#4.8.3">4.8.3</a><br />
-<a href="#4.8.2">4.8.2</a><br />
-<a href="#4.8.1">4.8.1</a><br />
-<a href="#4.8.0">4.8.0</a><br />
-<a href="#4.7.3">4.7.3</a><br />
-<a href="#4.7.2">4.7.2</a><br />
-<a href="#4.7.1">4.7.1</a><br />
-<a href="#4.7.0">4.7.0</a><br />
-<a href="#4.6.2">4.6.2</a><br />
-<a href="#4.6.1">4.6.1</a><br />
-<a href="#4.6.0">4.6.0</a><br />
-<a href="#4.5.0">4.5.0</a><br />
-<a href="#4.4.7">4.4.7</a><br />
-<a href="#4.4.6">4.4.6</a><br />
-<a href="#4.4.5">4.4.5</a><br />
-<a href="#4.4.4">4.4.4</a><br />
-<a href="#4.4.3">4.4.3</a><br />
-<a href="#4.4.2">4.4.2</a><br />
-<a href="#4.4.1">4.4.1</a><br />
-<a href="#4.4.0">4.4.0</a><br />
-<a href="#4.3.2">4.3.2</a><br />
-<a href="#4.3.1">4.3.1</a><br />
-<a href="#4.3.0">4.3.0</a><br />
-<a href="#4.2.6">4.2.6</a><br />
-<a href="#4.2.5">4.2.5</a><br />
-<a href="#4.2.4">4.2.4</a><br />
-<a href="#4.2.3">4.2.3</a><br />
-<a href="#4.2.2">4.2.2</a><br />
-<a href="#4.2.1">4.2.1</a><br />
-<a href="#4.2.0">4.2.0</a><br />
-    </td>
-    
-    <td valign="top">
-      
-<a href="#4.1.2">4.1.2</a><br />
-<a href="#4.1.1">4.1.1</a><br />
-<a href="#4.1.0">4.1.0</a><br />
-<a href="#4.0.0">4.0.0</a><br />
-    </td>
-  </tr>
+</tr>
+<tr>
+<td valign="top">
+<a href="#4.9.1">4.9.1</a><br/>
+<a href="#4.9.0">4.9.0</a><br/>
+<a href="#4.8.7">4.8.7</a><br/>
+<a href="#4.8.6">4.8.6</a><br/>
+<a href="#4.8.5">4.8.5</a><br/>
+<a href="#4.8.4">4.8.4</a><br/>
+<a href="#4.8.3">4.8.3</a><br/>
+<a href="#4.8.2">4.8.2</a><br/>
+<a href="#4.8.1">4.8.1</a><br/>
+<a href="#4.8.0">4.8.0</a><br/>
+<a href="#4.7.3">4.7.3</a><br/>
+<a href="#4.7.2">4.7.2</a><br/>
+<a href="#4.7.1">4.7.1</a><br/>
+<a href="#4.7.0">4.7.0</a><br/>
+<a href="#4.6.2">4.6.2</a><br/>
+<a href="#4.6.1">4.6.1</a><br/>
+<a href="#4.6.0">4.6.0</a><br/>
+<a href="#4.5.0">4.5.0</a><br/>
+<a href="#4.4.7">4.4.7</a><br/>
+<a href="#4.4.6">4.4.6</a><br/>
+<a href="#4.4.5">4.4.5</a><br/>
+<a href="#4.4.4">4.4.4</a><br/>
+<a href="#4.4.3">4.4.3</a><br/>
+<a href="#4.4.2">4.4.2</a><br/>
+<a href="#4.4.1">4.4.1</a><br/>
+<a href="#4.4.0">4.4.0</a><br/>
+<a href="#4.3.2">4.3.2</a><br/>
+<a href="#4.3.1">4.3.1</a><br/>
+<a href="#4.3.0">4.3.0</a><br/>
+<a href="#4.2.6">4.2.6</a><br/>
+<a href="#4.2.5">4.2.5</a><br/>
+<a href="#4.2.4">4.2.4</a><br/>
+<a href="#4.2.3">4.2.3</a><br/>
+<a href="#4.2.2">4.2.2</a><br/>
+<a href="#4.2.1">4.2.1</a><br/>
+<a href="#4.2.0">4.2.0</a><br/>
+</td>
+<td valign="top">
+<a href="#4.1.2">4.1.2</a><br/>
+<a href="#4.1.1">4.1.1</a><br/>
+<a href="#4.1.0">4.1.0</a><br/>
+<a href="#4.0.0">4.0.0</a><br/>
+</td>
+</tr>
 </table>
 
-* Other Versions 
+* Other Versions
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -73,6 +67,7 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
 
 *Note*: Node.js v4 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2017 and maintained until April 2018.
 
@@ -133,7 +128,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **deps**: 
+* **deps**:
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 
 ### Commits
@@ -156,13 +151,13 @@ This release includes a security update to openssl that has been deemed low seve
 
 ### Notable Changes
 
-* **crypto**: 
-  * update root certificates (Ben Noordhuis) [#13279](https://github.com/nodejs/node/pull/13279)
-  * update root certificates (Ben Noordhuis) [#12402](https://github.com/nodejs/node/pull/12402)
-* **deps**: 
-  * add support for more modern versions of INTL (Bruno Pagani) [#13040](https://github.com/nodejs/node/pull/13040)
-  * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
-  * upgrade openssl sources to 1.0.2l (Daniel Bevenius) [#13233](https://github.com/nodejs/node/pull/13233)
+* **crypto**:
+  - update root certificates (Ben Noordhuis) [#13279](https://github.com/nodejs/node/pull/13279)
+  - update root certificates (Ben Noordhuis) [#12402](https://github.com/nodejs/node/pull/12402)
+* **deps**:
+  - add support for more modern versions of INTL (Bruno Pagani) [#13040](https://github.com/nodejs/node/pull/13040)
+  - upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+  - upgrade openssl sources to 1.0.2l (Daniel Bevenius) [#13233](https://github.com/nodejs/node/pull/13233)
 
 ### Commits
 
@@ -222,8 +217,8 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable Changes
 
-* **zlib**: 
-  * CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+* **zlib**:
+  - CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 ### Commits
 
@@ -237,10 +232,10 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable Changes
 
-* **build**: 
-  * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
-* **deps**: 
-  * CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
+* **build**:
+  - Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
+* **deps**:
+  - CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
 
 ### Commits
 
@@ -255,12 +250,12 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable Changes
 
-* **module**: 
-  * The [module loading global fallback](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows. (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
-* **src**: 
-  * fix base64 decoding in rare edgecase (Nikolai Vavilov) [#11995](https://github.com/nodejs/node/pull/11995)
-* **tls**: 
-  * fix rare segmentation faults when using TLS 
+* **module**:
+  - The [module loading global fallback](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows.  (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
+* **src**:
+  - fix base64 decoding in rare edgecase (Nikolai Vavilov) [#11995](https://github.com/nodejs/node/pull/11995)
+* **tls**:
+  - fix rare segmentation faults when using TLS
     * (Trevor Norris) [#11947](https://github.com/nodejs/node/pull/11947)
     * (Ben Noordhuis) [#11898](https://github.com/nodejs/node/pull/11898)
     * (jBarz) [#11776](https://github.com/nodejs/node/pull/11776)
@@ -292,10 +287,10 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable Changes
 
-* **crypto**: 
-  * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
-* **deps**: 
-  * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
+* **crypto**:
+  - fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
+* **deps**:
+  - upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
 
 ### Commits
 
@@ -307,15 +302,15 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ## 2017-03-21, Version 4.8.1 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 147 commits. This includes 55 which are test related, 41 which are doc related, 11 which are build / tool related, and 1 commits which are updates to dependencies.
+This LTS release comes with 147 commits. This includes 55 which are test related, 41 which are doc related,  11 which are build / tool related, and 1 commits which are updates to dependencies.
 
 ### Notable Changes
 
 * **buffer**: The performance of `.toJSON()` is now up to 2859% faster on average. (Brian White) [#10895](https://github.com/nodejs/node/pull/10895)
-* **IPC**: Batched writes have been enabled for process IPC on platforms that support Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677) 
-  * Performance gains may be up to 40% for some workloads.
-* **http**: 
-  * Control characters are now always rejected when using `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
+* **IPC**: Batched writes have been enabled for process IPC on platforms that support Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677)
+  - Performance gains may be up to 40% for some workloads.
+* **http**:
+  - Control characters are now always rejected when using `http.request()`. (Ben Noordhuis) [#8923](https://github.com/nodejs/node/pull/8923)
 * **node**: Heap statistics now support values larger than 4GB. (Ben Noordhuis) [#10186](https://github.com/nodejs/node/pull/10186)
 
 ### Commits
@@ -477,13 +472,13 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
 ### Notable Changes
 
 * **child_process**: add shell option to spawn() (cjihrig) [#4598](https://github.com/nodejs/node/pull/4598)
-* **deps**: 
+* **deps**:
   * **v8**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* **crypto**: 
+* **crypto**:
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **process**: 
+* **process**:
   * add `externalMemory` to `process` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
   * add process.cpuUsage() (Patrick Mueller) [#10796](https://github.com/nodejs/node/pull/10796)
 
@@ -862,8 +857,8 @@ The SEMVER-MINOR changes include:
 
 Notable SEMVER-PATCH changes include:
 
-* **build**: 
-  * introduce the configure --shared option for embedders (sxa555) [#6994](https://github.com/nodejs/node/pull/6994)
+* **build**:
+  - introduce the configure --shared option for embedders (sxa555) [#6994](https://github.com/nodejs/node/pull/6994)
 * **gtest**: the test reporter now outputs tap comments as yamlish (Johan Bergström) [#9262](https://github.com/nodejs/node/pull/9262)
 * **src**: node no longer aborts when c-ares initialization fails (Ben Noordhuis) [#8710](https://github.com/nodejs/node/pull/8710)
 * **tls**: fix memory leak when writing data to TLSWrap instance during handshake (Fedor Indutny) [#9586](https://github.com/nodejs/node/pull/9586)
@@ -1241,10 +1236,10 @@ This is a security release. All Node.js users should consult the security releas
 
 Semver Minor:
 
-* **openssl**: 
-  * Upgrade to 1.0.2i, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 and CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
-  * Upgrade to 1.0.2j, fixes a defect included in 1.0.2i resulting in a crash when using CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
-  * Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#70](https://github.com/nodejs/node-private/pull/70)
+* **openssl**:
+  - Upgrade to 1.0.2i, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 and CVE-2016-6306. (Shigeki Ohtsu) [#8714](https://github.com/nodejs/node/pull/8714)
+  - Upgrade to 1.0.2j, fixes a defect included in 1.0.2i resulting in a crash when using CRLs, CVE-2016-7052. (Shigeki Ohtsu) [#8786](https://github.com/nodejs/node/pull/8786)
+  - Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis) [nodejs/node-private#70](https://github.com/nodejs/node-private/pull/70)
 * **http**: CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas) [nodejs/node-private#46](https://github.com/nodejs/node-private/pull/46)
 
 Semver Patch:
@@ -1281,30 +1276,30 @@ Semver Patch:
 
 Semver Minor:
 
-* **buffer**: 
-  * backport new buffer constructor APIs to v4.x (Сковорода Никита Андреевич) [#7562](https://github.com/nodejs/node/pull/7562)
-  * backport --zero-fill-buffers cli option (James M Snell) [#5745](https://github.com/nodejs/node/pull/5745)
-* **build**: 
+* **buffer**:
+ * backport new buffer constructor APIs to v4.x (Сковорода Никита Андреевич) [#7562](https://github.com/nodejs/node/pull/7562)
+ * backport --zero-fill-buffers cli option (James M Snell) [#5745](https://github.com/nodejs/node/pull/5745)
+* **build**:
   * add Intel Vtune profiling support (Chunyang Dai) [#5527](https://github.com/nodejs/node/pull/5527)
-* **repl**: 
+* **repl**:
   * copying tabs shouldn't trigger completion (Eugene Obrezkov) [#5958](https://github.com/nodejs/node/pull/5958)
-* **src**: 
+* **src**:
   * add node::FreeEnvironment public API (Cheng Zhao) [#3098](https://github.com/nodejs/node/pull/3098)
-* **test**: 
+* **test**:
   * run v8 tests from node tree (Bryon Leung) [#4704](https://github.com/nodejs/node/pull/4704)
-* **V8**: 
+* **V8**:
   * Add post mortem data to improve object inspection and function's context variables inspection (Fedor Indutny) [#3779](https://github.com/nodejs/node/pull/3779)
 
 Semver Patch:
 
-* **buffer**: 
+* **buffer**:
   * ignore negative allocation lengths (Anna Henningsen) [#7562](https://github.com/nodejs/node/pull/7562)
-* **crypto**: 
+* **crypto**:
   * update root certificates (Ben Noordhuis) [#7363](https://github.com/nodejs/node/pull/7363)
-* **libuv**: 
+* **libuv**:
   * upgrade libuv to 1.9.1 (Saúl Ibarra Corretgé) [#6796](https://github.com/nodejs/node/pull/6796)
   * upgrade libuv to 1.9.0 (Saúl Ibarra Corretgé) [#5994](https://github.com/nodejs/node/pull/5994)
-* **npm**: 
+* **npm**:
   * upgrade to 2.15.9 (Kat Marchán) [#7692](https://github.com/nodejs/node/pull/7692)
 
 ### Commits
@@ -1578,15 +1573,15 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
 
 ### Notable Changes
 
-* **debugger**: 
-  * All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
-* **npm**: 
-  * Upgrade npm to 2.15.8 (Rebecca Turner) [#7412](https://github.com/nodejs/node/pull/7412)
-* **stream**: 
-  * Fix for a bug that became more prevalent with the stream changes that landed in v4.4.5. (Anna Henningsen) [#7160](https://github.com/nodejs/node/pull/7160)
-* **V8**: 
-  * Fix for a bug in crankshaft that was causing crashes on arm64 (Myles Borins) [#7442](https://github.com/nodejs/node/pull/7442)
-  * Add missing classes to postmortem info such as JSMap and JSSet (evan.lucas) [#3792](https://github.com/nodejs/node/pull/3792)
+- **debugger**:
+  - All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
+- **npm**:
+  - Upgrade npm to 2.15.8 (Rebecca Turner) [#7412](https://github.com/nodejs/node/pull/7412)
+- **stream**:
+  - Fix for a bug that became more prevalent with the stream changes that landed in v4.4.5. (Anna Henningsen) [#7160](https://github.com/nodejs/node/pull/7160)
+- **V8**:
+  - Fix for a bug in crankshaft that was causing crashes on arm64 (Myles Borins) [#7442](https://github.com/nodejs/node/pull/7442)
+  - Add missing classes to postmortem info such as JSMap and JSSet (evan.lucas) [#3792](https://github.com/nodejs/node/pull/3792)
 
 ### Commits
 
@@ -1702,14 +1697,14 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **buffer**: 
-  * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
-* **contextify**: 
-  * Context objects are now properly garbage collected, this solves a problem some individuals were experiencing with extreme memory growth (Ali Ijaz Sheikh) [#6871](https://github.com/nodejs/node/pull/6871)
-* **deps**: 
-  * update npm to 2.15.5 (Rebecca Turner) [#6663](https://github.com/nodejs/node/pull/6663)
-* **http**: 
-  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
+- **buffer**:
+  - Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
+- **contextify**:
+  - Context objects are now properly garbage collected, this solves a problem some individuals were experiencing with extreme memory growth (Ali Ijaz Sheikh) [#6871](https://github.com/nodejs/node/pull/6871)
+- **deps**:
+  - update npm to 2.15.5 (Rebecca Turner) [#6663](https://github.com/nodejs/node/pull/6663)
+- **http**:
+  - Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
 
 ### Commits
 
@@ -1795,9 +1790,9 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable changes
 
-* **deps**: 
-  * update openssl to 1.0.2h. (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551) 
-    * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
+* **deps**:
+  * update openssl to 1.0.2h. (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551)
+    - Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
 
 ### Commits
 
@@ -1817,12 +1812,12 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **deps**: 
-  * Fix `--gdbjit` for embedders. Backported from v8 upstream. (Ben Noordhuis) [#5577](https://github.com/nodejs/node/pull/5577)
-* **etw**: 
-  * Correctly display descriptors for ETW events 9 and 23 on the windows platform. (João Reis) [#5742](https://github.com/nodejs/node/pull/5742)
-* **querystring**: 
-  * Restore throw when attempting to stringify bad surrogate pair. (Brian White) [#5858](https://github.com/nodejs/node/pull/5858)
+* **deps**:
+  - Fix `--gdbjit` for embedders. Backported from v8 upstream. (Ben Noordhuis) [#5577](https://github.com/nodejs/node/pull/5577)
+* **etw**:
+  - Correctly display descriptors for ETW events 9 and 23 on the windows platform. (João Reis) [#5742](https://github.com/nodejs/node/pull/5742)
+* **querystring**:
+  - Restore throw when attempting to stringify bad surrogate pair. (Brian White) [#5858](https://github.com/nodejs/node/pull/5858)
 
 ### Commits
 
@@ -1885,14 +1880,14 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **https**: 
-  * Under certain conditions ssl sockets may have been causing a memory leak when keepalive is enabled. This is no longer the case. (Alexander Penev) [#5713](https://github.com/nodejs/node/pull/5713)
-* **lib**: 
-  * The way that we were internally passing arguments was causing a potential leak. By copying the arguments into an array we can avoid this. (Nathan Woltman) [#4361](https://github.com/nodejs/node/pull/4361)
-* **npm**: 
-  * Upgrade to v2.15.1. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell)
-* **repl**: 
-  * Previously if you were using the repl in strict mode the column number would be wrong in a stack trace. This is no longer an issue. (Prince J Wesley) [#5416](https://github.com/nodejs/node/pull/5416)
+* **https**:
+  - Under certain conditions ssl sockets may have been causing a memory leak when keepalive is enabled. This is no longer the case. (Alexander Penev) [#5713](https://github.com/nodejs/node/pull/5713)
+* **lib**:
+  - The way that we were internally passing arguments was causing a potential leak. By copying the arguments into an array we can avoid this. (Nathan Woltman) [#4361](https://github.com/nodejs/node/pull/4361)
+* **npm**:
+  - Upgrade to v2.15.1. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell)
+* **repl**:
+  - Previously if you were using the repl in strict mode the column number would be wrong in a stack trace. This is no longer an issue. (Prince J Wesley) [#5416](https://github.com/nodejs/node/pull/5416)
 
 ### Commits
 
@@ -1944,18 +1939,17 @@ This release is specifically related to a Buffer overflow vulnerability discover
 This LTS release comes with 113 commits, 56 of which are doc related, 18 of which are build / tooling related, 16 of which are test related and 7 which are benchmark related.
 
 ### Notable Changes
-
-* **build**: 
-  * Updated Logos for the OSX + Windows installers 
-    * (Rod Vagg) [#5401](https://github.com/nodejs/node/pull/5401)
-    * (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
-  * New option to select your VS Version in the Windows installer 
-    * (julien.waechter) [#4645](https://github.com/nodejs/node/pull/4645)
-  * Support Visual C++ Build Tools 2015 
-    * (João Reis) [#5627](https://github.com/nodejs/node/pull/5627)
-* **tools**: 
-  * Gyp now works on OSX without XCode 
-    * (Shigeki Ohtsu) [nodejs/node#1325](https://github.com/nodejs/node/pull/1325)
+* **build**:
+  - Updated Logos for the OSX + Windows installers
+    - (Rod Vagg) [#5401](https://github.com/nodejs/node/pull/5401)
+    - (Robert Jefe Lindstaedt) [#5531](https://github.com/nodejs/node/pull/5531)
+  - New option to select your VS Version in the Windows installer
+    - (julien.waechter) [#4645](https://github.com/nodejs/node/pull/4645)
+  - Support Visual C++ Build Tools 2015
+    - (João Reis) [#5627](https://github.com/nodejs/node/pull/5627)
+* **tools**:
+  - Gyp now works on OSX without XCode
+    - (Shigeki Ohtsu) [nodejs/node#1325](https://github.com/nodejs/node/pull/1325)
 
 ### Commits
 
@@ -2084,38 +2078,35 @@ This release also includes over 70 fixes to our docs and over 50 fixes to tests.
 ### Notable changes
 
 The SEMVER-MINOR changes include:
-
-    * **deps**:
-      - An update to v8 that introduces a new flag --perf_basic_prof_only_functions (Ali Ijaz Sheikh) [#3609](https://github.com/nodejs/node/pull/3609)
-    * **http**:
-      - A new feature in http(s) agent that catches errors on *keep alived* connections (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482)
-    * **src**:
-      - Better support for Big-Endian systems (Bryon Leung) [#3410](https://github.com/nodejs/node/pull/3410)
-    * **tls**:
-      - A new feature that allows you to pass common SSL options to `tls.createSecurePair` (Коренберг Марк) [#2441](https://github.com/nodejs/node/pull/2441)
-    * **tools**:
-      - a new flag `--prof-process` which will execute the tick processor on the provided isolate files (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021)
-    
+  * **deps**:
+    - An update to v8 that introduces a new flag --perf_basic_prof_only_functions (Ali Ijaz Sheikh) [#3609](https://github.com/nodejs/node/pull/3609)
+  * **http**:
+    - A new feature in http(s) agent that catches errors on *keep alived* connections (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482)
+  * **src**:
+    - Better support for Big-Endian systems (Bryon Leung) [#3410](https://github.com/nodejs/node/pull/3410)
+  * **tls**:
+    - A new feature that allows you to pass common SSL options to `tls.createSecurePair` (Коренберг Марк) [#2441](https://github.com/nodejs/node/pull/2441)
+  * **tools**:
+    - a new flag `--prof-process` which will execute the tick processor on the provided isolate files (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021)
 
 Notable semver patch changes include:
 
-    * **buld**:
-      - Support python path that includes spaces. This should be of particular interest to our Windows users who may have python living in `c:/Program Files` (Felix Becker) [#4841](https://github.com/nodejs/node/pull/4841)
-    * **https**:
-      - A potential fix for [#3692](https://github.com/nodejs/node/issues/3692) HTTP/HTTPS client requests throwing EPROTO (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982)
-    * **installer**:
-      - More readable profiling information from isolate tick logs (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
-    * **npm**:
-      - upgrade to npm 2.14.20 (Kat Marchán) [#5510](https://github.com/nodejs/node/pull/5510)
-    * **process**:
-      - Add support for symbols in event emitters. Symbols didn't exist when it was written ¯\_(ツ)_/¯ (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
-    * **querystring**:
-      - querystring.parse() is now 13-22% faster! (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
-    * **streams**:
-      - performance improvements for moving small buffers that shows a 5% throughput gain. IoT projects have been seen to be as much as 10% faster with this change! (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
-    * **tools**:
-      - eslint has been updated to version 2.1.0 (Rich Trott) [#5214](https://github.com/nodejs/node/pull/5214)
-    
+  * **buld**:
+    - Support python path that includes spaces. This should be of particular interest to our Windows users who may have python living in `c:/Program Files` (Felix Becker) [#4841](https://github.com/nodejs/node/pull/4841)
+  * **https**:
+    - A potential fix for [#3692](https://github.com/nodejs/node/issues/3692) HTTP/HTTPS client requests throwing EPROTO (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982)
+  * **installer**:
+    - More readable profiling information from isolate tick logs (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
+  * **npm**:
+    - upgrade to npm 2.14.20 (Kat Marchán) [#5510](https://github.com/nodejs/node/pull/5510)
+  * **process**:
+    - Add support for symbols in event emitters. Symbols didn't exist when it was written ¯\_(ツ)_/¯ (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
+  * **querystring**:
+    - querystring.parse() is now 13-22% faster! (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
+  * **streams**:
+    - performance improvements for moving small buffers that shows a 5% throughput gain. IoT projects have been seen to be as much as 10% faster with this change! (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
+  * **tools**:
+    - eslint has been updated to version 2.1.0 (Rich Trott) [#5214](https://github.com/nodejs/node/pull/5214)
 
 ### Commits
 
@@ -2218,7 +2209,7 @@ Notable semver patch changes include:
 * [[`7b8f904167`](https://github.com/nodejs/node/commit/7b8f904167)] - **doc**: update eol handling in readline (Kári Tristan Helgason) [#4927](https://github.com/nodejs/node/pull/4927)
 * [[`83efd0d4d1`](https://github.com/nodejs/node/commit/83efd0d4d1)] - **doc**: add more details to process.env (Evan Lucas) [#4924](https://github.com/nodejs/node/pull/4924)
 * [[`b2d2c0b588`](https://github.com/nodejs/node/commit/b2d2c0b588)] - **doc**: undo move http.IncomingMessage.statusMessage (Jeff Harris) [#4822](https://github.com/nodejs/node/pull/4822)
-* [[`b091c41b53`](https://github.com/nodejs/node/commit/b091c41b53)] - **doc**: proper markdown escaping -> **, \*, \_ (Robert Jefe Lindstaedt) [#4805](https://github.com/nodejs/node/pull/4805)
+* [[`b091c41b53`](https://github.com/nodejs/node/commit/b091c41b53)] - **doc**: proper markdown escaping -> \_\_, \*, \_ (Robert Jefe Lindstaedt) [#4805](https://github.com/nodejs/node/pull/4805)
 * [[`0887208290`](https://github.com/nodejs/node/commit/0887208290)] - **doc**: remove unnecessary bind(this) (Dmitriy Lazarev) [#4797](https://github.com/nodejs/node/pull/4797)
 * [[`f3e3c70bca`](https://github.com/nodejs/node/commit/f3e3c70bca)] - **doc**: Update small error in LICENSE for npm (Kat Marchán) [#4872](https://github.com/nodejs/node/pull/4872)
 * [[`e703b180b3`](https://github.com/nodejs/node/commit/e703b180b3)] - **doc,tools,test**: lint doc-based addon tests (Rich Trott) [#5427](https://github.com/nodejs/node/pull/5427)
@@ -2345,10 +2336,10 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507) 
-  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
-  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are *unlikely* to be possible. More info is available at [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
-  * Fix a defect that makes the *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
+* **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507)
+  - Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
+  - Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. More info is available at [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
+  - Fix a defect that makes the _[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)_ possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
 
 ## Commits
 
@@ -2360,19 +2351,19 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer** 
-  * make byteLength work with Buffer correctly (Jackson Tian) 
-    * [#4738](https://github.com/nodejs/node/pull/4738)
-* **debugger** 
-  * guard against call from non-node context (Ben Noordhuis) 
-    * [#4328](https://github.com/nodejs/node/pull/4328)
-    * fixes segfaults in debugger
-  * do not incept debug context (Myles Borins) 
-    * [#4819](https://github.com/nodejs/node/pull/4819)
-    * fixes crash in debugger when using util methods
-* **deps** 
-  * update to http-parser 2.5.2 (James Snell) 
-    * [#5238](https://github.com/nodejs/node/pull/5238)
+* **буфер**
+  * make byteLength work with Buffer correctly (Jackson Tian)
+    - [#4738](https://github.com/nodejs/node/pull/4738)
+* **отладчик**
+  * guard against call from non-node context (Ben Noordhuis)
+    - [#4328](https://github.com/nodejs/node/pull/4328)
+    - fixes segfaults in debugger
+  * do not incept debug context (Myles Borins)
+    - [#4819](https://github.com/nodejs/node/pull/4819)
+    - fixes crash in debugger when using util methods
+* **deps**
+  * update to http-parser 2.5.2 (James Snell)
+    - [#5238](https://github.com/nodejs/node/pull/5238)
 
 ### Commits
 
@@ -2454,9 +2445,9 @@ Note that this release includes a non-backward compatible change to address a se
 * **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * **http-parser**: upgrade from 2.5.0 to 2.5.1
 * **openssl**: upgrade from 1.0.2e to 1.0.2f. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
-* **src**: 
-  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
-  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
+* **src**:
+  - introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
+  - allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
 
 ### Commits
 
@@ -2495,24 +2486,24 @@ Maintenance update.
 
 ### Notable changes
 
-* **assert** 
+* **утвердить**
   * accommodate ES6 classes that extend Error (Rich Trott) [#4166](https://github.com/nodejs/node/pull/4166)
-* **build** 
+* **build**
   * add "--partly-static" build options (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
-* **deps** 
+* **deps**
   * backport 066747e from upstream V8 (Ali Ijaz Sheikh) [#4655](https://github.com/nodejs/node/pull/4655)
   * backport 200315c from V8 upstream (Vladimir Kurchatkin) [#4128](https://github.com/nodejs/node/pull/4128)
   * upgrade libuv to 1.8.0 (Saúl Ibarra Corretgé)
-* **docs** 
+* **docs**
   * various updates landed in 70 different commits!
-* **repl** 
+* **repl**
   * attach location info to syntax errors (cjihrig) [#4013](https://github.com/nodejs/node/pull/4013)
   * display error message when loading directory (Prince J Wesley) [#4170](https://github.com/nodejs/node/pull/4170)
-* **tests** 
+* **tests**
   * various updates landed in over 50 commits
-* **tools** 
+* **tools**
   * add tap output to cpplint (Johan Bergström) [#3448](https://github.com/nodejs/node/pull/3448)
-* **util** 
+* **util**
   * allow lookup of hidden values (cjihrig) [#3988](https://github.com/nodejs/node/pull/3988)
 
 ### Known issues
@@ -2723,9 +2714,9 @@ Maintenance update.
 ### Notable changes
 
 * Roughly 78% of the commits are documentation and test improvements
-* **domains**: 
+* **domains**:
   * Fix handling of uncaught exceptions (Julien Gilli) [#3884](https://github.com/nodejs/node/pull/3884)
-* **deps**: 
+* **deps**:
   * Upgrade to npm 2.14.12 (Kat Marchán) [#4110](https://github.com/nodejs/node/pull/4110)
   * Backport 819b40a from V8 upstream (Michaël Zasso) [#3938](https://github.com/nodejs/node/pull/3938)
   * Updated node LICENSE file with new npm license (Kat Marchán) [#4110](https://github.com/nodejs/node/pull/4110)
@@ -2901,9 +2892,9 @@ Security Update
 ### Notable changes
 
 * **http**: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
-* **openssl**: Upgrade to 1.0.2e, containing fixes for: 
-  * CVE-2015-3193 "BN_mod_exp may produce incorrect results on x86_64", an attack may be possible against a Node.js TLS server using DHE key exchange. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
-  * CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
+* **openssl**: Upgrade to 1.0.2e, containing fixes for:
+  - CVE-2015-3193 "BN_mod_exp may produce incorrect results on x86_64", an attack may be possible against a Node.js TLS server using DHE key exchange. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
+  - CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
 * **v8**: Backport fix for CVE-2015-6764, a bug in `JSON.stringify()` that can result in out-of-bounds reads for arrays. (Ben Noordhuis)
 
 ### Known issues
@@ -3021,9 +3012,9 @@ This is an LTS maintenance release that addresses a number of issues:
 
 ### Notable changes
 
-* Includes fixes for two regressions 
-  * Assertion error in WeakCallback - see [#3329](https://github.com/nodejs/node/pull/3329)
-  * Undefined timeout regression - see [#3331](https://github.com/nodejs/node/pull/3331)
+* Includes fixes for two regressions
+  - Assertion error in WeakCallback  - see [#3329](https://github.com/nodejs/node/pull/3329)
+  - Undefined timeout regression - see [#3331](https://github.com/nodejs/node/pull/3331)
 
 ### Known issues
 
@@ -3048,10 +3039,10 @@ This is an LTS maintenance release that addresses a number of issues:
 The first Node.js LTS release! See https://github.com/nodejs/LTS/ for details of the LTS process.
 
 * **icu**: Updated to version 56 with significant performance improvements (Steven R. Loomis) [#3281](https://github.com/nodejs/node/pull/3281)
-* **node**: 
-  * Added new `-c` (or `--check`) command line argument for checking script syntax without executing the code (Dave Eddy) [#2411](https://github.com/nodejs/node/pull/2411)
-  * Added `process.versions.icu` to hold the current ICU library version (Evan Lucas) [#3102](https://github.com/nodejs/node/pull/3102)
-  * Added `process.release.lts` to hold the current LTS codename when the binary is from an active LTS release line (Rod Vagg) [#3212](https://github.com/nodejs/node/pull/3212)
+* **node**:
+  - Added new `-c` (or `--check`) command line argument for checking script syntax without executing the code (Dave Eddy) [#2411](https://github.com/nodejs/node/pull/2411)
+  - Added `process.versions.icu` to hold the current ICU library version (Evan Lucas) [#3102](https://github.com/nodejs/node/pull/3102)
+  - Added `process.release.lts` to hold the current LTS codename when the binary is from an active LTS release line (Rod Vagg) [#3212](https://github.com/nodejs/node/pull/3212)
 * **npm**: Upgraded to npm 2.14.7 from 2.14.4, see [release notes](https://github.com/npm/npm/releases/tag/v2.14.7) for full details (Kat Marchán) [#3299](https://github.com/nodejs/node/pull/3299)
 
 ### Known issues
@@ -3064,6 +3055,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
+
 
 * [[`8383c4fe00`](https://github.com/nodejs/node/commit/8383c4fe00)] - **assert**: support arrow functions in .throws() (Ben Noordhuis) [#3276](https://github.com/nodejs/node/pull/3276)
 * [[`3eaa593a32`](https://github.com/nodejs/node/commit/3eaa593a32)] - **async_wrap**: correctly pass parent to init callback (Trevor Norris) [#3216](https://github.com/nodejs/node/pull/3216)
@@ -3131,16 +3123,16 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **http**: 
-  * Fix out-of-order 'finish' event bug in pipelining that can abort execution, fixes DoS vulnerability [CVE-2015-7384](https://github.com/nodejs/node/issues/3138) (Fedor Indutny) [#3128](https://github.com/nodejs/node/pull/3128)
-  * Account for pending response data instead of just the data on the current request to decide whether pause the socket or not (Fedor Indutny) [#3128](https://github.com/nodejs/node/pull/3128)
-* **libuv**: Upgraded from v1.7.4 to v1.7.5, see [release notes](https://github.com/libuv/libuv/releases/tag/v1.7.5) for details (Saúl Ibarra Corretgé) [#3010](https://github.com/nodejs/node/pull/3010) 
-  * A better rwlock implementation for all Windows versions
-  * Improved AIX support
-* **v8**: 
-  * Upgraded from v4.5.103.33 to v4.5.103.35 (Ali Ijaz Sheikh) [#3117](https://github.com/nodejs/node/pull/3117)
-  * Backported [f782159](https://codereview.chromium.org/1367123003) from v8's upstream to help speed up Promise introspection (Ben Noordhuis) [#3130](https://github.com/nodejs/node/pull/3130)
-  * Backported [c281c15](https://codereview.chromium.org/1363683002) from v8's upstream to add JSTypedArray length in post-mortem metadata (Julien Gilli) [#3031](https://github.com/nodejs/node/pull/3031)
+* **http**:
+  - Fix out-of-order 'finish' event bug in pipelining that can abort execution, fixes DoS vulnerability [CVE-2015-7384](https://github.com/nodejs/node/issues/3138) (Fedor Indutny) [#3128](https://github.com/nodejs/node/pull/3128)
+  - Account for pending response data instead of just the data on the current request to decide whether pause the socket or not (Fedor Indutny) [#3128](https://github.com/nodejs/node/pull/3128)
+* **libuv**: Upgraded from v1.7.4 to v1.7.5, see [release notes](https://github.com/libuv/libuv/releases/tag/v1.7.5) for details (Saúl Ibarra Corretgé) [#3010](https://github.com/nodejs/node/pull/3010)
+  - A better rwlock implementation for all Windows versions
+  - Improved AIX support
+* **v8**:
+  - Upgraded from v4.5.103.33 to v4.5.103.35 (Ali Ijaz Sheikh) [#3117](https://github.com/nodejs/node/pull/3117)
+  - Backported [f782159](https://codereview.chromium.org/1367123003) from v8's upstream to help speed up Promise introspection (Ben Noordhuis) [#3130](https://github.com/nodejs/node/pull/3130)
+  - Backported [c281c15](https://codereview.chromium.org/1363683002) from v8's upstream to add JSTypedArray length in post-mortem metadata (Julien Gilli) [#3031](https://github.com/nodejs/node/pull/3031)
 
 ### Known issues
 
@@ -3200,14 +3192,14 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **buffer**: Fixed a bug introduced in v4.1.0 where allocating a new zero-length buffer can result in the *next* allocation of a TypedArray in JavaScript not being zero-filled. In certain circumstances this could result in data leakage via reuse of memory space in TypedArrays, breaking the normally safe assumption that TypedArrays should be always zero-filled. (Trevor Norris) [#2931](https://github.com/nodejs/node/pull/2931).
+* **buffer**: Fixed a bug introduced in v4.1.0 where allocating a new zero-length buffer can result in the _next_ allocation of a TypedArray in JavaScript not being zero-filled. In certain circumstances this could result in data leakage via reuse of memory space in TypedArrays, breaking the normally safe assumption that TypedArrays should be always zero-filled. (Trevor Norris) [#2931](https://github.com/nodejs/node/pull/2931).
 * **http**: Guard against response-splitting of HTTP trailing headers added via [`response.addTrailers()`](https://nodejs.org/api/http.html#http_response_addtrailers_headers) by removing new-line (`[\r\n]`) characters from values. Note that standard header values are already stripped of new-line characters. The expected security impact is low because trailing headers are rarely used. (Ben Noordhuis) [#2945](https://github.com/nodejs/node/pull/2945).
-* **npm**: Upgrade to npm 2.14.4 from 2.14.3, see [release notes](https://github.com/npm/npm/releases/tag/v2.14.4) for full details (Kat Marchán) [#2958](https://github.com/nodejs/node/pull/2958) 
-  * Upgrades `graceful-fs` on multiple dependencies to no longer rely on monkey-patching `fs`
-  * Fix `npm link` for pre-release / RC builds of Node
-* **v8**: Update post-mortem metadata to allow post-mortem debugging tools to find and inspect: 
-  * JavaScript objects that use dictionary properties (Julien Gilli) [#2959](https://github.com/nodejs/node/pull/2959)
-  * ScopeInfo and thus closures (Julien Gilli) [#2974](https://github.com/nodejs/node/pull/2974)
+* **npm**: Upgrade to npm 2.14.4 from 2.14.3, see [release notes](https://github.com/npm/npm/releases/tag/v2.14.4) for full details (Kat Marchán) [#2958](https://github.com/nodejs/node/pull/2958)
+  - Upgrades `graceful-fs` on multiple dependencies to no longer rely on monkey-patching `fs`
+  - Fix `npm link` for pre-release / RC builds of Node
+* **v8**: Update post-mortem metadata to allow post-mortem debugging tools to find and inspect:
+  - JavaScript objects that use dictionary properties (Julien Gilli) [#2959](https://github.com/nodejs/node/pull/2959)
+  - ScopeInfo and thus closures (Julien Gilli) [#2974](https://github.com/nodejs/node/pull/2974)
 
 ### Known issues
 
@@ -3254,18 +3246,18 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **buffer**: 
-  * Buffers are now created in JavaScript, rather than C++. This increases the speed of buffer creation (Trevor Norris) [#2866](https://github.com/nodejs/node/pull/2866).
-  * `Buffer#slice()` now uses `Uint8Array#subarray()` internally, increasing `slice()` performance (Karl Skomski) [#2777](https://github.com/nodejs/node/pull/2777).
-* **fs**: 
-  * `fs.utimes()` now properly converts numeric strings, `NaN`, and `Infinity` (Yazhong Liu) [#2387](https://github.com/nodejs/node/pull/2387).
-  * `fs.WriteStream` now implements `_writev`, allowing for super-fast bulk writes (Ron Korving) [#2167](https://github.com/nodejs/node/pull/2167).
+* **buffer**:
+  - Buffers are now created in JavaScript, rather than C++. This increases the speed of buffer creation (Trevor Norris) [#2866](https://github.com/nodejs/node/pull/2866).
+  - `Buffer#slice()` now uses `Uint8Array#subarray()` internally, increasing `slice()` performance (Karl Skomski) [#2777](https://github.com/nodejs/node/pull/2777).
+* **fs**:
+  - `fs.utimes()` now properly converts numeric strings, `NaN`, and `Infinity` (Yazhong Liu) [#2387](https://github.com/nodejs/node/pull/2387).
+  - `fs.WriteStream` now implements `_writev`, allowing for super-fast bulk writes (Ron Korving) [#2167](https://github.com/nodejs/node/pull/2167).
 * **http**: Fixed an issue with certain `write()` sizes causing errors when using `http.request()` (Fedor Indutny) [#2824](https://github.com/nodejs/node/pull/2824).
 * **npm**: Upgrade to version 2.14.3, see https://github.com/npm/npm/releases/tag/v2.14.3 for more details (Kat Marchán) [#2822](https://github.com/nodejs/node/pull/2822).
 * **src**: V8 cpu profiling no longer erroneously shows idle time (Oleksandr Chekhovskyi) [#2324](https://github.com/nodejs/node/pull/2324).
 * **timers**: `#ref()` and `#unref()` now return the timer they belong to (Sam Roberts) [#2905](https://github.com/nodejs/node/pull/2905).
-* **v8**: Lateral upgrade to 4.5.103.33 from 4.5.103.30, contains minor fixes (Ali Ijaz Sheikh) [#2870](https://github.com/nodejs/node/pull/2870). 
-  * This fixes a previously known bug where some computed object shorthand properties did not work correctly ([#2507](https://github.com/nodejs/node/issues/2507)).
+* **v8**: Lateral upgrade to 4.5.103.33 from 4.5.103.30, contains minor fixes (Ali Ijaz Sheikh) [#2870](https://github.com/nodejs/node/pull/2870).
+  - This fixes a previously known bug where some computed object shorthand properties did not work correctly ([#2507](https://github.com/nodejs/node/issues/2507)).
 
 ### Known issues
 
@@ -3348,11 +3340,11 @@ This list of changes is relative to the last io.js v3.x branch release, v3.3.0. 
 * **npm**: Upgrade to version 2.14.2 from 2.13.3, includes a security update, see https://github.com/npm/npm/releases/tag/v2.14.2 for more details, (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696).
 * **timers**: Improved timer performance from porting the 0.12 implementation, plus minor fixes (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
 * **util**: The `util.is*()` functions have been deprecated, beginning with deprecation warnings in the documentation for this release, users are encouraged to seek more robust alternatives in the npm registry, (Sakthipriyan Vairamani) [#2447](https://github.com/nodejs/node/pull/2447).
-* **v8**: Upgrade to version 4.5.103.30 from 4.4.63.30 (Ali Ijaz Sheikh) [#2632](https://github.com/nodejs/node/pull/2632). 
-  * Implement new `TypedArray` prototype methods: `copyWithin()`, `every()`, `fill()`, `filter()`, `find()`, `findIndex()`, `forEach()`, `indexOf()`, `join()`, `lastIndexOf()`, `map()`, `reduce()`, `reduceRight()`, `reverse()`, `slice()`, `some()`, `sort()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
-  * Implement new `TypedArray.from()` and `TypedArray.of()` functions. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
-  * Implement arrow functions, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions for further information.
-  * Full ChangeLog available at https://github.com/v8/v8-git-mirror/blob/4.5.103/ChangeLog
+* **v8**: Upgrade to version 4.5.103.30 from 4.4.63.30 (Ali Ijaz Sheikh) [#2632](https://github.com/nodejs/node/pull/2632).
+ - Implement new `TypedArray` prototype methods: `copyWithin()`, `every()`, `fill()`, `filter()`, `find()`, `findIndex()`, `forEach()`, `indexOf()`, `join()`, `lastIndexOf()`, `map()`, `reduce()`, `reduceRight()`, `reverse()`, `slice()`, `some()`, `sort()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
+ - Implement new `TypedArray.from()` and `TypedArray.of()` functions. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
+ - Implement arrow functions, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions for further information.
+ - Full ChangeLog available at https://github.com/v8/v8-git-mirror/blob/4.5.103/ChangeLog
 
 ### Known issues
 
