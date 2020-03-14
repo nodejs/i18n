@@ -1,30 +1,30 @@
-# C++ Addons
+# Розширення С++
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Розширення Node.js ― це динамічно пов'язані спільні об'єкти, написані на мові C++, які можна завантажити в Node.js за допомогою функції [`require()`](modules.html#modules_require), і використовувати так само, як ніби вони є звичайними модулями на Node.js. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+На даний момент метод реалізації Addons є досить складним і потребує знання декількох компонентів і API :
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+ - V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+ - [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. Вона також служить бібліотекою міжплатформної абстракції, що забезпечує легкий доступ до POSIX на всіх основних ОС для багатьох загальних системних завдань, таких як взаємодія з файловою системою, сокетами, таймерами та системними подіями. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+ - Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+ - Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Всі наведені нижче приклади доступні для [завантаження](https://github.com/nodejs/node-addon-examples) і можуть використовуватися, як відправна точка для розширеннь.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Приклад "Hello world" ― просте розширення, написане на мові C++ та є еквівалентом наступного коду JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Спочатку створюємо файл `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -53,22 +53,22 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Зауважте, що всі розширення Node.js повинні експортувати функцію ініціалізації, що відповідає шаблону:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Зауважте, що немає жодної крапки з комою після `NODE_MODULE`, оскільки це не є функцією (див. `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the .node suffix).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+У прикладі `hello.cc`, функцією ініціалізації є `init`, а ім'я модуля розширення `addon`.
 
-### Building
+### Збірка
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. Для цього створіть файл з назвою `binding.gyp` на верхньому рівні проекту, для описання конфігурації збірки модуля з використанням JSON формату. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
 
 ```json
 {
@@ -81,15 +81,15 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Цей інструмент не доступний безпосередньо розробникам для використання і призначений лише для підтримки можливості використання команди `npm install`, компіляції та встановлення розширень. Розробники, які бажають використовувати `node-gyp` безпосередньо на машині, можуть встановити його за допомогою команди `npm install -g node-gyp`. Дивіться [інструкцію з установки](https://github.com/nodejs/node-gyp#installation) `node-gyp` для отримання додаткової інформації, в тому числі вимоги для конкретних платформ.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Після створення файлу `binding.gyp` використовуйте `node-gyp configure`, щоб створити відповідні файли збірки проекту для поточної платформи. Це створить або `Makefile` (на платформах Unix), або файл `vcxproj` (на Windows) у каталозі `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Далі викличте команду `node-gyp build`, щоб створити скомпільований файл `addon.node`. Він буде розміщений у каталозі `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+При використанні `npm install` для встановлення розширень Node.js, npm використовує свою власну пакетну версію `node-gyp` для виконання цього ж набору дій, генеруючи скомпільовану версію розширення для платформи користувача.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Після створення бінарної версії розширення, його можна використовувати з Node.js, за допомогою [`require()`](modules.html#modules_require) на вбудований модуль `addon.node`:
 
 ```js
 // hello.js
@@ -133,6 +133,7 @@ Each of the examples illustrated in this document make direct use of the Node.js
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
+
 ## N-API
 
 > Stability: 1 - Experimental
@@ -151,7 +152,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", 6, &greeting);
+  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -204,6 +205,7 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
+
 ### Function arguments
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
@@ -225,13 +227,13 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// Це реалізація методу "add"
+// Вхідні аргументи передаються за допомогою
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+  // Перевірка кількості переданих аргументів.
   if (args.Length() < 2) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
@@ -239,19 +241,19 @@ void Add(const FunctionCallbackInfo<Value>& args) {
     return;
   }
 
-  // Check the argument types
+  // Перевірка типів аргументів
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate, "Wrong arguments")));
     return;
   }
 
-  // Perform the operation
+  // Виконання операції
   double value = args[0]->NumberValue() + args[1]->NumberValue();
   Local<Number> num = Number::New(isolate, value);
 
-  // Set the return value (using the passed in
-  // FunctionCallbackInfo<Value>&)
+  // Встановлення значення для повернення, на основі даних з
+  // FunctionCallbackInfo<Value>&
   args.GetReturnValue().Set(num);
 }
 
@@ -272,6 +274,7 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
+
 
 ### Callbacks
 
@@ -372,6 +375,7 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
+
 ### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -427,6 +431,7 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
+
 
 ### Wrapping C++ objects
 
@@ -513,12 +518,12 @@ MyObject::~MyObject() {
 void MyObject::Init(Local<Object> exports) {
   Isolate* isolate = exports->GetIsolate();
 
-  // Prepare constructor template
+  // Підготування шаблону конструктора
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Прототип
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -536,7 +541,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Викликається як звичайна функція `MyObject(...)`, та передається на виклик конструктора.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -596,7 +601,7 @@ Alternatively, it is possible to use a factory pattern to avoid explicitly creat
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// замість:
 // const obj = new addon.Object();
 ```
 
@@ -693,12 +698,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Підготування шаблону конструктора
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Прототип
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -708,13 +713,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Викликається як звичайна функція `MyObject(...)`, та передається на виклик конструктора.
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Викликається як звичайна функція `MyObject(...)`, та передається на виклик конструктора.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -788,6 +793,7 @@ console.log(obj2.plusOne());
 console.log(obj2.plusOne());
 // Prints: 23
 ```
+
 
 ### Passing wrapped objects around
 
@@ -898,7 +904,7 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Підготування шаблону конструктора
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -910,13 +916,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Викликається як звичайна функція `MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Викликається як звичайна функція `MyObject(...)`, та передається на виклик конструктора.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -963,7 +969,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
+* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
