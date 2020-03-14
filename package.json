@@ -22,17 +22,17 @@
     "status": "script/status.js"
   },
   "devDependencies": {
-    "builtins": "^2.0.0",
+    "builtins": "^3.0.1",
     "crowdin-glossary": "^1.2.0",
-    "dotenv-safe": "^5.0.1",
-    "download": "^6.2.5",
-    "fs-extra": "^5.0.0",
-    "globals": "^11.5.0",
-    "jest": "^24.8.0",
-    "request": "^2.87.0",
-    "semver": "^5.5.0",
-    "standard": "^11.0.1",
-    "walk-sync": "^0.3.2"
+    "dotenv-safe": "^8.2.0",
+    "download": "^7.1.0",
+    "fs-extra": "^8.1.0",
+    "globals": "^12.4.0",
+    "jest": "^25.1.0",
+    "request": "^2.88.2",
+    "semver": "^7.1.3",
+    "standard": "^14.3.2",
+    "walk-sync": "^2.0.2"
   },
   "standard": {
     "env": [
