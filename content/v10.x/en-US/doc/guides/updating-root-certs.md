@@ -1,30 +1,24 @@
 # Updating the Root Certificates
 
-Node.js contains a compiled-in set of root certificates used as trust anchors
-for TLS certificate validation.
+Node.js contains a compiled-in set of root certificates used as trust anchors for TLS certificate validation.
 
 The certificates come from Mozilla, specifically NSS's `certdata.txt` file.
 
-The PEM encodings of the certificates are converted to C strings, and committed
-in `src/node_root_certs.h`.
+The PEM encodings of the certificates are converted to C strings, and committed in `src/node_root_certs.h`.
 
 ## When to update
 
-Root certificates should be updated sometime after Mozilla makes an NSS release,
-check the [NSS release schedule][].
+Root certificates should be updated sometime after Mozilla makes an NSS release, check the [NSS release schedule](https://wiki.mozilla.org/NSS:Release_Versions).
 
 ## Process
 
-Commands assume that the current working directory is the root of a checkout of
-the nodejs/node repository.
+Commands assume that the current working directory is the root of a checkout of the nodejs/node repository.
 
 1. Find NSS metadata for update.
 
-The latest released NSS version, release date, Firefox version, and Firefox
-release date can be found in the [NSS release schedule][].
+The latest released NSS version, release date, Firefox version, and Firefox release date can be found in the [NSS release schedule](https://wiki.mozilla.org/NSS:Release_Versions).
 
-The tag to fetch `certdata.txt` from is found by looking for the release
-version in the [tag list][].
+The tag to fetch `certdata.txt` from is found by looking for the release version in the [tag list](https://hg.mozilla.org/projects/nss/tags).
 
 2. Update `certdata.txt` from the NSS release tag.
 
@@ -35,9 +29,7 @@ cd tools/
 curl -O https://hg.mozilla.org/projects/nss/raw-file/NSS_3_41_RTM/lib/ckfw/builtins/certdata.txt
 ```
 
-The `_before` file will be used later. Verify that running `mk-ca-bundle` made
-no changes to `src/node_root_certs.h`. If it did, something went wrong with the
-previous update. Seek help!
+The `_before` file will be used later. Verify that running `mk-ca-bundle` made no changes to `src/node_root_certs.h`. If it did, something went wrong with the previous update. Seek help!
 
 Update metadata in the message below, and commit `certdata.txt`:
 
@@ -117,6 +109,3 @@ Certificates removed:
 - OpenTrust Root CA G2
 - OpenTrust Root CA G3
 ```
-
-[NSS release schedule]: https://wiki.mozilla.org/NSS:Release_Versions
-[tag list]: https://hg.mozilla.org/projects/nss/tags
