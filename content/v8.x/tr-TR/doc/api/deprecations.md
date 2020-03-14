@@ -1,4 +1,4 @@
-# Deprecated APIs
+# Kullanımdan Kaldırılan API'ler
 
 <!--introduced_in=v7.7.0-->
 
@@ -86,7 +86,7 @@ Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` method
 
 Type: Runtime
 
-Within the `cluster` module, the [`worker.suicide`][] property has been deprecated. Please use [`worker.exitedAfterDisconnect`][] instead.
+Within the `cluster` module, the [`worker.suicide`][] property has been deprecated. Lütfen bunun yerine [`worker.exitedAfterDisconnect`][] kullanın.
 
 <a id="DEP0008"></a>
 
@@ -110,7 +110,7 @@ Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated 
 
 Type: Runtime
 
-The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
+The [`crypto.createCredentials()`][] API is deprecated. Lütfen bunun yerine [`tls.createSecureContext()`][] kullanın.
 
 <a id="DEP0011"></a>
 
@@ -118,7 +118,7 @@ The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createS
 
 Type: Runtime
 
-The `crypto.Credentials` class is deprecated. Please use [`tls.SecureContext`][] instead.
+The `crypto.Credentials` class is deprecated. Lütfen bunun yerine [`tls.SecureContext`][] kullanın.
 
 <a id="DEP0012"></a>
 
@@ -190,7 +190,7 @@ In certain cases, `require('.')` may resolve outside the package directory. This
 
 Type: Runtime
 
-The [`Server.connections`][] property is deprecated. Please use the [`Server.getConnections()`][] method instead.
+The [`Server.connections`][] property is deprecated. Lütfen bunun yerine [`Server.getConnections()`][] metodunu kullanın.
 
 <a id="DEP0021"></a>
 
@@ -198,7 +198,7 @@ The [`Server.connections`][] property is deprecated. Please use the [`Server.get
 
 Type: Runtime
 
-The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <number>})`][] instead.
+The `Server.listenFD()` method is deprecated. Lütfen bunun yerine [`Server.listen({fd: <number>})`][] kullanın.
 
 <a id="DEP0022"></a>
 
@@ -206,7 +206,7 @@ The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <n
 
 Type: Runtime
 
-The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
+The `os.tmpDir()` API is deprecated. Lütfen bunun yerine [`os.tmpdir()`][] kullanın.
 
 <a id="DEP0023"></a>
 
@@ -214,7 +214,7 @@ The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
 
 Type: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+The `os.getNetworkInterfaces()` method is deprecated. Lütfen bunun yerine [`os.networkInterfaces`][] özelliğini kullanın.
 
 <a id="DEP0024"></a>
 
@@ -230,7 +230,7 @@ The `REPLServer.prototype.convertToContext()` API is deprecated and should not b
 
 Type: Runtime
 
-The `sys` module is deprecated. Please use the [`util`][] module instead.
+The `sys` module is deprecated. Lütfen bunun yerine [`util`][] modülünü kullanın.
 
 <a id="DEP0026"></a>
 
@@ -238,7 +238,7 @@ The `sys` module is deprecated. Please use the [`util`][] module instead.
 
 Type: Runtime
 
-The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
+The [`util.print()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
 
 <a id="DEP0027"></a>
 
@@ -246,7 +246,7 @@ The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead
 
 Type: Runtime
 
-The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
+The [`util.puts()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
 
 <a id="DEP0028"></a>
 
@@ -254,7 +254,7 @@ The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 Type: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0029"></a>
 
@@ -262,7 +262,7 @@ The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] inste
 
 Type: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0030"></a>
 
@@ -270,7 +270,7 @@ The [`util.error()`][] API is deprecated. Please use [`console.error()`][] inste
 
 Type: Documentation-only
 
-The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeSlow(size)`][] instead.
+The [`SlowBuffer`][] class has been deprecated. Lütfen bunun yerine [`Buffer.allocUnsafeSlow(size)`][] kullanın.
 
 <a id="DEP0031"></a>
 
@@ -294,7 +294,7 @@ The [`domain`][] module is deprecated and should not be used.
 
 Type: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
+The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Lütfen bunun yerine [`emitter.listenerCount(eventName)`][] kullanın.
 
 <a id="DEP0034"></a>
 
@@ -302,7 +302,7 @@ The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated
 
 Type: Documentation-only
 
-The [`fs.exists(path, callback)`][] API has been deprecated. Please use [`fs.stat()`][] or [`fs.access()`][] instead.
+The [`fs.exists(path, callback)`][] API has been deprecated. Lütfen bunun yerine [`fs.stat()`][] or [`fs.access()`][] kullanın.
 
 <a id="DEP0035"></a>
 
@@ -350,7 +350,7 @@ The [`require.extensions`][] property has been deprecated.
 
 Type: Documentation-only
 
-The [`punycode`][] module has been deprecated. Please use a userland alternative instead.
+The [`punycode`][] module has been deprecated. Lütfen bunun yerine bir kullanıcı alternatifi kullanın.
 
 <a id="DEP0041"></a>
 
@@ -366,7 +366,7 @@ The `NODE_REPL_HISTORY_FILE` environment variable has been deprecated.
 
 Type: Documentation-only
 
-The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+The [`tls.CryptoStream`][] class has been deprecated. Lütfen bunun yerine [`tls.TLSSocket`][] kullanın.
 
 <a id="DEP0043"></a>
 
@@ -374,7 +374,7 @@ The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket
 
 Type: Documentation-only
 
-The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+The [`tls.SecurePair`][] class has been deprecated. Lütfen bunun yerine [`tls.TLSSocket`][] kullanın.
 
 <a id="DEP0044"></a>
 
@@ -382,7 +382,7 @@ The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`]
 
 Type: Documentation-only
 
-The [`util.isArray()`][] API has been deprecated. Please use `Array.isArray()` instead.
+The [`util.isArray()`][] API has been deprecated. Lütfen bunun yerine `Array.isArray()` kullanın.
 
 <a id="DEP0045"></a>
 
@@ -398,7 +398,7 @@ The [`util.isBoolean()`][] API has been deprecated.
 
 Type: Documentation-only
 
-The [`util.isBuffer()`][] API has been deprecated. Please use [`Buffer.isBuffer()`][] instead.
+The [`util.isBuffer()`][] API has been deprecated. Lütfen bunun yerine [`Buffer.isBuffer()`][] kullanın.
 
 <a id="DEP0047"></a>
 
@@ -534,7 +534,7 @@ Type: Runtime
 
 Type: Documentation-only
 
-The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
+The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Lütfen bunun yerine `ServerResponse.prototype.writeHead()` kullanın.
 
 *Note*: The `ServerResponse.prototype.writeHeader()` method was never documented as an officially supported API.
 
@@ -552,7 +552,7 @@ The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11
 
 Type: Documentation-only
 
-The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
+The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Lütfen bunun yerine `REPL_MODE_SLOPPY` kullanın.
 
 The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its default value, `magic`, is similarly deprecated in favor of `sloppy`.
 
@@ -562,7 +562,7 @@ The `NODE_REPL_MODE` environment variable is used to set the underlying `replMod
 
 Type: Documentation-only
 
-The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
+The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Lütfen bunun yerine genel metotlardan birini kullanın (örn. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) giden başlıklar ile çalışmak için.
 
 *Note*: `outgoingMessage._headers` and `outgoingMessage._headerNames` were never documented as officially supported properties.
 
@@ -669,3 +669,21 @@ The AsyncHooks Sensitive API was never documented and had various of minor issue
 Type: Runtime
 
 `runInAsyncIdScope` doesn't emit the `before` or `after` event and can thus cause a lot of issues. See https://github.com/nodejs/node/issues/14328 for more details.
+
+<a id="DEP0089"></a>
+
+### DEP0089: require('assert')
+
+Type: Documentation-only
+
+Importing assert directly is not recommended as the exposed functions will use loose equality checks. Use `require('assert').strict` instead. The API is the same as the legacy assert but it will always use strict equality checks.
+
+<a id="DEP0098"></a>
+
+### DEP0098: AsyncHooks Embedder AsyncResource.emit{Before,After} APIs
+
+Type: Runtime
+
+The embedded API provided by AsyncHooks exposes emit{Before,After} methods which are very easy to use incorrectly which can lead to unrecoverable errors.
+
+Use [`asyncResource.runInAsyncScope()`][] API instead which provides a much safer, and more convenient, alternative. See https://github.com/nodejs/node/pull/18513 for more details.
