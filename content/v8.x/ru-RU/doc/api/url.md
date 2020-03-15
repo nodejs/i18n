@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Стабильность: 2 - Стабильно
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -40,7 +40,7 @@ A comparison between the WHATWG and Legacy APIs is provided below. Above the URL
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored -- they are purely for formatting)
+(all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
 Parsing the URL string using the WHATWG API:
@@ -62,7 +62,6 @@ const myURL =
 ```
 
 ## The WHATWG URL API
-
 <!-- YAML
 added: v7.0.0
 -->
@@ -362,7 +361,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### url.toString()
 
-* Returns: {string}
+* Возвращает: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -370,7 +369,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Returns: {string}
+* Возвращает: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -387,7 +386,6 @@ console.log(JSON.stringify(myURLs));
 ```
 
 ### Class: URLSearchParams
-
 <!-- YAML
 added: v7.5.0
 -->
@@ -457,7 +455,6 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(obj)
-
 <!-- YAML
 added: v7.10.0
 -->
@@ -481,7 +478,6 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(iterable)
-
 <!-- YAML
 added: v7.10.0
 -->
@@ -546,7 +542,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### urlSearchParams.entries()
 
-* Returns: {Iterator}
+* Возвращает: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -580,20 +576,20 @@ Returns the value of the first name-value pair whose name is `name`. If there ar
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
-* Returns: {Array}
+* Возвращает: {Array}
 
 Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
 
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Returns: {boolean}
+* Возвращает: {boolean}
 
 Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### urlSearchParams.keys()
 
-* Returns: {Iterator}
+* Возвращает: {Iterator}
 
 Returns an ES6 Iterator over the names of each name-value pair.
 
@@ -632,7 +628,6 @@ console.log(params.toString());
 ```
 
 #### urlSearchParams.sort()
-
 <!-- YAML
 added: v7.7.0
 -->
@@ -651,19 +646,19 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Returns: {string}
+* Возвращает: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### urlSearchParams.values()
 
-* Returns: {Iterator}
+* Возвращает: {Iterator}
 
 Returns an ES6 Iterator over the values of each name-value pair.
 
 #### urlSearchParams\[@@iterator\]()
 
-* Returns: {Iterator}
+* Возвращает: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -681,13 +676,12 @@ for (const [name, value] of params) {
 ```
 
 ### url.domainToASCII(domain)
-
 <!-- YAML
 added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Возвращает: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -704,13 +698,12 @@ console.log(url.domainToASCII('xn--iñvalid.com'));
 ```
 
 ### url.domainToUnicode(domain)
-
 <!-- YAML
 added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Возвращает: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -727,23 +720,22 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 ```
 
 ### url.format(URL[, options])
-
 <!-- YAML
 added: v7.6.0
 -->
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
-* `options` {Object} 
-  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. Defaults to `true`.
-  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. Defaults to `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. Defaults to `true`.
-  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. Defaults to `false`.
+* `options` {Object}
+  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
+  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **По умолчанию:** `false`.
 
 Returns a customizable serialization of a URL String representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
 The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
-For example:
+Например:
 
 ```js
 const { URL } = require('url');
@@ -844,11 +836,9 @@ No decoding of the query string is performed.
 The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
 
 ### url.format(urlObject)
-
 <!-- YAML
 added: v0.1.25
 changes:
-
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7234
     description: URLs with a `file:` scheme will now always use the correct
@@ -861,6 +851,20 @@ changes:
 
 The `url.format()` method returns a formatted URL string derived from `urlObject`.
 
+```js
+url.format({
+  protocol: 'https',
+  hostname: 'example.com',
+  pathname: '/some/path',
+  query: {
+    page: 1,
+    format: 'json'
+  }
+});
+
+// => 'https://example.com/some/path?page=1&format=json'
+```
+
 If `urlObject` is not an object or a string, `url.format()` will throw a [`TypeError`][].
 
 The formatting process operates as follows:
@@ -869,39 +873,46 @@ The formatting process operates as follows:
 * If `urlObject.protocol` is a string, it is appended as-is to `result`.
 * Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
 * For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
+* If either of the following conditions is true, then the literal string `//` will be appended to `result`:
+    * `urlObject.slashes` property is true;
+    * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
 * If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* If the `urlObject.host` property is `undefined` then: 
+* If the `urlObject.host` property is `undefined` then:
   * If the `urlObject.hostname` is a string, it is appended to `result`.
   * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
+  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`:
     * The literal string `:` is appended to `result`, and
     * The value of `urlObject.port` is coerced to a string and appended to `result`.
 * Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
-* If the `urlObject.pathname` property is a string that is not an empty string: 
+* If the `urlObject.pathname` property is a string that is not an empty string:
   * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string '/' is appended to `result`.
   * The value of `urlObject.pathname` is appended to `result`.
 * Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
 * If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
-* Otherwise, if `urlObject.search` is a string: 
+* Otherwise, if `urlObject.search` is a string:
   * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
   * The value of `urlObject.search` is appended to `result`.
 * Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.hash` property is a string: 
+* If the `urlObject.hash` property is a string:
   * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
   * The value of `urlObject.hash` is appended to `result`.
 * Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
 * `result` is returned.
 
-### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
 
+### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
 <!-- YAML
 added: v0.1.25
+changes:
+  - version: v9.0.0
+    pr-url: https://github.com/nodejs/node/pull/13606
+    description: The `search` property on the returned URL object is now `null`
+                 when no query string is present.
 -->
 
 * `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. Defaults to `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. Defaults to `false`.
+* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **По умолчанию:** `false`.
+* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **По умолчанию:** `false`.
 
 The `url.parse()` method takes a URL string, parses it, and returns a URL object.
 
@@ -910,11 +921,9 @@ A `TypeError` is thrown if `urlString` is not a string.
 A `URIError` is thrown if the `auth` property is present but cannot be decoded.
 
 ### url.resolve(from, to)
-
 <!-- YAML
 added: v0.1.25
 changes:
-
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8215
     description: The `auth` fields are now kept intact when `from` and `to`
@@ -933,7 +942,7 @@ changes:
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
-For example:
+Например:
 
 ```js
 const url = require('url');
@@ -962,17 +971,19 @@ For example, the ASCII space character (`' '`) is encoded as `%20`. The ASCII fo
 
 The [WHATWG URL Standard](https://url.spec.whatwg.org/) uses a more selective and fine grained approach to selecting encoded characters than that used by the Legacy API.
 
-The WHATWG algorithm defines three "percent-encode sets" that describe ranges of characters that must be percent-encoded:
+The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
 
 * The *C0 control percent-encode set* includes code points in range U+0000 to U+001F (inclusive) and all code points greater than U+007E.
+
+* The *fragment percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+003C, U+003E, and U+0060.
 
 * The *path percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, and U+007D.
 
 * The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
 
-The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *C0 control percent-encode set* is used for all other cases, including URL fragments in particular, but also host and path under certain specific conditions.
+The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Например:
 
 ```js
 const { URL } = require('url');

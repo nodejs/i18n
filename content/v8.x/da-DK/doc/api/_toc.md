@@ -1,7 +1,6 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
-
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Om denne dokumentation](documentation.html)
+* [Brug & eksempel](synopsis.html)
 
 <div class="line"></div>
 
@@ -55,4 +54,3 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)

@@ -73,11 +73,10 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v0.10 is covered by the
-[Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and
-will be maintained until October 2016.
+*Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
 
 <a id="0.10.48"></a>
+
 ## 2016-10-18, Version 0.10.48 (Maintenance), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
@@ -93,6 +92,7 @@ This is a security release. All Node.js users should consult the security releas
 * [92b232ba01] - win,build: try multiple timeservers when signing (Rod Vagg) https://github.com/nodejs/node/pull/9155
 
 <a id="0.10.47"></a>
+
 ## 2016-09-27, Version 0.10.47 (Maintenance), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
@@ -124,6 +124,7 @@ This is a security release. All Node.js users should consult the security releas
 * [fd8ac56c75] - v8: fix build errors with g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 
 <a id="0.10.46"></a>
+
 ## 2016-06-23, Version 0.10.46 (Maintenance), @rvagg
 
 ### Notable changes:
@@ -139,6 +140,7 @@ This is a security release. All Node.js users should consult the security releas
 * [fcb9145e29] - deps: backport 3a9bfec from v8 upstream (Myles Borins) https://github.com/nodejs/node-private/pull/43
 
 <a id="0.10.45"></a>
+
 ## 2016-05-06, Version 0.10.45 (Maintenance), @rvagg
 
 ### Notable changes:
@@ -160,6 +162,7 @@ This is a security release. All Node.js users should consult the security releas
 * [aa02438274] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 
 <a id="0.10.44"></a>
+
 ## 2016-03-31, Version 0.10.44 (Maintenance), @rvagg
 
 ### Notable changes
@@ -175,6 +178,7 @@ This is a security release. All Node.js users should consult the security releas
 * [905bec29ad] - win,build: support Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
 
 <a id="0.10.43"></a>
+
 ## 2016-03-04, Version 0.10.43 (Maintenance), @rvagg
 
 ### Notable changes:
@@ -200,6 +204,7 @@ This is a security release. All Node.js users should consult the security releas
 * [e483f3fd26] - test: fix hanging http obstext test (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
 
 <a id="0.10.42"></a>
+
 ## 2016-02-09, Version 0.10.42 (Maintenance), @jasnell
 
 This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
@@ -228,6 +233,7 @@ This is an important security release. All Node.js users should consult the secu
 * [ff58dcdd74] - tools: backport tools/install.py for headers (Richard Lau) https://github.com/nodejs/node/pull/4149
 
 <a id="0.10.41"></a>
+
 ## 2015-12-04, Version 0.10.41 (Maintenance), @rvagg
 
 Security Update
@@ -280,8 +286,8 @@ Security Update
 * [517986c2f4] - win: backport bringing back xp/2k3 support (Bert Belder) https://github.com/nodejs/node-v0.x-archive/pull/25569
 * [10f251e8dd] - win: backport set env before generating projects (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25569
 
-
 <a id="0.10.40"></a>
+
 ## 2015-07-09, Version 0.10.40 (Maintenance)
 
 ### Commits
@@ -291,6 +297,7 @@ Security Update
 * [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: create npm folder in AppData directory (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
 
 <a id="0.10.39"></a>
+
 ## 2015-06-18, Version 0.10.39 (Maintenance)
 
 ### Commits
@@ -302,6 +309,7 @@ Security Update
 * [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: broadcast WM_SETTINGCHANGE after install (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
 
 <a id="0.10.38"></a>
+
 ## 2015-03-23, Version 0.10.38 (Maintenance)
 
 ### Commits
@@ -309,6 +317,7 @@ Security Update
 * [[`3b511a8ccd`](https://github.com/nodejs/node/commit/3b511a8ccd)] - **openssl**: upgrade to 1.0.1m (Addressing multiple CVES)
 
 <a id="0.10.37"></a>
+
 ## 2015-03-11, Version 0.10.37 (Maintenance)
 
 ### Commits
@@ -321,6 +330,7 @@ Security Update
 * [[`8bcd0a4c4a`](https://github.com/nodejs/node/commit/8bcd0a4c4a)] - http: fix performance regression for GET requests (Florin-Cristian Gavrila) [#9026](https://github.com/joyent/node/pull/9026)
 
 <a id="0.10.36"></a>
+
 ## 2015-01-26, Version 0.10.36 (Stable)
 
 ### Commits
@@ -330,6 +340,7 @@ Security Update
 * [[`6ebd85e105`](https://github.com/nodejs/node/commit/6ebd85e105)] - **v8**: don't busy loop in cpu profiler thread (Ben Noordhuis) [#8789](https://github.com/joyent/node/pull/8789)
 
 <a id="0.10.35"></a>
+
 ## 2014.12.22, Version 0.10.35 (Stable)
 
 * tls: re-add 1024-bit SSL certs removed by f9456a2 (Chris Dickinson)
@@ -337,6 +348,7 @@ Security Update
 * timers: don't mutate unref list while iterating it (Julien Gilli)
 
 <a id="0.10.34"></a>
+
 ## 2014.12.17, Version 0.10.34 (Stable)
 
 https://github.com/nodejs/node/commit/52795f8fcc2de77cf997e671ea58614e5e425dfe
@@ -353,6 +365,7 @@ https://github.com/nodejs/node/commit/52795f8fcc2de77cf997e671ea58614e5e425dfe
 * debugger: fix when using "use strict" (Julien Gilli)
 
 <a id="0.10.33"></a>
+
 ## 2014.10.20, Version 0.10.33 (Stable)
 
 https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
@@ -360,19 +373,14 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * openssl: Update to 1.0.1j (Addressing multiple CVEs)
 * uv: Update to v0.10.29
 * child_process: properly support optional args (cjihrig)
-* crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny,
-  Timothy J Fontaine, Alexis Campailla)
+* crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
 
-  This is a behavior change, by default we will not allow the negotiation to
-  SSLv2 or SSLv3. If you want this behavior, run Node.js with either
-  `--enable-ssl2` or `--enable-ssl3` respectively.
+  This is a behavior change, by default we will not allow the negotiation to SSLv2 or SSLv3. If you want this behavior, run Node.js with either `--enable-ssl2` or `--enable-ssl3` respectively.
 
-  This does not change the behavior for users specifically requesting
-  `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is
-  assumed you know what you're doing since you're specifically asking to use
-  these methods.
+  This does not change the behavior for users specifically requesting `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is assumed you know what you're doing since you're specifically asking to use these methods.
 
 <a id="0.10.32"></a>
+
 ## 2014.09.16, Version 0.10.32 (Stable)
 
 https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
@@ -386,6 +394,7 @@ https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 * url: Add support for RFC 3490 separators (Mathias Bynens)
 
 <a id="0.10.31"></a>
+
 ## 2014.08.19, Version 0.10.31 (Stable)
 
 https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
@@ -399,6 +408,7 @@ https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
 * timers: fix timers with non-integer delay hanging. (Julien Gilli)
 
 <a id="0.10.30"></a>
+
 ## 2014.07.31, Version 0.10.30 (Stable)
 
 https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
@@ -421,6 +431,7 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * zlib: do not crash on write after close (Fedor Indutny)
 
 <a id="0.10.29"></a>
+
 ## 2014.06.05, Version 0.10.29 (Stable)
 
 https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
@@ -428,11 +439,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * openssl: to 1.0.1h (CVE-2014-0224)
 * npm: upgrade to 1.4.14
 * utf8: Prevent Node from sending invalid UTF-8 (Felix Geisendörfer)
-  - *NOTE* this introduces a breaking change, previously you could construct
-    invalid UTF-8 and invoke an error in a client that was expecting valid
-    UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8
-    character. To restore the old functionality simply have NODE_INVALID_UTF8
-    environment variable set.
+  - *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
 
 * child_process: do not set args before throwing (Greg Sabia Tucker)
 * child_process: spawn() does not throw TypeError (Greg Sabia Tucker)
@@ -443,6 +450,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * tls: fix performance issue (Alexis Campailla)
 
 <a id="0.10.28"></a>
+
 ## 2014.05.01, Version 0.10.28 (Stable)
 
 https://github.com/nodejs/node/commit/b148cbe09d4657766fdb61575ba985734c2ff0a8
@@ -450,6 +458,7 @@ https://github.com/nodejs/node/commit/b148cbe09d4657766fdb61575ba985734c2ff0a8
 * npm: upgrade to v1.4.9
 
 <a id="0.10.27"></a>
+
 ## 2014.05.01, Version 0.10.27 (Stable)
 
 https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
@@ -471,6 +480,7 @@ https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 * util: format as Error if instanceof Error (Rod Vagg)
 
 <a id="0.10.26"></a>
+
 ## 2014.02.18, Version 0.10.26 (Stable)
 
 https://github.com/nodejs/node/commit/cc56c62ed879ad4f93b1fdab3235c43e60f48b7e
@@ -490,6 +500,7 @@ https://github.com/nodejs/node/commit/cc56c62ed879ad4f93b1fdab3235c43e60f48b7e
 * zlib: avoid assertion in close (Fedor Indutny)
 
 <a id="0.10.25"></a>
+
 ## 2014.01.23, Version 0.10.25 (Stable)
 
 https://github.com/nodejs/node/commit/b0e5f195dfce3e2b99f5091373d49f6616682596
@@ -504,6 +515,7 @@ https://github.com/nodejs/node/commit/b0e5f195dfce3e2b99f5091373d49f6616682596
 * stream: writes may return false but forget to emit drain (Yang Tianyang)
 
 <a id="0.10.24"></a>
+
 ## 2013.12.18, Version 0.10.24 (Stable)
 
 https://github.com/nodejs/node/commit/b7fd6bc899ccb629d790c47aee06aba87e535c41
@@ -516,6 +528,7 @@ https://github.com/nodejs/node/commit/b7fd6bc899ccb629d790c47aee06aba87e535c41
 * module: only cache package main (Wyatt Preul)
 
 <a id="0.10.23"></a>
+
 ## 2013.12.12, Version 0.10.23 (Stable)
 
 https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
@@ -537,6 +550,7 @@ https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
 * tls: reset NPN callbacks after SNI (Fedor Indutny)
 
 <a id="0.10.22"></a>
+
 ## 2013.11.12, Version 0.10.22 (Stable)
 
 https://github.com/nodejs/node/commit/cbff8f091c22fb1df6b238c7a1b9145db950fa65
@@ -552,6 +566,7 @@ https://github.com/nodejs/node/commit/cbff8f091c22fb1df6b238c7a1b9145db950fa65
 * v8: use correct timezone information on Solaris (Maciej Małecki)
 
 <a id="0.10.21"></a>
+
 ## 2013.10.18, Version 0.10.21 (Stable)
 
 https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
@@ -564,6 +579,7 @@ https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
 * tls: fix premature connection termination (Ben Noordhuis)
 
 <a id="0.10.20"></a>
+
 ## 2013.09.30, Version 0.10.20 (Stable)
 
 https://github.com/nodejs/node/commit/d7234c8d50a1af73f60d2d3c0cc7eed17429a481
@@ -572,6 +588,7 @@ https://github.com/nodejs/node/commit/d7234c8d50a1af73f60d2d3c0cc7eed17429a481
   - fixes "npm ERR! cb() never called!"
 
 <a id="0.10.19"></a>
+
 ## 2013.09.24, Version 0.10.19 (Stable)
 
 https://github.com/nodejs/node/commit/6b5e6a5a3ec8d994c9aab3b800b9edbf1b287904
@@ -585,6 +602,7 @@ https://github.com/nodejs/node/commit/6b5e6a5a3ec8d994c9aab3b800b9edbf1b287904
 * tls: NPN protocols are now local to connections (Fedor Indutny)
 
 <a id="0.10.18"></a>
+
 ## 2013.09.04, Version 0.10.18 (Stable)
 
 https://github.com/nodejs/node/commit/67a1f0c52e0708e2596f3f2134b8386d6112561e
@@ -594,6 +612,7 @@ https://github.com/nodejs/node/commit/67a1f0c52e0708e2596f3f2134b8386d6112561e
 * stream: Pass 'buffer' encoding with decoded writable chunks (isaacs)
 
 <a id="0.10.17"></a>
+
 ## 2013.08.21, Version 0.10.17 (Stable)
 
 https://github.com/nodejs/node/commit/469a4a5091a677df62be319675056b869c31b35c
@@ -606,6 +625,7 @@ https://github.com/nodejs/node/commit/469a4a5091a677df62be319675056b869c31b35c
 * readline: pause stdin before turning off terminal raw mode (Daniel Chatfield)
 
 <a id="0.10.16"></a>
+
 ## 2013.08.16, Version 0.10.16 (Stable)
 
 https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
@@ -620,6 +640,7 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 * stream: Fix double pipe error emit (Eran Hammer)
 
 <a id="0.10.15"></a>
+
 ## 2013.07.25, Version 0.10.15 (Stable)
 
 https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
@@ -627,6 +648,7 @@ https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
 * src: fix process.getuid() return value (Ben Noordhuis)
 
 <a id="0.10.14"></a>
+
 ## 2013.07.25, Version 0.10.14 (Stable)
 
 https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
@@ -641,6 +663,7 @@ https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 * crypto: fix memory leak in LoadPKCS12 (Fedor Indutny)
 
 <a id="0.10.13"></a>
+
 ## 2013.07.09, Version 0.10.13 (Stable)
 
 https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
@@ -658,6 +681,7 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * src: fix memory leak in UsingDomains() (Ben Noordhuis)
 
 <a id="0.10.12"></a>
+
 ## 2013.06.18, Version 0.10.12 (Stable)
 
 https://github.com/nodejs/node/commit/a088cf4f930d3928c97d239adf950ab43e7794aa
@@ -670,6 +694,7 @@ https://github.com/nodejs/node/commit/a088cf4f930d3928c97d239adf950ab43e7794aa
 * configure: fix cross-compilation host_arch_cc() (Andrei Sedoi)
 
 <a id="0.10.11"></a>
+
 ## 2013.06.13, Version 0.10.11 (Stable)
 
 https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
@@ -683,6 +708,7 @@ https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 * net: Fix busy loop on POLLERR|POLLHUP on older linux kernels (Ben Noordhuis, isaacs)
 
 <a id="0.10.10"></a>
+
 ## 2013.06.04, Version 0.10.10 (Stable)
 
 https://github.com/nodejs/node/commit/25e51c396aa23018603baae2b1d9390f5d9db496
@@ -693,6 +719,7 @@ https://github.com/nodejs/node/commit/25e51c396aa23018603baae2b1d9390f5d9db496
 * stream: unshift('') is a noop (isaacs)
 
 <a id="0.10.9"></a>
+
 ## 2013.05.30, Version 0.10.9 (Stable)
 
 https://github.com/nodejs/node/commit/878ffdbe6a8eac918ef3a7f13925681c3778060b
@@ -705,6 +732,7 @@ https://github.com/nodejs/node/commit/878ffdbe6a8eac918ef3a7f13925681c3778060b
 * tls: ignore .shutdown() syscall error (Fedor Indutny)
 
 <a id="0.10.8"></a>
+
 ## 2013.05.24, Version 0.10.8 (Stable)
 
 https://github.com/nodejs/node/commit/30d9e9fdd9d4c33d3d95a129d021cd8b5b91eddb
@@ -721,6 +749,7 @@ https://github.com/nodejs/node/commit/30d9e9fdd9d4c33d3d95a129d021cd8b5b91eddb
 * string_bytes: strip padding from base64 strings (Trevor Norris)
 
 <a id="0.10.7"></a>
+
 ## 2013.05.17, Version 0.10.7 (Stable)
 
 https://github.com/nodejs/node/commit/d2fdae197ac542f686ee06835d1153dd43b862e5
@@ -732,6 +761,7 @@ https://github.com/nodejs/node/commit/d2fdae197ac542f686ee06835d1153dd43b862e5
 * timers: fix setInterval() assert (Ben Noordhuis)
 
 <a id="0.10.6"></a>
+
 ## 2013.05.14, Version 0.10.6 (Stable)
 
 https://github.com/nodejs/node/commit/5deb1672f2b5794f8be19498a425ea4dc0b0711f
@@ -743,6 +773,7 @@ https://github.com/nodejs/node/commit/5deb1672f2b5794f8be19498a425ea4dc0b0711f
 * src: DRY string encoding/decoding (isaacs)
 
 <a id="0.10.5"></a>
+
 ## 2013.04.23, Version 0.10.5 (Stable)
 
 https://github.com/nodejs/node/commit/deeaf8fab978e3cadb364e46fb32dafdebe5f095
@@ -758,6 +789,7 @@ https://github.com/nodejs/node/commit/deeaf8fab978e3cadb364e46fb32dafdebe5f095
 * stream: Fix unshift() race conditions (isaacs)
 
 <a id="0.10.4"></a>
+
 ## 2013.04.11, Version 0.10.4 (Stable)
 
 https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
@@ -779,6 +811,7 @@ https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 * tls: Re-enable check of CN-ID in cert verification (Tobias Müllerleile)
 
 <a id="0.10.3"></a>
+
 ## 2013.04.03, Version 0.10.3 (Stable)
 
 https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
@@ -796,6 +829,7 @@ https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
 * src: tie process.versions.uv to uv_version_string() (Ben Noordhuis)
 
 <a id="0.10.2"></a>
+
 ## 2013.03.28, Version 0.10.2 (Stable)
 
 https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
@@ -818,6 +852,7 @@ https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 * child_process: fix sending utf-8 to child process (Ben Noordhuis)
 
 <a id="0.10.1"></a>
+
 ## 2013.03.21, Version 0.10.1 (Stable)
 
 https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
@@ -838,6 +873,7 @@ https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
 * node: Unwrap without aborting in handle fd getter (isaacs)
 
 <a id="0.10.0"></a>
+
 ## 2013.03.11, Version 0.10.0 (Stable)
 
 https://github.com/nodejs/node/commit/163ca274230fce536afe76c64676c332693ad7c1

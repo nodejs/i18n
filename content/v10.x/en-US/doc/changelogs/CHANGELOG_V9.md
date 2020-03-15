@@ -43,23 +43,23 @@
   * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.1"></a>
+
 ## 2018-04-05, Version 9.11.1 (Current), @MylesBorins
 
 ### Notable Changes
 
 No additional commits.
 
-An infrastructure issue caused a non-functioning msi installer for x64 to be promoted.
-The patch release is to ensure that all binaries and installers work as expected.
+An infrastructure issue caused a non-functioning msi installer for x64 to be promoted. The patch release is to ensure that all binaries and installers work as expected.
 
 <a id="9.11.0"></a>
+
 ## 2018-04-04, Version 9.11.0 (Current), @MylesBorins prepared by @targos
 
 ### Notable Changes
 
 * **deps**:
-  - Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621)
-    Includes CLDR 33 (many new languages and data improvements).
+  - Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Includes CLDR 33 (many new languages and data improvements).
 * **fs**:
   - Emit 'ready' event for `ReadStream` and `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**:
@@ -153,23 +153,19 @@ The patch release is to ensure that all binaries and installers work as expected
 * [[`99e3c77808`](https://github.com/nodejs/node/commit/99e3c77808)] - **url**: refactor "escapeParam" function to make it common (Sergey Golovin) [#19076](https://github.com/nodejs/node/pull/19076)
 
 <a id="9.10.1"></a>
+
 ## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
 
 ### Notable Changes
 
 No additional commits.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little
-endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based
-environments. This has been fixed in our infrastructure and we are doing this release to ensure that
-the hosted binaries are adhering to our platform support contract.
+Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
 
-Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler,
-and it is possible that Node.js version 9.X may be built on the 4.9.X compiler at a later
-time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md)
-for Node.js version 9.X is 4.9.4.
+Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler, and it is possible that Node.js version 9.X may be built on the 4.9.X compiler at a later time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) for Node.js version 9.X is 4.9.4.
 
 <a id="9.10.0"></a>
+
 ## 2018-03-28, Version 9.10.0 (Current), @MylesBorins prepared by @targos
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
@@ -259,8 +255,8 @@ Fixes for the following CVEs are included in this release:
 * [[`5960cde4eb`](https://github.com/nodejs/node/commit/5960cde4eb)] - **doc**: fix changelog (Myles Borins) [#19515](https://github.com/nodejs/node/pull/19515)
 * [[`b351e0eda6`](https://github.com/nodejs/node/commit/b351e0eda6)] - **http**: use more destructuring (Tobias Nießen) [#19481](https://github.com/nodejs/node/pull/19481)
 * [[`49c0efd2a2`](https://github.com/nodejs/node/commit/49c0efd2a2)] - **http2**: remove some unnecessary next ticks (James M Snell) [#19451](https://github.com/nodejs/node/pull/19451)
-* [[`583d5afa5e`](https://github.com/nodejs/node/commit/583d5afa5e)] - **inspector**: do not allow host names (Eugene Ostroukhov) 
-* [[`fc1a610a00`](https://github.com/nodejs/node/commit/fc1a610a00)] - **inspector**: check Host header for local connections (Eugene Ostroukhov) 
+* [[`583d5afa5e`](https://github.com/nodejs/node/commit/583d5afa5e)] - **inspector**: do not allow host names (Eugene Ostroukhov)
+* [[`fc1a610a00`](https://github.com/nodejs/node/commit/fc1a610a00)] - **inspector**: check Host header for local connections (Eugene Ostroukhov)
 * [[`419e88ea4a`](https://github.com/nodejs/node/commit/419e88ea4a)] - **lib,test**: lint fixes for linter upgrade (Rich Trott) [#19528](https://github.com/nodejs/node/pull/19528)
 * [[`fd8523fe44`](https://github.com/nodejs/node/commit/fd8523fe44)] - **n-api**: re-write test\_make\_callback (Gabriel Schulhof) [#19448](https://github.com/nodejs/node/pull/19448)
 * [[`29a04b7ed6`](https://github.com/nodejs/node/commit/29a04b7ed6)] - **(SEMVER-MINOR)** **n-api**: add napi\_fatal\_exception (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
@@ -290,6 +286,7 @@ Fixes for the following CVEs are included in this release:
 * [[`0414a8c7ed`](https://github.com/nodejs/node/commit/0414a8c7ed)] - **tools**: fix logic nit in tools/doc/generate.js (Vse Mozhet Byt) [#19475](https://github.com/nodejs/node/pull/19475)
 
 <a id="9.9.0"></a>
+
 ## 2018-03-21, Version 9.9.0 (Current), @MylesBorins prepared by @targos
 
 ### Notable Changes
@@ -312,7 +309,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Commits
 
-* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso) 
+* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso)
 * [[`8d33e5c214`](https://github.com/nodejs/node/commit/8d33e5c214)] - **assert**: improve error check (Ruben Bridgewater) [#17574](https://github.com/nodejs/node/pull/17574)
 * [[`5e6b42ec9c`](https://github.com/nodejs/node/commit/5e6b42ec9c)] - **assert**: show proper differences (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
 * [[`9abbb6b857`](https://github.com/nodejs/node/commit/9abbb6b857)] - **assert**: fix infinite loop (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
@@ -448,6 +445,7 @@ Fixes for the following CVEs are included in this release:
 * [[`fd4c05ab56`](https://github.com/nodejs/node/commit/fd4c05ab56)] - **(SEMVER-MINOR)** **util**: fix custom inspect description (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
 
 <a id="9.8.0"></a>
+
 ## 2018-03-07, Version 9.8.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -541,11 +539,13 @@ Fixes for the following CVEs are included in this release:
 * [[`3e8e1524ac`](https://github.com/nodejs/node/commit/3e8e1524ac)] - **util**: use blue on non-windows systems for number (Gus Caplan) [#18925](https://github.com/nodejs/node/pull/18925)
 
 <a id="9.7.1"></a>
+
 ## 2018-03-02, Version 9.7.1 (Current), @rvagg
 
 No additional commits. New version published due to a bad node-v9.7.0.pkg file that was published to nodejs.org in the previous release.
 
 <a id="9.7.0"></a>
+
 ## 2018-03-01, Version 9.7.0 (Current), @rvagg prepared by @addaleax
 
 ### Notable Changes
@@ -633,6 +633,7 @@ No additional commits. New version published due to a bad node-v9.7.0.pkg file t
 * [[`38797b5804`](https://github.com/nodejs/node/commit/38797b5804)] - **vm**: consolidate validation (Timothy O. Peters) [#18816](https://github.com/nodejs/node/pull/18816)
 
 <a id="9.6.1"></a>
+
 ## 2018-02-22, Version 9.6.1 (Current), @MylesBorins
 
 This is a special release to fix potentially Semver-Major regression that was released in v9.6.0
@@ -647,6 +648,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * [[`761caec379`](https://github.com/nodejs/node/commit/761caec379)] - **events**: preset `usingDomains` to false (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 <a id="9.6.0"></a>
+
 ## 2018-02-22, Version 9.6.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -887,6 +889,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * [[`c34e2f4fc5`](https://github.com/nodejs/node/commit/c34e2f4fc5)] - **win, build**: fix intl-none option (Birunthan Mohanathas) [#18292](https://github.com/nodejs/node/pull/18292)
 
 <a id="9.5.0"></a>
+
 ## 2018-01-31, Version 9.5.0 (Current), @evanlucas
 
 ### Notable Changes
@@ -1070,6 +1073,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * [[`4bc4d004b1`](https://github.com/nodejs/node/commit/4bc4d004b1)] - **tools**: move eslint from tools to tools/node_modules (Michaël Zasso) [#17820](https://github.com/nodejs/node/pull/17820)
 
 <a id="9.4.0"></a>
+
 ## 2018-01-10, Version 9.4.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -1345,6 +1349,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * [[`584e74d8cc`](https://github.com/nodejs/node/commit/584e74d8cc)] - **(SEMVER-MINOR)** **zlib**: add ArrayBuffer support (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
 
 <a id="9.3.0"></a>
+
 ## 2017-12-12, Version 9.3.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -1755,6 +1760,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * [[`fa01fe6819`](https://github.com/nodejs/node/commit/fa01fe6819)] - **zlib**: fix decompression of empty data streams (Anna Henningsen) [#17042](https://github.com/nodejs/node/pull/17042)
 
 <a id="9.2.1"></a>
+
 ## 2017-12-08, Version 9.2.1 (Current), @evanlucas
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
@@ -1789,6 +1795,7 @@ Fixes for the following CVEs are included in this release:
 * [[`e14c0babe0`](https://github.com/nodejs/node/commit/e14c0babe0)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 
 <a id="9.2.0"></a>
+
 ## 2017-11-14, Version 9.2.0 (Current), @evanlucas
 
 ### Notable Changes
@@ -1937,6 +1944,7 @@ Fixes for the following CVEs are included in this release:
 * [[`942a9ed6a8`](https://github.com/nodejs/node/commit/942a9ed6a8)] - **tools,build**: allow build without `remark-cli` (Refael Ackermann) [#16893](https://github.com/nodejs/node/pull/16893)
 
 <a id="9.1.0"></a>
+
 ## 2017-11-07, Version 9.1.0 (Current), @cjihrig
 
 ### Notable Changes
@@ -2050,6 +2058,7 @@ Fixes for the following CVEs are included in this release:
 * [[`d6a0ffe367`](https://github.com/nodejs/node/commit/d6a0ffe367)] - **zlib**: warn before crash on invalid internals usage (Anna Henningsen) [#16657](https://github.com/nodejs/node/pull/16657)
 
 <a id="9.0.0"></a>
+
 ## 2017-10-31, Version 9.0.0 (Current), @jasnell
 
 ### Notable Changes

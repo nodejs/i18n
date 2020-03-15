@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [О документации](documentation.html)
-* [Примеры использования](synopsis.html)
+* [Об этих документах](documentation.html)
+* [Примеры использования &](synopsis.html)
 
 <div class="line"></div>
 
-* [Тестирование утверждениями](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Подтверждающее тестирование](assert.html)
+* [Асинхронные хуки](async_hooks.html)
 * [Буфер](buffer.html)
 * [Расширения C++](addons.html)
 * [Расширения C/C++ - N-API](n-api.html)
@@ -29,13 +29,13 @@
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspector](inspector.html)
+* [Инспектор](inspector.html)
 * [Интернационализация](intl.html)
 * [Модули](modules.html)
 * [Сеть](net.html)
-* [ОС](os.html)
+* [Операционная система](os.html)
 * [Путь](path.html)
-* [Performance Hooks](perf_hooks.html)
+* [Хуки производительности](perf_hooks.html)
 * [Процесс](process.html)
 * [Punycode](punycode.html)
 * [Строки запроса](querystring.html)
@@ -52,6 +52,7 @@
 * [Утилиты](util.html)
 * [Виртуальная машина V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>

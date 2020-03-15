@@ -10,7 +10,7 @@
 * [Assertion Testing](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
-* [C++ Addons](addons.html)
+* [Node. js doplňky jsou dynamicky přidávané sdílené objekty napsané v jazyce C++, které mohou být nahrány přímo do Node. js s použitím require() funkce a použity jakoby byly normální Node. js moduly. Jsou primárně použity jako rozhraní mezi JavaScript kódem běžícím v Node. js a C/C++ knihovnami](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
@@ -24,7 +24,7 @@
 * [ECMAScript Modules](esm.html)
 * [Errors](errors.html)
 * [Events](events.html)
-* [File System](fs.html)
+* [Souborový systém](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
@@ -52,6 +52,7 @@
 * [Utilities](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>

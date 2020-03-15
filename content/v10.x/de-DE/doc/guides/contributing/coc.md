@@ -12,7 +12,7 @@ Offene, vielfältige und inklusive Gemeinschaften beruhen auf der Basis von Vert
 
 Alle Mitwirkende an Node.js stimmen sowohl dem Wortlaut als auch dem Sinn der [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) stillschweigend zu. Versagen oder Unwillen, den Verhaltensgrundsätzen zuzustimmen führt dazu, dass die Beiträge respektvoll abgelehnt werden.
 
-Ein *schädlicher Aktueur* ist jemand, der wiederholt dem *Sinn* der Verhaltensgrundsätze durch beständiges Versagen, ihr Verhalten mit anderen Mitwirkenden des Projekts selbst zu regulieren, widerspricht. Auf diese Weise entfremden schädliche Akteure andere Mitwirkende, demotivieren Kollaboration, und werfen generell ein schlechtes Licht auf das Projekt.
+A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. Auf diese Weise entfremden schädliche Akteure andere Mitwirkende, demotivieren Kollaboration, und werfen generell ein schlechtes Licht auf das Projekt.
 
 Ein schlechter Akteur zu sein mag gewollt oder ungewollt sein. Normalerweise kann ungewolltes schlechtes Verhalten schnell korrigiert werden indem man sich schnell entschuldigt und sein Verhalten korrigiert, *selbst wenn man selber nicht ganz überzeugt ist, dass dies nötig ist*. Indem man anderen Mitwirkenden den einen Vertrauensbonus git und ernsthafte Überzeugung zeigt, dass man sich *vielleicht* falsch verhalten hat, ist entscheidend für jede erfolgreiche offene Kollaboration.
 

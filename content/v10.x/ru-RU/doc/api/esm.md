@@ -1,14 +1,13 @@
-# ECMAScript Modules
+# Модули ECMAScript
 
 <!--introduced_in=v8.5.0-->
-
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> Стабильность: 1 - экспериментальный
 
 <!--name=esm-->
 
-Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js поддерживает Модули ES в соответствии с [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
 Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 
@@ -67,8 +66,7 @@ ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) seman
 Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
-import './foo?query=1'; // loads ./foo with query of "?query=1"
-import './foo?query=2'; // loads ./foo with query of "?query=2"
+import './foo?query=1'; // loads ./foo with query of "?query=1"import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
 For now, only modules using the `file:` protocol can be loaded.
@@ -82,14 +80,38 @@ Modules loaded this way will only be loaded once, even if their query or fragmen
 When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
 
 ```js
-import fs from 'fs';
-fs.readFile('./foo.txt', (err, body) => {
+// foo.js
+module.exports = { one: 1 };
+
+// bar.mjs
+import foo from './foo.js';
+foo.one === 1; // true
+```
+
+Builtin modules will provide named exports of their public API, as well as a default export which can be used for, among other things, modifying the named exports. Named exports of builtin modules are updated when the corresponding exports property is accessed, redefined, or deleted.
+
+```js
+import EventEmitter from 'events';
+const e = new EventEmitter();
+```
+
+```js
+import { readFile } from 'fs';
+readFile('./foo.txt', (err, source) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(body);
+    console.log(source);
   }
 });
+```
+
+```js
+import fs, { readFileSync } from 'fs';
+
+fs.readFileSync = () => Buffer.from('Hello, ESM');
+
+fs.readFileSync === readFileSync;
 ```
 
 ## Loader hooks
@@ -124,7 +146,7 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`    | Description                                                     |
+| `format`    | Описание                                                        |
 | ----------- | --------------------------------------------------------------- |
 | `'esm'`     | Load a standard JavaScript module                               |
 | `'cjs'`     | Load a node-style CommonJS module                               |

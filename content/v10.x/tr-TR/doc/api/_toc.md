@@ -2,12 +2,12 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [Bu Döküman Hakkında](documentation.html)
+* [Bu Dökümanlar Hakkında](documentation.html)
 * [Kullanım & Örnek](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testi](assert.html)
+* [İddia Testi](assert.html)
 * [Asenkron Hooklar](async_hooks.html)
 * [Arabellek](buffer.html)
 * [C++ Eklentileri](addons.html)
@@ -52,9 +52,10 @@
 * [Yardımcı Araçlar](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
 * [GitHub Repo & Sorun Takibi](https://github.com/nodejs/node)
-* [E-Posta Listesi](https://groups.google.com/group/nodejs)
+* [Posta Listesi](https://groups.google.com/group/nodejs)

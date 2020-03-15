@@ -1,30 +1,30 @@
-# C++ Addons
+# Thành phần mở rộng C++
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Thành phần mở rộng của Node.js là các đối tượng được chia sẻ với nhau qua các liên kết động, được viết bằng ngôn ngữ C++ và được tải lên Node.js bằng cách sử dụng hàm [`require()`](modules.html#modules_require). Ngoài ra, đây cũng được coi như một mô-đun thông thường của Node.js. Chúng được sử dụng chủ yếu như một phương thức giao tiếp giữa JavaScript của Node.js và các thư viện C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+Hiện tại, việc thực hiện cài đặt các thành phần mở rộng tương đối phức tạp, vì nó yêu cầu tổng hợp các kiến thức về một số thành phần liên quan và các API :
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+ - V8: Hiện Node.js sử dụng thư viện C++ để cung cấp việc cài đặt JavaScript. V8 còn cung cấp khả năng tạo ra các đối tượng được gọi là các hàm. API của V8 chủ yếu được ghi lại trong tiêu đề tập tin `v8.h` (`deps/v8/include/v8.h` trong bộ nguồn của Node.js), V8 cũng có sẵn trên [tài liệu trực tuyến](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+ - [libuv](https://github.com/libuv/libuv): Thư viện C bao gồm các công việc thực thi vòng lặp sự kiện của Node.js, các luồng và hành vi không đồng bộ trong cùng nền tảng. Nó cũng là một thư viện trừu tượng đa nền tảng, cung cấp thao tác truy cập dễ dàng, tương tự như POSIX tới các hệ điều hành chính đến các nhiệm vụ hệ thống thường dùng như tương tác với tệp tin hệ thống, socket, bộ đếm thời gian, và các sự kiện hệ thống. libuv còn cung cấp luồng trừu tượng giống như pthreads, dành cho việc tăng cường sức mạnh cho thành phần bổ sung không đồng bộ ngày càng phức tạp và cần vượt qua vòng lặp sự kiện tiêu chuẩn. Các nhà phát triển thành phần mở rộng được khuyến khích làm sao tránh việc chặn vòng lặp sự kiện với dữ liệu nhập xuất (I/O) hoặc giảm thiểu khối lượng công việc thông qua libuv bằng cách giảm các nhiệm vụ tiêu hao thời gian cho các hệ thống điều hành không bị chặn, các luồng ngầm hoặc các luồng tùy chỉnh của libuv.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+ - Thư viện Node.js nội bộ. Node.js có khả năng tự truy xuất một số API C++ giúp thành phần mở rộng có thể sử dụng &mdash; trong đó loại quan trọng nhất là `node::ObjectWrap`.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+ - Node.js bao gồm một số thư viện liên kết tĩnh như OpenSSL. Những thư viện này nằm trong thư mục `deps/` của bộ quản lý mã nguồn Node.js. Chỉ có libuv, OpenSSL, V8 và các biểu tượng zlib là được truy xuất lại có chủ đích thông qua Node.js và có thể được sử dụng cho các phần mở rộng khác nhau. Để biết thêm thông tin, hãy xem [liên kết đến các phần phụ thuộc của Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Các ví dụ sau đây có thể [tải về](https://github.com/nodejs/node-addon-examples) cũng như có thể được sử dụng như điểm khởi đầu cho một thành phần mở rộng bất kỳ.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Ví dụ "Hello world" này là một phần mở rộng đơn giản, được viết bằng C++ và tương đương với đoạn mã JavaScript sau đây:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Đầu tiên, tạo tệp `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -53,22 +53,22 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Lưu ý rằng tất cả các thành phần mở rộng của Node.js phái truy xuất một hàm khởi tạo như sau:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Phía sau `NODE_MODULE` không có dấu chấm phẩy, vì nó không phải là một hàm (xem `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the .node suffix).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Trong ví dụ `hello.cc`, thì hàm khởi tạo là `init` và tên mô-đun phần mở rộng là `addon`.
 
-### Building
+### Xây dựng hoàn thiện
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) -- a tool written specifically to compile Node.js Addons.
+Một khi mã nguồn được viết ra, nó cần được biên soạn thành tập tin nhị phân `addon.node`. Để thực hiện, tạo một tệp nằm ở phía trên cùng trong thư mục gốc của dự án có tên `binding.gyp`, sử dụng định dạng tương tự như JSON nhằm mô tả cấu hình xây dựng của mô-đun. Tập tin này được sử dụng bởi [node-gyp](https://github.com/nodejs/node-gyp) — đây là một công cụ dành riêng cho việc biên soạn thành phần mở rộng của Node.js.
 
 ```json
 {
@@ -81,15 +81,15 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Các nhà phát triển không thể trực tiếp sử dụng phiên bản này mà chỉ dùng cho việc hỗ trợ khả năng sử dụng lệnh `npm install` cho việc biên soạn và thiết đặt thành phần mở rộng. Nếu họ muốn sử dụng trực tiếp `node-gyp` cần phải sử dụng câu lệnh `npm install -g node-gyp`. Để biết thêm thông tin [hướng dẫn cài đặt](https://github.com/nodejs/node-gyp#installation) (bao gồm các yêu cầu cụ thể của nền tảng), vui lòng tham khảo thêm `node-gyp`.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Sau khi tạo xong tệp tin `binding.gyp`, có thể sử dụng `node-gyp configure` để tạo tệp xây dựng dự án phù hợp với nền tảng hiện tại. Điều này sẽ giúp tạo ra tệp `Makefile` (trên nền tảng Unix) hoặc `vcxproj` (trên Windows) trong thư mục `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Tiếp theo, sử dụng lệnh `node-gyp build` để tạo ra tệp `addon.node` đã được biên soạn. This will be put into the `build/Release/` directory.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Khi sử dụng `npm install` để cài đặt phần mở rộng cho Node.js, npm sẽ sử dụng riêng phiên bản đã được gói lại `node-gyp` để thống nhất các thao tác, giúp người dùng có được thành phần mở rộng với phiên bản đã được biên soạn theo yêu cầu.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Sau khi xây dựng, phần mở rộng nhị phân có thể được sử dụng trong Node.js thông qua [`require()`](modules.html#modules_require) để hoàn thiện mô-đun `addon.node`:
 
 ```js
 // hello.js
@@ -101,9 +101,9 @@ console.log(addon.hello());
 
 Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Bởi vì đường dẫn chính xác tới phần mở rộng nhị phân có thể thay đổi tùy theo việc nó được biên soạn như thế nào (ví dụ: có khi được đặt trong `./build/Debug/`), vậy nên các thành phần mở rộng có thể dùng gói [bindings](https://github.com/TooTallNate/node-bindings) để nạp các mô-đun đã qua biên soạn.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Lưu ý rằng việc cài đặt gói `bindings` là vô cùng tinh vi vì phải định vị các mô-đun của phần mở rộng, nhưng cần thiết phải thử theo mô hình try-catch tương tự dưới đây:
 
 ```js
 try {
@@ -113,33 +113,34 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Liên kết tới các thành phần bắt buộc của Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js sử dụng một số các thư viện liên kết tĩnh như V8, libuv và OpenSSL. Tất cả phần mở rộng được yêu cầu liên kết tới V8 hoặc cũng có thể tới các thành phần bắt buộc khác. Nói chung việc này đơn giản như việc thêm câu lệnh `#include <...>` (ví dụ: `#include <v8.h>`) và `node-gyp` sẽ tự động xác định vị trí thích hợp cho tiêu đề. Tuy nhiên, cần chú ý một vài công việc sau:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Khi chạy `node-gyp`, nó sẽ phát hiện bản phát hành cụ thể của Node.js và tải về tệp lưu trữ mã nguồn chung tarball hoặc chỉ các tiêu đề. Nếu toàn bộ mã nguồn được tải về, thành phần mở rộng sẽ có khả năng truy cập hoàn toàn tới thành phần bắt buộc của Node.js. Tuy nhiên, nếu chỉ tải về các tiêu đề, chỉ có thể dẫn tới các biểu tượng do Node.js truy xuất.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` có thể sử dụng `--nodedir` trỏ đến nguồn ảnh trong Node.js. Bằng cách này, phần mở rộng có thể truy cập tới toàn bộ thành phần bắt buộc.
 
-### Loading Addons using require()
+### Nạp phần mở rộng bằng cách sử dụng require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Tên đuôi tệp tin của thành phần mở rộng là `.node`( trái ngược với to `.dll` hoặc `.so`). Để tìm kiếm các tệp tin có đuôi `.node`, người ta sử dụng hàm [`require()`](modules.html#modules_require) và thiết lập chúng là những thư viện liên kết động.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Khi gọi hàm [`require()`](modules.html#modules_require), phần đuôi `.node` có thể bị bỏ qua nhưng Node.js vẫn có thể tìm thấy và thiết lập thành phần mở rộng. Cảnh báo trước, tuy nhiên, Node.js sẽ thử xác định vị trí và nạp các mô-đun trước hoặc các tệp JavaScript có thể chia sẻ tên cơ sở giống nhau. Ví dụ, tệp `addon.js` nằm chung thư mục với tệp nhị phân `addon.node`, sau đó khi triển khai hàm [`require('addon')`](modules.html#modules_require),kết quả trả về sẽ là `addon.js` và bắt đầu triển khai nó.
 
-## Native Abstractions for Node.js
+## Các lớp trừu tượng gốc cho Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Mỗi ví dụ minh họa trong tài liệu này được sử dụng trực tiếp cho việc thiết lập các thành phần mở rộng bởi Node.js và các API V8. Điều quan trọng là phải hiểu rằng API V8 có khả năng thay đổi và đã có sự thay đổi đáng kể từ một bản phát hành V8 sang bản tiếp theo (và một bản phát hành Node.js chính tới bản tiếp theo). Với mỗi thay đổi, các thành phần mở rộng có thể cần phải cập nhật và biên soạn lại để có thể tiếp tục hoạt động. Lịch phát hành của Node.js được thiết kế nhằm giảm thiểu tần suất và tác động của các thay đổi như vậy, nhưng thực tế Node.js có rất ít khả năng đảm bảm được sự ổn định của các API V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+Các [trừu tượng gốc dành cho Node.js](https://github.com/nodejs/nan) (hoặc `nan`) cung cấp một bộ công cụ được khuyến khích cho các nhà lập trình thành phần mở rộng sử dụng để giữ khả năng tương thích của các bản phát hành của V8 và Node.js trong quá khứ và tương lai. Xem thêm các [ví dụ](https://github.com/nodejs/nan/tree/master/examples/) minh họa về `nan` để biết thêm ứng dụng của nó.
+
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Tính ổn định: 1 - Thử nghiệm
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API là một API dùng để xây dựng thành phần mở rộng gốc. Nó độc lập so với chương trình chạy JavaScript (ví dụ: V8) và được duy trì như một phần của Node.js. API này sẽ là một giao diện nhị phân ứng dụng (ABI) chạy ổn định trên các phiên bản của Node.js. Nó được định hướng nhằm tách biệt thành phần mở rộng đối với các sự thay đổi trong bộ máy JavaScript cơ bản và cho phép các mô-đun được biên soạn một phiên bản có khả năng chạy trên các bản khác nhau của Node.js mà không cần sự biên soạn lại. Thành phần mở rộng được xây dựng/đóng gói với cùng cách tiếp cập/các công cụ được nêu trong tài liệu này (node-gyp, etc.). Điểm khác biệt duy nhất là bộ API được sử dụng bởi mã gốc. Thay vì sử dụng V8 hoặc các API của [các trừu tượng gốc cho Node.js](https://github.com/nodejs/nan), có thể sử dụng các hàm có sẵn của N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Để sử dụng N-API cho ví dụ "Hello world" phía trên, thay thế nội dung của `hello.cc` như sau đây. Các hướng dẫn khác vẫn giống như vậy.
 
 ```cpp
 // hello.cc using N-API
@@ -151,7 +152,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "hello", 6, &greeting);
+  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
@@ -173,13 +174,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Các hàm có sẵn và cách sử dụng chúng được ghi lại trong phần có tiêu đề [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Các ví dụ thành phần mở rộng
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Sau đây là các ví dụ về thành phần mở rộng nhằm giúp các nhà phát triển bắt đầu. Các ứng dụng sử dụng các API V8. Xem thêm phần [tham khảo về V8](https://v8docs.nodesource.com/) trực tuyến để hiểu thêm các cách gọi khác nhau của V8, và [hướng dẫn trình nhúng](https://github.com/v8/v8/wiki/Embedder's%20Guide) của V8 để giải thích cho các khái niệm được sử dụng như: con trỏ, phạm vi và các mẫu hàm,v.v..
 
-Each of these examples using the following `binding.gyp` file:
+Mỗi một ví dụ sau đây sử dụng tệp tin `binding.gyp`:
 
 ```json
 {
@@ -198,17 +199,18 @@ In cases where there is more than one `.cc` file, simply add the additional file
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Khi tập tin `binding.gyp` đã sẵn sàng, các ví dụ thành phần mở rộng có thể được cấu hình và xây dựng sử dụng `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+### Đối số của hàm
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Thành phần mở rộng sẽ khiến các đối tượng và hàm bị trưng ra và được truy cập từ JavaScript khi đang chạy trong Node.js. Khi các hàm được gọi ra từ JavaScript, các đối số đầu vào và giá trị trả về phải được liên kết tới và từ mã C/C++.
+
+Ví dụ sau đây minh họa các đọc hàm đối số được chuyển qua từ JavaScript và cách trả kết quả:
 
 ```cpp
 // addon.cc
@@ -264,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Khi đã được biên soạn, ví dụ thành phần mở rộng có thể được yêu cầu và sử dụng bên trong Node.js:
 
 ```js
 // test.js
@@ -273,9 +275,10 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+### Hàm callbacks
+
+Đây là một quy trình thông thường trong thành phần mở rộng nhằm chuyển các hàm JavaScript qua hàm C++ và thực thi chúng từ đây. Ví dụ minh họa sau đây giới thiệu cách thực hiện callbacks như vậy:
 
 ```cpp
 // addon.cc
@@ -309,9 +312,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Ghi nhớ rằng ví dụ này sử dụng một dạng hai đối số của `Init()` nhận đối tượng `mô-đun` đầy đủ làm đối số thứ hai. Việc này cho phép thành phần mở rộng hoàn toàn ghi đè lên `exports` với một hàm đơn thay vì thêm một hàm làm thuộc tính của `exports`.
 
-To test it, run the following JavaScript:
+Để kiểm tra, chạy trình JavaScript sau đây:
 
 ```js
 // test.js
@@ -323,11 +326,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Nhớ rằng, trong ví dụ này, hàm callback được gọi đồng bộ.
 
-### Object factory
+### Sản xuất đối tượng
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Các thành phần mở rộng được tạo và trả về các đối tượng mới trong phạm vi hàm C++ như trong ví dụ minh họa dưới đây. Một đối tượng với thuộc tính `msg` thông qua việc tạo và trả về sẽ lặp lại chuỗi và chuyển qua `createObject()`:
 
 ```cpp
 // addon.cc
@@ -360,7 +363,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Để kiểm tra trong JavaScript:
 
 ```js
 // test.js
@@ -372,9 +375,10 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+### Sản xuất hàm
+
+Một kịch bản phổ biến khác là việc tạo ra các hàm JavaScript có khả năng bao bọc các hàm C++ và trả chúng về lại JavaScript:
 
 ```cpp
 // addon.cc
@@ -417,7 +421,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Để kiểm tra lại:
 
 ```js
 // test.js
@@ -428,9 +432,10 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+### Bao bọc các đối tượng C++
+
+Các đối tượng/lớp của C++ cũng có thể được bọc mà các thể hiện được tạo ra sử dụng toán tử `new` của JavaScript:
 
 ```cpp
 // addon.cc
@@ -451,7 +456,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Sau đó, trong `myobject.h`, lớp bọc di truyền từ `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -482,7 +487,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Trong `myobject.cc`, các phương thức khác nhau được thực hiện để tiếp xúc với nhau. Dưới đây là phương thức `plusOne()` được hiển thị bằng việc thêm nó vào nguyên mẫu của hàm tạo:
 
 ```cpp
 // myobject.cc
@@ -559,7 +564,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Để xây dựng ví dụ này, tập tin `myobject.cc` phải được thêm vào `binding.gyp`:
 
 ```json
 {
@@ -575,7 +580,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Kiểm tra nó với:
 
 ```js
 // test.js
@@ -590,9 +595,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### Sản xuất của các đối tượng được bọc
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Ngoài ra, có thể sử dụng nhà máy tạo thực thể để tránh việc trực tiếp tạo ra các thực thể đối tượng sử dụng hàm toán tử `new` trong JavaScript:
 
 ```js
 const obj = addon.createObject();
@@ -600,7 +605,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Đầu tiên, phương thức `createObject()` được thiết đặc trong `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -631,7 +636,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+Trong `myobject.h`, phương thức tĩnh `NewInstance()` được thêm vào nhằm kiểm soát việc khởi tạo đối tượng mới. Phương thức này sử dụng `new` trong JavaScript:
 
 ```cpp
 // myobject.h
@@ -663,7 +668,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+Việc thực hiện `myobject.cc` tương tự như trong ví dụ trước:
 
 ```cpp
 // myobject.cc
@@ -750,7 +755,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Một lần nữa, để xây dựng ví dụ này, tập tin `myobject.cc` phải được thêm vào `binding.gyp`:
 
 ```json
 {
@@ -766,7 +771,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Kiểm tra nó với:
 
 ```js
 // test.js
@@ -789,9 +794,10 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+### Truyền vào các đối tượng trình bao bọc
+
+Bổ sung thêm cho bao bọc và trả về các đối tượng C++, nó còn có thể truyền vào các đối tượng đã được bao bọc bằng cách gỡ chúng với hàm trợ giúp sau của Node.js `node::ObjectWrap::Unwrap`. Các ví dụ tiếp theo cho thấy hàm `add()` có thể lấy 2 đối tượng `MyObject` như những đối số của đầu vào:
 
 ```cpp
 // addon.cc
@@ -837,7 +843,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+Trong `myobject.h`, để cho phép truy cập các giá trị riêng sau khi gỡ bọc đối tượng cần thêm một phương thức công cộng mới.
 
 ```cpp
 // myobject.h
@@ -869,7 +875,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+Việc thực hiện `myobject.cc` tương tự như trong ví dụ trước:
 
 ```cpp
 // myobject.cc
@@ -943,7 +949,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Kiểm tra nó với:
 
 ```js
 // test.js
@@ -957,20 +963,20 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### Cơ chế hook AtExit
 
 An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. "AtExit" hooks are registered using the `node::AtExit` API.
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
+* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Các bộ ghi thoát cơ chế hook sau khi vòng lặp sự kiện kết thúc nhưng trước khi máy ảo bị chấm dứt.
 
 AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
-Callbacks are run in last-in first-out order.
+Hàm callback được chạy theo trình tự vào sau ra trước.
 
 The following `addon.cc` implements AtExit:
 
@@ -1023,7 +1029,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Kiểm tra trong JavaScript bằng cách chạy:
 
 ```js
 // test.js

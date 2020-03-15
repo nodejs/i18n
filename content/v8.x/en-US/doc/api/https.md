@@ -4,24 +4,21 @@
 
 > Stability: 2 - Stable
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a
-separate module.
+HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: https.Agent
 <!-- YAML
 added: v0.4.5
 -->
 
-An Agent object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][]
-for more information.
+An Agent object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Class: https.Server
 <!-- YAML
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as
-[`http.Server`][]. See [`http.Server`][] for more information.
+This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
 
 ### server.close([callback])
 <!-- YAML
@@ -33,8 +30,7 @@ See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 ### server.listen()
 
-Starts the HTTPS server listening for encrypted connections.
-This method is identical to [`server.listen()`][] from [`net.Server`][].
+Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### server.headersTimeout
 
@@ -42,7 +38,7 @@ This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 See [`http.Server#headersTimeout`][].
 
-### server.setTimeout([msecs][, callback])
+### server.setTimeout(\[msecs\]\[, callback\])
 <!-- YAML
 added: v0.11.2
 -->
@@ -67,12 +63,11 @@ added: v8.0.0
 
 See [`http.Server#keepAliveTimeout`][].
 
-## https.createServer([options][, requestListener])
+## https.createServer(\[options\]\[, requestListener\])
 <!-- YAML
 added: v0.3.4
 -->
-- `options` {Object} Accepts `options` from [`tls.createServer()`][],
- [`tls.createSecureContext()`][] and [`http.createServer()`][].
+- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 - `requestListener` {Function} A listener to be added to the `request` event.
 
 Example:
@@ -118,15 +113,12 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-- `options` {Object | string | URL} Accepts the same `options` as
-  [`https.request()`][], with the `method` always set to `GET`.
+- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 - `callback` {Function}
 
 Like [`http.get()`][] but for HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a
-string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][]
-object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 Example:
 
@@ -161,8 +153,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-- `options` {Object | string | URL} Accepts all `options` from
-  [`http.request()`][], with some differences in default values:
+- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
   - `protocol` **Default:** `https:`
   - `port` **Default:** `443`
   - `agent` **Default:** `https.globalAgent`
@@ -171,13 +162,9 @@ changes:
 
 Makes a request to a secure web server.
 
-The following additional `options` from [`tls.connect()`][] are also accepted when using a
-  custom [`Agent`][]:
-  `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
+The following additional `options` from [`tls.connect()`][] are also accepted when using a custom [`Agent`][]: `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a
-string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][]
-object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 Example:
 
@@ -254,24 +241,3 @@ const req = https.request(options, (res) => {
   // ...
 });
 ```
-
-[`Agent`]: #https_class_https_agent
-[`URL`]: url.html#url_the_whatwg_url_api
-[`http.Agent`]: http.html#http_class_http_agent
-[`http.Server#keepAliveTimeout`]: http.html#http_server_keepalivetimeout
-[`http.Server#headersTimeout`]: http.html#http_server_headerstimeout
-[`http.Server#setTimeout()`]: http.html#http_server_settimeout_msecs_callback
-[`http.Server#timeout`]: http.html#http_server_timeout
-[`http.Server`]: http.html#http_class_http_server
-[`http.close()`]: http.html#http_server_close_callback
-[`http.createServer()`]: http.html#httpcreateserveroptions-requestlistener
-[`http.get()`]: http.html#http_http_get_options_callback
-[`http.request()`]: http.html#http_http_request_options_callback
-[`https.Agent`]: #https_class_https_agent
-[`https.request()`]: #https_https_request_options_callback
-[`net.Server`]: net.html#net_class_net_server
-[`server.listen()`]: net.html#net_server_listen
-[`tls.connect()`]: tls.html#tls_tls_connect_options_callback
-[`tls.createSecureContext()`]: tls.html#tls_tls_createsecurecontext_options
-[`tls.createServer()`]: tls.html#tls_tls_createserver_options_secureconnectionlistener
-[`url.parse()`]: url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost

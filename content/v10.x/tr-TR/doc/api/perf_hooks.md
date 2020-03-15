@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Kararlılık: 1 - Deneysel
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -23,13 +23,11 @@ doSomeLongRunningProcess(() => {
 ```
 
 ## Class: Performance
-
 <!-- YAML
 added: v8.5.0
 -->
 
 ### performance.clearMarks([name])
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -39,7 +37,6 @@ added: v8.5.0
 If `name` is not provided, removes all `PerformanceMark` objects from the Performance Timeline. If `name` is provided, removes only the named mark.
 
 ### performance.mark([name])
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -49,7 +46,6 @@ added: v8.5.0
 Creates a new `PerformanceMark` entry in the Performance Timeline. A `PerformanceMark` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'mark'`, and whose `performanceEntry.duration` is always `0`. Performance marks are used to mark specific significant moments in the Performance Timeline.
 
 ### performance.measure(name, startMark, endMark)
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -65,7 +61,6 @@ The `startMark` argument may identify any *existing* `PerformanceMark` in the Pe
 The `endMark` argument must identify any *existing* `PerformanceMark` in the Performance Timeline or any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `endMark` does not exist, an error will be thrown.
 
 ### performance.nodeTiming
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -75,7 +70,6 @@ added: v8.5.0
 An instance of the `PerformanceNodeTiming` class that provides performance metrics for specific Node.js operational milestones.
 
 ### performance.now()
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -85,7 +79,6 @@ added: v8.5.0
 Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
 ### performance.timeOrigin
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -95,7 +88,6 @@ added: v8.5.0
 The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
 
 ### performance.timerify(fn)
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -127,13 +119,11 @@ wrapped();
 ```
 
 ## Class: PerformanceEntry
-
 <!-- YAML
 added: v8.5.0
 -->
 
 ### performanceEntry.duration
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -143,7 +133,6 @@ added: v8.5.0
 The total number of milliseconds elapsed for this entry. This value will not be meaningful for all Performance Entry types.
 
 ### performanceEntry.name
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -153,7 +142,6 @@ added: v8.5.0
 The name of the performance entry.
 
 ### performanceEntry.startTime
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -163,7 +151,6 @@ added: v8.5.0
 The high resolution millisecond timestamp marking the starting time of the Performance Entry.
 
 ### performanceEntry.entryType
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -173,7 +160,6 @@ added: v8.5.0
 The type of the performance entry. Currently it may be one of: `'node'`, `'mark'`, `'measure'`, `'gc'`, `'function'`, or `'http2'`.
 
 ### performanceEntry.kind
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -188,15 +174,13 @@ When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` pro
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_WEAKCB`
 
 ## Class: PerformanceNodeTiming extends PerformanceEntry
-
 <!-- YAML
 added: v8.5.0
 -->
 
-Provides timing details for Node.js itself.
+Node.js'in kendisi için zamanlama ayrıntıları sağlar.
 
 ### performanceNodeTiming.bootstrapComplete
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -205,28 +189,7 @@ added: v8.5.0
 
 The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
-### performanceNodeTiming.clusterSetupEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
-
-### performanceNodeTiming.clusterSetupStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
-
 ### performanceNodeTiming.loopExit
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -236,7 +199,6 @@ added: v8.5.0
 The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
 
 ### performanceNodeTiming.loopStart
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -245,28 +207,7 @@ added: v8.5.0
 
 The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
-### performanceNodeTiming.moduleLoadEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which main module load ended.
-
-### performanceNodeTiming.moduleLoadStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which main module load started.
-
 ### performanceNodeTiming.nodeStart
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -275,48 +216,7 @@ added: v8.5.0
 
 The high resolution millisecond timestamp at which the Node.js process was initialized.
 
-### performanceNodeTiming.preloadModuleLoadEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which preload module load ended.
-
-### performanceNodeTiming.preloadModuleLoadStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which preload module load started.
-
-### performanceNodeTiming.thirdPartyMainEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
-
-### performanceNodeTiming.thirdPartyMainStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
-
 ### performanceNodeTiming.v8Start
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -328,12 +228,11 @@ The high resolution millisecond timestamp at which the V8 platform was initializ
 ## Class: PerformanceObserver
 
 ### new PerformanceObserver(callback)
-
 <!-- YAML
 added: v8.5.0
 -->
 
-* `callback` {Function} 
+* `callback` {Function}
   * `list` {PerformanceObserverEntryList}
   * `observer` {PerformanceObserver}
 
@@ -353,26 +252,23 @@ obs.observe({ entryTypes: ['mark'], buffered: true });
 
 performance.mark('test');
 ```
-
 Because `PerformanceObserver` instances introduce their own additional performance overhead, instances should not be left subscribed to notifications indefinitely. Users should disconnect observers as soon as they are no longer needed.
 
 The `callback` is invoked when a `PerformanceObserver` is notified about new `PerformanceEntry` instances. The callback receives a `PerformanceObserverEntryList` instance and a reference to the `PerformanceObserver`.
 
 ### performanceObserver.disconnect()
-
 <!-- YAML
 added: v8.5.0
---> Disconnects the 
+-->
+Disconnects the 
 
 `PerformanceObserver` instance from all notifications.
 
 ### performanceObserver.observe(options)
-
 <!-- YAML
 added: v8.5.0
 -->
-
-* `options` {Object} 
+* `options` {Object}
   * `entryTypes` {string[]} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
   * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Default:** `false`.
 
@@ -411,7 +307,6 @@ for (let n = 0; n < 3; n++)
 ```
 
 ## Class: PerformanceObserverEntryList
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -419,7 +314,6 @@ added: v8.5.0
 The `PerformanceObserverEntryList` class is used to provide access to the `PerformanceEntry` instances passed to a `PerformanceObserver`.
 
 ### performanceObserverEntryList.getEntries()
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -429,7 +323,6 @@ added: v8.5.0
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
 ### performanceObserverEntryList.getEntriesByName(name[, type])
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -441,7 +334,6 @@ added: v8.5.0
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
 ### performanceObserverEntryList.getEntriesByType(type)
-
 <!-- YAML
 added: v8.5.0
 -->
@@ -451,14 +343,14 @@ added: v8.5.0
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
-## Examples
+## Örnekler
 
 ### Measuring the duration of async operations
 
 The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
 
 ```js
-'use strict';
+'harfi harfine kullan';
 const async_hooks = require('async_hooks');
 const {
   performance,
@@ -498,9 +390,6 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
-
-<!-- eslint-disable no-global-assign -->
-
 ```js
 'use strict';
 const {
@@ -509,12 +398,12 @@ const {
 } = require('perf_hooks');
 const mod = require('module');
 
-// Monkey patch the require function
+// Maymun yama gerekli fonksiyonu
 mod.Module.prototype.require =
   performance.timerify(mod.Module.prototype.require);
 require = performance.timerify(require);
 
-// Activate the observer
+// Gözlemciyi aktif edin
 const obs = new PerformanceObserver((list) => {
   const entries = list.getEntries();
   entries.forEach((entry) => {

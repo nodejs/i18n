@@ -1,10 +1,10 @@
-# Using the internal/errors.js Module
+# Utilizzo del modulo internal/errors.js
 
-## What is internal/errors.js
+## Che cos'è internal/errors.js
 
-The `require('internal/errors')` module is an internal-only module that can be used to produce `Error`, `TypeError` and `RangeError` instances that use a static, permanent error code and an optionally parameterized message.
+Il modulo `require('internal/errors')` è un modulo esclusivamente interno che può essere utilizzato per produrre istanze `Error`, `TypeError` e `RangeError` che utilizzano un codice di errore statico e permanente e un messaggio parametrizzato opzionale.
 
-The intent of the module is to allow errors provided by Node.js to be assigned a permanent identifier. Without a permanent identifier, userland code may need to inspect error messages to distinguish one error from another. An unfortunate result of that practice is that changes to error messages result in broken code in the ecosystem. For that reason, Node.js has considered error message changes to be breaking changes. By providing a permanent identifier for a specific error, we reduce the need for userland code to inspect error messages.
+L'intento del modulo è consentire che gli errori forniti da Node.js vengano assegnati a un identifier permanente. Senza un identifier permanente, il codice userland potrebbe aver bisogno di ispezionare i messaggi di errore per distinguere un errore da un altro. Un risultato sfortunato di questa pratica è che le modifiche ai messaggi di errore creano codice danneggiato nell'ecosistema. For that reason, Node.js has considered error message changes to be breaking changes. By providing a permanent identifier for a specific error, we reduce the need for userland code to inspect error messages.
 
 *Note*: Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
 
@@ -55,7 +55,7 @@ When adding a new error, corresponding test(s) for the error message formatting 
 E('ERR_SOCKET_ALREADY_BOUND', 'Socket is already bound');
 ```
 
-If the error message is not a constant string then tests to validate the formatting of the message based on the parameters used when creating the error should be added to `test/parallel/test-internal-errors.js`. These tests should validate all of the different ways parameters can be used to generate the final message string. A simple example is:
+If the error message is not a constant string then tests to validate the formatting of the message based on the parameters used when creating the error should be added to `test/parallel/test-internal-errors.js`.  These tests should validate all of the different ways parameters can be used to generate the final message string. A simple example is:
 
 ```js
 // Test ERR_TLS_CERT_ALTNAME_INVALID
@@ -64,9 +64,9 @@ assert.strictEqual(
   'Hostname/IP does not match certificate\'s altnames: altname');
 ```
 
-In addition, there should also be tests which validate the use of the error based on where it is used in the codebase. For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message. This will reduce the amount of test change required when the message for an error changes.
+In addition, there should also be tests which validate the use of the error based on where it is used in the codebase.  For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message.  This will reduce the amount of test change required when the message for an error changes.
 
-For example:
+Per esempio:
 
 ```js
 assert.throws(() => {
@@ -139,6 +139,6 @@ The `myError` object will have a `code` property equal to the `key` and a `name`
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Returns: {string}
+* Restituisce: {string}
 
 Returns the formatted error message string for the given `key`.
