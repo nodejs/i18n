@@ -2,7 +2,7 @@ name: Nightly Sync of content
 
 on:
   schedule:
-  - cron: '0 3 * * *'
+  - cron: '0 3 * * *' # run daily at 3am
 
 jobs:
   checks:
