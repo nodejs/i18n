@@ -39,6 +39,10 @@ Help us get the documentation translated into your native language and reach mor
 - [Ukrainian](https://crowdin.com/project/nodejs/uk)
 - [Vietnamese](https://crowdin.com/project/nodejs/vi)
 
+### CrowdIn Glossary
+
+We have a [CrowdIn Glossary](crowdin-glossary.json) that has some terms which are noted as shared or translateable across the project. If a term is missing, please add it! This glossary will automatically be used by CrowdIn to let translators know about each term when they come across them. 
+
 ## About
 
 The Node.js i18n Working Group is dedicated to the support and improvement of both Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
