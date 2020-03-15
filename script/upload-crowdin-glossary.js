@@ -2,7 +2,7 @@ require('dotenv-safe').load()
 
 const globals = require('globals')
 const nodeCoreModules = require('builtins')('10.0.0')
-const glossary = require('crowdin-glossary')({project: 'nodejs'})
+const glossary = require('crowdin-glossary')({ project: 'nodejs' })
 const { glossary: crowdinGlossary } = require('../crowdin-glossary.json')
 
 main()
