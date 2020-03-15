@@ -1,6 +1,12 @@
-name: Test
+name: Lint JavaScript files
 
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+    - "**/*.js"
+    - "package.json"
+    - "package-lock.json"
+    - ".github/workflows/js-lint.yml"
 
 jobs:
   checks:
@@ -21,6 +27,5 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install
         run: npm ci
-
-      - name: Test
-        run: npm test
+      - name: Lint JavaScript files
+        run: npm run lint
