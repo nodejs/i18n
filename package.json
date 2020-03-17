@@ -21,7 +21,7 @@
     "test": "jest",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "status": "script/status.js"
+    "status": "node script/status.js"
   },
   "devDependencies": {
     "builtins": "^3.0.1",
