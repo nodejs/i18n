@@ -44,3 +44,32 @@ test('includes only markdown files, ignoring images and other files', () => {
     })
   })
 })
+
+describe('npm module', () => {
+  const {
+    allPages,
+    getPages,
+    locales,
+    nodeVersions
+  } = require('.')
+
+  test('exports `allPages` array', () => {
+    expect(Array.isArray(allPages)).toBe(true)
+    expect(allPages.length).toBeGreaterThan(1)
+  })
+
+  test('exports `getPages` function', () => {
+    expect(typeof getPages).toBe('function')
+  })
+
+  test('exports `locales` array', () => {
+    expect(Array.isArray(locales)).toBe(true)
+    expect(locales.length).toBeGreaterThan(1)
+    expect(locales).toContain('en-US')
+    expect(locales).toContain('es-ES')
+  })
+
+  test('exports `nodeVersions` object from package.json', () => {
+    expect(nodeVersions).toEqual(require('./package.json').nodeVersions)
+  })
+})

@@ -15,6 +15,7 @@
     "Zeke Sikelianos <zeke@sikelianos.com>"
   ],
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "collect": "node script/collect.js",
     "upload-crowdin-glossary": "node script/upload-crowdin-glossary.js",
@@ -45,5 +46,7 @@
     "verbose": true,
     "testURL": "http://localhost"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
