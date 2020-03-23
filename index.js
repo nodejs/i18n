@@ -17,8 +17,7 @@ const allPages = walk(contentDir, { directories: false })
     return { locale, nodeVersion, filePath, fullPath }
   })
 
-
-async function getPages(nodeMajor, locale) {
+async function getPages (nodeMajor, locale) {
   // set defaults
   nodeMajor = nodeMajor || nodeMajors[0] // latest
   locale = locale || 'en-US'
