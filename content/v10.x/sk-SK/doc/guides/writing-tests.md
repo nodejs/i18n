@@ -132,7 +132,7 @@ process.on('exit', function() {
   assert.equal(response, 1, 'http request "response" callback was not called');
 });
 
-const server = http.createServer(function(req, res) {
+const server = http.createServer((req, res) => {
   request++;
   res.end();
 }).listen(0, function() {
@@ -140,7 +140,7 @@ const server = http.createServer(function(req, res) {
     agent: null,
     port: this.address().port
   };
-  http.get(options, function(res) {
+  http.get(options, (res) => {
     response++;
     res.resume();
     server.close();
@@ -155,14 +155,14 @@ This test could be greatly simplified by using `common.mustCall` like this:
 const common = require('../common');
 const http = require('http');
 
-const server = http.createServer(common.mustCall(function(req, res) {
+const server = http.createServer(common.mustCall((req, res) => {
   res.end();
 })).listen(0, function() {
   const options = {
     agent: null,
     port: this.address().port
   };
-  http.get(options, common.mustCall(function(res) {
+  http.get(options, common.mustCall((res) => {
     res.resume();
     server.close();
   }));
@@ -183,6 +183,22 @@ const countdown = new Countdown(2, function() {
 
 countdown.dec();
 countdown.dec(); // The countdown callback will be invoked now.
+```
+
+#### Testing promises
+
+When writing tests involving promises, it is generally good to wrap the `onFulfilled` handler, otherwise the test could successfully finish if the promise never resolves (pending promises do not keep the event loop alive). The `common` module automatically adds a handler that makes the process crash - and hence, the test fail - in the case of an `unhandledRejection` event. It is possible to disable it with `common.disableCrashOnUnhandledRejection()` if needed.
+
+```javascript
+const common = require('../common');
+const assert = require('assert');
+const fs = require('fs').promises;
+
+// Wrap the `onFulfilled` handler in `common.mustCall()`.
+fs.readFile('test-file').then(
+  common.mustCall(
+    (content) => assert.strictEqual(content.toString(), 'test2')
+  ));
 ```
 
 ### Flags
@@ -216,6 +232,18 @@ assert.throws(
   /^Error: Wrong value$/ // Instead of something like /Wrong value/
 );
 ```
+
+### Console output
+
+Output written by tests to stdout or stderr, such as with `console.log()` or `console.error()`, can be useful when writing tests, as well as for debugging them during later maintenance. The output will be suppressed by the test runner (`./tools/test.py`) unless the test fails, but will always be displayed when running tests directly with `node`. For failing tests, the test runner will include the output along with the failed test assertion in the test report.
+
+Some output can help debugging by giving context to test failures. For example, when troubleshooting tests that timeout in CI. With no log statements, we have no idea where the test got hung up.
+
+There have been cases where tests fail without `console.log()`, and then pass when its added, so be cautious about its use, particularly in tests of the I/O and streaming APIs.
+
+Excessive use of console output is discouraged as it can overwhelm the display, including the Jenkins console and test report displays. Be particularly cautious of output in loops, or other contexts where output may be repeated many times in the case of failure.
+
+In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
 
 ### ES.Next features
 
@@ -305,6 +333,18 @@ The test can be executed by running the `cctest` target:
 $ make cctest
 ```
 
+A filter can be applied to run single/multiple test cases:
+
+```console
+$ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
+```
+
+`cctest` can also be run directly which can be useful when debugging:
+
+```console
+$ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
+```
+
 ### Node.js test fixture
 
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
@@ -313,4 +353,4 @@ It also contains a helper to create arguments to be passed into Node.js. It will
 
 ### Test Coverage
 
-To generate a test coverage report, see the [Test Coverage section of the Pull Requests guide](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
+To generate a test coverage report, see the [Test Coverage section of the Building guide](https://github.com/nodejs/node/blob/master/BUILDING.md#running-coverage).
