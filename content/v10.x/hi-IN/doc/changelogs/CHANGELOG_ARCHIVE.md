@@ -3132,8 +3132,7 @@ https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
 https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
 
-    * Fixed no 'end' event on long chunked HTTP messages
-      https://github.com/joyent/node/issues/77
+    * Fixed no 'end' event on long chunked HTTP messages https://github.com/joyent/node/issues/77
     
     * Remove legacy modules http_old and tcp_old
     * Support DNS MX queries (Jérémy Lal)
@@ -3141,8 +3140,7 @@ https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
     * Fix large socket write (tlb@tlb.org)
     * Fix child process exit codes (Felix Geisendörfer)
     
-    * Allow callers to disable PHP/Rails style parameter munging in
-      querystring.stringify (Thomas Lee)
+    * Allow callers to disable PHP/Rails style parameter munging in querystring.stringify (Thomas Lee)
     
     * Upgrade V8 to 2.2.6
     
@@ -3156,8 +3154,7 @@ https://github.com/nodejs/node/commit/caa828a242f39b6158084ef4376355161c14fe34
     * OpenSSL support. Still undocumented (see tests). (Rhys Jones)
     * API: Unhandled 'error' events throw.
     
-    * Script class with eval-function-family in binding('evals') plus tests.
-      (Herbert Vojcik)
+    * Script class with eval-function-family in binding('evals') plus tests. (Herbert Vojcik)
     
     * stream.setKeepAlive (Julian Lamb)
     * Bugfix: Force no body on http 204 and 304
@@ -3178,8 +3175,7 @@ https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
     * After V8 heap is compact, don't use a timer every 2 seconds.
     
     * Improve nextTick implementation.
-    * Add primitive support for Upgrading HTTP connections.
-      (See commit log for docs 760bba5)
+    * Add primitive support for Upgrading HTTP connections. (See commit log for docs 760bba5)
     
     * Add timeout and maxBuffer options to child_process.exec
     * Fix bugs.
@@ -3201,8 +3197,7 @@ https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
      - Legacy modules can be accessed at 'http_old' and 'tcp_old'
     
     * Replace udns with c-ares. (Krishna Rajendran)
-    * New documentation system using Markdown and Ronn
-      (Tim Caswell, Micheil Smith)
+    * New documentation system using Markdown and Ronn (Tim Caswell, Micheil Smith)
     
     * Better idle-time GC
     * Countless small bug fixes.
@@ -3236,8 +3231,7 @@ https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
     * Fix bugs in fs.create*Stream (Felix Geisendörfer)
     
     * Deprecate process.mixin, process.unloop
-    * Remove the 'Error: (no message)' exceptions, print stack
-      trace instead
+    * Remove the 'Error: (no message)' exceptions, print stack trace instead
     
     * INI parser bug fixes (Isaac Schlueter)
     * FreeBSD fixes (Vanilla Hsu)
@@ -3256,11 +3250,9 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
       - Move process.inherits to sys
     
     * Improve Solaris port
-    * tcp.Connection.prototype.write now returns boolean to indicate if
-      argument was flushed to the kernel buffer.
+    * tcp.Connection.prototype.write now returns boolean to indicate if argument was flushed to the kernel buffer.
     
-    * Added fs.link, fs.symlink, fs.readlink, fs.realpath
-      (Rasmus Andersson)
+    * Added fs.link, fs.symlink, fs.readlink, fs.realpath (Rasmus Andersson)
     
     * Add setgid,getgid (James Duncan)
     * Improve sys.inspect (Benjamin Thomas)
@@ -3281,23 +3273,10 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
     * Major API Changes
-      - Promises removed. See
-        http://groups.google.com/group/nodejs/msg/426f3071f3eec16b
-        http://groups.google.com/group/nodejs/msg/df199d233ff17efa
-        The API for fs was
-           fs.readdir("/usr").addCallback(function (files) {
-             puts("/usr files: " + files);
-           });
-        It is now
-           fs.readdir("/usr", function (err, files) {
-             if (err) throw err;
-             puts("/usr files: " + files);
-           });
+      - Promises removed. See http://groups.google.com/group/nodejs/msg/426f3071f3eec16b http://groups.google.com/group/nodejs/msg/df199d233ff17efa The API for fs was fs.readdir("/usr").addCallback(function (files) { puts("/usr files: " + files); }); It is now fs.readdir("/usr", function (err, files) { if (err) throw err; puts("/usr files: " + files); });
       - Synchronous fs operations exposed, use with care.
-      - tcp.Connection.prototype.readPause() and readResume()
-        renamed to pause() and resume()
-      - http.ServerResponse.prototype.sendHeader() renamed to
-        writeHeader(). Now accepts reasonPhrase.
+      - tcp.Connection.prototype.readPause() and readResume() renamed to pause() and resume()
+      - http.ServerResponse.prototype.sendHeader() renamed to writeHeader(). Now accepts reasonPhrase.
     
     * Compact garbage on idle.
     * Configurable debug ports, and --debug-brk (Zoran Tomicic)
@@ -3327,13 +3306,10 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
       - HTTP finish() --------------------> close()
       - HTTP 'body' event ----------------> 'data'
       - HTTP 'complete' event ------------> 'end'
-      - http.Client.prototype.close() (formerly finish()) no longer
-        takes an argument. Add the 'response' listener manually.
-      - Allow strings for the flag argument to fs.open
-        ("r", "r+", "w", "w+", "a", "a+")
+      - http.Client.prototype.close() (formerly finish()) no longer takes an argument. Add the 'response' listener manually.
+      - Allow strings for the flag argument to fs.open ("r", "r+", "w", "w+", "a", "a+")
     
-    * Added multiple arg support for sys.puts(), print(), etc.
-      (tj@vision-media.ca)
+    * Added multiple arg support for sys.puts(), print(), etc. (tj@vision-media.ca)
     
     * sys.inspect(Date) now shows the date value (Mark Hansen)
     * Calculate page size with getpagesize for armel (Jérémy Lal)
@@ -3341,15 +3317,11 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
     * Bugfix: stderr flushing.
     * Bugfix: Promise late chain (Yuichiro MASUI)
     
-    * Bugfix: wait() on fired promises
-      (Felix Geisendörfer, Jonas Pfenniger)
+    * Bugfix: wait() on fired promises (Felix Geisendörfer, Jonas Pfenniger)
     
-    * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for
-      accessor methods. Was causing a crash with Eclipse debugger.
-      (Zoran Tomicic)
+    * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for accessor methods. Was causing a crash with Eclipse debugger. (Zoran Tomicic)
     
-    * Bugfix: Throw from connection.connect if resolving.
-      (Reported by James Golick)
+    * Bugfix: Throw from connection.connect if resolving. (Reported by James Golick)
     
 
 <a id="0.1.28"></a>
@@ -3378,25 +3350,20 @@ https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
     * Implemented __dirname (Felix Geisendörfer)
-    * Downcase process.ARGV, process.ENV, GLOBAL
-      (now process.argv, process.env, global)
+    * Downcase process.ARGV, process.ENV, GLOBAL (now process.argv, process.env, global)
     
-    * Bug Fix: Late promise promise callbacks firing
-      (Felix Geisendörfer, Jonas Pfenniger)
+    * Bug Fix: Late promise promise callbacks firing (Felix Geisendörfer, Jonas Pfenniger)
     
     * Make assert.AssertionError instance of Error
-    * Removed inline require call for querystring
-      (self@cloudhead.net)
+    * Removed inline require call for querystring (self@cloudhead.net)
     
-    * Add support for MX, TXT, and SRV records in DNS module.
-      (Blaine Cook)
+    * Add support for MX, TXT, and SRV records in DNS module. (Blaine Cook)
     
     * Bugfix: HTTP client automatically reconnecting
     * Adding OS X .dmg build scripts. (Standa Opichal)
     
     * Bugfix: ObjectWrap memory leak
-    * Bugfix: Multipart handle Content-Type headers with charset
-      (Felix Geisendörfer)
+    * Bugfix: Multipart handle Content-Type headers with charset (Felix Geisendörfer)
     
     * Upgrade http-parser to fix header overflow attack.
     * Upgrade V8 to 2.1.0
@@ -3416,8 +3383,7 @@ https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
     * API: Move Promise and EventEmitter into 'events' module
     * API: Add process.nextTick()
     
-    * Allow optional params to setTimeout, setInterval
-      (Micheil Smith)
+    * Allow optional params to setTimeout, setInterval (Micheil Smith)
     
     * API: change some Promise behavior (Felix Geisendörfer)
       - Removed Promise.cancel()
@@ -3437,13 +3403,7 @@ https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
     * sys.inspect() improvements (Tim Caswell)
     * path module improvements (isaacs, Benjamin Thomas)
     
-    * API: request.uri -> request.url
-      It is no longer an object, but a string. The 'url' module
-      was added to parse that string. That is, node no longer
-      parses the request URL automatically.
-         require('url').parse(request.url)
-      is roughly equivalent to the old request.uri object.
-      (isaacs)
+    * API: request.uri -> request.url It is no longer an object, but a string. The 'url' module was added to parse that string. That is, node no longer parses the request URL automatically. require('url').parse(request.url) is roughly equivalent to the old request.uri object. (isaacs)
     
     * Bugfix: Several libeio related race conditions.
     * Better errors for multipart library (Felix Geisendörfer)
@@ -3458,8 +3418,7 @@ https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
 https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
-    * Bugfix: don't chunk responses to HTTP/1.0 clients, even if
-      they send Connection: Keep-Alive (e.g. wget)
+    * Bugfix: don't chunk responses to HTTP/1.0 clients, even if they send Connection: Keep-Alive (e.g. wget)
     
     * Bugfix: libeio race condition
     * Bugfix: Don't segfault on unknown http method
@@ -3499,8 +3458,7 @@ https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
     * Statically define string symbols for performance improvement
     
     * Bugfix: ARGV[0] weirdness
-    * Added superCtor to ctor.super_ instead superCtor.prototype.
-      (Johan Dahlberg)
+    * Added superCtor to ctor.super_ instead superCtor.prototype. (Johan Dahlberg)
     
     * http-parser supports webdav methods
     * API: http.Client.prototype.request() (Christopher Lenz)
@@ -3533,8 +3491,7 @@ https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
     * Add gnutls version to configure script
     * Add V8 heap info to process.memoryUsage()
     
-    * process.watchFile callback has 2 arguments with the stat object
-      (choonkeat@gmail.com)
+    * process.watchFile callback has 2 arguments with the stat object (choonkeat@gmail.com)
     
 
 <a id="0.1.19"></a>
@@ -3543,21 +3500,17 @@ https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
 
 https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
-    * Feature: Initial TLS support for TCP servers and clients.
-      (Rhys Jones)
+    * Feature: Initial TLS support for TCP servers and clients. (Rhys Jones)
     
     * Add options to process.watchFile()
     * Add process.umask() (Friedemann Altrock)
     
     * Bugfix: only detach timers when active.
-    * Bugfix: lib/file.js write(), shouldn't always emit errors or success
-      (onne@onnlucky.com)
+    * Bugfix: lib/file.js write(), shouldn't always emit errors or success (onne@onnlucky.com)
     
-    * Bugfix: Memory leak in fs.write
-      (Reported by onne@onnlucky.com)
+    * Bugfix: Memory leak in fs.write (Reported by onne@onnlucky.com)
     
-    * Bugfix: Fix regular expressions detecting outgoing message headers.
-      (Reported by Elliott Cable)
+    * Bugfix: Fix regular expressions detecting outgoing message headers. (Reported by Elliott Cable)
     
     * Improvements to Multipart parser (Felix Geisendörfer)
     * New HTTP parser
@@ -3572,18 +3525,14 @@ https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
     * Feature: process.watchFile() process.unwatchFile()
-    * Feature: "uncaughtException" event on process
-      (Felix Geisendörfer)
+    * Feature: "uncaughtException" event on process (Felix Geisendörfer)
     
     * Feature: 'drain' event to tcp.Connection
-    * Bugfix: Promise.timeout() blocked the event loop
-      (Felix Geisendörfer)
+    * Bugfix: Promise.timeout() blocked the event loop (Felix Geisendörfer)
     
-    * Bugfix: sendBody() and chunked utf8 strings
-      (Felix Geisendörfer)
+    * Bugfix: sendBody() and chunked utf8 strings (Felix Geisendörfer)
     
-    * Supply the strerror as a second arg to the tcp.Connection close
-      event (Johan Sørensen)
+    * Supply the strerror as a second arg to the tcp.Connection close event (Johan Sørensen)
     
     * Add EventEmitter.removeListener (frodenius@gmail.com)
     * Format JSON for inspecting objects (Felix Geisendörfer)
@@ -3598,8 +3547,7 @@ https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
     * Feature: process.chdir() (Brandon Beacher)
-    * Revert http parser upgrade. (b893859c34f05db5c45f416949ebc0eee665cca6)
-      Broke keep-alive.
+    * Revert http parser upgrade. (b893859c34f05db5c45f416949ebc0eee665cca6) Broke keep-alive.
     
     * API: rename process.inherits to sys.inherits
     
@@ -3620,10 +3568,7 @@ https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
       - Move node.\* into process.\*
       - Move node.dns into module "dns"
       - Move node.fs into module "posix"
-      - process is no longer the global object. GLOBAL is.
-    For more information on the API changes see:
-      http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6
-      http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
+      - process is no longer the global object. GLOBAL is. For more information on the API changes see: http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6 http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
     
     * Feature: process.platform, process.memoryUsage()
     * Feature: promise.cancel() (Felix Geisendörfer)
@@ -3640,8 +3585,7 @@ https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
     * Many build system fixes (esp. for OSX users)
     * Feature: promise.timeout() (Felix Geisendörfer)
     
-    * Feature: Added external interface for signal handlers, process.pid, and
-      process.kill() (Brandon Beacher)
+    * Feature: Added external interface for signal handlers, process.pid, and process.kill() (Brandon Beacher)
     
     * API: Rename node.libraryPaths to require.paths
     * Bugfix: 'data' event for stdio should emit a string
@@ -3695,13 +3639,9 @@ https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
     * Add warning when coroutine stack size grows too large.
     * Enhance repl library (Ray Morgan)
     
-    * Bugfix: build script for
-        GCC 4.4 (removed -Werror in V8),
-        on Linux 2.4,
-        and with Python 2.4.4.
+    * Bugfix: build script for GCC 4.4 (removed -Werror in V8), on Linux 2.4, and with Python 2.4.4.
     
-    * Add read() and write() to /file.js to read and write
-      whole files at once.
+    * Add read() and write() to /file.js to read and write whole files at once.
     
 
 <a id="0.1.12"></a>
@@ -3750,14 +3690,11 @@ https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
     * Feature: raw string encoding "raws"
     * Feature: access to environ through "ENV"
     
-    * Feature: add isDirectory, isFile, isSocket, ... methods
-      to stats object.
+    * Feature: add isDirectory, isFile, isSocket, ... methods to stats object.
     
-    * Bugfix: Internally use full paths when loading modules
-      this fixes a shebang loading problem.
+    * Bugfix: Internally use full paths when loading modules this fixes a shebang loading problem.
     
-    * Bugfix: Add '--' command line argument for separating v8
-      args from program args.
+    * Bugfix: Add '--' command line argument for separating v8 args from program args.
     
     * Add man page.
     * Add node-repl
@@ -3806,15 +3743,12 @@ https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
     * Feature: promise.wait()
     
     * Feature: node.stdio
-    * Feature: EventEmitters emit "newListener" when listeners are
-      added
+    * Feature: EventEmitters emit "newListener" when listeners are added
     
-    * API:  Use flat object instead of array-of-arrays for HTTP
-      headers.
+    * API:  Use flat object instead of array-of-arrays for HTTP headers.
     
     * API: Remove buffered file object (node.File)
-    * API: require(), include() are synchronous. (Uses
-      continuations.)
+    * API: require(), include() are synchronous. (Uses continuations.)
     
     * API: Deprecate onLoad and onExit.
     * API: Rename node.Process to node.ChildProcess
@@ -3838,8 +3772,7 @@ https://github.com/nodejs/node/commit/9c97b1db3099d61cd292aa59ec2227a619f3a7ab
 
 https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
-    * Bugfix: Buggy connections could crash node.js. Now check
-      connection before sending data every time (Kevin van Zonneveld)
+    * Bugfix: Buggy connections could crash node.js. Now check connection before sending data every time (Kevin van Zonneveld)
     
     * Bugfix: stdin fd (0) being ignored by node.File. (Abe Fettig)
     * API: Remove connection.fullClose()
@@ -3847,8 +3780,7 @@ https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
     * API: Return the EventEmitter from addListener for chaining.
     * API: tcp.Connection "disconnect" event renamed to "close"
     
-    * Upgrade evcom
-      Upgrade v8 to 1.3.6
+    * Upgrade evcom Upgrade v8 to 1.3.6
     
 
 <a id="0.1.4"></a>
@@ -3861,16 +3793,13 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
     * Enable test-tcp-many-clients.
     
     * Add -m32 gcc flag to udns.
-    * Add connection.readPause() and connection.readResume()
-      Add IncomingMessage.prototype.pause() and resume().
+    * Add connection.readPause() and connection.readResume() Add IncomingMessage.prototype.pause() and resume().
     
     * Fix http benchmark. Wasn't correctly dispatching.
     * Bugfix: response.setBodyEncoding("ascii") not working.
     
     * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
-    * Upgrade v8 to 1.3.4
-      Upgrade libev to 3.8
-      Upgrade http_parser to v0.2
+    * Upgrade v8 to 1.3.4 Upgrade libev to 3.8 Upgrade http_parser to v0.2
     
 
 <a id="0.1.3"></a>
@@ -3880,8 +3809,7 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
     * Upgrade v8 to 1.3.2
-    * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not
-      working
+    * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not working
     
     * Bugfix: node.encodeUtf8 was broken. (Connor Dunn)
     * Add ranlib to udns Makefile.
@@ -3903,8 +3831,7 @@ https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
     * node.tcp.Server's backlog option is now an argument to listen()
     
     * Upgrade V8 to 1.3.1
-    * Bugfix: Default to chunked for client requests without
-      Content-Length.
+    * Bugfix: Default to chunked for client requests without Content-Length.
     
     * Bugfix: Line numbers in stack traces.
     * Bugfix: negative integers in raw encoding stream
@@ -3919,28 +3846,22 @@ https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
 https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
 
     * Simplify and clean up ObjectWrap.
-    * Upgrade liboi (which is now called evcom)
-      Upgrade libev to 3.7
-      Upgrade V8 to 1.2.14
+    * Upgrade liboi (which is now called evcom) Upgrade libev to 3.7 Upgrade V8 to 1.2.14
     
     * Array.prototype.encodeUtf8 renamed to node.encodeUtf8(array)
     * Move EventEmitter.prototype.emit() completely into C++.
     
-    * Bugfix: Fix memory leak in event emitters.
-      http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
+    * Bugfix: Fix memory leak in event emitters. http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
     
     * Bugfix: Had problems reading scripts with non-ascii characters.
     * Bugfix: Fix Detach() in node::Server
     
-    * Bugfix: Sockets not properly reattached if reconnected during
-      disconnect event.
+    * Bugfix: Sockets not properly reattached if reconnected during disconnect event.
     
-    * Bugfix: Server-side clients not attached between creation and
-      on_connect.
+    * Bugfix: Server-side clients not attached between creation and on_connect.
     
     * Add 'close' event to node.tcp.Server
-    * Simplify and clean up http.js. (Takes more advantage of event
-      infrastructure.)
+    * Simplify and clean up http.js. (Takes more advantage of event infrastructure.)
     
     * Add benchmark scripts. Run with "make benchmark".
     
@@ -3955,14 +3876,12 @@ https://github.com/nodejs/node/commit/813b53938b40484f63e7324c030e33711f26a149
     * EventEmitter and Promise interfaces. (Breaks previous API.)
     
     * Remove node.Process constructor in favor of node.createProcess
-    * Add -m32 flags for compiling on x64 platforms.
-      (Thanks to András Bártházi)
+    * Add -m32 flags for compiling on x64 platforms. (Thanks to András Bártházi)
     
     * Upgrade v8 to 1.2.10 and libev to 3.6
     * Bugfix: Timer::RepeatSetter wasn't working.
     
-    * Bugfix: Spawning many processes in a loop
-      (reported by Felix Geisendörfer)
+    * Bugfix: Spawning many processes in a loop (reported by Felix Geisendörfer)
     
 
 <a id="0.0.6"></a>
@@ -3977,8 +3896,7 @@ https://github.com/nodejs/node/commit/fbe0be19ebfb422d8fa20ea5204c1713e9214d5f
     * New node.Process API
     * Clean up build tools, use v8's test runner.
     
-    * Use ev_unref() instead of starting/stopping the eio thread
-      pool watcher.
+    * Use ev_unref() instead of starting/stopping the eio thread pool watcher.
     
 
 <a id="0.0.5"></a>
@@ -3994,8 +3912,7 @@ https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
     * Accept ports as strings in the TCP client and server.
     
     * Bugfix: HTTP Client race
-    * Bugfix: freeaddrinfo() wasn't getting called after
-      getaddrinfo() for TCP servers
+    * Bugfix: freeaddrinfo() wasn't getting called after getaddrinfo() for TCP servers
     
     * Add "opening" to TCP client readyState
     * Add remoteAddress to TCP client
