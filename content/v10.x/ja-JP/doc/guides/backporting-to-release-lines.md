@@ -53,13 +53,13 @@ hint: and commit the result with 'git commit'
 6. Leave the commit message as is. If you think it should be modified, comment in the Pull Request. The `Backport-PR-URL` metadata does need to be added to the commit, but this will be done later.
 7. Make sure `make -j4 test` passes.
 8. Push the changes to your fork
-9. Open a pull request:
-   1. Be sure to target the `v8.x-staging` branch in the pull request.
-   1. Include the backport target in the pull request title in the following format — `[v8.x backport] <commit title>`. Example: `[v8.x backport] process: improve performance of nextTick`
-   1. Check the checkbox labeled "Allow edits from maintainers".
-   1. In the description add a reference to the original PR.
-   1. Amend the commit message and include a `Backport-PR-URL:` metadata and re-push the change to your fork.
-   1. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
+9. Open a pull request: 
+    1. Be sure to target the `v8.x-staging` branch in the pull request.
+    2. Include the backport target in the pull request title in the following format — `[v8.x backport] <commit title>`. Example: `[v8.x backport] process: improve performance of nextTick`
+    3. Check the checkbox labeled "Allow edits from maintainers".
+    4. In the description add a reference to the original PR.
+    5. Amend the commit message and include a `Backport-PR-URL:` metadata and re-push the change to your fork.
+    6. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
 10. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v8.x-staging`
 
 After the PR lands replace the `backport-requested-v8.x` label on the original PR with `backported-to-v8.x`.
