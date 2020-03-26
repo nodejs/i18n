@@ -1,18 +1,18 @@
-# Style Guide
+# शैली मार्गदर्शिका
 
 * Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
+  * कुछ फ़ाइलें, जैसे कि उच्च-स्तरीय मार्कअप फ़ाइलें, अपवाद हैं ।
 * Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
+* `. editorconfig ` में वर्णित स्वरूपण पसंद किया जाता है । 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
+* Avoid personal pronouns in reference documentation ("I", "you", "we"). 
+  * Personal pronouns are acceptable in colloquial documentation such as guides.
+  * Use gender-neutral pronouns and gender-neutral plural nouns. 
+    * OK: "they", "their", "them", "folks", "people", "developers"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
@@ -38,12 +38,16 @@
   * Use a capital letter after the "Note:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
 * Function arguments or object properties should use the following format: 
-  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
+  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
+  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
   * OK: JavaScript, Google's V8
   * NOT OK: Javascript, Google's v8
+* Use *Node.js* and not *Node*, *NodeJS*, or similar variants. 
+  * When referring to the executable, *`node`* is acceptable.
+
+See also API documentation structure overview in [doctools README](../tools/doc/README.md).
