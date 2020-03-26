@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): Wenn Sie diese Datei verschieben, stellen Sie sicher, dass @//tools/doc/html.js auf den neuen Ort verweist.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -10,7 +10,7 @@
 * [Annahmen testen](assert.html)
 * [Asynchrone Auslöser](async_hooks.html)
 * [Puffer](buffer.html)
-* [C++ Erweiterungen](addons.html)
+* [C++-Erweiterungen](addons.html)
 * [C/C++ Erweiterungen - N-API](n-api.html)
 * [Tochter-Prozesse](child_process.html)
 * [Cluster](cluster.html)
@@ -42,7 +42,7 @@
 * [ReadLine](readline.html)
 * [REPL](repl.html)
 * [Stream](stream.html)
-* [String Dekodierer](string_decoder.html)
+* [String Dekorierer](string_decoder.html)
 * [Timer](timers.html)
 * [TLS/SSL](tls.html)
 * [Trace Events](tracing.html)
