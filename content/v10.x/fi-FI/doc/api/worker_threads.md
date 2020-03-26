@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
