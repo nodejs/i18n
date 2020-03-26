@@ -175,7 +175,7 @@ added: v8.12.0
 
 * `err` {number}
 
-* Returns: {string}
+* Retourneert: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -274,7 +274,7 @@ changes:
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Default:** `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
+  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Standaard:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Default:** `100`.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
 
@@ -552,7 +552,7 @@ Different Node.js build configurations support different sets of encodings. Whil
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `opties` {Object} 
-  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Standaard:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Standaard:** `false`.
 
 Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
@@ -645,7 +645,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.error()`][].
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -1055,6 +1055,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.log()`][].
 
 Deprecated predecessor of `console.log`.
