@@ -1,16 +1,17 @@
-# OS (Sistema Operativo)
+# SO
 
 <!--introduced_in=v0.10.0-->
 
-> Estability: 2 - Estable
+> Estabilidad: 2 - Estable
 
-El módulo `os` proporciona una serie de métodos de utilidad relacionados con el sistema operativo. Se puede acceder a él utilizando:
+El módulo `so` provee un número de métodos de utilidad relacionados al sistema operativo. Se puede acceder a él utilizando:
 
 ```js
 const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -20,49 +21,53 @@ added: v0.7.8
 Una constante de strings que define el marcador de fin de línea específico para el sistema operativo:
 
 * `\n` en POSIX
-* `\r\n` en Windows
+* `\r\n\r\n` en Windows
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
 
 * Devuelve: {string}
 
-El método `os.arch()` devuelve una string que identifica la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
+The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-Los posibles valores actuales son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` y `'x64'`.
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Es equivalente a [`process.arch`][].
+Equivalente para [`process.arch`][].
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
 
 * {Object}
 
-Devuelve un objeto que contiene las constantes específicas del sistema operativo comúnmente utilizadas para códigos de error, señales de procesos, etc. Las constantes específicas actualmente definidas están descritas en [OS Constants](#os_os_constants_1).
+Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Retorno: {Object[]}
 
-El método `os.cpus()` devuelve un array de objetos que contienen información sobre cada núcleo lógico del CPU.
+The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
 Las propiedades incluidas en cada objeto incluyen:
 
-* `model` {string}
+* `model`{string}
 * `speed` {number} (en MHz)
-* `times` {Object}
-  * `user` {number} El número de milisegundos que el CPU ha pasado en el modo de usuario.
-  * `nice` {number} El número de milisegundos que el CPU ha pasado en el modo "nice".
-  * `sys` {number} El número de milisegundos que el CPU ha pasado en el modo "sys".
-  * `idle` {number} El número de milisegundos que el CPU ha pasado en el modo "iddle" (ausente).
-  * `irq` {number} El número de milisegundos que el CPU ha pasado en el modo "irq".
+* `times` {Object} 
+  * `user`{number} El número de milisegundos que el CPU ha estado en modo usuario.
+  * `nice` {number} El número de milisegundos que el CPU ha estado en modo nice.
+  * `sys` {number} El número de milisegundos que el CPU ha estado en modo sys.
+  * `idle` {number} El número de milisegundos que el CPU ha estado en modo idle.
+  * `irq` {number} El número de milisegundos que el CPU ha estado en modo irq.
+
 ```js
 [
   {
@@ -156,74 +161,89 @@ Las propiedades incluidas en cada objeto incluyen:
 ]
 ```
 
-Porque los valores `nice` son específicos de UNIX, en Windows los valores `nice` todos los procesos son siempre 0.
+Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
 ## os.endianness()<!-- YAML
 added: v0.9.4
--->* Devuelve: {string}
+-->
+
+* Devuelve: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
-Los posibles valores son:
+Los valores posibles son:
 
-* `'BE'` para big endian (gran endian)
-* `'LE'` para little endian (pequeño endian).
+* `'BE'` para gran Endian
+* `'LE'` para pequeño Endian.
 
 ## os.freemem()<!-- YAML
 added: v0.3.3
--->* Retorno: {integer}
+-->
 
-El método `os.freemem()` devuelve la cantidad de memoria libre del sistema en bytes como un entero.
+* Retorno: {integer}
+
+The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
 ## os.getPriority([pid])<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
-* Retorno: {integer}
+-->
+
+* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
+
+* Devuelve: {integer}
 
 The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
 
 ## os.homedir()<!-- YAML
 added: v2.3.0
--->* Devuelve: {string}
+-->
 
-El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
+* Devuelve: {string}
+
+The `os.homedir()` method returns the home directory of the current user as a string.
 
 ## os.hostname()<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.hostname()` devuelve el nombre del dueño del sistema operativo como una string.
+* Devuelve: {string}
+
+The `os.hostname()` method returns the hostname of the operating system as a string.
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Devuelve: {number[]}
 
-El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
+The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
-El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. Como regla general, la carga promedio debería ser idealmente menor que el número de CPUs lógicos en el sistema.
+The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
 
-La carga promedio es un concepto específico de UNIX con ningún equivalente real en las plataformas Windows. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
+The load average is a UNIX-specific concept with no real equivalent on Windows platforms. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
 
 ## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->* Devuelve: {Object}
+-->
 
-El método `os.networkInterfaces()` devuelve un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
+* Devuelve: {Object}
 
-Cada tecla en el objeto devuelto identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
+The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
-Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
+Cada clave en el objeto devuelto identifica una interfaz de red. The associated value is an array of objects that each describe an assigned network address.
+
+Las propiedades disponibles en la dirección de red asignada incluyen:
 
 * `address` {string} La dirección IPv4 o IPv6 asignada
 * `netmask` {string} La máscara de red IPv4 o IPv6
 * `family` {string} `IPv4` o `IPv6`
 * `mac` {string} La dirección MAC de la interfaz de red
-* `internal` {boolean} `true` si la interfaz de red es un loopback o una interfaz similar que no sea accesible de manera remota; de otra forma, es `false`
-* `scopeid` {number} El ID numérico del ámbito de IPv6 (solo especificado cuando `family` es `IPv6`)
-* `cidr` {string} La dirección IPv6 o IPv6 asignada con el prefijo de enrutamiento en notación CIDR. Si la `netmask` es invalida, esta propiedad está colocada a `null`.
+* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+
 ```js
 {
   lo: [
@@ -269,11 +289,13 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 
 ## os.platform()<!-- YAML
 added: v0.5.0
--->* Devuelve: {string}
+-->
 
-El método `os.platform()` devuelve un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
+* Devuelve: {string}
 
-Los posibles valores actuales son:
+The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
+
+Los valores posibles son actualmente:
 
 * `'aix'`
 * `'darwin'`
@@ -283,21 +305,26 @@ Los posibles valores actuales son:
 * `'sunos'`
 * `'win32'`
 
-Equivalente para [`process.platform`][].
+Es equivalente a [`process.platform`][].
 
-El valor `'android'` puede también ser devuelto si Node.js está construido en un sistema operativo Android. Sin embargo, el soporte de Android es considerado[ experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) actualmente.
+The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
 ## os.release()<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.release()` retorna un string identificando la versión del sistema operativo.
+* Devuelve: {string}
 
-En sistemas POSIX, la versión del sistema operativo es determinada llamando [uname(3)](https://linux.die.net/man/3/uname). En Windows, `GetVersionExW()` es usado. Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para mayor información.
+The `os.release()` method returns a string identifying the operating system release.
+
+On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). En Windows, se utiliza `GetVersionExW()`. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## os.setPriority([pid, ]priority)<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+-->
+
+* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+
 * `priority` {integer} The scheduling priority to assign to the process.
 
 The `os.setPriority()` method attempts to set the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is used.
@@ -309,48 +336,61 @@ On Windows setting priority to `PRIORITY_HIGHEST` requires elevated user, otherw
 ## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Devuelve: {string}
+-->
 
-El método `os.tmpdir()` retorna una string que especifica el directorio predeterminado del sistema operativo para los archivos temporales.
+* Devuelve: {string}
+
+The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
 ## os.totalmem()<!-- YAML
 added: v0.3.3
--->* Devuelve: {integer}
+-->
 
-El método `os.totalmem()` retorna la cantidad total de memoria del sistema en bytes como un entero.
+* Retorno: {integer}
+
+The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
 ## os.type()<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.type()` retorna una string identificando el nombre del sistema operativo como es retornado por [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
+* Devuelve: {string}
 
-Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para información adicional sobre los resultados de correr [uname(3)](https://linux.die.net/man/3/uname) en distintos sistemas operativos.
+The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
+
+Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
 
 ## os.uptime()<!-- YAML
 added: v0.3.3
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/20129
     description: The result of this function no longer contains a fraction
                  component on Windows.
--->* Devuelve: {integer}
+-->
+
+* Retorno: {integer}
 
 El método de `os.uptime()` retorna el tiempo de operación del sistema en segundos.
 
 ## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->* `opciones` {Object}
-  * `encoding` {string} Codificación de caracteres utilizada para interpretar las strings resultantes. Si `encoding` se establece como `'buffer'`, los valores de `username`, `shell` y `homedir` serán instancias de `Buffer`. **Predeterminado:** `'utf8'`.
+-->
+
+* `options` {Object}
+  
+  * `encoding` {string} Codificación de caracteres utilizada para interpretar las strings resultantes. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Predeterminado:** `'utf8'`.
 * Devuelve: {Object}
 
-El método `os.userInfo()` retorna información acerca del actual usuario efectivo -- en plataformas POSIX, esto es tipicamente un subconjunto en el archivo de contraseñas. El objeto devuelto incluye el `username`, `uid`, `gid`, `shell`, y `homedir`. En Windows, el `uid` y `gid` campos son `-1`, y `shell` es `null`.
+The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. En Windows, el `uid` y `gid` campos son `-1`, y `shell` es `null`.
 
-El valor del `homedir` deveulto por `os.userInfo()` es provisto por el sistema operativo. Esto difiere del resultado de `os.homedir()` el cual consulta distintas variables del entorno para el directorio hogar antes de recurrir a la respuesta del sistema operativo.
+The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
 ## Constantes del OS (Sistema Operativo)
 
@@ -358,12 +398,15 @@ Las siguientes constantes son exportadas por `os.constants`.
 
 No todas las constantes estarán disponibles en todos los sistemas operativos.
 
-### Constantes de Señal<!-- YAML
+### Signal Constants<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->Las siguientes constantes son exportadas por `os.constants.signals`:
+-->The following signal constants are exported by 
+
+`os.constants.signals`:
 
 <table>
   <tr>
@@ -372,7 +415,7 @@ changes:
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Enviada para indicar el momento en el cual un terminal es cerrado o un proceso primario es finalizado.</td>
+    <td>Enviada para indicar cuando una terminal de control es cerrada o un proceso primario cierra.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
@@ -381,7 +424,7 @@ changes:
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Enviada para indicar el momento en el cual un usuario desea terminar un proceso y realizar un volcado de memoria.</td>
+    <td>Enviada para indicar cuando un usuario desea terminar un proceso y realizar un volcado de memoria.</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
@@ -393,51 +436,51 @@ changes:
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Enviada a un proceso para solicitar su cancelación.</td>
+    <td>Enviada a un proceso para solicitar que aborte.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Sinónimo de <code>SIGABRT</code></td>
+    <td>Sinónimo para <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Enviada a un proceso para notificar que este ha causado un "error bus".</td>
+    <td>Enviada a un proceso para notificar que ha causada un error de bus.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Enviada a un proceso para notificar que este ha llevado a cabo una operación aritmética ilegal.</td>
+    <td>Enviada a un proceso para notificar que ha realizado una operación aritmética ilegal.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Enviada a un proceso para finalizarlo inmediatamente.</td>
+    <td>Enviada a un proceso para terminarlo inmediatamente.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Enviadas a un proceso para identificar condiciones definidas por los usuarios.</td>
+    <td>Enviada a un proceso para identificar las condiciones definidas por los usuarios.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Enviadas a un proceso para notificar un fallo de segmentación.</td>
+    <td>Enviada a un proceso para notificar de un fallo de segmentación.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Enviada a un proceso cuando este ha intentado escribir datos a través de un pipe desconectado.</td>
+    <td>Enviada a un proceso cuando ha intentado escribir a un pipe desconectado.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Enviada a un proceso cuando un temporizador de sistema ha agotado su espera.</td>
+    <td>Enviada a un proceso cuando ha transcurrido un temporizador del sistema.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Enviada a un proceso para solicitar su finalización.</td>
+    <td>Enviada a un proceso para solicitar su terminación.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Enviada a un proceso cuando finaliza un proceso secundario.</td>
+    <td>Enviada a un proceso cuando un proceso secundario termina.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Enviada a un proceso para indicar una falla de pila en un co-procesador.</td>
+    <td>Enviada a un proceso para indicar un error de pila en un coprocesador.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
@@ -449,63 +492,63 @@ changes:
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Enviada a un proceso para solicitarle que se detenga.</td>
+    <td>Enviada a un proceso para solicitar que se detenga.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Enviada para indicar el momento en el cual un usuario desea interrumpir un proceso.</td>
+    <td>Enviada para indicar cuando un usuario desea interrumpir un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Enviada a un proceso cuando este lee desde el TTY estando en el segundo plano.</td>
+    <td>Enviada a un proceso cuando lee desde el TTY en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Enviada a un proceso cuando este escribe al TTY estando en segundo plano.</td>
+    <td>Enviada a un proceso cuando escribe desde el TTY estando en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Enviada a un proceso cuando un socket tiene datos urgentes por leer.</td>
+    <td>Enviada a un proceso cuando un socket tiene datos urgentes a leer.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Enviada a un proceso cuando este ha excedido su límite de uso del CPU.</td>
+    <td>Enviada a un proceso cuando ha excedido su límite de uso de la CPU.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Enviada a un proceso cuando produce un archivo más grande que el tamaño máximo permitido.</td>
+    <td>Enviada a un proceso cuando el archivo crece más grande que el máximo permitido.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Enviada a un proceso cuando un temporizador virtual ha agotado su espera.</td>
+    <td>Enviada a un proceso cuando el temporizador virtual ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Enviada a un proceso cuando un temporizador de sistema ha agotado su espera.</td>
+    <td>Enviada a un proceso cuando un temporizador del sistema ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Enviada a un proceso cuando el terminal de control ha cambiado de tamaño.</td>
+    <td>Enviada a un proceso cuando la terminal de control ha cambiado su tamaño.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Enviada a un proceso cuando el I/O se encuentra disponible.</td>
+    <td>Enviada a un proceso cuando la opción E/A está disponible.</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Sinónimo de <code>SIGIO</code></td>
+    <td>Sinónimo para <code>SIGIO</code></td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Enviada a un proceso cuando se ha perdido un bloqueo de archivo.</td>
+    <td>Enviada a un proceso cuando un bloqueo de archivo se ha perdido.</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Enviada a un proceso para notificar una falla de energía.</td>
+    <td>Enviada a un proceso para notificar de un fallo de alimentación.</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Sinónimo de <code>SIGPWR</code></td>
+    <td>Sinónimo para <code>SIGPWR</code></td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
@@ -513,7 +556,7 @@ changes:
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Sinónimo de <code>SIGSYS</code></td>
+    <td>Sinónimo para <code>SIGSYS</code></td>
   </tr>
 </table>
 
@@ -521,7 +564,7 @@ changes:
 
 Las siguientes constantes de error son exportadas por `os.constants.errno`:
 
-#### Constantes de Error de POSIX
+#### Constantes de Error POSIX
 
 <table>
   <tr>
@@ -530,11 +573,11 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indica que la lista de argumentos es más larga de lo esperado.</td>
+    <td>Indica que la lista de argumentos es mas larga de lo esperado.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indica que la operación no tenía los suficientes permisos.</td>
+    <td>Indica que la operación no tiene los permisos suficientes.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
@@ -658,7 +701,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indica que hay demasiados archivos abiertos.</td>
+    <td>Indica que hay muchos archivos abiertos.</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
@@ -722,19 +765,19 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indica que no hay espacio suficiente.</td>
+    <td>Indica que no hay suficiente espacio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indica que no hay ningún mensaje del tipo deseado.</td>
+    <td>Indica que no hay mensajes del tipo deseado.</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indica que el protocolo indicado no está disponible.</td>
+    <td>Indica que el protocolo dado no está disponible.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indica que no hay espacio disponible dentro del dispositivo.</td>
+    <td>Indica que no hay espacio disponible en el dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
@@ -746,61 +789,61 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indica que la función no ha sido implementada.</td>
+    <td>Indica que una función ha sido implementada.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indica que el socket no se encuentra conectado.</td>
+    <td>Indica que un socket no está conectado.</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indica que la ruta actual no es un directorio.</td>
+    <td>Indica que la ruta no es un directorio.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indica que el directorio actual no está vacío.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indica que el producto enviado no es un socket.</td>
+    <td>Indica que un elemento dado no es un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indica que la operación hecha no está soportada.</td>
+    <td>Indica que no se admite la operación dada.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indica una operación inapropiada de control de I/O (input/output).</td>
+    <td>Indica una operación de control A/E inapropiada.</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indica que no existe el dispositivo o dirección señalados.</td>
+    <td>Indica que no existe el dispositivo o dirección.</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indica que la operación no es soportada en el socket.  Note that
+    <td>Indica que la operación no es compatible con el socket.  Note that
     while <code>ENOTSUP</code> and <code>EOPNOTSUPP</code> have the same value
     on Linux, according to POSIX.1 these error values should be distinct.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indica que un valor es demasiado grande como para ser almacenado en un tipo de datos específico.</td>
+    <td>Indica que el valor es muy grande para almacenarse en un tipo de datos.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indica que la operación no esta permitida.</td>
+    <td>Indica que la operación no es permitida.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indica que hay un pipe roto.</td>
+    <td>Indica un pipe roto.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indica que hay un error de protocolo.</td>
+    <td>Indica un error de protocolo.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indica que el protocolo no esta soportado.</td>
+    <td>Indica que un protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
@@ -808,7 +851,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indica que los resultados son demasiado largos.</td>
+    <td>Indica que los resultados son muy grandes.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
@@ -816,7 +859,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indica una operación de búsqueda inválida.</td>
+    <td>Indica una operación inválida de búsqueda.</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
@@ -824,7 +867,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indica que el handle del archivo es obsoleto.</td>
+    <td>Indica que el descriptor de archivos es obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
@@ -832,11 +875,11 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indica que se agoto el tiempo de conexión.</td>
+    <td>Indica que la conexión ha sido interrumpida.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indica que el archivo de texto esta ocupado.</td>
+    <td>Indica que el archivo de texto está ocupado.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
@@ -848,9 +891,9 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
 </table>
 
-#### Constantes de error especificas de Windows
+#### Constantes de Error Específicas de Windows
 
-Los siguientes códigos de error son específicos del sistema operativo windows:
+Los siguientes códigos de error son específicos de el sistema operativo Windows:
 
 <table>
   <tr>
@@ -859,15 +902,15 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indica una llamada de función interrumpida.</td>
+    <td>Indica una interrupción en la función de llamada.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indica un handle de archivo inválido.</td>
+    <td>Indica un descriptor de archivo inválido.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indica permisos insuficientes para completar la operación.</td>
+    <td>Indica insuficiencia de permisos para completar la operación.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
@@ -875,7 +918,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indica que un argumento invalido fue pasado.</td>
+    <td>Indica que un argumento inválido fue proporcionado.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
@@ -883,11 +926,11 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indica que de manera temporal el recurso no se encuentra disponible.</td>
+    <td>Indica que un recurso está temporalmente no disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indica que una operación está actualmente en curso.</td>
+    <td>Indica que la operación está actualmente en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
@@ -903,11 +946,11 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEMSGSIZE</code></td>
-    <td>Indica que el tamaño del mensaje es demasiado grande.</td>
+    <td>Indica que el tamaño del mensaje es demasiado largo.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indica un tipo incorrecto de protocolo para el socket.</td>
+    <td>Indica el tipo de protocolo incorrecto para el socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
@@ -915,11 +958,11 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indica que el protocolo no esta soportado.</td>
+    <td>Indica que el protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indica que el tipo de socket no es soportado.</td>
+    <td>Indica que el tipo de socket no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
@@ -935,7 +978,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indica que la dirección de red se encuentra en uso.</td>
+    <td>Indica que la dirección de red ya se encuentra en uso.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
@@ -943,7 +986,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indica que la red está caída.</td>
+    <td>Indica que la red se encuentra caída.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
@@ -951,7 +994,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indica que la conexión de red fue reiniciada.</td>
+    <td>Indica que la conexión de la red ha sido restablecida.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
@@ -1019,7 +1062,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indica que la cuota de disco ha sido excedida.</td>
+    <td>Indica que la cuota del disco ha sido excedida.</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
@@ -1094,7 +1137,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
 
 ### constantes dlopen
 
-Si se encuentran en el sistema operativo, las siguientes constantes son exportadas en `os.constants.dlopen`. Vea dlopen(3) para información detallada.
+If available on the operating system, the following constants are exported in `os.constants.dlopen`. See dlopen(3) for detailed information.
 
 <table>
   <tr>
@@ -1126,7 +1169,9 @@ Si se encuentran en el sistema operativo, las siguientes constantes son exportad
 
 ### Priority Constants<!-- YAML
 added: v10.10.0
--->The following process scheduling constants are exported by `os.constants.priority`:
+-->The following process scheduling constants are exported by 
+
+`os.constants.priority`:
 
 <table>
   <tr>
@@ -1186,4 +1231,3 @@ added: v10.10.0
     <td></td>
   </tr>
 </table>
-
