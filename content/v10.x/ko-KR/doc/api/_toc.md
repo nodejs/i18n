@@ -1,4 +1,4 @@
-@// 주의(chrisdickinson): 이 파일을 이동시킬 경우, @// tools/doc/html.js 가 이동시킨 경로를 참조하도록 업데이트해야 합니다.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -10,7 +10,7 @@
 * [단언 테스팅](assert.html)
 * [Async 훅](async_hooks.html)
 * [버퍼](buffer.html)
-* [C++ 애드온](addons.html)
+* [C++ Addons](addons.html)
 * [C/C++ 애드온 - N-API](n-api.html)
 * [차일드 프로세스](child_process.html)
 * [클러스터](cluster.html)
