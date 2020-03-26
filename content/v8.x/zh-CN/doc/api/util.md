@@ -175,7 +175,7 @@ added: v8.12.0
 
 * `err` {number}
 
-* Returns: {string}
+* 返回：{string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -200,7 +200,7 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
+从一个 [构造器](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) 中继承原型方法到另一个构造器。 The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
 As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
@@ -229,7 +229,7 @@ stream.on('data', (data) => {
 stream.write('It works!'); // Received data: "It works!"
 ```
 
-ES6 example using `class` and `extends`
+使用 `class` 和 `extends` 的 ES6 范例
 
 ```js
 const EventEmitter = require('events');
@@ -280,7 +280,7 @@ changes:
 
 The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
 
-The following example inspects all properties of the `util` object:
+如下的范例检查 `util` 对象的所有属性：
 
 ```js
 const util = require('util');
@@ -296,7 +296,7 @@ Values may supply their own custom `inspect(depth, opts)` functions, when called
 
 `util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
-The default styles and associated colors are:
+默认的样式及其相关联的颜色是：
 
 * `number` - `黄色`
 * `boolean` - `黄色`
@@ -394,7 +394,7 @@ added: v8.0.0
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-For example:
+例如：
 
 ```js
 const util = require('util');
@@ -448,7 +448,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
+例如：使用 `(foo, onSuccessCallback, onErrorCallback)` 作为参数的函数：
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -552,7 +552,7 @@ Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encod
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **默认:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
 
 创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
@@ -614,7 +614,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 ## 已弃用的 API
 
-The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
+以下的 API 已经被弃用，不应再被使用。 Existing applications and modules should be updated to find alternative approaches.
 
 ### util.\_extend(target, source)<!-- YAML
 added: v0.7.5
@@ -623,9 +623,9 @@ deprecated: v6.0.0
 
 `Object.assign()`] instead.
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. 尽管如此，但社区还是发现并使用了它。
 
-It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+它已被弃用，不应在新代码中使用。 JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
 ### util.debug(string)<!-- YAML
 added: v0.3.0
@@ -636,7 +636,7 @@ deprecated: v0.11.3
 
 * `string` {string} 打印到 `stderr` 的消息
 
-Deprecated predecessor of `console.error`.
+已弃用的 `console.error` 的前身。
 
 ### util.error([...strings])
 
@@ -645,11 +645,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
 
 * `...strings` {string} 打印到 `stderr` 的消息
 
-Deprecated predecessor of `console.error`.
+已弃用的 `console.error` 的前身。
 
 ### util.isArray(object)<!-- YAML
 added: v0.6.0
@@ -658,9 +658,9 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Internal alias for [`Array.isArray`][].
+[`Array.isArray`][] 的内部别名。
 
-Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
+如果给定的 `object` 是一个 `Array`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -680,7 +680,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
+如果给定的 `object` 是 `Boolean`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -700,11 +700,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
+> 稳定性：0 - 已弃用：改为使用[`Buffer.isBuffer()`][]。
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
+如果给定的 `object` 是 `Buffer`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -724,7 +724,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
+如果给定的 `object` 是 `Date`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -744,11 +744,11 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
-Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
+如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -761,7 +761,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Returns: false
 ```
 
-Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+注意这个方法依赖于 `Object.prototype.toString()` 的行为。 It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -781,7 +781,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Function`. 否则，返回 `false`。
+如果给定的 `object` 是 `Function`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -808,7 +808,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly `null`. 否则，返回 `false`。
+如果给定的 `object` 严格为 `null`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -832,7 +832,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is `null` or `undefined`. 否则，返回 `false`。
+如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -852,11 +852,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
+如果给定的 `object` 是 `Number`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -882,7 +882,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. Otherwise, returns `false`.
+Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -908,7 +908,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
+如果给定的 `object` 是基本类型，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -940,7 +940,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
+如果给定的 `object` 是 `RegExp`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -960,7 +960,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
+如果给定的 `object` 是一个 `字符串`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -986,7 +986,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Symbol`. 否则，返回 `false`。
+如果给定的 `object` 是 `Symbol`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1010,7 +1010,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is `undefined`. 否则，返回 `false`。
+如果给定的 `object` 是 `undefined`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1046,7 +1046,7 @@ deprecated: v0.11.3
 
 `console.log()`][] instead.
 
-Deprecated predecessor of `console.log`.
+已弃用的 `console.log` 的前身。
 
 ### util.puts([...strings])
 
@@ -1055,6 +1055,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
 
-Deprecated predecessor of `console.log`.
+已弃用的 `console.log` 的前身。
