@@ -177,6 +177,8 @@ added: v0.1.98
 
 The `rl.close()` method closes the `readline.Interface` instance and relinquishes control over the `input` and `output` streams. When called, the `'close'` event will be emitted.
 
+Calling `rl.close()` does not immediately stop other events (including `'line'`) from being emitted by the `readline.Interface` instance.
+
 ### rl.pause()
 
 <!-- YAML
@@ -273,6 +275,37 @@ rl.write(null, { ctrl: true, name: 'u' });
 
 The `rl.write()` method will write the data to the `readline` `Interface`'s `input` *as if it were provided by the user*.
 
+### rl\[Symbol.asyncIterator\]()
+
+<!-- YAML
+added: v10.16.0
+-->
+
+> Stability: 1 - Experimental
+
+* Returns: {AsyncIterator}
+
+Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
+
+Errors in the input stream are not forwarded.
+
+If the loop is terminated with `break`, `throw`, or `return`, [`rl.close()`][] will be called. In other words, iterating over a `readline.Interface` will always consume the input stream fully.
+
+A caveat with using this experimental API is that the performance is currently not on par with the traditional `'line'` event API, and thus it is not recommended for performance-sensitive applications. We expect this situation to improve in the future.
+
+```js
+async function processLineByLine() {
+  const rl = readline.createInterface({
+    // ...
+  });
+
+  for await (const line of rl) {
+    // Each line in the readline input will be successively available here as
+    // `line`.
+  }
+}
+```
+
 ## readline.clearLine(stream, dir)
 
 <!-- YAML
@@ -326,6 +359,7 @@ changes:
   * `prompt` {string} The prompt string to use. **Default:** `'> '`.
   * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
   * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
+  * `escapeCodeTimeout` {number} The duration `readline` will wait for a character (when reading an ambiguous key sequence in milliseconds one that can both form a complete key sequence using the input read so far and can take additional input to complete a longer key sequence). **Default:** `500`.
 
 The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
@@ -452,11 +486,36 @@ rl.on('line', (line) => {
 
 ## Example: Read File Stream Line-by-Line
 
-A common use case for `readline` is to consume input from a filesystem [Readable](stream.html#stream_readable_streams) stream one line at a time, as illustrated in the following example:
+A common use case for `readline` is to consume an input file one line at a time. The easiest way to do so is leveraging the [`fs.ReadStream`][] API as well as a `for`-`await`-`of` loop:
 
 ```js
-const readline = require('readline');
 const fs = require('fs');
+const readline = require('readline');
+
+async function processLineByLine() {
+  const fileStream = fs.createReadStream('input.txt');
+
+  const rl = readline.createInterface({
+    input: fileStream,
+    crlfDelay: Infinity
+  });
+  // Note: we use the crlfDelay option to recognize all instances of CR LF
+  // ('\r\n') in input.txt as a single line break.
+
+  for await (const line of rl) {
+    // Each line in input.txt will be successively available here as `line`.
+    console.log(`Line from file: ${line}`);
+  }
+}
+
+processLineByLine();
+```
+
+Alternatively, one could use the [`'line'`][] event:
+
+```js
+const fs = require('fs');
+const readline = require('readline');
 
 const rl = readline.createInterface({
   input: fs.createReadStream('sample.txt'),
@@ -466,4 +525,31 @@ const rl = readline.createInterface({
 rl.on('line', (line) => {
   console.log(`Line from file: ${line}`);
 });
+```
+
+Currently, `for`-`await`-`of` loop can be a bit slower. If `async` / `await` flow and speed are both essential, a mixed approach can be applied:
+
+```js
+const { once } = require('events');
+const { createReadStream } = require('fs');
+const { createInterface } = require('readline');
+
+(async function processLineByLine() {
+  try {
+    const rl = createInterface({
+      input: createReadStream('big-file.txt'),
+      crlfDelay: Infinity
+    });
+
+    rl.on('line', (line) => {
+      // Process the line.
+    });
+
+    await once(rl, 'close');
+
+    console.log('File processed.');
+  } catch (err) {
+    console.error(err);
+  }
+})();
 ```
