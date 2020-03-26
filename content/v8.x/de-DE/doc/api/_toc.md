@@ -1,4 +1,5 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+
 * [Über diese Dokumentation](documentation.html)
 * [Verwendung & Beispiele](synopsis.html)
 
