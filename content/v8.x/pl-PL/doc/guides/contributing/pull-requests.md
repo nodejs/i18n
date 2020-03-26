@@ -1,24 +1,24 @@
 # Żądania Zmiany
 
-Istnieją dwa fundamentalne komponenty procesu Żądania Zmiany: jeden konkretny i techniczny oraz drugi skupiony głównie wokół procesu. Konkretny i techniczny komponent zawiera specyficzne detale przygotowywania twojego lokalnego środowiska abyś mógł wprowadzać faktyczne zmiany. Od tego właśnie zaczniemy.
+There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. Od tego właśnie zaczniemy.
 
 * [Zależności](#dependencies)
-* [Konfigurowanie lokalnego środowiska](#setting-up-your-local-environment)
+* [Konfigurowanie lokalnego środowiska](#setting-up-your-local-environment) 
   * [Krok 1: Rozwidlenie](#step-1-fork)
   * [Krok 2: Gałąź](#step-2-branch)
-* [Proces wprowadzania zmian](#the-process-of-making-changes)
+* [Proces wprowadzania zmian](#the-process-of-making-changes) 
   * [Krok 3: Kod](#step-3-code)
-  * [Krok 4: Commit](#step-4-commit)
+  * [Krok 4: Commit](#step-4-commit) 
     * [Wytyczne wiadomości Commitów](#commit-message-guidelines)
   * [Krok 5: Rebase](#step-5-rebase)
-  * [Krok 6: Test](#step-6-test)
+  * [Krok 6: Test](#step-6-test) 
     * [Zakres Testu](#test-coverage)
   * [Krok 7: Popchnięcie zmian](#step-7-push)
   * [Krok 8: Otwarcie Żądania zmiany](#step-8-opening-the-pull-request)
-  * [Krok 9: Dyskutuj i Aktualizuj](#step-9-discuss-and-update)
+  * [Krok 9: Dyskutuj i Aktualizuj](#step-9-discuss-and-update) 
     * [Przepływ pracy Zatwierdzania i Propozycji](#approval-and-request-changes-workflow)
   * [Krok 10: Lądowanie](#step-10-landing)
-* [Wysyłanie Żądań zmian](#reviewing-pull-requests)
+* [Wysyłanie Żądań zmian](#reviewing-pull-requests) 
   * [Nie sprawdzaj wszystkiego na raz](#review-a-bit-at-a-time)
   * [Bądź świadomy kim jest autor kodu](#be-aware-of-the-person-behind-the-code)
   * [Respektuj minimalny czas oczekiwania na komentarze](#respect-the-minimum-wait-time-for-comments)
@@ -27,7 +27,7 @@ Istnieją dwa fundamentalne komponenty procesu Żądania Zmiany: jeden konkretny
   * [Zaakceptuj różne opinie na temat tego, co powinno należeć do Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Wydajność to nie wszystko](#performance-is-not-everything)
   * [Testowanie w Continuous Integration](#continuous-integration-testing)
-* [Dodatkowe Notatki](#additional-notes)
+* [Dodatkowe Notatki](#additional-notes) 
   * [Zgniatanie Commit'ów](#commit-squashing)
   * [Zdobywanie Zatwierdzeń dla twojego Żądania zmiany](#getting-approvals-for-your-pull-request)
   * [Testowanie CI](#ci-testing)
@@ -36,15 +36,15 @@ Istnieją dwa fundamentalne komponenty procesu Żądania Zmiany: jeden konkretny
 
 ## Zależności
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Zmiany do plików w tych folderach powinny być wysłane do odpowiadających im projektów. Nie wysyłaj tych zmian do Node.js. Nie możemy zaakceptować takich zmian.
+Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. Nie możemy zaakceptować takich zmian.
 
-W razie niepewności, otwórz problem w [liście problemów](https://github.com/nodejs/node/issues/) lub skontaktuj się z jednym z [kolaboratorów projektu](https://github.com/nodejs/node/#current-project-team-members). Node.js operuje na dwóch kanałach IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) dla pomocy ogólnej i pytań, a także [#Node-dev](https://webchat.freenode.net/?channels=node-dev) dla rozbudowy rdzenia Node.js.
+In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
 ## Konfigurowanie lokalnego środowiska
 
-Aby zacząć, musisz posiadać zainstalowany lokalnie `git`. W zależności od twojego systemu operacyjnego, możesz też potrzebować kilku zależności. Są one opisane w [Poradniku Konfiguracji](../../../BUILDING.md).
+Aby zacząć, musisz posiadać zainstalowany lokalnie `git`. Depending on your operating system, there are also a number of other dependencies required. Są one opisane w [Poradniku Konfiguracji](../../../BUILDING.md).
 
-Gdy już zainstalujesz `git` i masz pewność, że wypełniłeś wymagania co do zależności, czas na stworzenie rozwidlenia.
+Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
 
 Before getting started, it is recommended to configure `git` so that it knows who you are:
 
@@ -52,11 +52,12 @@ Before getting started, it is recommended to configure `git` so that it knows wh
 $ git config --global user.name "J. Random User"
 $ git config --global user.email "j.random.user@example.com"
 ```
-Proszę upewnij się, że ten lokalny email jest też dodany do twojej [Listy emaili GitHub](https://github.com/settings/emails) tak, że twoje commity mogą być przypisane do twojego konta i otrzymasz promocję do rangi Kontrybutora gdy twój pierwszy commit wyląduje.
+
+Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
 
 ### Krok 1: Rozwidlenie
 
-Stwórz rozwidlenie projektu [na GitHub](https://github.com/nodejs/node) i sklonuj twoje rozwidlenie lokalnie.
+Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
 
 ```text
 $ git clone git@github.com:username/node.git 
@@ -67,7 +68,7 @@ $ git fetch upstream
 
 ### Krok 2: Gałąź
 
-By zachować nasze środowisko programowania tak zorganizowanym jak to tylko możliwe, stwórz lokalne rozgałęzienia, w których będziesz pracować. Powinny być one stworzone wprost z gałęzi `master`.
+As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
 
 ```text
 $ git checkout -b moja-galaz -t upstream/master
@@ -79,50 +80,54 @@ $ git checkout -b moja-galaz -t upstream/master
 
 The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to either the C/C++ code contained in the `src` directory, the JavaScript code contained in the `lib` directory, the documentation in `docs/api` or tests within the `test` directory.
 
-Jeśli wprowadzasz zmiany w kodzie, upewnij się by uruchamiać `make lint` od czasu do czasu w celu sprawdzenia, czy zmiany pasują do zasad stylu kodu Node.js.
+If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
 
-Każda dokumentacja, którą napiszesz (włącznie z komentarzami kodu i dokumentacją API) powinny być zgodne z [Zasadami Stylu](../../STYLE_GUIDE.md). Próbki kodu uwzględnione w dokumentach API powinny być też sprawdzone przy uruchamianiu `make lint` (lub `vcbuild.bat lint` w systemie Windows).
+Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../../STYLE_GUIDE.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows).
 
-W celu kontrybucji kodu C++, powinieneś zajrzeć do [Zasad Stylu C++](../../../CPP_STYLE_GUIDE.md).
+For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
 
 ### Krok 4: Commit
 
-Poleca się zachowywać swoje zmiany tak logicznie ugrupowane jak to możliwe w pojedynczych commitach. Nie istnieje limit commitów na każde pojedyncze Żądanie zmiany i wielu kontrybutorów preferuje przeglądać zmiany podzielone między wiele commitów.
+It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
 
 ```text
 $ git add moje/zmienione/pliki
 $ git commit
 ```
 
-Pamiętaj, że wiele commitów często zostaje zgniecionych kiedy lądują (zobacz notatki o [zgniataniu commitów](#commit-squashing)).
+Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
 
 #### Wytyczne wiadomości Commitów
 
 Dobra wiadomość commitu powinna opisać co się zmieniło i dlaczego.
 
 1. Pierwsza linijka powinna:
-   - contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-   - być w całości pisane małymi literami oprócz odpowiednich rzeczowników, akronimów i słów które odnoszą się bezpośrednio do kodu, jak nazwy funkcji/zmiennych
-   - posiadać prefiks z nazwą zmienionego subsystemu i zaczynać się czasownikiem w trybie rozkazującym. Zobacz dane wyjściowe `git log --oneline pliki/ktore/zmieniles` by dowiedzieć się na jakie subsystemy wpływają twoje zmiany.
-
-   Przykłady:
-   - `net: add localAddress and localPort to Socket`
-   - `src: fix typos in node_lttng_provider.h`
-
+  
+  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
+  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
+  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+    
+    Przykłady:
+  
+  * `net: add localAddress and localPort to Socket`
+  
+  * `src: fix typos in node_lttng_provider.h`
 
 2. Pozostaw drugą linijkę pustą.
+
 3. Wrap all other lines at 72 columns.
 
-4. Jeśli twoja zmiana naprawia jeden z otwartych problemów, możesz o tym wspomnieć na końcu wiadomości. Użyj prefiksu `Fixes:` i pełnego URL problemu. Dla innych referencji użyj `Refs:`.
+4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Użyj prefiksu `Fixes:` i pełnego URL problemu. For other references use `Refs:`.
+  
+  Przykłady:
+  
+  * `Fixes: https://github.com/nodejs/node/issues/1337`
+  * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
+  * `Refs: https://github.com/nodejs/node/pull/3615`
 
-   Przykłady:
-   - `Fixes: https://github.com/nodejs/node/issues/1337`
-   - `Refs: http://eslint.org/docs/rules/space-in-parens.html`
-   - `Refs: https://github.com/nodejs/node/pull/3615`
+5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-5. Jeśli twój commit wprowadza bardzo dużą zmianę (`semver-major`), powinien on zawierać opis powodu bardzo dużej zmiany, które sytuacje wywołałyby dużą zmianę i co dokładnie się zmieniło.
-
-Breaking changes will be listed in the wiki with the aim to make upgrading easier.  Please have a look at [Breaking Changes](https://github.com/nodejs/node/wiki/Breaking-changes-between-v4-LTS-and-v6-LTS) for the level of detail that's suitable.
+Breaking changes will be listed in the wiki with the aim to make upgrading easier. Please have a look at [Breaking Changes](https://github.com/nodejs/node/wiki/Breaking-changes-between-v4-LTS-and-v6-LTS) for the level of detail that's suitable.
 
 Wzorzec pełnej wiadomości commitu:
 
@@ -135,28 +140,28 @@ Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
 ```
 
-Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. Jeden z obecnych kontrybutorów pomoże ci się dostosować, a kontrybutor lądujący Żądanie zmiany upewni się, że wszystko jest zgodne z wytycznymi projektu.
+If you are new to contributing to Node.js, please try to do your best at conforming to these guidelines, but do not worry if you get something wrong. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
 
-Zobacz [core-validate-commit](https://github.com/evanlucas/core-validate-commit) Użyteczne narzędzie w upewnianiu się, że commit jest zgodny z wytycznymi formatowania.
+See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
 
 ### Krok 5: Rebase
 
-Dobrym pomysłem jest, gdy już zcommitowałeś swoje zmiany, użycie `git rebase` (nie `git merge`) by zsynchronizować swoją pracę z głównym repozytorium.
+As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
 
 ```text
 $ git fetch upstream 
 $ git rebase upstream/master
 ```
 
-Dzięki temu możesz być pewny, że gałąź na której pracujesz zgodna jest z najnowszymi zmianami `nodejs/node master`.
+This ensures that your working branch has the latest changes from `nodejs/node` master.
 
 ### Krok 6: Test
 
-Funkcje i poprawki błędów powinny zawsze być dodawane z testami. [Poradnik do pisania testów w Node.js](../writing-tests.md) został napisany, by ułatwić ten proces. Patrzenie na inne testy by zobaczyć jak są zbudowane też może być pomocne.
+Funkcje i poprawki błędów powinny zawsze być dodawane z testami. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
-Folder `test` w repozytorium `nodejs/node` jest skomplikowany i nie zawsze jest oczywistym gdzie umieścić nowy plik z testami. Jeżeli nie jesteś pewny, dodaj nowe testy do folderu `test/parallel/`, a właściwa lokalizacja będzie wybrana przez innych później.
+The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
 
-Zanim prześlesz swoje zmiany w Żądaniu zmiany, zawsze uruchamiaj wszystkie testy Node.js w poszukiwaniu niezgodności. By uruchomić test na systemie Unix / macOS, użyj:
+Before submitting your changes in a Pull Request, always run the full Node.js test suite. By uruchomić test na systemie Unix / macOS, użyj:
 
 ```text
 $ ./configure && make -j4 test
@@ -170,9 +175,9 @@ A na systemie Windows:
 
 (Zobacz [Przewodnik konfiguracji](../../../BUILDING.md) by dowiedzieć się więcej.)
 
-Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie testy zostały zaliczone. Proszę, nie wysyłaj patchy, które nie sprawdzają się w jednym lub drugim z powyższych.
+Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie testy zostały zaliczone. Please do not submit patches that fail either check.
 
-Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting języka JavaScript oraz C++.
+If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
 
 Jeśli aktualizujesz testy i chcesz uruchomić tylko jeden test, użyj:
 
@@ -180,7 +185,7 @@ Jeśli aktualizujesz testy i chcesz uruchomić tylko jeden test, użyj:
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-Możesz też uruchomić całą kategorię testów dla danego podsystemu przez podanie jego nazwy:
+You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
 
 ```text
 $ python tools/test.py -J --mode=release wybrany-proces
@@ -210,7 +215,7 @@ $ ./configure --coverage && make coverage
 
 A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
 
-_Note that generating a test coverage report can take several minutes._
+*Note that generating a test coverage report can take several minutes.*
 
 To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
 
@@ -392,7 +397,7 @@ If a particular Pull Request introduces a performance or functional regression, 
 
 ### Testowanie w Continuous Integration
 
-All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at [https://ci.nodejs.org/](https://ci.nodejs.org/).
+All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
 
 Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
 
