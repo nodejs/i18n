@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Stabilität: 1 - Experimentell
+> Stabilität: 2 - Stabil
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
