@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-Le module `url` fournit des utilités pour la resolution et l'analyse de l'URL. It can be accessed using:
+Le module `url` fournit des utilités pour la resolution et l'analyse de l'URL. On peut y accéder en utilisant :
 
 ```js
 const url = require('url');
@@ -546,7 +546,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### urlSearchParams.entries()
 
-* Returns: {Iterator}
+* Renvoie : {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -593,7 +593,7 @@ Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### urlSearchParams.keys()
 
-* Returns: {Iterator}
+* Renvoie : {Iterator}
 
 Returns an ES6 Iterator over the names of each name-value pair.
 
@@ -611,7 +611,7 @@ for (const name of params.keys()) {
 #### urlSearchParams.set(name, value)
 
 * `name` {string}
-* `value` {string}
+* `valeur` {string}
 
 Sets the value in the `URLSearchParams` object associated with `name` to `value`. If there are any pre-existing name-value pairs whose names are `name`, set the first such pair's value to `value` and remove all others. If not, append the name-value pair to the query string.
 
