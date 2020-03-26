@@ -175,7 +175,7 @@ added: v8.12.0
 
 * `err` {number}
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -744,7 +744,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilität: 0 - Veraltet
 
 * `object` {any}
 
@@ -852,7 +852,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilität: 0 - Veraltet
 
 * `object` {any}
 
