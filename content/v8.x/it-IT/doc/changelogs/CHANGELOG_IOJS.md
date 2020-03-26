@@ -3,65 +3,72 @@
 <!--lint disable prohibited-strings-->
 
 <table>
-<tr>
+  <tr>
+    
 <th>v3</th>
 <th>v2</th>
 <th>v1</th>
-</tr>
-<tr>
-<td valign="top">
-<a href="#3.3.1">3.3.1</a><br/>
-<a href="#3.3.0">3.3.0</a><br/>
-<a href="#3.2.0">3.2.0</a><br/>
-<a href="#3.1.0">3.1.0</a><br/>
-<a href="#3.0.0">3.0.0</a><br/>
-</td>
-<td valign="top">
-<a href="#2.5.0">2.5.0</a><br/>
-<a href="#2.4.0">2.4.0</a><br/>
-<a href="#2.3.4">2.3.4</a><br/>
-<a href="#2.3.3">2.3.3</a><br/>
-<a href="#2.3.2">2.3.2</a><br/>
-<a href="#2.3.1">2.3.1</a><br/>
-<a href="#2.3.0">2.3.0</a><br/>
-<a href="#2.2.1">2.2.1</a><br/>
-<a href="#2.2.0">2.2.0</a><br/>
-<a href="#2.1.0">2.1.0</a><br/>
-<a href="#2.0.2">2.0.2</a><br/>
-<a href="#2.0.1">2.0.1</a><br/>
-<a href="#2.0.0">2.0.0</a><br/>
-</td>
-<td valign="top">
-<a href="#1.8.4">1.8.4</a><br/>
-<a href="#1.8.3">1.8.3</a><br/>
-<a href="#1.8.2">1.8.2</a><br/>
-<a href="#1.8.1">1.8.1</a><br/>
-<a href="#1.7.1">1.7.1</a><br/>
-<a href="#1.7.0">1.7.0</a><br/>
-<a href="#1.6.4">1.6.4</a><br/>
-<a href="#1.6.3">1.6.3</a><br/>
-<a href="#1.6.2">1.6.2</a><br/>
-<a href="#1.6.1">1.6.1</a><br/>
-<a href="#1.6.0">1.6.0</a><br/>
-<a href="#1.5.1">1.5.1</a><br/>
-<a href="#1.5.0">1.5.0</a><br/>
-<a href="#1.4.3">1.4.3</a><br/>
-<a href="#1.4.2">1.4.2</a><br/>
-<a href="#1.4.1">1.4.1</a><br/>
-<a href="#1.4.1">1.4.0</a><br/>
-<a href="#1.3.0">1.3.0</a><br/>
-<a href="#1.2.0">1.2.0</a><br/>
-<a href="#1.1.0">1.1.0</a><br/>
-<a href="#1.0.4">1.0.4</a><br/>
-<a href="#1.0.3">1.0.3</a><br/>
-<a href="#1.0.2">1.0.2</a><br/>
-<a href="#1.0.1">1.0.1</a><br/>
-<a href="#1.0.0">1.0.0</a><br/>
-</td>
-</tr>
+  </tr>
+  
+  <tr>
+    <td valign="top">
+      
+<a href="#3.3.1">3.3.1</a><br />
+<a href="#3.3.0">3.3.0</a><br />
+<a href="#3.2.0">3.2.0</a><br />
+<a href="#3.1.0">3.1.0</a><br />
+<a href="#3.0.0">3.0.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#2.5.0">2.5.0</a><br />
+<a href="#2.4.0">2.4.0</a><br />
+<a href="#2.3.4">2.3.4</a><br />
+<a href="#2.3.3">2.3.3</a><br />
+<a href="#2.3.2">2.3.2</a><br />
+<a href="#2.3.1">2.3.1</a><br />
+<a href="#2.3.0">2.3.0</a><br />
+<a href="#2.2.1">2.2.1</a><br />
+<a href="#2.2.0">2.2.0</a><br />
+<a href="#2.1.0">2.1.0</a><br />
+<a href="#2.0.2">2.0.2</a><br />
+<a href="#2.0.1">2.0.1</a><br />
+<a href="#2.0.0">2.0.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#1.8.4">1.8.4</a><br />
+<a href="#1.8.3">1.8.3</a><br />
+<a href="#1.8.2">1.8.2</a><br />
+<a href="#1.8.1">1.8.1</a><br />
+<a href="#1.7.1">1.7.1</a><br />
+<a href="#1.7.0">1.7.0</a><br />
+<a href="#1.6.4">1.6.4</a><br />
+<a href="#1.6.3">1.6.3</a><br />
+<a href="#1.6.2">1.6.2</a><br />
+<a href="#1.6.1">1.6.1</a><br />
+<a href="#1.6.0">1.6.0</a><br />
+<a href="#1.5.1">1.5.1</a><br />
+<a href="#1.5.0">1.5.0</a><br />
+<a href="#1.4.3">1.4.3</a><br />
+<a href="#1.4.2">1.4.2</a><br />
+<a href="#1.4.1">1.4.1</a><br />
+<a href="#1.4.1">1.4.0</a><br />
+<a href="#1.3.0">1.3.0</a><br />
+<a href="#1.2.0">1.2.0</a><br />
+<a href="#1.1.0">1.1.0</a><br />
+<a href="#1.0.4">1.0.4</a><br />
+<a href="#1.0.3">1.0.3</a><br />
+<a href="#1.0.2">1.0.2</a><br />
+<a href="#1.0.1">1.0.1</a><br />
+<a href="#1.0.0">1.0.0</a><br />
+    </td>
+  </tr>
 </table>
 
-* Altre versioni
+* Altre versioni 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -69,7 +76,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -261,7 +268,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 * **node**: Startup time is now about 5% faster when not passing V8 flags. (Evan Lucas) [#2483](https://github.com/nodejs/node/pull/2483)
 * **repl**: Tab-completion now works better with arrays. (James M Snell) [#2409](https://github.com/nodejs/node/pull/2409)
 * **string_bytes**: Fixed an unaligned write in the handling of UCS2 encoding. (Fedor Indutny) [#2480](https://github.com/nodejs/node/pull/2480)
-* **tls**: Added a new `--tls-cipher-list` flag that can be used to override the built-in default cipher list. (James M Snell) [#2412](https://github.com/nodejs/node/pull/2412) _Note: it is suggested you use the built-in cipher list as it has been carefully selected to reflect current security best practices and risk mitigation._
+* **tls**: Added a new `--tls-cipher-list` flag that can be used to override the built-in default cipher list. (James M Snell) [#2412](https://github.com/nodejs/node/pull/2412) *Note: it is suggested you use the built-in cipher list as it has been carefully selected to reflect current security best practices and risk mitigation.*
 
 ### Known issues
 
@@ -328,16 +335,16 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 ### Notable changes
 
 * **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
-* **crypto**:
-  - Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
-  - Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
-* **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264).
-  - [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) can now be used for unicode normalization.
-  - The [`Intl`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and various `String` and `Number` methods are present, but only support the English locale.
-  - For support of all locales, node must be built with [full-icu](https://github.com/nodejs/node#build-with-full-icu-support-all-locales-supported-by-icu).
+* **crypto**: 
+  * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
+  * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
+* **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264). 
+  * [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) can now be used for unicode normalization.
+  * The [`Intl`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and various `String` and `Number` methods are present, but only support the English locale.
+  * For support of all locales, node must be built with [full-icu](https://github.com/nodejs/node#build-with-full-icu-support-all-locales-supported-by-icu).
 * **tls**: Fixed tls throughput being much lower after an incorrect merge (Fedor Indutny) [#2381](https://github.com/nodejs/node/pull/2381).
-* **tools**: The v8 tick processor now comes bundled with node (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090).
-  - This can be used by producing performance profiling output by running node with `--perf`, then running your appropriate platform's script on the output as found in [tools/v8-prof](https://github.com/nodejs/node/tree/master/tools/v8-prof).
+* **tools**: The v8 tick processor now comes bundled with node (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090). 
+  * This can be used by producing performance profiling output by running node with `--perf`, then running your appropriate platform's script on the output as found in [tools/v8-prof](https://github.com/nodejs/node/tree/master/tools/v8-prof).
 * **util**: `util.inspect(obj)` now prints the constructor name of the object if there is one (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935).
 
 ### Known issues
@@ -352,7 +359,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 
 ### Commits
 
-* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: work around VS2015 issue in ICU <56 (Steven R. Loomis) [#2283](https://github.com/nodejs/node/pull/2283)
+* [[`3645dc62ed`](https://github.com/nodejs/node/commit/3645dc62ed)] - **build**: work around VS2015 issue in ICU <56 (steven r. loomis) [#2283](https://github.com/nodejs/node/pull/2283)
 * [[`1f12e03266`](https://github.com/nodejs/node/commit/1f12e03266)] - **(SEMVER-MINOR)** **build**: intl: converge from joyent/node (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264)
 * [[`071640abdd`](https://github.com/nodejs/node/commit/071640abdd)] - **build**: Intl: bump ICU4C from 54 to 55 (Steven R. Loomis) [#2293](https://github.com/nodejs/node/pull/2293)
 * [[`07a88b0c8b`](https://github.com/nodejs/node/commit/07a88b0c8b)] - **build**: update manifest to include Windows 10 (Lucien Greathouse) [#2332](https://github.com/nodejs/io.js/pull/2332)
@@ -397,31 +404,31 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 
 ### Notable changes
 
-* **buffer**:
-  - Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
-  - `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
-  - When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
+* **buffer**: 
+  * Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
+  * `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
+  * When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
 * **build**: PPC support has been added to core to allow compiling on pLinux BE and LE (AIX support coming soon) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
 * **dgram**: If an error occurs within `socket.send()` and a callback has been provided, the error is only passed as the first argument to the callback and not emitted on the `socket` object; previous behavior was to do both (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
 * **freelist**: Deprecate the undocumented `freelist` core module (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
-* **http**:
-  - Status codes now all use the official [IANA names](http://www.iana.org/assignments/http-status-codes) as per [RFC7231](https://tools.ietf.org/html/rfc7231), e.g. `http.STATUS_CODES[414]` now returns `'URI Too Long'` rather than `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
-  - Calling .getName() on an HTTP agent no longer returns a trailing colon, HTTPS agents will no longer return an extra colon near the middle of the string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
-* **node**:
-  - `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
-  - Introduce a new `process.release` object that contains a `name` property set to `'io.js'` and `sourceUrl`, `headersUrl` and `libUrl` (Windows only) properties containing URLs for the relevant resources; this is intended to be used by node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
-  - The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
+* **http**: 
+  * Status codes now all use the official [IANA names](http://www.iana.org/assignments/http-status-codes) as per [RFC7231](https://tools.ietf.org/html/rfc7231), e.g. `http.STATUS_CODES[414]` now returns `'URI Too Long'` rather than `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
+  * Calling .getName() on an HTTP agent no longer returns a trailing colon, HTTPS agents will no longer return an extra colon near the middle of the string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
+* **node**: 
+  * `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
+  * Introduce a new `process.release` object that contains a `name` property set to `'io.js'` and `sourceUrl`, `headersUrl` and `libUrl` (Windows only) properties containing URLs for the relevant resources; this is intended to be used by node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
+  * The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
 * **repl**: Persistent history is now enabled by default. The history file is located at ~/.node_repl_history, which can be overridden by the new environment variable `NODE_REPL_HISTORY`. This deprecates the previous `NODE_REPL_HISTORY_FILE` variable. Additionally, the format of the file has been changed to plain text to better handle file corruption. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
 * **smalloc**: The `smalloc` module has been removed as it is no longer possible to provide the API due to changes in V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
 * **tls**: Add `server.getTicketKeys()` and `server.setTicketKeys()` methods for [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) rotation (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
-* **v8**: Upgraded to 4.4.63.26
-  - ES6: Enabled [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names)
-  - ES6: `Array` can now be subclassed in strict mode
-  - ES6: Implement [rest parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/rest_parameters) in staging, use the `--harmony-rest-parameters` command line flag
-  - ES6: Implement the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) in staging, use the `--harmony-spreadcalls` command line flag
-  - Removed `SetIndexedPropertiesToExternalArrayData` and related APIs, forcing a shift to `Buffer` to be reimplemented based on `Uint8Array`
-  - Introduction of `Maybe` and `MaybeLocal` C++ API for objects which _may_ or _may not_ have a value.
-  - Added support for PPC
+* **v8**: Upgraded to 4.4.63.26 
+  * ES6: Enabled [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names)
+  * ES6: `Array` can now be subclassed in strict mode
+  * ES6: Implement [rest parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/rest_parameters) in staging, use the `--harmony-rest-parameters` command line flag
+  * ES6: Implement the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) in staging, use the `--harmony-spreadcalls` command line flag
+  * Removed `SetIndexedPropertiesToExternalArrayData` and related APIs, forcing a shift to `Buffer` to be reimplemented based on `Uint8Array`
+  * Introduction of `Maybe` and `MaybeLocal` C++ API for objects which *may* or *may not* have a value.
+  * Added support for PPC
 
 See also https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x for a summary of the breaking changes (SEMVER-MAJOR).
 
@@ -445,8 +452,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`b625ab4242`](https://github.com/nodejs/node/commit/b625ab4242)] - **buffer**: fix usage of kMaxLength (Trevor Norris) [#2003](https://github.com/nodejs/node/pull/2003)
 * [[`eea66e2a7b`](https://github.com/nodejs/node/commit/eea66e2a7b)] - **(SEMVER-MAJOR)** **buffer**: fix case of one buffer passed to concat (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937)
 * [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: make additional changes to native API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: switch API to return MaybeLocal<T> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: switch to using Maybe<T> API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: switch API to return MaybeLocal<t> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: switch to using Maybe<t> API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`d75f5c8d0e`](https://github.com/nodejs/node/commit/d75f5c8d0e)] - **buffer**: finish implementing FreeCallback (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`63da0dfd3a`](https://github.com/nodejs/node/commit/63da0dfd3a)] - **buffer**: implement Uint8Array backed Buffer (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`23be6ca189`](https://github.com/nodejs/node/commit/23be6ca189)] - **buffer**: allow ARGS_THIS to accept a name (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
@@ -710,9 +717,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **v8**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
 * **openssl**: Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
-* **build**:
-  - Added support for compiling with Microsoft Visual C++ 2015
-  - Started building and distributing headers-only tarballs along with binaries
+* **build**: 
+  * Added support for compiling with Microsoft Visual C++ 2015
+  * Started building and distributing headers-only tarballs along with binaries
 
 ### Known issues
 
@@ -758,9 +765,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **build**:
-  - Added support for compiling with Microsoft Visual C++ 2015
-  - Started building and distributing headers-only tarballs along with binaries
+* **build**: 
+  * Added support for compiling with Microsoft Visual C++ 2015
+  * Started building and distributing headers-only tarballs along with binaries
 
 ### Known issues
 
@@ -822,7 +829,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Notable changes
 
 * **module**: The number of syscalls made during a `require()` have been significantly reduced again (see [#1801](https://github.com/nodejs/node/pull/1801) from v2.2.0 for previous work), which should lead to a performance improvement (Pierre Inglebert) [#1920](https://github.com/nodejs/node/pull/1920).
-* **npm**:
+* **npm**: 
   * Upgrade to [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
   * Upgrade to [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
 * **zlib**: A bug was discovered where the process would abort if the final part of a zlib decompression results in a buffer that would exceed the maximum length of `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). This is now fixed and will instead result in a thrown `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
@@ -891,24 +898,24 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **libuv**: Upgraded to 1.6.0 and 1.6.1, see [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) for details. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Highlights include:
-  - Fix TTY becoming blocked on OS X
-  - Fix UDP send callbacks to not to be synchronous
-  - Add `uv_os_homedir()` (exposed as `os.homedir()`, see below)
-* **npm**: See full [release notes](https://github.com/npm/npm/releases/tag/v2.11.1) for details. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Highlight:
-  - Use GIT_SSH_COMMAND (available as of Git 2.3)
-* **openssl**:
-  - Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
-  - Support [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) mode of OpenSSL, see [README](https://github.com/nodejs/node#building-iojs-with-fips-compliant-openssl) for instructions. (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
+* **libuv**: Upgraded to 1.6.0 and 1.6.1, see [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) for details. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Highlights include: 
+  * Fix TTY becoming blocked on OS X
+  * Fix UDP send callbacks to not to be synchronous
+  * Add `uv_os_homedir()` (exposed as `os.homedir()`, see below)
+* **npm**: See full [release notes](https://github.com/npm/npm/releases/tag/v2.11.1) for details. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Highlight: 
+  * Use GIT_SSH_COMMAND (available as of Git 2.3)
+* **openssl**: 
+  * Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
+  * Support [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) mode of OpenSSL, see [README](https://github.com/nodejs/node#building-iojs-with-fips-compliant-openssl) for instructions. (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
 * **os**: Add `os.homedir()` method. (Colin Ihrig) [#1791](https://github.com/nodejs/node/pull/1791)
 * **smalloc**: Deprecate whole module. (Vladimir Kurchatkin) [#1822](https://github.com/nodejs/node/pull/1822)
-* Add new collaborators:
-  - Alex Kocharin ([@rlidwka](https://github.com/rlidwka))
-  - Christopher Monsanto ([@monsanto](https://github.com/monsanto))
-  - Ali Ijaz Sheikh ([@ofrobots](https://github.com/ofrobots))
-  - Oleg Elifantiev ([@Olegas](https://github.com/Olegas))
-  - Domenic Denicola ([@domenic](https://github.com/domenic))
-  - Rich Trott ([@Trott](https://github.com/Trott))
+* Add new collaborators: 
+  * Alex Kocharin ([@rlidwka](https://github.com/rlidwka))
+  * Christopher Monsanto ([@monsanto](https://github.com/monsanto))
+  * Ali Ijaz Sheikh ([@ofrobots](https://github.com/ofrobots))
+  * Oleg Elifantiev ([@Olegas](https://github.com/Olegas))
+  * Domenic Denicola ([@domenic](https://github.com/domenic))
+  * Rich Trott ([@Trott](https://github.com/Trott))
 
 ### Known issues
 
@@ -1140,10 +1147,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ## Notable changes
 
 * **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
-* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Summary:
-  - Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
-  - Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
-  - The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
+* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Summary: 
+  * Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
+  * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
+  * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 
 ### Known issues
 
@@ -1229,15 +1236,15 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **async_wrap**: (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
-  - it is now possible to filter by providers
-  - bit flags have been removed and replaced with method calls on the binding object
-  - _note that this is an unstable API so feature additions and breaking changes won't change io.js semver_
-* **libuv**: resolves numerous io.js issues:
-  - [#862](https://github.com/nodejs/node/issues/862) prevent spawning child processes with invalid stdio file descriptors
-  - [#1397](https://github.com/nodejs/node/issues/1397) fix EPERM error with fs.access(W_OK) on Windows
-  - [#1621](https://github.com/nodejs/node/issues/1621) build errors associated with the bundled libuv
-  - [#1512](https://github.com/nodejs/node/issues/1512) should properly fix Windows termination errors
+* **async_wrap**: (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614) 
+  * it is now possible to filter by providers
+  * bit flags have been removed and replaced with method calls on the binding object
+  * *note that this is an unstable API so feature additions and breaking changes won't change io.js semver*
+* **libuv**: resolves numerous io.js issues: 
+  * [#862](https://github.com/nodejs/node/issues/862) prevent spawning child processes with invalid stdio file descriptors
+  * [#1397](https://github.com/nodejs/node/issues/1397) fix EPERM error with fs.access(W_OK) on Windows
+  * [#1621](https://github.com/nodejs/node/issues/1621) build errors associated with the bundled libuv
+  * [#1512](https://github.com/nodejs/node/issues/1512) should properly fix Windows termination errors
 * **addons**: the `NODE_DEPRECATED` macro was causing problems when compiling addons with older compilers, this should now be resolved (Ben Noordhuis) [#1626](https://github.com/nodejs/node/pull/1626)
 * **V8**: upgrade V8 from 4.2.77.18 to 4.2.77.20 with minor fixes, including a bug preventing builds on FreeBSD
 
@@ -1282,39 +1289,39 @@ Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
 
 * V8 upgrade to 4.2, minor changes to C++ API
 * `os.tmpdir()` is now cross-platform consistent and no longer returns a path with a trailing slash on any platform
-* While not a *breaking change* the 'smalloc' module has been deprecated in anticipation of it becoming unsupportable with a future upgrade to V8 4.4. See [#1451](https://github.com/nodejs/node/issues/1451)  for further information.
+* While not a *breaking change* the 'smalloc' module has been deprecated in anticipation of it becoming unsupportable with a future upgrade to V8 4.4. See [#1451](https://github.com/nodejs/node/issues/1451) for further information.
 
-_Note: a new version of the 'url' module was reverted prior to release as it was decided the potential for breakage across the npm ecosystem was too great and that more compatibility work needed to be done before releasing it. See [#1602](https://github.com/nodejs/node/pull/1602) for further information._
+*Note: a new version of the 'url' module was reverted prior to release as it was decided the potential for breakage across the npm ecosystem was too great and that more compatibility work needed to be done before releasing it. See [#1602](https://github.com/nodejs/node/pull/1602) for further information.*
 
 ### Notable changes
 
 * **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
 * **net**: `socket.connect()` now accepts a `'lookup'` option for a custom DNS resolution mechanism, defaults to `dns.lookup()` (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
-* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Notable items:
-  - Add support for default author field to make `npm init -y` work without user-input (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9af)
-  - Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
-  - The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
+* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Notable items: 
+  * Add support for default author field to make `npm init -y` work without user-input (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9af)
+  * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
+  * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 * **os**: `os.tmpdir()` is now cross-platform consistent and will no longer returns a path with a trailing slash on any platform (Christian Tellnes) [#747](https://github.com/nodejs/node/pull/747)
-* **process**:
-  - `process.nextTick()` performance has been improved by between 2-42% across the benchmark suite, notable because this is heavily used across core (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
-  - New `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` and `process.setegid(id)` methods allow you to get and set effective UID and GID of the process (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
-* **repl**:
-  - REPL history can be persisted across sessions if the `NODE_REPL_HISTORY_FILE` environment variable is set to a user accessible file, `NODE_REPL_HISTORY_SIZE` can set the maximum history size and defaults to `1000` (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
-  - The REPL can be placed in to one of three modes using the `NODE_REPL_MODE` environment variable: `sloppy`, `strict` or `magic` (default); the new `magic` mode will automatically run "strict mode only" statements in strict mode (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
+* **process**: 
+  * `process.nextTick()` performance has been improved by between 2-42% across the benchmark suite, notable because this is heavily used across core (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
+  * New `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` and `process.setegid(id)` methods allow you to get and set effective UID and GID of the process (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
+* **repl**: 
+  * REPL history can be persisted across sessions if the `NODE_REPL_HISTORY_FILE` environment variable is set to a user accessible file, `NODE_REPL_HISTORY_SIZE` can set the maximum history size and defaults to `1000` (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
+  * The REPL can be placed in to one of three modes using the `NODE_REPL_MODE` environment variable: `sloppy`, `strict` or `magic` (default); the new `magic` mode will automatically run "strict mode only" statements in strict mode (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
 * **smalloc**: the 'smalloc' module has been deprecated due to changes coming in V8 4.4 that will render it unusable
 * **util**: add Promise, Map and Set inspection support (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
-* **V8**: upgrade to 4.2.77.18, see the [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) for full details. Notable items:
-  - Classes have moved out of staging; the `class` keyword is now usable in strict mode without flags
-  - Object literal enhancements have moved out of staging; shorthand method and property syntax is now usable (`{ method() { }, property }`)
-  - Rest parameters (`function(...args) {}`) are implemented in staging behind the `--harmony-rest-parameters` flag
-  - Computed property names (`{['foo'+'bar']:'bam'}`) are implemented in staging behind the `--harmony-computed-property-names` flag
-  - Unicode escapes (`'\u{xxxx}'`) are implemented in staging behind the `--harmony_unicode` flag and the `--harmony_unicode_regexps` flag for use in regular expressions
-* **Windows**:
-  - Random process termination on Windows fixed (Fedor Indutny)  [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
-  - The delay-load hook introduced to fix issues with process naming (iojs.exe / node.exe) has been made opt-out for native add-ons. Native add-ons should include `'win_delay_load_hook': 'false'` in their binding.gyp to disable this feature if they experience problems . (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
-* **Governance**:
-  - Rod Vagg (@rvagg) was added to the Technical Committee (TC)
-  - Jeremiah Senkpiel (@Fishrock123) was added to the Technical Committee (TC)
+* **V8**: upgrade to 4.2.77.18, see the [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) for full details. Notable items: 
+  * Classes have moved out of staging; the `class` keyword is now usable in strict mode without flags
+  * Object literal enhancements have moved out of staging; shorthand method and property syntax is now usable (`{ method() { }, property }`)
+  * Rest parameters (`function(...args) {}`) are implemented in staging behind the `--harmony-rest-parameters` flag
+  * Computed property names (`{['foo'+'bar']:'bam'}`) are implemented in staging behind the `--harmony-computed-property-names` flag
+  * Unicode escapes (`'\u{xxxx}'`) are implemented in staging behind the `--harmony_unicode` flag and the `--harmony_unicode_regexps` flag for use in regular expressions
+* **Windows**: 
+  * Random process termination on Windows fixed (Fedor Indutny) [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
+  * The delay-load hook introduced to fix issues with process naming (iojs.exe / node.exe) has been made opt-out for native add-ons. Native add-ons should include `'win_delay_load_hook': 'false'` in their binding.gyp to disable this feature if they experience problems . (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
+* **Governance**: 
+  * Rod Vagg (@rvagg) was added to the Technical Committee (TC)
+  * Jeremiah Senkpiel (@Fishrock123) was added to the Technical Committee (TC)
 
 ### Known issues
 
@@ -1409,9 +1416,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **NOTICE**: Skipped v1.8.0 due to problems with release tooling. See [#1436](https://github.com/nodejs/node/issues/1436) for details.
 * **build**: Support for building io.js as a static library (Marat Abdullin) [#1341](https://github.com/nodejs/node/pull/1341)
-* **deps**: Upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
+* **deps**: Upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389) 
   * Users should see performance improvements when using the crypto API. See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) for details.
-* **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Includes improved git support. Summary:
+* **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Includes improved git support. Summary: 
   * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH URLs always have a valid protocol when stored in `resolved` fields in `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
   * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Switch the order in which hosted Git providers are checked to `git:`, `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in an effort to go from most to least likely to succeed, to make for less confusing error message. ([@othiym23](https://github.com/othiym23))
   * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: Don't send body with HTTP GET requests when logging in. ([@smikes](https://github.com/smikes))
@@ -1494,12 +1501,12 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **C++ API**: Fedor Indutny contributed a feature to V8 which has been backported to the V8 bundled in io.js. `SealHandleScope` allows a C++ add-on author to _seal_ a `HandleScope` to prevent further, unintended allocations within it. Currently only enabled for debug builds of io.js. This feature helped detect the leak in [#1075](https://github.com/nodejs/node/issues/1075) and is now activated on the root `HandleScope` in io.js. (Fedor Indutny) [#1395](https://github.com/nodejs/node/pull/1395).
-* **ARM**: This release includes significant work to improve the state of ARM support for builds and tests. The io.js CI cluster's ARMv6, ARMv7 and ARMv8 build servers are now all (mostly) reporting passing builds and tests.
+* **C++ API**: Fedor Indutny contributed a feature to V8 which has been backported to the V8 bundled in io.js. `SealHandleScope` allows a C++ add-on author to *seal* a `HandleScope` to prevent further, unintended allocations within it. Currently only enabled for debug builds of io.js. This feature helped detect the leak in [#1075](https://github.com/nodejs/node/issues/1075) and is now activated on the root `HandleScope` in io.js. (Fedor Indutny) [#1395](https://github.com/nodejs/node/pull/1395).
+* **ARM**: This release includes significant work to improve the state of ARM support for builds and tests. The io.js CI cluster's ARMv6, ARMv7 and ARMv8 build servers are now all (mostly) reporting passing builds and tests. 
   * ARMv8 64-bit (AARCH64) is now properly supported, including a backported fix in libuv that was mistakenly detecting the existence of `epoll_wait()`. (Ben Noordhuis) [#1365](https://github.com/nodejs/node/pull/1365).
   * ARMv6: [#1376](https://github.com/nodejs/node/issues/1376) reported a problem with `Math.exp()` on ARMv6 (incl Raspberry Pi). The culprit is erroneous codegen for ARMv6 when using the "fast math" feature of V8. `--nofast_math` has been turned on for all ARMv6 variants by default to avoid this, fast math can be turned back on with `--fast_math`. (Ben Noordhuis) [#1398](https://github.com/nodejs/node/pull/1398).
   * Tests: timeouts have been tuned specifically for slower platforms, detected as ARMv6 and ARMv7. (Roman Reiss) [#1366](https://github.com/nodejs/node/pull/1366).
-* **npm**: Upgrade npm to 2.7.6. See the [release notes](https://github.com/npm/npm/releases/tag/v2.7.6) for details. Summary:
+* **npm**: Upgrade npm to 2.7.6. See the [release notes](https://github.com/npm/npm/releases/tag/v2.7.6) for details. Summary: 
   * [`b747593`](https://github.com/npm/npm/commit/b7475936f473f029e6a027ba1b16277523747d0b)[#7630](https://github.com/npm/npm/issues/7630) Don't automatically log all git failures as errors. `maybeGithub` needs to be able to fail without logging to support its fallback logic. ([@othiym23](https://github.com/othiym23))
   * [`78005eb`](https://github.com/npm/npm/commit/78005ebb6f4103c20f077669c3929b7ea46a4c0d)[#7743](https://github.com/npm/npm/issues/7743) Always quote arguments passed to `npm run-script`. This allows build systems and the like to safely escape glob patterns passed as arguments to `run-scripts` with `npm run-script <script> -- <arguments>`. This is a tricky change to test, and may be reverted or moved to `npm@3` if it turns out it breaks things for users. ([@mantoni](https://github.com/mantoni))
   * [`da015ee`](https://github.com/npm/npm/commit/da015eee45f6daf384598151d06a9b57ffce136e)[#7074](https://github.com/npm/npm/issues/7074) `read-package-json@1.3.3`: `read-package-json` no longer caches `package.json` files, which trades a very small performance loss for the elimination of a large class of really annoying race conditions. See [#7074](https://github.com/npm/npm/issues/7074) for the grisly details. ([@othiym23](https://github.com/othiym23))
@@ -1556,9 +1563,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **npm**: upgrade npm to 2.7.5. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) for details. Includes two important security fixes. Summary:
+* **npm**: upgrade npm to 2.7.5. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) for details. Includes two important security fixes. Summary: 
   * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalize symbolic links that point to targets outside the extraction root. This prevents packages containing symbolic links from overwriting targets outside the expected paths for a package. Thanks to [Tim Cuthbertson](http://gfxmonk.net/) and the team at [Lift Security](https://liftsecurity.io/) for working with the npm team to identify this issue. ([@othiym23](https://github.com/othiym23))
-  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention.  ([@isaacs](https://github.com/isaacs))
+  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention. ([@isaacs](https://github.com/isaacs))
   * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that GitHub shortcuts work with private repositories. ([@iarna](https://github.com/iarna))
   * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when there are paths to fix up. ([@othiym23](https://github.com/othiym23))
 * **openssl**: preliminary work has been done for an upcoming upgrade to OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). See [#589](https://github.com/nodejs/node/issues/589) for additional details.
@@ -1621,13 +1628,13 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **fs**: corruption can be caused by `fs.writeFileSync()` and append-mode `fs.writeFile()` and `fs.writeFileSync()` under certain circumstances, reported in [#1058](https://github.com/nodejs/node/issues/1058), fixed in [#1063](https://github.com/nodejs/node/pull/1063) (Olov Lassus).
 * **iojs**: an "internal modules" API has been introduced to allow core code to share JavaScript modules internally only without having to expose them as a public API, this feature is for core-only [#848](https://github.com/nodejs/node/pull/848) (Vladimir Kurchatkin).
-* **timers**: two minor problems with timers have been fixed:
-  - `Timer#close()` is now properly idempotent [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
-  - `setTimeout()` will only run the callback once now after an `unref()` during the callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
-  - NOTE: there are still other unresolved concerns with the timers code, such as [#1152](https://github.com/nodejs/node/pull/1152).
+* **timers**: two minor problems with timers have been fixed: 
+  * `Timer#close()` is now properly idempotent [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
+  * `setTimeout()` will only run the callback once now after an `unref()` during the callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
+  * NOTE: there are still other unresolved concerns with the timers code, such as [#1152](https://github.com/nodejs/node/pull/1152).
 * **Windows**: a "delay-load hook" has been added for compiled add-ons on Windows that should alleviate some of the problems that Windows users may be experiencing with add-ons in io.js [#1251](https://github.com/nodejs/node/pull/1251) (Bert Belder).
 * **V8**: minor bug-fix upgrade for V8 to 4.1.0.27.
-* **npm**: upgrade npm to 2.7.4. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v274-2015-03-20) for details. Summary:
+* **npm**: upgrade npm to 2.7.4. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v274-2015-03-20) for details. Summary: 
   * [`1549106`](https://github.com/npm/npm/commit/1549106f518000633915686f5f1ccc6afcf77f8f) [#7641](https://github.com/npm/npm/issues/7641) Due to 448efd0, running `npm shrinkwrap --dev` caused production dependencies to no longer be included in `npm-shrinkwrap.json`. Whoopsie! ([@othiym23](https://github.com/othiym23))
   * [`fb0ac26`](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5) [#7579](https://github.com/npm/npm/issues/7579) Only block removing files and links when we're sure npm isn't responsible for them. This change is hard to summarize, because if things are working correctly you should never see it, but if you want more context, just [go read the commit message](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5), which lays it all out. ([@othiym23](https://github.com/othiym23))
   * [`051c473`](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) [#7552](https://github.com/npm/npm/issues/7552) `bundledDependencies` are now properly included in the installation context. This is another fantastically hard-to-summarize bug, and once again, I encourage you to [read the commit message](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) if you're curious about the details. The snappy takeaway is that this unbreaks many use cases for `ember-cli`. ([@othiym23](https://github.com/othiym23))
@@ -1709,7 +1716,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`bc9c1a5a7b`](https://github.com/nodejs/node/commit/bc9c1a5a7b)] - **doc**: fix typo in CHANGELOG (Mathieu Darse) [#1230](https://github.com/nodejs/node/pull/1230)
 * [[`99c79f8d41`](https://github.com/nodejs/node/commit/99c79f8d41)] - **doc**: call js function in null context (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
 * [[`55abf34be5`](https://github.com/nodejs/node/commit/55abf34be5)] - **doc**: don't use `using namespace v8` (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
-* [[`c4e1b82120`](https://github.com/nodejs/node/commit/c4e1b82120)] - **doc**: replace v8::Handle<T> with v8::Local<T> (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
+* [[`c4e1b82120`](https://github.com/nodejs/node/commit/c4e1b82120)] - **doc**: replace v8::Handle<t> with v8::Local<t> (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
 * [[`2f1b78347c`](https://github.com/nodejs/node/commit/2f1b78347c)] - **doc**: remove unnecessary v8::HandleScopes (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
 * [[`409d413363`](https://github.com/nodejs/node/commit/409d413363)] - **doc**: remove uses of v8::Isolate::GetCurrent() (Ben Noordhuis) [#1125](https://github.com/nodejs/node/pull/1125)
 * [[`33fea6ed5f`](https://github.com/nodejs/node/commit/33fea6ed5f)] - **lib**: don't penalize setInterval() common case (Ben Noordhuis) [#1221](https://github.com/nodejs/node/pull/1221)
@@ -1762,8 +1769,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * **net**: allow `server.listen()` to accept a `String` option for `port`, e.g. `{ port: "1234" }`, to match the same option being accepted in `net.connect()` as of [joyent/node#9268](https://github.com/joyent/node/pull/9268) (Ben Noordhuis) [#1116](https://github.com/nodejs/node/pull/1116).
 * **tls**: further work on the reported memory leak although there appears to be a minor leak remaining for the use-case in question, track progress at [#1075](https://github.com/nodejs/node/issues/1075).
 * **v8**: backport a fix for an integer overflow when `--max_old_space_size` values above `4096` are used (Ben Noordhuis) [#1166](https://github.com/nodejs/node/pull/1166).
-* **platforms**: the io.js CI system now reports passes on **FreeBSD** and **SmartOS** (_Solaris_).
-* **npm**: upgrade npm to 2.7.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v271-2015-03-05) for details. Summary:
+* **platforms**: the io.js CI system now reports passes on **FreeBSD** and **SmartOS** (*Solaris*).
+* **npm**: upgrade npm to 2.7.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v271-2015-03-05) for details. Summary: 
   * [`6823807`](https://github.com/npm/npm/commit/6823807bba) [#7121](https://github.com/npm/npm/issues/7121) `npm install --save` for Git dependencies saves the URL passed in, instead of the temporary directory used to clone the remote repo. Fixes using Git dependencies when shrinkwwapping. In the process, rewrote the Git dependency caching code. Again. No more single-letter variable names, and a much clearer workflow. ([@othiym23](https://github.com/othiym23))
   * [`abdd040`](https://github.com/npm/npm/commit/abdd040da9) read-package-json@1.3.2: Provide more helpful error messages when JSON parse errors are encountered by using a more forgiving JSON parser than JSON.parse. ([@smikes](https://github.com/smikes))
   * [`c56cfcd`](https://github.com/npm/npm/commit/c56cfcd79c) [#7525](https://github.com/npm/npm/issues/7525) `npm dedupe` handles scoped packages. ([@KidkArolis](https://github.com/KidkArolis))
@@ -1843,7 +1850,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **tls**: The reported TLS memory leak has been at least partially resolved via various commits in this release. Current testing indicated that there _may_ still be some leak problems. Track complete progress at [#1075](https://github.com/nodejs/node/issues/1075).
+* **tls**: The reported TLS memory leak has been at least partially resolved via various commits in this release. Current testing indicated that there *may* still be some leak problems. Track complete progress at [#1075](https://github.com/nodejs/node/issues/1075).
 * **http**: Fixed an error reported at [joyent/node#9348](https://github.com/joyent/node/issues/9348) and [npm/npm#7349](https://github.com/npm/npm/issues/7349). Pending data was not being fully read upon an `'error'` event leading to an assertion failure on `socket.destroy()`. (Fedor Indutny) [#1103](https://github.com/nodejs/node/pull/1103)
 
 ### Known issues
@@ -1881,9 +1888,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * **buffer**: New `Buffer#indexOf()` method, modelled off [`Array#indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf). Accepts a String, Buffer or a Number. Strings are interpreted as UTF8. (Trevor Norris) [#561](https://github.com/nodejs/node/pull/561)
 * **fs**: `options` object properties in `'fs'` methods no longer perform a `hasOwnProperty()` check, thereby allowing options objects to have prototype properties that apply. (Jonathan Ong) [#635](https://github.com/nodejs/node/pull/635)
 * **tls**: A likely TLS memory leak was reported by PayPal. Some of the recent changes in **stream_wrap** appear to be to blame. The initial fix is in [#1078](https://github.com/nodejs/node/pull/1078), you can track the progress toward closing the leak at [#1075](https://github.com/nodejs/node/issues/1075) (Fedor Indutny).
-* **npm**: Upgrade npm to 2.7.0. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) for details including why this is a semver-minor when it could have been semver-major. Summary:
-  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the `node-gyp` script bundled with npm by passing the `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version of `node-gyp` modified to work better with io.js without having to touch npm's code!  ([@ackalker](https://github.com/ackalker))
-  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start` scripts (plus their pre- and post- scripts) when there's no `restart` script defined. This makes it easier to support graceful restarts of services managed by npm.  ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
+* **npm**: Upgrade npm to 2.7.0. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) for details including why this is a semver-minor when it could have been semver-major. Summary: 
+  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the `node-gyp` script bundled with npm by passing the `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version of `node-gyp` modified to work better with io.js without having to touch npm's code! ([@ackalker](https://github.com/ackalker))
+  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start` scripts (plus their pre- and post- scripts) when there's no `restart` script defined. This makes it easier to support graceful restarts of services managed by npm. ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
   * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Add support for `--dev` and `--prod` to `npm ls`, so that you can list only the trees of production or development dependencies, as desired. ([@watilde](https://github.com/watilde))
   * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Split the list printed by `npm run-script` into lifecycle scripts and scripts directly invoked via `npm
 run-script`. ([@watilde](https://github.com/watilde))
@@ -1994,15 +2001,15 @@ run-script`. ([@watilde](https://github.com/watilde))
 ### Notable changes
 
 * **tls**: A typo introduced in the TLSWrap changes in [#840](https://github.com/nodejs/node/pull/840) only encountered as a bug on Windows was not caught by the io.js CI system due to problems with the Windows build script and the Windows CI configuration, see Known Issues below. Fixed in [#994](https://github.com/nodejs/node/pull/994) & [#1004](https://github.com/nodejs/node/pull/1004). (Fedor Indutny)
-* **npm**: Upgrade npm to 2.6.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary:
+* **npm**: Upgrade npm to 2.6.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary: 
   * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (and only `npm
 outdated`) now defaults to `--depth=0`. This also has the excellent but unexpected effect of making `npm update -g` work the way almost everyone wants it to. See the [docs for `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) for the mildly confusing details. ([@smikes](https://github.com/smikes))
   * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Tweak `peerDependency` deprecation warning to include which peer dependency on which package is going to need to change. ([@othiym23](https://github.com/othiym23))
   * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Tweak `engineStrict` deprecation warning to include which `package.json` is using it. ([@othiym23](https://github.com/othiym23))
-* Add new collaborators:
-  - Robert Kowalski ([@robertkowalski](https://github.com/robertkowalski))
-  - Christian Vaagland Tellnes ([@tellnes](https://github.com/tellnes))
-  - Brian White ([@mscdex](https://github.com/mscdex))
+* Add new collaborators: 
+  * Robert Kowalski ([@robertkowalski](https://github.com/robertkowalski))
+  * Christian Vaagland Tellnes ([@tellnes](https://github.com/tellnes))
+  * Brian White ([@mscdex](https://github.com/mscdex))
 
 ### Known issues
 
@@ -2036,7 +2043,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ## 2015-02-26, Version 1.4.1, @rvagg
 
-_Note: version **1.4.0** was tagged and built but not released. A libuv bug was discovered in the process so the release was aborted. The tag was straight after [`a558cd0a61`](https://github.com/nodejs/node/commit/a558cd0a61) but has since been removed. We have jumped to 1.4.1 to avoid confusion._
+*Note: version **1.4.0** was tagged and built but not released. A libuv bug was discovered in the process so the release was aborted. The tag was straight after [`a558cd0a61`](https://github.com/nodejs/node/commit/a558cd0a61) but has since been removed. We have jumped to 1.4.1 to avoid confusion.*
 
 ### Notable changes
 
@@ -2044,7 +2051,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * **streams**: you can now use regular streams as an underlying socket for `tls.connect()` [#926](https://github.com/nodejs/node/pull/926) (Fedor Indutny)
 * **http**: A new `'abort'` event emitted when a `http.ClientRequest` is aborted by the client. [#945](https://github.com/nodejs/node/pull/945) (Evan Lucas)
 * **V8**: Upgrade V8 to 4.1.0.21. Includes an embargoed fix, details should be available at https://code.google.com/p/chromium/issues/detail?id=430201 when embargo is lifted. A breaking ABI change has been held back from this upgrade, possibly to be included when io.js merges V8 4.2. See [#952](https://github.com/nodejs/node/pull/952) for discussion.
-* **npm**: Upgrade npm to 2.6.0. Includes features to support the new registry and to prepare for `npm@3`. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary:
+* **npm**: Upgrade npm to 2.6.0. Includes features to support the new registry and to prepare for `npm@3`. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary: 
   * [`38c4825`](https://github.com/npm/npm/commit/38c48254d3d217b4babf5027cb39492be4052fc2) [#5068](https://github.com/npm/npm/issues/5068) Add new logout command, and make it do something useful on both bearer-based and basic-based authed clients. ([@othiym23](https://github.com/othiym23))
   * [`c8e08e6`](https://github.com/npm/npm/commit/c8e08e6d91f4016c80f572aac5a2080df0f78098) [#6565](https://github.com/npm/npm/issues/6565) Warn that `peerDependency` behavior is changing and add a note to the docs. ([@othiym23](https://github.com/othiym23))
   * [`7c81a5f`](https://github.com/npm/npm/commit/7c81a5f5f058941f635a92f22641ea68e79b60db) [#7171](https://github.com/npm/npm/issues/7171) Warn that `engineStrict` in `package.json` will be going away in the next major version of npm (coming soon!) ([@othiym23](https://github.com/othiym23))
@@ -2165,7 +2172,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`3b1b4de903`](https://github.com/nodejs/node/commit/3b1b4de903)] - **test**: Timeout#unref() does not return instance (Jan Schär) [joyent/node#9171](https://github.com/joyent/node/pull/9171)
 * [[`becb4e980e`](https://github.com/nodejs/node/commit/becb4e980e)] - **test**: distribute crypto tests into separate files (Brendan Ashworth) [#827](https://github.com/nodejs/node/pull/827)
 * [[`77f35861d0`](https://github.com/nodejs/node/commit/77f35861d0)] - **(SEMVER-MINOR) tls**: more secure defaults (Roman Reiss) [#826](https://github.com/nodejs/node/pull/826)
-* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . e .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
+* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . and .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
 
 <a id="1.2.0"></a>
 
@@ -2173,27 +2180,27 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 
 ### Notable changes
 
-* **stream**:
-  - Simpler stream construction, see [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) for details. This extends the streams base objects to make their constructors accept default implementation methods, reducing the boilerplate required to implement custom streams. An updated version of readable-stream will eventually be released to match this change in core. (@sonewman)
-* **dns**:
-  - `lookup()` now supports an `'all'` boolean option, default to `false` but when turned on will cause the method to return an array of *all* resolved names for an address, see, [#744](https://github.com/nodejs/node/pull/744) (@silverwind)
-* **assert**:
-  - Remove `prototype` property comparison in `deepEqual()`, considered a bugfix, see [#636](https://github.com/nodejs/node/pull/636) (@vkurchatkin)
-  - Introduce a `deepStrictEqual()` method to mirror `deepEqual()` but performs strict equality checks on primitives, see [#639](https://github.com/nodejs/node/pull/639) (@vkurchatkin)
-* **tracing**:
-  - Add [LTTng](http://lttng.org/) (Linux Trace Toolkit Next Generation) when compiled with the  `--with-lttng` option. Trace points match those available for DTrace and ETW. [#702](https://github.com/nodejs/node/pull/702) (@thekemkid)
-* **docs**:
-  - Lots of doc updates, see individual commits
-  - New **Errors** page discussing JavaScript errors, V8 specifics, and io.js specific error details. (@chrisdickinson)
-* **npm** upgrade to 2.5.1, short changelog:
-  - [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
-  - [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request settings are copied onto the agent. ([@othiym23](https://github.com/othiym23))
-   - [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Allow `--no-proxy` to override `HTTP_PROXY` setting in environment. ([@othiym23](https://github.com/othiym23))
-  - [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` now includes a column showing the type of dependency. ([@watilde](https://github.com/watilde))
+* **stream**: 
+  * Simpler stream construction, see [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) for details. This extends the streams base objects to make their constructors accept default implementation methods, reducing the boilerplate required to implement custom streams. An updated version of readable-stream will eventually be released to match this change in core. (@sonewman)
+* **dns**: 
+  * `lookup()` now supports an `'all'` boolean option, default to `false` but when turned on will cause the method to return an array of *all* resolved names for an address, see, [#744](https://github.com/nodejs/node/pull/744) (@silverwind)
+* **assert**: 
+  * Remove `prototype` property comparison in `deepEqual()`, considered a bugfix, see [#636](https://github.com/nodejs/node/pull/636) (@vkurchatkin)
+  * Introduce a `deepStrictEqual()` method to mirror `deepEqual()` but performs strict equality checks on primitives, see [#639](https://github.com/nodejs/node/pull/639) (@vkurchatkin)
+* **tracing**: 
+  * Add [LTTng](http://lttng.org/) (Linux Trace Toolkit Next Generation) when compiled with the `--with-lttng` option. Trace points match those available for DTrace and ETW. [#702](https://github.com/nodejs/node/pull/702) (@thekemkid)
+* **docs**: 
+  * Lots of doc updates, see individual commits
+  * New **Errors** page discussing JavaScript errors, V8 specifics, and io.js specific error details. (@chrisdickinson)
+* **npm** upgrade to 2.5.1, short changelog: 
+  * [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
+  * [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request settings are copied onto the agent. ([@othiym23](https://github.com/othiym23)) 
+    * [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Allow `--no-proxy` to override `HTTP_PROXY` setting in environment. ([@othiym23](https://github.com/othiym23))
+  * [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` now includes a column showing the type of dependency. ([@watilde](https://github.com/watilde))
 * **libuv** upgrade to 1.4.0, see [libuv ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog)
-* Add new collaborators:
-  - Aleksey Smolenchuk (@lxe)
-  - Shigeki Ohtsu (@shigeki)
+* Add new collaborators: 
+  * Aleksey Smolenchuk (@lxe)
+  * Shigeki Ohtsu (@shigeki)
 
 ### Known issues
 
@@ -2256,22 +2263,22 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errori
-  - better formatting via util.inspect
-  - more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
-  - more descriptive errors from http.setHeader
-* dep updates:
-  - npm: upgrade to 2.4.1
-  - http-parser: rollback to 2.3.0
-  - libuv: update to 1.3.0
-  - v8: update to 4.1.0.14
+* errors 
+  * better formatting via util.inspect
+  * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
+  * more descriptive errors from http.setHeader
+* dep updates: 
+  * npm: upgrade to 2.4.1
+  * http-parser: rollback to 2.3.0
+  * libuv: update to 1.3.0
+  * v8: update to 4.1.0.14
 * http.request: inherited properties on options are now respected
 * add iterable interface to buffers (`for (let byte of buffer.values()) { }`)
 * fs: fix fd leak on `fs.createReadStream`. See 497fd72 for details.
 * installer: on Windows, emit WM_SETTINGCHANGE after install to make other running processes aware of the PATH changes.
-* Added new collaborators:
-  - Vladimir Kurchatkin (@vkurchatkin)
-  - Micleușanu Nicu (@micnic)
+* Added new collaborators: 
+  * Vladimir Kurchatkin (@vkurchatkin)
+  * Micleușanu Nicu (@micnic)
 
 ### Known issues
 
@@ -2356,12 +2363,12 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * Patch for V8 to properly detect ARMv6; binaries now work again on ARMv6 (Raspberry Pi etc.)
 * Minor V8 upgrade from 4.1.0.7 to 4.1.0.12
 * 'punycode' core module bumped from stability level 2-Unstable, to 3-Stable
-* Added new collaborators:
-  - Thorsten Lorenz (@thlorenz)
-  - Stephen Belanger (@qard)
-  - Jeremiah Senkpiel (@fishrock123)
-  - Evan Lucas (@evanlucas)
-  - Brendan Ashworth (@brendanashworth)
+* Added new collaborators: 
+  * Thorsten Lorenz (@thlorenz)
+  * Stephen Belanger (@qard)
+  * Jeremiah Senkpiel (@fishrock123)
+  * Evan Lucas (@evanlucas)
+  * Brendan Ashworth (@brendanashworth)
 
 ### Commits
 
@@ -2506,149 +2513,149 @@ Rebuild due to stale build worker git reflogs for 1.0.0 release
 * doc: improve write style consistency (Rui Marinho)
 * win,msi: correct doc website link (Bert Belder)
 
---------------------------------------
+* * *
 
 <a id="1.0.0"></a>
-Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current _stable_ Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest _unstable_ Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node) repository and therefore can be seen as an extension to v0.11.
+Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current *stable* Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest *unstable* Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node) repository and therefore can be seen as an extension to v0.11.
 
 ## Summary of changes from Node.js v0.10.35 to io.js v1.0.0
 
 ### General
 
-- The V8 JavaScript engine bundled with io.js was upgraded dramatically, from version 3.14.5.9 in Node.js v0.10.35 and 3.26.33 in Node.js v0.11.14 to 3.31.74.1 for io.js v1.0.0. This brings along many fixes and performance improvements, as well as additional support for new ES6 language features! For more information on this, check out [the io.js ES6 page](https://iojs.org/es6.html).
-- Other bundled technologies were upgraded:
-  - c-ares: 1.9.0-DEV to 1.10.0-DEV
-  - http_parser: 1.0 to 2.3
-  - libuv: 0.10.30 to 1.2.0
-  - npm: 1.4.28 to 2.1.18
-  - openssl: 1.0.1j to 1.0.1k
-  - punycode: 1.2.0 to 1.3.2.
-- Performance and stability improvements on all platforms.
+* The V8 JavaScript engine bundled with io.js was upgraded dramatically, from version 3.14.5.9 in Node.js v0.10.35 and 3.26.33 in Node.js v0.11.14 to 3.31.74.1 for io.js v1.0.0. This brings along many fixes and performance improvements, as well as additional support for new ES6 language features! For more information on this, check out [the io.js ES6 page](https://iojs.org/es6.html).
+* Other bundled technologies were upgraded: 
+  * c-ares: 1.9.0-DEV to 1.10.0-DEV
+  * http_parser: 1.0 to 2.3
+  * libuv: 0.10.30 to 1.2.0
+  * npm: 1.4.28 to 2.1.18
+  * openssl: 1.0.1j to 1.0.1k
+  * punycode: 1.2.0 to 1.3.2.
+* Performance and stability improvements on all platforms.
 
 ### buffer
 
 https://iojs.org/api/buffer.html
 
-- Added `buf.writeUIntLE`, `buf.writeUIntBE`, `buf.writeIntLE`, `buf.writeIntBE`, `buf.readUIntLE`, `buf.readUIntBE`, `buf.readIntLE` and `buf.readIntBE` methods that read and write value up to 6 bytes.
-- Added `Buffer.compare()` which does a `memcmp()` on two Buffer instances. Instances themselves also have a `compare()`.
-- Added `buffer.equals()` that checks equality of Buffers by their contents.
-- Added `new Buffer(otherBuffer)` constructor.
-- Tweaked `SlowBuffer`'s semantics.
-- Updated the output of `buffer.toJSON()` to not be the same as an array. Instead it is an object specifically tagged as a buffer, which can be recovered by passing it to (a new overload of) the `Buffer` constructor.
+* Added `buf.writeUIntLE`, `buf.writeUIntBE`, `buf.writeIntLE`, `buf.writeIntBE`, `buf.readUIntLE`, `buf.readUIntBE`, `buf.readIntLE` and `buf.readIntBE` methods that read and write value up to 6 bytes.
+* Added `Buffer.compare()` which does a `memcmp()` on two Buffer instances. Instances themselves also have a `compare()`.
+* Added `buffer.equals()` that checks equality of Buffers by their contents.
+* Added `new Buffer(otherBuffer)` constructor.
+* Tweaked `SlowBuffer`'s semantics.
+* Updated the output of `buffer.toJSON()` to not be the same as an array. Instead it is an object specifically tagged as a buffer, which can be recovered by passing it to (a new overload of) the `Buffer` constructor.
 
 ### child_process
 
 https://iojs.org/api/child_process.html
 
-- Added a `shell` option to `child_process.exec`.
-- Added synchronous counterparts for the child process functions: `child_process.spawnSync`, `child_process.execSync`, and `child_process.execFileSync`.
-- Added the path to any `ENOENT` errors, for easier debugging.
+* Added a `shell` option to `child_process.exec`.
+* Added synchronous counterparts for the child process functions: `child_process.spawnSync`, `child_process.execSync`, and `child_process.execFileSync`.
+* Added the path to any `ENOENT` errors, for easier debugging.
 
 ### console
 
 https://iojs.org/api/console.html
 
-- Added an `options` parameter to `console.dir`.
+* Added an `options` parameter to `console.dir`.
 
 ### cluster
 
 https://iojs.org/api/cluster.html
 
-- Updated `cluster` to use round-robin load balancing by default on non-Windows platforms. The scheduling policy is configurable however.
-- `--debug` has been made cluster-aware.
-- Many bug fixes.
+* Updated `cluster` to use round-robin load balancing by default on non-Windows platforms. The scheduling policy is configurable however.
+* `--debug` has been made cluster-aware.
+* Many bug fixes.
 
 ### crypto
 
 https://iojs.org/api/crypto.html
 
-- Added support for custom generator values to `DiffieHellman` (defaulting to 2 for backwards compatibility).
-- Added support for custom pbkdf2 digest methods.
-- Added support for elliptic curve-based Diffie-Hellman.
-- Added support for loading and setting the engine for some/all OpenSSL functions.
-- Added support for passing in a passphrase for decrypting the signing key to `Sign.sign()`.
-- Added support for private key passphrase in every method that accepts it.
-- Added support for RSA public/private encryption/decryption functionality.
-- Added support for setting and getting of authentication tags and setting additional authentication data when using ciphers such as AES-GCM.
+* Added support for custom generator values to `DiffieHellman` (defaulting to 2 for backwards compatibility).
+* Added support for custom pbkdf2 digest methods.
+* Added support for elliptic curve-based Diffie-Hellman.
+* Added support for loading and setting the engine for some/all OpenSSL functions.
+* Added support for passing in a passphrase for decrypting the signing key to `Sign.sign()`.
+* Added support for private key passphrase in every method that accepts it.
+* Added support for RSA public/private encryption/decryption functionality.
+* Added support for setting and getting of authentication tags and setting additional authentication data when using ciphers such as AES-GCM.
 
 ### dgram
 
 https://iojs.org/api/dgram.html
 
-- Added support for receiving empty UDP packets.
+* Added support for receiving empty UDP packets.
 
 ### dns
 
 https://iojs.org/api/dns.html
 
-- Added `dns.resolveSoa`, `dns.getServers`, and `dns.setServers` methods.
-- Added `hostname` on error messages when available.
-- Improved error handling consistency.
+* Added `dns.resolveSoa`, `dns.getServers`, and `dns.setServers` methods.
+* Added `hostname` on error messages when available.
+* Improved error handling consistency.
 
-### eventi
+### events
 
 https://iojs.org/api/events.html
 
-- Added chaining support to `EventEmitter.setMaxListeners`.
-- Updated `require('events')` to return the `EventEmitter` constructor, allowing the module to be used like `var EventEmitter = require('events')` instead of `var EventEmitter = require('events').EventEmitter`.
+* Added chaining support to `EventEmitter.setMaxListeners`.
+* Updated `require('events')` to return the `EventEmitter` constructor, allowing the module to be used like `var EventEmitter = require('events')` instead of `var EventEmitter = require('events').EventEmitter`.
 
 ### fs
 
 https://iojs.org/api/fs.html
 
-- Added `fs.access`, and deprecated `fs.exists`. Please read the documentation carefully.
-- Added more informative errors and method call site details when the `NODE_DEBUG` environment is set to ease debugging.
-- Added option to `fs.watch` for recursive sub-directory support (OS X only).
-- Fixed missing callbacks errors just being printed instead of thrown.
+* Added `fs.access`, and deprecated `fs.exists`. Please read the documentation carefully.
+* Added more informative errors and method call site details when the `NODE_DEBUG` environment is set to ease debugging.
+* Added option to `fs.watch` for recursive sub-directory support (OS X only).
+* Fixed missing callbacks errors just being printed instead of thrown.
 
 ### http
 
 https://iojs.org/api/http.html
 
-- Added support for `response.write` and `response.end` to receive a callback to know when the operation completes.
-- Added support for 308 status code (see RFC 7238).
-- Added `http.METHODS` array, listing the HTTP methods supported by the parser.
-- Added `request.flush` method.
-- Added `response.getHeader('header')` method that may be used before headers are flushed.
-- Added `response.statusMessage` property.
-- Added Client Keep-Alive behavior.  Set `keepAlive:true` in request options to reuse connections indefinitely.
-- Added `rawHeaders` and `rawTrailers` members on incoming message.
-- Removed default chunked encoding on `DELETE` and `OPTIONS`.
+* Added support for `response.write` and `response.end` to receive a callback to know when the operation completes.
+* Added support for 308 status code (see RFC 7238).
+* Added `http.METHODS` array, listing the HTTP methods supported by the parser.
+* Added `request.flush` method.
+* Added `response.getHeader('header')` method that may be used before headers are flushed.
+* Added `response.statusMessage` property.
+* Added Client Keep-Alive behavior. Set `keepAlive:true` in request options to reuse connections indefinitely.
+* Added `rawHeaders` and `rawTrailers` members on incoming message.
+* Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### rete
+### net
 
 https://iojs.org/api/net.html
 
-- Changed `net.Server.listen` such that, when the bind address is omitted, IPv6 is tried first, and IPv4 is used as a fallback.
+* Changed `net.Server.listen` such that, when the bind address is omitted, IPv6 is tried first, and IPv4 is used as a fallback.
 
 ### os
 
 https://iojs.org/api/os.html
 
-- Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
-- Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
+* Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
+* Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### percorso
+### path
 
 https://iojs.org/api/path.html
 
-- Added `path.isAbsolute` and `path.parse` methods.
-- Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
-- Improved `path.join` performance.
+* Added `path.isAbsolute` and `path.parse` methods.
+* Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
+* Improved `path.join` performance.
 
 ### process
 
 https://iojs.org/api/process.html
 
-- Added `beforeExit` event.
-- Added `process.mainModule` and `process.exitCode`.
+* Added `beforeExit` event.
+* Added `process.mainModule` and `process.exitCode`.
 
 ### querystring
 
 https://iojs.org/api/querystring.html
 
-- Added the ability to pass custom versions of `encodeURIComponent` and `decodeURIComponent` when stringifying or parsing a querystring.
-- Fixed several issues with the formatting of query strings in edge cases.
+* Added the ability to pass custom versions of `encodeURIComponent` and `decodeURIComponent` when stringifying or parsing a querystring.
+* Fixed several issues with the formatting of query strings in edge cases.
 
 ### smalloc
 
@@ -2687,47 +2694,47 @@ For a detailed overview of how streams3 interact, [see this diagram](https://clo
 
 https://iojs.org/api/timers.html
 
-- Removed `process.maxTickDepth`, allowing `process.nextTick` to be used recursively without limit.
-- Updated `setImmediate` to process the full queue each turn of the event loop, instead of one per queue.
+* Removed `process.maxTickDepth`, allowing `process.nextTick` to be used recursively without limit.
+* Updated `setImmediate` to process the full queue each turn of the event loop, instead of one per queue.
 
 ### tls
 
 https://iojs.org/api/tls.html
 
-- Added `detailed` boolean flag to `getPeerCertificate` to return detailed certificate information (with raw DER bytes).
-- Added `renegotiate(options, callback)` method for session renegotiation.
-- Added `setMaxSendFragment` method for varying TLS fragment size.
-- Added a `dhparam` option for DH ciphers.
-- Added a `ticketKeys` option for TLS ticket AES encryption keys setup.
-- Added async OCSP-stapling callback.
-- Added async session storage events.
-- Added async SNI callback.
-- Added multi-key server support (for example, ECDSA+RSA server).
-- Added optional callback to `checkServerIdentity` for manual certificate validation in userland.
-- Added support for ECDSA/ECDHE cipher.
-- Implemented TLS streams in C++, boosting their performance.
-- Moved `createCredentials` to `tls` and renamed it to `createSecureContext`.
-- Removed SSLv2 and SSLv3 support.
+* Added `detailed` boolean flag to `getPeerCertificate` to return detailed certificate information (with raw DER bytes).
+* Added `renegotiate(options, callback)` method for session renegotiation.
+* Added `setMaxSendFragment` method for varying TLS fragment size.
+* Added a `dhparam` option for DH ciphers.
+* Added a `ticketKeys` option for TLS ticket AES encryption keys setup.
+* Added async OCSP-stapling callback.
+* Added async session storage events.
+* Added async SNI callback.
+* Added multi-key server support (for example, ECDSA+RSA server).
+* Added optional callback to `checkServerIdentity` for manual certificate validation in userland.
+* Added support for ECDSA/ECDHE cipher.
+* Implemented TLS streams in C++, boosting their performance.
+* Moved `createCredentials` to `tls` and renamed it to `createSecureContext`.
+* Removed SSLv2 and SSLv3 support.
 
 ### url
 
 https://iojs.org/api/url.html
 
-- Improved escaping of certain characters.
-- Improved parsing speed.
+* Improved escaping of certain characters.
+* Improved parsing speed.
 
 ### util
 
 https://iojs.org/api/util.html
 
-- Added `util.debuglog`.
-- Added a plethora of new type-testing methods. See [the docs](https://iojs.org/api/util.html).
-- Updated `util.format` to receive several changes:
-  - `-0` is now displayed as such, instead of as `0`.
-  - Anything that is `instanceof Error` is now formatted as an error.
-  - Circular references in JavaScript objects are now handled for the `%j` specifier.
-  - Custom `inspect` functions are now allowed to return an object.
-  - Custom `inspect` functions now receive any arguments passed to `util.inspect`.
+* Added `util.debuglog`.
+* Added a plethora of new type-testing methods. See [the docs](https://iojs.org/api/util.html).
+* Updated `util.format` to receive several changes: 
+  * `-0` is now displayed as such, instead of as `0`.
+  * Anything that is `instanceof Error` is now formatted as an error.
+  * Circular references in JavaScript objects are now handled for the `%j` specifier.
+  * Custom `inspect` functions are now allowed to return an object.
+  * Custom `inspect` functions now receive any arguments passed to `util.inspect`.
 
 ## v8
 
@@ -2741,11 +2748,11 @@ https://iojs.org/api/vm.html
 
 The `vm` module has been rewritten to work better, based on the excellent [Contextify](https://github.com/brianmcd/contextify) native module. All of the functionality of Contextify is now in core, with improvements!
 
-- Added `vm.isContext(object)` method to determine whether `object` has been contextified.
-- Added `vm.runInDebugContext(code)` method to compile and execute `code` inside the V8 debug context.
-- Updated `vm.createContext(sandbox)` to "contextify" the sandbox, making it suitable for use as a global for `vm` scripts, and then return it. It no longer creates a separate context object.
-- Updated most `vm` and `vm.Script` methods to accept an `options` object, allowing you to configure a timeout for the script, the error display behavior, and sometimes the filename (for stack traces).
-- Updated the supplied sandbox object to be used directly as the global, remove error-prone copying of properties back and forth between the supplied sandbox object and the global that appears inside the scripts run by the `vm` module.
+* Added `vm.isContext(object)` method to determine whether `object` has been contextified.
+* Added `vm.runInDebugContext(code)` method to compile and execute `code` inside the V8 debug context.
+* Updated `vm.createContext(sandbox)` to "contextify" the sandbox, making it suitable for use as a global for `vm` scripts, and then return it. It no longer creates a separate context object.
+* Updated most `vm` and `vm.Script` methods to accept an `options` object, allowing you to configure a timeout for the script, the error display behavior, and sometimes the filename (for stack traces).
+* Updated the supplied sandbox object to be used directly as the global, remove error-prone copying of properties back and forth between the supplied sandbox object and the global that appears inside the scripts run by the `vm` module.
 
 For more information, see the `vm` documentation linked above.
 
@@ -2753,9 +2760,9 @@ For more information, see the `vm` documentation linked above.
 
 https://iojs.org/api/zlib.html
 
-- Added support for `zlib.flush` to specify a particular flush method (defaulting to `Z_FULL_FLUSH`).
-- Added support for `zlib.params` to dynamically update the compression level and strategy when deflating.
-- Added synchronous versions of the zlib methods.
+* Added support for `zlib.flush` to specify a particular flush method (defaulting to `Z_FULL_FLUSH`).
+* Added support for `zlib.params` to dynamically update the compression level and strategy when deflating.
+* Added synchronous versions of the zlib methods.
 
 ### C++ API Changes
 
@@ -2765,23 +2772,23 @@ In general it is recommended that you use [NAN](https://github.com/rvagg/nan) as
 
 #### V8 highlights
 
-- Exposed method signature has changed from `Handle<Value> Method(const Arguments& args)` to `void Method(const v8::FunctionCallbackInfo<Value>& args)` with the newly introduced `FunctionCallbackInfo` also taking the return value via `args.GetReturnValue().Set(value)` instead of `scope.Close(value)`, `Arguments` has been removed.
-- Exposed setter signature has changed from `void Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<void>& args)`.
-- Exposed getter signature has changed from `void Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-- Exposed property setter signature has changed from `Handle<Value> Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-- Exposed property getter signature has changed from `Handle<Value> Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-- Similar changes have been made to property enumerators, property deleters, property query, index getter, index setter, index enumerator, index deleter, index query.
-- V8 objects instantiated in C++ now require an `Isolate*` argument as the first argument. In most cases it is OK to simply pass `v8::Isolate::GetCurrent()`, e.g. `Date::New(Isolate::GetCurrent(), time)`, or `String::NewFromUtf8(Isolate::GetCurrent(), "foobar")`.
-- `HandleScope scope` now requires an `Isolate*` argument, i.e. `HandleScope scope(isolate)`, in most cases `v8::Isolate::GetCurrent()` is OK.
-- Similar changes have been made to `Locker` and `Unlocker`.
-- V8 objects that need to "escape" a scope should be enclosed in a `EscapableHandleScope` rather than a `HandleScope` and should be returned with `scope.Escape(value)`.
-- Exceptions are now thrown from isolates with `isolate->ThrowException(ExceptionObject)`.
-- `Context::GetCurrent()` must now be done on an isolate, e.g. `Isolate::GetCurrent()->GetCurrentContext()`.
-- `String::NewSymbol()` has been removed, use plain strings instead.
-- `String::New()` has been removed, use `String::NewFromUtf8()` instead.
-- `Persistent` objects no longer inherit from `Handle` and cannot be instantiated with another object. Instead, the `Persistent` should simply be declared, e.g. `Persistent<Type> handle` and then have a `Local` assigned to it with `handle.Reset(isolate, value)`. To get a `Local` from a `Persistent` you must instantiate it as the argument, i.e. `Local::New(Isolate*, Persistent)`.
+* Exposed method signature has changed from `Handle<Value> Method(const Arguments& args)` to `void Method(const v8::FunctionCallbackInfo<Value>& args)` with the newly introduced `FunctionCallbackInfo` also taking the return value via `args.GetReturnValue().Set(value)` instead of `scope.Close(value)`, `Arguments` has been removed.
+* Exposed setter signature has changed from `void Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<void>& args)`.
+* Exposed getter signature has changed from `void Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Exposed property setter signature has changed from `Handle<Value> Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Exposed property getter signature has changed from `Handle<Value> Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Similar changes have been made to property enumerators, property deleters, property query, index getter, index setter, index enumerator, index deleter, index query.
+* V8 objects instantiated in C++ now require an `Isolate*` argument as the first argument. In most cases it is OK to simply pass `v8::Isolate::GetCurrent()`, e.g. `Date::New(Isolate::GetCurrent(), time)`, or `String::NewFromUtf8(Isolate::GetCurrent(), "foobar")`.
+* `HandleScope scope` now requires an `Isolate*` argument, i.e. `HandleScope scope(isolate)`, in most cases `v8::Isolate::GetCurrent()` is OK.
+* Similar changes have been made to `Locker` and `Unlocker`.
+* V8 objects that need to "escape" a scope should be enclosed in a `EscapableHandleScope` rather than a `HandleScope` and should be returned with `scope.Escape(value)`.
+* Exceptions are now thrown from isolates with `isolate->ThrowException(ExceptionObject)`.
+* `Context::GetCurrent()` must now be done on an isolate, e.g. `Isolate::GetCurrent()->GetCurrentContext()`.
+* `String::NewSymbol()` has been removed, use plain strings instead.
+* `String::New()` has been removed, use `String::NewFromUtf8()` instead.
+* `Persistent` objects no longer inherit from `Handle` and cannot be instantiated with another object. Instead, the `Persistent` should simply be declared, e.g. `Persistent<Type> handle` and then have a `Local` assigned to it with `handle.Reset(isolate, value)`. To get a `Local` from a `Persistent` you must instantiate it as the argument, i.e. `Local::New(Isolate*, Persistent)`.
 
 #### Node / io.js
 
-- Updated `node::Buffer::New()` to return a `Handle` directly so you no longer need to fetch the `handle_` property.
-- Updated `node::MakeCallback()` to require an `Isolate*` as the first argument. Generally `Isolate::GetCurrent()` will be OK for this.
+* Updated `node::Buffer::New()` to return a `Handle` directly so you no longer need to fetch the `handle_` property.
+* Updated `node::MakeCallback()` to require an `Isolate*` as the first argument. Generally `Isolate::GetCurrent()` will be OK for this.
