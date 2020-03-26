@@ -169,9 +169,9 @@ Abandoned V8 branches are supported in the Node.js repository. The fix needs to 
   * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
   * In some cases the patch may require extra effort to merge in case V8 has changed substantially. For important issues we may be able to lean on the V8 team to get help with reimplementing the patch.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
-  * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Note: The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
+  * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
 
-The [`update-v8`] tool can be used to simplify this task. Run `update-v8 backport --sha=SHA` to cherry-pick a commit.
+The [`git-node`] tool can be used to simplify this task. Run `git node v8 backport <sha>` to cherry-pick a commit.
 
 An example for workflow how to cherry-pick consider the bug [RegExp show inconsistent result with other browsers](https://crbug.com/v8/5199). From the bug we can see that it was merged by V8 into 5.2 and 5.3, and not into V8 5.1 (since it was already abandoned). Since Node.js `v6.x` uses V8 5.1, the fix needed to be cherry-picked. To cherry-pick, here's an example workflow:
 
@@ -240,7 +240,7 @@ curl -L https://github.com/v8/v8/compare/${V8_OLD_VERSION}...${V8_NEW_VERSION}.p
 
 V8 also keeps tags of the form *5.4-lkgr* which point to the *Last Known Good Revision* from the 5.4 branch that can be useful in the update process above.
 
-The [`update-v8`](https://github.com/targos/update-v8) tool can be used to simplify this task. Run `update-v8 minor` to apply a minor update.
+The [`git-node`] tool can be used to simplify this task. Run `git node v8 minor` to apply a minor update.
 
 ### Major Updates
 
@@ -259,11 +259,11 @@ To audit for floating patches:
 git log --oneline deps/v8
 ```
 
-To replace the copy of V8 in Node.js, use the [`update-v8`] tool. For example, if you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1 branch:
+To replace the copy of V8 in Node.js, use the [`git-node`] tool. For example, if you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1 branch:
 
 ```shell
 cd $NODE_DIR
-update-v8 major --branch=5.1-lkgr
+git node v8 major --branch=5.1-lkgr
 ```
 
 This should be followed up with manual refloating of all relevant patches.
