@@ -23,7 +23,7 @@ $ make release
 
 Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` se lanza en el git como `next` cuando es momento de downstream
 
-## Paso 3: Remover el npm anterior
+## Paso 3: Remover npm anteriores
 
 ```console
 $ cd /path/to/node
@@ -48,12 +48,12 @@ $ cd ..
 $ ./configure
 $ make -j4
 $ ./tools/license-builder.sh
-# Los siguientes comandos solo son necesarios si hay cambios
+# Los siguentes comandos solo son necesarios si hay cambios
 $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Nota: por favor asegúrese que solo está haciendo actualizaciones que son cambiadas por el npm.
+Nota: Por favor, asegúrese de ser el único haciendo actualizaciones que el npm cambia.
 
 ## Paso 6: Aplicar corrección de Whitespace
 
