@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> Stabilitet: 2 - Stabil
 
 The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
