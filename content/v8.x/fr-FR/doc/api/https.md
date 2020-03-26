@@ -7,6 +7,7 @@
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: https.Agent
+
 <!-- YAML
 added: v0.4.5
 -->
@@ -14,6 +15,7 @@ added: v0.4.5
 An Agent object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Class: https.Server
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -21,9 +23,11 @@ added: v0.3.4
 This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
 
 ### server.close([callback])
+
 <!-- YAML
 added: v0.1.90
 -->
+
 - `callback` {Function}
 
 See [`server.close()`][`http.close()`] from the HTTP module for details.
@@ -39,38 +43,46 @@ Starts the HTTPS server listening for encrypted connections. This method is iden
 See [`http.Server#headersTimeout`][].
 
 ### server.setTimeout(\[msecs\]\[, callback\])
+
 <!-- YAML
 added: v0.11.2
 -->
+
 - `msecs` {number} **Default:** `120000` (2 minutes)
 - `callback` {Function}
 
 See [`http.Server#setTimeout()`][].
 
 ### server.timeout
+
 <!-- YAML
 added: v0.11.2
 -->
+
 - {number} **Default:** `120000` (2 minutes)
 
 See [`http.Server#timeout`][].
 
 ### server.keepAliveTimeout
+
 <!-- YAML
 added: v8.0.0
 -->
+
 - {number} **Default:** `5000` (5 seconds)
 
 See [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
+
 <!-- YAML
 added: v0.3.4
 -->
+
 - `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 - `requestListener` {Function} A listener to be added to the `request` event.
 
-Example:
+Exemple:
 
 ```js
 // curl -k https://localhost:8000/
@@ -106,13 +118,16 @@ https.createServer(options, (req, res) => {
 ```
 
 ## https.get(options[, callback])
+
 <!-- YAML
 added: v0.3.6
 changes:
+
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
+
 - `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 - `callback` {Function}
 
@@ -120,7 +135,7 @@ Like [`http.get()`][] but for HTTPS.
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
-Example:
+Exemple:
 
 ```js
 const https = require('https');
@@ -139,6 +154,7 @@ https.get('https://encrypted.google.com/', (res) => {
 ```
 
 ## https.globalAgent
+
 <!-- YAML
 added: v0.5.9
 -->
@@ -146,19 +162,21 @@ added: v0.5.9
 Global instance of [`https.Agent`][] for all HTTPS client requests.
 
 ## https.request(options[, callback])
+
 <!-- YAML
 added: v0.3.6
 changes:
+
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
+
+- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
   - `protocol` **Default:** `https:`
   - `port` **Default:** `443`
   - `agent` **Default:** `https.globalAgent`
 - `callback` {Function}
-
 
 Makes a request to a secure web server.
 
@@ -166,7 +184,7 @@ The following additional `options` from [`tls.connect()`][] are also accepted wh
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
-Example:
+Exemple:
 
 ```js
 const https = require('https');
@@ -192,6 +210,7 @@ req.on('error', (e) => {
 });
 req.end();
 ```
+
 Example using options from [`tls.connect()`][]:
 
 ```js
@@ -212,7 +231,7 @@ const req = https.request(options, (res) => {
 
 Alternatively, opt out of connection pooling by not using an `Agent`.
 
-Example:
+Exemple:
 
 ```js
 const options = {
