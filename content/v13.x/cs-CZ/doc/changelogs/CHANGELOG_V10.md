@@ -3577,7 +3577,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* File System
+* Souborový systém
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
