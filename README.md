@@ -41,7 +41,7 @@ Help us get the documentation translated into your native language and reach mor
 
 ### CrowdIn Glossary
 
-We have a [CrowdIn Glossary](crowdin-glossary.json) that has some terms which are noted as shared or translateable across the project. If a term is missing, please add it! This glossary will automatically be used by CrowdIn to let translators know about each term when they come across them. 
+We have a [CrowdIn Glossary](crowdin-glossary.json) that has some terms which are noted as shared or translatable across the project. If a term is missing, please add it! This glossary will automatically be used by CrowdIn to let translators know about each term when they come across them.
 
 ## About
 
@@ -113,6 +113,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Jonathan Cardoso    | [JCMais](https://github.com/JCMais)                       | [\_jonathancardos](https://twitter.com/_jonathancardos)  |
 | Laurent Goderre     | [LaurentGoderre](https://github.com/LaurentGoderre)       | [LaurentGoderre](https://twitter.com/LaurentGoderre)     |
 | Łukasz Szewczak     | [lukaszewczak](https://github.com/lukaszewczak)           | [lukaszewczak](https://twitter.com/lukaszewczak)         |
+| Nick Schonning      | [nschonni](https://github.com/nschonni)                   | [nschonni](https://twitter.com/nschonni)                 |
 | Rachel White        | [rachelnicole](https://github.com/rachelnicole)           | [ohhoe](https://twitter.com/ohhoe)                       |
 | Raja Sekar          | [rajzshkr](https://github.com/rajzshkr)                   | [rajzshkr](https://twitter.com/rajzshkr)                 |
 | Richard Littauer    | [RichardLitt](https://github.com/RichardLitt)             | [richlitt](https://twitter.com/richlitt)                 |
