@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register
+* `callback` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -117,7 +117,6 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
 The reason for this error handling behavior is that these callbacks are running at potentially volatile points in an object's lifetime, for example during class construction and destruction. Because of this, it is deemed necessary to bring down the process quickly in order to prevent an unintentional abort in the future. This is subject to change in the future if a comprehensive analysis is performed to ensure an exception can follow the normal control flow without unintentional side effects.
-
 
 ##### Printing in AsyncHooks callbacks
 
@@ -166,9 +165,9 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 * `asyncId` {number} A unique ID for the async resource.
 * `type` {string} The type of the async resource.
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during _destroy_.
+* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Called when a class is constructed that has the _possibility_ to emit an asynchronous event. This _does not_ mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
 This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
 
@@ -201,7 +200,6 @@ Users are able to define their own `type` when using the public embedder API.
 ###### `triggerId`
 
 `triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
-
 
 The following is a simple demonstration of `triggerAsyncId`:
 
@@ -313,7 +311,6 @@ The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for
 
 The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
-
 ##### `before(asyncId)`
 
 * `asyncId` {number}
@@ -322,7 +319,6 @@ When an asynchronous operation is initiated (such as a TCP server receiving a ne
 
 The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
 
-
 ##### `after(asyncId)`
 
 * `asyncId` {number}
@@ -330,7 +326,6 @@ The `before` callback will be called 0 to N times. The `before` callback will ty
 Called immediately after the callback specified in `before` is completed.
 
 *Note:* If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
-
 
 ##### `destroy(asyncId)`
 
@@ -372,6 +367,7 @@ init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
 <!-- YAML
 added: v8.1.0
 changes:
+
   - version: v8.2.0
     pr-url: https://github.com/nodejs/node/pull/13490
     description: Renamed from currentId
@@ -515,7 +511,7 @@ asyncResource.emitAfter();
 #### `AsyncResource(type[, options])`
 
 * `type` {string} The type of async event.
-* `options` {Object}
+* `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Προεπιλογή:** `false`.
 
@@ -542,6 +538,7 @@ class DBQuery extends AsyncResource {
 ```
 
 #### `asyncResource.runInAsyncScope(fn[, thisArg, ...args])`
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -553,9 +550,11 @@ added: v8.12.0
 Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
 
 #### `asyncResource.emitBefore()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * Επιστρέφει: {undefined}
@@ -565,9 +564,11 @@ Call all `before` callbacks to notify that a new asynchronous execution context 
 `before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### `asyncResource.emitAfter()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * Επιστρέφει: {undefined}
