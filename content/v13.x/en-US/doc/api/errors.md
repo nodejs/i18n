@@ -533,14 +533,14 @@ program. For a comprehensive list, see the [`errno`(3) man page][].
   `ulimit -n 2048` in the same shell that will run the Node.js process.
 
 * `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations
-  to indicate that a component of the specified pathname does not exist — no
+  to indicate that a component of the specified pathname does not exist. No
   entity (file or directory) could be found by the given path.
 
 * `ENOTDIR` (Not a directory): A component of the given pathname existed, but
   was not a directory as expected. Commonly raised by [`fs.readdir`][].
 
 * `ENOTEMPTY` (Directory not empty): A directory with entries was the target
-  of an operation that requires an empty directory — usually [`fs.unlink`][].
+  of an operation that requires an empty directory, usually [`fs.unlink`][].
 
 * `ENOTFOUND` (DNS lookup failed): Indicates a DNS failure of either
   `EAI_NODATA` or `EAI_NONAME`. This is not a standard POSIX error.
@@ -555,7 +555,7 @@ program. For a comprehensive list, see the [`errno`(3) man page][].
 
 * `ETIMEDOUT` (Operation timed out): A connect or send request failed because
   the connected party did not properly respond after a period of time. Usually
-  encountered by [`http`][] or [`net`][] — often a sign that a `socket.end()`
+  encountered by [`http`][] or [`net`][]. Often a sign that a `socket.end()`
   was not properly called.
 
 ## Class: `TypeError`
@@ -709,6 +709,14 @@ STDERR/STDOUT, and the data's length is longer than the `maxBuffer` option.
 
 `Console` was instantiated without `stdout` stream, or `Console` has a
 non-writable `stdout` or `stderr` stream.
+
+<a id="ERR_CONTEXT_NOT_INITIALIZED"></a>
+### `ERR_CONTEXT_NOT_INITIALIZED`
+
+The vm context passed into the API is not yet initialized. This could happen
+when an error occurs (and is caught) during the creation of the
+context, for example, when the allocation fails or the maximum call stack
+size is reached when the context is created.
 
 <a id="ERR_CONSTRUCT_CALL_REQUIRED"></a>
 ### `ERR_CONSTRUCT_CALL_REQUIRED`
@@ -880,6 +888,13 @@ provided.
 
 Encoding provided to `TextDecoder()` API was not one of the
 [WHATWG Supported Encodings][].
+
+<a id="ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE"></a>
+### `ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE`
+
+The JS execution context is not associated with a Node.js environment.
+This may occur when Node.js is used as an embedded library and some hooks
+for the JS engine are not set up properly.
 
 <a id="ERR_FALSY_VALUE_REJECTION"></a>
 ### `ERR_FALSY_VALUE_REJECTION`
@@ -1319,6 +1334,12 @@ An invalid HTTP token was supplied.
 
 An IP address is not valid.
 
+<a id="ERR_INVALID_MODULE_SPECIFIER"></a>
+### `ERR_INVALID_MODULE_SPECIFIER`
+
+The imported module string is an invalid URL, package name, or package subpath
+specifier.
+
 <a id="ERR_INVALID_OPT_VALUE"></a>
 ### `ERR_INVALID_OPT_VALUE`
 
@@ -1333,6 +1354,12 @@ An invalid or unknown file encoding was passed.
 ### `ERR_INVALID_PACKAGE_CONFIG`
 
 An invalid `package.json` file was found which failed parsing.
+
+<a id="ERR_INVALID_PACKAGE_TARGET"></a>
+### `ERR_INVALID_PACKAGE_TARGET`
+
+The `package.json` [exports][] field contains an invalid target mapping value
+for the attempted module resolution.
 
 <a id="ERR_INVALID_PERFORMANCE_MARK"></a>
 ### `ERR_INVALID_PERFORMANCE_MARK`
@@ -1640,6 +1667,13 @@ A non-context-aware native addon was loaded in a process that disallows them.
 
 A given value is out of the accepted range.
 
+<a id="ERR_PACKAGE_PATH_NOT_EXPORTED"></a>
+### `ERR_PACKAGE_PATH_NOT_EXPORTED`
+
+The `package.json` [exports][] field does not export the requested subpath.
+Because exports are encapsulated, private internal modules that are not exported
+cannot be imported through the package resolution, unless using an absolute URL.
+
 <a id="ERR_REQUIRE_ESM"></a>
 ### `ERR_REQUIRE_ESM`
 
@@ -1831,13 +1865,22 @@ recommended to use 2048 bits or larger for stronger security.
 A TLS/SSL handshake timed out. In this case, the server must also abort the
 connection.
 
-<a id="ERR_TLS_INVALID_CONTEXT">
+<a id="ERR_TLS_INVALID_CONTEXT"></a>
 ### `ERR_TLS_INVALID_CONTEXT`
 <!-- YAML
 added: v13.3.0
 -->
 
 The context must be a `SecureContext`.
+
+<a id="ERR_TLS_INVALID_STATE"></a>
+### `ERR_TLS_INVALID_STATE`
+<!-- YAML
+added: v13.10.0
+-->
+
+The TLS socket must be connected and securily established. Ensure the 'secure'
+event is emitted before continuing.
 
 <a id="ERR_TLS_INVALID_PROTOCOL_METHOD"></a>
 ### `ERR_TLS_INVALID_PROTOCOL_METHOD`
@@ -2046,6 +2089,11 @@ meaning of the error depends on the specific function.
 ### `ERR_WASI_ALREADY_STARTED`
 
 The WASI instance has already started.
+
+<a id="ERR_WORKER_INIT_FAILED"></a>
+### `ERR_WORKER_INIT_FAILED`
+
+The `Worker` initialization failed.
 
 <a id="ERR_WORKER_INVALID_EXEC_ARGV"></a>
 ### `ERR_WORKER_INVALID_EXEC_ARGV`
@@ -2499,6 +2547,7 @@ such as `process.stdout.on('data')`.
 [crypto digest algorithm]: crypto.html#crypto_crypto_gethashes
 [domains]: domain.html
 [event emitter-based]: events.html#events_class_eventemitter
+[exports]: esm.html#esm_package_exports
 [file descriptors]: https://en.wikipedia.org/wiki/File_descriptor
 [policy]: policy.html
 [stream-based]: stream.html
