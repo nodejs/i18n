@@ -46,7 +46,6 @@ Cuando las cosas necesitan atención extra, son polémicas, o `semver-major`: @n
 
 If you cannot find who to cc for a file, `git shortlog -n -s <file>` may help.
 
-
 ## Etiquetas
 
 ### By Subsystem
@@ -61,70 +60,68 @@ Generalmente clasificamos issues bajo el concepto de "subsistema", lo que nos pe
 
 Puede haber mas de un subsistema válido para cada issue o pull request particular.
 
-
 ### General
 
 Por favor úselos cuando sea posible/apropiado
 
-* `confirmed-bug` - Bugs cuya existencia se haya verificado
-* `discuss` -Temas que deben ser puestos a discusión
+* `confirmed-bug` - Bugs cuya existencia ha verificado
+* `discuss` - Asuntos que necesitan mayor discusión
 * `feature request` - Cualquier issue que solicite una nueva característica (usualmente no son PRs)
-* `good first issue` - Issues ideales ser realizados por nuevos colaboradores
+* `good first issue` - Issues adecuados para ser procesados por nuevos colaboradores
 
 --
 
-* `semver-{minor,major}`
+* `semver-{minor,major}` 
   * be conservative – that is, if a change has the remote *chance* of breaking something, go for semver-major
   * al agregar una etiqueta semver, incluya un comentario explicando el motivo de la adición
   * minor vs. patch: roughly: "does it add a new method / does it add a new section to the docs"
   * major vs. everything else: run last versions tests against this version, if they pass, **probably** minor or patch
-  * A breaking change helper ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)):
-  ```sh
-  git checkout $(git show -s --pretty='%T' $(git show-ref -d $(git describe --abbrev=0) | tail -n1 | awk '{print $1}')) -- test; make -j4 test
-  ```
+  * A breaking change helper ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)): 
+        sh
+        git checkout $(git show -s --pretty='%T' $(git show-ref -d $(git describe --abbrev=0) | tail -n1 | awk '{print $1}')) -- test; make -j4 test
 
 ### Soporte a largo plazo/Etiquetas de versión
 
-Estas etiquetas se utilizan para conocer a que rama entrará el commit:
+Utilizamos etiquetas para mantener un seguimiento de en qué branches deberían realizarse los commits:
 
-* `dont-land-on-v?.x`
-  * Para cambios que no aplican para a una determinada línea de release
+* `dont-land-on-v?.x` 
+  * Para cambios que no aplican a cierta línea de lanzamiento específica
   * También se utiliza cuando el trabajo involucrado en reincorporar un cambio anterior sobrepasa los beneficios
-* `land-on-v?.x`
+* `land-on-v?.x` 
   * Usado por los lanzadores para marcar un PR como programado para inclusión en un lanzamiento con soporte a largo plazo
   * Applied to the original PR for clean cherry-picks, to the backport PR otherwise
-* `backport-requested-v?.x`
+* `backport-requested-v?.x` 
   * Used to indicate that a PR needs a manual backport to a branch in order to land the changes on that branch
   * Typically applied by a releaser when the PR does not apply cleanly or it breaks the tests after applying
   * Será reemplazado por `dont-land-on-v?.x` o `backported-to-v?.x`
-* `backported-to-v?.x`
+* `backported-to-v?.x` 
   * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido integrado
-* `lts-watch-v?.x`
+* `lts-watch-v?.x` 
   * Aplicado a PRs que el grupo de trabajo LTS debería considerar incluir en una versión LTS
   * Does not indicate that any specific action will be taken, but can be effective as messaging to non-collaborators
-* `lts-agenda`
+* `lts-agenda` 
   * Para temas que necesitan ser discutidos por el grupo de trabajo de LTS
   * (for example semver-minor changes that need or should go into an LTS release)
-* `v?.x`
+* `v?.x` 
   * Automatically applied to changes that do not target `master` but rather the `v?.x-staging` branch
 
-Una vez que la línea lanzada entra a la etapa de mantenimiento, ya no es necesario que se anexen sus etiquetas correspondientes, sólo se deberán incluir la reparaciones de bugs más importantes.
+Once a release line enters maintenance mode, the corresponding labels do not need to be attached anymore, as only important bugfixes will be included.
 
 ### Otras etiquetas
 
-* Etiquetas de Sistema Operativo
+* Etiquetas de sistemas operativos 
   * `macos`, `windows`, `smartos`, `aix`
-  * Sistemas linux implícitos por defecto
-* Etiquetas de arquitectura
+  * Sin linux, linux está implícito por defecto
+* Etiquetas de arquitectura 
   * `arm`, `mips`, `s390`, `ppc`
-  * Desde que están incluidos por defecto, no de incluye arquitectura x86{_64}
+  * Sin x86{_64}, ya que se asumen por defecto
 
-
-## Actualizar Node.js desde el repositorio principal
+## Actualizando Node.js desde Upstream
 
 * `git remote add upstream git://github.com/nodejs/node.git`
 
 para actualizar desde nodejs/node:
+
 * `git checkout master`
 * `git remote update -p` OR `git fetch --all` (I prefer the former)
 * `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
