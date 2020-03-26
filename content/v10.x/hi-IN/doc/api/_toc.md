@@ -1,4 +1,4 @@
-@ // एनबीए (क्रिस डिकिंसन): यदि आप इस फ़ाइल को ले जाते हैं, तो नए स्थान पर इंगित करने के लिए @ // tools / doc / html.js को अपडेट करना सुनिश्चित करें।
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -26,7 +26,7 @@
 * [आयोजन](events.html)
 * [फाइल सिस्टम](fs.html)
 * [वैश्विक](globals.html)
-* [Http](http.html)
+* [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
 * [इंस्पेक्टर](inspector.html)
@@ -36,7 +36,7 @@
 * [ओएस](os.html)
 * [पथ](path.html)
 * [प्रदर्शन हुक](perf_hooks.html)
-* [Process](process.html)
+* [प्रसंस्करण](process.html)
 * [Punycode](punycode.html)
 * [प्रश्न स्ट्रिंग्स](querystring.html)
 * [पढ़ने के लिए लाइन](readline.html)
@@ -52,6 +52,7 @@
 * [उपयोगिताएँ](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
