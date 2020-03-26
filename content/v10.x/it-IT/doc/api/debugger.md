@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Stabilità: 2 - Stable
+> Stabilità: 2 - Stabile
 
 <!-- type=misc -->
 
-Node.js include un'utility di debug out-of-process accessibile tramite [l'Inspector di V8](#debugger_v8_inspector_integration_for_node_js) e il client di debug integrato. Per usarlo, avvia Node.js con l'argomento `inspect` seguito dal percorso dello script per eseguire il debug; verrà visualizzato un prompt che indica il corretto avvio del debugger:
+Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -20,9 +20,10 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Il debugger client di Node.js non è un debugger completo, ma sono ugualmente possibili semplici step e ispezioni.
+Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
-L'inserimento dell'istruzione `debugger;` nel codice sorgente di uno script abiliterà un breakpoint in quella posizione nel codice:
+Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+
 ```js
 // myscript.js
 global.x = 5;
@@ -76,15 +77,15 @@ break in myscript.js:5
 debug> .exit
 ```
 
-Il comando `repl` consente di valutare il codice da remoto. Il comando `next` passa alla riga successiva. Digita `help` per vedere quali altri comandi sono disponibili.
+Il comando `repl` consente di valutare il codice da remoto. The `next` command steps to the next line. Digita `help` per vedere quali altri comandi sono disponibili.
 
-Premere `enter` senza digitare alcun comando farà si che si ripeta il comando debugger precedente.
+Pressing `enter` without typing a command will repeat the previous debugger command.
 
 ## Watchers
 
-È possibile monitorare i valori expression e variable durante il debug. Su ogni breakpoint, ogni expression presente nell'elenco degli watcher verrà valutata nel contesto corrente e visualizzata immediatamente prima che il codice sorgente del breakpoint venga messo nell'elenco.
+È possibile monitorare i valori expression e variable durante il debug. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
 
-Per iniziare a guardare un expression, digita `watch('my_expression')`. Il comando `watchers` stamperà gli watcher attivi. Per rimuovere un watcher, digita `unwatch('my_expression')`.
+Per iniziare a guardare un expression, digita `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
 
 ## Riferimento dei Comandi
 
@@ -100,11 +101,11 @@ Per iniziare a guardare un expression, digita `watch('my_expression')`. Il coman
 
 * `setBreakpoint()`, `sb()` - Imposta il breakpoint sulla riga corrente
 * `setBreakpoint(line)`, `sb(line)` - Imposta il breakpoint su una riga specifica
-* `setBreakpoint('fn()')`, `sb(...)` - Imposta il breakpoint sulla prima istruzione nel corpo delle funzioni
+* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
 * `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
 * `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
 
-È possibile anche impostare un breakpoint all'interno di un file (modulo) che non è ancora stato caricato:
+It is also possible to set a breakpoint in a file (module) that is not loaded yet:
 
 ```txt
 $ node inspect main.js
@@ -130,10 +131,10 @@ debug>
 ### Informazioni
 
 * `backtrace`, `bt` - Stampa il backtrace del frame di esecuzione corrente
-* `list(5)` - Elenca il codice sorgente degli script con 5 righe di contesto (5 righe prima e dopo)
+* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
 * `watch(expr)` - Aggiunge l'expression alla lista da monitorare
 * `unwatch(expr)` - Rimuove l'expressione dalla lista da monitorare
-* `watchers` - Elenca tutti gli watcher e i loro valori (elencati automaticamente su ciascun breakpoint)
+* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
 * `repl` - Apre il repl del debugger per la valutazione nel contesto dello script di debug
 * `exec expr` - Esegue un'expression nel contesto dello script di debug
 
@@ -152,11 +153,11 @@ debug>
 
 ### Integrazione dell'Inspector di V8 per Node.js
 
-L'integrazione dell'Inspector di V8 consente di collegare Chrome DevTools alle istanze Node.js per il debug e il profiling. Utilizza il [Protocollo Chrome DevTools ](https://chromedevtools.github.io/devtools-protocol/).
+V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-L'Inspector V8 può essere abilitato passando il flag `--inspect` all'avvio di un'applicazione Node.js. È anche possibile fornire una porta personalizzata tramite quel flag, ad es. `--inspect=9222` accetterà le connessioni DevTools sulla porta 9222.
+V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
-Per inserire un break sulla prima riga del codice dell'applicazione, passa il flag `--inspect-brk` al posto di `--inspect`.
+To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -165,6 +166,6 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(Nell'esempio qui sopra, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 alla fine dell'URL è generato al volo, varia in diverse sessioni di debug.)
+(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
 
 If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.
