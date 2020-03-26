@@ -1,4 +1,4 @@
-# Command Line Options
+# कमांड लाइन विकल्प
 
 <!--introduced_in=v5.9.1-->
 
@@ -12,15 +12,28 @@ To view this documentation as a manual page in a terminal, run `man node`.
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
-`node debug [script.js | -e "script" | <host>:<port>] …`
+`node inspect [script.js | -e "script" | <host>:<port>] …`
 
 `node --v8-options`
 
 Execute without arguments to start the [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
 ## Options
+
+<!-- YAML
+changes:
+
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/23020
+    description: Underscores instead of dashes are now allowed for
+                 Node.js options as well, in addition to V8 options.
+-->
+
+All options, including V8 options, allow words to be separated by both dashes (`-`) or underscores (`_`).
+
+For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 
 ### `-`
 
@@ -47,6 +60,19 @@ added: v0.10
 Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
 If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
+
+### `--completion-bash`
+
+<!-- YAML
+added: v10.12.0
+-->
+
+Print source-able bash completion script for Node.js.
+
+```console
+$ node --completion-bash > node_bash_completion
+$ source node_bash_completion
+```
 
 ### `--enable-fips`
 
@@ -79,6 +105,14 @@ added: v9.6.0
 -->
 
 Enable experimental ES Module support in the `vm` module.
+
+### `--experimental-worker`
+
+<!-- YAML
+added: v10.5.0
+-->
+
+Enable experimental worker threads using the `worker_threads` module.
 
 ### `--force-fips`
 
@@ -114,6 +148,8 @@ Set the `host:port` to be used when the inspector is activated. Useful when acti
 
 Default host is `127.0.0.1`.
 
+See the [security warning](#inspector_security) below regarding the `host` parameter usage.
+
 ### `--inspect[=[host:]port]`
 
 <!-- YAML
@@ -123,6 +159,34 @@ added: v6.3.0
 Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
 
 V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+
+<a id="inspector_security"></a>
+
+#### Warning: binding inspector to a public IP:port combination is insecure
+
+Binding the inspector to a public IP (including `0.0.0.0`) with an open port is insecure, as it allows external hosts to connect to the inspector and perform a [remote code execution](https://www.owasp.org/index.php/Code_Injection) attack.
+
+If you specify a host, make sure that at least one of the following is true: either the host is not public, or the port is properly firewalled to disallow unwanted connections.
+
+**More specifically, `--inspect=0.0.0.0` is insecure if the port (`9229` by default) is not firewall-protected.**
+
+See the [debugging security implications](https://nodejs.org/en/docs/guides/debugging-getting-started/#security-implications) section for more information.
+
+### `--loader=file`
+
+<!-- YAML
+added: v9.0.0
+-->
+
+Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
+
+### `--max-http-header-size=size`
+
+<!-- YAML
+added: v10.15.0
+-->
+
+Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 
 ### `--napi-modules`
 
@@ -202,6 +266,30 @@ The `--preserve-symlinks` command line flag instructs Node.js to use the symlink
 
 Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
 
+The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work. To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
+
+### `--preserve-symlinks-main`
+
+<!-- YAML
+added: v10.2.0
+-->
+
+Instructs the module loader to preserve symbolic links when resolving and caching the main module (`require.main`).
+
+This flag exists so that the main module can be opted-in to the same behavior that `--preserve-symlinks` gives to all other imports; they are separate flags, however, for backward compatibility with older Node.js versions.
+
+Note that `--preserve-symlinks-main` does not imply `--preserve-symlinks`; it is expected that `--preserve-symlinks-main` will be used in addition to `--preserve-symlinks` when it is not desirable to follow symlinks before resolving relative paths.
+
+See `--preserve-symlinks` for more information.
+
+### `--prof`
+
+<!-- YAML
+added: v2.0.0
+-->
+
+Generate V8 profiler output.
+
 ### `--prof-process`
 
 <!-- YAML
@@ -225,6 +313,14 @@ added: v0.11.14
 -->
 
 Throw errors for deprecations.
+
+### `--title=title`
+
+<!-- YAML
+added: v10.7.0
+-->
+
+Set `process.title` on startup.
 
 ### `--tls-cipher-list=list`
 
@@ -311,10 +407,6 @@ added: v0.1.3
 -->
 
 Print V8 command line options.
-
-V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
-
-For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 
 ### `--v8-pool-size=num`
 
@@ -423,6 +515,10 @@ added: v0.1.32
 
 `','`-separated list of core modules that should print debug information.
 
+### `NODE_DEBUG_NATIVE=module[,…]`
+
+`','`-separated list of core C++ modules that should print debug information.
+
 ### `NODE_DISABLE_COLORS=1`
 
 <!-- YAML
@@ -440,6 +536,8 @@ added: v7.3.0
 When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
 
 Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+
+This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
 ### `NODE_ICU_DATA=file`
 
@@ -465,25 +563,35 @@ added: v8.0.0
 
 A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
-Node options that are allowed are:
+Node.js options that are allowed are:
 
 - `--enable-fips`
+- `--experimental-modules`
+- `--experimental-repl-await`
+- `--experimental-vm-modules`
+- `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
-- `--inspect`
+- `--loader`
+- `--max-http-header-size`
+- `--napi-modules`
 - `--no-deprecation`
+- `--no-force-async-hooks-checks`
 - `--no-warnings`
 - `--openssl-config`
+- `--pending-deprecation`
 - `--redirect-warnings`
 - `--require`, `-r`
 - `--throw-deprecation`
+- `--title`
 - `--tls-cipher-list`
 - `--trace-deprecation`
-- `--trace-events-categories`
-- `--trace-events-enabled`
+- `--trace-event-categories`
 - `--trace-event-file-pattern`
+- `--trace-events-enabled`
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
@@ -543,6 +651,30 @@ added: v3.0.0
 -->
 
 Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+
+### `NODE_TLS_REJECT_UNAUTHORIZED=value`
+
+If `value` equals `'0'`, certificate validation is disabled for TLS connections. This makes TLS, and HTTPS by extension, insecure. The use of this environment variable is strongly discouraged.
+
+### `NODE_V8_COVERAGE=dir`
+
+When set, Node.js will begin outputting [V8 JavaScript code coverage](https://v8project.blogspot.com/2017/12/javascript-code-coverage.html) to the directory provided as an argument. Coverage is output as an array of [ScriptCoverage](https://chromedevtools.github.io/devtools-protocol/tot/Profiler#type-ScriptCoverage) objects:
+
+```json
+{
+  "result": [
+    {
+      "scriptId": "67",
+      "url": "internal/tty.js",
+      "functions": []
+    }
+  ]
+}
+```
+
+`NODE_V8_COVERAGE` will automatically propagate to subprocesses, making it easier to instrument applications that call the `child_process.spawn()` family of functions. `NODE_V8_COVERAGE` can be set to an empty string, to prevent propagation.
+
+At this time coverage is only collected in the main thread and will not be output for code executed by worker threads.
 
 ### `OPENSSL_CONF=file`
 
