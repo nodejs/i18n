@@ -14,7 +14,7 @@ These objects are available in all modules. The following variables may appear t
 
 The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
-## Class: Buffer
+## Classe: Buffer
 
 <!-- YAML
 added: v0.1.103
