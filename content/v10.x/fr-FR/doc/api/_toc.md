@@ -1,4 +1,4 @@
-@/ / NB(chrisdickinson) : Si vous déplacez ce fichier, assurez-vous de mettre à jour @/ / tools/doc/html.js pour pointer vers le nouvel emplacement.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -20,16 +20,16 @@
 * [Débogueur](debugger.html)
 * [APIs obsolètes](deprecations.html)
 * [DNS](dns.html)
-* [Domaines (isolation d'erreurs)](domain.html)
+* [Domaine](domain.html)
 * [Modules ECMAScript](esm.html)
 * [Erreurs](errors.html)
 * [Events](events.html)
-* [Système de fichiers](fs.html)
+* [Système de fichier - fs](fs.html)
 * [Variables globales](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspecteur (sessions de débogage)](inspector.html)
+* [Inspecteur](inspector.html)
 * [Internationalisation](intl.html)
 * [Modules](modules.html)
 * [Sockets TCP](net.html)
@@ -43,7 +43,7 @@
 * [REPL](repl.html)
 * [Flux](stream.html)
 * [Décodage de chaîne textuelle (String Decoder)](string_decoder.html)
-* [Timers](timers.html)
+* [Minuterie](timers.html)
 * [TLS/SSL](tls.html)
 * [Traçabilité](tracing.html)
 * [Terminaux (TTY)](tty.html)
