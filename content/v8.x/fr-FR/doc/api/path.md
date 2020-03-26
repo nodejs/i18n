@@ -12,7 +12,7 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-L'opération par défaut du module `path` varie selon le système d'exploitation sur lequel s'exécute une application Node.js. Plus précisément, lorsque vous utilisez un système d'exploitation Windows, le module `path` considérera que les chemins utilisés sont de type Windows.
+The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 // Rend: 'myfile.html'
 ```
 
-Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers Windows sur n'importe quel système d'exploitation, utilisez [`path.win32`][] :
+To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
 
 Sur POSIX et Windows :
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 // Rend: 'myfile.html'
 ```
 
-Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers POSIX sur n'importe quel système d'exploitation, utilisez [`path.posix`][] :
+To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
 
 Sur POSIX et Windows :
 
@@ -48,12 +48,14 @@ path.posix.basename('/tmp/myfile.html');
 // retourne: 'myfile.html'
 ```
 
-*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. Par exemple `path.resolve('c:\\')` peut potentiellement retourner un résultat différent de `path.resolve('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -63,7 +65,7 @@ changes:
 * `ext` {string} Une extension de fichier optionnelle
 * Retourne : {string}
 
-La méthode `path.basename()` retourne la dernière portion de `path`, de la même façon que la commande Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
+The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 For example:
 
@@ -78,6 +80,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -110,9 +113,11 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -133,9 +138,11 @@ path.dirname('/foo/bar/baz/asdf/quux');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -168,11 +175,12 @@ path.extname('.index');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,6 +274,7 @@ path.isAbsolute('.');           // false
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -289,6 +299,7 @@ path.join('foo', {}, 'bar');
 A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
@@ -317,7 +328,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
+Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -327,6 +338,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -391,6 +403,7 @@ path.parse('C:\\path\\dir\\file.txt');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -400,9 +413,11 @@ added: v0.11.15
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -434,6 +449,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -470,6 +486,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +495,7 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `\` on Windows
+* `` on Windows
 * `/` on POSIX
 
 For example on POSIX:
@@ -500,6 +517,7 @@ accepted as path segment separators; however, the``path`methods only add
 backward slashes (`\`).
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->
