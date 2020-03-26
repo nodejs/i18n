@@ -1,19 +1,21 @@
 # Глобальные объекты
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Эти объекты доступны во всех модулях. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
-- [`__dirname`][]
-- [`__filename`][]
-- [`exports`][]
-- [`module`][]
-- [`require()`][]
+* [`__dirname`][]
+* [`__filename`][]
+* [`exports`][]
+* [`module`][]
+* [`require()`][]
 
-Перечисленные здесь объекты относятся к Node.js. Есть целый ряд [встроенных объектов](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects), являющихся частью языка JavaScript, которые также доступны глобально.
+Перечисленные здесь объекты относятся к Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Класс: Buffer
+
 <!-- YAML
 added: v0.1.103
 -->
@@ -33,6 +35,7 @@ This variable may appear to be global but is not. See [`__dirname`].
 This variable may appear to be global but is not. See [`__filename`].
 
 ## clearImmediate(immediateObject)
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -42,6 +45,7 @@ added: v0.9.1
 [`clearImmediate`] описан в разделе [таймеры](timers.html).
 
 ## clearInterval(intervalObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -51,6 +55,7 @@ added: v0.0.1
 [`clearInterval`] описан в разделе [таймеры](timers.html).
 
 ## clearTimeout(timeoutObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -60,6 +65,7 @@ added: v0.0.1
 [`clearTimeout`] описан в разделе [таймеры](timers.html).
 
 ## console
+
 <!-- YAML
 added: v0.1.100
 -->
@@ -75,6 +81,7 @@ added: v0.1.100
 This variable may appear to be global but is not. See [`exports`].
 
 ## global
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -83,13 +90,14 @@ added: v0.1.27
 
 * {Object} Глобальный объект пространства имен.
 
-В браузерах область верхнего уровня является глобальной областью. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+В браузерах область верхнего уровня является глобальной областью. This means that within the browser `var something` will define a new global variable. В Node.js это происходит по-другому. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
 This variable may appear to be global but is not. See [`module`].
 
 ## process
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -105,6 +113,7 @@ added: v0.1.7
 This variable may appear to be global but is not. See [`require()`].
 
 ## setImmediate(callback[, ...args])
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -114,6 +123,7 @@ added: v0.9.1
 [`setImmediate`] описан в разделе [таймеры](timers.html).
 
 ## setInterval(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -123,6 +133,7 @@ added: v0.0.1
 [`setInterval`] описан в разделе [таймеры](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
