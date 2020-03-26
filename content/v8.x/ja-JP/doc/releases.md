@@ -20,13 +20,13 @@ The [Node.js build team](https://github.com/nodejs/build) is able to provide thi
 
 ### 2. <nodejs.org> アクセス
 
-The _dist_ user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
+The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
-The Jenkins release build workers upload their artifacts to the web server as the _staging_ user. The _dist_ user has access to move these assets to public access while, for security, the _staging_ user does not.
+The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
 
-Nightly builds are promoted automatically on the server by a cron task for the _dist_ user.
+Nightly builds are promoted automatically on the server by a cron task for the *dist* user.
 
-Release builds require manual promotion by an individual with SSH access to the server as the _dist_ user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
 ### 3. A Publicly Listed GPG Key
 
@@ -46,12 +46,12 @@ Additionally, full GPG key fingerprints for individuals authorized to release sh
 
 備考:
 
- - Dates listed below as _"YYYY-MM-DD"_ should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
- - Version strings are listed below as _"vx.y.z"_. Substitute for the release version.
+* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
+* Version strings are listed below as *"vx.y.z"*. Substitute for the release version.
 
 ### 1. `master` や他のブランチからチェリーピックする
 
-Create a new branch named _"vx.y.z-proposal"_, or something similar. Using `git cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
+Create a new branch named *"vx.y.z-proposal"*, or something similar. Using `git cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
 For a list of commits that could be landed in a patch release on v5.x
 
@@ -84,7 +84,7 @@ This macro is used to signal an ABI version for native addons. It currently has 
 * Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
 * Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
 
-The general rule is to bump this version when there are _breaking ABI_ changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
+The general rule is to bump this version when there are *breaking ABI* changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
 
 *Note*: It is current TSC policy to bump major version when ABI changes. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Commits may need to be reverted or a major version bump may need to happen.
 
@@ -172,7 +172,7 @@ Run a **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-reques
 
 Perform some smoke-testing. We have [citgm](https://github.com/nodejs/citgm) for this. You can also manually test important modules from the ecosystem. Remember that node-gyp and npm both take a `--nodedir` flag to point to your local repository so that you can test unreleased versions without needing node-gyp to download headers for you.
 
-### 7. Produce a Nightly Build _(optional)_
+### 7. Produce a Nightly Build *(optional)*
 
 If there is a reason to produce a test release for the purpose of having others try out installers or specifics of builds, produce a nightly build using **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** and wait for it to drop in <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
 
@@ -192,7 +192,7 @@ If you have an error on Windows and need to start again, be aware that you'll ge
 
 ARMv7 takes the longest to compile. Unfortunately ccache isn't as effective on release builds, I think it's because of the additional macro settings that go in to a release build that nullify previous builds. Also most of the release build machines are separate to the test build machines so they don't get any benefit from ongoing compiles between releases. You can expect 1.5 hours for the ARMv7 builder to complete and you should normally wait for this to finish. It is possible to rush a release out if you want and add additional builds later but we normally provide ARMv7 from initial promotion.
 
-You do not have to wait for the ARMv6 / Raspberry PI builds if they take longer than the others. It is only necessary to have the main Linux (x64 and x86), macOS .pkg and .tar.gz, Windows (x64 and x86) .msi and .exe, source, headers, and docs (both produced currently by an macOS worker). **If you promote builds _before_ ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. If the ARMv6 build failed for some reason you can use the [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) build in the release CI to re-run the build only for ARMv6. When launching the build make sure to use the same commit hash as for the original release.
+You do not have to wait for the ARMv6 / Raspberry PI builds if they take longer than the others. It is only necessary to have the main Linux (x64 and x86), macOS .pkg and .tar.gz, Windows (x64 and x86) .msi and .exe, source, headers, and docs (both produced currently by an macOS worker). **If you promote builds *before* ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. If the ARMv6 build failed for some reason you can use the [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) build in the release CI to re-run the build only for ARMv6. When launching the build make sure to use the same commit hash as for the original release.
 
 ### 9. Test the Build
 
@@ -228,8 +228,8 @@ $ git push <remote> <vx.y.z>
 
 On release proposal branch, edit `src/node_version.h` again and:
 
-- Increment `NODE_PATCH_VERSION` by one
-- Change `NODE_VERSION_IS_RELEASE` back to `0`
+* Increment `NODE_PATCH_VERSION` by one
+* Change `NODE_VERSION_IS_RELEASE` back to `0`
 
 Commit this change with the following commit message format:
 
@@ -239,7 +239,7 @@ Working on vx.y.z # where 'z' is the incremented patch number
 PR-URL: <full URL to your release proposal PR>
 ```
 
-This sets up the branch so that nightly builds are produced with the next version number _and_ a pre-release tag.
+This sets up the branch so that nightly builds are produced with the next version number *and* a pre-release tag.
 
 Merge your release proposal branch into the stable branch that you are releasing from (e.g. `v8.x`), and rebase the corresponding staging branch (`v8.x-staging`) on top of that.
 
@@ -284,17 +284,19 @@ Create a new blog post by running the [nodejs.org release-post.js script](https:
 * You can add a short blurb just under the main heading if you want to say something important, otherwise the text should be publication ready.
 * The links to the download files won't be complete unless you waited for the ARMv6 builds. Any downloads that are missing will have `*Coming soon*` next to them. It's your responsibility to manually update these later when you have the outstanding builds.
 * The SHASUMS256.txt.asc content is at the bottom of the post. When you update the list of tarballs you'll need to copy/paste the new contents of this file to reflect those changes.
-* Always use pull-requests on the nodejs.org repo. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately _should_ be fine. However, please follow the following commit message format:
+* Always use pull-requests on the nodejs.org repo. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
+
 ```console
 Blog: vX.Y.Z release post
 
 Refs: <full URL to your release proposal PR>
 ```
+
 * Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
 
 ### 15. アナウンス
 
-The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email [pr@nodejs.org](mailto:pr@nodejs.org) with a message such as:
+The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
 > v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
@@ -306,4 +308,4 @@ To ensure communication goes out with the timing of the blog post, please allow 
 
 ### 17. お祝い
 
-_どんな形であれ、お祝いしましょう。_
+*どんな形であれ、お祝いしましょう。*
