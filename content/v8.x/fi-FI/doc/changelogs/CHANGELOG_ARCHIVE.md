@@ -167,7 +167,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Muut versiot 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -179,7 +179,7 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Version 0.11.14 (Unstable)
+## 2014.09.24, Versio 0.11.14 (Epävakaa)
 
 * uv: Upgrade to v1.0.0-rc1
 * http_parser: Upgrade to v2.3.0
@@ -267,7 +267,7 @@
 
 <a id="0.11.13"></a>
 
-## 2014.05.01, Version 0.11.13 (Unstable)
+## 2014.05.01, Versio 0.11.13 (Epävakaa)
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
@@ -301,7 +301,7 @@ https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
 <a id="0.11.12"></a>
 
-## 2014.03.11, Version 0.11.12 (Unstable)
+## 2014.03.11, Versio 0.11.12 (Epävakaa)
 
 https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 
@@ -338,7 +338,7 @@ https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 
 <a id="0.11.11"></a>
 
-## 2014.01.29, Version 0.11.11 (Unstable)
+## 2014.01.29, Versio 0.11.11 (Epävakaa)
 
 https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 
@@ -370,7 +370,7 @@ https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 
 <a id="0.11.10"></a>
 
-## 2013.12.31, Version 0.11.10 (Unstable)
+## 2013.12.31, Versio 0.11.10 (Epävakaa)
 
 https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
@@ -402,7 +402,7 @@ https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
 <a id="0.11.9"></a>
 
-## 2013.11.20, Version 0.11.9 (Unstable)
+## 2013.11.20, Versio 0.11.9 (Epävakaa)
 
 https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
@@ -427,7 +427,7 @@ https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
 <a id="0.11.8"></a>
 
-## 2013.10.30, Version 0.11.8 (Unstable)
+## 2013.10.30, Versio 0.11.8 (Epävakaa)
 
 https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
@@ -454,7 +454,7 @@ https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
 <a id="0.11.7"></a>
 
-## 2013.08.21, Version 0.11.7 (Unstable)
+## 2013.08.21, Versio 0.11.7 (Epävakaa)
 
 https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
@@ -479,7 +479,7 @@ https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
 <a id="0.11.6"></a>
 
-## 2013.08.21, Version 0.11.6 (Unstable)
+## 2013.08.21, Versio 0.11.6 (Epävakaa)
 
 https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 
@@ -513,7 +513,7 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 
 <a id="0.11.5"></a>
 
-## 2013.08.06, Version 0.11.5 (Unstable)
+## 2013.08.06, Versio 0.11.5 (Epävakaa)
 
 https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 
@@ -536,7 +536,7 @@ https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 
 <a id="0.11.4"></a>
 
-## 2013.07.12, Version 0.11.4 (Unstable)
+## 2013.07.12, Versio 0.11.4 (Epävakaa)
 
 https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
@@ -559,7 +559,7 @@ https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
 <a id="0.11.3"></a>
 
-## 2013.06.26, Version 0.11.3 (Unstable)
+## 2013.06.26, Versio 0.11.3 (Epävakaa)
 
 https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
@@ -589,7 +589,7 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
 <a id="0.11.2"></a>
 
-## 2013.05.13, Version 0.11.2 (Unstable)
+## 2013.05.13, Versio 0.11.2 (Epävakaa)
 
 https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
@@ -612,7 +612,7 @@ https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
 <a id="0.11.1"></a>
 
-## 2013.04.19, Version 0.11.1 (Unstable)
+## 2013.04.19, Versio 0.11.1 (Epävakaa)
 
 https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
@@ -631,7 +631,7 @@ https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
 <a id="0.11.0"></a>
 
-## 2013.03.28, Version 0.11.0 (Unstable)
+## 2013.03.28, Versio 0.11.0 (Epävakaa)
 
 https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 
@@ -654,7 +654,7 @@ https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 
 <a id="0.9.12"></a>
 
-## 2013.03.06, Version 0.9.12 (Unstable)
+## 2013.03.06, Versio 0.9.12 (Epävakaa)
 
 https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
@@ -681,7 +681,7 @@ https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
 <a id="0.9.11"></a>
 
-## 2013.03.01, Version 0.9.11 (Unstable)
+## 2013.03.01, Versio 0.9.11 (Epävakaa)
 
 https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
@@ -705,7 +705,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 <a id="0.9.10"></a>
 
-## 2013.02.19, Version 0.9.10 (Unstable)
+## 2013.02.19, Versio 0.9.10 (Epävakaa)
 
 * V8: Upgrade to 3.15.11.15
 * npm: Upgrade to 1.2.12
@@ -725,7 +725,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 <a id="0.9.9"></a>
 
-## 2013.02.07, Version 0.9.9 (Unstable)
+## 2013.02.07, Versio 0.9.9 (Epävakaa)
 
 https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
@@ -744,7 +744,7 @@ https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
 <a id="0.9.8"></a>
 
-## 2013.01.24, Version 0.9.8 (Unstable)
+## 2013.01.24, Versio 0.9.8 (Epävakaa)
 
 https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
@@ -761,7 +761,7 @@ https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
 <a id="0.9.7"></a>
 
-## 2013.01.18, Version 0.9.7 (Unstable)
+## 2013.01.18, Versio 0.9.7 (Epävakaa)
 
 https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
@@ -781,7 +781,7 @@ https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
 <a id="0.9.6"></a>
 
-## 2013.01.11, Version 0.9.6 (Unstable)
+## 2013.01.11, Versio 0.9.6 (Epävakaa)
 
 https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
@@ -804,7 +804,7 @@ https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
 <a id="0.9.5"></a>
 
-## 2012.12.30, Version 0.9.5 (Unstable)
+## 2012.12.30, Versio 0.9.5 (Epävakaa)
 
 https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
@@ -825,7 +825,7 @@ https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
 <a id="0.9.4"></a>
 
-## 2012.12.21, Version 0.9.4 (Unstable)
+## 2012.12.21, Versio 0.9.4 (Epävakaa)
 
 https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 
@@ -853,7 +853,7 @@ https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 
 <a id="0.9.3"></a>
 
-## 2012.10.24, Version 0.9.3 (Unstable)
+## 2012.10.24, Versio 0.9.3 (Epävakaa)
 
 https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 
@@ -876,7 +876,7 @@ https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 
 <a id="0.9.2"></a>
 
-## 2012.09.17, Version 0.9.2 (Unstable)
+## 2012.09.17, Versio 0.9.2 (Epävakaa)
 
 https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
@@ -903,7 +903,7 @@ https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
 <a id="0.9.1"></a>
 
-## 2012.08.28, Version 0.9.1 (Unstable)
+## 2012.08.28, Versio 0.9.1 (Epävakaa)
 
 https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
@@ -941,7 +941,7 @@ https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
 <a id="0.9.0"></a>
 
-## 2012.07.20, Version 0.9.0 (Unstable)
+## 2012.07.20, Versio 0.9.0 (Epävakaa)
 
 https://github.com/nodejs/node/commit/f9b237f478c372fd55e4590d7399dcd8f25f3603
 
