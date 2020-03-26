@@ -12,7 +12,7 @@ The set of categories for which traces are recorded can be specified using the `
 node --trace-events-enabled --trace-event-categories v8,node,node.async_hooks server.js
 ```
 
-L'esecuzione di Node.js con il tracing abilitato produrrà log file che possono essere aperti nella scheda [`chrome://tracing`](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) di Chrome.
+Running Node.js with tracing enabled will produce log files that can be opened in the [`chrome://tracing`](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) tab of Chrome.
 
 The logging file is by default called `node_trace.${rotation}.log`, where `${rotation}` is an incrementing log-rotation id. The filepath pattern can be specified with `--trace-event-file-pattern` that accepts a template string that supports `${rotation}` and `${pid}`. Per esempio:
 
