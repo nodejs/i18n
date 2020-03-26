@@ -12,6 +12,9 @@
   <tr>
     <td valign="top">
       
+<a href="#8.17.0">8.17.0</a><br />
+<a href="#8.16.2">8.16.2</a><br />
+<a href="#8.16.1">8.16.1</a><br />
 <a href="#8.16.0">8.16.0</a><br />
 <a href="#8.15.1">8.15.1</a><br />
 <a href="#8.15.0">8.15.0</a><br />
@@ -64,6 +67,104 @@
   * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
+
+<a id="8.17.0"></a>
+
+## 2019-12-17, Version 8.17.0 'Carbon' (LTS), @MylesBorins
+
+This is a security release.
+
+For more details about the vulnerability please consult the npm blog:
+
+https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
+
+### Notable changes
+
+* **deps**: update npm to 6.13.4 [#30904](https://github.com/nodejs/node/pull/30904)
+
+### Commits
+
+* [[`208b813e49`](https://github.com/nodejs/node/commit/208b813e49)] - **build,win**: add test-ci-native and test-ci-js (João Reis) [#30724](https://github.com/nodejs/node/pull/30724)
+* [[`369a23a670`](https://github.com/nodejs/node/commit/369a23a670)] - **deps**: update npm to 6.13.4 (Audrey Eschright) [#30904](https://github.com/nodejs/node/pull/30904)
+
+<a id="8.16.2"></a>
+
+## 2019-10-09, Version 8.16.2 'Carbon' (LTS), @BethGriggs
+
+Node.js 8 is due to go End-of-Life on 31st December 2019.
+
+### Notable changes
+
+* **deps**: upgrade openssl sources to 1.0.2s (Sam Roberts) [#28230](https://github.com/nodejs/node/pull/28230)
+
+### Commits
+
+* [[`cc9d005628`](https://github.com/nodejs/node/commit/cc9d005628)] - **crypto**: update root certificates (Sam Roberts) [#28808](https://github.com/nodejs/node/pull/28808)
+* [[`347fcd35e3`](https://github.com/nodejs/node/commit/347fcd35e3)] - **crypto**: update root certificates (Sam Roberts) [#27374](https://github.com/nodejs/node/pull/27374)
+* [[`b2a6b3254d`](https://github.com/nodejs/node/commit/b2a6b3254d)] - **crypto**: update root certificates (Sam Roberts) [#25113](https://github.com/nodejs/node/pull/25113)
+* [[`5682e50325`](https://github.com/nodejs/node/commit/5682e50325)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`9663ae3546`](https://github.com/nodejs/node/commit/9663ae3546)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`87eee99466`](https://github.com/nodejs/node/commit/87eee99466)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`da99d3f972`](https://github.com/nodejs/node/commit/da99d3f972)] - **deps**: copy all openssl header files to include dir (Sam Roberts) [#28230](https://github.com/nodejs/node/pull/28230)
+* [[`dc9d645ac4`](https://github.com/nodejs/node/commit/dc9d645ac4)] - **deps**: upgrade openssl sources to 1.0.2s (Sam Roberts) [#28230](https://github.com/nodejs/node/pull/28230)
+* [[`37e24b19a0`](https://github.com/nodejs/node/commit/37e24b19a0)] - **deps**: V8: backport d520ebb (Michaël Zasso) [#27358](https://github.com/nodejs/node/pull/27358)
+* [[`1a5dc6a3e7`](https://github.com/nodejs/node/commit/1a5dc6a3e7)] - **http**: check for existance in resetHeadersTimeoutOnReqEnd (Matteo Collina) [#26402](https://github.com/nodejs/node/pull/26402)
+* [[`e45b6a3b98`](https://github.com/nodejs/node/commit/e45b6a3b98)] - **http2**: do not start reading after write if new write is on wire (Anna Henningsen) [#29399](https://github.com/nodejs/node/pull/29399)
+* [[`559a8e342b`](https://github.com/nodejs/node/commit/559a8e342b)] - **http2**: do not crash on stream listener removal w/ destroyed session (Anna Henningsen) [#29459](https://github.com/nodejs/node/pull/29459)
+* [[`dd285968c4`](https://github.com/nodejs/node/commit/dd285968c4)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`3ee076f03d`](https://github.com/nodejs/node/commit/3ee076f03d)] - **stream**: ensure writable.destroy() emits error once (Luigi Pinca) [#26057](https://github.com/nodejs/node/pull/26057)
+* [[`a7e5fe1f06`](https://github.com/nodejs/node/commit/a7e5fe1f06)] - **test**: unskip tests that now pass on AIX (Sam Roberts) [#29054](https://github.com/nodejs/node/pull/29054)
+* [[`65e9b0f5a2`](https://github.com/nodejs/node/commit/65e9b0f5a2)] - **test**: specialize OOM check for AIX (Sam Roberts) [#28857](https://github.com/nodejs/node/pull/28857)
+* [[`7aca9cb09b`](https://github.com/nodejs/node/commit/7aca9cb09b)] - **test**: fix pty test hangs on aix (Ben Noordhuis) [#28600](https://github.com/nodejs/node/pull/28600)
+* [[`588b761fca`](https://github.com/nodejs/node/commit/588b761fca)] - **test**: skip stringbytes-external-exceed-max on AIX (Sam Roberts) [#28516](https://github.com/nodejs/node/pull/28516)
+* [[`930647d0fe`](https://github.com/nodejs/node/commit/930647d0fe)] - **test**: skip tests related to CI failures on AIX (Sam Roberts) [#28469](https://github.com/nodejs/node/pull/28469)
+* [[`92a2f8bbe3`](https://github.com/nodejs/node/commit/92a2f8bbe3)] - **test,win**: cleanup exec-timeout processes (João Reis) [#28723](https://github.com/nodejs/node/pull/28723)
+* [[`d57f79726d`](https://github.com/nodejs/node/commit/d57f79726d)] - **tls**: partially backport pull request #26415 (Ben Noordhuis) [#26415](https://github.com/nodejs/node/pull/26415)
+* [[`c582fef5cc`](https://github.com/nodejs/node/commit/c582fef5cc)] - **tools**: update certdata.txt (Sam Roberts) [#28808](https://github.com/nodejs/node/pull/28808)
+* [[`4fbadf6a9e`](https://github.com/nodejs/node/commit/4fbadf6a9e)] - **tools**: update certdata.txt (Sam Roberts) [#27374](https://github.com/nodejs/node/pull/27374)
+* [[`529b2ad25f`](https://github.com/nodejs/node/commit/529b2ad25f)] - **tools**: update certdata.txt (Sam Roberts) [#25113](https://github.com/nodejs/node/pull/25113)
+
+<a id="8.16.1"></a>
+
+## 2019-08-15, Version 8.16.1 'Carbon' (LTS), @BethGriggs
+
+### Notable changes
+
+This is a security release.
+
+Node.js, as well as many other implementations of HTTP/2, have been found vulnerable to Denial of Service attacks. See https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md for more information.
+
+Vulnerabilities fixed:
+
+* **CVE-2019-9511 “Data Dribble”**: The attacker requests a large amount of data from a specified resource over multiple streams. They manipulate window size and stream priority to force the server to queue the data in 1-byte chunks. Depending on how efficiently this data is queued, this can consume excess CPU, memory, or both, potentially leading to a denial of service.
+* **CVE-2019-9512 “Ping Flood”**: The attacker sends continual pings to an HTTP/2 peer, causing the peer to build an internal queue of responses. Depending on how efficiently this data is queued, this can consume excess CPU, memory, or both, potentially leading to a denial of service.
+* **CVE-2019-9513 “Resource Loop”**: The attacker creates multiple request streams and continually shuffles the priority of the streams in a way that causes substantial churn to the priority tree. This can consume excess CPU, potentially leading to a denial of service.
+* **CVE-2019-9514 “Reset Flood”**: The attacker opens a number of streams and sends an invalid request over each stream that should solicit a stream of RST_STREAM frames from the peer. Depending on how the peer queues the RST_STREAM frames, this can consume excess memory, CPU, or both, potentially leading to a denial of service.
+* **CVE-2019-9515 “Settings Flood”**: The attacker sends a stream of SETTINGS frames to the peer. Since the RFC requires that the peer reply with one acknowledgement per SETTINGS frame, an empty SETTINGS frame is almost equivalent in behavior to a ping. Depending on how efficiently this data is queued, this can consume excess CPU, memory, or both, potentially leading to a denial of service.
+* **CVE-2019-9516 “0-Length Headers Leak”**: The attacker sends a stream of headers with a 0-length header name and 0-length header value, optionally Huffman encoded into 1-byte or greater headers. Some implementations allocate memory for these headers and keep the allocation alive until the session dies. This can consume excess memory, potentially leading to a denial of service.
+* **CVE-2019-9517 “Internal Data Buffering”**: The attacker opens the HTTP/2 window so the peer can send without constraint; however, they leave the TCP window closed so the peer cannot actually write (many of) the bytes on the wire. The attacker then sends a stream of requests for a large response object. Depending on how the servers queue the responses, this can consume excess memory, CPU, or both, potentially leading to a denial of service.
+* **CVE-2019-9518 “Empty Frames Flood”**: The attacker sends a stream of frames with an empty payload and without the end-of-stream flag. These frames can be DATA, HEADERS, CONTINUATION and/or PUSH_PROMISE. The peer spends time processing each frame disproportionate to attack bandwidth. This can consume excess CPU, potentially leading to a denial of service. (Discovered by Piotr Sikora of Google)
+
+### Commits
+
+* [[`6d427378c0`](https://github.com/nodejs/node/commit/6d427378c0)] - **deps**: update nghttp2 to 1.39.2 (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`33d4d916d5`](https://github.com/nodejs/node/commit/33d4d916d5)] - **deps**: update nghttp2 to 1.39.1 (gengjiawen) [#28448](https://github.com/nodejs/node/pull/28448)
+* [[`17fad97113`](https://github.com/nodejs/node/commit/17fad97113)] - **deps**: update nghttp2 to 1.38.0 (gengjiawen) [#27295](https://github.com/nodejs/node/pull/27295)
+* [[`0b44733695`](https://github.com/nodejs/node/commit/0b44733695)] - **deps**: update nghttp2 to 1.37.0 (gengjiawen) [#26990](https://github.com/nodejs/node/pull/26990)
+* [[`5afc77b044`](https://github.com/nodejs/node/commit/5afc77b044)] - **deps**: update nghttp2 to 1.34.0 (James M Snell) [#23284](https://github.com/nodejs/node/pull/23284)
+* [[`073108c855`](https://github.com/nodejs/node/commit/073108c855)] - **http2**: allow security revert for Ping/Settings Flood (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`6d687f7af8`](https://github.com/nodejs/node/commit/6d687f7af8)] - **http2**: pause input processing if sending output (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`854dba649e`](https://github.com/nodejs/node/commit/854dba649e)] - **http2**: stop reading from socket if writes are in progress (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`a3191689dd`](https://github.com/nodejs/node/commit/a3191689dd)] - **http2**: consider 0-length non-end DATA frames an error (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`156f2f35df`](https://github.com/nodejs/node/commit/156f2f35df)] - **http2**: shrink default `vector::reserve()` allocations (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`10f05b65c4`](https://github.com/nodejs/node/commit/10f05b65c4)] - **http2**: handle 0-length headers better (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`ac28a628a5`](https://github.com/nodejs/node/commit/ac28a628a5)] - **http2**: limit number of invalid incoming frames (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`11b4e2c0db`](https://github.com/nodejs/node/commit/11b4e2c0db)] - **http2**: limit number of rejected stream openings (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`7de642b6f9`](https://github.com/nodejs/node/commit/7de642b6f9)] - **http2**: do not create ArrayBuffers when no DATA received (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`dd60d3561a`](https://github.com/nodejs/node/commit/dd60d3561a)] - **http2**: only call into JS when necessary for session events (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`00f6846b73`](https://github.com/nodejs/node/commit/00f6846b73)] - **http2**: improve JS-side debug logging (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
+* [[`b095e35f1f`](https://github.com/nodejs/node/commit/b095e35f1f)] - **http2**: improve http2 code a bit (James M Snell) [#23984](https://github.com/nodejs/node/pull/23984)
+* [[`cc282239c1`](https://github.com/nodejs/node/commit/cc282239c1)] - **test**: apply test-http2-max-session-memory-leak from v12.x (Anna Henningsen) [#29122](https://github.com/nodejs/node/pull/29122)
 
 <a id="8.16.0"></a>
 
@@ -2794,7 +2895,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs** 
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
-* **inspecteur** 
+* **inspector** 
   * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
 * **module** 
   * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
@@ -3194,7 +3295,7 @@ More detailed information on performance differences can be found at https://med
   
   * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
 
-* **Hulpprogramma's**
+* **Utilities**
   
   * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
 
@@ -3988,7 +4089,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   * `new Buffer(num)` and `Buffer(num)` will zero-fill new `Buffer` instances [[`7eb1b4658e`](https://github.com/nodejs/node/commit/7eb1b4658e)] [#12141](https://github.com/nodejs/node/pull/12141).
   * Many `Buffer` methods now accept `Uint8Array` as input [[`beca3244e2`](https://github.com/nodejs/node/commit/beca3244e2)] [#10236](https://github.com/nodejs/node/pull/10236).
 
-* **Sub-proces**
+* **Child Process**
   
   * Argument and kill signal validations have been improved [[`97a77288ce`](https://github.com/nodejs/node/commit/97a77288ce)] [#12348](https://github.com/nodejs/node/pull/12348), [[`d75fdd96aa`](https://github.com/nodejs/node/commit/d75fdd96aa)] [#10423](https://github.com/nodejs/node/pull/10423).
   * Child Process methods accept `Uint8Array` as input [[`627ecee9ed`](https://github.com/nodejs/node/commit/627ecee9ed)] [#10653](https://github.com/nodejs/node/pull/10653).
@@ -4006,11 +4107,11 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Native `Promise` instances are now `Domain` aware [[`84dabe8373`](https://github.com/nodejs/node/commit/84dabe8373)] [#12489](https://github.com/nodejs/node/pull/12489).
 
-* **Fouten**
+* **Errors**
   
   * We have started assigning static error codes to errors generated by Node.js. This has been done through multiple commits and is still a work in progress.
 
-* **Bestandssysteem**
+* **File System**
   
   * The utility class `fs.SyncWriteStream` has been deprecated [[`7a55e34ef4`](https://github.com/nodejs/node/commit/7a55e34ef4)] [#10467](https://github.com/nodejs/node/pull/10467).
   * The deprecated `fs.read()` string interface has been removed [[`3c2a9361ff`](https://github.com/nodejs/node/commit/3c2a9361ff)] [#9683](https://github.com/nodejs/node/pull/9683).
@@ -4031,7 +4132,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **Proces**
+* **Process**
   
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] [#12725](https://github.com/nodejs/node/pull/12725).
