@@ -1,13 +1,15 @@
 # Χρήση
 
 <!--introduced_in=v0.10.0-->
+
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Παρακαλούμε δείτε το έγρραφο για τα [Command Line Options](cli.html#cli_command_line_options) για πληροφορίες σχετικά με τις διαφορετικές επιλογές και τρόπους με τους οποίους μπορείτε να τρέξετε Node.js scripts.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
 ## Παράδειγμα
+
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
 Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
@@ -41,7 +43,7 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Δημιουργήστε ένα νέο αρχείο μέσα στο φάκελο `projects` και ονομάστε το `hello-world.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
 In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
