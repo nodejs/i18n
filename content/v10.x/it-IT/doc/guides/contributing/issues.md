@@ -9,25 +9,26 @@
 
 ## Come Contribuire in Issues
 
-Per qualsiasi issue, ci sono fondamentalmente tre modi con i quali una persona può dare il suo contributo:
+For any issue, there are fundamentally three ways an individual can contribute:
 
-1. Aprendo l'issue per la discussione: Ad esempio, se ritieni di aver scoperto un bug in Node.js, la creazione di un nuovo issue nell'issue tracker di `nodejs/node` è il modo giusto per segnalarlo.
-2. Aiutando a valutare l'issue: Questo può essere fatto fornendo dettagli di supporto (un test case che dimostri un bug), o fornendo suggerimenti su come affrontare l'issue.
-3. Aiutando a risolvere l'issue: In genere questo viene fatto sia dimostrando che l'issue segnalato dopo tutto non è un problema, oppure più spesso, aprendo una Pull Request che modifica un pò qualcosa in `nodejs/node` in modo concreto e revisionabile.
+1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
+2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
+3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
 ## Chiedere Aiuto Generale
 
-Visto che il livello di attività nel repository di `nodejs/node` è così elevato, le domande o le richieste di aiuto generale che utilizzano Node.js devono essere indirizzate al [Node.js help repository](https://github.com/nodejs/help/issues).
+Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
 ## Discutere di argomenti non tecnici
 
-La discussione di argomenti non tecnici (come possono essere la proprietà intellettuale ed il trademark) deve essere indirizzata al [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues) (Repository del Comitato Tecnico Direttivo).
+Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
 ## Inviare un Bug Report
 
-Quando si apre un nuovo issue nell'issue tracker di `nodejs/node`, agli utenti verrà presentato un modello di base da compilare.
+When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
-```markdown<!--
+```markdown
+<!--
 Grazie per aver segnalato un issue.
 
 Questo issue tracker riguarda bug ed issue rilevati nel Node.js core.
@@ -43,26 +44,31 @@ Subsystem: se noto, specificare il nome del modulo principale colpito
 
 Se possibile, si prega di fornire un codice che mostri il problema, mantenendolo 
 semplice e libero da dipendenze esterne, nel limite della possibilità.
--->* **Version**:
+-->
+
+* **Version**:
 * **Platform**:
-* **Subsystem**:<!-- Inserisci i dettagli del tuo issue sotto questo commento. -->```
+* **Subsystem**:
 
-Se credi di aver scoperto un bug in Node.js, compila questo modulo, seguendo il modello al meglio delle tue capacità. Non ti preoccupare se non puoi rispondere ad ogni dettaglio, riempi quello che puoi.
+<!-- Inserisci i dettagli del tuo issue sotto questo commento. -->
+```
 
-Le due informazioni più importanti di cui abbiamo bisogno per valutare correttamente il report sono una descrizione del comportamento che si sta vedendo ed un semplice test case che possiamo utilizzare per ricreare il problema da soli. Se non riusciamo a ricreare l'issue, diventa impossibile per noi risolverlo.
+If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
 
-Per escludere la possibilità di bug introdotti dal codice userland, i test case dovrebbero essere limitati, per quanto possibile, al *solo* utilizzo delle API di Node.js. Se il bug si verifica solo quando si utilizza un modulo userland specifico, c'è una buona possibilità che (a) il modulo abbia un bug o (b) qualcosa in Node.js è cambiato ed ha interrotto il modulo.
+The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+
+In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
 Vedi [Come creare un esempio Minimo, Completo e Verificabile](https://stackoverflow.com/help/mcve).
 
-## Smistamento di un Bug Report
+## Valutazione di un Bug Report
 
-Una volta aperto un'issue, succede spesso che se ne discuti a riguardo. Alcuni contributors potrebbero avere opinioni diverse riguardo l'issue, includendo anche se il comportamento visto è un bug oppure una funzionalità. Questa discussione è parte del processo e dovrebbe essere mantenuta focalizzata, utile e professionale.
+Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
-Le risposte brevi e troncate—che non forniscono né un contesto aggiuntivo né dettagli di supporto—non sono né utili né professionali. Per molti, risposte del genere sono semplicemente fastidiose e scortesi.
+Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
 
-I contributors sono incoraggiati ad aiutarsi l'un l'altro per progredire il più possibile, supportandosi a vicenda per risolvere gli issue in modo collaborativo. Se scegli di commentare un issue che ritieni non sia un problema da correggere oppure se incontri informazioni in un issue che ritieni non corrette, spiega *perché* la pensi in quel modo supportandoti con un contesto aggiuntivo e sii pronto ad essere consapevole del fatto che potresti anche sbagliare. Facendo così, spesso possiamo raggiungere il risultato corretto molto più velocemente.
+Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
 ## Risoluzione di un Bug Report
 
-Nella stragrande maggioranza dei casi, gli issue vengono risolti aprendo una Pull Request. Il processo di apertura e revisione di una Pull Request è simile a quello di apertura e valutazione degli issue, ma comporta un necessario workflow di revisione ed approvazione che garantisce che le modifiche proposte soddisfino le linee guida minime di qualità e funzionalità del progetto Node.js.
+Nella stragrande maggioranza dei casi, gli issue vengono risolti aprendo una Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
