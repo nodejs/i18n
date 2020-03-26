@@ -8,7 +8,7 @@ The specific Node.js release streams the new version will be able to land into a
 
 This process only covers full updates to new versions of npm. Cherry-picked changes can be reviewed and landed via the normal consensus seeking process.
 
-## Paso 1: Clonar al npm
+## Paso 1: Clone el npm
 
 ```console
 $ git clone https://github.com/npm/cli.git npm
@@ -22,14 +22,14 @@ $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Paso 2: Lanzamiento del Build
+## Paso 2: Compilar lanzamiento
 
 ```console
 $ git checkout vX.Y.Z
 $ make release
 ```
 
-Nota: por favor ejecute `npm dist-tag ls npm` y asegúrese que esta es la `latest`**dist-tag**. `latest` en git es usualmente publicado como `next` cuando es hora de downstream
+Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
 ## Paso 3: Remover el npm anterior
 
@@ -41,7 +41,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Paso 4: Extraer y asentar un nuevo npm
+## Paso 4: Extraer y asentar nuevo npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -63,7 +63,7 @@ $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 
 Nota: por favor asegúrese que solo está haciendo actualizaciones que son cambiadas por el npm.
 
-## Paso 6: Aplicar corrección de Whitespace
+## Paso 6: Aplicar revisión de Whitespace
 
 ```console
 $ git rebase --whitespace=fix master
