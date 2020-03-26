@@ -4,13 +4,14 @@
 
 > 稳定性：2 - 稳定
 
-`util` 模块主要用于满足 Node.js 自己内部 API 的需求。 然而，很多实用程序对于应用程序和模块开发者也非常有用。 可以通过如下方式访问：
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. 可以通过如下方式访问：
 
 ```js
 const util = require('util');
 ```
 
 ## util.callbackify(original)
+
 <!-- YAML
 added: v8.2.0
 -->
@@ -40,9 +41,9 @@ callbackFunction((err, ret) => {
 hello world
 ```
 
-回调是异步执行的，且将具有有限的栈回溯。 如果回调函数抛出异常，进程将发出一个 [`'uncaughtException'`][] 事件，如果该事件没有被处理，则将退出。
+回调是异步执行的，且将具有有限的栈回溯。 If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
 
-由于 `null` 作为回调函数的第一个参数具有特殊含义，如果一个被包装的函数拒绝 `Promise` 并返回虚值作为原因，则原始值将被存储于 `reason` 字段，并被包装在 `Error` 中。
+Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
 
 ```js
 function fn() {
@@ -58,14 +59,15 @@ callbackFunction((err, ret) => {
 ```
 
 ## util.debuglog(section)
+
 <!-- YAML
 added: v0.11.3
 -->
 
-* `section` {string} 用于标识在应用程序中 `debuglog` 函数被创建的部分。
+* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
 * 返回：{Function} 日志函数
 
-`util.debuglog()` 方法基于 `NODE_DEBUG` 环境变量的值，当符合某些条件时将调试信息输出到 `stderr`。 如果 `section` 名称出现在环境变量的值中，则返回的函数操作类似于 [`console.error()`][]。 如果没有，则返回的函数是空操作。
+The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. 如果没有，则返回的函数是空操作。
 
 ```js
 const util = require('util');
@@ -74,15 +76,16 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-如果在变量中包含 `NODE_DEBUG=foo`，则此程序的输出类似于如下内容：
+If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-其中的 `3245` 为进程 id。 如果该环境变量不存在，则程序运行时不打印任何内容。
+其中的 `3245` 为进程 id。 If it is not run with that environment variable set, then it will not print anything.
 
 The `section` supports wildcard also:
+
 ```js
 const util = require('util');
 const debuglog = util.debuglog('foo-bar');
@@ -91,6 +94,7 @@ debuglog('hi there, it\'s foo-bar [%d]', 2333);
 ```
 
 if it is run with `NODE_DEBUG=foo*` in the environment, then it will output something like:
+
 ```txt
 FOO-BAR 3257: hi there, it's foo-bar [2333]
 ```
@@ -98,9 +102,11 @@ FOO-BAR 3257: hi there, it's foo-bar [2333]
 Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable: `NODE_DEBUG=fs,net,tls`.
 
 ## util.deprecate(fn, msg[, code])
+
 <!-- YAML
 added: v0.8.0
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/16393
     description: Deprecation warnings are only emitted once for each code.
@@ -136,16 +142,18 @@ fn2(); // does not emit a deprecation warning because it has the same code
 
 If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
 
-如果 `--trace-deprecation` 或 `--trace-warnings` 命令行标志被设置，或者 `process.traceDeprecation` 属性被设置为 `true`，当已弃用的函数被首次调用时，警告和栈追溯将被打印到 `stderr`。
+If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
 
-如果设置了 `--throw-deprecation` 命令行标志，或者 `process.throwDeprecation` 属性被设置为 `true`，当被弃用的函数被调用时会抛出异常。
+If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
 
-`--throw-deprecation` 命令行标志和 `process.throwDeprecation` 属性优先于 `--trace-deprecation` 和 `process.traceDeprecation`。
+The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
 ## util.format(format[, ...args])
+
 <!-- YAML
 added: v0.5.3
 changes:
+
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
@@ -153,40 +161,40 @@ changes:
 
 * `format` {string} 一个和 `printf` 类似的格式化字符串函数。
 
-`util.format()` 方法返回一个格式化过的字符串，其首个参数的格式和 `printf` 类似。
+The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
 
-首个参数是一个包含零个或多个 *占位符* 标记的字符串。 每个占位符标记会被相应的参数转换而来的值所替代。 支持的占位符为：
+首个参数是一个包含零个或多个 *占位符* 标记的字符串。 Each placeholder token is replaced with the converted value from the corresponding argument. 支持的占位符为：
 
 * `%s` - `String`.
 * `%d` - `Number` (integer or floating point value) or `BigInt`.
 * `%i` - Integer or `BigInt`.
 * `%f` - 单精度浮点数。
-* `%j` - JSON。 如果参数中包含循环引用，将其替换为字符串 `'[Circular]'`。
-* `%o` - `Object`. 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
+* `%j` - JSON。 Replaced with the string `'[Circular]'` if the argument contains circular references.
+* `%o` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
 * `%O` - `Object`. A string representation of an object with generic JavaScript object formatting. 类似于没有选项的 `util.inspect()`。 This will show the full object not including non-enumerable properties and proxies.
 * `%%` - 单个百分号 (`'%'`)。 它不使用参数。
 * Returns: {string} The formatted string
 
-如果占位符没有对应的参数，则占位符不会被替换。
+If the placeholder does not have a corresponding argument, the placeholder is not replaced.
 
 ```js
 util.format('%s:%s', 'foo');
 // Returns: 'foo:%s'
 ```
 
-如果传递给 `util.format()` 的参数多于占位符的数量，多余的参数会被强制转换为字符串并和返回的字符串连接在一起，每个字符串由空格分隔。 对于 `typeof` 为 `'object'` 或 `'symbol'` （`null`除外）的多余参数，它们都会由 `util.inspect()` 进行转换。
+If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-如果首个参数不是字符串，则 `util.format()` 返回将所有参数以空格连接在一起的一个字符串。 每个参数都通过使用 `util.inspect()` 转换为一个字符串。
+If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. 每个参数都通过使用 `util.inspect()` 转换为一个字符串。
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
 ```
 
-如果只有一个参数被传递给 `util.format()`，该参数会被原样返回，且不做任何格式化。
+If only one argument is passed to `util.format()`, it is returned as it is without any formatting.
 
 ```js
 util.format('%% %s'); // '%% %s'
@@ -195,6 +203,7 @@ util.format('%% %s'); // '%% %s'
 Please note that `util.format()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
 
 ## util.formatWithOptions(inspectOptions, format[, ...args])
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -211,6 +220,7 @@ util.formatWithOptions({ colors: true }, 'See object %O', { foo: 42 });
 ```
 
 ## util.getSystemErrorName(err)
+
 <!-- YAML
 added: v9.7.0
 -->
@@ -228,9 +238,11 @@ fs.access('file/that/does/not/exist', (err) => {
 ```
 
 ## util.inherits(constructor, superConstructor)
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/3455
     description: The `constructor` parameter can refer to an ES6 class now.
@@ -239,11 +251,11 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. 还请注意这两种风格在 [语义上不兼容](https://github.com/nodejs/node/issues/4179)。
+Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
 
-Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
-更为方便的时，`superConstructor` 可以通过 `constructor.super_` 属性进行访问。
+As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
 ```js
 const util = require('util');
@@ -290,10 +302,13 @@ stream.write('With ES6');
 ```
 
 ## util.inspect(object[, options])
+
 ## util.inspect(object[, showHidden[, depth[, colors]]])
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/22788
     description: The `sorted` option is supported now.
@@ -323,14 +338,14 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or `Object`.
-* `options` {Object}
+* `options` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **默认:** `false`.
-  * `depth` {number} 指定在格式化 `对象` 时进行递归的次数。 这在检查大型复杂对象时非常有用。 To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
-  * `colors` {boolean} 如果值为 `true`，则输出结果会以 ANSI 颜色代码来格式化。 Colors are customizable, see [Customizing `util.inspect` colors][]. **默认:** `false`.
+  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. 这在检查大型复杂对象时非常有用。 To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
+  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **默认:** `false`.
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Default:** `true`.
-  * `showProxy` {boolean} 如果值为 `true`，则对象和 `代理`对象的函数会自省来显示它们的 `target` 和 `handler` 对象。 **默认:** `false`.
-  * `maxArrayLength` {number} Specifies the maximum number of `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or negative to show no elements. **Default:** `100`.
-  * `breakLength` {number} 对象键值被拆分为多行时的长度。 设置为 `Infinity` 会将对象格式化为单行。 **Default:** `60` for legacy compatibility.
+  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **默认:** `false`.
+  * `maxArrayLength` {number} Specifies the maximum number of `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or negative to show no elements. **默认值：** `100`.
+  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
   * `compact` {boolean} Setting this to `false` changes the default indentation to use a line break for each object key instead of lining up multiple properties in one line. It will also break text that is above the `breakLength` size into smaller and better readable chunks and indents objects the same as arrays. Note that no text will be reduced below 16 characters, no matter the `breakLength` size. For more information, see the example below. **Default:** `true`.
   * `sorted` {boolean|Function} If set to `true` or a function, all properties of an object and Set and Map entries will be sorted in the returned string. If set to `true` the [default sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) is going to be used. If set to a function, it is used as a [compare function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters).
 * Returns: {string} The representation of passed object
@@ -361,7 +376,7 @@ const util = require('util');
 console.log(util.inspect(util, { showHidden: true, depth: null }));
 ```
 
-值可以提供它们自己的自定义 `inspect(depth, opts)` 函数，当被调用时，它们会在递归检查中接收当前 `深度`，以及传递给 `util.inspect()` 的 options 对象。
+Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
 
 The following example highlights the difference with the `compact` option:
 
@@ -466,25 +481,25 @@ Please note that `util.inspect()` is a synchronous method that is mainly intende
 
 <!-- type=misc -->
 
-`util.inspect` 的带颜色输出 （如果启用）可以通过 `util.inspect.styles` 和 `util.inspect.colors` 属性进行全局性定义。
+Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
 
-`util.inspect.styles` 是一个将样式名称和 `util.inspect.colors` 中颜色相关联的 map。
+`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
 默认的样式及其相关联的颜色是：
 
- * `number` - `黄色`
- * `boolean` - `黄色`
- * `string` - `绿色`
- * `date` - `品红色`
- * `regexp` - `红色`
- * `null` - `粗体`
- * `undefined` - `灰色`
- * `special` - `青色` （仅适用于当前函数）
- * `name` - （无样式）
+* `number` - `黄色`
+* `boolean` - `黄色`
+* `string` - `绿色`
+* `date` - `品红色`
+* `regexp` - `红色`
+* `null` - `粗体`
+* `undefined` - `灰色`
+* `special` - `青色` （仅适用于当前函数）
+* `name` - （无样式）
 
-预定义的颜色代码是：`white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` 和 `yellow`。 同时还有 `bold`, `italic`, `underline` 以及 `inverse` 这些代码。
+The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
 
-使用 ANSI 控制代码的颜色样式可能不会适用于所有终端。
+Color styling uses ANSI control codes that may not be supported on all terminals.
 
 ### 对象上的自定义检查功能
 
@@ -523,7 +538,7 @@ util.inspect(box);
 // Returns: "Box< true >"
 ```
 
-自定义的 `[util.inspect.custom](depth, opts)` 函数通常返回一个字符串，但可能会返回任何类型的值，该值会被 `util.inspect()` 进行相应的格式化。
+Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
 
 ```js
 const util = require('util');
@@ -538,9 +553,11 @@ util.inspect(obj);
 ```
 
 ### util.inspect.custom
+
 <!-- YAML
 added: v6.6.0
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/20857
     description: This is now defined as a shared symbol.
@@ -575,11 +592,12 @@ console.log(password);
 See [Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects) for more details.
 
 ### util.inspect.defaultOptions
+
 <!-- YAML
 added: v6.4.0
 -->
 
-`defaultOptions` 值允许自定义 `util.inspect` 的默认选项。 这对于 `console.log` 或 `util.format` 类似的函数非常有用，这样的函数会隐式调用 `util.inspect`。 应将其设置为一个包含一个或多个合法 [`util.inspect()`][] 选项的对象。 还支持直接设置选项属性。
+The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
 
 ```js
 const util = require('util');
@@ -591,19 +609,21 @@ console.log(arr); // logs the full array
 ```
 
 ## util.isDeepStrictEqual(val1, val2)
+
 <!-- YAML
 added: v9.0.0
 -->
 
 * `val1` {any}
 * `val2` {any}
-* 返回：{boolean}
+* 返回: {boolean}
 
 Returns `true` if there is deep strict equality between `val1` and `val2`. 否则，返回 `false`。
 
 See [`assert.deepStrictEqual()`][] for more information about deep strict equality.
 
 ## util.promisify(original)
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -639,13 +659,13 @@ async function callStat() {
 }
 ```
 
-如果存在 `original[util.promisify.custom]` 属性，`promisify` 将会返回它的值，请参阅 [自定义 promisified 函数](#util_custom_promisified_functions)。
+If there is an `original[util.promisify.custom]` property present, `promisify` will return its value, see [Custom promisified functions](#util_custom_promisified_functions).
 
-`promisify()` 假定 `original` 是一个在所有情况下都将回调函数作为其最终参数的函数。 如果 `original` 不是一个函数，`promisify()` 会抛出一个错误。 如果 `original` 是一个函数，但其最后参数不是 error-first 风格回调函数，它仍会收到一个 error-first 风格的回调函数作为其最后一个参数。
+`promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
 
 ### 自定义 promisified 函数
 
-使用 `util.promisify.custom` 符号可以覆盖 [`util.promisify()`][] 的返回值：
+Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -663,7 +683,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 // prints 'true'
 ```
 
-这在当原始函数没有遵循标准格式，也就是把 error-first 回调函数作为最后一个参数的情况下非常有用。
+This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
 For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
@@ -674,9 +694,11 @@ doSomething[util.promisify.custom] = (foo) => {
   });
 };
 ```
-如果 `promisify.custom` 已定义但不是一个函数，`promisify()` 会抛出一个错误。
+
+If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
 
 ### util.promisify.custom
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -686,6 +708,7 @@ added: v8.0.0
 A {symbol} that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
 ## 类：util.TextDecoder
+
 <!-- YAML
 added: v8.3.0
 -->
@@ -704,9 +727,9 @@ string += decoder.decode(); // end-of-stream
 
 ### WHATWG 支持的编码
 
-根据 [WHATWG 编码规范](https://encoding.spec.whatwg.org/)，受 `TextDecoder` API 支持的编码如下表所示。 对于每种编码，可以使用一个或多个别名。
+Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-不同的 Node.js 构建配置支持不同的编码集。 即使对于没有启用 ICU 的 Node.js 构建，也支持最基本的编码集，对于某些编码，只有启用了 ICU 并使用所有 ICU 数据的 Node.js 才被支持 （请参阅 [国际化](intl.html)）。
+不同的 Node.js 构建配置支持不同的编码集。 While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
 #### 没有启用 ICU 时支持的编码
 
@@ -766,23 +789,23 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 
 ### new TextDecoder([encoding[, options]])
 
-* `encoding` {string} 标识这个 `TextDecoder` 实例支持的 `编码`。 **Default:** `'utf-8'`.
-* `options` {Object}
+* `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
+* `options` {Object} 
   * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} 当值为 `true` 时，`TextDecoder` 将在解码结果中包括字节顺序标记。 当值为 `false` 时，字节顺序标记将被从输出中删除。 此选项仅在 `encoding` 为 `'utf-8'`, `'utf-16be'` 或 `'utf-16le'` 时被使用。 **默认:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
 
-创建一个新的 `TextDecoder` 实例。 `encoding` 可以指定一个支持的编码或别名。
+创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
-* `options` {Object}
+* `options` {Object} 
   * `stream` {boolean} 如果期待额外的数据块，则为 `true`。 **默认:** `false`.
 * 返回：{string}
 
-对 `input` 进行解码并返回一个字符串。 如果 `options.stream` 的值为 `true`， `input` 末尾处的任何不完整字节序列会先在内部缓存，并在下一次调用 `textDecoder.decode()` 后被发送。
+对 `input` 进行解码并返回一个字符串。 If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
-如果 `textDecoder.fatal` 的值为 `true`，一旦发生解码错误会导致抛出 `TypeError`。
+If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
 ### textDecoder.encoding
 
@@ -794,20 +817,21 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 
 * {boolean}
 
-如果解码错误导致 `TypeError` 被抛出，则其值为 `true`。
+The value will be `true` if decoding errors result in a `TypeError` being thrown.
 
 ### textDecoder.ignoreBOM
 
 * {boolean}
 
-如果解码结果将会包括字节顺序标记，则该值为 `true`。
+The value will be `true` if the decoding result will include the byte order mark.
 
 ## 类：util.TextEncoder
+
 <!-- YAML
 added: v8.3.0
 -->
 
-[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 所有 `TextEncoder` 的实例只支持 UTF-8 编码。
+[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 All instances of `TextEncoder` only support UTF-8 encoding.
 
 ```js
 const encoder = new TextEncoder();
@@ -819,7 +843,7 @@ const uint8array = encoder.encode('this is some data');
 * `input` {string} 要进行编码的文字。 **Default:** an empty string.
 * 返回：{Uint8Array}
 
-使用 UTF-8 编码 `input` 字符串，并返回包含编码字节的 `Uint8Array`。
+UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
 ### textEncoder.encoding
 
@@ -828,6 +852,7 @@ const uint8array = encoder.encode('this is some data');
 `TextEncoder` 实例支持的编码。 始终设置为 `'utf-8'`。
 
 ## util.types
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -837,6 +862,7 @@ added: v10.0.0
 The result generally does not make any guarantees about what kinds of properties or behavior a value exposes in JavaScript. They are primarily useful for addon developers who prefer to do type checking in JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -854,6 +880,7 @@ util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isArgumentsObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -862,6 +889,7 @@ added: v10.0.0
 * 返回：{boolean}
 
 Returns `true` if the value is an `arguments` object.
+
 ```js
 function foo() {
   util.types.isArgumentsObject(arguments);  // Returns true
@@ -870,8 +898,11 @@ function foo() {
 
 ### util.types.isArrayBuffer(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* 返回：{boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -881,6 +912,7 @@ util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 ```
 
 ### util.types.isAsyncFunction(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -896,6 +928,7 @@ util.types.isAsyncFunction(async function foo() {});  // Returns true
 ```
 
 ### util.types.isBigInt64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -911,6 +944,7 @@ util.types.isBigInt64Array(new BigUint64Array());  // Returns false
 ```
 
 ### util.types.isBigUint64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -926,6 +960,7 @@ util.types.isBigUint64Array(new BigUint64Array());  // Returns true
 ```
 
 ### util.types.isBooleanObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -946,8 +981,11 @@ util.types.isBooleanObject(Boolean(true));  // Returns false
 
 ### util.types.isBoxedPrimitive(value)<!-- YAML
 added: v10.11.0
--->* `value` {any}
-* 返回：{boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -963,8 +1001,11 @@ util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 
 ### util.types.isDataView(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* 返回：{boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -977,6 +1018,7 @@ util.types.isDataView(new Float64Array());  // Returns false
 See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isDate(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -991,6 +1033,7 @@ util.types.isDate(new Date());  // Returns true
 ```
 
 ### util.types.isExternal(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1001,6 +1044,7 @@ added: v10.0.0
 Returns `true` if the value is a native `External` value.
 
 ### util.types.isFloat32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1017,6 +1061,7 @@ util.types.isFloat32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isFloat64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1033,6 +1078,7 @@ util.types.isFloat64Array(new Float64Array());  // Returns true
 ```
 
 ### util.types.isGeneratorFunction(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1048,6 +1094,7 @@ util.types.isGeneratorFunction(function* foo() {});  // Returns true
 ```
 
 ### util.types.isGeneratorObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1064,6 +1111,7 @@ util.types.isGeneratorObject(generator);  // Returns true
 ```
 
 ### util.types.isInt8Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1080,6 +1128,7 @@ util.types.isInt8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt16Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1096,6 +1145,7 @@ util.types.isInt16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1112,6 +1162,7 @@ util.types.isInt32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isMap(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1126,6 +1177,7 @@ util.types.isMap(new Map());  // Returns true
 ```
 
 ### util.types.isMapIterator(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1144,6 +1196,7 @@ util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isModuleNamespaceObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1152,6 +1205,7 @@ added: v10.0.0
 * 返回：{boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
+
 ```js
 import * as ns from './a.js';
 
@@ -1159,6 +1213,7 @@ util.types.isModuleNamespaceObject(ns);  // Returns true
 ```
 
 ### util.types.isNativeError(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1176,8 +1231,11 @@ util.types.isNativeError(new RangeError());  // Returns true
 
 ### util.types.isNumberObject(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* 返回：{boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1187,6 +1245,7 @@ util.types.isNumberObject(new Number(0));   // Returns true
 ```
 
 ### util.types.isPromise(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1201,6 +1260,7 @@ util.types.isPromise(Promise.resolve(42));  // Returns true
 ```
 
 ### util.types.isProxy(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1218,6 +1278,7 @@ util.types.isProxy(proxy);  // Returns true
 ```
 
 ### util.types.isRegExp(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1233,6 +1294,7 @@ util.types.isRegExp(new RegExp('abc'));  // Returns true
 ```
 
 ### util.types.isSet(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1247,6 +1309,7 @@ util.types.isSet(new Set());  // Returns true
 ```
 
 ### util.types.isSetIterator(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1265,6 +1328,7 @@ util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isSharedArrayBuffer(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1280,6 +1344,7 @@ util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isStringObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1295,6 +1360,7 @@ util.types.isStringObject(new String('foo'));   // Returns true
 ```
 
 ### util.types.isSymbolObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1311,6 +1377,7 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 ```
 
 ### util.types.isTypedArray(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1329,6 +1396,7 @@ util.types.isTypedArray(new Float64Array());  // Returns true
 See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isUint8Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1345,6 +1413,7 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint8ClampedArray(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1361,6 +1430,7 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint16Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1377,6 +1447,7 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1393,6 +1464,7 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isWeakMap(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1407,6 +1479,7 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 ```
 
 ### util.types.isWeakSet(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1421,6 +1494,7 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 ```
 
 ### util.types.isWebAssemblyCompiledModule(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1435,26 +1509,31 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## 已弃用的API
+## 已弃用的 API
 
-The following APIs are deprecated and should no longer be used. 现有的应用程序和模块都应被更新，以找到替代方法。
+The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
 ### util.\_extend(target, source)<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->* `target` {Object}
+-->
+
+* `target` {Object}
+
 * `source` {Object}
 
 > 稳定性：0 - 已弃用：改为使用 [`Object.assign()`]。
 
-`util._extend()` 方法从未打算在内部 Node.js 模块之外被使用。 尽管如此，但社区还是发现并使用了它。
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. 尽管如此，但社区还是发现并使用了它。
 
-它已被弃用，不应在新代码中使用。 JavaScript 中具有通过 [`Object.assign()`] 实现的，非常类似的内置功能。
+它已被弃用，不应在新代码中使用。 JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
 ### util.debug(string)<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
+-->> Stability: 0 - Deprecated: Use [
+
+`console.error()`][] instead.
 
 * `string` {string} 打印到 `stderr` 的消息
 
@@ -1463,7 +1542,9 @@ deprecated: v0.11.3
 ### util.error([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
+-->> Stability: 0 - Deprecated: Use [
+
+`console.error()`][] instead.
 
 * `...strings` {string} 打印到 `stderr` 的消息
 
@@ -1472,7 +1553,9 @@ deprecated: v0.11.3
 ### util.isArray(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`Array.isArray()`][] instead.
 
 * `object` {any}
 * 返回：{boolean}
@@ -1495,7 +1578,9 @@ util.isArray({});
 ### util.isBoolean(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'boolean'` instead.
 
 * `object` {any}
 * 返回：{boolean}
@@ -1516,7 +1601,9 @@ util.isBoolean(false);
 ### util.isBuffer(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用：改为使用[`Buffer.isBuffer()`][]。
+-->> Stability: 0 - Deprecated: Use [
+
+`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
 * 返回：{boolean}
@@ -1537,7 +1624,9 @@ util.isBuffer(Buffer.from('hello world'));
 ### util.isDate(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`util.types.isDate()`][] instead.
 
 * `object` {any}
 * 返回：{boolean}
@@ -1558,12 +1647,14 @@ util.isDate({});
 ### util.isError(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`util.types.isNativeError()`][] instead.
 
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 否则，返回 `false`。
+如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1576,7 +1667,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Returns: false
 ```
 
-注意这个方法依赖于 `Object.prototype.toString()` 的行为。 当 `object` 参数操作 `@@toStringTag` 时可能会获得不正确的结果。
+注意这个方法依赖于 `Object.prototype.toString()` 的行为。 It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -1592,12 +1683,14 @@ util.isError(obj);
 ### util.isFunction(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'function'` instead.
 
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是 `Function`，则返回 `true`。 否则，返回 `false`。
+如果给定的 `object` 是 `Function`，则返回 `true`。 Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1616,12 +1709,14 @@ util.isFunction(Bar);
 ### util.isNull(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `value === null` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`value === null` instead.
 
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 严格为 `null`，则返回 `true`。 否则，返回 `false`。
+如果给定的 `object` 严格为 `null`，则返回 `true`。 Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1635,6 +1730,7 @@ util.isNull(null);
 ```
 
 ### util.isNullOrUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1645,7 +1741,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 否则，返回 `false`。
+如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1659,6 +1755,7 @@ util.isNullOrUndefined(null);
 ```
 
 ### util.isNumber(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1685,6 +1782,7 @@ util.isNumber(NaN);
 ```
 
 ### util.isObject(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1711,6 +1809,7 @@ util.isObject(() => {});
 ```
 
 ### util.isPrimitive(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1721,7 +1820,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是基本类型，则返回 `true`。 否则，返回 `false`。
+如果给定的 `object` 是基本类型，则返回 `true`。 Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1749,7 +1848,7 @@ util.isPrimitive(new Date());
 ### util.isRegExp(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->> Stability: 0 - Deprecated
 
 * `object` {any}
 * 返回：{boolean}
@@ -1768,6 +1867,7 @@ util.isRegExp({});
 ```
 
 ### util.isString(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1796,7 +1896,9 @@ util.isString(5);
 ### util.isSymbol(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'symbol'` instead.
 
 * `object` {any}
 * 返回：{boolean}
@@ -1815,6 +1917,7 @@ util.isSymbol(Symbol('foo'));
 ```
 
 ### util.isUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1842,11 +1945,11 @@ util.isUndefined(null);
 ### util.log(string)<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> 稳定性：0 - 已弃用：改为使用第三方模块。
+-->> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
-`util.log()` 方法在 `标准输出` 打印包含时间戳的给定 `string`。
+The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
 
 ```js
 const util = require('util');
@@ -1857,13 +1960,17 @@ util.log('Timestamped message.');
 ### util.print([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
+-->> Stability: 0 - Deprecated: Use [
+
+`console.log()`][] instead.
 
 已弃用的 `console.log` 的前身。
 
 ### util.puts([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
+-->> Stability: 0 - Deprecated: Use [
+
+`console.log()`][] instead.
 
 已弃用的 `console.log` 的前身。
