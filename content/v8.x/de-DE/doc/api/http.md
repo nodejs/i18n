@@ -425,7 +425,7 @@ added: v1.6.0
 
 * `name` {string}
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
@@ -834,7 +834,7 @@ added: v0.4.0
 
 * `name` {string}
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
