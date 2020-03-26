@@ -1,8 +1,10 @@
 preserve_hierarchy: true
 files:
-  - source: /content/v6.x/en-US/**/*.md
-    translation: /content/v6.x/%locale%/**/%original_file_name%
   - source: /content/v8.x/en-US/**/*.md
     translation: /content/v8.x/%locale%/**/%original_file_name%
   - source: /content/v10.x/en-US/**/*.md
     translation: /content/v10.x/%locale%/**/%original_file_name%
+  - source: /content/v12.x/en-US/**/*.md
+    translation: /content/v12.x/%locale%/**/%original_file_name%
+  - source: /content/v13.x/en-US/**/*.md
+    translation: /content/v13.x/%locale%/**/%original_file_name%

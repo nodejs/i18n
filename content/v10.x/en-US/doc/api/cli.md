@@ -161,6 +161,16 @@ added: v9.0.0
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow
+interoperability with non-conformant HTTP implementations. It may also allow
+request smuggling and other HTTP attacks that rely on invalid headers being
+accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
 <!-- YAML
 added: v10.15.0
@@ -345,6 +355,23 @@ added: v2.4.0
 
 Track heap object allocations for heap snapshots.
 
+### `--unhandled-rejections=mode`
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning
+for the very first unhandled rejection in case no [`unhandledRejection`][] hook
+is used.
+
+Using this flag allows to change what should happen when an unhandled rejection
+occurs. One of three modes can be chosen:
+
+* `strict`: Raise the unhandled rejection as an uncaught exception.
+* `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][]
+  hook is set or not but do not print the deprecation warning.
+* `none`: Silence all warnings.
+
 ### `--use-bundled-ca`, `--use-openssl-ca`
 <!-- YAML
 added: v6.11.0
@@ -510,6 +537,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -533,6 +561,7 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
@@ -649,4 +678,26 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 - `dns.lookup()`
 - all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever
+reason any of these APIs takes a long time, other (seemingly unrelated) APIs
+that run in libuv's threadpool will experience degraded performance. In order to
+mitigate this issue, one potential solution is to increase the size of libuv's
+threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value
+greater than `4` (its current default value). For more information, see the
+[libuv threadpool documentation][].
+
+[`--openssl-config`]: #cli_openssl_config_file
+[`Buffer`]: buffer.html#buffer_class_buffer
+[`SlowBuffer`]: buffer.html#buffer_class_slowbuffer
+[`process.setUncaughtExceptionCaptureCallback()`]: process.html#process_process_setuncaughtexceptioncapturecallback_fn
+[`unhandledRejection`]: process.html#process_event_unhandledrejection
+[Chrome DevTools Protocol]: https://chromedevtools.github.io/devtools-protocol/
+[REPL]: repl.html
+[ScriptCoverage]: https://chromedevtools.github.io/devtools-protocol/tot/Profiler#type-ScriptCoverage
+[V8 JavaScript code coverage]: https://v8project.blogspot.com/2017/12/javascript-code-coverage.html
+[debugger]: debugger.html
+[debugging security implications]: https://nodejs.org/en/docs/guides/debugging-getting-started/#security-implications
+[emit_warning]: process.html#process_process_emitwarning_warning_type_code_ctor
+[experimental ECMAScript Module]: esm.html#esm_loader_hooks
+[libuv threadpool documentation]: http://docs.libuv.org/en/latest/threadpool.html
+[remote code execution]: https://www.owasp.org/index.php/Code_Injection

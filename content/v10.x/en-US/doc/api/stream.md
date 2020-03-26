@@ -31,7 +31,8 @@ There are four fundamental stream types within Node.js:
 * [`Duplex`][] - streams that are both `Readable` and `Writable` (for example, [`net.Socket`][]).
 * [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example, [`zlib.createDeflate()`][]).
 
-Additionally, this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
+Additionally, this module includes the utility functions [pipeline][],
+[finished][] and [Readable.from][].
 
 ### Object Mode
 
@@ -757,7 +758,11 @@ The optional `size` argument specifies a specific number of bytes to read. If `s
 
 If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
 
-The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
+The `size` argument must be less than or equal to 1 GB.
+
+The `readable.read()` method should only be called on `Readable` streams
+operating in paused mode. In flowing mode, `readable.read()` is called
+automatically until the internal buffer is fully drained.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -785,6 +790,16 @@ added: v0.8.0
 * {boolean}
 
 Is `true` if it is safe to call [`readable.read()`][].
+
+##### readable.readableFlowing
+<!-- YAML
+added: v9.4.0
+-->
+
+* {boolean}
+
+This property reflects the current state of a `Readable` stream as described
+in the [Stream Three States][] section.
 
 ##### readable.readableHighWaterMark
 <!-- YAML
@@ -965,9 +980,13 @@ myReader.on('readable', () => {
 ##### readable\[Symbol.asyncIterator\]()
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26989
+    description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stability: 1 - Experimental
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
@@ -1125,6 +1144,31 @@ async function run() {
 }
 
 run().catch(console.error);
+```
+
+### Readable.from(iterable, [options])
+
+* `iterable` {Iterable} Object implementing the `Symbol.asyncIterator` or
+  `Symbol.iterator` iterable protocol.
+* `options` {Object} Options provided to `new stream.Readable([options])`.
+  By default, `Readable.from()` will set `options.objectMode` to `true`, unless
+  this is explicitly opted out by setting `options.objectMode` to `false`.
+
+A utility method for creating Readable Streams out of iterators.
+
+```js
+const { Readable } = require('stream');
+
+async function * generate() {
+  yield 'hello';
+  yield 'streams';
+}
+
+const readable = Readable.from(generate());
+
+readable.on('data', (chunk) => {
+  console.log(chunk);
+});
 ```
 
 ## API for Stream Implementers
@@ -1778,8 +1822,94 @@ The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] 
 
 ## Additional Notes<!--type=misc-->### Compatibility with Older Node.js Versions<!--type=misc-->Prior to Node.js 0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
 
-* Rather than waiting for calls to the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
-* The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
+<!--type=misc-->
+
+### Streams Compatibility with Async Generators and Async Iterators
+
+With the support of async generators and iterators in JavaScript, async
+generators are effectively a first-class language-level stream construct at
+this point.
+
+Some common interop cases of using Node.js streams with async generators
+and async iterators are provided below.
+
+#### Consuming Readable Streams with Async Iterators
+
+```js
+(async function() {
+  for await (const chunk of readable) {
+    console.log(chunk);
+  }
+})();
+```
+
+#### Creating Readable Streams with Async Generators
+
+We can construct a Node.js Readable Stream from an asynchronous generator
+using the `Readable.from` utility method:
+
+```js
+const { Readable } = require('stream');
+
+async function * generate() {
+  yield 'a';
+  yield 'b';
+  yield 'c';
+}
+
+const readable = Readable.from(generate());
+
+readable.on('data', (chunk) => {
+  console.log(chunk);
+});
+```
+
+#### Piping to Writable Streams from Async Iterators
+
+In the scenario of writing to a writeable stream from an async iterator,
+it is important to ensure the correct handling of backpressure and errors.
+
+```js
+const { once } = require('events');
+
+const writeable = fs.createWriteStream('./file');
+
+(async function() {
+  for await (const chunk of iterator) {
+    // Handle backpressure on write
+    if (!writeable.write(value))
+      await once(writeable, 'drain');
+  }
+  writeable.end();
+  // Ensure completion without errors
+  await once(writeable, 'finish');
+})();
+```
+
+In the above, errors on the write stream would be caught and thrown by the two
+`once` listeners, since `once` will also handle `'error'` events.
+
+Alternatively the readable stream could be wrapped with `Readable.from` and
+then piped via `.pipe`:
+
+```js
+const { once } = require('events');
+
+const writeable = fs.createWriteStream('./file');
+
+(async function() {
+  const readable = Readable.from(iterator);
+  readable.pipe(writeable);
+  // Ensure completion without errors
+  await once(writeable, 'finish');
+})();
+```
+
+<!--type=misc-->
+
+### Compatibility with Older Node.js Versions
+
+<!--type=misc-->
 
 In Node.js 0.10, the [`Readable`][] class was added. For backward compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
@@ -1838,8 +1968,75 @@ Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in 
 
 ### `highWaterMark` discrepancy after calling `readable.setEncoding()`
 
-The use of `readable.setEncoding()` will change the behavior of how the `highWaterMark` operates in non-object mode.
+The use of `readable.setEncoding()` will change the behavior of how the
+`highWaterMark` operates in non-object mode.
 
-Typically, the size of the current buffer is measured against the `highWaterMark` in _bytes_. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in _characters_.
+Typically, the size of the current buffer is measured against the
+`highWaterMark` in _bytes_. However, after `setEncoding()` is called, the
+comparison function will begin to measure the buffer's size in _characters_.
 
-This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
+This is not a problem in common cases with `latin1` or `ascii`. But it is
+advised to be mindful about this behavior when working with strings that could
+contain multi-byte characters.
+
+[`'data'`]: #stream_event_data
+[`'drain'`]: #stream_event_drain
+[`'end'`]: #stream_event_end
+[`'finish'`]: #stream_event_finish
+[`'readable'`]: #stream_event_readable
+[`Duplex`]: #stream_class_stream_duplex
+[`EventEmitter`]: events.html#events_class_eventemitter
+[`Readable`]: #stream_class_stream_readable
+[`Symbol.hasInstance`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance
+[`Transform`]: #stream_class_stream_transform
+[`Writable`]: #stream_class_stream_writable
+[`fs.createReadStream()`]: fs.html#fs_fs_createreadstream_path_options
+[`fs.createWriteStream()`]: fs.html#fs_fs_createwritestream_path_options
+[`net.Socket`]: net.html#net_class_net_socket
+[`process.stderr`]: process.html#process_process_stderr
+[`process.stdin`]: process.html#process_process_stdin
+[`process.stdout`]: process.html#process_process_stdout
+[`readable.push('')`]: #stream_readable_push
+[`stream.cork()`]: #stream_writable_cork
+[`stream.pipe()`]: #stream_readable_pipe_destination_options
+[`stream.uncork()`]: #stream_writable_uncork
+[`stream.unpipe()`]: #stream_readable_unpipe_destination
+[`stream.wrap()`]: #stream_readable_wrap_stream
+[`writable.cork()`]: #stream_writable_cork
+[`writable.uncork()`]: #stream_writable_uncork
+[`zlib.createDeflate()`]: zlib.html#zlib_zlib_createdeflate_options
+[API for Stream Consumers]: #stream_api_for_stream_consumers
+[API for Stream Implementers]: #stream_api_for_stream_implementers
+[Compatibility]: #stream_compatibility_with_older_node_js_versions
+[HTTP requests, on the client]: http.html#http_class_http_clientrequest
+[HTTP responses, on the server]: http.html#http_class_http_serverresponse
+[Readable.from]: #readable.from
+[TCP sockets]: net.html#net_class_net_socket
+[child process stdin]: child_process.html#child_process_subprocess_stdin
+[child process stdout and stderr]: child_process.html#child_process_subprocess_stdout
+[crypto]: crypto.html
+[finished]: #stream_stream_finished_stream_callback
+[fs read streams]: fs.html#fs_class_fs_readstream
+[fs write streams]: fs.html#fs_class_fs_writestream
+[http-incoming-message]: http.html#http_class_http_incomingmessage
+[hwm-gotcha]: #stream_highwatermark_discrepancy_after_calling_readable_setencoding
+[object-mode]: #stream_object_mode
+[pipeline]: #stream_stream_pipeline_streams_callback
+[readable-_destroy]: #stream_readable_destroy_err_callback
+[readable-destroy]: #stream_readable_destroy_error
+[stream-_final]: #stream_writable_final_callback
+[stream-_flush]: #stream_transform_flush_callback
+[stream-_read]: #stream_readable_read_size_1
+[stream-_transform]: #stream_transform_transform_chunk_encoding_callback
+[stream-_write]: #stream_writable_write_chunk_encoding_callback_1
+[stream-_writev]: #stream_writable_writev_chunks_callback
+[stream-end]: #stream_writable_end_chunk_encoding_callback
+[stream-pause]: #stream_readable_pause
+[stream-push]: #stream_readable_push_chunk_encoding
+[stream-read]: #stream_readable_read_size
+[stream-resume]: #stream_readable_resume
+[stream-write]: #stream_writable_write_chunk_encoding_callback
+[Stream Three States]: #stream_three_states
+[writable-_destroy]: #stream_writable_destroy_err_callback
+[writable-destroy]: #stream_writable_destroy_error
+[zlib]: zlib.html
