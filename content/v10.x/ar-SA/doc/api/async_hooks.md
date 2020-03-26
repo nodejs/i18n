@@ -76,7 +76,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register
+* `معاودة الاتصال` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -167,9 +167,9 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 * `asyncId` {number} A unique ID for the async resource.
 * `type` {string} The type of the async resource.
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during _destroy_.
+* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Called when a class is constructed that has the _possibility_ to emit an asynchronous event. This _does not_ mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
 This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
 
@@ -361,6 +361,7 @@ init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
 <!-- YAML
 added: v8.1.0
 changes:
+
   - version: v8.2.0
     pr-url: https://github.com/nodejs/node/pull/13490
     description: Renamed from `currentId`
@@ -489,7 +490,7 @@ asyncResource.triggerAsyncId();
 #### new AsyncResource(type[, options])
 
 * `type` {string} The type of async event.
-* `options` {Object}
+* `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
@@ -516,6 +517,7 @@ class DBQuery extends AsyncResource {
 ```
 
 #### asyncResource.runInAsyncScope(fn[, thisArg, ...args])
+
 <!-- YAML
 added: v9.6.0
 -->
@@ -527,9 +529,11 @@ added: v9.6.0
 Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
 
 #### asyncResource.emitBefore()
+
 <!-- YAML
 deprecated: v9.6.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
@@ -537,9 +541,11 @@ Call all `before` callbacks to notify that a new asynchronous execution context 
 `before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitAfter()
+
 <!-- YAML
 deprecated: v9.6.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
