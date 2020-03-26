@@ -199,7 +199,7 @@ added: v0.5.8
 
 *Note*: Previously, the constants were available directly from `require('zlib')`, for instance `zlib.Z_NO_FLUSH`. Accessing the constants directly from the module is currently still possible but should be considered deprecated.
 
-Allowed flush values.
+允许的刷新值。
 
 * `zlib.constants.Z_NO_FLUSH`
 * `zlib.constants.Z_PARTIAL_FLUSH`
@@ -209,7 +209,7 @@ Allowed flush values.
 * `zlib.constants.Z_BLOCK`
 * `zlib.constants.Z_TREES`
 
-Return codes for the compression/decompression functions. Negative values are errors, positive values are used for special but normal events.
+压缩/解压缩函数的返回代码。 Negative values are errors, positive values are used for special but normal events.
 
 * `zlib.constants.Z_OK`
 * `zlib.constants.Z_STREAM_END`
@@ -221,14 +221,14 @@ Return codes for the compression/decompression functions. Negative values are er
 * `zlib.constants.Z_BUF_ERROR`
 * `zlib.constants.Z_VERSION_ERROR`
 
-Compression levels.
+压缩等级。
 
 * `zlib.constants.Z_NO_COMPRESSION`
 * `zlib.constants.Z_BEST_SPEED`
 * `zlib.constants.Z_BEST_COMPRESSION`
 * `zlib.constants.Z_DEFAULT_COMPRESSION`
 
-Compression strategy.
+压缩策略。
 
 * `zlib.constants.Z_FILTERED`
 * `zlib.constants.Z_HUFFMAN_ONLY`
@@ -250,7 +250,7 @@ changes:
 
 <!--type=misc-->Each class takes an 
 
-`options` object. All options are optional.
+`options` object. 所有选项均为可选的。
 
 Note that some options are only relevant when compressing, and are ignored by the decompression classes.
 
@@ -276,7 +276,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Compress data using deflate, and do not append a `zlib` header.
+使用 deflate 压缩数据，且不追加 `zlib` 头信息。
 
 ## Class: zlib.Gunzip<!-- YAML
 added: v0.5.8
@@ -329,7 +329,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Not exported by the `zlib` module. It is documented here because it is the base class of the compressor/decompressor classes.
+未经 `zlib` 模块导出。 It is documented here because it is the base class of the compressor/decompressor classes.
 
 ### zlib.bytesRead<!-- YAML
 added: v8.1.0
@@ -349,13 +349,13 @@ added: v0.5.8
 
 * `kind` **Default:** `zlib.constants.Z_FULL_FLUSH`
 
-Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+刷新待处理数据。 Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
 
 Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
 
 ### zlib.params(level, strategy, callback)<!-- YAML
 added: v0.11.4
--->Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+-->Dynamically update the compression level and compression strategy. 只适用于 deflate 算法。
 
 ### zlib.reset()<!-- YAML
 added: v0.7.0
@@ -377,7 +377,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Creates and returns a new [DeflateRaw](#zlib_class_zlib_deflateraw) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [DeflateRaw](#zlib_class_zlib_deflateraw) 对象。
 
 *Note*: An upgrade of zlib from 1.2.8 to 1.2.11 changed behavior when windowBits is set to 8 for raw deflate streams. zlib would automatically set windowBits to 9 if was initially set to 8. Newer versions of zlib will throw an exception, so Node.js restored the original behavior of upgrading a value of 8 to 9, since passing `windowBits = 9` to zlib actually results in a compressed stream that effectively uses an 8-bit window only.
 
@@ -387,7 +387,7 @@ Creates and returns a new [DeflateRaw](#zlib_class_zlib_deflateraw) object with 
 added: v0.5.8
 -->
 
-Creates and returns a new [Gunzip](#zlib_class_zlib_gunzip) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [Gunzip](#zlib_class_zlib_gunzip) 对象。
 
 ## zlib.createGzip([options](#zlib_class_options))
 
@@ -395,7 +395,7 @@ Creates and returns a new [Gunzip](#zlib_class_zlib_gunzip) object with the give
 added: v0.5.8
 -->
 
-Creates and returns a new [Gzip](#zlib_class_zlib_gzip) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [Gzip](#zlib_class_zlib_gzip) 对象。
 
 ## zlib.createInflate([options](#zlib_class_options))
 
@@ -403,7 +403,7 @@ Creates and returns a new [Gzip](#zlib_class_zlib_gzip) object with the given [o
 added: v0.5.8
 -->
 
-Creates and returns a new [Inflate](#zlib_class_zlib_inflate) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [Inflate](#zlib_class_zlib_inflate) 对象。
 
 ## zlib.createInflateRaw([options](#zlib_class_options))
 
@@ -411,7 +411,7 @@ Creates and returns a new [Inflate](#zlib_class_zlib_inflate) object with the gi
 added: v0.5.8
 -->
 
-Creates and returns a new [InflateRaw](#zlib_class_zlib_inflateraw) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [InflateRaw](#zlib_class_zlib_inflateraw) 对象。
 
 ## zlib.createUnzip([options](#zlib_class_options))
 
@@ -419,7 +419,7 @@ Creates and returns a new [InflateRaw](#zlib_class_zlib_inflateraw) object with 
 added: v0.5.8
 -->
 
-Creates and returns a new [Unzip](#zlib_class_zlib_unzip) object with the given [options](#zlib_class_options).
+根据给定的 [options](#zlib_class_options) 参数，创建并返回一个新的 [Unzip](#zlib_class_zlib_unzip) 对象。
 
 ## Convenience Methods<!--type=misc-->All of these take a [
 
@@ -452,7 +452,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Compress a chunk of data with [Deflate](#zlib_class_zlib_deflate).
+通过 [Deflate](#zlib_class_zlib_deflate) 压缩一块数据。
 
 ### zlib.deflateRaw(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -479,7 +479,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Compress a chunk of data with [DeflateRaw](#zlib_class_zlib_deflateraw).
+通过 [DeflateRaw](#zlib_class_zlib_deflateraw) 压缩一块数据。
 
 ### zlib.gunzip(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -506,7 +506,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Decompress a chunk of data with [Gunzip](#zlib_class_zlib_gunzip).
+通过 [Gunzip](#zlib_class_zlib_gunzip) 解压缩一块数据。
 
 ### zlib.gzip(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -533,7 +533,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Compress a chunk of data with [Gzip](#zlib_class_zlib_gzip).
+通过 [Gzip](#zlib_class_zlib_gzip) 压缩一块数据。
 
 ### zlib.inflate(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -560,7 +560,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Decompress a chunk of data with [Inflate](#zlib_class_zlib_inflate).
+通过 [Inflate](#zlib_class_zlib_inflate) 解压缩一块数据。
 
 ### zlib.inflateRaw(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -587,7 +587,7 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Decompress a chunk of data with [InflateRaw](#zlib_class_zlib_inflateraw).
+通过 [InflateRaw](#zlib_class_zlib_inflateraw) 解压缩一块数据。
 
 ### zlib.unzip(buffer[, options], callback)<!-- YAML
 added: v0.6.0
@@ -614,4 +614,4 @@ changes:
 
 * `buffer` {Buffer|TypedArray|DataView|string}
 
-Decompress a chunk of data with [Unzip](#zlib_class_zlib_unzip).
+通过 [Unzip](#zlib_class_zlib_unzip) 解压缩一块数据。
