@@ -744,7 +744,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Vakaus: 0 - Ei enää käytössä
 
 * `object` {any}
 
@@ -852,7 +852,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Vakaus: 0 - Ei enää käytössä
 
 * `object` {any}
 
