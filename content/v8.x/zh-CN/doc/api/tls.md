@@ -158,7 +158,7 @@ The `tls.Server` class is a subclass of `net.Server` that accepts encrypted conn
 added: v0.9.2
 -->
 
-在创建新的 TLS 会话时，`'newSession'` 事件会被发出。 This may be used to store sessions in external storage. The listener callback is passed three arguments when called:
+在创建新的 TLS 会话时，`'newSession'` 事件会被发出。 This may be used to store sessions in external storage. 当被调用时，监听器回调函数将被赋予三个参数：
 
 * `sessionId` - TLS 会话标识符
 * `sessionData` - TLS 会话数据
@@ -232,7 +232,7 @@ server.on('resumeSession', (id, cb) => {
 added: v0.3.2
 -->
 
-The `'secureConnection'` event is emitted after the handshaking process for a new connection has successfully completed. The listener callback is passed a single argument when called:
+The `'secureConnection'` event is emitted after the handshaking process for a new connection has successfully completed. 当被调用时，监听器回调函数将被赋予一个参数：
 
 * `tlsSocket` {tls.TLSSocket} 已建立的 TLS 套接字。
 
@@ -844,7 +844,7 @@ changes:
 
 * `options` {Object} 
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
-  * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **Default:** `false`.
+  * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **默认:** `false`.
   * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
   * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (协议应按其优先级进行排序。)
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
