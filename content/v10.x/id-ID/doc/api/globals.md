@@ -161,3 +161,15 @@ added: v10.0.0
 <!-- type=global -->
 
 The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+
+## WebAssembly
+
+<!-- YAML
+added: v8.0.0
+-->
+
+<!-- type=global -->
+
+* {Object}
+
+The object that acts as the namespace for all W3C [WebAssembly](https://webassembly.org) related functionality. See the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/WebAssembly) for usage and compatibility.
