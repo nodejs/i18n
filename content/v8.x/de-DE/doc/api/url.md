@@ -62,6 +62,7 @@ const myURL =
 ```
 
 ## The WHATWG URL API
+
 <!-- YAML
 added: v7.0.0
 -->
@@ -361,7 +362,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### url.toString()
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -369,7 +370,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -386,6 +387,7 @@ console.log(JSON.stringify(myURLs));
 ```
 
 ### Class: URLSearchParams
+
 <!-- YAML
 added: v7.5.0
 -->
@@ -455,6 +457,7 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(obj)
+
 <!-- YAML
 added: v7.10.0
 -->
@@ -478,6 +481,7 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(iterable)
+
 <!-- YAML
 added: v7.10.0
 -->
@@ -628,6 +632,7 @@ console.log(params.toString());
 ```
 
 #### urlSearchParams.sort()
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -646,19 +651,19 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Returns: {string}
+* Gibt zurück: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### urlSearchParams.values()
 
-* Returns: {Iterator}
+* Gibt zurück: {Iterator}
 
 Returns an ES6 Iterator over the values of each name-value pair.
 
 #### urlSearchParams\[@@iterator\]()
 
-* Returns: {Iterator}
+* Gibt zurück: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -676,12 +681,13 @@ for (const [name, value] of params) {
 ```
 
 ### url.domainToASCII(domain)
+
 <!-- YAML
 added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -698,12 +704,13 @@ console.log(url.domainToASCII('xn--iñvalid.com'));
 ```
 
 ### url.domainToUnicode(domain)
+
 <!-- YAML
 added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -720,12 +727,13 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 ```
 
 ### url.format(URL[, options])
+
 <!-- YAML
 added: v7.6.0
 -->
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
-* `options` {Object}
+* `options` {Object} 
   * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
@@ -836,9 +844,11 @@ No decoding of the query string is performed.
 The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
 
 ### url.format(urlObject)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7234
     description: URLs with a `file:` scheme will now always use the correct
@@ -873,37 +883,36 @@ The formatting process operates as follows:
 * If `urlObject.protocol` is a string, it is appended as-is to `result`.
 * Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
 * For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`:
-    * `urlObject.slashes` property is true;
-    * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
+* If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
 * If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* If the `urlObject.host` property is `undefined` then:
+* If the `urlObject.host` property is `undefined` then: 
   * If the `urlObject.hostname` is a string, it is appended to `result`.
   * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`:
+  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
     * The literal string `:` is appended to `result`, and
     * The value of `urlObject.port` is coerced to a string and appended to `result`.
 * Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
-* If the `urlObject.pathname` property is a string that is not an empty string:
+* If the `urlObject.pathname` property is a string that is not an empty string: 
   * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string '/' is appended to `result`.
   * The value of `urlObject.pathname` is appended to `result`.
 * Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
 * If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
-* Otherwise, if `urlObject.search` is a string:
+* Otherwise, if `urlObject.search` is a string: 
   * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
   * The value of `urlObject.search` is appended to `result`.
 * Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.hash` property is a string:
+* If the `urlObject.hash` property is a string: 
   * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
   * The value of `urlObject.hash` is appended to `result`.
 * Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
 * `result` is returned.
 
-
 ### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/13606
     description: The `search` property on the returned URL object is now `null`
@@ -921,9 +930,11 @@ A `TypeError` is thrown if `urlString` is not a string.
 A `URIError` is thrown if the `auth` property is present but cannot be decoded.
 
 ### url.resolve(from, to)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8215
     description: The `auth` fields are now kept intact when `from` and `to`
