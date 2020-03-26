@@ -31,6 +31,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
 Once this code is invoked, the Node.js application will not terminate until the `readline.Interface` is closed because the interface waits for data to be received on the `input` stream.
 
 ## Class: Interface
+
 <!-- YAML
 added: v0.1.104
 -->
@@ -38,6 +39,7 @@ added: v0.1.104
 Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
 ### Συμβάν: 'close'
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -54,6 +56,7 @@ The listener function is called without passing any arguments.
 The `readline.Interface` instance is finished once the `'close'` event is emitted.
 
 ### Event: 'line'
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -69,6 +72,7 @@ rl.on('line', (input) => {
 ```
 
 ### Event: 'pause'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -87,6 +91,7 @@ rl.on('pause', () => {
 ```
 
 ### Event: 'resume'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -102,6 +107,7 @@ rl.on('resume', () => {
 ```
 
 ### Event: 'SIGCONT'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -119,9 +125,10 @@ rl.on('SIGCONT', () => {
 });
 ```
 
-The `'SIGCONT'` event is _not_ supported on Windows.
+The `'SIGCONT'` event is *not* supported on Windows.
 
 ### Event: 'SIGINT'
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -139,6 +146,7 @@ rl.on('SIGINT', () => {
 ```
 
 ### Event: 'SIGTSTP'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -159,9 +167,10 @@ rl.on('SIGTSTP', () => {
 });
 ```
 
-The `'SIGTSTP'` event is _not_ supported on Windows.
+The `'SIGTSTP'` event is *not* supported on Windows.
 
 ### rl.close()
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -171,6 +180,7 @@ The `rl.close()` method closes the `readline.Interface` instance and relinquishe
 Calling `rl.close()` does not immediately stop other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
 ### rl.pause()
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -180,6 +190,7 @@ The `rl.pause()` method pauses the `input` stream, allowing it to be resumed lat
 Calling `rl.pause()` does not immediately pause other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
 ### rl.prompt([preserveCursor])
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -193,6 +204,7 @@ When called, `rl.prompt()` will resume the `input` stream if it has been paused.
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the prompt is not written.
 
 ### rl.question(query, callback)
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -217,6 +229,7 @@ rl.question('What is your favorite food? ', (answer) => {
 The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. The `callback` is called with the provided answer as the only argument.
 
 ### rl.resume()
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -224,6 +237,7 @@ added: v0.3.4
 The `rl.resume()` method resumes the `input` stream if it has been paused.
 
 ### rl.setPrompt(prompt)
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -233,12 +247,13 @@ added: v0.1.98
 The `rl.setPrompt()` method sets the prompt that will be written to `output` whenever `rl.prompt()` is called.
 
 ### rl.write(data[, key])
+
 <!-- YAML
 added: v0.1.98
 -->
 
 * `data` {string}
-* `key` {Object}
+* `key` {Object} 
   * `ctrl` {boolean} `true` to indicate the `<ctrl>` key.
   * `meta` {boolean} `true` to indicate the `<Meta>` key.
   * `shift` {boolean} `true` to indicate the `<Shift>` key.
@@ -261,13 +276,14 @@ rl.write(null, { ctrl: true, name: 'u' });
 The `rl.write()` method will write the data to the `readline` `Interface`'s `input` *as if it were provided by the user*.
 
 ### rl\[Symbol.asyncIterator\]()
+
 <!-- YAML
 added: v10.16.0
 -->
 
 > Σταθερότητα: 1 - Πειραματικό
 
-* Returns: {AsyncIterator}
+* Επιστρέφει: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
 
@@ -291,12 +307,13 @@ async function processLineByLine() {
 ```
 
 ## readline.clearLine(stream, dir)
+
 <!-- YAML
 added: v0.7.7
 -->
 
 * `stream` {stream.Writable}
-* `dir` {number}
+* `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
   * `0` - the entire line
@@ -304,6 +321,7 @@ added: v0.7.7
 The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
 
 ## readline.clearScreenDown(stream)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -313,9 +331,11 @@ added: v0.7.7
 The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
 
 ## readline.createInterface(options)
+
 <!-- YAML
 added: v0.1.98
 changes:
+
   - version: v8.3.0, 6.11.4
     pr-url: https://github.com/nodejs/node/pull/13497
     description: Remove max limit of `crlfDelay` option.
@@ -330,7 +350,7 @@ changes:
     description: The `historySize` option can be `0` now.
 -->
 
-* `options` {Object}
+* `options` {Object} 
   * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} An optional function used for Tab autocompletion.
@@ -388,6 +408,7 @@ function completer(linePartial, callback) {
 ```
 
 ## readline.cursorTo(stream, x, y)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -399,6 +420,7 @@ added: v0.7.7
 The `readline.cursorTo()` method moves cursor to the specified position in a given [TTY](tty.html) `stream`.
 
 ## readline.emitKeypressEvents(stream[, interface])
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -421,6 +443,7 @@ if (process.stdin.isTTY)
 ```
 
 ## readline.moveCursor(stream, dx, dy)
+
 <!-- YAML
 added: v0.7.7
 -->
