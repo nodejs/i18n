@@ -22,7 +22,7 @@ The `net` module supports IPC with named pipes on Windows, and UNIX domain socke
 
 On UNIX, the local domain is also known as the UNIX domain. The path is a filesystem path name. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. The typical values are 107 on Linux and 103 on macOS. The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
 
-On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in `\\?\pipe` or `\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving `..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
+On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in ``\\?\pipe\` or``\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving`..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
 
 ```js
 net.createServer().listen(
@@ -318,9 +318,9 @@ Creates a new socket object.
 
 * `options` {Object} Available options are: 
   * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
 * Returns: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
@@ -487,12 +487,12 @@ Initiate a connection on a given socket. Normally this method is not needed, the
 For TCP connections, available `options` are:
 
 * `port` {number} Required. Port the socket should connect to.
-* `host` {string} Host the socket should connect to. **Default:** `'localhost'`
+* `host` {string} Host the socket should connect to. **Default:** `'localhost'`.
 * `localAddress` {string} Local address the socket should connect from.
 * `localPort` {number} Local port the socket should connect from.
-* `family` {number}: Version of IP stack, can be either 4 or 6. **Default:** `4`
+* `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
 * `hints` {number} Optional [`dns.lookup()` hints][].
-* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][]
+* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 
 For [IPC](#net_ipc_support) connections, available `options` are:
 
@@ -643,11 +643,13 @@ Set the encoding for the socket as a [Readable Stream](stream.html#stream_class_
 added: v0.1.92
 -->
 
+* `enable` {boolean} **Default:** `false`
+* `initialDelay` {number} **Default:** `0`
 * Returns: {net.Socket} The socket itself.
 
-Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket. `enable` defaults to `false`.
+Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting. Defaults to `0`.
+Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting.
 
 ### socket.setNoDelay([noDelay])
 
@@ -655,9 +657,10 @@ Set `initialDelay` (in milliseconds) to set the delay between the last data pack
 added: v0.1.90
 -->
 
+* `noDelay` {boolean} **Default:** `true`
 * Returns: {net.Socket} The socket itself.
 
-Disables the Nagle algorithm. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called. `noDelay` defaults to `true`.
+Disables the Nagle algorithm. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called.
 
 ### socket.setTimeout(timeout[, callback])
 
@@ -699,7 +702,7 @@ Calling `unref` on a socket will allow the program to exit if this is the only a
 added: v0.1.90
 -->
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string--it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
@@ -814,7 +817,7 @@ added: v0.1.90
 -->
 
 * `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`
+* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
 * `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
@@ -831,8 +834,8 @@ added: v0.5.0
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
 * Returns: {net.Server}
 
