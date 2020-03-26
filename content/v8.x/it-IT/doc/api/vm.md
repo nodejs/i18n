@@ -6,13 +6,13 @@
 
 <!--name=vm-->
 
-Il modulo `vm` fornisce API per la compilazione e l'esecuzione del codice all'interno dei contesti di V8 Virtual Machine.
+The `vm` module provides APIs for compiling and running code within V8 Virtual Machine contexts.
 
-Il codice JavaScript può essere compilato ed eseguito immediatamente o compilato, salvato ed eseguito successivamente.
+JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
-Un caso d'uso comune è quello di eseguire il codice in un ambiente in modalità sandbox. Il codice in modalità sandbox utilizza un V8 Context differente, che significa che ha un global object diverso dal resto del codice.
+Un caso d'uso comune è quello di eseguire il codice in un ambiente in modalità sandbox. The sandboxed code uses a different V8 Context, meaning that it has a different global object than the rest of the code.
 
-È possibile fornire il contesto eseguendo il ["contextify"](#vm_what_does_it_mean_to_contextify_an_object) di un sandbox object. Il codice in modalità sandbox considera qualsiasi proprietà sul sandbox come una variabile globale. Qualsiasi modifica alle variabili globali causata dal codice in modalità sandbox si riflette nel sandbox object.
+One can provide the context by ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) a sandbox object. The sandboxed code treats any property on the sandbox like a global variable. Any changes on global variables caused by the sandboxed code are reflected in the sandbox object.
 
 ```js
 const vm = require('vm');
@@ -36,16 +36,19 @@ console.log(x); // 1; y non è definito.
 *Note*: The vm module is not a security mechanism. **Do not use it to run untrusted code**.
 
 ## Class: vm.Script
+
 <!-- YAML
 added: v0.3.1
 -->
 
-Le istanze della classe `vm.Script` contengono script precompilati che possono essere eseguiti in sandbox specifici (o "contesti").
+Instances of the `vm.Script` class contain precompiled scripts that can be executed in specific sandboxes (or "contexts").
 
 ### new vm.Script(code, options)
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v5.7.0
     pr-url: https://github.com/nodejs/node/pull/4777
     description: The `cachedData` and `produceCachedData` options are
@@ -53,39 +56,40 @@ changes:
 -->
 
 * `code` {string} Il codice JavaScript da compilare.
-* `options`
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
-  * `cachedData` {Buffer} Fornisce un `Buffer` opzionale con i dati della cache del codice di V8 per la sorgente fornita. Quando fornito, il valore `cachedDataRejected` verrà impostato su `true` o `false` a seconda dell'accettazione dei dati da parte di V8.
-  * `produceCachedData` {boolean} Quando è `true` e nessun `cachedData` è presente, V8 cercherà di produrre dati della cache del codice per `code`. In caso di successo, un `Buffer` con i dati della cache del codice di V8 verrà prodotto e memorizzato nella proprietà `cachedData` dell'istanza `vm.Script` restituita. Il valore `cachedDataProduced` sarà impostato su `true` o `false` a seconda del fatto che i dati della cache del codice vengano prodotti correttamente o meno.
+* `options` 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
+  * `cachedData` {Buffer} Provides an optional `Buffer` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully.
 
-La creazione di un nuovo `vm.Script` object compila `code` ma non lo esegue. Il `vm.Script` compilato può essere eseguito successivamente più volte. Il `code` non è associato a nessun global object; piuttosto, viene sottoposto al binding prima di ogni esecuzione, esclusivamente per quell'esecuzione.
+La creazione di un nuovo `vm.Script` object compila `code` ma non lo esegue. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
 
 ### script.runInContext(contextifiedSandbox[, options])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v6.3.0
     pr-url: https://github.com/nodejs/node/pull/6635
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `contextifiedSandbox` {Object} Un object [che ha subito il contextify](#vm_what_does_it_mean_to_contextify_an_object) come restituito dal metodo `vm.createContext()`.
-* `options` {Object}
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
-  * `breakOnSigint`: se `true`, l'esecuzione verrà terminata al ricevimento di `SIGINT` (Ctrl+C). Gli handler esistenti per l'evento che è stato collegato tramite `process.on('SIGINT')` verranno disabilitati durante l'esecuzione dello script, tuttavia dopo ciò continueranno a funzionare. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
+* `options` {Object} 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
+  * `breakOnSigint`: if `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. Se l'esecuzione è terminata, verrà generato un [`Error`][].
 
+Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. Running code does not have access to local scope.
 
-Esegue il codice compilato contenuto dal `vm.Script` object all'interno del `contextifiedSandbox` specificato e restituisce il risultato. L'esecuzione del codice non ha accesso allo scope locale.
-
-L'esempio seguente compila il codice che incrementa una variabile globale, imposta il valore di un'altra variabile globale, quindi esegue il codice più volte. I globali sono contenuti nel `sandbox` object.
+The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. I globali sono contenuti nel `sandbox` object.
 
 ```js
 const util = require('util');
@@ -111,21 +115,22 @@ console.log(util.inspect(sandbox));
 *Note*: Using the `timeout` or `breakOnSigint` options will result in new event loops and corresponding threads being started, which have a non-zero performance overhead.
 
 ### script.runInNewContext([sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 -->
 
-* `sandbox` {Object} Un object che [subirà il contextify](#vm_what_does_it_mean_to_contextify_an_object). Se `undefined`, verrà creato un nuovo object.
-* `options` {Object}
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `sandbox` {Object} Un object che [subirà il contextify](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
+* `options` {Object} 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
-Innanzitutto esegue il contextify su un determinato `sandbox`, esegue il codice compilato contenuto dal `vm.Script` object all'interno della sandbox creata e restituisce il risultato. L'esecuzione del codice non ha accesso allo scope locale.
+First contextifies the given `sandbox`, runs the compiled code contained by the `vm.Script` object within the created sandbox, and returns the result. L'esecuzione del codice non ha accesso allo scope locale.
 
-Il seguente esempio compila il codice che imposta una variabile globale, quindi esegue il codice più volte in contesti differenti. I globali vengono impostati e contenuti all'interno di ogni singolo `sandbox`.
+The following example compiles code that sets a global variable, then executes the code multiple times in different contexts. The globals are set on and contained within each individual `sandbox`.
 
 ```js
 const util = require('util');
@@ -144,20 +149,21 @@ console.log(util.inspect(sandboxes));
 ```
 
 ### script.runInThisContext([options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
-* `options` {Object}
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `options` {Object} 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
-Esegue il codice compilato contenuto dal `vm.Script` all'interno del contesto del `global` object corrente. L'esecuzione del codice non ha accesso allo scope locale, tuttavia *ha* accesso al `global` object corrente.
+Runs the compiled code contained by the `vm.Script` within the context of the current `global` object. Running code does not have access to local scope, but *does* have access to the current `global` object.
 
-Il seguente esempio compila il codice che incrementa una variabile `globale`, quindi esegue quel codice più volte:
+The following example compiles code that increments a `global` variable then executes that code multiple times:
 
 ```js
 const vm = require('vm');
@@ -176,13 +182,14 @@ console.log(globalVar);
 ```
 
 ## vm.createContext([sandbox])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `sandbox` {Object}
 
-Se viene specificato un `sandbox` object, il metodo `vm.createContext()` [preparerà quel sandbox](#vm_what_does_it_mean_to_contextify_an_object) in modo che possa essere utilizzato in chiamate a [`vm.runInContext()`][] o a [`script.runInContext()`][]. All'interno di questi script, il `sandbox` object sarà il global object, mantenendo tutte le sue proprietà esistenti, ma avendo inoltre gli object incorporati e le funzioni che qualsiasi [global object](https://es5.github.io/#x15.1) standard possiede. Al di fuori degli script eseguiti dal modulo vm, le variabili globali rimarranno invariate.
+If given a `sandbox` object, the `vm.createContext()` method will [prepare that sandbox](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `sandbox` object will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. Outside of scripts run by the vm module, global variables will remain unchanged.
 
 ```js
 const util = require('util');
@@ -200,33 +207,34 @@ console.log(util.inspect(sandbox)); // { globalVar: 2 }
 console.log(util.inspect(globalVar)); // 3
 ```
 
-Se `sandbox` viene omesso (o passato esplicitamente come `undefined`), verrà restituito un sandbox object che [ha subito il contextify](#vm_what_does_it_mean_to_contextify_an_object) nuovo e vuoto.
+If `sandbox` is omitted (or passed explicitly as `undefined`), a new, empty [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox object will be returned.
 
-Il metodo `vm.createContext()` è principalmente utile per creare un singolo sandbox che può essere utilizzato per eseguire script multipli. Per esempio, se si emula un browser web, il metodo può essere utilizzato per creare un singolo sandbox che rappresenti un global object di window e quindi eseguire contemporaneamente tutti i tag `<script>` all'interno del contesto di quel sandbox.
+The `vm.createContext()` method is primarily useful for creating a single sandbox that can be used to run multiple scripts. For instance, if emulating a web browser, the method can be used to create a single sandbox representing a window's global object, then run all `<script>` tags together within the context of that sandbox.
 
 ## vm.isContext(sandbox)
+
 <!-- YAML
 added: v0.11.7
 -->
 
 * `sandbox` {Object}
 
-Restituisce `true` se il [contextify](#vm_what_does_it_mean_to_contextify_an_object) del `sandbox` object specificato è stato eseguito utilizzando [`vm.createContext()`][].
+Returns `true` if the given `sandbox` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
 ## vm.runInContext(code, contextifiedSandbox[, options])
 
 * `code` {string} Il codice JavaScript da compilare ed eseguire.
-* `contextifiedSandbox` {Object} L'object che [ha subito il contextify](#vm_what_does_it_mean_to_contextify_an_object) che verrà utilizzato come `global` nel momento in cui il `code` viene compilato ed eseguito.
-* `options`
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `contextifiedSandbox` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
+* `options` 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
-Il metodo `vm.runInContext()` compila il `code`, lo esegue all'interno del contesto del `contextifiedSandbox`, quindi restituisce il risultato. L'esecuzione del codice non ha accesso allo scope locale. Il `contextifiedSandbox` object *deve* avere precedentemente [subito il contextify](#vm_what_does_it_mean_to_contextify_an_object) utilizzando il metodo [`vm.createContext()`][].
+The `vm.runInContext()` method compiles `code`, runs it within the context of the `contextifiedSandbox`, then returns the result. Running code does not have access to the local scope. The `contextifiedSandbox` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
 
-Il seguente esempio compila ed esegue script differenti utilizzando un singolo object che [ha subito il contextify](#vm_what_does_it_mean_to_contextify_an_object):
+The following example compiles and executes different scripts using a single [contextified](#vm_what_does_it_mean_to_contextify_an_object) object:
 
 ```js
 const util = require('util');
@@ -244,6 +252,7 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInDebugContext(code)
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -266,22 +275,23 @@ console.log(Debug.findScript(process.exit).name);  // 'internal/process.js'
 The `Debug` object can also be made available using the V8-specific `--expose_debug_as=` [command line option](cli.html).
 
 ## vm.runInNewContext(code\[, sandbox\]\[, options\])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} Il codice JavaScript da compilare ed eseguire.
-* `sandbox` {Object} Un object che [subirà il contextify](#vm_what_does_it_mean_to_contextify_an_object). Se `undefined`, verrà creato un nuovo object.
-* `options`
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `sandbox` {Object} Un object che [subirà il contextify](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
+* `options` 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
-Il `vm.runInNewContext()` prima di tutto esegue il contextify sul `sandbox` object specificato (o crea un nuovo `sandbox` se passato come `undefined`), compila il `code`, lo esegue all'interno del contesto del contesto creato, quindi restituisce il risultato. L'esecuzione del codice non ha accesso allo scope locale.
+The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
 
-Il seguente esempio compila ed esegue il codice che incrementa una variabile globale e ne imposta una nuova. Questi globali sono contenuti nel `sandbox`.
+The following example compiles and executes code that increments a global variable and sets a new one. Questi globali sono contenuti nel `sandbox`.
 
 ```js
 const util = require('util');
@@ -299,21 +309,23 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInThisContext(code[, options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} Il codice JavaScript da compilare ed eseguire.
-* `options`
-  * `filename` {string} Specifica il filename utilizzato nelle stack trace prodotte da questo script.
-  * `lineOffset` {number} Specifica l'offset del numero di riga che viene visualizzato nelle stack trace prodotte da questo script.
-  * `columnOffset` {number} Specifica l'offset del numero di colonna che viene visualizzato nelle stack trace prodotte da questo script.
-  * `displayErrors` {boolean} Quando `true`, se si verifica un errore [`Error`][] durante la compilazione del `code`, la riga di codice che causa l'errore viene collegata alla stack trace.
-  * `timeout` {number} Specifica il numero di millisecondi per eseguire `code` prima di terminare l'esecuzione. Se l'esecuzione è terminata, verrà generato un [`Error`][].
+* `options` 
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
-`vm.runInThisContext()` compila il `code`, lo esegue all'interno del contesto del `global` corrente e restituisce il risultato. L'esecuzione del codice non ha accesso allo scope locale, tuttavia ha accesso al `global` object corrente.
+`vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
-L'esempio seguente illustra sia l'utilizzo di `vm.runInThisContext()` che della funzione JavaScript [`eval()`][] per eseguire lo stesso codice:
+The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+
 ```js
 const vm = require('vm');
 let localVar = 'initial value';
@@ -330,39 +342,36 @@ console.log('localVar:', localVar);
 // evalResult: 'eval', localVar: 'eval'
 ```
 
-Poiché `vm.runInThisContext()` non ha accesso allo scope locale, `localVar` è invariato. Al contrario, [`eval()`][] *ha* accesso allo scope locale, quindi il valore `localVar` è variato. In questo modo `vm.runInThisContext()` è molto simile a un [indirect `eval()` call][], ad esempio `(0,eval)('code')`.
+Because `vm.runInThisContext()` does not have access to the local scope, `localVar` is unchanged. In contrast, [`eval()`][] *does* have access to the local scope, so the value `localVar` is changed. In this way `vm.runInThisContext()` is much like an [indirect `eval()` call][], e.g. `(0,eval)('code')`.
 
 ## Esempio: Esecuzione di un Server HTTP all'interno di una VM
 
-When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
+When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. Il codice passato a questo contesto della VM avrà un proprio scope isolato.
 
-Per eseguire un semplice web server utilizzando il modulo `http`, il codice passato al contesto deve chiamare `require('http')` autonomamente o avere un riferimento al modulo `http` passato a esso. Ad esempio:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Ad esempio:
 
-```js
-'use strict';
-const vm = require('vm');
+```js 'use strict'; const vm = require('vm');
 
-const code = `
-((require) => {
-  const http = require('http');
+const code = ` ((require) => { const http = require('http');
 
-  http.createServer((request, response) => {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('Hello World\\n');
-  }).listen(8124);
+    http.createServer((request, response) => {
+      response.writeHead(200, { 'Content-Type': 'text/plain' });
+      response.end('Hello World\\n');
+    }).listen(8124);
+    
+    console.log('Server running at http://127.0.0.1:8124/');
+    
 
-  console.log('Server running at http://127.0.0.1:8124/');
 })`;
 
-vm.runInThisContext(code)(require);
- ```
+vm.runInThisContext(code)(require); ```
 
-*Note*: The `require()` in the above case shares the state with the context it is passed from. Ciò può introdurre dei rischi quando viene eseguito un codice non attendibile, ad esempio alterando object nel contesto in modi indesiderati.
+*Note*: The `require()` in the above case shares the state with the context it is passed from. This may introduce risks when untrusted code is executed, e.g. altering objects in the context in unwanted ways.
 
 ## Cosa significa "eseguire il contextify" su un object?
 
 Tutto il JavaScript eseguito all'interno di Node.js funziona all'interno dello scope di un "contesto". Secondo la [Guida dell'Embedder di V8](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts):
 
-> In V8, un contesto è un ambiente di esecuzione che permette di eseguire applicazioni JavaScript separate e non correlate in una singola istanza di V8. È necessario specificare esplicitamente il contesto in cui si desidera che venga eseguito qualsiasi codice JavaScript.
+> In V8, a context is an execution environment that allows separate, unrelated, JavaScript applications to run in a single instance of V8. You must explicitly specify the context in which you want any JavaScript code to be run.
 
-Nel momento in cui viene chiamato il metodo `vm.createContext()`, il `sandbox` object che viene passato (o un object appena creato se `sandbox` è `undefined`) viene associato internamente con una nuova istanza di un V8 Context. Questo V8 Context fornisce il `code` eseguito utilizzando i metodi del modulo `vm` con un ambiente globale isolato all'interno del quale può operare. Il processo di creazione del V8 Context e della sua associazione con il `sandbox` object è ciò a cui questo documento si riferisce con l'espressione "eseguire il contextify" del `sandbox`.
+When the method `vm.createContext()` is called, the `sandbox` object that is passed in (or a newly created object if `sandbox` is `undefined`) is associated internally with a new instance of a V8 Context. This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. The process of creating the V8 Context and associating it with the `sandbox` object is what this document refers to as "contextifying" the `sandbox`.
