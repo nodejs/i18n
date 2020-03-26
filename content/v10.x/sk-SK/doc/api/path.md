@@ -14,7 +14,7 @@ const path = require('path');
 
 The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+So using `path.basename()` might yield different results on POSIX and Windows:
 
 On POSIX:
 
@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example, `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ## path.basename(path[, ext])
 
@@ -244,7 +244,7 @@ The `path.isAbsolute()` method determines if `path` is an absolute path.
 
 If the given `path` is a zero-length string, `false` will be returned.
 
-For example on POSIX:
+For example, on POSIX:
 
 ```js
 path.isAbsolute('/foo/bar'); // true
@@ -276,7 +276,7 @@ added: v0.1.16
 * `...paths` {string} A sequence of path segments
 * Returns: {string}
 
-The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
+The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
 Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
@@ -301,11 +301,12 @@ added: v0.1.23
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
+instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
-For example on POSIX:
+For example, on POSIX:
 
 ```js
 path.normalize('/foo/bar//baz/asdf/quux/..');
@@ -347,7 +348,7 @@ The returned object will have the following properties:
 * `name` {string}
 * `ext` {string}
 
-For example on POSIX:
+For example, on POSIX:
 
 ```js
 path.parse('/home/user/dir/file.txt');
@@ -423,7 +424,7 @@ The `path.relative()` method returns the relative path from `from` to `to` based
 
 If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
 
-For example on POSIX:
+For example, on POSIX:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
@@ -487,7 +488,7 @@ Provides the platform-specific path segment separator:
 * `` on Windows
 * `/` on POSIX
 
-For example on POSIX:
+For example, on POSIX:
 
 ```js
 'foo/bar/baz'.split(path.sep);
@@ -501,7 +502,9 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
+On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
+as path segment separators; however, the``path`methods only add backward
+slashes (`\`).
 
 ## path.toNamespacedPath(path)
 
@@ -512,9 +515,9 @@ added: v9.0.0
 * `path` {string}
 * Returns: {string}
 
-On Windows systems only, returns an equivalent [namespace-prefixed path](https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
+On Windows systems only, returns an equivalent [namespace-prefixed path](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
-This method is meaningful only on Windows system. On posix systems, the method is non-operational and always returns `path` without modifications.
+This method is meaningful only on Windows system. On POSIX systems, the method is non-operational and always returns `path` without modifications.
 
 ## path.win32
 
