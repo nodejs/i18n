@@ -11,6 +11,7 @@ const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -23,41 +24,44 @@ Una costante di stringa che definisce il marker di fine riga specifico del siste
 * `\r\n` su Windows
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
 
 * Restituisce: {string}
 
-Il metodo `os.arch()` restituisce una stringa che identifica l'architettura della CPU del sistema operativo per la quale è stato compilato il binario Node.js.
+The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` e `'x64'`.
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
 Equivalente a [`process.arch`][].
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
 
 * {Object}
 
-Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
+Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Restituisce: {Array}
 
-Il metodo `os.cpus()` restituisce un array degli object contenenti informazioni riguardo a ciascun core della CPU logica.
+The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
 Le proprietà incluse in ogni oggetto includono:
 
 * `model` {string}
 * `speed` {number} (in MHz)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
   * `nice` {number} Il numero di millisecondi che la CPU ha speso nella modalità nice.
   * `sys` {number} Il numero di millisecondi che la CPU ha speso nella modalità sys.
@@ -65,6 +69,7 @@ Le proprietà incluse in ogni oggetto includono:
   * `irq` {number} Il numero di millisecondi che la CPU ha speso nella modalità irq.
 
 Per esempio:
+
 ```js
 [
   {
@@ -162,9 +167,11 @@ Per esempio:
 
 ## os.endianness()<!-- YAML
 added: v0.9.4
--->* Restituisce: {string}
+-->
 
-Il metodo`os.endianness()` restituisce una stringa che identifica l'endianness (l'ordine dei byte) della CPU *per la quale il binario Node.js è stato compilato*.
+* Restituisce: {string}
+
+The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
 I valori possibili sono:
 
@@ -173,42 +180,51 @@ I valori possibili sono:
 
 ## os.freemem()<!-- YAML
 added: v0.3.3
--->* Restituisce: {integer}
+-->
 
-Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come un numero intero.
+* Restituisce: {integer}
+
+The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
 ## os.homedir()<!-- YAML
 added: v2.3.0
--->* Restituisce: {string}
+-->
 
-Il metodo `os.homedir()` restituisce la directory home dell'utente corrente come una stringa.
+* Restituisce: {string}
+
+The `os.homedir()` method returns the home directory of the current user as a string.
 
 ## os.hostname()<!-- YAML
 added: v0.3.3
--->* Restituisce: {string}
+-->
 
-Il metodo `os.hostname()` restituisce l'hostname del sistema operativo come una stringa.
+* Restituisce: {string}
+
+The `os.hostname()` method returns the hostname of the operating system as a string.
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Restituisce: {Array}
 
-Il metodo `os.loadavg()` restituisce un array contenente le medie di caricamento di 1, 5 e 15 minuti.
+The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
-La media di caricamento è una misura dell'attività del sistema, calcolata dal sistema operativo ed espressa come un numero frazionario. Come regola generale, la media di caricamento dovrebbe idealmente essere inferiore al numero di CPU logiche nel sistema.
+The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
 
-La media del caricamento è un concetto specifico UNIX con nessun equivalente reale sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
+The load average is a UNIX-specific concept with no real equivalent on Windows platforms. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
 
 ## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->* Restituisce: {Object}
+-->
 
-Il metodo `os.networkInterfaces()` restituisce un object contenente solo le interfacce di rete a cui è stato assegnato un indirizzo di rete.
+* Restituisce: {Object}
 
-Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. Il valore associato è un array degli object che descrivono, ognuno, un indirizzo di rete assegnato.
+The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+
+Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. The associated value is an array of objects that each describe an assigned network address.
 
 Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono:
 
@@ -216,9 +232,10 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 * `netmask` {string} La maschera di rete IPv4 o IPv6
 * `family` {string} O `IPv4` oppure `IPv6`
 * `mac` {string} L'indirizzo MAC dell'interfaccia di rete
-* `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
-* `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
-* `cidr` {string} L'indirizzo IPv4 o IPv6 assegnato con il prefisso di routing nella notazione CIDR. Se la `netmask` non è valida, questa proprietà è impostata su `null`
+* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
+
 ```js
 {
   lo: [
@@ -262,9 +279,11 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 
 ## os.platform()<!-- YAML
 added: v0.5.0
--->* Restituisce: {string}
+-->
 
-Il metodo `os.platform()` restituisce una stringa che identifica la piattaforma del sistema operativo impostata durante il tempo di compilazione di Node.js.
+* Restituisce: {string}
+
+The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
 I valori attualmente possibili sono:
 
@@ -278,45 +297,54 @@ I valori attualmente possibili sono:
 
 Equivalente a [`process.platform`][].
 
-*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
 ## os.release()<!-- YAML
 added: v0.3.3
--->* Restituisce: {string}
+-->
 
-Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
+* Restituisce: {string}
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni.
+The `os.release()` method returns a string identifying the operating system release.
+
+*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Restituisce: {string}
+-->
 
-Il metodo `os.tmpdir()` restituisce una stringa che specifica la directory predefinita del sistema operativo per i file temporanei.
+* Restituisce: {string}
+
+The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
 ## os.totalmem()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Restituisce: {integer}
 
-Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come un numero intero.
+The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
 ## os.type()<!-- YAML
 added: v0.3.3
--->* Restituisce: {string}
+-->
 
-Il metodo `os.type()` restituisce una stringa che identifica il nome del sistema operativo restituito da [uname(3)](https://linux.die.net/man/3/uname). Per esempio su linux `'Linux'`, su macOS `'Darwin'` e su Windows `'Windows_NT'`.
+* Restituisce: {string}
 
-Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni sull'output dell'esecuzione di [uname(3)](https://linux.die.net/man/3/uname) su vari sistemi operativi.
+The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
+
+Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
 
 ## os.uptime()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -329,13 +357,16 @@ Il metodo `os.uptime()` restituisce il tempo di attività del sistema in un nume
 
 ## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->* `options` {Object}
-  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
+-->
+
+* `options` {Object}
+  
+  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
 * Restituisce: {Object}
 
-Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include `username`, `uid`, `gid`, `shell` e `homedir`. Su Windows, i campi `uid` e `gid` sono `-1` e `shell` è `null`.
+The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. Su Windows, i campi `uid` e `gid` sono `-1` e `shell` è `null`.
 
-Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema operativo. Questo differisce dal risultato di `os.homedir()`, il quale esegue il query di diverse variabili d'ambiente per la home directory prima di ritornare alla risposta del sistema operativo.
+The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
 ## Constanti del SO
 
@@ -343,12 +374,15 @@ Le seguenti costante vengono esportate da `os.constants`.
 
 *Note*: Not all constants will be available on every operating system.
 
-### Costanti di Segnale<!-- YAML
+### Signal Constants<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
+-->The following signal constants are exported by 
+
+`os.constants.signals`:
 
 <table>
   <tr>
@@ -503,7 +537,7 @@ changes:
 
 ### Costanti di Errore
 
-Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
+The following error constants are exported by `os.constants.errno`:
 
 #### Costanti di errore POSIX
 
@@ -833,7 +867,7 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
 #### Costanti di Errore Specifico di Windows
 
-I seguenti codici di errore sono specifici per il sistema operativo Windows:
+The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
@@ -1086,4 +1120,3 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
     <td></td>
   </tr>
 </table>
-
