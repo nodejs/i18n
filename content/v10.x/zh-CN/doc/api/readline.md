@@ -278,10 +278,15 @@ The `rl.write()` method will write the data to the `readline` `Interface`'s `inp
 ### rl\[Symbol.asyncIterator\]()
 
 <!-- YAML
-added: v10.16.0
+added: v11.4.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26989
+    description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 2 - Stable
 
 * 返回：{AsyncIterator}
 
