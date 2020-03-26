@@ -39,6 +39,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ## Class: StringDecoder
 
 ### new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -48,6 +49,7 @@ added: v0.1.99
 Creates a new `StringDecoder` instance.
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -60,9 +62,11 @@ Returns any remaining input stored in the internal buffer as a string. Bytes rep
 If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement
