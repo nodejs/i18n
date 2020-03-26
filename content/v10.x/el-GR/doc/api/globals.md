@@ -1,19 +1,21 @@
 # Καθολικά Αντικείμενα
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. Οι παρακάτω μεταβλητές μπορεί να φαίνονται ως καθολικές, αλλά δεν είναι. Υπάρχουν μόνο σε πεδία εφαρμογής των ενοτήτων, δείτε την [τεκμηρίωση ενοτήτων συστήματος](modules.html):
+Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
-- [`__dirname`][]
-- [`__filename`][]
-- [`exports`][]
-- [`module`][]
-- [`require()`][]
+* [`__dirname`][]
+* [`__filename`][]
+* [`exports`][]
+* [`module`][]
+* [`require()`][]
 
-Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. Υπάρχει ένας αριθμός από [ενσωματωμένα αντικείμενα](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) που είναι μέρος της γλώσσας της JavaScript, τα οποία είναι επίσης καθολικά προσβάσιμα.
+Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
+
 <!-- YAML
 added: v0.1.103
 -->
@@ -33,6 +35,7 @@ added: v0.1.103
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__filename`].
 
 ## clearImmediate(immediateObject)
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -42,6 +45,7 @@ added: v0.9.1
 Το [`clearImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearInterval(intervalObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -51,6 +55,7 @@ added: v0.0.1
 Το [`clearInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearTimeout(timeoutObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -60,6 +65,7 @@ added: v0.0.1
 Το [`clearTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## console
+
 <!-- YAML
 added: v0.1.100
 -->
@@ -75,6 +81,7 @@ added: v0.1.100
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`exports`].
 
 ## global
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -83,13 +90,14 @@ added: v0.1.27
 
 * {Object} Το καθολικό αντικείμενο ονομάτων.
 
-Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. Αυτό σημαίνει ότι σε ένα πρόγραμμα περιήγησης, ο κώδικας `var something` θα ορίσει μια νέα καθολική μεταβλητή. Στη Node.js αυτό είναι διαφορετικό. Το ανώτατο πεδίο εφαρμογής δεν είναι το καθολικό πεδίο εφαρμογής· ο κώδικας `var something` μέσα σε μια ενότητα Node.js, ορίζει τη μεταβλητή μόνο σε αυτή την ενότητα.
+Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`module`].
 
 ## process
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -105,6 +113,7 @@ added: v0.1.7
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`require()`].
 
 ## setImmediate(callback[, ...args])
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -114,6 +123,7 @@ added: v0.9.1
 Το [`setImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setInterval(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -123,6 +133,7 @@ added: v0.0.1
 Το [`setInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -132,24 +143,27 @@ added: v0.0.1
 Το [`setTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## URL
+
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-The WHATWG `URL` class. See the [`URL`][] section.
+Η κλάση WHATWG `URL`. Δείτε την ενότητα [`URL`][].
 
 ## URLSearchParams
+
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+Η κλάση WHATWG `URLSearchParams`. Δείτε την ενότητα [`URLSearchParams`][].
 
 ## WebAssembly
+
 <!-- YAML
 added: v8.0.0
 -->
