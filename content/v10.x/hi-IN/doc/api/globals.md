@@ -64,7 +64,7 @@ added: v0.0.1
 
 [`clearTimeout`] is described in the [timers](timers.html) section.
 
-## console
+## कंसोल
 
 <!-- YAML
 added: v0.1.100
@@ -142,7 +142,7 @@ added: v0.0.1
 
 [`setTimeout`] is described in the [timers](timers.html) section.
 
-## URL
+## यूआरएल
 
 <!-- YAML
 added: v10.0.0
@@ -161,3 +161,15 @@ added: v10.0.0
 <!-- type=global -->
 
 The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+
+## WebAssembly
+
+<!-- YAML
+added: v8.0.0
+-->
+
+<!-- type=global -->
+
+* {Object}
+
+The object that acts as the namespace for all W3C [WebAssembly](https://webassembly.org) related functionality. See the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/WebAssembly) for usage and compatibility.
