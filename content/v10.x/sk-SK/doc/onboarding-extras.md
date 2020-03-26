@@ -69,17 +69,3 @@ Once a release line enters maintenance mode, the corresponding labels do not nee
 * Architecture labels 
   * `arm`, `mips`, `s390`, `ppc`
   * No x86{_64}, since that is the implied default
-
-## Updating Node.js from Upstream
-
-* `git remote add upstream git://github.com/nodejs/node.git`
-
-to update from nodejs/node:
-
-* `git checkout master`
-* `git remote update -p` OR `git fetch --all`
-* `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
-
-## Best practices
-
-* When making PRs, spend time writing a thorough description.
