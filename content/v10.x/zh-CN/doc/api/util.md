@@ -154,6 +154,9 @@ The `--throw-deprecation` command line flag and `process.throwDeprecation` prope
 added: v0.5.3
 changes:
 
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/22097
+    description: The `%d` and `%i` specifiers now support BigInt.
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
@@ -685,7 +688,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
+例如：使用 `(foo, onSuccessCallback, onErrorCallback)` 作为参数的函数：
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
