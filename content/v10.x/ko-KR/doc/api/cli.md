@@ -1,9 +1,10 @@
 # 커맨드 라인 옵션
 
 <!--introduced_in=v5.9.1-->
+
 <!--type=misc-->
 
-Node.js에는 다양한 CLI 옵션이 있습니다. 옵션에는 빌트인 디버깅, 스크립트를 실행하는 여러가지 방법, 유용한 런타임 옵션을 나타냅니다.
+Node.js에는 다양한 CLI 옵션이 있습니다. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 터미널에서 이 설명서 매뉴얼 페이지를 보려면, `man node`를 실행하세요.
 
@@ -17,11 +18,13 @@ Node.js에는 다양한 CLI 옵션이 있습니다. 옵션에는 빌트인 디�
 
 인수 없이 실행하면 [REPL](repl.html)을 시작 합니다.
 
-_For more info about `node inspect`, please see the [debugger](debugger.html) documentation._
+*For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
 ## 옵션
+
 <!-- YAML
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/23020
     description: Underscores instead of dashes are now allowed for
@@ -33,6 +36,7 @@ All options, including V8 options, allow words to be separated by both dashes (`
 For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 
 ### `-`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -40,33 +44,38 @@ added: v8.0.0
 Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
 ### `--`
+
 <!-- YAML
 added: v6.11.0
 -->
 
-노드 옵션의 끝을 나타냅니다. 인수의 나머지 부분을 스크립트에 넘깁니다. 스크립트 파일이름이 없거나 스크립트 eval/프린트가 이전에 있는 경우에 다음 인수는 스크립트 파일 이름으로 사용 됩니다.
+노드 옵션의 끝을 나타냅니다. 인수의 나머지 부분을 스크립트에 넘깁니다. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
+
 <!-- YAML
 added: v0.10
 -->
 
-종료 하는 대신 디버거(`lldb`, `gdb`, `mdb` 등)를 사용한 사후 분석을 위한 핵심 파일을 생성하고 중단합니다.
+Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
 If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
 
 ### `--completion-bash`
+
 <!-- YAML
 added: v10.12.0
 -->
 
 Print source-able bash completion script for Node.js.
+
 ```console
 $ node --completion-bash > node_bash_completion
 $ source node_bash_completion
 ```
 
 ### `--enable-fips`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -74,27 +83,31 @@ added: v6.0.0
 시작할 때 FIPS 호환 암호화를 사용 합니다. (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
+
 <!-- YAML
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+실험적인 ES 모듈 지원 및 모듈 캐싱을 활성화 합니다.
 
 ### `--experimental-repl-await`
+
 <!-- YAML
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+REPL에서 실험적인 최상위 `await` 키워드를 지원합니다.
 
 ### `--experimental-vm-modules`
+
 <!-- YAML
 added: v9.6.0
 -->
 
-Enable experimental ES Module support in the `vm` module.
+`vm` 모듈에서 실험적인 ES 모듈 지원을 활성화 합니다.
 
 ### `--experimental-worker`
+
 <!-- YAML
 added: v10.5.0
 -->
@@ -102,6 +115,7 @@ added: v10.5.0
 Enable experimental worker threads using the `worker_threads` module.
 
 ### `--force-fips`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -109,38 +123,42 @@ added: v6.0.0
 시작할 때 FIPS 호환 암호화를 강제합니다. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
 
 ### `--icu-data-dir=file`
+
 <!-- YAML
 added: v0.11.15
 -->
 
-ICU 데이터 로드 경로 지정 합니다. (Overrides `NODE_ICU_DATA`.)
+ICU 데이터 로드 경로 지정 합니다. (`NODE_ICU_DATA`를 재정의합니다.)
 
 ### `--inspect-brk[=[host:]port]`
+
 <!-- YAML
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
+`host:port`에 인스팩터를 활성화하고, 유저 스크립트의 시작에서 중단(break)합니다. `host:port`의 기본값은 `127.0.0.1:9229`입니다.
 
 ### `--inspect-port=[host:]port`
+
 <!-- YAML
 added: v7.6.0
 -->
 
-Set the `host:port` to be used when the inspector is activated. `SIGUSR1`신호를 보내 인스팩터를 활성화할 때 유용합니다.
+인스팩터 활성화에 사용되는 `host:port`를 설정합니다. `SIGUSR1`신호를 보내 인스팩터를 활성화할 때 유용합니다.
 
-Default host is `127.0.0.1`.
+호스트의 기본값은 `127.0.0.1`입니다.
 
 See the [security warning](#inspector_security) below regarding the `host` parameter usage.
 
 ### `--inspect[=[host:]port]`
+
 <!-- YAML
 added: v6.3.0
 -->
 
-Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
+`host:port`에 인스팩터를 활성화합니다. 기본값은 `127.0.0.1:9229`입니다.
 
-V8 인스펙터 통합을 통해 Chrome DevTools 및 IDE와 같은 도구가 Node.js 인스턴스를 디버그하고 프로파일링 할 수 있습니다. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 <a id="inspector_security"></a>
 
@@ -155,6 +173,7 @@ If you specify a host, make sure that at least one of the following is true: eit
 See the [debugging security implications](https://nodejs.org/en/docs/guides/debugging-getting-started/#security-implications) section for more information.
 
 ### `--loader=file`
+
 <!-- YAML
 added: v9.0.0
 -->
@@ -162,6 +181,7 @@ added: v9.0.0
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
 ### `--max-http-header-size=size`
+
 <!-- YAML
 added: v10.15.0
 -->
@@ -169,13 +189,15 @@ added: v10.15.0
 Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 
 ### `--napi-modules`
+
 <!-- YAML
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+이 옵션은 동작하지 않습니다. 호환성을 위해 남겨두었습니다.
 
 ### `--no-deprecation`
+
 <!-- YAML
 added: v0.8.0
 -->
@@ -183,13 +205,15 @@ added: v0.8.0
 폐지 예정 경고를 무시합니다.
 
 ### `--no-force-async-hooks-checks`
+
 <!-- YAML
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+`async_hooks`의 런타임 확인을 비활성화 합니다. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -197,13 +221,15 @@ added: v6.0.0
 (폐지 예정을 포함한) 모든 프로세스 경고를 무시합니다.
 
 ### `--openssl-config=file`
+
 <!-- YAML
 added: v6.9.0
 -->
 
-시작할 때 OpenSSL 설정 파일을 불러옵니다. Node.js가 `./configure --openssl-fips`로 빌드되었다면, FIPS 호환 암호화를 활성화하는 데 사용할 수 있습니다.
+시작할 때 OpenSSL 설정 파일을 불러옵니다. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -213,6 +239,7 @@ added: v8.0.0
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `--preserve-symlinks`
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -239,9 +266,10 @@ The `--preserve-symlinks` command line flag instructs Node.js to use the symlink
 
 Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
 
-The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work.  To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
+The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work. To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
 
 ### `--preserve-symlinks-main`
+
 <!-- YAML
 added: v10.2.0
 -->
@@ -255,6 +283,7 @@ Note that `--preserve-symlinks-main` does not imply `--preserve-symlinks`; it is
 See `--preserve-symlinks` for more information.
 
 ### `--prof`
+
 <!-- YAML
 added: v2.0.0
 -->
@@ -262,6 +291,7 @@ added: v2.0.0
 Generate V8 profiler output.
 
 ### `--prof-process`
+
 <!-- YAML
 added: v5.2.0
 -->
@@ -269,6 +299,7 @@ added: v5.2.0
 Process V8 profiler output generated using the V8 option `--prof`.
 
 ### `--redirect-warnings=file`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -276,6 +307,7 @@ added: v8.0.0
 Write process warnings to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
 
 ### `--throw-deprecation`
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -283,6 +315,7 @@ added: v0.11.14
 Throw errors for deprecations.
 
 ### `--title=title`
+
 <!-- YAML
 added: v10.7.0
 -->
@@ -290,6 +323,7 @@ added: v10.7.0
 Set `process.title` on startup.
 
 ### `--tls-cipher-list=list`
+
 <!-- YAML
 added: v4.0.0
 -->
@@ -297,6 +331,7 @@ added: v4.0.0
 Specify an alternative default TLS cipher list. Requires Node.js to be built with crypto support (default).
 
 ### `--trace-deprecation`
+
 <!-- YAML
 added: v0.8.0
 -->
@@ -304,6 +339,7 @@ added: v0.8.0
 Print stack traces for deprecations.
 
 ### `--trace-event-categories`
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -311,6 +347,7 @@ added: v7.7.0
 A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
 ### `--trace-event-file-pattern`
+
 <!-- YAML
 added: v9.8.0
 -->
@@ -318,6 +355,7 @@ added: v9.8.0
 Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
 
 ### `--trace-events-enabled`
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -325,6 +363,7 @@ added: v7.7.0
 Enables the collection of trace event tracing information.
 
 ### `--trace-sync-io`
+
 <!-- YAML
 added: v2.1.0
 -->
@@ -332,6 +371,7 @@ added: v2.1.0
 Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
 
 ### `--trace-warnings`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -339,6 +379,7 @@ added: v6.0.0
 (폐지 예정을 포함한) 모든 프로세스 경고의 스택 트레이스를 출력합니다.
 
 ### `--track-heap-objects`
+
 <!-- YAML
 added: v2.4.0
 -->
@@ -346,6 +387,7 @@ added: v2.4.0
 Track heap object allocations for heap snapshots.
 
 ### `--use-bundled-ca`, `--use-openssl-ca`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -359,6 +401,7 @@ Using OpenSSL store allows for external modifications of the store. For most Lin
 See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 
 ### `--v8-options`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -366,6 +409,7 @@ added: v0.1.3
 Print V8 command line options.
 
 ### `--v8-pool-size=num`
+
 <!-- YAML
 added: v5.10.0
 -->
@@ -377,6 +421,7 @@ If set to `0` then V8 will choose an appropriate size of the thread pool based o
 If the value provided is larger than V8's maximum, then the largest value will be chosen.
 
 ### `--zero-fill-buffers`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -384,8 +429,10 @@ added: v6.0.0
 Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
 
 ### `-c`, `--check`
+
 <!-- YAML
 added:
+
   - v5.0.0
   - v4.2.0
 changes:
@@ -397,19 +444,22 @@ changes:
 스크립트를 실행하지 않고 구문 검사 합니다.
 
 ### `-e`, `--eval "script"`
+
 <!-- YAML
 added: v0.5.2
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
 -->
 
-뒤의 인수를 JavaScript로 평가합니다. `script`에서 REPL에 미리 정의 된 모듈도 사용할 수 있습니다.
+뒤의 인수를 JavaScript로 평가합니다. The modules which are predefined in the REPL can also be used in `script`.
 
 On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
 ### `-h`, `--help`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -417,6 +467,7 @@ added: v0.1.3
 Node 커맨드 라인 옵션을 출력합니다. 이 옵션의 출력은 이 문서를 보다 덜 자세합니다.
 
 ### `-i`, `--interactive`
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -424,9 +475,11 @@ added: v0.7.7
 Stdin이 터미널로 보이지 않는 경우에도 REPL을 엽니다.
 
 ### `-p`, `--print "script"`
+
 <!-- YAML
 added: v0.6.4
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
@@ -435,15 +488,17 @@ changes:
 `-e`와 동일하지만 결과를 출력합니다.
 
 ### `-r`, `--require module`
+
 <!-- YAML
 added: v1.6.0
 -->
 
 시작할 때 지정된 모듈을 미리 로드 합니다.
 
-`require()`의 모듈 해석 규칙을 따릅니다. `module`은 파일 경로이거나 node 모듈 이름일 수 있습니다.
+Follows `require()`'s module resolution rules. `module`은 파일 경로이거나 node 모듈 이름일 수 있습니다.
 
 ### `-v`, `--version`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -453,6 +508,7 @@ Node 버전을 출력합니다.
 ## 환경 변수
 
 ### `NODE_DEBUG=module[,…]`
+
 <!-- YAML
 added: v0.1.32
 -->
@@ -464,6 +520,7 @@ added: v0.1.32
 `','`-separated list of core C++ modules that should print debug information.
 
 ### `NODE_DISABLE_COLORS=1`
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -471,6 +528,7 @@ added: v0.3.0
 When set to `1` colors will not be used in the REPL.
 
 ### `NODE_EXTRA_CA_CERTS=file`
+
 <!-- YAML
 added: v7.3.0
 -->
@@ -482,6 +540,7 @@ Note that neither the well known nor extra certificates are used when the `ca` o
 This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
 ### `NODE_ICU_DATA=file`
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -489,6 +548,7 @@ added: v0.11.15
 Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
 
 ### `NODE_NO_WARNINGS=1`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -496,6 +556,7 @@ added: v6.11.0
 When set to `1`, process warnings are silenced.
 
 ### `NODE_OPTIONS=options...`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -503,6 +564,7 @@ added: v8.0.0
 A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
 Node.js options that are allowed are:
+
 - `--enable-fips`
 - `--experimental-modules`
 - `--experimental-repl-await`
@@ -539,6 +601,7 @@ Node.js options that are allowed are:
 - `--zero-fill-buffers`
 
 다음 V8 옵션이 허용됩니다.
+
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
 - `--perf-basic-prof`
@@ -546,15 +609,17 @@ Node.js options that are allowed are:
 - `--stack-trace-limit`
 
 ### `NODE_PATH=path[:…]`
+
 <!-- YAML
 added: v0.1.32
 -->
 
 모듈 탐색 경로의 앞에 붙일 `':'`로 구분된 디렉토리 리스트.
 
-On Windows, this is a `';'`-separated list instead.
+윈도우에서는 `';'`로 구분된 리스트가 됩니다.
 
 ### `NODE_PENDING_DEPRECATION=1`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -564,6 +629,7 @@ added: v8.0.0
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
+
 <!-- YAML
 added: v7.1.0
 -->
@@ -571,6 +637,7 @@ added: v7.1.0
 When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
 ### `NODE_REDIRECT_WARNINGS=file`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -578,6 +645,7 @@ added: v8.0.0
 When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
 
 ### `NODE_REPL_HISTORY=file`
+
 <!-- YAML
 added: v3.0.0
 -->
@@ -609,6 +677,7 @@ When set, Node.js will begin outputting [V8 JavaScript code coverage](https://v8
 At this time coverage is only collected in the main thread and will not be output for code executed by worker threads.
 
 ### `OPENSSL_CONF=file`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -619,6 +688,7 @@ added: v6.11.0
 If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
 
 ### `SSL_CERT_DIR=dir`
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -628,6 +698,7 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory co
 Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `SSL_CERT_FILE=file`
+
 <!-- YAML
 added: v7.7.0
 -->
