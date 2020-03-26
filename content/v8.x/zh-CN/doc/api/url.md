@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定的
 
-`url` 模块提供了用于处理与解析 URL 的工具。 It can be accessed using:
+`url` 模块提供了用于处理与解析 URL 的工具。 可以通过如下方式访问：
 
 ```js
 const url = require('url');
@@ -87,7 +87,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-如果 `input` 或 `base` 不是有效的 URL，则会抛出 `TypeError`。 Note that an effort will be made to coerce the given values into strings. For instance:
+如果 `input` 或 `base` 不是有效的 URL，则会抛出 `TypeError`。 Note that an effort will be made to coerce the given values into strings. 例如：
 
 ```js
 const { URL } = require('url');
