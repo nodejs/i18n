@@ -2,31 +2,34 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 <!--name=querystring-->
 
-`querystring` 模块提供了解析和格式化 URL 查询字符串的实用工具。 可以通过如下方式访问：
+The `querystring` module provides utilities for parsing and formatting URL query strings. 它可以通过如下方式来访问：
 
 ```js
 const querystring = require('querystring');
 ```
 
 ## querystring.escape(str)
+
 <!-- YAML
 added: v0.1.25
 -->
 
 * `str` {string}
 
-`querystring.escape()` 方法以对 URL 查询字符串的特定要求进行优化的方式对给定的 `str` 进行 URL 百分比编码。
+The `querystring.escape()` method performs URL percent-encoding on the given `str` in a manner that is optimized for the specific requirements of URL query strings.
 
-`querystring.escape()` 方法由 `querystring.stringify()` 使用，且通常不应被直接使用。 导出它主要是为了允许应用程序代码在必要时，通过将 `querystring.escape` 指定给替代函数来提供替代的百分比编码实现。
+The `querystring.escape()` method is used by `querystring.stringify()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement percent-encoding implementation if necessary by assigning `querystring.escape` to an alternative function.
 
 ## querystring.parse(str[, sep[, eq[, options]]])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10967
     description: Multiple empty entries are now parsed correctly (e.g. `&=&=`).
@@ -39,15 +42,16 @@ changes:
 -->
 
 * `str` {string} 需要解析的 URL 查询字符串
-* `sep` {string} 用于分隔查询字符串中键值对的子字符串。 **Default:** `'&'`.
-* `eq` {string}。 用于分隔查询字符串中键和值的子字符串。 **Default:** `'='`.
-* `options` {Object}
-  * `decodeURIComponent` {Function} 解码查询字符串中的百分比编码字符时使用的函数。 **Default:** `querystring.unescape()`.
+* `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
+* `eq` {string}。 The substring used to delimit keys and values in the query string. **Default:** `'='`.
+* `options` {Object} 
+  * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. **Default:** `querystring.unescape()`.
   * `maxKeys` {number} 指定要解析的键的最大数量。 指定 `0` 以移除键计数限制。 **Default:** `1000`.
 
-`querystring.parse()` 方法将一个 URL 查询字符串 (`str`) 解析为一个键值对集合。
+The `querystring.parse()` method parses a URL query string (`str`) into a collection of key and value pairs.
 
 例如：查询字符串 `'foo=bar&abc=xyz&abc=123'` 被解析为：
+
 ```js
 {
   foo: 'bar',
@@ -55,9 +59,9 @@ changes:
 }
 ```
 
-*Note*: The object returned by the `querystring.parse()` method _does not_ prototypically inherit from the JavaScript `Object`. 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
+*Note*: The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-默认情况下，查询字符串中的百分比编码字符被假定为使用 UTF-8 编码。 如果使用了替代的字符编码，则需要指定替代的 `decodeURIComponent` 选项，正如如下例子所示：
+By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified as illustrated in the following example:
 
 ```js
 // Assuming gbkDecodeURIComponent function already exists...
@@ -68,17 +72,19 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
 
 ## querystring.stringify(obj[, sep[, eq[, options]]])<!-- YAML
 added: v0.1.25
--->* `obj` {Object} 要序列化为 URL 查询字符串的对象
-* `sep` {string} 用于分隔查询字符串中键值对的子字符串。 **Default:** `'&'`.
-* `eq` {string}。 用于分隔查询字符串中键和值的子字符串。 **Default:** `'='`.
-* `options`
-  * `encodeURIComponent` {Function} 将查询字符串中 URL 不安全字符转换为百分比编码时使用的函数。 **Default:** `querystring.escape()`.
+-->
 
-`querystring.stringify()` 方法通过从给定的 `obj` 遍历对象的 "自身属性" 生成 URL 查询字符串。
+* `obj` {Object} The object to serialize into a URL query string
 
-It serializes the following types of values passed in `obj`:
-{string|number|boolean|string[]|number[]|boolean[]}
-Any other input values will be coerced to empty strings.
+* `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
+
+* `eq` {string}。 The substring used to delimit keys and values in the query string. **Default:** `'='`.
+* `options` 
+  * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
+
+The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
+
+它将 `obj` 中传递的如下类型的值进行序列化：{string|number|boolean|string[]|number[]|boolean[]} 任何其他的输入值都将被强制转换为空字符串。
 
 例如：
 
@@ -90,7 +96,7 @@ querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
 // returns 'foo:bar;baz:qux'
 ```
 
-默认情况下，在查询字符串中需要百分比编码的字符将被编码为 UTF-8。 如果需要替代的字符编码，则需要指定替代的 `encodeURIComponent` 选项，正如如下例子所示：
+By default, characters requiring percent-encoding within the query string will be encoded as UTF-8. If an alternative encoding is required, then an alternative `encodeURIComponent` option will need to be specified as illustrated in the following example:
 
 ```js
 // Assuming gbkEncodeURIComponent function already exists,
@@ -100,15 +106,15 @@ querystring.stringify({ w: '中文', foo: 'bar' }, null, null,
 ```
 
 ## querystring.unescape(str)
+
 <!-- YAML
 added: v0.1.25
 -->
 
 * `str` {string}
 
+The `querystring.unescape()` method performs decoding of URL percent-encoded characters on the given `str`.
 
-`querystring.unescape()` 方法在给定的 `str` 上进行 URL 百分比编码字符的解码。
+The `querystring.unescape()` method is used by `querystring.parse()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement decoding implementation if necessary by assigning `querystring.unescape` to an alternative function.
 
-`querystring.unescape()` 方法由 `querystring.parse()` 使用，且通常不应被直接使用。 导出它主要是为了允许应用程序代码在必要时，通过将 `querystring.unescape` 指定给替代函数来提供替代的百分比解码实现。
-
-默认情况下， `querystring.unescape()` 方法将尝试使用 JavaScript 内置的 `decodeURIComponent()` 方法进行解码。 如果失败，将使用更安全的，不会丢失格式错误的 URL 的等价方法。
+By default, the `querystring.unescape()` method will attempt to use the JavaScript built-in `decodeURIComponent()` method to decode. If that fails, a safer equivalent that does not throw on malformed URLs will be used.
