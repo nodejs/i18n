@@ -1,23 +1,24 @@
 # Σχετικά με την Τεκμηρίωση
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Ο σκοπός αυτής της τεκμηρίωσης είναι να εξηγήσει αναλυτικά το Node.js API, τόσο από την πλευρά της αναφοράς όσο και σαν ιδέα. Κάθε τμήμα περιγράφει μια ενσωματωμένη ενότητα ή μια ιδέα υψηλού επιπέδου.
+The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
 
-Κατά περίπτωση, οι τύποι ιδιοτήτων, οι παράμετροι μεθόδων καθώς και οι παράμετροι που παρέχονται στους χειριστές συμβάντων, αναλύονται λεπτομερώς σε μια λίστα κάτω από την κεφαλίδα του θέματος.
+Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
 ## Συνεισφορά
 
-Αν βρείτε σφάλματα σε αυτήν την τεκμηρίωση, παρακαλούμε [καταχωρήστε ένα ζήτημα](https://github.com/nodejs/node/issues/new) ή δείτε [τον οδηγό συνεισφοράς](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) για να μάθετε πως να υποβάλετε ένα patch.
+If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Κάθε αρχείο δημιουργείται βασισμένο στο αντίστοιχο αρχείο `.md` που βρίσκεται στον φάκελο `doc/api/` μέσα στον πηγαίο κώδικα της Node.js. Αυτή η τεκμηρίωση δημιουργείται με τη χρήση του εργαλείου `tools/doc/generate.js`. Ένα πρότυπο HTML βρίσκεται στο `doc/template.html`.
+Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
 ## Δείκτης Σταθερότητας
 
 <!--type=misc-->
 
-Καθόλη τη διάρκεια της τεκμηρίωσης υπάρχουν ενδείξεις της σταθερότητας μιας ενότητας. Το API της Node.js αλλάζει σχετικά, και καθώς ωριμάζει, κάποια μέρη του είναι πιο αξιόπιστα απ'ότι άλλα. Κάποια είναι τόσο σταθερά, και τόσο χρησιμοποιούμενα, που είναι πρακτικά εντελώς απίθανο να αλλάξουν. Κάποια άλλα μέρη είναι ολοκαίνουρια και πειραματικά, ή είναι γνωστό ότι είναι επικίνδυνα και βρίσκονται σε φάση επανασχεδιασμού.
+Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 
 Οι δείκτες σταθερότητας είναι οι παρακάτω:
 
@@ -25,25 +26,26 @@
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Σταθερότητα: 1 - Πειραματικό. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Η χρήση αυτών των χαρακτηριστικών δεν συνιστώνται για χρήση σε περιβάλλοντα παραγωγής. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Σταθερότητα: 2 - Σταθερό. Compatibility with the npm ecosystem is a high priority.
 
-Τα `Πειραματικά` χαρακτηριστικά θα πρέπει να χρησιμοποιούνται με απόλυτη προσοχή, ειδικά σε ενότητες που μπορεί να χρησιμοποιούνται ως εξαρτήσεις (ή εξαρτήσεις εξαρτήσεων) μέσα σε μια εφαρμογή Node.js. Οι τελικοί χρήστες μπορεί να μην γνωρίζουν ότι χρησιμοποιούνται πειραματικά χαρακτηριστικά, και μπορεί να συναντήσουν απρόσμενα σφάλματα ή αλλαγές συμπεριφοράς όταν γίνουν αλλαγές στο API. Για την αποφυγή τέτοιων εκπλήξεων, τα `Πειραματικά` χαρακτηριστικά μπορεί να χρειάζονται μια επιλογή γραμμή εντολών για την ρητή ενεργοποίησή τους, αλλιώς μπορεί να προκαλέσουν μετάδοση προειδοποιήσεων. Από προεπιλογή, αυτές οι προειδοποιήσεις τυπώνονται στο [`stderr`][] και μπορεί να γίνει χειρισμός αυτών, με την σύνδεση ενός ακροατή στο συμβάν [`'warning'`][].
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Έξοδος JSON
+
 <!-- YAML
 added: v0.6.12
 -->
 
 > Σταθερότητα: 1 - Πειραματικό
 
-Κάθε έγγραφο `.html` έχει ένα αντίστοιχο έγγραφο `.json` που παρουσιάζει τις ίδιες πληροφορίες, σε μια πιο δομημένη μορφή. Αυτό το χαρακτηριστικό είναι πειραματικό, και έχει προστεθεί προς όφελος των IDE και άλλων βοηθητικών προγραμμάτων που επιθυμούν να κάνουν κάποια πράγματα με την τεκμηρίωση, σε πιο προγραμματιστικό στυλ.
+Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
 ## Κλήσεις συστήματος και σελίδες man
 
-Ο κλήσεις συστήματος, όπως η open(2) και η read(2), ορίζουν την διεπαφή μεταξύ των προγραμμάτων του χρήστη και του υποκείμενου λειτουργικού συστήματος. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. Η τεκμηρίωση περιέχει συνδέσμους στις αντίστοιχες σελίδες man (συντομογραφία του manual - εγχειρίδιο) οι οποίες περιγράφουν τον τρόπο λειτουργίας των αντίστοιχων κλήσεων συστήματος.
+System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
-Οι περισσότερες κλήσεις συστήματος Unix έχουν αντίστοιχες στα Windows, αλλά οι συμπεριφορές τους μπορεί να διαφέρουν στα Windows, σε σχέση με το Linux και το macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
+Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
