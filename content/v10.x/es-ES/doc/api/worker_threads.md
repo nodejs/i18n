@@ -234,7 +234,7 @@ if (isMainThread) {
 ### new Worker(filename[, options])
 
 * `filename` {string} The path to the Worker’s main script. Must be either an absolute path or a relative path (i.e. relative to the current working directory) starting with `./` or `../`. If `options.eval` is `true`, this is a string containing JavaScript code rather than a path.
-* `opciones` {Object}
+* `options` {Object}
   * `eval` {boolean} If `true`, interpret the first argument to the constructor as a script that is executed once the worker is online.
   * `workerData` {any} Any JavaScript value that will be cloned and made available as [`require('worker_threads').workerData`][]. The cloning will occur as described in the [HTML structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), and an error will be thrown if the object cannot be cloned (e.g. because it contains `function`s).
   * stdin {boolean} If this is set to `true`, then `worker.stdin` will provide a writable stream whose contents will appear as `process.stdin` inside the Worker. By default, no data is provided.
