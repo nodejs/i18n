@@ -48,8 +48,10 @@ myConsole.warn(`Danger ${name}! Danger!`);
 ```
 
 ## Class: Console
+
 <!-- YAML
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9744
     description: Errors that occur while writing to the underlying streams
@@ -69,9 +71,12 @@ const { Console } = console;
 ```
 
 ### new Console(stdout\[, stderr\]\[, ignoreErrors\])
+
 ### new Console(options)
+
 <!-- YAML
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9744
     description: The `ignoreErrors` option was introduced.
@@ -81,7 +86,7 @@ changes:
                  and the `colorMode` option was introduced.
 -->
 
-* `options` {Object}
+* `opties` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
   * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
@@ -107,14 +112,17 @@ new Console({ stdout: process.stdout, stderr: process.stderr });
 ```
 
 ### console.assert(value[, ...message])
+
 <!-- YAML
 added: v0.1.101
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17706
     description: The implementation is now spec compliant and does not throw
                  anymore.
 -->
+
 * `value` {any} The value tested for being truthy.
 * `...message` {any} All arguments besides `value` are used as error message.
 
@@ -130,6 +138,7 @@ console.assert(false, 'Whoops %s work', 'didn\'t');
 Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
 
 ### console.clear()
+
 <!-- YAML
 added: v8.3.0
 -->
@@ -139,6 +148,7 @@ When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY.
 The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
 ### console.count([label])
+
 <!-- YAML
 added: v8.3.0
 -->
@@ -146,6 +156,7 @@ added: v8.3.0
 * `label` {string} The display label for the counter. **Default:** `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+
 ```js
 > console.count()
 default: 1
@@ -170,9 +181,12 @@ undefined
 
 ### console.countReset([label])<!-- YAML
 added: v8.3.0
--->* `label` {string} The display label for the counter. **Default:** `'default'`.
+-->
+
+* `label` {string} The display label for the counter. **Default:** `'default'`.
 
 Resets the internal counter specific to `label`.
+
 ```js
 > console.count('abc');
 abc: 1
@@ -188,18 +202,25 @@ undefined
 ### console.debug(data[, ...args])<!-- YAML
 added: v8.0.0
 changes:
+
   - version: v9.3.0
     pr-url: https://github.com/nodejs/node/pull/17033
     description: "`console.debug` is now an alias for `console.log`."
--->* `data` {any}
+-->
+
+* `data` {any}
 * `...args` {any}
 
 The `console.debug()` function is an alias for [`console.log()`][].
 
 ### console.dir(obj[, options])<!-- YAML
 added: v0.1.101
--->* `obj` {any}
+-->
+
+* `obj` {any}
+
 * `options` {Object}
+  
   * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Standaard:** `false`.
   * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Standaard:** `false`.
@@ -209,16 +230,22 @@ Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. 
 ### console.dirxml(...data)<!-- YAML
 added: v8.0.0
 changes:
+
   - version: v9.3.0
     pr-url: https://github.com/nodejs/node/pull/17152
     description: "`console.dirxml` now calls `console.log` for its arguments."
--->* `...data` {any}
+-->
+
+* `...data` {any}
 
 This method calls `console.log()` passing it the arguments received. Please note that this method does not produce any XML formatting.
 
 ### console.error(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
--->* `data` {any}
+-->
+
+* `data` {any}
+
 * `...args` {any}
 
 Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
@@ -235,7 +262,9 @@ If formatting elements (e.g. `%d`) are not found in the first string then [`util
 
 ### console.group([...label])<!-- YAML
 added: v8.5.0
--->* `...label` {any}
+-->
+
+* `...label` {any}
 
 Increases indentation of subsequent lines by two spaces.
 
@@ -243,9 +272,12 @@ If one or more `label`s are provided, those are printed first without the additi
 
 ### console.groupCollapsed()<!-- YAML
   added: v8.5.0
--->An alias for [`console.group()`][].
+-->An alias for [
+
+`console.group()`][].
 
 ### console.groupEnd()
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -254,14 +286,20 @@ Decreases indentation of subsequent lines by two spaces.
 
 ### console.info(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
--->* `data` {any}
+-->
+
+* `data` {any}
+
 * `...args` {any}
 
 The `console.info()` function is an alias for [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
--->* `data` {any}
+-->
+
+* `data` {any}
+
 * `...args` {any}
 
 Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
@@ -278,7 +316,10 @@ See [`util.format()`][] for more information.
 
 ### console.table(tabularData[, properties])<!-- YAML
 added: v10.0.0
--->* `tabularData` {any}
+-->
+
+* `tabularData` {any}
+
 * `properties` {string[]} Alternate properties for constructing the table.
 
 Try to construct a table with the columns of the properties of `tabularData` (or use `properties`) and rows of `tabularData` and log it. Falls back to just logging the argument if it can’t be parsed as tabular.
@@ -310,18 +351,23 @@ console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 
 ### console.time([label])<!-- YAML
 added: v0.1.104
--->* `label` {string} **Default:** `'default'`
+-->
+
+* `label` {string} **Default:** `'default'`
 
 Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### console.timeEnd([label])<!-- YAML
 added: v0.1.104
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5901
     description: This method no longer supports multiple calls that don’t map
                  to individual `console.time()` calls; see below for details.
--->* `label` {string} **Default:** `'default'`
+-->
+
+* `label` {string} **Default:** `'default'`
 
 Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
 
@@ -334,7 +380,10 @@ console.timeEnd('100-elements');
 
 ### console.timeLog(\[label\]\[, ...data\])<!-- YAML
 added: v10.7.0
--->* `label` {string} **Default:** `'default'`
+-->
+
+* `label` {string} **Default:** `'default'`
+
 * `...data` {any}
 
 For a timer that was previously started by calling [`console.time()`][], prints the elapsed time and other `data` arguments to `stdout`:
@@ -350,7 +399,10 @@ console.timeEnd('process');
 
 ### console.trace(\[message\]\[, ...args\])<!-- YAML
 added: v0.1.104
--->* `message` {any}
+-->
+
+* `message` {any}
+
 * `...args` {any}
 
 Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
@@ -373,25 +425,34 @@ console.trace('Show me');
 
 ### console.warn(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
--->* `data` {any}
+-->
+
+* `data` {any}
+
 * `...args` {any}
 
 The `console.warn()` function is an alias for [`console.error()`][].
 
 ## Inspector only methods
+
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
 
 ### console.markTimeline([label])<!-- YAML
 added: v8.0.0
--->* `label` {string} **Default:** `'default'`
+-->
+
+* `label` {string} **Default:** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
 
 ### console.profile([label])<!-- YAML
 added: v8.0.0
--->* `label` {string}
+-->
+
+* `label` {string}
 
 This method does not display anything unless used in the inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+
 ```js
 console.profile('MyLabel');
 // Some code
@@ -400,9 +461,11 @@ console.profileEnd('MyLabel');
 ```
 
 ### console.profileEnd([label])
+
 <!-- YAML
 added: v8.0.0
 -->
+
 * `label` {string}
 
 This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
@@ -410,25 +473,31 @@ This method does not display anything unless used in the inspector. Stops the cu
 If this method is called without a label, the most recently started profile is stopped.
 
 ### console.timeStamp([label])
+
 <!-- YAML
 added: v8.0.0
 -->
+
 * `label` {string}
 
 This method does not display anything unless used in the inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
 
 ### console.timeline([label])
+
 <!-- YAML
 added: v8.0.0
 -->
+
 * `label` {string} **Default:** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
 
 ### console.timelineEnd([label])
+
 <!-- YAML
 added: v8.0.0
 -->
+
 * `label` {string} **Default:** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
