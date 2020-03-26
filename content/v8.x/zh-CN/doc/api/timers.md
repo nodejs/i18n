@@ -36,7 +36,7 @@ When called, requests that the Node.js event loop *not* exit so long as the `Tim
 added: v0.9.1
 -->
 
-When called, the active `Timeout` object will not require the Node.js event loop to remain active. If there is no other activity keeping the event loop running, the process may exit before the `Timeout` object's callback is invoked. Calling `timeout.unref()` multiple times will have no effect.
+When called, the active `Timeout` object will not require the Node.js event loop to remain active. If there is no other activity keeping the event loop running, the process may exit before the `Timeout` object's callback is invoked. 多次调用 `timeout.unref()` 不会产生任何作用。
 
 *Note*: Calling `timeout.unref()` creates an internal timer that will wake the Node.js event loop. Creating too many of these can adversely impact performance of the Node.js application.
 
@@ -122,8 +122,8 @@ const util = require('util');
 const setTimeoutPromise = util.promisify(setTimeout);
 
 setTimeoutPromise(40, 'foobar').then((value) => {
-  // value === 'foobar' (passing values is optional)
-  // This is executed after about 40 milliseconds.
+  // value === 'foobar' (参数是可选的)
+  // 大约在40毫秒后执行.
 });
 ```
 
