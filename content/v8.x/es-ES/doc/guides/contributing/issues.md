@@ -4,28 +4,28 @@
 * [Pidiendo Ayuda General](#asking-for-general-help)
 * [Discusión de temas no técnicas](#discussing-non-technical-topics)
 * [Enviando un Reporte de Error](#submitting-a-bug-report)
-* [Hacer triage de un Bug](#triaging-a-bug-report)
+* [Triaging a Bug Report](#triaging-a-bug-report)
 * [Resolviendo un Reporte de Error](#resolving-a-bug-report)
 
-## Como contribuir en Problemas
+## Cómo Contribuir en Problemas
 
-Para cualquier problema, hay tres maneras fundamentales en las que cualquier individuo puede contribuir:
+For any issue, there are fundamentally three ways an individual can contribute:
 
-1. Abriendo el problema para discusión: Por ejemplo, si crees que has descubierto un bug en Node.js, crear un nuevo problema en el rastreador de problemas `nodejs/node` es la manera de reportarlo.
-2. Ayudando a hacer el triage del problema: Esto se puede hacer aportando detalles (por ejemplo, un caso que demuestra el bug), o haciendo sugerencias de como encarar el problema.
-3. Ayudando a resolver el problema: Típicamente esto se hace en el formulario o demostrando que el problema reportado no es un problema después de todo. También, se estila abrir un Pull Request que cambia algo en `nodejs/node` de una manera concreta y fácil de revisar.
+1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
+2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
+3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
-## Pidiendo ayuda en General
+## Pidiendo Ayuda General
 
-Debido al nivel de actividad en el repositorio de `nodejs/node` es muy alto, las preguntas o solicitudes para la ayuda general utilizando Node.js deben ser dirigidas al [repositorio de ayuda de Node.js](https://github.com/nodejs/help/issues).
+Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## Discusión de temas no técnicos
+## Discusión de temas no técnicas
 
-La discusión de temas no técnicos (como la propiedad intelectual y registro de marca) deberá ser dirigida al [Repositorio del Comité de Dirección Técnica (TSC por sus siglas en inglés)](https://github.com/nodejs/TSC/issues).
+Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## Enviar un reporte de bug
+## Enviando un Reporte de Error
 
-Al abrir un nuevo problema en el rastreador de problemas `nodejs/node`, los usuarios serán presentados con una plantilla básica que deben completar.
+When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
 ```markdown
 <!--
@@ -53,22 +53,22 @@ simple and free of external dependencies as you are able.
 <!-- Enter your issue details below this comment. -->
 ```
 
-Si cree que ha encontrado un error en Node.js, por favor complete este formulario, siguiendo la plantilla lo mejor que pueda. No se preocupe si no puede responder cada detalle, sólo llene lo que pueda.
+If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
 
-Los dos datos de información más importantes que necesitamos para evaluar adecuadamente el reporte es una descripción del comportamiento que está viendo y un caso simple de prueba que podamos utilizar para recrear el problema nosotros. Si no podemos recrear el problema, es imposible para nosotros corregirlo.
+The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
 
-Para evitar la posibilidad de defectos introducidos por código de los usuarios en general, los casos de pruebe deberían estar limitados a usar *solo* APIs de Node.js. Si el error ocurre sólo cuando está utilizan un módulo específico generado por la comunidad, hay una gran posibilidad de que (a) el módulo tenga un error, o (b) algo en Node.js cambió y eso rompió el módulo.
+In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
 Vea [Cómo crear un ejemplo Mínimo, Completo y Verificable](https://stackoverflow.com/help/mcve).
 
-## Hacer triage de un Bug
+## Triaging a Bug Report
 
-Una vez un problema se haya abierto, es común que se genere una discusión sobre el mismo. Algunos colaboradores pueden tener distintas opiniones acerca del problema, incluyendo si el comportamiento que observan es un error o una funcionalidad. Esta discusión es parte del proceso y debería mantener el foco, ser útil y profesional.
+Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
-Las respuestas breves y recortadas—que no aportan contexto adicional ni detalles de soporte—no son útiles o profesionales. Para muchos, dichas respuesta son simplemente molestas y poco amigables.
+Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
 
-Los colaboradores son alentados a ayudarse unos a otros para progresar lo máximo posible, ayudándose unos a otros para resolver los problemas de manera colaborativa. Si se decide comentar sobre un asunto que personalmente no se considera un problema a ser resuelto, o si se encuentra información que se interpreta como incorrecta, es importante explicar *por que* se llega a esa conclusión, aportando contexto para facilitar su comprensión. También, es necesario estar dispuestos a considerar la posibilidad de que el error es propio. Al hacerlo, generalmente podemos llegar a la conclusión correcta de manera mucho más rápida.
+Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
-## Resolver un reporte de Bug
+## Resolviendo un Reporte de Error
 
-En la amplia mayoría de los casos, los problemas se resuelven abriendo un Pull Request. El proceso para abrir y revisar un Pull Request es similar al que se describe en Enviar y Hacer triage de un bug, pero conlleva además una revisión necesaria y la aprobación del flujo de trabajo que permita que el cambio sugerido posea la calidad mínima y los requerimientos funcionales básicos del proyecto Node.js.
+In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
