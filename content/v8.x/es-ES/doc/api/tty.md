@@ -10,7 +10,7 @@ El módulo `tty` proporciona las clases `tty.ReadStream` y `tty.WriteStream` . E
 const tty = require('tty');
 ```
 
-Cuando Node.js detecta que está siendo ejecutado con una terminal de texto ("TTY") adjuntada, [`process.stdin`][] será, por defecto, inicializado como una instancia de `tty.ReadStream` y tanto [`process.stdout`][] como [`process.stderr`][] serán por defecto, instancias de `tty.WriteStream`. El método preferido para determinar si Node.js está siendo ejecutado dentro de un contexto de TTY es verificar que el valor de la propiedad `process.stdout.isTTY` sea `true`:
+When Node.js detects that it is being run with a text terminal ("TTY") attached, [`process.stdin`][] will, by default, be initialized as an instance of `tty.ReadStream` and both [`process.stdout`][] and [`process.stderr`][] will, by default be instances of `tty.WriteStream`. The preferred method of determining whether Node.js is being run within a TTY context is to check that the value of the `process.stdout.isTTY` property is `true`:
 
 ```sh
 $ node -p -e "Boolean(process.stdout.isTTY)"
@@ -19,23 +19,26 @@ $ node -p -e "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-En la mayoría de los casos, no debería haber motivos para que una aplicación cree manualmente instancias de las clases `tty.ReadStream` y `tty.WriteStream` .
+In most cases, there should be little to no reason for an application to manually create instances of the `tty.ReadStream` and `tty.WriteStream` classes.
 
 ## Clase: tty.ReadStream
+
 <!-- YAML
 added: v0.5.8
 -->
 
-La clase `tty.ReadStream` es una subclase de [`net.Socket`][] que representa el lado legible de un TTY. En circunstancias normales, [`process.stdin`][] será la única instancia `tty.ReadStream` en un proceso de Node.js y no debería haber ningún motivo para crear instancias adicionales.
+The `tty.ReadStream` class is a subclass of [`net.Socket`][] that represents the readable side of a TTY. In normal circumstances [`process.stdin`][] will be the only `tty.ReadStream` instance in a Node.js process and there should be no reason to create additional instances.
 
 ### readStream.isRaw
+
 <!-- YAML
 added: v0.7.7
 -->
 
-Un `boolean` que es `true` si la TTY está configurada para operar como un dispositivo raw. Por defecto su valor es `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Por defecto su valor es `false`.
 
 ### readStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -43,29 +46,32 @@ added: v0.5.8
 Un `boolean` que siempre es `true` para las instancias de `tty.ReadStream` .
 
 ### readStream.setRawMode(mode)
+
 <!-- YAML
 added: v0.7.7
 -->
 
 Permite la configuración de `tty.ReadStream` para que opere como un dispositivo raw.
 
-Cuando se encuentra en modo raw, la entrada siempre está disponible carácter por carácter, sin incluir a los modificadores. Además, todos los caracteres de procesamiento especial del terminal están deshabilitados, incluyendo el echo de caracteres de entrada. Tenga en cuenta que `CTRL`+`C` ya no causará un `SIGINT` en este modo.
+When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. Tenga en cuenta que `CTRL`+`C` ya no causará un `SIGINT` en este modo.
 
-* `mode` {boolean} Si es `true`, configura `tty.ReadStream` para operar como un dispositivo raw. Si es `false`, configura el `tty.ReadStream` para operar en su modo predeterminado. La propiedad `readStream.isRaw` será establecida al modo resultante.
+* `mode` {boolean} If `true`, configures the `tty.ReadStream` to operate as a raw device. If `false`, configures the `tty.ReadStream` to operate in its default mode. The `readStream.isRaw` property will be set to the resulting mode.
 
 ## Clase: tty.WriteStream
+
 <!-- YAML
 added: v0.5.8
 -->
 
-La clase `tty.WriteStream` es una subclase de `net.Socket` que representa el lado editable de una TTY. En circunstancias normales, [`process.stdout`][] y [`process.stderr`][] serán las únicas instancias de `tty.WriteStream` creadas para un proceso de Node.js y no debería haber ningún motivo para crear instancias adicionales.
+The `tty.WriteStream` class is a subclass of `net.Socket` that represents the writable side of a TTY. In normal circumstances, [`process.stdout`][] and [`process.stderr`][] will be the only `tty.WriteStream` instances created for a Node.js process and there should be no reason to create additional instances.
 
 ### Evento: 'resize'
+
 <!-- YAML
 added: v0.7.7
 -->
 
-El evento `'resize'` se emite cuando han cambiado las propiedades de `writeStream.columns` o `writeStream.rows` . No se pasa ningún argumento al callback del listener cuando es llamado.
+The `'resize'` event is emitted whenever either of the `writeStream.columns` or `writeStream.rows` properties have changed. No arguments are passed to the listener callback when called.
 
 ```js
 process.stdout.on('resize', () => {
@@ -75,13 +81,15 @@ process.stdout.on('resize', () => {
 ```
 
 ### writeStream.columns
+
 <!-- YAML
 added: v0.7.7
 -->
 
-Un `number` que especifica el número de columnas que posee actualmente un TTY. Esta propiedad se actualiza cada vez que se emite el evento `'resize'` .
+Un `number` que especifica el número de columnas que posee actualmente un TTY. This property is updated whenever the `'resize'` event is emitted.
 
 ### writeStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -89,17 +97,19 @@ added: v0.5.8
 Un `boolean` que siempre es `true`.
 
 ### writeStream.rows
+
 <!-- YAML
 added: v0.7.7
 -->
 
-Un `number` que especifica el número de filas que posee actualmente un TTY. Esta propiedad se actualiza cada vez que se emite el evento `'resize'` .
+Un `number` que especifica el número de filas que posee actualmente un TTY. This property is updated whenever the `'resize'` event is emitted.
 
 ## tty.isatty(fd)
+
 <!-- YAML
 added: v0.5.8
 -->
 
 * `fd` {number} Un descriptor numérico de archivos
 
-El método `tty.isatty()` retorna `true` si el `fd` provisto esta asociado con una TTY, y `false` si no lo esta, incluyendo cuando `fd` es un entero no negativo.
+The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
