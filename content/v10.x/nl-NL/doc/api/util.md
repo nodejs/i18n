@@ -11,6 +11,7 @@ const util = require('util');
 ```
 
 ## util.callbackify(original)
+
 <!-- YAML
 added: v8.2.0
 -->
@@ -58,6 +59,7 @@ callbackFunction((err, ret) => {
 ```
 
 ## util.debuglog(section)
+
 <!-- YAML
 added: v0.11.3
 -->
@@ -83,6 +85,7 @@ FOO 3245: hello from foo [123]
 where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
 
 The `section` supports wildcard also:
+
 ```js
 const util = require('util');
 const debuglog = util.debuglog('foo-bar');
@@ -91,6 +94,7 @@ debuglog('hi there, it\'s foo-bar [%d]', 2333);
 ```
 
 if it is run with `NODE_DEBUG=foo*` in the environment, then it will output something like:
+
 ```txt
 FOO-BAR 3257: hi there, it's foo-bar [2333]
 ```
@@ -98,9 +102,11 @@ FOO-BAR 3257: hi there, it's foo-bar [2333]
 Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable: `NODE_DEBUG=fs,net,tls`.
 
 ## util.deprecate(fn, msg[, code])
+
 <!-- YAML
 added: v0.8.0
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/16393
     description: Deprecation warnings are only emitted once for each code.
@@ -143,9 +149,11 @@ If the `--throw-deprecation` command line flag is set, or the `process.throwDepr
 The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
 ## util.format(format[, ...args])
+
 <!-- YAML
 added: v0.5.3
 changes:
+
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
@@ -195,6 +203,7 @@ util.format('%% %s'); // '%% %s'
 Please note that `util.format()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
 
 ## util.formatWithOptions(inspectOptions, format[, ...args])
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -211,6 +220,7 @@ util.formatWithOptions({ colors: true }, 'See object %O', { foo: 42 });
 ```
 
 ## util.getSystemErrorName(err)
+
 <!-- YAML
 added: v9.7.0
 -->
@@ -228,9 +238,11 @@ fs.access('file/that/does/not/exist', (err) => {
 ```
 
 ## util.inherits(constructor, superConstructor)
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/3455
     description: The `constructor` parameter can refer to an ES6 class now.
@@ -290,10 +302,13 @@ stream.write('With ES6');
 ```
 
 ## util.inspect(object[, options])
+
 ## util.inspect(object[, showHidden[, depth[, colors]]])
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/22788
     description: The `sorted` option is supported now.
@@ -323,10 +338,10 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or `Object`.
-* `options` {Object}
-  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Standaard:** `false`.
+* `opties` {Object} 
+  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Standaard:** `false`.
+  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Default:** `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Standaard:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or negative to show no elements. **Default:** `100`.
@@ -472,15 +487,15 @@ Color output (if enabled) of `util.inspect` is customizable globally via the `ut
 
 The default styles and associated colors are:
 
- * `number` - `yellow`
- * `boolean` - `yellow`
- * `string` - `green`
- * `date` - `magenta`
- * `regexp` - `red`
- * `null` - `bold`
- * `undefined` - `grey`
- * `special` - `cyan` (only applied to functions at this time)
- * `name` - (no styling)
+* `number` - `yellow`
+* `boolean` - `yellow`
+* `string` - `green`
+* `date` - `magenta`
+* `regexp` - `red`
+* `null` - `bold`
+* `undefined` - `grey`
+* `special` - `cyan` (only applied to functions at this time)
+* `name` - (no styling)
 
 The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
 
@@ -538,9 +553,11 @@ util.inspect(obj);
 ```
 
 ### util.inspect.custom
+
 <!-- YAML
 added: v6.6.0
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/20857
     description: This is now defined as a shared symbol.
@@ -575,6 +592,7 @@ console.log(password);
 See [Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects) for more details.
 
 ### util.inspect.defaultOptions
+
 <!-- YAML
 added: v6.4.0
 -->
@@ -591,6 +609,7 @@ console.log(arr); // logs the full array
 ```
 
 ## util.isDeepStrictEqual(val1, val2)
+
 <!-- YAML
 added: v9.0.0
 -->
@@ -604,6 +623,7 @@ Returns `true` if there is deep strict equality between `val1` and `val2`. Other
 See [`assert.deepStrictEqual()`][] for more information about deep strict equality.
 
 ## util.promisify(original)
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -674,9 +694,11 @@ doSomething[util.promisify.custom] = (foo) => {
   });
 };
 ```
+
 If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
 
 ### util.promisify.custom
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -686,6 +708,7 @@ added: v8.0.0
 A {symbol} that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
 ## Class: util.TextDecoder
+
 <!-- YAML
 added: v8.3.0
 -->
@@ -767,16 +790,16 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 ### new TextDecoder([encoding[, options]])
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
-* `options` {Object}
+* `opties` {Object} 
   * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Standaard:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
 Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
-* `options` {Object}
+* `opties` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Standaard:** `false`.
 * Retourneert: {string}
 
@@ -803,6 +826,7 @@ The value will be `true` if decoding errors result in a `TypeError` being thrown
 The value will be `true` if the decoding result will include the byte order mark.
 
 ## Class: util.TextEncoder
+
 <!-- YAML
 added: v8.3.0
 -->
@@ -828,6 +852,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
 ## util.types
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -837,6 +862,7 @@ added: v10.0.0
 The result generally does not make any guarantees about what kinds of properties or behavior a value exposes in JavaScript. They are primarily useful for addon developers who prefer to do type checking in JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -854,6 +880,7 @@ util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isArgumentsObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -862,6 +889,7 @@ added: v10.0.0
 * Retourneert: {boolean}
 
 Returns `true` if the value is an `arguments` object.
+
 ```js
 function foo() {
   util.types.isArgumentsObject(arguments);  // Returns true
@@ -870,8 +898,11 @@ function foo() {
 
 ### util.types.isArrayBuffer(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* Retourneert: {boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -881,6 +912,7 @@ util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 ```
 
 ### util.types.isAsyncFunction(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -896,6 +928,7 @@ util.types.isAsyncFunction(async function foo() {});  // Returns true
 ```
 
 ### util.types.isBigInt64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -911,6 +944,7 @@ util.types.isBigInt64Array(new BigUint64Array());  // Returns false
 ```
 
 ### util.types.isBigUint64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -926,6 +960,7 @@ util.types.isBigUint64Array(new BigUint64Array());  // Returns true
 ```
 
 ### util.types.isBooleanObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -946,8 +981,11 @@ util.types.isBooleanObject(Boolean(true));  // Returns false
 
 ### util.types.isBoxedPrimitive(value)<!-- YAML
 added: v10.11.0
--->* `value` {any}
-* Retourneert: {boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -963,8 +1001,11 @@ util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 
 ### util.types.isDataView(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* Retourneert: {boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -977,6 +1018,7 @@ util.types.isDataView(new Float64Array());  // Returns false
 See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isDate(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -991,6 +1033,7 @@ util.types.isDate(new Date());  // Returns true
 ```
 
 ### util.types.isExternal(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1001,6 +1044,7 @@ added: v10.0.0
 Returns `true` if the value is a native `External` value.
 
 ### util.types.isFloat32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1017,6 +1061,7 @@ util.types.isFloat32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isFloat64Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1033,6 +1078,7 @@ util.types.isFloat64Array(new Float64Array());  // Returns true
 ```
 
 ### util.types.isGeneratorFunction(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1048,6 +1094,7 @@ util.types.isGeneratorFunction(function* foo() {});  // Returns true
 ```
 
 ### util.types.isGeneratorObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1064,6 +1111,7 @@ util.types.isGeneratorObject(generator);  // Returns true
 ```
 
 ### util.types.isInt8Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1080,6 +1128,7 @@ util.types.isInt8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt16Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1096,6 +1145,7 @@ util.types.isInt16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1112,6 +1162,7 @@ util.types.isInt32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isMap(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1126,6 +1177,7 @@ util.types.isMap(new Map());  // Returns true
 ```
 
 ### util.types.isMapIterator(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1144,6 +1196,7 @@ util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isModuleNamespaceObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1152,6 +1205,7 @@ added: v10.0.0
 * Retourneert: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
+
 ```js
 import * as ns from './a.js';
 
@@ -1159,6 +1213,7 @@ util.types.isModuleNamespaceObject(ns);  // Returns true
 ```
 
 ### util.types.isNativeError(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1176,8 +1231,11 @@ util.types.isNativeError(new RangeError());  // Returns true
 
 ### util.types.isNumberObject(value)<!-- YAML
 added: v10.0.0
--->* `value` {any}
-* Retourneert: {boolean}
+-->
+
+* `value` {any}
+
+* Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1187,6 +1245,7 @@ util.types.isNumberObject(new Number(0));   // Returns true
 ```
 
 ### util.types.isPromise(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1201,6 +1260,7 @@ util.types.isPromise(Promise.resolve(42));  // Returns true
 ```
 
 ### util.types.isProxy(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1218,6 +1278,7 @@ util.types.isProxy(proxy);  // Returns true
 ```
 
 ### util.types.isRegExp(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1233,6 +1294,7 @@ util.types.isRegExp(new RegExp('abc'));  // Returns true
 ```
 
 ### util.types.isSet(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1247,6 +1309,7 @@ util.types.isSet(new Set());  // Returns true
 ```
 
 ### util.types.isSetIterator(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1265,6 +1328,7 @@ util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isSharedArrayBuffer(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1280,6 +1344,7 @@ util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isStringObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1295,6 +1360,7 @@ util.types.isStringObject(new String('foo'));   // Returns true
 ```
 
 ### util.types.isSymbolObject(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1311,6 +1377,7 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 ```
 
 ### util.types.isTypedArray(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1329,6 +1396,7 @@ util.types.isTypedArray(new Float64Array());  // Returns true
 See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isUint8Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1345,6 +1413,7 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint8ClampedArray(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1361,6 +1430,7 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint16Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1377,6 +1447,7 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint32Array(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1393,6 +1464,7 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isWeakMap(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1407,6 +1479,7 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 ```
 
 ### util.types.isWeakSet(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1421,6 +1494,7 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 ```
 
 ### util.types.isWebAssemblyCompiledModule(value)
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -1442,7 +1516,10 @@ The following APIs are deprecated and should no longer be used. Existing applica
 ### util.\_extend(target, source)<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->* `target` {Object}
+-->
+
+* `target` {Object}
+
 * `source` {Object}
 
 > Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
@@ -1454,7 +1531,9 @@ It is deprecated and should not be used in new code. JavaScript comes with very 
 ### util.debug(string)<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.error()`][].
+-->> Stability: 0 - Deprecated: Use [
+
+`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -1463,7 +1542,9 @@ Deprecated predecessor of `console.error`.
 ### util.error([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.error()`][].
+-->> Stability: 0 - Deprecated: Use [
+
+`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -1472,7 +1553,9 @@ Deprecated predecessor of `console.error`.
 ### util.isArray(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`Array.isArray()`][] instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1495,7 +1578,9 @@ util.isArray({});
 ### util.isBoolean(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'boolean'` instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1516,7 +1601,9 @@ util.isBoolean(false);
 ### util.isBuffer(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1537,7 +1624,9 @@ util.isBuffer(Buffer.from('hello world'));
 ### util.isDate(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`util.types.isDate()`][] instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1558,7 +1647,9 @@ util.isDate({});
 ### util.isError(object)<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
+-->> Stability: 0 - Deprecated: Use [
+
+`util.types.isNativeError()`][] instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1592,7 +1683,9 @@ util.isError(obj);
 ### util.isFunction(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'function'` instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1616,7 +1709,9 @@ util.isFunction(Bar);
 ### util.isNull(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `value === null` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`value === null` instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1635,6 +1730,7 @@ util.isNull(null);
 ```
 
 ### util.isNullOrUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1659,6 +1755,7 @@ util.isNullOrUndefined(null);
 ```
 
 ### util.isNumber(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1685,6 +1782,7 @@ util.isNumber(NaN);
 ```
 
 ### util.isObject(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1711,6 +1809,7 @@ util.isObject(() => {});
 ```
 
 ### util.isPrimitive(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1768,6 +1867,7 @@ util.isRegExp({});
 ```
 
 ### util.isString(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1796,7 +1896,9 @@ util.isString(5);
 ### util.isSymbol(object)<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
+-->> Stability: 0 - Deprecated: Use 
+
+`typeof value === 'symbol'` instead.
 
 * `object` {any}
 * Retourneert: {boolean}
@@ -1815,6 +1917,7 @@ util.isSymbol(Symbol('foo'));
 ```
 
 ### util.isUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -1857,13 +1960,17 @@ util.log('Timestamped message.');
 ### util.print([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.log()`][].
+-->> Stability: 0 - Deprecated: Use [
+
+`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
 ### util.puts([...strings])<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.log()`][].
+-->> Stability: 0 - Deprecated: Use [
+
+`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
