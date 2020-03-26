@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Stable</th>
+<th>Stabil</th>
 </tr>
   
   <tr>
@@ -36,7 +36,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Versi lain 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -46,7 +46,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arsip](CHANGELOG_ARCHIVE.md)
 
 *Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
@@ -1594,7 +1594,7 @@ This is an important security release. All Node.js users should consult the secu
   * Fixed a bug where pipelined http requests would stall (Fedor Indutny) [#3342](https://github.com/nodejs/node/pull/3342).
   * *(Breaking)* When parsing HTTP, don't add duplicates of the following headers: `Retry-After`, `ETag`, `Last-Modified`, `Server`, `Age`, `Expires`. This is in addition to the following headers which already block duplicates: `Content-Type`, `Content-Length`, `User-Agent`, `Referer`, `Host`, `Authorization`, `Proxy-Authorization`, `If-Modified-Since`, `If-Unmodified-Since`, `From`, `Location`, `Max-Forwards` (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
   * *(Breaking)* The `callback` argument to `OutgoingMessage#setTimeout()` must be a function or a `TypeError` is thrown (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
-  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ```/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/``` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
+  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ``/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/`` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
 * **node**: 
   * *(Breaking)* Deprecated the `_linklist` module (Rich Trott) [#3078](https://github.com/nodejs/node/pull/3078).
   * *(Breaking)* Removed `require.paths` and `require.registerExtension()`, both had been previously set to throw `Error` when accessed (Sakthipriyan Vairamani) [#2922](https://github.com/nodejs/node/pull/2922).
