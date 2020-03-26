@@ -2,12 +2,12 @@
 
 ## 什么是测试？
 
-在 Node.js 核心中，大多数测试都是 JavaScript 程序，它执行 Node.js 提供的功能并检查其行为是否符合预期。 成功时, 测试应与代码 ` 0 ` 一起退出。 如果存在以下情况, 测试将失败:
+Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. 如果存在以下情况, 测试将失败:
 
-- 它通过将 ` exitCode ` 设置为非零数字来退出。
+- 它通过将 ` exitCode ` 设置为非零数字来退出。 
   - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
   - 有时，使用 `process.exit(code)` 可能是适当的。
-- 它从不退出。 在这种情况下，测试运行程序最终将终止测试，因为它设置了最大时间限制。
+- 它从不退出。 In this case, the test runner will terminate the test because it sets a maximum time limit.
 
 在以下情况下添加测试:
 
@@ -57,11 +57,11 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-第一行启用严格模式。 所有的测试应该在严格模式下进行，除非测试的性质需要在非严格模式下运行。
+第一行启用严格模式。 All tests should be in strict mode unless the nature of the test requires that the test run without it.
 
 第二行是加载 `common` 模块。 The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
-即使测试不使用 `common` 模块的函数和属性，测试仍然应该在任何其他模块之前引入 `common` 模块。 This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
 ```javascript
 require('../common');
@@ -73,7 +73,7 @@ require('../common');
 // 此测试可确保 http 分析器可以处理 http 标头中的 UTF-8 字符。
 ```
 
-测试应该以一个包含它是什么的简短说明的注释开始。
+A test should start with a comment containing a brief description of what it is designed to test.
 
 ### **Lines 8-9**
 
@@ -90,7 +90,7 @@ The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man
 
 ### **Lines 11-22**
 
-这是测试的主体。 这个测试很简单，它仅仅测试 HTTP 服务器在传入的请求标头接受 `非ASCII字符`。 有趣的事情要注意：
+这是测试的主体。 This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. 有趣的事情要注意：
 
 - If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
@@ -110,7 +110,7 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
-### The *common* API
+### *common* API
 
 Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
@@ -168,6 +168,7 @@ const server = http.createServer(common.mustCall((req, res) => {
 });
 
 ```
+
 #### Countdown 模块
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
@@ -201,7 +202,7 @@ fs.readFile('test-file').then(
 
 ### 标记
 
-一些测试需要在指定命令行标记设置的情况下运行Node.js。 若要完成此操作，在测试的序言中紧随标记的后面添加一个 `// Flags:` 注释。 例如，若要允许测试引入某些 `internal/*` 模块，请添加 `--expose-internals` 标记。 需要引入 `internal/freelist` 模块的测试可以像这样开始：
+一些测试需要在指定命令行标记设置的情况下运行Node.js。 To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. 需要引入 `internal/freelist` 模块的测试可以像这样开始：
 
 ```javascript
 'use strict';
@@ -220,7 +221,7 @@ const freelist = require('internal/freelist');
 - `assert.strictEqual()` 替代 `assert.equal()`
 - `assert.deepStrictEqual()` 替代 `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+在使用 `assert.throws()` 时，如果可能，请提供完整的错误信息：
 
 ```js
 assert.throws(
@@ -243,10 +244,9 @@ Excessive use of console output is discouraged as it can overwhelm the display, 
 
 In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
 
-
 ### ES.Next 功能
 
-出于性能考虑，我们在 `lib`目录的 JavaScript 代码中仅选择使用ES.Next的部分功能。 However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
 
 - `let` 和 `const` 替代 `var`
 - 模版字符串 替代 字符串拼接
@@ -254,9 +254,9 @@ In some tests, it can be unclear whether a `console.log()` statement is required
 
 ## 测试文件命名
 
-测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 第三部分通常是将要测试的方法或者事件名称。 名称的后续部分会添加更多关于被测试内容的信息。
+测试文件使用短横杆间隔(kebab casing)命名。 The first component of the name is `test`. 名称的第二个组成部分是将要被测试的模块或者子系统。 The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
 
-例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 如果测试专门检查箭头函数是否与 `beforeExit` 事件正常工作，则它可能被命名为 `test-process-before-exit-arrow-functions.js`。
+For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
 ## Imported Tests
 
@@ -333,16 +333,19 @@ $ make cctest
 ```
 
 A filter can be applied to run single/multiple test cases:
+
 ```console
 $ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
 ```
 
 `cctest` can also be run directly which can be useful when debugging:
+
 ```console
 $ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
 ```
 
 ### Node.js test fixture
+
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
