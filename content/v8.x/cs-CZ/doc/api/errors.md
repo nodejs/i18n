@@ -1,11 +1,12 @@
 # Errors
 
 <!--introduced_in=v4.0.0-->
+
 <!--type=misc-->
 
 Applications running in Node.js will generally experience four categories of errors:
 
-- Standard JavaScript errors such as:
+- Standard JavaScript errors such as: 
   - {EvalError} : thrown when a call to `eval()` fails.
   - {SyntaxError} : thrown in response to improper JavaScript language syntax.
   - {RangeError} : thrown when a value is not within an expected range
@@ -38,27 +39,27 @@ try {
 
 Any use of the JavaScript `throw` mechanism will raise an exception that *must* be handled using `try / catch` or the Node.js process will exit immediately.
 
-With few exceptions, _Synchronous_ APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
+With few exceptions, *Synchronous* APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
 
-Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
+Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
-  ```js
-  const fs = require('fs');
-  fs.readFile('a file that does not exist', (err, data) => {
-    if (err) {
-      console.error('There was an error reading the file!', err);
-      return;
-    }
-    // Otherwise handle the data
-  });
-  ```
+- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled. 
+      js
+      const fs = require('fs');
+      fs.readFile('a file that does not exist', (err, data) => {
+        if (err) {
+          console.error('There was an error reading the file!', err);
+          return;
+        }
+        // Otherwise handle the data
+      });
+
 - When an asynchronous method is called on an object that is an `EventEmitter`, errors can be routed to that object's `'error'` event.
-
+  
   ```js
   const net = require('net');
   const connection = net.connect('localhost');
-
+  
   // Adding an 'error' event handler to a stream:
   connection.on('error', (err) => {
     // If the connection is reset by the server, or if it can't
@@ -66,7 +67,7 @@ Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
     // the connection, the error will be sent here.
     console.error(err);
   });
-
+  
   connection.pipe(process.stdout);
   ```
 
@@ -91,7 +92,9 @@ Errors generated in this way *cannot* be intercepted using `try / catch` as they
 
 Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
-### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an _error-first callback_ (sometimes referred to as a _Node.js style callback_). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an 
+
+*error-first callback* (sometimes referred to as a *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
@@ -129,7 +132,9 @@ try {
 
 This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: Error<!--type=class-->A generic JavaScript `Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+## Class: Error<!--type=class-->A generic JavaScript 
+
+`Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
@@ -137,14 +142,14 @@ All errors generated by Node.js, including all System and JavaScript errors, wil
 
 ### new Error(message)
 
-* `message` {string}
+- `message` {string}
 
 Creates a new `Error` object and sets the `error.message` property to the provided text message. If an object is passed as `message`, the text message is generated by calling `message.toString()`. The `error.stack` property will represent the point in the code at which `new Error()` was called. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
 
 ### Error.captureStackTrace(targetObject[, constructorOpt])
 
-* `targetObject` {Object}
-* `constructorOpt` {Function}
+- `targetObject` {Object}
+- `constructorOpt` {Function}
 
 Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
 
@@ -173,7 +178,7 @@ new MyError().stack;
 
 ### Error.stackTraceLimit
 
-* {number}
+- {number}
 
 The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
 
@@ -183,13 +188,13 @@ If set to a non-number value, or set to a negative number, stack traces will not
 
 ### error.code
 
-* {string}
+- {string}
 
 The `error.code` property is a string label that identifies the kind of error. See [Node.js Error Codes](#nodejs-error-codes) for details about specific codes.
 
 ### error.message
 
-* {string}
+- {string}
 
 The `error.message` property is the string description of the error as set by calling `new Error(message)`. The `message` passed to the constructor will also appear in the first line of the stack trace of the `Error`, however changing this property after the `Error` object is created *may not* change the first line of the stack trace (for example, when `error.stack` is read before this property is changed).
 
@@ -201,7 +206,7 @@ console.error(err.message);
 
 ### error.stack
 
-* {string}
+- {string}
 
 The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
 
@@ -249,9 +254,9 @@ makeFaster();
 
 The location information will be one of:
 
-* `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
-* `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
-* `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
+- `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
+- `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
+- `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
 
 The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
 
@@ -321,7 +326,9 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of Error.
+## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a 
+
+`throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of Error.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -337,37 +344,37 @@ In Node.js, system errors are represented as augmented `Error` objects with adde
 
 #### error.code
 
-* {string}
+- {string}
 
 The `error.code` property is a string representing the error code, which is typically `E` followed by a sequence of capital letters.
 
 #### error.errno
 
-* {string|number}
+- {string|number}
 
 The `error.errno` property is a number or a string. The number is a **negative** value which corresponds to the error code defined in [`libuv Error handling`]. See uv-errno.h header file (`deps/uv/include/uv-errno.h` in the Node.js source tree) for details. In case of a string, it is the same as `error.code`.
 
 #### error.syscall
 
-* {string}
+- {string}
 
 The `error.syscall` property is a string describing the [syscall](http://man7.org/linux/man-pages/man2/syscall.2.html) that failed.
 
 #### error.path
 
-* {string}
+- {string}
 
 When present (e.g. in `fs` or `child_process`), the `error.path` property is a string containing a relevant invalid pathname.
 
 #### error.address
 
-* {string}
+- {string}
 
 When present (e.g. in `net` or `dgram`), the `error.address` property is a string describing the address to which the connection failed.
 
 #### error.port
 
-* {number}
+- {number}
 
 When present (e.g. in `net` or `dgram`), the `error.port` property is a number representing the connection's port that is not available.
 
@@ -1012,12 +1019,15 @@ A call was made and the UDP subsystem was not running.
 ### ERR_STDERR_CLOSE<!-- YAML
 removed: v8.16.0
 changes:
+
   - version: v8.16.0
     pr-url: https://github.com/nodejs/node/pull/23053
     description: Rather than emitting an error, `process.stderr.end()` now
                  only closes the stream side but not the underlying resource,
                  making this error obsolete.
--->An attempt was made to close the `process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+-->An attempt was made to close the 
+
+`process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 
@@ -1026,6 +1036,7 @@ changes:
 <!-- YAML
 removed: v8.16.0
 changes:
+
   - version: v8.16.0
     pr-url: https://github.com/nodejs/node/pull/23053
     description: Rather than emitting an error, `process.stderr.end()` now
