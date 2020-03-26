@@ -1,20 +1,20 @@
-# Aktualisierung von npm in Node.js
+# Maintaining npm in Node.js
 
-## Schritt 1: npm klonen
+## Step 1: Clone npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-Falls Sie npm bereits geklont haben, stellen Sie sicher, dass es auf dem neuesten Stand ist.
+or if you already have npm cloned make sure the repo is up to date
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Schritt 2: Release bauen
+## Step 2: Build release
 
 ```console
 $ git checkout vX.Y.Z
@@ -23,7 +23,7 @@ $ make release
 
 Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
-## Schritt 3: Altes npm entfernen
+## Step 3: Remove old npm
 
 ```console
 $ cd /path/to/node
@@ -33,7 +33,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Schritt 4: Neues npm extrahieren und committen
+## Step 4: Extract and commit new npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -42,7 +42,7 @@ $ git commit -m "deps: upgrade npm to x.y.z"
 $ cd ..
 ```
 
-## Schritt 5: Lizenz aktualisieren
+## Step 5: Update licenses
 
 ```console
 $ ./configure
@@ -53,15 +53,15 @@ $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Hinweis: Bitte stellen Sie sicher, dass Sie nur Änderungen machen welche auch durch npm gemacht wurden.
+Note: please ensure you are only making the updates that are changed by npm.
 
-## Schritt 6: Leerzeichen korrigieren
+## Step 6: Apply Whitespace fix
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Schritt 7: Änderungen testen
+## Step 7: Test the build
 
 ```console
 $ make test-npm
