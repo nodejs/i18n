@@ -144,6 +144,7 @@ myStream.end('done writing data');
 ```
 
 #### Class: stream.Writable
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -151,6 +152,7 @@ added: v0.9.4
 <!--type=class-->
 
 ##### Συμβάν: 'close'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -160,6 +162,7 @@ The `'close'` event is emitted when the stream and any of its underlying resourc
 Not all Writable streams will emit the `'close'` event.
 
 ##### Event: 'drain'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -195,6 +198,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
 ```
 
 ##### Event: 'error'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -206,6 +210,7 @@ The `'error'` event is emitted if an error occurred while writing or piping data
 *Note*: The stream is not closed when the `'error'` event is emitted.
 
 ##### Συμβάν: 'finish'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -224,6 +229,7 @@ writer.on('finish', () => {
 ```
 
 ##### Event: 'pipe'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -243,6 +249,7 @@ reader.pipe(writer);
 ```
 
 ##### Event: 'unpipe'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -265,6 +272,7 @@ reader.unpipe(writer);
 ```
 
 ##### writable.cork()
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -276,9 +284,11 @@ The primary intent of `writable.cork()` is to avoid a situation where writing ma
 Δείτε επίσης: [`writable.uncork()`][].
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -301,9 +311,11 @@ file.end('world!');
 ```
 
 ##### writable.setDefaultEncoding(encoding)
+
 <!-- YAML
 added: v0.11.15
 changes:
+
   - version: v6.1.0
     pr-url: https://github.com/nodejs/node/pull/5040
     description: This method now returns a reference to `writable`.
@@ -315,6 +327,7 @@ changes:
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
 
 ##### writable.uncork()
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -347,6 +360,7 @@ process.nextTick(() => {
 Δείτε επίσης: [`writable.cork()`][].
 
 ##### writable.writableHighWaterMark
+
 <!-- YAML
 added: v8.10.0
 -->
@@ -354,9 +368,11 @@ added: v8.10.0
 Return the value of `highWaterMark` passed when constructing this `Writable`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -399,6 +415,7 @@ write('hello', () => {
 A Writable stream in object mode will always ignore the `encoding` argument.
 
 ##### writable.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -486,6 +503,7 @@ The Readable stream API evolved across multiple Node.js versions and provides mu
 Use of the `readable.pipe()` method is recommended for most users as it has been implemented to provide the easiest way of consuming stream data. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.pause()`/`readable.resume()` APIs.
 
 #### Class: stream.Readable
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -493,6 +511,7 @@ added: v0.9.4
 <!--type=class-->
 
 ##### Συμβάν: 'close'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -502,6 +521,7 @@ The `'close'` event is emitted when the stream and any of its underlying resourc
 Not all [Readable](#stream_class_stream_readable) streams will emit the `'close'` event.
 
 ##### Event: 'data'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -522,6 +542,7 @@ readable.on('data', (chunk) => {
 ```
 
 ##### Event: 'end'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -541,6 +562,7 @@ readable.on('end', () => {
 ```
 
 ##### Event: 'error'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -552,6 +574,7 @@ The `'error'` event may be emitted by a Readable implementation at any time. Typ
 The listener callback will be passed a single `Error` object.
 
 ##### Event: 'readable'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -564,6 +587,7 @@ readable.on('readable', () => {
   // there is some data to read now
 });
 ```
+
 The `'readable'` event will also be emitted once the end of the stream data has been reached but before the `'end'` event is emitted.
 
 Effectively, the `'readable'` event indicates that the stream has new information: either new data is available or the end of the stream has been reached. In the former case, [`stream.read()`](#stream_readable_read_size) will return the available data. In the latter case, [`stream.read()`](#stream_readable_read_size) will return `null`. For instance, in the following example, `foo.txt` is an empty file:
@@ -590,6 +614,7 @@ end
 *Note*: In general, the `readable.pipe()` and `'data'` event mechanisms are easier to understand than the `'readable'` event. However, handling `'readable'` might result in increased throughput.
 
 ##### readable.isPaused()
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -609,6 +634,7 @@ readable.isPaused(); // === false
 ```
 
 ##### readable.pause()
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -631,12 +657,13 @@ readable.on('data', (chunk) => {
 ```
 
 ##### readable.pipe(destination[, options])
+
 <!-- YAML
 added: v0.9.4
 -->
 
 * `destination` {stream.Writable} The destination for writing data
-* `options` {Object} Pipe options
+* `options` {Object} Pipe options 
   * `end` {boolean} End the writer when the reader ends. **Προεπιλογή:** `true`.
 
 The `readable.pipe()` method attaches a [Writable](#stream_class_stream_writable) stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [Writable](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
@@ -649,6 +676,7 @@ const writable = fs.createWriteStream('file.txt');
 // All the data from readable goes into 'file.txt'
 readable.pipe(writable);
 ```
+
 It is possible to attach multiple Writable streams to a single Readable stream.
 
 The `readable.pipe()` method returns a reference to the *destination* stream making it possible to set up chains of piped streams:
@@ -674,6 +702,7 @@ One important caveat is that if the Readable stream emits an error during proces
 *Note*: The [`process.stderr`][] and [`process.stdout`][] Writable streams are never closed until the Node.js process exits, regardless of the specified options.
 
 ##### readable.readableHighWaterMark
+
 <!-- YAML
 added: v8.10.0
 -->
@@ -681,6 +710,7 @@ added: v8.10.0
 Return the value of `highWaterMark` passed when constructing this `Readable`.
 
 ##### readable.read([size])
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -713,6 +743,7 @@ A Readable stream in object mode will always return a single item from a call to
 *Note*: Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][] event has been emitted will return `null`. No runtime error will be raised.
 
 ##### readable.resume()
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -732,6 +763,7 @@ getReadableStreamSomehow()
 ```
 
 ##### readable.setEncoding(encoding)
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -755,6 +787,7 @@ readable.on('data', (chunk) => {
 ```
 
 ##### readable.unpipe([destination])
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -782,9 +815,11 @@ setTimeout(() => {
 ```
 
 ##### readable.unshift(chunk)
+
 <!-- YAML
 added: v0.9.11
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -837,6 +872,7 @@ function parseHeader(stream, callback) {
 *Note*: Unlike [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` will not end the reading process by resetting the internal reading state of the stream. This can cause unexpected results if `readable.unshift()` is called during a read (i.e. from within a [`stream._read()`](#stream_readable_read_size_1) implementation on a custom stream). Following the call to `readable.unshift()` with an immediate [`stream.push('')`](#stream_readable_push_chunk_encoding) will reset the reading state appropriately, however it is best to simply avoid calling `readable.unshift()` while in the process of performing a read.
 
 ##### readable.wrap(stream)
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -863,6 +899,7 @@ myReader.on('readable', () => {
 ```
 
 ##### readable.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -872,9 +909,11 @@ Destroy the stream, and emit `'error'`. After this call, the readable stream wil
 ### Duplex and Transform Streams
 
 #### Class: stream.Duplex
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8834
     description: Instances of `Duplex` now return `true` when
@@ -892,6 +931,7 @@ Examples of Duplex streams include:
 * [crypto streams](crypto.html)
 
 #### Class: stream.Transform
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -906,6 +946,7 @@ Examples of Transform streams include:
 * [crypto streams](crypto.html)
 
 ##### transform.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -999,6 +1040,7 @@ The new stream class must then implement one or more specific methods, depending
 *Note*: The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). Doing so may lead to adverse side effects in application code consuming the stream.
 
 ### Simplified Construction
+
 <!-- YAML
 added: v1.2.0
 -->
@@ -1025,7 +1067,7 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
 
 #### Constructor: new stream.Writable([options])
 
-* `options` {Object}
+* `options` {Object} 
   * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} Whether or not to decode strings into Buffers before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Προεπιλογή:** `true`.
   * `objectMode` {boolean} Whether or not the [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) is a valid operation. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Προεπιλογή:** `false`.
@@ -1109,6 +1151,7 @@ The `writable._writev()` method may be implemented in addition to `writable._wri
 The `writable._writev()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
 #### writable.\_destroy(err, callback)
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -1119,6 +1162,7 @@ added: v8.0.0
 The `_destroy()` method is called by [`writable.destroy()`](#stream_writable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
 
 #### writable.\_final(callback)
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -1218,7 +1262,7 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
 
 #### new stream.Readable([options])
 
-* `options` {Object}
+* `options` {Object} 
   * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Default:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a Buffer of size n. **Προεπιλογή:** `false`.
@@ -1282,6 +1326,7 @@ The `size` argument is advisory. For implementations where a "read" is a single 
 The `readable._read()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
 #### readable.\_destroy(err, callback)
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -1292,8 +1337,10 @@ added: v8.0.0
 The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
 
 #### readable.push(chunk[, encoding])
+
 <!-- YAML
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -1341,6 +1388,7 @@ class SourceWrapper extends Readable {
   }
 }
 ```
+
 *Note*: The `readable.push()` method is intended be called only by Readable Implementers, and only from within the `readable._read()` method.
 
 For streams not operating in object mode, if the `chunk` parameter of `readable.push()` is `undefined`, it will be treated as empty string or buffer. See [`readable.push('')`][] for more information.
@@ -1348,6 +1396,7 @@ For streams not operating in object mode, if the `chunk` parameter of `readable.
 #### Errors While Reading
 
 It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an Error from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
+
 ```js
 const { Readable } = require('stream');
 
@@ -1399,11 +1448,14 @@ Custom Duplex streams *must* call the `new stream.Duplex([options])` constructor
 
 #### new stream.Duplex(options)<!-- YAML
 changes:
+
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14636
     description: The `readableHighWaterMark` and `writableHighWaterMark` options
                  are supported now.
--->* `options` {Object} Passed to both Writable and Readable constructors. Also has the following fields:
+-->
+
+* `options` {Object} Passed to both Writable and Readable constructors. Also has the following fields: 
   * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Προεπιλογή:** `true`.
   * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Προεπιλογή:** `false`.
   * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Προεπιλογή:** `false`.
@@ -1534,7 +1586,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both Writable and Readable constructors. Also has the following fields:
+* `options` {Object} Passed to both Writable and Readable constructors. Also has the following fields: 
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
@@ -1682,7 +1734,6 @@ net.createServer((socket) => {
 
 In addition to new Readable streams switching into flowing mode, pre-v0.10 style streams can be wrapped in a Readable class using the [`readable.wrap()`][`stream.wrap()`] method.
 
-
 ### `readable.read(0)`
 
 There are some cases where it is necessary to trigger a refresh of the underlying readable stream mechanisms, without actually consuming any data. In such cases, it is possible to call `readable.read(0)`, which will always return `null`.
@@ -1701,6 +1752,6 @@ Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in 
 
 The use of `readable.setEncoding()` will change the behavior of how the `highWaterMark` operates in non-object mode.
 
-Typically, the size of the current buffer is measured against the `highWaterMark` in _bytes_. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in _characters_.
+Typically, the size of the current buffer is measured against the `highWaterMark` in *bytes*. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in *characters*.
 
 This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
