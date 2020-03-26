@@ -1,4 +1,4 @@
-require('dotenv-safe').load()
+require('dotenv-safe').config()
 
 const globals = require('globals')
 const nodeCoreModules = require('builtins')('10.0.0')
