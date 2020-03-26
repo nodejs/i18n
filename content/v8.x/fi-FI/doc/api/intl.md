@@ -4,11 +4,11 @@
 
 Node.js has many features that make it easier to write internationalized programs. Some of them are:
 
-- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/):
+- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
   - [`String.prototype.normalize()`][]
   - [`String.prototype.toLowerCase()`][]
   - [`String.prototype.toUpperCase()`][]
-- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402):
+- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
   - [`Intl`][] object
   - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
 - The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
@@ -81,14 +81,14 @@ This mode provides a good balance between features and binary size, and it is th
 
 If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
 
-* The [`NODE_ICU_DATA`][] environment variable:
-
+- The [`NODE_ICU_DATA`][] environment variable:
+  
   ```shell
   env NODE_ICU_DATA=/some/directory node
   ```
 
-* The [`--icu-data-dir`][] CLI parameter:
-
+- The [`--icu-data-dir`][] CLI parameter:
+  
   ```shell
   node --icu-data-dir=/some/directory
   ```
