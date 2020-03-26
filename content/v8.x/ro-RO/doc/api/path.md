@@ -51,9 +51,11 @@ path.posix.basename('/tmp/myfile.html');
 *Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -78,6 +80,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -110,9 +113,11 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -133,9 +138,11 @@ path.dirname('/foo/bar/baz/asdf/quux');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -168,11 +175,12 @@ path.extname('.index');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,6 +274,7 @@ path.isAbsolute('.');           // false
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -289,6 +299,7 @@ path.join('foo', {}, 'bar');
 A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
@@ -317,7 +328,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
+Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -327,6 +338,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -391,6 +403,7 @@ path.parse('C:\\path\\dir\\file.txt');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -400,9 +413,11 @@ added: v0.11.15
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -434,6 +449,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -470,6 +486,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +495,7 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `\` on Windows
+* `` on Windows
 * `/` on POSIX
 
 For example on POSIX:
@@ -500,6 +517,7 @@ accepted as path segment separators; however, the``path`methods only add
 backward slashes (`\`).
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->
