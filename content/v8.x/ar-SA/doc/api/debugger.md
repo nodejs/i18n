@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-يشتمل الـ Node.js على مصحح أخطاء مستقل يمكن استعماله عبر مدقق الـ V8 و عميل تصحيح الأخطاء المدمج. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -24,6 +24,7 @@ debug
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+
 ```js
 // myscript.js
 global.x = 5;
