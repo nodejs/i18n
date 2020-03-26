@@ -2,9 +2,9 @@
 
 ## Hintergrund
 
-V8 folgt dem Chrom-Release-Zeitplan. Der Unterstützungshorizont für Chromium ist anders als der Support-Horizont für Node.js. Als Ergebnis wird Node.js muss mehrere Versionen von V8 länger unterstützen als Upstream benötigt zu unterstützen. Der V8 Store bei Node.js hat keinen offiziellen Wartungsprozess zu einem nicht unterstützten Zweig von LTS verloren.
+V8 folgt dem Chrom-Release-Zeitplan. The support horizon for Chromium is different compared to the support horizon for Node.js. As a result, Node.js needs to support multiple versions of V8 longer than what upstream needs to support. V8 branches in Node.js lack of an official maintenance process due to a missing LTS supported branch.
 
-Dieses Dokument versucht den aktuellen Wartungsprozess zu beschreiben, schlägt vor Workflow zum Verwalten des V8-Zweigs in Node.js LTS und aktuell an veröffentlicht und erläutert, wie Node.js und V8-Teams bei Google helfen können.
+This document attempts to outline the current maintenance processes, proposes a workflow for maintaining the V8 branches in both Node.js LTS and current releases, and discusses how the Node.js and V8 teams at Google can help.
 
 ## V8 Release Zeitplan
 
@@ -20,7 +20,7 @@ Alle älteren Zweige sind aufgegeben und werden nicht vom V8-Team gewartet.
 
 ### V8-Merge-Prozess-Übersicht
 
-Der Prozess für die Rückportierung von Fehlerkorrekturen in aktive Zweige ist offiziell dokumentiert [im V8-Wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Der Zusammenfassung des Prozesses ist:
+The process for backporting bug fixes to active branches is officially documented [on the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Der Zusammenfassung des Prozesses ist:
 
 * V8 unterstützt nur aktive Zweige. There is no testing done on any branches older than the current stable/beta/master.
 * A fix needing backport is tagged w/ *merge-request-x.x* tag. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
@@ -31,7 +31,7 @@ Der Prozess für die Rückportierung von Fehlerkorrekturen in aktive Zweige ist 
 
 ## Node.js-Supportanforderungen
 
-Zu einem bestimmten Zeitpunkt muss Node.js einige verschiedene V8-Zweige verwalten für die verschiedenen Current, LTS und Nightly werden. Zur zeit diese liste enthält die folgenden zweige<sup>1</sup>:
+At any given time Node.js needs to be maintaining a few different V8 branches for the various Current, LTS, and nightly releases. At present this list includes the following branches<sup>1</sup>:
 
 <table>
   <tr>
@@ -120,37 +120,37 @@ Zu einem bestimmten Zeitpunkt muss Node.js einige verschiedene V8-Zweige verwalt
   </tr>
 </table>
 
-Die versionen von V8, die in Node.js v4.x, v6.x und 8.x verwendet wurden, waren bereits vorhanden aufgegeben von stromaufwärts V8. Node.js muss jedoch weiterhin unterstützt werden diese Zweige für viele Monate (Aktuelle Zweige) oder mehrere Jahre (LTS-Filialen).
+The versions of V8 used in Node.js v4.x, v6.x, and 8.x have already been abandoned by upstream V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
 
 ## Wartungsprozess
 
-Sobald ein Fehler in Node.js durch V8 verursacht wurde, ist der erste Schritt Identifizieren der Versionen von Node.js und V8 betroffen. Der Fehler kann in vorhanden sein mehrere verschiedene Orte, von denen jeder eine etwas andere folgt verarbeiten.
+Once a bug in Node.js has been identified to be caused by V8, the first step is to identify the versions of Node.js and V8 affected. The bug may be present in multiple different locations, each of which follows a slightly different process.
 
 * Unfixed bugs. The bug exists in the V8 master branch.
-* Fixed, but needs backport. The bug may need porting to one or more branches.
+* Fixed, but needs backport. The bug may need porting to one or more branches. 
   * Backporting to active branches.
   * Backporting to abandoned branches.
 * Backports identified by the V8 team. Bugs identified by upstream V8 that we haven't encountered in Node.js yet.
 
 ### Unfixierten vorgelagerten bugs
 
-Wenn der Fehler auf dem Zweig [Node.js `Kanarienvogel` Zweig] reproduziert werden kann, oder V8- Tip-of-tree, und der Testfall ist gültig, dann muss der Fehler behoben werden stromaufwärts zuerst.
+If the bug can be reproduced on the [Node.js `canary` branch], Chromium canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed upstream first.
 
 * Beginnen Sie mit dem Öffnen eines Fehlers mit [dieser Vorlage](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
 * Make sure to include a link to the corresponding Node.js issue (if one exists).
 * If the fix is simple enough, you may fix it yourself; [contributions](https://github.com/v8/v8/wiki/Contributing) are welcome.
 * Der Build-Wasserfall von V8 testet Ihre Veränderung.
-* Sobald der Fehler behoben ist, muss er möglicherweise noch zurückportiert werden, wenn er in einem anderen V8 vorhanden ist Zweige, die noch aktiv sind oder Zweige sind, die Node.js interessiert. Befolgen Sie den folgenden Vorgang für die Rückportierung.
+* Once the bug is fixed it may still need backporting, if it exists in other V8 branches that are still active or are branches that Node.js cares about. Befolgen Sie den folgenden Vorgang für die Rückportierung.
 
 ### Zurück zu Active Branches
 
-Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir möglicherweise das Update erhalten rückportiert. Zu jeder gegebenen Zeit gibt es [zwei aktive Zweige](https://build.chromium.org/p/client.v8.branches/console) (Beta und stall) zusätzlich zum Maister. Die folgenden Schritte sind erforderlich den Fix rückportieren:
+If the bug exists in any of the active V8 branches, we may need to get the fix backported. At any given time there are [two active branches](https://build.chromium.org/p/client.v8.branches/console) (beta and stable) in addition to master. The following steps are needed to backport the fix:
 
 * Identify which version of V8 the bug was fixed in.
 * Identify if any active V8 branches still contain the bug:
-* A tracking bug is needed to request a backport.
-  * Wenn nicht bereits ein V8-Fehler den Fix verfolgt, öffnen Sie eine neue Zusammenführungsanforderung Fehler mit dieser [Node.js spezifischen Vorlage ](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
-  * If a bug already exists
+* A tracking bug is needed to request a backport. 
+  * If there isn't already a V8 bug tracking the fix, open a new merge request bug using this [Node.js specific template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
+  * If a bug already exists 
     * Add a reference to the GitHub issue.
     * Attach *merge-request-x.x* labels to the bug for any active branches that still contain the bug. (e.g. merge-request-5.3, merge-request-5.4)
     * Add ofrobots-at-google.com to the cc list.
@@ -160,14 +160,14 @@ Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir mögli
 
 ### Backporting zu verlassenen Niederlassungen
 
-Zweig V8 Links wird im repository-Knoten unterstützt.js. Das Update benötigt werden handverlesene, in den Knoten.js repository und V8-CI müssen die änderung testen.
+Zweig V8 Links wird im repository-Knoten unterstützt.js. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
 
-* For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug:
+* For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug: 
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
   * Cherry-pick the commit(s) from the V8 repository.
-  * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. Dies wird keine Probleme mit der Versionierung verursachen, weil V8 dies nicht tut Veröffentlichen Sie andere Patches für diesen Zweig, damit Node.js die Patch-Version.
+  * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
   * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
-  * In einigen Fällen erfordert der Patch möglicherweise zusätzlichen Aufwand, um zu verschmelzen, falls V8 hat wesentlich verändert. Bei wichtigen Fragen können wir uns auf die V8-Team, um Hilfe bei der Neuimplementierung des Patches zu erhalten.
+  * In some cases the patch may require extra effort to merge in case V8 has changed substantially. For important issues we may be able to lean on the V8 team to get help with reimplementing the patch.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
   * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
 
@@ -249,9 +249,9 @@ We upgrade the version of V8 in Node.js master whenever a V8 release goes stable
 Upgrading major versions would be much harder to do with the patch mechanism above. A better strategy is to
 
 1. Audit the current master branch and look at the patches that have been floated since the last major V8 update.
-1. Replace the copy of V8 in Node.js with a fresh checkout of the latest stable V8 branch. Special care must be taken to recursively update the DEPS that V8 has a compile time dependency on (at the moment of this writing, these are only trace_event and gtest_prod.h)
-1. Reset the `v8_embedder_string` variable to "-node.0" in `common.gypi`.
-1. Refloat (cherry-pick) all the patches from list computed in 1) as necessary. Some of the patches may no longer be necessary.
+2. Replace the copy of V8 in Node.js with a fresh checkout of the latest stable V8 branch. Special care must be taken to recursively update the DEPS that V8 has a compile time dependency on (at the moment of this writing, these are only trace_event and gtest_prod.h)
+3. Reset the `v8_embedder_string` variable to "-node.0" in `common.gypi`.
+4. Refloat (cherry-pick) all the patches from list computed in 1) as necessary. Some of the patches may no longer be necessary.
 
 To audit for floating patches:
 
@@ -285,6 +285,7 @@ This would require some tooling to:
 * Enabled the V8-CI build in Jenkins to build from the `nodejs/v8` fork.
 
 <!-- Footnotes themselves at the bottom. -->
+
 ### Notes
 
 <sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
