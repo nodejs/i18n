@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 `os` 模块提供了一些和操作系统相关的实用方法。 可以通过如下方式访问：
 
@@ -11,6 +11,7 @@ const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -23,41 +24,44 @@ added: v0.7.8
 * `\r\n` 在 Windows 系统上
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
 
 * 返回：{string}
 
-`os.arch()` 方法返回用于标识 Node.js 二进制文件在其中进行编译的操作系统 CPU 架构的字符串。
+The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-当前的可能值包括：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-它们等同于 [`process.arch`][]。
+等同于 [`process.arch`][]。
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
 
 * {Object}
 
-返回一个包含错误码，进程信号等常用的操作系统特定常量的对象。 目前定义的这些特定常量在 [操作系统常量](#os_os_constants_1) 中被描述。
+Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * 返回：{Array}
 
-`os.cpus()` 方法返回一个包含每个逻辑 CPU 内核信息的对象数组。
+The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
 在每个对象中包含的属性包括：
 
 * `model` {string}
 * `speed` {number} (以 MHz 为单位)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} 在用户模式下使用的 CPU 毫秒数。
   * `nice` {number} 在良好模式下使用的 CPU 毫秒数。
   * `sys` {number} 在系统模式下使用的 CPU 毫秒数。
@@ -65,6 +69,7 @@ added: v0.3.3
   * `irq` {number} 在中断模式下使用的 CPU 毫秒数。
 
 例如：
+
 ```js
 [
   {
@@ -162,7 +167,9 @@ added: v0.3.3
 
 ## os.endianness()<!-- YAML
 added: v0.9.4
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
@@ -173,42 +180,51 @@ The `os.endianness()` method returns a string identifying the endianness of the 
 
 ## os.freemem()<!-- YAML
 added: v0.3.3
--->* 返回：{integer}
+-->
 
-`os.freemem()` 方法返回以整型数表示的空闲系统内存字节数。
+* 返回：{integer}
+
+The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
 ## os.homedir()<!-- YAML
 added: v2.3.0
--->* 返回：{string}
+-->
 
-`os.homedir()` 方法以字符串方式返回当前用户的主目录。
+* 返回：{string}
+
+The `os.homedir()` method returns the home directory of the current user as a string.
 
 ## os.hostname()<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
 
-`os.hostname()` 方法以字符串方式返回操作系统的主机名。
+* 返回：{string}
+
+The `os.hostname()` method returns the hostname of the operating system as a string.
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * 返回：{Array}
 
-`os.loadavg()` 方法返回包含1，5，和15分钟平均负载的数组。
+The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
-平均负载是一个系统活动的指标，由操作系统计算得出，并以分数形式表示。 作为一个经验法则，在理想情况下平均负载应小于系统中的逻辑 CPU 数目。
+The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
 
-平均负载是一个特定于 UNIX 的概念，在 Windows 平台上没有对应概念。 在 Windows 系统上，其返回值始终为 `[0, 0, 0]`。
+The load average is a UNIX-specific concept with no real equivalent on Windows platforms. 在 Windows 系统上，其返回值始终为 `[0, 0, 0]`。
 
 ## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->* 返回：{Object}
+-->
 
-`os.networkInterfaces()` 方法返回一个只包含被分配了网址的网络接口的对象。
+* 返回：{Object}
 
-在返回对象中，每个键值标识了一个网络接口。 相关的值是一个对象数组，其中每个对象描述一个被分配的网址。
+The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+
+在返回对象中，每个键值标识了一个网络接口。 The associated value is an array of objects that each describe an assigned network address.
 
 被赋予网络地址的对象包含的属性包括：
 
@@ -216,9 +232,10 @@ added: v0.6.0
 * `netmask` {string} IPv4 或 IPv6 网络掩码
 * `family` {string} `IPv4` 或 `IPv6`
 * `mac` {string} 网络接口的 MAC 地址
-* `internal` {boolean} 当网络接口为 loopback 或相似的不能远程访问的接口时，其值为 `true`，否则其值为 `false`
-* `scopeid` {number} 数字型的 IPv6 域 ID (只有当 `family` 为`IPv6` 时需要指定)
-* `cidr` {string} 以 CIDR 表示法分配的带有路由前缀的 IPv4 或 IPv6 地址。 `netmask` 不可用，此属性会被设置为 `null`
+* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
+
 ```js
 {
   lo: [
@@ -262,9 +279,11 @@ added: v0.6.0
 
 ## os.platform()<!-- YAML
 added: v0.5.0
--->* 返回：{string}
+-->
 
-`os.platform()` 方法返回一个在编译 Node.js 时设置的用于标识操作系统平台的字符串。
+* 返回：{string}
+
+The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
 当前可能的值包括：
 
@@ -282,41 +301,50 @@ added: v0.5.0
 
 ## os.release()<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
 
-`os.release()` 方法返回一个用于标识操作系统版本的字符串。
+* 返回：{string}
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
+The `os.release()` method returns a string identifying the operating system release.
+
+*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* 返回：{string}
+-->
 
-`os.tmpdir()` 方法返回一个字符串，用于标识操作系统中存放临时文件的默认目录。
+* 返回：{string}
+
+The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
 ## os.totalmem()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * 返回：{integer}
 
-`os.totalmem()` 方法返回代表系统内存总字节数的整数。
+The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
 ## os.type()<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
 
-和 [uname(3)](https://linux.die.net/man/3/uname) 的返回值一样，`os.type()` 方法返回一个标识操作系统名称的字符串。 例如：在 Linux 系统上为 `'Linux'`，在 macOS 系统上为 `'Darwin'`，在 Windows 系统上为 `'Windows_NT'`。
+* 返回：{string}
 
-请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取在不同操作系统上运行 [uname(3)](https://linux.die.net/man/3/uname) 时输出的更多信息。
+The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
+
+Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
 
 ## os.uptime()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -325,30 +353,36 @@ added: v0.3.3
 
 `os.uptime()` 方法返回以秒计的系统运行时间。
 
-*Note*: On Windows the returned value includes fractions of a second. 使用 `Math.floor()` 来获取整秒值。
+*注意*：在 Windows 系统上，返回值精确到几分之一秒。 使用 `Math.floor()` 来获取整秒值。
 
 ## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->* `options` {Object}
-  * `encoding` {string} 用于解释结果字符串的字符编码。 如果 `encoding` 被设置为 `'buffer'`，则 `username`, `shell`, 和 `homedir` 将会是 `Buffer` 的实例。 **默认值:**`‘utf8'`。
+-->
+
+* `options` {Object}
+  
+  * `encoding` {string} 用于解释结果字符串的字符编码。 If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **默认值:**`‘utf8'`。
 * 返回：{Object}
 
-The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. 返回的对象包括：`username`, `uid`, `gid`, `shell`, 以及 `homedir`。 在 Windows 系统上，`uid` 和 `gid` 字段值为 `-1`，`shell` 的值为 `null`。
+The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. 在 Windows 系统上，`uid` 和 `gid` 字段值为 `-1`，`shell` 的值为 `null`。
 
-`os.userInfo()` 返回的 `homedir` 值由操作系统提供。 这和 `os.homedir()` 的结果不同，后者会查询几个环境变量以获取主目录，如果找不到才会使用操作系统的返回值。
+The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
 ## 操作系统常量
 
 `os.constants` 会导出如下常量。
 
-*Note*: Not all constants will be available on every operating system.
+*注意*：并非所有常量在每个操作系统上都可用。
 
-### 信号常量<!-- YAML
+### Signal Constants<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->如下的信号常量由 `os.constants.signals` 导出：
+-->The following signal constants are exported by 
+
+`os.constants.signals`:
 
 <table>
   <tr>
@@ -503,7 +537,7 @@ changes:
 
 ### 错误常量
 
-如下的错误常量由 `os.constants.errno` 导出：
+The following error constants are exported by `os.constants.errno`:
 
 #### POSIX 错误常量
 
@@ -833,7 +867,7 @@ changes:
 
 #### Windows 系统特定的错误常量。
 
-如下的错误码专门针对 Windows 操作系统：
+The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
@@ -1086,4 +1120,3 @@ changes:
     <td></td>
   </tr>
 </table>
-
