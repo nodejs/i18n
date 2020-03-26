@@ -142,9 +142,10 @@ The default cipher suite prefers GCM ciphers for [Chrome's 'modern cryptography'
 
 128 bit AES is preferred over 192 and 256 bit AES in light of [specific attacks affecting larger AES key sizes].
 
-Old clients that rely on insecure and deprecated RC4 or DES-based ciphers (like Internet Explorer 6) cannot complete the handshaking process with the default configuration. If these clients _must_ be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT).
+Old clients that rely on insecure and deprecated RC4 or DES-based ciphers (like Internet Explorer 6) cannot complete the handshaking process with the default configuration. If these clients *must* be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT).
 
 ## Class: tls.Server
+
 <!-- YAML
 added: v0.3.2
 -->
@@ -152,6 +153,7 @@ added: v0.3.2
 The `tls.Server` class is a subclass of `net.Server` that accepts encrypted connections using TLS or SSL.
 
 ### Event: 'newSession'
+
 <!-- YAML
 added: v0.9.2
 -->
@@ -165,6 +167,7 @@ The `'newSession'` event is emitted upon creation of a new TLS session. This may
 *Note*: Listening for this event will have an effect only on connections established after the addition of the event listener.
 
 ### Event: 'OCSPRequest'
+
 <!-- YAML
 added: v0.11.13
 -->
@@ -196,6 +199,7 @@ The typical flow of an OCSP Request is as follows:
 *Note*: An npm module like [asn1.js](https://npmjs.org/package/asn1.js) may be used to parse the certificates.
 
 ### Event: 'resumeSession'
+
 <!-- YAML
 added: v0.9.2
 -->
@@ -223,6 +227,7 @@ server.on('resumeSession', (id, cb) => {
 ```
 
 ### Event: 'secureConnection'
+
 <!-- YAML
 added: v0.3.2
 -->
@@ -240,6 +245,7 @@ When ALPN has no selected protocol, `tlsSocket.alpnProtocol` returns `false`.
 The `tlsSocket.servername` property is a string containing the server name requested via SNI.
 
 ### Event: 'tlsClientError'
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -250,6 +256,7 @@ The `'tlsClientError'` event is emitted when an error occurs before a secure con
 * `tlsSocket` {tls.TLSSocket} The `tls.TLSSocket` instance from which the error originated.
 
 ### server.addContext(hostname, context)
+
 <!-- YAML
 added: v0.5.3
 -->
@@ -260,6 +267,7 @@ added: v0.5.3
 The `server.addContext()` method adds a secure context that will be used if the client request's SNI hostname matches the supplied `hostname` (or wildcard).
 
 ### server.address()
+
 <!-- YAML
 added: v0.6.0
 -->
@@ -267,6 +275,7 @@ added: v0.6.0
 Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
 
 ### server.close([callback])
+
 <!-- YAML
 added: v0.3.2
 -->
@@ -278,6 +287,7 @@ The `server.close()` method stops the server from accepting new connections.
 This function operates asynchronously. The `'close'` event will be emitted when the server has no more open connections.
 
 ### server.connections
+
 <!-- YAML
 added: v0.3.2
 deprecated: v0.9.7
@@ -288,6 +298,7 @@ deprecated: v0.9.7
 Returns the current number of concurrent connections on the server.
 
 ### server.getTicketKeys()
+
 <!-- YAML
 added: v3.0.0
 -->
@@ -299,6 +310,7 @@ Returns a `Buffer` instance holding the keys currently used for encryption/decry
 Starts the server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### server.setTicketKeys(keys)
+
 <!-- YAML
 added: v3.0.0
 -->
@@ -311,8 +323,8 @@ Updates the keys for encryption/decryption of the [TLS Session Tickets](https://
 
 *Note*: Changes to the ticket keys are effective only for future server connections. Existing or currently pending server connections will use the previous keys.
 
-
 ## Class: tls.TLSSocket
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -324,18 +336,19 @@ Instances of `tls.TLSSocket` implement the duplex [Stream](stream.html#stream_st
 *Note*: Methods that return TLS connection metadata (e.g. [`tls.TLSSocket.getPeerCertificate()`][] will only return data while the connection is open.
 
 ### new tls.TLSSocket(socket[, options])
+
 <!-- YAML
 added: v0.11.4
 changes:
+
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2564
     description: ALPN options are supported now.
 -->
 
-* `socket` {net.Socket|stream.Duplex}
-On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
-* `options` {Object}
-  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Standaard:** `false`.
+* `socket` {net.Socket|stream.Duplex} On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
+* `opties` {Object} 
+  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Default:** `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance.
   * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Clients always request a server certificate. Servers (`isServer` is true) may optionally set `requestCert` to true to request a client certificate.
   * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
@@ -344,12 +357,13 @@ On the server side, any `Duplex` stream. On the client side, any instance of [`n
   * `SNICallback`: Optional, see [`tls.createServer()`][]
   * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
   * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
-  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is _not_ provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
+  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
 
 Construct a new `tls.TLSSocket` object from an existing TCP socket.
 
 ### Event: 'OCSPResponse'
+
 <!-- YAML
 added: v0.11.13
 -->
@@ -361,6 +375,7 @@ The `'OCSPResponse'` event is emitted if the `requestOCSP` option was set when t
 Typically, the `response` is a digitally signed object from the server's CA that contains information about server's certificate revocation status.
 
 ### Event: 'secureConnect'
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -368,6 +383,7 @@ added: v0.11.4
 The `'secureConnect'` event is emitted after the handshaking process for a new connection has successfully completed. The listener callback will be called regardless of whether or not the server's certificate has been authorized. It is the client's responsibility to check the `tlsSocket.authorized` property to determine if the server certificate was signed by one of the specified CAs. If `tlsSocket.authorized === false`, then the error can be found by examining the `tlsSocket.authorizationError` property. If either ALPN or NPN was used, the `tlsSocket.alpnProtocol` or `tlsSocket.npnProtocol` properties can be checked to determine the negotiated protocol.
 
 ### tlsSocket.address()
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -375,6 +391,7 @@ added: v0.11.4
 Returns the bound address, the address family name, and port of the underlying socket as reported by the operating system. Returns an object with three properties, e.g. `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### tlsSocket.authorizationError
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -382,6 +399,7 @@ added: v0.11.4
 Returns the reason why the peer's certificate was not been verified. This property is set only when `tlsSocket.authorized === false`.
 
 ### tlsSocket.authorized
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -389,6 +407,7 @@ added: v0.11.4
 Returns `true` if the peer certificate was signed by one of the CAs specified when creating the `tls.TLSSocket` instance, otherwise `false`.
 
 ### tlsSocket.disableRenegotiation()
+
 <!-- YAML
 added: v8.4.0
 -->
@@ -396,6 +415,7 @@ added: v8.4.0
 Disables TLS renegotiation for this `TLSSocket` instance. Once called, attempts to renegotiate will trigger an `'error'` event on the `TLSSocket`.
 
 ### tlsSocket.encrypted
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -403,6 +423,7 @@ added: v0.11.4
 Always returns `true`. This may be used to distinguish TLS sockets from regular `net.Socket` instances.
 
 ### tlsSocket.getCipher()
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -414,6 +435,7 @@ For example: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`
 See `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.0.2/ssl/SSL_CIPHER_get_name.html for more information.
 
 ### tlsSocket.getEphemeralKeyInfo()
+
 <!-- YAML
 added: v5.0.0
 -->
@@ -423,6 +445,7 @@ Returns an object representing the type, name, and size of parameter of an ephem
 For Example: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`
 
 ### tlsSocket.getFinished()
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -434,6 +457,7 @@ As the `Finished` messages are message digests of the complete handshake (with a
 Corresponds to the `SSL_get_finished` routine in OpenSSL and may be used to implement the `tls-unique` channel binding from [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
 ### tlsSocket.getPeerCertificate([detailed])
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -473,6 +497,7 @@ For example:
 If the peer does not provide a certificate, an empty object will be returned.
 
 ### tlsSocket.getPeerFinished()
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -484,6 +509,7 @@ As the `Finished` messages are message digests of the complete handshake (with a
 Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to implement the `tls-unique` channel binding from [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
 ### tlsSocket.getProtocol()
+
 <!-- YAML
 added: v5.7.0
 -->
@@ -500,6 +526,7 @@ Example responses include:
 See https://www.openssl.org/docs/man1.0.2/ssl/SSL_get_version.html for more information.
 
 ### tlsSocket.getSession()
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -507,6 +534,7 @@ added: v0.11.4
 Returns the ASN.1 encoded TLS session or `undefined` if no session was negotiated. Can be used to speed up handshake establishment when reconnecting to the server.
 
 ### tlsSocket.getTLSTicket()
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -516,6 +544,7 @@ Returns the TLS session ticket or `undefined` if no session was negotiated.
 *Note*: This only works with client TLS sockets. Useful only for debugging, for session reuse provide `session` option to [`tls.connect()`][].
 
 ### tlsSocket.localAddress
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -523,6 +552,7 @@ added: v0.11.4
 Returns the string representation of the local IP address.
 
 ### tlsSocket.localPort
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -530,6 +560,7 @@ added: v0.11.4
 Returns the numeric representation of the local port.
 
 ### tlsSocket.remoteAddress
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -537,6 +568,7 @@ added: v0.11.4
 Returns the string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`.
 
 ### tlsSocket.remoteFamily
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -544,6 +576,7 @@ added: v0.11.4
 Returns the string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 
 ### tlsSocket.remotePort
+
 <!-- YAML
 added: v0.11.4
 -->
@@ -551,11 +584,12 @@ added: v0.11.4
 Returns the numeric representation of the remote port. For example, `443`.
 
 ### tlsSocket.renegotiate(options, callback)
+
 <!-- YAML
 added: v0.11.8
 -->
 
-* `options` {Object}
+* `opties` {Object} 
   * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
   * `requestCert`
 * `callback` {Function} A function that will be called when the renegotiation request has been completed.
@@ -567,6 +601,7 @@ The `tlsSocket.renegotiate()` method initiates a TLS renegotiation process. Upon
 *Note*: When running as the server, the socket will be destroyed with an error after `handshakeTimeout` timeout.
 
 ### tlsSocket.setMaxSendFragment(size)
+
 <!-- YAML
 added: v0.11.11
 -->
@@ -578,6 +613,7 @@ The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. 
 Smaller fragment sizes decrease the buffering latency on the client: larger fragments are buffered by the TLS layer until the entire fragment is received and its integrity is verified; large fragments can span multiple roundtrips and their processing can be delayed due to packet loss or reordering. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
 
 ## tls.checkServerIdentity(host, cert)
+
 <!-- YAML
 added: v0.8.4
 -->
@@ -621,9 +657,11 @@ The cert object contains the parsed certificate and will have a structure simila
 ```
 
 ## tls.connect(options[, callback])
+
 <!-- YAML
 added: v0.11.3
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12839
     description: The `lookup` option is supported now.
@@ -639,20 +677,19 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `options` {Object}
+* `opties` {Object} 
   * `host` {string} Host the client should connect to. **Default:** `'localhost'`.
   * `port` {number} Port the client should connect to.
   * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
   * `socket` {stream.Duplex} Establish secure connection on a given socket rather than creating a new socket. Typically, this is an instance of [`net.Socket`][], but any `Duplex` stream is allowed. If this option is specified, `path`, `host` and `port` are ignored, except for certificate validation. Usually, a socket is already connected when passed to `tls.connect()`, but it can be connected later. Note that connection/disconnection/destruction of `socket` is the user's responsibility, calling `tls.connect()` will not cause `net.connect()` to be called.
   * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
-  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array}
-An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
+  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
   * `servername`: {string} Server name for the SNI (Server Name Indication) TLS extension.
   * `checkServerIdentity(servername, cert)` {Function} A callback function to be used (instead of the builtin `tls.checkServerIdentity()` function) when checking the server's hostname (or the provided `servername` when explicitly set) against the certificate. This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
   * `session` {Buffer} A `Buffer` instance, containing TLS session.
   * `minDHSize` {number} Minimum size of the DH parameter in bits to accept a TLS connection. When a server offers a DH parameter with a size less than `minDHSize`, the TLS connection is destroyed and an error is thrown. **Default:** `1024`.
-  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is _not_ provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
+  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * `lookup`: {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
   * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
 * `callback` {Function}
@@ -717,6 +754,7 @@ socket.on('end', () => {
 ```
 
 ## tls.connect(path\[, options\]\[, callback\])
+
 <!-- YAML
 added: v0.11.3
 -->
@@ -730,6 +768,7 @@ Same as [`tls.connect()`][] except that `path` can be provided as an argument in
 *Note*: A path option, if specified, will take precedence over the path argument.
 
 ## tls.connect(port\[, host\]\[, options\][, callback])
+
 <!-- YAML
 added: v0.11.3
 -->
@@ -743,11 +782,12 @@ Same as [`tls.connect()`][] except that `port` and `host` can be provided as arg
 
 *Note*: A port or host option, if specified, will take precedence over any port or host argument.
 
-
 ## tls.createSecureContext(options)
+
 <!-- YAML
 added: v0.11.13
 changes:
+
   - version: v7.3.0
     pr-url: https://github.com/nodejs/node/pull/10294
     description: If the `key` option is an array, individual entries do not
@@ -759,7 +799,7 @@ changes:
                  CA certificates.
 -->
 
-* `options` {Object}
+* `opties` {Object} 
   * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} Optional PFX or PKCS12 encoded private key and certificate chain. `pfx` is an alternative to providing `key` and `cert` individually. PFX is usually encrypted, if it is, `passphrase` will be used to decrypt it. Multiple PFX can be provided either as an array of unencrypted PFX buffers, or an array of objects in the form `{buf: <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted PFX will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
   * `key` {string|string[]|Buffer|Buffer[]|Object[]} Optional private keys in PEM format. PEM allows the option of private keys being encrypted. Encrypted keys will be decrypted with `options.passphrase`. Multiple keys using different algorithms can be provided either as an array of unencrypted key strings or buffers, or an array of objects in the form `{pem:
 <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted keys will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
@@ -787,11 +827,12 @@ A key is *required* for ciphers that make use of certificates. Either `key` or `
 
 If the 'ca' option is not given, then Node.js will use the default publicly trusted list of CAs as given in <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
 
-
 ## tls.createServer(\[options\]\[, secureConnectionListener\])
+
 <!-- YAML
 added: v0.3.2
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11984
     description: The `ALPNProtocols` and `NPNProtocols` options can
@@ -801,12 +842,11 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `options` {Object}
+* `opties` {Object} 
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
   * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **Default:** `false`.
   * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
-  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array}
-An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
+  * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
   * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a SecureContext instance. (`tls.createSecureContext(...)` can be used to get a proper SecureContext.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
   * `sessionTimeout` {number} An integer specifying the number of seconds after which the TLS session identifiers and TLS session tickets created by the server will time out. See [SSL_CTX_set_timeout](https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_timeout.html) for more details.
@@ -880,6 +920,7 @@ openssl s_client -connect 127.0.0.1:8000
 ```
 
 ## tls.getCiphers()
+
 <!-- YAML
 added: v0.10.2
 -->
@@ -893,16 +934,17 @@ console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
 ```
 
 ## tls.DEFAULT_ECDH_CURVE
+
 <!-- YAML
 added: v0.11.13
 -->
 
 The default curve name to use for ECDH key agreement in a tls server. The default value is `'prime256v1'` (NIST P-256). Consult [RFC 4492](https://www.rfc-editor.org/rfc/rfc4492.txt) and [FIPS.186-4](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) for more details.
 
-
 ## Afgekeurde API's
 
 ### Class: CryptoStream
+
 <!-- YAML
 added: v0.3.4
 deprecated: v0.11.3
@@ -913,6 +955,7 @@ deprecated: v0.11.3
 The `tls.CryptoStream` class represents a stream of encrypted data. This class has been deprecated and should no longer be used.
 
 #### cryptoStream.bytesWritten
+
 <!-- YAML
 added: v0.3.4
 deprecated: v0.11.3
@@ -921,6 +964,7 @@ deprecated: v0.11.3
 The `cryptoStream.bytesWritten` property returns the total number of bytes written to the underlying socket *including* the bytes required for the implementation of the TLS protocol.
 
 ### Class: SecurePair
+
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
@@ -931,6 +975,7 @@ deprecated: v0.11.3
 Returned by [`tls.createSecurePair()`][].
 
 #### Event: 'secure'
+
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
@@ -941,10 +986,12 @@ The `'secure'` event is emitted by the `SecurePair` object once a secure connect
 As with checking for the server [`secureConnection`](#tls_event_secureconnection) event, `pair.cleartext.authorized` should be inspected to confirm whether the certificate used is properly authorized.
 
 ### tls.createSecurePair(\[context\]\[, isServer\]\[, requestCert\]\[, rejectUnauthorized\][, options])
+
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
 changes:
+
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2564
     description: ALPN options are supported now.
@@ -956,7 +1003,7 @@ changes:
 * `isServer` {boolean} `true` to specify that this TLS connection should be opened as a server.
 * `requestCert` {boolean} `true` to specify whether a server should request a certificate from a connecting client. Only applies when `isServer` is `true`.
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
-* `opties`
+* `opties` 
   * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
   * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Standaard:** `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance
