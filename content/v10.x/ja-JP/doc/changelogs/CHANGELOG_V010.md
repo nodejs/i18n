@@ -1,70 +1,76 @@
-# Node.js 0.10 変更履歴
+# Node.js 0.10 ChangeLog
 
 <!--lint disable prohibited-strings-->
+
 <!--lint disable maximum-line-length-->
 
 <table>
+  
 <tr>
 <th colspan="2">Stable</th>
 </tr>
-<tr>
-<td valign="top">
-<a href="#0.10.48">0.10.48</a><br/>
-<a href="#0.10.47">0.10.47</a><br/>
-<a href="#0.10.46">0.10.46</a><br/>
-<a href="#0.10.45">0.10.45</a><br/>
-<a href="#0.10.44">0.10.44</a><br/>
-<a href="#0.10.43">0.10.43</a><br/>
-<a href="#0.10.42">0.10.42</a><br/>
-<a href="#0.10.41">0.10.41</a><br/>
-<a href="#0.10.40">0.10.40</a><br/>
-<a href="#0.10.39">0.10.39</a><br/>
-<a href="#0.10.38">0.10.38</a><br/>
-<a href="#0.10.37">0.10.37</a><br/>
-<a href="#0.10.36">0.10.36</a><br/>
-<a href="#0.10.35">0.10.35</a><br/>
-<a href="#0.10.34">0.10.34</a><br/>
-<a href="#0.10.33">0.10.33</a><br/>
-<a href="#0.10.32">0.10.32</a><br/>
-<a href="#0.10.31">0.10.31</a><br/>
-<a href="#0.10.30">0.10.30</a><br/>
-<a href="#0.10.29">0.10.29</a><br/>
-<a href="#0.10.28">0.10.28</a><br/>
-<a href="#0.10.27">0.10.27</a><br/>
-<a href="#0.10.26">0.10.26</a><br/>
-<a href="#0.10.25">0.10.25</a><br/>
-<a href="#0.10.24">0.10.24</a><br/>
-<a href="#0.10.23">0.10.23</a><br/>
-</td>
-<td valign="top">
-<a href="#0.10.22">0.10.22</a><br/>
-<a href="#0.10.21">0.10.21</a><br/>
-<a href="#0.10.20">0.10.20</a><br/>
-<a href="#0.10.19">0.10.19</a><br/>
-<a href="#0.10.18">0.10.18</a><br/>
-<a href="#0.10.17">0.10.17</a><br/>
-<a href="#0.10.16">0.10.16</a><br/>
-<a href="#0.10.15">0.10.15</a><br/>
-<a href="#0.10.14">0.10.14</a><br/>
-<a href="#0.10.13">0.10.13</a><br/>
-<a href="#0.10.12">0.10.12</a><br/>
-<a href="#0.10.11">0.10.11</a><br/>
-<a href="#0.10.10">0.10.10</a><br/>
-<a href="#0.10.9">0.10.9</a><br/>
-<a href="#0.10.8">0.10.8</a><br/>
-<a href="#0.10.7">0.10.7</a><br/>
-<a href="#0.10.6">0.10.6</a><br/>
-<a href="#0.10.5">0.10.5</a><br/>
-<a href="#0.10.4">0.10.4</a><br/>
-<a href="#0.10.3">0.10.3</a><br/>
-<a href="#0.10.2">0.10.2</a><br/>
-<a href="#0.10.1">0.10.1</a><br/>
-<a href="#0.10.0">0.10.0</a><br/>
-</td>
-</tr>
+  
+  <tr>
+    <td valign="top">
+      
+<a href="#0.10.48">0.10.48</a><br />
+<a href="#0.10.47">0.10.47</a><br />
+<a href="#0.10.46">0.10.46</a><br />
+<a href="#0.10.45">0.10.45</a><br />
+<a href="#0.10.44">0.10.44</a><br />
+<a href="#0.10.43">0.10.43</a><br />
+<a href="#0.10.42">0.10.42</a><br />
+<a href="#0.10.41">0.10.41</a><br />
+<a href="#0.10.40">0.10.40</a><br />
+<a href="#0.10.39">0.10.39</a><br />
+<a href="#0.10.38">0.10.38</a><br />
+<a href="#0.10.37">0.10.37</a><br />
+<a href="#0.10.36">0.10.36</a><br />
+<a href="#0.10.35">0.10.35</a><br />
+<a href="#0.10.34">0.10.34</a><br />
+<a href="#0.10.33">0.10.33</a><br />
+<a href="#0.10.32">0.10.32</a><br />
+<a href="#0.10.31">0.10.31</a><br />
+<a href="#0.10.30">0.10.30</a><br />
+<a href="#0.10.29">0.10.29</a><br />
+<a href="#0.10.28">0.10.28</a><br />
+<a href="#0.10.27">0.10.27</a><br />
+<a href="#0.10.26">0.10.26</a><br />
+<a href="#0.10.25">0.10.25</a><br />
+<a href="#0.10.24">0.10.24</a><br />
+<a href="#0.10.23">0.10.23</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.10.22">0.10.22</a><br />
+<a href="#0.10.21">0.10.21</a><br />
+<a href="#0.10.20">0.10.20</a><br />
+<a href="#0.10.19">0.10.19</a><br />
+<a href="#0.10.18">0.10.18</a><br />
+<a href="#0.10.17">0.10.17</a><br />
+<a href="#0.10.16">0.10.16</a><br />
+<a href="#0.10.15">0.10.15</a><br />
+<a href="#0.10.14">0.10.14</a><br />
+<a href="#0.10.13">0.10.13</a><br />
+<a href="#0.10.12">0.10.12</a><br />
+<a href="#0.10.11">0.10.11</a><br />
+<a href="#0.10.10">0.10.10</a><br />
+<a href="#0.10.9">0.10.9</a><br />
+<a href="#0.10.8">0.10.8</a><br />
+<a href="#0.10.7">0.10.7</a><br />
+<a href="#0.10.6">0.10.6</a><br />
+<a href="#0.10.5">0.10.5</a><br />
+<a href="#0.10.4">0.10.4</a><br />
+<a href="#0.10.3">0.10.3</a><br />
+<a href="#0.10.2">0.10.2</a><br />
+<a href="#0.10.1">0.10.1</a><br />
+<a href="#0.10.0">0.10.0</a><br />
+    </td>
+  </tr>
 </table>
 
-* その他のバージョン
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -74,7 +80,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [アーカイブ](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
 
@@ -103,9 +109,9 @@ This is a security release. All Node.js users should consult the security releas
 ### Notable changes:
 
 * buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
-* http:
-  - CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
-  - Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
+* http: 
+  * CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
+  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
 * openssl: Upgrade to 1.0.1u, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 and CVE-2016-6306.
 * tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian) (Ben Noordhuis)
 
@@ -149,9 +155,9 @@ This is a security release. All Node.js users should consult the security releas
 ### Notable changes:
 
 * npm: Correct erroneous version number in v2.15.1 code (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-  - Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
-  - See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
+* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
+  * Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
+  * See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
 
 ### Commits:
 
@@ -187,14 +193,14 @@ This is a security release. All Node.js users should consult the security releas
 ### Notable changes:
 
 * http_parser: Update to http-parser 1.2 to fix an unintentionally strict limitation of allowable header characters. (James M Snell) https://github.com/nodejs/node/pull/5242
-* domains:
-  - Prevent an exit due to an exception being thrown rather than emitting an `'uncaughtException'` event on the `process` object when no error handler is set on the domain within which an error is thrown and an `'uncaughtException'` event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-  - Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-* openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
-  - Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0705
-  - Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0797
-  - Fix a defect that makes the CacheBleed Attack (https://ssrg.nicta.com.au/projects/TS/cachebleed/) possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0702
-  - Remove SSLv2 support, the `--enable-ssl2` command line argument will now produce an error. The DROWN Attack (https://drownattack.com/) creates a vulnerability where SSLv2 is enabled by a server, even if a client connection is not using SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* domains: 
+  * Prevent an exit due to an exception being thrown rather than emitting an `'uncaughtException'` event on the `process` object when no error handler is set on the domain within which an error is thrown and an `'uncaughtException'` event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+  * Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+* openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508 
+  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0705
+  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are *unlikely* to be possible. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0797
+  * Fix a defect that makes the CacheBleed Attack (https://ssrg.nicta.com.au/projects/TS/cachebleed/) possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0702
+  * Remove SSLv2 support, the `--enable-ssl2` command line argument will now produce an error. The DROWN Attack (https://drownattack.com/) creates a vulnerability where SSLv2 is enabled by a server, even if a client connection is not using SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
 ### Commits:
 
@@ -217,12 +223,12 @@ This is an important security release. All Node.js users should consult the secu
 * http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * http-parser: upgrade from 1.0 to 1.1
 * openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
-* src:
-  - introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
-  - allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
-* build:
-  - xz compressed tar files will be made available from nodejs.org for v0.10 builds from v0.10.42 onward
-  - A headers.tar.gz file will be made available from nodejs.org for v0.10 builds from v0.10.42 onward, a future change to node-gyp will be required to make use of these
+* src: 
+  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
+  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
+* build: 
+  * xz compressed tar files will be made available from nodejs.org for v0.10 builds from v0.10.42 onward
+  * A headers.tar.gz file will be made available from nodejs.org for v0.10 builds from v0.10.42 onward, a future change to node-gyp will be required to make use of these
 
 ### Commits
 
@@ -377,9 +383,9 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * uv: Update to v0.10.29
 * child_process: properly support optional args (cjihrig)
 * crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
-
+  
   This is a behavior change, by default we will not allow the negotiation to SSLv2 or SSLv3. If you want this behavior, run Node.js with either `--enable-ssl2` or `--enable-ssl3` respectively.
-
+  
   This does not change the behavior for users specifically requesting `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is assumed you know what you're doing since you're specifically asking to use these methods.
 
 <a id="0.10.32"></a>
@@ -442,9 +448,11 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * openssl: to 1.0.1h (CVE-2014-0224)
 * npm: upgrade to 1.4.14
 * utf8: Prevent Node from sending invalid UTF-8 (Felix Geisendörfer)
-  - *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
+  
+  * *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
 
 * child_process: do not set args before throwing (Greg Sabia Tucker)
+
 * child_process: spawn() does not throw TypeError (Greg Sabia Tucker)
 * constants: export O_NONBLOCK (Fedor Indutny)
 * crypto: improve memory usage (Alexis Campailla)
@@ -587,8 +595,8 @@ https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
 
 https://github.com/nodejs/node/commit/d7234c8d50a1af73f60d2d3c0cc7eed17429a481
 
-* tls: fix sporadic hang and partial reads (Fedor Indutny)
-  - fixes "npm ERR! cb() never called!"
+* tls: fix sporadic hang and partial reads (Fedor Indutny) 
+  * fixes "npm ERR! cb() never called!"
 
 <a id="0.10.19"></a>
 
