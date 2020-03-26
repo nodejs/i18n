@@ -3,22 +3,22 @@
 There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
 
 * [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment)
+* [Setting up your local environment](#setting-up-your-local-environment) 
   * [Step 1: Fork](#step-1-fork)
   * [Step 2: Branch](#step-2-branch)
-* [The Process of Making Changes](#the-process-of-making-changes)
+* [The Process of Making Changes](#the-process-of-making-changes) 
   * [Step 3: Code](#step-3-code)
-  * [Step 4: Commit](#step-4-commit)
+  * [Step 4: Commit](#step-4-commit) 
     * [Commit message guidelines](#commit-message-guidelines)
   * [Step 5: Rebase](#step-5-rebase)
-  * [Step 6: Test](#step-6-test)
+  * [Step 6: Test](#step-6-test) 
     * [Test Coverage](#test-coverage)
   * [Step 7: Push](#step-7-push)
   * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
-  * [Step 9: Discuss and Update](#step-9-discuss-and-update)
+  * [Step 9: Discuss and Update](#step-9-discuss-and-update) 
     * [Approval and Request Changes Workflow](#approval-and-request-changes-workflow)
   * [Step 10: Landing](#step-10-landing)
-* [Reviewing Pull Requests](#reviewing-pull-requests)
+* [Reviewing Pull Requests](#reviewing-pull-requests) 
   * [Review a bit at a time](#review-a-bit-at-a-time)
   * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
   * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
@@ -27,7 +27,7 @@ There are two fundamental components of the Pull Request process: one concrete a
   * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Performance is not everything](#performance-is-not-everything)
   * [Continuous Integration Testing](#continuous-integration-testing)
-* [Notes](#notes)
+* [Notes](#notes) 
   * [Commit Squashing](#commit-squashing)
   * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
@@ -81,10 +81,12 @@ $ git checkout -b my-branch -t upstream/master
 ### Step 3: Code
 
 The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
-   - the C/C++ code contained in the `src` directory
-   - the JavaScript code contained in the `lib` directory
-   - the documentation in `doc/api`
-   - tests within the `test` directory.
+
+     - the C/C++ code contained in the `src` directory
+     - the JavaScript code contained in the `lib` directory
+     - the documentation in `doc/api`
+     - tests within the `test` directory.
+    
 
 If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
 
@@ -108,24 +110,28 @@ Note that multiple commits often get squashed when they are landed (see the note
 A good commit message should describe what changed and why.
 
 1. The first line should:
-   - contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-   - be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-   - be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
-
-   例如：
-   - `net: add localAddress and localPort to Socket`
-   - `src: fix typos in async_wrap.h`
-
+  
+  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
+  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
+  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+    
+    例如：
+  
+  * `net: add localAddress and localPort to Socket`
+  
+  * `src: fix typos in async_wrap.h`
 
 2. Keep the second line blank.
+
 3. Wrap all other lines at 72 columns (except for long URLs).
 
 4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
-
-   例如：
-   - `Fixes: https://github.com/nodejs/node/issues/1337`
-   - `Refs: http://eslint.org/docs/rules/space-in-parens.html`
-   - `Refs: https://github.com/nodejs/node/pull/3615`
+  
+  例如：
+  
+  * `Fixes: https://github.com/nodejs/node/issues/1337`
+  * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
+  * `Refs: https://github.com/nodejs/node/pull/3615`
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
@@ -222,7 +228,7 @@ $ ./configure --coverage && make coverage
 
 A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
 
-_Note that generating a test coverage report can take several minutes._
+*Note that generating a test coverage report can take several minutes.*
 
 To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
 
@@ -403,7 +409,7 @@ If a particular Pull Request introduces a performance or functional regression, 
 
 ### Continuous Integration Testing
 
-All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at [https://ci.nodejs.org/](https://ci.nodejs.org/).
+All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
 
 Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
 
