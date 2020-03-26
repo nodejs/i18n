@@ -1235,7 +1235,7 @@ added: v1.1.0
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
-Example:
+Exemple:
 
 ```js
 const buf = Buffer.from('buffer');
