@@ -180,6 +180,14 @@ added: v9.0.0
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
 
 <!-- YAML
@@ -194,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-这是一个空选项。 它为兼容性保留。
+This option is a no-op. It is kept for compatibility.
 
 ### `--no-deprecation`
 
@@ -202,7 +210,7 @@ added: v7.10.0
 added: v0.8.0
 -->
 
-禁用弃用警告。
+Silence deprecation warnings.
 
 ### `--no-force-async-hooks-checks`
 
@@ -210,7 +218,7 @@ added: v0.8.0
 added: v9.0.0
 -->
 
-禁用对 `async_hooks` 的运行时检测。 These will still be enabled dynamically when `async_hooks` is enabled.
+Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -218,15 +226,15 @@ added: v9.0.0
 added: v6.0.0
 -->
 
-禁用所有进程警告 (包括弃用)。
+Silence all process warnings (including deprecations).
 
-### `--openssl-config=文件`
+### `--openssl-config=file`
 
 <!-- YAML
 added: v6.9.0
 -->
 
-启动时加载一个 OpenSSL 配置文件。 Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -298,7 +306,7 @@ added: v5.2.0
 
 Process V8 profiler output generated using the V8 option `--prof`.
 
-### `--redirect-warnings=文件`
+### `--redirect-warnings=file`
 
 <!-- YAML
 added: v8.0.0
@@ -312,7 +320,7 @@ Write process warnings to the given file instead of printing to stderr. The file
 added: v0.11.14
 -->
 
-为弃用抛出错误。
+Throw errors for deprecations.
 
 ### `--title=title`
 
@@ -322,7 +330,7 @@ added: v10.7.0
 
 Set `process.title` on startup.
 
-### `--tls-cipher-list=列表`
+### `--tls-cipher-list=list`
 
 <!-- YAML
 added: v4.0.0
@@ -336,7 +344,7 @@ Specify an alternative default TLS cipher list. Requires Node.js to be built wit
 added: v0.8.0
 -->
 
-打印对弃用的堆栈追踪。
+Print stack traces for deprecations.
 
 ### `--trace-event-categories`
 
@@ -376,7 +384,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-打印对进程警告的堆栈追踪(包括弃用)。
+Print stack traces for process warnings (including deprecations).
 
 ### `--track-heap-objects`
 
@@ -386,6 +394,20 @@ added: v2.4.0
 
 Track heap object allocations for heap snapshots.
 
+### `--unhandled-rejections=mode`
+
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning for the very first unhandled rejection in case no [`unhandledRejection`][] hook is used.
+
+Using this flag allows to change what should happen when an unhandled rejection occurs. One of three modes can be chosen:
+
+- `strict`: Raise the unhandled rejection as an uncaught exception.
+- `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][] hook is set or not but do not print the deprecation warning.
+- `none`: Silence all warnings.
+
 ### `--use-bundled-ca`, `--use-openssl-ca`
 
 <!-- YAML
@@ -394,11 +416,11 @@ added: v6.11.0
 
 Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. 在所有受支持的平台上都相同。
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
 
 Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-参见 `SSL_CERT_DIR` 和 `SSL_CERT_FILE`。
+See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 
 ### `--v8-options`
 
@@ -441,9 +463,9 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-对脚本进行语法检查但不执行。
+Syntax check the script without executing.
 
-### `-e`, `--eval "脚本"`
+### `-e`, `--eval "script"`
 
 <!-- YAML
 added: v0.5.2
@@ -454,7 +476,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-将跟随的参数作为 JavaScript 执行。 The modules which are predefined in the REPL can also be used in `script`.
+Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
 
 On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
@@ -464,7 +486,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-打印 node 的命令行选项。 The output of this option is less detailed than this document.
+Print node command line options. The output of this option is less detailed than this document.
 
 ### `-i`, `--interactive`
 
@@ -474,7 +496,7 @@ added: v0.7.7
 
 Opens the REPL even if stdin does not appear to be a terminal.
 
-### `-p`, `--print "脚本"`
+### `-p`, `--print "script"`
 
 <!-- YAML
 added: v0.6.4
@@ -485,17 +507,17 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-等价于 `-e` 但打印结果。
+Identical to `-e` but prints the result.
 
-### `-r`, `--require 模块`
+### `-r`, `--require module`
 
 <!-- YAML
 added: v1.6.0
 -->
 
-启动时预加载指定模块。
+Preload the specified module at startup.
 
-Follows `require()`'s module resolution rules. `module` 可能是到文件的路径，或一个 node 模块名。
+Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
 
 ### `-v`, `--version`
 
@@ -503,11 +525,11 @@ Follows `require()`'s module resolution rules. `module` 可能是到文件的路
 added: v0.1.3
 -->
 
-打印 node 的版本。
+Print node's version.
 
 ## 环境变量
 
-### `NODE_DEBUG=模块[,…]`
+### `NODE_DEBUG=module[,…]`
 
 <!-- YAML
 added: v0.1.32
@@ -525,9 +547,9 @@ added: v0.1.32
 added: v0.3.0
 -->
 
-当设置为 `1` 时 REPL 中不会使用颜色。
+When set to `1` colors will not be used in the REPL.
 
-### `NODE_EXTRA_CA_CERTS=文件`
+### `NODE_EXTRA_CA_CERTS=file`
 
 <!-- YAML
 added: v7.3.0
@@ -539,7 +561,7 @@ Note that neither the well known nor extra certificates are used when the `ca` o
 
 This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
-### `NODE_ICU_DATA=文件`
+### `NODE_ICU_DATA=file`
 
 <!-- YAML
 added: v0.11.15
@@ -553,9 +575,9 @@ Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
 added: v6.11.0
 -->
 
-当设置为 `1` 时，线程警告会被禁用。
+When set to `1`, process warnings are silenced.
 
-### `NODE_OPTIONS=选项...`
+### `NODE_OPTIONS=options...`
 
 <!-- YAML
 added: v8.0.0
@@ -572,6 +594,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -595,12 +618,13 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-允许的 V8 选项有：
+V8 options that are allowed are:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -608,7 +632,7 @@ Node.js options that are allowed are:
 - `--perf-prof`
 - `--stack-trace-limit`
 
-### `NODE_PATH=路径[:…]`
+### `NODE_PATH=path[:…]`
 
 <!-- YAML
 added: v0.1.32
@@ -636,7 +660,7 @@ added: v7.1.0
 
 When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-### `NODE_REDIRECT_WARNINGS=文件`
+### `NODE_REDIRECT_WARNINGS=file`
 
 <!-- YAML
 added: v8.0.0
@@ -644,7 +668,7 @@ added: v8.0.0
 
 When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
 
-### `NODE_REPL_HISTORY=文件`
+### `NODE_REPL_HISTORY=file`
 
 <!-- YAML
 added: v3.0.0
@@ -676,18 +700,18 @@ When set, Node.js will begin outputting [V8 JavaScript code coverage](https://v8
 
 At this time coverage is only collected in the main thread and will not be output for code executed by worker threads.
 
-### `OPENSSL_CONF=文件`
+### `OPENSSL_CONF=file`
 
 <!-- YAML
 added: v6.11.0
 -->
 
-启动时加载一个 OpenSSL 配置文件。 Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
 If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
 
-### `SSL_CERT_DIR=目录`
+### `SSL_CERT_DIR=dir`
 
 <!-- YAML
 added: v7.7.0
@@ -697,7 +721,7 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory co
 
 Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
-### `SSL_CERT_FILE=文件`
+### `SSL_CERT_FILE=file`
 
 <!-- YAML
 added: v7.7.0
