@@ -9,6 +9,7 @@ Para compilar Node con ninja, hay 3 pasos que se deben seguir:
 3. Por último, haga un enlace simbólico a `./node` usando `ln -fs out/Release/node node`.
 
 Al ejecutar `ninja -C out/Release` verá una impresión similar a la siguiente si la compilación tuvo éxito:
+
 ```txt
 ninja: Entering directory `out/Release`
 [4/4] LINK node, POSTBUILDS
@@ -20,7 +21,7 @@ La línea inferior cambiará durante la compilación, mostrando el progreso como
 
 Las compilaciones de Ninja varían ligeramente de las compilaciones de `make`. Si desea ejecutar `make test` después, es probable que `make` aún tenga que recompilar cierta cantidad de Node.
 
-Como tal, si desea ejecutar las pruebas, puede ser útil invocar el corredor de prueba directamente, de este modo: `tools/test.py --mode=release message parallel sequential -J`
+As such, if you wish to run the tests, it can be helpful to invoke the test runner directly, like so: `tools/test.py --mode=release message parallel sequential -J`
 
 ## Alias
 
@@ -28,4 +29,4 @@ Como tal, si desea ejecutar las pruebas, puede ser útil invocar el corredor de 
 
 ## Producir una compilación de depuración
 
-El alias anterior se puede modificar ligeramente para producir una compilación de depuración, en lugar de una compilación de lanzamiento, como se muestra a continuación: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && En -fs out/Debug/node node_g'`
+The above alias can be modified slightly to produce a debug build, rather than a release build as shown below: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs out/Debug/node node_g'`
