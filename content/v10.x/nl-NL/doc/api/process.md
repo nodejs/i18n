@@ -162,15 +162,25 @@ In this example, the `unhandledRejections` `Map` will grow and shrink over time,
 
 <!-- YAML
 added: v0.1.18
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26599
+    description: Added the `origin` argument.
 -->
+
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled rejection or from synchronous errors. Can either be `'uncaughtException'` or `'unhandledRejection'`.
 
 The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. Adding a handler for the `'uncaughtException'` event overrides this default behavior. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
 
-The listener function is called with the `Error` object passed as the only argument.
-
 ```js
-process.on('uncaughtException', (err) => {
-  fs.writeSync(1, `Caught exception: ${err}\n`);
+process.on('uncaughtException', (err, origin) => {
+  fs.writeSync(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` +
+    `Exception origin: ${origin}`
+  );
 });
 
 setTimeout(() => {
@@ -209,17 +219,15 @@ changes:
                  a process warning.
 -->
 
+* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
+* `promise` {Promise} The rejected promise.
+
 The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. When programming with Promises, exceptions are encapsulated as "rejected promises". Rejections can be caught and handled using [`promise.catch()`][] and are propagated through a `Promise` chain. The `'unhandledRejection'` event is useful for detecting and keeping track of promises that were rejected whose rejections have not yet been handled.
 
-The listener function is called with the following arguments:
-
-* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
-* `p` the `Promise` that was rejected.
-
 ```js
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Application specific logging, throwing an error, or other logic here
 });
 
 somePromise.then((res) => {
@@ -239,7 +247,7 @@ const resource = new SomeResource();
 // no .catch or .then on resource.loaded for at least a turn
 ```
 
-In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. Alternatively, the [`'rejectionHandled'`][] event may be used.
+In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted.
 
 ### Event: 'warning'
 
@@ -567,7 +575,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retourneert: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -950,7 +958,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -976,7 +984,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.28
 -->
 
-* Retourneert: {integer}
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -992,7 +1000,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1030,7 +1038,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Retourneert: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1339,7 +1347,7 @@ added: v0.5.9
 
 * `options` {Object}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1590,7 +1598,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Retourneert: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
