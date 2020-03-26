@@ -39,6 +39,7 @@
   * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.0"></a>
+
 ## 2017-05-02, Version 7.10.0 (Current), @evanlucas
 
 ### Notable Changes
@@ -238,8 +239,8 @@
 * [[`e77f1e2177`](https://github.com/nodejs/node/commit/e77f1e2177)] - **v8**: fix stack overflow in recursive method (Ben Noordhuis) [#12460](https://github.com/nodejs/node/pull/12460)
 * [[`25b851bdd4`](https://github.com/nodejs/node/commit/25b851bdd4)] - **v8**: fix build errors with g++ 7 (Ben Noordhuis) [#12392](https://github.com/nodejs/node/pull/12392)
 
-
 <a id="7.9.0"></a>
+
 ## 2017-04-11, Version 7.9.0 (Current), @italoacasas
 
 ### Notable Changes
@@ -303,6 +304,7 @@
 * [[`5ac719d0d2`](https://github.com/nodejs/node/commit/5ac719d0d2)] - **doc**: add deprecations page to docs toc (Michaël Zasso) [#12268](https://github.com/nodejs/node/pull/12268)
 
 <a id="7.8.0"></a>
+
 ## 2017-03-28, Version 7.8.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -387,6 +389,7 @@
 * [[`c51d925c84`](https://github.com/nodejs/node/commit/c51d925c84)] - **url**: restrict setting protocol to "file" (Daijiro Wachi) [#11887](https://github.com/nodejs/node/pull/11887)
 
 <a id="7.7.4"></a>
+
 ## 2017-03-21, Version 7.7.4 (Current), @cjihrig
 
 ### Notable changes
@@ -447,6 +450,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`9a59913039`](https://github.com/nodejs/node/commit/9a59913039)] - **util**: avoid using forEach (James M Snell) [#11582](https://github.com/nodejs/node/pull/11582)
 
 <a id="7.7.3"></a>
+
 ## 2017-03-14, Version 7.7.3 (Current), @italoacasas
 
 ### Notable changes
@@ -472,7 +476,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`103458772a`](https://github.com/nodejs/node/commit/103458772a)] - **module**: fix loading from global folders on Windows (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
 * [[`1dff218cd1`](https://github.com/nodejs/node/commit/1dff218cd1)] - **net**: allow missing callback for Socket.connect (Juwan Yoo) [#11762](https://github.com/nodejs/node/pull/11762)
 * [[`52f0092f54`](https://github.com/nodejs/node/commit/52f0092f54)] - **s390**: enable march=z196 (Junliang Yan) [#11730](https://github.com/nodejs/node/pull/11730)
-* [[`032becdc28`](https://github.com/nodejs/node/commit/032becdc28)] - **src**: add missing #include \<unicode/ustring.h\> (Steven R. Loomis) [#11754](https://github.com/nodejs/node/issues/11754)
+* [[`032becdc28`](https://github.com/nodejs/node/commit/032becdc28)] - **src**: add missing #include \<unicode>#11754</a>
 * [[`1da2afcc26`](https://github.com/nodejs/node/commit/1da2afcc26)] - **src**: drop the NODE_ISOLATE_SLOT macro (Anna Henningsen) [#11692](https://github.com/nodejs/node/pull/11692)
 * [[`734ddbe77b`](https://github.com/nodejs/node/commit/734ddbe77b)] - **test**: fix flaky test-http-set-timeout-server (Santiago Gimeno) [#11790](https://github.com/nodejs/node/pull/11790)
 * [[`aaf8536dbc`](https://github.com/nodejs/node/commit/aaf8536dbc)] - **test**: add test for loading from global folders (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
@@ -486,6 +490,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`c5874d1bd4`](https://github.com/nodejs/node/commit/c5874d1bd4)] - **url**: remove invalid file protocol check (Brian White) [#11691](https://github.com/nodejs/node/pull/11691)
 
 <a id="7.7.2"></a>
+
 ## 2017-03-08, Version 7.7.2 (Current), @evanlucas
 
 ### Notable changes
@@ -545,6 +550,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`7b84363636`](https://github.com/nodejs/node/commit/7b84363636)] - **util**: fix inspecting symbol key in string (Ali BARIN) [#11672](https://github.com/nodejs/node/pull/11672)
 
 <a id="7.7.1"></a>
+
 ## 2017-03-01, Version 7.7.1 (Current), @italoacasas
 
 ### Notables changes
@@ -563,10 +569,10 @@ Node.js 7.7.0 contains a bug that will prevent all native modules from building,
 * [[`8a918bf411`](https://github.com/nodejs/node/commit/8a918bf411)] - **tracing**: fix -Wreorder warning (Santiago Gimeno) [#10416](https://github.com/nodejs/node/pull/10416)
 
 <a id="7.7.0"></a>
+
 ## 2017-02-28, Version 7.7.0 (Current), @italoacasas
 
-This release contains a deprecation warning for `node --debug`. You can find more information in the
-[Diagnostics Working Group Update](https://nodejs.org/en/blog/wg/diag-wg-update-2017-02/)
+This release contains a deprecation warning for `node --debug`. You can find more information in the [Diagnostics Working Group Update](https://nodejs.org/en/blog/wg/diag-wg-update-2017-02/)
 
 ### Notables changes
 
@@ -741,6 +747,7 @@ This release contains a deprecation warning for `node --debug`. You can find mor
 * [[`f55c628b2a`](https://github.com/nodejs/node/commit/f55c628b2a)] - **vm**: refactor vm module (James M Snell) [#11392](https://github.com/nodejs/node/pull/11392)
 
 <a id="7.6.0"></a>
+
 ## 2017-02-21, Version 7.6.0 (Current), @italoacasas
 
 Thank you to @addaleax for helping in the release proposal.
@@ -883,16 +890,14 @@ This release contains **v8 5.5**, you can read more about this version in the of
 * [[`cfadbc2661`](https://github.com/nodejs/node/commit/cfadbc2661)] - **util**: improve inspect for AsyncFunction (Michaël Zasso) [#11211](https://github.com/nodejs/node/pull/11211)
 
 <a id="7.5.0"></a>
+
 ## 2017-01-31, Version 7.5.0 (Current), @evanlucas
 
 Thank you to @italoacasas for preparing the majority of this release.
 
 This release contains security fixes to upgrade OpenSSL to version 1.0.2k.
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js
-crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node
-users is "low". Details on this determination can be found
-[on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Notable changes
 
@@ -1198,8 +1203,8 @@ users is "low". Details on this determination can be found
 * [[`d628f3a227`](https://github.com/nodejs/node/commit/d628f3a227)] - **util**: avoid out-of-bounds arguments index access (Teddy Katz) [#10569](https://github.com/nodejs/node/pull/10569)
 * [[`2641cd496d`](https://github.com/nodejs/node/commit/2641cd496d)] - **vm**: improve performance of vm.runIn*() (Rich Trott) [#10816](https://github.com/nodejs/node/pull/10816)
 
-
 <a id="7.4.0"></a>
+
 ## 2017-01-04, Version 7.4.0 (Current), @evanlucas
 
 ### Notable changes
@@ -1357,8 +1362,8 @@ users is "low". Details on this determination can be found
 * [[`495213e545`](https://github.com/nodejs/node/commit/495213e545)] - **url**: mark ignored return value in node::url::Parse(...) (Christopher J. Brody) [#10141](https://github.com/nodejs/node/pull/10141)
 * [[`ba46374cb9`](https://github.com/nodejs/node/commit/ba46374cb9)] - **watchdog**: add flag to mark handler as disabled (Bartosz Sosnowski) [#10248](https://github.com/nodejs/node/pull/10248)
 
-
 <a id="7.3.0"></a>
+
 ## 2016-12-20, Version 7.3.0 (Current), @cjihrig
 
 Thank you to @italoacasas for preparing the majority of this release.
@@ -1511,14 +1516,14 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`7a0fe9f471`](https://github.com/nodejs/node/commit/7a0fe9f471)] - **win,msi**: add required UIRef for localized strings (Bill Ticehurst) [#8884](https://github.com/nodejs/node/pull/8884)
 
 <a id="7.2.1"></a>
+
 ## 2016-12-06, Version 7.2.1 (Current), @Fishrock123
 
 ### Notable changes
 
 * **buffer**:
   - Reverted the runtime deprecation of calling `Buffer()` without `new`. (Anna Henningsen) [#9529](https://github.com/nodejs/node/pull/9529)
-  - Fixed `buffer.transcode()` for single-byte character
-encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pull/9838)
+  - Fixed `buffer.transcode()` for single-byte character encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pull/9838)
 * **promise**: `--trace-warnings` now produces useful stacktraces for Promise warnings. (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
 * **repl**: Fixed a bug preventing correct parsing of generator functions. (Teddy Katz) [#9852](https://github.com/nodejs/node/pull/9852)
 * **V8**: Fixed a significant `instanceof` performance regression. (Franziska Hinkelmann) [#9730](https://github.com/nodejs/node/pull/9730)
@@ -1720,6 +1725,7 @@ encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pu
 * [[`5ae549c3aa`](https://github.com/nodejs/node/commit/5ae549c3aa)] - **url**: fix -Warray-bounds warning (Santiago Gimeno) [#9751](https://github.com/nodejs/node/pull/9751)
 
 <a id="7.2.0"></a>
+
 ## 2016-11-22, Version 7.2.0 (Current), @Fishrock123
 
 _This is a security release impacting Windows 10 users._
@@ -1842,6 +1848,7 @@ _This is a security release impacting Windows 10 users._
 * [[`841a2c41d4`](https://github.com/nodejs/node/commit/841a2c41d4)] - **zlib**: name every function Ref: #8913 (solebox) [#9389](https://github.com/nodejs/node/pull/9389)
 
 <a id="7.1.0"></a>
+
 ## 2016-11-08, Version 7.1.0 (Current), @evanlucas
 
 ### Notable changes
@@ -1978,8 +1985,8 @@ _This is a security release impacting Windows 10 users._
 * [[`4f0596fb03`](https://github.com/nodejs/node/commit/4f0596fb03)] - **util**: use template strings (Alejandro Oviedo Garcia) [#9120](https://github.com/nodejs/node/pull/9120)
 * [[`b083086ff2`](https://github.com/nodejs/node/commit/b083086ff2)] - **vm**: name anonymous functions (solebox) [#9388](https://github.com/nodejs/node/pull/9388)
 
-
 <a id="7.0.0"></a>
+
 ## 2016-10-25, Version 7.0.0 (Current), @jasnell
 
 ### Notable changes
@@ -1993,8 +2000,7 @@ _This is a security release impacting Windows 10 users._
 * Cluster
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
 * Deps
-  * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852),
-  [#9253](https://github.com/nodejs/node/pull/9253).
+  * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
 * File System
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).

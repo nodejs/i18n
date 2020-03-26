@@ -1,42 +1,39 @@
-# Issues
+# التذاكر
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [كيف تساهم في التذاكر](#how-to-contribute-in-issues)
+* [طلب المساعدة](#asking-for-general-help)
+* [مناقشة المواضيع غير التقنية](#discussing-non-technical-topics)
+* [تقديم تقرير عن الأخطاء](#submitting-a-bug-report)
+* [فرز تقارير الأخطاء](#triaging-a-bug-report)
+* [إصلاح تقرير الخطأ](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## كيف تساهم في التذاكر
 
-For any issue, there are fundamentally three ways an individual can contribute:
+لكل تذكرة، هناك ثلاث طرق أساسية للمساهمة:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
-2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+1. فتح التذكرة للمناقشة: على سبيل المثال ، إذا كنت تعتقد أنك اكتشفت خطأً في Node.js ، فإن إنشاء تقرير خطأ جديد في أداة تعقب الأخطاء `nodejs/node` هو أفضل طريقة للإبلاغ عنه.
+2. من خلال المساعدة في فرز التذكرة: يمكن إجراء ذلك إما عن طريق توفير تفاصيل الدعم (حالة اختبار توضح وجود خطأ)، أو تقديم اقتراحات حول كيفية معالجة التذكرة.
+3. من خلال المساعدة على حل التذكرة: عادة ما يتم ذلك إما عبر النموذج للتدليل على أن المشكلة المبلغ عنها تعد في الواقع أو في أغلب الأحيان ليست كذلك، أو عبر فتح طلب السحب الذي سيغير شيء في `nodejs/node` بطريقة ملموسة ويمكن مراجعتها.
 
-## Asking for General Help
+## طلب المساعدة في مسائل عامة
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+نظرًا لأن النشاط في مستودع `nodejs/node` مرتفع جدًا ، يجب توجيه الأسئلة أو طلبات المساعدة العامة باستخدام Node.js إلى [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## Discussing non-technical topics
+## مناقشة المواضيع غير التقنية
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+يجب توجيه مناقشة القضايا غير التقنية (مثل تسجيل الملكية الفكرية والعلامات التجارية) إلى [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## Submitting a Bug Report
+## تقديم تقرير عن خطأ
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+عند فتح تذكرة جديدة في متعقب أخطاء `nodejs/node` ، سيتم تقديم قالب أساسي للمستخدمين والذي يجب ملؤه.
 
-```markdown
-<!--
-Thank you for reporting an issue.
+```markdown<!--
+شكرًا لك على التبليغ عن خطأ.
 
-This issue tracker is for bugs and issues found within Node.js core.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+متعقب الأخطاء هذا هو للأخطاء والمشاكل التي وجدت في نواة Node.js.
+إذا كنت تحتاج إلى مزيد من الدعم العام، يُرجى تقديم تذكرة في مستودع المساعدة الخاص بنا. https://github.com/nodejs/help 
 
-
-Please fill in as much of the template below as you're able.
+يرجى ملء أكبر قدر ممكن من النموذج أدناه.
 
 Version: output of `node -v`
 Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
@@ -44,31 +41,29 @@ Subsystem: if known, please specify affected core module name
 
 If possible, please provide code that demonstrates the problem, keeping it as
 simple and free of external dependencies as you are able.
--->
-
-* **Version**:
+-->* **Version**:
 * **Platform**:
 * **Subsystem**:
 
 <!-- Enter your issue details below this comment. -->
 ```
 
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+إذا كنت تعتقد أنك اكتشفت خطأ في Node.js ، فيرجى ملء هذا النموذج ، اتبع القالب إلى أقصى حد ممكن. لا تقلق إذا كنت لا تستطيع الإجابة على كل التفاصيل، فقط املأ ما تستطيع.
 
-The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+أهم البيانات التي نحتاجها لتقييم التقرير بشكل صحيح هي وصف السلوك الذي تلاحظه، وحالة اختبار بسيطة يمكن استخدامها لإعادة إنشاء المشكلة بأنفسنا. إذا لم نتمكن من إعادة تكرار المشكلة، يصبح من المسستحيل إصلاحها.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+لتجنب إمكانية حدوث أخطاء بواسطة شفرات البرمجة userland ، يجب أن تقتصر حالات الاختبار على استخدام واجهة برمجة التطبيقات Node.js APIs. * فقط *. إذا كان الخطأ يحدث فقط عند استخدام وحدة userland محددة، فهناك فرصة جيدة جدا بأن تكون (أ) الوحدة لديها خلل أو (ب) شيء ما تغير في Node.js الأمر الذي سبب خلل في الوحدة.
 
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+راجع [ كيفية إنشاء مثال صغير وكامل ويمكن التحقق منه ](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## تصنيف تقرير الخطأ
 
-Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+من الشائع توليد نقاش حول تذكرة بمجرد فتحها. قد يكون لدى بعض المساهمين آراء متباينة حول المشكلة، بما في ذلك إذا كان ما هو معروض عيب أو ميزة. هذه المناقشة هي جزء من العملية ويجب أن تظل مركزة, مفيدة ومهنية.
 
-Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
+الردود القصيرة والمختصرة التي لا توفر سياقًا إضافيًا ولا دعمًا للتفاصيل - ليست مفيدة أو مهنية. بالنسبة للكثيرين، هذه الردود ببساطة مزعجة وغير ودية.
 
-Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
+يتم تشجيع المساهمين على مساعدة بعضهم البعض لإحراز تقدم كبير قدر المستطاع، تشجيع بعضهم البعض لحل القضايا بشكل تعاوني. إذا إخترت التعليق على تذكرة لخطأ تشعر أنه لا يحتاج إلى إصلاح، أو إذا واجهت معلومات في تذكرة تشعر أنها غير صحيحة، إشرح *لماذا* تشعر بهذه الطريقة مع سياق داعم إضافي، وكن على استعداد أن يتم إقناعك بأنك قد تكون مخطئ. من خلال القيام بذلك ، يمكننا في كثير من الأحيان الوصول إلى النتيجة الصحيحة أسرع بكثير.
 
-## Resolving a Bug Report
+## إصلاح تقرير الخطأ
 
-In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
+في الغالبية العظمى من الحالات ، يتم حل التذاكر عن طريق فتح طلب سحب. تشبه عملية فتح ومراجعة طلب السحب تلك الخاصة بـفتح وتصنيف التذاكر ، ولكنها تتضمن أيضًا مراجعة وموافقة ضرورية لسير العمل الذي يضمن أن التغييرات المقترحة تلبي الحد الأدنى من الجودة والإرشادات الوظيفية لمشروع Node.js.

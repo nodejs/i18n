@@ -4,7 +4,7 @@
 
 Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. A test will fail if:
 
-- It exits by setting `process.exitCode` to a non-zero number. 
+- It exits by setting `process.exitCode` to a non-zero number.
   - This is usually done by having an assertion throw an uncaught Error.
   - Occasionally, using `process.exit(code)` may be appropriate.
 - It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
@@ -14,6 +14,10 @@ Add tests when:
 - Adding new functionality.
 - Fixing regressions and bugs.
 - Expanding test coverage.
+
+## Test directory structure
+
+See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
 
 ## Test structure
 
@@ -95,7 +99,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 
 ## General recommendations
 
-### Timers
+### Таймери
 
 Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 
@@ -165,7 +169,6 @@ const server = http.createServer(common.mustCall(function(req, res) {
 });
 
 ```
-
 #### Countdown Module
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
@@ -180,6 +183,7 @@ const countdown = new Countdown(2, function() {
 countdown.dec();
 countdown.dec(); // The countdown callback will be invoked now.
 ```
+
 
 ### Flags
 
@@ -251,11 +255,9 @@ Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js
 To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Be sure to update the hash in the URL following `WPT Refs:`.
 
 ## C++ Unit test
-
 C++ code can be tested using [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
 ### Adding a new test
-
 The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
 ```c++
@@ -287,24 +289,20 @@ static void at_exit_callback(void* arg) {
 ```
 
 Next add the test to the `sources` in the `cctest` target in node.gyp:
-
 ```console
 'sources': [
   'test/cctest/test_env.cc',
   ...
 ],
 ```
-
 Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
 
 The test can be executed by running the `cctest` target:
-
 ```console
 $ make cctest
 ```
 
 ### Node test fixture
-
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.

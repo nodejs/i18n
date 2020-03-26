@@ -1,34 +1,35 @@
-# Postmortem Support
+# Supporto Postmortem
 
-Postmortem metadata are constants present in the final build which can be used by debuggers and other tools to navigate through internal structures of software when analyzing its memory (either on a running process or a core dump). Node.js provides this metadata in its builds for V8 and Node.js internal structures.
+I metadati postmortem sono costanti presenti nella build finale che possono essere utilizzati dai debugger e da altri strumenti per navigare attraverso le strutture interne del software durante l'analisi della sua memoria (sia su un processo in esecuzione che su un core dump). Node.js fornisce questi metadati nelle sue build per le strutture interne di V8 e Node.js.
 
-### V8 Postmortem metadata
 
-V8 prefixes all postmortem constants with `v8dbg_`, and they allow inspection of objects on the heap as well as object properties and references. V8 generates those symbols with a script (`deps/v8/tools/gen-postmortem-metadata.py`), and Node.js always includes these constants in the final build.
+### Metadati Postmortem V8
 
-### Node.js Debug Symbols
+V8 prefissa tutte le costanti postmortem con `v8dbg_` ed esse consentono l'ispezione di object sull'heap nonché di proprietà e riferimenti dell'object. V8 genera quei simboli con uno script (`deps/v8/tools/gen-postmortem-metadata.py`) e Node.js include sempre queste costanti nella build finale.
 
-Node prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Those constants are declared in `src/node_postmortem_metadata.cc`, and most of them are calculated at compile time.
+### Simboli di Debug di Node.js
 
-#### Calculating offset of class members
+Node.js prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node.js-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Queste costanti sono dichiarate in `src/node_postmortem_metadata.cc` e la maggior parte di esse sono calcolate al momento della compilazione.
 
-Node.js constants referring to the offset of class members in memory are calculated at compile time. Because of that, those class members must be at a fixed offset from the start of the class. That's not a problem in most cases, but it also means that those members should always come after any templated member on the class definition.
+#### Calcolare l'offset dei membri della classe
 
-For example, if we want to add a constant with the offset for `ReqWrap::req_wrap_queue_`, it should be defined after `ReqWrap::req_`, because `sizeof(req_)` depends on the type of T, which means the class definition should be like this:
+Le costanti di Node.js che si riferiscono all'offset dei membri della classe in memoria sono calcolati al momento della compilazione. Per questo motivo, quei membri della classe devono essere a un offset fisso dall'inizio della classe. Non è un problema nella maggior parte dei casi, ma significa anche che quei membri dovrebbero sempre venire dopo qualsiasi membro basato su template sulla definizione di classe.
+
+Ad esempio, se vogliamo aggiungere una costante con l'offset per `ReqWrap::req_wrap_queue_`, essa dovrebbe essere definita dopo `ReqWrap::req_`, perché `sizeof(req_)` dipende dal tipo di T, che significa che la definizione di classe dovrebbe essere simile a questa:
 
 ```c++
 template <typename T>
 class ReqWrap : public AsyncWrap {
  private:
-  // req_wrap_queue_ comes before any templated member, which places it in a
-  // fixed offset from the start of the class
+  // req_wrap_queue_ viene prima di qualsiasi membro basato su template, che lo sistema in un
+  // offset fisso dall'inizio della classe
   ListNode<ReqWrap> req_wrap_queue_;
 
   T req_;
 };
 ```
 
-instead of:
+invece di:
 
 ```c++
 template <typename T>
@@ -36,16 +37,16 @@ class ReqWrap : public AsyncWrap {
  private:
   T req_;
 
-  // req_wrap_queue_ comes after a templated member, which means it won't be in
-  // a fixed offset from the start of the class
+  // req_wrap_queue_ viene dopo un membro basato su template, che significa che non sarà in
+  // un offset fisso dall'inizio della classe
   ListNode<ReqWrap> req_wrap_queue_;
 };
 ```
 
-There are also tests on `test/cctest/test_node_postmortem_metadata.cc` to make sure all Node postmortem metadata are calculated correctly.
+There are also tests on `test/cctest/test_node_postmortem_metadata.cc` to make sure all Node.js postmortem metadata are calculated correctly.
 
-## Tools and References
+## Strumenti e Riferimenti
 
 * [llnode](https://github.com/nodejs/llnode): LLDB plugin
 * [`mdb_v8`](https://github.com/joyent/mdb_v8): mdb plugin
-* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): Node.js post-mortem working group
+* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): gruppo di lavoro di Node.js post-mortem

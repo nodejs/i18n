@@ -1,13 +1,13 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@/ / NB(chrisdickinson): Jeśli przeniesiesz ten plik, pamiętaj aby zaktualizować tools/doc/html.js @/ / tak aby wskazywał jego nową lokalizacje.
 
 <!--introduced_in=v0.10.0-->
 
 * [O tej dokumentacji](documentation.html)
-* [Zastosowanie i przykłady użycia](synopsis.html)
+* [Przykład użycia &](synopsis.html)
 
 <div class="line"></div>
 
-* [Testy - asercje](assert.html)
+* [Testowanie asercji](assert.html)
 * [Moduł Async Hooks](async_hooks.html)
 * [Klasa Buffer](buffer.html)
 * [Dodatki C++](addons.html)
@@ -21,7 +21,7 @@
 * [Przestarzałe API](deprecations.html)
 * [DNS](dns.html)
 * [Domena](domain.html)
-* [ECMAScript Modules](esm.html)
+* [Moduły ECMAScript](esm.html)
 * [Błędy](errors.html)
 * [Zdarzenia](events.html)
 * [System plików](fs.html)
@@ -29,7 +29,7 @@
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspector](inspector.html)
+* [Inspektor](inspector.html)
 * [Umiędzynarodowienie](intl.html)
 * [Moduły](modules.html)
 * [Sieć](net.html)
@@ -38,23 +38,24 @@
 * [Performance Hooks](perf_hooks.html)
 * [Proces](process.html)
 * [Punycode](punycode.html)
-* [Query Strings](querystring.html)
+* [Ciągi zapytań](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
-* [Stream](stream.html)
-* [String Decoder](string_decoder.html)
-* [Timers](timers.html)
+* [Strumień](stream.html)
+* [Dekoder ciągów](string_decoder.html)
+* [Liczniki](timers.html)
 * [TLS/SSL](tls.html)
-* [Trace Events](tracing.html)
+* [Śledzenie zdarzeń](tracing.html)
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)
 * [Narzędzia](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
+* [Repo GitHuba & Traker błędów](https://github.com/nodejs/node)
 * [Lista Mailingowa](https://groups.google.com/group/nodejs)

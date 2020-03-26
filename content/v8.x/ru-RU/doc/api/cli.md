@@ -1,102 +1,99 @@
 # Параметры командной строки
 
 <!--introduced_in=v5.9.1-->
-
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js поставляется с различными вариантами CLI. Эти параметры предоставляют встроенную отладку, несколько способов запуска сценариев и другие полезные параметры времени выполнения.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
-## Synopsis
+
+## Краткий обзор
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
-`node debug [script.js | -e "script" | <host>:<port>] …`
+`отладка узла [script.js | -e "script" | &lt;host&gt;:&lt;port&gt;] …`
 
-`node --v8-options`
+`узел --v8-опций`
 
-Execute without arguments to start the [REPL](repl.html).
+Выполнить без аргументов, чтобы запустить [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+_Пожалуйста, смотрите документацию [debugger](debugger.html) для более подробной информации о `node debug`._
 
-## Options
+
+## Опции
 
 ### `-v`, `--version`
-
 <!-- YAML
 added: v0.1.3
 -->
 
-Print node's version.
+Печать версии узла.
+
 
 ### `-h`, `--help`
-
 <!-- YAML
 added: v0.1.3
 -->
 
-Print node command line options. The output of this option is less detailed than this document.
+Печать опций командной строки узла. Вывод этой опции менее подробен, чем этот документ.
+
 
 ### `-e`, `--eval "script"`
-
 <!-- YAML
 added: v0.5.2
 changes:
-
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Оцените следующий аргумент как JavaScript. Модули, которые предопределены в REPL, также могут использоваться в `script`.
 
-*Note*: On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+*Примечание*: При использовании на Windows `cmd.exe` одинарные кавычки не будут работать правильно, потому что для цитирования он распознает только двойные `"`. В Powershell или Git bash можно использовать как `'` так и `"`.
+
 
 ### `-p`, `--print "script"`
-
 <!-- YAML
 added: v0.6.4
 changes:
-
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Identical to `-e` but prints the result.
+Идентично `-e`, но печатает результат.
+
 
 ### `-c`, `--check`
-
 <!-- YAML
 added:
-
   - v5.0.0
   - v4.2.0
 -->
 
-Syntax check the script without executing.
+Проверка синтаксиса сценария без выполнения.
+
 
 ### `-i`, `--interactive`
-
 <!-- YAML
 added: v0.7.7
 -->
 
-Opens the REPL even if stdin does not appear to be a terminal.
+Открывает REPL, даже если stdin не является терминалом.
+
 
 ### `-r`, `--require module`
-
 <!-- YAML
 added: v1.6.0
 -->
 
-Preload the specified module at startup.
+Предварительная загрузка указанного модуля при запуске.
 
-Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
+Следует правилам разрешения модуля `require()`. `module` может быть путем к файлу или именем модуля узла.
+
 
 ### `--inspect[=[host:]port]`
-
 <!-- YAML
 added: v6.3.0
 -->
@@ -105,16 +102,16 @@ Activate inspector on host:port. Default is 127.0.0.1:9229.
 
 V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
 
-### `--inspect-brk[=[host:]port]`
 
+### `--inspect-brk[=[host:]port]`
 <!-- YAML
 added: v7.6.0
 -->
 
 Activate inspector on host:port and break at start of user script. Default host:port is 127.0.0.1:9229.
 
-### `--inspect-port=[host:]port`
 
+### `--inspect-port=[host:]port`
 <!-- YAML
 added: v7.6.0
 -->
@@ -123,32 +120,31 @@ Set the host:port to be used when the inspector is activated. Useful when activa
 
 Default host is 127.0.0.1.
 
-### `--no-deprecation`
 
+### `--no-deprecation`
 <!-- YAML
 added: v0.8.0
 -->
 
-Silence deprecation warnings.
+Тихое предупреждение об устаревании.
+
 
 ### `--trace-deprecation`
-
 <!-- YAML
 added: v0.8.0
 -->
 
-Print stack traces for deprecations.
+Печать трассировок стека для устаревших версий.
+
 
 ### `--throw-deprecation`
-
 <!-- YAML
 added: v0.11.14
 -->
 
-Throw errors for deprecations.
+Формирование ошибок для устаревших версий.
 
 ### `--pending-deprecation`
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -158,15 +154,13 @@ Emit pending deprecation warnings.
 *Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `--no-warnings`
-
 <!-- YAML
 added: v6.0.0
 -->
 
-Silence all process warnings (including deprecations).
+Делает все процессные уведомления тихими (включая устаревшие версии).
 
 ### `--expose-http2`
-
 <!-- YAML
 added: v8.4.0
 -->
@@ -174,7 +168,6 @@ added: v8.4.0
 Enable the experimental `'http2'` module.
 
 ### `--abort-on-uncaught-exception`
-
 <!-- YAML
 added: v0.10
 -->
@@ -182,31 +175,27 @@ added: v0.10
 Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
 ### `--trace-warnings`
-
 <!-- YAML
 added: v6.0.0
 -->
 
-Print stack traces for process warnings (including deprecations).
+Печать трассировок стека для процессных уведомлений (включая устаревшие версии).
 
 ### `--redirect-warnings=file`
-
 <!-- YAML
 added: v8.0.0
 -->
 
-Write process warnings to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Запись процессных уведомлений в заданный файл вместо печати в stderr. Файл будет создан, если он не существует, и будет добавлен, если он существует. Если при попытке записать предупреждение в файл возникает ошибка, предупреждение вместо этого будет записано в stderr.
 
 ### `--trace-sync-io`
-
 <!-- YAML
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+Печатает трассировку стека каждый раз, когда обнаруживается синхронизированный ввод/вывод после первого запуска цикла событий.
 
 ### `--force-async-hooks-checks`
-
 <!-- YAML
 added: v8.8.0
 -->
@@ -214,7 +203,6 @@ added: v8.8.0
 Enables runtime checks for `async_hooks`. These can also be enabled dynamically by enabling one of the `async_hooks` hooks.
 
 ### `--trace-events-enabled`
-
 <!-- YAML
 added: v7.7.0
 -->
@@ -222,30 +210,35 @@ added: v7.7.0
 Enables the collection of trace event tracing information.
 
 ### `--trace-event-categories`
-
 <!-- YAML
 added: v7.7.0
 -->
 
 A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
-### `--zero-fill-buffers`
+### `--trace-event-file-pattern`
+<!-- YAML
+added: v8.12.0
+-->
 
+Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
+
+### `--zero-fill-buffers`
 <!-- YAML
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [Buffer](buffer.html#buffer_buffer) and [SlowBuffer](buffer.html#buffer_class_slowbuffer) instances.
+Автоматически заполняет нулями все вновь выделенные экземпляры [Buffer](buffer.html#buffer_buffer) and [SlowBuffer](buffer.html#buffer_class_slowbuffer).
+
 
 ### `--preserve-symlinks`
-
 <!-- YAML
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and caching modules.
+Указывает загрузчику модулей сохранять символические ссылки при разрешении и кэшировании модулей.
 
-By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+По умолчанию, когда Node.Js загружает модуль из маршрута, который символически связан с другим местоположением на диске, Node.Js разыменовывает ссылку и использует текущий «реальный маршрут» дискового модуля как идентификатор и корневой маршрут, чтобы найти другие модули зависимостей. В большинстве случаев это поведение по умолчанию является приемлемым. Однако, как показано в нижеследующем примере, когда используются символически связанные парные зависимости, поведение по умолчанию вызывает исключение, если `moduleA` пытается запросить `moduleB` в качестве парной зависимости:
 
 ```text
 {appDir}
@@ -261,28 +254,27 @@ By default, when Node.js loads a module from a path that is symbolically linked 
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
+Флаг командной строки `--preserve-symlinks` указывает Node.js использовать путь символической ссылки в отличие от реального пути, что позволяет найти символически связанные парные зависимости.
 
-Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
+Обратите внимание, что использование `--preserve-symlinks` может иметь другие побочные эффекты. В частности, *native* символически связанные модули могут неправильно загрузиться, если они связаны из более чем одного местоположения в дереве зависимостей (Node.js будет видеть их как два отдельным модуля и будет пытаться загрузить модуль несколько раз, вызывая исключение).
 
 ### `--track-heap-objects`
-
 <!-- YAML
 added: v2.4.0
 -->
 
-Track heap object allocations for heap snapshots.
+Отслеживание распределения групп объектов для групповых снепшотов.
+
 
 ### `--prof-process`
-
 <!-- YAML
 added: v5.2.0
 -->
 
 Process V8 profiler output generated using the V8 option `--prof`.
 
-### `--v8-options`
 
+### `--v8-options`
 <!-- YAML
 added: v0.1.3
 -->
@@ -291,124 +283,125 @@ Print V8 command line options.
 
 *Note*: V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
 
-For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
+Например, `--stack-trace-limit` то же, что и `--stack_trace_limit`.
 
 ### `--tls-cipher-list=list`
-
 <!-- YAML
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
+Задается альтернативный список шифров TLS по умолчанию. (Требует Node.js, созданный с поддержкой шифрования. (По умолчанию))
+
 
 ### `--enable-fips`
-
 <!-- YAML
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`)
+Включите FIPS-совместимое шифрование при запуске. (Требует Node.js, созданный с `./configure --openssl-fips`)
+
 
 ### `--force-fips`
-
 <!-- YAML
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`)
+Принудительно включается FIPS-совместимое шифрование при запуске. (Не может быть отключен из кода скрипта.) (Те же требования, что и `--enable-fips`)
+
 
 ### `--openssl-config=file`
-
 <!-- YAML
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Загрузка файла конфигурации OpenSSL при запуске. Среди прочего это может использоваться для включения FIPS-совместимого шифрования, если Node.js создан с `./configure --openssl-fips`.
 
 ### `--use-openssl-ca`, `--use-bundled-ca`
-
 <!-- YAML
 added: v7.5.0
 -->
 
-Use OpenSSL's default CA store or use bundled Mozilla CA store as supplied by current Node.js version. The default store is selectable at build-time.
+Используйте хранилище CA OpenSSL по умолчанию или используйте связанное хранилище CA Mozilla, как это предусмотрено текущей версией Node.js. Хранилище по умолчанию можно выбрать во время сборки.
 
-Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+Использование хранилища OpenSSL допускает внешние модификации хранилища. Для большинства дистрибутивов Linux и BSD это хранилище поддерживается сопровождающими и системными администраторами. Расположение хранилища CA OpenSSL зависит от конфигурации библиотеки OpenSSL, но это может быть изменено с помощью переменных среды во время выполнения.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
+Объединенное хранилище CA, предоставленное Node.js, является снепшотом хранилища Mozilla CA, исправленным во время запуска. Он идентичен на всех поддерживаемых платформах.
 
-See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
+Смотрите `SSL_CERT_DIR` и `SSL_CERT_FILE`.
 
 ### `--icu-data-dir=file`
-
 <!-- YAML
 added: v0.11.15
 -->
 
-Specify ICU data load path. (overrides `NODE_ICU_DATA`)
+Задается путь загрузки данных ICU. (перезаписывает `NODE_ICU_DATA`)
+
 
 ### `-`
-
 <!-- YAML
 added: v8.0.0
 -->
 
 Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
-### `--`
 
+### `--`
 <!-- YAML
 added: v7.5.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Укажите параметры конца узла. Передайте остальные аргументы сценарию. Если до этого ранее не указывалось имя сценария или сценарий eval/print, в таком случае следующий аргумент будет использован как имя сценария.
 
-## Environment Variables
+### `--max-http-header-size=size`
+<!-- YAML
+added: v8.15.0
+-->
+
+Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
+
+## Переменные среды
 
 ### `NODE_DEBUG=module[,…]`
-
 <!-- YAML
 added: v0.1.32
 -->
 
-`','`-separated list of core modules that should print debug information.
+`','` - разделенный список основных модулей, которые должны печатать отладочную информацию.
+
 
 ### `NODE_PATH=path[:…]`
-
 <!-- YAML
 added: v0.1.32
 -->
 
-`':'`-separated list of directories prefixed to the module search path.
+`':'`- разделенный список директорий, предшествующих пути поиска модуля.
 
 *Note*: On Windows, this is a `';'`-separated list instead.
 
-### `NODE_DISABLE_COLORS=1`
 
+### `NODE_DISABLE_COLORS=1`
 <!-- YAML
 added: v0.3.0
 -->
 
-When set to `1` colors will not be used in the REPL.
+Если установлено значение `1`, цвета в REPL не будут использоваться.
+
 
 ### `NODE_ICU_DATA=file`
-
 <!-- YAML
 added: v0.11.15
 -->
 
-Data path for ICU (Intl object) data. Will extend linked-in data when compiled with small-icu support.
+Путь данных для данных ICU (объект Intl). Расширит связанные данные при компиляции с поддержкой малого icu.
 
 ### `NODE_NO_WARNINGS=1`
-
 <!-- YAML
 added: v7.5.0
 -->
 
-When set to `1`, process warnings are silenced.
+Если установлено значение `1`, предупреждения процесса отключаются.
 
 ### `NODE_NO_HTTP2=1`
-
 <!-- YAML
 added: v8.8.0
 -->
@@ -416,21 +409,20 @@ added: v8.8.0
 When set to `1`, the `http2` module is suppressed.
 
 ### `NODE_OPTIONS=options...`
-
 <!-- YAML
 added: v8.0.0
 -->
 
 A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
-Node options that are allowed are:
-
+Node.js options that are allowed are:
 - `--enable-fips`
 - `--force-fips`
 - `--icu-data-dir`
 - `--inspect-brk`
 - `--inspect-port`
 - `--inspect`
+- `--max-http-header-size`
 - `--no-deprecation`
 - `--no-warnings`
 - `--openssl-config`
@@ -441,6 +433,7 @@ Node options that are allowed are:
 - `--trace-deprecation`
 - `--trace-events-categories`
 - `--trace-events-enabled`
+- `--trace-event-file-pattern`
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
@@ -449,14 +442,14 @@ Node options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-V8 options that are allowed are:
-
+Опции v8, которые разрешены:
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
+- `--perf-basic-prof`
+- `--perf-prof`
 - `--stack-trace-limit`
 
 ### `NODE_PENDING_DEPRECATION=1`
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -466,7 +459,6 @@ When set to `1`, emit pending deprecation warnings.
 *Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
-
 <!-- YAML
 added: v7.1.0
 -->
@@ -474,61 +466,56 @@ added: v7.1.0
 When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
 ### `NODE_REPL_HISTORY=file`
-
 <!-- YAML
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`""` or `" "`) disables persistent REPL history.
+Путь к файлу, который используется для хранения постоянной истории REPL. Путь по умолчанию - `~/.node_repl_history`, который переопределяется этой переменной. Установка значения в пустую строку (`''` или `' '`) отключает постоянную историю REPL.
+
 
 ### `NODE_EXTRA_CA_CERTS=file`
-
 <!-- YAML
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Когда установлено, хорошо известные "корневые" CA (такие как VeriSign) будут расширены с дополнительными сертификатами в `file`. Файл должен состоять из одного или нескольких доверенных сертификатов в формате PEM. Сообщение будет отправлено (один раз) с [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor), если файл отсутствует или имеет неправильный формат, но любые ошибки иначе игнорируются.
 
-Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+Обратите внимание, что ни известные ни дополнительные сертификаты не используются, когда свойство параметров `ca` явно указаны клиентом или сервером TLS или HTTPS.
 
 ### `OPENSSL_CONF=file`
-
 <!-- YAML
 added: v7.7.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Загрузка файла конфигурации OpenSSL при запуске. Среди прочего это может использоваться для включения FIPS-совместимого шифрования, если Node.js создан с `./configure
 --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
+Если используется опция командной строки [`--openssl-config`][], переменная среда игнорируется.
 
 ### `SSL_CERT_DIR=dir`
-
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
+Если включен `--use-openssl-ca`, это переопределяет и устанавливает каталог OpenSSL, содержащий доверенные сертификаты.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `SSL_CERT_FILE=file`
-
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
+Если включен `--use-openssl-ca`, это переопределяет и устанавливает файл OpenSSL, содержащий доверительные сертификаты.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `NODE_REDIRECT_WARNINGS=file`
-
 <!-- YAML
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
+Если это установлено, процессные уведомления будут отправляться данному файлу, а не печататься в stderr. Файл будет создаваться, если он не существует, и будет добавляться, если он существует. Если при попытке записать предупреждение в файл произойдет ошибка, предупреждение вместо этого будет записано в stderr. Это эквивалентно использованию флага командной строки `--redirect-warnings=file`.
 
 ### `UV_THREADPOOL_SIZE=size`
 

@@ -1,8 +1,8 @@
-# Debugger
+# Hata Ayıklayıcı
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> Kararlılık: 2 - Kararlı
 
 <!-- type=misc -->
 
@@ -23,9 +23,6 @@ debug>
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
-
-<!-- eslint-disable no-debugger -->
-
 ```js
 // myscript.js
 global.x = 5;
@@ -43,38 +40,38 @@ $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help see https://nodejs.org/en/docs/inspector
 < Debugger attached.
-Break on start in myscript.js:1
+Myscript.js:1 başlangıcında kes
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
-  3   debugger;
+  3   hata ayıklayıcı;
 debug> cont
-< hello
-break in myscript.js:3
+< merhaba
+myscript.js:3'te kes
   1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
-> 3   debugger;
-  4   console.log('world');
+> 3   hata ayıklayıcı;
+  4   console.log('dünya');
   5 }, 1000);
-debug> next
-break in myscript.js:4
+debug> sonraki
+myscript.js:4'te kes
   2 setTimeout(() => {
-  3   debugger;
-> 4   console.log('world');
+  3   hata ayıklayıcı;
+> 4   console.log('dünya');
   5 }, 1000);
-  6 console.log('hello');
+  6 console.log('merhaba');
 debug> repl
-Press Ctrl + C to leave debug repl
+Hata ayıklama yanıtını bırakmak için Ctrl + C tuşlarına basın
 > x
 5
-> 2+2
+> 2 + 2
 4
-debug> next
-< world
-break in myscript.js:5
-  3   debugger;
-  4   console.log('world');
+debug> sonraki
+< dünya
+myscript.js:5'te kes
+  3   hata ayıklayıcı;
+  4   console.log('dünya');
 > 5 }, 1000);
-  6 console.log('hello');
+  6 console.log('merhaba');
   7
 debug> .exit
 ```

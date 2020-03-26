@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const walk = require('walk-sync').entries
-const {nodeVersions} = require('./package.json')
+const { nodeVersions } = require('./package.json')
 const semver = require('semver')
 const contentDir = path.join(__dirname, 'content')
 
@@ -38,7 +38,7 @@ test('includes only markdown files, ignoring images and other files', () => {
     expect(languages.length).toBeGreaterThan(0)
     languages.forEach(language => {
       const docsDir = path.join(contentDir, version, language, 'doc')
-      const files = walk(docsDir, {directories: false})
+      const files = walk(docsDir, { directories: false })
       expect(files.length).toBeGreaterThan(60)
       expect(files.every(file => file.relativePath.endsWith('.md')))
     })

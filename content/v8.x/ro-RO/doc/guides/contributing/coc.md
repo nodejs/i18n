@@ -1,19 +1,19 @@
-# Code of Conduct
+# Cod de conduită
 
-The Node.js project has a [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) that *all* contributors are expected to follow. This code describes the *minimum* behavior expectations for all contributors.
+Proiectul Node.js are un [Cod de conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) pe care *toți* contribuitorii trebuie să îl urmeze. Acest cod descrie așteptările *minime* ale comportamentului tuturor contribuitorilor.
 
-As a contributor to Node.js, how you choose to act and interact towards your fellow contributors, as well as to the community, will reflect back not only on yourself but on the project as a whole. The Code of Conduct is designed and intended, above all else, to help establish a culture within the project that allows anyone and everyone who wants to contribute to feel safe doing so.
+În calitate de colaborator la Node.js, modul în care alegi să acționezi și să interacționezi cu alți contribuitori, precum și cu cei din comunitate, se va reflecta nu numai asupra ta, ci și asupra întregului proiect. Codul de conduită este conceput și destinat, mai presus de toate, să contribuie la stabilirea unei culturi în cadrul proiectului care permite oricui și tuturor celor care doresc să contribuie să se simtă în siguranță în acest sens.
 
-Should any individual act in any way that is considered in violation of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), corrective actions will be taken. It is possible, however, for any individual to *act* in such a manner that is not in violation of the strict letter of the Code of Conduct guidelines while still going completely against the spirit of what that Code is intended to accomplish.
+În cazul în care orice acțiune individuală este considerată ca o încălcare a [Codului de conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), vor fi luate măsuri corective. Cu toate acestea, este posibil ca orice persoană să *acționeze* într-o manieră care nu încalcă litera strictă a instrucțiunilor Codului de conduită, în timp ce totul se opune complet spiritului a ceea ce intenționează acest cod să realizeze.
 
-Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Comunitățile deschise, diverse și inclusive trăiesc și mor pe baza încrederii. Contribuitorii pot să nu fie de acord între ei, atâta timp cât au încredere că aceste dezacorduri sunt cu bună-credință și că toată lumea lucrează la un scop comun.
 
-## Bad actors
+## Actori rău intenționați
 
-All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+Toți contribuitorii la Node.js acceptă tacit să respecte atât litera, cât și spiritul [Codului de Conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Nerespectarea sau respingerea unei astfel de acțiuni va determina scăderea respectului față de contribuții.
 
-A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
+A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. În acest fel, actorii rău intenționați înstrăinează alți contribuitori, descurajează colaborarea și, în general, reflectă slab asupra proiectului în ansamblu.
 
-Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+A fi un actor de acest fel poate fi intenționat sau neintenționat. În mod obișnuit, comportamentul rău neintenționat poate fi corectat cu ușurință prin a-ți cere scuze și a corecta cursul, *chiar dacă nu ai pe deplin convingerea că trebuie să faci asta.*. Acordând altor contribuitori avantajului îndoielii și având dorința sinceră de a recunoaște că *este posibil* ca tu să fi greșit este esențial pentru orice colaborarea de succes.
 
-Don't be a bad actor.
+Nu fii un actor rău intenționat.

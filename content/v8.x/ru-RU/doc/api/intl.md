@@ -1,63 +1,65 @@
-# Internationalization Support
+# Поддержка интернационализации
 
 <!--introduced_in=v8.2.0-->
 
-Node.js has many features that make it easier to write internationalized programs. Some of them are:
+Node.js имеет много функций, которые облегчают написание интернационализированных программ. Некоторые из них:
 
-- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
-    - [`String.prototype.normalize()`][]
-    - [`String.prototype.toLowerCase()`][]
-    - [`String.prototype.toUpperCase()`][]
-- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
-    - [`Intl`][] object
-    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
+- Функции, чувствительные к локальной конфигурации или учитывающие кодировку Unicode в [ECMAScript Language Specification](https://tc39.github.io/ecma262/):
+  - [`String.prototype.normalize()`][]
+  - [`String.prototype.toLowerCase()`][]
+  - [`String.prototype.toUpperCase()`][]
+- Все функциональные возможности описаны в [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (она же ECMA-402):
+  - объект [`Intl`][]
+  - Методы, чувствительные к локальной конфигурации, такие как [`String.prototype.localeCompare()`][] и [`Date.prototype.toLocaleString()`][]
 - The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
 - [`require('buffer').transcode()`][]
 - More accurate [REPL](repl.html#repl_repl) line editing
 - [`require('util').TextDecoder`][]
+- [RegExp Unicode Property Escapes](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
 
-Node.js (and its underlying V8 engine) uses [ICU](http://icu-project.org/) to implement these features in native C/C++ code. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
+Node.js (и его базовый движок V8) использует [ICU](http://icu-project.org/) для реализации этих функций в собственном коде C/C++. Однако для некоторых из них требуется очень большой файл данных ICU для поддержки всех стран мира. Поскольку ожидается, что большинство пользователей Node.js будут использовать только небольшую часть функциональных возможностей ICU, по умолчанию Node.js предоставляет только подмножество полного набора данных ICU. Предусмотрено несколько параметров для настройки и расширения набора данных ICU при сборке или запуске Node.js.
 
-## Options for building Node.js
+## Параметры для построения Node.js
 
-To control how ICU is used in Node.js, four `configure` options are available during compilation. Additional details on how to compile Node.js are documented in [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
+Для управления использованием ICU в Node.js во время компиляции доступны четыре параметра `configure`. Дополнительная информация, как скомпилировать Node.js, описана в [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md).
 
 - `--with-intl=none` / `--without-intl`
 - `--with-intl=system-icu`
-- `--with-intl=small-icu` (default)
+- `--with-intl=small-icu` (по умолчанию)
 - `--with-intl=full-icu`
 
-An overview of available Node.js and JavaScript features for each `configure` option:
+Обзор доступных функций Node.js и JavaScript для каждого параметра `configure`:
 
-|                                                      | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
-| ---------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
-| [`String.prototype.normalize()`][]                   | none (function is no-op)          | full                         | full                   | full       |
-| `String.prototype.to*Case()`                         | full                              | full                         | full                   | full       |
-| [`Intl`][]                                           | none (object does not exist)      | partial/full (depends on OS) | partial (English-only) | full       |
-| [`String.prototype.localeCompare()`][]               | partial (not locale-aware)        | full                         | full                   | full       |
-| `String.prototype.toLocale*Case()`                   | partial (not locale-aware)        | full                         | full                   | full       |
-| [`Number.prototype.toLocaleString()`][]              | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| `Date.prototype.toLocale*String()`                   | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| [WHATWG URL Parser](url.html#url_the_whatwg_url_api) | partial (no IDN support)          | full                         | full                   | full       |
-| [`require('buffer').transcode()`][]                  | none (function does not exist)    | full                         | full                   | full       |
-| [REPL](repl.html#repl_repl)                          | partial (inaccurate line editing) | full                         | full                   | full       |
-| [`require('util').TextDecoder`][]                    | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
+|                                                                                                     | `none`                            | `system-icu`                     | `small-icu`                            | `full-icu` |
+| --------------------------------------------------------------------------------------------------- | --------------------------------- | -------------------------------- | -------------------------------------- | ---------- |
+| [`String.prototype.normalize()`][]                                                                  | нет (функция no-op)               | полная                           | полная                                 | полная     |
+| `String.prototype.to*Case()`                                                                        | полная                            | полная                           | полная                                 | полная     |
+| [`Intl`][]                                                                                          | нет (объект не существует)        | частичная/полная (зависит от ОС) | частичная (только на английском языке) | полная     |
+| [`String.prototype.localeCompare()`][]                                                              | частичная (не учитывает локали)   | полная                           | полная                                 | полная     |
+| `String.prototype.toLocale*Case()`                                                                  | частичная (не учитывает локали)   | полная                           | полная                                 | полная     |
+| [`Number.prototype.toLocaleString()`][]                                                             | частичная (не учитывает локали)   | частичная/полная (зависит от ОС) | частичная (только на английском языке) | полная     |
+| `Date.prototype.toLocale*String()`                                                                  | частичная (не учитывает локали)   | частичная/полная (зависит от ОС) | частичная (только на английском языке) | полная     |
+| [WHATWG URL Parser](url.html#url_the_whatwg_url_api)                                                | partial (no IDN support)          | полная                           | полная                                 | полная     |
+| [`require('buffer').transcode()`][]                                                                 | none (function does not exist)    | полная                           | полная                                 | полная     |
+| [REPL](repl.html#repl_repl)                                                                         | partial (inaccurate line editing) | полная                           | полная                                 | полная     |
+| [`require('util').TextDecoder`][]                                                                   | partial (basic encodings support) | частичная/полная (зависит от ОС) | partial (Unicode-only)                 | полная     |
+| [RegExp Unicode Property Escapes](https://github.com/tc39/proposal-regexp-unicode-property-escapes) | none (invalid RegExp error)       | полная                           | полная                                 | полная     |
 
-*Note*: The "(not locale-aware)" designation denotes that the function carries out its operation just like the non-`Locale` version of the function, if one exists. For example, under `none` mode, `Date.prototype.toLocaleString()`'s operation is identical to that of `Date.prototype.toString()`.
+*Примечание*: Обозначение "(не учитывает локали)" означает, что функция выполняет свою работу точно так же, как не-`Locale` версия этой функции, если таковая существует. Например, в режиме `none` операция `Date.prototype.toLocaleString()` идентична операции `Date.prototype.toString()`.
 
-### Disable all internationalization features (`none`)
+### Отключить все функции интернационализации (`none`)
 
-If this option is chosen, most internationalization features mentioned above will be **unavailable** in the resulting `node` binary.
+Если выбран этот параметр, большинство функций интернационализации, упомянутых выше, будут **unavailable** в результирующем бинарном `узле`.
 
-### Build with a pre-installed ICU (`system-icu`)
+### Сборка с предустановленной ICU (`system-icu`)
 
-Node.js can link against an ICU build already installed on the system. In fact, most Linux distributions already come with ICU installed, and this option would make it possible to reuse the same set of data used by other components in the OS.
+Node.js может ссылаться на сборку ICU, уже установленную в системе. Фактически большинство дистрибутивов Linux уже поставляются с установленным ICU, и эта опция позволит повторно использовать тот же набор данных, который используется другими компонентами в ОС.
 
 Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
 
-### Embed a limited set of ICU data (`small-icu`)
+### Внедрение ограниченного набора данных ICU (`small-icu`)
 
-This option makes the resulting binary link against the ICU library statically, and includes a subset of ICU data (typically only the English locale) within the `node` executable.
+Эта опция статически создает результирующую двоичную ссылку на библиотеку ICU и включает подмножество данных ICU (обычно только английскую локаль) в исполняемом файле `node`.
 
 Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
 
@@ -73,49 +75,49 @@ console.log(spanish.format(january));
 // Should print "enero"
 ```
 
-This mode provides a good balance between features and binary size, and it is the default behavior if no `--with-intl` flag is passed. The official binaries are also built in this mode.
+Этот режим обеспечивает хороший баланс между функциями и размером двоичного файла, и это является поведением по умолчанию, если не передан флаг `--with-intl`. Официальные двоичные файлы также созданы в этом режиме.
 
-#### Providing ICU data at runtime
+#### Предоставление данных ICU во время выполнения
 
-If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
+Если используется опция `small-icu`, можно по-прежнему предоставлять дополнительные данные локали во время выполнения, чтобы методы JS работали для всех локалей ICU. Если файл данных хранится в `/some/directory`, его можно сделать доступным для ICU через:
 
-- The [`NODE_ICU_DATA`][] environment variable:
-    
-    ```shell
-    env NODE_ICU_DATA=/some/directory node
-    ```
+* Переменная окружения [`NODE_ICU_DATA`][]:
 
-- The [`--icu-data-dir`][] CLI parameter:
-    
-    ```shell
-    node --icu-data-dir=/some/directory
-    ```
+  ```shell
+  env NODE_ICU_DATA=/some/directory node
+  ```
 
-(If both are specified, the `--icu-data-dir` CLI parameter takes precedence.)
+* Параметр CLI [`--icu-data-dir`][]:
 
-ICU is able to automatically find and load a variety of data formats, but the data must be appropriate for the ICU version, and the file correctly named. The most common name for the data file is `icudt5X[bl].dat`, where `5X` denotes the intended ICU version, and `b` or `l` indicates the system's endianness. Check ["ICU Data"](http://userguide.icu-project.org/icudata) article in the ICU User Guide for other supported formats and more details on ICU data in general.
+  ```shell
+  node --icu-data-dir=/some/directory
+  ```
 
-The [full-icu](https://www.npmjs.com/package/full-icu) npm module can greatly simplify ICU data installation by detecting the ICU version of the running `node` executable and downloading the appropriate data file. After installing the module through `npm i full-icu`, the data file will be available at `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
+(Если указаны оба параметра, то приоритет будет иметь параметр `--icu-data-dir`.)
 
-### Embed the entire ICU (`full-icu`)
+ICU может автоматически находить и загружать различные форматы данных, но данные должны соответствовать версии ICU, а файл должен иметь правильное имя. Наиболее распространенное имя для файла данных: `icudt5X[bl].dat`, где `5X` обозначает предполагаемую версию ICU, а `b` или `l` указывает на порядковый номер системы. Чтобы узнать о других поддерживаемых форматах и о более подробной информации о данных ICU в целом, обратитесь к статье ["ICU Data"](http://userguide.icu-project.org/icudata) в Руководстве пользователя ICU.
 
-This option makes the resulting binary link against ICU statically and include a full set of ICU data. A binary created this way has no further external dependencies and supports all locales, but might be rather large. See [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) on how to compile a binary using this mode.
+Модуль npm [full-icu](https://www.npmjs.com/package/full-icu) может значительно упростить установку данных ICU путем определения версии ICU исполняемого файла `узла` и загрузки соответствующего файла данных. После установки модуля через `npm i full-icu` файл данных будет доступен по адресу `./node_modules/full-icu`. Затем этот путь можно передать либо в `NODE_ICU_DATA`, либо в `--icu-data-dir`, как показано выше, чтобы включить полную поддержку `Intl`.
 
-## Detecting internationalization support
+### Внедрение полного ICU (`full-icu`)
 
-To verify that ICU is enabled at all (`system-icu`, `small-icu`, or `full-icu`), simply checking the existence of `Intl` should suffice:
+Эта опция статически создает результирующую двоичную ссылку на ICU и включает в себя полный набор данных ICU. Созданный таким образом двоичный файл больше не имеет внешних зависимостей и поддерживает все локали, но может быть довольно большим. Смотрите [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) о том, как скомпилировать бинарный файл в этом режиме.
+
+## Обнаружение поддержки интернационализации
+
+Чтобы убедиться, что ICU вообще включен (`system-icu`, `small-icu` или `full-icu`), просто проверьте наличие `Intl`, для этого должно быть достаточно:
 
 ```js
 const hasICU = typeof Intl === 'object';
 ```
 
-Alternatively, checking for `process.versions.icu`, a property defined only when ICU is enabled, works too:
+Также можно проверить `process.versions.icu`, свойство, которое определяется только при включенном ICU:
 
 ```js
 const hasICU = typeof process.versions.icu === 'string';
 ```
 
-To check for support for a non-English locale (i.e. `full-icu` or `system-icu`), [`Intl.DateTimeFormat`][] can be a good distinguishing factor:
+Чтобы проверить поддержку неанглийской локали (то есть `full-icu` или `system-icu`), отличным фактором может быть [`Intl.DateTimeFormat`][]:
 
 ```js
 const hasFullICU = (() => {
@@ -129,7 +131,7 @@ const hasFullICU = (() => {
 })();
 ```
 
-For more verbose tests for `Intl` support, the following resources may be found to be helpful:
+Для более подробных проверок поддержки `Intl` могут быть полезны следующие ресурсы:
 
-- [btest402](https://github.com/srl295/btest402): Generally used to check whether Node.js with `Intl` support is built correctly.
-- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): ECMAScript's official conformance test suite includes a section dedicated to ECMA-402.
+- [btest402](https://github.com/srl295/btest402): Обычно используется для проверки правильности сборки Node.js с поддержкой `Intl`.
+- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): Официальный набор тестов соответствия ECMAScript включает раздел, посвященный ECMA-402.

@@ -2,20 +2,18 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - Estável
+> Estabilidade: 2 - estável
 
 HTTPS é o protocolo HTTP sobre SSL/TLS. No node.js, isso é implementado como um módulo separado.
 
 ## Classe: https.Agent
-
 <!-- YAML
 added: v0.4.5
 -->
 
-Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. Consulte [`https.request()`] [-] para obter mais informações.
+An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Class: https.Server
-
 <!-- YAML
 added: v0.3.4
 -->
@@ -23,12 +21,11 @@ added: v0.3.4
 Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`http.Server`][] para obter mais informações.
 
 ### server.close ([callback])
-
 <!-- YAML
 added: v0.1.90
 -->
-
-- `callback` {Function}
+* `callback` {Function}
+* Returns: {https.Server}
 
 Consulte [`server.close()`] [`http.close()`] do módulo HTTP para obter detalhes.
 
@@ -36,53 +33,52 @@ Consulte [`server.close()`] [`http.close()`] do módulo HTTP para obter detalhes
 
 Inicia o servidor HTTPS escutando para conexões criptografadas. Esse método é idêntico ao [`server.listen()`] [] do [`net. Server`] [].
 
+
 ### server.maxHeadersCount
 
 - {number} **Padrão:** `2000`
 
-Consulte [`http.Server#maxHeadersCount`][].
+See [`http.Server#maxHeadersCount`][].
+
+### server.headersTimeout
+
+- {number} **Padrão:** `40000`
+
+See [`http.Server#headersTimeout`][].
 
 ### server.setTimeout (\[msecs\]\[, callback\])
-
 <!-- YAML
 added: v0.11.2
 -->
-
-- `Ms` {number} **Padrão:** `120000` (2 minutos)
-- `callback` {Function}
+* `Ms` {number} **Padrão:** `120000` (2 minutos)
+* `callback` {Function}
+* Returns: {https.Server}
 
 Consulte [`http.Server#setTimeout()`][].
 
 ### server.timeout
-
 <!-- YAML
 added: v0.11.2
 -->
-
 - {number} **Padrão:** `120000` (2 minutos)
 
 Consulte [`http.Server#maxHeadersCount`][].
 
 ### server.keepAliveTimeout
-
 <!-- YAML
 added: v8.0.0
 -->
-
 - {number} **Padrão:** `5000` (5 segundos)
 
 Consulte [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
-
 <!-- YAML
 added: v0.3.4
 -->
-
-- `Opções de` {Object} aceita `Opções` de [`tls.createServer()`] [], [`tls.createSecureContext()`] [] e [`http.createServer()`] [].
-- `requestListener` {Function} Um ouvinte a ser adicionado para o evento `'request'`.
-
-Exemplo:
+* `Opções de` {Object} aceita `Opções` de [`tls.createServer()`] [], [`tls.createSecureContext()`] [] e [`http.createServer()`] [].
+* `requestListener` {Function} A listener to be added to the `'request'` event.
+* Returns: {https.Server}
 
 ```js
 // curl -k https://localhost:8000/
@@ -118,24 +114,25 @@ https.createServer(options, (req, res) => {
 ```
 
 ## https.get(options[, callback])
-
+## https.get(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
-
+  - version: v10.9.0
+    pr-url: https://github.com/nodejs/node/pull/21616
+    description: The `url` parameter can now be passed along with a separate
+                 `options` object.
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-
-- `opções` {Object | string | URL} aceita as mesmas `Opções` que [] [`https.request()`], com o `método` sempre definido para `GET`.
-- `callback` {Function}
+* `url` {string | URL}
+* `opções` {Object | string | URL} aceita as mesmas `Opções` que [] [`https.request()`], com o `método` sempre definido para `GET`.
+* `callback` {Function}
 
 Como [`http.get()`][] mas para o HTTPS.
 
 `opções` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
-
-Exemplo:
 
 ```js
 const https = require('https');
@@ -154,7 +151,6 @@ https.get('https://encrypted.google.com/', (res) => {
 ```
 
 ## https.globalAgent
-
 <!-- YAML
 added: v0.5.9
 -->
@@ -162,11 +158,14 @@ added: v0.5.9
 Instância global de [`https.Agent`][] para todas as requisições HTTPS clientes.
 
 ## https.request(options[, callback])
-
+## https.request(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
-
+  - version: v10.9.0
+    pr-url: https://github.com/nodejs/node/pull/21616
+    description: The `url` parameter can now be passed along with a separate
+                 `options` object.
   - version: v9.3.0
     pr-url: https://github.com/nodejs/node/pull/14903
     description: The `options` parameter can now include `clientCertEngine`.
@@ -174,20 +173,18 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-
-- `opções` {Object | string | URL} Aceita todas as `options` de [`http.request()`][], com algumas diferenças nos valores padrões: 
-    - `protocolo` **Padrão:** `'https:'`
-    - `porta` **Padrão:** `443`
-    - `agente` **Padrão:** `https.globalAgent`
-- `callback` {Function}
+* `url` {string | URL}
+* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
+  - `protocol` **Default:** `'https:'`
+  - `porta` **Padrão:** `443`
+  - `agente` **Padrão:** `https.globalAgent`
+* `callback` {Function}
 
 Faz uma requesição para um web server seguro.
 
-As seguintes `opções` adicionais do [`tls.connect()`][] também são aceitas: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
-
-Exemplo:
+`opções` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 
 ```js
 const https = require('https');
@@ -204,7 +201,6 @@ https.get('https://encrypted.google.com/', (res) => {
   console.error(e);
 });
 ```
-
 Exemplo usando opções do [`tls.connect()`] []:
 
 ```js
@@ -223,9 +219,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Alternativamente, opt fora do pool de conexão não usando um [`agente`] [].
-
-Exemplo:
+Alternatively, opt out of connection pooling by not using an [`Agent`][].
 
 ```js
 const options = {
@@ -253,7 +247,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Exemplo de fixação na impressão digital do certificado ou na chave pública (semelhante à `pin-sha256`):
+Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
 
 ```js
 const tls = require('tls');
@@ -329,7 +323,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Exemplos de saída:
+Outputs for example:
 
 ```text
 Subject Common Name: github.com

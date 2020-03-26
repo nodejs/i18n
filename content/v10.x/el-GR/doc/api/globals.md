@@ -1,21 +1,19 @@
-# Global Objects
+# Καθολικά Αντικείμενα
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. Οι παρακάτω μεταβλητές μπορεί να φαίνονται ως καθολικές, αλλά δεν είναι. Υπάρχουν μόνο σε πεδία εφαρμογής των ενοτήτων, δείτε την [τεκμηρίωση ενοτήτων συστήματος](modules.html):
 
-* [`__dirname`][]
-* [`__filename`][]
-* [`exports`][]
-* [`module`][]
-* [`require()`][]
+- [`__dirname`][]
+- [`__filename`][]
+- [`exports`][]
+- [`module`][]
+- [`require()`][]
 
-The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. Υπάρχει ένας αριθμός από [ενσωματωμένα αντικείμενα](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) που είναι μέρος της γλώσσας της JavaScript, τα οποία είναι επίσης καθολικά προσβάσιμα.
 
 ## Class: Buffer
-
 <!-- YAML
 added: v0.1.103
 -->
@@ -24,48 +22,44 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Χρησιμοποιείται για τον χειρισμό binary δεδομένων. Δείτε την [ενότητα buffer](buffer.html).
 
 ## \_\_dirname
 
-This variable may appear to be global but is not. See [`__dirname`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__dirname`].
 
 ## \_\_filename
 
-This variable may appear to be global but is not. See [`__filename`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__filename`].
 
 ## clearImmediate(immediateObject)
-
 <!-- YAML
 added: v0.9.1
 -->
 
 <!--type=global-->
 
-[`clearImmediate`] is described in the [timers](timers.html) section.
+Το [`clearImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearInterval(intervalObject)
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!--type=global-->
 
-[`clearInterval`] is described in the [timers](timers.html) section.
+Το [`clearInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearTimeout(timeoutObject)
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!--type=global-->
 
-[`clearTimeout`] is described in the [timers](timers.html) section.
+Το [`clearTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## console
-
 <!-- YAML
 added: v0.1.100
 -->
@@ -74,30 +68,28 @@ added: v0.1.100
 
 * {Object}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Χρησιμοποιείται για εκτύπωση στο stdout και το stderr. Δείτε την ενότητα [`console`][].
 
 ## exports
 
-This variable may appear to be global but is not. See [`exports`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`exports`].
 
 ## global
-
 <!-- YAML
 added: v0.1.27
 -->
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Object} Το καθολικό αντικείμενο ονομάτων.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. Αυτό σημαίνει ότι σε ένα πρόγραμμα περιήγησης, ο κώδικας `var something` θα ορίσει μια νέα καθολική μεταβλητή. Στη Node.js αυτό είναι διαφορετικό. Το ανώτατο πεδίο εφαρμογής δεν είναι το καθολικό πεδίο εφαρμογής· ο κώδικας `var something` μέσα σε μια ενότητα Node.js, ορίζει τη μεταβλητή μόνο σε αυτή την ενότητα.
 
 ## module
 
-This variable may appear to be global but is not. See [`module`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`module`].
 
 ## process
-
 <!-- YAML
 added: v0.1.7
 -->
@@ -106,44 +98,40 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+Το αντικείμενο process. Δείτε την ενότητα [Αντικείμενο `process`][].
 
 ## require()
 
-This variable may appear to be global but is not. See [`require()`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`require()`].
 
 ## setImmediate(callback[, ...args])
-
 <!-- YAML
 added: v0.9.1
 -->
 
 <!-- type=global -->
 
-[`setImmediate`] is described in the [timers](timers.html) section.
+Το [`setImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setInterval(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!-- type=global -->
 
-[`setInterval`] is described in the [timers](timers.html) section.
+Το [`setInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
-
 <!-- YAML
 added: v0.0.1
 -->
 
 <!-- type=global -->
 
-[`setTimeout`] is described in the [timers](timers.html) section.
+Το [`setTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## URL
-
 <!-- YAML
 added: v10.0.0
 -->
@@ -153,7 +141,6 @@ added: v10.0.0
 The WHATWG `URL` class. See the [`URL`][] section.
 
 ## URLSearchParams
-
 <!-- YAML
 added: v10.0.0
 -->
@@ -161,3 +148,14 @@ added: v10.0.0
 <!-- type=global -->
 
 The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+
+## WebAssembly
+<!-- YAML
+added: v8.0.0
+-->
+
+<!-- type=global -->
+
+* {Object}
+
+The object that acts as the namespace for all W3C [WebAssembly](https://webassembly.org) related functionality. See the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/WebAssembly) for usage and compatibility.

@@ -1,1 +1,63 @@
-@include _toc.md
+<!--
+  NB(chrisdickinson): if you move this file, be sure to update
+  tools/doc/html.js to point at the new location.
+-->
+
+<!--introduced_in=v0.10.0-->
+
+* [Informazioni su questi documenti](documentation.html)
+* [Utilizzo & Esempio](synopsis.html)
+
+<div class="line"></div>
+
+* [Test di asserzione](assert.html)
+* [Async Hooks](async_hooks.html)
+* [Buffer](buffer.html)
+* [Addons C++](addons.html)
+* [Addons C/C++ - N-API](n-api.html)
+* [Processi del Child](child_process.html)
+* [Cluster](cluster.html)
+* [Opzioni della Command Line](cli.html)
+* [Console](console.html)
+* [Crypto](crypto.html)
+* [Debugger](debugger.html)
+* [API obsoleti](deprecations.html)
+* [DNS](dns.html)
+* [Dominio](domain.html)
+* [Moduli ECMAScript](esm.html)
+* [Errori](errors.html)
+* [Eventi](events.html)
+* [File System](fs.html)
+* [Globali](globals.html)
+* [HTTP](http.html)
+* [HTTP/2](http2.html)
+* [HTTPS](https.html)
+* [Inspector](inspector.html)
+* [Internazionalizzazione](intl.html)
+* [Moduli](modules.html)
+* [Rete](net.html)
+* [SO](os.html)
+* [Percorso](path.html)
+* [Performance Hooks](perf_hooks.html)
+* [Processo](process.html)
+* [Punycode](punycode.html)
+* [Stringhe di Query](querystring.html)
+* [Readline](readline.html)
+* [REPL](repl.html)
+* [Stream](stream.html)
+* [String Decoder](string_decoder.html)
+* [Timers](timers.html)
+* [TLS/SSL](tls.html)
+* [Traccia Eventi](tracing.html)
+* [TTY](tty.html)
+* [UDP/Datagram](dgram.html)
+* [URL](url.html)
+* [Utilities](util.html)
+* [V8](v8.html)
+* [VM](vm.html)
+* [Worker Threads](worker_threads.html)
+* [Zlib](zlib.html)
+
+<div class="line"></div>
+
+* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)

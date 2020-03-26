@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
@@ -31,7 +31,6 @@ rl.question('What do you think of Node.js? ', (answer) => {
 *Note*: Once this code is invoked, the Node.js application will not terminate until the `readline.Interface` is closed because the interface waits for data to be received on the `input` stream.
 
 ## Class: Interface
-
 <!-- YAML
 added: v0.1.104
 -->
@@ -39,7 +38,6 @@ added: v0.1.104
 Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
 ### Event: 'close'
-
 <!-- YAML
 added: v0.1.98
 -->
@@ -56,7 +54,6 @@ The listener function is called without passing any arguments.
 The `readline.Interface` instance is finished once the `'close'` event is emitted.
 
 ### Event: 'line'
-
 <!-- YAML
 added: v0.1.98
 -->
@@ -74,7 +71,6 @@ rl.on('line', (input) => {
 ```
 
 ### Event: 'pause'
-
 <!-- YAML
 added: v0.7.5
 -->
@@ -95,7 +91,6 @@ rl.on('pause', () => {
 ```
 
 ### Event: 'resume'
-
 <!-- YAML
 added: v0.7.5
 -->
@@ -111,7 +106,6 @@ rl.on('resume', () => {
 ```
 
 ### Event: 'SIGCONT'
-
 <!-- YAML
 added: v0.7.5
 -->
@@ -131,10 +125,9 @@ rl.on('SIGCONT', () => {
 });
 ```
 
-*Note*: The `'SIGCONT'` event is *not* supported on Windows.
+*Note*: The `'SIGCONT'` event is _not_ supported on Windows.
 
 ### Event: 'SIGINT'
-
 <!-- YAML
 added: v0.3.0
 -->
@@ -154,7 +147,6 @@ rl.on('SIGINT', () => {
 ```
 
 ### Event: 'SIGTSTP'
-
 <!-- YAML
 added: v0.7.5
 -->
@@ -177,10 +169,9 @@ rl.on('SIGTSTP', () => {
 });
 ```
 
-*Note*: The `'SIGTSTP'` event is *not* supported on Windows.
+*Note*: The `'SIGTSTP'` event is _not_ supported on Windows.
 
 ### rl.close()
-
 <!-- YAML
 added: v0.1.98
 -->
@@ -188,7 +179,6 @@ added: v0.1.98
 The `rl.close()` method closes the `readline.Interface` instance and relinquishes control over the `input` and `output` streams. When called, the `'close'` event will be emitted.
 
 ### rl.pause()
-
 <!-- YAML
 added: v0.3.4
 -->
@@ -198,7 +188,6 @@ The `rl.pause()` method pauses the `input` stream, allowing it to be resumed lat
 Calling `rl.pause()` does not immediately pause other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
 ### rl.prompt([preserveCursor])
-
 <!-- YAML
 added: v0.1.98
 -->
@@ -212,7 +201,6 @@ When called, `rl.prompt()` will resume the `input` stream if it has been paused.
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the prompt is not written.
 
 ### rl.question(query, callback)
-
 <!-- YAML
 added: v0.3.3
 -->
@@ -237,7 +225,6 @@ rl.question('What is your favorite food? ', (answer) => {
 *Note*: The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. The `callback` is called with the provided answer as the only argument.
 
 ### rl.resume()
-
 <!-- YAML
 added: v0.3.4
 -->
@@ -245,7 +232,6 @@ added: v0.3.4
 The `rl.resume()` method resumes the `input` stream if it has been paused.
 
 ### rl.setPrompt(prompt)
-
 <!-- YAML
 added: v0.1.98
 -->
@@ -255,13 +241,12 @@ added: v0.1.98
 The `rl.setPrompt()` method sets the prompt that will be written to `output` whenever `rl.prompt()` is called.
 
 ### rl.write(data[, key])
-
 <!-- YAML
 added: v0.1.98
 -->
 
 * `data` {string}
-* `key` {Object} 
+* `key` {Object}
   * `ctrl` {boolean} `true` to indicate the `<ctrl>` key.
   * `meta` {boolean} `true` to indicate the `<Meta>` key.
   * `shift` {boolean} `true` to indicate the `<Shift>` key.
@@ -286,35 +271,32 @@ rl.write(null, { ctrl: true, name: 'u' });
 *Note*: The `rl.write()` method will write the data to the `readline` Interface's `input` *as if it were provided by the user*.
 
 ## readline.clearLine(stream, dir)
-
 <!-- YAML
 added: v0.7.7
 -->
 
-* `stream` {Writable}
-* `dir` {number} 
+* `stream` {stream.Writable}
+* `dir` {number}
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
   * `0` - the entire line
 
 The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
 
-## readline.clearScreenDown(stream)
 
+## readline.clearScreenDown(stream)
 <!-- YAML
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 
 The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
 
 ## readline.createInterface(options)
-
 <!-- YAML
 added: v0.1.98
 changes:
-
   - version: v8.3.0, 6.11.4
     pr-url: https://github.com/nodejs/node/pull/13497
     description: Remove max limit of `crlfDelay` option.
@@ -329,15 +311,15 @@ changes:
     description: The `historySize` option can be `0` now.
 -->
 
-* `options` {Object} 
-  * `input` {Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
-  * `output` {Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
+* `options` {Object}
+  * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
+  * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} An optional function used for Tab autocompletion.
-  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. Defaults to checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`
-  * `prompt` {string} The prompt string to use. **Default:** `'> '`
-  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`
-  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`
+  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
+  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `prompt` {string} The prompt string to use. **Default:** `'> '`.
+  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
+  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
 
 The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
@@ -388,24 +370,22 @@ function completer(linePartial, callback) {
 ```
 
 ## readline.cursorTo(stream, x, y)
-
 <!-- YAML
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 * `x` {number}
 * `y` {number}
 
 The `readline.cursorTo()` method moves cursor to the specified position in a given [TTY](tty.html) `stream`.
 
 ## readline.emitKeypressEvents(stream[, interface])
-
 <!-- YAML
 added: v0.7.7
 -->
 
-* `stream` {Readable}
+* `stream` {stream.Readable}
 * `interface` {readline.Interface}
 
 The `readline.emitKeypressEvents()` method causes the given [Readable](stream.html#stream_readable_streams) `stream` to begin emitting `'keypress'` events corresponding to received input.
@@ -423,16 +403,16 @@ if (process.stdin.isTTY)
 ```
 
 ## readline.moveCursor(stream, dx, dy)
-
 <!-- YAML
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 * `dx` {number}
 * `dy` {number}
 
 The `readline.moveCursor()` method moves the cursor *relative* to its current position in a given [TTY](tty.html) `stream`.
+
 
 ## Example: Tiny CLI
 

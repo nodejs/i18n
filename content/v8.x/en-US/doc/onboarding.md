@@ -1,24 +1,14 @@
 # Onboarding
 
-This document is an outline of the things we tell new Collaborators at their
-onboarding session.
+This document is an outline of the things we tell new Collaborators at their onboarding session.
 
 ## One week before the onboarding session
 
-* Confirm that the new Collaborator is using two-factor authentication on their
-  GitHub account. Unless two-factor authentication is enabled, do not give an
-  account elevated privileges such as the ability to land code in the main
-  repository or to start continuous integration (CI) jobs.
+* Confirm that the new Collaborator is using two-factor authentication on their GitHub account. Unless two-factor authentication is enabled, do not give an account elevated privileges such as the ability to land code in the main repository or to start continuous integration (CI) jobs.
 
 ## Fifteen minutes before the onboarding session
 
-* Prior to the onboarding session, add the new Collaborator to
-  [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators),
-  and to [the Members team](https://github.com/orgs/nodejs/teams/members) if
-  they are not already part of it.
-  Note that this is the step that gives the account elevated privileges, so
-  do not perform this step (or any subsequent steps) unless two-factor
-  authentication is enabled on the new Collaborator's GitHub account.
+* Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators), and to [the Members team](https://github.com/orgs/nodejs/teams/members) if they are not already part of it. Note that this is the step that gives the account elevated privileges, so do not perform this step (or any subsequent steps) unless two-factor authentication is enabled on the new Collaborator's GitHub account.
 
 
 ## Onboarding session
@@ -38,10 +28,7 @@ onboarding session.
       * Branches in the nodejs/node repository are only for release lines
     * [See "Updating Node.js from Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
     * Make a new branch for each PR you submit.
-    * Membership: Consider making your membership in the Node.js GitHub organization
-      public. This makes it easier to identify Collaborators. Instructions on how to
-      do that are available at
-      [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+    * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
   * Notifications:
     * Use [https://github.com/notifications](https://github.com/notifications) or set up email
@@ -62,7 +49,7 @@ onboarding session.
     * Generally: try to be nice to people!
     * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
-  * We have a [Code of Conduct][] that you are expected to follow *and* hold others accountable to
+  * We have a [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) that you are expected to follow *and* hold others accountable to
 
 ## Managing the issue tracker
 
@@ -71,8 +58,7 @@ onboarding session.
 
   * [**See "Labels"**](./onboarding-extras.md#labels)
     * There is [a bot](https://github.com/nodejs-github-bot/github-bot) that applies subsystem labels (for example, `doc`, `test`, `assert`, or `buffer`) so that we know what parts of the code base the pull request modifies. It is not perfect, of course. Feel free to apply relevant labels and remove irrelevant labels from pull requests and issues.
-    * Use the `tsc-review` label if a topic is controversial or isn't coming to
-      a conclusion after an extended time.
+    * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
     * `semver-{minor,major}`:
       * If a change has the remote *chance* of breaking something, use the `semver-major` label
       * When adding a semver label, add a comment explaining why you're adding it. Do it right away so you don't forget!
@@ -88,41 +74,26 @@ onboarding session.
 
 ## Reviewing PRs
   * The primary goal is for the codebase to improve.
-  * Secondary (but not far off) is for the person submitting code to succeed.
-      A pull request from a new contributor is an opportunity to grow the
-      community.
+  * Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
   * Review a bit at a time. Do not overwhelm new contributors.
-    * It is tempting to micro-optimize and make everything about relative
-        performance. Don't succumb to that temptation. We change V8 often.
-        Techniques that provide improved performance today may be unnecessary in
-        the future.
+    * It is tempting to micro-optimize and make everything about relative performance. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
   * Be aware: Your opinion carries a lot of weight!
-  * Nits (requests for small changes that are not essential) are fine, but try
-    to avoid stalling the pull request.
+  * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request.
     * Note that they are nits when you comment: `Nit: change foo() to bar().`
     * If they are stalling the pull request, fix them yourself on merge.
   * Minimum wait for comments time
-    * There is a minimum waiting time which we try to respect for non-trivial
-        changes, so that people who may have important input in such a
-        distributed project are able to respond.
-    * For non-trivial changes, leave the pull request open for at least 48
-        hours (72 hours on a weekend).
-    * If a pull request is abandoned, check if they'd mind if you took it over
-        (especially if it just has nits left).
+    * There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
+    * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
+    * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
   * Approving a change
-    * Collaborators indicate that they have reviewed and approve of the
-        changes in a pull request using Github’s approval interface
+    * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
     * Some people like to comment `LGTM` (“Looks Good To Me”)
     * You have the authority to approve any other collaborator’s work.
     * You cannot approve your own pull requests.
-    * When explicitly using `Changes requested`, show empathy – comments will
-      usually be addressed even if you don’t use it.
-      * If you do, it is nice if you are available later to check whether your
-        comments have been addressed
-      * If you see that the requested changes have been made, you can clear another collaborator's
-        `Changes requested` review.
-      * Use `Changes requested` to indicate that you are considering some of
-        your comments to block the PR from landing.
+    * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it.
+      * If you do, it is nice if you are available later to check whether your comments have been addressed
+      * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
+      * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
 
   * What belongs in Node.js:
     * Opinions vary – it’s good to have a broad collaborator base for that reason!
@@ -176,12 +147,4 @@ onboarding session.
     * [https://github.com/nodejs/readable-stream](https://github.com/nodejs/readable-stream)
     * [https://github.com/nodejs/LTS](https://github.com/nodejs/LTS)
     * [https://github.com/nodejs/citgm](https://github.com/nodejs/citgm)
-  * The Node.js Foundation hosts regular summits for active contributors to the Node.js
-    project, where we have face-to-face discussion about our work on the project.
-    The foundation has travel funds to cover participants' expenses including
-    accommodation, transportation, visa fees etc. if needed. Check out the
-    [summit](https://github.com/nodejs/summit) repository for details.
-
-[Code of Conduct]: https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md
-[`core-validate-commit`]: https://github.com/evanlucas/core-validate-commit
-[`node-core-utils`]: https://github.com/nodejs/node-core-utils
+  * The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussion about our work on the project. The foundation has travel funds to cover participants' expenses including accommodation, transportation, visa fees etc. if needed. Check out the [summit](https://github.com/nodejs/summit) repository for details.

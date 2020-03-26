@@ -1,13 +1,13 @@
-# Maintaining npm in Node.js
+# Maintenir npm en Node.js
 
-## Step 1: Clone npm
+## Étape 1 : Cloner npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-or if you already have npm cloned make sure the repo is up to date
+ou si vous avez déjà npm cloné, assurez-vous que le repo est à jour
 
 ```console
 $ git remote update -p
@@ -42,7 +42,7 @@ $ git commit -m "deps: upgrade npm to x.y.z"
 $ cd ..
 ```
 
-## Step 5: Update licenses
+## Étape 5: Mise à jour des licences
 
 ```console
 $ ./configure
@@ -53,7 +53,7 @@ $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Note: please ensure you are only making the updates that are changed by npm.
+Note: veuillez vous assurer que vous ne faites que les mises à jour qui sont modifiées par npm.
 
 ## Step 6: Apply Whitespace fix
 
@@ -61,7 +61,7 @@ Note: please ensure you are only making the updates that are changed by npm.
 $ git rebase --whitespace=fix master
 ```
 
-## Step 7: Test the build
+## Étape 7: Tester le build
 
 ```console
 $ make test-npm

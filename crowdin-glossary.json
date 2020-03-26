@@ -1,0 +1,168 @@
+{
+  "glossary": [
+    [
+      "Node.js Foundation",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "NF",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Foundation",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    ["Board of Directors", "The Node Foundation Board of Directors"],
+    [
+      "Technical Steering Committee",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "TSC",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Community Committee",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Community-Committee",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "CommComm",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Working Group",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "wg",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Contributor",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Collaborator",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "Emeritus",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "node",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "core collaborator",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    [
+      "active collaborator",
+      "This is a term used in Node.js Foundation and should not be translated"
+    ],
+    ["user-feedback", "Node.js User Feedback Initiative"],
+    ["website-redesign", "Node.js Website Redesign Strategic Initiative"],
+    ["modules", "Node.js Foundation Modules Team"],
+    ["diagnostics", "Node.js Diagnostics Working Group"],
+    ["security-wg", "Node.js Security Working Group"],
+    ["evangelism", "Node.js Working group and should not be translated"],
+    [
+      "release",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "releases",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "end-of-life",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "EOL",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "End of Life",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Release schedule",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Maintenance LTS",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Maintenance",
+      "This is a Node.js term used in release and should usually not be translated"
+    ],
+    [
+      "Active LTS",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Active",
+      "This is a Node.js term used in release and should usually not be translated"
+    ],
+    [
+      "Current Release",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Current",
+      "This is a Node.js term used in release and should usually not be translated"
+    ],
+    [
+      "Pending",
+      "This is a Node.js term used in release and should usually not be translated"
+    ],
+    [
+      "Iron",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Hydrogen",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Gallium",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Fermium",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Erbium",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Dubnium",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Carbon",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Boron",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    [
+      "Argon",
+      "This is a Node.js term used in release and should not be translated"
+    ],
+    ["userland", "This is a Node term and should usually not be translated"],
+    [
+      "promises",
+      "This is a node core term and should usually not be translated"
+    ]
+  ]
+}
