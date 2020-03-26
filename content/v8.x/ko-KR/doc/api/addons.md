@@ -2,23 +2,23 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객체로서, [`require()`](modules.html#modules_require) 함수를 사용해서 Node.js에 로드하여 보통의 Node.js 모듈처럼 사용될 수 있습니다. 이들은 Node.js에서 실행되는 JavaScript와 C/C++ 라이브러리 사이의 인터페이스를 제공하기 위해 주로 사용됩니다.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
 
-현재, 애드온을 구현하는 것은 꽤나 복잡하며, 다음과 같은 몇몇 컴포넌트와 API에 대한 지식이 요구됩니다 :
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
 
- - V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8의 API의 대부분이 `v8.h` 헤더 파일(Node.js 소스 트리의 `deps/v8/include/v8.h`)에 문서화되어 있습니다. 이 헤더 파일은 [online](https://v8docs.nodesource.com/)에서 이용 가능합니다.
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv는 또한 pthreads-like한 스레딩 추상화를 통해, 표준 이벤트 루프보다 강력하고 세련된 비동기 애드온을 제공합니다. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
- - Node.js 내장 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
+* Node.js 내장 라이브러리. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
- - Node.js는 OpenSSL같은 정적으로 링크된 라이브러리들을 포함 하고 있습니다. 이러한 외부라이브러리들은 Node.js 소스트리의 `deps/` 디렉토리내에 위치합니다. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello world
 
-이 "Hello world" 예제는 C++로 작성된 간단한 애드온입니다. 아래는 자바스크립트로 작성한 같은 애드온의 코드입니다:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
@@ -53,22 +53,22 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-모든 Node.js Addon들은 다음과 같은 초기화 함수를 사용해야합니다.
+Note that all Node.js Addons must export an initialization function following the pattern:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-함수가 아니기때문에 `NODE_MODULE` 뒤에는 세미콜론은 붙이지 않습니다. (`node.h` 참고).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the .node suffix).
 
-`hello.cc` 예제를 보면, 초기화함수는 `init` 이고 Addon module 이름은 `addon` 임을 확인 할 수 있습니다..
+In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
 ### 빌드
 
-소스 코드가 작성되면, `addon.node`파일에 바이너리 형태로 컴파일되어야 합니다. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. 이 파일은 Node.js 애드온을 컴파일하는 데 특화된 툴인, [node-gyp](https://github.com/nodejs/node-gyp)에 의해 실행됩니다.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -81,9 +81,9 @@ The `module_name` must match the filename of the final binary (excluding the .no
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. 이 버전은 개발자가 직접 사용하도록 만들어지지 않았으며, `npm install` 명령어를 이용해서 애드온을 컴파일하고 설치할 수 있습니다. `node-gyp`을 사용하고자 하는 개발자는 `npm install -g node-gyp` 명령을 이용하여 설치할 수 있습니다. 플랫폼에 대한 요구사항이 포함되어있는 `node-gyp` [설치 문서](https://github.com/nodejs/node-gyp#installation)를 통해 더 많은 정보를 확인할 수 있습니다.
+*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
-`binding.gyp` 파일이 만들어지면, 현재 플랫폼에 적합한 프로젝트 빌드 파일을 생성하기 위해 `node-gyp configure`을 사용할 수 있습니다. 이는 유닉스 플랫폼에서는 `Makefile`을, 윈도우 플랫폼에서는 `vcxproj`를 `build` 디렉토리에 생성합니다.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
@@ -132,7 +132,6 @@ When calling [`require()`](modules.html#modules_require), the `.node` extension 
 Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
-
 
 ## N-API
 
@@ -205,7 +204,6 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-
 ### Function arguments
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
@@ -274,7 +272,6 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
-
 
 ### Callbacks
 
@@ -375,7 +372,6 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
 ### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -431,7 +427,6 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
-
 
 ### Wrapping C++ objects
 
@@ -794,7 +789,6 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-
 ### Passing wrapped objects around
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
@@ -969,7 +963,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
+* `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
