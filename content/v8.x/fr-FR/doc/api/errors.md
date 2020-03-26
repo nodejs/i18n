@@ -826,7 +826,7 @@ A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronou
 
 A Node.js API function was called with an incompatible `this` value.
 
-Example:
+Exemple:
 
 ```js
 const { URLSearchParams } = require('url');
