@@ -4,7 +4,7 @@
 
 Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. A test will fail if:
 
-- It exits by setting `process.exitCode` to a non-zero number.
+- It exits by setting `process.exitCode` to a non-zero number. 
   - This is usually done by having an assertion throw an uncaught Error.
   - Occasionally, using `process.exit(code)` may be appropriate.
 - It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
@@ -169,6 +169,7 @@ const server = http.createServer(common.mustCall((req, res) => {
 });
 
 ```
+
 #### Countdown Module
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
@@ -243,7 +244,6 @@ There have been cases where tests fail without `console.log()`, and then pass wh
 Excessive use of console output is discouraged as it can overwhelm the display, including the Jenkins console and test report displays. Be particularly cautious of output in loops, or other contexts where output may be repeated many times in the case of failure.
 
 In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
-
 
 ### ES.Next features
 
@@ -334,16 +334,19 @@ $ make cctest
 ```
 
 A filter can be applied to run single/multiple test cases:
+
 ```console
 $ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
 ```
 
 `cctest` can also be run directly which can be useful when debugging:
+
 ```console
 $ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
 ```
 
 ### Node.js test fixture
+
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
