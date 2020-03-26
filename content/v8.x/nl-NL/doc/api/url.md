@@ -4,7 +4,7 @@
 
 > Stabiliteit: 2 - stabiel
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. Het kan worden bereikt met behulp van:
 
 ```js
 const url = require('url');
@@ -87,7 +87,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
+A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. Bijvoorbeeld:
 
 ```js
 const { URL } = require('url');
@@ -580,7 +580,7 @@ Returns the value of the first name-value pair whose name is `name`. If there ar
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
-* Returns: {Array}
+* Retourneert: {Array}
 
 Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
 
