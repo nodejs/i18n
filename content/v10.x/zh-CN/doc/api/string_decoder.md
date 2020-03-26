@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定
 
-`string_decoder` 模块提供了一个可用于将 `Buffer` 对象解码为字符串的 API，在解码过程中会保留已编码的多字节 UTF-8 和 UTF-16 字符。 可以通过如下方式访问：
+The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. 可以通过如下方式访问：
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -23,9 +23,9 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-当 `Buffer` 实例被写入到 `StringDecoder` 实例时，将使用内部缓冲区来确保已解码字符串中不包含不完整的多字节字符。 它们将被保存在缓冲区中，直到下次调用 `stringDecoder.write()` ，或 `stringDecoder.end()` 被调用时。
+When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
 
-在下面的示例中，欧元符号 (`€`) 的三个 UTF-8 编码字节通过三个独立的操作来写入：
+In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -39,6 +39,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ## Class: StringDecoder
 
 ### new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -48,6 +49,7 @@ added: v0.1.99
 创建一个新的 `StringDecoder` 实例。
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -55,14 +57,16 @@ added: v0.9.3
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
 * 返回：{string}
 
-以字符串形式返回保存在内部缓冲区中的任何剩余输入。 表示不完整的 UTF-8 和 UTF-16 字符的字节将被替换为适合字符编码的替代字符。
+以字符串形式返回保存在内部缓冲区中的任何剩余输入。 Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
 
-如果提供了 `buffer` 参数，在返回剩余输入之前将会最后一次调用 `stringDecoder.write()`。
+If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement
