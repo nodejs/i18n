@@ -4,7 +4,7 @@
 
 > Stabilität: 2 - Stabil
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+The `path` module provides utilities for working with file and directory paths. Es kann zugegriffen werden durch:
 
 ```js
 const path = require('path');
@@ -51,9 +51,11 @@ path.posix.basename('/tmp/myfile.html');
 *Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -61,7 +63,7 @@ changes:
 
 * `path` {string}
 * `ext` {string} An optional file extension
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -78,6 +80,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -110,16 +113,18 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
 -->
 
 * `path` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -133,16 +138,18 @@ path.dirname('/foo/bar/baz/asdf/quux');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
 -->
 
 * `path` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
@@ -168,17 +175,18 @@ path.extname('.index');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,12 +274,13 @@ path.isAbsolute('.');           // false
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
 
@@ -289,12 +299,13 @@ path.join('foo', {}, 'bar');
 A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
 
 * `path` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
@@ -317,7 +328,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
+Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -327,6 +338,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -391,6 +403,7 @@ path.parse('C:\\path\\dir\\file.txt');
 A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -400,9 +413,11 @@ added: v0.11.15
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -411,7 +426,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -434,12 +449,13 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* Returns: {string}
+* Gibt zurück: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -470,6 +486,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +495,7 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `\` on Windows
+* `` on Windows
 * `/` on POSIX
 
 For example on POSIX:
@@ -500,6 +517,7 @@ accepted as path segment separators; however, the``path`methods only add
 backward slashes (`\`).
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->
