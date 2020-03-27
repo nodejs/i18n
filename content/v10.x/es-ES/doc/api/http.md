@@ -465,7 +465,7 @@ added: v1.6.0
 
 * Returns: {any}
 
-Lee una cabecera en la solicitud. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Lee una cabecera en la solicitud. Tenga en que el nombre no distingue entre mayúsculas y minúsculas. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
 
 ```js
 request.setHeader('content-type', 'text/html');
@@ -889,7 +889,7 @@ added: v0.4.0
 
 * Returns: {any}
 
-Lee una cabecera que ya sido puesta en cola, pero que no ha sido enviada al cliente. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
+Lee una cabecera que ya sido puesta en cola, pero que no ha sido enviada al cliente. Tenga en que el nombre no distingue entre mayúsculas y minúsculas. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1113,6 +1113,10 @@ added: v0.3.0
 added: v0.1.30
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
@@ -1122,14 +1126,20 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Devuelve: {http.ServerResponse}
 
 Envía una cabecera de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. El último argumento, `headers`, son las cabeceras de respuesta. Optionally one can give a human-readable `statusMessage` as the second argument.
 
+Returns a reference to the `ServerResponse`, so that calls can be chained.
+
 ```js
 const body = 'hello world';
-response.writeHead(200, {
-  'Content-Length': Buffer.byteLength(body),
-  'Content-Type': 'text/plain' });
+response
+  .writeHead(200, {
+    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'text/plain'
+  })
+  .end(body);
 ```
 
 This method must only be called once on a message and it must be called before [`response.end()`][] is called.
@@ -1431,6 +1441,9 @@ Found'`.
 added: v0.1.13
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v9.6.0, v8.12.0
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
@@ -1439,6 +1452,7 @@ changes:
 * `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
   * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Default:** `ServerResponse`.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Predeterminado:** `false`
 
 * `requestListener` {Function}
 
@@ -1534,6 +1548,9 @@ Read-only property specifying the maximum allowed size of HTTP headers in bytes.
 added: v0.3.6
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -1546,18 +1563,19 @@ changes:
 * `url` {string | URL}
 * `opciones` {Object} 
   * `protocol` {string} Protocolo a utilizar. **Predeterminado:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Predeterminado:** `'localhost'`.
+  * `host` {string} Un nombre de dominio o dirección IP del servidor al cual se le emitirá la solicitud. **Predeterminado:** `'localhost'`.
   * `hostname` {string} Alias para `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
-  * `family` {number} IP address family to use when resolving `host` or `hostname`. Los valores válidos son `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `family` {number} IP address family to use when resolving `host` or `hostname`. Los valores válidos son `4` o `6`. Cuando no esté especificado, se utilizarán IP v4 y v6.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Predeterminado:** `false`
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Interfaz local para enlazar conexiones de red.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
-  * `method` {string} Una string que especifique el método de solicitud HTTP. **Default:** `'GET'`.
+  * `method` {string} Una string que especifica el método de solicitud HTTP. **Default:** `'GET'`.
   * `path` {string} Ruta de solicitud. Debería incluir el string de la query si existe alguno. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Predeterminado:** `'/'`.
   * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
   * `agente` {http.Agent | boolean} Controla el comportamiento de [`Agent`][]. Valores posibles: 
-    * `undefined` (Predeterminado): utiliza [`http.globalAgent`][] para este host y este puerto.
+    * `undefined` (predeterminado): utiliza [`http.globalAgent`][] para este host y este puerto.
     * objeto `Agent`: utiliza explícitamente lo que fue pasado en `Agent`.
     * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Cualquier stream [`Duplex`][] es un valor válido.
