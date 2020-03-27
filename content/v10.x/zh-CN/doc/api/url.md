@@ -90,7 +90,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-如果 `input` 或 `base` 不是有效的 URL，则会抛出 `TypeError`。 Note that an effort will be made to coerce the given values into strings. For instance:
+如果 `input` 或 `base` 不是有效的 URL，则会抛出 `TypeError`。 Note that an effort will be made to coerce the given values into strings. 例如：
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
