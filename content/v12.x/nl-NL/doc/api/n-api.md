@@ -525,7 +525,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 * `[in] context`: The optional data with which the thread-safe function was created.
 * `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## Error Handling
+## Foutafhandeling
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
