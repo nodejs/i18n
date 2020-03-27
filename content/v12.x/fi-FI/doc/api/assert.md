@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 The `assert` module provides a set of assertion functions for verifying invariants. The module provides a recommended [`strict` mode][] and a more lenient legacy mode.
 
@@ -391,7 +391,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 Expects the `string` input not to match the regular expression.
 
@@ -653,7 +653,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 Expects the `string` input to match the regular expression.
 
