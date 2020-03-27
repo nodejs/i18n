@@ -1,6 +1,6 @@
 # 用法和示例
 
-## Usage
+## 用法
 
 <!--introduced_in=v0.10.0-->
 <!--type=misc-->
