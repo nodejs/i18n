@@ -1298,6 +1298,9 @@ In line with OpenSSL's recommendation to use a more modern algorithm instead of 
 added: v0.1.94
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1376,6 +1379,9 @@ In line with OpenSSL's recommendation to use a more modern algorithm instead of 
 added: v0.1.94
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -2086,6 +2092,9 @@ The asynchronous version of `crypto.randomFill()` is carried out in a single thr
 added: v10.5.0
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
@@ -2136,6 +2145,9 @@ crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
 added: v10.5.0
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
