@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.1.0-->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
@@ -115,7 +115,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Error Handling
+##### Foutafhandeling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -548,7 +548,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 class DBQuery extends AsyncResource {
