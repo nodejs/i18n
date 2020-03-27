@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 <!--name=fs-->
 
@@ -369,7 +369,7 @@ Additionally, when [`fs.readdir()`][] or [`fs.readdirSync()`][] is called with t
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a block device.
 
@@ -378,7 +378,7 @@ Returns `true` if the `fs.Dirent` object describes a block device.
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a character device.
 
@@ -387,7 +387,7 @@ Returns `true` if the `fs.Dirent` object describes a character device.
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a file system directory.
 
@@ -396,7 +396,7 @@ Returns `true` if the `fs.Dirent` object describes a file system directory.
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) pipe.
 
@@ -405,7 +405,7 @@ Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) p
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a regular file.
 
@@ -414,7 +414,7 @@ Returns `true` if the `fs.Dirent` object describes a regular file.
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a socket.
 
@@ -423,7 +423,7 @@ Returns `true` if the `fs.Dirent` object describes a socket.
 added: v10.10.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Dirent` object describes a symbolic link.
 
@@ -621,7 +621,7 @@ BigIntStats {
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a block device.
 
@@ -630,7 +630,7 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a character device.
 
@@ -639,7 +639,7 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a file system directory.
 
@@ -648,7 +648,7 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
 
@@ -657,7 +657,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -666,7 +666,7 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a socket.
 
@@ -675,7 +675,7 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
@@ -1229,7 +1229,7 @@ fs.chmod('my_file.txt', 0o775, (err) => {
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constant               | Octal   | Description              |
+| 常量                     | Octal   | 描述                       |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -1243,7 +1243,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Description              |
+| Number | 描述                       |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -1679,7 +1679,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the path exists, `false` otherwise.
 
@@ -2287,7 +2287,7 @@ added: v5.10.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string}
+* 返回：{string}
 
 Returns the created folder path.
 
@@ -2391,7 +2391,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} **Default:** `'r'`. See [support of file system `flags`][].
 * `mode` {string|integer} **Default:** `0o666`
-* Returns: {number}
+* 返回：{number}
 
 Returns an integer representing the file descriptor.
 
@@ -2677,7 +2677,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {number}
+* 返回：{number}
 
 Returns the number of `bytesRead`.
 
@@ -4486,8 +4486,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -4518,8 +4518,8 @@ The following constants are meant for use with [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>COPYFILE_EXCL</code></td>
@@ -4546,8 +4546,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -4640,8 +4640,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -4683,8 +4683,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
