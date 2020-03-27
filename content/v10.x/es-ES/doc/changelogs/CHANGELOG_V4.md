@@ -850,9 +850,9 @@ Este lanzamiento LTS viene con 180 commits. This includes 117 which are test rel
 
 Este lanzamiento LTS viene con 108 commits. This includes 30 which are doc related, 28 which are test related, 16 which are build / tool related, and 4 commits which are updates to dependencies.
 
-### Notable Changes
+### Cambios Notables
 
-The SEMVER-MINOR changes include:
+Los cambios de SEMVER-MINOR incluyen:
 
 * **build**: export openssl symbols on Windows making it possible to build addons linking against the bundled version of openssl (Alex Hultman) [#7576](https://github.com/nodejs/node/pull/7576)
 * **debugger**: make listen address configurable in the debugger server (Ben Noordhuis) [#3316](https://github.com/nodejs/node/pull/3316)
@@ -985,7 +985,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 
 Este lanzamiento LTS viene con 219 commits. This includes 80 commits that are docs related, 58 commits that are test related, 20 commits that are build / tool related, and 9 commits that are updates to dependencies.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: It is now possible to build the documentation from the release tarball (Anna Henningsen) [#8413](https://github.com/nodejs/node/pull/8413)
 * **buffer**: Buffer.alloc() will no longer incorrectly return a zero filled buffer when an encoding is passed (Teddy Katz) [#9238](https://github.com/nodejs/node/pull/9238)
@@ -1222,7 +1222,7 @@ Este lanzamiento LTS viene con 219 commits. This includes 80 commits that are do
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable Changes
+### Cambios Notables
 
 * **c-ares**: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Daniel Stenberg)
 
@@ -1237,7 +1237,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable Changes
+### Cambios Notables
 
 Semver Minor:
 
@@ -1277,7 +1277,7 @@ Parche de Semver:
 
 ## 2016-08-15, Version 4.5.0 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Cambios Notables
 
 Semver Minor:
 
@@ -1576,7 +1576,7 @@ Parche de Semver:
 
 Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are docs related, 11 commits that are test related, 8 commits that are build related, and 4 commits that are benchmark related.
 
-### Notable Changes
+### Cambios Notables
 
 * **debugger**: 
   * Todas las propiedades de un array (aparte de la longitud) ahora se pueden imprimir en el repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
@@ -1686,7 +1686,7 @@ Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are doc
 
 ## 2016-06-23, Version 4.4.6 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Cambios Notables
 
 Esto es un lanzamiento de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en nodejs.org para más detalles sobre vulnerabilidades parcheadas.
 
@@ -1700,7 +1700,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 
 ## 2016-05-24, Version 4.4.5 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: 
   * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
@@ -1709,7 +1709,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 * **deps**: 
   * update npm to 2.15.5 (Rebecca Turner) [#6663](https://github.com/nodejs/node/pull/6663)
 * **http**: 
-  * Invalid status codes can no longer be sent. Limitado a números de 3 dígitos entre 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
+  * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos entre 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
 
 ### Commits
 
@@ -1797,7 +1797,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 
 * **deps**: 
   * update openssl to 1.0.2h. (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551) 
-    * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
+    * Por favor vea nuestra [entrada en el blog](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) para más información sobre los contenidos de seguridad de esta actualización.
 
 ### Commits
 
@@ -1815,7 +1815,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 
 ## 2016-04-12, Version 4.4.3 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
   * Fix `--gdbjit` for embedders. Backported from v8 upstream. (Ben Noordhuis) [#5577](https://github.com/nodejs/node/pull/5577)
@@ -1883,7 +1883,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 
 ## 2016-03-31, Version 4.4.2 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Cambios Notables
 
 * **https**: 
   * Bajo ciertas condiciones, los sockets ssl pueden haber estado causando una pérdida de memoria cuando se habilita keepalive. Esto ya no es el caso. (Alexander Penev) [#5713](https://github.com/nodejs/node/pull/5713)
@@ -1943,7 +1943,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 
 This LTS release comes with 113 commits, 56 of which are doc related, 18 of which are build / tooling related, 16 of which are test related and 7 which are benchmark related.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
   * Updated Logos for the OSX + Windows installers 
@@ -2083,7 +2083,7 @@ Este lanzamiento también incluye más de 70 arreglos en nuestros documentos y m
 
 ### Cambios notables
 
-The SEMVER-MINOR changes include:
+Los cambios de SEMVER-MINOR incluyen:
 
     * **deps**:
       - An update to v8 that introduces a new flag --perf_basic_prof_only_functions (Ali Ijaz Sheikh) [#3609](https://github.com/nodejs/node/pull/3609)
@@ -2345,7 +2345,7 @@ Esto es un lanzamiento de seguridad con un solo commit, una actualización a ope
 
 ### Cambios notables
 
-* **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507) 
+* **openssl**: Actualizar de 1.0.2f a 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507) 
   * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
   * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()` . Se cree que Node.js no está invocando las rutas de código que utilizan estas funciones para que los ataques prácticos a través de Node.js que utilizan este defecto sean *poco probables* que sucedan. Hay más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797) .
   * Repara un defecto que hace que suceda el *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* . Este defecto permite a los atacantes ejecutar ataques de canales laterales, conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y posiblemente más viejos) cuando se usa hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
@@ -2451,9 +2451,9 @@ Note that this release includes a non-backward compatible change to address a se
 
 ### Cambios notables
 
-* **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). El análisis de cabeceras HTTP ahora se alinea más cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
-* **http-parser**: upgrade from 2.5.0 to 2.5.1
-* **openssl**: upgrade from 1.0.2e to 1.0.2f. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
+* **http**: reparar los defectos en el análisis del encabezado para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuestas (CVE-2016-2216). El análisis de cabeceras HTTP ahora se alinea más cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
+* **http-parser**: actualizar de 2.5.0 a 2.5.1
+* **openssl**: actualizar de 1.0.2e a 1.0.2f. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
 * **src**: 
   * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
   * permitir la corrección para que CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
@@ -2491,7 +2491,7 @@ Note that this release includes a non-backward compatible change to address a se
 
 ## 2016-01-20, Version 4.2.5 'Argon' (LTS), @TheAlphaNerd
 
-Maintenance update.
+Actualización de mantenimiento.
 
 ### Cambios notables
 
@@ -2502,7 +2502,7 @@ Maintenance update.
 * **deps** 
   * backport 066747e from upstream V8 (Ali Ijaz Sheikh) [#4655](https://github.com/nodejs/node/pull/4655)
   * backport 200315c from V8 upstream (Vladimir Kurchatkin) [#4128](https://github.com/nodejs/node/pull/4128)
-  * upgrade libuv to 1.8.0 (Saúl Ibarra Corretgé)
+  * actualizar libuv a 1.8.0 (Saúl Ibarra Corretgé)
 * **docs** 
   * various updates landed in 70 different commits!
 * **repl** 
@@ -2908,7 +2908,7 @@ Actualización de Seguridad
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
@@ -3028,7 +3028,7 @@ Este es un lanzamiento de mantenimiento LTS que aborda un número de problemas:
 ### Problemas conocidos
 
 * When a server queues a large amount of data to send to a client over a pipelined HTTP connection, the underlying socket may be destroyed. See [#3332](https://github.com/nodejs/node/issues/3332) and [#3342](https://github.com/nodejs/node/pull/3342).
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
@@ -3058,7 +3058,7 @@ Este es un lanzamiento de mantenimiento LTS que aborda un número de problemas:
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
@@ -3146,7 +3146,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
@@ -3213,7 +3213,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
 * `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
@@ -3250,7 +3250,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="4.1.0"></a>
 
-## 2015-09-17, Version 4.1.0 (Stable), @Fishrock123
+## 2015-09-17, Versión 4.1.0 (Estable), @Fishrock123
 
 ### Cambios notables
 
@@ -3336,7 +3336,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="4.0.0"></a>
 
-## 2015-09-08, Version 4.0.0 (Stable), @rvagg
+## 2015-09-08, Versión 4.0.0 (Estable), @rvagg
 
 ### Cambios notables
 
@@ -3345,7 +3345,7 @@ This list of changes is relative to the last io.js v3.x branch release, v3.3.0. 
 * **child_process**: `ChildProcess.prototype.send()` and `process.send()` operate asynchronously across all platforms so an optional callback parameter has been introduced that will be invoked once the message has been sent, i.e. `.send(message[, sendHandle][, callback])` (Ben Noordhuis) [#2620](https://github.com/nodejs/node/pull/2620).
 * **node**: Rename "io.js" code to "Node.js" (cjihrig) [#2367](https://github.com/nodejs/node/pull/2367).
 * **node-gyp**: This release bundles an updated version of node-gyp that works with all versions of Node.js and io.js including nightly and release candidate builds. From io.js v3 and Node.js v4 onward, it will only download a headers tarball when building addons rather than the entire source. (Rod Vagg) [#2700](https://github.com/nodejs/node/pull/2700)
-* **npm**: Upgrade to version 2.14.2 from 2.13.3, includes a security update, see https://github.com/npm/npm/releases/tag/v2.14.2 for more details, (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696).
+* **npm**: Actualizar a la versión 2.14.2 desde 2.13.3, incluye una actualización de seguridad, vea https://github.com/npm/npm/releases/tag/v2.14.2 para más detalles, (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696).
 * **timers**: Fue mejorado el rendimiento de los temporizadores haciendo conexión de puerto con la implementación de 0.12, además de correcciones menores (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
 * **util**: The `util.is*()` functions have been deprecated, beginning with deprecation warnings in the documentation for this release, users are encouraged to seek more robust alternatives in the npm registry, (Sakthipriyan Vairamani) [#2447](https://github.com/nodejs/node/pull/2447).
 * **v8**: Actualizar a la versión 4.5.103.30 desde 4.4.63.30 (Ali Ijaz Sheikh) [#2632](https://github.com/nodejs/node/pull/2632). 
