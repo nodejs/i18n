@@ -4,7 +4,7 @@
 
 > Stabiliteit: 2 - stabiel
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. It can be accessed using:
+The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. Het kan worden bereikt met behulp van:
 
 ```js
 const zlib = require('zlib');
