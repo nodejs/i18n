@@ -751,7 +751,7 @@ added: v0.1.90
 * `callback` {Function}
 * Επιστρέφει: {boolean}
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string. It defaults to UTF8 encoding.
 
 Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. [`'drain'`][] will be emitted when the buffer is again free.
 
