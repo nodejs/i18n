@@ -292,7 +292,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+La fonction `console.info()` est un alias de [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
@@ -302,7 +302,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Écrit dans `stdout` avec une nouvelle ligne. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -312,7 +312,7 @@ console.log('count:', count);
 // Prints: count: 5, to stdout
 ```
 
-See [`util.format()`][] for more information.
+Voir [`util.format()`][] pour plus d’informations.
 
 ### console.table(tabularData[, properties])<!-- YAML
 added: v10.0.0
@@ -355,7 +355,7 @@ added: v0.1.104
 
 * `label` {string} **Par défaut :** `'default'`
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Démarre un timer qui peut servir à calculer la durée dune opération. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Les durées des timers sont précises jusque sous la milliseconde.
 
 ### console.timeEnd([label])<!-- YAML
 added: v0.1.104
@@ -431,7 +431,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.warn()` function is an alias for [`console.error()`][].
+La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Méthodes spécifiques à l'inspecteur
 
