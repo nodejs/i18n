@@ -324,7 +324,7 @@ changes:
 
 <!--type=misc-->Each zlib-based class takes an 
 
-`options` object. All options are optional.
+`options` object. Tutte le opzioni sono facoltative.
 
 Note that some options are only relevant when compressing, and are ignored by the decompression classes.
 
@@ -346,14 +346,14 @@ added: v10.16.0
 
 <!--type=misc-->Each Brotli-based class takes an 
 
-`options` object. All options are optional.
+`options` object. Tutte le opzioni sono facoltative.
 
 * `flush` {integer} **Default:** `zlib.constants.BROTLI_OPERATION_PROCESS`
 * `finishFlush` {integer} **Default:** `zlib.constants.BROTLI_OPERATION_FINISH`
 * `chunkSize` {integer} **Default:** `16 * 1024`
 * `params` {Object} Key-value object containing indexed [Brotli parameters](#zlib_brotli_constants).
 
-For example:
+Per esempio:
 
 ```js
 const stream = zlib.createBrotliCompress({
@@ -388,7 +388,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Compress data using deflate, and do not append a `zlib` header.
+Comprimere i dati usando deflate e non aggiungere un'intestazione `zlib`.
 
 ## Class: zlib.Gunzip<!-- YAML
 added: v0.5.8
@@ -404,7 +404,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `'error'` event.
--->Decompress a gzip stream.
+-->Decomprimere un gzip stream.
 
 ## Class: zlib.Gzip<!-- YAML
 added: v0.5.8
@@ -417,7 +417,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `'error'` event.
--->Decompress a deflate stream.
+-->Decomprimere un deflate stream.
 
 ## Class: zlib.InflateRaw<!-- YAML
 added: v0.5.8
@@ -429,7 +429,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `'error'` event.
--->Decompress a raw deflate stream.
+-->Decomprimere un raw deflate stream.
 
 ## Class: zlib.Unzip<!-- YAML
 added: v0.5.8
@@ -473,7 +473,7 @@ added: v0.9.4
 
 * `callback` {Function}
 
-Close the underlying handle.
+Chiudere l'handle sottostante.
 
 ### zlib.flush([kind, ]callback)<!-- YAML
 added: v0.5.8
@@ -483,7 +483,7 @@ added: v0.5.8
 
 * `callback` {Function}
 
-Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+Eliminare i dati in sospeso. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
 
 Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
 
@@ -499,7 +499,7 @@ added: v0.11.4
 
 This function is only available for zlib-based streams, i.e. not Brotli.
 
-Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+Aggiornare dinamicamente il livello di compressione e la strategia di compressione. Applicabile esclusivamente all'algoritmo deflate.
 
 ### zlib.reset()<!-- YAML
 added: v0.7.0
