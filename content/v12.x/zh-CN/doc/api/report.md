@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 <!-- name=report -->
 
@@ -477,11 +477,11 @@ When a report is written, start and end messages are issued to stderr and the fi
 
 Additional runtime configuration of report generation is available via the following properties of `process.report`:
 
-`reportOnFatalError` triggers diagnostic reporting on fatal errors when `true`. Defaults to `false`.
+`reportOnFatalError` triggers diagnostic reporting on fatal errors when `true`. 默认值为 `false`。
 
-`reportOnSignal` triggers diagnostic reporting on signal when `true`. This is not supported on Windows. Defaults to `false`.
+`reportOnSignal` triggers diagnostic reporting on signal when `true`. This is not supported on Windows. 默认值为 `false`。
 
-`reportOnUncaughtException` triggers diagnostic reporting on uncaught exception when `true`. Defaults to `false`.
+`reportOnUncaughtException` triggers diagnostic reporting on uncaught exception when `true`. 默认值为 `false`。
 
 `signal` specifies the POSIX signal identifier that will be used to intercept external triggers for report generation. Defaults to `'SIGUSR2'`.
 
