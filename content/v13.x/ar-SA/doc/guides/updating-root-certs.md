@@ -10,7 +10,7 @@ The PEM encodings of the certificates are converted to C strings, and committed 
 
 Root certificates should be updated sometime after Mozilla makes an NSS release, check the [NSS release schedule](https://wiki.mozilla.org/NSS:Release_Versions).
 
-## Process
+## الاجراء
 
 Commands assume that the current working directory is the root of a checkout of the nodejs/node repository.
 
