@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -425,7 +425,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### `url.toString()`
 
-* Returns: {string}
+* Retourneert: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -433,7 +433,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### `url.toJSON()`
 
-* Returns: {string}
+* Retourneert: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -610,7 +610,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### `urlSearchParams.entries()`
 
-* Returns: {Iterator}
+* Retourneert: {Iterator}
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
@@ -650,13 +650,13 @@ Returns the values of all name-value pairs whose name is `name`. If there are no
 #### `urlSearchParams.has(name)`
 
 * `name` {string}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### `urlSearchParams.keys()`
 
-* Returns: {Iterator}
+* Retourneert: {Iterator}
 
 Returns an ES6 `Iterator` over the names of each name-value pair.
 
@@ -711,19 +711,19 @@ console.log(params.toString());
 
 #### `urlSearchParams.toString()`
 
-* Returns: {string}
+* Retourneert: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### `urlSearchParams.values()`
 
-* Returns: {Iterator}
+* Retourneert: {Iterator}
 
 Returns an ES6 `Iterator` over the values of each name-value pair.
 
 #### `urlSearchParams[Symbol.iterator]()`
 
-* Returns: {Iterator}
+* Retourneert: {Iterator}
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
@@ -747,7 +747,7 @@ added:
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -771,7 +771,7 @@ added:
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -822,7 +822,7 @@ added: v7.6.0
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
-* Returns: {string}
+* Retourneert: {string}
 
 Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
