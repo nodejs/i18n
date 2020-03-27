@@ -42,7 +42,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
@@ -94,14 +94,14 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2016-04-20, Version 5.11.0 (Stable), @thealphanerd
 
-## Notable Changes
+## Modifiche di rilievo
 
 * **Buffer**: 
   * `Buffer.prototype.compare` can now compare sub-ranges of two Buffers. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
   * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
   * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
-* **net**: 
+* **rete**: 
   * adds support for passing DNS lookup hints to `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * **node**: 
   * Make the builtin libraries available for the `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
@@ -920,7 +920,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2016-01-20, Version 5.5.0 (Stable), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **events**: make sure console functions exist (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: add autoClose option to fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
@@ -1006,7 +1006,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2016-01-12, Version 5.4.1 (Stable), @TheAlphaNerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 * Minor performance improvements: 
   * **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
@@ -1578,7 +1578,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2015-10-29, Version 5.0.0 (Stable), @rvagg
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **buffer**: *(Breaking)* Removed both `'raw'` and `'raws'` encoding types from `Buffer`, these have been deprecated for a long time (Sakthipriyan Vairamani) [#2859](https://github.com/nodejs/node/pull/2859).
 * **console**: *(Breaking)* Values reported by `console.time()` now have 3 decimals of accuracy added (Michaël Zasso) [#3166](https://github.com/nodejs/node/pull/3166).
