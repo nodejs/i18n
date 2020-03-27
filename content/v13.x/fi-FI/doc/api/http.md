@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -404,7 +404,7 @@ The `request.aborted` property will be `true` if the request has been aborted.
 ### `request.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Stability: 0 - Deprecated. Use [`request.socket`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`request.socket`][].
 
 * {stream.Duplex}
 
@@ -430,7 +430,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v13.4.0
--->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -860,7 +860,7 @@ Attempting to set a header field name or value that contains invalid characters 
 ### `response.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Stability: 0 - Deprecated. Use [`response.socket`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`response.socket`][].
 
 * {stream.Duplex}
 
@@ -890,7 +890,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v13.4.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`response.writableEnded`][].
 
 * {boolean}
 
