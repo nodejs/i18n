@@ -2699,7 +2699,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **crypto**
+* **加密算法**
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram**
   * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
