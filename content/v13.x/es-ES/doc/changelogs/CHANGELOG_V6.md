@@ -1874,7 +1874,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye 80 que están rel
 * [[`beb8485998`](https://github.com/nodejs/node/commit/beb8485998)] - **tools**: fix lint issue in doctool (Roman Reiss) [#11658](https://github.com/nodejs/node/pull/11658)
 * [[`d9a8f80c0d`](https://github.com/nodejs/node/commit/d9a8f80c0d)] - **v8**: fix build errors with g++ 7 (Zuzana Svetlikova) [#12392](https://github.com/nodejs/node/pull/12392)
 * [[`8b3aacc96a`](https://github.com/nodejs/node/commit/8b3aacc96a)] - **vm**: fix race condition with timeout param (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
-* [[`6e60c838c9`](https://github.com/nodejs/node/commit/6e60c838c9)] - **vm**: fix displayErrors in runIn.. functions (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
+* [[`6e60c838c9`](https://github.com/nodejs/node/commit/6e60c838c9)] - **vm**: fix displayErrors in runIn.. funciones (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
 * [[`55cbe24c60`](https://github.com/nodejs/node/commit/55cbe24c60)] - **zlib**: fix node crashing on invalid options (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
 
 <a id="6.11.1"></a>
