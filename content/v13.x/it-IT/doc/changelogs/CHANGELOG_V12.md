@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="12.12.0"></a>
 
@@ -1821,7 +1821,7 @@ Vulnerabilities fixed:
 
 ## 2019-04-23, Version 12.0.0 (Current), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **assert**:
   * validate required arguments (Ruben Bridgewater) [#26641](https://github.com/nodejs/node/pull/26641)
