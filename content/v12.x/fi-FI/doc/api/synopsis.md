@@ -1,4 +1,4 @@
-# Usage & Example
+# Käyttö & esimerkki
 
 ## Usage
 
