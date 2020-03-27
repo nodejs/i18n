@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -161,7 +161,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+* 返回：{string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -404,7 +404,7 @@ The `request.aborted` property will be `true` if the request has been aborted.
 ### `request.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Stability: 0 - Deprecated. Use [`request.socket`][].
+-->> 稳定性：0 - 已弃用。 Use [`request.socket`][].
 
 * {stream.Duplex}
 
@@ -430,7 +430,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v13.4.0
--->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
+-->> 稳定性：0 - 已弃用。 Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -620,7 +620,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
@@ -860,7 +860,7 @@ Attempting to set a header field name or value that contains invalid characters 
 ### `response.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Stability: 0 - Deprecated. Use [`response.socket`][].
+-->> 稳定性：0 - 已弃用。 Use [`response.socket`][].
 
 * {stream.Duplex}
 
@@ -890,7 +890,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v13.4.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> 稳定性：0 - 已弃用。 Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -935,7 +935,7 @@ const headerNames = response.getHeaderNames();
 
 ### `response.getHeaders()`<!-- YAML
 added: v7.7.0
--->* Returns: {Object}
+-->* 返回：{Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -955,7 +955,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -1095,7 +1095,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Returns: {boolean}
+* 返回：{boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
