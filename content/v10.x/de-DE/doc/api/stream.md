@@ -298,7 +298,7 @@ added: v8.0.0
 -->
 
 * `error` {Error}
-* Returns: {this}
+* Gibt zurück: {this}
 
 Destroy the stream, and emit the passed `'error'` and a `'close'` event. After this call, the writable stream has ended and subsequent calls to `write()` or `end()` will result in an `ERR_STREAM_DESTROYED` error. Implementors should not override this method, but instead implement [`writable._destroy()`](#stream_writable_destroy_err_callback).
 
@@ -865,7 +865,7 @@ changes:
                  listening.
 -->
 
-* Returns: {this}
+* Gibt zurück: {this}
 
 The `readable.resume()` method causes an explicitly paused `Readable` stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
@@ -912,7 +912,7 @@ added: v0.9.4
 -->
 
 * `destination` {stream.Writable} Optional specific stream to unpipe
-* Returns: {this}
+* Gibt zurück: {this}
 
 The `readable.unpipe()` method detaches a `Writable` stream previously attached using the [`stream.pipe()`][] method.
 
@@ -999,7 +999,7 @@ added: v0.9.4
 -->
 
 * `stream` {Stream} An "old style" readable stream
-* Returns: {this}
+* Gibt zurück: {this}
 
 Prior to Node.js 0.10, streams did not implement the entire `stream` module API as it is currently defined. (See [Compatibility](#stream_compatibility_with_older_node_js_versions) for more information.)
 
