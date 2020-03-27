@@ -13,7 +13,7 @@ changes:
 
 > Stabilità: 2 - Stable
 
-Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). It can be accessed using:
+Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). Ci si può accedere utilizzando:
 
 ```js
 const http2 = richiede('http2');
@@ -1071,7 +1071,7 @@ added: v8.4.0
 
 The `'response'` event is emitted when a response `HEADERS` frame has been received for this stream from the connected HTTP/2 server. The listener is invoked with two arguments: an Object containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
 
-For example:
+Per esempio:
 
 ```js
 const http2 = require('http2');
@@ -1110,7 +1110,7 @@ added: v8.4.0
 
 * Value: {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (sola lettura). True se le intestazioni sono state inviate, altrimenti false.
 
 #### http2stream.pushAllowed
 
@@ -1386,7 +1386,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
+Emesso ogni volta che è presente una richiesta. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1451,7 +1451,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Impedisce al server di accettare nuove connessioni. Vedi [`net.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1505,7 +1505,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
+Emesso ogni volta che è presente una richiesta. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1580,7 +1580,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. Vedi [`tls.Server.close()`][].
+Impedisce al server di accettare nuove connessioni. Vedi [`tls.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1846,7 +1846,7 @@ Returns a [HTTP/2 Settings Object](#http2_settings_object) containing the deseri
 
 Le intestazioni sono rappresentate come proprietà proprie sui JavaScript object. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an Array of strings (in order to send more than one value per header field).
 
-For example:
+Per esempio:
 
 ```js
 const headers = {
@@ -2115,7 +2115,7 @@ The `'aborted'` event is emitted whenever a `Http2ServerRequest` instance is abn
 added: v8.4.0
 -->
 
-Indica che il [`Http2Stream`][] sottostante è stato chiuso. Just like `'end'`, this event occurs only once per response.
+Indica che il [`Http2Stream`][] sottostante è stato chiuso. Proprio come `'end'`, questo evento si verifica una sola volta per ogni risposta.
 
 #### request.aborted
 
@@ -2147,9 +2147,9 @@ added: v8.4.0
 
 * {Object}
 
-The request/response headers object.
+L'object delle intestazioni di richiesta/risposta.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Coppie di key-value di nomi e valori di intestazione. I nomi di intestazione sono in minuscolo. Esempio:
 
 ```js
 // Stampa qualcosa tipo:
@@ -2177,7 +2177,7 @@ added: v8.4.0
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
+In caso di richiesta del server, la versione HTTP inviata dal client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
@@ -2189,7 +2189,7 @@ added: v8.4.0
 
 * {string}
 
-The request method as a string. Solo lettura. Example: `'GET'`, `'DELETE'`.
+Il metodo di richiesta sotto forma di stringa. Solo lettura. Example: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2199,11 +2199,11 @@ added: v8.4.0
 
 * {Array}
 
-The raw request/response headers list exactly as they were received.
+L'elenco delle intestazioni di richiesta/risposta grezze esattamente come sono state ricevute.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Da notare che le chiavi ed i valori si trovano nello stesso elenco. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+I nomi delle intestazioni non sono in minuscolo e i duplicati non sono uniti.
 
 ```js
 // Stampa qualcosa tipo:
@@ -2227,7 +2227,7 @@ added: v8.4.0
 
 * {Array}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+The raw request/response trailer keys and values exactly as they were received. Compilati esclusivamente nell'evento `'end'`.
 
 #### request.setTimeout(msecs, callback)
 
@@ -2282,7 +2282,7 @@ added: v8.4.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+L'object dei trailer di richiesta/risposta. Compilati esclusivamente nell'evento `'end'`.
 
 #### request.url
 
@@ -2292,7 +2292,7 @@ added: v8.4.0
 
 * {string}
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Stringa URL della richiesta. This contains only the URL that is present in the actual HTTP request. Se la richiesta è:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2300,13 +2300,13 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Allora `request.url` sarà:
 
 ```js
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Esempio:
 
 ```txt
 $ node
@@ -2326,7 +2326,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Esempio:
 
 ```txt
 $ node
@@ -2352,7 +2352,7 @@ added: v8.4.0
 
 `'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. This is an [`EventEmitter`][] with the following events:
+The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. Questo è un [`EventEmitter`][] con i seguenti eventi:
 
 #### Event: 'close'
 
@@ -2368,9 +2368,9 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Emesso nel momento in cui la risposta è stata inviata. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-After this event, no more events will be emitted on the response object.
+Dopo questo evento, nessun altro evento verrà emesso sull'object risposta.
 
 #### response.addTrailers(headers)
 
@@ -2404,7 +2404,7 @@ added: v8.4.0
 * `encoding` {string}
 * `callback` {Function}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Il metodo, `response.end()`, DEVE essere chiamato su ogni risposta.
 
 If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -2418,7 +2418,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Valore booleano che indica se la risposta è stata completata. Starts as `false`. Dopo che [`response.end()`][] viene eseguito, il valore sarà `true`.
 
 #### response.getHeader(name)
 
@@ -2429,9 +2429,9 @@ added: v8.4.0
 * `name` {string}
 * Restituisce: {string}
 
-Legge un'intestazione che è già stata accodata ma non inviata al client. Note that the name is case insensitive.
+Legge un'intestazione che è già stata accodata ma non inviata al client. Notare che il nome è case insensitive.
 
-Example:
+Esempio:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2447,7 +2447,7 @@ added: v8.4.0
 
 Restituisce un array contenente i nomi univoci delle intestazioni correnti in uscita. Tutti i nomi di intestazione sono in minuscolo.
 
-Example:
+Esempio:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2469,7 +2469,7 @@ Restituisce una copia superficiale delle intestazioni correnti in uscita. Since 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+Esempio:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2490,7 +2490,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Notare che la corrispondenza del nome dell'intestazione è case-insensitive.
 
-Example:
+Esempio:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2504,7 +2504,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (sola lettura). True se le intestazioni sono state inviate, altrimenti false.
 
 #### response.removeHeader(name)
 
@@ -2516,7 +2516,7 @@ added: v8.4.0
 
 Rimuove un'intestazione che è stata accodata per l'invio implicito.
 
-Example:
+Esempio:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2530,7 +2530,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Il valore predefinito è true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2543,15 +2543,15 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Imposta un singolo valore di intestazione per intestazioni implicite. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Esempio:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2606,7 +2606,7 @@ Il metodo `setTimeout` verrà chiamato su `response.stream.session`.
 
 Tutte le altre interazioni verranno indirizzate direttamente al socket.
 
-Example:
+Esempio:
 
 ```js
 const http2 = require('http2');
@@ -2627,7 +2627,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Esempio:
 
 ```js
 response.statusCode = 404;
@@ -2668,17 +2668,17 @@ added: v8.4.0
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Questo invia un chunk del corpo della risposta. This method may be called multiple times to provide successive parts of the body.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
+Il `chunk` può essere una stringa o un buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Di default l'`encoding` è `'utf8'`. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
 
 *Note*: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. `'drain'` verrà emesso quando il buffer è di nuovo libero.
 
 #### response.writeContinue()
 
@@ -2698,11 +2698,11 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
+Invia un'intestazione di risposta alla richiesta. The status code is a 3-digit HTTP status code, like `404`. L'ultimo argomento, `headers`, è composto dalle intestazioni di risposta.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Example:
+Esempio:
 
 ```js
 const body = 'hello world';
@@ -2711,7 +2711,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Note that Content-Length is given in bytes not characters. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Notare che il Content-Length è fornito in byte, non in caratteri. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
