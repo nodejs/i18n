@@ -427,7 +427,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
+-->> Stabilität: 0 - Veraltet. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -573,7 +573,7 @@ changes:
     description: Consistently set socket timeout only when the socket connects.
 -->* `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* Gibt zurück: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -784,7 +784,7 @@ Limits maximum incoming headers count. If set to 0, no limit will be applied.
 added: v0.9.12
 -->* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Returns: {http.Server}
+* Gibt zurück: {http.Server}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
 
@@ -880,7 +880,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> Stabilität: 0 - Veraltet. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -1394,7 +1394,7 @@ changes:
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 * `requestListener` {Function}
 
-* Returns: {http.Server}
+* Gibt zurück: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1414,7 +1414,7 @@ changes:
 -->* `url` {string | URL}
 * `options` {Object} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Gibt zurück: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. The callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1508,7 +1508,7 @@ changes:
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Gibt zurück: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
