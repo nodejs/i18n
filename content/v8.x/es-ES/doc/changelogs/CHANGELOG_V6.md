@@ -59,7 +59,7 @@
 
 ## 2017-05-02, Versión 6.10.3 'Boron' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **module**: 
   * La [contingencia global de carga de módulo](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) para el directorio de ejecutables de Node ahora funciona correctamente en Windows. (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
@@ -591,9 +591,9 @@ Esta actualización de LTS viene con 297 commits. This includes 124 which are te
 
 Esta actualización de LTS viene con 168 commits. This includes 85 which are test related, 34 which are doc related, 12 commits which are updates to dependencies and 5 which are build / tool related.
 
-### Notable Changes
+### Cambios Notables
 
-The SEMVER-MINOR changes include:
+Los cambios de SEMVER-MINOR incluyen:
 
 * **crypto**: permitir agregar certificados adicionales a CAs bien conocidos (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **deps**: Actualizar ICU de INTL a versión 58 (Steven R. Loomis) [#9234](https://github.com/nodejs/node/pull/9234)
@@ -784,7 +784,7 @@ Esta es una actualización de seguridad de la línea de actualizaciones 'Boron' 
 
 Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: actualizar fuentes de openssl a 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
 
@@ -804,7 +804,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 Esta es una actualización especial que contiene 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
-### Notable Changes
+### Cambios Notables
 
 N/A
 
@@ -818,7 +818,7 @@ N/A
 
 Esta actualización de LTS viene con 312 commits. This includes 229 that are test related, 62 that are docs related, 17 which are build / tools related, and 4 commits which are updates to dependencies.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: soporte de biblioteca compartida ahora funciona para compilaciones de AIX (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
 * **deps**: - *npm*: actualizar npm a 3.10.10 (Rebecca Turner) [#9847](https://github.com/nodejs/node/pull/9847) - *V8*: hacer una desestructuración de los argumentos de la función arrow por medio de una propiedad computada ya no arroja nada (Michaël Zasso) [#10386](https://github.com/nodejs/node/pull/10386)
@@ -1149,7 +1149,7 @@ Esta actualización de LTS viene con 312 commits. This includes 229 that are tes
 
 Esta actualización de LTS viene con 144 commits. This includes 47 that are docs related, 46 that are test related, 15 which are build / tools related, and 9 commits which are updates to dependencies.
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: coaccionar parámetros de porción consistentemente (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
 * **deps**: - *npm*: actualizar npm a 3.10.9 (Kat Marchán) [#9286](https://github.com/nodejs/node/pull/9286) - *V8*: - <1>V8</1>: Varios arreglos para casos extremos de desestructuración - hacer cherry-pick a 3c39bac desde upstream de V8 (Cristian Cavalli) [#9138](https://github.com/nodejs/node/pull/9138) - hacer cherry pick a 7166503 desde upstream de v8 (Cristian Cavalli) [#9173](https://github.com/nodejs/node/pull/9173)
@@ -2714,12 +2714,12 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 ## 2016-05-05, Versión 6.1.0 (Actual), @Fishrock123
 
-### Notable Changes
+### Cambios Notables
 
 * **assert**: `deep{Strict}Equal()` ahora trabaja correctamente con referencias circulares. (Rich Trott) [#6432](https://github.com/nodejs/node/pull/6432)
 * **debugger**: Ahora las arrays están formateadas correctamente en el repl del depurador. (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **deps**: Actualizar fuentes de OpenSSL a 1.0.2h (Shigeki Ohtsu) [#6550](https://github.com/nodejs/node/pull/6550) 
-  * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
+  * Por favor vea nuestra [entrada en el blog](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) para más información sobre los contenidos de seguridad de esta actualización.
 * **net**: Se introdujo una propiedad de `Socket#connecting`. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
   * Previamente esta información estaba solamente disponible como la propiedad indocumentada e interna de `_connecting`.
 * **process**: Se introdujo `process.cpuUsage()`. (Patrick Mueller) [#6157](https://github.com/nodejs/node/pull/6157)
@@ -2835,7 +2835,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Modules 
+* Módulos 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
 * Net 
