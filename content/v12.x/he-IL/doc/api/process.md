@@ -3,15 +3,15 @@
 <!-- introduced_in=v0.10.0 -->
 <!-- type=global -->
 
-The `process` object is a `global` that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using `require()`. It can also be explicitly accessed using `require()`:
+אובייקט ה`process` הוא `global` שמספק מידע ושולט על תהליך הNode.js הנוכחי. בתור global, הוא תמיד זמין ביישומי Node.js ללא שימוש ב`require()`. It can also be explicitly accessed using `require()`:
 
 ```js
 const process = require('process');
 ```
 
-## Process Events
+## איוונטי Process
 
-The `process` object is an instance of [`EventEmitter`][].
+אובייקט ה`process` הוא מופע של [`EventEmitter`][].
 
 ### Event: `'beforeExit'`
 <!-- YAML
