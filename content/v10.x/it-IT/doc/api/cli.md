@@ -180,6 +180,14 @@ added: v9.0.0
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
 
 <!-- YAML
@@ -194,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-Quest'opzione è un no-op (no operation). È mantenuta per la compatibilità.
+This option is a no-op. It is kept for compatibility.
 
 ### `--no-deprecation`
 
@@ -210,7 +218,7 @@ Silenzia gli avvisi di deprecazione.
 added: v9.0.0
 -->
 
-Disabilita i controlli runtime per `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -386,6 +394,20 @@ added: v2.4.0
 
 Traccia le allocazioni degli heap object per gli heap snapshot.
 
+### `--unhandled-rejections=mode`
+
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning for the very first unhandled rejection in case no [`unhandledRejection`][] hook is used.
+
+Using this flag allows to change what should happen when an unhandled rejection occurs. One of three modes can be chosen:
+
+- `strict`: Raise the unhandled rejection as an uncaught exception.
+- `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][] hook is set or not but do not print the deprecation warning.
+- `none`: Silence all warnings.
+
 ### `--use-bundled-ca`, `--use-openssl-ca`
 
 <!-- YAML
@@ -414,7 +436,7 @@ Stampa le opzioni della command line di V8.
 added: v5.10.0
 -->
 
-Imposta la dimensione del thread pool di V8 che verrà utilizzata per allocare i processi in background.
+Set V8's thread pool size which will be used to allocate background jobs.
 
 If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
 
@@ -545,7 +567,7 @@ This environment variable is ignored when `node` runs as setuid root or has Linu
 added: v0.11.15
 -->
 
-Percorso dati per i dati ICU (`Intl` object). Will extend linked-in data when compiled with small-icu support.
+Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -572,6 +594,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -595,6 +618,7 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
@@ -616,7 +640,7 @@ added: v0.1.32
 
 Elenco, separato da `':'`, di directory precedute dal percorso di ricerca del modulo.
 
-Su Windows, si tratta di un'elenco seperato da `';'`.
+On Windows, this is a `';'`-separated list instead.
 
 ### `NODE_PENDING_DEPRECATION=1`
 
