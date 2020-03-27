@@ -156,7 +156,7 @@ console.log('this will also print');
 added: v8.3.0
 -->When 
 
-`stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+`stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. Quando `stdout` non è un TTY, questo metodo non fa nulla.
 
 *Note*: The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
@@ -200,7 +200,7 @@ added: v8.3.0
 
 * `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
 
-Resets the internal counter specific to `label`.
+Reimposta il counter interno specifico per `label`.
 
 ```js
 > console.count('abc');
@@ -237,10 +237,10 @@ added: v0.1.101
 * `options` {Object}
   
   * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
+  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. È utile per ispezionare object complicati di grandi dimensioni. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
-Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
+Utilizza [`util.inspect()`][] su `obj` e stampa la stringa risultante su `stdout`. Questa funzione ignora qualsiasi funzione personalizzata `inspect()` definita su `obj`.
 
 ### console.error(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
@@ -250,7 +250,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Stampa una nuova riga (newline) su `stderr`. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const code = 5;
@@ -260,7 +260,7 @@ console.error('error', code);
 // Stampa: error 5, a stderr
 ```
 
-If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
+If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. Vedi [`util.format()`][] per maggiori informazioni.
 
 ### console.group([...label])<!-- YAML
 added: v8.5.0
@@ -290,7 +290,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+La funzione `console.info()` è un alias di [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
@@ -300,7 +300,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Stampa una nuova riga (newline) su `stdout`. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -310,7 +310,7 @@ console.log('count:', count);
 // Stampa: count: 5, a stdout
 ```
 
-See [`util.format()`][] for more information.
+Vedi [`util.format()`][] per maggiori informazioni.
 
 ### console.time(label)<!-- YAML
 added: v0.1.104
@@ -318,7 +318,7 @@ added: v0.1.104
 
 * `label` {string}
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Avvia un timer che può essere utilizzato per calcolare la durata di un'operazione. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Le misure del timer sono precise al millisecondo.
 
 ### console.timeEnd(label)<!-- YAML
 added: v0.1.104
@@ -377,7 +377,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.warn()` function is an alias for [`console.error()`][].
+La funzione `console.warn()` è un alias di [`console.error()`][].
 
 ## Metodi solo per l'Inspector
 
