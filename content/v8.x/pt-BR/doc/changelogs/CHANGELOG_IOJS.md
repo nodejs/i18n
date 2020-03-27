@@ -68,15 +68,15 @@
   </tr>
 </table>
 
-* Other Versions 
+* Outras versões 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
-  * [0.10.x](CHANGELOG_V010.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [0.10x](CHANGELOG_V010.md)
+  * [Arquivo](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -335,7 +335,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 ### Notable changes
 
 * **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
-* **crypto**: 
+* **cripto**: 
   * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
   * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
 * **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264). 
@@ -1628,7 +1628,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **fs**: corruption can be caused by `fs.writeFileSync()` and append-mode `fs.writeFile()` and `fs.writeFileSync()` under certain circumstances, reported in [#1058](https://github.com/nodejs/node/issues/1058), fixed in [#1063](https://github.com/nodejs/node/pull/1063) (Olov Lassus).
 * **iojs**: an "internal modules" API has been introduced to allow core code to share JavaScript modules internally only without having to expose them as a public API, this feature is for core-only [#848](https://github.com/nodejs/node/pull/848) (Vladimir Kurchatkin).
-* **timers**: two minor problems with timers have been fixed: 
+* **temporizadores**: two minor problems with timers have been fixed: 
   * `Timer#close()` is now properly idempotent [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
   * `setTimeout()` will only run the callback once now after an `unref()` during the callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
   * NOTE: there are still other unresolved concerns with the timers code, such as [#1152](https://github.com/nodejs/node/pull/1152).
@@ -2263,7 +2263,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors 
+* erros 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2565,7 +2565,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### crypto
+### cripto
 
 https://iojs.org/api/crypto.html
 
@@ -2592,7 +2592,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### eventos
 
 https://iojs.org/api/events.html
 
@@ -2690,7 +2690,7 @@ In addition to the bulk-write changes, the performance of repeated small writes 
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
-### timers
+### temporizadores
 
 https://iojs.org/api/timers.html
 
