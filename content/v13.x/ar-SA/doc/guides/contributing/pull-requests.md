@@ -112,7 +112,7 @@ Multiple commits often get squashed when they are landed. See the notes about [c
    * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
    * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
 
-   Examples:
+   أمثلة:
    * `net: add localAddress and localPort to Socket`
    * `src: fix typos in async_wrap.h`
 
@@ -121,7 +121,7 @@ Multiple commits often get squashed when they are landed. See the notes about [c
 
 4. If your patch fixes an open issue, you can add a reference to it at the end of the log. استخدم إختصار`Fixes:` وعنوان URL الكامل للمشكلة. For other references use `Refs:`.
 
-   Examples:
+   أمثلة:
    * `Fixes: https://github.com/nodejs/node/issues/1337`
    * `Refs: https://eslint.org/docs/rules/space-in-parens.html`
    * `Refs: https://github.com/nodejs/node/pull/3615`
