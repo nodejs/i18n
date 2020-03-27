@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
@@ -130,7 +130,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 const dns = require('dns');
@@ -515,7 +515,7 @@ On error, the `Promise` is rejected with an [`Error`][] object, where `err.code`
 
 [`dnsPromises.lookup()`][] does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dnsPromises.lookup()`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 const dns = require('dns');
