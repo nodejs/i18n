@@ -866,7 +866,7 @@ server.listen(8124, () => {
 });
 ```
 
-Test this by using `telnet`:
+Provalo utilizzando `telnet`:
 
 ```console
 $ telnet localhost 8124
@@ -880,7 +880,7 @@ server.listen('/tmp/echo.sock', () => {
 });
 ```
 
-Use `nc` to connect to a UNIX domain socket server:
+Utilizza `nc` per connettersi a un server socket di dominio UNIX:
 
 ```console
 $ nc -U /tmp/echo.sock
@@ -892,7 +892,7 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
+Verifica se l'input è un indirizzo IP. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
 
 ## net.isIPv4(input)
 
@@ -900,7 +900,7 @@ Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP
 added: v0.3.0
 -->
 
-Returns true if input is a version 4 IP address, otherwise returns false.
+Restituisce true se l'input è un indirizzo IP versione 4, altrimenti restituisce false.
 
 ## net.isIPv6(input)
 
@@ -908,4 +908,4 @@ Returns true if input is a version 4 IP address, otherwise returns false.
 added: v0.3.0
 -->
 
-Returns true if input is a version 6 IP address, otherwise returns false.
+Restituisce true se l'input è un indirizzo IP versione 6, altrimenti restituisce false.
