@@ -212,7 +212,7 @@ When using block encryption algorithms, the `Cipher` class will automatically ad
 
 When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+Il metodo `cipher.setAutoPadding()` dev'essere chiamato prima di [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -729,7 +729,7 @@ added: v0.1.92
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). L'`encoding` può essere `'hex'`, `'latin1'` o `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
 The `Hash` object can not be used again after `hash.digest()` method has been called. Chiamate multiple genereranno un errore.
 
@@ -1196,7 +1196,7 @@ changes:
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
-L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
 The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
 
