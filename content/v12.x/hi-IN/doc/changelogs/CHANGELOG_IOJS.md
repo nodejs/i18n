@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors
+* त्रुटियाँ
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2530,7 +2530,7 @@ Below is a summary of the user-facing changes to be found in the io.js v1.0.0 re
   * punycode: 1.2.0 to 1.3.2.
 * Performance and stability improvements on all platforms.
 
-### buffer
+### बफर
 
 https://iojs.org/api/buffer.html
 
@@ -2555,7 +2555,7 @@ https://iojs.org/api/console.html
 
 * Added an `options` parameter to `console.dir`.
 
-### cluster
+### समूह
 
 https://iojs.org/api/cluster.html
 
@@ -2563,7 +2563,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### crypto
+### क्रिप्टो
 
 https://iojs.org/api/crypto.html
 
@@ -2590,7 +2590,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### आयोजन
 
 https://iojs.org/api/events.html
 
@@ -2620,7 +2620,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### net
+### नेट/जाल
 
 https://iojs.org/api/net.html
 
@@ -2633,7 +2633,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### पथ
 
 https://iojs.org/api/path.html
 
@@ -2688,7 +2688,7 @@ In addition to the bulk-write changes, the performance of repeated small writes 
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
-### timers
+### टाइमर
 
 https://iojs.org/api/timers.html
 
