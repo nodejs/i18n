@@ -2429,7 +2429,7 @@ added: v8.4.0
 * `name` {string}
 * Devuelve: {string}
 
-Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido enviado al cliente. Note that the name is case insensitive.
+Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido enviado al cliente. Tenga en que el nombre no distingue entre mayúsculas y minúsculas.
 
 Ejemplo:
 
