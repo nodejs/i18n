@@ -37,7 +37,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="13.9.0"></a>
 
@@ -281,7 +281,7 @@
 
 ## 2020-02-06, Version 13.8.0 (Current), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 This is a security release.
 
@@ -305,7 +305,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2020-01-21, Version 13.7.0 (Current), @codebytere
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * upgrade to libuv 1.34.1 (cjihrig) [#31332](https://github.com/nodejs/node/pull/31332)
@@ -436,7 +436,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2020-01-07, Version 13.6.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **assert**:
   * Implement `assert.match()` and `assert.doesNotMatch()` (Ruben Bridgewater) [#30929](https://github.com/nodejs/node/pull/30929)
@@ -638,7 +638,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2019-12-18, Version 13.5.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **cli**:
   * add --trace-exit cli option (legendecas) [#30516](https://github.com/nodejs/node/pull/30516)
@@ -736,7 +736,7 @@ For more details about the vulnerability please consult the npm blog:
 
 https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * update npm to 6.13.4 [#30904](https://github.com/nodejs/node/pull/30904)
@@ -886,7 +886,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-12-03, Version 13.3.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **fs**:
   * Reworked experimental recursive `rmdir()`  (cjihrig) [#30644](https://github.com/nodejs/node/pull/30644)
@@ -1085,7 +1085,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-11-21, Version 13.2.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **addons**:
   * Deprecate one- and two-argument `AtExit()`. Use the three-argument variant of `AtExit()` or `AddEnvironmentCleanupHook()` instead (Anna Henningsen) [#30227](https://github.com/nodejs/node/pull/30227)
@@ -1288,7 +1288,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-11-05, Version 13.1.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **cli**:
   * Added a new flag (`--trace-uncaught`) that makes Node.js print the stack trace at the time of throwing uncaught exceptions, rather than at the creation of the `Error` object, if there is any. This is disabled by default because it affects GC behavior (Anna Henningsen) [#30025](https://github.com/nodejs/node/pull/30025).
@@ -1372,7 +1372,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-10-23, Version 13.0.1 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * Fixed a bug in npm 6.12.0 where warnings are emitted on Node.js 13.x (Jordan Harband) [#30079](https://github.com/nodejs/node/pull/30079).
@@ -1418,7 +1418,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-10-22, Version 13.0.0 (Current), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **assert**:
   * If the validation function passed to `assert.throws()` or `assert.rejects()` returns a value other than `true`, an assertion error will be thrown instead of the original error to highlight the programming mistake (Ruben Bridgewater) [#28263](https://github.com/nodejs/node/pull/28263).
