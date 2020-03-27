@@ -2,12 +2,12 @@
 
 ## Cos'è un test?
 
-La maggior parte dei test nel Node.js core sono programmi JavaScript che esercitano una funzionalità fornita da Node.js e controllano che si comporti come previsto. I test dovrebbero uscire con il codice `0` in caso di successo. Un test fallirà se:
+Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. Un test fallirà se:
 
-- Esce impostando `process.exitCode` su un numero diverso da zero.
+- Esce impostando `process.exitCode` su un numero diverso da zero. 
   - Di solito ciò avviene facendo in modo che un assertion generi un uncaught Error.
   - Occasionalmente, l'utilizzo di `process.exit(code)` potrebbe essere appropriato.
-- Non esce mai. In questo caso, il test runner terminerà il test perché imposta un limite di tempo massimo.
+- Non esce mai. In this case, the test runner will terminate the test because it sets a maximum time limit.
 
 Aggiungi i test quando:
 
@@ -17,7 +17,7 @@ Aggiungi i test quando:
 
 ## Test directory structure
 
-Vedi la [panoramica della directory structure](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) per la descrizione dei test & delle posizioni esistenti. Al momento di decidere se espandere un file di test esistente o crearne uno nuovo, prendi in considerazione la possibilità di passare attraverso i file relativi al sottosistema. Ad esempio, cerca `test-streams` durante la scrittura di un test per `lib/streams.js`.
+Vedi la [panoramica della directory structure](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) per la descrizione dei test & delle posizioni esistenti. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. Ad esempio, cerca `test-streams` durante la scrittura di un test per `lib/streams.js`.
 
 ## Test structure
 
@@ -57,11 +57,11 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-La prima riga attiva la strict mode. Tutti i test dovrebbero essere in strict mode a meno che la natura del test richieda che funzioni senza tale modalità.
+La prima riga attiva la strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
 
-La seconda riga carica il modulo `common`. Il modulo [`common` module][] è un modulo helper (di supporto) che fornisce strumenti utili per i test. Alcune funzionalità di common sono state estratte in sottomoduli, che sono richiesti separatamente come in ad esempio in questo caso il modulo fixtures.
+La seconda riga carica il modulo `common`. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
-Anche se un test non utilizza funzioni od altre proprietà esportate da `common`, il test dovrebbe comunque includere il modulo `common` prima di qualsiasi altro modulo. Questo perché il modulo `common` include il codice che causerà il fallimento di un test nel caso in cui il test perda le variabili all'interno del global space. In situazioni in cui un test non utilizza funzioni od altre proprietà esportate da `common`, includilo senza assegnarlo a un identifier (identificatore):
+Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
 ```javascript
 require('../common');
@@ -74,7 +74,7 @@ require('../common');
 // nell'http header.
 ```
 
-Un test dovrebbe iniziare con un commento contenente una breve descrizione che spiega cosa va a testare.
+A test should start with a comment containing a brief description of what it is designed to test.
 
 ### **Righe 8-9**
 
@@ -87,37 +87,37 @@ Il test controlla le funzionalità nel modulo `http`.
 
 La maggior parte dei test utilizza il modulo `assert` per confermare le proprie aspettative.
 
-Le istruzioni require sono ordinate secondo l'[ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) (cifre, lettere maiuscole, `_`, lettere minuscole).
+The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) order (digits, upper case, `_`, lower case).
 
 ### **Righe 11-22**
 
-Questo è il body (corpo) del test. Questo test è semplice, verifica solo che un server HTTP accetti i caratteri `non-ASCII` negli header di una richiesta in entrata. Cose interessanti da notare:
+Questo è il body (corpo) del test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Cose interessanti da notare:
 
-- Se il test non dipende da un numero di porta specifico, utilizza sempre 0 invece di un valore arbitrario, in quanto consente ai test di eseguire in parallelo in modo sicuro, visto che il sistema operativo assegnerà una porta casuale. Se il test richiede una porta specifica, ad esempio se il test verifica che l'assegnazione di una porta specifica funzioni come previsto, allora è giusto assegnare un numero di porta specifico.
-- L'utilizzo di `common.mustCall` per controllare che vengano chiamati alcuni callback/listener.
-- Il server HTTP si chiude dopo l'esecuzione di tutti i controlli. In questo modo, il test può uscire tranquillamente. Ricorda che per far sì che un test riesca, deve uscire con uno status code pari a 0.
+- If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
+- The use of `common.mustCall` to check that some callbacks/listeners are called.
+- Il server HTTP si chiude dopo l'esecuzione di tutti i controlli. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
 
 ## Raccomandazioni Generali
 
 ### Timers
 
-Evitare i timer a meno che il test non li stia testando specificamente. Ci sono molte ragioni per farlo. Principalmente, sono una fonte di problematiche. Per una spiegazione approfondita vai [qui](https://github.com/nodejs/testing/issues/27).
+Evitare i timer a meno che il test non li stia testando specificamente. There are multiple reasons for this. Principalmente, sono una fonte di problematiche. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 
-Nel caso in cui un test abbia bisogno di un timer, considera l'utilizzo del metodo `common.platformTimeout()`. Permette di impostare specifici timeout a seconda della platform (piattaforma):
+In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform:
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
 ```
 
-creerà un timeout di 4 secondi sulla maggior parte delle platform (piattaforme) ma un timeout più lungo sulle platform più lente.
+will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
 ### La *common* API
 
-Utilizza il più possibile gli helper del modulo `common`. Fai riferimento alla [documentazione del file common](https://github.com/nodejs/node/tree/master/test/common) per i dettagli completi riguardanti gli helper.
+Utilizza il più possibile gli helper del modulo `common`. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
 #### common.mustCall
 
-Un caso interessante è `common.mustCall`. L'utilizzo di `common.mustCall` può evitare l'uso di variabili extra e delle assertion corrispondenti. Spieghiamolo con un test reale presente nell'insieme dei test di Node.js.
+Un caso interessante è `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
 
 ```javascript
 'use strict';
@@ -169,9 +169,10 @@ const server = http.createServer(common.mustCall((req, res) => {
 });
 
 ```
+
 #### Modulo Countdown
 
-Il [modulo common Countdown](https://github.com/nodejs/node/tree/master/test/common#countdown-module) fornisce un semplice meccanismo di countdown per i test che richiedono una determinata azione da intraprendere dopo un dato numero di attività completate (ad esempio, arrestando un server HTTP dopo un numero specifico di richieste).
+The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
 
 ```javascript
 const Countdown = require('../common/countdown');
@@ -202,7 +203,7 @@ fs.readFile('test-file').then(
 
 ### Flags
 
-Alcuni test richiedono l'esecuzione di Node.js con uno specifico set di command line flag. Per fare ciò, aggiungi un commento `// Flags:` nel preambolo del test seguito dai flag. Ad esempio, per consentire ad un test di richiedere alcuni dei moduli `internal/*`, aggiungi il flag `--expose-internals`. Un test che richiede `internal/freelist` potrebbe iniziare in questo modo:
+Alcuni test richiedono l'esecuzione di Node.js con uno specifico set di command line flag. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. Un test che richiede `internal/freelist` potrebbe iniziare in questo modo:
 
 ```javascript
 'use strict';
@@ -244,10 +245,9 @@ Excessive use of console output is discouraged as it can overwhelm the display, 
 
 In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
 
-
 ### Funzionalità ES.Next
 
-Per considerazioni relative alle prestazioni, utilizziamo solo un sottoinsieme selezionato di funzionalità ES.Next nel codice JavaScript nella directory `lib`. Tuttavia, durante la scrittura dei test, per facilitare il backport, è consigliato utilizzare le funzionalità ES.Next utilizzabili direttamente senza un flag in [tutti i branch mantenuti](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
 
 - `let` e `const` al posto di `var`
 - Template letterali al posto della concatenazione delle stringhe
@@ -255,15 +255,15 @@ Per considerazioni relative alle prestazioni, utilizziamo solo un sottoinsieme s
 
 ## Denominazione dei Test File
 
-I test file sono denominati utilizzando il kebab casing. Il primo componente del nome è `test`. Il secondo è il modulo od il sottosistema in fase di test. Il terzo è solitamente il metodo od il nome dell'evento in fase di test. I componenti successivi del nome aggiungono ulteriori informazioni su ciò che viene testato.
+I test file sono denominati utilizzando il kebab casing. The first component of the name is `test`. Il secondo è il modulo od il sottosistema in fase di test. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
 
-Ad esempio, un test per l'evento `beforeExit` sul `process` object potrebbe essere denominato `test-process-before-exit.js`. Se il test ha verificato in modo specifico che le funzioni arrow funzionassero correttamente con l'evento `beforeExit`, potrebbe essere denominato `test-process-before-exit-arrow-functions.js`.
+For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
 ## Test Importati
 
 ### Web Platform Tests
 
-Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-url-*.js`) vengono importati dal [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). Questi test importati verranno sottoposti al wrapping nel seguente modo:
+Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js`) are imported from the [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). Questi test importati verranno sottoposti al wrapping nel seguente modo:
 
 ```js
 /* I seguenti test sono copiati da WPT. Le relative modifiche dovrebbero essere prima installate. Refs:
@@ -277,15 +277,15 @@ Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-ur
 /* eslint-enable */
 ```
 
-Per migliorare i test che sono stati importati in questo modo, inviare prima una PR al progetto sopracitato. Quando la modifica proposta viene inserita nel progetto sopracitato, invia un altra PR qui per aggiornare di conseguenza anche Node.js. Assicurati di aggiornare l'hash nell'URL dopo `WPT Refs:`.
+To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Assicurati di aggiornare l'hash nell'URL dopo `WPT Refs:`.
 
 ## Test dell'unità C++
 
-Il codice C++ può essere testato utilizzando [Google Test](https://github.com/google/googletest). La maggior parte delle funzionalità in Node.js può essere testata utilizzando i metodi descritti in precedenza in questo documento. Ma ci sono casi in cui questi potrebbero non essere sufficienti, ad esempio scrivere codice per Node.js che verrà chiamato solo quando viene incorporato Node.js.
+Il codice C++ può essere testato utilizzando [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
 ### Aggiungere un nuovo test
 
-Lo unit test deve essere inserito in `test/cctest` e deve essere denominato con il prefisso `test` seguito dal nome dell'unità testata. Ad esempio, il codice seguente verrà inserito in `test/cctest/test_env.cc`:
+The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
@@ -324,7 +324,7 @@ Successivamente aggiungi il test alle `sources` nel `cctest` target in node.gyp:
 ],
 ```
 
-Si noti che le sole sources (fonti) che dovrebbero essere incluse nel cctest target sono i veri e propri test source file od helper source file. Potrebbe essere necessario includere object file specifici compilati dal `node` target e questo può essere fatto aggiungendoli alla sezione `libraries` nel cctest target.
+Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
 
 Il test può essere eseguito tramite l'eseguzione del `cctest` target:
 
@@ -333,19 +333,22 @@ $ make cctest
 ```
 
 A filter can be applied to run single/multiple test cases:
+
 ```console
 $ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
 ```
 
 `cctest` can also be run directly which can be useful when debugging:
+
 ```console
 $ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
 ```
 
-### Node.js test fixture
-C'è un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) denominato `node_test_fixture.h` che può essere incluso dagli unit test. Il fixture si occupa di configurare l'ambiente di Node.js e di abbatterlo al termine dei test.
+### Test fixture di Node.js
 
-Contiene anche un helper per creare argomenti da passare all'interno di Node.js. In base a cosa viene testato si decide se questo è richiesto oppure no.
+There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
+
+Contiene anche un helper per creare argomenti da passare all'interno di Node.js. It will depend on what is being tested if this is required or not.
 
 ### Test Coverage
 

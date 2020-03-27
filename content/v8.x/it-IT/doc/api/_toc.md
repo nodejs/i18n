@@ -1,4 +1,5 @@
-@// NB(chrisdickinson): se sposti questo file, assicurati di aggiornare tools/doc/html.js in modo @// che punti nella nuova posizione.
+@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+
 * [Informazioni su questi documenti](documentation.html)
 * [Utilizzo & Esempio](synopsis.html)
 

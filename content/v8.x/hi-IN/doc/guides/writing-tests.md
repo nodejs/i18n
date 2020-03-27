@@ -15,6 +15,10 @@ Add tests when:
 - Fixing regressions and bugs.
 - Expanding test coverage.
 
+## Test directory structure
+
+See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
+
 ## Test structure
 
 Let's analyze this basic test from the Node.js test suite:
@@ -95,7 +99,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 
 ## General recommendations
 
-### Timers
+### टाइमर
 
 Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 

@@ -19,9 +19,9 @@ La línea inferior cambiará durante la compilación, mostrando el progreso como
 
 ## Consideraciones
 
-Las compilaciones de Ninja varían ligeramente de las compilaciones de `make`. Si desea ejecutar `make test` después, es probable que `make` aún tenga que recompilar cierta cantidad de Node.js.
+Las compilaciones de Ninja varían ligeramente de las compilaciones de `make`. If you wish to run `make test` after, `make` will likely still need to rebuild some amount of Node.js.
 
-Como tal, si desea ejecutar las pruebas, puede ser útil invocar el corredor de prueba directamente, de este modo: `tools/test.py --mode=release message parallel sequential -J`
+As such, if you wish to run the tests, it can be helpful to invoke the test runner directly, like so: `tools/test.py --mode=release message parallel sequential -J`
 
 ## Alias
 
@@ -30,5 +30,5 @@ out/Release/node node'`
 
 ## Producir una compilación de depuración
 
-El alias anterior se puede modificar ligeramente para producir una compilación de depuración, en lugar de una compilación de lanzamiento, como se muestra a continuación: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs
+The above alias can be modified slightly to produce a debug build, rather than a release build as shown below: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs
 out/Debug/node node_g'`

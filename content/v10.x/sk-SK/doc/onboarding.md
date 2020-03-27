@@ -30,7 +30,12 @@ This document is an outline of the things we tell new Collaborators at their onb
 apply.whitespace fix`
   * Always continue to PR from your own GitHub fork 
     * Branches in the `nodejs/node` repository are only for release lines
-  * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
+  * Add the canonical nodejs repository as `upstream` remote: 
+    * `git remote add upstream git://github.com/nodejs/node.git`
+  * To update from `upstream`: 
+    * `git checkout master`
+    * `git remote update -p` OR `git fetch --all`
+    * `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
   * Make a new branch for each PR you submit.
   * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
@@ -71,10 +76,7 @@ apply.whitespace fix`
   * `semver-{minor,major}`: 
     * If a change has the remote *chance* of breaking something, use the `semver-major` label
     * When adding a `semver-*` label, add a comment explaining why you're adding it. Do it right away so you don't forget!
-  * Please add the `author-ready` label for PRs where: 
-    * the CI has been started (not necessarily finished),
-    * no outstanding review comments exist and
-    * at least one collaborator approved the PR.
+  * Please add the [`author-ready`][] label for PRs, if applicable.
 
 * See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
@@ -100,12 +102,12 @@ apply.whitespace fix`
 * Insofar as possible, issues should be identified by tools rather than human reviewers. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
 * Minimum wait for comments time 
   * There is a minimum waiting time which we try to respect for non-trivial changes so that people who may have important input in such a distributed project are able to respond.
-  * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
+  * For non-trivial changes, leave the pull request open for at least 48 hours.
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
 
 * Approving a change
   
-  * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
+  * Collaborators indicate that they have reviewed and approve of the changes in a pull request using GitHub’s approval interface
   * Some people like to comment `LGTM` (“Looks Good To Me”)
   * You have the authority to approve any other collaborator’s work.
   * You cannot approve your own pull requests.
@@ -132,7 +134,7 @@ apply.whitespace fix`
   * To start CI testing from this screen, you need to fill in two elements on the form: 
     * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
     * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
-    * The remaining elements on the form are typically unchanged with the exception of `POST_STATUS_TO_PR`. Check that if you want a CI status indicator to be automatically inserted into the PR.
+    * The remaining elements on the form are typically unchanged.
   * If you need help with something CI-related: 
     * Use #node-dev (IRC) to talk to other Collaborators.
     * Use #node-build (IRC) to talk to the Build WG members who maintain the CI infrastructure.
@@ -148,14 +150,14 @@ Note that commits in one PR that belong to one logical change should be squashed
 
 ## Exercise: Make a PR adding yourself to the README
 
-* Example: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
+* Example: https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0 
   * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Collaborators are in alphabetical order by GitHub username.
 * Optionally, include your personal pronouns.
-* Label your pull request with the `doc` subsystem label.
-* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite` CI task. Alternatively, use the usual `node-test-pull-request` CI task and cancel it after the linter and one other subtask have passed.
-* After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
+* Label your pull request with the `doc`, `notable-change`, and `fast-track` labels.
+* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite-pipeline` CI task.
+* After two Collaborator approvals for the change and two Collaborator approvals for fast-tracking, land the PR. 
   * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
   * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
   * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.

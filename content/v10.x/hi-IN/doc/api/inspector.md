@@ -1,8 +1,8 @@
-# Inspector
+# इंस्पेक्टर
 
 <!--introduced_in=v8.0.0-->
 
-> Stability: 1 - Experimental
+> स्थिरता: 1 - प्रायोगिक
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
@@ -11,6 +11,20 @@ It can be accessed using:
 ```js
 const inspector = require('inspector');
 ```
+
+## inspector.close()
+
+Deactivate the inspector. Blocks until there are no active connections.
+
+## inspector.console
+
+* {Object} An object to send messages to the remote inspector console.
+
+```js
+require('inspector').console.log('a message');
+```
+
+The inspector console does not have API parity with Node.js console.
 
 ## inspector.open([port[, host[, wait]]])
 
@@ -23,11 +37,9 @@ Activate inspector on host and port. Equivalent to `node
 
 If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
 
-### inspector.close()
+See the [security warning](cli.html#inspector_security) regarding the `host` parameter usage.
 
-Deactivate the inspector. Blocks until there are no active connections.
-
-### inspector.url()
+## inspector.url()
 
 * Returns: {string|undefined}
 
@@ -92,6 +104,14 @@ added: v8.0.0
 
 Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
 
+### session.disconnect()
+
+<!-- YAML
+added: v8.0.0
+-->
+
+Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+
 ### session.post(method\[, params\]\[, callback\])
 
 <!-- YAML
@@ -112,21 +132,15 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 
 The latest version of the V8 inspector protocol is published on the [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Node inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
-
-### session.disconnect()
-
-<!-- YAML
-added: v8.0.0
--->
-
-Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Node.js inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
 
 ## Example usage
 
+Apart from the debugger, various V8 Profilers are available through the DevTools protocol.
+
 ### CPU Profiler
 
-Apart from the debugger, various V8 Profilers are available through the DevTools protocol. Here's a simple example showing how to use the [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
+Here's an example showing how to use the [CPU Profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
 
 ```js
 const inspector = require('inspector');
@@ -146,5 +160,29 @@ session.post('Profiler.enable', () => {
       }
     });
   });
+});
+```
+
+### Heap Profiler
+
+Here's an example showing how to use the [Heap Profiler](https://chromedevtools.github.io/devtools-protocol/v8/HeapProfiler):
+
+```js
+const inspector = require('inspector');
+const fs = require('fs');
+const session = new inspector.Session();
+
+const fd = fs.openSync('profile.heapsnapshot', 'w');
+
+session.connect();
+
+session.on('HeapProfiler.addHeapSnapshotChunk', (m) => {
+  fs.writeSync(fd, m.params.chunk);
+});
+
+session.post('HeapProfiler.takeHeapSnapshot', null, (err, r) => {
+  console.log('Runtime.takeHeapSnapshot done:', err, r);
+  session.disconnect();
+  fs.closeSync(fd);
 });
 ```

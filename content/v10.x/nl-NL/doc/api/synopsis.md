@@ -1,6 +1,7 @@
 # Usage
 
 <!--introduced_in=v0.10.0-->
+
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
@@ -8,6 +9,7 @@
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
 ## Voorbeeld
+
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
 Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.

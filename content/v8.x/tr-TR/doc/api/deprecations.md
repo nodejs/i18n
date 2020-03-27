@@ -110,7 +110,7 @@ Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated 
 
 Type: Runtime
 
-The [`crypto.createCredentials()`][] API is deprecated. Lütfen bunun yerine [`tls.createSecureContext()`][] kullanın.
+The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
 
 <a id="DEP0011"></a>
 
@@ -118,7 +118,7 @@ The [`crypto.createCredentials()`][] API is deprecated. Lütfen bunun yerine [`t
 
 Type: Runtime
 
-The `crypto.Credentials` class is deprecated. Lütfen bunun yerine [`tls.SecureContext`][] kullanın.
+The `crypto.Credentials` class is deprecated. Please use [`tls.SecureContext`][] instead.
 
 <a id="DEP0012"></a>
 
@@ -190,7 +190,7 @@ In certain cases, `require('.')` may resolve outside the package directory. This
 
 Type: Runtime
 
-The [`Server.connections`][] property is deprecated. Lütfen bunun yerine [`Server.getConnections()`][] metodunu kullanın.
+The [`Server.connections`][] property is deprecated. Please use the [`Server.getConnections()`][] method instead.
 
 <a id="DEP0021"></a>
 
@@ -198,7 +198,7 @@ The [`Server.connections`][] property is deprecated. Lütfen bunun yerine [`Serv
 
 Type: Runtime
 
-The `Server.listenFD()` method is deprecated. Lütfen bunun yerine [`Server.listen({fd: <number>})`][] kullanın.
+The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <number>})`][] instead.
 
 <a id="DEP0022"></a>
 
@@ -214,7 +214,7 @@ The `os.tmpDir()` API is deprecated. Lütfen bunun yerine [`os.tmpdir()`][] kull
 
 Type: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Lütfen bunun yerine [`os.networkInterfaces`][] özelliğini kullanın.
+The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
 
 <a id="DEP0024"></a>
 
@@ -254,7 +254,7 @@ The [`util.puts()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][
 
 Type: Runtime
 
-The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
+The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
 
 <a id="DEP0029"></a>
 
@@ -262,7 +262,7 @@ The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()
 
 Type: Runtime
 
-The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
+The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
 
 <a id="DEP0030"></a>
 
@@ -270,7 +270,7 @@ The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()
 
 Type: Documentation-only
 
-The [`SlowBuffer`][] class has been deprecated. Lütfen bunun yerine [`Buffer.allocUnsafeSlow(size)`][] kullanın.
+The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeSlow(size)`][] instead.
 
 <a id="DEP0031"></a>
 
@@ -302,7 +302,7 @@ The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated
 
 Type: Documentation-only
 
-The [`fs.exists(path, callback)`][] API has been deprecated. Lütfen bunun yerine [`fs.stat()`][] or [`fs.access()`][] kullanın.
+The [`fs.exists(path, callback)`][] API has been deprecated. Please use [`fs.stat()`][] or [`fs.access()`][] instead.
 
 <a id="DEP0035"></a>
 
@@ -350,7 +350,7 @@ The [`require.extensions`][] property has been deprecated.
 
 Type: Documentation-only
 
-The [`punycode`][] module has been deprecated. Lütfen bunun yerine bir kullanıcı alternatifi kullanın.
+The [`punycode`][] module has been deprecated. Please use a userland alternative instead.
 
 <a id="DEP0041"></a>
 
@@ -366,7 +366,7 @@ The `NODE_REPL_HISTORY_FILE` environment variable has been deprecated.
 
 Type: Documentation-only
 
-The [`tls.CryptoStream`][] class has been deprecated. Lütfen bunun yerine [`tls.TLSSocket`][] kullanın.
+The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
 
 <a id="DEP0043"></a>
 
@@ -374,7 +374,7 @@ The [`tls.CryptoStream`][] class has been deprecated. Lütfen bunun yerine [`tls
 
 Type: Documentation-only
 
-The [`tls.SecurePair`][] class has been deprecated. Lütfen bunun yerine [`tls.TLSSocket`][] kullanın.
+The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
 
 <a id="DEP0044"></a>
 
@@ -382,7 +382,7 @@ The [`tls.SecurePair`][] class has been deprecated. Lütfen bunun yerine [`tls.T
 
 Type: Documentation-only
 
-The [`util.isArray()`][] API has been deprecated. Lütfen bunun yerine `Array.isArray()` kullanın.
+The [`util.isArray()`][] API has been deprecated. Please use `Array.isArray()` instead.
 
 <a id="DEP0045"></a>
 
@@ -398,7 +398,7 @@ The [`util.isBoolean()`][] API has been deprecated.
 
 Type: Documentation-only
 
-The [`util.isBuffer()`][] API has been deprecated. Lütfen bunun yerine [`Buffer.isBuffer()`][] kullanın.
+The [`util.isBuffer()`][] API has been deprecated. Please use [`Buffer.isBuffer()`][] instead.
 
 <a id="DEP0047"></a>
 
@@ -552,7 +552,7 @@ The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11
 
 Type: Documentation-only
 
-The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Lütfen bunun yerine `REPL_MODE_SLOPPY` kullanın.
+The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
 
 The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its default value, `magic`, is similarly deprecated in favor of `sloppy`.
 
@@ -562,7 +562,7 @@ The `NODE_REPL_MODE` environment variable is used to set the underlying `replMod
 
 Type: Documentation-only
 
-The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Lütfen bunun yerine genel metotlardan birini kullanın (örn. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) giden başlıklar ile çalışmak için.
+The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
 
 *Note*: `outgoingMessage._headers` and `outgoingMessage._headerNames` were never documented as officially supported properties.
 

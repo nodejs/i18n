@@ -2,32 +2,32 @@
 
 ## Sommario
 
-* [Prerequisiti](#prerequisites)
+* [Prerequisiti](#prerequisites) 
   * [Requisiti del Benchmark HTTP](#http-benchmark-requirements)
   * [Requisiti per l'Analisi del Benchmark](#benchmark-analysis-requirements)
-* [Eseguire i benchmark](#running-benchmarks)
+* [Eseguire i benchmark](#running-benchmarks) 
   * [Eseguire i singoli benchmark](#running-individual-benchmarks)
   * [Eseguire tutti i benchmark](#running-all-benchmarks)
   * [Confronto tra le versioni di Node.js](#comparing-nodejs-versions)
   * [Confronto dei parametri](#comparing-parameters)
   * [Eseguire i Benchmark sulla CI](#running-benchmarks-on-the-ci)
-* [Creare un benchmark](#creating-a-benchmark)
+* [Creare un benchmark](#creating-a-benchmark) 
   * [Nozioni di base su un benchmark](#basics-of-a-benchmark)
   * [Creare un benchmark HTTP](#creating-an-http-benchmark)
 
 ## Prerequisiti
 
-Per alcuni benchmark sono necessari strumenti Basic Unix. [Git per Windows](http://git-scm.com/download/win) include Git Bash e gli strumenti necessari, che devono essere inclusi nel Windows `PATH` globale.
+Per alcuni benchmark sono necessari strumenti Basic Unix. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
 
 ### Requisiti del Benchmark HTTP
 
-La maggior parte dei benchmark HTTP richiede l'installazione di un benchmarker. Questo può essere [`wrk`](https://github.com/wg/wrk) oppure [`autocannon`](https://github.com/mcollina/autocannon).
+La maggior parte dei benchmark HTTP richiede l'installazione di un benchmarker. This can be either [`wrk`](https://github.com/wg/wrk) or [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` è uno script Node.js che può essere installato utilizzando `npm install -g autocannon`. Utilizzerà l'eseguibile Node.js che si trova nel path (percorso). Per mettere a confronto due esecuzioni di benchmark HTTP, assicurarsi che la versione Node.js nel path (percorso) non sia alterata.
+`Autocannon` is a Node.js script that can be installed using `npm install -g autocannon`. It will use the Node.js executable that is in the path. In order to compare two HTTP benchmark runs, make sure that the Node.js version in the path is not altered.
 
-`wrk` potrebbe essere disponibile attraverso uno dei manager dei pacchetti disponibili. In caso contrario, può essere facilmente creato [dalla sorgente](https://github.com/wg/wrk) tramite `make`.
+`wrk` potrebbe essere disponibile attraverso uno dei manager dei pacchetti disponibili. If not, it can be easily built [from source](https://github.com/wg/wrk) via `make`.
 
-Di default, `wrk` sarà utilizzato come benchmarker. Se non è disponibile, sarà utilizzato `autocannon` al suo posto. Quando si crea un benchmark HTTP, è necessario specificare il benchmarker da utilizzare fornendolo come un argomento:
+Di default, `wrk` sarà utilizzato come benchmarker. If it is not available, `autocannon` will be used in its place. When creating an HTTP benchmark, the benchmarker to be used should be specified by providing it as an argument:
 
 `node benchmark/run.js --set benchmarker=autocannon http`
 
@@ -35,15 +35,15 @@ Di default, `wrk` sarà utilizzato come benchmarker. Se non è disponibile, sar�
 
 #### Requisiti del Benchmark HTTP/2
 
-Per eseguire i benchmark `http2`, è necessario utilizzare il benchmarker `h2load`. Lo strumento `h2load` è una componente del progetto `nghttp2` e può essere installato da [nghttp2.org](http://nghttp2.org) oppure può essere creato dalla sorgente.
+Per eseguire i benchmark `http2`, è necessario utilizzare il benchmarker `h2load`. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
 ### Requisiti per l'Analisi del Benchmark
 
-Per analizzare i risultati, dovrebbe essere installato `R`. Utilizza uno dei manager dei pacchetti disponibili o scaricalo da https://www.r-project.org/.
+Per analizzare i risultati, dovrebbe essere installato `R`. Use one of the available package managers or download it from https://www.r-project.org/.
 
-Vengono usati anche i pacchetti R `ggplot2` e `plyr` e possono essere installati usando R REPL.
+The R packages `ggplot2` and `plyr` are also used and can be installed using the R REPL.
 
 ```R
 $ R
@@ -51,9 +51,9 @@ install.packages("ggplot2")
 install.packages("plyr")
 ```
 
-Nel caso in cui venga segnalato un messaggio per indicare che deve essere selezionato per primo un CRAN mirror, specifica un mirror aggiungendo il parametro repo.
+In the event that a message is reported stating that a CRAN mirror must be selected first, specify a mirror by adding in the repo parameter.
 
-Se usassimo il mirror "http://cran.us.r-project.org", si potrebbe scrivere qualcosa del genere:
+If we used the "http://cran.us.r-project.org" mirror, it could look something like this:
 
 ```R
 install.packages("ggplot2", repo="http://cran.us.r-project.org")
@@ -65,9 +65,9 @@ Naturalmente, utilizza un mirror appropriato in base alla posizione (location). 
 
 ### Eseguire i singoli benchmark
 
-Questo può essere utile per eseguire il debug di un benchmark oppure per eseguire una misura rapida delle prestazioni (performance). Ma non fornisce le informazioni statistiche per trarre conclusioni delle conclusioni sulle prestazioni (performance).
+This can be useful for debugging a benchmark or doing a quick performance measure. But it does not provide the statistical information to make any conclusions about the performance.
 
-I singoli benchmark possono essere eseguiti semplicemente eseguendo lo script di benchmark con node.
+Individual benchmarks can be executed by simply executing the benchmark script with node.
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js
@@ -82,9 +82,9 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Ogni riga rappresenta un singolo benchmark con parametri specificati come `${variable}=${value}`. Ogni combinazione di configurazione viene eseguita in un processo separato. Ciò garantisce che i risultati del benchmark non siano influenzati dall'ordine di esecuzione a causa delle ottimizzazioni di V8. **L'ultimo numero è il rate delle operazioni misurato in ops/sec (più è alto meglio è).**
+Each line represents a single benchmark with parameters specified as `${variable}=${value}`. Each configuration combination is executed in a separate process. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
 
-Inoltre, è possibile specificare un sottoinsieme delle configurazioni, impostandole negli argomenti del processo:
+Furthermore a subset of the configurations can be specified, by setting them in the process arguments:
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js len=1024
@@ -95,7 +95,7 @@ buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 3783071.1678948295
 
 ### Eseguire tutti i benchmark
 
-Simile all'esecuzione dei singoli benchmark, un gruppo di benchmark può essere eseguito utilizzando lo strumento `run.js`. Per vedere come utilizzare questo script, esegui `node benchmark/run.js`. Ancora una volta questo non fornisce le informazioni statistiche per trarre delle conclusioni.
+Similar to running individual benchmarks, a group of benchmarks can be executed by using the `run.js` tool. To see how to use this script, run `node benchmark/run.js`. Again this does not provide the statistical information to make any conclusions.
 
 ```console
 $ node benchmark/run.js assert
@@ -124,13 +124,13 @@ $ node benchmark/run.js assert async_hooks
 
 ### Confronto tra le versioni di Node.js
 
-Per confrontare l'effetto di una nuova versione di Node.js, utilizza lo strumento `compare.js`. Questo eseguirà ogni benchmark più volte, rendendo possibile il calcolo delle statistiche sulle misure delle prestazioni (performance). Per vedere come utilizzare questo script, esegui `node benchmark/compare.js`.
+Per confrontare l'effetto di una nuova versione di Node.js, utilizza lo strumento `compare.js`. This will run each benchmark multiple times, making it possible to calculate statistics on the performance measures. To see how to use this script, run `node benchmark/compare.js`.
 
-Come esempio su come verificare un possibile miglioramento delle prestazioni verrà utilizzata la pull request [#5134](https://github.com/nodejs/node/pull/5134). Questa pull request _pretende_ di migliorare le prestazioni del modulo `string_decoder`.
+As an example on how to check for a possible performance improvement, the [#5134](https://github.com/nodejs/node/pull/5134) pull request will be used as an example. This pull request *claims* to improve the performance of the `string_decoder` module.
 
-Prima costruisci due versioni di Node.js, una dal master branch (qui chiamato`./node-master`) ed un'altra con l'applicazione della pull request (qui chiamata `./node-pr-5134`).
+First build two versions of Node.js, one from the master branch (here called `./node-master`) and another with the pull request applied (here called `./node-pr-5134`).
 
-Per eseguire più versioni compilate in parallelo è necessario copiare l'output della build: `cp ./out/Release/node ./node-master`. Guarda il seguente esempio:
+To run multiple compiled versions in parallel you need to copy the output of the build: `cp ./out/Release/node ./node-master`. Guarda il seguente esempio:
 
 ```console
 $ git checkout master
@@ -148,7 +148,7 @@ Lo strumento `compare.js` produrrà quindi un file csv con i risultati del bench
 $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_decoder > compare-pr-5134.csv
 ```
 
-*Suggerimenti: ci sono alcune opzioni utili di `benchmark/compare.js`. Ad esempio, se desideri confrontare il benchmark di un singolo script anziché di un intero modulo, puoi utilizzare l'opzione `--filter`:*
+*Suggerimenti: ci sono alcune opzioni utili di `benchmark/compare.js`. For example, if you want to compare the benchmark of a single script instead of a whole module, you can use the `--filter` option:*
 
 ```console
   --new      ./new-node-binary  nuovo node binary (richiesto)
@@ -172,13 +172,13 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-In the output, _improvement_ is the relative improvement of the new version, hopefully this is positive. _confidence_ tells if there is enough statistical evidence to validate the _improvement_. Se ci sono abbastanza prove allora ci sarà almeno una stella (`*`), è sempre meglio avere più stelle possibili. **However if there are no stars, then don't make any conclusions based on the _improvement_.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
+In the output, *improvement* is the relative improvement of the new version, hopefully this is positive. *confidence* tells if there is enough statistical evidence to validate the *improvement*. If there is enough evidence then there will be at least one star (`*`), more stars is just better. **However if there are no stars, then don't make any conclusions based on the *improvement*.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
 
-**A word of caution:** Statistics is not a foolproof tool. Se un benchmark mostra una differenza statistica significativa, c'è un rischio del 5% che questa differenza in realtà non esista. Per un singolo benchmark questo non è un problema. Ma quando si considerano 20 benchmark è normale che uno di essi abbia un significato, anche se non dovrebbe. Una possibile soluzione è considerare invece almeno due stelle (`**`) come soglia, in tal caso il rischio è dell'1%. Con tre stelle (`***`) il rischio è dello 0.1%. Tuttavia questo potrebbe richiedere più esecuzioni per essere raggiunto (può essere impostato con `--runs`).
+**Una parola di avvertenza:** Le statistiche non sono uno strumento infallibile. If a benchmark shows a statistical significant difference, there is a 5% risk that this difference doesn't actually exist. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. Con tre stelle (`***`) il rischio è dello 0.1%. However this may require more runs to obtain (can be set with `--runs`).
 
-_Per quanto riguarda la statistica, lo script R esegue un [independent/unpaired 2-group t-test](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), con l'ipotesi nulla che le prestazioni siano le stesse per entrambe le versioni. Il campo confidence mostrerà una stella se il p-value è inferiore a `0.05`._
+*For the statistically minded, the R script performs an [independent/unpaired 2-group t-test](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), with the null hypothesis that the performance is the same for both versions. The confidence field will show a star if the p-value is less than `0.05`.*
 
-Lo strumento `compare.R` può anche produrre un box plot utilizzando l'opzione `--plot filename`. In questo caso ci sono 48 diverse combinazioni di benchmark e potrebbe essere necessario filtrare il file csv. Questo può essere fatto durante il benchmarking usando il parametro `--set` (es. `--set encoding=ascii`) oppure filtrando successivamente i risultati usando strumenti come `sed` o `grep`. Nel caso di `sed` assicurati di mantenere così la prima riga dal momento che contiene le informazioni dell'header.
+The `compare.R` tool can also produce a box plot by using the `--plot filename` option. In this case there are 48 different benchmark combinations, and there may be a need to filter the csv file. This can be done while benchmarking using the `--set` parameter (e.g. `--set encoding=ascii`) or by filtering results afterwards using tools such as `sed` or `grep`. In the `sed` case be sure to keep the first line since that contains the header information.
 
 ```console
 $ cat compare-pr-5134.csv | sed '1p;/encoding='"'"ascii"'"'/!d' | Rscript benchmark/compare.R --plot compare-plot.png
@@ -195,15 +195,15 @@ $ cat compare-pr-5134.csv | sed '1p;/encoding='"'"ascii"'"'/!d' | Rscript benchm
 
 ### Confronto dei parametri
 
-Può essere utile confrontare le prestazioni per diversi parametri, ad esempio per analizzare la complessità temporale.
+It can be useful to compare the performance for different parameters, for example to analyze the time complexity.
 
-Per farlo utilizza lo strumento `scatter.js`, eseguirà un benchmark più volte e genererà un csv con i risultati. Per vedere come utilizzare questo script, esegui `node benchmark/scatter.js`.
+To do this use the `scatter.js` tool, this will run a benchmark multiple times and generate a csv with the results. To see how to use this script, run `node benchmark/scatter.js`.
 
 ```console
 $ node benchmark/scatter.js benchmark/string_decoder/string-decoder.js > scatter.csv
 ```
 
-Dopo aver generato il csv, è possibile creare una tabella di confronto utilizzando lo strumento `scatter.R`. Ancora più utile, tramite l'opzione `--plot filename`, si può creare uno scatter plot reale.
+After generating the csv, a comparison table can be created using the `scatter.R` tool. Even more useful it creates an actual scatter plot when using the `--plot filename` option.
 
 ```console
 $ cat scatter.csv | Rscript benchmark/scatter.R --xaxis chunkLen --category encoding --plot scatter-plot.png --log
@@ -233,7 +233,7 @@ chunkLen     encoding      rate confidence.interval
     1024         utf8 1824266.6           359628.52
 ```
 
-Because the scatter plot can only show two variables (in this case _chunkLen_ and _encoding_) the rest is aggregated. A volte l'aggregazione è un problema, che però può essere risolto tramite il filtro. Questo può essere fatto durante il benchmarking usando il parametro `--set` (es. `--set encoding=ascii`) oppure filtrando successivamente i risultati usando strumenti come `sed` o `grep`. Nel caso di `sed` assicurati di mantenere così la prima riga dal momento che contiene le informazioni dell'header.
+Because the scatter plot can only show two variables (in this case *chunkLen* and *encoding*) the rest is aggregated. Sometimes aggregating is a problem, this can be solved by filtering. This can be done while benchmarking using the `--set` parameter (e.g. `--set encoding=ascii`) or by filtering results afterwards using tools such as `sed` or `grep`. In the `sed` case be sure to keep the first line since that contains the header information.
 
 ```console
 $ cat scatter.csv | sed -E '1p;/([^,]+, ){3}128,/!d' | Rscript benchmark/scatter.R --xaxis chunkLen --category encoding --plot scatter-plot.png --log
@@ -265,32 +265,32 @@ chunkLen     encoding      rate confidence.interval
 
 ### Eseguire i Benchmark sulla CI
 
-Per vedere l'impatto di una Pull Request sulle prestazioni eseguendo i benchmark sulla CI, dai un'occhiata a [How to: Eseguire dei core benchmark su Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
+To see the performance impact of a Pull Request by running benchmarks on the CI, check out [How to: Running core benchmarks on Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
 
 ## Creare un benchmark
 
 ### Nozioni di base su un benchmark
 
-Tutti i benchmark utilizzato il modulo `require('../common.js')`. Questo contiene il metodo `createBenchmark(main, configs[, options])` che creerà il setup del benchmark.
+Tutti i benchmark utilizzato il modulo `require('../common.js')`. This contains the `createBenchmark(main, configs[, options])` method which will setup the benchmark.
 
 Gli argomenti di `createBenchmark` sono:
 
-* `main` {Function} La funzione benchmark, in cui devono essere eseguite le operazioni di esecuzione del codice ed i timer di controllo
-* `configs` {Object} I parametri del benchmark. `createBenchmark` eseguirà tutte le possibili combinazioni di questi parametri, se non viene specificato diversamente. Ogni configurazione è una proprietà con un array di valori possibili. Da notare che i valori di configurazione possono essere solo stringhe o numeri.
-* `options` {Object} Le opzioni del benchmark. Al momento è supportata solo l'opzione `flags` per specificare i flag della command line.
+* `main` {Function} The benchmark function, where the code running operations and controlling timers should go
+* `configs` {Object} I parametri del benchmark. `createBenchmark` will run all possible combinations of these parameters, unless specified otherwise. Ogni configurazione è una proprietà con un array di valori possibili. Da notare che i valori di configurazione possono essere solo stringhe o numeri.
+* `options` {Object} Le opzioni del benchmark. At the moment only the `flags` option for specifying command line flags is supported.
 
-`createBenchmark` restituisce un `bench` object, il quale viene utilizzato per il timing del runtime del benchmark. Esegui `bench.start()` dopo l'inizializzazione e `bench.end(n)` quando il benchmark si conclude. `n` è il numero di operazioni eseguite nel benchmark.
+`createBenchmark` returns a `bench` object, which is used for timing the runtime of the benchmark. Run `bench.start()` after the initialization and `bench.end(n)` when the benchmark is done. `n` is the number of operations performed in the benchmark.
 
 Lo script del benchmark verrà eseguito due volte:
 
-Il primo passaggio configurerà il benchmark con la combinazione di parametri specificati in `configs` e NON eseguirà la funzione `main`. In questo passaggio, non verranno utilizzati flag tranne quelli passati direttamente tramite i comandi durante l'esecuzione dei benchmark.
+The first pass will configure the benchmark with the combination of parameters specified in `configs`, and WILL NOT run the `main` function. In this pass, no flags except the ones directly passed via commands when running the benchmarks will be used.
 
-Nel secondo passaggio verrà eseguita la funzione `main` ed il processo verrà avviato con:
+In the second pass, the `main` function will be run, and the process will be launched with:
 
 * I flag passati all'interno di `createBenchmark` (il terzo argomento)
 * I flag nel comando passati quando veniva eseguito il benchmark
 
-Assicurati che qualsiasi codice al di fuori della funzione `main` venga eseguito due volte in processi diversi. Ciò potrebbe essere problematico se il codice al di fuori della funzione `main` ha effetti collaterali. In genere, si preferisce inserire il codice nella funzione `main` se è più di una semplice istruzione.
+Beware that any code outside the `main` function will be run twice in different processes. This could be troublesome if the code outside the `main` function has side effects. In general, prefer putting the code inside the `main` function if it's more than just declaration.
 
 ```js
 'use strict';
@@ -339,7 +339,7 @@ function main(conf) {
 
 ### Creare un benchmark HTTP
 
-Il `bench` object restituito da `createBenchmark` implementa il metodo `http(options, callback)`. Può essere utilizzato per eseguire strumenti esterni per il benchmark dei server HTTP.
+The `bench` object returned by `createBenchmark` implements `http(options, callback)` method. It can be used to run external tool to benchmark HTTP servers.
 
 ```js
 'use strict';
@@ -375,4 +375,4 @@ Le option key supportate sono:
 * `path` - `/` di default
 * `connections` - numero di connessioni simultanee da utilizzare, 100 di default
 * `duration` - durata del benchmark in secondi, 10 di default
-* `benchmarker` - benchmarker da utilizzare, `common.default_http_benchmarker` di default
+* `benchmarker` - benchmarker to use, defaults to `common.default_http_benchmarker`

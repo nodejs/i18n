@@ -11,6 +11,7 @@ const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -23,6 +24,7 @@ A string constant defining the operating system-specific end-of-line marker:
 * `\r\n` on Windows
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -36,6 +38,7 @@ The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipse
 Equivalent to [`process.arch`][].
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -45,6 +48,7 @@ added: v6.3.0
 Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -57,12 +61,13 @@ The properties included on each object include:
 
 * `model` {string}
 * `speed` {number} (in MHz)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} The number of milliseconds the CPU has spent in user mode.
   * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
   * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+
 ```js
 [
   {
@@ -160,7 +165,9 @@ Because `nice` values are UNIX-specific, on Windows the `nice` values of all pro
 
 ## os.endianness()<!-- YAML
 added: v0.9.4
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
@@ -171,30 +178,40 @@ Possible values are:
 
 ## os.freemem()<!-- YAML
 added: v0.3.3
--->* Returns: {integer}
+-->
+
+* Returns: {integer}
 
 The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
 ## os.getPriority([pid])<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
+-->
+
+* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
+
 * Returns: {integer}
 
 The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
 
 ## os.homedir()<!-- YAML
 added: v2.3.0
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
 ## os.hostname()<!-- YAML
 added: v0.3.3
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.hostname()` method returns the hostname of the operating system as a string.
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -209,7 +226,9 @@ The load average is a UNIX-specific concept with no real equivalent on Windows p
 
 ## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->* Returns: {Object}
+-->
+
+* Returns: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
@@ -224,6 +243,7 @@ The properties available on the assigned network address object include:
 * `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
 * `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+
 ```js
 {
   lo: [
@@ -269,7 +289,9 @@ The properties available on the assigned network address object include:
 
 ## os.platform()<!-- YAML
 added: v0.5.0
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -289,7 +311,9 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 
 ## os.release()<!-- YAML
 added: v0.3.3
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -297,7 +321,10 @@ On POSIX systems, the operating system release is determined by calling [uname(3
 
 ## os.setPriority([pid, ]priority)<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+-->
+
+* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+
 * `priority` {integer} The scheduling priority to assign to the process.
 
 The `os.setPriority()` method attempts to set the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is used.
@@ -309,23 +336,30 @@ On Windows setting priority to `PRIORITY_HIGHEST` requires elevated user, otherw
 ## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
 ## os.totalmem()<!-- YAML
 added: v0.3.3
--->* Returns: {integer}
+-->
+
+* Returns: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
 ## os.type()<!-- YAML
 added: v0.3.3
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
@@ -334,17 +368,23 @@ Please see https://en.wikipedia.org/wiki/Uname#Examples for additional informati
 ## os.uptime()<!-- YAML
 added: v0.3.3
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/20129
     description: The result of this function no longer contains a fraction
                  component on Windows.
--->* Returns: {integer}
+-->
+
+* Returns: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
 ## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->* `options` {Object}
+-->
+
+* `options` {Object}
+  
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
 * Returns: {Object}
 
@@ -360,10 +400,13 @@ Not all constants will be available on every operating system.
 
 ### Signal Constants<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->The following signal constants are exported by `os.constants.signals`:
+-->The following signal constants are exported by 
+
+`os.constants.signals`:
 
 <table>
   <tr>
@@ -1144,7 +1187,9 @@ If available on the operating system, the following constants are exported in `o
 
 ### Priority Constants<!-- YAML
 added: v10.10.0
--->The following process scheduling constants are exported by `os.constants.priority`:
+-->The following process scheduling constants are exported by 
+
+`os.constants.priority`:
 
 <table>
   <tr>
@@ -1204,4 +1249,3 @@ added: v10.10.0
     <td></td>
   </tr>
 </table>
-

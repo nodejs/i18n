@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilitas: 2 - Stabil
 
 The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
@@ -69,8 +69,6 @@ The properties included on each object include:
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
 For example:
-
-<!-- eslint-disable semi -->
 
 ```js
 [
@@ -167,9 +165,7 @@ For example:
 
 *Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()
-
-<!-- YAML
+## os.endianness()<!-- YAML
 added: v0.9.4
 -->
 
@@ -182,9 +178,7 @@ Possible values are:
 * `'BE'` for big endian
 * `'LE'` for little endian.
 
-## os.freemem()
-
-<!-- YAML
+## os.freemem()<!-- YAML
 added: v0.3.3
 -->
 
@@ -192,9 +186,7 @@ added: v0.3.3
 
 The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
-## os.homedir()
-
-<!-- YAML
+## os.homedir()<!-- YAML
 added: v2.3.0
 -->
 
@@ -202,9 +194,7 @@ added: v2.3.0
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
-## os.hostname()
-
-<!-- YAML
+## os.hostname()<!-- YAML
 added: v0.3.3
 -->
 
@@ -226,9 +216,7 @@ The load average is a measure of system activity, calculated by the operating sy
 
 The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
 
-## os.networkInterfaces()
-
-<!-- YAML
+## os.networkInterfaces()<!-- YAML
 added: v0.6.0
 -->
 
@@ -247,8 +235,6 @@ The properties available on the assigned network address object include:
 * `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
 * `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
-
-<!-- eslint-skip -->
 
 ```js
 {
@@ -291,9 +277,7 @@ The properties available on the assigned network address object include:
 }
 ```
 
-## os.platform()
-
-<!-- YAML
+## os.platform()<!-- YAML
 added: v0.5.0
 -->
 
@@ -313,11 +297,9 @@ Currently possible values are:
 
 Equivalent to [`process.platform`][].
 
-*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered to be experimental at this time.
+*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
-## os.release()
-
-<!-- YAML
+## os.release()<!-- YAML
 added: v0.3.3
 -->
 
@@ -327,9 +309,7 @@ The `os.release()` method returns a string identifying the operating system rele
 
 *Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
-## os.tmpdir()
-
-<!-- YAML
+## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
 
@@ -353,9 +333,7 @@ added: v0.3.3
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
-## os.type()
-
-<!-- YAML
+## os.type()<!-- YAML
 added: v0.3.3
 -->
 
@@ -377,17 +355,16 @@ The `os.uptime()` method returns the system uptime in number of seconds.
 
 *Note*: On Windows the returned value includes fractions of a second. Use `Math.floor()` to get whole seconds.
 
-## os.userInfo([options])
-
-<!-- YAML
+## os.userInfo([options])<!-- YAML
 added: v6.0.0
 -->
 
-* `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`
+* `options` {Object}
+  
+  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
 * Returns: {Object}
 
-The `os.userInfo()` method returns information about the currently effective user -- on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
 The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
 
@@ -397,17 +374,15 @@ The following constants are exported by `os.constants`.
 
 *Note*: Not all constants will be available on every operating system.
 
-### Signal Constants
-
-<!-- YAML
+### Signal Constants<!-- YAML
 changes:
 
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->
+-->The following signal constants are exported by 
 
-The following signal constants are exported by `os.constants.signals`:
+`os.constants.signals`:
 
 <table>
   <tr>
