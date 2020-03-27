@@ -180,6 +180,14 @@ added: v9.0.0
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
 
 <!-- YAML
@@ -194,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-이 옵션은 동작하지 않습니다. 호환성을 위해 남겨두었습니다.
+This option is a no-op. It is kept for compatibility.
 
 ### `--no-deprecation`
 
@@ -210,7 +218,7 @@ added: v0.8.0
 added: v9.0.0
 -->
 
-`async_hooks`의 런타임 확인을 비활성화 합니다. These will still be enabled dynamically when `async_hooks` is enabled.
+Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -385,6 +393,20 @@ added: v2.4.0
 -->
 
 Track heap object allocations for heap snapshots.
+
+### `--unhandled-rejections=mode`
+
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning for the very first unhandled rejection in case no [`unhandledRejection`][] hook is used.
+
+Using this flag allows to change what should happen when an unhandled rejection occurs. One of three modes can be chosen:
+
+- `strict`: Raise the unhandled rejection as an uncaught exception.
+- `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][] hook is set or not but do not print the deprecation warning.
+- `none`: Silence all warnings.
 
 ### `--use-bundled-ca`, `--use-openssl-ca`
 
@@ -572,6 +594,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -595,6 +618,7 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
@@ -616,7 +640,7 @@ added: v0.1.32
 
 모듈 탐색 경로의 앞에 붙일 `':'`로 구분된 디렉토리 리스트.
 
-윈도우에서는 `';'`로 구분된 리스트가 됩니다.
+On Windows, this is a `';'`-separated list instead.
 
 ### `NODE_PENDING_DEPRECATION=1`
 
