@@ -1,8 +1,8 @@
-# Modules
+# 模块
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 <!--name=module-->
 
@@ -431,7 +431,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-Examples:
+例如：
 
 Running `node example.js` from `/Users/mjr`
 
@@ -511,7 +511,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 * {Object}
 
@@ -569,7 +569,7 @@ changes:
 -->* `request` {string} The module path to resolve.
 * `options` {Object}
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Returns: {string}
+* 返回：{string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
