@@ -1,4 +1,4 @@
-# Domain
+# 域
 <!-- YAML
 changes:
   - version: v8.8.0
@@ -14,7 +14,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
@@ -225,7 +225,7 @@ serverDomain.run(() => {
 
 ## `domain.create()`
 
-* Returns: {Domain}
+* 返回：{Domain}
 
 ## Class: `Domain`
 
