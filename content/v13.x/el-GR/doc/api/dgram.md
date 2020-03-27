@@ -281,7 +281,7 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-* Returns: {dgram.Socket}
+* Επιστρέφει: {dgram.Socket}
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
 
@@ -515,7 +515,7 @@ The `ttl` argument may be between between 1 and 255. The default on most systems
 added: v0.9.1
 -->
 
-* Returns: {dgram.Socket}
+* Επιστρέφει: {dgram.Socket}
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
 
@@ -549,7 +549,7 @@ changes:
   * `sendBufferSize` {number} Sets the `SO_SNDBUF` socket value.
   * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Προαιρετικό.
-* Returns: {dgram.Socket}
+* Επιστρέφει: {dgram.Socket}
 
 Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
@@ -560,7 +560,7 @@ added: v0.1.99
 
 * `type` {string} Either `'udp4'` or `'udp6'`.
 * `callback` {Function} Attached as a listener to `'message'` events.
-* Returns: {dgram.Socket}
+* Επιστρέφει: {dgram.Socket}
 
 Creates a `dgram.Socket` object of the specified `type`.
 
