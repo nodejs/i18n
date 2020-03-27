@@ -324,7 +324,7 @@ changes:
 
 <!--type=misc-->Each zlib-based class takes an 
 
-`options` object. All options are optional.
+`options` object. 所有选项均为可选的。
 
 Note that some options are only relevant when compressing, and are ignored by the decompression classes.
 
@@ -346,7 +346,7 @@ added: v10.16.0
 
 <!--type=misc-->Each Brotli-based class takes an 
 
-`options` object. All options are optional.
+`options` object. 所有选项均为可选的。
 
 * `flush` {integer} **Default:** `zlib.constants.BROTLI_OPERATION_PROCESS`
 * `finishFlush` {integer} **Default:** `zlib.constants.BROTLI_OPERATION_FINISH`
@@ -388,7 +388,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Compress data using deflate, and do not append a `zlib` header.
+使用 deflate 压缩数据，且不追加 `zlib` 头信息。
 
 ## Class: zlib.Gunzip<!-- YAML
 added: v0.5.8
@@ -473,7 +473,7 @@ added: v0.9.4
 
 * `callback` {Function}
 
-Close the underlying handle.
+关闭底层句柄。
 
 ### zlib.flush([kind, ]callback)<!-- YAML
 added: v0.5.8
@@ -483,7 +483,7 @@ added: v0.5.8
 
 * `callback` {Function}
 
-Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+刷新待处理数据。 Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
 
 Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
 
@@ -499,7 +499,7 @@ added: v0.11.4
 
 This function is only available for zlib-based streams, i.e. not Brotli.
 
-Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+动态更新压缩级别和压缩策略。 只适用于 deflate 算法。
 
 ### zlib.reset()<!-- YAML
 added: v0.7.0
