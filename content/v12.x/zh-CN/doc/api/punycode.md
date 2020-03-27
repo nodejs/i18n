@@ -1,4 +1,4 @@
-# Punycode
+# 国际域名编码
 <!-- YAML
 changes:
   - version: v7.0.0
@@ -8,7 +8,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 **The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
