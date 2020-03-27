@@ -278,10 +278,15 @@ The `rl.write()` method will write the data to the `readline` `Interface`'s `inp
 ### rl\[Symbol.asyncIterator\]()
 
 <!-- YAML
-added: v10.16.0
+added: v11.4.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26989
+    description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Estabilidade: 1 - Experimental
+> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
 
 * Returns: {AsyncIterator}
 
