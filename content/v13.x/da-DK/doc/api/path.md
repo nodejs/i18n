@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilitet: 2 - Stabil
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
