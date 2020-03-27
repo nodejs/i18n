@@ -895,7 +895,7 @@ added: v0.7.6
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
 
-* Returns: {Array}
+* Gibt zurück: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
