@@ -62,7 +62,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Muut versiot
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -75,7 +75,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arkisto](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2262,7 +2262,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors
+* virheet
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
