@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 <!--name=querystring-->
 
@@ -85,7 +85,7 @@ added: v0.1.25
 -->* `obj` {Object} The object to serialize into a URL query string
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `options`
+* `opties`
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
 
 The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
