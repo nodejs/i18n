@@ -43,7 +43,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Muut versiot 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [5.x](CHANGELOG_V5.md)
@@ -51,7 +51,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arkisto](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v6 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2018 and maintained until April 2019.
 
