@@ -1,8 +1,8 @@
-# Buffer
+# الصوان
 
 <!--introduced_in=v0.1.90-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 Prior to the introduction of [`TypedArray`][], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
