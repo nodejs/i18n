@@ -369,7 +369,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `message` {string}
+* `mesaj` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
@@ -415,7 +415,7 @@ changes:
 
 * `fn` {Function}
 * `error` {RegExp|Function}
-* `message` {string}
+* `mesaj` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -466,7 +466,7 @@ assert.doesNotThrow(
 added: v0.1.21
 -->
 
-* `actual` {any}
+* `gerçek` {any}
 
 * `expected` {any}
 
@@ -737,7 +737,7 @@ If the values are deeply and strictly equal, an `AssertionError` is thrown with 
 added: v0.1.21
 -->
 
-* `actual` {any}
+* `gerçek` {any}
 
 * `expected` {any}
 
@@ -866,7 +866,7 @@ added: v10.0.0
 
 * `error` {RegExp|Function|Object|Error}
 
-* `message` {string}
+* `mesaj` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
@@ -959,7 +959,7 @@ changes:
 
 * `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `message` {string}
+* `mesaj` {string}
 
 Expects the function `fn` to throw an error.
 
