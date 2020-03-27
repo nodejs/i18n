@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th colspan="2">Stable</th>
+<th colspan="2">Estáveis</th>
 </tr>
 <tr>
 <td valign="top">
