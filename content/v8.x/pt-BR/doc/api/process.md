@@ -472,7 +472,7 @@ added: v6.1.0
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
 
-* Returns: {Object}
+* Retorna: {Object}
     
     * `user` {integer}
     * `system` {integer}
@@ -927,7 +927,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Example:
+Note that care must be taken when dropping privileges. Exemplo:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -955,7 +955,7 @@ This method will throw an error if the target `pid` does not exist. As a special
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-For example:
+Por exemplo:
 
 ```js
 process.on('SIGHUP', () => {
@@ -1188,7 +1188,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
     * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
 
-For example:
+Por exemplo:
 
 ```js
 {
@@ -1332,7 +1332,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-For example:
+Por exemplo:
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1385,7 +1385,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+Por exemplo:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
