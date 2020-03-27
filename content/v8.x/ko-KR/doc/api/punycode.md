@@ -1,4 +1,4 @@
-# Punycode
+# 퓨니코드
 
 <!-- YAML
 changes:
