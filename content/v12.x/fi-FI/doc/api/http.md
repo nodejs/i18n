@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -427,7 +427,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -880,7 +880,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`response.writableEnded`][].
 
 * {boolean}
 
