@@ -45,7 +45,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Inne Wersje 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [7.x](CHANGELOG_V7.md)
@@ -137,7 +137,7 @@ Fixes for the following CVEs are included in this release:
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **cli**: 
   * add --stack-trace-limit to NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
-* **console**: 
+* **konsola**: 
   * add support for console.debug (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
 * **module**: 
   * add builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
@@ -151,11 +151,11 @@ Fixes for the following CVEs are included in this release:
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 * **net**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
-* **process**: 
+* **proces**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
   * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
-* **process**: 
+* **proces**: 
   * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
 * **stream**: 
   * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
@@ -777,7 +777,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **console**: 
+* **konsola**: 
   * avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
 * **http2**: 
   * improve errors thrown in header validation (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
@@ -1776,7 +1776,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 * **build** 
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
-* **console** 
+* **konsola** 
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
   * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
@@ -2052,7 +2052,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   
   * New APIs for creating number values have been introduced. [#14573](https://github.com/nodejs/node/pull/14573)
 
-* **Stream**
+* **Strumień**
   
   * For `Duplex` streams, the high water mark option can now be set independently for the readable and the writable side. [#14636](https://github.com/nodejs/node/pull/14636)
 
@@ -2185,7 +2185,7 @@ More detailed information on performance differences can be found at https://med
   
   * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
 
-* **Utilities**
+* **Narzędzia**
   
   * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
 
@@ -2673,7 +2673,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable changes
 
-* **Stream** Two regressions with the `stream` module have been fixed: 
+* **Strumień** Two regressions with the `stream` module have been fixed: 
   * The `finish` event will now always be emitted after the `error` event if one is emitted: [[`0a9e96e86c`](https://github.com/nodejs/node/commit/0a9e96e86c)] [#13850](https://github.com/nodejs/node/pull/13850)
   * In object mode, readable streams can now use `undefined` again. [[`5840138e70`](https://github.com/nodejs/node/commit/5840138e70)] [#13760](https://github.com/nodejs/node/pull/13760)
 
@@ -3039,7 +3039,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   * Throw when the `-c` and `-e` command-line arguments are used at the same time [[`a5f91ab230`](https://github.com/nodejs/node/commit/a5f91ab230)] [#11689](https://github.com/nodejs/node/pull/11689).
   * Throw when the `--use-bundled-ca` and `--use-openssl-ca` command-line arguments are used at the same time. [[`8a7db9d4b5`](https://github.com/nodejs/node/commit/8a7db9d4b5)] [#12087](https://github.com/nodejs/node/pull/12087).
 
-* **Stream**
+* **Strumień**
   
   * `Stream` now supports `destroy()` and `_destroy()` APIs [[`b6e1d22fa6`](https://github.com/nodejs/node/commit/b6e1d22fa6)] [#12925](https://github.com/nodejs/node/pull/12925).
   * `Stream` now supports the `_final()` API [[`07c7f198db`](https://github.com/nodejs/node/commit/07c7f198db)] [#12828](https://github.com/nodejs/node/pull/12828).
