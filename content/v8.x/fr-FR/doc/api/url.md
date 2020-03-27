@@ -534,7 +534,7 @@ new URLSearchParams([
 #### urlSearchParams.append(name, value)
 
 * `name` {string}
-* `value` {string}
+* `valeur` {string}
 
 Append a new name-value pair to the query string.
 
