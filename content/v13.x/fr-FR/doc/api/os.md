@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `os` module provides operating system-related utility methods and properties. It can be accessed using:
+The `os` module provides operating system-related utility methods and properties. On peut y accéder en utilisant :
 
 ```js
 const os = require('os');
