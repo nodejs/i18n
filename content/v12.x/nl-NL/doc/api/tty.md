@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -140,7 +140,7 @@ added: v9.9.0
 -->
 
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Returns: {number}
+* Retourneert: {number}
 
 Retourneert:
 
@@ -176,7 +176,7 @@ added: v11.13.0
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
@@ -229,6 +229,6 @@ added: v0.5.8
 -->
 
 * `fd` {number} A numeric file descriptor
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
