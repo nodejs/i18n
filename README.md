@@ -1,5 +1,7 @@
 # Node.js Internationalization
 
+[![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
+
 ## Contributing
 
 Help us get the documentation translated into your native language and reach more people's hearts.

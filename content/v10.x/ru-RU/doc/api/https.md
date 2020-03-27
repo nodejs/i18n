@@ -4,9 +4,10 @@
 
 > Стабильность: 2 - Стабильно
 
-HTTPS является протоколом HTTP через TLS/SSL. В Node.js это реализовано в качестве отдельного модуля.
+HTTPS является протоколом HTTP через TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Класс: https.Agent
+
 <!-- YAML
 added: v0.4.5
 -->
@@ -14,16 +15,19 @@ added: v0.4.5
 An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Класс: https.Server
+
 <!-- YAML
 added: v0.3.4
 -->
 
-Этот класс является подклассом `tls.Server` и генерирует события, так же как и [`http.Server`][]. Для более подробной информации смотрите [`http.Server`][].
+This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. Для более подробной информации смотрите [`http.Server`][].
 
 ### server.close([callback])
+
 <!-- YAML
 added: v0.1.90
 -->
+
 * `callback` {Function}
 * Returns: {https.Server}
 
@@ -33,23 +37,24 @@ added: v0.1.90
 
 При помощи этого метода HTTPS-сервер запускается и прослушивает зашифрованные подключения. Этот метод идентичен [`server.listen()`][] от [`net.Server`][].
 
-
 ### server.maxHeadersCount
 
-- {number} **Default:** `2000`
+* {number} **Default:** `2000`
 
 See [`http.Server#maxHeadersCount`][].
 
 ### server.headersTimeout
 
-- {number} **Default:** `40000`
+* {number} **Default:** `40000`
 
 See [`http.Server#headersTimeout`][].
 
 ### server.setTimeout(\[msecs\]\[, callback\])
+
 <!-- YAML
 added: v0.11.2
 -->
+
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
 * Returns: {https.Server}
@@ -57,25 +62,31 @@ added: v0.11.2
 Смотрите [`http.Server#setTimeout()`][].
 
 ### server.timeout
+
 <!-- YAML
 added: v0.11.2
 -->
-- {number} **Default:** `120000` (2 minutes)
+
+* {number} **Default:** `120000` (2 minutes)
 
 Смотрите [`http.Server#timeout`][].
 
 ### server.keepAliveTimeout
+
 <!-- YAML
 added: v8.0.0
 -->
-- {number} **Default:** `5000` (5 seconds)
+
+* {number} **Default:** `5000` (5 seconds)
 
 See [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
+
 <!-- YAML
 added: v0.3.4
 -->
+
 * `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 * `requestListener` {Function} A listener to be added to the `'request'` event.
 * Returns: {https.Server}
@@ -114,10 +125,13 @@ https.createServer(options, (req, res) => {
 ```
 
 ## https.get(options[, callback])
+
 ## https.get(url\[, options\]\[, callback\])
+
 <!-- YAML
 added: v0.3.6
 changes:
+
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -126,13 +140,14 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
+
 * `url` {string | URL}
-* `options` {Object | string | URL} Принимает те же `options`, что и [`https.request()`][], с параметром `method`, всегда установленным на `GET`.
+* `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 * `callback` {Function}
 
 Как и [`http.get()`][], но для HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. Если в качестве значения `options` выступает строка, то этот аргумент автоматически подвергается парсингу при помощи [`url.parse()`][]. Если это объект [`URL`][], то он будет автоматически преобразован в обычный объект `options`.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -151,6 +166,7 @@ https.get('https://encrypted.google.com/', (res) => {
 ```
 
 ## https.globalAgent
+
 <!-- YAML
 added: v0.5.9
 -->
@@ -158,10 +174,13 @@ added: v0.5.9
 Глобальный экземпляр [`https.Agent`][] для всех запросов клиента, выполняемых по протоколу HTTPS.
 
 ## https.request(options[, callback])
+
 ## https.request(url\[, options\]\[, callback\])
+
 <!-- YAML
 added: v0.3.6
 changes:
+
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -173,18 +192,19 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
+
 * `url` {string | URL}
-* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
-  - `protocol` **Default:** `'https:'`
-  - `port` **Default:** `443`
-  - `agent` **Default:** `https.globalAgent`
+* `опции` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
+  * `protocol` **Default:** `'https:'`
+  * `port` **Default:** `443`
+  * `agent` **Default:** `https.globalAgent`
 * `callback` {Function}
 
 Выполняет запрос на защищенный веб-сервер.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. Если в качестве значения `options` выступает строка, то этот аргумент автоматически подвергается парсингу при помощи [`url.parse()`][]. Если это объект [`URL`][], то он будет автоматически преобразован в обычный объект `options`.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -210,6 +230,7 @@ req.on('error', (e) => {
 });
 req.end();
 ```
+
 Пример использования параметров из [`tls.connect()`][]:
 
 ```js

@@ -8,8 +8,8 @@ Addons are dynamically-linked shared objects written in C++. The
 Addons provide an interface between JavaScript and C/C++ libraries.
 
 There are three options for implementing Addons: N-API, nan, or direct
-use of internal V8, libuv and Node.js libraries. Unless you need direct
-access to functionality which is not exposed by N-API, use N-API.
+use of internal V8, libuv and Node.js libraries. Unless there is a need for
+direct access to functionality which is not exposed by N-API, use N-API.
 Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
 
 When not using N-API, implementing Addons is complicated,
@@ -313,7 +313,7 @@ require('./build/Release/addon');
 Once the source code has been written, it must be compiled into the binary
 `addon.node` file. To do so, create a file called `binding.gyp` in the
 top-level of the project describing the build configuration of the module
-using a JSON-like format. This file is used by [node-gyp][] — a tool written
+using a JSON-like format. This file is used by [node-gyp][], a tool written
 specifically to compile Node.js Addons.
 
 ```json

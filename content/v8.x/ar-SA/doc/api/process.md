@@ -1,6 +1,7 @@
 # الاجراء
 
 <!-- introduced_in=v0.10.0 -->
+
 <!-- type=global -->
 
 The `process` object is a `global` that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using `require()`.
@@ -10,6 +11,7 @@ The `process` object is a `global` that provides information about, and control 
 The `process` object is an instance of [`EventEmitter`][].
 
 ### Event: 'beforeExit'
+
 <!-- YAML
 added: v0.11.12
 -->
@@ -23,6 +25,7 @@ The `'beforeExit'` event is *not* emitted for conditions causing explicit termin
 The `'beforeExit'` should *not* be used as an alternative to the `'exit'` event unless the intention is to schedule additional work.
 
 ### Event: 'disconnect'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -30,6 +33,7 @@ added: v0.7.7
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
 
 ### Event: 'exit'
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -62,6 +66,7 @@ process.on('exit', (code) => {
 ```
 
 ### Event: 'message'
+
 <!-- YAML
 added: v0.5.10
 -->
@@ -69,12 +74,14 @@ added: v0.5.10
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'message'` event is emitted whenever a message sent by a parent process using [`childprocess.send()`][] is received by the child process.
 
 The listener callback is invoked with the following arguments:
+
 * `message` {Object} a parsed JSON object or primitive value.
 * `sendHandle` {Handle object} a [`net.Socket`][] or [`net.Server`][] object, or undefined.
 
 *Note*: The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
 
 ### Event: 'rejectionHandled'
+
 <!-- YAML
 added: v1.4.1
 -->
@@ -108,6 +115,7 @@ process.on('rejectionHandled', (p) => {
 In this example, the `unhandledRejections` `Map` will grow and shrink over time, reflecting rejections that start unhandled and then become handled. It is possible to record such errors in an error log, either periodically (which is likely best for long-running application) or upon process exit (which is likely most convenient for scripts).
 
 ### Event: 'uncaughtException'
+
 <!-- YAML
 added: v0.1.18
 -->
@@ -145,9 +153,11 @@ The correct use of `'uncaughtException'` is to perform synchronous cleanup of al
 To restart a crashed application in a more reliable way, whether `uncaughtException` is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
 
 ### Event: 'unhandledRejection'
+
 <!-- YAML
 added: v1.4.1
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/8217
     description: Not handling Promise rejections has been deprecated.
@@ -192,6 +202,7 @@ const resource = new SomeResource();
 In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. Alternatively, the [`'rejectionHandled'`][] event may be used.
 
 ### Event: 'warning'
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -255,6 +266,7 @@ See the [`process.emitWarning()`](#process_process_emitwarning_warning_type_code
 ### Signal Events
 
 <!--type=event-->
+
 <!--name=SIGINT, SIGHUP, etc.-->
 
 Signal events will be emitted when the Node.js process receives a signal. Please refer to signal(7) for a listing of standard POSIX signal names such as `SIGINT`, `SIGHUP`, etc.
@@ -297,6 +309,7 @@ process.on('SIGTERM', handle);
 *Note*: Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
 
 ## process.abort()
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -304,6 +317,7 @@ added: v0.7.0
 The `process.abort()` method causes the Node.js process to exit immediately and generate a core file.
 
 ## process.arch
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -319,6 +333,7 @@ console.log(`This processor architecture is ${process.arch}`);
 ```
 
 ## process.argv
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -353,6 +368,7 @@ Would generate the output:
 ```
 
 ## process.argv0
+
 <!-- YAML
 added: 6.4.0
 -->
@@ -370,6 +386,7 @@ $ bash -c 'exec -a customArgv0 ./node'
 ```
 
 ## process.channel
+
 <!-- YAML
 added: v7.1.0
 -->
@@ -379,6 +396,7 @@ added: v7.1.0
 If the Node.js process was spawned with an IPC channel (see the [Child Process](child_process.html) documentation), the `process.channel` property is a reference to the IPC channel. If no IPC channel exists, this property is `undefined`.
 
 ## process.chdir(directory)
+
 <!-- YAML
 added: v0.1.17
 -->
@@ -398,6 +416,7 @@ try {
 ```
 
 ## process.config
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -407,6 +426,7 @@ added: v0.7.7
 The `process.config` property returns an Object containing the JavaScript representation of the configure options used to compile the current Node.js executable. This is the same as the `config.gypi` file that was produced when running the `./configure` script.
 
 An example of the possible output looks like:
+
 ```js
 {
   target_defaults:
@@ -438,7 +458,9 @@ An example of the possible output looks like:
 
 ## process.connected<!-- YAML
 added: v0.7.2
--->* {boolean}
+-->
+
+* {boolean}
 
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `process.connected` property will return `true` so long as the IPC channel is connected and will return `false` after `process.disconnect()` is called.
 
@@ -446,8 +468,12 @@ Once `process.connected` is `false`, it is no longer possible to send messages o
 
 ## process.cpuUsage([previousValue])<!-- YAML
 added: v6.1.0
--->* `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
+-->
+
+* `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
+
 * Returns: {Object}
+    
     * `user` {integer}
     * `system` {integer}
 
@@ -469,27 +495,35 @@ console.log(process.cpuUsage(startUsage));
 
 ## process.cwd()<!-- YAML
 added: v0.1.8
--->* Returns: {string}
+-->
+
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
 ```js
 console.log(`Current directory: ${process.cwd()}`);
 ```
+
 ## process.debugPort<!-- YAML
 added: v0.7.2
--->* {number}
+-->
+
+* {number}
 
 The port used by Node.js's debugger when enabled.
 
 ```js
 process.debugPort = 5858;
 ```
+
 ## process.disconnect()
+
 <!-- YAML
 added: v0.7.2
--->
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `process.disconnect()` method will close the IPC channel to the parent process, allowing the child process to exit gracefully once there are no other connections keeping it alive.
+--> If the Node.js process is spawned with an IPC channel (see the 
+
+[Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `process.disconnect()` method will close the IPC channel to the parent process, allowing the child process to exit gracefully once there are no other connections keeping it alive.
 
 The effect of calling `process.disconnect()` is that same as calling the parent process's [`ChildProcess.disconnect()`][].
 
@@ -497,12 +531,16 @@ If the Node.js process was not spawned with an IPC channel, `process.disconnect(
 
 ## process.emitWarning(warning[, options])<!-- YAML
 added: 8.0.0
--->* `warning` {string|Error} The warning to emit.
+-->
+
+* `warning` {string|Error} The warning to emit.
+
 * `options` {Object}
-  * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
-  * `code` {string} A unique identifier for the warning instance being emitted.
-  * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
-  * `detail` {string} Additional text to include with the error.
+    
+    * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
+    * `code` {string} A unique identifier for the warning instance being emitted.
+    * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
+    * `detail` {string} Additional text to include with the error.
 
 The `process.emitWarning()` method can be used to emit custom or application specific process warnings. These can be listened for by adding a handler to the [`process.on('warning')`](#process_event_warning) event.
 
@@ -533,8 +571,12 @@ If `warning` is passed as an `Error` object, the `options` argument is ignored.
 
 ## process.emitWarning(warning\[, type[, code]\]\[, ctor\])<!-- YAML
 added: v6.0.0
--->* `warning` {string|Error} The warning to emit.
+-->
+
+* `warning` {string|Error} The warning to emit.
+
 * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
+
 * `code` {string} A unique identifier for the warning instance being emitted.
 * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
 
@@ -610,11 +652,14 @@ emitMyWarning();
 
 ## process.env<!-- YAML
 added: v0.1.27
--->* {Object}
+-->
+
+* {Object}
 
 The `process.env` property returns an object containing the user environment. See environ(7).
 
 An example of this object looks like:
+
 ```js
 {
   TERM: 'xterm-256color',
@@ -679,7 +724,9 @@ console.log(process.env.test);
 
 ## process.execArgv<!-- YAML
 added: v0.7.7
--->* {Array}
+-->
+
+* {Array}
 
 The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
 
@@ -690,30 +737,36 @@ $ node --harmony script.js --version
 ```
 
 Results in `process.execArgv`:
+
 ```js
 ['--harmony']
 ```
 
 And `process.argv`:
+
 ```js
 ['/usr/local/bin/node', 'script.js', '--version']
 ```
 
 ## process.execPath<!-- YAML
 added: v0.1.100
--->* {string}
+-->
+
+* {string}
 
 The `process.execPath` property returns the absolute pathname of the executable that started the Node.js process.
 
 For example:
+
 ```js
 '/usr/local/bin/node'
 ```
 
-
 ## process.exit([code])<!-- YAML
 added: v0.1.13
--->* `code` {integer} The exit code. **Default:** `0`.
+-->
+
+* `code` {integer} The exit code. **Default:** `0`.
 
 The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
 
@@ -756,16 +809,19 @@ If it is necessary to terminate the Node.js process due to an error condition, t
 
 ## process.exitCode<!-- YAML
 added: v0.11.8
--->* {integer}
+-->
+
+* {integer}
 
 A number which will be the process exit code, when the process either exits gracefully, or is exited via [`process.exit()`][] without specifying a code.
 
 Specifying a code to [`process.exit(code)`][`process.exit()`] will override any previous setting of `process.exitCode`.
 
-
 ## process.getegid()<!-- YAML
 added: v2.0.0
--->The `process.getegid()` method returns the numerical effective group identity of the Node.js process. (See getegid(2).)
+-->The 
+
+`process.getegid()` method returns the numerical effective group identity of the Node.js process. (See getegid(2).)
 
 ```js
 if (process.getegid) {
@@ -777,7 +833,9 @@ if (process.getegid) {
 
 ## process.geteuid()<!-- YAML
 added: v2.0.0
--->* Returns: {Object}
+-->
+
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -791,7 +849,9 @@ if (process.geteuid) {
 
 ## process.getgid()<!-- YAML
 added: v0.1.31
--->* Returns: {Object}
+-->
+
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -803,10 +863,11 @@ if (process.getgid) {
 
 *Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-
 ## process.getgroups()<!-- YAML
 added: v0.9.4
--->* Returns: {Array}
+-->
+
+* Returns: {Array}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -814,7 +875,9 @@ The `process.getgroups()` method returns an array with the supplementary group I
 
 ## process.getuid()<!-- YAML
 added: v0.1.28
--->* Returns: {integer}
+-->
+
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -828,7 +891,10 @@ if (process.getuid) {
 
 ## process.hrtime([time])<!-- YAML
 added: v0.7.6
--->* `time` {Array} The result of a previous call to `process.hrtime()`
+-->
+
+* `time` {Array} The result of a previous call to `process.hrtime()`
+
 * Returns: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
@@ -851,10 +917,12 @@ setTimeout(() => {
 }, 1000);
 ```
 
-
 ## process.initgroups(user, extra_group)<!-- YAML
 added: v0.9.4
--->* `user` {string|number} The user name or numeric identifier.
+-->
+
+* `user` {string|number} The user name or numeric identifier.
+
 * `extra_group` {string|number} A group name or numeric identifier.
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
@@ -873,7 +941,10 @@ console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 
 ## process.kill(pid[, signal])<!-- YAML
 added: v0.0.6
--->* `pid` {number} A process ID
+-->
+
+* `pid` {number} A process ID
+
 * `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
@@ -903,7 +974,9 @@ process.kill(process.pid, 'SIGHUP');
 
 ## process.mainModule<!-- YAML
 added: v0.1.17
--->* {Object}
+-->
+
+* {Object}
 
 The `process.mainModule` property provides an alternative way of retrieving [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
 
@@ -912,10 +985,13 @@ As with [`require.main`][], `process.mainModule` will be `undefined` if there is
 ## process.memoryUsage()<!-- YAML
 added: v0.1.16
 changes:
+
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9587
     description: Added `external` to the returned object.
--->* Returns: {Object}
+-->
+
+* Returns: {Object} 
     * `rss` {integer}
     * `heapTotal` {integer}
     * `heapUsed` {integer}
@@ -930,6 +1006,7 @@ console.log(process.memoryUsage());
 ```
 
 Will generate:
+
 ```js
 {
   rss: 4935680,
@@ -939,17 +1016,20 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the _heap_, _code segment_ and _stack_.
+`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
 
-The _heap_ is where objects, strings, and closures are stored. Variables are stored in the _stack_ and the actual JavaScript code resides in the _code segment_.
+The *heap* is where objects, strings, and closures are stored. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
 
 ## process.nextTick(callback[, ...args])<!-- YAML
 added: v0.1.26
 changes:
+
   - version: v1.8.1
     pr-url: https://github.com/nodejs/node/pull/1077
     description: Additional arguments after `callback` are now supported.
--->* `callback` {Function}
+-->
+
+* `callback` {Function}
 * `...args` {any} Additional arguments to pass when invoking the `callback`
 
 The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
@@ -1030,13 +1110,17 @@ function definitelyAsync(arg, cb) {
 
 ## process.noDeprecation<!-- YAML
 added: v0.8.0
--->* {boolean}
+-->
+
+* {boolean}
 
 The `process.noDeprecation` property indicates whether the `--no-deprecation` flag is set on the current Node.js process. See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.pid<!-- YAML
 added: v0.1.15
--->* {integer}
+-->
+
+* {integer}
 
 The `process.pid` property returns the PID of the process.
 
@@ -1046,7 +1130,9 @@ console.log(`This process is pid ${process.pid}`);
 
 ## process.platform<!-- YAML
 added: v0.1.16
--->* {string}
+-->
+
+* {string}
 
 The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
 
@@ -1068,7 +1154,9 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 
 ## process.ppid<!-- YAML
 added: v8.10.0
--->* {integer}
+-->
+
+* {integer}
 
 The `process.ppid` property returns the PID of the current parent process.
 
@@ -1079,25 +1167,29 @@ console.log(`The parent process is pid ${process.ppid}`);
 ## process.release<!-- YAML
 added: v3.0.0
 changes:
+
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3212
     description: The `lts` property is now supported.
--->* {Object}
+-->
+
+* {Object}
 
 The `process.release` property returns an Object containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
 `process.release` contains the following properties:
 
 * `name` {string} A value that will always be `'node'` for Node.js. For legacy io.js releases, this will be `'io.js'`.
-* `sourceUrl` {string} an absolute URL pointing to a _`.tar.gz`_ file containing the source code of the current release.
-* `headersUrl`{string} an absolute URL pointing to a _`.tar.gz`_ file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
-* `libUrl` {string} an absolute URL pointing to a _`node.lib`_ file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. _This property is only present on Windows builds of Node.js and will be missing on all other platforms._
-* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/LTS/) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including _Current_ releases. Currently the valid values are:
-  - `'Argon'` for the 4.x LTS line beginning with 4.2.0.
-  - `'Boron'` for the 6.x LTS line beginning with 6.9.0.
-  - `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
+* `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
+* `headersUrl`{string} an absolute URL pointing to a *`.tar.gz`* file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
+* `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. *This property is only present on Windows builds of Node.js and will be missing on all other platforms.*
+* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/LTS/) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Currently the valid values are: 
+    * `'Argon'` for the 4.x LTS line beginning with 4.2.0.
+    * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
+    * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
 
 For example:
+
 ```js
 {
   name: 'node',
@@ -1112,8 +1204,12 @@ In custom builds from non-release versions of the source tree, only the `name` p
 
 ## process.send(message\[, sendHandle[, options]\]\[, callback\])<!-- YAML
 added: v0.5.9
--->* `message` {Object}
+-->
+
+* `message` {Object}
+
 * `sendHandle` {Handle object}
+
 * `options` {Object}
 * `callback` {Function}
 * Returns: {boolean}
@@ -1126,7 +1222,9 @@ If Node.js was not spawned with an IPC channel, `process.send()` will be `undefi
 
 ## process.setegid(id)<!-- YAML
 added: v2.0.0
--->* `id` {string|number} A group name or ID
+-->
+
+* `id` {string|number} A group name or ID
 
 The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
@@ -1144,10 +1242,11 @@ if (process.getegid && process.setegid) {
 
 *Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-
 ## process.seteuid(id)<!-- YAML
 added: v2.0.0
--->* `id` {string|number} A user name or ID
+-->
+
+* `id` {string|number} A user name or ID
 
 The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
@@ -1167,7 +1266,9 @@ if (process.geteuid && process.seteuid) {
 
 ## process.setgid(id)<!-- YAML
 added: v0.1.31
--->* `id` {string|number} The group name or ID
+-->
+
+* `id` {string|number} The group name or ID
 
 The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
@@ -1187,7 +1288,9 @@ if (process.getgid && process.setgid) {
 
 ## process.setgroups(groups)<!-- YAML
 added: v0.9.4
--->* `groups` {Array}
+-->
+
+* `groups` {Array}
 
 The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
 
@@ -1197,7 +1300,9 @@ The `groups` array can contain numeric group IDs, group names or both.
 
 ## process.setuid(id)<!-- YAML
 added: v0.1.28
--->The `process.setuid(id)` method sets the user identity of the process. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+-->The 
+
+`process.setuid(id)` method sets the user identity of the process. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getuid && process.setuid) {
@@ -1212,7 +1317,6 @@ if (process.getuid && process.setuid) {
 ```
 
 *Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
-
 
 ## process.stderr
 
@@ -1268,10 +1372,10 @@ process.stdin.pipe(process.stdout);
 `process.stdout` and `process.stderr` differ from other Node.js streams in important ways:
 
 1. They are used internally by [`console.log()`][] and [`console.error()`][], respectively.
-2. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX:
-   - Files: *synchronous* on Windows and POSIX
-   - TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
-   - Pipes (and sockets): *synchronous* on Windows, *asynchronous* on POSIX
+2. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
+    * Files: *synchronous* on Windows and POSIX
+    * TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
+    * Pipes (and sockets): *synchronous* on Windows, *asynchronous* on POSIX
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
@@ -1282,6 +1386,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
 For instance:
+
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
 true
@@ -1297,13 +1402,17 @@ See the [TTY](tty.html#tty_tty) documentation for more information.
 
 ## process.throwDeprecation<!-- YAML
 added: v0.9.12
--->* {boolean}
+-->
+
+* {boolean}
 
 The `process.throwDeprecation` property indicates whether the `--throw-deprecation` flag is set on the current Node.js process. See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.title<!-- YAML
 added: v0.1.104
--->* {string}
+-->
+
+* {string}
 
 The `process.title` property returns the current process title (i.e. returns the current value of `ps`). Assigning a new value to `process.title` modifies the current value of `ps`.
 
@@ -1311,13 +1420,17 @@ The `process.title` property returns the current process title (i.e. returns the
 
 ## process.traceDeprecation<!-- YAML
 added: v0.8.0
--->* {boolean}
+-->
+
+* {boolean}
 
 The `process.traceDeprecation` property indicates whether the `--trace-deprecation` flag is set on the current Node.js process. See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.umask([mask])<!-- YAML
 added: v0.1.19
--->* `mask` {number}
+-->
+
+* `mask` {number}
 
 The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
@@ -1329,10 +1442,11 @@ console.log(
 );
 ```
 
-
 ## process.uptime()<!-- YAML
 added: v0.5.0
--->* Returns: {number}
+-->
+
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
@@ -1340,7 +1454,9 @@ The `process.uptime()` method returns the number of seconds the current Node.js 
 
 ## process.version<!-- YAML
 added: v0.1.3
--->* {string}
+-->
+
+* {string}
 
 The `process.version` property returns the Node.js version string.
 
@@ -1351,10 +1467,13 @@ console.log(`Version: ${process.version}`);
 ## process.versions<!-- YAML
 added: v0.2.0
 changes:
+
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3102
     description: The `icu` property is now supported.
--->* {Object}
+-->
+
+* {Object}
 
 The `process.versions` property returns an object listing the version strings of Node.js and its dependencies. `process.versions.modules` indicates the current ABI version, which is increased whenever a C++ API changes. Node.js will refuse to load modules that were compiled against a different module ABI version.
 
@@ -1363,6 +1482,7 @@ console.log(process.versions);
 ```
 
 Will generate an object similar to:
+
 ```js
 { http_parser: '2.7.0',
   node: '8.9.0',

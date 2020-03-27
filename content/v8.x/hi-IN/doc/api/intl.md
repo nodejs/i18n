@@ -5,16 +5,17 @@
 Node.js has many features that make it easier to write internationalized programs. Some of them are:
 
 - Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
-    - [`String.prototype.normalize()`][]
-    - [`String.prototype.toLowerCase()`][]
-    - [`String.prototype.toUpperCase()`][]
+  - [`String.prototype.normalize()`][]
+  - [`String.prototype.toLowerCase()`][]
+  - [`String.prototype.toUpperCase()`][]
 - All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
-    - [`Intl`][] object
-    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
+  - [`Intl`][] object
+  - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
 - The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
 - [`require('buffer').transcode()`][]
 - More accurate [REPL](repl.html#repl_repl) line editing
 - [`require('util').TextDecoder`][]
+- [RegExp Unicode Property Escapes](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
 
 Node.js (and its underlying V8 engine) uses [ICU](http://icu-project.org/) to implement these features in native C/C++ code. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
 
@@ -29,19 +30,20 @@ To control how ICU is used in Node.js, four `configure` options are available du
 
 An overview of available Node.js and JavaScript features for each `configure` option:
 
-|                                                      | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
-| ---------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
-| [`String.prototype.normalize()`][]                   | none (function is no-op)          | full                         | full                   | full       |
-| `String.prototype.to*Case()`                         | full                              | full                         | full                   | full       |
-| [`Intl`][]                                           | none (object does not exist)      | partial/full (depends on OS) | partial (English-only) | full       |
-| [`String.prototype.localeCompare()`][]               | partial (not locale-aware)        | full                         | full                   | full       |
-| `String.prototype.toLocale*Case()`                   | partial (not locale-aware)        | full                         | full                   | full       |
-| [`Number.prototype.toLocaleString()`][]              | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| `Date.prototype.toLocale*String()`                   | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
-| [WHATWG URL Parser](url.html#url_the_whatwg_url_api) | partial (no IDN support)          | full                         | full                   | full       |
-| [`require('buffer').transcode()`][]                  | none (function does not exist)    | full                         | full                   | full       |
-| [REPL](repl.html#repl_repl)                          | partial (inaccurate line editing) | full                         | full                   | full       |
-| [`require('util').TextDecoder`][]                    | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
+|                                                                                                     | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
+| --------------------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------- | ---------------------- | ---------- |
+| [`String.prototype.normalize()`][]                                                                  | none (function is no-op)          | full                         | full                   | full       |
+| `String.prototype.to*Case()`                                                                        | full                              | full                         | full                   | full       |
+| [`Intl`][]                                                                                          | none (object does not exist)      | partial/full (depends on OS) | partial (English-only) | full       |
+| [`String.prototype.localeCompare()`][]                                                              | partial (not locale-aware)        | full                         | full                   | full       |
+| `String.prototype.toLocale*Case()`                                                                  | partial (not locale-aware)        | full                         | full                   | full       |
+| [`Number.prototype.toLocaleString()`][]                                                             | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
+| `Date.prototype.toLocale*String()`                                                                  | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
+| [WHATWG URL Parser](url.html#url_the_whatwg_url_api)                                                | partial (no IDN support)          | full                         | full                   | full       |
+| [`require('buffer').transcode()`][]                                                                 | none (function does not exist)    | full                         | full                   | full       |
+| [आरईपीएल](repl.html#repl_repl)                                                                      | partial (inaccurate line editing) | full                         | full                   | full       |
+| [`require('util').TextDecoder`][]                                                                   | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
+| [RegExp Unicode Property Escapes](https://github.com/tc39/proposal-regexp-unicode-property-escapes) | none (invalid RegExp error)       | full                         | full                   | full       |
 
 *Note*: The "(not locale-aware)" designation denotes that the function carries out its operation just like the non-`Locale` version of the function, if one exists. For example, under `none` mode, `Date.prototype.toLocaleString()`'s operation is identical to that of `Date.prototype.toString()`.
 
@@ -80,16 +82,16 @@ This mode provides a good balance between features and binary size, and it is th
 If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
 
 - The [`NODE_ICU_DATA`][] environment variable:
-    
-    ```shell
-    env NODE_ICU_DATA=/some/directory node
-    ```
+  
+  ```shell
+  env NODE_ICU_DATA=/some/directory node
+  ```
 
 - The [`--icu-data-dir`][] CLI parameter:
-    
-    ```shell
-    node --icu-data-dir=/some/directory
-    ```
+  
+  ```shell
+  node --icu-data-dir=/some/directory
+  ```
 
 (If both are specified, the `--icu-data-dir` CLI parameter takes precedence.)
 

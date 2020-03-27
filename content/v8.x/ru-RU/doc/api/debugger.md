@@ -20,9 +20,10 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Клиент отладчика Node.js не является полнофункциональным отладчиком, но в нем допускаются простой ход и проверка.
+Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
-Вставка выражения `debugger;` в исходный код сценария позволит отметить точку останова в этой позиции в коде:
+Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+
 ```js
 // myscript.js
 global.x = 5;
@@ -76,15 +77,15 @@ break in myscript.js:5
 debug> .exit
 ```
 
-Команда `repl` позволяет удаленно оценивать код. Команда `next` перемещает на следующую строку. Введите `help`, чтобы увидеть другие доступные команды.
+Команда `repl` позволяет удаленно оценивать код. The `next` command steps to the next line. Введите `help`, чтобы увидеть другие доступные команды.
 
-Нажатие `enter` без ввода команды повторит предыдущую команду отладчика.
+Pressing `enter` without typing a command will repeat the previous debugger command.
 
 ## Отслеживания
 
-Во время отладки можно отслеживать выражения и значения переменных. В каждой точке останова каждое выражение из списка отслеживания будет оцениваться в текущем контексте и отображаться непосредственно перед листингом исходного кода точки останова.
+Во время отладки можно отслеживать выражения и значения переменных. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
 
-Для начала отслеживания выражения введите `watch('my_expression')`. Команда `watchers` напечатает активные отслеживания. Чтобы удалить отслеживание, введите `unwatch('my_expression')`.
+Для начала отслеживания выражения введите `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
 
 ## Справочник команд
 
@@ -100,11 +101,11 @@ debug> .exit
 
 * `setBreakpoint()`, `sb()` - Установка точки останова в текущей строке
 * `setBreakpoint(line)`, `sb(line)` - Установка точки останова в определенной строке
-* `setBreakpoint('fn()')`, `sb(...)` - Установка точки останова в первое выражение в теле функции
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Установка точки останова в первой строке script.js
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Удалить точку останова из строки 1 в script.js
+* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of script.js
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in script.js on line 1
 
-Также возможно установить точку останова в файле (модуле), который еще не загружен:
+It is also possible to set a breakpoint in a file (module) that is not loaded yet:
 
 ```txt
 $ node inspect main.js
@@ -130,10 +131,10 @@ debug>
 ### Информация
 
 * `backtrace`, `bt` - Печать обратной трассировки текущего фрейма выполнения
-* `list(5)` - список скриптов исходного кода с контекстом в 5 строк (5 строк до и после)
+* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
 * `watch(expr)` - Добавить выражение для просмотра списка
 * `unwatch(expr)` - Удалить выражение из списка для наблюдения
-* `watchers` - Список всех наблюдателей и их значений (автоматически перечисленных в каждой точке останова)
+* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
 * `repl` - Открыть репль отладчика для оценки в контексте отладки скрипта
 * `exec expr` - Выполнить выражение в контексте отладки скрипта
 
@@ -152,9 +153,9 @@ debug>
 
 ### V8 Инспектор Интеграции для Node.js
 
-Интеграция Инспектора V8 позволяет присоединить Chrome DevTools к экземплярам Node.js для отладки и профилирования. It uses the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer/).
+V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer/).
 
-Инспектор V8 может быть включен путем передачи флага `--inspect` при запуске приложения Node.js. Также возможно заполнить пользовательский порт этим флагом, например, `--inspect=9222` примет соединения DevTools в порту 9222.
+V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
 To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 

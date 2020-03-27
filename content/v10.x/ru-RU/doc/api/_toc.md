@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): Если вы перемещаете этот файл, не забудьте обновить @// tools/doc/html.js до нового расположения файла.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -50,7 +50,7 @@
 * [UDP/Датаграмма](dgram.html)
 * [URL](url.html)
 * [Утилиты](util.html)
-* [Виртуальная машина V8](v8.html)
+* [V8](v8.html)
 * [VM](vm.html)
 * [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)

@@ -4,7 +4,7 @@
 
 > Estabilidad: 1 - Experimental
 
-La API de Timing de Rendimiento proporciona una implementación de la especificación de la [Línea de Tiempo de Rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es apoyar la colección de métricas de rendimiento de alta resolución. Esta es la misma API de rendimiento implementada en los navegadores Web modernos.
+The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. Esta es la misma API de rendimiento implementada en los navegadores Web modernos.
 
 ```js
 const { performance } = require('perf_hooks');
@@ -19,13 +19,15 @@ doSomeLongRunningProcess(() => {
 ```
 
 ## Clase: Performance
+
 <!-- YAML
 added: v8.5.0
 -->
 
-El `Performance` proporciona acceso a datos métricos de rendimiento. Una única instancia de de esta clase se proporciona a través de la propiedad `performance`.
+El `Performance` proporciona acceso a datos métricos de rendimiento. A single instance of this class is provided via the `performance` property.
 
 ### performance.clearEntries(name)
+
 <!-- YAML
 added: v8.11.2
 -->
@@ -33,49 +35,55 @@ added: v8.11.2
 Remove all performance entry objects with `entryType` equal to `name` from the Performance Timeline.
 
 ### performance.clearFunctions([name])
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `name` {string}
 
-Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` de la Línea de Tiempo de Rendimiento. Si `name` es proporcionado, se eliminan las entradas con `name`.
+If `name` is not provided, removes all `PerformanceFunction` objects from the Performance Timeline. Si `name` es proporcionado, se eliminan las entradas con `name`.
 
 ### performance.clearGC()
+
 <!-- YAML
 added: v8.5.0
 -->
 
-Elimina todos los objetos de entrada de rendimiento con `entryType` igual a `gc` de la Línea de Tiempo de Rendimiento.
+Remove all performance entry objects with `entryType` equal to `gc` from the Performance Timeline.
 
 ### performance.clearMarks([name])
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `name` {string}
 
-Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` de la Línea de Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
+If `name` is not provided, removes all `PerformanceMark` objects from the Performance Timeline. Si se proporciona `name`, esto elimina solo la marca nombrada.
 
 ### performance.clearMeasures([name])
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `name` {string}
 
-Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` de la Línea de Tiempo de Rendimiento. Si `name` es proporcionado, elimina solo objetos cuyos `performanceEntry.name` coincidan con `name`.
+If `name` is not provided, removes all `PerformanceMeasure` objects from the Performance Timeline. If `name` is provided, removes only objects whose `performanceEntry.name` matches `name`.
 
 ### performance.getEntries()
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * Devuelve: {Array}
 
-Devuelve una lista de todos los objetos `PerformanceEntry` en orden cronológico con respecto a `performanceEntry.startTime`.
+Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
 ### performance.getEntriesByName(name[, type])
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -84,9 +92,10 @@ added: v8.5.0
 * `type` {string}
 * Devuelve: {Array}
 
-Devuelve una lista de todos los objetos `PerformanceEntry` en orden cronológico con respecto a a `performanceEntry.startTime` cuyo `performanceEntry.name` sea igual a `name` y, opcionalmente, cuyo `performanceEntry.entryType` sea igual a `type`.
+Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
 ### performance.getEntriesByType(type)
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -94,18 +103,20 @@ added: v8.5.0
 * `type` {string}
 * Devuelve: {Array}
 
-Devuelve una lista de todos los objetos `PerformanceEntry` en orden cronológico con respecto a `performanceEntry.startTime` cuyo `performanceEntry.entryType` sea igual a `type`.
+Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
 ### performance.mark([name])
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `name` {string}
 
-Crea una nueva entrada `PerformanceMark` en la Línea de Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en la Línea de Tiempo de Rendimiento.
+Crea una nueva entrada `PerformanceMark` en la Línea de Tiempo de Rendimiento. A `PerformanceMark` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'mark'`, and whose `performanceEntry.duration` is always `0`. Performance marks are used to mark specific significant moments in the Performance Timeline.
 
 ### performance.maxEntries
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -117,6 +128,7 @@ The maximum number of Performance Entry items that should be added to the Perfor
 Por defecto es 150.
 
 ### performance.measure(name, startMark, endMark)
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -125,47 +137,51 @@ added: v8.5.0
 * `startMark` {string}
 * `endMark` {string}
 
-Crea una nueva entrada `PerformanceMeasure` en la Línea de Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
+Crea una nueva entrada `PerformanceMeasure` en la Línea de Tiempo de Rendimiento. A `PerformanceMeasure` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'measure'`, and whose `performanceEntry.duration` measures the number of milliseconds elapsed since `startMark` and `endMark`.
 
-The `startMark` argument may identify any *existing* `PerformanceMark` in the Performance Timeline, or *may* identify any of the timestamp properties provided by the `PerformanceNodeTiming` class. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
+The `startMark` argument may identify any *existing* `PerformanceMark` in the Performance Timeline, or *may* identify any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `startMark` does not exist, then `startMark` is set to [`timeOrigin`][] by default.
 
-El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
+The `endMark` argument must identify any *existing* `PerformanceMark` in the Performance Timeline or any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `endMark` does not exist, an error will be thrown.
 
 ### performance.nodeTiming
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {PerformanceNodeTiming}
 
-Una instancia de la clase `PerformanceNodeTiming` que proporciona métricas de rendimiento para objetivos operacionales específicos de Node.js.
+An instance of the `PerformanceNodeTiming` class that provides performance metrics for specific Node.js operational milestones.
 
 ### performance.now()
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * Devuelve: {number}
 
-Devuelve la timestamp de alta resolución en milisegundos actual, donde 0 representa el inicio del proceso `node` actual.
+Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
 ### performance.timeOrigin
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-El [`timeOrigin`][] especifica la timestamp de alta resolución en milisegundos en la cual el proceso `node` actual comenzó, medido en tiempo Unix.
+The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
 
 ### performance.timerify(fn)
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `fn` {Function}
 
-Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` para que los detalles de timing puedan ser accedidos.
+Wraps a function within a new function that measures the running time of the wrapped function. A `PerformanceObserver` must be subscribed to the `'function'` event type in order for the timing details to be accessed.
 
 ```js
 const {
@@ -191,20 +207,23 @@ envuelta();
 ```
 
 ## Clase: PerformanceEntry
+
 <!-- YAML
 added: v8.5.0
 -->
 
 ### performanceEntry.duration
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-El número total de milisegundos transcurridos para esta entrada. Este valor no será significativo para todos los tipos de Entradas de Rendimiento.
+El número total de milisegundos transcurridos para esta entrada. This value will not be meaningful for all Performance Entry types.
 
 ### performanceEntry.name
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -214,31 +233,34 @@ added: v8.5.0
 El nombre de la entrada de rendimiento.
 
 ### performanceEntry.startTime
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos marcando el inicio de la Entrada de Rendimiento.
+The high resolution millisecond timestamp marking the starting time of the Performance Entry.
 
 ### performanceEntry.entryType
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {string}
 
-El tipo de la entrada de rendimiento. Actualmente puede ser uno de los siguientes: `'node'`, `'mark'`, `'measure'`, `'gc'`, o `'function'`.
+El tipo de la entrada de rendimiento. Current it may be one of: `'node'`, `'mark'`, `'measure'`, `'gc'`, or `'function'`.
 
 ### performanceEntry.kind
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance.kind` identifica el tipo de operación de recolección de basura que ocurrió. El valor puede ser uno de los siguientes:
+When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` property identifies the type of garbage collection operation that occurred. El valor puede ser uno de los siguientes:
 
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MAJOR`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MINOR`
@@ -246,6 +268,7 @@ Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_WEAKCB`
 
 ## Clase: PerformanceNodeTiming extiende PerformanceEntry
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -253,24 +276,27 @@ added: v8.5.0
 Proporciona detalles de timing para el propio Node.js.
 
 ### performanceNodeTiming.bootstrapComplete
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el proceso de Node.js completó el bootstrapping. Si el bootstrapping no ha terminado aún, la propiedad tiene el valor de -1.
+The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
 ### performanceNodeTiming.clusterSetupEnd
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster terminó. Si el procesamiento de cluster no ha terminado aún, la propiedad tiene el valor de -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster terminó. If cluster processing has not yet ended, the property has the value of -1.
 
 ### performanceNodeTiming.clusterSetupStart
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -280,24 +306,27 @@ added: v8.5.0
 La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster comenzó. Si el procesamiento del cluster no ha comenzado, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.loopExit
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js cerró. Si el bucle del evento aún no ha cerrado, la propiedad tiene el valor de -1. Solo no puede tener un valor de -1 en un manejador del evento [`'exit'`][].
+The high resolution millisecond timestamp at which the Node.js event loop exited. Si el bucle del evento aún no ha cerrado, la propiedad tiene el valor de -1. Solo no puede tener un valor de -1 en un manejador del evento [`'exit'`][].
 
 ### performanceNodeTiming.loopStart
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js comenzó. Si el bucle del evento no ha comenzado (p. e.j., en la primera señal del script principal), la propiedad tiene el valor de -1.
+The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
 ### performanceNodeTiming.moduleLoadEnd
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -307,6 +336,7 @@ added: v8.5.0
 La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal terminó.
 
 ### performanceNodeTiming.moduleLoadStart
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -316,15 +346,17 @@ added: v8.5.0
 La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal comenzó.
 
 ### performanceNodeTiming.nodeStart
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el proceso Node.js fue iniciado.
+The high resolution millisecond timestamp at which the Node.js process was initialized.
 
 ### performanceNodeTiming.preloadModuleLoadEnd
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -334,6 +366,7 @@ added: v8.5.0
 La timestamp de alta resolución en la cual la carga del módulo precarga terminó.
 
 ### performanceNodeTiming.preloadModuleLoadStart
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -343,41 +376,44 @@ added: v8.5.0
 La timestamp de alta resolución en milisegundos en la cual la carga del módulo precarga comenzó.
 
 ### performanceNodeTiming.thirdPartyMainEnd
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el procesamiento de third\_party\_main terminó. Si el procesamiento de third\_party\_main no ha terminado aún, la propiedad tiene el valor de -1.
+The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
 
 ### performanceNodeTiming.thirdPartyMainStart
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual el procesamiento third\_party\_main comenzó. Si el procesamiento third\_party\_main no ha comenzado aún, la propiedad tiene el valor de -1.
+The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
 
 ### performanceNodeTiming.v8Start
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * {number}
 
-La timestamp de alta resolución en milisegundos en la cual la plataforma V8 fue iniciada.
-
+The high resolution millisecond timestamp at which the V8 platform was initialized.
 
 ## Clase: PerformanceObserver(callback)
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * `callback` {Function} Una función de callback `PerformanceObserverCallback`.
 
-Los objetos `PerformanceObserver` proporcionan notificaciones cuando nuevas instancias `PerformanceEntry` han sido añadidas al Tiempo de Rendimiento.
+`PerformanceObserver` objects provide notifications when new `PerformanceEntry` instances have been added to the Performance Timeline.
 
 ```js
 const {
@@ -394,9 +430,10 @@ obs.observe({ entryTypes: ['mark'], buffered: true });
 performance.mark('test');
 ```
 
-Debido a que las instancias `PerformanceObserver` introducen su propia sobrecarga de rendimiento adicional, las instancias no deben quedar suscritas a las notificaciones indefinidamente. Los usuarios deben desconectar los observadores tan pronto como no sean necesitados.
+Because `PerformanceObserver` instances introduce their own additional performance overhead, instances should not be left subscribed to notifications indefinitely. Users should disconnect observers as soon as they are no longer needed.
 
 ### Callback: PerformanceObserverCallback(list, observer)
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -404,25 +441,28 @@ added: v8.5.0
 * `list` {PerformanceObserverEntryList}
 * `observer` {PerformanceObserver}
 
-El `PerformanceObserverCallback` es invocado cuando una `PerformanceObserver` es notificada sobre nuevas instancias `PerformanceEntry`. El callback recibe una instancia `PerformanceObserverEntryList` y una referencia al `PerformanceObserver`.
+The `PerformanceObserverCallback` is invoked when a `PerformanceObserver` is notified about new `PerformanceEntry` instances. The callback receives a `PerformanceObserverEntryList` instance and a reference to the `PerformanceObserver`.
 
 ### Clase: PerformanceObserverEntryList
+
 <!-- YAML
 added: v8.5.0
 -->
 
-La clase `PerformanceObserverEntryList` es usada para proporcionar acceso a las instancias `PerformanceEntry` pasadas a un `PerformanceObserver`.
+The `PerformanceObserverEntryList` class is used to provide access to the `PerformanceEntry` instances passed to a `PerformanceObserver`.
 
 #### performanceObserverEntryList.getEntries()
+
 <!-- YAML
 added: v8.5.0
 -->
 
 * Devuelve: {Array}
 
-Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`.
+Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
 #### performanceObserverEntryList.getEntriesByName(name[, type])
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -431,9 +471,10 @@ added: v8.5.0
 * `type` {string}
 * Devuelve: {Array}
 
-Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.name` es igual a `name`, y opcionalmente, cuyo `performanceEntry.entryType` es igual a `type`.
+Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
 #### performanceObserverEntryList.getEntriesByType(type)
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -441,27 +482,29 @@ added: v8.5.0
 * `type` {string}
 * Devuelve: {Array}
 
-Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.entryType` es igual a `type`.
+Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
 ### performanceObserver.disconnect()
+
 <!-- YAML
 added: v8.5.0
--->
-Desconecta la instancia 
+--> Disconnects the
 
-`PerformanceObserver` de todas las notificaciones.
+`PerformanceObserver` instance from all notifications.
 
 ### performanceObserver.observe(options)
+
 <!-- YAML
 added: v8.5.0
 -->
-* `opciones` {Object}
-  * `entryTypes` {Array} Un array de strings identificando los tipos de instancias `PerformanceEntry` en las que está interesado el observador. Si no es proporcionado, se produce un error.
-  * `buffered` {boolean} Si es true, la notificación de la callback será llamada usando `setImmediate()` y múltiples notificaciones de instancia `PerformanceEntry` serán almacenadas internamente. Si es `false`, las notificaciones serán inmediatas y síncronas. **Predeterminado:** `false`.
 
-Suscribe la instancia `PerformanceObserver` a las notificaciones de nuevas instancias `PerformanceEntry`, identificadas por `options.entryTypes`.
+* `options` {Object} 
+  * `entryTypes` {Array} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
+  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Predeterminado:** `false`.
 
-Cuando `options.buffered` es `false`, el `callback` será invocado una vez por cada instancia `PerformanceEntry`:
+Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
+
+When `options.buffered` is `false`, the `callback` will be invoked once for every `PerformanceEntry` instance:
 
 ```js
 const {
@@ -497,7 +540,7 @@ for (let n = 0; n < 3; n++)
 
 ### Medir la duración de las operaciones asincrónicas
 
-El siguiente ejemplo usa el [Async Hooks](async_hooks.html) y las APIs de Rendimiento para medir la verdadera duración de una operación Timeout (incluyendo la cantidad de tiempo para ejecutar el callback).
+The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
 
 ```js
 'use strict';
@@ -540,7 +583,8 @@ setTimeout(() => {}, 1000);
 
 ### Medir cuánto tiempo tarda la carga de dependencias
 
-El siguiente ejemplo mide la duración de las operaciones `require()` para cargar las dependencias:
+The following example measures the duration of `require()` operations to load dependencies:
+
 ```js
 'use strict';
 const {

@@ -3,7 +3,8 @@
 <!--lint disable prohibited-strings-->
 
 <table>
-<tr>
+  <tr>
+    
 <th>v0.11</th>
 <th>v0.9</th>
 <th>v0.8</th>
@@ -11,148 +12,162 @@
 <th>v0.6</th>
 <th>v0.5</th>
 <th>&lt;= v0.4</th>
-</tr>
-<tr>
-<td valign="top">
-<a href="#0.11.14">0.11.14</a><br/>
-<a href="#0.11.13">0.11.13</a><br/>
-<a href="#0.11.12">0.11.12</a><br/>
-<a href="#0.11.11">0.11.11</a><br/>
-<a href="#0.11.10">0.11.10</a><br/>
-<a href="#0.11.9">0.11.9</a><br/>
-<a href="#0.11.8">0.11.8</a><br/>
-<a href="#0.11.7">0.11.7</a><br/>
-<a href="#0.11.6">0.11.6</a><br/>
-<a href="#0.11.5">0.11.5</a><br/>
-<a href="#0.11.4">0.11.4</a><br/>
-<a href="#0.11.3">0.11.3</a><br/>
-<a href="#0.11.2">0.11.2</a><br/>
-<a href="#0.11.1">0.11.1</a><br/>
-<a href="#0.11.0">0.11.0</a><br/>
-</td>
-<td valign="top">
-<a href="#0.9.12">0.9.12</a><br/>
-<a href="#0.9.11">0.9.11</a><br/>
-<a href="#0.9.10">0.9.10</a><br/>
-<a href="#0.9.9">0.9.9</a><br/>
-<a href="#0.9.8">0.9.8</a><br/>
-<a href="#0.9.7">0.9.7</a><br/>
-<a href="#0.9.6">0.9.6</a><br/>
-<a href="#0.9.5">0.9.5</a><br/>
-<a href="#0.9.4">0.9.4</a><br/>
-<a href="#0.9.3">0.9.3</a><br/>
-<a href="#0.9.2">0.9.2</a><br/>
-<a href="#0.9.1">0.9.1</a><br/>
-<a href="#0.9.0">0.9.0</a><br/>
-</td>
-<td valign="top">
-<a href="#0.8.25">0.8.25</a><br/>
-<a href="#0.8.24">0.8.24</a><br/>
-<a href="#0.8.23">0.8.23</a><br/>
-<a href="#0.8.22">0.8.22</a><br/>
-<a href="#0.8.21">0.8.21</a><br/>
-<a href="#0.8.20">0.8.20</a><br/>
-<a href="#0.8.19">0.8.19</a><br/>
-<a href="#0.8.18">0.8.18</a><br/>
-<a href="#0.8.17">0.8.17</a><br/>
-<a href="#0.8.16">0.8.16</a><br/>
-<a href="#0.8.15">0.8.15</a><br/>
-<a href="#0.8.14">0.8.14</a><br/>
-<a href="#0.8.13">0.8.13</a><br/>
-<a href="#0.8.12">0.8.12</a><br/>
-<a href="#0.8.11">0.8.11</a><br/>
-<a href="#0.8.10">0.8.10</a><br/>
-<a href="#0.8.9">0.8.9</a><br/>
-<a href="#0.8.8">0.8.8</a><br/>
-<a href="#0.8.7">0.8.7</a><br/>
-<a href="#0.8.6">0.8.6</a><br/>
-<a href="#0.8.5">0.8.5</a><br/>
-<a href="#0.8.4">0.8.4</a><br/>
-<a href="#0.8.3">0.8.3</a><br/>
-<a href="#0.8.2">0.8.2</a><br/>
-<a href="#0.8.1">0.8.1</a><br/>
-</td>
-<td valign="top">
-<a href="#0.7.12">0.7.12</a><br/>
-<a href="#0.7.11">0.7.11</a><br/>
-<a href="#0.7.10">0.7.10</a><br/>
-<a href="#0.7.9">0.7.9</a><br/>
-<a href="#0.7.8">0.7.8</a><br/>
-<a href="#0.7.7">0.7.7</a><br/>
-<a href="#0.7.6">0.7.6</a><br/>
-<a href="#0.7.5">0.7.5</a><br/>
-<a href="#0.7.4">0.7.4</a><br/>
-<a href="#0.7.3">0.7.3</a><br/>
-<a href="#0.7.2">0.7.2</a><br/>
-<a href="#0.7.1">0.7.1</a><br/>
-<a href="#0.7.0">0.7.0</a><br/>
-</td>
-<td valign="top">
-<a href="#0.6.20">0.6.20</a><br/>
-<a href="#0.6.19">0.6.19</a><br/>
-<a href="#0.6.18">0.6.18</a><br/>
-<a href="#0.6.17">0.6.17</a><br/>
-<a href="#0.6.16">0.6.16</a><br/>
-<a href="#0.6.15">0.6.15</a><br/>
-<a href="#0.6.14">0.6.14</a><br/>
-<a href="#0.6.13">0.6.13</a><br/>
-<a href="#0.6.12">0.6.12</a><br/>
-<a href="#0.6.11">0.6.11</a><br/>
-<a href="#0.6.10">0.6.10</a><br/>
-<a href="#0.6.9">0.6.9</a><br/>
-<a href="#0.6.8">0.6.8</a><br/>
-<a href="#0.6.7">0.6.7</a><br/>
-<a href="#0.6.6">0.6.6</a><br/>
-<a href="#0.6.5">0.6.5</a><br/>
-<a href="#0.6.4">0.6.4</a><br/>
-<a href="#0.6.3">0.6.3</a><br/>
-<a href="#0.6.2">0.6.2</a><br/>
-<a href="#0.6.1">0.6.1</a><br/>
-<a href="#0.6.0">0.6.0</a><br/>
-</td>
-<td valign="top">
-<a href="#0.5.10">0.5.10</a><br/>
-<a href="#0.5.9">0.5.9</a><br/>
-<a href="#0.5.8">0.5.8</a><br/>
-<a href="#0.5.7">0.5.7</a><br/>
-<a href="#0.5.6">0.5.6</a><br/>
-<a href="#0.5.5">0.5.5</a><br/>
-<a href="#0.5.4">0.5.4</a><br/>
-<a href="#0.5.3">0.5.3</a><br/>
-<a href="#0.5.2">0.5.2</a><br/>
-<a href="#0.5.1">0.5.1</a><br/>
-<a href="#0.5.0">0.5.0</a><br/>
-</td>
-<td valign="top">
-<a href="#0.4.12">0.4.12</a><br/>
-<a href="#0.4.11">0.4.11</a><br/>
-<a href="#0.4.10">0.4.10</a><br/>
-<a href="#0.4.9">0.4.9</a><br/>
-<a href="#0.4.8">0.4.8</a><br/>
-<a href="#0.4.7">0.4.7</a><br/>
-<a href="#0.4.6">0.4.6</a><br/>
-<a href="#0.4.5">0.4.5</a><br/>
-<a href="#0.4.4">0.4.4</a><br/>
-<a href="#0.4.3">0.4.3</a><br/>
-<a href="#0.4.2">0.4.2</a><br/>
-<a href="#0.4.1">0.4.1</a><br/>
-<a href="#0.4.0">0.4.0</a><br/>
-<a href="#0.3.8">0.3.8</a><br/>
-<a href="#0.3.7">0.3.7</a><br/>
-<a href="#0.3.6">0.3.6</a><br/>
-<a href="#0.3.5">0.3.5</a><br/>
-<a href="#0.3.4">0.3.4</a><br/>
-<a href="#0.3.3">0.3.3</a><br/>
-<a href="#0.3.2">0.3.2</a><br/>
-<a href="#0.3.1">0.3.1</a><br/>
-<a href="#0.3.0">0.3.0</a><br/>
-<a href="#0.2.0">0.2.0</a><br/>
-<a href="#0.1.x">&lt;= 0.1.x</a><br/>
-</td>
-</tr>
+  </tr>
+  
+  <tr>
+    <td valign="top">
+      
+<a href="#0.11.14">0.11.14</a><br />
+<a href="#0.11.13">0.11.13</a><br />
+<a href="#0.11.12">0.11.12</a><br />
+<a href="#0.11.11">0.11.11</a><br />
+<a href="#0.11.10">0.11.10</a><br />
+<a href="#0.11.9">0.11.9</a><br />
+<a href="#0.11.8">0.11.8</a><br />
+<a href="#0.11.7">0.11.7</a><br />
+<a href="#0.11.6">0.11.6</a><br />
+<a href="#0.11.5">0.11.5</a><br />
+<a href="#0.11.4">0.11.4</a><br />
+<a href="#0.11.3">0.11.3</a><br />
+<a href="#0.11.2">0.11.2</a><br />
+<a href="#0.11.1">0.11.1</a><br />
+<a href="#0.11.0">0.11.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.9.12">0.9.12</a><br />
+<a href="#0.9.11">0.9.11</a><br />
+<a href="#0.9.10">0.9.10</a><br />
+<a href="#0.9.9">0.9.9</a><br />
+<a href="#0.9.8">0.9.8</a><br />
+<a href="#0.9.7">0.9.7</a><br />
+<a href="#0.9.6">0.9.6</a><br />
+<a href="#0.9.5">0.9.5</a><br />
+<a href="#0.9.4">0.9.4</a><br />
+<a href="#0.9.3">0.9.3</a><br />
+<a href="#0.9.2">0.9.2</a><br />
+<a href="#0.9.1">0.9.1</a><br />
+<a href="#0.9.0">0.9.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.8.25">0.8.25</a><br />
+<a href="#0.8.24">0.8.24</a><br />
+<a href="#0.8.23">0.8.23</a><br />
+<a href="#0.8.22">0.8.22</a><br />
+<a href="#0.8.21">0.8.21</a><br />
+<a href="#0.8.20">0.8.20</a><br />
+<a href="#0.8.19">0.8.19</a><br />
+<a href="#0.8.18">0.8.18</a><br />
+<a href="#0.8.17">0.8.17</a><br />
+<a href="#0.8.16">0.8.16</a><br />
+<a href="#0.8.15">0.8.15</a><br />
+<a href="#0.8.14">0.8.14</a><br />
+<a href="#0.8.13">0.8.13</a><br />
+<a href="#0.8.12">0.8.12</a><br />
+<a href="#0.8.11">0.8.11</a><br />
+<a href="#0.8.10">0.8.10</a><br />
+<a href="#0.8.9">0.8.9</a><br />
+<a href="#0.8.8">0.8.8</a><br />
+<a href="#0.8.7">0.8.7</a><br />
+<a href="#0.8.6">0.8.6</a><br />
+<a href="#0.8.5">0.8.5</a><br />
+<a href="#0.8.4">0.8.4</a><br />
+<a href="#0.8.3">0.8.3</a><br />
+<a href="#0.8.2">0.8.2</a><br />
+<a href="#0.8.1">0.8.1</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.7.12">0.7.12</a><br />
+<a href="#0.7.11">0.7.11</a><br />
+<a href="#0.7.10">0.7.10</a><br />
+<a href="#0.7.9">0.7.9</a><br />
+<a href="#0.7.8">0.7.8</a><br />
+<a href="#0.7.7">0.7.7</a><br />
+<a href="#0.7.6">0.7.6</a><br />
+<a href="#0.7.5">0.7.5</a><br />
+<a href="#0.7.4">0.7.4</a><br />
+<a href="#0.7.3">0.7.3</a><br />
+<a href="#0.7.2">0.7.2</a><br />
+<a href="#0.7.1">0.7.1</a><br />
+<a href="#0.7.0">0.7.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.6.20">0.6.20</a><br />
+<a href="#0.6.19">0.6.19</a><br />
+<a href="#0.6.18">0.6.18</a><br />
+<a href="#0.6.17">0.6.17</a><br />
+<a href="#0.6.16">0.6.16</a><br />
+<a href="#0.6.15">0.6.15</a><br />
+<a href="#0.6.14">0.6.14</a><br />
+<a href="#0.6.13">0.6.13</a><br />
+<a href="#0.6.12">0.6.12</a><br />
+<a href="#0.6.11">0.6.11</a><br />
+<a href="#0.6.10">0.6.10</a><br />
+<a href="#0.6.9">0.6.9</a><br />
+<a href="#0.6.8">0.6.8</a><br />
+<a href="#0.6.7">0.6.7</a><br />
+<a href="#0.6.6">0.6.6</a><br />
+<a href="#0.6.5">0.6.5</a><br />
+<a href="#0.6.4">0.6.4</a><br />
+<a href="#0.6.3">0.6.3</a><br />
+<a href="#0.6.2">0.6.2</a><br />
+<a href="#0.6.1">0.6.1</a><br />
+<a href="#0.6.0">0.6.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.5.10">0.5.10</a><br />
+<a href="#0.5.9">0.5.9</a><br />
+<a href="#0.5.8">0.5.8</a><br />
+<a href="#0.5.7">0.5.7</a><br />
+<a href="#0.5.6">0.5.6</a><br />
+<a href="#0.5.5">0.5.5</a><br />
+<a href="#0.5.4">0.5.4</a><br />
+<a href="#0.5.3">0.5.3</a><br />
+<a href="#0.5.2">0.5.2</a><br />
+<a href="#0.5.1">0.5.1</a><br />
+<a href="#0.5.0">0.5.0</a><br />
+    </td>
+    
+    <td valign="top">
+      
+<a href="#0.4.12">0.4.12</a><br />
+<a href="#0.4.11">0.4.11</a><br />
+<a href="#0.4.10">0.4.10</a><br />
+<a href="#0.4.9">0.4.9</a><br />
+<a href="#0.4.8">0.4.8</a><br />
+<a href="#0.4.7">0.4.7</a><br />
+<a href="#0.4.6">0.4.6</a><br />
+<a href="#0.4.5">0.4.5</a><br />
+<a href="#0.4.4">0.4.4</a><br />
+<a href="#0.4.3">0.4.3</a><br />
+<a href="#0.4.2">0.4.2</a><br />
+<a href="#0.4.1">0.4.1</a><br />
+<a href="#0.4.0">0.4.0</a><br />
+<a href="#0.3.8">0.3.8</a><br />
+<a href="#0.3.7">0.3.7</a><br />
+<a href="#0.3.6">0.3.6</a><br />
+<a href="#0.3.5">0.3.5</a><br />
+<a href="#0.3.4">0.3.4</a><br />
+<a href="#0.3.3">0.3.3</a><br />
+<a href="#0.3.2">0.3.2</a><br />
+<a href="#0.3.1">0.3.1</a><br />
+<a href="#0.3.0">0.3.0</a><br />
+<a href="#0.2.0">0.2.0</a><br />
+<a href="#0.1.x">&lt;= 0.1.x</a><br />
+    </td>
+  </tr>
 </table>
 
-* Otras Versiones
+* Otras Versiones 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -1045,11 +1060,13 @@ https://github.com/nodejs/node/commit/2c4eef0d972838c51999d32c0d251857a713dc18
 https://github.com/nodejs/node/commit/c50c33e9397d7a0a8717e8ce7530572907c054ad
 
 * npm: Actualizar a v1.2.0
-  - peerDependencies (Domenic Denicola)
-  - node-gyp v0.8.2 (Nathan Rajlich)
-  - Instalaciones más rápidas desde abreviaturas de usuario/proyecto de github (Nathan Zadoks)
+  
+  * peerDependencies (Domenic Denicola)
+  * node-gyp v0.8.2 (Nathan Rajlich)
+  * Instalaciones más rápidas desde abreviaturas de usuario/proyecto de github (Nathan Zadoks)
 
 * typed arrays: reparar rebosamiento de tamaño/índice de 32 bits (Ben Noordhuis)
+
 * http: Mejorar rendimiento de respuestas de paquete único (Ben Noordhuis)
 * install: reparar localización de páginas del manual de openbsd (Ben Noordhuis)
 * http: burbujear errores del analizador a ClientRequest (Brian White)
@@ -1211,7 +1228,7 @@ https://github.com/nodejs/node/commit/f640c5d35cba96634cd8176a525a1d876e361a61
 * website: descargar página (Golo Roden)
 * crypto: reparar acceso a memoria sin inicializar en openssl (Ben Noordhuis)
 * buffer, crypto: reparar codificación de buffer (Ben Noordhuis)
-* build: compile with -fno-tree-vrp when gcc >= 4.0 (Ben Noordhuis)
+* build: compilar con -fno-tree-vrp cuando gcc >= 4.0 (Ben Noordhuis)
 * tls: manejar múltiples campos CN al verificar certificado (Ben Noordhuis)
 * doc: remover util no utilizado de child_process (Kyle Robinson Young)
 * build: volver a trabajar detección -fvisibility=hidden (Ben Noordhuis)
@@ -1227,7 +1244,7 @@ https://github.com/nodejs/node/commit/0544a586ca6b6b900a42e164033dbf350765700a
 * npm: Actualizar a v1.1.48
 * Añadir "make binary" para compilar tarballs binarias para todos los Unix (Nathan Rajlich)
 * zlib: Emitir "close" al aplicar destroy(). (Dominic Tarr)
-* child_process: Corregir stdout=null cuando stdio=\['pipe'\] (Tyler Neylon)
+* child_process: Fix stdout=null when stdio=\['pipe'\] (Tyler Neylon)
 * installer: prevenir errores ETXTBSY (Ben Noordhuis)
 * installer: hacer honor a --without-npm, instalar ruta predeterminadamente (Ben Noordhuis)
 * net: hacer que el pausado funcione con sockets en estado de conexión (Bert Belder)
@@ -1311,7 +1328,7 @@ https://github.com/nodejs/node/commit/cc6084b9ac5cf1d4fe5e7165b71e8fc05d11be1f
 * repl: corregir el paso de una línea vacía insertando "undefined" en el buffer (Nathan Rajlich)
 * repl: reparar colapsos al almacenar comando en buffer (Maciej Małecki)
 * build: renombrar strict_aliasing a node_no_strict_aliasing (Ben Noordhuis)
-* build: disable -fstrict-aliasing for any gcc < 4.6.0 (Ben Noordhuis)
+* build: deshabilitar -fstrict-aliasing para cualquier gcc < 4.6.0 (Ben Noordhuis)
 * build: detectar versión de cc con -dumpversion (Ben Noordhuis)
 * build: manejar output de gcc o clang localizado (Ben Noordhuis)
 * unix: reparar corrupción de memoria en freebsd.c (Ben Noordhuis)
@@ -1327,12 +1344,14 @@ https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
 
 * V8: actualizar a v3.11.10.12
 * npm: actualizar a v1.1.33
-  - Soporte para el uso paralelo de la carpeta de caché
-  - Reintentar ante timeouts en el registro o fallos de red (Trent Mick)
-  - Reducir fallos de "motores" a una advertencia
-  - Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
+  
+  * Soporte para el uso paralelo de la carpeta de caché
+  * Reintentar ante timeouts en el registro o fallos de red (Trent Mick)
+  * Reducir fallos de "motores" a una advertencia
+  * Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
 
 * Reparar [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
+
 * util: acelerar formateo de arrays/objetos grandes (Ben Noordhuis)
 * windows: hacer que fs.realpath(Sync) funcione con rutas UNC (Bert Belder)
 * build: reparar opción --shared-v8 (Ben Noordhuis)
@@ -1373,15 +1392,17 @@ https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 
 * npm: Actualizar a 1.1.30
-  - "npm init" mejorado
-  - Reparar el error "cb nunca llamó" de "oudated" y "update"
-  - Añadir configuración de --save-bundle|-B
-  - Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén conscientes de cygwin
-  - Reparar isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Usar --save(-dev|-optional) en rm de npm
-  - Opción `logstream` para reemplazar `logfd` removido (Rod Vagg)
-  - Leer descripciones predeterminadas desde archivos README.md
+  
+  * "npm init" mejorado
+  * Reparar el error "cb nunca llamó" de "oudated" y "update"
+  * Añadir configuración de --save-bundle|-B
+  * Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén conscientes de cygwin
+  * Reparar isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Usar --save(-dev|-optional) en rm de npm
+  * Opción `logstream` para reemplazar `logfd` removido (Rod Vagg)
+  * Leer descripciones predeterminadas desde archivos README.md
 
 * Shims para soportar métodos ev_* y eio_* desaprobados (Ben Noordhuis)
+
 * [#3118](https://github.com/joyent/node/issues/3118) net.Socket: Retrasar pausa/reanudación hasta después de conectar (isaacs)
 * [#3465](https://github.com/joyent/node/issues/3465) Añadir bandera ./configure --no-ifaddrs (isaacs)
 * child_process: añadir stream .stdin a los forks (Fedor Indutny)
@@ -1441,10 +1462,10 @@ https://github.com/nodejs/node/commit/8d9766a9dfb1eea901219d2a865ce9300fe4d68e
 * child_process: exponer a UV_PROCESS_DETACHED como options.detached (Charlie McConnell)
 * child_process: nueva API de stdio para método .spawn() (Fedor Indutny)
 * child_process: spawn().ref() y spawn().unref() (Fedor Indutny)
-* Actualizar npm a 1.1.25
-  - Habilitar enlace de npm en windows
-  - Remover sh-shim en Windows correctamente
-  - Retirar abstract de cliente de registro y registrador
+* Actualizar npm a 1.1.25 
+  * Habilitar enlace de npm en windows
+  * Remover sh-shim en Windows correctamente
+  * Retirar abstract de cliente de registro y registrador
 
 <a id="0.7.9"></a>
 
@@ -1533,13 +1554,15 @@ https://github.com/nodejs/node/commit/f06abda6f58e517349d1b63a2cbf5a8d04a03505
 
 * Actualizar v8 a 3.9.17
 * Actualizar npm a 1.1.8
-  - Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
-  - Node-gyp automáticamente a los paquetes que contengan un binding.gyp
-  - Corregir fallas en el desempaque en recursos compartidos de UNC
-  - Nunca crear directorios no listables
-  - Manejar casos en los que una optionalDependency falla al compilar
+  
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Node-gyp automáticamente a los paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
 * events: newListener emite fn correcto al utilizar "once" (Roly Fentanes)
+
 * url: Ignorar componente de puerto vacío (Łukasz Walukiewicz)
 * module: reemplazar array "hijo" (isaacs)
 * tls: analizar múltiples valores de una llave en un certificado ssl (Sambasiva Suda)
@@ -1764,13 +1787,13 @@ https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 * unix: ignorar errores ECONNABORTED provenientes de accept() (Ben Noordhuis)
 * Añadir UV_ENOSPC y mapeos a este (Bert Belder)
 * http-parser: Corregir que el cuerpo de respuesta no es leído (koichik)
-* Actualizar npm a 1.1.12
-  - actualizar node-gyp a 0.3.7
-  - arreglar directorios con bloqueo de AV en Windows
-  - Reparar isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) No intentar "uninstall" /
-  - Excluir de los paquetes a los enlaces simbólicos.
-  - Reparar isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Error "unresolvable cycle" falso.
-  - Excluir/incluir archivos dot como si fueran archivos normales
+* Actualizar npm a 1.1.12 
+  * actualizar node-gyp a 0.3.7
+  * arreglar directorios con bloqueo de AV en Windows
+  * Reparar isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) No intentar "uninstall" /
+  * Excluir de los paquetes a los enlaces simbólicos.
+  * Reparar isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Error "unresolvable cycle" falso.
+  * Excluir/incluir archivos dot como si fueran archivos normales
 
 <a id="0.6.13"></a>
 
@@ -1779,20 +1802,20 @@ https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
 * Windows: Muchas reparaciones de la prueba de libuv (Bert Belder)
-* Windows: avoid uv_guess_handle crash in when fd < 0 (Bert Belder)
+* Windows: evitar que uv_guess_handle colapse cuando fd < 0 (Bert Belder)
 * Mapear errores EBUSY y ENOTEMPTY (Bert Belder)
 * Windows: incluir syscall en errores del fs (Bert Belder)
 * Reparar incongruencia de ENOSYS de fs.watch en la versión kernel de Linux (Ben Noordhuis)
-* Actualizar npm a 1.1.9
-  - actualizar node-gyp a 0.3.5 (Nathan Rajlich)
-  - Reparar isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Añadir configs de cache-max y cache-min
-  - Redirigir correctamente a través de peticiones de registro de https/http
-  - registrar uso de config si se aplica una clave indefinida en función set (Kris Windham)
-  - Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
-  - Aplicar automáticamente node-gyp a paquetes que contengan un binding.gyp
-  - Corregir fallas en el desempaque en recursos compartidos de UNC
-  - Nunca crear directorios no listables
-  - Manejar casos en los que una optionalDependency falla al compilar
+* Actualizar npm a 1.1.9 
+  * actualizar node-gyp a 0.3.5 (Nathan Rajlich)
+  * Reparar isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Añadir configs de cache-max y cache-min
+  * Redirigir correctamente a través de peticiones de registro de https/http
+  * registrar uso de config si se aplica una clave indefinida en función set (Kris Windham)
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Aplicar automáticamente node-gyp a paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
 <a id="0.6.12"></a>
 
@@ -1814,14 +1837,14 @@ https://github.com/nodejs/node/commit/48a2d34cfe6b7e1c9d15202a4ef5e3c82d1fba35
 * windows: corregir conversión de tiempo en stat (Igor Zinkovsky)
 * windows: fs: manejar EOF en la lectura (Brandon Philips)
 * windows: evitar cortocircuito de IOCP ante lsps no-ifs (Igor Zinkovsky)
-* Actualizar npm a 1.1.4 (isaacs)
-  - correcciones de windows
-  - Empaquetar correctamente bundleDependencies anidadas
-  - install: soportar --save con objetivos de instalación url
-  - shrinkwrap: comportarse correctamente con módulos instalados en url
-  - soportar la instalación de tars descomprimidos o módulos de archivo sencillos desde urls etc.
-  - no ejecutar "make clean" en el rebuild
-  - soportar canalización de proxy HTTPS-over-HTTP
+* Actualizar npm a 1.1.4 (isaacs) 
+  * correcciones de windows
+  * Empaquetar correctamente bundleDependencies anidadas
+  * install: soportar --save con objetivos de instalación url
+  * shrinkwrap: comportarse correctamente con módulos instalados en url
+  * soportar la instalación de tars descomprimidos o módulos de archivo sencillos desde urls etc.
+  * no ejecutar "make clean" en el rebuild
+  * soportar canalización de proxy HTTPS-over-HTTP
 
 <a id="0.6.11"></a>
 
@@ -1845,10 +1868,10 @@ https://github.com/nodejs/node/commit/1eb1fe32250fc88cb5b0a97cddf3e02be02e3f4a
 * dtrace: añadir traductor faltante (Dave Pacheco)
 * unix: no vaciar tty al cambiar al modo raw (Ben Noordhuis)
 * windows: restablecer brillo al regresar al color de texto predeterminado (Bert Belder)
-* npm: actualizar a 1.1.1
-  - Actualizar which, fstream, mkdirp, request, y rimraf
-  - Reparar [#2123](https://github.com/joyent/node/issues/2123) Establecer correctamente la ruta para scripts de lifecycle en windows
-  - Marcar el root como visto, de modo que no hagamos recursión a él. Repara al [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
+* npm: actualizar a 1.1.1 
+  * Actualizar which, fstream, mkdirp, request, y rimraf
+  * Reparar [#2123](https://github.com/joyent/node/issues/2123) Establecer correctamente la ruta para scripts de lifecycle en windows
+  * Marcar el root como visto, de modo que no hagamos recursión a él. Repara al [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
 
 <a id="0.6.10"></a>
 
@@ -1874,9 +1897,11 @@ https://github.com/nodejs/node/commit/051908e023f87894fa68f5b64d0b99a19a7db01e
 https://github.com/nodejs/node/commit/f19e20d33f57c4d2853aaea7d2724d44f3b0012f
 
 * dgram: Traer de vuelta funcionalidad para Unix faltante (Dan VerWeire, Roman Shtylman, Ben Noordhuis)
-  - Nota: El soporte de UDP de Windows aún no está completo.
+  
+  * Nota: El soporte de UDP de Windows aún no está completo.
 
 * http: Reparar fuga de memoria del analizador (koichik)
+
 * zlib: Reparar colapsos de [#2365](https://github.com/joyent/node/issues/2365) ante input inválido (Nicolas LaCasse)
 * module: reparar --debug-brk en scripts symlinked (Fedor Indutny)
 * Re-estilización de la Documentación (Matthew Fitzsimmons)
@@ -1913,6 +1938,7 @@ https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 * many doc updates (Ben Noordhuis, Jeremy Martin, koichik, Dave Irvine, Seong-Rak Choi, Shannen, Adam Malcontenti-Wilson, koichik)
 
 * Reparar segfault en node_http_parser.cc
+
 * dgram, timers: reparar fugas de memoria (Ben Noordhuis, Yoshihiro Kikuchi)
 * repl: corregir que repl.start no pasa el arg `ignoreUndefined` (Damon Oehlman)
 * [#1980](https://github.com/joyent/node/issues/1980): Referencia nula de Socket.pause al ser llamada sobre un Stream cerrado (koichik)
@@ -1968,7 +1994,7 @@ https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 * cli: añadir interruptor -p, imprime resultado de –eval
 * [#1997](https://github.com/joyent/node/issues/1997): reparar encriptación y descifrado de ECB de Blowfish (Ingmar Runge)
 * [#2223](https://github.com/joyent/node/issues/2223): corregir que el evento "close" de socket es emitido dos veces
-* [#2224](https://github.com/joyent/node/issues/2224): fix RSS memory usage > 4 GB reporting (Russ Bradberry)
+* [#2224](https://github.com/joyent/node/issues/2224): arreglar que uso de la memoria de RSS > al reporte de 4 GB (Russ Bradberry)
 * [#2225](https://github.com/joyent/node/issues/2225): corregir bug de strigificación de objetos de util.inspect() (Nathan Rajlich)
 
 <a id="0.6.3"></a>
@@ -1977,15 +2003,18 @@ https://github.com/nodejs/node/commit/9170077f13e5e5475b23d1d3c2e7f69bfe139727
 
 https://github.com/nodejs/node/commit/b159c6d62e5756d3f8847419d29c6959ea288b56
 
-* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. Está incluido en los paquetes/instaladores e instalado en `make install`.
+* [#2083](https://github.com/joyent/node/issues/2083) Aterrizar NPM en Node. It is included in packages/installers and installed on `make install`.
 
 * [#2076](https://github.com/joyent/node/issues/2076) Añadir logos al instalador de windows.
+
 * [#1711](https://github.com/joyent/node/issues/1711) Manejar correctamente solicitudes de http sin cabeceras. (Ben Noordhuis, Felix Geisendörfer)
 
 * TLS: exponer más opciones y constantes de contexto de SSL de openssl. (Ben Noordhuis)
-* [#2177](https://github.com/joyent/node/issues/2177) Windows: no eliminar socket de UDP cuando un paquete no logre alcanzar su destino. (Bert Belder)
+
+* [#2177](https://github.com/joyent/node/issues/2177) Windows: don't kill UDP socket when a packet fails to reach its destination. (Bert Belder)
 
 * Windows: soportar rutas más largas que 260 caracteres. (Igor Zinkovsky)
+
 * Windows: resolver correctamente rutas relacionadas con el disco duro. (Bert Belder)
 * [#2166](https://github.com/joyent/node/issues/2166) No dejar abierto el descriptor de archivos luego de lchmod. (Isaac Schlueter)
 * [#2084](https://github.com/joyent/node/issues/2084) Añadir script de compilación .pkg de OS X para crear archivo.
@@ -2036,9 +2065,10 @@ https://github.com/nodejs/node/commit/170f2addb2dd0c625bc4a6d461e89a31ad68b79b
 https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
 * imprimir "undefined" ante valores indefinidos en REPL (Nathan Rajlich)
-* mejoras de doc (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
+* doc improvements (koichik, seebees, bnoordhuis, Maciej Małecki, Jacob Kragh)
 
 * soportar carga de complemento nativo en windows (Bert Belder)
+
 * renombrar getNetworkInterfaces() como networkInterfaces() (bnoordhuis)
 * añadir botón de aceptaciones pendientes para windows (igorzi)
 * http.request(url.parse(x)) (seebees)
@@ -2068,11 +2098,12 @@ https://github.com/nodejs/node/commit/865b077819a9271a29f982faaef99dc635b57fbc
 
 https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 
-* Remover sistema de compilación cmake, soporte para Cygwin, base de código heredado, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
+* Remove cmake build system, support for Cygwin, legacy code base, process.ENV, process.ARGV, process.memoryUsage().vsize, os.openOSHandle
 
-* Mejoras de documentación (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
+* Documentation improvements (Igor Zinkovsky, Bert Belder, Ilya Dmitrichenko, koichik, Maciej Małecki, Guglielmo Ferri, isaacs)
 
 * Mejoras de rendimiento (Daniel Ennis, Bert Belder, Ben Noordhuis)
+
 * Soporte para process.title largo (Ben Noordhuis)
 * net: registrar callback net.Server solo una vez (Simen Brekken)
 * net: corregir bugs de cola de conexión (Ben Noordhuis)
@@ -2085,6 +2116,7 @@ https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 * [#1484](https://github.com/joyent/node/issues/1484), [#1834](https://github.com/joyent/node/issues/1834), [#1482](https://github.com/joyent/node/issues/1482), [#771](https://github.com/joyent/node/issues/771) No usar un contexto separado para el repl. (isaacs)
 
 * [#1882](https://github.com/joyent/node/issues/1882) zlib Actualizar valor de "availOutBefore", y probar (isaacs)
+
 * [#1888](https://github.com/joyent/node/issues/1888) child_process.fork: no modificar args (koichik)
 * [#1516](https://github.com/joyent/node/issues/1516) tls: requestCert no se puede usar con Firefox ni Chrome (koichik)
 * [#1467](https://github.com/joyent/node/issues/1467) tls: La API de TLS es inconsistente con la API de TCP (koichik)
@@ -2099,17 +2131,19 @@ https://github.com/nodejs/node/commit/220e61c1f65bf4db09699fcf6399c0809c0bc446
 
 https://github.com/nodejs/node/commit/3bd9b08fb125b606f97a4079b147accfdeebb07d
 
-* interfaz de fs.watch respaldada por kqueue, inotify, y ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
+* fs.watch interface backed by kqueue, inotify, and ReadDirectoryChangesW (Igor Zinkovsky, Ben Noordhuis)
 
 * añadir dns.resolveTxt (Christian Tellnes)
+
 * Remover librería http heredada (Ben Noordhuis)
 * child_process.fork devuelve y funciona en Windows. Permite pasar handles. (Igor Zinkovsky, Bert Belder)
 
-* [#1774](https://github.com/joyent/node/issues/1774) Hacer lint y limpiar para --harmony_block_scoping (Tyler Larson, Colton Baker)
+* [#1774](https://github.com/joyent/node/issues/1774) Lint and clean up for --harmony_block_scoping (Tyler Larson, Colton Baker)
 
 * [#1813](https://github.com/joyent/node/issues/1813) Arreglar ctrl+c en Windows (Bert Belder)
+
 * [#1844](https://github.com/joyent/node/issues/1844) des-romper --use-legacy (Ben Noordhuis)
-* process.stderr ahora pasa a través de libuv. Tanto process.stdout como process.stderr bloquean al referenciar un TTY.
+* process.stderr ahora pasa a través de libuv. Both process.stdout and process.stderr are blocking when referencing a TTY.
 
 * Mejoras de rendimiento de net_uv (Ben Noordhuis, Bert Belder)
 
@@ -2140,18 +2174,20 @@ https://github.com/nodejs/node/commit/558241166c4f3c516e5a448e676db0b57119212f
 * Mejorar compatibilidad de Windows
 * Mejoras de documentación
 * Mejoras de depurador y REPL (Fedor Indutny)
-* Añadir soporte para API heredada: net.Stream(fd), process.stdout.writable, process.stdout.fd
+* Add legacy API support: net.Stream(fd), process.stdout.writable, process.stdout.fd
 
 * Arreglar el manejo de EEXIST de mkdir (isaacs)
+
 * Usar net_uv en lugar de net_legacy para stdio
 * No cargar readline desde util.inspect
 * [#1673](https://github.com/joyent/node/issues/1673) Reparar bug relacionado al contexto de V8 con accesores (Fedor Indutny)
 * [#1634](https://github.com/joyent/node/issues/1634) util: Reparar inspección por Error (koichik)
-* [#1645](https://github.com/joyent/node/issues/1645) fs: Añadir función de escritura de archivos posicionada a fs.WriteStream (Thomas Shinnick)
+* [#1645](https://github.com/joyent/node/issues/1645) fs: Add positioned file writing feature to fs.WriteStream (Thomas Shinnick)
 
-* [#1637](https://github.com/joyent/node/issues/1637) fs: Corregida la revisión sin protección de la caché de fs.watchFile por statWatchers (Thomas Shinnick)
+* [#1637](https://github.com/joyent/node/issues/1637) fs: Unguarded fs.watchFile cache statWatchers checking fixed (Thomas Shinnick)
 
 * [#1695](https://github.com/joyent/node/issues/1695) Enviar customFds también a ChildProcess.spawn
+
 * [#1707](https://github.com/joyent/node/issues/1707) Corregir problema de seguridad de hasOwnProperty en querystring (isaacs)
 * [#1719](https://github.com/joyent/node/issues/1719) Drenar cola de error de OpenSSL
 
@@ -2161,27 +2197,30 @@ https://github.com/nodejs/node/commit/558241166c4f3c516e5a448e676db0b57119212f
 
 https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
-* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Mejoras de documentación (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
+* [#345](https://github.com/joyent/node/issues/345), [#1635](https://github.com/joyent/node/issues/1635), [#1648](https://github.com/joyent/node/issues/1648) Documentation improvements (Thomas Shinnick, Abimanyu Raja, AJ ONeal, Koichi Kobayashi, Michael Jackson, Logan Smyth, Ben Noordhuis)
 
 * [#650](https://github.com/joyent/node/issues/650) Mejorar el análisis de rutas en windows (Bert Belder)
-* [#752](https://github.com/joyent/node/issues/752) Remover revisión de envío de cabeceras en OutgoingMessage.getHeader() (Peter Lyons)
 
-* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Fueron reparados bugs relacionados con libuv (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
+* [#752](https://github.com/joyent/node/issues/752) Remove headers sent check in OutgoingMessage.getHeader() (Peter Lyons)
+
+* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Libuv-related bugs fixed (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
 
 * [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Arreglar uso de BIO's. (Koichi Kobayashi)
+
 * [#1345](https://github.com/joyent/node/issues/1345) Establecer correctamente socket.remoteAddress con backend de libuv (Bert Belder)
 * [#1429](https://github.com/joyent/node/issues/1429) No sobrescribir modo de edición rápida en windows (Peter Bright)
 * [#1503](https://github.com/joyent/node/issues/1503) Hacer que el backend de libuv esté predeterminado en unix, solapar con `node --use-legacy`
 * [#1565](https://github.com/joyent/node/issues/1565) Arreglar fs.stat para rutas que terminen en \ en windows (Igor Zinkovsky)
 * [#1568](https://github.com/joyent/node/issues/1568) Reparar análisis de sujeto de certificado x509 (Koichi Kobayashi)
 * [#1586](https://github.com/joyent/node/issues/1586) Hacer que la codificación de escritura de los sockets sea indiferente a mayúsculas y minúsculas (Koichi Kobayashi)
-* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implementar fs en libuv, remover libeio y dependencia de pthread-win32 en windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
+* [#1591](https://github.com/joyent/node/issues/1591), [#1656](https://github.com/joyent/node/issues/1656), [#1657](https://github.com/joyent/node/issues/1657) Implement fs in libuv, remove libeio and pthread-win32 dependency on windows (Igor Zinkovsky, Ben Noordhuis, Ryan Dahl, Isaac Schlueter)
 
-* [#1592](https://github.com/joyent/node/issues/1592) No hacer "load-time" al link en oposición a CreateSymbolicLink en windows (Peter Bright)
+* [#1592](https://github.com/joyent/node/issues/1592) Don't load-time link against CreateSymbolicLink on windows (Peter Bright)
 
-* [#1601](https://github.com/joyent/node/issues/1601) Mejorar consistencia de las API al lidiar con el socket subyacente a una petición de cliente HTTP (Mikeal Rogers)
+* [#1601](https://github.com/joyent/node/issues/1601) Improve API consistency when dealing with the socket underlying a HTTP client request (Mikeal Rogers)
 
 * [#1610](https://github.com/joyent/node/issues/1610) Remover autoridad de certificación DigiNotar de la lista de confiables (Isaac Schlueter)
+
 * [#1617](https://github.com/joyent/node/issues/1617) Algunas funciones os de win32 fueron añadidas (Karl Skomski)
 * [#1624](https://github.com/joyent/node/issues/1624) evitar el solapamiento del buffer con codificación "binary" (Koichi Kobayashi)
 * [#1633](https://github.com/joyent/node/issues/1633) hacer que Buffer.write() siempre set _charsWritten (Koichi Kobayashi)
@@ -2189,16 +2228,19 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 * [#1651](https://github.com/joyent/node/issues/1651) mejorar inspección para arreglo disperso (sparse array) (Koichi Kobayashi)
 * [#1672](https://github.com/joyent/node/issues/1672) establecer .code='ECONNRESET' ante errores de colgado en socket (Ben Noordhuis)
 * Añadir caso de prueba para el certificado de cliente foaf+ssl (Niclas Hoyer)
-* Variable de ambiente RPATH añadida para solapar rutas de librería de tiempo de ejecución (Ashok Mudukutore)
+* Added RPATH environment variable to override run-time library paths (Ashok Mudukutore)
 
 * Añadido soporte para reanudación de sesión de client-side de TLS (Sean Cunningham)
-* Añadidas propiedades adicionales a getPeerCertificate (Nathan Rixham, Niclas Hoyer)
+
+* Added additional properties to getPeerCertificate (Nathan Rixham, Niclas Hoyer)
 
 * No evaluar comando repl dos veces cuando se arroje un error (Nathan Rajlich)
+
 * Mejorar util.isDate() (Nathan Rajlich)
-* Mejoras en backend y enlazados de libuv, actualizar libuv a bd6066cb349a9b3a1b0d87b146ddaee06db31d10
+* Improvements in libuv backend and bindings, upgrade libuv to bd6066cb349a9b3a1b0d87b146ddaee06db31d10
 
 * Mostrar advertencia al usar lib/sys.js (Maciej Malecki)
+
 * Soportar signo más (+) en protocolo de url (Maciej Malecki)
 * Actualizar V8 a 3.6.2
 
@@ -2218,17 +2260,20 @@ https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 * [#1546](https://github.com/joyent/node/issues/1546) corregir regresión de rendimiento en módulo http (reportado por Brian Geffon)
 * [#1491](https://github.com/joyent/node/issues/1491) añadir soporte de crypto PBKDF2 (Glen Low)
 * [#1447](https://github.com/joyent/node/issues/1447) remover función http.cat() desaprobada (Mikeal Rogers)
-* [#1140](https://github.com/joyent/node/issues/1140) reparar envío incorrecto del argumento de nombre de archivo de vm.runInContext (Antranig Basman)
+* [#1140](https://github.com/joyent/node/issues/1140) fix incorrect dispatch of vm.runInContext's filename argument (Antranig Basman)
 
 * [#1140](https://github.com/joyent/node/issues/1140) documentar vm.runInContext() y vm.createContext() (Antranig Basman)
+
 * [#1428](https://github.com/joyent/node/issues/1428) arreglar os.freemem() en freebsd de 64 bits (Artem Zaytsev)
-* [#1164](https://github.com/joyent/node/issues/1164) hacer que todas las búsquedas de DNS sean asincrónicas, repara excepciones no atrapables (Koichi Kobayashi)
+* [#1164](https://github.com/joyent/node/issues/1164) make all DNS lookups async, fixes uncatchable exceptions (Koichi Kobayashi)
 
 * corregir revisión incorrecta del cierre de ssl (Tom Hughes)
+
 * varias correcciones de cmake (Tom Hughes)
-* documentación mejorada (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
+* improved documentation (Koichi Kobayashi, Logan Smyth, Fedor Indutny, Mikeal Rogers, Maciej Małecki, Antranig Basman, Mickaël Delahaye)
 
 * actualizar libuv a commit 835782a
+
 * actualizar V8 a 3.5.8
 
 <a id="0.5.4"></a>
@@ -2238,17 +2283,20 @@ https://github.com/nodejs/node/commit/d2d53d4bb262f517a227cc178a1648094ba54c20
 https://github.com/nodejs/node/commit/cfba1f59224ff8602c3fe9145181cad4c6df89a9
 
 * mejoras de compatibilidad de libuv/Windows
-* Compilar en Microsoft Visual Studio a través de GYP. Usar generate-projects.bat en los archivos "to build" de snl. (Peter Bright, Igor Zinkovsky)
+* Compilar en Microsoft Visual Studio a través de GYP. Use generate-projects.bat in the to build sln files. (Peter Bright, Igor Zinkovsky)
 
-* Hacer que el agente de cliente HTTP de Mikeal sea el predeterminado. Usar viejo cliente HTTP con --use-http1
+* Hacer que el agente de cliente HTTP de Mikeal sea el predeterminado. Use old HTTP client with --use-http1
 
 * Corrige el manejo de puerto predeterminado de la cabecera de host de http. (Mikeal Rogers)
-* [#1440](https://github.com/joyent/node/issues/1440) hacer strip al orden de los bytes al cargar archivos `*.js` y `*.json` files (Ben Noordhuis)
+
+* [#1440](https://github.com/joyent/node/issues/1440) strip byte order marker when loading `*.js` and `*.json` files (Ben Noordhuis)
 
 * [#1434](https://github.com/joyent/node/issues/1434) Mejorar compatibilidad de util.format() con navegador. (Koichi Kobayashi)
-* Proporcionar puntos de entrada de uint sin revisar para métodos Buffer.read/writeInt de enteros. (Robert Mustacchi)
+
+* Provide unchecked uint entry points for integer Buffer.read/writeInt methods. (Robert Mustacchi)
 
 * Mejoras de CMake (Tom Huges)
+
 * Actualizar V8 a 3.5.4.
 
 <a id="0.5.3"></a>
@@ -2259,20 +2307,23 @@ https://github.com/nodejs/node/commit/4585330afef44ddfb6a4054bd9b0f190b352628b
 
 * Mejorar encriptación/descifrado de crypto con Base64. (SAWADA Tadashi)
 * [#243](https://github.com/joyent/node/issues/243) Añadir un argumento de longitud opcional a Buffer.write() (koichik)
-* [#657](https://github.com/joyent/node/issues/657) convertir datos no-buffer a string en fs.writeFile/Sync (Daniel Pihlström)
+* [#657](https://github.com/joyent/node/issues/657) convert nonbuffer data to string in fs.writeFile/Sync (Daniel Pihlström)
 
 * Añadir process.features, remover process.useUV (Ben Noordhuis)
-* [#324](https://github.com/joyent/node/issues/324) Arreglar hmac de crypto para que acepte claves binarias + añadir casos de prueba desde rfc 2202 y 4231 (Stefan Bühler)
+
+* [#324](https://github.com/joyent/node/issues/324) Fix crypto hmac to accept binary keys + add test cases from rfc 2202 and 4231 (Stefan Bühler)
 
 * Añadir Socket::bytesRead, Socket::bytesWritten (Alexander Uvarov)
+
 * [#572](https://github.com/joyent/node/issues/572) No imprimir resultado de --eval en CLI (Ben Noordhuis)
 * [#1223](https://github.com/joyent/node/issues/1223) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces (koichik)
 * [#1383](https://github.com/joyent/node/issues/1383) Emitir "close" luego de que todas las conexiones se han cerrado (Felix Geisendörfer)
 * Añadir función util.format() similar a sprintf (Ben Noordhuis)
 * Añadir soporte para SNI de TLS (Fedor Indutny)
-* Nueva implementación de agente http. Desactivado por defecto, la bandera de línea de comando use-http2 lo activará. "make test-http2" ejecutará las pruebas para la nueva implementación. (Mikeal Rogers)
+* Nueva implementación de agente http. Off by default the command line flag --use-http2 will enable it. "make test-http2" will run the tests for the new implementation. (Mikeal Rogers)
 
 * Revertir compatibilidad de AMD. (isaacs)
+
 * Windows: mejoras, soporte para child_process.
 * Remover archivo pkg-config.
 * Corregir regresiones del tiempo de arranque.
@@ -2302,9 +2353,10 @@ https://github.com/nodejs/node/commit/08ffce1a00dde1199174b390a64a90b60768ddf5
 https://github.com/nodejs/node/commit/f8bfa54d0fa509f9242637bef2869a1b1e842ec8
 
 * [#1233](https://github.com/joyent/node/issues/1233) Reparar os.totalmem en amd64 de FreeBSD (Artem Zaytsev)
-* [#1149](https://github.com/joyent/node/issues/1149) Soporte de IDNA y Punycode en url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
+* [#1149](https://github.com/joyent/node/issues/1149) IDNA and Punycode support in url.parse (Jeremy Selier, Ben Noordhuis, isaacs)
 
 * Exportar $CC y $CXX a sistemas de compilación de uv y V8
+
 * Incluir librerías estáticas de pthread-win32 en el build (Igor Zinkovsky)
 * [#1199](https://github.com/joyent/node/issues/1199), [#1094](https://github.com/joyent/node/issues/1094) Arreglar que el fs no puede manejar archivo grande en plataforma de 64bit (koichik)
 * [#1281](https://github.com/joyent/node/issues/1281) Hacer que "require" sea un miembro público del módulo (isaacs)
@@ -2322,17 +2374,19 @@ https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 * Nuevo backend de livub no predeterminado para soportar IOCP en Windows. Usar --use-uv para activar.
 
 * desaprobar http.cat
+
 * docs mejorados.
 * añadir child_process.fork
 * añadir soporte para fs.utimes() y fs.futimes() (Ben Noordhuis)
 * añadir process.uptime() (Tom Huges)
 * añadir path.relative (Tony Huang)
 * añadir os.getNetworkInterfaces()
-* añadir remoteAddress y remotePort para conexiones TCP del cliente (Brian White)
+* add remoteAddress and remotePort for client TCP connections (Brian White)
 
-* añadir bandera secureOptions flag, establecer cifrados, SSL_OP_CRYPTOPRO_TLSEXT_BUG a TLS (Theo Schlossnagle)
+* add secureOptions flag, setting ciphers, SSL_OP_CRYPTOPRO_TLSEXT_BUG to TLS (Theo Schlossnagle)
 
 * añadir process.arch (Nathan Rajlich)
+
 * añadir lectura/escritura de floats y dobles desde/hacia buffers (Brian White)
 * Permitir la lectura del script desde stdin
 * [#477](https://github.com/joyent/node/issues/477) añadir método Buffer::fill para hacer memset (Konstantin Käfer)
@@ -2340,9 +2394,10 @@ https://github.com/nodejs/node/commit/ae7ed8482ea7e53c59acbdf3cf0e0a0ae9d792cd
 * [#695](https://github.com/joyent/node/issues/695) añadir codificación "hex" al buffer (isaacs)
 * [#851](https://github.com/joyent/node/issues/851) Actualizar la forma en que REPLServer usa los contextos (Ben Weaver)
 * [#853](https://github.com/joyent/node/issues/853) añadir fs.lchow, fs.lchmod, fs.fchmod, fs.fchown (isaacs)
-* [#889](https://github.com/joyent/node/issues/889) Permitir la remoción de todos los listeners de EventEmitter al mismo tiempo (Felix Geisendörfer)
+* [#889](https://github.com/joyent/node/issues/889) Allow to remove all EventEmitter listeners at once (Felix Geisendörfer)
 
 * [#926](https://github.com/joyent/node/issues/926) Soporte para NPN de OpenSSL (Fedor Indutny)
+
 * [#955](https://github.com/joyent/node/issues/955) Cambiar el manejo de ^C en REPL (isaacs)
 * [#979](https://github.com/joyent/node/issues/979) Añadir a HTTP soporte para Sockets del Dominio de Unix (Mark Cavage)
 * [#1173](https://github.com/joyent/node/issues/1173) [#1170](https://github.com/joyent/node/issues/1170) añadir AMD, definición de módulo asíncrono (isaacs)
@@ -2372,9 +2427,10 @@ https://github.com/nodejs/node/commit/771ba34ca7b839add2ef96879e1ffc684813cf7c
 https://github.com/nodejs/node/commit/a745d19ce7d1c0e3778371af4f0346be70cf2c8e
 
 * [#738](https://github.com/joyent/node/issues/738) Reparar encriptación/descifrado con Base64. (SAWADA Tadashi)
-* [#1202](https://github.com/joyent/node/issues/1202) aplazo de eventos de error de búsqueda de DNS hasta el siguiente tick por net.createConnection (Ben Noordhuis)
+* [#1202](https://github.com/joyent/node/issues/1202) net.createConnection defer DNS lookup error events to next tick (Ben Noordhuis)
 
 * [#1374](https://github.com/joyent/node/issues/1374) arreglar el establecimiento de ServerResponse.statusCode en writeHead (Trent Mick)
+
 * [#1417](https://github.com/joyent/node/issues/1417) Corregir que http.ClientRequest colapsa si end() fue llamado dos veces
 * [#1497](https://github.com/joyent/node/issues/1497) querystring: Remplazar prueba "in" con "hasOwnProperty" (isaacs)
 * [#1546](https://github.com/joyent/node/issues/1546) mejora de rendimiento de http
@@ -2415,14 +2471,16 @@ https://github.com/nodejs/node/commit/de44eafd7854d06cd85006f509b7051e8540589b
 * [#562](https://github.com/joyent/node/issues/562) [#1078](https://github.com/joyent/node/issues/1078) Analizar correctamente urls file:// (Ryan Petrello)
 * [#880](https://github.com/joyent/node/issues/880) Opción para inhabilitar SSLv2 (Jérémy Lal)
 * [#1087](https://github.com/joyent/node/issues/1087) Deshabilitar compresión de SSL deshabilitada con OpenSSLs tempranos.
-* [#1144](https://github.com/joyent/node/issues/1144) debugger: no permitir que los usuarios ingresen comandos no válidos (Siddharth Mahendraker)
+* [#1144](https://github.com/joyent/node/issues/1144) debugger: don't allow users to input non-valid commands (Siddharth Mahendraker)
 
 * Mejora de rendimiento para util.inherits
-* [#1166](https://github.com/joyent/node/issues/1166) Soporte para verificación de firma con claves públicas RSA/DSA (Mark Cavage)
 
-* [#1177](https://github.com/joyent/node/issues/1177) Remover optimización de búsqueda de node_modules para mejorar el soporte para estructuras del proyecto anidadas (Mathias Buus)
+* [#1166](https://github.com/joyent/node/issues/1166) Support for signature verification with RSA/DSA public keys (Mark Cavage)
+
+* [#1177](https://github.com/joyent/node/issues/1177) Remove node_modules lookup optimization to better support nested project structures (Mathias Buus)
 
 * [#1203](https://github.com/joyent/node/issues/1203) Añadir scope.Close faltante a fs.sendfileSync
+
 * [#1187](https://github.com/joyent/node/issues/1187) Soportar múltiples cabeceras "link"
 * [#1196](https://github.com/joyent/node/issues/1196) Corregir que -e/--eval no puede cargar módulo desde node_modules (Koichi Kobayashi)
 * Actualizar V8 a 3.1.8.25, actualizar http-parser.
@@ -2437,20 +2495,23 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 * [#983](https://github.com/joyent/node/issues/983) Mejorar la detección de errores de JSON.parse en REPL (isaacs)
 * [#836](https://github.com/joyent/node/issues/836) Los errores del socket del agente burbujean hasta req solo si req existe
 * [#1041](https://github.com/joyent/node/issues/1041) Corregir tiempos de la revisión de fugas del listener de eventos (koichik)
-* [#1038](https://github.com/joyent/node/issues/1038) Arreglar dns.resolve() con «'PTR' throws Error: Unknown type "PTR"» (koichik)
+* [#1038](https://github.com/joyent/node/issues/1038) Fix dns.resolve() with 'PTR' throws Error: Unknown type "PTR" (koichik)
 
 * [#1073](https://github.com/joyent/node/issues/1073) Compartir contexto de SSL entre conexiones del servidor (Fedor Indutny)
+
 * Deshabilitar compresión OpenSSL. Mejora el rendimiento de la memoria.
 * Implementar os.totalmem() y os.freemem() para SunOS (Alexandre Marangone)
 * Corregir caracteres especiales en regresión de URL (isaacs)
 * Arreglar timeouts por inactividad en HTTPS (Felix Geisendörfer)
 * SlowBuffer.write() con "ucs2" arroja un ReferenceError. (koichik)
-* "close" de http.ServerRequest algunas veces obtiene un argumento de error (Felix Geisendörfer)
+* http.ServerRequest 'close' sometimes gets an error argument (Felix Geisendörfer)
 
 * Mejoras de doc
-* cleartextstream.destroy() debería hacer close(2) al socket. Previamente, estaba siendo mapeada hacia una syscall de shutdown(2).
+
+* cleartextstream.destroy() debería hacer close(2) al socket. Previously was being mapped to a shutdown(2) syscall.
 
 * Ya no compilar aserciones y declaraciones del depurador en la compilación normal.
+
 * Mejoras del depurador.
 * Actualizar V8 a 3.1.8.16.
 
@@ -2461,9 +2522,10 @@ https://github.com/nodejs/node/commit/7dd22c26e4365698dc3efddf138c4d399cb912c8
 https://github.com/nodejs/node/commit/c85455a954411b38232e79752d4abb61bb75031b
 
 * No emitir error ante ECONNRESET desde read() [#670](https://github.com/joyent/node/issues/670)
-* Corrección: Múltiples pipes dirigidas hacia el mismo stream estaban dañadas [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
+* Fix: Multiple pipes to the same stream were broken [#929](https://github.com/joyent/node/issues/929) (Felix Geisendörfer)
 
 * Correcciones de análisis/formateo de URL [#954](https://github.com/joyent/node/issues/954) (isaacs)
+
 * hacer que sea posible hacer repl.start('', stream) (Wade Simmons)
 * Añadir os.loadavg para SunOS (Robert Mustacchi)
 * Corregir timeouts con números de punto flotante [#897](https://github.com/joyent/node/issues/897) (Jorge Chamorro Bieling)
@@ -2476,16 +2538,18 @@ https://github.com/nodejs/node/commit/c85455a954411b38232e79752d4abb61bb75031b
 https://github.com/nodejs/node/commit/58002d56bc79410c5ff397fc0e1ffec0665db38a
 
 * No emitir error ante ENOTCONN desde shutdown() [#670](https://github.com/joyent/node/issues/670)
-* Auto-completado de built-in debugger sugiere coincidencia de prefijo en lugar de coincidencia parcial. (koichik)
+* Auto completion of built-in debugger suggests prefix match rather than partial match. (koichik)
 
 * referencia circular en módulos de vm. [#822](https://github.com/joyent/node/issues/822) (Jakub Lekstan)
+
 * response.readable de http debería ser falsa después de "end" [#867](https://github.com/joyent/node/issues/867) (Abe Fettig)
 * Implementar os.cpus() y os.uptime() en Solaris (Scott McWhirter)
-* fs.ReadStream: Permitir omisión de la opción de final para lecturas largas [#801](https://github.com/joyent/node/issues/801) (Felix Geisendörfer)
+* fs.ReadStream: Allow omission of end option for range reads [#801](https://github.com/joyent/node/issues/801) (Felix Geisendörfer)
 
-* Buffer.write() con UCS-2 no debería escribir caracteres parciales [#916](https://github.com/joyent/node/issues/916) (koichik)
+* Buffer.write() with UCS-2 should not be write partial char [#916](https://github.com/joyent/node/issues/916) (koichik)
 
 * Pasar secureProtocol durante la creación de tls.Server (Theo Schlossnagle)
+
 * Que TLS use RC4-SHA por defecto
 * No abandonar de manera extraña el bucle de evento ante cargas del cliente HTTPS [#892](https://github.com/joyent/node/issues/892)
 * Mejoras de doc
@@ -2526,15 +2590,17 @@ https://github.com/nodejs/node/commit/25122b986a90ba0982697b7abcb0158c302a1019
 
 https://github.com/nodejs/node/commit/c095ce1a1b41ca015758a713283bf1f0bd41e4c4
 
-* No disminuir el contador de conexiones del servidor si destroy() es llamada más de una vez GH-431 (Andreas Reich, Anders Conbere)
+* Don't decrease server connection counter again if destroy() is called more than once GH-431 (Andreas Reich, Anders Conbere)
 
 * Mejoras de documentación (koichik)
+
 * Corregir bug con setMaxListeners GH-682
 * Iniciar mejora de huella de memoria. (Tom Hughes)
 * Mejoras de Solaris.
-* Buffer::Length(Buffer*) no debe invocarse recursivamente a sí mismo GH-759 (Ben Noordhuis)
+* Buffer::Length(Buffer*) should not invoke itself recursively GH-759 (Ben Noordhuis)
 
 * TLS: Promocionar soporte para certificados de cliente GH-774 (Theo Schlossnagle)
+
 * Bugs del Agente de HTTP: GH-787, GH-784, GH-803.
 * No llamar a GetMemoryUsage cada 5 segundos.
 * Actualizar V8 a 3.1.8.3
@@ -2548,9 +2614,10 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 * Mejorar docs.
 * Arreglar caso extremo de process.on con evento de señal (Alexis Sellier)
 * Separación con comas en cabecera Pragma de HTTP
-* Además de "aborted", emitir "close" desde las peticiones entrantes (Felix Geisendörfer)
+* In addition to 'aborted' emit 'close' from incoming requests (Felix Geisendörfer)
 
 * Reparar memleak en vm.runInNewContext
+
 * No almacenar en caché a los módulos que arrojen excepciones (Felix Geisendörfer)
 * Cambios en el sistema de compilación para libnode (Aria Stewart)
 * Leer el prototipo del objeto "env". (Nathan Rajlich)
@@ -2572,9 +2639,10 @@ https://github.com/nodejs/node/commit/39280e1b5731f3fcd8cc42ad41b86cdfdcb6d58b
 
 https://github.com/nodejs/node/commit/e8aef84191bc2c1ba2bcaa54f30aabde7f03769b
 
-* Corregida la unión de campos con campos progresivos en writeHead() (TJ Holowaychuk)
+* Fixed field merging with progressive fields on writeHead() (TJ Holowaychuk)
 
 * Hacer que el repl respete las carpetas de node_modules (isaacs)
+
 * Arreglo para falla del DNS en petición de HTTP (Richard Rodger)
 * Enviar por defecto al puerto 80 para http.request y http.get.
 * Mejorar soporte de V8 para Cygwin (Bert Belder)
@@ -2594,10 +2662,12 @@ https://github.com/nodejs/node/commit/e8aef84191bc2c1ba2bcaa54f30aabde7f03769b
 https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 
 * Mejoras de require() (isaacs)
-  - entender package.json (isaacs)
-  - buscar el directorio "node_modules"
+  
+  * entender package.json (isaacs)
+  * buscar el directorio "node_modules"
 
 * Correcciones de cmake (Daniel Gröber)
+
 * http: corregir que el buffer escribe a los mensajes salientes (Russell Haering)
 * Exponer Codificación UCS-2 (Konstantin Käfer)
 * Soportar strings para los modos octales (isaacs)
@@ -2605,7 +2675,7 @@ https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 * mejoras de cygwin y mingw (Bert Belder)
 * Mejoras de TLS
 * Menos syscalls durante require (Bert Belder, isaacs)
-* Más sondas de DTrace (Bryan Cantrill,  Robert Mustacchi)
+* Más sondas de DTrace (Bryan Cantrill, Robert Mustacchi)
 * Evento "pipe" en pipe() (Mikeal Rogers)
 * Soporte de CRL en TLS (Theo Schlossnagle)
 * Métodos de manipulación de cabecera HTTP (Tim Caswell, Charlie Robbins)
@@ -2618,13 +2688,15 @@ https://github.com/nodejs/node/commit/eb155ea6f6a6aa341aa8c731dca8da545c6a4008
 https://github.com/nodejs/node/commit/9493b7563bff31525b4080df5aeef09747782d5e
 
 * Añadir eq.abort() para solicitudes laterales al cliente.
-* Añadir exception.code para pruebas sencillas: Ejemplo: if (err.code == 'EADDRINUSE');
+* Add exception.code for easy testing: Example: if (err.code == 'EADDRINUSE');
 
 * Añadir process.stderr.
+
 * require.main es el módulo principal. (Isaac Schlueter)
 * dgram: setMulticastTTL, setMulticastLoopback y addMembership. (Joe Walnes)
 
 * Corregir la regulación (throttling) en las conexiones de TLS
+
 * Añadir socket.bufferSize
 * Mejoras de MinGW (Bert Belder)
 * Actualizar V8 a 3.1.1
@@ -2648,6 +2720,7 @@ https://github.com/nodejs/node/commit/d8579c6afdbe868de6dffa8db78bbe4ba2d03e0e
 * require: La ID de un módulo con una barra diagonal al final debe ser un directorio. (isaacs)
 
 * Añadir ext_key_usage a getPeerCertificate (Greg Hughes)
+
 * Error cuando child_process.exec choca con maxBuffer.
 * Arreglar el análisis de opciones en tls.connect()
 * Actualizar a V8 3.0.10
@@ -2670,9 +2743,10 @@ https://github.com/nodejs/node/commit/bb3e71466e5240626d9d21cf791fe43e87d90011
 https://github.com/nodejs/node/commit/b622bc6305e3c675e0edfcdbaa387d849ad0bba0
 
 * Mejoras del depurador integrado.
-* Añadir opciones setsid, setuid, setgid a child_process.spawn (Isaac Schlueter)
+* Add setsid, setuid, setgid options to child_process.spawn (Isaac Schlueter)
 
 * Mejoras del módulo tty.
+
 * Actualizar libev a 4.3, libeio a su última versión, c-ares a 1.7.4
 * Permitir hooks de terceros antes de la carga del módulo principal. (Ver 496be457b6a2bc5b01ec13644b9c9783976159b2)
 
@@ -2688,7 +2762,7 @@ https://github.com/nodejs/node/commit/73f53e12e4a5b9ef7dbb4792bd5f8ad403094441
 * Servidor HTTPS
 * "node debug script.js" del depurador integrado
 * hacer "realpath" a los archivos durante la carga del módulo (Mihai Călin Bazon)
-* Renombrar net.Stream como net.Socket (el nombre existente continuará siendo soportado)
+* Rename net.Stream to net.Socket (existing name will continue to be supported)
 
 * Arreglar process.platform
 
@@ -2703,11 +2777,12 @@ https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 * Actualizar v8 a 3.0.4
 * Manejar ECONNABORT correctamente (Theo Schlossnagle)
 * Reparar fugas de memoria (Tom Hughes)
-* Añadir os.cpus(), os.freemem(), os.totalmem(), os.loadavg() y otras funciones para OSX, Linux, y Cygwin. (Brian White)
+* Add os.cpus(), os.freemem(), os.totalmem(), os.loadavg() and other functions for OSX, Linux, and Cygwin. (Brian White)
 
-* Reparar bug de error de sintaxis de REPL (GH-543), mejorar cómo son evaluados los comandos de REPL.
+* Fix REPL syntax error bug (GH-543), improve how REPL commands are evaluated.
 
 * Usar process.stdin en lugar de process.openStdin().
+
 * Deshabilitar pruebas de TLS cuando node no tenga OpenSSL.
 
 <a id="0.3.2"></a>
@@ -2716,24 +2791,27 @@ https://github.com/nodejs/node/commit/57544ba1c54c7d0da890317deeb73076350c5647
 
 https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
 
-* Quitar la vieja (dañada) implementación de TLS e introducir la nueva implementación y la API que ya fueron probadas. Ver docs. HTTPS no está soportado en esta versión.
+* Rip out the old (broken) TLS implementation introduce new tested implementation and API. Ver docs. HTTPS no está soportado en esta versión.
 
 * Introducir módulos "os" y "tty".
+
 * Parámetros de callback para socket.write() y socket.connect().
 * Soportar búsquedas de CNAME en el módulo DNS. (Ben Noordhuis)
 * Soporte para cmake (Tom Hughes)
 * "make lint"
 * Soporte para oprofile (./configure --oprofile)
 * Montones de reparaciones de bugs, incluyendo:
-  - Fuga de memoria en ChildProcess:Spawn(). (Tom Hughes)
-  - buffer.slice(0, 0)
-  - Fugas de la variable global
-  - clearTimeouts realizando múltiples llamadas (Michael W)
-  - Detección de estructuras circulares por utils.inspect (Tim Cooijmans)
-  - Bug de write() en hilo de Apple (Jorge Chamorro Bieling)
-  - Asegurarse de que el modo raw esté deshabilitado cuando exista un REPL con base en el terminal. (Brian White)
+  
+  * Fuga de memoria en ChildProcess:Spawn(). (Tom Hughes)
+  * buffer.slice(0, 0)
+  * Fugas de la variable global
+  * clearTimeouts realizando múltiples llamadas (Michael W)
+  * Detección de estructuras circulares por utils.inspect (Tim Cooijmans)
+  * Bug de write() en hilo de Apple (Jorge Chamorro Bieling)
+  * Asegurarse de que el modo raw esté deshabilitado cuando exista un REPL con base en el terminal. (Brian White)
 
 * Desaprobar process.compile, process.ENV
+
 * Actualizar V8 a 3.0.3, actualizar http-parser.
 
 <a id="0.3.1"></a>
@@ -2743,10 +2821,12 @@ https://github.com/nodejs/node/commit/4bb914bde9f3c2d6de00853353b6b8fc9c66143a
 https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 
 * Mejoras de TLS (Paul Querna)
-  - Centralizar manejo de errores en SecureStream
-  - Añadir SecurePair para el manejo de un stream de ssl/tls.
+  
+  * Centralizar manejo de errores en SecureStream
+  * Añadir SecurePair para el manejo de un stream de ssl/tls.
 
 * Nueva organización de la documentación (Micheil Smith)
+
 * allowHalfOpen para las conexiones TCP está deshabilitada por defecto.
 * Añadir API de C++ para la construcción de "fast buffer" desde string
 * Mover temporizadores inactivos adentro de su propio módulo
@@ -2754,11 +2834,13 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 * hacer evaluación "node --eval" en el ámbito global. (Jorge Chamorro Bieling)
 
 * Dejar que los listeners de salida conozcan el código de salida (isaacs)
+
 * Manejar los enlaces cíclicos en fs.realpath de una manera más inteligente (isaacs)
 * Remover node-repl (solo usar "node" sin args)
 * Rewrite libeio After callback to use req->result instead of req->errorno for error checking (Micheil Smith)
 
 * Remover advertencia sobre la depreciación de "sys" - demasiado agresiva
+
 * Hacer que las escrituras a process.env actualicen el ambiente real. (Ben Noordhuis)
 * Establecer bandera FD_CLOEXEC en el FD de stdio antes de hacer spawn. (Guillaume Tuton)
 * Mover ev_loop fuera de javascript
@@ -2766,14 +2848,16 @@ https://github.com/nodejs/node/commit/ce9a54aa1fbf709dd30316af8a2f14d83150e947
 * Soporte añadido para compilación cruzada (Rasmus Andersson)
 * Añadir bandera --profile al script de configuración, habilita el perfilado con gprof. (Ben Noordhuis)
 
-* writeFileSync podría mostrar un comportamiento patológico cuando un buffer no pueda ser escrito al archivo en una llamada write() sencilla.
+* writeFileSync could exhibit pathological behavior when a buffer could not be written to the file in a single write() call.
 
 * nuevo comportamiento de path.join (isaacs)
-  - Expresar en las pruebas el comportamiento deseado de path.join.
-  - Actualizar fs.realpath para que refleje el nuevo comportamiento de path.join
-  - Actualizar url.resolve() para que utilice el nuevo comportamiento de path.join.
+  
+  * Expresar en las pruebas el comportamiento deseado de path.join.
+  * Actualizar fs.realpath para que refleje el nuevo comportamiento de path.join
+  * Actualizar url.resolve() para que utilice el nuevo comportamiento de path.join.
 
 * API: mover process.binding('evals') a require('vm')
+
 * Arreglar compilación de V8 en Cygwin (Bert Belder)
 * Añadir ref al buffer durante fs.write y fs.read
 * Arreglar segfault en test-crypto
@@ -2791,6 +2875,7 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Arreglar process.nextTick para que los errores arrojados no lo confundan. (Benjamin Thomas)
 
 * Permitir Strings para puertos en net.Server.listen (Bradley Meck)
+
 * Reparaciones de bugs del fs (Tj Holowaychuk, Tobie Langel, Marco Rogers, isaacs)
 * Reparaciones de bug de http (Fedor Indutny, Mikeal Rogers)
 * Buffers más rápidos; genera ruptura de la API de C++ (Tim-Smart, Stéphan Kochen)
@@ -2800,13 +2885,15 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Trailers de HTTP (Mark Nottingham)
 * Soporte para 100-continue de http (Mark Nottingham)
 * Simplificaciones del sistema de módulos (Herbert Vojčík, isaacs, Tim-Smart)
-  - remover require.async
-  - remover registerExtension, añadir .extensions
-  - exponer require.resolve
-  - exponer require.cache
-  - requerir vistas en las carpetas de node_modules
+  
+  * remover require.async
+  * remover registerExtension, añadir .extensions
+  * exponer require.resolve
+  * exponer require.cache
+  * requerir vistas en las carpetas de node_modules
 
 * Añadir opción de línea de comandos --eval (TJ Holowaychuk)
+
 * Las comas al final en sys.inspect
 * Las constantes fueron movidas desde el objeto del proceso a require('constants')
 * Arreglar el análisis de la memoria de linux (Vitali Lovich)
@@ -2814,9 +2901,10 @@ https://github.com/nodejs/node/commit/1582cfebd6719b2d2373547994b3dca5c8c569c0
 * Casos límite de uncaughtException (Felix Geisendörfer)
 * Los clientes TCP ahora almacenan las escrituras en buffer antes de la conexión
 * Renombrar el módulo "sys" como "util" (Micheil Smith)
-* Establecer correctamente los manejadores de stdio para que bloqueen ante SIGTERM y SIGINT (Tom Hughes)
+* Properly set stdio handlers to blocking on SIGTERM and SIGINT (Tom Hughes)
 
 * Añadir métodos de destrucción para los mensajes HTTP
+
 * Mejoras de base64 (isaacs, Jorge Chamorro Bieling)
 * API para definir los comandos de REPL (Sami Samhuri)
 * Corrección de timeout de child_process.exec (Aaron Heckmann)
@@ -2861,9 +2949,10 @@ https://github.com/nodejs/node/commit/0b925d075d359d03426f0b32bb58a5e05825b4ea
 * Correcciones de base64. (Ben Noordhuis)
 * Corregir --debug-brk (Danny Coates)
 * No dejar que path.normalize llegue a estar por encima del root. (Isaac Schlueter)
-* Permitir que las señales sean usadas con process.on además de process.addListener. (Brian White)
+* Allow signals to be used with process.on in addition to process.addListener. (Brian White)
 
 * Globalizar el objeto Buffer
+
 * Usar kqueue en builds macintosh recientes
 * Corregir addrlen para sockets de unix_dgram (Benjamin Kramer)
 * Corregir stats.isDirectory() y amigas (Benjamin Kramer)
@@ -2876,11 +2965,12 @@ https://github.com/nodejs/node/commit/0b925d075d359d03426f0b32bb58a5e05825b4ea
 https://github.com/nodejs/node/commit/2a4568c85f33869c75ff43ccd30f0ec188b43eab
 
 * Codificación base64 para Buffers.
-* Soporte de Buffer para Cifrado, Descifrado, Hmac, Firma y Verificar (Andrew Naylor)
+* Buffer support for Cipher, Decipher, Hmac, Sign and Verify (Andrew Naylor)
 
 * Soporte para la lectura de rangos de bytes desde archivos utilizando fs.createReadStream. (Chandra Sekar)
 
 * Corregir Buffer.toString() ante porciones de 0 longitud. (Peter Griess)
+
 * Módulos de caché basados en "filename" en lugar de "ID" (Isaac Schlueter)
 * Mejoras de querystring (Jan Kassens, Micheil Smith)
 * Soportar DEL en el REPL. (Jérémy Lal)
@@ -2893,12 +2983,14 @@ https://github.com/nodejs/node/commit/2a4568c85f33869c75ff43ccd30f0ec188b43eab
 https://github.com/nodejs/node/commit/0174ceb6b24caa0bdfc523934c56af9600fa9b58
 
 * Añadido env a child_process.exec (Сергей Крыжановский)
-* Permitir que opcionalmente los módulos sean cargados en contextos separados con la variable de ambiente NODE_MODULE_CONTEXTS=1.
+* Allow modules to optionally be loaded in separate contexts with env var NODE_MODULE_CONTEXTS=1.
 
 * setTTL y setBroadcast para dgram (Matt Ranney)
-* Usar execPath para el NODE_PATH por defecto, no installPrefix (Isaac Schlueter)
+
+* Use execPath for default NODE_PATH, not installPrefix (Isaac Schlueter)
 
 * Soporte de console.dir + console.assert (Jerome Etienne)
+
 * on() como alias para addListener()
 * Utilizar puerto javascript de Ronn para compilar docs (érémy Lal)
 * Actualizar V8 a 2.3.0
@@ -2925,12 +3017,14 @@ https://github.com/nodejs/node/commit/a6b8586e947f9c3ced180fe68c233d0c252add8b
 https://github.com/nodejs/node/commit/a620b7298f68f68a855306437a3b60b650d61d78
 
 * Sockets de datagrama (Paul Querna)
-* fs.writeFile no podía manejar utf8 (Felix Geisendörfer) y ahora acepta Buffers (Aaron Heckmann)
+* fs.writeFile could not handle utf8 (Felix Geisendörfer) and now accepts Buffers (Aaron Heckmann)
 
 * Reparar fugas de memoria de crypto.
+
 * Un reemplazo para decodeURIComponent que no arroja. (Isaac Schlueter)
 
 * Solo concatenar algunas cabeceras HTTP entrantes. (Peter Griess)
+
 * Actualizar V8 a 2.2.18
 
 <a id="0.1.98"></a>
@@ -2941,9 +3035,9 @@ https://github.com/nodejs/node/commit/10d8adb08933d1d4cea60192c2a31c56d896733d
 
 * Conectar con puerto a Windows/Cygwin (Raffaele Sena)
 * Descriptor de archivos pasando sockets de unix. (Peter Griess)
-* Librería de readline integrada y simple. Ahora se accede al REPL ejecutando "node" sin argumentos.
+* Librería de readline integrada y simple. REPL is now entered by executing "node" without arguments.
 
-* Añadir a spawn() un parámetro que establezca los descriptores de archivo stdio del proceso secundario. (Orlando Vazquez)
+* Add a parameter to spawn() that sets the child's stdio file descriptors. (Orlando Vazquez)
 
 * Actualizar V8 a 2.2.16, correcciones de http-parser, actualizar c-ares a 1.7.3.
 
@@ -2953,9 +3047,10 @@ https://github.com/nodejs/node/commit/10d8adb08933d1d4cea60192c2a31c56d896733d
 
 https://github.com/nodejs/node/commit/0c1aa36835fa6a3557843dcbc6ed6714d353a783
 
-* regulación de HTTP: los mensajes de salida emiten "drain" y write() devuelve "false" cuando el buffer de envío está lleno.
+* HTTP throttling: outgoing messages emit 'drain' and write() returns false when send buffer is full.
 
 * API: ahora readFileSync sin argumento de codificación devuelve un Buffer
+
 * Mejorar API C++ de Buffer; los complementos ahora compilan con símbolos de depuración.
 * Mejoras a path.extname() y REPL; añadir fs.chown().
 * Ahora fs.ReadStream emite buffers, fs.readFileSync devuelve buffers.
@@ -2972,17 +3067,19 @@ https://github.com/nodejs/node/commit/9514a4d5476225e8c8310ce5acae2857033bcaaa
 * Los errores arrojados en http y las callbacks burbujean.
 * Aladir fs.fsync (Andrew Johnston)
 * Corrección de bug: emitir señal de eliminación de registro (Jonas Pfenniger)
-* Fueron añadidos mejores mensajes de error para las llamadas sincrónicas y asincrónicas del fs con rutas (TJ Holowaychuk)
+* Added better error messages for async and sync fs calls with paths (TJ Holowaychuk)
 
 * Soportar arrays y strings en el constructor de buffer. (Felix Geisendörfer)
 
 * Corregir el reporte de errno en las excepciones de DNS.
+
 * Soportar buffers en fs.WriteStream.write.
-* Corrección de buf: Decodificar de manera segura streams en utf8 que están rotos en un carácter multi-byte (http y net). (Felix Geisendörfer)
+* Bugfix: Safely decode a utf8 streams that are broken on a multbyte character (http and net). (Felix Geisendörfer)
 
 * Hacer que el constructor C++ de Buffer sea público.
+
 * Desaprobar sys.p()
-* FIX path.dirname('/tmp') => '/'. (Jonathan Rentzsch)
+* Corregir path.dirname('/tmp') => '/'. (Jonathan Rentzsch)
 
 <a id="0.1.95"></a>
 
@@ -2997,9 +3094,10 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 * Mejorar la lógica para probar si un argumento es un puerto
 * Mejorar el reporte de errores (errores "node.js:176:9" de una sola línea)
 * Corrección de bug: Algunas respuestas http estaban siendo truncadas (aparecido en 0.1.94)
-* Corregir bugs de agotamiento de tiempo de espera por inactividad en redes de larga duración. Establecer tiempo de espera de dos minutos por defecto en servidores HTTP.
+* Corregir bugs de agotamiento de tiempo de espera por inactividad en redes de larga duración. Enable 2 minute timeout by default in HTTP servers.
 
 * Añadir fs.fstat (Ben Noordhuis)
+
 * Actualizar a V8 2.2.9
 
 <a id="0.1.94"></a>
@@ -3008,18 +3106,19 @@ https://github.com/nodejs/node/commit/0914d33842976c2c870df06573b68f9192a1fb7a
 
 https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
-* Buscar módulos en /usr/local/lib/node, de modo que haya una forma de instalar módulos globalmente (Issac Schlueter)
+* Look in /usr/local/lib/node for modules, so that there's a way to install modules globally (Issac Schlueter)
 
 * Mejoras de SSL (Rhys Jones, Paulo Matias)
+
 * Fueron añadidas cabeceras de c-ares para el brazo de linux (Jonathan Knezek)
 * Añadir símbolos para el lanzamiento de la compilación
 * Mejoras de la actualización de HTTP, docs (Micheil Smith)
 * El servidor de HTTP emite "clientError" en lugar de imprimir mensaje
 * Corrección de bug: No emitir "error" dos veces desde http.Client
 * Corrección de bug: Ignorar SIGPIPE
-* Corrección de bug: hacer destroy() en lugar de end() sobre la conexión de http al final de la tubería
+* Bugfix: destroy() instead of end() http connection at end of pipeline
 
-* Corrección de bug: puede que http.Client sea soltado de vuelta en el pool libre.  (Thomas Lee)
+* Bugfix: http.Client may be prematurely released back to the free pool. (Thomas Lee)
 
 * Actualizar V8 a 2.2.8
 
@@ -3029,17 +3128,18 @@ https://github.com/nodejs/node/commit/f711d5343b29d1e72e87107315708e40951a7826
 
 https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
 
-  * Fixed no 'end' event on long chunked HTTP messages https://github.com/joyent/node/issues/77
-
-  * Remove legacy modules http_old and tcp_old
-  * Support DNS MX queries (Jérémy Lal)
-
-  * Fix large socket write (tlb@tlb.org)
-  * Fix child process exit codes (Felix Geisendörfer)
-
-  * Allow callers to disable PHP/Rails style parameter munging in querystring.stringify (Thomas Lee)
-
-  * Actualizar V8 a 2.2.6
+    * Fixed no 'end' event on long chunked HTTP messages https://github.com/joyent/node/issues/77
+    
+    * Remove legacy modules http_old and tcp_old
+    * Support DNS MX queries (Jérémy Lal)
+    
+    * Fix large socket write (tlb@tlb.org)
+    * Fix child process exit codes (Felix Geisendörfer)
+    
+    * Allow callers to disable PHP/Rails style parameter munging in querystring.stringify (Thomas Lee)
+    
+    * Upgrade V8 to 2.2.6
+    
 
 <a id="0.1.92"></a>
 
@@ -3047,15 +3147,17 @@ https://github.com/nodejs/node/commit/557ba6bd97bad3afe0f9bd3ac07efac0a39978c1
 
 https://github.com/nodejs/node/commit/caa828a242f39b6158084ef4376355161c14fe34
 
-  * Soporte para OpenSSL. Aún sin documentación (ver pruebas). (Rhys Jones)
-  * API: Unhandled 'error' events throw.
-
-  * Script class with eval-function-family in binding('evals') plus tests. (Herbert Vojcik)
-
-  * stream.setKeepAlive (Julian Lamb)
-  * Bugfix: Force no body on http 204 and 304
-
-  * Upgrade Waf to 1.5.16, V8 to 2.2.4.2
+    * Soporte para OpenSSL. Aún sin documentación (ver pruebas). (Rhis Jones)
+    * API: Los eventos de "error" sin manejar arrojan.
+    
+    * Clase de script con familia de función de evaluación en pruebas extra
+      de binding('evals'). (Herbert Vojcik)
+    
+    * stream.setKeepAlive (Julian Lamb)
+    * Corrección de bug: No forzar body en 204 y 304
+    
+    * Actualizar Waf a 1.5.16, V8 a 2.2.4.2
+    
 
 <a id="0.1.91"></a>
 
@@ -3063,19 +3165,21 @@ https://github.com/nodejs/node/commit/caa828a242f39b6158084ef4376355161c14fe34
 
 https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
 
-  * Añadir incoming.httpVersion
-  * Object.prototype problem with C-Ares binding
-
-  * REPL can be run from multiple different streams. (Matt Ranney)
-  * After V8 heap is compact, don't use a timer every 2 seconds.
-
-  * Mejorar la implementación de nextTick.
-  * Añadir soporte primitivo para Actualizar las conexiones HTTP. (See commit log for docs 760bba5)
-
-  * Add timeout and maxBuffer options to child_process.exec
-  * Fix bugs.
-
-  * Actualizar V8 a 2.2.3.1
+    * Añadir incoming.httpVersion
+    * Problema de Object.prototype con enlazado de C-Ares
+    
+    * REPL puede ejecutarse desde múltiples streams diferentes. (Matt Ranney)
+    * Luego de que el montículo de V8 esté compacto, no utilizar temporizador
+      cada dos segundos.
+    
+    * Mejorar la implementación de nextTick.
+    * Añadir soporte primitivo para Actualizar las conexiones HTTP. (Ver registro de commit para docs 760bba5)
+    
+    * Añadir opciones timeout y maxBuffer a child_process.exec
+    * Corregir bugs.
+    
+    * Actualizar V8 a 2.2.3.1
+    
 
 <a id="0.1.90"></a>
 
@@ -3083,20 +3187,21 @@ https://github.com/nodejs/node/commit/311d7dee19034ff1c6bc9098c36973b8d687eaba
 
 https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
-  * Merge writing of networking system (net2)
-   - New Buffer object for binary data.
-   - Support UNIX sockets, Pipes
-   - Uniform stream API
-   - Currently no SSL
-   - Legacy modules can be accessed at 'http_old' and 'tcp_old'
-
-  * Replace udns with c-ares. (Krishna Rajendran)
-  * New documentation system using Markdown and Ronn (Tim Caswell, Micheil Smith)
-
-  * Better idle-time GC
-  * Countless small bug fixes.
-
-  * Actualizar V8 a 2.2.X, WAF 1.5.15
+    * Unificar la escritura del sistema de red (net2)
+     - Nuevo objeto Buffer para datos binarios.
+     - Soportar sockets de UNIX, Pipes
+     - API para stream uniforme
+     - Actualmente no hay SSL
+     - Se puede acceder a los módulos heredados en 'http_old' y 'tcp_old'
+    
+    * Reemplazar udns con c-ares. (Krishna Rajendran)
+    * New documentation system using Markdown and Ronn (Tim Caswell, Micheil Smith)
+    
+    * Better idle-time GC
+    * Countless small bug fixes.
+    
+    * Actualizar V8 a 2.2.X, WAF 1.5.15
+    
 
 <a id="0.1.33"></a>
 
@@ -3104,11 +3209,12 @@ https://github.com/nodejs/node/commit/07e64d45ffa1856e824c4fa6afd0442ba61d6fd8
 
 https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
-  * Incluir lib/ directory en el ejecutable de node. Compilar bajo demanda.
-  * evalcx clean ups (Isaac Z. Schlueter, Tim-Smart)
-
-  * Various fixes, clean ups
-  * V8 upgraded to 2.1.5
+    * Incluir lib/ directory en el ejecutable de node. Compilar bajo demanda.
+    * Limpiezas de evalcx (Isaac Z. Schlueter, Tim-Smart)
+    
+    * Varias correcciones, limpiezas
+    * V8 actualizado a 2.1.5
+    
 
 <a id="0.1.32"></a>
 
@@ -3116,19 +3222,20 @@ https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
 https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
-  * Optimize event emitter for single listener
-  * Add process.evalcx, require.registerExtension (Tim Smart)
-
-  * Replace --cflags with --vars
-  * Fix bugs in fs.create*Stream (Felix Geisendörfer)
-
-  * Deprecate process.mixin, process.unloop
-  * Remove the 'Error: (no message)' exceptions, print stack trace instead
-
-  * INI parser bug fixes (Isaac Schlueter)
-  * FreeBSD fixes (Vanilla Hsu)
-
-  * Upgrade to V8 2.1.3, WAF 1.5.14a, libev
+    * Optimize event emitter for single listener
+    * Add process.evalcx, require.registerExtension (Tim Smart)
+    
+    * Replace --cflags with --vars
+    * Fix bugs in fs.create*Stream (Felix Geisendörfer)
+    
+    * Deprecate process.mixin, process.unloop
+    * Remove the 'Error: (no message)' exceptions, print stack trace instead
+    
+    * INI parser bug fixes (Isaac Schlueter)
+    * FreeBSD fixes (Vanilla Hsu)
+    
+    * Upgrade to V8 2.1.3, WAF 1.5.14a, libev
+    
 
 <a id="0.1.31"></a>
 
@@ -3136,25 +3243,26 @@ https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
 https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 
-  * API:
-    - Move process.watchFile into fs module
-    - Move process.inherits to sys
-
-  * Improve Solaris port
-  * tcp.Connection.prototype.write now returns boolean to indicate if argument was flushed to the kernel buffer.
-
-  * Added fs.link, fs.symlink, fs.readlink, fs.realpath (Rasmus Andersson)
-
-  * Add setgid,getgid (James Duncan)
-  * Improve sys.inspect (Benjamin Thomas)
-
-  * Allow passing env to child process (Isaac Schlueter)
-  * fs.createWriteStream, fs.createReadStream (Felix Geisendörfer)
-
-  * Add INI parser (Rob Ellis)
-  * Bugfix: fs.readFile handling encoding (Jacek Becela)
-
-  * Actualizar V8 a 2.1.2
+    * API:
+      - Move process.watchFile into fs module
+      - Move process.inherits to sys
+    
+    * Improve Solaris port
+    * tcp.Connection.prototype.write now returns boolean to indicate if argument was flushed to the kernel buffer.
+    
+    * Added fs.link, fs.symlink, fs.readlink, fs.realpath (Rasmus Andersson)
+    
+    * Add setgid,getgid (James Duncan)
+    * Improve sys.inspect (Benjamin Thomas)
+    
+    * Allow passing env to child process (Isaac Schlueter)
+    * fs.createWriteStream, fs.createReadStream (Felix Geisendörfer)
+    
+    * Add INI parser (Rob Ellis)
+    * Bugfix: fs.readFile handling encoding (Jacek Becela)
+    
+    * Upgrade V8 to 2.1.2
+    
 
 <a id="0.1.30"></a>
 
@@ -3162,20 +3270,21 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
 
 https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
-  * Major API Changes
-    - Promises removed. See http://groups.google.com/group/nodejs/msg/426f3071f3eec16b http://groups.google.com/group/nodejs/msg/df199d233ff17efa The API for fs was fs.readdir("/usr").addCallback(function (files) { puts("/usr files: " + files); }); It is now fs.readdir("/usr", function (err, files) { if (err) throw err; puts("/usr files: " + files); });
-    - Synchronous fs operations exposed, use with care.
-    - tcp.Connection.prototype.readPause() and readResume() renamed to pause() and resume()
-    - http.ServerResponse.prototype.sendHeader() renamed to writeHeader(). Ahora acepta reasonPhrase.
-
-  * Compactar la basura durante la inactividad.
-  * Configurable debug ports, and --debug-brk (Zoran Tomicic)
-
-  * Better command line option parsing (Jeremy Ashkenas)
-  * Add fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
-
-  * Fixes to process.mixin (Rasmus Andersson, Benjamin Thomas)
-  * Actualizar V8 a 2.1.1
+    * Cambios mayores de API
+      - Promesas removidas. See http://groups.google.com/group/nodejs/msg/426f3071f3eec16b http://groups.google.com/group/nodejs/msg/df199d233ff17efa The API for fs was fs.readdir("/usr").addCallback(function (files) { puts("/usr files: " + files); }); It is now fs.readdir("/usr", function (err, files) { if (err) throw err; puts("/usr files: " + files); });
+      - Synchronous fs operations exposed, use with care.
+      - tcp.Connection.prototype.readPause() and readResume() renamed to pause() and resume()
+      - http.ServerResponse.prototype.sendHeader() renamed to writeHeader(). Ahora acepta reasonPhrase.
+    
+    * Compactar la basura durante la inactividad.
+    * Puertos de depuración configurables, y --debug-brk (Zoran Tomicic)
+    
+    * Mejor análisis de opciones de la línea de comandos (Jeremy Ashkenas)
+    * Añadir fs.chmod (Micheil Smith), fs.lstat (Isaac Z. Schlueter)
+    
+    * Correcciones a process.mixin (Rasmus Andersson, Benjamin Thomas)
+    * Actualizar V8 a 2.1.1
+    
 
 <a id="0.1.29"></a>
 
@@ -3183,34 +3292,36 @@ https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
 https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
 
-  * Major API Changes
-    - Remove 'file' module
-    - require('posix') -----------------> require('fs')
-    - fs.cat ---------------------------> fs.readFile
-    - file.write -----------------------> fs.writeFile
-    - TCP 'receive' event --------------> 'data'
-    - TCP 'eof' event ------------------> 'end'
-    - TCP send() -----------------------> write()
-    - HTTP sendBody() ------------------> write()
-    - HTTP finish() --------------------> close()
-    - HTTP 'body' event ----------------> 'data'
-    - HTTP 'complete' event ------------> 'end'
-    - http.Client.prototype.close() (formerly finish()) no longer takes an argument. Añadir manualmente el listener de "response".
-    - Allow strings for the flag argument to fs.open ("r", "r+", "w", "w+", "a", "a+")
-
-  * Added multiple arg support for sys.puts(), print(), etc. (tj@vision-media.ca)
-
-  * sys.inspect(Date) now shows the date value (Mark Hansen)
-  * Calculate page size with getpagesize for armel (Jérémy Lal)
-
-  * Bugfix: stderr flushing.
-  * Bugfix: Promise late chain (Yuichiro MASUI)
-
-  * Bugfix: wait() on fired promises (Felix Geisendörfer, Jonas Pfenniger)
-
-  * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for accessor methods. Este estaba causando un colapso con el depurador Eclipse. (Zoran Tomicic)
-
-  * Bugfix: Throw from connection.connect if resolving. (Reportado por James Golick)
+    * Major API Changes
+      - Remove 'file' module
+      - require('posix') -----------------> require('fs')
+      - fs.cat ---------------------------> fs.readFile
+      - file.write -----------------------> fs.writeFile
+      - TCP 'receive' event --------------> 'data'
+      - TCP 'eof' event ------------------> 'end'
+      - TCP send() -----------------------> write()
+      - HTTP sendBody() ------------------> write()
+      - HTTP finish() --------------------> close()
+      - HTTP 'body' event ----------------> 'data'
+      - HTTP 'complete' event ------------> 'end'
+      - http.Client.prototype.close() (formerly finish()) no longer takes an argument. Añadir manualmente el listener de "response".
+      - Allow strings for the flag argument to fs.open ("r", "r+", "w", "w+", "a", "a+")
+    
+    * Added multiple arg support for sys.puts(), print(), etc. (tj@vision-media.ca)
+    
+    * sys.inspect(Date) ahora muestra el valor de la fecha (Mark Hansen)
+    * Calcular tamaño de página con getpagesize para armel (Jérémy Lal)
+    
+    * Corrección de bug: flushing de stderr.
+    * Bugfix: Promise late chain (Yuichiro MASUI)
+    
+    * Bugfix: wait() on fired promises (Felix Geisendörfer, Jonas Pfenniger)
+    
+    * Bugfix: Use InstanceTemplate() instead of PrototypeTemplate() for accessor methods. Este estaba causando un
+      colapso con el depurador Eclipse. (Zoran Tomicic)
+    
+    * Corrección de bug: Arrojar desde connection.connect si se resuelve. (Reportado por James Golick)
+    
 
 <a id="0.1.28"></a>
 
@@ -3218,17 +3329,18 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
 
 https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 
-  * Utilizar jsmin.py de Google, el cual puede ser usado para mal.
-  * Añadir posix.truncate()
-
-  * Throw errors from server.listen()
-  * stdio bugfix (test by Mikeal Rogers)
-
-  * Module system refactor (Felix Geisendörfer, Blaine Cook)
-  * Add process.setuid(), getuid() (Michael Carter)
-
-  * sys.inspect refactor (Tim Caswell)
-  * Multipart library rewrite (isaacs)
+    * Utilizar jsmin.py de Google, el cual puede ser usado para mal.
+    * Añadir posix.truncate()
+    
+    * Arrojar errores desde server.listen()
+    * Corrección de bug de stdio (prueba por Mikeal Rogers)
+    
+    * Refactorización del sistema de módulos (Felix Geisendörfer, Blaine Cook)
+    * Añadir process.setuid(), getuid() (Michael Carter)
+    
+    * Refactorización de sys.inspect (Tim Caswell)
+    * Reescribir librería multipartes (isaacs)
+    
 
 <a id="0.1.27"></a>
 
@@ -3236,26 +3348,27 @@ https://github.com/nodejs/node/commit/49de41ef463292988ddacfb01a20543b963d9669
 
 https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
-  * Implemented __dirname (Felix Geisendörfer)
-  * Downcase process.ARGV, process.ENV, GLOBAL (now process.argv, process.env, global)
-
-  * Bug Fix: Late promise promise callbacks firing (Felix Geisendörfer, Jonas Pfenniger)
-
-  * Make assert.AssertionError instance of Error
-  * Removed inline require call for querystring (self@cloudhead.net)
-
-  * Add support for MX, TXT, and SRV records in DNS module. (Blaine Cook)
-
-  * Bugfix: HTTP client automatically reconnecting
-  * Adding OS X .dmg build scripts. (Standa Opichal)
-
-  * Bugfix: ObjectWrap memory leak
-  * Bugfix: Multipart handle Content-Type headers with charset (Felix Geisendörfer)
-
-  * Upgrade http-parser to fix header overflow attack.
-  * Actualizar V8 a 2.1.0
-
-  * Various other bug fixes, performance improvements.
+    * Implemented __dirname (Felix Geisendörfer)
+    * Downcase process.ARGV, process.ENV, GLOBAL (now process.argv, process.env, global)
+    
+    * Bug Fix: Late promise promise callbacks firing (Felix Geisendörfer, Jonas Pfenniger)
+    
+    * Make assert.AssertionError instance of Error
+    * Removed inline require call for querystring (self@cloudhead.net)
+    
+    * Add support for MX, TXT, and SRV records in DNS module. (Blaine Cook)
+    
+    * Corrección de bug: Reconexión automática del cliente HTTP
+    * Adición de scripts de compilación .dmg para OS X. (Standa Opichal)
+    
+    * Bugfix: ObjectWrap memory leak
+    * Bugfix: Multipart handle Content-Type headers with charset (Felix Geisendörfer)
+    
+    * Upgrade http-parser to fix header overflow attack.
+    * Actualizar V8 a 2.1.0
+    
+    * Otras correcciones de bugs varias, mejoras de rendimiento.
+    
 
 <a id="0.1.26"></a>
 
@@ -3263,21 +3376,22 @@ https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
 https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
-  * Bugfix, HTTP eof causing crash (Ben Williamson)
-  * Better error message on SyntaxError
-
-  * API: Move Promise and EventEmitter into 'events' module
-  * API: Add process.nextTick()
-
-  * Allow optional params to setTimeout, setInterval (Micheil Smith)
-
-  * API: change some Promise behavior (Felix Geisendörfer)
-    - Removed Promise.cancel()
-    - Support late callback binding
-    - Make unhandled Promise errors throw an exception
-
-  * Actualizar V8 a 2.0.6.1
-  * Solaris port (Erich Ocean)
+    * Bugfix, HTTP eof causing crash (Ben Williamson)
+    * Better error message on SyntaxError
+    
+    * API: Move Promise and EventEmitter into 'events' module
+    * API: Add process.nextTick()
+    
+    * Allow optional params to setTimeout, setInterval (Micheil Smith)
+    
+    * API: change some Promise behavior (Felix Geisendörfer)
+      - Removed Promise.cancel()
+      - Support late callback binding
+      - Make unhandled Promise errors throw an exception
+    
+    * Upgrade V8 to 2.0.6.1
+    * Solaris port (Erich Ocean)
+    
 
 <a id="0.1.25"></a>
 
@@ -3285,16 +3399,18 @@ https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
 https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
-  * sys.inspect() improvements (Tim Caswell)
-  * path module improvements (isaacs, Benjamin Thomas)
-
-  * API: request.uri -> request.url It is no longer an object, but a string. The 'url' module was added to parse that string. That is, node no longer parses the request URL automatically. require('url').parse(request.url) is roughly equivalent to the old request.uri object. (isaacs)
-
-  * Bugfix: Several libeio related race conditions.
-  * Better errors for multipart library (Felix Geisendörfer)
-
-  * Bugfix: Update node-waf version to 1.5.10
-  * getmem for freebsd (Vanilla Hsu)
+    * sys.inspect() improvements (Tim Caswell)
+    * path module improvements (isaacs, Benjamin Thomas)
+    
+    * API: request.uri -> request.url It is no longer an object, but a string. The 'url' module was added to parse that string. That is, node no longer parses the request URL automatically. require('url').parse(request.url) is roughly equivalent to the old request.uri object. (isaacs)
+    
+    * Corrección de bug: Varias condiciones de carrera relacionadas con
+      libeio.
+    * Mejorar errores para la librería multipartes (Felix Geisendörfer)
+    
+    * Corrección de bug: Actualizar versión de node-waf a 1.5.10
+    * getmem para freebsd (Vanilla Hsu)
+    
 
 <a id="0.1.24"></a>
 
@@ -3302,13 +3418,14 @@ https://github.com/nodejs/node/commit/39ca93549af91575ca9d4cbafd1e170fbcef3dfa
 
 https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
-  * Bugfix: don't chunk responses to HTTP/1.0 clients, even if they send Connection: Keep-Alive (e.g. wget)
-
-  * Bugfix: libeio race condition
-  * Bugfix: Don't segfault on unknown http method
-
-  * Simplify exception reporting
-  * Actualizar V8 a 2.0.5.4
+    * Bugfix: don't chunk responses to HTTP/1.0 clients, even if they send Connection: Keep-Alive (e.g. wget)
+    
+    * Bugfix: libeio race condition
+    * Bugfix: Don't segfault on unknown http method
+    
+    * Simplify exception reporting
+    * Upgrade V8 to 2.0.5.4
+    
 
 <a id="0.1.23"></a>
 
@@ -3316,10 +3433,11 @@ https://github.com/nodejs/node/commit/642c2773a7eb2034f597af1cd404b9e086b59632
 
 https://github.com/nodejs/node/commit/f91e347eeeeac1a8bd6a7b462df0321b60f3affc
 
-  * Bugfix: require("../blah") issues (isaacs)
-  * Bugfix: posix.cat (Jonas Pfenniger)
-
-  * Do not pause request for multipart parsing (Felix Geisendörfer)
+    * Corrección de bug: problemas con require("../blah") (isaacs)
+    * Corrección de bug: posix.cat (Jonas Pfenniger)
+    
+    * No pausar la solicitud de análisis multipartes (Felix Geisendörfer)
+    
 
 <a id="0.1.22"></a>
 
@@ -3327,23 +3445,28 @@ https://github.com/nodejs/node/commit/f91e347eeeeac1a8bd6a7b462df0321b60f3affc
 
 https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
 
-  * Bugfix: child modules get wrong id with "index.js" (isaacs)
-  * Bugfix: require("../foo") cycles (isaacs)
-
-  * Bugfix: require() should throw error if module does.
-  * New URI parser stolen from Narwhal (isaacs)
-
-  * Bugfix: correctly check kqueue and epoll. (Rasmus Andersson)
-  * Upgrade WAF to 1.5.10
-
-  * Bugfix: posix.statSync() was crashing
-  * Statically define string symbols for performance improvement
-
-  * Bugfix: ARGV[0] weirdness
-  * Added superCtor to ctor.super_ instead superCtor.prototype. (Johan Dahlberg)
-
-  * http-parser supports webdav methods
-  * API: http.Client.prototype.request() (Christopher Lenz)
+    * Corrección de bug: los módulos hijo obtienen una id incorrecta
+      con "index.js" (isaacs)
+    * Corrección de bug: ciclos de require("../foo") (isaacs)
+    
+    * Corrección de bug: require() debe arrojar un error si el módulo
+      lo hace.
+    * Nuevo analizador de URI robado de Narwhal (isaacs)
+    
+    * Corrección de bug: revisar kqueue y epoll de manera correcta
+     (Rasmus Andersson)
+    * Actualizar WAF a 1.5.10
+    
+    * Corrección de bug: posix.statSync() estaba colapsando
+    * Definir estáticamente los símbolos de string para mejoras
+      de rendimiento.
+    
+    * Corrección de bug: Rareza de ARGV[0]
+    * Añadido superCtor a ctor.super_ en lugar de superCtor.prototype. (Johan Dahlberg)
+    
+    * http-parser soporta métodos webdav
+    * API: http.Client.prototype.request() (Christopher Lenz)
+    
 
 <a id="0.1.21"></a>
 
@@ -3351,16 +3474,19 @@ https://github.com/nodejs/node/commit/a2d809fe902f6c4102dba8f2e3e9551aad137c0f
 
 https://github.com/nodejs/node/commit/c6affb64f96a403a14d20035e7fbd6d0ce089db5
 
-  * Feature: Add HTTP client TLS support (Rhys Jones)
-  * Bugfix: use --jobs=1 with WAF
-
-  * Bugfix: Don't use chunked encoding for 1.0 requests
-  * Bugfix: Duplicated header weren't handled correctly
-
-  * Improve sys.inspect (Xavier Shay)
-  * Actualizar v8 a 2.0.3
-
-  * Use CommonJS assert API (Felix Geisendörfer, Karl Guertin)
+    * Novedad: Añadir soporte de TLS para el cliente HTTP (Rhys Jones)
+    * Corrección de bug: utilizar --jobs=1 con WAF
+    
+    * Corrección de bug: No utilizar codificación en pedazos para
+      solicitudes 1.0
+    * Corrección de bug: Las cabeceras duplicadas no eran manejadas
+      correctamente
+    
+    * Mejorar sys.inspect (Xavier Shay)
+    * Actualizar v8 a 2.0.3
+    
+    * Utilizar API de aserción de CommonJS (Felix Geisendörfer, Karl Guertin)
+    
 
 <a id="0.1.20"></a>
 
@@ -3368,10 +3494,11 @@ https://github.com/nodejs/node/commit/c6affb64f96a403a14d20035e7fbd6d0ce089db5
 
 https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
 
-  * Add gnutls version to configure script
-  * Add V8 heap info to process.memoryUsage()
-
-  * process.watchFile callback has 2 arguments with the stat object (choonkeat@gmail.com)
+    * Add gnutls version to configure script
+    * Add V8 heap info to process.memoryUsage()
+    
+    * process.watchFile callback has 2 arguments with the stat object (choonkeat@gmail.com)
+    
 
 <a id="0.1.19"></a>
 
@@ -3379,22 +3506,23 @@ https://github.com/nodejs/node/commit/aa42c6790da8ed2cd2b72051c07f6251fe1724d8
 
 https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
-  * Novedad: Soporte inicial de TLS para servidores y clientes TCP. (Rhys Jones)
-
-  * Add options to process.watchFile()
-  * Add process.umask() (Friedemann Altrock)
-
-  * Bugfix: only detach timers when active.
-  * Bugfix: lib/file.js write(), shouldn't always emit errors or success (onne@onnlucky.com)
-
-  * Bugfix: Memory leak in fs.write (Reported by onne@onnlucky.com)
-
-  * Bugfix: Fix regular expressions detecting outgoing message headers. (Reported by Elliott Cable)
-
-  * Improvements to Multipart parser (Felix Geisendörfer)
-  * New HTTP parser
-
-  * Actualizar v8 a 2.0.2
+    * Novedad: Soporte inicial de TLS para servidores y clientes TCP. (Rhys Jones)
+    
+    * Añadir opciones a process.watchFile()
+    * Añadir process.umask() (Friedemann Altrock)
+    
+    * Corrección de bug: solo desprender temporizadores al estar activos.
+    * Bugfix: lib/file.js write(), shouldn't always emit errors or success (onne@onnlucky.com)
+    
+    * Bugfix: Memory leak in fs.write (Reported by onne@onnlucky.com)
+    
+    * Bugfix: Fix regular expressions detecting outgoing message headers. (Reportado por Elliott Cable)
+    
+    * Mejoras al analizador de Multipartes (Felix Geisendörfer)
+    * Nuevo analizador de HTTP
+    
+    * Actualizar v8 a 2.0.2
+    
 
 <a id="0.1.18"></a>
 
@@ -3402,20 +3530,21 @@ https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
-  * Feature: process.watchFile() process.unwatchFile()
-  * Feature: "uncaughtException" event on process (Felix Geisendörfer)
-
-  * Feature: 'drain' event to tcp.Connection
-  * Bugfix: Promise.timeout() blocked the event loop (Felix Geisendörfer)
-
-  * Bugfix: sendBody() and chunked utf8 strings (Felix Geisendörfer)
-
-  * Supply the strerror as a second arg to the tcp.Connection close event (Johan Sørensen)
-
-  * Add EventEmitter.removeListener (frodenius@gmail.com)
-  * Format JSON for inspecting objects (Felix Geisendörfer)
-
-  * Upgrade libev to latest CVS
+    * Feature: process.watchFile() process.unwatchFile()
+    * Feature: "uncaughtException" event on process (Felix Geisendörfer)
+    
+    * Feature: 'drain' event to tcp.Connection
+    * Bugfix: Promise.timeout() blocked the event loop (Felix Geisendörfer)
+    
+    * Bugfix: sendBody() and chunked utf8 strings (Felix Geisendörfer)
+    
+    * Supply the strerror as a second arg to the tcp.Connection close event (Johan Sørensen)
+    
+    * Add EventEmitter.removeListener (frodenius@gmail.com)
+    * Format JSON for inspecting objects (Felix Geisendörfer)
+    
+    * Upgrade libev to latest CVS
+    
 
 <a id="0.1.17"></a>
 
@@ -3423,10 +3552,12 @@ https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
 https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
-  * Feature: process.chdir() (Brandon Beacher)
-  * Revert http parser upgrade. (b893859c34f05db5c45f416949ebc0eee665cca6) Broke keep-alive.
-
-  * API: renombrar process.inherits como sys.inherits
+    * Novedad: process.chdir() (Brandon Beacher)
+    * Revertir actualización del analizador de http.
+      (b893859c34f05db5c45f416949ebc0eee665cca6) Broke keep-alive.
+    
+    * API: renombrar process.inherits como sys.inherits
+    
 
 <a id="0.1.16"></a>
 
@@ -3434,22 +3565,23 @@ https://github.com/nodejs/node/commit/d1f69ef35dac810530df8249d523add168e09f03
 
 https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
-  * API: Use CommonJS-style module requiring
-    - require("/sys.js") becomes require("sys")
-    - require("circle.js") becomes require("./circle")
-    - process.path.join() becomes require("path").join()
-    - __module becomes module
-
-  * API: Many namespacing changes
-    - Move node.\* into process.\*
-    - Move node.dns into module "dns"
-    - Move node.fs into module "posix"
-    - process is no longer the global object. GLOBAL es. For more information on the API changes see: http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6 http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
-
-  * Feature: process.platform, process.memoryUsage()
-  * Feature: promise.cancel() (Felix Geisendörfer)
-
-  * Actualizar V8 a 1.3.18
+    * API: Utilizar requerimiento de módulos de estilo CommonJS
+      - require("/sys.js") se convierte en require("sys")
+      - require("circle.js") se convierte en require("./circle")
+      - process.path.join() se convierte en require("path").join()
+      - __module se convierte en "module"
+    
+    * API: Muchos cambios del espacio de nombres
+      - Mover node.\* adentro de process.\*
+      - Mover node.dns adentro del módulo "dns"
+      - Mover node.fs adentro del módulo "posix"
+      - "process" ya no es el objeto global. GLOBAL es. For more information on the API changes see: http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/6 http://thread.gmane.org/gmane.comp.lang.javascript.nodejs/14
+    
+    * Feature: process.platform, process.memoryUsage()
+    * Feature: promise.cancel() (Felix Geisendörfer)
+    
+    * Upgrade V8 to 1.3.18
+    
 
 <a id="0.1.15"></a>
 
@@ -3457,18 +3589,19 @@ https://github.com/nodejs/node/commit/726865af7bbafe58435986f4a193ff11c84e4bfe
 
 https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
-  * Many build system fixes (esp. for OSX users)
-  * Feature: promise.timeout() (Felix Geisendörfer)
-
-  * Feature: Added external interface for signal handlers, process.pid, and process.kill() (Brandon Beacher)
-
-  * API: Rename node.libraryPaths to require.paths
-  * Bugfix: 'data' event for stdio should emit a string
-
-  * Large file support
-  * Upgrade http_parser
-
-  * Actualizar v8 a 1.3.16
+    * Muchas correcciones del sistema de compilación (especialmente for OSX users)
+    * Feature: promise.timeout() (Felix Geisendörfer)
+    
+    * Feature: Added external interface for signal handlers, process.pid, and process.kill() (Brandon Beacher)
+    
+    * API: Rename node.libraryPaths to require.paths
+    * Bugfix: 'data' event for stdio should emit a string
+    
+    * Large file support
+    * Upgrade http_parser
+    
+    * Upgrade v8 to 1.3.16
+    
 
 <a id="0.1.14"></a>
 
@@ -3476,23 +3609,26 @@ https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
 https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
-  * Feature: Improved addon builds with node-waf
-  * Feature: node.SignalHandler (Brandon Beacher)
-
-  * Feature: Enable V8 debugging (but still need to make a debugger)
-  * API: Rename library /utils.js to /sys.js
-
-  * Clean up Node's build system
-  * Don't use parseUri for HTTP server
-
-  * Remover node.pc
-  * Don't use /bin/sh to create child process except with exec()
-
-  * API: Add __module to reference current module
-  * API: Remove include() add node.mixin()
-
-  * Normalize http headers; "Content-Length" becomes "content-length"
-  * Actualizar V8 a 1.3.15
+    * Novedad: Compilaciones de complementos mejoradas con node-waf
+    * Novedad: node.SignalHandler (Brandon Beacher)
+    
+    * Novedad: Habilitar la depuración de V8 (pero todavía se necesita crear
+      un depurador)
+    * API: Renombrar librería /utils.js como /sys.js
+    
+    * Limpiar el sistema de compilación de Node
+    * No utilizar parseUri para el servidor HTTP
+    
+    * Remover node.pc
+    * No utilizar /bin/sh para crear proceso secundario, excepto con exec()
+    
+    * API: Añadir __module para referenciar al módulo actual
+    * API: Remover include() añadir node.mixin()
+    
+    * Normalizar cabeceras http; "Content-Length" se convierte en
+      "content-length"
+    * Actualizar V8 a 1.3.15
+    
 
 <a id="0.1.13"></a>
 
@@ -3500,21 +3636,24 @@ https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
 https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
-  * Feature: Multipart stream parser (Felix Geisendörfer)
-  * API: Move node.puts(), node.exec() and others to /utils.js
-
-  * API: Move http, tcp libraries to /http.js and /tcp.js
-  * API: Rename node.exit() to process.exit()
-
-  * Bugfix: require() and include() should work in callbacks.
-  * Pass the Host header in http.cat calls
-
-  * Add warning when coroutine stack size grows too large.
-  * Enhance repl library (Ray Morgan)
-
-  * Bugfix: build script for GCC 4.4 (removed -Werror in V8), on Linux 2.4, and with Python 2.4.4.
-
-  * Add read() and write() to /file.js to read and write whole files at once.
+    * Novedad: Analizador de streams multipartes (Felix Geisendörfer)
+    * API: Mover node.puts(), node.exec() y otros a /utils.js
+    
+    * API: Mover librerías de http y tcp a /http.js y /tcp.js
+    * API: Renombrar node.exit() como process.exit()
+    
+    * Corrección de bug: require() e include() deberían funcionar en
+      las callbacks.
+    * Pasar la cabecera de Host adentro de las llamadas de http.cat
+    
+    * Añadir advertencia cuando la pila de la co-rutina se hace demasiado
+      grande.
+    * Enhance repl library (Ray Morgan)
+    
+    * Bugfix: build script for GCC 4.4 (removed -Werror in V8), on Linux 2.4, and with Python 2.4.4.
+    
+    * Add read() and write() to /file.js to read and write whole files at once.
+    
 
 <a id="0.1.12"></a>
 
@@ -3522,14 +3661,17 @@ https://github.com/nodejs/node/commit/9c9d67eb6ce1162c8da05ff59624f6c3ade19bf7
 
 https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
 
-  * Feature: System modules, node.libraryPaths
-  * API: Remove "raw" encoding, rename "raws" to "binary".
-
-  * API: Fue añadida connection.setNoDElay() para deshabilitar el algoritmo de Nagle.
-  * Decrease default TCP server backlog to 128
-
-  * Bugfix: memory leak involving node.fs.* methods.
-  * Actualizar v8 a 1.3.13
+    * Novedad: Módulos del sistema, node.libraryPaths
+    * API: Remover codificación "raw", renombrar "raws" como "binary".
+    
+    * API: Fue añadida connection.setNoDElay() para deshabilitar el algoritmo
+      de Nagle.
+    * Disminuir el backlog predeterminado del servidor TCP a 128
+    
+    * Corrección de bug: reparar fuga de memoria que afectaba a los métodos
+      de node.fs.*
+    * Actualizar v8 a 1.3.13
+    
 
 <a id="0.1.11"></a>
 
@@ -3537,19 +3679,21 @@ https://github.com/nodejs/node/commit/2f56ccb45e87510de712f56705598b3b4e3548ec
 
 https://github.com/nodejs/node/commit/5ddc4f5d0c002bac0ae3d62fc0dc58f0d2d83ec4
 
-  * API: default to utf8 encoding for node.fs.cat()
-  * API: add node.exec()
-
-  * API: node.fs.read() takes a normal encoding parameter.
-  * API: Change arguments of emit(), emitSuccess(), emitError()
-
-  * Bugfix: node.fs.write() was stack allocating buffer.
-  * Corrección de bug: ReportException no debería olvidar la trama superior.
-
-  * Improve buffering for HTTP outgoing messages
-  * Fix and reenable x64 macintosh build.
-
-  * Actualizar v8 a 1.3.11
+    * API: establecer por defecto la codificación utf8 para node.fs.cat()
+    * API: añadir node.exec()
+    
+    * API: node.fs.read() toma un parámetro de codificación normal.
+    * API: Cambiar argumentos de emit(), emitSuccess(), emitError()
+    
+    * Corrección de bug: node.fs.write() estaba asignando pilas para el
+      buffer.
+    * Corrección de bug: ReportException no debería olvidar la trama superior.
+    
+    * Mejorar el almacenamiento en buffer para mensajes HTTP salientes
+    * Arreglar y volver a habilitar la complicación x64 de macintosh.
+    
+    * Actualizar v8 a 1.3.11
+    
 
 <a id="0.1.10"></a>
 
@@ -3557,19 +3701,20 @@ https://github.com/nodejs/node/commit/5ddc4f5d0c002bac0ae3d62fc0dc58f0d2d83ec4
 
 https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
 
-  * Feature: raw string encoding "raws"
-  * Feature: access to environ through "ENV"
-
-  * Feature: add isDirectory, isFile, isSocket, ... methods to stats object.
-
-  * Bugfix: Internally use full paths when loading modules this fixes a shebang loading problem.
-
-  * Bugfix: Add '--' command line argument for separating v8 args from program args.
-
-  * Añadir página del manual.
-  * Add node-repl
-
-  * Actualizar v8 a 1.3.10
+    * Novedad: codificación raw de cadenas "raws"
+    * Novedad: acceso a environ a través de "ENV"
+    
+    * Novedad: añadir métodos isDirectory, isFile, isSocket, ... methods to stats object.
+    
+    * Bugfix: Internally use full paths when loading modules this fixes a shebang loading problem.
+    
+    * Bugfix: Add '--' command line argument for separating v8 args from program args.
+    
+    * Añadir página del manual.
+    * Añadir node-repl
+    
+    * Actualizar v8 a 1.3.10
+    
 
 <a id="0.1.9"></a>
 
@@ -3577,8 +3722,9 @@ https://github.com/nodejs/node/commit/12bb0d46ce761e3d00a27170e63b40408c15b558
 
 https://github.com/nodejs/node/commit/ba6c5e38d54de30adfce69a21bafc81c35b07a03
 
-  * Corrección de bug: Compilar en Snow Leopard.
-  * Corrección de bug: URIs malformadas que están levantando excepciones.
+    * Corrección de bug: Compilar en Snow Leopard.
+    * Corrección de bug: URIs malformadas que están levantando excepciones.
+    
 
 <a id="0.1.8"></a>
 
@@ -3586,19 +3732,20 @@ https://github.com/nodejs/node/commit/ba6c5e38d54de30adfce69a21bafc81c35b07a03
 
 https://github.com/nodejs/node/commit/734e86b9e568de5f694ae290a2b5c9395b70937c
 
-  * Feature: External modules
-  * Feature: setTimeout() for node.tcp.Connection
-
-  * Feature: add node.cwd(), node.fs.readdir(), node.fs.mkdir()
-  * Bugfix: promise.wait() releasing out of order.
-
-  * Corrección de bug: Hacer getaddrinfo() de manera asíncrona en Apple.
-  * Deshabilitar mensajes de error de evcom inútiles.
-
-  * Mejorar los stack traces.
-  * Compilar nativamente en x64.
-
-  * Actualizar v8 a 1.3.9
+    * Novedad: Módulos externos
+    * Novedad: setTimeout() para node.tcp.Connection
+    
+    * Novedad: añadir node.cwd(), node.fs.readdir(), node.fs.mkdir()
+    * Corrección de bug: promise.wait() está soltando fuera de de orden.
+    
+    * Corrección de bug: Hacer getaddrinfo() de manera asíncrona en Apple.
+    * Deshabilitar mensajes de error de evcom inútiles.
+    
+    * Mejorar los stack traces.
+    * Compilar nativamente en x64.
+    
+    * Actualizar v8 a 1.3.9
+    
 
 <a id="0.1.7"></a>
 
@@ -3606,22 +3753,23 @@ https://github.com/nodejs/node/commit/734e86b9e568de5f694ae290a2b5c9395b70937c
 
 https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
-  * Novedad: objeto "process" global. Emite "exit".
-  * Feature: promise.wait()
-
-  * Feature: node.stdio
-  * Feature: EventEmitters emit "newListener" when listeners are added
-
-  * API:  Use flat object instead of array-of-arrays for HTTP headers.
-
-  * API: Remove buffered file object (node.File)
-  * API: require(), include() are synchronous. (Uses continuations.)
-
-  * API: Deprecate onLoad and onExit.
-  * API: Rename node.Process to node.ChildProcess
-
-  * Refactor node.Process to take advantage of evcom_reader/writer.
-  * Actualizar v8 a 1.3.7
+    * Novedad: objeto "process" global. Emite "exit".
+    * Feature: promise.wait()
+    
+    * Feature: node.stdio
+    * Feature: EventEmitters emit "newListener" when listeners are added
+    
+    * API:  Use flat object instead of array-of-arrays for HTTP headers.
+    
+    * API: Remover objeto de archivo (node.File) almacenado en buffer
+    * API: require(), include() son sincrónicas. (Uses continuations.)
+    
+    * API: Deprecate onLoad and onExit.
+    * API: Renombrar node.Process como node.ChildProcess
+    
+    * Refactorizar node.Process para sacar provecho de evcom_reader/writer.
+    * Actualizar v8 a 1.3.7
+    
 
 <a id="0.1.6"></a>
 
@@ -3629,7 +3777,8 @@ https://github.com/nodejs/node/commit/31db4f1ed837f3835937f60d31368bdb31998386
 
 https://github.com/nodejs/node/commit/9c97b1db3099d61cd292aa59ec2227a619f3a7ab
 
-  * Corrección de bug: Ignorar SIGPIPE.
+    * Corrección de bug: Ignorar SIGPIPE.
+    
 
 <a id="0.1.5"></a>
 
@@ -3637,15 +3786,17 @@ https://github.com/nodejs/node/commit/9c97b1db3099d61cd292aa59ec2227a619f3a7ab
 
 https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
-  * Corrección de bug: Las conexiones con errores pueden colapsar a node.js. Now check connection before sending data every time (Kevin van Zonneveld)
-
-  * Bugfix: stdin fd (0) being ignored by node.File. (Abe Fettig)
-  * API: Remove connection.fullClose()
-
-  * API: Return the EventEmitter from addListener for chaining.
-  * API: tcp.Connection "disconnect" event renamed to "close"
-
-  * Upgrade evcom Upgrade v8 to 1.3.6
+    * Corrección de bug: Las conexiones con errores pueden colapsar a node.js. Now check connection before sending data every time (Kevin van Zonneveld)
+    
+    * Bugfix: stdin fd (0) being ignored by node.File. 
+      (Abe Fettig)
+    * API: Remover connection.fullClose()
+    
+    * API: Devolver al EventEmitter desde addListener para el encadenamiento.
+    * API: tcp.Connection "disconnect" event renamed to "close"
+    
+    * Upgrade evcom Upgrade v8 to 1.3.6
+    
 
 <a id="0.1.4"></a>
 
@@ -3653,17 +3804,20 @@ https://github.com/nodejs/node/commit/a73998d6f491227e595524dc70589369fb458224
 
 https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
-  * Refactorización mayor a evcom.
-  * Habilitar test-tcp-many-clients.
-
-  * Añadir bandera -m32 de gcc a udns.
-  * Add connection.readPause() and connection.readResume() Add IncomingMessage.prototype.pause() and resume().
-
-  * Corregir prueba de rendimiento de http. No estaba haciendo envíos de manera correcta.
-  * Corrección de bug: response.setBodyEncoding("ascii") no está funcionando.
-
-  * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
-  * Upgrade v8 to 1.3.4 Upgrade libev to 3.8 Upgrade http_parser to v0.2
+    * Refactorización mayor a evcom.
+    * Habilitar test-tcp-many-clients.
+    
+    * Añadir bandera -m32 de gcc a udns.
+    * Add connection.readPause() and connection.readResume() Add IncomingMessage.prototype.pause() and resume().
+    
+    * Corregir prueba de rendimiento de http. No estaba haciendo envíos
+      de manera correcta.
+    * Corrección de bug: response.setBodyEncoding("ascii") no está
+      funcionando.
+    
+    * Bugfix: Negative ints in HTTP's on_body and node.fs.read()
+    * Upgrade v8 to 1.3.4 Upgrade libev to 3.8 Upgrade http_parser to v0.2
+    
 
 <a id="0.1.3"></a>
 
@@ -3671,17 +3825,19 @@ https://github.com/nodejs/node/commit/0f888ed6de153f68c17005211d7e0f960a5e34f3
 
 https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
-  * Actualizar v8 a 1.3.2
-  * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not working
-
-  * Bugfix: node.encodeUtf8 was broken. (Connor Dunn)
-  * Add ranlib to udns Makefile.
-
-  * Actualizar evcom - solucionar el problema de aceptar demasiadas conexiones.
-  * Initial support for shebang
-
-  * Add simple command line switches
-  * Add node.version API
+    * Upgrade v8 to 1.3.2
+    * Bugfix: node.http.ServerRequest.setBodyEncoding('ascii') not working
+    
+    * Bugfix: node.encodeUtf8 was broken. (Connor Dunn)
+    * Añadir ranlib al Makefile de udns.
+    
+    * Actualizar evcom - solucionar el problema de aceptar demasiadas
+      conexiones.
+    * Soporte inicial para shebang
+    
+    * Añadir interruptores simples de la línea de comandos
+    * Añadir API de node.version
+    
 
 <a id="0.1.2"></a>
 
@@ -3689,16 +3845,18 @@ https://github.com/nodejs/node/commit/7464d423103b96c400d6875d390c19b637532ebf
 
 https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
 
-  * Add DNS API
-  * node.tcp.Server's backlog option is now an argument to listen()
-
-  * Actualizar V8 a 1.3.1
-  * Bugfix: Default to chunked for client requests without Content-Length.
-
-  * Corrección de bug: Números de línea en stack traces.
-  * Bugfix: negative integers in raw encoding stream
-
-  * Bugfix: node.fs.File was not passing args to promise callbacks.
+    * Add DNS API
+    * node.tcp.Server's backlog option is now an argument to listen()
+    
+    * Upgrade V8 to 1.3.1
+    * Bugfix: Default to chunked for client requests without Content-Length.
+    
+    * Corrección de bug: Números de línea en stack traces.
+    * Corrección de bug: enteros negativos en stream de codificación raw
+    
+    * Corrección de bug: node.fs.File no estaba pasando argumentos a las
+      callbacks de promesas.
+    
 
 <a id="0.1.1"></a>
 
@@ -3706,25 +3864,26 @@ https://github.com/nodejs/node/commit/e10fbab00fd8325a7d05d1f854292143b8361e1f
 
 https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
 
-  * Simplificar y limpiar ObjectWrap.
-  * Upgrade liboi (which is now called evcom) Upgrade libev to 3.7 Upgrade V8 to 1.2.14
-
-  * Array.prototype.encodeUtf8 renamed to node.encodeUtf8(array)
-  * Move EventEmitter.prototype.emit() completely into C++.
-
-  * Corrección de bug: Reparar fuga de memoria en emisores de evento. http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
-
-  * Bugfix: Had problems reading scripts with non-ascii characters.
-  * Bugfix: Fix Detach() in node::Server
-
-  * Bugfix: Sockets not properly reattached if reconnected during disconnect event.
-
-  * Bugfix: Server-side clients not attached between creation and on_connect.
-
-  * Add 'close' event to node.tcp.Server
-  * Simplify and clean up http.js. (Takes more advantage of event infrastructure.)
-
-  * Add benchmark scripts. Ejecutar con "make benchmark".
+    * Simplificar y limpiar ObjectWrap.
+    * Upgrade liboi (which is now called evcom) Upgrade libev to 3.7 Upgrade V8 to 1.2.14
+    
+    * Array.prototype.encodeUtf8 renamed to node.encodeUtf8(array)
+    * Move EventEmitter.prototype.emit() completely into C++.
+    
+    * Corrección de bug: Reparar fuga de memoria en emisores de evento. http://groups.google.com/group/nodejs/browse_thread/thread/a8d1dfc2fd57a6d1
+    
+    * Corrección de bug: Tenía problemas leyendo scripts con caracteres no-ascii.
+    * Bugfix: Fix Detach() in node::Server
+    
+    * Bugfix: Sockets not properly reattached if reconnected during disconnect event.
+    
+    * Bugfix: Server-side clients not attached between creation and on_connect.
+    
+    * Añadir evento "close" a node.tcp.Server
+    * Simplificar y limpiar http.js. (Takes more advantage of event infrastructure.)
+    
+    * Add benchmark scripts. Ejecutar con "make benchmark".
+    
 
 <a id="0.1.0"></a>
 
@@ -3732,16 +3891,17 @@ https://github.com/nodejs/node/commit/77d407df2826b20e9177c26c0d2bb4481e497937
 
 https://github.com/nodejs/node/commit/813b53938b40484f63e7324c030e33711f26a149
 
-  * Actualizar documentación, utilizar asciidoc.
-  * Interfaces de EventEmitter y Promise. (Breaks previous API.)
-
-  * Remove node.Process constructor in favor of node.createProcess
-  * Add -m32 flags for compiling on x64 platforms. (Thanks to András Bártházi)
-
-  * Upgrade v8 to 1.2.10 and libev to 3.6
-  * Bugfix: Timer::RepeatSetter wasn't working.
-
-  * Bugfix: Spawning many processes in a loop (reported by Felix Geisendörfer)
+    * Actualizar documentación, utilizar asciidoc.
+    * Interfaces de EventEmitter y Promise. (Esto rompe con la API anterior.)
+    
+    * Remover el constructor de node.Process a favor de node.createProcess
+    * Añadir banderas -m32 para la compilación en plataformas x64. (Gracias a András Bártházi)
+    
+    * Actualizar v8 a 1.2.10 y libev a 3.6
+    * Corrección de bug: Timer::RepeatSetter no estaba funcionando.
+    
+    * Bugfix: Spawning many processes in a loop (reported by Felix Geisendörfer)
+    
 
 <a id="0.0.6"></a>
 
@@ -3749,13 +3909,15 @@ https://github.com/nodejs/node/commit/813b53938b40484f63e7324c030e33711f26a149
 
 https://github.com/nodejs/node/commit/fbe0be19ebfb422d8fa20ea5204c1713e9214d5f
 
-  * Load modules via HTTP URLs (Urban Hafner)
-  * Bugfix: Add HTTPConnection->size() and HTTPServer->size()
-
-  * New node.Process API
-  * Clean up build tools, use v8's test runner.
-
-  * Use ev_unref() instead of starting/stopping the eio thread pool watcher.
+    * Cargar módulos a través de los URLs de HTTP (Urban Hafner)
+    * Corrección de bug: Añadir HTTPConnection->size() y HTTPServer->size()
+    
+    * Nueva API de node.Process
+    * Limpiar las herramientas de compilación, utilizar el ejecutor de pruebas
+      de V8.
+    
+    * Use ev_unref() instead of starting/stopping the eio thread pool watcher.
+    
 
 <a id="0.0.5"></a>
 
@@ -3763,19 +3925,20 @@ https://github.com/nodejs/node/commit/fbe0be19ebfb422d8fa20ea5204c1713e9214d5f
 
 https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
 
-  * Support for IPv6
-  * Remove namespace node.constants
-
-  * Actualizar v8 a 1.2.8.1
-  * Accept ports as strings in the TCP client and server.
-
-  * Bugfix: HTTP Client race
-  * Bugfix: freeaddrinfo() wasn't getting called after getaddrinfo() for TCP servers
-
-  * Add "opening" to TCP client readyState
-  * Add remoteAddress to TCP client
-
-  * Add global print() function.
+    * Soporte para IPv6
+    * Remover node.constants del espacio de nombres
+    
+    * Actualizar v8 a 1.2.8.1
+    * Aceptar puertos como strings el cliente y servidor de TCP.
+    
+    * Bugfix: HTTP Client race
+    * Bugfix: freeaddrinfo() wasn't getting called after getaddrinfo() for TCP servers
+    
+    * Add "opening" to TCP client readyState
+    * Add remoteAddress to TCP client
+    
+    * Add global print() function.
+    
 
 <a id="0.0.4"></a>
 
@@ -3783,8 +3946,8 @@ https://github.com/nodejs/node/commit/ec5f3dbae11ed121d24744861a8fce55636ecd66
 
 https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
- * Añadir el método interrupt() a las solicitudes HTTP paralelas al servidor.
- * Bugfix: onBodyComplete was not getting called on server-side HTTP
+* Añadir el método interrupt() a las solicitudes HTTP paralelas al servidor.
+* Bugfix: onBodyComplete was not getting called on server-side HTTP
 
 <a id="0.0.3"></a>
 
@@ -3792,12 +3955,14 @@ https://github.com/nodejs/node/commit/916b9ca715b229b0703f0ed6c2fc065410fb189c
 
 https://github.com/nodejs/node/commit/4cfc982c776475eb65fb1080e6b575a86505a347
 
- * Many bug fixes including the problem with http.Client on macintosh
+* Many bug fixes including the problem with http.Client on macintosh
 
- * Actualiza v8 a 1.2.7
- * Añade hook onExit
+* Actualiza v8 a 1.2.7
 
- * Proteger contra el desbordamiento de buffer en el analizador de http
- * require() e include() ahora necesitan la extensión ".js"
+* Añade hook onExit
 
- * http.Client utiliza por defecto la codificación de transferencia de identidad.
+* Proteger contra el desbordamiento de buffer en el analizador de http
+
+* require() e include() ahora necesitan la extensión ".js"
+
+* http.Client utiliza por defecto la codificación de transferencia de identidad.
