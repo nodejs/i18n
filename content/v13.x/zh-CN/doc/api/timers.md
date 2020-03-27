@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `timer` module exposes a global API for scheduling functions to be called at some future period of time. Because the timer functions are globals, there is no need to call `require('timers')` to use the API.
 
@@ -19,7 +19,7 @@ By default, when an immediate is scheduled, the Node.js event loop will continue
 added: v11.0.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 If true, the `Immediate` object will keep the Node.js event loop active.
 
@@ -54,7 +54,7 @@ By default, when a timer is scheduled using either [`setTimeout()`][] or [`setIn
 added: v11.0.0
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 If true, the `Timeout` object will keep the Node.js event loop active.
 
