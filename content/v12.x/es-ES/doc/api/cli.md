@@ -399,7 +399,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Esta opción es un no-op. Es mantenido para compatibilidad.
 
 ### `--no-deprecation`
 <!-- YAML
@@ -413,7 +413,7 @@ Silencia las advertencias de deprecación.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 <!-- YAML
@@ -885,7 +885,7 @@ This environment variable is ignored when `node` runs as setuid root or has Linu
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Extenderá los datos enlazados cuando se compilen con soporte Icu pequeño.
+La ruta de datos para los datos ICU (objeto `Intl`). Extenderá los datos enlazados cuando se compilen con soporte Icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
 <!-- YAML
@@ -1015,7 +1015,7 @@ added: v0.1.32
 
 `':'`- lista separada de directorios con prefijo a la ruta de búsqueda del módulo.
 
-On Windows, this is a `';'`-separated list instead.
+En Windows, es una lista separada con `';'` en su lugar.
 
 ### `NODE_PENDING_DEPRECATION=1`
 <!-- YAML
@@ -1166,4 +1166,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 * `dns.lookup()`
 * todas las APIs `zlib`, distintas de aquellas que son explícitamente sincrónicas
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). Para mayor información, vea la [documentación del threadpool libuv](http://docs.libuv.org/en/latest/threadpool.html).
