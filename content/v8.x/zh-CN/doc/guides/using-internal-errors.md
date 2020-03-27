@@ -66,7 +66,7 @@ assert.strictEqual(
 
 In addition, there should also be tests which validate the use of the error based on where it is used in the codebase. For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message. This will reduce the amount of test change required when the message for an error changes.
 
-For example:
+例如：
 
 ```js
 assert.throws(() => {
@@ -139,6 +139,6 @@ The `myError` object will have a `code` property equal to the `key` and a `name`
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Returns: {string}
+* 返回：{string}
 
 Returns the formatted error message string for the given `key`.
