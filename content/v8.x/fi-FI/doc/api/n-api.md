@@ -3703,7 +3703,7 @@ napi_create_threadsafe_function(napi_env env,
 
 ### napi_get_threadsafe_function_context
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v8.16.0
@@ -3722,7 +3722,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v8.16.0
@@ -3745,7 +3745,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v8.16.0
@@ -3764,7 +3764,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v8.16.0
