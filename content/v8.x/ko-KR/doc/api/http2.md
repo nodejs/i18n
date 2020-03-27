@@ -1272,7 +1272,7 @@ added: v8.4.0
 
 * `path` {string|Buffer|URL}
 * `headers` {HTTP/2 Headers Object}
-* `options` {Object} 
+* `옵션` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Callback function invoked in the case of an Error before send.
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
