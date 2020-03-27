@@ -1,4 +1,4 @@
-# Usage & Example
+# 用法和示例
 
 ## Usage
 
@@ -9,7 +9,7 @@
 
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for more information.
 
-## Example
+## 示例
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
 Commands in this document start with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to show the start of each command.
