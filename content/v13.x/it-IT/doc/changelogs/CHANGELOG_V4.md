@@ -69,7 +69,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v4 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2017 and maintained until April 2018.
 
@@ -77,7 +77,7 @@
 
 ## 2018-03-29, Version 4.9.1 'Argon' (Maintenance), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 No additional commits.
 
@@ -94,7 +94,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7158
 * CVE-2018-7159
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX an Windows paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
@@ -128,7 +128,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -151,7 +151,7 @@ This Maintenance release comes with 47 commits. This includes 26 commits which a
 
 This release includes a security update to openssl that has been deemed low severity for the Node.js project.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**:
   * update root certificates (Ben Noordhuis) [#13279](https://github.com/nodejs/node/pull/13279)
@@ -217,7 +217,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **zlib**:
   * CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
@@ -232,7 +232,7 @@ This is a security release. All Node.js users should consult the security releas
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **build**:
   * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
@@ -250,7 +250,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2017-05-02, Version 4.8.3 'Argon' (Maintenance), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **module**:
   * The [module loading global fallback](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows.  (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
@@ -287,7 +287,7 @@ This is a maintenance release to fix a memory leak that was introduced in 4.8.1.
 
 It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**:
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
@@ -306,7 +306,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 This LTS release comes with 147 commits. This includes 55 which are test related, 41 which are doc related,  11 which are build / tool related, and 1 commits which are updates to dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **buffer**: The performance of `.toJSON()` is now up to 2859% faster on average. (Brian White) [#10895](https://github.com/nodejs/node/pull/10895)
 * **IPC**: Batched writes have been enabled for process IPC on platforms that support Unix Domain Sockets. (Alexey Orlenko) [#10677](https://github.com/nodejs/node/pull/10677)
@@ -471,7 +471,7 @@ This LTS release comes with 147 commits. This includes 55 which are test related
 
 This LTS release comes with 118 commits. This includes 73 which are doc related, 19 which are test related, 6 which are build / tool related, and 5 commits which are updates to dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **child_process**: add shell option to spawn() (cjihrig) [#4598](https://github.com/nodejs/node/pull/4598)
 * **deps**:
@@ -618,7 +618,7 @@ This is a security release of the 'Argon' release line to upgrade OpenSSL to ver
 
 Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**: upgrade openssl sources to 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
 
@@ -638,7 +638,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 This is a special release that contains 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
-### Notable Changes
+### Modifiche di rilievo
 
 N/A
 
@@ -652,7 +652,7 @@ N/A
 
 This LTS release comes with 180 commits. This includes 117 which are test related, 34 which are doc related, 15 which are build / tool related, and 1 commit which is an update to dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **build**: shared library support is now working for AIX builds (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
 * **repl**: Passing options to the repl will no longer overwrite defaults (cjihrig) [#7826](https://github.com/nodejs/node/pull/7826)
@@ -847,7 +847,7 @@ This LTS release comes with 180 commits. This includes 117 which are test relate
 
 This LTS release comes with 108 commits. This includes 30 which are doc related, 28 which are test related, 16 which are build / tool related, and 4 commits which are updates to dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 The SEMVER-MINOR changes include:
 
@@ -982,7 +982,7 @@ Notable SEMVER-PATCH changes include:
 
 This LTS release comes with 219 commits. This includes 80 commits that are docs related, 58 commits that are test related, 20 commits that are build / tool related, and 9 commits that are updates to dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **build**: It is now possible to build the documentation from the release tarball (Anna Henningsen) [#8413](https://github.com/nodejs/node/pull/8413)
 * **buffer**: Buffer.alloc() will no longer incorrectly return a zero filled buffer when an encoding is passed (Teddy Katz) [#9238](https://github.com/nodejs/node/pull/9238)
@@ -1219,7 +1219,7 @@ This LTS release comes with 219 commits. This includes 80 commits that are docs 
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **c-ares**: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Daniel Stenberg)
 
@@ -1234,7 +1234,7 @@ This is a security release. All Node.js users should consult the security releas
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
-### Notable Changes
+### Modifiche di rilievo
 
 Semver Minor:
 
@@ -1274,7 +1274,7 @@ Semver Patch:
 
 ## 2016-08-15, Version 4.5.0 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 Semver Minor:
 
@@ -1573,7 +1573,7 @@ Semver Patch:
 
 This LTS release comes with 89 commits. This includes 46 commits that are docs related, 11 commits that are test related, 8 commits that are build related, and 4 commits that are benchmark related.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **debugger**:
   * All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
@@ -1683,7 +1683,7 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
 
 ## 2016-06-23, Version 4.4.6 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
@@ -1697,7 +1697,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ## 2016-05-24, Version 4.4.5 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **buffer**:
   * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
@@ -1812,7 +1812,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ## 2016-04-12, Version 4.4.3 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * Fix `--gdbjit` for embedders. Backported from v8 upstream. (Ben Noordhuis) [#5577](https://github.com/nodejs/node/pull/5577)
@@ -1880,7 +1880,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ## 2016-03-31, Version 4.4.2 'Argon' (LTS), @thealphanerd
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **https**:
   * Under certain conditions ssl sockets may have been causing a memory leak when keepalive is enabled. This is no longer the case. (Alexander Penev) [#5713](https://github.com/nodejs/node/pull/5713)
@@ -1940,7 +1940,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 This LTS release comes with 113 commits, 56 of which are doc related, 18 of which are build / tooling related, 16 of which are test related and 7 which are benchmark related.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **build**:
   * Updated Logos for the OSX + Windows installers
