@@ -425,7 +425,7 @@ added: v1.6.0
 
 * `name` {string}
 
-* Returns: {string}
+* 戻り値: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
@@ -834,7 +834,7 @@ added: v0.4.0
 
 * `name` {string}
 
-* Returns: {string}
+* 戻り値: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -1489,7 +1489,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* 戻り値: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
