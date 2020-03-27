@@ -13,7 +13,7 @@ changes:
 
 > 稳定性：2 - 稳定
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. 可以通过如下方式访问：
 
 ```js
 const http2 = require('http2');
@@ -2530,7 +2530,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2551,7 +2551,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+或
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2678,7 +2678,7 @@ Note that in the `http` module, the response body is omitted when the request is
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 #### response.writeContinue()
 
