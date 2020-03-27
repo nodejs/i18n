@@ -2791,7 +2791,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs**
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
-* **inspector**
+* **الفاحص**
   * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
 * **module**
   * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
@@ -3822,7 +3822,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 
 * **الخطافات الغير تزامنية**
   * When one `Promise` leads to the creation of a new `Promise`, the parent `Promise` will be identified as the trigger [[`135f4e6643`](https://github.com/nodejs/node/commit/135f4e6643)] - [#13367](https://github.com/nodejs/node/pull/13367).
-* **Dependencies**
+* **التبعيات**
   * libuv has been updated to 1.12.0 [[`968596ec77`](https://github.com/nodejs/node/commit/968596ec77)] - [#13306](https://github.com/nodejs/node/pull/13306).
   * npm has been updated to 5.0.3 [[`ffa7debd7a`](https://github.com/nodejs/node/commit/ffa7debd7a)] - [#13487](https://github.com/nodejs/node/pull/13487).
 * **File system**
@@ -3976,7 +3976,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 * **المحاورة**
   * Error events emitted when using `console` methods are now supressed. [[`f18e08d820`](https://github.com/nodejs/node/commit/f18e08d820)] - [#9744](https://github.com/nodejs/node/pull/9744).
 
-* **Dependencies**
+* **التبعيات**
   * The npm client has been updated to 5.0.0 [[`3c3b36af0f`](https://github.com/nodejs/node/commit/3c3b36af0f)] - [#12936](https://github.com/nodejs/node/pull/12936).
   * V8 has been updated to 5.8 with forward ABI stability to 6.0 [[`60d1aac8d2`](https://github.com/nodejs/node/commit/60d1aac8d2)] - [#12784](https://github.com/nodejs/node/pull/12784).
 
