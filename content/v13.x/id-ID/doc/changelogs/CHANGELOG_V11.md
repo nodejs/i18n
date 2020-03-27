@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Versi lain
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arsip](CHANGELOG_ARCHIVE.md)
 
 <a id="11.15.0"></a>
 
@@ -237,7 +237,7 @@
 
 * **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **events**
+* **event**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
