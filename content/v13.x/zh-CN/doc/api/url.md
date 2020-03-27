@@ -4,19 +4,19 @@
 
 > 稳定性：2 - 稳定
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+`url` 模块提供了用于处理与解析 URL 的工具。 它可以通过如下方式访问：
 
 ```js
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## URL 字符串和 URL 对象
 
-A URL string is a structured string containing multiple meaningful components. When parsed, a URL object is returned containing properties for each of these components.
+URL 字符串是包含多个具有不同含义组件的结构化字符串。 当被解析时，会返回一个包含所有这些组件的属性的 URL 对象。
 
-The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
+`url` 模块提供了两个用于处理 URL 的 API：一个特定于 Node.js 的旧版本 API，还有一个实现了众多浏览器遵循的 [WHATWG URL 标准](https://url.spec.whatwg.org/) 的较新 API。
 
-A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
+对于 WHATWG 和旧版本 API的比较如下。 Above the URL `'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. 它下面的是 WHATWG `URL` 对象的属性。
 
 WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
 
@@ -41,14 +41,14 @@ WHATWG URL's `origin` property includes `protocol` and `host`, but not `username
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-Parsing the URL string using the WHATWG API:
+使用 WHATWG AP 解析 URL 字符串：
 
 ```js
 const myURL =
   new URL('https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash');
 ```
 
-Parsing the URL string using the Legacy API:
+使用 旧版本 API 解析 URL 字符串：
 
 ```js
 const url = require('url');
@@ -69,7 +69,7 @@ changes:
     description: The class is now available on the global object.
 -->
 
-Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Examples of parsed URLs](https://url.spec.whatwg.org/#example-url-parsing) may be found in the Standard itself. The `URL` class is also available on the global object.
+和浏览器兼容的 `URL` 类，是通过遵循 WHATWG URL 标准来实现的。 [解析过的 URL 范例](https://url.spec.whatwg.org/#example-url-parsing) 可以在标准本身中找到。 The `URL` class is also available on the global object.
 
 In accordance with browser conventions, all properties of `URL` objects are implemented as getters and setters on the class prototype, rather than as data properties on the object itself. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
 myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
@@ -77,16 +77,16 @@ myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still retu
 #### Constructor: `new URL(input[, base])`
 
 * `input` {string} The absolute or relative input URL to parse. If `input` is relative, then `base` is required. If `input` is absolute, the `base` is ignored.
-* `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
+* `base` {string|URL} 当 `input` 不是绝对路径时，作为基础的基本 URL。
 
-Creates a new `URL` object by parsing the `input` relative to the `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
+通过解析相对于 `base` 的 `input` 来创建一个新的 `URL` 对象。 如果 `base` 是以字符串方式被传递的，这就和解析 `new URL(base)` 效果相同。
 
 ```js
 const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
+如果 `input` 或 `base` 不是有效的 URL，则会抛出 `TypeError`。 注意：给定的值将被尽量强制转换为字符串。 例如：
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
@@ -100,7 +100,7 @@ const myURL = new URL('https://測試');
 // https://xn--g6w251d/
 ```
 
-This feature is only available if the `node` executable was compiled with [ICU](intl.html#intl_options_for_building_node_js) enabled. If not, the domain names are passed through unchanged.
+This feature is only available if the `node` executable was compiled with [ICU](intl.html#intl_options_for_building_node_js) enabled. 否则，域名在被传递时将不做任何改变。
 
 In cases where it is not known in advance if `input` is an absolute URL and a `base` is provided, it is advised to validate that the `origin` of the `URL` object is what is expected.
 
@@ -128,7 +128,7 @@ myURL = new URL('foo:Example.com/', 'https://example.org/');
 
 * {string}
 
-Gets and sets the fragment portion of the URL.
+获取并设置 URL 中的片段部分。
 
 ```js
 const myURL = new URL('https://example.org/foo#bar');
@@ -140,13 +140,13 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+分配给 `hash` 属性中的无效 URL 字符会被进行 [百分号编码](#whatwg-percent-encoding)。 The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### `url.host`
 
 * {string}
 
-Gets and sets the host portion of the URL.
+获取并设置 URL 中的主机部分。
 
 ```js
 const myURL = new URL('https://example.org:81/foo');
@@ -158,7 +158,7 @@ console.log(myURL.href);
 // Prints https://example.com:82/foo
 ```
 
-Invalid host values assigned to the `host` property are ignored.
+被分配给 `host` 属性的无效主机值将被忽略。
 
 #### `url.hostname`
 
@@ -182,7 +182,7 @@ Invalid host name values assigned to the `hostname` property are ignored.
 
 * {string}
 
-Gets and sets the serialized URL.
+获取并设置序列化的 URL。
 
 ```js
 const myURL = new URL('https://example.org/foo');
@@ -194,17 +194,17 @@ console.log(myURL.href);
 // Prints https://example.com/bar
 ```
 
-Getting the value of the `href` property is equivalent to calling [`url.toString()`][].
+获取 `href` 属性值就等同于调用 [`url.toString()`][]。
 
-Setting the value of this property to a new value is equivalent to creating a new `URL` object using [`new URL(value)`][`new URL()`]. Each of the `URL` object's properties will be modified.
+将此属性设置为新值就等同于使用 [`new URL(value)`][`new URL()`] 创建新的 `URL` 对象。 `URL` 对象的所有属性都将被改变。
 
-If the value assigned to the `href` property is not a valid URL, a `TypeError` will be thrown.
+如果分配给 `href` 属性的值为无效 URL，则会抛出 `TypeError`。
 
 #### `url.origin`
 
 * {string}
 
-Gets the read-only serialization of the URL's origin.
+获取只读的 URL 来源序列化字符串。
 
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
@@ -225,7 +225,7 @@ console.log(idnURL.hostname);
 
 * {string}
 
-Gets and sets the password portion of the URL.
+获取并设置 URL 中的密码部分。
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
@@ -237,13 +237,13 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+分配给 `password` 属性值中的无效 URL 字符会被 [百分号编码](#whatwg-percent-encoding)。 The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### `url.pathname`
 
 * {string}
 
-Gets and sets the path portion of the URL.
+获取并设置 URL 中的路径部分。
 
 ```js
 const myURL = new URL('https://example.org/abc/xyz?123');
@@ -255,13 +255,13 @@ console.log(myURL.href);
 // Prints https://example.org/abcdef?123
 ```
 
-Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+分配给 `pathname` 属性值中的无效 URL 字符会被 [百分号编码](#whatwg-percent-encoding)。 The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### `url.port`
 
 * {string}
 
-Gets and sets the port portion of the URL.
+获取并设置 URL 中的端口部分。
 
 The port value may be a number or a string containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
 
@@ -334,7 +334,7 @@ console.log(myURL.port);
 
 * {string}
 
-Gets and sets the protocol portion of the URL.
+获取并设置 URL 中的协议部分。
 
 ```js
 const myURL = new URL('https://example.org');
@@ -346,7 +346,7 @@ console.log(myURL.href);
 // Prints ftp://example.org/
 ```
 
-Invalid URL protocol values assigned to the `protocol` property are ignored.
+分配给 `protocol` 属性的无效 URL 协议值将被忽略。
 
 ##### Special Schemes
 
@@ -385,7 +385,7 @@ According to the WHATWG URL Standard, special protocol schemes are `ftp`, `file`
 
 * {string}
 
-Gets and sets the serialized query portion of the URL.
+获取并设置 URL 中的序列化查询字符串部分。
 
 ```js
 const myURL = new URL('https://example.org/abc?123');
@@ -397,19 +397,19 @@ console.log(myURL.href);
 // Prints https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+任何被分配给 `search` 属性的无效 URL 字符都将被 [百分号编码](#whatwg-percent-encoding)。 The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### `url.searchParams`
 
 * {URLSearchParams}
 
-Gets the [`URLSearchParams`][] object representing the query parameters of the URL. This property is read-only; to replace the entirety of query parameters of the URL, use the [`url.search`][] setter. See [`URLSearchParams`][] documentation for details.
+获得代表 URL 中查询参数的 [`URLSearchParams`][] 对象。 此属性为只读；要替换 URL 的全部查询参数，请使用 [`url.search`][] setter。 请参阅 [`URLSearchParams`][] 文档以获取详细信息。
 
 #### `url.username`
 
 * {string}
 
-Gets and sets the username portion of the URL.
+获取并设置 URL 中的用户名部分。
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
@@ -421,23 +421,23 @@ console.log(myURL.href);
 // Prints https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+任何被分配给 `username` 属性的无效 URL 字符都将被 [百分号编码](#whatwg-percent-encoding)。 The selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### `url.toString()`
 
 * 返回：{string}
 
-The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
+`URL` 对象的 `toString()` 方法返回序列化的 URL。 返回的值等同于 [`url.href`][] 和 [`url.toJSON()`][] 的值。
 
-Because of the need for standard compliance, this method does not allow users to customize the serialization process of the URL. For more flexibility, [`require('url').format()`][] method might be of interest.
+由于需要符合规范，此方法不允许用户自定义 URL 的序列化过程。 For more flexibility, [`require('url').format()`][] method might be of interest.
 
 #### `url.toJSON()`
 
 * 返回：{string}
 
-The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
+`URL` 对象的 `toJSON()` 方法返回序列化的 URL。 返回的值等同于 [`url.href`][] 和 [`url.toString()`][] 的值。
 
-This method is automatically called when an `URL` object is serialized with [`JSON.stringify()`][].
+当一个 `URL` 对象通过 [`JSON.stringify()`][] 序列化时，此方法会自动被调用。
 
 ```js
 const myURLs = [
@@ -459,9 +459,9 @@ changes:
     description: The class is now available on the global object.
 -->
 
-The `URLSearchParams` API provides read and write access to the query of a `URL`. The `URLSearchParams` class can also be used standalone with one of the four following constructors. The `URLSearchParams` class is also available on the global object.
+`URLSearchParams` API 提供对 `URL` 中查询参数的读写访问。 通过以下四个构造函数，`URLSearchParams` 类还可以被单独使用。 The `URLSearchParams` class is also available on the global object.
 
-The WHATWG `URLSearchParams` interface and the [`querystring`][] module have similar purpose, but the purpose of the [`querystring`][] module is more general, as it allows the customization of delimiter characters (`&` and `=`). On the other hand, this API is designed purely for URL query strings.
+WHATWG `URLSearchParams` 接口和 [`querystring`][] 模块具有类似的目的，但 [`querystring`][] 模块更为通用，其原因在于它允许自定义分隔符 (`&` and `=`)。 另一方面，此 API 纯粹是为了 URL 查询字符串设计的。
 
 ```js
 const myURL = new URL('https://example.org/?abc=123');
@@ -498,13 +498,13 @@ console.log(myURL.href);
 
 #### Constructor: `new URLSearchParams()`
 
-Instantiate a new empty `URLSearchParams` object.
+实例化一个新的空 `URLSearchParams` 对象。
 
 #### Constructor: `new URLSearchParams(string)`
 
-* `string` {string} A query string
+* `string` {string} 查询字符串
 
-Parse the `string` as a query string, and use it to instantiate a new `URLSearchParams` object. A leading `'?'`, if present, is ignored.
+将 `string` 作为查询字符串进行解析，并使用它来初始化一个新的 `URLSearchParams` 对象。 如果以 `'?'` 开头，则忽略它。
 
 ```js
 let params;
@@ -527,9 +527,9 @@ added:
   - v6.13.0
 -->
 
-* `obj` {Object} An object representing a collection of key-value pairs
+* `obj` {Object} 一个代表键/值对集合的对象
 
-Instantiate a new `URLSearchParams` object with a query hash map. The key and value of each property of `obj` are always coerced to strings.
+通过包含查询参数的哈希图来实例化一个 `URLSearchParams` 对象。 `obj` 所有属性的键和值总是会被强制转化为字符串。
 
 Unlike [`querystring`][] module, duplicate keys in the form of array values are not allowed. Arrays are stringified using [`array.toString()`][], which simply joins all array elements with commas.
 
@@ -551,11 +551,11 @@ added:
   - v6.13.0
 -->
 
-* `iterable` {Iterable} An iterable object whose elements are key-value pairs
+* `iterable` {Iterable} 一个元素为键/值对的可迭代对象。
 
-Instantiate a new `URLSearchParams` object with an iterable map in a way that is similar to [`Map`][]'s constructor. `iterable` can be an `Array` or any iterable object. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
+类似于 [`Map`][] 的构造函数，此构造函数通过一个可迭代图来实例化一个新的 `URLSearchParams` 对象。 `iterable` can be an `Array` or any iterable object. 这就意味着 `iterable` 可以是另一个 `URLSearchParams`，在这种情况下，构造函数只是简单的创建提供的 `URLSearchParams` 的克隆。 `iterable` 中的元素是键/值对，它们本身也可以是可迭代对象。
 
-Duplicate keys are allowed.
+允许重复键。
 
 ```js
 let params;
@@ -600,13 +600,13 @@ new URLSearchParams([
 * `name` {string}
 * `value` {string}
 
-Append a new name-value pair to the query string.
+向查询字符串中追加一个新的键/值对。
 
 #### `urlSearchParams.delete(name)`
 
 * `name` {string}
 
-Remove all name-value pairs whose name is `name`.
+移除所有名字为 `name` 的名称/值对。
 
 #### `urlSearchParams.entries()`
 
@@ -614,14 +614,14 @@ Remove all name-value pairs whose name is `name`.
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
-Alias for [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
+[`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`] 的别名。
 
 #### `urlSearchParams.forEach(fn[, thisArg])`
 
 * `fn` {Function} Invoked for each name-value pair in the query
 * `thisArg` {Object} To be used as `this` value for when `fn` is called
 
-Iterates over each name-value pair in the query and invokes the given function.
+对查询字符串中的每个名称/值对进行迭代，并调用给定的函数。
 
 ```js
 const myURL = new URL('https://example.org/?a=b&c=d');
@@ -636,23 +636,23 @@ myURL.searchParams.forEach((value, name, searchParams) => {
 #### `urlSearchParams.get(name)`
 
 * `name` {string}
-* Returns: {string} or `null` if there is no name-value pair with the given `name`.
+* 返回：{string} 或 `null` 如果对于给定的 `name`，没有对应的名称/值对。
 
-Returns the value of the first name-value pair whose name is `name`. If there are no such pairs, `null` is returned.
+返回名称为 `name` 的第一个名称/值对中的值。 如果找不到匹配的名称/值对，则返回 `null`。
 
 #### `urlSearchParams.getAll(name)`
 
 * `name` {string}
 * Returns: {string[]}
 
-Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
+返回名称为 `name` 的所有名称/值对中的值。 如果找不到匹配的名称/值对，则返回一个空数组。
 
 #### `urlSearchParams.has(name)`
 
 * `name` {string}
 * 返回：{boolean}
 
-Returns `true` if there is at least one name-value pair whose name is `name`.
+如果至少有一个名称为 `name` 的名称/值对，则返回 `true`。
 
 #### `urlSearchParams.keys()`
 
@@ -675,7 +675,7 @@ for (const name of params.keys()) {
 * `name` {string}
 * `value` {string}
 
-Sets the value in the `URLSearchParams` object associated with `name` to `value`. If there are any pre-existing name-value pairs whose names are `name`, set the first such pair's value to `value` and remove all others. If not, append the name-value pair to the query string.
+将和 `name` 相关联的 `URLSearchParams` 对象中的值设置为 `value`。 如果任何现有的名称/值对中的名称为 `name`，将首个名称/值对中的值设置为 `value` 并移除其他的名称/值对。 否则，向查询字符串中追加一个新的名称/值对。
 
 ```js
 const params = new URLSearchParams();
@@ -698,9 +698,9 @@ added:
   - v6.13.0
 -->
 
-Sort all existing name-value pairs in-place by their names. Sorting is done with a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), so relative order between name-value pairs with the same name is preserved.
+将所有现有的名称/值对按照名称排序。 根据 [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) 进行排序，具有相同名称的名称/值对的相对顺序被保留。
 
-This method can be used, in particular, to increase cache hits.
+此方法尤其可被用于提高缓存的命中率。
 
 ```js
 const params = new URLSearchParams('query[]=abc&type=search&query[]=123');
@@ -713,7 +713,7 @@ console.log(params.toString());
 
 * 返回：{string}
 
-Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
+返回序列化为字符串的搜索参数，在必要时对字符进行百分比编码。
 
 #### `urlSearchParams.values()`
 
@@ -727,7 +727,7 @@ Returns an ES6 `Iterator` over the values of each name-value pair.
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
-Alias for [`urlSearchParams.entries()`][].
+[`urlSearchParams.entries()`][] 的别名。
 
 ```js
 const params = new URLSearchParams('foo=bar&xyz=baz');
@@ -749,9 +749,9 @@ added:
 * `domain` {string}
 * 返回：{string}
 
-Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+返回 `domain` 的 [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII 序列化编码。 如果 `domain` 为无效域名，则返回空字符串。
 
-It performs the inverse operation to [`url.domainToUnicode()`][].
+它执行 [`url.domainToUnicode()`][] 的反向操作。
 
 ```js
 const url = require('url');
@@ -773,9 +773,9 @@ added:
 * `domain` {string}
 * 返回：{string}
 
-Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+返回 `domain` 的 Unicode 序列化编码。 如果 `domain` 为无效域名，则返回空字符串。
 
-It performs the inverse operation to [`url.domainToASCII()`][].
+它执行 [`url.domainToASCII()`][] 的反向操作。
 
 ```js
 const url = require('url');
@@ -864,7 +864,7 @@ new URL('/some/path%.js', 'file:'); // Incorrect: file:///some/path%
 pathToFileURL('/some/path%.js');    // Correct:   file:///some/path%25 (POSIX)
 ```
 
-## Legacy URL API
+## 旧版本 URL API
 
 > Stability: 0 - Deprecated: Use the WHATWG URL API instead.
 
@@ -892,7 +892,7 @@ The `hash` property is the fragment identifier portion of the URL including the 
 
 #### `urlObject.host`
 
-The `host` property is the full lower-cased host portion of the URL, including the `port` if specified.
+`host` 属性是 URL 中主机部分的小写字母表示，如果指定 `port` 的话，也包含 该部分。
 
 例如：`'sub.example.com:8080'`.
 
@@ -904,29 +904,29 @@ The `hostname` property is the lower-cased host name portion of the `host` compo
 
 #### `urlObject.href`
 
-The `href` property is the full URL string that was parsed with both the `protocol` and `host` components converted to lower-case.
+`href` 属性是完整的 URL 字符串，其中的 `protocol` 和 `host` 部分都被转换为小写字母。
 
 例如：`'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`.
 
 #### `urlObject.path`
 
-The `path` property is a concatenation of the `pathname` and `search` components.
+`path` 属性是 `pathname` 和 `search` 部分连接到一起的结果。
 
 例如：`'/p/a/t/h?query=string'`.
 
-No decoding of the `path` is performed.
+不对 `path` 进行解码。
 
 #### `urlObject.pathname`
 
-The `pathname` property consists of the entire path section of the URL. This is everything following the `host` (including the `port`) and before the start of the `query` or `hash` components, delimited by either the ASCII question mark (`?`) or hash (`#`) characters.
+`pathname` 属性包含 URL 中的完整路径部分。 这是在 `host` (包含 `port`) 之后，且在由 ASCII 问号字符 (`?`) 或 哈希字符 (`#`) 分隔的 `query` 或`hash` 部分之前的所有字符。
 
 For example: `'/p/a/t/h'`.
 
-No decoding of the path string is performed.
+不对 path 字符串进行解码。
 
 #### `urlObject.port`
 
-The `port` property is the numeric port portion of the `host` component.
+`port` 属性是 `host` 部分中的数字端口号。
 
 例如：`'8080'`.
 
@@ -938,23 +938,23 @@ The `port` property is the numeric port portion of the `host` component.
 
 #### `urlObject.query`
 
-The `query` property is either the query string without the leading ASCII question mark (`?`), or an object returned by the [`querystring`][] module's `parse()` method. Whether the `query` property is a string or object is determined by the `parseQueryString` argument passed to `url.parse()`.
+`query` 属性是不含起始 ASCII 编码问号 (`?`) 的查询字符串，或者是 [`querystring`][] 模块中 `parse()` 方法的返回对象。 `query` 属性是字符串还是对象，取决于传递给 `url.parse()` 的 `parseQueryString` 参数。
 
 例如：`'query=string'` 或 `{'query': 'string'}`.
 
-If returned as a string, no decoding of the query string is performed. If returned as an object, both keys and values are decoded.
+如果以字符串方式返回，则不执行对查询字符串的解码。 如果以对象方式返回，则会对键和值进行解码。
 
 #### `urlObject.search`
 
-The `search` property consists of the entire "query string" portion of the URL, including the leading ASCII question mark (`?`) character.
+`search` 属性包含 URL 中的 "查询字符串" 部分，该部分包含起始的 ASCII 编码的问号 (`?`) 。
 
 例如：`'?query=string'`.
 
-No decoding of the query string is performed.
+不对查询字符串进行解码。
 
 #### `urlObject.slashes`
 
-The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
+如果在 `protocol` 中的冒号之后需要两个 ASCII 编码的斜杠字符 (`/`)， `slashes` 属性的类型为 `boolean`，且值为 `true`。
 
 ### `url.format(urlObject)`
 <!-- YAML
@@ -971,9 +971,9 @@ changes:
                  times.
 -->
 
-* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). If a string, it is converted to an object by passing it to `url.parse()`.
+* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). 如果是字符串，通过将其传递给 `url.parse()` 转换为一个对象。
 
-The `url.format()` method returns a formatted URL string derived from `urlObject`.
+`url.format()` 方法返回由 `urlObject` 派生的格式化 URL 字符串。
 
 ```js
 url.format({
@@ -989,39 +989,39 @@ url.format({
 // => 'https://example.com/some/path?page=1&format=json'
 ```
 
-If `urlObject` is not an object or a string, `url.format()` will throw a [`TypeError`][].
+如果 `urlObject` 不是对象或字符串，`url.format()` 会抛出 [`TypeError`][]。
 
-The formatting process operates as follows:
+格式化过程的操作如下：
 
-* A new empty string `result` is created.
-* If `urlObject.protocol` is a string, it is appended as-is to `result`.
-* Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* 一个新的空字符串 `result` 被创建。
+* 如果 `urlObject.protocol` 是字符串，它会原样不动的被追加到 `result`。
+* 否则，如果 `urlObject.protocol` 不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
 * For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
 * If either of the following conditions is true, then the literal string `//` will be appended to `result`:
   * `urlObject.slashes` property is true;
   * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
-* If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* If the `urlObject.host` property is `undefined` then:
-  * If the `urlObject.hostname` is a string, it is appended to `result`.
-  * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`:
-    * The literal string `:` is appended to `result`, and
-    * The value of `urlObject.port` is coerced to a string and appended to `result`.
-* Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
-* If the `urlObject.pathname` property is a string that is not an empty string:
+* 如果 `urlObject.auth` 属性为真值，且 `urlObject.host` 或 `urlObject.hostname` 之一不是 `undefined`，`urlObject.auth` 的值会被强制转换为字符串，并被追加到 `result`中，其后面是 文字字符串 `@`。
+* 如果 `urlObject.host` 属性是 `undefined`，则：
+  * 如果 `urlObject.hostname` 是字符串，则会被追加到 `result`。
+  * 否则，如果 `urlObject.hostname` 不是 `undefined`，且不是字符串，则会抛出 [`Error`][]。
+  * 如果 `urlObject.port` 属性值为真值，且 `urlObject.hostname` 不是 `undefined`：
+    * 文本字符串 `:` 会被追加到 `result`，且
+    * `urlObject.port` 的值会被强制转换为字符串，并被追加到 `result`。
+* 否则，如果 `urlObject.host` 属性的值为真值，`urlObject.host` 的值会被强制转换为字符串，且被追加到 `result`。
+* 如果 `urlObject.pathname` 属性是非空字符串：
   * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string `'/'` is appended to `result`.
-  * The value of `urlObject.pathname` is appended to `result`.
-* Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
-* Otherwise, if `urlObject.search` is a string:
+  * `urlObject.pathname` 的值被追加到 `result`。
+* 否则，如果 `urlObject.pathname` 不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
+* 如果 `urlObject.search` 属性为 `undefined`，同时如果 `urlObject.query` 属性是一个 `Object`，文本字符串 `?` 会被追加到 `result`，其后是将 `urlObject.query` 的值传递给 [`querystring`][] 模块的 `stringify()` 方法的输出结果。
+* 否则，如果 `urlObject.search` 是字符串：
   * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
-  * The value of `urlObject.search` is appended to `result`.
-* Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.hash` property is a string:
+  * `urlObject.search` 的值被追加到 `result`。
+* 否则，如果 `urlObject.search` 不是 `undefined`，且不是字符串，会抛出 [`Error`][] 。
+* 如果 `urlObject.hash` 属性是字符串：
   * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
-  * The value of `urlObject.hash` is appended to `result`.
-* Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
-* `result` is returned.
+  * `urlObject.hash` 的值会被追加到 `result`。
+* 否则，如果 `urlObject.hash` 属性不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
+* 返回 `result`。
 
 ### `url.parse(urlString[, parseQueryString[, slashesDenoteHost]])`
 <!-- YAML
@@ -1041,11 +1041,11 @@ changes:
                  when no query string is present.
 -->
 
-* `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
+* `urlString` {string} 要被解析的 URL 字符串。
+* `parseQueryString` {boolean} 如果为 `true`，`query` 属性会被赋予到 [`querystring`][] 模块的 `parse()` 方法返回的对象中。 如果为 `false`，返回的 URL 对象中的 `query` 属性则为未解析和未解码的字符串。 **Default:** `false`.
+* `slashesDenoteHost` {boolean} 如果为 `true`，则文本字符串 `//` 之后的首个字符到下个 `/` 符号之前的所有字符会被解析为 `host`。 例如，对于给定的 `//foo/bar`，解析结果是 `{host: 'foo', pathname: '/bar'}`，而不是 `{pathname: '//foo/bar'}`。 **Default:** `false`.
 
-The `url.parse()` method takes a URL string, parses it, and returns a URL object.
+`url.parse()` 方法接受 URL 字符串作为参数，并将其解析，返回一个 URL 对象。
 
 如果 `urlString` 不是字符串，则会抛出 `TypeError`。
 
@@ -1071,10 +1071,10 @@ changes:
                  contains a hostname.
 -->
 
-* `from` {string} The Base URL being resolved against.
-* `to` {string} The HREF URL being resolved.
+* `from` {string} 要进行解析的基础 URL。
+* `to` {string} 要进行解析的 HREF URL。
 
-The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
+`url.resolve()` 解析相对于基础 URL 的目标 URL，解析过程类似于浏览器解析锚标记HREF。
 
 ```js
 const url = require('url');
@@ -1085,23 +1085,23 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 
 <a id="whatwg-percent-encoding"></a>
 
-## Percent-Encoding in URLs
+## URL 中的百分比编码
 
-URLs are permitted to only contain a certain range of characters. Any character falling outside of that range must be encoded. How such characters are encoded, and which characters to encode depends entirely on where the character is located within the structure of the URL.
+在 URL 中只允许包含特定范围内的字符。 任何该范围之外的字符都必须进行编码。 如何对这些字符进行编码，以及哪些字符需要编码，完全取决于字符在 URL 结构中的位置。
 
-### Legacy API
+### 旧版本 API
 
-Within the Legacy API, spaces (`' '`) and the following characters will be automatically escaped in the properties of URL objects:
+在旧版本 API 中，在 URL 对象属性中的空格 (`' '`) 和以下字符都将被自动进行转义：
 
 ```txt
 < > " ` \r \n \t { } | \ ^ '
 ```
 
-For example, the ASCII space character (`' '`) is encoded as `%20`. The ASCII forward slash (`/`) character is encoded as `%3C`.
+例如，ASCII 编码中的空格 (`' '`) 会被编码为 `%20`。 ASCII 编码中的斜杠 (`/`) 字符会被编码为 `%3C`。
 
 ### WHATWG API
 
-The [WHATWG URL Standard](https://url.spec.whatwg.org/) uses a more selective and fine grained approach to selecting encoded characters than that used by the Legacy API.
+[WHATWG URL 标准](https://url.spec.whatwg.org/) 使用比Legacy API 所使用的更具选择性和细粒度的方法来选择编码字符。
 
 The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
 
