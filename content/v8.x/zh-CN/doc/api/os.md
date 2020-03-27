@@ -537,7 +537,7 @@ changes:
 
 ### 错误常量
 
-The following error constants are exported by `os.constants.errno`:
+如下的错误常量由 `os.constants.errno` 导出：
 
 #### POSIX 错误常量
 
@@ -867,7 +867,7 @@ The following error constants are exported by `os.constants.errno`:
 
 #### Windows 系统特定的错误常量。
 
-The following error codes are specific to the Windows operating system:
+如下的错误码专门针对 Windows 操作系统：
 
 <table>
   <tr>
