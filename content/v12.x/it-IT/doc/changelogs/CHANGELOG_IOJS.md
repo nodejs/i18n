@@ -74,7 +74,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors
+* errori
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2590,7 +2590,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### eventi
 
 https://iojs.org/api/events.html
 
@@ -2620,7 +2620,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### net
+### rete
 
 https://iojs.org/api/net.html
 
@@ -2633,7 +2633,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### percorso
 
 https://iojs.org/api/path.html
 
