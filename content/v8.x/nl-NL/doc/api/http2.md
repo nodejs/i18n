@@ -13,7 +13,7 @@ changes:
 
 > Stabiliteit: 2 - stabiel
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. Het kan worden bereikt met behulp van:
 
 ```js
 const http2 = require('http2');
