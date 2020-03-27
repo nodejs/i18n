@@ -1,11 +1,11 @@
 # 文档规范指南
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* 文档使用 markdown 文件编写，命名格式为 `lowercase-with-dashes.md`。 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * 某些文件是例外，例如顶级 markdown 文件。
 * Documents should be word-wrapped at 80 characters.
 * 首选 `. editorconfig ` 中描述的格式。 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * 某些编辑器可以使用 [插件](http://editorconfig.org/#download) 自动应用这些规则。
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **默认值：** `0`。</code> <!--lint enable maximum-line-length remark-lint-->
   
