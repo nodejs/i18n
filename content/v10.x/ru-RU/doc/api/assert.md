@@ -4,35 +4,37 @@
 
 > Стабильность: 2 - Стабильно
 
-Модуль `утвердить` обеспечивает простой набор тестов по утверждению, которые могут быть использованы для тестирования инвариантов.
+The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Существуют `strict` и `legacy` режимы, хотя использовать рекомендуется только режим [`strict mode`][].
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Для более подробной информации об используемых сравнениях равенства смотрите [ руководство MDN по сравнениям равенства](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Класс: assert.AssertionError
 
-Подкласс `Ошибка` указывает на ошибку реализации. Все ошибки, созданные модулем `assert` будут примерами класса `AssertionError`.
+Подкласс `Ошибка` указывает на ошибку реализации. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
 
 ### new assert.AssertionError(options)
+
 <!-- YAML
 added: v0.1.21
 -->
-* `options` {Object}
-  * `message` {string} При наличии, сообщение об ошибке будет прикреплено к этому значению.
-  * `actual` {any} Свойство `actual` в экземпляре ошибки будет сожержать данное значение. При необходимости, используется для ввода `фактической` ошибки, например, [`assert.strictEqual()`] используется.
-  * `expected` {any} Свойство `expected` в экзепляре ошибки будет содержать данное значение. В случае необходимости, используется для ввода `ожидаемой` ошибки, например, [`assert.strictEqual()`] используется.
-  * `operator` {string} Свойство `operator` в экземпляре ошибки будет содержать данное значение. Используется внутренне для определения операции, которая использовалась для сравнения (или чтобы определить, какие утверждающие функции спровоцировали ошибку).
-  * `stackStartFn` {Function} При наличии, сгенерированный стек трейс удалит все фреймы к предоставленой функции.
+
+* `опции` {Object} 
+  * `message` {string} If provided, the error message is going to be set to this value.
+  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
+  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
+  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
+  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
 Подкласс `Ошибки` указывает на ошибку реализации.
 
-Все экземпляры содержат встроенные свойства `Ошибки` (`message` и `name`) и:
+All instances contain the built-in `Error` properties (`message` and `name`) and:
 
-* `actual` {any} В случае, если присвоено фактическое значение, используется [`assert.strictEqual()`].
-* `actual` {any} В случае, если присвоено ожидаемое значение, используется [`assert.strictEqual()`].
-* `generatedMessage` {boolean} показывает, было ли сообщение автоматически сгенерируемо (`true`) или нет.
-* `code` {string} Это всегда крепится к строке `ERR_ASSERTION`, чтобы обозначить, что ошибка на самом деле является ошибкой утверждения.
+* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
+* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
+* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
+* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
 * `operator` {string} Устанавливается в значение оператора.
 
 ```js
@@ -61,9 +63,11 @@ const { message } = новый утверждают. AssertionError ({
 ```
 
 ## Строгий режим
+
 <!-- YAML
 added: v9.9.0
 changes:
+
   - version: v9.9.0
     pr-url: https://github.com/nodejs/node/pull/17615
     description: Added error diffs to the strict mode
@@ -72,9 +76,9 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-При использовании `strict mode`, любая функция `assert` будет использовать равенство, использованное в режиме строгой функции. Таким образом, например, это [`assert.deepEqual()`] [], будет работать также как и [`assert.deepStrictEqual()`] [].
+When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
 
-Кроме того, сообщения об ошибках, которые включают объекты, провоцируют ошибку diff вместо отображения обоих объектов. Но это не происходит в режиме совместимости (legacy mode).
+On top of that, error messages which involve objects produce an error diff instead of displaying both objects. Но это не происходит в режиме совместимости (legacy mode).
 
 Это осуществляется с помощью:
 
@@ -109,7 +113,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 > Стабильность: 0 - устарело: вместо этого используйте строгий режим.
 
-При доступе к `assert` напрямую, а не с помощью свойства `strict`, [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) будет использоваться для любой функции без «strict» в его имени, Например, [`assert.deepEqual()`] [].
+When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
 Это осуществляется с помощью:
 
@@ -117,7 +121,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 const assert = require('assert');
 ```
 
-Рекомендуется использовать [`строгий режим`] [], так как [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) часто может иметь неожиданные результаты. Это особенно верно для [`assert.deepEqual()`] [], где правила сравнения неточные:
+It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
 Предупреждение: Это не приводит к AssertionError!
@@ -125,18 +129,22 @@ assert.deepEqual(/a/gi, new Date());
 ```
 
 ## assert(value[, message])
+
 <!-- YAML
 added: v0.5.9
 -->
+
 * `value` {any} The input that is checked for being truthy.
 * `message` {string|Error}
 
 Псевдоним [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: The `Error` names and messages are now properly compared
@@ -153,6 +161,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
@@ -165,18 +174,18 @@ changes:
 
 > Стабильность: 0 - устарело: вместо этого используйте [`assert.deepStrictEqual()`] [].
 
-Тесты для глубокого равенства между `actual` и `expected` параметрами. Примитивные значения сравниваются с [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Тесты для глубокого равенства между `actual` и `expected` параметрами. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Считаются только [перечислимые свойства «own»](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). Реализация [`assert.deepEqual()`] [] не тестирует [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) объектов или перечислимые собственные [`символ`]] свойства. Для таких проверок вместо этого используйте [`assert.deepStrictEqual()`][]. `assert.deepEqual()`][] может иметь неожиданные результаты. Следующий пример не приводит к `AssertionError`, так как свойства [`RegExp`][] обекта являются неперечислимыми:
+Считаются только [перечислимые свойства «own»](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. `assert.deepEqual()`][] может иметь неожиданные результаты. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
 // Предупреждение: Это не приводит к AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-Исключение сделано для [`Map`][] и [`Set`][]. Как и ожидается, содержимые элементы `Map`s и `Set`s тоже сравниваются.
+Исключение сделано для [`Map`][] и [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
 
-«Глубокое» равенство означает, что перечислимые "собственные" свойства дочерних объектов также оцениваются:
+"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
 ```js
 const assert = require('assert');
@@ -213,12 +222,14 @@ assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
 ```
 
-Если значения не равны, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15169
     description: Enumerable symbol properties are now compared.
@@ -243,11 +254,12 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
-Тесты для глубокого равенства между `actual` и `expected` параметрами. "Глубокое" равенство означает, что перечислимые "собственные" свойства дочерних объектов также оцениваются следующими правилами.
+Тесты для глубокого равенства между `actual` и `expected` параметрами. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
 
 ### Comparison details
 
@@ -347,12 +359,14 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-Если значения не равны, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.doesNotReject(asyncFn\[, error\]\[, message\])
+
 <!-- YAML
 added: v10.0.0
 -->
+
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
 * `message` {string}
@@ -386,9 +400,11 @@ assert.doesNotReject(Promise.reject(new TypeError('Wrong value')))
 ```
 
 ## assert.doesNotThrow(fn\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/2407
     description: The `message` parameter is respected now.
@@ -396,6 +412,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `fn` {Function}
 * `error` {RegExp|Function}
 * `message` {string}
@@ -406,11 +423,12 @@ Using `assert.doesNotThrow()` is actually not useful because there is no benefit
 
 When `assert.doesNotThrow()` is called, it will immediately call the `fn` function.
 
-Если возникает ошибка, и она того же типа, который указан параметром `error`, тогда выдается `AssertionError`. Если ошибка другая, или параметр `error` не определен, то ошибка возвращается обратно к вызывающему.
+If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
 
-Например, следующее выдаст [`TypeError`][], потому что в утверждении нет соответствующего типа ошибки:
+The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+
 ```js
 assert.doesNotThrow(
   () => {
@@ -421,6 +439,7 @@ assert.doesNotThrow(
 ```
 
 However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+
 ```js
 assert.doesNotThrow(
   () => {
@@ -430,7 +449,8 @@ assert.doesNotThrow(
 );
 ```
 
-Если выдается `AssertionError`, и значение указано для параметра `message`, значение `message` будет добавлено в сообщение `AssertionError`:
+If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+
 ```js
 assert.doesNotThrow(
   () => {
@@ -444,8 +464,12 @@ assert.doesNotThrow(
 
 ## assert.equal(actual, expected[, message])<!-- YAML
 added: v0.1.21
--->* `actual` {any}
+-->
+
+* `actual` {any}
+
 * `expected` {any}
+
 * `message` {string|Error}
 
 **Строгий режим**
@@ -472,11 +496,13 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Если значения не равны, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.fail([message])<!-- YAML
 added: v0.1.21
--->* `message` {string|Error} **Default:** `'Failed'`
+-->
+
+* `message` {string|Error} **Default:** `'Failed'`
 
 Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
@@ -498,11 +524,14 @@ Using `assert.fail()` with more than two arguments is possible but deprecated. S
 ## assert.fail(actual, expected[, message[, operator[, stackStartFn]]])<!-- YAML
 added: v0.1.21
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18418
     description: Calling `assert.fail()` with more than one argument is
                  deprecated and emits a warning.
--->* `actual` {any}
+-->
+
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 * `operator` {string} **Default:** `'!='`
@@ -549,6 +578,7 @@ suppressFrame();
 ## assert.ifError(value)<!-- YAML
 added: v0.1.97
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18247
     description: Instead of throwing the original error it is now wrapped into
@@ -557,7 +587,9 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/18247
     description: Value may now only be `undefined` or `null`. Before all falsy
                  values were handled the same as `null` and did not throw.
--->* `value` {any}
+-->
+
+* `value` {any}
 
 Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself.
 
@@ -590,6 +622,7 @@ let err;
 ## assert.notDeepEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: The `Error` names and messages are now properly compared
@@ -605,7 +638,9 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->* `actual` {any}
+-->
+
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -652,11 +687,12 @@ assert.notDeepEqual(obj1, obj4);
 // OK
 ```
 
-Если значения глубоко равны, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])<!-- YAML
 added: v1.2.0
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15398
     description: The `-0` and `+0` are not considered equal anymore.
@@ -680,7 +716,9 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->* `actual` {any}
+-->
+
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -693,21 +731,25 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.notEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
--->* `actual` {any}
+-->
+
+* `actual` {any}
+
 * `expected` {any}
+
 * `message` {string|Error}
 
 **Строгий режим**
 
-An alias of [`assert.notStrictEqual()`][].
+Псевдоним [`assert.notStrictEqual()`][].
 
 **Режим совместимости**
 
-> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
+> Стабильность: 0 - устарело: вместо этого используйте [`assert.notStrictEqual()`] [].
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -729,10 +771,13 @@ If the values are equal, an `AssertionError` is thrown with a `message` property
 ## assert.notStrictEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
--->* `actual` {any}
+-->
+
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -751,21 +796,24 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.ok(value[, message])<!-- YAML
 added: v0.1.21
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18319
     description: The `assert.ok()` (no arguments) will now use a predefined
                  error message.
--->* `value` {any}
+-->
+
+* `value` {any}
 * `message` {string|Error}
 
-Проверяется `value` на истинность. Это эквивалентно `assert.equal(!!value, true, message)`.
+Проверяется `value` на истинность. It is equivalent to `assert.equal(!!value, true, message)`.
 
-Если `value` не истинно, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` `undefined`, назначается сообщение об ошибке по умолчанию. Если параметр `message` является экземпляром [`Error`][], тогда оно появится вместо `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
 
@@ -812,8 +860,12 @@ assert(0);
 
 ## assert.rejects(asyncFn\[, error\]\[, message\])<!-- YAML
 added: v10.0.0
--->* `asyncFn` {Function|Promise}
+-->
+
+* `asyncFn` {Function|Promise}
+
 * `error` {RegExp|Function|Object|Error}
+
 * `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
@@ -849,16 +901,19 @@ assert.rejects(
 });
 ```
 
-Note that `error` cannot be a string. Если строка указана в качестве второго аргумента, то `error` будет опущенной, и вместо этого строка будет использоваться для `message`. Это может привести к ошибкам, которые легко пропустить. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
 
 ## assert.strictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
@@ -884,11 +939,12 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-Если значения не строго равны, `AssertionError` выдается со свойством `message`, равным значению параметра `message`. Если параметр `message` не определен, назначается сообщение об ошибке по умолчанию. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.throws(fn\[, error\]\[, message\])<!-- YAML
 added: v0.1.21
 changes:
+
   - version: v10.2.0
     pr-url: https://github.com/nodejs/node/pull/20485
     description: The `error` parameter can be an object containing regular
@@ -899,7 +955,9 @@ changes:
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
--->* `fn` {Function}
+-->
+
+* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
 * `message` {string}
 
@@ -1013,7 +1071,8 @@ assert.throws(
 );
 ```
 
-Note that `error` cannot be a string. Если строка указана в качестве второго аргумента, то `error` будет опущенной, и вместо этого строка будет использоваться для `message`. Это может привести к ошибкам, которые легко пропустить. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+
 ```js
 function throwingFirst() {
   throw new Error('First');

@@ -1,5 +1,7 @@
 # Node.js Internationalization
 
+[![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
+
 ## Contributing
 
 Help us get the documentation translated into your native language and reach more people's hearts.
@@ -38,6 +40,10 @@ Help us get the documentation translated into your native language and reach mor
 - [Turkish](https://crowdin.com/project/nodejs/tr)
 - [Ukrainian](https://crowdin.com/project/nodejs/uk)
 - [Vietnamese](https://crowdin.com/project/nodejs/vi)
+
+### CrowdIn Glossary
+
+We have a [CrowdIn Glossary](crowdin-glossary.json) that has some terms which are noted as shared or translateable across the project. If a term is missing, please add it! This glossary will automatically be used by CrowdIn to let translators know about each term when they come across them. 
 
 ## About
 
@@ -113,6 +119,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Raja Sekar          | [rajzshkr](https://github.com/rajzshkr)                   | [rajzshkr](https://twitter.com/rajzshkr)                 |
 | Richard Littauer    | [RichardLitt](https://github.com/RichardLitt)             | [richlitt](https://twitter.com/richlitt)                 |
 | Ryo Aramaki         | [ryo-a](https://github.com/ryo-a)                         | [geo_vitya](https://twitter.com/geo_vitya)               |
+| Ryuichi Okumura     | [okuryu](https://github.com/okuryu)                       | [okuryu](https://twitter.com/okuryu)                     |
 | Sam Yamashita       | [sotayamashita](https://github.com/sotayamashita)         | [sota0805](https://twitter.com/sota0805)                 |
 | Steven R. Loomis    | [srl295](https://github.com/srl295)                       | [srl295](https://twitter.com/srl295)                     |
 | Tiago Danin         | [TiagoDanin](https://github.com/TiagoDanin)               | [\_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |

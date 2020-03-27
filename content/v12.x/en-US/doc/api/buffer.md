@@ -59,8 +59,8 @@ differently based on what arguments are provided:
   entire `Buffer`. While this behavior is *intentional* to improve performance,
   development experience has demonstrated that a more explicit distinction is
   required between creating a fast-but-uninitialized `Buffer` versus creating a
-  slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and
-  `new Buffer(num)` will return a `Buffer` with initialized memory.
+  slower-but-safer `Buffer`. Since Node.js 8.0.0, `Buffer(num)` and `new
+  Buffer(num)` return a `Buffer` with initialized memory.
 * Passing a string, array, or `Buffer` as the first argument copies the
   passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`][] or a [`SharedArrayBuffer`][] returns a `Buffer`
@@ -70,6 +70,19 @@ Because the behavior of `new Buffer()` is different depending on the type of the
 first argument, security and reliability issues can be inadvertently introduced
 into applications when argument validation or `Buffer` initialization is not
 performed.
+
+For example, if an attacker can cause an application to receive a number where
+a string is expected, the application may call `new Buffer(100)`
+instead of `new Buffer("100")`, it will allocate a 100 byte buffer instead
+of allocating a 3 byte buffer with content `"100"`. This is commonly possible
+using JSON API calls. Since JSON distinguishes between numeric and string types,
+it allows injection of numbers where a naive application might expect to always
+receive a string.  Before Node.js 8.0.0, the 100 byte buffer might contain
+arbitrary pre-existing in-memory data, so may be used to expose in-memory
+secrets to a remote attacker.  Since Node.js 8.0.0, exposure of memory cannot
+occur because the data is zero-filled. However, other attacks are still
+possible, such as causing very large buffers to be allocated by the server,
+leading to performance degradation or crashing on memory exhaustion.
 
 To make the creation of `Buffer` instances more reliable and less error-prone,
 the various forms of the `new Buffer()` constructor have been **deprecated**
@@ -92,7 +105,7 @@ to one of these new APIs.*
   initialized `Buffer` of the specified size. This method is slower than
   [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly
   created `Buffer` instances never contain old data that is potentially
-  sensitive.
+  sensitive. A `TypeError` will be thrown if `size` is not a number.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and
   [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a
   new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is
@@ -111,14 +124,16 @@ added: v5.10.0
 
 Node.js can be started using the `--zero-fill-buffers` command line option to
 cause all newly allocated `Buffer` instances to be zero-filled upon creation by
-default, including buffers returned by `new Buffer(size)`,
+default. Before Node.js 8.0.0, this included buffers allocated by `new
+Buffer(size)`. Since Node.js 8.0.0, buffers allocated with `new` are always
+zero-filled, whether this option is used or not.
 [`Buffer.allocUnsafe()`][], [`Buffer.allocUnsafeSlow()`][], and `new
 SlowBuffer(size)`. Use of this flag can have a significant negative impact on
 performance. Use of the `--zero-fill-buffers` option is recommended only when
 necessary to enforce that newly allocated `Buffer` instances cannot contain old
 data that is potentially sensitive.
 
-```txt
+```console
 $ node --zero-fill-buffers
 > Buffer.allocUnsafe(5);
 <Buffer 00 00 00 00 00>
@@ -167,28 +182,28 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 
 The character encodings currently supported by Node.js include:
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip
+* `'ascii'`: For 7-bit ASCII data only. This encoding is fast and will strip
   the high bit if set.
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other
+* `'utf8'`: Multibyte encoded Unicode characters. Many web pages and other
   document formats use UTF-8.
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters.
+* `'utf16le'`: 2 or 4 bytes, little-endian encoded Unicode characters.
   Surrogate pairs (U+10000 to U+10FFFF) are supported.
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'`: Alias of `'utf16le'`.
 
-* `'base64'` - Base64 encoding. When creating a `Buffer` from a string,
+* `'base64'`: Base64 encoding. When creating a `Buffer` from a string,
   this encoding will also correctly accept "URL and Filename Safe Alphabet" as
   specified in [RFC 4648, Section 5][].
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string
+* `'latin1'`: A way of encoding the `Buffer` into a one-byte encoded string
   (as defined by the IANA in [RFC 1345][],
   page 63, to be the Latin-1 supplement block and C0/C1 control codes).
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'`: Alias for `'latin1'`.
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'`: Encode each byte as two hexadecimal characters.
 
 Modern Web browsers follow the [WHATWG Encoding Standard][] which aliases
 both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing
@@ -296,12 +311,12 @@ for (const b of buf) {
 Additionally, the [`buf.values()`][], [`buf.keys()`][], and
 [`buf.entries()`][] methods can be used to create iterators.
 
-## Class: Buffer
+## Class: `Buffer`
 
 The `Buffer` class is a global type for dealing with binary data directly.
 It can be constructed in a variety of ways.
 
-### new Buffer(array)
+### `new Buffer(array)`
 <!-- YAML
 deprecated: v6.0.0
 changes:
@@ -328,7 +343,7 @@ Allocates a new `Buffer` using an `array` of octets.
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-### new Buffer(arrayBuffer[, byteOffset[, length]])
+### `new Buffer(arrayBuffer[, byteOffset[, length]])`
 <!-- YAML
 added: v3.0.0
 deprecated: v6.0.0
@@ -385,7 +400,7 @@ console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-### new Buffer(buffer)
+### `new Buffer(buffer)`
 <!-- YAML
 deprecated: v6.0.0
 changes:
@@ -420,7 +435,7 @@ console.log(buf2.toString());
 // Prints: buffer
 ```
 
-### new Buffer(size)
+### `new Buffer(size)`
 <!-- YAML
 deprecated: v6.0.0
 changes:
@@ -462,7 +477,7 @@ console.log(buf);
 // Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
-### new Buffer(string[, encoding])
+### `new Buffer(string[, encoding])`
 <!-- YAML
 deprecated: v6.0.0
 changes:
@@ -499,7 +514,7 @@ console.log(buf1.toString('ascii'));
 // Prints: this is a tC)st
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Class Method: `Buffer.alloc(size[, fill[, encoding]])`
 <!-- YAML
 added: v5.10.0
 changes:
@@ -563,7 +578,7 @@ contents will *never contain sensitive data*.
 
 A `TypeError` will be thrown if `size` is not a number.
 
-### Class Method: Buffer.allocUnsafe(size)
+### Class Method: `Buffer.allocUnsafe(size)`
 <!-- YAML
 added: v5.10.0
 changes:
@@ -611,7 +626,7 @@ pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal
 difference is subtle but can be important when an application requires the
 additional performance that [`Buffer.allocUnsafe()`][] provides.
 
-### Class Method: Buffer.allocUnsafeSlow(size)
+### Class Method: `Buffer.allocUnsafeSlow(size)`
 <!-- YAML
 added: v5.12.0
 -->
@@ -662,7 +677,7 @@ developer has observed undue memory retention in their applications.
 
 A `TypeError` will be thrown if `size` is not a number.
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Class Method: `Buffer.byteLength(string[, encoding])`
 <!-- YAML
 added: v0.1.90
 changes:
@@ -700,7 +715,7 @@ console.log(`${str}: ${str.length} characters, ` +
 When `string` is a `Buffer`/[`DataView`][]/[`TypedArray`][]/[`ArrayBuffer`][]/
 [`SharedArrayBuffer`][], the actual byte length is returned.
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Class Method: `Buffer.compare(buf1, buf2)`
 <!-- YAML
 added: v0.11.13
 changes:
@@ -727,7 +742,7 @@ console.log(arr.sort(Buffer.compare));
 // (This result is equal to: [buf2, buf1].)
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### Class Method: `Buffer.concat(list[, totalLength])`
 <!-- YAML
 added: v0.7.11
 changes:
@@ -776,7 +791,7 @@ console.log(bufA.length);
 // Prints: 42
 ```
 
-### Class Method: Buffer.from(array)
+### Class Method: `Buffer.from(array)`
 <!-- YAML
 added: v5.10.0
 -->
@@ -793,7 +808,7 @@ const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 A `TypeError` will be thrown if `array` is not an `Array` or other type
 appropriate for `Buffer.from()` variants.
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Class Method: `Buffer.from(arrayBuffer[, byteOffset[, length]])`
 <!-- YAML
 added: v5.10.0
 -->
@@ -842,7 +857,7 @@ console.log(buf.length);
 A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`][] or a
 [`SharedArrayBuffer`][] or other type appropriate for `Buffer.from()` variants.
 
-### Class Method: Buffer.from(buffer)
+### Class Method: `Buffer.from(buffer)`
 <!-- YAML
 added: v5.10.0
 -->
@@ -867,7 +882,7 @@ console.log(buf2.toString());
 A `TypeError` will be thrown if `buffer` is not a `Buffer` or other type
 appropriate for `Buffer.from()` variants.
 
-### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
+### Class Method: `Buffer.from(object[, offsetOrEncoding[, length]])`
 <!-- YAML
 added: v8.2.0
 -->
@@ -904,7 +919,7 @@ const buf = Buffer.from(new Foo(), 'utf8');
 A `TypeError` will be thrown if `object` has not mentioned methods or is not of
 other type appropriate for `Buffer.from()` variants.
 
-### Class Method: Buffer.from(string[, encoding])
+### Class Method: `Buffer.from(string[, encoding])`
 <!-- YAML
 added: v5.10.0
 -->
@@ -930,7 +945,7 @@ console.log(buf1.toString('ascii'));
 A `TypeError` will be thrown if `string` is not a string or other type
 appropriate for `Buffer.from()` variants.
 
-### Class Method: Buffer.isBuffer(obj)
+### Class Method: `Buffer.isBuffer(obj)`
 <!-- YAML
 added: v0.1.101
 -->
@@ -940,7 +955,7 @@ added: v0.1.101
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
-### Class Method: Buffer.isEncoding(encoding)
+### Class Method: `Buffer.isEncoding(encoding)`
 <!-- YAML
 added: v0.9.1
 -->
@@ -965,7 +980,7 @@ console.log(Buffer.isEncoding(''));
 // Prints: false
 ```
 
-### Class Property: Buffer.poolSize
+### Class Property: `Buffer.poolSize`
 <!-- YAML
 added: v0.11.3
 -->
@@ -975,7 +990,7 @@ added: v0.11.3
 This is the size (in bytes) of pre-allocated internal `Buffer` instances used
 for pooling. This value may be modified.
 
-### buf[index]
+### `buf[index]`
 <!-- YAML
 type: property
 name: [index]
@@ -988,8 +1003,8 @@ The index operator `[index]` can be used to get and set the octet at position
 range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds
-access is the same as `UInt8Array` - that is, getting returns `undefined` and
-setting does nothing.
+access is the same as `UInt8Array`. In other words, getting returns `undefined`
+and setting does nothing.
 
 ```js
 // Copy an ASCII string into a `Buffer` one byte at a time.
@@ -1005,10 +1020,13 @@ console.log(buf.toString('ascii'));
 // Prints: Node.js
 ```
 
-### buf.buffer
+### `buf.buffer`
 
 * {ArrayBuffer} The underlying `ArrayBuffer` object based on
   which this `Buffer` object is created.
+
+This `ArrayBuffer` is not guaranteed to correspond exactly to the original
+`Buffer`. See the notes on `buf.byteOffset` for details.
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -1018,7 +1036,7 @@ console.log(buffer.buffer === arrayBuffer);
 // Prints: true
 ```
 
-### buf.byteOffset
+### `buf.byteOffset`
 
 * {integer} The `byteOffset` on the underlying `ArrayBuffer` object based on
   which this `Buffer` object is created.
@@ -1043,7 +1061,7 @@ const nodeBuffer = new Buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 new Int8Array(nodeBuffer.buffer, nodeBuffer.byteOffset, nodeBuffer.length);
 ```
 
-### buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])
+### `buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])`
 <!-- YAML
 added: v0.11.13
 changes:
@@ -1114,7 +1132,7 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 [`ERR_OUT_OF_RANGE`][] is thrown if `targetStart < 0`, `sourceStart < 0`,
 `targetEnd > target.byteLength`, or `sourceEnd > source.byteLength`.
 
-### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
+### `buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])`
 <!-- YAML
 added: v0.1.90
 -->
@@ -1165,7 +1183,7 @@ console.log(buf.toString());
 // Prints: efghijghijklmnopqrstuvwxyz
 ```
 
-### buf.entries()
+### `buf.entries()`
 <!-- YAML
 added: v1.1.0
 -->
@@ -1192,7 +1210,7 @@ for (const pair of buf.entries()) {
 //   [5, 114]
 ```
 
-### buf.equals(otherBuffer)
+### `buf.equals(otherBuffer)`
 <!-- YAML
 added: v0.11.13
 changes:
@@ -1219,7 +1237,7 @@ console.log(buf1.equals(buf3));
 // Prints: false
 ```
 
-### buf.fill(value[, offset[, end]][, encoding])
+### `buf.fill(value[, offset[, end]][, encoding])`
 <!-- YAML
 added: v0.5.0
 changes:
@@ -1291,7 +1309,7 @@ console.log(buf.fill('zz', 'hex'));
 // Throws an exception.
 ```
 
-### buf.includes(value[, byteOffset][, encoding])
+### `buf.includes(value[, byteOffset][, encoding])`
 <!-- YAML
 added: v5.3.0
 -->
@@ -1324,7 +1342,7 @@ console.log(buf.includes('this', 4));
 // Prints: false
 ```
 
-### buf.indexOf(value[, byteOffset][, encoding])
+### `buf.indexOf(value[, byteOffset][, encoding])`
 <!-- YAML
 added: v1.5.0
 changes:
@@ -1348,11 +1366,11 @@ changes:
 
 If `value` is:
 
-  * a string, `value` is interpreted according to the character encoding in
-    `encoding`.
-  * a `Buffer` or [`Uint8Array`][], `value` will be used in its entirety.
-    To compare a partial `Buffer`, use [`buf.slice()`][].
-  * a number, `value` will be interpreted as an unsigned 8-bit integer
+* a string, `value` is interpreted according to the character encoding in
+  `encoding`.
+* a `Buffer` or [`Uint8Array`][], `value` will be used in its entirety.
+  To compare a partial `Buffer`, use [`buf.slice()`][].
+* a number, `value` will be interpreted as an unsigned 8-bit integer
   value between `0` and `255`.
 
 ```js
@@ -1407,7 +1425,7 @@ If `value` is an empty string or empty `Buffer` and `byteOffset` is less
 than `buf.length`, `byteOffset` will be returned. If `value` is empty and
 `byteOffset` is at least `buf.length`, `buf.length` will be returned.
 
-### buf.keys()
+### `buf.keys()`
 <!-- YAML
 added: v1.1.0
 -->
@@ -1431,7 +1449,7 @@ for (const key of buf.keys()) {
 //   5
 ```
 
-### buf.lastIndexOf(value[, byteOffset][, encoding])
+### `buf.lastIndexOf(value[, byteOffset][, encoding])`
 <!-- YAML
 added: v6.0.0
 changes:
@@ -1443,7 +1461,7 @@ changes:
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. If negative, then
   offset is calculated from the end of `buf`. **Default:**
-  [`buf.length`][]` - 1`.
+  `buf.length - 1`.
 * `encoding` {string} If `value` is a string, this is the encoding used to
   determine the binary representation of the string that will be searched for in
   `buf`. **Default:** `'utf8'`.
@@ -1508,7 +1526,7 @@ console.log(b.lastIndexOf('b', []));
 
 If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
 
-### buf.length
+### `buf.length`
 <!-- YAML
 added: v0.1.90
 -->
@@ -1551,7 +1569,7 @@ console.log(buf.length);
 // Prints: 5
 ```
 
-### buf.parent
+### `buf.parent`
 <!-- YAML
 deprecated: v8.0.0
 -->
@@ -1560,8 +1578,8 @@ deprecated: v8.0.0
 
 The `buf.parent` property is a deprecated alias for `buf.buffer`.
 
-### buf.readBigInt64BE([offset])
-### buf.readBigInt64LE([offset])
+### `buf.readBigInt64BE([offset])`
+### `buf.readBigInt64LE([offset])`
 <!-- YAML
 added: v12.0.0
 -->
@@ -1576,8 +1594,8 @@ the specified endian format (`readBigInt64BE()` returns big endian,
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
-### buf.readBigUInt64BE([offset])
-### buf.readBigUInt64LE([offset])
+### `buf.readBigUInt64BE([offset])`
+### `buf.readBigUInt64LE([offset])`
 <!-- YAML
 added: v12.0.0
 -->
@@ -1600,8 +1618,8 @@ console.log(buf.readBigUInt64LE(0));
 // Prints: 18446744069414584320n
 ```
 
-### buf.readDoubleBE([offset])
-### buf.readDoubleLE([offset])
+### `buf.readDoubleBE([offset])`
+### `buf.readDoubleLE([offset])`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -1630,8 +1648,8 @@ console.log(buf.readDoubleLE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readFloatBE([offset])
-### buf.readFloatLE([offset])
+### `buf.readFloatBE([offset])`
+### `buf.readFloatLE([offset])`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -1660,7 +1678,7 @@ console.log(buf.readFloatLE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readInt8([offset])
+### `buf.readInt8([offset])`
 <!-- YAML
 added: v0.5.0
 changes:
@@ -1689,8 +1707,8 @@ console.log(buf.readInt8(2));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readInt16BE([offset])
-### buf.readInt16LE([offset])
+### `buf.readInt16BE([offset])`
+### `buf.readInt16LE([offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -1721,8 +1739,8 @@ console.log(buf.readInt16LE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readInt32BE([offset])
-### buf.readInt32LE([offset])
+### `buf.readInt32BE([offset])`
+### `buf.readInt32LE([offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -1753,8 +1771,8 @@ console.log(buf.readInt32LE(1));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readIntBE(offset, byteLength)
-### buf.readIntLE(offset, byteLength)
+### `buf.readIntBE(offset, byteLength)`
+### `buf.readIntLE(offset, byteLength)`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -1787,7 +1805,7 @@ console.log(buf.readIntBE(1, 0).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readUInt8([offset])
+### `buf.readUInt8([offset])`
 <!-- YAML
 added: v0.5.0
 changes:
@@ -1814,8 +1832,8 @@ console.log(buf.readUInt8(2));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readUInt16BE([offset])
-### buf.readUInt16LE([offset])
+### `buf.readUInt16BE([offset])`
+### `buf.readUInt16LE([offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -1848,8 +1866,8 @@ console.log(buf.readUInt16LE(2).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readUInt32BE([offset])
-### buf.readUInt32LE([offset])
+### `buf.readUInt32BE([offset])`
+### `buf.readUInt32LE([offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -1878,8 +1896,8 @@ console.log(buf.readUInt32LE(1).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.readUIntBE(offset, byteLength)
-### buf.readUIntLE(offset, byteLength)
+### `buf.readUIntBE(offset, byteLength)`
+### `buf.readUIntLE(offset, byteLength)`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -1910,7 +1928,7 @@ console.log(buf.readUIntBE(1, 6).toString(16));
 // Throws ERR_OUT_OF_RANGE.
 ```
 
-### buf.subarray([start[, end]])
+### `buf.subarray([start[, end]])`
 <!-- YAML
 added: v3.0.0
 -->
@@ -1970,7 +1988,7 @@ console.log(buf.subarray(-5, -2).toString());
 // (Equivalent to buf.subarray(1, 4).)
 ```
 
-### buf.slice([start[, end]])
+### `buf.slice([start[, end]])`
 <!-- YAML
 added: v0.3.0
 changes:
@@ -2010,7 +2028,7 @@ console.log(buf.toString());
 // Prints: buffer
 ```
 
-### buf.swap16()
+### `buf.swap16()`
 <!-- YAML
 added: v5.10.0
 -->
@@ -2046,7 +2064,7 @@ const buf = Buffer.from('This is little-endian UTF-16', 'utf16le');
 buf.swap16(); // Convert to big-endian UTF-16 text.
 ```
 
-### buf.swap32()
+### `buf.swap32()`
 <!-- YAML
 added: v5.10.0
 -->
@@ -2074,7 +2092,7 @@ buf2.swap32();
 // Throws ERR_INVALID_BUFFER_SIZE.
 ```
 
-### buf.swap64()
+### `buf.swap64()`
 <!-- YAML
 added: v6.3.0
 -->
@@ -2104,7 +2122,7 @@ buf2.swap64();
 JavaScript cannot encode 64-bit integers. This method is intended
 for working with 64-bit floats.
 
-### buf.toJSON()
+### `buf.toJSON()`
 <!-- YAML
 added: v0.9.2
 -->
@@ -2131,7 +2149,7 @@ console.log(copy);
 // Prints: <Buffer 01 02 03 04 05>
 ```
 
-### buf.toString([encoding[, start[, end]]])
+### `buf.toString([encoding[, start[, end]]])`
 <!-- YAML
 added: v0.1.90
 -->
@@ -2144,6 +2162,8 @@ added: v0.1.90
 
 Decodes `buf` to a string according to the specified character encoding in
 `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
+If a byte sequence in the input is not valid in the given `encoding` then
+it is replaced with the replacement character `U+FFFD`.
 
 The maximum length of a string instance (in UTF-16 code units) is available
 as [`buffer.constants.MAX_STRING_LENGTH`][].
@@ -2171,7 +2191,7 @@ console.log(buf2.toString(undefined, 0, 3));
 // Prints: té
 ```
 
-### buf.values()
+### `buf.values()`
 <!-- YAML
 added: v1.1.0
 -->
@@ -2207,7 +2227,7 @@ for (const value of buf) {
 //   114
 ```
 
-### buf.write(string[, offset[, length]][, encoding])
+### `buf.write(string[, offset[, length]][, encoding])`
 <!-- YAML
 added: v0.1.90
 -->
@@ -2234,8 +2254,8 @@ console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
 // Prints: 12 bytes: ½ + ¼ = ¾
 ```
 
-### buf.writeBigInt64BE(value[, offset])
-### buf.writeBigInt64LE(value[, offset])
+### `buf.writeBigInt64BE(value[, offset])`
+### `buf.writeBigInt64LE(value[, offset])`
 <!-- YAML
 added: v12.0.0
 -->
@@ -2260,8 +2280,8 @@ console.log(buf);
 // Prints: <Buffer 01 02 03 04 05 06 07 08>
 ```
 
-### buf.writeBigUInt64BE(value[, offset])
-### buf.writeBigUInt64LE(value[, offset])
+### `buf.writeBigUInt64BE(value[, offset])`
+### `buf.writeBigUInt64LE(value[, offset])`
 <!-- YAML
 added: v12.0.0
 -->
@@ -2284,8 +2304,8 @@ console.log(buf);
 // Prints: <Buffer de fa ce ca fe fa ca de>
 ```
 
-### buf.writeDoubleBE(value[, offset])
-### buf.writeDoubleLE(value[, offset])
+### `buf.writeDoubleBE(value[, offset])`
+### `buf.writeDoubleLE(value[, offset])`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -2319,8 +2339,8 @@ console.log(buf);
 // Prints: <Buffer 77 be 9f 1a 2f dd 5e 40>
 ```
 
-### buf.writeFloatBE(value[, offset])
-### buf.writeFloatLE(value[, offset])
+### `buf.writeFloatBE(value[, offset])`
+### `buf.writeFloatLE(value[, offset])`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -2354,7 +2374,7 @@ console.log(buf);
 // Prints: <Buffer bb fe 4a 4f>
 ```
 
-### buf.writeInt8(value[, offset])
+### `buf.writeInt8(value[, offset])`
 <!-- YAML
 added: v0.5.0
 changes:
@@ -2385,8 +2405,8 @@ console.log(buf);
 // Prints: <Buffer 02 fe>
 ```
 
-### buf.writeInt16BE(value[, offset])
-### buf.writeInt16LE(value[, offset])
+### `buf.writeInt16BE(value[, offset])`
+### `buf.writeInt16LE(value[, offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2418,8 +2438,8 @@ console.log(buf);
 // Prints: <Buffer 01 02 04 03>
 ```
 
-### buf.writeInt32BE(value[, offset])
-### buf.writeInt32LE(value[, offset])
+### `buf.writeInt32BE(value[, offset])`
+### `buf.writeInt32LE(value[, offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2451,8 +2471,8 @@ console.log(buf);
 // Prints: <Buffer 01 02 03 04 08 07 06 05>
 ```
 
-### buf.writeIntBE(value, offset, byteLength)
-### buf.writeIntLE(value, offset, byteLength)
+### `buf.writeIntBE(value, offset, byteLength)`
+### `buf.writeIntLE(value, offset, byteLength)`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -2487,7 +2507,7 @@ console.log(buf);
 // Prints: <Buffer ab 90 78 56 34 12>
 ```
 
-### buf.writeUInt8(value[, offset])
+### `buf.writeUInt8(value[, offset])`
 <!-- YAML
 added: v0.5.0
 changes:
@@ -2518,8 +2538,8 @@ console.log(buf);
 // Prints: <Buffer 03 04 23 42>
 ```
 
-### buf.writeUInt16BE(value[, offset])
-### buf.writeUInt16LE(value[, offset])
+### `buf.writeUInt16BE(value[, offset])`
+### `buf.writeUInt16LE(value[, offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2555,8 +2575,8 @@ console.log(buf);
 // Prints: <Buffer ad de ef be>
 ```
 
-### buf.writeUInt32BE(value[, offset])
-### buf.writeUInt32LE(value[, offset])
+### `buf.writeUInt32BE(value[, offset])`
+### `buf.writeUInt32LE(value[, offset])`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2590,8 +2610,8 @@ console.log(buf);
 // Prints: <Buffer ce fa ed fe>
 ```
 
-### buf.writeUIntBE(value, offset, byteLength)
-### buf.writeUIntLE(value, offset, byteLength)
+### `buf.writeUIntBE(value, offset, byteLength)`
+### `buf.writeUIntLE(value, offset, byteLength)`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2626,7 +2646,7 @@ console.log(buf);
 // Prints: <Buffer ab 90 78 56 34 12>
 ```
 
-## buffer.INSPECT_MAX_BYTES
+## `buffer.INSPECT_MAX_BYTES`
 <!-- YAML
 added: v0.5.4
 -->
@@ -2640,7 +2660,7 @@ Returns the maximum number of bytes that will be returned when
 This is a property on the `buffer` module returned by
 `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
-## buffer.kMaxLength
+## `buffer.kMaxLength`
 <!-- YAML
 added: v3.0.0
 -->
@@ -2652,7 +2672,7 @@ An alias for [`buffer.constants.MAX_LENGTH`][].
 This is a property on the `buffer` module returned by
 `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
-## buffer.transcode(source, fromEnc, toEnc)
+## `buffer.transcode(source, fromEnc, toEnc)`
 <!-- YAML
 added: v7.1.0
 changes:
@@ -2692,7 +2712,7 @@ with `?` in the transcoded `Buffer`.
 This is a property on the `buffer` module returned by
 `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
-## Class: SlowBuffer
+## Class: `SlowBuffer`
 <!-- YAML
 deprecated: v6.0.0
 -->
@@ -2730,7 +2750,7 @@ socket.on('readable', () => {
 Use of `SlowBuffer` should be used only as a last resort *after* a developer
 has observed undue memory retention in their applications.
 
-### new SlowBuffer(size)
+### `new SlowBuffer(size)`
 <!-- YAML
 deprecated: v6.0.0
 -->
@@ -2770,7 +2790,7 @@ added: v8.2.0
 `buffer.constants` is a property on the `buffer` module returned by
 `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
-### buffer.constants.MAX_LENGTH
+### `buffer.constants.MAX_LENGTH`
 <!-- YAML
 added: v8.2.0
 -->
@@ -2782,7 +2802,7 @@ On 64-bit architectures, this value is `(2^31)-1` (~2GB).
 
 This value is also available as [`buffer.kMaxLength`][].
 
-### buffer.constants.MAX_STRING_LENGTH
+### `buffer.constants.MAX_STRING_LENGTH`
 <!-- YAML
 added: v8.2.0
 -->

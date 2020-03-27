@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> स्थिरता: 1 - प्रायोगिक
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -25,6 +25,14 @@ added: v8.5.0
 -->
 
 The `Performance` provides access to performance metric data. A single instance of this class is provided via the `performance` property.
+
+### performance.clearEntries(name)
+
+<!-- YAML
+added: v8.11.2
+-->
+
+Remove all performance entry objects with `entryType` equal to `name` from the Performance Timeline.
 
 ### performance.clearFunctions([name])
 
@@ -107,6 +115,18 @@ added: v8.5.0
 
 Creates a new `PerformanceMark` entry in the Performance Timeline. A `PerformanceMark` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'mark'`, and whose `performanceEntry.duration` is always `0`. Performance marks are used to mark specific significant moments in the Performance Timeline.
 
+### performance.maxEntries
+
+<!-- YAML
+added: v8.12.0
+-->
+
+Value: {number}
+
+The maximum number of Performance Entry items that should be added to the Performance Timeline. This limit is not strictly enforced, but a process warning will be emitted if the number of entries in the timeline exceeds this limit.
+
+Defaults to 150.
+
 ### performance.measure(name, startMark, endMark)
 
 <!-- YAML
@@ -141,7 +161,7 @@ added: v8.5.0
 
 * Returns: {number}
 
-Returns the current high resolution millisecond timestamp.
+Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
 ### performance.timeOrigin
 
@@ -151,7 +171,7 @@ added: v8.5.0
 
 * {number}
 
-The [`timeOrigin`][] specifies the high resolution millisecond timestamp from which all performance metric durations are measured.
+The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
 
 ### performance.timerify(fn)
 
@@ -263,7 +283,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js process completed bootstrap.
+The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
 ### performanceNodeTiming.clusterSetupEnd
 
@@ -273,7 +293,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing ended.
+The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
 
 ### performanceNodeTiming.clusterSetupStart
 
@@ -283,7 +303,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing started.
+The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
 
 ### performanceNodeTiming.loopExit
 
@@ -293,7 +313,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop exited.
+The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
 
 ### performanceNodeTiming.loopStart
 
@@ -303,7 +323,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop started.
+The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
 ### performanceNodeTiming.moduleLoadEnd
 
@@ -363,7 +383,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third_party_main processing ended.
+The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
 
 ### performanceNodeTiming.thirdPartyMainStart
 
@@ -373,7 +393,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third_party_main processing started.
+The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
 
 ### performanceNodeTiming.v8Start
 
@@ -468,7 +488,7 @@ Returns a list of `PerformanceEntry` objects in chronological order with respect
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the 
+--> Disconnects the
 
 `PerformanceObserver` instance from all notifications.
 
@@ -480,7 +500,7 @@ added: v8.5.0
 
 * `options` {Object} 
   * `entryTypes` {Array} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
-  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. Defaults to `false`.
+  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Default:** `false`.
 
 Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
 
@@ -564,8 +584,6 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
-
-<!-- eslint-disable no-global-assign -->
 
 ```js
 'use strict';

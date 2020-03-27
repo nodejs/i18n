@@ -1,4 +1,4 @@
-# Path
+# Yol
 
 <!--introduced_in=v0.10.0-->
 
@@ -12,7 +12,7 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-`path` modülünün varsayılan ayarları, Node.js uygulamasının çalıştığı işletim sistemine göre değişiklik gösterir. Uygulama Windows işletim sistemi üzerinde çalışıyorsa, `path` modülü Windows tarzı dosya/dizin adreslemesi varsayacaktır.
+The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 // 'myfile.html'
 ```
 
-Windows tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.win32`][] kullanabilirsiniz:
+To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
 
 POSIX ve Windows'ta:
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 // 'myfile.html'
 ```
 
-POSIX tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.posix`][] kullanabilirsiniz:
+To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
 
 POSIX ve Windows'ta:
 
@@ -48,12 +48,14 @@ path.posix.basename('/tmp/myfile.html');
 // 'myfile.html'
 ```
 
-*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. Mesela, `path.resolve('c:\\')` çıktısı `path.resolve('c:')` çıktısından farklı olabilir. [Bu MSDN sayfasında](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) detaylı açıklamasını bulabilirsiniz.
+*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -63,7 +65,7 @@ changes:
 * `ext` {string} dosya uzantısı (zorunlu değil)
 * Çıktı: {string}
 
-`path.basename()` metodları, argüman olarak verilen `path`'in son parçasını dönerler. Unix'deki `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
+The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 Örneğin:
 
@@ -75,9 +77,10 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 // 'quux'
 ```
 
-Eğer `path` argümanı bir string değilse, ya da `ext` argümanı verilmiş ancak bir string değilse [`TypeError`][] fırlatılır.
+A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -110,9 +113,11 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -121,7 +126,7 @@ changes:
 * `path` {string}
 * Çıktı: {string}
 
-`path.dirname()` metodu, argüman olarak verilen `path`'in dizin adresi parçasını döner. Unix'deki `dirname` komutu gibi davranır. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
+The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 Örneğin:
 
@@ -133,9 +138,11 @@ path.dirname('/foo/bar/baz/asdf/quux');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -144,7 +151,7 @@ changes:
 * `path` {string}
 * Çıktı: {string}
 
-`path.extname()` metodu, argüman olarak verilen `path`'de son sırada bulunan nokta (`.`) karakterinden, son sırada bulunan karakterler öbeğinin sonuna kadar olan parçayı (dosya uzantısı) döner. Eğer `path`'in son parçasında `.` karakteri bulunamazsa, ya da `path`'in `basename`'inin ilk karakteri `.` ise, boş bir karakter öbeği döner.
+The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
 Örneğin:
 
@@ -168,11 +175,12 @@ path.extname('.index');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,6 +274,7 @@ path.isAbsolute('.');           // false
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -289,6 +299,7 @@ path.join('foo', {}, 'bar');
 A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
@@ -317,7 +328,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
+Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -327,6 +338,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -391,6 +403,7 @@ path.parse('C:\\path\\dir\\file.txt');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -400,9 +413,11 @@ added: v0.11.15
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -434,6 +449,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -470,6 +486,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +495,7 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `\` windows'ta
+* `` on Windows
 * `/` on POSIX
 
 For example on POSIX:
@@ -500,6 +517,7 @@ accepted as path segment separators; however, the``path`methods only add
 backward slashes (`\`).
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->

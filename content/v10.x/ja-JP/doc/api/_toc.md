@@ -34,7 +34,7 @@
 * [モジュール](modules.html)
 * [Net](net.html)
 * [OS](os.html)
-* [パス](path.html)
+* [Path](path.html)
 * [Performance Hooks](perf_hooks.html)
 * [プロセス](process.html)
 * [Punycode](punycode.html)

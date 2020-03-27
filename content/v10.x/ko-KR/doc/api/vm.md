@@ -34,6 +34,7 @@ console.log(x); // 1; y is not defined.
 ```
 
 ## Class: vm.SourceTextModule
+
 <!-- YAML
 added: v9.6.0
 -->
@@ -136,7 +137,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 ### Constructor: new vm.SourceTextModule(code[, options])
 
 * `code` {string} JavaScript Module code to parse
-* `옵션`
+* `옵션` 
   * `url` {string} URL used in module resolution and stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
   * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
@@ -200,7 +201,7 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 
 ### module.evaluate([options])
 
-* `options` {Object}
+* `옵션` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
 * Returns: {Promise}
@@ -209,8 +210,8 @@ Evaluate the module.
 
 This must be called after the module has been instantiated; otherwise it will throw an error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
 
-- return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
-- rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
+* return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
+* rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
 
 This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
 
@@ -235,18 +236,18 @@ Link module dependencies. This method must be called before instantiation, and c
 
 Two parameters will be passed to the `linker` function:
 
-- `specifier` The specifier of the requested module:
-  <!-- eslint-skip -->
-  ```js
-  import foo from 'foo';
-  //              ^^^^^ the module specifier
-  ```
-- `referencingModule` The `Module` object `link()` is called on.
+* `specifier` The specifier of the requested module: <!-- eslint-skip -->
+  
+      js
+      import foo from 'foo';
+      //              ^^^^^ the module specifier
+
+* `referencingModule` The `Module` object `link()` is called on.
 
 The function is expected to return a `Module` object or a `Promise` that eventually resolves to a `Module` object. The returned `Module` must satisfy the following two invariants:
 
-- It must belong to the same context as the parent `Module`.
-- Its `linkingStatus` must not be `'errored'`.
+* It must belong to the same context as the parent `Module`.
+* Its `linkingStatus` must not be `'errored'`.
 
 If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be recursively called on the returned `Module` with the same provided `linker` function.
 
@@ -254,8 +255,8 @@ If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be 
 
 The linker function roughly corresponds to the implementation-defined [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) abstract operation in the ECMAScript specification, with a few key differences:
 
-- The linker function is allowed to be asynchronous while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is synchronous.
-- The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
+* The linker function is allowed to be asynchronous while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is synchronous.
+* The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
 
 The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation used during module instantiation is one that returns the modules linked during linking. Since at that point all modules would have been fully linked already, the [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation is fully synchronous per specification.
 
@@ -265,10 +266,10 @@ The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostr
 
 The current linking status of `module`. It will be one of the following values:
 
-- `'unlinked'`: `module.link()` has not yet been called.
-- `'linking'`: `module.link()` has been called, but not all Promises returned by the linker function have been resolved yet.
-- `'linked'`: `module.link()` has been called, and all its dependencies have been successfully linked.
-- `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
+* `'unlinked'`: `module.link()` has not yet been called.
+* `'linking'`: `module.link()` has been called, but not all Promises returned by the linker function have been resolved yet.
+* `'linked'`: `module.link()` has been called, and all its dependencies have been successfully linked.
+* `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
 
 ### module.namespace
 
@@ -284,22 +285,22 @@ Corresponds to the [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getm
 
 The current status of the module. Will be one of:
 
-- `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
-
-  - The module was just created.
-  - `module.instantiate()` has been called on this module, but it failed for some reason.
-
+* `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
+  
+  * The module was just created.
+  * `module.instantiate()` has been called on this module, but it failed for some reason.
+  
   This status does not convey any information regarding if `module.link()` has been called. See `module.linkingStatus` for that.
 
-- `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
+* `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
 
-- `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
+* `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
 
-- `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
+* `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
 
-- `'evaluated'`: The module has been successfully evaluated.
+* `'evaluated'`: The module has been successfully evaluated.
 
-- `'errored'`: The module has been evaluated, but an exception was thrown.
+* `'errored'`: The module has been evaluated, but an exception was thrown.
 
 Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponds to `'evaluated'` in the specification, but with `[[EvaluationError]]` set to a value that is not `undefined`.
 
@@ -310,6 +311,7 @@ Other than `'errored'`, this status string corresponds to the specification's [S
 The URL of the current module, as set in the constructor.
 
 ## Class: vm.Script
+
 <!-- YAML
 added: v0.3.1
 -->
@@ -317,9 +319,11 @@ added: v0.3.1
 Instances of the `vm.Script` class contain precompiled scripts that can be executed in specific sandboxes (or "contexts").
 
 ### new vm.Script(code, options)
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v5.7.0
     pr-url: https://github.com/nodejs/node/pull/4777
     description: The `cachedData` and `produceCachedData` options are
@@ -331,7 +335,7 @@ changes:
 -->
 
 * `code` {string} The JavaScript code to compile.
-* `옵션`
+* `옵션` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -342,6 +346,7 @@ changes:
 Creating a new `vm.Script` object compiles `code` but does not run it. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
 
 ### script.createCachedData()
+
 <!-- YAML
 added: v10.6.0
 -->
@@ -367,16 +372,18 @@ const cacheWithX = script.createCachedData();
 ```
 
 ### script.runInContext(contextifiedSandbox[, options])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v6.3.0
     pr-url: https://github.com/nodejs/node/pull/6635
     description: The `breakOnSigint` option is supported now.
 -->
 
 * `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
-* `options` {Object}
+* `옵션` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -412,16 +419,18 @@ console.log(util.inspect(sandbox));
 Using the `timeout` or `breakOnSigint` options will result in new event loops and corresponding threads being started, which have a non-zero performance overhead.
 
 ### script.runInNewContext([sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19016
     description: The `contextCodeGeneration` option is supported now.
 -->
 
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `options` {Object}
+* `옵션` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -429,7 +438,7 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
-  * `contextCodeGeneration` {Object}
+  * `contextCodeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
@@ -454,11 +463,12 @@ console.log(util.inspect(sandboxes));
 ```
 
 ### script.runInThisContext([options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
-* `options` {Object}
+* `옵션` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -486,12 +496,14 @@ console.log(globalVar);
 ```
 
 ## vm.compileFunction(code[, params[, options]])
+
 <!-- YAML
 added: v10.10.0
 -->
+
 * `code` {string} The body of the function to compile.
 * `params` {string[]} An array of strings containing all parameters for the function.
-* `options` {Object}
+* `옵션` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `''`.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
@@ -503,9 +515,11 @@ added: v10.10.0
 Compiles the given code into the provided context/sandbox (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
 ## vm.createContext([sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19398
     description: The `sandbox` option can no longer be a function.
@@ -515,10 +529,10 @@ changes:
 -->
 
 * `sandbox` {Object}
-* `options` {Object}
+* `옵션` {Object} 
   * `name` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
-  * `codeGeneration` {Object}
+  * `codeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
@@ -547,6 +561,7 @@ The `vm.createContext()` method is primarily useful for creating a single sandbo
 The provided `name` and `origin` of the context are made visible through the Inspector API.
 
 ## vm.isContext(sandbox)
+
 <!-- YAML
 added: v0.11.7
 -->
@@ -560,7 +575,7 @@ Returns `true` if the given `sandbox` object has been [contextified](#vm_what_do
 
 * `code` {string} The JavaScript code to compile and run.
 * `contextifiedSandbox` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
-* `options` {Object|string}
+* `옵션` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -589,13 +604,14 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInNewContext(code[, sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} The JavaScript code to compile and run.
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `options` {Object|string}
+* `옵션` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -626,12 +642,13 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInThisContext(code[, options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} The JavaScript code to compile and run.
-* `options` {Object|string}
+* `옵션` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -643,6 +660,7 @@ added: v0.3.1
 If `options` is a string, then it specifies the filename.
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+
 ```js
 const vm = require('vm');
 let localVar = 'initial value';
