@@ -399,7 +399,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Esta opção é um "no-op". Mantém-se a compatibilidade.
 
 ### `--no-deprecation`
 <!-- YAML
