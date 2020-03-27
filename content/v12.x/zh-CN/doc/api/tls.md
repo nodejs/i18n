@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -369,7 +369,7 @@ The `server.addContext()` method adds a secure context that will be used if the 
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
 
@@ -541,7 +541,7 @@ tlsSocket.once('session', (session) => {
 added: v0.11.4
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns the bound `address`, the address `family` name, and `port` of the underlying socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -557,7 +557,7 @@ Returns the reason why the peer's certificate was not been verified. This proper
 added: v0.11.4
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the peer certificate was signed by one of the CAs specified when creating the `tls.TLSSocket` instance, otherwise `false`.
 
@@ -590,7 +590,7 @@ Always returns `true`. This may be used to distinguish TLS sockets from regular 
 added: v11.2.0
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns an object representing the local certificate. The returned object has some properties corresponding to the fields of the certificate.
 
@@ -611,14 +611,14 @@ changes:
     description: Return the IETF cipher name as `standardName`.
 -->
 
-* Returns: {Object}
+* 返回：{Object}
   * `name` {string} OpenSSL name for the cipher suite.
   * `standardName` {string} IETF name for the cipher suite.
   * `version` {string} The minimum TLS protocol version supported by this cipher suite.
 
 Returns an object containing information on the negotiated cipher suite.
 
-For example:
+例如：
 ```json
 {
     "name": "AES128-SHA256",
@@ -634,7 +634,7 @@ See [SSL_CIPHER_get_name](https://www.openssl.org/docs/man1.1.1/man3/SSL_CIPHER_
 added: v5.0.0
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns an object representing the type, name, and size of parameter of an ephemeral key exchange in [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) on a client connection. It returns an empty object when the key exchange is not ephemeral. As this is only supported on a client socket; `null` is returned if called on a server socket. The supported types are `'DH'` and `'ECDH'`. The `name` property is available only when type is `'ECDH'`.
 
@@ -876,7 +876,7 @@ added: v0.11.11
 -->
 
 * `size` {number} The maximum TLS fragment size. The maximum value is `16384`. **Default:** `16384`.
-* Returns: {boolean}
+* 返回：{boolean}
 
 The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
 
