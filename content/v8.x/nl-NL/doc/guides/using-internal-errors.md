@@ -139,6 +139,6 @@ The `myError` object will have a `code` property equal to the `key` and a `name`
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Returns: {string}
+* Retourneert: {string}
 
 Returns the formatted error message string for the given `key`.
