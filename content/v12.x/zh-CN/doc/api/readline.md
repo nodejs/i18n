@@ -10,7 +10,7 @@ The `readline` module provides an interface for reading data from a [Readable](s
 const readline = require('readline');
 ```
 
-The following simple example illustrates the basic use of the `readline` module.
+如下的简单示例演示了 `readline` 模块的基本用法。
 
 ```js
 const readline = require('readline');
@@ -37,32 +37,32 @@ added: v0.1.104
 
 * Extends: {EventEmitter}
 
-Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
+`readline.Interface` 类的实例可以通过 `readline.createInterface()` 方法来创建。 每个实例都和单一的 `input` [Readable](stream.html#stream_readable_streams) 流及单一的 `output` [Writable](stream.html#stream_writable_streams) 流相关联。 `output` 流用于为到达的用户输入打印提示符，并从 `input` 流进行读取。
 
 ### Event: `'close'`
 <!-- YAML
 added: v0.1.98
 -->
 
-The `'close'` event is emitted when one of the following occur:
+当如下任何一种情况发生时会发出 `'close'` 事件：
 
-* The `rl.close()` method is called and the `readline.Interface` instance has relinquished control over the `input` and `output` streams;
-* The `input` stream receives its `'end'` event;
-* The `input` stream receives `<ctrl>-D` to signal end-of-transmission (EOT);
+* `rl.close()` 方法被调用，且 `readline.Interface` 实例放弃了对 `input` 和 `output` 流的控制；
+* `input` 流收到了 `'end'` 事件；
+* `input` 流收到了 `<ctrl>-D` 以发出传输结束 (EOT) 的信号；
 * The `input` stream receives `<ctrl>-C` to signal `SIGINT` and there is no `'SIGINT'` event listener registered on the `readline.Interface` instance.
 
-The listener function is called without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
-The `readline.Interface` instance is finished once the `'close'` event is emitted.
+一旦发出 `'close'` 事件，`readline.Interface` 实例就会结束。
 
 ### Event: `'line'`
 <!-- YAML
 added: v0.1.98
 -->
 
-The `'line'` event is emitted whenever the `input` stream receives an end-of-line input (`\n`, `\r`, or `\r\n`). This usually occurs when the user presses the `<Enter>`, or `<Return>` keys.
+当 `input` 流接收到行尾结束输入 (`\n`, `\r`, 或 `\r\n`) 时会发出 `'line'` 事件。 通常当用户按下 `<Enter>`, 或 `<Return>` 键时这种情况会发生。
 
-The listener function is called with a string containing the single line of received input.
+调用监听器函数时会同时传递包含接收到的那一行输入的字符串。
 
 ```js
 rl.on('line', (input) => {
@@ -75,12 +75,12 @@ rl.on('line', (input) => {
 added: v0.7.5
 -->
 
-The `'pause'` event is emitted when one of the following occur:
+当如下任何一种情况发生时会发出 `'pause'` 事件：
 
-* The `input` stream is paused.
+* `input` 流已暂停。
 * The `input` stream is not paused and receives the `'SIGCONT'` event. (See events [`'SIGTSTP'`][] and [`'SIGCONT'`][].)
 
-The listener function is called without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
 ```js
 rl.on('pause', () => {
@@ -93,9 +93,9 @@ rl.on('pause', () => {
 added: v0.7.5
 -->
 
-The `'resume'` event is emitted whenever the `input` stream is resumed.
+当 `input` 流恢复时，会发出 `'resume'` 事件。
 
-The listener function is called without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
 ```js
 rl.on('resume', () => {
@@ -112,7 +112,7 @@ The `'SIGCONT'` event is emitted when a Node.js process previously moved into th
 
 If the `input` stream was paused *before* the `SIGTSTP` request, this event will not be emitted.
 
-The listener function is invoked without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
 ```js
 rl.on('SIGCONT', () => {
@@ -128,9 +128,9 @@ The `'SIGCONT'` event is _not_ supported on Windows.
 added: v0.3.0
 -->
 
-The `'SIGINT'` event is emitted whenever the `input` stream receives a `<ctrl>-C` input, known typically as `SIGINT`. If there are no `'SIGINT'` event listeners registered when the `input` stream receives a `SIGINT`, the `'pause'` event will be emitted.
+当 `input` 流接收到 `<ctrl>-C` 输入，也就是通常所说的 `SIGINT` 时，会发出 `'SIGINT'` 事件。 当 `input` 流接收到 `SIGINT` 时，如果没有注册 `'SIGINT'` 事件监听器，则会发出 `'pause'` 事件。
 
-The listener function is invoked without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
 ```js
 rl.on('SIGINT', () => {
@@ -145,13 +145,13 @@ rl.on('SIGINT', () => {
 added: v0.7.5
 -->
 
-The `'SIGTSTP'` event is emitted when the `input` stream receives a `<ctrl>-Z` input, typically known as `SIGTSTP`. If there are no `'SIGTSTP'` event listeners registered when the `input` stream receives a `SIGTSTP`, the Node.js process will be sent to the background.
+当 `input` 流接收到一个 `<ctrl>-Z` 输入，也就是通常所说的 `SIGTSTP` 时，会发出 `'SIGTSTP'` 事件。 If there are no `'SIGTSTP'` event listeners registered when the `input` stream receives a `SIGTSTP`, the Node.js process will be sent to the background.
 
-When the program is resumed using fg(1p), the `'pause'` and `'SIGCONT'` events will be emitted. These can be used to resume the `input` stream.
+When the program is resumed using fg(1p), the `'pause'` and `'SIGCONT'` events will be emitted. 这可被用来恢复 `input` 流。
 
-The `'pause'` and `'SIGCONT'` events will not be emitted if the `input` was paused before the process was sent to the background.
+如果在进程被发送到后台之前 `input` 被暂停，则不会发出 `'pause'` 和 `'SIGCONT'` 事件。
 
-The listener function is invoked without passing any arguments.
+调用监听器函数时并不传入任何参数。
 
 ```js
 rl.on('SIGTSTP', () => {
@@ -168,7 +168,7 @@ The `'SIGTSTP'` event is _not_ supported on Windows.
 added: v0.1.98
 -->
 
-The `rl.close()` method closes the `readline.Interface` instance and relinquishes control over the `input` and `output` streams. When called, the `'close'` event will be emitted.
+`rl.close()` 方法关闭了 `readline.Interface` 实例，且放弃了对 `input` 和 `output` 流的控制。 当被调用时，将会发出 `'close'` 事件。
 
 Calling `rl.close()` does not immediately stop other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
@@ -177,36 +177,36 @@ Calling `rl.close()` does not immediately stop other events (including `'line'`)
 added: v0.3.4
 -->
 
-The `rl.pause()` method pauses the `input` stream, allowing it to be resumed later if necessary.
+`rl.pause()` 方法会暂停 `input` 流，并允许稍后在必要时恢复它。
 
-Calling `rl.pause()` does not immediately pause other events (including `'line'`) from being emitted by the `readline.Interface` instance.
+调用 `rl.pause()` 并不会立即暂停由 `readline.Interface` 实例发出的其他事件 (包括 `'line'`)。
 
 ### `rl.prompt([preserveCursor])`
 <!-- YAML
 added: v0.1.98
 -->
 
-* `preserveCursor` {boolean} If `true`, prevents the cursor placement from being reset to `0`.
+* `preserveCursor` {boolean} 当其值为 `true` 时，防止将光标位置重置为 `0`。
 
-The `rl.prompt()` method writes the `readline.Interface` instances configured `prompt` to a new line in `output` in order to provide a user with a new location at which to provide input.
+`rl.prompt()` 方法将 `readline.Interface` 实例中配置的 `提示符` 写入到 `output` 中的一个新行，以便为用户提供一个可供输入的新位置。
 
-When called, `rl.prompt()` will resume the `input` stream if it has been paused.
+当被调用时，如果 `input` 流已被暂停，`rl.prompt()` 将会恢复该流。
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the prompt is not written.
+如果在 `readline.Interface` 被创建时，`output` 被设置为 `null` 或 `undefined`，则不会将提示符写入。
 
 ### `rl.question(query, callback)`
 <!-- YAML
 added: v0.3.3
 -->
 
-* `query` {string} A statement or query to write to `output`, prepended to the prompt.
-* `callback` {Function} A callback function that is invoked with the user's input in response to the `query`.
+* `query` {string} 将被写入 `output` 的一个语句或查询，会被添加到提示符之前。
+* `callback` {Function} 将随同用户输入一同被调用的回调函数，以响应 `query`。
 
-The `rl.question()` method displays the `query` by writing it to the `output`, waits for user input to be provided on `input`, then invokes the `callback` function passing the provided input as the first argument.
+`rl.question()` 方法通过将 `query` 写入到 `output` 来显示它，并等待用户在 `input` 上提供输入，然后将获得的输入作为首个参数来调用 `callback` 函数。
 
-When called, `rl.question()` will resume the `input` stream if it has been paused.
+当被调用时，如果 `input` 流已被暂停，`rl.question()` 将会恢复该流。
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
+如果在 `readline.Interface` 被创建时，`output` 被设置为 `null` 或 `undefined`，则不会将 `query` 写入。
 
 示例用法：
 
@@ -216,14 +216,14 @@ rl.question('What is your favorite food? ', (answer) => {
 });
 ```
 
-The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. The `callback` is called with the provided answer as the only argument.
+The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. 调用 `callback`，并将提供的答案作为唯一参数。
 
 ### `rl.resume()`
 <!-- YAML
 added: v0.3.4
 -->
 
-The `rl.resume()` method resumes the `input` stream if it has been paused.
+如果 `input` 流已被暂停，`rl.resume()` 将会恢复该流。
 
 ### `rl.setPrompt(prompt)`
 <!-- YAML
@@ -232,7 +232,7 @@ added: v0.1.98
 
 * `prompt` {string}
 
-The `rl.setPrompt()` method sets the prompt that will be written to `output` whenever `rl.prompt()` is called.
+`rl.setPrompt()` 方法设置了当 `rl.prompt()` 被调用时，将被写入到 `output` 的提示符。
 
 ### `rl.write(data[, key])`
 <!-- YAML
@@ -241,18 +241,18 @@ added: v0.1.98
 
 * `data` {string}
 * `key` {Object}
-  * `ctrl` {boolean} `true` to indicate the `<ctrl>` key.
-  * `meta` {boolean} `true` to indicate the `<Meta>` key.
-  * `shift` {boolean} `true` to indicate the `<Shift>` key.
-  * `name` {string} The name of the a key.
+  * `ctrl` {boolean} 当值为 `true` 时表示 `<ctrl>`键。
+  * `meta` {boolean} 当值为 `true` 时表示 `<Meta>` 键。
+  * `shift` {boolean} 当值为 `true` 时表示 `<Shift>` 键。
+  * `name` {string} 键的名称。
 
-The `rl.write()` method will write either `data` or a key sequence identified by `key` to the `output`. The `key` argument is supported only if `output` is a [TTY](tty.html) text terminal.
+The `rl.write()` method will write either `data` or a key sequence identified by `key` to the `output`. 只有当 `output` 是 [TTY](tty.html) 文本终端时才支持 `key` 这个参数。
 
-If `key` is specified, `data` is ignored.
+如果指定了 `key`，则会忽略 `data`。
 
-When called, `rl.write()` will resume the `input` stream if it has been paused.
+当被调用时，如果 `input` 流已被暂停，`rl.write()` 将会恢复该流。
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the `data` and `key` are not written.
+如果在 `readline.Interface` 被创建时，`output` 被设置为 `null` 或 `undefined`，则不会将 `data` 和 `key` 写入。
 
 ```js
 rl.write('Delete this!');
@@ -364,7 +364,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
+`readline.clearLine()` 方法会从 `dir` 指定的方向清除给定的 [TTY](tty.html) 流的当前行。
 
 ## `readline.clearScreenDown(stream[, callback])`
 <!-- YAML
@@ -379,7 +379,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
+`readline.clearScreenDown()` 方法从当前光标位置向下清除给定的 [TTY](tty.html) 流。
 
 ## `readline.createInterface(options)`
 <!-- YAML
@@ -400,17 +400,17 @@ changes:
 -->
 
 * `options` {Object}
-  * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
+  * `input` {stream.Readable} 要侦听的 [Readable](stream.html#stream_readable_streams) 流。 This option is *required*.
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
-  * `completer` {Function} An optional function used for Tab autocompletion.
-  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} 保留的最大历史记录行数。 To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `completer` {Function} 用于 Tab 自动补全的可选函数。
+  * `terminal` {boolean} 如果 `input` 和 `output` 流应被视为 TTY，并将 ANSI/VT100 转义符写入其中，则值为 `true`。 **Default:** checking `isTTY` on the `output` stream upon instantiation.
+  * `historySize` {number} 保留的最大历史记录行数。 要禁用历史记录，将值设置为 `0`。 This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
   * `prompt` {string} 要使用的提示符。 **Default:** `'> '`.
-  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
-  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
+  * `crlfDelay` {number} 如果 `\r` 和 `\n` 之间的延迟超过 `crlfDelay` 毫秒, `\r` 和 `\n` 将被视为单独的行尾结束输入。 `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
+  * `removeHistoryDuplicates` {boolean} 如果值为 `true`，则当一个添加到历史记录列表中的新输入行和旧的行重复时，将从列表中删除旧行。 **Default:** `false`.
   * `escapeCodeTimeout` {number} The duration `readline` will wait for a character (when reading an ambiguous key sequence in milliseconds one that can both form a complete key sequence using the input read so far and can take additional input to complete a longer key sequence). **Default:** `500`.
 
-The `readline.createInterface()` method creates a new `readline.Interface` instance.
+`readline.createInterface()` 方法创建一个新的 `readline.Interface` 实例。
 
 ```js
 const readline = require('readline');
@@ -420,7 +420,7 @@ const rl = readline.createInterface({
 });
 ```
 
-Once the `readline.Interface` instance is created, the most common case is to listen for the `'line'` event:
+一旦 `readline.Interface` 实例被创建，最常见的用例是监听 `'line'` 事件：
 
 ```js
 rl.on('line', (line) => {
@@ -428,16 +428,16 @@ rl.on('line', (line) => {
 });
 ```
 
-If `terminal` is `true` for this instance then the `output` stream will get the best compatibility if it defines an `output.columns` property and emits a `'resize'` event on the `output` if or when the columns ever change ([`process.stdout`][] does this automatically when it is a TTY).
+如果在这种情况下 `terminal` 的值为 `true`，则当它定义了一个 `output.columns` 属性时，`output` 流将会获得最佳兼容性，并且如果或当列发生变化时，`output` 会触发 `'resize'` 事件 (当它是 TTY 时，[`process.stdout`][] 会自动执行此操作)。
 
-### Use of the `completer` Function
+### `completer` 函数的使用
 
 The `completer` function takes the current line entered by the user as an argument, and returns an `Array` with 2 entries:
 
 * An `Array` with matching entries for the completion.
-* The substring that was used for the matching.
+* 用于进行匹配的子字符串。
 
-For instance: `[[substr1, substr2, ...], originalsubstring]`.
+例如：`[[substr1, substr2, ...], originalsubstring]`。
 
 ```js
 function completer(line) {
@@ -448,7 +448,7 @@ function completer(line) {
 }
 ```
 
-The `completer` function can be called asynchronously if it accepts two arguments:
+如果 `completer` 函数接受两个参数，则可以对其进行异步调用：
 
 ```js
 function completer(linePartial, callback) {
@@ -471,7 +471,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-The `readline.cursorTo()` method moves cursor to the specified position in a given [TTY](tty.html) `stream`.
+在给定的 [TTY](tty.html) `流`，`readline.cursorTo()` 方法将光标移动到指定的位置。
 
 ## `readline.emitKeypressEvents(stream[, interface])`
 <!-- YAML
@@ -483,11 +483,11 @@ added: v0.7.7
 
 The `readline.emitKeypressEvents()` method causes the given [Readable](stream.html#stream_readable_streams) stream to begin emitting `'keypress'` events corresponding to received input.
 
-Optionally, `interface` specifies a `readline.Interface` instance for which autocompletion is disabled when copy-pasted input is detected.
+`interface` 可以选择性的指定 `readline.Interface` 实例，在该实例中当检测到复制粘贴时，将禁用自动完成。
 
-If the `stream` is a [TTY](tty.html), then it must be in raw mode.
+如果 `stream` 是 [TTY](tty.html) 流，则它必须处于原始模式。
 
-This is automatically called by any readline instance on its `input` if the `input` is a terminal. Closing the `readline` instance does not stop the `input` from emitting `'keypress'` events.
+This is automatically called by any readline instance on its `input` if the `input` is a terminal. 关闭 `readline` 实例不会终止 `input` 发送 `'keypress'` 事件。
 
 ```js
 readline.emitKeypressEvents(process.stdin);
@@ -512,9 +512,9 @@ changes:
 
 The `readline.moveCursor()` method moves the cursor *relative* to its current position in a given [TTY](tty.html) `stream`.
 
-## Example: Tiny CLI
+## 示例：Tiny CLI
 
-The following example illustrates the use of `readline.Interface` class to implement a small command-line interface:
+如下示例演示了如何使用 `readline.Interface` 类来实现一个小的命令行界面：
 
 ```js
 const readline = require('readline');
@@ -542,7 +542,7 @@ rl.on('line', (line) => {
 });
 ```
 
-## Example: Read File Stream Line-by-Line
+## 示例：逐行读取文件流
 
 A common use case for `readline` is to consume an input file one line at a time. The easiest way to do so is leveraging the [`fs.ReadStream`][] API as well as a `for await...of` loop:
 
