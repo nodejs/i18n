@@ -74,7 +74,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archiwum](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors
+* błędy
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2530,7 +2530,7 @@ Below is a summary of the user-facing changes to be found in the io.js v1.0.0 re
   * punycode: 1.2.0 to 1.3.2.
 * Performance and stability improvements on all platforms.
 
-### buffer
+### bufor
 
 https://iojs.org/api/buffer.html
 
@@ -2555,7 +2555,7 @@ https://iojs.org/api/console.html
 
 * Added an `options` parameter to `console.dir`.
 
-### cluster
+### grono
 
 https://iojs.org/api/cluster.html
 
@@ -2590,7 +2590,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### zdarzenia
 
 https://iojs.org/api/events.html
 
@@ -2620,7 +2620,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### net
+### sieć
 
 https://iojs.org/api/net.html
 
@@ -2633,7 +2633,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### ścieżka
 
 https://iojs.org/api/path.html
 
@@ -2688,7 +2688,7 @@ In addition to the bulk-write changes, the performance of repeated small writes 
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
-### timers
+### timery
 
 https://iojs.org/api/timers.html
 
