@@ -56,7 +56,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="10.16.3"></a>
 
@@ -161,7 +161,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-05-28, Version 10.16.0 'Dubnium' (LTS), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * update ICU to 64.2 (Ujjwal Sharma) [#27361](https://github.com/nodejs/node/pull/27361)
@@ -532,7 +532,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-03-05, Version 10.15.3 'Dubnium' (LTS), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **doc**
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
@@ -767,7 +767,7 @@ A fix for the following CVE is included in this release:
 
 * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -779,7 +779,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-29, Version 10.15.1 'Dubnium' (LTS), @codebytere
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **doc**:
   * add oyyd to collaborators (Ouyang Yadong) [#24300](https://github.com/nodejs/node/pull/24300)
@@ -1017,7 +1017,7 @@ A fix for the following CVE is included in this release:
 
 The 10.14.0 security release introduced some unexpected breakages on the 10.x release line. This is a special release to fix a regression in the HTTP binary upgrade response body and add a missing CLI flag to adjust the max header size of the http parser.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **cli**:
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -1042,7 +1042,7 @@ The 10.14.0 security release introduced some unexpected breakages on the 10.x re
 
 This LTS release comes with 374 commits. This includes 165 which are test or benchmark related, 77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * upgrade to c-ares v1.15.0 (Ben Noordhuis) [#23854](https://github.com/nodejs/node/pull/23854)
@@ -1433,7 +1433,7 @@ This LTS release comes with 374 commits. This includes 165 which are test or ben
 
 ## 2018-11-29, Version 10.14.1 'Dubnium' (LTS), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **win/msi**: Revert changes to installer causing issues on Windows systems.
 
@@ -1461,7 +1461,7 @@ Fixes for the following CVEs are included in this release:
 * OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734)
 * OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2019-0735)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**: Upgrade to OpenSSL 1.1.0j, fixing CVE-2018-0734 and CVE-2019-0735
 * **http**:
@@ -1485,7 +1485,7 @@ Fixes for the following CVEs are included in this release:
 
 This release marks the transition of Node.js 10.x into Long Term Support (LTS) with the codename 'Dubnium'. The 10.x release line now moves in to "Active LTS" and will remain so until April 2020. After that time it will move in to "Maintenance" until end of life in April 2021.
 
-### Notable Changes
+### Modifiche di rilievo
 
 This release only includes minimal changes necessary to fix known regressions prior to LTS.
 
@@ -1795,7 +1795,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-20, Version 10.11.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **fs**
   * Fixed fsPromises.readdir `withFileTypes`. [#22832](https://github.com/nodejs/node/pull/22832)
@@ -1922,7 +1922,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-06, Version 10.10.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **child_process**:
   * `TypedArray` and `DataView` values are now accepted as input by `execFileSync` and `spawnSync`. [#22409](https://github.com/nodejs/node/pull/22409)
@@ -2174,7 +2174,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7166 (Node.js)
 * CVE-2018-12115 (Node.js)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **buffer**:
   * Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
@@ -2355,7 +2355,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-08-01, Version 10.8.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * Upgrade npm to 6.2.0. [#21592](https://github.com/nodejs/node/pull/21592)
@@ -2465,7 +2465,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-07-18, Version 10.7.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **console**:
   * The `console.timeLog()` method has been implemented. [#21312](https://github.com/nodejs/node/pull/21312)
@@ -2608,7 +2608,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-07-04, Version 10.6.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **dns**:
   * An experimental promisified version of the dns module is now available. Give it a try with `require('dns').promises`. [#21264](https://github.com/nodejs/node/pull/21264)
@@ -2740,7 +2740,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-20, Version 10.5.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**:
   * Support for `crypto.scrypt()` has been added. [#20816](https://github.com/nodejs/node/pull/20816)
@@ -2907,7 +2907,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-12, Version 10.4.1 (Current), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **http2**
@@ -2938,7 +2938,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-06, Version 10.4.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
@@ -3044,7 +3044,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-05-29, Version 10.3.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
@@ -3104,7 +3104,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-05-24, Version 10.2.1 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 This is a follow up release to fix two regressions that were introduced in v10.2.0.
 
@@ -3118,7 +3118,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-23, Version 10.2.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **addons**:
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
@@ -3353,7 +3353,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **console**:
   * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
@@ -3545,7 +3545,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-04-24, Version 10.0.0 (Current), @jasnell
 
-### Notable Changes
+### Modifiche di rilievo
 
 * Assert
   * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
