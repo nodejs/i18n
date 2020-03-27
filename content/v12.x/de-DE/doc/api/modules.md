@@ -6,7 +6,7 @@
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+Im Node.js Modul System wird jede Datei als separates Modul behandelt. For example, consider a file named `foo.js`:
 
 ```js
 const circle = require('./circle.js');
@@ -511,7 +511,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Stabilität: 0 - Veraltet
 
 * {Object}
 
