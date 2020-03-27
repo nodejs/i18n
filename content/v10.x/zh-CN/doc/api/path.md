@@ -12,7 +12,7 @@ const path = require('path');
 
 ## Windows 与 POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+`path` 模块的默认操作根据运行 Node.js 应用程序的操作系统而有所不同。 具体而言，当在 Windows 操作系统上运行时，`path` 模块会假定 Windows 风格的路径会被使用。
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 //返回: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+要想在任何操作系统上处理 Windows 文件路径时获得一致的结果，请使用 [`path.win32`][]：
 
 在 POSIX 和 Windows 系统上：
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 //返回: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+若要在任何操作系统上处理 POSIX 文件路径时获得一致的结果, 请使用 [`path.posix`] []:
 
 在 POSIX 和 Windows 系统上:
 
@@ -65,7 +65,7 @@ changes:
 * `ext` {string} 可选的文件扩展名
 * 返回：{string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+和 Unix 的 `basename` 命令类似，`path.basename()` 方法返回 `path` 中的最后部分。 尾部的目录分隔符将被忽略，请参阅 [`path.sep`][]。
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -75,7 +75,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 // Returns: 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+如果 `path` 不是字符串，或者如果给出 `ext` 但不是字符串时，将会抛出 [`TypeError`][]。
 
 ## path.delimiter
 
@@ -124,7 +124,7 @@ changes:
 * `path` {string}
 * 返回：{string}
 
-The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
+和 Unix 的 `dirname` 命令类似，`path.dirname()` 方法返回 `path` 中的目录名。 尾部的目录分隔符将被忽略，请参阅 [`path.sep`][]。
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
@@ -147,7 +147,7 @@ changes:
 * `path` {string}
 * 返回：{string}
 
-The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
+`path.extname()` 方法返回 `path` 中的扩展名，也就是在 `path` 最后一部分字符串中，从最后一次出现 `.` (点) 字符到字符串结束为止。 如果在 `path` 的最后一部分没有 `.`，或者如果 `path` 中文件名部分 (请参阅 `path.basename()`) 的首字符是 `.`，则返回空字符串。
 
 ```js
 path.extname('index.html');
@@ -182,9 +182,9 @@ added: v0.11.15
   * `ext` {string}
 * 返回：{string}
 
-`path.format()` 从对象返回一个路径字符串。 This is the opposite of [`path.parse()`][].
+`path.format()` 从对象返回一个路径字符串。 这与 [`path.parse()`][] 正好相反。
 
-When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
+当为 `pathObject` 提供属性时，注意存在一些组合，其中一些属性优先于另一些属性：
 
 * 如果提供了 `pathObject.dir`，则会忽略 `pathObject.root`
 * 如果 `pathObject.base` 存在，则 `pathObject.ext` 和 `pathObject.name` 会被忽略
@@ -278,7 +278,7 @@ added: v0.1.16
 
 The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
-零长度的 `path` 片段将被忽略。 If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
+零长度的 `path` 片段将被忽略。 如果连接后的路径字符串为零长度字符串，则会返回 `'.'`，代表当前的工作目录。
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -299,12 +299,11 @@ added: v0.1.23
 * `path` {string}
 * 返回：{string}
 
-The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
+`path.normalize()` 方法规范化给定的 `path`，解析 `'..'` 和`'.'` 片段。
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). 尾部的分隔符会被保留。
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform-specific path segment separator (`/` on POSIX and `` on Windows). 尾部的分隔符会被保留。
 
-If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
+如果 `path` 为零长度字符串，则会返回 `'.'`，代表当前工作目录。
 
 例如，在 POSIX 系统上，
 
@@ -320,7 +319,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
+由于 Windows 能够识别多种路径分隔符，因此这两种路径分隔符都会被替换为 Windows 的首选分隔符 (``) 实例：
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -338,7 +337,7 @@ added: v0.11.15
 * `path` {string}
 * 返回：{Object}
 
-The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
+`path.parse()` 方法返回一个对象，该对象的属性代表 `path` 中的重要元素。 目录尾部的分隔符将被忽略，请参阅 [`path.sep`][]。
 
 返回的对象含有如下属性：
 
@@ -402,7 +401,7 @@ added: v0.11.15
 
 * {Object}
 
-The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
+`path.posix` 属性提供对 `path` 方法的专门针对 POSIX 系统实现的访问。
 
 ## path.relative(from, to)
 
@@ -420,9 +419,9 @@ changes:
 * `to` {string}
 * 返回：{string}
 
-The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
+`path.relative()` 方法返回基于当前工作目录的从 `from` 到 `to` 的相对路径。 如果 `from` 和 `to` 均被解析为同一路径 (针对两者分别调用 `path.resolve()` 后)，则会返回一个零长度字符串。
 
-If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
+如果将零长度字符串传入 `from` 或 `to`，则当前工作目录，而不是该零长度字符串会被使用。
 
 例如，在 POSIX 系统上：
 
@@ -449,17 +448,17 @@ added: v0.3.4
 * `...paths` {string} 路径或路径片段序列
 * 返回：{string}
 
-The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
+`path.resolve()` 方法将路径或路径片段序列解析为一个绝对路径。
 
-The given sequence of paths is processed from right to left, with each subsequent `path` prepended until an absolute path is constructed. For instance, given the sequence of path segments: `/foo`, `/bar`, `baz`, calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`.
+给定的路径序列会被从右向左进行处理，每个后续的 `path` 前置，直到构造出一个绝对路径。 例如：对于给定的路径片段序列：`/foo`, `/bar`, `baz`，调用 `path.resolve('/foo', '/bar', 'baz')` 将会返回 `/bar/baz`。
 
-If after processing all given `path` segments an absolute path has not yet been generated, the current working directory is used.
+如果在处理了所有给定的 `path` 片段后仍未生成一个绝对路径，则会使用当前工作目录。
 
-The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
+结果路径会被规范化，同时结尾的斜杠会被删除，除非路径被解析为根目录。
 
 长度为零的 `path` 片段将被忽略。
 
-If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
+如果没有传入 `path` 片段，`path.resolve()` 将会返回当前工作目录的绝对路径。
 
 ```js
 path.resolve('/foo/bar', './baz');
@@ -502,9 +501,7 @@ added: v0.7.9
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
-as path segment separators; however, the``path`methods only add backward
-slashes (`\`).
+On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.toNamespacedPath(path)
 
@@ -527,4 +524,4 @@ added: v0.11.15
 
 * {Object}
 
-The `path.win32` property provides access to Windows-specific implementations of the `path` methods.
+`path.win32` 属性提供对 `path` 方法的专门针对 Windows 系统实现的访问。
