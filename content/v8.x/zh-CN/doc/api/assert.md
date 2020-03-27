@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定的
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+`assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
 A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
@@ -102,7 +102,7 @@ assert.deepEqual(/a/gi, new Date());
 
 针对 [`Map`][] 和 [`Set`][] 的例外。 Maps and Sets have their contained items compared too, as expected.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+“深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
 ```js
 const assert = require('assert');
@@ -139,7 +139,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -218,7 +218,7 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -278,11 +278,11 @@ changes:
 
 Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误返回调用方。
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+下面这个示例会抛出 [`TypeError`][]， 因为在断言部分没有可匹配的错误类型：
 
 ```js
 assert.doesNotThrow(
@@ -293,7 +293,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception (TypeError)..':
+然而，下面的示例会抛出带有错误信息 - “得到不想要的异常 (TypeError)...” 的 `AssertionError` ：
 
 ```js
 assert.doesNotThrow(
@@ -304,7 +304,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+如果 `AssertionError` 被抛出，并且提供一个值给 `message` 参数，那么 `message` 的值会被添加在 `AssertionError` 信息中：
 
 ```js
 assert.doesNotThrow(
@@ -351,7 +351,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 //AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.fail(message)
 
@@ -367,7 +367,7 @@ added: v0.1.21
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-抛出一个 `AssertionError` 错误. If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided only it will be used as the error message, the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]).
+抛出一个 `AssertionError` 错误. 如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided only it will be used as the error message, the other arguments will be stored as properties on the thrown object. 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ）。
 
 ```js
 const assert = require('assert').strict;
@@ -416,7 +416,7 @@ added: v0.1.97
 
 * `value` {any}
 
-如果 `value` 为真值，抛出`value`。 This is useful when testing the `error` argument in callbacks.
+如果 `value` 为真值，抛出`value`。 当在回调函数中测试 `error` 参数时，这一点很有用。
 
 ```js
 const assert = require('assert').strict;
@@ -486,7 +486,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -510,7 +510,7 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值深度严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notEqual(actual, expected[, message])
 
@@ -545,7 +545,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notStrictEqual(actual, expected[, message])
 
@@ -572,7 +572,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.ok(value[, message])
 
@@ -583,9 +583,9 @@ added: v0.1.21
 * `value` {any}
 * `message` {any}
 
-测试 `value` 是否为真值。 It is equivalent to `assert.equal(!!value, true, message)`.
+测试 `value` 是否为真值。 它和 `assert.equal(!!value, true, message)` 功能完全一样。
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned.
+如果 `value` 不是真值，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ```js
 const assert = require('assert').strict;
@@ -627,7 +627,7 @@ assert.strictEqual(1, '1');
 // AssertionError: 1 === '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+如果两个值不是严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.rejects(block\[, error\]\[, message\])
 
@@ -691,7 +691,7 @@ changes:
 
 If specified, `error` can be a constructor, [`RegExp`][], a validation function, or an object where each property will be tested for.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
 
 使用构造函数验证instanceof：
 
@@ -748,7 +748,9 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个字符串。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. 这会导致不容易被发现的错误。 Please read the example below carefully if using a string as the second argument gets considered:
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
