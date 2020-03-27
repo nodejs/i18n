@@ -6,7 +6,7 @@
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
+The `querystring` module provides utilities for parsing and formatting URL query strings. Het kan worden bereikt met behulp van:
 
 ```js
 const querystring = require('querystring');
