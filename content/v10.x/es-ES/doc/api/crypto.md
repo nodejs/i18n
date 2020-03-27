@@ -467,7 +467,7 @@ When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currentl
 
 Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+El método `decipher.setAuthTag()` debe llamarse antes de [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -482,7 +482,7 @@ When data has been encrypted without standard block padding, calling `decipher.s
 
 Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+El método `decipher.setAutoPadding()` debe llamarse antes de [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -922,7 +922,7 @@ changes:
 
 Updates the hash content with the given `data`, the encoding of which is given in `inputEncoding`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
-Esto puede ser llamado muchas veces con nuevos datos a medida en que son transmitidos.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ## Clase: Hmac
 
@@ -1010,7 +1010,7 @@ changes:
 
 Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
-Esto puede ser llamado muchas veces con nuevos datos a medida en que son transmitidos.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ## Clase: Sign
 
@@ -1215,7 +1215,7 @@ Verifica los datos dados usando los `object` y `signature` dados. The `object` a
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureEncoding`. If a `signatureEncoding` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+The `verify` object can not be used again after `verify.verify()` has been called. Llamadas múltiples a `verify.verify()` van a resultar en un error.
 
 ## `crypto` métodos y propiedades del módulo
 
@@ -1255,7 +1255,7 @@ deprecated: v10.0.0
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Establecer true requiere una compilación FIPS de Node.js.
 
-Esta propiedad está en desuso. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Esta propiedad está en desuso. Por favor, utilice `crypto.setFips()` y `crypto.getFips()` en su lugar.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1437,7 +1437,7 @@ changes:
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
-El argumento `generator` puede ser un número, string, o un [`Buffer`][]. El valor `2<code> será usado si <0>generator` no es especificado.
+El argumento `generator` puede ser un número, string, o un [`Buffer`][]. Si `generator` no es especificado, el valor `2` es usado.
 
 If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
 
