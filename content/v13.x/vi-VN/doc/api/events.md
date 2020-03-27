@@ -258,7 +258,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
+> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`emitter.listenerCount()`][] thay thế.
 
 * `emitter` {EventEmitter} The emitter to query
 * `eventName` {string|symbol} The event name
@@ -366,7 +366,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 added: v6.0.0
 -->
 
-* Returns: {Array}
+* Trả về: {Array}
 
 Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
 
