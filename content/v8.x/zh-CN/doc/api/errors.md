@@ -210,7 +210,7 @@ console.error(err.message);
 
 The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
 
-For example:
+例如：
 
 ```txt
 Error: Things keep happening!
@@ -268,7 +268,7 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 `Error` 的子类，表示断言失败。 Such errors commonly indicate inequality of actual and expected value.
 
-For example:
+例如：
 
 ```js
 assert.strictEqual(1, 2);
@@ -279,7 +279,7 @@ assert.strictEqual(1, 2);
 
 A subclass of `Error` that indicates that a provided argument was not within the set or range of acceptable values for a function; whether that is a numeric range, or outside the set of options for a given function parameter.
 
-For example:
+例如：
 
 ```js
 require('net').connect(-1);
@@ -826,7 +826,7 @@ A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronou
 
 A Node.js API function was called with an incompatible `this` value.
 
-Example:
+例如：
 
 ```js
 const { URLSearchParams } = require('url');
