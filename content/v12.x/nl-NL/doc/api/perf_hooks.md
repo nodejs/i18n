@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -74,7 +74,7 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Returns: {number}
+* Retourneert: {number}
 
 Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
@@ -393,7 +393,7 @@ Tracks the event loop delay at a given sampling rate.
 added: v11.10.0
 -->
 
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Disables the event loop delay sample timer. Returns `true` if the timer was stopped, `false` if it was already stopped.
 
@@ -402,7 +402,7 @@ Disables the event loop delay sample timer. Returns `true` if the timer was stop
 added: v11.10.0
 -->
 
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Enables the event loop delay sample timer. Returns `true` if the timer was started, `false` if it was already started.
 
@@ -448,7 +448,7 @@ added: v11.10.0
 -->
 
 * `percentile` {number} A percentile value between 1 and 100.
-* Returns: {number}
+* Retourneert: {number}
 
 Returns the value at the given percentile.
 
