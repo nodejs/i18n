@@ -162,22 +162,32 @@ In this example, the `unhandledRejections` `Map` will grow and shrink over time,
 
 <!-- YAML
 added: v0.1.18
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26599
+    description: Added the `origin` argument.
 -->
 
-The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. Adding a handler for the `'uncaughtException'` event overrides this default behavior. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled rejection or from synchronous errors. Can either be `'uncaughtException'` or `'unhandledRejection'`.
 
-The listener function is called with the `Error` object passed as the only argument.
+L'evento `'uncaughtException'` viene emesso quando un'eccezione JavaScript non rilevata rimbalza fino al ciclo degli eventi. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. L'aggiunta di un handler per l'evento `'uncaughtException'` sostituisce questo comportamento predefinito. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
 
 ```js
-process.on('uncaughtException', (err) => {
-  fs.writeSync(1, `Caught exception: ${err}\n`);
+process.on('uncaughtException', (err, origin) => {
+  fs.writeSync(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` +
+    `Exception origin: ${origin}`
+  );
 });
 
 setTimeout(() => {
   console.log('This will still run.');
 }, 500);
 
-// Crea intenzionalmente un'eccezione, ma non prenderla.
+// Intentionally cause an exception, but don't catch it.
 nonexistentFunc();
 console.log('This will not run.');
 ```
@@ -209,21 +219,19 @@ changes:
                  a process warning.
 -->
 
-The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. When programming with Promises, exceptions are encapsulated as "rejected promises". Rejections can be caught and handled using [`promise.catch()`][] and are propagated through a `Promise` chain. The `'unhandledRejection'` event is useful for detecting and keeping track of promises that were rejected whose rejections have not yet been handled.
+* `reason` {Error|any} L'object con cui è stata rifiutata la promise (in genere un [`error`][] object).
+* `promise` {Promise} The rejected promise.
 
-La funzione listener viene chiamata con i seguenti argomenti:
-
-* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
-* `p` la `Promise` che è stata respinta.
+The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. Quando si programma con le Promise, le eccezioni sono incapsulate come "rejected promises". I rejection possono essere catturati e gestiti usando [`promise.catch()`][] e vengono propagati attraverso una `Promise` chain. L'evento `'unhandledRejection'` è utile per rilevare e tenere traccia delle promise che sono state respinte, le cui rejection non sono ancora state gestite.
 
 ```js
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason);
-  // registrazione specifica dell'applicazione, lancio di un errore o altra logica qui
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Application specific logging, throwing an error, or other logic here
 });
 
 somePromise.then((res) => {
-  return reportToUser(JSON.pasre(res)); // annota l'errore di battitura (`pasre`)
+  return reportToUser(JSON.pasre(res)); // note the typo (`pasre`)
 }); // no `.catch()` or `.then()`
 ```
 
@@ -239,7 +247,7 @@ const resource = new SomeResource ();
 // no .catch o .then su resource.loaded per almeno un turno
 ```
 
-In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. In alternativa, l'evento [`'rejectionHandled'`][] può essere utilizzato.
+In questo caso di esempio, è possibile tenere traccia del rejection come errore dello sviluppatore, come in genere accade per altri eventi `'unhandledRejection'`. Per affrontare tali fallimentii, un [`.catch(() = >{ })`][`promise.catch()`] handler non operativo può essere collegato alla `resource.loaded`, che impedirebbe l'emissione dell'evento `'unhandledRejection'`.
 
 ### Evento: 'warning'
 
@@ -247,8 +255,8 @@ In this example case, it is possible to track the rejection as a developer error
 added: v6.0.0
 -->
 
-* `avviso` {Error} Le proprietà chiave dell'avviso sono: 
-  * `name` {string} Il nome dell'avviso. **Default:** `'Warning'`.
+* `warning` {Error} Key properties of the warning are: 
+  * `name` {string} The name of the warning. **Default:** `'Warning'`.
   * `message` {string} Una descrizione fornita dal sistema dell'avviso.
   * `stack` {string} A stack trace to the location in the code where the warning was issued.
 
@@ -331,16 +339,16 @@ process.on('SIGINT', handle);
 process.on('SIGTERM', handle);
 ```
 
-* `'SIGUSR1'` è riservato da Node.js per avviare il [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
+* `'SIGUSR1'` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
 * `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
-* `'SIGPIPE'` viene ignorato per impostazione predefinita. Può avere un listener installato.
+* `'SIGPIPE'` is ignored by default. Può avere un listener installato.
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
-* `'SIGTERM'` non è supportato su Windows, esso può continuare ad essere sottoposto al listening.
+* `'SIGTERM'` is not supported on Windows, it can be listened on.
 * `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
-* `'SIGWINCH'` viene fornito quando la console è stata ridimensionata. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
+* `'SIGWINCH'` is delivered when the console has been resized. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
 * `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
-* `'SIGSTOP'` non può avere un listener installato.
+* `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
 
 Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
@@ -614,7 +622,7 @@ changes:
 
 The `process.dlopen()` method allows to dynamically load shared objects. It is primarily used by `require()` to load C++ Addons, and should not be used directly, except in special cases. In other words, [`require()`][] should be preferred over `process.dlopen()`, unless there are specific reasons.
 
-The `flags` argument is an integer that allows to specify dlopen behavior. Consultare la documentazione di [`os.constants.dlopen`][] per i dettagli.
+The `flags` argument is an integer that allows to specify dlopen behavior. See the [`os.constants.dlopen`][] documentation for details.
 
 If there are specific reasons to use `process.dlopen()` (for instance, to specify dlopen flags), it's often useful to use [`require.resolve()`][] to look up the module's path.
 
@@ -965,7 +973,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.9.4
 -->
 
-* Restituisce: {integer[]}
+* Returns: {integer[]}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -977,7 +985,7 @@ added: v0.1.28
 
 * Restituisce: {integer}
 
-The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
+Il metodo `process.getuid()` restituisce l'identità numerica dell'utente del processo. (See getuid(2).)
 
 ```js
 se (process.getuid) {
@@ -1001,7 +1009,7 @@ added: v0.7.6
 
 * `time` {integer[]} The result of a previous call to `process.hrtime()`
 
-* Restituisce: {integer[]}
+* Returns: {integer[]}
 
 This is the legacy version of [`process.hrtime.bigint()`][] before `bigint` was introduced in JavaScript.
 
@@ -1029,7 +1037,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Restituisce: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1055,7 +1063,7 @@ added: v0.9.4
 -->
 
 * `user`{string|number} Il nome utente o l'identificatore numerico.
-* ` extraGroup` {string|number} Un nome di gruppo o identificatore numerico.
+* `extraGroup` {string|number} A group name or numeric identifier.
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
@@ -1075,15 +1083,15 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.0.6
 -->
 
-* `pid` {number} A process ID
+* `pid` {number} Un ID di processo
 
-* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
+* `signal` {string|number} Il segnale da inviare, come una stringa o come un numero. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
-Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
+I nomi dei segnali sono stringhe come `'SIGINT'` o `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+Questo metodo lancerà un errore se il target `pid` non esiste. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
 
 Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
@@ -1121,17 +1129,17 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Restituisce: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
+* Returns: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
 
 The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
 
-For example, the code:
+Ad esempio, il codice:
 
 ```js
 console.log(process.memoryUsage());
 ```
 
-Will generate:
+Genererà:
 
 ```js
 {
@@ -1142,7 +1150,7 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
+`heapTotal` e `heapUsed` si riferiscono all'utilizzo della memoria del V8. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
 
 L'*heap* è dove sono memorizzati object, stringhe e chiusure. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
 
@@ -1160,9 +1168,9 @@ changes:
 * `callback` {Function}
 * `...args` {any} Argomenti aggiuntivi da trasmettere quando si invoca la `callback`
 
-The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
+Il metodo `process.nextTick()` aggiunge la `callback` alla "coda di tick successiva". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
-This is *not* a simple alias to [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
+Questo *non* è un semplice alias per [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
 
 ```js
 console.log('start');
@@ -1193,7 +1201,7 @@ thing.getReadyForStuff();
 // thing.startDoingStuff() viene chiamato ora, non prima.
 ```
 
-It is very important for APIs to be either 100% synchronous or 100% asynchronous. Consider this example:
+It is very important for APIs to be either 100% synchronous or 100% asynchronous. Considera questo esempio:
 
 ```js
 // ATTENZIONE!  NON USARE!  RISCHIO PERICOLOSO E GRAVE!
@@ -1207,7 +1215,7 @@ function maybeSync(arg, cb) {
 }
 ```
 
-This API is hazardous because in the following case:
+Questa API è pericolosa perché nel seguente caso:
 
 ```js
 const maybeTrue = Math.random() > 0.5;
@@ -1219,9 +1227,9 @@ maybeSync(maybeTrue, () => {
 bar();
 ```
 
-It is not clear whether `foo()` or `bar()` will be called first.
+Non è chiaro se `foo()` o `bar()` saranno chiamato per primi.
 
-The following approach is much better:
+Il seguente approccio è notevolmente migliore:
 
 ```js
 function definitelyAsync(arg, cb) {
@@ -1250,7 +1258,7 @@ added: v0.1.15
 
 * {integer}
 
-The `process.pid` property returns the PID of the process.
+La proprietà `process.pid` restituisce il PID del processo.
 
 ```js
 console.log(`Questo processo è pid ${process.pid}`);
@@ -1264,7 +1272,7 @@ added: v0.1.16
 
 The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
 
-Currently possible values are:
+I valori attualmente possibili sono:
 
 * `'aix'`
 * `'darwin'`
@@ -1286,7 +1294,7 @@ added: v9.2.0
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+La proprietà `process.ppid` restituisce il PID del parent process corrente.
 
 ```js
 console.log(`Il parent process è pid ${process.ppid}`);
@@ -1305,13 +1313,13 @@ changes:
 
 The `process.release` property returns an `Object` containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
-`process.release` contains the following properties:
+`process.release` contiene le seguenti proprietà:
 
 * `name` {string} Un valore che sarà sempre `'node'` per Node.js. For legacy io.js releases, this will be `'io.js'`.
 * `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
 * `headersUrl`{string} an absolute URL pointing to a *`.tar.gz`* file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
 * `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. *This property is only present on Windows builds of Node.js and will be missing on all other platforms.*
-* `lts` {string} un'etichetta di stringa che identifica l'etichetta [LTS](https://github.com/nodejs/Release) per questa versione. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Attualmente i valori validi sono: 
+* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/Release) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Attualmente i valori validi sono: 
   * `'Argon'` per la riga 4.x LTS che inizia con 4.2.0.
   * `'Boron'` per la riga 6.x LTS che inizia con 6.9.0.
   * `'Carbon'` per la riga 8.x LTS che inizia con 8.9.1.
@@ -1352,7 +1360,7 @@ added: v2.0.0
 
 * `id` {string|number} Un nome di gruppo o ID
 
-The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
+Il metodo `process.setegid()` imposta l'identità di gruppo effettiva del processo. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
 ```js
 se (process.getegid && process.setegid) {
@@ -1374,7 +1382,7 @@ added: v2.0.0
 
 * `id` {string|number} Un nome utente o ID
 
-The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+Il metodo `process.seteuid()` imposta l'effettiva identità dell'utente del processo. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 se (process.geteuid && process.seteuid) {
@@ -1396,7 +1404,7 @@ added: v0.1.31
 
 * `id` {string|number} Il nome di gruppo o ID
 
-The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
+Il metodo `process.setgid()` imposta l'identità di gruppo del processo. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
 ```js
 se (process.getgid && process.setgid) {
@@ -1420,7 +1428,7 @@ added: v0.9.4
 
 The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
 
-The `groups` array can contain numeric group IDs, group names or both.
+I `groups` array possono contenere ID di gruppi numerici, nomi di gruppi o entrambi.
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
@@ -1430,7 +1438,7 @@ added: v0.1.28
 
 * `id` {integer | string}
 
-The `process.setuid(id)` method sets the user identity of the process. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+Il metodo `process.setuid(id)` imposta l'identità dell'utente del processo. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 se (process.getuid && process.setuid) {
@@ -1490,7 +1498,7 @@ process.stdin.on('end', () => {
 });
 ```
 
-As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. For more information see [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
+As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. Per ulteriori informazioni consulta [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
 
 In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
 
@@ -1526,7 +1534,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+Ad esempio:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1539,7 +1547,7 @@ $ node -p "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-See the [TTY](tty.html#tty_tty) documentation for more information.
+Consulta la documentazione [TTY](tty.html#tty_tty) per ulteriori informazioni.
 
 ## process.throwDeprecation<!-- YAML
 added: v0.9.12
@@ -1573,7 +1581,7 @@ added: v0.1.19
 
 * `mask` {number}
 
-The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
+The `process.umask()` method sets or returns the Node.js process's file mode creation mask. I child process ereditano la mask dal parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
 ```js
 const newmask = 0o022;
@@ -1601,7 +1609,7 @@ added: v0.1.3
 
 * {string}
 
-The `process.version` property returns the Node.js version string.
+La proprietà `process.version` restituisce la stringa di versione Node.js.
 
 ```js
 console.log(`Version: ${process.version}`);
@@ -1627,7 +1635,7 @@ The `process.versions` property returns an object listing the version strings of
 console.log(process.versions);
 ```
 
-Will generate an object similar to:
+Genererà un object simile a:
 
 ```js
 { http_parser: '2.7.0',
@@ -1652,13 +1660,13 @@ Node.js will normally exit with a `0` status code when no more async operations 
 
 * `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2` - Inutilizzato (riservato da Bash per uso improprio incorporato)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `3` **Internal JavaScript Parse Error** - Il codice sorgente JavaScript interno al processo di bootstrap di Node.js ha causato un errore di analisi. Questo è estremamente raro e generalmente può accadere solo durante lo sviluppo di Node.js stesso.
+* `4` **Internal JavaScript Evaluation Failure** - Il codice sorgente JavaScript interno nel processo di bootstrap di Node.js non è riuscito a restituire un valore di funzione quando è stato esaminato. Questo è estremamente raro e generalmente può accadere solo durante lo sviluppo di Node.js stesso.
 * `5` **Fatal Error** - C'è stato un errore irreversibile fatale nel V8. Generalmente un messaggio verrà stampato su stderr con il prefisso `FATAL ERROR`.
-* `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
-* `8` - Non utilizzato. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
-* `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `6` **Non-function Internal Exception Handler** - C'è stata un'eccezione non rilevata, ma la funzione di internal fatal exception handler era in qualche modo impostata su una non funzione e non poteva essere chiamata.
+* `7` **Internal Exception Handler Run-Time Failure** - C'è stata una eccezione non rilevata e la stessa funzione internal fatal exception handler ha lanciato un errore durante il tentativo di gestirla. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
+* `8` - Non utilizzato. Nelle versioni precedenti di Node.js, il codice di uscita 8 indicava a volte un'eccezione non rilevata.
+* `9` - **Invalid Argument** - È stata specificata un'opzione sconosciuta oppure è stata fornita un'opzione che richiedeva un valore senza un valore.
+* `10` **Internal JavaScript Run-Time Failure** - Il codice sorgente JavaScript interno al processo di bootstrap di Node.js ha lanciato un errore quando è stata chiamata la funzione bootstrap. Questo è estremamente raro e generalmente può accadere solo durante lo sviluppo di Node.js stesso.
 * `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
-* `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
+* `>128` **Signal Exits** - Se Node.js riceve un segnale fatale come `SIGKILL` o `SIGHUP`, il suo codice di uscita sarà `128` più il valore del codice segnale. Questa è una pratica POSIX standard, poiché i codici di uscita sono definiti come interi a 7 bit e le uscite di segnale impostano il bit di ordine superiore e quindi contengono il valore del codice di segnale. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
