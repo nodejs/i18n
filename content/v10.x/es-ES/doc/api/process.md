@@ -162,22 +162,32 @@ In this example, the `unhandledRejections` `Map` will grow and shrink over time,
 
 <!-- YAML
 added: v0.1.18
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26599
+    description: Added the `origin` argument.
 -->
 
-The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. Adding a handler for the `'uncaughtException'` event overrides this default behavior. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled rejection or from synchronous errors. Can either be `'uncaughtException'` or `'unhandledRejection'`.
 
-The listener function is called with the `Error` object passed as the only argument.
+El evento `'uncaughtException'` es emitido cuando una excepción no capturada de JavaScript vuelve al bucle de eventos. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. Añadir un manejador para el evento `'uncaughtException'` anula este comportamiento predeterminado. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
 
 ```js
-process.on('uncaughtException', (err) => {
-  fs.writeSync(1, `Caught exception: ${err}\n`);
+process.on('uncaughtException', (err, origin) => {
+  fs.writeSync(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` +
+    `Exception origin: ${origin}`
+  );
 });
 
 setTimeout(() => {
   console.log('This will still run.');
 }, 500);
 
-// Causa intencionalmente una excepción, pero no la atrapa.
+// Intentionally cause an exception, but don't catch it.
 nonexistentFunc();
 console.log('This will not run.');
 ```
@@ -186,7 +196,7 @@ console.log('This will not run.');
 
 Note that `'uncaughtException'` is a crude mechanism for exception handling intended to be used only as a last resort. The event *should not* be used as an equivalent to `On Error Resume Next`. Unhandled exceptions inherently mean that an application is in an undefined state. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
 
-Las excepciones arrojadas desde dentro del manejador de eventos no serán capturadas. Instead the process will exit with a non-zero exit code and the stack trace will be printed. Esto es para evitar una recursión infinita.
+Las excepciones arrojadas desde dentro del manejador de eventos no serán capturadas. Instead the process will exit with a non-zero exit code and the stack trace will be printed. Esto es para evitar recursión infinita.
 
 Attempting to resume normally after an uncaught exception can be similar to pulling out of the power cord when upgrading a computer — nine out of ten times nothing happens - but the 10th time, the system becomes corrupted.
 
@@ -209,17 +219,15 @@ changes:
                  a process warning.
 -->
 
-The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. When programming with Promises, exceptions are encapsulated as "rejected promises". Rejections can be caught and handled using [`promise.catch()`][] and are propagated through a `Promise` chain. The `'unhandledRejection'` event is useful for detecting and keeping track of promises that were rejected whose rejections have not yet been handled.
+* `reason` {Error|any} El objeto con el cual la promesa fue rechazada (típicamente un objeto [`Error`][]).
+* `promise` {Promise} The rejected promise.
 
-La función oyente es llamada con los siguientes argumentos:
-
-* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
-* `p` la `Promise` fue rechazada.
+The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. Al programar con Promesas, las excepciones son encapsuladas como "promesas rechazadas". Los rechazos pueden ser capturados y manejados utilizando [`promise.catch()`][] y son propagados a través de una cadena `Promise`. El evento `'unhandledRejection'` es útil para detectar y hacer seguimiento de promesas que fueron rechazadas y cuyos rechazos todavía no han sido manejados.
 
 ```js
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Application specific logging, throwing an error, or other logic here
 });
 
 somePromise.then((res) => {
@@ -239,7 +247,7 @@ const resource = new SomeResource();
 // sin .catch o .then en resource.loaded por al menos un turno
 ```
 
-In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. Alternativamente, el evento [`'rejectionHandled'`][] puede ser usado.
+En este caso de ejemplo, es posible rastrear el rechazo como un error de desarrollador, como sería típicamente el caso para otros eventos `'unhandledRejection'`. Para abordar tales fallos, un manejador [`.catch(() => { })`][`promise.catch()`] no operacional puede ser adjuntado a `resource.loaded`, el cual evitará que el evento `'unhandledRejection'` sea emitido.
 
 ### Evento: 'warning'
 
@@ -247,12 +255,12 @@ In this example case, it is possible to track the rejection as a developer error
 added: v6.0.0
 -->
 
-* `warning` {Error} Las propiedades clave de la advertencia son: 
-  * `name` {string} El nombre de la advertencia. **Predeterminado:** `'Warning'`.
+* `warning` {Error} Key properties of the warning are: 
+  * `name` {string} The name of the warning. **Default:** `'Warning'`.
   * `message` {string} Una descripción de la advertencia proporcionada por el sistema.
   * `stack` {string} A stack trace to the location in the code where the warning was issued.
 
-El evento `'warning'` es emitido cada vez que Node.js emite una advertencia del proceso.
+El evento `'warning'` es emitido cada vez que Node.js emite una advertencia de proceso.
 
 A process warning is similar to an error in that it describes exceptional conditions that are being brought to the user's attention. However, warnings are not part of the normal Node.js and JavaScript error handling flow. Node.js can emit warnings whenever it detects bad coding practices that could lead to sub-optimal application performance, bugs, or security vulnerabilities.
 
@@ -264,7 +272,7 @@ process.on('warning', (warning) => {
 });
 ```
 
-Por defecto, Node.js imprimirá advertencias de proceso en `stderr`. The `--no-warnings` command-line option can be used to suppress the default console output but the `'warning'` event will still be emitted by the `process` object.
+Por defecto, Node.js imprimirá las advertencias de proceso en `stderr`. The `--no-warnings` command-line option can be used to suppress the default console output but the `'warning'` event will still be emitted by the `process` object.
 
 The following example illustrates the warning that is printed to `stderr` when too many listeners have been added to an event:
 
@@ -331,16 +339,16 @@ process.on('SIGINT', handle);
 process.on('SIGTERM', handle);
 ```
 
-* `'SIGUSR1'` está reservado por Node.js para iniciar el [depurador](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
+* `'SIGUSR1'` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
 * `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
-* `'SIGPIPE'` es ignorado por defecto. Puede tener un oyente instalado.
+* `'SIGPIPE'` is ignored by default. Puede tener un listener instalado.
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
-* `'SIGTERM'` no está soportado en Windows, puede ser escuchado.
+* `'SIGTERM'` is not supported on Windows, it can be listened on.
 * `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
-* `'SIGWINCH'` es enviado cuando la consola ha sido redimensionada. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
+* `'SIGWINCH'` is delivered when the console has been resized. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
 * `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
-* `'SIGSTOP'` no puede tener un oyente instalado.
+* `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
 
 Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
@@ -428,7 +436,7 @@ Iniciar el proceso Node.js como:
 $ node process-args.js one two=three four
 ```
 
-Generaría la salida:
+Generará la salida:
 
 ```text
 0: /usr/local/bin/node
@@ -498,7 +506,7 @@ added: v0.7.7
 
 The `process.config` property returns an `Object` containing the JavaScript representation of the configure options used to compile the current Node.js executable. This is the same as the `config.gypi` file that was produced when running the `./configure` script.
 
-Un ejemplo de la salida posible luce así:
+Un ejemplo del posible output luce así:
 
 ```js
 {
@@ -610,11 +618,11 @@ changes:
 
 * `module` {Object}
 * `filename` {string}
-* `flags` {os.constants.dlopen} **Predeterminado:** `os.constants.dlopen.RTLD_LAZY`
+* `flags` {os.constants.dlopen} **Default:** `os.constants.dlopen.RTLD_LAZY`
 
 The `process.dlopen()` method allows to dynamically load shared objects. It is primarily used by `require()` to load C++ Addons, and should not be used directly, except in special cases. In other words, [`require()`][] should be preferred over `process.dlopen()`, unless there are specific reasons.
 
-The `flags` argument is an integer that allows to specify dlopen behavior. Vea la documentación de [`os.constants.dlopen`][] para más detalles.
+The `flags` argument is an integer that allows to specify dlopen behavior. See the [`os.constants.dlopen`][] documentation for details.
 
 If there are specific reasons to use `process.dlopen()` (for instance, to specify dlopen flags), it's often useful to use [`require.resolve()`][] to look up the module's path.
 
@@ -637,7 +645,7 @@ added: v8.0.0
 
 * `options` {Object}
   
-  * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
+  * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
   * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
   * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
   * `detail` {string} Texto adicional a incluir con el error.
@@ -675,7 +683,7 @@ added: v6.0.0
 
 * `warning` {string|Error} La advertencia a emitir.
 
-* `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
+* `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
 
 * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
 * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
@@ -761,7 +769,7 @@ changes:
 
 * {Object}
 
-La propiedad `process.env` devuelve un objeto que contiene el entorno del usuario. Vea environ(7).
+La propiedad `process.env` devuelve un objeto que contiene el entorno del usuario. Ver environ(7).
 
 Un ejemplo de este objeto luce así:
 
@@ -786,7 +794,7 @@ It is possible to modify this object, but such modifications will not be reflect
 $ node -e 'process.env.foo = "bar"' && echo $foo
 ```
 
-Mientras que el siguiente sí:
+Mientras que el siguiente será:
 
 ```js
 process.env.foo = 'bar';
@@ -804,7 +812,7 @@ console.log(process.env.test);
 // => 'undefined'
 ```
 
-Utilice `delete` para eliminar una propiedad de `process.env`.
+Utilizar `delete` para eliminar una propiedad de `process.env`.
 
 ```js
 process.env.TEST = 1;
@@ -813,7 +821,7 @@ console.log(process.env.TEST);
 // => undefined
 ```
 
-En sistemas operativos Windows, las variables de entorno no distinguen entre minúscula y mayúscula.
+En sistemas operativos Windows, las variables de entorno no distinguen entre mayúsculas y minúsculas.
 
 ```js
 process.env.TEST = 1;
@@ -867,13 +875,13 @@ added: v0.1.13
 
 The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
 
-Para salir con un código 'failure':
+Para salir con un código de 'failure':
 
 ```js
 process.exit(1);
 ```
 
-La shell que ejecutó Node.js debería ver el código de salida como `1`.
+El shell que ejecutó Node.js debe ver el código de salida como `1`.
 
 Calling `process.exit()` will force the process to exit as quickly as possible even if there are still asynchronous operations pending that have not yet completed fully, including I/O operations to `process.stdout` and `process.stderr`.
 
@@ -1030,7 +1038,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Devuelve: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1055,8 +1063,8 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} El nombre de usuario o su identificador numérico.
-* `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
+* `user` {string|number} El nombre de usuario o identificador numérico.
+* `extraGroup` {string|number} A group name or numeric identifier.
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
@@ -1122,7 +1130,7 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Devuelve: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
+* Returns: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
 
 The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
 
@@ -1308,11 +1316,11 @@ The `process.release` property returns an `Object` containing metadata related t
 
 `process.release` contiene las siguientes propiedades:
 
-* `name` {string} un valor que siempre será `'node'` para Node.js. For legacy io.js releases, this will be `'io.js'`.
+* `name` {string} Un valor que siempre será `'node'` para Node.js. For legacy io.js releases, this will be `'io.js'`.
 * `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
 * `headersUrl`{string} an absolute URL pointing to a *`.tar.gz`* file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
 * `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. *This property is only present on Windows builds of Node.js and will be missing on all other platforms.*
-* `lts` {string} una etiqueta de string que identifica la etiqueta [LTS](https://github.com/nodejs/Release) para esta versión. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Actualmente, lo valores válidos son: 
+* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/Release) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Actualmente, lo valores válidos son: 
   * `'Argon'` para la línea LTS 4.x que comienza con 4.2.0.
   * `'Boron'` para la línea LTS 6.x que comienza con 6.9.0.
   * `'Carbon'` para la línea LTS 8.x que comienza con 8.9.1.
@@ -1337,7 +1345,7 @@ added: v0.5.9
 
 * `sendHandle` {net.Server|net.Socket}
 
-* `opciones` {Object}
+* `options` {Object}
 * `callback` {Function}
 * Devuelve: {boolean}
 
@@ -1653,14 +1661,13 @@ Node.js will normally exit with a `0` status code when no more async operations 
 
 * `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2` - Sin utilizar (reservado por Bash para mal uso incorporado)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `5` **Error Fatal** - Hubo un error fatal irrecuperable en V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL
-ERROR`.
-* `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
-* `8` - No utilizado. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
-* `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `3` **Error Interno de Análisis de JavaScript** - El código fuente interno de JavaScript en el proceso de bootstrap de Node.js causó un error de análisis. Esto es extremadamente raro, y generalmente sólo puede pasar durante el desarrollo del mismo Node.js.
+* `4` **Falla Interna de Evaluación de JavaScript** - El código fuente interno de JavaScript en el proceso de bootstrap de Node.js falló al devolver un valor de función al evaluarse. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `5` **Error Fatal** - Hubo un error fatal irrecuperable en V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL ERROR`.
+* `6` **Manejador No-función de Excepción Interno** - Hubo una excepción no capturada, pero la función interna manejadora de excepción fatal de alguna manera fue establecida como una non-function, y no pudo ser llamada.
+* `7` **Falla de Tiempo de Ejecución de Manejador de Excepciones Internas** - Hubo una excepción no capturada, y la función interna manejadora de excepciones fatales arrojó un error al intentar manejarla. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
+* `8` - Sin utilizar. En versiones previas de Node.js, el código de cierre 8 a veces indicaba una excepción sin capturar.
+* `9` - **Argumento Inválido** - Si una opción desconocida fue especificada, o una opción que requiere un valor fue proporcionada sin un valor.
+* `10` **Falla Interna de Tiempo de Ejecución de JavaScript** - El código fuente interno de JavaScript en el proceso de bootstrap de Node.js arrojó un error cuando la función bootstrapping fue llamada. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
 * `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
-* `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
+* `>128` **Salidas de Señales** - Si Node.js recibe una señal fatal como `SIGKILL` o `SIGHUP`, entonces su código de salida será `128` más el valor del código de señal. Esta es una práctica estándar de POSIX, como los códigos de salida están definidos para ser enteros de 7 bits, y las salidas por señal establecen el bit de orden mayor, y entonces contienen el valor del código de señal. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
