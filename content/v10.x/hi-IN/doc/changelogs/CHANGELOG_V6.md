@@ -162,7 +162,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 
 ### Notable Changes
 
-* **console**: 
+* **कंसोल**: 
   * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * **crypto**: 
   * expose ECDH class (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
@@ -772,7 +772,7 @@ This release includes a security update to openssl that has been deemed low seve
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
 * **इंस्पेक्टर**: 
   * enable --inspect-brk (Refael Ackermann) [#12615](https://github.com/nodejs/node/pull/12615)
-* **process**: 
+* **प्रसंस्करण**: 
   * add --redirect-warnings command line argument (James M Snell) [#10116](https://github.com/nodejs/node/pull/10116)
 * **src**: 
   * allow CLI args in env with NODE_OPTIONS (Sam Roberts) [#12028](https://github.com/nodejs/node/pull/12028)
@@ -1495,7 +1495,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
   * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
   * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
-* **process**: 
+* **प्रसंस्करण**: 
   * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **पढ़ने के लिए लाइन**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
@@ -4426,7 +4426,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
 * पथ 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Process 
+* प्रसंस्करण 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
