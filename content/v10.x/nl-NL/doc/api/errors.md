@@ -157,7 +157,7 @@ The first line of the trace will be prefixed with `${myObject.name}: ${myObject.
 
 The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. Bijvoorbeeld:
 
 ```js
 function MyError() {
