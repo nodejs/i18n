@@ -51,7 +51,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [アーカイブ](CHANGELOG_ARCHIVE.md)
 
 <a id="10.15.3"></a>
 
@@ -1031,7 +1031,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * **cli**
   * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
   * Added bash completion for the `node` binary. To generate a bash completion script, run `node --completion-bash`. The output can be saved to a file which can be sourced to enable completion. [#20713](https://github.com/nodejs/node/pull/20713)
-* **crypto**
+* **暗号化**
   * Added support for PEM-level encryption. [#23151](https://github.com/nodejs/node/pull/23151)
   * Added an API asymmetric key pair generation. The new methods `crypto.generateKeyPair` and `crypto.generateKeyPairSync` can be used to generate public and private key pairs. The API supports RSA, DSA and EC and a variety of key encodings (both PEM and DER). [#22660](https://github.com/nodejs/node/pull/22660)
 * **fs**
