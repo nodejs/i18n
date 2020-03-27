@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [アーカイブ](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.2"></a>
 
@@ -921,7 +921,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **cluster**
+* **クラスタ**
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps**
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
