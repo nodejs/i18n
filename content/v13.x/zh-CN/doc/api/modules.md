@@ -6,16 +6,16 @@
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+在 Node.js 模块系统中，每个文件都被视为一个单独的模块。 例如：假设有一个名为 `foo.js` 的模块：
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+在第一行，`foo.js` 装载和 `foo.js` 位于同一个目录下的模块 `circle.js`。
 
-Here are the contents of `circle.js`:
+如下是 `circle.js` 的内容：
 
 ```js
 const { PI } = Math;
@@ -25,9 +25,9 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+`circle.js` 模块导出了 `area()` 和 `circumference()` 函数。 Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
-Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
+因为模块由 Node.js 包装在一个函数中 (请参阅 [模块包装器](#modules_the_module_wrapper))，因此模块的本地变量将会是私有的。 在此示例中，变量 `PI` 在 `circle.js` 中是私有的。
 
 The `module.exports` property can be assigned a new value (such as a function or object).
 
@@ -39,7 +39,7 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-The `square` module is defined in `square.js`:
+`square` 模块是在 `square.js` 中定义的：
 
 ```js
 // Assigning to exports will not modify module, must use module.exports
@@ -54,13 +54,13 @@ module.exports = class Square {
 };
 ```
 
-The module system is implemented in the `require('module')` module.
+模块系统是在 `require('module')` 模块中实现的。
 
-## Accessing the main module
+## 访问主模块
 
 <!-- type=misc -->
 
-When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+当 Node.js 直接运行一个文件时，`require.main` 会被设为它的 `module`。 That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
