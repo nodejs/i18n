@@ -3716,16 +3716,16 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The error message from `assert.ok(expression)` now also contains the expression itself. [[`f76ef50432`](https://github.com/nodejs/node/commit/f76ef50432)]
 * Async_hooks 
   * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* Buffer 
+* الصوان 
   * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
   * `noAssert` argument was removed from all `Buffer` read and write functions. [[`e8bb1f35df`](https://github.com/nodejs/node/commit/e8bb1f35df)]
 * Child Process 
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Console 
+* المحاورة 
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
-* Crypto 
+* التشفير 
   * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
   * The `decipher.finaltol()` method has been deprecated. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
   * The `crypto.DEFAULT_ENCODING` property has been deprecated. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
@@ -3737,7 +3737,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* File System 
+* نظام الملفات 
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
@@ -3753,7 +3753,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
   * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
   * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Process 
+* الاجراء 
   * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
