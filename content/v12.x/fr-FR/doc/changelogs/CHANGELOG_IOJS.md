@@ -62,7 +62,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Autres versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors
+* erreurs
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2530,7 +2530,7 @@ Below is a summary of the user-facing changes to be found in the io.js v1.0.0 re
   * punycode: 1.2.0 to 1.3.2.
 * Performance and stability improvements on all platforms.
 
-### buffer
+### tampons (buffers)
 
 https://iojs.org/api/buffer.html
 
@@ -2563,7 +2563,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### crypto
+### cryptographie
 
 https://iojs.org/api/crypto.html
 
@@ -2620,7 +2620,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### net
+### sockets TCP
 
 https://iojs.org/api/net.html
 
@@ -2633,7 +2633,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### gestion des chemins (path)
 
 https://iojs.org/api/path.html
 
