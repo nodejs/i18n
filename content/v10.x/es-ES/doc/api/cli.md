@@ -202,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Esta opción es un no-op. Es mantenido para compatibilidad.
 
 ### `--no-deprecation`
 
@@ -210,7 +210,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-Silencia las advertencias de deprecación.
+Silencia las advertencias de desaprobación.
 
 ### `--no-force-async-hooks-checks`
 
@@ -218,7 +218,7 @@ Silencia las advertencias de deprecación.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -226,7 +226,7 @@ Disables runtime checks for `async_hooks`. These will still be enabled dynamical
 added: v6.0.0
 -->
 
-Silencia todas las advertencias de procesos (incluyendo deprecaciones).
+Silencia todas las advertencias del proceso (incluyendo las desaprobaciones).
 
 ### `--openssl-config=file`
 
@@ -312,7 +312,7 @@ Procesar la salida del generador de perfiles de V8 generada con la opción V8.
 added: v8.0.0
 -->
 
-Escribe advertencias de proceso para un archivo dado en vez de imprimirlas en stderrw. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
 
 ### `--throw-deprecation`
 
@@ -336,7 +336,7 @@ Set `process.title` on startup.
 added: v4.0.0
 -->
 
-Especifica una lista de cifrado TLC alternativa predeterminada. Requires Node.js to be built with crypto support (default).
+Especifica una lista de cifrado TLS predeterminada alternativa. Requires Node.js to be built with crypto support (default).
 
 ### `--trace-deprecation`
 
@@ -344,7 +344,7 @@ Especifica una lista de cifrado TLC alternativa predeterminada. Requires Node.js
 added: v0.8.0
 -->
 
-Imprime los reportes de los marcos de pila activos para deprecaciones.
+Imprime stack traces para desaprobaciones.
 
 ### `--trace-event-categories`
 
@@ -384,7 +384,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-Imprime los stack traces para las advertencias de procesos (incluyendo deprecaciones).
+Imprime stack traces para advertencias de proceso (incluye desaprobaciones).
 
 ### `--track-heap-objects`
 
@@ -416,11 +416,11 @@ added: v6.11.0
 
 Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. El almacen predeterminado es seleccionable en el tiempo de construcción.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntica en todas las plataformas soportadas.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
 
-Usar el almacen de OpenSSL permite modificaciones externas al almacen. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+El uso del almacén OpenSSL permite modificaciones externas del almacén. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-Véase `SSL_CERT_DIR` y `SSL_CERT_FILE`.
+Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
 ### `--v8-options`
 
@@ -463,7 +463,7 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-Revisa la sintaxis del script sin ejecutarlo.
+Comprueba la sintaxis del script sin ejecutarlo.
 
 ### `-e`, `--eval "script"`
 
@@ -486,7 +486,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Imprime las opciones de la línea de comando de node. La salida de esta opción es menos detallada que este documento.
+Imprime opciones de línea de comando de nodo. La salida de esta opción es menos detallada que este documento.
 
 ### `-i`, `--interactive`
 
@@ -494,7 +494,7 @@ Imprime las opciones de la línea de comando de node. La salida de esta opción 
 added: v0.7.7
 -->
 
-Abre el REPL aún si stdin no parece ser una terminal.
+Abre el REPL incluso si no parece que stdin sea un terminal.
 
 ### `-p`, `--print "script"`
 
@@ -515,9 +515,9 @@ Idéntico a `-e` pero imprime el resultado.
 added: v1.6.0
 -->
 
-Precarga el módulo específico en el inicio.
+Precarga el módulo especificado en el inicio.
 
-Follows `require()`'s module resolution rules. `module` puede ser una ruta a un archivo, o un nombre del módulo de node.
+Follows `require()`'s module resolution rules. `module` puede ser una ruta a un archivo o un nombre del módulo de nodo.
 
 ### `-v`, `--version`
 
@@ -525,7 +525,7 @@ Follows `require()`'s module resolution rules. `module` puede ser una ruta a un 
 added: v0.1.3
 -->
 
-Imprime la versión de Node.
+Imprime la versión de node.
 
 ## Variables de Entorno
 
@@ -535,7 +535,7 @@ Imprime la versión de Node.
 added: v0.1.32
 -->
 
-`','` Lista separada de los módulos principales que deben imprimir información de depuración.
+Lista separada con `','` de módulos core que deben imprimir información de depuración.
 
 ### `NODE_DEBUG_NATIVE=module[,…]`
 
@@ -567,7 +567,7 @@ This environment variable is ignored when `node` runs as setuid root or has Linu
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
+La ruta de datos para los datos ICU (objeto `Intl`). Will extend linked-in data when compiled with small-icu support.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -575,7 +575,7 @@ Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
 added: v6.11.0
 -->
 
-Cuando es establecido a `1`, las advertencias de procesos son silenciadas.
+Cuando se establece a `1`, se silencian las advertencias de proceso.
 
 ### `NODE_OPTIONS=options...`
 
@@ -624,7 +624,7 @@ Node.js options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-Las opciones V8 que están permitidas son:
+Las opciones de V8 que están permitidas son:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -638,9 +638,9 @@ Las opciones V8 que están permitidas son:
 added: v0.1.32
 -->
 
-`':'`- lista separada de directorios con prefijo a la ruta de búsqueda del módulo.
+Una lista separada con `':'` de directorios con prefijo a la ruta de búsqueda del módulo.
 
-On Windows, this is a `';'`-separated list instead.
+En Windows, es una lista separada con `';'` en su lugar.
 
 ### `NODE_PENDING_DEPRECATION=1`
 
@@ -674,7 +674,7 @@ When set, process warnings will be emitted to the given file instead of printing
 added: v3.0.0
 -->
 
-Ruta al archivo usado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `NODE_TLS_REJECT_UNAUTHORIZED=value`
 
@@ -744,4 +744,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 - `dns.lookup()`
 - todas las APIs `zlib`, distintas de aquellas que son explícitamente sincrónicas
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). Para mayor información, vea la [documentación del threadpool libuv](http://docs.libuv.org/en/latest/threadpool.html).
