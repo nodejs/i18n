@@ -21,7 +21,7 @@
 * [Console](console.html)
 * [Cryptographie](crypto.html)
 * [Débogueur](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [APIs obsolètes](deprecations.html)
 * [DNS](dns.html)
 * [Domaines (isolation d'erreurs)](domain.html)
 * [Modules ECMAScript](esm.html)
