@@ -3975,7 +3975,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v10.6.0
@@ -4035,7 +4035,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v10.6.0
@@ -4058,7 +4058,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v10.6.0
@@ -4077,7 +4077,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v10.6.0
@@ -4098,7 +4098,7 @@ This API may be called from any thread which will stop making use of `func`.
 
 ### napi_ref_threadsafe_function
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!-- YAML
 added: v10.6.0
