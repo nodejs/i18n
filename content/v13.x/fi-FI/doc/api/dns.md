@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
