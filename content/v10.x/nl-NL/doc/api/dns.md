@@ -134,7 +134,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 const dns = require('dns');
@@ -252,7 +252,7 @@ changes:
 -->
 
 * `hostname` {string} Hostname to resolve.
-* `options` {Object} 
+* `opties` {Object} 
   * `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
 * `callback` {Function} 
   * `err` {Error}
@@ -511,7 +511,7 @@ Note that this method works much like [resolve.conf](http://man7.org/linux/man-p
 
 ## DNS Promises API
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `dns.promises` API provides an alternative set of asynchronous DNS methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('dns').promises`.
 
@@ -582,7 +582,7 @@ added: v10.6.0
 
 `hostname` {string}
 
-* `options` {integer | Object} 
+* `opties` {integer | Object} 
   * `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
   * `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
   * `all` {boolean} When `true`, the `Promise` is resolved with all addresses in an array. Otherwise, returns a single address. **Default:** `false`.
@@ -596,7 +596,7 @@ On error, the `Promise` is rejected with an [`Error`][] object, where `err.code`
 
 [`dnsPromises.lookup()`][] does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dnsPromises.lookup()`.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 const dns = require('dns');
@@ -678,7 +678,7 @@ added: v10.6.0
 -->
 
 * `hostname` {string} Hostname to resolve.
-* `options` {Object} 
+* `opties` {Object} 
   * `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the `Promise` is resolved with an array of `{ address: '1.2.3.4', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
 
 Uses the DNS protocol to resolve IPv4 addresses (`A` records) for the `hostname`. On success, the `Promise` is resolved with an array of IPv4 addresses (e.g. `['74.125.79.104', '74.125.79.105', '74.125.79.106']`).
@@ -690,7 +690,7 @@ added: v10.6.0
 -->
 
 * `hostname` {string} Hostname to resolve.
-* `options` {Object} 
+* `opties` {Object} 
   * `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the `Promise` is resolved with an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
 
 Uses the DNS protocol to resolve IPv6 addresses (`AAAA` records) for the `hostname`. On success, the `Promise` is resolved with an array of IPv6 addresses.
