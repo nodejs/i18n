@@ -199,9 +199,9 @@ If this method is invoked as its [`util.promisify()`][]ed version, it returns a 
 added: v0.1.27
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Hostname da risolvere.
 
-- `rrtype` {string} Resource record type. **Predefinito:** `'A'`.
+- `rrtype` {string} Tipo di record della risorsa. **Predefinito:** `'A'`.
 
 - `callback` {Function} 
   - `err` {Error}
