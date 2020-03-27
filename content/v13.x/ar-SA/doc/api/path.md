@@ -1,8 +1,8 @@
-# Path
+# المسار
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
