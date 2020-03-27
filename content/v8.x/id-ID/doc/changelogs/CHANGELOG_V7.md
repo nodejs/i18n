@@ -31,7 +31,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Versi lain 
   * [8.x](CHANGELOG_V8.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
@@ -39,7 +39,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arsip](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.0"></a>
 
