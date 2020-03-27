@@ -472,7 +472,7 @@ added: v6.1.0
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
 
-* Returns: {Object}
+* Restituisce: {Object}
     
     * `user` {integer}
     * `system` {integer}
@@ -878,7 +878,7 @@ added: v0.1.28
 
 * Restituisce: {integer}
 
-The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
+Il metodo `process.getuid()` restituisce l'identità numerica dell'utente del processo. (See getuid(2).)
 
 ```js
 se (process.getuid) {
@@ -894,7 +894,7 @@ added: v0.7.6
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
 
-* Returns: {Array}
+* Restituisce: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -920,13 +920,13 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} The user name or numeric identifier.
+* `user`{string|number} Il nome utente o l'identificatore numerico.
 
 * `extra_group` {string|number} A group name or numeric identifier.
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Example:
+Si noti che occorre prestare attenzione quando si eliminano i privilegi. Esempio:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -942,19 +942,19 @@ console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 added: v0.0.6
 -->
 
-* `pid` {number} A process ID
+* `pid` {number} Un ID di processo
 
-* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
+* `signal` {string|number} Il segnale da inviare, come una stringa o come un numero. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
-Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
+I nomi dei segnali sono stringhe come `'SIGINT'` o `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+Questo metodo lancerà un errore se il target `pid` non esiste. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-For example:
+Per esempio:
 
 ```js
 process.on('SIGHUP', () => {
@@ -998,13 +998,13 @@ changes:
 
 The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
 
-For example, the code:
+Ad esempio, il codice:
 
 ```js
 console.log(process.memoryUsage());
 ```
 
-Will generate:
+Genererà:
 
 ```js
 {
@@ -1015,7 +1015,7 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
+`heapTotal` e `heapUsed` si riferiscono all'utilizzo della memoria del V8. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
 
 L'*heap* è dove sono memorizzati object, stringhe e chiusure. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
 
@@ -1031,9 +1031,9 @@ changes:
 * `callback` {Function}
 * `...args` {any} Argomenti aggiuntivi da trasmettere quando si invoca la `callback`
 
-The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
+Il metodo `process.nextTick()` aggiunge la `callback` alla "coda di tick successiva". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
-This is *not* a simple alias to [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
+Questo *non* è un semplice alias per [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
 
 ```js
 console.log('start');
@@ -1064,7 +1064,7 @@ thing.getReadyForStuff();
 // thing.startDoingStuff() viene chiamato ora, non prima.
 ```
 
-It is very important for APIs to be either 100% synchronous or 100% asynchronous. Consider this example:
+It is very important for APIs to be either 100% synchronous or 100% asynchronous. Considera questo esempio:
 
 ```js
 // ATTENZIONE!  NON USARE!  RISCHIO PERICOLOSO E GRAVE!
@@ -1078,7 +1078,7 @@ function maybeSync(arg, cb) {
 }
 ```
 
-This API is hazardous because in the following case:
+Questa API è pericolosa perché nel seguente caso:
 
 ```js
 const maybeTrue = Math.random() > 0.5;
@@ -1090,9 +1090,9 @@ maybeSync(maybeTrue, () => {
 bar();
 ```
 
-It is not clear whether `foo()` or `bar()` will be called first.
+Non è chiaro se `foo()` o `bar()` saranno chiamato per primi.
 
-The following approach is much better:
+Il seguente approccio è notevolmente migliore:
 
 ```js
 function definitelyAsync(arg, cb) {
@@ -1121,7 +1121,7 @@ added: v0.1.15
 
 * {integer}
 
-The `process.pid` property returns the PID of the process.
+La proprietà `process.pid` restituisce il PID del processo.
 
 ```js
 console.log(`Questo processo è pid ${process.pid}`);
@@ -1135,7 +1135,7 @@ added: v0.1.16
 
 The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
 
-Currently possible values are:
+I valori attualmente possibili sono:
 
 * `'aix'`
 * `'darwin'`
@@ -1157,7 +1157,7 @@ added: v8.10.0
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+La proprietà `process.ppid` restituisce il PID del parent process corrente.
 
 ```js
 console.log(`Il parent process è pid ${process.ppid}`);
@@ -1176,7 +1176,7 @@ changes:
 
 The `process.release` property returns an Object containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
-`process.release` contains the following properties:
+`process.release` contiene le seguenti proprietà:
 
 * `name` {string} Un valore che sarà sempre `'node'` per Node.js. For legacy io.js releases, this will be `'io.js'`.
 * `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
@@ -1187,7 +1187,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` per la riga 6.x LTS che inizia con 6.9.0.
     * `'Carbon'` per la riga 8.x LTS che inizia con 8.9.1.
 
-For example:
+Per esempio:
 
 ```js
 {
@@ -1225,7 +1225,7 @@ added: v2.0.0
 
 * `id` {string|number} Un nome di gruppo o ID
 
-The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
+Il metodo `process.setegid()` imposta l'identità di gruppo effettiva del processo. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
 ```js
 se (process.getegid && process.setegid) {
@@ -1247,7 +1247,7 @@ added: v2.0.0
 
 * `id` {string|number} Un nome utente o ID
 
-The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+Il metodo `process.seteuid()` imposta l'effettiva identità dell'utente del processo. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 se (process.geteuid && process.seteuid) {
@@ -1269,7 +1269,7 @@ added: v0.1.31
 
 * `id` {string|number} Il nome di gruppo o ID
 
-The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
+Il metodo `process.setgid()` imposta l'identità di gruppo del processo. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
 ```js
 se (process.getgid && process.setgid) {
@@ -1293,7 +1293,7 @@ added: v0.9.4
 
 The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
 
-The `groups` array can contain numeric group IDs, group names or both.
+I `groups` array possono contenere ID di gruppi numerici, nomi di gruppi o entrambi.
 
 *Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
 
@@ -1331,7 +1331,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-For example:
+Per esempio:
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1348,7 +1348,7 @@ process.stdin.on('end', () => {
 });
 ```
 
-As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. For more information see [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
+As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. Per ulteriori informazioni consulta [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
 
 *Note*: In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
 
@@ -1358,7 +1358,7 @@ As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.
 
 The `process.stdout` property returns a stream connected to `stdout` (fd `1`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `1` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
 
-For example, to copy process.stdin to process.stdout:
+Ad esempio, per copiare process.stdin a process.stdout:
 
 ```js
 process.stdin.pipe(process.stdout);
@@ -1384,7 +1384,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+Ad esempio:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1397,7 +1397,7 @@ $ node -p "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-See the [TTY](tty.html#tty_tty) documentation for more information.
+Consulta la documentazione [TTY](tty.html#tty_tty) per ulteriori informazioni.
 
 ## process.throwDeprecation<!-- YAML
 added: v0.9.12
@@ -1431,7 +1431,7 @@ added: v0.1.19
 
 * `mask` {number}
 
-The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
+The `process.umask()` method sets or returns the Node.js process's file mode creation mask. I child process ereditano la mask dal parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
 ```js
 const newmask = 0o022;
@@ -1457,7 +1457,7 @@ added: v0.1.3
 
 * {string}
 
-The `process.version` property returns the Node.js version string.
+La proprietà `process.version` restituisce la stringa di versione Node.js.
 
 ```js
 console.log(`Version: ${process.version}`);
@@ -1480,7 +1480,7 @@ The `process.versions` property returns an object listing the version strings of
 console.log(process.versions);
 ```
 
-Will generate an object similar to:
+Genererà un object simile a:
 
 ```js
 { http_parser: '2.7.0',
