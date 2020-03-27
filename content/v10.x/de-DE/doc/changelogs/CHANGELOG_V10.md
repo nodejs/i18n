@@ -1675,7 +1675,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
 * **module** 
   * Added `module.createRequireFromPath(filename)`. This new method can be used to create a custom require function that will resolve modules relative to the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
-* **process** 
+* **prozess** 
   * Added a `'multipleResolves'` process event that is emitted whenever a `Promise` is attempted to be resolved multiple times, e.g. if the `resolve` and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
 * **url** 
   * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
@@ -2096,7 +2096,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * The `http2` module is no longer experimental. [#22466](https://github.com/nodejs/node/pull/22466)
 * **os**: 
   * Added two new methods: `os.getPriority` and `os.setPriority`, allowing to manipulate the scheduling priority of processes. [#22407](https://github.com/nodejs/node/pull/22407)
-* **process**: 
+* **prozess**: 
   * Added `process.allowedNodeEnvironmentFlags`. This object can be used to programmatically validate and list flags that are allowed in the `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
 * **src**: 
   * Deprecated option variables in public C++ API. [#22515](https://github.com/nodejs/node/pull/22515)
@@ -2627,7 +2627,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **console**: 
+* **konsole**: 
   * The `console.timeLog()` method has been implemented. [#21312](https://github.com/nodejs/node/pull/21312)
 * **deps**: 
   * Upgrade to libuv 1.22.0. [#21731](https://github.com/nodejs/node/pull/21731)
@@ -2638,7 +2638,7 @@ Fixes for the following CVEs are included in this release:
   * Expose the original console API in `require('inspector').console`. [#21659](https://github.com/nodejs/node/pull/21659)
 * **napi**: 
   * Added experimental support for functions dealing with bigint numbers. [#21226](https://github.com/nodejs/node/pull/21226)
-* **process**: 
+* **prozess**: 
   * The `process.hrtime.bigint()` method has been implemented. [#21256](https://github.com/nodejs/node/pull/21256)
   * Added the `--title` command line argument to set the process title on startup. [#21477](https://github.com/nodejs/node/pull/21477)
 * **trace_events**: 
@@ -3515,7 +3515,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ### Notable Changes
 
-* **console**: 
+* **konsole**: 
   * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
   * move fs/promises to fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
