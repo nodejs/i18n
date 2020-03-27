@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
@@ -415,11 +415,11 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-> Stability: 0 - Deprecated.
+> 稳定性：0 - 已弃用。
 
 * `keyword` {string} the potential keyword to parse and execute
 * `rest` {any} any parameters to the keyword command
-* Returns: {boolean}
+* 返回：{boolean}
 
 An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
