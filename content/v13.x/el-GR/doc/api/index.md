@@ -21,7 +21,7 @@
 * [Κονσόλα](console.html)
 * [Κρυπτογραφία](crypto.html)
 * [Πρόγραμμα Εντοπισμού Σφαλμάτων](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [Αποσυρόμενα API](deprecations.html)
 * [DNS](dns.html)
 * [Χώρος](domain.html)
 * [ECMAScript Ενότητες](esm.html)
