@@ -1,9 +1,9 @@
-# Global Objects
+# Globale Objekte
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Diese Objekte sind in jedem Modul verfügbar. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -22,7 +22,7 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Verarbeitet binäre Daten. Siehe [Abschnitt Puffer](buffer.html).
 
 ## `__dirname`
 
@@ -59,7 +59,7 @@ added: v0.0.1
 
 [`clearTimeout`][] is described in the [timers](timers.html) section.
 
-## `console`
+## `konsole`
 <!-- YAML
 added: v0.1.100
 -->
@@ -68,7 +68,7 @@ added: v0.1.100
 
 * {Object}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Wird zur Ausgabe mit stdout und stderr verwendet. Siehe Abschnitt [`console`][].
 
 ## `exports`
 
@@ -81,15 +81,15 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Object} Das globale namespace Objekt.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In Browsern, ist der Top-Level Bereich der globale Bereich. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## `module`
 
 This variable may appear to be global but is not. See [`module`][].
 
-## `process`
+## `prozess`
 <!-- YAML
 added: v0.1.7
 -->
@@ -98,7 +98,7 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+Das Objekt Prozess. Siehe Abschnitt [`process` object][].
 
 ## `queueMicrotask(callback)`
 <!-- YAML
