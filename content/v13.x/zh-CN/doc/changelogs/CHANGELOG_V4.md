@@ -2355,7 +2355,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer**
+* **缓冲区**
   * make byteLength work with Buffer correctly (Jackson Tian)
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger**
@@ -2490,7 +2490,7 @@ Maintenance update.
 
 ### Notable changes
 
-* **assert**
+* **断言 (Assert)**
   * accommodate ES6 classes that extend Error (Rich Trott) [#4166](https://github.com/nodejs/node/pull/4166)
 * **build**
   * add "--partly-static" build options (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
