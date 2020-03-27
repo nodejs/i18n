@@ -13,7 +13,7 @@ changes:
 
 > Stabilità: 2 - Stable
 
-Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). It can be accessed using:
+Il modulo `http2` fornisce un'implementazione del protocollo [HTTP/2](https://tools.ietf.org/html/rfc7540). Ci si può accedere utilizzando:
 
 ```js
 const http2 = richiede('http2');
@@ -749,8 +749,8 @@ On the client, the `Http2Stream` instance returned by `http2session.request()` m
 
 Tutte le istanze [`Http2Stream`][] vengono eliminate quando:
 
-* Un frame `RST_STREAM` per il flusso viene ricevuto dal peer connesso.
-* Il metodo `http2stream.close()` viene chiamato.
+* An `RST_STREAM` frame for the stream is received by the connected peer, and pending data has been read.
+* The `http2stream.close()` method is called, and pending data has been read.
 * I metodi `http2stream.destroy()` o `http2session.destroy()` vengono chiamati.
 
 When an `Http2Stream` instance is destroyed, an attempt will be made to send an `RST_STREAM` frame will be sent to the connected peer.
@@ -1403,7 +1403,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
+Emesso ogni volta che è presente una richiesta. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1468,7 +1468,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Impedisce al server di accettare nuove connessioni. Vedi [`net.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1522,7 +1522,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
+Emesso ogni volta che è presente una richiesta. Note that there may be multiple requests per session. Vedi l'[API di Compatibilità](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1597,7 +1597,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. Vedi [`tls.Server.close()`][].
+Impedisce al server di accettare nuove connessioni. Vedi [`tls.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -2155,7 +2155,7 @@ The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable 
 added: v8.4.0
 -->
 
-Indica che il [`Http2Stream`][] sottostante è stato chiuso. Just like `'end'`, this event occurs only once per response.
+Indica che il [`Http2Stream`][] sottostante è stato chiuso. Proprio come `'end'`, questo evento si verifica una sola volta per ogni risposta.
 
 #### request.aborted
 
@@ -2197,9 +2197,9 @@ added: v8.4.0
 
 * {Object}
 
-The request/response headers object.
+L'object delle intestazioni di richiesta/risposta.
 
-Key-value pairs of header names and values. Header names are lower-cased.
+Coppie di key-value di nomi e valori di intestazione. I nomi di intestazione sono in minuscolo.
 
 ```js
 // Stampa qualcosa tipo:
@@ -2227,7 +2227,7 @@ added: v8.4.0
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
+In caso di richiesta del server, la versione HTTP inviata dal client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
@@ -2239,7 +2239,7 @@ added: v8.4.0
 
 * {string}
 
-The request method as a string. Solo lettura. Examples: `'GET'`, `'DELETE'`.
+Il metodo di richiesta sotto forma di stringa. Solo lettura. Examples: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2249,11 +2249,11 @@ added: v8.4.0
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+L'elenco delle intestazioni di richiesta/risposta grezze esattamente come sono state ricevute.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Da notare che le chiavi ed i valori si trovano nello stesso elenco. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+I nomi delle intestazioni non sono in minuscolo e i duplicati non sono uniti.
 
 ```js
 // Stampa qualcosa tipo:
@@ -2277,7 +2277,7 @@ added: v8.4.0
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+The raw request/response trailer keys and values exactly as they were received. Compilati esclusivamente nell'evento `'end'`.
 
 #### request.scheme
 
@@ -2341,7 +2341,7 @@ added: v8.4.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+L'object dei trailer di richiesta/risposta. Compilati esclusivamente nell'evento `'end'`.
 
 #### request.url
 
@@ -2351,7 +2351,7 @@ added: v8.4.0
 
 * {string}
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Stringa URL della richiesta. This contains only the URL that is present in the actual HTTP request. Se la richiesta è:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2359,7 +2359,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Allora `request.url` sarà:
 
 ```js
 '/status?name=ryan'
@@ -2427,9 +2427,9 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Emesso nel momento in cui la risposta è stata inviata. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-After this event, no more events will be emitted on the response object.
+Dopo questo evento, nessun altro evento verrà emesso sull'object risposta.
 
 #### response.addTrailers(headers)
 
@@ -2467,7 +2467,7 @@ changes:
 * `callback` {Function}
 * Restituisce: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Il metodo, `response.end()`, DEVE essere chiamato su ogni risposta.
 
 If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -2479,7 +2479,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Valore booleano che indica se la risposta è stata completata. Starts as `false`. Dopo che [`response.end()`][] viene eseguito, il valore sarà `true`.
 
 #### response.getHeader(name)
 
@@ -2490,7 +2490,7 @@ added: v8.4.0
 * `name` {string}
 * Restituisce: {string}
 
-Legge un'intestazione che è già stata accodata ma non inviata al client. Note that the name is case insensitive.
+Legge un'intestazione che è già stata accodata ma non inviata al client. Notare che il nome è case insensitive.
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2581,7 +2581,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Il valore predefinito è true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2594,13 +2594,13 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Imposta un singolo valore di intestazione per intestazioni implicite. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2712,17 +2712,17 @@ added: v8.4.0
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Questo invia un chunk del corpo della risposta. This method may be called multiple times to provide successive parts of the body.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
+Il `chunk` può essere una stringa o un buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Di default l'`encoding` è `'utf8'`. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. `'drain'` verrà emesso quando il buffer è di nuovo libero.
 
 #### response.writeContinue()
 
@@ -2736,15 +2736,24 @@ Sends a status `100 Continue` to the client, indicating that the request body sh
 
 <!-- YAML
 added: v8.4.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
 -->
 
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Restituisce: {http2.Http2ServerResponse}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
+Invia un'intestazione di risposta alla richiesta. The status code is a 3-digit HTTP status code, like `404`. L'ultimo argomento, `headers`, è composto dalle intestazioni di risposta.
 
-For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
+Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
+
+For compatibility with \[HTTP/1\]\[\], a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
 const body = 'hello world';
@@ -2753,7 +2762,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Note that Content-Length is given in bytes not characters. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Notare che il Content-Length è fornito in byte, non in caratteri. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
