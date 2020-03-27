@@ -32,7 +32,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
