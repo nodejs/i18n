@@ -134,7 +134,7 @@ The three tools listed here permit native addon developers and maintainers to cr
 
 [prebuildify](https://github.com/prebuild/prebuildify) is tool based on node-gyp. The advantage of prebuildify is that the built binaries are bundled with the native module when it's uploaded to npm. The binaries are downloaded from npm and are immediately available to the module user when the native module is installed.
 
-## Usage
+## Utilisation
 
 In order to use the N-API functions, include the file [`node_api.h`][] which is located in the src directory in the node development tree:
 
