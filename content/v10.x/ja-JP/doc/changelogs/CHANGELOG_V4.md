@@ -62,7 +62,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* その他のバージョン 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -483,7 +483,7 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **process**: 
+* **プロセス**: 
   * add `externalMemory` to `process` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
   * add process.cpuUsage() (Patrick Mueller) [#10796](https://github.com/nodejs/node/pull/10796)
 
