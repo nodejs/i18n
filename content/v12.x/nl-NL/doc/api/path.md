@@ -1,8 +1,8 @@
-# Path
+# Pad
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
@@ -61,7 +61,7 @@ changes:
 
 * `path` {string}
 * `ext` {string} An optional file extension
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -117,7 +117,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -138,7 +138,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if there are no `.` characters other than the first character of the basename of `path` (see `path.basename()`) , an empty string is returned.
 
@@ -175,7 +175,7 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -232,7 +232,7 @@ added: v0.11.2
 -->
 
 * `path` {string}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 The `path.isAbsolute()` method determines if `path` is an absolute path.
 
@@ -267,7 +267,7 @@ added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
@@ -289,7 +289,7 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
@@ -327,7 +327,7 @@ added: v0.11.15
 -->
 
 * `path` {string}
-* Returns: {Object}
+* Retourneert: {Object}
 
 The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -406,7 +406,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -434,7 +434,7 @@ added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* Returns: {string}
+* Retourneert: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -498,7 +498,7 @@ added: v9.0.0
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 On Windows systems only, returns an equivalent [namespace-prefixed path](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
