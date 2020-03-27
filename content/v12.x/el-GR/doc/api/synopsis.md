@@ -1,6 +1,6 @@
 # Χρήση & Παραδείγματα
 
-## Usage
+## Χρήση
 
 <!--introduced_in=v0.10.0-->
 <!--type=misc-->
@@ -20,14 +20,14 @@ First, make sure to have downloaded and installed Node.js. See [this guide](http
 
 Now, create an empty project folder called `projects`, then navigate into it.
 
-Linux and Mac:
+Linux και Mac:
 
 ```console
 $ mkdir ~/projects
 $ cd ~/projects
 ```
 
-Windows CMD:
+WIndows:
 
 ```console
 > mkdir %USERPROFILE%\projects
@@ -41,7 +41,7 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Next, create a new source file in the `projects` folder and call it `hello-world.js`.
+Δημιουργήστε ένα νέο αρχείο μέσα στο φάκελο `projects` και ονομάστε το `hello-world.js`.
 
 Open `hello-world.js` in any preferred text editor and paste in the following content:
 
@@ -74,6 +74,6 @@ Output like this should appear in the terminal:
 Server running at http://127.0.0.1:3000/
 ```
 
-Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
+Τώρα, ανοίξτε τον web browser της επιλογής σας και επισκεφθείτε την διεύθυνση `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, World!`, that indicates the server is working.
