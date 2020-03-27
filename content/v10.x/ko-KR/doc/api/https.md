@@ -194,7 +194,7 @@ changes:
 -->
 
 * `url` {string | URL}
-* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
+* `옵션` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
   * `protocol` **Default:** `'https:'`
   * `port` **Default:** `443`
   * `agent` **Default:** `https.globalAgent`
