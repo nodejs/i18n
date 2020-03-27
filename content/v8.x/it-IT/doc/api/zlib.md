@@ -199,7 +199,7 @@ added: v0.5.8
 
 *Note*: Previously, the constants were available directly from `require('zlib')`, for instance `zlib.Z_NO_FLUSH`. Accessing the constants directly from the module is currently still possible but should be considered deprecated.
 
-Allowed flush values.
+Valori di eliminazione consentiti.
 
 * `zlib.constants.Z_NO_FLUSH`
 * `zlib.constants.Z_PARTIAL_FLUSH`
@@ -209,7 +209,7 @@ Allowed flush values.
 * `zlib.constants.Z_BLOCK`
 * `zlib.constants.Z_TREES`
 
-Return codes for the compression/decompression functions. Negative values are errors, positive values are used for special but normal events.
+Codici di ritorno per le funzioni di compressione/decompressione. Negative values are errors, positive values are used for special but normal events.
 
 * `zlib.constants.Z_OK`
 * `zlib.constants.Z_STREAM_END`
@@ -221,14 +221,14 @@ Return codes for the compression/decompression functions. Negative values are er
 * `zlib.constants.Z_BUF_ERROR`
 * `zlib.constants.Z_VERSION_ERROR`
 
-Compression levels.
+Livelli di compressione.
 
 * `zlib.constants.Z_NO_COMPRESSION`
 * `zlib.constants.Z_BEST_SPEED`
 * `zlib.constants.Z_BEST_COMPRESSION`
 * `zlib.constants.Z_DEFAULT_COMPRESSION`
 
-Compression strategy.
+Strategia di compressione.
 
 * `zlib.constants.Z_FILTERED`
 * `zlib.constants.Z_HUFFMAN_ONLY`
@@ -250,7 +250,7 @@ changes:
 
 <!--type=misc-->Each class takes an 
 
-`options` object. All options are optional.
+`options` object. Tutte le opzioni sono facoltative.
 
 Note that some options are only relevant when compressing, and are ignored by the decompression classes.
 
@@ -276,7 +276,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Compress data using deflate, and do not append a `zlib` header.
+Comprimere i dati usando deflate e non aggiungere un'intestazione `zlib`.
 
 ## Class: zlib.Gunzip<!-- YAML
 added: v0.5.8
@@ -292,7 +292,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `error` event.
--->Decompress a gzip stream.
+-->Decomprimere un gzip stream.
 
 ## Class: zlib.Gzip<!-- YAML
 added: v0.5.8
@@ -305,7 +305,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `error` event.
--->Decompress a deflate stream.
+-->Decomprimere un deflate stream.
 
 ## Class: zlib.InflateRaw<!-- YAML
 added: v0.5.8
@@ -317,7 +317,7 @@ changes:
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/2595
     description: A truncated input stream will now result in an `error` event.
--->Decompress a raw deflate stream.
+-->Decomprimere un raw deflate stream.
 
 ## Class: zlib.Unzip<!-- YAML
 added: v0.5.8
@@ -329,7 +329,7 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Not exported by the `zlib` module. It is documented here because it is the base class of the compressor/decompressor classes.
+Non esportato dal modulo `zlib`. It is documented here because it is the base class of the compressor/decompressor classes.
 
 ### zlib.bytesRead<!-- YAML
 added: v8.1.0
@@ -349,13 +349,13 @@ added: v0.5.8
 
 * `kind` **Default:** `zlib.constants.Z_FULL_FLUSH`
 
-Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+Eliminare i dati in sospeso. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
 
 Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
 
 ### zlib.params(level, strategy, callback)<!-- YAML
 added: v0.11.4
--->Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+-->Dynamically update the compression level and compression strategy. Applicabile esclusivamente all'algoritmo deflate.
 
 ### zlib.reset()<!-- YAML
 added: v0.7.0
