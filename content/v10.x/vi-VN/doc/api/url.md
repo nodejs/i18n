@@ -4,7 +4,7 @@
 
 > Tính ổn định: 2 - Stable
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. Nó có thể truy cập bằng cách sử dụng:
 
 ```js
 const url = require('url');
