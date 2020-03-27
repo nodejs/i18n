@@ -10,11 +10,11 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
-**The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
+**La versione del modulo punycode in bundle in Node.js è deprecata**. In una futura versione principale di Node.js questo modulo verrà rimosso. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
 
-The `punycode` module is a bundled version of the [Punycode.js](https://mths.be/punycode) module. It can be accessed using:
+Il modulo `punycode` è una versione in bundle del modulo [Punycode.js](https://mths.be/punycode). Ci si può accedere utilizzando:
 
 ```js
 const punycode = require('punycode');
@@ -22,7 +22,7 @@ const punycode = require('punycode');
 
 [Punycode](https://tools.ietf.org/html/rfc3492) is a character encoding scheme defined by RFC 3492 that is primarily intended for use in Internationalized Domain Names. Because host names in URLs are limited to ASCII characters only, Domain Names that contain non-ASCII characters must be converted into ASCII using the Punycode scheme. For instance, the Japanese character that translates into the English word, `'example'` is `'例'`. The Internationalized Domain Name, `'例.com'` (equivalent to `'example.com'`) is represented by Punycode as the ASCII string `'xn--fsq.com'`.
 
-The `punycode` module provides a simple implementation of the Punycode standard.
+Il modulo `punycode` fornisce una semplice implementazione dello standard Punycode.
 
 *Note*: The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://mths.be/punycode) project.
 
@@ -67,7 +67,7 @@ added: v0.6.1
 The `punycode.toASCII()` method converts a Unicode string representing an Internationalized Domain Name to [Punycode](https://tools.ietf.org/html/rfc3492). Only the non-ASCII parts of the domain name will be converted. Calling `punycode.toASCII()` on a string that already only contains ASCII characters will have no effect.
 
 ```js
-// encode domain names
+// codifica nomi di dominio
 punycode.toASCII('mañana.com');  // 'xn--maana-pta.com'
 punycode.toASCII('☃-⌘.com');   // 'xn----dqo34k.com'
 punycode.toASCII('example.com'); // 'example.com'
@@ -84,7 +84,7 @@ added: v0.6.1
 The `punycode.toUnicode()` method converts a string representing a domain name containing [Punycode](https://tools.ietf.org/html/rfc3492) encoded characters into Unicode. Only the [Punycode](https://tools.ietf.org/html/rfc3492) encoded parts of the domain name are be converted.
 
 ```js
-// decode domain names
+// decodifica nomi di dominio
 punycode.toUnicode('xn--maana-pta.com'); // 'mañana.com'
 punycode.toUnicode('xn----dqo34k.com');  // '☃-⌘.com'
 punycode.toUnicode('example.com');       // 'example.com'
@@ -108,7 +108,7 @@ The `punycode.ucs2.decode()` method returns an array containing the numeric code
 
 ```js
 punycode.ucs2.decode('abc'); // [0x61, 0x62, 0x63]
-// surrogate pair for U+1D306 tetragram for centre:
+// coppia surrogata per U+1D306 tetragram for centre:
 punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
@@ -133,4 +133,4 @@ punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
 added: v0.6.1
 -->
 
-Returns a string identifying the current [Punycode.js](https://mths.be/punycode) version number.
+Restituisce una stringa che identifica il numero di versione corrente di [Punycode.js](https://mths.be/punycode).
