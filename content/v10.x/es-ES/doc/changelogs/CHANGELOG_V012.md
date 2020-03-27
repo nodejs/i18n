@@ -251,7 +251,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [e128d9a5b4] - http: prohibir estrictamente caracteres inválidos desde las cabeceras (James M Snell)
 * [bdb9f2cf89] - src: evitar advertencias del compilador en node_revert.cc (James M Snell)
 * [23bced1fb3] - src: añadir bandera de línea de comando --security-revert (James M Snell)
-* [f41a3c73e7] - tools: backport tools/install.py for headers (Richard Lau) https://github.com/nodejs/node/pull/4149
+* [f41a3c73e7] - tools: backport tools/install.py para los encabezados (Richard Lau) https://github.com/nodejs/node/pull/4149
 
 <a id="0.12.9"></a>
 
@@ -274,7 +274,7 @@ Actualización de Seguridad
 ## 2015.11.25, Versión 0.12.8 (LTS), @rvagg
 
 * [d9399569bd] - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3642
-* [78c5b4c8bd] - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3642
+* [78c5b4c8bd] - build: configuración backport para la nueva infraestructura CI (Rod Vagg) https://github.com/nodejs/node/pull/3642
 * [83441616a5] - build: reparar error de tiempo de compilación --without-ssl (Ben Noordhuis) https://github.com/nodejs/node/pull/3825
 * [8887666b0b] - build: actualizar manifiesto para incluir Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2843
 * [08afe4ec8e] - build: agregar soporte MSVS 2015 (Rod Vagg) https://github.com/nodejs/node/pull/2843
@@ -324,7 +324,7 @@ Actualización de Seguridad
   * [22997731e6] - test: añadir prueba de regresión para #25735 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739
   * [39e05639f4] - test: marcar http-pipeline-flood como flaky en win32 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25707
   * [78d256e7f5] - test: desmarcar pruebas que ya no son flaky (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25676
-  * [a9b642cf5b] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [a9b642cf5b] - test: el runner debería devolver 0 en pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [b48639befd] - test: soportar salida de prueba de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [caa16b41d6] - (SEMVER-MINOR) tls: evitar que el servidor utilice claves dhe < 768 (Michael Dawson) https://github.com/nodejs/node/pull/3890
   * [0363cf4a80] - tls: cierre de socket padre también cierra el sock de tls (Devin Nakamura) https://github.com/nodejs/node-v0.x-archive/pull/25642
