@@ -4,7 +4,7 @@
 
 > Kararlılık: 2 - Kararlı
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. Modülü yüklemek için:
 
 ```js
 const url = require('url');
