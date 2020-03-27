@@ -1,4 +1,4 @@
-# Deprecated APIs
+# واجهات برمجة التطبيقات المهملة
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
