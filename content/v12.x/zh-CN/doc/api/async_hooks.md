@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.1.0-->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
@@ -498,7 +498,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Example usage:
+示例用法：
 
 ```js
 class DBQuery extends AsyncResource {
