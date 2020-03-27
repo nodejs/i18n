@@ -180,6 +180,14 @@ added: v9.0.0
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
 
 <!-- YAML
@@ -386,6 +394,20 @@ added: v2.4.0
 
 Track heap object allocations for heap snapshots.
 
+### `--unhandled-rejections=mode`
+
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning for the very first unhandled rejection in case no [`unhandledRejection`][] hook is used.
+
+Using this flag allows to change what should happen when an unhandled rejection occurs. One of three modes can be chosen:
+
+- `strict`: Raise the unhandled rejection as an uncaught exception.
+- `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][] hook is set or not but do not print the deprecation warning.
+- `none`: Silence all warnings.
+
 ### `--use-bundled-ca`, `--use-openssl-ca`
 
 <!-- YAML
@@ -572,6 +594,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -595,6 +618,7 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
