@@ -39,7 +39,7 @@ test('includes only markdown files, ignoring images and other files', () => {
     languages.forEach(language => {
       const docsDir = path.join(contentDir, version, language, 'doc')
       const files = walk(docsDir, { directories: false })
-      expect(files.length).toBeGreaterThan(60)
+      expect(files.length).toBeGreaterThan(0)
       expect(files.every(file => file.relativePath.endsWith('.md')))
     })
   })
