@@ -312,9 +312,9 @@
 
 ### Notable Changes
 
-* **buffer**: 
+* **बफर**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
-* **crypto**: 
+* **क्रिप्टो**: 
   * Fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade npm to 4.2.0 (Kat Marchán) [#11389](https://github.com/nodejs/node/pull/11389)
@@ -900,7 +900,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ### Notable changes
 
-* **crypto**: 
+* **क्रिप्टो**: 
   * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
 * **deps**: 
@@ -1208,7 +1208,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ### Notable changes
 
-* **buffer**: 
+* **बफर**: 
   * Improve performance of Buffer allocation by ~11%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
   * Improve performance of Buffer.from() by ~50%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
 * **events**: Improve performance of `EventEmitter.once()` by ~27%. (Brian White) [#10445](https://github.com/nodejs/node/pull/10445)
@@ -1369,11 +1369,11 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **buffer**: 
+* **बफर**: 
   * buffer.fill() now works properly for the UCS2 encoding on Big-Endian machines. (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
-* **cluster**: 
+* **समूह**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
-* **crypto**: 
+* **क्रिप्टो**: 
   * The built-in list of Well-Known CAs (Certificate Authorities) can now be extended via a NODE_EXTRA_CA_CERTS environment variable. (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **http**: 
   * Remove stale timeout listeners in order to prevent a memory leak when using keep alive. (Karl Böhlmark) [#9440](https://github.com/nodejs/node/pull/9440)
@@ -1520,7 +1520,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **buffer**: 
+* **बफर**: 
   * Reverted the runtime deprecation of calling `Buffer()` without `new`. (Anna Henningsen) [#9529](https://github.com/nodejs/node/pull/9529)
   * Fixed `buffer.transcode()` for single-byte character encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pull/9838)
 * **promise**: `--trace-warnings` now produces useful stacktraces for Promise warnings. (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
