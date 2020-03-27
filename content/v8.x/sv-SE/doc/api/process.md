@@ -927,7 +927,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Example:
+Note that care must be taken when dropping privileges. Exempel:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
