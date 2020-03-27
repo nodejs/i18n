@@ -283,7 +283,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Veja [`port.postMessage()`][] para mais detalhes.
 
 ### worker.ref()
 <!-- YAML
@@ -319,7 +319,7 @@ added: v10.5.0
 
 This is a readable stream which contains data written to [`process.stdout`][] inside the worker thread. If `stdout: true` was not passed to the [`Worker`][] constructor, then data will be piped to the parent thread's [`process.stdout`][] stream.
 
-### worker.terminate([callback])
+### worker.terminate ([callback])
 <!-- YAML
 added: v10.5.0
 -->

@@ -1,4 +1,5 @@
-@// NB(chrisdickinson): eğer bu dosyayı taşırsanız, tools/doc/html.js dosyasını yeni konumu @// işaret edecek şekilde güncellediğinizden emin olun.
+@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+
 * [Bu Dökümanlar Hakkında](documentation.html)
 * [Kullanım & Örnek](synopsis.html)
 

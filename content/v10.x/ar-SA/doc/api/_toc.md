@@ -1,4 +1,4 @@
-@//NB(chrisdickinson): إذا قمت بنقل هذا الملف، تأكد من تحديث @//tools/doc/html.js للإشارة إلى الموقع الجديد.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -17,7 +17,7 @@
 * [خيارات منفذ الأوامر](cli.html)
 * [المحاورة](console.html)
 * [التشفير](crypto.html)
-* [المصحح](debugger.html)
+* [مصحح الأخطاء](debugger.html)
 * [واجهات برمجة التطبيقات المهملة](deprecations.html)
 * [نظام أسماء النطاقات](dns.html)
 * [النطاق](domain.html)
@@ -48,7 +48,7 @@
 * [تتبع الأحداث](tracing.html)
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
-* [عنوان موقع إلكتروني](url.html)
+* [URL](url.html)
 * [أدوات](util.html)
 * [V8](v8.html)
 * [الجهاز الإفتراضي](vm.html)
@@ -57,5 +57,5 @@
 
 <div class="line"></div>
 
-* [مستودع GitHub و متتبع القضايا](https://github.com/nodejs/node)
+* [مستودع GitHub ومتتبع التذاكر](https://github.com/nodejs/node)
 * [القائمة البريدية](https://groups.google.com/group/nodejs)

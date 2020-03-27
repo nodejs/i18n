@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): Po přesunutí souboru se ujistěte, že aktualizujete @// tools/doc/html.js aby ukazovalo na nové umístěni souboru.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 

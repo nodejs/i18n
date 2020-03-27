@@ -1,21 +1,20 @@
 # Soporte Postmortem
 
-Los metadatos postmortem son constantes presentes en la compilación final, la cual puede ser usada por debuggers y otras herramientas para navegar a través de estructuras internas de software cuando se analice su memoria (ya sea en un proceso de ejecución o en un volcado de memoria). Node.js proporciona estos metadatos y su compilación para V8 y para estructuras internas de Node.js.
-
+Postmortem metadata are constants present in the final build which can be used by debuggers and other tools to navigate through internal structures of software when analyzing its memory (either on a running process or a core dump). Node.js provides this metadata in its builds for V8 and Node.js internal structures.
 
 ### Metadatos Postmortem V8
 
-V8 prefija todas las constantes postmortem con `v8dbg_`, y ellas permiten la inspección de objetos en la cabecera. V8 genera aquellos símbolos con un script (`deps/v8/tools/gen-postmortem-metadata.py`), y Node.js siempre incluye estas constantes en la compilación final.
+V8 prefixes all postmortem constants with `v8dbg_`, and they allow inspection of objects on the heap as well as object properties and references. V8 generates those symbols with a script (`deps/v8/tools/gen-postmortem-metadata.py`), and Node.js always includes these constants in the final build.
 
 ### Símbolos de Depuración de Node.js
 
-Node.js prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node.js-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Esas constantes son declaradas en `src/node_postmortem_metadata.cc`, y la mayoría estaban estaban calculadas en el tiempo de la compilación.
+Node.js prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node.js-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Those constants are declared in `src/node_postmortem_metadata.cc`, and most of them are calculated at compile time.
 
 #### Calcular el offset de miembros de clase
 
-Las constantes Node.js que refieren al offset de miembros de clase de memoria son calculados en tiempo de compilación. Debido a eso, esos miembros de clase deben estar en un offset fijo desde el inicio de la clase. Eso no es un problema en la mayoría de los casos, pero también significa que esos miembros siempre deben venir después de cualquier miembro con plantilla en la definición de la clase.
+Node.js constants referring to the offset of class members in memory are calculated at compile time. Because of that, those class members must be at a fixed offset from the start of the class. That's not a problem in most cases, but it also means that those members should always come after any templated member on the class definition.
 
-Por ejemplo, si queremos añadir una constante con el offset para `ReqWrap::req_wrap_queue_`, debería ser definido después de `ReqWrap::req_`, ya que `sizeof(req_)` depende del tipo de T, lo que significa que la definición de la clase debería ser así:
+For example, if we want to add a constant with the offset for `ReqWrap::req_wrap_queue_`, it should be defined after `ReqWrap::req_`, because `sizeof(req_)` depends on the type of T, which means the class definition should be like this:
 
 ```c++
 plantilla <typename T>
@@ -49,4 +48,4 @@ There are also tests on `test/cctest/test_node_postmortem_metadata.cc` to make s
 
 * [llnode](https://github.com/nodejs/llnode): complemento LLDB
 * [`mdb_v8`](https://github.com/joyent/mdb_v8): complemento mdb
-* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): Grupo de trabajo post-mortem de Node.js
+* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): Node.js post-mortem working group

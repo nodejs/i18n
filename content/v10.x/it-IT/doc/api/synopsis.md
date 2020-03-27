@@ -1,20 +1,22 @@
 # Utilizzo
 
 <!--introduced_in=v0.10.0-->
+
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Si prega di consultare il documento [Opzioni di Riga di Comando](cli.html#cli_command_line_options) per informazioni sulle diverse opzioni e modalità per eseguire gli script con Node.js.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
 ## Esempio
+
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
-I comandi visualizzati in questo documento vengono mostrati iniziando con `$` o `>` per simulare il modo in cui apparirebbero in un terminal dell'utente. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
+Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
 
-Ci sono molti tutorial ed esempi che seguono questa convenzione:`$` o `>` per comandi eseguiti come utente normale, e `#` per comandi che dovrebbero essere eseguiti come amministratore.
+There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
 
-Le righe che non iniziano con i caratteri `$` o `>` di solito mostrano l'output del comando precedente.
+Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
 Prima di tutto, assicurati di aver scaricato e installato Node.js. Visualizza [questa guida](https://nodejs.org/en/download/package-manager/) per ulteriori informazioni sull'installazione.
 
@@ -41,11 +43,11 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Successivamente, creare un nuovo file sorgente nella cartella `projects` e chiamarlo `hello-world.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
-In Node.js è considerata buona prassi utilizzare i trattini (`-`) o trattini bassi (`_`) per separare più parole nei nomi dei file.
+In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
-Apri `hello-world.js` in qualsiasi editor di testo preferito e copia il contenuto seguente al suo interno:
+Open `hello-world.js` in any preferred text editor and paste in the following content:
 
 ```js
 const http = require('http');
@@ -70,7 +72,7 @@ Salva il file, ritorna alla finestra del terminal e inserisci il seguente comand
 $ node hello-world.js
 ```
 
-Un output come il seguente dovrebbe apparire nel terminal per indicare che il server Node.js è in esecuzione:
+An output like this should appear in the terminal to indicate Node.js server is running:
 
 ```console
 Server running at http://127.0.0.1:3000/

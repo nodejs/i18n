@@ -1,13 +1,13 @@
-@/ / NB(chrisdickinson): Jeśli przeniesiesz ten plik, pamiętaj aby zaktualizować tools/doc/html.js @/ / tak aby wskazywał jego nową lokalizacje.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
 * [O tej dokumentacji](documentation.html)
-* [Przykład użycia &](synopsis.html)
+* [Zastosowanie i przykłady użycia](synopsis.html)
 
 <div class="line"></div>
 
-* [Testowanie asercji](assert.html)
+* [Testy - asercje](assert.html)
 * [Moduł Async Hooks](async_hooks.html)
 * [Klasa Buffer](buffer.html)
 * [Dodatki C++](addons.html)

@@ -4,7 +4,7 @@
 
 > Estability: 2 - Estable
 
-El módulo `string_decoder` proporciona una API para decodificar objetos `Buffer` en strings de manera que se conserven los caracteres UTF-8 y UTF-16 codificados en varios bytes. Se puede acceder a él utilizando:
+The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. Se puede acceder a él utilizando:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -23,9 +23,9 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-Cuando se escribe una instancia `Buffer` en la instancia `StringDecoder`, se utiliza un búfer interno para garantizar que el string decodificado no contenga ningún carácter incompleto de varios bytes. Estos se mantienen en el búfer hasta la próxima llamada a `stringDecoder.write()` o hasta que `stringDecoder.end()` sea llamado.
+When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
 
-En el siguiente ejemplo, los tres bytes codificados en UTF-8 del símbolo del Euro Europeo (`€`) se escriben en tres operaciones separadas:
+In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -37,6 +37,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
 ## Clase: new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -46,20 +47,23 @@ added: v0.1.99
 Crea una nueva instancia de `StringDecoder` .
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
 
 * `buffer` {Buffer} Un `Buffer` que contiene los bytes a codificar.
 
-Devuelve cualquier entrada restante almacenada en el búfer interno como una string. Los bytes que representan caracteres incompletos de UTF-8 y UTF-16 serán reemplazados por caracteres de sustitución apropiados para la codificación de caracteres.
+Devuelve cualquier entrada restante almacenada en el búfer interno como una string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
 
-Si se proporciona el argumento `buffer`, se realiza una llamada final a `stringDecoder.write()` antes de devolver la entrada restante.
+If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement
@@ -68,4 +72,4 @@ changes:
 
 * `buffer` {Buffer} Un `Buffer` que contiene los bytes para decodificar.
 
-Devuelve una string decodificada, asegurando que cualquier carácter incompleto de varios bytes al final de `Buffer` se omita de la string devuelta y se almacene en un búfer interno para la siguiente llamada a `stringDecoder.write()` o `stringDecoder.end()`.
+Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the `Buffer` are omitted from the returned string and stored in an internal buffer for the next call to `stringDecoder.write()` or `stringDecoder.end()`.

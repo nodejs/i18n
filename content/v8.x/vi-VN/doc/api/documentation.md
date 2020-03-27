@@ -1,17 +1,18 @@
 # Giới thiệu về tài liệu
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module được tạo thành và những khái niệm bậc cao khác nhau (Module là một chức năng mà người lập trình tạo ra và có thể "tháo rời").
+The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
 
-Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá trị cấu hình thích hợp, các đối số truyền vào phương thức hay những đối số khác, tất cả sẽ được liệt kê dưới dạng danh sách bên dưới tiêu đề.
+Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
 ## Nhứng đóng góp của người dịch
 
-Nếu người dịch phát hiện ra lỗi trong tài liệu này, xin vui lòng vào phần [gửi yêu cầu](https://github.com/nodejs/node/issues/new) hoặc xem trong phần [hướng dẫn đóng góp ý kiến](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) để được hướng dẫn cụ thể cách gửi yêu cầu của mình.
+If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Mỗi tệp tin được tạo ra đều có đuôi là `.md` và nằm ở thư mục `doc/api/` được lưu trong phần mềm Source Tree của Node.js. Chương trình `tools/doc/generate.js` dùng để tạo tài liệu. Mẫu HTML lưu tại `doc/template.html`.
+Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
 ## Chỉ mục index ổn định
 
@@ -45,6 +46,7 @@ is a high priority, and will not be broken unless absolutely necessary.
 *Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
 ## JSON Output
+
 <!-- YAML
 added: v0.6.12
 -->
