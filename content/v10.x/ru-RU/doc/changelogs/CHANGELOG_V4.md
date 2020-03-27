@@ -1281,7 +1281,7 @@ Semver Patch:
 
 Semver Minor:
 
-* **buffer**: 
+* **буфер**: 
   * backport new buffer constructor APIs to v4.x (Сковорода Никита Андреевич) [#7562](https://github.com/nodejs/node/pull/7562)
   * backport --zero-fill-buffers cli option (James M Snell) [#5745](https://github.com/nodejs/node/pull/5745)
 * **build**: 
@@ -1297,7 +1297,7 @@ Semver Minor:
 
 Semver Patch:
 
-* **buffer**: 
+* **буфер**: 
   * ignore negative allocation lengths (Anna Henningsen) [#7562](https://github.com/nodejs/node/pull/7562)
 * **crypto**: 
   * update root certificates (Ben Noordhuis) [#7363](https://github.com/nodejs/node/pull/7363)
@@ -1582,7 +1582,7 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
   * All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **npm**: 
   * Upgrade npm to 2.15.8 (Rebecca Turner) [#7412](https://github.com/nodejs/node/pull/7412)
-* **stream**: 
+* **стрим**: 
   * Fix for a bug that became more prevalent with the stream changes that landed in v4.4.5. (Anna Henningsen) [#7160](https://github.com/nodejs/node/pull/7160)
 * **V8**: 
   * Fix for a bug in crankshaft that was causing crashes on arm64 (Myles Borins) [#7442](https://github.com/nodejs/node/pull/7442)
@@ -1702,7 +1702,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **buffer**: 
+* **буфер**: 
   * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
 * **contextify**: 
   * Context objects are now properly garbage collected, this solves a problem some individuals were experiencing with extreme memory growth (Ali Ijaz Sheikh) [#6871](https://github.com/nodejs/node/pull/6871)
@@ -2360,7 +2360,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer** 
+* **буфер** 
   * make byteLength work with Buffer correctly (Jackson Tian) 
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger** 
@@ -2495,7 +2495,7 @@ Maintenance update.
 
 ### Notable changes
 
-* **assert** 
+* **утвердить** 
   * accommodate ES6 classes that extend Error (Rich Trott) [#4166](https://github.com/nodejs/node/pull/4166)
 * **build** 
   * add "--partly-static" build options (Super Zheng) [#4152](https://github.com/nodejs/node/pull/4152)
@@ -3254,7 +3254,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **buffer**: 
+* **буфер**: 
   * Buffers are now created in JavaScript, rather than C++. This increases the speed of buffer creation (Trevor Norris) [#2866](https://github.com/nodejs/node/pull/2866).
   * `Buffer#slice()` now uses `Uint8Array#subarray()` internally, increasing `slice()` performance (Karl Skomski) [#2777](https://github.com/nodejs/node/pull/2777).
 * **fs**: 
