@@ -1,4 +1,4 @@
-# About this Documentation
+# Tästä dokumentaatiosta
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -7,19 +7,19 @@ Welcome to the official API reference documentation for Node.js!
 
 Node.js is a JavaScript runtime built on the [V8 JavaScript engine](https://v8.dev/).
 
-## Contributing
+## Auttaminen
 
 Report errors in this documentation in [the issue tracker](https://github.com/nodejs/node/issues/new). See [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit pull requests.
 
-## Stability Index
+## Vakausindeksi
 
 <!--type=misc-->
 
 Throughout the documentation are indications of a section's stability. Some APIs are so proven and so relied upon that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous.
 
-The stability indices are as follows:
+Vakausindeksit ovat:
 
-> Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
+> Vakaus: 0 - Ei enää käytössä. The feature may emit warnings. Backward compatibility is not guaranteed.
 
 <!-- separator -->
 
