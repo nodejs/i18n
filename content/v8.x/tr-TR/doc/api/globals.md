@@ -64,7 +64,7 @@ added: v0.0.1
 
 [`clearTimeout`] is described in the [timers](timers.html) section.
 
-## console
+## konsol
 
 <!-- YAML
 added: v0.1.100
@@ -96,7 +96,7 @@ In browsers, the top-level scope is the global scope. This means that within the
 
 This variable may appear to be global but is not. See [`module`].
 
-## process
+## işlem
 
 <!-- YAML
 added: v0.1.7
