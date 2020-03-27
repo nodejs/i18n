@@ -2093,7 +2093,7 @@ Fixes for the following CVEs are included in this release:
 * **Async hooks**
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] - [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Errors**
+* **Virheet**
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] - [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues:
     * `buffer`: [[`e79a61cf80`](https://github.com/nodejs/node/commit/e79a61cf80)] - [#16352](https://github.com/nodejs/node/pull/16352), [[`dbfe8c4ea2`](https://github.com/nodejs/node/commit/dbfe8c4ea2)] - [#13976](https://github.com/nodejs/node/pull/13976)
