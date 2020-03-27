@@ -105,13 +105,15 @@ In this case the entire API surface, including any experimental APIs, will be av
 
 ## N-API Version Matrix
 
-|       |    1    |    2     |    3     |    4     |
-|:-----:|:-------:|:--------:|:--------:|:--------:|
-| v6.x  |         |          | v6.14.2* |          |
-| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  |          |
-| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |
-| v10.x |         |          | v10.0.0  | v10.16.0 |
-| v11.x |         |          | v11.0.0  | v11.8.0  |
+|       |    1    |    2     |    3     |    4     |    5     |
+|:-----:|:-------:|:--------:|:--------:|:--------:|:--------:|
+| v6.x  |         |          | v6.14.2* |          |          |
+| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  |          |          |
+| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |          |
+| v10.x |         |          | v10.0.0  | v10.16.0 | v10.17.0 |
+| v11.x |         |          | v11.0.0  | v11.8.0  |          |
+| v12.x |         |          |          | v12.0.0  |          |
+| v13.x |         |          |          |          |          |
 
 \* Indicates that the N-API version was released as experimental
 
@@ -143,6 +145,7 @@ typedef enum {
   napi_queue_full,
   napi_closing,
   napi_bigint_expected,
+  napi_date_expected,
 } napi_status;
 ```
 
@@ -290,7 +293,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 ```
 
 - `[in] env`: The environment to use for API calls, or `NULL` if the thread-safe function is being torn down and `data` may need to be freed.
-- `[in] js_callback`: The JavaScript function to call, or `NULL` if the thread-safe function is being torn down and `data` may need to be freed.
+- `[in] js_callback`: The JavaScript function to call, or `NULL` if the thread-safe function is being torn down and `data` may need to be freed. It may also be `NULL` if the thread-safe function was created without `js_callback`.
 - `[in] context`: The optional data with which the thread-safe function was created.
 - `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
@@ -1237,6 +1240,29 @@ napi_status napi_create_buffer_copy(napi_env env,
 
 This API allocates a `node::Buffer` object and initializes it with data copied from the passed-in buffer. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
 
+#### napi_create_date
+
+<!-- YAML
+added: v10.17.0
+napiVersion: 4
+-->
+
+```C
+napi_status napi_create_date(napi_env env,
+                             double time,
+                             napi_value* result);
+```
+
+- `[in] env`: Среда, в которой вызывается API.
+- `[in] time`: ECMAScript time value in milliseconds since 01 January, 1970 UTC.
+- `[out] result`: A `napi_value` representing a JavaScript `Date`.
+
+При успешном выполнении API возвращает `napi_ok`.
+
+This API allocates a JavaScript `Date` object.
+
+JavaScript `Date` objects are described in [Section 20.3](https://tc39.github.io/ecma262/#sec-date-objects) of the ECMAScript Language Specification.
+
 #### napi_create_external
 
 <!-- YAML
@@ -1811,6 +1837,27 @@ napi_status napi_get_dataview_info(napi_env env,
 
 This API returns various properties of a `DataView`.
 
+#### napi_get_date_value
+
+<!-- YAML
+added: v10.17.0
+napiVersion: 4
+-->
+
+```C
+napi_status napi_get_date_value(napi_env env,
+                                napi_value value,
+                                double* result)
+```
+
+- `[in] env`: Среда, в которой вызывается API.
+- `[in] value`: `napi_value` representing a JavaScript `Date`.
+- `[out] result`: Time value as a `double` represented as milliseconds since midnight at the beginning of 01 January, 1970 UTC.
+
+При успешном выполнении API возвращает `napi_ok`. If a non-date `napi_value` is passed in it returns `napi_date_expected`.
+
+This API returns the C double primitive of time value for the given JavaScript `Date`.
+
 #### napi_get_value_bool
 
 <!-- YAML
@@ -1866,7 +1913,7 @@ napi_status napi_get_value_bigint_int64(napi_env env,
                                         bool* lossless);
 ```
 
-- `[in] env`: Среда, в которой вызывается API
+- `[in] env`: The environment that the API is invoked under
 - `[in] value`: `napi_value` representing JavaScript `BigInt`.
 - `[out] result`: C `int64_t` primitive equivalent of the given JavaScript `BigInt`.
 - `[out] lossless`: Indicates whether the `BigInt` value was converted losslessly.
@@ -2361,6 +2408,25 @@ napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 При успешном выполнении API возвращает `napi_ok`.
 
 This API checks if the `Object` passed in is a buffer.
+
+### napi_is_date
+
+<!-- YAML
+added: v10.17.0
+napiVersion: 4
+-->
+
+```C
+napi_status napi_is_date(napi_env env, napi_value value, bool* result)
+```
+
+- `[in] env`: Среда, в которой вызывается API.
+- `[in] value`: Значение JavaScript для проверки.
+- `[out] result`: Whether the given `napi_value` represents a JavaScript `Date` object.
+
+При успешном выполнении API возвращает `napi_ok`.
+
+This API checks if the `Object` passed in is a date.
 
 ### napi_is_error
 
@@ -3339,8 +3405,6 @@ Retrieves a native instance that was previously wrapped in the JavaScript object
 
 ### napi_add_finalizer
 
-> Стабильность: 1 - экспериментальный
-
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
@@ -3915,6 +3979,12 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 <!-- YAML
 added: v10.6.0
+napiVersion: 4
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/27791
+    description: Made `func` parameter optional with custom `call_js_cb`.
 -->
 
 ```C
@@ -3933,7 +4003,7 @@ napi_create_threadsafe_function(napi_env env,
 ```
 
 - `[in] env`: Среда, в которой вызывается API.
-- `[in] func`: The JavaScript function to call from another thread.
+- `[in] func`: An optional JavaScript function to call from another thread. It must be provided if `NULL` is passed to `call_js_cb`.
 - `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: A JavaScript string to provide an identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
 - `[in] max_queue_size`: Maximum size of the queue. `0` for no limit.
