@@ -76,7 +76,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archiwum](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
 
