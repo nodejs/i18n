@@ -1206,7 +1206,7 @@ In custom builds from non-release versions of the source tree, only the `name` p
 added: v0.5.9
 -->
 
-* `message` {Object}
+* `wiadomość` {Object}
 
 * `sendHandle` {Handle object}
 
@@ -1385,7 +1385,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+Na przykład:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
