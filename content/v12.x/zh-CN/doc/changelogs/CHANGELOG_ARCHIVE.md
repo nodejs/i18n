@@ -1,4 +1,4 @@
-# Node.js ChangeLog Archive
+# Node.js 更新日志归档
 
 <!--lint disable prohibited-strings-->
 <!--lint disable maximum-line-length-->
