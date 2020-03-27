@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -2400,7 +2400,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> Vakaus: 0 - Ei enää käytössä. Use [`response.writableEnded`][].
 
 * {boolean}
 
