@@ -347,7 +347,7 @@ console.timeEnd('100-elements');
 added: v0.1.104
 -->
 
-* `message` {any}
+* `wiadomość` {any}
 
 * `...args` {any}
 
