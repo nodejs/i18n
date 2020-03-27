@@ -167,7 +167,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* その他のバージョン 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -570,11 +570,11 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 * debugger: break on uncaught exception (Miroslav Bajtos)
 * child_process: emit 'disconnect' asynchronously (Ben Noordhuis)
 * dtrace: enable uv's probes if enabled (Timothy J Fontaine)
-* dtrace: unify dtrace and systemtap interfaces (Timothy J Fontaine)
-* buffer: New API for backing data store (Trevor Norris)
+* dtrace: dtraceとsystemtapインタフェースの統合(Timothy J Fontaine)
+* buffer: データストア保存用の新しいAPI(Trevor Norris)
 * buffer: return `this` in fill() for chainability (Brian White)
-* build: fix include order for building on windows (Timothy J Fontaine)
-* build: add android support (Linus Mårtensson)
+* build: Windowsでのビルドの際のincludeの順番修正(Timothy J Fontaine)
+* build: Androidサポートの追加(Linus Mårtensson)
 * readline: strip ctrl chars for prompt width calc (Krzysztof Chrapka)
 * tls: introduce TLSSocket based on tls_wrap binding (Fedor Indutny)
 * tls: add localAddress and localPort properties (Ben Noordhuis)
@@ -582,9 +582,9 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 * process: remove maxTickDepth (Trevor Norris)
 * timers: use uv_now instead of Date.now (Timothy J Fontaine)
 * util: Add debuglog, deprecate console lookalikes (isaacs)
-* module: use path.sep instead of a custom solution (Robert Kowalski)
-* http: don't escape request path, reject bad chars (Ben Noordhuis)
-* net: emit dns 'lookup' event before connect (Ben Noordhuis)
+* module: カスタムソリューションの代わりにpath.sepを使用(Robert Kowalski)
+* http: リクエストパスをエスケープしない、不適切な文字を拒否(Ben Noordhuis)
+* net: 接続の前にDNSのlookupイベントを発する(Ben Noordhuis)
 * dns: add getServers and setServers (Timothy J Fontaine)
 
 <a id="0.11.2"></a>
