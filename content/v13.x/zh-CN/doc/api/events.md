@@ -1,8 +1,8 @@
-# Events
+# 事件
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 <!--type=module-->
 
@@ -322,7 +322,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `...args` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
@@ -388,7 +388,7 @@ console.log(myEE.eventNames());
 added: v1.0.0
 -->
 
-* Returns: {integer}
+* 返回：{integer}
 
 Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
 
@@ -398,7 +398,7 @@ added: v3.2.0
 -->
 
 * `eventName` {string|symbol} The name of the event being listened for
-* Returns: {integer}
+* 返回：{integer}
 
 Returns the number of listeners listening to the event named `eventName`.
 
