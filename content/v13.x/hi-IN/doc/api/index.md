@@ -21,7 +21,7 @@
 * [कंसोल](console.html)
 * [क्रिप्टो](crypto.html)
 * [डीबगर](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [अस्वीकृत एपीआई](deprecations.html)
 * [DNS](dns.html)
 * [डोमेन](domain.html)
 * [ECMAScript मॉड्यूल](esm.html)
