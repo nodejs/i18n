@@ -1029,7 +1029,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
@@ -1284,7 +1284,7 @@ changes:
       when it emits `'finish'` or errors
 -->
 
-* `options` {Object} 
+* `opties` {Object} 
   * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} Whether to encode `string`s passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback) to `Buffer`s (with the encoding specified in the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) call) before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). Other types of data are not converted (i.e. `Buffer`s are not decoded into `string`s). Setting to false will prevent `string`s from being converted. **Default:** `true`.
   * `defaultEncoding` {string} The default encoding that is used when no encoding is specified as an argument to [`stream.write()`](#stream_writable_write_chunk_encoding_callback). **Standaard:** `'utf8'`.
@@ -1479,7 +1479,7 @@ changes:
       when it emits `'end'` or errors
 -->
 
-* `options` {Object} 
+* `opties` {Object} 
   * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Default:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
@@ -1677,7 +1677,7 @@ changes:
                  are supported now.
 -->
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
+* `opties` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
   * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
   * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
   * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
@@ -1806,7 +1806,7 @@ Care must be taken when using `Transform` streams in that data written to the st
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
+* `opties` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
