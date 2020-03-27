@@ -99,6 +99,6 @@ Exposes all internal error classes to be used by Node.js APIs.
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Returns: {string}
+* 返回：{string}
 
 Returns the formatted error message string for the given `key`.
