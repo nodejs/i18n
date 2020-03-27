@@ -749,8 +749,8 @@ On the client, the `Http2Stream` instance returned by `http2session.request()` m
 
 Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 
-* Un frame de `RST_STREAM` para el stream es recibido por el peer conectado.
-* El método de `http2stream.close()` es llamado.
+* An `RST_STREAM` frame for the stream is received by the connected peer, and pending data has been read.
+* The `http2stream.close()` method is called, and pending data has been read.
 * Los métodos de `http2stream.destroy()` o `http2session.destroy()` son llamados.
 
 When an `Http2Stream` instance is destroyed, an attempt will be made to send an `RST_STREAM` frame will be sent to the connected peer.
@@ -2490,7 +2490,7 @@ added: v8.4.0
 * `name` {string}
 * Devuelve: {string}
 
-Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido enviado al cliente. Note that the name is case insensitive.
+Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido enviado al cliente. Tenga en que el nombre no distingue entre mayúsculas y minúsculas.
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2736,15 +2736,24 @@ Sends a status `100 Continue` to the client, indicating that the request body sh
 
 <!-- YAML
 added: v8.4.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
 -->
 
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Devuelve: {http2.Http2ServerResponse}
 
 Envía una cabecera de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. El último argumento, `headers`, son las cabeceras de respuesta.
 
-For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
+Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
+
+For compatibility with \[HTTP/1\]\[\], a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
 const body = 'hello world';
