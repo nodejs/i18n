@@ -1,4 +1,4 @@
-# Domain
+# Domein
 <!-- YAML
 changes:
   - version: v8.8.0
@@ -225,7 +225,7 @@ serverDomain.run(() => {
 
 ## `domain.create()`
 
-* Returns: {Domain}
+* Retourneert: {Domain}
 
 ## Class: `Domain`
 
