@@ -1462,7 +1462,7 @@ changes:
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
-For example:
+Por exemplo:
 
 ```js
 const { Duplex } = require('stream');
@@ -1590,7 +1590,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-For example:
+Por exemplo:
 
 ```js
 const { Transform } = require('stream');
