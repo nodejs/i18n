@@ -1937,7 +1937,7 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 https://github.com/nodejs/node/commit/d5a189acef14a851287ee555f7a39431fe276e1c
 
 * Reparación de colisión del hash de V8 (Breaks MIPS) (Bert Belder, Erik Corry)
-* Upgrade V8 to 3.6.6.15
+* Actualizar V8 a 3.6.6.15
 * Actualizar npm a 1.1.0-beta-10 (isaacs)
 * many doc updates (Ben Noordhuis, Jeremy Martin, koichik, Dave Irvine, Seong-Rak Choi, Shannen, Adam Malcontenti-Wilson, koichik)
 
@@ -2758,7 +2758,7 @@ https://github.com/nodejs/node/commit/b622bc6305e3c675e0edfcdbaa387d849ad0bba0
 
 <a id="0.3.4"></a>
 
-## 2011.01.08, Version 0.3.4 (unstable)
+## 2011.01.08, Versión 0.3.4 (inestable)
 
 https://github.com/nodejs/node/commit/73f53e12e4a5b9ef7dbb4792bd5f8ad403094441
 
