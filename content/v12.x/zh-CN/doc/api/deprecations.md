@@ -1,4 +1,4 @@
-# Deprecated APIs
+# 已弃用的 API
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
