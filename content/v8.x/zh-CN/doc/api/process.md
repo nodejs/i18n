@@ -472,7 +472,7 @@ added: v6.1.0
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
 
-* Returns: {Object}
+* 返回：{Object}
     
     * `user` {integer}
     * `system` {integer}
@@ -927,7 +927,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Example:
+Note that care must be taken when dropping privileges. 例如：
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -955,7 +955,7 @@ This method will throw an error if the target `pid` does not exist. As a special
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-For example:
+例如：
 
 ```js
 process.on('SIGHUP', () => {
@@ -1188,7 +1188,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` 针对自 6.9.0 开始的 6.x LTS 版本。
     * `'Carbon'` 针对自 8.9.1 开始的 8.x LTS 版本。
 
-For example:
+例如：
 
 ```js
 {
@@ -1332,7 +1332,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-For example:
+例如：
 
 ```js
 process.stdin.setEncoding('utf8');
