@@ -1,4 +1,4 @@
-# About this Documentation
+# Giới thiệu về tài liệu
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -7,11 +7,11 @@ Welcome to the official API reference documentation for Node.js!
 
 Node.js is a JavaScript runtime built on the [V8 JavaScript engine](https://v8.dev/).
 
-## Contributing
+## Nhứng đóng góp của người dịch
 
 Report errors in this documentation in [the issue tracker](https://github.com/nodejs/node/issues/new). See [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit pull requests.
 
-## Stability Index
+## Chỉ mục index ổn định
 
 <!--type=misc-->
 
