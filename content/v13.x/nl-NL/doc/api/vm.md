@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 <!--name=vm-->
 
@@ -75,7 +75,7 @@ Creating a new `vm.Script` object compiles `code` but does not run it. The compi
 added: v10.6.0
 -->
 
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Creates a code cache that can be used with the `Script` constructor's `cachedData` option. Returns a `Buffer`. This method may be called at any time and any number of times.
 
@@ -220,7 +220,7 @@ console.log(globalVar);
 added: v13.0.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -414,7 +414,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -425,7 +425,7 @@ The `vm.SourceTextModule` class provides the [Source Text Module Record](https:/
 ### Constructor: `new vm.SourceTextModule(code[, options])`
 
 * `code` {string} JavaScript Module code to parse
-* `options`
+* `opties`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. The `code` must be the same as the module from which this `cachedData` was created.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
@@ -478,7 +478,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v13.7.0
 -->
 
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Creates a code cache that can be used with the `SourceTextModule` constructor's `cachedData` option. Returns a `Buffer`. This method may be called any number of times before the module has been evaluated.
 
@@ -498,7 +498,7 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 added: v13.0.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -525,7 +525,7 @@ added: v13.0.0
 
 * `exportNames` {string[]} Array of names that will be exported from the module.
 * `evaluateCallback` {Function} Called when the module is evaluated.
-* `options`
+* `opties`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
 
@@ -630,7 +630,7 @@ added: v0.11.7
 -->
 
 * `object` {Object}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if the given `oject` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
@@ -783,7 +783,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Bijvoorbeeld:
 
 ```js
 'use strict';
