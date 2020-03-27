@@ -202,7 +202,7 @@
 
 * **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **events**
+* **gebeurtenissen**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
