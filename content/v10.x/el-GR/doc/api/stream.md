@@ -31,7 +31,7 @@ There are four fundamental stream types within Node.js:
 * [`Duplex`][] - streams that are both `Readable` and `Writable` (for example, [`net.Socket`][]).
 * [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example, [`zlib.createDeflate()`][]).
 
-Additionally, this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
+Additionally, this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback), [finished](#stream_stream_finished_stream_callback) and [Readable.from](#readable.from).
 
 ### Object Mode
 
@@ -791,6 +791,8 @@ The optional `size` argument specifies a specific number of bytes to read. If `s
 
 If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
 
+The `size` argument must be less than or equal to 1 GB.
+
 The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
 
 ```js
@@ -820,6 +822,16 @@ added: v0.8.0
 * {boolean}
 
 Is `true` if it is safe to call [`readable.read()`][].
+
+##### readable.readableFlowing
+
+<!-- YAML
+added: v9.4.0
+-->
+
+* {boolean}
+
+This property reflects the current state of a `Readable` stream as described in the [Stream Three States](#stream_three_states) section.
 
 ##### readable.readableHighWaterMark
 
@@ -853,7 +865,7 @@ changes:
                  listening.
 -->
 
-* Επιστρέφει: {this}
+* Returns: {this}
 
 The `readable.resume()` method causes an explicitly paused `Readable` stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
@@ -900,7 +912,7 @@ added: v0.9.4
 -->
 
 * `destination` {stream.Writable} Optional specific stream to unpipe
-* Επιστρέφει: {this}
+* Returns: {this}
 
 The `readable.unpipe()` method detaches a `Writable` stream previously attached using the [`stream.pipe()`][] method.
 
@@ -987,7 +999,7 @@ added: v0.9.4
 -->
 
 * `stream` {Stream} An "old style" readable stream
-* Επιστρέφει: {this}
+* Returns: {this}
 
 Prior to Node.js 0.10, streams did not implement the entire `stream` module API as it is currently defined. (See [Compatibility](#stream_compatibility_with_older_node_js_versions) for more information.)
 
@@ -1010,9 +1022,14 @@ myReader.on('readable', () => {
 
 <!-- YAML
 added: v10.0.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26989
+    description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Σταθερότητα: 2 - Σταθερό
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
@@ -1179,6 +1196,28 @@ async function run() {
 run().catch(console.error);
 ```
 
+### Readable.from(iterable, [options])
+
+* `iterable` {Iterable} Object implementing the `Symbol.asyncIterator` or `Symbol.iterator` iterable protocol.
+* `options` {Object} Options provided to `new stream.Readable([options])`. By default, `Readable.from()` will set `options.objectMode` to `true`, unless this is explicitly opted out by setting `options.objectMode` to `false`.
+
+A utility method for creating Readable Streams out of iterators.
+
+```js
+const { Readable } = require('stream');
+
+async function * generate() {
+  yield 'hello';
+  yield 'streams';
+}
+
+const readable = Readable.from(generate());
+
+readable.on('data', (chunk) => {
+  console.log(chunk);
+});
+```
+
 ## API for Stream Implementers
 
 <!--type=misc-->
@@ -1200,12 +1239,12 @@ class MyWritable extends Writable {
 
 The new stream class must then implement one or more specific methods, depending on the type of stream being created, as detailed in the chart below:
 
-| Use-case                                      | Class         | Method(s) to implement                                                                                     |
-| --------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------- |
-| Reading only                                  | [`Readable`]  | `[_read][stream-_read]`                                                                                    |
-| Writing only                                  | [`Writable`]  | `[_write][stream-_write]`, `[_writev][stream-_writev]`, `[_final][stream-_final]`                          |
-| Reading and writing                           | [`Duplex`]    | `[_read][stream-_read]`, `[_write][stream-_write]`, `[_writev][stream-_writev]`, `[_final][stream-_final]` |
-| Operate on written data, then read the result | [`Transform`] | `[_transform][stream-_transform]`, `[_flush][stream-_flush]`, `[_final][stream-_final]`                    |
+| Use-case                                      | Class         | Method(s) to implement                                                                                                                                                                                                                                                       |
+| --------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Reading only                                  | [`Readable`]  | `<a href="#stream_readable_read_size_1">_read</a>`                                                                                                                                                                                                                     |
+| Writing only                                  | [`Writable`]  | `<a href="#stream_writable_write_chunk_encoding_callback_1">_write</a>`, `<a href="#stream_writable_writev_chunks_callback">_writev</a>`, `<a href="#stream_writable_final_callback">_final</a>`                                                           |
+| Reading and writing                           | [`Duplex`]    | `<a href="#stream_readable_read_size_1">_read</a>`, `<a href="#stream_writable_write_chunk_encoding_callback_1">_write</a>`, `<a href="#stream_writable_writev_chunks_callback">_writev</a>`, `<a href="#stream_writable_final_callback">_final</a>` |
+| Operate on written data, then read the result | [`Transform`] | `<a href="#stream_transform_transform_chunk_encoding_callback">_transform</a>`, `<a href="#stream_transform_flush_callback">_flush</a>`, `<a href="#stream_writable_final_callback">_final</a>`                                                            |
 
 The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). Doing so may lead to adverse side effects in application code consuming the stream.
 
@@ -1867,8 +1906,87 @@ The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] 
 
 `Readable` stream interface was simpler, but also less powerful and less useful.
 
-* Rather than waiting for calls to the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
-* The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
+<!--type=misc-->
+
+### Streams Compatibility with Async Generators and Async Iterators
+
+With the support of async generators and iterators in JavaScript, async generators are effectively a first-class language-level stream construct at this point.
+
+Some common interop cases of using Node.js streams with async generators and async iterators are provided below.
+
+#### Consuming Readable Streams with Async Iterators
+
+```js
+(async function() {
+  for await (const chunk of readable) {
+    console.log(chunk);
+  }
+})();
+```
+
+#### Creating Readable Streams with Async Generators
+
+We can construct a Node.js Readable Stream from an asynchronous generator using the `Readable.from` utility method:
+
+```js
+const { Readable } = require('stream');
+
+async function * generate() {
+  yield 'a';
+  yield 'b';
+  yield 'c';
+}
+
+const readable = Readable.from(generate());
+
+readable.on('data', (chunk) => {
+  console.log(chunk);
+});
+```
+
+#### Piping to Writable Streams from Async Iterators
+
+In the scenario of writing to a writeable stream from an async iterator, it is important to ensure the correct handling of backpressure and errors.
+
+```js
+const { once } = require('events');
+
+const writeable = fs.createWriteStream('./file');
+
+(async function() {
+  for await (const chunk of iterator) {
+    // Handle backpressure on write
+    if (!writeable.write(value))
+      await once(writeable, 'drain');
+  }
+  writeable.end();
+  // Ensure completion without errors
+  await once(writeable, 'finish');
+})();
+```
+
+In the above, errors on the write stream would be caught and thrown by the two `once` listeners, since `once` will also handle `'error'` events.
+
+Alternatively the readable stream could be wrapped with `Readable.from` and then piped via `.pipe`:
+
+```js
+const { once } = require('events');
+
+const writeable = fs.createWriteStream('./file');
+
+(async function() {
+  const readable = Readable.from(iterator);
+  readable.pipe(writeable);
+  // Ensure completion without errors
+  await once(writeable, 'finish');
+})();
+```
+
+<!--type=misc-->
+
+### Compatibility with Older Node.js Versions
+
+<!--type=misc-->
 
 In Node.js 0.10, the [`Readable`][] class was added. For backward compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
