@@ -924,7 +924,7 @@ changes:
 
 Duplex streams are streams that implement both the [Readable](#stream_class_stream_readable) and [Writable](#stream_class_stream_writable) interfaces.
 
-Examples of Duplex streams include:
+Ejemplos de un stream Duplex incluyen:
 
 * [sockets TCP](net.html#net_class_net_socket)
 * [streams zlib](zlib.html)
@@ -940,7 +940,7 @@ added: v0.9.4
 
 Transform streams are [Duplex](#stream_class_stream_duplex) streams where the output is in some way related to the input. Like all [Duplex](#stream_class_stream_duplex) streams, Transform streams implement both the [Readable](#stream_class_stream_readable) and [Writable](#stream_class_stream_writable) interfaces.
 
-Examples of Transform streams include:
+Ejemplos de streams Transform incluyen:
 
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
@@ -1475,7 +1475,7 @@ class MyDuplex extends Duplex {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Duplex } = require('stream');
@@ -1489,7 +1489,7 @@ function MyDuplex(options) {
 util.inherits(MyDuplex, Duplex);
 ```
 
-Or, using the Simplified Constructor approach:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Duplex } = require('stream');
@@ -1603,7 +1603,7 @@ class MyTransform extends Transform {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Transform } = require('stream');
@@ -1617,7 +1617,7 @@ function MyTransform(options) {
 util.inherits(MyTransform, Transform);
 ```
 
-Or, using the Simplified Constructor approach:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Transform } = require('stream');
@@ -1659,9 +1659,9 @@ All Transform stream implementations must provide a `_transform()` method to acc
 
 The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
 
-It is possible that no output is generated from any given chunk of input data.
+Es posible que ninguna salida sea generada de cualquier fragmento de datos de entrada.
 
-The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. En otras palabras los siguientes son equivalentes:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1699,7 +1699,7 @@ While most applications will continue to function normally, this introduces an e
 * El método [`stream.resume()`](#stream_readable_resume) nunca es llamado.
 * El stream no hace pipe a ningún destino escribible.
 
-For example, consider the following code:
+Por ejemplo, considera el siguiente código:
 
 ```js
 // ¡ADVERTENCIA!  ¡ROTO!
@@ -1744,7 +1744,7 @@ While most applications will almost never need to do this, there are situations 
 
 ### `readable.push('')`
 
-Use of `readable.push('')` is not recommended.
+No se recomienda el uso de `readable.push('')`.
 
 Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
 
@@ -1754,4 +1754,4 @@ The use of `readable.setEncoding()` will change the behavior of how the `highWat
 
 Typically, the size of the current buffer is measured against the `highWaterMark` in *bytes*. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in *characters*.
 
-This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
+Esto no es un problema en casos comunes con `latin1` o `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
