@@ -921,7 +921,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **cluster**
+* **grono**
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps**
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
@@ -932,7 +932,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
 * **perf_hooks**
   * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
-* **stream**
+* **strumień**
   * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
 
 ### Commits
