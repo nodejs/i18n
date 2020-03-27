@@ -269,7 +269,7 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or Object.
-* `options` {Object} 
+* `옵션` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
