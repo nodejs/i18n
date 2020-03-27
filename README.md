@@ -38,6 +38,7 @@ Help us get the documentation translated into your native language and reach mor
 - [Turkish](https://crowdin.com/project/nodejs/tr)
 - [Ukrainian](https://crowdin.com/project/nodejs/uk)
 - [Vietnamese](https://crowdin.com/project/nodejs/vi)
+- [Serbian (Latin)](https://crowdin.com/project/nodejs/sr-CS)
 
 ### CrowdIn Glossary
 
