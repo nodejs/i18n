@@ -1,8 +1,8 @@
-# Events
+# Gebeurtenissen
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 <!--type=module-->
 
@@ -258,7 +258,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`emitter.listenerCount()`][].
 
 * `emitter` {EventEmitter} The emitter to query
 * `eventName` {string|symbol} The event name
@@ -322,7 +322,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `...args` {any}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
@@ -388,7 +388,7 @@ console.log(myEE.eventNames());
 added: v1.0.0
 -->
 
-* Returns: {integer}
+* Retourneert: {integer}
 
 Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
 
@@ -398,7 +398,7 @@ added: v3.2.0
 -->
 
 * `eventName` {string|symbol} The name of the event being listened for
-* Returns: {integer}
+* Retourneert: {integer}
 
 Returns the number of listeners listening to the event named `eventName`.
 
