@@ -1,10 +1,10 @@
-# Global Objects
+# Object Globali
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Questi object sono disponibili in tutti i moduli. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,7 +12,7 @@ These objects are available in all modules. The following variables may appear t
 * [`module`][]
 * [`require()`][]
 
-The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Gli object qui elencati sono specifici a Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
 
@@ -24,7 +24,7 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Utilizzato per gestire i dati binari. Visualizza la [sezione buffer](buffer.html).
 
 ## \_\_dirname
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] is described in the [timers](timers.html) section.
+[`clearImmediate`] è descritta nella sezione [timers](timers.html).
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] is described in the [timers](timers.html) section.
+[`clearInterval`] è descritto nella sezione [timers](timers.html).
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] is described in the [timers](timers.html) section.
+[`clearTimeout`] è descritto nella sezione [timers](timers.html).
 
 ## console
 
@@ -74,13 +74,13 @@ added: v0.1.100
 
 * {Object}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Utilizzato per la stampa su stdout e stderr. Visualizza la sezione [`console`][].
 
-## exports
+## export
 
 This variable may appear to be global but is not. See [`exports`].
 
-## global
+## globale
 
 <!-- YAML
 added: v0.1.27
@@ -88,9 +88,9 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Object} Il namespace object globale.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+Nei browser, l'ambito principale è l'ambito globale. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
@@ -106,7 +106,7 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+L'object del processo. Visualizza la sezione [object del `processo`][].
 
 ## require()
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] is described in the [timers](timers.html) section.
+[`setImmediate`] è descritto nella sezione [timers](timers.html).
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] is described in the [timers](timers.html) section.
+[`setInterval`] è descritto nella sezione [timers](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,4 +140,4 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] is described in the [timers](timers.html) section.
+[`setTimeout`] è descritto nella sezione [timers](timers.html).
