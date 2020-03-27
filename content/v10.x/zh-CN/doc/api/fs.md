@@ -3101,7 +3101,7 @@ changes:
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **默认值：** `false`。
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **默认值:**`‘utf8'`。
 * `listener` {Function|undefined} **默认值：** `undefined` 
   * `eventType` {string}
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
