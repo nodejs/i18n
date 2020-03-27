@@ -1,4 +1,4 @@
-# C++ Addons
+# إضافات C++
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -9,7 +9,7 @@ There are three options for implementing Addons: N-API, nan, or direct use of in
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: مكتبة C ++ التي يستخدمها Node.js حالياً لتنفيذ JavaScript. يوفر V8 آليات لإنشاء الكائنات ووظائف الاستدعاء والمزيد. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
@@ -27,7 +27,7 @@ This "Hello world" example is a simple Addon, written in C++, that is the equiva
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+أولاً، قم بإنشاء ملف `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -306,7 +306,7 @@ The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) 
 
 ## N-API
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -348,7 +348,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in [C/C++ Addons with N-API](n-api.html).
 
-## Addon examples
+## أمثلة على الإضافة
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
@@ -452,7 +452,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### معاودة الاتصال
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
@@ -504,7 +504,7 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 });
 ```
 
