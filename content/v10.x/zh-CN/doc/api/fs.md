@@ -4212,7 +4212,7 @@ It is unsafe to use `fsPromises.writeFile()` multiple times on the same file wit
 
 ## FS Constants
 
-The following constants are exported by `fs.constants`.
+`fs.constants` 会导出如下常量。
 
 Not every constant will be available on every operating system.
 
