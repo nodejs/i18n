@@ -1949,7 +1949,7 @@ The `transform._transform()` method is prefixed with an underscore because it is
 
 The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
 
-## Additional Notes<!--type=misc-->### Streams Compatibility with Async Generators and Async Iterators
+## ملاحظات إضافية<!--type=misc-->### Streams Compatibility with Async Generators and Async Iterators
 
 With the support of async generators and iterators in JavaScript, async generators are effectively a first-class language-level stream construct at this point.
 
