@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
+The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. On peut y accéder en utilisant :
 
 ```js
 const repl = require('repl');
