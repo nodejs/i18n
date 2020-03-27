@@ -14,7 +14,7 @@ changes:
 
 **La versione del modulo punycode in bundle in Node.js è deprecata**. In una futura versione principale di Node.js questo modulo verrà rimosso. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
-Il modulo `punycode` è una versione in bundle del modulo [Punycode.js](https://github.com/bestiejs/punycode.js). It can be accessed using:
+Il modulo `punycode` è una versione in bundle del modulo [Punycode.js](https://github.com/bestiejs/punycode.js). Ci si può accedere utilizzando:
 
 ```js
 const punycode = require('punycode');
