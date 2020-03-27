@@ -74,7 +74,7 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
 added: v0.1.25
 -->
 
-* `obj` {Object} The object to serialize into a URL query string
+* `obj` {Object} L'object da serializzare in una stringa di query URL
 
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 
