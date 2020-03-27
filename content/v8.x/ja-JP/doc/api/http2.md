@@ -13,7 +13,7 @@ changes:
 
 > 安定性: 2 - ステーブル
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. 以下のように利用できます。
 
 ```js
 const http2 = require('http2');
