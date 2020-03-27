@@ -6,7 +6,7 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+O módulo `fs` fornece uma API para interagir com o sistema de arquivos, através de uma modelagem bem próxima das funções POSIX.
 
 Para utilizar este módulo:
 
@@ -16,7 +16,7 @@ const fs = require('fs');
 
 Todas as operações de sistema de arquivos têm formas síncronas e assíncronas.
 
-A forma assíncrona sempre leva uma função de conclusão (frequentemente chamado "callback") como seu último argumento. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+A forma assíncrona sempre leva uma função de conclusão (frequentemente chamado "callback") como seu último argumento. Os argumentos passados para função de conclusão dependem do método, mas o primeiro argumento é sempre reservado para uma exceção. Se a operação foi concluída com êxito, então, o primeiro argumento será `null` ou `undefined`.
 
 ```js
 const fs = require('fs');
@@ -27,7 +27,7 @@ fs.unlink('/tmp/hello', (err) => {
 });
 ```
 
-Exceptions that occur using synchronous operations are thrown immediately and may be handled using `try`/`catch`, or may be allowed to bubble up.
+Exceções que ocorrem usando operações síncronas são lançadas imediatamente e podem ser manipuladas usando `try`/`catch`, ou podem propagar para escopos superiores.
 
 ```js
 const fs = require('fs');
@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Para ordenar corretamente as operações, mova a chamada `fs.stat()` para a função de conclusão da operação `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. As versões síncronas bloquearão todo o processo até que se completem — travando todas as conexões.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Embora não seja recomendado, a maioria dos funções de sistema de arquivos permitem que o argumento da função de conclusão (callback) seja omitido, neste caso uma função de conclusão padrão é usada para relançar os erros. Para obter um rastreamento para a chamada original, defina a variável de ambiente `NODE_DEBUG`:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omitir a função de conclusão em funções assíncronas de sistema de arquivos é obsoleto e pode resultar em um erro que será lançado no futuro.
 
 ```txt
 $ cat script.js
@@ -88,9 +88,9 @@ Error: EISDIR: operação ilegal em um diretório, leitura
 
 ## Caminho do arquivo
 
-Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
+Muitas operações de `fs` aceitam caminhos que podem ser especificados como uma string, um [`Buffer`][], ou objeto [`URL`][], usando o protocolo `file:`.
 
-String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
+Os caminhos de formulário de string são interpretados como sequências de caracteres UTF-8 que identificam o nome do arquivo absoluto ou relativo. Caminhos relativos serão resolvidos em relação ao diretório de trabalho atual especificado pelo `process.cwd()`.
 
 Exemplo usando um caminho absoluto em POSIX:
 
@@ -116,7 +116,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 });
 ```
 
-Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
+Caminhos especificados usando um [] [`Buffer`] são úteis principalmente em certos sistemas operacionais POSIX que tratam de caminhos de arquivo como sequências de bytes opacos. Em tais sistemas, é possível obter um caminho de arquivo único para conter sequências de sub que usam várias codificações de caracteres. Como com caminhos de string, `Buffer` caminhos podem ser relativos ou absolutos:
 
 Exemplo usando um caminho absoluto em POSIX:
 
@@ -129,15 +129,15 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-On Windows, Node.js follows the concept of per-drive working directory. Esse comportamento pode ser observado quando usamos um caminho sem colocar uma /. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
+On Windows, Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. Por exemplo `fs.readdirSync('c: \\')` pode potencialmente retornar um resultado diferente do que `fs.readdirSync('c:')`. Para mais informações, veja [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ### Suporte à objetos URL
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> Para a maioria das funções do módulo 
 
-`fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
+`fs` o `path` ou `filename` pode ser passado um objeto do tipo WHATWG [`URL`][]. Apenas objetos [`URL`][] usando o protocolo `file:` são suportados.
 
 ```js
 const fs = require('fs');
@@ -146,11 +146,11 @@ const fileUrl = new URL('file://tmp/hello');
 fs.readFileSync(fileUrl);
 ```
 
-`file:` URLs are always absolute paths.
+`file:` URLs são sempre caminhos absolutos.
 
 Usar objetos WHATWG [`URL`][] pode introduzir comportamentos específicos de plataforma.
 
-On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
+No Windows, `file:` URLs com um nome de host são convertidas em caminhos UNC, enquanto `file:` URLs com letras de drive são convertidas em caminhos absolutos locais. `file:` URLs sem um nome de host, nem uma letra de drive resultarão em erro:
 
 ```js
 // On Windows :
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Estabilidade: 2 - Estável
+> Estabilidade: 2 - estável
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
