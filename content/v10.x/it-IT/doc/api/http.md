@@ -76,7 +76,7 @@ http.get({
 added: v0.3.4
 -->
 
-* `options` {Object} Set of configurable options to set on the agent. Can have the following fields:
+* `options` {Object} Set of configurable options to set on the agent. Può avere i seguenti campi:
   
   * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. Not to be confused with the `keep-alive` value of the `Connection` header. The `Connection: keep-alive` header is always sent when using an agent except when the `Connection` header is explicitly specified or when the `keepAlive` and `maxSockets` options are respectively set to `false` and `Infinity`, in which case `Connection: close` will be used. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
@@ -101,19 +101,19 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
+* `options` {Object} Opzioni contenenti i dettagli di connessione. Check [`net.createConnection()`][] for the format of the options
 
-* `callback` {Function} Callback function that receives the created socket
+* `callback` {Function} Funzione callback che riceve il socket creato
 
 * Restituisce: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Produce un socket/stream da utilizzare per le richieste HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+Di default, questa funzione è la stessa di [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
 
 A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
 
-`callback` has a signature of `(err, stream)`.
+`callback` ha una firma di `(err, stream)`.
 
 ### agent.keepSocketAlive(socket)<!-- YAML
 added: v8.1.0
@@ -121,7 +121,7 @@ added: v8.1.0
 
 * `socket` {net.Socket}
 
-Called when `socket` is detached from a request and could be persisted by the `Agent`. Default behavior is to:
+Called when `socket` is detached from a request and could be persisted by the `Agent`. Il comportamento predefinito è:
 
 ```js
 socket.setKeepAlive(true, this.keepAliveMsecs);
@@ -129,7 +129,7 @@ socket.unref();
 return true;
 ```
 
-This method can be overridden by a particular `Agent` subclass. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
 
 ### agent.reuseSocket(socket, request)<!-- YAML
 added: v8.1.0
@@ -139,19 +139,19 @@ added: v8.1.0
 
 * `request` {http.ClientRequest}
 
-Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Default behavior is to:
+Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Il comportamento predefinito è:
 
 ```js
 socket.ref();
 ```
 
-This method can be overridden by a particular `Agent` subclass.
+Questo metodo può essere sovrascritto da una particolare sottoclasse di `Agent`.
 
 ### agent.destroy()<!-- YAML
 added: v0.11.4
 -->Destroy any sockets that are currently in use by the agent.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Solitamente non è necessario farlo. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
 
 ### agent.freeSockets<!-- YAML
 added: v0.11.4
@@ -159,7 +159,7 @@ added: v0.11.4
 
 * {Object}
 
-An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Non modificare.
 
 ### agent.getName(options)
 
@@ -182,7 +182,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Di default è impostato a 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
 
 ### agent.maxSockets<!-- YAML
 added: v0.3.6
@@ -198,7 +198,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+An object which contains queues of requests that have not yet been assigned to sockets. Non modificare.
 
 ### agent.sockets
 
@@ -208,7 +208,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+An object which contains arrays of sockets currently in use by the agent. Non modificare.
 
 ## Class: http.ClientRequest<!-- YAML
 added: v0.1.17
@@ -216,11 +216,11 @@ added: v0.1.17
 
 `http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
 
-To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Per ottenere la risposta, aggiungi un listener per [`'response'`][] all'object richiesta. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
 
 During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Fino a quando i dati non vengono consumati, l'evento `'end'` non viene attivato. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
 
 Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
@@ -242,7 +242,7 @@ added: v0.7.0
 
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emesso ogni volta che un server risponde a una richiesta con un metodo `CONNECT`. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
 
 Una coppia di client e server che dimostra come eseguire il listening dell'evento `'connect'`:
 
@@ -335,7 +335,7 @@ added: v0.1.0
 
 * `response` {http.IncomingMessage}
 
-Emitted when a response is received to this request. This event is emitted only once.
+Emesso quando viene ricevuta una risposta a questa richiesta. This event is emitted only once.
 
 ### Event: 'socket'<!-- YAML
 added: v0.5.3
@@ -343,7 +343,7 @@ added: v0.5.3
 
 * `socket` {net.Socket}
 
-Emitted after a socket is assigned to this request.
+Emesso in seguito all'assegnazione di un socket a questa richiesta.
 
 ### Event: 'timeout'<!-- YAML
 added: v0.7.8
@@ -361,7 +361,7 @@ added: v0.1.94
 
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with an upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Emesso ogni volta che un server risponde ad una richiesta con un aggiornamento. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
 
 Una coppia di client e server che dimostra come eseguire il listening dell'evento `'upgrade'`.
 
@@ -436,7 +436,7 @@ changes:
 * `callback` {Function}
 * Restituisce: {this}
 
-Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Termina l'invio della richiesta. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
 If `data` is specified, it is equivalent to calling [`request.write(data, encoding)`][] followed by `request.end(callback)`.
 
@@ -466,7 +466,7 @@ added: v1.6.0
 
 * Returns: {any}
 
-Legge un'intestazione sulla richiesta. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Legge un'intestazione sulla richiesta. Notare che il nome è case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
 
 ```js
 request.setHeader('content-type', 'text/html');
@@ -515,7 +515,7 @@ Imposta un singolo valore di intestazione per l'object delle intestazioni. If th
 request.setHeader('Content-Type', 'application/json');
 ```
 
-or
+o
 
 ```js
 request.setHeader('Cookie', ['type=ninja', 'language=javascript']);
@@ -588,13 +588,13 @@ added: v0.1.29
 * `callback` {Function}
 * Restituisce: {boolean}
 
-Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Invia un pezzo del corpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+L'argomento `encoding` è facoltativo e si applica esclusivamente quando il `chunk` è una stringa. Il valore predefinito è `'utf8'`.
 
 The `callback` argument is optional and will be called when this chunk of data is flushed, but only if the chunk is non-empty.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. `'drain'` verrà emesso quando il buffer è di nuovo libero.
 
 When `write` function is called with empty string or buffer, it does nothing and waits for more input.
 
@@ -612,7 +612,7 @@ added: v0.3.0
 
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a `100 Continue` as appropriate.
+Emesso ogni volta che viene ricevuta una richiesta con un HTTP `Expect: 100-continue`. If this event is not listened for, the server will automatically respond with a `100 Continue` as appropriate.
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
@@ -649,11 +649,11 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-If a client connection emits an `'error'` event, it will be forwarded here. Listener of this event is responsible for closing/destroying the underlying socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Se una connessione client emette un evento `'error'`, questo verrà inoltrato qui. Listener of this event is responsible for closing/destroying the underlying socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
 
 Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
 
-`socket` is the [`net.Socket`][] object that the error originated from.
+`socket` è il [`net.Socket`][] object da cui ha origine l'errore.
 
 ```js
 const http = require('http');
@@ -684,11 +684,11 @@ added: v0.7.0
 
 * `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in the [`'request'`][] event
 
-* `socket` {net.Socket} Network socket between the server and client
+* `socket` {net.Socket} Socket di rete tra server e client
 
 * `head` {Buffer} Il primo pacchetto del tunneling stream (potrebbe essere vuoto)
 
-Emitted each time a client requests an HTTP `CONNECT` method. If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
+Emesso ogni volta che un client richiede un metodo HTTP `CONNECT`. If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -710,7 +710,7 @@ added: v0.1.0
 
 * `response` {http.ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
+Emesso ogni volta che è presente una richiesta. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
 
 ### Event: 'upgrade'<!-- YAML
 added: v0.1.94
@@ -726,7 +726,7 @@ changes:
 * `socket` {net.Socket} Socket di rete tra server e client
 * `head` {Buffer} Il primo pacchetto dello stream aggiornato (potrebbe essere vuoto)
 
-Emitted each time a client requests an HTTP upgrade. Listening to this event is optional and clients cannot insist on a protocol change.
+Emesso ogni volta che un client richiede un aggiornamento HTTP. Listening to this event is optional and clients cannot insist on a protocol change.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -736,7 +736,7 @@ added: v0.1.90
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Impedisce al server di accettare nuove connessioni. Vedi [`net.Server.close()`][].
 
 ### server.listen()
 
@@ -834,7 +834,7 @@ This method adds HTTP trailing headers (a header but at the end of the message) 
 
 Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. E.g.,
+Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. Ad esempio,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -868,7 +868,7 @@ changes:
 * `callback` {Function}
 * Restituisce: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Il metodo, `response.end()`, DEVE essere chiamato su ogni risposta.
 
 If `data` is specified, it is similar in effect to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -880,7 +880,7 @@ added: v0.0.2
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Valore booleano che indica se la risposta è stata completata. Starts as `false`. Dopo che [`response.end()`][] viene eseguito, il valore sarà `true`.
 
 ### response.getHeader(name)<!-- YAML
 added: v0.4.0
@@ -890,7 +890,7 @@ added: v0.4.0
 
 * Returns: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
+Legge un'intestazione che è già stata accodata ma non inviata al client. Notare che il nome è case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -959,7 +959,7 @@ added: v0.9.3
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (sola lettura). True se le intestazioni sono state inviate, altrimenti false.
 
 ### response.removeHeader(name)<!-- YAML
 added: v0.4.0
@@ -967,7 +967,7 @@ added: v0.4.0
 
 * `name` {string}
 
-Removes a header that's queued for implicit sending.
+Rimuove un'intestazione che è in coda per l'invio implicito.
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -979,7 +979,7 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Il valore predefinito è true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -992,13 +992,13 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Imposta un singolo valore di intestazione per intestazioni implicite. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1030,7 +1030,7 @@ added: v0.9.12
 
 * Restituisce: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Imposta il valore di timeout del Socket su `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then sockets are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -1092,17 +1092,17 @@ added: v0.1.29
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Questo invia un chunk del corpo della risposta. This method may be called multiple times to provide successive parts of the body.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
+Il `chunk` può essere una stringa o un buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Un `callback` verrà chiamato quando questo chunk di dati viene scaricato.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Restituisce `false` se tutti o parte dei dati sono stati messi in coda nella memoria utente. `'drain'` verrà emesso quando il buffer è di nuovo libero.
 
 ### response.writeContinue()<!-- YAML
 added: v0.3.0
@@ -1114,6 +1114,10 @@ added: v0.3.0
 added: v0.1.30
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
@@ -1123,14 +1127,20 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Restituisce: {http.ServerResponse}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
+Invia un'intestazione di risposta alla richiesta. The status code is a 3-digit HTTP status code, like `404`. L'ultimo argomento, `headers`, è composto dalle intestazioni di risposta. Optionally one can give a human-readable `statusMessage` as the second argument.
+
+Returns a reference to the `ServerResponse`, so that calls can be chained.
 
 ```js
 const body = 'hello world';
-response.writeHead(200, {
-  'Content-Length': Buffer.byteLength(body),
-  'Content-Type': 'text/plain' });
+response
+  .writeHead(200, {
+    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'text/plain'
+  })
+  .end(body);
 ```
 
 This method must only be called once on a message and it must be called before [`response.end()`][] is called.
@@ -1151,7 +1161,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-Note that Content-Length is given in bytes not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. And Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Notare che il Content-Length è fornito in byte, non in caratteri. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. And Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
 Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
@@ -1173,9 +1183,9 @@ added: v0.3.8
 
 ### Event: 'close'<!-- YAML
 added: v0.4.2
--->Indicates that the underlying connection was closed. Just like 
+-->Indicates that the underlying connection was closed. Proprio come 
 
-`'end'`, this event occurs only once per response.
+`'end'`, questo evento si verifica una sola volta per ogni risposta.
 
 ### message.aborted<!-- YAML
 added: v10.1.0
@@ -1216,7 +1226,7 @@ added: v0.3.0
 
 * `error` {Error}
 
-Calls `destroy()` on the socket that received the `IncomingMessage`. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Chiama `destroy()` sul socket che ha ricevuto l'`IncomingMessage`. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
 
 ### message.headers<!-- YAML
 added: v0.1.5
@@ -1224,9 +1234,9 @@ added: v0.1.5
 
 * {Object}
 
-The request/response headers object.
+L'object delle intestazioni di richiesta/risposta.
 
-Key-value pairs of header names and values. Header names are lower-cased.
+Coppie di key-value di nomi e valori di intestazione. I nomi di intestazione sono in minuscolo.
 
 ```js
 // Stampa qualcosa tipo:
@@ -1250,7 +1260,7 @@ added: v0.1.1
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
+In caso di richiesta del server, la versione HTTP inviata dal client. In the case of client response, the HTTP version of the connected-to server. Probabilmente o `'1.1'` o `'1.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
@@ -1260,9 +1270,9 @@ added: v0.1.1
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Valido esclusivamente per richieste ottenute da [`http.Server`][].**
 
-The request method as a string. Read only. Examples: `'GET'`, `'DELETE'`.
+Il metodo di richiesta sotto forma di stringa. Solo lettura. Examples: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders<!-- YAML
 added: v0.11.6
@@ -1270,11 +1280,11 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+L'elenco delle intestazioni di richiesta/risposta grezze esattamente come sono state ricevute.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Da notare che le chiavi ed i valori si trovano nello stesso elenco. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+I nomi delle intestazioni non sono in minuscolo e i duplicati non sono uniti.
 
 ```js
 // Stampa qualcosa tipo:
@@ -1296,7 +1306,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+The raw request/response trailer keys and values exactly as they were received. Compilati esclusivamente nell'evento `'end'`.
 
 ### message.setTimeout(msecs, callback)<!-- YAML
 added: v0.5.9
@@ -1308,7 +1318,7 @@ added: v0.5.9
 
 * Restituisce: {http.IncomingMessage}
 
-Calls `message.connection.setTimeout(msecs, callback)`.
+Chiama `message.connection.setTimeout(msecs, callback)`.
 
 ### message.socket<!-- YAML
 added: v0.3.0
@@ -1316,7 +1326,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-The [`net.Socket`][] object associated with the connection.
+L'object [`net.Socket`][] associato alla connessione.
 
 With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
 
@@ -1326,9 +1336,9 @@ added: v0.1.1
 
 * {number}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Valido esclusivamente per risposte ottenute da [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. E.G. `404`.
+Il codice di stato a 3 cifre della risposta di HTTP. Per Esempio `404`.
 
 ### message.statusMessage<!-- YAML
 added: v0.11.10
@@ -1336,9 +1346,9 @@ added: v0.11.10
 
 * {string}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Valido esclusivamente per risposte ottenute da [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). E.G. `OK` or `Internal Server
+Il messaggio di stato della risposta di HTTP (reason phrase). E.G. `OK` or `Internal Server
 Error`.
 
 ### message.trailers<!-- YAML
@@ -1347,7 +1357,7 @@ added: v0.3.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+L'object dei trailer di richiesta/risposta. Compilati esclusivamente nell'evento `'end'`.
 
 ### message.url<!-- YAML
 added: v0.1.90
@@ -1355,9 +1365,9 @@ added: v0.1.90
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Valido esclusivamente per richieste ottenute da [`http.Server`][].**
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Stringa URL della richiesta. This contains only the URL that is present in the actual HTTP request. Se la richiesta è:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -1365,7 +1375,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Allora `request.url` sarà:
 
 ```js
 '/status?name=ryan'
@@ -1417,7 +1427,7 @@ added: v0.11.8
 
 * {string[]}
 
-A list of the HTTP methods that are supported by the parser.
+Un elenco dei metodi HTTP supportati dal parser.
 
 ## http.STATUS_CODES<!-- YAML
 added: v0.1.22
@@ -1425,13 +1435,16 @@ added: v0.1.22
 
 * {Object}
 
-A collection of all the standard HTTP response status codes, and the short description of each. For example, `http.STATUS_CODES[404] === 'Not
+A collection of all the standard HTTP response status codes, and the short description of each. Per esempio, `http.STATUS_CODES[404] === 'Not
 Found'`.
 
 ## http.createServer(\[options\]\[, requestListener\])<!-- YAML
 added: v0.1.13
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v9.6.0, v8.12.0
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
@@ -1440,12 +1453,13 @@ changes:
 * `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Utile per estendere l'`IncomingMessage` originale. **Default:** `IncomingMessage`.
   * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Utile per estendere il `ServerResponse` originale. **Default:** `ServerResponse`.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 
 * `requestListener` {Function}
 
 * Restituisce: {http.Server}
 
-Returns a new instance of [`http.Server`][].
+Restituisce una nuova istanza di [`http.Server`][].
 
 The `requestListener` is a function which is automatically added to the [`'request'`][] event.
 
@@ -1535,6 +1549,9 @@ Read-only property specifying the maximum allowed size of HTTP headers in bytes.
 added: v0.3.6
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -1547,9 +1564,10 @@ changes:
 * `url` {string | URL}
 * `options` {Object} 
   * `protocol` {string} Il protocollo da utilizzare. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
+  * `host` {string} Un nome di dominio o un indirizzo IP del server a cui inviare la richiesta. **Default:** `'localhost'`.
   * `hostname` {string} L'alias di `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
-  * `family` {number} IP address family to use when resolving `host` or `hostname`. I valori validi sono `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `family` {number} IP address family to use when resolving `host` or `hostname`. I valori validi sono `4` o `6`. Quando non viene specificato, verranno utilizzati sia IP v4 che v6.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
   * `port` {number} La porta del server remoto. **Default:** `80`.
   * `localAddress` {string} L' interfaccia locale per eseguire il binding per le connessioni di rete.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
@@ -1567,7 +1585,7 @@ changes:
 * `callback` {Function}
 * Restituisce: {http.ClientRequest}
 
-Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
+Node.js mantiene diverse connessioni per server per effettuare richieste HTTP. Questa funzione consente di inviare in modo trasparente le richieste.
 
 `url` can be a string or a [`URL`][] object. If `url` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
@@ -1575,7 +1593,7 @@ If both `url` and `options` are specified, the objects are merged, with the `opt
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
-`http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` returns an instance of the [`http.ClientRequest`][] class. L'istanza `ClientRequest` è un writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
 ```js
 const postData = querystring.stringify({
@@ -1614,11 +1632,11 @@ req.write(postData);
 req.end();
 ```
 
-Note that in the example `req.end()` was called. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Da notare che nell'esempio è stato chiamato `req.end()`. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
 
 If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. As with all `'error'` events, if no listeners are registered the error will be thrown.
 
-There are a few special headers that should be noted.
+Ci sono alcune intestazioni speciali che dovrebbero essere considerate.
 
 * Sending a 'Connection: keep-alive' will notify Node.js that the connection to the server should be persisted until the next request.
 
