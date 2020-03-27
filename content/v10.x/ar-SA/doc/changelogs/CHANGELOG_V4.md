@@ -62,7 +62,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* نسخ أخرى 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -156,7 +156,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 ### Notable Changes
 
-* **crypto**: 
+* **التشفير**: 
   * update root certificates (Ben Noordhuis) [#13279](https://github.com/nodejs/node/pull/13279)
   * update root certificates (Ben Noordhuis) [#12402](https://github.com/nodejs/node/pull/12402)
 * **deps**: 
@@ -292,7 +292,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable Changes
 
-* **crypto**: 
+* **التشفير**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -479,11 +479,11 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
 * **child_process**: add shell option to spawn() (cjihrig) [#4598](https://github.com/nodejs/node/pull/4598)
 * **deps**: 
   * **v8**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* **crypto**: 
+* **التشفير**: 
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **process**: 
+* **الاجراء**: 
   * add `externalMemory` to `process` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
   * add process.cpuUsage() (Patrick Mueller) [#10796](https://github.com/nodejs/node/pull/10796)
 
@@ -1281,7 +1281,7 @@ Semver Patch:
 
 Semver Minor:
 
-* **buffer**: 
+* **الصوان**: 
   * backport new buffer constructor APIs to v4.x (Сковорода Никита Андреевич) [#7562](https://github.com/nodejs/node/pull/7562)
   * backport --zero-fill-buffers cli option (James M Snell) [#5745](https://github.com/nodejs/node/pull/5745)
 * **build**: 
@@ -1297,9 +1297,9 @@ Semver Minor:
 
 Semver Patch:
 
-* **buffer**: 
+* **الصوان**: 
   * ignore negative allocation lengths (Anna Henningsen) [#7562](https://github.com/nodejs/node/pull/7562)
-* **crypto**: 
+* **التشفير**: 
   * update root certificates (Ben Noordhuis) [#7363](https://github.com/nodejs/node/pull/7363)
 * **libuv**: 
   * upgrade libuv to 1.9.1 (Saúl Ibarra Corretgé) [#6796](https://github.com/nodejs/node/pull/6796)
@@ -1702,7 +1702,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **buffer**: 
+* **الصوان**: 
   * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
 * **contextify**: 
   * Context objects are now properly garbage collected, this solves a problem some individuals were experiencing with extreme memory growth (Ali Ijaz Sheikh) [#6871](https://github.com/nodejs/node/pull/6871)
@@ -2360,7 +2360,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer** 
+* **الصوان** 
   * make byteLength work with Buffer correctly (Jackson Tian) 
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger** 
@@ -3254,7 +3254,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **buffer**: 
+* **الصوان**: 
   * Buffers are now created in JavaScript, rather than C++. This increases the speed of buffer creation (Trevor Norris) [#2866](https://github.com/nodejs/node/pull/2866).
   * `Buffer#slice()` now uses `Uint8Array#subarray()` internally, increasing `slice()` performance (Karl Skomski) [#2777](https://github.com/nodejs/node/pull/2777).
 * **fs**: 
