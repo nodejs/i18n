@@ -19,7 +19,7 @@ Throughout the documentation are indications of a section's stability. Some APIs
 
 The stability indices are as follows:
 
-> Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
+> 稳定性：0 - 已弃用。 The feature may emit warnings. Backward compatibility is not guaranteed.
 
 <!-- separator -->
 
