@@ -6,7 +6,7 @@
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-It can be accessed using:
+Het kan worden bereikt met behulp van:
 
 ```js
 const inspector = require('inspector');
