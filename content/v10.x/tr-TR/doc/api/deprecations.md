@@ -1941,7 +1941,7 @@ changes:
 
 Type: Documentation-only
 
-The [`crypto.fips`][] property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+The [`crypto.fips`][] property is deprecated. Lütfen bunun yerine `crypto.setFips()` ve `crypto.getFips()` kullanın.
 
 <a id="DEP0094"></a>
 
