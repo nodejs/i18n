@@ -10,7 +10,7 @@ changes:
 
 > 稳定性：2 - 稳定
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. 可以通过如下方式访问：
 
 ```js
 const http2 = require('http2');
@@ -1660,7 +1660,7 @@ changes:
   * `maxSessionRejectedStreams` {integer} Sets the maximum number of rejected upon creation streams that will be tolerated before the session is closed. Each rejection is associated with an `NGHTTP2_ENHANCE_YOUR_CALM` error that should tell the peer to not open any more streams, continuing to open streams is therefore regarded as a sign of a misbehaving peer. **Default:** `100`.
   * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. See [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} The initial settings to send to the remote peer upon connection.
-  * ...: 可以提供任何的 [`tls.createServer()`][] 选项。 For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
+  * ...: 可以提供任何的 [`tls.createServer()`][] 选项。 对于服务器，通常需要标识符选项 (`pfx` 或 `key`/`cert`)。
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
 * 返回：{Http2SecureServer}
@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Error Handling
+### 错误处理
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2389,7 +2389,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* 返回：{this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2496,7 +2496,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2514,7 +2514,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+或
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2633,7 +2633,7 @@ This is the raw HTTP body and has nothing to do with higher-level multi-part bod
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 #### `response.writeContinue()`
 <!-- YAML
