@@ -125,7 +125,7 @@ changes:
     description: Added `_error` support.
 -->The default evaluator will, by default, assign the result of the most recently evaluated expression to the special variable 
 
-`_` (underscore). Explicitly setting `_` to a value will disable this behavior.
+`_` (underscore). L'impostazione esplicita di `_` su un valore disabiliterà questo comportamento.
 
 ```js
 > [ 'a', 'b', 'c' ]
@@ -292,16 +292,16 @@ Clearing context...
 added: v0.3.0
 -->
 
-* `keyword` {string} The command keyword (*without* a leading `.` character).
+* `keyword` {string} La parola chiave del comando (*senza* carattere iniziale `.`).
 
-* `cmd` {Object|Function} The function to invoke when the command is processed.
+* `cmd` {Object|Function} La funzione da invocare quando il comando viene elaborato.
 
 The `replServer.defineCommand()` method is used to add new `.`-prefixed commands to the REPL instance. Such commands are invoked by typing a `.` followed by the `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
 
 * `help` {string} Testo di aiuto da visualizzare quando viene inserito `.help` (Opzionale).
 * `action` {Function} The function to execute, optionally accepting a single string argument.
 
-The following example shows two new commands added to the REPL instance:
+L'esempio seguente mostra due nuovi comandi aggiunti all'istanza REPL:
 
 ```js
 const repl = require('repl');
@@ -321,7 +321,7 @@ replServer.defineCommand('saybye', function saybye() {
 });
 ```
 
-The new commands can then be used from within the REPL instance:
+I nuovi comandi possono quindi essere utilizzati dall'interno dell'istanza REPL:
 
 ```txt
 > .sayhello Node.js User
@@ -340,7 +340,7 @@ The `replServer.displayPrompt()` method readies the REPL instance for input from
 
 When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
 
-When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
+Quando `preserveCursor` è `true`, la posizione del cursore non verrà reimpostata su `0`.
 
 The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
 
@@ -396,7 +396,7 @@ changes:
 
 The `repl.start()` method creates and starts a [`repl.REPLServer`][] instance.
 
-If `options` is a string, then it specifies the input prompt:
+Se `options` è una stringa, allora specifica il prompt di input:
 
 ```js
 const repl = require('repl');
@@ -485,7 +485,7 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-Running this application from the command line will start a REPL on stdin. Other REPL clients may connect through the Unix socket or TCP socket. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
+L'esecuzione di questa applicazione dalla riga di comando avvierà un REPL su stdin. Altri client REPL possono connettersi tramite il socket Unix o il socket TCP. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
 
 By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
 
