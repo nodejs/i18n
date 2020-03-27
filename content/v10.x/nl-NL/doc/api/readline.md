@@ -286,7 +286,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 * Retourneert: {AsyncIterator}
 
