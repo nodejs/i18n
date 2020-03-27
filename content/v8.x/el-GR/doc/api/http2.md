@@ -13,7 +13,7 @@ changes:
 
 > Σταθερότητα: 2 - Σταθερό
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
 
 ```js
 const http2 = require('http2');
@@ -897,7 +897,7 @@ added: v8.4.0
 -->
 
 * `options` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Προεπιλογή:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
@@ -1110,7 +1110,7 @@ added: v8.4.0
 
 * Value: {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
 
 #### http2stream.pushAllowed
 
@@ -1386,7 +1386,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Μεταδίδεται κάθε φορά που υπάρχει ένα αίτημα. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1451,7 +1451,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Διακόπτει την αποδοχή νέων συνδέσεων από τον εξυπηρετητή. Δείτε [`net.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1505,7 +1505,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Μεταδίδεται κάθε φορά που υπάρχει ένα αίτημα. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1580,7 +1580,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`tls.Server.close()`][].
+Διακόπτει την αποδοχή νέων συνδέσεων από τον εξυπηρετητή. See [`tls.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -2115,7 +2115,7 @@ The `'aborted'` event is emitted whenever a `Http2ServerRequest` instance is abn
 added: v8.4.0
 -->
 
-Indicates that the underlying [`Http2Stream`][] was closed. Just like `'end'`, this event occurs only once per response.
+Indicates that the underlying [`Http2Stream`][] was closed. Όπως και στο `'end'`, αυτό το συμβάν εκτελείται μόνο μια φορά ανά απόκριση.
 
 #### request.aborted
 
@@ -2147,9 +2147,9 @@ added: v8.4.0
 
 * {Object}
 
-The request/response headers object.
+Το αντικείμενο κεφαλίδων αιτήματος/απόκρισης.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Ζεύγη κλειδιών-τιμών των ονομάτων και των τιμών των κεφαλίδων. Τα ονόματα των κεφαλίδων μετατρέπονται σε πεζούς χαρακτήρες. Παράδειγμα:
 
 ```js
 // Εμφανίζει κάτι σαν το παρακάτω:
@@ -2177,7 +2177,7 @@ added: v8.4.0
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
+Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
@@ -2189,7 +2189,7 @@ added: v8.4.0
 
 * {string}
 
-The request method as a string. Read-only. Example: `'GET'`, `'DELETE'`.
+Η μέθοδος αιτήματος είναι string. Read-only. Example: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2199,11 +2199,11 @@ added: v8.4.0
 
 * {Array}
 
-The raw request/response headers list exactly as they were received.
+Η λίστα ανεπεξέργαστων κεφαλίδων αιτήματος/απόκρισης, όπως έχουν ληφθεί.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Σημειώστε ότι τα κλειδιά και οι τιμές βρίσκονται στην ίδια λίστα. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+Τα ονόματα κεφαλίδων δεν έχουν μετατραπεί σε πεζούς χαρακτήρες, και τα διπλότυπα δεν έχουν ενωθεί.
 
 ```js
 // Εμφανίζει κάτι σαν το παρακάτω:
@@ -2227,7 +2227,7 @@ added: v8.4.0
 
 * {Array}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+The raw request/response trailer keys and values exactly as they were received. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
 #### request.setTimeout(msecs, callback)
 
@@ -2282,7 +2282,7 @@ added: v8.4.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+Το αντικείμενο ουράς αιτήματος/απόκρισης. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
 #### request.url
 
@@ -2292,7 +2292,7 @@ added: v8.4.0
 
 * {string}
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+String URL αιτήματος. This contains only the URL that is present in the actual HTTP request. Αν το αίτημα είναι:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2300,13 +2300,13 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Τότε το `request.url` θα είναι:
 
 ```js
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Παράδειγμα:
 
 ```txt
 $ node
@@ -2326,7 +2326,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Παράδειγμα:
 
 ```txt
 $ node
@@ -2352,7 +2352,7 @@ added: v8.4.0
 
 `'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. This is an [`EventEmitter`][] with the following events:
+The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
 #### Συμβάν: 'close'
 
@@ -2368,9 +2368,9 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Μεταδίδεται όταν έχει αποσταλεί η απόκριση. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-After this event, no more events will be emitted on the response object.
+Μετά από αυτό το συμβάν, δεν γίνεται μετάδοση άλλων συμβάντων στο αντικείμενο απόκρισης.
 
 #### response.addTrailers(headers)
 
@@ -2404,7 +2404,7 @@ added: v8.4.0
 * `encoding` {string}
 * `callback` {Function}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
 
 If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -2418,7 +2418,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Starts as `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
 
 #### response.getHeader(name)
 
@@ -2429,9 +2429,9 @@ added: v8.4.0
 * `name` {string}
 * Επιστρέφει: {string}
 
-Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
+Reads out a header that has already been queued but not sent to the client. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα.
 
-Example:
+Παράδειγμα:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2447,7 +2447,7 @@ added: v8.4.0
 
 Επιστρέφει έναν πίνακα που περιέχει τις μοναδικές τιμές των τρεχόντων εξερχομένων κεφαλίδων. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2469,7 +2469,7 @@ added: v8.4.0
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2490,7 +2490,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
 
-Example:
+Παράδειγμα:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2504,7 +2504,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
 
 #### response.removeHeader(name)
 
@@ -2516,7 +2516,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2530,7 +2530,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Από προεπιλογή είναι True.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2543,15 +2543,15 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+ή
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2606,7 +2606,7 @@ Returns a Proxy object that acts as a `net.Socket` (or `tls.TLSSocket`) but appl
 
 All other interactions will be routed directly to the socket.
 
-Example:
+Παράδειγμα:
 
 ```js
 const http2 = require('http2');
@@ -2627,7 +2627,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Παράδειγμα:
 
 ```js
 response.statusCode = 404;
@@ -2668,17 +2668,17 @@ added: v8.4.0
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. This method may be called multiple times to provide successive parts of the body.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. To `callback` θα κληθεί όταν αυτό το κομμάτι των δεδομένων εκκαθαριστεί.
+Το `chunk` μπορεί να είναι ένα string ή ένα buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. To `callback` θα κληθεί όταν αυτό το κομμάτι των δεδομένων εκκαθαριστεί.
 
 *Note*: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
 #### response.writeContinue()
 
@@ -2698,11 +2698,11 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
+Αποστέλλει μια κεφαλίδα απόκρισης στο αίτημα. The status code is a 3-digit HTTP status code, like `404`. Η τελευταία παράμετρος, `headers`, είναι οι κεφαλίδες απόκρισης.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Example:
+Παράδειγμα:
 
 ```js
 const body = 'hello world';
@@ -2711,7 +2711,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Note that Content-Length is given in bytes not characters. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Σημειώστε ότι το Content-Length ορίζεται σε byte και όχι σε αριθμό χαρακτήρων. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
