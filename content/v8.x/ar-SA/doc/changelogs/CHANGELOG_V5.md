@@ -96,7 +96,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## Notable Changes
 
-* **Buffer**: 
+* **الصوان**: 
   * `Buffer.prototype.compare` can now compare sub-ranges of two Buffers. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
   * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
