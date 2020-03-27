@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `util` module supports the needs of Node.js internal APIs. Many of the utilities are useful for application and module developers as well. To access it:
 
@@ -250,7 +250,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Returns: {string}
+* 返回：{string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -739,7 +739,7 @@ added: v9.0.0
 
 * `val1` {any}
 * `val2` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if there is deep strict equality between `val1` and `val2`. Otherwise, returns `false`.
 
@@ -955,7 +955,7 @@ The `TextDecoder` class is also available on the global object.
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `TypedArray` instance containing the encoded data.
 * `options` {Object}
   * `stream` {boolean} 如果期待额外的数据块，则为 `true`。 **Default:** `false`.
-* Returns: {string}
+* 返回：{string}
 
 对 `input` 进行解码并返回一个字符串。 If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -1008,7 +1008,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 * `src` {string} The text to encode.
 * `dest` {Uint8Array} The array to hold the encode result.
-* Returns: {Object}
+* 返回：{Object}
   * `read` {number} The read Unicode code units of src.
   * `written` {number} The written UTF-8 bytes of dest.
 
@@ -1042,7 +1042,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
 
@@ -1059,7 +1059,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an `arguments` object.
 ```js
@@ -1071,7 +1071,7 @@ function foo() {
 ### `util.types.isArrayBuffer(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -1086,7 +1086,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1101,7 +1101,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a `BigInt64Array` instance.
 
@@ -1116,7 +1116,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a `BigUint64Array` instance.
 
@@ -1131,7 +1131,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
 
@@ -1147,11 +1147,11 @@ util.types.isBooleanObject(Boolean(true));  // Returns false
 ### `util.types.isBoxedPrimitive(value)`<!-- YAML
 added: v10.11.0
 -->* `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
-For example:
+例如：
 
 ```js
 util.types.isBoxedPrimitive(false); // Returns false
@@ -1164,7 +1164,7 @@ util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 ### `util.types.isDataView(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -1182,7 +1182,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Date`][] instance.
 
@@ -1196,7 +1196,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a native `External` value.
 
@@ -1236,7 +1236,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Float32Array`][] instance.
 
@@ -1252,7 +1252,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Float64Array`][] instance.
 
@@ -1268,7 +1268,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1283,7 +1283,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a generator object as returned from a built-in generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1299,7 +1299,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Int8Array`][] instance.
 
@@ -1315,7 +1315,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Int16Array`][] instance.
 
@@ -1331,7 +1331,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Int32Array`][] instance.
 
@@ -1347,7 +1347,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Map`][] instance.
 
@@ -1361,7 +1361,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
 
@@ -1379,7 +1379,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
 ```js
@@ -1394,7 +1394,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an instance of a built-in [`Error`][] type.
 
@@ -1407,7 +1407,7 @@ util.types.isNativeError(new RangeError());  // Returns true
 ### `util.types.isNumberObject(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1422,7 +1422,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Promise`][].
 
@@ -1436,7 +1436,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a [`Proxy`][] instance.
 
@@ -1453,7 +1453,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a regular expression object.
 
@@ -1468,7 +1468,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Set`][] instance.
 
@@ -1482,7 +1482,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
 
@@ -1500,7 +1500,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -1515,7 +1515,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a string object, e.g. created by `new String()`.
 
@@ -1530,7 +1530,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
 
@@ -1546,7 +1546,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`TypedArray`][] instance.
 
@@ -1564,7 +1564,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Uint8Array`][] instance.
 
@@ -1580,7 +1580,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
 
@@ -1596,7 +1596,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Uint16Array`][] instance.
 
@@ -1612,7 +1612,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`Uint32Array`][] instance.
 
@@ -1628,7 +1628,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
 
@@ -1642,7 +1642,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`WeakSet`][] instance.
 
@@ -1656,7 +1656,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
 
@@ -1687,7 +1687,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Alias for [`Array.isArray()`][].
 
@@ -1710,7 +1710,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 
@@ -1731,7 +1731,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
 
@@ -1752,7 +1752,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
 
@@ -1773,7 +1773,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
@@ -1807,7 +1807,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
@@ -1831,7 +1831,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `value === null` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
 
@@ -1855,7 +1855,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
@@ -1879,7 +1879,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
@@ -1905,7 +1905,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
 
@@ -1931,7 +1931,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
 
@@ -1961,10 +1961,10 @@ util.isPrimitive(new Date());
 ### `util.isRegExp(object)`<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->> 稳定性：0 - 已弃用
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 
@@ -1988,7 +1988,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 
@@ -2011,7 +2011,7 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
@@ -2035,7 +2035,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
 
