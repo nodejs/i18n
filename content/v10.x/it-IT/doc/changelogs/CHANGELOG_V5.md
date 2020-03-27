@@ -105,7 +105,7 @@ This is a security release. All Node.js users should consult the security releas
 * **deps**: 
   * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
   * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
-* **net**: 
+* **rete**: 
   * adds support for passing DNS lookup hints to `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * **node**: 
   * Make the builtin libraries available for the `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
