@@ -1176,7 +1176,7 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
 
-如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. 该行为和 [`String#indexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
