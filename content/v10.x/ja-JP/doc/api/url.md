@@ -4,7 +4,7 @@
 
 > 安定性: 2 - ステーブル
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. 以下のように利用できます。
 
 ```js
 const url = require('url');
