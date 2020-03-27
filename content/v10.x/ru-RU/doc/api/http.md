@@ -1114,6 +1114,10 @@ added: v0.3.0
 added: v0.1.30
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
@@ -1123,14 +1127,20 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Возвращает: {http.ServerResponse}
 
 Отправляет заголовок ответа на запрос. The status code is a 3-digit HTTP status code, like `404`. Последние аргументы - `headers` - являются заголовками ответа. Optionally one can give a human-readable `statusMessage` as the second argument.
 
+Returns a reference to the `ServerResponse`, so that calls can be chained.
+
 ```js
 const body = 'hello world';
-response.writeHead(200, {
-  'Content-Length': Buffer.byteLength(body),
-  'Content-Type': 'text/plain' });
+response
+  .writeHead(200, {
+    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'text/plain'
+  })
+  .end(body);
 ```
 
 This method must only be called once on a message and it must be called before [`response.end()`][] is called.
@@ -1431,6 +1441,9 @@ A collection of all the standard HTTP response status codes, and the short descr
 added: v0.1.13
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v9.6.0, v8.12.0
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
@@ -1439,6 +1452,7 @@ changes:
 * `опции` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
   * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **По умолчанию:** `false`
 
 * `requestListener` {Function}
 
@@ -1534,6 +1548,9 @@ Read-only property specifying the maximum allowed size of HTTP headers in bytes.
 added: v0.3.6
 changes:
 
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -1546,9 +1563,10 @@ changes:
 * `url` {string | URL}
 * `опции` {Object} 
   * `protocol` {string} Протокол для использования. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
+  * `host` {string} Доменное имя или IP-адрес сервера, на который нужно отправить запрос. **Default:** `'localhost'`.
   * `hostname` {string} Псевдоним для `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
-  * `family` {number} IP address family to use when resolving `host` or `hostname`. Допустимые значения: `4` или `6`. When unspecified, both IP v4 and v6 will be used.
+  * `family` {number} IP address family to use when resolving `host` or `hostname`. Допустимые значения: `4` или `6`. Если не указано, будут использоваться оба значения IP как v4, так и v6.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **По умолчанию:** `false`
   * `port` {number} Порт удаленного сервера. **Default:** `80`.
   * `localAddress` {string} Локальный интерфейс для привязки сетевых подключений.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
@@ -1561,7 +1579,7 @@ changes:
     * Объект `Agent`: явно используйте переданное в `Agent`.
     * `false`: приводит к использованию нового `Agent` со значениями по умолчанию.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
-  * `timeout` {number}: Число, указывающее время ожидания сокета в миллисекундах. Это установит тайм-аут перед подключением сокета.
+  * `timeout` {number}: A number specifying the socket timeout in milliseconds. Это установит тайм-аут перед подключением сокета.
   * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
 * `callback` {Function}
 * Возвращает: {http.ClientRequest}
