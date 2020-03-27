@@ -21,7 +21,7 @@
 * [Console](console.html)
 * [加密算法](crypto.html)
 * [调试器](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [已弃用的 API](deprecations.html)
 * [DNS](dns.html)
 * [域](domain.html)
 * [ECMAScript模块](esm.html)
