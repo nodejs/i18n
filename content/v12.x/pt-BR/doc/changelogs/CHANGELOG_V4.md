@@ -6,7 +6,7 @@
 <table>
 <tr>
 <th>LTS 'Argon'</th>
-<th>Stable</th>
+<th>Estáveis</th>
 </tr>
 <tr>
 <td valign="top">
