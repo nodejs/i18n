@@ -42,7 +42,7 @@ added: v0.3.4
 
 Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [socket.unref()](net.html#net_socket_unref)).
+When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (vea [socket.unref()](net.html#net_socket_unref)).
 
 It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
 
@@ -426,7 +426,7 @@ added: v1.6.0
 
 * Devuelve: {string}
 
-Lee una cabecera en la solicitud. Note that the name is case insensitive.
+Lee una cabecera en la solicitud. Tenga en que el nombre no distingue entre mayúsculas y minúsculas.
 
 Ejemplo:
 
@@ -835,7 +835,7 @@ added: v0.4.0
 
 * Devuelve: {string}
 
-Lee una cabecera que ya sido puesta en cola, pero que no ha sido enviada al cliente. Note that the name is case insensitive.
+Lee una cabecera que ya sido puesta en cola, pero que no ha sido enviada al cliente. Tenga en que el nombre no distingue entre mayúsculas y minúsculas.
 
 Ejemplo:
 
