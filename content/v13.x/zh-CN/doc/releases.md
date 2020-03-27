@@ -457,7 +457,7 @@ To mark a release line as LTS, the following changes must be made to `src/node_v
 * The `NODE_VERSION_IS_LTS` macro must be set to `1`
 * The `NODE_VERSION_LTS_CODENAME` macro must be set to the codename selected for the LTS release.
 
-For example:
+例如：
 
 ```diff
 -#define NODE_MINOR_VERSION 12
