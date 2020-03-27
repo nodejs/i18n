@@ -31,7 +31,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Autres versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -933,7 +933,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
 * **perf_hooks**
   * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
-* **stream**
+* **flux**
   * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
 
 ### Commits
