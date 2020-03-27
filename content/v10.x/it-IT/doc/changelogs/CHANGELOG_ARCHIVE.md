@@ -1921,7 +1921,7 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 * Update V8 to 3.6.6.19
 * Numeric key hash collision fix for V8 (Erik Corry, Fedor Indutny)
 * Add missing TTY key translations for F1-F5 on Windows (Brandon Benvie)
-* path.extname bugfix with . and .. paths (Bert Belder)
+* path.extname bugfix with . e .. paths (Bert Belder)
 * cluster: don't always kill the master on uncaughtException (Ben Noordhuis)
 * Update npm to 1.1.0-2 (isaacs)
 * typed arrays: set class name (Ben Noordhuis)
