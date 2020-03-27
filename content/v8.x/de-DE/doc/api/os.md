@@ -208,7 +208,7 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Returns: {Array}
+* Gibt zurück: {Array}
 
 The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
