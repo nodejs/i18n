@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+Le module `path` fournit des fonctions utilitaires permettant de travailler avec des chemins de fichiers et de répertoires. On peut y accéder en utilisant :
 
 ```js
 const path = require('path');
@@ -12,40 +12,40 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+L'opération par défaut du module `path` varie selon le système d'exploitation sur lequel s'exécute une application Node.js. Plus précisément, lorsque vous utilisez un système d'exploitation Windows, le module `path` considérera que les chemins utilisés sont de type Windows.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
-On POSIX:
+Sur POSIX :
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// Rend: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers Windows sur n'importe quel système d'exploitation, utilisez [`path.win32`][] :
 
-On POSIX and Windows:
+Sur POSIX et Windows :
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// Rend: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers POSIX sur n'importe quel système d'exploitation, utilisez [`path.posix`][] :
 
-On POSIX and Windows:
+Sur POSIX et Windows :
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// Returns: 'myfile.html'
+// retourne: 'myfile.html'
 ```
 
 On Windows Node.js follows the concept of per-drive working directory. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example, `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
@@ -60,10 +60,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
+* `ext` {string} Une extension de fichier optionnelle
 * Retourne : {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+La méthode `path.basename()` retourne la dernière portion de `path`, de la même façon que la commande Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -97,7 +97,7 @@ process.env.PATH.split(path.delimiter);
 // Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 console.log(process.env.PATH);
@@ -216,7 +216,7 @@ path.format({
 // Returns: '/file.txt'
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.format({
@@ -247,7 +247,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.isAbsolute('//server');    // true
@@ -305,7 +305,7 @@ path.normalize('/foo/bar//baz/asdf/quux/..');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
@@ -361,7 +361,7 @@ path.parse('/home/user/dir/file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
@@ -419,7 +419,7 @@ path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
 // Returns: '../../impl/bbb'
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
@@ -481,7 +481,7 @@ For example, on POSIX:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
