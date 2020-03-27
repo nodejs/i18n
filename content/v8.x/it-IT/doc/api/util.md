@@ -175,7 +175,7 @@ added: v8.12.0
 
 * `err` {number}
 
-* Returns: {string}
+* Restituisce: {string}
 
 Restituisce il nome della stringa per un codice di errore numerico proveniente da un'API di Node.js. Il mapping tra codici di errore e nomi di errore è dipendente dalla piattaforma. Vedere [Errori di Sistema Comuni](errors.html#errors_common_system_errors) per i nomi degli errori comuni.
 
@@ -200,7 +200,7 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
+Ereditano i metodi del prototipo da un [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) all'altro. The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
 As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
@@ -229,7 +229,7 @@ stream.on('data', (data) => {
 stream.write('It works!'); // Received data: "It works!"
 ```
 
-ES6 example using `class` and `extends`
+Esempio di ES6 utilizzando la `class` ed `extends`
 
 ```js
 const EventEmitter = require('events');
@@ -280,7 +280,7 @@ changes:
 
 The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
 
-The following example inspects all properties of the `util` object:
+L'esempio seguente ispeziona tutte le proprietà dell'`util` object:
 
 ```js
 const util = require('util');
@@ -296,7 +296,7 @@ Values may supply their own custom `inspect(depth, opts)` functions, when called
 
 `util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
-The default styles and associated colors are:
+Gli stili predefiniti e i colori associati sono:
 
 * `number` - `yellow`
 * `boolean` - `yellow`
@@ -394,7 +394,7 @@ added: v8.0.0
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-For example:
+Per esempio:
 
 ```js
 const util = require('util');
@@ -553,7 +553,7 @@ Diverse configurazioni di build Node.js supportano diversi set di codifiche. Whi
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` se i fallimenti di decodifica sono fatali. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
+  * `ignoreBOM` {boolean} Quando è `true`, il `TextDecoder` includerà il segno di ordine dei byte nel risultato decodificato. Se `false`, il segno di ordine dei byte verrà rimosso dall'output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
 Crea una nuova istanza `TextDecoder`. The `encoding` may specify one of the supported encodings or an alias.
 
@@ -614,7 +614,7 @@ La codifica supportata dall'istanza `TextEncoder`. Impostata sempre su `'utf-8'`
 
 ## API obsolete
 
-The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
+Le seguenti API sono state deprecate e non dovrebbero più essere utilizzate. Existing applications and modules should be updated to find alternative approaches.
 
 ### util.\_extend(target, source)<!-- YAML
 added: v0.7.5
@@ -623,9 +623,9 @@ deprecated: v6.0.0
 
 `Object.assign()`] instead.
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. Tuttavia la comunità l'ha trovato e utilizzato ugualmente.
 
-It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+E' deprecato e non dovrebbe essere utilizzato in un nuovo codice. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
 ### util.debug(string)<!-- YAML
 added: v0.3.0
@@ -636,7 +636,7 @@ deprecated: v0.11.3
 
 * `string` {string} Il messaggio da stampare su `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecessore deprecato di `console.error`.
 
 ### util.error([...strings])
 
@@ -645,11 +645,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza [`console.error()`][] al suo posto.
 
 * `...strings` {string} Il messaggio da stampare su `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecessore deprecato di `console.error`.
 
 ### util.isArray(object)<!-- YAML
 added: v0.6.0
@@ -660,7 +660,7 @@ deprecated: v4.0.0
 
 Internal alias for [`Array.isArray`][].
 
-Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un `Array`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -680,7 +680,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un `Boolean`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -700,11 +700,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza [`Buffer.isBuffer()`][] al suo posto.
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un `Buffer`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -724,7 +724,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è una `Date`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -744,11 +744,11 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
 * `object` {any}
 
-Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un [`Error`][]. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -761,7 +761,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Restituisce: false
 ```
 
-Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+Notare che questo metodo dipende dal comportamento di `Object.prototype.toString()`. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -781,7 +781,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Function`. In caso contrario, restituisce `false`.
+Restituisce `true` se l'`object` indicato è una `Function`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -808,7 +808,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly `null`. In caso contrario, restituisce `false`.
+Restituisce `true` se l'`object` indicato è rigorosamente `null`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -832,7 +832,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is `null` or `undefined`. In caso contrario, restituisce `false`.
+Restituisce `true` se l'`object` indicato è `null` o `undefined`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -852,11 +852,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un `Number`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -882,7 +882,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. Otherwise, returns `false`.
+Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -908,7 +908,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un tipo primitivo. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -940,7 +940,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un `RegExp`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -960,7 +960,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è una `string`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -986,7 +986,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is a `Symbol`. In caso contrario, restituisce `false`.
+Restituisce `true` se l'`object` indicato è un `Symbol`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1010,7 +1010,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is `undefined`. In caso contrario, restituisce `false`.
+Restituisce `true` se l'`object` indicato è `undefined`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1046,7 +1046,7 @@ deprecated: v0.11.3
 
 `console.log()`][] instead.
 
-Deprecated predecessor of `console.log`.
+Predecessore obsoleto di `console.log`.
 
 ### util.puts([...strings])
 
@@ -1055,6 +1055,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza [`console.log()`][] al suo posto.
 
-Deprecated predecessor of `console.log`.
+Predecessore obsoleto di `console.log`.
