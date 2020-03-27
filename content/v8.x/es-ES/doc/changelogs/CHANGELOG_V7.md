@@ -246,7 +246,7 @@
 
 ## 2017-04-11, Version 7.9.0 (Current), @italoacasas
 
-### Notable Changes
+### Cambios Notables
 
 * **util**: console is now closer to what is supported in all major browsers (Roman Reiss) [#10308](https://github.com/nodejs/node/pull/10308)
 
@@ -310,7 +310,7 @@
 
 ## 2017-03-28, Version 7.8.0 (Current), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
