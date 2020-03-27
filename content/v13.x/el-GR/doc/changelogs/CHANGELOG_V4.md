@@ -2355,7 +2355,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer**
+* **ενδιάμεση Μνήμη**
   * make byteLength work with Buffer correctly (Jackson Tian)
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger**
