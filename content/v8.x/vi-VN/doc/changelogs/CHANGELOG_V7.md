@@ -312,7 +312,7 @@
 
 ### Notable Changes
 
-* **buffer**: 
+* **bộ đệm**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
 * **crypto**: 
   * Fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
@@ -1208,7 +1208,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ### Notable changes
 
-* **buffer**: 
+* **bộ đệm**: 
   * Improve performance of Buffer allocation by ~11%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
   * Improve performance of Buffer.from() by ~50%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
 * **events**: Improve performance of `EventEmitter.once()` by ~27%. (Brian White) [#10445](https://github.com/nodejs/node/pull/10445)
@@ -1369,9 +1369,9 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **buffer**: 
+* **bộ đệm**: 
   * buffer.fill() now works properly for the UCS2 encoding on Big-Endian machines. (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
-* **cluster**: 
+* **máy chủ song hành**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
   * The built-in list of Well-Known CAs (Certificate Authorities) can now be extended via a NODE_EXTRA_CA_CERTS environment variable. (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
@@ -1520,7 +1520,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **buffer**: 
+* **bộ đệm**: 
   * Reverted the runtime deprecation of calling `Buffer()` without `new`. (Anna Henningsen) [#9529](https://github.com/nodejs/node/pull/9529)
   * Fixed `buffer.transcode()` for single-byte character encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pull/9838)
 * **promise**: `--trace-warnings` now produces useful stacktraces for Promise warnings. (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
@@ -1990,24 +1990,24 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* Buffer 
+* Bộ đệm 
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
 * Child Process 
   * The fork and execFile methods now have stronger argument validation [#7399](https://github.com/nodejs/node/pull/7399).
-* Cluster 
+* Máy chủ song hành 
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
 * Deps 
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
-* File System 
+* Tập tin hệ thống 
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).
 * Intl 
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
 * Promises 
   * Unhandled Promise rejections have been deprecated and will emit a process warning [#8217](https://github.com/nodejs/node/pull/8217).
-* Punycode 
+* Ký tự Punnycode 
   * The `punycode` module has been deprecated [#7941](https://github.com/nodejs/node/pull/7941).
 * URL 
   * An Experimental WHATWG URL Parser has been introduced [#7448](https://github.com/nodejs/node/pull/7448).
