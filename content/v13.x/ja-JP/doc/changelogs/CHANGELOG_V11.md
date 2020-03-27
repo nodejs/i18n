@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [アーカイブ](CHANGELOG_ARCHIVE.md)
 
 <a id="11.15.0"></a>
 
@@ -235,9 +235,9 @@
 
 ### Notable Changes
 
-* **crypto**
+* **暗号化**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **events**
+* **イベント**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
@@ -2409,7 +2409,7 @@ Fixes for the following CVEs are included in this release:
   * Updated ICU to 63.1. [#23715](https://github.com/nodejs/node/pull/23715)
 * **repl**
   * Top-level for-await-of is now supported in the REPL. [#23841](https://github.com/nodejs/node/pull/23841)
-* **timers**
+* **タイマー**
   * Fixed an issue that could cause timers to enter an infinite loop. [#23870](https://github.com/nodejs/node/pull/23870)
 
 ### Commits
