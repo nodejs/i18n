@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定
 
-`url` 模块提供了用于处理与解析 URL 的工具。 It can be accessed using:
+`url` 模块提供了用于处理与解析 URL 的工具。 可以通过如下方式访问：
 
 ```js
 const url = require('url');
