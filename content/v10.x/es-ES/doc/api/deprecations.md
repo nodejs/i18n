@@ -1941,7 +1941,7 @@ changes:
 
 Tipo: Documentation-only
 
-La propiedad [`crypto.fips`][] está desaprobada. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+La propiedad [`crypto.fips`][] está desaprobada. Por favor, utilice `crypto.setFips()` y `crypto.getFips()` en su lugar.
 
 <a id="DEP0094"></a>
 
