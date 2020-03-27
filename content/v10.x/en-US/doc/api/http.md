@@ -962,6 +962,10 @@ added: v0.3.0
 ### response.writeHead(statusCode\[, statusMessage\]\[, headers\])<!-- YAML
 added: v0.1.30
 changes:
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/25974
+    description: Return `this` from `writeHead()` to allow chaining with
+                 `end()`.
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
@@ -969,14 +973,20 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
+* Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
+Returns a reference to the `ServerResponse`, so that calls can be chained.
+
 ```js
 const body = 'hello world';
-response.writeHead(200, {
-  'Content-Length': Buffer.byteLength(body),
-  'Content-Type': 'text/plain' });
+response
+  .writeHead(200, {
+    'Content-Length': Buffer.byteLength(body),
+    'Content-Type': 'text/plain'
+  })
+  .end(body);
 ```
 
 This method must only be called once on a message and it must be called before [`response.end()`][] is called.
@@ -1238,12 +1248,24 @@ Found'`.
 ## http.createServer(\[options\]\[, requestListener\])<!-- YAML
 added: v0.1.13
 changes:
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v9.6.0, v8.12.0
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
--->* `options` {Object}
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
+-->
+* `options` {Object}
+  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage`
+    class to be used. Useful for extending the original `IncomingMessage`.
+    **Default:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class
+    to be used. Useful for extending the original `ServerResponse`. **Default:**
+    `ServerResponse`.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts
+    invalid HTTP headers when `true`. Using the insecure parser should be
+    avoided. See [`--insecure-http-parser`][] for more information.
+    **Default:** `false`
 * `requestListener` {Function}
 
 * Returns: {http.Server}
@@ -1327,6 +1349,9 @@ Read-only property specifying the maximum allowed size of HTTP headers in bytes.
 <!-- YAML
 added: v0.3.6
 changes:
+  - version: v10.19.0
+    pr-url: https://github.com/nodejs/node/pull/31448
+    description: The `insecureHTTPParser` option is supported now.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21616
     description: The `url` parameter can now be passed along with a separate
@@ -1339,9 +1364,17 @@ changes:
 * `url` {string | URL}
 * `options` {Object}
   * `protocol` {string} Protocol to use. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
-  * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
-  * `family` {number} IP address family to use when resolving `host` or `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and v6 will be used.
+  * `host` {string} A domain name or IP address of the server to issue the
+    request to. **Default:** `'localhost'`.
+  * `hostname` {string} Alias for `host`. To support [`url.parse()`][],
+    `hostname` will be used if both `host` and `hostname` are specified.
+  * `family` {number} IP address family to use when resolving `host` or
+    `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and
+    v6 will be used.
+  * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts
+    invalid HTTP headers when `true`. Using the insecure parser should be
+    avoided. See [`--insecure-http-parser`][] for more information.
+    **Default:** `false`
   * `port` {number} Port of remote server. **Default:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
@@ -1464,4 +1497,59 @@ If `req.abort()` is called after the response is received, the following events 
 * `'end'` on the `res` object
 * `'close'` on the `res` object
 
-Note that setting the `timeout` option or using the `setTimeout()` function will not abort the request or do anything besides add a `'timeout'` event.
+Note that setting the `timeout` option or using the `setTimeout()` function will
+not abort the request or do anything besides add a `'timeout'` event.
+
+[`--insecure-http-parser`]: cli.html#cli_insecure_http_parser
+[`--max-http-header-size`]: cli.html#cli_max_http_header_size_size
+[`'checkContinue'`]: #http_event_checkcontinue
+[`'request'`]: #http_event_request
+[`'response'`]: #http_event_response
+[`'upgrade'`]: #http_event_upgrade
+[`Agent`]: #http_class_http_agent
+[`Duplex`]: stream.html#stream_class_stream_duplex
+[`TypeError`]: errors.html#errors_class_typeerror
+[`URL`]: url.html#url_the_whatwg_url_api
+[`agent.createConnection()`]: #http_agent_createconnection_options_callback
+[`agent.getName()`]: #http_agent_getname_options
+[`destroy()`]: #http_agent_destroy
+[`getHeader(name)`]: #http_request_getheader_name
+[`http.Agent`]: #http_class_http_agent
+[`http.ClientRequest`]: #http_class_http_clientrequest
+[`http.IncomingMessage`]: #http_class_http_incomingmessage
+[`http.Server`]: #http_class_http_server
+[`http.get()`]: #http_http_get_options_callback
+[`http.globalAgent`]: #http_http_globalagent
+[`http.request()`]: #http_http_request_options_callback
+[`message.headers`]: #http_message_headers
+[`net.Server.close()`]: net.html#net_server_close_callback
+[`net.Server`]: net.html#net_class_net_server
+[`net.Socket`]: net.html#net_class_net_socket
+[`net.createConnection()`]: net.html#net_net_createconnection_options_connectlistener
+[`removeHeader(name)`]: #http_request_removeheader_name
+[`request.end()`]: #http_request_end_data_encoding_callback
+[`request.getHeader()`]: #http_request_getheader_name
+[`request.setHeader()`]: #http_request_setheader_name_value
+[`request.setTimeout()`]: #http_request_settimeout_timeout_callback
+[`request.socket.getPeerCertificate()`]: tls.html#tls_tlssocket_getpeercertificate_detailed
+[`request.socket`]: #http_request_socket
+[`request.write(data, encoding)`]: #http_request_write_chunk_encoding_callback
+[`response.end()`]: #http_response_end_data_encoding_callback
+[`response.getHeader()`]: #http_response_getheader_name
+[`response.setHeader()`]: #http_response_setheader_name_value
+[`response.socket`]: #http_response_socket
+[`response.write()`]: #http_response_write_chunk_encoding_callback
+[`response.write(data, encoding)`]: #http_response_write_chunk_encoding_callback
+[`response.writeContinue()`]: #http_response_writecontinue
+[`response.writeHead()`]: #http_response_writehead_statuscode_statusmessage_headers
+[`server.listen()`]: net.html#net_server_listen
+[`server.timeout`]: #http_server_timeout
+[`setHeader(name, value)`]: #http_request_setheader_name_value
+[`socket.connect()`]: net.html#net_socket_connect_options_connectlistener
+[`socket.setKeepAlive()`]: net.html#net_socket_setkeepalive_enable_initialdelay
+[`socket.setNoDelay()`]: net.html#net_socket_setnodelay_nodelay
+[`socket.setTimeout()`]: net.html#net_socket_settimeout_timeout_callback
+[`socket.unref()`]: net.html#net_socket_unref
+[`url.parse()`]: url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost
+[Readable Stream]: stream.html#stream_class_stream_readable
+[Stream]: stream.html#stream_stream

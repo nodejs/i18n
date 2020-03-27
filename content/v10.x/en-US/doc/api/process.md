@@ -154,15 +154,34 @@ In this example, the `unhandledRejections` `Map` will grow and shrink over time,
 ### Event: 'uncaughtException'
 <!-- YAML
 added: v0.1.18
+changes:
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26599
+    description: Added the `origin` argument.
 -->
 
-The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. Adding a handler for the `'uncaughtException'` event overrides this default behavior. Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled
+  rejection or from synchronous errors. Can either be `'uncaughtException'` or
+  `'unhandledRejection'`.
 
-The listener function is called with the `Error` object passed as the only argument.
+The `'uncaughtException'` event is emitted when an uncaught JavaScript
+exception bubbles all the way back to the event loop. By default, Node.js
+handles such exceptions by printing the stack trace to `stderr` and exiting
+with code 1, overriding any previously set [`process.exitCode`][].
+Adding a handler for the `'uncaughtException'` event overrides this default
+behavior. Alternatively, change the [`process.exitCode`][] in the
+`'uncaughtException'` handler which will result in the process exiting with the
+provided exit code. Otherwise, in the presence of such handler the process will
+exit with 0.
 
 ```js
-process.on('uncaughtException', (err) => {
-  fs.writeSync(1, `Caught exception: ${err}\n`);
+process.on('uncaughtException', (err, origin) => {
+  fs.writeSync(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` +
+    `Exception origin: ${origin}`
+  );
 });
 
 setTimeout(() => {
@@ -199,17 +218,22 @@ changes:
                  a process warning.
 -->
 
-The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. When programming with Promises, exceptions are encapsulated as "rejected promises". Rejections can be caught and handled using [`promise.catch()`][] and are propagated through a `Promise` chain. The `'unhandledRejection'` event is useful for detecting and keeping track of promises that were rejected whose rejections have not yet been handled.
+* `reason` {Error|any} The object with which the promise was rejected
+  (typically an [`Error`][] object).
+* `promise` {Promise} The rejected promise.
 
-The listener function is called with the following arguments:
-
-* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
-* `p` the `Promise` that was rejected.
+The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and
+no error handler is attached to the promise within a turn of the event loop.
+When programming with Promises, exceptions are encapsulated as "rejected
+promises". Rejections can be caught and handled using [`promise.catch()`][] and
+are propagated through a `Promise` chain. The `'unhandledRejection'` event is
+useful for detecting and keeping track of promises that were rejected whose
+rejections have not yet been handled.
 
 ```js
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Application specific logging, throwing an error, or other logic here
 });
 
 somePromise.then((res) => {
@@ -229,7 +253,12 @@ const resource = new SomeResource();
 // no .catch or .then on resource.loaded for at least a turn
 ```
 
-In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. Alternatively, the [`'rejectionHandled'`][] event may be used.
+In this example case, it is possible to track the rejection as a developer error
+as would typically be the case for other `'unhandledRejection'` events. To
+address such failures, a non-operational
+[`.catch(() => { })`][`promise.catch()`] handler may be attached to
+`resource.loaded`, which would prevent the `'unhandledRejection'` event from
+being emitted.
 
 ### Event: 'warning'
 <!-- YAML
@@ -1524,14 +1553,86 @@ Node.js will normally exit with a `0` status code when no more async operations 
 
 * `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2` - Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `5` **Fatal Error** - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
-ERROR`.
-* `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
-* `8` - Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
-* `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
-* `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
+* `3` **Internal JavaScript Parse Error** - The JavaScript source code
+  internal in Node.js's bootstrapping process caused a parse error. This
+  is extremely rare, and generally can only happen during development
+  of Node.js itself.
+* `4` **Internal JavaScript Evaluation Failure** - The JavaScript
+  source code internal in Node.js's bootstrapping process failed to
+  return a function value when evaluated. This is extremely rare, and
+  generally can only happen during development of Node.js itself.
+* `5` **Fatal Error** - There was a fatal unrecoverable error in V8.
+  Typically a message will be printed to stderr with the prefix `FATAL
+  ERROR`.
+* `6` **Non-function Internal Exception Handler** - There was an
+  uncaught exception, but the internal fatal exception handler
+  function was somehow set to a non-function, and could not be called.
+* `7` **Internal Exception Handler Run-Time Failure** - There was an
+  uncaught exception, and the internal fatal exception handler
+  function itself threw an error while attempting to handle it. This
+  can happen, for example, if an [`'uncaughtException'`][] or
+  `domain.on('error')` handler throws an error.
+* `8` - Unused. In previous versions of Node.js, exit code 8 sometimes
+  indicated an uncaught exception.
+* `9` - **Invalid Argument** - Either an unknown option was specified,
+  or an option requiring a value was provided without a value.
+* `10` **Internal JavaScript Run-Time Failure** - The JavaScript
+  source code internal in Node.js's bootstrapping process threw an error
+  when the bootstrapping function was called. This is extremely rare,
+  and generally can only happen during development of Node.js itself.
+* `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk`
+  options were set, but the port number chosen was invalid or unavailable.
+* `>128` **Signal Exits** - If Node.js receives a fatal signal such as
+  `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the
+  value of the signal code. This is a standard POSIX practice, since
+  exit codes are defined to be 7-bit integers, and signal exits set
+  the high-order bit, and then contain the value of the signal code.
+  For example, signal `SIGABRT` has value `6`, so the expected exit
+  code will be `128` + `6`, or `134`.
+
+[`'exit'`]: #process_event_exit
+[`'message'`]: child_process.html#child_process_event_message
+[`'uncaughtException'`]: #process_event_uncaughtexception
+[`ChildProcess.disconnect()`]: child_process.html#child_process_subprocess_disconnect
+[`ChildProcess.send()`]: child_process.html#child_process_subprocess_send_message_sendhandle_options_callback
+[`ChildProcess`]: child_process.html#child_process_class_childprocess
+[`Error`]: errors.html#errors_class_error
+[`EventEmitter`]: events.html#events_class_eventemitter
+[`NODE_OPTIONS`]: cli.html#cli_node_options_options
+[`Worker`]: worker_threads.html#worker_threads_class_worker
+[`console.error()`]: console.html#console_console_error_data_args
+[`console.log()`]: console.html#console_console_log_data_args
+[`domain`]: domain.html
+[`net.Server`]: net.html#net_class_net_server
+[`net.Socket`]: net.html#net_class_net_socket
+[`os.constants.dlopen`]: os.html#os_dlopen_constants
+[`process.argv`]: #process_process_argv
+[`process.config`]: #process_process_config
+[`process.execPath`]: #process_process_execpath
+[`process.exit()`]: #process_process_exit_code
+[`process.exitCode`]: #process_process_exitcode
+[`process.hrtime()`]: #process_process_hrtime_time
+[`process.hrtime.bigint()`]: #process_process_hrtime_bigint
+[`process.kill()`]: #process_process_kill_pid_signal
+[`process.setUncaughtExceptionCaptureCallback()`]: process.html#process_process_setuncaughtexceptioncapturecallback_fn
+[`promise.catch()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
+[`require()`]: globals.html#globals_require
+[`require.main`]: modules.html#modules_accessing_the_main_module
+[`require.resolve()`]: modules.html#modules_require_resolve_request_options
+[`setTimeout(fn, 0)`]: timers.html#timers_settimeout_callback_delay_args
+[`subprocess.kill()`]: child_process.html#child_process_subprocess_kill_signal
+[`v8.setFlagsFromString()`]: v8.html#v8_v8_setflagsfromstring_flags
+[Android building]: https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os
+[Child Process]: child_process.html
+[Cluster]: cluster.html
+[Duplex]: stream.html#stream_duplex_and_transform_streams
+[LTS]: https://github.com/nodejs/Release
+[Readable]: stream.html#stream_readable_streams
+[Signal Events]: #process_signal_events
+[Stream compatibility]: stream.html#stream_compatibility_with_older_node_js_versions
+[TTY]: tty.html#tty_tty
+[Writable]: stream.html#stream_writable_streams
+[debugger]: debugger.html
+[note on process I/O]: process.html#process_a_note_on_process_i_o
+[process_emit_warning]: #process_process_emitwarning_warning_type_code_ctor
+[process_warning]: #process_event_warning
