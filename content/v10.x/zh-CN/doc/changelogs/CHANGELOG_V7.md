@@ -2014,13 +2014,13 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* Buffer 
+* 缓冲区 
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
-* Child Process 
+* 子进程 
   * The fork and execFile methods now have stronger argument validation [#7399](https://github.com/nodejs/node/pull/7399).
-* Cluster 
+* 集群 
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
 * Deps 
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
@@ -2031,7 +2031,7 @@ Thank you to @italoacasas for preparing the majority of this release.
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
 * Promises 
   * Unhandled Promise rejections have been deprecated and will emit a process warning [#8217](https://github.com/nodejs/node/pull/8217).
-* Punycode 
+* 国际域名编码 
   * The `punycode` module has been deprecated [#7941](https://github.com/nodejs/node/pull/7941).
 * URL 
   * An Experimental WHATWG URL Parser has been introduced [#7448](https://github.com/nodejs/node/pull/7448).
