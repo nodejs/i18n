@@ -169,7 +169,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Autres versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
