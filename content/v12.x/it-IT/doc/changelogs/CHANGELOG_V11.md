@@ -41,7 +41,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="11.14.0"></a>
 
@@ -198,11 +198,11 @@
 
 ## 2019-03-28, Version 11.13.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **events**
+* **eventi**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
@@ -388,7 +388,7 @@
 
 ## 2019-03-15, Version 11.12.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **bootstrap**:
   * Add experimental `--frozen-intrinsics` flag (Guy Bedford) [#25685](https://github.com/nodejs/node/pull/25685)
@@ -564,7 +564,7 @@
 
 ## 2019-03-06, Version 11.11.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **n-api**:
   * Implement date object (Jarrod Connolly) [#25917](https://github.com/nodejs/node/pull/25917)
@@ -802,7 +802,7 @@ A fix for the following CVE is included in this release:
 
 * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -814,7 +814,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-02-14, Version 11.10.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * Updated libuv to 1.26.0. [#26037](https://github.com/nodejs/node/pull/26037)
@@ -1059,7 +1059,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-30, Version 11.9.0 (Current), @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * OpenSSL has been updated to 1.1.1a, which is API/ABI compatible with the previous OpenSSL 1.1.0j. Note that while OpenSSL 1.1.1a supports TLS1.3, Node.js still does not. [#25381](https://github.com/nodejs/node/pull/25381)
@@ -1149,7 +1149,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-24, Version 11.8.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **events**:
   * For unhandled `error` events with an argument that is not an `Error` object, the resulting exeption will have more information about the argument. [nodejs/node#25621](https://github.com/nodejs/node/pull/25621)
@@ -1261,7 +1261,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-17, Version 11.7.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **compression / zlib**:
   * Added brotli support (Anna Henningsen and Zach Vacura) [#24938](https://github.com/nodejs/node/pull/24938)
@@ -1531,7 +1531,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-26, Version 11.6.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **cli**:
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -1610,7 +1610,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-18, Version 11.5.0 (Current), @BethGriggs
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **tls**:
   * support "BEGIN TRUSTED CERTIFICATE" for ca: (Sam Roberts) [#24733](https://github.com/nodejs/node/pull/24733)
@@ -1712,7 +1712,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-07, Version 11.4.0 (Current), @BridgeAR
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **console,util**:
   * `console` functions now handle symbols as defined in the spec. https://github.com/nodejs/node/pull/23708
@@ -2072,7 +2072,7 @@ Fixes for the following CVEs are included in this release:
 * OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734)
 * OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2019-0735)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**: Upgrade to OpenSSL 1.1.0j, fixing CVE-2018-0734 and CVE-2019-0735
 * **http**:
@@ -2467,7 +2467,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-10-23, Version 11.0.0 (Current), @jasnell
 
-### Notable Changes
+### Modifiche di rilievo
 
 * Build
   * FreeBSD 10 is no longer supported. [#22617](https://github.com/nodejs/node/pull/22617)
