@@ -1,9 +1,9 @@
 # Offboarding
 
-Este documento es una lista de verificación de cosas que hacer cuando un Colaborador se convierte en Emérito o abandona el proyecto.
+This document is a checklist of things to do when a Collaborator becomes Emeritus or leaves the project.
 
 * Elimine al Colaborador del equipo @nodejs/collaborators.
-* Abra una Pull Request acelerada para mover al Colaborador a Colaborador Emérito en README.md.
-* Envíe un correo electrónico a la lista de correo de TSC para notificar a los miembros de TSC que el Colaborador se está moviendo a Colaborador Emérito.
-* Determine a qué equipos de GitHub pertenece el Colaborador. En consulta con el Colaborador, determine de cuáles de esos equipos debería ser eliminado.
-    * Algunos equipos también pueden requerir una Pull Request para eliminar al Colaborador de una lista de equipo. Por ejemplo, si alguien es eliminado de @nodejs/build, también debe eliminarse del archivo Build WG README.md en el repositorio https://github.com/nodejs/build.
+* Open a fast-track pull request to move the Collaborator to Collaborator Emeriti in README.md.
+* Email the TSC mailing list to notify TSC members that the Collaborator is moving to Collaborator Emeritus.
+* Determine a qué equipos de GitHub pertenece el Colaborador. In consultation with the Collaborator, determine which of those teams they should be removed from. 
+    * Some teams may also require a pull request to remove the Collaborator from a team listing. For example, if someone is removed from @nodejs/build, they should also be removed from the Build WG README.md file in the https://github.com/nodejs/build repository.

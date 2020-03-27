@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): αν μετακινήσετε αυτό το αρχείο, ενημερώστε το @// tools/doc/html.js ώστε να δείχνει στην καινούργια τοποθεσία.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
@@ -10,18 +10,18 @@
 * [Έλεγχος Ισχυρισμού](assert.html)
 * [Ασυγχρόνιστα Αγκίστρια](async_hooks.html)
 * [Ενδιάμεση Μνήμη](buffer.html)
-* [Επιπρόσθετα C++](addons.html)
+* [Πρόσθετα C++](addons.html)
 * [Επιπρόσθετα C/C++ - N-API](n-api.html)
 * [Θυγατρικές διεργασίες](child_process.html)
 * [Σύμπλεγμα](cluster.html)
-* [Επιλογές Γραμμής Εντολών](cli.html)
+* [Επιλογές διεπαφής γραμμής εντολών](cli.html)
 * [Κονσόλα](console.html)
-* [Κρυπτογραφία](crypto.html)
+* [Crypto](crypto.html)
 * [Πρόγραμμα Εντοπισμού Σφαλμάτων](debugger.html)
-* [Απαρχαιωμένα APIs](deprecations.html)
+* [Αποσυρόμενα API](deprecations.html)
 * [DNS](dns.html)
 * [Χώρος](domain.html)
-* [ECMAScript Ενότητες](esm.html)
+* [Ενότητες ECMAScript](esm.html)
 * [Σφάλματα](errors.html)
 * [Συμβάντα](events.html)
 * [Σύστημα Αρχείων](fs.html)

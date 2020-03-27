@@ -6,12 +6,12 @@
 <!--introduced_in=v0.10.0-->
 
 * [これらのドキュメントについて](documentation.html)
-* [使用方法](synopsis.html)
+* [利用方法とサンプル](synopsis.html)
 
 <div class="line"></div>
 
 * [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
+* [非同期フック](async_hooks.html)
 * [バッファ](buffer.html)
 * [C++ アドオン](addons.html)
 * [C++ アドオン - N-API](n-api.html)
@@ -24,7 +24,7 @@
 * [非推奨となったAPI](deprecations.html)
 * [DNS](dns.html)
 * [ドメイン](domain.html)
-* [ECMAスクリプトモジュール](esm.html)
+* [ECMAScriptモジュール](esm.html)
 * [エラー](errors.html)
 * [イベント](events.html)
 * [ファイルシステム](fs.html)
@@ -55,7 +55,7 @@
 * [ユーティリティ](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
-* [Worker Threads](worker_threads.html)
+* [ワーカースレッド](worker_threads.html)
 * [Zlib](zlib.html)
 
 <div class="line"></div>
