@@ -515,7 +515,7 @@ Sets a single header value for headers object. If this header already exists in 
 request.setHeader('Content-Type', 'application/json');
 ```
 
-or
+或
 
 ```js
 request.setHeader('Cookie', ['type=ninja', 'language=javascript']);
@@ -550,7 +550,7 @@ changes:
 
 * `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* 返回：{http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -590,11 +590,11 @@ added: v0.1.29
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+The `encoding` argument is optional and only applies when `chunk` is a string. 默认值为 `'utf8'`。
 
 The `callback` argument is optional and will be called when this chunk of data is flushed, but only if the chunk is non-empty.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 When `write` function is called with empty string or buffer, it does nothing and waits for more input.
 
@@ -979,7 +979,7 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -998,7 +998,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+或
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1102,7 +1102,7 @@ This is the raw HTTP body and has nothing to do with higher-level multi-part bod
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 ### response.writeContinue()<!-- YAML
 added: v0.3.0
@@ -1581,7 +1581,7 @@ changes:
     * `false`: causes a new `Agent` with default values to be used.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. 默认值为 `true`。
 * `callback` {Function}
 * 返回：{http.ClientRequest}
 
