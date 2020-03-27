@@ -3,7 +3,7 @@
 <!--introduced_in=v8.0.0-->
 <!-- type=misc -->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (for example, V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
@@ -82,7 +82,7 @@ Thus, for an addon to remain ABI-compatible across Node.js major versions, it mu
 
 and by checking, for all external libraries that it uses, that the external library makes ABI stability guarantees similar to N-API.
 
-## Building
+## Bouwen
 
 Unlike modules written in JavaScript, developing and deploying Node.js native addons using N-API requires an additional set of tools. Besides the basic tools required to develop for Node.js, the native addon developer requires a toolchain that can compile C and C++ code into a binary. In addition, depending upon how the native addon is deployed, the *user* of the native addon will also need to have a C/C++ toolchain installed.
 
@@ -255,7 +255,7 @@ NAPI_MODULE_INIT() {
 
 ## Environment Life Cycle APIs
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 [Section 8.7](https://tc39.es/ecma262/#sec-agents) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/) defines the concept of an "Agent" as a self-contained environment in which JavaScript code runs. Multiple such Agents may be started and terminated either concurrently or in sequence by the process.
 
@@ -1744,7 +1744,7 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1765,7 +1765,7 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1786,7 +1786,7 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2090,7 +2090,7 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2113,7 +2113,7 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2136,7 +2136,7 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 added: v10.7.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2671,7 +2671,7 @@ This API represents the invocation of the Strict Equality algorithm as defined i
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_detach_arraybuffer(napi_env env,
@@ -2692,7 +2692,7 @@ This API represents the invocation of the `ArrayBuffer` detach operation as defi
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> Stabiliteit: 1 - Experimenteel
 
 ```C
 napi_status napi_is_detached_arraybuffer(napi_env env,
