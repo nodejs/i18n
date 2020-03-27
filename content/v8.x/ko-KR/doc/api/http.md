@@ -1470,7 +1470,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL} 
+* `옵션` {Object | string | URL} 
   * `protocol` {string} Protocol to use. **Default:** `http:`.
   * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `localhost`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
