@@ -353,7 +353,7 @@ added: v10.16.0
 * `chunkSize` {integer} **Default:** `16 * 1024`
 * `params` {Object} Key-value object containing indexed [Brotli parameters](#zlib_brotli_constants).
 
-For example:
+例如：
 
 ```js
 const stream = zlib.createBrotliCompress({
