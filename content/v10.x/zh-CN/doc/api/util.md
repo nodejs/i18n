@@ -794,7 +794,7 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **默认值：** `false`。
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
 
 创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
@@ -905,7 +905,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -988,7 +988,7 @@ added: v10.11.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -1008,7 +1008,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -1238,7 +1238,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
