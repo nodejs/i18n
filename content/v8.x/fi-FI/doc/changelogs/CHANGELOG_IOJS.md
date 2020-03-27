@@ -68,7 +68,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Muut versiot 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -76,7 +76,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arkisto](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2263,7 +2263,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors 
+* virheet 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
