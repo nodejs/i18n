@@ -401,7 +401,7 @@ console.timeEnd('process');
 added: v0.1.104
 -->
 
-* `message` {any}
+* `wiadomość` {any}
 
 * `...args` {any}
 
