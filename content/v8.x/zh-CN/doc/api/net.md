@@ -866,7 +866,7 @@ server.listen(8124, () => {
 });
 ```
 
-Test this by using `telnet`:
+可以通过 `telnet` 对其进行测试：
 
 ```console
 $ telnet localhost 8124
@@ -880,7 +880,7 @@ server.listen('/tmp/echo.sock', () => {
 });
 ```
 
-Use `nc` to connect to a UNIX domain socket server:
+使用 `nc` 连接到一个 UNIX 域套接字服务器：
 
 ```console
 $ nc -U /tmp/echo.sock
@@ -892,7 +892,7 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
+测试输入是否为 IP 地址。 Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
 
 ## net.isIPv4(input)
 
@@ -900,7 +900,7 @@ Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP
 added: v0.3.0
 -->
 
-Returns true if input is a version 4 IP address, otherwise returns false.
+如果输入为 IPv4 地址，返回 true，否则返回 false。
 
 ## net.isIPv6(input)
 
@@ -908,4 +908,4 @@ Returns true if input is a version 4 IP address, otherwise returns false.
 added: v0.3.0
 -->
 
-Returns true if input is a version 6 IP address, otherwise returns false.
+如果输入为 IPv6 地址，返回 true，否则返回 false。
