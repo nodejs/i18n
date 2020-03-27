@@ -251,16 +251,16 @@ Clearing context...
 added: v0.3.0
 -->
 
-* `keyword` {string} The command keyword (*without* a leading `.` character).
+* `keyword` {string} 命令关键字 (*不包含* 起始的 `.` 字符)。
 
-* `cmd` {Object|Function} The function to invoke when the command is processed.
+* `cmd` {Object|Function} 当命令被处理时要调用的函数。
 
 The `replServer.defineCommand()` method is used to add new `.`-prefixed commands to the REPL instance. Such commands are invoked by typing a `.` followed by the `keyword`. The `cmd` is either a Function or an object with the following properties:
 
 * `help` {string} 当 输入 `.help` 时显示的帮助文本 (可选的)。
 * `action` {Function} The function to execute, optionally accepting a single string argument.
 
-The following example shows two new commands added to the REPL instance:
+如下示例演示了添加到 REPL 实例的两个新命令：
 
 ```js
 const repl = require('repl');
@@ -280,7 +280,7 @@ replServer.defineCommand('saybye', function saybye() {
 });
 ```
 
-The new commands can then be used from within the REPL instance:
+在 REPL 实例中可使用新的命令：
 
 ```txt
 > .sayhello Node.js User
@@ -299,7 +299,7 @@ The `replServer.displayPrompt()` method readies the REPL instance for input from
 
 When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
 
-When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
+当 `preserveCursor` 的值为 `true` 时，光标位置不会被复位到 `0`。
 
 The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
 
@@ -314,7 +314,7 @@ changes:
 
 * `options` {Object|string} 
     * `prompt` {string} 要显示的输入提示符。 **Default:** `>`. (with a trailing space).
-    * `input` {stream.Readable} The Readable stream from which REPL input will be read. **默认值：** `process.stdin`.
+    * `input` {stream.Readable} 将从中读取 REPL 输入的 Readable 流。 **默认值：** `process.stdin`.
     * `output` {stream.Writable} The Writable stream to which REPL output will be written. **默认值：** `process.stdout`.
     * `terminal` {boolean} If `true`, specifies that the `output` should be treated as a TTY terminal, and have ANSI/VT100 escape codes written to it. **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
     * `eval` {Function} The function to be used when evaluating each given line of input. **Default:** an async wrapper for the JavaScript `eval()` function. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
@@ -329,9 +329,9 @@ changes:
         * `repl.REPL_MODE_MAGIC` - This value is **deprecated**, since enhanced spec compliance in V8 has rendered magic mode unnecessary. It is now equivalent to `repl.REPL_MODE_SLOPPY` (documented above).
     * `breakEvalOnSigint` - Stop evaluating the current piece of code when `SIGINT` is received, i.e. `Ctrl+C` is pressed. This cannot be used together with a custom `eval` function. **默认:** `false`.
 
-The `repl.start()` method creates and starts a `repl.REPLServer` instance.
+`repl.start()` 方法创建并启动一个 `repl.REPLServer` 实例。
 
-If `options` is a string, then it specifies the input prompt:
+如果 `options` 是一个字符串，则它指定输入提示符：
 
 ```js
 const repl = require('repl');
@@ -429,7 +429,7 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-Running this application from the command line will start a REPL on stdin. Other REPL clients may connect through the Unix socket or TCP socket. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
+从命令行上运行此应用程序将会在 stdin 上启动 REPL。 其它 REPL 客户端可通过 Unix 套接字或 TCP 套接字来连接。 `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
 
 By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
 
