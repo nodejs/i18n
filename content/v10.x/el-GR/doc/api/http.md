@@ -1581,7 +1581,7 @@ changes:
     * `false`: δημιουργεί έναν νέο `Agent` προς χρήση, με τις προεπιλεγμένες τιμές.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Οποιαδήποτε ροή [`Duplex`][] είναι έγκυρη τιμή επιστροφής.
   * `timeout` {number}: Ένας αριθμός που ορίζει την εξάντληση του χρονικού περιθωρίου του socket σε χιλιοστά του δευτερολέπτου. Αυτό ορίζει την εξάντληση του χρονικού περιθωρίου πριν γίνει η σύνδεση του socket.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Από προεπιλογή είναι `true`.
 * `callback` {Function}
 * Επιστρέφει: {http.ClientRequest}
 
