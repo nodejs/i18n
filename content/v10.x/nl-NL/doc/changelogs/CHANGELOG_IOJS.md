@@ -2267,7 +2267,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors 
+* fouten 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2596,7 +2596,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### gebeurtenissen
 
 https://iojs.org/api/events.html
 
@@ -2639,7 +2639,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### pad
 
 https://iojs.org/api/path.html
 
