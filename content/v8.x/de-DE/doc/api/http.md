@@ -1489,7 +1489,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Gibt zurück: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
