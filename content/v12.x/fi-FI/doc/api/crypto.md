@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -790,7 +790,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Vakaus: 0 - Ei enää käytössä
 
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
@@ -1322,7 +1322,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Vakaus: 0 - Ei enää käytössä
 
 The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
 
@@ -1338,7 +1338,7 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Vakaus: 0 - Ei enää käytössä
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
