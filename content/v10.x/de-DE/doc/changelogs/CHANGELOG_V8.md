@@ -137,7 +137,7 @@ Fixes for the following CVEs are included in this release:
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **cli**: 
   * add --stack-trace-limit to NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
-* **console**: 
+* **konsole**: 
   * add support for console.debug (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
 * **module**: 
   * add builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
@@ -151,11 +151,11 @@ Fixes for the following CVEs are included in this release:
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 * **net**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
-* **process**: 
+* **prozess**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
   * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
-* **process**: 
+* **prozess**: 
   * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
 * **stream**: 
   * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
@@ -777,7 +777,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **console**: 
+* **konsole**: 
   * avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
 * **http2**: 
   * improve errors thrown in header validation (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
@@ -1776,7 +1776,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 * **build** 
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
-* **console** 
+* **konsole** 
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
   * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
@@ -2185,7 +2185,7 @@ More detailed information on performance differences can be found at https://med
   
   * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
 
-* **Utilities**
+* **Werkzeuge**
   
   * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
 
@@ -2767,7 +2767,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
   
   * The `rejectUnauthorized` option now works properly for unix sockets. [[`c4cbd99d37`](https://github.com/nodejs/node/commit/c4cbd99d37)] [#13505](https://github.com/nodejs/node/pull/13505)
 
-* **Readline**
+* **ReadLine**
   
   * A change that broke `npm init` and other code which uses `readline` multiple times on the same input stream is reverted. [[`0df6c0b5f0`](https://github.com/nodejs/node/commit/0df6c0b5f0)] [#13560](https://github.com/nodejs/node/pull/13560)
 
@@ -2973,7 +2973,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * The `async_hooks` module has landed in core [[`4a7233c178`](https://github.com/nodejs/node/commit/4a7233c178)] [#12892](https://github.com/nodejs/node/pull/12892).
 
-* **Buffer**
+* **Puffer**
   
   * Using the `--pending-deprecation` flag will cause Node.js to emit a deprecation warning when using `new Buffer(num)` or `Buffer(num)`. [[`d2d32ea5a2`](https://github.com/nodejs/node/commit/d2d32ea5a2)] [#11968](https://github.com/nodejs/node/pull/11968).
   * `new Buffer(num)` and `Buffer(num)` will zero-fill new `Buffer` instances [[`7eb1b4658e`](https://github.com/nodejs/node/commit/7eb1b4658e)] [#12141](https://github.com/nodejs/node/pull/12141).
@@ -2984,7 +2984,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   * Argument and kill signal validations have been improved [[`97a77288ce`](https://github.com/nodejs/node/commit/97a77288ce)] [#12348](https://github.com/nodejs/node/pull/12348), [[`d75fdd96aa`](https://github.com/nodejs/node/commit/d75fdd96aa)] [#10423](https://github.com/nodejs/node/pull/10423).
   * Child Process methods accept `Uint8Array` as input [[`627ecee9ed`](https://github.com/nodejs/node/commit/627ecee9ed)] [#10653](https://github.com/nodejs/node/pull/10653).
 
-* **Console**
+* **Konsole**
   
   * Error events emitted when using `console` methods are now supressed. [[`f18e08d820`](https://github.com/nodejs/node/commit/f18e08d820)] [#9744](https://github.com/nodejs/node/pull/9744).
 
@@ -2997,11 +2997,11 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Native `Promise` instances are now `Domain` aware [[`84dabe8373`](https://github.com/nodejs/node/commit/84dabe8373)] [#12489](https://github.com/nodejs/node/pull/12489).
 
-* **Errors**
+* **Fehler**
   
   * We have started assigning static error codes to errors generated by Node.js. This has been done through multiple commits and is still a work in progress.
 
-* **File System**
+* **Dateisystem**
   
   * The utility class `fs.SyncWriteStream` has been deprecated [[`7a55e34ef4`](https://github.com/nodejs/node/commit/7a55e34ef4)] [#10467](https://github.com/nodejs/node/pull/10467).
   * The deprecated `fs.read()` string interface has been removed [[`3c2a9361ff`](https://github.com/nodejs/node/commit/3c2a9361ff)] [#9683](https://github.com/nodejs/node/pull/9683).
@@ -3022,7 +3022,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **Process**
+* **Prozess**
   
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] [#12725](https://github.com/nodejs/node/pull/12725).
