@@ -51,7 +51,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -2699,7 +2699,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **crypto**
+* **التشفير**
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram**
   * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
@@ -2864,7 +2864,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 * **build**
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
-* **console**
+* **المحاورة**
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps**
   * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
