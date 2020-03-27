@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-Le module `url` fournit des utilités pour la resolution et l'analyse de l'URL. It can be accessed using:
+Le module `url` fournit des utilités pour la resolution et l'analyse de l'URL. On peut y accéder en utilisant :
 
 ```js
 const url = require('url');
