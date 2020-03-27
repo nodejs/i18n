@@ -391,7 +391,7 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`server.getConnections()`][].
 
 * {number}
 
@@ -1221,7 +1221,7 @@ added: v11.4.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `'TLSv1.3'`, `'TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1.2'`, unless changed using CLI options. Using `--tls-min-v1.0` sets the default to `'TLSv1'`. Using `--tls-min-v1.1` sets the default to `'TLSv1.1'`. Using `--tls-min-v1.3` sets the default to `'TLSv1.3'`. If multiple of the options are provided, the lowest minimum is used.
 
-## Deprecated APIs
+## Afgekeurde API's
 
 ### Class: `CryptoStream`
 <!-- YAML
