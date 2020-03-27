@@ -4,7 +4,7 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `url` fornisce utility per la risoluzione e l'analisi dell'URL. It can be accessed using:
+Il modulo `url` fornisce utility per la risoluzione e l'analisi dell'URL. Ci si può accedere utilizzando:
 
 ```js
 const url = require('url');
@@ -90,7 +90,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-Verrà generato un `TypeError` se l'`input` o la `base` non sono URL validi. Note that an effort will be made to coerce the given values into strings. For instance:
+Verrà generato un `TypeError` se l'`input` o la `base` non sono URL validi. Note that an effort will be made to coerce the given values into strings. Ad esempio:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
