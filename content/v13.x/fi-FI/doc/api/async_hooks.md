@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.1.0-->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
