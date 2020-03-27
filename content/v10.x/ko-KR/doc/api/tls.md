@@ -1031,7 +1031,7 @@ added: v10.6.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1'`.
 
-## Deprecated APIs
+## 폐기 예정인 API
 
 ### Class: CryptoStream
 
@@ -1093,7 +1093,7 @@ changes:
 * `isServer` {boolean} `true` to specify that this TLS connection should be opened as a server.
 * `requestCert` {boolean} `true` to specify whether a server should request a certificate from a connecting client. Only applies when `isServer` is `true`.
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
-* `options` 
+* `옵션` 
   * `secureContext`: A TLS context object from [`tls.createSecureContext()`][]
   * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Default:** `false`.
   * `server` {net.Server} A [`net.Server`][] instance
