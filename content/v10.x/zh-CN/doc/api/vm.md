@@ -388,10 +388,10 @@ changes:
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
   * `breakOnSigint`: if `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. 如果运行被终止，则抛出 [`Error`][] 。
 
-Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. Running code does not have access to local scope.
+Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. 正在运行的代码不能访问本地作用域。
 
 The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. 全局变量被包含在 `sandbox` 对象中。
 
@@ -435,7 +435,7 @@ changes:
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `contextCodeGeneration` {Object} 
@@ -473,7 +473,7 @@ added: v0.3.1
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
 
 Runs the compiled code contained by the `vm.Script` within the context of the current `global` object. Running code does not have access to local scope, but *does* have access to the current `global` object.
 
@@ -580,7 +580,7 @@ Returns `true` if the given `sandbox` object has been [contextified](#vm_what_do
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
 
 The `vm.runInContext()` method compiles `code`, runs it within the context of the `contextifiedSandbox`, then returns the result. Running code does not have access to the local scope. The `contextifiedSandbox` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
 
@@ -616,7 +616,7 @@ added: v0.3.1
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
 
@@ -653,7 +653,7 @@ added: v0.3.1
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][] 。 This value must be a strictly positive integer.
 
 `vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
