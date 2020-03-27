@@ -2031,6 +2031,7 @@ changes:
 
 * `privateKey` {Object | string | Buffer | KeyObject}
   * `oaepHash` {string} The hash function to use for OAEP padding. **Default:** `'sha1'`
+  * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP padding. If not specified, no label is used.
   * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
 * Returns: {Buffer} A new `Buffer` with the decrypted content.
@@ -2098,6 +2099,7 @@ changes:
 * `key` {Object | string | Buffer | KeyObject}
   * `key` {string | Buffer | KeyObject} A PEM encoded public or private key.
   * `oaepHash` {string} The hash function to use for OAEP padding. **Default:** `'sha1'`
+  * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP padding. If not specified, no label is used.
   * `passphrase` {string | Buffer} An optional passphrase for the private key.
   * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
