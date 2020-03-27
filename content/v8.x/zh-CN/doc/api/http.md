@@ -468,7 +468,7 @@ Sets a single header value for headers object. If this header already exists in 
 request.setHeader('Content-Type', 'application/json');
 ```
 
-or
+或
 
 ```js
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -542,11 +542,11 @@ added: v0.1.29
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+The `encoding` argument is optional and only applies when `chunk` is a string. 默认值为 `'utf8'`。
 
 The `callback` argument is optional and will be called when this chunk of data is flushed.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 ## Class: http.Server<!-- YAML
 added: v0.1.17
@@ -728,7 +728,7 @@ If there is a `'timeout'` event listener on the Server object, then it will be c
 
 By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if a callback is assigned to the Server's `'timeout'` event, timeouts must be handled explicitly.
 
-Returns `server`.
+返回 `server`。
 
 ### server.timeout<!-- YAML
 added: v0.9.12
@@ -927,7 +927,7 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -948,7 +948,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+或
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1056,7 +1056,7 @@ Note that in the `http` module, the response body is omitted when the request is
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
 
 ### response.writeContinue()<!-- YAML
 added: v0.3.0
@@ -1489,7 +1489,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* 返回：{http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
