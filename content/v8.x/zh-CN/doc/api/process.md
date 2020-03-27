@@ -821,7 +821,7 @@ Specifying a code to [`process.exit(code)`][`process.exit()`] will override any 
 added: v2.0.0
 -->The 
 
-`process.getegid()` method returns the numerical effective group identity of the Node.js process. (See getegid(2).)
+`process.getegid()` method returns the numerical effective group identity of the Node.js process. (请参阅 getegid(2)。)
 
 ```js
 if (process.getegid) {
@@ -837,7 +837,7 @@ added: v2.0.0
 
 * 返回：{Object}
 
-The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
+The `process.geteuid()` method returns the numerical effective user identity of the process. (请参阅 geteuid(2)。)
 
 ```js
 if (process.geteuid) {
@@ -853,7 +853,7 @@ added: v0.1.31
 
 * 返回：{Object}
 
-The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
+The `process.getgid()` method returns the numerical group identity of the process. (请参阅 getgid(2)。)
 
 ```js
 if (process.getgid) {
@@ -879,7 +879,7 @@ added: v0.1.28
 
 * 返回：{integer}
 
-The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
+`process.getuid()` 方法返回数字形式的进程用户标识。 (请参阅 getuid(2)。)
 
 ```js
 if (process.getuid) {
@@ -895,7 +895,7 @@ added: v0.7.6
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
 
-* Returns: {Array}
+* 返回：{Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -921,13 +921,13 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} The user name or numeric identifier.
+* `user` {string|number} 用户名或数字标识符。
 
-* `extra_group` {string|number} A group name or numeric identifier.
+* `extra_group` {string|number} 组名或数字标识符。
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. 例如：
+注意在撤销特权时必须要额外小心。 例如：
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -943,15 +943,15 @@ console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 added: v0.0.6
 -->
 
-* `pid` {number} A process ID
+* `pid` {number} 进程 ID
 
-* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
+* `signal` {string|number} 要发送的信号，为字符串或数字。 **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
-Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
+信号名称为字符串，例如：`'SIGINT'` 或 `'SIGHUP'`。 See [Signal Events](#process_signal_events) and kill(2) for more information.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+如果目标 `pid` 不存在，此方法会抛出一个错误。 As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
@@ -999,13 +999,13 @@ changes:
 
 The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
 
-For example, the code:
+例如，代码：
 
 ```js
 console.log(process.memoryUsage());
 ```
 
-Will generate:
+将会生成：
 
 ```js
 {
@@ -1016,7 +1016,7 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
+`heapTotal` 和 `heapUsed` 代表的是 V8 的内存使用状况。 `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
 
 对象，字符串，和闭包存储在 *堆* 中。 Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
 
@@ -1032,9 +1032,9 @@ changes:
 * `callback` {Function}
 * `...args` {any} 当调用 `callback` 时传入的额外参数
 
-The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
+`process.nextTick()` 方法将 `callback` 添加到 “下一个时间点的队列”。 Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
-This is *not* a simple alias to [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
+这 *不是* [`setTimeout(fn, 0)`][] 的一个简单别名。 It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
 
 ```js
 console.log('start');
@@ -1065,7 +1065,7 @@ thing.getReadyForStuff();
 // thing.startDoingStuff() gets called now, not before.
 ```
 
-It is very important for APIs to be either 100% synchronous or 100% asynchronous. Consider this example:
+It is very important for APIs to be either 100% synchronous or 100% asynchronous. 考虑如下示例：
 
 ```js
 // WARNING!  DO NOT USE!  BAD UNSAFE HAZARD!
@@ -1079,7 +1079,7 @@ function maybeSync(arg, cb) {
 }
 ```
 
-This API is hazardous because in the following case:
+此 API 是危险的，因为在如下情况下：
 
 ```js
 const maybeTrue = Math.random() > 0.5;
@@ -1091,9 +1091,9 @@ maybeSync(maybeTrue, () => {
 bar();
 ```
 
-It is not clear whether `foo()` or `bar()` will be called first.
+不清楚应该先调用 `foo()` 还是 `bar()`。
 
-The following approach is much better:
+如下的方法更好：
 
 ```js
 function definitelyAsync(arg, cb) {
@@ -1122,7 +1122,7 @@ added: v0.1.15
 
 * {integer}
 
-The `process.pid` property returns the PID of the process.
+`process.pid` 属性返回进程的 PID。
 
 ```js
 console.log(`This process is pid ${process.pid}`);
@@ -1136,7 +1136,7 @@ added: v0.1.16
 
 The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
 
-Currently possible values are:
+当前可能的值包括：
 
 * `'aix'`
 * `'darwin'`
@@ -1158,7 +1158,7 @@ added: v8.10.0
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+`process.ppid` 属性返回当前父进程的 PID。
 
 ```js
 console.log(`The parent process is pid ${process.ppid}`);
@@ -1177,7 +1177,7 @@ changes:
 
 The `process.release` property returns an Object containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
-`process.release` contains the following properties:
+`process.release` 包含如下属性：
 
 * `name` {string} 对于 Node.js，此值始终为 `'node'`。 For legacy io.js releases, this will be `'io.js'`.
 * `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
@@ -1226,7 +1226,7 @@ added: v2.0.0
 
 * `id` {string|number} 组名或 ID
 
-The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
+`process.setegid()` 方法设置进程的有效组标识符。 (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
 ```js
 if (process.getegid && process.setegid) {
@@ -1248,7 +1248,7 @@ added: v2.0.0
 
 * `id` {string|number} 用户名或 ID
 
-The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+`process.seteuid()` 方法设置进程的有效用户标识符。 (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.geteuid && process.seteuid) {
@@ -1270,7 +1270,7 @@ added: v0.1.31
 
 * `id` {string|number} 组名或 ID
 
-The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
+`process.setgid()` 方法设置进程的组标识符。 (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getgid && process.setgid) {
@@ -1294,7 +1294,7 @@ added: v0.9.4
 
 The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
 
-The `groups` array can contain numeric group IDs, group names or both.
+`groups` 数组可以包含数字形式的组 ID，组名，或者两者都有。
 
 *Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
 
@@ -1349,7 +1349,7 @@ process.stdin.on('end', () => {
 });
 ```
 
-As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. For more information see [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
+As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. 请参阅 [流兼容性](stream.html#stream_compatibility_with_older_node_js_versions) 以获取更多信息。
 
 *Note*: In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
 
@@ -1359,7 +1359,7 @@ As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.
 
 The `process.stdout` property returns a stream connected to `stdout` (fd `1`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `1` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
 
-For example, to copy process.stdin to process.stdout:
+例如：要想将 process.stdin 复制到 process.stdout：
 
 ```js
 process.stdin.pipe(process.stdout);
@@ -1385,7 +1385,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+例如：
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1398,7 +1398,7 @@ $ node -p "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-See the [TTY](tty.html#tty_tty) documentation for more information.
+请参阅 [TTY](tty.html#tty_tty) 文档以获取更多信息。
 
 ## process.throwDeprecation<!-- YAML
 added: v0.9.12
@@ -1432,7 +1432,7 @@ added: v0.1.19
 
 * `mask` {number}
 
-The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
+The `process.umask()` method sets or returns the Node.js process's file mode creation mask. 子进程会从父进程继承此掩码。 Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
 ```js
 const newmask = 0o022;
@@ -1450,7 +1450,7 @@ added: v0.5.0
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
-*Note*: The return value includes fractions of a second. Use `Math.floor()` to get whole seconds.
+*Note*: The return value includes fractions of a second. 使用 `Math.floor()` 来获取整秒值。
 
 ## process.version<!-- YAML
 added: v0.1.3
@@ -1458,7 +1458,7 @@ added: v0.1.3
 
 * {string}
 
-The `process.version` property returns the Node.js version string.
+`process.version` 属性返回 Node.js 版本号字符串。
 
 ```js
 console.log(`Version: ${process.version}`);
@@ -1481,7 +1481,7 @@ The `process.versions` property returns an object listing the version strings of
 console.log(process.versions);
 ```
 
-Will generate an object similar to:
+将会生成一个如下所示的类似对象：
 
 ```js
 { http_parser: '2.7.0',
