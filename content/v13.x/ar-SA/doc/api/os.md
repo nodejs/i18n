@@ -1,8 +1,8 @@
-# OS
+# نظام التشغيل
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 The `os` module provides operating system-related utility methods and properties. It can be accessed using:
 
