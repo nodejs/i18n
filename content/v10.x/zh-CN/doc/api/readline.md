@@ -357,12 +357,12 @@ changes:
 
 * `options` {Object} 
   * `input` {stream.Readable} 要侦听的 [Readable](stream.html#stream_readable_streams) 流。 This option is *required*.
-  * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
+  * `output` {stream.Writable} 将逐行读取数据写入的 [Writable](stream.html#stream_writable_streams) 流。
   * `completer` {Function} 用于 Tab 自动补全的可选函数。
   * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
   * `historySize` {number} 保留的最大历史记录行数。 To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **默认值：** `30`.
   * `prompt` {string} 要使用的提示符。 **默认值：** `'> '`.
-  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **默认值：** `100`.
+  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` 将被强制转换为不小于 `100` 的一个数字。 It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **默认值：** `100`.
   * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **默认:** `false`.
   * `escapeCodeTimeout` {number} The duration `readline` will wait for a character (when reading an ambiguous key sequence in milliseconds one that can both form a complete key sequence using the input read so far and can take additional input to complete a longer key sequence). **Default:** `500`.
 
