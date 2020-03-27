@@ -897,7 +897,7 @@ added: v8.4.0
 -->
 
 * `options` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **默认值：** `false`。
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
@@ -1071,7 +1071,7 @@ added: v8.4.0
 
 The `'response'` event is emitted when a response `HEADERS` frame has been received for this stream from the connected HTTP/2 server. The listener is invoked with two arguments: an Object containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
 
-For example:
+例如：
 
 ```js
 const http2 = require('http2');
@@ -1846,7 +1846,7 @@ Returns a [HTTP/2 Settings Object](#http2_settings_object) containing the deseri
 
 Headers are represented as own-properties on JavaScript objects. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an Array of strings (in order to send more than one value per header field).
 
-For example:
+例如：
 
 ```js
 const headers = {
@@ -2149,7 +2149,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. 例如：
 
 ```js
 // Prints something like:
@@ -2306,7 +2306,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. 例如：
 
 ```txt
 $ node
@@ -2326,7 +2326,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. 例如：
 
 ```txt
 $ node
@@ -2431,7 +2431,7 @@ added: v8.4.0
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+例如：
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2447,7 +2447,7 @@ added: v8.4.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Example:
+例如：
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2469,7 +2469,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+例如：
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2490,7 +2490,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+例如：
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2516,7 +2516,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Example:
+例如：
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2545,7 +2545,7 @@ added: v8.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+例如：
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2606,7 +2606,7 @@ Returns a Proxy object that acts as a `net.Socket` (or `tls.TLSSocket`) but appl
 
 All other interactions will be routed directly to the socket.
 
-Example:
+例如：
 
 ```js
 const http2 = require('http2');
@@ -2627,7 +2627,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+例如：
 
 ```js
 response.statusCode = 404;
@@ -2702,7 +2702,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Example:
+例如：
 
 ```js
 const body = 'hello world';
