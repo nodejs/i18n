@@ -2291,7 +2291,7 @@ status = napi_set_named_property(env, obj, "myProp", value);
 if (status != napi_ok) return status;
 ```
 
-Le proprietà indicizzate possono essere impostate in modo simile. Consider the following JavaScript snippet:
+Le proprietà indicizzate possono essere impostate in modo simile. Considera il seguente frammento JavaScript:
 
 ```js
 const arr = [];
@@ -2789,7 +2789,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
 
-Un esempio di caso d'utilizzo potrebbe essere il seguente. Consider the following JavaScript snippet:
+Un esempio di caso d'utilizzo potrebbe essere il seguente. Considera il seguente frammento JavaScript:
 
 ```js
 function AddTwo(num) {
