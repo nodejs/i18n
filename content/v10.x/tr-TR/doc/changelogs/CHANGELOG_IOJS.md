@@ -70,7 +70,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Diğer Versiyonlar 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -339,7 +339,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 ### Notable changes
 
 * **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
-* **crypto**: 
+* **kripto**: 
   * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
   * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
 * **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264). 
@@ -408,7 +408,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 
 ### Notable changes
 
-* **buffer**: 
+* **arabellek**: 
   * Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
   * `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
   * When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
@@ -1306,7 +1306,7 @@ Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
   * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 * **os**: `os.tmpdir()` is now cross-platform consistent and will no longer returns a path with a trailing slash on any platform (Christian Tellnes) [#747](https://github.com/nodejs/node/pull/747)
-* **process**: 
+* **işlem**: 
   * `process.nextTick()` performance has been improved by between 2-42% across the benchmark suite, notable because this is heavily used across core (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
   * New `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` and `process.setegid(id)` methods allow you to get and set effective UID and GID of the process (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
 * **repl**: 
@@ -1632,7 +1632,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **fs**: corruption can be caused by `fs.writeFileSync()` and append-mode `fs.writeFile()` and `fs.writeFileSync()` under certain circumstances, reported in [#1058](https://github.com/nodejs/node/issues/1058), fixed in [#1063](https://github.com/nodejs/node/pull/1063) (Olov Lassus).
 * **iojs**: an "internal modules" API has been introduced to allow core code to share JavaScript modules internally only without having to expose them as a public API, this feature is for core-only [#848](https://github.com/nodejs/node/pull/848) (Vladimir Kurchatkin).
-* **timers**: two minor problems with timers have been fixed: 
+* **zamanlayıcılar**: two minor problems with timers have been fixed: 
   * `Timer#close()` is now properly idempotent [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
   * `setTimeout()` will only run the callback once now after an `unref()` during the callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
   * NOTE: there are still other unresolved concerns with the timers code, such as [#1152](https://github.com/nodejs/node/pull/1152).
@@ -2184,7 +2184,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Notable changes
 
-* **stream**: 
+* **akış**: 
   * Simpler stream construction, see [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) for details. This extends the streams base objects to make their constructors accept default implementation methods, reducing the boilerplate required to implement custom streams. An updated version of readable-stream will eventually be released to match this change in core. (@sonewman)
 * **dns**: 
   * `lookup()` now supports an `'all'` boolean option, default to `false` but when turned on will cause the method to return an array of *all* resolved names for an address, see, [#744](https://github.com/nodejs/node/pull/744) (@silverwind)
@@ -2254,7 +2254,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`0a54b6a`](https://github.com/nodejs/node/commit/0a54b6a134a6815e30d1f78f8c8612d4a00399ad)] - doc: update streams wg charter (Chris Dickinson)
 * [[`b8ead4a`](https://github.com/nodejs/node/commit/b8ead4a23f8b0717204878235d61cfce3f3fdd30)] - Adjusting for feedback in the PR. (Mikeal Rogers)
 * [[`3af7f30`](https://github.com/nodejs/node/commit/3af7f30a7cceb1e418e5cd26c65a8ec5cc589d09)] - Initial documentation for working groups. (Mikeal Rogers)
-* [[`513724e`](https://github.com/nodejs/node/commit/513724efcc42ed150391915050fe60402f8dd48d)] - doc: add GPG fingerprint for chrisdickinson (Chris Dickinson)
+* [[`513724e`](https://github.com/nodejs/node/commit/513724efcc42ed150391915050fe60402f8dd48d)] - doküman: chrisdickinson için GPG parmak izi ekleyin (Chris Dickinson)
 * [[`4168198`](https://github.com/nodejs/node/commit/41681983921d323da79b6d45e4ae0f8edb541e18)] - doc: add TC meeting 2015-01-28 minutes (Rod Vagg)
 
 <a id="1.1.0"></a>
@@ -2267,7 +2267,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors 
+* hatalar 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2291,8 +2291,8 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Commits
 
-* [[`df48faf`](https://github.com/nodejs/node/commit/df48fafa92c4ff0caee54c2f7fa214073cbd787e)] - tools: add release tool and docs, remove old tools (Rod Vagg)
-* [[`14684d3`](https://github.com/nodejs/node/commit/14684d3d67ad7c04bec7b63377343dab3e389470)] - v8abbr: ASCIISTRINGTAG =&gt; ONEBYTESTRINGTAG (Fedor Indutny)
+* [[`df48faf`](https://github.com/nodejs/node/commit/df48fafa92c4ff0caee54c2f7fa214073cbd787e)] - araçlar: yayın aracı ve dokümanlar ekleyin, eski araçları kaldırın (Rod Vagg)
+* [[`14684d3`](https://github.com/nodejs/node/commit/14684d3d67ad7c04bec7b63377343dab3e389470)] - v8abbr: ASCII DİZİ ETİKETİ =&gt; BİR TEST ETME ETİKETİ (Fedor Indutny)
 * [[`6a5d731`](https://github.com/nodejs/node/commit/6a5d731f602b547074f4367a7eb3964395080c94)] - gyp: enable postmortem support, fix dtrace paths (Fedor Indutny)
 * [[`8b88ff8`](https://github.com/nodejs/node/commit/8b88ff85f106eed03bf677b9ab3b842f4edbdc6b)] - deps: fix postmortem support in v8 (Fedor Indutny)
 * [[`d0b0bb4`](https://github.com/nodejs/node/commit/d0b0bb4ae00f596042bebe1ae61ae685bfbebf7d)] - dtrace: fix removal of unused probes (Glen Keane)
@@ -2308,9 +2308,9 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`bce7a26`](https://github.com/nodejs/node/commit/bce7a2608eb198eee6ecd7991062efd6daeeb440)] - deps: make node-gyp work again on windows (Bert Belder)
 * [[`1bdd74d`](https://github.com/nodejs/node/commit/1bdd74d20a3c979d51929a1039824d90abca2cdb)] - deps: make node-gyp fetch tarballs from iojs.org (Ben Noordhuis)
 * [[`faf34ff`](https://github.com/nodejs/node/commit/faf34ffbd321f4657bd99fb82931e1c9a4dda6af)] - deps: upgrade npm to 2.4.1 (Forrest L Norvell)
-* [[`40e29dc`](https://github.com/nodejs/node/commit/40e29dcbbf33d919f5cc0cbab5fa65a282adb04b)] - assert: use util.inspect() to create error messages (cjihrig)
+* [[`40e29dc`](https://github.com/nodejs/node/commit/40e29dcbbf33d919f5cc0cbab5fa65a282adb04b)] - savunma: hata mesajları oluşturmak için util.inspect() kullanın (cjihrig)
 * [[`bc2c85c`](https://github.com/nodejs/node/commit/bc2c85ceef7ac034830e4a4357d0aef69cd6e386)] - fs: improve error messages (Bert Belder)
-* [[`0767c2f`](https://github.com/nodejs/node/commit/0767c2feb1cb6921acd18be3392d331e093b2b4c)] - lib: fix max size check in Buffer constructor (Ben Noordhuis)
+* [[`0767c2f`](https://github.com/nodejs/node/commit/0767c2feb1cb6921acd18be3392d331e093b2b4c)] - kütüphane: Arabellek kurucusunda maksimum boyut kontrolü düzeltildi (Ben Noordhuis)
 * [[`65b1e4f`](https://github.com/nodejs/node/commit/65b1e4f56f1f49dccd19b65dee2856df05b06c89)] - dgram: implicit binds should be exclusive (Sam Roberts)
 * [[`083c421`](https://github.com/nodejs/node/commit/083c421b5ca08576897b5da396085a462010780e)] - benchmark: remove extra spacing in http options (Brendan Ashworth)
 * [[`e17e6fb`](https://github.com/nodejs/node/commit/e17e6fb2faa04193eddf8062fbd49f1612b4dbff)] - util: use on-stack buffer for Utf8Value (Fedor Indutny)
@@ -2327,7 +2327,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`dd47a8c`](https://github.com/nodejs/node/commit/dd47a8c78547db14ea0c7fc2f3375e8c9cb1a129)] - src: set default signal dispositions at start-up (Ben Noordhuis)
 * [[`63ae1d2`](https://github.com/nodejs/node/commit/63ae1d203aba94b9a35400acdf00ff968fb6eb05)] - src: rework early debug signal handling (Ben Noordhuis)
 * [[`5756f92`](https://github.com/nodejs/node/commit/5756f92f464fd0f2d04dd05bc30b350010885f74)] - src: do platform-specific initialization earlier (Ben Noordhuis)
-* [[`24bd4e0`](https://github.com/nodejs/node/commit/24bd4e055562d8eb8a0d8db907c1715cc37e90b4)] - test: add http upgrade header regression test (Ben Noordhuis)
+* [[`24bd4e0`](https://github.com/nodejs/node/commit/24bd4e055562d8eb8a0d8db907c1715cc37e90b4)] - test: http yükseltme başlığı geri çekilme testi ekleyin (Ben Noordhuis)
 * [[`6605096`](https://github.com/nodejs/node/commit/660509694cfd4de59df0548eabbe18c97d75c63a)] - deps: roll back http_parser to 2.3.0 (Ben Noordhuis)
 * [[`90ddb46`](https://github.com/nodejs/node/commit/90ddb46d522c37d2bc2eb68a6e0c9d52f9fbba42)] - crypto: remove use of this._readableState (Calvin Metcalf)
 * [[`45d8d9f`](https://github.com/nodejs/node/commit/45d8d9f8262983d7d6434f4500b4e88b63052cd5)] - buffer: implement `iterable` interface (Vladimir Kurchatkin)
@@ -2392,7 +2392,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`3143d73`](https://github.com/nodejs/node/commit/3143d732f6efd82da76e9c53ad192ac14071bf70)] - test: delete parallel/test-process-active-wraps (Ben Noordhuis)
 * [[`4f95b5d`](https://github.com/nodejs/node/commit/4f95b5d8253ef64e3673b9fa178c41dc8109b72b)] - test: fix parallel/test-http-destroyed-socket-write2 (Ben Noordhuis)
 * [[`5ba307a`](https://github.com/nodejs/node/commit/5ba307a97879342ff81aa813ffd7da46b6411b1c)] - test: fix parallel/test-dgram-error-message-address (Ben Noordhuis)
-* [[`f4c536b`](https://github.com/nodejs/node/commit/f4c536b749735a0240da08386d6784767f95cb5d)] - debugger: don't override module binding (Vladimir Kurchatkin)
+* [[`f4c536b`](https://github.com/nodejs/node/commit/f4c536b749735a0240da08386d6784767f95cb5d)] - hata ayıklayıcı: modül bağlanmasını geçersiz kılmayın (Vladimir Kurchatkin)
 * [[`40ffed8`](https://github.com/nodejs/node/commit/40ffed8f3f4392d6e110769ca06d86d6295fc645)] - stream: use nop as write() callback if omitted (cjihrig)
 * [[`df0d790`](https://github.com/nodejs/node/commit/df0d790107edf635dc233f3338b3c2e68db58cc7)] - doc: dns.lookupService has wrong header level (Icer Liang)
 * [[`8b1db9c`](https://github.com/nodejs/node/commit/8b1db9c0a7dc39261218a0fac2dd6cf4fbb6a7b4)] - doc: note in docs about missing interfaces (Todd Kennedy)
@@ -2440,7 +2440,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Commits
 
-* [[`9419e1f`](https://github.com/nodejs/node/commit/9419e1fb698e1a9319fec5c4777686d62fad4a51)] - src: fix inconsistency between a check and error (toastynerd)
+* [[`9419e1f`](https://github.com/nodejs/node/commit/9419e1fb698e1a9319fec5c4777686d62fad4a51)] - kaynak: bir kontrol ile hata arasındaki tutarsızlığı düzeltin (toastynerd)
 * [[`03ee4d8`](https://github.com/nodejs/node/commit/03ee4d854744e83f99bc5857b98f75139c448564)] - fs: add error code on null byte paths (cjihrig)
 * [[`e2558f0`](https://github.com/nodejs/node/commit/e2558f02dfb671fc74f5768d4401a826efb5c117)] - net: fix error details in connect() (cjihrig)
 * [[`4af5746`](https://github.com/nodejs/node/commit/4af5746993a6b91c88973b6debcee19c6cd35185)] - win,build: remove duplicate definition (Bert Belder)
@@ -2453,7 +2453,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`2f33e00`](https://github.com/nodejs/node/commit/2f33e00d716d692e84b02768430664fd92298c98)] - test: fix test-debug-port-from-cmdline.js (Julien Gilli)
 * [[`b7365c1`](https://github.com/nodejs/node/commit/b7365c15597253e906590045aa6f3f07f6e76b52)] - repl: make REPL support multiline template literals (Xiaowei Li)
 * [[`2253d30`](https://github.com/nodejs/node/commit/2253d30d9cbba42abc1faa183e4480cac69c4222)] - build: remove unused variable (Johan Bergström)
-* [[`ab04a43`](https://github.com/nodejs/node/commit/ab04a434761cf66d107481d58798f36d3cb49d46)] - doc: add optional sudo to make install in README (Glen Keane)
+* [[`ab04a43`](https://github.com/nodejs/node/commit/ab04a434761cf66d107481d58798f36d3cb49d46)] - doküman: README'ye kurulum yapmak için isteğe bağlı sudo ekleyin (Glen Keane)
 * [[`1b1cd1c`](https://github.com/nodejs/node/commit/1b1cd1c3f8e21b34a8e1355e545057a661acaa15)] - build: shorten configurate script print on stdout (Roman Reiss)
 * [[`d566ded`](https://github.com/nodejs/node/commit/d566ded26b996c27afeb7fc208709bb6096bfa13)] - deps: fix V8 debugger bugs (Jay Jaeho Lee)
 * [[`6f36630`](https://github.com/nodejs/node/commit/6f36630f55efcbe5954a52ac22bbb0a378020e98)] - doc: fix util.isBuffer examples (Thomas Jensen)
@@ -2494,7 +2494,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * [[`fd30eb2`](https://github.com/nodejs/node/commit/fd30eb21526bdaa5aabb15523b0a766e0cbbe535)] - src: fix jslint errors (Yosuke Furukawa)
 * [[`946eabd`](https://github.com/nodejs/node/commit/946eabd18f623b438e17164b14c98066f7054168)] - tools: update closure linter to 2.3.17 (Yosuke Furukawa)
 * [[`9e62ae4`](https://github.com/nodejs/node/commit/9e62ae4304a0bee3aec8c5fb743eb17d78b1cd35)] - _debug_agent: use `readableObjectMode` option (Vladimir Kurchatkin)
-* [[`eec4c81`](https://github.com/nodejs/node/commit/eec4c8168be1f0a01db3576ae99f7756eea01151)] - doc: fix formatting in LICENSE for RTF generation (Rod Vagg)
+* [[`eec4c81`](https://github.com/nodejs/node/commit/eec4c8168be1f0a01db3576ae99f7756eea01151)] - doküman: RTF üretimi için LISANS'ta biçimlendirme düzeltmesi (Rod Vagg)
 * [[`e789103`](https://github.com/nodejs/node/commit/e7891034c269dccf8d6264acc4b7421e19a905f6)] - doc: fix 404s for syntax highlighting js (Phil Hughes)
 * [[`ca039b4`](https://github.com/nodejs/node/commit/ca039b4616915b95130ba5ee5a2cf9f5c768645e)] - src: define AI_V4MAPPED for OpenBSD (Aaron Bieber)
 * [[`753fcaa`](https://github.com/nodejs/node/commit/753fcaa27066b34a99ee1c02b43a32744fc92a3c)] - doc: extend example of http.request by end event (Michal Tehnik)
@@ -2536,7 +2536,7 @@ Below is a summary of the user-facing changes to be found in the io.js v1.0.0 re
   * punycode: 1.2.0 to 1.3.2.
 * Performance and stability improvements on all platforms.
 
-### buffer
+### arabellek
 
 https://iojs.org/api/buffer.html
 
@@ -2555,13 +2555,13 @@ https://iojs.org/api/child_process.html
 * Added synchronous counterparts for the child process functions: `child_process.spawnSync`, `child_process.execSync`, and `child_process.execFileSync`.
 * Added the path to any `ENOENT` errors, for easier debugging.
 
-### console
+### konsol
 
 https://iojs.org/api/console.html
 
 * Added an `options` parameter to `console.dir`.
 
-### cluster
+### küme
 
 https://iojs.org/api/cluster.html
 
@@ -2569,7 +2569,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### crypto
+### kripto
 
 https://iojs.org/api/crypto.html
 
@@ -2596,7 +2596,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### events
+### etkinlikler
 
 https://iojs.org/api/events.html
 
@@ -2639,7 +2639,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### yol
 
 https://iojs.org/api/path.html
 
@@ -2647,7 +2647,7 @@ https://iojs.org/api/path.html
 * Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
 * Improved `path.join` performance.
 
-### process
+### işlem
 
 https://iojs.org/api/process.html
 
@@ -2694,7 +2694,7 @@ In addition to the bulk-write changes, the performance of repeated small writes 
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
-### timers
+### zamanlayıcılar
 
 https://iojs.org/api/timers.html
 
