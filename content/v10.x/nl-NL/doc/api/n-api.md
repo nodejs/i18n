@@ -3975,7 +3975,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 <!-- YAML
 added: v10.6.0
