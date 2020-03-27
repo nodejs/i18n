@@ -416,7 +416,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Επιστρέφει: {this}
 
 Τελειώνει την αποστολή του αιτήματος. Αν κάποια μέρη του σώματος δεν έχουν αποσταλεί, θα προστεθούν στην ροή. Αν το αίτημα είναι τεμαχισμένο, αυτό θα στείλει τον τερματισμό `'0\r\n\r\n'`.
 
@@ -869,7 +869,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Επιστρέφει: {this}
 
 Αυτή η μέθοδος αποστέλλει σήμα στον εξυπηρετητή ότι οι κεφαλίδες απόκρισης και το σώμα έχουν αποσταλεί, ο εξυπηρετητής θα πρέπει να θεωρήσει αυτό το μήνυμα ως ολοκληρωμένο. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
 
@@ -1504,7 +1504,7 @@ changes:
   * `path` {string} Διαδρομή αιτήματος. Θα πρέπει να συμπεριλαμβάνει το string ερωτήματος, αν υπάρχει. Π.Χ. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
   * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή. **Default:** `defaultPort` if set, else `80`.
   * `protocol` {string} Το πρωτόκολλο που θα χρησιμοποιηθεί. **Default:** `'http:'`.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Από προεπιλογή είναι `true`.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: Ένας αριθμός που ορίζει την εξάντληση του χρονικού περιθωρίου του socket σε χιλιοστά του δευτερολέπτου. Αυτό ορίζει την εξάντληση του χρονικού περιθωρίου πριν γίνει η σύνδεση του socket.
 * `callback` {Function}
