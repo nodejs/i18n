@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilitet: 2 - Stabil
 
 To use the HTTP server and client one must `require('http')`.
 
