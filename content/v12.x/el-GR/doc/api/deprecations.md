@@ -1,4 +1,4 @@
-# Deprecated APIs
+# Αποσυρόμενα API
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
