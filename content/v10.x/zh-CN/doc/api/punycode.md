@@ -14,7 +14,7 @@ changes:
 
 **在 Node.js 中绑定的 punycode 模块版本正在被弃用**。 在未来的主要版本的 Node.js 中，此模块将被删除。 Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
-`punycode` 模块是打包后的 [Punycode.js](https://github.com/bestiejs/punycode.js) 模块。 It can be accessed using:
+`punycode` 模块是打包后的 [Punycode.js](https://github.com/bestiejs/punycode.js) 模块。 可以通过如下方式访问：
 
 ```js
 const punycode = require('punycode');
