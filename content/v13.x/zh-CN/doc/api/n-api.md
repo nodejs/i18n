@@ -134,7 +134,7 @@ The three tools listed here permit native addon developers and maintainers to cr
 
 [prebuildify](https://github.com/prebuild/prebuildify) is tool based on node-gyp. The advantage of prebuildify is that the built binaries are bundled with the native module when it's uploaded to npm. The binaries are downloaded from npm and are immediately available to the module user when the native module is installed.
 
-## Usage
+## 用法
 
 In order to use the N-API functions, include the file [`node_api.h`][] which is located in the src directory in the node development tree:
 
@@ -525,7 +525,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 * `[in] context`: The optional data with which the thread-safe function was created.
 * `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## Error Handling
+## 错误处理
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
