@@ -3,7 +3,7 @@
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 ## Introduction
 
@@ -744,7 +744,7 @@ export async function resolve(specifier, context, defaultResolve) {
 
 The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `format`     | Description                                                              |
+| `format`     | 描述                                                                       |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
