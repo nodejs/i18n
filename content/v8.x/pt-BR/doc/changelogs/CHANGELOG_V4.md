@@ -54,15 +54,15 @@
   </tr>
 </table>
 
-* Other Versions 
+* Outras versões 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
   * [0.12.x](CHANGELOG_V012.md)
-  * [0.10.x](CHANGELOG_V010.md)
+  * [0.10x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arquivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v4 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2017 and maintained until April 2018.
 
@@ -109,7 +109,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable Changes
 
-* **crypto**: 
+* **cripto**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -296,7 +296,7 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
 * **child_process**: add shell option to spawn() (cjihrig) [#4598](https://github.com/nodejs/node/pull/4598)
 * **deps**: 
   * **v8**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* **crypto**: 
+* **cripto**: 
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
@@ -1116,7 +1116,7 @@ Semver Patch:
 
 * **buffer**: 
   * ignore negative allocation lengths (Anna Henningsen) [#7562](https://github.com/nodejs/node/pull/7562)
-* **crypto**: 
+* **cripto**: 
   * update root certificates (Ben Noordhuis) [#7363](https://github.com/nodejs/node/pull/7363)
 * **libuv**: 
   * upgrade libuv to 1.9.1 (Saúl Ibarra Corretgé) [#6796](https://github.com/nodejs/node/pull/6796)
