@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -1776,7 +1776,7 @@ added: v8.4.0
 -->
 
 * `settings` {HTTP/2 Settings Object}
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 
@@ -2409,7 +2409,7 @@ Boolean value that indicates whether the response has completed. Starts as `fals
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* Returns: {string}
+* Retourneert: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
@@ -2439,7 +2439,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Returns: {Object}
+* Retourneert: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2459,7 +2459,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -2619,7 +2619,7 @@ added: v8.4.0
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
