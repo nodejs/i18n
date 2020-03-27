@@ -4,7 +4,7 @@
 
 > Стабильность: 2 - Стабильно
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. Это осуществляется с помощью:
 
 ```js
 const url = require('url');
