@@ -21,7 +21,7 @@
 * [المحاورة](console.html)
 * [التشفير](crypto.html)
 * [مصحح الأخطاء](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [واجهات برمجة التطبيقات المهملة](deprecations.html)
 * [نظام أسماء النطاقات (DNS)](dns.html)
 * [النطاق](domain.html)
 * [وحدات ECMAScript](esm.html)
