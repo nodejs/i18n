@@ -1657,7 +1657,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 Otherwise, returns `false`.
+如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1693,7 +1693,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是 `Function`，则返回 `true`。 Otherwise, returns `false`.
+如果给定的 `object` 是 `Function`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1719,7 +1719,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 严格为 `null`，则返回 `true`。 Otherwise, returns `false`.
+如果给定的 `object` 严格为 `null`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1744,7 +1744,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 Otherwise, returns `false`.
+如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -1823,7 +1823,7 @@ deprecated: v4.0.0
 * `object` {any}
 * 返回：{boolean}
 
-如果给定的 `object` 是基本类型，则返回 `true`。 Otherwise, returns `false`.
+如果给定的 `object` 是基本类型，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
