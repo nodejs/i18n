@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 <!--name=vm-->
 
@@ -75,7 +75,7 @@ Creating a new `vm.Script` object compiles `code` but does not run it. The compi
 added: v10.6.0
 -->
 
-* Returns: {Buffer}
+* 返回：{Buffer}
 
 Creates a code cache that can be used with the Script constructor's `cachedData` option. Returns a Buffer. This method may be called at any time and any number of times.
 
@@ -222,7 +222,7 @@ console.log(globalVar);
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -416,7 +416,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -479,7 +479,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -609,7 +609,7 @@ added: v0.11.7
 -->
 
 * `object` {Object}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if the given `oject` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
