@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -323,7 +323,7 @@ added: v0.3.4
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-* Returns: {net.Socket}
+* Retourneert: {net.Socket}
 
 Creates a new socket object.
 
@@ -422,7 +422,7 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Retourneert: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -569,7 +569,7 @@ added: v0.1.90
 -->
 
 * `exception` {Object}
-* Returns: {net.Socket}
+* Retourneert: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -743,7 +743,7 @@ added: v0.1.90
 * `data` {string|Buffer|Uint8Array}
 * `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
 * `callback` {Function}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
@@ -770,7 +770,7 @@ added: v0.7.0
 
 * `options` {Object}
 * `connectListener` {Function}
-* Returns: {net.Socket}
+* Retourneert: {net.Socket}
 
 Alias to [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -781,7 +781,7 @@ added: v0.1.90
 
 * `path` {string}
 * `connectListener` {Function}
-* Returns: {net.Socket}
+* Retourneert: {net.Socket}
 
 Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
@@ -793,7 +793,7 @@ added: v0.1.90
 * `port` {number}
 * `host` {string}
 * `connectListener` {Function}
-* Returns: {net.Socket}
+* Retourneert: {net.Socket}
 
 Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
@@ -943,7 +943,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {integer}
+* Retourneert: {integer}
 
 Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
 
@@ -953,7 +953,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 
@@ -963,6 +963,6 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
