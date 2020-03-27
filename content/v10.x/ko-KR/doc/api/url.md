@@ -835,7 +835,7 @@ added: v7.6.0
 -->
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
-* `options` {Object} 
+* `옵션` {Object} 
   * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
