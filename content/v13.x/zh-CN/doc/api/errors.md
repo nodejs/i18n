@@ -1,4 +1,4 @@
-# Errors
+# 错误处理
 
 <!--introduced_in=v4.0.0-->
 <!--type=misc-->
@@ -152,7 +152,7 @@ The first line of the trace will be prefixed with `${myObject.name}: ${myObject.
 
 The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. 例如：
 
 ```js
 function MyError() {
@@ -418,7 +418,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+## Exceptions vs. 错误处理<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -1036,7 +1036,7 @@ An option pair is incompatible with each other and cannot be used at the same ti
 
 ### `ERR_INPUT_TYPE_NOT_ALLOWED`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 The `--input-type` flag was used to attempt to execute a file. This flag can only be used with input via `--eval`, `--print` or `STDIN`.
 
@@ -1370,7 +1370,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### `ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 An [ES Module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1402,7 +1402,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### `ERR_MODULE_NOT_FOUND`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 An [ES Module](esm.html) could not be resolved.
 
@@ -1491,7 +1491,7 @@ A given value is out of the accepted range.
 
 ### `ERR_REQUIRE_ESM`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 An attempt was made to `require()` an [ES Module](esm.html).
 
@@ -1815,7 +1815,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### `ERR_UNKNOWN_FILE_EXTENSION`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1823,7 +1823,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### `ERR_UNKNOWN_MODULE_FORMAT`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1979,7 +1979,7 @@ changes:
 
 ## Legacy Node.js Error Codes
 
-> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
+> 稳定性：0 - 已弃用。 These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_CANNOT_TRANSFER_OBJECT"></a>
 
@@ -2198,7 +2198,7 @@ These errors have never been released, but had been present on master between re
 
 #### `ERR_ENTRY_TYPE_MISMATCH`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 The `--entry-type=commonjs` flag was used to attempt to execute an `.mjs` file or a `.js` file where the nearest parent `package.json` contains `"type": "module"`; or the `--entry-type=module` flag was used to attempt to execute a `.cjs` file or a `.js` file where the nearest parent `package.json` either lacks a `"type"` field or contains `"type": "commonjs"`.
 
@@ -2236,7 +2236,7 @@ Used in the `repl` in case the old history file is used and an error occurred wh
 
 #### `ERR_INVALID_REPL_TYPE`
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 The `--entry-type=...` flag is not compatible with the Node.js REPL.
 
