@@ -1402,7 +1402,7 @@ The `'timeout'` event is emitted when there is no activity on the Server for a g
 
 To change the default timeout use the [`--http-server-default-timeout`][] flag.
 
-#### `server.close([callback])`
+#### `server.close ([callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1413,7 +1413,7 @@ Stops the server from establishing new sessions. This does not prevent new reque
 
 If `callback` is provided, it is not invoked until all active sessions have been closed, although the server has already stopped allowing new sessions. See [`net.Server.close()`][] for more details.
 
-#### `server.setTimeout([msecs][, callback])`
+#### `server.setTimeout ([msecs][, callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1523,7 +1523,7 @@ added: v8.4.0
 
 The `'unknownProtocol'` event is emitted when a connecting client fails to negotiate an allowed protocol (i.e. HTTP/2 or HTTP/1.1). The event handler receives the socket for handling. If no listener is registered for this event, the connection is terminated. See the [Compatibility API](#http2_compatibility_api).
 
-#### `server.close([callback])`
+#### `server.close ([callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1534,7 +1534,7 @@ Stops the server from establishing new sessions. This does not prevent new reque
 
 If `callback` is provided, it is not invoked until all active sessions have been closed, although the server has already stopped allowing new sessions. See [`tls.Server.close()`][] for more details.
 
-#### `server.setTimeout([msecs][, callback])`
+#### `server.setTimeout ([msecs][, callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1742,7 +1742,7 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Valor  | Nome                | Constant                                      |
+| Valor  | Nome                | Constante                                     |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Error Handling
+### Tratamento de erros
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2389,7 +2389,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Retorna: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2514,7 +2514,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+ou
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2661,7 +2661,7 @@ Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
-const body = 'hello world';
+const body = 'ola mundo';
 response.writeHead(200, {
   'Content-Length': Buffer.byteLength(body),
   'Content-Type': 'text/plain' });
