@@ -145,7 +145,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ### Notable changes
 
-* **crypto**: 
+* **क्रिप्टो**: 
   * add support for chacha20-poly1305 for AEAD (chux0519) [#24081](https://github.com/nodejs/node/pull/24081)
   * increase maxmem range from 32 to 53 bits (Tobias Nießen) [#28799](https://github.com/nodejs/node/pull/28799)
 * **deps**: 
@@ -160,7 +160,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
   * mark version 5 N-APIs as stable (Gabriel Schulhof) [#29401](https://github.com/nodejs/node/pull/29401)
   * implement date object (Jarrod Connolly) [#25917](https://github.com/nodejs/node/pull/25917)
 * **process**: add --unhandled-rejections flag (Ruben Bridgewater) [#26599](https://github.com/nodejs/node/pull/26599)
-* **stream**: 
+* **धारा**: 
   * implement Readable.from async iterator utility (Guy Bedford) [#27660](https://github.com/nodejs/node/pull/27660)
   * make Symbol.asyncIterator support stable (Matteo Collina) [#26989](https://github.com/nodejs/node/pull/26989)
 
@@ -692,7 +692,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
 * **http** 
   * fix error check in Execute() (Brian White) [#25863](https://github.com/nodejs/node/pull/25863)
-* **stream** 
+* **धारा** 
   * fix end-of-stream for HTTP/2 (Anna Henningsen) [#24926](https://github.com/nodejs/node/pull/24926)
 
 ### Commits
@@ -1664,7 +1664,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * **cli** 
   * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
   * Added bash completion for the `node` binary. To generate a bash completion script, run `node --completion-bash`. The output can be saved to a file which can be sourced to enable completion. [#20713](https://github.com/nodejs/node/pull/20713)
-* **crypto** 
+* **क्रिप्टो** 
   * Added support for PEM-level encryption. [#23151](https://github.com/nodejs/node/pull/23151)
   * Added an API asymmetric key pair generation. The new methods `crypto.generateKeyPair` and `crypto.generateKeyPairSync` can be used to generate public and private key pairs. The API supports RSA, DSA and EC and a variety of key encodings (both PEM and DER). [#22660](https://github.com/nodejs/node/pull/22660)
 * **fs** 
@@ -2336,7 +2336,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **buffer**: 
+* **बफर**: 
   * Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
   * Fix unintentional exposure of uninitialized memory in `Buffer.alloc()` (CVE-2018-7166)
 * **deps**: 
@@ -2902,7 +2902,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **crypto**: 
+* **क्रिप्टो**: 
   * Support for `crypto.scrypt()` has been added. [#20816](https://github.com/nodejs/node/pull/20816)
 * **fs**: 
   * BigInt support has been added to `fs.stat` and `fs.watchFile`. [#20220](https://github.com/nodejs/node/pull/20220)
@@ -3102,7 +3102,7 @@ Fixes for the following CVEs are included in this release:
 
 * **deps**: 
   * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
-* **stream**: 
+* **धारा**: 
   * ensure Stream.pipeline re-throws errors without callback (Blaine Bublitz) [#20437](https://github.com/nodejs/node/pull/20437)
 
 ### Commits
@@ -3210,9 +3210,9 @@ Fixes for the following CVEs are included in this release:
   * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
 * **fs**: 
   * fix reads with pos \> 4GB (Mathias Buus) [#21003](https://github.com/nodejs/node/pull/21003)
-* **net**: 
+* **नेट/जाल**: 
   * new option to allow IPC servers to be readable and writable by all users (Bartosz Sosnowski) [#19472](https://github.com/nodejs/node/pull/19472)
-* **stream**: 
+* **धारा**: 
   * fix removeAllListeners() for Stream.Readable to work as expected when no arguments are passed (Kael Zhang) [#20924](https://github.com/nodejs/node/pull/20924)
 * **Added new collaborators** 
   * [jdlaton](https://github.com/jdalton) John-David Dalton
@@ -3284,7 +3284,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
 * **assert**: 
   * The `error` parameter of `assert.throws()` can be an object containing regular expressions now. (Ruben Bridgewater) [#20485](https://github.com/nodejs/node/pull/20485)
-* **crypto**: 
+* **क्रिप्टो**: 
   * The `authTagLength` option has been made more flexible. (Tobias Nießen) [#20235](https://github.com/nodejs/node/pull/20235), [#20039](https://github.com/nodejs/node/pull/20039)
 * **esm**: 
   * Builtin modules (e.g. `fs`) now provide named exports in ES6 modules. (Gus Caplan) [#20403](https://github.com/nodejs/node/pull/20403)
@@ -3292,7 +3292,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Handling of `close` and `aborted` events has been made more consistent. (Robert Nagy) [#20075](https://github.com/nodejs/node/pull/20075), [#20611](https://github.com/nodejs/node/pull/20611)
 * **module**: 
   * add --preserve-symlinks-main (David Goldstein) [#19911](https://github.com/nodejs/node/pull/19911)
-* **timers**: 
+* **टाइमर**: 
   * `timeout.refresh()` has been added to the public API. (Jeremiah Senkpiel) [#20298](https://github.com/nodejs/node/pull/20298)
 * Embedder support: 
   * Functions for creating V8 `Isolate` and `Context` objects with Node.js-specific behaviour have been added to the API. (Allen Yonghuang Wang) [#20639](https://github.com/nodejs/node/pull/20639)
