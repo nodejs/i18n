@@ -472,7 +472,7 @@ added: v6.1.0
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
 
-* Returns: {Object}
+* Επιστρέφει: {Object}
     
     * `user` {integer}
     * `system` {integer}
@@ -895,7 +895,7 @@ added: v0.7.6
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
 
-* Returns: {Array}
+* Επιστρέφει: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -927,7 +927,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Example:
+Note that care must be taken when dropping privileges. Παράδειγμα:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
