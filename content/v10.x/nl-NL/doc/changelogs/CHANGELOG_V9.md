@@ -1375,7 +1375,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * module.builtinModules will return a list of built in modules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
 * **n-api**: 
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
-* **process**: 
+* **proces**: 
   * process.setUncaughtExceptionCaptureCallback can now be used to customize behavior for `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
   * A signal handler is now able to receive the signal code that triggered the handler. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
 * **src**: 
@@ -1813,7 +1813,7 @@ Fixes for the following CVEs are included in this release:
   * Support building with both 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * **fs**: 
   * fs.realpathSync.native and fs.realpath.native are now exposed (Ben Noordhuis) [#15776](https://github.com/nodejs/node/pull/15776)
-* **process**: 
+* **proces**: 
   * expose process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 
 ### Commits
@@ -2076,7 +2076,7 @@ Fixes for the following CVEs are included in this release:
   
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Errors**
+* **Fouten**
   
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues: 
@@ -2104,7 +2104,7 @@ Fixes for the following CVEs are included in this release:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **Child Processes**
+* **Kindprocessen**
   
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] [#4670](https://github.com/nodejs/node/pull/4670)
 
