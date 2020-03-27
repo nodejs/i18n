@@ -346,7 +346,7 @@ added: v0.5.8
 * `eventType` {string} Il tipo di evento change che si è verificato
 * `filename` {string|Buffer} Il filename che è cambiato (se rilevante/disponibile)
 
-Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
+Viene emesso quando qualcosa cambia in una directory o in un file sottoposto al watching. Vedi ulteriori dettagli in [`fs.watch()`][].
 
 The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
 
@@ -384,7 +384,7 @@ Emitted when an error occurs while watching the file. The errored `fs.FSWatcher`
 added: v0.5.8
 -->
 
-Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSWatcher` object is no longer usable.
+Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato. Once stopped, the `fs.FSWatcher` object is no longer usable.
 
 ## Class: fs.ReadStream
 
@@ -731,7 +731,7 @@ The timestamp indicating the creation time of this file.
 
 The `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` properties are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. The `Date` and number values are not connected. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
 
-The times in the stat object have the following semantics:
+I momenti nello stat object hanno la seguente semantica:
 
 * `atime` "Access Time" - Momento in cui è avvenuto l'ultimo accesso ai dati del file. Changed by the mknod(2), utimes(2), and read(2) system calls.
 * `mtime` "Modified Time" - Momento in cui è avvenuta l'ultima modifica ai dati del file. Modificato dalle system call mknod(2), utimes(2) e write(2).
@@ -1394,7 +1394,7 @@ An example to read the last 10 bytes of a file which is 100 bytes long:
 fs.createReadStream('sample.txt', { start: 90, end: 99 });
 ```
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 ## fs.createWriteStream(path[, options])
 
@@ -1433,7 +1433,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 ## fs.exists(path, callback)
 
@@ -1858,7 +1858,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Synchronous version of [`fs.futimes()`][]. Returns `undefined`.
+Versione sincrona di [`fs.futimes()`][]. Returns `undefined`.
 
 ## fs.lchmod(path, mode, callback)
 
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Stabilità: 1 - Sperimentale
+> Stabilità: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
@@ -3477,7 +3477,7 @@ added: v10.0.0
 
 Asynchronously append data to this file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 The `FileHandle` must have been opened for appending.
 
@@ -3584,7 +3584,7 @@ Asynchronously reads the entire contents of a file.
 
 The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. On macOS, Linux, and Windows, the promise will be rejected with an error. On FreeBSD, a representation of the directory's contents will be returned.
 
@@ -3765,7 +3765,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 The `FileHandle` has to support writing.
 
@@ -3814,7 +3814,7 @@ added: v10.0.0
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 The `path` may be specified as a `FileHandle` that has been opened for appending (using `fsPromises.open()`).
 
@@ -4046,7 +4046,7 @@ Asynchronously reads the entire contents of a file.
 
 The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. On macOS, Linux, and Windows, the promise will be rejected with an error. On FreeBSD, a representation of the directory's contents will be returned.
 
@@ -4204,7 +4204,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-If `options` is a string, then it specifies the encoding.
+Se `options` è una stringa, allora esso specifica l'encoding.
 
 Any specified `FileHandle` has to support writing.
 
@@ -4212,7 +4212,7 @@ It is unsafe to use `fsPromises.writeFile()` multiple times on the same file wit
 
 ## FS Constants
 
-The following constants are exported by `fs.constants`.
+Le seguenti costante vengono esportate da `fs.constants`.
 
 Not every constant will be available on every operating system.
 
