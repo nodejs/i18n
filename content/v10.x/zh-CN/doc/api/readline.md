@@ -286,7 +286,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 * 返回：{AsyncIterator}
 
