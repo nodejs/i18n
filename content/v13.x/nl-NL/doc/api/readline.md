@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`][]) one line at a time. It can be accessed using:
 
@@ -208,7 +208,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Example usage:
+Gebruiksvoorbeeld:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -341,7 +341,7 @@ This will track where the current cursor lands in the input string, when reading
 added: v13.5.0
 -->
 
-* Returns: {Object}
+* Retourneert: {Object}
   * `rows` {number} the row of the prompt the cursor currently lands on
   * `cols` {number} the screen column the cursor currently lands on
 
