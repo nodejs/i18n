@@ -4,7 +4,7 @@
 
 > Stabiliteit: 2 - stabiel
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+The `path` module provides utilities for working with file and directory paths. Het kan worden bereikt met behulp van:
 
 ```js
 const path = require('path');
