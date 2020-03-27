@@ -39,7 +39,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [9.x](CHANGELOG_V9.md)
@@ -1031,7 +1031,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * **cli**
   * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
   * Added bash completion for the `node` binary. To generate a bash completion script, run `node --completion-bash`. The output can be saved to a file which can be sourced to enable completion. [#20713](https://github.com/nodejs/node/pull/20713)
-* **crypto**
+* **التشفير**
   * Added support for PEM-level encryption. [#23151](https://github.com/nodejs/node/pull/23151)
   * Added an API asymmetric key pair generation. The new methods `crypto.generateKeyPair` and `crypto.generateKeyPairSync` can be used to generate public and private key pairs. The API supports RSA, DSA and EC and a variety of key encodings (both PEM and DER). [#22660](https://github.com/nodejs/node/pull/22660)
 * **fs**
@@ -1042,7 +1042,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
 * **module**
   * Added `module.createRequireFromPath(filename)`. This new method can be used to create a custom require function that will resolve modules relative to the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
-* **process**
+* **الاجراء**
   * Added a `'multipleResolves'` process event that is emitted whenever a `Promise` is attempted to be resolved multiple times, e.g. if the `resolve` and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
 * **url**
   * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
