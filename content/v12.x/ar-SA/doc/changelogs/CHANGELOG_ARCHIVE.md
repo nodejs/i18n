@@ -5,13 +5,13 @@
 
 <table>
 <tr>
-<th>v0.11</th>
-<th>v0.9</th>
+<th>النسخة 0.11</th>
+<th>النسخة 0.9</th>
 <th>v0.8</th>
-<th>v0.7</th>
-<th>v0.6</th>
-<th>v0.5</th>
-<th>&lt;= v0.4</th>
+<th>النسخة 0.7</th>
+<th>النسخة 0.6</th>
+<th>النسخة 0.5</th>
+<th>&lt;= النسخة 0.4</th>
 </tr>
 <tr>
 <td valign="top">
@@ -153,7 +153,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
