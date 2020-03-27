@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Autres versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
@@ -235,7 +235,7 @@
 
 ### Notable Changes
 
-* **crypto**
+* **cryptographie**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
 * **events**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
