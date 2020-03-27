@@ -383,7 +383,7 @@ A complete example report that was generated on an uncaught exception is provide
 }
 ```
 
-## Usage
+## Χρήση
 
 ```bash
 node --experimental-report --report-uncaught-exception \
