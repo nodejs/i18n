@@ -3320,7 +3320,7 @@ On most platforms, `'rename'` is emitted whenever a filename appears or disappea
 
 The listener callback is attached to the `'change'` event fired by [`fs.FSWatcher`][], but it is not the same thing as the `'change'` value of `eventType`.
 
-### Caveats
+### 注意事项
 
 <!--type=misc-->
 
@@ -4476,7 +4476,7 @@ It is unsafe to use `fsPromises.writeFile()` multiple times on the same file wit
 
 ## FS Constants
 
-The following constants are exported by `fs.constants`.
+`fs.constants` 会导出如下常量。
 
 Not every constant will be available on every operating system.
 
