@@ -1,10 +1,10 @@
-# Global Objects
+# Καθολικά Αντικείμενα
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,7 +12,7 @@ These objects are available in all modules. The following variables may appear t
 * [`module`][]
 * [`require()`][]
 
-The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
 
@@ -24,7 +24,7 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Χρησιμοποιείται για τον χειρισμό binary δεδομένων. Δείτε την [ενότητα buffer](buffer.html).
 
 ## \_\_dirname
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] is described in the [timers](timers.html) section.
+Το [`clearImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] is described in the [timers](timers.html) section.
+Το [`clearInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] is described in the [timers](timers.html) section.
+Το [`clearTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## console
 
@@ -74,7 +74,7 @@ added: v0.1.100
 
 * {Object}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Χρησιμοποιείται για εκτύπωση στο stdout και το stderr. Δείτε την ενότητα [`console`][].
 
 ## exports
 
@@ -88,9 +88,9 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Object} Το καθολικό αντικείμενο ονομάτων.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
@@ -106,7 +106,7 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+Το αντικείμενο process. Δείτε την ενότητα [Αντικείμενο `process`][].
 
 ## require()
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] is described in the [timers](timers.html) section.
+Το [`setImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] is described in the [timers](timers.html) section.
+Το [`setInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,4 +140,4 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] is described in the [timers](timers.html) section.
+Το [`setTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
