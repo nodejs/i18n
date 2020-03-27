@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 <!--name=querystring-->
 
