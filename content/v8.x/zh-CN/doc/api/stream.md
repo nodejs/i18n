@@ -1472,7 +1472,7 @@ class MyDuplex extends Duplex {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+或者，当使用 pre-ES6 风格的构造函数时：
 
 ```js
 const { Duplex } = require('stream');
@@ -1486,7 +1486,7 @@ function MyDuplex(options) {
 util.inherits(MyDuplex, Duplex);
 ```
 
-Or, using the Simplified Constructor approach:
+或者，使用简化的构造函数方法：
 
 ```js
 const { Duplex } = require('stream');
@@ -1575,7 +1575,7 @@ A [Transform](#stream_class_stream_transform) stream is a [Duplex](#stream_class
 
 *Note*: There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. For example, a Hash stream will only ever have a single chunk of output which is provided when the input is ended. A `zlib` stream will produce output that is either much smaller or much larger than its input.
 
-The `stream.Transform` class is extended to implement a [Transform](#stream_class_stream_transform) stream.
+`stream.Transform` 继承并实现了 [Transform](#stream_class_stream_transform) 流。
 
 The `stream.Transform` class prototypically inherits from `stream.Duplex` and implements its own versions of the `writable._write()` and `readable._read()` methods. Custom Transform implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
 
@@ -1600,7 +1600,7 @@ class MyTransform extends Transform {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+或者，当使用 pre-ES6 风格的构造函数时：
 
 ```js
 const { Transform } = require('stream');
@@ -1614,7 +1614,7 @@ function MyTransform(options) {
 util.inherits(MyTransform, Transform);
 ```
 
-Or, using the Simplified Constructor approach:
+或者，使用简化的构造函数方法：
 
 ```js
 const { Transform } = require('stream');
@@ -1656,9 +1656,9 @@ All Transform stream implementations must provide a `_transform()` method to acc
 
 The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
 
-It is possible that no output is generated from any given chunk of input data.
+可能从任何给定的输入数据块都无法生成任何输出。
 
-The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. 换言之，如下是等同的：
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1688,7 +1688,7 @@ In versions of Node.js prior to v0.10, the Readable stream interface was simpler
 * Rather than waiting for calls the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
 * The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
 
-In Node.js v0.10, the [Readable](#stream_class_stream_readable) class was added. For backwards compatibility with older Node.js programs, Readable streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
+在 Node.js v0.10 中，增加了 [Readable](#stream_class_stream_readable) 类。 For backwards compatibility with older Node.js programs, Readable streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
 While most applications will continue to function normally, this introduces an edge case in the following conditions:
 
@@ -1696,7 +1696,7 @@ While most applications will continue to function normally, this introduces an e
 * 从未调用 [`stream.resume()`](#stream_readable_resume) 方法。
 * 流没有通过管道传输到任何可写入目的地。
 
-For example, consider the following code:
+例如：考虑如下代码：
 
 ```js
 // WARNING!  BROKEN!
@@ -1741,7 +1741,7 @@ While most applications will almost never need to do this, there are situations 
 
 ### `readable.push('')`
 
-Use of `readable.push('')` is not recommended.
+不推荐使用 `readable.push('')`。
 
 Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
 
@@ -1751,4 +1751,4 @@ The use of `readable.setEncoding()` will change the behavior of how the `highWat
 
 Typically, the size of the current buffer is measured against the `highWaterMark` in *bytes*. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in *characters*.
 
-This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
+通常情况下，如果编码为 `latin1` 或 `ascii` ，这不会有问题。 But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
