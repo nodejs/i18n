@@ -1,6 +1,6 @@
 # Utilisation et exemples
 
-## Usage
+## Utilisation
 
 <!--introduced_in=v0.10.0-->
 <!--type=misc-->
@@ -20,7 +20,7 @@ First, make sure to have downloaded and installed Node.js. See [this guide](http
 
 Now, create an empty project folder called `projects`, then navigate into it.
 
-Linux and Mac:
+Linux et Mac:
 
 ```console
 $ mkdir ~/projects
@@ -41,7 +41,7 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Next, create a new source file in the `projects` folder and call it `hello-world.js`.
+Ensuite, créez un nouveau fichier source dans le dossier `projects` et appelez-le `hello-world.js`.
 
 Open `hello-world.js` in any preferred text editor and paste in the following content:
 
@@ -74,6 +74,6 @@ Output like this should appear in the terminal:
 Server running at http://127.0.0.1:3000/
 ```
 
-Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
+Maintenant, ouvrez n’importe quel navigateur web, selon votre préférence, et visitez `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, World!`, that indicates the server is working.
