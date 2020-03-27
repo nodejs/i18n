@@ -43,7 +43,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* نسخ أخرى 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [5.x](CHANGELOG_V5.md)
@@ -240,7 +240,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable changes
 
-* **crypto**: 
+* **التشفير**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -2057,7 +2057,7 @@ Semver Patch:
 
 ### Notable changes
 
-* **buffer**: 
+* **الصوان**: 
   * Improve performance of Buffer.from(str, 'hex') and Buffer#write(str, 'hex'). (Christopher Jeffrey) [#7602](https://github.com/nodejs/node/pull/7602)
   * Fix creating from zero-length ArrayBuffer. (Ingvar Stepanyan) [#7176](https://github.com/nodejs/node/pull/7176)
 * **deps**: 
