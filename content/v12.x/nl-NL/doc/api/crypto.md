@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> Stabiliteit: 2 - stabiel
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -1778,7 +1778,7 @@ changes:
   * `namedCurve`: {string} Name of the curve to use (EC).
   * `publicKeyEncoding`: {Object} See [`keyObject.export()`][].
   * `privateKeyEncoding`: {Object} See [`keyObject.export()`][].
-* Returns: {Object}
+* Retourneert: {Object}
   * `publicKey`: {string | Buffer | KeyObject}
   * `privateKey`: {string | Buffer | KeyObject}
 
@@ -1955,7 +1955,7 @@ changes:
 * `iterations` {number}
 * `keylen` {number}
 * `digest` {string}
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
@@ -2311,7 +2311,7 @@ changes:
   * `r` {number} Alias for `blockSize`. Only one of both may be specified.
   * `p` {number} Alias for `parallelization`. Only one of both may be specified.
   * `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Provides a synchronous [scrypt](https://en.wikipedia.org/wiki/Scrypt) implementation. Scrypt is a password-based key derivation function that is designed to be expensive computationally and memory-wise in order to make brute-force attacks unrewarding.
 
@@ -2380,7 +2380,7 @@ added: v12.0.0
 * `algorithm` {string | null | undefined}
 * `data` {Buffer | TypedArray | DataView}
 * `key` {Object | string | Buffer | KeyObject}
-* Returns: {Buffer}
+* Retourneert: {Buffer}
 
 Calculates and returns the signature for `data` using the given private key and algorithm. If `algorithm` is `null` or `undefined`, then the algorithm is dependent upon the key type (especially Ed25519 and Ed448).
 
@@ -2403,7 +2403,7 @@ added: v6.6.0
 
 * `a` {Buffer | TypedArray | DataView}
 * `b` {Buffer | TypedArray | DataView}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
@@ -2420,7 +2420,7 @@ added: v12.0.0
 * `data` {Buffer | TypedArray | DataView}
 * `key` {Object | string | Buffer | KeyObject}
 * `signature` {Buffer | TypedArray | DataView}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Verifies the given signature for `data` using the given key and algorithm. If `algorithm` is `null` or `undefined`, then the algorithm is dependent upon the key type (especially Ed25519 and Ed448).
 
