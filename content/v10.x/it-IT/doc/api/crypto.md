@@ -301,7 +301,7 @@ When using block encryption algorithms, the `Cipher` class will automatically ad
 
 When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+Il metodo `cipher.setAutoPadding()` dev'essere chiamato prima di [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -1297,6 +1297,9 @@ In line with OpenSSL's recommendation to use a more modern algorithm instead of 
 added: v0.1.94
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1375,6 +1378,9 @@ In line with OpenSSL's recommendation to use a more modern algorithm instead of 
 added: v0.1.94
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1430,7 +1436,7 @@ changes:
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
-L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+L'argomento `generator` può essere un numero, una stringa o un [`Buffer`][]. Se `generator` non viene specificato, viene utilizzato il valore `2`.
 
 If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
 
@@ -2085,6 +2091,9 @@ The asynchronous version of `crypto.randomFill()` is carried out in a single thr
 added: v10.5.0
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
@@ -2135,6 +2144,9 @@ crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
 added: v10.5.0
 changes:
 
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
