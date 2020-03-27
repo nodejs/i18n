@@ -225,7 +225,7 @@ serverDomain.run(() => {
 
 ## `domain.create()`
 
-* Returns: {Domain}
+* Trả về: {Domain}
 
 ## Class: `Domain`
 
