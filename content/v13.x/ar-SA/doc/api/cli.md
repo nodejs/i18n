@@ -1,4 +1,4 @@
-# Command Line Options
+# خيارات منفذ الأوامر
 
 <!--introduced_in=v5.9.1-->
 <!--type=misc-->
