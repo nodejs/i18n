@@ -4,7 +4,7 @@
 
 > Estabilidade: 2 - Estável
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS é o protocolo HTTP sobre SSL/TLS. No node.js, isso é implementado como um módulo separado.
 
 ## Class: `https.Agent`
 <!-- YAML
@@ -62,9 +62,9 @@ added: v0.3.4
 
 * Extends: {tls.Server}
 
-See [`http.Server`][] for more information.
+Consulte [`http.Server`][] para obter mais informações.
 
-### `server.close([callback])`
+### `server.close ([callback])`
 <!-- YAML
 added: v0.1.90
 -->
@@ -93,7 +93,7 @@ Inicia o servidor HTTPS escutando para conexões criptografadas. Esse método é
 
 Consulte [`http.Server#maxHeadersCount`][].
 
-### `server.setTimeout([msecs][, callback])`
+### `server.setTimeout ([msecs][, callback])`
 <!-- YAML
 added: v0.11.2
 -->
@@ -102,7 +102,7 @@ added: v0.11.2
 * `callback` {Function}
 * Returns: {https.Server}
 
-See [`http.Server#setTimeout()`][].
+Consulte [`http.Server#setTimeout()`][].
 
 ### `server.timeout`
 <!-- YAML
@@ -111,7 +111,7 @@ added: v0.11.2
 
 * {number} **Default:** `120000` (2 minutes)
 
-See [`http.Server#timeout`][].
+Consulte [`http.Server#maxHeadersCount`][].
 
 ### `server.keepAliveTimeout`
 <!-- YAML
@@ -147,7 +147,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Or
+Ou
 
 ```js
 const https = require('https');
@@ -182,7 +182,7 @@ changes:
 * `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 * `callback` {Function}
 
-Like [`http.get()`][] but for HTTPS.
+Como [`http.get()`][] mas para o HTTPS.
 
 `options` pode ser um objeto, uma string, ou um objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
@@ -207,7 +207,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Global instance of [`https.Agent`][] for all HTTPS client requests.
+Instância global de [`https.Agent`][] para todas as requisições HTTPS clientes.
 
 ## `https.request(options[, callback])`
 ## `https.request(url[, options][, callback])`
@@ -233,7 +233,7 @@ changes:
   * `agent` **Default:** `https.globalAgent`
 * `callback` {Function}
 
-Makes a request to a secure web server.
+Faz uma requesição para um web server seguro.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
@@ -242,29 +242,20 @@ The following additional `options` from [`tls.connect()`][] are also accepted: `
 ```js
 const https = require('https');
 
-const options = {
-  hostname: 'encrypted.google.com',
-  port: 443,
-  path: '/',
-  method: 'GET'
-};
-
-const req = https.request(options, (res) => {
+https.get('https://encrypted.google.com/', (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
 
   res.on('data', (d) => {
     process.stdout.write(d);
   });
-});
 
-req.on('error', (e) => {
+}).on('error', (e) => {
   console.error(e);
 });
-req.end();
 ```
 
-Example using options from [`tls.connect()`][]:
+Exemplo usando opções do [`tls.connect()`] []:
 
 ```js
 const options = {
@@ -291,9 +282,9 @@ const options = {
   path: '/',
   method: 'GET',
   key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
-  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem'),
-  agent: false
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
 };
+options.agent = new https.Agent(options);
 
 const req = https.request(options, (res) => {
   // ...
