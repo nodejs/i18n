@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 <!--name=vm-->
 
@@ -222,7 +222,7 @@ console.log(globalVar);
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -416,7 +416,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -479,7 +479,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v12.16.0
 -->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
