@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 안정성: 2 - 안정
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -22,7 +22,7 @@ The `net` module supports IPC with named pipes on Windows, and UNIX domain socke
 
 On UNIX, the local domain is also known as the UNIX domain. The path is a filesystem path name. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. The typical values are 107 on Linux and 103 on macOS. The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
 
-On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in `\\?\pipe` or `\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving `..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
+On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in ``\\?\pipe\` or``\\.\pipe\`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving `..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
 
 ```js
 net.createServer().listen(
@@ -30,7 +30,6 @@ net.createServer().listen(
 ```
 
 ## Class: net.Server
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -46,7 +45,6 @@ See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 `net.Server` is an [`EventEmitter`][] with the following events:
 
 ### Event: 'close'
-
 <!-- YAML
 added: v0.5.0
 -->
@@ -54,7 +52,6 @@ added: v0.5.0
 Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
 
 ### Event: 'connection'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -64,7 +61,6 @@ added: v0.1.90
 Emitted when a new connection is made. `socket` is an instance of `net.Socket`.
 
 ### Event: 'error'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -74,7 +70,6 @@ added: v0.1.90
 Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
 
 ### Event: 'listening'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -82,7 +77,6 @@ added: v0.1.90
 Emitted when the server has been bound after calling [`server.listen()`][].
 
 ### server.address()
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -110,7 +104,6 @@ server.listen(() => {
 Don't call `server.address()` until the `'listening'` event has been emitted.
 
 ### server.close([callback])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -122,7 +115,6 @@ Stops the server from accepting new connections and keeps existing connections. 
 Returns `server`.
 
 ### server.connections
-
 <!-- YAML
 added: v0.2.0
 deprecated: v0.9.7
@@ -135,7 +127,6 @@ The number of concurrent connections on the server.
 This becomes `null` when sending a socket to a child with [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
 
 ### server.getConnections(callback)
-
 <!-- YAML
 added: v0.9.7
 -->
@@ -161,6 +152,7 @@ This function is asynchronous. When the server starts listening, the [`'listenin
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
+
 *Note*:
 
 * All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) for details).
@@ -182,7 +174,6 @@ server.on('error', (e) => {
 ```
 
 #### server.listen(handle\[, backlog\]\[, callback\])
-
 <!-- YAML
 added: v0.5.10
 -->
@@ -199,12 +190,11 @@ The `handle` object can be either a server, a socket (anything with an underlyin
 *Note*: Listening on a file descriptor is not supported on Windows.
 
 #### server.listen(options[, callback])
-
 <!-- YAML
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `options` {Object} Required. Supports the following properties:
   * `port` {number}
   * `host` {string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
@@ -226,7 +216,6 @@ server.listen({
 ```
 
 #### server.listen(path\[, backlog\]\[, callback\])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -239,11 +228,9 @@ added: v0.1.90
 Start a [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
 #### server.listen(\[port\]\[, host\]\[, backlog\]\[, callback\])
-
 <!-- YAML
 added: v0.1.90
 -->
-
 * `port` {number}
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
@@ -259,7 +246,6 @@ If `host` is omitted, the server will accept connections on the [unspecified IPv
 *Note*: In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
 ### server.listening
-
 <!-- YAML
 added: v5.7.0
 -->
@@ -267,7 +253,6 @@ added: v5.7.0
 A Boolean indicating whether or not the server is listening for connections.
 
 ### server.maxConnections
-
 <!-- YAML
 added: v0.2.0
 -->
@@ -277,7 +262,6 @@ Set this property to reject connections when the server's connection count gets 
 It is not recommended to use this option once a socket has been sent to a child with [`child_process.fork()`][].
 
 ### server.ref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -287,7 +271,6 @@ added: v0.9.1
 Opposite of `unref`, calling `ref` on a previously `unref`d server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`d calling `ref` again will have no effect.
 
 ### server.unref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -297,7 +280,6 @@ added: v0.9.1
 Calling `unref` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`d calling `unref` again will have no effect.
 
 ## Class: net.Socket
-
 <!-- YAML
 added: v0.3.4
 -->
@@ -309,24 +291,22 @@ A `net.Socket` can be created by the user and used directly to interact with a s
 It can also be created by Node.js and passed to the user when a connection is received. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
 
 ### new net.Socket([options])
-
 <!-- YAML
 added: v0.3.4
 -->
 
 Creates a new socket object.
 
-* `options` {Object} Available options are: 
+* `options` {Object} Available options are:
   * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
 * Returns: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
 ### Event: 'close'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -336,7 +316,6 @@ added: v0.1.90
 Emitted once the socket is fully closed. The argument `had_error` is a boolean which says if the socket was closed due to a transmission error.
 
 ### Event: 'connect'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -344,7 +323,6 @@ added: v0.1.90
 Emitted when a socket connection is successfully established. See [`net.createConnection()`][].
 
 ### Event: 'data'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -356,7 +334,6 @@ Emitted when data is received. The argument `data` will be a `Buffer` or `String
 Note that the **data will be lost** if there is no listener when a `Socket` emits a `'data'` event.
 
 ### Event: 'drain'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -366,7 +343,6 @@ Emitted when the write buffer becomes empty. Can be used to throttle uploads.
 See also: the return values of `socket.write()`
 
 ### Event: 'end'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -376,7 +352,6 @@ Emitted when the other end of the socket sends a FIN packet, thus ending the rea
 By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
 
 ### Event: 'error'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -386,11 +361,9 @@ added: v0.1.90
 Emitted when an error occurs. The `'close'` event will be called directly following this event.
 
 ### Event: 'lookup'
-
 <!-- YAML
 added: v0.11.3
 changes:
-
   - version: v5.10.0
     pr-url: https://github.com/nodejs/node/pull/5598
     description: The `host` parameter is supported now.
@@ -404,7 +377,6 @@ Emitted after resolving the hostname but before connecting. Not applicable to UN
 * `host` {string} The hostname.
 
 ### Event: 'timeout'
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -414,7 +386,6 @@ Emitted if the socket times out from inactivity. This is only to notify that the
 See also: [`socket.setTimeout()`][]
 
 ### socket.address()
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -422,7 +393,6 @@ added: v0.1.90
 Returns the bound address, the address family name and port of the socket as reported by the operating system. Returns an object with three properties, e.g. `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
-
 <!-- YAML
 added: v0.3.8
 -->
@@ -434,7 +404,6 @@ The consequence of this internal buffering is that memory may grow. This propert
 Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
 
 ### socket.bytesRead
-
 <!-- YAML
 added: v0.5.3
 -->
@@ -442,7 +411,6 @@ added: v0.5.3
 The amount of received bytes.
 
 ### socket.bytesWritten
-
 <!-- YAML
 added: v0.5.3
 -->
@@ -463,11 +431,9 @@ Possible signatures:
 This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
 #### socket.connect(options[, connectListener])
-
 <!-- YAML
 added: v0.1.90
 changes:
-
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/6021
     description: The `hints` option defaults to `0` in all cases now.
@@ -487,12 +453,12 @@ Initiate a connection on a given socket. Normally this method is not needed, the
 For TCP connections, available `options` are:
 
 * `port` {number} Required. Port the socket should connect to.
-* `host` {string} Host the socket should connect to. **Default:** `'localhost'`
+* `host` {string} Host the socket should connect to. **Default:** `'localhost'`.
 * `localAddress` {string} Local address the socket should connect from.
 * `localPort` {number} Local port the socket should connect from.
-* `family` {number}: Version of IP stack, can be either 4 or 6. **Default:** `4`
+* `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
 * `hints` {number} Optional [`dns.lookup()` hints][].
-* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][]
+* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 
 For [IPC](#net_ipc_support) connections, available `options` are:
 
@@ -513,7 +479,6 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 Returns `socket`.
 
 #### socket.connect(port\[, host\]\[, connectListener\])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -530,7 +495,6 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 Returns `socket`.
 
 ### socket.connecting
-
 <!-- YAML
 added: v6.1.0
 -->
@@ -538,7 +502,6 @@ added: v6.1.0
 If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] was called and haven't yet finished. Will be set to `false` before emitting `connect` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
 
 ### socket.destroy([exception])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -554,7 +517,6 @@ If `exception` is specified, an [`'error'`][] event will be emitted and any list
 A Boolean value that indicates if the connection is destroyed or not. Once a connection is destroyed no further data can be transferred using it.
 
 ### socket.end(\[data\]\[, encoding\])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -566,7 +528,6 @@ Half-closes the socket. i.e., it sends a FIN packet. It is possible the server w
 If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
 
 ### socket.localAddress
-
 <!-- YAML
 added: v0.9.6
 -->
@@ -574,7 +535,6 @@ added: v0.9.6
 The string representation of the local IP address the remote client is connecting on. For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
 
 ### socket.localPort
-
 <!-- YAML
 added: v0.9.6
 -->
@@ -588,7 +548,6 @@ The numeric representation of the local port. For example, `80` or `21`.
 Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
 
 ### socket.ref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -598,7 +557,6 @@ added: v0.9.1
 Opposite of `unref`, calling `ref` on a previously `unref`d socket will *not* let the program exit if it's the only socket left (the default behavior). If the socket is `ref`d calling `ref` again will have no effect.
 
 ### socket.remoteAddress
-
 <!-- YAML
 added: v0.5.10
 -->
@@ -606,7 +564,6 @@ added: v0.5.10
 The string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`. Value may be `undefined` if the socket is destroyed (for example, if the client disconnected).
 
 ### socket.remoteFamily
-
 <!-- YAML
 added: v0.11.14
 -->
@@ -614,7 +571,6 @@ added: v0.11.14
 The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 
 ### socket.remotePort
-
 <!-- YAML
 added: v0.5.10
 -->
@@ -628,7 +584,6 @@ The numeric representation of the remote port. For example, `80` or `21`.
 Resumes reading after a call to [`socket.pause()`][].
 
 ### socket.setEncoding([encoding])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -638,29 +593,29 @@ added: v0.1.90
 Set the encoding for the socket as a [Readable Stream](stream.html#stream_class_stream_readable). See [`stream.setEncoding()`][] for more information.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
-
 <!-- YAML
 added: v0.1.92
 -->
 
+* `enable` {boolean} **Default:** `false`
+* `initialDelay` {number} **Default:** `0`
 * Returns: {net.Socket} The socket itself.
 
-Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket. `enable` defaults to `false`.
+Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting. Defaults to `0`.
+Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting.
 
 ### socket.setNoDelay([noDelay])
-
 <!-- YAML
 added: v0.1.90
 -->
 
+* `noDelay` {boolean} **Default:** `true`
 * Returns: {net.Socket} The socket itself.
 
-Disables the Nagle algorithm. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called. `noDelay` defaults to `true`.
+Disables the Nagle algorithm. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called.
 
 ### socket.setTimeout(timeout[, callback])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -684,7 +639,6 @@ If `timeout` is 0, then the existing idle timeout is disabled.
 The optional `callback` parameter will be added as a one-time listener for the [`'timeout'`][] event.
 
 ### socket.unref()
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -694,12 +648,11 @@ added: v0.9.1
 Calling `unref` on a socket will allow the program to exit if this is the only active socket in the event system. If the socket is already `unref`d calling `unref` again will have no effect.
 
 ### socket.write(data\[, encoding\]\[, callback\])
-
 <!-- YAML
 added: v0.1.90
 -->
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string--it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
@@ -716,15 +669,14 @@ Possible signatures:
 * [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] for TCP connections.
 
 ### net.connect(options[, connectListener])
-
 <!-- YAML
 added: v0.7.0
---> Alias to [
+-->
+Alias to [
 
 `net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
 ### net.connect(path[, connectListener])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -732,7 +684,6 @@ added: v0.1.90
 Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
 ### net.connect(port\[, host\]\[, connectListener\])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -754,7 +705,6 @@ Possible signatures:
 *Note*: The [`net.connect()`][] function is an alias to this function.
 
 ### net.createConnection(options[, connectListener])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -794,7 +744,6 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 ```
 
 ### net.createConnection(path[, connectListener])
-
 <!-- YAML
 added: v0.1.90
 -->
@@ -808,13 +757,12 @@ Initiates an [IPC](#net_ipc_support) connection.
 This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(path[, connectListener])`][`socket.connect(path)`], then returns the `net.Socket` that starts the connection.
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
-
 <!-- YAML
 added: v0.1.90
 -->
 
 * `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`
+* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
 * `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
@@ -823,16 +771,15 @@ Initiates a TCP connection.
 This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
 
 ## net.createServer(\[options\]\[, connectionListener\])
-
 <!-- YAML
 added: v0.5.0
 -->
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
-* `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`
+* `options` {Object}
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
 * Returns: {net.Server}
 
@@ -884,23 +831,22 @@ $ nc -U /tmp/echo.sock
 ```
 
 ## net.isIP(input)
-
 <!-- YAML
 added: v0.3.0
 -->
 
 Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
 
-## net.isIPv4(input)
 
+## net.isIPv4(input)
 <!-- YAML
 added: v0.3.0
 -->
 
 Returns true if input is a version 4 IP address, otherwise returns false.
 
-## net.isIPv6(input)
 
+## net.isIPv6(input)
 <!-- YAML
 added: v0.3.0
 -->

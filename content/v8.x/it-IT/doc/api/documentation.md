@@ -1,32 +1,31 @@
-# About this Documentation
+# Informazioni riguardo questa Documentazione
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+L'obiettivo di questa documentazione è di spiegare in modo esaustivo l'API Node.js, sia dal punto di vista di avere un riferimento su cui basarsi sia da un punto di vista concettuale. Ogni sezione descrive un modulo integrato o un concetto di alto livello.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Dove più appropriato, i tipi delle proprietà, gli argomenti dei metodi e gli argomenti forniti agli event handler sono descritti in modo dettagliato in un elenco al di sotto dell'intestazione del topic.
 
-## Contributing
+## Contribuire
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Se vengono trovati degli errori all'interno di questa documentazione, siete pregati di [inviare un issue](https://github.com/nodejs/node/issues/new) o di vedere [la guida su come contribuire](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) per avere indicazioni su come inserire una patch.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Ogni file viene generato in base al corrispondente file `.md` nella cartella `doc/api/` nel source tree di Node.js. La documentazione viene generata utilizzando il programma `tools/doc/generate.js`. All'interno di `doc/template.html` c'è un template HTML.
 
-## Stability Index
+## Indice di Stabilità
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+All'interno di tutta la documentazione ci sono indicazioni riguardo la stabilità di ogni sezione. L'API Node.js è ancora in qualche modo in evoluzione e, con il passare del tempo, alcune parti sono più affidabili e sicure di altre. Alcune sono talmente testate e affidabili che è improbabile possano mai cambiare. Altre invece sono nuove e sperimentali oppure note per essere pericolosi e in fase di ri-progettazione.
 
-The stability indices are as follows:
+Gli indici di stabilità sono i seguenti:
 
 ```txt
 Stability: 0 - Deprecated
 This feature is known to be problematic, and changes may be planned. Do
 not rely on it. Use of the feature may cause warnings to be emitted.
-Backwards compatibility across major versions should not be expected.
+Per le versioni principali non è prevista la retrocompatibilità.
 ```
 
 ```txt
@@ -43,22 +42,21 @@ The API has proven satisfactory. Compatibility with the npm ecosystem
 is a high priority, and will not be broken unless absolutely necessary.
 ```
 
-*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
+*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Gli utenti finali potrebbero non essere a conoscenza del fatto che vengono utilizzate funzionalità sperimentali e pertanto potrebbero verificarsi errori imprevisti o cambiamenti di comportamento quando vengono effettuate delle modifiche all'API. Per evitare sorprese del genere, le funzionalità `Experimental` potrebbero richiedere un flag della command-line per essere abilitate esplicitamente o potrebbero causare l'emissione di un avviso di processo. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
-## JSON Output
-
+## Output JSON
 <!-- YAML
 added: v0.6.12
 -->
 
 > Stability: 1 - Experimental
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Ogni documento `.html` ha un corrispondente documento `.json` che presenta le stesse informazioni ma in modo strutturato. Questa funzionalità è sperimentale e aggiunta a beneficio degli IDE e di altre utility che desiderano eseguire operazioni programmatiche con la documentazione.
 
-## Syscalls and man pages
+## Le Syscall e le pagine del manuale
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Le system call (syscall) come open(2) e read(2) definiscono l'interfaccia tra i programmi utente e il sistema operativo sottostante. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. I documenti si collegano alle corrispondenti pagine del man (abbreviazione di pagine del manuale) che descrivono come funzionano le syscall.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Alcune syscall, come lchown(2), sono specifiche BSD. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+La maggior parte delle syscall Unix ha i suoi equivalenti Windows, ma il comportamento su Windows può variare rispetto a quello su Linux e macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).

@@ -5,31 +5,20 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options][] document for information about
-different options and ways to run scripts with Node.js.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
 ## Example
-An example of a [web server][] written with Node.js which responds with
-`'Hello World!'`:
+An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
 
-Commands displayed in this document are shown starting with `$` or `>`
-to replicate how they would appear in a user's terminal.
-Do not include the `$` and `>` characters. They are there to
-indicate the start of each command.
+Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
 
-There are many tutorials and examples that follow this
-convention: `$` or `>` for commands run as a regular user, and `#`
-for commands that should be executed as an administrator.
+There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
 
-Lines that don’t start with `$` or `>` character are typically showing
-the output of the previous command.
+Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
-Firstly, make sure to have downloaded and installed Node.js.
-See [this guide][] for further install information.
+Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
 
-Now, create an empty project folder called `projects`, then navigate into it.
-The project folder can be named based on the user's current project title, but
-this example will use `projects` as the project folder.
+Now, create an empty project folder called `projects`, then navigate into it. The project folder can be named based on the user's current project title, but this example will use `projects` as the project folder.
 
 Linux and Mac:
 
@@ -52,15 +41,11 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Next, create a new source file in the `projects`
- folder and call it `hello-world.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
-In Node.js it is considered good style to use
-hyphens (`-`) or underscores (`_`) to separate
- multiple words in filenames.
+In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
-Open `hello-world.js` in any preferred text editor and
-paste in the following content:
+Open `hello-world.js` in any preferred text editor and paste in the following content:
 
 ```js
 const http = require('http');
@@ -85,20 +70,14 @@ Save the file, go back to the terminal window enter the following command:
 $ node hello-world.js
 ```
 
-An output like this should appear in the terminal to indicate Node.js
-server is running:
+An output like this should appear in the terminal to indicate Node.js server is running:
 
  ```console
  Server running at http://127.0.0.1:3000/
- ````
+ ```
 
 Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
-If the browser displays the string `Hello, world!`, that indicates
-the server is working.
+If the browser displays the string `Hello, world!`, that indicates the server is working.
 
 Many of the examples in the documentation can be run similarly.
-
-[Command Line Options]: cli.html#cli_command_line_options
-[this guide]: https://nodejs.org/en/download/package-manager/
-[web server]: http.html

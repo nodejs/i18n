@@ -27,8 +27,7 @@ Dyskusje na tematy nietechniczne (takie jak własność intelektualna i znak tow
 
 Podczas otwierania nowego problemu w liście problemów `nodejs/node`, użytkownikowi do wypełnienia zostanie przedstawiony podstawowy szablon.
 
-```markdown
-<!-- Dziękujemy za zgłoszenie błędu.
+```markdown<!-- Dziękujemy za zgłoszenie błędu.
 
 Ta lista problemów jest dla błędów i problemów znalezionych w rdzeniu Node.js.
 Jeśli potrzebujesz bardziej ogólnej pomocy, wyślij proszę problem do naszego repozytorium pomocy. https://github.com/nodejs/help
@@ -41,9 +40,7 @@ Platform: dane wyjściowe `uname -a` (UNIX), lub wersji 32 i 64-bitowej (Windows
 Subsystem: jeśli znany, sprecyzuj nazwę rdzennego modułu, w którym znaleziono problem
 
 Jeśli to możliwe, dostarcz proszę kod który demonstruje problem, mając na uwadze by był on tak prosty i wolny od zewnętrznych dependencji jak to tylko możliwe.
---> 
-
-* **Version**:
+-->* **Version**:
 * **Platform**:
 * **Subsystem**:
 

@@ -4,9 +4,9 @@
 
 > Estabilidad: 1 - Experimental
 
-The `inspector` module provides an API for interacting with the V8 inspector.
+El módulo `inspector` proporciona una API para interactuar con el inspector de V8.
 
-It can be accessed using:
+Puede ser accedido utilizando:
 
 ```js
 const inspector = require('inspector');
@@ -14,46 +14,44 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* port {number} Port to listen on for inspector connections. Optional, defaults to what was specified on the CLI.
-* host {string} Host to listen on for inspector connections. Optional, defaults to what was specified on the CLI.
-* wait {boolean} Block until a client has connected. Optional, defaults to false.
+* `port` {number} Puerto en el cual escuchar para las conexiónes de inspector. Opcional. **Predeterminado:** lo que fue especificado en la CLI.
+* `host` {string} Huésped en el cual escuchar para las conexiónes de inspector. Opcional. **Predeterminado:** lo que fue especificado en la CLI.
+* `wait` {boolean} Bloquear hasta que un cliente se haya conectado. Opcional. **Predeterminado:** `false`.
 
-Activate inspector on host and port. Equivalent to `node
---inspect=[[host:]port]`, but can be done programmatically after node has started.
+Active el inspector en el host y en el puerto. Equivalente a `node
+--inspect=[[host:]port]`, pero puede hacerse mediante programación después que el node haya iniciado.
 
-If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
+Si la espera es `true`, se bloqueará hasta que un cliente se haya conectado al puerto inspector y el control de flujo haya sido pasado al cliente depurador.
 
 ### inspector.close()
 
-Deactivate the inspector. Blocks until there are no active connections.
+Desactiva el inspector. Se bloquea hasta que no hayan conexiones activas.
 
 ### inspector.url()
 
-Return the URL of the active inspector, or `undefined` if there is none.
+Devuelve el URL del inspector activo o `undefined` si no hay ninguno.
 
-## Class: inspector.Session
+## Clase: inspector.Session
 
-The `inspector.Session` is used for dispatching messages to the V8 inspector back-end and receiving message responses and notifications.
+La `inspector.Session` es utilizada para enviar mensajes al back-end del inspector de V8 y para recibir respuestas y notificaciones de mensajes.
 
-### Constructor: new inspector.Session()
-
+### Constructor: nueva inspector.Session()
 <!-- YAML
 added: v8.0.0
 -->
 
-Create a new instance of the `inspector.Session` class. The inspector session needs to be connected through [`session.connect()`][] before the messages can be dispatched to the inspector backend.
+Crea una nueva instancia de la clase `inspector.Session`. La sesión de inspector necesita ser conectada a través de [`session.connect()`][] antes de que los mensajes puedan ser enviados al backend del inspector.
 
-`inspector.Session` is an [`EventEmitter`][] with the following events:
+`inspector.Session` es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'inspectorNotification'
-
+### Evento: 'inspectorNotification'
 <!-- YAML
 added: v8.0.0
 -->
 
-* {Object} The notification message object
+* {Object} El objeto de mensaje de notificación
 
-Emitted when any notification from the V8 Inspector is received.
+Emitido cuando se recibe cualquier notificación del inspector de V8.
 
 ```js
 session.on('inspectorNotification', (message) => console.log(message.method));
@@ -61,19 +59,18 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 // Debugger.resumed
 ```
 
-It is also possible to subscribe only to notifications with specific method:
+También es posible suscribirse únicamente a notificaciones con método específico:
 
-### Event: &lt;inspector-protocol-method&gt;
-
+### Evento: &lt;inspector-protocol-method&gt;
 <!-- YAML
 added: v8.0.0
 -->
 
-* {Object} The notification message object
+* {Object} El objeto de mensaje de notificación
 
-Emitted when an inspector notification is received that has its method field set to the `<inspector-protocol-method>` value.
+Emitido cuando se recibe una notificación del inspector que tiene un campo de método establecido al valor de `<inspector-protocol-method>`.
 
-The following snippet installs a listener on the [`Debugger.paused`][] event, and prints the reason for program suspension whenever program execution is suspended (through breakpoints, for example):
+El siguiente snippet instala un listener en el evento de [`Debugger.paused`][] e imprime la razón para la suspensión del programa cada vez que la ejecución del programa es suspendida (a través de puntos de ruptura, por ejemplo):
 
 ```js
 session.on('Debugger.paused', ({ params }) => {
@@ -83,15 +80,13 @@ session.on('Debugger.paused', ({ params }) => {
 ```
 
 ### session.connect()
-
 <!-- YAML
 added: v8.0.0
 -->
 
-Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
+Conecta una sesión al back-end del inspector. Se arrojará una excepción si ya hay una sesión conectada establecida a través del API o por un front-end conectado al puerto WebSocket del Inspector.
 
 ### session.post(method\[, params\]\[, callback\])
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -100,22 +95,45 @@ added: v8.0.0
 * params {Object}
 * callback {Function}
 
-Posts a message to the inspector back-end. `callback` will be notified when a response is received. `callback` is a function that accepts two optional arguments - error and message-specific result.
+Publica un mensaje al back-end del inspector. Se le notificará a `callback` cuando se reciba una respuesta. `callback` es una función que acepta dos argumentos opcionales: error y message-specific result.
 
 ```js
 session.post('Runtime.evaluate', { expression: '2 + 2' },
              (error, { result }) => console.log(result));
-// Output: { type: 'number', value: 4, description: '4' }
+// Salida: { type: 'number', value: 4, description: '4' }
 ```
 
-The latest version of the V8 inspector protocol is published on the [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
+La última versión del protocolo del inspector V8 está publicada en el [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Node inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
+Node.js inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain proporciona una interfaz para interactuar con uno de los agentes "runtime" utilizados para inspeccionar el estado de la aplicación y escuchar los eventos de "run-time".
 
 ### session.disconnect()
-
 <!-- YAML
 added: v8.0.0
 -->
 
-Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Cierra la sesión inmediatamente. Todos los callbacks de mensajes pendientes serán llamados con un error. Se necesitará llamar a [`session.connect()`] para poder enviar mensajes de nuevo. La sesión reconectada perderá todos los estados del inspector, como los agentes habilitados o los puntos de ruptura configurados.
+
+## Ejemplo de uso
+
+### CPU Profiler
+
+Además del depurador, varios V8 Profilers están disponibles a través del protocolo DevTools. Aquí está un ejemplo sencillo que muestra cómo usar el [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
+
+```js
+const inspector = require('inspector');
+
+const session = new inspector.Session();
+session.connect();
+
+session.post('Profiler.enable', () => {
+  session.post('Profiler.start', () => {
+    // invoke business logic under measurement here...
+
+    // un tiempo después...
+    session.post('Profiler.stop', ({ profile }) => {
+      // write profile to disk, upload, etc.
+    });
+  });
+});
+```

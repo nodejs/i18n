@@ -1,4 +1,4 @@
-# Deprecated APIs
+# 已弃用的 API
 
 <!--introduced_in=v7.7.0-->
 
@@ -669,3 +669,21 @@ The AsyncHooks Sensitive API was never documented and had various of minor issue
 Type: Runtime
 
 `runInAsyncIdScope` doesn't emit the `before` or `after` event and can thus cause a lot of issues. See https://github.com/nodejs/node/issues/14328 for more details.
+
+<a id="DEP0089"></a>
+
+### DEP0089: require('assert')
+
+Type: Documentation-only
+
+Importing assert directly is not recommended as the exposed functions will use loose equality checks. Use `require('assert').strict` instead. The API is the same as the legacy assert but it will always use strict equality checks.
+
+<a id="DEP0098"></a>
+
+### DEP0098: AsyncHooks Embedder AsyncResource.emit{Before,After} APIs
+
+Type: Runtime
+
+The embedded API provided by AsyncHooks exposes emit{Before,After} methods which are very easy to use incorrectly which can lead to unrecoverable errors.
+
+Use [`asyncResource.runInAsyncScope()`][] API instead which provides a much safer, and more convenient, alternative. See https://github.com/nodejs/node/pull/18513 for more details.

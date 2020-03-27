@@ -1,12 +1,12 @@
-# Debugger
+# Débogueur
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> Stabilité: 2 - stable
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js inclut un utilitaire de débogage out-of-process accessible via un [Inspecteur V8](#debugger_v8_inspector_integration_for_node_js) et le client de débogage intégré. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -20,12 +20,9 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
-
-<!-- eslint-disable no-debugger -->
-
+Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
 ```js
 // myscript.js
 global.x = 5;
@@ -36,7 +33,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Once the debugger is run, a breakpoint will occur at line 3:
+Quand le débogueur sera exécuté, un arrêt se produira à la ligne 3:
 
 ```txt
 $ node inspect myscript.js
@@ -66,7 +63,7 @@ debug> repl
 Press Ctrl + C to leave debug repl
 > x
 5
-> 2+2
+> 2 + 2
 4
 debug> next
 < world
@@ -79,35 +76,35 @@ break in myscript.js:5
 debug> .exit
 ```
 
-The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
+La commande `repl` permet d'évaluer du code à distance. La commande `next` passe à la ligne suivante. Tapez `help` pour voir quelles autres commandes sont disponibles.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Presser `enter` sans taper de commande répètera la commande de débogage précédente.
 
-## Watchers
+## Espions
 
-It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+Il est possible d'espionner les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'expressions espionnées sera évaluée dans le contexte courant, et affichée immédiatement avant le listing de code source du point d'arrêt.
 
-To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La commande `watchers` affichera tous les espions actifs. Pour supprimer un espion, tapez `unwatch('mon_expression')`.
 
-## Command reference
+## Référence de la ligne de commande
 
-### Stepping
+### Pas-à-pas
 
-* `cont`, `c` - Continue execution
-* `next`, `n` - Step next
-* `step`, `s` - Step in
-* `out`, `o` - Step out
-* `pause` - Pause running code (like pause button in Developer Tools)
+* `cont`, `c` - Continuer l'exécution jusqu'au prochain point d'arrêt
+* `next`, `n` - Instruction suivante
+* `step`, `s` - Pas à pas entrant (si l'instruction à exécuter contient une fonction, se rend à la première instruction de cette fonction)
+* `out`, `o` - Pas à pas sortant (exécute le code jusqu'au retour de la fonction en cours, et s'arrête dans la fonction parente, à l'instruction suivant l'appel de la fonction où l'on était entré)
+* `pause` - Mets l'exécution du code en pause (comme le bouton pause dans les outils de développement Chrome)
 
-### Breakpoints
+### Points d'arrêt
 
-* `setBreakpoint()`, `sb()` - Set breakpoint on current line
-* `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
+* `setBreakpoint()`, `sb()` - Ajoute un point d'arrêt sur la ligne courante
+* `setBreakpoint(line)`, `sb(line)` - Ajoute un point d'arrêt sur une ligne spécifique
+* `setBreakpoint('fn()')`, `sb(...)` - Ajoute un point d'arrêt sur la première instruction du corps de la fonction
 * `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of script.js
 * `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in script.js on line 1
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+Il est également possible d'ajouter un point d'arrêt dans un fichier (module) qui n'est pas encore chargé:
 
 ```txt
 $ node inspect main.js
@@ -132,34 +129,34 @@ debug>
 
 ### Information
 
-* `backtrace`, `bt` - Print backtrace of current execution frame
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
-* `watch(expr)` - Add expression to watch list
-* `unwatch(expr)` - Remove expression from watch list
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
-* `repl` - Open debugger's repl for evaluation in debugging script's context
-* `exec expr` - Execute an expression in debugging script's context
+* `backtrace`, `bt` - Affiche la pile d'apppel au point d'exécution courant
+* `list(5)` - Affiche le code source avec un contexte de 5 lignes (5 lignes avant et après)
+* `watch(expr)` - Ajoute une expression à la liste d'espions
+* `unwatch(expr)` - Retire une expression de la liste d'espions
+* `watchers` - Liste tous les espions et leurs valeurs (listé automatiquement à chaque point d'arrêt)
+* `repl` - Ouvre le repl du débogueur pour exécuter du code dans le contexte du script débogué
+* `exec expr` - Exécute une expression dans le contexte du script débogué
 
-### Execution control
+### Contrôle d’exécution
 
-* `run` - Run script (automatically runs on debugger's start)
-* `restart` - Restart script
-* `kill` - Kill script
+* `run` - Exécute le script (s'exécute automatiquement au démarrage du débogueur)
+* `restart` - Redémarre le script
+* `kill` - Arrête le script
 
-### Various
+### Divers
 
-* `scripts` - List all loaded scripts
-* `version` - Display V8's version
+* `scripts` - Liste tous les scripts chargés
+* `version` - Affiche la version de V8
 
-## Advanced Usage
+## Utilisation avancée
 
-### V8 Inspector Integration for Node.js
+### Intégration de l'inspecteur V8 pour Node.js
 
-V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer/).
+L'intégration de l'inspecteur V8 permet d'attacher les outils de développement de Chrome aux instances de Node.js pour le débogage et le profilage. It uses the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer/).
 
-V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
+L'inspecteur V8 peut être active en passant le flag `--inspect` au démarrage d'une application Node.js. Il est également possible de fournir un port personnalisé avec ce flag, par exemple `--inspect=9222` acceptera les connexions des outils de développement sur le port 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Pour arrêter l'exécution sur la première ligne du code de l'application, passez le flag `--inspect-brk` au lieu du flag `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -168,4 +165,4 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(Dans l'example ci-dessus, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 à la fin de l'URL est généré à la volée, il varie à chaque session de débogage.)

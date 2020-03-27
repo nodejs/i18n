@@ -1,35 +1,33 @@
-# Usage
+# Χρήση
 
 <!--introduced_in=v0.10.0-->
-
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
+Παρακαλούμε δείτε το έγρραφο για τα [Command Line Options](cli.html#cli_command_line_options) για πληροφορίες σχετικά με τις διαφορετικές επιλογές και τρόπους με τους οποίους μπορείτε να τρέξετε Node.js scripts.
 
-## Example
+## Παράδειγμα
+An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
-An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
-
-Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` character they are there to indicate the start of each command.
+Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
 
 There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
 
 Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
-Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
+Αρχικά, βεβαιωθείτε ότι έχει κατεβάσει και εγκαταστήσει το Node.js. Δείτε [εδώ](https://nodejs.org/en/download/package-manager/) αναλυτικές οδηγίες εγκατάστασης.
 
-Now, create an empty project folder called `projects`, navigate into it: Project folder can be named base on user's current project title but this example will use `projects` as the project folder.
+Now, create an empty project folder called `projects`, then navigate into it. The project folder can be named based on the user's current project title, but this example will use `projects` as the project folder.
 
-Linux and Mac:
+Linux και Mac:
 
 ```console
 $ mkdir ~/projects
 $ cd ~/projects
 ```
 
-Windows CMD:
+WIndows:
 
 ```console
 > mkdir %USERPROFILE%\projects
@@ -43,11 +41,11 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Next, create a new source file in the `projects` folder and call it `hello-world.js`.
+Δημιουργήστε ένα νέο αρχείο μέσα στο φάκελο `projects` και ονομάστε το `hello-world.js`.
 
 In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
-Open `hello-world.js` in any preferred text editor and paste in the following content.
+Open `hello-world.js` in any preferred text editor and paste in the following content:
 
 ```js
 const http = require('http');
@@ -58,7 +56,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!\n');
+  res.end('Hello, World!\n');
 });
 
 server.listen(port, hostname, () => {
@@ -78,8 +76,8 @@ An output like this should appear in the terminal to indicate Node.js server is 
 Server running at http://127.0.0.1:3000/
 ```
 
-Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
+Τώρα, ανοίξτε τον web browser της επιλογής σας και επισκεφθείτε την διεύθυνση `http://127.0.0.1:3000`.
 
-If the browser displays the string `Hello, world!`, that indicates the server is working.
+If the browser displays the string `Hello, World!`, that indicates the server is working.
 
-Many of the examples in the documentation can be run similarly.
+Πολλά από τα παραδείγματα της τεκμηρίωσης μπορούν να τρέξουν με παρόμοιο τρόπο.

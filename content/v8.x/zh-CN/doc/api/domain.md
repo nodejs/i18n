@@ -1,8 +1,6 @@
-# Domain
-
+# 域
 <!-- YAML
 changes:
-
   - version: v8.8.0
     description: Any `Promise`s created in VM contexts no longer have a
                  `.domain` property. Their handlers are still executed in the
@@ -16,7 +14,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
@@ -93,7 +91,7 @@ if (cluster.isMaster) {
   const domain = require('domain');
 
   // See the cluster documentation for more details about using
-  // worker processes to serve requests.  How it works, caveats, etc.
+  // worker processes to serve requests. How it works, caveats, etc.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
@@ -103,7 +101,7 @@ if (cluster.isMaster) {
       // Note: We're in dangerous territory!
       // By definition, something unexpected occurred,
       // which we probably didn't want.
-      // Anything can happen now!  Be very careful!
+      // Anything can happen now! Be very careful!
 
       try {
         // make sure we close down within 30 seconds
@@ -116,7 +114,7 @@ if (cluster.isMaster) {
         // stop taking new requests.
         server.close();
 
-        // Let the master know we're dead.  This will trigger a
+        // Let the master know we're dead. This will trigger a
         // 'disconnect' in the cluster master, and then it will fork
         // a new worker.
         cluster.worker.disconnect();
@@ -145,7 +143,7 @@ if (cluster.isMaster) {
   server.listen(PORT);
 }
 
-// This part is not important.  Just an example routing thing.
+// This part is not important. Just an example routing thing.
 // Put fancy application logic here.
 function handleRequest(req, res) {
   switch (req.url) {
@@ -197,7 +195,7 @@ For example, there could be one domain in use for an HTTP server, but perhaps we
 
 That is possible via explicit binding.
 
-For example:
+例如：
 
 ```js
 // create a top-level domain for the server
@@ -229,7 +227,7 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* Returns: {Domain}
+* 返回：{Domain}
 
 Returns a new Domain object.
 
@@ -262,7 +260,7 @@ If the Timer or EventEmitter was already bound to a domain, it is removed from t
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### Example
+#### 示例
 
 ```js
 const d = domain.create();
@@ -283,7 +281,7 @@ d.on('error', (er) => {
 
 ### domain.dispose()
 
-> Stability: 0 - Deprecated. Please recover from failed IO actions explicitly via error event handlers set on the domain.
+> 稳定性：0 - 已弃用。 Please recover from failed IO actions explicitly via error event handlers set on the domain.
 
 Once `dispose` has been called, the domain will no longer be used by callbacks bound into the domain via `run`, `bind`, or `intercept`, and a `'dispose'` event is emitted.
 
@@ -314,7 +312,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### Example
+#### 示例
 
 ```js
 const d = domain.create();
@@ -355,7 +353,7 @@ Run the supplied function in the context of the domain, implicitly binding all e
 
 This is the most basic way to use a domain.
 
-Example:
+例如：
 
 ```js
 const domain = require('domain');

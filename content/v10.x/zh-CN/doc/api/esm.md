@@ -1,10 +1,9 @@
 # ECMAScript模块
 
 <!--introduced_in=v8.5.0-->
-
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> 稳定性：1 - 实验中
 
 <!--name=esm-->
 
@@ -82,14 +81,38 @@ Modules loaded this way will only be loaded once, even if their query or fragmen
 When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
 
 ```js
-import fs from 'fs';
-fs.readFile('./foo.txt', (err, body) => {
+// foo.js
+module.exports = { one: 1 };
+
+// bar.mjs
+import foo from './foo.js';
+foo.one === 1; // true
+```
+
+Builtin modules will provide named exports of their public API, as well as a default export which can be used for, among other things, modifying the named exports. Named exports of builtin modules are updated when the corresponding exports property is accessed, redefined, or deleted.
+
+```js
+import EventEmitter from 'events';
+const e = new EventEmitter();
+```
+
+```js
+import { readFile } from 'fs';
+readFile('./foo.txt', (err, source) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(body);
+    console.log(source);
   }
 });
+```
+
+```js
+import fs, { readFileSync } from 'fs';
+
+fs.readFileSync = () => Buffer.from('Hello, ESM');
+
+fs.readFileSync === readFileSync;
 ```
 
 ## Loader hooks
@@ -124,7 +147,7 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`    | Description                                                     |
+| `format`    | 描述                                                              |
 | ----------- | --------------------------------------------------------------- |
 | `'esm'`     | Load a standard JavaScript module                               |
 | `'cjs'`     | Load a node-style CommonJS module                               |

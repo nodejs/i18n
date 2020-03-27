@@ -305,6 +305,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 * [[`14090b59fc`](https://github.com/nodejs/node/commit/14090b59fc)] - **worker**: fix nullptr deref after MessagePort deser failure (Anna Henningsen) [#25076](https://github.com/nodejs/node/pull/25076)
 
 <a id="10.16.0"></a>
+
 ## 2019-05-28, Version 10.16.0 'Dubnium' (LTS), @BethGriggs
 
 ### Notable Changes
@@ -675,6 +676,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 * [[`dd8d1dabd7`](https://github.com/nodejs/node/commit/dd8d1dabd7)] - **zlib**: split JS code as prep for non-zlib-backed streams (Anna Henningsen) [#24939](https://github.com/nodejs/node/pull/24939)
 
 <a id="10.15.3"></a>
+
 ## 2018-03-05, Version 10.15.3 'Dubnium' (LTS), @BethGriggs
 
 ### Notable Changes
@@ -899,6 +901,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 * [[`483ff7bcc7`](https://github.com/nodejs/node/commit/483ff7bcc7)] - **worker**: drain messages from internal message port (Yael Hermon) [#24932](https://github.com/nodejs/node/pull/24932)
 
 <a id="10.15.2"></a>
+
 ## 2019-02-28, Version 10.15.2 'Dubnium' (LTS), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at:
@@ -920,6 +923,7 @@ A fix for the following CVE is included in this release:
 * [[`1a7302bd48`](https://github.com/nodejs/node/commit/1a7302bd48)] - **http**: prevent slowloris with keepalive connections (Matteo Collina) [nodejs-private/node-private#158](https://github.com/nodejs-private/node-private/pull/158)
 
 <a id="10.15.1"></a>
+
 ## 2019-01-29, Version 10.15.1 'Dubnium' (LTS), @codebytere
 
 ### Notable Changes
@@ -1155,11 +1159,10 @@ A fix for the following CVE is included in this release:
 * [[`c6a43fa2ef`](https://github.com/nodejs/node/commit/c6a43fa2ef)] - **zlib**: do not leak on destroy (Mathias Buus) [#23734](https://github.com/nodejs/node/pull/23734)
 
 <a id="10.15.0"></a>
+
 ## 2018-12-26, Version 10.15.0 'Dubnium' (LTS), @MylesBorins
 
-The 10.14.0 security release introduced some unexpected breakages on the 10.x release line.
-This is a special release to fix a regression in the HTTP binary upgrade response body and add
-a missing CLI flag to adjust the max header size of the http parser.
+The 10.14.0 security release introduced some unexpected breakages on the 10.x release line. This is a special release to fix a regression in the HTTP binary upgrade response body and add a missing CLI flag to adjust the max header size of the http parser.
 
 ### Notable Changes
 
@@ -1181,10 +1184,10 @@ a missing CLI flag to adjust the max header size of the http parser.
 * [[`3e14212f0e`](https://github.com/nodejs/node/commit/3e14212f0e)] - **test**: remove magic numbers in test-gc-http-client-onerror (Rich Trott) [#24943](https://github.com/nodejs/node/pull/24943)
 
 <a id="10.14.2"></a>
+
 ## 2018-12-11, Version 10.14.2 'Dubnium' (LTS), @MylesBorins prepared by @codebytere
 
-This LTS release comes with 374 commits. This includes 165 which are test or benchmark related,
-77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
+This LTS release comes with 374 commits. This includes 165 which are test or benchmark related, 77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
 
 ### Notable Changes
 
@@ -1574,6 +1577,7 @@ This LTS release comes with 374 commits. This includes 165 which are test or ben
 * [[`0763d256dc`](https://github.com/nodejs/node/commit/0763d256dc)] - **zlib**: generate error code names in C++ (Anna Henningsen) [#23413](https://github.com/nodejs/node/pull/23413)
 
 <a id="10.14.1"></a>
+
 ## 2018-11-29, Version 10.14.1 'Dubnium' (LTS), @MylesBorins
 
 ### Notable Changes
@@ -1587,6 +1591,7 @@ This LTS release comes with 374 commits. This includes 165 which are test or ben
 * [[`9e293c1328`](https://github.com/nodejs/node/commit/9e293c1328)] - ***Revert*** "**win,msi**: install tools for native modules" (Refael Ackermann) [#24344](https://github.com/nodejs/node/pull/24344)
 
 <a id="10.14.0"></a>
+
 ## 2018-11-27, Version 10.14.0 'Dubnium' (LTS), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at:
@@ -1622,13 +1627,10 @@ Fixes for the following CVEs are included in this release:
 * [[`8b1405ee01`](https://github.com/nodejs/node/commit/8b1405ee01)] - **url**: avoid hostname spoofing w/ javascript protocol (Matteo Collina) [nodejs-private/node-private#145](https://github.com/nodejs-private/node-private/pull/145)
 
 <a id="10.13.0"></a>
+
 ## 2018-10-30, Version 10.13.0 'Dubnium' (LTS), @MylesBorins
 
-This release marks the transition of Node.js 10.x into Long Term
-Support (LTS) with the codename 'Dubnium'. The 10.x release line
-now moves in to "Active LTS" and will remain so until April 2020.
-After that time it will move in to "Maintenance" until end of
-life in April 2021.
+This release marks the transition of Node.js 10.x into Long Term Support (LTS) with the codename 'Dubnium'. The 10.x release line now moves in to "Active LTS" and will remain so until April 2020. After that time it will move in to "Maintenance" until end of life in April 2021.
 
 ### Notable Changes
 
@@ -1641,62 +1643,41 @@ This release only includes minimal changes necessary to fix known regressions pr
 * [[`1003f4c975`](https://github.com/nodejs/node/commit/1003f4c975)] - **deps**: fix wrong default for v8 handle zapping (Refael Ackermann) [#23801](https://github.com/nodejs/node/pull/23801)
 
 <a id="10.12.0"></a>
+
 ## 2018-10-10, Version 10.12.0 (Current), @targos
 
 ### Notable changes
 
 * **assert**
-  * The diff output is now a tiny bit improved by sorting object properties when
-    inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
+  * The diff output is now a tiny bit improved by sorting object properties when inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
 * **cli**
-  * The options parser now normalizes `_` to `-` in all multi-word command-line
-    flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
-  * Added bash completion for the `node` binary. To generate a bash completion
-    script, run `node --completion-bash`. The output can be saved to a file
-    which can be sourced to enable completion. [#20713](https://github.com/nodejs/node/pull/20713)
+  * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
+  * Added bash completion for the `node` binary. To generate a bash completion script, run `node --completion-bash`. The output can be saved to a file which can be sourced to enable completion. [#20713](https://github.com/nodejs/node/pull/20713)
 * **crypto**
   * Added support for PEM-level encryption. [#23151](https://github.com/nodejs/node/pull/23151)
-  * Added an API asymmetric key pair generation. The new methods
-    `crypto.generateKeyPair` and `crypto.generateKeyPairSync` can be used to
-    generate public and private key pairs. The API supports RSA, DSA and EC and
-    a variety of key encodings (both PEM and DER). [#22660](https://github.com/nodejs/node/pull/22660)
+  * Added an API asymmetric key pair generation. The new methods `crypto.generateKeyPair` and `crypto.generateKeyPairSync` can be used to generate public and private key pairs. The API supports RSA, DSA and EC and a variety of key encodings (both PEM and DER). [#22660](https://github.com/nodejs/node/pull/22660)
 * **fs**
-  * Added a `recursive` option to `fs.mkdir` and `fs.mkdirSync`. If this option
-    is set to true, non-existing parent folders will be automatically created. [#21875](https://github.com/nodejs/node/pull/21875)
+  * Added a `recursive` option to `fs.mkdir` and `fs.mkdirSync`. If this option is set to true, non-existing parent folders will be automatically created. [#21875](https://github.com/nodejs/node/pull/21875)
 * **http2**
-  * Added a `'ping'` event to `Http2Session` that is emitted whenever a non-ack
-    `PING` is received. [#23009](https://github.com/nodejs/node/pull/23009)
+  * Added a `'ping'` event to `Http2Session` that is emitted whenever a non-ack `PING` is received. [#23009](https://github.com/nodejs/node/pull/23009)
   * Added support for the `ORIGIN` frame. [#22956](https://github.com/nodejs/node/pull/22956)
-  * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol
-    support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
+  * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
 * **module**
-  * Added `module.createRequireFromPath(filename)`. This new method can be used
-    to create a custom require function that will resolve modules relative to
-    the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
+  * Added `module.createRequireFromPath(filename)`. This new method can be used to create a custom require function that will resolve modules relative to the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
 * **process**
-  * Added a `'multipleResolves'` process event that is emitted whenever a
-    `Promise` is attempted to be resolved multiple times, e.g. if the `resolve`
-    and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
+  * Added a `'multipleResolves'` process event that is emitted whenever a `Promise` is attempted to be resolved multiple times, e.g. if the `resolve` and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
 * **url**
-  * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods
-    can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
+  * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
 * **util**
-  * Added the `sorted` option to `util.inspect()`. If set to `true`, all
-    properties of an object and Set and Map entries will be sorted in the
-    returned string. If set to a function, it is used as a compare function. [#22788](https://github.com/nodejs/node/pull/22788)
-  * The `util.instpect.custom` symbol is now defined in the global symbol
-    registry as `Symbol.for('nodejs.util.inspect.custom')`. [#20857](https://github.com/nodejs/node/pull/20857)
+  * Added the `sorted` option to `util.inspect()`. If set to `true`, all properties of an object and Set and Map entries will be sorted in the returned string. If set to a function, it is used as a compare function. [#22788](https://github.com/nodejs/node/pull/22788)
+  * The `util.instpect.custom` symbol is now defined in the global symbol registry as `Symbol.for('nodejs.util.inspect.custom')`. [#20857](https://github.com/nodejs/node/pull/20857)
   * Added support for `BigInt` numbers in `util.format()`. [#22097](https://github.com/nodejs/node/pull/22097)
 * **V8 API**
-  * A number of V8 C++ APIs have been marked as deprecated since they have been
-    removed in the upstream repository. Replacement APIs are added where
-    necessary. [#23159](https://github.com/nodejs/node/pull/23159)
+  * A number of V8 C++ APIs have been marked as deprecated since they have been removed in the upstream repository. Replacement APIs are added where necessary. [#23159](https://github.com/nodejs/node/pull/23159)
 * **Windows**
-  * The Windows msi installer now provides an option to automatically install
-    the tools required to build native modules. [#22645](https://github.com/nodejs/node/pull/22645)
+  * The Windows msi installer now provides an option to automatically install the tools required to build native modules. [#22645](https://github.com/nodejs/node/pull/22645)
 * **Workers**
-  * Debugging support for Workers using the DevTools protocol has been
-    implemented. [#21364](https://github.com/nodejs/node/pull/21364)
+  * Debugging support for Workers using the DevTools protocol has been implemented. [#21364](https://github.com/nodejs/node/pull/21364)
   * The public `inspector` module is now enabled in Workers. [#22769](https://github.com/nodejs/node/pull/22769)
 * **Added new collaborators**:
   * [digitalinfinity](https://github.com/digitalinfinity) - Hitesh Kanwathirtha
@@ -1958,6 +1939,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * [[`a6b55c73b0`](https://github.com/nodejs/node/commit/a6b55c73b0)] - **zlib**: move, rename, document internal params() cb (Anna Henningsen) [#23187](https://github.com/nodejs/node/pull/23187)
 
 <a id="10.11.0"></a>
+
 ## 2018-09-20, Version 10.11.0 (Current), @targos
 
 ### Notable Changes
@@ -2084,46 +2066,32 @@ This release only includes minimal changes necessary to fix known regressions pr
 * [[`a96a8468d6`](https://github.com/nodejs/node/commit/a96a8468d6)] - **worker**: correct (de)initialization order (Anna Henningsen) [#22773](https://github.com/nodejs/node/pull/22773)
 
 <a id="10.10.0"></a>
+
 ## 2018-09-06, Version 10.10.0 (Current), @targos
 
 ### Notable Changes
 
 * **child_process**:
-  * `TypedArray` and `DataView` values are now accepted as input by
-    `execFileSync` and `spawnSync`. [#22409](https://github.com/nodejs/node/pull/22409)
+  * `TypedArray` and `DataView` values are now accepted as input by `execFileSync` and `spawnSync`. [#22409](https://github.com/nodejs/node/pull/22409)
 * **coverage**:
-  * Native V8 code coverage information can now be output to disk by setting the
-    environment variable `NODE_V8_COVERAGE` to a directory. [#22527](https://github.com/nodejs/node/pull/22527)
+  * Native V8 code coverage information can now be output to disk by setting the environment variable `NODE_V8_COVERAGE` to a directory. [#22527](https://github.com/nodejs/node/pull/22527)
 * **deps**:
   * The bundled npm was upgraded to version 6.4.1. [#22591](https://github.com/nodejs/node/pull/22591)
-    * Changelogs:
-      [6.3.0-next.0](https://github.com/npm/cli/releases/tag/v6.3.0-next.0)
-      [6.3.0](https://github.com/npm/cli/releases/tag/v6.3.0)
-      [6.4.0](https://github.com/npm/cli/releases/tag/v6.4.0)
-      [6.4.1](https://github.com/npm/cli/releases/tag/v6.4.1)
+    * Changelogs: [6.3.0-next.0](https://github.com/npm/cli/releases/tag/v6.3.0-next.0) [6.3.0](https://github.com/npm/cli/releases/tag/v6.3.0) [6.4.0](https://github.com/npm/cli/releases/tag/v6.4.0) [6.4.1](https://github.com/npm/cli/releases/tag/v6.4.1)
 * **fs**:
-  * The methods `fs.read`, `fs.readSync`, `fs.write`, `fs.writeSync`,
-    `fs.writeFile` and `fs.writeFileSync` now all accept `TypedArray` and
-    `DataView` objects. [#22150](https://github.com/nodejs/node/pull/22150)
-  * A new boolean option, `withFileTypes`, can be passed to `fs.readdir` and
-    `fs.readdirSync`. If set to true, the methods return an array of directory
-    entries. These are objects that can be used to determine the type of each
-    entry and filter them based on that without calling `fs.stat`. [#22020](https://github.com/nodejs/node/pull/22020)
+  * The methods `fs.read`, `fs.readSync`, `fs.write`, `fs.writeSync`, `fs.writeFile` and `fs.writeFileSync` now all accept `TypedArray` and `DataView` objects. [#22150](https://github.com/nodejs/node/pull/22150)
+  * A new boolean option, `withFileTypes`, can be passed to `fs.readdir` and `fs.readdirSync`. If set to true, the methods return an array of directory entries. These are objects that can be used to determine the type of each entry and filter them based on that without calling `fs.stat`. [#22020](https://github.com/nodejs/node/pull/22020)
 * **http2**:
   * The `http2` module is no longer experimental. [#22466](https://github.com/nodejs/node/pull/22466)
 * **os**:
-  * Added two new methods: `os.getPriority` and `os.setPriority`, allowing to
-    manipulate the scheduling priority of processes. [#22407](https://github.com/nodejs/node/pull/22407)
+  * Added two new methods: `os.getPriority` and `os.setPriority`, allowing to manipulate the scheduling priority of processes. [#22407](https://github.com/nodejs/node/pull/22407)
 * **process**:
-  * Added `process.allowedNodeEnvironmentFlags`. This object can be used to
-    programmatically validate and list flags that are allowed in the
-    `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
+  * Added `process.allowedNodeEnvironmentFlags`. This object can be used to programmatically validate and list flags that are allowed in the `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
 * **src**:
   * Deprecated option variables in public C++ API. [#22515](https://github.com/nodejs/node/pull/22515)
   * Refactored options parsing. [#22392](https://github.com/nodejs/node/pull/22392)
 * **vm**:
-  * Added `vm.compileFunction`, a method to create new JavaScript functions from
-    a source body, with options similar to those of the other `vm` methods. [#21571](https://github.com/nodejs/node/pull/21571)
+  * Added `vm.compileFunction`, a method to create new JavaScript functions from a source body, with options similar to those of the other `vm` methods. [#21571](https://github.com/nodejs/node/pull/21571)
 * **Added new collaborators**:
   * [lundibundi](https://github.com/lundibundi) - Denys Otrishko
 
@@ -2338,6 +2306,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * [[`8e542eaf5f`](https://github.com/nodejs/node/commit/8e542eaf5f)] - **zlib**: fix memory leak for invalid input (Anna Henningsen) [#22713](https://github.com/nodejs/node/pull/22713)
 
 <a id="10.9.0"></a>
+
 ## 2018-08-15, Version 10.9.0 (Current), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at:
@@ -2530,23 +2499,17 @@ Fixes for the following CVEs are included in this release:
 * [[`4b0d2de5f4`](https://github.com/nodejs/node/commit/4b0d2de5f4)] - **zlib**: remove unused parameters (MaleDong) [#22115](https://github.com/nodejs/node/pull/22115)
 
 <a id="10.8.0"></a>
+
 ## 2018-08-01, Version 10.8.0 (Current), @targos
 
 ### Notable Changes
 
 * **deps**:
   * Upgrade npm to 6.2.0. [#21592](https://github.com/nodejs/node/pull/21592)
-    * npm has moved. This release updates various URLs to point to the right
-      places for bugs, support, and PRs.
-    * Fix the regular expression matching in `xcode_emulation` in `node-gyp` to
-      also handle version numbers with multiple-digit major versions which would
-      otherwise break under use of XCode 10.
-    * The npm tree has been *significantly* flattened. Tarball size for the npm
-      package has gone from 8MB to 4.8MB.
-    * Changelogs:
-      [6.2.0-next.0](https://github.com/npm/npm/releases/tag/v6.2.0-next.0),
-      [6.2.0-next.1](https://github.com/npm/npm/releases/tag/v6.2.0-next.1),
-      [6.2.0](https://github.com/npm/cli/releases/tag/v6.2.0).
+    * npm has moved. This release updates various URLs to point to the right places for bugs, support, and PRs.
+    * Fix the regular expression matching in `xcode_emulation` in `node-gyp` to also handle version numbers with multiple-digit major versions which would otherwise break under use of XCode 10.
+    * The npm tree has been *significantly* flattened. Tarball size for the npm package has gone from 8MB to 4.8MB.
+    * Changelogs: [6.2.0-next.0](https://github.com/npm/npm/releases/tag/v6.2.0-next.0), [6.2.0-next.1](https://github.com/npm/npm/releases/tag/v6.2.0-next.1), [6.2.0](https://github.com/npm/cli/releases/tag/v6.2.0).
 
 ### Commits
 
@@ -2646,6 +2609,7 @@ Fixes for the following CVEs are included in this release:
 * [[`9a88fe4d5e`](https://github.com/nodejs/node/commit/9a88fe4d5e)] - **vm**: rename vm.Module to vm.SourceTextModule (Gus Caplan) [#22007](https://github.com/nodejs/node/pull/22007)
 
 <a id="10.7.0"></a>
+
 ## 2018-07-18, Version 10.7.0 (Current), @targos
 
 ### Notable Changes
@@ -2656,16 +2620,14 @@ Fixes for the following CVEs are included in this release:
   * Upgrade to libuv 1.22.0. [#21731](https://github.com/nodejs/node/pull/21731)
   * Upgrade to ICU 62.1 (Unicode 11, CLDR 33.1). [#21728](https://github.com/nodejs/node/pull/21728)
 * **http**:
-  * Added support for passing both `timeout` and `agent` options to
-    `http.request`. [#21204](https://github.com/nodejs/node/pull/21204)
+  * Added support for passing both `timeout` and `agent` options to `http.request`. [#21204](https://github.com/nodejs/node/pull/21204)
 * **inspector**:
   * Expose the original console API in `require('inspector').console`. [#21659](https://github.com/nodejs/node/pull/21659)
 * **napi**:
   * Added experimental support for functions dealing with bigint numbers. [#21226](https://github.com/nodejs/node/pull/21226)
 * **process**:
   * The `process.hrtime.bigint()` method has been implemented. [#21256](https://github.com/nodejs/node/pull/21256)
-  * Added the `--title` command line argument to set the process title on
-    startup. [#21477](https://github.com/nodejs/node/pull/21477)
+  * Added the `--title` command line argument to set the process title on startup. [#21477](https://github.com/nodejs/node/pull/21477)
 * **trace_events**:
   * Added process\_name metadata. [#21477](https://github.com/nodejs/node/pull/21477)
 * **Added new collaborators**
@@ -2790,32 +2752,25 @@ Fixes for the following CVEs are included in this release:
 * [[`96dae83713`](https://github.com/nodejs/node/commit/96dae83713)] - **zlib**: fix memory leak for unused zlib instances (Anna Henningsen) [#21607](https://github.com/nodejs/node/pull/21607)
 
 <a id="10.6.0"></a>
+
 ## 2018-07-04, Version 10.6.0 (Current), @targos
 
 ### Notable Changes
 
 * **dns**:
-  * An experimental promisified version of the dns module is now available. Give
-    it a try with `require('dns').promises`. [#21264](https://github.com/nodejs/node/pull/21264)
+  * An experimental promisified version of the dns module is now available. Give it a try with `require('dns').promises`. [#21264](https://github.com/nodejs/node/pull/21264)
 * **fs**:
   * `fs.lchown` has been undeprecated now that libuv supports it. [#21498](https://github.com/nodejs/node/pull/21498)
 * **lib**:
-  * `Atomics.wake` is being renamed to `Atomics.notify` in the ECMAScript
-    specification ([reference](https://github.com/tc39/ecma262/pull/1220)).
-    Since Node.js now has experimental support for worker threads, we are being
-    proactive and added a `notify` alias, while emitting a warning if
-    `wake` is used. [#21413](https://github.com/nodejs/node/pull/21413) [#21518](https://github.com/nodejs/node/pull/21518)
+  * `Atomics.wake` is being renamed to `Atomics.notify` in the ECMAScript specification ([reference](https://github.com/tc39/ecma262/pull/1220)). Since Node.js now has experimental support for worker threads, we are being proactive and added a `notify` alias, while emitting a warning if `wake` is used. [#21413](https://github.com/nodejs/node/pull/21413) [#21518](https://github.com/nodejs/node/pull/21518)
 * **n-api**:
   * Add API for asynchronous functions. [#17887](https://github.com/nodejs/node/pull/17887)
 * **util**:
-  * `util.inspect` is now able to return a result instead of throwing when the
-    maximum call stack size is exceeded during inspection. [#20725](https://github.com/nodejs/node/pull/20725)
+  * `util.inspect` is now able to return a result instead of throwing when the maximum call stack size is exceeded during inspection. [#20725](https://github.com/nodejs/node/pull/20725)
 * **vm**:
-  * Add `script.createCachedData()`. This API replaces the `produceCachedData`
-    option of the `Script` constructor that is now deprecated. [#20300](https://github.com/nodejs/node/pull/20300)
+  * Add `script.createCachedData()`. This API replaces the `produceCachedData` option of the `Script` constructor that is now deprecated. [#20300](https://github.com/nodejs/node/pull/20300)
 * **worker**:
-  * Support for relative paths has been added to the `Worker` constructor. Paths
-    are interpreted relative to the current working directory. [#21407](https://github.com/nodejs/node/pull/21407)
+  * Support for relative paths has been added to the `Worker` constructor. Paths are interpreted relative to the current working directory. [#21407](https://github.com/nodejs/node/pull/21407)
 
 ### Commits
 
@@ -2929,6 +2884,7 @@ Fixes for the following CVEs are included in this release:
 * [[`fb2592ff12`](https://github.com/nodejs/node/commit/fb2592ff12)] - **workers,trace_events**: set thread name for workers (James M Snell) [#21246](https://github.com/nodejs/node/pull/21246)
 
 <a id="10.5.0"></a>
+
 ## 2018-06-20, Version 10.5.0 (Current), @targos
 
 ### Notable Changes
@@ -2937,13 +2893,10 @@ Fixes for the following CVEs are included in this release:
   * Support for `crypto.scrypt()` has been added. [#20816](https://github.com/nodejs/node/pull/20816)
 * **fs**:
   * BigInt support has been added to `fs.stat` and `fs.watchFile`. [#20220](https://github.com/nodejs/node/pull/20220)
-  * APIs that take `mode` as arguments no longer throw on values larger than
-    `0o777`. [#20636](https://github.com/nodejs/node/pull/20636) [#20975](https://github.com/nodejs/node/pull/20975) (Fixes: [#20498](https://github.com/nodejs/node/issues/20498))
+  * APIs that take `mode` as arguments no longer throw on values larger than `0o777`. [#20636](https://github.com/nodejs/node/pull/20636) [#20975](https://github.com/nodejs/node/pull/20975) (Fixes: [#20498](https://github.com/nodejs/node/issues/20498))
   * Fix crashes in closed event watchers. [#20985](https://github.com/nodejs/node/pull/20985) (Fixes: [#20297](https://github.com/nodejs/node/issues/20297))
 * **Worker Threads**:
-  * Support for multi-threading has been added behind the
-    `--experimental-worker` flag in the `worker_threads` module. This feature
-    is *experimental* and may receive breaking changes at any time. [#20876](https://github.com/nodejs/node/pull/20876)
+  * Support for multi-threading has been added behind the `--experimental-worker` flag in the `worker_threads` module. This feature is *experimental* and may receive breaking changes at any time. [#20876](https://github.com/nodejs/node/pull/20876)
 
 ### Commits
 
@@ -3098,6 +3051,7 @@ Fixes for the following CVEs are included in this release:
 * [[`dfb5cf6963`](https://github.com/nodejs/node/commit/dfb5cf6963)] - **workers,trace_events**: set thread name for workers (James M Snell) [#21246](https://github.com/nodejs/node/pull/21246)
 
 <a id="10.4.1"></a>
+
 ## 2018-06-12, Version 10.4.1 (Current), @evanlucas
 
 ### Notable Changes
@@ -3128,6 +3082,7 @@ Fixes for the following CVEs are included in this release:
 * [[`1e49eadd68`](https://github.com/nodejs/node/commit/1e49eadd68)] - **tools,gyp**: fix regex for version matching (Rich Trott) [#21216](https://github.com/nodejs/node/pull/21216)
 
 <a id="10.4.0"></a>
+
 ## 2018-06-06, Version 10.4.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -3233,6 +3188,7 @@ Fixes for the following CVEs are included in this release:
 * [[`48aa4c32d0`](https://github.com/nodejs/node/commit/48aa4c32d0)] - **zlib**: removed extra util require (ErnestoSalazar) [#21069](https://github.com/nodejs/node/pull/21069)
 
 <a id="10.3.0"></a>
+
 ## 2018-05-29, Version 10.3.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -3292,6 +3248,7 @@ Fixes for the following CVEs are included in this release:
 * [[`46e7cec7a5`](https://github.com/nodejs/node/commit/46e7cec7a5)] - **tools**: fix sorting in doc/type-parser.js (Vse Mozhet Byt) [#20976](https://github.com/nodejs/node/pull/20976)
 
 <a id="10.2.1"></a>
+
 ## 2018-05-24, Version 10.2.1 (Current), @MylesBorins
 
 ### Notable Changes
@@ -3305,6 +3262,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 * [[`52f21fbfbc`](https://github.com/nodejs/node/commit/52f21fbfbc)] - **test**: mark test-zlib.zlib-binding.deflate as flaky (Matheus Marchini) [#20935](https://github.com/nodejs/node/pull/20935)
 
 <a id="10.2.0"></a>
+
 ## 2018-05-23, Version 10.2.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -3539,6 +3497,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 * [[`d5db576d15`](https://github.com/nodejs/node/commit/d5db576d15)] - **zlib**: reduce number of static internal methods (Anna Henningsen) [#20674](https://github.com/nodejs/node/pull/20674)
 
 <a id="10.1.0"></a>
+
 ## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
 
 ### Notable Changes
@@ -3730,6 +3689,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 * [[`3962c734ae`](https://github.com/nodejs/node/commit/3962c734ae)] - **util**: fix isInsideNodeModules inside error (Anatoli Papirovski) [#20266](https://github.com/nodejs/node/pull/20266)
 
 <a id="10.0.0"></a>
+
 ## 2018-04-24, Version 10.0.0 (Current), @jasnell
 
 ### Notable Changes

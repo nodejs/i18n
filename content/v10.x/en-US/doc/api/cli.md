@@ -3,8 +3,7 @@
 <!--introduced_in=v5.9.1-->
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in
-debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
@@ -16,9 +15,9 @@ To view this documentation as a manual page in a terminal, run `man node`.
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL][].
+Execute without arguments to start the [REPL](repl.html).
 
-_For more info about `node inspect`, please see the [debugger][] documentation._
+_For more info about `node inspect`, please see the [debugger](debugger.html) documentation._
 
 ## Options
 <!-- YAML
@@ -29,8 +28,7 @@ changes:
                  Node.js options as well, in addition to V8 options.
 -->
 
-All options, including V8 options, allow words to be separated by both
-dashes (`-`) or underscores (`_`).
+All options, including V8 options, allow words to be separated by both dashes (`-`) or underscores (`_`).
 
 For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 
@@ -39,30 +37,23 @@ For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities,
-meaning that the script will be read from stdin, and the rest of the options
-are passed to that script.
+Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
 ### `--`
 <!-- YAML
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script.
-If no script filename or eval/print script is supplied prior to this, then
-the next argument will be used as a script filename.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 <!-- YAML
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem
-analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
-If this flag is passed, the behavior can still be set to not abort through
-[`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the
-`domain` module that uses it).
+If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
 
 ### `--completion-bash`
 <!-- YAML
@@ -80,8 +71,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with
-`./configure --openssl-fips`.)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 <!-- YAML
@@ -116,8 +106,7 @@ Enable experimental worker threads using the `worker_threads` module.
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.)
-(Same requirements as `--enable-fips`.)
+Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 <!-- YAML
@@ -131,21 +120,18 @@ Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of user script.
-Default `host:port` is `127.0.0.1:9229`.
+Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
 <!-- YAML
 added: v7.6.0
 -->
 
-Set the `host:port` to be used when the inspector is activated.
-Useful when activating the inspector by sending the `SIGUSR1` signal.
+Set the `host:port` to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
 
 Default host is `127.0.0.1`.
 
-See the [security warning](#inspector_security) below regarding the `host`
-parameter usage.
+See the [security warning](#inspector_security) below regarding the `host` parameter usage.
 
 ### `--inspect[=[host:]port]`
 <!-- YAML
@@ -154,32 +140,26 @@ added: v6.3.0
 
 Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug
-and profile Node.js instances. The tools attach to Node.js instances via a
-tcp port and communicate using the [Chrome DevTools Protocol][].
+V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 <a id="inspector_security"></a>
+
 #### Warning: binding inspector to a public IP:port combination is insecure
 
-Binding the inspector to a public IP (including `0.0.0.0`) with an open port is
-insecure, as it allows external hosts to connect to the inspector and perform
-a [remote code execution][] attack.
+Binding the inspector to a public IP (including `0.0.0.0`) with an open port is insecure, as it allows external hosts to connect to the inspector and perform a [remote code execution](https://www.owasp.org/index.php/Code_Injection) attack.
 
-If you specify a host, make sure that at least one of the following is true:
-either the host is not public, or the port is properly firewalled to disallow
-unwanted connections.
+If you specify a host, make sure that at least one of the following is true: either the host is not public, or the port is properly firewalled to disallow unwanted connections.
 
-**More specifically, `--inspect=0.0.0.0` is insecure if the port (`9229` by
-default) is not firewall-protected.**
+**More specifically, `--inspect=0.0.0.0` is insecure if the port (`9229` by default) is not firewall-protected.**
 
-See the [debugging security implications][] section for more information.
+See the [debugging security implications](https://nodejs.org/en/docs/guides/debugging-getting-started/#security-implications) section for more information.
 
 ### `--loader=file`
 <!-- YAML
 added: v9.0.0
 -->
 
-Specify the `file` of the custom [experimental ECMAScript Module][] loader.
+Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
 ### `--insecure-http-parser`
 <!-- YAML
@@ -217,8 +197,7 @@ Silence deprecation warnings.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled
-dynamically when `async_hooks` is enabled.
+Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 <!-- YAML
@@ -232,9 +211,7 @@ Silence all process warnings (including deprecations).
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be
-used to enable FIPS-compliant crypto if Node.js is built with
-`./configure --openssl-fips`.
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 <!-- YAML
@@ -243,28 +220,16 @@ added: v8.0.0
 
 Emit pending deprecation warnings.
 
-Pending deprecations are generally identical to a runtime deprecation with the
-notable exception that they are turned *off* by default and will not be emitted
-unless either the `--pending-deprecation` command line flag, or the
-`NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations
-are used to provide a kind of selective "early warning" mechanism that
-developers may leverage to detect deprecated API usage.
+Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `--preserve-symlinks`
 <!-- YAML
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and
-caching modules.
+Instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-By default, when Node.js loads a module from a path that is symbolically linked
-to a different on-disk location, Node.js will dereference the link and use the
-actual on-disk "real path" of the module as both an identifier and as a root
-path to locate other dependency modules. In most cases, this default behavior
-is acceptable. However, when using symbolically linked peer dependencies, as
-illustrated in the example below, the default behavior causes an exception to
-be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
 
 ```text
 {appDir}
@@ -280,36 +245,22 @@ be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the
-symlink path for modules as opposed to the real path, allowing symbolically
-linked peer dependencies to be found.
+The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
 
-Note, however, that using `--preserve-symlinks` can have other side effects.
-Specifically, symbolically linked *native* modules can fail to load if those
-are linked from more than one location in the dependency tree (Node.js would
-see those as two separate modules and would attempt to load the module multiple
-times, causing an exception to be thrown).
+Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
 
-The `--preserve-symlinks` flag does not apply to the main module, which allows
-`node --preserve-symlinks node_module/.bin/<foo>` to work.  To apply the same
-behavior for the main module, also use `--preserve-symlinks-main`.
+The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work.  To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
 
 ### `--preserve-symlinks-main`
 <!-- YAML
 added: v10.2.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and
-caching the main module (`require.main`).
+Instructs the module loader to preserve symbolic links when resolving and caching the main module (`require.main`).
 
-This flag exists so that the main module can be opted-in to the same behavior
-that `--preserve-symlinks` gives to all other imports; they are separate flags,
-however, for backward compatibility with older Node.js versions.
+This flag exists so that the main module can be opted-in to the same behavior that `--preserve-symlinks` gives to all other imports; they are separate flags, however, for backward compatibility with older Node.js versions.
 
-Note that `--preserve-symlinks-main` does not imply `--preserve-symlinks`; it
-is expected that `--preserve-symlinks-main` will be used in addition to
-`--preserve-symlinks` when it is not desirable to follow symlinks before
-resolving relative paths.
+Note that `--preserve-symlinks-main` does not imply `--preserve-symlinks`; it is expected that `--preserve-symlinks-main` will be used in addition to `--preserve-symlinks` when it is not desirable to follow symlinks before resolving relative paths.
 
 See `--preserve-symlinks` for more information.
 
@@ -332,10 +283,7 @@ Process V8 profiler output generated using the V8 option `--prof`.
 added: v8.0.0
 -->
 
-Write process warnings to the given file instead of printing to stderr. The
-file will be created if it does not exist, and will be appended to if it does.
-If an error occurs while attempting to write the warning to the file, the
-warning will be written to stderr instead.
+Write process warnings to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
 
 ### `--throw-deprecation`
 <!-- YAML
@@ -356,8 +304,7 @@ Set `process.title` on startup.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. Requires Node.js to be built
-with crypto support (default).
+Specify an alternative default TLS cipher list. Requires Node.js to be built with crypto support (default).
 
 ### `--trace-deprecation`
 <!-- YAML
@@ -371,16 +318,14 @@ Print stack traces for deprecations.
 added: v7.7.0
 -->
 
-A comma separated list of categories that should be traced when trace event
-tracing is enabled using `--trace-events-enabled`.
+A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
 ### `--trace-event-file-pattern`
 <!-- YAML
 added: v9.8.0
 -->
 
-Template string specifying the filepath for the trace event data, it
-supports `${rotation}` and `${pid}`.
+Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
 
 ### `--trace-events-enabled`
 <!-- YAML
@@ -394,8 +339,7 @@ Enables the collection of trace event tracing information.
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn
-of the event loop.
+Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
 
 ### `--trace-warnings`
 <!-- YAML
@@ -433,18 +377,11 @@ occurs. One of three modes can be chosen:
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version
-or use OpenSSL's default CA store. The default store is selectable
-at build-time.
+Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store
-that is fixed at release time. It is identical on all supported platforms.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
 
-Using OpenSSL store allows for external modifications of the store. For most
-Linux and BSD distributions, this store is maintained by the distribution
-maintainers and system administrators. OpenSSL CA store location is dependent on
-configuration of the OpenSSL library but this can be altered at runtime using
-environment variables.
+Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
 See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 
@@ -462,19 +399,16 @@ added: v5.10.0
 
 Set V8's thread pool size which will be used to allocate background jobs.
 
-If set to `0` then V8 will choose an appropriate size of the thread pool based
-on the number of online processors.
+If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
 
-If the value provided is larger than V8's maximum, then the largest value
-will be chosen.
+If the value provided is larger than V8's maximum, then the largest value will be chosen.
 
 ### `--zero-fill-buffers`
 <!-- YAML
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][]
-instances.
+Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
 
 ### `-c`, `--check`
 <!-- YAML
@@ -498,20 +432,16 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are
-predefined in the REPL can also be used in `script`.
+Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it
-only recognizes double `"` for quoting. In Powershell or Git bash, both `'`
-and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
 ### `-h`, `--help`
 <!-- YAML
 added: v0.1.3
 -->
 
-Print node command line options.
-The output of this option is less detailed than this document.
+Print node command line options. The output of this option is less detailed than this document.
 
 ### `-i`, `--interactive`
 <!-- YAML
@@ -538,8 +468,7 @@ added: v1.6.0
 
 Preload the specified module at startup.
 
-Follows `require()`'s module resolution
-rules. `module` may be either a path to a file, or a node module name.
+Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
 
 ### `-v`, `--version`
 <!-- YAML
@@ -573,25 +502,18 @@ When set to `1` colors will not be used in the REPL.
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the
-extra certificates in `file`. The file should consist of one or more trusted
-certificates in PEM format. A message will be emitted (once) with
-[`process.emitWarning()`][emit_warning] if the file is missing or
-malformed, but any errors are otherwise ignored.
+When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
 
-Note that neither the well known nor extra certificates are used when the `ca`
-options property is explicitly specified for a TLS or HTTPS client or server.
+Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
 
-This environment variable is ignored when `node` runs as setuid root or
-has Linux file capabilities set.
+This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
 ### `NODE_ICU_DATA=file`
 <!-- YAML
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
-with small-icu support.
+Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
 
 ### `NODE_NO_WARNINGS=1`
 <!-- YAML
@@ -605,10 +527,7 @@ When set to `1`, process warnings are silenced.
 added: v8.0.0
 -->
 
-A space-separated list of command line options. `options...` are interpreted as
-if they had been specified on the command line before the actual command line
-(so they can be overridden). Node.js will exit with an error if an option
-that is not allowed in the environment is used, such as `-p` or a script file.
+A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
 Node.js options that are allowed are:
 - `--enable-fips`
@@ -671,52 +590,36 @@ added: v8.0.0
 
 When set to `1`, emit pending deprecation warnings.
 
-Pending deprecations are generally identical to a runtime deprecation with the
-notable exception that they are turned *off* by default and will not be emitted
-unless either the `--pending-deprecation` command line flag, or the
-`NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations
-are used to provide a kind of selective "early warning" mechanism that
-developers may leverage to detect deprecated API usage.
+Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 <!-- YAML
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when
-resolving and caching modules.
+When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
 ### `NODE_REDIRECT_WARNINGS=file`
 <!-- YAML
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of
-printing to stderr. The file will be created if it does not exist, and will be
-appended to if it does. If an error occurs while attempting to write the
-warning to the file, the warning will be written to stderr instead. This is
-equivalent to using the `--redirect-warnings=file` command-line flag.
+When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
 
 ### `NODE_REPL_HISTORY=file`
 <!-- YAML
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is
-`~/.node_repl_history`, which is overridden by this variable. Setting the value
-to an empty string (`''` or `' '`) disables persistent REPL history.
+Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `NODE_TLS_REJECT_UNAUTHORIZED=value`
 
-If `value` equals `'0'`, certificate validation is disabled for TLS connections.
-This makes TLS, and HTTPS by extension, insecure. The use of this environment
-variable is strongly discouraged.
+If `value` equals `'0'`, certificate validation is disabled for TLS connections. This makes TLS, and HTTPS by extension, insecure. The use of this environment variable is strongly discouraged.
 
 ### `NODE_V8_COVERAGE=dir`
 
-When set, Node.js will begin outputting [V8 JavaScript code coverage][] to the
-directory provided as an argument. Coverage is output as an array of
-[ScriptCoverage][] objects:
+When set, Node.js will begin outputting [V8 JavaScript code coverage](https://v8project.blogspot.com/2017/12/javascript-code-coverage.html) to the directory provided as an argument. Coverage is output as an array of [ScriptCoverage](https://chromedevtools.github.io/devtools-protocol/tot/Profiler#type-ScriptCoverage) objects:
 
 ```json
 {
@@ -730,60 +633,45 @@ directory provided as an argument. Coverage is output as an array of
 }
 ```
 
-`NODE_V8_COVERAGE` will automatically propagate to subprocesses, making it
-easier to instrument applications that call the `child_process.spawn()` family
-of functions. `NODE_V8_COVERAGE` can be set to an empty string, to prevent
-propagation.
+`NODE_V8_COVERAGE` will automatically propagate to subprocesses, making it easier to instrument applications that call the `child_process.spawn()` family of functions. `NODE_V8_COVERAGE` can be set to an empty string, to prevent propagation.
 
-At this time coverage is only collected in the main thread and will not be
-output for code executed by worker threads.
+At this time coverage is only collected in the main thread and will not be output for code executed by worker threads.
 
 ### `OPENSSL_CONF=file`
 <!-- YAML
 added: v6.11.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be
-used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment
-variable is ignored.
+If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
 
 ### `SSL_CERT_DIR=dir`
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory
-containing trusted certificates.
+If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
 
-Be aware that unless the child environment is explicitly set, this environment
-variable will be inherited by any child processes, and if they use OpenSSL, it
-may cause them to trust the same CAs as node.
+Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `SSL_CERT_FILE=file`
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file
-containing trusted certificates.
+If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
 
-Be aware that unless the child environment is explicitly set, this environment
-variable will be inherited by any child processes, and if they use OpenSSL, it
-may cause them to trust the same CAs as node.
+Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they
-do not exist, libuv's threadpool is used to create asynchronous node APIs based
-on synchronous system APIs. Node.js APIs that use the threadpool are:
+Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. Node.js APIs that use the threadpool are:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly
-  synchronous
+- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
 - `crypto.pbkdf2()`
 - `crypto.randomBytes()`, unless it is used without a callback
 - `crypto.randomFill()`

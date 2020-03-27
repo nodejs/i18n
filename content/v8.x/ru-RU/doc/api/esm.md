@@ -1,12 +1,12 @@
-# ECMAScript Modules
+# Модули ECMAScript
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Стабильность: 1 - экспериментальный
 
 <!--name=esm-->
 
-Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+В Node.js имеется поддержка Модулей ES, реализованная на основании [Node.js EP для ES Модулей](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
 Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 
@@ -28,7 +28,7 @@ node --experimental-modules my-app.mjs
 
 ### Supported
 
-Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. In the future `import()` can be used to create entry points into ESM graphs at run time.
+Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
 
 ### Unsupported
 
@@ -59,8 +59,7 @@ ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) seman
 Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
-import './foo?query=1'; // loads ./foo with query of "?query=1"
-import './foo?query=2'; // loads ./foo with query of "?query=2"
+import './foo?query=1'; // loads ./foo with query of "?query=1"import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
 For now, only modules using the `file:` protocol can be loaded.
@@ -111,14 +110,14 @@ The default NodeJS ES module resolution function is provided as a third argument
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`     | Description                                                     |
+| `format`     | Описание                                                        |
 | ------------ | --------------------------------------------------------------- |
-| `"esm"`      | Load a standard JavaScript module                               |
-| `"commonjs"` | Load a node-style CommonJS module                               |
-| `"builtin"`  | Load a node builtin CommonJS module                             |
-| `"json"`     | Load a JSON file                                                |
-| `"addon"`    | Load a [C++ Addon](addons.html)                                 |
-| `"dynamic"`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
+| `'esm'`      | Load a standard JavaScript module                               |
+| `'commonjs'` | Load a node-style CommonJS module                               |
+| `'builtin'`  | Load a node builtin CommonJS module                             |
+| `'json'`     | Load a JSON file                                                |
+| `'addon'`    | Load a [C++ Addon](addons.html)                                 |
+| `'dynamic'`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node builtin modules support could be written:
 
@@ -167,7 +166,7 @@ would load the module `x.js` as an ES module with relative resolution support (w
 
 ### Dynamic instantiate hook
 
-To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: "dynamic"` from the `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {

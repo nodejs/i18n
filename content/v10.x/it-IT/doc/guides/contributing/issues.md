@@ -27,8 +27,7 @@ La discussione di argomenti non tecnici (come possono essere la proprietà intel
 
 Quando si apre un nuovo issue nell'issue tracker di `nodejs/node`, agli utenti verrà presentato un modello di base da compilare.
 
-```markdown
-<!--
+```markdown<!--
 Grazie per aver segnalato un issue.
 
 Questo issue tracker riguarda bug ed issue rilevati nel Node.js core.
@@ -44,14 +43,9 @@ Subsystem: se noto, specificare il nome del modulo principale colpito
 
 Se possibile, si prega di fornire un codice che mostri il problema, mantenendolo 
 semplice e libero da dipendenze esterne, nel limite della possibilità.
--->
-
-* **Version**:
+-->* **Version**:
 * **Platform**:
-* **Subsystem**:
-
-<!-- Inserisci i dettagli del tuo issue sotto questo commento. -->
-```
+* **Subsystem**:<!-- Inserisci i dettagli del tuo issue sotto questo commento. -->```
 
 Se credi di aver scoperto un bug in Node.js, compila questo modulo, seguendo il modello al meglio delle tue capacità. Non ti preoccupare se non puoi rispondere ad ogni dettaglio, riempi quello che puoi.
 
@@ -61,7 +55,7 @@ Per escludere la possibilità di bug introdotti dal codice userland, i test case
 
 Vedi [Come creare un esempio Minimo, Completo e Verificabile](https://stackoverflow.com/help/mcve).
 
-## Valutazione di un Bug Report
+## Smistamento di un Bug Report
 
 Una volta aperto un'issue, succede spesso che se ne discuti a riguardo. Alcuni contributors potrebbero avere opinioni diverse riguardo l'issue, includendo anche se il comportamento visto è un bug oppure una funzionalità. Questa discussione è parte del processo e dovrebbe essere mantenuta focalizzata, utile e professionale.
 

@@ -1,4 +1,4 @@
-# ECMAScript Modules
+# ECMAScript 모듈
 
 <!--introduced_in=v8.5.0-->
 
@@ -28,7 +28,7 @@ node --experimental-modules my-app.mjs
 
 ### Supported
 
-Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. In the future `import()` can be used to create entry points into ESM graphs at run time.
+Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
 
 ### Unsupported
 
@@ -113,12 +113,12 @@ In addition to returning the resolved file URL value, the resolve hook also retu
 
 | `format`     | Description                                                     |
 | ------------ | --------------------------------------------------------------- |
-| `"esm"`      | Load a standard JavaScript module                               |
-| `"commonjs"` | Load a node-style CommonJS module                               |
-| `"builtin"`  | Load a node builtin CommonJS module                             |
-| `"json"`     | Load a JSON file                                                |
-| `"addon"`    | Load a [C++ Addon](addons.html)                                 |
-| `"dynamic"`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
+| `'esm'`      | Load a standard JavaScript module                               |
+| `'commonjs'` | Load a node-style CommonJS module                               |
+| `'builtin'`  | Load a node builtin CommonJS module                             |
+| `'json'`     | Load a JSON file                                                |
+| `'addon'`    | Load a [C++ Addon](addons.html)                                 |
+| `'dynamic'`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node builtin modules support could be written:
 
@@ -167,7 +167,7 @@ would load the module `x.js` as an ES module with relative resolution support (w
 
 ### Dynamic instantiate hook
 
-To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: "dynamic"` from the `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {

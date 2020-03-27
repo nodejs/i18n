@@ -1,64 +1,57 @@
-# About this Documentation
+# Об этой документации
 
 <!--introduced_in=v0.10.0-->
-
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+Цель данной документации - всестороннее объяснение API Node.js как со справочной, так и с концептуальной точки зрения. Каждый раздел описывает встроенный модуль или концепт высокого уровня.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+При необходимости типы свойств, аргументы методов и аргументы, предоставляемые обработчикам событий, подробно описываются в списке под заголовком темы.
 
-## Contributing
+## Помощь проекту
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Каждый файл генерируется на основе соответствующего файла `.md` в папке `doc/api/` в исходном дереве Node.js. Документация генерируется с помощью программы `tools/doc/generate.js`. Шаблон HTML находится по адресу `doc/template.html`.
 
-## Stability Index
+## Индекс стабильности
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Throughout the documentation are indications of a section's stability. API Node.js все еще меняется, и по мере его развития некоторые части становятся более надежными, чем другие. Некоторые из них настолько хорошо проверены и настолько надежны, что вряд ли они когда-нибудь изменятся. Другие являются совершенно новыми и экспериментальными, или, как известно, опасны и находятся в процессе доработки.
 
-The stability indices are as follows:
+Индексы стабильности следующие:
 
 ```txt
-Stability: 0 - Deprecated
-This feature is known to be problematic, and changes may be planned. Do
-not rely on it. Use of the feature may cause warnings to be emitted.
-Backwards compatibility across major versions should not be expected.
+Стабильность: 0 - Устарело
+Как известно, эта функция является проблемной, и, возможно, планируется ее изменение. Не стоит на нее полагаться. Использование этой функции может привести к выводу предупреждений.
+Не следует ожидать обратной совместимости между основными версиями.
 ```
 
 ```txt
-Stability: 1 - Experimental
-This feature is still under active development and subject to non-backwards
-compatible changes, or even removal, in any future version. Use of the feature
-is not recommended in production environments. Experimental features are not
-subject to the Node.js Semantic Versioning model.
+Стабильность: 1 - Экспериментальная
+Эта функция все еще находится в активной разработке и может подвергаться изменениям, несовместимым с предыдущими версиями, или даже удалена в любой последующей версии. Использование этой функции не рекомендуется в производственных средах. Экспериментальные функции не подчиняются модели семантического управления версиями Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable
-The API has proven satisfactory. Compatibility with the npm ecosystem
-is a high priority, and will not be broken unless absolutely necessary.
+Стабильность: 2 - Стабильная
+API оказался удовлетворительным. Совместимость с экосистемой npm является приоритетом и не нарушается без крайней необходимости.
 ```
 
-*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
+*Примечание*: Необходимо соблюдать осторожность при использовании `Экспериментальных` функций, особенно в модулях, которые могут использоваться как зависимости (или зависимости зависимостей) в приложении Node.js. Конечные пользователи могут не знать, что используются экспериментальные функции, и, следовательно, могут возникать непредвиденные сбои или изменения в поведении при модификации API. Чтобы избежать подобного рода сюрпризов, `Экспериментальные` функции могут потребовать флаг командной строки, чтобы точно разрешить их, или может появиться предупреждение процесса. По умолчанию эти предупреждения печатаются в [`stderr`][] и могут быть обработаны путем присоединения функции прослушивателя к событию [`process.on('warning')`][].
 
-## JSON Output
-
+## Вывод в формате JSON
 <!-- YAML
 added: v0.6.12
 -->
 
-> Stability: 1 - Experimental
+> Стабильность: 1 - экспериментальный
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Каждый документ `.html` имеет соответствующий документ `.json`, представляющий ту же информацию в структурированном виде. Эта функция является экспериментальной и добавлена в помощь IDE и других утилит, которые хотят выполнять программные действия с документацией.
 
-## Syscalls and man pages
+## Системные вызовы и справочные страницы
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Системные вызовы, такие как open (2) и read (2), определяют интерфейс между пользовательскими программами и базовой операционной системой. Функции Node, которые просто сворачивают системный вызов, такие как [`fs.open()`][], задокументируют это. Документы ссылаются на соответствующие справочные страницы, которые описывают работу системных вызовов.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Некоторые системные вызовы, такие как lchown(2), являются специфическими для BSD. Например, это означает, что [`fs.lchown()`][] работает только в macOS и других производных системах BSD и недоступно в Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Большинство системных вызовов Unix имеют эквивалентные вызовы в Windows, но поведение может отличаться в Windows относительно Linux и macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).

@@ -1,6 +1,6 @@
 # Building Node with Ninja
 
-The purpose of this guide is to show how to build Node.js using [Ninja](https://ninja-build.org/), as doing so can be significantly quicker than using `make`. Please see [Ninja's site](https://ninja-build.org/) for installation instructions (unix only).
+The purpose of this guide is to show how to build Node.js using [Ninja](https://ninja-build.org/), as doing so can be significantly quicker than using `make`. Lütfen kurulum talimatları için [Ninja'nın sitesine](https://ninja-build.org/) bakınız (sadece unix).
 
 To build Node with ninja, there are 3 steps that must be taken:
 
@@ -9,7 +9,6 @@ To build Node with ninja, there are 3 steps that must be taken:
 3. Lastly, make symlink to `./node` using `ln -fs out/Release/node node`.
 
 When running `ninja -C out/Release` you will see output similar to the following if the build has succeeded:
-
 ```txt
 ninja: Entering directory `out/Release`
 [4/4] LINK node, POSTBUILDS

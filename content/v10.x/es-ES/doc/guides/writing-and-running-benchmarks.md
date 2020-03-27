@@ -1,49 +1,49 @@
-# Cómo Escribir y Ejecutar Pruebas de Rendimiento en el núcleo de Node.js
+# Cómo Escribir y Ejecutar Pruebas de Rendimiento en la Base de Node.js
 
 ## Tabla de Contenidos
 
-* [Prerrequisitos](#prerequisites) 
-  * [Requisitos de la Prueba de Rendimiento HTTP](#http-benchmark-requirements)
-  * [Requisitos del Análisis de la Prueba de Rendimiento](#benchmark-analysis-requirements)
-* [Ejecutar pruebas de rendimiento](#running-benchmarks) 
-  * [Ejecutar pruebas de rendimiento individuales](#running-individual-benchmarks)
-  * [Ejecutar todas las pruebas de rendimiento](#running-all-benchmarks)
-  * [Comparar versiones de Node.js](#comparing-nodejs-versions)
-  * [Comparar parámetros](#comparing-parameters)
-  * [Ejecutar Pruebas de Rendimiento en el CI](#running-benchmarks-on-the-ci)
-* [Crear una prueba de rendimiento](#creating-a-benchmark) 
+* [Pre-requisitos](#prerequisites)
+  * [Requerimientos de la Prueba de Rendimiento de HTTP](#http-benchmark-requirements)
+  * [Requerimientos del Análisis de la Prueba de Rendimiento](#benchmark-analysis-requirements)
+* [Ejecución de pruebas de rendimiento](#running-benchmarks)
+  * [Ejecución de pruebas de rendimiento individuales](#running-individual-benchmarks)
+  * [Ejecución de todas las pruebas de rendimiento](#running-all-benchmarks)
+  * [Comparación de versiones de Node.js](#comparing-nodejs-versions)
+  * [Comparación de parámetros](#comparing-parameters)
+  * [Ejecución de Pruebas de Rendimiento en el CI](#running-benchmarks-on-the-ci)
+* [Creación de una prueba de rendimiento](#creating-a-benchmark)
   * [Conceptos básicos de una prueba de rendimiento](#basics-of-a-benchmark)
-  * [Crear una prueba de rendimiento HTTP](#creating-an-http-benchmark)
+  * [Creación de una prueba de rendimiento de HTTP](#creating-an-http-benchmark)
 
 ## Prerrequisitos
 
-Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimiento. [Git para Windows](http://git-scm.com/download/win) incluye Git Bash y las herramientas necesarias, las cuales necesitan ser incluidas en el Windows global `PATH`.
+Se requieren herramientas básicas de Unix para algunas pruebas de rendimiento. [Git para Windows](http://git-scm.com/download/win) incluye Git Bash y las herramientas necesarias, las cuales necesitan estar incluidas en el `PATH` global de Windows.
 
 ### Requisitos de la Prueba de Rendimiento HTTP
 
-La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Este puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
+La mayoría de las pruebas de rendimiento de HTTP requieren que se instale un benchmarker. Este puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el ejecutable de Node.js que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese de que la versión de Node.js en la ruta no está alterada.
+`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el Node.js ejecutable que esté en la ruta. Para comparar dos ejecuciones de pruebas de rendimiento de HTTP, asegúrese de que la versión de Node.js en la ruta no esté alterada.
 
-`wrk` puede estar disponible a través de uno de los gestores de paquetes disponibles. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
+`wrk` puede estar disponible a través de uno de los gestores de paquetes disponible. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
 
-Por defecto, `wrk` será usado como el benchmarker. Si no está disponible, se utilizará `autocannon` en su lugar. Al crear una prueba de rendimiento HTTP, el benchmarker a ser usado debe ser especificado al proporcionarlo como un argumento:
+Por defecto, `wrk` será utilizado como el benchmarker. Si no está disponible, se utilizará `autocannon` en su lugar. Al crear una prueba de rendimiento de HTTP, el benchmarker a utilizar debe ser especificado al proporcionarlo como un argumento:
 
 `node benchmark/run.js --set benchmarker=autocannon http`
 
 `node benchmark/http/simple.js benchmarker=autocannon`
 
-#### Requisitos de la Prueba de Rendimiento HTTP/2
+#### Requerimientos de la Prueba de Rendimiento de HTTP/2
 
-Para ejecutar las pruebas de rendimiento `http2`, el benchmarker `h2load` debe ser usado. La herramienta `h2load` es un componente del proyecto `nghttp2` y puede ser instalada desde [nghttp2.org](http://nghttp2.org) o construida desde la fuente.
+Para ejecutar las pruebas de rendimiento de `http2`, se debe utilizar el benchmarker `h2load`. La herramienta `h2load` es un componente del proyecto `nghttp2` y puede ser instalada desde [nghttp2.org](http://nghttp2.org) o construida desde la fuente.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
 ### Requisitos del Análisis de la Prueba de Rendimiento
 
-Para analizar los resultados, se debe instalar `R`. Use uno de los gestores de paquetes disponibles o descárguelo desde https://www.r-project.org/.
+Para analizar los resultados, se debe instalar `R`. Utilice uno de los gestores de paquete disponibles o descárguelo desde https://www.r-project.org/.
 
-Los paquetes R `ggplot2` y `plyr` también son usados y pueden ser instalados usando el REPL R.
+Los paquetes R `ggplot2` y `plyr` también son utilizados y puede ser instalados utilizando el REPL R.
 
 ```R
 $ R
@@ -65,9 +65,9 @@ Por supuesto, utilice un espejo apropiado basado en la ubicación. [Acá](https:
 
 ### Ejecutar pruebas de rendimiento individuales
 
-Esto puede ser útil para depurar una prueba de rendimiento o para hacer una medida de rendimiento rápida. Pero no proporciona la información estadística para hacer alguna conclusión sobre el rendimiento.
+Esto puede ser útil para depurar una prueba de rendimiento o para hacer una medida de rendimiento rápida. Pero no proporciona la información estadística para hacer cualquier conclusión acerca del rendimiento.
 
-Las pruebas de rendimiento individuales pueden ser ejecutadas al simplemente ejecutar el script de la prueba de rendimiento con node.
+Las pruebas de rendimiento individuales pueden ser ejecutadas simplemente ejecutando el script de la prueba de rendimiento con node.
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js
@@ -82,9 +82,9 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. Esto asegura que los resultados de la prueba de rendimiento no son afectados por la orden de ejecución debido a optimizaciones V8. **El último número es la tasa de operaciones medidas en ops/seg (mientras más alto mejor).**
+Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. Esto asegura que los resultados de la prueba de rendimiento no se vean afectados por el orden de ejecución debido a optimizaciones de V8. **El último número es la tasa de operaciones medidas en ops/seg (mientras más alto, mejor).**
 
-Además, se puede especificar un subconjunto de las configuraciones, al establecerlas en los argumentos del proceso:
+Además, se puede especificar un subconjunto de configuraciones al establecerlas en los argumentos del proceso:
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js len=1024
@@ -95,38 +95,38 @@ buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 3783071.1678948295
 
 ### Ejecutar todas las pruebas de rendimiento
 
-Es similar a ejecutar pruebas de rendimiento individuales, un grupo de pruebas de rendimiento pueden ser ejecutadas usando la herramienta `run.js`. Para ver cómo usar este script, ejecute `node benchmark/run.js`. De nuevo, esto no proporciona la información estadística para hacer alguna conclusión.
+Similar a ejecutar pruebas de rendimiento individuales, un grupo de pruebas de rendimiento pueden ser ejecutadas utilizando la herramienta `run.js`. Para ver cómo utilizar este script, ejecute `node benchmark/run.js`. De nuevo, esto no proporciona la información estadística para hacer alguna conclusión.
 
 ```console
-$ node benchmark/run.js arrays
+$ node benchmark/run.js assert
 
-arrays/var-int.js
-arrays/var-int.js n=25 type=Array: 71.90148040747789
-arrays/var-int.js n=25 type=Buffer: 92.89648382795582
+assert/deepequal-buffer.js
+assert/deepequal-buffer.js method="deepEqual" strict=0 len=100 n=20000: 773,200.4995493788
+assert/deepequal-buffer.js method="notDeepEqual" strict=0 len=100 n=20000: 964,411.712953848
 ...
 
-arrays/zero-float.js
-arrays/zero-float.js n=25 type=Array: 75.46208316171496
-arrays/zero-float.js n=25 type=Buffer: 101.62785630273159
+assert/deepequal-map.js
+assert/deepequal-map.js method="deepEqual_primitiveOnly" strict=0 len=500 n=500: 20,445.06368453332
+assert/deepequal-map.js method="deepEqual_objectOnly" strict=0 len=500 n=500: 1,393.3481642240833
 ...
 
-arrays/zero-int.js
-arrays/zero-int.js n=25 type=Array: 72.31023859816062
-arrays/zero-int.js n=25 type=Buffer: 90.49906662339653
+assert/deepequal-object.js
+assert/deepequal-object.js method="deepEqual" strict=0 size=100 n=5000: 1,053.1950937538475
+assert/deepequal-object.js method="notDeepEqual" strict=0 size=100 n=5000: 9,734.193251965213
 ...
 ```
 
-Es posible añadir más grupos al añadir argumentos de proceso adicionales.
+Es posible ejecutar más grupos al añadir argumentos de proceso adicionales.
 
 ```console
-$ node benchmark/run.js arrays buffers
+$ node benchmark/run.js assert async_hooks
 ```
 
 ### Comparar versiones de Node.js
 
-Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver cómo usar este script, ejecute `node benchmark/compare.js`.
+Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento múltiples veces, haciendo posible calcular estadísticas en las medidas de rendimiento. Para ver cómo utilizar este script, ejecute `node benchmark/compare.js`.
 
-Como un ejemplo sobre cómo verificar una posible mejora de rendimiento, la pull request [#5134](https://github.com/nodejs/node/pull/5134) será usada como un ejemplo. Esta pull request *declara* mejorar el rendimiento del módulo `string_decoder`.
+Como un ejemplo sobre cómo verificar una posible mejora de rendimiento, la pull request [#5134](https://github.com/nodejs/node/pull/5134) será utilizada como un ejemplo. Esta pull request _delcara_ mejorar el rendimiento del módulo `string_decoder`.
 
 Primero construya dos versiones de Node.js, una desde la rama master (aquí llamada `./node-master`) y otra con la pull request aplicada (aquí llamada `./node-pr-5134`).
 
@@ -172,11 +172,11 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-En la salida, *improvement* es la mejora relativa de la nueva versión, con suerte esto es positivo. *confidence* dice si hay suficiente evidencia estadística para validar la *mejora*. Si hay suficiente evidencia, entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **Sin embargo, si no hay estrellas, entonces no haga ninguna conclusión basada en la *mejora*. **Algunas veces esto está bien, por ejemplo si ninguna mejora es esperada, entonces no debería haber ninguna estrella.
+En la salida, _improvement_ es la mejora relativa de la nueva versión, con suerte esto es positivo. _confidence_ dice si hay suficiente evidencia estadística para validar la _mejora_. Si hay suficiente evidencia, entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **However if there are no stars, then don't make any conclusions based on the _improvement_.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
 
 **Una advertencia:** La estadística no es una herramienta infalible. Si una benchmark muestra una diferencia estadística significante, hay un 5% de riesgo de que esta diferencia no exista realmente. Esto no es un problema para una sola prueba de rendimiento. Pero cuando se estén considerando 20 pruebas de rendimiento es normal que una de ellas muestre importancia, cuando no debería. Una posible solución es en cambio considerar al menos dos estrellas (`**`) como el límite, es ese caso el riesgo es de 1%. Si hay tres estrellas (`***`) se considera que el riesgo es de 0.1%. Si embargo, esto puede requerir mas ejecuciones para obtener (puede ser establecido con `--runs`).
 
-*Para los de mentalidad estadística, el script R realiza un [t-test 2-group independiente/desapareado](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), con la hipótesis nula de que el rendimiento es el mismo para ambas versiones. El campo de confianza mostrará una estrella si el valor de p es menor que `0.05`.*
+_Para los de mentalidad estadística, el script R realiza un [t-test 2-group independiente/desapareado](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), con la hipótesis nula de que el rendimiento es el mismo para ambas versiones. El campo de confianza mostrará una estrella si el valor de p es menor que `0.05`._
 
 La herramienta `compare.R` también puede producir un diagrama de caja al usar la opción `--plot filename`. En este caso hay 48 combinaciones de benchmarks diferentes, y puede ser necesario filtrar el archivo csv. Esto se puede hacer durante el benchmarking usando el parámetro `--set` (p. e.j `--set encoding=ascii`) o filtrando los resultados después de usar herramientas tales como `sed` o `grep`. En el caso `sed` asegúrese de mantener la primera línea ya que contiene la información de la cabecera.
 
@@ -206,51 +206,59 @@ $ node benchmark/scatter.js benchmark/string_decoder/string-decoder.js > scatter
 Después de generar el csv, una tabla de comparación puede ser creada usando la herramienta `scatter.R`. Aún más útil, puede crear un diagrama de dispersión real cuando utilice la opción `--plot filename`.
 
 ```console
-$ cat scatter.csv | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
+$ cat scatter.csv | Rscript benchmark/scatter.R --xaxis chunkLen --category encoding --plot scatter-plot.png --log
 
-variable agregada: inlen
+aggregating variable: inLen
 
-chunk     encoding      mean confidence.interval
-   16        ascii 1111933.3           221502.48
-   16 base64-ascii  167508.4            33116.09
-   16  base64-utf8  122666.6            25037.65
-   16         utf8  783254.8           159601.79
-   64        ascii 2623462.9           399791.36
-   64 base64-ascii  462008.3            85369.45
-   64  base64-utf8  420108.4            85612.05
-   64         utf8 1358327.5           235152.03
-  256        ascii 3730343.4           371530.47
-  256 base64-ascii  663281.2            80302.73
-  256  base64-utf8  632911.7            81393.07
-  256         utf8 1554216.9           236066.53
- 1024        ascii 4399282.0           186436.46
- 1024 base64-ascii  730426.6            63806.12
- 1024  base64-utf8  680954.3            68076.33
- 1024         utf8 1554832.5           237532.07
+chunkLen     encoding      rate confidence.interval
+      16        ascii 1515855.1           334492.68
+      16 base64-ascii  403527.2            89677.70
+      16  base64-utf8  322352.8            70792.93
+      16      utf16le 1714567.5           388439.81
+      16         utf8 1100181.6           254141.32
+      64        ascii 3550402.0           661277.65
+      64 base64-ascii 1093660.3           229976.34
+      64  base64-utf8  997804.8           227238.04
+      64      utf16le 3372234.0           647274.88
+      64         utf8 1731941.2           360854.04
+     256        ascii 5033793.9           723354.30
+     256 base64-ascii 1447962.1           236625.96
+     256  base64-utf8 1357269.2           231045.70
+     256      utf16le 4039581.5           655483.16
+     256         utf8 1828672.9           360311.55
+    1024        ascii 5677592.7           624771.56
+    1024 base64-ascii 1494171.7           227302.34
+    1024  base64-utf8 1399218.9           224584.79
+    1024      utf16le 4157452.0           630416.28
+    1024         utf8 1824266.6           359628.52
 ```
 
-Debido a que el diagrama de dispersión solo puede mostrar dos variables (en este caso *chunk* y *encoding*) el resto es agregado. Algunas veces la agregación puede ser un problema, esto se puede resolver filtrando. Esto se puede hacer durante el benchmarking usando el parámetro `--set` (p. e.j `--set encoding=ascii`) o filtrando los resultados después de usar herramientas tales como `sed` o `grep`. En el caso `sed` asegúrese de mantener la primera línea ya que contiene la información de la cabecera.
+Because the scatter plot can only show two variables (in this case _chunkLen_ and _encoding_) the rest is aggregated. Algunas veces la agregación puede ser un problema, esto se puede resolver filtrando. Esto se puede hacer durante el benchmarking usando el parámetro `--set` (p. e.j `--set encoding=ascii`) o filtrando los resultados después de usar herramientas tales como `sed` o `grep`. En el caso `sed` asegúrese de mantener la primera línea ya que contiene la información de la cabecera.
 
 ```console
-$ cat scatter.csv | sed -E '1p;/([^,]+, ){3}128,/!d' | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
+$ cat scatter.csv | sed -E '1p;/([^,]+, ){3}128,/!d' | Rscript benchmark/scatter.R --xaxis chunkLen --category encoding --plot scatter-plot.png --log
 
-chunk     encoding       mean confidence.interval
-   16        ascii  701285.96           21233.982
-   16 base64-ascii  107719.07            3339.439
-   16  base64-utf8   72966.95            2438.448
-   16         utf8  475340.84           17685.450
-   64        ascii 2554105.08           87067.132
-   64 base64-ascii  330120.32            8551.707
-   64  base64-utf8  249693.19            8990.493
-   64         utf8 1128671.90           48433.862
-  256        ascii 4841070.04          181620.768
-  256 base64-ascii  849545.53           29931.656
-  256  base64-utf8  809629.89           33773.496
-  256         utf8 1489525.15           49616.334
- 1024        ascii 4931512.12          165402.805
- 1024 base64-ascii  863933.22           27766.982
- 1024  base64-utf8  827093.97           24376.522
- 1024         utf8 1487176.43           50128.721
+chunkLen     encoding      rate confidence.interval
+      16        ascii 1302078.5            71692.27
+      16 base64-ascii  338669.1            15159.54
+      16  base64-utf8  281904.2            20326.75
+      16      utf16le 1381515.5            58533.61
+      16         utf8  831183.2            33631.01
+      64        ascii 4363402.8           224030.00
+      64 base64-ascii 1036825.9            48644.72
+      64  base64-utf8  780059.3            60994.98
+      64      utf16le 3900749.5           158366.84
+      64         utf8 1723710.6            80665.65
+     256        ascii 8472896.1           511822.51
+     256 base64-ascii 2215884.6           104347.53
+     256  base64-utf8 1996230.3           131778.47
+     256      utf16le 5824147.6           234550.82
+     256         utf8 2019428.8           100913.36
+    1024        ascii 8340189.4           598855.08
+    1024 base64-ascii 2201316.2           111777.68
+    1024  base64-utf8 2002272.9           128843.11
+    1024      utf16le 5789281.7           240642.77
+    1024         utf8 2025551.2            81770.69
 ```
 
 ![compare tool boxplot](doc_img/scatter-plot.png)
@@ -267,9 +275,9 @@ Todas las pruebas de rendimiento usan el módulo `require('../common.js')`. Este
 
 Los argumentos de `createBenchmark` son:
 
-* `main` {Function} La función de la prueba de rendimiento, donde el código que ejecuta las operaciones y controla los temporizadores debe ir
-* `configs` {Object} Los parámetros de la prueba de rendimiento. `createBenchmark` ejecutará todas las combinaciones posibles de estos parámetros, a menos que se especifique lo contrario. Cada configuración es una propiedad con un array de valores posibles. Tenga en cuenta que los valores de la configuración solo pueden ser strings o números.
-* `options` {Object} Las opciones de la prueba de rendimiento. Por el momento solo se permite la opción `flags` para especificar marcas de línea de comando.
+* `main` {Function} La función de prueba de rendimiento, en donde el código que ejecuta las operaciones y controla los temporizadores debe ir
+* `configs` {Object} Los parámetros de la prueba de rendimiento. `createBenchmark` ejecutará todas las posibles combinaciones de estos parámetros, a menos que se especifique lo contrario. Cada configuración es una propiedad con un array de posibles valores. Tenga en cuenta que los valores de la configuración sólo pueden ser strings o números.
+* `options` {Object} Las opciones de la prueba de rendimiento. Por los momentos sólo se soporta la opción `flags` para especificar banderas de línea de comando.
 
 `createBenchmark` devuelve un objeto `bench`, el cual es usado para cronometrar el tiempo de la prueba de rendimiento. Ejecute `bench.start()` después de la inicialización y `bench.end(n)` cuando la prueba de rendimiento esté hecha. `n` es el número de operaciones realizadas por la prueba de rendimiento.
 
@@ -280,7 +288,7 @@ El primer pase configurará la prueba de rendimiento con la combinación de par�
 En el segundo pase, la función `main` será ejecutada, y el proceso será iniciado con:
 
 * Las banderas pasadas a `createBenchmark` (el tercer argumento)
-* Las banderas en el comando pasadas cuando la prueba de rendimiento fue ejecutada
+* Las banderas en el comando pasado cuando la prueba de rendimiento fue ejecutada
 
 Tenga en cuenta que cualquier código fuera de la función `main` será ejecutado dos veces en procesos diferentes. Esto podría ser problemático si el código fuera de la función `main` tiene efectos secundarios. Por lo general, prefiera colocar el código dentro de la función `main` si es más que una declaración.
 
@@ -347,14 +355,14 @@ function main(conf) {
   const http = require('http');
   const len = conf.kb * 1024;
   const chunk = Buffer.alloc(len, 'x');
-  const server = http.createServer(function(req, res) {
+  const server = http.createServer((req, res) => {
     res.end(chunk);
   });
 
-  server.listen(common.PORT, function() {
+  server.listen(common.PORT, () => {
     bench.http({
       connections: conf.connections,
-    }, function() {
+    }, () => {
       server.close();
     });
   });
@@ -363,8 +371,8 @@ function main(conf) {
 
 Las claves de opciones soportadas son:
 
-* `port` - predeterminado para `common.PORT`
-* `path` predeterminado para `/`
-* `connections` - número de conexiones concurrentes a usar, predeterminado para 100
-* `duration` duración de la prueba de rendimiento en segundos, predeterminado para 10
-* `benchmarker` - benchmarker a usar, predeterminado para `common.default_http_benchmarker`
+* `port` - se predetermina a `common.PORT`
+* `path` - se predetermina a `/`
+* `connections` - número de conexiones concurrentes a utilizar, se predetermina a 100
+* `duration` - la duración de la prueba de rendimiento en segundos, se determina a 10
+* `benchmarker` - el benchmarker a utilizar, se predetermina a `common.default_http_benchmarker`

@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - Estável
+> Estabilidade: 2 - estável
 
-The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. Ele pode ser acessado usando:
+O módulo de `string_decoder` fornece uma API para decodificação de objetos de `Buffer` em strings de maneira que preserve as caracteres codificado em UTF-8 e UTF-16 de múltiplos bytes. É possível acessá-lo utilizando:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -37,17 +37,15 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
 ## Class: new StringDecoder([encoding])
-
 <!-- YAML
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. Defaults to `'utf8'`.
+* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
 
 Creates a new `StringDecoder` instance.
 
 ### stringDecoder.end([buffer])
-
 <!-- YAML
 added: v0.9.3
 -->
@@ -59,11 +57,9 @@ Returns any remaining input stored in the internal buffer as a string. Bytes rep
 If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
 ### stringDecoder.write(buffer)
-
 <!-- YAML
 added: v0.1.99
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement

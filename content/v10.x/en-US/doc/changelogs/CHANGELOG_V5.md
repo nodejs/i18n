@@ -44,10 +44,10 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Official support for the v5 release line is scheduled to expire
-around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
+*Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
 <a id="5.12.0"></a>
+
 ## 2016-06-23, Version 5.12.0 (Stable), @evanlucas
 
 ### Notable changes
@@ -69,6 +69,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`03d36aea4f`](https://github.com/nodejs/node/commit/03d36aea4f)] - **(SEMVER-MINOR)** **test**: add buffer testcase for resetting kZeroFill (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
 
 <a id="5.11.1"></a>
+
 ## 2016-05-05, Version 5.11.1 (Stable), @evanlucas
 
 ### Notable changes
@@ -89,8 +90,8 @@ This is a security release. All Node.js users should consult the security releas
 * [[`c1ddefdd79`](https://github.com/nodejs/node/commit/c1ddefdd79)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`bec5d50f1e`](https://github.com/nodejs/node/commit/bec5d50f1e)] - **test**: fix alpn tests for openssl1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 
-
 <a id="5.11.0"></a>
+
 ## 2016-04-20, Version 5.11.0 (Stable), @thealphanerd
 
 ## Notable Changes
@@ -216,6 +217,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`61167c3e23`](https://github.com/nodejs/node/commit/61167c3e23)] - **zlib**: fix gzip member head/buffer boundary issue (Anna Henningsen) [#5973](https://github.com/nodejs/node/pull/5973)
 
 <a id="5.10.1"></a>
+
 ## 2016-04-05, Version 5.10.1 (Stable), @thealphanerd
 
 ### Notable changes
@@ -260,6 +262,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`7491fdcfe9`](https://github.com/nodejs/node/commit/7491fdcfe9)] - **tools**: remove disabling of already-disabled rule (Rich Trott) [#6013](https://github.com/nodejs/node/pull/6013)
 
 <a id="5.10.0"></a>
+
 ## 2016-03-31, Version 5.10.0 (Stable), @evanlucas
 
 ### Notable changes
@@ -272,11 +275,7 @@ This is a security release. All Node.js users should consult the security releas
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
 * **net**: emit host in lookup event (HUANG Wei) [#5598](https://github.com/nodejs/node/pull/5598)
 * **node**: --no-browser-globals configure flag (Fedor Indutny) [#5853](https://github.com/nodejs/node/pull/5853)
-* **npm**: Upgrade to v3.8.3. Fixes a security flaw in the use of authentication tokens in HTTP requests that
-  would allow an attacker to set up a server that could collect tokens from users of the command-line interface.
-  Authentication tokens have previously been sent with every request made by the CLI for logged-in users,
-  regardless of the destination of the request. This update fixes this by only including those tokens for requests
-  made against the registry or registries used for the current install. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
+* **npm**: Upgrade to v3.8.3. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
 * **repl**: support standalone blocks (Prince J Wesley) [#5581](https://github.com/nodejs/node/pull/5581)
 * **src**: override v8 thread defaults using cli options (Tom Gallacher) [#4344](https://github.com/nodejs/node/pull/4344)
 
@@ -340,6 +339,7 @@ This is a security release. All Node.js users should consult the security releas
 * [[`afcd276ecc`](https://github.com/nodejs/node/commit/afcd276ecc)] - **zlib**: Fix handling of gzip magic bytes mid-file (Anna Henningsen) [#5863](https://github.com/nodejs/node/pull/5863)
 
 <a id="5.9.1"></a>
+
 ## 2016-03-23, Version 5.9.1 (Stable), @Fishrock123
 
 ### Notable changes
@@ -397,12 +397,12 @@ This is a security release. All Node.js users should consult the security releas
 * [[`b1a4870200`](https://github.com/nodejs/node/commit/b1a4870200)] - **tools**: remove unused imports (Sakthipriyan Vairamani) [#5765](https://github.com/nodejs/node/pull/5765)
 
 <a id="5.9.0"></a>
+
 ## 2016-03-16, Version 5.9.0 (Stable), @evanlucas
 
 ### Notable changes
 
-* **contextify**: Fixed a memory consumption issue related to heavy use of `vm.createContext` and `vm.runInNewContext`. (Ali Ijaz Sheikh)
-https://github.com/nodejs/node/pull/5392
+* **contextify**: Fixed a memory consumption issue related to heavy use of `vm.createContext` and `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
 * **governance**: The following members have been added as collaborators:
  - Andreas Madsen (@AndreasMadsen)
  - Benjamin Gruenbaum (@benjamingr)
@@ -411,16 +411,13 @@ https://github.com/nodejs/node/pull/5392
  - Jeremy Whitlock (@whitlockjc)
  - Matt Loring (@matthewloring)
  - Phillip Johnsen (@phillipj)
-* **lib**: copy arguments object instead of leaking it (Nathan Woltman)
-https://github.com/nodejs/node/pull/4361
-* **src**: allow both -i and -e flags to be used at the same time (Rich Trott)
-https://github.com/nodejs/node/pull/5655
+* **lib**: copy arguments object instead of leaking it (Nathan Woltman) https://github.com/nodejs/node/pull/4361
+* **src**: allow both -i and -e flags to be used at the same time (Rich Trott) https://github.com/nodejs/node/pull/5655
 * **timers**: Internal Node.js timeouts now use the same logic path as those created with `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
   * This may cause a slightly different performance profile in some situations. So far, it has shown to be positive in most cases.
 * **v8**: backport fb4ccae from v8 upstream (Vladimir Krivosheev) #4231
   - breakout events from v8 to offer better support for external debuggers
-* **zlib**: add support for concatenated members (Kári Tristan Helgason)
-https://github.com/nodejs/node/pull/5120
+* **zlib**: add support for concatenated members (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120
   * Previously, if multiple members were in the same archive, only the first would be read. The others are no longer thrown away.
 
 ### Commits
@@ -475,6 +472,7 @@ https://github.com/nodejs/node/pull/5120
 * [[`ef774ff9a8`](https://github.com/nodejs/node/commit/ef774ff9a8)] - **(SEMVER-MINOR)** **zlib**: add support for concatenated members (Kári Tristan Helgason) [#5120](https://github.com/nodejs/node/pull/5120)
 
 <a id="5.8.0"></a>
+
 ## 2016-03-08, Version 5.8.0 (Stable), @Fishrock123
 
 ### Notable changes
@@ -523,6 +521,7 @@ https://github.com/nodejs/node/pull/5120
 * [[`c32d460747`](https://github.com/nodejs/node/commit/c32d460747)] - **util**: improve util.format performance (Evan Lucas) [#5360](https://github.com/nodejs/node/pull/5360)
 
 <a id="5.7.1"></a>
+
 ## 2016-03-02, Version 5.7.1 (Stable), @Fishrock123
 
 ### Notable changes
@@ -618,6 +617,7 @@ https://github.com/nodejs/node/pull/5120
 * [[`dfe45f13e7`](https://github.com/nodejs/node/commit/dfe45f13e7)] - **url**: fix off-by-one error with parse() (Brian White) [#5394](https://github.com/nodejs/node/pull/5394)
 
 <a id="5.7.0"></a>
+
 ## 2016-02-23, Version 5.7.0 (Stable), @rvagg
 
 ### Notable changes
@@ -754,6 +754,7 @@ https://github.com/nodejs/node/pull/5120
 * [[`d1cacb814f`](https://github.com/nodejs/node/commit/d1cacb814f)] - **(SEMVER-MINOR)** **vm**: introduce `cachedData`/`produceCachedData` (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
 
 <a id="5.6.0"></a>
+
 ## 2016-02-09, Version 5.6.0 (Stable), @jasnell
 
 This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
@@ -911,8 +912,8 @@ This is an important security release. All Node.js users should consult the secu
 * [[`386ad7e0b5`](https://github.com/nodejs/node/commit/386ad7e0b5)] - **tools**: fix setting path containing an ampersand (Brian White) [#4804](https://github.com/nodejs/node/pull/4804)
 * [[`e415eb27e5`](https://github.com/nodejs/node/commit/e415eb27e5)] - **url**: change scoping of variables with let (Kári Tristan Helgason) [#4867](https://github.com/nodejs/node/pull/4867)
 
-
 <a id="5.5.0"></a>
+
 ## 2016-01-20, Version 5.5.0 (Stable), @evanlucas
 
 ### Notable Changes
@@ -998,6 +999,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`5f57005ec9`](https://github.com/nodejs/node/commit/5f57005ec9)] - **(SEMVER-MINOR)** **v8,src**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
 
 <a id="5.4.1"></a>
+
 ## 2016-01-12, Version 5.4.1 (Stable), @TheAlphaNerd
 
 ### Notable Changes
@@ -1045,6 +1047,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`b70eec8f7b`](https://github.com/nodejs/node/commit/b70eec8f7b)] - **tls_legacy**: do not read on OpenSSL's stack (Fedor Indutny) [#4624](https://github.com/nodejs/node/pull/4624)
 
 <a id="5.4.0"></a>
+
 ## 2016-01-06, Version 5.4.0 (Stable), @Fishrock123
 
 ### Notable changes
@@ -1169,6 +1172,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`8039ca06eb`](https://github.com/nodejs/node/commit/8039ca06eb)] - **util**: faster arrayToHash (Jackson Tian)  [#3964](https://github.com/nodejs/node/pull/3964)
 
 <a id="5.3.0"></a>
+
 ## 2015-12-16, Version 5.3.0 (Stable), @cjihrig
 
 ### Notable changes
@@ -1247,6 +1251,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`4b267df93e`](https://github.com/nodejs/node/commit/4b267df93e)] - **udp**: remove a needless instanceof Buffer check (ronkorving) [#4301](https://github.com/nodejs/node/pull/4301)
 
 <a id="5.2.0"></a>
+
 ## 2015-12-09, Version 5.2.0 (Stable), @rvagg
 
 ### Notable changes
@@ -1377,6 +1382,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`c584c3e08f`](https://github.com/nodejs/node/commit/c584c3e08f)] - **util,src**: allow lookup of hidden values (cjihrig) [#3988](https://github.com/nodejs/node/pull/3988)
 
 <a id="5.1.1"></a>
+
 ## 2015-12-04, Version 5.1.1 (Stable), @rvagg
 
 ### Notable changes
@@ -1384,8 +1390,7 @@ This is an important security release. All Node.js users should consult the secu
 * **http**: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
 * **openssl**: Upgrade to 1.0.2e, containing fixes for:
   - CVE-2015-3193 "BN_mod_exp may produce incorrect results on x86_64", an attack may be possible against a Node.js TLS server using DHE key exchange. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
-  - CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>.
-  (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
+  - CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
 * **v8**: Backport fix for CVE-2015-6764, a bug in `JSON.stringify()` that can result in out-of-bounds reads for arrays. (Ben Noordhuis)
 
 ### Known issues
@@ -1403,6 +1408,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`12e70fafd3`](https://github.com/nodejs/node/commit/12e70fafd3)] - **http**: fix pipeline regression (Fedor Indutny)
 
 <a id="5.1.0"></a>
+
 ## 2015-11-17, Version 5.1.0 (Stable), @Fishrock123
 
 ### Notable changes
@@ -1567,6 +1573,7 @@ This is an important security release. All Node.js users should consult the secu
 * [[`d70deabf90`](https://github.com/nodejs/node/commit/d70deabf90)] - **zlib**: pass kind to recursive calls to flush (Myles Borins) [#3534](https://github.com/nodejs/node/pull/3534)
 
 <a id="5.0.0"></a>
+
 ## 2015-10-29, Version 5.0.0 (Stable), @rvagg
 
 ### Notable Changes
@@ -1581,7 +1588,7 @@ This is an important security release. All Node.js users should consult the secu
   - Fixed a bug where pipelined http requests would stall (Fedor Indutny) [#3342](https://github.com/nodejs/node/pull/3342).
   - _(Breaking)_ When parsing HTTP, don't add duplicates of the following headers: `Retry-After`, `ETag`, `Last-Modified`, `Server`, `Age`, `Expires`. This is in addition to the following headers which already block duplicates: `Content-Type`, `Content-Length`, `User-Agent`, `Referer`, `Host`, `Authorization`, `Proxy-Authorization`, `If-Modified-Since`, `If-Unmodified-Since`, `From`, `Location`, `Max-Forwards` (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
   - _(Breaking)_ The `callback` argument to `OutgoingMessage#setTimeout()` must be a function or a `TypeError` is thrown (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
-  - _(Breaking)_ HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of _separator_ characters. Specifically, methods and header names must now match ```/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/``` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
+  - _(Breaking)_ HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of _separator_ characters. Specifically, methods and header names must now match ``/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/`` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
 * **node**:
   - _(Breaking)_ Deprecated the `_linklist` module (Rich Trott) [#3078](https://github.com/nodejs/node/pull/3078).
   - _(Breaking)_ Removed `require.paths` and `require.registerExtension()`, both had been previously set to throw `Error` when accessed (Sakthipriyan Vairamani) [#2922](https://github.com/nodejs/node/pull/2922).

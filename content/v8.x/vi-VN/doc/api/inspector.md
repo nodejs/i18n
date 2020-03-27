@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> Stability: 1 - Experimental
+> Tính ổn định: 1 - Thử nghiệm
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-It can be accessed using:
+Nó có thể truy cập bằng cách sử dụng:
 
 ```js
 const inspector = require('inspector');
@@ -14,9 +14,9 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* port {number} Port to listen on for inspector connections. Optional, defaults to what was specified on the CLI.
-* host {string} Host to listen on for inspector connections. Optional, defaults to what was specified on the CLI.
-* wait {boolean} Block until a client has connected. Optional, defaults to false.
+* `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
+* `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
+* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
@@ -36,7 +36,6 @@ Return the URL of the active inspector, or `undefined` if there is none.
 The `inspector.Session` is used for dispatching messages to the V8 inspector back-end and receiving message responses and notifications.
 
 ### Constructor: new inspector.Session()
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -46,7 +45,6 @@ Create a new instance of the `inspector.Session` class. The inspector session ne
 `inspector.Session` is an [`EventEmitter`][] with the following events:
 
 ### Event: 'inspectorNotification'
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -64,7 +62,6 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 It is also possible to subscribe only to notifications with specific method:
 
 ### Event: &lt;inspector-protocol-method&gt;
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -83,7 +80,6 @@ session.on('Debugger.paused', ({ params }) => {
 ```
 
 ### session.connect()
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -91,7 +87,6 @@ added: v8.0.0
 Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
 
 ### session.post(method\[, params\]\[, callback\])
-
 <!-- YAML
 added: v8.0.0
 -->
@@ -110,12 +105,35 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 
 The latest version of the V8 inspector protocol is published on the [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Node inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
+Node.js inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
 
 ### session.disconnect()
-
 <!-- YAML
 added: v8.0.0
 -->
 
 Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+
+## Example usage
+
+### CPU Profiler
+
+Apart from the debugger, various V8 Profilers are available through the DevTools protocol. Here's a simple example showing how to use the [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
+
+```js
+const inspector = require('inspector');
+
+const session = new inspector.Session();
+session.connect();
+
+session.post('Profiler.enable', () => {
+  session.post('Profiler.start', () => {
+    // invoke business logic under measurement here...
+
+    // some time later...
+    session.post('Profiler.stop', ({ profile }) => {
+      // write profile to disk, upload, etc.
+    });
+  });
+});
+```

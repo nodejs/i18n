@@ -1,12 +1,11 @@
 @// NB(chrisdickinson): Если вы перемещаете этот файл, обязательно обновите tools/doc/html.js до @// в месте нового расположения.
-
 * [Об этих документах](documentation.html)
 * [Примеры использования &](synopsis.html)
 
 <div class="line"></div>
 
 * [Подтверждающее тестирование](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Асинхронные хуки](async_hooks.html)
 * [Буфер](buffer.html)
 * [Расширения C++](addons.html)
 * [Расширения C/C++ - N-API](n-api.html)
@@ -16,10 +15,10 @@
 * [Консоль](console.html)
 * [Crypto](crypto.html)
 * [Отладчик](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [Устаревшие API](deprecations.html)
 * [DNS](dns.html)
 * [Домен](domain.html)
-* [ECMAScript Modules](esm.html)
+* [Модули ECMAScript](esm.html)
 * [Ошибки](errors.html)
 * [События](events.html)
 * [Файловая система](fs.html)
@@ -27,13 +26,13 @@
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspector](inspector.html)
+* [Инспектор](inspector.html)
 * [Интернационализация](intl.html)
 * [Модули](modules.html)
 * [Сеть](net.html)
-* [ОС](os.html)
+* [Операционная система](os.html)
 * [Путь](path.html)
-* [Performance Hooks](perf_hooks.html)
+* [Хуки производительности](perf_hooks.html)
 * [Процесс](process.html)
 * [Punycode](punycode.html)
 * [Строки запроса](querystring.html)
@@ -48,11 +47,10 @@
 * [UDP/Датаграмма](dgram.html)
 * [URL](url.html)
 * [Утилиты](util.html)
-* [V8](v8.html)
+* [Виртуальная машина V8](v8.html)
 * [VM](vm.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
 * [GitHub Repo & Отслеживание проблем](https://github.com/nodejs/node)
-* [Список рассылки](https://groups.google.com/group/nodejs)

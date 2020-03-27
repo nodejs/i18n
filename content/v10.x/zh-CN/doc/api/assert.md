@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.1.21-->
 
-> 稳定性：2 - 稳定的
+> 稳定性：2 - 稳定
 
-` assert ` 模块提供了一组简单的断言测试, 可用于测试不变量。
+`assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
 有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
@@ -15,12 +15,10 @@
 `Error` 的子类，表示断言失败。 所有被 `assert` 模块抛出的错误都是 `AssertionError` 类的实例。
 
 ### new assert.AssertionError(options)
-
 <!-- YAML
 added: v0.1.21
 -->
-
-* `options` {Object} 
+* `options` {Object}
   * `message` {string} 如果有此参数，错误信息会被设为此值。
   * `actual` {any} 错误实例的 `actual` 参数会包含此值。 在内部里用于 `actual` （实际上的）错误输入，例如在 [`assert.strictEqual()`] 中。
   * `expected` {any} 错误实例的 `expected` 参数会包含此值。 在内部里用于 `expected`（预期）错误输入，例如在 [`assert.strictEqual()`] 中。
@@ -63,11 +61,9 @@ try {
 ```
 
 ## Strict 模式
-
 <!-- YAML
 added: v9.9.0
 changes:
-
   - version: v9.9.0
     pr-url: https://github.com/nodejs/node/pull/17615
     description: Added error diffs to the strict mode
@@ -115,7 +111,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
-可以使用以下方法访问它：
+可以通过如下方式使用：
 
 ```js
 const assert = require('assert');
@@ -129,22 +125,18 @@ assert.deepEqual(/a/gi, new Date());
 ```
 
 ## assert(value[, message])
-
 <!-- YAML
 added: v0.5.9
 -->
+* `value` {any} The input that is checked for being truthy.
+* `message` {string|Error}
 
-* `value` {any}
-* `message` {any}
-
-An alias of [`assert.ok()`][].
+[`assert.ok()`][]的别名。
 
 ## assert.deepEqual(actual, expected[, message])
-
 <!-- YAML
 added: v0.1.21
 changes:
-
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: The `Error` names and messages are now properly compared
@@ -161,10 +153,9 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
-
 * `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 **Strict 模式**
 
@@ -208,28 +199,26 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.deepEqual(obj1, obj1);
-// OK, object is equal to itself
+// OK
 
+// Values of b are different:
 assert.deepEqual(obj1, obj2);
 // AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
-// values of b are different
 
 assert.deepEqual(obj1, obj3);
-// OK, objects are equal
+// OK
 
+// Prototypes are ignored:
 assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
-// Prototypes are ignored
 ```
 
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.deepStrictEqual(actual, expected[, message])
-
 <!-- YAML
 added: v1.2.0
 changes:
-
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15169
     description: Enumerable symbol properties are now compared.
@@ -254,10 +243,9 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
-
 * `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 测试 `actual` 和 `expected` 参数之间是否深度相等。 “深度”相等意味着子对象中可枚举的“own”属性也会按以下规则进行递归比较。
 
@@ -266,7 +254,7 @@ changes:
 * 原始值使用 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，该方法被[`Object.is()`][] 使用。
 * 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
 * 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
-* 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
+* 仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
 * [`Error`][] 的名称和信息也会比较，即使不是可枚举的属性。
 * 可枚举的自身 [`Symbol`][] 属性也会比较。
 * [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
@@ -361,21 +349,19 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.doesNotReject(block\[, error\]\[, message\])
-
+## assert.doesNotReject(asyncFn\[, error\]\[, message\])
 <!-- YAML
 added: v10.0.0
 -->
-
-* `block` {Function|Promise}
+* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `message` {any}
+* `message` {string}
 
-Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝（异常）。
+Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
-如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论那种情况，都跳过错误处理程序。
+If `asyncFn` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论那种情况，都跳过错误处理程序。
 
-请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 相反，考虑在不应拒绝的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
+Using `assert.doesNotReject()` is actually not useful because there is little benefit in catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
 
 如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
@@ -399,12 +385,10 @@ assert.doesNotReject(Promise.reject(new TypeError('Wrong value')))
   });
 ```
 
-## assert.doesNotThrow(block\[, error\]\[, message\])
-
+## assert.doesNotThrow(fn\[, error\]\[, message\])
 <!-- YAML
 added: v0.1.21
 changes:
-
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/2407
     description: The `message` parameter is respected now.
@@ -412,25 +396,21 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
-
-* `block` {Function}
+* `fn` {Function}
 * `error` {RegExp|Function}
-* `message` {any}
+* `message` {string}
 
-断言 `block` 函数不会抛出错误。
+Asserts that the function `fn` does not throw an error.
 
-请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 相反，考虑在不应抛出的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
+Using `assert.doesNotThrow()` is actually not useful because there is no benefit in catching an error and then rethrowing it. 相反，考虑在不应抛出的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
+When `assert.doesNotThrow()` is called, it will immediately call the `fn` function.
 
 如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误返回调用方。
 
 如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
 下面这个示例会抛出 [`TypeError`][]， 因为在断言部分没有可匹配的错误类型：
-
-<!-- eslint-disable no-restricted-syntax -->
-
 ```js
 assert.doesNotThrow(
   () => {
@@ -441,9 +421,6 @@ assert.doesNotThrow(
 ```
 
 然而，下面的示例会抛出带有错误信息 -“得到不想要的异常。。。”的 `AssertionError` ：
-
-<!-- eslint-disable no-restricted-syntax -->
-
 ```js
 assert.doesNotThrow(
   () => {
@@ -454,9 +431,6 @@ assert.doesNotThrow(
 ```
 
 如果 `AssertionError` 被抛出，并且提供一个值给 `message` 参数，那么 `message` 的值会被添加在 `AssertionError` 信息中：
-
-<!-- eslint-disable no-restricted-syntax -->
-
 ```js
 assert.doesNotThrow(
   () => {
@@ -468,15 +442,11 @@ assert.doesNotThrow(
 // Throws: AssertionError: Got unwanted exception: Whoops
 ```
 
-## assert.equal(actual, expected[, message])
-
-<!-- YAML
+## assert.equal(actual, expected[, message])<!-- YAML
 added: v0.1.21
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 **Strict 模式**
 
@@ -504,13 +474,9 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.fail([message])
-
-<!-- YAML
+## assert.fail([message])<!-- YAML
 added: v0.1.21
--->
-
-* `message` {any} **Default:** `'Failed'`
+-->* `message` {string|Error} **Default:** `'Failed'`
 
 抛出 `AssertionError`，并带上提供的错误信息或默认的错误信息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
@@ -529,27 +495,22 @@ assert.fail(new TypeError('need array'));
 
 使用 `assert.fail()` 并带上多个参数的方法可行，但已被废弃。 请参阅下文了解更多详情。
 
-## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
-
-<!-- YAML
+## assert.fail(actual, expected[, message[, operator[, stackStartFn]]])<!-- YAML
 added: v0.1.21
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18418
     description: Calling `assert.fail()` with more than one argument is
                  deprecated and emits a warning.
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 * `operator` {string} **Default:** `'!='`
-* `stackStartFunction` {Function} **Default:** `assert.fail`
+* `stackStartFn` {Function} **Default:** `assert.fail`
 
-> 稳定性：0 - 已弃用：改为使用 `assert.fail([message])` 或其它断言函数。
+> 稳定性：0 - 已弃用：改为使用  `assert.fail([message])` 或其它断言函数。
 
-如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，则 `operator` 的默认值是 `'!='`。 如果 `message` 被当做第三个参数提供，它将被作为错误消息，其它参数将作为各种属性存储在被抛出的对象上。 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ） 如果没有提供任何参数，将使用默认消息 `Failed`。
+如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，则 `operator` 的默认值是 `'!='`。 如果 `message` 被当做第三个参数提供，它将被作为错误消息，其它参数将作为各种属性存储在被抛出的对象上。 If `stackStartFn` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). 如果没有提供任何参数，将使用默认消息 `Failed`。
 
 ```js
 const assert = require('assert').strict;
@@ -572,7 +533,7 @@ assert.fail(1, 2, new TypeError('need array'));
 
 在后三种情形中，`actual`， `expected` 和 `operator` 对错误消息没有影响。
 
-使用 `stackStartFunction` 截断异常的追溯栈的示例：
+Example use of `stackStartFn` for truncating the exception's stacktrace:
 
 ```js
 function suppressFrame() {
@@ -585,25 +546,20 @@ suppressFrame();
 //     ...
 ```
 
-## assert.ifError(value)
-
-<!-- YAML
+## assert.ifError(value)<!-- YAML
 added: v0.1.97
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18247
     description: Instead of throwing the original error it is now wrapped into
                  an `AssertionError` that contains the full stack trace.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18247
-    description: Value may now only be `undefined` or `null`. Before any truthy
-                 input was accepted.
--->
+    description: Value may now only be `undefined` or `null`. Before all falsy
+                 values were handled the same as `null` and did not throw.
+-->* `value` {any}
 
-* `value` {any}
-
-如果 `value` 不是 `undefined` 或 `null`，则抛出 `value`。 当在回调函数中测试 `error` 参数时，这一点很有用。 追溯栈包含传递给 `ifError()` 的错误中的所有帧，`ifError()` 包含它自身潜在的新帧。 请参阅下面的示例。
+如果 `value` 不是 `undefined` 或 `null`，则抛出 `value`。 当在回调函数中测试 `error` 参数时，这一点很有用。 追溯栈包含传递给 `ifError()` 的错误中的所有帧，`ifError()` 包含它自身潜在的新帧。
 
 ```js
 const assert = require('assert').strict;
@@ -631,12 +587,9 @@ let err;
 //     at errorFrame
 ```
 
-## assert.notDeepEqual(actual, expected[, message])
-
-<!-- YAML
+## assert.notDeepEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
 changes:
-
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: The `Error` names and messages are now properly compared
@@ -652,11 +605,9 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 **Strict 模式**
 
@@ -692,23 +643,20 @@ assert.notDeepEqual(obj1, obj1);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj2);
-// OK: obj1 and obj2 are not deeply equal
+// OK
 
 assert.notDeepEqual(obj1, obj3);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
-// OK: obj1 and obj4 are not deeply equal
+// OK
 ```
 
 如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.notDeepStrictEqual(actual, expected[, message])
-
-<!-- YAML
+## assert.notDeepStrictEqual(actual, expected[, message])<!-- YAML
 added: v1.2.0
 changes:
-
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15398
     description: The `-0` and `+0` are not considered equal anymore.
@@ -732,13 +680,11 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
-Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
+测试深度严格不相等。 与 [`assert.deepStrictEqual()`][] 相反。
 
 ```js
 const assert = require('assert').strict;
@@ -749,15 +695,11 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 
 如果两个值深度严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.notEqual(actual, expected[, message])
-
-<!-- YAML
+## assert.notEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 **Strict 模式**
 
@@ -784,20 +726,15 @@ assert.notEqual(1, '1');
 
 如果两个值相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.notStrictEqual(actual, expected[, message])
-
-<!-- YAML
+## assert.notStrictEqual(actual, expected[, message])<!-- YAML
 added: v0.1.21
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
--->
-
-* `actual` {any}
+-->* `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 测试由 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 确定的 `actual` 和 `expected` 参数之间的严格不相等性。
 
@@ -816,20 +753,15 @@ assert.notStrictEqual(1, '1');
 
 如果两个值严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.ok(value[, message])
-
-<!-- YAML
+## assert.ok(value[, message])<!-- YAML
 added: v0.1.21
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18319
     description: The `assert.ok()` (no arguments) will now use a predefined
                  error message.
--->
-
-* `value` {any}
-* `message` {any}
+-->* `value` {any}
+* `message` {string|Error}
 
 测试 `value` 是否为真值。 它和 `assert.equal(!!value, true, message)` 功能完全一样。
 
@@ -878,25 +810,21 @@ assert(0);
 //   assert(0)
 ```
 
-## assert.rejects(block\[, error\]\[, message\])
-
-<!-- YAML
+## assert.rejects(asyncFn\[, error\]\[, message\])<!-- YAML
 added: v10.0.0
--->
-
-* `block` {Function|Promise}
+-->* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `message` {any}
+* `message` {string}
 
-Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝。
+Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
-如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 错误。 无论哪种情况，都跳过错误处理程序。
+If `asyncFn` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 错误。 无论哪种情况，都跳过错误处理程序。
 
 除了 await 的异步特性，完成行为与 [`assert.throws()`][] 完全相同。
 
 如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] ，验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
-如果指定的话，假如block拒绝失败，`message` 会是由 `AssertionError` 提供的消息。
+If specified, `message` will be the message provided by the `AssertionError` if the `asyncFn` fails to reject.
 
 ```js
 (async () => {
@@ -921,22 +849,19 @@ assert.rejects(
 });
 ```
 
-注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串将被用于 `message`。 这会导致不容易被发现的错误。 如果考虑使用字符串作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 如果考虑使用字符串作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
 
 ## assert.strictEqual(actual, expected[, message])
-
 <!-- YAML
 added: v0.1.21
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
 -->
-
 * `actual` {any}
 * `expected` {any}
-* `message` {any}
+* `message` {string|Error}
 
 测试由 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 确定的 `actual` 和 `expected` 参数之间的严格相等性。
 
@@ -961,35 +886,40 @@ assert.strictEqual(1, '1');
 
 如果两个值不是严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
-## assert.throws(block\[, error\]\[, message\])
-
-<!-- YAML
+## assert.throws(fn\[, error\]\[, message\])<!-- YAML
 added: v0.1.21
 changes:
-
+  - version: v10.2.0
+    pr-url: https://github.com/nodejs/node/pull/20485
+    description: The `error` parameter can be an object containing regular
+                 expressions now.
   - version: v9.9.0
     pr-url: https://github.com/nodejs/node/pull/17584
     description: The `error` parameter can now be an object as well.
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
--->
-
-* `block` {Function}
+-->* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `message` {any}
+* `message` {string}
 
-期望 `block` 函数抛出一个错误。
+Expects the function `fn` to throw an error.
 
-如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] ，验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
+If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, a validation object where each property will be tested for strict deep equality, or an instance of error where each property will be tested for strict deep equality including the non-enumerable `message` and `name` properties. When using an object, it is also possible to use a regular expression, when validating against a string property. See below for examples.
 
-如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
+If specified, `message` will be appended to the message provided by the `AssertionError` if the `fn` call fails to throw or in case the error validation fails.
 
-自定义error对象或error实例：
+Custom validation object/error instance:
 
 ```js
 const err = new TypeError('Wrong value');
 err.code = 404;
+err.foo = 'bar';
+err.info = {
+  nested: true,
+  baz: 'text'
+};
+err.reg = /abc/i;
 
 assert.throws(
   () => {
@@ -997,8 +927,38 @@ assert.throws(
   },
   {
     name: 'TypeError',
-    message: 'Wrong value'
-    // Note that only properties on the error object will be tested!
+    message: 'Wrong value',
+    info: {
+      nested: true,
+      baz: 'text'
+    }
+    // Note that only properties on the validation object will be tested for.
+    // Using nested objects requires all properties to be present. Otherwise
+    // the validation is going to fail.
+  }
+);
+
+// Using regular expressions to validate error properties:
+assert.throws(
+  () => {
+    throw err;
+  },
+  {
+    // The `name` and `message` properties are strings and using regular
+    // expressions on those will match against the string. If they fail, an
+    // error is thrown.
+    name: /^TypeError$/,
+    message: /Wrong/,
+    foo: 'bar',
+    info: {
+      nested: true,
+      // It is not possible to use regular expressions for nested properties!
+      baz: 'text'
+    },
+    // The `reg` property contains a regular expression and only if the
+    // validation object contains an identical regular expression, it is going
+    // to pass.
+    reg: /abc/i
   }
 );
 
@@ -1054,9 +1014,6 @@ assert.throws(
 ```
 
 注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 如果使用被抛出的错误信息，会导致产生 `ERR_AMBIGUOUS_ARGUMENT` 错误。 如果考虑使用字符串作为第二个参数，请仔细阅读下面的示例。
-
-<!-- eslint-disable no-restricted-syntax -->
-
 ```js
 function throwingFirst() {
   throw new Error('First');

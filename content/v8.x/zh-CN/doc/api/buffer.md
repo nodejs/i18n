@@ -1,16 +1,16 @@
-# 缓冲区
+# Buffer
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定的
+> 稳定性：2 - 稳定
 
-在引入 [`ECMAScript 2015`] (ES6) 中的 [`TypedArray`] 之前，JavaScript语言没有读取或操作二进制数据流的机制。 `Buffer` 类作为 Node.js API 的一部分被引入，使得在诸如TCP流或文件操作类的场景中，和8位字节流交互成为可能。
+在引入 [` TypedArray `] 之前, JavaScript 语言没有读取或操作二进制数据流的机制。 将 `Buffer` 类作为节点的一部分引入Node. js API, 以便在 TCP 流、文件系统操作和其他上下文中用八位位组的方式交互。
 
-现在 [`TypedArray`] 被加入到 ES6 中，`Buffer` 类实现了 [`Uint8Array`] API，使得它在针对 Node.js 的使用案例中更加高效。
+随着 [` TypedArray `] 现在变得可用, `Buffer` 类以更优化且适合于节点的方式实现 [` Uint8Array `] 此 API 接口 。
 
-`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 `Buffer` 的大小在创建时确定，且不能被更改。
+`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 `Buffer` 的大小在创建时建立, 不能更改。
 
-`Buffer` 类位于Node.js全局范围内, 因此不太可能需要使用 `require('buffer').Buffer`。
+`Buffer` 类位于全局范围内, 因此不太可能需要使用 ` require('buffer').Buffer`。
 
 例如：
 
@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 在 Node.js v6 之前的版本中, `Buffer` 实例通过 `Buffer` 构造函数创建，根据传递参数的不同，它返回 `Buffer` 的不同实例：
 
-* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 在 Node.js 8.0.0 之前，为这样的 `Buffer` 实例分配的内存 *没有* 被初始化，因此 *可能包含敏感数据*。 这样的 `Buffer` 实例随后 *必须* 被初始化，初始化方式可以通过使用 [`buf.fill(0)`][`buf.fill()`]，或将整个 `Buffer` 写入数据。 虽然此行为是在 *有意* 提高性能，但开发经验表明，创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node.js 8.0.0 开始，`Buffer(num)` 和 `new Buffer(num)` 将会返回具有初始化内存的 `Buffer`。
+* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. 这样的 `Buffer` 实例随后 *必须* 被初始化，初始化方式可以通过使用 [`buf.fill(0)`][`buf.fill()`]，或将整个 `Buffer` 写入数据。 虽然此行为是在 *有意* 提高性能，但开发经验表明，创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node.js 8.0.0 开始，`Buffer(num)` 和 `new Buffer(num)` 将会返回具有初始化内存的 `Buffer`。
 * 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
@@ -51,8 +51,8 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 *开发者应该将现有的所有 `new Buffer()` 构造器都移植到以下的新 API 之一。*
 
-* [`Buffer.from(array)`] 返回一个包含被提供的8位字节副本的新的 `Buffer`。
-* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] 返回一个和给出的 [`ArrayBuffer`] 共享已分配内存的新的 `Buffer`。
+* [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
+* [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
 * [`Buffer.from(buffer)`] 返回一个包含给定 `Buffer` 内容*副本*的新的`Buffer`。
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个包含给定字符串 *副本* 的新的 `Buffer`。
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回一个给定大小的已被“填充”的 `Buffer` 实例。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 要慢很多，但能保证新创建的 `Buffer` 实例不会包含旧的也可能是敏感的数据。
@@ -61,12 +61,11 @@ const buf6 = Buffer.from('tést', 'latin1');
 如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
 
 ### `--zero-fill-buffers` 命令行选项
-
 <!-- YAML
 added: v5.10.0
 -->
 
-Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 使用此标志会把这些方法的 *默认行为进行更改*, 并 *可能明显影响性能*。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
+Node.js 可以在启动时就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时*自动用 0 填充*。 Use of this flag *changes the default behavior* of these methods and *can have a significant impact* on performance. 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
 
 例如：
 
@@ -83,10 +82,8 @@ $ node --zero-fill-buffers
 虽然使用 [`Buffer.allocUnsafe()`] 有明显的性能优势，但 *必须* 要额外小心，以避免给应用程序带来安全漏洞。
 
 ## Buffer 与字符编码
-
 <!-- YAML
 changes:
-
   - version: v6.4.0
     pr-url: https://github.com/nodejs/node/pull/7111
     description: Introduced `latin1` as an alias for `binary`.
@@ -109,7 +106,7 @@ console.log(buf.toString('hex'));
 console.log(buf.toString('base64'));
 ```
 
-Node.js 当前支持的字符编码包括：
+Node.js当前支持的字符编码包括：
 
 * `'ascii'` - 仅支持 7 位 ASCII 数据。 此编码速度很快，而且一旦设置，会剥离高位。
 
@@ -127,19 +124,17 @@ Node.js 当前支持的字符编码包括：
 
 * `'hex'` - 将每个字节编码为两个十六进制字符。
 
-*注意*：现代浏览器遵循 [WHATWG 编码标准](https://encoding.spec.whatwg.org/)，将 'latin1' 和 ISO-8859-1 定为 win-1252 的别名。 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 win-1252 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
+*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 `'win-1252'` 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
 
 ## Buffers 和 TypedArray
-
 <!-- YAML
 changes:
-
   - version: v3.0.0
     pr-url: https://github.com/nodejs/node/pull/2002
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` 实例也是 [`Uint8Array`] 实例。 但是，在[`ECMAScript 2015`] 中存在着与 TypedArray 的微妙不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
+`Buffer` 实例也是 [`Uint8Array`] 实例。 但是与[`TypedArray`] 存在微妙的不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
 
 遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
@@ -201,9 +196,9 @@ console.log(buf.length);
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers和ES6迭代
+## Buffers 和 迭代
 
-`Buffer`实例可以通过使用[`ECMAScript 2015`] (ES6) 中的`for..of`进行迭代。
+`Buffer` 实例 可以通过 `for..of` 语法进行迭代：
 
 例如：
 
@@ -219,18 +214,16 @@ for (const b of buf) {
 }
 ```
 
-而且，可以通过 [`buf.values()`], [`buf.keys()`], 和 [`buf.entries()`] 方法来创建迭代器。
+而且，可以通过 [`buf.values()`]，[`buf.keys()`] 和 [`buf.entries()`] 方法创建迭代器。
 
 ## Class: Buffer
 
 `Buffer` 类是一个直接处理二进制数据的全局类型。 它能够以多种方式构建。
 
 ### new Buffer(array)
-
 <!-- YAML
 deprecated: v6.0.0
 changes:
-
   - version: v7.2.1
     pr-url: https://github.com/nodejs/node/pull/9529
     description: Calling this constructor no longer emits a deprecation warning.
@@ -252,13 +245,11 @@ changes:
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-### new Buffer(arrayBuffer[, byteOffset [, length]])
-
+### new Buffer(arrayBuffer[, byteOffset[, length]])
 <!-- YAML
 added: v3.0.0
 deprecated: v6.0.0
 changes:
-
   - version: v7.2.1
     pr-url: https://github.com/nodejs/node/pull/9529
     description: Calling this constructor no longer emits a deprecation warning.
@@ -273,12 +264,12 @@ changes:
 > 稳定性：0 - 已弃用：改为使用 [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuffer)`]。
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
-* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`
-* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`。
+* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`。
 
 该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-可选的 `byteOffset` 和 `length` 参数指定 `arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
 例如：
 
@@ -302,11 +293,9 @@ console.log(buf);
 ```
 
 ### new Buffer(buffer)
-
 <!-- YAML
 deprecated: v6.0.0
 changes:
-
   - version: v7.2.1
     pr-url: https://github.com/nodejs/node/pull/9529
     description: Calling this constructor no longer emits a deprecation warning.
@@ -317,9 +306,9 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 [`Buffer.from(buffer)`]。
 
-* `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
-将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
+将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
 
 例如：
 
@@ -337,11 +326,9 @@ console.log(buf2.toString());
 ```
 
 ### new Buffer(size)
-
 <!-- YAML
 deprecated: v6.0.0
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12141
     description: new Buffer(size) will return zero-filled memory by default.
@@ -359,7 +346,7 @@ changes:
 
 分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，且 *可能包含敏感数据*。 使用 [`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化 `Buffer`。
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化 `Buffer`。
 
 例如：
 
@@ -371,11 +358,9 @@ console.log(buf);
 ```
 
 ### new Buffer(string[, encoding])
-
 <!-- YAML
 deprecated: v6.0.0
 changes:
-
   - version: v7.2.1
     pr-url: https://github.com/nodejs/node/pull/9529
     description: Calling this constructor no longer emits a deprecation warning.
@@ -387,9 +372,9 @@ changes:
 > 稳定性：0 - 已弃用：改为使用 [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]。
 
 * `string` {string} 要编码的字符串。
-* `encoding` {string} `string` 的编码。 **默认值: ** `'utf8'`
+* `encoding` {string} `string` 的编码。 **默认值:**`‘utf8'`。
 
-创建一个包含给定 JavaScript 字符串 `string` 的新的 `Buffer`。 如果提供，`encoding` 参数指定 `string` 的字符编码方式。
+创建一个包含 `string` 的 `Buffer`。 `encoding` 参数指定 `string` 的字符串编码方式。
 
 例如：
 
@@ -402,7 +387,6 @@ console.log(buf1.toString());
 // Prints: this is a tC)st
 console.log(buf1.toString('ascii'));
 
-
 const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 
 // Prints: this is a tést
@@ -410,11 +394,9 @@ console.log(buf2.toString());
 ```
 
 ### 类方法：Buffer.alloc(size[, fill[, encoding]])
-
 <!-- YAML
 added: v5.10.0
 changes:
-
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17428
     description: Specifying an invalid string for `fill` now results in a
@@ -422,8 +404,8 @@ changes:
 -->
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
-* `fill` {string|Buffer|integer} 用来预填充新建 `Buffer` 的值。 **默认值：** `0`
-* `encoding` {string} 如果 `fill` 是字符串，则该值是它的编码方式。 **默认值：** `'utf8'`
+* `fill` {string|Buffer|integer} 用来预填充新建 `Buffer` 的值。 **默认值：** `0`。
+* `encoding` {string} 如果 `fill` 是字符串，则该值是它的编码方式。 **默认值:**`‘utf8'`。
 
 分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `fill` 是 `未定义的`，则 `Buffer` 将会被 *0 填充*。
 
@@ -438,7 +420,7 @@ console.log(buf);
 
 分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-如果指定了 `fill`，则会调用 [`buf.fill(fill)`][`buf.fill()`] 初始化已分配的 `Buffer`。
+如果指定了 `fill`，则会调用 [`buf.fill(fill)`][`buf.fill()`] 初始化分配的 `Buffer`。
 
 例如：
 
@@ -449,7 +431,7 @@ const buf = Buffer.alloc(5, 'a');
 console.log(buf);
 ```
 
-如果同时指定了 `fill` 和 `encoding`，则会调用 [`buf.fill(fill, encoding)`][`buf.fill()`] 初始化已分配的 `Buffer`。
+如果同时指定了 `fill` 和 `encoding`，则会调用 [`buf.fill(fill, encoding)`][`buf.fill()`] 初始化分配的 `Buffer`。
 
 例如：
 
@@ -460,16 +442,14 @@ const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 console.log(buf);
 ```
 
-调用 [`Buffer.alloc()`] 会明显比另一个方法 [`Buffer.allocUnsafe()`] 慢，但是能够确保新建 `Buffer` 实例的内容 *不会包含敏感数据*。
+调用 [`Buffer.alloc()`] 会明显得比另一个方法 [`Buffer.allocUnsafe()`] 慢，但是能确保新建 `Buffer` 实例的内容 *不会包含敏感数据*。
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.allocUnsafe(size)
-
 <!-- YAML
 added: v5.10.0
 changes:
-
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7079
     description: Passing a negative `size` will now throw an error.
@@ -497,19 +477,18 @@ console.log(buf);
 
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
-请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 该快速分配池将被用于使用 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用已弃用的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
+请注意，`Buffer` 模块会预分配一个大小为 [`Buffer.poolSize`] 的内部 `Buffer` 实例作为快速分配池， 用于 [`Buffer.allocUnsafe()`] 新创建的 `Buffer` 实例，或者当 `size` 小于或等于 `Buffer.poolSize >> 1`（[`Buffer.poolSize`]除以2后的最大整数值）时，用废弃的 `new Buffer(size)` 构造器新创建的 <0>Buffer</0> 实例。
 
-对于这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 具体的说，`Buffer.alloc(size, fill)` 永远 *不会* 使用这个内部的 `Buffer` 池，但如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， `Buffer.allocUnsafe(size).fill(fill)` *会* 使用这个内部的 `Buffer` 池。 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外性能时，这个细微的区别是非常重要的。
+对这个预分配的内部内存池的使用，是调用 `Buffer.alloc(size, fill)` 与 `Buffer.allocUnsafe(size).fill(fill)` 的关键区别。 Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`]. 当应用程序需要 [`Buffer.allocUnsafe()`] 提供的额外的性能时，这个细微的区别是非常重要的。
 
 ### 类方法：Buffer.allocUnsafeSlow(size)
-
 <!-- YAML
 added: v5.12.0
 -->
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`buf.fill(0)`][`buf.fill()`] 来用 0 初始化 `Buffer` 实例。
 
@@ -541,11 +520,9 @@ socket.on('readable', () => {
 如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.byteLength(string[, encoding])
-
 <!-- YAML
 added: v0.1.90
 changes:
-
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/8946
     description: Passing invalid input will now throw an error.
@@ -556,10 +533,10 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} 一个计算长度的值。
-* `encoding` {string} 如果 `string` 是字符串，则该值是它的编码方式。 **默认值: ** `'utf8'`
+* `encoding` {string} 如果 `string` 是字符串，则该值是它的编码方式。 **默认值:**`‘utf8'`。
 * 返回：{integer} `string` 包含的字节数。
 
-返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为该属性返回的是字符串中的 *字符* 数。
+返回一个字符串的实际字节长度。 这与 [`String.prototype.length`] 不同，因为 [<0>String.prototype.length</0>] 返回的是字符串中的 *字符* 数。
 
 *注意：*：对于 `'base64'` 和 `'hex'`，此函数假定输入有效。 对于包含 non-Base64/Hex-encoded 数据（例如：空格）的字符串，返回值可能大于从字符串创建的 `Buffer` 的长度。
 
@@ -576,11 +553,9 @@ console.log(`${str}: ${str.length} characters, ` +
 当 `string` 是一个 `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`] 时，返回实际的字节长度。
 
 ### 类方法：Buffer.compare(buf1, buf2)
-
 <!-- YAML
 added: v0.11.13
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The arguments can now be `Uint8Array`s.
@@ -590,7 +565,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * 返回：{integer}
 
-比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
 例如：
 
@@ -605,11 +580,9 @@ console.log(arr.sort(Buffer.compare));
 ```
 
 ### 类方法：Buffer.concat(list[, totalLength])
-
 <!-- YAML
 added: v0.7.11
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The elements of `list` can now be `Uint8Array`s.
@@ -619,7 +592,7 @@ changes:
 * `totalLength` {integer} 合并时 `list` 中 `Buffer` 实例的总长度。
 * 返回：{Buffer}
 
-返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer`。
+返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer` 。
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
@@ -648,7 +621,6 @@ console.log(bufA.length);
 ```
 
 ### 类方法：Buffer.from(array)
-
 <!-- YAML
 added: v5.10.0
 -->
@@ -657,24 +629,23 @@ added: v5.10.0
 
 使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
-例如：
+示例：
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-如果 `array` 不是一个 `Array`，则会抛出 `TypeError` 错误。
+如果 `array` 不是一个`Array`，则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
-
 <!-- YAML
 added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
-* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`
-* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`
+* `byteOffset` {integer} 要暴露的第一个字节的索引。 **默认值：** `0`。
+* `length` {integer} 要暴露的字节数。 **默认值：** `arrayBuffer.length - byteOffset`。
 
 该方法将创建 [`ArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会和 [`TypedArray`] 共享相同的已分配内存。
 
@@ -699,7 +670,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
 例如：
 
@@ -714,14 +685,13 @@ console.log(buf.length);
 如果 `arrayBuffer` 不是 [`ArrayBuffer`] 或 [`SharedArrayBuffer`]， 则抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.from(buffer)
-
 <!-- YAML
 added: v5.10.0
 -->
 
-* `buffer` {Buffer} 可从中复制数据的现有 `Buffer`。
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
-将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
+将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
 
 例如：
 
@@ -741,15 +711,14 @@ console.log(buf2.toString());
 如果 `buffer` 不是一个 `Buffer`， 则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.from(string[, encoding])
-
 <!-- YAML
 added: v5.10.0
 -->
 
 * `string` {string} 要编码的字符串。
-* `encoding` {string} `string` 的编码。 **默认值: ** `'utf8'`
+* `encoding` {string} `string` 的字符串编码。 **默认值:**`‘utf8'`。
 
-创建一个包含给定 JavaScript 字符串 `string` 的新的 `Buffer`。 如果提供，`encoding` 参数指定 `string` 的字符编码方式。
+创建一个包含 `string` 的 `Buffer`。 `encoding` 参数指定 `string` 的字符串编码方式。
 
 例如：
 
@@ -762,7 +731,6 @@ console.log(buf1.toString());
 // Prints: this is a tC)st
 console.log(buf1.toString('ascii'));
 
-
 const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 
 // Prints: this is a tést
@@ -772,7 +740,6 @@ console.log(buf2.toString());
 如果 `string` 不是一个字符串，则会抛出 `TypeError` 错误。
 
 ### 类方法：Buffer.from(object[, offsetOrEncoding[, length]])
-
 <!-- YAML
 added: v8.2.0
 -->
@@ -781,7 +748,7 @@ added: v8.2.0
 * `offsetOrEncoding` {number|string} 字节偏移量或编码，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
 * `length` {number} 长度值，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
 
-对那些其 `valueOf()` 函数返回值不严格等于 `object` 的对象，返回 `Buffer.from(object.valueOf(), offsetOrEncoding, length)`。
+对那些其 `valueOf()` 方法返回值如果不严格等于 `object` 的对象，返回 `Buffer.from(object.valueOf(), offsetOrEncoding, length)`。
 
 例如：
 
@@ -806,7 +773,6 @@ const buf = Buffer.from(new Foo(), 'utf8');
 ```
 
 ### 类方法：Buffer.isBuffer(obj)
-
 <!-- YAML
 added: v0.1.101
 -->
@@ -817,7 +783,6 @@ added: v0.1.101
 如果 `obj` 是一个 `Buffer`，则返回 `true`，否则返回 `false`。
 
 ### 类方法：Buffer.isEncoding(encoding)
-
 <!-- YAML
 added: v0.9.1
 -->
@@ -828,7 +793,6 @@ added: v0.9.1
 如果 `encoding` 包含一个支持的字符编码则返回 `true`，否则返回 `false`。
 
 ### 类属性：Buffer.poolSize
-
 <!-- YAML
 added: v0.11.3
 -->
@@ -838,13 +802,12 @@ added: v0.11.3
 这是用于决定预分配的内部 `Buffer` 实例大小的字节数。 这个值可以修改。
 
 ### buf[index]
-
 <!-- YAML
 type: property
 name: [index]
 -->
 
-索引操作符 `[index]` 可用于在 `buf` 中指定的 `index` 位置获取或设置八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
+索引操作符 `[index]` 可用于获取或设置 `buf` 中指定 `index` 位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
 该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
@@ -875,11 +838,9 @@ console.log(buffer.buffer === arrayBuffer);
 ```
 
 ### buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])
-
 <!-- YAML
 added: v0.11.13
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The `target` parameter can now be a `Uint8Array`.
@@ -889,13 +850,13 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
-* `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`
-* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** `target.length`
-* `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`
-* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** [`buf.length`]
+* `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`。
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`.
+* `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`。
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** [`buf.length`].
 * 返回：{integer}
 
-比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于每个 `Buffer` 中实际的字节序列。
+比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于各自 `Buffer` 中实际的字节序列。
 
 * 如果 `target` 与 `buf` 相同，则返回 `0`
 * 在排序时，如果 `target` 应当排在 `buf` *前面*，则返回 `1`。
@@ -949,15 +910,14 @@ console.log(buf1.compare(buf2, 5, 6, 5));
 如果 `targetStart < 0`，`sourceStart < 0`，`targetEnd > target.byteLength`，或 `sourceEnd > source.byteLength`，则抛出 `RangeError` 错误。
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
-
 <!-- YAML
 added: v0.1.90
 -->
 
 * `target` {Buffer|Uint8Array} 要复制进的 `Buffer` 或 [`Uint8Array`]。
-* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`
-* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`
-* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`]
+* `targetStart` {integer} `target` 中开始复制进的偏移量。 **默认值：** `0`。
+* `sourceStart` {integer} `buf` 中开始复制的偏移量。 **默认值：** `0`。
+* `sourceEnd` {integer} `buf` 中结束复制的偏移量（不包含自身）。 **默认值：** [`buf.length`].
 * 返回：{integer} 被复制的字节数。
 
 复制 `buf` 的一个区域的数据到 `target` 的一个区域，即使 `target` 的内存区域与 `buf` 的内存区域有重叠。
@@ -996,7 +956,6 @@ console.log(buf.toString());
 ```
 
 ### buf.entries()
-
 <!-- YAML
 added: v1.1.0
 -->
@@ -1023,11 +982,9 @@ for (const pair of buf.entries()) {
 ```
 
 ### buf.equals(otherBuffer)
-
 <!-- YAML
 added: v0.11.13
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The arguments can now be `Uint8Array`s.
@@ -1053,20 +1010,18 @@ console.log(buf1.equals(buf3));
 ```
 
 ### buf.fill(value\[, offset[, end]\]\[, encoding\])
-
 <!-- YAML
 added: v0.5.0
 changes:
-
   - version: v5.7.0
     pr-url: https://github.com/nodejs/node/pull/4935
     description: The `encoding` parameter is supported now.
 -->
 
 * `value` {string|Buffer|integer} 用来填充 `buf` 的值。
-* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`
-* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`]
-* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* `offset` {integer} 开始填充 `buf` 前要跳过的字节数。 **默认值：** `0`。
+* `end` {integer} 结束填充 `buf` 的位置（不包含自身）。 **默认值：** [`buf.length`].
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值:**`‘utf8'`。
 * 返回：{Buffer} `buf` 的引用。
 
 用指定的 `value` 填充 `buf`。 如果未指定 `offset` 和 `end`，则填充整个 `buf`。 这是一个细微的简化，以允许使用单行代码创建和填充 `Buffer`。
@@ -1082,16 +1037,18 @@ console.log(b.toString());
 
 如果 `value` 不是一个字符串或整数，则会被强制转换为 `uint32` 值。
 
-如果 `fill()` 操作的最后一次写入的是一个多字节字符，则只有能够填入 `buf` 的最前面字节会被写入。
+如果 `fill()` 操作最后一次写入的是一个多字节字符，则只有能够填入 `buf` 的最前面那些字节会被写入。
 
-例如：用两个字节的字符填充 `Buffer`。
+例如：用两个字节的字符填充 `Buffer`
 
 ```js
 // Prints: <Buffer c8 a2 c8>
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 ```
 
-如果 `value` 包含无效字符，则会被截断；如果没有有效的填充数据保留，则抛出异常：
+If `value` contains invalid characters, it is truncated.
+
+If no valid fill data remains, then the buffer is either zero-filled or no filling is performed, depending on the input type. That behavior is dictated by compatibility reasons and was changed to throwing an exception in Node.js v10, so it's not recommended to rely on that.
 
 ```js
 const buf = Buffer.allocUnsafe(5);
@@ -1104,14 +1061,13 @@ console.log(buf.fill('zz', 'hex'));
 ```
 
 ### buf.includes(value\[, byteOffset\]\[, encoding\])
-
 <!-- YAML
 added: v5.3.0
 -->
 
 * `value` {string|Buffer|integer} 要搜索的值。
-* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`
-* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值：** `'utf8'`
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`。
+* `encoding` {string} 如果 `value` 是一个字符串，则这是它的编码。 **默认值:**`‘utf8'`。
 * 返回：{boolean} 如果在 `buf` 中找到 `value`， 则返回 `true`，否则返回 `false`。
 
 相当于 [`buf.indexOf() !== -1`][`buf.indexOf()`]。
@@ -1145,11 +1101,9 @@ console.log(buf.includes('this', 4));
 ```
 
 ### buf.indexOf(value\[, byteOffset\]\[, encoding\])
-
 <!-- YAML
 added: v1.5.0
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The `value` can now be a `Uint8Array`.
@@ -1160,17 +1114,17 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`。
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 首次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-If `value` is:
+如果 `value` 是：
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
-* a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+  * 一个字符串，则根据由 `encoding` 指定的字符编码对 `value` 进行解析。
+  * 一个 `Buffer` 或 [`Uint8Array`]， `value` 会被作为一个整体使用。 如果要比较部分 `Buffer`，请使用 [`buf.slice()`]。
+  * 一个数字，`value` 会解析为一个介于 `0` 到 `255` 之间的无符号八位整数值。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1194,7 +1148,6 @@ console.log(buf.indexOf(Buffer.from('a buffer example')));
 // Prints: 8
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
 
-
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
 
 // Prints: 4
@@ -1204,9 +1157,9 @@ console.log(utf16Buffer.indexOf('\u03a3', 0, 'ucs2'));
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'ucs2'));
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN` or 0, like `{}`, `[]`, `null` or `undefined`, will search the whole buffer. This behavior matches [`String#indexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果任何参数被强制转换成 `NaN` 或 0，例如 `{}`，`[]`，`null` 或 `undefined`，那么将会搜索整个buffer。 该行为和 [`String#indexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1224,19 +1177,18 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 如果 `value` 是空的，并且 `byteOffset` 大于等于 `buf.length`，则返回 `buf.length`。
 
 ### buf.keys()
-
 <!-- YAML
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+创建并返回一个包含 `buf` 键（索引）的 [迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)。
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1254,24 +1206,22 @@ for (const key of buf.keys()) {
 ```
 
 ### buf.lastIndexOf(value\[, byteOffset\]\[, encoding\])
-
 <!-- YAML
 added: v6.0.0
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The `value` can now be a `Uint8Array`.
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
-* Returns: {integer} The index of the last occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
+* `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** [`buf.length`]`- 1`。
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 最后一次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-Identical to [`buf.indexOf()`], except `buf` is searched from back to front instead of front to back.
+与 [`buf.indexOf()`] 相同，除了是最后一次而不是第一次出现的`value`之外。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
@@ -1298,7 +1248,6 @@ console.log(buf.lastIndexOf('buffer', 5));
 // Prints: -1
 console.log(buf.lastIndexOf('buffer', 4));
 
-
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
 
 // Prints: 6
@@ -1308,9 +1257,9 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'ucs2'));
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'ucs2'));
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+如果 `value` 不是一个字符串，数字，或 `Buffer`，该方法会抛出一个 `TypeError` 错误。 如果 `value` 是一个数字， 它将会被强制转换成一个有效的 byte 值，该整数值介于0到255之间。
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+如果 `byteOffset` 不是一个数字，它将会被强制转换成一个数字。 如果参数被强制转换后得到 `NaN`，例如 `{}` 或 `undefined`，那么将会搜索整个buffer。 该行为和 [`String#lastIndexOf()`] 一致。
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1331,19 +1280,18 @@ console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`，那么返回 `byteOffset`。
 
 ### buf.length
-
 <!-- YAML
 added: v0.1.90
 -->
 
 * {integer}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+返回为 `buf` 分配的内存量（以字节为单位）。 注意，这并不一定反映 `buf` 中可用的数据量。
 
-Example: Create a `Buffer` and write a shorter ASCII string to it
+例如：创建一个 `Buffer` 并将更短的 ASCII 字符串写入其中。
 
 ```js
 const buf = Buffer.alloc(1234);
@@ -1357,9 +1305,9 @@ buf.write('some string', 0, 'ascii');
 console.log(buf.length);
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+虽然 `length` 属性不是不可变的，但是更改 `length` 的值可能会导致未定义和不一致的行为。 因此那些希望更改 `Buffer` 长度的应用程序应当将 `length` 视为只读的参数，并且使用 [`buf.slice()`] 创建一个新的 `Buffer`。
 
-Examples:
+例如：
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1376,32 +1324,29 @@ console.log(buf.length);
 ```
 
 ### buf.parent
-
 <!-- YAML
 deprecated: v8.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`buf.buffer`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`buf.buffer`]。
 
-The `buf.parent` property is a deprecated alias for `buf.buffer`.
+`buf.parent` 属性是 `buf.buffer` 已弃用的别名。
 
 ### buf.readDoubleBE(offset[, noAssert])
-
 ### buf.readDoubleLE(offset[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {number}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 8`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **Default:** `false`
+* 返回：{number}
 
-Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个64位双精度浮点数（`readDoubleBE()` 返回大端格式，`readDoubleLE()` 返回小端格式）。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1421,22 +1366,20 @@ console.log(buf.readDoubleLE(1, true));
 ```
 
 ### buf.readFloatBE(offset[, noAssert])
-
 ### buf.readFloatLE(offset[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {number}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **Default:** `false`
+* 返回：{number}
 
-Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 读取一个32位单精度浮点数（`readFloatBE()` 返回大端格式，`readFloatLE()` 返回小端格式）。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
@@ -1456,22 +1399,21 @@ console.log(buf.readFloatLE(1, true));
 ```
 
 ### buf.readInt8(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.0
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 1`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **Default:** `false`
+* 返回：{integer}
 
-Reads a signed 8-bit integer from `buf` at the specified `offset`.
+从 `buf` 中指定的 `offset` 读取一个有符号8位整型数。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([-1, 5]);
@@ -1487,24 +1429,22 @@ console.log(buf.readInt8(2));
 ```
 
 ### buf.readInt16BE(offset[, noAssert])
-
 ### buf.readInt16LE(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 2`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **Default:** `false`
+* 返回：{integer}
 
-Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个有符号16位整型数（`readInt16BE()` 返回大端格式，`readInt16LE()` 返回小端格式）。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1520,24 +1460,22 @@ console.log(buf.readInt16LE(1));
 ```
 
 ### buf.readInt32BE(offset[, noAssert])
-
 ### buf.readInt32LE(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **Default:** `false`
+* 返回：{integer}
 
-Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 偏移量读取一个有符号32位整形数（`readInt32BE()` 返回大端格式，`readInt32LE()` 返回小端格式）。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+从 `Buffer` 中读取的整型数被解析为二进制有符号补码数。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1553,23 +1491,21 @@ console.log(buf.readInt32LE(1));
 ```
 
 ### buf.readIntBE(offset, byteLength[, noAssert])
-
 ### buf.readIntLE(offset, byteLength[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} 要读取的字节数。 必须满足： `0 < byteLength <= 6`。
+* `noAssert` {boolean} 跳过对 `offset` 和 `byteLength` 的验证？ **默认:** `false`.
+* 返回：{integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+从 `buf` 中指定的 `offset` 偏移量读取 `byteLength` 字节，并且读取的结果被解析为二进制有符号补码数。 最大支持48位精度。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1585,20 +1521,19 @@ console.log(buf.readIntBE(1, 6).toString(16));
 ```
 
 ### buf.readUInt8(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.0
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足：`0 <= offset <= buf.length - 1`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **默认:** `false`
+* 返回：{integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+从 `buf` 中指定的 `offset` 偏移量读取一个无符号8位整型数。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([1, -2]);
@@ -1614,22 +1549,20 @@ console.log(buf.readUInt8(2));
 ```
 
 ### buf.readUInt16BE(offset[, noAssert])
-
 ### buf.readUInt16LE(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - 2`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **默认:** `false`
+* 返回：{integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56]);
@@ -1651,22 +1584,20 @@ console.log(buf.readUInt16LE(2).toString(16));
 ```
 
 ### buf.readUInt32BE(offset[, noAssert])
-
 ### buf.readUInt32LE(offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} 跳过对 `offset` 的验证？ **默认:** `false`
+* 返回：{integer}
 
-Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
+使用指定的字节序格式从 `buf` 中指定的 `offset` 地址读取一个无符号32位整形数（`readUInt32BE()` 返回大端格式，`readUInt32LE()` 返回小端格式）。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
@@ -1682,23 +1613,21 @@ console.log(buf.readUInt32LE(1).toString(16));
 ```
 
 ### buf.readUIntBE(offset, byteLength[, noAssert])
-
 ### buf.readUIntLE(offset, byteLength[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`
-* Returns: {integer}
+* `offset` {integer} 开始读取之前要跳过的字节数。 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} 要读取的字节数。 必须满足： `0 < byteLength <= 6`。
+* `noAssert` {boolean} 跳过对 `offset` 和 `byteLength` 的验证？ **默认:** `false`
+* 返回：{integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
+从 `buf` 中指定的 `offset` 地址读取 `byteLength` 字节，并且读取的结果被解析为无符号整数。 最大支持48位精度。
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1714,11 +1643,9 @@ console.log(buf.readUIntBE(1, 6).toString(16));
 ```
 
 ### buf.slice([start[, end]])
-
 <!-- YAML
 added: v0.3.0
 changes:
-
   - version: v7.1.0, v6.9.2
     pr-url: https://github.com/nodejs/node/pull/9341
     description: Coercing the offsets to integers now handles values outside
@@ -1729,9 +1656,9 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** `0`
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`]
-* Returns: {Buffer}
+* `start` {integer} 新 `Buffer` 的起始位置。 **默认值：** `0`。
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **默认值：** [`buf.length`].
+* 返回：{Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1762,7 +1689,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 
 Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1781,16 +1708,15 @@ console.log(buf.slice(-5, -2).toString());
 ```
 
 ### buf.swap16()
-
 <!-- YAML
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* 返回：{Buffer} `buf` 的引用。
 
-Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 2.
+Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 2.
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1803,7 +1729,6 @@ buf1.swap16();
 // Prints: <Buffer 02 01 04 03 06 05 08 07>
 console.log(buf1);
 
-
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 // Throws an exception: RangeError: Buffer size must be a multiple of 16-bits
@@ -1811,16 +1736,15 @@ buf2.swap16();
 ```
 
 ### buf.swap32()
-
 <!-- YAML
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* 返回：{Buffer} `buf` 的引用。
 
-Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 4.
+Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 4.
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1833,7 +1757,6 @@ buf1.swap32();
 // Prints: <Buffer 04 03 02 01 08 07 06 05>
 console.log(buf1);
 
-
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 // Throws an exception: RangeError: Buffer size must be a multiple of 32-bits
@@ -1841,16 +1764,15 @@ buf2.swap32();
 ```
 
 ### buf.swap64()
-
 <!-- YAML
 added: v6.3.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* 返回：{Buffer} `buf` 的引用。
 
-Interprets `buf` as an array of 64-bit numbers and swaps the byte-order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 8.
+Interprets `buf` as an array of 64-bit numbers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 8.
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1863,7 +1785,6 @@ buf1.swap64();
 // Prints: <Buffer 08 07 06 05 04 03 02 01>
 console.log(buf1);
 
-
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 // Throws an exception: RangeError: Buffer size must be a multiple of 64-bits
@@ -1873,16 +1794,15 @@ buf2.swap64();
 Note that JavaScript cannot encode 64-bit integers. This method is intended for working with 64-bit floats.
 
 ### buf.toJSON()
-
 <!-- YAML
 added: v0.9.2
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
@@ -1902,21 +1822,20 @@ console.log(copy);
 ```
 
 ### buf.toString([encoding[, start[, end]]])
-
 <!-- YAML
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to decode to. **Default:** `'utf8'`
-* `start` {integer} The byte offset to start decoding at. **Default:** `0`
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
-* Returns: {string}
+* `encoding` {string} The character encoding to decode to. **默认值:**`‘utf8'`。
+* `start` {integer} The byte offset to start decoding at. **默认值：** `0`。
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **默认值：** [`buf.length`].
+* 返回：{string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
 The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
 
-Examples:
+例如：
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
@@ -1932,7 +1851,6 @@ console.log(buf1.toString('ascii'));
 // Prints: abcde
 console.log(buf1.toString('ascii', 0, 5));
 
-
 const buf2 = Buffer.from('tést');
 
 // Prints: 74c3a97374
@@ -1946,16 +1864,15 @@ console.log(buf2.toString(undefined, 0, 3));
 ```
 
 ### buf.values()
-
 <!-- YAML
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* 返回：{Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1984,20 +1901,19 @@ for (const value of buf) {
 ```
 
 ### buf.write(string\[, offset[, length]\]\[, encoding\])
-
 <!-- YAML
 added: v0.1.90
 -->
 
 * `string` {string} String to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`
-* `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`
-* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`
+* `offset` {integer} Number of bytes to skip before starting to write `string`. **默认值：** `0`。
+* `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
+* `encoding` {string} The character encoding of `string`. **默认值:**`‘utf8'`。
 * Returns: {integer} Number of bytes written.
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
 
-Example:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(256);
@@ -2009,23 +1925,21 @@ console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
 ```
 
 ### buf.writeDoubleBE(value, offset[, noAssert])
-
 ### buf.writeDoubleLE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 8`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -2042,23 +1956,21 @@ console.log(buf);
 ```
 
 ### buf.writeFloatBE(value, offset[, noAssert])
-
 ### buf.writeFloatLE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2075,14 +1987,13 @@ console.log(buf);
 ```
 
 ### buf.writeInt8(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足：`0 <= offset <= buf.length - 1`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2091,7 +2002,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -2104,16 +2015,14 @@ console.log(buf);
 ```
 
 ### buf.writeInt16BE(value, offset[, noAssert])
-
 ### buf.writeInt16LE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 2`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
@@ -2122,7 +2031,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2135,16 +2044,14 @@ console.log(buf);
 ```
 
 ### buf.writeInt32BE(value, offset[, noAssert])
-
 ### buf.writeInt32LE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
@@ -2153,7 +2060,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -2166,24 +2073,22 @@ console.log(buf);
 ```
 
 ### buf.writeIntBE(value, offset, byteLength[, noAssert])
-
 ### buf.writeIntLE(value, offset, byteLength[, noAssert])
-
 <!-- YAML
 added: v0.11.15
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} Number of bytes to write. 必须满足： `0 < byteLength <= 6`。
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2200,21 +2105,20 @@ console.log(buf);
 ```
 
 ### buf.writeUInt8(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.0
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足：`0 <= offset <= buf.length - 1`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2229,23 +2133,21 @@ console.log(buf);
 ```
 
 ### buf.writeUInt16BE(value, offset[, noAssert])
-
 ### buf.writeUInt16LE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - 2`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2264,23 +2166,21 @@ console.log(buf);
 ```
 
 ### buf.writeUInt32BE(value, offset[, noAssert])
-
 ### buf.writeUInt32LE(value, offset[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足：`0 <= offset <= buf.length - 4`。
+* `noAssert` {boolean} Skip `value` and `offset` validation? **默认:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2297,24 +2197,22 @@ console.log(buf);
 ```
 
 ### buf.writeUIntBE(value, offset, byteLength[, noAssert])
-
 ### buf.writeUIntLE(value, offset, byteLength[, noAssert])
-
 <!-- YAML
 added: v0.5.5
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`
+* `offset` {integer} Number of bytes to skip before starting to write. 必须满足 `0 <= offset <= buf.length - byteLength`。
+* `byteLength` {integer} Number of bytes to write. 必须满足： `0 < byteLength <= 6`。
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **默认:** `false`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-Examples:
+例如：
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2331,35 +2229,31 @@ console.log(buf);
 ```
 
 ## buffer.INSPECT_MAX_BYTES
-
 <!-- YAML
 added: v0.5.4
 -->
 
-* {integer} **Default:** `50`
+* {integer} **默认值：** `50`
 
 Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`] for more details on `buf.inspect()` behavior.
 
 Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
 ## buffer.kMaxLength
-
 <!-- YAML
 added: v3.0.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} 单个`Buffer`对象允许的最大长度。
 
 An alias for [`buffer.constants.MAX_LENGTH`][]
 
 Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
 ## buffer.transcode(source, fromEnc, toEnc)
-
 <!-- YAML
 added: v7.1.0
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The `source` parameter can now be a `Uint8Array`.
@@ -2373,7 +2267,7 @@ Re-encodes the given `Buffer` or `Uint8Array` instance from one character encodi
 
 Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
 
-The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
+The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. 例如：
 
 ```js
 const buffer = require('buffer');
@@ -2388,7 +2282,6 @@ Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced w
 Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
 ## Class: SlowBuffer
-
 <!-- YAML
 deprecated: v6.0.0
 -->
@@ -2401,7 +2294,7 @@ In order to avoid the garbage collection overhead of creating many individually 
 
 In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
 
-Example:
+例如：
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -2423,7 +2316,6 @@ socket.on('readable', () => {
 Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
 
 ### new SlowBuffer(size)
-
 <!-- YAML
 deprecated: v6.0.0
 -->
@@ -2432,11 +2324,11 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
-Example:
+例如：
 
 ```js
 const { SlowBuffer } = require('buffer');
@@ -2453,33 +2345,30 @@ console.log(buf);
 ```
 
 ## Buffer Constants
-
 <!-- YAML
 added: 8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+请注意 `bufffer.constants` 是通过`require('buffer')`返回的 `buffer` 模块上的属性，不在 `Buffer` 全局变量或`Buffer` 实例中。
 
 ### buffer.constants.MAX_LENGTH
-
 <!-- YAML
 added: 8.2.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} 单个`Buffer`对象允许的最大长度。
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+在32位架构中，此值是 `(2^30)-1`(~1GB)。 在64位架构中，此值是 `(2^31)-1`(~2GB)。
 
-This value is also available as [`buffer.kMaxLength`][].
+这个值也可以通过`buffer.kMaxLength`获取。
 
 ### buffer.constants.MAX_STRING_LENGTH
-
 <!-- YAML
 added: 8.2.0
 -->
 
-* {integer} The largest length allowed for a single `string` instance.
+* {integer} 单个`String`对象允许的最大长度。
 
-Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
+代表一个 `string` 的最大长度（`length`），按 UTF-16 编码单元计算。
 
-This value may depend on the JS engine that is being used.
+此值可能取决于正在使用的 JS 引擎。

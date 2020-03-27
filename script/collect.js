@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 const path = require('path')
 const download = require('download')
 const walk = require('walk-sync').entries
-const {nodeVersions} = require('../package.json')
+const { nodeVersions } = require('../package.json')
 
 collect()
 
@@ -27,13 +27,13 @@ async function getDocsForNodeVersion (major, version) {
   // download repo bundle and extract to a temporary directory
   const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
   console.log('downloading', tarballUrl)
-  await download(tarballUrl, tempDir, {extract: true})
+  await download(tarballUrl, tempDir, { extract: true })
 
   // move docs from temp dir to this repo
   const tempDocDir = path.join(tempDir, `node-${version.replace('v', '')}`, 'doc')
 
   // removes files other than markdown
-  walk(tempDocDir, {directories: false})
+  walk(tempDocDir, { directories: false })
     .filter(file => path.extname(file.relativePath.toLowerCase()) !== '.md')
     .forEach(file => fs.unlinkSync(path.join(tempDocDir, file.relativePath)))
 

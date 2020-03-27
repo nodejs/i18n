@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stabile
+> Stabilità: 2 - Stable
 
 Il modulo `os` fornisce un numero di metodi di utilità relativi al sistema operativo. Ci si può accedere utilizzando:
 
@@ -11,7 +11,6 @@ const os = require('os');
 ```
 
 ## os.EOL
-
 <!-- YAML
 added: v0.7.8
 -->
@@ -24,7 +23,6 @@ Una costante di stringa che definisce il marker di fine riga specifico del siste
 * `\r\n` su Windows
 
 ## os.arch()
-
 <!-- YAML
 added: v0.5.0
 -->
@@ -38,7 +36,6 @@ I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mips
 Equivalente a [`process.arch`][].
 
 ## os.constants
-
 <!-- YAML
 added: v6.3.0
 -->
@@ -48,7 +45,6 @@ added: v6.3.0
 Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
 
 ## os.cpus()
-
 <!-- YAML
 added: v0.3.3
 -->
@@ -61,15 +57,12 @@ Le proprietà incluse in ogni oggetto includono:
 
 * `model` {string}
 * `speed` {number} (in MHz)
-* `times` {Object} 
+* `times` {Object}
   * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
   * `nice` {number} Il numero di millisecondi che la CPU ha speso nella modalità nice.
   * `sys` {number} Il numero di millisecondi che la CPU ha speso nella modalità sys.
   * `idle` {number} Il numero di millisecondi che la CPU ha speso nella modalità idle.
   * `irq` {number} Il numero di millisecondi che la CPU ha speso nella modalità irq.
-
-<!-- eslint-disable semi -->
-
 ```js
 [
   {
@@ -163,15 +156,11 @@ Le proprietà incluse in ogni oggetto includono:
 ]
 ```
 
-Poiché i valori `nice` sono specifici di UNIX, su Windows i valori `nice` di tutti i processori sono sempre 0.
+Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()
-
-<!-- YAML
+## os.endianness()<!-- YAML
 added: v0.9.4
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo`os.endianness()` restituisce una stringa che identifica l'endianness (l'ordine dei byte) della CPU *per la quale il binario Node.js è stato compilato*.
 
@@ -180,43 +169,37 @@ I valori possibili sono:
 * `'BE'` per big endian
 * `'LE'` per little endian.
 
-## os.freemem()
-
-<!-- YAML
+## os.freemem()<!-- YAML
 added: v0.3.3
--->
-
-* Restituisce: {integer}
+-->* Restituisce: {integer}
 
 Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come un numero intero.
 
-## os.homedir()
+## os.getPriority([pid])<!-- YAML
+added: v10.10.0
+-->* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
+* Restituisce: {integer}
 
-<!-- YAML
+The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
+
+## os.homedir()<!-- YAML
 added: v2.3.0
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo `os.homedir()` restituisce la directory home dell'utente corrente come una stringa.
 
-## os.hostname()
-
-<!-- YAML
+## os.hostname()<!-- YAML
 added: v0.3.3
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo `os.hostname()` restituisce l'hostname del sistema operativo come una stringa.
 
 ## os.loadavg()
-
 <!-- YAML
 added: v0.3.3
 -->
 
-* Restituisce: {number[]}
+* Returns: {number[]}
 
 Il metodo `os.loadavg()` restituisce un array contenente le medie di caricamento di 1, 5 e 15 minuti.
 
@@ -224,13 +207,9 @@ La media di caricamento è una misura dell'attività del sistema, calcolata dal 
 
 La media del caricamento è un concetto specifico UNIX con nessun equivalente reale sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
 
-## os.networkInterfaces()
-
-<!-- YAML
+## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->
-
-* Restituisce: {Object}
+-->* Restituisce: {Object}
 
 Il metodo `os.networkInterfaces()` restituisce un object contenente solo le interfacce di rete a cui è stato assegnato un indirizzo di rete.
 
@@ -244,10 +223,7 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 * `mac` {string} L'indirizzo MAC dell'interfaccia di rete
 * `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
 * `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
-* `cidr` {string} L'indirizzo IPv4 o IPv6 assegnato con il prefisso di routing nella notazione CIDR. Se la `netmask` non è valida, questa proprietà è impostata su `null`.
-
-<!-- eslint-skip -->
-
+* `cidr` {string} L'indirizzo IPv4 o IPv6 assegnato con il prefisso di routing nella notazione CIDR. If the `netmask` is invalid, this property is set to `null`.
 ```js
 {
   lo: [
@@ -264,6 +240,7 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
       netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
       family: 'IPv6',
       mac: '00:00:00:00:00:00',
+      scopeid: 0,
       internal: true,
       cidr: '::1/128'
     }
@@ -282,6 +259,7 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
       netmask: 'ffff:ffff:ffff:ffff::',
       family: 'IPv6',
       mac: '01:02:03:0a:0b:0c',
+      scopeid: 1,
       internal: false,
       cidr: 'fe80::a00:27ff:fe4e:66a1/64'
     }
@@ -289,13 +267,9 @@ Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono
 }
 ```
 
-## os.platform()
-
-<!-- YAML
+## os.platform()<!-- YAML
 added: v0.5.0
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo `os.platform()` restituisce una stringa che identifica la piattaforma del sistema operativo impostata durante il tempo di compilazione di Node.js.
 
@@ -311,81 +285,66 @@ I valori attualmente possibili sono:
 
 Equivalente a [`process.platform`][].
 
-Può anche essere restituito il valore `'android'` se il Node.js è costruito sul sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+Il valore `'android'` potrebbe anche essere restituito se il Node.js è costruito sul sistema operativo Android. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
-## os.release()
-
-<!-- YAML
+## os.release()<!-- YAML
 added: v0.3.3
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-Sui sistemi POSIX, la versione del sistema operativo è determinata chiamando [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni.
+On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni.
 
-## os.tmpdir()
+## os.setPriority([pid, ]priority)<!-- YAML
+added: v10.10.0
+-->* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+* `priority` {integer} The scheduling priority to assign to the process.
 
-<!-- YAML
+The `os.setPriority()` method attempts to set the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is used.
+
+The `priority` input must be an integer between `-20` (high priority) and `19` (low priority). Due to differences between Unix priority levels and Windows priority classes, `priority` is mapped to one of six priority constants in `os.constants.priority`. When retrieving a process priority level, this range mapping may cause the return value to be slightly different on Windows. To avoid confusion, it is recommended to set `priority` to one of the priority constants.
+
+On Windows setting priority to `PRIORITY_HIGHEST` requires elevated user, otherwise the set priority will be silently reduced to `PRIORITY_HIGH`.
+
+## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
-
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->
-
-* Restituisce: {string}
+-->* Restituisce: {string}
 
 Il metodo `os.tmpdir()` restituisce una stringa che specifica la directory predefinita del sistema operativo per i file temporanei.
 
-## os.totalmem()
-
-<!-- YAML
+## os.totalmem()<!-- YAML
 added: v0.3.3
--->
-
-* Restituisce: {integer}
+-->* Restituisce: {integer}
 
 Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come un numero intero.
 
-## os.type()
-
-<!-- YAML
+## os.type()<!-- YAML
 added: v0.3.3
--->
+-->* Restituisce: {string}
 
-* Restituisce: {string}
-
-Il metodo `os.type()` restituisce una stringa che identifica il nome del sistema operativo restituito da [uname(3)](https://linux.die.net/man/3/uname). Per esempio su linux `'Linux'`, su macOS `'Darwin'` e su Windows `'Windows_NT'`.
+Il metodo `os.type()` restituisce una stringa che identifica il nome del sistema operativo restituito da [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
 Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni sull'output dell'esecuzione di [uname(3)](https://linux.die.net/man/3/uname) su vari sistemi operativi.
 
-## os.uptime()
-
-<!-- YAML
+## os.uptime()<!-- YAML
 added: v0.3.3
 changes:
-
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/20129
     description: The result of this function no longer contains a fraction
                  component on Windows.
--->
-
-* Restituisce: {integer}
+-->* Restituisce: {integer}
 
 Il metodo `os.uptime()` restituisce il tempo di attività del sistema in un numero di secondi.
 
-## os.userInfo([options])
-
-<!-- YAML
+## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->
-
-* `options` {Object} 
+-->* `options` {Object}
   * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
 * Restituisce: {Object}
 
@@ -397,19 +356,14 @@ Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema oper
 
 Le seguenti costante vengono esportate da `os.constants`.
 
-Non tutte le costanti saranno disponibili su tutti i sistemi operativi.
+Not all constants will be available on every operating system.
 
-### Costanti di Segnale
-
-<!-- YAML
+### Costanti di Segnale<!-- YAML
 changes:
-
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->
-
-Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
+-->Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
 
 <table>
   <tr>
@@ -422,7 +376,8 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
-    <td>Inviato per segnalare quando un utente desidera interrompere un processo    (`(Ctrl + C)`).</td>
+    <td>Sent to indicate when a user wishes to interrupt a process
+    (<code>(Ctrl+C)</code>).</td>
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
@@ -502,11 +457,11 @@ Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Inviato a un processo quando viene letto dal TTY mentre è in    background.</td>
+    <td>Inviato a un processo quando legge dal TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Inviato a un processo quando si scrive alla TTY mentre è in    background.</td>
+    <td>Inviato a un processo quando scrive sulla TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
@@ -823,8 +778,9 @@ Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indica che un'operazione non è supportata sul socket.
-    Ricorda che mentre `ENOTSUP` e` EOPNOTSUPP` hanno lo stesso valore su Linux,    secondo POSIX.1 questi valori di errore dovrebbero essere distinti.)</td>
+    <td>Indica che un'operazione non è supportata sul socket.  Note that
+    while <code>ENOTSUP</code> and <code>EOPNOTSUPP</code> have the same value
+    on Linux, according to POSIX.1 these error values should be distinct.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
@@ -1079,7 +1035,8 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
-    <td>Indica che la versione `winsock.dll` è fuori dall'intervallo.</td>
+    <td>Indicates that the <code>winsock.dll</code> version is out of
+    range.</td>
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
@@ -1137,7 +1094,7 @@ I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
 ### Costanti dlopen
 
-Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in `os.constants.dlopen`. Vedi dlopen(3) per informazioni dettagliate.
+If available on the operating system, the following constants are exported in `os.constants.dlopen`. See dlopen(3) for detailed information.
 
 <table>
   <tr>
@@ -1158,11 +1115,62 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
   </tr>
   <tr>
     <td><code>RTLD_LOCAL</code></td>
-    <td>Il contrario di `RTLD_GLOBAL`. Questa è l'azione predefinita se non è specificato nessun    flag.</td>
+    <td>The converse of <code>RTLD_GLOBAL</code>. This is the default behavior
+    if neither flag is specified.</td>
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
     <td>Fai in modo che una libreria incorporata utilizzi i suoi stessi simboli rispetto ai     simboli delle librerie precedentemente caricate.</td>
+  </tr>
+</table>
+
+### Priority Constants<!-- YAML
+added: v10.10.0
+-->The following process scheduling constants are exported by `os.constants.priority`:
+
+<table>
+  <tr>
+    <th>Costante</th>
+    <th>Descrizione</th>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_LOW</code></td>
+    <td>The lowest process scheduling priority. This corresponds to
+    <code>IDLE_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>19</code> on all other platforms.</td>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_BELOW_NORMAL</code></td>
+    <td>The process scheduling priority above <code>PRIORITY_LOW</code> and
+    below <code>PRIORITY_NORMAL</code>. This corresponds to
+    <code>BELOW_NORMAL_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>10</code> on all other platforms.</td>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_NORMAL</code></td>
+    <td>The default process scheduling priority. This corresponds to
+    <code>NORMAL_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>0</code> on all other platforms.</td>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_ABOVE_NORMAL</code></td>
+    <td>The process scheduling priority above <code>PRIORITY_NORMAL</code> and
+    below <code>PRIORITY_HIGH</code>. This corresponds to
+    <code>ABOVE_NORMAL_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>-7</code> on all other platforms.</td>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_HIGH</code></td>
+    <td>The process scheduling priority above <code>PRIORITY_ABOVE_NORMAL</code>
+    and below <code>PRIORITY_HIGHEST</code>. This corresponds to
+    <code>HIGH_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>-14</code> on all other platforms.</td>
+  </tr>
+  <tr>
+    <td><code>PRIORITY_HIGHEST</code></td>
+    <td>The highest process scheduling priority. This corresponds to
+    <code>REALTIME_PRIORITY_CLASS</code> on Windows, and a nice value of
+    <code>-20</code> on all other platforms.</td>
   </tr>
 </table>
 
@@ -1178,3 +1186,4 @@ Se disponibile sul sistema operativo, le seguenti costanti vengono esportate in 
     <td></td>
   </tr>
 </table>
+

@@ -14,7 +14,7 @@ const path = require('path');
 
 `path` modülünün varsayılan ayarları, Node.js uygulamasının çalıştığı işletim sistemine göre değişiklik gösterir. Uygulama Windows işletim sistemi üzerinde çalışıyorsa, `path` modülü Windows tarzı dosya/dizin adreslemesi varsayacaktır.
 
-Örneğin, `path.basename()` fonksiyonu, Windows tarzı bir dosya adresi (`C:\temp\myfile.html`) ile kullanıldığında, POSIX üzerindeki çıktısı, Windows üzerindeki çıktısından farklı olacaktır:
+So using `path.basename()` might yield different results on POSIX and Windows:
 
 POSIX'te:
 
@@ -48,14 +48,12 @@ path.posix.basename('/tmp/myfile.html');
 // 'myfile.html'
 ```
 
-*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. Mesela, `path.resolve('c:\\')` çıktısı `path.resolve('c:')` çıktısından farklı olabilir. [Bu MSDN sayfasında](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) detaylı açıklamasını bulabilirsiniz.
+On Windows Node.js follows the concept of per-drive working directory. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. For example, `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ## path.basename(path[, ext])
-
 <!-- YAML
 added: v0.1.25
 changes:
-
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -78,7 +76,6 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 Eğer `path` argümanı bir string değilse, ya da `ext` argümanı verilmiş ancak bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.delimiter
-
 <!-- YAML
 added: v0.9.3
 -->
@@ -111,11 +108,9 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
-
 <!-- YAML
 added: v0.1.16
 changes:
-
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -134,11 +129,9 @@ path.dirname('/foo/bar/baz/asdf/quux');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.extname(path)
-
 <!-- YAML
 added: v0.1.25
 changes:
-
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -169,18 +162,17 @@ path.extname('.index');
 Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.format(pathObject)
-
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object} 
+* `pathObject` {Object}
   * `dir` {string}
   * `root` {string}
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -189,7 +181,7 @@ When providing properties to the `pathObject` remember that there are combinatio
 * `pathObject.root` is ignored if `pathObject.dir` is provided
 * `pathObject.ext` and `pathObject.name` are ignored if `pathObject.base` exists
 
-For example, on POSIX:
+POSIX'te:
 
 ```js
 // If `dir`, `root` and `base` are provided,
@@ -221,7 +213,7 @@ path.format({
 // Returns: '/file.txt'
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.format({
@@ -232,7 +224,6 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
-
 <!-- YAML
 added: v0.11.2
 -->
@@ -244,7 +235,7 @@ The `path.isAbsolute()` method determines if `path` is an absolute path.
 
 If the given `path` is a zero-length string, `false` will be returned.
 
-For example on POSIX:
+POSIX'te:
 
 ```js
 path.isAbsolute('/foo/bar'); // true
@@ -253,7 +244,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.isAbsolute('//server');    // true
@@ -265,18 +256,17 @@ path.isAbsolute('bar/baz');     // false
 path.isAbsolute('.');           // false
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.join([...paths])
-
 <!-- YAML
 added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* Returns: {string}
+* Çıktı: {string}
 
-The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
+The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
 Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
@@ -291,45 +281,44 @@ path.join('foo', {}, 'bar');
 A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
-
 <!-- YAML
 added: v0.1.23
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
+instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
-For example on POSIX:
+POSIX'te:
 
 ```js
 path.normalize('/foo/bar//baz/asdf/quux/..');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
+Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 // Returns: 'C:\\temp\\foo\\bar'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.parse(path)
-
 <!-- YAML
 added: v0.11.15
 -->
@@ -347,7 +336,7 @@ The returned object will have the following properties:
 * `name` {string}
 * `ext` {string}
 
-For example on POSIX:
+POSIX'te:
 
 ```js
 path.parse('/home/user/dir/file.txt');
@@ -369,7 +358,7 @@ path.parse('/home/user/dir/file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
@@ -391,10 +380,9 @@ path.parse('C:\\path\\dir\\file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.posix
-
 <!-- YAML
 added: v0.11.15
 -->
@@ -404,11 +392,9 @@ added: v0.11.15
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
 ## path.relative(from, to)
-
 <!-- YAML
 added: v0.5.0
 changes:
-
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -417,20 +403,20 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
 If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
 
-For example on POSIX:
+POSIX'te:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
 // Returns: '../../impl/bbb'
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
@@ -440,13 +426,12 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
-
 <!-- YAML
 added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -475,7 +460,6 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
-
 <!-- YAML
 added: v0.7.9
 -->
@@ -484,40 +468,40 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `` on Windows
+* `\` windows'ta
 * `/` on POSIX
 
-For example on POSIX:
+POSIX'te:
 
 ```js
 'foo/bar/baz'.split(path.sep);
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
+On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
+as path segment separators; however, the``path`methods only add backward
+slashes (`\`).
 
 ## path.toNamespacedPath(path)
-
 <!-- YAML
 added: v9.0.0
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
-On Windows systems only, returns an equivalent [namespace-prefixed path](https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
+On Windows systems only, returns an equivalent [namespace-prefixed path](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
-This method is meaningful only on Windows system. On posix systems, the method is non-operational and always returns `path` without modifications.
+This method is meaningful only on Windows system. On POSIX systems, the method is non-operational and always returns `path` without modifications.
 
 ## path.win32
-
 <!-- YAML
 added: v0.11.15
 -->

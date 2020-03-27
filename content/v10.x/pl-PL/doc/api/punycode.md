@@ -1,8 +1,6 @@
 # Punycode
-
 <!-- YAML
 changes:
-
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7941
     description: Accessing this module will now emit a deprecation warning.
@@ -10,11 +8,11 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> Stabilność: 0 - Przestarzałe
 
-**The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
+**The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
-The `punycode` module is a bundled version of the [Punycode.js](https://mths.be/punycode) module. It can be accessed using:
+The `punycode` module is a bundled version of the [Punycode.js](https://github.com/bestiejs/punycode.js) module. It can be accessed using:
 
 ```js
 const punycode = require('punycode');
@@ -24,10 +22,9 @@ const punycode = require('punycode');
 
 The `punycode` module provides a simple implementation of the Punycode standard.
 
-The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://mths.be/punycode) project.
+The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://github.com/bestiejs/punycode.js) project.
 
 ## punycode.decode(string)
-
 <!-- YAML
 added: v0.5.1
 -->
@@ -42,7 +39,6 @@ punycode.decode('--dqo34k'); // '☃-⌘'
 ```
 
 ## punycode.encode(string)
-
 <!-- YAML
 added: v0.5.1
 -->
@@ -57,7 +53,6 @@ punycode.encode('☃-⌘'); // '--dqo34k'
 ```
 
 ## punycode.toASCII(domain)
-
 <!-- YAML
 added: v0.6.1
 -->
@@ -74,7 +69,6 @@ punycode.toASCII('example.com'); // 'example.com'
 ```
 
 ## punycode.toUnicode(domain)
-
 <!-- YAML
 added: v0.6.1
 -->
@@ -91,13 +85,11 @@ punycode.toUnicode('example.com');       // 'example.com'
 ```
 
 ## punycode.ucs2
-
 <!-- YAML
 added: v0.7.0
 -->
 
 ### punycode.ucs2.decode(string)
-
 <!-- YAML
 added: v0.7.0
 -->
@@ -113,7 +105,6 @@ punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
 ### punycode.ucs2.encode(codePoints)
-
 <!-- YAML
 added: v0.7.0
 -->
@@ -128,11 +119,10 @@ punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
 ```
 
 ## punycode.version
-
 <!-- YAML
 added: v0.6.1
 -->
 
 * {string}
 
-Returns a string identifying the current [Punycode.js](https://mths.be/punycode) version number.
+Returns a string identifying the current [Punycode.js](https://github.com/bestiejs/punycode.js) version number.

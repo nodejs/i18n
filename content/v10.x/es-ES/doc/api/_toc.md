@@ -3,13 +3,13 @@
 <!--introduced_in=v0.10.0-->
 
 * [Acerca de esta documentación](documentation.html)
-* [Uso y Ejemplo](synopsis.html)
+* [Usos & Ejemplos](synopsis.html)
 
 <div class="line"></div>
 
-* [Pruebas de Afirmación](assert.html)
+* [Pruebas de Aserción](assert.html)
 * [Ganchos Asíncronos](async_hooks.html)
-* [Búfer](buffer.html)
+* [Buffer](buffer.html)
 * [Complementos de C++](addons.html)
 * [Complementos de C/C++ - N-API](n-api.html)
 * [Procesos Hijos](child_process.html)
@@ -17,7 +17,7 @@
 * [Opciones de Línea de Comandos](cli.html)
 * [Consola](console.html)
 * [Cripto](crypto.html)
-* [Depurador](debugger.html)
+* [Debugger](debugger.html)
 * [API Obsoletas](deprecations.html)
 * [DNS](dns.html)
 * [Dominio](domain.html)
@@ -37,7 +37,7 @@
 * [Path](path.html)
 * [Funciones de rendimiento](perf_hooks.html)
 * [Proceso](process.html)
-* [Punycode](punycode.html)
+* [Código Púny](punycode.html)
 * [Cadena de búsqueda](querystring.html)
 * [Lectura de línea](readline.html)
 * [REPL](repl.html)
@@ -52,9 +52,10 @@
 * [Utilidades](util.html)
 * [V8](v8.html)
 * [Máquina Virtual](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [Repositorio de Github & Registro de problemas](https://github.com/nodejs/node)
-* [Lista de correo](https://groups.google.com/group/nodejs)
+* [Repositorio GitHub & Registro de Problemas](https://github.com/nodejs/node)
+* [Lista de Correo](https://groups.google.com/group/nodejs)

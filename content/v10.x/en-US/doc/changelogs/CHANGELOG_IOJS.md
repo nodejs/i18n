@@ -74,8 +74,8 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-
 <a id="3.3.1"></a>
+
 ## 2015-09-15, io.js Version 3.3.1 @rvagg
 
 ### Notable changes
@@ -164,6 +164,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 * [[`ac45ef9157`](https://github.com/nodejs/node/commit/ac45ef9157)] - **win,msi**: fix documentation shortcut url (Brian White) [#2781](https://github.com/nodejs/node/pull/2781)
 
 <a id="3.3.0"></a>
+
 ## 2015-09-02, Version 3.3.0, @rvagg
 
 ### Notable changes
@@ -253,6 +254,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 * [[`752977b888`](https://github.com/nodejs/node/commit/752977b888)] - **win,msi**: change InstallScope to perMachine (João Reis) [#2565](https://github.com/nodejs/node/pull/2565)
 
 <a id="3.2.0"></a>
+
 ## 2015-08-25, Version 3.2.0, @rvagg
 
 ### Notable changes
@@ -323,6 +325,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 * [[`b5bd3ebfc8`](https://github.com/nodejs/node/commit/b5bd3ebfc8)] - **win**: fix custom actions on Visual Studio != 2013 (Julien Gilli) [#2365](https://github.com/nodejs/node/pull/2365)
 
 <a id="3.1.0"></a>
+
 ## 2015-08-18, Version 3.1.0, @Fishrock123
 
 ### Notable changes
@@ -392,6 +395,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 * [[`7606bdb897`](https://github.com/nodejs/node/commit/7606bdb897)] - **(SEMVER-MINOR)** **util**: display constructor when inspecting objects (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935)
 
 <a id="3.0.0"></a>
+
 ## 2015-08-04, Version 3.0.0, @rvagg
 
 ### Notable changes
@@ -503,6 +507,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`9bac1dbae9`](https://github.com/nodejs/node/commit/9bac1dbae9)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.5.0"></a>
+
 ## 2015-07-28, Version 2.5.0, @cjihrig
 
 ### Notable changes
@@ -567,6 +572,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`f90f1e75bb`](https://github.com/nodejs/node/commit/f90f1e75bb)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
 <a id="2.4.0"></a>
+
 ## 2015-07-17, Version 2.4.0, @Fishrock123
 
 ### Notable changes
@@ -612,8 +618,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`842eb5b853`](https://github.com/nodejs/node/commit/842eb5b853)] - **test**: add test for dgram.setTTL (Evan Lucas) [#2121](https://github.com/nodejs/node/pull/2121)
 * [[`cff7300a57`](https://github.com/nodejs/node/commit/cff7300a57)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
-
 <a id="2.3.4"></a>
+
 ## 2015-07-09, Version 2.3.4, @Fishrock123
 
 ### Notable changes
@@ -649,8 +655,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`ee3ce2ed88`](https://github.com/nodejs/node/commit/ee3ce2ed88)] - **tools**: install gdbinit from v8 to $PREFIX/share (Ali Ijaz Sheikh) [#2123](https://github.com/nodejs/node/pull/2123)
 * [[`dd523c75da`](https://github.com/nodejs/node/commit/dd523c75da)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
-
 <a id="1.8.4"></a>
+
 ## 2015-07-09, Version 1.8.4, @Fishrock123
 
 **Maintenance release**
@@ -673,8 +679,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`c70e68fa32`](https://github.com/nodejs/node/commit/c70e68fa32)] - **deps**: update deps/openssl/conf/arch/*/opensslconf.h (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 * [[`ca93f7f2e6`](https://github.com/nodejs/node/commit/ca93f7f2e6)] - **deps**: upgrade openssl sources to 1.0.2d (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141)
 
-
 <a id="2.3.3"></a>
+
 ## 2015-07-04, Version 2.3.3, @Fishrock123
 
 ### Notable changes
@@ -697,8 +703,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`0f09b8db28`](https://github.com/nodejs/node/commit/0f09b8db28)] - **doc**: don't recommend domains for error handling (Benjamin Gruenbaum) [#2056](https://github.com/nodejs/node/pull/2056)
 * [[`9cd44bb2b6`](https://github.com/nodejs/node/commit/9cd44bb2b6)] - **util**: prepend '(node) ' to deprecation messages (Sakthipriyan Vairamani) [#1892](https://github.com/nodejs/node/pull/1892)
 
-
 <a id="1.8.3"></a>
+
 ## 2015-07-04, Version 1.8.3, @rvagg
 
 **Maintenance release**
@@ -747,10 +753,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`5c29c0c519`](https://github.com/nodejs/node/commit/5c29c0c519)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
 * [[`2cd7f73d9f`](https://github.com/nodejs/node/commit/2cd7f73d9f)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
 * [[`c65484a74d`](https://github.com/nodejs/node/commit/c65484a74d)] - **tls**: make server not use DHE in less than 1024bits (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739)
-* [[`77f518403f`](https://github.com/nodejs/node/commit/77f518403f)] - **win,node-gyp**: make delay-load hook C89 compliant (Sharat M R) [TooTallNate/node-gyp#616](https://github.com/TooTallNa
-
+* [[`77f518403f`](https://github.com/nodejs/node/commit/77f518403f)] - **win,node-gyp**: make delay-load hook C89 compliant (Sharat M R) \[TooTallNate/node-gyp#616\](https://github.com/TooTallNa
 
 <a id="2.3.2"></a>
+
 ## 2015-07-01, Version 2.3.2, @rvagg
 
 ### Notable changes
@@ -812,8 +818,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`6c61ca5325`](https://github.com/nodejs/node/commit/6c61ca5325)] - **url**: fix typo in comment (Rich Trott) [#2071](https://github.com/nodejs/node/pull/2071)
 * [[`1a51f0058c`](https://github.com/nodejs/node/commit/1a51f0058c)] - **v8**: cherry-pick JitCodeEvent patch from upstream (Ben Noordhuis) [#2075](https://github.com/nodejs/node/pull/2075)
 
-
 <a id="2.3.1"></a>
+
 ## 2015-06-23, Version 2.3.1, @rvagg
 
 ### Notable changes
@@ -882,8 +888,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`953b3e75e8`](https://github.com/nodejs/node/commit/953b3e75e8)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 * [[`3806d875d3`](https://github.com/nodejs/node/commit/3806d875d3)] - **zlib**: prevent uncaught exception in zlibBuffer (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811)
 
-
 <a id="2.3.0"></a>
+
 ## 2015-06-13, Version 2.3.0, @rvagg
 
 ### Notable changes
@@ -1006,8 +1012,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`628845b816`](https://github.com/nodejs/node/commit/628845b816)] - **(SEMVER-MINOR)** **util**: introduce `printDeprecationMessage` function (Vladimir Kurchatkin) [#1822](https://github.com/nodejs/node/pull/1822)
 * [[`91d0a8b19c`](https://github.com/nodejs/node/commit/91d0a8b19c)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [iojs/io.js#1433](https://github.com/iojs/io.js/pull/1433)
 
-
 <a id="2.2.1"></a>
+
 ## 2015-06-01, Version 2.2.1, @rvagg
 
 ### Notable changes
@@ -1030,8 +1036,8 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`5d83401086`](https://github.com/nodejs/node/commit/5d83401086)] - **doc**: put SEMVER-MINOR on pre-load module fix 2.2.0 (Rod Vagg)
 * [[`4d6b768e5d`](https://github.com/nodejs/node/commit/4d6b768e5d)] - **http**: revert deprecation of client property (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852)
 
-
 <a id="2.2.0"></a>
+
 ## 2015-05-31, Version 2.2.0, @rvagg
 
 ### Notable changes
@@ -1080,6 +1086,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`53e98cc1b4`](https://github.com/nodejs/node/commit/53e98cc1b4)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1763](https://github.com/nodejs/node/pull/1763)
 
 <a id="2.1.0"></a>
+
 ## 2015-05-24, Version 2.1.0, @rvagg
 
 ### Notable changes
@@ -1128,6 +1135,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`0d6d3dda95`](https://github.com/nodejs/node/commit/0d6d3dda95)] - **win,node-gyp**: make delay-load hook C89 compliant (Sharat M R) [TooTallNate/node-gyp#616](https://github.com/TooTallNate/node-gyp/pull/616)
 
 <a id="1.8.2"></a>
+
 ## 2015-05-17, Version 1.8.2, @rvagg
 
 **Maintenance release**
@@ -1136,7 +1144,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 * **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
 * **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Summary:
-  - Add support for default author field to make `npm init -y` work without user-input (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
+  - Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
   - Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   - The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 
@@ -1168,6 +1176,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`0eb74a8b6c`](https://github.com/nodejs/node/commit/0eb74a8b6c)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [nodejs/node#1266](https://github.com/nodejs/node/pull/1266)
 
 <a id="2.0.2"></a>
+
 ## 2015-05-15, Version 2.0.2, @Fishrock123
 
 ### Notable changes
@@ -1218,6 +1227,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`64d3210c98`](https://github.com/nodejs/node/commit/64d3210c98)] - **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1667](https://github.com/nodejs/node/issues/1667)
 
 <a id="2.0.1"></a>
+
 ## 2015-05-07, Version 2.0.1, @rvagg
 
 ### Notable changes
@@ -1266,6 +1276,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`0c8f13df8f`](https://github.com/nodejs/node/commit/0c8f13df8f)] - **tools**: remove unused GuessWordSize function (thefourtheye) [#1638](https://github.com/nodejs/node/pull/1638)
 
 <a id="2.0.0"></a>
+
 ## 2015-05-04, Version 2.0.0, @rvagg
 
 ### Breaking changes
@@ -1393,50 +1404,25 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 * [[`30e83d2e84`](https://github.com/nodejs/node/commit/30e83d2e84)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
 * [[`3bda6cbfa4`](https://github.com/nodejs/node/commit/3bda6cbfa4)] - **(SEMVER-MAJOR)** **win,node-gyp**: enable delay-load hook by default (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
 
-
 <a id="1.8.1"></a>
+
 ## 2015-04-20, Version 1.8.1, @chrisdickinson
 
 ### Notable changes
 
-* **NOTICE**: Skipped v1.8.0 due to problems with release tooling.
-  See [#1436](https://github.com/nodejs/node/issues/1436) for details.
+* **NOTICE**: Skipped v1.8.0 due to problems with release tooling. See [#1436](https://github.com/nodejs/node/issues/1436) for details.
 * **build**: Support for building io.js as a static library (Marat Abdullin) [#1341](https://github.com/nodejs/node/pull/1341)
 * **deps**: Upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-  * Users should see performance improvements when using the crypto API.
-  See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0)
-  for details.
+  * Users should see performance improvements when using the crypto API. See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) for details.
 * **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Includes improved git support. Summary:
-  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d)
-  [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH
-  URLs always have a valid protocol when stored in `resolved` fields in
-  `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
-  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb)
-  Switch the order in which hosted Git providers are checked to `git:`,
-  `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in
-  an effort to go from most to least likely to succeed, to make for less
-  confusing error message. ([@othiym23](https://github.com/othiym23))
-  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313)
-  [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`:
-  Don't send body with HTTP GET requests when logging in.
-  ([@smikes](https://github.com/smikes))
-  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30)
-  [#7872](https://github.com/npm/npm/issues/7872) Use the new version of
-  `hosted-git-info` to pass along credentials embedded in git URLs. Test it.
-  Test it a lot. ([@othiym23](https://github.com/othiym23))
-  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523)
-  [#7920](https://github.com/npm/npm/issues/7920) Scoped packages with
-  `peerDependencies` were installing the `peerDependencies` into the wrong
-  directory. ([@ewie](https://github.com/ewie))
-  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce)
-  [#7867](https://github.com/npm/npm/issues/7867) Use git shorthand and git
-  URLs as presented by user. Support new `hosted-git-info` shortcut syntax.
-  Save shorthand in `package.json`. Try cloning via `git:`, `git+ssh:`, and
-  `git+https:`, in that order, when supported by the underlying hosting
-  provider. ([@othiym23](https://github.com/othiym23))
+  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH URLs always have a valid protocol when stored in `resolved` fields in `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
+  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Switch the order in which hosted Git providers are checked to `git:`, `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in an effort to go from most to least likely to succeed, to make for less confusing error message. ([@othiym23](https://github.com/othiym23))
+  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: Don't send body with HTTP GET requests when logging in. ([@smikes](https://github.com/smikes))
+  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Use the new version of `hosted-git-info` to pass along credentials embedded in git URLs. Test it. Test it a lot. ([@othiym23](https://github.com/othiym23))
+  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Scoped packages with `peerDependencies` were installing the `peerDependencies` into the wrong directory. ([@ewie](https://github.com/ewie))
+  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Use git shorthand and git URLs as presented by user. Support new `hosted-git-info` shortcut syntax. Save shorthand in `package.json`. Try cloning via `git:`, `git+ssh:`, and `git+https:`, in that order, when supported by the underlying hosting provider. ([@othiym23](https://github.com/othiym23))
 * **src**: Allow multiple arguments to be passed to process.nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
-* **module**: The interaction of `require('.')` with `NODE_PATH` has been restored and deprecated. This functionality
-will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
+* **module**: The interaction of `require('.')` with `NODE_PATH` has been restored and deprecated. This functionality will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
 
 ### Known issues
 
@@ -1486,6 +1472,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`ca8c9ec2c8`](https://github.com/nodejs/node/commit/ca8c9ec2c8)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [#1266](https://github.com/nodejs/node/pull/1266)
 
 <a id="1.7.1"></a>
+
 ## 2015-04-14, Version 1.7.1, @rvagg
 
 ### Notable changes
@@ -1505,6 +1492,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`aee86a21f2`](https://github.com/nodejs/node/commit/aee86a21f2)] - **build**: fix RELEASE check (Rod Vagg) [#1421](https://github.com/nodejs/node/pull/1421)
 
 <a id="1.7.0"></a>
+
 ## 2015-04-14, Version 1.7.0, @rvagg
 
 ### Notable changes
@@ -1566,31 +1554,16 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`372bf83818`](https://github.com/nodejs/node/commit/372bf83818)] - **zlib**: make constants keep readonly (Jackson Tian) [#1361](https://github.com/nodejs/node/pull/1361)
 
 <a id="1.6.4"></a>
+
 ## 2015-04-06, Version 1.6.4, @Fishrock123
 
 ### Notable changes
 
 * **npm**: upgrade npm to 2.7.5. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) for details. Includes two important security fixes. Summary:
-  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312)
-  `tar@2.0.0`: Normalize symbolic links that point to targets outside the
-  extraction root. This prevents packages containing symbolic links from
-  overwriting targets outside the expected paths for a package. Thanks to [Tim
-  Cuthbertson](http://gfxmonk.net/) and the team at [Lift
-  Security](https://liftsecurity.io/) for working with the npm team to identify
-  this issue. ([@othiym23](https://github.com/othiym23))
-  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052)
-  `semver@4.3.2`: Package versions can be no more than 256 characters long.
-  This prevents a situation in which parsing the version number can use
-  exponentially more time and memory to parse, leading to a potential denial of
-  service. Thanks to Adam Baldwin at Lift Security for bringing this to our
-  attention.  ([@isaacs](https://github.com/isaacs))
-  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41)
-  [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that
-  GitHub shortcuts work with private repositories.
-  ([@iarna](https://github.com/iarna))
-  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05)
-  [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when
-  there are paths to fix up. ([@othiym23](https://github.com/othiym23))
+  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalize symbolic links that point to targets outside the extraction root. This prevents packages containing symbolic links from overwriting targets outside the expected paths for a package. Thanks to [Tim Cuthbertson](http://gfxmonk.net/) and the team at [Lift Security](https://liftsecurity.io/) for working with the npm team to identify this issue. ([@othiym23](https://github.com/othiym23))
+  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention.  ([@isaacs](https://github.com/isaacs))
+  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that GitHub shortcuts work with private repositories. ([@iarna](https://github.com/iarna))
+  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when there are paths to fix up. ([@othiym23](https://github.com/othiym23))
 * **openssl**: preliminary work has been done for an upcoming upgrade to OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). See [#589](https://github.com/nodejs/node/issues/589) for additional details.
 * **timers**: a minor memory leak when timers are unreferenced was fixed, alongside some related timers issues [#1330](https://github.com/nodejs/node/pull/1330) (Fedor Indutny). This appears to have fixed the remaining leak reported in [#1075](https://github.com/nodejs/node/issues/1075).
 * **android**: it is now possible to compile io.js for Android and related devices [#1307](https://github.com/nodejs/node/pull/1307) (Giovanny Andres Gongora Granada).
@@ -1644,6 +1617,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`efadffe861`](https://github.com/io.js/io.js/commit/efadffe861)] - **win,node-gyp**: optionally allow node.exe/iojs.exe to be renamed (Bert Belder) [iojs/io.js#1266](https://github.com/nodejs/node/pull/1266)
 
 <a id="1.6.3"></a>
+
 ## 2015-03-31, Version 1.6.3, @rvagg
 
 ### Notable changes
@@ -1713,6 +1687,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`3d46fefe0c`](https://github.com/nodejs/node/commit/3d46fefe0c)] - **win,node-gyp**: allow node.exe/iojs.exe to be renamed (Bert Belder) [#1251](https://github.com/nodejs/node/pull/1251)
 
 <a id="1.6.2"></a>
+
 ## 2015-03-23, Version 1.6.2, @rvagg
 
 ### Notable changes
@@ -1753,6 +1728,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`cf081a4712`](https://github.com/nodejs/node/commit/cf081a4712)] - **vm**: fix crash on fatal error in debug context (Ben Noordhuis) [#1229](https://github.com/nodejs/node/pull/1229)
 
 <a id="1.6.1"></a>
+
 ## 2015-03-20, Version 1.6.1, @rvagg
 
 ### Notable changes
@@ -1778,6 +1754,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`2034137385`](https://github.com/nodejs/node/commit/2034137385)] - **smalloc**: don't mix malloc() and new char\[\] (Ben Noordhuis) [#1205](https://github.com/nodejs/node/pull/1205)
 
 <a id="1.6.0"></a>
+
 ## 2015-03-19, Version 1.6.0, @chrisdickinson
 
 ### Notable changes
@@ -1864,6 +1841,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`8070b1ff99`](https://github.com/nodejs/node/commit/8070b1ff99)] - **buffer**: Don't assign .parent if none exists (Trevor Norris) [#1109](https://github.com/nodejs/node/pull/1109)
 
 <a id="1.5.1"></a>
+
 ## 2015-03-09, Version 1.5.1, @rvagg
 
 ### Notable changes
@@ -1898,6 +1876,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`4bd3620382`](https://github.com/nodejs/node/commit/4bd3620382)] - **url**: remove redundant assignment in url.parse (Alex Kocharin) [#1095](https://github.com/nodejs/node/pull/1095)
 
 <a id="1.5.0"></a>
+
 ## 2015-03-06, Version 1.5.0, @rvagg
 
 ### Notable changes
@@ -1906,31 +1885,12 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * **fs**: `options` object properties in `'fs'` methods no longer perform a `hasOwnProperty()` check, thereby allowing options objects to have prototype properties that apply. (Jonathan Ong) [#635](https://github.com/nodejs/node/pull/635)
 * **tls**: A likely TLS memory leak was reported by PayPal. Some of the recent changes in **stream_wrap** appear to be to blame. The initial fix is in [#1078](https://github.com/nodejs/node/pull/1078), you can track the progress toward closing the leak at [#1075](https://github.com/nodejs/node/issues/1075) (Fedor Indutny).
 * **npm**: Upgrade npm to 2.7.0. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) for details including why this is a semver-minor when it could have been semver-major. Summary:
-  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a)
-    [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the
-    `node-gyp` script bundled with npm by passing the
-    `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version
-    of `node-gyp` modified to work better with io.js without having to touch
-    npm's code!  ([@ackalker](https://github.com/ackalker))
-  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa)
-    [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start`
-    scripts (plus their pre- and post- scripts) when there's no `restart` script
-    defined. This makes it easier to support graceful restarts of services
-    managed by npm.  ([@watilde](https://github.com/watilde) /
-    [@scien](https://github.com/scien))
-  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e)
-    [#2853](https://github.com/npm/npm/issues/2853) Add support for `--dev` and
-    `--prod` to `npm ls`, so that you can list only the trees of production or
-    development dependencies, as desired.
-    ([@watilde](https://github.com/watilde))
-  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4)
-    [#7463](https://github.com/npm/npm/issues/7463) Split the list printed by
-    `npm run-script` into lifecycle scripts and scripts directly invoked via `npm
-    run-script`. ([@watilde](https://github.com/watilde))
-  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b)
-    [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`:
-    Support for passing scopes to `npm init` so packages are initialized as part
-    of that scope / organization / team. ([@watilde](https://github.com/watilde))
+  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the `node-gyp` script bundled with npm by passing the `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version of `node-gyp` modified to work better with io.js without having to touch npm's code!  ([@ackalker](https://github.com/ackalker))
+  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start` scripts (plus their pre- and post- scripts) when there's no `restart` script defined. This makes it easier to support graceful restarts of services managed by npm.  ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
+  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Add support for `--dev` and `--prod` to `npm ls`, so that you can list only the trees of production or development dependencies, as desired. ([@watilde](https://github.com/watilde))
+  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Split the list printed by `npm run-script` into lifecycle scripts and scripts directly invoked via `npm
+run-script`. ([@watilde](https://github.com/watilde))
+  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b) [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`: Support for passing scopes to `npm init` so packages are initialized as part of that scope / organization / team. ([@watilde](https://github.com/watilde))
 * **TC**: Colin Ihrig (@cjihrig) resigned from the TC due to his desire to do more code and fewer meetings.
 
 ### Known issues
@@ -2002,6 +1962,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`abd3ecfbd1`](https://github.com/nodejs/node/commit/abd3ecfbd1)] - **win,test**: fix test-stdin-from-file (Bert Belder) [#1067](https://github.com/nodejs/node/pull/1067)
 
 <a id="1.4.3"></a>
+
 ## 2015-03-02, Version 1.4.3, @rvagg
 
 ### Notable changes
@@ -2030,25 +1991,17 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`2b47fd2eb6`](https://github.com/nodejs/node/commit/2b47fd2eb6)] - **stream_base**: `.writev()` has limited support (Fedor Indutny) [#1008](https://github.com/nodejs/node/pull/1008)
 
 <a id="1.4.2"></a>
+
 ## 2015-02-28, Version 1.4.2, @rvagg
 
 ### Notable changes
 
 * **tls**: A typo introduced in the TLSWrap changes in [#840](https://github.com/nodejs/node/pull/840) only encountered as a bug on Windows was not caught by the io.js CI system due to problems with the Windows build script and the Windows CI configuration, see Known Issues below. Fixed in [#994](https://github.com/nodejs/node/pull/994) & [#1004](https://github.com/nodejs/node/pull/1004). (Fedor Indutny)
 * **npm**: Upgrade npm to 2.6.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary:
-  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76)
-    [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (and only `npm
-    outdated`) now defaults to `--depth=0`. This also has the excellent but unexpected effect of making `npm update -g` work the way almost everyone wants it to. See the [docs for
-    `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth)
-    for the mildly confusing details. ([@smikes](https://github.com/smikes))
-  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e)
-    [#6565](https://github.com/npm/npm/issues/6565) Tweak `peerDependency`
-    deprecation warning to include which peer dependency on which package is
-    going to need to change. ([@othiym23](https://github.com/othiym23))
-  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992)
-    [#7171](https://github.com/npm/npm/issues/7171) Tweak `engineStrict`
-    deprecation warning to include which `package.json` is using it.
-    ([@othiym23](https://github.com/othiym23))
+  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (and only `npm
+outdated`) now defaults to `--depth=0`. This also has the excellent but unexpected effect of making `npm update -g` work the way almost everyone wants it to. See the [docs for `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) for the mildly confusing details. ([@smikes](https://github.com/smikes))
+  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Tweak `peerDependency` deprecation warning to include which peer dependency on which package is going to need to change. ([@othiym23](https://github.com/othiym23))
+  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Tweak `engineStrict` deprecation warning to include which `package.json` is using it. ([@othiym23](https://github.com/othiym23))
 * Add new collaborators:
   - Robert Kowalski ([@robertkowalski](https://github.com/robertkowalski))
   - Christian Vaagland Tellnes ([@tellnes](https://github.com/tellnes))
@@ -2083,6 +2036,7 @@ will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodej
 * [[`755461219d`](https://github.com/nodejs/node/commit/755461219d)] - **tls**: fix typo `handle._reading` => `handle.reading` (Fedor Indutny) [#994](https://github.com/nodejs/node/pull/994)
 
 <a id="1.4.1"></a>
+
 ## 2015-02-26, Version 1.4.1, @rvagg
 
 _Note: version **1.4.0** was tagged and built but not released. A libuv bug was discovered in the process so the release was aborted. The tag was straight after [`a558cd0a61`](https://github.com/nodejs/node/commit/a558cd0a61) but has since been removed. We have jumped to 1.4.1 to avoid confusion._
@@ -2149,6 +2103,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`ed3b057e9f`](https://github.com/nodejs/node/commit/ed3b057e9f)] - **util**: handle symbols properly in format() (cjihrig) [#931](https://github.com/nodejs/node/pull/931)
 
 <a id="1.3.0"></a>
+
 ## 2015-02-20, Version 1.3.0, @rvagg
 
 ### Notable changes
@@ -2216,6 +2171,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . and .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
 
 <a id="1.2.0"></a>
+
 ## 2015-02-10, Version 1.2.0, @rvagg
 
 ### Notable changes
@@ -2233,18 +2189,10 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
   - Lots of doc updates, see individual commits
   - New **Errors** page discussing JavaScript errors, V8 specifics, and io.js specific error details. (@chrisdickinson)
 * **npm** upgrade to 2.5.1, short changelog:
-  - [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x.
-  ([@robertkowalski](https://github.com/robertkowalski))
-  - [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f)
-  [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request
-  settings are copied onto the agent.
-  ([@othiym23](https://github.com/othiym23))
-   - [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39)
-  Allow `--no-proxy` to override `HTTP_PROXY` setting in environment.
-  ([@othiym23](https://github.com/othiym23))
-  - [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e)
-  `npm outdated --long` now includes a column showing the type of dependency.
-  ([@watilde](https://github.com/watilde))
+  - [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
+  - [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request settings are copied onto the agent. ([@othiym23](https://github.com/othiym23))
+   - [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Allow `--no-proxy` to override `HTTP_PROXY` setting in environment. ([@othiym23](https://github.com/othiym23))
+  - [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` now includes a column showing the type of dependency. ([@watilde](https://github.com/watilde))
 * **libuv** upgrade to 1.4.0, see [libuv ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog)
 * Add new collaborators:
   - Aleksey Smolenchuk (@lxe)
@@ -2302,6 +2250,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`4168198`](https://github.com/nodejs/node/commit/41681983921d323da79b6d45e4ae0f8edb541e18)] - doc: add TC meeting 2015-01-28 minutes (Rod Vagg)
 
 <a id="1.1.0"></a>
+
 ## 2015-02-03, Version 1.1.0, @chrisdickinson
 
 ### Notable changes
@@ -2322,8 +2271,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * http.request: inherited properties on options are now respected
 * add iterable interface to buffers (`for (let byte of buffer.values()) { }`)
 * fs: fix fd leak on `fs.createReadStream`. See 497fd72 for details.
-* installer: on Windows, emit WM_SETTINGCHANGE after install to make other running
-  processes aware of the PATH changes.
+* installer: on Windows, emit WM_SETTINGCHANGE after install to make other running processes aware of the PATH changes.
 * Added new collaborators:
   - Vladimir Kurchatkin (@vkurchatkin)
   - Micleușanu Nicu (@micnic)
@@ -2378,7 +2326,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`3cbb5cd`](https://github.com/nodejs/node/commit/3cbb5cdfdb621baec5dc3a2ac505be37f1718086)] - console: allow Object.prototype fields as labels (cjihrig)
 * [[`87e62bd`](https://github.com/nodejs/node/commit/87e62bd4c87e8674e3d1c432506e9b4991784ee2)] - crypto: implement privateEncrypt/publicDecrypt (Fedor Indutny)
 * [[`b50fea4`](https://github.com/nodejs/node/commit/b50fea4d490278b291321e6b96c49cf20bee1552)] - watchdog: fix timeout for early polling return (Saúl Ibarra Corretgé)
-* [[`b5166cb`](https://github.com/nodejs/node/commit/b5166cb7d269cd1bf90d1768f82767b05b9ac1f8)] - benchmark: add bench-(url &amp; events) make targets (Yosuke Furukawa)
+* [[`b5166cb`](https://github.com/nodejs/node/commit/b5166cb7d269cd1bf90d1768f82767b05b9ac1f8)] - benchmark: add bench-(url & events) make targets (Yosuke Furukawa)
 * [[`5843ae8`](https://github.com/nodejs/node/commit/5843ae8dfba5db83f2c04ed2db847049cbd2ab0d)] - Revert "doc: clarify fs.symlink and fs.symlinkSync parameters" (Bert Belder)
 * [[`668bde8`](https://github.com/nodejs/node/commit/668bde8ac0d16382cbc98c904d8b5f55fd9fd9f0)] - win,msi: broadcast WM_SETTINGCHANGE after install (Mathias Küsel)
 * [[`69ce064`](https://github.com/nodejs/node/commit/69ce0641dc6a84c90ffdd0906790cd945f1c3629)] - build: remove artifacts on distclean (Johan Bergström)
@@ -2401,19 +2349,16 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`d1fc9c6`](https://github.com/nodejs/node/commit/d1fc9c6caec68883401fe601d99f3a69fee52556)] - 2015-01-24 io.js v1.0.4 Release (Rod Vagg)
 
 <a id="1.0.4"></a>
+
 ## 2015-01-24, Version 1.0.4, @rvagg
 
 ### Notable changes
 
 * npm upgrade to 2.3.0 fixes Windows "uid is undefined" errors
-* crypto.pseudoRandomBytes() is now an alias for crypto.randomBytes()
-  and will block if there is insufficient entropy to produce secure
-  values. See https://github.com/nodejs/node/commit/e5e5980 for details.
-* Patch for V8 to properly detect ARMv6; binaries now work again on
-  ARMv6 (Raspberry Pi etc.)
+* crypto.pseudoRandomBytes() is now an alias for crypto.randomBytes() and will block if there is insufficient entropy to produce secure values. See https://github.com/nodejs/node/commit/e5e5980 for details.
+* Patch for V8 to properly detect ARMv6; binaries now work again on ARMv6 (Raspberry Pi etc.)
 * Minor V8 upgrade from 4.1.0.7 to 4.1.0.12
-* 'punycode' core module bumped from stability level 2-Unstable,
-  to 3-Stable
+* 'punycode' core module bumped from stability level 2-Unstable, to 3-Stable
 * Added new collaborators:
   - Thorsten Lorenz (@thlorenz)
   - Stephen Belanger (@qard)
@@ -2470,6 +2415,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`86eda17`](https://github.com/nodejs/node/commit/86eda173b16b6ece9712e066661a0ac5db6795e8)] - fs: define constants with const (cjihrig)
 
 <a id="1.0.3"></a>
+
 ## 2015-01-20, Version 1.0.3, @rvagg
 
 ### Notable changes
@@ -2521,6 +2467,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`6242229`](https://github.com/nodejs/node/commit/62422297f52523d2214136cd5514e2453197e3e8)] - tools: add python-gflags module (Shigeki Ohtsu)
 
 <a id="1.0.2"></a>
+
 ## 2015-01-16, Version 1.0.2, @rvagg
 
 ### Notable changes
@@ -2554,6 +2501,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`0c5de1f`](https://github.com/nodejs/node/commit/0c5de1ff813de9661d33cb9aefc4a9540b58b147)] - doc: fix double smalloc example (Mathias Buus)
 
 <a id="1.0.1"></a>
+
 ## 2015-01-14, Version 1.0.1, @rvagg
 
 Rebuild due to stale build worker git reflogs for 1.0.0 release
@@ -2564,11 +2512,7 @@ Rebuild due to stale build worker git reflogs for 1.0.0 release
 --------------------------------------
 
 <a id="1.0.0"></a>
-Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the
-current _stable_ Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest _unstable_
-Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits
-the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node)
-repository and therefore can be seen as an extension to v0.11.
+Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current _stable_ Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest _unstable_ Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node) repository and therefore can be seen as an extension to v0.11.
 
 ## Summary of changes from Node.js v0.10.35 to io.js v1.0.0
 
@@ -2719,39 +2663,26 @@ https://iojs.org/api/smalloc.html
 
 https://iojs.org/api/stream.html
 
-The changes to streams are not as drastic as the transition from streams1 to streams2: they are a
-refinement of existing ideas, and should make the API slightly less surprising for humans and faster
-for computers. As a whole the changes are referred to as "streams3", but the changes should largely go
-unnoticed by the majority of stream consumers and implementers.
+The changes to streams are not as drastic as the transition from streams1 to streams2: they are a refinement of existing ideas, and should make the API slightly less surprising for humans and faster for computers. As a whole the changes are referred to as "streams3", but the changes should largely go unnoticed by the majority of stream consumers and implementers.
 
 #### Readable streams
 
-The distinction between "flowing" and "non-flowing" modes has been refined. Entering "flowing" mode is
-no longer an irreversible operation&mdash;it is possible to return to "non-flowing" mode from "flowing" mode.
-Additionally, the two modes now flow through the same machinery instead of replacing methods. Any time
-data is returned as a result of a `.read` call that data will *also* be emitted on the `"data"` event.
+The distinction between "flowing" and "non-flowing" modes has been refined. Entering "flowing" mode is no longer an irreversible operation&mdash;it is possible to return to "non-flowing" mode from "flowing" mode. Additionally, the two modes now flow through the same machinery instead of replacing methods. Any time data is returned as a result of a `.read` call that data will *also* be emitted on the `"data"` event.
 
-As before, adding a listener for the `"readable"` or `"data"` event will start flowing the stream; as
-will piping to another stream.
+As before, adding a listener for the `"readable"` or `"data"` event will start flowing the stream; as will piping to another stream.
 
 #### Writable streams
 
-The ability to "bulk write" to underlying resources has been added to `Writable` streams. For stream
-implementers, one can signal that a stream is bulk-writable by specifying a [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback) method.
-Bulk writes will occur in two situations:
+The ability to "bulk write" to underlying resources has been added to `Writable` streams. For stream implementers, one can signal that a stream is bulk-writable by specifying a [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback) method. Bulk writes will occur in two situations:
 
 1. When a bulk-writable stream is clearing its backlog of buffered write requests,
 2. or if an end user has made use of the new `.cork()` and `.uncork()` API methods.
 
-`.cork` and `.uncork` allow the end user to control the buffering behavior of writable streams separate
-from exerting backpressure. `.cork` indicates that the stream should accept new writes (up to `highWaterMark`),
-while `.uncork` resets that behavior and attempts to bulk-write all buffered writes to the underlying resource.
+`.cork` and `.uncork` allow the end user to control the buffering behavior of writable streams separate from exerting backpressure. `.cork` indicates that the stream should accept new writes (up to `highWaterMark`), while `.uncork` resets that behavior and attempts to bulk-write all buffered writes to the underlying resource.
 
 The only core stream API that **currently** implements `_writev` is `net.Socket`.
 
-In addition to the bulk-write changes, the performance of repeated small writes to non-bulk-writable streams
-(such as `fs.WriteStream`) has been drastically improved. Users piping high volume log streams to disk should
-see an improvement.
+In addition to the bulk-write changes, the performance of repeated small writes to non-bulk-writable streams (such as `fs.WriteStream`) has been drastically improved. Users piping high volume log streams to disk should see an improvement.
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 

@@ -1,8 +1,6 @@
-# Punycode
-
+# 퓨니코드
 <!-- YAML
 changes:
-
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7941
     description: Accessing this module will now emit a deprecation warning.
@@ -27,7 +25,6 @@ The `punycode` module provides a simple implementation of the Punycode standard.
 *Note*: The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://mths.be/punycode) project.
 
 ## punycode.decode(string)
-
 <!-- YAML
 added: v0.5.1
 -->
@@ -42,7 +39,6 @@ punycode.decode('--dqo34k'); // '☃-⌘'
 ```
 
 ## punycode.encode(string)
-
 <!-- YAML
 added: v0.5.1
 -->
@@ -57,7 +53,6 @@ punycode.encode('☃-⌘'); // '--dqo34k'
 ```
 
 ## punycode.toASCII(domain)
-
 <!-- YAML
 added: v0.6.1
 -->
@@ -74,7 +69,6 @@ punycode.toASCII('example.com'); // 'example.com'
 ```
 
 ## punycode.toUnicode(domain)
-
 <!-- YAML
 added: v0.6.1
 -->
@@ -91,13 +85,11 @@ punycode.toUnicode('example.com');       // 'example.com'
 ```
 
 ## punycode.ucs2
-
 <!-- YAML
 added: v0.7.0
 -->
 
 ### punycode.ucs2.decode(string)
-
 <!-- YAML
 added: v0.7.0
 -->
@@ -113,7 +105,6 @@ punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
 ### punycode.ucs2.encode(codePoints)
-
 <!-- YAML
 added: v0.7.0
 -->
@@ -128,7 +119,6 @@ punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
 ```
 
 ## punycode.version
-
 <!-- YAML
 added: v0.6.1
 -->

@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stable
 
-The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. It can be accessed using:
+Il modulo `string_decoder` fornisce un API per la decodifica dei `Buffer` object nelle stringhe in modo da preservare i caratteri UTF-8 e UTF-16 multi-byte codificati. Ci si può accedere utilizzando:
 
 ```js
 const { StringDecoder } = require('string_decoder');
 ```
 
-The following example shows the basic use of the `StringDecoder` class.
+L'esempio seguente mostra l'uso di base della `StringDecoder` class.
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -23,9 +23,9 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
+Quando un'istanza `Buffer` viene scritta nell'istanza `StringDecoder`, un buffer interno viene utilizzato per garantire che la stringa decodificata non contenga caratteri multibyte incompleti. Questi vengono mantenuti nel buffer fino alla chiamata successiva a `stringDecoder.write()` o finché viene chiamato `stringDecoder.end()`.
 
-In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
+Nell'esempio seguente, i tre byte codificati UTF-8 del simbolo dell'euro europeo (`€`) sono scritti su tre operazioni separate:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -37,39 +37,35 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
 ## Class: new StringDecoder([encoding])
-
 <!-- YAML
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. Defaults to `'utf8'`.
+* `encoding`{string} La codifica del carattere che verrà usata da `StringDecoder`. **Default:** `'utf8'`.
 
-Creates a new `StringDecoder` instance.
+Crea una nuova istanza `StringDecoder`.
 
 ### stringDecoder.end([buffer])
-
 <!-- YAML
 added: v0.9.3
 -->
 
-* `buffer` {Buffer} A `Buffer` containing the bytes to decode.
+* `buffer` {Buffer} Un `Buffer` contenente i byte da decodificare.
 
-Returns any remaining input stored in the internal buffer as a string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
+Restituisce qualsiasi restante input memorizzato nel buffer interno come una stringa. I byte che rappresentano caratteri UTF-8 e UTF-16 incompleti verranno sostituiti con caratteri sostitutivi appropriati per la codifica dei caratteri.
 
-If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
+Se viene fornito l'argomento `buffer`, viene eseguita una chiamata finale a `stringDecoder.write()` prima di restituire l'input rimanente.
 
 ### stringDecoder.write(buffer)
-
 <!-- YAML
 added: v0.1.99
 changes:
-
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement
                  character instead of one for each individual byte.
 -->
 
-* `buffer` {Buffer} A `Buffer` containing the bytes to decode.
+* `buffer` {Buffer} Un `Buffer` contenente i byte da decodificare.
 
-Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the `Buffer` are omitted from the returned string and stored in an internal buffer for the next call to `stringDecoder.write()` or `stringDecoder.end()`.
+Restituisce una stringa decodificata, assicurando che eventuali caratteri multibyte incompleti alla fine del `Buffer` vengano omessi dalla stringa restituita e memorizzati in un buffer interno per la successiva chiamata a `stringDecoder.write()` o `stringDecoder.end()`.

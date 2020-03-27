@@ -11,8 +11,7 @@
 * `test`
 * `tools`
 
-There may be more than one subsystem valid for any particular issue or pull
-request.
+There may be more than one subsystem valid for any particular issue or pull request.
 
 ### General
 
@@ -25,15 +24,11 @@ request.
 --
 
 * `semver-{minor,major}`
-  * be conservative – that is, if a change has the remote *chance* of breaking
-    something, go for semver-major
+  * be conservative – that is, if a change has the remote *chance* of breaking something, go for semver-major
   * when adding a semver label, add a comment explaining why you're adding it
-  * minor vs. patch: roughly: "does it add a new method / does it add a new
-    section to the docs"
-  * major vs. everything else: run last versions tests against this version, if
-    they pass, **probably** minor or patch
-  * A breaking change helper
-    ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)):
+  * minor vs. patch: roughly: "does it add a new method / does it add a new section to the docs"
+  * major vs. everything else: run last versions tests against this version, if they pass, **probably** minor or patch
+  * A breaking change helper ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)):
   ```sh
   SHOW=$(git show-ref -d $(git describe --abbrev=0) | tail -n1 | awk '{print $1}')
   git checkout $(git show -s --pretty='%T' $SHOW) -- test
@@ -49,31 +44,23 @@ We use labels to keep track of which branches a commit should land on:
   * Also used when the work of backporting a change outweighs the benefits
 * `land-on-v?.x`
   * Used by releasers to mark a PR as scheduled for inclusion in an LTS release
-  * Applied to the original PR for clean cherry-picks, to the backport PR
-    otherwise
+  * Applied to the original PR for clean cherry-picks, to the backport PR otherwise
 * `backport-requested-v?.x`
-  * Used to indicate that a PR needs a manual backport to a branch in order to
-    land the changes on that branch
-  * Typically applied by a releaser when the PR does not apply cleanly or it
-    breaks the tests after applying
+  * Used to indicate that a PR needs a manual backport to a branch in order to land the changes on that branch
+  * Typically applied by a releaser when the PR does not apply cleanly or it breaks the tests after applying
   * Will be replaced by either `dont-land-on-v?.x` or `backported-to-v?.x`
 * `backported-to-v?.x`
   * Applied to PRs for which a backport PR has been merged
 * `lts-watch-v?.x`
-  * Applied to PRs which the LTS working group should consider including in a
-    LTS release
-  * Does not indicate that any specific action will be taken, but can be
-    effective as messaging to non-collaborators
+  * Applied to PRs which the LTS working group should consider including in a LTS release
+  * Does not indicate that any specific action will be taken, but can be effective as messaging to non-collaborators
 * `lts-agenda`
   * For things that need discussion by the LTS working group
-  * (for example semver-minor changes that need or should go into an LTS
-    release)
+  * (for example semver-minor changes that need or should go into an LTS release)
 * `v?.x`
-  * Automatically applied to changes that do not target `master` but rather the
-    `v?.x-staging` branch
+  * Automatically applied to changes that do not target `master` but rather the `v?.x-staging` branch
 
-Once a release line enters maintenance mode, the corresponding labels do not
-need to be attached anymore, as only important bugfixes will be included.
+Once a release line enters maintenance mode, the corresponding labels do not need to be attached anymore, as only important bugfixes will be included.
 
 ### Other Labels
 

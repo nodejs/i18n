@@ -3,8 +3,7 @@
 <!--introduced_in=v5.9.1-->
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in
-debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
@@ -17,9 +16,9 @@ To view this documentation as a manual page in a terminal, run `man node`.
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL][].
+Execute without arguments to start the [REPL](repl.html).
 
-_For more info about `node debug`, please see the [debugger][] documentation._
+_For more info about `node debug`, please see the [debugger](debugger.html) documentation._
 
 
 ## Options
@@ -37,8 +36,7 @@ Print node's version.
 added: v0.1.3
 -->
 
-Print node command line options.
-The output of this option is less detailed than this document.
+Print node command line options. The output of this option is less detailed than this document.
 
 
 ### `-e`, `--eval "script"`
@@ -50,12 +48,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are
-predefined in the REPL can also be used in `script`.
+Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
 
-*Note*: On Windows, using `cmd.exe` a single quote will not work correctly
-because it only recognizes double `"` for quoting. In Powershell or
-Git bash, both `'` and `"` are usable.
+*Note*: On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
 
 ### `-p`, `--print "script"`
@@ -95,8 +90,7 @@ added: v1.6.0
 
 Preload the specified module at startup.
 
-Follows `require()`'s module resolution
-rules. `module` may be either a path to a file, or a node module name.
+Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
 
 
 ### `--inspect[=[host:]port]`
@@ -106,9 +100,7 @@ added: v6.3.0
 
 Activate inspector on host:port. Default is 127.0.0.1:9229.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug
-and profile Node.js instances. The tools attach to Node.js instances via a
-tcp port and communicate using the [Chrome Debugging Protocol][].
+V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
 
 
 ### `--inspect-brk[=[host:]port]`
@@ -116,8 +108,7 @@ tcp port and communicate using the [Chrome Debugging Protocol][].
 added: v7.6.0
 -->
 
-Activate inspector on host:port and break at start of user script.
-Default host:port is 127.0.0.1:9229.
+Activate inspector on host:port and break at start of user script. Default host:port is 127.0.0.1:9229.
 
 
 ### `--inspect-port=[host:]port`
@@ -125,8 +116,7 @@ Default host:port is 127.0.0.1:9229.
 added: v7.6.0
 -->
 
-Set the host:port to be used when the inspector is activated.
-Useful when activating the inspector by sending the `SIGUSR1` signal.
+Set the host:port to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
 
 Default host is 127.0.0.1.
 
@@ -161,12 +151,7 @@ added: v8.0.0
 
 Emit pending deprecation warnings.
 
-*Note*: Pending deprecations are generally identical to a runtime deprecation
-with the notable exception that they are turned *off* by default and will not
-be emitted unless either the `--pending-deprecation` command line flag, or the
-`NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations
-are used to provide a kind of selective "early warning" mechanism that
-developers may leverage to detect deprecated API usage.
+*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `--no-warnings`
 <!-- YAML
@@ -187,8 +172,7 @@ Enable the experimental `'http2'` module.
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem
-analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
 ### `--trace-warnings`
 <!-- YAML
@@ -202,26 +186,21 @@ Print stack traces for process warnings (including deprecations).
 added: v8.0.0
 -->
 
-Write process warnings to the given file instead of printing to stderr. The
-file will be created if it does not exist, and will be appended to if it does.
-If an error occurs while attempting to write the warning to the file, the
-warning will be written to stderr instead.
+Write process warnings to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
 
 ### `--trace-sync-io`
 <!-- YAML
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn
-of the event loop.
+Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
 
 ### `--force-async-hooks-checks`
 <!-- YAML
 added: v8.8.0
 -->
 
-Enables runtime checks for `async_hooks`. These can also be enabled dynamically
-by enabling one of the `async_hooks` hooks.
+Enables runtime checks for `async_hooks`. These can also be enabled dynamically by enabling one of the `async_hooks` hooks.
 
 ### `--trace-events-enabled`
 <!-- YAML
@@ -235,24 +214,21 @@ Enables the collection of trace event tracing information.
 added: v7.7.0
 -->
 
-A comma separated list of categories that should be traced when trace event
-tracing is enabled using `--trace-events-enabled`.
+A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
 ### `--trace-event-file-pattern`
 <!-- YAML
 added: v8.12.0
 -->
 
-Template string specifying the filepath for the trace event data, it
-supports `${rotation}` and `${pid}`.
+Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
 
 ### `--zero-fill-buffers`
 <!-- YAML
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [Buffer][] and [SlowBuffer][]
-instances.
+Automatically zero-fills all newly allocated [Buffer](buffer.html#buffer_buffer) and [SlowBuffer](buffer.html#buffer_class_slowbuffer) instances.
 
 
 ### `--preserve-symlinks`
@@ -260,16 +236,9 @@ instances.
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and
-caching modules.
+Instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-By default, when Node.js loads a module from a path that is symbolically linked
-to a different on-disk location, Node.js will dereference the link and use the
-actual on-disk "real path" of the module as both an identifier and as a root
-path to locate other dependency modules. In most cases, this default behavior
-is acceptable. However, when using symbolically linked peer dependencies, as
-illustrated in the example below, the default behavior causes an exception to
-be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
 
 ```text
 {appDir}
@@ -285,15 +254,9 @@ be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the
-symlink path for modules as opposed to the real path, allowing symbolically
-linked peer dependencies to be found.
+The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
 
-Note, however, that using `--preserve-symlinks` can have other side effects.
-Specifically, symbolically linked *native* modules can fail to load if those
-are linked from more than one location in the dependency tree (Node.js would
-see those as two separate modules and would attempt to load the module multiple
-times, causing an exception to be thrown).
+Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
 
 ### `--track-heap-objects`
 <!-- YAML
@@ -318,8 +281,7 @@ added: v0.1.3
 
 Print V8 command line options.
 
-*Note*: V8 options allow words to be separated by both dashes (`-`) or
-underscores (`_`).
+*Note*: V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
 
 For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 
@@ -328,8 +290,7 @@ For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. (Requires Node.js to be built
-with crypto support. (Default))
+Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
 
 
 ### `--enable-fips`
@@ -337,8 +298,7 @@ with crypto support. (Default))
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with
-`./configure --openssl-fips`)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`)
 
 
 ### `--force-fips`
@@ -346,8 +306,7 @@ Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.)
-(Same requirements as `--enable-fips`)
+Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`)
 
 
 ### `--openssl-config=file`
@@ -355,26 +314,18 @@ Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.)
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be
-used to enable FIPS-compliant crypto if Node.js is built with
-`./configure --openssl-fips`.
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--use-openssl-ca`, `--use-bundled-ca`
 <!-- YAML
 added: v7.5.0
 -->
 
-Use OpenSSL's default CA store or use bundled Mozilla CA store as supplied by
-current Node.js version. The default store is selectable at build-time.
+Use OpenSSL's default CA store or use bundled Mozilla CA store as supplied by current Node.js version. The default store is selectable at build-time.
 
-Using OpenSSL store allows for external modifications of the store. For most
-Linux and BSD distributions, this store is maintained by the distribution
-maintainers and system administrators. OpenSSL CA store location is dependent on
-configuration of the OpenSSL library but this can be altered at runtime using
-environment variables.
+Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store
-that is fixed at release time. It is identical on all supported platforms.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
 
 See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 
@@ -391,9 +342,7 @@ Specify ICU data load path. (overrides `NODE_ICU_DATA`)
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities,
-meaning that the script will be read from stdin, and the rest of the options
-are passed to that script.
+Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
 
 ### `--`
@@ -401,9 +350,7 @@ are passed to that script.
 added: v7.5.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script.
-If no script filename or eval/print script is supplied prior to this, then
-the next argument will be used as a script filename.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--max-http-header-size=size`
 <!-- YAML
@@ -445,8 +392,7 @@ When set to `1` colors will not be used in the REPL.
 added: v0.11.15
 -->
 
-Data path for ICU (Intl object) data. Will extend linked-in data when compiled
-with small-icu support.
+Data path for ICU (Intl object) data. Will extend linked-in data when compiled with small-icu support.
 
 ### `NODE_NO_WARNINGS=1`
 <!-- YAML
@@ -467,10 +413,7 @@ When set to `1`, the `http2` module is suppressed.
 added: v8.0.0
 -->
 
-A space-separated list of command line options. `options...` are interpreted as
-if they had been specified on the command line before the actual command line
-(so they can be overridden). Node will exit with an error if an option that is
-not allowed in the environment is used, such as `-p` or a script file.
+A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
 Node.js options that are allowed are:
 - `--enable-fips`
@@ -513,29 +456,21 @@ added: v8.0.0
 
 When set to `1`, emit pending deprecation warnings.
 
-*Note*: Pending deprecations are generally identical to a runtime deprecation
-with the notable exception that they are turned *off* by default and will not
-be emitted unless either the `--pending-deprecation` command line flag, or the
-`NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations
-are used to provide a kind of selective "early warning" mechanism that
-developers may leverage to detect deprecated API usage.
+*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 <!-- YAML
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when
-resolving and caching modules.
+When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
 ### `NODE_REPL_HISTORY=file`
 <!-- YAML
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is
-`~/.node_repl_history`, which is overridden by this variable. Setting the value
-to an empty string (`''` or `' '`) disables persistent REPL history.
+Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 
 ### `NODE_EXTRA_CA_CERTS=file`
@@ -543,91 +478,56 @@ to an empty string (`''` or `' '`) disables persistent REPL history.
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the
-extra certificates in `file`. The file should consist of one or more trusted
-certificates in PEM format. A message will be emitted (once) with
-[`process.emitWarning()`][emit_warning] if the file is missing or
-malformed, but any errors are otherwise ignored.
+When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
 
-Note that neither the well known nor extra certificates are used when the `ca`
-options property is explicitly specified for a TLS or HTTPS client or server.
+Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
 
 ### `OPENSSL_CONF=file`
 <!-- YAML
 added: v7.7.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be
-used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment
-variable is ignored.
+If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
 
 ### `SSL_CERT_DIR=dir`
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory
-containing trusted certificates.
+If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
 
-*Note*: Be aware that unless the child environment is explicitly set, this
-environment variable will be inherited by any child processes, and if they use
-OpenSSL, it may cause them to trust the same CAs as node.
+*Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `SSL_CERT_FILE=file`
 <!-- YAML
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file
-containing trusted certificates.
+If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
 
-*Note*: Be aware that unless the child environment is explicitly set, this
-environment variable will be inherited by any child processes, and if they use
-OpenSSL, it may cause them to trust the same CAs as node.
+*Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `NODE_REDIRECT_WARNINGS=file`
 <!-- YAML
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of
-printing to stderr. The file will be created if it does not exist, and will be
-appended to if it does. If an error occurs while attempting to write the
-warning to the file, the warning will be written to stderr instead. This is
-equivalent to using the `--redirect-warnings=file` command-line flag.
+When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they
-do not exist, libuv's threadpool is used to create asynchronous node APIs based
-on synchronous system APIs. Node.js APIs that use the threadpool are:
+Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. Node.js APIs that use the threadpool are:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly
-  synchronous
+- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
 - `crypto.pbkdf2()`
 - `crypto.randomBytes()`, unless it is used without a callback
 - `crypto.randomFill()`
 - `dns.lookup()`
 - all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever
-reason any of these APIs takes a long time, other (seemingly unrelated) APIs
-that run in libuv's threadpool will experience degraded performance. In order to
-mitigate this issue, one potential solution is to increase the size of libuv's
-threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value
-greater than `4` (its current default value). For more information, see the
-[libuv threadpool documentation][].
-
-[`--openssl-config`]: #cli_openssl_config_file
-[Buffer]: buffer.html#buffer_buffer
-[Chrome Debugging Protocol]: https://chromedevtools.github.io/debugger-protocol-viewer
-[REPL]: repl.html
-[SlowBuffer]: buffer.html#buffer_class_slowbuffer
-[debugger]: debugger.html
-[emit_warning]: process.html#process_process_emitwarning_warning_type_code_ctor
-[libuv threadpool documentation]: http://docs.libuv.org/en/latest/threadpool.html
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).

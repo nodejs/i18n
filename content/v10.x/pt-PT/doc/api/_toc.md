@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): se mover este arquivo, tenha a certeza de o atualizar @// tools/doc/html.js para apontar para o novo local.
+@// NB(chrisdickinson): se mover este ficheiro, tenha a certeza de o atualizar @// tools/doc/html.js para apontar para o novo local.
 
 <!--introduced_in=v0.10.0-->
 
@@ -24,7 +24,7 @@
 * [Módulos ECMAScript](esm.html)
 * [Erros](errors.html)
 * [Eventos](events.html)
-* [Sistema de Arquivos](fs.html)
+* [Sistema de Ficheiros](fs.html)
 * [Globais](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
@@ -52,9 +52,10 @@
 * [Utilitários](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [GitHub Repo & Rastreador de Problema](https://github.com/nodejs/node)
+* [Repositório no GitHub & Rastreador de Problema](https://github.com/nodejs/node)
 * [Lista de Mensagens](https://groups.google.com/group/nodejs)

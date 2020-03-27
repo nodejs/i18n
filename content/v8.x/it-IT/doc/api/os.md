@@ -2,76 +2,69 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. It can be accessed using:
+Il modulo `os` fornisce un numero di metodi di utilità relativi al sistema operativo. Ci si può accedere utilizzando:
 
 ```js
 const os = require('os');
 ```
 
 ## os.EOL
-
 <!-- YAML
 added: v0.7.8
 -->
 
 * {string}
 
-A string constant defining the operating system-specific end-of-line marker:
+Una costante di stringa che definisce il marker di fine riga specifico del sistema operativo:
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` su POSIX
+* `\r\n` su Windows
 
 ## os.arch()
-
 <!-- YAML
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Restituisce: {string}
 
-The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+Il metodo `os.arch()` restituisce una stringa che identifica l'architettura della CPU del sistema operativo per la quale è stato compilato il binario Node.js.
 
-The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+I possibili valori correnti sono: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` e `'x64'`.
 
-Equivalent to [`process.arch`][].
+Equivalente a [`process.arch`][].
 
 ## os.constants
-
 <!-- YAML
 added: v6.3.0
 -->
 
 * {Object}
 
-Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
+Restituisce un object contenente costanti specifiche del sistema operativo comunemente utilizzate per i codici di errore, segnali di processo e così via. Le costanti specifiche attualmente definite sono descritte nelle [OS Costants](#os_os_constants_1).
 
 ## os.cpus()
-
 <!-- YAML
 added: v0.3.3
 -->
 
-* Returns: {Array}
+* Restituisce: {Array}
 
-The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
+Il metodo `os.cpus()` restituisce un array degli object contenenti informazioni riguardo a ciascun core della CPU logica.
 
-The properties included on each object include:
+Le proprietà incluse in ogni oggetto includono:
 
 * `model` {string}
 * `speed` {number} (in MHz)
-* `times` {Object} 
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
-  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
-  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
-  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+* `times` {Object}
+  * `user` {number} Il numero di millisecondi che la CPU ha speso in modalità utente.
+  * `nice` {number} Il numero di millisecondi che la CPU ha speso nella modalità nice.
+  * `sys` {number} Il numero di millisecondi che la CPU ha speso nella modalità sys.
+  * `idle` {number} Il numero di millisecondi che la CPU ha speso nella modalità idle.
+  * `irq` {number} Il numero di millisecondi che la CPU ha speso nella modalità irq.
 
-For example:
-
-<!-- eslint-disable semi -->
-
+Per esempio:
 ```js
 [
   {
@@ -167,89 +160,65 @@ For example:
 
 *Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()
-
-<!-- YAML
+## os.endianness()<!-- YAML
 added: v0.9.4
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
+Il metodo`os.endianness()` restituisce una stringa che identifica l'endianness (l'ordine dei byte) della CPU *per la quale il binario Node.js è stato compilato*.
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+I valori possibili sono:
 
-Possible values are:
+* `'BE'` per big endian
+* `'LE'` per little endian.
 
-* `'BE'` for big endian
-* `'LE'` for little endian.
-
-## os.freemem()
-
-<!-- YAML
+## os.freemem()<!-- YAML
 added: v0.3.3
--->
+-->* Restituisce: {integer}
 
-* Returns: {integer}
+Il metodo `os.freemem()` restituisce la quantità di memoria di sistema libera in byte come un numero intero.
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
-
-## os.homedir()
-
-<!-- YAML
+## os.homedir()<!-- YAML
 added: v2.3.0
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
+Il metodo `os.homedir()` restituisce la directory home dell'utente corrente come una stringa.
 
-The `os.homedir()` method returns the home directory of the current user as a string.
-
-## os.hostname()
-
-<!-- YAML
+## os.hostname()<!-- YAML
 added: v0.3.3
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
-
-The `os.hostname()` method returns the hostname of the operating system as a string.
+Il metodo `os.hostname()` restituisce l'hostname del sistema operativo come una stringa.
 
 ## os.loadavg()
-
 <!-- YAML
 added: v0.3.3
 -->
 
-* Returns: {Array}
+* Restituisce: {Array}
 
-The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
+Il metodo `os.loadavg()` restituisce un array contenente le medie di caricamento di 1, 5 e 15 minuti.
 
-The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+La media di caricamento è una misura dell'attività del sistema, calcolata dal sistema operativo ed espressa come un numero frazionario. Come regola generale, la media di caricamento dovrebbe idealmente essere inferiore al numero di CPU logiche nel sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+La media del caricamento è un concetto specifico UNIX con nessun equivalente reale sulle piattaforme Windows. Su Windows, il valore di ritorno è sempre `[0, 0, 0]`.
 
-## os.networkInterfaces()
-
-<!-- YAML
+## os.networkInterfaces()<!-- YAML
 added: v0.6.0
--->
+-->* Restituisce: {Object}
 
-* Returns: {Object}
+Il metodo `os.networkInterfaces()` restituisce un object contenente solo le interfacce di rete a cui è stato assegnato un indirizzo di rete.
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+Ogni chiave sull'oggetto restituito identifica un'interfaccia di rete. Il valore associato è un array degli object che descrivono, ognuno, un indirizzo di rete assegnato.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Le proprietà disponibili sull'object dell'indirizzo di rete assegnato includono:
 
-The properties available on the assigned network address object include:
-
-* `address` {string} The assigned IPv4 or IPv6 address
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
-* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
-
-<!-- eslint-skip -->
-
+* `address` {string} L'indirizzo IPv4 o IPv6 assegnato
+* `netmask` {string} La maschera di rete IPv4 o IPv6
+* `family` {string} O `IPv4` oppure `IPv6`
+* `mac` {string} L'indirizzo MAC dell'interfaccia di rete
+* `internal` {boolean} `true` se l'interfaccia di rete è un loopback o un'interfaccia simile che non è accessibile da remoto; altrimenti`false`
+* `scopeid` {number} L'ID di scope IPv6 numerico (specificato solo quando`family` è `IPv6`)
+* `cidr` {string} L'indirizzo IPv4 o IPv6 assegnato con il prefisso di routing nella notazione CIDR. Se la `netmask` non è valida, questa proprietà è impostata su `null`
 ```js
 {
   lo: [
@@ -291,17 +260,13 @@ The properties available on the assigned network address object include:
 }
 ```
 
-## os.platform()
-
-<!-- YAML
+## os.platform()<!-- YAML
 added: v0.5.0
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
+Il metodo `os.platform()` restituisce una stringa che identifica la piattaforma del sistema operativo impostata durante il tempo di compilazione di Node.js.
 
-The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
-
-Currently possible values are:
+I valori attualmente possibili sono:
 
 * `'aix'`
 * `'darwin'`
@@ -311,786 +276,745 @@ Currently possible values are:
 * `'sunos'`
 * `'win32'`
 
-Equivalent to [`process.platform`][].
+Equivalente a [`process.platform`][].
 
-*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered to be experimental at this time.
+*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. Tuttavia, al momento, il supporto Android in Node.js è considerato [come sperimentale](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
-## os.release()
-
-<!-- YAML
+## os.release()<!-- YAML
 added: v0.3.3
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
+Il metodo `os.release()` restituisce una stringa che identifica la versione del sistema operativo.
 
-The `os.release()` method returns a string identifying the operating system release.
+*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). Su Windows, viene utilizzata `GetVersionExW()`. Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni.
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
-
-## os.tmpdir()
-
-<!-- YAML
+## os.tmpdir()<!-- YAML
 added: v0.9.9
 changes:
-
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
-
-The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
+Il metodo `os.tmpdir()` restituisce una stringa che specifica la directory predefinita del sistema operativo per i file temporanei.
 
 ## os.totalmem()
-
 <!-- YAML
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
+Il metodo `os.totalmem()` restituisce la quantità totale di memoria di sistema in byte come un numero intero.
 
-## os.type()
-
-<!-- YAML
+## os.type()<!-- YAML
 added: v0.3.3
--->
+-->* Restituisce: {string}
 
-* Returns: {string}
+Il metodo `os.type()` restituisce una stringa che identifica il nome del sistema operativo restituito da [uname(3)](https://linux.die.net/man/3/uname). Per esempio su linux `'Linux'`, su macOS `'Darwin'` e su Windows `'Windows_NT'`.
 
-The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
-
-Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
+Si prega di consultare https://en.wikipedia.org/wiki/Uname#Examples per ulteriori informazioni sull'output dell'esecuzione di [uname(3)](https://linux.die.net/man/3/uname) su vari sistemi operativi.
 
 ## os.uptime()
-
 <!-- YAML
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Restituisce: {integer}
 
-The `os.uptime()` method returns the system uptime in number of seconds.
+Il metodo `os.uptime()` restituisce il tempo di attività del sistema in un numero di secondi.
 
 *Note*: On Windows the returned value includes fractions of a second. Use `Math.floor()` to get whole seconds.
 
-## os.userInfo([options])
-
-<!-- YAML
+## os.userInfo([options])<!-- YAML
 added: v6.0.0
--->
+-->* `options` {Object}
+  * `encoding` {string} Codifica dei caratteri utilizzata per interpretare le stringhe risultanti. Se l'`encoding` è impostato su `'buffer'`, i valori `username`, `shell` e `homedir` diverranno istanze del `Buffer`. **Default:** `'utf8'`.
+* Restituisce: {Object}
 
-* `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`
-* Returns: {Object}
+Il metodo `os.userInfo()` restituisce informazioni sull'utente attualmente efficace - sulle piattaforme POSIX, questo è solitamente un sottoinsieme del file delle password. L'oggetto restituito include `username`, `uid`, `gid`, `shell` e `homedir`. Su Windows, i campi `uid` e `gid` sono `-1` e `shell` è `null`.
 
-The `os.userInfo()` method returns information about the currently effective user -- on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+Il valore di `homedir` restituito da `os.userInfo()` è fornito dal sistema operativo. Questo differisce dal risultato di `os.homedir()`, il quale esegue il query di diverse variabili d'ambiente per la home directory prima di ritornare alla risposta del sistema operativo.
 
-The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
+## Constanti del SO
 
-## OS Constants
-
-The following constants are exported by `os.constants`.
+Le seguenti costante vengono esportate da `os.constants`.
 
 *Note*: Not all constants will be available on every operating system.
 
-### Signal Constants
-
-<!-- YAML
+### Costanti di Segnale<!-- YAML
 changes:
-
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->
-
-The following signal constants are exported by `os.constants.signals`:
+-->Le seguenti costanti di segnale vengono esportate da `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Sent to indicate when a controlling terminal is closed or a parent
-    process exits.</td>
+    <td>Inviato per segnalare quando un terminale di controllo è chiuso o un parent    process si chiude.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process
-    (`(Ctrl+C)`).</td>
+    <td>Inviato per segnalare quando un utente desidera interrompere un processo    (`(Ctrl + C)`).</td>
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Sent to indicate when a user wishes to terminate a process and perform a
-    core dump.</td>
+    <td>Inviato per segnalare quando un utente desidera terminare un processo ed eseguire un    core dump.</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Sent to a process to notify that it has attempted to perform an illegal,
-    malformed, unknown, or privileged instruction.</td>
+    <td>Inviato a un processo per notificare che si è tentato di eseguire un'istruzione illegale, non corretta, sconosciuta o privilegiata.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>Inviato a un processo quando si è verificata un'eccezione.</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>Inviato a un processo per richiedere l'annullamento.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td>Sinonimo per <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>Inviato a un processo per notificare che ha causato un errore del bus.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>Inviato a un processo per notificare che ha eseguito     un'operazione aritmetica non consentita.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>Inviato a un processo per terminarlo immediatamente.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>Inviato a un processo per identificare le condizioni definite dall'utente.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>Inviato a un processo per notificare un errore di segmentazione.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>Inviato a un processo quando ha tentato di scrivere su una pipe    disconnessa.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>Inviato a un processo quando trascorre un timer di sistema.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>Inviato a un processo per richiedere la cessazione.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>Inviato a un processo quando termina un child process.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>Inviato a un processo per segnalare un errore di stack su un coprocessore.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>Inviato per dare istruzioni al sistema operativo di continuare un processo in sospeso.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>Inviato per dare istruzioni al sistema operativo di interrompere un processo.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>Inviato a un processo per richiedergli di fermarsi.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>Inviato per indicare quando un utente desidera interrompere un processo.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>Inviato a un processo quando legge dal TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>Inviato a un processo quando scrive sulla TTY mentre è in    background.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>Inviato a un processo quando un socket ha dati urgenti da leggere.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>Inviato a un processo quando ha superato il limite di utilizzo della CPU.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>Inviato a un processo quando cresce un file più grande del massimo    consentito.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>Inviato a un processo quando è trascorso un timer virtuale.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>Inviato a un processo quando è trascorso un timer di sistema.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>Inviato a un processo quando il terminale di controllo ha cambiato le sue dimensioni.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Sent to a process when I/O is available.</td>
+    <td>Inviato a un processo quando I/O è disponibile.</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Synonym for <code>SIGIO</code></td>
+    <td>Sinonimo per <code>SIGIO</code></td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Sent to a process when a file lock has been lost.</td>
+    <td>Inviato a un processo quando un file lock è stato perso.</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Sent to a process to notify of a power failure.</td>
+    <td>Inviato a un processo per notificare l'interruzione di corrente.</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Synonym for <code>SIGPWR</code></td>
+    <td>Sinonimo per <code>SIGPWR</code></td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
-    <td>Sent to a process to notify of a bad argument.</td>
+    <td>Inviato a un processo per notificare un argomento non valido.</td>
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Synonym for <code>SIGSYS</code></td>
+    <td>Sinonimo per <code>SIGSYS</code></td>
   </tr>
 </table>
 
-### Error Constants
+### Costanti di Errore
 
-The following error constants are exported by `os.constants.errno`:
+Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
-#### POSIX Error Constants
+#### Costanti di errore POSIX
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>Indica che l'elenco degli argomenti è più lungo del previsto.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>Indica che l'operazione non ha avuto permessi sufficienti.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica che l'indirizzo di rete è già in uso.</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>Indica che l'indirizzo di rete non è al momento disponibile per    l'uso.</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>Indica che la famiglia di indirizzi di rete non è supportata.</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indicates that there is currently no data available and to try the
-    operation again later.</td>
+    <td>Indica che al momento non ci sono dati disponibili e di riprovare     l'operazione più tardi.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>Indica che il socket ha già una connessione in sospeso    in corso.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>Indica che un file descriptor non è valido.</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>Indica un messaggio di dati non valido.</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
-    <td>Indicates that a device or resource is busy.</td>
+    <td>Indica che un dispositivo o una risorsa sono occupati.</td>
   </tr>
   <tr>
     <td><code>ECANCELED</code></td>
-    <td>Indicates that an operation was canceled.</td>
+    <td>Indica che un operazione è stata annullata.</td>
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indicates that there are no child processes.</td>
+    <td>Indica che non ci sono child process.</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
-    <td>Indicates that the network connection has been aborted.</td>
+    <td>Indica che la connessione di rete è stata interrotta.</td>
   </tr>
   <tr>
     <td><code>ECONNREFUSED</code></td>
-    <td>Indicates that the network connection has been refused.</td>
+    <td>Indica che la connessione di rete è stata rifiutata.</td>
   </tr>
   <tr>
     <td><code>ECONNRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica che la connessione di rete è stata ripristinata.</td>
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>Indica che è stato evitato un deadlock delle risorse.</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica che è richiesto un indirizzo di destinazione.</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
-    <td>Indicates that an argument is out of the domain of the function.</td>
+    <td>Indica che un argomento è fuori dal dominio della funzione.</td>
   </tr>
   <tr>
     <td><code>EDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica che la quota del disco è stata superata.</td>
   </tr>
   <tr>
     <td><code>EEXIST</code></td>
-    <td>Indicates that the file already exists.</td>
+    <td>Indica che il file esiste già.</td>
   </tr>
   <tr>
     <td><code>EFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica un indirizzo del puntatore non valido.</td>
   </tr>
   <tr>
     <td><code>EFBIG</code></td>
-    <td>Indicates that the file is too large.</td>
+    <td>Indica che il file è troppo grande.</td>
   </tr>
   <tr>
     <td><code>EHOSTUNREACH</code></td>
-    <td>Indicates that the host is unreachable.</td>
+    <td>Indica che l'host non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>EIDRM</code></td>
-    <td>Indicates that the identifier has been removed.</td>
+    <td>Indica che l'identifier è stato rimosso.</td>
   </tr>
   <tr>
-    <td><code>EILSEQ</code></td>
-    <td>Indicates an illegal byte sequence.</td>
+    <td><code>EIDRM</code></td>
+    <td>Indica una sequenza di byte non valida.</td>
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica che un'operazione è già in corso.</td>
   </tr>
   <tr>
     <td><code>EINTR</code></td>
-    <td>Indicates that a function call was interrupted.</td>
+    <td>Indica che una chiamata di funzione è stata interrotta.</td>
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
-    <td>Indicates that an invalid argument was provided.</td>
+    <td>Indica che è stato fornito un argomento non valido.</td>
   </tr>
   <tr>
     <td><code>EIO</code></td>
-    <td>Indicates an otherwise unspecified I/O error.</td>
+    <td>Indica un errore di I/O altrimenti non specificato.</td>
   </tr>
   <tr>
     <td><code>EISCONN</code></td>
-    <td>Indicates that the socket is connected.</td>
+    <td>Indica che il socket è connesso.</td>
   </tr>
   <tr>
     <td><code>EISDIR</code></td>
-    <td>Indicates that the path is a directory.</td>
+    <td>Indica che il percorso è una directory.</td>
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
-    <td>Indicates too many levels of symbolic links in a path.</td>
+    <td>Indica troppi livelli di collegamenti simbolici in un percorso.</td>
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica che ci sono troppi file aperti.</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
-    <td>Indicates that there are too many hard links to a file.</td>
+    <td>Indica che ci sono troppi collegamenti fisici a un file.</td>
   </tr>
   <tr>
     <td><code>EMSGSIZE</code></td>
-    <td>Indicates that the provided message is too long.</td>
+    <td>Indica che il messaggio fornito è troppo lungo.</td>
   </tr>
   <tr>
     <td><code>EMULTIHOP</code></td>
-    <td>Indicates that a multihop was attempted.</td>
+    <td>Indica che è stato tentato un multihop.</td>
   </tr>
   <tr>
     <td><code>ENAMETOOLONG</code></td>
-    <td>Indicates that the filename is too long.</td>
+    <td>Indica che il filename è troppo grande.</td>
   </tr>
   <tr>
     <td><code>ENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica che la rete è inattiva.</td>
   </tr>
   <tr>
     <td><code>ENETRESET</code></td>
-    <td>Indicates that the connection has been aborted by the network.</td>
+    <td>Indica che la connessione è stata interrotta dalla rete.</td>
   </tr>
   <tr>
     <td><code>ENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica che la rete non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>ENFILE</code></td>
-    <td>Indicates too many open files in the system.</td>
+    <td>Indica troppi file aperti nel sistema.</td>
   </tr>
   <tr>
     <td><code>ENOBUFS</code></td>
-    <td>Indicates that no buffer space is available.</td>
+    <td>Indica che lo spazio sul buffer non è disponibile.</td>
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
-    <td>Indicates that no message is available on the stream head read
-    queue.</td>
+    <td>Indica che nessun messaggio è disponibile sulla coda    di lettura dello stream head.</td>
   </tr>
   <tr>
     <td><code>ENODEV</code></td>
-    <td>Indicates that there is no such device.</td>
+    <td>Indica che non esiste un dispositivo del genere.</td>
   </tr>
   <tr>
     <td><code>ENOENT</code></td>
-    <td>Indicates that there is no such file or directory.</td>
+    <td>Indica che non esiste tale file o directory.</td>
   </tr>
   <tr>
     <td><code>ENOEXEC</code></td>
-    <td>Indicates an exec format error.</td>
+    <td>Indica un errore di formato exec.</td>
   </tr>
   <tr>
     <td><code>ENOLCK</code></td>
-    <td>Indicates that there are no locks available.</td>
+    <td>Indica che non ci sono blocchi disponibili.</td>
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
-    <td>Indications that a link has been severed.</td>
+    <td>Indicazione che un collegamento è stato interrotto.</td>
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indicates that there is not enough space.</td>
+    <td>Indica che non c'è abbastanza spazio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indicates that there is no message of the desired type.</td>
+    <td>Indica che non vi è alcun messaggio del tipo desiderato.</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indicates that a given protocol is not available.</td>
+    <td>Indica che un determinato protocollo non è disponibile.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indicates that there is no space available on the device.</td>
+    <td>Indica che non c'è spazio disponibile sul dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
-    <td>Indicates that there are no stream resources available.</td>
+    <td>Indica che non ci sono risorse di streaming disponibili.</td>
   </tr>
   <tr>
     <td><code>ENOSTR</code></td>
-    <td>Indicates that a given resource is not a stream.</td>
+    <td>Indica che una determinata risorsa non è uno stream.</td>
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indicates that a function has not been implemented.</td>
+    <td>Indica che una funzione non è stata implementata.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica che il socket non è connesso.</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indicates that the path is not a directory.</td>
+    <td>Indica che il percorso non è una directory.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica che la directory non è vuota.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indicates that the given item is not a socket.</td>
+    <td>Indica che l'elemento considerato non è un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indicates that a given operation is not supported.</td>
+    <td>Indica che una determinata operazione non è supportata.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indicates an inappropriate I/O control operation.</td>
+    <td>Indica un'operazione di controllo I/O inappropriata.</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indicates no such device or address.</td>
+    <td>Indica che non vi è alcun dispositivo o indirizzo di questo tipo.</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indicates that an operation is not supported on the socket.
-    Note that while `ENOTSUP` and `EOPNOTSUPP` have the same value on Linux,
-    according to POSIX.1 these error values should be distinct.)</td>
+    <td>Indica che un'operazione non è supportata sul socket.
+    Ricorda che mentre `ENOTSUP` e` EOPNOTSUPP` hanno lo stesso valore su Linux,    secondo POSIX.1 questi valori di errore dovrebbero essere distinti.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>Indica che un valore è troppo grande per essere memorizzato in un   tipo di dati fornito.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>Indica che l'operazione non è consentita.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>Indica una pipe danneggiata.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>Indica un errore di protocollo.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>Indica che un protocollo non è supportato.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>Indica il tipo sbagliato di protocollo per un socket.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>Indica che i risultati sono troppo grandi.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>Indica che il file system è di sola lettura.</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indicates an invalid seek operation.</td>
+    <td>Indica un'operazione di ricerca non valida.</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
-    <td>Indicates that there is no such process.</td>
+    <td>Indica che non esiste un processo simile.</td>
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indicates that the file handle is stale.</td>
+    <td>Indica che il file handle è obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
-    <td>Indicates an expired timer.</td>
+    <td>Indica un timer scaduto.</td>
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indicates that the connection timed out.</td>
+    <td>Indica che la connessione è scaduta.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indicates that a text file is busy.</td>
+    <td>Indica che un file di testo è occupato.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
-    <td>Indicates that the operation would block.</td>
+    <td>Indica che l'operazione si bloccherebbe.</td>
   </tr>
   <tr>
     <td><code>EXDEV</code></td>
-    <td>Indicates an improper link.
+    <td>Indica un collegamento improprio.
   </tr>
 </table>
 
-#### Windows Specific Error Constants
+#### Costanti di Errore Specifico di Windows
 
-The following error codes are specific to the Windows operating system:
+I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>Indica un chiamata di funzione interrotta.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>Indica un file handle non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>Indica la mancanza di autorizzazioni sufficienti per completare l'operazione.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica un indirizzo del puntatore non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>Indica che è stato trasmesso un argomento non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica che ci sono troppi file aperti.</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>Indica che una risorsa è temporaneamente non disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>Indica che un'operazione è attualmente in corso.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica che un'operazione è già in corso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>Indica che la risorsa non è un socket.</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica che è richiesto un indirizzo di destinazione.</td>
   </tr>
   <tr>
-    <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td><code>WSAEDESTADDRREQ</code></td>
+    <td>Indica che la dimensione del messaggio è troppo grande.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>Indica il tipo di protocollo errato per il socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>Indica un'opzione di protocollo errata.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>Indica che il protocollo non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>Indica che il tipo di socket non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>Indica che l'operazione non è supportata.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>Indica che il protocollo family non è supportato.</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>Indica che la famiglia di indirizzi non è supportata.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica che l'indirizzo di rete è già in uso.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>Indica che l'indirizzo di rete non è disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica che la rete è inattiva.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica che la rete non è raggiungibile.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica che la connessione di rete è stata ripristinata.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>Indica che la connessione è stata interrotta.</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
-    <td>Indicates that the connection has been reset by the peer.</td>
+    <td>Indica che la connessione è stata ripristinata dal peer.</td>
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indicates that there is no buffer space available.</td>
+    <td>Indica che lo spazio sul buffer non è disponibile.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indicates that the socket is already connected.</td>
+    <td>Indica che il socket è già connesso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica che il socket non è connesso.</td>
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
-    <td>Indicates that data cannot be sent after the socket has been
-    shutdown.</td>
+    <td>Indica che i dati non possono essere inviati dopo che il socket è stato    spento.</td>
   </tr>
   <tr>
     <td><code>WSAETOOMANYREFS</code></td>
-    <td>Indicates that there are too many references.</td>
+    <td>Indica che ci sono troppi riferimenti.</td>
   </tr>
   <tr>
     <td><code>WSAETIMEDOUT</code></td>
-    <td>Indicates that the connection has timed out.</td>
+    <td>Indica che la connessione è scaduta.</td>
   </tr>
   <tr>
     <td><code>WSAECONNREFUSED</code></td>
-    <td>Indicates that the connection has been refused.</td>
+    <td>Indica che la connessione è stata rifiutata.</td>
   </tr>
   <tr>
     <td><code>WSAELOOP</code></td>
-    <td>Indicates that a name cannot be translated.</td>
+    <td>Indica che un nome non può essere tradotto.</td>
   </tr>
   <tr>
     <td><code>WSAENAMETOOLONG</code></td>
-    <td>Indicates that a name was too long.</td>
+    <td>Indica che il nome era troppo lungo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTDOWN</code></td>
-    <td>Indicates that a network host is down.</td>
+    <td>Indica che un host di rete è inattivo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indicates that there is no route to a network host.</td>
+    <td>Indica che non esiste un collegamento ad un host di rete.</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica che la directory non è vuota.</td>
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
-    <td>Indicates that there are too many processes.</td>
+    <td>Indica che ci sono troppi processi.</td>
   </tr>
   <tr>
     <td><code>WSAEUSERS</code></td>
-    <td>Indicates that the user quota has been exceeded.</td>
+    <td>Indica che la quota utente è stata superata.</td>
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica che la quota del disco è stata superata.</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
-    <td>Indicates a stale file handle reference.</td>
+    <td>Indica un riferimento di un file handle obsoleto.</td>
   </tr>
   <tr>
     <td><code>WSAEREMOTE</code></td>
-    <td>Indicates that the item is remote.</td>
+    <td>Indica che l'elemento è remoto.</td>
   </tr>
   <tr>
     <td><code>WSASYSNOTREADY</code></td>
-    <td>Indicates that the network subsystem is not ready.</td>
+    <td>Indica che il sottosistema di rete non è pronto.</td>
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
@@ -1098,67 +1022,68 @@ The following error codes are specific to the Windows operating system:
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
-    <td>Indicates that successful WSAStartup has not yet been performed.</td>
+    <td>Indica che un WSAStartup di esito positivo non è stato ancora eseguito.</td>
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
-    <td>Indicates that a graceful shutdown is in progress.</td>
+    <td>Indica che è in corso l'esecuzione del graceful shoutdown.</td>
   </tr>
   <tr>
     <td><code>WSAENOMORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica che non ci sono ulteriori risultati.</td>
   </tr>
   <tr>
     <td><code>WSAECANCELLED</code></td>
-    <td>Indicates that an operation has been canceled.</td>
+    <td>Indica che un operazione è stata annullata.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
-    <td>Indicates that the procedure call table is invalid.</td>
+    <td>Indica che la tabella di procedura di chiamata non è valida.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
-    <td>Indicates an invalid service provider.</td>
+    <td>Indica un service provider non valido.</td>
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
-    <td>Indicates that the service provider failed to initialized.</td>
+    <td>Indica che il service provider non è riuscito ad inizializzare.</td>
   </tr>
   <tr>
     <td><code>WSASYSCALLFAILURE</code></td>
-    <td>Indicates a system call failure.</td>
+    <td>Indica un errore di chiamata di sistema.</td>
   </tr>
   <tr>
     <td><code>WSASERVICE_NOT_FOUND</code></td>
-    <td>Indicates that a service was not found.</td>
+    <td>Indica che un servizio non è stato trovato.</td>
   </tr>
   <tr>
     <td><code>WSATYPE_NOT_FOUND</code></td>
-    <td>Indicates that a class type was not found.</td>
+    <td>Indica che non è stato trovato un tipo di classe.</td>
   </tr>
   <tr>
     <td><code>WSA_E_NO_MORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica che non ci sono ulteriori risultati.</td>
   </tr>
   <tr>
     <td><code>WSA_E_CANCELLED</code></td>
-    <td>Indicates that the call was canceled.</td>
+    <td>Indica che la chiamata è stata annullata.</td>
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indicates that a database query was refused.</td>
+    <td>Indica che un database query è stata rifiutato.</td>
   </tr>
 </table>
 
-### libuv Constants
+### Costanti libuv
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Costante</th>
+    <th>Descrizione</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
     <td></td>
   </tr>
 </table>
+

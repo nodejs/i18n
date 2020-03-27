@@ -2,12 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Kararlılık: 2 - Kararlı
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: https.Agent
-
 <!-- YAML
 added: v0.4.5
 -->
@@ -15,7 +14,6 @@ added: v0.4.5
 An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ## Class: https.Server
-
 <!-- YAML
 added: v0.3.4
 -->
@@ -23,12 +21,11 @@ added: v0.3.4
 This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
 
 ### server.close([callback])
-
 <!-- YAML
 added: v0.1.90
 -->
-
-- `callback` {Function}
+* `callback` {Function}
+* Returns: {https.Server}
 
 See [`server.close()`][`http.close()`] from the HTTP module for details.
 
@@ -36,53 +33,52 @@ See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
+
 ### server.maxHeadersCount
 
 - {number} **Default:** `2000`
 
 See [`http.Server#maxHeadersCount`][].
 
-### server.setTimeout(\[msecs\]\[, callback\])
+### server.headersTimeout
 
+- {number} **Default:** `40000`
+
+See [`http.Server#headersTimeout`][].
+
+### server.setTimeout(\[msecs\]\[, callback\])
 <!-- YAML
 added: v0.11.2
 -->
-
-- `msecs` {number} **Default:** `120000` (2 minutes)
-- `callback` {Function}
+* `msecs` {number} **Default:** `120000` (2 minutes)
+* `callback` {Function}
+* Returns: {https.Server}
 
 See [`http.Server#setTimeout()`][].
 
 ### server.timeout
-
 <!-- YAML
 added: v0.11.2
 -->
-
 - {number} **Default:** `120000` (2 minutes)
 
 See [`http.Server#timeout`][].
 
 ### server.keepAliveTimeout
-
 <!-- YAML
 added: v8.0.0
 -->
-
 - {number} **Default:** `5000` (5 seconds)
 
 See [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
-
 <!-- YAML
 added: v0.3.4
 -->
-
-- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-- `requestListener` {Function} A listener to be added to the `'request'` event.
-
-Example:
+* `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
+* `requestListener` {Function} A listener to be added to the `'request'` event.
+* Returns: {https.Server}
 
 ```js
 // curl -k https://localhost:8000/
@@ -118,24 +114,25 @@ https.createServer(options, (req, res) => {
 ```
 
 ## https.get(options[, callback])
-
+## https.get(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
-
+  - version: v10.9.0
+    pr-url: https://github.com/nodejs/node/pull/21616
+    description: The `url` parameter can now be passed along with a separate
+                 `options` object.
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-
-- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
-- `callback` {Function}
+* `url` {string | URL}
+* `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
+* `callback` {Function}
 
 Like [`http.get()`][] but for HTTPS.
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
-
-Example:
 
 ```js
 const https = require('https');
@@ -154,7 +151,6 @@ https.get('https://encrypted.google.com/', (res) => {
 ```
 
 ## https.globalAgent
-
 <!-- YAML
 added: v0.5.9
 -->
@@ -162,11 +158,14 @@ added: v0.5.9
 Global instance of [`https.Agent`][] for all HTTPS client requests.
 
 ## https.request(options[, callback])
-
+## https.request(url\[, options\]\[, callback\])
 <!-- YAML
 added: v0.3.6
 changes:
-
+  - version: v10.9.0
+    pr-url: https://github.com/nodejs/node/pull/21616
+    description: The `url` parameter can now be passed along with a separate
+                 `options` object.
   - version: v9.3.0
     pr-url: https://github.com/nodejs/node/pull/14903
     description: The `options` parameter can now include `clientCertEngine`.
@@ -174,20 +173,18 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
-
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` **Default:** `'https:'`
-    - `port` **Default:** `443`
-    - `agent` **Default:** `https.globalAgent`
-- `callback` {Function}
+* `url` {string | URL}
+* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values:
+  - `protocol` **Default:** `'https:'`
+  - `port` **Default:** `443`
+  - `agent` **Default:** `https.globalAgent`
+* `callback` {Function}
 
 Makes a request to a secure web server.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
-
-Example:
 
 ```js
 const https = require('https');
@@ -213,7 +210,6 @@ req.on('error', (e) => {
 });
 req.end();
 ```
-
 Example using options from [`tls.connect()`][]:
 
 ```js
@@ -233,8 +229,6 @@ const req = https.request(options, (res) => {
 ```
 
 Alternatively, opt out of connection pooling by not using an [`Agent`][].
-
-Example:
 
 ```js
 const options = {
@@ -278,32 +272,32 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Make sure the certificate is issued to the host we are connected to
+    // Sertifikanın bağlı olduğumuz ana bilgisayara verildiğinden emin olunuz
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
     }
 
-    // Pin the public key, similar to HPKP pin-sha25 pinning
+    // Genel anahtarı, HPKP pin-sha25 sabitlemesine benzer şekilde sabitleyiniz
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
-      const msg = 'Certificate verification error: ' +
-        `The public key of '${cert.subject.CN}' ` +
-        'does not match our pinned fingerprint';
+      const msg = 'Sertifika doğrulama hatası: ' +
+        `'${cert.subject.CN}''in genel anahtarı` +
+        'sabitlenmiş parmak izimizle eşleşmiyor';
       return new Error(msg);
     }
 
-    // Pin the exact certificate, rather then the pub key
+    // Genel anahtar yerine, esas sertifikayı sabitleyiniz
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
-      const msg = 'Certificate verification error: ' +
-        `The certificate of '${cert.subject.CN}' ` +
-        'does not match our pinned fingerprint';
+      const msg = 'Sertifika doğrulama hatası: ' +
+        `'${cert.subject.CN}''in genel anahtarı` +
+        'sabitlenmiş parmak izimizle eşleşmiyor';
       return new Error(msg);
     }
 
-    // This loop is informational only.
+    // Bu döngü yalnızca bilgi amaçlıdır.
     // Print the certificate and public key fingerprints of all certs in the
     // chain. Its common to pin the public key of the issuer on the public
     // internet, while pinning the public key of the service in sensitive
@@ -341,16 +335,25 @@ req.end();
 Outputs for example:
 
 ```text
-Subject Common Name: github.com
-  Certificate SHA256 fingerprint: 25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16
-  Public key ping-sha256: pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=
-Subject Common Name: DigiCert SHA2 Extended Validation Server CA
-  Certificate SHA256 fingerprint: 40:3E:06:2A:26:53:05:91:13:28:5B:AF:80:A0:D4:AE:42:2C:84:8C:9F:78:FA:D0:1F:C9:4B:C5:B8:7F:EF:1A
-  Public key ping-sha256: RRM1dGqnDFsCJXBTHky16vi1obOlCgFFn/yOhI/y+ho=
-Subject Common Name: DigiCert High Assurance EV Root CA
-  Certificate SHA256 fingerprint: 74:31:E5:F4:C3:C1:CE:46:90:77:4F:0B:61:E0:54:40:88:3B:A9:A0:1E:D0:0B:A6:AB:D7:80:6E:D3:B1:18:CF
-  Public key ping-sha256: WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18=
-All OK. Server matched our pinned cert or public key
-statusCode: 200
-headers: max-age=0; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="RRM1dGqnDFsCJXBTHky16vi1obOlCgFFn/yOhI/y+ho="; pin-sha256="k2v657xBsOVe1PQRwOsHsw3bsGT2VzIqz5K+59sNQws="; pin-sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-sha256="IQBnNBEiFuhj+8x6X8XLgh01V9Ic5/V3IRQLNFFc7v4="; pin-sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0="; pin-sha256="LvRiGEjRqfzurezaWuj8Wie2gyHMrW5Q06LspMnox7A="; includeSubDomains
+Konu Ortak Adı: github.com
+  SHA256 parmak izi Sertifikası:
+25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16
+  Kamuya açık ping-sha256 anahtarı: pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=
+Konu Ortak Adı: DigiCert SHA2 Genişletilmiş Doğrulama Sunucusu CA
+  SHA256 parmak izi Sertifikası:
+40:3E:06:2A:26:53:05:91:13:28:5B:AF:80:A0:D4:AE:42:2C:84:8C:9F:78:FA:D0:1F:C9:4B:C5:B8:7F:EF:1A
+  Kamuya açık ping-sha256 anahtarı: RRM1dGqnDFsCJXBTHky16vi1obOlCgFFn/yOhI/y+ho=
+Konu Ortak Adı: DigiCert Yüksek Güvence EV Kökü CA
+  SHA256 parmak izi Sertifikası:
+74:31:E5:F4:C3:C1:CE:46:90:77:4F:0B:61:E0:54:40:88:3B:A9:A0:1E:D0:0B:A6:AB:D7:80:6E:D3:B1:18:CF
+  Kamuya açık ping-sha256 anahtarı: WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18=
+Her şey yolunda. Sunucu, sabitlenmiş sertifika veya ortak anahtarımızla eşleşti
+durum Kodu: 200
+bağlantılar: maksimum-yaş=0; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-
+sha256="RRM1dGqnDFsCJXBTHky16vi1obOlCgFFn/yOhI/y+ho="; pin-
+sha256="k2v657xBsOVe1PQRwOsHsw3bsGT2VzIqz5K+59sNQws="; pin-
+sha256="K87oWBWM9UZfyddvDfoxL+8lpNyoUB2ptGtn0fv6G2Q="; pin-
+sha256="IQBnNBEiFuhj+8x6X8XLgh01V9Ic5/V3IRQLNFFc7v4="; pin-
+sha256="iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0="; pin-
+sha256="LvRiGEjRqfzurezaWuj8Wie2gyHMrW5Q06LspMnox7A="; includeSubDomains Alt Etki Alanlarını içer
 ```

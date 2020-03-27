@@ -1,9 +1,17 @@
 # Aktualisierung von npm in Node.js
 
+New pull requests should be opened when a "next" version of npm has been released. Once the "next" version has been promoted to "latest" the PR should be updated as necessary.
+
+Two weeks after the "latest" release has been promoted it can land on master assuming no major regressions are found. There are no additional constraints for Semver-Major releases.
+
+The specific Node.js release streams the new version will be able to land into are at the discretion of the release and LTS teams.
+
+This process only covers full updates to new versions of npm. Cherry-picked changes can be reviewed and landed via the normal consensus seeking process.
+
 ## Schritt 1: npm klonen
 
 ```console
-$ git clone https://github.com/npm/npm.git
+$ git clone https://github.com/npm/cli.git npm
 $ cd npm
 ```
 
@@ -21,7 +29,7 @@ $ git checkout vX.Y.Z
 $ make release
 ```
 
-Hinweis: Bitte führen Sie `npm dist-tag ls npm` aus und stellen Sie sicher, dass dies der `latest` **dist-tag** ist. `latest` in git wird für gewöhnlich als `next` veröffentlicht, wenn es stabil ist.
+Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
 ## Schritt 3: Altes npm entfernen
 

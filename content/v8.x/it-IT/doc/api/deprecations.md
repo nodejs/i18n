@@ -1,90 +1,90 @@
-# Deprecated APIs
+# API obsolete
 
 <!--introduced_in=v7.7.0-->
 
-Node.js may deprecate APIs when either: (a) use of the API is considered to be unsafe, (b) an improved alternative API has been made available, or (c) breaking changes to the API are expected in a future major release.
+Node.js può deprecare delle API quando: (a) l'utilizzo dell'API è considerato poco sicuro, (b) è stata resa disponibile un'API alternativa migliorata oppure (c) sono previste interruzioni delle modifiche all'API in una futura versione principale.
 
-Node.js utilizes three kinds of Deprecations:
+Node.js utilizza tre tipi di Deprecazioni:
 
 * Documentation-only
 * Runtime
 * End-of-Life
 
-A Documentation-only deprecation is one that is expressed only within the Node.js API docs. These generate no side-effects while running Node.js.
+Una deprecazione Documentation-only è espressa solo nei documenti delle API di Node.js. Queste non generano effetti collaterali durante l'esecuzione di Node.js.
 
-A Runtime deprecation will, by default, generate a process warning that will be printed to `stderr` the first time the deprecated API is used. When the `--throw-deprecation` command-line flag is used, a Runtime deprecation will cause an error to be thrown.
+Una deprecazione Runtime genererà, in modo predefinito, un avviso di processo che verrà stampato su `stderr` la prima volta che viene utilizzata l'API deprecata/obsoleta. Quando viene utilizzato il flag `--throw-deprecation` della command-line, una deprecazione Runtime genenerà un'errore.
 
-An End-of-Life deprecation is used to identify code that either has been removed or will soon be removed from Node.js.
+Una deprecazione End-of-Life viene utilizzata per identificare il codice che è stato rimosso o verrà presto rimosso da Node.js.
 
 ## Un-deprecation
 
-From time-to-time the deprecation of an API may be reversed. Such action may happen in either a semver-minor or semver-major release. In such situations, this document will be updated with information relevant to the decision. *However, the deprecation identifier will not be modified*.
+From time-to-time the deprecation of an API may be reversed. Such action may happen in either a semver-minor or semver-major release. In tali situazioni, questo documento verrà aggiornato con informazioni rilevanti per la decisione. *However, the deprecation identifier will not be modified*.
 
-## List of Deprecated APIs
+## Elenco delle API Deprecate/Obsolete
 
 <a id="DEP0001"></a>
 
 ### DEP0001: http.OutgoingMessage.prototype.flush
 
-Type: Runtime
+Tipo: Runtime
 
-The `OutgoingMessage.prototype.flush()` method is deprecated. Use `OutgoingMessage.prototype.flushHeaders()` instead.
+Il metodo `OutgoingMessage.prototype.flush()` è deprecato/obsoleto. Utilizza `OutgoingMessage.prototype.flushHeaders()` al suo posto.
 
 <a id="DEP0002"></a>
 
 ### DEP0002: require('\_linklist')
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The `_linklist` module is deprecated. Please use a userland alternative.
+Il modulo `_linklist` è deprecato/obsoleto. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0003"></a>
 
 ### DEP0003: \_writableState.buffer
 
-Type: Runtime
+Tipo: Runtime
 
-The `_writableState.buffer` property is deprecated. Use the `_writableState.getBuffer()` method instead.
+La proprietà `_writableState.buffer` è deprecata/obsoleta. Utilizza il metodo `_writableState.getBuffer()` al suo posto.
 
 <a id="DEP0004"></a>
 
 ### DEP0004: CryptoStream.prototype.readyState
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `CryptoStream.prototype.readyState` property is deprecated and should not be used.
+La proprietà `CryptoStream.prototype.readyState` è deprecata/obsoleta e non dovrebbe essere utilizzata.
 
 <a id="DEP0005"></a>
 
 ### DEP0005: Buffer() constructor
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
+La funzione `Buffer()` e il constructor `new Buffer()` sono deprecati/obsoleti a causa di problemi di usabilità dell'API che potevano potenzialmente causare problemi accidentali di sicurezza.
 
-As an alternative, use of the following methods of constructing `Buffer` objects is strongly recommended:
+In alternativa, si consiglia vivamente l'utilizzo dei seguenti metodi di costruzione dei `Buffer` object:
 
-* [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Create a `Buffer` with *initialized* memory.
+* [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crea un `Buffer` con memoria *inizializzata*.
 * [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
 * [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
-* [`Buffer.from(array)`][] - Create a `Buffer` with a copy of `array`
+* [`Buffer.from(array)`][] - Crea un `Buffer` con una copia di `array`
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
-* [`Buffer.from(buffer)`][] - Create a `Buffer` that copies `buffer`.
+* [`Buffer.from(buffer)`][] - Crea un `Buffer` che copia `buffer`.
 * [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Create a `Buffer` that copies `string`.
 
 <a id="DEP0006"></a>
 
 ### DEP0006: child\_process options.customFds
 
-Type: Runtime
+Tipo: Runtime
 
-Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` methods, the `options.customFds` option is deprecated. The `options.stdio` option should be used instead.
+All'interno dei metodi `spawn()`, `fork()`, ed `exec()` del modulo [`child_process`][], l'opzione `options.customFds` è deprecata/obsoleta. Al suo posto dovrebbe essere utilizzata l'opzione `options.stdio`.
 
 <a id="DEP0007"></a>
 
 ### DEP0007: cluster worker.suicide
 
-Type: Runtime
+Tipo: Runtime
 
 Within the `cluster` module, the [`worker.suicide`][] property has been deprecated. Please use [`worker.exitedAfterDisconnect`][] instead.
 
@@ -92,271 +92,271 @@ Within the `cluster` module, the [`worker.suicide`][] property has been deprecat
 
 ### DEP0008: require('constants')
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `constants` module has been deprecated. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
+Il modulo `constants` è deprecato/obsoleto. Quando si richiede l'accesso a costanti relative a specifici moduli incorporati di Node.js, gli sviluppatori dovrebbero fare riferimento alla proprietà `constants` esposta dal modulo relativo. Per esempio, `require('fs').constants` e `require('os').constants`.
 
 <a id="DEP0009"></a>
 
-### DEP0009: crypto.pbkdf2 without digest
+### DEP0009: crypto.pbkdf2 senza digest
 
 Type: End-of-life
 
-Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previously, a deprecation warning was printed. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+L'utilizzoo dell'API [`crypto.pbkdf2()`][] senza specificare un digest è stato reso obsoleto in Node.js 6.0 poiché il metodo era stato impostato per utilizzare in modo predefinito il digest `'SHA1'` del quale si sconsiglia l'utilizzo. In precedenza, veniva stampato un avviso di deprecazione. A partire da Node.js 8.0.0, chiamare `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinito genererà un `TypeError`.
 
 <a id="DEP0010"></a>
 
 ### DEP0010: crypto.createCredentials
 
-Type: Runtime
+Tipo: Runtime
 
-The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
+L'API [`crypto.createCredentials()`][] è deprecata/obsoleta. Si prega di utilizzare [`tls.createSecureContext()`][] al suo posto.
 
 <a id="DEP0011"></a>
 
 ### DEP0011: crypto.Credentials
 
-Type: Runtime
+Tipo: Runtime
 
-The `crypto.Credentials` class is deprecated. Please use [`tls.SecureContext`][] instead.
+La classe `crypto.Credentials` è deprecata/obsoleta. Si prega di utilizzare [`tls.SecureContext`][] al suo posto.
 
 <a id="DEP0012"></a>
 
 ### DEP0012: Domain.dispose
 
-Type: Runtime
+Tipo: Runtime
 
-[`Domain.dispose()`][] is deprecated. Recover from failed I/O actions explicitly via error event handlers set on the domain instead.
+[`Domain.dispose()`][] is deprecated. In alternativa puoi ripristinare le azioni esplicite I/O fallite tramite gli event handler degli errori impostati sul dominio.
 
 <a id="DEP0013"></a>
 
-### DEP0013: fs asynchronous function without callback
+### DEP0013: fs funzione asincrona senza callback
 
-Type: Runtime
+Tipo: Runtime
 
 Calling an asynchronous function without a callback is deprecated.
 
 <a id="DEP0014"></a>
 
-### DEP0014: fs.read legacy String interface
+### DEP0014: interfaccia fs.read legacy String
 
-Type: End-of-Life
+Tipo: End-of-Life
 
 The [`fs.read()`][] legacy String interface is deprecated. Use the Buffer API as mentioned in the documentation instead.
 
 <a id="DEP0015"></a>
 
-### DEP0015: fs.readSync legacy String interface
+### DEP0015: interfaccia fs.readSync legacy String
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The [`fs.readSync()`][] legacy String interface is deprecated. Use the Buffer API as mentioned in the documentation instead.
+The [`fs.readSync()`][] legacy String interface is deprecated. In alternativa utilizza l'API Buffer come indicato nella documentazione.
 
 <a id="DEP0016"></a>
 
 ### DEP0016: GLOBAL/root
 
-Type: Runtime
+Tipo: Runtime
 
-The `GLOBAL` and `root` aliases for the `global` property have been deprecated and should no longer be used.
+Gli alias `GLOBAL` e `root` per la proprietà `global` sono stati deprecati e non dovrebbero più essere utilizzati.
 
 <a id="DEP0017"></a>
 
 ### DEP0017: Intl.v8BreakIterator
 
-Type: Runtime
+Tipo: Runtime
 
 The `Intl.v8BreakIterator` is deprecated and will be removed or replaced soon.
 
 <a id="DEP0018"></a>
 
-### DEP0018: Unhandled promise rejections
+### DEP0018: Promise rejection non gestiti
 
-Type: Runtime
+Tipo: Runtime
 
-Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+I promise rejection non gestiti sono deprecati/obsoleti. In futuro, i promise rejection che non vengono gestiti termineranno il processo Node.js con un valore di uscita diverso da zero.
 
 <a id="DEP0019"></a>
 
-### DEP0019: require('.') resolved outside directory
+### DEP0019: require('.') risolto al di fuori della directory
 
-Type: Runtime
+Tipo: Runtime
 
-In certain cases, `require('.')` may resolve outside the package directory. This behavior is deprecated and will be removed in a future major Node.js release.
+In alcuni casi, `require('.')` potrebbe risolversi al di fuori della directory del pacchetto. Questo comportamento è deprecato/obsoleto e verrà rimosso in una futura versione di Node.js.
 
 <a id="DEP0020"></a>
 
 ### DEP0020: Server.connections
 
-Type: Runtime
+Tipo: Runtime
 
-The [`Server.connections`][] property is deprecated. Please use the [`Server.getConnections()`][] method instead.
+La proprietà [`Server.connections`][] è deprecata/obsoleta. Si prega di utilizzare il metodo [`Server.getConnections()`][] al suo posto.
 
 <a id="DEP0021"></a>
 
 ### DEP0021: Server.listenFD
 
-Type: Runtime
+Tipo: Runtime
 
-The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <number>})`][] instead.
+Il metodo `Server.listenFD()` è deprecato/obsoleto. Si prega di utilizzare [`Server.listen({fd: <number>})`][] al suo posto.
 
 <a id="DEP0022"></a>
 
 ### DEP0022: os.tmpDir()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
+L'API `os.tmpDir()` è deprecata/obsoleta. Si prega di utilizzare [`os.tmpdir()`][] al suo posto.
 
 <a id="DEP0023"></a>
 
 ### DEP0023: os.getNetworkInterfaces()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+Il metodo `os.getNetworkInterfaces()` è deprecato/obsoleto. Si prega di utilizzare la proprietà [`os.networkInterfaces`][] al suo posto.
 
 <a id="DEP0024"></a>
 
 ### DEP0024: REPLServer.prototype.convertToContext()
 
-Type: Runtime
+Tipo: Runtime
 
-The `REPLServer.prototype.convertToContext()` API is deprecated and should not be used.
+L'API `REPLServer.prototype.convertToContext()` è deprecata/obsoleta e non dovrebbe essere utilizzata.
 
 <a id="DEP0025"></a>
 
 ### DEP0025: require('sys')
 
-Type: Runtime
+Tipo: Runtime
 
-The `sys` module is deprecated. Please use the [`util`][] module instead.
+Il modulo `sys` è deprecato/obsoleto. Si prega di utilizzare il modulo [`util`][] al suo posto.
 
 <a id="DEP0026"></a>
 
 ### DEP0026: util.print()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
+L'API [`util.print()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.log()`][] al suo posto.
 
 <a id="DEP0027"></a>
 
 ### DEP0027: util.puts()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
+L'API [`util.puts()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.log()`][] al suo posto.
 
 <a id="DEP0028"></a>
 
 ### DEP0028: util.debug()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+L'API [`util.debug()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.error()`][] al suo posto.
 
 <a id="DEP0029"></a>
 
 ### DEP0029: util.error()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+L'API [`util.error()`][] è deprecata/obsoleta. Si prega di utilizzare [`console.error()`][] al suo posto.
 
 <a id="DEP0030"></a>
 
 ### DEP0030: SlowBuffer
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeSlow(size)`][] instead.
+La classe [`SlowBuffer`][] è stata deprecata. Si prega di utilizzare [`Buffer.allocUnsafeSlow(size)`][] al suo posto.
 
 <a id="DEP0031"></a>
 
 ### DEP0031: ecdh.setPublicKey()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+Adesso il metodo [`ecdh.setPublicKey()`][] è deprecato/obsoleto poiché la sua inclusione nell'API è inutile.
 
 <a id="DEP0032"></a>
 
-### DEP0032: domain module
+### DEP0032: modulo domain
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`domain`][] module is deprecated and should not be used.
+Il modulo [`domain`][] è deprecato/obsoleto e non dovrebbe essere utilizzato.
 
 <a id="DEP0033"></a>
 
 ### DEP0033: EventEmitter.listenerCount()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
+L'API [`EventEmitter.listenerCount(emitter, eventName)`][] è stata deprecata. Si prega di utilizzare [`emitter.listenerCount(eventName)`][] al suo posto.
 
 <a id="DEP0034"></a>
 
 ### DEP0034: fs.exists(path, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.exists(path, callback)`][] API has been deprecated. Please use [`fs.stat()`][] or [`fs.access()`][] instead.
+L'API [`fs.exists(path, callback)`][] è stata deprecata. Si prega di utilizzare al suo posto [`fs.stat()`][] oppure [`fs.access()`][].
 
 <a id="DEP0035"></a>
 
 ### DEP0035: fs.lchmod(path, mode, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchmod(path, mode, callback)`][] API has been deprecated.
+L'API [`fs.lchmod(path, mode, callback)`][] è stata deprecata.
 
 <a id="DEP0036"></a>
 
 ### DEP0036: fs.lchmodSync(path, mode)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchmodSync(path, mode)`][] API has been deprecated.
+L'API [`fs.lchmodSync(path, mode)`][] è stata deprecata.
 
 <a id="DEP0037"></a>
 
 ### DEP0037: fs.lchown(path, uid, gid, callback)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchown(path, uid, gid, callback)`][] API has been deprecated.
+L'API [`fs.lchown(path, uid, gid, callback)`][] è stata deprecata.
 
 <a id="DEP0038"></a>
 
 ### DEP0038: fs.lchownSync(path, uid, gid)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`fs.lchownSync(path, uid, gid)`][] API has been deprecated.
+L'API [`fs.lchownSync(path, uid, gid)`][] è stata deprecata.
 
 <a id="DEP0039"></a>
 
 ### DEP0039: require.extensions
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`require.extensions`][] property has been deprecated.
+La proprietà [`require.extensions`][] è stata deprecata.
 
 <a id="DEP0040"></a>
 
-### DEP0040: punycode module
+### DEP0040: modulo punycode
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`punycode`][] module has been deprecated. Please use a userland alternative instead.
+Il modulo [`punycode`][] è stato deprecato. Si prega di utilizzare un'alternativa userland al suo posto.
 
 <a id="DEP0041"></a>
 
-### DEP0041: NODE\_REPL\_HISTORY\_FILE environment variable
+### DEP0041: variabile d'ambiente NODE\_REPL\_HISTORY\_FILE
 
-Type: Documentation-only
+Tipo: Documentation-only
 
 The `NODE_REPL_HISTORY_FILE` environment variable has been deprecated.
 
@@ -364,177 +364,177 @@ The `NODE_REPL_HISTORY_FILE` environment variable has been deprecated.
 
 ### DEP0042: tls.CryptoStream
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La classe [`tls.CryptoStream`][] è stata deprecata. Si prega di utilizzare [`tls.TLSSocket`][] al suo posto.
 
 <a id="DEP0043"></a>
 
 ### DEP0043: tls.SecurePair
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La classe [`tls.SecurePair`][] è stata deprecata. Si prega di utilizzare [`tls.TLSSocket`][] al suo posto.
 
 <a id="DEP0044"></a>
 
 ### DEP0044: util.isArray()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isArray()`][] API has been deprecated. Please use `Array.isArray()` instead.
+L'API [`util.isArray()`][] è stata deprecata. Si prega di utilizzare `Array.isArray()` al suo posto.
 
 <a id="DEP0045"></a>
 
 ### DEP0045: util.isBoolean()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isBoolean()`][] API has been deprecated.
+L'API [`util.isBoolean()`][] è stata deprecata.
 
 <a id="DEP0046"></a>
 
 ### DEP0046: util.isBuffer()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isBuffer()`][] API has been deprecated. Please use [`Buffer.isBuffer()`][] instead.
+L'API [`util.isBuffer()`][] è stata deprecata. Si prega di utilizzare [`Buffer.isBuffer()`][] al suo posto.
 
 <a id="DEP0047"></a>
 
 ### DEP0047: util.isDate()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isDate()`][] API has been deprecated.
+L'API [`util.isDate()`][] è stata deprecata.
 
 <a id="DEP0048"></a>
 
 ### DEP0048: util.isError()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isError()`][] API has been deprecated.
+L'API [`util.isError()`][] è stata deprecata.
 
 <a id="DEP0049"></a>
 
 ### DEP0049: util.isFunction()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isFunction()`][] API has been deprecated.
+L'API [`util.isFunction()`][] è stata deprecata.
 
 <a id="DEP0050"></a>
 
 ### DEP0050: util.isNull()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNull()`][] API has been deprecated.
+L'API [`util.isNull()`][] è stata deprecata.
 
 <a id="DEP0051"></a>
 
 ### DEP0051: util.isNullOrUndefined()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNullOrUndefined()`][] API has been deprecated.
+L'API [`util.isNullOrUndefined()`][] è stata deprecata.
 
 <a id="DEP0052"></a>
 
 ### DEP0052: util.isNumber()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isNumber()`][] API has been deprecated.
+L'API [`util.isNumber()`][] è stata deprecata.
 
 <a id="DEP0053"></a>
 
 ### DEP0053 util.isObject()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isObject()`][] API has been deprecated.
+L'API [`util.isObject()`][] è stata deprecata.
 
 <a id="DEP0054"></a>
 
 ### DEP0054: util.isPrimitive()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isPrimitive()`][] API has been deprecated.
+L'API [`util.isPrimitive()`][] è stata deprecata.
 
 <a id="DEP0055"></a>
 
 ### DEP0055: util.isRegExp()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isRegExp()`][] API has been deprecated.
+L'API [`util.isRegExp()`][] è stata deprecata.
 
 <a id="DEP0056"></a>
 
 ### DEP0056: util.isString()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isString()`][] API has been deprecated.
+L'API [`util.isString()`][] è stata deprecata.
 
 <a id="DEP0057"></a>
 
 ### DEP0057: util.isSymbol()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isSymbol()`][] API has been deprecated.
+L'API [`util.isSymbol()`][] è stata deprecata.
 
 <a id="DEP0058"></a>
 
 ### DEP0058: util.isUndefined()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.isUndefined()`][] API has been deprecated.
+L'API [`util.isUndefined()`][] è stata deprecata.
 
 <a id="DEP0059"></a>
 
 ### DEP0059: util.log()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util.log()`][] API has been deprecated.
+L'API [`util.log()`][] è stata deprecata.
 
 <a id="DEP0060"></a>
 
 ### DEP0060: util.\_extend()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The [`util._extend()`][] API has been deprecated.
+L'API [`util._extend()`][] è stata deprecata.
 
 <a id="DEP0061"></a>
 
 ### DEP0061: fs.SyncWriteStream
 
-Type: Runtime
+Tipo: Runtime
 
-The `fs.SyncWriteStream` class was never intended to be a publicly accessible API. No alternative API is available. Please use a userland alternative.
+La classe `fs.SyncWriteStream` non è mai stata concepita come un'API pubblicamente accessibile. Non è disponibile alcuna API alternativa. Si prega di utilizzare un'alternativa userland.
 
 <a id="DEP0062"></a>
 
 ### DEP0062: node --debug
 
-Type: Runtime
+Tipo: Runtime
 
-`--debug` activates the legacy V8 debugger interface, which has been removed as of V8 5.8. It is replaced by Inspector which is activated with `--inspect` instead.
+`--debug` attiva l'interfaccia legacy del debugger di V8, che è stata rimossa a partire dalla versione V8 5.8. In alternativa viene sostituito dall'Inspector che viene attivato con `--inspect`.
 
 <a id="DEP0063"></a>
 
 ### DEP0063: ServerResponse.prototype.writeHeader()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
+L'API `ServerResponse.prototype.writeHeader()` del modulo `http` è stata deprecata. Si prega di utilizzare `ServerResponse.prototype.writeHead()` al suo posto.
 
 *Note*: The `ServerResponse.prototype.writeHeader()` method was never documented as an officially supported API.
 
@@ -542,27 +542,27 @@ The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecat
 
 ### DEP0064: tls.createSecurePair()
 
-Type: Runtime
+Tipo: Runtime
 
-The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11.3. Users should use `tls.Socket` instead.
+L'API `tls.createSecurePair()` è stata deprecata nella documentazione in Node.js 0.11.3. Gli utenti dovrebbero utilizzare `tls.Socket` al suo posto.
 
 <a id="DEP0065"></a>
 
-### DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic
+### DEP0065: repl.REPL_MODE_MAGIC e NODE_REPL_MODE=magic
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
+The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been deprecated. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js v6.0.0, when V8 5.0 was imported. Si prega di utilizzare `REPL_MODE_SLOPPY` al suo posto.
 
-The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its default value, `magic`, is similarly deprecated in favor of `sloppy`.
+La variabile d'ambiente `NODE_REPL_MODE` viene utilizzata per impostare l'opzione `replMode` sottostante di una sessione `node` interattiva. Its default value, `magic`, is similarly deprecated in favor of `sloppy`.
 
 <a id="DEP0066"></a>
 
 ### DEP0066: outgoingMessage.\_headers, outgoingMessage.\_headerNames
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
+Le proprietà `outgoingMessage._headers` e `outgoingMessage._headerNames` del modulo `http` sono state deprecate. Si prega di utilizzare al loro posto uno dei seguenti metodi pubblici (per esempio `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) per lavorare con intestazioni in uscita (outgoing headers).
 
 *Note*: `outgoingMessage._headers` and `outgoingMessage._headerNames` were never documented as officially supported properties.
 
@@ -570,9 +570,9 @@ The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` 
 
 ### DEP0067: OutgoingMessage.prototype.\_renderHeaders
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The `http` module `OutgoingMessage.prototype._renderHeaders()` API has been deprecated.
+L'API `OutgoingMessage.prototype._renderHeaders()` del modulo `http` è stata deprecata.
 
 *Note*: `OutgoingMessage.prototype._renderHeaders` was never documented as an officially supported API.
 
@@ -580,15 +580,15 @@ The `http` module `OutgoingMessage.prototype._renderHeaders()` API has been depr
 
 ### DEP0068: node debug
 
-Type: Runtime
+Tipo: Runtime
 
-`node debug` corresponds to the legacy CLI debugger which has been replaced with a V8-inspector based CLI debugger available through `node inspect`.
+`node debug` corrisponde al debugger CLI legacy che è stato sostituito con un debugger CLI basato sul V8-inspector disponibile tramite `node inspect`.
 
 <a id="DEP0069"></a>
 
 ### DEP0069: vm.runInDebugContext(string)
 
-Type: Documentation-only
+Tipo: Documentation-only
 
 The DebugContext will be removed in V8 soon and will not be available in Node 10+.
 
@@ -598,9 +598,9 @@ The DebugContext will be removed in V8 soon and will not be available in Node 10
 
 ### DEP0070: async_hooks.currentId()
 
-Type: Runtime
+Tipo: Runtime
 
-`async_hooks.currentId()` was renamed to `async_hooks.executionAsyncId()` for clarity.
+`async_hooks.currentId()` è stato rinominato in `async_hooks.executionAsyncId()` per maggiore chiarezza.
 
 *Note*: change was made while `async_hooks` was an experimental API.
 
@@ -608,9 +608,9 @@ Type: Runtime
 
 ### DEP0071: async_hooks.triggerId()
 
-Type: Runtime
+Tipo: Runtime
 
-`async_hooks.triggerId()` was renamed to `async_hooks.triggerAsyncId()` for clarity.
+`async_hooks.triggerId()` è stato rinominato in `async_hooks.triggerAsyncId()` per maggiore chiarezza.
 
 *Note*: change was made while `async_hooks` was an experimental API.
 
@@ -618,9 +618,9 @@ Type: Runtime
 
 ### DEP0072: async_hooks.AsyncResource.triggerId()
 
-Type: Runtime
+Tipo: Runtime
 
-`async_hooks.AsyncResource.triggerId()` was renamed to `async_hooks.AsyncResource.triggerAsyncId()` for clarity.
+`async_hooks.AsyncResource.triggerId()` è stato rinominato in `async_hooks.AsyncResource.triggerAsyncId()` per maggiore chiarezza.
 
 *Note*: change was made while `async_hooks` was an experimental API.
 
@@ -628,16 +628,16 @@ Type: Runtime
 
 ### DEP0076: tls.parseCertString()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-`tls.parseCertString()` is a trivial parsing helper that was made public by mistake. This function can usually be replaced with:
+`tls.parseCertString()` è un banale aiutante per il parsing reso pubblico per errore. Questa funzione può essere generalmente sostituita con:
 
 ```js
 const querystring = require('querystring');
 querystring.parse(str, '\n', '=');
 ```
 
-*Note*: This function is not completely equivalent to `querystring.parse()`. One difference is that `querystring.parse()` does url decoding:
+*Note*: This function is not completely equivalent to `querystring.parse()`. Ad esempio una differenza è che `querystring.parse()` esegue la decodifica url:
 
 ```sh
 > querystring.parse('%E5%A5%BD=1', '\n', '=');
@@ -648,24 +648,42 @@ querystring.parse(str, '\n', '=');
 
 <a id="DEP0079"></a>
 
-### DEP0079: Custom inspection function on Objects via .inspect()
+### DEP0079: Funzione di ispezione personalizzata sugli Object tramite .inspect()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-Using a property named `inspect` on an object to specify a custom inspection function for [`util.inspect()`][] is deprecated. Use [`util.inspect.custom`][] instead. For backwards compatibility with Node.js prior to version 6.4.0, both may be specified.
+L'utilizzo di una proprietà chiamata `inspect` su un object per specificare una funzione di ispezione personalizzata per [`util.inspect()`][] è deprecato/obsoleto. Utilizza [`util.inspect.custom`][] al suo posto. For backwards compatibility with Node.js prior to version 6.4.0, both may be specified.
 
 <a id="DEP0085"></a>
 
 ### DEP0085: AsyncHooks Sensitive API
 
-Type: Runtime
+Tipo: Runtime
 
 The AsyncHooks Sensitive API was never documented and had various of minor issues, see https://github.com/nodejs/node/issues/15572. Use the `AsyncResource` API instead.
 
 <a id="DEP0086"></a>
 
-### DEP0086: Remove runInAsyncIdScope
+### DEP0086: Rimuove runInAsyncIdScope
 
-Type: Runtime
+Tipo: Runtime
 
-`runInAsyncIdScope` doesn't emit the `before` or `after` event and can thus cause a lot of issues. See https://github.com/nodejs/node/issues/14328 for more details.
+`runInAsyncIdScope` doesn't emit the `before` or `after` event and can thus cause a lot of issues. Vedi https://github.com/nodejs/node/issues/14328 per maggiori dettagli.
+
+<a id="DEP0089"></a>
+
+### DEP0089: require('assert')
+
+Tipo: Documentation-only
+
+L'importazione diretta dell'assert non è consigliata in quanto le funzioni esposte utilizzano controlli di uguaglianza poco dettagliati. Utilizza `require('assert').strict` al suo posto. L'API è la stessa del legacy assert, ma userà sempre controlli di uguaglianza rigorosi.
+
+<a id="DEP0098"></a>
+
+### DEP0098: AsyncHooks Embedder AsyncResource.emit{Before,After} APIs
+
+Tipo: Runtime
+
+The embedded API provided by AsyncHooks exposes emit{Before,After} methods which are very easy to use incorrectly which can lead to unrecoverable errors.
+
+Utilizza al suo posto l'API [`asyncResource.runInAsyncScope()`][] che fornisce un'alternativa molto più sicura e più conveniente. Vedi https://github.com/nodejs/node/pull/18513 per maggiori dettagli.

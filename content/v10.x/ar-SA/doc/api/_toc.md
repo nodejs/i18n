@@ -52,9 +52,10 @@
 * [أدوات](util.html)
 * [V8](v8.html)
 * [الجهاز الإفتراضي](vm.html)
+* [Worker Threads](worker_threads.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [مستودع GitHub ومتتبع التذاكر](https://github.com/nodejs/node)
+* [مستودع GitHub و متتبع القضايا](https://github.com/nodejs/node)
 * [القائمة البريدية](https://groups.google.com/group/nodejs)
