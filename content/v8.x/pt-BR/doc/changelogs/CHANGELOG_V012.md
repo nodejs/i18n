@@ -5,7 +5,7 @@
 <table>
   
 <tr>
-<th>Stable</th>
+<th>Estáveis</th>
 </tr>
   
   <tr>
