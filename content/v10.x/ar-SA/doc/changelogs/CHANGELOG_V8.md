@@ -101,8 +101,8 @@ Fixes for the following CVEs are included in this release:
 * [[`987138e488`](https://github.com/nodejs/node/commit/987138e488)] - **deps**: upgrade openssl sources to 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`1b7f6d9072`](https://github.com/nodejs/node/commit/1b7f6d9072)] - **deps**: reject interior blanks in Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`86c9ec6c5c`](https://github.com/nodejs/node/commit/86c9ec6c5c)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
-* [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: minor adjustments (Eugene Ostroukhov)
-* [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: check Host header (Ali Ijaz Sheikh)
+* [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: minor adjustments (Eugene Ostroukhov) 
+* [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: check Host header (Ali Ijaz Sheikh) 
 * [[`0641f2dbf9`](https://github.com/nodejs/node/commit/0641f2dbf9)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`6ee4228c1d`](https://github.com/nodejs/node/commit/6ee4228c1d)] - **src**: drop CNNIC+StartCom certificate whitelisting (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **tools**: update certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
@@ -1785,7 +1785,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs** 
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
-* **inspector** 
+* **الفاحص** 
   * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
 * **module** 
   * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
@@ -2831,7 +2831,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 
 * **الخطافات الغير تزامنية** 
   * When one `Promise` leads to the creation of a new `Promise`, the parent `Promise` will be identified as the trigger [[`135f4e6643`](https://github.com/nodejs/node/commit/135f4e6643)] [#13367](https://github.com/nodejs/node/pull/13367).
-* **Dependencies** 
+* **التبعيات** 
   * libuv has been updated to 1.12.0 [[`968596ec77`](https://github.com/nodejs/node/commit/968596ec77)] [#13306](https://github.com/nodejs/node/pull/13306).
   * npm has been updated to 5.0.3 [[`ffa7debd7a`](https://github.com/nodejs/node/commit/ffa7debd7a)] [#13487](https://github.com/nodejs/node/pull/13487).
 * **File system** 
@@ -2988,7 +2988,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Error events emitted when using `console` methods are now supressed. [[`f18e08d820`](https://github.com/nodejs/node/commit/f18e08d820)] [#9744](https://github.com/nodejs/node/pull/9744).
 
-* **Dependencies**
+* **التبعيات**
   
   * The npm client has been updated to 5.0.0 [[`3c3b36af0f`](https://github.com/nodejs/node/commit/3c3b36af0f)] [#12936](https://github.com/nodejs/node/pull/12936).
   * V8 has been updated to 5.8 with forward ABI stability to 6.0 [[`60d1aac8d2`](https://github.com/nodejs/node/commit/60d1aac8d2)] [#12784](https://github.com/nodejs/node/pull/12784).
