@@ -4,13 +4,13 @@
 
 > Stabilität: 2 - Stabil
 
-The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. Es kann zugegriffen werden durch:
+Das `string_decoder` Modul bietet eine API zur Dekodierung von `Puffer` Objekten in auf eine Weise, die kodierte Multibyte UTF-8 und UTF-16 Zeichen beibehält. Es kann zugegriffen werden durch:
 
 ```js
 const { StringDecoder } = require('string_decoder');
 ```
 
-The following example shows the basic use of the `StringDecoder` class.
+Das folgende Beispiel zeigt die grundlegende Verwendung der `StringDecoder` Klasse.
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -23,9 +23,9 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
+Wenn eine `Buffer` Instanz auf die `StringDecoder` Instanz geschrieben wird ein interner Puffer wird verwendet, um sicherzustellen, dass der dekodierte String keine unvollständigen Multibyte-Zeichen enthält. Diese werden in Buffer behalten bis der nächste Aufruf zu `stringDecoder.write()` oder zu `stringDecoder.end()` aufgerufen wurde.
 
-In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
+Im folgenden Beispiel werden die drei UTF-8-kodierten Bytes des Europäischen Euro Symbols (`€`) über drei separate Operationen geschrieben:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -43,9 +43,9 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
+* `Kodierung` {string} Die Zeichenkodierung des `StringDecoder` wird verwendet. **Default:** `'utf8'`.
 
-Creates a new `StringDecoder` instance.
+Erstellt einen neuen `StringDecoder` Instanz.
 
 ### `stringDecoder.end([buffer])`
 <!-- YAML
@@ -55,9 +55,9 @@ added: v0.9.3
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
 * Gibt zurück: {string}
 
-Returns any remaining input stored in the internal buffer as a string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
+Gibt alle übrigen im internen Puffer gespeicherten Eingaben als String zurück. Bytes die unvollständige UTF-8 und UTF-16 Zeichen darstellen, werden durch ersetzt werden, die für die Zeichenkodierung geeignet sind.
 
-If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
+Wenn das `buffer`-Argument angegeben wird, wird ein letzter Aufruf an `stringDecoder.write()` vor der Rückgabe der restlichen Eingabe durchgeführt.
 
 ### `stringDecoder.write(buffer)`
 <!-- YAML
