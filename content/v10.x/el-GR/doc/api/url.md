@@ -4,7 +4,7 @@
 
 > Σταθερότητα: 2 - Σταθερό
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+The `url` module provides utilities for URL resolution and parsing. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
 
 ```js
 const url = require('url');
