@@ -1,8 +1,8 @@
-# Stream
+# 流
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides an API for implementing the stream interface.
 
@@ -728,7 +728,7 @@ Is `true` after [`readable.destroy()`](#stream_readable_destroy_error) has been 
 added: v0.11.14
 -->
 
-* Returns: {boolean}
+* 返回：{boolean}
 
 The `readable.isPaused()` method returns the current operating state of the `Readable`. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
 
