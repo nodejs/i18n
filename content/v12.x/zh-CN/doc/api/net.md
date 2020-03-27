@@ -1,9 +1,9 @@
-# Net
+# 网络
 
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -204,7 +204,7 @@ changes:
     description: The `ipv6Only` option is supported.
 -->
 
-* `options` {Object} 必填。 Supports the following properties:
+* `options` {Object} 必填。 支持如下属性：
   * `port` {number}
   * `host` {string}
   * `path` {string} 如果指定了 `port`，此选项会被忽略。 See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
@@ -422,7 +422,7 @@ Emitted if the socket times out from inactivity. This is only to notify that the
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* 返回：{Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -743,7 +743,7 @@ added: v0.1.90
 * `data` {string|Buffer|Uint8Array}
 * `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
 * `callback` {Function}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
@@ -943,7 +943,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {integer}
+* 返回：{integer}
 
 Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
 
@@ -953,7 +953,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 
@@ -963,6 +963,6 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
