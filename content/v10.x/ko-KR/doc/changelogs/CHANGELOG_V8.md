@@ -137,7 +137,7 @@ Fixes for the following CVEs are included in this release:
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **cli**: 
   * add --stack-trace-limit to NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
-* **console**: 
+* **콘솔**: 
   * add support for console.debug (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
 * **module**: 
   * add builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
@@ -151,11 +151,11 @@ Fixes for the following CVEs are included in this release:
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 * **net**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
-* **process**: 
+* **프로세스**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
   * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
-* **process**: 
+* **프로세스**: 
   * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
 * **stream**: 
   * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
@@ -777,7 +777,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **console**: 
+* **콘솔**: 
   * avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
 * **http2**: 
   * improve errors thrown in header validation (Joyee Cheung) [#16718](https://github.com/nodejs/node/pull/16718)
@@ -1776,7 +1776,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 * **build** 
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
-* **console** 
+* **콘솔** 
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps** 
   * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
