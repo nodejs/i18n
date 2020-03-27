@@ -1,4 +1,4 @@
-# Deprecated APIs
+# अस्वीकृत एपीआई
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
