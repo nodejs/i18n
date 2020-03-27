@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+@// NB(chrisdickinson): 如果您移动这个文件, 请确保更新tools/doc/html.js 文件 @// 指向到新的位置。
 
 * [关于这些文档](documentation.html)
 * [用法和示例](synopsis.html)
