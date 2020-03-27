@@ -3,7 +3,7 @@
 <!--introduced_in=v8.0.0-->
 <!-- type=misc -->
 
-> Stability: 2 - Stable
+> Stabilitet: 2 - Stabil
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (for example, V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
