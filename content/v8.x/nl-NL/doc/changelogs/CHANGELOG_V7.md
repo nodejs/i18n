@@ -1994,7 +1994,7 @@ Thank you to @italoacasas for preparing the majority of this release.
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
-* Child Process 
+* Sub-proces 
   * The fork and execFile methods now have stronger argument validation [#7399](https://github.com/nodejs/node/pull/7399).
 * Cluster 
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
