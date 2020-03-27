@@ -55,7 +55,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [アーカイブ](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
 
@@ -119,7 +119,7 @@ Fixes for the following CVEs are included in this release:
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
   * re land npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
   * ICU 60 bump (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
-* **crypto**: 
+* **暗号化**: 
   * Support both OpenSSL 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
   * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
@@ -744,7 +744,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **buffer**: 
+* **バッファ**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -1068,7 +1068,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **crypto**: 
+* **暗号化**: 
   * expose ECDH class [#8188](https://github.com/nodejs/node/pull/8188)
 * **http2**: 
   * http2 is now exposed by default without the need for a flag [#15685](https://github.com/nodejs/node/pull/15685)
@@ -1611,7 +1611,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **crypto** 
+* **暗号化** 
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram** 
   * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
