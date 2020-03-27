@@ -467,7 +467,7 @@ When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currentl
 
 Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+Метод `decipher.setAuthTag()` должен вызываться до [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -482,7 +482,7 @@ When data has been encrypted without standard block padding, calling `decipher.s
 
 Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+Метод `decipher.setAutoPadding()` должен вызываться до [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -1214,7 +1214,7 @@ changes:
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureEncoding`. If a `signatureEncoding` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+The `verify` object can not be used again after `verify.verify()` has been called. Множественные вызовы `verify.verify()` приведут к выводу ошибки.
 
 ## Методы и свойства модуля `crypto`
 
