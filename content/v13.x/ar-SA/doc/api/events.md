@@ -1,8 +1,8 @@
-# Events
+# الأحداث
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 <!--type=module-->
 
