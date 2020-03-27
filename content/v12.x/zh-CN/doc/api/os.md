@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定
 
-The `os` module provides operating system-related utility methods and properties. It can be accessed using:
+The `os` module provides operating system-related utility methods and properties. 可以通过如下方式访问：
 
 ```js
 const os = require('os');
@@ -19,8 +19,8 @@ added: v0.7.8
 
 The operating system-specific end-of-line marker.
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` 在 POSIX 系统上
+* `\r\n` 在 Windows 系统上
 
 ## `os.arch()`
 <!-- YAML
@@ -51,16 +51,16 @@ added: v0.3.3
 
 Returns an array of objects containing information about each logical CPU core.
 
-The properties included on each object include:
+在每个对象中包含的属性包括：
 
 * `model` {string}
-* `speed` {number} (in MHz)
+* `speed` {number} (以 MHz 为单位)
 * `times` {Object}
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
-  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
-  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
-  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+  * `user` {number} 在用户模式下使用的 CPU 毫秒数。
+  * `nice` {number} 在良好模式下使用的 CPU 毫秒数。
+  * `sys` {number} 在系统模式下使用的 CPU 毫秒数。
+  * `idle` {number} 在空闲模式下使用的 CPU 毫秒数。
+  * `irq` {number} 在中断模式下使用的 CPU 毫秒数。
 ```js
 [
   {
@@ -168,16 +168,16 @@ added: v0.6.0
 
 Returns an object containing network interfaces that have been assigned a network address.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+在返回对象中，每个键值标识了一个网络接口。 相关的值是一个对象数组，其中每个对象描述一个被分配的网址。
 
-The properties available on the assigned network address object include:
+被赋予网络地址的对象包含的属性包括：
 
-* `address` {string} The assigned IPv4 or IPv6 address
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
+* `address` {string} 被赋予的 IPv4 或 IPv6 地址
+* `netmask` {string} IPv4 或 IPv6 网络掩码
+* `family` {string} `IPv4` 或 `IPv6`
+* `mac` {string} 网络接口的 MAC 地址
+* `internal` {boolean} 当网络接口为 loopback 或相似的不能远程访问的接口时，其值为 `true`，否则其值为 `false`
+* `scopeid` {number} 数字型的 IPv6 域 ID (只有当 `family` 为`IPv6` 时需要指定)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 ```js
 {
@@ -238,7 +238,7 @@ added: v0.3.3
 
 Returns the operating system as a string.
 
-On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. See https://en.wikipedia.org/wiki/Uname#Examples for more information.
+On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 See https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## `os.setPriority([pid, ]priority)`<!-- YAML
 added: v10.10.0
@@ -290,22 +290,22 @@ Returns the system uptime in number of seconds.
 ## `os.userInfo([options])`<!-- YAML
 added: v6.0.0
 -->* `options` {Object}
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
+  * `encoding` {string} 用于解释结果字符串的字符编码。 如果 `encoding` 被设置为 `'buffer'`，则 `username`, `shell`, 和 `homedir` 将会是 `Buffer` 的实例。 **Default:** `'utf8'`.
 * 返回：{Object}
 
 Returns information about the currently effective user. On POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
-The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries environment variables for the home directory before falling back to the operating system response.
+`os.userInfo()` 返回的 `homedir` 值由操作系统提供。 This differs from the result of `os.homedir()`, which queries environment variables for the home directory before falling back to the operating system response.
 
 Throws a [`SystemError`][] if a user has no `username` or `homedir`.
 
-## OS Constants
+## 操作系统常量
 
-The following constants are exported by `os.constants`.
+`os.constants` 会导出如下常量。
 
 Not all constants will be available on every operating system.
 
-### Signal Constants<!-- YAML
+### 信号常量<!-- YAML
 changes:
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
@@ -319,8 +319,7 @@ changes:
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Sent to indicate when a controlling terminal is closed or a parent
-    process exits.</td>
+    <td>发送此信号来表明一个控制终端关闭或者是父进程退出。</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
@@ -329,8 +328,7 @@ changes:
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Sent to indicate when a user wishes to terminate a process and perform a
-    core dump.</td>
+    <td>发送此信号来表明用户希望终止进程并执行核心转储。</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
@@ -338,145 +336,139 @@ changes:
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>当发生异常时，发送此信号给一个进程。</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>发送此信号给一个进程来请求终止。</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td><code>SIGABRT</code> 的同义词</td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>发送此信号给一个进程来通知该进程已经造成了总线错误。</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>发送此信号给一个进程来通知该进程进行了一个非法的算术操作。</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>发送此信号给一个进程来立即终止该进程。</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>发送此信号给一个进程来识别用户定义的条件。</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>发送此信号给一个进程来通知段错误。</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>当进程试图向已断开连接的管道写入时发送此信号给该进程。</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>当系统定时器到点时，发送此信号到进程。</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>发送此信号给一个进程来请求终止。</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>当子进程终止时发送此信号给其父进程。</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>发送此信号给一个进程来表明一个协处理器的栈错误。</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>发送此信号来指示操作系统继续一个暂停的进程。</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>发送此信号来指示操作系统停止一个进程。</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>发送此信号来请求停止一个进程。</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>当用户希望终止一个进程时，发送此信号。</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>当进程在后台读取 TTY 时，发送此信号给该进程。</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>当进程在后台写入到 TTY 时，发送此信号给该进程。</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>当套接字有紧急的数据需要读取时，发送此信号给进程。</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>当进程超过其在 CPU 上的使用限制时，发送此信号给该进程。</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>当进程生成的文件大小超过最大允许值时，发送此信号给该进程。</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>当虚拟定时器到点时，发送此信号到进程。</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>当系统定时器到点时，发送此信号到进程。</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>当控制终端改变大小时，发送此信号到进程。</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Sent to a process when I/O is available.</td>
+    <td>当 I/O 可用时，发送此信号到进程。</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Synonym for <code>SIGIO</code></td>
+    <td><code>SIGIO</code> 的同义词</td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Sent to a process when a file lock has been lost.</td>
+    <td>当文件锁丢失时发送此信号给进程。</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Sent to a process to notify of a power failure.</td>
+    <td>发送此信号给一个进程来通知电源故障。</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Synonym for <code>SIGPWR</code></td>
+    <td><code>SIGPWR</code> 的同义词</td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
-    <td>Sent to a process to notify of a bad argument.</td>
+    <td>发送此信号给一个进程来通知参数错误。</td>
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Synonym for <code>SIGSYS</code></td>
+    <td><code>SIGSYS</code> 的同义词</td>
   </tr>
 </table>
 
-### Error Constants
+### 错误常量
 
 The following error constants are exported by `os.constants.errno`.
 
-#### POSIX Error Constants
+#### POSIX 错误常量
 
 <table>
   <tr>
@@ -485,24 +477,23 @@ The following error constants are exported by `os.constants.errno`.
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>表明参数列表比预期的要长。</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>表明操作没有足够的权限。</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>表明网络地址已经被使用。</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>表明网络地址当前不可用。</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>表明不支持的网络地址系列。</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
@@ -511,304 +502,301 @@ The following error constants are exported by `os.constants.errno`.
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>表明套接字已经有正在进行的连接。</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>表明文件描述符无效。</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>表明无效的数据消息。</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
-    <td>Indicates that a device or resource is busy.</td>
+    <td>表明设备或资源忙碌中。</td>
   </tr>
   <tr>
     <td><code>ECANCELED</code></td>
-    <td>Indicates that an operation was canceled.</td>
+    <td>表明一个操作已经被取消。</td>
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indicates that there are no child processes.</td>
+    <td>表明没有子进程。</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
-    <td>Indicates that the network connection has been aborted.</td>
+    <td>表明网络连接被中断。</td>
   </tr>
   <tr>
     <td><code>ECONNREFUSED</code></td>
-    <td>Indicates that the network connection has been refused.</td>
+    <td>表明网络连接被拒绝。</td>
   </tr>
   <tr>
     <td><code>ECONNRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>表明网络连接被重置。</td>
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>表明已避免了一个资源死锁。</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>表明需要一个目标地址。</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
-    <td>Indicates that an argument is out of the domain of the function.</td>
+    <td>表明参数超出了函数作用域。</td>
   </tr>
   <tr>
     <td><code>EDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>表明超出了磁盘限额。</td>
   </tr>
   <tr>
     <td><code>EEXIST</code></td>
-    <td>Indicates that the file already exists.</td>
+    <td>表明文件已经存在。</td>
   </tr>
   <tr>
     <td><code>EFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>表明一个无效的指针地址。</td>
   </tr>
   <tr>
     <td><code>EFBIG</code></td>
-    <td>Indicates that the file is too large.</td>
+    <td>表明文件太大了。</td>
   </tr>
   <tr>
     <td><code>EHOSTUNREACH</code></td>
-    <td>Indicates that the host is unreachable.</td>
+    <td>表明主机无法访问。</td>
   </tr>
   <tr>
     <td><code>EIDRM</code></td>
-    <td>Indicates that the identifier has been removed.</td>
+    <td>表明已删除标识符。</td>
   </tr>
   <tr>
     <td><code>EILSEQ</code></td>
-    <td>Indicates an illegal byte sequence.</td>
+    <td>表明无效的字节序列。</td>
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>表明操作正在进行中。</td>
   </tr>
   <tr>
     <td><code>EINTR</code></td>
-    <td>Indicates that a function call was interrupted.</td>
+    <td>表明一个函数调用被中断。</td>
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
-    <td>Indicates that an invalid argument was provided.</td>
+    <td>表明提供了无效参数。</td>
   </tr>
   <tr>
     <td><code>EIO</code></td>
-    <td>Indicates an otherwise unspecified I/O error.</td>
+    <td>表明其他的，不确定的 I/O 错误。</td>
   </tr>
   <tr>
     <td><code>EISCONN</code></td>
-    <td>Indicates that the socket is connected.</td>
+    <td>表明套接字已连接。</td>
   </tr>
   <tr>
     <td><code>EISDIR</code></td>
-    <td>Indicates that the path is a directory.</td>
+    <td>表明路径为一个目录。</td>
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
-    <td>Indicates too many levels of symbolic links in a path.</td>
+    <td>表明路径中有太多层的符号连接。</td>
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>表明打开了太多的文件。</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
-    <td>Indicates that there are too many hard links to a file.</td>
+    <td>表明文件上有太多的硬连接。</td>
   </tr>
   <tr>
     <td><code>EMSGSIZE</code></td>
-    <td>Indicates that the provided message is too long.</td>
+    <td>表明提供的消息太长了。</td>
   </tr>
   <tr>
     <td><code>EMULTIHOP</code></td>
-    <td>Indicates that a multihop was attempted.</td>
+    <td>表明尝试了多跳。</td>
   </tr>
   <tr>
     <td><code>ENAMETOOLONG</code></td>
-    <td>Indicates that the filename is too long.</td>
+    <td>表明文件名过长。</td>
   </tr>
   <tr>
     <td><code>ENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>表明网络关闭。</td>
   </tr>
   <tr>
     <td><code>ENETRESET</code></td>
-    <td>Indicates that the connection has been aborted by the network.</td>
+    <td>表明连接被网络终止。</td>
   </tr>
   <tr>
     <td><code>ENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>表明网络不可用。</td>
   </tr>
   <tr>
     <td><code>ENFILE</code></td>
-    <td>Indicates too many open files in the system.</td>
+    <td>表明在系统中打开的文件过多。</td>
   </tr>
   <tr>
     <td><code>ENOBUFS</code></td>
-    <td>Indicates that no buffer space is available.</td>
+    <td>表明没有可用的缓冲区空间。</td>
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
-    <td>Indicates that no message is available on the stream head read
-    queue.</td>
+    <td>表明在流头部读取队列中没有可用的消息。</td>
   </tr>
   <tr>
     <td><code>ENODEV</code></td>
-    <td>Indicates that there is no such device.</td>
+    <td>表明没有此设备。</td>
   </tr>
   <tr>
     <td><code>ENOENT</code></td>
-    <td>Indicates that there is no such file or directory.</td>
+    <td>表明没有此文件或目录。</td>
   </tr>
   <tr>
     <td><code>ENOEXEC</code></td>
-    <td>Indicates an exec format error.</td>
+    <td>表明一个执行格式错误。</td>
   </tr>
   <tr>
     <td><code>ENOLCK</code></td>
-    <td>Indicates that there are no locks available.</td>
+    <td>表明没有可用的锁。</td>
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
-    <td>Indications that a link has been severed.</td>
+    <td>表明链接已被切断。</td>
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indicates that there is not enough space.</td>
+    <td>表明没有足够的空间。</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indicates that there is no message of the desired type.</td>
+    <td>表明没有期待类型的消息。</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indicates that a given protocol is not available.</td>
+    <td>表明给定的协议不可用。</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indicates that there is no space available on the device.</td>
+    <td>表明在此设备上没有可用空间。</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
-    <td>Indicates that there are no stream resources available.</td>
+    <td>表明没有流资源可用。</td>
   </tr>
   <tr>
     <td><code>ENOSTR</code></td>
-    <td>Indicates that a given resource is not a stream.</td>
+    <td>表明给定的资源不是流。</td>
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indicates that a function has not been implemented.</td>
+    <td>表明函数尚未被实现。</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>表明套接字未被连接。</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indicates that the path is not a directory.</td>
+    <td>表明路径不是一个目录。</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>表明目录非空。</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indicates that the given item is not a socket.</td>
+    <td>表明给定的项目不是套接字。</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indicates that a given operation is not supported.</td>
+    <td>表明给定的操作不被支持。</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indicates an inappropriate I/O control operation.</td>
+    <td>表明不恰当的 I/O 控制操作。</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indicates no such device or address.</td>
+    <td>表明没有此设备或地址。</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indicates that an operation is not supported on the socket. Although
+    <td>表明在套接字上不支持的操作。 Although
     <code>ENOTSUP</code> and <code>EOPNOTSUPP</code> have the same value
     on Linux, according to POSIX.1 these error values should be distinct.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>表明值过长以至于不能存储到给定的数据类型中。</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>表明操作不被允许。</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>表明一个断开的管道。</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>表明一个协议错误。</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>表明一个不支持的协议。</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>表明套接字协议类型错误。</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>表明结果太大了。</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>表明文件系统为只读。</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indicates an invalid seek operation.</td>
+    <td>表明无效的搜索操作。</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
-    <td>Indicates that there is no such process.</td>
+    <td>表明没有此进程。</td>
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indicates that the file handle is stale.</td>
+    <td>表明文件句柄是旧的。</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
-    <td>Indicates an expired timer.</td>
+    <td>表明已过期的定时器。</td>
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indicates that the connection timed out.</td>
+    <td>表明连接超时。</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indicates that a text file is busy.</td>
+    <td>表明文本文件忙。</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
-    <td>Indicates that the operation would block.</td>
+    <td>表明此操作会阻塞。</td>
   </tr>
   <tr>
     <td><code>EXDEV</code></td>
-    <td>Indicates an improper link.
+    <td>表明一个不正确的链接。
   </tr>
 </table>
 
-#### Windows Specific Error Constants
+#### Windows 系统特定的错误常量。
 
 The following error codes are specific to the Windows operating system.
 
@@ -819,180 +807,179 @@ The following error codes are specific to the Windows operating system.
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>表明被终止的函数调用。</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>表明无效的文件句柄。</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>表明权限不足以完成此操作。</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>表明一个无效的指针地址。</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>表明传递了无效的参数。</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>表明打开了太多的文件。</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>表明资源暂时不可用。</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>表明操作正在进行中。</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>表明操作正在进行中。</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>表明资源不是套接字。</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>表明需要一个目标地址。</td>
   </tr>
   <tr>
     <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td>表明消息尺寸太长。</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>表明套接字的协议类型错误。</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>表明错误的协议选项。</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>表明不支持的协议。</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>表明不支持的套接字类型。</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>表明不支持的操作。</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>表明不支持的协议系列。</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>表明不支持的地址系列。</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>表明网络地址已经被使用。</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>表明网络地址不可用。</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>表明网络关闭。</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>表明网络不可用。</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>表明网络连接被重置。</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>表明连接已被中断。</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
-    <td>Indicates that the connection has been reset by the peer.</td>
+    <td>表明连接已被对等方重置。</td>
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indicates that there is no buffer space available.</td>
+    <td>表明没有可用的缓冲区空间。</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indicates that the socket is already connected.</td>
+    <td>表明套接字已连接。</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>表明套接字未被连接。</td>
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
-    <td>Indicates that data cannot be sent after the socket has been
-    shutdown.</td>
+    <td>表明在套接字关闭后不能发送数据。</td>
   </tr>
   <tr>
     <td><code>WSAETOOMANYREFS</code></td>
-    <td>Indicates that there are too many references.</td>
+    <td>表明有太多的引用。</td>
   </tr>
   <tr>
     <td><code>WSAETIMEDOUT</code></td>
-    <td>Indicates that the connection has timed out.</td>
+    <td>表明连接超时。</td>
   </tr>
   <tr>
     <td><code>WSAECONNREFUSED</code></td>
-    <td>Indicates that the connection has been refused.</td>
+    <td>表明连接已被拒绝。</td>
   </tr>
   <tr>
     <td><code>WSAELOOP</code></td>
-    <td>Indicates that a name cannot be translated.</td>
+    <td>表明名称不能被翻译。</td>
   </tr>
   <tr>
     <td><code>WSAENAMETOOLONG</code></td>
-    <td>Indicates that a name was too long.</td>
+    <td>表明名称过长。</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTDOWN</code></td>
-    <td>Indicates that a network host is down.</td>
+    <td>表明网络主机已关闭。</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indicates that there is no route to a network host.</td>
+    <td>表明没有到网络主机的路由。</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>表明目录非空。</td>
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
-    <td>Indicates that there are too many processes.</td>
+    <td>表明有太多进程。</td>
   </tr>
   <tr>
     <td><code>WSAEUSERS</code></td>
-    <td>Indicates that the user quota has been exceeded.</td>
+    <td>表明已超过用户限额。</td>
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>表明超出了磁盘限额。</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
-    <td>Indicates a stale file handle reference.</td>
+    <td>表明一个过期的文件句柄引用。</td>
   </tr>
   <tr>
     <td><code>WSAEREMOTE</code></td>
-    <td>Indicates that the item is remote.</td>
+    <td>表明项目是远程的。</td>
   </tr>
   <tr>
     <td><code>WSASYSNOTREADY</code></td>
-    <td>Indicates that the network subsystem is not ready.</td>
+    <td>表明网络子系统未就绪。</td>
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
@@ -1001,55 +988,55 @@ The following error codes are specific to the Windows operating system.
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
-    <td>Indicates that successful WSAStartup has not yet been performed.</td>
+    <td>表明 WSAStartup 尚未被成功执行。</td>
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
-    <td>Indicates that a graceful shutdown is in progress.</td>
+    <td>表明正在进行正常关机。</td>
   </tr>
   <tr>
     <td><code>WSAENOMORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>表明没有更多结果。</td>
   </tr>
   <tr>
     <td><code>WSAECANCELLED</code></td>
-    <td>Indicates that an operation has been canceled.</td>
+    <td>表明操作已被取消。</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
-    <td>Indicates that the procedure call table is invalid.</td>
+    <td>表明过程调用表是无效的。</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
-    <td>Indicates an invalid service provider.</td>
+    <td>表明无效的服务提供者。</td>
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
-    <td>Indicates that the service provider failed to initialized.</td>
+    <td>表明服务提供者初始化失败。</td>
   </tr>
   <tr>
     <td><code>WSASYSCALLFAILURE</code></td>
-    <td>Indicates a system call failure.</td>
+    <td>表明系统调用失败。</td>
   </tr>
   <tr>
     <td><code>WSASERVICE_NOT_FOUND</code></td>
-    <td>Indicates that a service was not found.</td>
+    <td>表明无法找到服务。</td>
   </tr>
   <tr>
     <td><code>WSATYPE_NOT_FOUND</code></td>
-    <td>Indicates that a class type was not found.</td>
+    <td>表明类类型无法找到。</td>
   </tr>
   <tr>
     <td><code>WSA_E_NO_MORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>表明没有更多结果。</td>
   </tr>
   <tr>
     <td><code>WSA_E_CANCELLED</code></td>
-    <td>Indicates that the call was canceled.</td>
+    <td>表明调用已被取消。</td>
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indicates that a database query was refused.</td>
+    <td>表明数据库查询被拒绝。</td>
   </tr>
 </table>
 
@@ -1138,7 +1125,7 @@ added: v10.10.0
   </tr>
 </table>
 
-### libuv Constants
+### libuv 常量
 
 <table>
   <tr>
