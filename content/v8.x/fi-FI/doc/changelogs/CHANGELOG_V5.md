@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Muut versiot 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -42,7 +42,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arkisto](CHANGELOG_ARCHIVE.md)
 
 *Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
