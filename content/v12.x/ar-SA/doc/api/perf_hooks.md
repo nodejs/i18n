@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
