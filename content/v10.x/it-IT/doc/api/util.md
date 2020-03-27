@@ -154,6 +154,9 @@ The `--throw-deprecation` command line flag and `process.throwDeprecation` prope
 added: v0.5.3
 changes:
 
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/22097
+    description: The `%d` and `%i` specifiers now support BigInt.
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
@@ -902,7 +905,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Restituisce `true` se il valore è un'istanza [`ArrayBuffer`][] incorporata. Questo *non* include le istanze [`SharedArrayBuffer`][]. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -985,7 +988,7 @@ added: v10.11.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -1005,7 +1008,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Restituisce `true` se il valore è un'istanza [`DataView`][] incorporata.
 
@@ -1235,7 +1238,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1654,7 +1657,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`object` indicato è un [`Error`][]. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un [`Error`][]. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1690,7 +1693,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`object` indicato è una `Function`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è una `Function`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1716,7 +1719,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`object` indicato è rigorosamente `null`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è rigorosamente `null`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1741,7 +1744,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`object` indicato è `null` o `undefined`. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è `null` o `undefined`. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
@@ -1820,7 +1823,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`object` indicato è un tipo primitivo. Otherwise, returns `false`.
+Restituisce `true` se l'`object` indicato è un tipo primitivo. In caso contrario, restituisce `false`.
 
 ```js
 const util = require('util');
