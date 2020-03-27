@@ -67,7 +67,7 @@ added: v0.6.1
 The `punycode.toASCII()` method converts a Unicode string representing an Internationalized Domain Name to [Punycode](https://tools.ietf.org/html/rfc3492). Only the non-ASCII parts of the domain name will be converted. Calling `punycode.toASCII()` on a string that already only contains ASCII characters will have no effect.
 
 ```js
-// encode domain names
+// codificar nombres de dominio
 punycode.toASCII('mañana.com');  // 'xn--maana-pta.com'
 punycode.toASCII('☃-⌘.com');   // 'xn----dqo34k.com'
 punycode.toASCII('example.com'); // 'example.com'
@@ -108,7 +108,7 @@ The `punycode.ucs2.decode()` method returns an array containing the numeric code
 
 ```js
 punycode.ucs2.decode('abc'); // [0x61, 0x62, 0x63]
-// surrogate pair for U+1D306 tetragram for centre:
+// par suplente para el tetragrama U+1D30 para el centro:
 punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
