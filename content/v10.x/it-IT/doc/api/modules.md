@@ -600,7 +600,7 @@ a.on('ready', () => {
 });
 ```
 
-Note that assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. This does not work:
+Da notare che l'assegnazione a `module.exports` deve essere eseguita immediatamente. It cannot be done in any callbacks. Questo non funziona:
 
 `x.js`:
 
@@ -667,7 +667,7 @@ added: v0.1.16
 
 - {string}
 
-The fully resolved filename to the module.
+Il filename completamente risolto nel modulo.
 
 ### module.id<!-- YAML
 added: v0.1.16
@@ -675,7 +675,7 @@ added: v0.1.16
 
 - {string}
 
-The identifier for the module. Typically this is the fully resolved filename.
+L'identificatore per il modulo. Typically this is the fully resolved filename.
 
 ### module.loaded
 
@@ -695,7 +695,7 @@ added: v0.1.16
 
 - {module}
 
-The module that first required this one.
+Il modulo che ha richiesto per primo questo modulo.
 
 ### module.paths<!-- YAML
 added: v0.4.0
@@ -711,7 +711,7 @@ added: v0.5.1
 
 - `id` {string}
 
-- Returns: {Object} `module.exports` from the resolved module
+- Restituisce: {Object} `module.exports` dal modulo risolto
 
 The `module.require` method provides a way to load a module as if `require()` was called from the original module.
 
@@ -731,7 +731,7 @@ added: v9.3.0
 
 - {string[]}
 
-A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third party or not.
+Un elenco dei nomi di tutti i moduli forniti da Node.js. Can be used to verify if a module is maintained by a third party or not.
 
 Note that `module` in this context isn't the same object that's provided by the [module wrapper](#modules_the_module_wrapper). To access it, require the `Module` module:
 
