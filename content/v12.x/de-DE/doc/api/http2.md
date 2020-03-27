@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Error Handling
+### Fehlerbehandlung
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2400,7 +2400,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v12.16.0
--->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
+-->> Stabilität: 0 - Veraltet. Use [`response.writableEnded`][].
 
 * {boolean}
 
