@@ -4,21 +4,21 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+L'objectif de cette documentation est d'expliquer de manière exhaustive l'API Node.js, tant d'un point de vue référenciel que conceptuel. Chaque section décrit un module intégré ou un concept de haut niveau.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Lorsque approprié, les type de propriétés, les arguments de méthodes et les arguments fournis aux gestionnaires d'événements sont détaillés dans une liste sous l'entête du sujet.
 
 ## Contribuer
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Chaque fichier est généré en fonction du fichier `.md` correspondant dans le dossier `doc/api/` source de Node.js. La documentation est générée en utilisant le programme `tools/doc/generate.js` . Un modèle HTML est situé dans `doc/template.html`.
 
 ## Indice de stabilité
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Throughout the documentation are indications of a section's stability. L'API Node.js continue à évoluer et pendant cette phase de maturité certaines parties sont plus fiables que d'autres. Certaines sont tellement fiables et éprouvées qu'il est peut probable qu'elles changent à nouveau. D'autres sont toutes neuves et expérimentales ou ne sont pas réputée pour être fiable et sont en cours de refonte.
 
 Les indices de stabilité sont les suivants :
 
@@ -32,7 +32,7 @@ Les indices de stabilité sont les suivants :
 
 > Stabilité: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Les utilisateurs finaux ne sont peut-être pas au courant de l'utilisation des fonctionnalités expérimentales et risquent donc des erreurs ou changements de comportements inattendus lorsque des modifications de l'API ont lieu. Afin d'éviter de telles surprises, les fonctionnalités `Expérimentales` peuvent nécessiter une option de ligne de commande afin de les activer explicitement ou peuvent émettre des messages d'avertissement. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Format JSON
 
@@ -42,10 +42,10 @@ added: v0.6.12
 
 > Stabilité: 1 - Expérimental
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Chaque document `.html` a un document `.json` correspondant présentant les mêmes informations de manière structurée. Cette fonctionnalité est expérimentale et est ajoutée au bénéfice des IDEs et d'autres utilitaires qui souhaite utiliser la documentation de manière programmatique.
 
 ## Appels systèmes et pages de manuel
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Les appels système tels que open(2) et read(2) définissent l'interface entre les programmes utilisateur et le système d'exploitation sous-jacent. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. La documentation est liée aux pages de manuel qui décrivent comment l'appel système fonctionne.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
+La majorité des appels systèmes Unix ont un équivalent Windows, mais le comportement sur Windows peut être différent des versions Linux et macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
