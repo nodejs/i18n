@@ -1961,7 +1961,7 @@ util.isPrimitive(new Date());
 ### `util.isRegExp(object)`<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->> Vakaus: 0 - Ei enää käytössä
 
 * `object` {any}
 * Returns: {boolean}
