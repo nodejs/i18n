@@ -4,7 +4,7 @@
 
 > 稳定性: 2 - 稳定的
 
-一个 Node.js 单实例在一个线程中运行。 To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+一个 Node.js 单实例在一个线程中运行。 为了利用多核系统，用户有事想要启动 Node.js 集群来处理负载。
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -47,27 +47,27 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+请注意，在 Windows 中，还不能为 Worker 设置命名管道服务器。
 
 ## 工作原理
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+Worker 进程使用 [`child_process.fork()`][] 方法产生，它们可以通过 IPC 与父进程通信并来回传递服务器句柄。
 
-The cluster module supports two methods of distributing incoming connections.
+cluster 模块支持两种分发传入连接的方法。
 
-The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+第一个(除 Windows 之外的所有平台的默认的那个)是轮询方法，master 进程侦听端口，接受新的连接并且通过轮询 Worker 的方式分发，通过一些内置的机制来避免重复加载Worker 进程。
 
-The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
+第二种方法 master 进程创建侦听 socket 并将其发送给有关 Worker。 然后，Worker 直接接受传入的连接。
 
-从理论上来讲，第二种方法的性能表现最好。 In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+从理论上来讲，第二种方法的性能表现最好。 然而，在实践中，由于操作系统调度程序的反复无常，分发往往非常不平衡。 从以观察到的负载来看，总共8个进程当中，超过70%的连接仅在两个进程中结束。
 
-Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
+因为 `server.listen()` 将大部分的工作都交给了 master 进程，在以下三种情况下，一个正常 Node.js 进程和一个 cluster Worker 进程之间的行为表现不同：
 
-1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
+2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 To listen on a unique port, generate a port number based on the cluster worker ID.
 
 Node.js 不提供路由逻辑。 It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
@@ -570,7 +570,7 @@ If accuracy is important, use `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} 当所有的 Worker 都断开连接并且所有的句柄都关闭后调用。
 
 Calls `.disconnect()` on each worker in `cluster.workers`.
 
@@ -601,7 +601,7 @@ added: v0.8.1
 
 * {boolean}
 
-True 表示当前进程为 master 进程。 This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+True 表示当前进程为 master 进程。 这是通过 `process.env.NODE_UNIQUE_ID` 决定的。 如果 `process.env.NODE_UNIQUE_ID` 为 undefined, 则 `isMaster` 为 `true`。
 
 ## cluster.isWorker
 
