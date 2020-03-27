@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
@@ -235,9 +235,9 @@
 
 ### Notable Changes
 
-* **crypto**
+* **التشفير**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **events**
+* **الأحداث**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
@@ -2508,7 +2508,7 @@ Fixes for the following CVEs are included in this release:
   * FreeBSD 10 is no longer supported. [#22617](https://github.com/nodejs/node/pull/22617)
 * `child_process`
   * The default value of the `windowsHide` option has been changed to `true`. [#21316](https://github.com/nodejs/node/pull/21316)
-* `console`
+* `المحاورة`
   * `console.countReset()` will emit a warning if the timer being reset does not exist. [#21649](https://github.com/nodejs/node/pull/21649)
   * `console.time()` will no longer reset a timer if it already exists. [#20442](https://github.com/nodejs/node/pull/20442)
 * Dependencies
