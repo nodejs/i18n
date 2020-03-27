@@ -55,7 +55,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archiwum](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
 
@@ -149,7 +149,7 @@ Fixes for the following CVEs are included in this release:
   * support generic `Duplex` streams (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
-* **net**: 
+* **sieć**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
 * **proces**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
@@ -157,7 +157,7 @@ Fixes for the following CVEs are included in this release:
   * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
 * **proces**: 
   * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
-* **stream**: 
+* **strumień**: 
   * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
 * **trace_events**: 
   * add executionAsyncId to init events (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
@@ -744,7 +744,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **buffer**: 
+* **bufor**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -1043,7 +1043,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **net**: 
+* **sieć**: 
   * Fix timeout with null handle issue. This is a regression in Node 8.8.0 [#16489](https://github.com/nodejs/node/pull/16489)
 
 ### Commits
