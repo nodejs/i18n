@@ -1,8 +1,8 @@
-# Crypto
+# 加密算法
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -790,7 +790,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
@@ -1322,7 +1322,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
 
@@ -1338,7 +1338,7 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated
+> 稳定性：0 - 已弃用
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
@@ -1539,7 +1539,7 @@ added: v0.11.14
 * `curveName` {string}
 * 返回：{ECDH}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. 使用 [`crypto.getCurves()`][] 来获取可用的曲线名称列表。 On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
 ### `crypto.createHash(algorithm[, options])`
 <!-- YAML
@@ -1778,7 +1778,7 @@ changes:
   * `namedCurve`: {string} Name of the curve to use (EC).
   * `publicKeyEncoding`: {Object} See [`keyObject.export()`][].
   * `privateKeyEncoding`: {Object} See [`keyObject.export()`][].
-* Returns: {Object}
+* 返回：{Object}
   * `publicKey`: {string | Buffer | KeyObject}
   * `privateKey`: {string | Buffer | KeyObject}
 
@@ -1955,7 +1955,7 @@ changes:
 * `iterations` {number}
 * `keylen` {number}
 * `digest` {string}
-* Returns: {Buffer}
+* 返回：{Buffer}
 
 Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
@@ -2311,7 +2311,7 @@ changes:
   * `r` {number} Alias for `blockSize`. Only one of both may be specified.
   * `p` {number} Alias for `parallelization`. Only one of both may be specified.
   * `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
-* Returns: {Buffer}
+* 返回：{Buffer}
 
 Provides a synchronous [scrypt](https://en.wikipedia.org/wiki/Scrypt) implementation. Scrypt is a password-based key derivation function that is designed to be expensive computationally and memory-wise in order to make brute-force attacks unrewarding.
 
@@ -2380,7 +2380,7 @@ added: v12.0.0
 * `algorithm` {string | null | undefined}
 * `data` {Buffer | TypedArray | DataView}
 * `key` {Object | string | Buffer | KeyObject}
-* Returns: {Buffer}
+* 返回：{Buffer}
 
 Calculates and returns the signature for `data` using the given private key and algorithm. If `algorithm` is `null` or `undefined`, then the algorithm is dependent upon the key type (especially Ed25519 and Ed448).
 
@@ -2403,7 +2403,7 @@ added: v6.6.0
 
 * `a` {Buffer | TypedArray | DataView}
 * `b` {Buffer | TypedArray | DataView}
-* Returns: {boolean}
+* 返回：{boolean}
 
 This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
@@ -2420,7 +2420,7 @@ added: v12.0.0
 * `data` {Buffer | TypedArray | DataView}
 * `key` {Object | string | Buffer | KeyObject}
 * `signature` {Buffer | TypedArray | DataView}
-* Returns: {boolean}
+* 返回：{boolean}
 
 Verifies the given signature for `data` using the given key and algorithm. If `algorithm` is `null` or `undefined`, then the algorithm is dependent upon the key type (especially Ed25519 and Ed448).
 
@@ -2527,8 +2527,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>SSL_OP_ALL</code></td>
@@ -2683,8 +2683,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RSA</code></td>
@@ -2736,8 +2736,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>DH_CHECK_P_NOT_SAFE_PRIME</code></td>
@@ -2816,8 +2816,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>常量</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>defaultCoreCipherList</code></td>
