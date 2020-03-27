@@ -3,7 +3,7 @@
 <!--introduced_in=v4.0.0-->
 <!--type=misc-->
 
-Applications running in Node.js will generally experience four categories of errors:
+Οι εφαρμογές που τρέχουν με Node.js μπορούν να εμφανίσουν τέσσερα είδη σφαλμάτων:
 
 * Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError},
 {ReferenceError}, {TypeError}, and {URIError}.
@@ -1979,7 +1979,7 @@ changes:
 
 ## Legacy Node.js Error Codes
 
-> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
+> Σταθερότητα: 0 - Απαρχαιωμένο. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_CANNOT_TRANSFER_OBJECT"></a>
 
