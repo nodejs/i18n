@@ -190,7 +190,7 @@ added: v10.10.0
 
 * `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
 
-* Returns: {integer}
+* Restituisce: {integer}
 
 The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
 
@@ -562,7 +562,7 @@ changes:
 
 ### Costanti di Errore
 
-The following error constants are exported by `os.constants.errno`:
+Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
 #### Costanti di errore POSIX
 
@@ -893,7 +893,7 @@ The following error constants are exported by `os.constants.errno`:
 
 #### Costanti di Errore Specifico di Windows
 
-The following error codes are specific to the Windows operating system:
+I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
 <table>
   <tr>
