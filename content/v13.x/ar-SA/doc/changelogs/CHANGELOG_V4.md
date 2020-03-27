@@ -56,7 +56,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -2355,7 +2355,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **buffer**
+* **الصوان**
   * make byteLength work with Buffer correctly (Jackson Tian)
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger**
