@@ -1,8 +1,8 @@
-# File System
+# نظام الملفات
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> درجة الإستقرار: 2 - مستقر
 
 <!--name=fs-->
 
