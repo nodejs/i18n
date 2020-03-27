@@ -434,9 +434,9 @@ Vea también https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x pa
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -522,10 +522,10 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
 * La utilización en paralelo de múltiples instancias de REPL puede causar alguna corrupción o pérdida del historial de REPL. [#1634](https://github.com/nodejs/node/issues/1634)
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -587,9 +587,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -633,9 +633,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -671,7 +671,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -693,9 +693,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
@@ -723,7 +723,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -771,9 +771,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -836,9 +836,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -919,9 +919,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1026,9 +1026,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1052,9 +1052,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1103,9 +1103,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1154,7 +1154,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1197,9 +1197,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1250,9 +1250,9 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1296,8 +1296,8 @@ Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-f
 ### Cambios notables
 
 * **crypto**: el uso de la memoria fue significativamente reducido para TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
-* **net**: `socket.connect()` now accepts a `'lookup'` option for a custom DNS resolution mechanism, defaults to `dns.lookup()` (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
-* **npm**: Actualizar npm a 2.9.0. Consulte las notas de los lanzamientos [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para ver detalles. Notable items: 
+* **net**: `socket.connect()` ahora acepta una opción de `'lookup'` para un mecanismo de resolución de DNS personalizado; el predeterminado es `dns.lookup()` (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
+* **npm**: Actualizar npm a 2.9.0. Consulte las notas de los lanzamientos [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para ver detalles. Artículos notables: 
   * Añadir soporte para el campo de autor predeterminado para hacer que `npm init -y` funcione sin un input de usuario (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9af)
   * Incluir módulos locales en `npm outdated` y `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   * Ahora el prefijo usado antes del número de versión en `npm version` es configurable a través de `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
@@ -1310,7 +1310,7 @@ Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-f
   * El REPL puede establecerse en uno de tres modos utilizando la variable de entorno `NODE_REPL_MODE`: `sloppy`, `strict` o `magic` (por defecto); el nuevo modo `magic` ejecutará automáticamente declaraciones de "solo en modo estricto" en el modo estricto (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
 * **smalloc**: el módulo 'smalloc' ha sido desaprobado debido a cambios que lo dejarán inutilizable que vienen en la versión 4.4. de V8
 * **util**: añadir soporte para la inspección de "Promise", "Map" y "Set" (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
-* **V8**: actualizar a 4.2.77.18, consulte el [Registro de Cambios](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) para ver los detalles completos. Notable items: 
+* **V8**: actualizar a 4.2.77.18, consulte el [Registro de Cambios](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) para ver los detalles completos. Artículos notables: 
   * Las clases se han movido fuera de la escenificación; la palabra clave `class` ahora es utilizable sin banderas en el modo estricto
   * Las mejoras literales de objetos han sido movidas fuera de la escenificación; el método de atajo y la sintaxis de la propiedad ahora son utilizables (`{ method() { }, property }`)
   * Los parámetros del resto (`function(...args) {}`) son implementados en la escenificación tras la bandera `--harmony-rest-parameters`
@@ -1325,9 +1325,9 @@ Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-f
 
 ### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1430,7 +1430,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1485,7 +1485,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1513,7 +1513,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
 * Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
@@ -1574,7 +1574,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Problemas conocidos
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
@@ -1856,7 +1856,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 ### Problemas conocidos
 
 * Posible(s) pérdida(s) de memoria restante(s) relacionada(s) con TLS [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
@@ -1900,7 +1900,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 ### Problemas conocidos
 
 * Posible fuga de memoria relacionada con TLS, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
@@ -1977,7 +1977,7 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 ### Problemas conocidos
 
-* Windows aún reporta algunas fallas menores con las pruebas y continuamos abordando todas estas tan rápido como nos es posible. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Windows aún reporta algunas fallas menores con las pruebas y continuamos abordando todas estas tan rápido como nos es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
 * El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
 * No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
 * `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
@@ -2172,7 +2172,7 @@ outdated`) now defaults to `--depth=0`. Esto, además, tiene el excelente pero i
 * [[`3b1b4de903`](https://github.com/nodejs/node/commit/3b1b4de903)] - **test**: Timeout#unref() no devuelve instancia (Jan Schär) [joyent/node#9171](https://github.com/joyent/node/pull/9171)
 * [[`becb4e980e`](https://github.com/nodejs/node/commit/becb4e980e)] - **test**: distribuir las pruebas criptográficas en archivos separados (Brendan Ashworth) [#827](https://github.com/nodejs/node/pull/827)
 * [[`77f35861d0`](https://github.com/nodejs/node/commit/77f35861d0)] - **(SEMVER-MINOR) tls**: configuraciones predeterminadas más seguras (Roman Reiss) [#826](https://github.com/nodejs/node/pull/826)
-* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: resolver urls con . and .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
+* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: resolver urls con . y .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
 
 <a id="1.2.0"></a>
 
@@ -2721,7 +2721,7 @@ https://iojs.org/api/tls.html
 https://iojs.org/api/url.html
 
 * Fue mejorado el escape de ciertos caracteres.
-* Improved parsing speed.
+* Se mejoró la velocidad de análisis.
 
 ### util
 
