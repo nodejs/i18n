@@ -4,7 +4,7 @@
 
 > Stabiliteit: 2 - stabiel
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Het kan worden bereikt met behulp van:
 
 ```js
 const util = require('util');
@@ -1632,7 +1632,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## Deprecated APIs
+## Afgekeurde API's
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
