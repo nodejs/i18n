@@ -4895,6 +4895,6 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 * [[`1052383f7c`](https://github.com/nodejs/node/commit/1052383f7c)] - **v8**: refactor struture of v8 module (James M Snell) [#12681](https://github.com/nodejs/node/pull/12681)
 * [[`33a19b46ca`](https://github.com/nodejs/node/commit/33a19b46ca)] - **v8**: fix offsets for TypedArray deserialization (Anna Henningsen) [#12143](https://github.com/nodejs/node/pull/12143)
 * [[`6b25c75cda`](https://github.com/nodejs/node/commit/6b25c75cda)] - **vm**: fix race condition with timeout param (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
-* [[`191bb5a358`](https://github.com/nodejs/node/commit/191bb5a358)] - **vm**: fix displayErrors in runIn.. functions (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
+* [[`191bb5a358`](https://github.com/nodejs/node/commit/191bb5a358)] - **vm**: fix displayErrors in runIn.. funciones (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
 * [[`1c93e8c94b`](https://github.com/nodejs/node/commit/1c93e8c94b)] - **win**: make buildable on VS2017 (Refael Ackermann) [#11852](https://github.com/nodejs/node/pull/11852)
 * [[`ea01cd7adb`](https://github.com/nodejs/node/commit/ea01cd7adb)] - **zlib**: remove unused declaration (Anna Henningsen) [#12432](https://github.com/nodejs/node/pull/12432)
