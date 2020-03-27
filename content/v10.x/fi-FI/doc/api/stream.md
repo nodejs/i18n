@@ -1029,7 +1029,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stability: 2 - Stable
+> Vakaus: 2 - Vakaa
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
