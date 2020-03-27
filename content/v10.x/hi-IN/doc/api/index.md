@@ -39,7 +39,7 @@
 * [ओएस](os.html)
 * [पथ](path.html)
 * [प्रदर्शन हुक](perf_hooks.html)
-* [Process](process.html)
+* [प्रसंस्करण](process.html)
 * [Punycode](punycode.html)
 * [प्रश्न स्ट्रिंग्स](querystring.html)
 * [पढ़ने के लिए लाइन](readline.html)
