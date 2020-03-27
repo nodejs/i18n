@@ -154,6 +154,9 @@ The `--throw-deprecation` command line flag and `process.throwDeprecation` prope
 added: v0.5.3
 changes:
 
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/22097
+    description: The `%d` and `%i` specifiers now support BigInt.
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
@@ -791,7 +794,7 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Προεπιλογή:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Προεπιλογή:** `false`.
 
 Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
@@ -902,7 +905,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -985,7 +988,7 @@ added: v10.11.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -1005,7 +1008,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -1235,7 +1238,7 @@ added: v10.0.0
 
 * `value` {any}
 
-* Returns: {boolean}
+* Επιστρέφει: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
