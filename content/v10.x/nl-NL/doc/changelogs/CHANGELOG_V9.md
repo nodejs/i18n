@@ -195,7 +195,7 @@ Fixes for the following CVEs are included in this release:
   * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**: 
   * Add `napi_fatal_exception` to trigger an `uncaughtException` in JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
-* **path**: 
+* **pad**: 
   * Fix regression in `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
 * **stream**: 
   * Improve stream creation performance (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
@@ -649,7 +649,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **events**: 
+* **gebeurtenissen**: 
   * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 ### Commits
@@ -1093,7 +1093,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * update nghttp2 to 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
   * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
   * cherry-pick 50f7455 from upstream V8 (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
-* **events**: 
+* **gebeurtenissen**: 
   * remove reaches into _events internals (Anatoli Papirovski) [#17440](https://github.com/nodejs/node/pull/17440)
 * **http**: 
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
