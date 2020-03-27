@@ -537,7 +537,7 @@ changes:
 
 ### Costanti di Errore
 
-The following error constants are exported by `os.constants.errno`:
+Le seguenti costanti di errore vengono esportate da `os.constants.errno`:
 
 #### Costanti di errore POSIX
 
@@ -867,7 +867,7 @@ The following error constants are exported by `os.constants.errno`:
 
 #### Costanti di Errore Specifico di Windows
 
-The following error codes are specific to the Windows operating system:
+I seguenti codici di errore sono specifici per il sistema operativo Windows:
 
 <table>
   <tr>
