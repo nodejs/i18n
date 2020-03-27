@@ -923,7 +923,7 @@ A fix for the following CVE is included in this release:
     * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
     
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -3067,7 +3067,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-12, Version 10.4.1 (Current), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **http2** 
@@ -3098,7 +3098,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-06, Version 10.4.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**: 
   * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
@@ -3204,13 +3204,13 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-05-29, Version 10.3.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**: 
   * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
 * **fs**: 
   * fix reads with pos \> 4GB (Mathias Buus) [#21003](https://github.com/nodejs/node/pull/21003)
-* **net**: 
+* **rete**: 
   * new option to allow IPC servers to be readable and writable by all users (Bartosz Sosnowski) [#19472](https://github.com/nodejs/node/pull/19472)
 * **stream**: 
   * fix removeAllListeners() for Stream.Readable to work as expected when no arguments are passed (Kael Zhang) [#20924](https://github.com/nodejs/node/pull/20924)
@@ -3264,7 +3264,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-05-24, Version 10.2.1 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 This is a follow up release to fix two regressions that were introduced in v10.2.0.
 
@@ -3278,7 +3278,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-23, Version 10.2.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **addons**: 
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
@@ -3513,7 +3513,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **console**: 
   * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
@@ -3705,7 +3705,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-04-24, Version 10.0.0 (Current), @jasnell
 
-### Notable Changes
+### Modifiche di rilievo
 
 * Assert 
   * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
