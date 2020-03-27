@@ -237,7 +237,7 @@ added: v0.1.101
 * `options` {Object}
   
   * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **默认:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
+  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. 这在检查大型复杂对象时非常有用。 To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **默认:** `false`.
 
 Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
