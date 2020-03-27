@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. It can be accessed using:
+The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. On peut y accéder en utilisant :
 
 ```js
 const { StringDecoder } = require('string_decoder');
