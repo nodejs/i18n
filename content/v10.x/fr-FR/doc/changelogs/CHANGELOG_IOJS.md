@@ -70,7 +70,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Autres versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -339,7 +339,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 ### Notable changes
 
 * **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
-* **crypto**: 
+* **cryptographie**: 
   * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
   * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
 * **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264). 
@@ -408,7 +408,7 @@ See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and curren
 
 ### Notable changes
 
-* **buffer**: 
+* **tampons (buffers)**: 
   * Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
   * `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
   * When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
@@ -2184,7 +2184,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 
 ### Notable changes
 
-* **stream**: 
+* **flux**: 
   * Simpler stream construction, see [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) for details. This extends the streams base objects to make their constructors accept default implementation methods, reducing the boilerplate required to implement custom streams. An updated version of readable-stream will eventually be released to match this change in core. (@sonewman)
 * **dns**: 
   * `lookup()` now supports an `'all'` boolean option, default to `false` but when turned on will cause the method to return an array of *all* resolved names for an address, see, [#744](https://github.com/nodejs/node/pull/744) (@silverwind)
@@ -2267,7 +2267,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errors 
+* erreurs 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2536,7 +2536,7 @@ Below is a summary of the user-facing changes to be found in the io.js v1.0.0 re
   * punycode: 1.2.0 to 1.3.2.
 * Performance and stability improvements on all platforms.
 
-### buffer
+### tampons (buffers)
 
 https://iojs.org/api/buffer.html
 
@@ -2569,7 +2569,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### crypto
+### cryptographie
 
 https://iojs.org/api/crypto.html
 
@@ -2626,7 +2626,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### net
+### sockets TCP
 
 https://iojs.org/api/net.html
 
@@ -2639,7 +2639,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### path
+### gestion des chemins (path)
 
 https://iojs.org/api/path.html
 
