@@ -300,7 +300,7 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **process**: 
+* **proces**: 
   * add `externalMemory` to `process` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
   * add process.cpuUsage() (Patrick Mueller) [#10796](https://github.com/nodejs/node/pull/10796)
 
