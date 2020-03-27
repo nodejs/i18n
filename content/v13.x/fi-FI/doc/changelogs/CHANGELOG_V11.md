@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Other Versions
+* Muut versiot
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Arkisto](CHANGELOG_ARCHIVE.md)
 
 <a id="11.15.0"></a>
 
