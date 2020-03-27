@@ -1,20 +1,20 @@
 # دليل الاسلوب
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* كتبت الوثائق ب"markdown" والملفات سميت على شكل `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * بعض الملفات، مثل ملفات المستوى العالي "markdown"، هي استثناءات.
 * يجب أن تكون المستندات بالكلمات مربوطة في 80 حرف.
 * البنية الموصوف في `.editorconfig` هي المفضلة. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * في بعض المحررات النصوص تتوفر [ الإضافة ](http://editorconfig.org/#download) لتطبيق هذه قواعد تلقائيًا.
 * Changes to documentation should be checked with `make lint-md`.
-* التهجئة الإنجليزي الأمريكي المفضلة. "Capitalize" ضد. "Capitalise", "color" vs. "اللون"، إلخ.
+* التهجئة الإنجليزي الأمريكي المفضلة. "Capitalize" ضد. "Capitalise"، "color" ضد. "اللون"، إلخ.
 * استخدم [ سلسلة فواصل ](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * ليس جيد: "له" ، "لها" ، "هو" ، "هي" ، "شباب" ، "رجال"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+* عند ضم و تَطْوِيق العناصر (العلامات الحصر و علامات الاقتباس)، terminal يجب وضع علامات الترقيم: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Documents must start with a level-one heading.
@@ -22,9 +22,9 @@
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * إدراج الملفات: 
-  * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
+  * إذا كنت ترغب في إضافة رسم توضيحي أو برنامج كامل ، فأضفه إلى داخل الملف الفرعي `assets/`.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-  * بالنسبة إلى الرسوم التوضيحية، تفضل SVG على الملفات الأخرى. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
+  * بالنسبة إلى الرسوم التوضيحية، تفضل SVG على الملفات الأخرى. عندما يكون SVG غير ظاهر، رجاء إبقاء عينك على حجم الملفك الأصلي الذي قدمته.
 * لفقرات الكود: 
   * استخدام الأسوار لتعريف باللغة البرمجة. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   
