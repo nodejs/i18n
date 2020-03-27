@@ -2642,7 +2642,7 @@ https://iojs.org/api/path.html
 * Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
 * Improved `path.join` performance.
 
-### process
+### proces
 
 https://iojs.org/api/process.html
 
