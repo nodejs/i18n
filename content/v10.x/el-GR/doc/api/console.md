@@ -292,7 +292,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+Η συνάρτηση `console.info()` είναι ένα ψευδώνυμο για την συνάρτηση [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])<!-- YAML
 added: v0.1.100
@@ -302,7 +302,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Τυπώνει στο `stdout` με χαρακτήρα αλλαγής γραμμής. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -312,7 +312,7 @@ console.log('count:', count);
 // Τυπώνει: count: 5, στο stdout
 ```
 
-See [`util.format()`][] for more information.
+Δείτε το [`util.format()`][] για περισσότερες πληροφορίες.
 
 ### console.table(tabularData[, properties])<!-- YAML
 added: v10.0.0
@@ -355,7 +355,7 @@ added: v0.1.104
 
 * `label` {string} **Προεπιλογή:** `'default'`
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Δημιουργεί ένα χρονόμετρο που μπορεί να χρησιμοποιηθεί για τη μέτρηση της διάρκειας μιας λειτουργίας. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Η ακρίβεια της διάρκειας του χρονομέτρου είναι μεγαλύτερη από χιλιοστό του δευτερολέπτου.
 
 ### console.timeEnd([label])<!-- YAML
 added: v0.1.104
@@ -431,7 +431,7 @@ added: v0.1.100
 
 * `...args` {any}
 
-The `console.warn()` function is an alias for [`console.error()`][].
+Η συνάρτηση `console.warn()` είναι ένα ψευδώνυμο για την συνάρτηση [`console.error()`][].
 
 ## Αποκλειστικές μέθοδοι του Επιθεωρητή
 
