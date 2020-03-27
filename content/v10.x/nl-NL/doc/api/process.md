@@ -575,7 +575,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Returns: {string}
+* Retourneert: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -958,7 +958,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Returns: {Object}
+* Retourneert: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -984,7 +984,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.28
 -->
 
-* Returns: {integer}
+* Retourneert: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -1000,7 +1000,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1347,7 +1347,7 @@ added: v0.5.9
 
 * `options` {Object}
 * `callback` {Function}
-* Returns: {boolean}
+* Retourneert: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1535,7 +1535,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-For instance:
+Bijvoorbeeld:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1598,7 +1598,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Returns: {number}
+* Retourneert: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
