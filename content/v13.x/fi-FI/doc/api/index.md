@@ -5,8 +5,8 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Tästä dokumentaatiosta](documentation.html)
+* [Käyttö & esimerkki](synopsis.html)
 
 <div class="line"></div>
 
@@ -25,7 +25,7 @@
 * [DNS](dns.html)
 * [Domain](domain.html)
 * [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
+* [Virheet](errors.html)
 * [Events](events.html)
 * [File System](fs.html)
 * [Globals](globals.html)
