@@ -358,7 +358,7 @@ path.parse('/home/user/dir/file.txt');
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 在 Windows 系统上：
@@ -380,7 +380,7 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 如果 `path` 不是字符串，则会抛出 [`TypeError`][]。
