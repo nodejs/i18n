@@ -43,13 +43,13 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.2"></a>
 
 ## 2018-06-12, Version 9.11.2 (Current), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **buffer** (CVE-2018-7167): Fixes Denial of Service vulnerability where calling Buffer.fill() could hang
@@ -73,7 +73,7 @@
 
 ## 2018-04-05, Versione 9.11.1 (Attuale), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 No additional commits.
 
@@ -83,7 +83,7 @@ An infrastructure issue caused a non-functioning msi installer for x64 to be pro
 
 ## 2018-04-04, Version 9.11.0 (Current), @MylesBorins prepared by @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **deps**:
   * Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Includes CLDR 33 (many new languages and data improvements).
@@ -183,7 +183,7 @@ An infrastructure issue caused a non-functioning msi installer for x64 to be pro
 
 ## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 No additional commits.
 
@@ -203,7 +203,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
@@ -316,7 +316,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-21, Version 9.9.0 (Current), @MylesBorins prepared by @targos
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **assert**:
   * From now on all error messages produced by `assert` in strict mode will produce a error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
@@ -475,7 +475,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-07, Version 9.8.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**:
   * add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
@@ -575,7 +575,7 @@ No additional commits. New version published due to a bad node-v9.7.0.pkg file t
 
 ## 2018-03-01, Version 9.7.0 (Current), @rvagg prepared by @addaleax
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **libuv**:
   * Updated to libuv 1.19.2 (Colin Ihrig) [#18918](https://github.com/nodejs/node/pull/18918)
@@ -665,7 +665,7 @@ No additional commits. New version published due to a bad node-v9.7.0.pkg file t
 
 This is a special release to fix potentially Semver-Major regression that was released in v9.6.0
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **events**:
   * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
@@ -678,7 +678,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-02-22, Version 9.6.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **async_hooks**:
   * deprecate unsafe emit{Before,After} (Ali Ijaz Sheikh) [#18513](https://github.com/nodejs/node/pull/18513)
@@ -919,7 +919,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-01-31, Version 9.5.0 (Current), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **cluster**
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
@@ -1103,7 +1103,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-01-10, Version 9.4.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **async\_hooks**:
   * deprecate AsyncHooks Sensitive API and runInAsyncIdScope. Neither API were documented. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
@@ -1379,7 +1379,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2017-12-12, Version 9.3.0 (Current), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **async\_hooks**:
   * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
@@ -1798,7 +1798,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2017-15897
 * CVE-2017-3738 (from the openssl project)
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **buffer**:
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
@@ -1825,7 +1825,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-14, Version 9.2.0 (Current), @evanlucas
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **crypto**:
   * Support building with both 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
@@ -1974,7 +1974,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-07, Version 9.1.0 (Current), @cjihrig
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **CLI**:
   * `NODE_OPTIONS` now supports the `--stack-trace-limit` option. [#16495](https://github.com/nodejs/node/pull/16495)
@@ -2088,7 +2088,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-10-31, Version 9.0.0 (Current), @jasnell
 
-### Notable Changes
+### Modifiche di rilievo
 
 * **Async hooks**
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] - [#14414](https://github.com/nodejs/node/pull/14414)
