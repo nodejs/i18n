@@ -64,7 +64,7 @@
 </tr>
 </table>
 
-* Other Versions
+* نسخ أخرى
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
