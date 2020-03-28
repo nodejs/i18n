@@ -4,7 +4,7 @@
 
 > Estability: 2 - Estable
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+El módulo `crypto` provee funcionalidad criptográfica que incluye un conjunto de empaquetadores para hash de OpenSSL, HMAC, cifrar, descifrar, firmar, y verificar funciones.
 
 Use `require('crypto')` para acceder a este módulo.
 
@@ -39,15 +39,15 @@ try {
 added: v0.11.8
 -->
 
-SPKAC is a Certificate Signing Request mechanism originally implemented by Netscape and was specified formally as part of [HTML5's `keygen` element][].
+SPKAC es un mecanismo de Solicitud de Firma Certificado implementado originalmente por Netscape y fue especificado formalmente como parte del [elemento `keygen` de HTML5][].
 
 Note que `<keygen>` es obsoleto desde que [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) y nuevos proyectos ya no deben usar este elemento.
 
-El módulo `crypto` provee la clase `Certificate` para trabajar con datos SPKAC. El uso más común es la salida handling generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
+El módulo `crypto` provee la clase `Certificate` para trabajar con datos SPKAC. El uso más común es el manejo de la salida generada por el elemento HTML5 `<keygen>`. Node.js usa [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.0.2/apps/spkac.html) internamente.
 
 ### nuevo crypto.Certificate()
 
-Instancias del tipo de `Certificate` pueden ser creadas usando la palabra `new` o, llamando `crypto.Certificate()` como una función:
+Instancias de la clase `Certificate` pueden ser creadas usando la palabra clave `new` o llamando a `crypto.Certificate()` como una función:
 
 ```js
 const crypto = require('crypto');
@@ -63,7 +63,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Returns: {Buffer} The challenge component of the `spkac` data structure, which includes a public key and a challenge.
+- Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -80,7 +80,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Returns: {Buffer} The public key component of the `spkac` data structure, which includes a public key and a challenge.
+- Devuelve: {Buffer} El componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -97,7 +97,7 @@ added: v0.11.8
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Returns: {boolean} `true` if the given `spkac` data structure is valid, `false` otherwise.
+- Devuelve: {boolean} `true` si la estructura de datos `spkac` dada es válida, `false` si no lo es.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -112,12 +112,12 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 added: v0.1.94
 -->
 
-Instancias de clase `Cipher` son usadas para encriptar datos. La clase puede ser empleada en una de dos formas:
+Instancias de clase `Cipher` son usadas para encriptar datos. La clase puede ser usada de una o dos maneras:
 
-- Como un [stream](stream.html) que es tanto legible como grabable en donde los datos sencillos desencriptados son escritos para producir datos encriptados en lado legible; o,
-- Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir los datos encriptados.
+- Como una [stream](stream.html) que es legible y escribible, donde los datos planos sin encriptar están escritos para producir datos encriptados en el lado legible, o
+- Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir datos encriptados.
 
-Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear las instancias de `Cipher`. Los objetos `Cipher` no son creados directamente al usar la palabra clave `new`.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear instancias `Cipher`. Los objetos `Cipher` no deben crearse directamente usando la palabra clave `new`.
 
 Por ejemplo: Usando objetos `Cipher` como streams:
 
@@ -174,7 +174,7 @@ added: v0.1.94
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string} Cualquier contenido cifrado restante. If `outputEncoding` parameter is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
 
-El objeto `Cipher` no puede ser utilizado para encriptar datos una vez que el método `cipher.final()` ha sido llamado. Y, arrojará un error al hacer varios intentos para llamar al `cipher.final()` más de una vez.
+Una vez que el método `cipher.final()` ha sido llamado, el objeto `Cipher` no puede ser usado para encriptar datos. Intentar llamar a `cipher.final()` más de una vez producirá un error.
 
 ### cipher.setAAD(buffer)
 
@@ -197,7 +197,7 @@ added: v1.0.0
 
 - Returns: {Buffer} When using an authenticated encryption mode (only `GCM` is currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
 
-El método `cipher.getAuthTag()` solo debría ser llamado luego de haber completado la encriptación al usar el método [`cipher.final()`][].
+El método `cipher.getAuthTag()` debe ser llamado solamente después de que se completó el encriptado usando el método [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
@@ -208,13 +208,13 @@ added: v0.7.1
 - `autoPadding` {boolean} **Por defecto:** `true`
 - Devuelve: {Cipher} como método cadena.
 
-El tipo de `Cipher` se añadirá como relleno automáticamente para el ingreso de datos al tamaño del bloque apropiado. Para inhabilitar el relleno por defecto, llame a `cipher.setAutoPadding(false)`.
+Cuando se usan los algoritmos de encriptación por bloque, de clase `Cipher` automáticamente rellenará los datos de entrada al tamaño de bloque apropiado. Para desactivar el llenado por defecto llame a `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Desabilitar el relleno automático es útil para un relleno atípico, por lo que se puede usar `0x0` en vez del relleno PKCS.
+Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desactivar el llenado automático es útil para un llenado no estándar, por ejemplo usando `0x0` en vez del llenado PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
-### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+### cipher.update(data\[, input_encoding\]\[, output_encoding\])
 
 <!-- YAML
 added: v0.1.94
@@ -230,9 +230,9 @@ changes:
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Actualiza el cifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el cifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'utf8'`, `'ascii'`, o `'latin1'` y el argumento `data` es una string usando el código específico. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][], `TypedArray`, o `DataView`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces se omite `inputEncoding`.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'base64'` o `'hex'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
 El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que se llame a [`cipher.final()`][]. Si se llama a `cipher.update()` después de [`cipher.final()`][] se producirá un error.
 
@@ -242,7 +242,7 @@ El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos
 added: v0.1.94
 -->
 
-Instancias de la clase `Decipher` son usadas para descifrar datos. La clase puede ser empleada en una de dos formas:
+Instancias de la clase `Decipher` son usadas para descifrar datos. La clase puede ser usada de una o dos maneras:
 
 - Como un [stream](stream.html) que es legible y escribible, donde los datos planos encriptados están escritos para producir datos no encriptados en el lado legible, o
 - Usando los métodos [`decipher.update()`][] y [`decipher.final()`][] para producir datos no encriptados.
@@ -341,9 +341,9 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Cipher} como método cadena.
 
-El método `decipher.setAuthTag()` es usado para pasar la *etiqueta de autenticación recibida* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados en la actualiad). Si no se provee ninguna etiqueta o el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
+El método `decipher.setAuthTag()` es usado para pasar la *etiqueta de autenticación recibida* cuando se usa un modo de encriptación autenticado (solamente `GCM` y <0>CCM</0> están siendo respaldados en la actualiad). Si no se provee ninguna etiqueta, o si el texto cifrado ha sido manipulado, va a arrojar [`decipher.final()`][], indicando que el texto cifrado debe descartarse por una autenticación fallida.
 
-Note que esta versión de Node.js no verifica la longitud de la etiqueta de autenticación de GCM. Tal control *debe* ser implementado por las aplicaciones y es crucial para la autenticidad de los datos encriptados, de otro modo, un atacante puede usar una etiqueta de autenticación arbitraria corta para aumentar las posibilidades de pasar la autenticación de manera efectiva (hasta un 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Note que esta versión de Node.js no verifica la longitud de la etiqueta de autenticación de GCM. Tal control *debe* ser implementado por las aplicaciones y es crucial para la autenticidad de los datos encriptados, de otro modo, un atacante puede usar una etiqueta de autenticación arbitraria corta para aumentar las posibilidades de pasar la autenticación de manera efectiva (hasta un 0.39%). Es altamente recomendable asociar uno de los valores 16, 15, 14, 13, 12, 8 o 4 bytes con cada clave, y solo para permitir etiquetas de autenticación de esa longitud, ver [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 El método `decipher.setAuthTag()` debe ser llamado antes de [`decipher.final()`][].
 
@@ -356,11 +356,11 @@ added: v0.7.1
 - `autoPadding` {boolean} **Por defecto:** `true`
 - Devuelve: {Cipher} como método cadena.
 
-Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar al `decipher.setAutoPadding(false)` deshabilitará automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
+Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar a `decipher.setAutoPadding(false)` va a deshabilitar automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
-Desactivar el llenado automático solo funcionara si la longitud de datos de entrada es un múltiplo del tamaño de bloque de los cifrados.
+Desactivar el llenado automático sólo funciona si la longitud de datos de entrada es un múltiplo del tamaño de bloques cifrados.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+El método `decipher.setAutoPadding()` debe ser llamado antes de [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -378,11 +378,11 @@ changes:
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Actualiza el descifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string usando el código específico. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, se devuelve una string que usa el código especificado. Si no se provee un `outputEncoding`, un [`Buffer`][] es devuelto.
 
-El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que sea llamado [`decipher.final()`][]. Pero, si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
+El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que es llamado [`decipher.final()`][]. Si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
 ## Tipo: DiffieHellman
 
@@ -390,9 +390,9 @@ El método `decipher.update()` puede ser llamado múltiples veces con nuevos dat
 added: v0.5.0
 -->
 
-La clase `DiffieHellman` es útil para crear intercambios en la clave Diffie-Hellman.
+La clase `DiffieHellman` es una herramienta útil para crear intercambios de clave Diffie-Hellman.
 
-Las instancias de la clase `DiffieHellman` pude ser creada usando la función [`rypto.createDiffieHellman()`][].
+Las instancias de la clase `DiffieHellman` pueden ser creadas usando la función [`crypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
@@ -425,9 +425,9 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave dada es interpretada usando el `inputEncoding` especificado, y el secreto es codificado usando el `outputEncoding` especificado. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, `otherPublicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Si el `outputEncoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -449,7 +449,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -460,7 +460,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Regresa el Diffie-Hellman prime al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa el Diffie-Hellman prime al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrivateKey([encoding])
 
@@ -493,7 +493,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave privada Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'`, o `'base64'`, `privateKey` se espera que sea una string. Si no se proporciona `encoding`, `privateKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -504,7 +504,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave pública Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave pública Diffie-Hellman. Si el argumento `encoding` es proporcionado y es `'latin1'`, `'hex'` o `'base64'`, `publicKey` se espera que sea una string. Si no es proporcionado `encoding`, `publicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -512,7 +512,7 @@ Establece la clave pública Diffie-Hellman. If the `encoding` argument is provid
 added: v0.11.12
 -->
 
-Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante la inicialización del objeto `DiffieHellman`.
+Un campo de bits que contiene advertencias y/o errores que resultan de un chequeo realizado durante el inicio del objeto `DiffieHellman`.
 
 Los valores a continuación son válidos para esta propiedad (como es definido en el módulo`constants`):
 
@@ -567,9 +567,9 @@ changes:
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando `inputEncoding` especificado, y el secreto devuelto es codificado usando `outputEncoding`. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, `otherPublicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -583,7 +583,7 @@ added: v0.11.14
 
 Genera los valores de la clave EC Diffie-Hellman privados y públicos, y devuelve la clave pública en el `format` y `encoding` especificado. Esta clave debe ser transferida a la otra parte.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+El argumento `format` especifica la codificación de puntos y puede ser `'compressed'` o `'uncompressed'`. Si `format` no es especificado, el punto será devuelto en formato `'uncompressed'`.
 
 El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -594,9 +594,9 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string} The EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+- Devuelve: {Buffer | string} La clave privada EC Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-### ecdh.getPublicKey(\[encoding\]\[, format\])
+### ecdh.getPublicKey(\[encoding\]\[, formato\])
 
 <!-- YAML
 added: v0.11.14
@@ -604,9 +604,9 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `uncompressed`
-- Returns: {Buffer | string} The EC Diffie-Hellman public key in the specified `encoding` and `format`.
+- Devuelve: {Buffer | string} La clave pública EC Diffie-Hellman en el `encoding` y `format` especificado.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+El argumento `format` especifica la codificación de puntos y puede ser `'compressed'` o `'uncompressed'`. Si `format` no es especificado, el punto será devuelto en formato `'uncompressed'`.
 
 El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es especificado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
@@ -619,9 +619,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, `privateKey` se espera que sea una string; de no ser así `privateKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
+Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto ECDH.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -635,9 +635,9 @@ deprecated: v5.2.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Establece la clave pública EC Diffie-Hellman. La codificación de claves puede ser `'latin1'`, `'hex'` o `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que `publicKey` sea una string; de no ser así un [`Buffer`][], `TypedArray`, o `DataView` es esperado.
 
-Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente, [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -747,7 +747,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the hash content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido hash con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -815,7 +815,7 @@ added: v0.1.94
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Calcula el resúmen HMAC de todos los datos pasados usando [`hmac.update()`][]. El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto;
+Calcula el resúmen HMAC de todos los datos pasados usando [`hmac.update()`][]. El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto;
 
 El objeto `Hmac` no puede ser usado nuevamente después de que `hmac.digest()` ha sido llamado. Llamadas múltiples a `hmac.digest()` producirá un error.
 
@@ -833,7 +833,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Hmac` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -848,7 +848,7 @@ La clase `Sign` es una utilidad para generar firmas. Puede ser usada de una de l
 - Como una [stream](stream.html) escribible, donde los datos a ser firmados están escritos y el método [`sign.sign()`][] es usado para generar y devolver la firma, o
 - Usando los métodos [`sign.update()`][] y [`sign.sign()`][] para producir la firma.
 
-El método [`crypto.createSign()`][] es usado para crear instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no son creados usando directamente la palabra clave `new`.
+El método [`crypto.createSign()`][] es usado para crear instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no deben crearse usando directamente la palabra clave `new`.
 
 Ejemplo: Usando objetos`Sign` como streams:
 
@@ -879,7 +879,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // Imprime: la firma calculada
 ```
 
-En algunos casos, una instancia `Sign` también puede ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
 
 Ejemplo: firmando usando el nombre del algoritmo de firma heredado
 
@@ -924,9 +924,9 @@ El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es u
   
   Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt al tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) la establece en el valor máximo permitido.
+- `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal del tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
-El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 El objeto `Sign` no puede ser usado nuevamente después de que el método `sign.sign()` ha sido llamado. Llamadas múltiples a `sign.sign()` van a resultar en un error.
 
@@ -944,7 +944,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Sign` con el `data` dado, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -956,7 +956,7 @@ added: v0.1.92
 
 La clase `Verify` es una utilidad para verificar firmas. Puede ser usada de una de las dos maneras:
 
-- Como una [<0>stream](stream.html) escribible donde los datos escritos son usados para validar la firma dada; o,
+- Como una [stream](stream.html) escribible donde los datos escritos son usados para validar contra la firma dada, o
 - Usando los métodos [`verify.update()`][] y [`verify.verify()`][] para verificar la firma.
 
 El método [`crypto.createVerify()`][] es usado para crear instancias `Verify`. Los objetos`Verify` no tienen que ser creados usando directamente la palabra clave `new`.
@@ -1004,7 +1004,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Verify` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
@@ -1022,9 +1022,9 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Devuelve: {boolean} `true` o `false` dependiendo de la validez de la firma para los datos y la clave pública.
 
-Verifica los datos dados usando los `object` y `signature` dados. El argumento `object` puede ser tanto una string que contiene un objeto PEM codificado y que puede ser una llave pública RSA, DSA o un certificado X.509 como un objeto con una o más de las siguientes propiedades:
+Verifica los datos dados usando los `object` y `signature` dados. El argumento `object` puede ser una string que contiene un objeto PEM codificado, que puede ser una clave pública RSA, una clave pública DSA, o un certificado X.509, o un objeto con una o más de las siguientes propiedades:
 
 - `key`: {string} - Clave pública con codificación PEM (requerida)
 - `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
@@ -1032,13 +1032,13 @@ Verifica los datos dados usando los `object` y `signature` dados. El argumento `
   - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note que `RSA_PKCS1_PSS_PADDING` usará MGF1 con la misma función hash empleada para verificar el mensaje como se especifica en la sección 3.1 del [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para verificar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - longitud de salt para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial de `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de salt para el tamaño reducido; `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
+- `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+El argumento `signature` es la firma previamente calculada para los datos, en el `signatureFormat` que puede ser `'latin1'`, `'hex'` o `'base64'`. Si un `signatureFormat` es especificado, la `signature` se espera que sea una string; de no ser así se espera que `signature` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Múltiples llamadas a `verify.verify()` arrojarán un error.
+El objeto `verify` no puede ser usado nuevamente después de que `verify.verify()` ha sido llamado. Múltiples llamadas a `verify.verify()` arrojarán un error.
 
 ## Métodos y propiedades del módulo `crypto`
 
@@ -1048,7 +1048,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Devuelve: {Object} Un objeto contiene constantes usadas comúnmente para cifrado y operaciones relacionadas con la seguridad. Las constantes especificadas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1056,9 +1056,9 @@ added: v6.3.0
 added: v0.9.3
 -->
 
-La codificación predeterminada a usar para las funciones que pueden tomar strings o [buffers][`Buffer`]. El valor predeterminado es `'buffer'`, el cual hace que los métodos sean objetos [`Buffer`][] por defecto.
+La codificación predeterminada a usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
 
-El mecanismo `crypto.DEFAULT_ENCODING` se da para la compatibilidad con versiones anteriores con programas antiguos que esperan tener `'latin1'` como codificación predeterminada.
+El mecanismo `crypto.DEFAULT_ENCODING` es dado para la compatibilidad con versiones anteriores de programas antiguos que esperan que `'latin1'` sea un código por defecto.
 
 Las nuevas aplicaciones deben esperar que el valor por defecto sea `'buffer'`. Esta propiedad puede volverse obsoleta en futuras versiones de Node.js.
 
@@ -1081,15 +1081,15 @@ added: v0.1.94
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Cipher}
 
-Crea y regresa un objeto `Cipher` que emplea un `algorithm` y una `password` dados. El argumento opcional `options` controla el comportamiento del stream.
+Crea y devuelve un objeto `Cipher` que usa los `algorithm` y `password` dados. El argumento opcional `options` controla el comportamiento del stream.
 
 El `algorithm` es dependiente de OpenSSL, un ejemplo sería `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-El `password` es usado para derivar la clave cifrada y el vector de inicialización (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+El `password` es usado para derivar la clave cifrada y el vector de inicialización (IV). El valor debe ser un string codificado `'latin1'`, un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-La implementación de `crypto.createCipher()` deriva claves usando la función [`EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
+La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptográficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se le recomienda a los desarrolladores derivar una clave y un IV por su cuenta empleando [`crypto.pbkdf2()`][], así como usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. Una advertencia es emitida cuando son usadas para evitar el riesgo de reusar IV que causa vulnerabilidades. En el caso de que IV sea reutilizado in GCM, véa [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. Para el caso en que IV es reutilizado en GCM, vea [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) para más detalles.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1109,11 +1109,11 @@ changes:
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Cipher}
 
-Crea y regresa un objeto `Cipher` con el `algorithm`, `key` y el vector de inicialización (`iv`). El argumento opcional `options` controla el comportamiento del stream.
+Crea y devuelve un objeto `Cipher`, con los `algorithm`, `key` y vector de inicialización (`iv`) dados. El argumento opcional `options` controla el comportamiento del stream.
 
 El `algorithm` es dependiente de OpenSSL, un ejemplo sería `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'`, [Buffers][`Buffer`], `TypedArray`, o `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` es la clave sin procesar usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 ### crypto.createCredentials(details)
 
@@ -1126,9 +1126,9 @@ deprecated: v0.11.13
 
 - `details` {Object} Idéntico a [`tls.createSecureContext()`][].
 
-El método `crypto.createCredentials()` es una función obsoleta para crear y regresar un `tls.SecureContext`. No debe ser usada. Remplácela con [`tls.createSecureContext()`][], la cual tiene los mismos argumentos y valores de retorno.
+El método `crypto.createCredentials()` es una función desaprobada para crear y devolver un `tls.SecureContext`. No debe ser usada. Reemplácelo con [`tls.createSecureContext()`][] el cual tiene exactamente los mismos argumentos y valor de retorno.
 
-Regresa una `tls.SecureContext` como si [`tls.createSecureContext()`][] hubiese sido llamado.
+Devuelve un `tls.SecureContext`, como si [`tls.createSecureContext()`][] hubiera sido llamado.
 
 ### crypto.createDecipher(algorithm, password[, options])
 
@@ -1141,11 +1141,11 @@ added: v0.1.94
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Decipher}
 
-Crea y regresa un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados. El argumento opcional `options` controla el comportamiento del stream.
+Crea y devuelve un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados. El argumento opcional `options` controla el comportamiento del stream.
 
-La implementación de `crypto.createDecipher()<code> deriva claves usando la función OpenSSL [<0>EVP_BytesToKey`][] con el algoritmo de resumen establecido para MD5, una iteración y sin salt. La ausencia de salt permite ataques al diccionario ya que la misma contraseña crea siempre la misma clave. El conteo de baja iteración y el algoritmo de hash no criptográficamente seguro permiten que las claves sean probadas rápidamente.
+La implementación de `crypto.createDecipher()` deriva claves usando la función OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptográficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-De acuerdo a las recomendaciones de OpenSSL para el uso de PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][], y usar [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1165,11 +1165,11 @@ changes:
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Decipher}
 
-Crea y regresa un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados. Optional `options` argument controls stream behavior.
+Crea y devuelve un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados. El argumento opcional `options` controla el comportamiento del stream.
 
 El `algorithm` es dependiente de OpenSSL, un ejemplo sería `'aes192'`, etc. En publicaciones recientes de OpenSSL, `openssl list-cipher-algorithms` mostrará los algoritmos de cipher disponibles.
 
-La `key` es la clave no procesada por el `algorithm`, y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser string codificadas en `'utf8'`, [Buffers][`Buffer`], `TypedArray`, o `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` es la clave sin procesar usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
@@ -1194,15 +1194,15 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Crea un objeto de intercambio de clave `DiffieHellman` usando el `prime` dado y un `generator` opcional específico.
+Crea un objeto de intercambio de claves `DiffieHellman` usando el `prime` proporcionado y un `generator` opcional específico.
 
-El argumento `generator` puede ser un número, string, o un [`Buffer`][]. Si el `generator` no es especificado, entonces, el valor `2<0> no es usado.</p>
+El argumento `generator` puede ser un número, string, o un [`Buffer`][]. Si `generator` no es especificado, el valor `2` es usado.
 
-<p>The <code>primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+Los argumentos `primeEncoding` y `generatorEncoding` pueden ser `'latin1'`, `'hex'`, o `'base64'`.
 
-If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `primeEncoding` es especificado, se espera que `prime` sea una string; de no ser así, se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `generatorEncoding` es especificado, se espera que `generator` sea una string; de no ser así, se espera un número, [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
@@ -1213,7 +1213,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. Si `generator` no es especificado, el valor `2` es usado.
+Crea un objeto de intercambio de claves `DiffieHellman` y genera un prime de `primeLength` bits usando un `generator` numérico opcional específico. Si `generator` no es especificado, el valor `2` es usado.
 
 ### crypto.createECDH(curveName)
 
@@ -1223,7 +1223,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Usa [`crypto.getCurves()`][] para obtener una lista de los nombres de curvas disponibles. En versiones recientes de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
+Crea un objeto de intercambio de claves de Curva Elíptica Diffie-Hellman (`ECDH`) usando una curva predefinida específicada por la string `curveName`. Use [`crypto.getCurves()`][] para obtener una lista de nombres de curvas disponibles. En las últimas versiones OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1235,7 +1235,7 @@ added: v0.1.92
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Hash}
 
-Crea y regresa un objeto `Hash` que puede ser usado para generar el resumen de hash usando el `algorithm` dado. Optional `options` argument controls stream behavior.
+Crea y devuelve un objeto `Hash` que puede ser usado para generar resúmenes hash usando el `algorithm` dado. El argumento opcional `options` controla el comportamiento del stream.
 
 El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list-message-digest-algorithms` mostrará los resúmenes de algoritmos disponibles.
 
@@ -1306,7 +1306,7 @@ added: v0.1.92
 - `options` {Object} [`stream.Writable` options][]
 - Devuelve: {Sign}
 
-Crea y devuelve un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1318,7 +1318,7 @@ added: v0.1.92
 - `options` {Object} [`stream.Writable` options][]
 - Devuelve: {Verify}
 
-Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.getCiphers()
 
@@ -1326,7 +1326,7 @@ Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHa
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array with the names of the supported cipher algorithms.
+- Devuelve: {string[]} Un string con los nombres de los algoritmos de cifrado respaldados.
 
 Ejemplo:
 
@@ -1359,7 +1359,7 @@ added: v0.7.5
 - `groupName` {string}
 - Devuelve: {Object}
 
-Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (determinado en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero vea [Caveats](#crypto_support_for_weak_or_compromised_algorithms)), y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definido en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto regresado imita la interfaz de los objetos creados por [`crypto.createDiffieHellman()`][], pero no permitirá cambios en las claves (con [`diffieHellman.setPublicKey()`][], por ejemplo). La ventaja de usar este método es que las partes no tienen que generar o intercambiar un grupo de módulos previamente, ahorrando tanto el tiempo de procesado como el de comunicación.
+Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (definidos en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero ver [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definidos en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto devuelto imita la interfaz de objetos creados por [`crypto.createDiffieHellman()`][], pero no va a permitir cambios de las claves (con [`diffieHellman.setPublicKey()`][] por ejemplo). La ventaja de usar este método es que las partes no tienen que generar ni intercambiar un grupo de módulos de antemano, ahorrando tiempo de procesado y de comunicación.
 
 Ejemplo (obteniendo un secreto compartido):
 
@@ -1384,7 +1384,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
+- Devuelve: {string[]} Un array de los nombres de los algoritmos hash compatibles, como `'RSA-SHA256'`.
 
 Ejemplo:
 
@@ -1421,13 +1421,13 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Proporciona una implementación asincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
-La función de `callback` dada es llamada a través de dos argumentos: `err` y `derivdKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
+La función `callback` es llamada con dos argumentos: `err` y `derivedKey`. Se establecerá un `err` si un error ocurre, de lo contrario `err` sera nulo. La `derivedKey` exitosamente generada pasará como un [`Buffer`][].
 
 El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-La `salt` también debe ser lo más única posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
+La `salt` también debe ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos de 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1439,7 +1439,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para más información.
 
@@ -1466,13 +1466,13 @@ changes:
 - `digest` {string}
 - Devuelve: {Buffer}
 
-Proporciona una implementación sincrónica de una Función de Derivación de Clave Basada en Contraseña 2 (PBKDF2). Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de Derivación de Clave Basada en Contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
 Si ocurre un error, el mismo sera arrojado; sino, la clave derivada se regresará como un [`Buffer`][].
 
 El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-La `salt` también debe ser lo más única posible. Se recomienda que los salts sean aleatorios y que sus longitudes sean de 16 bytes al menos. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
+La `salt` también debe ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos de 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
 Ejemplo:
 
@@ -1482,7 +1482,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-Un array de funciones de compilación respaldadas puede ser recuperado empleando [`crypto.getHashes()`][].
+Un array de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1493,7 +1493,7 @@ added: v0.11.14
 - `privateKey` {Object | string} 
   - `key` {string} Clave privada con codificación PEM.
   - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
@@ -1510,7 +1510,7 @@ added: v1.1.0
 - `privateKey` {Object | string} 
   - `key` {string} Clave privada con codificación PEM.
   - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
@@ -1527,7 +1527,7 @@ added: v1.1.0
 - `key` {Object | string} 
   - `key` {string} Clave pública o privada con codificación PEM.
   - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
@@ -1546,11 +1546,11 @@ added: v0.11.14
 - `key` {Object | string} 
   - `key` {string} Clave pública o privada con codificación PEM.
   - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with encrypted content.
+Encripta el contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
 
 `key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
@@ -1698,11 +1698,11 @@ added: v6.6.0
 - `b` {Buffer | TypedArray | DataView}
 - Devuelve: {boolean}
 
-Esta función se basa en un algoritmo de tiempo constante. Regresa verdadero si `a` es igual a `b`, sin filtrar información sobre el tiempo que permita a un atacante adivinar uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
+Esta función se basa en un algoritmo de tiempo constante. Devuelve true si `a` es igual a `b`, sin perder información de tiempo que le permita adivinar a un atacante uno de los valores. Esto es adecuado para comparar los resúmenes de HMAC o los valores secretos como cookies de autenticación o [urls de habilidad](https://www.w3.org/TR/capability-urls/).
 
-`a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they must have the same length.
+`a` y `b` deben ser ambos `Buffer`s, `TypedArray`s, o `DataView`s, y deben tener la misma longitud.
 
-*Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
+*Nota*: El uso de `crypto.timingSafeEqual` no garantiza que el código *cercano* sea seguro en cuanto a tiempo. Debe tener cuidado al asegurarse de que el código cercano no introduce vulnerabilidades de tiempo.
 
 ## Notas
 
@@ -1725,7 +1725,7 @@ Los usuarios deben tomar la responsabilidad completa por seleccionar el crypto a
 Basado en la recomendación de [NIST SP 800-131A](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
 
 - MD5 y SHA-1 ya no son aceptados como firmas digitales en donde la collision resistance es necesaria.
-- The key used with RSA, DSA, and DH algorithms is recommended to have at least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to be safe to use for several years.
+- La key usada con los algoritmos RSA, DSA, y DH es recomendable que tenga al menos 2048 bits y que la curve de ECDSA y ECDH tenga al menos 224 bits, esto para que sea seguro su uso por varios años.
 - Los grupos DH de `modp1`, `modp2` and `modp5` que tienen un tamaño de key menor a 2048 bits, no son recomendados.
 
 Observe la referencia para otras recomendaciones y detalles.
