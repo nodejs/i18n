@@ -358,7 +358,7 @@ path.parse('/home/user/dir/file.txt');
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(todos los espacios en la línea "" deben ser ignorados — ellos están solamente para el formato)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 En Windows:
@@ -380,7 +380,7 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(todos los espacios en la línea "" deben ser ignorados — ellos están solamente para el formato)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 Se produce un [`TypeError`][] si `path` no es una string.
