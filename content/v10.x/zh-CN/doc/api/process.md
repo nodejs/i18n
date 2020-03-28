@@ -262,7 +262,7 @@ added: v6.0.0
 
 当 Node.js 发出进程警告时，就会发出 `'warning'` 事件。
 
-进程警告和错误的相似之处在于，它描述了需要用户注意的异常条件。 然而，警告不是 Node.js 和 JavaScript 常规错误处理流程的一部分。 Node.js can emit warnings whenever it detects bad coding practices that could lead to sub-optimal application performance, bugs, or security vulnerabilities.
+进程警告和错误的相似之处在于，它描述了需要用户注意的异常条件。 然而，警告不是 Node.js 和 JavaScript 常规错误处理流程的一部分。 只要检测到可能导致应用程序性能问题，缺陷，或安全漏洞的代码实践，Node.js 就会发出警告。
 
 ```js
 process.on('warning', (warning) => {
@@ -274,7 +274,7 @@ process.on('warning', (warning) => {
 
 默认情况下，Node.js 将把进程警告信息打印到 `stderr`。 `--no-warnings` 命令行选项可被用于阻止默认的控制台输出，但 `process` 对象仍会发出 `'warning'` 事件。
 
-The following example illustrates the warning that is printed to `stderr` when too many listeners have been added to an event:
+如下示例演示了当过多监听器被附加到事件时，将被输出到 `stderr` 的警告信息:
 
 ```txt
 $ node
@@ -308,7 +308,7 @@ The `*-deprecation` command line flags only affect warnings that use the name `'
 
 #### 发出自定义警告
 
-See the [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) method for issuing custom or application-specific warnings.
+关于发布自定义或特定于应用程序的警告，请参阅 [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) 方法。
 
 ### 信号事件
 
@@ -340,7 +340,7 @@ process.on('SIGTERM', handle);
 ```
 
 * `'SIGUSR1'` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
-* `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
+* `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. 如果这些信号之一具有已安装的监听器，它的默认行为将被删除 (Node.js 将不再退出)。
 * `'SIGPIPE'` is ignored by default. 它可以安装一个监听器。
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). 它可以安装监听器，但在大约 10 秒后，Node.js 会被 Windows 无条件终止。 在非 Windows 平台，`SIGHUP` 的默认行为是结束 Node.js，但一旦安装了监听器，其默认行为将被删除。
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
@@ -405,7 +405,7 @@ added: v0.5.0
 
 The `process.arch` property returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-当前的可能值包括：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
+当前可能的值为：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
 
 ```js
 console.log(`This processor architecture is ${process.arch}`);
@@ -472,7 +472,7 @@ added: v7.1.0
 
 * {Object}
 
-If the Node.js process was spawned with an IPC channel (see the [Child Process](child_process.html) documentation), the `process.channel` property is a reference to the IPC channel. If no IPC channel exists, this property is `undefined`.
+如果 Node.js 进程是通过 IPC 通道 (请参阅 [子进程](child_process.html) 文档) 衍生的，则 `process.channel` 属性是 IPC 通道的引用。 如果没有 IPC 通道，则此属性值为 `undefined`。
 
 ## process.chdir(directory)
 
@@ -910,7 +910,7 @@ process.exit(1);
 
 执行 Node.js 的 shell 应可以看到退出代码为 `1`。
 
-Calling `process.exit()` will force the process to exit as quickly as possible even if there are still asynchronous operations pending that have not yet completed fully, including I/O operations to `process.stdout` and `process.stderr`.
+当调用 `process.exit()` 时，即使存在尚未完全完成的异步操作，包括到 `process.stdout` 和 `process.stderr` 的 I/O 操作，也会强迫进程尽快退出。
 
 在大多数情况下，没有必要显式调用 `process.exit()`。 如果在事件循环中 *没有额外待处理的工作* 时，Node.js 进程会自行退出。 可以设置 `process.exitCode` 属性来告诉进程正常退出时需要使用的退出码。
 
@@ -1058,7 +1058,7 @@ This is the legacy version of [`process.hrtime.bigint()`][] before `bigint` was 
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple `Array`, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
-`time` is an optional parameter that must be the result of a previous `process.hrtime()` call to diff with the current time. If the parameter passed in is not a tuple `Array`, a `TypeError` will be thrown. Passing in a user-defined array instead of the result of a previous call to `process.hrtime()` will lead to undefined behavior.
+`time` 为一个可选参数，是之前对 `process.hrtime()` 调用的结果，以用于计算和当前时间的差异。 If the parameter passed in is not a tuple `Array`, a `TypeError` will be thrown. 如果传入一个用户定义的数组，而不是之前对 `process.hrtime()` 的调用结果，将会导致未定义的行为。
 
 这些时间都是相对于过去某一时间的值，与一天中的时间没有关系，因此也不受时钟偏差的影响。 其主要用途是衡量时间间隔之间的性能：
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Returns: {bigint}
+* 返回：{bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1346,7 +1346,7 @@ added: v0.1.16
 console.log(`This platform is ${process.platform}`);
 ```
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+如果 Node.js 是在 Android 操作系统上构建的，返回值还可能会是 `'android'`。 However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## process.ppid
 
@@ -1383,7 +1383,7 @@ The `process.release` property returns an `Object` containing metadata related t
 * `sourceUrl` {string} 指向包含当前发布版本源代码的 *`.tar.gz`* 文件的绝对 URL。
 * `headersUrl`{string} 指向仅包含当前发布版本头文件源代码的 *`.tar.gz`* 文件的绝对 URL。 此文件比完整源文件要小很多，并可被用于编译 Node.js 原生插件。
 * `libUrl` {string} 和系统架构及当前发布版本号相匹配的指向 *`node.lib`* 文件的绝对 URL。 此文件用于编译 Node.js 原生插件。 *此属性只存在于 Node.js 的 Windows 版本中，在其他平台下不存在。*
-* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/Release) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. 当前的有效值包括： 
+* `lts` {string} 用于标识此发布版本的 [LTS](https://github.com/nodejs/Release) 标签的字符串标签。 此属性仅存在于 LTS 发布版本中，在其他发布版本，包括 *当前* 版本中，其值为 `undefined`。 当前的有效值包括： 
   * `'Argon'` 针对自 4.2.0 开始的 4.x LTS 版本。
   * `'Boron'` 针对自 6.9.0 开始的 6.x LTS 版本。
   * `'Carbon'` 针对自 8.9.1 开始的 8.x LTS 版本。
@@ -1762,5 +1762,5 @@ console.log(process.versions);
 * `8` - 未使用的。 在 Node.js 的之前版本中，返回码为 8 有时代表一个未被捕获的异常。
 * `9` - **非法参数** - 某个未知选项被指定，或未给必选项提供数值。
 * `10` **内部 JavaScript 运行时错误** - 当引导进程函数被调用时，其内部的 JavaScript 源代码抛出了错误。 这种情况非常罕见，且通常发生在 Node.js 自己的开发过程中。
-* `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
+* `12` **无效的调试参数** - 已设置 `--inspect` 和/或 `--inspect-brk` 选项，但选中的端口号无效或不可用。
 * `>128` **退出信号** - 如果 Node.js 收到了一个严重错误信号，比如：`SIGKILL` 或 `SIGHUP`，在这种情况下其退出码为 `128`, 加上信号代码的值。 这是 POSIX 的标准做法，由于退出码被定义为 7 位整数，且退出信号设置了高位，因此会包含信号代码的值。 For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
