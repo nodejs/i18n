@@ -20,9 +20,9 @@ The `net` module supports IPC with named pipes on Windows, and UNIX domain socke
 
 [`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] and [`socket.connect()`][] take a `path` parameter to identify IPC endpoints.
 
-En UNIX, el dominio local es también conocido como el dominio UNIX. The path is a filesystem path name. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. Los valores típicos son 107 en Linux y 103 en macOS. The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
+En UNIX, el dominio local es también conocido como el dominio UNIX. La ruta es un nombre de ruta del sistema de archivos. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. Los valores típicos son 107 en Linux y 103 en macOS. The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
 
-En Windows, el dominio local es implementado usando un pipe que ya tiene nombre. The path *must* refer to an entry in ``\\?\pipe\` or``\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving`..` sequences. A pesar de las apariencias, el espacio del nombre de la pipe es plano. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
+En Windows, el dominio local es implementado usando un pipe que ya tiene nombre. La ruta *debe* referir a una entrada en `\\?\pipe` o `\\.\pipe`. Se permite cualquier carácter, pero este último puede realizar algún procesamiento de nombres de pipes, como la resolución de las secuencias `..`. A pesar de las apariencias, el espacio del nombre de la pipe es plano. Las pipes *no persistirán*, se eliminan cuando se cierra la última referencia a ellos. No olvide que el escape de strings de JavaScript requiere que las rutas se especifiquen con doble barra diagonal inversa, como:
 
 ```js
 net.createServer().listen(
@@ -51,7 +51,7 @@ Vea [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 added: v0.5.0
 -->
 
-Emitido cuando el servidor se cierra. Note that if connections exist, this event is not emitted until all connections are ended.
+Emitido cuando el servidor se cierra. Tenga en cuenta que si existen conexiones, este evento no se emitirá hasta que se terminen todas las conexiones.
 
 ### Evento: 'connection'
 
@@ -61,7 +61,7 @@ added: v0.1.90
 
 * {net.Socket} El objeto de conexión
 
-Emitido cuando se hace una nueva conexión. `socket` is an instance of `net.Socket`.
+Emitido cuando se hace una nueva conexión. `socket` es una instancia de `net.Socket`.
 
 ### Evento: 'error'
 
@@ -71,7 +71,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitido cuando ocurre un error. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emitido cuando ocurre un error. A diferencia de [`net.Socket`][], el evento [`'close'`][] **no** se emitirá directamente después de este evento a menos que [`server.close()`][] sea llamado manualmente. See the example in discussion of [`server.listen()`][].
 
 ### Evento: 'listening'
 
@@ -87,9 +87,9 @@ Emitido cundo el servidor ha sido enlazado después de llamar a [`server.listen(
 added: v0.1.90
 -->
 
-Returns the bound address, the address family name, and port of the server as reported by the operating system if listening on an IP socket. Es útil para encontrar qué puerto se asignó al obtener una dirección asignada por el sistema operativo. Returns an object with `port`, `family`, and `address` properties: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+Devuelve la dirección enlazada, el nombre de la familia de la dirección y el puerto del servidor según lo informado por el sistema operativo si se escucha en un socket IP. Es útil para encontrar qué puerto se asignó al obtener una dirección asignada por el sistema operativo. Devuelve un objeto con las propiedades `port`, `family` y `address`: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
-For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
+Para un servidor que escucha en un pipe o un socket de dominio UNIX, el nombre se devuelve como una string.
 
 Ejemplo:
 
@@ -117,7 +117,7 @@ added: v0.1.90
 
 * Devuelve: {net.Server}
 
-Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. El `callback` opcional será llamado una vez el evento `'close'` ocurra. Unlike that event, it will be called with an Error as its only argument if the server was not open when it was closed.
+Evita que el servidor acepte nuevas conexiones y mantiene las conexiones existentes. Esta función es asíncrona, el servidor finalmente se cierra cuando todas las conexiones se terminan y el servidor emite un evento [`'close'`][]. El `callback` opcional será llamado una vez el evento `'close'` ocurra. A diferencia de ese evento, se llamará con un Error como su único argumento si el servidor no estaba abierto cuando se cerró.
 
 Devuelve `server`.
 
@@ -132,7 +132,7 @@ deprecated: v0.9.7
 
 El número de conexiones simultáneas en el servidor.
 
-This becomes `null` when sending a socket to a child with [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
 
 ### server.getConnections(callback)
 
@@ -142,7 +142,7 @@ added: v0.9.7
 
 * Devuelve: {net.Server}
 
-Obtiene el número de conexiones simultáneas en el servidor de forma asincrónica. Works when sockets were sent to forks.
+Obtiene el número de conexiones simultáneas en el servidor de forma asincrónica. Funciona cuando los sockets han sido enviados a las bifurcaciones.
 
 El callback debería tomar dos argumentos, `err` y `count`.
 
@@ -157,7 +157,7 @@ Firmas posibles:
 * [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
 * [`server.listen([port][, host][, backlog][, callback])`][`server.listen(port, host)`] for TCP servers
 
-Esta función es asíncrona. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+Esta función es asíncrona. When the server starts listening, the [`'listening'`][] event will be emitted. El último parámetro `callback` se agregará como un listener para el evento [`'listening'`][].
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. El valor predeterminado de este parámetro es 511 (no 512).
 
@@ -165,7 +165,7 @@ All `listen()` methods can take a `backlog` parameter to specify the maximum len
 
 * All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
-* The `server.listen()` method may be called multiple times. Each subsequent call will *re-open* the server using the provided options.
+* The `server.listen()` method may be called multiple times. Cada llamada subsiguiente *volverá a abrir* el servidor usando las opciones provistas.
 
 Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. This happens when another server is already listening on the requested `port` / `path` / `handle`. One way to handle this would be to retry after a certain amount of time:
 
@@ -207,15 +207,15 @@ added: v0.11.14
 * `options` {Object} Requerido. Soporta las siguientes propiedades: 
   * `port` {number}
   * `host` {string}
-  * `path` {string} Será ignorado si se especifica el `port`. Vea [Identificando rutas para conexiones ICP](#net_identifying_paths_for_ipc_connections).
-  * `backlog` {number} Párametro común de las funciones [`server.listen()`][].
+  * `path` {string} Será ignorado si se especifica el `port`. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
+  * `backlog` {number} Common parameter of [`server.listen()`][] functions.
   * `exclusive` {boolean} **Predeterminado:** `false`
-* `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
+* `callback` {Function} Common parameter of [`server.listen()`][] functions.
 * Devuelve: {net.Server}
 
 If `port` is specified, it behaves the same as [`server.listen([port][, hostname][, backlog][, callback])`][`server.listen(port, host)`]. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. Si ninguno es especificado, se producirá un error.
 
-If `exclusive` is `false` (default), then cluster workers will use the same underlying handle, allowing connection handling duties to be shared. When `exclusive` is `true`, the handle is not shared, and attempted port sharing results in an error. An example which listens on an exclusive port is shown below.
+Si `exclusive` es `false` (predeterminado), los workers del clúster usarán el mismo identificador subyacente, lo que permitirá compartir las tareas de manejo de la conexión. Cuando `exclusive` es `true`, el manejador no se comparte y el intento de compartir el puerto produce un error. Un ejemplo que escucha en un puerto exclusivo es mostrado a continuación.
 
 ```js
 server.listen({
@@ -231,7 +231,7 @@ server.listen({
 added: v0.1.90
 -->
 
-* `path` {string} La ruta que el servidor debería escuchar. Vea [Identificando rutas para conexiones ICP](#net_identifying_paths_for_ipc_connections).
+* `path` {string} La ruta que el servidor debería escuchar. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Párametro común de las funciones [`server.listen()`][].
 * `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
 * Devuelve: {net.Server}
@@ -264,7 +264,7 @@ If `host` is omitted, the server will accept connections on the [unspecified IPv
 added: v5.7.0
 -->
 
-A Boolean indicating whether or not the server is listening for connections.
+Un Booleano que indica si el servidor está escuchando conexiones o no.
 
 ### server.maxConnections
 
@@ -272,9 +272,9 @@ A Boolean indicating whether or not the server is listening for connections.
 added: v0.2.0
 -->
 
-Set this property to reject connections when the server's connection count gets high.
+Establezca esta propiedad para rechazar las conexiones cuando el recuento de conexiones del servidor sea alto.
 
-It is not recommended to use this option once a socket has been sent to a child with [`child_process.fork()`][].
+No se recomienda usar esta opción una vez que se haya enviado un socket a un proceso secundario con [`child_process.fork()`][].
 
 ### server.ref()
 
@@ -284,7 +284,7 @@ added: v0.9.1
 
 * Devuelve: {net.Server}
 
-Opposite of `unref`, calling `ref` on a previously `unref`d server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`d calling `ref` again will have no effect.
+Opuesto a `unref`, llamar a `ref` en un servidor de `unaref` previo *no* dejará que el programa salga si es el único servidor restante (el comportamiento predeterminado). Si el servidor es `ref`d, volver a llamar a `ref` no tendrá efecto.
 
 ### server.unref()
 
@@ -294,7 +294,7 @@ added: v0.9.1
 
 * Devuelve: {net.Server}
 
-Calling `unref` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`d calling `unref` again will have no effect.
+Llamar a `unref` en un servidor permitirá que el programa salga si este es el único servidor activo en el sistema de eventos. Si el servidor ya fue `unref`d llamar a `unref` nuevamente no tendrá efecto.
 
 ## Clase: net.Socket
 
@@ -333,7 +333,7 @@ added: v0.1.90
 
 * `had_error` {boolean} `true` si el socket tiene un error de transmisión.
 
-Emitido una vez que el socket esté completamente cerrado. The argument `had_error` is a boolean which says if the socket was closed due to a transmission error.
+Emitido una vez que el socket esté completamente cerrado. El argumento `had_error` es un booleano que indica si el socket se cerró debido a un error de transmisión.
 
 ### Evento: 'connect'
 
@@ -351,9 +351,9 @@ added: v0.1.90
 
 * {Buffer}
 
-Emitido cuando los datos son recibidos. The argument `data` will be a `Buffer` or `String`. La codificación de los datos es establecida por `socket.setEncoding()`. (Consulte la sección [Stream Legible](stream.html#stream_class_stream_readable) para obtener más información.)
+Emitido cuando los datos son recibidos. El argumento `data` será un `Buffer` o `String`. La codificación de los datos es establecida por `socket.setEncoding()`. (Consulte la sección [Stream Legible](stream.html#stream_class_stream_readable) para obtener más información.)
 
-Note that the **data will be lost** if there is no listener when a `Socket` emits a `'data'` event.
+Tenga en cuenta que **se perderán datos** si no hay un listener cuando un `Socket` emita un evento `'data'`.
 
 ### Evento: 'drain'
 
@@ -383,7 +383,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitido cuando ocurre un error. The `'close'` event will be called directly following this event.
+Emitido cuando ocurre un error. El evento `'close'` será llamado directamente siguiendo este evento.
 
 ### Evento: 'lookup'
 
@@ -409,7 +409,7 @@ Emitido después de resolver el nombre del host pero antes de conectar. No es ap
 added: v0.1.90
 -->
 
-Emitido si el socket agota el tiempo de espera por inactividad. This is only to notify that the socket has been idle. El usuario debe cerrar la conexión manualmente.
+Emitido si el socket agota el tiempo de espera por inactividad. Esto es solo para notificar que el socket ha estado inactivo. El usuario debe cerrar la conexión manualmente.
 
 Vea también: [`socket.setTimeout()`][]
 
@@ -419,7 +419,7 @@ Vea también: [`socket.setTimeout()`][]
 added: v0.1.90
 -->
 
-Returns the bound address, the address family name and port of the socket as reported by the operating system. Returns an object with three properties, e.g. `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+Devuelve la dirección enlazada, el nombre de la familia de la dirección y el puerto del socket según lo informado por el sistema operativo. Devuelve un objeto con tres propiedades, por ejemplo, `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
 
@@ -427,9 +427,9 @@ Returns the bound address, the address family name and port of the socket as rep
 added: v0.3.8
 -->
 
-`net.Socket` tiene la propiedad que `socket.write()` siempre funciona. This is to help users get up and running quickly. The computer cannot always keep up with the amount of data that is written to a socket - the network connection simply might be too slow. Node.js will internally queue up the data written to a socket and send it out over the wire when it is possible. (Internally it is polling on the socket's file descriptor for being writable).
+`net.Socket` tiene la propiedad que `socket.write()` siempre funciona. Esto es para ayudar a los usuarios a ponerse en marcha rápidamente. La computadora no siempre puede mantenerse al día con la cantidad de datos que se escriben en un socket - la conexión de red simplemente puede ser demasiado lenta. Node.js internamente pondrá en cola los datos escritos en un socket y los enviará a través del cable cuando sea posible. (Internamente, está sondeando en el descriptor de archivo del socket para que se pueda escribir).
 
-La consecuencia de este búfer interno es que la memoria puede crecer. Esta propiedad muestra el número de caracteres almacenados actualmente en el búfer para ser escritos. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
+La consecuencia de este búfer interno es que la memoria puede crecer. Esta propiedad muestra el número de caracteres actualmente almacenados para ser escritos. (El número de caracteres es aproximadamente igual al número de bytes que se escribirán, pero el búfer puede contener strings, y las strings están codificadas de forma perezosa, por lo que no se conoce el número exacto de bytes.)
 
 Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
 
@@ -502,7 +502,7 @@ Devuelve `socket`.
 
 #### socket.connect(path[, connectListener])
 
-* `path` {string} Ruta al que el cliente debe conectarse. Vea [Identificando rutas para conexiones ICP](#net_identifying_paths_for_ipc_connections).
+* `path` {string} Ruta al que el cliente debe conectarse. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Será añadido una vez como un listener para el evento [`'connect'`][].
 * Devuelve: {net.Socket} El socket en sí.
 
@@ -545,13 +545,13 @@ added: v0.1.90
 
 * Devuelve: {net.Socket}
 
-Asegura que ninguna actividad I/O ocurra en este socket. Only necessary in case of errors (parse error or so).
+Asegura que ninguna actividad I/O ocurra en este socket. Solo es necesario en caso de errores (error de análisis o algo así).
 
-If `exception` is specified, an [`'error'`][] event will be emitted and any listeners for that event will receive `exception` as an argument.
+Si se especifica `exception`, se emitirá un evento [`'error'`][] y todos los listeners de ese evento recibirán `exception` como un argumento.
 
 ### socket.destroyed
 
-Un valor Booleano que indica si la conexión se destruye o no. Once a connection is destroyed no further data can be transferred using it.
+Un valor Booleano que indica si la conexión se destruye o no. Una vez que se destruye una conexión, no se pueden transferir más datos al usarla.
 
 ### socket.end(\[data\]\[, encoding\])
 
@@ -561,7 +561,7 @@ added: v0.1.90
 
 * Devuelve: {net.Socket} El socket en sí.
 
-Entrecierra el socket. p. ej., envía un paquete FIN. It is possible the server will still send some data.
+Entrecierra el socket. p. ej., envía un paquete FIN. Es posible que el servidor todavía envíe algunos datos.
 
 If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
 
@@ -571,7 +571,7 @@ If `data` is specified, it is equivalent to calling `socket.write(data, encoding
 added: v0.9.6
 -->
 
-The string representation of the local IP address the remote client is connecting on. For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
+La representación de string de la dirección IP local en la que se está conectando el cliente remoto. For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
 
 ### socket.localPort
 
@@ -579,7 +579,7 @@ The string representation of the local IP address the remote client is connectin
 added: v0.9.6
 -->
 
-La representación numérica del puerto local. For example, `80` or `21`.
+La representación numérica del puerto local. Por ejemplo `80` o `21`.
 
 ### socket.pause()
 
@@ -595,7 +595,7 @@ added: v0.9.1
 
 * Devuelve: {net.Socket} El socket en sí.
 
-Opposite of `unref`, calling `ref` on a previously `unref`d socket will *not* let the program exit if it's the only socket left (the default behavior). If the socket is `ref`d calling `ref` again will have no effect.
+Al contrario de `unref`, llamar a `ref` en un socket `unref` anteriormente, *no* permitirá que el programa salga si es el único socket que queda (el comportamiento predeterminado). Si el socket es `ref`d, llamar a `ref` nuevamente no tendrá efecto.
 
 ### socket.remoteAddress
 
@@ -603,7 +603,7 @@ Opposite of `unref`, calling `ref` on a previously `unref`d socket will *not* le
 added: v0.5.10
 -->
 
-La representación en string de la dirección IP remota. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`. Value may be `undefined` if the socket is destroyed (for example, if the client disconnected).
+La representación en string de la dirección IP remota. Por ejemplo, `'74.125.127.100'` o `'2001:4860:a005::68'`. El valor puede ser `undefined` si el socket se destruye (por ejemplo, si el cliente se desconectó).
 
 ### socket.remoteFamily
 
@@ -619,7 +619,7 @@ La representación en string de la familia IP remota. `'IPv4'` or `'IPv6'`.
 added: v0.5.10
 -->
 
-La representación numérica del puerto remoto. For example, `80` or `21`.
+La representación numérica del puerto remoto. Por ejemplo `80` o `21`.
 
 ### socket.resume()
 
@@ -635,7 +635,7 @@ added: v0.1.90
 
 * Devuelve: {net.Socket} El socket en sí.
 
-Establece la codificación para el socket como una [Stream Legible](stream.html#stream_class_stream_readable). See [`stream.setEncoding()`][] for more information.
+Establece la codificación para el socket como una [Stream Legible](stream.html#stream_class_stream_readable). Vea [`stream.setEncoding()`][] para más información.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -647,9 +647,9 @@ added: v0.1.92
 * `initialDelay` {number} **Predeterminado:** `0`
 * Devuelve: {net.Socket} El socket en sí.
 
-Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
+Activa/desactiva la funcionalidad keep-alive y, opcionalmente, establece el retraso inicial antes de que la primera sonda keepalive se envíe en un socket inactivo.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting.
+Establece `initialDelay` (en milisegundos) para establecer el retraso entre el último paquete de datos recibido y la primera sonda de keepalive. Configurar como 0 a initialDelay dejará el valor sin cambios de la configuración predeterminada (o anterior).
 
 ### socket.setNoDelay([noDelay])
 
@@ -660,7 +660,7 @@ added: v0.1.90
 * `noDelay` {boolean} **Predeterminado:** `true`
 * Devuelve: {net.Socket} El socket en sí.
 
-Desactiva el algoritmo Nagle. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called.
+Desactiva el algoritmo Nagle. Por defecto, las conexiones TCP usan el algoritmo de Nagle, almacenan los datos antes de enviarlos. Configurar como `true` a `noDelay` disparará los datos inmediatamente cada vez que se llame a `socket.write()`.
 
 ### socket.setTimeout(timeout[, callback])
 
@@ -670,9 +670,9 @@ added: v0.1.90
 
 * Devuelve: {net.Socket} El socket en sí.
 
-Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. De manera predeterminada, el `net.Socket` no tiene un timeout.
+Establece el socket en tiempo de espera después de `timeout` milisegundos de inactividad en el socket. De manera predeterminada, el `net.Socket` no tiene un timeout.
 
-When an idle timeout is triggered the socket will receive a [`'timeout'`][] event but the connection will not be severed. The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
+Cuando se desencadena un tiempo de espera inactivo, el socket recibirá un evento [`'timeout'`][] pero la conexión no se cortará. The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
 
 ```js
 socket.setTimeout(3000);
@@ -684,7 +684,7 @@ socket.on('timeout', () => {
 
 Si el `timeout` es 0, el timeout existente en espera es desactivado.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'timeout'`][] event.
+El parámetro opcional `callback` se agregará como un listener de una sola vez para el evento [`'timeout'`][].
 
 ### socket.unref()
 
@@ -694,7 +694,7 @@ added: v0.9.1
 
 * Devuelve: {net.Socket} El socket en sí.
 
-Calling `unref` on a socket will allow the program to exit if this is the only active socket in the event system. If the socket is already `unref`d calling `unref` again will have no effect.
+Llamar a `unref` en un socket permitirá que el programa salga si este es el único socket activo en el sistema de eventos. Si el socket ya está `unref`d llamando a `unref` de nuevo, no tendrá ningún efecto.
 
 ### socket.write(data\[, encoding\]\[, callback\])
 
@@ -702,11 +702,11 @@ Calling `unref` on a socket will allow the program to exit if this is the only a
 added: v0.1.90
 -->
 
-Envía los datos en el scoket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Envía los datos en el scoket. El segundo parámetro especifica la codificación en el caso de una string — por defecto es la codificación UTF8.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. [`'drain'`][] será emitido cuando el búfer esté libre de nuevo.
+Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer del núcleo. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. [`'drain'`][] será emitido cuando el búfer esté libre de nuevo.
 
-The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
+El parámetro opcional `callback` se ejecutará cuando los datos finalmente se escriban - esto puede no ser inmediato.
 
 ## net.connect()
 
@@ -772,7 +772,7 @@ Opciones adicionales:
 
 * `timeout` {number} If set, will be used to call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
 
-Following is an example of a client of the echo server described in the [`net.createServer()`][] section:
+A continuación se muestra un ejemplo de un cliente del servidor echo descrito en la sección [`net.createServer()`][]:
 
 ```js
 const net = require('net');
@@ -790,7 +790,7 @@ client.on('end', () => {
 });
 ```
 
-To connect on the socket `/tmp/echo.sock` the second line would just be changed to
+Para conectar en el socket `/tmp/echo.sock`, la segunda línea se cambiará a
 
 ```js
 const client = net.createConnection({ path: '/tmp/echo.sock' });
@@ -872,7 +872,7 @@ Pruebe esto usando `telnet`:
 $ telnet localhost 8124
 ```
 
-To listen on the socket `/tmp/echo.sock` the third line from the last would just be changed to
+Para escuchar en el socket `/tmp/echo.sock`, la tercera línea de la última se cambiará a
 
 ```js
 server.listen('/tmp/echo.sock', () => {
@@ -892,7 +892,7 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-Comprueba si la entrada es una dirección IP. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
+Comprueba si la entrada es una dirección IP. Devuelve 0 para strings inválidas, devuelve 4 para direcciones IP versión 4 y devuelve 6 para direcciones IP versión 6.
 
 ## net.isIPv4(input)
 
