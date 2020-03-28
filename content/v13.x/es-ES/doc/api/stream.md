@@ -831,7 +831,7 @@ Si el argumento `size` no se especifica, se devolverán todos los datos en el bu
 
 The `size` argument must be less than or equal to 1 GB.
 
-The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
+El método `readable.read()` solo debería ser llamado en los streams `Readable` operando en modo pausado. En modo fluido, `readable.read()` es llamado automáticamente hasta que el búfer interno es vaciado completamente.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -1084,7 +1084,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-* Returns: {AsyncIterator} to fully consume the stream.
+* Devuelve: {AsyncIterator} para consumir completamente el stream.
 
 ```js
 const fs = require('fs');
@@ -1119,7 +1119,7 @@ changes:
 
 Duplex streams are streams that implement both the [`Readable`][] and [`Writable`][] interfaces.
 
-Examples of `Duplex` streams include:
+Ejemplos de un stream `Duplex` incluyen:
 
 * [sockets TCP](net.html#net_class_net_socket)
 * [streams zlib](zlib.html)
@@ -1134,7 +1134,7 @@ added: v0.9.4
 
 Transform streams are [`Duplex`][] streams where the output is in some way related to the input. Like all [`Duplex`][] streams, `Transform` streams implement both the [`Readable`][] and [`Writable`][] interfaces.
 
-Examples of `Transform` streams include:
+Ejemplos de streams `Transform` incluyen:
 
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
@@ -1153,7 +1153,7 @@ Destroy the stream, and optionally emit an `'error'` event. After this call, the
 added: v10.0.0
 -->
 
-* `stream` {Stream} A readable and/or writable stream.
+* `stream` {Stream} Un stream legible y/o escribible.
 * `options` {Object}
   * `error` {boolean} If set to `false`, then a call to `emit('error', err)` is not treated as finished. **Default**: `true`.
   * `readable` {boolean} When set to `false`, the callback will be called when the stream ends even though the stream might still be readable. **Default**: `true`.
@@ -1206,16 +1206,29 @@ const cleanup = finished(rs, (err) => {
 });
 ```
 
-### `stream.pipeline(...streams, callback)`
+### `stream.pipeline(source[, ...transforms], destination, callback)`
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v13.10.0
+    pr-url: https://github.com/nodejs/node/pull/31223
+    description: Add support for async generators.
 -->
 
-* `...streams` {Stream} Two or more streams to pipe between.
+* `source` {Stream|Iterable|AsyncIterable|Function}
+  * Returns: {Iterable|AsyncIterable}
+* `...transforms` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable}
+* `destination` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable|Promise}
 * `callback` {Function} Called when the pipeline is fully done.
   * `err` {Error}
+  * `val` Resolved value of `Promise` returned by `destination`.
+* Returns: {Stream}
 
-A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+A module method to pipe between streams and generators forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
 ```js
 const { pipeline } = require('stream');
@@ -1251,6 +1264,28 @@ async function run() {
     fs.createReadStream('archive.tar'),
     zlib.createGzip(),
     fs.createWriteStream('archive.tar.gz')
+  );
+  console.log('Pipeline succeeded.');
+}
+
+run().catch(console.error);
+```
+
+The `pipeline` API also supports async generators:
+
+```js
+const pipeline = util.promisify(stream.pipeline);
+const fs = require('fs').promises;
+
+async function run() {
+  await pipeline(
+    fs.createReadStream('lowercase.txt'),
+    async function* (source) {
+      for await (const chunk of source) {
+        yield String(chunk).toUpperCase();
+      }
+    },
+    fs.createWriteStream('uppercase.txt')
   );
   console.log('Pipeline succeeded.');
 }
@@ -1436,7 +1471,7 @@ El método `writable._write()` es ajustado con un subrayado porque es interno a 
 
 #### `writable._writev(chunks, callback)`
 
-* `chunks` {Object[]} The chunks to be written. Cada fragmento tiene el siguiente formato: `{ chunk: ..., encoding: ... }`.
+* `chunks` {Object[]} Los fragmentos a ser escritos. Cada fragmento tiene el siguiente formato: `{ chunk: ..., encoding: ... }`.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error) para ser invocada cuando el procesamiento de los fragmentos suministrados es completado.
 
 This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
@@ -2052,8 +2087,7 @@ const pipeline = util.promisify(stream.pipeline);
 const writable = fs.createWriteStream('./file');
 
 (async function() {
-  const readable = Readable.from(iterable);
-  await pipeline(readable, writable);
+  await pipeline(iterable, writable);
 })();
 ```<!--type=misc-->### Compatibilidad con las versiones anteriores de Node.js<!--type=misc-->Prior to Node.js 0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
 
