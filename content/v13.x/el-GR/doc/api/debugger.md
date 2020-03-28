@@ -20,7 +20,7 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Το πρόγραμμα εντοπισμού σφαλμάτων της Node.js δεν είναι ένα πρόγραμμα με πλήρη χαρακτηριστικά, όμως είναι δυνατό να γίνεται επιθεώρηση ανά βήμα.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Εισάγοντας μια δήλωση `debugger;` στον πηγαίο κώδικα ενός σεναρίου, θα ενεργοποιήσει ένα σημείο διακοπής σε αυτό το σημείο του κώδικα:
 ```js
