@@ -1,11 +1,11 @@
 # Style Guide
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* Dokumentacija se piše u markdown fajlu sa nazivom formatiranim `mala-slova-sa-crtama.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Neke datoteke, kao što su datoteke na visokoj razini, su iznimke.
 * Documents should be word-wrapped at 80 characters.
 * Preferira se formatiranje opisano u `.editorconfig`fajlu. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * [Plugin](http://editorconfig.org/#download) je dostupan za neke editore da automatski primjeni pravila.
 * Changes to documentation should be checked with `make lint-md`.
 * Američki pravopis se preferira. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Koristite [serijske zareze](https://en.wikipedia.org/wiki/Serial_comma).
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   
