@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js incluye una utilidad de depuración fuera de proceso, de fácil acceso a través de un [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) y un cliente de depuración integrado. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -105,7 +105,7 @@ Para comenzar a ver una expresión, escriba: `watch('my_expression')`. El comand
 * `setBreakpoint(line)`, `sb(line)` - Colocar un punto de interrupción en una línea específica
 * `setBreakpoint('fn()')`, `sb(...)` - Establecer un punto de interrupción en una primera instrucción en las funciones del programa
 * `setBreakpoint('script.js', 1)`, `sb(...)` - Establezca un punto de quiebre en la primera línea de script.js
-* ` borre punto de quiebre ('script.js', 1) `, ` cb (...) ` - Borrar punto de quiebre en script.js en linea 1
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Borrar punto de quiebre en script.js en línea 1
 
 También es posible establecer un punto de quiebre en un archivo (módulo) que no está cargado todavía:
 
@@ -159,7 +159,7 @@ La integración del Inspector de V8 permite adjuntar Chrome DevTools a las insta
 
 El inspector de V8 Inspector se puede habilitar pasando la bandera `--inspect` al iniciar una aplicación Node.js. También es posible suministrar un puerto personalizado con esa bandera, p.ej. `--inspect=9222` aceptará conexiones de DevTools en el puerto 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Pase la bandera `--inspect-brk`, en vez de `--inspect`, para interrumpir la primera línea del código de aplicación.
 
 ```txt
 $ node --inspect index.js
@@ -168,4 +168,4 @@ Abra la siguiente URL en Chrome para iniciar la depuración:
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(En el ejemplo anterior, la UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 al final de la URL es generada en la salida y varía en las diferentes sesiones de depuración)
