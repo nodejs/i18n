@@ -1123,7 +1123,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} 开始读取之前要跳过的字节数。 Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Returns: {bigint}
+* 返回：{bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigInt64BE()` reads as big endian, `readBigInt64LE()` reads as little endian).
 
@@ -1136,7 +1136,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} 开始读取之前要跳过的字节数。 Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Returns: {bigint}
+* 返回：{bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigUInt64BE()` reads as big endian, `readBigUInt64LE()` reads as little endian).
 
