@@ -169,7 +169,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Chamado quando uma classe é construída que tem a *possibilidade* de emitir um evento assíncrono. Isso *não* significa que a instância deva chamar `before`/`after` antes de `destroy` ser chamada, apenas que a possibilidade existe.
 
 This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
 
@@ -201,7 +201,7 @@ Os usuários podem definir sua própria `type` quando usando a API de incorpora�
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. Isto é diferente de `async_hooks.executionAsyncId()` que mostra apenas *quando* um recurso foi criado, enquanto `triggerAsyncId` mostra *porque* um recurso foi criado.
 
 A seguinte é uma simples demonstração de `triggerAsyncId`:
 
@@ -303,9 +303,9 @@ Apenas usando `execution` para gráfico de alocação de recursos resulta no seg
 Timeout(7) -> TickObject(6) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. Isto é porque vincular a uma porta sem um hostname é uma operação *síncrona* mas para manter uma API totalmente assíncrona o callback do usuário é colocado em um `process.nextTick()`.
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+O gráfico mostra apenas *quando* foi criado um recurso, não *porque*, então acompanhe o *porque* usar `triggerAsyncId`.
 
 ##### before(asyncId)
 
@@ -414,7 +414,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Note que contextos de promessas pode não conseguir validar `triggerAsyncId` por padrão. Veja a seção em [rastreamento de execução de promessas](#async_hooks_promise_execution_tracking).
+Note que contextos de promessas pode não conseguir validar `triggerAsyncId` por padrão. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Rastreamento de execução de Promessa
 
@@ -536,9 +536,9 @@ deprecated: v9.6.0
 
 > Estabilidade: 0 - Descontinuada: Use [`asyncResource.runInAsyncScope()`][] em vez disso.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+Chama todas as callbacks `before` para notificar que um novo contexto de execução assíncrono está sendo inserido. Se as chamadas aninhadas para `emitBefore()` forem feitas, a pilha de `asyncId`s será rastreada e propriamente desenrolada.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+Chamadas `before` e `after` devem ser desenroladas na mesma ordem que elas são chamadas. Caso contrário, uma exceção não recuperável ocorrerá e o processo irá abortar. Por esta razão, as APIs `emitBefore` e `emitAfter` são consideradas obsoletas. Por favor, use `runInAsyncScope`, pois fornece uma alternativa muito mais segura.
 
 #### asyncResource.emitAfter()
 
@@ -548,11 +548,11 @@ deprecated: v9.6.0
 
 > Estabilidade: 0 - Descontinuada: Use [`asyncResource.runInAsyncScope()`][] em vez disso.
 
-Chama todas callbacks `after`. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Caso contrário, um erro será lançado.
+Chama todas callbacks `after`. Se as chamadas aninhadas para `emitBefore()` foram feitas, então certifique-se que a pilha seja desenrolada adequadamente. Caso contrário, um erro será lançado.
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
+Se o callback do usuário lançar uma exceção, `emitAfter()` será automaticamente chamado para todos `asyncId` na pilha se o erro for tratado por um domínio ou `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+Chamadas `before` e `after` devem ser desenroladas na mesma ordem que elas são chamadas. Caso contrário, uma exceção não recuperável ocorrerá e o processo irá abortar. Por esta razão, as APIs `emitBefore` e `emitAfter` são consideradas obsoletas. Por favor, use `runInAsyncScope`, pois fornece uma alternativa muito mais segura.
 
 #### asyncResource.emitDestroy()
 
