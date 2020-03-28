@@ -6,9 +6,9 @@
 
 De `assert` module biedt een simpele set bevestigingshulpmiddelen die kunnen worden gebruikt om invariabelen te testen.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Een `strict` en een `legacy` module bestaan, maar het is aanbevolen om alleen de [`strict mode`][] module te gebruiken.
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Voor meer informatie over de gebruikte gelijkheidsvergelijkingen zie [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Klasse: assert.AssertionError
 
@@ -113,7 +113,7 @@ Om kleuren te deactiveren, gebruik de `NODE_DISABLE_COLORS` omgevingsvariabele. 
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief de strikte modus.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Bij het rechtstreeks binnengaan van `assert` in plaats van de `strict` eigenschap te gebruiken, zal de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) worden gebruikt voor elke functie zonder "strikt" in de naam, zoals [`assert.deepEqual()`][].
 
 Het kan worden bereikt met behulp van:
 
@@ -121,7 +121,7 @@ Het kan worden bereikt met behulp van:
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Het is aanbevolen om als alternatief de [`strict mode`][] te gebruiken, omdat de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) vaak verrassende resultaten levert. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
 // WAARSCHUWING: Dit gooit geen AssertionError!
@@ -1130,4 +1130,4 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. Dit kan leiden tot moeilijk te vinden fouten.
+Vanwege de verwarrende notatie, is het aanbevolen de tekenreeks niet als tweede argument te gebruiken. Dit kan leiden tot moeilijk te vinden fouten.
