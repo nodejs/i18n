@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定
 
-The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
+`net` 模块提供了一个异步网络 API，可用于创建基于流的 TCP 或 [IPC](#net_ipc_support) 服务器 ([`net.createServer()`][]) 和客户端 ([`net.createConnection()`][])。
 
 它可以通过如下方式访问：
 
@@ -14,13 +14,13 @@ const net = require('net');
 
 ## IPC 支持
 
-The `net` module supports IPC with named pipes on Windows, and UNIX domain sockets on other operating systems.
+`net` 模块支持 在 Windows 上使用命名管道 IPC ，及在其他操作系统上使用 UNIX 域套接字。
 
 ### 为 IPC 连接识别路径
 
-[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] and [`socket.connect()`][] take a `path` parameter to identify IPC endpoints.
+[`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] 和 [`socket.connect()`][] 使用 `path` 参数来识别 IPC 端点。
 
-在 UNIX 系统上，本地域也被称作 UNIX 域。 这里的 path 参数是一个文件系统路径名。 It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. 在 Linux 系统上的典型值是 107，在 macOS 系统上的典型值是 103。 The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
+在 UNIX 系统上，本地域也被称作 UNIX 域。 这里的 path 参数是一个文件系统路径名。 它会在 `sizeof(sockaddr_un.sun_path) - 1` 处被截断，具体长度会根据不同的操作系统而介于 91 和 107 个字节之间。 在 Linux 系统上的典型值是 107，在 macOS 系统上的典型值是 103。 该路径受到与创建文件时相同的命名约定和权限检查的影响。 它将在文件系统中可见，并将 *持续到取消链接的时候为止*。
 
 在 Windows 系统上，本地域是通过命名管道实现的。 此路径 *必须* 引用在 `\\?\pipe` 或 `\\.\pipe` 中的条目。 路径中允许任何字符，但后面的字符可能会对管道名称进行处理，例如，解析 `..` 序列。 尽管如此，管道名称空间是扁平的。 管道将 *不会持续*，当最后一个引用关闭时，它们将被删除。 不要忘记 JavaScript 字符串转义需要通过双反斜杠来指定路径，例如：
 
@@ -71,7 +71,7 @@ added: v0.1.90
 
 * {Error}
 
-当发生错误时会发出此事件。 和 [`net.Socket`][] 不同，除非手动调用了 [`server.close()`][]，[`'close'`][] 事件 **不会** 在此事件后被直接发出。 See the example in discussion of [`server.listen()`][].
+当发生错误时会发出此事件。 和 [`net.Socket`][] 不同，除非手动调用了 [`server.close()`][]，[`'close'`][] 事件 **不会** 在此事件后被直接发出。 请参阅关于 [`server.listen()`][] 讨论时的示例。
 
 ### 事件：'listening'
 
@@ -132,7 +132,7 @@ deprecated: v0.9.7
 
 在服务器端的并发连接数。
 
-当通过 [`child_process.fork()`][] 向子进程发送套接字时，其值为 `null`。 To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+当通过 [`child_process.fork()`][] 向子进程发送套接字时，其值为 `null`。 若要轮询子进程，并获取当前活跃连接数，请使用异步的 [`server.getConnections()`][] 方法。
 
 ### server.getConnections(callback)
 
@@ -148,26 +148,26 @@ added: v0.9.7
 
 ### server.listen()
 
-开启一个服务器来监听连接。 A `net.Server` can be a TCP or a [IPC](#net_ipc_support) server depending on what it listens to.
+开启一个服务器来监听连接。 `net.Server` 可能会是 TCP 或 [IPC](#net_ipc_support) 服务器，具体取决于它在监听谁。
 
 可能的调用方式包括：
 
 * [`server.listen(handle[, backlog][, callback])`][`server.listen(handle)`]
 * [`server.listen(options[, callback])`][`server.listen(options)`]
-* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
-* [`server.listen([port][, host][, backlog][, callback])`][`server.listen(port, host)`] for TCP servers
+* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] 适用于 [IPC](#net_ipc_support) 服务器
+* [`server.listen([port][, host][, backlog][, callback])`][`server.listen(port, host)`] 适用于 TCP 服务器
 
-此函数为异步的。 When the server starts listening, the [`'listening'`][] event will be emitted. 最后一个参数 `callback` 会被作为 [`'listening'`][] 事件的监听器添加。
+此函数为异步的。 当服务器开始监听时，会发出 [`'listening'`][] 事件。 最后一个参数 `callback` 会被作为 [`'listening'`][] 事件的监听器添加。
 
-All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. 此参数的默认值为 511 (而不是 512)。
+所有 `listen()` 方法可以接受一个 `backlog` 参数来指定待连接队列的最大长度。 实际的长度将由操作系统的 sysctl 设置决定，例如：Linux 系统上的 `tcp_max_syn_backlog` 和 `somaxconn`。 此参数的默认值为 511 (而不是 512)。
 
 *注意*：
 
-* All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) for details).
+* 所有的 [`net.Socket`][] 被设置为 `SO_REUSEADDR` (请参阅 [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) 以获取更多细节)。
 
 * `server.listen()` 方法可被多次调用。 随后的每个调用都会使用提供的选项 *重新打开* 服务器。
 
-在监听时一个常见的错误就是 `EADDRINUSE`。 This happens when another server is already listening on the requested `port` / `path` / `handle`. One way to handle this would be to retry after a certain amount of time:
+在监听时一个常见的错误就是 `EADDRINUSE`。 当另一个服务器已经在监听正在请求的 `port` / `path` / `handle` 时，会发生这种错误。 解决这个问题的一种方法就是在特定时间后重试：
 
 ```js
 server.on('error', (e) => {
@@ -192,9 +192,9 @@ added: v0.5.10
 * `callback` {Function} [`server.listen()`][] 函数的通用参数
 * 返回： {net.Server}
 
-Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
+开始一个服务器来监听给定 `handle` 上的连接，该 handle 已被绑定到端口，UNIX 域套接字，或 Windows 命名管道上。
 
-The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
+`handle` 对象可以是一个服务器，套接字 (任何含有底层 `_handle` 成员的套接字)，或包含有效文件描述符 `fd` 的对象。
 
 *注意*：在 Windows 系统上不支持对文件描述符的监听。
 
@@ -207,13 +207,13 @@ added: v0.11.14
 * `options` {Object} 必须的。 支持如下属性： 
   * `port` {number}
   * `host` {string}
-  * `path` {string} 如果指定了 `port`，此选项会被忽略。 See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-  * `backlog` {number} Common parameter of [`server.listen()`][] functions.
+  * `path` {string} 如果指定了 `port`，此选项会被忽略。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
+  * `backlog` {number} [`server.listen()`][] 函数的通用参数。
   * `exclusive` {boolean} **默认值：** `false`
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
+* `callback` {Function} [`server.listen()`][] 函数的通用参数。
 * 返回：{net.Server}
 
-If `port` is specified, it behaves the same as [`server.listen([port][, hostname][, backlog][, callback])`][`server.listen(port, host)`]. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. 如果以上的参数都未指定，则会抛出错误。
+如果指定了 `port`，则该方法的行为和 [`server.listen([port][, hostname][, backlog][, callback])`][`server.listen(port, host)`] 一样。 否则，如果指定了 `path`，该方法的行为和 [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] 一样。 如果以上的参数都未指定，则会抛出错误。
 
 如果 `exclusive` 的值为 `false` (默认值)，则集群的所有进程会使用同样的底层句柄，允许共享连接处理任务。 当 `exclusive` 的值为 `true` 时，不会共享句柄，尝试共享端口将会导致错误。 监听独立端口的示例如下。
 
@@ -231,7 +231,7 @@ server.listen({
 added: v0.1.90
 -->
 
-* `path` {string} 服务器应当监听的路径。 See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
+* `path` {string} 服务器应当监听的路径。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
 * `backlog` {number} [`server.listen()`][] 函数的通用参数。
 * `callback` {Function} [`server.listen()`][] 函数的通用参数。
 * 返回：{net.Server}
@@ -252,11 +252,11 @@ added: v0.1.90
 
 开始一个监听给定 `port` 和 `host` 上连接的 TCP 服务器。
 
-If `port` is omitted or is 0, the operating system will assign an arbitrary unused port, which can be retrieved by using `server.address().port` after the [`'listening'`][] event has been emitted.
+如果未提供 `port` 参数或其值为 0，操作系统会随意分配一个未被使用的端口，该端口可在发出 [`'listening'`][] 事件后通过 `server.address().port` 来获取。
 
-If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
+如果未提供 `host` 参数，当 IPv6 可用时，服务器会接受在 [未指定 IPv6 地址](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) 上的连接，否则会接受 [未指定 IPv4 地址](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) 上的连接。
 
-*Note*: In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
+*注意*：在大多数操作系统上，监听 [未指定 IPv6 地址](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) 会导致 `net.Server` 同时监听 [未指定 IPv4 地址](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`)。
 
 ### server.listening
 
@@ -302,11 +302,11 @@ added: v0.9.1
 added: v0.3.4
 -->
 
-This class is an abstraction of a TCP socket or a streaming [IPC](#net_ipc_support) endpoint (uses named pipes on Windows, and UNIX domain sockets otherwise). A `net.Socket` is also a [duplex stream](stream.html#stream_class_stream_duplex), so it can be both readable and writable, and it is also a [`EventEmitter`][].
+此类为 TCP 套接字或流式 [IPC](#net_ipc_support) 端点的抽象 (在 Windows 平台上使用命名管道，在其他系统上使用 UNIX 域套接字)。 `net.Socket` 同时也是一个 [duplex 流](stream.html#stream_class_stream_duplex)，因此它可被读写，同时它也是一个 [`EventEmitter`][]。
 
-A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
+`net.Socket` 可被用户创建，同时可被用于和服务器交互。 例如：它由 [`net.createConnection()`][] 返回，因此用户可以使用它和服务器通信。
 
-It can also be created by Node.js and passed to the user when a connection is received. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
+它还可以由 Node.js 创建，并在接收到连接时传递给用户。 例如：它被传递给在 [`net.Server`][] 上发出的 [`'connection'`][] 事件的监听器，这样用户就可以使用它和客户端交互。
 
 ### new net.Socket([options])
 
@@ -317,13 +317,13 @@ added: v0.3.4
 创建一个新的套接字对象。
 
 * `options` {Object} 可用的选项包括： 
-  * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **默认:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **默认:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **默认:** `false`.
+  * `fd`: {number} 如果指定，使用给定的文件描述符来包装现有的套接字，否则将会创建一个新的套接字。
+  * `allowHalfOpen` {boolean} 指示是否允许半打开的 TCP 连接。 请参阅 [`net.createServer()`][] 和 [`'end'`][] 事件以获取更多信息。 **默认:** `false`.
+  * `readable` {boolean} 当接收了 `fd` 参数时，允许读取套接字，否则忽略之。 **默认:** `false`.
+  * `writable` {boolean} 当接收了 `fd` 参数时，允许写入套接字，否则忽略之。 **默认:** `false`.
 * 返回：{net.Socket}
 
-The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
+新创建的套接字可能是 TCP 套接字或流媒体 [IPC](#net_ipc_support) 端点，具体取决于它通过 [`connect()`][`socket.connect()`] 连接到哪里。
 
 ### 事件：'close'
 
@@ -371,9 +371,9 @@ added: v0.1.90
 added: v0.1.90
 -->
 
-Emitted when the other end of the socket sends a FIN packet, thus ending the readable side of the socket.
+当套接字的另一端发送一个 FIN 包的时候会发出此事件，因此会结束套接字的读取端。
 
-By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
+默认情况下 (`allowHalfOpen` 的值为 `false`)，一旦写出其待写入队列，套接字将会发送回一个 FIN 包，并销毁其文件描述符。 然而，如果 `allowHalfOpen` 的值被设为 `true`，套接字将不会自动通过调用 [`end()`][`socket.end()`] 结束其写入端，以允许用户写入任意数量的数据。 用户必须显式调用 [`end()`][`socket.end()`] 来关闭连接 (即：发送回一个 FIN 包)。
 
 ### 事件：'error'
 
@@ -431,7 +431,7 @@ added: v0.3.8
 
 这种内部缓冲的结果是可能造成内存的增长。 此属性显示即将被写入的当前缓冲的字符数。 (字符数大致等于要写入的字节数，但缓冲区中可能包含字符串，而字符串是惰性编码的，因此具体的字节数未知。)
 
-Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
+对于面临大量或持续增长的 `bufferSize` 的用户而言，应在程序中使用 [`socket.pause()`][] 和 [`socket.resume()`][] 来控制数据流。
 
 ### socket.bytesRead
 
@@ -456,11 +456,11 @@ added: v0.5.3
 可能的调用方式包括：
 
 * [socket.connect(options[, connectListener])][`socket.connect(options)`]
-* [socket.connect(path[, connectListener])][`socket.connect(path)`] for [IPC](#net_ipc_support) connections.
-* \[socket.connect(port[, host\]\[, connectListener\])][`socket.connect(port, host)`] for TCP connections.
+* [socket.connect(path[, connectListener])][`socket.connect(path)`] 针对 [IPC](#net_ipc_support) 的连接。
+* \[socket.connect(port[, host\]\[, connectListener\])][`socket.connect(port, host)`] 针对 TCP 的连接。
 * 返回：{net.Socket} 套接字本身。
 
-此函数为异步的。 When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+此函数为异步的。 当连接建立时，会发出 [`'connect'`][] 事件。 如果连接存在问题，将会发出 [`'error'`][] 事件，而不是 [`'connect'`][] 事件，同时错误会被传递给 [`'error'`][] 事件的监听器。 如果提供了最后一个参数 `connectListener` ，它将被作为 [`'connect'`][] 事件的监听器添加 **一次**。
 
 #### socket.connect(options[, connectListener])
 
@@ -479,10 +479,10 @@ changes:
 -->
 
 * `options` {Object}
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. 将被作为 [`'connect'`][] 事件的监听器添加一次。
+* `connectListener` {Function} [`socket.connect()`][] 方法的通用参数。 将被作为 [`'connect'`][] 事件的监听器添加一次。
 * 返回： {net.Socket} 套接字本身。
 
-启动一个到给定套接字的连接。 Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
+启动一个到给定套接字的连接。 通常不需要此方法，应该通过 [`net.createConnection()`][] 来创建并打开套接字。 只有在实现自定义套接字时使用此方法。
 
 对于 TCP 连接，可用的 `options` 包括：
 
@@ -496,19 +496,19 @@ changes:
 
 对于 [IPC](#net_ipc_support) 连接，可用的 `options` 包括：
 
-* `path` {string} 必填。 客户端应连接到的路径。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。 If provided, the TCP-specific options above are ignored.
+* `path` {string} 必填。 客户端应连接到的路径。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。 如果提供，则上文中针对 TCP 的选项将被忽略。
 
 返回 `socket`。
 
 #### socket.connect(path[, connectListener])
 
-* `path` {string} 客户端应连接到的路径。 See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. 将被作为 [`'connect'`][] 事件的监听器添加一次。
+* `path` {string} 客户端应连接到的路径。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
+* `connectListener` {Function} [`socket.connect()`][] 方法的通用参数。 将被作为 [`'connect'`][] 事件的监听器添加一次。
 * 返回：{net.Socket} 套接字本身。
 
 启动给定套接字上的 [IPC](#net_ipc_support) 连接。
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{ path: path }` as `options`.
+相当于使用 `{ path: path }` 作为 `options` 调用 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 的别名。
 
 返回 `socket`。
 
@@ -520,12 +520,12 @@ added: v0.1.90
 
 * `port` {number} 客户端应连接到的端口。
 * `host` {string} 客户端应连接到的主机。
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. 将被作为 [`'connect'`][] 事件的监听器添加一次。
+* `connectListener` {Function} [`socket.connect()`][] 方法的通用参数。 将被作为 [`'connect'`][] 事件的监听器添加一次。
 * 返回：{net.Socket} 套接字本身。
 
 启动给定套接字上的 TCP 连接。
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{port: port, host: host}` as `options`.
+相当于使用 `{port: port, host: host}` 作为 `options` 调用 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 的别名。
 
 返回 `socket`。
 
@@ -535,7 +535,7 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 added: v6.1.0
 -->
 
-If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] was called and haven't yet finished. Will be set to `false` before emitting `connect` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
+如果其值为 `true` - 表示 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 被调用但尚未完成。 在发出 `connect` 事件和/或调用 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 的回调函数之前，其值将被设为 `false`。
 
 ### socket.destroy([exception])
 
@@ -563,7 +563,7 @@ added: v0.1.90
 
 半关闭套接字。 即：它发送一个 FIN 数据包。 服务器可能仍会发送一些数据。
 
-If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
+如果指定了 `data`，这就等同于调用 `socket.write(data, encoding)` 后再调用[`socket.end()`][]。
 
 ### socket.localAddress
 
@@ -571,7 +571,7 @@ If `data` is specified, it is equivalent to calling `socket.write(data, encoding
 added: v0.9.6
 -->
 
-代表远程客户端连接的本地 IP 地址字符串。 For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
+代表远程客户端连接的本地 IP 地址字符串。 例如：对于监听 `'0.0.0.0'` 的服务器，如果客户端连接到 `'192.168.1.1'`，则 `socket.localAddress` 的值会是 `'192.168.1.1'`。
 
 ### socket.localPort
 
@@ -603,7 +603,7 @@ added: v0.9.1
 added: v0.5.10
 -->
 
-返回代表远程 IP 地址的字符串。 例如： `'74.125.127.100'` 或 `'2001:4860:a005::68'`。 如果套接字被销毁 (例如：如果客户端断开连接)，其值可能为 `undefined`。
+返回代表远程 IP 地址的字符串。 例如：`'74.125.127.100'` 或 `'2001:4860:a005::68'`。 如果套接字被销毁 (例如：如果客户端断开连接)，其值可能为 `undefined`。
 
 ### socket.remoteFamily
 
@@ -672,7 +672,7 @@ added: v0.1.90
 
 当套接字在 `timeout` 毫秒内无活动时将其设置为超时状态。 默认情况下，`net.Socket` 没有超时。
 
-当空闲超时被触发时，套接字将会收到一个 [`'timeout'`][] 事件，但连接并不会被断开。 The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
+当空闲超时被触发时，套接字将会收到一个 [`'timeout'`][] 事件，但连接并不会被断开。 用户必须手动调用 [`socket.end()`][] 或 [`socket.destroy()`][] 来结束连接。
 
 ```js
 socket.setTimeout(3000);
@@ -710,21 +710,21 @@ added: v0.1.90
 
 ## net.connect()
 
-Aliases to [`net.createConnection()`][`net.createConnection()`].
+[`net.createConnection()`][`net.createConnection()`] 的别名。
 
 可能的调用方式包括：
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
-* [`net.connect(path[, connectListener])`][`net.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] for TCP connections.
+* [`net.connect(path[, connectListener])`][`net.connect(path)`] 针对 [IPC](#net_ipc_support) 的连接。
+* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] 针对 TCP 的连接。
 
 ### net.connect(options[, connectListener])
 
 <!-- YAML
 added: v0.7.0
---> Alias to [
+--> [
 
-`net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
+`net.createConnection(options[, connectListener])`][`net.createConnection(options)`] 的别名。
 
 ### net.connect(path[, connectListener])
 
@@ -732,7 +732,7 @@ added: v0.7.0
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
+[`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] 的别名。
 
 ### net.connect(port\[, host\]\[, connectListener\])
 
@@ -740,21 +740,21 @@ Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
+[`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] 的别名。
 
 ## net.createConnection()
 
-A factory function, which creates a new [`net.Socket`][], immediately initiates connection with [`socket.connect()`][], then returns the `net.Socket` that starts the connection.
+一个创建新的 [`net.Socket`][] 的工厂函数，通过 [`socket.connect()`][] 立即初始化连接，然后返回启动连接的 `net.Socket`。
 
-When the connection is established, a [`'connect'`][] event will be emitted on the returned socket. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+当连接建立时，在返回的套接字上会发出 [`'connect'`][] 事件。 如果提供了最后一个参数 `connectListener`，它将被作为 [`'connect'`][] 事件的监听器添加 **一次**。
 
 可能的调用方式包括：
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
-* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
+* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] 针对 [IPC](#net_ipc_support) 的连接。
+* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] 针对 TCP 的连接。
 
-*Note*: The [`net.connect()`][] function is an alias to this function.
+*注意*：[`net.connect()`][] 函数是此函数的别名。
 
 ### net.createConnection(options[, connectListener])
 
@@ -762,15 +762,15 @@ When the connection is established, a [`'connect'`][] event will be emitted on t
 added: v0.1.90
 -->
 
-* `options` {Object} 必填。 Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
+* `options` {Object} 必填。 将被传递给 [`new net.Socket([options])`][`new net.Socket(options)`] 调用和 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 方法。
+* `connectListener` {Function} [`net.createConnection()`][] 函数的通用参数。 如果提供，将被作为返回套接字上 [`'connect'`][] 事件的监听器添加一次。
 * 返回：{net.Socket} 用于启动连接的新创建的套接字。
 
-For available options, see [`new net.Socket([options])`][`new net.Socket(options)`] and [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+关于可用的 options，请参阅 [`new net.Socket([options])`][`new net.Socket(options)`] 和 [`socket.connect(options[, connectListener])`][`socket.connect(options)`]。
 
 其他选项：
 
-* `timeout` {number} If set, will be used to call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
+* 在创建套接字之后，但开始连接之前，如果设置了 `timeout` {number} ，它将被用于调用 [`socket.setTimeout(timeout)`][]。
 
 如下是一个在 [`net.createServer()`][] 部分的响应服务器的客户端范例：
 
@@ -802,13 +802,13 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 added: v0.1.90
 -->
 
-* `path` {string} 套接字应连接到的路径。 Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* `path` {string} 套接字应连接到的路径。 将被传递到 [`socket.connect(path[, connectListener])`][`socket.connect(path)`]。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
+* `connectListener` {Function} [`net.createConnection()`][] 函数的通用参数，在正在初始化套接字的 `'connect'` 事件上的 "once" 监听器。 将被传递到 [`socket.connect(path[, connectListener])`][`socket.connect(path)`]。
 * 返回：{net.Socket} 用于启动连接的新创建的套接字。
 
 初始化一个 [IPC](#net_ipc_support) 连接。
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(path[, connectListener])`][`socket.connect(path)`], then returns the `net.Socket` that starts the connection.
+此函数在所有选项都为默认值的情况下创建一个新的 [`net.Socket`][]，立刻通过 [`socket.connect(path[, connectListener])`][`socket.connect(path)`] 初始化连接，然后返回启动连接的 `net.Socket`。
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
 
@@ -816,14 +816,14 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.1.90
 -->
 
-* `port` {number} 套接字应连接到的端口。 Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} 套接字应连接到的主机。 Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **默认值：** `'localhost'`.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* `port` {number} 套接字应连接到的端口。 将被传递给 [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]。
+* `host` {string} 套接字应连接到的主机。 将被传递给 [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]。 **默认值：** `'localhost'`.
+* `connectListener` {Function} [`net.createConnection()`][] 函数的通用参数，在正在初始化套接字的 `'connect'` 事件上的 "once" 监听器。 将被传递给 [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`]。
 * 返回：{net.Socket} 用于启动连接的新创建的套接字。
 
 初始化一个 TCP 连接。
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
+此函数在所有选项都为默认值的情况下创建一个新的 [`net.Socket`][]，并通过 [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] 立即初始化连接，最后返回开启连接的 `net.Socket`。
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
@@ -834,18 +834,18 @@ added: v0.5.0
 创建一个新的 TCP 或 [IPC](#net_ipc_support) 服务器。
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **默认:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **默认:** `false`.
-* `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
+  * `allowHalfOpen` {boolean} 指示是否允许半打开的 TCP 连接。 **默认:** `false`.
+  * `pauseOnConnect` {boolean} 指明在传入连接上是否暂停套接字。 **默认:** `false`.
+* `connectionListener` {Function} 自动设为 [`'connection'`][] 事件的监听器。
 * 返回：{net.Server}
 
-If `allowHalfOpen` is set to `true`, when the other end of the socket sends a FIN packet, the server will only send a FIN packet back when [`socket.end()`][] is explicitly called, until then the connection is half-closed (non-readable but still writable). See [`'end'`][] event and [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13) for more information.
+如果 `allowHalfOpen` 的值被设置为 `true`，当套接字的另一端发送了一个 FIN 数据包时，服务器只有在 [`socket.end()`][] 被显式调用时才会发回一个 FIN 数据包，直到此时连接才会半关闭 (不可读但可写)。 请参阅 [`'end'`][] 事件和 [RFC 1122](https://tools.ietf.org/html/rfc1122) (4.2.2.13 部分) 以获取更多信息。
 
-If `pauseOnConnect` is set to `true`, then the socket associated with each incoming connection will be paused, and no data will be read from its handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
+如果 `pauseOnConnect` 的值设置为 `true`，则和每个接入连接相关的套接字将被暂停，且不能从其句柄读取数据。 这就允许在进程之间传递连接，而不需要原始进程读取任何数据。 要想从已暂停的套接字读取数，请调用 [`socket.resume()`][]。
 
-The server can be a TCP server or a [IPC](#net_ipc_support) server, depending on what it [`listen()`][`server.listen()`] to.
+服务器可以是 TCP 服务器或 [IPC](#net_ipc_support) 服务器，具体取决于它通过 [`listen()`][`server.listen()`] 监听哪里。
 
-Here is an example of an TCP echo server which listens for connections on port 8124:
+这里是一个 TCP 响应服务器的例子，它监听端口 8124 上的连接：
 
 ```js
 const net = require('net');
