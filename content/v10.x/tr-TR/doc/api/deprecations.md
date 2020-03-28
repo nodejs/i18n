@@ -586,7 +586,7 @@ changes:
 
 Type: Runtime
 
-The [`util.print()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
+The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 <a id="DEP0027"></a>
 
@@ -1941,7 +1941,7 @@ changes:
 
 Type: Documentation-only
 
-The [`crypto.fips`][] property is deprecated. Lütfen bunun yerine `crypto.setFips()` ve `crypto.getFips()` kullanın.
+The [`crypto.fips`][] property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 <a id="DEP0094"></a>
 
