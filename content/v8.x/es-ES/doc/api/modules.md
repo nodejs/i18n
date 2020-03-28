@@ -6,14 +6,14 @@
 
 <!--name=module-->
 
-En el sistema de módulos de Node.js, cada archivo es tratado como un módulo separado. For example, consider a file named `foo.js`:
+En el sistema de módulos de Node.js, cada archivo es tratado como un módulo separado. Por ejemplo, considere un archvio llamado `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`El área de un círculo de radio 4 es${circle.area(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+En la primera línea, `foo.js` carga el módulo `circle.js` que se encuentra en el mismo directorio que `foo.js`.
 
 Estos son los contenidos de `circle.js`:
 
@@ -25,9 +25,9 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+El módulo `circle.js` ha exportado las funciones `area()` y `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
-Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). En este ejemplo, la variable `PI` está privada para `circle.js`.
+Las variables locales del módulo serán privadas, porque los módulos están envueltos en una función por Node.js (véase [module wrapper](#modules_the_module_wrapper)). En este ejemplo, la variable `PI` está privada para `circle.js`.
 
 The `module.exports` property can be assigned a new value (such as a function or object).
 
@@ -60,46 +60,46 @@ El sistema de módulos está implementado en el módulo `require('module')`.
 
 <!-- type=misc -->
 
-When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Cuando un archivo es ejecutado desde Node.js, se establece `require.main` a su `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
-For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
+Para el archivo `foo.js`, esto será `true` si se ejecuta vía `node foo.js`, pero `false` si se ejecuta por `require('./foo')`.
 
-Because `module` provides a `filename` property (normally equivalent to `__filename`), the entry point of the current application can be obtained by checking `require.main.filename`.
+Porque `module` provee una propiedad `filename` (normalmente equivalente a `__filename`), el punto de entrada de la aplicación actual puede ser obtenido al chequear `require.main.filename`.
 
 ## Addenda: Tips Para El Administrador de Paquetes
 
 <!-- type=misc -->
 
-The semantics of Node.js's `require()` function were designed to be general enough to support a number of reasonable directory structures. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
+Las semánticas de la función de Node.js `require()` fueron diseñadas para ser lo suficientemente generales para soportar un número razonable de estructuras del directorio. Programas de administrador de paquetes cómo `dpkg`, `rpm`, y `npm` probablemente serán capaces de construir paquetes nativos de módulos de Node.js sin modificación.
 
 Debajo damos una estructura de directorio sugerida que puede funcionar:
 
-Let's say that we wanted to have the folder at `/usr/lib/node/<some-package>/<some-version>` hold the contents of a specific version of a package.
+Digamos que desea que la carpeta contenida en `/usr/lib/node/&lt;some-package&gt;/&lt;some-version&gt;` tenga todos los contenidos de una versión específica de un paquete.
 
 Los paquetes pueden depender los unos de los otros. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
+Debido a que Node.js busca el `realpath` de cualquier módulo que cargue (eso es, ejecuta symlinks), y luego busca por sus dependencias en las carpetas `node_modules` como es descrito [aquí](#modules_loading_from_node_modules_folders), esta situación es muy simple de resolver con la siguiente arquitectura:
 
-- `/usr/lib/node/foo/1.2.3/` - Contenidos del paquete `foo`, version 1.2.3.
-- `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-- `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-- `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - Contenidos del paquete `foo`, version 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - Contenidos del paquete `bar` de los cuales `foo` depende.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Vínculos simbólicos para `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - Enlaces simbólicos para los paquetes de los cuales `bar` es dependiente.
 
-Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+De esta forma, incluso si un ciclo es encontrado, o si hay conflictos de dependencia, cualquier módulo será capaz de obtener una versión de su dependencia que pueda usar.
 
-When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
+Cuando el código en el paquete `foo` ejecute `require('bar')`, obtendrá la versión que está symlinked a `/usr/lib/node/foo/1.2.3/node_modules/bar`. Luego, cuando el código en el paquete `bar` llame a `require('quux')`, obtendrá la versión que está symlinked a `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
-Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in `/usr/lib/node`, we could put them in `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
+Además, para realizar un proceso aún más óptimo de la búsqueda del módulo, en vez de colocar los paquetes directamente en `/usr/lib/node`, se podrían colocar en `/usr/lib/node_modules/&lt;name&gt;/&lt;version&gt;`. Entonces Node.js no se molestará en buscar por dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Para poder hacer que los módulos estén disponibles para la REPL de Node.js, quizás sea útil añadir también la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Debido a que los buscadores de módulos que usan las carpetas de `node_modules` son todos relativos, y basados en la ruta real de los archivos haciendo las llamadas a `require()`, los paquetes mismos pueden estar en cualquier lado.
 
 ## Todo Junto...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Para obtener el nombre de archivo exacto que será cargado cuando `require()` es llamado, usa la función `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+Reuniendo todo lo anterior, aquí está el algoritmo de alto nivel en pseudocódigo de lo que hace `require.resolve()`:
 
 ```txt
 require(X) from module at path Y
@@ -160,9 +160,9 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-Los módulos se almacenan en caché después de que se cargan por primera vez. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Los módulos se almacenan en caché después de que se cargan por primera vez. Esto significa (entre otras cosas) que cada llamada a `require('foo')` obtendrá exactamente el mismo objeto devuelto, si se resolviera en el mismo archivo.
 
-Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. Esta es una función importante. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
+Múltiples llamadas a `require('foo')` podrían no causar que el código del módulo sea ejecutado múltiples veces. Esta es una función importante. Con esto, objetos "parcialmente hechos" pueden ser devueltos, de este modo permitiendo que dependencias transitivas sean cargadas aún cuando puedan causar ciclos.
 
 To have a module execute code multiple times, export a function, and call that function.
 
@@ -170,25 +170,25 @@ To have a module execute code multiple times, export a function, and call that f
 
 <!--type=misc-->
 
-Los módulos son almacenados en el caché basados en el nombre de archivo resuelto. Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a *guarantee* that `require('foo')` will always return the exact same object, if it would resolve to different files.
+Los módulos son almacenados en el caché basados en el nombre de archivo resuelto. Debido a que los módulos pueden resolver a un nombre de archivo diferente basado en la localización del módulo de llamada (cargar de las carpetas `node_modules`), no es una *garantía* que `require('foo')` siempre devolverá el mismo objeto, si resolverá a diferentes archivos.
 
-Additionally, on case-insensitive file systems or operating systems, different resolved filenames can point to the same file, but the cache will still treat them as different modules and will reload the file multiple times. For example, `require('./foo')` and `require('./FOO')` return two different objects, irrespective of whether or not `./foo` and `./FOO` are the same file.
+Adicionalmente, en sistemas de archivos o sistemas operativos no sensibles a mayúsculas y minúsculas, diferentes nombres de archivo resueltos pueden apuntar al mismo archivo, pero el caché aún los tratará como módulos diferentes y cargará el archivo múltiples veces. Por ejemplo, `require('./foo')` y `require('./FOO')` devuelven dos objetos diferentes, desconsiderando si `./foo` y `./FOO` son o no el mismo archivo.
 
 ## Módulos principales
 
 <!--type=misc-->
 
-Node.js tiene varios módulos compilados en el binario. These modules are described in greater detail elsewhere in this documentation.
+Node.js tiene varios módulos compilados en el binario. Estos módulos son descritos con mayor detalle en otras partes de esta documentación.
 
-The core modules are defined within Node.js's source and are located in the `lib/` folder.
+Los módulos principales se definen en fuente de Node.js y están ubicados en la carpeta `lib/`.
 
-Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
+Los módulos principales se cargan siempre preferencialmente si su identificador es pasado a `require()`. Por ejemplo, `require('http')` siempre devolverá el módulo construido en HTTP, incluso si hay un archivo con ese nombre.
 
 ## Ciclos
 
 <!--type=misc-->
 
-When there are circular `require()` calls, a module might not have finished executing when it is returned.
+Cuando hay llamadas circulares a `require()`, un módulo podría no haber finalizado la ejecución cuando es devuelto.
 
 Considere esta situación:
 
@@ -223,7 +223,7 @@ const b = require('./b.js');
 console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
-Cuando `main.js` cargue `a.js`, entonces en respuesta `a.js` carga `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
+Cuando `main.js` cargue `a.js`, entonces en respuesta `a.js` carga `b.js`. En ese punto, `b.js` trata de cargar `a.js`. Para prevenir un bucle infinito, una **copia no finalizada** del objeto de exportación `a.js` es devuelta al módulo `b.js`. Luego `b.js` finaliza la carga, y su objeto de `exports` es proporcionado al módulo `a.js`.
 
 Al momento en el que `main.js` ha cargado ambos módulos, ambos terminaron. La salida de este programa sería:
 
@@ -245,32 +245,32 @@ Careful planning is required to allow cyclic module dependencies to work correct
 
 <!--type=misc-->
 
-If the exact filename is not found, then Node.js will attempt to load the required filename with the added extensions: `.js`, `.json`, and finally `.node`.
+Si el nombre de archivo exacto no es encontrado, entonces No.js intentará cargar el nombre de archivo requerido con las extensiones añadidas: `.js`, `.json`, y finalmente `.node`.
 
-`.js` files are interpreted as JavaScript text files, and `.json` files are parsed as JSON text files. `.node` files are interpreted as compiled addon modules loaded with `dlopen`.
+Los archivos `.js` son interpretados como archivos de texto de JavaScript, y los archivos `.json` son analizados como archivos de texto JSON. Los archivos `.node` son interpretados como módulos de complemento compilados cargados con `dlopen`.
 
-Un módulo requerido con `'/'` como prefijo es una ruta absoluta al archivo. For example, `require('/home/marco/foo.js')` will load the file at `/home/marco/foo.js`.
+Un módulo requerido con `'/'` como prefijo es una ruta absoluta al archivo. Por ejemplo, `require('/home/marco/foo.js')` cargará el archivo a `/home/marco/foo.js`.
 
-A required module prefixed with `'./'` is relative to the file calling `require()`. That is, `circle.js` must be in the same directory as `foo.js` for `require('./circle')` to find it.
+Un módulo requerido con `'./'` como prefijo es relativo al archivo que llama a `require()`. Es decir, `circle.js` debe estar en el mismo directorio que `foo.js` para que `require('./circle')` lo encuentre.
 
-Without a leading '/', './', or '../' to indicate a file, the module must either be a core module or is loaded from a `node_modules` folder.
+Sin un prefijo '/', './', o '../' para indicar un archivo, el módulo debe ser un módulo principal o es cargado desde una carpeta `node_modules`.
 
-If the given path does not exist, `require()` will throw an [`Error`][] with its `code` property set to `'MODULE_NOT_FOUND'`.
+Si la ruta dada no existe, `require()` arrojará un [`Error`][] con su propiedad `code` establecida a `'MODULE_NOT_FOUND'`.
 
 ## Carpetas como Módulos
 
 <!--type=misc-->
 
-It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library. There are three ways in which a folder may be passed to `require()` as an argument.
+Es conveniente organizar los programas y librerías en directorios independientes, y luego proporcionar un punto de entrada simple a esa librería. Hay tres maneras en las cuales una carpeta puede ser pasada a `require()` como un argumento.
 
-The first is to create a `package.json` file in the root of the folder, which specifies a `main` module. An example package.json file might look like this:
+La primera es crear un archivo `package.json` en la raíz de la carpeta, el cual especifica un módulo `main`. Un ejemplo de un archivo package.json puede lucir así:
 
 ```json
 { "name" : "some-library",
   "main" : "./lib/some-library.js" }
 ```
 
-If this was in a folder at `./some-library`, then `require('./some-library')` would attempt to load `./some-library/lib/some-library.js`.
+Si esto estuviese dentro de una carpeta en `./some-library`, entonces `require('./some-library')` intentaría cargar `./some-library/lib/some-library.js`.
 
 Este es el grado de conciencia de los archivos package.json de Node.js.
 
@@ -280,49 +280,49 @@ Este es el grado de conciencia de los archivos package.json de Node.js.
 Error: No se pudo encontrar módulo 'some-library'
 ```
 
-If there is no package.json file present in the directory, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no package.json file in the above example, then `require('./some-library')` would attempt to load:
+Si no hay un archivo package.json en el directorio, entonces Node.js intentará cargar un archivo`index.js` o `index.node` de ese directorio. Por ejemplo, si no hay ningún archivo package.json en el ejemplo anterior, entonces `require('./some-library')` intentará cargar:
 
-- `./some-library/index.js`
-- `./some-library/index.node`
+* `./some-library/index.js`
+* `./some-library/index.node`
 
 ## Cargar desde las Carpetas `node_modules`
 
 <!--type=misc-->
 
-If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node.js will not append `node_modules` to a path already ending in `node_modules`.
+Si el identificador de módulo pasado a `require()` no es un módulo [principal](#modules_core_modules), y no comienza con `'/'`, `'../'`, o `'./'`, entonces Node.js comienza en el directorio primario del módulo actual, y añade `/node_modules`, e intenta cargar el módulo desde esa ubicación. Node.js will not append `node_modules` to a path already ending in `node_modules`.
 
-If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
+Si no se encuentra aquí, entonces lo mueve al directorio primario, y así, hasta que se alcance la raíz del sistema de archivos.
 
-For example, if the file at `'/home/ry/projects/foo.js'` called `require('bar.js')`, then Node.js would look in the following locations, in this order:
+Por ejemplo, si el archivo en `'/home/ry/projects/foo.js'` llamó a `require('bar.js')`, entonces Node.js buscará en las siguientes ubicaciones, en este orden:
 
-- `/home/ry/projects/node_modules/bar.js`
-- `/home/ry/node_modules/bar.js`
-- `/home/node_modules/bar.js`
-- `/node_modules/bar.js`
+* `/home/ry/projects/node_modules/bar.js`
+* `/home/ry/node_modules/bar.js`
+* `/home/node_modules/bar.js`
+* `/node_modules/bar.js`
 
-This allows programs to localize their dependencies, so that they do not clash.
+Esto le permite a los programas localizar sus dependencias, y así no entren en conflicto.
 
-It is possible to require specific files or sub modules distributed with a module by including a path suffix after the module name. For instance `require('example-module/path/to/file')` would resolve `path/to/file` relative to where `example-module` is located. The suffixed path follows the same module resolution semantics.
+It is possible to require specific files or sub modules distributed with a module by including a path suffix after the module name. Por ejemplo, `require('example-module/path/to/file')` resolverá `path/to/file` relativamente a donde `example-module` esté localizado. La ruta con sufijo sigue las mismas semánticas de resolución de módulo.
 
 ## Carga desde carpetas globales
 
 <!-- type=misc -->
 
-If the `NODE_PATH` environment variable is set to a colon-delimited list of absolute paths, then Node.js will search those paths for modules if they are not found elsewhere.
+Si la variable de entorno `NODE_PATH` se establece a una lista delimitada por dos puntos de rutas absolutas, entonces Node.js buscará esas rutas para los módulos si no se encuentran en otros lugares.
 
 *Note*: On Windows, `NODE_PATH` is delimited by semicolons instead of colons.
 
-`NODE_PATH` was originally created to support loading modules from varying paths before the current [module resolution](#modules_all_together) algorithm was frozen.
+`NODE_PATH` fue originalmente creada para soportar módulos de rutas variantes antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
 
-`NODE_PATH` is still supported, but is less necessary now that the Node.js ecosystem has settled on a convention for locating dependent modules. Sometimes deployments that rely on `NODE_PATH` show surprising behavior when people are unaware that `NODE_PATH` must be set. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
+`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestran un comportamiento sorprendente cuando las personas no están conscientes de que `NODE_PATH` debe establecerse. Algunas veces las dependencias de los módulos cambian, causando que se cargue una versión diferente (a veces hasta un módulo distinto) cuando se busque a `NODE_PATH`.
 
 Adicionalmente, Node.js buscará en las siguientes ubicaciones:
 
-- 1: `$HOME/.node_modules`
-- 2: `$HOME/.node_libraries`
-- 3: `$PREFIX/lib/node`
+* 1: `$HOME/.node_modules`
+* 2: `$HOME/.node_libraries`
+* 3: `$PREFIX/lib/node`
 
-Where `$HOME` is the user's home directory, and `$PREFIX` is Node.js's configured `node_prefix`.
+Donde `$HOME` es el directorio de inicio del usuario y `$PREFIX` es el `node_prefix` configurado de Node.js.
 
 Esto es principalmente debido a razones históricas.
 
@@ -332,7 +332,7 @@ Esto es principalmente debido a razones históricas.
 
 <!-- type=misc -->
 
-Before a module's code is executed, Node.js will wrap it with a function wrapper that looks like the following:
+Antes de que se ejecute un código del módulo, Node.js lo envolverá con un envoltorio de función que luce como el siguiente:
 
 ```js
 (function(exports, require, module, __filename, __dirname) {
@@ -342,10 +342,10 @@ Before a module's code is executed, Node.js will wrap it with a function wrapper
 
 Al hacer esto, Node.js logra unas cuantas cosas:
 
-- It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
-- It helps to provide some global-looking variables that are actually specific to the module, such as: 
-  - The `module` and `exports` objects that the implementor can use to export values from the module.
-  - The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+* Mantiene las variables de alto nivel (definidas con `var`, `const` o `let`) enfocadas al módulo en vez de al objeto global.
+* Ayuda proporcionar algunas variables de búsqueda global que verdaderamente sean específicas al módulo, como: 
+  * Los objetos `module` y `exports` que el implemtador puede usar para exportar valores desde el módulo.
+  * Las variables de conveniencia `__filename` y `__dirname`, que contienen el nombre de archivo absoluto del módulo y la ruta del directorio.
 
 ## El ámbito del módulo
 
@@ -357,7 +357,7 @@ added: v0.1.27
 
 <!-- type=var -->
 
-- {string}
+* {string}
 
 El nombre del directorio del módulo actual. This is the same as the [`path.dirname()`][] of the [`__filename`][].
 
@@ -378,11 +378,11 @@ added: v0.0.1
 
 <!-- type=var -->
 
-- {string}
+* {string}
 
-El nombre de archivo del módulo actual. This is the resolved absolute path of the current module file.
+El nombre de archivo del módulo actual. Esta es la ruta absoluta resuelta del archivo del módulo actual.
 
-For a main program this is not necessarily the same as the file name used in the command line.
+Para un programa principal, esto no es necesariamente lo mismo que el nombre de archivo utilizado en la línea de comando.
 
 Vea [`__dirname`][] para el nombre del directorio del módulo actual.
 
@@ -397,12 +397,12 @@ console.log(__dirname);
 // Imprime: /Users/mjr
 ```
 
-Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a directory structure of:
+Dados dos módulos: `a` y `b`, siendo que `b` es una dependencia de `a` y la estructura de los directorios es así:
 
-- `/Users/mjr/app/a.js`
-- `/Users/mjr/app/node_modules/b/b.js`
+* `/Users/mjr/app/a.js`
+* `/Users/mjr/app/node_modules/b/b.js`
 
-References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
+Las referencias a `__filename` dentro de `b.js` devolverán `/Users/mjr/app/node_modules/b/b.js`, mientras que las referencias a `__filename` dentro de `a.js` devolverán `/Users/mjr/app/a.js`.
 
 ### exportaciones
 
@@ -422,7 +422,7 @@ added: v0.1.16
 
 <!-- type=var -->
 
-- {Object}
+* {Object}
 
 A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
 
@@ -434,7 +434,7 @@ added: v0.1.13
 
 <!-- type=var -->
 
-- {Function}
+* {Function}
 
 Used to import modules, `JSON`, and local files. Modules can be imported from `node_modules`. Local modules and JSON files can be imported using a relative path (e.g. `./`, `./foo`, `./bar/baz`, `../foo`) that will be resolved against the directory named by [`__dirname`][] (if defined) or the current working directory.
 
@@ -455,9 +455,9 @@ const crypto = require('crypto');
 added: v0.3.0
 -->
 
-- {Object}
+* {Object}
 
-Los módulos son almacenados en caché en este objeto cuando son requeridos. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an Error.
+Los módulos son almacenados en caché en este objeto cuando son requeridos. Cuando se elimine un valor clave de este objeto, el siguiente uso de `require` volverá a cargar el módulo. Tenga en cuenta que esto no aplica para [complementos nativos](addons.html), para los cuales volver a cargarlo resultaría en un Error.
 
 #### require.extensions
 
@@ -468,7 +468,7 @@ deprecated: v0.10.6
 
 > Estabilidad: 0 - En desuso
 
-- {Object}
+* {Object}
 
 Instruye a `require` en cómo manejar ciertas extensiones de archivo.
 
@@ -478,9 +478,9 @@ Archivos de proceso con extensión `.sjs` como `.js`:
 require.extensions['.sjs'] = require.extensions['.js'];
 ```
 
-**Deprecated** In the past, this list has been used to load non-JavaScript modules into Node.js by compiling them on-demand. However, in practice, there are much better ways to do this, such as loading modules via some other Node.js program, or compiling them to JavaScript ahead of time.
+**Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js, compilándolos bajo demanda. Sin embargo, en la práctica, hay formas mucho mejores para hacer esto, como cargar los módulos a través de otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
 
-Since the module system is locked, this feature will probably never go away. However, it may have subtle bugs and complexities that are best left untouched.
+Since the module system is locked, this feature will probably never go away. Sin embargo, puede tener algunos bugs y complejidades sutiles que es mejor dejar intactos.
 
 Note that the number of file system operations that the module system has to perform in order to resolve a `require(...)` statement to a filename scales linearly with the number of registered extensions.
 
@@ -497,12 +497,12 @@ changes:
     description: The `paths` option is now supported.
 -->
 
-- `request` {string} La ruta de módulo a resolver.
-- `options` {Object} 
-  - `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-- Devuelve: {string}
+* `request` {string} La ruta de módulo a resolver.
+* `options` {Object} 
+  * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
+* Devuelve: {string}
 
-Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
+Utilice la maquinaria interna de `require()` para ver la ubicación de un módulo, pero, en lugar de cargar dicho módulo, solo devuelva el nombre de archivo resuelto.
 
 #### require.resolve.paths(request)
 
@@ -510,8 +510,8 @@ Use the internal `require()` machinery to look up the location of a module, but 
 added: v8.9.0
 -->
 
-- `request` {string} La ruta de módulo cuyas rutas de búsqueda están siendo obtenidas.
-- Devuelve: {Array|null}
+* `request` {string} La ruta de módulo cuyas rutas de búsqueda están siendo obtenidas.
+* Devuelve: {Array|null}
 
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
@@ -525,9 +525,9 @@ added: v0.1.16
 
 <!-- name=module -->
 
-- {Object}
+* {Object}
 
-In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` no es un objeto global, sino uno local para cada módulo.
+En cada módulo, la variable libre `module` es una referencia al objeto representando el módulo actual. Por conveniencia,`module.exports` es también accesible vía el módulo global `exports`. `module` no es en realidad global sino local para cada módulo.
 
 ### module.children
 
@@ -535,7 +535,7 @@ In each module, the `module` free variable is a reference to the object represen
 added: v0.1.16
 -->
 
-- {Array}
+* {Array}
 
 Los objetos de módulo requeridos por este.
 
@@ -545,9 +545,9 @@ Los objetos de módulo requeridos por este.
 added: v0.1.16
 -->
 
-- {Object}
+* {Object}
 
-El objeto `module.exports` es creado por el sistema Módulos. Sometimes this is not acceptable; many want their module to be an instance of some class. To do this, assign the desired export object to `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
+El objeto `module.exports` es creado por el sistema Módulos. A veces no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
 
 Por ejemplo, suponga que estamos haciendo un módulo llamado `a.js`
 
@@ -572,7 +572,7 @@ a.on('ready', () => {
 });
 ```
 
-Note que la asignación a `module.exports` debe hacerse inmediatamente. It cannot be done in any callbacks. Esto no funciona:
+Note que la asignación a `module.exports` debe hacerse inmediatamente. No puede hacerse en ningún callback. Esto no funciona:
 
 x.js:
 
@@ -595,16 +595,18 @@ console.log(x.a);
 added: v0.1.16
 -->
 
-The `exports` variable is available within a module's file-level scope, and is assigned the value of `module.exports` before the module is evaluated.
+La variable `exports` está disponible dentro del nivel del alcance de archivo de un módulo, y le es asignado el valor de `module.exports` antes de que el módulo sea evaluado.
 
-It allows a shortcut, so that `module.exports.f = ...` can be written more succinctly as `exports.f = ...`. However, be aware that like any variable, if a new value is assigned to `exports`, it is no longer bound to `module.exports`:
+Permite un atajo, para que así `module.exports.f = ...` pueda ser escrito más sucintamente como `exports.f = ...`. Sin embargo, tenga en cuenta que, como cualquier otra variable, si un nuevo valor es asignado a `exports`, ya no estará atado a `module.exports`:
 
 ```js
 module.exports.hello = true; // Exportado del requerimiento del módulo
 exports = { hello: false };  // No exportado, solo disponible en el módulo
 ```
 
-When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`, for example:
+Cuando la propiedad `module.exports` está siendo completamente reemplazada con un nuevo objeto, es común reasignar `exports`, por ejemplo:
+
+<!-- eslint-disable func-name-matching -->
 
 ```js
 module.exports = exports = function Constructor() {
@@ -612,7 +614,7 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-To illustrate the behavior, imagine this hypothetical implementation of `require()`, which is quite similar to what is actually done by `require()`:
+Para ilustrar este comportamiento, imagine esta implementación hipotética de `require()`, la cual es bastante similar a lo que realmente es hecho por `require()`:
 
 ```js
 function require(/* ... */) {
@@ -631,11 +633,13 @@ function require(/* ... */) {
 }
 ```
 
-### module.filename<!-- YAML
+### module.filename
+
+<!-- YAML
 added: v0.1.16
 -->
 
-- {string}
+* {string}
 
 El nombre de archivo completamente resuelto al módulo.
 
@@ -645,9 +649,9 @@ El nombre de archivo completamente resuelto al módulo.
 added: v0.1.16
 -->
 
-- {string}
+* {string}
 
-El identificador para el módulo. Typically this is the fully resolved filename.
+El identificador para el módulo. Típicamente, este es el nombre de archivo completamente resuelto.
 
 ### module.loaded
 
@@ -655,9 +659,9 @@ El identificador para el módulo. Typically this is the fully resolved filename.
 added: v0.1.16
 -->
 
-- {boolean}
+* {boolean}
 
-Whether or not the module is done loading, or is in the process of loading.
+Si el módulo terminó de cargarse, o si está en proceso de carga.
 
 ### module.parent
 
@@ -665,42 +669,49 @@ Whether or not the module is done loading, or is in the process of loading.
 added: v0.1.16
 -->
 
-- {Object} Module object
+* {Object} Module object
 
 El módulo que primero requirió de este.
 
-### module.paths<!-- YAML
+### module.paths
+
+<!-- YAML
 added: v0.4.0
 -->
 
-- {string[]}
+* {string[]}
 
 La ruta de búsqueda para el módulo.
 
-### module.require(id)<!-- YAML
+### module.require(id)
+
+<!-- YAML
 added: v0.5.1
 -->
 
-- `id` {string}
+* `id` {string}
+* Devuelve: {Object} `module.exports` desde el módulo resuelto
 
-- Devuelve: {Object} `module.exports` desde el módulo resuelto
-
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+El método `module.require` proporciona una manera de cargar un módulo como si `require()` fuese llamado desde el módulo original.
 
 *Note*: In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## El Objeto `Module`<!-- YAML
+## El Objeto `Module`
+
+<!-- YAML
 added: v0.3.7
 -->
 
-- {Object}
+* {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Proporciona métodos de utilidad general al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulos de archivos. Accesado vía `require('module')`.
 
-### module.builtinModules<!-- YAML
+### module.builtinModules
+
+<!-- YAML
 added: v8.10.0
 -->
 
-- {string[]}
+* {string[]}
 
-Una lista de los nombres de todos los módulos proporcionados por Node.js. Can be used to verify if a module is maintained by a third-party module or not.
+Una lista de los nombres de todos los módulos proporcionados por Node.js. Puede ser usada para verificar si un módulo es mantenido por un módulo de un tercero o no.
