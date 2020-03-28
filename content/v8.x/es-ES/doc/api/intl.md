@@ -55,13 +55,13 @@ Si se escoge esta opción, la mayoría de las funciones de internacionalización
 
 Node.js puede enlazar contrariando una compilación de ICU ya instalada en el sistema. De hecho, la mayor parte de las distribuciones de Linux ya vienen con ICU instalada, y esta opción haría posible la reutilización del mismo conjunto de datos usado por otros componentes en el sistema operativo.
 
-Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
+Las funcionalidades que sólo requieren a la biblioteca de ICU, como [`String.prototype.normalize()`][] y el [analizador de URL WHATWG](url.html#url_the_whatwg_url_api), están completamente soportadas bajo `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
 
 ### Incorporar un conjunto limitado de datos de ICU (`small-icu`)
 
 Esta opción hace que el enlace binario contra la librería de ICU resultante sea estático e incluya un subconjunto de datos de ICU (típicamente, solo la locale de inglés) dentro del ejecutable de `node`.
 
-Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
+Las funcionalidades que sólo requieren a la biblioteca de ICU, como [`String.prototype.normalize()`][] y el [analizador de URL WHATWG](url.html#url_the_whatwg_url_api), están completamente soportadas bajo `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
 
 ```js
 const january = new Date(9e8);
