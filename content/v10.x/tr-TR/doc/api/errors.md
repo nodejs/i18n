@@ -197,7 +197,7 @@ The `error.code` property is a string label that identifies the kind of error. `
 
 - {string}
 
-The `error.message` property is the string description of the error as set by calling `new Error(message)`. The `message` passed to the constructor will also appear in the first line of the stack trace of the `Error`, however changing this property after the `Error` object is created *may not* change the first line of the stack trace (for example, when `error.stack` is read before this property is changed).
+The `error.message` property is the string description of the error as set by calling `new Error(message)`. Ustaya iletilen `mesaj`, aynı zamanda, `Hata`'nın yığın izlemesinin ilk satırında da görünür, ancak `Hata` nesnesi oluşturulduktan sonra bu özelliği değiştirmek, yığın izlemesinin ilk satırını *değiştirmeyebilir* (örneğin, `error.stack` bu özellik değiştirilmeden önce okunduğunda).
 
 ```js
 const err = new Error('The message');
