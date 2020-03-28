@@ -113,7 +113,7 @@ monEmetteur.emit('error', new Error('whoops!'));
 // Lève une erreur et crashe Node.js
 ```
 
-To guard against crashing the Node.js process the [`domain`][] module can be used. (Notez, cependant, que le module `domain` a été déprécié.)
+Pour éviter de crasher le processus Node.js le module [`domain`][] peut être utilisé. (Notez, cependant, que le module `domain` a été déprécié.)
 
 La bonne pratique reconnue est de toujours abonner des écouteurs aux évènements `« error »`.
 
@@ -217,7 +217,7 @@ console.log(EventEmitter.listenerCount(monEmetteur, 'evenement'));
 added: v0.11.2
 -->
 
-Par défaut, un maximum de `10` écouteurs peut être abonné à un même événement. Cette limite peut être modifiée individuellement pour chaque instance d'`EventEmitter` en utilisant la méthode [`emitter.setMaxListeners(n)`][]. Pour modifier la valeur par défaut pour *toutes* les instances d'`EventEmitter`, la propriété `EventEmitter.defaultMaxListeners` peut être utilisée. If this value is not a positive number, a `TypeError` will be thrown.
+Par défaut, un maximum de `10` écouteurs peut être abonné à un même événement. Cette limite peut être modifiée individuellement pour chaque instance d'`EventEmitter` en utilisant la méthode [`emitter.setMaxListeners(n)`][]. Pour modifier la valeur par défaut pour *toutes* les instances d'`EventEmitter`, la propriété `EventEmitter.defaultMaxListeners` peut être utilisée. Si cette valeur n’est pas un nombre positif, une `TypeError` sera levée.
 
 Faites attention en affectant une valeur à `EventEmitter.defaultMaxListeners` car la modification affectera *toutes* les instance d'`EventEmitter`, y compris celles créées avant que la modification soit faite. Toutefois, appeler [`emitter.setMaxListeners(n)`] [] est toujours prioritaire sur `EventEmitter.defaultMaxListeners`.
 
