@@ -4,7 +4,7 @@
 
 > Stabiliteit: 2 - stabiel
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+De `assert` module biedt een simpele set bevestigingshulpmiddelen die kunnen worden gebruikt om invariabelen te testen.
 
 A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
@@ -102,7 +102,7 @@ assert.deepEqual(/a/gi, new Date());
 
 Een uitzondering wordt gemaakt voor [`Map`][] en [`Set`][]. Maps and Sets have their contained items compared too, as expected.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+"Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kind objecten ook worden geëvalueerd:
 
 ```js
 const assert = require('assert');
@@ -139,7 +139,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes worden genegeerd
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -218,7 +218,7 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -274,15 +274,15 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Beweert dat de functie `block` geen fout gooit. Zie [`assert.throws()`][] voor meer details.
+Beweert dat de functie `block` geen fout gooit. See [`assert.throws()`][] for more details.
 
 Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddellijk de `block` functie aanroepen.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. Wanneer de fout van een ander type is, of al de `error` parameter ongedefinieerd is, dan wordt de fout teruggegeven aan de aanroepfunctie.
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Het volgende, bijvoorbeeld, zal de [`TypeError`][] gooien, want er is geen overeenkomstig fout type in de bewering:
 
 ```js
 assert.doesNotThrow(
@@ -304,7 +304,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+Wanneer een `AssertionError` wordt geworpen, en de waarde voor de `message` parameter is opgegeven, dan zal de waarde van `message` worden toegevoegd aan het `AssertionError` bericht:
 
 ```js
 assert.doesNotThrow(
@@ -351,7 +351,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 //AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.fail(message)
 
@@ -486,7 +486,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 en obj4 zijn niet diep gelijk
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -545,7 +545,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.notStrictEqual(actual, expected[, message])
 
@@ -572,7 +572,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
 
 ## assert.ok(value[, message])
 
@@ -583,9 +583,9 @@ added: v0.1.21
 * `value` {any}
 * `message` {any}
 
-Test of `value` truthy is. It is equivalent to `assert.equal(!!value, true, message)`.
+Test of `value` truthy is. Het is gelijkwaardig aan `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned.
+Als de `value` niet truthy is, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter `undefined` is, wordt er een standaard foutmelding toegewezen.
 
 ```js
 const assert = require('assert').strict;
@@ -627,7 +627,7 @@ assert.strictEqual(1, '1');
 // AssertionError: 1 === '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
+Wanneer de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
 
 ## assert.rejects(block\[, error\]\[, message\])
 
@@ -691,7 +691,7 @@ Verwacht dat de functie `block` een fout werpt.
 
 If specified, `error` can be a constructor, [`RegExp`][], a validation function, or an object where each property will be tested for.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+Wanneer dit is gespecificeerd, zal `message` het bericht zijn wat verstrekt wordt door de `AssertionError` als het blok het niet werpt.
 
 Valideer instantie van met behulp van de constructor:
 
@@ -748,7 +748,9 @@ assert.throws(
 );
 ```
 
-Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Dit kan leiden tot makkelijk te missen fouten. Please read the example below carefully if using a string as the second argument gets considered:
+Note that `error` can not be a string. Wanneer een tekenreeks wordt verstrekt als tweede argument, dan wordt verondersteld dat `error` wordt weggelaten, en wordt als alternatief de tekenreeks voor `message` gebruikt. Dit kan leiden tot makkelijk te missen fouten. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
