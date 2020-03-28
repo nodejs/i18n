@@ -2314,7 +2314,7 @@ Accept: text/plain\r\n
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Παράδειγμα:
+Για να αναλύσετε το url στα επιμέρους κομμάτια του, μπορεί να χρησιμοποιηθεί το `require('url').parse(request.url)`. Παράδειγμα:
 
 ```txt
 $ node
