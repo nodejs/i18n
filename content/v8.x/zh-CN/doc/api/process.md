@@ -78,7 +78,7 @@ added: v0.5.10
 * `message` {Object} 已解析的 JSON 对象或原始值。
 * `sendHandle` {Handle object} 一个 [`net.Socket`][] 或 [`net.Server`][] 对象，或未定义。
 
-*注意*：会对消息进行序列化和解析。 The resulting message might not be the same as what is originally sent.
+*注意*：会对消息进行序列化和解析。 生成的消息可能和原始发送的消息不同。
 
 ### 事件：'rejectionHandled'
 
@@ -209,7 +209,7 @@ added: v6.0.0
 
 当 Node.js 发出进程警告时，就会发出 `'warning'` 事件。
 
-进程警告和错误的相似之处在于，它描述了需要用户注意的异常条件。 然而，警告不是 Node.js 和 JavaScript 常规错误处理流程的一部分。 Node.js can emit warnings whenever it detects bad coding practices that could lead to sub-optimal application performance, bugs, or security vulnerabilities.
+进程警告和错误的相似之处在于，它描述了需要用户注意的异常条件。 然而，警告不是 Node.js 和 JavaScript 常规错误处理流程的一部分。 只要检测到可能导致应用程序性能问题，缺陷，或安全漏洞的代码实践，Node.js 就会发出警告。
 
 监听器函数被调用时接受值为 `Error` 对象的单一 `warning` 参数。 有三个描述警告的关键属性：
 
@@ -261,7 +261,7 @@ $ node --no-warnings
 
 #### 发出自定义警告
 
-See the [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) method for issuing custom or application-specific warnings.
+关于发布自定义或特定于应用程序的警告，请参阅 [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) 方法。
 
 ### 信号事件
 
@@ -295,11 +295,11 @@ process.on('SIGTERM', handle);
 ```
 
 * `SIGUSR1` 被 Node.js 保留用以启动 [调试器](debugger.html)。 It's possible to install a listener but doing so might interfere with the debugger.
-* `SIGTERM` and `SIGINT` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
+* 在非 Windows 平台，`SIGTERM` 和 `SIGINT` 具有默认的处理程序，该处理程序在以代码 `128 + 信号编号` 退出之前，会重置终端模式。 如果这些信号之一具有已安装的监听器，它的默认行为将被删除 (Node.js 将不再退出)。
 * 默认情况下 `SIGPIPE` 将被忽略。 它可以安装一个监听器。
 * 在 Windows 平台，当控制台窗口关闭时，将会生成 `SIGHUP`，在其他平台的类似条件下，请参阅 signal(7)。 它可以安装监听器，但在大约 10 秒后，Node.js 会被 Windows 无条件终止。 在非 Windows 平台，`SIGHUP` 的默认行为是结束 Node.js，但一旦安装了监听器，其默认行为将被删除。
 * 在 Windows 平台上不支持 `SIGTERM`，但可以对其进行监听。
-* `SIGINT` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). 当终端的原始模式被启用时，它不会被生成。
+* 在所有平台都支持来自终端的 `SIGINT`，通常可以使用 `<Ctrl>+C` (尽管这是可以配置的) 来生成。 当终端的原始模式被启用时，它不会被生成。
 * 当按下 `<Ctrl>+<Break>` 时，在 Windows 平台会发出 `SIGBREAK`，在非 Windows 平台可对其进行监听，但无法发送或生成它。
 * 当终端大小被调整时会发出 `SIGWINCH`。 在 Windows 平台，只有在移动光标时写入控制台，或在原始模式下使用可读 tty 时才会发生。
 * `SIGKILL` 无法安装监听器，它会在所有平台上无条件的终止 Node.js。
@@ -393,7 +393,7 @@ added: v7.1.0
 
 * {Object}
 
-If the Node.js process was spawned with an IPC channel (see the [Child Process](child_process.html) documentation), the `process.channel` property is a reference to the IPC channel. If no IPC channel exists, this property is `undefined`.
+如果 Node.js 进程是通过 IPC 通道 (请参阅 [子进程](child_process.html) 文档) 衍生的，则 `process.channel` 属性是 IPC 通道的引用。 如果没有 IPC 通道，则此属性值为 `undefined`。
 
 ## process.chdir(directory)
 
@@ -545,7 +545,7 @@ added: 8.0.0
 
 * `warning` {string|Error} 将要发出的警告。
 * `options` {Object} 
-    * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
+    * `type` {string} 当 `warning` 为字符串时，`type` 是在发出 *type* 警告时要使用的名称。 **Default:** `Warning`.
     * `code` {string} 将要发出的警告实例的唯一标识符。
     * `ctor` {Function} 当 `warning` 为字符串时，`ctor` 为用于限制生成的追溯栈的可选函数。 **Default:** `process.emitWarning`.
     * `detail` {string} 错误中要包含的额外文字。
@@ -563,7 +563,7 @@ process.emitWarning('Something happened!', {
 // This is some additional information
 ```
 
-In this example, an `Error` object is generated internally by `process.emitWarning()` and passed through to the [`process.on('warning')`](#process_event_warning) event.
+在此示例中，`process.emitWarning()` 会在内部生成一个 `Error` 对象并将其传递给 [`process.on('warning')`](#process_event_warning) 事件。
 
 ```js
 process.on('warning', (warning) => {
@@ -584,7 +584,7 @@ added: v6.0.0
 -->
 
 * `warning` {string|Error} 将要发出的警告。
-* `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
+* `type` {string} 当 `warning` 为字符串时，`type` 是在发出 *type* 警告时要使用的名称。 **Default:** `Warning`.
 * `code` {string} 将要发出的警告实例的唯一标识符。
 * `ctor` {Function} 当 `warning` 为字符串时，`ctor` 为用于限制生成的追溯栈的可选函数。 **Default:** `process.emitWarning`.
 
@@ -618,7 +618,7 @@ process.on('warning', (warning) => {
 });
 ```
 
-If `warning` is passed as an `Error` object, it will be passed through to the `process.on('warning')` event handler unmodified (and the optional `type`, `code` and `ctor` arguments will be ignored):
+如果 `warning` 被作为 `Error` 对象传递，它将被原样不动的传递给 `process.on('warning')` 事件处理程序 (同时可选的 `type`，`code` 和 `ctor` 参数将被忽略)：
 
 ```js
 // Emit a warning using an Error object.
@@ -635,7 +635,7 @@ process.emitWarning(myWarning);
 
 注意：尽管进程警告使用 `Error` 对象，但进程警告机制 **不能** 替代正常错误处理机制。
 
-The following additional handling is implemented if the warning `type` is `DeprecationWarning`:
+如果警告 `type` 为 `DeprecationWarning`，则实现了如下的额外处理：
 
 * 如果使用了 `--throw-deprecation` 命令行选项，已弃用警告会被作为异常抛出，而不是被作为事件发送。
 * 如果使用了 `--no-deprecation` 命令行选项，则不会发出被弃用警告。
@@ -802,7 +802,7 @@ process.exit(1);
 
 执行 Node.js 的 shell 应可以看到退出代码为 `1`。
 
-Calling `process.exit()` will force the process to exit as quickly as possible even if there are still asynchronous operations pending that have not yet completed fully, including I/O operations to `process.stdout` and `process.stderr`.
+当调用 `process.exit()` 时，即使存在尚未完全完成的异步操作，包括到 `process.stdout` 和 `process.stderr` 的 I/O 操作，也会强迫进程尽快退出。
 
 在大多数情况下，没有必要显式调用 `process.exit()`。 如果在事件循环中 *没有额外待处理的工作* 时，Node.js 进程会自行退出。 可以设置 `process.exitCode` 属性来告诉进程正常退出时需要使用的退出码。
 
@@ -857,7 +857,7 @@ if (process.getegid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.geteuid()
 
@@ -875,7 +875,7 @@ if (process.geteuid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.getgid()
 
@@ -893,7 +893,7 @@ if (process.getgid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.getgroups()
 
@@ -905,7 +905,7 @@ added: v0.9.4
 
 `process.getgroups()` 方法返回包含补充组 ID 的数组。 如果包含了有效组 ID，POSIX 会将其值保留为未定义的，但 Node.js 确保包含有效组 ID。
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.getuid()
 
@@ -923,7 +923,7 @@ if (process.getuid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.hrtime([time])
 
@@ -931,12 +931,12 @@ if (process.getuid) {
 added: v0.7.6
 -->
 
-* `time` {Array} The result of a previous call to `process.hrtime()`
+* `time` {Array} 之前调用 `process.hrtime()` 的结果
 * 返回：{Array}
 
-The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
+`process.hrtime()` 方法返回以 `[seconds, nanoseconds]` tuple Array 形式表示的高精度当前时间，其中 `nanoseconds` 是当前时间中无法使用秒级精度表示的剩余部分。
 
-`time` is an optional parameter that must be the result of a previous `process.hrtime()` call to diff with the current time. If the parameter passed in is not a tuple Array, a `TypeError` will be thrown. Passing in a user-defined array instead of the result of a previous call to `process.hrtime()` will lead to undefined behavior.
+`time` 为一个可选参数，是之前对 `process.hrtime()` 调用的结果，以用于计算和当前时间的差异。 如果传入的参数不是 tuple Array，则会抛出 `TypeError`。 如果传入一个用户定义的数组，而不是之前对 `process.hrtime()` 的调用结果，将会导致未定义的行为。
 
 这些时间都是相对于过去某一时间的值，与一天中的时间没有关系，因此也不受时钟偏差的影响。 其主要用途是衡量时间间隔之间的性能：
 
@@ -975,7 +975,7 @@ process.setgid(1000);                     // drop root gid
 console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.kill(pid[, signal])
 
@@ -992,7 +992,7 @@ added: v0.0.6
 
 如果目标 `pid` 不存在，此方法会抛出一个错误。 在特殊情况下，可通过发送信号 `0` 来测试进程是否存在。 如果使用 `pid` 来杀死一个进程组，Windows 平台会抛出一个错误。
 
-*Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
+*注意*：尽管此函数的名称为 `process.kill()`，就像 `kill` 系统调用一样，它仅仅是信号的发送者。 发送的信号除了杀死目标进程外，还可能做一些其他事情。
 
 例如：
 
@@ -1009,7 +1009,7 @@ setTimeout(() => {
 process.kill(process.pid, 'SIGHUP');
 ```
 
-*Note*: When `SIGUSR1` is received by a Node.js process, Node.js will start the debugger, see [Signal Events](#process_signal_events).
+*注意*：当 Node.js 进程接收到 `SIGUSR1` 时，Node.js 将会启动调试器，请参阅 [信号事件](#process_signal_events)。
 
 ## process.mainModule
 
@@ -1153,7 +1153,7 @@ function definitelyAsync(arg, cb) {
 }
 ```
 
-*Note*: The next tick queue is completely drained on each pass of the event loop **before** additional I/O is processed. 结果就是，递归设置 nextTick 回调函数将会阻塞任何 I/O 事件，就像一个 `while(true);` 循环一样。
+*注意*：在处理其他 I/O **之前**，下一个时间点的队列在每个事件循环的传递中被完全耗尽。 结果就是，递归设置 nextTick 回调函数将会阻塞任何 I/O 事件，就像一个 `while(true);` 循环一样。
 
 ## process.noDeprecation
 
@@ -1163,7 +1163,7 @@ added: v0.8.0
 
 * {boolean}
 
-`process.noDeprecation` 属性指示在当前 Node.js 进程上是否设置了 `--no-deprecation` 标志。 See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+`process.noDeprecation` 属性指示在当前 Node.js 进程上是否设置了 `--no-deprecation` 标志。 请参阅 [`warning` 事件](#process_event_warning) 和 [`emitWarning` 方法](#process_process_emitwarning_warning_type_code_ctor) 的文档以获取关于此标志行为的更多信息。
 
 ## process.pid
 
@@ -1203,7 +1203,7 @@ added: v0.1.16
 console.log(`This platform is ${process.platform}`);
 ```
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+如果 Node.js 是在 Android 操作系统上构建的，返回值还可能会是 `'android'`。 However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## process.ppid
 
@@ -1277,7 +1277,7 @@ added: v0.5.9
 
 如果 Node.js 进程不是通过 IPC 通道创建的，则 `process.send()` 的值为 `undefined`。
 
-*注意*：会对消息进行序列化和解析。 The resulting message might not be the same as what is originally sent.
+*注意*：会对消息进行序列化和解析。 生成的消息可能和原始发送的消息不同。
 
 ## process.setegid(id)
 
@@ -1301,7 +1301,7 @@ if (process.getegid && process.setegid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.seteuid(id)
 
@@ -1325,7 +1325,7 @@ if (process.geteuid && process.seteuid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.setgid(id)
 
@@ -1349,7 +1349,7 @@ if (process.getgid && process.setgid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.setgroups(groups)
 
@@ -1363,7 +1363,7 @@ added: v0.9.4
 
 `groups` 数组可以包含数字形式的组 ID，组名，或者两者都有。
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.setuid(id)
 
@@ -1385,7 +1385,7 @@ if (process.getuid && process.setuid) {
 }
 ```
 
-*Note*: This function is only available on POSIX platforms (i.e. not Windows or Android).
+*注意*：此函数仅在 POSIX 平台 (即：非 Windows 或 Android) 下可用。
 
 ## process.stderr
 
@@ -1393,7 +1393,7 @@ if (process.getuid && process.setuid) {
 
 `process.stderr` 属性返回一个连接到 `stderr` (fd `2`) 的流。 除非 fd `2` 指向一个文件，否则它是一个 [`net.Socket`][] (这是一个 [Duplex](stream.html#stream_duplex_and_transform_streams) 流) ，当指向文件时，它是一个 [Writable](stream.html#stream_writable_streams) 流。
 
-*Note*: `process.stderr` differs from other Node.js streams in important ways, see [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+*注意*：`process.stderr` 和其他 Node.js 流有重大区别，请参阅 [进程 I/O 注意事项](process.html#process_a_note_on_process_i_o) 以获取更多信息。
 
 ## process.stdin
 
@@ -1434,7 +1434,7 @@ process.stdin.on('end', () => {
 process.stdin.pipe(process.stdout);
 ```
 
-*Note*: `process.stdout` differs from other Node.js streams in important ways, see [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+*注意*：`process.stdout` 和其他 Node.js 流有重大区别，请参阅 [进程 I/O 注意事项](process.html#process_a_note_on_process_i_o) 以获取更多信息。
 
 ### 关于进程 I/O 的注意事项
 
@@ -1477,7 +1477,7 @@ added: v0.9.12
 
 * {boolean}
 
-`process.throwDeprecation` 属性指示在当前的 Node.js 进程上是否设置了 `--throw-deprecation` 标志。 See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+`process.throwDeprecation` 属性指示在当前的 Node.js 进程上是否设置了 `--throw-deprecation` 标志。 要想获取此标志行为的更多信息，请参阅 [`warning` 事件](#process_event_warning) 和 [`emitWarning` 方法](#process_process_emitwarning_warning_type_code_ctor) 的文档。
 
 ## process.title
 
@@ -1489,7 +1489,7 @@ added: v0.1.104
 
 `process.title` 属性返回当前进程的标题 (即：返回 `ps` 的当前值)。 将 `process.title` 赋予新的值会更新 `ps` 的当前值。
 
-*Note*: When a new value is assigned, different platforms will impose different maximum length restrictions on the title. Usually such restrictions are quite limited. For instance, on Linux and macOS, `process.title` is limited to the size of the binary name plus the length of the command line arguments because setting the `process.title` overwrites the `argv` memory of the process. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
+*注意*：当被赋予新值时，不同平台会对标题的最大长度施加不同的限制。 通常这种限制是相当有限的。 例如：在 Linux 和 macOS 下，由于设置 `process.title` 会覆盖进程的 `argv` 内存区，`process.title` 的长度受限于其二进制名称的大小加上命令行参数的长度。 Node.js v0.8 允许通过覆盖 `environ` 内存区来支持更长的进程标题字符串，但这样做存在潜在的安全隐患，并在一些 (相当模糊的) 案例中会让人困惑。
 
 ## process.traceDeprecation
 
@@ -1499,7 +1499,7 @@ added: v0.8.0
 
 * {boolean}
 
-`process.traceDeprecation` 属性指示在当前 Node.js 进程是否设置了 `--trace-deprecation` 标志位。 See the documentation for the [`warning` event](#process_event_warning) and the [`emitWarning` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+`process.traceDeprecation` 属性指示在当前 Node.js 进程是否设置了 `--trace-deprecation` 标志位。 要想获取此标志行为的更多信息，请参阅 [`warning` 事件](#process_event_warning) 和 [`emitWarning` 方法](#process_process_emitwarning_warning_type_code_ctor) 的文档。
 
 ## process.umask([mask])
 
@@ -1529,7 +1529,7 @@ added: v0.5.0
 
 `process.uptime()` 方法返回以秒计的当前 Node.js 进程的运行时间。
 
-*Note*: The return value includes fractions of a second. 使用 `Math.floor()` 来获取整秒值。
+*注意*：返回值精确到几分之一秒。 使用 `Math.floor()` 来获取整秒值。
 
 ## process.version
 
