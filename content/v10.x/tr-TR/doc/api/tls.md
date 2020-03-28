@@ -175,17 +175,17 @@ export NODE_OPTIONS=--tls-cipher-list="ECDHE-RSA-AES128-GCM-SHA256:!RC4"
 node server.js
 ```
 
-The default can also be replaced on a per client or server basis using the `ciphers` option from [`tls.createSecureContext()`][], which is also available in [`tls.createServer()`], [`tls.connect()`], and when creating new [`tls.TLSSocket`]s.
+Varsayılan, ayrıca [`tls.createServer()`], [`tls.connect()`] ve yeni [`tls.TLSSocket`]'lerde bulunan [`tls.createSecureContext()`][]'deki `şifreler` seçeneğini kullanarak istemci veya sunucu bazında değiştirilebilir.
 
 Consult [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT) for details on the format.
 
 The default cipher suite included within Node.js has been carefully selected to reflect current security best practices and risk mitigation. Changing the default cipher suite can have a significant impact on the security of an application. The `--tls-cipher-list` switch and `ciphers` option should by used only if absolutely necessary.
 
-The default cipher suite prefers GCM ciphers for [Chrome's 'modern cryptography' setting](https://www.chromium.org/Home/chromium-security/education/tls#TOC-Cipher-Suites) and also prefers ECDHE and DHE ciphers for Perfect Forward Secrecy, while offering *some* backward compatibility.
+Varsayılan şifre takımı, [Chrome'un 'modern şifreleme' ayarı](https://www.chromium.org/Home/chromium-security/education/tls#TOC-Cipher-Suites) için GCM şifrelerini ve *bazı* geriye dönük uyumluluk sunarken, ayrıca Mükemmel İleri Gizlilik için ECDHE ve DHE şifrelerini de tercih eder.
 
 128 bit AES is preferred over 192 and 256 bit AES in light of [specific attacks affecting larger AES key sizes](https://www.schneier.com/blog/archives/2009/07/another_new_aes.html).
 
-Old clients that rely on insecure and deprecated RC4 or DES-based ciphers (like Internet Explorer 6) cannot complete the handshaking process with the default configuration. If these clients *must* be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
+Güvensiz ve kullanımdan kaldırılan RC4 veya DES tabanlı şifrelere (Internet Explorer 6 gibi) güvenen eski istemciler, uyuşma işlemini varsayılan yapılandırma ile tamamlayamaz. If these clients *must* be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
 
 ## Class: tls.Server
 
@@ -409,7 +409,7 @@ changes:
   * `ALPNProtocols`: See [`tls.createServer()`][]
   * `SNICallback`: See [`tls.createServer()`][]
   * `session` {Buffer} A `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
+  * `requestOCSP` {boolean} Eğer `true` ise, OCSP durum isteği uzantısının istemciye merhaba ekleneceğini ve güvenli bir iletişim kurmadan önce sokete bir `'OCSPResponse'` olayı gönderileceğini belirtir
   * `secureContext`: TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * ...: [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing. Otherwise, they are ignored.
 
@@ -701,7 +701,7 @@ added: v0.11.11
 
 The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
 
-Smaller fragment sizes decrease the buffering latency on the client: larger fragments are buffered by the TLS layer until the entire fragment is received and its integrity is verified; large fragments can span multiple roundtrips and their processing can be delayed due to packet loss or reordering. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
+Daha küçük parça boyutları, istemcide arabellek gecikmesini azaltır: daha büyük parçalar, tüm parça alınana ve bütünlüğü doğrulanana kadar TLS katmanı tarafından tamponlanır; büyük parçalar çoklu dönüşlere yayılabilir ve onların paket kaybı veya yeniden sıralanması nedeniyle işlemleri gecikebilir. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
 
 ## tls.checkServerIdentity(hostname, cert)
 
@@ -779,9 +779,9 @@ changes:
   * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
   * `socket` {stream.Duplex} Establish secure connection on a given socket rather than creating a new socket. Typically, this is an instance of [`net.Socket`][], but any `Duplex` stream is allowed. If this option is specified, `path`, `host` and `port` are ignored, except for certificate validation. Usually, a socket is already connected when passed to `tls.connect()`, but it can be connected later. Note that connection/disconnection/destruction of `socket` is the user's responsibility, calling `tls.connect()` will not cause `net.connect()` to be called.
   * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `'\x08http/1.1\x08http/1.0'`, where the `len` byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['http/1.1', 'http/1.0']`. Protocols earlier in the list have higher preference than those later.
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} Desteklenen ALPN protokollerini içeren bir dizi dizgi, `Arabellek` veya `Uint8Array'ler` veya tek bir `Arabellek` veya `Uint8Array`. `Buffer`s should have the format `[len][name][len][name]...` e.g. `'\x08http/1.1\x08http/1.0'`, where the `len` byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['http/1.1', 'http/1.0']`. Protocols earlier in the list have higher preference than those later.
   * `servername`: {string} Server name for the SNI (Server Name Indication) TLS extension. It is the name of the host being connected to, and must be a host name, and not an IP address. It can be used by a multi-homed server to choose the correct certificate to present to the client, see the `SNICallback` option to [`tls.createServer()`][].
-  * `checkServerIdentity(servername, cert)` {Function} A callback function to be used (instead of the builtin `tls.checkServerIdentity()` function) when checking the server's hostname (or the provided `servername` when explicitly set) against the certificate. This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
+  * `checkServerIdentity(servername, cert)` {Function} Sunucunun ana bilgisayar adını (veya açıkça ayarlandığında sağlanan `sunucuadı`) sertifikaya karşı kontrol ederken kullanılacak bir geri çağırma işlevi (gömülmüş `tls.checkServerIdentity()` fonksiyonu yerine). This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
   * `session` {Buffer} A `Buffer` instance, containing TLS session.
   * `minDHSize` {number} Minimum size of the DH parameter in bits to accept a TLS connection. When a server offers a DH parameter with a size less than `minDHSize`, the TLS connection is destroyed and an error is thrown. **Default:** `1024`.
   * `secureContext`: TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
@@ -919,7 +919,7 @@ The `tls.createSecureContext()` method creates a credentials object.
 
 A key is *required* for ciphers that make use of certificates. Either `key` or `pfx` can be used to provide it.
 
-If the 'ca' option is not given, then Node.js will use the default publicly trusted list of CAs as given in <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
+Eğer 'ca' seçeneği belirtilmezse, daha sonra Node.js, <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt> adresinde verilen varsayılan halka açık güvenilir CA listesini kullanır.
 
 ## tls.createServer(\[options\]\[, secureConnectionListener\])
 
@@ -939,7 +939,7 @@ changes:
 -->
 
 * `options` {Object} 
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} Desteklenen ALPN protokollerini içeren bir dizi dizgi, `Arabellek` veya `Uint8Array'ler` veya tek bir `Arabellek` veya `Uint8Array`. `Ara bellek`'lerin `[len][name][len][name]...` formatına sahip olmalıdır örn. `0x05hello0x05world`, ilk bayt, sonraki protokol adının uzunluğudur. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
   * `clientCertEngine` {string} Name of an OpenSSL engine which can provide the client certificate.
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
   * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
@@ -1100,7 +1100,7 @@ changes:
   * `ALPNProtocols`: See [`tls.createServer()`][]
   * `SNICallback`: See [`tls.createServer()`][]
   * `session` {Buffer} A `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication.
+  * `requestOCSP` {boolean} Eğer `true` ise, OCSP durum isteği uzantısının istemciye merhaba ekleneceğini ve güvenli bir iletişim kurmadan önce sokete bir `'OCSPResponse'` olayı gönderileceğini belirtir.
 
 Creates a new secure pair object with two streams, one of which reads and writes the encrypted data and the other of which reads and writes the cleartext data. Generally, the encrypted stream is piped to/from an incoming encrypted data stream and the cleartext one is used as a replacement for the initial encrypted stream.
 
