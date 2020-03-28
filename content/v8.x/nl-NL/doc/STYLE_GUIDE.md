@@ -1,7 +1,7 @@
 # Stijlgids
 
 * Documentatie is geschreven in markdown bestanden met namen geformatteerd als `kleineletters-met-koppelteken.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Underscores in bestandsnamen zijn alleen toegestaan wanneer zij aanwezig zijn in het onderwerp wat het document zal beschrijven (bijvoorbeeld: `kind_proces`).
   * Sommige bestanden zijn uitzonderingen, zoals top-level markdown bestanden.
 * Documenten moeten worden 'word-wrapped' bij 80 tekens.
 * De formattering beschreven in `.editorconfig` heeft de voorkeur. 
