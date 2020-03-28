@@ -1,14 +1,14 @@
 # Incorporación
 
-This document is an outline of the things we tell new Collaborators at their onboarding session.
+Este documento es un resumen de las cosas que contamos a los nuevos Colaboradores en su sesión de incorporación.
 
 ## Una semana antes de la sesión de incorporación
 
-* Confirm that the new Collaborator is using two-factor authentication on their GitHub account. Unless two-factor authentication is enabled, do not give an account elevated privileges such as the ability to land code in the main repository or to start continuous integration (CI) jobs.
+* Confirme que el nuevo Colaborador está utilizando la autenticación de dos factores en su cuenta de GitHub. A menos que la autenticación de dos factores esté habilitada, no otorgue privilegios elevados a una cuenta, así como la capacidad de ingresar código en el repositorio principal o iniciar trabajos de integración continua (CI).
 
 ## Quince minutos antes de la sesión de incorporación
 
-* Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators), and to [the Members team](https://github.com/orgs/nodejs/teams/members) if they are not already part of it. Note that this is the step that gives the account elevated privileges, so do not perform this step (or any subsequent steps) unless two-factor authentication is enabled on the new Collaborator's GitHub account.
+* Antes de la sesión de incorporación, agregue el nuevo Colaborador al [equipo de Colaboradores](https://github.com/orgs/nodejs/teams/collaborators) y al [equipo de Miembros](https://github.com/orgs/nodejs/teams/members) si aún no forman parte de él. Tenga en cuenta que este es el paso que otorga privilegios elevados a la cuenta, así que no realice este paso (o cualquier otro paso subsiguiente) a menos que la autenticación de dos factores esté habilitada en la nueva cuenta de GitHub del Colaborador.
 
 ## Sesión de incorporación
 
@@ -28,7 +28,7 @@ This document is an outline of the things we tell new Collaborators at their onb
         * Las ramas en el repositorio nodejs/node son solo para líneas de lanzamiento
     * [Consulte "Actualización de Node.js desde Upstream"](./onboarding-extras.md#updating-nodejs-from-upstream)
     * Haga una nueva rama para cada PR que envíe.
-    * Membership: Consider making your membership in the Node.js GitHub organization public. Esto facilita la identificación de los Colaboradores. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+    * Membresía: Considere hacer pública su membresía en la organización de GitHub de Node.js. Esto facilita la identificación de los Colaboradores. Las instrucciones sobre cómo hacerlo están disponibles en [Publicar u ocultar la membresía de la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
 * Notificaciones:
     
@@ -63,7 +63,7 @@ This document is an outline of the things we tell new Collaborators at their onb
 * [**Vea "Etiquetas"**](./onboarding-extras.md#labels)
     
     * Existe [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert` o `buffer`) para que sepamos qué partes del código base modifica la pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes de pull requests y problemas.
-    * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
+    * Use la etiqueta `tsc-review` si un tema es controvertido o no llega a una conclusión después de un tiempo prolongado.
     * `semver-{minor,major}`: 
         * Si un cambio tiene la *posibilidad* remota de romper algo, use la etiqueta `semver-major`
         * Cuando agregue una etiqueta semver, agregue un comentario que explique por qué lo está agregando. ¡Hágalo de inmediato para que no lo olvide!
@@ -82,28 +82,28 @@ This document is an outline of the things we tell new Collaborators at their onb
 ## Revisión de las PRs
 
 * El objetivo principal es mejorar la base del código.
-* El secundario (pero no menos importante) es que la persona que envía el código tenga éxito. A pull request from a new contributor is an opportunity to grow the community.
+* El secundario (pero no menos importante) es que la persona que envía el código tenga éxito. Una pull request de un nuevo contribuyente es una oportunidad para hacer crecer la comunidad.
 * Revise un poco a la vez. No abrume a los nuevos contribuyentes. 
-    * It is tempting to micro-optimize and make everything about relative performance. No sucumba a esa tentación. Cambiamos V8 a menudo. Techniques that provide improved performance today may be unnecessary in the future.
+    * Es tentador micro-optimizar y hacer todo sobre el rendimiento relativo. No sucumba a esa tentación. Cambiamos V8 a menudo. Las técnicas que proporcionan un rendimiento mejorado hoy pueden ser innecesarias en el futuro.
 * Tenga en cuenta: ¡Su opinión tiene mucho peso!
-* Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
+* Las nits (solicitudes de pequeños cambios que no son esenciales) están bien, pero intente evitar detener la pull request. 
     * Tenga en cuenta que son nits cuando usted comenta: `Nit: change foo() to bar().`
     * Si están deteniendo la pull request, corríjalos usted mismo en la fusión.
 * Tiempo mínimo de espera para comentarios 
-    * There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
-    * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
-    * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
+    * Hay un tiempo mínimo de espera que tratamos de respetar para los cambios no triviales, para que las personas que puedan tener aportes importantes en un proyecto distribuido de este tipo puedan responder.
+    * Para cambios no triviales, deje la pull request abierta durante al menos 48 horas (72 horas en un fin de semana).
+    * Si se abandona una pull request, verifique si les importaría que la tomara (especialmente si solo le quedan nits).
 
 * Aprobar un cambio
     
-    * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
+    * Los colaboradores indican que han revisado y aprobado los cambios en una pull request usando la interfaz de aprobación de Github
     * A algunas personas les gusta comentar `LGTM` (“Suena bien para mí" en inglés)
     * Usted tiene la autoridad para aprobar el trabajo de cualquier otro colaborador.
     * No puede aprobar sus propias pull requests.
-    * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it. 
-        * If you do, it is nice if you are available later to check whether your comments have been addressed
-        * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
-        * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
+    * Cuando se use explícitamente `Changes requested`, muestre empatía – los comentarios generalmente se abordarán incluso si no lo usa. 
+        * Si lo hace, es bueno que esté disponible más adelante para verificar si se han abordado sus comentarios
+        * Si observa que se han realizado los cambios solicitados, puede borrar la revisión de `Changes requested` de otro colaborador.
+        * Use `Changes requested` para indicar que está considerando algunos de sus comentarios para impedir que la PR aterrice.
 
 * Qué pertenece en Node.js:
     
@@ -158,4 +158,4 @@ This document is an outline of the things we tell new Collaborators at their onb
     * <https://github.com/nodejs/readable-stream>
     * <https://github.com/nodejs/LTS>
     * <https://github.com/nodejs/citgm>
-* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussion about our work on the project. The foundation has travel funds to cover participants' expenses including accommodation, transportation, visa fees etc. si es necesario. Check out the [summit](https://github.com/nodejs/summit) repository for details.
+* La Fundación Node.js organiza conferencias periódicas para colaboradores activos del proyecto Node.js, donde tenemos una discusión cara a cara sobre nuestro trabajo en el proyecto. La fundación tiene fondos para viajes que cubren los gastos de los participantes, incluidos alojamiento, transporte, tarifas de visado, etc. si es necesario. Revise el repositorio de [conferencia](https://github.com/nodejs/summit) para los detalles.
