@@ -12,7 +12,7 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+L'opération par défaut du module `path` varie selon le système d'exploitation sur lequel s'exécute une application Node.js. Plus précisément, lorsque vous utilisez un système d'exploitation Windows, le module `path` considérera que les chemins utilisés sont de type Windows.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 // Rend: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers Windows sur n'importe quel système d'exploitation, utilisez [`path.win32`][] :
 
 Sur POSIX et Windows :
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 // Rend: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers POSIX sur n'importe quel système d'exploitation, utilisez [`path.posix`][] :
 
 Sur POSIX et Windows :
 
@@ -65,7 +65,7 @@ changes:
 * `ext` {string} Une extension de fichier optionnelle
 * Retourne : {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+La méthode `path.basename()` retourne la dernière portion de `path`, de la même façon que la commande Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
 
 For example:
 
@@ -309,8 +309,7 @@ added: v0.1.23
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
@@ -512,9 +511,7 @@ Sur Windows :
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-*Note*: On Windows, both the forward slash (`/`) and backward slash (``\`) are
-accepted as path segment separators; however, the``path`methods only add
-backward slashes (`\`).
+*Note*: On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.win32
 
