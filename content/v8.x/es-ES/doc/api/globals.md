@@ -12,7 +12,7 @@ Estos objetos están disponibles en todos los módulos. The following variables 
 * [`module`][]
 * [`require()`][]
 
-Los objetos listados aquí son específicos para Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Los objetos listados aquí son específicos para Node.js. Hay un número de [objetos-complemento](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) que forman parte del lenguaje de JavaScript en sí mismo, y pueden ser accedidos de manera global.
 
 ## Clase: Buffer
 
@@ -90,7 +90,7 @@ added: v0.1.27
 
 * {Object} El objeto del espacio de nombre global.
 
-En los navegadores, el ámbito de máximo nivel es el ámbito global. This means that within the browser `var something` will define a new global variable. En Node.js esto es distinto. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+En los navegadores, el ámbito de máximo nivel es el ámbito global. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
