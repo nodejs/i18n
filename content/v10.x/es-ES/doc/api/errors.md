@@ -137,7 +137,7 @@ Esto no funcionará, ya que la función pasada a `fs.readFile()` es llamada de m
 
 Un objeto de `Error` de JavaScript genérico que no denota ninguna circunstancia específica por la cual ocurrió el error. Los objetos de `Error` capturan un "stack trace" que detalla el punto del código en el cual fue instanciado el `Error`, y pueden proporcionar una descripción de texto del mismo.
 
-For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
+Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack`, si está disponible cuando se arroja el error.
 
 Todos los errores generados por Node.js, incluyendo todos los errores de Sistema y JavaScript, serán instancias de la clase `Error` o heredados de esta.
 
@@ -197,7 +197,7 @@ La propiedad `error.code` es una etiqueta de string que identifica el tipo de er
 
 - {string}
 
-The `error.message` property is the string description of the error as set by calling `new Error(message)`. The `message` passed to the constructor will also appear in the first line of the stack trace of the `Error`, however changing this property after the `Error` object is created *may not* change the first line of the stack trace (for example, when `error.stack` is read before this property is changed).
+The `error.message` property is the string description of the error as set by calling `new Error(message)`. El `message` pasado al constructor también aparecerá en la primera línea del stack trace del `Error`, sin embargo, cambiar esta propiedad después de creado el objeto `Error` *puede no* cambiar la primera línea del stack trace (por ejemplo, cuando `error.stack` es leído antes de que esta propiedad fuese cambiada).
 
 ```js
 const err = new Error('The message');
@@ -460,7 +460,7 @@ An attempt was made to register something that is not a function as an `AsyncHoo
 
 ### ERR_ASYNC_TYPE
 
-El tipo de una fuente asincrónica era inválido. Note that users are also able to define their own types if using the public embedder API.
+El tipo de una fuente asincrónica era inválido. Los usuarios son capaces de definir su propio type al usar la API pública del embebedor.
 
 <a id="ERR_BROTLI_COMPRESSION_FAILED"></a>
 
@@ -666,7 +666,7 @@ The stack trace is extended to include the point in time at which the `domain` m
 
 ### ERR_ENCODING_INVALID_ENCODED_DATA
 
-Data provided to `util.TextDecoder()` API was invalid according to the encoding provided.
+Los datos proporcionados a la API `util.TextDecoder()` eran inválidos, de acuerdo a la codificación proporcionada.
 
 <a id="ERR_ENCODING_NOT_SUPPORTED"></a>
 
@@ -1098,7 +1098,7 @@ A Node.js API that consumes `file:` URLs (such as certain functions in the [`fs`
 
 ### ERR_INVALID_HANDLE_TYPE
 
-An attempt was made to send an unsupported "handle" over an IPC communication channel to a child process. See [`subprocess.send()`] and [`process.send()`] for more information.
+An attempt was made to send an unsupported "handle" over an IPC communication channel to a child process. Vea [`subprocess.send()`] y [`process.send()`] para más información.
 
 <a id="ERR_INVALID_HTTP_TOKEN"></a>
 
