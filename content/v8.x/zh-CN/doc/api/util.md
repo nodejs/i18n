@@ -144,8 +144,8 @@ changes:
 * `%i` - 整数。
 * `%f` - 单精度浮点数。
 * `%j` - JSON。 如果参数中包含循环引用，将其替换为字符串 `'[Circular]'`。
-* `%o` - 对象。 A string representation of an object with generic JavaScript object formatting. 类似于 `util.inspect()`，具有 `{ showHidden: true, depth: 4, showProxy: true }` 选项。 这将显示完整的对象，包括不可枚举的符号和属性。
-* `%O` - 对象。 A string representation of an object with generic JavaScript object formatting. 类似于没有选项的 `util.inspect()`。 这将显示完整的对象，但不包括不可枚举的符号和属性。
+* `%o` - 对象。 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 类似于 `util.inspect()`，具有 `{ showHidden: true, depth: 4, showProxy: true }` 选项。 这将显示完整的对象，包括不可枚举的符号和属性。
+* `%O` - 对象。 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 类似于没有选项的 `util.inspect()`。 这将显示完整的对象，但不包括不可枚举的符号和属性。
 * `%%` - 单个百分号 (`'%'`)。 它不使用参数。
 
 如果占位符没有对应的参数，则占位符不会被替换。
