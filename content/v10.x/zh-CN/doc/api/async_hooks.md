@@ -169,7 +169,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+当一个类被构造时，如果有 *可能* 会发出异步事件，则回调函数会被调用。 这并 *不* 意味着在 `destroy` 被调用之前实例必须调用 `before`/`after`，只是这种可能性存在。
 
 This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
 
@@ -201,7 +201,7 @@ It is possible to have type name collisions. Embedders are encouraged to use uni
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. 它和`async_hooks.executionAsyncId()`不同，后者只是显示新资源在 *何时* 被创建，而 `triggerAsyncId` 显示 *为什么* 新资源被创建。
 
 下面是 `triggerAsyncId` 的简单演示：
 
@@ -303,9 +303,9 @@ As illustrated in the example, `executionAsyncId()` and `execution` each specify
 Timeout(7) -> TickObject(6) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. 这是因为在不提供主机名的情况下绑定端口是 *同步* 操作，但要维护完全的异步 API，用户的回调函数位于 `process.nextTick()`。
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+该图仅显示 *何时*，而不是 *为什么* 资源会被创建，因此要想跟踪 *为什么*，请使用 `triggerAsyncId`。
 
 ##### before(asyncId)
 
@@ -536,9 +536,9 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+调用所有的 `before` 回调函数以通知进入了一个新的异步执行上下文。 如果对 `emitBefore()` 进行了嵌套调用，`asyncId` 栈会被追踪并被正确解析。
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitAfter()
 
@@ -548,11 +548,11 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-调用所有 `after` 回调函数。 If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. 否则将抛出错误。
+调用所有 `after` 回调函数。 如果对 `emitBefore()` 进行了嵌套调用，请确保正确解析栈。 否则将抛出错误。
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
+如果用户的回调函数抛出错误，同时错误由域或 `'uncaughtException'` 处理程序来处理，则针对栈中的所有 `asyncId`，`emitAfter()` 会被调用。
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### asyncResource.emitDestroy()
 
