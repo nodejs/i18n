@@ -1234,7 +1234,7 @@ Los duplicados en las cabeceras crudas son manejados de las siguientes maneras, 
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, `server`, or `user-agent` are discarded.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
-* For duplicate `cookie` headers, the values are joined together with '; '.
+* Para los encabezados `cookie` duplicados, los valores se unen con '; '.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
 ### `message.httpVersion`<!-- YAML
@@ -1388,8 +1388,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
 -->* `options` {Object}
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Útil para extender el `IncomingMessage` original. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Default:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Especifica la clase `ServerResponse` que será utilizada. Útil para extender el `ServerResponse` original. **Default:** `ServerResponse`.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 * `requestListener` {Function}
 
