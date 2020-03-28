@@ -84,7 +84,7 @@
 
 No hay commits adicionales.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
+Debido a un incorrecta preparación de la actualización para el compilador GCC 4.9.X, los últimos lanzamientos para PPC de "little endian" fueron compilados usando GCC 4.9.X en vez de GCC 4.8.X. Esto causó un quiebre de ABI en ambientes basados en PPCLE. Esto ha sido reparado en nuestra infraestructura y estamos haciendo este lanzamiento para asegurarnos de que los binarios alojados se están adheriendo a nuestra contrato de soporte de plataforma.
 
 <a id="4.9.0"></a>
 
@@ -288,7 +288,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 Esto es un lanzamiento de mantenimiento para arreglar una pérdida de memoria que se introdujo en 4.8.1.
 
-It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
+Esto también incluye una actualización a zlib 1.2.11 para reparar un [número de CVEs de baja severidad](http://seclists.org/oss-sec/2016/q4/602) que estaban presentes en zlib 1.2.8.
 
 ### Cambios Notables
 
@@ -619,7 +619,7 @@ Este lanzamiento LTS viene con 118 commits. This includes 73 which are doc relat
 
 This is a security release of the 'Argon' release line to upgrade OpenSSL to version 1.0.2k
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) ha determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web de Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Cambios Notables
 
@@ -639,7 +639,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ## 2017-01-05, Versión 4.7.2 'Argon' (LTS), @MylesBorins
 
-Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. Para poder remover cualquier ambigüedad sobre la actualización, hemos optado por hacer una actualización de parche de semver sin ningún cambio.
 
 ### Cambios Notables
 
