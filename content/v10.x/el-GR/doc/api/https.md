@@ -147,7 +147,7 @@ changes:
 
 Όπως το [`http.get()`][] αλλά για συνδέσεις HTTPS.
 
-Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -204,7 +204,7 @@ changes:
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
