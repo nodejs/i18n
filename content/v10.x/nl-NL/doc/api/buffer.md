@@ -4,9 +4,9 @@
 
 > Stabiliteit: 2 - Stabiel
 
-Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Voor de introductie van [`TypedArray`], had de JavaScript taal geen mechanisme voor het lezen of manipuleren van stromen van binaire data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
-With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
+Nu [`TypedArray`] beschikbaar is, implementeert de `Buffer` class de [`Uint8Array`] API op een manier die meer is geoptimaliseerd en geschikt voor Node.js.
 
 Instanties van de `Buffer` class zijn te vergelijken met arrays of hele getallen, maar corresponderen met vaste, rauwe geheugentoewijzingen buiten de V8-heap. The size of the `Buffer` is established when it is created and cannot be changed.
 
@@ -39,7 +39,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
+* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Vóór Node.je 8.0.0, het geheugen toegekend voor dergelijke `Buffer` instanties is *niet* geïnitialiseerd en *kan gevoelige gegevens bevatten*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
 * Het doorgeven van een string, array, of `Buffer` als eerste argument, kopieert de doorgegeven data van het object naar de `Buffer`.
 * Het doorgeven van een [`ArrayBuffer`] of een [`SharedArrayBuffer`] retourneert een `Buffer` wat het toegewezen geheugen deelt met de gegeven array buffer.
 
@@ -138,7 +138,7 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instanties zijn ook [`Uint8Array`] instanties. However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+`Buffer` instanties zijn ook [`Uint8Array`] instanties. Er zijn echter subtiele tegenstrijdigheden met [`TypedArray`]. Bijvoorbeeld, terwijl [`ArrayBuffer#slice()`] een kopie van de slice creëert, zal de uitvoering van [`Buffer#slice()`][`buf.slice()`] een beeld creëeren over de bestaande `Buffer` zonder het te kopiëren, wat de [`Buffer#slice()`][`buf.slice()`] veel efficiënter maakt.
 
 Het is ook mogelijk nieuwe [`TypedArray`] instanties te creëren vanuit een `Buffer` met de volgende uitzonderingen:
 
@@ -315,7 +315,7 @@ changes:
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik [`Buffer.from(buffer)`] als alternatief.
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Een bestaande `Buffer` of [`Uint8Array`] waarvan data worden gekopieerd.
 
 Kopieert de passende `buffer` data naar een nieuwe `Buffer` instantie.
 
@@ -359,7 +359,7 @@ changes:
 
 Kent een nieuwe `Buffer` van `size` bytes toe. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. Een nul-lengte `Buffer` wordt gecreëerd als de `size` 0 is.
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
+Voorafgaand aan Node.js 8.0.0., is het onderliggende geheugen voor `Buffer` instanties die op deze manier zijn gecreëerd *niet geïnitialiseerd*. De inhoud van een nieuw gecreëerde `Buffer` is onbekend en *kan gevoelige infomatie bevatten*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
 
 ```js
 const buf = new Buffer(10);
@@ -703,7 +703,7 @@ Een `TypeError` zal worden geworpen als de `arrayBuffer` geen [`ArrayBuffer`] of
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Een bestaande `Buffer` of [`Uint8Array`] waarvan data worden gekopieerd.
 
 Kopieert de passende `buffer` data naar een nieuwe `Buffer` instantie.
 
@@ -728,8 +728,8 @@ added: v8.2.0
 -->
 
 * `object` {Object} Een object dat `Symbol.toPrimitive` of `valueOf()` ondersteunt
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `offsetOrEncoding` {number|string} Een byte-offset of codering, afhankelijk van de waarde geretourneerd door `object.valueOf()` of `object[Symbol.toPrimitive]()`.
+* `length` {number} Een lengte, afhankelijk van de waarde geretourneerd door `object.valueOf()` of `object[Symbol.toPrimitive]()`.
 
 For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
@@ -1237,7 +1237,7 @@ changes:
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Standaard:** `'utf8'`.
 * Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+Identiek aan [`buf.indexOf()`], behalve dat de laatste gebeurtenis van de `value` wordt gevonden, in plaats van de eerste gebeurtenis.
 
 ```js
 const buf = Buffer.from('deze buffer is een buffer');
@@ -1672,7 +1672,7 @@ changes:
 
 Retourneert een nieuwe `Buffer` die verwijst naar hetzelfde geheugen als het origineel, maar offset en bijgesneden door de `start` en `end` van indexcijfers.
 
-Specifying `end` greater than [`buf.length`] will return the same result as that of `end` equal to [`buf.length`].
+Het specificeren van een `end` groter dan [`buf.length`] zal hetzelfde resultaat retourneren als `end` gelijk aan [`buf.length`].
 
 Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
 
@@ -2272,7 +2272,7 @@ added: v0.5.4
 
 Retourneert het maximaal aantal bytes die worden geretourneerd als `buf.inspect()` wordt aangeroepen. Dit kan overschreven worden door gebruikers-modules. Zie [`util.inspect()`] voor meer informatie over `buf.inspect()` gedrag.
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## buffer.kMaxLength
 
@@ -2284,7 +2284,7 @@ added: v3.0.0
 
 Een alias voor [`buffer.constants.MAX_LENGTH`][].
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## buffer.transcode(source, fromEnc, toEnc)
 
@@ -2319,7 +2319,7 @@ console.log(newBuf.toString('ascii'));
 
 Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced with `?` in the transcoded `Buffer`.
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## Class: SlowBuffer
 
@@ -2389,7 +2389,7 @@ console.log(buf);
 added: v8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat `buffer.constants` een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ### buffer.constants.MAX_LENGTH
 
