@@ -25,11 +25,11 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-El módulo `circle.js` ha exportado las funciones `area()` y `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+El módulo `circle.js` ha exportado las funciones `area()` y `circumference()`. Las funciones y objetivos son añadidas a raíz de un modulo especificando propiedades adicionales en objeto especial `exports`.
 
 Las variables locales del módulo serán privadas, porque los módulos están envueltos en una función por Node.js (véase [module wrapper](#modules_the_module_wrapper)). En este ejemplo, la variable `PI` está privada para `circle.js`.
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+Un nuevo valor puede ser asignado a `module.exports` (como una función u objeto).
 
 Abajo, `bar.js` hace uso del módulo `square`, el cual exporta una clase Square:
 
@@ -60,7 +60,7 @@ El sistema de módulos está implementado en el módulo `require('module')`.
 
 <!-- type=misc -->
 
-Cuando un archivo es ejecutado desde Node.js, se establece `require.main` a su `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Cuando un archivo es ejecutado desde Node.js, se establece `require.main` a su `module`. Eso significa que es posible determinar si un archivo fue ejecutado directamente por la prueba `require.main === module`.
 
 Para el archivo `foo.js`, esto será `true` si se ejecuta vía `node foo.js`, pero `false` si se ejecuta por `require('./foo')`.
 
@@ -76,7 +76,7 @@ Debajo damos una estructura de directorio sugerida que puede funcionar:
 
 Digamos que desea que la carpeta contenida en `/usr/lib/node/&lt;some-package&gt;/&lt;some-version&gt;` tenga todos los contenidos de una versión específica de un paquete.
 
-Los paquetes pueden depender los unos de los otros. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+Los paquetes pueden depender los unos de los otros. El orden de instalación de paquetes `foo`,, puede ser necesarios para instalar una versión especifica del paquete `bar`. El paquete `bar` puede por si mismo tener dependencias, en algunos casos pueden tener conflictos o tener dependencias cíclicas.
 
 Debido a que Node.js busca el `realpath` de cualquier módulo que cargue (eso es, ejecuta symlinks), y luego busca por sus dependencias en las carpetas `node_modules` como es descrito [aquí](#modules_loading_from_node_modules_folders), esta situación es muy simple de resolver con la siguiente arquitectura:
 
@@ -164,7 +164,7 @@ Los módulos se almacenan en caché después de que se cargan por primera vez. E
 
 Múltiples llamadas a `require('foo')` podrían no causar que el código del módulo sea ejecutado múltiples veces. Esta es una función importante. Con esto, objetos "parcialmente hechos" pueden ser devueltos, de este modo permitiendo que dependencias transitivas sean cargadas aún cuando puedan causar ciclos.
 
-To have a module execute code multiple times, export a function, and call that function.
+Para que un módulo ejecute un código múltiples veces, exporte una función y llame a esa función.
 
 ### Advertencias de Almacenamiento en Caché del Módulo
 
@@ -239,7 +239,7 @@ a done
 in main, a.done = true, b.done = true
 ```
 
-Careful planning is required to allow cyclic module dependencies to work correctly within an application.
+Hace falta una planificación cuidadosa para permitir que las dependencias de módulo cíclicas trabajen correctamente dentro de una aplicación.
 
 ## Módulos de Archivo
 
@@ -302,7 +302,7 @@ Por ejemplo, si el archivo en `'/home/ry/projects/foo.js'` llamó a `require('ba
 
 Esto le permite a los programas localizar sus dependencias, y así no entren en conflicto.
 
-It is possible to require specific files or sub modules distributed with a module by including a path suffix after the module name. Por ejemplo, `require('example-module/path/to/file')` resolverá `path/to/file` relativamente a donde `example-module` esté localizado. La ruta con sufijo sigue las mismas semánticas de resolución de módulo.
+Es posible requerir archivos específicos o sub módulos distribuidos con un módulo incluyendo un sufijo de la ruta después del nombre del módulo. Por ejemplo, `require('example-module/path/to/file')` resolverá `path/to/file` relativamente a donde `example-module` esté localizado. La ruta con sufijo sigue las mismas semánticas de resolución de módulo.
 
 ## Carga desde carpetas globales
 
@@ -312,9 +312,9 @@ Si la variable de entorno `NODE_PATH` se establece a una lista delimitada por do
 
 *Note*: On Windows, `NODE_PATH` is delimited by semicolons instead of colons.
 
-`NODE_PATH` fue originalmente creada para soportar módulos de rutas variantes antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
+`NODE_PATH` fue originalmente creado para soportar módulos de carga de varias rutas antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
 
-`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestran un comportamiento sorprendente cuando las personas no están conscientes de que `NODE_PATH` debe establecerse. Algunas veces las dependencias de los módulos cambian, causando que se cargue una versión diferente (a veces hasta un módulo distinto) cuando se busque a `NODE_PATH`.
+`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestran un comportamiento sorprendente cuando las personas no están conscientes de que `NODE_PATH` debe establecerse. Algunas veces las dependencias de un módulo cambian, causando que se cargue una versión diferente (o incluso un módulo diferente) cuando se busque a `NODE_PATH`.
 
 Adicionalmente, Node.js buscará en las siguientes ubicaciones:
 
@@ -322,7 +322,7 @@ Adicionalmente, Node.js buscará en las siguientes ubicaciones:
 * 2: `$HOME/.node_libraries`
 * 3: `$PREFIX/lib/node`
 
-Donde `$HOME` es el directorio de inicio del usuario y `$PREFIX` es el `node_prefix` configurado de Node.js.
+Donde `$HOME` es el directorio de inicio del usuario, y `$PREFIX` es el `node_prefix` configurado de Node.js.
 
 Esto es principalmente debido a razones históricas.
 
@@ -359,7 +359,7 @@ added: v0.1.27
 
 * {string}
 
-El nombre del directorio del módulo actual. This is the same as the [`path.dirname()`][] of the [`__filename`][].
+El nombre del directorio del módulo actual. Este es el mismo que el [`path.dirname()`][] del [`__filename`][].
 
 Ejemplo: ejecutando `node example.js` desde `/Users/mjr`
 
@@ -380,7 +380,7 @@ added: v0.0.1
 
 * {string}
 
-El nombre de archivo del módulo actual. Esta es la ruta absoluta resuelta del archivo del módulo actual.
+El nombre de archivo del módulo actual. Esta es la ruta absoluta resuelta del archivo de módulo actual.
 
 Para un programa principal, esto no es necesariamente lo mismo que el nombre de archivo utilizado en la línea de comando.
 
@@ -412,7 +412,7 @@ added: v0.1.12
 
 <!-- type=var -->
 
-Una referencia al `module.exports` que es más corta de escribir. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
+Una referencia al `module.exports` que es más corta de escribir. Consulte la sección sobre [exports shortcut (exportar atajos)](#modules_exports_shortcut) para obtener detalles sobre cuando usar `exports` y cuándo usar `module.exports (módulo de exportación)`.
 
 ### módulo
 
@@ -424,7 +424,7 @@ added: v0.1.16
 
 * {Object}
 
-A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
+Una referencia al módulo actual. Vea la sección acerca de [`module` object][]. En particular, `module.exports` es utilizado para definir lo que exporta un módulo y lo hace disponibles a través de `require()`.
 
 ### require()
 
@@ -457,7 +457,7 @@ added: v0.3.0
 
 * {Object}
 
-Los módulos son almacenados en caché en este objeto cuando son requeridos. Cuando se elimine un valor clave de este objeto, el siguiente uso de `require` volverá a cargar el módulo. Tenga en cuenta que esto no aplica para [complementos nativos](addons.html), para los cuales volver a cargarlo resultaría en un Error.
+Los módulos son almacenados en caché en este objeto cuando son requeridos. Al eliminar un valor clave de este objeto, el siguiente `require` volverá a cargar el módulo. Tenga en cuenta que esto no aplica para [complementos nativos](addons.html), para los cuales volver a cargarlo resultaría en un Error.
 
 #### require.extensions
 
@@ -478,13 +478,13 @@ Archivos de proceso con extensión `.sjs` como `.js`:
 require.extensions['.sjs'] = require.extensions['.js'];
 ```
 
-**Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js, compilándolos bajo demanda. Sin embargo, en la práctica, hay formas mucho mejores para hacer esto, como cargar los módulos a través de otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
+**Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js compilándolos bajo demanda. Sin embargo, en la práctica, hay muchas mejores maneras para hacer esto, como cargando módulos a través de algún otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
 
-Since the module system is locked, this feature will probably never go away. Sin embargo, puede tener algunos bugs y complejidades sutiles que es mejor dejar intactos.
+Debido a que el sistema de módulo está bloqueado, esta función probablemente nunca se irá. Sin embargo, puede tener errores sutiles y complejidades que es mejor dejar intactas.
 
-Note that the number of file system operations that the module system has to perform in order to resolve a `require(...)` statement to a filename scales linearly with the number of registered extensions.
+Note que el número de operaciones de sistema de archivos que el sistema de módulo tiene que realizar para resolver una declaración `require(...)` para un nombre de archivo, escala linealmente con el número de extensiones registradas.
 
-In other words, adding extensions slows down the module loader and should be discouraged.
+En otras palabras, añadir extensiones ralentiza el cargador de módulos y debe ser desalentado.
 
 #### require.resolve(request[, options])
 
@@ -499,10 +499,10 @@ changes:
 
 * `request` {string} La ruta de módulo a resolver.
 * `options` {Object} 
-  * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
+  * `paths` {Array} Paths to resolve module location from. Si están presentes, estas rutas son utilizadas en lugar de las rutas de resolución por defecto. Note que cada una de estas rutas es utilizada como un punto de partida para el algoritmo de resolución del módulo, lo que significa que la jerarquía de `node_modules` es verificada desde esta ubicación.
 * Devuelve: {string}
 
-Utilice la maquinaria interna de `require()` para ver la ubicación de un módulo, pero, en lugar de cargar dicho módulo, solo devuelva el nombre de archivo resuelto.
+Utiliza la maquinaria `require()` interna para ver la ubicación de un módulo, pero en lugar de cargar el módulo, sólo devuelve el nombre de archivo resuelto.
 
 #### require.resolve.paths(request)
 
@@ -527,7 +527,7 @@ added: v0.1.16
 
 * {Object}
 
-En cada módulo, la variable libre `module` es una referencia al objeto representando el módulo actual. Por conveniencia,`module.exports` es también accesible vía el módulo global `exports`. `module` no es en realidad global sino local para cada módulo.
+En cada módulo, la variable libre de `module` es una referencia para el objeto que representa el módulo actual. Por conveniencia, `module.exports` también es accesible a través del módulo global `exports`. `module` no es en realidad global sino local para cada módulo.
 
 ### module.children
 
@@ -547,7 +547,7 @@ added: v0.1.16
 
 * {Object}
 
-El objeto `module.exports` es creado por el sistema Módulos. A veces no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
+El objeto `module.exports` es creado por el sistema Módulos. En alguna ocasiones esto no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note que el asignar el objeto desea a `exports` simplemente volverá a atar a la variable local `exports`, lo cual probablemente no es deseado.
 
 Por ejemplo, suponga que estamos haciendo un módulo llamado `a.js`
 
@@ -595,9 +595,9 @@ console.log(x.a);
 added: v0.1.16
 -->
 
-La variable `exports` está disponible dentro del nivel del alcance de archivo de un módulo, y le es asignado el valor de `module.exports` antes de que el módulo sea evaluado.
+La variable `exports` está disponible dentro del ámbito a nivel de archivo del módulo, y se le asigna el valor de `module.exports` antes de que se evalúe el módulo.
 
-Permite un atajo, para que así `module.exports.f = ...` pueda ser escrito más sucintamente como `exports.f = ...`. Sin embargo, tenga en cuenta que, como cualquier otra variable, si un nuevo valor es asignado a `exports`, ya no estará atado a `module.exports`:
+Permite un atajo, para que así `module.exports.f = ...` pueda ser escrito más sucintamente como `exports.f = ...`. Sin embargo, tenga en cuenta que, como cualquier otra variable, si se le asigna un nuevo valor a `exports`, ya no estará ligado a `module.exports`:
 
 ```js
 module.exports.hello = true; // Exportado del requerimiento del módulo
@@ -614,7 +614,7 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-Para ilustrar este comportamiento, imagine esta implementación hipotética de `require()`, la cual es bastante similar a lo que realmente es hecho por `require()`:
+Para ilustrar el comportamiento, imagine esta implementación hipotética de `require()`, la cual es bastante similar a lo que realmente es hecho por `require()`:
 
 ```js
 function require(/* ... */) {
@@ -661,7 +661,7 @@ added: v0.1.16
 
 * {boolean}
 
-Si el módulo terminó de cargarse, o si está en proceso de carga.
+Si el módulo terminó de cargarse o si está en proceso de carga.
 
 ### module.parent
 
@@ -704,7 +704,7 @@ added: v0.3.7
 
 * {Object}
 
-Proporciona métodos de utilidad general al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulos de archivos. Accesado vía `require('module')`.
+Proporciona métodos de utilidad generales al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulos de archivos. Accedido a través de `require('module')`.
 
 ### module.builtinModules
 
