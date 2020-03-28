@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. Οι παρακάτω μεταβλητές μπορεί να φαίνονται ως καθολικές, αλλά δεν είναι. Υπάρχουν μόνο σε πεδία εφαρμογής των ενοτήτων, δείτε την [τεκμηρίωση ενοτήτων συστήματος](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -28,11 +28,11 @@ added: v0.1.103
 
 ## \_\_dirname
 
-This variable may appear to be global but is not. See [`__dirname`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__dirname`].
 
 ## \_\_filename
 
-This variable may appear to be global but is not. See [`__filename`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__filename`].
 
 ## clearImmediate(immediateObject)
 
@@ -78,7 +78,7 @@ added: v0.1.100
 
 ## exports
 
-This variable may appear to be global but is not. See [`exports`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`exports`].
 
 ## global
 
@@ -90,11 +90,11 @@ added: v0.1.27
 
 * {Object} Το καθολικό αντικείμενο ονομάτων.
 
-Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. Αυτό σημαίνει ότι σε ένα πρόγραμμα περιήγησης, ο κώδικας `var something` θα ορίσει μια νέα καθολική μεταβλητή. Στη Node.js αυτό είναι διαφορετικό. Το ανώτατο πεδίο εφαρμογής δεν είναι το καθολικό πεδίο εφαρμογής· ο κώδικας `var something` μέσα σε μια ενότητα Node.js, ορίζει τη μεταβλητή μόνο σε αυτή την ενότητα.
 
 ## module
 
-This variable may appear to be global but is not. See [`module`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`module`].
 
 ## process
 
@@ -110,7 +110,7 @@ added: v0.1.7
 
 ## require()
 
-This variable may appear to be global but is not. See [`require()`].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`require()`].
 
 ## setImmediate(callback[, ...args])
 
