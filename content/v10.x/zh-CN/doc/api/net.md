@@ -16,13 +16,13 @@ const net = require('net');
 
 ## IPC 支持
 
-The `net` module supports IPC with named pipes on Windows, and UNIX domain sockets on other operating systems.
+`net` 模块支持 在 Windows 上使用命名管道 IPC ，及在其他操作系统上使用 UNIX 域套接字。
 
 ### 为 IPC 连接识别路径
 
 [`net.connect()`][], [`net.createConnection()`][], [`server.listen()`][] and [`socket.connect()`][] take a `path` parameter to identify IPC endpoints.
 
-在 UNIX 系统上，本地域也被称作 UNIX 域。 The path is a filesystem pathname. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. 在 Linux 系统上的典型值是 107，在 macOS 系统上的典型值是 103。 The path is subject to the same naming conventions and permissions checks as would be done on file creation. If the UNIX domain socket (that is visible as a file system path) is created and used in conjunction with one of Node.js' API abstractions such as [`net.createServer()`][], it will be unlinked as part of [`server.close()`][]. On the other hand, if it is created and used outside of these abstractions, the user will need to manually remove it. The same applies when the path was created by a Node.js API but the program crashes abruptly. In short, a UNIX domain socket once successfully created will be visible in the filesystem, and will persist until unlinked.
+在 UNIX 系统上，本地域也被称作 UNIX 域。 The path is a filesystem pathname. 它会在 `sizeof(sockaddr_un.sun_path) - 1` 处被截断，具体长度会根据不同的操作系统而介于 91 和 107 个字节之间。 在 Linux 系统上的典型值是 107，在 macOS 系统上的典型值是 103。 该路径受到与创建文件时相同的命名约定和权限检查的影响。 If the UNIX domain socket (that is visible as a file system path) is created and used in conjunction with one of Node.js' API abstractions such as [`net.createServer()`][], it will be unlinked as part of [`server.close()`][]. On the other hand, if it is created and used outside of these abstractions, the user will need to manually remove it. The same applies when the path was created by a Node.js API but the program crashes abruptly. In short, a UNIX domain socket once successfully created will be visible in the filesystem, and will persist until unlinked.
 
 在 Windows 系统上，本地域是通过命名管道实现的。 此路径 *必须* 引用在 `\\?\pipe` 或 `\\.\pipe` 中的条目。 路径中允许任何字符，但后面的字符可能会对管道名称进行处理，例如，解析 `..` 序列。 Despite how it might look, the pipe namespace is flat. Pipes will *not persist*. They are removed when the last reference to them is closed. Unlike UNIX domain sockets, Windows will close and remove the pipe when the owning process exits.
 
@@ -194,7 +194,7 @@ added: v0.5.10
 * `callback` {Function} [`server.listen()`][] 函数的通用参数
 * 返回： {net.Server}
 
-Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
+开始一个服务器来监听给定 `handle` 上的连接，该 handle 已被绑定到端口，UNIX 域套接字，或 Windows 命名管道上。
 
 The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
 
@@ -214,7 +214,7 @@ added: v0.11.14
   * `exclusive` {boolean} **默认值：** `false`
   * `readableAll` {boolean} For IPC servers makes the pipe readable for all users. **默认值：** `false`
   * `writableAll` {boolean} For IPC servers makes the pipe writable for all users. **默认值：** `false`
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
+* `callback` {Function} [`server.listen()`][] 函数的通用参数。
 * 返回：{net.Server}
 
 If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
@@ -309,7 +309,7 @@ Calling `unref()` on a server will allow the program to exit if this is the only
 added: v0.3.4
 -->
 
-This class is an abstraction of a TCP socket or a streaming [IPC](#net_ipc_support) endpoint (uses named pipes on Windows, and UNIX domain sockets otherwise). A `net.Socket` is also a [duplex stream](stream.html#stream_class_stream_duplex), so it can be both readable and writable, and it is also an [`EventEmitter`][].
+此类为 TCP 套接字或流式 [IPC](#net_ipc_support) 端点的抽象 (在 Windows 平台上使用命名管道，在其他系统上使用 UNIX 域套接字)。 A `net.Socket` is also a [duplex stream](stream.html#stream_class_stream_duplex), so it can be both readable and writable, and it is also an [`EventEmitter`][].
 
 A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
 
@@ -479,7 +479,7 @@ added: v0.5.3
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] for TCP connections.
 * 返回：{net.Socket} 套接字本身。
 
-此函数为异步的。 When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+此函数为异步的。 When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. 如果提供了最后一个参数 `connectListener` ，它将被作为 [`'connect'`][] 事件的监听器添加 **一次**。
 
 #### socket.connect(options[, connectListener])
 
@@ -793,7 +793,7 @@ Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createCo
 
 A factory function, which creates a new [`net.Socket`][], immediately initiates connection with [`socket.connect()`][], then returns the `net.Socket` that starts the connection.
 
-When the connection is established, a [`'connect'`][] event will be emitted on the returned socket. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+When the connection is established, a [`'connect'`][] event will be emitted on the returned socket. 如果提供了最后一个参数 `connectListener`，它将被作为 [`'connect'`][] 事件的监听器添加 **一次**。
 
 可能的调用方式包括：
 
@@ -865,7 +865,7 @@ added: v0.1.90
 
 * `port` {number} 套接字应连接到的端口。 Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
 * `host` {string} 套接字应连接到的主机。 Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **默认值：** `'localhost'`.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. 将被传递给 [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`]。
 * 返回：{net.Socket} 用于启动连接的新创建的套接字。
 
 初始化一个 TCP 连接。
