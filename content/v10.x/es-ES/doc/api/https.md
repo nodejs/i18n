@@ -147,7 +147,7 @@ changes:
 
 Como [`http.get()`][] pero para HTTPS.
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizado automáticamente con [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -194,7 +194,7 @@ changes:
 -->
 
 * `url` {string | URL}
-* `opciones` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
+* `opciones` {Object | string | URL} Acepta todas las `options` de [`http.request()`][], con algunas diferencias en valores predeterminados: 
     * `protocol` **Predeterminado:** `'https:'`
     * `port` **Predeterminado:** `443`
     * `agent` **Predeterminado:** `https.globalAgent`
@@ -204,7 +204,7 @@ Hace una solicitud a un servidor web seguro.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizado automáticamente con [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
