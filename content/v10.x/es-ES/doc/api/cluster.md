@@ -67,7 +67,7 @@ Porque `server.listen ()` delega la mayoría del trabajo al proceso maestro, hay
 
 1. `server.listen ({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor de archivos 7 **en el proceso primario**, va a ser escuchado y el handle será pasado al worker, en vez de escuchar la idea del worker de aquello a lo que hace referen el descriptor de archivo número 7.
 2. `server.listen(handle)` Usar Listen en los hadles causará explícitamente  que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
-3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio por primera vez, pero predecible después de eso. To listen on a unique port, generate a port number based on the cluster worker ID.
+3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio por primera vez, pero predecible después de eso. Para hacer listen en un puerto único, genera un número de puerto basado en el ID del worker en el clúster.
 
 Node.js no provee lógica de enrutación. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
@@ -522,7 +522,7 @@ Ve [`child_process` event: `'message'`][].
 
 Antes de Node.js v6.0 este evento emitía solo el mensaje y el handle, pero no el objeto worker, al contrario de lo que decía la documentación.
 
-If support for older versions is required but a worker object is not required, it is possible to work around the discrepancy by checking the number of arguments:
+Si se requiere soporte para versiones anteriores, pero un objeto worker no es requerido, es posible evitar la discrepancia verificando los números de los argumentos:
 
 ```js
 cluster.on('message', (worker, message, handle) => {
@@ -620,7 +620,7 @@ Verdadero si el proceso no es maestro (es la negación de `cluster.isMaster`).
 added: v0.11.2
 -->
 
-La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejárselo al sistema operativo. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
+La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejárselo al sistema operativo. Esto es una configuración global y es efectivamente detenida una vez que el primer worker es generado, o cuando `cluster.setupMaster()` es llamado, cualquiera que ocurra primero.
 
 `SCHED_RR` es el predeterminado en todos los sistemas operativos menos Windows. Windows cambiará a `SCHED_RR` una vez que libuv sea capaz de distribuir handles IOCP, sin incurrir en golpes fuertes en el rendimiento.
 
@@ -650,7 +650,7 @@ changes:
   * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Predeterminado:** `process.execArgv`.
   * `exec` {string} Ruta del archivo al archivo worker. **Predeterminado:** `process.argv[1]`.
   * `args` {string[]} Argumentos strings pasados al worker. **Predeterminado:** `process.argv.slice(2)`.
-  * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (inherits from parent process).
+  * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
   * `silent` {boolean} Sea enviar la salida a stdio secundario o no hacerlo. **Predeterminado:** `false`.
   * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
   * `uid` {number} Establece la identidad del usuario del proceso. (Ver setuid(2).)
@@ -679,9 +679,9 @@ changes:
 
 Tenga en cuenta que:
 
-* Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
-* The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
-* The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
+* Cualquier cambio en las configuraciones solo afecta a futuras llamadas a `.fork()` y no tiene ningún efecto en workers que ya estén en ejecución.
+* El *único* atributo de un worker que no se puede establecer mediante `.setupMaster()` es el `env` pasado a `.fork()`.
+* Los valores predeterminados anteriores aplican solo a la primera llamada, los predeterminados para llamadas posteriores son los valores en el momento que `cluster.setupMaster()` es llamado.
 
 ```js
 const cluster = require('cluster');
