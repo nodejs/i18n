@@ -1,11 +1,11 @@
 # Styleguide
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* Die Dokumentation wird in Markdown-Dateien geschrieben, deren Dateinamen als `kleinbuchstaben-mit-bindestrichen.md`formatiert sind. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Einige Dateien sind davon ausgenommen, z. B. Markdown-Dateien auf der obersten Ebene.
 * Der Text in Dokumenten sollte nach 80 Zeichen umgebrochen werden.
 * In `.editorconfig` ist beschrieben, welche Formatierung bevorzugt wird. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Für einige Programme steht ein [Plugin](http://editorconfig.org/#download) zur Verfügung, um diese Regeln automatisch anzuwenden.
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   
