@@ -403,7 +403,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. Consulte la sección sobre [rastreo de ejecución de promesas](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Rastreo de ejecución de promises
 
