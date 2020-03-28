@@ -26,11 +26,11 @@ Utilisée pour gérer les données binaires. Voir la [section buffer](buffer.htm
 
 ## `__dirname`
 
-This variable may appear to be global but is not. See [`__dirname`][].
+Cette variable peut sembler globale mais ne l'est pas. See [`__dirname`][].
 
 ## `__filename`
 
-This variable may appear to be global but is not. See [`__filename`][].
+Cette variable peut sembler globale mais ne l'est pas. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -72,7 +72,7 @@ Utilisé pour écrire vers stdout et stderr. Voir la section [`console`][].
 
 ## `exports`
 
-This variable may appear to be global but is not. See [`exports`][].
+Cette variable peut sembler globale mais ne l'est pas. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -87,7 +87,7 @@ Dans les navigateurs, la portée la plus haute est la portée globale. This mean
 
 ## `module`
 
-This variable may appear to be global but is not. See [`module`][].
+Cette variable peut sembler globale mais ne l'est pas. See [`module`][].
 
 ## `process`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-This variable may appear to be global but is not. See [`require()`][].
+Cette variable peut sembler globale mais ne l'est pas. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML
