@@ -279,7 +279,7 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 * **fs**: añadir la función de fs.mkdtemp(). (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
 * **net**: emitir host en evento de lookup (HUANG Wei) [#5598](https://github.com/nodejs/node/pull/5598)
 * **node**: --no-browser-globals bandera de configuración (Fedor Indutny) [#5853](https://github.com/nodejs/node/pull/5853)
-* **npm**: Upgrade to v3.8.3. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Los tokens de autenticación se han sido enviados previamente con cada solicitud hecha por el CLI para los usuarios logueados, sin importar el destino de la solicitud. Esta actualización repara esto al incluir solamente esos tokens para las solicitudes hechas contra el registro o los registros utilizados para la instalación actual. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
+* **npm**: Upgrade to v3.8.3. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
 * **repl**: soporta bloques autónomos (Prince J Wesley) [#5581](https://github.com/nodejs/node/pull/5581)
 * **src**: sobreescribe los threads de v8 predeterminados usando opciones de cli (Tom Gallacher) [#4344](https://github.com/nodejs/node/pull/4344)
 
@@ -415,13 +415,13 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
   * Jeremy Whitlock (@whitlockjc)
   * Matt Loring (@matthewloring)
   * Phillip Johnsen (@phillipj)
-* **lib**: copy arguments object instead of leaking it (Nathan Woltman) https://github.com/nodejs/node/pull/4361
-* **src**: allow both -i and -e flags to be used at the same time (Rich Trott) https://github.com/nodejs/node/pull/5655
+* **lib**: copiar objetos de argumentos en vez de soltarlos (Nathan Woltman) https://github.com/nodejs/node/pull/4361
+* **src**: permitir que tanto la bandera -i y la bandera -e puedan ser usadas al mismo tiempo (Rich Trott) https://github.com/nodejs/node/pull/5655
 * **timers**: Tiempos de espera de Node.js internos ahora usan las mismas rutas lógicas que las creadas con `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007) 
   * Esto puede causar un perfil de rendimiento ligeramente diferente en algunas situaciones. Hasta ahora, ha mostrado ser positivo en la mayoría de los casos.
 * **v8**: hacebbackport fb4ccae del upstream v8 (Vladimir Krivosheev) #4231 
   * eventos de ruptura de v8 ofrecerán mejor soporte para depuradores externos
-* **zlib**: add support for concatenated members (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
+* **zlib**: añadir soporte para miembros concatenados (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120 
   * Anteriormente, si múltiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
 
 ### Commits
@@ -1590,7 +1590,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * Fixed a bug where pipelined http requests would stall (Fedor Indutny) [#3342](https://github.com/nodejs/node/pull/3342).
   * *(Breaking)* When parsing HTTP, don't add duplicates of the following headers: `Retry-After`, `ETag`, `Last-Modified`, `Server`, `Age`, `Expires`. This is in addition to the following headers which already block duplicates: `Content-Type`, `Content-Length`, `User-Agent`, `Referer`, `Host`, `Authorization`, `Proxy-Authorization`, `If-Modified-Since`, `If-Unmodified-Since`, `From`, `Location`, `Max-Forwards` (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
   * *(Breaking)* The `callback` argument to `OutgoingMessage#setTimeout()` must be a function or a `TypeError` is thrown (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
-  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ``/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/`` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
+  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ```/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/``` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
 * **node**: 
   * *(Breaking)* Deprecated the `_linklist` module (Rich Trott) [#3078](https://github.com/nodejs/node/pull/3078).
   * *(Breaking)* Removed `require.paths` and `require.registerExtension()`, both had been previously set to throw `Error` when accessed (Sakthipriyan Vairamani) [#2922](https://github.com/nodejs/node/pull/2922).
