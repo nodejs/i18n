@@ -33,8 +33,8 @@ Por conveniencia, el módulo `child_process` proporciona un puñado de alternati
 
     * [`child_process.exec()`][]: genera un shell y ejecuta un comando dentro de ese shell,
       pasar `stdout` y `stderr` a una función de callback cuando termine.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
-      it spawns the command directly without first spawning a shell by default.
+    * [`child_process.execFile()`][]: es similar a [`child_process.exec()`][] excepto que
+      genera el comando directamente sin generar primero un shell por defecto.
     * [`child_process.fork()`][]: genera un nuevo proceso de Node.js e invoca un
       módulo especificado con un canal de comunicación IPC establecido que permite
       enviar mensajes entre primario y secundario.
@@ -56,7 +56,7 @@ Los métodos [`child_process.exec()`][] y [`child_process.execFile()`][] adicion
 
 ### Generando archivos `.bat` y `.cmd` en Windows
 
-La importancia de la distinción entre [`child_process.exec()`][] y [`child_process.execFile()`][] puede variar según la plataforma. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. Sin embargo, en Windows, los archivos `.bat` y `.cmd` no son ejecutables por su propia cuenta sin un terminal, por lo tanto no pueden ser ejecutados utilizando [`child_process.execFile()`][]. Al ejecutarse en Windows, los archivos `.bat` y `.cmd` pueden ser invocados usando [`child_process.spawn()`][] con el conjunto de opciones `shell`, con [`child_process.exec()`][], o al generar `cmd.exe` y pasar el archivo `.bat` o `.cmd` como un argumento (que es lo que hacen las opciones `shell` y [`child_process.exec()`][]). En cualquier caso, si el nombre de archivo del script contiene espacios necesita ser citado.
+La importancia de la distinción entre [`child_process.exec()`][] y [`child_process.execFile()`][] puede variar según la plataforma. En sistemas operativos de tipo Unix (Unix, Linux, macOS) [`child_process.execFile()`][] puede ser más eficiente debido a que no genera un shell por defecto. Sin embargo, en Windows, los archivos `.bat` y `.cmd` no son ejecutables por su propia cuenta sin un terminal, por lo tanto no pueden ser ejecutados utilizando [`child_process.execFile()`][]. Al ejecutarse en Windows, los archivos `.bat` y `.cmd` pueden ser invocados usando [`child_process.spawn()`][] con el conjunto de opciones `shell`, con [`child_process.exec()`][], o al generar `cmd.exe` y pasar el archivo `.bat` o `.cmd` como un argumento (que es lo que hacen las opciones `shell` y [`child_process.exec()`][]). En cualquier caso, si el nombre de archivo del script contiene espacios necesita ser citado.
 
 ```js
 // Sólo en Windows ...
@@ -111,7 +111,7 @@ changes:
   * `cwd` {string} Directorio del proceso secundario actualmente operativo. **Predeterminado:** `null`.
   * `env` {Object} Pares clave-valor del entorno. **Predeterminado:** `null`.
   * `encoding` {string} **Predeterminado:** `'utf8'`
-  * `shell` {string} Shell con el que ejecutar el comando. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell con el que ejecutar el comando. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Predeterminado:** `0`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated and any output is truncated. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
@@ -195,7 +195,7 @@ changes:
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Se ignora en Unix. **Predeterminado:** `false`.
-  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
 * `callback` {Function} Llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -300,8 +300,8 @@ changes:
   * `detached` {boolean} Prepare el proceso secundario para que sea ejecutado independientemente de su proceso primario. El comportamiento específico depende de la plataforma, vea [`options.detached`][]).
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
-  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Se ignora en Unix. This is set to `true` automatically when `shell` is specified. **Predeterminado:** `false`.
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica `shell`. **Predeterminado:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Devuelve: {ChildProcess}
 
@@ -446,14 +446,14 @@ De lo contrario, el valor de `options.stdio` es un array donde cada índice corr
 1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. El final del pipe del proceso primario es expuesto a éste como una propiedad en el objeto `child_process` como [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
 2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][] and [`process.disconnect()`][] methods, as well as [`'disconnect'`][] and [`'message'`][] events within the child.
   
-  Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
+  Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
 
 3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá fds 0 - 2 para los procesos que genera, configurar el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al fd del proceso secundario.
 
 4. `'inherit'` - Pass through the corresponding stdio stream to/from the parent process. In the first three positions, this is equivalent to `process.stdin`, `process.stdout`, and `process.stderr`, respectively. In any other position, equivalent to `'ignore'`.
 5. {Stream} object - Comparte un stream legible o escribible que se refiere a un tty, archivo, conector o un pipe con el proceso secundario. El descriptor del archivo subyacente del stream es duplicado en el proceso secundario al fd que corresponde al índice en el array de `stdio`. Tenga en cuenta que el stream debe tener un descriptor subyacente (archivos de streams no lo tienen hasta que se ha producido el evento `'open'`).
-6. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden ser compartidos. Passing sockets is not supported on Windows.
-7. `null`, `undefined` - Utiliza el valor por defecto. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. Para fd 3 y mayores, el predeterminado es `'ignore'`.
+6. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden ser compartidos. Passing sockets is not supported on Windows.
+7. `null`, `undefined` - Utiliza el valor por defecto. Para los fds stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr) se crea un pipe. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
 ```js
 const { spawn } = require('child_process');
@@ -516,14 +516,14 @@ changes:
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
-  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
 * Devuelve: {Buffer|string} El stdout desde el comando.
 
 El método `child_process.execFileSync()` es generalmente idéntico a [`child_process.execFile()`][] con la excepción de que el método no devolverá hasta que el proceso secundario haya sido completamente cerrado. Cuando se haya encontrado un timeout y se haya enviado una `killSignal`, el método no devolverá hasta que el proceso haya sido completamente cerrado.
 
 If the child process intercepts and handles the `SIGTERM` signal and does not exit, the parent process will still wait until the child process has exited.
 
-If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
+Si el proceso expira o tiene un código de salida distinto de cero, este método ***arrojará*** un [`Error`][] que incluirá el resultado total del [`child_process.spawnSync()`][] subyacente.
 
 **If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
 
@@ -551,7 +551,7 @@ changes:
   * `input` {string|Buffer|TypedArray|DataView} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} La configuración del stdio del proceso secundario. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Predeterminado:** `'pipe'`.
   * `env` {Object} Pares clave-valor del entorno.
-  * `shell` {string} Shell con el que ejecutar el comando. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell con el que ejecutar el comando. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Establece la identidad del usuario del proceso. (Vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso. (Vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que se permite que se ejecute el proceso. **Predeterminado:** `undefined`.
@@ -563,7 +563,7 @@ changes:
 
 El método `child_process.execSync()` es generalmente idéntico a [`child_process.exec()`][] con la excepción de que el método no se devolverá hasta que el proceso haya sido completamente cerrado. Cuando se ha encontrado un timeout y se ha enviado una `killSignal`, el método no se devolverá hasta que el proceso haya sido completamente cerrado. *Note que si el proceso secundario intercepta y maneja la señal `SIGTERM` y no se cierra, el proceso primario aún así esperará hasta que el proceso secundario haya sido cerrado.*
 
-If the process times out or has a non-zero exit code, this method ***will*** throw. The [`Error`][] object will contain the entire result from [`child_process.spawnSync()`][].
+Si el proceso expira o tiene un código de salida diferente a cero, este método ***arrojará***. The [`Error`][] object will contain the entire result from [`child_process.spawnSync()`][].
 
 **Nunca pase la entrada del usuario no optimizado a esta función. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
 
@@ -605,8 +605,8 @@ changes:
   * `killSignal` {string|integer} El valor de la señal a ser usada cuando el proceso generado vaya a ser eliminado. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated and any output is truncated. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
-  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Se ignora en Unix. This is set to `true` automatically when `shell` is specified. **Predeterminado:** `false`.
+  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica `shell`. **Predeterminado:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Predeterminado:** `false`.
 * Devuelve: {Object} 
   * `pid` {number} Pid del proceso secundario.
@@ -846,7 +846,7 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `opciones` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
+* `opciones` {Object} El argumento `options`, si está presente, es un objeto usado para parametizar el envío de ciertos tipos de manejos. `options` supports the following properties: 
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. Cuando es `true`, la conexión se mantiene abierta en el proceso de envío. **Predeterminado:** `false`.
 * `callback` {Function}
 * Devuelve: {boolean}
