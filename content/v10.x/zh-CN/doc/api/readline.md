@@ -112,7 +112,7 @@ rl.on('resume', () => {
 added: v0.7.5
 -->
 
-The `'SIGCONT'` event is emitted when a Node.js process previously moved into the background using `<ctrl>-Z` (i.e. `SIGTSTP`) is then brought back to the foreground using fg(1p).
+当之前通过使用 `<ctrl>-Z` (即：`SIGTSTP`) 移入后台的 Node.js 进程，又通过使用 fg(1p) 返回前台时，会发出 `'SIGCONT'` 事件。
 
 如果 `input` 流在 `SIGTSTP` 请求 *之前* 被暂停，不会发出此事件。
 
