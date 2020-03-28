@@ -57,7 +57,7 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Pour les processus occupés, le programmeur est *fortement encouragé* à utiliser les versions asynchrones de ces appels. Les versions synchrones bloquent l'intégralité du processus jusqu'à leur achèvement — interrompant toutes les connexions.
 
 The relative path to a filename can be used. Remember, however, that this path will be relative to `process.cwd()`.
 
@@ -2433,7 +2433,7 @@ changes:
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Par défaut :** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Par défaut :** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
