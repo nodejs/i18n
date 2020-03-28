@@ -6,7 +6,7 @@
 
 Για να χρησιμοποιηθεί ο εξυπηρετητής και ο πελάτης HTTP, θα πρέπει να γίνει κλήση `require('http')`.
 
-Οι διεπαφές HTTP στο Node.js έχουν σχεδιαστεί για να υποστηρίζουν πολλά χαρακτηριστικά των πρωτοκόλλων που είναι κατά παράδοση δύσκολα στη χρήση. Ειδικότερα, μεγάλα, ενδεχομένως κωδικοποιημένα μπλοκ μηνυμάτων. Η διεπαφή έχει σχεδιαστεί να μην μεταφέρει buffer ολόκληρων αιτημάτων ή απαντήσεων — ο χρήστης μπορεί να αποκτήσει τα δεδομένα με ροή.
+Οι διεπαφές HTTP στο Node.js έχουν σχεδιαστεί για να υποστηρίζουν πολλά χαρακτηριστικά των πρωτοκόλλων που είναι κατά παράδοση δύσκολα στη χρήση. Ειδικότερα, μεγάλα, ενδεχομένως κωδικοποιημένα μπλοκ μηνυμάτων. The interface is careful to never buffer entire requests or responses, so the user is able to stream data.
 
 Τα μηνύματα κεφαλίδας HTTP παρουσιάζονται σαν αντικείμενα, όπως αυτό:
 ```js
@@ -19,7 +19,7 @@
 
 Τα κλειδιά είναι πεζοί χαρακτήρες. Οι τιμές δεν τροποποιούνται.
 
-Για να υποστηριχθεί ολόκληρο το φάσμα των πιθανών εφαρμογών του πρωτοκόλλου HTTP, το HTTP API του Node.js είναι φτιαγμένο σε πολύ χαμηλό επίπεδο. Ασχολείται μόνο με τον χειρισμό ροών και την ανάλυση μηνυμάτων. Αναλύει ένα μήνυμα σε κεφαλίδες και σώμα, αλλά δεν αναλύει περαιτέρω τις κεφαλίδες ή το σώμα.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level. Ασχολείται μόνο με τον χειρισμό ροών και την ανάλυση μηνυμάτων. Αναλύει ένα μήνυμα σε κεφαλίδες και σώμα, αλλά δεν αναλύει περαιτέρω τις κεφαλίδες ή το σώμα.
 
 Δείτε το [`message.headers`][] για λεπτομέρειες στο πώς μεταχειρίζονται οι διπλότυπες κεφαλίδες.
 
@@ -150,6 +150,8 @@ added: v0.11.4
 -->* {Object}
 
 Ένα αντικείμενο που περιέχει πίνακες με socket που αναμένουν την χρήση τους από τον agent, όταν έχει ενεργοποιηθεί το `keepAlive`. Να μην τροποποιηθεί.
+
+Sockets in the `freeSockets` list will be automatically destroyed and removed from the array on `'timeout'`.
 
 ### `agent.getName(options)`
 <!-- YAML
@@ -622,7 +624,7 @@ added: v0.1.29
 * `callback` {Function}
 * Επιστρέφει: {boolean}
 
-Αποστέλλει ένα τμήμα του σώματος. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Αποστέλλει ένα τμήμα του σώματος. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 Η παράμετρος `encoding` είναι προαιρετική και ισχύει μόνο όταν το `chunk` είναι string. Από προεπιλογή είναι `'utf8'`.
 
@@ -827,7 +829,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->* Extends: {Stream}
 
-Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
+This object is created internally by an HTTP server, not by the user. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
 
 ### Event: `'close'`<!-- YAML
 added: v0.6.7
@@ -1402,8 +1404,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
 -->* `options` {Object}
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Χρήσιμο για την επέκταση του αρχικού `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Χρήσιμο για την επέκταση του αρχικού `ServerResponse`. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Ορίζει την κλάση `IncomingMessage` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `IncomingMessage`. **Default:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Ορίζει την κλάση `ServerResponse` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `ServerResponse`. **Default:** `ServerResponse`.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
   * `maxHeaderSize` {number} Optionally overrides the value of [`--max-http-header-size`][] for requests received by this server, i.e. the maximum length of request headers in bytes. **Default:** 8192 (8KB).
 * `requestListener` {Function}
