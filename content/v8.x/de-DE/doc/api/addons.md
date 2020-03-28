@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Sie werden in erster Linie dazu eingesetzt, um eine Schnittstelle zwischen JavaScript in Node.js und C/C++-Bibliotheken zur Verfügung zu stellen.
+Node.js-Erweiterungen sind dynamisch-verknüpfte freigegebene Objekte, die in C++ geschrieben sind und in Node.js mit der [`require()`](modules.html#modules_require) Funktion geladen und verwendet werden können, als wären sie ein gewöhnliches Node.js Modul. Sie werden in erster Linie dazu eingesetzt, um eine Schnittstelle zwischen JavaScript in Node.js und C/C++-Bibliotheken zur Verfügung zu stellen.
 
 Im Moment ist die Methode zur Implementierung von Erweiterungen eher kompliziert, sie bedarf Kenntnisse über verschiedene Komponenten und Programmierschnittstellen :
 
 * V8: die C++ Bibliothek Node.js verwendet diese zurzeit, um eine JavaScript-Implementierung bereitzustellen. V8 stellt den Mechanismus für die Erstellung von Objekten, das Abrufen von Funktionen etc. bereit. Die Programmierschnittstelle von V8 wird zum größten Teil in der `v8.h` Überschriftsdatei (`deps/v8/include/v8.h` in dem Node.js Source-Tree) dokumentiert, die auch [online](https://v8docs.nodesource.com/) verfügbar ist.
 
-* [libuv](https://github.com/libuv/libuv): Die C-Bibliothek, die die Node.js Event-Schleife, Arbeiter-Threads und alle asynchronen Verhaltensweisen der Plattform implementiert. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv bietet auch eine pthreads-ähnliche Threading-Abstraktion, die verwendet werden kann, um anspruchsvollere asynchrone Erweiterungen zu betreiben, die über die Standard-Event-Schleife hinausgehen müssen. Autoren von Erweiterungen werden ermutigt, darüber nachzudenken, wie man es vermeiden kann, die Event-Schleife mit I/O oder anderen zeitintensiven Aufgaben zu blockieren, indem Sie die Arbeit via libuv auf nicht-blockierende Systemoperationen, Arbeiter-Threads oder eine benutzerdefinierte Verwendung der libuv-Threads auslagern.
+* [libuv](https://github.com/libuv/libuv): Die C-Bibliothek, die die Node.js Event-Schleife, Arbeiter-Threads und alle asynchronen Verhaltensweisen der Plattform implementiert. Sie dient auch als plattformübergreifende Abstraktionsbibliothek, die einen einfachen, POSIX-ähnlichen Zugriff über alle wichtigen Betriebssysteme hinweg auf viele gängige Systemaufgaben, wie z.B. Interaktion mit dem Dateisystem, Sockets, Timern und Systemereignissen gewährt. libuv bietet auch eine pthreads-ähnliche Threading-Abstraktion, die verwendet werden kann, um anspruchsvollere asynchrone Erweiterungen zu betreiben, die über die Standard-Event-Schleife hinausgehen müssen. Autoren von Erweiterungen werden ermutigt, darüber nachzudenken, wie man es vermeiden kann, die Event-Schleife mit I/O oder anderen zeitintensiven Aufgaben zu blockieren, indem Sie die Arbeit via libuv auf nicht-blockierende Systemoperationen, Arbeiter-Threads oder eine benutzerdefinierte Verwendung der libuv-Threads auslagern.
 
 * Interne Node.js-Bibliotheken. Node.js selbst exportiert eine Reihe von C++-Programmierschnittstellen, die von Erweiterungen verwendet werden können &mdash; von denen die Wichtigste die `node::ObjectWrap` Klasse ist.
 
-* Node.js enthält eine Reihe weiterer statisch verknüpfter Bibliotheken, darunter OpenSSL. Diese anderen Bibliotheken befinden sich in dem `deps/`-Verzeichnis im Node.js Source-Tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Weitere Informationen finden Sie unter [Verknüpfung zu Node.js' eigenen Abhängigkeiten](#addons_linking_to_node_js_own_dependencies).
+* Node.js enthält eine Reihe weiterer statisch verknüpfter Bibliotheken, darunter OpenSSL. Diese anderen Bibliotheken befinden sich in dem `deps/`-Verzeichnis im Node.js Source-Tree. Nur die Symbole libuv, OpenSSL, V8 und zlib werden von Node.js gezielt wieder exportiert und können von Erweiterungen in unterschiedlichem Umfang verwendet werden. Weitere Informationen finden Sie unter [Verknüpfung zu Node.js' eigenen Abhängigkeiten](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Alle der folgenden Beispiele stehen zum [Download](https://github.com/nodejs/node-addon-examples) bereit und können als Ausgangspunkt für eine Erweiterung verwendet werden.
 
 ## Hallo Welt
 
@@ -68,7 +68,7 @@ Im Beispiel `hello.cc` ist die Initialisierungsfunktion `init` und der Erweiteru
 
 ### Aufbau
 
-Nachdem der Quellcode geschrieben wurde, muss er in die Binärdatei `addon.node` kompiliert werden. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Diese Datei wird von [node-gyp](https://github.com/nodejs/node-gyp) verwendet — einem Tool, das speziell für die Kompilierung von Node.js-Erweiterungen geschrieben wurde.
+Nachdem der Quellcode geschrieben wurde, muss er in die Binärdatei `addon.node` kompiliert werden. Erstellen Sie dazu eine Datei mit dem Namen `binding.gyp` in der obersten Ebene des Projekts, die die Build-Konfiguration des Moduls in einem JSON-ähnlichen Format beschreibt. Diese Datei wird von [node-gyp](https://github.com/nodejs/node-gyp) verwendet — einem Tool, das speziell für die Kompilierung von Node.js-Erweiterungen geschrieben wurde.
 
 ```json
 {
@@ -89,7 +89,7 @@ Als nächstes führen Sie den Befehl `node-gyp build` aus, um die kompilierte Da
 
 Wenn Sie `npm install` verwenden, um eine Node.js-Erweiterung zu installieren, verwendet npm seine eigene Paketversion von `node-gyp`, um das gleiche Set von Aktionen auszuführen und eine kompilierte Version der Erweiterung für die Plattform des Benutzers bei Bedarf zu erzeugen.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Einmal erstellt, kann die binäre Erweiterung aus Node.js heraus verwendet werden, indem man [`require()`](modules.html#modules_require) auf das gebaute `addon.node`-Modul verweist:
 
 ```js
 // hello.js
@@ -123,9 +123,9 @@ Node.js verwendet eine Reihe von statisch-gelinkten Bibliotheken wie V8, libuv u
 
 ### Laden von Erweiterungen mit require()
 
-Die Dateinamenserweiterung des kompilierten Erweiterungs-Binary ist `.node` (im Gegensatz zu `.dll` oder `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Die Dateinamenserweiterung des kompilierten Erweiterungs-Binary ist `.node` (im Gegensatz zu `.dll` oder `.so`). Die Funktion [`require()`](modules.html#modules_require) wird geschrieben, um nach Dateien mit der Dateiendung `.node` zu suchen und diese als dynamisch-verknüpfte Bibliotheken zu initialisieren.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung `.node` in der Regel weggelassen werden, trotzdem wird Node.js die Erweiterung finden und initialisieren. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. Zum Beispiel, wenn es eine Datei namens `addon.js` im selben Verzeichnis wie die binäre `addon.node`-Datei gibt, dann wird [`require('addon')`](modules.html#modules_require) der Datei `addon.js` den Vorrang geben und sie stattdessen laden.
 
 ## Native Abstraktionen für Node.js
 
@@ -137,9 +137,9 @@ Die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan) (oder `n
 
 > Stabilität: 1 - Experimentell
 
-N-API ist eine Programmierschnittstelle zum Erstellen von nativen Erweiterungen. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Diese Programmierschnittstelle wird über alle Versionen von Node.js hinweg Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Addons von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können. Erweiterungen werden mit den in diesem Dokument beschriebenen Methoden und Werkzeugen (node-gyp, etc.) erstellt. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-Programmierschnittstellen zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
+N-API ist eine Programmierschnittstelle zum Erstellen von nativen Erweiterungen. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese Programmierschnittstelle wird über alle Versionen von Node.js hinweg Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Addons von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können. Erweiterungen werden mit den in diesem Dokument beschriebenen Methoden und Werkzeugen (node-gyp, etc.) erstellt. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-Programmierschnittstellen zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Alle anderen Anweisungen bleiben dieselben.
+Um N-API im obigen Beispiel "Hello world" zu verwenden, ersetzen Sie den Inhalt von `hello.cc` durch den folgenden. Alle anderen Anweisungen bleiben dieselben.
 
 ```cpp
 // hello.cc using N-API
@@ -968,7 +968,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 Registriert Exit-Hooks, die laufen, nachdem die Ereignisschleife beendet wurde, aber bevor die VM beendet wird.
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit nimmt zwei Parameter: einen Verweis auf eine Callback-Funktion, der beim Beenden ausgeführt wird, und einen Verweis auf untypisierte Kontextdaten, die an diesen Callback übergeben werden.
 
 Callbacks werden in der Reihenfolge des letzten Eingangs ausgeführt.
 
