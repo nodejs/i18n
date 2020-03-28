@@ -6,7 +6,7 @@
 
 > Kararlılık: 2 - Kararlı
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Temel JavaScript çalışma zamanından bağımsızdır (eski V8) ve Node.js öğesinin bir parçası olarak korunur. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -373,7 +373,7 @@ The first approach is to do any appropriate cleanup and then return so that exec
 
 The second approach is to try to handle the exception. There will be cases where the native code can catch the exception, take the appropriate action, and then continue. This is only recommended in specific cases where it is known that the exception can be safely handled. In these cases [`napi_get_and_clear_last_exception`][] can be used to get and clear the exception. On success, result will contain the handle to the last JavaScript `Object` thrown. If it is determined, after retrieving the exception, the exception cannot be handled after all it can be re-thrown it with [`napi_throw`][] where error is the JavaScript `Error` object to be thrown.
 
-The following utility functions are also available in case native code needs to throw an exception or determine if a `napi_value` is an instance of a JavaScript `Error` object: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] and [`napi_is_error`][].
+Yerel kodun bir istisna atması veya bir `napi_value`'nün bir JavaScript `Hata` nesnesinin bir örneği olup olmadığına karar vermesi durumunda aşağıdaki yardımcı işlevler de kullanılabilir: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] ve [`napi_is_error`][].
 
 The following utility functions are also available in case native code needs to create an `Error` object: [`napi_create_error`][], [`napi_create_type_error`][], and [`napi_create_range_error`][], where result is the `napi_value` that refers to the newly created JavaScript `Error` object.
 
@@ -2609,26 +2609,26 @@ Object.defineProperties(obj, {
 The following is the approximate equivalent of the N-API counterpart:
 
 ```C
-napi_status status = napi_status_generic_failure;
+napi_status durumu = napi_status_generic_failure;
 
 // const obj = {};
 napi_value obj;
-status = napi_create_object(env, &obj);
+durum = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create napi_values for 123 and 456
+//123 ve 456 için napi_values oluşturun
 napi_value fooValue, barValue;
-status = napi_create_int32(env, 123, &fooValue);
+durum = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Set the properties
+// Özellikleri ayarlayın
 napi_property_descriptor descriptors[] = {
-  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
-  { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
+  { "foo", BOŞ, BOŞ, BOŞ, BOŞ, fooDeğeri, napi_default, BOŞ },
+  { "bar", BOŞ, BOŞ, BOŞ, BOŞ, barDeğeri, napi_default, BOŞ }
 }
-status = napi_define_properties(env,
+durum = napi_define_properties(env,
                                 obj,
                                 sizeof(descriptors) / sizeof(descriptors[0]),
                                 descriptors);
@@ -3117,25 +3117,23 @@ The newly created function is not automatically visible from script after this c
 In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
 
 ```C
-napi_value SayHello(napi_env env, napi_callback_info info) {
-  printf("Hello\n");
-  return NULL;
+napi_value MerhabaDe(napi_env env, napi_callback_info info) {
+  printf("Merhaba\n");
+  return nullptr;
 }
 
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status status;
+  napi_status durumu;
 
   napi_value fn;
-  status = napi_create_function(env, NULL, 0, SayHello, NULL, &fn);
-  if (status != napi_ok) return NULL;
+  status =  napi_create_function(env, nullptr, 0, MerhabaDe, nullptr, &fn);
+  if (status != napi_ok) return nullptr;
 
-  status = napi_set_named_property(env, exports, "sayHello", fn);
-  if (status != napi_ok) return NULL;
+  status = napi_set_named_property(env, exports, "deMerhaba", fn);
+  if (status != napi_ok) return nullptr;
 
   return exports;
 }
-
-NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 Given the above code, the add-on can be used from JavaScript as follows:
@@ -3572,7 +3570,7 @@ This API can be called even if there is a pending JavaScript exception.
 
 ## Custom Asynchronous Operations
 
-The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
+The simple asynchronous work APIs above may not be appropriate for every scenario. Başka bir eşzamansız mekanizma kullanırken, aşağıdaki API'ler eş zamanlı olmayan bir işlemin çalışma zamanı tarafından düzgün bir şekilde izlenmesini sağlamak için gereklidir.
 
 ### napi_async_init
 
