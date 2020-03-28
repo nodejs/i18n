@@ -67,7 +67,7 @@ cluster 模块支持两种分发传入连接的方法。
 
 1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
 2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
-3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 To listen on a unique port, generate a port number based on the cluster worker ID.
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 要侦听唯一端口，生成一个基于 cluster worker ID 的端口号。
 
 Node.js 不提供路由逻辑。 It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
