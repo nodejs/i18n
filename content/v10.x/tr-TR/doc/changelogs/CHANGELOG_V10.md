@@ -2634,7 +2634,7 @@ Fixes for the following CVEs are included in this release:
   * Upgrade to ICU 62.1 (Unicode 11, CLDR 33.1). [#21728](https://github.com/nodejs/node/pull/21728)
 * **http**: 
   * Added support for passing both `timeout` and `agent` options to `http.request`. [#21204](https://github.com/nodejs/node/pull/21204)
-* **inspector**: 
+* **gözlemci**: 
   * Expose the original console API in `require('inspector').console`. [#21659](https://github.com/nodejs/node/pull/21659)
 * **napi**: 
   * Added experimental support for functions dealing with bigint numbers. [#21226](https://github.com/nodejs/node/pull/21226)
@@ -3726,7 +3726,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 * Konsol 
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Kripto 
-  * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+  * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Lütfen bunun yerine `crypto.createCipheriv()` ve `crypto.createDecipheriv()` kullanın. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
   * The `decipher.finaltol()` method has been deprecated. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
   * The `crypto.DEFAULT_ENCODING` property has been deprecated. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
   * The `ECDH.convertKey()` method has been added. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
