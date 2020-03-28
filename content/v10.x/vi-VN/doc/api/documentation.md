@@ -4,15 +4,15 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module được tạo thành và những khái niệm bậc cao khác nhau (Module là một chức năng mà người lập trình tạo ra và có thể "tháo rời").
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá trị cấu hình thích hợp, các đối số truyền vào phương thức hay những đối số khác, tất cả sẽ được liệt kê dưới dạng danh sách bên dưới tiêu đề.
 
 ## Nhứng đóng góp của người dịch
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Nếu người dịch phát hiện ra lỗi trong tài liệu này, xin vui lòng vào phần [gửi yêu cầu](https://github.com/nodejs/node/issues/new) hoặc xem trong phần [hướng dẫn đóng góp ý kiến](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) để được hướng dẫn cụ thể cách gửi yêu cầu của mình.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Mỗi tệp tin được tạo ra đều có đuôi là `.md` và nằm ở thư mục `doc/api/` được lưu trong phần mềm Source Tree của Node.js. Chương trình `tools/doc/generate.js` dùng để tạo tài liệu. Mẫu HTML lưu tại `doc/template.html`.
 
 ## Chỉ mục index ổn định
 
