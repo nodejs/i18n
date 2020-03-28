@@ -165,7 +165,7 @@ added: v0.3.3
 ]
 ```
 
-*Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+*注意*：由于 `nice` 的值是针对 UNIX 系统的，在 Windows 系统上所有处理器的 `nice` 值都是 0。
 
 ## os.endianness()
 
@@ -246,7 +246,7 @@ added: v0.6.0
 * `mac` {string} 网络接口的 MAC 地址
 * `internal` {boolean} 当网络接口为 loopback 或相似的不能远程访问的接口时，其值为 `true`，否则其值为 `false`
 * `scopeid` {number} 数字型的 IPv6 域 ID (只有当 `family` 为`IPv6` 时需要指定)
-* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
+* `cidr` {string} 以 CIDR 表示法分配的带有路由前缀的 IPv4 或 IPv6 地址。 `netmask` 不可用，此属性会被设置为 `null`
 
 <!-- eslint-skip -->
 
@@ -325,7 +325,7 @@ added: v0.3.3
 
 `os.release()` 方法返回一个用于标识操作系统版本的字符串。
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
+*注意*：在 POSIX 系统上，可以通过调用 [uname(3)](https://linux.die.net/man/3/uname) 来识别操作系统版本。 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
 
 ## os.tmpdir()
 
