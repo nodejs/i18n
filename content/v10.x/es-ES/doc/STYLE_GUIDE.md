@@ -1,7 +1,7 @@
 # Guía de estilo
 
 * La documentación debe ser escrita en archivos markdown respetando el formato de nomenclatura `minuscula-con-guiones.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Los guiones bajos en los nombres de archivo están permitidos sólo cuando se encuentran en el tema que el documento describe (por ejemplo, `child_process`).
   * Algunos archivos, como archivos markdown de alto nivel, constituyen excepciones.
 * Los documentos deben tener el ajuste de línea en 80 caracteres.
 * Se prefiere el formato descrito en `.editorconfig`. 
