@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
+Розширення Node.js ― це динамічно пов'язані спільні об'єкти, написані на мові C++, які можна завантажити в Node.js за допомогою функції [`require()`](modules.html#modules_require), і використовувати так само, як ніби вони є звичайними модулями на Node.js. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
@@ -14,7 +14,7 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
 
-* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
+* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -197,7 +197,7 @@ A version of the `node-gyp` utility is bundled and distributed with Node.js as p
 
 При використанні `npm install` для встановлення розширень Node.js, npm використовує свою власну пакетну версію `node-gyp` для виконання цього ж набору дій, генеруючи скомпільовану версію розширення для платформи користувача.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Після створення бінарної версії розширення, його можна використовувати з Node.js, за допомогою [`require()`](modules.html#modules_require) на вбудований модуль `addon.node`:
 
 ```js
 // hello.js
