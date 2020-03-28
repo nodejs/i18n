@@ -6,9 +6,9 @@
 
 `assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+更多关于平等性的对比，可以参考 [MDN 上 JavaScript 中的相等性判断](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。
 
 ## Class: assert.AssertionError
 
@@ -113,7 +113,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 > 稳定性：0 - 已弃用：改为使用Strict模式。
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
 可以使用以下方法访问它：
 
@@ -121,7 +121,7 @@ When accessing `assert` directly instead of using the `strict` property, the [Ab
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生意想不到的结果。 This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -1130,4 +1130,4 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. 这可能会导致难以发现的错误。
+由于令人困惑的表示方法，建议不要使用字符串作为第二个参数。 这可能会导致难以发现的错误。
