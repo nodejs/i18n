@@ -164,7 +164,7 @@ Los módulos se almacenan en caché después de la primera vez que se cargan. Es
 
 Provided `require.cache` is not modified, multiple calls to `require('foo')` will not cause the module code to be executed multiple times. Esta es una función importante. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
-To have a module execute code multiple times, export a function, and call that function.
+Para que un módulo ejecute un código múltiples veces, exporte una función y llame a esa función.
 
 ### Advertencias de Almacenamiento en Caché del Módulo
 
@@ -480,11 +480,11 @@ require.extensions['.sjs'] = require.extensions['.js'];
 
 **Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js, compilándolos bajo demanda. Sin embargo, en la práctica, hay formas mucho mejores para hacer esto, como cargar los módulos a través de otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
 
-Since the module system is locked, this feature will probably never go away. Sin embargo, puede tener algunos bugs y complejidades sutiles que es mejor dejar intactos.
+Debido a que el sistema de módulo está bloqueado, esta función probablemente nunca se irá. Sin embargo, puede tener algunos bugs y complejidades sutiles que es mejor dejar intactos.
 
-Note that the number of file system operations that the module system has to perform in order to resolve a `require(...)` statement to a filename scales linearly with the number of registered extensions.
+Note que el número de operaciones de sistema de archivos que el sistema de módulo tiene que realizar para resolver una declaración `require(...)` para un nombre de archivo, escala linealmente con el número de extensiones registradas.
 
-In other words, adding extensions slows down the module loader and should be discouraged.
+En otras palabras, añadir extensiones ralentiza el cargador de módulos y debe ser desalentado.
 
 #### require.main
 
@@ -584,7 +584,7 @@ added: v0.1.16
 
 * {Object}
 
-The `module.exports` object is created by the `Module` system. A veces no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
+The `module.exports` object is created by the `Module` system. A veces no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note que el asignar el objeto desea a `exports` simplemente volverá a atar a la variable local `exports`, lo cual probablemente no es deseado.
 
 For example, suppose we were making a module called `a.js`:
 
