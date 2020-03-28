@@ -480,7 +480,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. Στη συνέχεια, το προφίλ προστίθεται στο πάνελ **Προφίλ** του επιθεωρητή.
 
 ```js
 console.profile('MyLabel');
@@ -497,7 +497,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. Τερματίζει την τρέχουσα συνεδρία δημιουργίας Javascript προφίλ CPU, αν έχει ξεκινήσει κάποια, και εμφανίζει την αναφορά στο πάνελ **Προφίλ** του επιθεωρητή. See [`console.profile()`][] for an example.
 
 If this method is called without a label, the most recently started profile is stopped.
 
@@ -519,7 +519,7 @@ added: v8.0.0
 
 * `label` {string} **Προεπιλογή:** `'default'`
 
-Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Αυτή η μέθοδος δεν εμφανίζει κάτι, εκτός αν χρησιμοποιείται στον επιθεωρητή. Η μέθοδος `console.timeline()` είναι η απαρχαιωμένη μορφή της συνάρτησης [`console.time()`][].
 
 ### console.timelineEnd([label])
 
