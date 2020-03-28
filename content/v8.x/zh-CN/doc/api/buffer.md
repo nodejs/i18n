@@ -4,13 +4,13 @@
 
 > 稳定性：2 - 稳定的
 
-Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+在引入 [` TypedArray `] 之前, JavaScript 语言没有读取或操作二进制数据流的机制。 将 `Buffer` 类作为节点的一部分引入Node. js API, 以便在 TCP 流、文件系统操作和其他上下文中用八位位组的方式交互。
 
-With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
+随着 [` TypedArray `] 现在变得可用, `Buffer` 类以更优化且适合于节点的方式实现 [` Uint8Array `] 此 API 接口 。
 
-`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 The size of the `Buffer` is established when it is created and cannot be changed.
+`Buffer`类的实例类似于整数数组，但对应于 V8 堆之外的固定大小的原始内存分配。 `Buffer` 的大小在创建时建立, 不能更改。
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+`Buffer` 类位于全局范围内, 因此不太可能需要使用 ` require('buffer').Buffer`。
 
 例如：
 
@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 在 Node.js v6 之前的版本中, `Buffer` 实例通过 `Buffer` 构造函数创建，根据传递参数的不同，它返回 `Buffer` 的不同实例：
 
-* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
+* 将数字作为第一个参数传递给 `Buffer()` (例如：`new Buffer(10)`)，创建一个特定大小的 `Buffer` 对象。 在 Node.js 8.0.0 之前，为这样的 `Buffer` 实例分配的内存 *没有* 被初始化，因此 *可能包含敏感数据*。 这样的 `Buffer` 实例随后 *必须* 被初始化，初始化方式可以通过使用 [`buf.fill(0)`][`buf.fill()`]，或将整个 `Buffer` 写入数据。 虽然此行为是在 *有意* 提高性能，但开发经验表明，创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node.js 8.0.0 开始，`Buffer(num)` 和 `new Buffer(num)` 将会返回具有初始化内存的 `Buffer`。
 * 作为第一个参数传递字符串，数组，或 `Buffer`，将被传递对象的数据复制到 `Buffer`。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 将会返回一个和给定数组缓冲区共享已分配内存的 `Buffer`。
 
@@ -95,7 +95,7 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-`Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. 通过使用显式字符编码，可以将 `Buffer` 实例和普通 JavaScript 字符串之间进行相互转换。
+`Buffer` 实例被普遍用于表示编码字符的序列，例如：UTF-8，UCS2， Base64，甚至十六进制编码的数据。 通过使用显式字符编码，可以将 `Buffer` 实例和普通 JavaScript 字符串之间进行相互转换。
 
 例如：
 
@@ -127,7 +127,7 @@ Node.js 当前支持的字符编码包括：
 
 * `'hex'` - 将每个字节编码为两个十六进制字符。
 
-*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. 这意味着当进行例如 `http.get()` 这样的操作时，如果返回的字符集是 WHATWG 规范列表中的，则有可能服务器实际上返回 `'win-1252'` 编码的数据，此时使用 `'latin1'` 编码方式可能会错误地解码字符。
 
 ## Buffers 和 TypedArray
 
@@ -139,7 +139,7 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` 实例也是 [`Uint8Array`] 实例。 However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+`Buffer` 实例也是 [`Uint8Array`] 实例。 但是与[`TypedArray`] 存在微妙的不兼容。 例如，当 [`ArrayBuffer#slice()`] 创建一个切片的副本时，[`Buffer#slice()`][`buf.slice()`] 的实现是在现有的 `Buffer` 上不经过复制而直接创建视图，这使得 [`Buffer#slice()`][`buf.slice()`] 更加高效。
 
 遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
@@ -278,7 +278,7 @@ changes:
 
 该方法将创建 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 的视图，而不会复制底层内存。 例如，当传入一个 [`TypedArray`] 实例的 `.buffer` 属性的引用时，新创建的 `Buffer` 将会像 [`TypedArray`] 那样共享相同的已分配内存。
 
-可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定 `arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
 
 例如：
 
@@ -317,7 +317,7 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 [`Buffer.from(buffer)`]。
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
 将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
 
@@ -357,9 +357,9 @@ changes:
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，且 *可能包含敏感数据*。 使用 [`Buffer.alloc(size)`][`Buffer.alloc()`] ，而不是使用 0 初始化 `Buffer`。
 
 例如：
 
@@ -389,7 +389,7 @@ changes:
 * `string` {string} 要编码的字符串。
 * `encoding` {string} `string` 的编码。 **默认值:**`‘utf8'`。
 
-创建一个包含 `string` 的 `Buffer`。 The `encoding` parameter identifies the character encoding of `string`.
+创建一个包含 `string` 的 `Buffer`。 `encoding` 参数指定 `string` 的字符串编码方式。
 
 例如：
 
@@ -435,7 +435,7 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 如果指定了 `fill`，则会调用 [`buf.fill(fill)`][`buf.fill()`] 初始化已分配的 `Buffer`。
 
@@ -476,7 +476,7 @@ changes:
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`Buffer.alloc()`] ，而不是用 0 初始化 `Buffer` 实例。
 
@@ -508,7 +508,7 @@ added: v5.12.0
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 以这种方法创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用 [`buf.fill(0)`][`buf.fill()`] 来用 0 初始化 `Buffer` 实例。
 
@@ -589,7 +589,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * 返回：{integer}
 
-比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例中数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
+比较 `buf1` 和 `buf2`，通常用于 `Buffer` 实例数组的排序。 这就相当于调用 [`buf1.compare(buf2)`][`buf.compare()`]。
 
 例如：
 
@@ -618,7 +618,7 @@ changes:
 * `totalLength` {integer} 合并时 `list` 中 `Buffer` 实例的总长度。
 * 返回：{Buffer}
 
-返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer` 。
+返回一个合并了 `list` 中所有 `Buffer` 实例的新建 `Buffer`。
 
 如果列表中没有项目，或者 `totalLength` 为 0，则返回一个新建的长度为 0 的 `Buffer`。
 
@@ -698,7 +698,7 @@ arr[1] = 6000;
 console.log(buf);
 ```
 
-可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的的内存范围。
+可选的 `byteOffset` 和 `length` 参数指定`arrayBuffer` 中将与 `Buffer` 共享的内存范围。
 
 例如：
 
@@ -718,7 +718,7 @@ console.log(buf.length);
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
 将传入的 `buffer` 数据复制到新的 `Buffer` 实例。
 
@@ -748,7 +748,7 @@ added: v5.10.0
 * `string` {string} 要编码的字符串。
 * `encoding` {string} `string` 的编码。 **默认值:**`‘utf8'`。
 
-创建一个包含 `string` 的 `Buffer`。 The `encoding` parameter identifies the character encoding of `string`.
+创建一个包含 `string` 的 `Buffer`。 `encoding` 参数指定 `string` 的字符串编码方式。
 
 例如：
 
@@ -776,10 +776,10 @@ added: v8.2.0
 -->
 
 * `object` {Object} 一个支持 `Symbol.toPrimitive` 或 `valueOf()` 的对象。
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `offsetOrEncoding` {number|string} 字节偏移量或编码，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
+* `length` {number} 长度值，取决于 `object.valueOf()` 或 `object[Symbol.toPrimitive]()` 的返回值。
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
+对那些其 `valueOf()` 函数返回值不严格等于 `object` 的对象，返回 `Buffer.from(object.valueOf(), offsetOrEncoding, length)`。
 
 例如：
 
@@ -788,7 +788,7 @@ const buf = Buffer.from(new String('this is a test'));
 // <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+对那些支持 `Symbol.toPrimitive` 的对象，返回 `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`。
 
 例如：
 
@@ -842,7 +842,7 @@ type: property
 name: [index]
 -->
 
-索引操作符 `[index]` 可用于获取或设置 `buf` 中指定 `index` 位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
+索引操作符 `[index]` 可用于在 `buf` 中指定的 `index` 位置获取或设置八位字节。 这个值指向的是单个字节，所以合法的值范围是从 `0x00` 到 `0xFF` （十六进制），或者从 `0` 到 `255` （十进制）。
 
 该操作符继承自 `Uint8Array`，所以它对越界访问的处理与 `UInt8Array` 相同，也就是说，取值时返回 `undefined`， 赋值时什么也不做。
 
@@ -862,7 +862,7 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-The `buffer` property references the underlying `ArrayBuffer` object based on which this Buffer object is created.
+`buffer` 属性基于创建此 Buffer 对象的 `ArrayBuffer` 对象。
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -888,9 +888,9 @@ changes:
 
 * `target` {Buffer|Uint8Array} 要进行比较的 `Buffer` 或 [`Uint8Array`]。
 * `targetStart` {integer} `target` 中开始对比的偏移量。 **默认值：** `0`。
-* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** `target.length`.
+* `targetEnd` {integer} `target` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** `target.length`.
 * `sourceStart` {integer} `buf` 中开始对比的偏移量。 **默认值：** `0`。
-* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移位）。 **默认值：** [`buf.length`].
+* `sourceEnd` {integer} `buf` 中结束对比的偏移量（不包含此偏移量）。 **默认值：** [`buf.length`].
 * 返回：{integer}
 
 比较 `buf` 和 `target`，返回表明 `buf` 排序上是否排在 `target` 之前，之后，或相同的数值。 对比是基于每个 `Buffer` 中实际的字节序列。
@@ -926,7 +926,7 @@ console.log(buf2.compare(buf3));
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
 ```
 
-可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中限制对比在指定的范围内。
+可选的 `targetStart`，`targetEnd`，`sourceStart` 和 `sourceEnd` 参数可分别用于在 `target` 和 `buf` 中将对比限制在指定的范围内。
 
 例如：
 
@@ -1161,12 +1161,12 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** `0`。
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
-* Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 首次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
 如果 `value` 是：
 
-* 一个字符串，则 `value` 根据 `encoding` 的字符编码进行解析。
+* 一个字符串，则根据由 `encoding` 指定的字符编码对 `value` 进行解析。
 * 一个 `Buffer` 或 [`Uint8Array`]， `value` 会被作为一个整体使用。 如果要比较部分 `Buffer`，请使用 [`buf.slice()`]。
 * 一个数字，`value` 会解析为一个介于 `0` 到 `255` 之间的无符号八位整数值。
 
@@ -1223,7 +1223,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+如果 `value` 是一个空字符串或空 `Buffer`， 并且 `byteOffset` 小于 `buf.length`，则返回 `byteOffset` 。 如果 `value` 是空的，并且 `byteOffset` 大于等于 `buf.length`，则返回 `buf.length`。
 
 ### buf.keys()
 
@@ -1265,10 +1265,10 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} 要搜索的值。
 * `byteOffset` {integer} `buf` 中开始搜索的位置。 **默认值：** [`buf.length`]`- 1`。
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `encoding` {string} 如果 `value` 是一个字符串，这是用于确定将在 `buf` 中搜索的字符串的二进制表示的编码。 **默认值:**`‘utf8'`。
+* 返回：{integer} 在 `buf` 中 `value` 最后一次出现的索引，或者，如果 `buf` 不包含 `value`，则返回 `-1`。
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+与 [`buf.indexOf()`] 相同，除了是最后一次而不是第一次出现的`value`之外。
 
 例如：
 
@@ -1563,7 +1563,7 @@ added: v0.11.15
 * `noAssert` {boolean} 跳过对 `offset` 和 `byteLength` 的验证？ **默认值：** `false`。
 * 返回：{integer}
 
-从 `buf` 中指定的 `offset` 偏移量读取 `byteLength` 字节，并且读取的结果被解析为二进制有符号补码数。 最大支持48位的精度。
+从 `buf` 中指定的 `offset` 偏移量读取 `byteLength` 字节，并且读取的结果被解析为二进制有符号补码数。 最大支持48位精度。
 
 将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
@@ -1692,7 +1692,7 @@ added: v0.11.15
 * `noAssert` {boolean} 跳过对 `offset` 和 `byteLength` 的验证？ **默认值：** `false`
 * 返回：{integer}
 
-从 `buf` 中指定的 `offset` 地址读取 `byteLength` 字节，并且读取的结果被解析为无符号整数。 最大支持48位的精度。
+从 `buf` 中指定的 `offset` 地址读取 `byteLength` 字节，并且读取的结果被解析为无符号整数。 最大支持48位精度。
 
 将 `noAssert` 设置为 `true` 就能允许 `offset` 超出 `buf` 的末尾，但会导致未定义的行为。
 
@@ -2426,7 +2426,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-分配一个大小为 `size` 字节的新的 `Buffer`。 If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
+分配一个大小为 `size` 字节的新的 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`RangeError`] 错误。 如果 `size` 为0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
@@ -2452,7 +2452,7 @@ console.log(buf);
 added: 8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+请注意 `bufffer.constants` 是通过`require('buffer')`返回的 `buffer` 模块上的属性，不在 `Buffer` 全局变量或`Buffer` 实例中。
 
 ### buffer.constants.MAX_LENGTH
 
@@ -2474,6 +2474,6 @@ added: 8.2.0
 
 * {integer} 单个`String`对象允许的最大长度。
 
-Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
+代表一个 `string` 的最大长度（`length`），按 UTF-16 编码单元计算。
 
 此值可能取决于正在使用的 JS 引擎。
