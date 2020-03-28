@@ -4,7 +4,7 @@
 
 > Estabilidade: 2 - estável
 
-The `url` module provides utilities for URL resolution and parsing. Ele pode ser acessado usando:
+The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
 ```js
 const url = require('url');
@@ -90,7 +90,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. Por exemplo:
+A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
