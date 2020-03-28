@@ -6,7 +6,7 @@
 <table>
 <tr>
 <th>LTS 'Erbium'</th>
-<th>Current</th>
+<th>Courant</th>
 </tr>
 <tr>
 <td valign="top">
