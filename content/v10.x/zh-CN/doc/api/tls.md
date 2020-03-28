@@ -70,7 +70,7 @@ openssl pkcs12 -export -in ryans-cert.pem -inkey ryans-key.pem \
 openssl dhparam -outform PEM -out dhparam.pem 2048
 ```
 
-如果通过 `ECDHE` 方法使用完美前向安全，Diffie-Hellman 参数不是必须的，默认的 ECDHE 曲线将被使用。 The `ecdhCurve` property can be used when creating a TLS Server to specify the list of names of supported curves to use, see [`tls.createServer()`] for more info.
+如果通过 `ECDHE` 方法使用完美前向安全，Diffie-Hellman 参数不是必须的，默认的 ECDHE 曲线将被使用。 当创建 TLS 服务器时，`ecdhCurve` 属性可被用于指定支持的曲线名称列表，请参阅 [`tls.createServer()`] 以获取更多信息。
 
 ### ALPN and SNI
 
@@ -185,7 +185,7 @@ The default cipher suite included within Node.js has been carefully selected to 
 
 由于 [专门针对较大 AES 密钥尺寸攻击](https://www.schneier.com/blog/archives/2009/07/another_new_aes.html) 的存在，因此首选 128 位的 AES，而不是 192 位或 256 位的AES。
 
-依赖于不安全和已弃用的 RC4 或基于 DES 密码的旧客户端（如：Internet Explorer 6），在默认设置下无法完成握手过程。 如果这些客户端 *必须* 被支持，[TLS 建议](https://wiki.mozilla.org/Security/Server_Side_TLS) 必须提供兼容的密码套件。 For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
+依赖于不安全和已弃用的 RC4 或基于 DES 密码的旧客户端（如：Internet Explorer 6），在默认设置下无法完成握手过程。 如果这些客户端 *必须* 被支持，[TLS 建议](https://wiki.mozilla.org/Security/Server_Side_TLS) 必须提供兼容的密码套件。 关于格式的细节，请参阅 [OpenSSL 密码列表格式文档](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT)。
 
 ## 类：tls.Server
 
@@ -469,7 +469,7 @@ added: v0.11.4
 added: v8.4.0
 -->
 
-禁用此 `TLSSocket` 实例的 TLS 重新协商。 Once called, attempts to renegotiate will trigger an `'error'` event on the `TLSSocket`.
+禁用此 `TLSSocket` 实例的 TLS 重新协商。 一旦调用，重新协商的尝试会触发 `TLSSocket` 上的 `'error'` 事件。
 
 ### tlsSocket.encrypted
 
@@ -487,7 +487,7 @@ added: v0.11.4
 
 * 返回：{Object}
 
-返回代表密码名称的对象。 The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
+返回代表密码名称的对象。 `version` 键是一个传统字段，它始终包含 `'TLSv1/SSLv3'` 值。
 
 例如：`{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`.
 
@@ -712,7 +712,7 @@ added: v0.8.4
 -->
 
 * `hostname` {string} The host name or IP address to verify the certificate against.
-* `cert` {Object} 代表对等方证书的对象。 The returned object has some properties corresponding to the fields of the certificate.
+* `cert` {Object} 代表对等方证书的对象。 返回的对象具有和证书中字段相对应的属性。
 * 返回：{Error|undefined}
 
 Verifies the certificate `cert` is issued to `hostname`.
@@ -781,9 +781,9 @@ changes:
   * `path` {string} 创建和路径关联的 unix 套接字连接。 如果此选项被指定，则 `host` 和 `port` 会被忽略。
   * `socket` {stream.Duplex} 建立到给定套接字的安全连接，而不是创建一个新的套接字。 通常情况下，这是 [`net.Socket`][] 的实例，但允许任何的 `Duplex` 流。 如果指定此选项，除了在证书验证时，`path`, `host` 和 `port` 将被忽略。 通常，当传递给 `tls.connect()` 时，套接字已连接，但它也可在稍后被连接。 注意：连接/断开连接/销毁 `socket` 是用户的责任，调用 `tls.connect()` 并不会导致对 `net.connect()` 的调用。
   * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. 如果验证失败，则会发出 `'error'` 事件；`err.code` 包含 OpenSSL 错误代码。 **Default:** `true`.
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `'\x08http/1.1\x08http/1.0'`, where the `len` byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['http/1.1', 'http/1.0']`. Protocols earlier in the list have higher preference than those later.
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 ALPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer`s should have the format `[len][name][len][name]...` e.g. `'\x08http/1.1\x08http/1.0'`, where the `len` byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['http/1.1', 'http/1.0']`. Protocols earlier in the list have higher preference than those later.
   * `servername`: {string} SNI (服务器名称指示) TLS 扩展的服务器名。 It is the name of the host being connected to, and must be a host name, and not an IP address. It can be used by a multi-homed server to choose the correct certificate to present to the client, see the `SNICallback` option to [`tls.createServer()`][].
-  * `checkServerIdentity(servername, cert)` {Function} A callback function to be used (instead of the builtin `tls.checkServerIdentity()` function) when checking the server's hostname (or the provided `servername` when explicitly set) against the certificate. This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
+  * `checkServerIdentity(servername, cert)` {Function} 当针对证书检查服务器的主机名 (如果明确设置，则为 `servername`) 时，将被使用的回调函数 (而不是内置的 `tls.checkServerIdentity()` 函数)。 如果验证失败，则应返回 {Error}。 如果 `servername` 和 `cert` 已验证，此方法应返回 `undefined`。
   * `session` {Buffer} 包含 TLS 会话的 `Buffer` 实例。
   * `minDHSize` {number} 用来接受 TLS 连接的，以位为单位的 DH 参数大小的最小值。 当服务器提供的 DH 参数的大小小于 `minDHSize` 时，TLS 连接将被销毁，且将抛出错误。 **Default:** `1024`.
   * `secureContext`: TLS context object created with [`tls.createSecureContext()`][]. 如果 *没有* 提供 `secureContext`，则会通过传递完整的 `options` 对象给 `tls.createSecureContext()` 来创建一个。
@@ -901,14 +901,14 @@ changes:
   * `clientCertEngine` {string} Name of an OpenSSL engine which can provide the client certificate.
   * `crl` {string|string[]|Buffer|Buffer[]} PEM formatted CRLs (Certificate Revocation Lists).
   * `dhparam` {string|Buffer} Diffie Hellman 参数，是 [完美前向安全](#tls_perfect_forward_secrecy) 的必选参数。 运行 `openssl dhparam` 来创建参数。 密钥长度必须大于或等于 1024 位，否则会抛出错误。 强烈建议使用 2048 位或更高位以提高安全性。 如果忽略或无效，参数将以静默方式被丢弃，DHE 密码将不可用。
-  * `ecdhCurve` {string} A string describing a named curve or a colon separated list of curve NIDs or names, for example `P-521:P-384:P-256`, to use for ECDH key agreement. Set to `auto` to select the curve automatically. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve. **Default:** [`tls.DEFAULT_ECDH_CURVE`].
+  * `ecdhCurve` {string} A string describing a named curve or a colon separated list of curve NIDs or names, for example `P-521:P-384:P-256`, to use for ECDH key agreement. 设置为 `auto` 来自动选择曲线。 Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve. **Default:** [`tls.DEFAULT_ECDH_CURVE`].
   * `honorCipherOrder` {boolean} 尝试使用服务器的，而不是客户端的密码套件偏好。 当值为 `true` 时，将 `SSL_OP_CIPHER_SERVER_PREFERENCE` 赋值给 `secureOptions`，请参阅 [OpenSSL Options](crypto.html#crypto_openssl_options) 以获取更多信息。
   * `key` {string|string[]|Buffer|Buffer[]|Object[]} Private keys in PEM format. PEM 允许对私钥选项进行加密。 Encrypted keys will be decrypted with `options.passphrase`. Multiple keys using different algorithms can be provided either as an array of unencrypted key strings or buffers, or an array of objects in the form `{pem: <string|buffer>[,
 passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` 是可选的。 Encrypted keys will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
   * `maxVersion` {string} Optionally set the maximum TLS version to allow. One of `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. Cannot be specified along with the `secureProtocol` option, use one or the other. **Default:** [`tls.DEFAULT_MAX_VERSION`][].
   * `minVersion` {string} Optionally set the minimum TLS version to allow. One of `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. Cannot be specified along with the `secureProtocol` option, use one or the other. It is not recommended to use less than TLSv1.2, but it may be required for interoperability. **Default:** [`tls.DEFAULT_MIN_VERSION`][].
   * `passphrase` {string} Shared passphrase used for a single private key and/or a PFX.
-  * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} PFX or PKCS12 encoded private key and certificate chain. `pfx` is an alternative to providing `key` and `cert` individually. PFX is usually encrypted, if it is, `passphrase` will be used to decrypt it. Multiple PFX can be provided either as an array of unencrypted PFX buffers, or an array of objects in the form `{buf: <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` 是可选的。 Encrypted PFX will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
+  * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} PFX or PKCS12 encoded private key and certificate chain. `pfx` is an alternative to providing `key` and `cert` individually. PFX 通常是加密的，如果是的话，`passphrase` 将被用于对其进行解密。 可以提供多个 PFX，其提供方式可以是一个未加密的 PFX 缓冲区数组，或是以 `{buf: <string|buffer>[, passphrase: <string>]}` 格式提供的对象数组。 对象形式只能在数组中使用。 `object.passphrase` 是可选的。 Encrypted PFX will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
   * `secureOptions` {number} 可选的能够影响 OpenSSL 协议行为的选项，通常是不需要的。 如果有的话，应小心使用！ 其值是 [OpenSSL Options](crypto.html#crypto_openssl_options) 中 `SSL_OP_*` 选项的数字位掩码。
   * `secureProtocol` {string} The TLS protocol version to use. The possible values are listed as [SSL_METHODS](https://www.openssl.org/docs/man1.1.0/ssl/ssl.html#Dealing-with-Protocol-Methods), use the function names as strings. For example, use `'TLSv1_1_method'` to force TLS version 1.1, or `'TLS_method'` to allow any TLS protocol version. It is not recommended to use TLS versions less than 1.2, but it may be required for interoperability. **Default:** none, see `minVersion`.
   * `sessionIdContext` {string} Opaque identifier used by servers to ensure session state is not shared between applications. 未被客户端使用。
@@ -921,7 +921,7 @@ passphrase: <string>]}`. The object form can only occur in an array. `object.pas
 
 对于使用证书的密码，密钥是 *必须的*。 `key` 或 `pfx` 都可被用于该目的。
 
-If the 'ca' option is not given, then Node.js will use the default publicly trusted list of CAs as given in <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
+如果 'ca' 选项未被提供，Node.js 将会使用 <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt> 中给出的默认的公开受信任 CA 列表。
 
 ## tls.createServer(\[options\]\[, secureConnectionListener\])
 
@@ -941,10 +941,10 @@ changes:
 -->
 
 * `options` {Object} 
-  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (协议应按其优先级进行排序。)
+  * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} 字符串数组，含有支持的 ALPN 协议的一个或多个 `Buffer` 或 `Uint8Array`。 `Buffer` 的格式应该是这样的：`[len][name][len][name]...`，例如：`0x05hello0x05world`，其中首字节为下一个协议名的长度。 传入一个数组通常会更简单，例如：`['hello', 'world']`。 (协议应按其优先级进行排序。)
   * `clientCertEngine` {string} Name of an OpenSSL engine which can provide the client certificate.
   * `handshakeTimeout` {number} 如果 SSL/TLS 握手过程没有在指定的毫秒数内完成，则终止连接。 如果握手过程超时，则会在 `tls.Server` 对象上发出 `'tlsClientError'`。 **Default:** `120000` (120 seconds).
-  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. 只有当 `requestCert` 的值为 `true` 时，此选项才有效。 **Default:** `true`.
+  * `rejectUnauthorized` {boolean} 如果值不是 `false`，服务器将会拒绝任何未被已提供的 CA 列表所授权的连接。 只有当 `requestCert` 的值为 `true` 时，此选项才有效。 **Default:** `true`.
   * `requestCert` {boolean} 如果值为 `true`，服务器会从发出连接的客户端请求一个证书，并尝试验证该证书。 **Default:** `false`.
   * `sessionTimeout` {number} The number of seconds after which a TLS session created by the server will no longer be resumable. See [Session Resumption](#tls_session_resumption) for more information. **Default:** `300`.
   * `SNICallback(servername, cb)` {Function} 当客户端支持 SNI TLS 扩展时将被调用的函数。 当被调用时，将传递两个参数：`servername` 和 `cb`。 `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a `SecureContext` instance. (`tls.createSecureContext(...)` can be used to get a proper `SecureContext`.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
@@ -1095,14 +1095,14 @@ changes:
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. 只适用于当 `isServer` 的值为 `true`时。
 * `options` 
   * `secureContext`: A TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`：如果值为 `true`，则 TLS 套接字将被以服务器模式初始化。 **默认值：** `false`。
+  * `isServer`：如果值为 `true`，则 TLS 套接字将被以服务器模式初始化。 **默认:** `false`.
   * `server` {net.Server} A [`net.Server`][] instance
   * `requestCert`: See [`tls.createServer()`][]
   * `rejectUnauthorized`: See [`tls.createServer()`][]
   * `ALPNProtocols`: See [`tls.createServer()`][]
   * `SNICallback`: See [`tls.createServer()`][]
   * `session` {Buffer} A `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication.
+  * `requestOCSP` {boolean} 如果值为 `true`，指定 OCSP 状态请求扩展将被添加到客户端 hello 消息中，且在建立安全通信之前发出 `'OCSPResponse'` 事件.
 
 创建具有两个流的新安全对对象，其中一个读取和写入加密数据，另一个读取和写入明文数据。 通常，加密流和传入的加密数据流通过管道传输，而明文流则用于替换初始加密流。
 
