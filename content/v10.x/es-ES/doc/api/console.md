@@ -480,7 +480,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Este método no muestra nada a menos que se use en el inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Este método no muestra nada a menos que se use en el inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. El perfil se agrega a el panel **Profile** del inspector.
 
 ```js
 console.profile('MyLabel');
@@ -497,7 +497,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Este método no muestra nada a menos que se use en el inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Este método no muestra nada a menos que se use en el inspector. Detiene el sesión actual de creación de perfiles de CPU de JavaScript si se ha iniciado una y se imprime el informe al panel **Profiles** del inspector. See [`console.profile()`][] for an example.
 
 If this method is called without a label, the most recently started profile is stopped.
 
@@ -519,7 +519,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Este método no muestra nada a menos que se use en el inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Este método no muestra nada a menos que se use en el inspector. El método `console.timeline()` es la forma obsoleta de [`console.time()`][].
 
 ### console.timelineEnd([label])
 
