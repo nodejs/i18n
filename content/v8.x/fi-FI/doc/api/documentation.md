@@ -10,7 +10,7 @@ Ominaisuuksien tyypit, menetelmien argumentit ja tapahtumankäsittelijöiden arg
 
 ## Auttaminen
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Jos näet tässä dokumentaatiossa virheitä, ole ystävällinen ja [lähetä virheraportti](https://github.com/nodejs/node/issues/new) tai katso [auttamisoppaasta](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) ohjeet kuinka lähettää korjaus.
 
 Jokainen tiedosto on generoitu Node.js:n lähdekoodin `doc/api` kansion sisältämästä `.md` tiedostosta. Dokumentaatio on luotu käyttämällä `tools/doc/generate.js` ohjelmaa. HTML mallipohja on sijainnissa `doc/template.html`.
 
@@ -18,7 +18,7 @@ Jokainen tiedosto on generoitu Node.js:n lähdekoodin `doc/api` kansion sisält�
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. Node.js API on vielä osittain muuttumassa, ja kun se kypsyy, jotkin osat ovat luotettavampia kuin toiset. Jotkut ovat jo niiden koeteltua ja luotettuja, että ne tuskin muuttuvat enää lainkaan. Jotkin osat ovat upouusia ja kokeellisia, tai tiedetään muutoin riskialttiiksi ja aiotaan suunnitella uudestaan.
+Läpi dokumentaation on merkkejä osion vakaudesta. Node.js API on vielä osittain muuttumassa, ja kun se kypsyy, jotkin osat ovat luotettavampia kuin toiset. Jotkut ovat jo niiden koeteltua ja luotettuja, että ne tuskin muuttuvat enää lainkaan. Jotkin osat ovat upouusia ja kokeellisia, tai tiedetään muutoin riskialttiiksi ja aiotaan suunnitella uudestaan.
 
 Vakausindeksit ovat:
 
