@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Le module `assert` fournit un ensemble simple de tests d’assertion qui peut être utilisé pour tester des invariants.
 
 A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
@@ -749,6 +749,8 @@ assert.throws(
 ```
 
 Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
