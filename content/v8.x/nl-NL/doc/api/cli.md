@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js heeft een aantal CLI opties. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js heeft een aantal CLI opties. Die maken een aantal zaken mogelijk zoals built-in debugging, meerdere manieren om scripts uit te voeren en andere nuttige runtime opties. 
 
 Om deze documentatie als een pagina in een terminal te bekijken, voer je `man node` uit.
 
@@ -361,7 +361,7 @@ Specify ICU data load path. (overrides `NODE_ICU_DATA`)
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Alias voor stdin, analoog met het gebruik van - in andere command line utilities. Dit betekent dat het script zal gelezen worden vanaf stdin en de rest van de opties worden aan het script doorgegeven.
 
 ### `--`
 
