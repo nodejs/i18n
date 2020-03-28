@@ -1323,7 +1323,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Aantal bytes over te slaan voor aanvang van het lezen. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Returns: {bigint}
+* Retourneert: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified endian format (`readBigInt64BE()` returns big endian, `readBigInt64LE()` returns little endian).
 
@@ -1336,7 +1336,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Aantal bytes over te slaan voor aanvang van het lezen. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Returns: {bigint}
+* Retourneert: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with specified endian format (`readBigUInt64BE()` returns big endian, `readBigUInt64LE()` returns little endian).
 
