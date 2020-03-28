@@ -12,7 +12,7 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+La operación predeterminada del módulo `path` varía según el sistema operativo en el que una aplicación de Node.js está ejecutándose. Específicamente, cuando se ejecuta en el sistema operativo Windows, el módulo `path` va a asumir que las rutas estilo Windows están siendo usadas.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
@@ -30,7 +30,7 @@ path.basename('C:\\temp\\myfile.html');
 // Retorna: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Para alcanzar resultados consistentes cuando se trabaja con rutas de archivo Windows en cualquier sistema operativo, utilice [`path.win32`][]:
 
 En POSIX y Windows:
 
@@ -39,7 +39,7 @@ path.win32.basename('C:\\temp\\myfile.html');
 // Retorna: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Para alcanzar resultados consistentes cuando se trabaja con rutas de archivo POSIX en cualquier sistema operativos, utilice [`path.posix`][]:
 
 En POSIX y Windows:
 
@@ -65,7 +65,7 @@ changes:
 * `ext` {string} Una extensión de archivo opcional
 * Retorna: {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+Los métodos `path.basename()` devuelven la última porción de un `path`, similar al comando Unix `basename`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -75,7 +75,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 // Retorna: 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+Se produce un [`TypeError`][] si `path` no es una string o si `ext` es dado y no es una string.
 
 ## path.delimiter
 
@@ -124,7 +124,7 @@ changes:
 * `path` {string}
 * Retorna: {string}
 
-The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
+El método `path.dirname()` devuelve el nombre del directorio de un `path`, similar al comando de Unix `dirname`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
@@ -147,7 +147,7 @@ changes:
 * `path` {string}
 * Retorna: {string}
 
-The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
+El método `path.extname()` devuelve la extensión de `path`, desde la última ocurrencia del carácter `.` (punto) hasta el final de la string en la última porción de `path`. Si no hay ningún `.` en la última porción de `path`, o si el primer carácter del nombre base de `path` (vea `path.basename()`) es `.`, entonces una string vacía es devuelta.
 
 ```js
 path.extname('index.html');
@@ -182,9 +182,9 @@ added: v0.11.15
   * `ext` {string}
 * Retorna: {string}
 
-El método `path.format()` retorna un string de ruta de un objeto. This is the opposite of [`path.parse()`][].
+El método `path.format()` retorna un string de ruta de un objeto. Esto es lo opuesto de [`path.parse()`][].
 
-When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
+Al proporcionar propiedades al `pathObject`, recuerde que hay combinaciones donde una propiedad tiene prioridad sobre otra:
 
 * `pathObject.root` es ignorado si `pathObject.dir` es provisto
 * `pathObject.ext` y `pathObject.name` son ignorados si `pathObject.base` existe
@@ -278,7 +278,7 @@ added: v0.1.16
 
 The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
-Los segmentos `path` sin extensión son ignorados. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
+Los segmentos `path` sin extensión son ignorados. Si la string de ruta unida es una string de longitud cero, entonces `'.'` será devuelto, representando al directorio de trabajo actual.
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -299,12 +299,11 @@ added: v0.1.23
 * `path` {string}
 * Retorna: {string}
 
-The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
+El método `path.normalize()` normaliza el `path` dado, resolviendo los segmentos `'..'` y `'.'`.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). Los separadores de seguimiento son preservados.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform-specific path segment separator (`/` on POSIX and `` on Windows). Los separadores de seguimiento son preservados.
 
-If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
+Si el `path` es una string de longitud cero, `'.'` es devuelto, representando el directorio de trabajo actual.
 
 Por ejemplo, en POSIX:
 
@@ -320,7 +319,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Retorna: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
+Ya que Windows reconoce múltiples separadores de ruta, ambos separadores van a ser reemplazados por instancias del separador preferido de Windows (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -338,7 +337,7 @@ added: v0.11.15
 * `path` {string}
 * Retorna: {Object}
 
-The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
+El método `path.parse()` devuelve un objeto cuyas propiedades representan elementos significativos del `path`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 El objeto retornado va a tener las siguientes propiedades:
 
@@ -402,7 +401,7 @@ added: v0.11.15
 
 * {Object}
 
-The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
+La propiedad `path.posix` proporciona acceso a implementaciones de POSIX específicas de los métodos `path`.
 
 ## path.relative(from, to)
 
@@ -420,9 +419,9 @@ changes:
 * `to` {string}
 * Retorna: {string}
 
-The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
+El método `path.relative()` devuelve la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si tanto `from` como `to` se resuelven para la misma ruta (después de llamar a `path.resolve()` en cada uno), un string de longitud cero es devuelto.
 
-If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
+Si una string de longitud cero es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de las strings de longitud cero.
 
 Por ejemplo, en POSIX:
 
@@ -449,17 +448,17 @@ added: v0.3.4
 * `...paths` {string} Una secuencia de rutas o segmentos de rutas
 * Retorna: {string}
 
-The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
+El método `path.resolve()` resuelve una secuencia de rutas o segmentos de rutas en una ruta absoluta.
 
-The given sequence of paths is processed from right to left, with each subsequent `path` prepended until an absolute path is constructed. For instance, given the sequence of path segments: `/foo`, `/bar`, `baz`, calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`.
+La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsecuente `path` antepuesto hasta que una ruta absoluta sea construida. Por ejemplo, dada la secuencia de segmentos de ruta: `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')`, devolvería `/bar/baz`.
 
-If after processing all given `path` segments an absolute path has not yet been generated, the current working directory is used.
+Si después de procesar todos los segmentos `path` aún no se ha generado una ruta absoluta, el directorio de trabajo actual es usado.
 
-The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
+La ruta resultante es normalizada y los slashes de seguimiento son removidos, a menos que la ruta sea resuelta en el directorio root.
 
 Los segmentos `path` sin extensión son ignorados.
 
-If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
+Si ningún segmento `path` es pasado, `path.resolve()` devolverá la ruta absoluta del directorio de trabajo actual.
 
 ```js
 path.resolve('/foo/bar', './baz');
@@ -502,9 +501,7 @@ En Windows:
 // Retorna: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
-as path segment separators; however, the``path`methods only add backward
-slashes (`\`).
+On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.toNamespacedPath(path)
 
@@ -527,4 +524,4 @@ added: v0.11.15
 
 * {Object}
 
-The `path.win32` property provides access to Windows-specific implementations of the `path` methods.
+La propiedad `path.win32` proporciona acceso a implementaciones específicas para Windows de los métodos `path`.
