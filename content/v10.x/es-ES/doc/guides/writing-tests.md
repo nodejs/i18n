@@ -2,12 +2,12 @@
 
 ## ¿Qué es una prueba?
 
-Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. Una prueba falla si:
+La mayoría de las pruebas en el núcleo de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba falla si:
 
 - Sale al establecer `process.exitCode` a un número distinto a cero. 
   - Esto es realizado usualmente haciendo que una aserción arroje un Error no capturado.
   - Ocasionalmente, usar `process.exit(code)` puede ser apropiado.
-- Nunca sale. In this case, the test runner will terminate the test because it sets a maximum time limit.
+- Nunca sale. En este caso, el corredor de prueba terminará la prueba porque establece un límite de tiempo máximo.
 
 Añadir pruebas cuando:
 
@@ -58,11 +58,11 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-La primera línea habilita el modo estricto. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+La primera línea habilita el modo estricto. Todas las pruebas deben estar en modo estricto, a menos que la naturaleza de la prueba requiera que la prueba se ejecute sin él.
 
 La segunda línea carga el módulo `common`. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
-Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+Incluso si una prueba no usa funciones u otras propiedades exportadas por `common`, aún así debe incluir el módulo `common` antes que cualquier otro módulo. Esto es debido a que el módulo `common` incluye código que causará que la prueba falle si la misma filtra variables en el espacio global. En situaciones en las que una prueba no use funciones u otras propiedades exportadas por `common`, inclúyalo sin asignarlo a un identificador:
 
 ```javascript
 require('../common');
@@ -75,7 +75,7 @@ require('../common');
 // en el encabezado http.
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+Una prueba debe comenzar con un comentario que contenga una breve descripción de lo que está diseñada para probar.
 
 ### **Líneas 8-9**
 
@@ -92,25 +92,25 @@ The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man
 
 ### **Líneas 11-22**
 
-Este es el cuerpo de la prueba. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Cosas interesantes que tomar en cuenta:
+Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servidor HTTP acepte caracteres `non-ASCII` en las cabeceras de una solicitud entrante. Cosas interesantes que tomar en cuenta:
 
-- If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
-- The use of `common.mustCall` to check that some callbacks/listeners are called.
-- El servidor HTTP cierra una vez que se han ejecutado todas las comprobaciones. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
+- Si la prueba no depende de un número de puerto específico, entonces siempre utilice 0 en lugar de un valor arbitrario, ya que permite que las pruebas se ejecuten en paralelo de forma segura, ya que el sistema operativo asignará un puerto aleatorio. Si la prueba requiere un puerto específico, por ejemplo, si la prueba verifica que asignar un puerto específico funciona como se espera, entonces está bien asignar un número de puerto específico.
+- El uso de `common.mustCall` para verificar que algunas callbacks o algunos listeners son llamados.
+- El servidor HTTP cierra una vez que se han ejecutado todas las comprobaciones. De esta forma, la prueba puede salir con gracia. Recuerde que para que una prueba tenga éxito, debe salir con un código de estado de 0.
 
 ## Recomendaciones generales
 
 ### Temporizadores
 
-Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. There are multiple reasons for this. Mayormente, son una fuente de problemas. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
+Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. Existen varias razones para esto. Mayormente, son una fuente de problemas. Para una explicación completa, vaya [aquí](https://github.com/nodejs/testing/issues/27).
 
-In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform:
+En el evento en el que una prueba necesite un temporizador, considere utilizar el método `common.platformTimeout()`. It allows setting specific timeouts depending on the platform:
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
 ```
 
-will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
+creará un tiempo de espera de 4 segundos en la mayoría de las plataformas, pero un tiempo de espera más largo en plataformas más lentas.
 
 ### El API *common*
 
@@ -204,7 +204,7 @@ fs.readFile('test-file').then(
 
 ### Banderas
 
-Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando específicas establecidas. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. Una prueba que requeriría `internal/freelist` podría empezar de esta forma:
+Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando específicas establecidas. Para lograr esto, añada un comentario `// Flags:` en el preámbulo de la prueba, seguido por las banderas. Por ejemplo, para permitir que una prueba requiera algunos de los módulos `internal/*`, añada la bandera `--expose-internals`. Una prueba que requeriría `internal/freelist` podría empezar de esta forma:
 
 ```javascript
 'use strict';
@@ -248,7 +248,7 @@ In some tests, it can be unclear whether a `console.log()` statement is required
 
 ### ES.Next features
 
-For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+Por consideraciones de rendimiento, solo utilizamos un subconjunto seleccionado de características ES.Next en código de JavaScript en el directorio de `lib`. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
 
 - `let` y `const` sobre `var`
 - Literales de la plantilla sobre la concatenación de la string
@@ -256,9 +256,9 @@ For performance considerations, we only use a selected subset of ES.Next feature
 
 ## Nombrar Archivos de Prueba
 
-Los archivos de prueba son nombrados usando kebab casing. The first component of the name is `test`. El segundo es el módulo o subsistema siendo probado. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+Los archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. El segundo es el módulo o subsistema siendo probado. El tercero es usualmente el método o el nombre del evento siendo probado. Los componentes posteriores del nombre añaden más información acerca de lo que está siendo probado.
 
-For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede ser nombrada `test-process-before-exit.js`. Si la prueba específicamente verificó que las funciones flecha funcionaron correctamente con el evento `beforeExit`, entonces puede ser nombrada `test-process-before-exit-arrow-functions.js`.
 
 ## Pruebas Importadas
 
@@ -278,7 +278,7 @@ Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js
 /* eslint-enable */
 ```
 
-To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Asegúrese de actualizar el hash en el URL siguiendo las `WPT Refs:`.
+Para mejorar las pruebas que han sido importadas de esta manera, por favor envíe una PR al proyecto upstream primero. Cuando el cambio propuesto se fusione con el proyecto upstream, envíe otro PR aquí para actualizar Node.js en consecuencia. Asegúrese de actualizar el hash en el URL siguiendo las `WPT Refs:`.
 
 ## Prueba de la Unidad C++
 
