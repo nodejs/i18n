@@ -273,7 +273,7 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 ## Class: AssertionError
 
-Lớp con của `Error` biểu thị sự xác nhận thất bại. Such errors commonly indicate inequality of actual and expected value.
+Lớp con của `Error` chỉ báo lỗi xác nhận. Such errors commonly indicate inequality of actual and expected value.
 
 For example:
 
