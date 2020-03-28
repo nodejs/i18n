@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+H Node.js συμπεριλαμβάνει ένα πρόγραμμα εντοπισμού σφαλμάτων, που λειτουργεί ως ξεχωριστή εφαρμογή, και χρησιμοποιείται μέσω ενός [Επιθεωρητή V8](#debugger_v8_inspector_integration_for_node_js) και ενός ενσωματωμένου πελάτη αποσφαλμάτωσης. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -159,7 +159,7 @@ debug>
 
 Ο Επιθεωρητής V8 μπορεί να ενεργοποιηθεί με τη χρήση της επιλογης `--inspect` κατά την εκκίνηση μιας εφαρμογής Node.js. Είναι επίσης δυνατό να οριστεί μια προσαρμοσμένη θύρα με τη χρήση της ίδιας επιλογής, π.χ. ο ορισμός `--inspect=9222` θα δώσει εντολή στη Node.js να αναμένει για συνδέσεις από το DevTools στην θύρα 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Για να γίνει παύση στην πρώτη γραμμή κώδικα της εφαρμογής, χρησιμοποιήστε την επιλογή `--inspect-brk`, αντί της επιλογής `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -168,4 +168,4 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(στο παραπάνω παράδειγμα, το UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 στο τέλος της διεύθυνσης, δημιουργείται αυτόματα, και είναι διαφορετικό σε κάθε συνεδρία εντοπισμού σφαλμάτων.)
