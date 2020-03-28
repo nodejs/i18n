@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Ze worden voornamelijk gebruikt als interface tussen JavaScript uitgevoerd in Node.js en C/C++ bibliotheken.
+Node.js Addons zijn dynamisch gekoppelde gedeelde objecten, geschreven in C++ die in Node.js kunnen worden geladen met behulp van de [`require()`](modules.html#modules_require)functie, en kunnen worden gebruikt alsof zij een gewone Node.js module zijn. Ze worden voornamelijk gebruikt als interface tussen JavaScript uitgevoerd in Node.js en C/C++ bibliotheken.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
@@ -14,7 +14,7 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
 
-* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
+* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -197,7 +197,7 @@ Vervolgens, roep de `node-gyp build` opdracht aan om het gecompileerde `addon.no
 
 Bij gebruik van `npm install` voor het installeren van een Node.js Addon, maakt npm gebruik van de eigen gebundelde versie van `node-gyp` om dezelfde acties uit te voeren, het genereren van een gecompileerde versie van de Addon, voor het gebruikersplatform op aanvraag.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Eenmaal gebouwd, kan de binary Addon worden gebruikt binnen Node.js door [`require()`](modules.html#modules_require) te wijzen naar de gebouwde `addon.node` module:
 
 ```js
 // hallo.js
@@ -231,9 +231,9 @@ Node.js gebruikt een aantal statisch gekoppelde bibliotheken zoals V8, libuv en 
 
 ### Addons laden met behulp van require()
 
-De bestandsnaam-extensie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+De bestandsnaam-extensie van het gecompileerde Addon binair is `.node` (in tegenstelling tot `.dll` or `.so`). De [`require()`](modules.html#modules_require) functie is geschreven om te zoeken naar bestanden met de `.node` bestands-extensie en initialiseert deze als dynamisch gekoppelde bibliotheken.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Bij het aanroepen van [`require()`](modules.html#modules_require), kan de `.node` extensie meestal worden weggelaten en Node.js zal de Addon nog steeds vinden en initialiseren. Één uitzondering is echter, dat Node.js eerst zal proberen modules of JavaScript bestanden te vinden en laden die wellicht dezelfde basisnaam delen. Bijvoorbeeld, als een bestand `addon.js` in dezelfde map zit als de binair `addon.node`, dan zal [`require('addon')`](modules.html#modules_require) voorkeur geven aan het bestand `addon.js`, en die in plaats daarvan laden.
 
 ## Oorspronkelijke abstracties voor Node.js
 
