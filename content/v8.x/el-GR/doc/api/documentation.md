@@ -10,7 +10,7 @@
 
 ## Συνεισφορά
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Αν βρείτε σφάλματα σε αυτήν την τεκμηρίωση, παρακαλούμε [καταχωρήστε ένα ζήτημα](https://github.com/nodejs/node/issues/new) ή δείτε [τον οδηγό συνεισφοράς](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) για να μάθετε πως να υποβάλετε ένα patch.
 
 Κάθε αρχείο δημιουργείται βασισμένο στο αντίστοιχο αρχείο `.md` που βρίσκεται στον φάκελο `doc/api/` μέσα στον πηγαίο κώδικα της Node.js. Αυτή η τεκμηρίωση δημιουργείται με τη χρήση του εργαλείου `tools/doc/generate.js`. Ένα πρότυπο HTML βρίσκεται στο `doc/template.html`.
 
@@ -18,7 +18,7 @@ If errors are found in this documentation, please [submit an issue](https://gith
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. Το API της Node.js αλλάζει σχετικά, και καθώς ωριμάζει, κάποια μέρη του είναι πιο αξιόπιστα απ'ότι άλλα. Κάποια είναι τόσο σταθερά, και τόσο χρησιμοποιούμενα, που είναι πρακτικά εντελώς απίθανο να αλλάξουν. Κάποια άλλα μέρη είναι ολοκαίνουρια και πειραματικά, ή είναι γνωστό ότι είναι επικίνδυνα και βρίσκονται σε φάση επανασχεδιασμού.
+Καθόλη τη διάρκεια της τεκμηρίωσης υπάρχουν ενδείξεις της σταθερότητας μιας ενότητας. Το API της Node.js αλλάζει σχετικά, και καθώς ωριμάζει, κάποια μέρη του είναι πιο αξιόπιστα απ'ότι άλλα. Κάποια είναι τόσο σταθερά, και τόσο χρησιμοποιούμενα, που είναι πρακτικά εντελώς απίθανο να αλλάξουν. Κάποια άλλα μέρη είναι ολοκαίνουρια και πειραματικά, ή είναι γνωστό ότι είναι επικίνδυνα και βρίσκονται σε φάση επανασχεδιασμού.
 
 Οι δείκτες σταθερότητας είναι οι παρακάτω:
 
