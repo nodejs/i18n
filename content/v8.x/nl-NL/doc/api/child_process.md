@@ -23,7 +23,7 @@ ls.on('close', (code) => {
 });
 ```
 
-By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
+Als standaard, worden kanalen voor `stdin`, `stdout`, en `stderr` tot stand gebracht tussen het bovenliggende Node.js proces en het verspreide sub-proces. Deze kanalen hebben beperkte (en platform-specifieke) capaciteit. Als het sub-proces boven die grens naar stdout schrijft, zonder dat de output vastgelegd wordt, zal het sub- proces het wachten op de kanaal buffer blokkeren om meer data te accepteren. Dit is identiek aan het gedrag van de kanalen in de shell. Gebruik de `{ stdio: 'ignore' }` optie als de output niet wordt verbruikt.
 
 De [`child_process.spawn()`][] methode verspreidt het kind proces asynchroon, zonder de Node.js gebeurtenislus te blokkeren. De [`child_process.spawnSync()`][] functie biedt vergelijkbare functionaliteit op synchrone wijze, die de gebeurtenislus blokkeert totdat het verspreide proces stopt of wordt uitgeschakeld.
 
@@ -31,8 +31,8 @@ Voor het gemak, biedt de `child_process` module een aantal synchrone en asynchro
 
     * [`child_process.exec()`][]: verspreidt een shell en draait een command binnen deze shell,
        terwijl het de `stdout` en `stderr` doorgeeft aan een callback functie als het compleet is.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
-      it spawns the command directly without first spawning a shell by default.
+    * [`child_process.execFile()`][]: vergelijkbaar met [`child_process.exec()`][] met de uitzondering dat
+      het de opdracht direct verspreidt zonder eerst als standaard een shell te verspreiden.
     * [`child_process.fork()`][]: verspreidt een nieuw Node.js proces en roept een  
       specifieke module aan, met een gevestigd IPC communicatie kanaal wat het mogelijk maakt om 
       berichten te verzenden tussen ouder en kind.
@@ -54,7 +54,7 @@ De [`child_process.exec()`][] en [`child_process.execFile()`][] methoden staan b
 
 ### Verspreiden `.bat` en `.cmd` bestanden op Windows
 
-Het belang van onderscheid tussen [`child_process.exec()`][] en [`child_process.execFile()`][] kan variëren op basis van het platform. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. Op Windows zullen echter de `.bat` en `.cmd` bestanden niet op zichzelf uitvoerbaar zijn zonder een terminal, en kunnen daarom niet worden gelanceerd met behulp van [`child_process.execFile()`][]. Als het systeem op Windows draait, kunnen `.bat` en `.cmd` bestanden worden aangeroepen met behulp van de `shell` optie set, met [`child_process.exec()`][], of door het verspreiden van `cmd.exe` en de `.bat` of `.cmd` bestanden door te geven als een argument (wat ook is wat de `shell` optie en [`child_process.exec()`][] doen). In ieder geval moeten spaties worden genoteerd als de bestandsnaam van het script die bevat.
+Het belang van onderscheid tussen [`child_process.exec()`][] en [`child_process.execFile()`][] kan variëren op basis van het platform. Op Unix-type besturingssystemen (Unix, Linux, macOS) kan [`child_process.execFile()`][] efficiënter zijn omdat het niet als standaard een shell verspreidt. Op Windows zullen echter de `.bat` en `.cmd` bestanden niet op zichzelf uitvoerbaar zijn zonder een terminal, en kunnen daarom niet worden gelanceerd met behulp van [`child_process.execFile()`][]. Als het systeem op Windows draait, kunnen `.bat` en `.cmd` bestanden worden aangeroepen met behulp van de `shell` optie set, met [`child_process.exec()`][], of door het verspreiden van `cmd.exe` en de `.bat` of `.cmd` bestanden door te geven als een argument (wat ook is wat de `shell` optie en [`child_process.exec()`][] doen). In ieder geval moeten spaties worden genoteerd als de bestandsnaam van het script die bevat.
 
 ```js
 // Alleen op Windows ...
@@ -109,20 +109,20 @@ changes:
   * `cwd` {string} Actuele werkfolder van het sub-proces. **Default:** `null`.
   * `env` {Object} Omgeving belangrijkste paren. **Default:** `null`.
   * `encoding` {string} **Default:** `'utf8'`
-  * `shell` {string} Shell om de opdracht mee uit te voeren. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell om de opdracht mee uit te voeren. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` op UNIX, `process.env.ComSpec` op Windows.
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Bij overschrijding, wordt het subproces afgesloten. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} Grootste hoeveelheid gegevens in bytes dat is toegestaan op srdout of stderr. Bij overschrijding, wordt het subproces afgesloten. Zie waarschuwing op [`maxBuffer` en Unicode][]. **Default:** `200 * 1024`.
   * `killSignal` {string|integer} **Standaard:** `'SIGTERM'`
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in (zie setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsHide` {boolean} Verberg het subprocess consolevenster die normaal zou worden gecreëerd op Windows systemen. **Default:** `false`.
 * `callback` {Function} wordt opgeroepen met de output als het proces afbreekt. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
 * Retourneert: {ChildProcess}
 
-Verspreidt een shell en voert dan de `command` uit binnen deze shell, terwijl alle gegenereerde output wordt gebufferd. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
+Verspreidt een shell en voert dan de `command` uit binnen deze shell, terwijl alle gegenereerde output wordt gebufferd. De `command` string doorgegeven aan de exec functie wordt direct verwerkt door de shell en speciale tekens (variëren gebaseerd op [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) moeten dienovereenkomstig worden behandeld:
 
 ```js
 exec('"/path/to/test file/test.sh" arg1 arg2');
@@ -189,20 +189,20 @@ changes:
   * `env` {Object} Omgeving belangrijkste paren.
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Bij overschrijding, wordt het kind-proces afgesloten. See caveat at [`maxBuffer` and Unicode][]. **Standaard:** `200 * 1024`.
+  * `maxBuffer` {number} Grootste hoeveelheid gegevens aan bytes dat is toegestaan op stdout of stderr. Bij overschrijding, wordt het kind-proces afgesloten. Zie waarschuwing op [`maxBuffer` en Unicode][]. **Standaard:** `200 * 1024`.
   * `killSignal` {string|integer} **Standaard:** `'SIGTERM'`
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in (zie setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Standaard:** `false`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Genegeerd op Unix. **Standaard:** `false`.
-  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
+  * `windowsHide` {boolean} Verberg het subprocess consolevenster dat normaal zou worden gecreëerd op Windows systemen. **Standaard:** `false`.
+  * `windowsVerbatimArguments` {boolean} Er wordt geen citeren of ontsnappen van argumenten gedaan op Windows. Genegeerd op Unix. **Standaard:** `false`.
+  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Gebruikt `'/bin/sh'` op UNIX, en `process.env.ComSpec` op Windows. Er kan een andere shell worden gespecificeerd als een string. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
 * `callback` {Function} Wordt opgeroepen met de output als het proces afbreekt. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
 * Retourneert: {ChildProcess}
 
-The `child_process.execFile()` function is similar to [`child_process.exec()`][] except that it does not spawn a shell by default. In plaats daarvan, wordt de gespecificeerde uitvoerbare `file` direct verspreidt als een nieuw proces, wat het íéts efficiënter maakt dan het [`child_process.exec()`][].
+De `child_process.execFile()` functie is vergelijkbaar met het [`child_process.exec()`][], behalve dat er niet als standaard een shell wordt verspreid. In plaats daarvan, wordt de gespecificeerde uitvoerbare `file` direct verspreidt als een nieuw proces, wat het íéts efficiënter maakt dan het [`child_process.exec()`][].
 
 Dezelfde opties als [`child_process.exec()`][] worden ondersteund. Omdat er geen shell wordt verspreid, wordt gedrag als I/O omleidingen en bestand globbing niet ondersteund.
 
@@ -254,8 +254,8 @@ changes:
   * `execPath` {string} Uitvoerbaar gebruikt voor het maken van het sub-proces.
   * `execArgv` {Array} List of string arguments passed to the executable. **Standaard:** `process.execArgv`.
   * `silent` {boolean} Als het `true` is, zal stdin, stdout, en stderr van het onderliggende proces worden doorgesluisd naar de ouder, anders zal het worden overgenomen van het hoofd-proces, zie de `'pipe'` en `'inherit'` opties voor [`child_process.spawn()`][]'s [`stdio`][] voor meer informatie. **Standaard:** `false`.
-  * `stdio` {Array|string} Zie [`child_process.spawn()`][]'s [`stdio`][]. Als deze optie wordt gegeven, dan verwerpt het `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. Bijvoorbeeld `[0, 1, 2, 'ipc']`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Genegeerd op Unix. **Standaard:** `false`.
+  * `stdio` {Array|string} Zie [`child_process.spawn()`][]'s [`stdio`][]. Als deze optie wordt gegeven, dan verwerpt het `silent`. Als de array variant wordt gebruikt, dan moet het precies één object met de waarde `'ipc'` bevatten, of er wordt een fout geworpen. Bijvoorbeeld `[0, 1, 2, 'ipc']`.
+  * `windowsVerbatimArguments` {boolean} Er wordt geen citeren of ontsnappen van argumenten gedaan op Windows. Genegeerd op Unix. **Standaard:** `false`.
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in (zie setgid(2)).
 * Retourneert: {ChildProcess}
@@ -299,9 +299,9 @@ changes:
   * `detached` {boolean} Bereid kind voor om onafhankelijk van het hoofdproces te draaien. Specifiek gedrag hangt af van het platform, zie [`options.detached`][]).
   * `uid` {number} Stelt de gebruikersidentiteit in van het proces (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit in van het proces (zie setgrid(2)).
-  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Genegeerd op Unix. This is set to `true` automatically when `shell` is specified. **Standaard:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Standaard:** `false`.
+  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Gebruikt `'/bin/sh'` op UNIX, en `process.env.ComSpec` op Windows. Er kan een andere shell worden gespecificeerd als een string. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
+  * `windowsVerbatimArguments` {boolean} Er wordt geen citeren of ontsnappen van argumenten gedaan op Windows. Genegeerd op Unix. Dit wordt automatisch op `true` ingesteld als de `shell` wordt gespecificeerd. **Standaard:** `false`.
+  * `windowsHide` {boolean} Verberg het subprocess consolevenster dat normaal zou worden gecreëerd op Windows systemen. **Standaard:** `false`.
 * Retourneert: {ChildProcess}
 
 De `child_process.spawn()` methode verspreidt een nieuw proces met behulp van het gegeven `command`, met opdrachtlijn-argumenten in `args`. Als dit overgeslagen wordt, zal `args` standaard naar een lege array worden gezet.
@@ -459,13 +459,13 @@ Anders is de waarde van `options.stdio` een array waarbij elke index overeenkomt
 1. `'pipe'` - Creëer een leiding tussen het subproces en het hoofdproces. Het einde van de leiding die toebehoort aan het hoofdproces wordt blootgesteld aan het hoofdproces als een eigenschap op het `child_process` object als [`subprocess.stdio[fd]`][`stdio`]. Leidingen die zijn gecreëerd voor fds 0 - 2 zijn ook beschikbaar als [`subprocess.stdin`][], [`subprocess.stdout`][] en [`subprocess.stderr`][], respectievelijk.
 2. `'ipc'` - Creëer een IPC-kanaal voor het doorgeven van berichten/bestandsdescriptors tussen het hoofd- en het subproces. Een [`ChildProcess`][] mag ten hoogste *één* IPC stdio bestandsdescriptor hebben. Het instellen van deze optie schakelt de [`subprocess.send()`][] methode in. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][], [`process.disconnect()`][], [`process.on('disconnect')`][], and [`process.on('message')`] within the child.
   
-  Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
+  Toegang die verkregen wordt op een andere manier dan [`process.send()`][] of het gebruik van het IPC kanaal met een onderliggend proces wat geen Node.js instantie is, wordt niet ondersteund.
 
 3. `'ignore'` - Geeft Node.js als instructie de fd in het onderliggende proces te negeren. Terwijl Node.js altijd fds 0 - 2 zal openen voor de processen die het genereert, zal het instellen van de fd naar `'ignore'` ervoor zorgen dat Node.js `/dev/null` opent en het koppelt aan de fd van het subproces.
 
 4. {Stream} object - Deel een leesbare of schrijfbare stream die verwijst naar een tty, file, socket, of een pipe met het subproces. De onderliggende bestandsbeschrijving van de bestandsbeschrijving van de stream wordt in het subproces gedupliceerd naar de fd dat overeenkomt met de index in de `stdio` array. Let hierbij op dat de stream een onderliggende beschrijving moet hebben (bestandsstreams hebben dit niet nodig totdat de `'open'` gebeurtenis heeft plaatsgevonden).
-5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. Het wordt gedeeld met het subproces, vergelijkbaar met hoe {Stream} objecten kunnen worden gedeeld.
-6. `null`, `undefined` - Gebuik standaardwaarde. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. Voor fd 3 en hoger, is de standaard `'ignore'`.
+5. Positief getal - De positieve waarde wordt geïnterpreteerd als een bestandsbeschrijving die momenteel open is in het hoofdproces. Het wordt gedeeld met het subproces, vergelijkbaar met hoe {Stream} objecten kunnen worden gedeeld.
+6. `null`, `undefined` - Gebuik standaardwaarde. Voor stdio fds 0, 1, en 2 (in andere woorden, stdin, stdout, en stderr) wordt een pipe aangemaakt. Voor fd 3 en hoger, is de standaard `'ignore'`.
 
 Voorbeeld:
 
@@ -491,7 +491,7 @@ See also: [`child_process.exec()`][] and [`child_process.fork()`][]
 
 De [`child_process.spawnSync()`][], [`child_process.execSync()`][], en [`child_process.execFileSync()`][] methoden zijn **synchroon** en **ZULLEN** de Node.js gebeurtenislus blokkeren, en de uitvoering van eventuele aanvullende code onderbreken totdat het verspreide proces afsluit.
 
-Blocking calls like these are mostly useful for simplifying general-purpose scripting tasks and for simplifying the loading/processing of application configuration at startup.
+Het blokkeren van oproepen zoals deze zijn meestal nuttig voor het vereenvoudigen van algemene-functie scriptingtaken en voor het vergemakkelijken van het laden/verwerken van toepassingsconfiguratie bij het opstarten.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
 
@@ -514,24 +514,24 @@ changes:
 * `args` {string[]} Lijst van string-argumenten.
 * `opties` {Object} 
   * `cwd` {string} Actuele werkfolder van het subproces.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Het leveren van deze waarde zal `stdio[0]`overschrijven.
-  * `stdio` {string|Array} De stdio configuratie van het subproces. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `input` {string|Buffer|Uint8Array} De waarde die naar het verspreide proces zal worden doorgegeven als stdin. Het leveren van deze waarde zal `stdio[0]`overschrijven.
+  * `stdio` {string|Array} De stdio configuratie van het subproces. `stderr` standaard zal de uitvoer naar het hoofdproces stderr zijn tenzij `stdio` is opgegeven. **Default:** `'pipe'`.
   * `env` {Object} Omgeving belangrijkste paren.
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in (zie setgid(2)).
   * `timeout` {number} de maximale tijd, in milliseconden, waarin het proces mag draaien. **Standaard:** `undefined`.
   * `killSignal` {string|integer} De signaalwaarde die gebruikt moet worden wanneer het verspreide proces zal worden afgesloten. **Standaard:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Bij overschrijding, wordt het subproces afgesloten. See caveat at [`maxBuffer` and Unicode][]. **Standaard:** `200 * 1024`.
+  * `maxBuffer` {number} Grootste hoeveelheid gegevens in bytes dat is toegestaan op stdout of stderr. Bij overschrijding, wordt het subproces afgesloten. Zie waarschuwing op [`maxBuffer` en Unicode][]. **Standaard:** `200 * 1024`.
   * `encoding` {string} De codering die wordt gebruikt voor alle stdio invoeren en uitvoeren. **Standaard:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Standaard:** `false`.
-  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
+  * `windowsHide` {boolean} Verberg het subproces consolevenster dat normaal zou worden gecreëerd op Windows systemen. **Standaard:** `false`.
+  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Gebruikt `'/bin/sh'` op UNIX, en `process.env.ComSpec` op Windows. Er kan een andere shell worden gespecificeerd als een string. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
 * Retourneert: {Buffer|string} De stdout van de opdracht.
 
 De `child_process.execFileSync()` methode is over het algemeen identiek aan [`child_process.execFile()`][] met de uitzondering dat de methode niet zal retourneren totdat het subproces volledig is afgesloten. Wanneer een time-out is opgetreden en `killSignal` is verzonden, zal de methode niet retourneren totdat het proces volledig is afgesloten.
 
 *Note*: If the child process intercepts and handles the `SIGTERM` signal and does not exit, the parent process will still wait until the child process has exited.
 
-If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
+Als er binnen het proces een time-out optreedt of geen afsluitcode van nul heeft, ***zal*** deze methode een [`Error`][] werpen die het volledige resultaat van het onderliggende [`child_process.spawnSync()`][].
 
 *Note*: If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.
 
@@ -552,22 +552,22 @@ changes:
 * `command` {string} De te draaien opdracht.
 * `opties` {Object} 
   * `cwd` {string} Actuele werkfolder van het sub-proces.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Het leveren van deze waarde zal `stdio[0]`overschrijven.
-  * `stdio` {string|Array} De stdio configuratie van het subproces. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `input` {string|Buffer|Uint8Array} De waarde die naar het verspreide proces zal worden doorgegeven als stdin. Het leveren van deze waarde zal `stdio[0]`overschrijven.
+  * `stdio` {string|Array} De stdio configuratie van het subproces. `stderr` standaard zal de uitvoer naar het hoofdproces stderr zijn tenzij `stdio` is opgegeven. **Default:** `'pipe'`.
   * `env` {Object} Omgeving belangrijkste paren.
-  * `shell` {string} Shell om de opdracht mee uit te voeren. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell om de opdracht mee uit te voeren. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `'/bin/sh'` op UNIX, `process.env.ComSpec` op Windows.
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in. (Zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in. (Zie setuid(2)).
   * `timeout` {number} de maximale tijd, in milliseconden, waarin het proces mag draaien. **Standaard:** `undefined`.
-  * `killSignal` {string|integer} De signaalwaarde die gebruikt moet worden wanneer het verspreide proces zal worden afgesloten. **Standaard:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Bij overschrijding, wordt het kind-proces afgesloten. See caveat at [`maxBuffer` and Unicode][]. **Standaard:** `200 * 1024`.
+  * `killSignal` {string|integer} De signaalwaarde die gebruikt moet worden wanneer het verspreidde proces zal worden afgesloten. **Standaard:** `'SIGTERM'`.
+  * `maxBuffer` {number} Grootste hoeveelheid gegevens in bytes dat is toegestaan op stdout of stderr. Bij overschrijding, wordt het kind-proces afgesloten. Zie waarschuwing op [`maxBuffer` en Unicode][]. **Standaard:** `200 * 1024`.
   * `encoding` {string} De codering die wordt gebruikt voor alle stdio invoeren en uitvoeren. **Standaard:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Standaard:** `false`.
+  * `windowsHide` {boolean} Verberg het subprocess consolevenster dat normaal zou worden gecreëerd op Windows systemen. **Standaard:** `false`.
 * Retourneert: {Buffer|string} De stdout van de opdracht.
 
 De `child_process.execFileSync()` methode is over het algemeen identiek aan [`child_process.execFile()`][] met de uitzondering dat de methode niet zal retourneren totdat het subproces volledig is afgesloten. Wanneer een time-out is opgetreden en `killSignal` is verzonden, zal de methode niet retourneren totdat het proces volledig is afgesloten. *Let hierbij op dat het subproces het `SIGTERM` signaal onderschept en verwerkt en niet afsluit, zal het hoofdproces nog steeds wachten totdat het subproces is afgesloten.*
 
-If the process times out or has a non-zero exit code, this method ***will*** throw. Het [`Fout`][] object zal het hele resultaat bevatten van [`child_process.spawnSync()`][]
+Als er binnen het proces een time-out optreedt of geen afsluitcode van nul heeft, ***zal*** deze methode werpen. Het [`Fout`][] object zal het hele resultaat bevatten van [`child_process.spawnSync()`][]
 
 *Note*: Never pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.
 
@@ -595,18 +595,18 @@ changes:
 * `args` {Array} List of string arguments.
 * `opties` {Object} 
   * `cwd` {string} Actuele werkfolder van het sub-proces.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Het leveren van deze waarde zal `stdio[0]`overschrijven.
+  * `input` {string|Buffer|Uint8Array} De waarde die naar het verspreide proces zal worden doorgegeven als stdin. Het leveren van deze waarde zal `stdio[0]`overschrijven.
   * `stdio` {string|Array} De stdio configuratie van het subproces.
   * `env` {Object} Omgeving belangrijkste paren.
   * `uid` {number} Stelt de gebruikersindentiteit van het proces in (zie setuid(2)).
   * `gid` {number} Stelt de groepsidentiteit van het proces in (zie setgid(2)).
   * `timeout` {number} de maximale tijd, in milliseconden, waarin het proces mag draaien. **Standaard:** `undefined`.
   * `killSignal` {string|integer} De signaalwaarde die gebruikt moet worden wanneer het verspreide proces zal worden afgesloten. **Standaard:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. Bij overschrijding, wordt het kind-proces afgesloten. See caveat at [`maxBuffer` and Unicode][]. **Standaard:** `200 * 1024`.
+  * `maxBuffer` {number} Grootste hoeveelheid gegevens in bytes dat is toegestaan op stdout of stderr. Bij overschrijding, wordt het kind-proces afgesloten. Zie waarschuwing op [`maxBuffer` en Unicode][]. **Standaard:** `200 * 1024`.
   * `encoding` {string} De codering die wordt gebruikt voor alle stdio invoeren en uitvoeren. **Standaard:** `'buffer'`.
-  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Genegeerd op Unix. This is set to `true` automatically when `shell` is specified. **Standaard:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Standaard:** `false`.
+  * `shell` {boolean|string} Als het `true` is, draait `command` binnen een shell. Gebruikt `'/bin/sh'` op UNIX, en `process.env.ComSpec` op Windows. Er kan een andere shell worden gespecificeerd als een string. Zie [Shell Requirements](#child_process_shell_requirements) en [Default Windows Shell](#child_process_default_windows_shell). **Standaard:** `false` (geen shell).
+  * `windowsVerbatimArguments` {boolean} Er wordt geen citeren of ontsnappen van argumenten gedaan op Windows. Genegeerd op Unix. Dit wordt automatisch op `true` ingesteld als de `shell` wordt gespecificeerd. **Standaard:** `false`.
+  * `windowsHide` {boolean} Verberg het subprocess consolevenster dat normaal zou worden gecreëerd op Windows systemen. **Standaard:** `false`.
 * Retourneert: {Object} 
   * `pid` {number} Pid van het subproces.
   * `output` {Array} Array van resultaten van stdio uitvoer.
