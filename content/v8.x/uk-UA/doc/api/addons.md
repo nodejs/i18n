@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
+Розширення Node.js ― це динамічно пов'язані спільні об'єкти, написані на мові C++, які можна завантажити в Node.js за допомогою функції [`require()`](modules.html#modules_require), і використовувати так само, як ніби вони є звичайними модулями на Node.js. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
 
 На даний момент метод реалізації Addons є досить складним і потребує знання декількох компонентів і API :
 
 * V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
+* [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. Вона також служить бібліотекою міжплатформної абстракції, що забезпечує легкий доступ до POSIX на всіх основних ОС для багатьох загальних системних завдань, таких як взаємодія з файловою системою, сокетами, таймерами та системними подіями. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
 
 * Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
 
-* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
+* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Всі наведені нижче приклади доступні для [завантаження](https://github.com/nodejs/node-addon-examples) і можуть використовуватися, як відправна точка для розширеннь.
 
 ## Hello world
 
@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the .no
 
 ### Збірка
 
-Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
+Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. Для цього створіть файл з назвою `binding.gyp` на верхньому рівні проекту, для описання конфігурації збірки модуля з використанням JSON формату. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
 
 ```json
 {
@@ -89,7 +89,7 @@ The `module_name` must match the filename of the final binary (excluding the .no
 
 При використанні `npm install` для встановлення розширень Node.js, npm використовує свою власну пакетну версію `node-gyp` для виконання цього ж набору дій, генеруючи скомпільовану версію розширення для платформи користувача.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Після створення бінарної версії розширення, його можна використовувати з Node.js, за допомогою [`require()`](modules.html#modules_require) на вбудований модуль `addon.node`:
 
 ```js
 // hello.js
