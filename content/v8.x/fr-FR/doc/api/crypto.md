@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+Le module `crypto` fournit des fonctionnalités cryptographiques incluant un jeu de wrappers pour les fonctions de hachage, de HMAC, de chiffrement, de déchiffrement, de signature et de vérification d'OpenSSL.
 
 Utilisez `require('crypto')` pour accéder à ce module.
 
@@ -39,7 +39,7 @@ try {
 added: v0.11.8
 -->
 
-SPKAC is a Certificate Signing Request mechanism originally implemented by Netscape and was specified formally as part of [HTML5's `keygen` element][].
+SPKAC est un mécanisme de requête de signature de certificat implémenté à l'origine par Netscape, qui a été spécifié formellement dans [HTML5's `keygen` element][].
 
 Notez que `<keygen>` est obsolète depuis [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) et les nouveaux projets ne devraient plus utiliser cet élément.
 
@@ -63,7 +63,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Returns: {Buffer} The challenge component of the `spkac` data structure, which includes a public key and a challenge.
+- Renvoie : {Buffer} Le composant challenge de la structure de données `spkac`, qui inclut une clé publique et un challenge.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -80,7 +80,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Returns: {Buffer} The public key component of the `spkac` data structure, which includes a public key and a challenge.
+- Renvoie : {Buffer} Le composant clé publique de la structure de données `spkac`, qui inclut une clé publique et un challenge.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -97,7 +97,7 @@ added: v0.11.8
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Returns: {boolean} `true` if the given `spkac` data structure is valid, `false` otherwise.
+- Renvoie : {boolean} `true` si la structure de données `spkac` est valide, `false` dans le cas contraire.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -212,7 +212,7 @@ Lors de l'utilisation d'algorithmes de chiffrement par blocs, la classe `Cipher`
 
 When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an Error. Désactiver le remplissage automatique est utile pour des remplissages non-standard, par exemple utilisant `0x0` au lieu du remplissage PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+La méthode `cipher.setAutoPadding()` doit être appelée avant [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -230,9 +230,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Met à jour le chiffrement avec `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le chiffrement avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'utf8'`, `'ascii'` ou `'latin1'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 La méthode `cipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`cipher.final()`][]. Appeler `cipher.update()` après [`cipher.final()`][] génèrera une erreur.
 
@@ -344,7 +344,7 @@ changes:
 
 When using an authenticated encryption mode (only `GCM` is currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. Si aucun tag n'est fourni ou si le texte chiffré a été falsifié [`decipher.final()`][] sera lancé, isera lancé, indiquant que le texte chiffré devrait être rejeté en raison de l'échec de l'authentification.
 
-Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Un tel contrôle *doit* doit être implémenté par les applications et est crucial pour l'authenticité des données cryptées, sinon une attaque peut utiliser un tag d'authentification arbitrairement court pour augmenter ses chances de passer l'authentification avec succès (jusqu'à 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Un tel contrôle *doit* doit être implémenté par les applications et est crucial pour l'authenticité des données cryptées, sinon une attaque peut utiliser un tag d'authentification arbitrairement court pour augmenter ses chances de passer l'authentification avec succès (jusqu'à 0.39%). Il est fortement recommandé d'associer à chaque clé une des valeurs 16, 15, 14, 13, 12, 8 ou 4 octets, et de ne permettre que des tags d'authentification de cette longueur, voir [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 La méthode `decipher.setAuthTag()` doit être appelée avant [`decipher.final()`][].
 
@@ -361,7 +361,7 @@ Lorsque des données ont été cryptées sans remplissage de bloc standard, l'ap
 
 Désactiver le remplissage automatique ne fonctionnera que si la longueur des données entrées est un multiple de la taille du bloc de chiffrement.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+La méthode `decipher.setAutoPadding()` doit être appelée avant [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -379,9 +379,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Met à jour decipher avec `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Met à jour decipher avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'latin1'`, `'base64'` ou `'hex'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][]. Si `data` est un [`Buffer`][] alors `inputEncoding` est ignoré.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'ascii'` ou `'utf8'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 La méthode `decipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`decipher.final()`][]. Appeler `decipher.update()` après [`decipher.final()`][] génèrera une erreur.
 
@@ -426,9 +426,9 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret est encodé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -494,7 +494,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Définit la clé privée Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé privée Diffie-Hellman. Si l'argument `encoding` est fourni et de valeur `'latin1'`, `'hex'` ou `'base64'`, `privateKey` doit être une chaîne. Si `encoding` est omis, `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -505,7 +505,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Définit la clé publique Diffie-Hellman. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé publique Diffie-Hellman. Si l'argument `encoding` est fourni et de valeur `'latin1'`, `'hex'` ou `'base64'`, `publicKey` doit être une chaîne. Si `encoding` est omis, `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -568,9 +568,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret renvoyé est encodé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -584,7 +584,7 @@ added: v0.11.14
 
 Génère des valeurs de clés Diffie-Hellman privée et publique, et retourne la clé publique dans le `format` et l'`encoding` spécifiés. Cette clé devrait être transférée à l'autre partie.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+L'argument `format` spécifie l'encodage du point et peut être `'compressed'` ou `'uncompressed'`. Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
 L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
@@ -595,7 +595,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string} The EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+- Renvoie : {Buffer | string} La clé privée de Courbe Elliptique Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -605,9 +605,9 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `uncompressed`
-- Returns: {Buffer | string} The EC Diffie-Hellman public key in the specified `encoding` and `format`.
+- Renvoie : {Buffer | string} La clé publique de Courbe Elliptique Diffie-Hellman dans l'`encoding` et au `format` spécifiés.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+L'argument `format` spécifie l'encodage du point et peut être `'compressed'` ou `'uncompressed'`. Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
 L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
@@ -620,9 +620,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Définit la clé privée de Courbe Elliptique Diffie-Hellman. L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé privée de Courbe Elliptique Diffie-Hellman. L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `encoding` est fourni, `privateKey` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. À la définition de la clé privée, le point (clé) public associé est également défini dans l'objet ECDH.
+Si `privateKey` n'est pas valide pour la courbe spécifiée quand l'objet `ECDH` a été créé, une erreur est générée. À la définition de la clé privée, le point (clé) public associé est également défini dans l'objet ECDH.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -636,7 +636,7 @@ deprecated: v5.2.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Définit la clé publique de Courbe Elliptique Diffie-Hellman. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Définit la clé publique de Courbe Elliptique Diffie-Hellman. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. Si `encoding` est fourni, `publicKey` doit être une chaîne ; sinon `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 Notez qu'il n'y a normalement pas de raison d'appeler cette méthode, parce qu'`ECDH` ne requiert qu'une clé privée et la clé publique de l'autre partie pour calculer le secret partagé. Généralement [`ecdh.generateKeys()`][] ou [`ecdh.setPrivateKey()`][] seront appelés. La méthode [`ecdh.setPrivateKey()`][] essaie de générer le point/clé public associé à la clé privée étant définie.
 
@@ -747,7 +747,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the hash content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu du hachage avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
@@ -833,7 +833,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu `Hmac` avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
@@ -926,7 +926,7 @@ L'argument `privateKey` peut être un objet ou une chaîne. Si `privateKey` est 
 
 - `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (par défaut) la définit à la taille maximale permise.
 
-L'`outputFormat` peut prendre les valeurs `'latin1'`, `'hex'` ou `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+L'`outputFormat` peut prendre les valeurs `'latin1'`, `'hex'` ou `'base64'`. Si `outputFormat` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 L'objet `Sign` ne peut pas être à nouveau utilisé une fois la méthode `sign.sign()` appelée. Plusieurs appels à `sign.sign()` génèreront une erreur.
 
@@ -944,7 +944,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu `Sign` avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
@@ -1004,7 +1004,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu `Verify` avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
@@ -1022,7 +1022,7 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Renvoie : {boolean} `true` or `false` selon la validité de la signature pour les données et la clé publique.
 
 Vérifie les données fournies en utilisant `object` et `signature`. L'argument `object` peut être soit un chaîne contenant un objet encodé au format PEM - pouvant être une clé publique RSA, une clé publique DSA ou un certificat X.509 - soit un objet avec au moins une des propriétés suivantes :
 
@@ -1036,9 +1036,9 @@ Vérifie les données fournies en utilisant `object` et `signature`. L'argument 
 
 - `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (par défaut) la détermine automatiquement.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+L'argument `signature` est la signature précédemment calculée pour les données, au format `signatureFormat` qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `signatureFormat` est fourni, `signature` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Plusieurs appels à `verify.verify()` génèreront une erreur.
+L'objet `verify` ne peut pas être à nouveau utilisé une fois la méthode `verify.verify()` appelée. Plusieurs appels à `verify.verify()` génèreront une erreur.
 
 ## Méthodes et propriétés du module `crypto`
 
@@ -1048,7 +1048,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Renvoie : {Object} Un objet contenant les constants couramment utilisées pour la cryptographie et les opérations de sécurité liées. Les constantes spécifiques actuellement définies sont décrites dans [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
