@@ -1389,8 +1389,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
 -->* `options` {Object}
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Χρήσιμο για την επέκταση του αρχικού `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Χρήσιμο για την επέκταση του αρχικού `ServerResponse`. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Ορίζει την κλάση `IncomingMessage` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `IncomingMessage`. **Default:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Ορίζει την κλάση `ServerResponse` που θα χρησιμοποιηθεί. Χρήσιμο για την επέκταση του αρχικού `ServerResponse`. **Default:** `ServerResponse`.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 * `requestListener` {Function}
 
