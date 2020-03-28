@@ -2477,7 +2477,7 @@ added: v8.4.0
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
-*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
+*注意*：`response.getHeaders()` 方法返回的对象 *不是* 从 JavaScript `Object` 原型继承来的。 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
 
 例如：
 
