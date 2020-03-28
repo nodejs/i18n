@@ -1432,7 +1432,24 @@ Used to set the timeout value for http2 server requests, and sets a callback fun
 
 El callback dado, está registrado como un oyente en el evento `'timeout'`.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Tiempo de espera en milisegundos. **Default:** 0 (no timeout)
+
+El número de mili-segundos de inactividad antes de que se presuma que un socket se quedó sin tiempo.
+
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### Class: `Http2SecureServer`
 <!-- YAML
@@ -1551,7 +1568,24 @@ Used to set the timeout value for http2 secure server requests, and sets a callb
 
 El callback dado, está registrado como un oyente en el evento `'timeout'`.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Tiempo de espera en milisegundos. **Default:** 0 (no timeout)
+
+El número de mili-segundos de inactividad antes de que se presuma que un socket se quedó sin tiempo.
+
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### `http2.createServer(options[, onRequestHandler])`<!-- YAML
 added: v8.4.0
@@ -1716,7 +1750,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
                  128 header pairs.
--->* `authority` {string|URL}
+-->* `authority` {string|URL} The remote HTTP/2 server to connect to. This must be in the form of a minimal, valid URL with the `http://` or `https://` prefix, host name, and IP port (if a non-default port is used). Userinfo (user ID and password), path, querystring, and fragment details in the URL will be ignored.
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
@@ -1834,7 +1868,7 @@ Para encabezados entrantes:
 * The `:status` header is converted to `number`.
 * Duplicates of `:status`, `:method`, `:authority`, `:scheme`, `:path`, `:protocol`, `age`, `authorization`, `access-control-allow-credentials`, `access-control-max-age`, `access-control-request-method`, `content-encoding`, `content-language`, `content-length`, `content-location`, `content-md5`, `content-range`, `content-type`, `date`, `dnt`, `etag`, `expires`, `from`, `if-match`, `if-modified-since`, `if-none-match`, `if-range`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `range`, `referer`,`retry-after`, `tk`, `upgrade-insecure-requests`, `user-agent` or `x-content-type-options` are discarded.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
-* For duplicate `cookie` headers, the values are joined together with '; '.
+* Para los encabezados `cookie` duplicados, los valores se unen con '; '.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
 ```js
@@ -2350,7 +2384,7 @@ Url {
 added: v8.4.0
 -->* Extends: {Stream}
 
-Este objeto es creado internamente por un servidor de HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][].
+This object is created internally by an HTTP server, not by the user. Es pasado como el segundo parámetro al evento [`'request'`][].
 
 #### Event: `'close'`
 <!-- YAML
