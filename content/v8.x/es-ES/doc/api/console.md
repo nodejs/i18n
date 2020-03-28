@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La clase `Console` se puede utilizar para crear un registrador simple con flujos de salida configurables y se puede acceder a ella utilizando `require('console').Console` o `console.Console` (o sus contrapartes desestructuradas):
 
 ```js
 const { Console } = require('console');
@@ -113,7 +113,7 @@ console.assert(false, 'Whoops %s', 'didn\'t work');
 // AssertionError: Whoops didn't work
 ```
 
-*Note*: The `console.assert()` method is implemented differently in Node.js than the `console.assert()` method [available in browsers](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).
+*Nota*: El método `console.assert()` se implementa de forma diferente en Node.js que el método `console.assert()` [disponible en los navegadores](https://developer.mozilla.org/en-US/docs/Web/API/console/assert).
 
 Específicamente, en los navegadores, llamar `console.assert()` con una aserción falsa hará que el `mensaje` se imprima en la consola sin interrumpir la ejecución del código subsiguiente. En Node.js, sin embargo, una aserción falsa causará que un `AssertionError` sea lanzado.
 
@@ -246,11 +246,11 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Para hacer que se repita indefinidamente, pase `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:**`false`.
+  * `showHidden` {boolean} If `true` luego el objeto no enumerable y símbolo las propiedades se mostrarán también. **Default:** `false`.
+  * `depth` {number} Indica [`util.inspect()`][] cuántas veces se repite mientras formatear el objeto. This is useful for inspecting large complicated objects. Para hacer que se repita indefinidamente, pase `null`. **Default:** `2`.
+  * `colors` {boolean} Si `true`, la salida se diseñará con el color ANSI   códigos. Los colores son personalizables;   ver [customizing` util.inspect()` colors][]. **Default:**`false`.
 
-Utiliza [`util.inspect()`][] en el `obj` e imprime la cadena resultante en `stdout`. Esta función evita cualquier función personalizada `inspect()` definida en `obj`.
+Utiliza [`util.inspect()`][] en `obj` e imprime la cadena resultante en `stdout`. Esta función omite cualquier función personalizada `inspeccionar()` definida en `obj`.
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -261,7 +261,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Imprime a `stderr` con newline. Se pueden pasar múltiples argumentos, con el primero usado como mensaje primario y todos los adicionales usados como valores de sustitución similares a printf(3) (todos los argumentos se pasan a [`util.format()`][]).
+Imprime en `stderr` con nueva línea. Se pueden pasar múltiples argumentos, con el primero utilizado como el mensaje principal y todos los adicionales utilizados como sustitución valores similares a printf (3) (todos los argumentos se pasan a [`util.format()`][]).
 
 ```js
 const code = 5;
@@ -271,7 +271,7 @@ console.error('error', code);
 // Prints: error 5, to stderr
 ```
 
-Si los elementos de formato (por ejemplo, `%d`) no se encuentran en la primera cadena, se llama a [`util.inspect()`][] en cada argumento y los valores de cadena resultantes se concatenan. Ver [`util.format()`][] para más información.
+Si los elementos de formato (por ejemplo,`%d`) no se encuentran en la primera cadena, entonces [`util.inspect()`][] se llama en cada argumento y la cadena resultante los valores están concatenados. Vea [`util.format()`][] para más información.
 
 ### console.group([...label])
 
@@ -283,7 +283,7 @@ added: v8.5.0
 
 Aumenta la sangría de las líneas siguientes en dos espacios.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Si se proporcionan una o más `identificaciones`, éstas se imprimen primero sin la sangría adicional.
 
 ### console.groupCollapsed()
 
@@ -291,7 +291,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias para [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -299,7 +299,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Disminuye la sangría de las líneas siguientes en dos espacios.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -310,7 +310,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-La función `console.info()` es un alias para [`console.log()`][].
+La `console.info()` función es un alias para [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -321,7 +321,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Imprime a `stdout` con newline. Se pueden pasar múltiples argumentos, con el primero usado como mensaje primario y todos los adicionales usados como valores de sustitución similares a printf(3) (todos los argumentos se pasan a [`util.format()`][]).
+Imprime a `stdout` con nueva línea. Se pueden pasar múltiples argumentos, con el primero utilizado como el mensaje principal y todos los adicionales utilizados como sustitución valores similares a printf (3) (todos los argumentos se pasan a [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -331,7 +331,7 @@ console.log('count:', count);
 // Prints: count: 5, to stdout
 ```
 
-Ver [`util.format()`][] para más información.
+Vea [`util.format()`][] para más información.
 
 ### console.time(label)
 
@@ -341,7 +341,7 @@ added: v0.1.104
 
 * `label` {string}
 
-Inicia un temporizador que puede utilizarse para calcular la duración de una operación. Los temporizadores se identifican mediante una `identificación` única. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Las duraciones del temporizador son precisas en menos de un milisegundo.
+Inicia un temporizador que se puede usar para calcular la duración de una operación. Temporizadores se identifican por una `etiqueta` única. Utilice la misma `identificación` cuando llame a [`console.timeEnd()`][] para detener el temporizador y enviar el tiempo transcurrido en milisegundos a `stdout`. Las duraciones del temporizador son precisas hasta en milisegundos.
 
 ### console.timeEnd(label)
 
@@ -357,7 +357,7 @@ changes:
 
 * `label` {string}
 
-Detiene un temporizador que se inició previamente llamando a [`console.time()`][] e imprime el resultado en `stdout`:
+Detiene un temporizador que se inició anteriormente llamando a [`console.time()`][] y imprime el resultado a `stdout`:
 
 ```js
 console.time('100-elements');
@@ -366,7 +366,7 @@ console.timeEnd('100-elements');
 // prints 100-elements: 225.438ms
 ```
 
-*Note*: As of Node.js v6.0.0, `console.timeEnd()` deletes the timer to avoid leaking it. En las versiones anteriores, el temporizador persistió. Esto permitió que `console.timeEnd()` fuera llamado varias veces para la misma identificación. Esta funcionalidad no fue intencionada y ya no es compatible.
+*Nota*: A partir de Node.js v6.0.0.0, `console.timeEnd()` elimina el temporizador para evitar fugas. En las versiones anteriores, el temporizador persistió. Esto permitió que `console.timeEnd()` fuera llamado varias veces para la misma identificación. Esta funcionalidad no fue intencionada y ya no es compatible.
 
 ### console.trace(\[message\]\[, ...args\])
 
@@ -404,11 +404,11 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-La función `console.warn()` es un alias para [`console.error()`][].
+La `console.warn()` función es un alias para [`console.error()`][].
 
 ## Solo métodos del inspector
 
-The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
+Los siguientes métodos están expuestos por el motor V8 en la API general, pero lo hacen no mostrar nada a menos que se use junto con el [inspector](debugger.html) (`--inspeccionar` flag).
 
 ### console.dirxml(object)
 
@@ -438,7 +438,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Este método no muestra nada a menos que se use en el inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Este método no muestra nada a menos que se use en el inspector. El método `console.profile()` inicia un perfil de CPU de JavaScript con una opción etiqueta hasta que se llame a [`console.profileEnd()`][]. El perfil se agrega a el panel **Profile** del inspector.
 
 ```js
 console.profile ('MyLabel');
@@ -453,7 +453,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-Este método no muestra nada a menos que se use en el inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Este método no muestra nada a menos que se use en el inspector. Detiene el sesión actual de creación de perfiles de CPU de JavaScript si se ha iniciado una y se imprime el informe al panel **Profiles** del inspector. Vea [`console.profile()`][] para un ejemplo.
 
 ### console.table(array[, columns])
 
@@ -484,7 +484,7 @@ added: v8.0.0
 
 * `label` {string} Defaults to `'default'`.
 
-Este método no muestra nada a menos que se use en el inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Este método no muestra nada a menos que se use en el inspector. El método `console.timeline()` es la forma obsoleta de [`console.time()`][].
 
 ### console.timelineEnd([label])
 
