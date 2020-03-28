@@ -23,7 +23,7 @@ Throughout the documentation are indications of a section's stability. Some APIs
 
 <!-- separator -->
 
-> Σταθερότητα: 1 - Πειραματικό. The feature is not subject to Semantic Versioning rules. Non-backward compatible changes or removal may occur in any future release. Η χρήση αυτών των χαρακτηριστικών δεν συνιστώνται για χρήση σε περιβάλλοντα παραγωγής.
+> Σταθερότητα: 1 - Πειραματικό. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
