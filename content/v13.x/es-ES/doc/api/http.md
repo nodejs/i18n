@@ -6,7 +6,7 @@
 
 Para utilizar el servidor HTTP y el cliente, uno debe utilizar `require('http')`.
 
-Las interfaces HTTP en Node.js están diseñadas para soportar varias funciones del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y posiblemente codificados en fragmentos. La interfaz nunca almacena respuestas o peticiones enteras — el usuario puede establecer entonces un flujo continuo de datos.
+Las interfaces HTTP en Node.js están diseñadas para soportar varias funciones del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y posiblemente codificados en fragmentos. The interface is careful to never buffer entire requests or responses, so the user is able to stream data.
 
 Los encabezados de los mensajes HTTP se representan mediante un objeto como el siguiente:
 ```js
@@ -19,7 +19,7 @@ Los encabezados de los mensajes HTTP se representan mediante un objeto como el s
 
 Las claves se escriben en minúscula. Los valores no son modificados.
 
-Para poder soportar el espectro completo de las posibles aplicaciones HTTP, la API HTTP de Node.js es de muy bajo nivel. Solo se encarga de manejar flujos y analizar mensajes. Puede analizar y re ordenar un mensaje en encabezado y cuerpo, pero no puede hacer lo mismo con un objeto header o un objeto body.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level. Solo se encarga de manejar flujos y analizar mensajes. Puede analizar y re ordenar un mensaje en encabezado y cuerpo, pero no puede hacer lo mismo con un objeto header o un objeto body.
 
 Consulte [`message.headers`][] para más detalles sobre cómo se manejan los encabezados duplicados.
 
@@ -149,6 +149,8 @@ added: v0.11.4
 -->* {Object}
 
 Un objeto que contiene matrices de sockets en espera para ser utilizadas por el agente cuando `keepAlive` sea habilitado. No modificar.
+
+Sockets in the `freeSockets` list will be automatically destroyed and removed from the array on `'timeout'`.
 
 ### `agent.getName(options)`
 <!-- YAML
@@ -621,7 +623,7 @@ added: v0.1.29
 * `callback` {Function}
 * Devuelve: {boolean}
 
-Envía un fragmento del cuerpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Envía un fragmento del cuerpo. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 El argumento `encoding` es opcional y solo aplica cuando `chunk` es una string. Por defecto es `'utf8'`.
 
@@ -826,7 +828,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->* Extends: {Stream}
 
-Este objeto es creado internamente por un servidor de HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][].
+This object is created internally by an HTTP server, not by the user. Es pasado como el segundo parámetro al evento [`'request'`][].
 
 ### Event: `'close'`<!-- YAML
 added: v0.6.7
@@ -1244,7 +1246,7 @@ Los duplicados en las cabeceras crudas son manejados de las siguientes maneras, 
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, `server`, or `user-agent` are discarded.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
-* For duplicate `cookie` headers, the values are joined together with '; '.
+* Para los encabezados `cookie` duplicados, los valores se unen con '; '.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
 ### `message.httpVersion`<!-- YAML
@@ -1401,8 +1403,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
 -->* `options` {Object}
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Útil para extender el `IncomingMessage` original. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Default:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Especifica la clase `ServerResponse` que será utilizada. Útil para extender el `ServerResponse` original. **Default:** `ServerResponse`.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
   * `maxHeaderSize` {number} Optionally overrides the value of [`--max-http-header-size`][] for requests received by this server, i.e. the maximum length of request headers in bytes. **Default:** 8192 (8KB).
 * `requestListener` {Function}
