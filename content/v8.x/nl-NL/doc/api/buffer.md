@@ -4,13 +4,13 @@
 
 > Stabiliteit: 2 - stabiel
 
-Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Voor de introductie van [`TypedArray`], had de JavaScript taal geen mechanisme voor het lezen of manipuleren van stromen van binaire data. De `Buffer` class werd geïntroduceerd als onderdeel van de Node.js API om interactie met octet streams in TCP streams, bestandsbewerkingen, en andere contexten mogelijk te maken.
 
-With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
+Nu [`TypedArray`] beschikbaar is, implementeert de `Buffer` class de [`Uint8Array`] API op een manier die meer is geoptimaliseerd en geschikt voor Node.js.
 
-Instanties van de `Buffer` class zijn te vergelijken met arrays of hele getallen, maar corresponderen met vaste, rauwe geheugentoewijzingen buiten de V8-heap. The size of the `Buffer` is established when it is created and cannot be changed.
+Instanties van de `Buffer` class zijn te vergelijken met arrays of hele getallen, maar corresponderen met vaste, rauwe geheugentoewijzingen buiten de V8-heap. De grootte van de `Buffer` wordt vastgesteld wanneer deze wordt gecreëerd en kan niet worden gewijzigd.
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+De `Buffer` class zit binnen het globale bereik, wat het onwaarschijnlijk maakt dat men ooit `require('buffer').Buffer` hoeft te gebruiken.
 
 Examples:
 
@@ -41,7 +41,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 In versions of Node.js prior to v6, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
+* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. Vóór Node.je 8.0.0, het geheugen toegekend voor dergelijke `Buffer` instanties is *niet* geïnitialiseerd en *kan gevoelige gegevens bevatten*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
 * Het doorgeven van een string, array, of `Buffer` als eerste argument, kopieert de doorgegeven data van het object naar de `Buffer`.
 * Het doorgeven van een [`ArrayBuffer`] of een [`SharedArrayBuffer`] retourneert een `Buffer` wat het toegewezen geheugen deelt met de gegeven array buffer.
 
@@ -127,7 +127,7 @@ De tekencodes die op dit moment worden ondersteund door Node.js zijn:
 
 * `'hex'` Codeer elke byte als twee hexadecimale tekens.
 
-*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+*Note*: Today's browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. Dit betekent dat, terwijl men iets doet als bijvoorbeeld `http.get()`, als de geretourneerde charset één van degenen is die vermeld staan in de WHATWG specificaties, dan is het echter mogelijk dat de server `'win-1252'` gecodeerde data heeft geretourneerd, en het gebruik van `'latin1'` codering kan deze tekens fout decoderen.
 
 ## Buffers en TypedArray
 
@@ -139,7 +139,7 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instanties zijn ook [`Uint8Array`] instanties. However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+`Buffer` instanties zijn ook [`Uint8Array`] instanties. Er zijn echter subtiele tegenstrijdigheden met [`TypedArray`]. Bijvoorbeeld, terwijl [`ArrayBuffer#slice()`] een kopie van de slice creëert, zal de uitvoering van [`Buffer#slice()`][`buf.slice()`] een beeld creëeren over de bestaande `Buffer` zonder het te kopiëren, wat de [`Buffer#slice()`][`buf.slice()`] veel efficiënter maakt.
 
 Het is ook mogelijk nieuwe [`TypedArray`] instanties te creëren vanuit een `Buffer` met de volgende uitzonderingen:
 
@@ -317,7 +317,7 @@ changes:
 
 > Stabiliteit: 0 - Afgekeurd: Gebruik [`Buffer.from(buffer)`] als alternatief.
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Een bestaande `Buffer` of [`Uint8Array`] waarvan data worden gekopieerd.
 
 Kopieert de passende `buffer` data naar een nieuwe `Buffer` instantie.
 
@@ -359,7 +359,7 @@ changes:
 
 Kent een nieuwe `Buffer` van `size` bytes toe. If the `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be thrown. A zero-length `Buffer` will be created if `size` is 0.
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
+Voorafgaand aan Node.js 8.0.0., is het onderliggende geheugen voor `Buffer` instanties die op deze manier zijn gecreëerd *niet geïnitialiseerd*. De inhoud van een nieuw gecreëerde `Buffer` is onbekend en *kan gevoelige infomatie bevatten*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
 
 Voorbeeld:
 
@@ -389,7 +389,7 @@ changes:
 * `string` {string} String om te coderen.
 * `encoding` {string} De codering van `string`. **Standaard:** `'utf8'`.
 
-Creëert een nieuwe `Buffer` die een `string` bevat. The `encoding` parameter identifies the character encoding of `string`.
+Creëert een nieuwe `Buffer` die een `string` bevat. De `encoding` parameter identificeert de tekencodering van `string`.
 
 Examples:
 
@@ -718,7 +718,7 @@ Een `TypeError` zal worden geworpen als de `arrayBuffer` geen [`ArrayBuffer`] of
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Een bestaande `Buffer` of [`Uint8Array`] waarvan data worden gekopieerd.
 
 Kopieert de passende `buffer` data naar een nieuwe `Buffer` instantie.
 
@@ -748,7 +748,7 @@ added: v5.10.0
 * `string` {string} Een string om te coderen.
 * `encoding` {string} De codering van `string`. **Standaard:** `'utf8'`.
 
-Creëert een nieuwe `Buffer` die een `string` bevat. The `encoding` parameter identifies the character encoding of `string`.
+Creëert een nieuwe `Buffer` die een `string` bevat. De `encoding` parameter identificeert de tekencodering van `string`.
 
 Examples:
 
@@ -776,10 +776,10 @@ added: v8.2.0
 -->
 
 * `object` {Object} Een object dat `Symbol.toPrimitive` of `valueOf()` ondersteunt
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `offsetOrEncoding` {number|string} Een byte-offset of codering, afhankelijk van de waarde geretourneerd door `object.valueOf()` of `object[Symbol.toPrimitive]()`.
+* `length` {number} Een lengte, afhankelijk van de waarde geretourneerd door `object.valueOf()` of `object[Symbol.toPrimitive]()`.
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
+Voor objecten waarvan de `valueOf()` functie een waarde retourneert die niet strikt gelijk is aan het `object`, retourneert `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
 For example:
 
@@ -788,7 +788,7 @@ const buf = Buffer.from(new String('this is a test'));
 // <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+Voor objecten die `Symbol.toPrimitive` ondersteunen, retourneert `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
 
 For example:
 
@@ -1067,7 +1067,7 @@ changes:
 * `encoding` {string} Als `value` een string is, dan is dit de bijbehorende codering. **Standaard:** `'utf8'`.
 * Retourneert: {Buffer} Een referentie naar `buf`.
 
-Vult `buf` met de opgegeven `value`. If the `offset` and `end` are not given, the entire `buf` will be filled. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
+Vult `buf` met de opgegeven `value`. Als de `offset` en `end` niet vermeld worden, wordt de gehele `buf` gevuld. This is meant to be a small simplification to allow the creation and filling of a `Buffer` to be done on a single line.
 
 Example: Fill a `Buffer` with the ASCII character `'h'`
 
@@ -1161,8 +1161,8 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} Waarnaar gezocht moet worden.
 * `byteOffset` {integer} Waar men moet beginnen met zoeken in `buf`. **Standaard:** `0`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Standaard:** `'utf8'`.
-* Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `encoding` {string} Als `value` een string is, dan is dit de codering die gebruikt wordt om de binaire representatie te bepalen van de string waarnaar gezocht gaat worden in `buf`. **Standaard:** `'utf8'`.
+* Retourneert: {integer} De index van de eerste gebeurtenis van `value` in `buf`, of `-1` als `buf` geen `value` bevat.
 
 Als de `value` is:
 
@@ -1223,7 +1223,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+Als `value` een lege string is of een lege `Buffer` en `byteOffset` is minder dan `buf.length`, dan zal `byteOffset` worden geretourneerd. Als de `value` leeg is en de `byteOffset` is ten minste `buf.length`, dan zal `buf.length` worden geretourneerd.
 
 ### buf.keys()
 
@@ -1265,10 +1265,10 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} Waarnaar gezocht moet worden.
 * `byteOffset` {integer} Waar men moet beginnen met zoeken in `buf`. **Standaard:** [`buf.length`]`- 1`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Standaard:** `'utf8'`.
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* `encoding` {string} Als `value` een string is, dan is dit de codering die gebruikt wordt om de binaire representatie te bepalen van de string waarnaar gezocht gaat worden in `buf`. **Standaard:** `'utf8'`.
+* Retourneert: {integer} De index van de laatste gebeurtenis van `value` in `buf`, of `-1` als `buf` geen `value` bevat.
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+Identiek aan [`buf.indexOf()`], behalve dat de laatste gebeurtenis van de `value` wordt gevonden, in plaats van de eerste gebeurtenis.
 
 Examples:
 
@@ -1733,7 +1733,7 @@ changes:
 
 Retourneert een nieuwe `Buffer` die verwijst naar hetzelfde geheugen als het origineel, maar offset en bijgesneden door de `start` en `end` van indexcijfers.
 
-Specifying `end` greater than [`buf.length`] will return the same result as that of `end` equal to [`buf.length`].
+Het specificeren van een `end` groter dan [`buf.length`] zal hetzelfde resultaat retourneren als `end` gelijk aan [`buf.length`].
 
 *Note*: Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
 
@@ -1909,7 +1909,7 @@ added: v0.1.90
 
 Decodeert `buf` naar een string volgens de gespecificeerde teken-codering in `encoding`. `start` en `end` kunnen worden doorgegeven om alleen een subset van `buf` te coderen.
 
-The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
+De maximale lengte van een string instantie (in UTF-16 code units) is beschikbaar als [`buffer.constants.MAX_STRING_LENGTH`][].
 
 Examples:
 
@@ -2334,7 +2334,7 @@ added: v0.5.4
 
 Retourneert het maximaal aantal bytes die worden geretourneerd als `buf.inspect()` wordt aangeroepen. Dit kan overschreven worden door gebruikers-modules. Zie [`util.inspect()`] voor meer informatie over `buf.inspect()` gedrag.
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## buffer.kMaxLength
 
@@ -2346,7 +2346,7 @@ added: v3.0.0
 
 Een alias voor [`buffer.constants.MAX_LENGTH`][]
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## buffer.transcode(source, fromEnc, toEnc)
 
@@ -2363,11 +2363,11 @@ changes:
 * `fromEnc` {string} De actuele codering.
 * `toEnc` {string} Naar doel codering.
 
-Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Retourneert een nieuwe `Buffer` instantie.
+Codeert opnieuw de gegeven `Buffer` of `Uint8Array` instantie van één teken codering naar een andere. Retourneert een nieuwe `Buffer` instantie.
 
-Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
+Werpt als de `fromEnc` of `toEnc` ongeldige teken coderingen specificeert, of als de conversie van `fromEnc` naar `toEnc` niet is toegestaan.
 
-The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. Bijvoorbeeld:
+Het transcoderingsproces zal vervangingstekens gebruiken als een gegeven byte reeks niet adequaat kan worden weergegeven in de codering van het doel. Bijvoorbeeld:
 
 ```js
 const buffer = require('buffer');
@@ -2377,9 +2377,9 @@ console.log(newBuf.toString('ascii'));
 // Print: '?'
 ```
 
-Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced with `?` in the transcoded `Buffer`.
+Omdat het Euro (`€`) teken niet kan worden weergegeven in US-ASCII, wordt het vervangen door `?</> in de trans-gecodeerde <code>Buffer`.
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat dit een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ## Class: SlowBuffer
 
@@ -2452,7 +2452,7 @@ console.log(buf);
 added: 8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Observeer hier dat `buffer.constants` een eigenschap is op de `buffer` module geretourneerd door `require('buffer')`, niet op de `Buffer` globaal of een `Buffer` instantie.
 
 ### buffer.constants.MAX_LENGTH
 
@@ -2474,6 +2474,6 @@ added: 8.2.0
 
 * {integer} De grootste toegestane lengte voor een enkele `string` instantie.
 
-Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
+Vertegenwoordigt de grootste `length` die een `string` primitieve kan hebben, geteld in UTF-16 code units.
 
 Deze waarde kan afhankelijk zijn van de JS engine die gebruikt wordt.
