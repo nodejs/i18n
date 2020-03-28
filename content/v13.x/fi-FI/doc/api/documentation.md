@@ -23,7 +23,7 @@ Vakausindeksit ovat:
 
 <!-- separator -->
 
-> Vakaus: 1 - Kokeellinen. The feature is not subject to Semantic Versioning rules. Non-backward compatible changes or removal may occur in any future release. Piirteen käyttöä ei suositella tuotantoympärisöissä.
+> Vakaus: 1 - Kokeellinen. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
