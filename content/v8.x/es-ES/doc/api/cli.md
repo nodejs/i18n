@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js viene con una variedad de opciones de CLI. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js viene con una variedad de opciones de CLI. Estas opciones exponen la depuración incorporada, múltiples formas de ejecutar scripts, y otras opciones útiles de tiempo de ejecución.
 
 Para ver esta documentación como una página de manual en un terminal, ejecutar `man node`.
 
@@ -49,9 +49,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evalúa el siguiente argumento como JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Evalúa el siguiente argumento como JavaScript. Los módulos que son predefinidos en el REPL también pueden ser usados en `script`.
 
-*Note*: On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+*Nota*: En Windows, usar `cmd.exe` una comilla única no funcionará correctamente porque solamente reconoce doble `"` para citar. En el Powershell o en el bash de Git, tanto `'` y `"` son utilizables.
 
 ### `-p`, `--print "script"`
 
@@ -93,7 +93,7 @@ added: v1.6.0
 
 Precarga el módulo específico en el inicio.
 
-Follows `require()`'s module resolution rules. `module` puede ser una ruta a un archivo, o un nombre del módulo de node.
+Sigue las reglas de resolución del módulo `require()`'s. `module` puede ser una ruta a un archivo, o un nombre del módulo de node.
 
 ### `--inspect[=[host:]port]`
 
@@ -195,7 +195,7 @@ Imprime stack traces para advertencias de proceso (incluye desaprobaciones).
 added: v8.0.0
 -->
 
-Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error mientras se intenta escribir la advertencia al archivo, la advertencia será escrita en el stderr en su lugar.
 
 ### `--trace-sync-io`
 
@@ -203,7 +203,7 @@ Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+Imprime un reporte de los stack traces cada vez que un I/O sincronizado es detectado luego del primer turno del bucle del evento.
 
 ### `--force-async-hooks-checks`
 
@@ -243,7 +243,7 @@ Template string specifying the filepath for the trace event data, it supports `$
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [Buffer](buffer.html#buffer_buffer) and [SlowBuffer](buffer.html#buffer_class_slowbuffer) instances.
+Automáticamente rellena con ceros todas las nuevos instancias [Buffer](buffer.html#buffer_buffer) y [SlowBuffer](buffer.html#buffer_class_slowbuffer) asignadas.
 
 ### `--preserve-symlinks`
 
@@ -251,9 +251,9 @@ Automatically zero-fills all newly allocated [Buffer](buffer.html#buffer_buffer)
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and caching modules.
+Instruye al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
 
-By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+De forma predeterminada, cuando Node.Js carga un módulo de una ruta que está simbólicamente enlazada a una localización diferente en el disco, Node.Js desreferenciará el enlace y usará la "ruta real" actual del módulo en disco tanto como identificador como una ruta root para localizar otros módulos de dependencia. En la mayoría de los casos, este comportamiento predeterminado es aceptable. Sin embargo, cuando se usan dependencias de pares enlazadas simbólicamente, como se muestra en el siguiente ejemplo, el comportamiento predeterminado causa que una excepción sea arrojada si el `moduleA` intenta requerir `moduleB` como una dependencia de pares:
 
 ```text
 {appDir}
@@ -269,9 +269,9 @@ By default, when Node.js loads a module from a path that is symbolically linked 
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
+La bandera de línea de comando `--preserve-symlinks` instruye a Node.Js a usar la ruta symlink para módulos en vez de la ruta real, permitiendo que dependencias de pares enlazadas simbólicamente sean encontradas.
 
-Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
+Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, módulos *native* simbólicamente enlazados pueden fallar al cargar si estos se encuentran enlazados desde mas de una localización en el árbol de dependencias (Node.Js observaría a estos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que una excepción sea arrojada).
 
 ### `--track-heap-objects`
 
@@ -307,7 +307,7 @@ Por ejemplo, `--stack-trace-limit` es equivalente a `--stack_trace_limit`.
 added: v4.0.0
 -->
 
-Especifica una lista de cifrado TLS predeterminada alternativa. (Requires Node.js to be built with crypto support. (Predeterminado))
+Especifica una lista de cifrado TLS predeterminada alternativa. (Requiere que Node.Js se construya con soporte criptográfico. (Predeterminado))
 
 ### `--enable-fips`
 
@@ -315,7 +315,7 @@ Especifica una lista de cifrado TLS predeterminada alternativa. (Requires Node.j
 added: v6.0.0
 -->
 
-Habilita FIPS-compliant cripto al Inicio. (Requires Node.js to be built with `./configure --openssl-fips`)
+Habilita FIPS-compliant cripto al Inicio. (Requiere que Node.Js sea construido con `./configure --openssl-fips`)
 
 ### `--force-fips`
 
@@ -323,7 +323,7 @@ Habilita FIPS-compliant cripto al Inicio. (Requires Node.js to be built with `./
 added: v6.0.0
 -->
 
-Fuerza cripto FIPS-compliant en inicio. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`)
+Fuerza cripto FIPS-compliant en inicio. (No puede ser deshabilitado desde el código del script.) (Mismos requisitos que as `--enable-fips`)
 
 ### `--openssl-config=file`
 
@@ -331,7 +331,7 @@ Fuerza cripto FIPS-compliant en inicio. (Cannot be disabled from script code.) (
 added: v6.9.0
 -->
 
-Carga un archivo de configuración OpenSSL en el arranque. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser usado para habilitar criptografía compatible con los estándares federales de procesamiento de la información (FIPS) si Node.Js es construido con `./configure --openssl-fips`.
 
 ### `--use-openssl-ca`, `--use-bundled-ca`
 
@@ -339,11 +339,11 @@ Carga un archivo de configuración OpenSSL en el arranque. Among other uses, thi
 added: v7.5.0
 -->
 
-Use OpenSSL's default CA store or use bundled Mozilla CA store as supplied by current Node.js version. El almacen predeterminado es seleccionable en el tiempo de construcción.
+Utilizar el almacen predeterminado de OpenSSl CA o usar el almacen combinado Mozilla CA como es suministrado por la versión actual de Node.Js. El almacen predeterminado es seleccionable en el tiempo de construcción.
 
-El uso del almacén OpenSSL permite modificaciones externas del almacén. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+El uso del almacén OpenSSL permite modificaciones externas del almacén. Para la mayoría de distribuciones Linux y BSD, esta tienda es mantenida por los mantenedores de distribución y los administradores de sistemas. La localización del almacen OpenSSL es dependiente de la configuración de la librería OpenSSl pero esto puede ser alterado en el tiempo de ejecución usando variables de ambiente.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
+El almacen combinado CA, como es suministrado por Node.Js, es una instantánea del almacen Mozilla CA que es fija al tiempo de lanzamiento. Es idéntico en todas las plataformas soportadas.
 
 Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
@@ -361,7 +361,7 @@ Especifica la ruta de carga datos ICU. (sobreescribe `NODE_ICU_DATA`)
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Alias para stdin, análogo al uso de - en otras utilidades de línea de comandos, lo que significa que el script lee de stdin, y el resto de las opciones se pasan al script.
 
 ### `--`
 
@@ -369,7 +369,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v7.5.0
 -->
 
-Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. Si ningún nombre de script o script eval/print es suministrado anteriormente a esto, entonces el siguiente argumento será usado como nombre de archivo del script.
 
 ### `--max-http-header-size=size`
 
@@ -413,7 +413,7 @@ Cuando se establece a `1`, no se utilizarán colores en el REPL.
 added: v0.11.15
 -->
 
-La ruta de datos para los datos ICU (objeto Inl). Will extend linked-in data when compiled with small-icu support.
+La ruta de datos para los datos ICU (objeto Inl). Extenderá los datos enlazados cuando se compilen con soporte Icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -499,7 +499,7 @@ When set to `1`, instructs the module loader to preserve symbolic links when res
 added: v3.0.0
 -->
 
-Ruta al archivo utilizado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta por defecto es `~/.node_repl_history`, la cual puede ser sobreescrita por esta variable. Establecer el valor a una string vacía (`''` or `' '`) inhabilita el historial REPL persistente.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 
@@ -507,9 +507,9 @@ Ruta al archivo utilizado para almacenar el historial REPL persistente. The defa
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Cuando es colocado, el muy conocido "root" CA (como VeriSign) será extendido con los certificados extra en `file`. El archivo debería consistir de uno o más certificados de confianza en el formato PEM. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
 
-Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+Note que ni los certificados bien conocidos ni los extras se utilizan cuando las propiedades de las opciones `ca` son explícitamente especificados por un cliente TLS o HTTPS o un servidor.
 
 ### `OPENSSL_CONF=file`
 
@@ -517,10 +517,9 @@ Note that neither the well known nor extra certificates are used when the `ca` o
 added: v7.7.0
 -->
 
-Carga un archivo de configuración OpenSSL en el arranque. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
---openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser usado para habilitar criptografía compatible con los estándares federales de procesamiento de la información (FIPS) si Node.Js es construido con `./configure --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
+Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno es ignorada.
 
 ### `SSL_CERT_DIR=dir`
 
@@ -528,7 +527,7 @@ If the [`--openssl-config`][] command line option is used, the environment varia
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
+Si `--use-openssl-ca` es habilitado, esto lo anula y establece el directorio de OpenSSl que contiene los certificados de confianza.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
@@ -538,7 +537,7 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory co
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
+Si `--use-openssl-ca` es habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
@@ -548,7 +547,7 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file contain
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
+Cuando se establece, se emitirán advertencias de procesos al archivo dado en vez de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si un error ocurre al internar escribir la advertencia al archivo, la advertencia será escrita al stderr en su lugar. Esto es equivalente a usar la bandera de línea de comandos `--redirect-warnings=file`.
 
 ### `UV_THREADPOOL_SIZE=size`
 
@@ -563,4 +562,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 - `dns.lookup()`
 - todas las APIs `zlib`, distintas de aquellas que son explícitamente sincrónicas
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). Para mayor información, vea la [documentación del threadpool libuv](http://docs.libuv.org/en/latest/threadpool.html).
