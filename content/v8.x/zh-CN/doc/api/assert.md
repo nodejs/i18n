@@ -6,9 +6,9 @@
 
 `assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+更多关于平等性的对比，可以参考 [MDN 上 JavaScript 中的相等性判断](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。
 
 ## Strict 模式
 
@@ -33,7 +33,7 @@ const assert = require('assert').strict;
 
 > 稳定性：0 - 已弃用：改为使用Strict模式。
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
 可以通过如下方式使用：
 
@@ -41,7 +41,7 @@ When accessing `assert` directly instead of using the `strict` property, the [Ab
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生意想不到的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -91,16 +91,16 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 [`assert.deepStrictEqual()`][]。
 
-测试 `actual` 和 `expected` 参数之间是否深度相等。 Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots)，附加的符号，或不可枚举的属性 - 对这些类型的测试，考虑使用[`assert.deepStrictEqual()`][]。 这可能会导致不可预期的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-针对 [`Map`][] 和 [`Set`][] 的例外。 Maps and Sets have their contained items compared too, as expected.
+针对 [`Map`][] 和 [`Set`][] 的例外。 因为 Map 和 Set 也比较了它们包含的项目。
 
 “深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
@@ -172,16 +172,16 @@ changes:
 
 ### 比较的详细说明
 
-* Primitive values are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
-* Set values and Map keys are compared using the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison. (这意味着在比较它们时不会出现[警告](#assert_caveats))。
+* 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `==＝` ) 对原始值进行比较。
+* 使用 [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) 来比较Set值和Map键值。 (这意味着在比较它们时不会出现[警告](#assert_caveats))。
 * 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
 * 仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
 * [`Error`][] messages are always compared, even though this property is non-enumerable.
 * [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
 * Object properties are compared unordered.
 * Map keys and Set items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
+* 当两边的值不相同或遇到循环引用时，递归会停止。
 
 ```js
 const assert = require('assert').strict;
@@ -276,7 +276,7 @@ changes:
 
 断言 `block` 函数不会抛出错误。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 相反，考虑在不应抛出的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
 当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
@@ -335,7 +335,7 @@ added: v0.1.21
 
 > 稳定性：0 - 已弃用：改为使用 [`assert.strictEqual()`][]。
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+浅测试，使用 [抽象相等比较法](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 比较 `actual` 和 `expected` 之间的强制相等性。
 
 ```js
 const assert = require('assert');
@@ -367,7 +367,7 @@ added: v0.1.21
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-抛出一个 `AssertionError` 错误. 如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided only it will be used as the error message, the other arguments will be stored as properties on the thrown object. 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ）。
+抛出一个 `AssertionError` 错误. 如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，则 `operator` 的默认值是 `'!='`。 如果 `message` 是被提供的唯一参数，它将被作为错误消息，其它参数将作为属性存储在被抛出的对象上。 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ）。
 
 ```js
 const assert = require('assert').strict;
@@ -382,7 +382,7 @@ assert.fail(1, 2, 'whoops', '>');
 // AssertionError [ERR_ASSERTION]: whoops
 ```
 
-*Note*: In the last two cases `actual`, `expected`, and `operator` have no influence on the error message.
+*注意*：在后两种情况中，`actual`， `expected` 和 `operator` 对错误消息没有影响。
 
 ```js
 assert.fail();
@@ -530,7 +530,7 @@ added: v0.1.21
 
 > 稳定性：0 - 已弃用：改为使用 [`assert.notStrictEqual()`][]。
 
-Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
+浅测试，使用 [抽象相等比较法](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ) 比较强制非相等性。
 
 ```js
 const assert = require('assert');
@@ -557,7 +557,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-Tests strict inequality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `!==` ).
+使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `!==` ) 测试严格不相等性。
 
 ```js
 const assert = require('assert').strict;
@@ -612,7 +612,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-Tests strict equality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
+使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ) 测试严格相等性。
 
 ```js
 const assert = require('assert').strict;
@@ -647,7 +647,7 @@ Besides the async nature to await the completion behaves identical to [`assert.t
 
 If specified, `error` can be a constructor, [`RegExp`][], a validation function, or an object where each property will be tested for.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
+如果指定的话，假如block拒绝失败，`message` 会是由 `AssertionError` 提供的消息。
 
 ```js
 (async () => {
@@ -780,11 +780,11 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. 这可能会导致难以发现的错误。
+由于令人困惑的表示方法，建议不要使用字符串作为第二个参数。 这可能会导致难以发现的错误。
 
 ## 注意事项
 
-For the following cases, consider using ES2015 [`Object.is()`][], which uses the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison.
+在如下情况中，请考虑使用ES2015中的 [`Object.is()`][]，它会使用[SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero)来进行比较。
 
 ```js
 const a = 0;
@@ -804,4 +804,4 @@ assert(Object.is(str1 / 1, str2 / 1));
 // but Object.is() can!
 ```
 
-For more information, see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+请参考[MDN上关于相等比较和等同性的指南](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)以获取更多信息。
