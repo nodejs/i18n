@@ -691,7 +691,7 @@ added: v0.5.9
 
 The `'message'` event is triggered when a child process uses [`process.send()`][] to send messages.
 
-*注意*：会对消息进行序列化和解析。 The resulting message might not be the same as what is originally sent.
+*注意*：会对消息进行序列化和解析。 生成的消息可能和原始发送的消息不同。
 
 <a name="child_process_child_channel"></a>
 
@@ -846,7 +846,7 @@ changes:
 
 When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`process.on('message')`][] event.
 
-*注意*：会对消息进行序列化和解析。 The resulting message might not be the same as what is originally sent.
+*注意*：会对消息进行序列化和解析。 生成的消息可能和原始发送的消息不同。
 
 For example, in the parent script:
 
