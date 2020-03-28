@@ -80,7 +80,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-* 注意: *在 Windows 系统上，Node.js 遵循单驱动器工作目录的概念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+* 注意: *在 Windows 系统上，Node.js 遵循单驱动器工作目录的概念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. 请参阅 [此 MSDN 页面](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) 以获取更多信息。
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
