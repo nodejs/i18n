@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-HTTPS es un protocolo HTTP sobre TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS es un protocolo HTTP sobre TLS/SSL. En Node.js, esto se implementa como un módulo separado.
 
 ## Classe: https.Agent
 
@@ -20,7 +20,7 @@ Un objeto [`Agent`][] para HTTPS similar a [`http.Agent`][]. See [`https.request
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. Vea [`http.Server`][] para más información.
+Esta clase es una subclase de `tls.Server` y emite eventos iguales a [`http.Server`][]. Vea [`http.Server`][] para más información.
 
 ### server.close([callback])
 
@@ -195,9 +195,9 @@ changes:
 
 * `url` {string | URL}
 * `opciones` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  * `protocol` **Predeterminado:** `'https:'`
-  * `port` **Predeterminado:** `443`
-  * `agent` **Predeterminado:** `https.globalAgent`
+    * `protocol` **Predeterminado:** `'https:'`
+    * `port` **Predeterminado:** `443`
+    * `agent` **Predeterminado:** `https.globalAgent`
 * `callback` {Function}
 
 Hace una solicitud a un servidor web seguro.
