@@ -5,7 +5,7 @@
 
 Addons are dynamically-linked shared objects written in C++. The [`require()`](modules.html#modules_require_id) function can load Addons as ordinary Node.js modules. Addons provide an interface between JavaScript and C/C++ libraries.
 
-There are three options for implementing Addons: N-API, nan, or direct use of internal V8, libuv and Node.js libraries. Unless you need direct access to functionality which is not exposed by N-API, use N-API. Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
+There are three options for implementing Addons: N-API, nan, or direct use of internal V8, libuv and Node.js libraries. Unless there is a need for direct access to functionality which is not exposed by N-API, use N-API. Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
@@ -241,7 +241,7 @@ require('./build/Release/addon');
 
 ### Yapı
 
-Kaynak kodu yazıldıktan sonra, ikili `addon.node` dosyasına derlenmelidir. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Bu dosya, [node-gyp](https://github.com/nodejs/node-gyp) tarafından — özellikle Node.js Eklentilerini derlemek için yazılmış bir araç olarak kullanılır.
+Kaynak kodu yazıldıktan sonra, ikili `addon.node` dosyasına derlenmelidir. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp), a tool written specifically to compile Node.js Addons.
 
 ```json
 {
