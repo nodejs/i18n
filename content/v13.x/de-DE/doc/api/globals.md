@@ -26,11 +26,11 @@ Verarbeitet binäre Daten. Siehe [Abschnitt Puffer](buffer.html).
 
 ## `__dirname`
 
-This variable may appear to be global but is not. See [`__dirname`][].
+Die Variable sieht wie eine globale aus, ist es aber nicht. See [`__dirname`][].
 
 ## `__filename`
 
-This variable may appear to be global but is not. See [`__filename`][].
+Die Variable sieht wie eine globale aus, ist es aber nicht. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -72,7 +72,7 @@ Wird zur Ausgabe mit stdout und stderr verwendet. Siehe Abschnitt [`console`][].
 
 ## `exports`
 
-This variable may appear to be global but is not. See [`exports`][].
+Die Variable sieht wie eine globale aus, ist es aber nicht. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -87,7 +87,7 @@ In Browsern, ist der Top-Level Bereich der globale Bereich. This means that with
 
 ## `module`
 
-This variable may appear to be global but is not. See [`module`][].
+Die Variable sieht wie eine globale aus, ist es aber nicht. See [`module`][].
 
 ## `prozess`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-This variable may appear to be global but is not. See [`require()`][].
+Die Variable sieht wie eine globale aus, ist es aber nicht. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML
