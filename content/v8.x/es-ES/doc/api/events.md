@@ -113,7 +113,7 @@ myEmitter.emit('error', new Error('whoops!'));
 // Arroja y detiene a Node.js
 ```
 
-To guard against crashing the Node.js process the [`domain`][] module can be used. (Note que, sin embargo, el módulo `domain` ha sido desaprobado.)
+Para prevenir que el proceso colapse, el modulo [`domain`][] puede ser usado. (Note que, sin embargo, el módulo `domain` ha sido desaprobado.)
 
 Como buena práctica, los listeners deben siempre ser añadidos para los eventos `'error'`.
 
@@ -217,7 +217,7 @@ console.log(EventEmitter.listenerCount(myEmitter, 'event'));
 added: v0.11.2
 -->
 
-Por defecto, un máximo de `10` funciones listeners puede ser registrado para cada evento. Este límite puede ser cambiado para instancias `EventEmitter` usando el método [`emitter.setMaxListeners(n)`][]. Para cambiar el predeterminado por *todas* las instancias `EventEmitter`, la propiedad `EventEmitter.defaultMaxListeners` puede ser usada. If this value is not a positive number, a `TypeError` will be thrown.
+Por defecto, un máximo de `10` funciones listeners puede ser registrado para cada evento. Este límite puede ser cambiado para instancias `EventEmitter` usando el método [`emitter.setMaxListeners(n)`][]. Para cambiar el predeterminado por *todas* las instancias `EventEmitter`, la propiedad `EventEmitter.defaultMaxListeners` puede ser usada. Si este valor no es un número positivo, se arrojará un `TypeError`.
 
 Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias `EventEmitter`, incluyendo aquellas que fueran creadas antes de que el cambio fuera hecho. Sin embargo, llamar a [`emitter.setMaxListeners(n)`][] aún tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
 
@@ -233,7 +233,7 @@ emitter.once('event', () => {
 
 La bandera de línea de comando [`--trace-warnings`][] puede ser usada para mostrar el stack trace para dichas advertencias.
 
-La advertencia emitida puede ser inspeccionada con [`process.on('warning')`][] y tendrá las propiedades adicionales `emitter`, `type` y `count`, refiriéndose a la instancia del emisor del evento, el nombre del evento y el número de listeners adjuntos, respectivamente. Su propiedad `name` se establece a `'MaxListenersExceededWarning'`.
+La advertencia emitida puede ser inspeccionada con [`process.on('warning')`][] y hará que las propiedades adicionales `emitter`, `type` y `count` se refieran a la instancia del emisor del evento, al nombre del evento y al número de listeners adjuntos, respectivamente. Su propiedad `name` se establece a `'MaxListenersExceededWarning'`.
 
 ### emitter.addListener(nombreDelEvento, listener)
 
@@ -393,7 +393,7 @@ added: v6.0.0
 - `eventName` {any} El nombre del evento.
 - `listener` {Function} La función callback
 
-Añade la función `listener` al *comienzo* del array de listeners para el evento llamado `eventName`. Ninguna verificación es hecha para observar si la función `listener` ha sido añadida. Múltiples llamadas que pasan la misma combinación de `eventName` y `listener` resultarán en el`listener` siendo añadido, y llamado, múltiples veces.
+Añade la función `listener` al *comienzo* del array de listeners para el evento llamado `eventName`. No se hacen verificaciones para ver si el `listener` ya ha sido añadido. Múltiples llamadas que pasen la misma combinación de `eventName` y `listener` resultarán en que se añada el `listener`, y sea llamado múltiples veces.
 
 ```js
 server.prependListener('connection', (stream) => {
