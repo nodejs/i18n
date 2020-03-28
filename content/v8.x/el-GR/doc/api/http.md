@@ -53,7 +53,7 @@ added: v0.3.4
 
 Είναι καλή πρακτική, να γίνεται [`destroy()`][] ενός `Agent` όταν αυτός δεν χρησιμοποιείται άλλο, καθώς τα αχρησιμοποίητα Socket χρησιμοποιούν πόρους του Λειτουργικού Συστήματος.
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+Τα socket αφαιρούνται από έναν agent, όταν το socket μεταδίδει ένα συμβάν `'close'` ή ένα συμβάν `'agentRemove'`. Όταν υπάρχει πρόθεση να υπάρχει ένα αίτημα HTTP ανοιχτό για μεγάλο χρονικό διάστημα, χωρίς να είναι δεμένο σε έναν agent, μπορεί να γίνει κάτι σαν το παρακάτω:
 
 ```js
 http.get(options, (res) => {
@@ -86,7 +86,7 @@ added: v0.3.4
 
 * `options` {Object} Ένα σύνολο επεξεργάσιμων ρυθμίσεων που θα οριστούν για τον agent. Μπορεί να περιέχει τα παρακάτω πεδία: 
   * `keepAlive` {boolean} Να παραμένουν ενεργά τα socket ακόμα και όταν δεν υπάρχουν εκκρεμή αιτήματα, ώστε να μπορούν να χρησιμοποιηθούν για μελλοντικά αιτήματα χωρίς την ανάγκη αποκατάστασης μιας σύνδεσης TCP. **Προεπιλογή:** `false`.
-  * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Αγνοείται όταν η επιλογή `keepAlive` είναι `false` ή `undefined`. **Προεπιλογή:** `1000`.
+  * `keepAliveMsecs` {number} Όταν χρησιμοποιείται η επιλογή `keepAlive`, ορίζει την [αρχική καθυστέρηση](net.html#net_socket_setkeepalive_enable_initialdelay) των πακέτων TCP Keep-Alive. Αγνοείται όταν η επιλογή `keepAlive` είναι `false` ή `undefined`. **Προεπιλογή:** `1000`.
   * `maxSockets` {number} Ο μέγιστος αριθμός socket που επιτρέπονται ανά υπολογιστή. **Προεπιλογή:** `Infinity`.
   * `maxFreeSockets` {number} Μέγιστος αριθμός ανοιχτών socket που μπορούν να μείνουν ανοιχτά σε ελεύθερη κατάσταση. Εφαρμόζεται μόνο αν το `keepAlive` έχει οριστεί ως `true`. **Προεπιλογή:** `256`.
 
@@ -162,7 +162,7 @@ added: v0.11.4
 
 Καταστρέφει όλα τα socket που είναι σε χρήση από τον agent αυτή τη στιγμή.
 
-Συνήθως, δεν χρειάζεται να γίνει αυτό. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Διαφορετικά, τα socket μπορεί να παραμείνουν ανοιχτά για μεγάλο χρονικό διάστημα πριν ο εξυπηρετητής τερματίσει την λειτουργία τους.
+Συνήθως, δεν χρειάζεται να γίνει αυτό. Ωστόσο, αν χρησιμοποιείτε έναν agent με ενεργό το `keepAlive`, τότε το καλύτερο είναι να γίνεται ρητός τερματισμός του agent όταν δεν θα χρησιμοποιηθεί άλλο. Διαφορετικά, τα socket μπορεί να παραμείνουν ανοιχτά για μεγάλο χρονικό διάστημα πριν ο εξυπηρετητής τερματίσει την λειτουργία τους.
 
 ### agent.freeSockets
 
@@ -187,7 +187,7 @@ added: v0.11.4
   * `family` {integer} Πρέπει να είναι 4 ή 6 εάν δεν ισούται με `undefined`.
 * Επιστρέφει: {string}
 
-Λαμβάνει ένα μοναδικό όνομα για ένα σύνολο επιλογών αιτημάτων, για τον προσδιορισμό της επαναχρησιμοποίησης μιας σύνδεσης. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Λαμβάνει ένα μοναδικό όνομα για ένα σύνολο επιλογών αιτημάτων, για τον προσδιορισμό της επαναχρησιμοποίησης μιας σύνδεσης. Για έναν HTTP agent, η συνάρτηση επιστρέφει `host:port:localAddress` ή `host:port:localAddress:family`. Για έναν HTTPS agent, το όνομα συμπεριλαμβάνει την αρχή πιστοποίησης, το πιστοποιητικό, τους cipher και άλλες συγκεκριμένες HTTPS/TLS επιλογές, για τον προσδιορισμό της επαναχρησιμοποίησης του socket.
 
 ### agent.maxFreeSockets
 
@@ -235,7 +235,7 @@ added: v0.3.6
 added: v0.1.17
 -->
 
-Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα *in-progress*, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα *in-progress*, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. Η κεφαλίδα μπορεί ακόμα να μεταβληθεί χρησιμοποιώντας τις συναρτήσεις API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. Η πραγματική κεφαλίδα θα σταλεί μαζί με το πρώτο κομμάτι δεδομένων ή όταν γίνει κλήση της συνάρτησης [`request.end()`][].
 
 Για να λάβετε την απάντηση, προσθέστε έναν ακροατή [`'response'`][] στο αντικείμενο της αίτησης. To [`'response'`][] θα μεταδοθεί από το αντικείμενο του αιτήματος όταν ληφθούν οι κεφαλίδες της απόκρισης. Το συμβάν [`'response'`][] εκτελείται με μια παράμετρο, η οποία είναι ένα στιγμιότυπο του [`http.IncomingMessage`][].
 
@@ -358,9 +358,9 @@ added: v0.5.3
 added: v0.7.8
 -->
 
-Emitted when the underlying socket times out from inactivity. This only notifies that the socket has been idle. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
+Μεταδίδεται όταν το υποκείμενο socket εξαντλεί το χρονικό περιθώριο λόγω αδράνειας. Αυτό ειδοποιεί, μόνο, πως το socket έχει μείνει αδρανές. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
 
-See also: [`request.setTimeout()`][]
+Δείτε επίσης: [`request.setTimeout()`][]
 
 ### Συμβάν: 'upgrade'
 
@@ -441,7 +441,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`request.socket`][]
+Δείτε το [`request.socket`][]
 
 ### request.end(\[data[, encoding]\]\[, callback\])
 
@@ -467,9 +467,9 @@ added: v1.6.0
 
 Εκκαθάριση των κεφαλίδων του αιτήματος.
 
-For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
+Για λόγους αποδοτικότητας, το Node.js κάνει προσωρινή αποθήκευση των κεφαλίδων του αιτήματος μέχρι να κληθεί το `request.end()` ή μέχρι να γραφτεί το πρώτο τμήμα των δεδομένων του αιτήματος. Στη συνέχεια, προσπαθεί να εισάγει όλες τις κεφαλίδες και τα δεδομένα του αιτήματος σε ένα πακέτο TCP.
 
-That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` bypasses the optimization and kickstarts the request.
+Αυτό συνήθως είναι το επιθυμητό (εξοικονομεί μια πλήρη διαδρομή TCP), αλλά όχι όταν τα πρώτα δεδομένα δεν έχουν αποσταλεί μέχρι πιθανώς πολύ αργότερα. Το `request.flushHeaders()` αγνοεί οποιαδήποτε βελτιστοποίηση και ξεκινάει το αίτημα άμεσα.
 
 ### request.getHeader(name)
 
@@ -513,7 +513,7 @@ added: v1.6.0
 * `name` {string}
 * `value` {string}
 
-Ορίζει μια μοναδική τιμή για το αντικείμενο κεφαλίδων. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Ορίζει μια μοναδική τιμή για το αντικείμενο κεφαλίδων. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή του θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα.
 
 Παράδειγμα:
 
@@ -569,7 +569,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-Αναφορά στο υποκείμενο socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
+Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μετά το `response.end()`, η ιδιότητα εκμηδενίζεται. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `request.connection`.
 
 Παράδειγμα:
 
@@ -598,7 +598,7 @@ added: v0.1.29
 * `encoding` {string}
 * `callback` {Function}
 
-Αποστέλλει ένα τμήμα του σώματος. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Αποστέλλει ένα τμήμα του σώματος. Καλώντας πολλές φορές αυτή τη μέθοδο, το σώμα ενός αιτήματος μπορεί να αποσταλεί σε έναν εξυπηρετητή — σε αυτήν την περίπτωση προτείνεται να γίνει χρήση της κεφαλίδας `['Transfer-Encoding', 'chunked']` κατά τη δημιουργία του αιτήματος.
 
 Η παράμετρος `encoding` είναι προαιρετική και ισχύει μόνο όταν το `chunk` είναι string. Από προεπιλογή είναι `'utf8'`.
 
@@ -663,7 +663,7 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-Αν η σύνδεση ενός πελάτη μεταδώσει ένα συμβάν `'error'`, θα προωθηθεί εδώ. Η ακρόαση του συμβάντος είναι υπεύθυνη για το κλείσιμο/την καταστροφή του υποκείμενου socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Αν η σύνδεση ενός πελάτη μεταδώσει ένα συμβάν `'error'`, θα προωθηθεί εδώ. Η ακρόαση του συμβάντος είναι υπεύθυνη για το κλείσιμο/την καταστροφή του υποκείμενου socket. Για παράδειγμα, κάποιος μπορεί να θέλει να κλείσει ένα socket πιο δυναμικά, με μια προσαρμοσμένη απόκριση HTTP αντί να αποκόψει απότομα την σύνδεση.
 
 Η προεπιλεγμένη συμπεριφορά είναι να κλείσει το socket με απόκριση HTTP '400 Bad Request' εάν αυτό είναι δυνατόν, διαφορετικά το socket καταστρέφεται αμέσως.
 
@@ -685,7 +685,7 @@ server.listen(8000);
 
 Το `err` είναι ένα στιγμιότυπο του `Error` με δύο επιπλέον στήλες:
 
-* `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
+* `bytesParsed`: ο αριθμός των byte του πακέτου αιτήματος που η Node.js έχει πιθανώς αναλύσει σωστά,
 * `rawPacket`: το ακατέργαστο πακέτο του τρέχοντος αιτήματος.
 
 ### Συμβάν: 'close'
@@ -708,7 +708,7 @@ added: v0.7.0
 
 Μεταδίδεται κάθε φορά που ένας πελάτης στέλνει αίτημα HTTP της μεθόδου `CONNECT`. Αν δεν γίνεται ακρόαση αυτού του συμβάντος, θα γίνει τερματισμός της σύνδεσης των πελατών που αιτούνται την μέθοδο `CONNECT`.
 
-After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
+Αφού μεταδοθεί αυτό το συμβάν, το socket του αιτήματος δε θα έχει ακρόαση του συμβάντος `'data'`, που σημαίνει πως θα πρέπει να δεσμευτεί με σκοπό να διαχειριστεί τα δεδομένα που αποστέλλονται στον εξυπηρετητή μέσω αυτού του socket.
 
 ### Συμβάν: 'connection'
 
@@ -718,7 +718,7 @@ added: v0.1.0
 
 * `socket` {net.Socket}
 
-Αυτό το συμβάν μεταδίδεται όταν δημιουργείται μια νέα ροή δεδομένων TCP. `socket` is typically an object of type [`net.Socket`][]. Usually users will not want to access this event. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` can also be accessed at `request.connection`.
+Αυτό το συμβάν μεταδίδεται όταν δημιουργείται μια νέα ροή δεδομένων TCP. Το `socket` είναι συνήθως ένα αντικείμενο τύπου [`net.Socket`][]. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτό το συμβάν. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` κατά τη διάρκεια του συμβάντος `request.connection`.
 
 *Note*: This event can also be explicitly emitted by users to inject connections into the HTTP server. Σε αυτήν την περίπτωση, μπορεί να μεταβιβαστεί οποιαδήποτε ροή [`Duplex`][].
 
@@ -745,7 +745,7 @@ added: v0.1.94
 
 Μεταδίδεται κάθε φορά που ένας πελάτης αιτείται μια αναβάθμιση HTTP. If this event is not listened for, then clients requesting an upgrade will have their connections closed.
 
-After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
+Αφού μεταδοθεί αυτό το συμβάν, το socket του αιτήματος δε θα έχει ακρόαση του συμβάντος `'data'`, που σημαίνει πως θα πρέπει να δεσμευτεί με σκοπό να διαχειριστεί τα δεδομένα που αποστέλλονται στον εξυπηρετητή μέσω αυτού του socket.
 
 ### server.close([callback])
 
@@ -806,7 +806,7 @@ added: v0.9.12
 
 Αν γίνεται ακρόαση του συμβάντος `'timeout'` στο αντικείμενο του εξυπηρετητή, τότε θα κληθεί με το socket που έχει εξαντληθεί το χρονικό όριο, σαν παράμετρος.
 
-Από προεπιλογή, η τιμή του χρονικού ορίου εξάντλησης του εξυπηρετητή είναι 2 λεπτά, και τα socket καταστρέφονται αυτόματα αν εξαντληθεί το χρονικό τους όριο. However, if a callback is assigned to the Server's `'timeout'` event, timeouts must be handled explicitly.
+Από προεπιλογή, η τιμή του χρονικού ορίου εξάντλησης του εξυπηρετητή είναι 2 λεπτά, και τα socket καταστρέφονται αυτόματα αν εξαντληθεί το χρονικό τους όριο. Ωστόσο, αν έχει έχει ανατεθεί στο συμβάν `'timeout'` του εξυπηρετητή μια συνάρτηση callback, θα πρέπει να γίνεται ρητός χειρισμός των εξαντλήσεων του χρονικού ορίου.
 
 Returns `server`.
 
@@ -832,7 +832,7 @@ added: v8.0.0
 
 * {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `5000` (5 δευτερόλεπτα).
 
-The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
+Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου που θα πρέπει να περιμένει ο εξυπηρετητής για περαιτέρω δεδομένα, αφού έχει ολοκληρώσει την εγγραφή της τελευταίας απόκρισης, πριν την καταστροφή του socket. Αν ο εξυπηρετητής λάβει νέα δεδομένα πριν την εξάντληση του χρονικού ορίου του keep-alive, θα γίνει επαναφορά του χρονικού περιθωρίου αδράνειας του [`server.timeout`][].
 
 A value of `0` will disable the keep-alive timeout behavior on incoming connections. A value of `0` makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
 
@@ -971,7 +971,7 @@ added: v7.7.0
 
 * Επιστρέφει: {Object}
 
-Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
+Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Από την στιγμή που χρησιμοποιείται ένα ρηχό αντίγραφο, οι τιμές του πίνακα μπορούν να μεταλλαχθούν χωρίς περαιτέρω κλήσεις στις διάφορες μεθόδους που σχετίζονται με τις κεφαλίδες της ενότητας http. Τα κλειδιά του επιστρεφόμενου αντικειμένου είναι τα ονόματα των κεφαλίδων, και οι τιμές του είναι οι τιμές της αντίστοιχης κεφαλίδας. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
 
@@ -994,7 +994,7 @@ added: v7.7.0
 * `name` {string}
 * Επιστρέφει: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
+Επιστρέφει `true` αν η κεφαλίδα που προσδιορίζεται ως `name` έχει οριστεί στις εξερχόμενες κεφαλίδες. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
 
 Παράδειγμα:
 
@@ -1049,7 +1049,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {string | string[]}
 
-Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή της θα αντικατασταθεί με την ορισμένη. Use an array of strings here to send multiple headers with the same name.
+Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή της θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα.
 
 Παράδειγμα:
 
@@ -1088,7 +1088,7 @@ added: v0.9.12
 
 Ορίζει την τιμή της εξάντλησης του χρονικού περιθωρίου του Socket σε `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
 
-Αν δεν έχει προστεθεί ακροατής για το `'timeout'` στο αίτημα, στην απόκριση ή στον εξυπηρετητή, τότε τα socket καταστρέφονται μόλις εξαντληθεί το χρονικό τους περιθώριο. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Αν δεν έχει προστεθεί ακροατής για το `'timeout'` στο αίτημα, στην απόκριση ή στον εξυπηρετητή, τότε τα socket καταστρέφονται μόλις εξαντληθεί το χρονικό τους περιθώριο. Αν έχει οριστεί κάποιος χειριστής στο συμβάν `'timeout'` του αιτήματος, της απόκρισης ή του εξυπηρετητή, τότε η εξάντληση του χρονικού περιθωρίου των socket πρέπει να χειρίζεται ρητά.
 
 Returns `response`.
 
@@ -1100,7 +1100,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-Αναφορά στο υποκείμενο socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
+Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μετά το `response.end()`, η ιδιότητα εκμηδενίζεται. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `response.connection`.
 
 Παράδειγμα:
 
@@ -1170,7 +1170,7 @@ added: v0.1.29
 
 *Note*: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
-The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
+Την πρώτη φορά που θα κληθεί το [`response.write()`][], θα στείλει τις πληροφορίες κεφαλίδας που βρίσκονται στο buffer, καθώς και το πρώτο κομμάτι δεδομένων στον πελάτη. Τη δεύτερη φορά που θα κληθεί το [`response.write()`][], η Node.js υποθέτει ότι τα δεδομένα θα αποσταλούν ως ροή, κι έτσι στέλνει τα νέα δεδομένα ξεχωριστά. Δηλαδή η απόκριση τοποθετείται στο buffer μόνο μέχρι το πρώτο κομμάτι του σώματος.
 
 Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
@@ -1211,7 +1211,7 @@ response.writeHead(200, {
 
 Η μέθοδος πρέπει να κληθεί μόνο μια φορά σε ένα μήνυμα, και πρέπει να κληθεί πριν την κλήση του [`response.end()`][].
 
-If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
+Αν κληθεί το [`response.write()`][] ή το [`response.end()`][] πριν την κλήση του, θα υπολογιστούν οι υπονοούμενες/μεταβαλλόμενες κεφαλίδες και θα γίνει η κλήση αυτής της συνάρτησης.
 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
@@ -1245,7 +1245,7 @@ added: v0.1.17
 added: v0.3.8
 -->
 
-Emitted when the request has been aborted.
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί.
 
 ### Συμβάν: 'close'
 
@@ -1263,7 +1263,7 @@ added: v8.13.0
 
 * {boolean}
 
-The `message.aborted` property will be `true` if the request has been aborted.
+Η ιδιότητα `message.aborted` θα έχει οριστεί ως `true` αν το αίτημα έχει ματαιωθεί.
 
 ### message.complete
 
@@ -1476,7 +1476,7 @@ Accept: text/plain\r\n
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Παράδειγμα:
+Για να αναλύσετε το url στα επιμέρους κομμάτια του, μπορεί να χρησιμοποιηθεί το `require('url').parse(request.url)`. Παράδειγμα:
 
 ```txt
 $ node
@@ -1496,7 +1496,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Παράδειγμα:
+Για να εξάγετε τις παραμέτρους από το string του ερωτήματος, μπορείτε να χρησιμοποιήσετε την συνάρτηση `require('querystring').parse`, ή μπορείτε να ορίσετε ως `true` την δεύτερη παράμετρο στο `require('url').parse`. Παράδειγμα:
 
 ```txt
 $ node
@@ -1562,7 +1562,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Οι ιδιότητες που κληρονομούνται από την πρωτότυπη μέθοδο, αγνοούνται.
+* `options` {Object | string | URL} Δέχεται τα ίδια `options` με το [`http.request()`][], με το `method` να είναι πάντα ορισμένο ως `GET`. Οι ιδιότητες που κληρονομούνται από την πρωτότυπη μέθοδο, αγνοούνται.
 * `callback` {Function}
 * Επιστρέφει: {http.ClientRequest}
 
@@ -1648,7 +1648,7 @@ changes:
   * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος.
   * `socketPath` {string} Unix Domain Socket (use one of host:port or socketPath).
   * `method` {string} Ένα string που καθορίζει την μέθοδο του αιτήματος HTTP. **Προεπιλογή:** `'GET'`.
-  * `path` {string} Διαδρομή αιτήματος. Θα πρέπει να συμπεριλαμβάνει το string ερωτήματος, αν υπάρχει. Π.Χ. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Προεπιλογή:** `'/'`.
+  * `path` {string} Διαδρομή αιτήματος. Θα πρέπει να συμπεριλαμβάνει το string ερωτήματος, αν υπάρχει. Π.Χ. `'/index.html?page=12'`. Ένα exception εμφανίζεται όταν η διαδρομή του αιτήματος περιλαμβάνει μη-έγκυρους χαρακτήρες. Επί του παρόντος, μόνο τα κενά απορρίπτονται, αλλά αυτό είναι κάτι που μπορεί να αλλάξει στο μέλλον. **Προεπιλογή:** `'/'`.
   * `headers` {Object} Ένα αντικείμενο που περιέχει τις κεφαλίδες του αιτήματος.
   * `auth` {string} Βασική ταυτοποίηση, όπως `'user:password'`, για τον υπολογισμό μιας κεφαλίδας Authorization.
   * `agent` {http.Agent | boolean} Ελέγχει την συμπεριφορά του [`Agent`][]. Possible values: 
@@ -1662,7 +1662,7 @@ changes:
 
 Το Node.js διατηρεί πολλαπλές συνδέσεις ανά εξυπηρετητή για την δημιουργία αιτημάτων HTTP. Αυτή η συνάρτηση επιτρέπει την δημιουργία αιτημάτων με διαφάνεια.
 
-Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. Αν το `options` είναι string, θα αναλυθεί αυτόματα με το [`url.parse()`][]. Αν είναι ένα αντικείμενο [`URL`][], θα μετατραπεί αυτόματα σε ένα κοινό αντικείμενο `options`.
 
 Η προαιρετική παράμετρος `callback` θα προστεθεί ως ακροατής μιας χρήσης, για το συμβάν [`'response'`][].
 
@@ -1707,7 +1707,7 @@ req.write(postData);
 req.end();
 ```
 
-Σημειώστε ότι στο παράδειγμα έγινε κλήση του `req.end()`. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Σημειώστε ότι στο παράδειγμα έγινε κλήση του `req.end()`. Μαζί με το `http.request()`, πρέπει πάντα να γίνεται κλήση του `req.end()` για εκφραστεί το τέλος του αιτήματος - ακόμα κι αν δεν υπάρχουν δεδομένα που θα γραφούν στο σώμα του αιτήματος.
 
 Αν συμβεί οποιοδήποτε σφάλμα κατά την διάρκεια του αιτήματος (όπως με την επίλυση του DNS, σφάλματα επιπέδου TCP, ή πραγματικά σφάλματα ανάλυσης HTTP), μεταδίδεται ένα συμβάν `'error'` στο επιστρεφόμενο αντικείμενο αιτήματος. Όπως με όλα τα συμβάντα `'error'`, αν δεν έχουν καταχωρηθεί ακροατές, τότε θα εμφανιστεί μήνυμα σφάλματος.
 
@@ -1733,7 +1733,7 @@ const req = http.request(options, (res) => {
 });
 ```
 
-In a successful request, the following events will be emitted in the following order:
+Σε ένα επιτυχημένο αίτημα, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `socket`
 * `response` 
@@ -1747,7 +1747,7 @@ In a successful request, the following events will be emitted in the following o
 * `error`
 * `close`
 
-If `req.abort()` is called before the connection succeeds, the following events will be emitted in the following order:
+Αν κληθεί το `req.abort()` πριν γίνει μια επιτυχημένη σύνδεση, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `socket`
 * (το `req.abort()` καλείται εδώ)
@@ -1755,7 +1755,7 @@ If `req.abort()` is called before the connection succeeds, the following events 
 * `close`
 * `error` with an error with message `Error: socket hang up` and code `ECONNRESET`
 
-If `req.abort()` is called after the response is received, the following events will be emitted in the following order:
+Αν κληθεί το `req.abort()` αφού ληφθεί η απόκριση, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `socket`
 * `response` 
