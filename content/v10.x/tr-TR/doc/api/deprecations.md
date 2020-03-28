@@ -525,7 +525,7 @@ changes:
 
 Type: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+The `os.getNetworkInterfaces()` method is deprecated. Lütfen bunun yerine [`os.networkInterfaces`][] özelliğini kullanın.
 
 <a id="DEP0024"></a>
 
@@ -586,7 +586,7 @@ changes:
 
 Type: Runtime
 
-The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
+The [`util.print()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
 
 <a id="DEP0027"></a>
 
@@ -628,7 +628,7 @@ changes:
 
 Type: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0029"></a>
 
@@ -649,7 +649,7 @@ changes:
 
 Type: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0030"></a>
 
