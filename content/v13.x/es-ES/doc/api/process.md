@@ -152,7 +152,7 @@ El evento `'rejectionHandled'` es emitido cuando una `Promise` ha sido rechazada
 
 El objeto `Promise` habría sido previamente emitido en un evento `'unhandledRejection'`, pero durante el curso del procesamiento ganó un manejador de rechazos.
 
-No hay noción de un nivel superior para una cadena de `Promise` en la cual los rechazos pueden ser siempre manejados. Ser inherentemente asíncrono en naturaleza, un rechazo de una `Promise` puede ser manejado en un punto futuro del tiempo — posiblemente más tarde que el giro del bucle de evento que el evento `'unhandledRejection'` sea emitido.
+No hay noción de un nivel superior para una cadena de `Promise` en la cual los rechazos pueden ser siempre manejados. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time, possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
 Otra manera de decir esto es que, a diferencia de en el código síncrono, donde hay una lista de excepciones sin manejar que está en constante crecimiento, con las Promesas puede haber una lista creciente y decreciente de rechazos no manejados.
 
@@ -256,7 +256,7 @@ changes:
 * `reason` {Error|any} El objeto con el cual la promesa fue rechazada (típicamente un objeto [`Error`][]).
 * `promise` {Promise} The rejected promise.
 
-The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. Al programar con Promesas, las excepciones son encapsuladas como "promesas rechazadas". Los rechazos pueden ser capturados y manejados utilizando [`promise.catch()`][] y son propagados a través de una cadena `Promise`. El evento `'unhandledRejection'` es útil para detectar y hacer seguimiento de promesas que fueron rechazadas y cuyos rechazos todavía no han sido manejados.
+El evento `'unhandledRejection'` es emitido cada vez que una `Promise` es rechazada y no hay un manejador de error adjunto a la promesa dentro de un turno del bucle de evento. Al programar con Promesas, las excepciones son encapsuladas como "promesas rechazadas". Los rechazos pueden ser capturados y manejados utilizando [`promise.catch()`][] y son propagados a través de una cadena `Promise`. El evento `'unhandledRejection'` es útil para detectar y hacer seguimiento de promesas que fueron rechazadas y cuyos rechazos todavía no han sido manejados.
 
 ```js
 process.on('unhandledRejection', (reason, promise) => {
@@ -289,7 +289,7 @@ added: v6.0.0
 -->
 
 * `warning` {Error} Key properties of the warning are:
-  * `name` {string} The name of the warning. **Default:** `'Warning'`.
+  * `name` {string} El nombre de la advertencia. **Default:** `'Warning'`.
   * `message` {string} Una descripción de la advertencia proporcionada por el sistema.
   * `stack` {string} Un stack trace a la ubicación en el código en el que se emitió la advertencia.
 
@@ -373,19 +373,22 @@ process.on('SIGINT', handle);
 process.on('SIGTERM', handle);
 ```
 
-* `'SIGUSR1'` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
+* `'SIGUSR1'` está reservado por Node.js para iniciar el [depurador](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
 * `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
-* `'SIGPIPE'` is ignored by default. Puede tener un listener instalado.
+* `'SIGPIPE'` es ignorado por defecto. Puede tener un listener instalado.
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). Puede tener instalado un listener, sin embargo, Node.js será terminado incondicionalmente por Windows unos 10 segundos después. En plataformas diferentes a Windows, el comportamiento predeterminado de `SIGHUP` es terminar Node.js, pero una vez que sea instalado un listener, su comportamiento por defecto será eliminado.
-* `'SIGTERM'` is not supported on Windows, it can be listened on.
-* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
+* `'SIGTERM'` no está soportado en Windows, puede ser escuchado.
+* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when [terminal raw mode](tty.html#tty_readstream_setrawmode_mode) is enabled and `<Ctrl>+C` is used.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
-* `'SIGWINCH'` is delivered when the console has been resized. En Windows, esto solo ocurrirá al escribir en la consola cuando se mueva el cursor, o cuando se use un tty legible en modo raw.
+* `'SIGWINCH'` es enviado cuando la consola ha sido redimensionada. En Windows, esto solo ocurrirá al escribir en la consola cuando se mueva el cursor, o cuando se use un tty legible en modo raw.
 * `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
-* `'SIGSTOP'` cannot have a listener installed.
+* `'SIGSTOP'` no puede tener un oyente instalado.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
+* `0` can be sent to test for the existence of a process, it has no effect if the process exists, but will throw an error if the process does not exist.
 
-Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
+Windows does not support signals so has no equivalent to termination by signal, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]:
+* Sending `SIGINT`, `SIGTERM`, and `SIGKILL` will cause the unconditional termination of the target process, and afterwards, subprocess will report that the process was terminated by signal.
+* Sending signal `0` can be used as a platform independent way to test for the existence of a process.
 
 ## `process.abort()`
 <!-- YAML
@@ -606,7 +609,7 @@ console.log(`Current directory: ${process.cwd()}`);
 added: v0.7.2
 -->* {number}
 
-El puerto usado por el depurador de Node.js cuando está habilitado.
+The port used by the Node.js debugger when enabled.
 
 ```js
 process.debugPort = 5858;
@@ -635,7 +638,7 @@ changes:
 
 The `process.dlopen()` method allows to dynamically load shared objects. It is primarily used by `require()` to load C++ Addons, and should not be used directly, except in special cases. In other words, [`require()`][] should be preferred over `process.dlopen()`, unless there are specific reasons.
 
-The `flags` argument is an integer that allows to specify dlopen behavior. See the [`os.constants.dlopen`][] documentation for details.
+The `flags` argument is an integer that allows to specify dlopen behavior. Vea la documentación de [`os.constants.dlopen`][] para más detalles.
 
 If there are specific reasons to use `process.dlopen()` (for instance, to specify dlopen flags), it's often useful to use [`require.resolve()`][] to look up the module's path.
 
@@ -1016,7 +1019,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Returns: {bigint}
+-->* Devuelve: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
@@ -1041,7 +1044,7 @@ added: v0.9.4
 -->
 
 * `user` {string|number} El nombre de usuario o identificador numérico.
-* `extraGroup` {string|number} A group name or numeric identifier.
+* `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
 El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. Esta es una operación privilegiada que requiere que el proceso Node.js tenga acceso a `root` o la capacidad `CAP_SETGID`.
 
@@ -1790,13 +1793,13 @@ Node.js normalmente se cerrará con un código de estado `0` cuando no hayan má
 
 * `1` **Uncaught Fatal Exception**: There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2`: Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. Esto es extremadamente raro, y generalmente sólo puede pasar durante el desarrollo del mismo Node.js.
-* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in the Node.js bootstrapping process caused a parse error. Esto es extremadamente raro, y generalmente sólo puede pasar durante el desarrollo del mismo Node.js.
+* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in the Node.js bootstrapping process failed to return a function value when evaluated. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
 * `5` **Fatal Error**: There was a fatal unrecoverable error in V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL ERROR`.
 * `6` **Non-function Internal Exception Handler**: There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure**: There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
+* `7` **Internal Exception Handler Run-Time Failure**: There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. Esto puede ocurrir, por ejemplo, si un manejador [`'uncaughtException'`][] o `domain.on('error')` arroja un error.
 * `8`: Unused. En versiones previas de Node.js, el código de cierre 8 a veces indicaba una excepción sin capturar.
 * `9` **Invalid Argument**: Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in the Node.js bootstrapping process threw an error when the bootstrapping function was called. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
 * `12` **Invalid Debug Argument**: The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
-* `>128` **Signal Exits**: If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. Esta es una práctica estándar de POSIX, como los códigos de salida están definidos para ser enteros de 7 bits, y las salidas por señal establecen el bit de orden mayor, y entonces contienen el valor del código de señal. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
+* `>128` **Signal Exits**: If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. Esta es una práctica estándar de POSIX, como los códigos de salida están definidos para ser enteros de 7 bits, y las salidas por señal establecen el bit de orden mayor, y entonces contienen el valor del código de señal. Por ejemplo, la señal `SIGABRT` tiene el valor `6`, entonces el código de salida esperado sería `128` + `6`, o `134`.

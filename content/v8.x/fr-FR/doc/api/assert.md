@@ -4,11 +4,11 @@
 
 > Stabilité: 2 - stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Le module `assert` fournit un ensemble simple de tests d’assertion qui peut être utilisé pour tester des invariants.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Un mode `strict` et un mode `legacy` existent, mais il est recommandé de n’utiliser que le mode `strict`.
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Pour plus d’informations sur les tests d’égalité utilisés, voir le [guide de MDN sur les tests d'égalité](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Mode strict
 
@@ -33,7 +33,7 @@ const assert = require('assert').strict;
 
 > Stabilité: 0 - Déprécié: utilisez plutôt le mode strict.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+En accédant à `assert` directement plutôt qu'en utilisant la propriété `strict`, l'[algorithme d'égalité abstraite (abstract equality comparison)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sera utilisé pour toute fonction n'ayant pas "strict" dans son nom, comme [`assert.deepEqual()`][].
 
 On peut y accéder en utilisant :
 
@@ -41,7 +41,7 @@ On peut y accéder en utilisant :
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Il est recommandé d’utiliser le [de] [`mode strict`] plutôt que la [Comparaison d’égalité abstraite](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) qui peut souvent avoir des résultats surprenants. C’est particulièrement vrai pour [`assert.deepEqual()`] [], où des règles de comparaison sont laxistes :
 
 ```js
 // ATTENTION: Ceci ne soulève pas d'AssertionError!
@@ -749,6 +749,8 @@ assert.throws(
 ```
 
 Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {

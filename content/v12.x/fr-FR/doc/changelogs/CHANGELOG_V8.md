@@ -6,7 +6,7 @@
 <table>
 <tr>
 <th>LTS 'Carbon'</th>
-<th title="Previously called 'Stable'">Current</th>
+<th title="Previously called 'Stable'">Courant</th>
 </tr>
 <tr>
 <td valign="top">
@@ -2791,7 +2791,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs**
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
-* **inspector**
+* **inspecteur (sessions de débogage)**
   * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
 * **module**
   * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)

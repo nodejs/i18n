@@ -18,9 +18,9 @@ changes:
 
 > Estabilidad: 0 - En desuso
 
-**Este módulo esta por convertirse en obsoleto**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
+**Este módulo esta por convertirse en obsoleto**. Este módulo será completamente inútil una vez que el reemplazo de la API haya finalizado. La mayoría de los usuarios finales **no** tienen porqué utilizarlo. Los usuarios que absolutamente requieran de la funcionalidad que los dominios ofrecen pueden hacer uso de ella en este momento, pero deben esperar tener que migrar a una solución distinta en el futuro.
 
-Domains provide a way to handle multiple different IO operations as a single group. If any of the event emitters or callbacks registered to a domain emit an `'error'` event, or throw an error, then the domain object will be notified, rather than losing the context of the error in the `process.on('uncaughtException')` handler, or causing the program to exit immediately with an error code.
+Los dominios proporcionan una forma de manejar múltiples y diversas operaciones IO como una unidad. Si alguno de los emisores de eventos o callbacks registrados a un dominio emiten un evento `'error'`, o arrojan un error, entonces el objeto del dominio será notificado, en vez de perder el contexto del error en el manejador `process.on('uncaughtException')`, o causar que el programa se cierre inmediatamente con un código de error.
 
 ## Advertencia: ¡No ignore los errores!
 
@@ -30,11 +30,11 @@ Domain error handlers are not a substitute for closing down a process when an er
 
 By the very nature of how [`throw`][] works in JavaScript, there is almost never any way to safely "pick up where it left off", without leaking references, or creating some other sort of undefined brittle state.
 
-The safest way to respond to a thrown error is to shut down the process. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+La manera más segura de responder a un error arrojado es cerrar el proceso. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
 
-The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
+La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen en su tiempo habitual y deteniendo la escucha de nuevas solicitudes en ese worker.
 
-In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
+De esta forma, el uso de `domain` se hace en conjunto al módulo clúster, ya que el proceso principal puede bifurcar un nuevo worker cuando un worker encuentre un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pueden registrar la falla y reaccionar como corresponde.
 
 Por ejemplo, no es una buena idea:
 
@@ -56,7 +56,7 @@ d.run(() => {
 });
 ```
 
-By using the context of a domain, and the resilience of separating our program into multiple worker processes, we can react more appropriately, and handle errors with much greater safety.
+Al usar el contexto de un dominio y la resiliencia al separar nuestro programa en múltiples procesos de worker, podemos reaccionar de manera más apropiada y manejar los errores con mayor seguridad.
 
 ```js
 // ¡Mucho mejor!
@@ -164,12 +164,12 @@ function handleRequest(req, res) {
 
 <!-- type=misc -->
 
-Any time an `Error` object is routed through a domain, a few extra fields are added to it.
+Cada vez que un objeto de `Error` se enruta a través de un dominio, se le agregan algunos campos adicionales.
 
 * `error.domain` El dominio que se encargó primero del error.
-* `error.domainEmitter` The event emitter that emitted an `'error'` event with the error object.
-* `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
-* `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
+* `error.domainEmitter` El emisor de eventos que originó un evento de `'error'` con el objeto de error.
+* `error.domainBound` La función de callback que fue enlazada al dominio y pasó un error como su primer argumento.
+* `error.domainThrown` Un booleano que indica si el error fue arrojado, emitido o pasado a una función de callback enlazada.
 
 ## Enlace implícito
 
@@ -177,9 +177,9 @@ Any time an `Error` object is routed through a domain, a few extra fields are ad
 
 If domains are in use, then all **new** `EventEmitter` objects (including Stream objects, requests, responses, etc.) will be implicitly bound to the active domain at the time of their creation.
 
-Additionally, callbacks passed to lowlevel event loop requests (such as to `fs.open()`, or other callback-taking methods) will automatically be bound to the active domain. If they throw, then the domain will catch the error.
+Additionally, callbacks passed to lowlevel event loop requests (such as to `fs.open()`, or other callback-taking methods) will automatically be bound to the active domain. Si son arrojadas, entonces el dominio detectará el error.
 
-In order to prevent excessive memory usage, `Domain` objects themselves are not implicitly added as children of the active domain. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
+In order to prevent excessive memory usage, `Domain` objects themselves are not implicitly added as children of the active domain. Y si lo hicieran, sería muy sencillo evitar que los objetos de solicitud y respuesta se recolecten correctamente como basura.
 
 To nest `Domain` objects as children of a parent `Domain` they must be explicitly added.
 
@@ -189,9 +189,9 @@ Implicit binding routes thrown errors and `'error'` events to the `Domain`'s `'e
 
 <!--type=misc-->
 
-Sometimes, the domain in use is not the one that ought to be used for a specific event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
+A veces, el dominio en uso no es el que debería utilizarse para un emisor de eventos específico. O bien, el emisor de eventos podría haberse creado en el contexto de un dominio, pero debería estar vinculado a algún otro dominio.
 
-For example, there could be one domain in use for an HTTP server, but perhaps we would like to have a separate domain to use for each request.
+Por ejemplo, podría haber un dominio en uso para un servidor HTTP, pero quizá nos gustaría tener un dominio separado para cada solicitud.
 
 Eso es posible a través del enlazado explícito.
 
@@ -231,21 +231,21 @@ serverDomain.run(() => {
 
 The `Domain` class encapsulates the functionality of routing errors and uncaught exceptions to the active `Domain` object.
 
-El `Dominios` es una clase menor de [`EvetoEmisor`][]. To handle the errors that it catches, listen to its `'error'` event.
+El `Dominios` es una clase menor de [`EvetoEmisor`][]. Para manejar los errores que detecta, escuche a su evento de `'error'`.
 
 ### domain.members
 
 * {Array}
 
-An array of timers and event emitters that have been explicitly added to the domain.
+Un array de temporizadores y emisores de evento que han sido añadidos explícitamente al dominio.
 
 ### domain.add(emisor)
 
 * `emisor`{EventEmitter|Timer} emisor o temporizador a ser agregado al dominio
 
-Agrega explícitamente un emisor al dominio. If any event handlers called by the emitter throw an error, or if the emitter emits an `'error'` event, it will be routed to the domain's `'error'` event, just like with implicit binding.
+Agrega explícitamente un emisor al dominio. Si algún manejador de eventos llamado por el emisor arroja un error, o si el emisor emite un evento `'error'`, se enrutará al evento `'error'` del dominio, al igual que con la unión implícita.
 
-This also works with timers that are returned from [`setInterval()`][] and [`setTimeout()`][]. If their callback function throws, it will be caught by the domain `'error'` handler.
+Esto también funciona con los temporizadores que son devueltos desde [`setInterval()`][] y [`setTimeout()`][]. If their callback function throws, it will be caught by the domain `'error'` handler.
 
 If the Timer or `EventEmitter` was already bound to a domain, it is removed from that one, and bound to this one instead.
 
@@ -254,7 +254,7 @@ If the Timer or `EventEmitter` was already bound to a domain, it is removed from
 * `callback`{Function} La función de callback
 * Devuelve: {Function} La función enlazada
 
-The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
+La función devuelta será un envoltorio alrededor de la función de callback proporcionada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
 ```js
 const d = domain.create();
@@ -282,7 +282,7 @@ Calling `enter()` changes only the active domain, and does not alter the domain 
 
 ### domain.exit()
 
-El método de `exit()` sale del dominio actual, llevándolo fuera de la pila de dominios. Any time execution is going to switch to the context of a different chain of asynchronous calls, it's important to ensure that the current domain is exited. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
+El método de `exit()` sale del dominio actual, llevándolo fuera de la pila de dominios. Cada vez que la ejecución cambie al contexto de una cadena diferente de llamadas asíncronas, es importante asegurarse de que se abandona el dominio actual. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
 
 If there are multiple, nested domains bound to the current execution context, `exit()` will exit any domains nested within this domain.
 
@@ -293,9 +293,9 @@ Calling `exit()` changes only the active domain, and does not alter the domain i
 * `callback`{Function} La función de callback
 * Devuelve: {Function} La función interceptada
 
-Este método es muy similar a [`domain.bind(callback)`][]. However, in addition to catching thrown errors, it will also intercept [`Error`][] objects sent as the first argument to the function.
+Este método es muy similar a [`domain.bind(callback)`][]. Sin embargo, además de identificar los errores arrojados, también interceptará objetos de [`Error`][] enviados como el primer argumento de la función.
 
-In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
+De esta manera, el patrón común `if (err) return callback(err);` puede ser reemplazado con un solo manejador de errores en un solo lugar.
 
 ```js
 const d = domain.create();
@@ -325,14 +325,14 @@ d.on('error', (er) => {
 
 * `emitter`{EventEmitter|Timer} Emisor o temporizador a ser eliminado del dominio
 
-Lo opuesto de [`domain.add(emitter)`][]. Removes domain handling from the specified emitter.
+Lo opuesto de [`domain.add(emitter)`][]. Elimina el manejo de dominio del emisor especificado.
 
 ### domain.run(fn[, ...args])
 
 * `fn` {Function}
 * `...args` {any}
 
-Run the supplied function in the context of the domain, implicitly binding all event emitters, timers, and lowlevel requests that are created in that context. Optionally, arguments can be passed to the function.
+Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los emisores de evento, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Opcionalmente, los argumentos pueden ser pasados a la función.
 
 Esta es la forma más básica de utilizar un dominio.
 
@@ -355,7 +355,7 @@ d.run(() => {
 });
 ```
 
-In this example, the `d.on('error')` handler will be triggered, rather than crashing the program.
+En este ejemplo, el manejador `d.on('error')` será activado en vez de colapsar al programa.
 
 ## Dominios y Promesas
 

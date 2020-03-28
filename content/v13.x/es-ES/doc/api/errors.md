@@ -391,11 +391,11 @@ This is a list of system errors commonly-encountered when writing a Node.js prog
 
 * `EMFILE` (Demasiados archivos abiertos en el sistema): El número máximo de [descriptores de archivos](https://en.wikipedia.org/wiki/File_descriptor) permitidos en el sistema ha sido alcanzado, y las solicitudes para otro descriptor no pueden ser cumplidas hasta que al menos uno de estos haya sido cerrado. Esto se encuentra al abrir demasiados archivos en paralelo al mismo tiempo, especialmente en sistemas (en particular, en macOS) donde hay un límite bajo de descriptores de archivos para los procesos. Para remediar un límite bajo, ejecute `ulimit -n 2048` en el mismo shell que ejecutará el proceso de Node.js.
 
-* `ENOENT` (No existe tal archivo o directorio): Comúnmente, es levantado por las operaciones de [`fs`][] para indicar que un componente del nombre de la ruta especificada no existe — no se pudo encontrar ninguna entidad (archivo o directorio) con la ruta dada.
+* `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist. No entity (file or directory) could be found by the given path.
 
 * `ENOTDIR` (No es un directorio): Un componente del nombre de ruta proporcionado existía, pero no era un directorio, como se esperaba. Comúnmente, es levantado por [`fs.readdir`][].
 
-* `ENOTEMPTY` (El directorio no se encuentra vacío): Un directorio con entradas fue el objetivo de una operación que requiere un directorio vacío — usualmente [`fs.unlink`][].
+* `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory, usually [`fs.unlink`][].
 
 * `ENOTFOUND` (DNS lookup failed): Indicates a DNS failure of either `EAI_NODATA` or `EAI_NONAME`. This is not a standard POSIX error.
 
@@ -403,7 +403,7 @@ This is a list of system errors commonly-encountered when writing a Node.js prog
 
 * `EPIPE` (Conductor dañado): Una escritura en un pipe, socket, o FIFO para el cual no existe un proceso para la lectura de los datos. Comúnmente, se encuentra en las capas [`net`][] y [`http`][], indicadores de que el lado remoto del stream siendo escrito ha sido cerrado.
 
-* `ETIMEDOUT` (Se agotó el tiempo de la operación): Una solicitud de conexión o envío falló debido a que la parte conectada no respondió adecuadamente luego de un período de tiempo. Usualmente, es encontrado por [`http`][] o [`net`][] — a menudo una señal de que `socket.end()` no fue llamada correctamente.
+* `ETIMEDOUT` (Se agotó el tiempo de la operación): Una solicitud de conexión o envío falló debido a que la parte conectada no respondió adecuadamente luego de un período de tiempo. Usually encountered by [`http`][] or [`net`][]. Often a sign that a `socket.end()` was not properly called.
 
 ## Class: `TypeError`
 
@@ -537,6 +537,12 @@ Used when the main process is trying to read data from the child process's STDER
 ### `ERR_CONSOLE_WRITABLE_STREAM`
 
 `Console` was instantiated without `stdout` stream, or `Console` has a non-writable `stdout` or `stderr` stream.
+
+<a id="ERR_CONTEXT_NOT_INITIALIZED"></a>
+
+### `ERR_CONTEXT_NOT_INITIALIZED`
+
+The vm context passed into the API is not yet initialized. This could happen when an error occurs (and is caught) during the creation of the context, for example, when the allocation fails or the maximum call stack size is reached when the context is created.
 
 <a id="ERR_CONSTRUCT_CALL_REQUIRED"></a>
 
@@ -713,6 +719,12 @@ Data provided to `TextDecoder()` API was invalid according to the encoding provi
 ### `ERR_ENCODING_NOT_SUPPORTED`
 
 Encoding provided to `TextDecoder()` API was not one of the [WHATWG Supported Encodings](util.html#util_whatwg_supported_encodings).
+
+<a id="ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE"></a>
+
+### `ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE`
+
+The JS execution context is not associated with a Node.js environment. This may occur when Node.js is used as an embedded library and some hooks for the JS engine are not set up properly.
 
 <a id="ERR_FALSY_VALUE_REJECTION"></a>
 
@@ -1172,6 +1184,12 @@ An invalid HTTP token was supplied.
 
 An IP address is not valid.
 
+<a id="ERR_INVALID_MODULE_SPECIFIER"></a>
+
+### `ERR_INVALID_MODULE_SPECIFIER`
+
+The imported module string is an invalid URL, package name, or package subpath specifier.
+
 <a id="ERR_INVALID_OPT_VALUE"></a>
 
 ### `ERR_INVALID_OPT_VALUE`
@@ -1189,6 +1207,12 @@ An invalid or unknown file encoding was passed.
 ### `ERR_INVALID_PACKAGE_CONFIG`
 
 An invalid `package.json` file was found which failed parsing.
+
+<a id="ERR_INVALID_PACKAGE_TARGET"></a>
+
+### `ERR_INVALID_PACKAGE_TARGET`
+
+The `package.json` [exports](esm.html#esm_package_exports) field contains an invalid target mapping value for the attempted module resolution.
 
 <a id="ERR_INVALID_PERFORMANCE_MARK"></a>
 
@@ -1487,6 +1511,12 @@ A non-context-aware native addon was loaded in a process that disallows them.
 
 Un valor dado está fuera del rango aceptado.
 
+<a id="ERR_PACKAGE_PATH_NOT_EXPORTED"></a>
+
+### `ERR_PACKAGE_PATH_NOT_EXPORTED`
+
+The `package.json` [exports](esm.html#esm_package_exports) field does not export the requested subpath. Because exports are encapsulated, private internal modules that are not exported cannot be imported through the package resolution, unless using an absolute URL.
+
 <a id="ERR_REQUIRE_ESM"></a>
 
 ### `ERR_REQUIRE_ESM`
@@ -1682,10 +1712,17 @@ While using TLS, the parameter offered for the Diffie-Hellman (`DH`) key-agreeme
 
 Se venció el tiempo después de inicio de una comunicación TLS/SSL. In this case, the server must also abort the connection.
 
-<a id="ERR_TLS_INVALID_CONTEXT">
+<a id="ERR_TLS_INVALID_CONTEXT"></a>
+
 ### `ERR_TLS_INVALID_CONTEXT`<!-- YAML
 added: v13.3.0
 -->The context must be a `SecureContext`.
+
+<a id="ERR_TLS_INVALID_STATE"></a>
+
+### `ERR_TLS_INVALID_STATE`<!-- YAML
+added: v13.10.0
+-->The TLS socket must be connected and securily established. Ensure the 'secure' event is emitted before continuing.
 
 <a id="ERR_TLS_INVALID_PROTOCOL_METHOD"></a>
 
@@ -1908,6 +1945,12 @@ The current module's status does not allow for this operation. The specific mean
 ### `ERR_WASI_ALREADY_STARTED`
 
 The WASI instance has already started.
+
+<a id="ERR_WORKER_INIT_FAILED"></a>
+
+### `ERR_WORKER_INIT_FAILED`
+
+The `Worker` initialization failed.
 
 <a id="ERR_WORKER_INVALID_EXEC_ARGV"></a>
 

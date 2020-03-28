@@ -158,7 +158,7 @@ added: v10.16.0
 -->
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
-* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Standaard:** `process.env`.
+* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
 * Retourneert: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).

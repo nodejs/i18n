@@ -1,11 +1,11 @@
 # Stílus útmutató
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* A dokumentáció markdown jelöléssel készül, a fájlnevek formátuma `kisbetű-kötőjelekkkel-tagolva.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Néhány fájl kivételt képez, pl. legfelső szintű mardown fájl.
 * A dokumentumokban a sor hossza 80 karakter legyen.
 * Az `.editorconfig`-ban van megadva a formázás. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Néhány szerkesztőszoftver képes ezeket a szabályokat átvenni [plugin](http://editorconfig.org/#download)-nel.
 * Changes to documentation should be checked with `make lint-md`.
 * Az amerikai angol nyelvtan az irányadó. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   

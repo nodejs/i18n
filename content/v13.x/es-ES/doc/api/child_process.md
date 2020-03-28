@@ -25,6 +25,8 @@ ls.on('close', (code) => {
 
 By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
 
+The command lookup will be performed using `options.env.PATH` environment variable if passed in `options` object, otherwise `process.env.PATH` will be used. To account for the fact that Windows environment variables are case-insensitive Node.js will lexicographically sort all `env` keys and choose the first one case-insensitively matching `PATH` to perform command lookup. This may lead to issues on Windows when passing objects to `env` option that have multiple variants of `PATH` variable.
+
 El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente en una forma sincrónica que bloquea el bucle de evento hasta que el proceso generado exista o sea finalizado.
 
 Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas para [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. Each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].

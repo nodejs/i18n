@@ -6,7 +6,7 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+Το πακέτο `fs` παρέχει ένα API για την αλληλεπίδραση με το σύστημα αρχείων με έναν τρόπο που μοιάζει με τις κοινές συναρτήσεις POSIX.
 
 Για να χρησιμοποιήσετε το πακέτο:
 
@@ -135,7 +135,7 @@ On Windows, Node.js follows the concept of per-drive working directory. This beh
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> For most 
 
 `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -3101,7 +3101,7 @@ changes:
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Προεπιλογή:** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Προεπιλογή:** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Προεπιλογή:** `undefined` 
   * `eventType` {string}

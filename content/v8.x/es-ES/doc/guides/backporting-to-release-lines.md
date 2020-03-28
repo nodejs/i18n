@@ -2,7 +2,7 @@
 
 ## Ramas de escenificación
 
-Each release line has a staging branch that the releaser will use as a scratch pad while preparing a release. The branch name is formatted as follows: `vN.x-staging` where `N` is the major release number.
+Cada línea de la release tiene un branch de staging que el publicador usará como un bloc de notas al preparar la release. El nombre del branch tiene el siguiente formato: `vN.x-staging`, donde `N` es el número del major release.
 
 *Nota*: Para las ramas de escenificación activas vea el [Calendario de Lanzamiento](https://github.com/nodejs/Release#release-schedule1).
 

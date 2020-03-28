@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js에는 다양한 CLI 옵션이 있습니다. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js에는 다양한 CLI 옵션이 있습니다. 옵션에는 빌트인 디버깅, 스크립트를 실행하는 여러가지 방법, 유용한 런타임 옵션을 나타냅니다.
 
 터미널에서 이 설명서 매뉴얼 페이지를 보려면, `man node`를 실행하세요.
 
@@ -49,7 +49,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-뒤의 인수를 JavaScript로 평가합니다. The modules which are predefined in the REPL can also be used in `script`.
+뒤의 인수를 JavaScript로 평가합니다. `script`에서 REPL에 미리 정의 된 모듈도 사용할 수 있습니다.
 
 *Note*: On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
@@ -93,7 +93,7 @@ added: v1.6.0
 
 시작할 때 지정된 모듈을 미리 로드 합니다.
 
-Follows `require()`'s module resolution rules. `module`은 파일 경로이거나 node 모듈 이름일 수 있습니다.
+`require()`의 모듈 해석 규칙을 따릅니다. `module`은 파일 경로이거나 node 모듈 이름일 수 있습니다.
 
 ### `--inspect[=[host:]port]`
 
@@ -103,7 +103,7 @@ added: v6.3.0
 
 host:port에 인스팩터를 활성화합니다. 기본값은 127.0.0.1:9229입니다.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
+V8 인스펙터 통합을 통해 Chrome DevTools 및 IDE와 같은 도구가 Node.js 인스턴스를 디버그하고 프로파일링 할 수 있습니다. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -179,7 +179,7 @@ Enable the experimental `'http2'` module.
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+종료 하는 대신 디버거(`lldb`, `gdb`, `mdb` 등)를 사용한 사후 분석을 위한 핵심 파일을 생성하고 중단합니다.
 
 ### `--trace-warnings`
 
@@ -315,7 +315,7 @@ Specify an alternative default TLS cipher list. (Requires Node.js to be built wi
 added: v6.0.0
 -->
 
-시작할 때 FIPS 호환 암호화를 사용 합니다. (Requires Node.js to be built with `./configure --openssl-fips`)
+시작할 때 FIPS 호환 암호화를 사용 합니다. (`./configure --openssl-fips`으로 Node.js를 빌드할 필요가 있습니다)
 
 ### `--force-fips`
 
@@ -323,7 +323,7 @@ added: v6.0.0
 added: v6.0.0
 -->
 
-시작할 때 FIPS 호환 암호화를 강제합니다. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`)
+시작할 때 FIPS 호환 암호화를 강제합니다. (스크립트 코드에서해제할 수 없습니다.) (`--enable-fips`와 요구 조건이 같습니다)
 
 ### `--openssl-config=file`
 
@@ -331,7 +331,7 @@ added: v6.0.0
 added: v6.9.0
 -->
 
-시작할 때 OpenSSL 설정 파일을 불러옵니다. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+시작할 때 OpenSSL 설정 파일을 불러옵니다. Node.js가 `./configure --openssl-fips`로 빌드되었다면, FIPS 호환 암호화를 활성화하는 데 사용할 수 있습니다.
 
 ### `--use-openssl-ca`, `--use-bundled-ca`
 
@@ -369,7 +369,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v7.5.0
 -->
 
-노드 옵션의 끝을 나타냅니다. 인수의 나머지 부분을 스크립트에 넘깁니다. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+노드 옵션의 끝을 나타냅니다. 인수의 나머지 부분을 스크립트에 넘깁니다. 스크립트 파일이름이 없거나 스크립트 eval/프린트가 이전에 있는 경우에 다음 인수는 스크립트 파일 이름으로 사용 됩니다.
 
 ### `--max-http-header-size=size`
 

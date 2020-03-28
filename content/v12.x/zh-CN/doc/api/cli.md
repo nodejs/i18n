@@ -399,7 +399,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+这是一个空选项。 它为兼容性保留。
 
 ### `--no-deprecation`
 <!-- YAML
@@ -413,7 +413,7 @@ added: v0.8.0
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+禁用对 `async_hooks` 的运行时检测。 These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 <!-- YAML
@@ -1167,4 +1167,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 * `dns.lookup()`
 * all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). 更多信息参见 [libuv 线程池文档](http://docs.libuv.org/en/latest/threadpool.html)。

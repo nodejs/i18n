@@ -4,23 +4,23 @@
 
 <!-- type=misc -->
 
-Node.js dodaci su dinamičko povezani dijeljeni objekti, napisani u C++ jeziku, koji se mogu učitatu u Node.js pomoću [`require()`](modules.html#modules_require) funkcije i koristiti kao da su standardni Node.js moduli. Koriste se primarno da omoguće poveznicu izmedju JavaScript koja je pokrenuta unutar Node.js-a i C/C++ biblioteka.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
 
-Trenutno, metoda za implementaciju dodataka je komplikovana i uključuje znanje nekoliko komponenti i API-ja:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
-* V8: C++ biblioteka koju Node.js trenutno koristi za JavaScript implementaciju. V8 omogućuje mehanizam za kreiranje objekata, pozivanja funkcija itd. V8 API dokumentacija je dostupna većinom unutar `v8.h` header fajla (`deps/v8/include/v8.h` unutar Node.js folder strukture), Takodje je dostupna [online](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Unutrašnje Node.js biblioteke. Node.js eksportuje veliki broj C++ API-ja koji se mogu koristiti od strane dodataka &mdash; najbitnija je `node::ObjectWrap` klasa.
+* Unutrašnje Node.js biblioteke. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js uključuje i ostale statički povezane biblioteke, uključujuć i OpenSSL. Ostale biblioteke se nalaze unutar `deps/` foldera unutar Node.js folder strukture. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Pogledaj [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) za više informacija.
+* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Pogledaj [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) za više informacija.
 
-Svi naredni primjeri su dostupni za [preuzimanje](https://github.com/nodejs/node-addon-examples) i mogu se koristiti kao početna tačka za dodatke.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello world
 
-"Hello world" primjer je jednostavan dodatak, napisan u C++ jeziku, koji je jednak JavaScript kodu:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
@@ -60,26 +60,26 @@ Text
 XPath: /pre[2]/code
 ```
 
-Primjetite da svi Node.js dodaci moraju eksportovati inizijalizovanu fuknciju prateći sljedeći pattern:
+Note that all Node.js Addons must export an initialization function following the pattern:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Nema tačka-zareza nakon `NODE_MODULE` zato što to nije funkcija ( pogledati `node.h`).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
-`module_name` mora biti isti nazivu fajla krajnjem binary fajlu (izuzev `.node` sufiksa).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
-Unutar `hello.cc` primjera, inizijalizacija funkcije je `Initialize` i naziv modula je `addon`.
+In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
-Kada pravimo dodatke sa `node-gyp`, koristeći makro `NODE_GYP_MODULE_NAME` kao prvi parametar za `NODE_MODULE()` će osigurati da ime krajnjeg binary fajla bude proslijeđen ka `NODE_MODULE()`.
+When building addons with `node-gyp`, using the macro `NODE_GYP_MODULE_NAME` as the first parameter of `NODE_MODULE()` will ensure that the name of the final binary will be passed to `NODE_MODULE()`.
 
 ### Context-aware dodaci
 
-Postoje okruženja u kojima Node.js dodaci će morati da se učitaju više puta u više konteksta. Naprimjer, [Electron](https://electronjs.org/) runtime pokreće više instanci Node.js-a u jednom procesu. Svaka instanca će imati svoj posebni `require()` keš, i samim tim svaka instanca će trebati nativni dodatak da se ponaša ispravno kada se učita pomoću `require()`. Sa perspektive dodataka, ovo znači da mora podržati više inicijalizacija.
+There are environments in which Node.js addons may need to be loaded multiple times in multiple contexts. For example, the [Electron](https://electronjs.org/) runtime runs multiple instances of Node.js in a single process. Each instance will have its own `require()` cache, and thus each instance will need a native addon to behave correctly when loaded via `require()`. From the addon's perspective, this means that it must support multiple initializations.
 
-Dodatak svjestan konteksta se može napraviti pomoću `NODE_MODULE_INITIALIZER`, koji se širi do naziva funkcije koju Node.js očekuje da nadje kada učitava dodatak. Dodatak se može inicijalizovati kao na sljedećem primjeru:
+A context-aware addon can be constructed by using the macro `NODE_MODULE_INITIALIZER`, which expands to the name of a function which Node.js will expect to find when it loads an addon. An addon can thus be initialized as in the following example:
 
 ```cpp
 using namespace v8;
@@ -92,7 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 }
 ```
 
-Još jedna opcija je da se koristi `NODE_MODULE_INIT()` makro, koji će takođe napraviti context-aware dodataka. Za razliku od `NODE_MODULE()`, koji se koristi da napravi dodatak oko zadane funkcije za inicijalizaciju, `NODE_MODULE_INIT()` služi kao deklaracija takve inicijalizacije koju prati funkcija.
+Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
 

@@ -81,7 +81,7 @@
 
 No hay commits adicionales.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
+Debido a un incorrecta preparación de la actualización para el compilador GCC 4.9.X, los últimos lanzamientos para PPC de "little endian" fueron compilados usando GCC 4.9.X en vez de GCC 4.8.X. Esto causó un quiebre de ABI en ambientes basados en PPCLE. Esto ha sido reparado en nuestra infraestructura y estamos haciendo este lanzamiento para asegurarnos de que los binarios alojados se están adheriendo a nuestra contrato de soporte de plataforma.
 
 <a id="6.14.0"></a>
 
@@ -158,7 +158,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ## 2018-02-13, Versión 6.13.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
+Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. Esto incluye a 32 que están relacionados a documentación, 31 que están relacionados a pruebas, 8 que están relacionados a build / tool y 1 commit que actualiza una dependencia.
 
 ### Cambios Notables
 
@@ -316,7 +316,7 @@ Esta actualización de LTS viene con 112 commits, de los cuales 17 están consid
 
 ## 2018-01-02, Versión 6.12.3 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 115 commits. This includes 52 which are test related, 40 which are doc related, 12 which are build / tool related and 2 commits which updating a dependency.
+Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están relacionados a pruebas, 40 que están relacionados a documentación, 12 que están relacionados a build / tool y 2 commits que actualizan una dependencia.
 
 ### Cambios Notables
 
@@ -471,7 +471,7 @@ Correcciones para los siguientes CVEs están incluidos en esta actualización:
 
 ## 2017-12-05, Versión 6.12.1 'Boron' (LTS), @MylesBorins
 
-Esta actualización LTS viene con 263 commits. This includes 173 which are test related, 41 which are doc related, 18 which are build / tool related and 1 commit which is an update to a dependency.
+Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están relacionados a pruebas, 41 que están relacionados a documentación, 18 que están relacionados a build / tool, y 1 commit que es una actualización para una dependencia.
 
 ### Cambios Notables
 
@@ -752,7 +752,7 @@ Esta actualización LTS viene con 263 commits. This includes 173 which are test 
 
 ## 2017-11-07, Versión 6.12.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización LTS viene con 127 commits. This includes 45 which are test related, 33 which are doc related, 13 which are updates to dependencies and 7 commits which are related to build / tools.
+Esta actualización LTS viene con 127 commits. Esto incluye 45 que están relacionados a pruebas, 33 que están relacionados a documentación, 14 que son actualizaciones para dependencias y 7 commits que están relacionados a build / tools.
 
 Esta versión incluye una actualización de seguridad para openssl que ha sido considerada de baja gravedad para el proyecto Node.js.
 
@@ -931,7 +931,7 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2017-10-03, Versión 6.11.4 'Boron' (LTS), @MylesBorins
 
-Esta actualización LTS viene con 91 commits. This includes 29 which are test related, 28 which are doc related, 11 which are build / tool related and 3 commits which are updates to dependencies.
+Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relacionados a pruebas, 28 que están relacionados a documentación, 11 que están relacionados a build / tool, y 3 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -1036,7 +1036,7 @@ Esta actualización LTS viene con 91 commits. This includes 29 which are test re
 
 ## 2017-09-05, Versión 6.11.3 'Boron' (LTS), @MylesBorins
 
-Esta actualización LTS viene con 152 commits. This includes 75 which are test related, 25 which are doc related, 21 which are build / tool related and 3 commits which are updates to dependencies.
+Esta actualización LTS viene con 152 commits. Esto incluye 75 que están relacionados con pruebas, 25 que están relacionados con documentación, 21 que están relacionados con build / tool y 3 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -1208,7 +1208,7 @@ Esta actualización LTS viene con 152 commits. This includes 75 which are test r
 
 ## 2017-08-01, Versión 6.11.2 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 221 commits. This includes 80 which are test related, 52 which are doc related, 32 which are build / tool related and 10 commits which are updates to dependencies.
+Esta actualización de LTS viene con 221 commits. Esto incluye 80 que están relacionados con pruebas, 52 que están relacionados con documentación, 32 que están relacionados con build / tool y 10 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -1474,7 +1474,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ## 2017-06-06, Versión 6.11.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 126 commits. This includes 40 which are test related, 32 which are doc related, 12 which are build / tool related and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 126 commits. Esto incluye 40 que están relacionados a pruebas, 32 que están relacionados a documentación, 12 que están relacionados a build / tool y 4 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -1815,7 +1815,7 @@ Esto incluye:
 * una reparación para una regresión introducida al repl de windows en 6.10.0
 * una reparación refactorizada para V8 para detener una violación de segmento que podría ocurrir cuando se usa la sintaxis de spread
 
-It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
+Esto también incluye una actualización a zlib 1.2.11 para reparar un [número de CVEs de baja severidad](http://seclists.org/oss-sec/2016/q4/602) que estaban presentes en zlib 1.2.8.
 
 ### Cambios notables
 
@@ -1841,7 +1841,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ## 2017-03-21, Versión 6.10.1 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 297 commits. This includes 124 which are test related, 79 which are doc related, 16 which are build / tool related and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 297 commits. Esto incluye 124 que están relacionados a pruebas, 79 que están relacionados a documentación, 16 que están relacionados a build / tool y 4 commits que son actualizaciones para dependencias.
 
 ### Cambios notables
 
@@ -2168,7 +2168,7 @@ Esta actualización de LTS viene con 297 commits. This includes 124 which are te
 
 ## 2017-02-21, Versión 6.10.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 168 commits. This includes 85 which are test related, 34 which are doc related, 12 commits which are updates to dependencies and 5 which are build / tool related.
+Esta actualización de LTS viene con 168 commits. Esto incluye 85 que están relacionados a pruebas, 34 que están relacionados a documentación, 12 commits que son actualizaciones para dependencias y 5 que están relacionados a build / tool.
 
 ### Cambios Notables
 
@@ -2361,7 +2361,7 @@ Los cambios notables de SEMVER-PATCH incluyen:
 
 Esta es una actualización de seguridad de la línea de actualizaciones 'Boron' para actualizar OpenSSL a la versión 1.0.2k
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) ha determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web de Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Cambios Notables
 
@@ -2381,7 +2381,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ## 2017-01-05, Versión 6.9.4 'Boron' (LTS), @MylesBorins
 
-Esta es una actualización especial que contiene 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Esta es una actualización especial que contiene 0 commits. Mientras se promocionaban plataformas adicionales para v6.9.3 después del lanzamiento, los tarballs en el servidor de la actualización fueron sobrescritos y ahora tienen diferentes shasums. Para poder remover cualquier ambigüedad sobre la actualización, hemos optado por hacer una actualización de parche de semver sin ningún cambio.
 
 ### Cambios Notables
 
@@ -2395,7 +2395,7 @@ N/A
 
 ## 2017-01-03, Versión 6.9.3 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 312 commits. This includes 229 that are test related, 62 that are docs related, 17 which are build / tools related, and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 312 commits. Esto incluye 229 que están relacionados a pruebas, 62 que están relacionados a documentación, 17 que están relacionados a build / tools, y 4 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -2726,7 +2726,7 @@ Esta actualización de LTS viene con 312 commits. This includes 229 that are tes
 
 ## 2016-12-06, Versión 6.9.2 'Boron' (LTS), @thealphanerd
 
-Esta actualización de LTS viene con 144 commits. This includes 47 that are docs related, 46 that are test related, 15 which are build / tools related, and 9 commits which are updates to dependencies.
+Esta actualización de LTS viene con 144 commits. Esto incluye 47 que están relacionados a documentación, 46 que están relacionados con pruebas, 15 que están relacionados a build / tools, y 9 commits que son actualizaciones para dependencias.
 
 ### Cambios Notables
 
@@ -4163,7 +4163,7 @@ Parche de Semver:
 * **src,module**: añadir bandera de línea de comando de --preserve-symlinks (James M Snell) [#6537](https://github.com/nodejs/node/pull/6537)
 * **util**: adherirse a `noDeprecation` establecida en el tiempo de ejecución (Anna Henningsen) [#6683](https://github.com/nodejs/node/pull/6683)
 
-As of this release the 6.X line now includes 64-bit binaries for Linux on Power Systems running in big endian mode in addition to the existing 64-bit binaries for running in little endian mode.
+A partir de este lanzamiento, la línea de 6.X ahora incluye binarios de 64-bit para Linux en Power Systems ejecutándose en modo big endian, además de los binarios de 64-bit existentes para llevar a cabo la ejecución en modo little endian.
 
 ### Commits
 
@@ -4379,83 +4379,83 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 ### Cambios notables
 
-The following significant changes have been made since the previous Node.js v5.0.0 release.
+Los siguientes cambios significativos han sido hechos desde la actualización previa de Node.js v5.0.0.
 
 * Buffer 
-  * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
-  * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
-  * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
+  * Nuevos constructores de Buffer han sido añadidos [#4682](https://github.com/nodejs/node/pull/4682) y [#5833](https://github.com/nodejs/node/pull/5833).
+  * Constructores existentes de `Buffer()` y `SlowBuffer()` han sido desaprobados en los documentos [#4682](https://github.com/nodejs/node/pull/4682) y [#5833](https://github.com/nodejs/node/pull/5833).
+  * Las APIs de Buffer previamente desaprobadas han sido removidas [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
   * Se mejoró el manejo de errores [#4514](https://github.com/nodejs/node/pull/4514).
-  * The `Buffer.prototype.lastIndexOf()` method has been added [#4846](https://github.com/nodejs/node/pull/4846).
+  * El método de `Buffer.prototype.lastIndexOf()` ha sido añadido [#4846](https://github.com/nodejs/node/pull/4846).
 * Cluster 
-  * Worker emitted as first argument in 'message' event [#5361](https://github.com/nodejs/node/pull/5361).
-  * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
+  * Worker emitido como primer argumento en evento del 'message' [#5361](https://github.com/nodejs/node/pull/5361).
+  * La propiedad de `worker.exitedAfterDisconnect` reemplaza a `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
 * Console 
-  * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
+  * Llamar a `console.timeEnd()` con una etiqueta desconocida ahora emite una advertencia de proceso en vez de arrojar [#5901](https://github.com/nodejs/node/pull/5901).
 * Crypto 
-  * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
-  * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
-  * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
-  * pbkdf2 digest overloading is deprecated [#4047](https://github.com/nodejs/node/pull/4047).
+  * Se mejoró el manejo de errores [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
+  * Se simplificaron uniones de clase de Certificado [#5382](https://github.com/nodejs/node/pull/5382).
+  * Se mejoró control sobre modo de FIPS [#5181](https://github.com/nodejs/node/pull/5181).
+  * sobrecarga de digest de pbkdf2 está desaprobada [#4047](https://github.com/nodejs/node/pull/4047).
 * Dependencias 
-  * Reintroduce shared c-ares build support [#5775](https://github.com/nodejs/node/pull/5775).
+  * Reintroducir soporte de compilación de c-ares compartido [#5775](https://github.com/nodejs/node/pull/5775).
   * V8 se actualizó a 5.0.71.35 [#6372](https://github.com/nodejs/node/pull/6372).
 * DNS 
-  * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
+  * Añadir API de `dns.resolvePtr()` a consulta simple de registros de PTR de DNS [#4921](https://github.com/nodejs/node/pull/4921).
 * Dominios 
-  * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
+  * Limpiar pila cuando no haya manejador de errores [#4659](https://github.com/nodejs/node/pull/4659).
 * Eventos 
-  * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
-  * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
+  * El objeto de `EventEmitter.prototype._events` ya no hereda de Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
+  * Los métodos de `EventEmitter.prototype.prependListener()` y `EventEmitter.prototype.prependOnceListener()` han sido añadidos [#6032](https://github.com/nodejs/node/pull/6032).
 * Sistema de Archivos 
-  * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
-  * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
-  * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
-  * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
+  * Los métodos de `fs.realpath()` y `fs.realpathSync()` han sido actualizados para usar una implementación basada en libuv que es más eficiente. Este cambio incluye la remoción del argumento de `cache` y el método ahora puede arrojar nuevos errores [#3594](https://github.com/nodejs/node/pull/3594).
+  * Las apis de FS ahora pueden aceptar y devolver rutas como Buffers [#5616](https://github.com/nodejs/node/pull/5616).
+  * Manejo de errores y mejoras en chequeo de tipo [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
+  * Interfaz de string de fs.read está desaprobada [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
-  * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
+  * 'clientError' ahora puede ser usado para devolver errores personalizados de un servidor de HTTP [#4557](https://github.com/nodejs/node/pull/4557).
 * Módulos 
-  * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
-  * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
+  * Directorio actual ahora está priorizado para búsquedas locales [#5689](https://github.com/nodejs/node/pull/5689).
+  * Enlaces simbólicos son preservados al requerir módulos [#5950](https://github.com/nodejs/node/pull/5950).
 * Net 
-  * DNS hints no longer implicitly set [#6021](https://github.com/nodejs/node/pull/6021).
-  * Improved error handling and type checking [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
+  * Las sugerencias de DNS ya no están establecidas de manera implícita [#6021](https://github.com/nodejs/node/pull/6021).
+  * Se mejoró el manejo de errores y el chequeo de tipo [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
 * npm 
-  * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
+  * Ejecutar npm requiere que el nodo binario se encuentre en la ruta [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
-  * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
+  * MACOSX_DEPLOYMENT_TARGET ha sido incrementado hasta 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
 * Ruta de Acceso 
   * Se mejoró chequeo de tipo [#5348](https://github.com/nodejs/node/pull/5348).
 * Proceso 
-  * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
-  * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
+  * Introducir API de advertencias de proceso [#4782](https://github.com/nodejs/node/pull/4782).
+  * Arrojar excepción cuando una no-función se pase a nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
-  * The object returned by `querystring.parse()` no longer inherits from Object.prototype [#6055](https://github.com/nodejs/node/pull/6055).
+  * El objeto devuelto por `querystring.parse()` ya no hereda de Object.prototype [#6055](https://github.com/nodejs/node/pull/6055).
 * Readline 
-  * Key info is emitted unconditionally [#6024](https://github.com/nodejs/node/pull/6024).
-  * History can now be explicitly disabled [#6352](https://github.com/nodejs/node/pull/6352).
+  * Información clave es emitida incondicionalmente [#6024](https://github.com/nodejs/node/pull/6024).
+  * La historia ahora puede ser deshabilitada explícitamente [#6352](https://github.com/nodejs/node/pull/6352).
 * REPL 
-  * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
-  * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
+  * La asignación a `_` va a emitir una advertencia [#5535](https://github.com/nodejs/node/pull/5535).
+  * Las expresiones ya no se completarán cuando la evaluación falle [#6328](https://github.com/nodejs/node/pull/6328).
 * Temporizadores 
-  * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
+  * Fallar temprano cuando callback no sea una función [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams 
-  * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
+  * `null` es ahora un fragmento inválido para escribir en modo de objeto [#6170](https://github.com/nodejs/node/pull/6170).
 * TLS 
-  * Rename 'clientError' to 'tlsClientError' [#4557](https://github.com/nodejs/node/pull/4557).
-  * SHA1 used for sessionIdContext [#3866](https://github.com/nodejs/node/pull/3866).
+  * Renombrar 'clientError' a 'tlsClientError' [#4557](https://github.com/nodejs/node/pull/4557).
+  * SHA1 usado para sessionIdContext [#3866](https://github.com/nodejs/node/pull/3866).
 * TTY 
-  * Previously deprecated setRawMode wrapper is removed [#2528](https://github.com/nodejs/node/pull/2528).
+  * Empaquetador de setRawMode previamente desaprobado está removido [#2528](https://github.com/nodejs/node/pull/2528).
 * URL 
-  * Username and password will be dropped by `url.resolve()` if the host changes [#1480](https://github.com/nodejs/node/pull/1480).
+  * Nombre de usuario y contraseña van a ser soltados por `url.resolve()` si el host cambia [#1480](https://github.com/nodejs/node/pull/1480).
 * Util 
-  * Changes to Error object formatting [#4582](https://github.com/nodejs/node/pull/4582).
-  * The `util._extend()` method has been deprecated [#4903](https://github.com/nodejs/node/pull/4903)
-  * The `util.log()` method has been deprecated [#6161](https://github.com/nodejs/node/pull/6161).
+  * Cambios al formato de objeto de Error [#4582](https://github.com/nodejs/node/pull/4582).
+  * El método de `util._extend()` ha sido desaprobado [#4903](https://github.com/nodejs/node/pull/4903)
+  * El método de `util.log()` ha sido desaprobado [#6161](https://github.com/nodejs/node/pull/6161).
 * Windows 
-  * Windows XP and Vista are no longer supported [#5167](https://github.com/nodejs/node/pull/5167).
+  * Windows XP y Vista ya no están soportados [#5167](https://github.com/nodejs/node/pull/5167).
 * Zlib 
-  * Multiple improvements have been made to Zlib processing [#5883](https://github.com/nodejs/node/pull/5883) and [#5707](https://github.com/nodejs/node/pull/5707).
+  * Se han hecho múltiples mejoras al procesamiento de Zlib [#5883](https://github.com/nodejs/node/pull/5883) y [#5707](https://github.com/nodejs/node/pull/5707).
 
 ### Commits
 

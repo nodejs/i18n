@@ -2,7 +2,7 @@
 
 <!--introduced_in=v7.7.0-->
 
-Node.js may deprecate APIs when either: (a) use of the API is considered to be unsafe, (b) an improved alternative API has been made available, or (c) breaking changes to the API are expected in a future major release.
+Η Node.js μπορεί να αποσύρει API όταν: (α) η χρήση του API θεωρείται ανασφαλής, (β) ένα βελτιωμένο εναλλακτικό API είναι διαθέσιμο, ή (γ) αναμένονται αλλαγές στο API που χαλάνε τη συμβατότητα σε μια μελλοντική κυκλοφορία.
 
 Η Node.js χρησιμοποιεί τρία είδη απόσυρσης:
 
@@ -10,15 +10,15 @@ Node.js may deprecate APIs when either: (a) use of the API is considered to be u
 * Κατά την εκτέλεση
 * Τέλος κύκλου ζωής
 
-A Documentation-only deprecation is one that is expressed only within the Node.js API docs. Αυτές δεν έχουν καμία επίδραση στην εκτέλεση της Node.js.
+Μια απόσυρση μόνο στην τεκμηρίωση, είναι αυτή που εκφράζεται μόνο μέσω της τεκμηρίωσης του API της Node.js. Αυτές δεν έχουν καμία επίδραση στην εκτέλεση της Node.js.
 
-A Runtime deprecation will, by default, generate a process warning that will be printed to `stderr` the first time the deprecated API is used. When the `--throw-deprecation` command-line flag is used, a Runtime deprecation will cause an error to be thrown.
+Μια απόσυρση κατά την εκτέλεση, από προεπιλογή, θα δημιουργήσει μια προειδοποίηση η οποία εμφανίζεται στο `stderr` την πρώτη φορά που θα χρησιμοποιηθεί το API προς απόσυρση. Αν χρησιμοποιηθεί η παράμετρος γραμμής εντολών `--throw-deprecation`, η απόσυρση κατά την εκτέλεση θα εμφανίσει ένα σφάλμα.
 
-An End-of-Life deprecation is used to identify code that either has been removed or will soon be removed from Node.js.
+Μια απόσυρση τέλους κύκλου ζωής, χρησιμοποιείται για τον προσδιορισμό κώδικα που είτε έχει αφαιρεθεί ή θα αφαιρεθεί σύντομα από την Node.js.
 
 ## Un-deprecation
 
-From time-to-time the deprecation of an API may be reversed. Such action may happen in either a semver-minor or semver-major release. In such situations, this document will be updated with information relevant to the decision. *However, the deprecation identifier will not be modified*.
+From time-to-time the deprecation of an API may be reversed. Such action may happen in either a semver-minor or semver-major release. Σε αυτές τις περιπτώσεις, αυτό το έγγραφο θα ενημερωθεί με πληροφορίες σχετικές με την απόφαση. *However, the deprecation identifier will not be modified*.
 
 ## Λίστα API που έχουν αποσυρθεί
 
@@ -28,7 +28,7 @@ From time-to-time the deprecation of an API may be reversed. Such action may hap
 
 Τύπος: Κατά την εκτέλεση
 
-Η μέθοδος `OutgoingMessage.prototype.flush()` αποσύρθηκε. Use `OutgoingMessage.prototype.flushHeaders()` instead.
+Η μέθοδος `OutgoingMessage.prototype.flush()` αποσύρθηκε. Χρησιμοποιήστε το `OutgoingMessage.prototype.flushHeaders()`.
 
 <a id="DEP0002"></a>
 
@@ -44,7 +44,7 @@ From time-to-time the deprecation of an API may be reversed. Such action may hap
 
 Τύπος: Κατά την εκτέλεση
 
-Η ιδιότητα `_writableState.buffer` αποσύρθηκε. Use the `_writableState.getBuffer()` method instead.
+Η ιδιότητα `_writableState.buffer` αποσύρθηκε. Χρησιμοποιήστε τη μέθοδο `_writableState.getBuffer()`.
 
 <a id="DEP0004"></a>
 
@@ -52,7 +52,7 @@ From time-to-time the deprecation of an API may be reversed. Such action may hap
 
 Τύπος: Μόνο στην τεκμηρίωση
 
-The `CryptoStream.prototype.readyState` property is deprecated and should not be used.
+Η ιδιότητα `CryptoStream.prototype.readyState` είναι υπό απόσυρση και δεν πρέπει να χρησιμοποιείται.
 
 <a id="DEP0005"></a>
 
@@ -60,13 +60,13 @@ The `CryptoStream.prototype.readyState` property is deprecated and should not be
 
 Τύπος: Μόνο στην τεκμηρίωση
 
-The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
+Η συνάρτηση `Buffer()` και ο constructor `new Buffer()` έχουν αποσυρθεί λόγω των θεμάτων χρηστικότητας που μπορούν να οδηγήσουν σε τυχαία θέματα ασφαλείας.
 
-As an alternative, use of the following methods of constructing `Buffer` objects is strongly recommended:
+Ως εναλλακτική λύση, συνίσταται η χρήση των ακόλουθων μεθόδων δημιουργίας των αντικειμένων `Buffer`:
 
-* [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Create a `Buffer` with *initialized* memory.
+* [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Δημιουργία `Buffer` με *αρχικοποίηση* μνήμης.
 * [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
-* [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
+* [`Buffer.allocUnsafeSlow(size)`][] - Δημιουργία `Buffer` *χωρίς αρχικοποίηση* μνήμης.
 * [`Buffer.from(array)`][] - Δημιουργία `Buffer` με ένα αντίγραφο του `array`
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
 * [`Buffer.from(buffer)`][] - Δημιουργία `Buffer` που αντιγράφει το `buffer`.
@@ -78,7 +78,7 @@ As an alternative, use of the following methods of constructing `Buffer` objects
 
 Τύπος: Κατά την εκτέλεση
 
-Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` methods, the `options.customFds` option is deprecated. The `options.stdio` option should be used instead.
+Εντός των μεθόδων `spawn()`, `fork()`, και `exec()` της ενότητας [`child_process`][], η επιλογή `options.customFds` αποσύρθηκε. Θα πρέπει να χρησιμοποιείται η επιλογή `options.stdio`.
 
 <a id="DEP0007"></a>
 
@@ -94,7 +94,7 @@ Within the `cluster` module, the [`worker.suicide`][] property has been deprecat
 
 Τύπος: Μόνο στην τεκμηρίωση
 
-Η ενότητα `constants` έχει αποσυρθεί. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
+Η ενότητα `constants` έχει αποσυρθεί. Όταν απαιτείται πρόσβαση στις σταθερές συγκεκριμένων ενοτήτων της Node.js, θα πρέπει να ανατρέχουν στην ιδιότητα `constants` που διαθέτει η κάθε ενότητα. Για παράδειγμα, `require('fs').constants` και `require('os').constants`.
 
 <a id="DEP0009"></a>
 
@@ -102,7 +102,7 @@ Within the `cluster` module, the [`worker.suicide`][] property has been deprecat
 
 Type: End-of-life
 
-Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Προηγουμένως, εμφανιζόταν ένα μήνυμα απόσυρσης. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+Η χρήση του [`crypto.pbkdf2()`][] API αποσύρθηκe στην έκδοση Node.js 6.0 επειδή η μέθοδος χρησιμοποιούσε εξ΄ορισμού το μη προτεινόμενο `'SHA1'` digest. Προηγουμένως, εμφανιζόταν ένα μήνυμα απόσυρσης. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
 
 <a id="DEP0010"></a>
 

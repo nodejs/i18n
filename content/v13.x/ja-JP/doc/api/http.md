@@ -6,7 +6,7 @@
 
 HTTPサーバとクライアントを利用するには、`require('http')` を使う必要があります。
 
-Node.jsのHTTPインターフェースは、HTTPプロトコルにおいて従来利用することが難しかった多くの機能をサポートできるように作られています。 特に、大規模で、ひとまとめにエンコードされたメッセージに向いています。 このインターフェースでは、要求と応答の全体をバッファすることが決してないため、ユーザーはデータをストリームすることができます。
+Node.jsのHTTPインターフェースは、HTTPプロトコルにおいて従来利用することが難しかった多くの機能をサポートできるように作られています。 特に、大規模で、ひとまとめにエンコードされたメッセージに向いています。 The interface is careful to never buffer entire requests or responses, so the user is able to stream data.
 
 オブジェクトのHTTPメッセージヘッダはこのような形式です：
 ```js
@@ -19,7 +19,7 @@ Node.jsのHTTPインターフェースは、HTTPプロトコルにおいて従�
 
 Keys are lowercased. Values are not modified.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
 See [`message.headers`][] for details on how duplicate headers are handled.
 
@@ -150,6 +150,8 @@ added: v0.11.4
 -->* {Object}
 
 An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+
+Sockets in the `freeSockets` list will be automatically destroyed and removed from the array on `'timeout'`.
 
 ### `agent.getName(options)`
 <!-- YAML
@@ -622,7 +624,7 @@ added: v0.1.29
 * `callback` {Function}
 * Returns: {boolean}
 
-Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Sends a chunk of the body. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
 
@@ -827,7 +829,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->* Extends: {Stream}
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+This object is created internally by an HTTP server, not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 ### Event: `'close'`<!-- YAML
 added: v0.6.7

@@ -4,7 +4,7 @@
 
 > Estabilidade: 2 - Estável
 
-HTTPS é o protocolo HTTP sobre SSL/TLS. In Node.js this is implemented as a separate module.
+HTTPS é o protocolo HTTP sobre SSL/TLS. No node.js, isso é implementado como um módulo separado.
 
 ## Classe: https.Agent
 
@@ -20,7 +20,7 @@ Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. See [`
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. Consulte [`http.Server`][] para obter mais informações.
+Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`http.Server`][] para obter mais informações.
 
 ### server.close([callback])
 
@@ -49,7 +49,7 @@ Consulte [`http.Server#maxHeadersCount`][].
 
 See [`http.Server#headersTimeout`][].
 
-### server.setTimeout(\[msecs\]\[, callback\])
+### server.setTimeout (\[msecs\]\[, callback\])
 
 <!-- YAML
 added: v0.11.2
@@ -147,7 +147,7 @@ changes:
 
 Como [`http.get()`][] mas para o HTTPS.
 
-`options` pode ser um objeto, uma string, ou um objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -194,17 +194,17 @@ changes:
 -->
 
 * `url` {string | URL}
-* `opções` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  * `protocolo` **Padrão:** `'https:'`
-  * `porta` **Padrão:** `443`
-  * `agente` **Padrão:** `https.globalAgent`
+* `opções` {Object | string | URL} Aceita todas as `options` de [`http.request()`][], com algumas diferenças nos valores padrões: 
+    * `protocolo` **Padrão:** `'https:'`
+    * `porta` **Padrão:** `443`
+    * `agente` **Padrão:** `https.globalAgent`
 * `callback` {Function}
 
 Faz uma requesição para um web server seguro.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`opções` pode ser um objeto, uma string, ou um objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`opções` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');

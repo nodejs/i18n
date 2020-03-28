@@ -8,7 +8,7 @@
 
 File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-Asenkrom form herzaman son argümanı olarak bir tamamlama callback'i alır. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+Asenkrom form herzaman son argümanı olarak bir tamamlama callback'i alır. Tamamlama callback'ine geçilen argümanlar, yönteme bağlıdır, ancak ilk argüman her zaman bir istisna için ayrılmıştır. Eğer işlem başarıyla tamamlandıysa, ilk argüman `null` veya `undefined` olacaktır.
 
 When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
@@ -920,7 +920,7 @@ const defaults = {
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
-If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
 
@@ -982,7 +982,7 @@ const defaults = {
 
 If `autoClose` is set to true (default behavior) on `error` or `end` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak.
 
-Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `options` is a string, then it specifies the encoding.
 
@@ -2585,7 +2585,7 @@ The callback will be given three arguments `(err, bytesWritten, buffer)` where `
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `bytesWritten` and `buffer` properties.
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.write` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -2623,7 +2623,7 @@ The callback will receive the arguments `(err, written, string)` where `written`
 
 Unlike when writing `buffer`, the entire string must be written. No substring may be specified. This is because the byte offset of the resulting data may not be the same as the string offset.
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.write` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -2675,7 +2675,7 @@ fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 
 Any specified file descriptor has to support writing.
 
-Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.writeFile` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 *Note*: If a file descriptor is specified as the `file`, it will not be closed automatically.
 

@@ -38,7 +38,7 @@ WHATWG URL's `origin` property includes `protocol` and `host`, but not `username
 ├─────────────┴─────────────────────┴────────────────────────┴──────────┴────────────────┴───────┤
 │                                              href                                              │
 └────────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 Analysant la chaîne URL utilisant l'API WHATWG :

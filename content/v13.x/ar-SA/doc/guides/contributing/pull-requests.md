@@ -2,7 +2,7 @@
 
 There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. هذا هو المكان الذي سنبدأ منه.
 
-* [Dependencies](#dependencies)
+* [التبعيات](#dependencies)
 * [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment)
   * [الخطوة 1: النسخ](#step-1-fork)
   * [الخطوة 2: التفرع](#step-2-branch)
@@ -33,7 +33,7 @@ There are two fundamental components of the Pull Request process: one concrete a
   * [الانتظار حتى ينزل طلب السحب](#waiting-until-the-pull-request-gets-landed)
   * [ألق نضرة على دليل التعاون](#check-out-the-collaborator-guide)
 
-## Dependencies
+## التبعيات
 
 Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
@@ -88,9 +88,9 @@ The vast majority of Pull Requests opened against the `nodejs/node` repository i
 
 If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
 
-Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../../STYLE_GUIDE.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows). If you are adding to or deprecating an API, use `REPLACEME` for the version number in the documentation YAML.
+Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../doc-style-guide.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows). If you are adding to or deprecating an API, use `REPLACEME` for the version number in the documentation YAML.
 
-For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md), as well as the [README of `src/`](../../../src/README.md) for an overview over Node.js C++ internals.
+For contributing C++ code, you may want to look at the [C++ Style Guide](../../cpp-style-guide.md), as well as the [README of `src/`](../../../src/README.md) for an overview over Node.js C++ internals.
 
 ### الخطوة 4: الإلتزام
 

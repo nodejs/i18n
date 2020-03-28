@@ -4,7 +4,7 @@
 
 > Kararlılık: 2 - Kararlı
 
-The `url` module provides utilities for URL resolution and parsing. Modülü yüklemek için:
+The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
 ```js
 const url = require('url');
@@ -122,7 +122,7 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
 
 #### url.host
 
@@ -225,7 +225,7 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
 
 #### url.pathname
 
@@ -333,7 +333,7 @@ console.log(myURL.href);
 // Prints https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
 
 #### url.searchParams
 
@@ -358,7 +358,7 @@ console.log(myURL.href);
 // Prints https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
 
 #### url.toString()
 

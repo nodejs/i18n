@@ -282,7 +282,7 @@ The `callback` is invoked when a `PerformanceObserver` is notified about new `Pe
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the
+--> Disconnects the 
 
 `PerformanceObserver` instance from all notifications.
 
@@ -418,6 +418,8 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
+
+<!-- eslint-disable no-global-assign -->
 
 ```js
 'use strict';

@@ -2511,7 +2511,7 @@ Fixes for the following CVEs are included in this release:
 * `المحاورة`
   * `console.countReset()` will emit a warning if the timer being reset does not exist. [#21649](https://github.com/nodejs/node/pull/21649)
   * `console.time()` will no longer reset a timer if it already exists. [#20442](https://github.com/nodejs/node/pull/20442)
-* Dependencies
+* التبعيات
   * V8 has been updated to 7.0. [#22754](https://github.com/nodejs/node/pull/22754)
 * `fs`
   * The `fs.read()` method now requires a callback. [#22146](https://github.com/nodejs/node/pull/22146)

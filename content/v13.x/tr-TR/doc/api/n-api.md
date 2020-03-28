@@ -270,6 +270,7 @@ To this env, N-API provides a way to allocate data such that its life cycle is t
 ### napi_set_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -291,6 +292,7 @@ This API associates `data` with the currently running Agent. `data` can later be
 ### napi_get_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -1285,9 +1287,8 @@ N-API values are represented by the type `napi_value`. Any N-API call that requi
 #### napi_key_collection_mode
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 typedef enum {
@@ -1305,9 +1306,8 @@ Describes the `Keys/Properties` filter enums:
 #### napi_key_filter
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 typedef enum {
@@ -1325,9 +1325,8 @@ Property filter bits. They can be or'ed to build a composite filter.
 #### napi_key_conversion
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 typedef enum {
@@ -1798,9 +1797,8 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 #### napi_create_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1819,9 +1817,8 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1840,9 +1837,8 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2144,9 +2140,8 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 #### napi_get_value_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2167,9 +2162,8 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 #### napi_get_value_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2190,9 +2184,8 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 #### napi_get_value_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2867,26 +2860,26 @@ Object.defineProperties(obj, {
 The following is the approximate equivalent of the N-API counterpart:
 
 ```C
-napi_status status = napi_status_generic_failure;
+napi_status durumu = napi_status_generic_failure;
 
 // const obj = {};
 napi_value obj;
-status = napi_create_object(env, &obj);
+durum = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create napi_values for 123 and 456
+//123 ve 456 için napi_values oluşturun
 napi_value fooValue, barValue;
-status = napi_create_int32(env, 123, &fooValue);
+durum = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Set the properties
+// Özellikleri ayarlayın
 napi_property_descriptor descriptors[] = {
-  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
-  { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
+  { "foo", BOŞ, BOŞ, BOŞ, BOŞ, fooDeğeri, napi_default, BOŞ },
+  { "bar", BOŞ, BOŞ, BOŞ, BOŞ, barDeğeri, napi_default, BOŞ }
 }
-status = napi_define_properties(env,
+durum = napi_define_properties(env,
                                 obj,
                                 sizeof(descriptors) / sizeof(descriptors[0]),
                                 descriptors);
@@ -2968,9 +2961,8 @@ This API returns the names of the enumerable properties of `object` as an array 
 #### napi_get_all_property_names
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Kararlılık: 1 - Deneysel
 
 ```C
 napi_get_all_property_names(napi_env env,
@@ -3384,25 +3376,23 @@ The newly created function is not automatically visible from script after this c
 In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
 
 ```C
-napi_value SayHello(napi_env env, napi_callback_info info) {
-  printf("Hello\n");
-  return NULL;
+napi_value MerhabaDe(napi_env env, napi_callback_info info) {
+  printf("Merhaba\n");
+  return nullptr;
 }
 
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status status;
+  napi_status durumu;
 
   napi_value fn;
-  status = napi_create_function(env, NULL, 0, SayHello, NULL, &fn);
-  if (status != napi_ok) return NULL;
+  status =  napi_create_function(env, nullptr, 0, MerhabaDe, nullptr, &fn);
+  if (status != napi_ok) return nullptr;
 
-  status = napi_set_named_property(env, exports, "sayHello", fn);
-  if (status != napi_ok) return NULL;
+  status = napi_set_named_property(env, exports, "deMerhaba", fn);
+  if (status != napi_ok) return nullptr;
 
   return exports;
 }
-
-NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 Given the above code, the add-on can be used from JavaScript as follows:

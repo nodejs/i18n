@@ -8,17 +8,17 @@
 
 <!--name=esm-->
 
-Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js contiene soporte para los Módulos ES basado en el [EP de Node.js para Módulos ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Los mensajes de error todavía están siendo pulidos.
+No todas las características del EP están completas y se desembarcarán cuando el soporte de VM y la implementación estén listos. Los mensajes de error todavía están siendo pulidos.
 
 ## Habilitación
 
 <!-- type=misc -->
 
-The `--experimental-modules` flag can be used to enable features for loading ESM modules.
+La bandera de `--experimental-modules` puede ser utilizada para habilitar funcionalidades para cargar módulos ESM.
 
-Once this has been set, files ending with `.mjs` will be able to be loaded as ES Modules.
+Una vez esto haya sido establecido, los archivos que terminan en `.mjs` serán capaces de ser cargados como Módulos ES.
 
 ```sh
 node --experimental-modules my-app.mjs
@@ -30,7 +30,7 @@ node --experimental-modules my-app.mjs
 
 ### Soportado
 
-Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
+Sólo el argumento CLI para el punto de entrada principal al programa puede ser un punto de entrada a un gráfico ESM. La importación dinámica también puede ser usada para crear puntos de entrada a gráficos ESM en tiempo de ejecución.
 
 #### import.meta
 
@@ -62,7 +62,7 @@ The `import.meta` metaproperty is an `Object` that contains the following proper
 
 ### Rutas basadas en URL
 
-ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
+Los ESM son resueltos y almacenados en caché basándose en la semántica de [URL](https://url.spec.whatwg.org/). Esto significa que se necesita escapar de los archivos que contienen caracteres especiales, como `#` y `?`.
 
 Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
@@ -77,9 +77,9 @@ Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser carga
 
 Todos los módulos CommonJS, JSON y C++ pueden ser utilizados con `import`.
 
-Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
+Los módulos cargados de esta manera sólo se cargarán una vez, incluso si su string de consulta o fragmento es distinto entre las declaraciones de `import`.
 
-When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
+Al cargarlos a través de `import`, estos módulos proporcionarán una exportación de `default` simple que representa el valor de `module.exports` al momento de culminar la evaluación.
 
 ```js
 // foo.js
@@ -126,7 +126,7 @@ When hooks are used they only apply to ES module loading and not to any CommonJS
 
 ### Resolve hook
 
-The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
+Para un modulo y archivo URL padre dado, el hook de resolución devuelve el formato del modulo y el archivo URL resuelto:
 
 ```js
 const baseURL = new URL('file://');
@@ -202,11 +202,11 @@ Con este cargador, corriendo:
 NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 ```
 
-would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
+debería de cargar el modulo `x.js` como un modulo ES con soporte de resolución relativa (con la carga de `node_modules` omitida en este ejemplo).
 
 ### Dynamic instantiate hook
 
-To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. Este hook es llamado solo para módulos que retornan `format: 'dynamic'` desde el hook `resolve`.
 
 ```js
 export async function dynamicInstantiate(url) {

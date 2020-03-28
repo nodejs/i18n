@@ -152,6 +152,13 @@ added: v12.9.0
 
 Enable experimental JSON support for the ES Module loader.
 
+### `--experimental-loader=module`
+<!-- YAML
+added: v9.0.0
+-->
+
+Specify the `module` of a custom [experimental ECMAScript Module loader](esm.html#esm_experimental_loaders). `module` may be either a path to a file, or an ECMAScript Module name.
+
 ### `--experimental-modules`
 <!-- YAML
 added: v8.5.0
@@ -364,19 +371,21 @@ Specify ways of the inspector web socket url exposure.
 
 By default inspector websocket url is available in stderr and under `/json/list` endpoint on `http://host:port/json/list`.
 
-### `--experimental-loader=module`
-<!-- YAML
-added: v9.0.0
--->
-
-Specify the `module` of a custom [experimental ECMAScript Module loader](esm.html#esm_experimental_loaders). `module` may be either a path to a file, or an ECMAScript Module name.
-
 ### `--insecure-http-parser`
 <!-- YAML
 added: v13.4.0
 -->
 
 Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
+### `--jitless`
+<!-- YAML
+added: v12.0.0
+-->
+
+Disable [runtime allocation of executable memory](https://v8.dev/blog/jitless). This may be required on some platforms for security reasons. It can also reduce attack surface on other platforms, but the performance impact may be severe.
+
+This flag is inherited from V8 and is subject to change upstream. It may disappear in a non-semver-major release.
 
 ### `--max-http-header-size=size`
 <!-- YAML
@@ -390,7 +399,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+这是一个空选项。 它为兼容性保留。
 
 ### `--no-deprecation`
 <!-- YAML
@@ -404,7 +413,7 @@ added: v0.8.0
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+禁用对 `async_hooks` 的运行时检测。 These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 <!-- YAML
@@ -1012,6 +1021,7 @@ V8 options that are allowed are:
 * `--abort-on-uncaught-exception`
 * `--disallow-code-generation-from-strings`
 * `--interpreted-frames-native-stack`
+* `--jitless`
 * `--max-old-space-size`
 * `--perf-basic-prof-only-functions`
 * `--perf-basic-prof`
@@ -1019,6 +1029,8 @@ V8 options that are allowed are:
 * `--perf-prof`
 * `--stack-trace-limit`
 <!-- node-options-v8 end -->
+
+`--perf-basic-prof-only-functions`, `--perf-basic-prof`, `--perf-prof-unwinding-info`, and `--perf-prof` are only available on Linux.
 
 ### `NODE_PATH=路径[:…]`
 <!-- YAML
@@ -1179,4 +1191,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 * `dns.lookup()`
 * all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). 更多信息参见 [libuv 线程池文档](http://docs.libuv.org/en/latest/threadpool.html)。

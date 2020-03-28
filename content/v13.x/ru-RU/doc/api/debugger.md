@@ -20,7 +20,7 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Клиент отладчика Node.js не является полнофункциональным отладчиком, но в нем допускаются простой ход и проверка.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Вставка выражения `debugger;` в исходный код сценария позволит отметить точку останова в этой позиции в коде:
 ```js

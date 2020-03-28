@@ -751,7 +751,7 @@ added: v0.1.90
 * `callback` {Function}
 * 返回：{boolean}
 
-通过套接字发送数据。 The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+通过套接字发送数据。 The second parameter specifies the encoding in the case of a string. It defaults to UTF8 encoding.
 
 如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 当缓冲区再次空闲时将会发出 [`'drain'`][] 事件。
 

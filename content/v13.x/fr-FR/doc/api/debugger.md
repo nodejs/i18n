@@ -20,7 +20,7 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
 ```js

@@ -37,16 +37,19 @@ With few exceptions, *Synchronous* APIs (any blocking method that does not accep
 
 Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled. 
-        js
-        const fs = require('fs');
-        fs.readFile('a file that does not exist', (err, data) => {
+- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+
+<!-- eslint-disable no-useless-return -->
+
+    js
+      const fs = require('fs');
+      fs.readFile('a file that does not exist', (err, data) => {
         if (err) {
           console.error('There was an error reading the file!', err);
           return;
         }
         // Otherwise handle the data
-        });
+      });
 
 - When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
     
@@ -86,9 +89,11 @@ Errors generated in this way *cannot* be intercepted using `try…catch` as they
 
 Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
-### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an 
+### Error-first callbacks
 
-*error-first callback*. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+<!--type=misc-->
+
+Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an *error-first callback*. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
@@ -126,9 +131,11 @@ try {
 
 This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: Error<!--type=class-->A generic JavaScript 
+## Class: Error
 
-`Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+<!--type=class-->
+
+A generic JavaScript `Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
@@ -309,9 +316,11 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a 
+## Exceptions vs. Errors
 
-`throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+<!--type=misc-->
+
+A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -1749,15 +1758,17 @@ Creation of a [`zlib`][] object failed due to incorrect configuration.
 
 <a id="HPE_HEADER_OVERFLOW"></a>
 
-### HPE_HEADER_OVERFLOW<!-- YAML
+### HPE_HEADER_OVERFLOW
+
+<!-- YAML
 changes:
 
   - version: v10.15.0
     pr-url: https://github.com/nodejs/node/commit/186035243fad247e3955f
     description: Max header size in `http_parser` was set to 8KB.
--->Too much HTTP header data was received. In order to protect against malicious or malconfigured clients, if more than 8KB of HTTP header data is received then HTTP parsing will abort without a request or response object being created, and an 
+-->
 
-`Error` with this code will be emitted.
+Too much HTTP header data was received. In order to protect against malicious or malconfigured clients, if more than 8KB of HTTP header data is received then HTTP parsing will abort without a request or response object being created, and an `Error` with this code will be emitted.
 
 <a id="MODULE_NOT_FOUND"></a>
 
@@ -1771,10 +1782,14 @@ A module file could not be resolved while attempting a [`require()`][] or `impor
 
 <a id="ERR_HTTP2_FRAME_ERROR"></a>
 
-### ERR_HTTP2_FRAME_ERROR<!-- YAML
+### ERR_HTTP2_FRAME_ERROR
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when a failure occurs sending an individual frame on the HTTP/2 session.
+-->
+
+Used when a failure occurs sending an individual frame on the HTTP/2 session.
 
 <a id="ERR_HTTP2_HEADERS_OBJECT"></a>
 
@@ -1866,7 +1881,9 @@ The `repl` module was unable to parse data from the REPL history file.
 
 <a id="ERR_STDERR_CLOSE"></a>
 
-### ERR_STDERR_CLOSE<!-- YAML
+### ERR_STDERR_CLOSE
+
+<!-- YAML
 removed: v10.12.0
 changes:
 
@@ -1875,9 +1892,9 @@ changes:
     description: Rather than emitting an error, `process.stderr.end()` now
                  only closes the stream side but not the underlying resource,
                  making this error obsolete.
--->An attempt was made to close the 
+-->
 
-`process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+An attempt was made to close the `process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 
@@ -1898,12 +1915,14 @@ An attempt was made to close the `process.stdout` stream. By design, Node.js doe
 
 <a id="ERR_STREAM_READ_NOT_IMPLEMENTED"></a>
 
-### ERR_STREAM_READ_NOT_IMPLEMENTED<!-- YAML
+### ERR_STREAM_READ_NOT_IMPLEMENTED
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when an attempt is made to use a readable stream that has not implemented [
+-->
 
-`readable._read()`][].
+Used when an attempt is made to use a readable stream that has not implemented [`readable._read()`][].
 
 <a id="ERR_TLS_RENEGOTIATION_FAILED"></a>
 
@@ -1918,19 +1937,25 @@ Used when a TLS renegotiation request has failed in a non-specific way.
 
 <a id="ERR_UNKNOWN_BUILTIN_MODULE"></a>
 
-### ERR_UNKNOWN_BUILTIN_MODULE<!-- YAML
+### ERR_UNKNOWN_BUILTIN_MODULE
+
+<!-- YAML
 added: v8.0.0
 removed: v9.0.0
--->The 
+-->
 
-`'ERR_UNKNOWN_BUILTIN_MODULE'` error code is used to identify a specific kind of internal Node.js error that should not typically be triggered by user code. Instances of this error point to an internal bug within the Node.js binary itself.
+The `'ERR_UNKNOWN_BUILTIN_MODULE'` error code is used to identify a specific kind of internal Node.js error that should not typically be triggered by user code. Instances of this error point to an internal bug within the Node.js binary itself.
 
 <a id="ERR_VALUE_OUT_OF_RANGE"></a>
 
-### ERR_VALUE_OUT_OF_RANGE<!-- YAML
+### ERR_VALUE_OUT_OF_RANGE
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when a given value is out of the accepted range.
+-->
+
+Used when a given value is out of the accepted range.
 
 <a id="ERR_ZLIB_BINDING_CLOSED"></a>
 

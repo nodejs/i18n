@@ -751,7 +751,7 @@ added: v0.1.90
 * `callback` {Function}
 * Devuelve: {boolean}
 
-Envía datos en el socket. El segundo parámetro especifica la codificación en el caso de una string — por defecto es la codificación UTF8.
+Envía datos en el socket. The second parameter specifies the encoding in the case of a string. It defaults to UTF8 encoding.
 
 Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer del núcleo. Devuelve como `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. [`'drain'`][] se emitirá cuando el búfer vuelva a estar libre.
 

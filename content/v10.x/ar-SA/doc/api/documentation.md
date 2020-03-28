@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+هذه الوثائق تهدف للشرح بالتفصيل لواجهات برمجة التطبيق الخاصة بـNode.js, سواء كمرجع أو وجهة نظر مفاهيمية. يصف كل قسم وحدة برمجية مدمجة أو مفهوم رفيع المستوى.
 
 Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 

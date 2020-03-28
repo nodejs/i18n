@@ -761,7 +761,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * [[`5c29c0c519`](https://github.com/nodejs/node/commit/5c29c0c519)] - **openssl**: corregir requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
 * [[`2cd7f73d9f`](https://github.com/nodejs/node/commit/2cd7f73d9f)] - **openssl**: corregir requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [nodejs/node#1389](https://github.com/nodejs/node/pull/1389)
 * [[`c65484a74d`](https://github.com/nodejs/node/commit/c65484a74d)] - **tls**: hacer que el servidor no utilice DHE en menos de 1024bits (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739)
-* [[`77f518403f`](https://github.com/nodejs/node/commit/77f518403f)] - **win,node-gyp**: make delay-load hook C89 compliant (Sharat M R) \[TooTallNate/node-gyp#616\](https://github.com/TooTallNa
+* [[`77f518403f`](https://github.com/nodejs/node/commit/77f518403f)] - **win,node-gyp**: hacer que el hook delay-load cumpla con C89 (Sharat M R) \[TooTallNate/node-gyp#616\](https://github.com/TooTallNa
 
 <a id="2.3.2"></a>
 
@@ -1152,7 +1152,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 
 * **crypto**: se redujo significativamente el uso de memoria para TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
 * **npm**: Actualizar npm a 2.9.0. Vea las notas de lanzamiento [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) y [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) para más detalles. Resumen: 
-  * Add support for default author field to make `npm init -y` work without user-input (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
+  * Añadir soporte para el campo de autor predeterminado para hacer que `npm init -y` funcione sin un input de usuario (@othiym23) \[npm/npm/d8eee6cf9d\](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9
   * Incluir módulos locales en `npm outdated` y `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   * El prefijo usado antes del número de versión en `npm version` ahora es configurable a través de `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 
@@ -1421,16 +1421,16 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * **NOTE**: Se omitió la v1.8.0 debido a problemas con las herramientas de lanzamiento. Vea [#1436](https://github.com/nodejs/node/issues/1436) para más detalles.
 * **build**: Soporte para la compilación de io.js como una librería estática (Marat Abdullin) [#1341](https://github.com/nodejs/node/pull/1341)
 * **deps**: Actualización de openssl a 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389) 
-  * Los usuarios deberían ver las mejoras de rendimiento al utilizar la API criptográfica. See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) for details.
+  * Los usuarios deberían ver las mejoras de rendimiento al utilizar la API criptográfica. Consulte [aquí](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) para ver detalles.
 * **npm**: Actualización de npm a 2.8.3. Vea las [notas de lanzamiento](https://github.com/npm/npm/releases/tag/v2.8.3) para detalles. Incluye soporte de git mejorada. Resumen: 
-  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH URLs always have a valid protocol when stored in `resolved` fields in `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
-  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Switch the order in which hosted Git providers are checked to `git:`, `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in an effort to go from most to least likely to succeed, to make for less confusing error message. ([@othiym23](https://github.com/othiym23))
-  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: Don't send body with HTTP GET requests when logging in. ([@smikes](https://github.com/smikes))
-  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Use the new version of `hosted-git-info` to pass along credentials embedded in git URLs. Pruébelo. Pruébelo mucho. ([@othiym23](https://github.com/othiym23))
-  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Scoped packages with `peerDependencies` were installing the `peerDependencies` into the wrong directory. ([@ewie](https://github.com/ewie))
-  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Use git shorthand and git URLs as presented by user. Soportar la nueva sintaxis del atajo a `hosted-git-info`. Guardar atajo en `package.json`. Try cloning via `git:`, `git+ssh:`, and `git+https:`, in that order, when supported by the underlying hosting provider. ([@othiym23](https://github.com/othiym23))
+  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Asegurarse de que los URLs del SSH del git alojado tengan siempre un protocolo válido al ser almacenados en los campos `resolved` (resueltos) en `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
+  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Invertir el orden en el que los proveedores de Gits alojados son revisados a `git:`, `git+https:`, y luego `git+ssh:` (anteriormente era `git:`, `git+ssh:`, y luego `git+https:`) con la intención de proceder desde el que tiene menos probabilidades de éxito hasta el que tiene más, para crear un mensaje de error menos confuso. ([@othiym23](https://github.com/othiym23))
+  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: No enviar el cuerpo con las solicitudes del GET de HTTP al ingresar. ([@smikes](https://github.com/smikes))
+  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Utilice la nueva versión de `hosted-git-info` para pasar credenciales incrustadas en URLs de gits,. Pruébelo. Pruébelo mucho. ([@othiym23](https://github.com/othiym23))
+  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Los paquetes con ámbito con `peerDependencies` estaban instalando las `peerDependencies` en el directorio equivocado. ([@ewie](https://github.com/ewie))
+  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Utilice los atajos de gits y las URLs de gits como son presentados por los usuarios. Soportar la nueva sintaxis del atajo a `hosted-git-info`. Guardar atajo en `package.json`. Intente clonar a través de `git:`, `git+ssh:`, y `git+https:`, en ese orden, cuando sean soportados por el provedor de host subyacente. ([@othiym23](https://github.com/othiym23))
 * **src**: Permite que se pasen múltiples argumentos a process.nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
-* **module**: Se restauró y desaprobó la interacción de `require('.')` con `NODE_PATH`. This functionality will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
+* **module**: Se restauró y desaprobó la interacción de `require('.')` con `NODE_PATH`. Esta función será eliminada en un punto en el futuro. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
 
 ### Problemas conocidos
 
@@ -1568,10 +1568,10 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 ### Cambios notables
 
 * **npm**: actualizar npm a 2.7.5. Vea [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) para detalles. Incluye dos correcciones de seguridad importantes. Resumen: 
-  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalize symbolic links that point to targets outside the extraction root. This prevents packages containing symbolic links from overwriting targets outside the expected paths for a package. Thanks to [Tim Cuthbertson](http://gfxmonk.net/) and the team at [Lift Security](https://liftsecurity.io/) for working with the npm team to identify this issue. ([@othiym23](https://github.com/othiym23))
-  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention. ([@isaacs](https://github.com/isaacs))
-  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that GitHub shortcuts work with private repositories. ([@iarna](https://github.com/iarna))
-  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when there are paths to fix up. ([@othiym23](https://github.com/othiym23))
+  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalizar los enlaces simbólicos que apuntan a objetivos fuera de la raíz de extracción. Esto evita que los paquetes que contengan enlaces simbólicos sobreescriban objetivos fuera de las rutas esperadas para un paquete. Gracias a [Tim Cuthbertson](http://gfxmonk.net/) y al equipo de [Lift Security](https://liftsecurity.io/) por trabajar con el equipo de npm para identifiar este problema. ([@othiym23](https://github.com/othiym23))
+  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Las versiones de paquete no pueden ser de más de 256 caracteres de largas. Esto evita una situación en la que analizar el número de versión puede gastar exponencialmente más tiempo y memoria, llevando a una denegación de servicio potencial. Gracias a Adam Baldwin, de Lift Security, por hacernos notar esto. ([@isaacs](https://github.com/isaacs))
+  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) Un último ajuste para asegurarse que los accesos directos de Github funcionen con repositorios privados. ([@iarna](https://github.com/iarna))
+  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Solo arreglar las rutas URL de git cuando hayan rutas que arreglar. ([@othiym23](https://github.com/othiym23))
 * **openssl**: se ha realizado un trabajo preliminar para una próxima actualización de OpenSSL a 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). Vea [#589](https://github.com/nodejs/node/issues/589) para detalles adicionales.
 * **timers**: se corrigió una fuga de memoria menor que se daba cuando los temporizadores no tenían referencias, junto a algunos problemas relacionados relativos a los temporizadores [#1330](https://github.com/nodejs/node/pull/1330) (Fedor Indutny). Esto parece haber corregido la fuga restante reportada en [#1075](https://github.com/nodejs/node/issues/1075).
 * **android**: ahora es posible compilar io.js para Android y dispositivos relacionados [#1307](https://github.com/nodejs/node/pull/1307) (Giovanny Andres Gongora Granada).
@@ -1893,12 +1893,12 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa 
 * **fs**: las propiedades de objeto de `options` en los métodos del `'fs'` ya no realizan una revisión de `hasOwnProperty()`, y, por lo tanto, permiten que los objetos de opciones tengan propiedades prototipo que apliquen. (Jonathan Ong) [#635](https://github.com/nodejs/node/pull/635)
 * **tls**: Una probable fuga de memoria de TLS fue reportada por PayPal. Algunos de los cambios recientes en **stream_wrap** parecen tener la culpa. La corrección inicial se encuentra en [#1078](https://github.com/nodejs/node/pull/1078), puede hacer seguimiento del progreso hacia el cierre de la fuga en [#1075](https://github.com/nodejs/node/issues/1075) (Fedor Indutny).
 * **npm**: Actualizar npm a 2.7.0. Consulte [el CHANGELOG.md de npm](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) para ver detalles, incluyendo por qué esto es un semver-minor cuando podría haber sido un semver-major. Resumen: 
-  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the `node-gyp` script bundled with npm by passing the `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version of `node-gyp` modified to work better with io.js without having to touch npm's code! ([@ackalker](https://github.com/ackalker))
-  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start` scripts (plus their pre- and post- scripts) when there's no `restart` script defined. This makes it easier to support graceful restarts of services managed by npm. ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
-  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Add support for `--dev` and `--prod` to `npm ls`, so that you can list only the trees of production or development dependencies, as desired. ([@watilde](https://github.com/watilde))
-  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Split the list printed by `npm run-script` into lifecycle scripts and scripts directly invoked via `npm
+  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Reemplazar las llamadas al script de `node-gyp` empaquetado con npm, pasando la opción `--node-gyp=/path/to/node-gyp` a npm. Intercambie con `pangyp` o una versión de `node-gyp` modificada para funcionar mejor con io.js, ¡sin tener que tocar el código de npm! ([@ackalker](https://github.com/ackalker))
+  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Solo ejecutar los scripts de `stop` y `start` (y sus scripts pre- y post-) cuando no haya un script de `restart` definido. Esto hace que sea más fácil soportar reinicios con gracia de servicios manejados por npm. ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
+  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Añadir soporte de `--dev` y `--prod` para `npm ls`, de modo que pueda enumerar solo los árboles de producción o dependencias de desarrollo, como se desee. ([@watilde](https://github.com/watilde))
+  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Dividir la lista impresa por `npm run-script` en scripts de ciclos de vida y scripts directamente invocados a través de `npm
 run-script`. ([@watilde](https://github.com/watilde))
-  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b) [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`: Support for passing scopes to `npm init` so packages are initialized as part of that scope / organization / team. ([@watilde](https://github.com/watilde))
+  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b) [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`: Soporte para el paso de ámbitos a `npm init`, de modo que los paquetes sean inicializados como parte de tal ámbito / organización / equipo. ([@watilde](https://github.com/watilde))
 * **TC**: Colin Ihrig (@cjihrig) renunció al TC, debido a sus deseos de hacer más código y menos reuniones.
 
 ### Problemas conocidos
@@ -2006,10 +2006,10 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 * **tls**: Un error tipográfico introducido en los cambios a TLSWrap en [#840](https://github.com/nodejs/node/pull/840) solo fue encontrado cuando un bug en Windows no fue capturado por el sistema de Integración Continua de io.js debido a problemas con el script de la compilación de Windows y la configuración de la integración continua de Windows. Vea los Problemas Conocidos, más abajo. Se corrigió en [#994](https://github.com/nodejs/node/pull/994) & [#1004](https://github.com/nodejs/node/pull/1004). (Fedor Indutny)
 * **npm**: Actualización de npm a 2.6.1. Vea [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) para detalles. Resumen: 
-  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (and only `npm
-outdated`) now defaults to `--depth=0`. Esto también tiene el excelente pero inesperado efecto de hacer que `npm update -g` funcione de la manera que casi todos lo desean. See the [docs for `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) for the mildly confusing details. ([@smikes](https://github.com/smikes))
-  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Tweak `peerDependency` deprecation warning to include which peer dependency on which package is going to need to change. ([@othiym23](https://github.com/othiym23))
-  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Tweak `engineStrict` deprecation warning to include which `package.json` is using it. ([@othiym23](https://github.com/othiym23))
+  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (y solo `npm
+outdated`) ahora se establece predeterminadamente con `--depth=0`. Esto también tiene el excelente pero inesperado efecto de hacer que `npm update -g` funcione de la manera que casi todos lo desean. Consulte los [documentos para `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) para ver los ligeramente confusos detalles. ([@smikes](https://github.com/smikes))
+  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Mejorar la advertencia de desaprobación de `peerDependency` para incluir qué dependencia en cuál paquete va a necesitar ser cambiada. ([@othiym23](https://github.com/othiym23))
+  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Mejorar la advertencia de desaprobación de `engineStrict` para incluir cuál `package.json` lo está usando. ([@othiym23](https://github.com/othiym23))
 * Añadir nuevos colaboradores: 
   * Robert Kowalski ([@robertkowalski](https://github.com/robertkowalski))
   * Christian Vaagland Tellnes ([@tellnes](https://github.com/tellnes))
@@ -2197,10 +2197,10 @@ outdated`) now defaults to `--depth=0`. Esto también tiene el excelente pero in
   * Muchas actualizaciones de documentos, vea los commits individuales
   * Nueva página de **Errors**, en la cual se discuten errores de JavaScript, especificaciones de V8 y detalles de errores específicos de io.js. (@chrisdickinson)
 * **npm** actualización a 2.5.1, registro de cambios corto: 
-  * [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
-  * [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request settings are copied onto the agent. ([@othiym23](https://github.com/othiym23)) 
-    * [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Allow `--no-proxy` to override `HTTP_PROXY` setting in environment. ([@othiym23](https://github.com/othiym23))
-  * [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` now includes a column showing the type of dependency. ([@watilde](https://github.com/watilde))
+  * [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Limpiar API, establecer `connection: close`, lo que hace que las pruebas pasen en io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
+  * [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Asegurarse de que todas las configuraciones de solicitudes sean copiadas en el agente. ([@othiym23](https://github.com/othiym23)) 
+    * [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Permitir `--no-proxy` para sobreescribir la configuración de `HTTP_PROXY` en el ambiente. ([@othiym23](https://github.com/othiym23))
+  * [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` ahora incluye una columna que muestra el tipo de dependencia. ([@watilde](https://github.com/watilde))
 * **libuv** actualización a 1.4.0, vea [libuv ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog)
 * Añadir nuevos colaboradores: 
   * Aleksey Smolenchuk (@lxe)
@@ -2279,7 +2279,7 @@ outdated`) now defaults to `--depth=0`. Esto también tiene el excelente pero in
 * http.request: ahora se respetan las propiedades heredadas en las opciones
 * añadir interfaz iterable a los búferes (`para (permitir byte de buffer.values()) { }`)
 * fs: corregir la pérdida de fd en `fs.createReadStream`. Vea 497fd72 para detalles.
-* installer: on Windows, emit WM_SETTINGCHANGE after install to make other running processes aware of the PATH changes.
+* instalador: en Windows, emitir WM_SETTINGCHANGE luego de la instalación, para hacer que los demás procesos en ejecución estén al tanto de los cambios de PATH.
 * Se añadieron nuevos colaboradores: 
   * Vladimir Kurchatkin (@vkurchatkin)
   * Micleușanu Nicu (@micnic)
@@ -2363,10 +2363,10 @@ outdated`) now defaults to `--depth=0`. Esto también tiene el excelente pero in
 ### Cambios notables
 
 * la actualización de npm a 2.3.0 corrige los errores "uid está sin definir" de Windows
-* crypto.pseudoRandomBytes() is now an alias for crypto.randomBytes() and will block if there is insufficient entropy to produce secure values. Vea https://github.com/nodejs/node/commit/e5e5980 para detalles.
-* Patch for V8 to properly detect ARMv6; binaries now work again on ARMv6 (Raspberry Pi etc.)
+* Ahora crypto.pseudoRandomBytes() es un alias para crypto.randomBytes() y se bloqueará si no hay suficiente entropía para producir valores seguros. Vea https://github.com/nodejs/node/commit/e5e5980 para detalles.
+* Parche para V8, para que detecte a ARMv6 correctamente; los binarios vuelven a funcionar en ARMv6 (Raspberry Pi, etc.)
 * Pequeña actualización de V8 de 4.1.0.7 a 4.1.0.12
-* 'punycode' core module bumped from stability level 2-Unstable, to 3-Stable
+* El módulo del núcleo 'punycode' ha sido llevado del nivel de estabilidad 2-Inestable a 3-Estable
 * Se añadieron nuevos colaboradores: 
   * Thorsten Lorenz (@thlorenz)
   * Stephen Belanger (@qard)
@@ -2520,7 +2520,7 @@ Re-compilar, debido a entradas de registro de git de worker de compilación esta
 * * *
 
 <a id="1.0.0"></a>
-Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current *stable* Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest *unstable* Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node) repository and therefore can be seen as an extension to v0.11.
+A continuación, se encuentra un registro de los cambios que han de encontrar (de manera percibible) los usuarios en la versión 1.0.0 de io.js, en contraste con la versión *estable* de Node.js actual, v10.35. Al momento del lanzamiento de la v1.0.0, la última versión *inestable* de Node.js es la v0.11.14, con un progreso significativo hecho en dirección al lanzamiento de una v.0.11.15. La base de código de io.js hereda la mayor parte de los cambios encontrados en la rama de la v0.11 del repositorio [joyent/note](https://github.com/joyent/node), y, por ende, puede ser vista como una extensión de esta.
 
 ## Resumen de los cambios desde Node.js v0.10.35 hasta io.js v1.0.0
 
@@ -2671,26 +2671,26 @@ https://iojs.org/api/smalloc.html
 
 https://iojs.org/api/stream.html
 
-The changes to streams are not as drastic as the transition from streams1 to streams2: they are a refinement of existing ideas, and should make the API slightly less surprising for humans and faster for computers. As a whole the changes are referred to as "streams3", but the changes should largely go unnoticed by the majority of stream consumers and implementers.
+Los cambios en los streams no son tan drásticos como la transición de streams1 a streams2: son un refinamiento de ideas existentes, y deberían hacer que la API sea un poco menos sorprendente para los humanos y más rápida para las computadoras. Como conjunto, estos cambios son referidos como "streams3", pero deberían pasar, ampliamente, desapercibidos por la mayor parte de los consumidores e implementadores de streams.
 
 #### Streams legibles
 
-La diferencia entre los modos "flowing" y "non-flowing" ha sido refinada. Entering "flowing" mode is no longer an irreversible operation&mdash;it is possible to return to "non-flowing" mode from "flowing" mode. Adicionalmente, ambos módulos fluyen a través de la misma maquinaria en lugar de reemplazar métodos. Any time data is returned as a result of a `.read` call that data will *also* be emitted on the `"data"` event.
+La diferencia entre los modos "flowing" y "non-flowing" ha sido refinada. La entrada en el modo "fluido" ya no es una operación irreversible&mdash;es posible regresar al modo "no-fluido" desde el modo "fluido". Adicionalmente, ambos módulos fluyen a través de la misma maquinaria en lugar de reemplazar métodos. Cada vez que son devueltos datos como resultados de una llamada a `.read`, dichos datos *también*serán emitidos en el evento `"data"`.
 
-As before, adding a listener for the `"readable"` or `"data"` event will start flowing the stream; as will piping to another stream.
+Igual que antes, la adición de un listener para los eventos `"readable"` o `"data"` dará inicio al flujo del stream; del mismo modo, lo hará la conducción por pipes hacia otra string.
 
 #### Streams escribibles
 
-La habilidad para "escribir en masa" a recursos subyacentes ha sido añadida a los streams `Writable` (escribibles). For stream implementers, one can signal that a stream is bulk-writable by specifying a [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback) method. La escritura en masa se dará en dos situaciones:
+La habilidad para "escribir en masa" a recursos subyacentes ha sido añadida a los streams `Writable` (escribibles). Para los implementadores de streams, uno puede emitir una señal que indique que un stream es susceptible a la escritura en masa, a través de la especificación del método [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback). La escritura en masa se dará en dos situaciones:
 
 1. Cuando un stream susceptible a la escritura en masa se encuentra limpiando su reserva de solicitudes de escritura almacenadas en búfer,
 2. o si un usuario final ha hecho uso de los nuevos métodos de la API de `.cork()` y `.uncork()`.
 
-`.cork` and `.uncork` allow the end user to control the buffering behavior of writable streams separate from exerting backpressure. `.cork` indicates that the stream should accept new writes (up to `highWaterMark`), while `.uncork` resets that behavior and attempts to bulk-write all buffered writes to the underlying resource.
+`.cork` y `.uncork` permiten al usuario final controlar el comportamiento del almacenamiento en búfer de los streams escribibles independientemente de la contrapresión que esté siendo aplicada. `.cork` indica que el stream debería aceptar nuevas escrituras (hasta `highWaterMark`), mientras que `.uncork` restablece ese comportamiento e intenta escribir en masa a todas las escrituras transmitidas por búfer al recurso subyacente.
 
 El único API stream core que **actualmente** implementa `_writev` es `net.Socket`.
 
-In addition to the bulk-write changes, the performance of repeated small writes to non-bulk-writable streams (such as `fs.WriteStream`) has been drastically improved. Users piping high volume log streams to disk should see an improvement.
+En adición a los cambios de escritura en masa, el rendimiento de la pequeñas escrituras repetidas hacia streams no susceptibles a la escritura en masa (tales como `fs.WriteStream`) ha sido mejorada drásticamente. Los usuarios que transmitan mediante pipes streams de registros de gran volumen al disco deberían ver una mejora.
 
 Para una descripción detallada de cómo streams3 interactúa, [vea este diagrama](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 

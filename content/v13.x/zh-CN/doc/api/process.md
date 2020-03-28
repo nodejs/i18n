@@ -152,7 +152,7 @@ added: v1.4.1
 
 `Promise` 对象在之前的 `'unhandledRejection'` 事件中被发出，但在处理过程中获得了拒绝处理程序。
 
-`Promise` 链中没有顶层的概念，在该链中始终可以处理拒绝。 它在本质上是异步的，可以在未来的某个时间点处理 `Promise` 拒绝 - 该时间可能比发出 `'unhandledRejection'` 事件所需的事件循环更晚。
+`Promise` 链中没有顶层的概念，在该链中始终可以处理拒绝。 Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time, possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
 另一种表述方式就是，与同步代码中不断增长的未处理异常列表不同，使用 Promise 可能会有不断增长和缩小的未处理拒绝列表。
 
@@ -378,14 +378,17 @@ process.on('SIGTERM', handle);
 * `'SIGPIPE'` is ignored by default. 它可以安装一个监听器。
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). 它可以安装监听器，但在大约 10 秒后，Node.js 会被 Windows 无条件终止。 在非 Windows 平台，`SIGHUP` 的默认行为是结束 Node.js，但一旦安装了监听器，其默认行为将被删除。
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
-* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
+* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when [terminal raw mode](tty.html#tty_readstream_setrawmode_mode) is enabled and `<Ctrl>+C` is used.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
 * `'SIGWINCH'` is delivered when the console has been resized. 在 Windows 平台，只有在移动光标时写入控制台，或在原始模式下使用可读 tty 时才会发生。
 * `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
 * `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
+* `0` can be sent to test for the existence of a process, it has no effect if the process exists, but will throw an error if the process does not exist.
 
-Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
+Windows does not support signals so has no equivalent to termination by signal, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]:
+* Sending `SIGINT`, `SIGTERM`, and `SIGKILL` will cause the unconditional termination of the target process, and afterwards, subprocess will report that the process was terminated by signal.
+* Sending signal `0` can be used as a platform independent way to test for the existence of a process.
 
 ## `process.abort()`
 <!-- YAML
@@ -606,7 +609,7 @@ console.log(`Current directory: ${process.cwd()}`);
 added: v0.7.2
 -->* {number}
 
-The port used by Node.js's debugger when enabled.
+The port used by the Node.js debugger when enabled.
 
 ```js
 process.debugPort = 5858;
@@ -1016,7 +1019,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Returns: {bigint}
+-->* 返回：{bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
@@ -1790,13 +1793,13 @@ console.log(process.versions);
 
 * `1` **Uncaught Fatal Exception**: There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2`: Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. 这种情况非常罕见，仅仅在 Node.js 自身的开发过程中可能出现。
-* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. 这种情况非常罕见，仅仅在 Node.js 自身的开发过程中可能出现。
+* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in the Node.js bootstrapping process caused a parse error. 这种情况非常罕见，仅仅在 Node.js 自身的开发过程中可能出现。
+* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in the Node.js bootstrapping process failed to return a function value when evaluated. 这种情况非常罕见，仅仅在 Node.js 自身的开发过程中可能出现。
 * `5` **Fatal Error**: There was a fatal unrecoverable error in V8. 通常，一个前缀为 `FATALERROR` 的消息会打印到 stderr 上。
 * `6` **Non-function Internal Exception Handler**: There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
 * `7` **Internal Exception Handler Run-Time Failure**: There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
 * `8`: Unused. 在 Node.js 的之前版本中，返回码为 8 有时代表一个未被捕获的异常。
 * `9` **Invalid Argument**: Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. 这种情况非常罕见，且通常发生在 Node.js 自己的开发过程中。
+* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in the Node.js bootstrapping process threw an error when the bootstrapping function was called. 这种情况非常罕见，且通常发生在 Node.js 自己的开发过程中。
 * `12` **Invalid Debug Argument**: The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
 * `>128` **Signal Exits**: If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. 这是 POSIX 的标准做法，由于退出码被定义为 7 位整数，且退出信号设置了高位，因此会包含信号代码的值。 For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.

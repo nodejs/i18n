@@ -20,7 +20,7 @@ Break on start in myscript.js:1
 debug>
 ```
 
-El cliente depurador de Node.js no es un depurador completo, pero un simple paso y una inspección son posibles.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Insertar el extracto ` debugger; ` en el código fuente de un texto habilitará un punto de quiebre en esta posición en el código:
 ```js

@@ -43,7 +43,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding` {string} La codificación de caracteres que usará el `StringDecoder` . **Default:** `'utf8'`.
+* `encoding` {string} The character [encoding](buffer.html#buffer_buffers_and_character_encodings) the `StringDecoder` will use. **Default:** `'utf8'`.
 
 Crea una nueva instancia de `StringDecoder` .
 

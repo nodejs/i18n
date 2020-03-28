@@ -14,7 +14,7 @@ Node.js utiliza tres tipos de Desaprobaciones:
 
 A Documentation-only deprecation is one that is expressed only within the Node.js API docs. Estas no generan ningún efecto secundario al ejecutar Node.js. Some Documentation-only deprecations trigger a runtime warning when launched with [`--pending-deprecation`][] flag (or its alternative, `NODE_PENDING_DEPRECATION=1` environment variable), similarly to Runtime deprecations below. Documentation-only deprecations that support that flag are explicitly labeled as such in the [list of Deprecated APIs](#deprecations_list_of_deprecated_apis).
 
-A Runtime deprecation will, by default, generate a process warning that will be printed to `stderr` the first time the deprecated API is used. When the `--throw-deprecation` command-line flag is used, a Runtime deprecation will cause an error to be thrown.
+A Runtime deprecation will, by default, generate a process warning that will be printed to `stderr` the first time the deprecated API is used. Cuando la bandera de línea de comando `--throw-deprecation` es utilizada, una desaprobación de tipo Tiempo de Ejecución causará que se arroje un error.
 
 An End-of-Life deprecation is used when functionality is or will soon be removed from Node.js.
 
@@ -132,13 +132,13 @@ changes:
 
 Tipo: Runtime (soporta [`--pending-deprecation`][])
 
-The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
+La función `Buffer()` y el constructor `new Buffer()` están desaprobados debido a problemas de usabilidad con la API que pueden potencialmente resultar en problemas accidentales de seguridad.
 
-As an alternative, use of the following methods of constructing `Buffer` objects is strongly recommended:
+Como alternativa, el uso de los siguientes métodos de construcción de objetos `Buffer` es fuertemente recomendado:
 
-- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Create a `Buffer` with *initialized* memory.
+- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crea un `Buffer` con memoria *inicializada*.
 - [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
-- [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
+- [`Buffer.allocUnsafeSlow(size)`][] - Crea un `Buffer` con memoria *sin inicializar*.
 - [`Buffer.from(array)`][] - Crear un `Buffer` con una copia de `array`
 - [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
 - [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
@@ -232,7 +232,7 @@ changes:
 
 Tipo: Fin-de-Vida
 
-Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previamente, se imprimió una advertencia de desaprobación. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previamente, se imprimió una advertencia de desaprobación. A partir de Node.js 8.0.0, llamar a `crypto.pbkdf2()` o a `crypto.pbkdf2Sync()` con un `digest` indefinido, arrojará un `TypeError`.
 
 <a id="DEP0010"></a>
 
@@ -446,7 +446,7 @@ changes:
 
 Tipo: Runtime
 
-En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes. This behavior is deprecated and will be removed in a future major Node.js release.
+En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes. Este comportamiento está desaprobado y será eliminado en una futura actualización importante de Node.js.
 
 <a id="DEP0020"></a>
 
@@ -525,7 +525,7 @@ changes:
 
 Tipo: Runtime
 
-El método `os.getNetworkInterfaces()` está desaprobado. Please use the [`os.networkInterfaces`][] property instead.
+El método `os.getNetworkInterfaces()` está desaprobado. Por favor utilice la propiedad [`os.networkInterfaces`][] en su lugar.
 
 <a id="DEP0024"></a>
 
@@ -628,7 +628,7 @@ changes:
 
 Tipo: Runtime
 
-La API [`util.debug()`][] está desaprobada. Please use [`console.error()`][] instead.
+La API [`util.debug()`][] está desaprobada. Por favor utilice [`console.error()`][] en su lugar.
 
 <a id="DEP0029"></a>
 
@@ -649,7 +649,7 @@ changes:
 
 Tipo: Runtime
 
-La API [`util.error()`][] está desaprobada. Please use [`console.error()`][] instead.
+La API [`util.error()`][] está desaprobada. Por favor utilice [`console.error()`][] en su lugar.
 
 <a id="DEP0030"></a>
 
@@ -687,7 +687,7 @@ changes:
 
 Tipo: Documentation-only
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
 
 <a id="DEP0032"></a>
 
@@ -1353,7 +1353,7 @@ changes:
 
 Tipo: Runtime
 
-The `fs.SyncWriteStream` class was never intended to be a publicly accessible API. No hay disponible ninguna API alternativa. Por favor use un espacio de usuario alternativo.
+La clase `fs.SyncWriteStream` nunca estuvo destinada a ser una API públicamente accesible. No hay disponible ninguna API alternativa. Por favor use un espacio de usuario alternativo.
 
 <a id="DEP0062"></a>
 
@@ -1877,7 +1877,7 @@ changes:
 
 Tipo: Documentation-only
 
-Importing assert directly is not recommended as the exposed functions will use loose equality checks. En cambio, use `require('assert').strict`. The API is the same as the legacy assert but it will always use strict equality checks.
+Importar directamente a assert no es recomendado, ya que las funciones expuestas usarán chequeos de calidad flojos. En cambio, use `require('assert').strict`. La API es la misma que la legacy assert pero siempre usará controles de calidad estrictos.
 
 <a id="DEP0090"></a>
 
@@ -1941,7 +1941,7 @@ changes:
 
 Tipo: Documentation-only
 
-La propiedad [`crypto.fips`][] está desaprobada. Por favor, utilice `crypto.setFips()` y `crypto.getFips()` en su lugar.
+La propiedad [`crypto.fips`][] está desaprobada. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 <a id="DEP0094"></a>
 

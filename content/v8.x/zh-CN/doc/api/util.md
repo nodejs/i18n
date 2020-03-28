@@ -4,7 +4,7 @@
 
 > 稳定性：2 - 稳定的
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. 它可以通过如下方式访问：
+`util` 模块主要用于满足 Node.js 自己内部 API 的需求。 然而，很多实用程序对于应用程序和模块开发者也非常有用。 它可以通过如下方式访问：
 
 ```js
 const util = require('util');
@@ -68,10 +68,10 @@ hello world
 added: v0.11.3
 -->
 
-* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
+* `section` {string} 用于标识在应用程序中 `debuglog` 函数被创建的部分。
 * 返回：{Function} 日志函数
 
-The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. 如果没有，则返回的函数是空操作。
+`util.debuglog()` 方法基于 `NODE_DEBUG` 环境变量的值，当符合某些条件时将调试信息输出到 `stderr`。 如果 `section` 名称出现在环境变量的值中，则返回的函数操作类似于 [`console.error()`][]。 如果没有，则返回的函数是空操作。
 
 例如：
 
@@ -82,15 +82,15 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
+如果在变量中包含 `NODE_DEBUG=foo`，则此程序的输出类似于如下内容：
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-其中的 `3245` 为进程 id。 If it is not run with that environment variable set, then it will not print anything.
+其中的 `3245` 为进程 id。 如果该环境变量不存在，则程序运行时不打印任何内容。
 
-Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable. 例如：`NODE_DEBUG=fs,net,tls`。
+在 `NODE_DEBUG` 环境变量中可以使用逗号来分隔多个 `section` 名称。 例如：`NODE_DEBUG=fs,net,tls`。
 
 ## util.deprecate(function, string)
 
@@ -98,7 +98,9 @@ Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` en
 added: v0.8.0
 -->
 
-The `util.deprecate()` method wraps the given `function` or class in such a way that it is marked as deprecated.
+`util.deprecate()` 方法将会包装给定的 `函数` 或类并将其标记为已弃用。
+
+<!-- eslint-disable prefer-rest-params -->
 
 ```js
 const util = require('util');
@@ -110,17 +112,19 @@ exports.puts = util.deprecate(function() {
 }, 'util.puts: Use console.log instead');
 ```
 
-When called, `util.deprecate()` will return a function that will emit a `DeprecationWarning` using the `process.on('warning')` event. By default, this warning will be emitted and printed to `stderr` exactly once, the first time it is called. After the warning is emitted, the wrapped `function` is called.
+当被调用时，`util.deprecate()` 会返回一个函数，该函数会使用 `process.on('warning')` 事件来发送 `DeprecationWarning`。 在默认情况下，此警告将被发送且只被打印到 `stderr` 一次，即在其首次被调用时。 在警告被发送后，包装的 `函数` 被调用。
 
-If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
+如果 `--no-deprecation` 或 `--no-warnings` 命令行参数被调用，或者在第一个弃用警告前，`process.noDeprecation` 属性被设置为 `true`，`util.deprecate()` 方法不执行任何操作。
 
-If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
+如果 `--trace-deprecation` 或 `--trace-warnings` 命令行标志被设置，或者 `process.traceDeprecation` 属性被设置为 `true`，当已弃用的函数被首次调用时，警告和栈追溯将被打印到 `stderr`。
 
-If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
+如果设置了 `--throw-deprecation` 命令行标志，或者 `process.throwDeprecation` 属性被设置为 `true`，当被弃用的函数被调用时会抛出异常。
 
-The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
+`--throw-deprecation` 命令行标志和 `process.throwDeprecation` 属性优先于 `--trace-deprecation` 和 `process.traceDeprecation`。
 
-## util.format(format[, ...args])<!-- YAML
+## util.format(format[, ...args])
+
+<!-- YAML
 added: v0.5.3
 changes:
 
@@ -131,50 +135,51 @@ changes:
 
 * `format` {string} 一个和 `printf` 类似的格式化字符串函数。
 
-The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
+`util.format()` 方法返回一个格式化过的字符串，其首个参数的格式和 `printf` 类似。
 
-首个参数是一个包含零个或多个 *占位符* 标记的字符串。 Each placeholder token is replaced with the converted value from the corresponding argument. 支持的占位符为：
+首个参数是一个包含零个或多个 *占位符* 标记的字符串。 每个占位符标记会被相应的参数转换而来的值所替代。 支持的占位符为：
 
 * `%s` - 字符串。
 * `%d` - 数字 （整数或单精度浮点数）。
 * `%i` - 整数。
 * `%f` - 单精度浮点数。
-* `%j` - JSON。 Replaced with the string `'[Circular]'` if the argument contains circular references.
-* `%o` - 对象。 A string representation of an object with generic JavaScript object formatting. 类似于 `util.inspect()`，具有 `{ showHidden: true, depth: 4, showProxy: true }` 选项。 这将显示完整的对象，包括不可枚举的符号和属性。
-* `%O` - 对象。 A string representation of an object with generic JavaScript object formatting. 类似于没有选项的 `util.inspect()`。 这将显示完整的对象，但不包括不可枚举的符号和属性。
+* `%j` - JSON。 如果参数中包含循环引用，将其替换为字符串 `'[Circular]'`。
+* `%o` - 对象。 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 类似于 `util.inspect()`，具有 `{ showHidden: true, depth: 4, showProxy: true }` 选项。 这将显示完整的对象，包括不可枚举的符号和属性。
+* `%O` - 对象。 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 类似于没有选项的 `util.inspect()`。 这将显示完整的对象，但不包括不可枚举的符号和属性。
 * `%%` - 单个百分号 (`'%'`)。 它不使用参数。
 
-If the placeholder does not have a corresponding argument, the placeholder is not replaced.
+如果占位符没有对应的参数，则占位符不会被替换。
 
 ```js
 util.format('%s:%s', 'foo');
 // Returns: 'foo:%s'
 ```
 
-If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
+如果传递给 `util.format()` 的参数多于占位符的数量，多余的参数会被强制转换为字符串并和返回的字符串连接在一起，每个字符串由空格分隔。 对于 `typeof` 为 `'object'` 或 `'symbol'` （`null`除外）的多余参数，它们都会由 `util.inspect()` 进行转换。
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. 每个参数都通过使用 `util.inspect()` 转换为一个字符串。
+如果首个参数不是字符串，则 `util.format()` 返回将所有参数以空格连接在一起的一个字符串。 每个参数都通过使用 `util.inspect()` 转换为一个字符串。
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
 ```
 
-If only one argument is passed to `util.format()`, it is returned as it is without any formatting.
+如果只有一个参数被传递给 `util.format()`，该参数会被原样返回，且不做任何格式化。
 
 ```js
 util.format('%% %s'); // '%% %s'
 ```
 
-## util.getSystemErrorName(err)<!-- YAML
+## util.getSystemErrorName(err)
+
+<!-- YAML
 added: v8.12.0
 -->
 
 * `err` {number}
-
 * 返回：{string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
@@ -186,7 +191,9 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
-## util.inherits(constructor, superConstructor)<!-- YAML
+## util.inherits(constructor, superConstructor)
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -200,9 +207,9 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-从一个 [构造器](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) 中继承原型方法到另一个构造器。 The prototype of `constructor` will be set to a new object created from `superConstructor`.
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
 
-As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
+更为方便的时，`superConstructor` 可以通过 `constructor.super_` 属性进行访问。
 
 ```js
 const util = require('util');
@@ -249,7 +256,9 @@ stream.write('With ES6');
 
 ```
 
-## util.inspect(object[, options])<!-- YAML
+## util.inspect(object[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -270,15 +279,15 @@ changes:
 
 * `object` {any} 任何 JavaScript 基本类型或对象。
 * `options` {Object} 
-  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **默认:** `false`.
-  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. 这在检查大型复杂对象时非常有用。 默认值为 `2`。 如果想要使其进行无限递归，则传递 `null` 给它。
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **默认:** `false`.
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Default:** `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **默认:** `false`.
-  * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **默认值：** `100`.
-  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
+  * `showHidden` {boolean} 如果值为 `true`，`对象` 的不可枚举的符号和属性将被包含在格式化输出的结果中。 **默认:** `false`.
+  * `depth` {number} 指定在格式化 `对象` 时进行递归的次数。 这在检查大型复杂对象时非常有用。 默认值为 `2`。 如果想要使其进行无限递归，则传递 `null` 给它。
+  * `colors` {boolean} 如果值为 `true`，则输出结果会以 ANSI 颜色代码来格式化。 Colors are customizable, see [Customizing `util.inspect` colors][]. **默认:** `false`.
+  * `customInspect` {boolean} 如果值为 `false`，在导出到 `object` 的 `inspect(depth, opts)` 函数不会被调用。 **Default:** `true`.
+  * `showProxy` {boolean} 如果值为 `true`，则对象和 `代理`对象的函数会自省来显示它们的 `target` 和 `handler` 对象。 **默认:** `false`.
+  * `maxArrayLength` {number} 指定在格式化时要包含的最大数量的数组和 `TypedArray`。 Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **默认值：** `100`.
+  * `breakLength` {number} 对象键值被拆分为多行时的长度。 设置为 `Infinity` 会将对象格式化为单行。 **Default:** `60` for legacy compatibility.
 
-The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
+`util.inspect()` 方法返回一个代表 `对象` 的字符串，此方法主要是在调试时有用 。 附加的 `选项` 可以更改格式化字符串的某些方面。
 
 如下的范例检查 `util` 对象的所有属性：
 
@@ -288,13 +297,15 @@ const util = require('util');
 console.log(util.inspect(util, { showHidden: true, depth: null }));
 ```
 
-Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
+值可以提供它们自己的自定义 `inspect(depth, opts)` 函数，当被调用时，它们会在递归检查中接收当前 `深度`，以及传递给 `util.inspect()` 的 options 对象。
 
-### Customizing `util.inspect` colors<!-- type=misc -->Color output (if enabled) of 
+### 自定义 `util.inspect` 颜色
 
-`util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
+<!-- type=misc -->
 
-`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
+`util.inspect` 的带颜色输出 （如果启用）可以通过 `util.inspect.styles` 和 `util.inspect.colors` 属性进行全局性定义。
+
+`util.inspect.styles` 是一个将样式名称和 `util.inspect.colors` 中颜色相关联的 map。
 
 默认的样式及其相关联的颜色是：
 
@@ -308,9 +319,9 @@ Values may supply their own custom `inspect(depth, opts)` functions, when called
 * `special` - `青色` （仅适用于当前函数）
 * `name` - （无样式）
 
-The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
+预定义的颜色代码是：`white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` 和 `yellow`。 同时还有 `bold`, `italic`, `underline` 以及 `inverse` 这些代码。
 
-Color styling uses ANSI control codes that may not be supported on all terminals.
+使用 ANSI 控制代码的颜色样式可能不会适用于所有终端。
 
 ### 对象上的自定义检查功能
 
@@ -349,7 +360,7 @@ util.inspect(box);
 // Returns: "Box< true >"
 ```
 
-Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
+自定义的 `[util.inspect.custom](depth, opts)` 函数通常返回一个字符串，但可能会返回任何类型的值，该值会被 `util.inspect()` 进行相应的格式化。
 
 ```js
 const util = require('util');
@@ -363,17 +374,21 @@ util.inspect(obj);
 // Returns: "{ bar: 'baz' }"
 ```
 
-### util.inspect.custom<!-- YAML
+### util.inspect.custom
+
+<!-- YAML
 added: v6.6.0
--->A Symbol that can be used to declare custom inspect functions, see 
+-->
 
-[Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
+一个可被用来声明自定义检查函数的符号，请参阅 [对象的自定义检查函数](#util_custom_inspection_functions_on_objects)。
 
-### util.inspect.defaultOptions<!-- YAML
+### util.inspect.defaultOptions
+
+<!-- YAML
 added: v6.4.0
--->The 
+-->
 
-`defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
+`defaultOptions` 值允许自定义 `util.inspect` 的默认选项。 这对于 `console.log` 或 `util.format` 类似的函数非常有用，这样的函数会隐式调用 `util.inspect`。 应将其设置为一个包含一个或多个合法 [`util.inspect()`][] 选项的对象。 还支持直接设置选项属性。
 
 ```js
 const util = require('util');
@@ -384,12 +399,13 @@ util.inspect.defaultOptions.maxArrayLength = null;
 console.log(arr); // logs the full array
 ```
 
-## util.promisify(original)<!-- YAML
+## util.promisify(original)
+
+<!-- YAML
 added: v8.0.0
 -->
 
 * `original` {Function}
-
 * 返回：{Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
@@ -448,7 +464,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-例如：使用 `(foo, onSuccessCallback, onErrorCallback)` 作为参数的函数：
+For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -470,11 +486,13 @@ added: v8.0.0
 
 A Symbol that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## Class: util.TextDecoder<!-- YAML
-added: v8.3.0
--->An implementation of the 
+## 类：util.TextDecoder
 
-[WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
+<!-- YAML
+added: v8.3.0
+-->
+
+一个实现了 [WHATWG 编码规范](https://encoding.spec.whatwg.org/) 的 `TextDecoder` API。
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -552,7 +570,7 @@ Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encod
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **默认:** `false`.
+  * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
 
 创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
@@ -614,25 +632,29 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 ## 已弃用的 API
 
-以下的 API 已经被弃用，不应再被使用。 Existing applications and modules should be updated to find alternative approaches.
+以下的 API 已经被弃用，不应再被使用。 现有的应用程序和模块都应被更新，以找到替代方法。
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Object.assign()`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Object.assign()`]。
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. 尽管如此，但社区还是发现并使用了它。
+`util._extend()` 方法从未打算在内部 Node.js 模块之外被使用。 尽管如此，但社区还是发现并使用了它。
 
-它已被弃用，不应在新代码中使用。 JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+它已被弃用，不应在新代码中使用。 JavaScript 中具有通过 [`Object.assign()`] 实现的，非常类似的内置功能。
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
 
 * `string` {string} 打印到 `stderr` 的消息
 
@@ -651,10 +673,14 @@ deprecated: v0.11.3
 
 已弃用的 `console.error` 的前身。
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -673,10 +699,14 @@ util.isArray({});
 // Returns: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -717,10 +747,14 @@ util.isBuffer(Buffer.from('hello world'));
 // Returns: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -761,7 +795,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Returns: false
 ```
 
-注意这个方法依赖于 `Object.prototype.toString()` 的行为。 It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+注意这个方法依赖于 `Object.prototype.toString()` 的行为。 当 `object` 参数操作 `@@toStringTag` 时可能会获得不正确的结果。
 
 ```js
 const util = require('util');
@@ -774,10 +808,14 @@ util.isError(obj);
 // Returns: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -882,7 +920,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. 否则，返回 `false`。
+如果给定的 `object` 是一个严格的 `Object`，而不是一个 `Function`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -933,10 +971,14 @@ util.isPrimitive(new Date());
 // Returns: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -953,10 +995,14 @@ util.isRegExp({});
 // Returns: false
 ```
 
-### util.isString(object)<!-- YAML
+### util.isString(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -1024,14 +1070,18 @@ util.isUndefined(null);
 // Returns: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use a third party module instead.
+-->
+
+> 稳定性：0 - 已弃用：改为使用第三方模块。
 
 * `string` {string}
 
-The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
+`util.log()` 方法在 `标准输出` 打印包含时间戳的给定 `string`。
 
 ```js
 const util = require('util');
@@ -1039,12 +1089,14 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
 
 已弃用的 `console.log` 的前身。
 

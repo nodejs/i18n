@@ -135,7 +135,7 @@ On Windows, Node.js follows the concept of per-drive working directory. This beh
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> For most 
 
 `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 

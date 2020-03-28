@@ -1095,7 +1095,7 @@ changes:
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
 * `opties` 
   * `secureContext`: A TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Default:** `false`.
+  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Standaard:** `false`.
   * `server` {net.Server} A [`net.Server`][] instance
   * `requestCert`: See [`tls.createServer()`][]
   * `rejectUnauthorized`: See [`tls.createServer()`][]

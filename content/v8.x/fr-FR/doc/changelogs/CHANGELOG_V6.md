@@ -6,7 +6,7 @@
   <tr>
     
 <th>LTS 'Boron'</th>
-<th title="Previously called 'Stable'">Current</th>
+<th title="Previously called 'Stable'">Courant</th>
   </tr>
   
   <tr>
@@ -1780,7 +1780,7 @@ Semver Patch:
 
 * **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
 * **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
-* **inspector**: 
+* **inspecteur (sessions de débogage)**: 
   * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)

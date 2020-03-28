@@ -8,17 +8,17 @@
 
 <!--name=esm-->
 
-Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Η Node.js υποστηρίζει ενότητες ES με βάση το [Node.js EP για ενότητες ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Τα μηνύματα λάθους είναι ακόμα υπό μορφοποίηση.
+Δεν είναι όλα τα χαρακτηριστικά του EP έτοιμα, και θα ετοιμαστούν όταν ολοκληρωθεί η υποστήριξη και η υλοποίηση της VM. Τα μηνύματα λάθους είναι ακόμα υπό μορφοποίηση.
 
 ## Ενεργοποίηση
 
 <!-- type=misc -->
 
-The `--experimental-modules` flag can be used to enable features for loading ESM modules.
+Η επιλογή `--experimental-modules` μπορεί να χρησιμοποιηθεί για την ενεργοποίηση των δυνατοτήτων φόρτωσης των ενοτήτων ESM.
 
-Once this has been set, files ending with `.mjs` will be able to be loaded as ES Modules.
+Μόλις οριστεί αυτή η επιλογή, τα αρχεία με κατάληξη `.mjs` θα μπορούν να φορτωθούν ως ενότητες ES Modules.
 
 ```sh
 node --experimental-modules my-app.mjs
@@ -30,7 +30,7 @@ node --experimental-modules my-app.mjs
 
 ### Υποστηριζόμενα
 
-Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
+Μόνο οι παράμετροι CLI για το κύριο σημείο εισόδου του προγράμματος, μπορούν να είναι ένα σημείο εισόδου για ένα γράφημα ESM. H δυναμική εισαγωγή κατά την εκτέλεση, μπορεί επίσης να δημιουργεί σημεία εισόδου στα γραφήματα ESM.
 
 #### import.meta
 
@@ -62,7 +62,7 @@ The `import.meta` metaproperty is an `Object` that contains the following proper
 
 ### Διαδρομές βασισμένες σε URL
 
-ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
+Τα ESM επιλύονται και αποθηκεύονται προσωρινά με τη χρήση σημασιολογίας [URL](https://url.spec.whatwg.org/). Αυτό σημαίνει ότι πρέπει να γίνει χρήση χαρακτήρα διαφυγής, όταν εμφανίζονται χαρακτήρες όπως το `#` και το `?`.
 
 Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
@@ -77,9 +77,9 @@ import './foo?query=2'; // loads ./foo with query of "?query=2"
 
 Όλες οι ενότητες CommonJS, JSON, και C++ μπορούν να χρησιμοποιηθούν με τη χρήση του `import`.
 
-Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
+Οι ενότητες που φορτώνονται με αυτό τον τρόπο θα φορτωθούν μόνο μια φορά, ακόμα κι αν το επερώτημά τους είναι διαφορετικό μεταξύ των δηλώσεων `import`.
 
-When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
+Όταν φορτωθούν μέσω του `import` αυτές οι ενότητες θα παρέχουν μια μοναδική εξαγόμενη `default` η οποία αντιπροσωπεύει την τιμή του `module.exports` την στιγμή της ολοκλήρωσης της αξιολόγησης.
 
 ```js
 // foo.js
@@ -126,7 +126,7 @@ When hooks are used they only apply to ES module loading and not to any CommonJS
 
 ### Hook επίλυσης
 
-The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
+Το hook επίλυσης επιστρέφει το επιλυμένο URL αρχείου και τη μορφή της ενότητας για τον δεδομένο προσδιοριστή ενότητας καθώς και το URL του γονικού αρχείου:
 
 ```js
 const baseURL = new URL('file://');
@@ -146,7 +146,7 @@ The `parentModuleURL` is provided as `undefined` when performing main Node.js lo
 
 The default Node.js ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Αυτή μπορεί να είναι μια από τις παρακάτω:
+Εκτός από την επιστροφή της τιμής του επιλυμένου URL του αρχείου, το hook επίλυσης επιστρέφει επίσης μια ιδιότητα `format` η οποία προσδιορίζει τη μορφή της επιλυμένης ενότητας. Αυτή μπορεί να είναι μια από τις παρακάτω:
 
 | `μορφή`     | Περιγραφή                                                              |
 | ----------- | ---------------------------------------------------------------------- |
@@ -202,11 +202,11 @@ export function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {
 NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 ```
 
-would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
+θα φορτώσει την ενότητα `x.js` ως μια ενότητα ES, με υποστήριξη σχετικής ανάλυσης (με τη φόρτωση των `node_modules` να παραλείπεται σε αυτό το παράδειγμα).
 
 ### Δυναμικό instantiate hook
 
-To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. Αυτό το hook καλείται μόνο για ενότητες που επιστρέφουν `format: 'dynamic'` από το `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {

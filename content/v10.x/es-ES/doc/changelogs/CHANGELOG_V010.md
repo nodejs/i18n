@@ -382,11 +382,11 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * openssl: actualizar a 1.0.1j (Addressing multiple CVEs)
 * uv: Actualizar a v0.10.29
 * child_process: soporta de manera correcta args opcionales (cjihrig)
-* crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
+* crypto: Deshabilita autonegociación para SSLv2/3 de manera predeterminada (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
   
-  This is a behavior change, by default we will not allow the negotiation to SSLv2 or SSLv3. If you want this behavior, run Node.js with either `--enable-ssl2` or `--enable-ssl3` respectively.
+  Este es un cambio de comportamiento, de manera predeterminada no permitiremos la negociación a SSLv2 or SSLv3. Si deseas este comportamiento, ejecuta Node.js con `--enable-ssl2` o `--enable-ssl3`, respectivamente.
   
-  This does not change the behavior for users specifically requesting `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is assumed you know what you're doing since you're specifically asking to use these methods.
+  Esto no cambia el comportamiento para los usuarios que estén solicitando específicamente `SSLv2_method` o `SSLv3_method`. Aunque este comportamiento no es recomendado, se asume que usted sabe lo que está haciendo, pues está solicitando usar estos métodos específicamente.
 
 <a id="0.10.32"></a>
 
@@ -449,7 +449,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * npm: actualizar a 1.4.14
 * utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
   
-  * *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
+  * *NOTE* Esto introduce un cambio radical, anteriormente tu podías construir UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 válidos, ahora los pares de sustitución que no tienen pareja son reemplazados con un carácter UTF-8 desconocido. Para restaurar la vieja funcionalidad, simplemente ten establecida la variable de ambiente NODE_INVALID_UTF8.
 
 * child_process: no establecer args antes de arrojar (Greg Sabia Tucker)
 

@@ -6,7 +6,7 @@
 
 O módulo de `dns` contém funções pertencentes a duas categorias diferentes:
 
-1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. Esta categoria contém apenas uma função: [] [`dns.lookup()`]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
+1) Funções que utilizam mecanismos do sistema operacional para executar a resolução de nomes, e que não necessariamente fazem qualquer comunicação de rede. Esta categoria contém apenas uma função: [] [`dns.lookup()`]. **Desenvolvedores buscando por resolução de nomes no mesmo modo que outras aplicações no mesmo mesmo sistema operacional devem usar [`dns.lookup()`].**
 
 Por exemplo, buscando por `iana.org`.
 
@@ -19,9 +19,9 @@ dns.lookup('iana.org', (err, address, family) => {
 // address: "192.0.43.8" family: IPv4
 ```
 
-2) Functions that connect to an actual DNS server to perform name resolution, and that *always* use the network to perform DNS queries. This category contains all functions in the `dns` module *except* [`dns.lookup()`][]. These functions do not use the same set of configuration files used by [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
+2) Funções que conectam ao servidor DNS atual para executar a resolução de nomes e que *sempre* usam a rede para executar consultas DNS. Esta categoria contém todas as funções no módulo `dns` *exceto* [`dns.lookup()`][]. Estas funções não usam os mesmos arquivos de configuração usados por [`dns.lookup()`][] (Ex. `/etc/hosts`). Essas funções devem ser usadas pelos desenvolvedores que não querem usar as instalações do sistema operacional subjacente para resolução de nome, e em vez disso, querem *sempre* executar consultas DNS.
 
-Below is an example that resolves `'archive.org'` then reverse resolves the IP addresses that are returned.
+Abaixo está um exemplo que resolve `'archive.org'` e então resolve o reverso do endereço IP que é retornado.
 
 ```js
 const dns = require('dns');
@@ -42,7 +42,7 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-There are subtle consequences in choosing one over the other, please consult the [Implementation considerations section](#dns_implementation_considerations) for more information.
+Há sutis consequências na escolha de um ou do outro, por favor consulte a [seção de considerações da implementação](#dns_implementation_considerations) para mais informações.
 
 ## Class dns.Resolver
 
@@ -97,9 +97,11 @@ Cancela todas as consultas DNS pendentes feitas por este solucionador. The corre
 added: v0.11.3
 -->
 
-Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
+Retorna um array de strings de endereços IP, formatadas de acordo com [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), que atualmente são configuradas para a resolução de DNS. A string will include a port section if a custom port is used.
 
 Por exemplo:
+
+<!-- eslint-disable semi-->
 
 ```js
 [
@@ -110,7 +112,9 @@ Por exemplo:
 ]
 ```
 
-## dns.lookup(hostname[, options], callback)<!-- YAML
+## dns.lookup(hostname[, options], callback)
+
+<!-- YAML
 added: v0.1.90
 changes:
 
@@ -121,7 +125,7 @@ changes:
 
 - `hostname` {string}
 - `options` {integer | Object} 
-  - `family` {integer} a família registro. Deve ser `4` ou `6`. IPv4 and IPv6 addresses are both returned by default.
+  - `family` {integer} a família registro. Deve ser `4` ou `6`. Endereços IPv4 e IPv6 são ambos retornados por padrão.
   - `hints` {number} um ou mais [sinalizadores `getaddrinfo` suportados] []. Multiple flags may be passed by bitwise `OR`ing their values.
   - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
@@ -166,14 +170,14 @@ The following flags can be passed as hints to [`dns.lookup()`][].
 - `dns.ADDRCONFIG`: Returned address types are determined by the types of addresses supported by the current system. For example, IPv4 addresses are only returned if the current system has at least one IPv4 address configured. Loopback addresses are not considered.
 - `dns.V4MAPPED`: If the IPv6 family was specified, but no IPv6 addresses were found, then return IPv4 mapped IPv6 addresses. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
 
-## dns.lookupService(address, port, callback)<!-- YAML
+## dns.lookupService(address, port, callback)
+
+<!-- YAML
 added: v0.11.14
 -->
 
 - `address` {string}
-
 - `port` {number}
-
 - `callback` {Function} 
   - `err` {Error}
   - `hostname` {string} e.g. `example.com`
@@ -195,14 +199,14 @@ dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `hostname` and `service` properties.
 
-## dns.resolve(hostname[, rrtype], callback)<!-- YAML
+## dns.resolve(hostname[, rrtype], callback)
+
+<!-- YAML
 added: v0.1.27
 -->
 
 - `hostname` {string} Hostname to resolve.
-
 - `rrtype` {string} Resource record type. **Default:** `'A'`.
-
 - `callback` {Function} 
   - `err` {Error}
   - `records` {string[] | Object[] | Object}
@@ -225,7 +229,9 @@ Uses the DNS protocol to resolve a hostname (e.g. `'nodejs.org'`) into an array 
 
 On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
 
-## dns.resolve4(hostname[, options], callback)<!-- YAML
+## dns.resolve4(hostname[, options], callback)
+
+<!-- YAML
 added: v0.1.16
 changes:
 
@@ -265,40 +271,40 @@ changes:
 
 Uses the DNS protocol to resolve a IPv6 addresses (`AAAA` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv6 addresses.
 
-## dns.resolveCname(hostname, callback)<!-- YAML
+## dns.resolveCname(hostname, callback)
+
+<!-- YAML
 added: v0.3.2
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[]}
 
 Uses the DNS protocol to resolve `CNAME` records for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of canonical name records available for the `hostname` (e.g. `['bar.example.com']`).
 
-## dns.resolveMx(hostname, callback)<!-- YAML
+## dns.resolveMx(hostname, callback)
+
+<!-- YAML
 added: v0.1.27
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {Object[]}
 
 Uses the DNS protocol to resolve mail exchange records (`MX` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects containing both a `priority` and `exchange` property (e.g. `[{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
-## dns.resolveNaptr(hostname, callback)<!-- YAML
+## dns.resolveNaptr(hostname, callback)
+
+<!-- YAML
 added: v0.9.12
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {Object[]}
 
@@ -313,6 +319,8 @@ Uses the DNS protocol to resolve regular expression based records (`NAPTR` recor
 
 Por exemplo:
 
+<!-- eslint-skip -->
+
 ```js
 {
   flags: 's',
@@ -324,40 +332,40 @@ Por exemplo:
 }
 ```
 
-## dns.resolveNs(hostname, callback)<!-- YAML
+## dns.resolveNs(hostname, callback)
+
+<!-- YAML
 added: v0.1.90
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[]}
 
 Uses the DNS protocol to resolve name server records (`NS` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of name server records available for `hostname` (e.g. `['ns1.example.com', 'ns2.example.com']`).
 
-## dns.resolvePtr(hostname, callback)<!-- YAML
+## dns.resolvePtr(hostname, callback)
+
+<!-- YAML
 added: v6.0.0
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[]}
 
 Uses the DNS protocol to resolve pointer records (`PTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of strings containing the reply records.
 
-## dns.resolveSoa(hostname, callback)<!-- YAML
+## dns.resolveSoa(hostname, callback)
+
+<!-- YAML
 added: v0.11.10
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `address` {Object}
 
@@ -371,6 +379,8 @@ Uses the DNS protocol to resolve a start of authority record (`SOA` record) for 
 - `expire`
 - `minttl`
 
+<!-- eslint-skip -->
+
 ```js
 {
   nsname: 'ns.example.com',
@@ -383,14 +393,14 @@ Uses the DNS protocol to resolve a start of authority record (`SOA` record) for 
 }
 ```
 
-## dns.resolveSrv(hostname, callback)<!-- YAML
+## dns.resolveSrv(hostname, callback)
+
+<!-- YAML
 added: v0.1.27
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `addresses` {Object[]}
 
@@ -401,6 +411,8 @@ Uses the DNS protocol to resolve service records (`SRV` records) for the `hostna
 - `port`
 - `name`
 
+<!-- eslint-skip -->
+
 ```js
 {
   priority: 10,
@@ -410,14 +422,14 @@ Uses the DNS protocol to resolve service records (`SRV` records) for the `hostna
 }
 ```
 
-## dns.resolveTxt(hostname, callback)<!-- YAML
+## dns.resolveTxt(hostname, callback)
+
+<!-- YAML
 added: v0.1.27
 -->
 
 - `hostname` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `records` {string[][]}
 
@@ -447,6 +459,8 @@ Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query).
 
 Here is an example of the `ret` object passed to the callback:
 
+<!-- eslint-disable semi -->
+
 ```js
 [ { type: 'A', address: '127.0.0.1', ttl: 299 },
   { type: 'CNAME', value: 'example.com' },
@@ -463,14 +477,14 @@ Here is an example of the `ret` object passed to the callback:
     minttl: 60 } ]
 ```
 
-## dns.reverse(ip, callback)<!-- YAML
+## dns.reverse(ip, callback)
+
+<!-- YAML
 added: v0.1.16
 -->
 
 - `ip` {string}
-
-- `callback` {Function}
-  
+- `callback` {Function} 
   - `err` {Error}
   - `hostnames` {string[]}
 
@@ -478,7 +492,9 @@ Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an array o
 
 On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
 
-## dns.setServers(servers)<!-- YAML
+## dns.setServers(servers)
+
+<!-- YAML
 added: v0.11.3
 -->
 

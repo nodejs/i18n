@@ -345,7 +345,7 @@ Enfóquese primero en los aspectos más significativos del cambio:
 1. ¿Este cambio tiene sentido para Node.js?
 2. ¿Este cambio hace que Node.js sea mejor, aunque solo sea incrementalmente?
 3. ¿Hay errores claros o problemas de mayor escala que deben atenderse?
-4. ¿El mensaje de el commit es legible y correcto? Si contiene un cambio de ruptura, ¿es lo suficientemente claro?
+4. ¿El mensaje de el commit es legible y correcto? If it contains a breaking change is it clear enough?
 
 When changes are necessary, *request* them, do not *demand* them, and do not assume that the submitter already knows how to add a test or run a benchmark.
 

@@ -6,7 +6,7 @@
 
 Для использования сервера и клиента HTTP необходимо подключить `require('http')`.
 
-Интерфейсы HTTP в Node.js разработаны для поддержки многих функций протокола, которые обычно были сложны в использовании. Особенно больших сообщений, которые, возможно, закодированы фрагментами. Интерфейс никогда не сохраняет в буфере целиком запросы и ответы, так пользователи имеют возможность потоковой передачи данных.
+Интерфейсы HTTP в Node.js разработаны для поддержки многих функций протокола, которые обычно были сложны в использовании. Особенно больших сообщений, которые, возможно, закодированы фрагментами. The interface is careful to never buffer entire requests or responses, so the user is able to stream data.
 
 Заголовки HTTP сообщений представлены объектом такого типа:
 ```js
@@ -19,7 +19,7 @@
 
 Ключи в нижнем регистре. Значения не меняются.
 
-Чтобы поддерживать полный спектр возможных приложений HTTP, HTTP API Node.js находится на очень низком уровне. Он имеет дело только с обработкой потока и парсингом сообщения. Он разбирает сообщение на заголовки и основную часть, но не разбирает фактические заголовки и основные части сообщений.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level. Он имеет дело только с обработкой потока и парсингом сообщения. Он разбирает сообщение на заголовки и основную часть, но не разбирает фактические заголовки и основные части сообщений.
 
 Для более подробной информации, как обрабатывать дублированные заголовки, смотрите [`message.headers`][].
 
@@ -150,6 +150,8 @@ added: v0.11.4
 -->* {Object}
 
 Объект, который содержит массивы сокетов, в настоящее время ожидающих использования агентом при включенном `keepAlive`. Не изменять.
+
+Sockets in the `freeSockets` list will be automatically destroyed and removed from the array on `'timeout'`.
 
 ### `agent.getName(options)`
 <!-- YAML
@@ -622,7 +624,7 @@ added: v0.1.29
 * `callback` {Function}
 * Возвращает: {boolean}
 
-Посылает часть тела. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Посылает часть тела. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 Аргумент `encoding` является опциональным и применяется только тогда, когда `chunk` является строкой. По умолчанию на `'utf8'`.
 
@@ -827,7 +829,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->* Extends: {Stream}
 
-Этот объект создается внутренне сервером HTTP, а не пользователем. Он передается в качестве второго параметра событию [`'request'`][].
+This object is created internally by an HTTP server, not by the user. Он передается в качестве второго параметра событию [`'request'`][].
 
 ### Event: `'close'`<!-- YAML
 added: v0.6.7

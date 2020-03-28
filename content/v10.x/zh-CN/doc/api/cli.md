@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js 提供了各式各样的 CLI 选项。 These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js 提供了各式各样的 CLI 选项。 这些选项公开内置调试、执行脚本的多种方法以及其他有用的运行时选项。
 
 要将此文档在终端中以手册页的形式查看，运行 `man node`。
 
@@ -41,7 +41,7 @@ For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+作为标准输入的别名，类似于在其他命令行实用程序中 - 的使用，意味着脚本会从标准输入被读取，且剩余的选项将会传递给该脚本。
 
 ### `--`
 
@@ -49,7 +49,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-表示 node 选项的结束。 将剩余的参数传递给脚本。 If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+表示 node 选项的结束。 将剩余的参数传递给脚本。 如果在此之前没有提供脚本文件名或 eval/打印脚本, 则下一个参数将用作脚本文件名。
 
 ### `--abort-on-uncaught-exception`
 
@@ -80,7 +80,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-启动时启用 FIPS 兼容的加密。 (Requires Node.js to be built with `./configure --openssl-fips`.)
+启动时启用 FIPS 兼容的加密。 (需要使用 `./configure --openssl-fips` 构建 Node.js。)
 
 ### `--experimental-modules`
 
@@ -120,7 +120,7 @@ Enable experimental worker threads using the `worker_threads` module.
 added: v6.0.0
 -->
 
-启动时强制 FIPS 兼容的加密。 (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+启动时强制 FIPS 兼容的加密。 (不能从脚本代码中禁用。) (具有和 `--enable-fips` 相同的需求。)
 
 ### `--icu-data-dir=文件`
 
@@ -202,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+这是一个空选项。 它为兼容性保留。
 
 ### `--no-deprecation`
 
@@ -218,7 +218,7 @@ added: v0.8.0
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+禁用对 `async_hooks` 的运行时检测。 These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -254,7 +254,7 @@ added: v6.3.0
 
 Instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. 在大多数情况下, 此默认行为是可接受的。 However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
 
 ```text
 {appDir}
@@ -478,7 +478,7 @@ changes:
 
 将跟随的参数作为 JavaScript 执行。 The modules which are predefined in the REPL can also be used in `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. 在 Powershell 和 Git bash中，`'` 和 `"` 都可用。
 
 ### `-h`, `--help`
 
@@ -517,7 +517,7 @@ added: v1.6.0
 
 启动时预加载指定模块。
 
-Follows `require()`'s module resolution rules. `module` 可能是到文件的路径，或一个 node 模块名。
+遵循 `require()` 的模块的解析规则。 `module` 可能是到文件的路径，或一个 node 模块名。
 
 ### `-v`, `--version`
 
@@ -744,4 +744,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 - `dns.lookup()`
 - all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). 更多信息参见 [libuv 线程池文档](http://docs.libuv.org/en/latest/threadpool.html)。

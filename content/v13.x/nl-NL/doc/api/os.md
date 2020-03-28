@@ -299,6 +299,14 @@ The value of `homedir` returned by `os.userInfo()` is provided by the operating 
 
 Throws a [`SystemError`][] if a user has no `username` or `homedir`.
 
+## `os.version()`<!-- YAML
+added: v13.11.0
+-->* Returns {string}
+
+Returns a string identifying the kernel version.
+
+On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `RtlGetVersion()` is used, and if it is not available, `GetVersionExW()` will be used. See https://en.wikipedia.org/wiki/Uname#Examples for more information.
+
 ## OS Constants
 
 The following constants are exported by `os.constants`.

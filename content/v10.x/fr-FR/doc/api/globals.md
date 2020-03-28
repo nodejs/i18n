@@ -12,7 +12,7 @@ Ces objets sont disponibles dans tous les modules. The following variables may a
 * [`module`][]
 * [`require()`][]
 
-Les objets listés ici sont spécifiques à Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Les objets listés ici sont spécifiques à Node.js. Il y a un certain nombre d' [objets built-in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) faisant partie du langage JavaScript lui-même, qui sont également accessibles globalement.
 
 ## Classe: Buffer
 

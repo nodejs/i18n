@@ -326,6 +326,8 @@ added: v0.3.1
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
 
+<!-- eslint-disable prefer-const -->
+
 ```js
 const vm = require('vm');
 let localVar = 'initial value';

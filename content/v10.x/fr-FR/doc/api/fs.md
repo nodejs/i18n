@@ -6,7 +6,7 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+Le module `fs` fournit une API pour interagir avec le système de fichiers de manière étroitement modelé autour des fonctions POSIX standard.
 
 Pour utiliser ce module :
 
@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Pour les processus occupés, le programmeur est *fortement encouragé* à utiliser les versions asynchrones de ces appels. Les versions synchrones bloquent l'intégralité du processus jusqu'à leur achèvement — interrompant toutes les connexions.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Bien que ce ne soit pas recommandé, la plupart des fonctions fs permettent à l'argument callback d'être omis, auquel cas un callback par défaut qui relance les erreurs est utilisé. Pour obtenir une trace jusqu'au site d'appel d'origine, définir la variable d'environnement `NODE_DEBUG` :
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+L'omission de la fonction de rappel sur les fonctions fs asynchrones est obsolète et peut entraîner une erreur à l'avenir.
 
 ```txt
 $ cat script.js
@@ -129,13 +129,13 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-On Windows, Node.js follows the concept of per-drive working directory. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
+On Windows, Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ### URL object support
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> For most 
 
 `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -3101,7 +3101,7 @@ changes:
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Par défaut :** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Par défaut :** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}

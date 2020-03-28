@@ -57,11 +57,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Pour les processus occupés, le programmeur est *fortement encouragé* à utiliser les versions asynchrones de ces appels. Les versions synchrones bloquent l'intégralité du processus jusqu'à leur achèvement — interrompant toutes les connexions.
 
 The relative path to a filename can be used. Remember, however, that this path will be relative to `process.cwd()`.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Bien que ce ne soit pas recommandé, la plupart des fonctions fs permettent à l'argument callback d'être omis, auquel cas un callback par défaut qui relance les erreurs est utilisé. Pour obtenir une trace jusqu'au site d'appel d'origine, définir la variable d'environnement `NODE_DEBUG` :
 
 *Note*: Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
 
@@ -80,7 +80,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
@@ -2433,7 +2433,7 @@ changes:
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Par défaut :** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Par défaut :** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}

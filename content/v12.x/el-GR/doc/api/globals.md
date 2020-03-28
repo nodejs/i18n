@@ -26,11 +26,11 @@ added: v0.1.103
 
 ## `__dirname`
 
-This variable may appear to be global but is not. See [`__dirname`][].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`__dirname`][].
 
 ## `__filename`
 
-This variable may appear to be global but is not. See [`__filename`][].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -72,7 +72,7 @@ added: v0.1.100
 
 ## `exports`
 
-This variable may appear to be global but is not. See [`exports`][].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -87,7 +87,7 @@ added: v0.1.27
 
 ## `module`
 
-This variable may appear to be global but is not. See [`module`][].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`module`][].
 
 ## `process`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-This variable may appear to be global but is not. See [`require()`][].
+Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML

@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Estos objetos están disponibles en todos los módulos. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Estos objetos están disponibles en todos los módulos. Las siguientes variables pueden parecer globales, pero no lo son. Existen solo en el ámbito de los módulos, vea la [documentación del sistema de módulo](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,7 +12,7 @@ Estos objetos están disponibles en todos los módulos. The following variables 
 * [`module`][]
 * [`require()`][]
 
-Los objetos listados aquí son específicos para Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Los objetos listados aquí son específicos para Node.js. Hay un número de [objetos-complemento](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) que forman parte del lenguaje de JavaScript en sí mismo, y pueden ser accedidos de manera global.
 
 ## Clase: Buffer
 
@@ -32,7 +32,7 @@ Esta variable puede parecer global, pero no lo es. Vea [`__dirname`].
 
 ## \_\_filename
 
-Esta variable puede parecer global, pero no lo es. Vea [`__filename`].
+Esta variable puede parecer de alcance global, pero no lo es. Vea [`__filename`].
 
 ## clearImmediate(immediateObject)
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] es descrita en las sección de [temporizadores](timers.html).
+[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] es descrita en las sección de [temporizadores](timers.html).
+[`clearInterval`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] es descrita en las sección de [temporizadores](timers.html).
+[`clearTimeout`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## console
 
@@ -74,11 +74,11 @@ added: v0.1.100
 
 * {Object}
 
-Se utiliza para imprimir stdout y stderr. Consulte la sección de [`console`][].
+Utilizado para imprimir a stdout y stderr. Consulte la sección de [] [`consola`].
 
 ## exports
 
-Esta variable puede parecer global, pero no lo es. Vea [`exports`].
+Esta variable puede parecer de alcance global, pero no lo es. Vea [`exports`].
 
 ## global
 
@@ -88,11 +88,11 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} El objeto del espacio de nombre global.
+* {Objeto} el objeto del espacio de nombre global.
 
-En los navegadores, el ámbito de máximo nivel es el ámbito global. This means that within the browser `var something` will define a new global variable. En Node.js esto es distinto. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+En los navegadores, el ámbito de nivel superior es el ámbito global. Esto significa que dentro del navegador, `var something` definirá una nueva variable global. En Node.js esto es diferente. El ámbito de nivel más alto no es el ámbito global; dentro de un módulo de Node.js, `var something` se ubicará de manera local en relación a ese módulo.
 
-## module
+## módulo
 
 Esta variable puede parecer global, pero no lo es. Vea [`module`].
 
@@ -104,9 +104,9 @@ added: v0.1.7
 
 <!-- type=global -->
 
-* {Object}
+* {Objeto}
 
-El objeto del proceso. Consulte la sección del [objeto de `process`][].
+El objeto del proceso. Consulte la sección de [objeto de `proceso`][].
 
 ## require()
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] es descrita en las sección de [temporizadores](timers.html).
+[`setImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] es descrita en las sección de [temporizadores](timers.html).
+[`setInterval`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,4 +140,4 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] es descrita en las sección de [temporizadores](timers.html).
+[`setTimeout`] se describe en la sección [contadores de tiempo](timers.html).

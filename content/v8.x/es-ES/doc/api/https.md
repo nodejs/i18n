@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Stable
 
-HTTPS es el protocolo de HTTP sobre TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS es el protocolo de HTTP sobre TLS/SSL. En Node.js, esto se implementa como un módulo separado.
 
 ## Clase: https.Agent
 
@@ -12,7 +12,7 @@ HTTPS es el protocolo de HTTP sobre TLS/SSL. In Node.js this is implemented as a
 added: v0.4.5
 -->
 
-Un objeto Agente para HTTPS similar a [`http.Agent`][]. See [`https.request()`][] for more information.
+Un objeto Agente para HTTPS similar a [`http.Agent`][]. Vea [`https.request()`][] para más información.
 
 ## Clase: https.Server
 
@@ -20,7 +20,7 @@ Un objeto Agente para HTTPS similar a [`http.Agent`][]. See [`https.request()`][
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. Vea [`http.Server`][] para más información.
+Esta clase es una subclase de `tls.Server` y emite eventos iguales a [`http.Server`][]. Vea [`http.Server`][] para más información.
 
 ### server.close([callback])
 
@@ -79,7 +79,7 @@ Vea [`http.Server#keepAliveTimeout`][].
 added: v0.3.4
 -->
 
-- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
+- `options` {Object} Acepta `options` de [`tls.createServer()`][], [`tls.createSecureContext()`][] y [`http.createServer()`][].
 - `requestListener` {Function} Un listener a ser añadido al evento `request` .
 
 Ejemplo:
@@ -128,12 +128,12 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
+- `options` {Object | string | URL} Acepta las mismas `options` como [`https.request()`][], con el `method` siempre establecido a `GET`.
 - `callback` {Function}
 
 Como [`http.get()`][], pero para HTTPS.
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizado automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
 Ejemplo:
 
@@ -172,17 +172,17 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  - `protocol` **Default:** `https:`
-  - `port` **Predeterminado:** `443`
-  - `agent` **Predeterminado:** `https.globalAgent`
+- `options` {Object | string | URL} Acepta todas las `options` de [`http.request()`][], con algunas diferencias en valores predeterminados: 
+    - `protocol` **Default:** `https:`
+    - `port` **Predeterminado:** `443`
+    - `agent` **Predeterminado:** `https.globalAgent`
 - `callback` {Function}
 
 Hace una solicitud a un servidor web seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted when using a custom [`Agent`][]: `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
+Las siguientes `options` adicionales de [`tls.connect()`][] también son aceptadas cuando se utiliza un [`Agent`][] personalizado: `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizada automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertida en un objeto `options` ordinario.
 
 Ejemplo:
 

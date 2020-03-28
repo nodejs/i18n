@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Current</th>
+<th>Courant</th>
 </tr>
 <tr>
 <td>

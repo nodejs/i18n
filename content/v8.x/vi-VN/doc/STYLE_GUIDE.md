@@ -1,11 +1,11 @@
 # Style Guide
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+* Tài liệu được viết trong các tập tin markdown và đặt tên theo định dạng là `chữ-thường-và-gạch-ngang.md`. 
+  * Các dấu gạch chân trong tên tập tin chỉ được phép dùng khi chúng xuất hiện trong chủ đề mà tài liệu sẽ mô tả (ví dụ `child_process`).
   * Có các ngoại lệ cho một số tập tin, chẳng hạn như các tập tin markdown ở mức cao nhất.
 * Tài liệu nên giới hạn mỗi dòng dài nhất là 80 ký tự.
 * Ưu tiên mô tả các định dạng trong `.editorconfig`. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Một [plugin](http://editorconfig.org/#download) có sẵn trong một số chương trình soạn thảo văn bản để tự động áp dụng các quy tắc này.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * Ưu tiên sử dụng chính tả kiểu Anh Mỹ. "Capitalize" thay cho "Capitalise", "color" thay cho "colour". "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).

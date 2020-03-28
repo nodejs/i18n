@@ -96,7 +96,7 @@ Instances of the `http2.Http2Session` class represent an active communications s
 
 Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
 
-User code will not create `Http2Session` instances directly. Server-side `Http2Session` instances are created by the `Http2Server` instance when a new HTTP/2 connection is received. Client-side `Http2Session` instances are created using the `http2.connect()` method.
+El código de usuario no creará instancias ` Http2Session ` directamente. Server-side `Http2Session` instances are created by the `Http2Server` instance when a new HTTP/2 connection is received. Client-side `Http2Session` instances are created using the `http2.connect()` method.
 
 #### `Http2Session` and Sockets
 
@@ -184,7 +184,7 @@ session.on('localSettings', (settings) => {
 added: v10.12.0
 -->
 
-* `payload` {Buffer} The `PING` frame 8-byte payload
+* `payload` {Buffer} El payload `PING` frame de 8-byte
 
 The `'ping'` event is emitted whenever a `PING` frame is received from the connected peer.
 
@@ -363,7 +363,7 @@ added: v9.4.0
 
 If the `Http2Session` is connected to a `TLSSocket`, the `originSet` property will return an `Array` of origins for which the `Http2Session` may be considered authoritative.
 
-The `originSet` property is only available when using a secure TLS connection.
+La propiedad ` originSet ` solo está disponible cuando se utiliza una conexión TLS segura.
 
 #### `http2session.pendingSettingsAck`
 <!-- YAML
@@ -624,7 +624,7 @@ added: v10.12.0
 
 * `origins` {string[]}
 
-The `'origin'` event is emitted whenever an `ORIGIN` frame is received by the client. The event is emitted with an array of `origin` strings. The `http2session.originSet` will be updated to include the received origins.
+The `'origin'` event is emitted whenever an `ORIGIN` frame is received by the client. El evento es emitido con un array de strings `origin`. The `http2session.originSet` will be updated to include the received origins.
 
 ```js
 const http2 = require('http2');
@@ -636,7 +636,7 @@ client.on('origin', (origins) => {
 });
 ```
 
-The `'origin'` event is only emitted when using a secure TLS connection.
+El evento `'origin` sólo se emite cuando se utiliza una conexión TLS segura.
 
 #### `clienthttp2session.request(headers[, options])`
 <!-- YAML
@@ -939,7 +939,7 @@ const client = http2.connect('http://example.org:8000');
 const { NGHTTP2_CANCEL } = http2.constants;
 const req = client.request({ ':path': '/' });
 
-// Cancel the stream if there's no activity after 5 seconds
+// Cancela el stream si no hay actividad después de 5 segundos
 req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 ```
 
@@ -1165,7 +1165,7 @@ changes:
 * `options` {Object}
   * `statCheck` {Function}
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
-  * `offset` {number} The offset position at which to begin reading.
+  * `offset` {number} El desplazamiento en el que se comenzará a leer.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
 Inicia una respuesta cuyos datos son leídos desde el descriptor de archivo dado. No validation is performed on the given file descriptor. If an error occurs while attempting to read data using the file descriptor, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code.
@@ -1240,7 +1240,7 @@ changes:
   * `statCheck` {Function}
   * `onError` {Function} Callback function invoked in the case of an error before send.
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
-  * `offset` {number} The offset position at which to begin reading.
+  * `offset` {number} El desplazamiento en el que se comenzará a leer.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
 Envía un archivo normal como respuesta. The `path` must specify a regular file or an `'error'` event will be emitted on the `Http2Stream` object.
@@ -1283,7 +1283,7 @@ const http2 = require('http2');
 const server = http2.createServer();
 server.on('stream', (stream) => {
   function statCheck(stat, headers) {
-    // Check the stat here...
+    // comprueba el stat aquí...
     stream.respond({ ':status': 304 });
     return false; // Cancel the send operation
   }
@@ -1432,7 +1432,24 @@ Used to set the timeout value for http2 server requests, and sets a callback fun
 
 El callback dado, está registrado como un oyente en el evento `'timeout'`.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Tiempo de espera en milisegundos. **Default:** 0 (no timeout)
+
+El número de mili-segundos de inactividad antes de que se presuma que un socket se quedó sin tiempo.
+
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### Class: `Http2SecureServer`
 <!-- YAML
@@ -1551,7 +1568,24 @@ Used to set the timeout value for http2 secure server requests, and sets a callb
 
 El callback dado, está registrado como un oyente en el evento `'timeout'`.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Tiempo de espera en milisegundos. **Default:** 0 (no timeout)
+
+El número de mili-segundos de inactividad antes de que se presuma que un socket se quedó sin tiempo.
+
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### `http2.createServer(options[, onRequestHandler])`<!-- YAML
 added: v8.4.0
@@ -1612,10 +1646,10 @@ Since there are no browsers known that support [unencrypted HTTP/2](https://http
 ```js
 const http2 = require('http2');
 
-// Create an unencrypted HTTP/2 server.
-// Since there are no browsers known that support
-// unencrypted HTTP/2, the use of `http2.createSecureServer()`
-// is necessary when communicating with browser clients.
+// Crea un servidor HTTP/2 sin cifrar.
+// Dado que no hay navegadores conocidos que soporten
+// HTTP/2 sin cifrar, el uso de `http2.createSecureServer()`
+// es necesario cuando se comunica con los navegadores clientes.
 const server = http2.createServer();
 
 server.on('stream', (stream, headers) => {
@@ -1686,7 +1720,7 @@ const options = {
   cert: fs.readFileSync('server-cert.pem')
 };
 
-// Create a secure HTTP/2 server
+// Crea un servidor seguro HTTP/2
 const server = http2.createSecureServer(options);
 
 server.on('stream', (stream, headers) => {
@@ -1716,7 +1750,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
                  128 header pairs.
--->* `authority` {string|URL}
+-->* `authority` {string|URL} The remote HTTP/2 server to connect to. This must be in the form of a minimal, valid URL with the `http://` or `https://` prefix, host name, and IP port (if a non-default port is used). Userinfo (user ID and password), path, querystring, and fragment details in the URL will be ignored.
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
@@ -1800,7 +1834,7 @@ const http2 = require('http2');
 const packed = http2.getPackedSettings({ enablePush: false });
 
 console.log(packed.toString('base64'));
-// Prints: AAIAAAAA
+// Imprime: AAIAAAAA
 ```
 
 ### `http2.getUnpackedSettings(buf)`
@@ -1831,10 +1865,10 @@ Header objects passed to callback functions will have a `null` prototype. This m
 
 Para encabezados entrantes:
 
-* The `:status` header is converted to `number`.
+* El encabezado `:status` se convierte en `number`.
 * Duplicates of `:status`, `:method`, `:authority`, `:scheme`, `:path`, `:protocol`, `age`, `authorization`, `access-control-allow-credentials`, `access-control-max-age`, `access-control-request-method`, `content-encoding`, `content-language`, `content-length`, `content-location`, `content-md5`, `content-range`, `content-type`, `date`, `dnt`, `etag`, `expires`, `from`, `if-match`, `if-modified-since`, `if-none-match`, `if-range`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `range`, `referer`,`retry-after`, `tk`, `upgrade-insecure-requests`, `user-agent` or `x-content-type-options` are discarded.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
-* For duplicate `cookie` headers, the values are joined together with '; '.
+* Para los encabezados `cookie` duplicados, los valores se unen con '; '.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
 ```js
@@ -1970,8 +2004,8 @@ const http2 = require('http2');
 
 const client = http2.connect('http://localhost:8001');
 
-// Must not specify the ':path' and ':scheme' headers
-// for CONNECT requests or an error will be thrown.
+// No deben especificarse los encabezados ':path' y ':scheme'
+// para solicitudes CONNECT o se arrojará un error.
 const req = client.request({
   ':method': 'CONNECT',
   ':authority': `localhost:${port}`
@@ -2168,7 +2202,7 @@ In HTTP/2, the request path, host name, protocol, and method are represented as 
 
 ```js
 removeAllHeaders(request.headers);
-assert(request.url);   // Fails because the :path header has been removed
+assert(request.url);   // Falla porque el encabezado :path ha sido removido
 ```
 
 #### `request.httpVersion`
@@ -2350,7 +2384,7 @@ Url {
 added: v8.4.0
 -->* Extends: {Stream}
 
-Este objeto es creado internamente por un servidor de HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][].
+This object is created internally by an HTTP server, not by the user. Es pasado como el segundo parámetro al evento [`'request'`][].
 
 #### Event: `'close'`
 <!-- YAML
@@ -2700,7 +2734,7 @@ added: v8.4.0
 -->* `headers` {HTTP/2 Headers Object} Un objeto describiendo los encabezados
 * `callback` {Function} Called once `http2stream.pushStream()` is finished, or either when the attempt to create the pushed `Http2Stream` has failed or has been rejected, or the state of `Http2ServerRequest` is closed prior to calling the `http2stream.pushStream()` method
   * `err` {Error}
-  * `stream` {ServerHttp2Stream} The newly-created `ServerHttp2Stream` object
+  * `stream` {ServerHttp2Stream} El objeto `ServerHttp2Stream` recientemente creado
 
 Call [`http2stream.pushStream()`][] with the given headers, and wrap the given [`Http2Stream`][] on a newly created `Http2ServerResponse` as the callback parameter if successful. When `Http2ServerRequest` is closed, the callback is called with an error `ERR_HTTP2_INVALID_STREAM`.
 

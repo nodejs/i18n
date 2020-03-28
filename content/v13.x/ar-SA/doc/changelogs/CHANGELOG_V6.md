@@ -4832,7 +4832,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
   * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
   * pbkdf2 digest overloading is deprecated [#4047](https://github.com/nodejs/node/pull/4047).
-* Dependencies
+* التبعيات
   * Reintroduce shared c-ares build support [#5775](https://github.com/nodejs/node/pull/5775).
   * V8 updated to 5.0.71.35 [#6372](https://github.com/nodejs/node/pull/6372).
 * نظام أسماء النطاقات (DNS)

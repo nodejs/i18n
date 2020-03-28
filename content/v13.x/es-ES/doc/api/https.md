@@ -330,13 +330,13 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Asegúrese de que el certificado sea emitido al host al cual estamos conectados
+    // Make sure the certificate is issued to the host we are connected to
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
     }
 
-    // Fije la clave pública, similar a fijar HPKP pin-sha25
+    // Pin the public key, similar to HPKP pin-sha25 pinning
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
       const msg = 'Certificate verification error: ' +
@@ -345,7 +345,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Fijar el certificado exacto, en lugar de la clave pública
+    // Pin the exact certificate, rather than the pub key
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
@@ -355,7 +355,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Este bucle es sólo informativo.
+    // This loop is informational only.
     // Imprima el certificado y las huellas digitales de clave pública de todos los certs en la
     // cadena. Es común fijar la clave pública del emisor en el internet
     // público, mientras se fija la clave pública del servicio en entornos

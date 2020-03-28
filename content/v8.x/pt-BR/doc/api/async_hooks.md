@@ -12,7 +12,7 @@ const async_hooks = require('async_hooks');
 
 ## Terminologia
 
-Um recurso assíncrono representa um objeto com um callback associado. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. Um recurso também pode ser fechado antes de o callback ser chamado. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Um recurso assíncrono representa um objeto com um callback associado. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. A resource can also be closed before the callback is called. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
 ## API pública
 
@@ -425,7 +425,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Note que contextos de promessas pode não conseguir validar triggerAsyncId por padrão. Veja a seção em [rastreamento de execução de promessas](#async_hooks_promise_execution_tracking).
+Note que contextos de promessas pode não conseguir validar triggerAsyncId por padrão. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Rastreamento de execução de Promessa
 

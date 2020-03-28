@@ -751,7 +751,7 @@ added: v0.1.90
 * `callback` {Function}
 * Возвращает: {boolean}
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string. It defaults to UTF8 encoding.
 
 Возвращает `true`, если все данные были успешно сброшены в буфер ядра. Возвращает `false`, если данные полностью или частично были поставлены в очередь в памяти пользователя. [`'drain'`][] will be emitted when the buffer is again free.
 

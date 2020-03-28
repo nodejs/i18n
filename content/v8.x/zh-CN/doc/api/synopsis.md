@@ -6,7 +6,7 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
+请参阅 [命令行选项](cli.html#cli_command_line_options) 文档以获取关于运行 Node.js 的不同选项和方式的相关信息。
 
 ## 示例
 
@@ -75,7 +75,7 @@ $ node hello-world.js
 An output like this should appear in the terminal to indicate Node.js server is running:
 
     console
-     Server running at http://127.0.0.1:3000/
+     Server running at http://127.0.0.1:3000/`
 
 Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 

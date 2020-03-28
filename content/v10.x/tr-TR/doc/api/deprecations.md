@@ -525,7 +525,7 @@ changes:
 
 Type: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+The `os.getNetworkInterfaces()` method is deprecated. Lütfen bunun yerine [`os.networkInterfaces`][] özelliğini kullanın.
 
 <a id="DEP0024"></a>
 
@@ -628,7 +628,7 @@ changes:
 
 Type: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0029"></a>
 
@@ -649,7 +649,7 @@ changes:
 
 Type: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
 
 <a id="DEP0030"></a>
 
@@ -1941,7 +1941,7 @@ changes:
 
 Type: Documentation-only
 
-The [`crypto.fips`][] property is deprecated. Lütfen bunun yerine `crypto.setFips()` ve `crypto.getFips()` kullanın.
+The [`crypto.fips`][] property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 <a id="DEP0094"></a>
 

@@ -6,7 +6,7 @@
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+إن وحدة `fs` البرمجية توفر واجهات برمجية للتفاعل مع نظام الملفات بطريقة مماثلة و مصاغة بناءً على دوال واجهات نظام التشغيل المحمولة (POSIX).
 
 لإستخدام هذه الوحدة البرمحية:
 
@@ -135,7 +135,7 @@ On Windows, Node.js follows the concept of per-drive working directory. This beh
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> For most 
 
 `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 

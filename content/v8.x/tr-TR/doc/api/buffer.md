@@ -45,7 +45,7 @@ In versions of Node.js prior to v6, `Buffer` instances were created using the `B
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
-Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
+`new Buffer()` davranışı, ilk argüman olarak iletilen değerin türüne bağlı olarak önemli ölçüde değiştiğinden, `new Buffer()` öğesine iletilen girdi argümanlarını doğru şekilde doğrulamamış olan veya yeni tahsis edilmiş `Buffer` içeriğini uygun şekilde başlatamayan uygulamalar, yanlışlıkla güvenlik ve güvenilirlik konularını kodlarına dahil eder.
 
 To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
 
@@ -1399,7 +1399,7 @@ added: v0.11.15
 
 Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1434,7 +1434,7 @@ added: v0.11.15
 
 Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1467,7 +1467,7 @@ added: v0.5.0
 
 Reads a signed 8-bit integer from `buf` at the specified `offset`.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1500,7 +1500,7 @@ added: v0.5.5
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1533,7 +1533,7 @@ added: v0.5.5
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1567,7 +1567,7 @@ added: v0.11.15
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1596,7 +1596,7 @@ added: v0.5.0
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1627,7 +1627,7 @@ added: v0.5.5
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1664,7 +1664,7 @@ added: v0.5.5
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -1696,7 +1696,7 @@ added: v0.11.15
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
 
-Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, `ofsetin` `buf`'ın sonunun ötesinde olmasına izin verir, ancak sonuçta ortaya çıkan davranış tanımlanmamıştır.
 
 Örnekler:
 
@@ -2019,7 +2019,7 @@ added: v0.11.15
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2052,7 +2052,7 @@ added: v0.11.15
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2083,7 +2083,7 @@ added: v0.5.0
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2114,7 +2114,7 @@ added: v0.5.5
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2145,7 +2145,7 @@ added: v0.5.5
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 `value` is interpreted and written as a two's complement signed integer.
 
@@ -2177,7 +2177,7 @@ added: v0.11.15
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2208,7 +2208,7 @@ added: v0.5.0
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2239,7 +2239,7 @@ added: v0.5.5
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2274,7 +2274,7 @@ added: v0.5.5
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 
@@ -2308,7 +2308,7 @@ added: v0.5.5
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
 
-Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
+`noAssert` öğesinin `true` olarak ayarlanması, kodlanmış `değer` biçiminin `buf` sonunun ötesine uzanmasına izin verir, ancak sonuçtaki davranış tanımsızdır.
 
 Örnekler:
 

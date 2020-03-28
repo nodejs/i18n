@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js viene con una variedad de opciones de CLI. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js viene con una variedad de opciones de CLI. Estas opciones exponen la depuración incorporada, múltiples formas de ejecutar scripts, y otras opciones útiles de tiempo de ejecución.
 
 Para ver esta documentación como una página de manual en un terminal, ejecutar `man node`.
 
@@ -41,7 +41,7 @@ For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Alias para stdin, análogo al uso de - en otras utilidades de línea de comandos, lo que significa que el script lee de stdin, y el resto de las opciones se pasan al script.
 
 ### `--`
 
@@ -49,7 +49,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. Si ningún nombre de script o script eval/print es suministrado anteriormente a esto, entonces el siguiente argumento será usado como nombre de archivo del script.
 
 ### `--abort-on-uncaught-exception`
 
@@ -57,9 +57,9 @@ Indicar el final de las opciones de node. Pasar el resto de los argumentos al sc
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+Abortar en lugar de salir de un archivo principal a generar para el análisis post-mortem usando un depurador (como `lldb`, `gdb`, y `mdb`).
 
-If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
+Si se utiliza esta bandera, aún se puede configurar para no abortarla mediante [`process.setUncaughtExceptionCaptureCallback()`][] (y aplicarlo mediante del módulo `domain` que se esté utilizando).
 
 ### `--completion-bash`
 
@@ -80,7 +80,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-Habilita FIPS-compliant cripto al Inicio. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Habilita FIPS-compliant cripto al Inicio. (Requiere Node.js para ser construido con `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -120,7 +120,7 @@ Enable experimental worker threads using the `worker_threads` module.
 added: v6.0.0
 -->
 
-Fuerza cripto FIPS-compliant en inicio. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+Fuerza cripto FIPS-compliant en inicio. (No puede se deshabilitado desde el código del script.) (Mismos requisitos que `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 
@@ -158,7 +158,7 @@ added: v6.3.0
 
 Activar el inspector en `host:port`. El predeterminado es `127.0.0.1:9229`.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del inspector V8 permite que las herramientas como Chrome DevTools e IDEs depuren y perfilen instancias de Node.js. Las herramientas se adjuntan a las instancias de Node.js a través de un puerto tcp y se comunican utilizando el [Protocolo Chrome DevTools](https://chromedevtools.github.io/devtools-protocol/).
 
 <a id="inspector_security"></a>
 
@@ -218,7 +218,7 @@ Silencia las advertencias de desaprobación.
 added: v9.0.0
 -->
 
-Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. Estas seguirán estando habilitadas dinámicamente cuando `async_hooks` esté habilitado.
 
 ### `--no-warnings`
 
@@ -234,7 +234,7 @@ Silencia todas las advertencias del proceso (incluyendo las desaprobaciones).
 added: v6.9.0
 -->
 
-Carga un archivo de configuración OpenSSL en el arranque. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser utilizado para habilitar la criptografía compatible con FIPS si Node.js se construye con `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -244,7 +244,7 @@ added: v8.0.0
 
 Emite advertencias de desaprobación pendientes.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `--preserve-symlinks`
 
@@ -252,9 +252,9 @@ Pending deprecations are generally identical to a runtime deprecation with the n
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and caching modules.
+Instruye al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
 
-By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+Por defecto, cuando Node.js carga un módulo desde una ruta que está simbólicamente enlazada a una locación diferente en el disco, Node.js desreferenciará el enlace y utilizará la "ruta real" actual del módulo en el disco como un identificador y como una ruta raíz para localizar otros módulos de dependencia. En la mayoría de los casos, este comportamiento por defecto es aceptado. Sin embargo, al utilizar dependencias de pares enlazadas simbólicamente, como se ilustra en el siguiente ejemplo, el comportamiento por defecto causa una excepción a ser arrojada si el `moduleA` intenta requerir al `moduleB` como una dependencia de pares:
 
 ```text
 {appDir}
@@ -270,9 +270,9 @@ By default, when Node.js loads a module from a path that is symbolically linked 
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
+La bandera de línea de comando `--preserve-symlinks` indica a Node.js utilizar la ruta symlink para módulos en lugar de la ruta real, permitiendo que se encuentren las dependencias de pares enlazadas simbólicamente.
 
-Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
+Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, los módulos *nativos* enlazados simbólicamente pueden fallar al cargar si están enlazadas desde más de una locación en el árbol de dependencia (Node.js podría verlos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que se arroje una excepción).
 
 The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work. To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
 
@@ -312,7 +312,7 @@ Procesar la salida del generador de perfiles de V8 generada con la opción V8.
 added: v8.0.0
 -->
 
-Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir una advertencia al archivo, la advertencia será escrita en stderr en su lugar.
 
 ### `--throw-deprecation`
 
@@ -336,7 +336,7 @@ Set `process.title` on startup.
 added: v4.0.0
 -->
 
-Especifica una lista de cifrado TLS predeterminada alternativa. Requires Node.js to be built with crypto support (default).
+Especifica una lista de cifrado TLS predeterminada alternativa. Requiere que Node.js se construya con soporte criptográfico (por defecto).
 
 ### `--trace-deprecation`
 
@@ -376,7 +376,7 @@ Permite la recolección de información para el seguimiento de eventos.
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+Imprime un stack trace cada vez que un I/O sincrónico es detectado después del primer turno del bucle de evento.
 
 ### `--trace-warnings`
 
@@ -414,11 +414,11 @@ Using this flag allows to change what should happen when an unhandled rejection 
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. El almacen predeterminado es seleccionable en el tiempo de construcción.
+Usa el almacén de Mozilla CA tal como lo proporciona la versión actual de Node.js o usa el almacén de de CA predeterminado por OpenSSL. El almacén por defecto es seleccionable en el tiempo de construcción.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
+El almacen combinado CA, como es suministrado por Node.Js, es una instantánea del almacen Mozilla CA que es fija al tiempo de lanzamiento. Es idéntico en todas las plataformas soportadas.
 
-El uso del almacén OpenSSL permite modificaciones externas del almacén. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+El uso del almacén OpenSSL permite modificaciones externas del almacén. Para la mayoría de las distribuciones Linux y BSD, este almacén es mantenido por los mantenedores de distribución y los administradores de sistema. La localización del almacen OpenSSL es dependiente de la configuración de la librería OpenSSl pero esto puede ser alterado en el tiempo de ejecución usando variables de ambiente.
 
 Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
@@ -440,7 +440,7 @@ Set V8's thread pool size which will be used to allocate background jobs.
 
 If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
 
-If the value provided is larger than V8's maximum, then the largest value will be chosen.
+Si el valor proporcionado es mayor que el máximo del V8, entonces se escogerá el mayor valor.
 
 ### `--zero-fill-buffers`
 
@@ -448,7 +448,7 @@ If the value provided is larger than V8's maximum, then the largest value will b
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
+Rellena con zeros automáticamente todos las instancias [`Buffer`][] y [`SlowBuffer`][] recién asignadas.
 
 ### `-c`, `--check`
 
@@ -476,9 +476,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evalúa el siguiente argumento como JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Evalúa el siguiente argumento como JavaScript. Los módulos que son predefinidos en el REPL también pueden ser usados en `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. En Powershell o Git bash, `'` y `"` se pueden utilizar.
 
 ### `-h`, `--help`
 
@@ -517,7 +517,7 @@ added: v1.6.0
 
 Precarga el módulo especificado en el inicio.
 
-Follows `require()`'s module resolution rules. `module` puede ser una ruta a un archivo o un nombre del módulo de nodo.
+Sigue las reglas de resolución del módulo `require()`'. `module` puede ser una ruta a un archivo o un nombre del módulo de nodo.
 
 ### `-v`, `--version`
 
@@ -555,9 +555,9 @@ Cuando se establece a `1`, no se utilizarán colores en el REPL.
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Cuando es colocado, el muy conocido "root" CA (como VeriSign) será extendido con los certificados extra en `file`. El archivo debería consistir de uno o más certificados de confianza en el formato PEM. Se emitirá un mensaje (una vez) con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) si falta el archivo o está malformado, pero cualquier error es ignorado.
 
-Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+Tenga en cuenta que ni los certificados bien conocidos ni los extra se utilizan cuando la propiedad de opciones `ca` está explícitamente especificada para un servidor o cliente TLS o HTTPS.
 
 This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
@@ -567,7 +567,7 @@ This environment variable is ignored when `node` runs as setuid root or has Linu
 added: v0.11.15
 -->
 
-La ruta de datos para los datos ICU (objeto `Intl`). Will extend linked-in data when compiled with small-icu support.
+La ruta de datos para los datos ICU (objeto `Intl`). Extenderá los datos enlazados cuando se compilen con soporte de icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -583,7 +583,7 @@ Cuando se establece a `1`, se silencian las advertencias de proceso.
 added: v8.0.0
 -->
 
-Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
+Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js se cerrará con un error si se utiliza una opción que no está permitida en el entorno, como `-p` o un archivo script.
 
 Node.js options that are allowed are:
 
@@ -650,7 +650,7 @@ added: v8.0.0
 
 Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
@@ -658,7 +658,7 @@ Pending deprecations are generally identical to a runtime deprecation with the n
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
+Cuando se establece a `1`, indica al cargador del módulo para preservar enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 ### `NODE_REDIRECT_WARNINGS=file`
 
@@ -666,7 +666,7 @@ When set to `1`, instructs the module loader to preserve symbolic links when res
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
+Cuando se establece, se emitirán advertencias de proceso al archivo dado en lugar de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir la advertencia al archivo, la advertencia será escrita en stderr en su lugar. Esto es equivalente a utilizar la bandera de línea de comando `--redirect-warnings=file`.
 
 ### `NODE_REPL_HISTORY=file`
 
@@ -674,7 +674,7 @@ When set, process warnings will be emitted to the given file instead of printing
 added: v3.0.0
 -->
 
-Ruta al archivo utilizado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta por defecto es `~/.node_repl_history`, la cual es anulada por esta variable. Configurar el valor a una string vacía (`''` o `' '`) inhabilita el historial REPL persistente.
 
 ### `NODE_TLS_REJECT_UNAUTHORIZED=value`
 
@@ -706,10 +706,9 @@ At this time coverage is only collected in the main thread and will not be outpu
 added: v6.11.0
 -->
 
-Carga un archivo de configuración OpenSSL en el arranque. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
---openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser usado para habilitar criptografía compatible con los estándares federales de procesamiento de la información (FIPS) si Node.Js es construido con `./configure --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
+Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno se ignora.
 
 ### `SSL_CERT_DIR=dir`
 
@@ -717,9 +716,9 @@ If the [`--openssl-config`][] command line option is used, the environment varia
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el directorio de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `SSL_CERT_FILE=file`
 
@@ -727,17 +726,17 @@ Be aware that unless the child environment is explicitly set, this environment v
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. APIs de Node.js que utilizan el threadpool son:
+Las APIs de sistema asincrónicas son utilizadas por Node.js cada vez que es posible, pero donde ellas no existan el threadpool de libuv es utilizado para crear APIs de nodo asincrónicas basadas en APIs de sistema sincrónicas. APIs de Node.js que utilizan el threadpool son:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
+- todas las APIs `fs`, distintas a las APIs observadoras de archivo y aquellas que son explícitamente sincrónicas
 - `crypto.pbkdf2()`
 - `crypto.randomBytes()`, a menos que sea usada sin un callback
 - `crypto.randomFill()`

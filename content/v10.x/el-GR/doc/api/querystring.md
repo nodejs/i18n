@@ -68,6 +68,8 @@ The `querystring.parse()` method parses a URL query string (`str`) into a collec
 
 For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 
+<!-- eslint-skip -->
+
 ```js
 {
   foo: 'bar',
@@ -75,7 +77,7 @@ For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 }
 ```
 
-The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
 
 By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified:
 
@@ -86,14 +88,14 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
 ```
 
-## querystring.stringify(obj[, sep[, eq[, options]]])<!-- YAML
+## querystring.stringify(obj[, sep[, eq[, options]]])
+
+<!-- YAML
 added: v0.1.25
 -->
 
 * `obj` {Object} The object to serialize into a URL query string
-
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
-
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
 * `options` 
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.

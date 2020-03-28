@@ -6,7 +6,7 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
+请参阅 [命令行选项](cli.html#cli_command_line_options) 文档以获取关于运行 Node.js 的不同选项和方式的相关信息。
 
 ## 示例
 

@@ -238,7 +238,7 @@ The `sys` module is deprecated. Lütfen bunun yerine [`util`][] modülünü kull
 
 Type: Runtime
 
-The [`util.print()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
+The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 <a id="DEP0027"></a>
 

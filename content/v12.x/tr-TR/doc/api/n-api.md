@@ -2811,26 +2811,26 @@ Object.defineProperties(obj, {
 The following is the approximate equivalent of the N-API counterpart:
 
 ```C
-napi_status status = napi_status_generic_failure;
+napi_status durumu = napi_status_generic_failure;
 
 // const obj = {};
 napi_value obj;
-status = napi_create_object(env, &obj);
+durum = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create napi_values for 123 and 456
+//123 ve 456 için napi_values oluşturun
 napi_value fooValue, barValue;
-status = napi_create_int32(env, 123, &fooValue);
+durum = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Set the properties
+// Özellikleri ayarlayın
 napi_property_descriptor descriptors[] = {
-  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
-  { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
+  { "foo", BOŞ, BOŞ, BOŞ, BOŞ, fooDeğeri, napi_default, BOŞ },
+  { "bar", BOŞ, BOŞ, BOŞ, BOŞ, barDeğeri, napi_default, BOŞ }
 }
-status = napi_define_properties(env,
+durum = napi_define_properties(env,
                                 obj,
                                 sizeof(descriptors) / sizeof(descriptors[0]),
                                 descriptors);
@@ -3301,25 +3301,23 @@ The newly created function is not automatically visible from script after this c
 In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
 
 ```C
-napi_value SayHello(napi_env env, napi_callback_info info) {
-  printf("Hello\n");
-  return NULL;
+napi_value MerhabaDe(napi_env env, napi_callback_info info) {
+  printf("Merhaba\n");
+  return nullptr;
 }
 
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status status;
+  napi_status durumu;
 
   napi_value fn;
-  status = napi_create_function(env, NULL, 0, SayHello, NULL, &fn);
-  if (status != napi_ok) return NULL;
+  status =  napi_create_function(env, nullptr, 0, MerhabaDe, nullptr, &fn);
+  if (status != napi_ok) return nullptr;
 
-  status = napi_set_named_property(env, exports, "sayHello", fn);
-  if (status != napi_ok) return NULL;
+  status = napi_set_named_property(env, exports, "deMerhaba", fn);
+  if (status != napi_ok) return nullptr;
 
   return exports;
 }
-
-NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 Given the above code, the add-on can be used from JavaScript as follows:
