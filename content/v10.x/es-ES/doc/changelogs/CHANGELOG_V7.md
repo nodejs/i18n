@@ -50,14 +50,14 @@
 
 ## 2017-07-11, Versión 7.10.1 (Actual), @evanlucas
 
-Esta es una versión de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esta es una versión de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
 ### Cambios notables
 
 * **build**: 
-  * Deshabilitar snapshots de V8 - El hashseed incrustado en la snapshot actualmente es el mismo para todas las ejecuciones del binario. Esto expone a node a ataques de colisión que pueden resultar en una Denegación de Servicio. Hemos deshabilitado temporalmente las snapshots hasta que sea encontrada una solución más robusta (Ali Ijaz Sheikh)
+  * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
 * **deps**: 
-  * CVE-2017-1000381 - La función c-ares ares_parse_naptr_reply(), que es usada para analizar respuestas de NAPTR, podría ser desencadenada al leer memoria afuera del buffer del input dado si el pasado en el paquete de respuesta de DNS fue diseñado en una manera particular. Este parche chequea que haya suficientes datos para los elementos requeridos de un registro de NAPTR (2 int16, 3 bytes para extensiones de string) antes de procesar un registro. (David Drysdale)
+  * CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
 
 ### Commits
 
@@ -920,7 +920,7 @@ Gracias a @italoacasas por preparar la mayor parte de este lanzamiento.
 
 Esta versión contiene correcciones de seguridad para actualizar OpenSSL a la versión 1.0.2k.
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) ha determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web de Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Cambios notables
 
