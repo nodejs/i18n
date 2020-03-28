@@ -23,7 +23,7 @@ Die Stabilitätsindizes lauten wie folgt:
 
 <!-- separator -->
 
-> Stabilität: 1 - Experimentell. The feature is not subject to Semantic Versioning rules. Non-backward compatible changes or removal may occur in any future release. Die Verwendung der Funktion wird in Produktionsumgebungen nicht empfohlen.
+> Stabilität: 1 - Experimentell. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
