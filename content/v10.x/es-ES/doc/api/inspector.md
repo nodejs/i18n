@@ -102,7 +102,7 @@ session.on('Debugger.paused', ({ params }) => {
 added: v8.0.0
 -->
 
-Conecta una sesión al back-end del inspector. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
+Conecta una sesión al back-end del inspector. Se arrojará una excepción si ya hay una sesión conectada establecida a través del API o por un front-end conectado al puerto WebSocket del Inspector.
 
 ### session.disconnect()
 
@@ -110,7 +110,7 @@ Conecta una sesión al back-end del inspector. An exception will be thrown if th
 added: v8.0.0
 -->
 
-Cierra la sesión inmediatamente. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Cierra la sesión inmediatamente. All pending message callbacks will be called with an error. Se necesitará llamar a [`session.connect()`] para poder enviar mensajes de nuevo. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
 ### session.post(method\[, params\]\[, callback\])
 
@@ -122,7 +122,7 @@ added: v8.0.0
 * `params` {Object}
 * `callback` {Function}
 
-Publica un mensaje al back-end del inspector. `callback` will be notified when a response is received. `callback` is a function that accepts two optional arguments - error and message-specific result.
+Publica un mensaje al back-end del inspector. `callback` will be notified when a response is received. `callback` es una función que acepta dos argumentos opcionales: error y message-specific result.
 
 ```js
 session.post('Runtime.evaluate', { expression: '2 + 2' },
