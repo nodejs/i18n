@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Χρησιμοποιούνται κυρίως για την παροχή μιας διεπαφής μεταξύ της javaScript που τρέχει στη Node.js και των βιβλιοθηκών της C/C++.
+Τα πρόσθετα της Node.js είναι δυναμικά συνδεδεμένα κοινόχρηστα αντικείμενα, γραμμένα σε C++, που μπορούν να φορτωθούν στη Node.js χρησιμοποιώντας την συνάρτηση [`require()`](modules.html#modules_require), και να χρησιμοποιούνται σαν κανονικές ενότητες της Node.js. Χρησιμοποιούνται κυρίως για την παροχή μιας διεπαφής μεταξύ της javaScript που τρέχει στη Node.js και των βιβλιοθηκών της C/C++.
 
 Αυτή τη στιγμή, η μέθοδος για τη δημιουργία Πρόσθετων είναι κάπως περίπλοκη, αφού απαιτεί τη γνώση διαφόρων στοιχείων και API :
 
 * V8: η βιβλιοθήκη C++ που χρησιμοποιεί προς το παρόν η Node.js για να παρέχει την υλοποίηση της Javascript. Η V8 παρέχει τους μηχανισμούς για τη δημιουργία αντικειμένων, την κλήση συναρτήσεων, κλπ. Το API της βιβλιοθήκης V8's τεκμηριώνεται κατά κύριο λόγο στο αρχείο κεφαλίδας `v8.h` (`deps/v8/include/v8.h` στο δέντρο του πηγαίου κώδικα της Node.js), ενώ είναι επίσης διαθέσιμη και [διαδικτυακά](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): Η βιβλιοθήκη C που υλοποιεί τον βρόχο συμβάντων της Node.js, τα νήματα εργασίας και όλες τις ασύγχρονες συμπεριφορές της πλατφόρμας. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. Η libuv επίσης παρέχει ένα σύστημα παρόμοιο με το pthreads για την αφαίρεση νημάτων, που μπορεί να επιτρέψει την χρήση πιο εξεζητημένων ασύγχρονων Πρόσθετων, τα οποία ξεφεύγουν από τον βασικό βρόχο συμβάντων. Οι δημιουργοί των πρόσθετων ενθαρρύνονται να σκεφτούν πως θα αποφύγουν την αναμονή του βρόχου συμβάντων όταν χρησιμοποιούνται εργασίες I/O ή άλλες εργασίες που απαιτούν χρόνο, μεταθέτοντας την εργασία στο λειτουργικό σύστημα, σε νήματα εργασίας ή σε προσαρμοσμένα νήματα libuv.
+* [libuv](https://github.com/libuv/libuv): Η βιβλιοθήκη C που υλοποιεί τον βρόχο συμβάντων της Node.js, τα νήματα εργασίας και όλες τις ασύγχρονες συμπεριφορές της πλατφόρμας. Επίσης, χρησιμοποιείται σαν μια cross-platform αφαιρετική βιβλιοθήκη που επιτρέπει την εύκολη, σαν POSIX, πρόσβαση σε όλα τα κύρια λειτουργικά συστήματα σε διάφορες κοινές εργασίες συστήματος, όπως η διασύνδεση με το σύστημα αρχείων, τα socket, τα χρονόμετρα και τα συμβάντα συστήματος. Η libuv επίσης παρέχει ένα σύστημα παρόμοιο με το pthreads για την αφαίρεση νημάτων, που μπορεί να επιτρέψει την χρήση πιο εξεζητημένων ασύγχρονων Πρόσθετων, τα οποία ξεφεύγουν από τον βασικό βρόχο συμβάντων. Οι δημιουργοί των πρόσθετων ενθαρρύνονται να σκεφτούν πως θα αποφύγουν την αναμονή του βρόχου συμβάντων όταν χρησιμοποιούνται εργασίες I/O ή άλλες εργασίες που απαιτούν χρόνο, μεταθέτοντας την εργασία στο λειτουργικό σύστημα, σε νήματα εργασίας ή σε προσαρμοσμένα νήματα libuv.
 
 * Εσωτερικές βιβλιοθήκες Node.js. Η Node.js συμπεριλαμβάνει μια σειρά από C++ API, που μπορούν να χρησιμοποιηθούν από τα Πρόσθετα &mdash; εκ των οποίων η πιο σημαντική είναι η κλάση `node::ObjectWrap`.
 
-* Η Node.js συμπεριλαμβάνει μια σειρά από άλλες βιβλιοθήκες, που συνδέονται στατικά, όπως η βιβλιοθήκη OpenSSL. Αυτές οι βιβλιοθήκες βρίσκονται στον φάκελο `deps/` στο δέντρο του πηγαίου κώδικα της Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Δείτε το κεφάλαιο [Σύνδεση με τις εξαρτήσεις της Node.js](#addons_linking_to_node_js_own_dependencies) για περισσότερες πληροφορίες.
+* Η Node.js συμπεριλαμβάνει μια σειρά από άλλες βιβλιοθήκες, που συνδέονται στατικά, όπως η βιβλιοθήκη OpenSSL. Αυτές οι βιβλιοθήκες βρίσκονται στον φάκελο `deps/` στο δέντρο του πηγαίου κώδικα της Node.js. Μόνο τα σύμβολα των βιβλιοθηκών libuv, OpenSSL, V8 και zlib επανεξάγονται σκόπιμα από την Node.js και μπορούν να χρησιμοποιηθούν ποικιλοτρόπως από τα Πρόσθετα. Δείτε το κεφάλαιο [Σύνδεση με τις εξαρτήσεις της Node.js](#addons_linking_to_node_js_own_dependencies) για περισσότερες πληροφορίες.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Όλα τα παρακάτω παραδείγματα είναι διαθέσιμα για [λήψη](https://github.com/nodejs/node-addon-examples) και μπορούν να χρησιμοποιηθούν ως βάση για ένα Πρόσθετο.
 
 ## Hello world
 
@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the .no
 
 ### Χτίσιμο
 
-Όταν η γραφή του πηγαίου κώδικα έχει ολοκληρωθεί, θα πρέπει να μεταγλωττιστεί στο αρχείο `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Το αρχείο αυτό χρησιμοποιείται από το [node-gyp](https://github.com/nodejs/node-gyp) — ένα εργαλείο που έχει δημιουργηθεί ειδικά για τη μεταγλώττιση Πρόσθετων για την Node.js.
+Όταν η γραφή του πηγαίου κώδικα έχει ολοκληρωθεί, θα πρέπει να μεταγλωττιστεί στο αρχείο `addon.node`. Για να γίνει η μεταγλώττιση, δημιουργήστε ένα αρχείο με όνομα `binding.gyp` μέσα στον κύριο φάκελο του project, που περιγράφει την διαμόρφωση του χτισίματος του πρόσθετου, σε μορφή παρόμοια με JSON. Το αρχείο αυτό χρησιμοποιείται από το [node-gyp](https://github.com/nodejs/node-gyp) — ένα εργαλείο που έχει δημιουργηθεί ειδικά για τη μεταγλώττιση Πρόσθετων για την Node.js.
 
 ```json
 {
@@ -89,7 +89,7 @@ The `module_name` must match the filename of the final binary (excluding the .no
 
 Όταν χρησιμοποιείτε την εντολή `npm install` για να εγκαταστήσετε ένα πρόσθετο για τη Node.js, το npm χρησιμοποιεί την δική του -ενσωματωμένη- έκδοση της `node-gyp` για να εκτελέσει την ίδια σειρά ενεργειών, δημιουργώντας μια μεταγλωττισμένη έκδοση του Πρόσθετου για την πλατφόρμα του χρήστη, όπως απαιτείται.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Μόλις χτιστεί, το Πρόσθετο μπορεί να χρησιμοποιηθεί εντός της Node.js χρησιμοποιώντας την συνάρτηση [`require()`](modules.html#modules_require) δείχνοντας το μεταγλωττισμένο αρχείο `addon.node` του πρόσθετου:
 
 ```js
 // hello.js
@@ -123,9 +123,9 @@ H Node.js χρησιμοποιεί μια πληθώρα στατικά συνδ
 
 ### Φόρτωση Προσθέτων με τη χρήση της require()
 
-Η επέκταση του ονόματος ενός μεταγλωττισμένου Πρόσθετου είναι `.node` (και όχι `.dll` ή `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Η επέκταση του ονόματος ενός μεταγλωττισμένου Πρόσθετου είναι `.node` (και όχι `.dll` ή `.so`). Η συνάρτηση [`require()`](modules.html#modules_require) είναι φτιαγμένη να ψάχνει για αρχεία με την επέκταση `.node` και να τα αρχικοποιεί ως δυναμικά συνδεδεμένες βιβλιοθήκες.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Ωστόσο, αυτό θα πρέπει να χρησιμοποιείται με επιφύλαξη, καθώς η Node.js θα βρει και θα φορτώσει ενότητες ή αρχεία JavaScript που τυχαίνει να έχουν το ίδιο όνομα. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Κατά την κλήση της συνάρτησης [`require()`](modules.html#modules_require), συνήθως μπορεί να παραλειφθεί η επέκταση `.node` και η Node.js θα βρει και θα αρχικοποιήσει το Πρόσθετο. Ωστόσο, αυτό θα πρέπει να χρησιμοποιείται με επιφύλαξη, καθώς η Node.js θα βρει και θα φορτώσει ενότητες ή αρχεία JavaScript που τυχαίνει να έχουν το ίδιο όνομα. Για παράδειγμα, αν υπάρχει ένα αρχείο `addon.js` στον ίδιο φάκελο με το αρχείο `addon.node`,τότε η συνάρτηση [`require('addon')`](modules.html#modules_require) θα δώσει will give προτεραιότητα στο αρχείο `addon.js` και θα φορτώσει αυτό.
 
 ## Native Abstractions for Node.js
 
@@ -137,9 +137,9 @@ When calling [`require()`](modules.html#modules_require), the `.node` extension 
 
 > Σταθερότητα: 1 - Πειραματικό
 
-Το N-API είναι ένα API για δημιουργία native Πρόσθετων. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. Αυτό το API θα είναι ένα σταθερό Application Binary Interface (ABI) μεταξύ των εκδόσεων της Node.js. Προορίζεται για την απομόνωση των Πρόσθετων από αλλαγές στην υποκείμενη μηχανή JavaScript και επιτρέπει τις ενότητες που έχουν μεταγλωττιστεί σε μια έκδοση της Node.js, να τρέχουν και στις μελλοντικές εκδόσεις χωρίς να επαναμεταγλωττιστούν. Τα πρόσθετα χτίζονται και γίνονται πακέτο, χρησιμοποιώντας την ίδια προσέγγιση και τα ίδια εργαλεία, που περιγράφονται σε αυτό το έγγραφο (node-gyp, κλπ). Η μόνη διαφορά είναι το σύνολο των API που χρησιμοποιούνται από τον native κώδικα. Αντί να χρησιμοποιηθεί το API της V8 ή του [Native Abstractions for Node.js](https://github.com/nodejs/nan), χρησιμοποιούνται οι συναρτήσεις που είναι διαθέσιμες στο N-API.
+Το N-API είναι ένα API για δημιουργία native Πρόσθετων. Είναι ανεξάρτητο από την υποκείμενη μηχανή JavaScript (π.χ. V8) και συντηρείται από την ίδια την Node.js. Αυτό το API θα είναι ένα σταθερό Application Binary Interface (ABI) μεταξύ των εκδόσεων της Node.js. Προορίζεται για την απομόνωση των Πρόσθετων από αλλαγές στην υποκείμενη μηχανή JavaScript και επιτρέπει τις ενότητες που έχουν μεταγλωττιστεί σε μια έκδοση της Node.js, να τρέχουν και στις μελλοντικές εκδόσεις χωρίς να επαναμεταγλωττιστούν. Τα πρόσθετα χτίζονται και γίνονται πακέτο, χρησιμοποιώντας την ίδια προσέγγιση και τα ίδια εργαλεία, που περιγράφονται σε αυτό το έγγραφο (node-gyp, κλπ). Η μόνη διαφορά είναι το σύνολο των API που χρησιμοποιούνται από τον native κώδικα. Αντί να χρησιμοποιηθεί το API της V8 ή του [Native Abstractions for Node.js](https://github.com/nodejs/nan), χρησιμοποιούνται οι συναρτήσεις που είναι διαθέσιμες στο N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Οι υπόλοιπες οδηγίες παραμένουν ίδιες.
+Για να χρησιμοποιήσετε το N-API στο παράδειγμα "Hello world" που είδαμε πριν, αντικαταστήστε το περιεχόμενο του αρχείου `hello.cc` με τον παρακάτω κώδικα. Οι υπόλοιπες οδηγίες παραμένουν ίδιες.
 
 ```cpp
 // hello.cc με χρήση του N-API
@@ -968,7 +968,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 Καταχωρεί hook εξόδου, που εκτελούνται αφού ολοκληρωθεί ο βρόχος συμβάντων, αλλά πριν τον τερματισμό της εικονικής μηχανής.
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+Η συνάρτηση AtExit δέχεται δύο παραμέτρους: έναν δείκτη προς μια συνάρτηση callback που θα τρέξει κατά την έξοδο, και έναν δείκτη προς δεδομένα χωρίς τύπο που μεταδίδονται στο προαναφερόμενο callback.
 
 Τα callback εκτελούνται με σειρά Last-in First-out.
 
