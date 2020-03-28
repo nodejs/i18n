@@ -238,7 +238,7 @@ El módulo `sys` está desaprobado. Por favor utilice el módulo [`util`][] en s
 
 Tipo: Runtime
 
-La API [`util.print()`][] está desaprobada. Por favor utilice [`console.log()`][] en su lugar.
+La API [`util.print()`][] está desaprobada. Please use [`console.log()`][] instead.
 
 <a id="DEP0027"></a>
 
@@ -278,7 +278,7 @@ La clase [`SlowBuffer`][] ha sido desaprobada. Please use [`Buffer.allocUnsafeSl
 
 Tipo: Documentation-only
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
 
 <a id="DEP0032"></a>
 
